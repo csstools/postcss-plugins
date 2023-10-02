@@ -2,15 +2,14 @@ import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import cleanupParent from './cleanup-parent.js';
 import mergeSelectors from './merge-selectors/merge-selectors.js';
 import type { Result, Rule } from 'postcss';
-import { options } from './options.js';
 import groupDeclarations from './group-declarations.js';
 
-export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result, opts: options) {
+export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result) {
 	let selectors = [];
 
 	// update the selectors of the node to be merged with the parent
 	try {
-		selectors = mergeSelectors(parent.selectors, node.selectors, opts);
+		selectors = mergeSelectors(parent.selector, node.selector);
 	} catch (err) {
 		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${err.message}"`);
 		return;
@@ -27,7 +26,7 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 	shiftNodesBeforeParent(node, parent);
 
 	// update the selectors of the node to be merged with the parent
-	node.selectors = selectors;
+	node.selector = selectors.join(', ');
 
 	// merge similar rules back together
 	const areSameRule = (node.type === 'rule' && parent.type === 'rule' && node.selector === parent.selector);

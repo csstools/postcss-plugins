@@ -31,7 +31,7 @@ a b {
 		order: 9;
 	}
 
-a b c {
+:is(a b) c {
 			order: 8;
 		}
 
@@ -83,12 +83,11 @@ a.foo {
 		order: 22;
 	}
 
-h1.foo,
-	h2.foo {
+h1.foo, h2.foo {
 		color: red;
 	}
 
-li+li {
+li + li {
 		background: red;
 	}
 
@@ -100,11 +99,11 @@ a b[a="a&b"] {
 		order: 31;
 	}
 
-.a.c::before, .b.c::before, .a.d::before, .b.d::before {
+:is(.c:is(.a,.b),.d:is(.a,.b))::before {
 			order: 41;
 		}
 
-.a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
+:is(.a:hover,.b:focus)::before, :is(.a:hover,.b:focus)::after {
 		order: 51;
 	}
 
@@ -126,7 +125,7 @@ a b[a="a&b"] {
 	}
 /* trailing: 5 */
 /* nested deeper */
-.comments .comment .comment {
+:is(.comments .comment) .comment {
 			order: 65;
 		}
 
@@ -226,4 +225,44 @@ h1 {
 h1 {
 		background-color: transparent;
 }
+	}
+
+/* simple */
+
+:has(:is(.foo)) { /* simple */
+		color: green;
+	}
+
+/* complex */
+
+:has(:is(.foo .bar)) { /* simple */
+		color: green;
+	}
+
+/* simple */
+
+:has(:is(.foo) .fooz) { /* complex */
+		color: green;
+	}
+
+/* complex */
+
+:has(:is(.foo .bar) .fooz) { /* complex */
+		color: green;
+	}
+
+/* complex */
+
+:has(.fooz .bar,:is(.foo .bar)) { /* complex + list */
+		color: green;
+	}
+
+/* complex + list */
+
+:has(.fooz .bar,:is(.foo .bar,.baz)) { /* complex + list */
+		color: green;
+	}
+
+:is(::before):hover {
+		color: red;
 	}

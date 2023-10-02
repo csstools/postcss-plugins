@@ -1,6 +1,5 @@
 import type { Container, Node, Result, Rule } from 'postcss';
 import parser from 'postcss-selector-parser';
-import { sortCompoundSelectorsInsideComplexSelector } from './merge-selectors/compound-selector-order';
 
 export default function ampersandToScope(rule: Rule, result: Result) {
 	let parent: Container<Node> = rule.parent;
@@ -27,15 +26,9 @@ export default function ampersandToScope(rule: Rule, result: Result) {
 	}
 
 	selectorAST.walkNesting((nesting) => {
-		const parentNode = nesting.parent;
-
 		nesting.replaceWith(parser.pseudo({
 			value: ':scope',
 		}));
-
-		if (parentNode) {
-			sortCompoundSelectorsInsideComplexSelector(parentNode);
-		}
 	});
 
 	rule.selector = selectorAST.toString();

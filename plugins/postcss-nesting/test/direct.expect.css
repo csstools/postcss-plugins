@@ -2,22 +2,22 @@ a, b {
 	order: 1;
 	order: 5;
 }
-a c, b c, a d, b d {
+:is(a,b) c, :is(a,b) d {
 		order: 2;
 		order: 4;
 	}
-a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
+:is(:is(a,b) c,:is(a,b) d) e, :is(:is(a,b) c,:is(a,b) d) f {
 			order: 3;
 		}
 a, b {
 	order: 1;
 	order: 5;
 }
-a c, b c, a d, b d {
+:is(a,b) c, :is(a,b) d {
 		order: 2;
 		order: 4;
 	}
-a c e, b c e, a d e, b d e, a c f, b c f, a d f, b d f {
+:is(:is(a,b) c,:is(a,b) d) e, :is(:is(a,b) c,:is(a,b) d) f {
 			order: 3;
 		}
 
@@ -28,23 +28,13 @@ b {
 	order: 5;
 }
 
-a c,
-	b c,
-	a d,
-	b d {
+:is(a,b) c, :is(a,b) d {
 		order: 2;
 
 		order: 4;
 	}
 
-a c e,
-		b c e,
-		a d e,
-		b d e,
-		a c f,
-		b c f,
-		a d f,
-		b d f {
+:is(:is(a,b) c,:is(a,b) d) e, :is(:is(a,b) c,:is(a,b) d) f {
 			order: 3;
 		}
 
@@ -55,22 +45,12 @@ a c e,
 	order: 10;
 }
 
-.a .c,
-	.b .c,
-	.a .d,
-	.b .d {
+:is(.a,.b) .c, :is(.a,.b) .d {
 		order: 7;
 
 		order: 9;
 	}
 
-.a .c .e,
-		.b .c .e,
-		.a .d .e,
-		.b .d .e,
-		.a .c .f,
-		.b .c .f,
-		.a .d .f,
-		.b .d .f {
+:is(:is(.a,.b) .c,:is(.a,.b) .d) .e, :is(:is(.a,.b) .c,:is(.a,.b) .d) .f {
 			order: 8;
 		}

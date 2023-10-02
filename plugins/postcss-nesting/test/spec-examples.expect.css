@@ -6,12 +6,11 @@ table.colortable td {
 		text-align: center;
 	}
 
-table.colortable td.c {
+.c:is(table.colortable td) {
 			text-transform: uppercase
 		}
 
-table.colortable td:first-child,
-		:is(table.colortable td):first-child+td {
+:is(table.colortable td):first-child, :is(table.colortable td):first-child + td {
 			border: 1px solid black
 		}
 
@@ -26,7 +25,7 @@ table.colortable th {
 .foo {
 	color: blue;
 }
-.foo>.bar {
+.foo > .bar {
 		color: red;
 	}
 
@@ -56,10 +55,7 @@ table.colortable th {
 .bar {
 	color: blue;
 }
-.foo+.baz,
-	.bar+.baz,
-	.foo.qux,
-	.bar.qux {
+:is(.foo,.bar) + .baz, .qux:is(.foo,.bar) {
 		color: red;
 	}
 
@@ -116,7 +112,7 @@ table.colortable th {
 */
 
 /* The parent selector can be arbitrarily complicated */
-:is(.error,#404):hover>.baz {
+:is(.error,#404):hover > .baz {
 		color: red;
 	}
 
@@ -137,10 +133,10 @@ table.colortable th {
 figure {
 	margin: 0;
 }
-figure>figcaption {
+figure > figcaption {
 		background: hsl(0 0% 0% / 50%);
 	}
-figure>figcaption>p {
+:is(figure > figcaption) > p {
 			font-size: .9rem;
 		}
 
@@ -179,10 +175,7 @@ __bar.foo {
 .bar {
 	color: blue;
 }
-.foo+.baz,
-	.bar+.baz,
-	.foo .qux,
-	.bar .qux {
+:is(.foo,.bar) + .baz, :is(.foo,.bar) .qux {
 		color: red;
 	}
 
@@ -190,7 +183,7 @@ __bar.foo {
 .foo {
 	color: red;
 }
-.foo>.bar {
+.foo > .bar {
 		color: blue;
 	}
 
@@ -239,8 +232,7 @@ __bar.foo {
 	color: red;
 }
 
-.foo .bar,
-	.foo .baz {
+.foo .bar, .foo .baz {
 		color: blue;
 	}
 
@@ -254,7 +246,7 @@ __bar.foo {
 .bar .foo {
 		color: red;
 	}
-.bar .foo.baz {
+.baz:is(.bar .foo) {
 			color: green;
 		}
 
@@ -332,8 +324,7 @@ __bar.foo {
 
 @media (min-width: 480px) {
 
-		.foo h1,
-		.foo h2 {
+		.foo h1, .foo h2 {
 			color: blue;
 		}
 	}

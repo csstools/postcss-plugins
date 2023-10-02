@@ -3,7 +3,7 @@
 		color: red;
 	}
 
-a .in.deep { color: blue; }
+.deep:is(a .in) { color: blue; }
 
 /* a comment */
 
@@ -11,4 +11,4 @@ f g {
 		color: red;
 	}
 
-f .in.deep { color: blue; }
+.deep:is(f .in) { color: blue; }

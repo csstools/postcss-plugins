@@ -64,18 +64,6 @@ postcssTape(plugin)({
 			browsers: 'op_mini all'
 		}
 	},
-	'basic:ch88-ff78:no-is-pseudo': {
-		message: ':is pseudo for nesting can be disable with modern browsers { browsers: "chrome >= 88, firefox >= 78", stage: 0, features: { nesting-rules: { noIsPseudoSelector: true } } } usage',
-		options: {
-			browsers: 'chrome >= 88, firefox >= 78',
-			stage: 0,
-			features: {
-				'nesting-rules': {
-					noIsPseudoSelector: true
-				}
-			}
-		}
-	},
 	'basic:ch88-ff78-saf10': {
 		message: 'does not use :is pseudo for nesting with an older browser { browsers: "chrome >= 88, firefox >= 78, safari >= 10", stage: 0 } usage',
 		options: {
@@ -139,17 +127,6 @@ postcssTape(plugin)({
 			stage: false,
 			features: {
 				'nesting-rules': true
-			}
-		}
-	},
-	'basic:nesting:noIsPseudoSelector:false': {
-		message: 'supports { stage: false, features: { "nesting-rules": { "noIsPseudoSelector": false } } } usage',
-		options: {
-			stage: false,
-			features: {
-				'nesting-rules': {
-					noIsPseudoSelector: false
-				}
 			}
 		}
 	},

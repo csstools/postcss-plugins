@@ -27,7 +27,7 @@
 	}
 }
 
-html:scope {
+:scope.html {
 	order: 7;
 }
 

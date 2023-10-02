@@ -1,9 +1,9 @@
 
-	.foo::before, ::before:focus {
+	.foo:is(::before), :is(::before):focus {
 		order: 1;
 	}
 
-.a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
+:is(.a:hover,.b:focus)::before, :is(.a:hover,.b:focus)::after {
 		order: 2;
 	}
 

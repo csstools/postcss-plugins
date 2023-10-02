@@ -4,17 +4,17 @@
 	}
 
 
-.foo > .bar {
+.foo  > .bar {
 		order: 2;
 	}
 
 
-.foo + .bar {
+.foo  + .bar {
 		order: 3;
 	}
 
 
-.foo ~ .bar {
+.foo  ~ .bar {
 		order: 4;
 	}
 
@@ -29,17 +29,17 @@
 	}
 
 
-.foo >.bar, .foo .other {
+.foo  > .bar, .foo .other {
 		order: 12;
 	}
 
 
-.foo +.bar, .foo .other {
+.foo  + .bar, .foo .other {
 		order: 13;
 	}
 
 
-.foo ~.bar, .foo .other {
+.foo  ~ .bar, .foo .other {
 		order: 14;
 	}
 
@@ -52,15 +52,15 @@
 		order: 21;
 	}
 
-.foo>.bar .foo, .foo .other {
+.foo > .bar .foo, .foo .other {
 		order: 22;
 	}
 
-.foo+.bar .foo, .foo .other {
+.foo + .bar .foo, .foo .other {
 		order: 23;
 	}
 
-.foo~.bar .foo, .foo .other {
+.foo ~ .bar .foo, .foo .other {
 		order: 24;
 	}
 
@@ -68,6 +68,6 @@
 		order: 25;
 	}
 
-:is(.unrelated .foo, .bar) {
+:is(.unrelated .foo,.bar) {
 		order: 31;
 	}

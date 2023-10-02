@@ -4,7 +4,7 @@
 .foo:hover {
 		color: green;
 	}
-.foo > .bar {
+.foo  > .bar {
 		color: blue;
 	}
 @media (prefers-color-scheme: dark) {

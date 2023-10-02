@@ -242,3 +242,45 @@ h1 {
 		background-color: transparent;
 	}
 }
+
+.foo { /* simple */
+	:has(&) { /* simple */
+		color: green;
+	}
+}
+
+.foo .bar { /* complex */
+	:has(&) { /* simple */
+		color: green;
+	}
+}
+
+.foo { /* simple */
+	:has(& .fooz) { /* complex */
+		color: green;
+	}
+}
+
+.foo .bar { /* complex */
+	:has(& .fooz) { /* complex */
+		color: green;
+	}
+}
+
+.foo .bar { /* complex */
+	:has(.fooz .bar, &) { /* complex + list */
+		color: green;
+	}
+}
+
+.foo .bar, .baz { /* complex + list */
+	:has(.fooz .bar, &) { /* complex + list */
+		color: green;
+	}
+}
+
+::before {
+	&:hover {
+		color: red;
+	}
+}

@@ -1,12 +1,11 @@
 import cleanupParent from './cleanup-parent.js';
-import { options } from './options.js';
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import validAtrules from './valid-atrules.js';
 import { walkFunc } from './walk-func.js';
 import type { AtRule, Result, Rule } from 'postcss';
 import groupDeclarations from './group-declarations.js';
 
-export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options) {
+export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc) {
 	// Group all declarations after the first one.
 	groupDeclarations(parent);
 
@@ -24,7 +23,7 @@ export default function atruleWithinRule(node: AtRule, parent: Rule, result: Res
 		cleanupParent(parent);
 
 		// walk the children of the new rule
-		walk(rule, result, opts);
+		walk(rule, result);
 	} else {
 		// conditionally cleanup an empty parent rule
 		cleanupParent(parent);

@@ -51,7 +51,7 @@
 	order: 9;
 }
 
-.test-nesting-rules + p, #test-is-pseudo + p {
+.test-nesting-rules:not(#does-not-exist) + p,#test-is-pseudo + p {
 		order: 8;
 	}
 

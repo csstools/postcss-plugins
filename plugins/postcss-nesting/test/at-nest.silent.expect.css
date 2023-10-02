@@ -23,23 +23,25 @@ a {
 			order: 3;
 }
 		}
-a b {
+:is(a) b {
 		order: 7;
 
 		order: 9;
 	}
-a b c {
+:is(:is(a) b) c {
 			order: 8;
 		}
-body a {
+a {
+
+	@nest body & {
 		order: 11;
-}
-html :is(body a) {
+
+		@nest html & {
 			order: 12;
-}
-body a {
+		}
 
 		order: 13;
+	}
 }
 @media screen {
 a {
@@ -51,51 +53,62 @@ a {
 			order: 16;
 }
 		}
-body:is(a) {
+a {
+
+	@nest body& {
 		order: 17;
-}
-html body:is(a) {
+	}
+
+	@nest html body& {
 		order: 18;
+	}
 }
 
-a.foo {
+a {
+	@nest .foo& {
 		order: 19;
-}
+	}
 
-.foo a.bar {
+	@nest .foo .bar& {
 		order: 20;
+	}
 }
 
-.foo:is(a b) {
+a b {
+	@nest .foo& {
 		order: 21;
-}
+	}
 
-.foo .bar:is(a b) {
+	@nest .foo .bar& {
 		order: 22;
+	}
 }
 
-h1.foo,
-	h2.foo {
+:is(.foo)h1,
+	:is(.foo)h2 {
 		color: red;
 	}
 
-li+li {
+:is(li)+:is(li) {
 		background: red;
 	}
 
-.foo:where(h1) {
+:is(.foo):where(h1) {
 		background: red;
 	}
 
-a b[a="a&b"] {
+:is(a) b[a="a&b"] {
 		order: 31;
 	}
 
-.a.c::before, .b.c::before, .a.d::before, .b.d::before {
+:is(:is(.a,
+.b).c,
+	:is(.a,
+.b).d)::before {
 			order: 41;
 		}
 
-.a:hover::before, .b:focus::before, .a:hover::after, .b:focus::after {
+:is(.a:hover, .b:focus)::before, :is(.a:hover, .b:focus)::after {
 		order: 51;
 	}
 
@@ -108,49 +121,57 @@ a b[a="a&b"] {
 	order: 64;
 	/* trailing: 2 */
 }
-.comments .comment {
+:is(.comments) .comment {
 		order: 62;
 	}
 /* loose comment */
-.comments .comment {
+:is(.comments) .comment {
 		order: 63;
 	}
 /* trailing: 5 */
 /* nested deeper */
-.comments .comment .comment {
+:is(:is(.comments) .comment) .comment {
 			order: 65;
 		}
 
-::before.pseudo-element {
+.pseudo-element {
+	@nest ::before& {
 		order: 71;
-}
+	}
 
-::before .pseudo-element {
+	@nest ::before & {
 		order: 71.1;
+	}
 }
 
-:before.pseudo-element {
+.pseudo-element {
+	@nest :before& {
 		order: 72;
-}
+	}
 
-:before .pseudo-element {
+	@nest :before & {
 		order: 72.1;
+	}
 }
 
-.pseudo-element::after {
+.pseudo-element {
+	@nest &::after {
 		order: 73;
-}
+	}
 
-.pseudo-element ::after {
+	@nest & ::after {
 		order: 73.1;
+	}
 }
 
-.pseudo-element:after {
+.pseudo-element {
+	@nest &:after {
 		order: 74;
-}
+	}
 
-.pseudo-element :after {
+	@nest & :after {
 		order: 74.1;
+	}
 }
 
 .has-semi-colons-on-the-last-decl {
@@ -158,17 +179,17 @@ a b[a="a&b"] {
 	/* a comment */
 }
 
-.has-semi-colons-on-the-last-decl .foo {
+:is(.has-semi-colons-on-the-last-decl) .foo {
 		order: 73.1;
 	}
 
 .has-semi-colons-on-the-last-decl {
 	order: 74;
 	/* a comment */
-}
 
-.has-semi-colons-on-the-last-decl .foo {
+	@nest & .foo {
 		order: 74.1;
+	}
 }
 
 .mixed-declarations-and-rules--a {
@@ -176,7 +197,7 @@ a b[a="a&b"] {
 	declaration: 1;
 }
 
-.mixed-declarations-and-rules--a {
+:is(.mixed-declarations-and-rules--a) {
 		nested: 1;
 	}
 
@@ -188,7 +209,7 @@ a b[a="a&b"] {
 	declaration: 3;
 }
 
-.mixed-declarations-and-rules--b {
+:is(.mixed-declarations-and-rules--b) {
 		nested: 1;
 	}
 
@@ -196,7 +217,7 @@ a b[a="a&b"] {
 
 .mixed-declarations-and-rules--b {
 		nested: 2;
-	}
+}
 	}
 
 .node-less-at-rule {
@@ -211,87 +232,111 @@ a b[a="a&b"] {
 /* at-rule.css */
 a {
 	order: 1;
-}
-b a {
+
+	@nest b & {
 		order: 2;
-}
-c a {
+	}
+
+	@nest c & {
 		order: 3;
-}
-d a {
+	}
+
+	@nest d & {
 		order: 4;
-}
-e a {
+	}
+
+	@nest e & {
 		order: 5;
+	}
 }
 
 a {
 	order: 1;
-}
 
-a b {
+	@nest & b {
 		order: 2;
-}
+	}
 
-a c {
+	@nest & c {
 		order: 3;
-}
+	}
 
-a d {
+	@nest & d {
 		order: 4;
-}
+	}
 
-a e {
+	@nest & e {
 		order: 5;
-}
+	}
 
-a[foo="& ,\'"] {
+	@nest &[foo="& ,\'"] {
 		order: 6;
-}
+	}
 
-a[a="& ,\'"][b='& . \\a &'] {
+	@nest &[a="& ,\'"][b='& . \\a &'] {
 		order: 7;
-}
+	}
 
-a:is(\\foo) {
+	@nest &\\foo {
 		order: 8;
+	}
 }
 
-h1.foo {
+.foo {
+	@nest &h1 {
 		color: red;
+	}
 }
 
-h1.foo, h2.foo {
+.foo {
+
+	@nest &h1,
+	&h2 {
 		color: red;
+	}
 }
 
-.foo.bar {
+.foo {
+	@nest &.bar {
 		color: red;
+	}
 }
 
 
-.foo.bar, .foo.baz {
+.foo {
+
+	@nest &.bar,
+	&.baz {
 		color: red;
+	}
 }
 
-h1.foo {
+h1 {
+	@nest .foo& {
 		color: blue;
+	}
 }
 
-h1.foo .baz h1 {
+h1 {
+	@nest .foo& .baz & {
 		color: blue;
+	}
 }
 
-h1.foo, h1.bar {
+h1 {
+
+	@nest .foo&,
+	.bar& {
 		color: blue;
+	}
 }
 
 article {
 	color: blue;
-}
 
-:where(article) {
+	@nest :where(&) {
 		color: red;
+	}
 }
 
 /* direct.css */
@@ -301,58 +346,40 @@ b {
 
 	order: 5;
 }
-a c,
-	b c,
-	a d,
-	b d {
+:is(a,
+b) c,
+	:is(a,
+b) d {
 		order: 2;
 
 		order: 4;
 	}
-a c e,
-		b c e,
-		a d e,
-		b d e,
-		a c f,
-		b c f,
-		a d f,
-		b d f {
+:is(:is(a,
+b) c,
+	:is(a,
+b) d) e,
+		:is(:is(a,
+b) c,
+	:is(a,
+b) d) f {
 			order: 3;
 		}
 
 a,
 b {
 	order: 1;
-}
 
-a c,
-b c,
-a d,
-b d {
+	@nest & c,
+	& d {
 		order: 2;
-}
 
-a c e,
-b c e,
-a d e,
-b d e,
-a c f,
-b c f,
-a d f,
-b d f {
+		@nest & e,
+		& f {
 			order: 3;
-}
-
-a c,
-b c,
-a d,
-b d {
+		}
 
 		order: 4;
-}
-
-a,
-b {
+	}
 
 	order: 5;
 }
@@ -364,65 +391,47 @@ b {
 	order: 5;
 }
 
-a c,
-	b c,
-	a d,
-	b d {
+:is(a,
+b) c,
+	:is(a,
+b) d {
 		order: 2;
 
 		order: 4;
 	}
 
-a c e,
-		b c e,
-		a d e,
-		b d e,
-		a c f,
-		b c f,
-		a d f,
-		b d f {
+:is(:is(a,
+b) c,
+	:is(a,
+b) d) e,
+		:is(:is(a,
+b) c,
+	:is(a,
+b) d) f {
 			order: 3;
 		}
 
 .a,
 .b {
 	order: 6;
-}
 
-.a .c,
-.b .c,
-.a .d,
-.b .d {
+	@nest & .c,
+	& .d {
 		order: 7;
-}
 
-.a .c .e,
-.b .c .e,
-.a .d .e,
-.b .d .e,
-.a .c .f,
-.b .c .f,
-.a .d .f,
-.b .d .f {
+		@nest & .e,
+		& .f {
 			order: 8;
-}
-
-.a .c,
-.b .c,
-.a .d,
-.b .d {
+		}
 
 		order: 9;
-}
-
-.a,
-.b {
+	}
 
 	order: 10;
 }
 
 /* empty.css */
-a b c {
+:is(:is(a) b) c {
 			order: 1;
 		}
 
@@ -430,7 +439,7 @@ d {
 	order: 2;
 }
 
-d e {
+:is(d) e {
 		order: 3;
 	}
 
@@ -439,27 +448,30 @@ f {
 	order: 5;
 }
 
-f g {
+:is(f) g {
 		order: 4;
 	}
 
-a b c {
+a {
+	@nest & b {
+		@nest & c {
 			order: 1;
+		}
+	}
 }
 
 d {
 	order: 2;
-}
 
-d e {
+	@nest & e {
 		order: 3;
-}
-
-f g {
-		order: 4;
+	}
 }
 
 f {
+	@nest & g {
+		order: 4;
+	}
 
 	order: 5;
 }
@@ -469,10 +481,10 @@ a,
 b {
 	order: 1;
 }
-a c,
-	b c,
-	a d,
-	b d {
+:is(a,
+b) c,
+	:is(a,
+b) d {
 		order: 2;
 	}
 
@@ -480,7 +492,7 @@ a c,
 	order: 3;
 }
 
-f:is(g) {
+:is(f)g {
 		order: 5;
 	}
 
@@ -498,11 +510,10 @@ b {
 	order: 3;
 }
 
-f:is(h) {
-		order: 5;
-}
-
 f {
+	@nest &h {
+		order: 5;
+	}
 
 	@nest &|i {
 		order: 6;
@@ -550,7 +561,7 @@ a {
 		}
 @media (min-width: 100px) and (max-width: 200px) {
 
-		a b {
+		:is(a) b {
 				order: 4;
 		}
 			}
@@ -559,7 +570,7 @@ a {
 			order: 5;
 }
 
-			a c {
+			:is(a) c {
 				order: 6;
 			}
 		}
@@ -582,62 +593,73 @@ a {
 }
 		}
 
-@media (min-width: 100px) and (max-width: 200px) {
+@media (min-width: 100px) {
 
-a b {
+a {
+
+		@nest & b {
+			@media (max-width: 200px) {
 				order: 4;
-}
 			}
+		}
+}
+	}
 
 @media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
 
 a {
 			order: 5;
-}
 
-a c {
+			@nest & c {
 				order: 6;
+			}
 }
 		}
 
 /* pseudo-element.css */
-.foo::before, ::before:focus {
+::before {
+
+	@nest .foo&,
+	&:focus {
 		order: 1;
+	}
 }
 
-.a:hover::before,
-	.b:focus::before,
-	.a:hover::after,
-	.b:focus::after {
+:is(.a:hover,
+.b:focus)::before,
+	:is(.a:hover,
+.b:focus)::after {
 		order: 2;
 	}
 
-.a::before {
+:is(.a)::before {
 		order: 3;
 	}
 
-.a::after {
+:is(.a)::after {
 		order: 4;
 	}
 
-.a::before {
+:is(.a)::before {
 		order: 5;
 	}
 
-.a::before:focus {
+:is(:is(.a)::before):focus {
 			order: 6;
 		}
 
-.a::after {
+:is(.a)::after {
 		order: 7;
 	}
 
-.a::after:hover {
+:is(:is(.a)::after):hover {
 			order: 8;
 		}
 
-.something_else>.anything::before {
+.anything::before {
+	@nest .something_else>& {
 		order: 9;
+	}
 }
 
 /* spec-examples.css */
@@ -645,20 +667,20 @@ a c {
 
 /* Example 2 */
 
-table.colortable td {
+:is(table.colortable) td {
 		text-align: center;
 	}
 
-table.colortable td.c {
+:is(:is(table.colortable) td).c {
 			text-transform: uppercase
 		}
 
-table.colortable td:first-child,
-		:is(table.colortable td):first-child+td {
+:is(:is(table.colortable) td):first-child,
+		:is(:is(table.colortable) td):first-child+td {
 			border: 1px solid black
 		}
 
-table.colortable th {
+:is(table.colortable) th {
 		text-align: center;
 		background: black;
 		color: white;
@@ -669,7 +691,7 @@ table.colortable th {
 .foo {
 	color: blue;
 }
-.foo>.bar {
+:is(.foo)>.bar {
 		color: red;
 	}
 
@@ -684,7 +706,7 @@ table.colortable th {
 .foo {
 	color: blue;
 }
-.foo.bar {
+:is(.foo).bar {
 		color: red;
 	}
 
@@ -699,10 +721,10 @@ table.colortable th {
 .bar {
 	color: blue;
 }
-.foo+.baz,
-	.bar+.baz,
-	.foo.qux,
-	.bar.qux {
+:is(.foo,
+.bar)+.baz,
+	:is(.foo,
+.bar).qux {
 		color: red;
 	}
 
@@ -716,7 +738,7 @@ table.colortable th {
 .foo {
 	color: blue;
 }
-.foo .bar .foo .baz .foo .qux {
+:is(.foo) .bar :is(.foo) .baz :is(.foo) .qux {
 		color: red;
 	}
 
@@ -729,7 +751,7 @@ table.colortable th {
 .foo {
 	color: blue;
 }
-.foo {
+:is(.foo) {
 		padding: 2ch;
 	}
 
@@ -749,7 +771,7 @@ table.colortable th {
 .foo {
 	color: blue;
 }
-.foo.foo {
+:is(.foo):is(.foo) {
 		padding: 2ch;
 	}
 
@@ -759,7 +781,8 @@ table.colortable th {
 */
 
 /* The parent selector can be arbitrarily complicated */
-:is(.error,#404):hover>.baz {
+:is(.error,
+#404):hover>.baz {
 		color: red;
 	}
 
@@ -768,7 +791,7 @@ table.colortable th {
 */
 
 /* As can the nested selector */
-.foo:is(.bar,.foo.baz) {
+:is(.foo):is(.bar,:is(.foo).baz) {
 		color: red;
 	}
 
@@ -780,10 +803,10 @@ table.colortable th {
 figure {
 	margin: 0;
 }
-figure>figcaption {
+:is(figure)>figcaption {
 		background: hsl(0 0% 0% / 50%);
 	}
-figure>figcaption>p {
+:is(:is(figure)>figcaption)>p {
 			font-size: .9rem;
 		}
 
@@ -797,7 +820,7 @@ figure>figcaption>p {
 .foo {
 	color: blue;
 }
-__bar.foo {
+:is(.foo)__bar {
 		color: red;
 	}
 
@@ -805,7 +828,7 @@ __bar.foo {
 .foo {
 	color: blue;
 }
-.foo .bar {
+:is(.foo) .bar {
 		color: red;
 	}
 
@@ -813,7 +836,7 @@ __bar.foo {
 .foo {
 	color: blue;
 }
-.bar.foo {
+.bar:is(.foo) {
 		color: red;
 	}
 
@@ -822,19 +845,20 @@ __bar.foo {
 .bar {
 	color: blue;
 }
-.foo+.baz,
-	.bar+.baz,
-	.foo .qux,
-	.bar .qux {
+:is(.foo,
+.bar)+.baz,
+	:is(.foo,
+.bar) .qux {
 		color: red;
 	}
 
 /* Example 4 */
 .foo {
 	color: red;
-}
-.foo>.bar {
+
+	@nest &>.bar {
 		color: blue;
+	}
 }
 
 /* equivalent to
@@ -844,10 +868,10 @@ __bar.foo {
 
 .foo {
 	color: red;
-}
 
-.parent .foo {
+	@nest .parent & {
 		color: blue;
+	}
 }
 
 /* equivalent to
@@ -857,10 +881,10 @@ __bar.foo {
 
 .foo {
 	color: red;
-}
 
-:not(.foo) {
+	@nest :not(&) {
 		color: blue;
+	}
 }
 
 /* equivalent to
@@ -893,13 +917,15 @@ __bar.foo {
 /* Example 5 */
 .foo {
 	color: blue;
-}
-.bar .foo {
+
+	@nest .bar & {
 		color: red;
-}
-.bar .foo.baz {
+
+		&.baz {
 			color: green;
 		}
+	}
+}
 
 /* equivalent to
   .foo { color: blue; }
@@ -975,8 +1001,8 @@ __bar.foo {
 
 @media (min-width: 480px) {
 
-		.foo h1,
-		.foo h2 {
+		:is(.foo) h1,
+		:is(.foo) h2 {
 			color: blue;
 		}
 	}
@@ -1007,7 +1033,7 @@ article {
 	*/
 	color: red;
 }
-article {
+:is(article) {
 		color: blue;
 	}
 
@@ -1023,10 +1049,10 @@ article {
 	/* valid! */
 }
 
-article {
+:is(article) {
 		color: blue;
 	}
 
-article.foo {
+:is(article).foo {
 		color: yellow;
 	}
