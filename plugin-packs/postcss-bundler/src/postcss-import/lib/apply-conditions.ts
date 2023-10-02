@@ -19,7 +19,7 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 					stmt.conditions[0].media,
 					stmt.conditions[0].supports,
 				)}`;
-			} else if (stmt.conditions.length > 1) {
+			} else {
 				const reverseConditions = stmt.conditions.slice().reverse();
 				const first = reverseConditions.pop()!;
 				let params = `${stmt.fullUri} ${formatImportPrelude(
