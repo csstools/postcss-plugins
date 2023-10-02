@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 1.3.3
+
+_October 2, 2023_
 
 - Fix interpolation of `hue` when either or both components are `none` and `longer` is the interpolation method.
 

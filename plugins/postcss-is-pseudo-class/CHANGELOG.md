@@ -1,6 +1,8 @@
 # Changes to PostCSS Is Pseudo Class
 
-### Unreleased (patch)
+### 4.0.3
+
+_October 2, 2023_
 
 - Prevent incorrect transforms when `:is()` is wrapped in `:has()`.
 
