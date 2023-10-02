@@ -70,14 +70,18 @@ const tests = [
 	['color-mix(in oklab, #09232c, white 50%)', 'rgb(123, 137, 142)'],
 
 	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(0deg 50% 50%)', canonicalize('hsl(225deg 50% 50%)')],
-	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(270deg 50% 50%)')],
 	['color-mix(in hsl shorter hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 	['color-mix(in hsl increasing hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 	['color-mix(in hsl decreasing hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
-	['color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(270deg 50% 50%)')],
 	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
+	['color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
+	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
+	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
 ];
 
 for (const test of tests) {
