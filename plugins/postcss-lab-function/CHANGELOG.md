@@ -1,6 +1,8 @@
 # Changes to PostCSS Lab Function
 
-### Unreleased (patch)
+### 6.0.6
+
+_October 2, 2023_
 
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`1.3.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#133) (patch)
 
