@@ -41,6 +41,12 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 				return;
 			}
 
+			if (pseudo.parent?.parent?.type === 'pseudo' && pseudo.parent?.parent?.value?.toLowerCase() === ':has') {
+				pseudo.value = ':-csstools-matches';
+
+				return;
+			}
+
 			let parent = pseudo.parent;
 			while (parent) {
 				if (parent.value && parent.value.toLowerCase() === ':is' && parent.type === 'pseudo') {

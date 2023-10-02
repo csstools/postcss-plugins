@@ -161,3 +161,15 @@ header:is(.a .b) {
 >:is(.a .b) {
 	color: green;
 }
+
+:has(:is(.foo .bar)) {
+	color: green;
+}
+
+:has(:is(.foo .bar), .fooz .bar) {
+	color: green;
+}
+
+:has(:is(.foo .bar) .fooz) {
+	color: green;
+}
