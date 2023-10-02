@@ -19,6 +19,10 @@ const testCases = {
 		message: "throws on files that don't exist",
 		exception: /Failed to find 'imports\/does-not-exist.css'/,
 	},
+	'ignore': {
+		message: "ignores incorrect syntax",
+		warnings: 2,
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

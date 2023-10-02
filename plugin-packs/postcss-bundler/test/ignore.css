@@ -1,0 +1,2 @@
+@import layer(foo) "imports/basic.css";
+@import supports(foo) "imports/basic.css";

@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Ignore `@import` statements where `supports` or `layer` conditions precede the `url` value.
+
 ### 1.0.4
 
 _September 24, 2023_

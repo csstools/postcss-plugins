@@ -63,6 +63,10 @@ export function parseAtImport(params: string) {
 			}
 		}
 
+		if (!uri) {
+			return false;
+		}
+
 		if (
 			isTokenNode(componentValue) &&
 			componentValue.value[0] === TokenType.Ident &&
