@@ -23,6 +23,10 @@ const testCases = {
 		message: "ignores incorrect syntax",
 		warnings: 2,
 	},
+	'regexp': {
+		message: "regexp sanity checks",
+		warnings: 2,
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

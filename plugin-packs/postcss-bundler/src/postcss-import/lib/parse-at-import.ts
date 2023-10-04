@@ -1,4 +1,4 @@
-import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, parseListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { IS_LAYER, IS_SUPPORTS, IS_URL } from './names';
 
@@ -9,9 +9,9 @@ export function parseAtImport(params: string) {
 
 	let uri = '';
 	let fullUri = '';
-	const layer = [];
-	const media = [];
-	const supports = [];
+	let layer : string | undefined;
+	let media : string | undefined;
+	let supports : string | undefined;
 
 	PARSING_LOOP:
 	for (let i = 0; i < componentValues.length; i++) {
@@ -72,11 +72,11 @@ export function parseAtImport(params: string) {
 			componentValue.value[0] === TokenType.Ident &&
 			IS_LAYER.test(componentValue.value[4].value)
 		) {
-			if (layer.length > 0 || supports.length > 0) {
+			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
 				return false;
 			}
 
-			layer.push('');
+			layer = '';
 			continue;
 		}
 
@@ -84,11 +84,11 @@ export function parseAtImport(params: string) {
 			isFunctionNode(componentValue) &&
 			IS_LAYER.test(componentValue.getName())
 		) {
-			if (layer.length > 0 || supports.length > 0) {
+			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
 				return false;
 			}
 
-			layer.push(stringify([trim(componentValue.value)]));
+			layer = stringify([componentValue.value]).trim();
 			continue;
 		}
 
@@ -96,19 +96,15 @@ export function parseAtImport(params: string) {
 			isFunctionNode(componentValue) &&
 			IS_SUPPORTS.test(componentValue.getName())
 		) {
-			if (supports.length > 0) {
+			if (typeof supports !== 'undefined') {
 				return false;
 			}
 
-			supports.push(stringify([trim(componentValue.value)]));
+			supports = stringify([componentValue.value]).trim();
 			continue;
 		}
 
-		const remainder = trim(componentValues.slice(i));
-		const remainderTokens = remainder.flatMap(x => x.tokens());
-		const list = parseCommaSeparatedListOfComponentValues(remainderTokens);
-		const serializedList = list.map((x) => stringify([trim(x)]));
-		media.push(...serializedList);
+		media = stringify([componentValues.slice(i)]).trim();
 		break;
 	}
 
@@ -127,36 +123,13 @@ export function parseAtImport(params: string) {
 	};
 }
 
-function trim(componentValues: Array<ComponentValue>) {
-	let start = 0;
-	let end = componentValues.length;
-
-	for (let i = 0; i < componentValues.length; i++) {
-		const componentValue = componentValues[i];
-		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
-			continue;
-		}
-
-		start = i;
-		break;
-	}
-
-	for (let i = componentValues.length - 1; i >= 0; i--) {
-		const componentValue = componentValues[i];
-		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
-			continue;
-		}
-
-		end = i + 1;
-		break;
-	}
-
-	return componentValues.slice(start, end);
-}
-
 function stripHash(str: string) {
 	if (str.startsWith('#')) {
 		return '';
+	}
+
+	if (!str.includes('#')) {
+		return str;
 	}
 
 	try {

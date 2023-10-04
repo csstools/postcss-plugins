@@ -4,11 +4,7 @@ import { formatImportPrelude } from './format-import-prelude';
 
 export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: AtRuleProps) => AtRule) {
 	bundle.forEach((stmt, index) => {
-		if (isWarning(stmt)) {
-			return;
-		}
-
-		if (!stmt.conditions.length || isCharsetStatement(stmt)) {
+		if (isWarning(stmt) || isCharsetStatement(stmt) || !stmt.conditions?.length) {
 			return;
 		}
 
@@ -20,15 +16,15 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 					stmt.conditions[0].supports,
 				)}`;
 			} else {
-				const reverseConditions = stmt.conditions.slice().reverse();
-				const first = reverseConditions.pop()!;
+				stmt.conditions.reverse();
+				const first = stmt.conditions.pop()!;
 				let params = `${stmt.fullUri} ${formatImportPrelude(
 					first.layer,
 					first.media,
 					first.supports,
 				)}`;
 
-				for (const condition of reverseConditions) {
+				for (const condition of stmt.conditions) {
 					params = `'data:text/css;base64,${Buffer.from(
 						`@import ${params}`,
 					).toString('base64')}' ${formatImportPrelude(
@@ -44,12 +40,12 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 			return;
 		}
 
-		const { nodes } = stmt;
+		const nodes = stmt.nodes;
 		if (!nodes.length) {
 			return;
 		}
 
-		const { parent } = nodes[0];
+		const parent = nodes[0].parent;
 		if (!parent) {
 			return;
 		}
@@ -58,33 +54,30 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 
 		// Convert conditions to at-rules
 		for (const condition of stmt.conditions) {
-			if (condition.media.length > 0) {
+			if (typeof condition.media !== 'undefined') {
 				const mediaNode = atRule({
 					name: 'media',
-					params: condition.media.join(', '),
+					params: condition.media,
 					source: stmt.importingNode?.source ?? parent.source,
 				});
 
 				atRules.push(mediaNode);
 			}
 
-			if (condition.supports.length > 0) {
+			if (typeof condition.supports !== 'undefined') {
 				const supportsNode = atRule({
 					name: 'supports',
-					params:
-						condition.supports.length === 1
-							? `(${condition.supports[0]})`
-							: condition.supports.map(x => `(${x})`).join(' and '),
+					params: '(' + condition.supports + ')',
 					source: stmt.importingNode?.source ?? parent.source,
 				});
 
 				atRules.push(supportsNode);
 			}
 
-			if (condition.layer.length > 0) {
+			if (typeof condition.layer !== 'undefined') {
 				const layerNode = atRule({
 					name: 'layer',
-					params: condition.layer.join('.'),
+					params: condition.layer,
 					source: stmt.importingNode?.source ?? parent.source,
 				});
 
