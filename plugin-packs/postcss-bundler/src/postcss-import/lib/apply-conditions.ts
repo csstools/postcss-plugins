@@ -9,33 +9,25 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 		}
 
 		if (isImportStatement(stmt)) {
-			if (stmt.conditions.length === 1) {
-				stmt.node.params = `${stmt.fullUri} ${formatImportPrelude(
-					stmt.conditions[0].layer,
-					stmt.conditions[0].media,
-					stmt.conditions[0].supports,
-				)}`;
-			} else {
-				stmt.conditions.reverse();
-				const first = stmt.conditions.pop()!;
-				let params = `${stmt.fullUri} ${formatImportPrelude(
-					first.layer,
-					first.media,
-					first.supports,
-				)}`;
+			stmt.conditions.reverse();
+			const first = stmt.conditions.pop()!;
+			let params = `${stmt.fullUri} ${formatImportPrelude(
+				first.layer,
+				first.media,
+				first.supports,
+			)}`;
 
-				for (const condition of stmt.conditions) {
-					params = `'data:text/css;base64,${Buffer.from(
-						`@import ${params}`,
-					).toString('base64')}' ${formatImportPrelude(
-						condition.layer,
-						condition.media,
-						condition.supports,
-					)}`;
-				}
-
-				stmt.node.params = params;
+			for (const condition of stmt.conditions) {
+				params = `'data:text/css;base64,${Buffer.from(
+					`@import ${params}`,
+				).toString('base64')}' ${formatImportPrelude(
+					condition.layer,
+					condition.media,
+					condition.supports,
+				)}`;
 			}
+
+			stmt.node.params = params;
 
 			return;
 		}
@@ -102,9 +94,6 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 		nodes.forEach(node => {
 			node.parent = undefined;
 		});
-
-		// better output
-		nodes[0].raws.before = nodes[0].raws.before || '\n';
 
 		// wrap new rules with media query and/or layer at rule
 		innerAtRule.append(nodes);

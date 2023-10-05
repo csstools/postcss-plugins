@@ -6,24 +6,22 @@ export function parseAtImport(params: string) {
 	const tokens = tokenize({ css: params });
 
 	// Fast path for common cases:
-	if (tokens.length === 2) {
-		const token = tokens[0];
-
-		if (
-			token[0] === TokenType.String ||
-			token[0] === TokenType.URL
-		) {
-			let uri = token[4].value;
-			uri = stripHash(uri);
-			if (!uri) {
-				return false;
-			}
-
-			return {
-				uri,
-				fullUri: token[1],
-			};
+	if (
+		tokens.length === 2 && (
+			tokens[0][0] === TokenType.String ||
+			tokens[0][0] === TokenType.URL
+		)
+	) {
+		let uri = tokens[0][4].value;
+		uri = stripHash(uri);
+		if (!uri) {
+			return false;
 		}
+
+		return {
+			uri,
+			fullUri: tokens[0][1],
+		};
 	}
 
 	const componentValues = parseListOfComponentValues(tokens);
@@ -130,7 +128,6 @@ export function parseAtImport(params: string) {
 	}
 
 	uri = stripHash(uri);
-
 	if (!uri) {
 		return false;
 	}
@@ -147,9 +144,7 @@ export function parseAtImport(params: string) {
 function stripHash(str: string) {
 	if (str.startsWith('#')) {
 		return '';
-	}
-
-	if (!str.includes('#')) {
+	} else if (!str.includes('#')) {
 		return str;
 	}
 

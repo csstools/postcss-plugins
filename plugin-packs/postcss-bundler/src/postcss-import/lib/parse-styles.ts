@@ -75,7 +75,6 @@ export async function parseStyles(
 
 async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss, require: NodeRequire, sourceFile: string, base: string) {
 	if (isValidDataURL(stmt.uri)) {
-		// eslint-disable-next-line require-atomic-updates
 		stmt.children = await loadImportContent(
 			result,
 			stmt,
@@ -117,7 +116,6 @@ async function loadImportContent(
 	postcss: Postcss,
 ) {
 	const { conditions, from, node } = stmt;
-
 	if (from.includes(filename)) {
 		return;
 	}

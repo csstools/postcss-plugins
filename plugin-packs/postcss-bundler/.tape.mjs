@@ -15,9 +15,13 @@ const testCases = {
 		message: "errors on mismatched charset",
 		exception: /Incompatible @charset statements/,
 	},
-	'does-not-exist': {
+	'does-not-exist-1': {
 		message: "throws on files that don't exist",
 		exception: /Failed to find 'imports\/does-not-exist.css'/,
+	},
+	'does-not-exist-2': {
+		message: "throws on files that don't exist",
+		exception: /Failed to find 'node_modules:does-not-exist.css'/,
 	},
 	'ignore': {
 		message: "ignores incorrect syntax",
