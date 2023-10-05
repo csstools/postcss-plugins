@@ -3,9 +3,30 @@ import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { IS_LAYER, IS_SUPPORTS, IS_URL } from './names';
 
 export function parseAtImport(params: string) {
-	const componentValues = parseListOfComponentValues(
-		tokenize({ css: params }),
-	);
+	const tokens = tokenize({ css: params });
+
+	// Fast path for common cases:
+	if (tokens.length === 2) {
+		const token = tokens[0];
+
+		if (
+			token[0] === TokenType.String ||
+			token[0] === TokenType.URL
+		) {
+			let uri = token[4].value;
+			uri = stripHash(uri);
+			if (!uri) {
+				return false;
+			}
+
+			return {
+				uri,
+				fullUri: token[1],
+			};
+		}
+	}
+
+	const componentValues = parseListOfComponentValues(tokens);
 
 	let uri = '';
 	let fullUri = '';
