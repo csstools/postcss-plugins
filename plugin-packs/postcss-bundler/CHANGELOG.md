@@ -1,5 +1,10 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Ignore urls with url modifiers (e.g. `url("foo.css" some-modifier)`)
+- Reduce some complexity in the codebase
+
 ### 1.0.5
 
 _October 2, 2023_

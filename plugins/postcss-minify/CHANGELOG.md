@@ -1,5 +1,9 @@
 # Changes to PostCSS Minify
 
+### Unreleased (patch)
+
+- Minify whitespace around comments that are preserved
+
 ### 1.0.1
 
 _September 24, 2023_

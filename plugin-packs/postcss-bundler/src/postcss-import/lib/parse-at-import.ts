@@ -2,7 +2,7 @@ import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseList
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 import { IS_LAYER, IS_SUPPORTS, IS_URL } from './names';
 
-export function parseAtImport(params: string) {
+export function parseAtImport(params: string) : false | { uri: string; fullUri: string; layer?: string; media?: string; supports?: string; } {
 	const tokens = tokenize({ css: params });
 
 	// Fast path for common cases:
@@ -32,7 +32,6 @@ export function parseAtImport(params: string) {
 	let media : string | undefined;
 	let supports : string | undefined;
 
-	PARSING_LOOP:
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
 		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
@@ -75,11 +74,13 @@ export function parseAtImport(params: string) {
 				) {
 					uri = childComponentValue.value[4].value;
 					fullUri = stringify([[componentValue]]);
-					continue PARSING_LOOP;
+					continue;
 				}
 
 				return false;
 			}
+
+			continue;
 		}
 
 		if (!uri) {
