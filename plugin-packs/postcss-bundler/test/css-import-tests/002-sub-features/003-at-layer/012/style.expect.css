@@ -1,7 +1,7 @@
 @layer a;
 @layer b{
-/* green.css */
-.box {
+	/* green.css */
+	.box {
 	background-color: green;
 }
 }

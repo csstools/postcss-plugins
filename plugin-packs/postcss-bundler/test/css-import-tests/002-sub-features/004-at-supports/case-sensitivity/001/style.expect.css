@@ -3,7 +3,7 @@
 	background-color: red;
 }
 @supports (display: flex) {
-/* a.css */
+	/* a.css */
 	.box {
 	background-color: green;
 }

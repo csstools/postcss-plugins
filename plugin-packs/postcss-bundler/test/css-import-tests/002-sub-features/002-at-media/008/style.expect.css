@@ -1,13 +1,13 @@
 @media all {
 	@layer alpha {
-/* a.css */
+		/* a.css */
 	}
 }
 @media all {
 	@layer alpha {
 		@media print {
 			@layer alpha {
-/* green.css */
+				/* green.css */
 				.box {
 	background-color: green;
 }
@@ -17,14 +17,14 @@
 }
 @media all {
 	@layer beta {
-/* b.css */
+		/* b.css */
 	}
 }
 @media all {
 	@layer beta {
 		@media print {
 			@layer beta {
-/* red.css */
+				/* red.css */
 				.box {
 	background-color: red;
 }

@@ -146,7 +146,7 @@ function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | nul
 	stmt.uri = uri;
 	stmt.fullUri = fullUri;
 
-	if (media.length > 0 || layer.length > 0 || supports.length > 0) {
+	if (typeof layer !== 'undefined' || typeof media !== 'undefined' || typeof supports !== 'undefined') {
 		stmt.conditions.push({
 			layer,
 			media,
