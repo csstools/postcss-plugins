@@ -1,7 +1,5 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
-
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.3`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#773-october-05-2023) (patch)
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#203) (patch)
 - Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#101) (patch)
