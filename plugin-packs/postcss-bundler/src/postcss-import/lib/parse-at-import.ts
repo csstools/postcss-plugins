@@ -107,7 +107,7 @@ export function parseAtImport(params: string) {
 				return false;
 			}
 
-			layer = stringify([componentValue.value]).trim();
+			layer = stringify([componentValue.value]);
 			continue;
 		}
 
@@ -119,11 +119,11 @@ export function parseAtImport(params: string) {
 				return false;
 			}
 
-			supports = stringify([componentValue.value]).trim();
+			supports = stringify([componentValue.value]);
 			continue;
 		}
 
-		media = stringify([componentValues.slice(i)]).trim();
+		media = stringify([componentValues.slice(i)]);
 		break;
 	}
 
