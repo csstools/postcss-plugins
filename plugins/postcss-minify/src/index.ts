@@ -169,6 +169,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 					case 'comment':
 
 						if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+							node.raws.before = '';
 							return;
 						}
 

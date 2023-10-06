@@ -1,11 +1,11 @@
 @media all {
-/* a.css */
+    /* a.css */
 }
 @media all {
-@media screen {
-/* b.css */
-.box {
+    @media screen {
+        /* b.css */
+        .box {
 	background-color: green;
 }
-}
+    }
 }

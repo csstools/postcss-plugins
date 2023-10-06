@@ -7,7 +7,7 @@
 /* a.css */
 }
 @media all {
-/* red.css */
+	/* red.css */
 	.box {
 	background-color: red;
 }
@@ -17,7 +17,7 @@
 /* a.css */
 }
 @media not print {
-/* red.css */
+	/* red.css */
 	.box {
 	background-color: red;
 }
@@ -29,7 +29,7 @@
 }
 @media not print {
 	@media screen {
-/* green.css */
+		/* green.css */
 		.box {
 	background-color: green;
 }

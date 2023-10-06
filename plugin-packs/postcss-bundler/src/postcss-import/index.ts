@@ -3,7 +3,7 @@ import { parseStyles } from './lib/parse-styles';
 import { applyConditions } from './lib/apply-conditions';
 import { applyStyles } from './lib/apply-styles';
 
-/** postcss-import plugin options */
+/** postcss-bundler plugin options */
 export type pluginOptions = never;
 
 const creator: PluginCreator<pluginOptions> = () => {

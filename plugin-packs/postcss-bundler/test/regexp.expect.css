@@ -1,0 +1,109 @@
+/* various sanity checks for regexp in the code base */
+
+@media zlayer(foo) {
+
+/* imports/basic.css */
+
+.foo {
+	background: url("images/green.png");
+}
+
+.bar {
+	background: url(imports/green.png);
+}
+
+.url-modifier {
+	background: url("images/green.png" something);
+}
+
+.fragment {
+	background: url("images/green.png#foo");
+}
+
+.search {
+	background: url("images/green.png?foo=bar");
+}
+}
+
+@media layerz(foo) {
+
+/* imports/basic.css */
+
+.foo {
+	background: url("images/green.png");
+}
+
+.bar {
+	background: url(imports/green.png);
+}
+
+.url-modifier {
+	background: url("images/green.png" something);
+}
+
+.fragment {
+	background: url("images/green.png#foo");
+}
+
+.search {
+	background: url("images/green.png?foo=bar");
+}
+}
+
+@media zsupports(foo) {
+
+/* imports/basic.css */
+
+.foo {
+	background: url("images/green.png");
+}
+
+.bar {
+	background: url(imports/green.png);
+}
+
+.url-modifier {
+	background: url("images/green.png" something);
+}
+
+.fragment {
+	background: url("images/green.png#foo");
+}
+
+.search {
+	background: url("images/green.png?foo=bar");
+}
+}
+
+@media supportsz(foo) {
+
+/* imports/basic.css */
+
+.foo {
+	background: url("images/green.png");
+}
+
+.bar {
+	background: url(imports/green.png);
+}
+
+.url-modifier {
+	background: url("images/green.png" something);
+}
+
+.fragment {
+	background: url("images/green.png#foo");
+}
+
+.search {
+	background: url("images/green.png?foo=bar");
+}
+}
+
+@zimport "imports/basic.css";
+
+@importz "imports/basic.css";
+
+@charsetz "utf-8";
+
+@zcharset "utf-8";

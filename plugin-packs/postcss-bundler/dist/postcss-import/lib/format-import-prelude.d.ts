@@ -1,1 +1,1 @@
-export declare function formatImportPrelude(layer: Array<string>, media: Array<string>, supports: Array<string>): string;
+export declare function formatImportPrelude(layer: string | undefined, media: string | undefined, supports: string | undefined): string;

@@ -5,14 +5,14 @@
 /* b.css */
 @layer b;
 @layer b{
-/* green.css */
-.box {
+    /* green.css */
+    .box {
 	background-color: green;
 }
 }
 @layer a{
-/* red.css */
-.box {
+    /* red.css */
+    .box {
 	background-color: red;
 }
 }
