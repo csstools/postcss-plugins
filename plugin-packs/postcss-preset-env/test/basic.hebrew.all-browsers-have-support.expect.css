@@ -514,3 +514,13 @@
 .exponential-functions {
 	width: 8px;
 }
+
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
+}
+
+@media (color-gamut: p3) {
+.out-of-gamut {
+	--color: color(display-p3 0 1 0);
+}
+}

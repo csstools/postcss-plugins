@@ -8,6 +8,10 @@ import { intOrZero } from '../util/int-or-zero.mjs';
 import { insertAfterKey, insertBeforeKey } from '../own-keys/keys.mjs';
 import { browsersWithSupportStats } from './browsers-with-supports-stats.mjs';
 
+const alwaysEnabled = new Set([
+	'progressive-custom-properties',
+]);
+
 export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// initialize options
 	const features = Object(options.features);
@@ -31,12 +35,21 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	const stage = stageFromOptions(options, logger);
 
 	// polyfillable features (those with an available postcss plugin)
-	const polyfillableFeatures = prepareFeaturesList(cssdbList, insertBefore, insertAfter).map((feature) => {
+	const polyfillableFeatures = prepareFeaturesList([
+		...cssdbList,
+		{
+			id: 'progressive-custom-properties',
+		},
+	], insertBefore, insertAfter).map((feature) => {
 		return formatPolyfillableFeature(feature);
 	});
 
 	// vendor implemented features (those implemented by at least N vendors)
 	const vendorImplementedFeatures = polyfillableFeatures.filter((feature) => {
+		if (alwaysEnabled.has(feature.id)) {
+			return true;
+		}
+
 		if (minimumVendorImplementations === 0) {
 			return true;
 		}
@@ -66,6 +79,10 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 	// staged features (those at or above the selected stage)
 	const stagedFeatures = vendorImplementedFeatures.filter((feature) => {
+		if (alwaysEnabled.has(feature.id)) {
+			return true;
+		}
+
 		// TODO : this filter needs to be split up.
 		const isAllowedStage = feature.stage >= stage;
 		const isAllowedByType = enableClientSidePolyfills || !featuresWithClientSide.includes(feature.id);
@@ -93,6 +110,10 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	// - features with `true` or with options
 	// - required for the browsers
 	const supportedFeatures = stagedFeatures.filter((feature) => {
+		if (alwaysEnabled.has(feature.id)) {
+			return true;
+		}
+
 		if (feature.id in features) {
 			return features[feature.id];
 		}

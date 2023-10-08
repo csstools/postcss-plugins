@@ -52,7 +52,9 @@ export function formatStagedFeature(cssdbList, supportedBrowsers, features, feat
 	}
 
 	// postcss-preset-env : option overrides
-	pluginOption.enableProgressiveCustomProperties = false;
+	if (feature.id !== 'progressive-custom-properties') {
+		pluginOption.enableProgressiveCustomProperties = false;
+	}
 
 	// https://github.com/MattDiMu/postcss-replace-overflow-wrap/blob/ec9914e0b9473a75a5d1fe32ea4311555eb81b71/index.js#L10
 	if (feature.id === 'overflow-wrap-property' && 'preserve' in pluginOption) {

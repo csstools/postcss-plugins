@@ -270,4 +270,11 @@ export default [
 		'id': 'text-decoration-shorthand',
 		'importName': 'postcssTextDecorationShorthand',
 	},
+	{
+		'packageName': '@csstools/postcss-progressive-custom-properties',
+		'id': 'progressive-custom-properties',
+		'importName': 'postcssProgressiveCustomProperties',
+		'omitTypedOptions': true,
+		'omitDocs': true,
+	},
 ];

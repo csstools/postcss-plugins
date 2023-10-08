@@ -1,8 +1,8 @@
-import { readFile, writeFile } from 'fs/promises';
+import fs from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
-const pluginsData = await readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
+const pluginsData = await fs.readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
 
 const esmPlugins = `export default ${JSON.stringify(pluginsData, null, 2)}\n`;
 
@@ -31,7 +31,7 @@ export const pluginsById = new Map(
 }
 
 function generatePluginOptions(data) {
-	const plugins = data.slice(0).sort((a, b) => a.id.localeCompare(b.id));
+	const plugins = data.slice().filter((x) => !x.omitTypedOptions).sort((a, b) => a.id.localeCompare(b.id));
 	let result = '';
 
 	for (let i = 0; i < plugins.length; i++) {
@@ -58,7 +58,7 @@ function generatePluginOptions(data) {
 }
 
 await Promise.all([
-	writeFile('./src/plugins/plugins-data.mjs', esmPlugins),
-	writeFile('./src/plugins/plugins-by-id.mjs', generatePluginsByID(pluginsData)),
-	writeFile('./src/plugins/plugins-options.ts', generatePluginOptions(pluginsData)),
+	fs.writeFile('./src/plugins/plugins-data.mjs', esmPlugins),
+	fs.writeFile('./src/plugins/plugins-by-id.mjs', generatePluginsByID(pluginsData)),
+	fs.writeFile('./src/plugins/plugins-options.ts', generatePluginOptions(pluginsData)),
 ]);
