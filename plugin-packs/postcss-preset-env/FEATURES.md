@@ -26,6 +26,7 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `focus-within-pseudo-class` | `:focus-within` Focus Container Pseudo-Class | [example](https://preset-env.cssdb.org/features/#focus-within-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within#readme) |
 | `font-format-keywords` | Font `format()` Keywords | [example](https://preset-env.cssdb.org/features/#font-format-keywords) | [docs](https://github.com/valtlai/postcss-font-format-keywords#readme) |
 | `font-variant-property` | `font-variant` Property | [example](https://preset-env.cssdb.org/features/#font-variant-property) | [docs](https://github.com/postcss/postcss-font-variant#readme) |
+| `gamut-mapping` |   |   |   |
 | `gap-properties` | Gap Properties | [example](https://preset-env.cssdb.org/features/#gap-properties) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gap-properties#readme) |
 | `gradients-interpolation-method` | Gradients Interpolation Method | [example](https://preset-env.cssdb.org/features/#gradients-interpolation-method) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method#readme) |
 | `has-pseudo-class` | `:has()` Relational Pseudo-Class | [example](https://preset-env.cssdb.org/features/#has-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo#readme) |
