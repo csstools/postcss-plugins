@@ -12,6 +12,7 @@ npm install @csstools/postcss-gamut-mapping --save-dev
 p {
 	background-color: oklch(80% 0.05 0.39 / 0.5);
 	color: oklch(20% 0.234 0.39 / 0.5);
+	border-color: color(display-p3 0 1 0);
 }
 
 /* becomes */
@@ -19,11 +20,18 @@ p {
 p {
 	background-color: oklch(80% 0.05 0.39 / 0.5);
 	color: rgba(50, 0, 20, 0.5);
+	border-color: rgb(0, 249, 66);
 }
 
 @media (color-gamut: rec2020) {
 p {
 	color: oklch(20% 0.234 0.39 / 0.5);
+}
+}
+
+@media (color-gamut: p3) {
+p {
+	border-color: color(display-p3 0 1 0);
 }
 }
 ```
