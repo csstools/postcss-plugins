@@ -12,9 +12,17 @@
 }
 
 .test-image-set-function {
+	background-image: url(img/test.png);
 	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	order: 2;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.test-image-set-function {
+	background-image: url(img/test-2x.png);
+}
 }
 
 .test-logical-properties-and-values {
@@ -124,7 +132,7 @@
 	animation: none 0s ease 0s 1 normal none running;
 	backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
-	border: medium none currentColor;
+	border: medium none currentcolor;
 	border-collapse: separate;
 	-o-border-image: none;
 	   border-image: none;
@@ -145,8 +153,8 @@
 	     column-fill: balance;
 	-moz-column-gap: normal;
 	     column-gap: normal;
-	-moz-column-rule: medium none currentColor;
-	     column-rule: medium none currentColor;
+	-moz-column-rule: medium none currentcolor;
+	     column-rule: medium none currentcolor;
 	-moz-column-span: 1;
 	     column-span: 1;
 	-moz-column-width: auto;
@@ -155,7 +163,6 @@
 	counter-increment: none;
 	counter-reset: none;
 	cursor: auto;
-	direction: ltr;
 	display: inline;
 	empty-cells: show;
 	float: none;
@@ -179,7 +186,7 @@
 	min-width: 0;
 	opacity: 1;
 	orphans: 2;
-	outline: medium none invert;
+	outline: medium none currentcolor;
 	overflow: visible;
 	overflow-x: visible;
 	overflow-y: visible;
@@ -207,7 +214,6 @@
 	transform-origin: 50% 50% 0;
 	transform-style: flat;
 	transition: none 0s ease 0s;
-	unicode-bidi: normal;
 	vertical-align: baseline;
 	visibility: visible;
 	white-space: normal;

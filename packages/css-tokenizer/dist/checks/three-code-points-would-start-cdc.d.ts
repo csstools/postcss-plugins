@@ -1,3 +1,2 @@
 import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-export declare function checkIfThreeCodePointsWouldStartCDC(ctx: Context, reader: CodePointReader): boolean;
+export declare function checkIfThreeCodePointsWouldStartCDC(reader: CodePointReader): boolean;

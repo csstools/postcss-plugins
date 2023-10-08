@@ -1,22 +1,23 @@
-import valueParser from 'postcss-value-parser';
+import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import type { Declaration } from 'postcss';
 import { isDeclarationIgnored } from './is-ignored';
+import { HAS_VAR_FUNCTION } from './is-var-function';
 
 // transform custom pseudo selectors with custom selectors
-export default (decl: Declaration, customProperties: Map<string, valueParser.ParsedValue>, opts: { preserve?: boolean }) => {
+export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }) {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.value;
-		const valueAST = valueParser(originalValue);
-		let value = transformValueAST(valueAST, customProperties);
+		const valueAST = valuesParser(originalValue);
+		let value = transformValueAST(valueAST, customProperties, localCustomProperties);
 
 		// protect against circular references
 		const valueSet = new Set();
 
-		while (value.includes('--') && value.toLowerCase().includes('var(') && !valueSet.has(value)) {
+		while (HAS_VAR_FUNCTION.test(value) && !valueSet.has(value)) {
 			valueSet.add(value);
-			const parsedValueAST = valueParser(value);
-			value = transformValueAST(parsedValueAST, customProperties);
+			const parsedValueAST = valuesParser(value);
+			value = transformValueAST(parsedValueAST, customProperties, localCustomProperties);
 		}
 
 		// conditionally transform values that have changed
@@ -46,7 +47,7 @@ export default (decl: Declaration, customProperties: Map<string, valueParser.Par
 			}
 		}
 	}
-};
+}
 
 // match custom properties
 

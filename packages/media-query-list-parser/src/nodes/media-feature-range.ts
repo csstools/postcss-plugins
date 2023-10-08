@@ -4,7 +4,6 @@ import { comparisonFromTokens, matchesComparison, MediaFeatureComparison, MediaF
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
@@ -403,17 +402,8 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 		const b = componentValues.slice(comparisonOne[1] + 1);
 
 		const nameA = parseMediaFeatureName(a);
-		const nameB = parseMediaFeatureName(b);
-
-		if (!nameA && !nameB) {
-			return false;
-		}
-
-		if (
-			(nameA && !nameB) ||
-			nameA && mediaDescriptors.has(toLowerCaseAZ(nameA.getName()))
-		) {
-			const value = parseMediaFeatureValue(b);
+		if (nameA) {
+			const value = parseMediaFeatureValue(b, true);
 			if (!value) {
 				return false;
 			}
@@ -421,11 +411,9 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 			return new MediaFeatureRangeNameValue(nameA, comparisonTokensOne, value);
 		}
 
-		if (
-			(!nameA && nameB) ||
-			nameB && mediaDescriptors.has(toLowerCaseAZ(nameB.getName()))
-		) {
-			const value = parseMediaFeatureValue(a);
+		const nameB = parseMediaFeatureName(b);
+		if (nameB) {
+			const value = parseMediaFeatureValue(a, true);
 			if (!value) {
 				return false;
 			}
@@ -449,9 +437,9 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 	const b = componentValues.slice(comparisonOne[1] + 1, comparisonTwo[0]);
 	const c = componentValues.slice(comparisonTwo[1] + 1);
 
-	const valueA = parseMediaFeatureValue(a);
+	const valueA = parseMediaFeatureValue(a, true);
 	const nameB = parseMediaFeatureName(b);
-	const valueC = parseMediaFeatureValue(c);
+	const valueC = parseMediaFeatureValue(c, true);
 
 	if (!valueA || !nameB || !valueC) {
 		return false;
@@ -512,44 +500,3 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 		comparisonTokensTwo,
 	);
 }
-
-// https://www.w3.org/TR/mediaqueries-5/#media-descriptor-table
-export const mediaDescriptors = new Set([
-	'any-hover',
-	'any-pointer',
-	'aspect-ratio',
-	'color',
-	'color-gamut',
-	'color-index',
-	'device-aspect-ratio',
-	'device-height',
-	'device-width',
-	'display-mode',
-	'dynamic-range',
-	'environment-blending',
-	'forced-colors',
-	'grid',
-	'height',
-	'horizontal-viewport-segments',
-	'hover',
-	'inverted-colors',
-	'monochrome',
-	'nav-controls',
-	'orientation',
-	'overflow-block',
-	'overflow-inline',
-	'pointer',
-	'prefers-color-scheme',
-	'prefers-contrast',
-	'prefers-reduced-data',
-	'prefers-reduced-motion',
-	'prefers-reduced-transparency',
-	'resolution',
-	'scan',
-	'scripting',
-	'update',
-	'vertical-viewport-segments',
-	'video-color-gamut',
-	'video-dynamic-range',
-	'width',
-]);

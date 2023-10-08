@@ -1,11 +1,11 @@
-import { promises as fsp, constants } from 'fs';
+import fs from 'fs';
 import path from 'path';
 
-async function postcssPeerDependencyVersion() {
+function postcssPeerDependencyVersion() {
 	// "postcss-tape" is our reference for PostCSS versions.
 	// This package is our test suite.
 	// If CI passes it means the plugin is compatible with the lower version in "postcss-tape".
-	const packageJSONInfoForPostCSS_Tape = JSON.parse(await fsp.readFile('../../packages/postcss-tape/package.json', 'utf8'));
+	const packageJSONInfoForPostCSS_Tape = JSON.parse(fs.readFileSync('../../packages/postcss-tape/package.json', 'utf8'));
 
 	// "postcss-tape" package.json:
 	//
@@ -24,7 +24,7 @@ async function postcssPeerDependencyVersion() {
 	return lowerPostCSS_Version.split('~')[1];
 }
 
-const packageJSONInfo = JSON.parse(await fsp.readFile('./package.json', 'utf8'));
+const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const packageJSONInfoCopy = JSON.stringify(packageJSONInfo, null, '\t');
 const formatted = {};
 
@@ -146,7 +146,7 @@ const formatted = {};
 		delete packageJSONInfo.peerDependencies;
 
 		if (formatted.peerDependencies['postcss']) {
-			formatted.peerDependencies['postcss'] = '^' + (await postcssPeerDependencyVersion());
+			formatted.peerDependencies['postcss'] = '^' + postcssPeerDependencyVersion();
 		}
 	}
 
@@ -203,9 +203,7 @@ const formatted = {};
 		}
 		delete packageJSONInfo.scripts;
 
-		try {
-			await fsp.access('./stryker.conf.json', constants.R_OK | constants.W_OK);
-		} catch (_) {
+		if (!fs.existsSync('./stryker.conf.json')) {
 			delete formatted.scripts.stryker;
 		}
 	}
@@ -257,4 +255,4 @@ if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, '\t') !== pack
 	process.exit(1);
 }
 
-await fsp.writeFile('./package.json', JSON.stringify(formatted, null, '\t') + '\n');
+fs.writeFileSync('./package.json', JSON.stringify(formatted, null, '\t') + '\n');

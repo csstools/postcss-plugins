@@ -350,18 +350,6 @@ ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:h
 	order: 35;
 }
 
-:has(h1) {
-	order: 36;
-}
-
-:has(h2) {
-	order: 36;
-}
-
-:has(h3) {
-	order: 36;
-}
-
 :has(:is(h1, h2, h3)) {
 	order: 36;
 }
@@ -402,4 +390,32 @@ input:hover, input:focus, button:hover, button:focus {
 :is(input, button):is(:hover, :focus) {
 	cloned: 1;
 	to-clone: 1;
+}
+
+.a header.b {
+	color: green;
+}
+
+header:is(.a .b) {
+	color: green;
+}
+
+>:is(.a .b) {
+	color: green;
+}
+
+:has(:is(.foo .bar)) {
+	color: green;
+}
+
+:has( .fooz .bar,:is(.foo .bar)) {
+	color: green;
+}
+
+:has(:is(.foo .bar), .fooz .bar) {
+	color: green;
+}
+
+:has(:is(.foo .bar) .fooz) {
+	color: green;
 }

@@ -13,19 +13,19 @@ See : https://open-props.style/
 ## Moving parts
 
 - run PostCSS with `postcss-cli`
-- bundle with `postcss-import`
-- inject `@custom-media` with `postcss-global-data`
+- bundle with `@csstools/postcss-bundler`
+- inject `@custom-media` with `@csstools/postcss-global-data`
 - inject CSS variables with `postcss-jit-props`
 - nesting and other modern features with `postcss-preset-env`
-- minify with `cssnano`
+- minify with `@csstools/postcss-minify`
 
 See `package.json` for the full list of dependencies and the scripts.
 
-## Reading 
+## Reading
 
-- [cssnano](https://cssnano.co)
-- [open props](https://open-props.style/)
-- [postcss-cli](https://github.com/postcss/postcss-cli)
-- [postcss-global-data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data)
-- [postcss-import](https://www.npmjs.com/package/postcss-import)
-- [postcss-jit-props](https://github.com/GoogleChromeLabs/postcss-jit-props)
+- [`open props`](https://open-props.style/)
+- [`@csstools/postcss-bundler`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler)
+- [`@csstools/postcss-global-data`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data)
+- [`@csstools/postcss-minify`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-minify)
+- [`postcss-cli`](https://github.com/postcss/postcss-cli)
+- [`postcss-jit-props`](https://github.com/GoogleChromeLabs/postcss-jit-props)

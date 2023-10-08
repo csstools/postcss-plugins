@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-logical-float-and-clear.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/float-clear-logical-values.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install @csstools/postcss-logical-float-and-clear --save-dev
+```
+
 [PostCSS Logical Float And Clear] lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
 
 ```pcss

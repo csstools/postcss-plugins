@@ -1,0 +1,17 @@
+@supports (display: block) {
+    @layer a {
+        /* a.css */
+    }
+}
+@supports (display: block) {
+    @layer a {
+        @supports (width: 10px) {
+            @layer b {
+                /* b.css */
+                .box {
+	background-color: green;
+}
+            }
+        }
+    }
+}

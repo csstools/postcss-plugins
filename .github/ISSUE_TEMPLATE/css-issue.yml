@@ -59,7 +59,7 @@ body:
       multiple: true
       options:
         - PostCSS Preset Env
-        - CSS All Property
+        - PostCSS Bundler
         - CSS Blank Pseudo
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
@@ -86,7 +86,9 @@ body:
         - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
+        - PostCSS IC Unit
         - PostCSS Image Set Function
+        - PostCSS Initial
         - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
@@ -95,6 +97,7 @@ body:
         - PostCSS Logical Viewport Units
         - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Media MinMax
+        - PostCSS Minify
         - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function
@@ -103,11 +106,13 @@ body:
         - PostCSS Place
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
+        - PostCSS Rebase URL
         - PostCSS Rebeccapurple
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
         - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
+        - PostCSS Slow Plugins
         - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family
         - PostCSS Text Decoration Shorthand

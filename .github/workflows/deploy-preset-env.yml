@@ -18,4 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Curl request
-        run: curl -X POST -d {} ${{ secrets.PRESET_ENV_DEPLOY_HOOK }}
+        env:
+          DEPLOY_HOOK: ${{ secrets.PRESET_ENV_DEPLOY_HOOK }}
+        run: curl -X POST -d {} $DEPLOY_HOOK

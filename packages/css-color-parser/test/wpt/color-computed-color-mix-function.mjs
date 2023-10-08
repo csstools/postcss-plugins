@@ -72,7 +72,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in hsl, hsl(120deg 20% 40%), hsl(none none none))', canonicalize('hsl(120deg 20% 40%)')],
 		['color-mix(in hsl, hsl(120deg 20% none), hsl(30deg 40% 60%))', canonicalize('hsl(75deg 30% 60%)')],
 		['color-mix(in hsl, hsl(120deg 20% 40%), hsl(30deg 20% none))', canonicalize('hsl(75deg 20% 40%)')],
-		['color-mix(in hsl, hsl(none 20% 40%), hsl(30deg none 80%))', canonicalize('hsl(30deg 20% 60%)')],
+		['color-mix(in hsl, hsl(none 20% 40%), hsl(30deg none 80%))', canonicalize('hsl(0deg 20% 60%)')],
 
 		['color-mix(in hsl, hsl(120deg 40% 40% / none), hsl(0deg 40% 40%))', canonicalize('hsl(60deg 40% 40%)')],
 		['color-mix(in hsl, hsl(120deg 40% 40% / none), hsl(0deg 40% 40% / 0.5))', canonicalize('hsl(60deg 40% 40% / 0.5)')],
@@ -213,7 +213,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in lch, lch(10 20 30deg), lch(none none none))', canonicalize('lch(10 20 30)')],
 		['color-mix(in lch, lch(10 20 none), lch(50 60 70deg))', canonicalize('lch(30 40 70)')],
 		['color-mix(in lch, lch(10 20 30deg), lch(50 60 none))', canonicalize('lch(30 40 30)')],
-		['color-mix(in lch, lch(none 20 30deg), lch(50 none 70deg))', canonicalize('lch(50 20 50)')],
+		['color-mix(in lch, lch(none 20 30deg), lch(50 none 70deg))', canonicalize('lch(50 20 30)')],
 		['color-mix(in lch, lch(10 20 30deg / none), lch(50 60 70deg))', canonicalize('lch(30 40 50)')],
 		['color-mix(in lch, lch(10 20 30deg / none), lch(50 60 70deg / 0.5))', canonicalize('lch(30 40 50 / 0.5)')],
 		['color-mix(in lch, lch(10 20 30deg / none), lch(50 60 70deg / none))', canonicalize('lch(30 40 50 / none)')],

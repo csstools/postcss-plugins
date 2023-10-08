@@ -7,8 +7,6 @@ import { DEFAULT_CONDITION } from '../constants';
 import module from 'module';
 import type { Helpers, Root } from 'postcss';
 
-const require = module.createRequire(import.meta.url);
-
 function parseImport(statement: string): { filePath: string, format: string, conditions: Array<string> } {
 	const importAST = valueParser(statement);
 
@@ -48,18 +46,21 @@ export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buil
 	}
 
 	let resolvedPath = '';
-	if (filePath.startsWith('node_modules://')) {
-		try {
-			resolvedPath = require.resolve(filePath.slice(15), {
-				paths: [
-					path.dirname(sourceFilePath),
-				],
-			});
-		} catch (e) {
-			throw new Error(`Failed to read ${filePath} with error ${(e as Error).message}`);
+
+	try {
+		if (filePath.startsWith('node_modules://')) {
+			const require = module.createRequire(path.dirname(sourceFilePath));
+
+			resolvedPath = require.resolve(filePath.slice(15));
+		} else if (filePath.startsWith('node_modules:')) {
+			const require = module.createRequire(path.dirname(sourceFilePath));
+
+			resolvedPath = require.resolve(filePath.slice(13));
+		} else {
+			resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
 		}
-	} else {
-		resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
+	} catch (e) {
+		throw new Error(`Failed to read ${filePath} with error ${(e as Error).message}`);
 	}
 
 	if (alreadyImported.has(resolvedPath)) {

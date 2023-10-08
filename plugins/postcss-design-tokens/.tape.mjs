@@ -1,12 +1,13 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-design-tokens';
-import postcssImport from 'postcss-import';
+import postcssBundler from '@csstools/postcss-bundler';
+import postcss from 'postcss';
 
 postcssTape(plugin)({
 	basic: {
 		message: "supports basic usage",
 		plugins: [
-			postcssImport(),
+			postcssBundler(),
 			plugin()
 		],
 		warnings: 1
@@ -93,6 +94,9 @@ postcssTape(plugin)({
 	'value-parsing-g': {
 		message: "supports value parsing (G)",
 		warnings: 2
+	},
+	'imported-double-slash': {
+		message: "supports 'node_modules://'",
 	},
 	'examples/example': {
 		message: 'minimal example',

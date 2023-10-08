@@ -162,7 +162,7 @@
 }
 }
 
-@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
+@supports (color: oklab(0% 0 0)) and (top: var(--f)) {
 .test-alpha-oklch {
 	color-4: oklch(1% 0.01 0.01 / var(--foo));
 }

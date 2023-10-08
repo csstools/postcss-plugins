@@ -164,7 +164,7 @@ const tests = [
 	['hsl(from rebeccapurple h alpha l / s)', 'rgba(102, 101, 103)'],
 	['hsl(from rebeccapurple h l l / l)', 'rgba(102, 61, 143)'],
 	['hsl(from rebeccapurple h alpha alpha / alpha)', 'rgb(3, 3, 3)'],
-	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgba(77, 127, 178, 0.8)'],
+	['hsl(from rgb(20%, 40%, 60%, 80%) h l s)', 'rgba(77, 128, 179, 0.8)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha l / s)', 'rgba(101, 102, 103)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h l l / l)', 'rgba(61, 102, 143)'],
 	['hsl(from rgb(20%, 40%, 60%, 80%) h alpha alpha / alpha)', 'rgba(2, 2, 2, 0.8)'],

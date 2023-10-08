@@ -1,0 +1,11 @@
+@media screen {
+    /* a.css */
+}
+@media screen {
+    @media (min-width: 1px) {
+        /* b.css */
+        .box {
+	background-color: green;
+}
+    }
+}

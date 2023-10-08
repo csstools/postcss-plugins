@@ -1,0 +1,191 @@
+[
+	{
+		"type": "media-query-without-type",
+		"string": "(resolution < infinite) and (infinite <= resolution) ",
+		"media": {
+			"type": "media-condition",
+			"media": {
+				"type": "media-condition-list-and",
+				"leading": {
+					"type": "media-in-parens",
+					"media": {
+						"type": "general-enclosed",
+						"tokens": [
+							[
+								"(-token",
+								"(",
+								0,
+								0,
+								null
+							],
+							[
+								"ident-token",
+								"resolution",
+								1,
+								10,
+								{
+									"value": "resolution"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								11,
+								11,
+								null
+							],
+							[
+								"delim-token",
+								"<",
+								12,
+								12,
+								{
+									"value": "<"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								13,
+								13,
+								null
+							],
+							[
+								"ident-token",
+								"infinite",
+								14,
+								21,
+								{
+									"value": "infinite"
+								}
+							],
+							[
+								")-token",
+								")",
+								22,
+								22,
+								null
+							]
+						]
+					},
+					"before": [],
+					"after": []
+				},
+				"list": [
+					{
+						"type": "media-and",
+						"modifier": [
+							[
+								"whitespace-token",
+								" ",
+								23,
+								23,
+								null
+							],
+							[
+								"ident-token",
+								"and",
+								24,
+								26,
+								{
+									"value": "and"
+								}
+							],
+							[
+								"whitespace-token",
+								" ",
+								27,
+								27,
+								null
+							]
+						],
+						"media": {
+							"type": "media-in-parens",
+							"media": {
+								"type": "general-enclosed",
+								"tokens": [
+									[
+										"(-token",
+										"(",
+										28,
+										28,
+										null
+									],
+									[
+										"ident-token",
+										"infinite",
+										29,
+										36,
+										{
+											"value": "infinite"
+										}
+									],
+									[
+										"whitespace-token",
+										" ",
+										37,
+										37,
+										null
+									],
+									[
+										"delim-token",
+										"<",
+										38,
+										38,
+										{
+											"value": "<"
+										}
+									],
+									[
+										"delim-token",
+										"=",
+										39,
+										39,
+										{
+											"value": "="
+										}
+									],
+									[
+										"whitespace-token",
+										" ",
+										40,
+										40,
+										null
+									],
+									[
+										"ident-token",
+										"resolution",
+										41,
+										50,
+										{
+											"value": "resolution"
+										}
+									],
+									[
+										")-token",
+										")",
+										51,
+										51,
+										null
+									]
+								]
+							},
+							"before": [],
+							"after": []
+						}
+					}
+				],
+				"before": [],
+				"after": [
+					[
+						"whitespace-token",
+						" ",
+						52,
+						52,
+						null
+					]
+				]
+			}
+		}
+	}
+]

@@ -1,0 +1,25 @@
+.page-wrapper {
+	display: grid;
+	grid-template-areas:
+		"intro"
+		"main"
+		"sidebar";
+
+	@media (width >= 48rem) {
+		grid-template-areas:
+			"intro intro"
+			"main sidebar";
+	}
+}
+
+.page-wrapper .intro {
+	grid-area: intro;
+}
+
+.page-wrapper .main {
+	grid-area: main;
+}
+
+.page-wrapper .sidebar {
+	grid-area: sidebar;
+}

@@ -33,11 +33,11 @@ export function formatPolyfillableFeature(feature) {
 	};
 }
 
-export function formatStagedFeature(cssdbList, browsers, features, feature, sharedOptions, options, logger) {
+export function formatStagedFeature(cssdbList, supportedBrowsers, features, feature, sharedOptions, options, logger) {
 	let pluginOption;
 	let plugin;
 
-	pluginOption = getOptionsForBrowsersByFeature(browsers, feature, cssdbList, options, logger);
+	pluginOption = getOptionsForBrowsersByFeature(supportedBrowsers, feature, cssdbList, options, logger);
 
 	if (features[feature.id] === true) {
 		if (sharedOptions) {
@@ -53,11 +53,6 @@ export function formatStagedFeature(cssdbList, browsers, features, feature, shar
 
 	// postcss-preset-env : option overrides
 	pluginOption.enableProgressiveCustomProperties = false;
-
-	// https://github.com/maximkoretskiy/postcss-initial#replace
-	if (feature.id === 'all-property' && 'preserve' in pluginOption) {
-		pluginOption.replace = pluginOption.preserve;
-	}
 
 	// https://github.com/MattDiMu/postcss-replace-overflow-wrap/blob/ec9914e0b9473a75a5d1fe32ea4311555eb81b71/index.js#L10
 	if (feature.id === 'overflow-wrap-property' && 'preserve' in pluginOption) {

@@ -25,11 +25,8 @@
 }
 
 @supports (color: oklab(0% 0 0)) and (top: var(--f)) {
-
-@media (color-gamut: rec2020) {
 :root {
 	--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50));
-}
 }
 }
 
@@ -85,11 +82,8 @@
 }
 
 @supports (color: oklab(0% 0 0)) and (top: var(--f)) {
-
-@media (color-gamut: rec2020) {
 :root {
 	--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
-}
 }
 }
 
@@ -176,24 +170,13 @@
 @supports (color: color(display-p3 0 0 0)) {
 :root {
 	--color-7: color(srgb 0.999 0.95 0.95);
-}
-}
-
-@supports (color: color(display-p3 0 0 0)) {
-
-@media (color-gamut: display-p3) {
-:root {
 	--color-8: color(display-p3 0.999 0.95 0.95);
-}
 }
 }
 
 @supports (color: color(xyz 0 0 0)) {
-
-@media (color-gamut: rec2020) {
 :root {
 	--color-9: color(rec2020 0.999 0.95 0.95);
-}
 }
 }
 
@@ -317,15 +300,7 @@
 	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
 	--color-rcs-2: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / none);
 	--color-rcs-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
-}
-}
-
-@supports (color: color(xyz 0 0 0)) and (color: rgb(from red r g b)) {
-
-@media (color-gamut: rec2020) {
-:root {
 	--color-rcs-4: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g none);
-}
 }
 }
 
@@ -343,12 +318,9 @@
 }
 
 @supports (color: oklab(0% 0 0)) and (color: rgb(from red r g b)) {
-
-@media (color-gamut: rec2020) {
 :root {
 	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
 	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
-}
 }
 }
 

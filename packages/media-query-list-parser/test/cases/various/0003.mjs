@@ -2,7 +2,7 @@ import assert from 'assert';
 import { runTest } from '../../util/run-test.mjs';
 
 runTest(
-	'(resolution < infinite) and (infinite <= resolution) ',
+	'(resolution < 1dpi) and (2dpi <= resolution) ',
 	'various/0003',
 	(actual, expected) => {
 		assert.deepStrictEqual(

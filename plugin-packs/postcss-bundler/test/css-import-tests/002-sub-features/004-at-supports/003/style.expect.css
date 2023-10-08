@@ -1,0 +1,11 @@
+@supports ((display: block) or (display: inline)) {
+    /* a.css */
+}
+@supports ((display: block) or (display: inline)) {
+    @supports (width: 10px) {
+        /* b.css */
+        .box {
+	background-color: green;
+}
+    }
+}

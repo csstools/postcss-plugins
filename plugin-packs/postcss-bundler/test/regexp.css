@@ -1,0 +1,13 @@
+/* various sanity checks for regexp in the code base */
+@import "imports/basic.css" zlayer(foo);
+@import "imports/basic.css" layerz(foo);
+@import "imports/basic.css" zsupports(foo);
+@import "imports/basic.css" supportsz(foo);
+@import urlz("imports/basic.css");
+@import zurl("imports/basic.css");
+
+@zimport "imports/basic.css";
+@importz "imports/basic.css";
+
+@charsetz "utf-8";
+@zcharset "utf-8";

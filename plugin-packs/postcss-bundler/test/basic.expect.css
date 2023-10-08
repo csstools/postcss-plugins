@@ -1,0 +1,47 @@
+/* imports/basic.css */
+
+.foo {
+	background: url("images/green.png");
+}
+
+.bar {
+	background: url(imports/green.png);
+}
+
+.url-modifier {
+	background: url("images/green.png" something);
+}
+
+.fragment {
+	background: url("images/green.png#foo");
+}
+
+.search {
+	background: url("images/green.png?foo=bar");
+}
+
+/* ./imports/minified-source.css */
+
+.foo { --var: /* a comment */; bar: red }
+
+.foo { color: red }
+
+.foo { color: red }
+
+.foo { color: rgb(0 0 0) }
+
+.foo { color: rgb(0 0 0) }
+
+.foo { color: rgb(0 0 0) }
+
+/* node_modules:@rmenke/css-package-main */
+
+.box {
+	background-color: green;
+}
+
+/* node_modules:@rmenke/css-package-conditional-3/styles */
+
+.box {
+	background-color: green;
+}

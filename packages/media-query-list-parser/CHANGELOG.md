@@ -1,5 +1,18 @@
 # Changes to Media Query List Parser
 
+### 2.1.5
+
+_September 24, 2023_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#221) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.3.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#232) (patch)
+
+### 2.1.4
+
+_August 5, 2023_
+
+- Do not allow keywords as media feature values in range context queries.
+
 ### 2.1.3
 
 _July 24, 2023_

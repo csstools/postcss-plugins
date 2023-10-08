@@ -1,7 +1,9 @@
 import { type AtRule, type PluginCreator, type Rule } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
 
-const hasVariableFunction = /var\(/i;
+const HAS_VARIABLE_FUNCTION = /var\(/i;
+const IS_INITIAL = /^initial$/i;
+const EMPTY_OR_WHITESPACE = /^\s*$/;
 
 const creator: PluginCreator<null> = () => {
 	return {
@@ -28,28 +30,29 @@ const creator: PluginCreator<null> = () => {
 					// The first encountered property is the fallback for the oldest targets.
 					if (decl.variable) {
 						// custom properties are case-sensitive
-						if (!propNames.has(decl.prop.toString())) {
-							propNames.add(decl.prop.toString());
+						if (!propNames.has(decl.prop)) {
+							propNames.add(decl.prop);
 							return;
 						}
 					} else {
 						// regular properties are case-insensitive
-						if (!propNames.has(decl.prop.toString().toLowerCase())) {
-							propNames.add(decl.prop.toString().toLowerCase());
+						const lowerCaseProp = decl.prop.toLowerCase();
+						if (!propNames.has(lowerCaseProp)) {
+							propNames.add(lowerCaseProp);
 							return;
 						}
 					}
 
-					if (!(decl.variable || hasVariableFunction.test(decl.value))) {
+					if (!(decl.variable || HAS_VARIABLE_FUNCTION.test(decl.value))) {
 						return;
 					}
 
-					if (decl.value.trim().toLowerCase() === 'initial') {
+					if (IS_INITIAL.test(decl.value)) {
 						// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
 						return;
 					}
 
-					if (decl.value.trim() === '') { // empty string value
+					if (EMPTY_OR_WHITESPACE.test(decl.value)) { // empty string value
 						// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
 						return;
 					}

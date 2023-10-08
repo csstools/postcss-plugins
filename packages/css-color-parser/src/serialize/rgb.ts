@@ -1,9 +1,8 @@
 import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
-import { ColorNotation } from '../color-notation';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { conversions, xyz } from '@csstools/color-helpers';
+import { xyz } from '@csstools/color-helpers';
 import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
@@ -12,19 +11,10 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
-	if (color.colorNotation === ColorNotation.HWB) {
-		srgb = conversions.HWB_to_sRGB(srgb);
-	} else if(color.colorNotation === ColorNotation.HSL) {
-		srgb = conversions.HSL_to_sRGB(srgb);
-	} else if (
-		color.colorNotation !== ColorNotation.RGB &&
-		color.colorNotation !== ColorNotation.HEX
-	) {
-		if (gamutMapping) {
-			srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
-		} else {
-			srgb = xyz.XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
-		}
+	if (gamutMapping) {
+		srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
+	} else {
+		srgb = xyz.XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
 	}
 
 	const r = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[0]) * 255)));
@@ -38,10 +28,10 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 	const channels = [
 		new TokenNode([TokenType.Number, r.toString(), -1, -1, { value: srgb[0], type: NumberType.Integer }]),
 		new TokenNode(comma),
-		new TokenNode(space),
+		new WhitespaceNode([space]),
 		new TokenNode([TokenType.Number, g.toString(), -1, -1, { value: srgb[1], type: NumberType.Integer }]),
 		new TokenNode(comma),
-		new TokenNode(space),
+		new WhitespaceNode([space]),
 		new TokenNode([TokenType.Number, b.toString(), -1, -1, { value: srgb[2], type: NumberType.Integer }]),
 	];
 
@@ -61,7 +51,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 			[
 				...channels,
 				new TokenNode(comma),
-				new TokenNode(space),
+				new WhitespaceNode([space]),
 				new TokenNode([TokenType.Number, toPrecision(a, 4).toString(), -1, -1, { value: color.alpha, type: NumberType.Number }]),
 			],
 		);
@@ -73,7 +63,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 		[
 			...channels,
 			new TokenNode(comma),
-			new TokenNode(space),
+			new WhitespaceNode([space]),
 			color.alpha,
 		],
 	);

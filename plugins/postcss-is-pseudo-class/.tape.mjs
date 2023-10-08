@@ -19,7 +19,7 @@ postcssTape(plugin)({
 	},
 	'basic:oncomplex:warning': {
 		message: "warns on complex selectors",
-		warnings: 8,
+		warnings: 9,
 		options: {
 			onComplexSelector: 'warning'
 		}

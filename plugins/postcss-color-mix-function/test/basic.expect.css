@@ -42,15 +42,15 @@
 .spec-example-6 {
 	color-1: rgb(174, 138, 255);
 	color-1: color(display-p3 0.66273 0.5437 0.98509);
-	/* TODO : https://github.com/w3c/csswg-drafts/issues/8609 */
+	/* https://github.com/w3c/csswg-drafts/issues/8609 */
 	color-2: rgb(119, 163, 255);
 	color-2: color(display-p3 0.49508 0.63377 1);
 	color-3: rgb(128, 128, 255);
 }
 
 .spec-example-7 {
-	/* TODO : https://github.com/w3c/csswg-drafts/issues/8444 */
-	color-1: rgb(0, 255, 0);
+	/* https://github.com/w3c/csswg-drafts/issues/8444 */
+	color-1: rgb(151, 255, 117);
 	color-1: color(display-p3 0.63217 1 0.41255);
 }
 

@@ -1,0 +1,22 @@
+.foo {
+	--var: initial;
+
+	border: initial;
+	color: initial;
+}
+
+.bar {
+	outline: initial;
+}
+
+.direction {
+	direction: initial;
+}
+
+.unicode-bidi {
+	unicode-bidi: initial;
+}
+
+.quotes {
+	quotes: initial;
+}

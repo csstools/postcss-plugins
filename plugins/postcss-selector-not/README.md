@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-selector-not.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/not-pseudo-class.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install postcss-selector-not --save-dev
+```
+
 [PostCSS Selector Not] transforms :not() W3C CSS level 4 pseudo classes to :not() CSS level 3 selectors following the [Selectors 4 Specification].
 
 ```pcss

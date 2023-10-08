@@ -7,11 +7,13 @@ import { ParseError } from '../interfaces/error';
 import { TokenBadURL, TokenType, TokenURL } from '../interfaces/token';
 import { consumeBadURL } from './bad-url';
 import { consumeEscapedCodePoint } from './escaped-code-point';
-import { consumeWhiteSpace } from './whitespace-token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-url-token
 export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL|TokenBadURL {
-	consumeWhiteSpace(ctx, reader);
+	while (isWhitespace(reader.codePointSource[reader.cursor])) {
+		reader.advanceCodePoint();
+	}
+
 	let string = '';
 
 	// eslint-disable-next-line no-constant-condition
@@ -52,7 +54,11 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 		}
 
 		if (isWhitespace(reader.codePointSource[reader.cursor])) {
-			consumeWhiteSpace(ctx, reader);
+			reader.advanceCodePoint();
+			while (isWhitespace(reader.codePointSource[reader.cursor])) {
+				reader.advanceCodePoint();
+			}
+
 			if (reader.codePointSource[reader.cursor] === undefined) {
 				ctx.onParseError(new ParseError(
 					'Unexpected EOF while consuming a url token.',
@@ -122,9 +128,9 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 		}
 
 		if (reader.codePointSource[reader.cursor] === REVERSE_SOLIDUS) {
-			if (checkIfTwoCodePointsAreAValidEscape(ctx, reader)) {
+			if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 				reader.advanceCodePoint();
-				string += String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
+				string = string + String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
 				continue;
 			}
 
@@ -150,7 +156,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		string += String.fromCodePoint(reader.codePointSource[reader.cursor]);
+		string = string + String.fromCodePoint(reader.codePointSource[reader.cursor]);
 		reader.advanceCodePoint();
 	}
 }

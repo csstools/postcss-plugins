@@ -1,39 +1,17 @@
-const crypto = require('crypto');
-const cwd = process.cwd();
-
 module.exports = ctx => {
 	const isProd = ctx.env === 'production';
 
 	return {
 		map: !isProd,
 		plugins: {
-			'postcss-import': {
-				nameLayer: hashLayerName,
-			},
+			'@csstools/postcss-bundler': {},
 			'postcss-preset-env': {
 				stage: 0,
 				features: {
 					'custom-properties': false,
 				},
 			},
-			'cssnano': isProd ? {
-				preset: 'default',
-			} : false,
+			'@csstools/postcss-minify': isProd ? {} : false,
 		},
 	};
 };
-
-function hashLayerName(index, rootFilename) {
-	if (!rootFilename) {
-		return `import-anon-layer-${index}`;
-	}
-
-	// A stable, deterministic and unique layer name:
-	// - layer index
-	// - relative rootFilename to current working directory
-	return `import-anon-layer-${crypto
-		.createHash('sha256')
-		.update(`${index}-${rootFilename.split(cwd)[1]}`)
-		.digest('hex')
-		.slice(0, 12)}`;
-}

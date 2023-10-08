@@ -1,6 +1,5 @@
-import valueParser from 'postcss-value-parser';
+import valuesParser from 'postcss-value-parser';
 import type { Declaration } from 'postcss';
-declare const _default: (decl: Declaration, customProperties: Map<string, valueParser.ParsedValue>, opts: {
+export declare function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: {
     preserve?: boolean;
-}) => void;
-export default _default;
+}): void;

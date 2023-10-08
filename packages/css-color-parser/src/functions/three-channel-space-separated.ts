@@ -1,6 +1,6 @@
-import { ColorData, colorData_to_XYZ_D50, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
-import { ComponentValue, FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { ColorData, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
+import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
@@ -10,8 +10,7 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 import { ColorParser } from '../color-parser';
 import { colorDataTo } from '../color-data';
-import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
-import { conversions } from '@csstools/color-helpers';
+import { TokenNode } from '@csstools/css-parser-algorithms';
 
 export function threeChannelSpaceSeparated(
 	colorFunctionNode: FunctionNode,
@@ -27,8 +26,8 @@ export function threeChannelSpaceSeparated(
 	const channel3: Array<ComponentValue> = [];
 	const channelAlpha: Array<ComponentValue> = [];
 	let relativeToColor: ColorData | false = false;
-	let relativeColorChannels: Map<string, TokenNumber | TokenPercentage | TokenDimension> | undefined = undefined;
-	let relativeColorChannelsWithoutNone: Map<string, TokenNumber | TokenPercentage | TokenDimension> | undefined = undefined;
+	let relativeColorChannels: Map<string, TokenNumber> | undefined = undefined;
+	let relativeColorChannelsWithoutNone: Map<string, TokenNumber> | undefined = undefined;
 
 	const colorData: ColorData = {
 		colorNotation: colorNotation,
@@ -127,29 +126,6 @@ export function threeChannelSpaceSeparated(
 				relativeToColor = colorDataTo(relativeToColor, colorNotation);
 			}
 
-			if (
-				colorNotation === ColorNotation.HEX ||
-				colorNotation === ColorNotation.RGB
-			) {
-				relativeToColor.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels);
-			} else if (
-				colorNotation === ColorNotation.HSL
-			) {
-				// https://github.com/w3c/csswg-drafts/issues/8444
-				// Removing this gives unexpected results for us and we don't have a good solution for it yet.
-				// Maybe we are holding it wrong.
-				// The results we get for HSL/HWB are good at this time, so keeping the code as is until we receive a bug report about this.
-				relativeToColor.channels = conversions.sRGB_to_HSL(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
-			} else if (
-				colorNotation === ColorNotation.HWB
-			) {
-				// https://github.com/w3c/csswg-drafts/issues/8444
-				// Removing this gives unexpected results for us and we don't have a good solution for it yet.
-				// Maybe we are holding it wrong.
-				// The results we get for HSL/HWB are good at this time, so keeping the code as is until we receive a bug report about this.
-				relativeToColor.channels = conversions.sRGB_to_HWB(XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(relativeToColor).channels));
-			}
-
 			relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
 			relativeColorChannelsWithoutNone = noneToZeroInRelativeColorDataChannels(relativeColorChannels);
 
@@ -194,38 +170,58 @@ export function threeChannelSpaceSeparated(
 		return false;
 	}
 
-	const channelValues: Array<CSSToken> = [
-		channel1[0].value,
-		channel2[0].value,
-		channel3[0].value,
+	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData);
+	if (!channelValue1 || channelValue1[0] !== TokenType.Number) {
+		return false;
+	}
+
+	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData);
+	if (!channelValue2 || channelValue2[0] !== TokenType.Number) {
+		return false;
+	}
+
+	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData);
+	if (!channelValue3 || channelValue3[0] !== TokenType.Number) {
+		return false;
+	}
+
+	const channelValues: Array<TokenNumber> = [
+		channelValue1,
+		channelValue2,
+		channelValue3,
 	];
 
 	if (channelAlpha.length === 1) {
 		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
 
 		if (isTokenNode(channelAlpha[0])) {
-			channelValues.push(channelAlpha[0].value);
+			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData);
+			if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+				return false;
+			}
+
+			channelValues.push(channelValueAlpha);
 		} else {
 			colorData.alpha = channelAlpha[0];
 		}
 	} else if (relativeColorChannels && relativeColorChannels.has('alpha')) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		channelValues.push(relativeColorChannels.get('alpha')!);
-	}
+		const channelValueAlpha = normalizeChannelValues(relativeColorChannels.get('alpha')!, 3, colorData);
+		if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+			return false;
+		}
 
-	const normalizedChannelValues = normalizeChannelValues(channelValues, colorData);
-	if (normalizedChannelValues === false) {
-		return false;
+		channelValues.push(channelValueAlpha);
 	}
 
 	colorData.channels = [
-		normalizedChannelValues[0][4].value,
-		normalizedChannelValues[1][4].value,
-		normalizedChannelValues[2][4].value,
+		channelValues[0][4].value,
+		channelValues[1][4].value,
+		channelValues[2][4].value,
 	];
 
-	if (normalizedChannelValues.length === 4) {
-		colorData.alpha = normalizedChannelValues[3][4].value;
+	if (channelValues.length === 4) {
+		colorData.alpha = channelValues[3][4].value;
 	}
 
 	return colorData;

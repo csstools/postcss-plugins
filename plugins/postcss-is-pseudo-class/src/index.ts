@@ -24,6 +24,8 @@ export type pluginOptions = {
 	specificityMatchingName?: string
 };
 
+const HAS_IS_PSEUDO = /:is\(/i;
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {
 		specificityMatchingName: 'does-not-exist',
@@ -41,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					if (rule.selector.toLowerCase().indexOf(':is(') === -1) {
+					if (!HAS_IS_PSEUDO.test(rule.selector)) {
 						return;
 					}
 

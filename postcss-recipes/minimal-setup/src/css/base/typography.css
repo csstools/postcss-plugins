@@ -1,0 +1,12 @@
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+p {
+	font-size: 1rem;
+}

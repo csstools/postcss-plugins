@@ -20,7 +20,7 @@ postcssTape(plugin)({
 		plugins: [
 			plugin({
 				files: [
-					'node_modules://open-props/media.min.css',
+					'node_modules:open-props/media.min.css',
 					'node_modules://open-props/open-props.min.css',
 				]
 			}),

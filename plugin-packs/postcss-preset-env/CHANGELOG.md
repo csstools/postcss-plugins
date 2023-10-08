@@ -1,11 +1,99 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.3`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#773-october-05-2023) (patch)
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#203) (patch)
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#101) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`1.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#110) (minor)
+- Updated [`@csstools/postcss-media-queries-aspect-ratio-number-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values/CHANGELOG.md#203) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#302) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#302) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`13.3.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1332) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#205) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#405) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#205) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#605) (patch)
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#206) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#406) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`2.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#206) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#606) (patch)
+
+### 9.1.4
+
+_September 18, 2023_
+
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#202) (patch)
+- Updated [`@csstools/postcss-normalize-display-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values/CHANGELOG.md#301) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#301) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#303) (patch)
+- Updated [`postcss-color-rebeccapurple`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple/CHANGELOG.md#901) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`13.3.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1331) (patch)
+- Updated [`postcss-image-set-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function/CHANGELOG.md#601) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#204) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#404) (patch)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#301) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`2.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#204) (patch)
+- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#601) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#501) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#604) (patch)
+- Updated [`postcss-custom-media`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) to [`10.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media/CHANGELOG.md#1001) (patch)
+- Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`7.1.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#715) (patch)
+
+### 9.1.3
+
+_September 2, 2023_
+
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#302) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#303) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#203) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#303) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#303) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#203) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#603) (patch)
+
+### 9.1.2
+
+_August 28, 2023_
+
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.1`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#771-august-20-2023) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#301) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#302) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#202) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#302) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#302) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#202) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#602) (patch)
+
+### 9.1.1
+
+_August 5, 2023_
+
+- Display multiple feature suggestions when an unknown feature is used in plugin options
+- Fix `env` option for plugin specific options by @BPScott
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1201) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`1.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#107) (patch)
+- Updated [`@csstools/postcss-media-queries-aspect-ratio-number-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values/CHANGELOG.md#202) (patch)
+
 ### 9.1.0
 
 _July 24, 2023_
 
 - Added `@csstools/postcss-exponential-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions#readme) for usage details.
-- Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target
+- Added `env` option to control which [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to target by @BPScott
 - Fix [browserslist supports queries](https://github.com/browserslist/browserslist#full-list)
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#770-july-24-2023) (minor)
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#201) (patch)

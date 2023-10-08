@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-global-data",
 	"description": "PostCSS plugin to define global data that will be injected into PostCSS for use in other plugins.",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -49,9 +49,9 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"open-props": "^1.5.10",
-		"postcss-custom-media": "^10.0.0",
-		"postcss-custom-properties": "^13.3.0"
+		"open-props": "^1.6.3",
+		"postcss-custom-media": "^10.0.1",
+		"postcss-custom-properties": "^13.3.2"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

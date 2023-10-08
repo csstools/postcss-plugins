@@ -6,10 +6,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-concurrency:
-  group: branch-node--test--${{ github.ref }}
-  cancel-in-progress: true
-
 defaults:
   run:
     shell: bash
@@ -27,15 +23,15 @@ jobs:
         node: [16, 18, 20]
         include:
         - os: macos-latest
-          node: 18
+          node: 20
         - os: windows-latest
-          node: 18
+          node: 20
         - os: ubuntu-latest
           is_base_os_version: true
-        - node: 18
+        - node: 20
           is_base_node_version: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - uses: actions/setup-node@v3
@@ -67,7 +63,7 @@ jobs:
 
       - name: repo is clean after "build", "lint" and "docs" steps
         run: |
-          git diff --quiet --exit-code
+          git diff --name-only --exit-code
 
         # Basic tests
       - name: test
@@ -98,4 +94,10 @@ jobs:
           npm install
           npm run build
           npm run test
+        if: matrix.is_base_node_version && matrix.is_base_os_version
+
+        # E2E Package Managers Tests
+      - name: test:e2e-package-managers
+        run: |
+          cd e2e-package-managers/yarn && bash test.sh
         if: matrix.is_base_node_version && matrix.is_base_os_version

@@ -1,5 +1,19 @@
 # Changes to PostCSS Design Tokens
 
+### 3.1.1
+
+_September 24, 2023_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#221) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.3.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#232) (patch)
+
+### 3.1.0
+
+_August 28, 2023_
+
+- Add support for the shorter `node_modules:package` syntax
+- Fix node module resolution
+
 ### 3.0.1
 
 _July 24, 2023_

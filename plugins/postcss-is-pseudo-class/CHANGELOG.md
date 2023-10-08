@@ -1,5 +1,32 @@
 # Changes to PostCSS Is Pseudo Class
 
+### 4.0.3
+
+_October 2, 2023_
+
+- Prevent incorrect transforms when `:is()` is wrapped in `:has()`.
+
+### 4.0.2
+
+_September 18, 2023_
+
+- Improve performance
+
+### 4.0.1
+
+_September 2, 2023_
+
+- Fix substitution when selectors have mixed types for compound selectors where one of two parts is a `:is()` pseudo class.
+
+```diff
+header:is(.a .b) {}
+
+/* becomes : */
+
+- header.a .b {}
++ .a header.b {}
+```
+
 ### 4.0.0
 
 _July 3, 2023_

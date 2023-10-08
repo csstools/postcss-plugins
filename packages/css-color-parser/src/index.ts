@@ -22,7 +22,7 @@ export { SyntaxFlag } from './color-data';
 export { colorDataTo, colorDataFitsRGB_Gamut, colorDataFitsDisplayP3_Gamut } from './color-data';
 export { serializeP3 } from './serialize/p3';
 export { serializeRGB } from './serialize/rgb';
-
+export { serializeOKLCH } from './serialize/oklch';
 
 export function color(colorNode: ComponentValue): ColorData | false {
 	if (isFunctionNode(colorNode)) {

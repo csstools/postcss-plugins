@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-design-tokens.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install @csstools/postcss-design-tokens --save-dev
+```
+
 [PostCSS Design Tokens] lets you use design tokens in your CSS source files.
 
 ```json
@@ -321,8 +325,8 @@ The `@design-tokens` rule is used to import design tokens from a JSON file into 
 You can also import tokens from an `npm` package:
 
 ```pcss
-@design-tokens url('node_modules://my-npm-package/tokens.json') format('style-dictionary3');
-@design-tokens url('node_modules://my-npm-package/tokens-dark-mode.json') format('style-dictionary3') when('dark');
+@design-tokens url('node_modules:my-npm-package/tokens.json') format('style-dictionary3');
+@design-tokens url('node_modules:my-npm-package/tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
 
 ```

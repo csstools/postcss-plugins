@@ -45,23 +45,23 @@
 .test-nesting-rules {
 	order: 4;
 
-	& p {
-		order: 5;
-	}
-
 	order: 6;
 }
+
+.test-nesting-rules p {
+		order: 5;
+	}
 
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
 
-	& + p {
-		order: 8;
-	}
-
 	order: 9;
 }
+
+.test-nesting-rules + p, #test-is-pseudo + p {
+		order: 8;
+	}
 
 @custom-media --narrow-window (max-width: 30em);
 
@@ -133,7 +133,7 @@
 	animation: none 0s ease 0s 1 normal none running;
 	backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
-	border: medium none currentColor;
+	border: medium none currentcolor;
 	border-collapse: separate;
 	-o-border-image: none;
 	   border-image: none;
@@ -154,8 +154,8 @@
 	     column-fill: balance;
 	-moz-column-gap: normal;
 	     column-gap: normal;
-	-moz-column-rule: medium none currentColor;
-	     column-rule: medium none currentColor;
+	-moz-column-rule: medium none currentcolor;
+	     column-rule: medium none currentcolor;
 	-moz-column-span: 1;
 	     column-span: 1;
 	-moz-column-width: auto;
@@ -164,7 +164,6 @@
 	counter-increment: none;
 	counter-reset: none;
 	cursor: auto;
-	direction: ltr;
 	display: inline;
 	empty-cells: show;
 	float: none;
@@ -188,7 +187,7 @@
 	min-width: 0;
 	opacity: 1;
 	orphans: 2;
-	outline: medium none invert;
+	outline: medium none currentcolor;
 	overflow: visible;
 	overflow-x: visible;
 	overflow-y: visible;
@@ -217,7 +216,6 @@
 	transform-origin: 50% 50% 0;
 	transform-style: flat;
 	transition: none 0s ease 0s;
-	unicode-bidi: normal;
 	vertical-align: baseline;
 	visibility: visible;
 	white-space: normal;
@@ -544,11 +542,9 @@
 
 @custom-selector :--view-m [data-view-size=m];
 
-.view {
-	:--view-m & {
+:--view-m .view {
 		background: red;
 	}
-}
 
 .nested-calc {
 	order: calc(1 * (8 / 3 + (5 * 10)));

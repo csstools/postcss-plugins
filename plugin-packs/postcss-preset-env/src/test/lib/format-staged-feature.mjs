@@ -1,3 +1,4 @@
+import browserslist from 'browserslist';
 import { formatStagedFeature } from '../../lib/format-feature.mjs';
 import { strict as assert } from 'assert';
 import { newTestLogger } from '../log/test-logger.mjs';
@@ -7,7 +8,7 @@ const testLogger = newTestLogger();
 assert.deepStrictEqual(
 	formatStagedFeature(
 		[],
-		['ie >= 1'],
+		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{},
 		{
 			id: 'any-link-pseudo-class',
@@ -40,7 +41,7 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	formatStagedFeature(
 		[],
-		['ie >= 1'],
+		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{
 			'any-link-pseudo-class': true,
 		},
@@ -75,7 +76,7 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	formatStagedFeature(
 		[],
-		['ie >= 1'],
+		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{
 			'any-link-pseudo-class': true,
 		},
@@ -113,7 +114,7 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	formatStagedFeature(
 		[],
-		['ie >= 1'],
+		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{},
 		{
 			id: 'any-link-pseudo-class',
@@ -150,7 +151,7 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	formatStagedFeature(
 		[],
-		['ie >= 1'],
+		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{},
 		{
 			id: 'any-link-pseudo-class',
@@ -201,7 +202,7 @@ assert.deepStrictEqual(
 		assert.deepStrictEqual(
 			formatStagedFeature(
 				[],
-				['ie >= 1'],
+				browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 				{},
 				{
 					id: plugin,
