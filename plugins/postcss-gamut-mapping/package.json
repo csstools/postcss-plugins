@@ -71,7 +71,16 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"color",
+		"css",
+		"display-p3",
+		"gamut mapping",
+		"p3",
+		"postcss",
+		"postcss-plugin",
+		"rec2020",
+		"srgb",
+		"wide gamut"
 	],
 	"csstools": {
 		"cssdbId": "gamut-mapping",
