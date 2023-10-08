@@ -513,7 +513,12 @@ function reducePrecision(x: number, precision = 7): number {
 }
 
 export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
-	const copy = JSON.parse(JSON.stringify(x)) as ColorData;
+	const copy: ColorData = {
+		...x,
+		channels: [
+			...x.channels,
+		],
+	};
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
 	const srgb = colorDataTo(copy, ColorNotation.RGB);
@@ -525,7 +530,12 @@ export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 }
 
 export function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean {
-	const copy = JSON.parse(JSON.stringify(x)) as ColorData;
+	const copy: ColorData = {
+		...x,
+		channels: [
+			...x.channels,
+		],
+	};
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
 	const displayP3 = colorDataTo(copy, ColorNotation.Display_P3);

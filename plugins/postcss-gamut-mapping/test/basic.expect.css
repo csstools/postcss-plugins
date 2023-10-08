@@ -44,3 +44,147 @@
 		color-17: oklch(60% 0.1250 0.785398unknown);
 	}
 }
+
+.default-1 {
+	/* In gamut */
+	color: color(srgb 1 1 1);
+}
+
+.default-2 {
+	/* Out rgb of gamut */
+	color: rgb(252, 255, 252);
+}
+
+@media (color-gamut: p3) {
+.default-2 {
+	color: color(srgb 0.99 1.0001 0.99);
+}
+}
+
+.default-3 {
+	/* Out rgb of gamut */
+	color: rgb(252, 255, 252);
+}
+
+@media (color-gamut: p3) {
+.default-3 {
+	color: color(display-p3 0.99 1 0.99);
+}
+}
+
+.default-4 {
+	/* Out p3 of gamut */
+	color: rgb(253, 255, 253);
+}
+
+@media (color-gamut: rec2020) {
+.default-4 {
+	color: color(srgb 0.99 1.001 0.99);
+}
+}
+
+.default-5 {
+	/* Out p3 of gamut */
+	color: rgb(252, 255, 252);
+}
+
+@media (color-gamut: rec2020) {
+.default-5 {
+	color: color(display-p3 0.99 1.0001 0.99);
+}
+}
+
+/* With fallbacks */
+.with-fallback-1 {
+	/* In gamut */
+	color: white;
+	color: color(srgb 1 1 1);
+}
+
+.with-fallback-2 {
+	/* Out rgb of gamut */
+	color: white;
+}
+
+@media (color-gamut: p3) {
+.with-fallback-2 {
+	color: color(srgb 0.99 1.0001 0.99);
+}
+}
+
+.with-fallback-3 {
+	/* Out rgb of gamut */
+	color: white;
+}
+
+@media (color-gamut: p3) {
+.with-fallback-3 {
+	color: color(display-p3 0.99 1 0.99);
+}
+}
+
+.with-fallback-4 {
+	/* Out p3 of gamut */
+	color: white;
+}
+
+@media (color-gamut: rec2020) {
+.with-fallback-4 {
+	color: color(srgb 0.99 1.001 0.99);
+}
+}
+
+.with-fallback-5 {
+	/* Out p3 of gamut */
+	color: white;
+}
+
+@media (color-gamut: rec2020) {
+.with-fallback-5 {
+	color: color(display-p3 0.99 1.0001 0.99);
+}
+}
+
+/* With overrides */
+.with-override-1 {
+	/* In gamut */
+	color: color(srgb 1 1 1);
+	color: white;
+}
+
+.with-override-2 {
+	/* Out rgb of gamut */
+	color: color(srgb 0.99 1.0001 0.99);
+	color: white;
+}
+
+.with-override-3 {
+	/* Out rgb of gamut */
+	color: color(display-p3 0.99 1 0.99);
+	color: white;
+}
+
+.with-override-4 {
+	/* Out p3 of gamut */
+	color: color(srgb 0.99 1.001 0.99);
+	color: white;
+}
+
+.with-override-5 {
+	/* Out p3 of gamut */
+	color: color(display-p3 0.99 1.0001 0.99);
+	color: white;
+}
+
+@media (color-gamut: p3) {
+	.guarded {
+		color: color(srgb 0.99 1.0001 0.99);
+	}
+}
+
+@media (color-gamut: p3) {
+	.guarded-out-of-gamut {
+		/* This color is out of gamut for p3, but still ignored by the plugin, we assume the author intended this */
+		color: color(rec2020 1 1 0.8);
+	}
+}
