@@ -60,26 +60,28 @@ const creator: PluginCreator<pluginOptions> = () => {
 						const replacedRGB = replaceComponentValues(
 							parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
 							(componentValue) => {
-								if (isFunctionNode(componentValue) && HAS_WIDE_GAMUT_COLOR_NAME.test(componentValue.getName())) {
-									const colorData = color(componentValue);
-									if (!colorData) {
-										return;
-									}
-
-									if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-										return;
-									}
-
-									if (colorDataFitsRGB_Gamut(colorData)) {
-										return;
-									}
-
-									if (!isRec2020 && !colorDataFitsDisplayP3_Gamut(colorData)) {
-										isRec2020 = true;
-									}
-
-									return serializeRGB(colorData, true);
+								if (!isFunctionNode(componentValue) || !HAS_WIDE_GAMUT_COLOR_NAME.test(componentValue.getName())) {
+									return;
 								}
+
+								const colorData = color(componentValue);
+								if (!colorData) {
+									return;
+								}
+
+								if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+									return;
+								}
+
+								if (colorDataFitsRGB_Gamut(colorData)) {
+									return;
+								}
+
+								if (!isRec2020 && !colorDataFitsDisplayP3_Gamut(colorData)) {
+									isRec2020 = true;
+								}
+
+								return serializeRGB(colorData, true);
 							},
 						);
 
