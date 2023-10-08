@@ -188,3 +188,19 @@
 		color: color(rec2020 1 1 0.8);
 	}
 }
+
+.guarded-by-supports {
+	color: lime;
+}
+
+@supports (color: color(display-p3 0 1 0)) {
+	.guarded-by-supports {
+		color: rgb(0, 249, 66);
+	}
+
+@media (color-gamut: p3) {
+.guarded-by-supports {
+		color: color(display-p3 0 1 0);
+	}
+}
+}
