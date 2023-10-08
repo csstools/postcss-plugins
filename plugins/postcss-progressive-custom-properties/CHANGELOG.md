@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Add support for css nesting
+- Improve grouping of `@supports` rules
 
 ### 3.0.1
 
