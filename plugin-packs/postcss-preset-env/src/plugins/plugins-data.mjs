@@ -100,6 +100,11 @@ export default [
 		'importName': 'postcssFontVariant',
 	},
 	{
+		'packageName': '@csstools/postcss-gamut-mapping',
+		'id': 'gamut-mapping',
+		'importName': 'postcssGamutMapping',
+	},
+	{
 		'packageName': 'postcss-gap-properties',
 		'id': 'gap-properties',
 		'importName': 'postcssGapProperties',

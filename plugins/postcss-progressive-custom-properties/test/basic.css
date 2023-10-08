@@ -225,3 +225,11 @@
 	color: rgba(87, 107, 149, 1);
 	color: rgb(87 107 149 / notvar(--opacity));
 }
+
+/* CSS Nesting */
+:root {
+	@media screen {
+		--prop-8: 1px solid red;
+		--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+	}
+}

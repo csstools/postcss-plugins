@@ -1,16 +1,12 @@
 import valueParser from 'postcss-value-parser';
-import { color, colorDataFitsRGB_Gamut, colorDataFitsDisplayP3_Gamut } from '@csstools/css-color-parser';
 import { doublePositionGradients } from './custom/double-position-gradients';
 import { matchers } from './matchers';
 import { matches } from './match';
-import { parseComponentValue } from '@csstools/css-parser-algorithms';
-import { tokenize } from '@csstools/css-tokenizer';
 
 const varFunctionName = /^var$/i;
 
-export function conditionsFromValue(value: string, mustContainVar = false): { support: Array<string>, media: Array<string> } {
+export function conditionsFromValue(value: string, mustContainVar = false): { support: Array<string> } {
 	const supportConditions: Array<string> = [];
-	const mediaConditions: Array<string> = [];
 
 	const relevantMatchers = matchers.filter((matcher) => {
 		return value.includes(matcher.sniff);
@@ -41,13 +37,6 @@ export function conditionsFromValue(value: string, mustContainVar = false): { su
 					// Matchers are ordered from most specific to least.
 					// Only one needs to match.
 					if (matches(matcherAST, node)) {
-						if (propertyValueMatcher.property === 'color') {
-							const condition = colorGamutConditions(node);
-							if (condition) {
-								mediaConditions.push(condition);
-							}
-						}
-
 						supportConditions.push(`(${propertyValueMatcher.property}: ${propertyValueMatcher.supports})`);
 						return;
 					}
@@ -64,7 +53,6 @@ export function conditionsFromValue(value: string, mustContainVar = false): { su
 	if (mustContainVar && !hasVar) {
 		return {
 			support: [],
-			media: [],
 		};
 	}
 
@@ -75,34 +63,5 @@ export function conditionsFromValue(value: string, mustContainVar = false): { su
 
 	return {
 		support: Array.from(new Set(supportConditions)).sort(),
-		media: Array.from(new Set(mediaConditions)).sort(),
 	};
-}
-
-function colorGamutConditions(node: valueParser.Node) {
-	const componentValue = parseComponentValue(
-		tokenize({ css: valueParser.stringify(node) }),
-	);
-
-	if (!componentValue) {
-		return false;
-	}
-
-	const colorData = color(
-		componentValue,
-	);
-
-	if (!colorData) {
-		return false;
-	}
-
-	if (colorDataFitsRGB_Gamut(colorData)) {
-		return false;
-	}
-
-	if (colorDataFitsDisplayP3_Gamut(colorData)) {
-		return '(color-gamut: display-p3)';
-	}
-
-	return '(color-gamut: rec2020)';
 }

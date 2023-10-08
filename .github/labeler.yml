@@ -129,6 +129,10 @@
   - plugins/postcss-font-format-keywords/**
   - experimental/postcss-font-format-keywords/**
 
+"plugins/postcss-gamut-mapping":
+  - plugins/postcss-gamut-mapping/**
+  - experimental/postcss-gamut-mapping/**
+
 "plugins/postcss-gap-properties":
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**

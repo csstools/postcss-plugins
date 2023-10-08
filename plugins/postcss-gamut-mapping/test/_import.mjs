@@ -1,5 +1,5 @@
 import assert from 'assert';
-import plugin from '@csstools/postcss-progressive-color-gamut';
+import plugin from '@csstools/postcss-gamut-mapping';
 plugin();
 
 assert.ok(plugin.postcss, 'should have "postcss flag"');

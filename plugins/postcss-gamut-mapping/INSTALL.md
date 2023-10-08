@@ -1,6 +1,6 @@
-# Installing PostCSS Progressive Color Gamut
+# Installing PostCSS Gamut Mapping
 
-[PostCSS Progressive Color Gamut] runs in all Node environments, with special instructions for:
+[PostCSS Gamut Mapping] runs in all Node environments, with special instructions for:
 
 - [Node](#node)
 - [PostCSS CLI](#postcss-cli)
@@ -14,10 +14,10 @@
 
 ## Node
 
-Add [PostCSS Progressive Color Gamut] to your project:
+Add [PostCSS Gamut Mapping] to your project:
 
 ```bash
-npm install postcss @csstools/postcss-progressive-color-gamut --save-dev
+npm install postcss @csstools/postcss-gamut-mapping --save-dev
 ```
 
 Use it as a [PostCSS] plugin:
@@ -25,20 +25,20 @@ Use it as a [PostCSS] plugin:
 ```js
 // commonjs
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-progressive-color-gamut');
+const postcssGamutMapping = require('@csstools/postcss-gamut-mapping');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssGamutMapping(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
 ```js
 // esm
 import postcss from 'postcss';
-import postcssBasePlugin from '@csstools/postcss-progressive-color-gamut';
+import postcssGamutMapping from '@csstools/postcss-gamut-mapping';
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssGamutMapping(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -47,17 +47,17 @@ postcss([
 Add [PostCSS CLI] to your project:
 
 ```bash
-npm install postcss-cli @csstools/postcss-progressive-color-gamut --save-dev
+npm install postcss-cli @csstools/postcss-gamut-mapping --save-dev
 ```
 
-Use [PostCSS Progressive Color Gamut] in your `postcss.config.js` configuration file:
+Use [PostCSS Gamut Mapping] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-progressive-color-gamut');
+const postcssGamutMapping = require('@csstools/postcss-gamut-mapping');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssGamutMapping(/* pluginOptions */)
 	]
 }
 ```
@@ -67,7 +67,7 @@ module.exports = {
 If your framework/CLI supports [`postcss-load-config`](https://github.com/postcss/postcss-load-config).
 
 ```bash
-npm install @csstools/postcss-progressive-color-gamut --save-dev
+npm install @csstools/postcss-gamut-mapping --save-dev
 ```
 
 `package.json`:
@@ -76,7 +76,7 @@ npm install @csstools/postcss-progressive-color-gamut --save-dev
 {
 	"postcss": {
 		"plugins": {
-			"@csstools/postcss-progressive-color-gamut": {}
+			"@csstools/postcss-gamut-mapping": {}
 		}
 	}
 }
@@ -87,7 +87,7 @@ npm install @csstools/postcss-progressive-color-gamut --save-dev
 ```json
 {
 	"plugins": {
-		"@csstools/postcss-progressive-color-gamut": {}
+		"@csstools/postcss-gamut-mapping": {}
 	}
 }
 ```
@@ -101,10 +101,10 @@ _Webpack version 5_
 Add [PostCSS Loader] to your project:
 
 ```bash
-npm install postcss-loader @csstools/postcss-progressive-color-gamut --save-dev
+npm install postcss-loader @csstools/postcss-gamut-mapping --save-dev
 ```
 
-Use [PostCSS Progressive Color Gamut] in your Webpack configuration:
+Use [PostCSS Gamut Mapping] in your Webpack configuration:
 
 ```js
 module.exports = {
@@ -125,7 +125,7 @@ module.exports = {
 								plugins: [
 									// Other plugins,
 									[
-										"@csstools/postcss-progressive-color-gamut",
+										"@csstools/postcss-gamut-mapping",
 										{
 											// Options
 										},
@@ -146,15 +146,15 @@ module.exports = {
 Read the instructions on how to [customize the PostCSS configuration in Next.js](https://nextjs.org/docs/advanced-features/customizing-postcss-config)
 
 ```bash
-npm install @csstools/postcss-progressive-color-gamut --save-dev
+npm install @csstools/postcss-gamut-mapping --save-dev
 ```
 
-Use [PostCSS Progressive Color Gamut] in your `postcss.config.json` file:
+Use [PostCSS Gamut Mapping] in your `postcss.config.json` file:
 
 ```json
 {
 	"plugins": [
-		"@csstools/postcss-progressive-color-gamut"
+		"@csstools/postcss-gamut-mapping"
 	]
 }
 ```
@@ -163,7 +163,7 @@ Use [PostCSS Progressive Color Gamut] in your `postcss.config.json` file:
 {
 	"plugins": [
 		[
-			"@csstools/postcss-progressive-color-gamut",
+			"@csstools/postcss-gamut-mapping",
 			{
 				// Optionally add plugin options
 			}
@@ -177,18 +177,18 @@ Use [PostCSS Progressive Color Gamut] in your `postcss.config.json` file:
 Add [Gulp PostCSS] to your project:
 
 ```bash
-npm install gulp-postcss @csstools/postcss-progressive-color-gamut --save-dev
+npm install gulp-postcss @csstools/postcss-gamut-mapping --save-dev
 ```
 
-Use [PostCSS Progressive Color Gamut] in your Gulpfile:
+Use [PostCSS Gamut Mapping] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-progressive-color-gamut');
+const postcssGamutMapping = require('@csstools/postcss-gamut-mapping');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssGamutMapping(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -202,13 +202,13 @@ gulp.task('css', function () {
 Add [Grunt PostCSS] to your project:
 
 ```bash
-npm install grunt-postcss @csstools/postcss-progressive-color-gamut --save-dev
+npm install grunt-postcss @csstools/postcss-gamut-mapping --save-dev
 ```
 
-Use [PostCSS Progressive Color Gamut] in your Gruntfile:
+Use [PostCSS Gamut Mapping] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-progressive-color-gamut');
+const postcssGamutMapping = require('@csstools/postcss-gamut-mapping');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -216,7 +216,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssGamutMapping(/* pluginOptions */)
 			]
 		},
 		dist: {
@@ -231,5 +231,5 @@ grunt.initConfig({
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS CLI]: https://github.com/postcss/postcss-cli
 [PostCSS Loader]: https://github.com/postcss/postcss-loader
-[PostCSS Progressive Color Gamut]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-color-gamut
+[PostCSS Gamut Mapping]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping
 [Next.js]: https://nextjs.org

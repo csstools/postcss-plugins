@@ -673,7 +673,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 
 .color-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	prop-1: rgb(0, 129, 96);
-	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgb(7, 3, 1);
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
@@ -682,6 +681,12 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / -moz-calc(33 / 22));
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+}
+
+@media (color-gamut: p3){
+.color-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+}
 }
 
 .oklab:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
@@ -727,20 +732,14 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	color-7: rgb(0, 149, 131);
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
-
-	color-7: oklch(60% 0.1250 180);
 	color-8: rgb(0, 149, 131);
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
-	color-8: oklch(60% 0.1250 180deg);
 	color-9: rgb(0, 149, 131);
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
-	color-9: oklch(60% 0.1250 0.5turn);
 	color-10: rgb(0, 149, 131);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
-	color-10: oklch(60% 0.1250 200grad);
 	color-11: rgb(0, 149, 131);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
-	color-11: oklch(60% 0.1250 3.14159rad);
 
 	color-12: rgb(188, 101, 59);
 
@@ -754,6 +753,17 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	color-16: rgb(188, 101, 59);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+@media (color-gamut: p3){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+
+	color-7: oklch(60% 0.1250 180);
+	color-8: oklch(60% 0.1250 180deg);
+	color-9: oklch(60% 0.1250 0.5turn);
+	color-10: oklch(60% 0.1250 200grad);
+	color-11: oklch(60% 0.1250 3.14159rad);
+}
 }
 
 .ic-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {

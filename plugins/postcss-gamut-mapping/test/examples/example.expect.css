@@ -1,0 +1,10 @@
+p {
+	background-color: oklch(80% 0.05 0.39 / 0.5);
+	color: rgba(50, 0, 20, 0.5);
+}
+
+@media (color-gamut: rec2020) {
+p {
+	color: oklch(20% 0.234 0.39 / 0.5);
+}
+}

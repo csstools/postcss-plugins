@@ -1,0 +1,46 @@
+:root {
+	--a-color: oklch(40% 0.05 0.39 / var(--opacity-50));
+	--b-color: rgba(138, 0, 67, var(--opacity-50));
+}
+
+@media (color-gamut: rec2020) {
+:root {
+	--b-color: oklch(40% 0.234 0.39 / var(--opacity-50));
+}
+}
+
+.oklch {
+	color-1: oklch(40% 0.1268735435 34.568626);
+	color-2: oklch(40% 0.1268735435 34.568626 / 1);
+	color-3: oklch(40% 0.1268735435 34.568626 / .5);
+	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
+	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
+	color-6: oklch(60% 0.150 0);
+
+	@supports (color: oklch(60% 0.1250 180)) {
+		color-7: rgb(0, 149, 131);
+		color-8: rgb(0, 149, 131);
+		color-9: rgb(0, 149, 131);
+		color-10: rgb(0, 149, 131);
+		color-11: rgb(0, 149, 131);
+	}
+
+@media (color-gamut: p3) {
+@supports (color: oklch(60% 0.1250 180)) {
+		color-7: oklch(60% 0.1250 180);
+		color-8: oklch(60% 0.1250 180deg);
+		color-9: oklch(60% 0.1250 0.5turn);
+		color-10: oklch(60% 0.1250 200grad);
+		color-11: oklch(60% 0.1250 3.14159rad);
+	}
+}
+
+	@media (prefers-color-scheme: dark) {
+		color-12: oklch(60% 0.1250 45);
+		color-13: oklch(60% 0.1250 45deg);
+		color-14: oklch(60% 0.1250 0.125turn);
+		color-15: oklch(60% 0.1250 50grad);
+		color-16: oklch(60% 0.1250 0.785398rad);
+		color-17: oklch(60% 0.1250 0.785398unknown);
+	}
+}

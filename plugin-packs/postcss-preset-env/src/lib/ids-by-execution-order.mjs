@@ -60,4 +60,6 @@ export default [
 	'custom-properties',
 
 	'cascade-layers',
+
+	'gamut-mapping',
 ];
