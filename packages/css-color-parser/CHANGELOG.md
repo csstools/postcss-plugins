@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 1.4.0
+
+_October 9, 2023_
 
 - Add utility to determine if a color is in the Display P3 gamut.
 
