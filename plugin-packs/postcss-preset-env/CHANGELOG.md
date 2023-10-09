@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 9.2.0
+
+_October 9, 2023_
 
 - Added `@csstools/postcss-gamut-mapping` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.8.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#780-october-08-2023) (patch)
