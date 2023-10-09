@@ -3,17 +3,29 @@ import { matcherForValue } from './matcher-for-value.mjs';
 export const colorMatchers = [
 	...([
 		'srgb',
+		'display-p3',
+	].map((colorSpace) => {
+		return {
+			'supports': 'color(display-p3 0 0 0)',
+			'property': 'color',
+			'sniff': 'color',
+			'matchers': [
+				matcherForValue(`color(${colorSpace} $1 $2 $3)`),
+				matcherForValue(`color(${colorSpace} $1 $2 $3 / $4)`),
+			],
+		};
+	})),
+	...([
 		'srgb-linear',
 		'a98-rgb',
 		'prophoto-rgb',
-		'display-p3',
 		'rec2020',
 		'xyz-d50',
 		'xyz-d65',
 		'xyz',
 	].map((colorSpace) => {
 		return {
-			'supports': `color(${colorSpace} 0 0 0)`,
+			'supports': 'color(xyz 0 0 0)',
 			'property': 'color',
 			'sniff': 'color',
 			'matchers': [
@@ -78,7 +90,7 @@ export const labMatchers = [
 
 export const lchMatchers = [
 	{
-		'supports': 'lch(0% 0 0)',
+		'supports': 'lab(0% 0 0)',
 		'property': 'color',
 		'sniff': 'lch',
 		'matchers': [
@@ -102,7 +114,7 @@ export const oklabMatchers = [
 
 export const oklchMatchers = [
 	{
-		'supports': 'oklch(0% 0 0)',
+		'supports': 'oklab(0% 0 0)',
 		'property': 'color',
 		'sniff': 'oklch',
 		'matchers': [

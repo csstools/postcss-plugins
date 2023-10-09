@@ -100,6 +100,11 @@ export default [
 		'importName': 'postcssFontVariant',
 	},
 	{
+		'packageName': '@csstools/postcss-gamut-mapping',
+		'id': 'gamut-mapping',
+		'importName': 'postcssGamutMapping',
+	},
+	{
 		'packageName': 'postcss-gap-properties',
 		'id': 'gap-properties',
 		'importName': 'postcssGapProperties',
@@ -264,5 +269,12 @@ export default [
 		'packageName': '@csstools/postcss-text-decoration-shorthand',
 		'id': 'text-decoration-shorthand',
 		'importName': 'postcssTextDecorationShorthand',
+	},
+	{
+		'packageName': '@csstools/postcss-progressive-custom-properties',
+		'id': 'progressive-custom-properties',
+		'importName': 'postcssProgressiveCustomProperties',
+		'omitTypedOptions': true,
+		'omitDocs': true,
 	},
 ];

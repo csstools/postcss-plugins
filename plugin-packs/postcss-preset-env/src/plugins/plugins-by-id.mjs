@@ -20,6 +20,7 @@ import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssFontVariant from 'postcss-font-variant';
+import postcssGamutMapping from '@csstools/postcss-gamut-mapping';
 import postcssGapProperties from 'postcss-gap-properties';
 import postcssGradientsInterpolationMethod from '@csstools/postcss-gradients-interpolation-method';
 import postcssHasPseudo from 'css-has-pseudo';
@@ -43,6 +44,7 @@ import postcssOverflowShorthand from 'postcss-overflow-shorthand';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax';
 import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
@@ -77,6 +79,7 @@ export const pluginsById = new Map(
 		['focus-within-pseudo-class', postcssFocusWithin],
 		['font-format-keywords', postcssFontFormatKeywords],
 		['font-variant-property', postcssFontVariant],
+		['gamut-mapping', postcssGamutMapping],
 		['gap-properties', postcssGapProperties],
 		['gradients-interpolation-method', postcssGradientsInterpolationMethod],
 		['has-pseudo-class', postcssHasPseudo],
@@ -100,6 +103,7 @@ export const pluginsById = new Map(
 		['overflow-wrap-property', postcssReplaceOverflowWrap],
 		['place-properties', postcssPlace],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
+		['progressive-custom-properties', postcssProgressiveCustomProperties],
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['relative-color-syntax', postcssRelativeColorSyntax],
 		['scope-pseudo-class', postcssScopePseudoClass],

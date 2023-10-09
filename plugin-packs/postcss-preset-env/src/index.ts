@@ -1,7 +1,6 @@
 import autoprefixer from 'autoprefixer';
 import cssdb from 'cssdb';
 import logFeaturesList from './log/features-list.mjs';
-import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import { initializeSharedOptions } from './lib/shared-options.mjs';
 import { listFeatures } from './lib/list-features.mjs';
 import { newLogger } from './log/helper.mjs';
@@ -28,10 +27,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			autoprefixer(Object.assign({ env: env, overrideBrowserslist: browsers }, options.autoprefixer)),
 		);
 	}
-
-	plugins.push(
-		postcssProgressiveCustomProperties(),
-	);
 
 	logFeaturesList(features, options, logger);
 

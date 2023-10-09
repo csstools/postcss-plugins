@@ -28,6 +28,12 @@ assert.deepStrictEqual(
 			vendors_implementations: 3,
 			id: 'any-link-pseudo-class',
 		},
+		{
+			browsers: ['> 0%'],
+			vendors_implementations: undefined,
+			pluginOptions: {},
+			id: 'progressive-custom-properties',
+		},
 	],
 );
 
@@ -75,6 +81,12 @@ assert.deepStrictEqual(
 			vendors_implementations: 0,
 			pluginOptions: { enableProgressiveCustomProperties: false },
 			id: 'blank-pseudo-class',
+		},
+		{
+			browsers: ['> 0%'],
+			vendors_implementations: undefined,
+			pluginOptions: {},
+			id: 'progressive-custom-properties',
 		},
 	],
 );

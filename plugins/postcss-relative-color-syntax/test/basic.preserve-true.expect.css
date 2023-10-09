@@ -13,32 +13,22 @@
 	--color-rcs-14: hsla(from blue h s l / alpha);
 }
 
-@supports (color: rgb(from red r g b)) and (color: color(a98-rgb 0 0 0)) {
+@supports (color: color(xyz 0 0 0)) and (color: rgb(from red r g b)) {
 .valid {
 	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
-}
-}
-
-@supports (color: rgb(from red r g b)) and (color: color(prophoto-rgb 0 0 0)) {
-.valid {
 	--color-rcs-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: hwb(0 0% 0%)) {
+@supports (color: hwb(0 0% 0%)) and (color: rgb(from red r g b)) {
 .valid {
 	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: lab(0% 0 0)) {
+@supports (color: lab(0% 0 0)) and (color: rgb(from red r g b)) {
 .valid {
 	--color-rcs-6: lab(from lab(40% 56.6 39) l a b);
-}
-}
-
-@supports (color: rgb(from red r g b)) and (color: lch(0% 0 0)) {
-.valid {
 	--color-rcs-7: lch(from lch(40% 56.6 39) l c h);
 }
 }
@@ -49,7 +39,7 @@
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: oklab(0% 0 0)) {
+@supports (color: oklab(0% 0 0)) and (color: rgb(from red r g b)) {
 .valid {
 	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
 }
@@ -61,7 +51,7 @@
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: oklch(0% 0 0)) {
+@supports (color: oklab(0% 0 0)) and (color: rgb(from red r g b)) {
 .valid {
 	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
 }

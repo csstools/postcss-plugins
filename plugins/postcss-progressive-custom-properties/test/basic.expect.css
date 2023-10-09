@@ -24,13 +24,13 @@
 	--prop-9: red;
 }
 
-@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
+@supports (color: oklab(0% 0 0)) {
 :root {
 	--prop-1: oklch(40% 0.234 0.39 / var(--opacity-50));
 }
 }
 
-@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) and (color: rgba(0 0 0 / 0)) and (color: color(rec2020 0 0 0)) {
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) and (color: color(xyz 0 0 0)) and (color: rgba(0 0 0 / 0)) {
 :root {
 	--prop-2: linear-gradient(
 		45deg,
@@ -81,7 +81,7 @@
 }
 }
 
-@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
+@supports (color: oklab(0% 0 0)) {
 :root {
 	--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
 }
@@ -113,7 +113,7 @@
 	--color-1: red;
 }
 
-@supports (color: color(srgb 0 0 0)) {
+@supports (color: color(display-p3 0 0 0)) {
 .not-root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
 }
@@ -133,31 +133,40 @@
 	--color-5: yellow;
 
 	--color-6: orange;
+
+	--color-7: pink;
+
+	--color-8: pink;
+
+	--color-9: pink;
 }
 
-@supports (color: color(srgb 0 0 0)) {
+@supports (color: color(display-p3 0 0 0)) {
 :root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
 	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
-}
-}
-
-@supports (color: color(srgb 0 0 0)) and (top: var(--f)) {
-:root {
 	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
 	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
-}
-}
-
-@supports (color: color(srgb 0 0 0)) {
-:root {
 	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
 }
 }
 
-@supports (color: color(rec2020 0 0 0)) {
+@supports (color: color(xyz 0 0 0)) {
 :root {
 	--color-6: color(rec2020 0.64331 0.19245 0.16771);
+}
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+:root {
+	--color-7: color(srgb 0.999 0.95 0.95);
+	--color-8: color(display-p3 0.999 0.95 0.95);
+}
+}
+
+@supports (color: color(xyz 0 0 0)) {
+:root {
+	--color-9: color(rec2020 0.999 0.95 0.95);
 }
 }
 
@@ -276,46 +285,31 @@
 	--color-rcs-12: green;
 }
 
-@supports (color: rgb(from red r g b)) and (color: color(a98-rgb 0 0 0)) {
+@supports (color: color(xyz 0 0 0)) and (color: rgb(from red r g b)) {
 :root {
 	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
 	--color-rcs-2: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / none);
-}
-}
-
-@supports (color: rgb(from red r g b)) and (color: color(prophoto-rgb 0 0 0)) {
-:root {
 	--color-rcs-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
 	--color-rcs-4: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g none);
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: hwb(0 0% 0%)) {
+@supports (color: hwb(0 0% 0%)) and (color: rgb(from red r g b)) {
 :root {
 	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: lab(0% 0 0)) {
+@supports (color: lab(0% 0 0)) and (color: rgb(from red r g b)) {
 :root {
 	--color-rcs-6: lab(from lab(40% 56.6 39) l a b);
-}
-}
-
-@supports (color: rgb(from red r g b)) and (color: lch(0% 0 0)) {
-:root {
 	--color-rcs-7: lch(from lch(40% 56.6 39) l c h);
 }
 }
 
-@supports (color: rgb(from red r g b)) and (color: oklab(0% 0 0)) {
+@supports (color: oklab(0% 0 0)) and (color: rgb(from red r g b)) {
 :root {
 	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
-}
-}
-
-@supports (color: rgb(from red r g b)) and (color: oklch(0% 0 0)) {
-:root {
 	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
 }
 }
@@ -352,7 +346,7 @@
 	color: rgba(87, 107, 149, 1);
 }
 
-@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .property-with-var--1 {
 	color: rgb(87 107 149 / var(--opacity));
 }
@@ -363,7 +357,7 @@
 	color: rgba(87, 107, 149, var(--opacity));
 }
 
-@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .property-with-var--1-1 {
 	color: rgb(87 107 149 / var(--opacity));
 }
@@ -374,7 +368,7 @@
 	color: rgba(87, 107, 149, 1);
 }
 
-@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .property-with-var--2 {
 	color: rgb(87 107 149 / calc(var(--opacity) / 2));
 }
@@ -390,4 +384,17 @@
 	--opacity: 1;
 	color: rgba(87, 107, 149, 1);
 	color: rgb(87 107 149 / notvar(--opacity));
+}
+
+/* CSS Nesting */
+:root {
+	@media screen {
+		--prop-8: 1px solid red;
+	}
+
+@supports (color: oklab(0% 0 0)) {
+@media screen {
+		--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
+	}
+}
 }

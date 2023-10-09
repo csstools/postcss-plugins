@@ -623,3 +623,7 @@
 .exponential-functions {
 	width: calc(1px * pow(2, 3));
 }
+
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
+}

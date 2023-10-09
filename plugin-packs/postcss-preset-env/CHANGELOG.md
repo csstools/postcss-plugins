@@ -1,8 +1,9 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### Unreleased (minor)
 
-- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.7.3`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#773-october-05-2023) (patch)
+- Added `@csstools/postcss-gamut-mapping` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping#readme) for usage details.
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.8.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#780-october-08-2023) (patch)
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#203) (patch)
 - Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#101) (patch)
 - Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`1.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#110) (minor)

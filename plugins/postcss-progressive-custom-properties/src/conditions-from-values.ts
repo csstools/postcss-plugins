@@ -1,11 +1,11 @@
 import valueParser from 'postcss-value-parser';
+import { doublePositionGradients } from './custom/double-position-gradients';
 import { matchers } from './matchers';
 import { matches } from './match';
-import { doublePositionGradients } from './custom/double-position-gradients';
 
 const varFunctionName = /^var$/i;
 
-export function supportConditionsFromValue(value: string, mustContainVar = false): Array<string> {
+export function conditionsFromValue(value: string, mustContainVar = false): { support: Array<string> } {
 	const supportConditions: Array<string> = [];
 
 	const relevantMatchers = matchers.filter((matcher) => {
@@ -51,13 +51,12 @@ export function supportConditionsFromValue(value: string, mustContainVar = false
 	}
 
 	if (mustContainVar && !hasVar) {
-		return [];
+		return {
+			support: [],
+		};
 	}
 
-	if (hasVar && supportConditions.length > 0) {
-		// Only where there are other conditions and a `var()` is present.
-		supportConditions.push('(top: var(--f))');
-	}
-
-	return Array.from(new Set(supportConditions)); // list with unique items.
+	return {
+		support: Array.from(new Set(supportConditions)).sort(),
+	};
 }

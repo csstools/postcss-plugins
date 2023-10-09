@@ -643,3 +643,7 @@
 .exponential-functions {
 	width: 8px;
 }
+
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
+}

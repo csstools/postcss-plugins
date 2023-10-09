@@ -31,3 +31,4 @@ export declare function convertPowerlessComponentsToZeroValuesForDisplay(a: Colo
 export declare function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber>;
 export declare function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber>): Map<string, TokenNumber>;
 export declare function colorDataFitsRGB_Gamut(x: ColorData): boolean;
+export declare function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean;
