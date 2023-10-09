@@ -54,7 +54,7 @@
 		"@csstools/postcss-color-mix-function": "^2.0.6",
 		"@csstools/postcss-exponential-functions": "^1.0.1",
 		"@csstools/postcss-font-format-keywords": "^3.0.0",
-		"@csstools/postcss-gamut-mapping": "^0.0.0",
+		"@csstools/postcss-gamut-mapping": "^1.0.0",
 		"@csstools/postcss-gradients-interpolation-method": "^4.0.6",
 		"@csstools/postcss-hwb-function": "^3.0.5",
 		"@csstools/postcss-ic-unit": "^3.0.1",
