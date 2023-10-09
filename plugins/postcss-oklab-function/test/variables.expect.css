@@ -13,11 +13,6 @@
 :root {
 	--firebrick: color(display-p3 0.51193 0 0.22329);
 	--firebrick-a50: color(display-p3 0.51567 0 0.25999 / 0.5);
-}
-}
-
-@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
-:root {
 	--firebrick-a50-var: color(display-p3 0.51567 0 0.25999 / var(--opacity-50));
 }
 }

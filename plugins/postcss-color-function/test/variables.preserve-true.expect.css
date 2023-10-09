@@ -13,11 +13,6 @@
 :root {
 	--one: color(srgb 0.64331 0.19245 0.16771);
 	--one-a50: color(srgb 0.64331 0.19245 0.16771 / 50);
-}
-}
-
-@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
-:root {
 	--one-a50-var: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
 }
 }

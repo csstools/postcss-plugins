@@ -787,7 +787,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	padding: 2    ic;
 }
 
-@supports (font-size: 1ic) and (top: var(--f)) {
+@supports (font-size: 1ic) {
 .ic-unit {
 	left: var(--non-existing, 2ic);
 }
@@ -1055,7 +1055,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color: rgba(87 107 149 / 1);
 }
 
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgba(0 0 0 / 0)) {
 .test-property-with-var {
 	color: rgba(87 107 149 / var(--opacity));
 }

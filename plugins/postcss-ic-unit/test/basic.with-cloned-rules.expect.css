@@ -12,7 +12,7 @@
 	padding: 2    ic;
 }
 
-@supports (font-size: 1ic) and (top: var(--f)) {
+@supports (font-size: 1ic) {
 .ic-unit {
 	left: var(--non-existing, 2ic);
 }

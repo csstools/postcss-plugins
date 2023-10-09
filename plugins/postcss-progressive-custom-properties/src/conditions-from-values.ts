@@ -56,11 +56,6 @@ export function conditionsFromValue(value: string, mustContainVar = false): { su
 		};
 	}
 
-	if (hasVar && supportConditions.length > 0) {
-		// Only where there are other conditions and a `var()` is present.
-		supportConditions.push('(top: var(--f))');
-	}
-
 	return {
 		support: Array.from(new Set(supportConditions)).sort(),
 	};

@@ -4,6 +4,7 @@
 
 - Add support for css nesting
 - Improve grouping of `@supports` rules
+- Reduce the size of the generated `@supports` rules for values that contain `var()`
 
 ### 3.0.1
 

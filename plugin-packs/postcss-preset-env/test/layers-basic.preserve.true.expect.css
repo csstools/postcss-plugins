@@ -787,7 +787,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	padding: 2    ic;
 }
 
-@supports (font-size: 1ic) and (top: var(--f)){
+@supports (font-size: 1ic){
 .ic-unit:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	left: var(--non-existing, 2ic);
 }
