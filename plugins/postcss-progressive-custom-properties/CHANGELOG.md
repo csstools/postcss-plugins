@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 3.0.2
+
+_October 9, 2023_
 
 - Add support for css nesting
 - Improve grouping of `@supports` rules
