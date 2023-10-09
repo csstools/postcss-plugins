@@ -45,7 +45,7 @@ jobs:
 
       - name: npm ci
         run: |
-          npm ci --ignore-scripts --omit=dev
+          NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
         if: ${{ !(matrix.is_base_node_version && matrix.is_base_os_version) }}
 
       - name: determine modified workspaces
@@ -82,7 +82,7 @@ jobs:
         # running "npm install" places the cli in node_modules/bin
       - name: test:cli
         run: |
-          npm install --ignore-scripts --omit=dev
+          NPM_CONFIG_ENGINE_STRICT=false npm install --ignore-scripts
           npm run test:cli --if-present $MODIFIED_WORKSPACES
 
         # Browser Tests
