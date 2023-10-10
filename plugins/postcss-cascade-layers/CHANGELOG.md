@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Improve performance
+
 ### 4.0.0
 
 _July 3, 2023_
