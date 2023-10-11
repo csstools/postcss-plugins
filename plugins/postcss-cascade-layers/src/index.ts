@@ -9,7 +9,7 @@ import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
 import { someAtRuleInTree } from './some-in-tree';
 import { sortRootNodes } from './sort-root-nodes';
 import { recordLayerOrder } from './record-layer-order';
-import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, INVALID_LAYER_NAME } from './constants';
+import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, HAS_LAYER, INVALID_LAYER_NAME, IS_IMPORT, IS_LAYER, IS_REVERT_LAYER } from './constants';
 import { splitImportantStyles } from './split-important-styles';
 import type { pluginOptions } from './options';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
@@ -27,26 +27,37 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-cascade-layers',
 		OnceExit(root: Container, { result }: { result: Result }) {
 
-			// Warnings
-			if (options.onRevertLayerKeyword) {
-				root.walkDecls((decl) => {
-					if (decl.value.toLowerCase() === 'revert-layer') {
-						decl.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
+			let hasAnyLayer = false;
+
+			if (options.onRevertLayerKeyword || options.onImportLayerRule) {
+				root.walk((node) => {
+					if (node.type === 'decl') {
+						if (IS_REVERT_LAYER.test(node.value)) {
+							node.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
+							return;
+						}
+
+						return;
+					}
+
+					if (node.type === 'atrule') {
+						if (IS_IMPORT.test(node.name) && HAS_LAYER.test(node.params)) {
+							node.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
+							return;
+						}
+
+						if (IS_LAYER.test(node.name)) {
+							hasAnyLayer = true;
+							return;
+						}
+
+						return;
 					}
 				});
 			}
 
-			if (options.onImportLayerRule) {
-				root.walkAtRules((atRule) => {
-					if (atRule.name.toLowerCase() !== 'import') {
-						return;
-					}
-
-					if (atRule.params.toLowerCase().includes('layer')) {
-						atRule.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
-					}
-				},
-				);
+			if (!hasAnyLayer) {
+				return;
 			}
 
 			splitImportantStyles(root);

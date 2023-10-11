@@ -1,6 +1,6 @@
 import type { AtRule, Container } from 'postcss';
 import type { Model } from './model';
-import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, CONDITIONAL_ATRULES, WITH_SELECTORS_LAYER_NAME } from './constants';
+import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, CONDITIONAL_ATRULES, IS_LAYER, WITH_SELECTORS_LAYER_NAME } from './constants';
 import { someInTree } from './some-in-tree';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
@@ -71,8 +71,8 @@ export function sortRootNodes(root: Container, model: Model) {
 	});
 
 	root.nodes.sort((a, b) => {
-		const aIsLayer = a.type === 'atrule' && a.name.toLowerCase() === 'layer';
-		const bIsLayer = b.type === 'atrule' && b.name.toLowerCase() === 'layer';
+		const aIsLayer = a.type === 'atrule' && IS_LAYER.test(a.name);
+		const bIsLayer = b.type === 'atrule' && IS_LAYER.test(b.name);
 		if (aIsLayer && bIsLayer) {
 			const layerOrderA = model.layerOrder.get(a.params) ?? 0;
 			const layerOrderB = model.layerOrder.get(b.params) ?? 0;

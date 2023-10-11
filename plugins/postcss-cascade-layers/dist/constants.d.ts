@@ -6,3 +6,7 @@ export declare const ANONYMOUS_LAYER_SUFFIX = "6efdb677-bb05-44e5-840f-29d217586
 export declare const IMPLICIT_LAYER_SUFFIX = "b147acf6-11a6-4338-a4d0-80aef4cd1a2f";
 export declare const CONDITIONAL_ATRULES: string[];
 export declare const ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS: string[];
+export declare const IS_REVERT_LAYER: RegExp;
+export declare const IS_IMPORT: RegExp;
+export declare const IS_LAYER: RegExp;
+export declare const HAS_LAYER: RegExp;
