@@ -1,0 +1,7 @@
+.foo {
+	overflow-y: scroll;
+}
+
+.bar {
+	overflow-x: clip;
+}

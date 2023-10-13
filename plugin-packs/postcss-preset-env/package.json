@@ -115,7 +115,8 @@
 		"@csstools/postcss-debug-logger": "^2.0.0",
 		"@csstools/postcss-tape": "*",
 		"@webref/css": "^6.8.1",
-		"postcss-simple-vars": "^7.0.1"
+		"postcss-simple-vars": "^7.0.1",
+		"@mdn/browser-compat-data": "^5.3.22"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",

@@ -1,0 +1,7 @@
+.block {
+	overflow-block: scroll;
+}
+
+.inline {
+	overflow-inline: clip;
+}
