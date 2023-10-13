@@ -1,30 +1,30 @@
 # PostCSS Logical Overscroll Behavior [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-logical-overscroll-behavior.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/TODO.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-logical-overscroll-behavior.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/logical-overscroll-behavior.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 ```bash
 npm install @csstools/postcss-logical-overscroll-behavior --save-dev
 ```
 
-[PostCSS Logical Overscroll Behavior] lets you easily create new plugins following some [CSS Specification].
+[PostCSS Logical Overscroll Behavior] lets you use `overscroll-behavior-inline` and `overscroll-behavior-block` properties following the [CSS Overscroll Specification].
 
 ```pcss
-.foo {
-	color: red;
+.inline {
+	overscroll-behavior-inline: auto;
 }
 
-.baz {
-	color: green;
+.block {
+	overscroll-behavior-block: contain;
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
+.inline {
+	overscroll-behavior-x: auto;
 }
 
-.baz {
-	color: green;
+.block {
+	overscroll-behavior-y: contain;
 }
 ```
 
@@ -40,10 +40,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical-overscroll-behavior');
+const postcssLogicalOverscrollBehavior = require('@csstools/postcss-logical-overscroll-behavior');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogicalOverscrollBehavior(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -60,41 +60,50 @@ instructions for:
 
 ## Options
 
-### preserve
+### inlineDirection
 
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right`, which would match any latin language.
+
+**You should tweak this value so that it is specific to your language and writing mode.**
 
 ```js
-postcssBasePlugin({ preserve: true })
+postcssLogicalOverscrollBehavior({
+	inlineDirection: 'top-to-bottom'
+})
 ```
 
 ```pcss
-.foo {
-	color: red;
+.inline {
+	overscroll-behavior-inline: auto;
 }
 
-.baz {
-	color: green;
+.block {
+	overscroll-behavior-block: contain;
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
-	color: red;
+.inline {
+	overscroll-behavior-y: auto;
 }
 
-.baz {
-	color: green;
+.block {
+	overscroll-behavior-x: contain;
 }
 ```
 
+Each direction must be one of the following:
+
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-url]: https://cssdb.org/#TODO
+[css-url]: https://cssdb.org/#logical-overscroll-behavior
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-logical-overscroll-behavior
 
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Logical Overscroll Behavior]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-overscroll-behavior
-[CSS Specification]: #TODO
+[CSS Overscroll Specification]: https://www.w3.org/TR/css-overscroll-1/#overscroll-behavior-longhands-logical

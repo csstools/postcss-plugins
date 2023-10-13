@@ -25,20 +25,20 @@ Use it as a [PostCSS] plugin:
 ```js
 // commonjs
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical-overflow');
+const postcssLogicalOverflow = require('@csstools/postcss-logical-overflow');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogicalOverflow(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
 ```js
 // esm
 import postcss from 'postcss';
-import postcssBasePlugin from '@csstools/postcss-logical-overflow';
+import postcssLogicalOverflow from '@csstools/postcss-logical-overflow';
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogicalOverflow(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -53,11 +53,11 @@ npm install postcss-cli @csstools/postcss-logical-overflow --save-dev
 Use [PostCSS Logical Overflow] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-logical-overflow');
+const postcssLogicalOverflow = require('@csstools/postcss-logical-overflow');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssLogicalOverflow(/* pluginOptions */)
 	]
 }
 ```
@@ -184,11 +184,11 @@ Use [PostCSS Logical Overflow] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical-overflow');
+const postcssLogicalOverflow = require('@csstools/postcss-logical-overflow');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssLogicalOverflow(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -208,7 +208,7 @@ npm install grunt-postcss @csstools/postcss-logical-overflow --save-dev
 Use [PostCSS Logical Overflow] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-logical-overflow');
+const postcssLogicalOverflow = require('@csstools/postcss-logical-overflow');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -216,7 +216,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssLogicalOverflow(/* pluginOptions */)
 			]
 		},
 		dist: {

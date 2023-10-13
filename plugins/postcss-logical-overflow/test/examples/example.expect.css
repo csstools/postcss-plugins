@@ -1,7 +1,7 @@
-.foo {
-	overflow-y: scroll;
+.inline {
+	overflow-x: clip;
 }
 
-.bar {
-	overflow-x: clip;
+.block {
+	overflow-y: scroll;
 }

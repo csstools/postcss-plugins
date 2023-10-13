@@ -1,7 +1,7 @@
-.block {
-	overscroll-behavior-block: contain;
-}
-
 .inline {
 	overscroll-behavior-inline: auto;
+}
+
+.block {
+	overscroll-behavior-block: contain;
 }

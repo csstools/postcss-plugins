@@ -1,30 +1,30 @@
 # PostCSS Logical Overflow [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-logical-overflow.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/TODO.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-logical-overflow.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/logical-overflow.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
 ```bash
 npm install @csstools/postcss-logical-overflow --save-dev
 ```
 
-[PostCSS Logical Overflow] lets you easily create new plugins following some [CSS Specification].
+[PostCSS Logical Overflow] lets you use `overflow-inline` and `overflow-block` properties following the [CSS Overflow Specification].
 
 ```pcss
-.foo {
-	color: red;
+.inline {
+	overflow-inline: clip;
 }
 
-.baz {
-	color: green;
+.block {
+	overflow-block: scroll;
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
+.inline {
+	overflow-x: clip;
 }
 
-.baz {
-	color: green;
+.block {
+	overflow-y: scroll;
 }
 ```
 
@@ -40,10 +40,10 @@ Use it as a [PostCSS] plugin:
 
 ```js
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical-overflow');
+const postcssLogicalOverflow = require('@csstools/postcss-logical-overflow');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogicalOverflow(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -60,41 +60,50 @@ instructions for:
 
 ## Options
 
-### preserve
+### inlineDirection
 
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right`, which would match any latin language.
+
+**You should tweak this value so that it is specific to your language and writing mode.**
 
 ```js
-postcssBasePlugin({ preserve: true })
+postcssLogicalOverflow({
+	inlineDirection: 'top-to-bottom'
+})
 ```
 
 ```pcss
-.foo {
-	color: red;
+.inline {
+	overflow-inline: clip;
 }
 
-.baz {
-	color: green;
+.block {
+	overflow-block: scroll;
 }
 
 /* becomes */
 
-.foo {
-	color: blue;
-	color: red;
+.inline {
+	overflow-y: clip;
 }
 
-.baz {
-	color: green;
+.block {
+	overflow-x: scroll;
 }
 ```
 
+Each direction must be one of the following:
+
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[css-url]: https://cssdb.org/#TODO
+[css-url]: https://cssdb.org/#logical-overflow
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/postcss-logical-overflow
 
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Logical Overflow]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-overflow
-[CSS Specification]: #TODO
+[CSS Overflow Specification]: https://www.w3.org/TR/css-overflow-3/#overflow-control

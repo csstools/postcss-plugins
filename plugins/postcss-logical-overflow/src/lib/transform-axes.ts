@@ -1,22 +1,23 @@
 import type { Declaration } from 'postcss';
-import { cloneDeclaration } from './clone-declaration';
-import { DirectionConfig } from './types';
 
-export function transformAxes(
-	directionConfig: DirectionConfig,
-): (declaration: Declaration) => Array<Declaration> {
-	return (declaration: Declaration) => {
-		const { value } = declaration;
-		const inlineProp = directionConfig.inlineIsHorizontal ? 'x' : 'y';
-		const blockProp = directionConfig.inlineIsHorizontal ? 'y' : 'x';
-		const prop = declaration.prop.toLowerCase()
-			.replace('inline', inlineProp)
-			.replace('block', blockProp);
+export function transformAxes(declaration: Declaration, isHorizontal: boolean) {
+	const inlineProp = isHorizontal ? '-x' : '-y';
+	const blockProp = isHorizontal ? '-y' : '-x';
+	const prop = declaration.prop.toLowerCase()
+		.replace('-inline', inlineProp)
+		.replace('-block', blockProp);
 
-		return cloneDeclaration(
-			declaration,
-			value,
-			prop,
-		);
-	};
+	const value = declaration.value;
+
+	if (declaration.parent?.some((x) => {
+		return x.type == 'decl' && x.prop === prop && x.value === value;
+	})) {
+		return;
+	}
+
+	declaration.cloneBefore({
+		prop: prop,
+		value: value,
+	});
+	declaration.remove();
 }

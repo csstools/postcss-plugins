@@ -5,3 +5,27 @@
 .inline {
 	overscroll-behavior-y: auto;
 }
+
+.BLOCK {
+	overscroll-behavior-x: CONTAIN;
+}
+
+.INLINE {
+	overscroll-behavior-y: AUTO;
+}
+
+.ignore-block {
+	overscroll-behavior-block-zzz: contain;
+}
+
+.ignore-inline {
+	overscroll-behavior-inline-zzz: auto;
+}
+
+.ignore-block {
+	zzz-overscroll-behavior-block: contain;
+}
+
+.ignore-inline {
+	zzz-overscroll-behavior-inline: auto;
+}

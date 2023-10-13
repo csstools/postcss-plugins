@@ -16,7 +16,7 @@
 
 <header>
 
-[<humanReadableName>] lets you easily create new plugins following some [CSS Specification].
+[<humanReadableName>] lets you use `overscroll-behavior-inline` and `overscroll-behavior-block` properties following the [CSS Overscroll Specification].
 
 ```pcss
 <example.css>
@@ -32,13 +32,16 @@
 
 ## Options
 
-### preserve
+### inlineDirection
 
-The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+The `inlineDirection` option allows you to specify the direction of the inline axe. The default value is `left-to-right`, which would match any latin language.
+
+**You should tweak this value so that it is specific to your language and writing mode.**
 
 ```js
-<exportName>({ preserve: true })
+<exportName>({
+	inlineDirection: 'top-to-bottom'
+})
 ```
 
 ```pcss
@@ -46,8 +49,15 @@ is preserved. By default, it is not preserved.
 
 /* becomes */
 
-<example.preserve-true.expect.css>
+<example.chinese.expect.css>
 ```
 
+Each direction must be one of the following:
+
+- `top-to-bottom`
+- `bottom-to-top`
+- `left-to-right`
+- `right-to-left`
+
 <linkList>
-[CSS Specification]: <specUrl>
+[CSS Overscroll Specification]: <specUrl>

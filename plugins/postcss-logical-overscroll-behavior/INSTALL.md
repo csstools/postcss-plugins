@@ -25,20 +25,20 @@ Use it as a [PostCSS] plugin:
 ```js
 // commonjs
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical-overscroll-behavior');
+const postcssLogicalOverscrollBehavior = require('@csstools/postcss-logical-overscroll-behavior');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogicalOverscrollBehavior(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
 ```js
 // esm
 import postcss from 'postcss';
-import postcssBasePlugin from '@csstools/postcss-logical-overscroll-behavior';
+import postcssLogicalOverscrollBehavior from '@csstools/postcss-logical-overscroll-behavior';
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssLogicalOverscrollBehavior(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -53,11 +53,11 @@ npm install postcss-cli @csstools/postcss-logical-overscroll-behavior --save-dev
 Use [PostCSS Logical Overscroll Behavior] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-logical-overscroll-behavior');
+const postcssLogicalOverscrollBehavior = require('@csstools/postcss-logical-overscroll-behavior');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssLogicalOverscrollBehavior(/* pluginOptions */)
 	]
 }
 ```
@@ -184,11 +184,11 @@ Use [PostCSS Logical Overscroll Behavior] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-logical-overscroll-behavior');
+const postcssLogicalOverscrollBehavior = require('@csstools/postcss-logical-overscroll-behavior');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssLogicalOverscrollBehavior(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -208,7 +208,7 @@ npm install grunt-postcss @csstools/postcss-logical-overscroll-behavior --save-d
 Use [PostCSS Logical Overscroll Behavior] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-logical-overscroll-behavior');
+const postcssLogicalOverscrollBehavior = require('@csstools/postcss-logical-overscroll-behavior');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -216,7 +216,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssLogicalOverscrollBehavior(/* pluginOptions */)
 			]
 		},
 		dist: {

@@ -5,3 +5,27 @@
 .inline {
 	overflow-inline: clip;
 }
+
+.BLOCK {
+	OVERFLOW-BLOCK: SCROLL;
+}
+
+.INLINE {
+	OVERFLOW-INLINE: CLIP;
+}
+
+.ignore-block{
+	overflow-block-zzz: scroll;
+}
+
+.ignore-inline {
+	overflow-inline-zzz: clip;
+}
+
+.ignore-block {
+	zzz-overflow-block: scroll;
+}
+
+.ignore-inline {
+	zzz-overflow-inline: clip;
+}
