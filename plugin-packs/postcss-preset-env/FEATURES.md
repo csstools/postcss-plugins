@@ -36,6 +36,8 @@ The `ID` listed is the key for PostCSS Preset Env configuration in your project.
 | `image-set-function` | `image-set()` Function | [example](https://preset-env.cssdb.org/features/#image-set-function) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function#readme) |
 | `is-pseudo-class` | `:is()` Matches-Any Pseudo-Class | [example](https://preset-env.cssdb.org/features/#is-pseudo-class) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme) |
 | `lab-function` | `lab()` Function | [example](https://preset-env.cssdb.org/features/#lab-function) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function#readme) |
+| `logical-overflow` |   |   |   |
+| `logical-overscroll-behavior` |   |   |   |
 | `logical-properties-and-values` | Logical Properties and Values | [example](https://preset-env.cssdb.org/features/#logical-properties-and-values) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme) |
 | `logical-resize` | Logical values in the `resize` property | [example](https://preset-env.cssdb.org/features/#logical-resize) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme) |
 | `logical-viewport-units` | Logical Viewport Units | [example](https://preset-env.cssdb.org/features/#logical-viewport-units) | [docs](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme) |

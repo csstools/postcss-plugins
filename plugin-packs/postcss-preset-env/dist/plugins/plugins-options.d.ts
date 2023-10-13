@@ -30,6 +30,8 @@ import type { pluginOptions as postcssICUnit } from '@csstools/postcss-ic-unit';
 import type { pluginOptions as postcssImageSetFunction } from 'postcss-image-set-function';
 import type { pluginOptions as postcssIsPseudoClass } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunction } from 'postcss-lab-function';
+import type { pluginOptions as postcssLogicalOverflow } from '@csstools/postcss-logical-overflow';
+import type { pluginOptions as postcssLogicalOverscrollBehavor } from '@csstools/postcss-logical-overscroll-behavior';
 import type { pluginOptions as postcssLogical } from 'postcss-logical';
 import type { pluginOptions as postcssLogicalResize } from '@csstools/postcss-logical-resize';
 import type { pluginOptions as postcssLogicalViewportUnits } from '@csstools/postcss-logical-viewport-units';
@@ -117,6 +119,10 @@ export type pluginsOptions = {
     'is-pseudo-class'?: postcssIsPseudoClass | boolean;
     /** plugin options for "postcss-lab-function" */
     'lab-function'?: postcssLabFunction | boolean;
+    /** plugin options for "@csstools/postcss-logical-overflow" */
+    'logical-overflow'?: postcssLogicalOverflow | boolean;
+    /** plugin options for "@csstools/postcss-logical-overscroll-behavior" */
+    'logical-overscroll-behavior'?: postcssLogicalOverscrollBehavor | boolean;
     /** plugin options for "postcss-logical" */
     'logical-properties-and-values'?: postcssLogical | boolean;
     /** plugin options for "@csstools/postcss-logical-resize" */

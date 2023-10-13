@@ -30,6 +30,8 @@ import postcssICUnit from '@csstools/postcss-ic-unit';
 import postcssImageSetFunction from 'postcss-image-set-function';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
+import postcssLogicalOverflow from '@csstools/postcss-logical-overflow';
+import postcssLogicalOverscrollBehavor from '@csstools/postcss-logical-overscroll-behavior';
 import postcssLogical from 'postcss-logical';
 import postcssLogicalResize from '@csstools/postcss-logical-resize';
 import postcssLogicalViewportUnits from '@csstools/postcss-logical-viewport-units';
@@ -89,6 +91,8 @@ export const pluginsById = new Map(
 		['image-set-function', postcssImageSetFunction],
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],
+		['logical-overflow', postcssLogicalOverflow],
+		['logical-overscroll-behavior', postcssLogicalOverscrollBehavor],
 		['logical-properties-and-values', postcssLogical],
 		['logical-resize', postcssLogicalResize],
 		['logical-viewport-units', postcssLogicalViewportUnits],

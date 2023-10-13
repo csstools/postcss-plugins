@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+- Added `@csstools/postcss-logical-overflow` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-overflow#readme) for usage details.
+- Added `@csstools/postcss-logical-overscroll-behavior` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-overscroll-behavior#readme) for usage details.
+
 ### 9.2.0
 
 _October 9, 2023_
