@@ -41,7 +41,7 @@
 		"jest": "^29.7.0",
 		"jest-preset-stylelint": "^6.3.1",
 		"postcss": "^8.4",
-		"stylelint": "^15.10.3"
+		"stylelint": "^15.11.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
