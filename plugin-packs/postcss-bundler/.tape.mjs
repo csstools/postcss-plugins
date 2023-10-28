@@ -45,28 +45,25 @@ const testCases = {
 	}
 
 	switch (dirent.path.split(path.sep).join(path.posix.sep)) {
-		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/002':
-			testCases[key].warnings = 1;
-			break;
 		case 'test/css-import-tests/002-sub-features/004-at-supports/007':
-			testCases[key].warnings = 1;
-			break;
-		case 'test/css-import-tests/002-sub-features/003-at-layer/011':
 			testCases[key].warnings = 1;
 			break;
 		case 'test/css-import-tests/002-sub-features/001-data-urls/004':
 			testCases[key].warnings = 1;
 			break;
-		case 'test/css-import-tests/001-core-features/namespace/002':
-			testCases[key].warnings = 1;
-			break;
-		case 'test/css-import-tests/001-core-features/before-other-styles/001':
-			testCases[key].warnings = 1;
-			break;
-		case 'test/css-import-tests/001-core-features/before-other-styles/002':
-			testCases[key].warnings = 1;
-			break;
 		case 'test/css-import-tests/001-core-features/url-fragments/004':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/001-core-features/url-fragments/005':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/001-core-features/forwards-compat/004':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/002-sub-features/003-at-layer/013':
+			testCases[key].warnings = 1;
+			break;
+		case 'test/css-import-tests/002-sub-features/004-at-supports/012':
 			testCases[key].warnings = 1;
 			break;
 		default:

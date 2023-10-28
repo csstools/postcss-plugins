@@ -2,12 +2,10 @@
 .box {
 	background-color: green;
 }
-@media print {
-	/* a.css */
-}
+/* a.css */
+/* b.css */
 @media print {
 	@media print {
-		/* b.css */
 		.box {
 	background-color: red;
 }

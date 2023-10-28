@@ -1,0 +1,9 @@
+@property --background-image {
+	syntax: '<url> | none';
+	inherits: true;
+	initial-value: none;
+}
+
+.box {
+	--background-image: url(./green.png);
+}

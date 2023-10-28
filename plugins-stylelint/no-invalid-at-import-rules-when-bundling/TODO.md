@@ -1,0 +1,3 @@
+- validate order of rules : `@charset` > `@layer` > `@import`
+- validate that `@import` rules are consecutive
+- validate that `@import` rules do not have child nodes
