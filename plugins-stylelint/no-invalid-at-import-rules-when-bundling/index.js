@@ -103,7 +103,7 @@ const ruleFunction = (primaryOption) => {
 						if (remote) {
 							if (localImportCounter > 0) {
 								stylelint.utils.report({
-									message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+									message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
 									node: atRule,
 									index: atRuleParamIndex(atRule) + uriSourceIndices[0],
 									endIndex: atRuleParamIndex(atRule) + uriSourceIndices[1] + 1,

@@ -67,7 +67,7 @@ testRule({
 				@import "https://example.com/bar.css";
 			`,
 			description: 'Remote resources after a local import will not be bundled correctly',
-			message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
 			line: 3,
 			column: 13,
 			endLine: 3,
@@ -79,7 +79,7 @@ testRule({
 				@import "//example.com/bar.css";
 			`,
 			description: 'Remote resources after a local import will not be bundled correctly',
-			message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
 			line: 3,
 			column: 13,
 			endLine: 3,
