@@ -25,7 +25,7 @@ const testCases = {
 	},
 	'ignore': {
 		message: "ignores incorrect syntax",
-		warnings: 3,
+		warnings: 4,
 	},
 	'regexp': {
 		message: "regexp sanity checks",

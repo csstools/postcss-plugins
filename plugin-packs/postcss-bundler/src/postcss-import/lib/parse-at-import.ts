@@ -69,6 +69,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 				}
 
 				if (
+					!uri &&
 					isTokenNode(childComponentValue) &&
 					childComponentValue.value[0] === TokenType.String
 				) {
