@@ -8,6 +8,7 @@
 		"postcss-preset-env": "^9.2.0"
 	},
 	"volta": {
-		"extends": "../../package.json"
+		"extends": "../../package.json",
+		"yarn": "4.0.1"
 	}
 }
