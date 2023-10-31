@@ -83,7 +83,7 @@
 		"postcss-nesting": "^12.0.1",
 		"postcss-overflow-shorthand": "^5.0.0",
 		"postcss-place": "^9.0.0",
-		"postcss-preset-env": "^9.2.0",
+		"postcss-preset-env": "^9.3.0",
 		"postcss-pseudo-class-any-link": "^9.0.0",
 		"postcss-selector-not": "^7.0.1"
 	},
