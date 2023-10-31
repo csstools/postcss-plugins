@@ -322,12 +322,12 @@
 
 .overflow {
 	/* overflow-block */
-	overflow-block: inherit;
+	overflow-y: inherit;
 }
 
 .overflow {
 	/* overflow-inline */
-	overflow-inline: inherit;
+	overflow-x: inherit;
 }
 
 .overflow {
@@ -382,12 +382,12 @@
 
 .overscroll-behavior {
 	/* overscroll-behavior-block */
-	overscroll-behavior-block: inherit;
+	overscroll-behavior-y: inherit;
 }
 
 .overscroll-behavior {
 	/* overscroll-behavior-inline */
-	overscroll-behavior-inline: inherit;
+	overscroll-behavior-x: inherit;
 }
 
 .overscroll-behavior {

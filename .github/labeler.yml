@@ -177,6 +177,14 @@
   - plugins/postcss-logical-float-and-clear/**
   - experimental/postcss-logical-float-and-clear/**
 
+"plugins/postcss-overflow":
+  - plugins/postcss-overflow/**
+  - experimental/postcss-overflow/**
+
+"plugins/postcss-overscroll-behavior":
+  - plugins/postcss-overscroll-behavior/**
+  - experimental/postcss-overscroll-behavior/**
+
 "plugins/postcss-logical-resize":
   - plugins/postcss-logical-resize/**
   - experimental/postcss-logical-resize/**

@@ -34,7 +34,7 @@
 }
 
 .test-logical-resize {
-	resize: inline;
+	resize: horizontal;
 }
 
 .test-logical-viewport-units {
@@ -124,6 +124,7 @@
 }
 
 .test-font-variant-property {
+	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
@@ -415,7 +416,7 @@
 }
 
 .logical-float {
-	float: inline-start;
+	float: left;
 }
 
 .color-function {

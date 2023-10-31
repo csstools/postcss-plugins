@@ -196,6 +196,8 @@ assert.deepStrictEqual(
 		'float-clear-logical-values',
 		'logical-resize',
 		'logical-viewport-units',
+		'logical-overflow',
+		'logical-overscroll-behavior',
 	];
 
 	for (const plugin of logicalPlugins) {

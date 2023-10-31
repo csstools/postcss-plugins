@@ -160,6 +160,16 @@ export default [
 		'importName': 'postcssLogicalFloatAndClear',
 	},
 	{
+		'packageName': '@csstools/postcss-logical-overflow',
+		'id': 'logical-overflow',
+		'importName': 'postcssLogicalOverflow',
+	},
+	{
+		'packageName': '@csstools/postcss-logical-overscroll-behavior',
+		'id': 'logical-overscroll-behavior',
+		'importName': 'postcssLogicalOverscrollBehavor',
+	},
+	{
 		'packageName': '@csstools/postcss-logical-resize',
 		'id': 'logical-resize',
 		'importName': 'postcssLogicalResize',

@@ -1,4 +1,3 @@
-// import './options-matrix.mjs';
 import './lib/feature-is-inserted-or-has-plugin.mjs';
 import './lib/feature-is-less.mjs';
 import './lib/format-staged-feature.mjs';
