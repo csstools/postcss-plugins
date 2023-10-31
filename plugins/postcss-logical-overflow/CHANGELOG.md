@@ -1,5 +1,7 @@
 # Changes to PostCSS Logical Overflow
 
-### Unreleased (major)
+### 1.0.0
+
+_October 31, 2023_
 
 - Initial version
