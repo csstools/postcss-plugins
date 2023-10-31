@@ -1,19 +1,19 @@
+/* a.css */
 @media print {
     @layer a {
-        /* a.css */
         .box {
 	background-color: green;
 }
     }
 }
+/* b.css */
 @layer b {
-    /* b.css */
     .box {
 	background-color: red;
 }
 }
+/* a.css */
 @layer a {
-    /* a.css */
     .box {
 	background-color: green;
 }

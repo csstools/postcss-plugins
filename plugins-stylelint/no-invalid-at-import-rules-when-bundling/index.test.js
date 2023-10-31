@@ -28,6 +28,9 @@ testRule({
 		{
 			code: '@import "foo.css"; @import "node_modules:bar.css";',
 		},
+		{
+			code: '@layer foo; @import "foo.css";',
+		},
 	],
 
 	reject: [
@@ -64,7 +67,7 @@ testRule({
 				@import "https://example.com/bar.css";
 			`,
 			description: 'Remote resources after a local import will not be bundled correctly',
-			message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
 			line: 3,
 			column: 13,
 			endLine: 3,
@@ -76,7 +79,7 @@ testRule({
 				@import "//example.com/bar.css";
 			`,
 			description: 'Remote resources after a local import will not be bundled correctly',
-			message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
 			line: 3,
 			column: 13,
 			endLine: 3,
@@ -90,6 +93,42 @@ testRule({
 			column: 9,
 			endLine: 1,
 			endColumn: 18,
+		},
+		{
+			code: '@import "foo.css" { color: green; }',
+			description: 'Child nodes are not allowed',
+			message: '`@import` statements must not have any child nodes.',
+			line: 1,
+			column: 1,
+			endLine: 1,
+			endColumn: 35,
+		},
+		{
+			code: '@import "foo.css" {}',
+			description: 'Child nodes are not allowed',
+			message: '`@import` statements must not have any child nodes.',
+			line: 1,
+			column: 1,
+			endLine: 1,
+			endColumn: 20,
+		},
+		{
+			code: '@layer foo {} @import "foo.css";',
+			description: 'Order',
+			message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive.',
+			line: 1,
+			column: 15,
+			endLine: 1,
+			endColumn: 31,
+		},
+		{
+			code: '@import "foo.css"; .bar {} @import "bar.css";',
+			description: 'Order',
+			message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive.',
+			line: 1,
+			column: 28,
+			endLine: 1,
+			endColumn: 44,
 		},
 	],
 });

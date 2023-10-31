@@ -1,0 +1,15 @@
+/* ./styles/green.css */
+
+@property --background-image {
+	syntax: '<url> | none';
+	inherits: true;
+	initial-value: none;
+}
+
+.box {
+	--background-image: url(styles/green.png);
+}
+
+.box {
+	background-image: var(--background-image);
+}

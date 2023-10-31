@@ -1,6 +1,6 @@
-@media screen {
-
 /* a.css */
+
+@media screen {
 
 .box {
 	animation: BOX;
@@ -15,9 +15,9 @@
 }
 }
 
-@media print {
-
 /* b.css */
+
+@media print {
 
 .box {
 	animation: BOX;

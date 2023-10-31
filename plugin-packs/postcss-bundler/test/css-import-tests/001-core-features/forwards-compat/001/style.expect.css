@@ -1,0 +1,10 @@
+/* red.css */
+@media does-not-exist(foo) {
+	.box {
+	background-color: red;
+}
+}
+/* green.css */
+.box {
+	background-color: green;
+}

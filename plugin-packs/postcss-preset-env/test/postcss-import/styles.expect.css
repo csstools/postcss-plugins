@@ -1,15 +1,12 @@
-
-/* ./imports/extensions.css */
-/* ./imports/components.css */
 /* ./imports/extensions.css */
 :root {
 	--color-red: red;
 	--color-blue: blue;
 }
+/* ./imports/components.css */
 button:not(.does-not-exist):not(#\#), input[type="submit"]:not(#\#) {
 		text-align: left;
 }
-/* ./imports/components.css */
 button:not(.does-not-exist):not(#\#):not(#\#), input[type="submit"]:not(#\#):not(#\#) {
 	color: red;
 	color: var(--color-red);

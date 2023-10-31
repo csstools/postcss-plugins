@@ -1,17 +1,15 @@
-@media not print and (min-width: 1px) {
 /* a.css */
-}
-@media not print and (min-width: 1px) {
 /* green.css */
-.box {
+@media not print and (min-width: 1px) {
+    .box {
 	background-color: green;
 }
 }
-@media not print and (min-width: 1px) {
-@media not screen and (min-height: 1px) {
 /* red.css */
-.box {
+@media not print and (min-width: 1px) {
+    @media not screen and (min-height: 1px) {
+        .box {
 	background-color: red;
 }
-}
+    }
 }

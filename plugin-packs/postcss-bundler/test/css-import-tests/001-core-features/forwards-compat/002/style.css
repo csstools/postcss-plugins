@@ -1,0 +1,3 @@
+@import url(beige.css);
+@import url(red.css) does-not-exist(foo);
+@import url(green.css);

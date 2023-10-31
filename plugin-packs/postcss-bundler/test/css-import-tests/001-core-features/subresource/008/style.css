@@ -1,0 +1,5 @@
+@import url("./styles/green.css");
+
+.box {
+	background-image: var(--background-image);
+}

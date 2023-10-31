@@ -1,11 +1,11 @@
+/* a.css */
 @media screen {
-    /* a.css */
     .box {
 	background-color: green;
 }
 }
+/* b.css */
 @media print {
-    /* b.css */
     .box {
 	background-color: red;
 }

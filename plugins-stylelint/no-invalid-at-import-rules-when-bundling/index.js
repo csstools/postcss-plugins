@@ -16,7 +16,53 @@ const ruleFunction = (primaryOption) => {
 
 		let localImportCounter = 0;
 
+		let didSeeImports = false;
+		let didSeeOtherNodes = false;
+		for (let i = 0; i < postcssRoot.nodes.length; i++) {
+			const node = postcssRoot.nodes[i];
+			if (i === 0 && node.type === 'atrule' && /^charset$/i.test(node.name)) {
+				continue;
+			}
+
+			if (node.type === 'comment') {
+				continue;
+			}
+
+			if (!didSeeImports && isLayerNode(node)) {
+				continue;
+			}
+
+			if (!didSeeOtherNodes && isImportNode(node)) {
+				didSeeImports = true;
+				continue;
+			}
+
+			didSeeOtherNodes = true;
+
+			if (isImportNode(node)) {
+				stylelint.utils.report({
+					message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive.',
+					node: node,
+					index: 0,
+					endIndex: node.toString().length - 1,
+					result: postcssResult,
+					ruleName,
+				});
+			}
+		}
+
 		postcssRoot.walkAtRules(/^import$/i, (atRule) => {
+			if ('nodes' in atRule) {
+				stylelint.utils.report({
+					message: '`@import` statements must not have any child nodes.',
+					node: atRule,
+					index: 0,
+					endIndex: atRule.toString().length - 1,
+					result: postcssResult,
+					ruleName,
+				});
+			}
+
 			const parsed = parseAtImport(atRule.params);
 			if (!parsed) {
 				// Invalid `@import` statement, best left to a Stylelint core rule
@@ -57,7 +103,7 @@ const ruleFunction = (primaryOption) => {
 						if (remote) {
 							if (localImportCounter > 0) {
 								stylelint.utils.report({
-									message: 'Imports for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+									message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
 									node: atRule,
 									index: atRuleParamIndex(atRule) + uriSourceIndices[0],
 									endIndex: atRuleParamIndex(atRule) + uriSourceIndices[1] + 1,
@@ -96,6 +142,14 @@ const ruleFunction = (primaryOption) => {
 		});
 	};
 };
+
+function isLayerNode(node) {
+	return node.type === 'atrule' && /^layer$/i.test(node.name) && !('nodes' in node);
+}
+
+function isImportNode(node) {
+	return node.type === 'atrule' && /^import$/i.test(node.name);
+}
 
 function atRuleParamIndex(atRule) {
 	// Initial 1 is for the `@`

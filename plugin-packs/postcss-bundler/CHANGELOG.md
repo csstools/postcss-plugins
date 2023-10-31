@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Fix layer statements that precede `@import` statements which link to external resources
+
 ### 1.0.6
 
 _October 5, 2023_
