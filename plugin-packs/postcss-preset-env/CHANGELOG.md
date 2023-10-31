@@ -5,6 +5,7 @@
 - Added `@csstools/postcss-logical-overflow` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-overflow#readme) for usage details.
 - Added `@csstools/postcss-logical-overscroll-behavior` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-overscroll-behavior#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.9.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#790-october-31-2023) (minor)
+- Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#401) (patch)
 
 ### 9.2.0
 

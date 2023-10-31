@@ -38,7 +38,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/postcss-cascade-layers": "^4.0.0",
+		"@csstools/postcss-cascade-layers": "^4.0.1",
 		"@csstools/postcss-color-function": "^3.0.7",
 		"@csstools/postcss-color-mix-function": "^2.0.7",
 		"@csstools/postcss-exponential-functions": "^1.0.1",
