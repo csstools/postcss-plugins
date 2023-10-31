@@ -1,8 +1,7 @@
 @layer a, b;
+/* a.css */
 
 @layer b{
-
-/* a.css */
 
 .box {
 	animation: BOX;
@@ -16,10 +15,9 @@
 	}
 }
 }
+/* b.css */
 
 @layer a{
-
-/* b.css */
 
 .box {
 	animation: BOX;

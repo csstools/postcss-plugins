@@ -1,7 +1,7 @@
 const parserAlgorithms = require('@csstools/css-parser-algorithms');
 const tokenizer = require('@csstools/css-tokenizer');
 
-const { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, parseListOfComponentValues, stringify, sourceIndices } = parserAlgorithms;
+const { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify, sourceIndices } = parserAlgorithms;
 const { TokenType, tokenize } = tokenizer;
 
 const IS_LAYER = /^layer$/i;
@@ -16,14 +16,13 @@ module.exports = function parseAtImport(params) {
 	let uri = '';
 	let uriSourceIndices;
 	let fullUri = '';
-	const layer = [];
+	let layer;
 	let layerSourceIndices = [];
-	const media = [];
+	let media;
 	let mediaSourceIndices = [];
-	const supports = [];
+	let supports;
 	let supportsSourceIndices = [];
 
-	PARSING_LOOP:
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
 		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
@@ -62,17 +61,24 @@ module.exports = function parseAtImport(params) {
 				}
 
 				if (
+					!uri &&
 					isTokenNode(childComponentValue) &&
 					childComponentValue.value[0] === TokenType.String
 				) {
 					uri = childComponentValue.value[4].value;
 					fullUri = stringify([[componentValue]]);
 					uriSourceIndices = sourceIndices(componentValue);
-					continue PARSING_LOOP;
+					continue;
 				}
 
 				return false;
 			}
+
+			continue;
+		}
+
+		if (!uri) {
+			return false;
 		}
 
 		if (
@@ -80,11 +86,11 @@ module.exports = function parseAtImport(params) {
 			componentValue.value[0] === TokenType.Ident &&
 			IS_LAYER.test(componentValue.value[4].value)
 		) {
-			if (layer.length > 0 || supports.length > 0) {
+			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
 				return false;
 			}
 
-			layer.push('');
+			layer = '';
 			layerSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
@@ -93,11 +99,11 @@ module.exports = function parseAtImport(params) {
 			isFunctionNode(componentValue) &&
 			IS_LAYER.test(componentValue.getName())
 		) {
-			if (layer.length > 0 || supports.length > 0) {
+			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
 				return false;
 			}
 
-			layer.push(stringify([trim(componentValue.value)]));
+			layer = stringify([componentValue.value]);
 			layerSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
@@ -106,21 +112,16 @@ module.exports = function parseAtImport(params) {
 			isFunctionNode(componentValue) &&
 			IS_SUPPORTS.test(componentValue.getName())
 		) {
-			if (supports.length > 0) {
+			if (typeof supports !== 'undefined') {
 				return false;
 			}
 
-			supports.push(stringify([trim(componentValue.value)]));
+			supports = stringify([componentValue.value]);
 			supportsSourceIndices = sourceIndices(componentValue);
 			continue;
 		}
 
-		const remainder = trim(componentValues.slice(i));
-		const remainderTokens = remainder.flatMap(x => x.tokens());
-		const list = parseCommaSeparatedListOfComponentValues(remainderTokens);
-		const serializedList = list.map((x) => stringify([trim(x)]));
-		media.push(...serializedList);
-		mediaSourceIndices = sourceIndices(remainder);
+		media = stringify([componentValues.slice(i)]);
 		break;
 	}
 
@@ -142,33 +143,6 @@ module.exports = function parseAtImport(params) {
 		supportsSourceIndices,
 	};
 };
-
-function trim(componentValues) {
-	let start = 0;
-	let end = componentValues.length;
-
-	for (let i = 0; i < componentValues.length; i++) {
-		const componentValue = componentValues[i];
-		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
-			continue;
-		}
-
-		start = i;
-		break;
-	}
-
-	for (let i = componentValues.length - 1; i >= 0; i--) {
-		const componentValue = componentValues[i];
-		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
-			continue;
-		}
-
-		end = i + 1;
-		break;
-	}
-
-	return componentValues.slice(start, end);
-}
 
 function stripHash(str) {
 	if (str.startsWith('#')) {

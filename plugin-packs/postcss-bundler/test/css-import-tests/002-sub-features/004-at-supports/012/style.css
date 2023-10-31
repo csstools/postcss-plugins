@@ -1,0 +1,2 @@
+@import url("green.css");
+@import supports(selector(&)) url("red.css");

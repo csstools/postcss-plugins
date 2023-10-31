@@ -1,9 +1,7 @@
-/* various sanity checks for regexp in the code base */
+/* various sanity checks for regexp in the code base *//* imports/basic.css */
 
 @media zlayer(foo) {
 
-/* imports/basic.css */
-
 .foo {
 	background: url("images/green.png");
 }
@@ -23,12 +21,10 @@
 .search {
 	background: url("images/green.png?foo=bar");
 }
-}
+}/* imports/basic.css */
 
 @media layerz(foo) {
 
-/* imports/basic.css */
-
 .foo {
 	background: url("images/green.png");
 }
@@ -48,12 +44,10 @@
 .search {
 	background: url("images/green.png?foo=bar");
 }
-}
+}/* imports/basic.css */
 
 @media zsupports(foo) {
 
-/* imports/basic.css */
-
 .foo {
 	background: url("images/green.png");
 }
@@ -73,11 +67,9 @@
 .search {
 	background: url("images/green.png?foo=bar");
 }
-}
+}/* imports/basic.css */
 
 @media supportsz(foo) {
-
-/* imports/basic.css */
 
 .foo {
 	background: url("images/green.png");
