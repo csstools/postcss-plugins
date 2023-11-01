@@ -41,7 +41,7 @@
  *
  * @see https://en.wikipedia.org/wiki/SRGB
  */
-function lin_sRGB(t){return t.map((function(t){const _=t<0?-1:1,o=Math.abs(t);return o<.04045?t/12.92:_*Math.pow((o+.055)/1.055,2.4)}))}
+function lin_sRGB(t){return t.map((function(t){const _=t<0?-1:1,o=Math.abs(t);return o<=.04045?t/12.92:_*Math.pow((o+.055)/1.055,2.4)}))}
 /**
  * Simple matrix (and vector) multiplication
  * Warning: No error handling for incompatible dimensions!
