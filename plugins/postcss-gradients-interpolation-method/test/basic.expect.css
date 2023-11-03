@@ -3,7 +3,7 @@
 	background-image: linear-gradient(90deg, rgb(0, 0, 0) 20%, rgb(0, 0, 0) var(--perc-50), rgb(0, 0, 3), rgb(0, 0, 22), rgb(0, 0, 46), rgb(0, 0, 72), rgb(0, 0, 99), rgb(0, 0, 128), rgb(0, 0, 158), rgb(0, 0, 190), rgb(0, 0, 222), rgb(0, 0, 255) 70%, rgb(0, 0, 255) 75%);
 }
 
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (top: var(--f)) {
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
 .test-1 {
 	background-image: linear-gradient(in oklch 90deg, black 20% var(--perc-50),blue 70% 75%);
 }
@@ -350,9 +350,9 @@
 
 .patterns-2 {
 	background:
-		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 270deg, rgba(192, 41, 66, 0.1), rgba(192, 41, 66, 0.2), rgba(192, 41, 66, 0.3), rgba(192, 41, 66, 0.4), rgba(192, 41, 66, 0.5), rgba(192, 41, 66, 0.6), rgba(192, 41, 66, 0.7), rgba(192, 41, 66, 0.8), rgba(192, 41, 66, 0.9), rgb(192, 41, 66) 0) calc(20px + 15px) 0,
+		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 270deg, rgba(192, 107, 41, 0.1), rgba(187, 192, 41, 0.2), rgba(96, 192, 41, 0.3), rgba(41, 192, 76, 0.4), rgba(41, 192, 167, 0.5), rgba(41, 126, 192, 0.6), rgba(46, 41, 192, 0.7), rgba(137, 41, 192, 0.8), rgba(192, 41, 157, 0.9), rgb(192, 41, 66) 0) calc(20px + 15px) 0,
 		linear-gradient(#53777A 20px, #0000 0) 0 15px,
-		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 90deg, rgba(83, 119, 122, 0.1), rgba(83, 119, 122, 0.2), rgba(83, 119, 122, 0.3), rgba(83, 119, 122, 0.4), rgba(83, 119, 122, 0.5), rgba(83, 119, 122, 0.6), rgba(83, 119, 122, 0.7), rgba(83, 119, 122, 0.8), rgba(83, 119, 122, 0.9), rgb(83, 119, 122) 0, rgb(83, 96, 122), rgb(94, 83, 122), rgb(117, 83, 122), rgb(122, 83, 103), rgb(122, 86, 83), rgb(122, 109, 83), rgb(111, 122, 83), rgb(88, 122, 83), rgb(83, 122, 102), rgb(83, 119, 122) 180deg, rgb(79, 128, 116), rgb(76, 135, 101), rgb(72, 142, 79), rgb(86, 148, 68), rgb(114, 155, 64), rgb(149, 162, 59), rgb(170, 148, 55), rgb(177, 112, 50), rgb(184, 68, 46), rgb(192, 41, 66) 0),
+		conic-gradient(at 20px calc(100% - 20px), rgba(0, 0, 0, 0) 90deg, rgba(83, 96, 122, 0.1), rgba(94, 83, 122, 0.2), rgba(117, 83, 122, 0.3), rgba(122, 83, 103, 0.4), rgba(122, 86, 83, 0.5), rgba(122, 109, 83, 0.6), rgba(111, 122, 83, 0.7), rgba(88, 122, 83, 0.8), rgba(83, 122, 102, 0.9), rgb(83, 119, 122) 0, rgb(83, 96, 122), rgb(94, 83, 122), rgb(117, 83, 122), rgb(122, 83, 103), rgb(122, 86, 83), rgb(122, 109, 83), rgb(111, 122, 83), rgb(88, 122, 83), rgb(83, 122, 102), rgb(83, 119, 122) 180deg, rgb(79, 128, 116), rgb(76, 135, 101), rgb(72, 142, 79), rgb(86, 148, 68), rgb(114, 155, 64), rgb(149, 162, 59), rgb(170, 148, 55), rgb(177, 112, 50), rgb(184, 68, 46), rgb(192, 41, 66) 0),
 		#ECD078;
 	background:
 		conic-gradient(in hsl longer hue at 20px calc(100% - 20px), #0000 270deg, #C02942 0) calc(20px + 15px) 0,
@@ -383,7 +383,7 @@ to-clone {
 }
 
 .wpt-srgb-gradient {
-	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(230, 26, 0), rgb(204, 51, 0), rgb(179, 77, 0), rgb(153, 102, 0), rgb(128, 128, 0), rgb(102, 153, 0), rgb(77, 179, 0), rgb(51, 204, 0), rgb(26, 230, 0), rgb(0, 255, 0) 100%);
+	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(230, 26, 0), rgb(204, 51, 0), rgb(179, 77, 0), rgb(153, 102, 0), rgb(128, 128, 0), rgb(102, 153, 0), rgb(77, 179, 0), rgb(51, 204, 0), rgb(25, 230, 0), rgb(0, 255, 0) 100%);
 	background: linear-gradient(to right in srgb, rgb(255 0 0) 0%, rgb(0 255 0) 100%);
 }
 

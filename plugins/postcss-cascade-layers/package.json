@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
 	"description": "Use cascade layers in CSS",
-	"version": "4.0.0",
+	"version": "4.0.1",
 	"contributors": [
 		{
 			"name": "Olu Niyi-Awosusi",
@@ -60,9 +60,9 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-bundler": "^1.0.3",
 		"@csstools/postcss-tape": "*",
-		"postcss-import": "^15.1.0",
-		"puppeteer": "^21.1.0"
+		"puppeteer": "^21.4.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

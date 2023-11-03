@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { commitAfterDependencyUpdates, commitSingleDirectory } from './commit.mjs';
-import { discordAnnounce } from './discord-announce.mjs';
+import { discordAnnounce, discordAnnounceDryRun } from './discord-announce.mjs';
 import { nowFormatted } from './date-format.mjs';
 import { npmInstall } from './npm-install.mjs';
 import { npmPublish } from './npm-publish.mjs';
@@ -18,6 +18,7 @@ const {
 } = await prepareCurrentReleasePlan();
 
 if (process.argv.slice(2).includes('--dry-run')) {
+	discordAnnounceDryRun();
 	process.exit(0);
 }
 

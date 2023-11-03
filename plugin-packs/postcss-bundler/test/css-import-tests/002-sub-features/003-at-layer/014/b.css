@@ -1,0 +1,5 @@
+/* a comment */
+
+@layer a, b;
+
+@import url("http://localhost:8080/green.css");

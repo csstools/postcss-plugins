@@ -101,6 +101,9 @@ With PostCSS 8 this trigger declaration visitors to run again.
 
 Make sure your plugin detects and ignores values inside relevant `@supports` rules.
 
+## Reading list 
+
+- https://moderncss.dev/how-custom-property-values-are-computed/
 
 [PostCSS Progressive Custom Properties] runs in all Node environments, with special instructions for:
 

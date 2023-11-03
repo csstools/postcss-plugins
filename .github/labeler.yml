@@ -33,10 +33,6 @@
 "stylelint-plugin":
   - plugins-stylelint/**
 
-"plugins/css-all-property":
-  - plugins/css-all-property/**
-  - experimental/css-all-property/**
-
 "plugins/css-blank-pseudo":
   - plugins/css-blank-pseudo/**
   - experimental/css-blank-pseudo/**
@@ -133,6 +129,10 @@
   - plugins/postcss-font-format-keywords/**
   - experimental/postcss-font-format-keywords/**
 
+"plugins/postcss-gamut-mapping":
+  - plugins/postcss-gamut-mapping/**
+  - experimental/postcss-gamut-mapping/**
+
 "plugins/postcss-gap-properties":
   - plugins/postcss-gap-properties/**
   - experimental/postcss-gap-properties/**
@@ -157,6 +157,10 @@
   - plugins/postcss-image-set-function/**
   - experimental/postcss-image-set-function/**
 
+"plugins/postcss-initial":
+  - plugins/postcss-initial/**
+  - experimental/postcss-initial/**
+
 "plugins/postcss-is-pseudo-class":
   - plugins/postcss-is-pseudo-class/**
   - experimental/postcss-is-pseudo-class/**
@@ -172,6 +176,14 @@
 "plugins/postcss-logical-float-and-clear":
   - plugins/postcss-logical-float-and-clear/**
   - experimental/postcss-logical-float-and-clear/**
+
+"plugins/postcss-overflow":
+  - plugins/postcss-overflow/**
+  - experimental/postcss-overflow/**
+
+"plugins/postcss-overscroll-behavior":
+  - plugins/postcss-overscroll-behavior/**
+  - experimental/postcss-overscroll-behavior/**
 
 "plugins/postcss-logical-resize":
   - plugins/postcss-logical-resize/**
@@ -248,6 +260,10 @@
 "plugins/postcss-selector-not":
   - plugins/postcss-selector-not/**
   - experimental/postcss-selector-not/**
+
+"plugins/postcss-slow-plugins":
+  - plugins/postcss-slow-plugins/**
+  - experimental/postcss-slow-plugins/**
 
 "plugins/postcss-system-ui-font-family":
   - plugins/postcss-system-ui-font-family/**

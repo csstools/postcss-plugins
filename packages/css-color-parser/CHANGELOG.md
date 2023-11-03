@@ -1,11 +1,42 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 1.4.0
+
+_October 9, 2023_
+
+- Add utility to determine if a color is in the Display P3 gamut.
+
+### 1.3.3
+
+_October 2, 2023_
+
+- Fix interpolation of `hue` when either or both components are `none` and `longer` is the interpolation method.
+
+### 1.3.2
+
+_September 24, 2023_
+
+- Small performance improvements
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#221) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.3.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#232) (patch)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`1.1.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#114) (patch)
+
+### 1.3.1
+
+_September 2, 2023_
+
+- Fix clipping of values in `hsl`, `hwb` and `rgb` color notations.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#302) (patch)
+
+### 1.3.0
+
+_August 28, 2023_
 
 - Add a `serializeOKLCH` function.
 - Add experimental support for the `contrast-color()` CSS function.
 - Always convert to the target color space, even when the input color is already in that specific color space.
 - Correctly apply the hue interpolation method when either angle is missing.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#301) (patch)
 
 ### 1.2.3
 

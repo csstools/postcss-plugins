@@ -2,6 +2,10 @@
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-conditional-values.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
+```bash
+npm install @csstools/postcss-conditional-values --save-dev
+```
+
 [PostCSS Conditional Values] lets you easily apply space toggle hacks with some syntactic sugar.
 
 This plugin adds a non-standard function : `csstools-if( else )` which acts as a ternary operator.

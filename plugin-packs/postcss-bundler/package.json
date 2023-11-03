@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-bundler",
 	"description": "Bundle CSS",
-	"version": "0.1.0-alpha.6",
+	"version": "1.0.7",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -45,9 +45,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "2.3.1",
-		"@csstools/css-tokenizer": "^2.2.0",
-		"@csstools/postcss-rebase-url": "^0.1.0-alpha.0"
+		"@csstools/css-parser-algorithms": "^2.3.2",
+		"@csstools/css-tokenizer": "^2.2.1",
+		"@csstools/postcss-rebase-url": "^1.0.3"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -56,13 +56,14 @@
 		"@csstools/postcss-tape": "*",
 		"@rmenke/css-package-conditional-3": "^1.0.0",
 		"@rmenke/css-package-main": "^1.0.0",
-		"open-props": "^1.5.11"
+		"open-props": "^1.6.10"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
+		"stryker": "stryker run --logLevel error",
 		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
 	},

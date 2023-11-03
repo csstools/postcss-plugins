@@ -1,0 +1,5 @@
+.intro {
+	border: 1px solid var(--color-foreground);
+	padding: 16px;
+	margin: 16px;
+}

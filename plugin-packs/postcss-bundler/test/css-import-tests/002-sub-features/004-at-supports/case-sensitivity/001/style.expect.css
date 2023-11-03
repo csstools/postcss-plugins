@@ -2,8 +2,8 @@
 .box {
 	background-color: red;
 }
-@supports (display: flex) {
 /* a.css */
+@supports (display: flex) {
 	.box {
 	background-color: green;
 }

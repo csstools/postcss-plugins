@@ -2,12 +2,10 @@
 .box {
 	background-color: green;
 }
-@media (max-width: 1px) {
 /* a.css */
-}
+/* b.css */
 @media (max-width: 1px) {
 	@media (max-width: 1px) {
-/* b.css */
 		.box {
 	background-color: red;
 }

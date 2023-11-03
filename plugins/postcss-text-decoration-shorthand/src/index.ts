@@ -8,6 +8,8 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
+const IS_TEXT_DECORATION = /^text-decoration$/i;
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
@@ -28,7 +30,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					convertedValues.clear();
 				},
 				Declaration: (decl) => {
-					if (decl.prop.toLowerCase() !== 'text-decoration') {
+					if (!IS_TEXT_DECORATION.test(decl.prop)) {
 						return;
 					}
 
@@ -40,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const ownIndex = parent.index(decl);
 					const hasFallbacksOrOverrides = parent.nodes.some((node) => {
 						return node.type === 'decl' &&
-							node.prop.toLowerCase() === 'text-decoration' &&
+							IS_TEXT_DECORATION.test(node.prop) &&
 							convertedValues.get(decl.value) === node.value &&
 							parent.index(node) !== ownIndex;
 					});

@@ -48,13 +48,13 @@
 
 .spec-example-6 {
 	color-1: color-mix(in lch, white, blue);
-	/* TODO : https://github.com/w3c/csswg-drafts/issues/8609 */
+	/* https://github.com/w3c/csswg-drafts/issues/8609 */
 	color-2: color-mix(in oklch, white, blue);
 	color-3: color-mix(in srgb, white, blue);
 }
 
 .spec-example-7 {
-	/* TODO : https://github.com/w3c/csswg-drafts/issues/8444 */
+	/* https://github.com/w3c/csswg-drafts/issues/8444 */
 	color-1: color-mix(in hsl, color(display-p3 0 1 0) 80%, yellow);
 }
 

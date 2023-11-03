@@ -1,104 +1,153 @@
-import type { AtRule, PluginCreator, Rule } from 'postcss';
-import { supportConditionsFromValue } from './support-conditions-from-values';
+import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
+import { conditionsFromValue } from './conditions-from-values';
 
-const hasVariableFunction = /var\(/i;
+const HAS_VARIABLE_FUNCTION = /var\(/i;
+const IS_INITIAL = /^initial$/i;
+const EMPTY_OR_WHITESPACE = /^\s*$/;
+
+type State = {
+	conditionalRules: Array<AtRule>,
+	propNames: Set<string>,
+	lastConditionParams: {
+		support: string | undefined,
+	},
+	lastConditionalRule: Container | undefined,
+}
 
 const creator: PluginCreator<null> = () => {
 	return {
 		postcssPlugin: 'postcss-progressive-custom-properties',
-		RuleExit: (rule, { postcss }) => {
-			const atSupportsRules: Array<AtRule> = [];
-			const parentRuleClones: Map<AtRule, Rule> = new Map();
-			const propNames = new Set<string>();
+		prepare() {
+			const states = new WeakMap<Node, State>();
 
-			rule.each((decl) => {
-				if (decl.type !== 'decl') {
-					return;
-				}
+			return {
+				OnceExit: (root, { postcss }) => {
+					root.walkDecls((decl) => {
+						if (!decl.parent) {
+							return;
+						}
 
-				// The first encountered property is the fallback for the oldest targets.
-				if (decl.variable) {
-					// custom properties are case-sensitive
-					if (!propNames.has(decl.prop.toString())) {
-						propNames.add(decl.prop.toString());
-						return;
-					}
-				} else {
-					// regular properties are case-insensitive
-					if (!propNames.has(decl.prop.toString().toLowerCase())) {
-						propNames.add(decl.prop.toString().toLowerCase());
-						return;
-					}
-				}
+						const state = states.get(decl.parent) || {
+							conditionalRules: [],
+							propNames: new Set<string>(),
+							lastConditionParams: {
+								support: undefined,
+							},
+							lastConditionalRule: undefined,
+						};
 
-				if (!(decl.variable || hasVariableFunction.test(decl.value))) {
-					return;
-				}
+						states.set(decl.parent, state);
 
-				if (decl.value.trim().toLowerCase() === 'initial') {
-					// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
-					return;
-				}
+						// The first encountered property is the fallback for the oldest targets.
+						if (decl.variable) {
+							// custom properties are case-sensitive
+							if (!state.propNames.has(decl.prop)) {
+								state.propNames.add(decl.prop);
+								return;
+							}
+						} else {
+							// regular properties are case-insensitive
+							const lowerCaseProp = decl.prop.toLowerCase();
+							if (!state.propNames.has(lowerCaseProp)) {
+								state.propNames.add(lowerCaseProp);
+								return;
+							}
+						}
 
-				if (decl.value.trim() === '') { // empty string value
-					// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
-					return;
-				}
+						if (!(decl.variable || HAS_VARIABLE_FUNCTION.test(decl.value))) {
+							return;
+						}
 
-				// if the property itself isn't a custom property, the value must contain a var() function
-				const mustContainVar = !decl.variable;
+						if (IS_INITIAL.test(decl.value)) {
+							// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
+							return;
+						}
 
-				const supportConditions = supportConditionsFromValue(decl.value, mustContainVar);
-				if (!supportConditions.length) {
-					return;
-				}
+						if (EMPTY_OR_WHITESPACE.test(decl.value)) { // empty string value
+							// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
+							return;
+						}
 
-				const params = supportConditions.join(' and ');
+						// if the property itself isn't a custom property, the value must contain a var() function
+						const mustContainVar = !decl.variable;
 
-				if (atSupportsRules.length && atSupportsRules[atSupportsRules.length - 1].params === params) {
-					const atSupports = atSupportsRules[atSupportsRules.length - 1];
-					const parentClone = parentRuleClones.get(atSupports);
+						const conditions = conditionsFromValue(decl.value, mustContainVar);
+						const supportParams = conditions.support.join(' and ');
+						if (!supportParams) {
+							return;
+						}
 
-					if (parentClone) {
+						if (state.lastConditionParams.support !== supportParams) {
+							state.lastConditionalRule = undefined;
+						}
+
+						if (state.lastConditionalRule) {
+							state.lastConditionalRule.append(decl.clone());
+							decl.remove();
+							return;
+						}
+
+						const atRules = [];
+
+						if (supportParams) {
+							atRules.push(postcss.atRule({
+								name: 'supports',
+								params: supportParams,
+								source: decl.parent.source,
+								raws: {
+									before: '\n\n',
+									after: '\n',
+								},
+							}));
+						}
+
+						if (!atRules.length) {
+							return;
+						}
+
+						for (let i = 0; i < (atRules.length - 1); i++) {
+							const x = atRules[i];
+							const y = atRules[i + 1];
+
+							x.append(y);
+						}
+
+						const outerAtRule = atRules[0];
+						const innerAtRule = atRules[atRules.length - 1];
+
+						const parentClone = decl.parent.clone();
+						parentClone.removeAll();
+
+						parentClone.raws.before = '\n';
+
 						parentClone.append(decl.clone());
 						decl.remove();
-						return;
-					}
-				}
 
-				// Any subsequent properties are progressive enhancements.
-				const atSupports = postcss.atRule({
-					name: 'supports',
-					params: params,
-					source: rule.source,
-					raws: {
-						before: '\n\n',
-						after: '\n',
-					},
-				});
+						state.lastConditionParams.support = supportParams;
+						state.lastConditionalRule = parentClone;
 
-				const parentClone = rule.clone();
-				parentClone.removeAll();
+						innerAtRule.append(parentClone);
+						state.conditionalRules.push(outerAtRule);
+					});
 
-				parentClone.raws.before = '\n';
+					root.walk((node) => {
+						const state = states.get(node);
+						if (!state) {
+							return;
+						}
 
-				parentClone.append(decl.clone());
-				decl.remove();
+						if (state.conditionalRules.length === 0) {
+							return;
+						}
 
-				parentRuleClones.set(atSupports, parentClone);
-				atSupports.append(parentClone);
-				atSupportsRules.push(atSupports);
-			});
-
-			if (atSupportsRules.length === 0) {
-				return;
-			}
-
-			// rule.after reverses the at rule order.
-			// reversing the call order gives in the correct order overall.
-			atSupportsRules.reverse().forEach((atSupports) => {
-				rule.after(atSupports);
-			});
+						// rule.after reverses the at rule order.
+						// reversing the call order gives in the correct order overall.
+						state.conditionalRules.reverse().forEach((atSupports) => {
+							node.after(atSupports);
+						});
+					});
+				},
+			};
 		},
 	};
 };

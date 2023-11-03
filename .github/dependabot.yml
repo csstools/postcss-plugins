@@ -32,6 +32,19 @@ updates:
   versioning-strategy: increase
   rebase-strategy: auto
 - package-ecosystem: "npm"
+  directory: "/e2e-package-managers/yarn"
+  schedule:
+    interval: weekly
+    time: "01:00"
+    timezone: "Europe/Brussels"
+  groups:
+    all-dependencies:
+      patterns:
+        - "*"
+  open-pull-requests-limit: 2
+  versioning-strategy: increase
+  rebase-strategy: auto
+- package-ecosystem: "npm"
   directory: "/sites"
   schedule:
     interval: weekly

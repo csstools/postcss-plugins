@@ -133,7 +133,7 @@
 	animation: none 0s ease 0s 1 normal none running;
 	backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
-	border: medium none currentColor;
+	border: medium none currentcolor;
 	border-collapse: separate;
 	-o-border-image: none;
 	   border-image: none;
@@ -154,8 +154,8 @@
 	     column-fill: balance;
 	-moz-column-gap: normal;
 	     column-gap: normal;
-	-moz-column-rule: medium none currentColor;
-	     column-rule: medium none currentColor;
+	-moz-column-rule: medium none currentcolor;
+	     column-rule: medium none currentcolor;
 	-moz-column-span: 1;
 	     column-span: 1;
 	-moz-column-width: auto;
@@ -164,7 +164,6 @@
 	counter-increment: none;
 	counter-reset: none;
 	cursor: auto;
-	direction: ltr;
 	display: inline;
 	empty-cells: show;
 	float: none;
@@ -188,7 +187,7 @@
 	min-width: 0;
 	opacity: 1;
 	orphans: 2;
-	outline: medium none invert;
+	outline: medium none currentcolor;
 	overflow: visible;
 	overflow-x: visible;
 	overflow-y: visible;
@@ -217,7 +216,6 @@
 	transform-origin: 50% 50% 0;
 	transform-style: flat;
 	transition: none 0s ease 0s;
-	unicode-bidi: normal;
 	vertical-align: baseline;
 	visibility: visible;
 	white-space: normal;
@@ -491,22 +489,22 @@
 }
 
 .mod {
-	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
-	transform: rotate(mod(-140deg, -90deg));
-	width: mod(mod(-18px, 5px), 5px);
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+	width: 2px;
 }
 
 .rem {
-	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
-	transform: rotate(rem(-140deg, -90deg));
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
 }
 
 .round {
-	top: round(2.5px, 1px);
-	right: round(nearest, 2.5px, 1px);
-	bottom: round(up, 2.5px, 1px);
-	left: round(down, 2.5px, 1px);
-	padding-left: round(to-zero, 2.5px, 1px);
+	top: 3px;
+	right: 3px;
+	bottom: 3px;
+	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {
@@ -644,4 +642,8 @@
 
 .exponential-functions {
 	width: 8px;
+}
+
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
 }

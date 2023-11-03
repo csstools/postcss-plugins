@@ -1,12 +1,9 @@
-@layer {
-
 /* a.css */
-}
-
-@layer {
-
-@layer {
 /* b.css */
+
+@layer {
+
+@layer {
 
 .box {
 	background-color: red;

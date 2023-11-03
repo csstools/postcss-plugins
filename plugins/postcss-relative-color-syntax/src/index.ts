@@ -1,7 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
-import { cloneTokens, tokenize } from '@csstools/css-tokenizer';
+import { tokenize } from '@csstools/css-tokenizer';
 import { SyntaxFlag, color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
@@ -75,7 +75,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			let modifiedP3 = modifiedRGB;
 			if (opts?.subFeatures.displayP3) {
 				modifiedP3 = stringify(replaceComponentValues(
-					parseCommaSeparatedListOfComponentValues(cloneTokens(tokens)),
+					parseCommaSeparatedListOfComponentValues(tokens),
 					(componentValue) => {
 						if (isFunctionNode(componentValue) && nameRegex.test(componentValue.getName())) {
 							const colorData = color(componentValue);

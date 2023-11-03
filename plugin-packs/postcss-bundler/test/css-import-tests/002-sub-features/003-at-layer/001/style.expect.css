@@ -1,18 +1,18 @@
-@layer a {
 /* a.css */
-.box {
+@layer a {
+    .box {
 	background-color: red;
 }
 }
-@layer b {
 /* b.css */
-.box {
+@layer b {
+    .box {
 	background-color: green;
 }
 }
-@layer a {
 /* a.css */
-.box {
+@layer a {
+    .box {
 	background-color: red;
 }
 }

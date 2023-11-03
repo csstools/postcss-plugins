@@ -50,6 +50,8 @@ export default function getOptionsForBrowsersByFeature(supportedBrowsers, featur
 		case 'float-clear-logical-values':
 		case 'logical-resize':
 		case 'logical-viewport-units':
+		case 'logical-overflow':
+		case 'logical-overscroll-behavior':
 			{
 				if ('logical' in options) {
 					return options.logical;

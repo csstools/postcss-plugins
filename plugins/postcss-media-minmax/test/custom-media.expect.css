@@ -1,9 +1,11 @@
-@custom-media --one (width < 300px) {}
+@custom-media --one (max-width: 299.98px) {}
 
-@custom-media --two (width <= 300px), (width=300px) {}
+@custom-media --two (max-width: 300px), (width:300px) {}
 
-@custom-media --three (width = 300px) {}
+@custom-media --three (width: 300px) {}
 
-@custom-media /* a comment */ --four (width > 300px) {}
+@custom-media /* a comment */ --four (min-width: 300.02px) {}
 
-@custom-media /* a comment */ --five /* a comment */ (width >= 300px) /* a comment */ {}
+@custom-media /* a comment */ --five (min-width: 300px) /* a comment */ {}
+
+@custom-media /* a comment */ --six (min-width: 300px) , screen and (width: 400px) /* a comment */ {}

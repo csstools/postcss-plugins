@@ -1,10 +1,9 @@
-import path from 'path';
 import type { Document, Postcss, Result, Root, AtRule } from 'postcss';
-import { CharsetStatement, ImportStatement, Statement, isCharsetStatement, isImportStatement } from './statement';
+import { ImportStatement, Stylesheet, isImportStatement } from './statement';
 import { Condition } from './conditions';
 import { isValidDataURL } from './data-url';
-import { parseStatements } from './parse-statements';
-import { resolveId } from './resolve-id';
+import { parseStylesheet } from './parse-stylesheet';
+import { createRequire, resolveId } from './resolve-id';
 import { loadContent } from './load-content';
 import noopPlugin from './noop-plugin';
 import { IS_CHARSET } from './names';
@@ -16,65 +15,62 @@ export async function parseStyles(
 	conditions: Array<Condition>,
 	from: Array<string>,
 	postcss: Postcss,
-) {
-	const statements = parseStatements(result, styles, importingNode, conditions, from);
+): Promise<Stylesheet> {
+	const stylesheet = parseStylesheet(result, styles, importingNode, conditions, from);
 
-	for (const stmt of statements) {
-		if (!isImportStatement(stmt) || !isProcessableURL(stmt.uri)) {
+	{
+		// Lazy because the current stylesheet might not contain any further @import statements
+		let require: NodeRequire | undefined;
+		let sourceFile: string | undefined;
+		let base: string | undefined;
+
+		const jobs: Array<Promise<void>> = [];
+		for (const stmt of stylesheet.statements) {
+			if (!isImportStatement(stmt) || !isProcessableURL(stmt.uri)) {
+				continue;
+			}
+
+			if (!require || !sourceFile || !base) {
+				[require, sourceFile, base] = createRequire(stmt.node, result);
+				if (!require || !sourceFile || !base) {
+					continue;
+				}
+			}
+
+			jobs.push(resolveImportId(result, stmt, postcss, require, sourceFile, base));
+		}
+
+		if (jobs.length) {
+			await Promise.all(jobs);
+		}
+	}
+
+	for (let i = 0; i < stylesheet.statements.length; i++) {
+		const stmt = stylesheet.statements[i];
+
+		if (isImportStatement(stmt) && stmt.stylesheet) {
+			if (stylesheet.charset && stmt.stylesheet.charset && stylesheet.charset.params.toLowerCase() !== stmt.stylesheet.charset.params.toLowerCase()) {
+				throw stmt.stylesheet.charset.error(
+					'Incompatible @charset statements:\n' +
+					`  ${stmt.stylesheet.charset.params} specified in ${stmt.stylesheet.charset.source?.input.file}\n` +
+					`  ${stylesheet.charset.params} specified in ${stylesheet.charset.source?.input.file}`,
+				);
+			} else if (!stylesheet.charset && !!stmt.stylesheet.charset) {
+				stylesheet.charset = stmt.stylesheet.charset;
+			}
+
+			stylesheet.statements.splice(i, 1, ...stmt.stylesheet.statements);
+			i--;
 			continue;
 		}
-
-		await resolveImportId(result, stmt, postcss);
 	}
 
-	let charset: CharsetStatement | null = null;
-	const imports: Array<Statement> = [];
-	const bundle: Array<Statement> = [];
-
-	function handleCharset(stmt: CharsetStatement) {
-		if (!charset) {
-			charset = stmt;
-		} else if (
-			stmt.node.params.toLowerCase() !== charset.node.params.toLowerCase()
-		) {
-			throw stmt.node.error(
-				`Incompatible @charset statements:
-  ${stmt.node.params} specified in ${stmt.node.source?.input.file}
-  ${charset.node.params} specified in ${charset.node.source?.input.file}`,
-			);
-		}
-	}
-
-	// squash statements and their children
-	statements.forEach(stmt => {
-		if (isCharsetStatement(stmt)) {
-			handleCharset(stmt);
-		} else if (isImportStatement(stmt)) {
-			if (stmt.children) {
-				stmt.children.forEach((child) => {
-					if (isImportStatement(child)) {
-						imports.push(child);
-					} else if (isCharsetStatement(child)) {
-						handleCharset(child);
-					} else {
-						bundle.push(child);
-					}
-				});
-			} else {
-				imports.push(stmt);
-			}
-		} else if (stmt.type === 'nodes') {
-			bundle.push(stmt);
-		}
-	});
-
-	return charset ? [charset, ...imports.concat(bundle)] : imports.concat(bundle);
+	return stylesheet;
 }
 
-async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss) {
+async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss, require: NodeRequire, sourceFile: string, base: string) {
 	if (isValidDataURL(stmt.uri)) {
-		// eslint-disable-next-line require-atomic-updates
-		stmt.children = await loadImportContent(
+		stmt.stylesheet = await loadImportContent(
 			result,
 			stmt,
 			stmt.uri,
@@ -85,7 +81,7 @@ async function resolveImportId(result: Result, stmt: ImportStatement, postcss: P
 	} else if (isValidDataURL(stmt.from[stmt.from.length - 1])) {
 		// Data urls can't be used as a base url to resolve imports.
 		// Skip inlining and warn.
-		stmt.children = [];
+		stmt.stylesheet = { statements: [] };
 		result.warn(
 			`Unable to import '${stmt.uri}' from a stylesheet that is embedded in a data url`,
 			{
@@ -95,33 +91,16 @@ async function resolveImportId(result: Result, stmt: ImportStatement, postcss: P
 		return;
 	}
 
-	const atRule = stmt.node;
-	let sourceFile: string;
-	if (atRule.source?.input?.file) {
-		sourceFile = atRule.source.input.file;
-	} else {
-		stmt.children = [];
-		result.warn(
-			'The current PostCSS AST Node is lacking a source file reference. This is most likely a bug in a PostCSS plugin.',
-			{
-				node: stmt.node,
-			},
-		);
-		return;
-	}
-
-	const base = path.dirname(sourceFile);
-	const resolved = resolveId(stmt.uri, base, atRule);
+	const resolved = resolveId(stmt.node, require, stmt.uri, base);
 
 	result.messages.push({
 		type: 'dependency',
 		plugin: 'postcss-bundler',
-		resolved,
+		file: resolved,
 		parent: sourceFile,
 	});
 
-	const importedContent = await loadImportContent(result, stmt, resolved, postcss);
-	stmt.children = importedContent ?? [];
+	stmt.stylesheet = await loadImportContent(result, stmt, resolved, postcss);
 }
 
 async function loadImportContent(
@@ -129,11 +108,10 @@ async function loadImportContent(
 	stmt: ImportStatement,
 	filename: string,
 	postcss: Postcss,
-) {
+): Promise<Stylesheet> {
 	const { conditions, from, node } = stmt;
-
 	if (from.includes(filename)) {
-		return;
+		return { statements: [] };
 	}
 
 	let content: string;

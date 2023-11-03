@@ -31,7 +31,7 @@ export function sRGB_to_HSL(RGB: Color): Color {
 		if (Math.round(light * 100_000) === 0 || Math.round(light * 100_000) === 100_000) {
 			sat = 0;
 		} else {
-			sat = Math.max(0, (max - light) / Math.min(light, 1 - light));
+			sat = (max - light) / Math.min(light, 1 - light);
 		}
 
 		switch (max) {

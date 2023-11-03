@@ -1,25 +1,21 @@
-export function formatImportPrelude(layer: Array<string>, media: Array<string>, supports: Array<string>): string {
+export function formatImportPrelude(layer: string | undefined, media: string | undefined, supports: string | undefined): string {
 	const parts = [];
 
-	if (layer.length) {
-		const layerName = layer.join('.');
-
+	if (typeof layer !== 'undefined') {
 		let layerParams = 'layer';
-		if (layerName) {
-			layerParams = `layer(${layerName})`;
+		if (layer) {
+			layerParams = 'layer(' + layer + ')';
 		}
 
 		parts.push(layerParams);
 	}
 
-	if (supports.length === 1) {
-		parts.push(`supports(${supports[0]})`);
-	} else if (supports.length > 0) {
-		parts.push(`supports(${supports.map(x => `(${x})`).join(' and ')})`);
+	if (typeof supports !== 'undefined') {
+		parts.push('supports(' + supports + ')');
 	}
 
-	if (media.length) {
-		parts.push(media.join(', '));
+	if (typeof media !== 'undefined') {
+		parts.push(media);
 	}
 
 	return parts.join(' ');

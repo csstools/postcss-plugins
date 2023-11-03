@@ -11,6 +11,8 @@ export type pluginOptions = {
 	inlineDirection?: DirectionFlow,
 };
 
+const HAS_VIEWPORT_UNITS = /(?:vi|vb)\b/i;
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
@@ -43,9 +45,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-logical-viewport-units',
 		Declaration(decl, { atRule }) {
 			{
-				// Fast check
-				const lowerCaseValue = decl.value.toLowerCase();
-				if (!(lowerCaseValue.includes('vb') || lowerCaseValue.includes('vi'))) {
+				if (!HAS_VIEWPORT_UNITS.test(decl.value)) {
 					return;
 				}
 

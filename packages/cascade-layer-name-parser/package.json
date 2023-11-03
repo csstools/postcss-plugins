@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/cascade-layer-name-parser",
 	"description": "Parse CSS Cascade Layer names.",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -45,8 +45,8 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.3.1",
-		"@csstools/css-tokenizer": "^2.2.0"
+		"@csstools/css-parser-algorithms": "^2.3.2",
+		"@csstools/css-tokenizer": "^2.2.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

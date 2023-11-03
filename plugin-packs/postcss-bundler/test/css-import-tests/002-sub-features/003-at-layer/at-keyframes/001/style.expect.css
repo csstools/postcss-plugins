@@ -12,9 +12,9 @@
 	}
 }
 
-@layer {
-
 /* b.css */
+
+@layer {
 
 .box {
 	animation: BOX;

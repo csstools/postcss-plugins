@@ -2,14 +2,14 @@
 .box {
 	background-color: green;
 }
-@media (min-width: 1px) supports(display: block) {
 /* red.css */
+@media (min-width: 1px) supports(display: block) {
 	.box {
 	background-color: red;
 }
 }
-@media screen supports(display: block) {
 /* red.css */
+@media screen supports(display: block) {
 	.box {
 	background-color: red;
 }

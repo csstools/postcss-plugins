@@ -3,3 +3,4 @@
 	background-color: green;
 }
 @layer a;
+@import url("red.css");

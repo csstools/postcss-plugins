@@ -226,15 +226,7 @@ ol:hover > li.foo, ol:hover > li.bar, ol:focus > li.foo, ol:focus > li.bar, ul:h
 	order: 35;
 }
 
-:has(h1) {
-	order: 36;
-}
-
-:has(h2) {
-	order: 36;
-}
-
-:has(h3) {
+:has(:is(h1, h2, h3)) {
 	order: 36;
 }
 
@@ -260,4 +252,24 @@ h1.a, h2.a, h3.a, h4.a, h5.a, h6.a, .a h1, .a h2, .a h3, .a h4, .a h5, .a h6 {
 
 input:hover, input:focus, button:hover, button:focus {
 	to-clone: 1;
+}
+
+.a header.b {
+	color: green;
+}
+
+>:is(.a .b) {
+	color: green;
+}
+
+:has(:is(.foo .bar)) {
+	color: green;
+}
+
+:has( .fooz .bar,:is(.foo .bar)) {
+	color: green;
+}
+
+:has(:is(.foo .bar) .fooz) {
+	color: green;
 }

@@ -36,11 +36,6 @@
 }
 
 .border-color {
-	/* border-bottom-color */
-	border-bottom-color: inherit;
-}
-
-.border-color {
 	/* border-inline-end-color */
 	border-right-color: inherit;
 }
@@ -56,23 +51,8 @@
 }
 
 .border-color {
-	/* border-left-color */
-	border-left-color: inherit;
-}
-
-.border-color {
 	/* border-right-color */
 	border-right-color: inherit;
-}
-
-.border-color {
-	/* border-right-color */
-	border-right-color: inherit;
-}
-
-.border-color {
-	/* border-top-color */
-	border-top-color: inherit;
 }
 
 .border-color {
@@ -342,12 +322,12 @@
 
 .overflow {
 	/* overflow-block */
-	overflow-block: inherit;
+	overflow-y: inherit;
 }
 
 .overflow {
 	/* overflow-inline */
-	overflow-inline: inherit;
+	overflow-x: inherit;
 }
 
 .overflow {
@@ -402,12 +382,12 @@
 
 .overscroll-behavior {
 	/* overscroll-behavior-block */
-	overscroll-behavior-block: inherit;
+	overscroll-behavior-y: inherit;
 }
 
 .overscroll-behavior {
 	/* overscroll-behavior-inline */
-	overscroll-behavior-inline: inherit;
+	overscroll-behavior-x: inherit;
 }
 
 .overscroll-behavior {

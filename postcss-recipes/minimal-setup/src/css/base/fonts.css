@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src:
+		url('../../../dist/fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}
+

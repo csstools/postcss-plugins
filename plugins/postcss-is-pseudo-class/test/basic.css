@@ -153,3 +153,23 @@ foo[baz=":is(.some, .other)"], .ok {
 :is(input, button):is(:hover, :focus) {
 	to-clone: 1;
 }
+
+header:is(.a .b) {
+	color: green;
+}
+
+>:is(.a .b) {
+	color: green;
+}
+
+:has(:is(.foo .bar)) {
+	color: green;
+}
+
+:has(:is(.foo .bar), .fooz .bar) {
+	color: green;
+}
+
+:has(:is(.foo .bar) .fooz) {
+	color: green;
+}

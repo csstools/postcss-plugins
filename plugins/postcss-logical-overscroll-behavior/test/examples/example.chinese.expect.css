@@ -1,0 +1,7 @@
+.inline {
+	overscroll-behavior-y: auto;
+}
+
+.block {
+	overscroll-behavior-x: contain;
+}

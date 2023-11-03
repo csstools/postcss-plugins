@@ -1,5 +1,5 @@
 export type Condition = {
-	layer: Array<string>
-	media: Array<string>
-	supports: Array<string>
+	layer?: string
+	media?: string
+	supports?: string
 }

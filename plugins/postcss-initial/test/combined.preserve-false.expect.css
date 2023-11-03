@@ -1,0 +1,16 @@
+a {
+	animation: none 0s ease 0s 1 normal none running;
+	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
+	border: medium none currentcolor;
+	column-rule: medium none currentcolor;
+	font-family: serif;
+	font-size: medium;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: normal;
+	list-style: disc outside none;
+	outline: medium none currentcolor;
+	text-decoration: none;
+}

@@ -1,0 +1,13 @@
+:root {
+	--color-foreground: rgb(0 0 0);
+	--color-background: rgb(255 255 255);
+
+	--font-sans: "Atkinson Hyperlegible", "Helvetica Neue", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-foreground: rgb(255 255 255);
+		--color-background: rgb(0 0 0);
+	}
+}

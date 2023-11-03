@@ -100,6 +100,11 @@
 		"importName": "postcssFontVariant"
 	},
 	{
+		"packageName": "@csstools/postcss-gamut-mapping",
+		"id": "gamut-mapping",
+		"importName": "postcssGamutMapping"
+	},
+	{
 		"packageName": "postcss-gap-properties",
 		"id": "gap-properties",
 		"importName": "postcssGapProperties"
@@ -125,7 +130,7 @@
 		"importName": "postcssImageSetFunction"
 	},
 	{
-		"packageName": "postcss-initial",
+		"packageName": "@csstools/postcss-initial",
 		"id": "all-property",
 		"importName": "postcssInitial"
 	},
@@ -153,6 +158,16 @@
 		"packageName": "@csstools/postcss-logical-float-and-clear",
 		"id": "float-clear-logical-values",
 		"importName": "postcssLogicalFloatAndClear"
+	},
+	{
+		"packageName": "@csstools/postcss-logical-overflow",
+		"id": "logical-overflow",
+		"importName": "postcssLogicalOverflow"
+	},
+	{
+		"packageName": "@csstools/postcss-logical-overscroll-behavior",
+		"id": "logical-overscroll-behavior",
+		"importName": "postcssLogicalOverscrollBehavor"
 	},
 	{
 		"packageName": "@csstools/postcss-logical-resize",
@@ -264,5 +279,12 @@
 		"packageName": "@csstools/postcss-text-decoration-shorthand",
 		"id": "text-decoration-shorthand",
 		"importName": "postcssTextDecorationShorthand"
+	},
+	{
+		"packageName": "@csstools/postcss-progressive-custom-properties",
+		"id": "progressive-custom-properties",
+		"importName": "postcssProgressiveCustomProperties",
+		"omitTypedOptions": true,
+		"omitDocs": true
 	}
 ]

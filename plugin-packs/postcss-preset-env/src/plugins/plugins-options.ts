@@ -1,4 +1,4 @@
-import type { pluginOptions as postcssInitial } from '../types/postcss-initial/plugin-options';
+import type { pluginOptions as postcssInitial } from '@csstools/postcss-initial';
 import type { pluginOptions as postcssPseudoClassAnyLink } from 'postcss-pseudo-class-any-link';
 import type { pluginOptions as postcssBlankPseudo } from 'css-blank-pseudo';
 import type { pluginOptions as postcssPageBreak } from '../types/postcss-page-break/plugin-options';
@@ -20,6 +20,7 @@ import type { pluginOptions as postcssFocusVisible } from 'postcss-focus-visible
 import type { pluginOptions as postcssFocusWithin } from 'postcss-focus-within';
 import type { pluginOptions as postcssFontFormatKeywords } from '@csstools/postcss-font-format-keywords';
 import type { pluginOptions as postcssFontVariant } from '../types/postcss-font-variant/plugin-options';
+import type { pluginOptions as postcssGamutMapping } from '@csstools/postcss-gamut-mapping';
 import type { pluginOptions as postcssGapProperties } from 'postcss-gap-properties';
 import type { pluginOptions as postcssGradientsInterpolationMethod } from '@csstools/postcss-gradients-interpolation-method';
 import type { pluginOptions as postcssHasPseudo } from 'css-has-pseudo';
@@ -29,6 +30,8 @@ import type { pluginOptions as postcssICUnit } from '@csstools/postcss-ic-unit';
 import type { pluginOptions as postcssImageSetFunction } from 'postcss-image-set-function';
 import type { pluginOptions as postcssIsPseudoClass } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunction } from 'postcss-lab-function';
+import type { pluginOptions as postcssLogicalOverflow } from '@csstools/postcss-logical-overflow';
+import type { pluginOptions as postcssLogicalOverscrollBehavor } from '@csstools/postcss-logical-overscroll-behavior';
 import type { pluginOptions as postcssLogical } from 'postcss-logical';
 import type { pluginOptions as postcssLogicalResize } from '@csstools/postcss-logical-resize';
 import type { pluginOptions as postcssLogicalViewportUnits } from '@csstools/postcss-logical-viewport-units';
@@ -53,7 +56,7 @@ import type { pluginOptions as postcssTrigonometricFunctions } from '@csstools/p
 import type { pluginOptions as postcssUnsetValue } from '@csstools/postcss-unset-value';
 
 export type pluginsOptions = {
-	/** plugin options for "postcss-initial" */
+	/** plugin options for "@csstools/postcss-initial" */
 	'all-property'?: postcssInitial | boolean
 	/** plugin options for "postcss-pseudo-class-any-link" */
 	'any-link-pseudo-class'?: postcssPseudoClassAnyLink | boolean
@@ -97,6 +100,8 @@ export type pluginsOptions = {
 	'font-format-keywords'?: postcssFontFormatKeywords | boolean
 	/** plugin options for "postcss-font-variant" */
 	'font-variant-property'?: postcssFontVariant | boolean
+	/** plugin options for "@csstools/postcss-gamut-mapping" */
+	'gamut-mapping'?: postcssGamutMapping | boolean
 	/** plugin options for "postcss-gap-properties" */
 	'gap-properties'?: postcssGapProperties | boolean
 	/** plugin options for "@csstools/postcss-gradients-interpolation-method" */
@@ -115,6 +120,10 @@ export type pluginsOptions = {
 	'is-pseudo-class'?: postcssIsPseudoClass | boolean
 	/** plugin options for "postcss-lab-function" */
 	'lab-function'?: postcssLabFunction | boolean
+	/** plugin options for "@csstools/postcss-logical-overflow" */
+	'logical-overflow'?: postcssLogicalOverflow | boolean
+	/** plugin options for "@csstools/postcss-logical-overscroll-behavior" */
+	'logical-overscroll-behavior'?: postcssLogicalOverscrollBehavor | boolean
 	/** plugin options for "postcss-logical" */
 	'logical-properties-and-values'?: postcssLogical | boolean
 	/** plugin options for "@csstools/postcss-logical-resize" */

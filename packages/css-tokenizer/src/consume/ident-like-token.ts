@@ -23,7 +23,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 		];
 	}
 
-	if (checkIfCodePointsMatchURLIdent(ctx, codePoints)) {
+	if (checkIfCodePointsMatchURLIdent(codePoints)) {
 		reader.advanceCodePoint();
 
 		let read = 0;
@@ -32,7 +32,7 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 			const firstIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor]);
 			const secondIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor+1]);
 			if (firstIsWhitespace && secondIsWhitespace) {
-				read += 1;
+				read = read + 1;
 				reader.advanceCodePoint(1);
 				continue;
 			}

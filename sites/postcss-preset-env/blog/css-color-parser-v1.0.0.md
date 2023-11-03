@@ -12,6 +12,7 @@ oklch(calc(50% * 1.4) 0.268 134.568)
 </textarea>
 <output id="color-output-rgb-1" class="color-output-rgb" for="color-input-1" style="--color: rgb(88, 186, 0);">rgb(88, 186, 0)</output>
 <output id="color-output-p3-1" class="color-output-p3" for="color-input-1" style="--color: color(display-p3 0.41387 0.73323 0);">color(display-p3 0.41387 0.73323 0)</output>
+<output id="color-output-oklch-1" class="color-output-oklch" for="color-input-1" style="--color: oklch(0.7 0.268 134.568);">oklch(0.7 0.268 134.568)</output>
 
 ## One more specialized parser
 
@@ -88,10 +89,12 @@ color-mix(
 <output id="color-output-rgb-2" class="color-output-rgb" for="color-input-2" style="--color: rgba(255, 99, 0, 0.339833);">rgba(255, 99, 0, 0.339833)</output>
 <output id="color-output-p3-2" class="color-output-p3" for="color-input-2" style="--color: color(display-p3 0.9361 0.42808 0.14191 / 0.339833);">color(display-p3 0.9361 0.42808 0.14191 / 0.339833)</output>
 
+<output id="color-output-oklch-2" class="color-output-oklch" for="color-input-2" style="--color: oklch(0.69433 0.21132 43.7908 / 0.34);">oklch(0.69433 0.21132 43.7908 / 0.34)</output>
+
 {% block scripts %}<script async defer src="{{ '/static/js/blog_color_parser_2023_03_27.js' | addHash }}"></script>{% endblock %}
 
 <style>
-	.color-input, .color-output-rgb, .color-output-p3 {
+	.color-input, .color-output-rgb, .color-output-p3, .color-output-oklch {
 		background-color: #263238;
 		border-radius: 3px;
 		border: 1px solid grey;
@@ -108,7 +111,8 @@ color-mix(
 	}
 
 	.color-output-rgb::after,
-	.color-output-p3::after {
+	.color-output-p3::after,
+	.color-output-oklch::after {
 		background-color: var(--color);
 		border-radius: 50%;
 		content: "";

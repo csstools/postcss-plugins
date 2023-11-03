@@ -41,7 +41,7 @@ function clip(t){return t.map((t=>t<0?0:t>1?1:t))}
  *
  * @see https://en.wikipedia.org/wiki/SRGB
  */
-function lin_sRGB(t){return t.map((function(t){const _=t<0?-1:1,o=Math.abs(t);return o<.04045?t/12.92:_*Math.pow((o+.055)/1.055,2.4)}))}
+function lin_sRGB(t){return t.map((function(t){const _=t<0?-1:1,o=Math.abs(t);return o<=.04045?t/12.92:_*Math.pow((o+.055)/1.055,2.4)}))}
 /**
  * Simple matrix (and vector) multiplication
  * Warning: No error handling for incompatible dimensions!
@@ -315,7 +315,7 @@ function OKLab_to_OKLCH(t){const _=180*Math.atan2(t[2],t[1])/Math.PI;return[t[0]
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/rgbToHsl.js
- */function sRGB_to_HSL(t){const _=t[0],o=t[1],n=t[2],r=Math.max(_,o,n),e=Math.min(_,o,n),a=(e+r)/2,i=r-e;let l=NaN,u=0;if(0!==Math.round(1e5*i)){switch(u=0===Math.round(1e5*a)||1e5===Math.round(1e5*a)?0:Math.max(0,(r-a)/Math.min(a,1-a)),r){case _:l=(o-n)/i+(o<n?6:0);break;case o:l=(n-_)/i+2;break;case n:l=(_-o)/i+4}l*=60}return[l,100*u,100*a]}
+ */function sRGB_to_HSL(t){const _=t[0],o=t[1],n=t[2],r=Math.max(_,o,n),e=Math.min(_,o,n),a=(e+r)/2,i=r-e;let l=NaN,u=0;if(0!==Math.round(1e5*i)){switch(u=0===Math.round(1e5*a)||1e5===Math.round(1e5*a)?0:(r-a)/Math.min(a,1-a),r){case _:l=(o-n)/i+(o<n?6:0);break;case o:l=(n-_)/i+2;break;case n:l=(_-o)/i+4}l*=60}return[l,100*u,100*a]}
 /**
  * Assuming XYZ is relative to D50, convert to CIE Lab
  * from CIE standard, which now defines these as a rational fraction

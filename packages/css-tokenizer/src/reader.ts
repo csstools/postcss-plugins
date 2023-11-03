@@ -30,7 +30,7 @@ export class Reader implements CodePointReader {
 	}
 
 	advanceCodePoint(n = 1): void {
-		this.cursor += n;
+		this.cursor = this.cursor + n;
 		this.representationEnd = this.representationIndices[this.cursor];
 	}
 
@@ -40,14 +40,14 @@ export class Reader implements CodePointReader {
 			return false;
 		}
 
-		this.cursor += n;
+		this.cursor = this.cursor + n;
 		this.representationEnd = this.representationIndices[this.cursor];
 
 		return codePoint;
 	}
 
 	unreadCodePoint(n = 1): void {
-		this.cursor -= n;
+		this.cursor = this.cursor - n;
 		this.representationEnd = this.representationIndices[this.cursor];
 
 		return;

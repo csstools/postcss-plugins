@@ -1,4 +1,4 @@
-/* [postcss-cascade-layers]: To use the @import at-rule with layer, the postcss-import plugin is also required. This plugin alone will not support importing layers. */
+/* [postcss-cascade-layers]: To use the @import at-rule with layer, the postcss-import plugin is also required. This plugin alone will not support importing layers. *//* imports/theme.css */
 .theme-styles {
 	color:red;
 }
@@ -6,7 +6,7 @@
 	.theme-styles {
 			color: pink;
 		}
-}
+}/* imports/theme-overrides.css */
 .theme-styles:not(#\#) {
 	color:blue;
 }

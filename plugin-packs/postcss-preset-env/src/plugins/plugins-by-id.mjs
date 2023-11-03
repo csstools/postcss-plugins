@@ -1,4 +1,4 @@
-import postcssInitial from 'postcss-initial';
+import postcssInitial from '@csstools/postcss-initial';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssPageBreak from 'postcss-page-break';
@@ -20,6 +20,7 @@ import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssFontVariant from 'postcss-font-variant';
+import postcssGamutMapping from '@csstools/postcss-gamut-mapping';
 import postcssGapProperties from 'postcss-gap-properties';
 import postcssGradientsInterpolationMethod from '@csstools/postcss-gradients-interpolation-method';
 import postcssHasPseudo from 'css-has-pseudo';
@@ -29,6 +30,8 @@ import postcssICUnit from '@csstools/postcss-ic-unit';
 import postcssImageSetFunction from 'postcss-image-set-function';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
+import postcssLogicalOverflow from '@csstools/postcss-logical-overflow';
+import postcssLogicalOverscrollBehavor from '@csstools/postcss-logical-overscroll-behavior';
 import postcssLogical from 'postcss-logical';
 import postcssLogicalResize from '@csstools/postcss-logical-resize';
 import postcssLogicalViewportUnits from '@csstools/postcss-logical-viewport-units';
@@ -43,6 +46,7 @@ import postcssOverflowShorthand from 'postcss-overflow-shorthand';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax';
 import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
@@ -77,6 +81,7 @@ export const pluginsById = new Map(
 		['focus-within-pseudo-class', postcssFocusWithin],
 		['font-format-keywords', postcssFontFormatKeywords],
 		['font-variant-property', postcssFontVariant],
+		['gamut-mapping', postcssGamutMapping],
 		['gap-properties', postcssGapProperties],
 		['gradients-interpolation-method', postcssGradientsInterpolationMethod],
 		['has-pseudo-class', postcssHasPseudo],
@@ -86,6 +91,8 @@ export const pluginsById = new Map(
 		['image-set-function', postcssImageSetFunction],
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],
+		['logical-overflow', postcssLogicalOverflow],
+		['logical-overscroll-behavior', postcssLogicalOverscrollBehavor],
 		['logical-properties-and-values', postcssLogical],
 		['logical-resize', postcssLogicalResize],
 		['logical-viewport-units', postcssLogicalViewportUnits],
@@ -100,6 +107,7 @@ export const pluginsById = new Map(
 		['overflow-wrap-property', postcssReplaceOverflowWrap],
 		['place-properties', postcssPlace],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
+		['progressive-custom-properties', postcssProgressiveCustomProperties],
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['relative-color-syntax', postcssRelativeColorSyntax],
 		['scope-pseudo-class', postcssScopePseudoClass],

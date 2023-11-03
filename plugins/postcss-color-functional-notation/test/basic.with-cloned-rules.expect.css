@@ -14,7 +14,7 @@
 	color-7: rgb(178 34 34 / calc(1 / 2));
 }
 
-@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .test-rgb {
 	color-6: rgb(178 34 34 / var(--alpha-50));
 }
@@ -32,7 +32,7 @@
 	color-5: rgba(178 34 34 / CaLC(1 / 2));
 }
 
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgba(0 0 0 / 0)) {
 .test-rgba {
 	color-4: rgba(178 34 34 / VaR(--alpha-50));
 }
@@ -77,7 +77,7 @@
 	color-13: hsl(3.14159rad 100% 50 / calc(1 / 2));
 }
 
-@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 .test-hsl {
 	color-12: hsl(3.14159rad 100% 50 / var(--alpha-50));
 }
@@ -99,7 +99,7 @@
 	color-7: hsla(120 100% 50% / calc(1 / 2));
 }
 
-@supports (color: hsla(0 0% 0% / 0)) and (top: var(--f)) {
+@supports (color: hsla(0 0% 0% / 0)) {
 .test-hsla {
 	color-6: hsla(120 100% 50% / var(--alpha-50));
 }

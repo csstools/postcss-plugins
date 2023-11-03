@@ -1,72 +1,87 @@
-import type { AtRule, Container, Document, PluginCreator } from 'postcss';
-import { TokenType, stringify, tokenize } from '@csstools/css-tokenizer';
-
-/** postcss-minify plugin options */
-export type pluginOptions = never;
+import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
+import type { CSSToken } from '@csstools/css-tokenizer';
+import { TokenType, tokenize } from '@csstools/css-tokenizer';
 
 const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
 const HAS_SOURCE_MAP = /sourceMappingURL/i;
-const HAS_WHITESPACE_OR_COMMENTS = /(?:[\s]|\/\*)/;
+const HAS_WHITESPACE_OR_COMMENTS = /(?:\s|\/\*)/;
+const IS_LAYER = /^layer$/i;
 
-function minify(x: string | undefined): string | undefined {
-	if (!x || !HAS_WHITESPACE_OR_COMMENTS.test(x)) {
+function minify(cache: Map<string, string>, x: string | undefined): string | undefined {
+	if (!x) {
 		return x;
 	}
 
-	if (x.trim() === '') {
-		return ' ';
+	if (cache.has(x)) {
+		return cache.get(x);
 	}
 
-	const tokens = tokenize({ css: x });
+	const y = x.trim();
+	if (y === '') {
+		cache.set(x, '');
+		return '';
+	}
 
+	if (!HAS_WHITESPACE_OR_COMMENTS.test(y)) {
+		cache.set(x, y);
+		return y;
+	}
+
+	const tokens = tokenize({ css: y });
+
+	let lastWasWhitespace = false;
+	let token: CSSToken;
 	for (let i = 0; i < tokens.length; i++) {
-		const token = tokens[i];
+		token = tokens[i];
 		if (
 			token[0] === TokenType.Comment ||
 			token[0] === TokenType.Whitespace
 		) {
-			token[1] = ' ';
-
-			let nextToken = tokens[i + 1];
-			while (
-				nextToken &&
-				(
-					nextToken[0] === TokenType.Comment ||
-					nextToken[0] === TokenType.Whitespace
-				)
-			) {
-				nextToken[1] = '';
-
-				i++;
-				nextToken = tokens[i + 1];
+			if (lastWasWhitespace) {
+				token[1] = '';
+			} else {
+				token[1] = ' ';
 			}
+
+			lastWasWhitespace = true;
+		} else {
+			lastWasWhitespace = false;
 		}
 	}
 
-	return stringify(...tokens);
+	let minified = '';
+	for (let i = 0; i < tokens.length; i++) {
+		minified = minified + tokens[i][1];
+	}
+
+	cache.set(x, minified);
+
+	return minified;
 }
 
 function removeEmptyNodes(node: Container | Document): boolean {
 	if (node.type === 'rule') {
 		if (node.nodes?.length === 0) {
 			const parent = node.parent;
-			node.remove();
-
-			if (parent?.nodes?.length === 0) {
-				removeEmptyNodes(parent);
+			if (!parent) {
+				return false;
 			}
+
+			node.remove();
+			removeEmptyNodes(parent);
 
 			return true;
 		}
 
 	} else if (node.type === 'atrule') {
-		if (node.nodes?.length === 0 && (node as AtRule).name.toLowerCase() !== 'layer') {
+		if (node.nodes?.length === 0 && !IS_LAYER.test((node as AtRule).name)) {
 			const parent = node.parent;
-			node.remove();
-
-			if (parent?.nodes?.length === 0) {
-				removeEmptyNodes(parent);
+			if (!parent) {
+				return false;
 			}
+
+			node.remove();
+			removeEmptyNodes(parent);
 
 			return true;
 		}
@@ -75,84 +90,95 @@ function removeEmptyNodes(node: Container | Document): boolean {
 	return false;
 }
 
+function setSemicolon(node: AtRule | Rule) {
+	if (node.raws.semicolon) {
+		const last = node.last;
+		if (last?.type !== 'decl' || !last.variable) {
+			node.raws.semicolon = false;
+		}
+	}
+}
+
+/** postcss-minify plugin options */
+export type pluginOptions = never;
+
 const creator: PluginCreator<pluginOptions> = () => {
+	const cache = new Map<string, string>();
+
 	return {
 		postcssPlugin: 'postcss-minify',
 		OnceExit(css) {
-			css.raws = {
-				before: '',
-				after: '\n',
-			};
+			css.raws.before = '';
+			css.raws.after = '\n';
 
 			css.walk((node) => {
-				if (node.type === 'comment') {
-					if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+				switch (node.type) {
+					case 'atrule':
+						if (removeEmptyNodes(node)) {
+							return;
+						}
+
+						node.raws.after = '';
+						node.raws.afterName = ' ';
+						node.raws.before = '';
+						node.raws.between = '';
+						node.raws.params = undefined;
+
+						setSemicolon(node);
+
+						node.params = minify(cache, node.params)!;
+
 						return;
-					}
 
-					node.remove();
-					return;
-				}
+					case 'rule':
 
-				if (node.type === 'decl' && node.variable) {
-					node.raws = {
-						...node.raws,
-						before: minify(node.raws?.before),
-					};
+						if (removeEmptyNodes(node)) {
+							return;
+						}
 
-					// never minify or modify variables
-					// browsers and CSSOM in particular handle these differently
-					return;
-				}
+						node.raws.after = '';
+						node.raws.before = '';
+						node.raws.between = '';
+						node.raws.selector = undefined;
 
-				if (node.type === 'atrule') {
+						setSemicolon(node);
 
-					if (removeEmptyNodes(node)) {
+						node.selector = minify(cache, node.selector)!;
+
 						return;
-					}
 
-					node.raws = {
-						before: minify(node.raws?.before),
-						after: minify(node.raws?.after),
-						between: minify(node.raws?.between),
-						semicolons: node.raws?.semicolons,
-						afterName: minify(node.raws?.afterName),
-					};
+					case 'decl':
 
-					node.params = minify(node.params)!;
+						if (node.prop.startsWith('--')) {
+							node.raws.before = '';
 
-					return;
-				}
+							// never minify or modify variables
+							// browsers and CSSOM in particular handle these differently
+							return;
+						}
 
-				if (node.type === 'rule') {
+						node.raws.before = '';
+						node.raws.between = ':';
+						node.raws.important = node.important ? '!important' : '';
+						node.raws.value = undefined;
 
-					if (removeEmptyNodes(node)) {
+						node.value = minify(cache, node.value)!;
+
 						return;
-					}
 
-					node.raws = {
-						before: minify(node.raws?.before),
-						after: minify(node.raws?.after),
-						between: minify(node.raws?.between),
-						semicolons: node.raws?.semicolons,
-					};
+					case 'comment':
 
-					node.selector = minify(node.selector)!;
+						if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+							node.raws.before = '';
+							return;
+						}
 
-					return;
-				}
+						node.remove();
 
-				if (node.type === 'decl') {
+						return;
 
-					node.raws = {
-						before: minify(node.raws?.before),
-						between: ':',
-						semicolons: node.raws?.semicolons,
-						important: node.important ? '!important' : '',
-					};
-
-					node.value = minify(node.value)!;
-
+					default:
+						break;
 				}
 			});
 		},

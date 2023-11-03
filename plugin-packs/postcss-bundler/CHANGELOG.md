@@ -1,6 +1,54 @@
 # Changes to PostCSS Bundler
 
-### Unreleased (major)
+### 1.0.7
+
+_October 31, 2023_
+
+- Fix layer statements that precede `@import` statements which link to external resources
+
+### 1.0.6
+
+_October 5, 2023_
+
+- Ignore urls with url modifiers (e.g. `url("foo.css" some-modifier)`)
+- Reduce some complexity in the codebase
+
+### 1.0.5
+
+_October 2, 2023_
+
+- Ignore `@import` statements where `supports` or `layer` conditions precede the `url` value.
+
+### 1.0.4
+
+_September 24, 2023_
+
+- Small performance improvements
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#221) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.3.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#232) (patch)
+- Updated [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url) to [`1.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url/CHANGELOG.md#103) (patch)
+
+### 1.0.3
+
+_September 3, 2023_
+
+- Updated [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url) to [`1.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url/CHANGELOG.md#102) (patch)
+
+### 1.0.2
+
+_September 2, 2023_
+
+- Updated [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url/CHANGELOG.md#101) (patch)
+
+### 1.0.1
+
+_August 28, 2023_
+
+- Fix `dependency` PostCSS message
+
+### 1.0.0
+
+_August 28, 2023_
 
 - Initial major version
 

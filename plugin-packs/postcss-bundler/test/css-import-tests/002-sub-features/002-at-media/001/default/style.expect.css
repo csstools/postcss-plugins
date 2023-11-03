@@ -1,6 +1,6 @@
-@media screen {
 /* a.css */
-.box {
+@media screen {
+    .box {
 	background-color: green;
 }
 }

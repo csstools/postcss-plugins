@@ -319,6 +319,15 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 	a_channels = colorDataTo(a_color, outputColorNotation).channels;
 	b_channels = colorDataTo(b_color, outputColorNotation).channels;
 
+	a_channels[0] = fillInMissingComponent(a_channels[0], b_channels[0]);
+	b_channels[0] = fillInMissingComponent(b_channels[0], a_channels[0]);
+
+	a_channels[1] = fillInMissingComponent(a_channels[1], b_channels[1]);
+	b_channels[1] = fillInMissingComponent(b_channels[1], a_channels[1]);
+
+	a_channels[2] = fillInMissingComponent(a_channels[2], b_channels[2]);
+	b_channels[2] = fillInMissingComponent(b_channels[2], a_channels[2]);
+
 	a_channels[0] = premultiply(a_channels[0], a_alpha);
 	a_channels[1] = premultiply(a_channels[1], a_alpha);
 	a_channels[2] = premultiply(a_channels[2], a_alpha);
@@ -437,43 +446,57 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			break;
 	}
 
-	if (!Number.isNaN(a_hue) && !Number.isNaN(b_hue)) {
-		const angleDiff = b_hue - a_hue;
+	a_hue = fillInMissingComponent(a_hue, b_hue);
+	if (Number.isNaN(a_hue)) {
+		a_hue = 0;
+	}
 
-		switch (hueInterpolationMethod) {
-			case 'shorter':
-				if (angleDiff > 180) {
-					a_hue += 360;
-				} else if (angleDiff < -180) {
-					b_hue += 360;
-				}
+	b_hue = fillInMissingComponent(b_hue, a_hue);
+	if (Number.isNaN(b_hue)) {
+		b_hue = 0;
+	}
 
-				break;
-			case 'longer':
-				if (-180 < angleDiff && angleDiff < 180) {
-					if (angleDiff > 0) {
-						a_hue += 360;
-					} else {
-						b_hue += 360;
-					}
-				}
+	a_first = fillInMissingComponent(a_first, b_first);
+	b_first = fillInMissingComponent(b_first, a_first);
 
-				break;
-			case 'increasing':
-				if (angleDiff < 0) {
-					b_hue += 360;
-				}
+	a_second = fillInMissingComponent(a_second, b_second);
+	b_second = fillInMissingComponent(b_second, a_second);
 
-				break;
-			case 'decreasing':
+	const angleDiff = b_hue - a_hue;
+
+	switch (hueInterpolationMethod) {
+		case 'shorter':
+			if (angleDiff > 180) {
+				a_hue += 360;
+			} else if (angleDiff < -180) {
+				b_hue += 360;
+			}
+
+			break;
+		case 'longer':
+			if (-180 < angleDiff && angleDiff < 180) {
 				if (angleDiff > 0) {
 					a_hue += 360;
+				} else {
+					b_hue += 360;
 				}
+			}
 
-				break;
-			default:
-				throw new Error('Unknown hue interpolation method');
-		}
+			break;
+		case 'increasing':
+			if (angleDiff < 0) {
+				b_hue += 360;
+			}
+
+			break;
+		case 'decreasing':
+			if (angleDiff > 0) {
+				a_hue += 360;
+			}
+
+			break;
+		default:
+			throw new Error('Unknown hue interpolation method');
 	}
 
 	a_first = premultiply(a_first, a_alpha);
@@ -524,15 +547,15 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 	return colorData;
 }
 
+function fillInMissingComponent(a: number, b: number): number {
+	if (Number.isNaN(a)) {
+		return b;
+	}
+
+	return a;
+}
+
 function interpolate(start: number, end: number, p: number): number {
-	if (Number.isNaN(start)) {
-		return end;
-	}
-
-	if (Number.isNaN(end)) {
-		return start;
-	}
-
 	return (start * p) + end * (1 - p);
 }
 

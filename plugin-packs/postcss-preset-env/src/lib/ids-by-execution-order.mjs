@@ -15,6 +15,8 @@ export default [
 	'not-pseudo-class', // run not-pseudo-class after other selectors have been transpiled
 	'logical-properties-and-values', // run logical-properties-and-values before dir-pseudo-class
 	'float-clear-logical-values',
+	'logical-overflow',
+	'logical-overscroll-behavior',
 	'logical-resize',
 	'logical-viewport-units',
 	'dir-pseudo-class',
@@ -60,4 +62,7 @@ export default [
 	'custom-properties',
 
 	'cascade-layers',
+
+	'progressive-custom-properties',
+	'gamut-mapping',
 ];

@@ -10,7 +10,7 @@
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-⚠️ [PostCSS Custom Media] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Using [`postcss-import`](https://www.npmjs.com/package/postcss-import) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
+⚠️ [PostCSS Custom Media] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or in parallel the output will be incorrect.<br>Using [`@csstools/postcss-bundler`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
 
 
 ## Node
@@ -124,7 +124,7 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
-									["postcss-import"],
+									["@csstools/postcss-bundler"],
 									[
 										"postcss-custom-media",
 										{

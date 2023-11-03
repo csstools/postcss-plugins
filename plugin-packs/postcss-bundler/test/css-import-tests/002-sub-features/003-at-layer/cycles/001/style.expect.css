@@ -1,37 +1,33 @@
 /* b.css */
-@layer {
 /* green.css */
-.box {
+@layer {
+    .box {
 	background-color: green;
 }
 }
 /* a.css */
-@layer {
 /* red.css */
-.box {
+@layer {
+    .box {
 	background-color: red;
 }
 }
 /* c.css */
-@layer {
 /* a.css */
-}
-@layer {
-@layer {
 /* red.css */
-.box {
+@layer {
+    @layer {
+        .box {
 	background-color: red;
 }
+    }
 }
-}
-@layer {
 /* b.css */
-}
-@layer {
-@layer {
 /* green.css */
-.box {
+@layer {
+    @layer {
+        .box {
 	background-color: green;
 }
-}
+    }
 }

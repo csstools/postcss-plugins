@@ -62,7 +62,6 @@ body:
       options:
         - PostCSS Preset Env
         - PostCSS Bundler
-        - CSS All Property
         - CSS Blank Pseudo
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
@@ -85,15 +84,20 @@ body:
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
+        - PostCSS Gamut Mapping
         - PostCSS Gap Properties
         - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
+        - PostCSS IC Unit
         - PostCSS Image Set Function
+        - PostCSS Initial
         - PostCSS Is Pseudo Class
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Logical Float and Clear
+        - PostCSS Logical Overflow
+        - PostCSS Logical Overscroll Behavior
         - PostCSS Logical Resize
         - PostCSS Logical Viewport Units
         - PostCSS Media Queries Aspect-Ratio Number Values
@@ -113,6 +117,7 @@ body:
         - PostCSS Replace Overflow Wrap
         - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
+        - PostCSS Slow Plugins
         - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family
         - PostCSS Text Decoration Shorthand

@@ -1,13 +1,9 @@
-@media all {
-	@layer alpha {
 /* a.css */
-	}
-}
+/* green.css */
 @media all {
 	@layer alpha {
 		@media print {
 			@layer alpha {
-/* green.css */
 				.box {
 	background-color: green;
 }
@@ -15,16 +11,12 @@
 		}
 	}
 }
-@media all {
-	@layer beta {
 /* b.css */
-	}
-}
+/* red.css */
 @media all {
 	@layer beta {
 		@media print {
 			@layer beta {
-/* red.css */
 				.box {
 	background-color: red;
 }

@@ -1,7 +1,7 @@
 {
 	"name": "postcss-custom-properties",
 	"description": "Use Custom Properties Queries in CSS",
-	"version": "13.3.0",
+	"version": "13.3.2",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"contributors": [
 		"Maxime Thirouin"
@@ -39,17 +39,17 @@
 		"index.d.ts"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^1.0.4",
-		"@csstools/css-parser-algorithms": "^2.3.1",
-		"@csstools/css-tokenizer": "^2.2.0",
+		"@csstools/cascade-layer-name-parser": "^1.0.5",
+		"@csstools/css-parser-algorithms": "^2.3.2",
+		"@csstools/css-tokenizer": "^2.2.1",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*",
-		"postcss-import": "^15.0.0"
+		"@csstools/postcss-bundler": "^1.0.3",
+		"@csstools/postcss-tape": "*"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

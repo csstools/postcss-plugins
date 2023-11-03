@@ -301,11 +301,17 @@
 }
 
 .color-function {
-	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+	prop-1: rgb(0, 129, 96);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+}
+
+@media (color-gamut: p3) {
+.color-function {
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+}
 }
 
 .oklab {
@@ -331,11 +337,11 @@
 	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
 	color-6: oklch(60% 0.150 0);
 
-	color-7: oklch(60% 0.1250 180);
-	color-8: oklch(60% 0.1250 180deg);
-	color-9: oklch(60% 0.1250 0.5turn);
-	color-10: oklch(60% 0.1250 200grad);
-	color-11: oklch(60% 0.1250 3.14159rad);
+	color-7: rgb(0, 149, 131);
+	color-8: rgb(0, 149, 131);
+	color-9: rgb(0, 149, 131);
+	color-10: rgb(0, 149, 131);
+	color-11: rgb(0, 149, 131);
 
 	color-12: oklch(60% 0.1250 45);
 	color-13: oklch(60% 0.1250 45deg);
@@ -343,6 +349,17 @@
 	color-15: oklch(60% 0.1250 50grad);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+@media (color-gamut: p3) {
+.oklch {
+
+	color-7: oklch(60% 0.1250 180);
+	color-8: oklch(60% 0.1250 180deg);
+	color-9: oklch(60% 0.1250 0.5turn);
+	color-10: oklch(60% 0.1250 200grad);
+	color-11: oklch(60% 0.1250 3.14159rad);
+}
 }
 
 .ic-unit {
@@ -460,7 +477,14 @@
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, rgb(255, 157, 133) 0%, rgb(31, 251, 255) 100%);
+}
+
+@media (color-gamut: rec2020) {
+.gradients-interpolation-method {
+
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
+}
 }
 
 .test-css-color-5-interop {
@@ -472,9 +496,14 @@
 	color-6: rgb(179, 35, 35);
 	color-7: rgb(163, 57, 39);
 	color-8: rgb(141, 0, 0);
-	color-8: color(display-p3 0.50566 0.0781 0);
 	color-9: rgb(130, 31, 0);
+}
+
+@media (color-gamut: p3) {
+.test-css-color-5-interop {
+	color-8: color(display-p3 0.50566 0.0781 0);
 	color-9: color(display-p3 0.48896 0.1211 0);
+}
 }
 
 .test-property-with-var {
@@ -484,4 +513,14 @@
 
 .exponential-functions {
 	width: 8px;
+}
+
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
+}
+
+@media (color-gamut: p3) {
+.out-of-gamut {
+	--color: color(display-p3 0 1 0);
+}
 }

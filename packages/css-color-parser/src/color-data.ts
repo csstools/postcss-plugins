@@ -1,7 +1,7 @@
 import type { Color } from '@csstools/color-helpers';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
-import { NumberType, TokenDimension, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { xyz } from '@csstools/color-helpers';
 
 export type ColorData = {
@@ -399,8 +399,8 @@ function carryForwardMissingComponents(a: Color, aIndices: Array<number>, b: Col
 	return output;
 }
 
-export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber | TokenPercentage | TokenDimension> {
-	const globals: Map<string, TokenNumber | TokenPercentage | TokenDimension> = new Map();
+export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber> {
+	const globals: Map<string, TokenNumber> = new Map();
 
 	switch (x.colorNotation) {
 		case ColorNotation.RGB:
@@ -489,14 +489,12 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 	return globals;
 }
 
-export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber | TokenPercentage | TokenDimension>): Map<string, TokenNumber | TokenPercentage | TokenDimension> {
-	const globals: Map<string, TokenNumber | TokenPercentage | TokenDimension> = new Map();
+export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber>): Map<string, TokenNumber> {
+	const globals: Map<string, TokenNumber> = new Map(x);
 
 	for (const [key, value] of x) {
 		if (Number.isNaN(value[4].value)) {
 			globals.set(key, dummyNumberToken(0));
-		} else {
-			globals.set(key, value);
 		}
 	}
 
@@ -517,11 +515,33 @@ function reducePrecision(x: number, precision = 7): number {
 }
 
 export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
-	const copy = JSON.parse(JSON.stringify(x)) as ColorData;
+	const copy: ColorData = {
+		...x,
+		channels: [
+			...x.channels,
+		],
+	};
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
 	const srgb = colorDataTo(copy, ColorNotation.RGB);
 	if (!srgb.channels.find((y) => y < -0.00001 || y > 1.00001)) {
+		return true;
+	}
+
+	return false;
+}
+
+export function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean {
+	const copy: ColorData = {
+		...x,
+		channels: [
+			...x.channels,
+		],
+	};
+
+	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
+	const displayP3 = colorDataTo(copy, ColorNotation.Display_P3);
+	if (!displayP3.channels.find((y) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}
 

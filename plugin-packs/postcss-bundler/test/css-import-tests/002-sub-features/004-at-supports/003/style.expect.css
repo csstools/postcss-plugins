@@ -1,11 +1,9 @@
-@supports ((display: block) or (display: inline)) {
 /* a.css */
-}
-@supports ((display: block) or (display: inline)) {
-@supports (width: 10px) {
 /* b.css */
-.box {
+@supports ((display: block) or (display: inline)) {
+    @supports (width: 10px) {
+        .box {
 	background-color: green;
 }
-}
+    }
 }
