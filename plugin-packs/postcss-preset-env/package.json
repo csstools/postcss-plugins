@@ -113,8 +113,8 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*",
 		"@csstools/postcss-bundler": "*",
+		"@csstools/postcss-tape": "*",
 		"@webref/css": "^6.8.3"
 	},
 	"scripts": {
