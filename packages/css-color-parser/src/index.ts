@@ -25,6 +25,12 @@ export { serializeP3 } from './serialize/p3';
 export { serializeRGB } from './serialize/rgb';
 export { serializeOKLCH } from './serialize/oklch';
 
+/**
+ * Convert a color function to a `ColorData` object.
+ *
+ * @param {ComponentValue} colorNode - The color function to be converted.
+ * @returns {ColorData|false} The color function as a `ColorData` object or `false` if it could not be converted.
+ */
 export function color(colorNode: ComponentValue): ColorData | false {
 	if (isFunctionNode(colorNode)) {
 		const colorFunctionName = toLowerCaseAZ(colorNode.getName());

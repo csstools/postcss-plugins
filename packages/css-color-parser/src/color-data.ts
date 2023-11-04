@@ -12,21 +12,37 @@ export type ColorData = {
 }
 
 export enum SyntaxFlag {
+	/** Is a color keyword, e.g. `transparent`, `currentColor`, ... */
 	ColorKeyword = 'color-keyword',
+	/** Has an explicit alpha channel */
 	HasAlpha = 'has-alpha',
+	/** Has a channel with a dimension value, e.g. `50deg` */
 	HasDimensionValues = 'has-dimension-values',
+	/** Has a channel with the `none` keyword */
 	HasNoneKeywords = 'has-none-keywords',
+	/** Has a channel with a number value */
 	HasNumberValues = 'has-number-values',
+	/** Has an alpha channel with a percentage value */
 	HasPercentageAlpha = 'has-percentage-alpha',
+	/** Has a channel with a percentage value */
 	HasPercentageValues = 'has-percentage-values',
+	/** Has an alpha channel with a `var()` function value */
 	HasVariableAlpha = 'has-variable-alpha',
+	/** Is Hex notation */
 	Hex = 'hex',
+	/** Is legacy HSL, e.g. `hsl(50deg, 0%, 0%)` */
 	LegacyHSL = 'legacy-hsl',
+	/** Is legacy RGB, e.g. `rgb(0, 0, 0)` */
 	LegacyRGB = 'legacy-rgb',
+	/** Is a named color, e.g. `red`, `blue` */
 	NamedColor = 'named-color',
+	/** Is a relative color syntax, e.g. `rgb(from purple r g b)` */
 	RelativeColorSyntax = 'relative-color-syntax',
+	/** Is a mixed color, e.g. `color-mix(in oklch, red, blue)` */
 	ColorMix = 'color-mix',
+	/** Is a contrast color syntax */
 	ContrastColor = 'contrast-color',
+	/** Is an experimental color syntax */
 	Experimental = 'experimental',
 }
 
@@ -514,6 +530,12 @@ function reducePrecision(x: number, precision = 7): number {
 	return Math.round(x * factor) / factor;
 }
 
+/**
+ * Check if a color data object fits the `sRGB` gamut.
+ *
+ * @param {ColorData} x - The color data to be checked.
+ * @returns {boolean} Whether the color data fits the `sRGB` gamut.
+ */
 export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 	const copy: ColorData = {
 		...x,
@@ -531,6 +553,12 @@ export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 	return false;
 }
 
+/**
+ * Check if a color data object fits the `display-p3` gamut.
+ *
+ * @param {ColorData} x - The color data to be checked.
+ * @returns {boolean} Whether the color data fits the `display-p3` gamut.
+ */
 export function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean {
 	const copy: ColorData = {
 		...x,

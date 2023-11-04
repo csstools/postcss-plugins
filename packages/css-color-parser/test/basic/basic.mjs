@@ -159,3 +159,20 @@ assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('color-mix(in srgb, red min(10%, 20%), blue)'))),
 	'rgb(26, 0, 230)',
 );
+
+assert.ok(color(parse('rgb(50% 0 0 / 1)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgb(127, 0, 0, 1)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgba(127, 0, 0, 1)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('#f00f')).syntaxFlags.has('has-alpha'));
+
+assert.ok(color(parse('rgb(50% 0 0 / 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgb(127, 0, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgba(127, 0, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('#f000')).syntaxFlags.has('has-alpha'));
+
+assert.ok(!color(parse('rgb(50% 0 0')).syntaxFlags.has('has-alpha'));
+assert.ok(!color(parse('rgb(127, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(!color(parse('rgba(127, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(!color(parse('#f00')).syntaxFlags.has('has-alpha'));
+
+assert.deepStrictEqual(color(parse('rgb(1 0 0 / var(--foo))')), {});
