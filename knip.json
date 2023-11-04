@@ -1,0 +1,36 @@
+{
+	"workspaces": {
+		".": {
+			"entry": ["rollup/default.mjs"]
+		},
+		"packages/*": {
+			"entry": "src/index.ts",
+			"project": "**/*.ts"
+		},
+		"plugins/*": {
+			"entry": "src/index.ts",
+			"project": "**/*.ts"
+		},
+		"plugin-packs/*": {
+			"entry": "src/index.ts",
+			"project": "**/*.ts"
+		},
+		"cli/*": {
+			"entry": "src/cli.ts",
+			"project": "**/*.ts"
+		},
+		"plugins-stylelint/*": {
+			"entry": "{index,index.test}.js",
+			"project": "**/*.js"
+		}
+	},
+	"ignore": [
+		".github/**",
+		"e2e-package-managers/**",
+		"e2e/**",
+		"experimental/**",
+		"postcss-recipes/**",
+		"rollup/**",
+		"sites/**"
+	]
+}
