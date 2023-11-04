@@ -32,7 +32,7 @@ export function isGuardedByAtSupportsFromAtRuleParams(atSupportsParams: string):
 	return isGuardedByAtSupports;
 }
 
-export function selectorContainsHasPseudo(selector: string): boolean {
+function selectorContainsHasPseudo(selector: string): boolean {
 	if (!selector.toLowerCase().includes(':has(')) {
 		return false;
 	}

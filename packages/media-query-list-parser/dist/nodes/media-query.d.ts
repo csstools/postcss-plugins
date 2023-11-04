@@ -33,8 +33,8 @@ export declare class MediaQueryWithType {
     isMediaQueryWithType(): this is MediaQueryWithType;
     static isMediaQueryWithType(x: unknown): x is MediaQueryWithType;
 }
-export type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
-export type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
+type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
 export declare class MediaQueryWithoutType {
     type: NodeType;
     media: MediaCondition;
@@ -57,8 +57,8 @@ export declare class MediaQueryWithoutType {
     isMediaQueryWithoutType(): this is MediaQueryWithoutType;
     static isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType;
 }
-export type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
-export type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
+type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
 export declare class MediaQueryInvalid {
     type: NodeType;
     media: Array<ComponentValue>;
@@ -79,5 +79,6 @@ export declare class MediaQueryInvalid {
     isMediaQueryInvalid(): this is MediaQueryInvalid;
     static isMediaQueryInvalid(x: unknown): x is MediaQueryInvalid;
 }
-export type MediaQueryInvalidWalkerEntry = ComponentValue;
-export type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;
+type MediaQueryInvalidWalkerEntry = ComponentValue;
+type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;
+export {};

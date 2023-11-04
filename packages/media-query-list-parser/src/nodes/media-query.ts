@@ -169,8 +169,8 @@ export class MediaQueryWithType {
 	}
 }
 
-export type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
-export type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
+type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
 
 export class MediaQueryWithoutType {
 	type = NodeType.MediaQueryWithoutType;
@@ -286,8 +286,8 @@ export class MediaQueryWithoutType {
 	}
 }
 
-export type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
-export type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
+type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
 
 export class MediaQueryInvalid {
 	type = NodeType.MediaQueryInvalid;
@@ -368,5 +368,5 @@ export class MediaQueryInvalid {
 	}
 }
 
-export type MediaQueryInvalidWalkerEntry = ComponentValue;
-export type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;
+type MediaQueryInvalidWalkerEntry = ComponentValue;
+type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;

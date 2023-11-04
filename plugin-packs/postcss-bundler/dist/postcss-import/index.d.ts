@@ -1,5 +1,3 @@
 import type { PluginCreator } from 'postcss';
-/** postcss-bundler plugin options */
-export type pluginOptions = never;
-declare const creator: PluginCreator<pluginOptions>;
+declare const creator: PluginCreator<never>;
 export default creator;

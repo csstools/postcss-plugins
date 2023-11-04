@@ -3,7 +3,7 @@ import { CSSToken, tokenizer, ParseError } from '@csstools/css-tokenizer';
 import { MediaQuery, MediaQueryInvalid } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
 
-export type Options = {
+type Options = {
 	preserveInvalidMediaQueries?: boolean,
 	onParseError?: (error: ParseError) => void
 }

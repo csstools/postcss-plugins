@@ -44,7 +44,6 @@ export declare enum SyntaxFlag {
 }
 export declare function colorData_to_XYZ_D50(colorData: ColorData): ColorData;
 export declare function colorDataTo(colorData: ColorData, toNotation: ColorNotation): ColorData;
-export declare function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: ColorNotation): Color;
 export declare function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, colorNotation: ColorNotation): Color;
 export declare function normalizeRelativeColorDataChannels(x: ColorData): Map<string, TokenNumber>;
 export declare function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber>): Map<string, TokenNumber>;

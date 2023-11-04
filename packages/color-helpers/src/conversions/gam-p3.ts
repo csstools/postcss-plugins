@@ -1,5 +1,5 @@
-import type { Color } from 'types/color';
-import { gam_sRGB } from 'conversions/gam-srgb';
+import type { Color } from '../types/color';
+import { gam_sRGB } from '../conversions/gam-srgb';
 
 /**
  * Convert an array of linear-light display-p3 RGB in the range 0.0-1.0

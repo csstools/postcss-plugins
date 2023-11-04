@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Convert an array of linear-light rec2020 values to CIE XYZ
  * using  D65 (no chromatic adaptation)

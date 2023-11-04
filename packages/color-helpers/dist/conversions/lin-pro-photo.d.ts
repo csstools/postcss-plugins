@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Convert an array of prophoto-rgb values where in-gamut Colors are in the
  * range [0.0 - 1.0] to linear light (un-companded) form. Transfer curve is

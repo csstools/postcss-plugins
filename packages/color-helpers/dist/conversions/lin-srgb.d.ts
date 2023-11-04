@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Convert an array of of sRGB values where in-gamut values are in the range
  * [0 - 1] to linear light (un-companded) form.

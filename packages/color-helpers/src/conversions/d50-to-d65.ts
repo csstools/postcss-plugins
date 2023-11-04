@@ -1,5 +1,5 @@
-import type { Color } from 'types/color';
-import { multiplyMatrices } from 'calculations/multiply-matrices';
+import type { Color } from '../types/color';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 /**
  * Bradford chromatic adaptation from D50 to D65

@@ -24,7 +24,7 @@ export type ImportStatement = {
     stylesheet?: Stylesheet;
     importingNode: AtRule | null;
 };
-export type PreImportStatement = {
+type PreImportStatement = {
     type: 'pre-import';
     node: ChildNode;
     conditions: Array<Condition>;
@@ -36,3 +36,4 @@ export declare function isWarning(stmt: Statement): stmt is Warning;
 export declare function isNodesStatement(stmt: Statement): stmt is NodesStatement;
 export declare function isImportStatement(stmt: Statement): stmt is ImportStatement;
 export declare function isPreImportStatement(stmt: Statement): stmt is PreImportStatement;
+export {};

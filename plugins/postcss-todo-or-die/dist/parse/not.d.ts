@@ -1,7 +1,7 @@
 import { FunctionNode } from '@csstools/css-parser-algorithms';
 import { TokenDimension, TokenIdent, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
 type SubjectToken = TokenIdent | TokenNumber | TokenPercentage | TokenDimension;
-export type NotCondition = {
+type NotCondition = {
     a: SubjectToken;
     b: SubjectToken;
     operator: '<' | '>' | '=';

@@ -4,7 +4,7 @@ import { parseIfCondition } from './if';
 
 type SubjectToken = TokenIdent | TokenNumber | TokenPercentage | TokenDimension;
 
-export type NotCondition = {
+type NotCondition = {
 	a: SubjectToken
 	b: SubjectToken
 	operator: '<' | '>' | '='

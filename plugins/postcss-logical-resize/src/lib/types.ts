@@ -1,19 +1,7 @@
-export enum Direction {
+enum Direction {
 	Block = 'block',
 	Inline = 'inline',
 }
-
-export enum DirectionValue {
-	Start = 'start',
-	End = 'end',
-}
-
-export const DirectionValues = {
-	BlockStart: 'block-start',
-	BlockEnd: 'block-end',
-	InlineStart: 'inline-start',
-	InlineEnd: 'inline-end',
-};
 
 export enum DirectionFlow {
 	TopToBottom = 'top-to-bottom',

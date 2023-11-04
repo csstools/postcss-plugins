@@ -57,7 +57,8 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*"
+		"@csstools/postcss-tape": "*",
+		"puppeteer": "^21.5.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

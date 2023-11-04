@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * CMYK is an array of four values in the range [0.0, 1.0] the output is an

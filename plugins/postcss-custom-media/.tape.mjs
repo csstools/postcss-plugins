@@ -1,4 +1,4 @@
-import { declarationClonerPlugin, postcssTape } from '../../packages/postcss-tape/dist/index.cjs';
+import { declarationClonerPlugin, postcssTape } from '@csstools/postcss-tape';
 import plugin from 'postcss-custom-media';
 
 postcssTape(plugin)({

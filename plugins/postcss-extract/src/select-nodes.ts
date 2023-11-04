@@ -29,7 +29,7 @@ export function extract(container: Container<Node>, selectors: Map<string, selec
 	return output;
 }
 
-export function selectNodesForSingleQuery(container: Container<Node>, selector: selectorParser.Selector, previouslyMatchedNodes: Set<Node>): Set<Node> {
+function selectNodesForSingleQuery(container: Container<Node>, selector: selectorParser.Selector, previouslyMatchedNodes: Set<Node>): Set<Node> {
 	const query = buildQuery(selector);
 	const matchingNodes: Set<Node> = new Set(previouslyMatchedNodes);
 

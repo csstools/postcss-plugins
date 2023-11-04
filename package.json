@@ -35,6 +35,7 @@
 		"@rollup/plugin-typescript": "^11.1.4",
 		"@stryker-mutator/core": "^7.3.0",
 		"@typescript-eslint/eslint-plugin": "^6.9.0",
+		"@typescript-eslint/parser": "^6.9.1",
 		"eslint": "^8.52.0",
 		"knip": "^2.39.0",
 		"rollup": "^4.1.5",

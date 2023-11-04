@@ -12,6 +12,7 @@ import './fuzz/0001.mjs';
 import './token/basic.mjs';
 import './token/cdo.mjs';
 import './token/comment.mjs';
+import './token/is-token.mjs';
 import './token/numeric.mjs';
 import './token/string.mjs';
 import './token/unicode-range.mjs';

@@ -3,7 +3,7 @@ import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-a
 import { CSSToken, tokenizer, TokenType, ParseError } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
-export type Options = {
+type Options = {
 	onParseError?: (error: ParseError) => void
 }
 

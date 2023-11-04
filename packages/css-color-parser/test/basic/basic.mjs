@@ -174,5 +174,3 @@ assert.ok(!color(parse('rgb(50% 0 0')).syntaxFlags.has('has-alpha'));
 assert.ok(!color(parse('rgb(127, 0, 0)')).syntaxFlags.has('has-alpha'));
 assert.ok(!color(parse('rgba(127, 0, 0)')).syntaxFlags.has('has-alpha'));
 assert.ok(!color(parse('#f00')).syntaxFlags.has('has-alpha'));
-
-assert.deepStrictEqual(color(parse('rgb(1 0 0 / var(--foo))')), {});

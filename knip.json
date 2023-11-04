@@ -1,19 +1,20 @@
 {
 	"workspaces": {
 		".": {
-			"entry": ["rollup/default.mjs"]
+			"entry": ["rollup/default.mjs"],
+			"project": ["rollup/**/*.mjs"]
 		},
 		"packages/*": {
-			"entry": "src/index.ts",
-			"project": "**/*.ts"
+			"entry": ["src/index.ts", ".tape.{cjs,mjs}", "test/_import.mjs", "test/_require.cjs", "test/test.mjs"],
+			"project": ["**/*.ts", "test/**/*.{cjs,mjs,js}"]
 		},
 		"plugins/*": {
-			"entry": "src/index.ts",
-			"project": "**/*.ts"
+			"entry": ["src/index.ts", ".tape.{cjs,mjs}", "test/_import.mjs", "test/_require.cjs", "test/test.mjs"],
+			"project": ["**/*.ts", "test/**/*.{cjs,mjs,js}"]
 		},
 		"plugin-packs/*": {
-			"entry": "src/index.ts",
-			"project": "**/*.ts"
+			"entry": ["src/index.ts", ".tape.{cjs,mjs}", "test/_import.mjs", "test/_require.cjs", "test/test.mjs"],
+			"project": ["**/*.ts", "test/**/*.{cjs,mjs,js}"]
 		},
 		"cli/*": {
 			"entry": "src/cli.ts",
@@ -29,8 +30,14 @@
 		"e2e-package-managers/**",
 		"e2e/**",
 		"experimental/**",
+		"packages/postcss-tape/test/**",
+		"plugins/postcss-env-function/test/import-variables.cjs",
+		"plugins/postcss-env-function/test/import-variables.js",
 		"postcss-recipes/**",
 		"rollup/**",
 		"sites/**"
+	],
+	"ignoreBinaries": [
+		"csstools-cli"
 	]
 }

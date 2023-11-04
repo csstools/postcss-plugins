@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Convert XYZ to linear-light prophoto-rgb
  *
