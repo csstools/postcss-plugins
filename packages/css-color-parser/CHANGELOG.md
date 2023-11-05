@@ -2,7 +2,9 @@
 
 ### Unreleased (minor)
 
-- Add experimental support for the `contrast-color()` CSS function.
+- Add the `Experimental` syntax flag, to be used in future features.
+- Small fixes in type definitions
+- Improve JS Doc comments
 
 ### 1.4.0
 
