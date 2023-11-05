@@ -44,7 +44,7 @@ export default function getCustomSelectors(root: PostCSSRoot, result: Result, op
 				removeEmptyAncestorBlocks(parent);
 			}
 		} catch (err) {
-			atRule.warn(result, `Failed to parse custom selector : "${atRule.params}" with message: "${err.message}"`);
+			atRule.warn(result, `Failed to parse selector : "${atRule.params}" with message: "${(err instanceof Error) ? err.message : err}"`);
 		}
 	});
 

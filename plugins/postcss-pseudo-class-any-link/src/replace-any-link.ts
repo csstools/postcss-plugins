@@ -22,7 +22,7 @@ export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, ar
 			}
 		}
 	} catch (err) {
-		rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+		rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 		return false;
 	}
 

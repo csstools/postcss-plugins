@@ -5,7 +5,6 @@
 		"target": "ES2022",
 		"lib": ["ES2022"],
 		"module": "ESNext",
-		"declaration": true,
-		"useUnknownInCatchVariables": false
+		"declaration": true
 	}
 }

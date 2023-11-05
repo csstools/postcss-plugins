@@ -63,7 +63,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 						modifiedSelector = selectorAST.toString();
 					} catch (err) {
-						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 					}
 
 					if (modifiedSelector === rule.selector) {

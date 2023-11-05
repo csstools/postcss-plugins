@@ -43,8 +43,12 @@ export async function stdinToFs(plugin: Plugin, argo: Arguments, helpLogger: () 
 		} else {
 			await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
 		}
-	} catch (error) {
-		console.error(argo.debug ? error : error.message);
+	} catch (err) {
+		if (err instanceof Error) {
+			console.error(argo.debug ? err : err.message);
+		} else {
+			console.error(err);
+		}
 
 		process.exit(1);
 	}

@@ -32,7 +32,7 @@ export function transformRule(rule: Rule, result: Result, customSelectors: Map<s
 			});
 		}).processSync(rule.selector);
 	} catch (err) {
-		rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+		rule.warn(result, `Failed to parse selector : "${selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 		return rule.selector;
 	}
 

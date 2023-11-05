@@ -28,7 +28,7 @@ const isPunctuationCommaNode = (node: valueParser.Node) => node.type === 'div' &
 function isNumericNode(node: valueParser.Node) {
 	try {
 		return valueParser.unit(node?.value) !== false;
-	} catch (e) {
+	} catch (_) {
 		return false;
 	}
 }
@@ -58,7 +58,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 
 			try {
 				valueAST = valueParser(decl.value);
-			} catch (error) {
+			} catch (_) {
 				decl.warn(
 					result,
 					`Failed to parse value '${decl.value}' as a CSS gradient. Leaving the original value intact.`,

@@ -43,8 +43,12 @@ export async function fsToFs(plugin: Plugin, argo: Arguments): Promise<never> {
 
 			console.log(`CSS was written to "${path.normalize(output)}"`);
 		}));
-	} catch (error) {
-		console.error(argo.debug ? error : error.message);
+	} catch (err) {
+		if (err instanceof Error) {
+			console.error(argo.debug ? err : err.message);
+		} else {
+			console.error(err);
+		}
 
 		process.exit(1);
 	}

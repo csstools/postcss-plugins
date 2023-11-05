@@ -36,7 +36,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 
 			try {
 				valueAST = valueParser(originalValue);
-			} catch (error) {
+			} catch (_) {
 				decl.warn(
 					result,
 					`Failed to parse value '${originalValue}' as a hsl or rgb function. Leaving the original value intact.`,

@@ -34,7 +34,8 @@ export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array
 		try {
 			toposort(Array.from(nodes.keys()), _edges);
 			break;
-		} catch (e) {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (e: any) {
 			/* see the hack below */
 			if (e['_graphNode']) {
 
