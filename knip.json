@@ -1,20 +1,63 @@
 {
+	"$schema": "https://unpkg.com/knip@2/schema.json",
 	"workspaces": {
-		".": {
-			"entry": ["rollup/default.mjs"],
-			"project": ["rollup/**/*.mjs"]
-		},
 		"packages/*": {
-			"entry": ["src/index.ts", ".tape.{cjs,mjs}", "test/_import.mjs", "test/_require.cjs", "test/test.mjs"],
-			"project": ["**/*.ts", "test/**/*.{cjs,mjs,js}"]
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
 		},
 		"plugins/*": {
-			"entry": ["src/index.ts", ".tape.{cjs,mjs}", "test/_import.mjs", "test/_require.cjs", "test/test.mjs"],
-			"project": ["**/*.ts", "test/**/*.{cjs,mjs,js}"]
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"open-props",
+				"style-dictionary-design-tokens-example"
+			]
 		},
 		"plugin-packs/*": {
-			"entry": ["src/index.ts", ".tape.{cjs,mjs}", "test/_import.mjs", "test/_require.cjs", "test/test.mjs"],
-			"project": ["**/*.ts", "test/**/*.{cjs,mjs,js}"]
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"@rmenke/css-package-conditional-3",
+				"@rmenke/css-package-main",
+				"open-props"
+			]
 		},
 		"cli/*": {
 			"entry": "src/cli.ts",
@@ -39,5 +82,16 @@
 	],
 	"ignoreBinaries": [
 		"csstools-cli"
+	],
+	"ignoreDependencies": [
+		"@babel/core",
+		"@babel/preset-env",
+		"@rollup/plugin-babel",
+		"@rollup/plugin-commonjs",
+		"@rollup/plugin-node-resolve",
+		"@rollup/plugin-terser",
+		"@rollup/plugin-typescript",
+		"@stryker-mutator/command-runner",
+		"tslib"
 	]
 }
