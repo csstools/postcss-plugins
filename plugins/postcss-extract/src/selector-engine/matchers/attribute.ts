@@ -20,7 +20,7 @@ export function matchAttribute(list: NodeList, attributeName: string, attributeV
 
 	let attributeValueString = '';
 	if (!attributeValueIsNullish) {
-		attributeValueString = attributeValue.toString();
+		attributeValueString = (attributeValue as string).toString();
 	}
 
 	if (caseInsensitive) {
@@ -28,7 +28,7 @@ export function matchAttribute(list: NodeList, attributeName: string, attributeV
 	}
 
 	const filtered = list.filter((node) => {
-		let matchingPropertyName = '';
+		let matchingPropertyName: string | undefined = '';
 		if (attributeName.toLowerCase() === 'variable' && node.type === 'decl' && ('variable' in node)) {
 			matchingPropertyName = 'variable';
 		} else {
@@ -45,9 +45,9 @@ export function matchAttribute(list: NodeList, attributeName: string, attributeV
 			return false;
 		}
 
-		if (typeof node[matchingPropertyName] === 'boolean') {
+		if (typeof (node as unknown as Record<string, unknown>)[matchingPropertyName] === 'boolean') {
 			// Matches when the value is true
-			return node[matchingPropertyName];
+			return ((node as unknown as Record<string, boolean>)[matchingPropertyName] as boolean);
 		}
 
 		if (attributeValueIsNullish) {
@@ -55,7 +55,7 @@ export function matchAttribute(list: NodeList, attributeName: string, attributeV
 			return true;
 		}
 
-		let foundValues = [node[matchingPropertyName].toString()];
+		let foundValues = [(node as unknown as Record<string, string>)[matchingPropertyName].toString()];
 		if (node.type === 'rule' && (matchingPropertyName === 'selector' || matchingPropertyName === 'selectors')) {
 			foundValues = (node as Rule).selectors;
 		}

@@ -1,16 +1,15 @@
 import type { PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
-import type { Container } from 'postcss-selector-parser';
 
-function nodeIsInsensitiveAttribute(node) {
-	return node.type === 'attribute' && node.insensitive;
+function nodeIsInsensitiveAttribute(node: selectorParser.Node): node is selectorParser.Attribute {
+	return node.type === 'attribute' && (node.insensitive ?? false);
 }
 
-function selectorHasInsensitiveAttribute(selector) {
+function selectorHasInsensitiveAttribute(selector: selectorParser.Selector) {
 	return selector.some(nodeIsInsensitiveAttribute);
 }
 
-function transformString(strings, charPos, string) {
+function transformString(strings: Array<string>, charPos: number, string: string) {
 	const char = string.charAt(charPos);
 	if (char === '') {
 		return strings;
@@ -26,8 +25,8 @@ function transformString(strings, charPos, string) {
 	return transformString(newStrings, charPos + 1, string);
 }
 
-function createSensitiveAttributes(attribute) {
-	const attributes = transformString([''], 0, attribute.value);
+function createSensitiveAttributes(attribute: selectorParser.Attribute) {
+	const attributes = transformString([''], 0, attribute.value ?? '');
 	return attributes.map(x => {
 		const newAttribute = attribute.clone({
 			spaces: {
@@ -43,10 +42,10 @@ function createSensitiveAttributes(attribute) {
 	});
 }
 
-function createNewSelectors(selector) {
-	let newSelectors = [selectorParser.selector({ value: '', nodes: [] })];
+function createNewSelectors(selector: selectorParser.Selector) {
+	let newSelectors: Array<selectorParser.Selector> = [selectorParser.selector({ value: '', nodes: [] })];
 
-	selector.walk(node => {
+	selector.each((node) => {
 		if (!nodeIsInsensitiveAttribute(node)) {
 			newSelectors.forEach(newSelector => {
 				newSelector.append(node.clone());
@@ -55,11 +54,11 @@ function createNewSelectors(selector) {
 		}
 
 		const sensitiveAttributes = createSensitiveAttributes(node);
-		const newSelectorsWithSensitiveAttributes = [];
+		const newSelectorsWithSensitiveAttributes: Array<selectorParser.Selector> = [];
 
 		sensitiveAttributes.forEach(newNode => {
 			newSelectors.forEach(newSelector => {
-				const newSelectorWithNewNode = newSelector.clone({}) as Container;
+				const newSelectorWithNewNode = newSelector.clone({});
 				newSelectorWithNewNode.append(newNode);
 				newSelectorsWithSensitiveAttributes.push(newSelectorWithNewNode);
 			});
@@ -69,21 +68,6 @@ function createNewSelectors(selector) {
 	});
 
 	return newSelectors;
-}
-
-function transform(selectors) {
-	let newSelectors = [];
-
-	selectors.each(selector => {
-		if (selectorHasInsensitiveAttribute(selector)) {
-			newSelectors = newSelectors.concat(createNewSelectors(selector));
-			selector.remove();
-		}
-	});
-
-	if (newSelectors.length) {
-		newSelectors.forEach(newSelector => selectors.append(newSelector));
-	}
 }
 
 /** postcss-prefers-color-scheme plugin options */
@@ -120,7 +104,20 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					let modifiedSelector: string;
 
 					try {
-						modifiedSelector = selectorParser(transform).processSync(rule.selector);
+						modifiedSelector = selectorParser((selectors) => {
+							let newSelectors: Array<selectorParser.Selector> = [];
+
+							selectors.each(selector => {
+								if (selectorHasInsensitiveAttribute(selector)) {
+									newSelectors = newSelectors.concat(createNewSelectors(selector));
+									selector.remove();
+								}
+							});
+
+							if (newSelectors.length) {
+								newSelectors.forEach(newSelector => selectors.append(newSelector));
+							}
+						}).processSync(rule.selector);
 					} catch (err) {
 						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
 						return;

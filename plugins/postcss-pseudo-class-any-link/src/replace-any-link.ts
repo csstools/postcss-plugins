@@ -47,34 +47,34 @@ export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, ar
 	return true;
 }
 
-function modifiedSelector(selector, areaHrefNeedsFixing) {
-	const out = [];
+function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
+	const out: Array<string> = [];
 
 	// update the selector
 	parser((selectorsAST) => {
-		const replacements = [];
+		const replacements: Array<Array<parser.Selector>> = [];
 		selectorsAST.walkPseudos((pseudo) => {
 			if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 				return;
 			}
 
 			if (!areaHrefNeedsFixing) {
-				replacements.push([linkAST.clone({}), visitedAST.clone({})]);
+				replacements.push([linkAST.clone(), visitedAST.clone()]);
 				return;
 			}
 
 			const tags = getTagElementsNextToPseudo(pseudo);
 			if (tags.includes('area')) {
-				replacements.push([linkAST.clone({}), visitedAST.clone({}), hrefAST.clone({})]);
+				replacements.push([linkAST.clone(), visitedAST.clone(), hrefAST.clone()]);
 				return;
 			}
 
 			if (tags.length) {
-				replacements.push([linkAST.clone({}), visitedAST.clone({})]);
+				replacements.push([linkAST.clone(), visitedAST.clone()]);
 				return;
 			}
 
-			replacements.push([linkAST.clone({}), visitedAST.clone({}), areaHrefAST.clone({})]);
+			replacements.push([linkAST.clone(), visitedAST.clone(), areaHrefAST.clone()]);
 		});
 
 		if (!replacements.length) {
@@ -84,7 +84,7 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 		const replacementsCartesianProduct = cartesianProduct(...replacements);
 
 		replacementsCartesianProduct.forEach((replacement) => {
-			const clone = selectorsAST.clone({}) as parser.Selector;
+			const clone = selectorsAST.clone();
 			clone.walkPseudos((pseudo) => {
 				if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 					return;
@@ -102,10 +102,10 @@ function modifiedSelector(selector, areaHrefNeedsFixing) {
 }
 
 function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parser.Node>> {
-	const r = [];
+	const r: Array<Array<parser.Node>> = [];
 	const max = args.length - 1;
 
-	function helper(arr, i) {
+	function helper(arr: Array<parser.Node>, i: number) {
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);
@@ -155,7 +155,11 @@ function getTagElementsNextToPseudo(pseudo: parser.Pseudo) {
 // Inserts a node around a given node.
 // - in the same compound selector
 // - try to keep the result serializable without side effects
-function insertNode(container: parser.Container, aroundNode: parser.Node, node: parser.Node) {
+function insertNode(container: parser.Container | undefined, aroundNode: parser.Node, node: parser.Node | undefined) {
+	if (!container || !node) {
+		return;
+	}
+
 	let type = node.type;
 	if (node.type === 'selector' && node.nodes && node.nodes.length) {
 		type = node.nodes[0].type;

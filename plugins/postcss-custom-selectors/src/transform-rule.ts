@@ -3,7 +3,7 @@ import type { Result, Rule } from 'postcss';
 import type { Root, Selector } from 'postcss-selector-parser';
 
 // transform custom pseudo selectors with custom selectors
-export function transformRule(rule: Rule, result: Result, customSelectors: Map<string, Root>): null|string {
+export function transformRule(rule: Rule, result: Result, customSelectors: Map<string, Root>): string {
 	let selector = rule.selector;
 
 	try {
@@ -19,12 +19,16 @@ export function transformRule(rule: Rule, result: Result, customSelectors: Map<s
 				});
 
 				const base = customSelectors.get(pseudo.value);
+
+				if (!base) {
+					return;
+				}
+
 				base.each((node) => {
 					isWrapper.append(node.clone({}) as Selector);
 				});
 
 				pseudo.replaceWith(isWrapper);
-
 			});
 		}).processSync(rule.selector);
 	} catch (err) {

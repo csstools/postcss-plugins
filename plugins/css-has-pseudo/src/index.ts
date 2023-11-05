@@ -97,12 +97,20 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								return;
 							}
 
-							let container = node.parent ?? node;
+							const container = node.parent;
+							if (!container) {
+								return;
+							}
+
+							const hasContainingSelector = parser.selector({
+								value: '',
+								nodes: [],
+							});
 
 							// Split the selector at the pseudo element boundary
 							// - :has(...)::before  ->  :has(...) | ::before
 							// - :has(...) ~ span::before  ->  :has(...) ~ span | ::before
-							if (container !== node) {
+							{
 								let sliceIndex = container.nodes.length;
 
 								PSEUDO_ELEMENT_LOOP:
@@ -121,44 +129,24 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									}
 								}
 
-								if (sliceIndex < container.nodes.length) {
-									const a = parser.selector({
-										value: '',
-										nodes: [],
-									});
+								const aNodes = container.nodes.slice(0, sliceIndex);
+								aNodes.forEach((x) => {
+									x.remove();
 
-									const aNodes = container.nodes.slice(0, sliceIndex);
-									aNodes.forEach((x) => {
+									if (x.type === 'selector') {
+										x.nodes.forEach((y) => {
+											delete y.parent;
+											hasContainingSelector.append(y);
+										});
+									} else {
 										delete x.parent;
-										a.append(x);
-									});
-
-									const b = parser.selector({
-										value: '',
-										nodes: [],
-									});
-
-									const bNodes = container.nodes.slice(sliceIndex);
-									bNodes.forEach((x) => {
-										delete x.parent;
-										b.append(x);
-									});
-
-									const newContainer = parser.selector({
-										value: '',
-										nodes: [],
-									});
-
-									newContainer.append(a);
-									newContainer.append(b);
-
-									container.replaceWith(newContainer);
-									container = a;
-								}
+										hasContainingSelector.append(x);
+									}
+								});
 							}
 
-							const encodedSelector = '[' + encodeCSS(container.toString()) + ']';
-							const abcSpecificity = selectorSpecificity(container);
+							const encodedSelector = '[' + encodeCSS(hasContainingSelector.toString()) + ']';
+							const abcSpecificity = selectorSpecificity(hasContainingSelector);
 
 							let encodedSelectorWithSpecificity = encodedSelector;
 							for (let i = 0; i < abcSpecificity.a; i++) {
@@ -174,7 +162,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 							const encodedSelectorAST = parser().astSync(encodedSelectorWithSpecificity);
 
-							container.replaceWith(encodedSelectorAST.nodes[0]);
+							const replacementNodes = encodedSelectorAST.nodes[0].nodes;
+
+							for (let i = replacementNodes.length - 1; i >= 0; i--) {
+								container.prepend(replacementNodes[i]);
+							}
 						});
 
 						const modifiedSelector = selectorAST.toString();

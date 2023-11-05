@@ -7,7 +7,7 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const FUNCTION_CALL_REGEXP = /(?:exp|hypot|log|pow|sqrt)\(/i;
+const FUNCTION_CALL_REGEXP = /(?<![-\w])(?:exp|hypot|log|pow|sqrt)\(/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(

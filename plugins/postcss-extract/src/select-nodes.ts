@@ -31,6 +31,10 @@ export function extract(container: Container<Node>, selectors: Map<string, selec
 
 function selectNodesForSingleQuery(container: Container<Node>, selector: selectorParser.Selector, previouslyMatchedNodes: Set<Node>): Set<Node> {
 	const query = buildQuery(selector);
+	if (!query) {
+		return new Set();
+	}
+
 	const matchingNodes: Set<Node> = new Set(previouslyMatchedNodes);
 
 	container.walk((candidate) => {
@@ -47,12 +51,12 @@ function selectNodesForSingleQuery(container: Container<Node>, selector: selecto
 	return matchingNodes;
 }
 
-function buildQuery(selector: selectorParser.Selector) {
+function buildQuery(selector: selectorParser.Selector): Condition|undefined {
 	if (!selector || !selector.nodes) {
 		return;
 	}
 
-	let currentCondition: Condition|null = null;
+	let currentCondition: Condition|undefined = undefined;
 	selector.each((selectorPart) => {
 		switch (selectorPart.type) {
 			case 'universal': {
@@ -129,6 +133,10 @@ function buildQuery(selector: selectorParser.Selector) {
 
 								const exclude = list.filter((excludeCandidate) => {
 									return notQueries.flatMap((notQuery) => {
+										if (!notQuery) {
+											return [];
+										}
+
 										return executeConditions(notQuery, [excludeCandidate]);
 									}).length > 0;
 								});
@@ -206,7 +214,7 @@ type Condition = {
 }
 
 function executeConditions(condition: Condition, list: NodeList): NodeList {
-	let currentCondition = condition;
+	let currentCondition: Condition | undefined = condition;
 	let currentList = list;
 
 	while (currentCondition && currentList.length > 0) {
