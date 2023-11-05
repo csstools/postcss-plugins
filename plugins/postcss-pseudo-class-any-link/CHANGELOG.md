@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 9.0.0
 
 _July 3, 2023_

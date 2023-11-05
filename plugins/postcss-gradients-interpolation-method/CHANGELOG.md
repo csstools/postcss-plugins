@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (patch)
+
+- Skip transforms when a color value contains experimental syntax
+
 ### 4.0.7
 
 _October 9, 2023_

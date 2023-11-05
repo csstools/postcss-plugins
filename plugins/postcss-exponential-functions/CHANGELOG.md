@@ -1,5 +1,9 @@
 # Changes to PostCSS Exponential Functions
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 1.0.1
 
 _September 24, 2023_

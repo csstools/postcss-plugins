@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Viewport Units
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 2.0.3
 
 _September 24, 2023_

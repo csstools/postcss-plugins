@@ -1,5 +1,9 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased (patch)
+
+- Skip transforms when a color value contains experimental syntax
+
 ### 3.0.7
 
 _October 9, 2023_

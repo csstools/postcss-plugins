@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+- Remove extraneous dependency on `postcss-value-parser`
+
 ### 9.3.0
 
 _October 31, 2023_

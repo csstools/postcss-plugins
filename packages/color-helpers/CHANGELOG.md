@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 3.0.2
 
 _September 2, 2023_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Relative Color Syntax
 
+### Unreleased (patch)
+
+- Skip transforms when a color value contains experimental syntax
+
 ### 2.0.7
 
 _October 9, 2023_

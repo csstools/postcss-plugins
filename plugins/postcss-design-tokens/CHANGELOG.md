@@ -1,5 +1,9 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 3.1.1
 
 _September 24, 2023_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 10.0.2
 
 _October 9, 2023_

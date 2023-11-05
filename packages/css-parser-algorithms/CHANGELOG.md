@@ -1,5 +1,9 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 2.3.2
 
 _September 24, 2023_

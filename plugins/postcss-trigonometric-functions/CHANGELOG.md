@@ -1,5 +1,9 @@
 # Changes to PostCSS Trigonometric Functions
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 3.0.2
 
 _September 24, 2023_
