@@ -116,7 +116,7 @@
 	"devDependencies": {
 		"@csstools/postcss-debug-logger": "^2.0.0",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.8.3",
+		"@webref/css": "^6.9.0",
 		"postcss-simple-vars": "^7.0.1"
 	},
 	"scripts": {
