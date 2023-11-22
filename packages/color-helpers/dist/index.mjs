@@ -89,7 +89,7 @@ function lin_sRGB(t){return t.map((function(t){const _=t<0?-1:1,o=Math.abs(t);re
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-function D50_to_D65(t){return multiplyMatrices([[.9554734527042182,-.023098536874261423,.0632593086610217],[-.028369706963208136,1.0099954580058226,.021041398966943008],[.012314001688319899,-.020507696433477912,1.3303659366080753]],t)}
+function D50_to_D65(t){return multiplyMatrices([[.955473421488075,-.02309845494876471,.06325924320057072],[-.0283697093338637,1.0099953980813041,.021041441191917323],[.012314014864481998,-.020507649298898964,1.330365926242124]],t)}
 /**
  * Bradford chromatic adaptation from D65 to D50
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
@@ -97,7 +97,7 @@ function D50_to_D65(t){return multiplyMatrices([[.9554734527042182,-.02309853687
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see http://www.brucelindbloom.com/index.html?Eqn_ChromAdapt.html
- */function D65_to_D50(t){return multiplyMatrices([[1.0479298208405488,.022946793341019088,-.05019222954313557],[.029627815688159344,.990434484573249,-.01707382502938514],[-.009243058152591178,.015055144896577895,.7518742899580008]],t)}
+ */function D65_to_D50(t){return multiplyMatrices([[1.0479297925449969,.022946870601609652,-.05019226628920524],[.02962780877005599,.9904344267538799,-.017073799063418826],[-.009243040646204504,.015055191490298152,.7518742814281371]],t)}
 /**
  * Convert an array of linear-light rec2020 RGB  in the range 0.0-1.0
  * to gamma corrected form ITU-R BT.2020-2 p.4

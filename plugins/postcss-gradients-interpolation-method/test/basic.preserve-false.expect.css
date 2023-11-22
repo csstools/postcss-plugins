@@ -5,7 +5,7 @@
 
 .test-2-0 {
 	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0) 50%, rgb(249, 0, 71), rgb(239, 0, 107), rgb(225, 0, 138), rgb(207, 0, 167), rgb(186, 0, 194), rgb(163, 0, 217), rgb(136, 0, 236), rgb(107, 0, 250), rgb(73, 0, 255), rgb(0, 0, 255) 70%, rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255) 75%);
-	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0) 50%, color(display-p3 0.89484 0.11059 0.29739), color(display-p3 0.85721 -0.0003 0.41862), color(display-p3 0.80547 -0.0635 0.53001), color(display-p3 0.74092 -0.0802 0.63538), color(display-p3 0.66511 -0.0895 0.7332), color(display-p3 0.57951 -0.1015 0.81971), color(display-p3 0.4848 -0.1135 0.89016), color(display-p3 0.37932 -0.1162 0.93966), color(display-p3 0.25342 -0.0953 0.96388), rgb(0, 0, 255) 70%, rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(255, 0, 0) 25%, rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0) 50%, color(display-p3 0.89484 0.11059 0.29739), color(display-p3 0.85721 -0.0003 0.41863), color(display-p3 0.80547 -0.0635 0.53001), color(display-p3 0.74092 -0.0802 0.63538), color(display-p3 0.66511 -0.0895 0.7332), color(display-p3 0.57951 -0.1015 0.81971), color(display-p3 0.4848 -0.1135 0.89016), color(display-p3 0.37932 -0.1162 0.93966), color(display-p3 0.25342 -0.0953 0.96388), rgb(0, 0, 255) 70%, rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255), rgb(0, 0, 255) 75%);
 }
 
 .test-2-1 {
@@ -105,7 +105,7 @@
 }
 
 .test-visual-effect-9-1-c {
-	background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 133, 166), rgb(244, 129, 198), rgb(243, 124, 231), rgb(218, 120, 242), rgb(179, 116, 241), rgb(137, 111, 240), rgb(107, 120, 240), rgb(103, 157, 239), rgb(99, 196, 238), rgb(94, 237, 237) 100%);
+	background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 166, 133), rgb(244, 198, 129), rgb(243, 231, 124), rgb(218, 242, 120), rgb(179, 241, 116), rgb(137, 240, 111), rgb(107, 240, 120), rgb(103, 239, 157), rgb(99, 238, 196), rgb(94, 237, 237) 100%);
 }
 
 .test-visual-effect-9-1-d {
@@ -308,7 +308,7 @@ to-clone {
 }
 
 .wpt-srgb-gradient {
-	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(230, 26, 0), rgb(204, 51, 0), rgb(179, 77, 0), rgb(153, 102, 0), rgb(128, 128, 0), rgb(102, 153, 0), rgb(77, 179, 0), rgb(51, 204, 0), rgb(25, 230, 0), rgb(0, 255, 0) 100%);
+	background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(230, 26, 0), rgb(204, 51, 0), rgb(179, 77, 0), rgb(153, 102, 0), rgb(128, 128, 0), rgb(102, 153, 0), rgb(77, 179, 0), rgb(51, 204, 0), rgb(26, 230, 0), rgb(0, 255, 0) 100%);
 }
 
 .wpt-srgb-linear-gradient {
