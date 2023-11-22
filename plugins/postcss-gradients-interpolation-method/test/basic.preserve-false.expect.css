@@ -300,7 +300,7 @@ to-clone {
 
 .test-teal-dead-zone {
 	background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(241, 46, 0), rgb(210, 83, 0), rgb(162, 113, 0), rgb(87, 135, 0), rgb(0, 147, 0), rgb(0, 149, 78), rgb(0, 140, 148), rgb(0, 118, 204), rgb(0, 81, 242), rgb(0, 0, 255) 100%);
-	background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, color(display-p3 0.86777 0.26008 -0.2622), color(display-p3 0.76447 0.35833 -0.309), color(display-p3 0.60778 0.45183 -0.3093), color(display-p3 0.38399 0.52283 -0.2788), color(display-p3 -0.208 0.56371 -0.1475), color(display-p3 -0.3942 0.5688 0.32693), color(display-p3 -0.4344 0.53163 0.57087), color(display-p3 -0.4032 0.44581 0.77207), color(display-p3 -0.3069 0.30401 0.9108), rgb(0, 0, 255) 100%);
+	background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, color(display-p3 0.86777 0.26008 -0.2622), color(display-p3 0.76447 0.35833 -0.309), color(display-p3 0.60779 0.45183 -0.3093), color(display-p3 0.38399 0.52283 -0.2788), color(display-p3 -0.208 0.56371 -0.1475), color(display-p3 -0.3942 0.5688 0.32693), color(display-p3 -0.4344 0.53163 0.57087), color(display-p3 -0.4032 0.44581 0.77207), color(display-p3 -0.3069 0.30401 0.9108), rgb(0, 0, 255) 100%);
 }
 
 .wpt-oklab-gradient {

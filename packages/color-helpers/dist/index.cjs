@@ -301,7 +301,7 @@ function OKLab_to_OKLCH(t){const _=180*Math.atan2(t[2],t[1])/Math.PI;return[t[0]
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
- */function OKLab_to_XYZ(t){const _=multiplyMatrices([[.9999999984505198,.39633779217376786,.2158037580607588],[1.0000000088817609,-.10556134232365635,-.06385417477170591],[1.0000000546724108,-.08948418209496575,-1.2914855378640917]],t);return multiplyMatrices([[1.2268798733741557,-.5578149965554813,.28139105017721583],[-.04057576262431372,1.1122868293970594,-.07171106666151701],[-.07637294974672142,-.4214933239627914,1.5869240244272418]],_.map((t=>t**3)))}
+ */function OKLab_to_XYZ(t){const _=multiplyMatrices([[1,.3963377773761749,.2158037573099136],[1,-.1055613458156586,-.0638541728258133],[1,-.0894841775298119,-1.2914855480194092]],t);return multiplyMatrices([[1.2268798758459243,-.5578149944602171,.2813910456659647],[-.0405757452148008,1.112286803280317,-.0717110580655164],[-.0763729366746601,-.4214933324022432,1.5869240198367816]],_.map((t=>t**3)))}
 /**
  * Convert an array of gamma-corrected sRGB values in the 0.0 to 1.0 range to HSL.
  *
@@ -367,7 +367,7 @@ function XYZ_to_Lab(t){const _=t.map(((t,_)=>t/r[_])).map((t=>t>.008856451679035
  *
  * XYZ <-> LMS matrices recalculated for consistent reference white
  * @see https://github.com/w3c/csswg-drafts/issues/6642#issuecomment-943521484
- */function XYZ_to_OKLab(t){const _=multiplyMatrices([[.8190224432164319,.3619062562801221,-.12887378261216414],[.0329836671980271,.9292868468965546,.03614466816999844],[.048177199566046255,.26423952494422764,.6335478258136937]],t);return multiplyMatrices([[.2104542553,.793617785,-.0040720468],[1.9779984951,-2.428592205,.4505937099],[.0259040371,.7827717662,-.808675766]],_.map((t=>Math.cbrt(t))))}
+ */function XYZ_to_OKLab(t){const _=multiplyMatrices([[.819022437996703,.3619062600528904,-.1288737815209879],[.0329836539323885,.9292868615863434,.0361446663506424],[.0481771893596242,.2642395317527308,.6335478284694309]],t);return multiplyMatrices([[.210454268309314,.7936177747023054,-.0040720430116193],[1.9779985324311684,-2.42859224204858,.450593709617411],[.0259040424655478,.7827717124575296,-.8086757549230774]],_.map((t=>Math.cbrt(t))))}
 /**
  * Convert an array of three XYZ values to u*,v* chromaticity coordinates
  *
