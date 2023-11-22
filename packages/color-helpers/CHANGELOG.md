@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (patch)
+
+- Use higher precision color conversion matrices.
+
 ### 3.0.2
 
 _September 2, 2023_
