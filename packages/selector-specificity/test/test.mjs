@@ -113,3 +113,12 @@ assert.deepEqual(calculate('::view-transition-old(foo)'), { a: 0, b: 0, c: 1 });
 assert.deepEqual(calculate('::view-transition-old(*)'), { a: 0, b: 0, c: 0 });
 assert.deepEqual(calculate('::view-transition-new(foo)'), { a: 0, b: 0, c: 1 });
 assert.deepEqual(calculate('::view-transition-new(*)'), { a: 0, b: 0, c: 0 });
+
+assert.deepEqual(calculate(':active-view-transition(*)'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':active-view-transition(foo)'), { a: 0, b: 2, c: 0 });
+assert.deepEqual(calculate(':active-view-transition(foo, bar)'), { a: 0, b: 2, c: 0 });
+
+// Invalid CSS, must be either `*` or a list of one or more custom idents
+// We should still calculate some specificity.
+assert.deepEqual(calculate(':active-view-transition(*, bar)'), { a: 0, b: 2, c: 0 });
+assert.deepEqual(calculate(':active-view-transition(*, *)'), { a: 0, b: 2, c: 0 });
