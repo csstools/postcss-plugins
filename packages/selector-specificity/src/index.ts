@@ -79,24 +79,24 @@ export function selectorSpecificity(node: Node): Specificity {
 			case '::view-transition-new':
 				// https://drafts.csswg.org/css-view-transitions-1/#named-view-transition-pseudo
 
-				{
-					if (
-						node.nodes &&
-						node.nodes.length === 1 &&
-						node.nodes[0].type === 'selector' &&
-						selectorNodeContainsOnlyUniversal(node.nodes[0])
-					) {
-						return {
-							a: 0,
-							b: 0,
-							c: 0,
-						};
-					} else {
-						c += 1;
-					}
+				if (
+					node.nodes &&
+					node.nodes.length === 1 &&
+					node.nodes[0].type === 'selector' &&
+					selectorNodeContainsOnlyUniversal(node.nodes[0])
+				) {
+					return {
+						a: 0,
+						b: 0,
+						c: 0,
+					};
 				}
 
-				break;
+				return {
+					a: 0,
+					b: 0,
+					c: 1,
+				};
 
 			default:
 				c += 1;
@@ -203,6 +203,28 @@ export function selectorSpecificity(node: Node): Specificity {
 				}
 
 				break;
+
+			case ':active-view-transition':
+				// see : https://drafts.csswg.org/css-view-transitions-2/#the-active-view-transition-pseudo
+
+				if (
+					node.nodes &&
+							node.nodes.length === 1 &&
+							node.nodes[0].type === 'selector' &&
+							selectorNodeContainsOnlyUniversal(node.nodes[0])
+				) {
+					return {
+						a: 0,
+						b: 1,
+						c: 0,
+					};
+				}
+
+				return {
+					a: 0,
+					b: 2,
+					c: 0,
+				};
 
 			default:
 				b += 1;
