@@ -44,7 +44,7 @@
 	color-1: color(display-p3 0.66273 0.5437 0.98509);
 	/* https://github.com/w3c/csswg-drafts/issues/8609 */
 	color-2: rgb(119, 163, 255);
-	color-2: color(display-p3 0.49508 0.63377 1);
+	color-2: color(display-p3 0.49508 0.63378 1);
 	color-3: rgb(128, 128, 255);
 }
 
@@ -139,7 +139,7 @@
 
 .zero-alpha-cylindrical {
 	color-4: rgba(122, 0, 182, 0.65);
-	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
+	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
 	color-5: rgba(149, 0, 122, 0.65);
 	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
