@@ -44,7 +44,7 @@ const tests = [
 	['oklab(0.2 0 0.1/50%)', 'rgba(31, 20, 0, 0.5)', 'color(display-p3 0.11443 0.08142 0 / 0.5)'],
 	['oklab(4 0 0.1/50%)', 'rgba(255, 255, 255, 0.5)', 'color(display-p3 1 1 1 / 0.5)'],
 	['oklab(0.5 -1.6 1.6)', 'rgb(53, 117, 0)', 'color(display-p3 0.25974 0.45977 0)'],
-	['oklab(0.5 -2 2)', 'rgb(55, 117, 0)', 'color(display-p3 0.25973 0.45977 0)'],
+	['oklab(0.5 -2 2)', 'rgb(55, 117, 0)', 'color(display-p3 0.25974 0.45977 0)'],
 	['oklab(0 0 0 / -10%)', 'rgba(0, 0, 0, 0)', 'color(display-p3 0 0 0 / 0)'],
 	['oklab(0 0 0 / 110%)', 'rgb(0, 0, 0)', 'color(display-p3 0 0 0)'],
 	['oklab(0 0 0 / 300%)', 'rgb(0, 0, 0)', 'color(display-p3 0 0 0)'],

@@ -487,7 +487,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 @media (color-gamut: p3) {
 .color-mix {
-	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
+	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
 	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
 }
 }
