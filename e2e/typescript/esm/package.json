@@ -9,7 +9,7 @@
 	},
 	"devDependencies": {
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env",
-		"typescript": "^5.2.2"
+		"typescript": "^5.3.2"
 	},
 	"volta": {
 		"extends": "../../package.json"
