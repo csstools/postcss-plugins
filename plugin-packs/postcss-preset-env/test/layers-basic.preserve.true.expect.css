@@ -215,7 +215,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .test-color-functional-notation:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	color: rgba(178, 34, 34, 0.5);
+	color: rgba(179, 34, 34, 0.5);
 	color: rgb(70% 13.5% 13.5% / 50%);
 	-webkit-box-ordinal-group: 17;
 	-webkit-order: 16;

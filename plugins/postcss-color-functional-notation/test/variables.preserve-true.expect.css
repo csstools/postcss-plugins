@@ -1,10 +1,10 @@
 :root {
-	--firebrick: rgb(102, 56.6, 39);
-	--firebrick-a50: rgba(102, 68.8, 34.5, 0.5);
+	--firebrick: rgb(102, 57, 39);
+	--firebrick-a50: rgba(102, 69, 34, 0.5);
 
 	--opacity-50: 0.5;
-	--firebrick-a50-var: hsla(40, 68.8%, 34.5%, var(--opacity-50));
-	--firebrick-rgb-a50-var: rgba(102, 68.8, 34.5, var(--opacity-50));
+	--firebrick-a50-var: hsla(40, 69%, 35%, var(--opacity-50));
+	--firebrick-rgb-a50-var: rgba(102, 69, 34, var(--opacity-50));
 
 	--fifty: 50%;
 	--firebrick-var: hsl(40 var(--fifty) 34.5% / var(--opacity-50));
@@ -31,10 +31,10 @@
 
 :root {
 	/* Not expected to be handled here at the moment, but might be needed in the future */
-	--rgba-functional-notation-percentage-alpha: rgba(0, 0, 0, 1);
+	--rgba-functional-notation-percentage-alpha: rgb(0, 0, 0);
 	--rgba-functional-notation-percentage-alpha: rgba(0, 0, 0, 100%);
 
-	--hsla-functional-notation-percentage-alpha: hsla(0, 0%, 0%, 1);
+	--hsla-functional-notation-percentage-alpha: hsl(0, 0%, 0%);
 
 	--hsla-functional-notation-percentage-alpha: hsla(0, 0%, 0%, 100%);
 }
