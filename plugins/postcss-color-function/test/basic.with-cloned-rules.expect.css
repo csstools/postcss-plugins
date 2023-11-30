@@ -15,7 +15,7 @@
 	color-4: rgba(255, 255, 255, VAR(--ALPHA));
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 .test-case {
 	color-4: color(Display-P3 1 1 1 / VAR(--ALPHA));
 }
@@ -135,7 +135,7 @@
 	color-5: color(display-p3 0.02472 0.01150 0.00574 /);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 .test-alpha {
 	color-4: color(display-p3 0.02472 0.01150 0.00574 / var(--foo));
 }

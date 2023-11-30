@@ -9,7 +9,7 @@
 	--firebrick-var: color-mix(in lch, red, hwb(40% var(--fifty) 34.5 / var(--opacity-50)));
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--firebrick: color(display-p3 0.84845 0.29298 0.07064);
 }
@@ -21,7 +21,7 @@
 }
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--firebrick-a50: color(display-p3 0.84845 0.29298 0.07064);
 }

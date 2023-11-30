@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (patch)
+
+- Test for mixed component types in color values (e.g. `lab(100 50% 50)`)
+
 ### 3.0.2
 
 _October 9, 2023_

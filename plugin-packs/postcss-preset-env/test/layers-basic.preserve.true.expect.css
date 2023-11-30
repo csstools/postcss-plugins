@@ -21,7 +21,7 @@
 		--firebrick: rgb(179, 35, 35);
 	}
 
-@supports (color: lab(0% 0 0)){
+@supports (color: lab(0% 0 0%)){
 .test-custom-property-fallbacks:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		--firebrick: lab(40% 56.6 39);
 	}

@@ -1048,7 +1048,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(display-p3 0 0 0)',
+		'supports': 'color(display-p3 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1125,7 +1125,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(display-p3 0 0 0)',
+		'supports': 'color(display-p3 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1202,7 +1202,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1279,7 +1279,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1356,7 +1356,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1433,7 +1433,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1510,7 +1510,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1587,7 +1587,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1664,7 +1664,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'color(xyz 0 0 0)',
+		'supports': 'color(xyz 0 0 0%)',
 		'property': 'color',
 		'sniff': 'color',
 		'matchers': [
@@ -1947,7 +1947,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'lab(0% 0 0)',
+		'supports': 'lab(0% 0 0%)',
 		'property': 'color',
 		'sniff': 'lab',
 		'matchers': [
@@ -2010,7 +2010,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'lab(0% 0 0)',
+		'supports': 'lab(0% 0 0%)',
 		'property': 'color',
 		'sniff': 'lch',
 		'matchers': [
@@ -2073,7 +2073,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'oklab(0% 0 0)',
+		'supports': 'oklab(0% 0 0%)',
 		'property': 'color',
 		'sniff': 'oklab',
 		'matchers': [
@@ -2136,7 +2136,7 @@ export const matchers = [
 		],
 	},
 	{
-		'supports': 'oklab(0% 0 0)',
+		'supports': 'oklab(0% 0 0%)',
 		'property': 'color',
 		'sniff': 'oklch',
 		'matchers': [
