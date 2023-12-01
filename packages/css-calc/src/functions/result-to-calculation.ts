@@ -42,7 +42,7 @@ export function dimensionToCalculation(node: FunctionNode, unit: string, result:
 	};
 }
 
-export function percentageToCalculation(node: FunctionNode, result: number): Calculation | -1 {
+function percentageToCalculation(node: FunctionNode, result: number): Calculation | -1 {
 	const tokens = node.tokens();
 
 	return {

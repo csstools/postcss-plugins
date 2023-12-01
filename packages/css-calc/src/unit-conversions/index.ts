@@ -18,7 +18,7 @@ import { convert_rad } from './rad';
 import { convert_s } from './s';
 import { convert_turn } from './turn';
 
-export const conversions: Map<string, Map<string, (number: number) => number>> = new Map([
+const conversions: Map<string, Map<string, (number: number) => number>> = new Map([
 	[
 		'cm',
 		convert_cm,
