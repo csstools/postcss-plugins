@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Bradford chromatic adaptation from D65 to D50
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document

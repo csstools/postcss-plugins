@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * Convert an array of linear-light prophoto-rgb in the range 0.0-1.0
@@ -23,3 +23,5 @@ export function gam_ProPhoto(RGB: Color): Color {
 		return 16 * val;
 	}) as Color;
 }
+
+export function foo() { }

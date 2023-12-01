@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * Convert an array of linear-light rec2020 RGB  in the range 0.0-1.0

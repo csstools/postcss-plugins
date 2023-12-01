@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * Convert Lab to D50-adapted XYZ
@@ -8,7 +8,7 @@ import type { Color } from 'types/color';
  *
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
  */
-import { D50 } from 'conversions/constants';
+import { D50 } from '../conversions/constants';
 
 export function Lab_to_XYZ(Lab: Color): Color {
 	const κ = 24389 / 27;   // 29^3/3^3

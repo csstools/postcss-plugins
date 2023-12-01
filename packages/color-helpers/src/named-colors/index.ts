@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 // https://www.w3.org/TR/css-color-4/#named-colors
 export const namedColors: Record<string, Color> = {

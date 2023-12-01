@@ -9,8 +9,8 @@
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js
  * @see https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio
  */
-import { sRGB_to_luminance } from 'conversions/srgb-to-luminance';
-import type { Color } from 'types/color';
+import { sRGB_to_luminance } from '../conversions/srgb-to-luminance';
+import type { Color } from '../types/color';
 
 export function contrast(RGB1: Color, RGB2: Color): number {
 	const L1 = sRGB_to_luminance(RGB1);
