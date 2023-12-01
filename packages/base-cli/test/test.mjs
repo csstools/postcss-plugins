@@ -1,6 +1,5 @@
-'use strict';
 import assert from 'assert';
-import { parseArguments } from '../dist/args.js';
+import { parseArguments } from '@csstools/base-cli';
 
 const argumentParsingCases = [
 	{
