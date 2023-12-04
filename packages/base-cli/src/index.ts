@@ -5,7 +5,8 @@ import { stdinToFs } from './io-stdin-to-fs';
 import { fsToStdout } from './io-fs-to-stdout';
 import { fsToFs } from './io-fs-to-fs';
 
-export * from './help';
+export { parseArguments } from './args';
+export { helpTextLogger } from './help';
 
 type PluginCreatorOptions = Record<string, unknown> | null;
 
