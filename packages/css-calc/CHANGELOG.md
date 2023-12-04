@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 1.1.4
 
 _September 24, 2023_
