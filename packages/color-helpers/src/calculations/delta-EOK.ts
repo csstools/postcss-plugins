@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * @description Calculate deltaE OK which is the simple root sum of squares

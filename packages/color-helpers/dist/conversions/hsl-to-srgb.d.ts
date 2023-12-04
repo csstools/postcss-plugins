@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * @param {number} hue - Hue as degrees 0..360
  * @param {number} sat - Saturation as percentage 0..100

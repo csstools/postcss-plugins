@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * @description Calculate deltaE OK which is the simple root sum of squares
  * @param {number[]} reference - Array of OKLab values: L as 0..1, a and b as -1..1

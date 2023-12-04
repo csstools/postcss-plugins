@@ -1,6 +1,6 @@
-import type { Color } from 'types/color';
-import { lin_sRGB } from 'conversions/lin-srgb';
-import { lin_sRGB_to_XYZ } from 'conversions/lin-srgb-to-xyz';
+import type { Color } from '../types/color';
+import { lin_sRGB } from '../conversions/lin-srgb';
+import { lin_sRGB_to_XYZ } from '../conversions/lin-srgb-to-xyz';
 
 /**
  * Convert an array of gamma-corrected sRGB values in the 0.0 to 1.0 range

@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corrected form
  * Extended transfer function:
