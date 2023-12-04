@@ -1,7 +1,7 @@
-import encodeCSS from './encode/encode.mjs';
+import encodeCSS from './encode/encode.js';
 import parser from 'postcss-selector-parser';
 import type { AtRule, ChildNode, Container, Document, PluginCreator, Rule } from 'postcss';
-import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports.js';
+import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports';
 import { selectorSpecificity } from '@csstools/selector-specificity';
 
 /** css-has-pseudo plugin options */
@@ -136,11 +136,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									if (x.type === 'selector') {
 										x.nodes.forEach((y) => {
 											delete y.parent;
-											hasContainingSelector.append(y);
+											hasContainingSelector.append(y as unknown as parser.Selector /* TODO : delete the "as" clause */);
 										});
 									} else {
 										delete x.parent;
-										hasContainingSelector.append(x);
+										hasContainingSelector.append(x as unknown as parser.Selector /* TODO : delete the "as" clause */);
 									}
 								});
 							}
@@ -165,7 +165,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							const replacementNodes = encodedSelectorAST.nodes[0].nodes;
 
 							for (let i = replacementNodes.length - 1; i >= 0; i--) {
-								container.prepend(replacementNodes[i]);
+								container.prepend(replacementNodes[i] as unknown as parser.Selector /* TODO : delete the "as" clause */);
 							}
 						});
 

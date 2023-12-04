@@ -34,7 +34,7 @@ function createSensitiveAttributes(attribute: selectorParser.Attribute) {
 				before: attribute.spaces.before,
 			},
 			insensitive: false,
-		});
+		}) as selectorParser.Attribute /* TODO : delete the "as" clause */;
 
 		newAttribute.setValue(x);
 
@@ -48,7 +48,7 @@ function createNewSelectors(selector: selectorParser.Selector) {
 	selector.each((node) => {
 		if (!nodeIsInsensitiveAttribute(node)) {
 			newSelectors.forEach(newSelector => {
-				newSelector.append(node.clone());
+				newSelector.append(node.clone() as unknown as selectorParser.Selector /* TODO : delete the "as" clause */);
 			});
 			return;
 		}
@@ -58,8 +58,8 @@ function createNewSelectors(selector: selectorParser.Selector) {
 
 		sensitiveAttributes.forEach(newNode => {
 			newSelectors.forEach(newSelector => {
-				const newSelectorWithNewNode = newSelector.clone({});
-				newSelectorWithNewNode.append(newNode);
+				const newSelectorWithNewNode = newSelector.clone({}) as selectorParser.Selector /* TODO : delete the "as" clause */;
+				newSelectorWithNewNode.append(newNode as unknown as selectorParser.Selector /* TODO : delete the "as" clause */);
 				newSelectorsWithSensitiveAttributes.push(newSelectorWithNewNode);
 			});
 		});

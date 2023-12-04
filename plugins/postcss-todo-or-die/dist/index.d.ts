@@ -1,3 +1,3 @@
-import type { PluginCreator } from 'postcss';
+import { PluginCreator } from 'postcss';
 declare const creator: PluginCreator<never>;
-export default creator;
+export = creator;

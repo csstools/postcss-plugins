@@ -116,7 +116,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										parent.prepend(
 											selectorParser.combinator({
 												value: ' ',
-											}),
+											}) as unknown as selectorParser.Selector /* TODO : delete the "as" clause */,
 										);
 									}
 
@@ -170,17 +170,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 											parent.insertAfter(first, notDirAttr);
 										} else {
 											// prepend :root
-											parent.prepend(notDirAttr);
+											parent.prepend(notDirAttr as unknown as selectorParser.Selector /* TODO : delete the "as" clause */);
 										}
 									} else if (firstIsHtml) {
 										// insert dir attribute after html tag
 										parent.insertAfter(first, dirAttr);
 									} else if (options.shadow && !firstIsRoot) {
 										// prepend :host-context([dir])
-										parent.prepend(hostContextPseudo);
+										parent.prepend(hostContextPseudo as unknown as selectorParser.Selector /* TODO : delete the "as" clause */);
 									} else {
 										// otherwise, prepend the dir attribute
-										parent.prepend(dirAttr);
+										parent.prepend(dirAttr as unknown as selectorParser.Selector /* TODO : delete the "as" clause */);
 									}
 								});
 							});

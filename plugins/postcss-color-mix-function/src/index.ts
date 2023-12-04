@@ -109,7 +109,7 @@ export type pluginOptions = {
 };
 
 /* Transform color-mix() functions in CSS. */
-const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
 		preserve: false,
@@ -136,6 +136,6 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return basePlugin(options);
 };
 
-postcssPlugin.postcss = true;
+creator.postcss = true;
 
-export default postcssPlugin;
+export default creator;

@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
-import encodeCSS from './encode.mjs';
-import decodeCSS from './decode.mjs';
-import extractEncodedSelectors from './extract.mjs';
+import encodeCSS from './encode.js';
+import decodeCSS from './decode.js';
+import extractEncodedSelectors from './extract.js';
 
 function testEncoderDecoder(decoded, encoded) {
 	assert.strictEqual(encodeCSS(decoded), encoded);

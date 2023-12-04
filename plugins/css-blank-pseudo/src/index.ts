@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
-import isValidReplacement from './is-valid-replacement.mjs';
+import isValidReplacement from './is-valid-replacement.js';
 
 /** css-blank-pseudo plugin options */
 export type pluginOptions = {
@@ -91,7 +91,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							return [selector];
 						}
 
-						const selectorASTClone = selectorAST.clone();
+						const selectorASTClone = selectorAST.clone() as parser.Root /* TODO : delete the "as" clause */;
 
 						// html > .foo:focus-within
 						// becomes:
@@ -109,7 +109,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 									if (i === selectorAST.nodes[0].nodes.length - 1) {
 										// Append the class to the end of the selector if no combinator or pseudo element was found.
-										selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+										selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }) as unknown as parser.Selector /* TODO : delete the "as" clause */);
 										break;
 									}
 								}
@@ -117,8 +117,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 							if (selectorAST.nodes?.[0]?.nodes) {
 								// Prepend a space combinator and the class to the beginning of the selector.
-								selectorASTClone.nodes[0].prepend(parser.combinator({ value: ' ' }));
-								selectorASTClone.nodes[0].prepend(parser.className({ value: POLYFILL_READY_CLASSNAME }));
+								selectorASTClone.nodes[0].prepend(parser.combinator({ value: ' ' }) as unknown as parser.Selector /* TODO : delete the "as" clause */);
+								selectorASTClone.nodes[0].prepend(parser.className({ value: POLYFILL_READY_CLASSNAME }) as unknown as parser.Selector /* TODO : delete the "as" clause */);
 							}
 
 							return [selectorAST.toString(), selectorASTClone.toString()];

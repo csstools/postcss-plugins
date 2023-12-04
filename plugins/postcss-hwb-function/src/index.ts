@@ -17,7 +17,7 @@ export type pluginOptions = {
 };
 
 /** Transform hwb() functions in CSS. */
-const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : false;
 
 	return {
@@ -90,9 +90,9 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	};
 };
 
-postcssPlugin.postcss = true;
+creator.postcss = true;
 
-export default postcssPlugin;
+export default creator;
 
 function insertAtSupportsAfterCorrectRule(atSupports: AtRule, parent: Container<Node>, params: string) {
 	// Ensure correct order of @supports rules

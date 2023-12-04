@@ -154,7 +154,7 @@ export type pluginOptions = {
 };
 
 // Transform double-position gradients in CSS.
-const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
 		preserve: true,
@@ -173,6 +173,6 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return basePlugin(options);
 };
 
-postcssPlugin.postcss = true;
+creator.postcss = true;
 
-export default postcssPlugin;
+export default creator;

@@ -197,6 +197,9 @@ const missingLicenseExceptions = [
 	{
 		file: 'node_modules/filter-iterator/package.json',
 	},
+	{
+		file: 'node_modules/@andrewbranch/untar.js/package.json',
+	},
 ];
 
 export function missingLicenseIsOkByException(file) {

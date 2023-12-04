@@ -1,5 +1,5 @@
 /* global document */
-import isValidReplacement from './is-valid-replacement.mjs';
+import isValidReplacement from './is-valid-replacement.js';
 function generateHandler(replaceWith) {
 	let selector;
 	let remove;

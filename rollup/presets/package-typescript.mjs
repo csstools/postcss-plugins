@@ -1,8 +1,9 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-ts';
 import { externalsForPlugin } from '../configs/externals.mjs';
 import { packageBabelPreset } from '../configs/babel-presets.mjs';
+import { rewriteCjsTypeDeclarations } from '../transforms/rewrite-cjs-type-declarations.mjs';
 
 export function packageTypescript() {
 	return [
@@ -28,6 +29,7 @@ export function packageTypescript() {
 					keep_classnames: true,
 					keep_fnames: true,
 				}),
+				rewriteCjsTypeDeclarations(),
 			],
 		},
 	];

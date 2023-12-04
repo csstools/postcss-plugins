@@ -1,5 +1,5 @@
 import assert from 'assert';
-import isValidReplacement from '../src/is-valid-replacement.mjs';
+import isValidReplacement from '../src/is-valid-replacement.js';
 
 const valid = [
 	'[some-attribute]',

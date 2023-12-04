@@ -59,22 +59,37 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
 			}
 
 			if (!areaHrefNeedsFixing) {
-				replacements.push([linkAST.clone(), visitedAST.clone()]);
+				replacements.push(
+					[
+						linkAST.clone() as parser.Selector /* TODO : delete the "as" clause */,
+						visitedAST.clone() as parser.Selector, /* TODO : delete the "as" clause */
+					]);
 				return;
 			}
 
 			const tags = getTagElementsNextToPseudo(pseudo);
 			if (tags.includes('area')) {
-				replacements.push([linkAST.clone(), visitedAST.clone(), hrefAST.clone()]);
+				replacements.push([
+					linkAST.clone() as parser.Selector /* TODO : delete the "as" clause */,
+					visitedAST.clone() as parser.Selector /* TODO : delete the "as" clause */,
+					hrefAST.clone() as parser.Selector, /* TODO : delete the "as" clause */
+				]);
 				return;
 			}
 
 			if (tags.length) {
-				replacements.push([linkAST.clone(), visitedAST.clone()]);
+				replacements.push([
+					linkAST.clone() as parser.Selector /* TODO : delete the "as" clause */,
+					visitedAST.clone() as parser.Selector, /* TODO : delete the "as" clause */
+				]);
 				return;
 			}
 
-			replacements.push([linkAST.clone(), visitedAST.clone(), areaHrefAST.clone()]);
+			replacements.push([
+				linkAST.clone() as parser.Selector /* TODO : delete the "as" clause */,
+				visitedAST.clone() as parser.Selector /* TODO : delete the "as" clause */,
+				areaHrefAST.clone() as parser.Selector, /* TODO : delete the "as" clause */
+			]);
 		});
 
 		if (!replacements.length) {
@@ -84,7 +99,7 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
 		const replacementsCartesianProduct = cartesianProduct(...replacements);
 
 		replacementsCartesianProduct.forEach((replacement) => {
-			const clone = selectorsAST.clone();
+			const clone = selectorsAST.clone() as parser.Root /* TODO : delete the "as" clause */;
 			clone.walkPseudos((pseudo) => {
 				if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 					return;
@@ -101,11 +116,11 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
 	return out;
 }
 
-function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parser.Node>> {
-	const r: Array<Array<parser.Node>> = [];
+function cartesianProduct(...args: Array<Array<parser.Selector>>): Array<Array<parser.Selector>> {
+	const r: Array<Array<parser.Selector>> = [];
 	const max = args.length - 1;
 
-	function helper(arr: Array<parser.Node>, i: number) {
+	function helper(arr: Array<parser.Selector>, i: number) {
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);

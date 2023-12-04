@@ -1,5 +1,5 @@
 /* global document,window,self,MutationObserver */
-import isValidReplacement from './is-valid-replacement.mjs';
+import isValidReplacement from './is-valid-replacement.js';
 
 const CSS_CLASS_LOADED = 'js-blank-pseudo';
 
