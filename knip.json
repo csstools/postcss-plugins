@@ -108,6 +108,7 @@
 		"@rollup/plugin-terser",
 		"@rollup/plugin-typescript",
 		"@stryker-mutator/command-runner",
+		"rollup-plugin-ts",
 		"tslib"
 	]
 }
