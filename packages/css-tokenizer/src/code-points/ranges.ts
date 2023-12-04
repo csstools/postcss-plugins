@@ -7,12 +7,12 @@ export function isDigitCodePoint(search: number): boolean {
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#uppercase-letter
-export function isUppercaseLetterCodePoint(search: number): boolean {
+function isUppercaseLetterCodePoint(search: number): boolean {
 	return search >= 0x0041 && search <= 0x005a;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#lowercase-letter
-export function isLowercaseLetterCodePoint(search: number): boolean {
+function isLowercaseLetterCodePoint(search: number): boolean {
 	return search >= 0x0061 && search <= 0x007a;
 }
 
@@ -26,13 +26,8 @@ export function isHexDigitCodePoint(search: number): boolean {
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#letter
-export function isLetterCodePoint(search: number): boolean {
+function isLetterCodePoint(search: number): boolean {
 	return isLowercaseLetterCodePoint(search) || isUppercaseLetterCodePoint(search);
-}
-
-// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#non-ascii-code-point
-export function isNonASCIICodePoint(search: number): boolean {
-	return search >= 0x0080;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-start-code-point
@@ -46,7 +41,7 @@ export function isIdentCodePoint(search: number): boolean {
 }
 
 // https://drafts.csswg.org/css-syntax/#non-ascii-ident-code-point
-export function isNonASCII_IdentCodePoint(search: number): boolean {
+function isNonASCII_IdentCodePoint(search: number): boolean {
 	if (
 		search === 0x00B7 ||
 		search === 0x200C ||

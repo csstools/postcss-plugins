@@ -1,0 +1,113 @@
+{
+	"$schema": "https://unpkg.com/knip@2/schema.json",
+	"workspaces": {
+		"packages/*": {
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
+		},
+		"plugins/*": {
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"open-props",
+				"style-dictionary-design-tokens-example"
+			]
+		},
+		"experimental/*": {
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
+		},
+		"plugin-packs/*": {
+			"entry": [
+				".tape.{cjs,mjs}",
+				"generate/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.ts",
+				"test/_import.mjs",
+				"test/_require.cjs",
+				"test/test.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"@rmenke/css-package-conditional-3",
+				"@rmenke/css-package-main",
+				"open-props"
+			]
+		},
+		"cli/*": {
+			"entry": "src/cli.ts",
+			"project": "**/*.ts"
+		},
+		"plugins-stylelint/*": {
+			"entry": "{index,index.test}.js",
+			"project": "**/*.js"
+		}
+	},
+	"ignore": [
+		".github/**",
+		"e2e-package-managers/**",
+		"e2e/**",
+		"packages/postcss-tape/test/**",
+		"plugins/postcss-env-function/test/import-variables.cjs",
+		"plugins/postcss-env-function/test/import-variables.js",
+		"postcss-recipes/**",
+		"rollup/**",
+		"sites/**"
+	],
+	"ignoreBinaries": [
+		"csstools-cli"
+	],
+	"ignoreDependencies": [
+		"@babel/core",
+		"@babel/preset-env",
+		"@rollup/plugin-babel",
+		"@rollup/plugin-commonjs",
+		"@rollup/plugin-node-resolve",
+		"@rollup/plugin-terser",
+		"@rollup/plugin-typescript",
+		"@stryker-mutator/command-runner",
+		"tslib"
+	]
+}

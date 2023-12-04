@@ -9,6 +9,14 @@ import { toPrecision } from './to-precision';
 import { XYZ_D50_to_P3_Gamut } from '../gamut-mapping/p3';
 import { serializeWithAlpha } from './with-alpha';
 
+/**
+ * Convert color data to component values in the display-p3 color space.
+ * The return value can be converted to a string by calling `toString()` on it.
+ *
+ * @param {ColorData} color - The color data to be serialized.
+ * @param {boolean} gamutMapping - Whether to perform gamut mapping, defaults to `true`.
+ * @returns {FunctionNode} The serialized color data as a FunctionNode object.
+ */
 export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);

@@ -3,7 +3,7 @@ export default function postcssSystemUiFont() {
 		postcssPlugin: 'postcss-system-ui-font',
 		Declaration(/** @type {import('postcss').Declaration} */ node) {
 			if (propertyRegExp.test(node.prop)) {
-				if (!node.value.includes(systemUiFamily.join(', '))) {
+				if (!node.value.includes(systemUIFamilies)) {
 					node.value = node.value.replace(systemUiMatch, systemUiReplace);
 				}
 			}
@@ -25,5 +25,6 @@ const systemUiFamily = [
 	/* KDE Plasma 5+ */ 'Noto Sans',
 	/* fallback */ 'sans-serif',
 ];
+const systemUIFamilies = systemUiFamily.join(', ');
 const systemUiMatch = new RegExp(`(^|,|${whitespace}+)(?:system-ui${whitespace}*)(?:,${whitespace}*(?:${systemUiFamily.join('|')})${whitespace}*)?(,|$)`, 'i');
-const systemUiReplace = `$1${systemUiFamily.join(', ')}$2`;
+const systemUiReplace = `$1${systemUIFamilies}$2`;

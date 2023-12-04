@@ -2,7 +2,7 @@ import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-cu
 import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import { tokenize } from '@csstools/css-tokenizer';
-import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
+import { SyntaxFlag, color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
@@ -42,6 +42,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 					if (isFunctionNode(componentValue) && colorMixNameRegex.test(componentValue.getName())) {
 						const colorData = color(componentValue);
 						if (!colorData) {
+							return;
+						}
+
+						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
 							return;
 						}
 

@@ -8,6 +8,13 @@ import { xyz } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
 import { serializeWithAlpha } from './with-alpha';
 
+/**
+ * Convert color data to component values in the OKLCH color space.
+ * The return value can be converted to a string by calling `toString()` on it.
+ *
+ * @param {ColorData} color - The color data to be serialized.
+ * @returns {FunctionNode} The serialized color data as a FunctionNode object.
+ */
 export function serializeOKLCH(color: ColorData): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let oklch = color.channels.map((x) => Number.isNaN(x) ? 0 : x);

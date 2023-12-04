@@ -107,17 +107,15 @@
 		"postcss-place": "^9.0.0",
 		"postcss-pseudo-class-any-link": "^9.0.0",
 		"postcss-replace-overflow-wrap": "^4.0.0",
-		"postcss-selector-not": "^7.0.1",
-		"postcss-value-parser": "^4.2.0"
+		"postcss-selector-not": "^7.0.1"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-debug-logger": "^2.0.0",
+		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.9.2",
-		"postcss-simple-vars": "^7.0.1"
+		"@webref/css": "^6.9.2"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",

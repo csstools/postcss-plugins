@@ -12,7 +12,11 @@ export type pluginOptions = {
 };
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
+	const options: {
+		preserve: boolean,
+		dir: 'ltr' | 'rtl'
+		shadow: boolean,
+	} = Object.assign(
 		// Default options
 		{
 			dir: null,
@@ -67,7 +71,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										return;
 									}
 
-									const parent = node.parent;
+									const parent = node.parent as selectorParser.Selector;
+									if (!parent) {
+										return;
+									}
+
 									const otherDirPseudos = parent.nodes.filter((other) => {
 										return 'pseudo' === other.type && ':dir' === other.value.toLowerCase();
 									});
@@ -108,7 +116,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										parent.prepend(
 											selectorParser.combinator({
 												value: ' ',
-											}) as unknown as selectorParser.Selector,
+											}),
 										);
 									}
 
@@ -121,14 +129,19 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										operator: '=',
 										quoteMark: '"',
 										value: `"${value}"`,
-										raws: null,
+										raws: {},
 									});
 
 									// :host-context([dir]) for Shadow DOM CSS
 									const hostContextPseudo = selectorParser.pseudo({
 										value: ':host-context',
 									});
-									hostContextPseudo.append(dirAttr as unknown as selectorParser.Selector);
+									hostContextPseudo.append(selectorParser.selector({
+										value: '',
+										nodes: [
+											dirAttr,
+										],
+									}));
 
 									// not[dir] attribute
 									const notDirAttr = selectorParser.pseudo({
@@ -136,13 +149,18 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									});
 
 									notDirAttr.append(
-										selectorParser.attribute({
-											attribute: 'dir',
-											operator: '=',
-											quoteMark: '"',
-											value: `"${'ltr' === value ? 'rtl' : 'ltr'}"`,
-											raws: null,
-										}) as unknown as selectorParser.Selector,
+										selectorParser.selector({
+											value: '',
+											nodes: [
+												selectorParser.attribute({
+													attribute: 'dir',
+													operator: '=',
+													quoteMark: '"',
+													value: `"${'ltr' === value ? 'rtl' : 'ltr'}"`,
+													raws: {},
+												}),
+											],
+										}),
 									);
 
 									if (isdir) {
@@ -152,17 +170,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 											parent.insertAfter(first, notDirAttr);
 										} else {
 											// prepend :root
-											parent.prepend(notDirAttr as unknown as selectorParser.Selector);
+											parent.prepend(notDirAttr);
 										}
 									} else if (firstIsHtml) {
 										// insert dir attribute after html tag
 										parent.insertAfter(first, dirAttr);
 									} else if (options.shadow && !firstIsRoot) {
 										// prepend :host-context([dir])
-										parent.prepend(hostContextPseudo as unknown as selectorParser.Selector);
+										parent.prepend(hostContextPseudo);
 									} else {
 										// otherwise, prepend the dir attribute
-										parent.prepend(dirAttr as unknown as selectorParser.Selector);
+										parent.prepend(dirAttr);
 									}
 								});
 							});

@@ -116,3 +116,7 @@
 	color: rgb(0, 178, 186);
 	color: color(display-p3 0 0.71015 0.76142);
 }
+
+.experimental-features-from-the-color-parser {
+	color: hsla(from contrast-color(pink) h s l / alpha);
+}

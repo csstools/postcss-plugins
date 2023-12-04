@@ -48,8 +48,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							if (!importResult) {
 								continue;
 							}
-						} catch (e) {
-							atRule.node.warn(postcssHelpers.result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + (e as Error).message);
+						} catch (err) {
+							atRule.node.warn(postcssHelpers.result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + ((err instanceof Error) ? err.message : err));
 							continue;
 						}
 
@@ -75,7 +75,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 
 						decl.value = modifiedValue;
-					} catch (err) {
+					} catch (_) {
 						decl.warn(result, `Failed to parse and transform "${decl.value}"`);
 					}
 				},

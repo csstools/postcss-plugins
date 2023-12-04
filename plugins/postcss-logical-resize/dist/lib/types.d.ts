@@ -1,17 +1,7 @@
-export declare enum Direction {
+declare enum Direction {
     Block = "block",
     Inline = "inline"
 }
-export declare enum DirectionValue {
-    Start = "start",
-    End = "end"
-}
-export declare const DirectionValues: {
-    BlockStart: string;
-    BlockEnd: string;
-    InlineStart: string;
-    InlineEnd: string;
-};
 export declare enum DirectionFlow {
     TopToBottom = "top-to-bottom",
     BottomToTop = "bottom-to-top",
@@ -29,3 +19,4 @@ export type DirectionConfig = {
     [Direction.Inline]: [Axes, Axes];
     inlineIsHorizontal: boolean;
 };
+export {};

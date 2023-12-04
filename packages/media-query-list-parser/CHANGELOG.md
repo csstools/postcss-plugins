@@ -1,5 +1,9 @@
 # Changes to Media Query List Parser
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 2.1.5
 
 _September 24, 2023_

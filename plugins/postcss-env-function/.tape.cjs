@@ -1,4 +1,4 @@
-const postcssTape = require('../../packages/postcss-tape/dist/index.cjs');
+const postcssTape = require('@csstools/postcss-tape');
 const plugin = require('postcss-env-function');
 
 postcssTape.postcssTape(plugin)({

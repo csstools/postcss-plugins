@@ -1,5 +1,9 @@
 # Changes to Cascade Layer Name Parser
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 1.0.5
 
 _September 24, 2023_

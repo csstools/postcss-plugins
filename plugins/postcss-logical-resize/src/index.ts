@@ -59,8 +59,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			try {
 				transformed = transform(decl);
-			} catch (error) {
-				decl.warn(result, error.message);
+			} catch (err) {
+				decl.warn(result, (err instanceof Error) ? err.message : String(err));
 				return;
 			}
 

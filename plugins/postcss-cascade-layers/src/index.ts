@@ -86,7 +86,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						const specificity = selectorSpecificity(selectorParser().astSync(selector));
 						highestASpecificity = Math.max(highestASpecificity, specificity.a + 1);
 					} catch (err) {
-						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 					}
 				});
 			});
@@ -113,7 +113,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					try {
 						return adjustSelectorSpecificity(selector, model.layerCount * highestASpecificity);
 					} catch (err) {
-						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+						rule.warn(result, `Failed to parse selector : "${selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 					}
 
 					return selector;

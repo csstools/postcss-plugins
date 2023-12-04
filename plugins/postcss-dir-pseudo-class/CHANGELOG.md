@@ -1,5 +1,9 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 8.0.0
 
 _July 3, 2023_

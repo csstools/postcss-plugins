@@ -1,4 +1,4 @@
-export interface walkable {
+interface walkable {
 	walk(cb: (entry: { node: Array<unknown> | unknown, parent: unknown }, index: number | string) => boolean | void): false | undefined
 }
 

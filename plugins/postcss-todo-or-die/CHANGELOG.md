@@ -1,5 +1,9 @@
 # Changes to PostCSS Todo or Die
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 2.0.2
 
 _September 24, 2023_

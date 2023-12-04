@@ -128,7 +128,7 @@ function transformComponentValue(node: ComponentValue, tokens: Map<string, Token
 		try {
 			return parseComponentValues(replacement.cssValue(transformOptions));
 		} catch (err) {
-			postCSSNode.warn(result, (err as Error).message);
+			postCSSNode.warn(result, (err instanceof Error) ? err.message : String(err));
 			return;
 		}
 	}

@@ -43,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			try {
 				valueAST = valueParser(originalValue);
-			} catch (error) {
+			} catch (_) {
 				decl.warn(
 					result,
 					`Failed to parse value '${originalValue}'. Leaving the original value intact.`,

@@ -25,14 +25,14 @@ export function isGuardedByAtSupportsFromAtRuleParams(atSupportsParams: string):
 			}
 		});
 
-	} catch (e) {
+	} catch (_) {
 		/* ignore */
 	}
 
 	return isGuardedByAtSupports;
 }
 
-export function selectorContainsHasPseudo(selector: string): boolean {
+function selectorContainsHasPseudo(selector: string): boolean {
 	if (!selector.toLowerCase().includes(':has(')) {
 		return false;
 	}
@@ -48,7 +48,7 @@ export function selectorContainsHasPseudo(selector: string): boolean {
 			}
 		});
 
-	} catch (e) {
+	} catch (_) {
 		/* ignore */
 	}
 

@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (patch)
+
+- Skip transforms when a color value contains experimental syntax
+
 ### 3.0.6
 
 _October 9, 2023_

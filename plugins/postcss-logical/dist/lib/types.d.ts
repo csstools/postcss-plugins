@@ -1,5 +1,5 @@
 import type { Declaration } from 'postcss';
-export declare enum Direction {
+declare enum Direction {
     Block = "block",
     Inline = "inline"
 }
@@ -31,3 +31,4 @@ export type DirectionConfig = {
     inlineIsHorizontal: boolean;
 };
 export type TransformFunction = (decl: Declaration) => Array<Declaration>;
+export {};

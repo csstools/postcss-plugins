@@ -7,7 +7,7 @@ export function resolveId(node: Node, require: NodeRequire, id: string, base: st
 	if (id.startsWith('node_modules:')) {
 		try {
 			resolvedPath = require.resolve(id.slice(13));
-		} catch (e) {
+		} catch (_) {
 			throw node.error(
 				`Failed to find '${id}'`,
 			);

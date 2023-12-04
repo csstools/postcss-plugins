@@ -1,6 +1,6 @@
 import { clamp } from '../util/clamp.mjs';
 
-export const DEFAULT_STAGE = 2;
+const DEFAULT_STAGE = 2;
 export const OUT_OF_RANGE_STAGE = 5;
 
 export function stageFromOptions(options, logger) {

@@ -1,5 +1,9 @@
 # Changes to PostCSS Extract
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 3.0.0
 
 _July 3, 2023_

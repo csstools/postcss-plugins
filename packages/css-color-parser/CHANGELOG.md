@@ -2,7 +2,10 @@
 
 ### Unreleased (minor)
 
+- Add the `Experimental` syntax flag, to be used in future features.
 - Add a `serializeHSL` function.
+- Small fixes in type definitions
+- Improve JS Doc comments
 
 ### 1.4.0
 

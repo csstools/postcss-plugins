@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (patch)
+
+- Fix `dependencies` in `package.json`
+
 ### 1.1.0
 
 _October 31, 2023_

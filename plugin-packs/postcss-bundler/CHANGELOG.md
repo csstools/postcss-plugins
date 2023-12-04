@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 1.0.7
 
 _October 31, 2023_

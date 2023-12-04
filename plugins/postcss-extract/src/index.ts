@@ -29,7 +29,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-extract',
 		prepare: () => {
-			if (opts.extractLate) {
+			if (options.extractLate) {
 				return {
 					OnceExit: (root) => {
 						options.results(extract(root, parsedQueries));

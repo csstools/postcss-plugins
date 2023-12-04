@@ -1,6 +1,6 @@
 import type autoprefixer from 'autoprefixer';
 import { pluginsOptions } from './plugins/plugins-options';
-export declare enum DirectionFlow {
+declare enum DirectionFlow {
     TopToBottom = "top-to-bottom",
     BottomToTop = "bottom-to-top",
     RightToLeft = "right-to-left",
@@ -90,3 +90,4 @@ export type pluginOptions = {
         blockDirection?: DirectionFlow;
     };
 };
+export {};

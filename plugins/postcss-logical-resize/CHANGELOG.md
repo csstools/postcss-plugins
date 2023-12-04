@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Resize
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 2.0.0
 
 _July 3, 2023_

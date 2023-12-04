@@ -12,7 +12,7 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 	try {
 		selectors = mergeSelectors(parent.selectors, node.selectors, opts);
 	} catch (err) {
-		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${err.message}"`);
+		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${(err instanceof Error) ? err.message: err}"`);
 		return;
 	}
 

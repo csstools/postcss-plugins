@@ -50,6 +50,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 							return;
 						}
 
+						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
+							return;
+						}
+
 						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
 							return;
 						}

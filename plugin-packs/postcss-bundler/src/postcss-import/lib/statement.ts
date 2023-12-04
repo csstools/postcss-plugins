@@ -33,7 +33,7 @@ export type ImportStatement = {
 	importingNode: AtRule | null
 }
 
-export type PreImportStatement = {
+type PreImportStatement = {
 	type: 'pre-import'
 	node: ChildNode
 	conditions: Array<Condition>

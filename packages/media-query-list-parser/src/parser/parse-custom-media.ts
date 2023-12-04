@@ -3,7 +3,7 @@ import { CustomMedia } from '../nodes/custom-media';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { parseFromTokens } from './parse';
 
-export type Options = {
+type Options = {
 	preserveInvalidMediaQueries?: boolean,
 	onParseError?: (error: ParseError) => void
 }

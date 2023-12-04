@@ -66,7 +66,7 @@ export function transformAtMediaListTokens(params: string, replacements: Map<str
 	return [];
 }
 
-export function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): { replaceWith: string, encapsulateWith?: string } | null {
+function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): { replaceWith: string, encapsulateWith?: string } | null {
 	if (!mediaQueryIsSimple(mediaQuery)) {
 		return null;
 	}
@@ -97,7 +97,7 @@ export function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: 
 	return candidate;
 }
 
-export function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
+function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
 	let candidate: Array<{ replaceWith: string, encapsulateWith?: string }> = [];
 
 	mediaQuery.walk((entry) => {

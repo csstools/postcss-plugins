@@ -138,10 +138,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 							rule.remove();
 						}
-					} catch (e) {
+					} catch (err) {
 						// Do not ignore infinite recursion errors.
-						if (e.message.indexOf('call stack size exceeded') > -1) {
-							throw e;
+						if (err.message.indexOf('call stack size exceeded') > -1) {
+							throw err;
 						}
 
 						rule.warn(result, `Failed to parse selector "${rule.selector}"`);

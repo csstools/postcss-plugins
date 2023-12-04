@@ -167,10 +167,40 @@ const licenseExceptions = [
 		file: 'node_modules/jackspeak/package.json',
 		license: 'BlueOak-1.0.0',
 	},
+
+	// These packages have "public domain" in the "license" field, which is incorrect but acceptable for our purposes.
+	{
+		file: 'node_modules/deep-freeze/package.json',
+		license: 'public',
+	},
+	{
+		file: 'node_modules/deep-freeze/package.json',
+		license: 'domain',
+	},
+	{
+		file: 'node_modules/identity-function/package.json',
+		license: 'public',
+	},
+	{
+		file: 'node_modules/identity-function/package.json',
+		license: 'domain',
+	},
 ];
 
 export function licenseIsOkByException(file, license) {
-	return !!licenseExceptions.find(exception => {
+	return licenseExceptions.some(exception => {
 		return file.endsWith(exception.file) && exception.license === license;
+	});
+}
+
+const missingLicenseExceptions = [
+	{
+		file: 'node_modules/filter-iterator/package.json',
+	},
+];
+
+export function missingLicenseIsOkByException(file) {
+	return missingLicenseExceptions.some(exception => {
+		return file.endsWith(exception.file);
 	});
 }

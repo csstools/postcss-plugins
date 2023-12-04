@@ -1,5 +1,9 @@
 # Changes to PostCSS Selector Not
 
+### Unreleased (patch)
+
+- Small fixes in type definitions
+
 ### 7.0.1
 
 _January 28, 2023_
