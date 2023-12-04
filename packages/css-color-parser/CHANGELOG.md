@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (minor)
+
+- Add a `serializeHSL` function.
+
 ### 1.4.0
 
 _October 9, 2023_

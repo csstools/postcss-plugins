@@ -76,6 +76,7 @@
 	color-1: rgb(50%, 34, 34);
 	color-2: rgb(178, 10%, 34);
 	color-3: rgb(178, 34, 10%);
+	color-4: rgb(50%, 10%, 10%);
 }
 
 .test-legacy-notation-with-modern-components--rgba {
@@ -83,6 +84,7 @@
 	color-2: rgba(178, 10%, 34, 1);
 	color-3: rgba(178, 34, 10%, 1);
 	color-4: rgba(178, 34, 34, 100%);
+	color-5: rgba(50%, 10%, 10%, 100%);
 }
 
 .test-legacy-notation-with-modern-components--hsla {
