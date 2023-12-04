@@ -1,52 +1,52 @@
 .test-rgb {
 	color-1: rgb(178, 34, 34);
-	color-2: rgba(178, 34, 34, 1);
-	color-3: rgba(178, 34, 34, .5);
-	color-4: rgba(178, 34, 34, 1);
+	color-2: rgb(178, 34, 34);
+	color-3: rgba(178, 34, 34, 0.5);
+	color-4: rgb(178, 34, 34);
 	color-5: rgba(178, 34, 34, 0.5);
 	color-6: rgba(178, 34, 34, var(--alpha-50));
-	color-7: rgba(178, 34, 34, calc(1 / 2));
+	color-7: rgba(178, 34, 34, 0.5);
 }
 
 .test-rgba {
 	color-1: rgb(178, 34, 34);
-	color-2: rgba(178, 34, 34, 1);
-	color-3: rgba(178, 34, 34, .5);
+	color-2: rgb(178, 34, 34);
+	color-3: rgba(178, 34, 34, 0.5);
 	color-4: rgba(178, 34, 34, VaR(--alpha-50));
-	color-5: rgba(178, 34, 34, CaLC(1 / 2));
+	color-5: rgba(178, 34, 34, 0.5);
 }
 
 .test-rgb-percentages {
-	color-1: rgb(178, 34, 34);
-	color-2: rgba(178, 34, 34, 1);
-	color-3: rgba(178, 34, 34, 0.5);
+	color-1: rgb(179, 34, 34);
+	color-2: rgb(179, 34, 34);
+	color-3: rgba(179, 34, 34, 0.5);
 }
 
 .test-hsl {
 	color-1: hsl(0, 0%, 100%);
 	color-2: hsl(120, 100%, 50%);
 	color-3: hsl(120, 100%, 50%);
-	color-4: hsla(120, 100%, 50%, 1);
-	color-5: hsla(120, 100%, 50%, .5);
-	color-6: hsla(120, 100%, 50%, 1);
+	color-4: hsl(120, 100%, 50%);
+	color-5: hsla(120, 100%, 50%, 0.5);
+	color-6: hsl(120, 100%, 50%);
 	color-7: hsla(120, 100%, 50%, 0.5);
 	color-8: hsl(120, 100%, 50%);
 
 	color-9: hsl(180, 100%, 50%);
 	color-10: hsl(180, 100%, 50%);
 	color-11: hsl(180, 100%, 50%);
-	color-12: hsla(180, 100%, 50, var(--alpha-50));
-	color-13: hsla(180, 100%, 50, calc(1 / 2));
+	color-12: hsla(180, 100%, 50%, var(--alpha-50));
+	color-13: hsla(180, 100%, 50%, 0.5);
 }
 
 .test-hsla {
 	color-1: hsl(120, 100%, 50%);
-	color-2: hsla(120, 100%, 50%, 1);
-	color-3: hsla(120, 100%, 50%, .5);
-	color-4: hsla(120, 100%, 50%, 1);
+	color-2: hsl(120, 100%, 50%);
+	color-3: hsla(120, 100%, 50%, 0.5);
+	color-4: hsl(120, 100%, 50%);
 	color-5: hsla(120, 100%, 50%, 0.5);
 	color-6: hsla(120, 100%, 50%, var(--alpha-50));
-	color-7: hsla(120, 100%, 50%, calc(1 / 2));
+	color-7: hsla(120, 100%, 50%, 0.5);
 }
 
 .test-hwb {
@@ -63,7 +63,7 @@
 }
 
 .rgb-with-alpha {
-	color-1: rgba(178, 34, 34, 0.5);
+	color-1: rgba(179, 34, 34, 0.5);
 	color-2: rgb(0, 0, 0, 0);
 }
 
@@ -73,20 +73,22 @@
 }
 
 .test-legacy-notation-with-modern-components--rgb {
-	color-1: rgb(127, 34, 34);
-	color-2: rgb(178, 25, 34);
-	color-3: rgb(178, 34, 25);
+	color-1: rgb(50%, 34, 34);
+	color-2: rgb(178, 10%, 34);
+	color-3: rgb(178, 34, 10%);
+	color-4: rgb(50%, 10%, 10%);
 }
 
 .test-legacy-notation-with-modern-components--rgba {
-	color-1: rgba(127, 34, 34, 1);
-	color-2: rgba(178, 25, 34, 1);
-	color-3: rgba(178, 34, 25, 1);
-	color-4: rgba(178, 34, 34, 1);
+	color-1: rgba(50%, 34, 34, 1);
+	color-2: rgba(178, 10%, 34, 1);
+	color-3: rgba(178, 34, 10%, 1);
+	color-4: rgb(178, 34, 34);
+	color-5: rgb(128, 26, 26);
 }
 
 .test-legacy-notation-with-modern-components--hsla {
-	color-1: hsla(120, 100%, 50%, 1);
+	color-1: hsl(120, 100%, 50%);
 }
 
 .test-ignore {

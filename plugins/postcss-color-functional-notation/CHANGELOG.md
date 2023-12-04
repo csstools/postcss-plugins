@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (patch)
+
+- Ensure that fallback values are always valid legacy syntax.
+
 ### 6.0.2
 
 _October 9, 2023_
