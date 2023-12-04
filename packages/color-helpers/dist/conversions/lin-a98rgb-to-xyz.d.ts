@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 /**
  * Convert an array of linear-light a98-rgb values to CIE XYZ
  * http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html

@@ -1,5 +1,5 @@
-import type { Color } from 'types/color';
-import { multiplyMatrices } from 'calculations/multiply-matrices';
+import type { Color } from '../types/color';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document

@@ -1,5 +1,5 @@
-import type { Color } from 'types/color';
-import { multiplyMatrices } from 'calculations/multiply-matrices';
+import type { Color } from '../types/color';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 /**
  * Convert an array of linear-light a98-rgb values to CIE XYZ

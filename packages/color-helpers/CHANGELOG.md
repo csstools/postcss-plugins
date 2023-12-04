@@ -2,6 +2,7 @@
 
 ### Unreleased (patch)
 
+- Small fixes in type definitions
 - Use higher precision color conversion matrices.
 
 ### 3.0.2

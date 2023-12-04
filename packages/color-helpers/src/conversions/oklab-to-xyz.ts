@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * Given OKLab, convert to XYZ relative to D65
@@ -9,7 +9,7 @@ import type { Color } from 'types/color';
  *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
-import { multiplyMatrices } from 'calculations/multiply-matrices';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 export function OKLab_to_XYZ(OKLab: Color): Color {
 	const LMStoXYZ = [

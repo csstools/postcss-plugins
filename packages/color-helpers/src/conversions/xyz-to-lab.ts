@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 
 /**
  * Assuming XYZ is relative to D50, convert to CIE Lab
@@ -8,7 +8,7 @@ import type { Color } from 'types/color';
  *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-import { D50 } from 'conversions/constants';
+import { D50 } from '../conversions/constants';
 
 export function XYZ_to_Lab(XYZ: Color): Color {
 	const ε = 216 / 24389;  // 6^3/29^3

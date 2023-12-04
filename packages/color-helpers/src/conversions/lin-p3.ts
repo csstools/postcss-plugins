@@ -1,5 +1,5 @@
-import type { Color } from 'types/color';
-import { lin_sRGB } from 'conversions/lin-srgb';
+import type { Color } from '../types/color';
+import { lin_sRGB } from '../conversions/lin-srgb';
 
 /**
  * Convert an array of display-p3 RGB values in the range 0.0 - 1.0

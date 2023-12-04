@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../types/color';
 import { HSL_to_sRGB } from './hsl-to-srgb';
 
 /**

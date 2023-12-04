@@ -3,11 +3,12 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"declarationDir": ".",
-		"baseUrl": "./src/"
+		"strict": true
 	},
 	"include": [
-		"./src/**/*",
-		"types/global.d.ts"
+		"./src/**/*"
 	],
-	"exclude": ["dist"]
+	"exclude": [
+		"dist"
+	],
 }

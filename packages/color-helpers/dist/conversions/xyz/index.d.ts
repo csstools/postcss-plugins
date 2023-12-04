@@ -1,4 +1,4 @@
-import type { Color } from 'types/color';
+import type { Color } from '../../types/color';
 /**
  * @param {Color} color [r, g, b]
  * - Red as number 0..1;
