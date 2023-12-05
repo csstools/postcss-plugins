@@ -10,15 +10,11 @@ fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');
 const packageInfo = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
 const isTypescript = (() => {
-	if (packageInfo.types) {
-		try {
-			fs.statSync('./tsconfig.json').isFile();
-			return true;
-		} catch (_) {
-			return false;
-		}
+	try {
+		return fs.statSync('./tsconfig.json').isFile() && fs.statSync('./src/index.ts').isFile();
+	} catch (_) {
+		return false;
 	}
-	return false;
 })();
 
 const presets = [];
