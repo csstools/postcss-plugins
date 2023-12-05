@@ -23,5 +23,3 @@ export function gam_ProPhoto(RGB: Color): Color {
 		return 16 * val;
 	}) as Color;
 }
-
-export function foo() { }
