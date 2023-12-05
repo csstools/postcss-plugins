@@ -2,7 +2,7 @@ import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { XYZ_D50_to_HSL, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
 import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
@@ -12,11 +12,11 @@ export function serializeHSL(color: ColorData, gamutMapping = true): FunctionNod
 	let hsl = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
 	if (gamutMapping) {
-		hsl = xyz.XYZ_D50_to_HSL(xyz.sRGB_to_XYZ_D50(
+		hsl = XYZ_D50_to_HSL(sRGB_to_XYZ_D50(
 			XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels),
 		));
 	} else {
-		hsl = xyz.XYZ_D50_to_HSL(colorData_to_XYZ_D50(color).channels);
+		hsl = XYZ_D50_to_HSL(colorData_to_XYZ_D50(color).channels);
 	}
 
 	// Needs to be done twice because `xyz.XYZ_D50_to_HSL` can return `NaN` values.

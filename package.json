@@ -28,6 +28,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.23.5",
 		"@babel/preset-env": "^7.23.5",
+		"@microsoft/api-extractor": "^7.38.4",
 		"@rollup/plugin-babel": "^6.0.3",
 		"@rollup/plugin-commonjs": "^25.0.7",
 		"@rollup/plugin-node-resolve": "^15.2.3",

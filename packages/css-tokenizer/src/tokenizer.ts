@@ -19,11 +19,7 @@ import { ParseError } from './interfaces/error';
 import { checkIfThreeCodePointsWouldStartAUnicodeRange } from './checks/three-code-points-would-start-unicode-range';
 import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 
-interface Stringer {
-	valueOf(): string
-}
-
-export function tokenize(input: { css: Stringer, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
+export function tokenize(input: { css: { valueOf(): string }, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
 	const t = tokenizer(input, options);
 
 	const tokens: Array<CSSToken> = [];
@@ -45,7 +41,7 @@ export function tokenize(input: { css: Stringer, unicodeRangesAllowed?: boolean 
 	return tokens;
 }
 
-export function tokenizer(input: { css: Stringer, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }) {
+export function tokenizer(input: { css: { valueOf(): string }, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }) {
 	const css = input.css.valueOf();
 	const unicodeRangesAllowed = input.unicodeRangesAllowed ?? false;
 

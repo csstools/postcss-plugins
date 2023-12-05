@@ -3,6 +3,7 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { externalsForPlugin } from '../configs/externals.mjs';
 import { packageBabelPreset } from '../configs/babel-presets.mjs';
+import { typescriptDeclarations } from '../transforms/typescript-declarations.mjs';
 
 export function packageTypescript() {
 	return [
@@ -14,7 +15,12 @@ export function packageTypescript() {
 			],
 			external: externalsForPlugin,
 			plugins: [
-				typescript({ tsconfig: './tsconfig.json' }),
+				typescript({
+					tsconfig: './tsconfig.json',
+					declaration: false,
+					declarationDir: undefined,
+					noEmit: false,
+				}),
 				babel({
 					babelHelpers: 'bundled',
 					exclude: 'node_modules/**',
@@ -28,6 +34,7 @@ export function packageTypescript() {
 					keep_classnames: true,
 					keep_fnames: true,
 				}),
+				typescriptDeclarations(),
 			],
 		},
 	];

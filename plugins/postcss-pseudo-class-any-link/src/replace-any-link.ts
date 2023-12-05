@@ -59,21 +59,25 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
 			}
 
 			if (!areaHrefNeedsFixing) {
+				// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 				replacements.push([linkAST.clone(), visitedAST.clone()]);
 				return;
 			}
 
 			const tags = getTagElementsNextToPseudo(pseudo);
 			if (tags.includes('area')) {
+				// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 				replacements.push([linkAST.clone(), visitedAST.clone(), hrefAST.clone()]);
 				return;
 			}
 
 			if (tags.length) {
+				// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 				replacements.push([linkAST.clone(), visitedAST.clone()]);
 				return;
 			}
 
+			// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 			replacements.push([linkAST.clone(), visitedAST.clone(), areaHrefAST.clone()]);
 		});
 
@@ -85,6 +89,7 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
 
 		replacementsCartesianProduct.forEach((replacement) => {
 			const clone = selectorsAST.clone();
+			// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 			clone.walkPseudos((pseudo) => {
 				if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 					return;

@@ -1,7 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### Unreleased (major)
 
+- Remove barrel files
 - Small fixes in type definitions
 - Use higher precision color conversion matrices.
 

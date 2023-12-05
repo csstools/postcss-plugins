@@ -2,7 +2,7 @@ import type { Color } from '@csstools/color-helpers';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
 import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { HSL_to_XYZ_D50, HWB_to_XYZ_D50, LCH_to_XYZ_D50, Lab_to_XYZ_D50, OKLCH_to_XYZ_D50, OKLab_to_XYZ_D50, P3_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D50, XYZ_D50_to_HSL, XYZ_D50_to_HWB, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_OKLCH, XYZ_D50_to_OKLab, XYZ_D50_to_P3, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D50_to_a98_RGB, XYZ_D50_to_lin_sRGB, XYZ_D50_to_rec_2020, XYZ_D50_to_sRGB, XYZ_D65_to_XYZ_D50, a98_RGB_to_XYZ_D50, lin_sRGB_to_XYZ_D50, rec_2020_to_XYZ_D50, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
 
 export type ColorData = {
 	colorNotation: ColorNotation,
@@ -52,85 +52,85 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.Linear_sRGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.lin_sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: lin_sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.Display_P3:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.P3_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: P3_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.Rec2020:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.rec_2020_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: rec_2020_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.A98_RGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.a98_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: a98_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.ProPhoto_RGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.ProPhoto_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: ProPhoto_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.HSL:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.HSL_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: HSL_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.HWB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.HWB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: HWB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.Lab:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.Lab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: Lab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.OKLab:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.OKLab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: OKLab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.LCH:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.LCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: LCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.OKLCH:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.OKLCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: OKLCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.XYZ_D50:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.XYZ_D50_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: XYZ_D50_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		case ColorNotation.XYZ_D65:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: xyz.XYZ_D65_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: XYZ_D65_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
 			};
 		default:
 			throw new Error('Unsupported color notation');
@@ -163,63 +163,63 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.HEX:
 			case ColorNotation.RGB:
 				outputColorData.colorNotation = ColorNotation.RGB;
-				outputColorData.channels = xyz.XYZ_D50_to_sRGB(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_sRGB(xyzColorData.channels);
 				break;
 			case ColorNotation.sRGB:
 				outputColorData.colorNotation = ColorNotation.sRGB;
-				outputColorData.channels = xyz.XYZ_D50_to_sRGB(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_sRGB(xyzColorData.channels);
 				break;
 			case ColorNotation.Linear_sRGB:
 				outputColorData.colorNotation = ColorNotation.Linear_sRGB;
-				outputColorData.channels = xyz.XYZ_D50_to_lin_sRGB(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_lin_sRGB(xyzColorData.channels);
 				break;
 			case ColorNotation.Display_P3:
 				outputColorData.colorNotation = ColorNotation.Display_P3;
-				outputColorData.channels = xyz.XYZ_D50_to_P3(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_P3(xyzColorData.channels);
 				break;
 			case ColorNotation.Rec2020:
 				outputColorData.colorNotation = ColorNotation.Rec2020;
-				outputColorData.channels = xyz.XYZ_D50_to_rec_2020(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_rec_2020(xyzColorData.channels);
 				break;
 			case ColorNotation.ProPhoto_RGB:
 				outputColorData.colorNotation = ColorNotation.ProPhoto_RGB;
-				outputColorData.channels = xyz.XYZ_D50_to_ProPhoto(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_ProPhoto(xyzColorData.channels);
 				break;
 			case ColorNotation.A98_RGB:
 				outputColorData.colorNotation = ColorNotation.A98_RGB;
-				outputColorData.channels = xyz.XYZ_D50_to_a98_RGB(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_a98_RGB(xyzColorData.channels);
 				break;
 			case ColorNotation.HSL:
 				outputColorData.colorNotation = ColorNotation.HSL;
-				outputColorData.channels = xyz.XYZ_D50_to_HSL(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_HSL(xyzColorData.channels);
 				break;
 			case ColorNotation.HWB:
 				outputColorData.colorNotation = ColorNotation.HWB;
-				outputColorData.channels = xyz.XYZ_D50_to_HWB(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_HWB(xyzColorData.channels);
 				break;
 			case ColorNotation.Lab:
 				outputColorData.colorNotation = ColorNotation.Lab;
-				outputColorData.channels = xyz.XYZ_D50_to_Lab(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_Lab(xyzColorData.channels);
 				break;
 			case ColorNotation.LCH:
 				outputColorData.colorNotation = ColorNotation.LCH;
-				outputColorData.channels = xyz.XYZ_D50_to_LCH(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_LCH(xyzColorData.channels);
 				break;
 			case ColorNotation.OKLCH:
 				outputColorData.colorNotation = ColorNotation.OKLCH;
-				outputColorData.channels = xyz.XYZ_D50_to_OKLCH(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_OKLCH(xyzColorData.channels);
 				break;
 			case ColorNotation.OKLab:
 				outputColorData.colorNotation = ColorNotation.OKLab;
-				outputColorData.channels = xyz.XYZ_D50_to_OKLab(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_OKLab(xyzColorData.channels);
 				break;
 			case ColorNotation.XYZ_D50:
 				outputColorData.colorNotation = ColorNotation.XYZ_D50;
-				outputColorData.channels = xyz.XYZ_D50_to_XYZ_D50(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_XYZ_D50(xyzColorData.channels);
 				break;
 			case ColorNotation.XYZ_D65:
 				outputColorData.colorNotation = ColorNotation.XYZ_D65;
-				outputColorData.channels = xyz.XYZ_D50_to_XYZ_D65(xyzColorData.channels);
+				outputColorData.channels = XYZ_D50_to_XYZ_D65(xyzColorData.channels);
 				break;
 			default:
 				throw new Error('Unsupported color notation');
