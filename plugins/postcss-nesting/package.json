@@ -34,6 +34,8 @@
 	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
+	"jsdelivr": "dist/index.mjs",
+	"unpkg": "dist/index.mjs",
 	"exports": {
 		".": {
 			"import": {
@@ -45,8 +47,6 @@
 			}
 		}
 	},
-	"jsdelivr": "dist/index.mjs",
-	"unpkg": "dist/index.mjs",
 	"files": [
 		"CHANGELOG.md",
 		"LICENSE.md",
