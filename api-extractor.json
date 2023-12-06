@@ -362,7 +362,7 @@
 				*
 				* DEFAULT VALUE: "warning"
 				*/
-				"logLevel": "warning"
+				"logLevel": "error"
 
 				/**
 				* When addToApiReportFile is true:  If API Extractor is configured to write an API report file (.api.md),
@@ -391,7 +391,7 @@
 		*/
 		"extractorMessageReporting": {
 			"default": {
-				"logLevel": "warning"
+				"logLevel": "error"
 				// "addToApiReportFile": false
 			},
 
@@ -403,6 +403,10 @@
 			"ae-missing-release-tag": {
 				"logLevel": "none",
 				"addToApiReportFile": false
+			},
+
+			"ae-forgotten-export": {
+				"logLevel": "error"
 			}
 			//
 			// . . .
