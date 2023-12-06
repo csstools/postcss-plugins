@@ -1,5 +1,5 @@
 /** postcss-opacity-percentage plugin options */
-export type pluginOptions = {
+export type postcssOpacityPercentageOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
 };
