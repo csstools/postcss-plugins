@@ -3,12 +3,13 @@ import { CustomMedia } from '../nodes/custom-media';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { parseFromTokens } from './parse';
 
-type Options = {
-	preserveInvalidMediaQueries?: boolean,
-	onParseError?: (error: ParseError) => void
-}
-
-export function parseCustomMediaFromTokens(tokens: Array<CSSToken>, options?: Options): CustomMedia | false {
+export function parseCustomMediaFromTokens(
+	tokens: Array<CSSToken>,
+	options?: {
+		preserveInvalidMediaQueries?: boolean,
+		onParseError?: (error: ParseError) => void
+	},
+): CustomMedia | false {
 	let name: Array<CSSToken> = [];
 	let remainder = tokens;
 	for (let i = 0; i < tokens.length; i++) {
@@ -66,7 +67,13 @@ export function parseCustomMediaFromTokens(tokens: Array<CSSToken>, options?: Op
 	return new CustomMedia(name, parseFromTokens(cloneTokens(remainder), options));
 }
 
-export function parseCustomMedia(source: string, options?: Options): CustomMedia | false {
+export function parseCustomMedia(
+	source: string,
+	options?: {
+		preserveInvalidMediaQueries?: boolean,
+		onParseError?: (error: ParseError) => void
+	},
+): CustomMedia | false {
 	const t = tokenizer({ css: source }, {
 		onParseError: options?.onParseError,
 	});

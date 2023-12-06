@@ -30,7 +30,7 @@ export declare type conversionOptions = {
     toCanonicalUnits?: boolean;
 };
 
-declare type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
+export declare type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
 
 export declare const mathFunctionNames: Set<string>;
 

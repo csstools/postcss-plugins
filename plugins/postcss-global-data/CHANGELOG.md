@@ -1,5 +1,9 @@
 # Changes to PostCSS global-data
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 2.1.0
 
 _August 28, 2023_

@@ -73,9 +73,9 @@ export declare class GeneralEnclosed {
     static isGeneralEnclosed(x: unknown): x is GeneralEnclosed;
 }
 
-declare type GeneralEnclosedWalkerEntry = ComponentValue;
+export declare type GeneralEnclosedWalkerEntry = ComponentValue;
 
-declare type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;
+export declare type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;
 
 export declare function invertComparison(operator: MediaFeatureComparison): MediaFeatureComparison | false;
 
@@ -150,9 +150,9 @@ export declare class MediaAnd {
     static isMediaAnd(x: unknown): x is MediaAnd;
 }
 
-declare type MediaAndWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
+export declare type MediaAndWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
 
-declare type MediaAndWalkerParent = MediaInParensWalkerParent | MediaAnd;
+export declare type MediaAndWalkerParent = MediaInParensWalkerParent | MediaAnd;
 
 export declare class MediaCondition {
     type: NodeType;
@@ -195,9 +195,9 @@ export declare class MediaConditionListWithAnd {
     static isMediaConditionListWithAnd(x: unknown): x is MediaConditionListWithAnd;
 }
 
-declare type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
+export declare type MediaConditionListWithAndWalkerEntry = MediaAndWalkerEntry | MediaAnd;
 
-declare type MediaConditionListWithAndWalkerParent = MediaAndWalkerParent | MediaConditionListWithAnd;
+export declare type MediaConditionListWithAndWalkerParent = MediaAndWalkerParent | MediaConditionListWithAnd;
 
 export declare class MediaConditionListWithOr {
     type: NodeType;
@@ -220,13 +220,13 @@ export declare class MediaConditionListWithOr {
     static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr;
 }
 
-declare type MediaConditionListWithOrWalkerEntry = MediaOrWalkerEntry | MediaOr;
+export declare type MediaConditionListWithOrWalkerEntry = MediaOrWalkerEntry | MediaOr;
 
-declare type MediaConditionListWithOrWalkerParent = MediaOrWalkerParent | MediaConditionListWithOr;
+export declare type MediaConditionListWithOrWalkerParent = MediaOrWalkerParent | MediaConditionListWithOr;
 
-declare type MediaConditionWalkerEntry = MediaNotWalkerEntry | MediaConditionListWithAndWalkerEntry | MediaConditionListWithOrWalkerEntry | MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr;
+export declare type MediaConditionWalkerEntry = MediaNotWalkerEntry | MediaConditionListWithAndWalkerEntry | MediaConditionListWithOrWalkerEntry | MediaNot | MediaConditionListWithAnd | MediaConditionListWithOr;
 
-declare type MediaConditionWalkerParent = MediaNotWalkerParent | MediaConditionListWithAndWalkerParent | MediaConditionListWithOrWalkerParent | MediaCondition;
+export declare type MediaConditionWalkerParent = MediaNotWalkerParent | MediaConditionListWithAndWalkerParent | MediaConditionListWithOrWalkerParent | MediaCondition;
 
 export declare class MediaFeature {
     type: NodeType;
@@ -358,9 +358,9 @@ export declare class MediaFeaturePlain {
     static isMediaFeaturePlain(x: unknown): x is MediaFeaturePlain;
 }
 
-declare type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
+export declare type MediaFeaturePlainWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 
-declare type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
+export declare type MediaFeaturePlainWalkerParent = MediaFeatureValueWalkerParent | MediaFeaturePlain;
 
 export declare type MediaFeatureRange = MediaFeatureRangeNameValue | MediaFeatureRangeValueName | MediaFeatureRangeValueNameValue;
 
@@ -480,9 +480,9 @@ export declare class MediaFeatureRangeValueNameValue {
     static isMediaFeatureRangeValueNameValue(x: unknown): x is MediaFeatureRangeValueNameValue;
 }
 
-declare type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
+export declare type MediaFeatureRangeWalkerEntry = MediaFeatureValueWalkerEntry | MediaFeatureValue;
 
-declare type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
+export declare type MediaFeatureRangeWalkerParent = MediaFeatureValueWalkerParent | MediaFeatureRange;
 
 export declare class MediaFeatureValue {
     type: NodeType;
@@ -508,13 +508,13 @@ export declare class MediaFeatureValue {
     static isMediaFeatureValue(x: unknown): x is MediaFeatureValue;
 }
 
-declare type MediaFeatureValueWalkerEntry = ComponentValue;
+export declare type MediaFeatureValueWalkerEntry = ComponentValue;
 
-declare type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
+export declare type MediaFeatureValueWalkerParent = ContainerNode | MediaFeatureValue;
 
-declare type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
+export declare type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
 
-declare type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
+export declare type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
 
 export declare class MediaInParens {
     type: NodeType;
@@ -541,9 +541,9 @@ export declare class MediaInParens {
     static isMediaInParens(x: unknown): x is MediaInParens;
 }
 
-declare type MediaInParensWalkerEntry = ComponentValue | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export declare type MediaInParensWalkerEntry = ComponentValue | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
 
-declare type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export declare type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
 
 export declare class MediaNot {
     type: NodeType;
@@ -573,9 +573,9 @@ export declare class MediaNot {
     static isMediaNot(x: unknown): x is MediaNot;
 }
 
-declare type MediaNotWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
+export declare type MediaNotWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
 
-declare type MediaNotWalkerParent = MediaInParensWalkerParent | MediaNot;
+export declare type MediaNotWalkerParent = MediaInParensWalkerParent | MediaNot;
 
 export declare class MediaOr {
     type: NodeType;
@@ -605,9 +605,9 @@ export declare class MediaOr {
     static isMediaOr(x: unknown): x is MediaOr;
 }
 
-declare type MediaOrWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
+export declare type MediaOrWalkerEntry = MediaInParensWalkerEntry | MediaInParens;
 
-declare type MediaOrWalkerParent = MediaInParensWalkerParent | MediaOr;
+export declare type MediaOrWalkerParent = MediaInParensWalkerParent | MediaOr;
 
 export declare type MediaQuery = MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid;
 
@@ -632,9 +632,9 @@ export declare class MediaQueryInvalid {
     static isMediaQueryInvalid(x: unknown): x is MediaQueryInvalid;
 }
 
-declare type MediaQueryInvalidWalkerEntry = ComponentValue;
+export declare type MediaQueryInvalidWalkerEntry = ComponentValue;
 
-declare type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;
+export declare type MediaQueryInvalidWalkerParent = ComponentValue | MediaQueryInvalid;
 
 export declare enum MediaQueryModifier {
     Not = "not",
@@ -664,9 +664,9 @@ export declare class MediaQueryWithoutType {
     static isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType;
 }
 
-declare type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+export declare type MediaQueryWithoutTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
 
-declare type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
+export declare type MediaQueryWithoutTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithoutType;
 
 export declare class MediaQueryWithType {
     type: NodeType;
@@ -699,9 +699,9 @@ export declare class MediaQueryWithType {
     static isMediaQueryWithType(x: unknown): x is MediaQueryWithType;
 }
 
-declare type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
+export declare type MediaQueryWithTypeWalkerEntry = MediaConditionWalkerEntry | MediaCondition;
 
-declare type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
+export declare type MediaQueryWithTypeWalkerParent = MediaConditionWalkerParent | MediaQueryWithType;
 
 export declare enum MediaType {
     /** Always matches */
@@ -755,23 +755,25 @@ export declare enum NodeType {
     MediaQueryInvalid = "media-query-invalid"
 }
 
-declare type Options = {
+export declare function parse(source: string, options?: {
     preserveInvalidMediaQueries?: boolean;
     onParseError?: (error: ParseError) => void;
-};
+}): MediaQuery[];
 
-declare type Options_2 = {
+export declare function parseCustomMedia(source: string, options?: {
     preserveInvalidMediaQueries?: boolean;
     onParseError?: (error: ParseError) => void;
-};
+}): CustomMedia | false;
 
-export declare function parse(source: string, options?: Options): MediaQuery[];
+export declare function parseCustomMediaFromTokens(tokens: Array<CSSToken>, options?: {
+    preserveInvalidMediaQueries?: boolean;
+    onParseError?: (error: ParseError) => void;
+}): CustomMedia | false;
 
-export declare function parseCustomMedia(source: string, options?: Options_2): CustomMedia | false;
-
-export declare function parseCustomMediaFromTokens(tokens: Array<CSSToken>, options?: Options_2): CustomMedia | false;
-
-export declare function parseFromTokens(tokens: Array<CSSToken>, options?: Options): MediaQuery[];
+export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
+    preserveInvalidMediaQueries?: boolean;
+    onParseError?: (error: ParseError) => void;
+}): MediaQuery[];
 
 export declare function typeFromToken(token: TokenIdent): MediaType | false;
 

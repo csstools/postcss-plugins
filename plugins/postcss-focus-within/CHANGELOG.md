@@ -1,5 +1,9 @@
 # Changes to PostCSS Focus Within
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 8.0.0
 
 _July 3, 2023_

@@ -26,42 +26,7 @@ export declare enum ComponentValueType {
     Token = "token"
 }
 
-export declare function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>): {
-    advance: number;
-    nodes: Array<WhitespaceNode | CommentNode>;
-};
-
-export declare function consumeComment(ctx: Context, tokens: Array<CSSToken>): {
-    advance: number;
-    node: CommentNode;
-};
-
-export declare function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): {
-    advance: number;
-    node: ComponentValue;
-};
-
-export declare function consumeFunction(ctx: Context, tokens: Array<CSSToken>): {
-    advance: number;
-    node: FunctionNode;
-};
-
-/** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
-export declare function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): {
-    advance: number;
-    node: SimpleBlockNode;
-};
-
-export declare function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): {
-    advance: number;
-    node: WhitespaceNode;
-};
-
 export declare type ContainerNode = FunctionNode | SimpleBlockNode;
-
-declare type Context = {
-    onParseError: (error: ParseError) => void;
-};
 
 export declare class FunctionNode {
     type: ComponentValueType;
@@ -89,7 +54,12 @@ export declare class FunctionNode {
     static isFunctionNode(x: unknown): x is FunctionNode;
 }
 
-export declare function gatherNodeAncestry(node: walkable): Map<unknown, unknown>;
+export declare function gatherNodeAncestry(node: {
+    walk(cb: (entry: {
+        node: Array<unknown> | unknown;
+        parent: unknown;
+    }, index: number | string) => boolean | void): false | undefined;
+}): Map<unknown, unknown>;
 
 export declare function isCommentNode(x: unknown): x is CommentNode;
 
@@ -143,13 +113,13 @@ export declare class SimpleBlockNode {
 /**
  * Returns the start and end index of a node in the CSS source string.
  */
-export declare function sourceIndices(x: TokenConvertible | Array<TokenConvertible>): [number, number];
+export declare function sourceIndices(x: {
+    tokens(): Array<CSSToken>;
+} | Array<{
+    tokens(): Array<CSSToken>;
+}>): [number, number];
 
 export declare function stringify(componentValueLists: Array<Array<ComponentValue>>): string;
-
-declare interface TokenConvertible {
-    tokens(): Array<CSSToken>;
-}
 
 export declare class TokenNode {
     type: ComponentValueType;
@@ -163,13 +133,6 @@ export declare class TokenNode {
     };
     isTokenNode(): this is TokenNode;
     static isTokenNode(x: unknown): x is TokenNode;
-}
-
-declare interface walkable {
-    walk(cb: (entry: {
-        node: Array<unknown> | unknown;
-        parent: unknown;
-    }, index: number | string) => boolean | void): false | undefined;
 }
 
 export declare class WhitespaceNode {

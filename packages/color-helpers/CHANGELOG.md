@@ -3,7 +3,7 @@
 ### Unreleased (major)
 
 - Remove barrel files
-- Small fixes in type definitions
+- Fix type definitions
 - Use higher precision color conversion matrices.
 
 ### 3.0.2

@@ -25,7 +25,7 @@ export declare const ruleClonerPlugin: {
     };
 };
 
-declare type TestCaseOptions = {
+export declare type TestCaseOptions = {
     /** Debug message */
     message?: string;
     /** Plugin options. Only used if `plugins` is not specified. */

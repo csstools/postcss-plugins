@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Float And Clear
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 2.0.0
 
 _July 3, 2023_

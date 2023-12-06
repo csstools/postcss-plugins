@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Small fixes in type definitions
+- Fix type definitions
 
 ### 10.0.2
 

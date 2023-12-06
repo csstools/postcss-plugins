@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradient Stop Increments
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 1.0.4
 
 _September 24, 2023_

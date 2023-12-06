@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 
-declare type Arguments = {
+export declare type Arguments = {
     stdin: boolean;
     stdout: boolean;
     inputs: Array<string>;
@@ -19,9 +19,9 @@ export declare function helpTextLogger(command: string, name: string, descriptio
 
 export declare function parseArguments(args: Array<string>, allowedPluginOpts: Array<string>, helpLogger: () => void): Arguments | SignalValue;
 
-declare type PluginCreatorOptions = Record<string, unknown> | null;
+export declare type PluginCreatorOptions = Record<string, unknown> | null;
 
-declare enum SignalValue {
+export declare enum SignalValue {
     InvalidArguments = "INVALID_ARGUMENTS"
 }
 

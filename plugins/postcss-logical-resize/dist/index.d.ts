@@ -3,7 +3,7 @@ import type { PluginCreator } from 'postcss';
 declare const creator: PluginCreator<pluginOptions>;
 export default creator;
 
-declare enum DirectionFlow {
+export declare enum DirectionFlow {
     TopToBottom = "top-to-bottom",
     BottomToTop = "bottom-to-top",
     RightToLeft = "right-to-left",

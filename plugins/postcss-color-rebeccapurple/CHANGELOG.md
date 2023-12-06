@@ -1,5 +1,9 @@
 # Changes to PostCSS RebeccaPurple
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 9.0.1
 
 _September 18, 2023_

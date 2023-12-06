@@ -20,12 +20,12 @@ export declare class LayerName {
     };
 }
 
-declare type Options = {
+export declare function parse(source: string, options?: {
     onParseError?: (error: ParseError) => void;
-};
+}): LayerName[];
 
-export declare function parse(source: string, options?: Options): LayerName[];
-
-export declare function parseFromTokens(tokens: Array<CSSToken>, options?: Options): LayerName[];
+export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
+    onParseError?: (error: ParseError) => void;
+}): LayerName[];
 
 export { }

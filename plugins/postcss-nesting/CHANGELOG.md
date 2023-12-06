@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 12.0.1
 
 _August 5, 2023_

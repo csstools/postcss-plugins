@@ -2,6 +2,8 @@ import type { PluginCreator } from 'postcss';
 import { DirectionFlow } from './lib/types';
 import { transformAxes } from './lib/transform-axes';
 
+export type { DirectionFlow } from './lib/types';
+
 /** postcss-logical-overflow plugin options */
 export type pluginOptions = {
 	/** Sets the direction for inline. default: left-to-right */

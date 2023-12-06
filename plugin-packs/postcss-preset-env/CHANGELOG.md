@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Small fixes in type definitions
+- Fix type definitions
 - Remove extraneous dependency on `postcss-value-parser`
 
 ### 9.3.0

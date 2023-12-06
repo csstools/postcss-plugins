@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 4.0.1
 
 _October 31, 2023_

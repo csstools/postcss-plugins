@@ -1,5 +1,9 @@
 # Changes to PostCSS Rebase URL
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 1.0.3
 
 _September 24, 2023_
