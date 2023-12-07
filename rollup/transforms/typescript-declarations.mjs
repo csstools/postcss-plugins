@@ -2,6 +2,8 @@ import { spawn } from 'child_process';
 import fs from 'fs/promises';
 
 export function typescriptDeclarations() {
+	const jobs = [];
+
 	return {
 		name: 'typescript-declarations',
 		renderStart: async function renderStart(outputOptions, inputOptions) {
@@ -13,19 +15,16 @@ export function typescriptDeclarations() {
 				return;
 			}
 
-			await fs.writeFile('api-extractor.json', `{
-	"$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-	"extends": "../../api-extractor.json",
-	"mainEntryPointFilePath": "types/index.d.ts",
-	"dtsRollup": {
-		"untrimmedFilePath": "dist/index.d.ts"
-	}
-}
-`);
+			const runningJob = (async () => {
+				await tsc();
+				await apiExtractor();
+				await fs.rm('types', { recursive: true, force: true });
+			})();
 
-			await tsc();
-			await apiExtractor();
-			await fs.rm('types', { recursive: true, force: true });
+			jobs.push(runningJob);
+		},
+		writeBundle: async function writeBundle() {
+			await Promise.all(jobs);
 		},
 	};
 }
@@ -52,8 +51,14 @@ async function apiExtractor() {
 	return new Promise((resolve, reject) => {
 		const child = spawn(
 			'npm',
-			['exec', '--', 'api-extractor', 'run', '--local'],
-			{ stdio: 'inherit' },
+			['exec', '--', 'api-extractor', 'run'],
+			{
+				stdio: [
+					'ignore',
+					'ignore', // use 'inherit' to debug
+					'inherit',
+				],
+			},
 		);
 		child.on('error', reject);
 		child.on('exit', (code) => {
