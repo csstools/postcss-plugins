@@ -17,6 +17,7 @@ import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
 
 import './cases/replacer/0001.mjs';
+import './cases/replacer/0002.mjs';
 
 import './cases/source-indices/0001.mjs';
 
