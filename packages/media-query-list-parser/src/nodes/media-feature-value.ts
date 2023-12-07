@@ -87,7 +87,7 @@ export class MediaFeatureValue {
 					return;
 				}
 
-				if ('walk' in child) {
+				if ('walk' in child && (this.value as Array<ComponentValue>).includes(child)) {
 					if (child.walk(cb, stateClone) === false) {
 						aborted = true;
 						return;

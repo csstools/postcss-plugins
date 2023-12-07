@@ -95,7 +95,7 @@ export class MediaConditionListWithAnd {
 				return;
 			}
 
-			if ('walk' in child) {
+			if ('walk' in child && this.list.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
@@ -227,7 +227,7 @@ export class MediaConditionListWithOr {
 				return;
 			}
 
-			if ('walk' in child) {
+			if ('walk' in child && this.list.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;

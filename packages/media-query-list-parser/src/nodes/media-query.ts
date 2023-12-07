@@ -330,7 +330,7 @@ export class MediaQueryInvalid {
 				return;
 			}
 
-			if ('walk' in child) {
+			if ('walk' in child && this.media.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;

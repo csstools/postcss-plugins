@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Small fixes in type definitions
+- Only `walk` child nodes if they are still part of the current AST tree [#1202](https://github.com/csstools/postcss-plugins/issues/1202)
 
 ### 2.3.2
 
