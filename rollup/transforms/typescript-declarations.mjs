@@ -1,5 +1,7 @@
-import { spawn } from 'child_process';
 import fs from 'fs/promises';
+import path from 'path';
+import { platform } from 'process';
+import { spawn } from 'child_process';
 
 export function typescriptDeclarations() {
 	const jobs = [];
@@ -18,7 +20,7 @@ export function typescriptDeclarations() {
 			const runningJob = (async () => {
 				await tsc();
 				await apiExtractor();
-				await fs.rm('types', { recursive: true, force: true });
+				await fs.rm(path.join('dist', '_types'), { recursive: true, force: true });
 			})();
 
 			jobs.push(runningJob);
@@ -33,8 +35,11 @@ async function tsc() {
 	return new Promise((resolve, reject) => {
 		const child = spawn(
 			'npm',
-			['exec', '--', 'tsc', '--emitDeclarationOnly', '--declarationDir', 'types'],
-			{ stdio: 'inherit' },
+			['exec', '--', 'tsc', '--emitDeclarationOnly', '--declarationDir', path.join('dist', '_types')],
+			{
+				stdio: 'inherit',
+				shell: platform === 'win32',
+			},
 		);
 		child.on('error', reject);
 		child.on('exit', (code) => {
@@ -58,6 +63,7 @@ async function apiExtractor() {
 					'ignore', // use 'inherit' to debug
 					'inherit',
 				],
+				shell: platform === 'win32',
 			},
 		);
 		child.on('error', reject);
