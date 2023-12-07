@@ -2,7 +2,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import { addUpdatedPackagesToChangelog } from './add-to-changelog.mjs';
 
-export async function prepareNextReleasePlan(needsRelease, notReleasableNow, maybeNextPlan) {
+export async function prepareNextReleasePlan(needsRelease, notReleasableNow) {
 	// Downstream dependents
 	let didChangeDownstreamPackages = false;
 
