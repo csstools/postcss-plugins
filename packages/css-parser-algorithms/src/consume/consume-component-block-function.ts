@@ -142,7 +142,7 @@ export class FunctionNode {
 				return;
 			}
 
-			if ('walk' in child) {
+			if ('walk' in child && this.value.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
@@ -317,7 +317,7 @@ export class SimpleBlockNode {
 				return;
 			}
 
-			if ('walk' in child) {
+			if ('walk' in child && this.value.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
 					aborted = true;
 					return;
