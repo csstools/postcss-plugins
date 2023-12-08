@@ -1,6 +1,7 @@
 import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
+import { walkerIndexGenerator } from '../util/walker-index-generator';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
@@ -51,7 +52,71 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 	};
 }
 
-export class FunctionNode {
+abstract class ContainerNodeBaseClass {
+	value: Array<ComponentValue> = [];
+
+	indexOf(item: ComponentValue): number | string {
+		return this.value.indexOf(item);
+	}
+
+	at(index: number | string): ComponentValue | undefined {
+		if (typeof index === 'number') {
+			if (index < 0) {
+				index = this.value.length + index;
+			}
+			return this.value[index];
+		}
+	}
+
+	forEach<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		if (this.value.length === 0) {
+			return;
+		}
+
+		const indexGenerator = walkerIndexGenerator(this.value);
+
+		let index = 0;
+		while (index < this.value.length) {
+			const child = this.value[index];
+
+			let stateClone: T | undefined = undefined;
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
+				return false;
+			}
+
+			index = indexGenerator(this.value, child, index);
+			if (index === -1) {
+				break;
+			}
+		}
+	}
+
+	walk<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		if (this.value.length === 0) {
+			return;
+		}
+
+		this.forEach((entry, index) => {
+			if (cb(entry, index) === false) {
+				return false;
+			}
+
+			if ('walk' in entry.node && this.value.includes(entry.node)) {
+				if (entry.node.walk(cb, entry.state) === false) {
+					return false;
+				}
+			}
+		}, state);
+	}
+}
+
+export class FunctionNode extends ContainerNodeBaseClass {
 	type: ComponentValueType = ComponentValueType.Function;
 
 	name: TokenFunction;
@@ -59,6 +124,8 @@ export class FunctionNode {
 	value: Array<ComponentValue>;
 
 	constructor(name: TokenFunction, endToken: CSSToken, value: Array<ComponentValue>) {
+		super();
+
 		this.name = name;
 		this.endToken = endToken;
 		this.value = value;
@@ -107,52 +174,6 @@ export class FunctionNode {
 		}).join('');
 
 		return stringify(this.name) + valueString + stringify(this.endToken);
-	}
-
-	indexOf(item: ComponentValue): number | string {
-		return this.value.indexOf(item);
-	}
-
-	at(index: number | string): ComponentValue | undefined {
-		if (typeof index === 'number') {
-			if (index < 0) {
-				index = this.value.length + index;
-			}
-			return this.value[index];
-		}
-	}
-
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
-		let aborted = false;
-
-		this.value.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
-
-			let stateClone: T | undefined = undefined;
-			if (state) {
-				stateClone = {
-					...state,
-				};
-			}
-
-			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
-			}
-
-			if ('walk' in child && this.value.includes(child)) {
-				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
-				}
-			}
-		});
-
-		if (aborted) {
-			return false;
-		}
 	}
 
 	toJSON(): unknown {
@@ -227,7 +248,7 @@ export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advanc
 	}
 }
 
-export class SimpleBlockNode {
+export class SimpleBlockNode extends ContainerNodeBaseClass {
 	type: ComponentValueType = ComponentValueType.SimpleBlock;
 
 	startToken: CSSToken;
@@ -235,6 +256,8 @@ export class SimpleBlockNode {
 	value: Array<ComponentValue>;
 
 	constructor(startToken: CSSToken, endToken: CSSToken, value: Array<ComponentValue>) {
+		super();
+
 		this.startToken = startToken;
 		this.endToken = endToken;
 		this.value = value;
@@ -294,39 +317,6 @@ export class SimpleBlockNode {
 				index = this.value.length + index;
 			}
 			return this.value[index];
-		}
-	}
-
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
-		let aborted = false;
-
-		this.value.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
-
-			let stateClone: T | undefined = undefined;
-			if (state) {
-				stateClone = {
-					...state,
-				};
-			}
-
-			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
-			}
-
-			if ('walk' in child && this.value.includes(child)) {
-				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
-				}
-			}
-		});
-
-		if (aborted) {
-			return false;
 		}
 	}
 

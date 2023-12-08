@@ -7,7 +7,22 @@ export declare function consumeComponentValue(ctx: Context, tokens: Array<CSSTok
     advance: number;
     node: ComponentValue;
 };
-export declare class FunctionNode {
+declare abstract class ContainerNodeBaseClass {
+    value: Array<ComponentValue>;
+    indexOf(item: ComponentValue): number | string;
+    at(index: number | string): ComponentValue | undefined;
+    forEach<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: {
+        node: ComponentValue;
+        parent: ContainerNode;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
+    walk<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: {
+        node: ComponentValue;
+        parent: ContainerNode;
+        state?: T;
+    }, index: number | string) => boolean | void, state?: T): false | undefined;
+}
+export declare class FunctionNode extends ContainerNodeBaseClass {
     type: ComponentValueType;
     name: TokenFunction;
     endToken: CSSToken;
@@ -21,13 +36,6 @@ export declare class FunctionNode {
     normalize(): void;
     tokens(): Array<CSSToken>;
     toString(): string;
-    indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue | undefined;
-    walk<T extends Record<string, unknown>>(cb: (entry: {
-        node: ComponentValue;
-        parent: ContainerNode;
-        state?: T;
-    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isFunctionNode(): this is FunctionNode;
     static isFunctionNode(x: unknown): x is FunctionNode;
@@ -36,7 +44,7 @@ export declare function consumeFunction(ctx: Context, tokens: Array<CSSToken>): 
     advance: number;
     node: FunctionNode;
 };
-export declare class SimpleBlockNode {
+export declare class SimpleBlockNode extends ContainerNodeBaseClass {
     type: ComponentValueType;
     startToken: CSSToken;
     endToken: CSSToken;
@@ -51,11 +59,6 @@ export declare class SimpleBlockNode {
     toString(): string;
     indexOf(item: ComponentValue): number | string;
     at(index: number | string): ComponentValue | undefined;
-    walk<T extends Record<string, unknown>>(cb: (entry: {
-        node: ComponentValue;
-        parent: ContainerNode;
-        state?: T;
-    }, index: number | string) => boolean | void, state?: T): false | undefined;
     toJSON(): unknown;
     isSimpleBlockNode(): this is SimpleBlockNode;
     static isSimpleBlockNode(x: unknown): x is SimpleBlockNode;
@@ -116,3 +119,4 @@ export declare class TokenNode {
     isTokenNode(): this is TokenNode;
     static isTokenNode(x: unknown): x is TokenNode;
 }
+export {};
