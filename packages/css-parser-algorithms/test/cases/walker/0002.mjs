@@ -328,3 +328,134 @@ const onParseError = (err) => {
 		'foo(a/bar(d),c)',
 	);
 }
+
+// Remove the last item
+{
+	const tokens = tokenize({ css: 'foo(a/b)' }, { onParseError: onParseError });
+	const componentValue = parseComponentValue(tokens, { onParseError: onParseError });
+	assert.ok(componentValue);
+
+	const result = [];
+	componentValue.walk((entry, index) => {
+		result.push({
+			index: index,
+			node: entry.node.toString(),
+			parent: entry.parent.toString(),
+		});
+
+		if (entry.node.toString() === 'b') {
+			entry.parent.value.splice(index, 1);
+		}
+	});
+
+	assert.deepStrictEqual(
+		result,
+		[
+			{ index: 0, node: 'a', parent: 'foo(a/b)' },
+			{ index: 1, node: '/', parent: 'foo(a/b)' },
+			{ index: 2, node: 'b', parent: 'foo(a/b)' },
+		],
+	);
+
+	assert.strictEqual(
+		componentValue.toString(),
+		'foo(a/)',
+	);
+}
+
+// Remove the next item, that item is the last item
+{
+	const tokens = tokenize({ css: 'foo(a/b)' }, { onParseError: onParseError });
+	const componentValue = parseComponentValue(tokens, { onParseError: onParseError });
+	assert.ok(componentValue);
+
+	const result = [];
+	componentValue.walk((entry, index) => {
+		result.push({
+			index: index,
+			node: entry.node.toString(),
+			parent: entry.parent.toString(),
+		});
+
+		if (entry.node.toString() === '/') {
+			entry.parent.value.splice(index+1, 1);
+		}
+	});
+
+	assert.deepStrictEqual(
+		result,
+		[
+			{ index: 0, node: 'a', parent: 'foo(a/b)' },
+			{ index: 1, node: '/', parent: 'foo(a/b)' },
+		],
+	);
+
+	assert.strictEqual(
+		componentValue.toString(),
+		'foo(a/)',
+	);
+}
+
+// Empty thing
+{
+	const tokens = tokenize({ css: 'foo()' }, { onParseError: onParseError });
+	const componentValue = parseComponentValue(tokens, { onParseError: onParseError });
+	assert.ok(componentValue);
+
+	const result = [];
+	componentValue.walk((entry, index) => {
+		result.push({
+			index: index,
+			node: entry.node.toString(),
+			parent: entry.parent.toString(),
+		});
+	});
+
+	assert.deepStrictEqual(
+		result,
+		[],
+	);
+
+	assert.strictEqual(
+		componentValue.toString(),
+		'foo()',
+	);
+}
+
+// Append an item
+{
+	const otherTokens = tokenize({ css: '#c' }, { onParseError: onParseError });
+	const otherComponentValue = parseComponentValue(otherTokens, { onParseError: onParseError });
+
+	const tokens = tokenize({ css: 'foo(a/b)' }, { onParseError: onParseError });
+	const componentValue = parseComponentValue(tokens, { onParseError: onParseError });
+	assert.ok(componentValue);
+
+	const result = [];
+	componentValue.walk((entry, index) => {
+		result.push({
+			index: index,
+			node: entry.node.toString(),
+			parent: entry.parent.toString(),
+		});
+
+		if (entry.node.toString() === 'b') {
+			entry.parent.value.push(otherComponentValue);
+		}
+	});
+
+	assert.deepStrictEqual(
+		result,
+		[
+			{ index: 0, node: 'a', parent: 'foo(a/b)' },
+			{ index: 1, node: '/', parent: 'foo(a/b)' },
+			{ index: 2, node: 'b', parent: 'foo(a/b)' },
+			{ index: 3, node: '#c', parent: 'foo(a/b#c)' },
+		],
+	);
+
+	assert.strictEqual(
+		componentValue.toString(),
+		'foo(a/b#c)',
+	);
+}

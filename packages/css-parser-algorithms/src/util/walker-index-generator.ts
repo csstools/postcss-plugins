@@ -10,7 +10,7 @@
  */
 export function walkerIndexGenerator<T>(initialList: Array<T>) {
 	// 1. Keep a reference of the original ordered list.
-	const reference: Array<T> = initialList.slice();
+	let reference: Array<T> = initialList.slice();
 
 	return (list: Array<T>, child: T, index: number): number => {
 		// 2. Lookup the index of the original element in the original list.
@@ -48,8 +48,7 @@ export function walkerIndexGenerator<T>(initialList: Array<T>) {
 		}
 
 		// 9. Update the reference list so that it reflects the current list.
-		reference.length = 0;
-		reference.push(...list);
+		reference = list.slice();
 
 		// 10. Return the next index.
 		return nextIndex;

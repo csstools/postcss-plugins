@@ -6,7 +6,6 @@
  * - the next element always exists in the list.
  * - replacing an element does not cause the replaced element to be visited.
  * - removing an element does not cause elements to be skipped.
- * - adding an element does not cause elements to be visited twice.
- * - an element added much later in the list will be visited.
+ * - an element added later in the list will be visited.
  */
 export declare function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>, child: T, index: number) => number;
