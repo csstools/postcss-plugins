@@ -25,7 +25,7 @@
 		}
 	],
 	"engines": {
-		"node": ">=16"
+		"node": "^14 || ^16 || >=18"
 	},
 	"type": "module",
 	"main": "index.mjs",
@@ -39,9 +39,9 @@
 		"stylelint": "^16.0.0"
 	},
 	"devDependencies": {
-		"stylelint-test-rule-node": "^0.2.0",
 		"postcss": "^8.4",
-		"stylelint": "^16.0.0"
+		"stylelint": "^16.0.0",
+		"stylelint-test-rule-node": "^0.2.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
