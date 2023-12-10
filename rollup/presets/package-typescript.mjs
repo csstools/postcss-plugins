@@ -1,7 +1,7 @@
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { externalsForPlugin } from '../configs/externals.mjs';
-import { typescriptDeclarations } from '../transforms/typescript-declarations.mjs';
+import { apiExtractor } from '../transforms/api-extractor.mjs';
 
 export function packageTypescript() {
 	return [
@@ -47,7 +47,7 @@ export function packageTypescript() {
 					keep_classnames: true,
 					keep_fnames: true,
 				}),
-				typescriptDeclarations(),
+				apiExtractor(),
 			],
 		},
 	];
