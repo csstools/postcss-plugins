@@ -1,5 +1,5 @@
-const stylelint = require('stylelint');
-const parseAtImport = require('./parse-at-import');
+import stylelint from 'stylelint';
+import { parseAtImport } from './parse-at-import.mjs';
 
 const ruleName = '@csstools/stylelint-no-invalid-at-import-rules-when-bundling';
 
@@ -189,4 +189,4 @@ function parseAsURL(uri) {
 ruleFunction.ruleName = ruleName;
 ruleFunction.meta = meta;
 
-module.exports = stylelint.createPlugin(ruleName, ruleFunction);
+export default stylelint.createPlugin(ruleName, ruleFunction);

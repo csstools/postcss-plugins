@@ -25,27 +25,27 @@
 		}
 	],
 	"engines": {
-		"node": "^14 || ^16 || >=18"
+		"node": ">=16"
 	},
-	"main": "index.js",
+	"type": "module",
+	"main": "index.mjs",
 	"files": [
 		"LICENSE.md",
 		"README.md",
-		"index.js"
+		"index.mjs"
 	],
 	"peerDependencies": {
 		"postcss": "^8.4",
-		"stylelint": "^15.0.0"
+		"stylelint": "^16.0.0"
 	},
 	"devDependencies": {
-		"jest": "^29.7.0",
-		"jest-preset-stylelint": "^6.3.2",
+		"stylelint-test-rule-node": "^0.2.0",
 		"postcss": "^8.4",
-		"stylelint": "^15.11.0"
+		"stylelint": "^16.0.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
-		"test": "jest"
+		"test": "node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-at-nest-rule#readme",
 	"repository": {
@@ -58,7 +58,7 @@
 		"stylelint",
 		"stylelint-plugin"
 	],
-	"jest": {
-		"preset": "jest-preset-stylelint"
+	"volta": {
+		"extends": "../../package.json"
 	}
 }

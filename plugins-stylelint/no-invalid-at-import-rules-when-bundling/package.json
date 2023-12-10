@@ -25,29 +25,29 @@
 		}
 	],
 	"engines": {
-		"node": "^14 || ^16 || >=18"
+		"node": ">=16"
 	},
-	"main": "index.js",
+	"type": "module",
+	"main": "index.mjs",
 	"files": [
 		"LICENSE.md",
 		"README.md",
-		"index.js"
+		"index.mjs"
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^2.3.2",
 		"@csstools/css-tokenizer": "^2.2.1"
 	},
 	"peerDependencies": {
-		"stylelint": "^15.0.0"
+		"stylelint": "^16.0.0"
 	},
 	"devDependencies": {
-		"jest": "^29.7.0",
-		"jest-preset-stylelint": "^6.3.2",
-		"stylelint": "^15.11.0"
+		"stylelint-test-rule-node": "^0.2.0",
+		"stylelint": "^16.0.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
-		"test": "jest"
+		"test": "node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-invalid-at-import-rules-when-bundling#readme",
 	"repository": {
@@ -60,7 +60,7 @@
 		"stylelint",
 		"stylelint-plugin"
 	],
-	"jest": {
-		"preset": "jest-preset-stylelint"
+	"volta": {
+		"extends": "../../package.json"
 	}
 }
