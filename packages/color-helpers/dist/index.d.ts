@@ -7,11 +7,6 @@
  */
 export declare function a98_RGB_to_XYZ_D50(x: Color): Color;
 
-/**
- * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
- * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/map-gamut.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */
 export declare function clip(color: Color): Color;
 
 export declare type Color = [number, number, number];
@@ -21,7 +16,6 @@ export declare type Color = [number, number, number];
  * to gamma corrected form
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export declare function gam_P3(RGB: Color): Color;
@@ -33,9 +27,7 @@ export declare function gam_P3(RGB: Color): Color;
  *  of axis, then uses reflected pow below that
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- *
  * @see https://en.wikipedia.org/wiki/SRGB
  */
 export declare function gam_sRGB(RGB: Color): Color;
@@ -58,11 +50,6 @@ export declare function HSL_to_XYZ_D50(x: Color): Color;
  */
 export declare function HWB_to_XYZ_D50(x: Color): Color;
 
-/**
- * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
- * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/map-gamut.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- */
 export declare function inGamut(x: Color): boolean;
 
 /**
@@ -88,7 +75,6 @@ export declare function LCH_to_XYZ_D50(x: Color): Color;
  * to linear light (un-companded) form.
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export declare function lin_P3(RGB: Color): Color;
@@ -98,9 +84,7 @@ export declare function lin_P3(RGB: Color): Color;
  * using D65 (no chromatic adaptation)
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- *
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
  */
 export declare function lin_P3_to_XYZ(rgb: Color): Color;
@@ -113,9 +97,7 @@ export declare function lin_P3_to_XYZ(rgb: Color): Color;
  *  then reflected power function is used.
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- *
  * @see https://en.wikipedia.org/wiki/SRGB
  */
 export declare function lin_sRGB(RGB: Color): Color;
@@ -125,7 +107,6 @@ export declare function lin_sRGB(RGB: Color): Color;
  * using sRGB's own white, D65 (no chromatic adaptation)
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export declare function lin_sRGB_to_XYZ(rgb: Color): Color;
@@ -145,13 +126,18 @@ export declare const namedColors: Record<string, Color>;
 
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
 export declare function OKLab_to_OKLCH(OKLab: Color): Color;
 
+/**
+ * Given OKLab, convert to XYZ relative to D65
+ *
+ * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
+ * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
+ */
 export declare function OKLab_to_XYZ(OKLab: Color): Color;
 
 /**
@@ -165,9 +151,7 @@ export declare function OKLab_to_XYZ_D50(x: Color): Color;
 
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- *
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
 export declare function OKLCH_to_OKLab(OKLCH: Color): Color;
@@ -392,21 +376,18 @@ export declare function XYZ_D65_to_XYZ_D50(x: Color): Color;
  * Convert XYZ to linear-light P3
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export declare function XYZ_to_lin_P3(XYZ: Color): Color;
 
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export declare function XYZ_to_lin_sRGB(XYZ: Color): Color;
 
 /**
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
  * XYZ <-> LMS matrices recalculated for consistent reference white

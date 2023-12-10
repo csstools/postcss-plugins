@@ -48,7 +48,6 @@
 		"dist"
 	],
 	"scripts": {
-		"api-extractor": "api-extractor",
 		"build": "rollup -c ../../rollup/default.mjs",
 		"check-sources-integrity": "node ./scripts/check-changes.mjs",
 		"check-sources-integrity:rewrite": "REWRITE_HASHES=true node ./scripts/check-changes.mjs",
