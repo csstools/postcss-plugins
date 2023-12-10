@@ -3,6 +3,7 @@ import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and
 import { MediaInParens } from './media-in-parens';
 import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
 import { NodeType } from '../util/node-type';
+import { walkerIndexGenerator } from '@csstools/css-parser-algorithms';
 
 export type MediaConditionList = MediaConditionListWithAnd | MediaConditionListWithOr;
 
@@ -77,12 +78,15 @@ export class MediaConditionListWithAnd {
 			}
 		}
 
-		let aborted = false;
+		if (this.list.length === 0) {
+			return;
+		}
 
-		this.list.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
+		const indexGenerator = walkerIndexGenerator(this.list);
+
+		let index = 0;
+		while (index < this.list.length) {
+			const child = this.list[index];
 
 			if (state) {
 				stateClone = {
@@ -91,20 +95,19 @@ export class MediaConditionListWithAnd {
 			}
 
 			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
+				return false;
 			}
 
 			if ('walk' in child && this.list.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
+					return false;
 				}
 			}
-		});
 
-		if (aborted) {
-			return false;
+			index = indexGenerator(this.list, child, index);
+			if (index === -1) {
+				break;
+			}
 		}
 	}
 
@@ -209,12 +212,15 @@ export class MediaConditionListWithOr {
 			}
 		}
 
-		let aborted = false;
+		if (this.list.length === 0) {
+			return;
+		}
 
-		this.list.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
+		const indexGenerator = walkerIndexGenerator(this.list);
+
+		let index = 0;
+		while (index < this.list.length) {
+			const child = this.list[index];
 
 			if (state) {
 				stateClone = {
@@ -223,20 +229,19 @@ export class MediaConditionListWithOr {
 			}
 
 			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
+				return false;
 			}
 
 			if ('walk' in child && this.list.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
+					return false;
 				}
 			}
-		});
 
-		if (aborted) {
-			return false;
+			index = indexGenerator(this.list, child, index);
+			if (index === -1) {
+				break;
+			}
 		}
 	}
 
