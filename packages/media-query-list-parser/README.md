@@ -6,8 +6,6 @@
 
 Implemented from : https://www.w3.org/TR/mediaqueries-5/
 
-b
-
 ## Usage
 
 Add [Media Query List Parser] to your project:
