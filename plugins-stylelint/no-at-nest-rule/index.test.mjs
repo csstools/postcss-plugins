@@ -1,9 +1,11 @@
-/* global testRule */
-const { rule, ruleName } = require('./index');
+import { testRule } from 'stylelint-test-rule-node';
+import noAtNestRule from './index.mjs';
+
+const rule = noAtNestRule.rule;
 
 testRule({
-	plugins: ['./index.js'],
-	ruleName,
+	plugins: ['./index.mjs'],
+	ruleName: rule.ruleName,
 	config: true,
 
 	accept: [
@@ -64,8 +66,8 @@ testRule({
 });
 
 testRule({
-	plugins: ['./index.js'],
-	ruleName,
+	plugins: ['./index.mjs'],
+	ruleName: rule.ruleName,
 	config: true,
 	fix: true,
 
@@ -107,8 +109,8 @@ testRule({
 });
 
 testRule({
-	plugins: ['./index.js'],
-	ruleName,
+	plugins: ['./index.mjs'],
+	ruleName: rule.ruleName,
 	config: false,
 
 	accept: [

@@ -1,7 +1,8 @@
 # Changelog
 
-### Unreleased (patch)
+### Unreleased (major)
 
+- Migrate to `stylelint` `v16.0.0`
 - Fix `dependencies` in `package.json`
 
 ### 1.1.0

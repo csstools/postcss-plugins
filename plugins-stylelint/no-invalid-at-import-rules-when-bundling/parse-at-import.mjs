@@ -1,14 +1,11 @@
-const parserAlgorithms = require('@csstools/css-parser-algorithms');
-const tokenizer = require('@csstools/css-tokenizer');
-
-const { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify, sourceIndices } = parserAlgorithms;
-const { TokenType, tokenize } = tokenizer;
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify, sourceIndices } from '@csstools/css-parser-algorithms';
+import { TokenType, tokenize } from '@csstools/css-tokenizer';
 
 const IS_LAYER = /^layer$/i;
 const IS_SUPPORTS = /^supports$/i;
 const IS_URL = /^url$/i;
 
-module.exports = function parseAtImport(params) {
+export function parseAtImport(params) {
 	const componentValues = parseListOfComponentValues(
 		tokenize({ css: params }),
 	);
@@ -142,7 +139,7 @@ module.exports = function parseAtImport(params) {
 		supports,
 		supportsSourceIndices,
 	};
-};
+}
 
 function stripHash(str) {
 	if (str.startsWith('#')) {
