@@ -9,7 +9,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-ic-unit": "file:../../../plugins/postcss-ic-unit",
-		"postcss-cli": "^10.1.0"
+		"postcss-cli": "^11.0.0"
 	},
 	"volta": {
 		"extends": "../../package.json"
