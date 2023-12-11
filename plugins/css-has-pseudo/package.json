@@ -66,11 +66,11 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"@mrhenry/core-web": "^1.1.1",
+		"@mrhenry/core-web": "^1.2.1",
 		"postcss-dir-pseudo-class": "*",
 		"postcss-logical": "*",
 		"postcss-nesting": "*",
-		"puppeteer": "^21.5.2"
+		"puppeteer": "^21.6.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
