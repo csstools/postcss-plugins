@@ -1,5 +1,5 @@
-const postcss = require('postcss');
-const stylelint = require('stylelint');
+import postcss from 'postcss';
+import stylelint from 'stylelint';
 
 const ruleName = '@csstools/stylelint-no-at-nest-rule';
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -51,4 +51,4 @@ ruleFunction.ruleName = ruleName;
 ruleFunction.messages = messages;
 ruleFunction.meta = meta;
 
-module.exports = stylelint.createPlugin(ruleName, ruleFunction);
+export default stylelint.createPlugin(ruleName, ruleFunction);

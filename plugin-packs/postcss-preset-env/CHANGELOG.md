@@ -4,6 +4,7 @@
 
 - Fix type definitions
 - Remove extraneous dependency on `postcss-value-parser`
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.9.1`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#791-december-11-2023) (patch)
 
 ### 9.3.0
 

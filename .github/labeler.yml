@@ -1,289 +1,431 @@
 "common-tools":
-  - .github/**
-  - packages/base-cli/**
-  - packages/cascade-layer-name-parser/**
-  - packages/color-helpers/**
-  - packages/css-calc/**
-  - packages/css-color-parser/**
-  - packages/css-parser-algorithms/**
-  - packages/css-tokenizer/**
-  - packages/media-query-list-parser/**
-  - packages/postcss-tape/**
-  - packages/selector-specificity/**
-  - plugins/postcss-base-plugin/**
-  - plugins/postcss-debug-logger/**
-  - rollup/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - .github/**
+      - packages/base-cli/**
+      - packages/cascade-layer-name-parser/**
+      - packages/color-helpers/**
+      - packages/css-calc/**
+      - packages/css-color-parser/**
+      - packages/css-parser-algorithms/**
+      - packages/css-tokenizer/**
+      - packages/media-query-list-parser/**
+      - packages/postcss-tape/**
+      - packages/selector-specificity/**
+      - plugins/postcss-base-plugin/**
+      - plugins/postcss-debug-logger/**
+      - rollup/**
 
 "plugin-packs/postcss-preset-env":
-  - plugin-packs/postcss-preset-env/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugin-packs/postcss-preset-env/**
 
 "plugin-packs/postcss-bundler":
-  - plugin-packs/postcss-bundler/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugin-packs/postcss-bundler/**
 
 "cli":
-  - cli/csstools-cli/**
-  - packages/base-cli/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - cli/csstools-cli/**
+      - packages/base-cli/**
 
 "e2e":
-  - e2e/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - e2e/**
 
 "experimental":
-  - experimental/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - experimental/**
 
 "stylelint-plugin":
-  - plugins-stylelint/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins-stylelint/**
 
 "plugins/css-blank-pseudo":
-  - plugins/css-blank-pseudo/**
-  - experimental/css-blank-pseudo/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/css-blank-pseudo/**
+      - experimental/css-blank-pseudo/**
 
 "plugins/css-has-pseudo":
-  - plugins/css-has-pseudo/**
-  - experimental/css-has-pseudo/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/css-has-pseudo/**
+      - experimental/css-has-pseudo/**
 
 "plugins/css-prefers-color-scheme":
-  - plugins/css-prefers-color-scheme/**
-  - experimental/css-prefers-color-scheme/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/css-prefers-color-scheme/**
+      - experimental/css-prefers-color-scheme/**
 
 "plugins/postcss-attribute-case-insensitive":
-  - plugins/postcss-attribute-case-insensitive/**
-  - experimental/postcss-attribute-case-insensitive/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-attribute-case-insensitive/**
+      - experimental/postcss-attribute-case-insensitive/**
 
 "plugins/postcss-cascade-layers":
-  - plugins/postcss-cascade-layers/**
-  - experimental/postcss-cascade-layers/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-cascade-layers/**
+      - experimental/postcss-cascade-layers/**
 
 "plugins/postcss-color-function":
-  - plugins/postcss-color-function/**
-  - experimental/postcss-color-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-function/**
+      - experimental/postcss-color-function/**
 
 "plugins/postcss-color-functional-notation":
-  - plugins/postcss-color-functional-notation/**
-  - experimental/postcss-color-functional-notation/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-functional-notation/**
+      - experimental/postcss-color-functional-notation/**
 
 "plugins/postcss-color-hex-alpha":
-  - plugins/postcss-color-hex-alpha/**
-  - experimental/postcss-color-hex-alpha/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-hex-alpha/**
+      - experimental/postcss-color-hex-alpha/**
 
 "plugins/postcss-color-rebeccapurple":
-  - plugins/postcss-color-rebeccapurple/**
-  - experimental/postcss-color-rebeccapurple/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-rebeccapurple/**
+      - experimental/postcss-color-rebeccapurple/**
 
 "plugins/postcss-color-mix-function":
-  - plugins/postcss-color-mix-function/**
-  - experimental/postcss-color-mix-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-mix-function/**
+      - experimental/postcss-color-mix-function/**
 
 "plugins/postcss-conditional-values":
-  - plugins/postcss-conditional-values/**
-  - experimental/postcss-conditional-values/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-conditional-values/**
+      - experimental/postcss-conditional-values/**
 
 "plugins/postcss-custom-media":
-  - plugins/postcss-custom-media/**
-  - experimental/postcss-custom-media/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-custom-media/**
+      - experimental/postcss-custom-media/**
 
 "plugins/postcss-custom-properties":
-  - plugins/postcss-custom-properties/**
-  - experimental/postcss-custom-properties/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-custom-properties/**
+      - experimental/postcss-custom-properties/**
 
 "plugins/postcss-custom-selectors":
-  - plugins/postcss-custom-selectors/**
-  - experimental/postcss-custom-selectors/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-custom-selectors/**
+      - experimental/postcss-custom-selectors/**
 
 "plugins/postcss-design-tokens":
-  - plugins/postcss-design-tokens/**
-  - experimental/postcss-design-tokens/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-design-tokens/**
+      - experimental/postcss-design-tokens/**
 
 "plugins/postcss-dir-pseudo-class":
-  - plugins/postcss-dir-pseudo-class/**
-  - experimental/postcss-dir-pseudo-class/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-dir-pseudo-class/**
+      - experimental/postcss-dir-pseudo-class/**
 
 "plugins/postcss-double-position-gradients":
-  - plugins/postcss-double-position-gradients/**
-  - experimental/postcss-double-position-gradients/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-double-position-gradients/**
+      - experimental/postcss-double-position-gradients/**
 
 "plugins/postcss-env-function":
-  - plugins/postcss-env-function/**
-  - experimental/postcss-env-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-env-function/**
+      - experimental/postcss-env-function/**
 
 "plugins/postcss-exponential-functions":
-  - plugins/postcss-exponential-functions/**
-  - experimental/postcss-exponential-functions/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-exponential-functions/**
+      - experimental/postcss-exponential-functions/**
 
 "plugins/postcss-extract":
-  - plugins/postcss-extract/**
-  - experimental/postcss-extract/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-extract/**
+      - experimental/postcss-extract/**
 
 "plugins/postcss-focus-visible":
-  - plugins/postcss-focus-visible/**
-  - experimental/postcss-focus-visible/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-focus-visible/**
+      - experimental/postcss-focus-visible/**
 
 "plugins/postcss-focus-within":
-  - plugins/postcss-focus-within/**
-  - experimental/postcss-focus-within/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-focus-within/**
+      - experimental/postcss-focus-within/**
 
 "plugins/postcss-font-variant":
-  - plugins/postcss-font-variant/**
-  - experimental/postcss-font-variant/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-font-variant/**
+      - experimental/postcss-font-variant/**
 
 "plugins/postcss-font-format-keywords":
-  - plugins/postcss-font-format-keywords/**
-  - experimental/postcss-font-format-keywords/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-font-format-keywords/**
+      - experimental/postcss-font-format-keywords/**
 
 "plugins/postcss-gamut-mapping":
-  - plugins/postcss-gamut-mapping/**
-  - experimental/postcss-gamut-mapping/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-gamut-mapping/**
+      - experimental/postcss-gamut-mapping/**
 
 "plugins/postcss-gap-properties":
-  - plugins/postcss-gap-properties/**
-  - experimental/postcss-gap-properties/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-gap-properties/**
+      - experimental/postcss-gap-properties/**
 
 "plugins/postcss-global-data":
-  - plugins/postcss-global-data/**
-  - experimental/postcss-global-data/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-global-data/**
+      - experimental/postcss-global-data/**
 
 "plugins/postcss-gradients-interpolation-method":
-  - plugins/postcss-gradients-interpolation-method/**
-  - experimental/postcss-gradients-interpolation-method/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-gradients-interpolation-method/**
+      - experimental/postcss-gradients-interpolation-method/**
 
 "plugins/postcss-hwb-function":
-  - plugins/postcss-hwb-function/**
-  - experimental/postcss-hwb-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-hwb-function/**
+      - experimental/postcss-hwb-function/**
 
 "plugins/postcss-ic-unit":
-  - plugins/postcss-ic-unit/**
-  - experimental/postcss-ic-unit/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-ic-unit/**
+      - experimental/postcss-ic-unit/**
 
 "plugins/postcss-image-set-function":
-  - plugins/postcss-image-set-function/**
-  - experimental/postcss-image-set-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-image-set-function/**
+      - experimental/postcss-image-set-function/**
 
 "plugins/postcss-initial":
-  - plugins/postcss-initial/**
-  - experimental/postcss-initial/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-initial/**
+      - experimental/postcss-initial/**
 
 "plugins/postcss-is-pseudo-class":
-  - plugins/postcss-is-pseudo-class/**
-  - experimental/postcss-is-pseudo-class/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-is-pseudo-class/**
+      - experimental/postcss-is-pseudo-class/**
 
 "plugins/postcss-lab-function":
-  - plugins/postcss-lab-function/**
-  - experimental/postcss-lab-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-lab-function/**
+      - experimental/postcss-lab-function/**
 
 "plugins/postcss-logical":
-  - plugins/postcss-logical/**
-  - experimental/postcss-logical/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-logical/**
+      - experimental/postcss-logical/**
 
 "plugins/postcss-logical-float-and-clear":
-  - plugins/postcss-logical-float-and-clear/**
-  - experimental/postcss-logical-float-and-clear/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-logical-float-and-clear/**
+      - experimental/postcss-logical-float-and-clear/**
 
 "plugins/postcss-overflow":
-  - plugins/postcss-overflow/**
-  - experimental/postcss-overflow/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-overflow/**
+      - experimental/postcss-overflow/**
 
 "plugins/postcss-overscroll-behavior":
-  - plugins/postcss-overscroll-behavior/**
-  - experimental/postcss-overscroll-behavior/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-overscroll-behavior/**
+      - experimental/postcss-overscroll-behavior/**
 
 "plugins/postcss-logical-resize":
-  - plugins/postcss-logical-resize/**
-  - experimental/postcss-logical-resize/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-logical-resize/**
+      - experimental/postcss-logical-resize/**
 
 "plugins/postcss-logical-viewport-units":
-  - plugins/postcss-logical-viewport-units/**
-  - experimental/postcss-logical-viewport-units/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-logical-viewport-units/**
+      - experimental/postcss-logical-viewport-units/**
 
 "plugins/media-queries-aspect-ratio-number-values":
-  - plugins/postcss-media-queries-aspect-ratio-number-values/**
-  - experimental/postcss-media-queries-aspect-ratio-number-values/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-media-queries-aspect-ratio-number-values/**
+      - experimental/postcss-media-queries-aspect-ratio-number-values/**
 
 "plugins/postcss-media-minmax":
-  - plugins/postcss-media-minmax/**
-  - experimental/postcss-media-minmax/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-media-minmax/**
+      - experimental/postcss-media-minmax/**
 
 "plugins/postcss-minify":
-  - plugins/postcss-minify/**
-  - experimental/postcss-minify/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-minify/**
+      - experimental/postcss-minify/**
 
 "plugins/postcss-nested-calc":
-  - plugins/postcss-nested-calc/**
-  - experimental/postcss-nested-calc/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-nested-calc/**
+      - experimental/postcss-nested-calc/**
 
 "plugins/postcss-nesting":
-  - plugins/postcss-nesting/**
-  - experimental/postcss-nesting/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-nesting/**
+      - experimental/postcss-nesting/**
 
 "plugins/postcss-normalize-display-values":
-  - plugins/postcss-normalize-display-values/**
-  - experimental/postcss-normalize-display-values/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-normalize-display-values/**
+      - experimental/postcss-normalize-display-values/**
 
 "plugins/postcss-oklab-function":
-  - plugins/postcss-oklab-function/**
-  - experimental/postcss-oklab-function/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-oklab-function/**
+      - experimental/postcss-oklab-function/**
 
 "plugins/postcss-overflow-shorthand":
-  - plugins/postcss-overflow-shorthand/**
-  - experimental/postcss-overflow-shorthand/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-overflow-shorthand/**
+      - experimental/postcss-overflow-shorthand/**
 
 "plugins/postcss-page-break":
-  - plugins/postcss-page-break/**
-  - experimental/postcss-page-break/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-page-break/**
+      - experimental/postcss-page-break/**
 
 "plugins/postcss-place":
-  - plugins/postcss-place/**
-  - experimental/postcss-place/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-place/**
+      - experimental/postcss-place/**
 
 "plugins/postcss-progressive-custom-properties":
-  - plugins/postcss-progressive-custom-properties/**
-  - experimental/postcss-progressive-custom-properties/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-progressive-custom-properties/**
+      - experimental/postcss-progressive-custom-properties/**
 
 "plugins/postcss-pseudo-class-any-link":
-  - plugins/postcss-pseudo-class-any-link/**
-  - experimental/postcss-pseudo-class-any-link/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-pseudo-class-any-link/**
+      - experimental/postcss-pseudo-class-any-link/**
 
 "plugins/postcss-rebase-url":
-  - plugins/postcss-rebase-url/**
-  - experimental/postcss-rebase-url/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-rebase-url/**
+      - experimental/postcss-rebase-url/**
 
 "plugins/postcss-relative-color-syntax":
-  - plugins/postcss-relative-color-syntax/**
-  - experimental/postcss-relative-color-syntax/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-relative-color-syntax/**
+      - experimental/postcss-relative-color-syntax/**
 
 "plugins/postcss-replace-overflow-wrap":
-  - plugins/postcss-replace-overflow-wrap/**
-  - experimental/postcss-replace-overflow-wrap/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-replace-overflow-wrap/**
+      - experimental/postcss-replace-overflow-wrap/**
 
 "plugins/postcss-scope-pseudo-class":
-  - plugins/postcss-scope-pseudo-class/**
-  - experimental/postcss-scope-pseudo-class/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-scope-pseudo-class/**
+      - experimental/postcss-scope-pseudo-class/**
 
 "plugins/postcss-selector-not":
-  - plugins/postcss-selector-not/**
-  - experimental/postcss-selector-not/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-selector-not/**
+      - experimental/postcss-selector-not/**
 
 "plugins/postcss-slow-plugins":
-  - plugins/postcss-slow-plugins/**
-  - experimental/postcss-slow-plugins/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-slow-plugins/**
+      - experimental/postcss-slow-plugins/**
 
 "plugins/postcss-system-ui-font-family":
-  - plugins/postcss-system-ui-font-family/**
-  - experimental/postcss-system-ui-font-family/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-system-ui-font-family/**
+      - experimental/postcss-system-ui-font-family/**
 
 "plugins/postcss-stepped-value-functions":
-  - plugins/postcss-stepped-value-functions/**
-  - experimental/postcss-stepped-value-functions/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-stepped-value-functions/**
+      - experimental/postcss-stepped-value-functions/**
 
 "plugins/postcss-text-decoration-shorthand":
-  - plugins/postcss-text-decoration-shorthand/**
-  - experimental/postcss-text-decoration-shorthand/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-text-decoration-shorthand/**
+      - experimental/postcss-text-decoration-shorthand/**
 
 "plugins/postcss-trigonometric-functions":
-  - plugins/postcss-trigonometric-functions/**
-  - experimental/postcss-trigonometric-functions/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-trigonometric-functions/**
+      - experimental/postcss-trigonometric-functions/**
 
 "plugins/postcss-unset-value":
-  - plugins/postcss-unset-value/**
-  - experimental/postcss-unset-value/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-unset-value/**
+      - experimental/postcss-unset-value/**
 
 "sites/postcss-preset-env":
-  - sites/postcss-preset-env/**
+  - changed-files:
+    - any-glob-to-any-file:
+      - sites/postcss-preset-env/**
