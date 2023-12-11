@@ -26,21 +26,21 @@
 		"plugins-stylelint/*"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.23.5",
-		"@babel/preset-env": "^7.23.5",
+		"@babel/core": "^7.23.6",
+		"@babel/preset-env": "^7.23.6",
 		"@rollup/plugin-babel": "^6.0.3",
 		"@rollup/plugin-commonjs": "^25.0.7",
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.3",
 		"@rollup/plugin-typescript": "^11.1.4",
 		"@stryker-mutator/core": "^8.0.0",
-		"@typescript-eslint/eslint-plugin": "^6.13.1",
-		"@typescript-eslint/parser": "^6.9.1",
+		"@typescript-eslint/eslint-plugin": "^6.13.2",
+		"@typescript-eslint/parser": "^6.13.2",
 		"eslint": "^8.55.0",
-		"knip": "^3.4.0",
-		"rollup": "^4.6.1",
+		"knip": "^3.7.0",
+		"rollup": "^4.8.0",
 		"tslib": "^2.6.2",
-		"typescript": "^5.2.2"
+		"typescript": "^5.3.3"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",

@@ -81,8 +81,8 @@
 			"project": "**/*.ts"
 		},
 		"plugins-stylelint/*": {
-			"entry": "{index,index.test}.js",
-			"project": "**/*.js"
+			"entry": "{index,index.test}.mjs",
+			"project": "**/*.mjs"
 		}
 	},
 	"ignore": [
