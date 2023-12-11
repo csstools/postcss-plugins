@@ -39,10 +39,10 @@
 		"@csstools/css-tokenizer": "^2.2.1"
 	},
 	"peerDependencies": {
-		"stylelint": "^16.0.0"
+		"stylelint": "^16.0.2"
 	},
 	"devDependencies": {
-		"stylelint": "^16.0.0",
+		"stylelint": "^16.0.2",
 		"stylelint-test-rule-node": "^0.2.0"
 	},
 	"scripts": {
