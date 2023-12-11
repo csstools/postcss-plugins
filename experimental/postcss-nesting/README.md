@@ -8,6 +8,8 @@
 [CSS Nesting] specification. If you want nested rules the same way [Sass] works
 you might want to use [PostCSS Nested] instead.
 
+b
+
 ⚠️ Experimental version of [PostCSS Nesting](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 
 ```pcss
