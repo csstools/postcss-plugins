@@ -17,6 +17,7 @@ import './cases/query-with-type/0002.mjs';
 import './cases/query-with-type/0003.mjs';
 
 import './cases/replacer/0001.mjs';
+import './cases/replacer/0002.mjs';
 
 import './cases/source-indices/0001.mjs';
 
@@ -43,6 +44,7 @@ import './cases/various/0020.mjs';
 import './cases/various/0021.mjs';
 
 import './cases/walker/0001.mjs';
+import './cases/walker/0002.mjs';
 
 import './cases/wpt/0001.mjs';
 import './cases/wpt/0002.mjs';

@@ -3,6 +3,7 @@ export type {
 	ComponentValue,
 } from './consume/consume-component-block-function';
 export {
+	ContainerNodeBaseClass,
 	FunctionNode,
 	SimpleBlockNode,
 	WhitespaceNode,
@@ -15,6 +16,7 @@ export { parseCommaSeparatedListOfComponentValues } from './parse/parse-comma-se
 export { gatherNodeAncestry } from './util/node-ancestry';
 export { replaceComponentValues } from './util/replace-component-values';
 export { stringify } from './util/stringify';
+export { walkerIndexGenerator } from './util/walker-index-generator';
 export { ComponentValueType } from './util/component-value-type';
 export {
 	isCommentNode,

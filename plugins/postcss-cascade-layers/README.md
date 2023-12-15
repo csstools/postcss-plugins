@@ -85,8 +85,9 @@ And layers have enough room internally so that each selector works and overrides
 
 More layers with more specificity will cause longer `:not(...)` selectors to be generated.
 
-⚠️ For this to work the plugin needs to analyze your entire stylesheet at once.<br>
-If you have different assets that are unaware of each other it will not work correctly as the analysis will be incorrect.
+> [!IMPORTANT]
+> [PostCSS Cascade Layers] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or processes files in parallel the output will be incorrect.<br>Using [`@csstools/postcss-bundler`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
+
 
 ## Usage
 

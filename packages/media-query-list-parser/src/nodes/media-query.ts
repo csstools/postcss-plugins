@@ -1,4 +1,4 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
+import { ComponentValue, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
@@ -311,12 +311,15 @@ export class MediaQueryInvalid {
 	}
 
 	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaQueryInvalidWalkerEntry, parent: MediaQueryInvalidWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
-		let aborted = false;
+		if (this.media.length === 0) {
+			return;
+		}
 
-		this.media.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
+		const indexGenerator = walkerIndexGenerator(this.media);
+
+		let index = 0;
+		while (index < this.media.length) {
+			const child = this.media[index];
 
 			let stateClone: T | undefined = undefined;
 			if (state) {
@@ -326,20 +329,19 @@ export class MediaQueryInvalid {
 			}
 
 			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
+				return false;
 			}
 
-			if ('walk' in child) {
+			if ('walk' in child && this.media.includes(child)) {
 				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
+					return false;
 				}
 			}
-		});
 
-		if (aborted) {
-			return false;
+			index = indexGenerator(this.media, child, index);
+			if (index === -1) {
+				break;
+			}
 		}
 	}
 
