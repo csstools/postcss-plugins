@@ -134,9 +134,8 @@ features and supports **all** browsers.
 
 [**Try it out in the Playground!**](https://preset-env.cssdb.org/playground/)
 
-⚠️ Please note that some features need a companion library that makes 
-the feature work. While we try to avoid this requirement, there are instances
-in which this isn't possible to polyfill a new behaviour with _just_ CSS.
+> [!NOTE]
+> Please note that some features need a companion library that makes the feature work. While we try to avoid this requirement, there are instances in which this isn't possible to polyfill a new behaviour with _just_ CSS.
 
 [See the list below](#plugins-that-need-client-library).
 

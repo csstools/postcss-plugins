@@ -2,7 +2,8 @@
 
 [EXPERIMENTAL CSS Has Pseudo] runs in all Node environments, with special instructions for:
 
-⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
+> [!WARNING]
+> Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
 
 | [Node](#node) | [PostCSS CLI](#postcss-cli) | [Webpack](#webpack) | [Gulp](#gulp) | [Grunt](#grunt) |
 | --- | --- | --- | --- | --- |

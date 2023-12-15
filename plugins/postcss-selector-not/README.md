@@ -20,8 +20,9 @@ p:not(:first-child):not(.special) {
 }
 ```
 
-⚠️ Only lists of simple selectors (`:not(.a, .b)`) will work as expected.
-Complex selectors (`:not(.a > .b, .c ~ .d)`) can not be downgraded.
+> [!CAUTION]
+> Only lists of simple selectors (`:not(.a, .b)`) will work as expected.
+> Complex selectors (`:not(.a > .b, .c ~ .d)`) can not be downgraded.
 
 ## Usage
 

@@ -150,8 +150,9 @@ or
 <script>prefersColorSchemeInit()</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+> [!TIP]
+> Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js`
+> Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [Prefers Color Scheme] works in all major browsers, including Safari 6+ and
 Internet Explorer 9+ without any additional polyfills.
@@ -246,10 +247,11 @@ ECMA Script:
 
 ## CORS
 
-⚠️ Applies to you if you load CSS from a different domain than the page.
-
-In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
-The polyfill will not work without applying the correct configuration for CORS.
+> [!IMPORTANT]
+> Applies to you if you load CSS from a different domain than the page.
+>
+> In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
+> The polyfill will not work without applying the correct configuration for CORS.
 
 Example :
 
