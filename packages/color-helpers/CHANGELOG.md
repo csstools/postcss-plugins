@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (major)
+### 4.0.0
+
+_December 15, 2023_
 
 - Remove barrel files
 - Fix type definitions
