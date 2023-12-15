@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix type definitions
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#303) (patch)
 
 ### 3.0.2
 
