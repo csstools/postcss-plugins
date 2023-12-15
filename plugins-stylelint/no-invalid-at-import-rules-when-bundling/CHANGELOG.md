@@ -1,6 +1,8 @@
 # Changelog
 
-### Unreleased (major)
+### 2.0.0
+
+_December 15, 2023_
 
 - Migrate to `stylelint` `v16.0.0`
 - Fix `dependencies` in `package.json`
