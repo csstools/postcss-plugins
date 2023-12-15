@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 1.5.0
+
+_December 15, 2023_
 
 - Add the `Experimental` syntax flag, to be used in future features.
 - Add a `serializeHSL` function.
