@@ -1,6 +1,8 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (minor)
+### 2.4.0
+
+_December 15, 2023_
 
 - Fix type definitions
 - Only `walk` child nodes if they are still part of the current AST tree [#1202](https://github.com/csstools/postcss-plugins/issues/1202)
