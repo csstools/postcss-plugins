@@ -1,6 +1,8 @@
 # Changes to PostCSS Logical Properties
 
-### Unreleased (patch)
+### 7.0.1
+
+_December 15, 2023_
 
 - Fix type definitions
 
