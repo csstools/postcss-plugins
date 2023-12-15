@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { parallelBuildsNotice } from './parallel-builds-notice.mjs';
 
 const template = fs.readFileSync(path.join('docs', './README.md'), 'utf8');
 const corsTemplate = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
@@ -33,6 +34,7 @@ readmeDoc = readmeDoc.replace(`<!-- Available Variables: -->
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 `, '');
@@ -109,6 +111,12 @@ readmeDoc = readmeDoc.replaceAll('<packageName>', packageJSONInfo.name);
 readmeDoc = readmeDoc.replaceAll('<packageVersion>', packageJSONInfo.version);
 readmeDoc = readmeDoc.replaceAll('<packagePath>', path.join(path.basename(path.dirname(process.cwd())), path.basename(process.cwd())));
 readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
+
+if (packageJSONInfo?.csstools?.assumesToProcessBundledCSS) {
+	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', parallelBuildsNotice(packageJSONInfo.csstools.humanReadableName));
+} else {
+	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', ``);
+}
 
 for (const exampleFilePath of exampleFilePaths) {
 	readmeDoc = readmeDoc.replaceAll(
