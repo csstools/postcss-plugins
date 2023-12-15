@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 3.0.3
+
+_December 15, 2023_
 
 - Fix type definitions
 
