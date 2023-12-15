@@ -6,7 +6,8 @@
 `@csstools/css-has-pseudo-experimental` is no longer supported. Please use `css-has-pseudo` instead.
 All issues have been resolved in the main plugin and the experimental plugin is no longer maintained.
 
-⚠️ This experimental plugin no longer has any effect on the output of your CSS.
+> [!CAUTION]
+> This experimental plugin no longer has any effect on the output of your CSS.
 
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/@csstools/css-has-pseudo-experimental.svg

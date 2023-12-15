@@ -10,9 +10,10 @@
 ## Usage
 
 We recommend using the [CSSTools CLI] as a prototyping and debugging tool.
-⚠️ If you are building/customizing a toolchain it is best **not** to use the CLI.
-
 With `npx` you can use the CLI directly without installing it globally.
+
+> [!CAUTION]
+> If you are building/customizing a toolchain it is best **not** to use the CLI.
 
 ### General Help :
 
