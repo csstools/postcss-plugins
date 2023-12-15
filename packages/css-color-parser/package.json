@@ -48,12 +48,12 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/color-helpers": "^3.0.2",
+		"@csstools/color-helpers": "^4.0.0",
 		"@csstools/css-calc": "^1.1.4"
 	},
 	"peerDependencies": {
 		"@csstools/css-parser-algorithms": "^2.3.2",
-		"@csstools/css-tokenizer": "^2.2.1"
+		"@csstools/css-tokenizer": "^2.2.2"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

@@ -5,6 +5,7 @@
 - Fix type definitions
 - Only `walk` child nodes if they are still part of the current AST tree [#1202](https://github.com/csstools/postcss-plugins/issues/1202)
 - Make `walk` methods safe for mutations [#1204](https://github.com/csstools/postcss-plugins/issues/1204)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#222) (patch)
 
 ### 2.1.5
 

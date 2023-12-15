@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix type definitions
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#222) (patch)
 
 ### 13.3.2
 
