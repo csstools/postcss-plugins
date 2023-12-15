@@ -1,7 +1,7 @@
 {
 	"name": "css-prefers-color-scheme",
 	"description": "Use light and dark color schemes in all browsers",
-	"version": "9.0.0",
+	"version": "9.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
