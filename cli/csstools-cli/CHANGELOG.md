@@ -28,6 +28,8 @@
 - Updated [`postcss-overflow-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand/CHANGELOG.md#501) (patch)
 - Updated [`postcss-place`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place/CHANGELOG.md#901) (patch)
 - Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#901) (patch)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#303) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`5.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#503) (patch)
 
 ### 3.0.7
 

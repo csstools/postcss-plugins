@@ -42,7 +42,7 @@
 		"index.d.ts"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^1.0.5",
+		"@csstools/cascade-layer-name-parser": "^1.0.6",
 		"@csstools/css-parser-algorithms": "^2.4.0",
 		"@csstools/css-tokenizer": "^2.2.2",
 		"postcss-value-parser": "^4.2.0"
