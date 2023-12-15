@@ -1,7 +1,7 @@
 {
 	"name": "postcss-place",
 	"description": "Use a place-* shorthand for align-* and justify-* in CSS",
-	"version": "9.0.0",
+	"version": "9.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
