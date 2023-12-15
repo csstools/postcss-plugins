@@ -29,7 +29,8 @@
 
 ## Shortcomings
 
-⚠️ Color stops with only a color or only an interpolation hint are not supported.
+> [!CAUTION]
+> Color stops with only a color or only an interpolation hint are not supported.
 
 For best results you should always provide at least the color and position for each color stop.
 Double position color stops are supported.
@@ -44,8 +45,9 @@ Double position color stops are supported.
 }
 ```
 
-⚠️ Variable colors are also not supported.
-We can not mix colors when the color is a variable.
+> [!CAUTION]
+> Variable colors are not supported.
+> We can not mix colors when the color is a variable.
 
 ```pcss
 .foo {
@@ -83,7 +85,8 @@ is preserved. By default, it is preserved.
 The `enableProgressiveCustomProperties` option determines whether the original notation
 is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
 
-⚠️ We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+> [!NOTE]
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
 
 ```js
 <exportName>({ enableProgressiveCustomProperties: false })

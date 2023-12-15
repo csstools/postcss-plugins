@@ -1,9 +1,10 @@
 ## CORS
 
-⚠️ Applies to you if you load CSS from a different domain than the page.
-
-In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
-The polyfill will not work without applying the correct configuration for CORS.
+> [!IMPORTANT]
+> Applies to you if you load CSS from a different domain than the page.
+>
+> In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
+> The polyfill will not work without applying the correct configuration for CORS.
 
 Example :
 

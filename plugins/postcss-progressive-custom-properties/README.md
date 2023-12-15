@@ -6,8 +6,9 @@
 
 [PostCSS Progressive Custom Properties] is a utility plugin to correctly declare Custom Property fallbacks and enhancements.
 
-⚠️ It is not intended to be used directly by stylesheet authors.
-Meant to be included in other PostCSS plugins that provide CSS value transforms as fallbacks.
+> [!WARNING]
+> It is not intended to be used directly by stylesheet authors.
+> Meant to be included in other PostCSS plugins that provide CSS value transforms as fallbacks.
 
 [Custom Properties are not discarded like regular declarations when invalid.](https://www.w3.org/TR/css-variables-1/#invalid-variables)
 This makes it tricky to provide fallback values for older browsers.

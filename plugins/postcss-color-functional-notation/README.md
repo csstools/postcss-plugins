@@ -88,7 +88,8 @@ postcssColorFunctionalNotation({ preserve: true })
 The `enableProgressiveCustomProperties` option determines whether the original notation
 is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
 
-⚠️ We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+> [!NOTE]
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
 
 ```js
 postcssColorFunctionalNotation({ enableProgressiveCustomProperties: false })
