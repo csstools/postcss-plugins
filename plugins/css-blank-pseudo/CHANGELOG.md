@@ -1,6 +1,8 @@
 # Changes to CSS Blank Pseudo
 
-### Unreleased (patch)
+### 6.0.1
+
+_December 15, 2023_
 
 - Fix type definitions
 
