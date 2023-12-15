@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 2.2.2
+
+_December 15, 2023_
 
 - Fix type definitions
 
