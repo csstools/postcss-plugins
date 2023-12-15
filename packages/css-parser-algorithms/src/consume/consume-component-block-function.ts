@@ -52,7 +52,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 	};
 }
 
-abstract class ContainerNodeBaseClass {
+export abstract class ContainerNodeBaseClass {
 	/**
 	 * The contents of the `Function` or `Simple Block`.
 	 * This is a list of component values.
@@ -286,7 +286,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 }
 
 // https://www.w3.org/TR/css-syntax-3/#consume-function
-export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode } {
+function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode } {
 	const value: Array<ComponentValue> = [];
 
 	let i = 1;
@@ -429,7 +429,7 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 }
 
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
-export function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode } {
+function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode } {
 	const endingTokenType = mirrorVariantType(tokens[0][0]);
 	if (!endingTokenType) {
 		throw new Error('Failed to parse, a mirror variant must exist for all block open tokens.');
@@ -520,7 +520,7 @@ export class WhitespaceNode {
 	}
 }
 
-export function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: WhitespaceNode } {
+function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: WhitespaceNode } {
 	let i = 0;
 
 	// eslint-disable-next-line no-constant-condition
@@ -580,14 +580,14 @@ export class CommentNode {
 	}
 }
 
-export function consumeComment(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: CommentNode } {
+function consumeComment(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: CommentNode } {
 	return {
 		advance: 1,
 		node: new CommentNode(tokens[0]),
 	};
 }
 
-export function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, nodes: Array<WhitespaceNode | CommentNode> } {
+function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, nodes: Array<WhitespaceNode | CommentNode> } {
 	const nodes: Array<WhitespaceNode | CommentNode> = [];
 
 	let i = 0;

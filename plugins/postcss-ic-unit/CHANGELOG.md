@@ -1,5 +1,9 @@
 # Changes to PostCSS IC Unit
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 3.0.2
 
 _October 9, 2023_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Overflow Shorthand
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 5.0.0
 
 _July 3, 2023_

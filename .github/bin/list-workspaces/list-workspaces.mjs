@@ -39,6 +39,7 @@ export async function listWorkspaces() {
 			result.push({
 				path: packagePath,
 				name: packageJSON.name,
+				unscopedName: packageJSON.name.replace(/^@[^/]+\//, ''),
 				private: packageJSON.private,
 				dependencies: [
 					...Object.keys(Object(packageJSON.dependencies)),

@@ -10,3 +10,4 @@ reports
 !e2e/package-lock.json
 !sites/package-lock.json
 .cached-commit
+_types

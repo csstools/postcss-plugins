@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting Experimental
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 2.0.0
 
 _January 24, 2023_

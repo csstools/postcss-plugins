@@ -1,5 +1,9 @@
 # Changes to PostCSS Media Queries Aspect-Ratio Number Values
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 2.0.3
 
 _September 24, 2023_

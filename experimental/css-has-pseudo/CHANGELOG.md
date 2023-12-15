@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 0.6.0
 
 _July 8, 2022_

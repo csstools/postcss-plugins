@@ -1,5 +1,9 @@
 # Changes to PostCSS gamut-mapping
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 1.0.0
 
 _October 9, 2023_

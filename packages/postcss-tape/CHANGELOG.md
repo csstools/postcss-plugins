@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 3.0.1
 
 _August 28, 2023_

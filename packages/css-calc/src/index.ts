@@ -1,4 +1,4 @@
-export type { conversionOptions } from './options';
+export type { conversionOptions, GlobalsWithStrings } from './options';
 import type { conversionOptions } from './options';
 import { ComponentValue, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { mathFunctions } from './functions/calc';

@@ -1,6 +1,10 @@
 import type { PluginCreator } from 'postcss';
+
+declare const creator: PluginCreator<pluginOptions>;
+export default creator;
+
 /** postcss-image-set-function plugin options */
-export type pluginOptions = {
+export declare type pluginOptions = {
     /** Preserve the original notation. default: true */
     preserve?: boolean;
     /**
@@ -11,5 +15,5 @@ export type pluginOptions = {
      */
     onInvalid?: 'warn' | 'throw' | 'ignore' | false;
 };
-declare const creator: PluginCreator<pluginOptions>;
-export default creator;
+
+export { }

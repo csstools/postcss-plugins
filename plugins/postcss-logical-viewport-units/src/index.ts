@@ -3,6 +3,8 @@ import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { DirectionFlow } from './lib/types';
 import { transform } from './transform';
 
+export type { DirectionFlow } from './lib/types';
+
 /** postcss-logical-viewport-units plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */

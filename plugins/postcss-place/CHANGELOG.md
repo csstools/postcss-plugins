@@ -1,5 +1,9 @@
 # Changes to PostCSS Place Properties
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 9.0.0
 
 _July 3, 2023_

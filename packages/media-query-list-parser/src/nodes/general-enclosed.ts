@@ -74,5 +74,5 @@ export class GeneralEnclosed {
 	}
 }
 
-type GeneralEnclosedWalkerEntry = ComponentValue;
-type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;
+export type GeneralEnclosedWalkerEntry = ComponentValue;
+export type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclosed;

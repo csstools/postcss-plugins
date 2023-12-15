@@ -1,5 +1,9 @@
 # Changes to PostCSS Minify
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 1.0.2
 
 _October 5, 2023_

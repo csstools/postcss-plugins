@@ -36,6 +36,7 @@ function createSensitiveAttributes(attribute: selectorParser.Attribute) {
 			insensitive: false,
 		});
 
+		// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 		newAttribute.setValue(x);
 
 		return newAttribute;
@@ -48,6 +49,7 @@ function createNewSelectors(selector: selectorParser.Selector) {
 	selector.each((node) => {
 		if (!nodeIsInsensitiveAttribute(node)) {
 			newSelectors.forEach(newSelector => {
+				// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 				newSelector.append(node.clone());
 			});
 			return;
@@ -59,7 +61,9 @@ function createNewSelectors(selector: selectorParser.Selector) {
 		sensitiveAttributes.forEach(newNode => {
 			newSelectors.forEach(newSelector => {
 				const newSelectorWithNewNode = newSelector.clone({});
+				// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 				newSelectorWithNewNode.append(newNode);
+				// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 				newSelectorsWithSensitiveAttributes.push(newSelectorWithNewNode);
 			});
 		});

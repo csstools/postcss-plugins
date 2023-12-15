@@ -8,7 +8,8 @@ import { fsToFs } from './io-fs-to-fs';
 export { parseArguments } from './args';
 export { helpTextLogger } from './help';
 
-type PluginCreatorOptions = Record<string, unknown> | null;
+export type { Arguments, SignalValue } from './args';
+export type PluginCreatorOptions = Record<string, unknown> | null;
 
 export async function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPluginOpts: Array<string>, helpLogger: () => void, standalone = true) {
 	// Get process and plugin options from the command line

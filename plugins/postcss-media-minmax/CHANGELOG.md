@@ -1,5 +1,9 @@
 # Changes to PostCSS Media MinMax
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 1.1.0
 
 _September 24, 2023_

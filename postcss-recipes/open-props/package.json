@@ -22,7 +22,6 @@
 		"watch": "postcss -w ./src/style.css -o ./dist/style.css -m"
 	},
 	"volta": {
-		"node": "20.2.0",
-		"npm": "9.6.7"
+		"node": "20.10.0"
 	}
 }

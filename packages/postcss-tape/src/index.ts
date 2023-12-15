@@ -11,6 +11,7 @@ import { dashesSeparator, formatCSSAssertError, formatWarningsAssertError } from
 import { formatGitHubActionAnnotation } from './github-annotations';
 import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 import { strict as assert } from 'assert';
+export type { TestCaseOptions } from './test-case-options';
 
 const emitGitHubAnnotations = process.env.GITHUB_ACTIONS && process.env.ENABLE_ANNOTATIONS_FOR_NODE === 'true' && process.env.ENABLE_ANNOTATIONS_FOR_OS === 'true';
 

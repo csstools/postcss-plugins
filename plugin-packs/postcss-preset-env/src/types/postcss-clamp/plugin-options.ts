@@ -1,5 +1,5 @@
 /** postcss-clamp plugin options */
-export type pluginOptions = {
+export type postcssClampOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
 	/**

@@ -1,5 +1,9 @@
 # Changes to PostCSS Unset Value
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 3.0.0
 
 _July 3, 2023_

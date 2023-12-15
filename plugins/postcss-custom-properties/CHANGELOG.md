@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 13.3.2
 
 _September 24, 2023_

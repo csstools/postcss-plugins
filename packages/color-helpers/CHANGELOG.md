@@ -1,8 +1,9 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### Unreleased (major)
 
-- Small fixes in type definitions
+- Remove barrel files
+- Fix type definitions
 - Use higher precision color conversion matrices.
 
 ### 3.0.2

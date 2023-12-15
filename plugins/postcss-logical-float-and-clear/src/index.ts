@@ -3,6 +3,8 @@ import { DirectionFlow, DirectionValues } from './lib/types';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 import { cloneDeclaration } from './lib/clone-declaration';
 
+export type { DirectionFlow } from './lib/types';
+
 /** postcss-logical-float-and-clear plugin options */
 export type pluginOptions = {
 	/** Sets the direction for inline. default: left-to-right */

@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Small fixes in type definitions
+- Fix type definitions
 - Fix an infinite loop when a pseudo selector function contains a case insensitive attribute selector
 
 ### 6.0.2

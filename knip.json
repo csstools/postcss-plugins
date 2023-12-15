@@ -102,6 +102,7 @@
 	"ignoreDependencies": [
 		"@babel/core",
 		"@babel/preset-env",
+		"@microsoft/api-extractor",
 		"@rollup/plugin-babel",
 		"@rollup/plugin-commonjs",
 		"@rollup/plugin-node-resolve",

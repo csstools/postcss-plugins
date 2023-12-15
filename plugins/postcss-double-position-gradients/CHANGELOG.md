@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 5.0.2
 
 _October 9, 2023_

@@ -4,7 +4,7 @@ import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { XYZ_D50_to_OKLCH } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
 import { serializeWithAlpha } from './with-alpha';
 
@@ -22,7 +22,7 @@ export function serializeOKLCH(color: ColorData): FunctionNode {
 	if (
 		color.colorNotation !== ColorNotation.OKLCH
 	) {
-		oklch = xyz.XYZ_D50_to_OKLCH(colorData_to_XYZ_D50(color).channels);
+		oklch = XYZ_D50_to_OKLCH(colorData_to_XYZ_D50(color).channels);
 	}
 
 	const l = toPrecision(oklch[0], 6);

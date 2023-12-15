@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Fix type definitions
+
 ### 4.0.3
 
 _October 2, 2023_
