@@ -1,6 +1,7 @@
 import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
+import { walkerIndexGenerator } from '../util/walker-index-generator';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
@@ -51,19 +52,147 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 	};
 }
 
-export class FunctionNode {
+abstract class ContainerNodeBaseClass {
+	/**
+	 * The contents of the `Function` or `Simple Block`.
+	 * This is a list of component values.
+	 */
+	value: Array<ComponentValue> = [];
+
+	/**
+	 * Retrieve the index of the given item in the current node.
+	 * For most node types this will be trivially implemented as `this.value.indexOf(item)`.
+	 */
+	indexOf(item: ComponentValue): number | string {
+		return this.value.indexOf(item);
+	}
+
+	/**
+	 * Retrieve the item at the given index in the current node.
+	 * For most node types this will be trivially implemented as `this.value[index]`.
+	 */
+	at(index: number | string): ComponentValue | undefined {
+		if (typeof index === 'number') {
+			if (index < 0) {
+				index = this.value.length + index;
+			}
+			return this.value[index];
+		}
+	}
+
+	/**
+	 * Iterates over each item in the `value` array of the current node.
+	 *
+	 * @param cb - The callback function to execute for each item.
+	 * The function receives an object containing the current node (`node`), its parent (`parent`),
+	 * and an optional `state` object.
+	 * A second parameter is the index of the current node.
+	 * The function can return `false` to stop the iteration.
+	 *
+	 * @param state - An optional state object that can be used to pass additional information to the callback function.
+	 * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.
+	 *
+	 * @returns `false` if the iteration was halted, `undefined` otherwise.
+	 *
+	 * @template T - The type of the `state` object.
+	 * @template U - The type of the current node.
+	 */
+	forEach<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		if (this.value.length === 0) {
+			return;
+		}
+
+		const indexGenerator = walkerIndexGenerator(this.value);
+
+		let index = 0;
+		while (index < this.value.length) {
+			const child = this.value[index];
+
+			let stateClone: T | undefined = undefined;
+			if (state) {
+				stateClone = {
+					...state,
+				};
+			}
+
+			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
+				return false;
+			}
+
+			index = indexGenerator(this.value, child, index);
+			if (index === -1) {
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Walks the current node and all its children.
+	 *
+	 * @param cb - The callback function to execute for each item.
+	 * The function receives an object containing the current node (`node`), its parent (`parent`),
+	 * and an optional `state` object.
+	 * A second parameter is the index of the current node.
+	 * The function can return `false` to stop the iteration.
+	 *
+	 * @param state - An optional state object that can be used to pass additional information to the callback function.
+	 * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.
+	 * However changes are passed down to child node iterations.
+	 *
+	 * @returns `false` if the iteration was halted, `undefined` otherwise.
+	 *
+	 * @template T - The type of the `state` object.
+	 * @template U - The type of the current node.
+	 */
+	walk<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
+		if (this.value.length === 0) {
+			return;
+		}
+
+		this.forEach((entry, index) => {
+			if (cb(entry, index) === false) {
+				return false;
+			}
+
+			if ('walk' in entry.node && this.value.includes(entry.node)) {
+				if (entry.node.walk(cb, entry.state) === false) {
+					return false;
+				}
+			}
+		}, state);
+	}
+}
+
+export class FunctionNode extends ContainerNodeBaseClass {
+	/**
+	 * The node type
+	 * Always `ComponentValueType.Function`
+	 */
 	type: ComponentValueType = ComponentValueType.Function;
 
+	/**
+	 * The token for the name of the function.
+	 */
 	name: TokenFunction;
+
+	/**
+	 * The token for the closing parenthesis of the function.
+	 * If the function is unclosed, this will be an EOF token.
+	 */
 	endToken: CSSToken;
-	value: Array<ComponentValue>;
 
 	constructor(name: TokenFunction, endToken: CSSToken, value: Array<ComponentValue>) {
+		super();
+
 		this.name = name;
 		this.endToken = endToken;
 		this.value = value;
 	}
 
+	/**
+	 * Retrieve the name of the current Function.
+	 * This is the parsed and unescaped name of the function.
+	 */
 	getName(): string {
 		return this.name[4].value;
 	}
@@ -78,6 +207,10 @@ export class FunctionNode {
 		}
 	}
 
+	/**
+	 * Retrieve the tokens for the current Function.
+	 * This is the inverse of parsing from a list of tokens.
+	 */
 	tokens(): Array<CSSToken> {
 		if (this.endToken[0] === TokenType.EOF) {
 			return [
@@ -97,6 +230,11 @@ export class FunctionNode {
 		];
 	}
 
+	/**
+	 * Convert the current Function to a string.
+	 * This is not a true serialization.
+	 * It is purely a concatenation of the string representation of the tokens.
+	 */
 	toString(): string {
 		const valueString = this.value.map((x) => {
 			if (isToken(x)) {
@@ -109,52 +247,10 @@ export class FunctionNode {
 		return stringify(this.name) + valueString + stringify(this.endToken);
 	}
 
-	indexOf(item: ComponentValue): number | string {
-		return this.value.indexOf(item);
-	}
-
-	at(index: number | string): ComponentValue | undefined {
-		if (typeof index === 'number') {
-			if (index < 0) {
-				index = this.value.length + index;
-			}
-			return this.value[index];
-		}
-	}
-
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
-		let aborted = false;
-
-		this.value.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
-
-			let stateClone: T | undefined = undefined;
-			if (state) {
-				stateClone = {
-					...state,
-				};
-			}
-
-			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
-			}
-
-			if ('walk' in child) {
-				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
-				}
-			}
-		});
-
-		if (aborted) {
-			return false;
-		}
-	}
-
+	/**
+	 * A debug helper to convert the current object to a JSON representation.
+	 * This is useful in asserts and to store large ASTs in files.
+	 */
 	toJSON(): unknown {
 		return {
 			type: this.type,
@@ -164,10 +260,18 @@ export class FunctionNode {
 		};
 	}
 
+	/**
+	 * Check if the current object is a FunctionNode.
+	 * This is a type guard to help with type narrowing.
+	 */
 	isFunctionNode(): this is FunctionNode {
 		return FunctionNode.isFunctionNode(this);
 	}
 
+	/**
+	 * Check if the given object is a FunctionNode.
+	 * This is a type guard to help with type narrowing.
+	 */
 	static isFunctionNode(x: unknown): x is FunctionNode {
 		if (!x) {
 			return false;
@@ -227,14 +331,15 @@ export function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advanc
 	}
 }
 
-export class SimpleBlockNode {
+export class SimpleBlockNode extends ContainerNodeBaseClass {
 	type: ComponentValueType = ComponentValueType.SimpleBlock;
 
 	startToken: CSSToken;
 	endToken: CSSToken;
-	value: Array<ComponentValue>;
 
 	constructor(startToken: CSSToken, endToken: CSSToken, value: Array<ComponentValue>) {
+		super();
+
 		this.startToken = startToken;
 		this.endToken = endToken;
 		this.value = value;
@@ -294,39 +399,6 @@ export class SimpleBlockNode {
 				index = this.value.length + index;
 			}
 			return this.value[index];
-		}
-	}
-
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
-		let aborted = false;
-
-		this.value.forEach((child, index) => {
-			if (aborted) {
-				return;
-			}
-
-			let stateClone: T | undefined = undefined;
-			if (state) {
-				stateClone = {
-					...state,
-				};
-			}
-
-			if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-				aborted = true;
-				return;
-			}
-
-			if ('walk' in child) {
-				if (child.walk(cb, stateClone) === false) {
-					aborted = true;
-					return;
-				}
-			}
-		});
-
-		if (aborted) {
-			return false;
 		}
 	}
 

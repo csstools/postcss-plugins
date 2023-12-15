@@ -1,4 +1,4 @@
-import { ComponentValue, ComponentValueType, ContainerNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType, ContainerNode, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { isDimension, isEnvironmentVariable, isIdent, isNumber } from '../util/component-value-is';
 import { NodeType } from '../util/node-type';
@@ -68,12 +68,15 @@ export class MediaFeatureValue {
 
 	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureValueWalkerEntry, parent: MediaFeatureValueWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		if (Array.isArray(this.value)) {
-			let aborted = false;
+			if (this.value.length === 0) {
+				return;
+			}
 
-			this.value.forEach((child, index) => {
-				if (aborted) {
-					return;
-				}
+			const indexGenerator = walkerIndexGenerator(this.value);
+
+			let index = 0;
+			while (index < this.value.length) {
+				const child = this.value[index];
 
 				let stateClone: T | undefined = undefined;
 				if (state) {
@@ -83,20 +86,19 @@ export class MediaFeatureValue {
 				}
 
 				if (cb({ node: child, parent: this, state: stateClone }, index) === false) {
-					aborted = true;
-					return;
+					return false;
 				}
 
-				if ('walk' in child) {
+				if ('walk' in child && this.value.includes(child)) {
 					if (child.walk(cb, stateClone) === false) {
-						aborted = true;
-						return;
+						return false;
 					}
 				}
-			});
 
-			if (aborted) {
-				return false;
+				index = indexGenerator(this.value, child, index);
+				if (index === -1) {
+					break;
+				}
 			}
 		} else {
 			let stateClone: T | undefined = undefined;

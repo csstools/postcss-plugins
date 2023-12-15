@@ -1,8 +1,11 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (patch)
+### Unreleased (minor)
 
 - Small fixes in type definitions
+- Only `walk` child nodes if they are still part of the current AST tree [#1202](https://github.com/csstools/postcss-plugins/issues/1202)
+- Make `walk` methods safe for mutations [#1204](https://github.com/csstools/postcss-plugins/issues/1204)
+- Add a `forEach` method to `FunctionNode` and `SimpleBlockNode`
 
 ### 2.3.2
 
