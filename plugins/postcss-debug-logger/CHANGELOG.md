@@ -1,6 +1,8 @@
 # Changes to PostCSS Debug Logger
 
-### Unreleased (patch)
+### 2.0.1
+
+_December 15, 2023_
 
 - Fix type definitions
 
