@@ -6,6 +6,12 @@
 
 Tokenize CSS following the CSS Syntax Level 3 specification.
 
+## Remarks
+
+The tokenizing and parsing tools provided by CSSTools are designed to be low level and generic with strong ties to their respective specifications.
+
+Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [\`@csstools/css-parser-algorithms\`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or even a specific parser.
+
 ## Example
 
 Tokenize a string of CSS into an array of tokens:
@@ -13,7 +19,7 @@ Tokenize a string of CSS into an array of tokens:
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
 
-const myCSS =  `@media only screen and (min-width: 768rem) {
+const myCSS = `@media only screen and (min-width: 768rem) {
 	.foo {
 		content: 'Some content!' !important;
 	}
@@ -32,7 +38,6 @@ console.log(tokens);
 |  Class | Description |
 |  --- | --- |
 |  [ParseError](./css-tokenizer.parseerror.md) |  |
-|  [Reader](./css-tokenizer.reader.md) |  |
 
 ## Enumerations
 
@@ -60,8 +65,8 @@ console.log(tokens);
 |  Type Alias | Description |
 |  --- | --- |
 |  [CodePointReader](./css-tokenizer.codepointreader.md) |  |
-|  [CSSToken](./css-tokenizer.csstoken.md) |  |
-|  [Token](./css-tokenizer.token.md) |  |
+|  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
+|  [Token](./css-tokenizer.token.md) | The CSS Token interface |
 |  [TokenAtKeyword](./css-tokenizer.tokenatkeyword.md) |  |
 |  [TokenBadString](./css-tokenizer.tokenbadstring.md) |  |
 |  [TokenBadURL](./css-tokenizer.tokenbadurl.md) |  |

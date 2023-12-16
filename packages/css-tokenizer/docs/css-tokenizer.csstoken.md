@@ -4,6 +4,8 @@
 
 ## CSSToken type
 
+The union of all possible CSS tokens
+
 **Signature:**
 
 ```typescript

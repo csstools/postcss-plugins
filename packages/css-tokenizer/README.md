@@ -21,7 +21,7 @@ npm install @csstools/css-tokenizer --save-dev
 ```js
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 
-const myCSS =  `@media only screen and (min-width: 768rem) {
+const myCSS = `@media only screen and (min-width: 768rem) {
 	.foo {
 		content: 'Some content!' !important;
 	}

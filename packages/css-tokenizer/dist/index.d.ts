@@ -1,12 +1,19 @@
 /**
  * Tokenize CSS following the CSS Syntax Level 3 specification.
  *
+ * @remarks
+ * The tokenizing and parsing tools provided by CSSTools are designed to be low level and generic with strong ties to their respective specifications.
+ *
+ * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task.
+ * For many applications it is sufficient to work with tokens.
+ * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | `@csstools/css-parser-algorithms`} or even a specific parser.
+ *
  * @example
  * Tokenize a string of CSS into an array of tokens:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
  *
- * const myCSS =  `@media only screen and (min-width: 768rem) {
+ * const myCSS = `@media only screen and (min-width: 768rem) {
  * 	.foo {
  * 		content: 'Some content!' !important;
  * 	}
@@ -38,6 +45,9 @@ export declare type CodePointReader = {
     resetRepresentation(): void;
 };
 
+/**
+ * The union of all possible CSS tokens
+ */
 export declare type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly | TokenUnicodeRange;
 
 export declare enum HashType {
@@ -68,6 +78,9 @@ export declare class ParseError extends Error {
     constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>);
 }
 
+/**
+ * @internal
+ */
 export declare class Reader implements CodePointReader {
     cursor: number;
     source: string;
@@ -85,16 +98,50 @@ export declare class Reader implements CodePointReader {
 
 export declare function stringify(...tokens: Array<CSSToken>): string;
 
+/**
+ * The CSS Token interface
+ *
+ * @remarks
+ * CSS Tokens are fully typed and have a strict structure.
+ * This makes it easier to iterate and analyze a token stream.
+ *
+ * The string representation and the parsed value are stored separately for many token types.
+ * It is always assumed that the string representation will be used when stringifying, while the parsed value should be used when analyzing tokens.
+ */
 export declare type Token<T extends TokenType, U> = [
-/** The type of token */
+/**
+* The type of token
+*/
 T,
-/** The token representation */
+/**
+* The token representation
+*
+* @remarks
+* This field will be used when stringifying the token.
+* Any stored value is assumed to be valid CSS.
+*
+* You should never use this field when analysing the token.
+* But you must store mutated values here.
+*/
 string,
-/** Start position of representation */
+/**
+* Start position of representation
+*/
 number,
-/** End position of representation */
+/**
+* End position of representation
+*/
 number,
-/** Extra data */
+/**
+* Extra data
+*
+* @remarks
+* This holds the parsed value of each token.
+* These values are unescaped, unquoted, converted to numbers, etc.
+*
+* You should always use this field when analyzing the token.
+* But you must not assume that mutating this field will have any effect.
+*/
 U
 ];
 

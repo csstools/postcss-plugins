@@ -1,5 +1,8 @@
 import { CodePointReader } from './interfaces/code-point-reader';
 
+/**
+ * @internal
+ */
 export class Reader implements CodePointReader {
 	cursor = 0;
 	source = '';
