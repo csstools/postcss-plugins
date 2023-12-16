@@ -147,8 +147,8 @@ function lin_sRGB_to_XYZ(t){return multiplyMatrices([[506752/1228815,87881/24576
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
- * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/rgbToHsl.js
- */function sRGB_to_HSL(t){const _=t[0],o=t[1],e=t[2],n=Math.max(_,o,e),r=Math.min(_,o,e),a=(r+n)/2,i=n-r;let l=NaN,u=0;if(0!==Math.round(1e5*i)){switch(u=0===Math.round(1e5*a)||1e5===Math.round(1e5*a)?0:(n-a)/Math.min(a,1-a),n){case _:l=(o-e)/i+(o<e?6:0);break;case o:l=(e-_)/i+2;break;case e:l=(_-o)/i+4}l*=60}return[l,100*u,100*a]}
+ * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/better-rgbToHsl.js
+ */function sRGB_to_HSL(t){const _=t[0],o=t[1],e=t[2],n=Math.max(_,o,e),r=Math.min(_,o,e),a=(r+n)/2,i=n-r;let l=NaN,u=0;if(0!==Math.round(1e5*i)){switch(u=0===Math.round(1e5*a)||1e5===Math.round(1e5*a)?0:(n-a)/Math.min(a,1-a),n){case _:l=(o-e)/i+(o<e?6:0);break;case o:l=(e-_)/i+2;break;case e:l=(_-o)/i+4}l*=60}return u<0&&(l+=180,u=Math.abs(u)),l>=360&&(l-=360),[l,100*u,100*a]}
 /**
  * Convert XYZ to linear-light P3
  *

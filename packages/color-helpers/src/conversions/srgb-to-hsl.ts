@@ -12,7 +12,7 @@ import type { Color } from '../types/color';
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/utilities.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  *
- * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/rgbToHsl.js
+ * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/better-rgbToHsl.js
  */
 export function sRGB_to_HSL(RGB: Color): Color {
 	const red = RGB[0];
@@ -47,6 +47,18 @@ export function sRGB_to_HSL(RGB: Color): Color {
 		}
 
 		hue = hue * 60;
+	}
+
+	// Very out of gamut colors can produce negative saturation
+	// If so, just rotate the hue by 180 and use a positive saturation
+	// see https://github.com/w3c/csswg-drafts/issues/9222
+	if (sat < 0) {
+		hue += 180;
+		sat = Math.abs(sat);
+	}
+
+	if (hue >= 360) {
+		hue -= 360;
 	}
 
 	return [hue, sat * 100, light * 100];
