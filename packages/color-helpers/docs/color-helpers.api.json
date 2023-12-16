@@ -125,6 +125,16 @@
         {
           "tagName": "@preapproved",
           "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@license",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@copyright",
+          "syntaxKind": "block",
+          "allowMultiple": true
         }
       ],
       "supportForTags": {
@@ -295,7 +305,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!gam_P3:function(1)",
-          "docComment": "/**\n * Convert an array of linear-light display-p3 RGB in the range 0.0-1.0 to gamma corrected form\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
+          "docComment": "/**\n * Convert an array of linear-light display-p3 RGB in the range 0.0-1.0 to gamma corrected form\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -342,7 +352,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!gam_sRGB:function(1)",
-          "docComment": "/**\n * Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corrected form Extended transfer function: For negative values, linear portion extends on reflection of axis, then uses reflected pow below that\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://en.wikipedia.org/wiki/SRGB\n */\n",
+          "docComment": "/**\n * Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corrected form Extended transfer function: For negative values, linear portion extends on reflection of axis, then uses reflected pow below that\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://en.wikipedia.org/wiki/SRGB\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -623,7 +633,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!lin_P3_to_XYZ:function(1)",
-          "docComment": "/**\n * Convert an array of linear-light display-p3 values to CIE XYZ using D65 (no chromatic adaptation)\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html\n */\n",
+          "docComment": "/**\n * Convert an array of linear-light display-p3 values to CIE XYZ using D65 (no chromatic adaptation)\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -670,7 +680,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!lin_P3:function(1)",
-          "docComment": "/**\n * Convert an array of display-p3 RGB values in the range 0.0 - 1.0 to linear light (un-companded) form.\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
+          "docComment": "/**\n * Convert an array of display-p3 RGB values in the range 0.0 - 1.0 to linear light (un-companded) form.\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -764,7 +774,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!lin_sRGB_to_XYZ:function(1)",
-          "docComment": "/**\n * Convert an array of linear-light sRGB values to CIE XYZ using sRGB's own white, D65 (no chromatic adaptation)\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
+          "docComment": "/**\n * Convert an array of linear-light sRGB values to CIE XYZ using sRGB's own white, D65 (no chromatic adaptation)\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -811,7 +821,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!lin_sRGB:function(1)",
-          "docComment": "/**\n * Convert an array of of sRGB values where in-gamut values are in the range [0 - 1] to linear light (un-companded) form. Extended transfer function: For negative values, linear portion is extended on reflection of axis, then reflected power function is used.\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://en.wikipedia.org/wiki/SRGB\n */\n",
+          "docComment": "/**\n * Convert an array of of sRGB values where in-gamut values are in the range [0 - 1] to linear light (un-companded) form. Extended transfer function: For negative values, linear portion is extended on reflection of axis, then reflected power function is used.\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://en.wikipedia.org/wiki/SRGB\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1002,7 +1012,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!OKLab_to_OKLCH:function(1)",
-          "docComment": "/**\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js\n */\n",
+          "docComment": "/**\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1096,7 +1106,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!OKLab_to_XYZ:function(1)",
-          "docComment": "/**\n * Given OKLab, convert to XYZ relative to D65\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js\n */\n",
+          "docComment": "/**\n * Given OKLab, convert to XYZ relative to D65\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1143,7 +1153,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!OKLCH_to_OKLab:function(1)",
-          "docComment": "/**\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js\n */\n",
+          "docComment": "/**\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2130,7 +2140,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!XYZ_to_lin_P3:function(1)",
-          "docComment": "/**\n * Convert XYZ to linear-light P3\n *\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
+          "docComment": "/**\n * Convert XYZ to linear-light P3\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2177,7 +2187,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!XYZ_to_lin_sRGB:function(1)",
-          "docComment": "/**\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
+          "docComment": "/**\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2224,7 +2234,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!XYZ_to_OKLab:function(1)",
-          "docComment": "/**\n * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document  @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * XYZ <-> LMS matrices recalculated for consistent reference white\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/issues/6642#issuecomment-943521484\n */\n",
+          "docComment": "/**\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * XYZ <-> LMS matrices recalculated for consistent reference white\n *\n * @see\n *\n * https://github.com/w3c/csswg-drafts/issues/6642#issuecomment-943521484\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
