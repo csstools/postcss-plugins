@@ -10,7 +10,7 @@ Tokenize CSS following the CSS Syntax Level 3 specification.
 
 Tokenize a string of CSS into an array of tokens:
 
-```
+```js
 import { tokenize } from '@csstools/css-tokenizer';
 
 const myCSS =  `@media only screen and (min-width: 768rem) {

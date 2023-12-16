@@ -162,7 +162,7 @@
   },
   "kind": "Package",
   "canonicalReference": "@csstools/css-tokenizer!",
-  "docComment": "/**\n * Tokenize CSS following the CSS Syntax Level 3 specification.\n *\n * @example\n *\n * Tokenize a string of CSS into an array of tokens:\n * ```\n * import { tokenize } from '@csstools/css-tokenizer';\n *\n * const myCSS =  `@media only screen and (min-width: 768rem) {\n * \t.foo {\n * \t\tcontent: 'Some content!' !important;\n * \t}\n * }\n * `;\n *\n * const tokens = tokenize({\n * \tcss: myCSS,\n * });\n *\n * console.log(tokens);\n * ```\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * Tokenize CSS following the CSS Syntax Level 3 specification.\n *\n * @example\n *\n * Tokenize a string of CSS into an array of tokens:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n *\n * const myCSS =  `@media only screen and (min-width: 768rem) {\n * \t.foo {\n * \t\tcontent: 'Some content!' !important;\n * \t}\n * }\n * `;\n *\n * const tokens = tokenize({\n * \tcss: myCSS,\n * });\n *\n * console.log(tokens);\n * ```\n *\n * @packageDocumentation\n */\n",
   "name": "@csstools/css-tokenizer",
   "preserveMemberOrder": false,
   "members": [
