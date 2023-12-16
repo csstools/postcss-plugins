@@ -4,6 +4,29 @@
 
 ## css-tokenizer package
 
+Tokenize CSS following the CSS Syntax Level 3 specification.
+
+## Example
+
+Tokenize a string of CSS into an array of tokens:
+
+```
+import { tokenize } from '@csstools/css-tokenizer';
+
+const myCSS =  `@media only screen and (min-width: 768rem) {
+	.foo {
+		content: 'Some content!' !important;
+	}
+}
+`;
+
+const tokens = tokenize({
+	css: myCSS,
+});
+
+console.log(tokens);
+```
+
 ## Classes
 
 |  Class | Description |
