@@ -1,0 +1,3537 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.38.5",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@csstools/css-tokenizer!",
+  "docComment": "",
+  "name": "@csstools/css-tokenizer",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@csstools/css-tokenizer!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!cloneTokens:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function cloneTokens(tokens: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/clone-tokens.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 10
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "tokens",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "cloneTokens"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!CodePointReader:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CodePointReader = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    representationStart: number;\n    representationEnd: number;\n    cursor: number;\n    codePointSource: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>;\n    representationIndices: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>;\n    source: string;\n    advanceCodePoint(n?: number): void;\n    readCodePoint(n?: number): number | false;\n    unreadCodePoint(n?: number): void;\n    resetRepresentation(): void;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/code-point-reader.d.ts",
+          "releaseTag": "Public",
+          "name": "CodePointReader",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!CSSToken:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CSSToken = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenAtKeyword",
+              "canonicalReference": "@csstools/css-tokenizer!TokenAtKeyword:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenBadString",
+              "canonicalReference": "@csstools/css-tokenizer!TokenBadString:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenBadURL",
+              "canonicalReference": "@csstools/css-tokenizer!TokenBadURL:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCDC",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCDC:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCDO",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCDO:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenColon",
+              "canonicalReference": "@csstools/css-tokenizer!TokenColon:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenComma",
+              "canonicalReference": "@csstools/css-tokenizer!TokenComma:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenComment",
+              "canonicalReference": "@csstools/css-tokenizer!TokenComment:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenDelim",
+              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenDimension",
+              "canonicalReference": "@csstools/css-tokenizer!TokenDimension:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenEOF",
+              "canonicalReference": "@csstools/css-tokenizer!TokenEOF:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenFunction",
+              "canonicalReference": "@csstools/css-tokenizer!TokenFunction:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenHash",
+              "canonicalReference": "@csstools/css-tokenizer!TokenHash:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenIdent",
+              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenNumber",
+              "canonicalReference": "@csstools/css-tokenizer!TokenNumber:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenPercentage",
+              "canonicalReference": "@csstools/css-tokenizer!TokenPercentage:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenSemicolon",
+              "canonicalReference": "@csstools/css-tokenizer!TokenSemicolon:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenString",
+              "canonicalReference": "@csstools/css-tokenizer!TokenString:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenURL",
+              "canonicalReference": "@csstools/css-tokenizer!TokenURL:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenWhitespace",
+              "canonicalReference": "@csstools/css-tokenizer!TokenWhitespace:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenOpenParen",
+              "canonicalReference": "@csstools/css-tokenizer!TokenOpenParen:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCloseParen",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCloseParen:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenOpenSquare",
+              "canonicalReference": "@csstools/css-tokenizer!TokenOpenSquare:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCloseSquare",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCloseSquare:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenOpenCurly",
+              "canonicalReference": "@csstools/css-tokenizer!TokenOpenCurly:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCloseCurly",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCloseCurly:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenUnicodeRange",
+              "canonicalReference": "@csstools/css-tokenizer!TokenUnicodeRange:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "CSSToken",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 54
+          }
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@csstools/css-tokenizer!HashType:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum HashType "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "HashType",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!HashType.ID:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ID = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"id\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ID"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!HashType.Unrestricted:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Unrestricted = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"unrestricted\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Unrestricted"
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isToken:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isToken(x: "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "isToken"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!mirrorVariant:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function mirrorVariant(token: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "token",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "mirrorVariant"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!mirrorVariantType:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function mirrorVariantType(type: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType:enum"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "type",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "mirrorVariantType"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!mutateIdent:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function mutateIdent(ident: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenIdent",
+              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", newValue: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/mutations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "ident",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "newValue",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "mutateIdent"
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@csstools/css-tokenizer!NumberType:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum NumberType "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "NumberType",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!NumberType.Integer:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Integer = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"integer\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Integer"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!NumberType.Number:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Number = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"number\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Number"
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@csstools/css-tokenizer!ParseError:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ParseError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/error.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "ParseError",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ParseError` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(message: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", sourceStart: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", sourceEnd: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", parserState: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "message",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "sourceStart",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "sourceEnd",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "parserState",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 7,
+                    "endIndex": 9
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError#parserState:member",
+              "docComment": "/**\n * The parser steps that preceded the error.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "parserState: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "parserState",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError#sourceEnd:member",
+              "docComment": "/**\n * The index of the end character of the current token.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "sourceEnd: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "sourceEnd",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError#sourceStart:member",
+              "docComment": "/**\n * The index of the start character of the current token.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "sourceStart: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "sourceStart",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@csstools/css-tokenizer!Reader:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Reader implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "CodePointReader",
+              "canonicalReference": "@csstools/css-tokenizer!CodePointReader:type"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/_types/reader.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "Reader",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@csstools/css-tokenizer!Reader:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Reader` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(source: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "source",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#advanceCodePoint:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "advanceCodePoint(n?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "n",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "advanceCodePoint"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#codePointSource:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "codePointSource: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "codePointSource",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#cursor:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "cursor: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "cursor",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#length:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "length: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "length",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#readCodePoint:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readCodePoint(n?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number | false"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "n",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "readCodePoint"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#representationEnd:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "representationEnd: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "representationEnd",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#representationIndices:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "representationIndices: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "representationIndices",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#representationStart:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "representationStart: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "representationStart",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#resetRepresentation:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "resetRepresentation(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "resetRepresentation"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#source:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "source: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "source",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/css-tokenizer!Reader#unreadCodePoint:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unreadCodePoint(n?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "n",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "unreadCodePoint"
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!stringify:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function stringify(...tokens: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/stringify.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "tokens",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "stringify"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!Token:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type Token<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", U> = "
+            },
+            {
+              "kind": "Content",
+              "text": "[\n    /** The type of token */\n    T,\n    /** The token representation */\n    string,\n    /** Start position of representation */\n    number,\n    /** End position of representation */\n    number,\n    /** Extra data */\n    U\n]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "Token",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenAtKeyword:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenAtKeyword = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.AtKeyword",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.AtKeyword:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenAtKeyword",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenBadString:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenBadString = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.BadString",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.BadString:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenBadString",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenBadURL:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenBadURL = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.BadURL",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.BadURL:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenBadURL",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenCDC:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenCDC = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.CDC",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CDC:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenCDC",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenCDO:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenCDO = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.CDO",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CDO:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenCDO",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenCloseCurly:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenCloseCurly = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.CloseCurly",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CloseCurly:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenCloseCurly",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenCloseParen:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenCloseParen = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.CloseParen",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CloseParen:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenCloseParen",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenCloseSquare:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenCloseSquare = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.CloseSquare",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CloseSquare:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenCloseSquare",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenColon:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenColon = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Colon",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Colon:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenColon",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenComma:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenComma = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Comma",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Comma:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenComma",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenComment:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenComment = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Comment",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Comment:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenComment",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenDelim = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Delim",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Delim:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenDelim",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenDimension:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenDimension = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Dimension",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Dimension:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: number;\n    signCharacter?: '+' | '-';\n    unit: string;\n    type: "
+            },
+            {
+              "kind": "Reference",
+              "text": "NumberType",
+              "canonicalReference": "@csstools/css-tokenizer!NumberType:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenDimension",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenEOF:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenEOF = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.EOF",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.EOF:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenEOF",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenFunction:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenFunction = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Function",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Function:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenFunction",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenHash:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenHash = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Hash",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Hash:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n    type: "
+            },
+            {
+              "kind": "Reference",
+              "text": "HashType",
+              "canonicalReference": "@csstools/css-tokenizer!HashType:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenHash",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenIdent:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenIdent = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Ident",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Ident:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenIdent",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!tokenize:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function tokenize(input: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    css: {\n        valueOf(): string;\n    };\n    unicodeRangesAllowed?: boolean;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ", options?: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    onParseError?: (error: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ParseError",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/tokenizer.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "input",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 6
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "tokenize"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!tokenizer:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function tokenizer(input: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    css: {\n        valueOf(): string;\n    };\n    unicodeRangesAllowed?: boolean;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ", options?: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    onParseError?: (error: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ParseError",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    nextToken: () => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined;\n    endOfFile: () => boolean;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/tokenizer.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 10
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "input",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 6
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "tokenizer"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenNumber:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenNumber = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Number",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Number:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: number;\n    signCharacter?: '+' | '-';\n    type: "
+            },
+            {
+              "kind": "Reference",
+              "text": "NumberType",
+              "canonicalReference": "@csstools/css-tokenizer!NumberType:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenNumber",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenOpenCurly:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenOpenCurly = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.OpenCurly",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.OpenCurly:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenOpenCurly",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenOpenParen:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenOpenParen = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.OpenParen",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.OpenParen:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenOpenParen",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenOpenSquare:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenOpenSquare = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.OpenSquare",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.OpenSquare:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenOpenSquare",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenPercentage:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenPercentage = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Percentage",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Percentage:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: number;\n    signCharacter?: '+' | '-';\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenPercentage",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenSemicolon:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenSemicolon = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Semicolon",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Semicolon:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenSemicolon",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenString:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenString = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.String",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.String:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenString",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@csstools/css-tokenizer!TokenType:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum TokenType "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenType",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.AtKeyword:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-at-keyword-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "AtKeyword = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"at-keyword-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "AtKeyword"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.BadString:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-string-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "BadString = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"bad-string-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "BadString"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.BadURL:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-url-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "BadURL = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"bad-url-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "BadURL"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CDC:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdc-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "CDC = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"CDC-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "CDC"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CDO:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdo-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "CDO = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"CDO-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "CDO"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CloseCurly:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-curly\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "CloseCurly = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"}-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "CloseCurly"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CloseParen:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-paren\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "CloseParen = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\")-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "CloseParen"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.CloseSquare:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-square\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "CloseSquare = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"]-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "CloseSquare"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Colon:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-colon-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Colon = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"colon-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Colon"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Comma:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-comma-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Comma = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"comma-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Comma"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Comment:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#comment-diagram\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Comment = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"comment\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Comment"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Delim:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-delim-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Delim = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"delim-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Delim"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Dimension:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-dimension-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Dimension = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"dimension-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Dimension"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.EOF:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-eof-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "EOF = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"EOF-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "EOF"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Function:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-function-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Function = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"function-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Function"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Hash:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-hash-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Hash = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"hash-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Hash"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Ident:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-ident-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Ident = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"ident-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Ident"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Number:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Number = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"number-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Number"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.OpenCurly:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-curly\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "OpenCurly = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"{-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "OpenCurly"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.OpenParen:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-paren\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "OpenParen = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"(-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "OpenParen"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.OpenSquare:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-square\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "OpenSquare = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"[-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "OpenSquare"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Percentage:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Percentage = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"percentage-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Percentage"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Semicolon:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-semicolon-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Semicolon = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"semicolon-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Semicolon"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.String:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-string-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "String = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"string-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "String"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.UnicodeRange:member",
+              "docComment": "/**\n * https://drafts.csswg.org/css-syntax/#typedef-unicode-range-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "UnicodeRange = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"unicode-range-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "UnicodeRange"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.URL:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-url-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "URL = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"url-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "URL"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Whitespace:member",
+              "docComment": "/**\n * https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-whitespace-token\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Whitespace = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"whitespace-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Whitespace"
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenUnicodeRange:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenUnicodeRange = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.UnicodeRange",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.UnicodeRange:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    startOfRange: number;\n    endOfRange: number;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenUnicodeRange",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenURL:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenURL = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.URL",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.URL:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    value: string;\n}>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenURL",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!TokenWhitespace:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TokenWhitespace = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Token",
+              "canonicalReference": "@csstools/css-tokenizer!Token:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenType.Whitespace",
+              "canonicalReference": "@csstools/css-tokenizer!TokenType.Whitespace:member"
+            },
+            {
+              "kind": "Content",
+              "text": ", undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenWhitespace",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        }
+      ]
+    }
+  ]
+}

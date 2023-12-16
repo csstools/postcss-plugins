@@ -51,6 +51,7 @@
 		"build": "rollup -c ../../rollup/default.mjs",
 		"check-sources-integrity": "node ./scripts/check-changes.mjs",
 		"check-sources-integrity:rewrite": "REWRITE_HASHES=true node ./scripts/check-changes.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"test": "node ./test/_import.mjs && node ./test/_require.cjs"

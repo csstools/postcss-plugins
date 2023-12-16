@@ -52,6 +52,7 @@
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
