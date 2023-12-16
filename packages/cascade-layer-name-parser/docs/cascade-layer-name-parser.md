@@ -16,5 +16,5 @@
 |  --- | --- |
 |  [addLayerToModel(layers, currentLayerNames)](./cascade-layer-name-parser.addlayertomodel.md) |  |
 |  [parse(source, options)](./cascade-layer-name-parser.parse.md) |  |
-|  [parseFromTokens(tokens, options)](./cascade-layer-name-parser.parsefromtokens.md) |  |
+|  [parseFromTokens(tokens, options)](./cascade-layer-name-parser.parsefromtokens.md) | Parses an array of [CSSTokens](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md) into a list of cascade layer names. |
 

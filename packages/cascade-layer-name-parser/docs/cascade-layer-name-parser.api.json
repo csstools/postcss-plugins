@@ -800,7 +800,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/cascade-layer-name-parser!parseFromTokens:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parses an array of {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md | CSSTokens} into a list of cascade layer names.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -847,12 +847,21 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "LayerName",
               "canonicalReference": "@csstools/cascade-layer-name-parser!LayerName:class"
             },
             {
               "kind": "Content",
-              "text": "[]"
+              "text": ">"
             },
             {
               "kind": "Content",
@@ -862,7 +871,7 @@
           "fileUrlPath": "dist/_types/parser/parse.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 10,
-            "endIndex": 12
+            "endIndex": 14
           },
           "releaseTag": "Public",
           "overloadIndex": 1,

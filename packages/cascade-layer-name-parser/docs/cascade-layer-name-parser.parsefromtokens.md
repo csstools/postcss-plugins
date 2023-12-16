@@ -4,12 +4,14 @@
 
 ## parseFromTokens() function
 
+Parses an array of [CSSTokens](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md) into a list of cascade layer names.
+
 **Signature:**
 
 ```typescript
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): LayerName[];
+}): Array<LayerName>;
 ```
 
 ## Parameters
@@ -21,5 +23,5 @@ export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
 
 **Returns:**
 
-[LayerName](./cascade-layer-name-parser.layername.md)<!-- -->\[\]
+Array&lt;[LayerName](./cascade-layer-name-parser.layername.md)<!-- -->&gt;
 
