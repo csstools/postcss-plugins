@@ -152,7 +152,7 @@ export type Token<T extends TokenType, U> = [
 	 * This field will be used when stringifying the token.
 	 * Any stored value is assumed to be valid CSS.
 	 *
-	 * You should never use this field when analysing the token.
+	 * You should never use this field when analyzing the token when there is a parsed value available.
 	 * But you must store mutated values here.
 	 */
 	string,
@@ -172,7 +172,7 @@ export type Token<T extends TokenType, U> = [
 	 * These values are unescaped, unquoted, converted to numbers, etc.
 	 *
 	 * You should always use this field when analyzing the token.
-	 * But you must not assume that mutating this field will have any effect.
+	 * But you must not assume that mutating only this field will have any effect.
 	 */
 	U,
 ]
