@@ -29,10 +29,8 @@ export declare class MediaQueryWithoutType
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediaquerywithouttype.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediaquerywithouttype.indexof.md) |  |  |
-|  [isMediaQueryWithoutType()](./media-query-list-parser.mediaquerywithouttype.ismediaquerywithouttype.md) |  |  |
 |  [isMediaQueryWithoutType(x)](./media-query-list-parser.mediaquerywithouttype.ismediaquerywithouttype.md) | <code>static</code> |  |
 |  [negateQuery()](./media-query-list-parser.mediaquerywithouttype.negatequery.md) |  |  |
-|  [toJSON()](./media-query-list-parser.mediaquerywithouttype.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediaquerywithouttype.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediaquerywithouttype.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediaquerywithouttype.walk.md) |  |  |

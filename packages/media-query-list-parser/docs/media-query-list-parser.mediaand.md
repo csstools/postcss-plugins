@@ -30,9 +30,7 @@ export declare class MediaAnd
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediaand.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediaand.indexof.md) |  |  |
-|  [isMediaAnd()](./media-query-list-parser.mediaand.ismediaand.md) |  |  |
 |  [isMediaAnd(x)](./media-query-list-parser.mediaand.ismediaand.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediaand.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediaand.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediaand.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediaand.walk.md) |  |  |

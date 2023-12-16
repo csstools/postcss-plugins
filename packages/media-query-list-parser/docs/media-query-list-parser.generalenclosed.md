@@ -29,9 +29,7 @@ export declare class GeneralEnclosed
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.generalenclosed.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.generalenclosed.indexof.md) |  |  |
-|  [isGeneralEnclosed()](./media-query-list-parser.generalenclosed.isgeneralenclosed.md) |  |  |
 |  [isGeneralEnclosed(x)](./media-query-list-parser.generalenclosed.isgeneralenclosed.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.generalenclosed.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.generalenclosed.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.generalenclosed.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.generalenclosed.walk.md) |  |  |

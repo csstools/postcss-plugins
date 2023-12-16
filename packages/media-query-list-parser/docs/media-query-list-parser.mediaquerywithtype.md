@@ -34,10 +34,8 @@ export declare class MediaQueryWithType
 |  [getMediaType()](./media-query-list-parser.mediaquerywithtype.getmediatype.md) |  |  |
 |  [getModifier()](./media-query-list-parser.mediaquerywithtype.getmodifier.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediaquerywithtype.indexof.md) |  |  |
-|  [isMediaQueryWithType()](./media-query-list-parser.mediaquerywithtype.ismediaquerywithtype.md) |  |  |
 |  [isMediaQueryWithType(x)](./media-query-list-parser.mediaquerywithtype.ismediaquerywithtype.md) | <code>static</code> |  |
 |  [negateQuery()](./media-query-list-parser.mediaquerywithtype.negatequery.md) |  |  |
-|  [toJSON()](./media-query-list-parser.mediaquerywithtype.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediaquerywithtype.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediaquerywithtype.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediaquerywithtype.walk.md) |  |  |

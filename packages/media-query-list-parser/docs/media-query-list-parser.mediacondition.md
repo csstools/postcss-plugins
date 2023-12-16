@@ -29,9 +29,7 @@ export declare class MediaCondition
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediacondition.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediacondition.indexof.md) |  |  |
-|  [isMediaCondition()](./media-query-list-parser.mediacondition.ismediacondition.md) |  |  |
 |  [isMediaCondition(x)](./media-query-list-parser.mediacondition.ismediacondition.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediacondition.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediacondition.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediacondition.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediacondition.walk.md) |  |  |

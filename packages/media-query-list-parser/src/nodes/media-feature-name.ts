@@ -52,6 +52,9 @@ export class MediaFeatureName {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -60,6 +63,9 @@ export class MediaFeatureName {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeatureName(): this is MediaFeatureName {
 		return MediaFeatureName.isMediaFeatureName(this);
 	}

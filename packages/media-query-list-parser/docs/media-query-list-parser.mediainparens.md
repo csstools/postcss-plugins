@@ -31,9 +31,7 @@ export declare class MediaInParens
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediainparens.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediainparens.indexof.md) |  |  |
-|  [isMediaInParens()](./media-query-list-parser.mediainparens.ismediainparens.md) |  |  |
 |  [isMediaInParens(x)](./media-query-list-parser.mediainparens.ismediainparens.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediainparens.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediainparens.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediainparens.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediainparens.walk.md) |  |  |

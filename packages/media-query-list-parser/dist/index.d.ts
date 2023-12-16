@@ -23,6 +23,9 @@ export declare class CustomMedia {
     hasFalseKeyword(): boolean;
     tokens(): Array<CSSToken>;
     toString(): string;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         string: string;
@@ -48,6 +51,9 @@ export declare class CustomMedia {
             media: ComponentValue[];
         })[] | undefined;
     };
+    /**
+     * @internal
+     */
     isCustomMedia(): this is CustomMedia;
     static isCustomMedia(x: unknown): x is CustomMedia;
 }
@@ -65,10 +71,16 @@ export declare class GeneralEnclosed {
         parent: GeneralEnclosedWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isGeneralEnclosed(): this is GeneralEnclosed;
     static isGeneralEnclosed(x: unknown): x is GeneralEnclosed;
 }
@@ -145,7 +157,13 @@ export declare class MediaAnd {
         parent: MediaAndWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): unknown;
+    /**
+     * @internal
+     */
     isMediaAnd(): this is MediaAnd;
     static isMediaAnd(x: unknown): x is MediaAnd;
 }
@@ -167,7 +185,13 @@ export declare class MediaCondition {
         parent: MediaConditionWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): unknown;
+    /**
+     * @internal
+     */
     isMediaCondition(): this is MediaCondition;
     static isMediaCondition(x: unknown): x is MediaCondition;
 }
@@ -215,7 +239,13 @@ export declare class MediaConditionListWithOr {
         parent: MediaConditionListWithOrWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): unknown;
+    /**
+     * @internal
+     */
     isMediaConditionListWithOr(): this is MediaConditionListWithOr;
     static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr;
 }
@@ -245,6 +275,9 @@ export declare class MediaFeature {
         parent: MediaFeatureWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         feature: {
@@ -259,6 +292,9 @@ export declare class MediaFeature {
         before: CSSToken[];
         after: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeature(): this is MediaFeature;
     static isMediaFeature(x: unknown): x is MediaFeature;
 }
@@ -273,6 +309,9 @@ export declare class MediaFeatureBoolean {
     toString(): string;
     indexOf(item: MediaFeatureName): number | string;
     at(index: number | string): MediaFeatureName | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         name: {
@@ -282,6 +321,9 @@ export declare class MediaFeatureBoolean {
         };
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeatureBoolean(): this is MediaFeatureBoolean;
     static isMediaFeatureBoolean(x: unknown): x is MediaFeatureBoolean;
 }
@@ -314,11 +356,17 @@ export declare class MediaFeatureName {
     toString(): string;
     indexOf(item: ComponentValue): number | string;
     at(index: number | string): ComponentValue | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         name: string;
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeatureName(): this is MediaFeatureName;
     static isMediaFeatureName(x: unknown): x is MediaFeatureName;
 }
@@ -340,6 +388,9 @@ export declare class MediaFeaturePlain {
         parent: MediaFeaturePlainWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         name: {
@@ -354,6 +405,9 @@ export declare class MediaFeaturePlain {
         };
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeaturePlain(): this is MediaFeaturePlain;
     static isMediaFeaturePlain(x: unknown): x is MediaFeaturePlain;
 }
@@ -382,6 +436,9 @@ export declare class MediaFeatureRangeNameValue {
         parent: MediaFeatureRangeWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         name: {
@@ -396,6 +453,9 @@ export declare class MediaFeatureRangeNameValue {
         };
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeatureRangeNameValue(): this is MediaFeatureRangeNameValue;
     static isMediaFeatureRangeNameValue(x: unknown): x is MediaFeatureRangeNameValue;
 }
@@ -418,6 +478,9 @@ export declare class MediaFeatureRangeValueName {
         parent: MediaFeatureRangeWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         name: {
@@ -432,6 +495,9 @@ export declare class MediaFeatureRangeValueName {
         };
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeatureRangeValueName(): this is MediaFeatureRangeValueName;
     static isMediaFeatureRangeValueName(x: unknown): x is MediaFeatureRangeValueName;
 }
@@ -457,6 +523,9 @@ export declare class MediaFeatureRangeValueNameValue {
         parent: MediaFeatureRangeWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         name: {
@@ -476,6 +545,9 @@ export declare class MediaFeatureRangeValueNameValue {
         };
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeatureRangeValueNameValue(): this is MediaFeatureRangeValueNameValue;
     static isMediaFeatureRangeValueNameValue(x: unknown): x is MediaFeatureRangeValueNameValue;
 }
@@ -499,11 +571,17 @@ export declare class MediaFeatureValue {
         parent: MediaFeatureValueWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         value: unknown;
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaFeatureValue(): this is MediaFeatureValue;
     static isMediaFeatureValue(x: unknown): x is MediaFeatureValue;
 }
@@ -531,12 +609,18 @@ export declare class MediaInParens {
         parent: MediaInParensWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         media: unknown;
         before: CSSToken[];
         after: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isMediaInParens(): this is MediaInParens;
     static isMediaInParens(x: unknown): x is MediaInParens;
 }
@@ -559,6 +643,9 @@ export declare class MediaNot {
         parent: MediaNotWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         modifier: CSSToken[];
@@ -569,6 +656,9 @@ export declare class MediaNot {
             after: CSSToken[];
         };
     };
+    /**
+     * @internal
+     */
     isMediaNot(): this is MediaNot;
     static isMediaNot(x: unknown): x is MediaNot;
 }
@@ -591,6 +681,9 @@ export declare class MediaOr {
         parent: MediaOrWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         modifier: CSSToken[];
@@ -601,6 +694,9 @@ export declare class MediaOr {
             after: CSSToken[];
         };
     };
+    /**
+     * @internal
+     */
     isMediaOr(): this is MediaOr;
     static isMediaOr(x: unknown): x is MediaOr;
 }
@@ -623,11 +719,17 @@ export declare class MediaQueryInvalid {
         parent: MediaQueryInvalidWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         string: string;
         media: ComponentValue[];
     };
+    /**
+     * @internal
+     */
     isMediaQueryInvalid(): this is MediaQueryInvalid;
     static isMediaQueryInvalid(x: unknown): x is MediaQueryInvalid;
 }
@@ -655,11 +757,17 @@ export declare class MediaQueryWithoutType {
         parent: MediaQueryWithoutTypeWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         string: string;
         media: MediaCondition;
     };
+    /**
+     * @internal
+     */
     isMediaQueryWithoutType(): this is MediaQueryWithoutType;
     static isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType;
 }
@@ -687,6 +795,9 @@ export declare class MediaQueryWithType {
         parent: MediaQueryWithTypeWalkerParent;
         state?: T;
     }, index: number | string) => boolean | void, state?: T): false | undefined;
+    /**
+     * @internal
+     */
     toJSON(): {
         type: NodeType;
         string: string;
@@ -695,6 +806,9 @@ export declare class MediaQueryWithType {
         and: CSSToken[] | undefined;
         media: MediaCondition | undefined;
     };
+    /**
+     * @internal
+     */
     isMediaQueryWithType(): this is MediaQueryWithType;
     static isMediaQueryWithType(x: unknown): x is MediaQueryWithType;
 }

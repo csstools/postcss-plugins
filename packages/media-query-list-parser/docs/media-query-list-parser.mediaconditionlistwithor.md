@@ -32,9 +32,7 @@ export declare class MediaConditionListWithOr
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediaconditionlistwithor.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediaconditionlistwithor.indexof.md) |  |  |
-|  [isMediaConditionListWithOr()](./media-query-list-parser.mediaconditionlistwithor.ismediaconditionlistwithor.md) |  |  |
 |  [isMediaConditionListWithOr(x)](./media-query-list-parser.mediaconditionlistwithor.ismediaconditionlistwithor.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediaconditionlistwithor.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediaconditionlistwithor.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediaconditionlistwithor.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediaconditionlistwithor.walk.md) |  |  |

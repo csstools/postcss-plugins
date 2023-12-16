@@ -33,9 +33,7 @@ export declare class MediaFeature
 |  [getName()](./media-query-list-parser.mediafeature.getname.md) |  |  |
 |  [getNameToken()](./media-query-list-parser.mediafeature.getnametoken.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediafeature.indexof.md) |  |  |
-|  [isMediaFeature()](./media-query-list-parser.mediafeature.ismediafeature.md) |  |  |
 |  [isMediaFeature(x)](./media-query-list-parser.mediafeature.ismediafeature.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediafeature.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediafeature.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediafeature.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediafeature.walk.md) |  |  |

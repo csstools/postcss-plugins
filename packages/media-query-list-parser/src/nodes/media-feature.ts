@@ -71,6 +71,9 @@ export class MediaFeature {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -80,6 +83,9 @@ export class MediaFeature {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeature(): this is MediaFeature {
 		return MediaFeature.isMediaFeature(this);
 	}

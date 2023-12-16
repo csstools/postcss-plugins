@@ -31,9 +31,7 @@ export declare class MediaFeatureValue
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediafeaturevalue.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediafeaturevalue.indexof.md) |  |  |
-|  [isMediaFeatureValue()](./media-query-list-parser.mediafeaturevalue.ismediafeaturevalue.md) |  |  |
 |  [isMediaFeatureValue(x)](./media-query-list-parser.mediafeaturevalue.ismediafeaturevalue.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediafeaturevalue.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediafeaturevalue.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediafeaturevalue.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediafeaturevalue.walk.md) |  |  |

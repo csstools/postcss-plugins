@@ -33,9 +33,7 @@ export declare class MediaFeatureName
 |  [getName()](./media-query-list-parser.mediafeaturename.getname.md) |  |  |
 |  [getNameToken()](./media-query-list-parser.mediafeaturename.getnametoken.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediafeaturename.indexof.md) |  |  |
-|  [isMediaFeatureName()](./media-query-list-parser.mediafeaturename.ismediafeaturename.md) |  |  |
 |  [isMediaFeatureName(x)](./media-query-list-parser.mediafeaturename.ismediafeaturename.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediafeaturename.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediafeaturename.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediafeaturename.tostring.md) |  |  |
 

@@ -70,6 +70,9 @@ export class MediaInParens {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -79,6 +82,9 @@ export class MediaInParens {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaInParens(): this is MediaInParens {
 		return MediaInParens.isMediaInParens(this);
 	}

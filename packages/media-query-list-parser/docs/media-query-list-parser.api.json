@@ -618,42 +618,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!CustomMedia#isCustomMedia:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isCustomMedia(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CustomMedia",
-                  "canonicalReference": "@csstools/media-query-list-parser!CustomMedia:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isCustomMedia"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!CustomMedia.isCustomMedia:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -797,145 +761,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!CustomMedia#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        string: string;\n        nameValue: string;\n        name: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        hasFalseKeyword: boolean;\n        hasTrueKeyword: boolean;\n        trueOrFalseKeyword: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[] | null;\n        mediaQueryList: ({\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            string: string;\n            modifier: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n            mediaType: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n            and: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[] | undefined;\n            media: import(\"./media-condition\")."
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaCondition",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaCondition:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | undefined;\n        } | {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            string: string;\n            media: import(\"./media-condition\")."
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaCondition",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaCondition:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        } | {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            string: string;\n            media: import(\"@csstools/css-parser-algorithms\")."
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ComponentValue",
-                  "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        })[] | undefined;\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 26
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -1244,42 +1069,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!GeneralEnclosed#isGeneralEnclosed:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isGeneralEnclosed(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "GeneralEnclosed",
-                  "canonicalReference": "@csstools/media-query-list-parser!GeneralEnclosed:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isGeneralEnclosed"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!GeneralEnclosed.isGeneralEnclosed:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1335,55 +1124,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "isGeneralEnclosed"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!GeneralEnclosed#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -3373,42 +3113,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaAnd#isMediaAnd:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaAnd(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaAnd",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaAnd:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaAnd"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaAnd.isMediaAnd:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -3539,37 +3243,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaAnd#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "unknown"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -4095,42 +3768,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaCondition#isMediaCondition:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaCondition(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaCondition",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaCondition:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaCondition"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaCondition.isMediaCondition:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -4244,37 +3881,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaCondition#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "unknown"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -5716,42 +5322,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaConditionListWithOr#isMediaConditionListWithOr:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaConditionListWithOr(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaConditionListWithOr",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaConditionListWithOr:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaConditionListWithOr"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaConditionListWithOr.isMediaConditionListWithOr:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -5882,37 +5452,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaConditionListWithOr#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "unknown"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -6797,42 +6336,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeature#isMediaFeature:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeature(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeature",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeature:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeature"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeature.isMediaFeature:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -6888,100 +6391,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "isMediaFeature"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeature#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        feature: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            name: {\n                type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n                name: string;\n                tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n            };\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        before: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        after: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 16
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -7417,42 +6826,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureBoolean#isMediaFeatureBoolean:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeatureBoolean(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeatureBoolean",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureBoolean:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeatureBoolean"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureBoolean.isMediaFeatureBoolean:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -7539,73 +6912,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureBoolean#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        name: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            name: string;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 10
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -8282,42 +7588,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureName#isMediaFeatureName:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeatureName(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeatureName",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureName:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeatureName"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureName.isMediaFeatureName:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -8404,55 +7674,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureName#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        name: string;\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -8863,42 +8084,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeaturePlain#isMediaFeaturePlain:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeaturePlain(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeaturePlain",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeaturePlain:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeaturePlain"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeaturePlain.isMediaFeaturePlain:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -8985,91 +8170,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeaturePlain#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        name: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            name: string;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        value: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            value: unknown;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 14
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -9731,42 +8831,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeNameValue#isMediaFeatureRangeNameValue:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeatureRangeNameValue(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeatureRangeNameValue",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeNameValue:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeatureRangeNameValue"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeNameValue.isMediaFeatureRangeNameValue:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -9946,91 +9010,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "operatorKind"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeNameValue#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        name: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            name: string;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        value: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            value: unknown;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 14
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -10575,42 +9554,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueName#isMediaFeatureRangeValueName:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeatureRangeValueName(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeatureRangeValueName",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueName:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeatureRangeValueName"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueName.isMediaFeatureRangeValueName:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -10790,91 +9733,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "operatorKind"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueName#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        name: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            name: string;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        value: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            value: unknown;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 14
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -11479,42 +10337,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueNameValue#isMediaFeatureRangeValueNameValue:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeatureRangeValueNameValue(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeatureRangeValueNameValue",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueNameValue:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeatureRangeValueNameValue"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueNameValue.isMediaFeatureRangeValueNameValue:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -11601,109 +10423,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureRangeValueNameValue#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        name: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            name: string;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        valueOne: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            value: unknown;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        valueTwo: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            value: unknown;\n            tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 18
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -12584,42 +11303,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureValue#isMediaFeatureValue:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaFeatureValue(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaFeatureValue",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureValue:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaFeatureValue"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureValue.isMediaFeatureValue:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -12675,55 +11358,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "isMediaFeatureValue"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaFeatureValue#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        value: unknown;\n        tokens: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -13522,42 +12156,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaInParens#isMediaInParens:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaInParens(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaInParens",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaInParens:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaInParens"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaInParens.isMediaInParens:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -13662,64 +12260,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaInParens#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        media: unknown;\n        before: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        after: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -14428,42 +12968,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaNot#isMediaNot:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaNot(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaNot",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaNot:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaNot"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaNot.isMediaNot:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -14594,82 +13098,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaNot#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        modifier: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        media: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            media: unknown;\n            before: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n            after: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 12
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -15144,42 +13572,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaOr#isMediaOr:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaOr(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaOr",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaOr:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaOr"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaOr.isMediaOr:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -15310,82 +13702,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaOr#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        modifier: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        media: {\n            type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n            media: unknown;\n            before: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n            after: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        };\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 12
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -15786,42 +14102,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaQueryInvalid#isMediaQueryInvalid:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaQueryInvalid(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaQueryInvalid",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaQueryInvalid:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaQueryInvalid"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaQueryInvalid.isMediaQueryInvalid:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -15953,55 +14233,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "negateQuery"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaQueryInvalid#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        string: string;\n        media: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ComponentValue",
-                  "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -16496,42 +14727,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithoutType#isMediaQueryWithoutType:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaQueryWithoutType(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaQueryWithoutType",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithoutType:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaQueryWithoutType"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithoutType.isMediaQueryWithoutType:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -16650,55 +14845,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "negateQuery"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithoutType#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        string: string;\n        media: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaCondition",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaCondition:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",
@@ -17343,42 +15489,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithType#isMediaQueryWithType:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "isMediaQueryWithType(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this is "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaQueryWithType",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithType:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "isMediaQueryWithType"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithType.isMediaQueryWithType:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -17589,82 +15699,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "negateQuery"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/media-query-list-parser!MediaQueryWithType#toJSON:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toJSON(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NodeType",
-                  "canonicalReference": "@csstools/media-query-list-parser!NodeType:enum"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        string: string;\n        modifier: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        mediaType: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[];\n        and: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[] | undefined;\n        media: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "MediaCondition",
-                  "canonicalReference": "@csstools/media-query-list-parser!MediaCondition:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | undefined;\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 12
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toJSON"
             },
             {
               "kind": "Method",

@@ -30,9 +30,7 @@ export declare class MediaOr
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.mediaor.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediaor.indexof.md) |  |  |
-|  [isMediaOr()](./media-query-list-parser.mediaor.ismediaor.md) |  |  |
 |  [isMediaOr(x)](./media-query-list-parser.mediaor.ismediaor.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediaor.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediaor.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediaor.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediaor.walk.md) |  |  |

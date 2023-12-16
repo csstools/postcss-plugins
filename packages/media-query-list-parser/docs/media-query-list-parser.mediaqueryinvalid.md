@@ -27,10 +27,8 @@ export declare class MediaQueryInvalid
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [isMediaQueryInvalid()](./media-query-list-parser.mediaqueryinvalid.ismediaqueryinvalid.md) |  |  |
 |  [isMediaQueryInvalid(x)](./media-query-list-parser.mediaqueryinvalid.ismediaqueryinvalid.md) | <code>static</code> |  |
 |  [negateQuery()](./media-query-list-parser.mediaqueryinvalid.negatequery.md) |  |  |
-|  [toJSON()](./media-query-list-parser.mediaqueryinvalid.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediaqueryinvalid.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediaqueryinvalid.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediaqueryinvalid.walk.md) |  |  |

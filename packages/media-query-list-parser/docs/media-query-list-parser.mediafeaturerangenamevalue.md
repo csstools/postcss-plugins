@@ -33,10 +33,8 @@ export declare class MediaFeatureRangeNameValue
 |  [getName()](./media-query-list-parser.mediafeaturerangenamevalue.getname.md) |  |  |
 |  [getNameToken()](./media-query-list-parser.mediafeaturerangenamevalue.getnametoken.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediafeaturerangenamevalue.indexof.md) |  |  |
-|  [isMediaFeatureRangeNameValue()](./media-query-list-parser.mediafeaturerangenamevalue.ismediafeaturerangenamevalue.md) |  |  |
 |  [isMediaFeatureRangeNameValue(x)](./media-query-list-parser.mediafeaturerangenamevalue.ismediafeaturerangenamevalue.md) | <code>static</code> |  |
 |  [operatorKind()](./media-query-list-parser.mediafeaturerangenamevalue.operatorkind.md) |  |  |
-|  [toJSON()](./media-query-list-parser.mediafeaturerangenamevalue.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediafeaturerangenamevalue.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediafeaturerangenamevalue.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.mediafeaturerangenamevalue.walk.md) |  |  |

@@ -35,9 +35,7 @@ export declare class MediaFeatureRangeValueNameValue
 |  [getName()](./media-query-list-parser.mediafeaturerangevaluenamevalue.getname.md) |  |  |
 |  [getNameToken()](./media-query-list-parser.mediafeaturerangevaluenamevalue.getnametoken.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediafeaturerangevaluenamevalue.indexof.md) |  |  |
-|  [isMediaFeatureRangeValueNameValue()](./media-query-list-parser.mediafeaturerangevaluenamevalue.ismediafeaturerangevaluenamevalue.md) |  |  |
 |  [isMediaFeatureRangeValueNameValue(x)](./media-query-list-parser.mediafeaturerangevaluenamevalue.ismediafeaturerangevaluenamevalue.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediafeaturerangevaluenamevalue.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediafeaturerangevaluenamevalue.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediafeaturerangevaluenamevalue.tostring.md) |  |  |
 |  [valueOneOperatorKind()](./media-query-list-parser.mediafeaturerangevaluenamevalue.valueoneoperatorkind.md) |  |  |

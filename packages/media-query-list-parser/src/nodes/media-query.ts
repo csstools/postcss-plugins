@@ -141,6 +141,9 @@ export class MediaQueryWithType {
 		return this.media.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -152,6 +155,9 @@ export class MediaQueryWithType {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaQueryWithType(): this is MediaQueryWithType {
 		return MediaQueryWithType.isMediaQueryWithType(this);
 	}
@@ -261,6 +267,9 @@ export class MediaQueryWithoutType {
 		return this.media.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -269,6 +278,9 @@ export class MediaQueryWithoutType {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaQueryWithoutType(): this is MediaQueryWithoutType {
 		return MediaQueryWithoutType.isMediaQueryWithoutType(this);
 	}
@@ -345,6 +357,9 @@ export class MediaQueryInvalid {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -353,6 +368,9 @@ export class MediaQueryInvalid {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaQueryInvalid(): this is MediaQueryInvalid {
 		return MediaQueryInvalid.isMediaQueryInvalid(this);
 	}

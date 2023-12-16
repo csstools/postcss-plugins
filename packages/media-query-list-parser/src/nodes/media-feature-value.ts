@@ -118,6 +118,9 @@ export class MediaFeatureValue {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		if (Array.isArray(this.value)) {
 			return {
@@ -134,6 +137,9 @@ export class MediaFeatureValue {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeatureValue(): this is MediaFeatureValue {
 		return MediaFeatureValue.isMediaFeatureValue(this);
 	}

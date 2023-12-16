@@ -30,9 +30,7 @@ export declare class MediaNot
 |  --- | --- | --- |
 |  [at(index)](./media-query-list-parser.medianot.at.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.medianot.indexof.md) |  |  |
-|  [isMediaNot()](./media-query-list-parser.medianot.ismedianot.md) |  |  |
 |  [isMediaNot(x)](./media-query-list-parser.medianot.ismedianot.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.medianot.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.medianot.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.medianot.tostring.md) |  |  |
 |  [walk(cb, state)](./media-query-list-parser.medianot.walk.md) |  |  |

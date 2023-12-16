@@ -34,9 +34,7 @@ export declare class CustomMedia
 |  [hasFalseKeyword()](./media-query-list-parser.custommedia.hasfalsekeyword.md) |  |  |
 |  [hasMediaQueryList()](./media-query-list-parser.custommedia.hasmediaquerylist.md) |  |  |
 |  [hasTrueKeyword()](./media-query-list-parser.custommedia.hastruekeyword.md) |  |  |
-|  [isCustomMedia()](./media-query-list-parser.custommedia.iscustommedia.md) |  |  |
 |  [isCustomMedia(x)](./media-query-list-parser.custommedia.iscustommedia.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.custommedia.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.custommedia.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.custommedia.tostring.md) |  |  |
 

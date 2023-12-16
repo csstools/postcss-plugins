@@ -31,9 +31,7 @@ export declare class MediaFeatureBoolean
 |  [getName()](./media-query-list-parser.mediafeatureboolean.getname.md) |  |  |
 |  [getNameToken()](./media-query-list-parser.mediafeatureboolean.getnametoken.md) |  |  |
 |  [indexOf(item)](./media-query-list-parser.mediafeatureboolean.indexof.md) |  |  |
-|  [isMediaFeatureBoolean()](./media-query-list-parser.mediafeatureboolean.ismediafeatureboolean.md) |  |  |
 |  [isMediaFeatureBoolean(x)](./media-query-list-parser.mediafeatureboolean.ismediafeatureboolean.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediafeatureboolean.tojson.md) |  |  |
 |  [tokens()](./media-query-list-parser.mediafeatureboolean.tokens.md) |  |  |
 |  [toString()](./media-query-list-parser.mediafeatureboolean.tostring.md) |  |  |
 

@@ -127,6 +127,9 @@ export class CustomMedia {
 		return stringify(...this.tokens());
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -140,6 +143,9 @@ export class CustomMedia {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isCustomMedia(): this is CustomMedia {
 		return CustomMedia.isCustomMedia(this);
 	}
