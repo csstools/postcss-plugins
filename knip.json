@@ -1,13 +1,16 @@
 {
 	"$schema": "https://unpkg.com/knip@2/schema.json",
 	"workspaces": {
+		".": {
+			"entry": [
+				".github/bin/**/*.mjs",
+				"rollup/**/*.mjs"
+			]
+		},
 		"packages/*": {
 			"entry": [
 				".tape.{cjs,mjs}",
-				"generate/**/*.mjs",
 				"scripts/**/*.mjs",
-				"src/browser-global.js",
-				"src/browser.js",
 				"src/index.ts",
 				"test/_import.mjs",
 				"test/_require.cjs",
@@ -51,7 +54,6 @@
 		"plugins/*": {
 			"entry": [
 				".tape.{cjs,mjs}",
-				"generate/**/*.mjs",
 				"scripts/**/*.mjs",
 				"src/browser-global.js",
 				"src/browser.js",
@@ -69,7 +71,6 @@
 		"experimental/*": {
 			"entry": [
 				".tape.{cjs,mjs}",
-				"generate/**/*.mjs",
 				"scripts/**/*.mjs",
 				"src/browser-global.js",
 				"src/browser.js",
@@ -105,7 +106,6 @@
 		"plugin-packs/*": {
 			"entry": [
 				".tape.{cjs,mjs}",
-				"generate/**/*.mjs",
 				"scripts/**/*.mjs",
 				"src/index.ts",
 				"test/_import.mjs",
@@ -127,14 +127,12 @@
 		}
 	},
 	"ignore": [
-		".github/**",
 		"e2e-package-managers/**",
 		"e2e/**",
 		"packages/postcss-tape/test/**",
 		"plugins/postcss-env-function/test/import-variables.cjs",
 		"plugins/postcss-env-function/test/import-variables.js",
 		"postcss-recipes/**",
-		"rollup/**",
 		"sites/**"
 	],
 	"ignoreBinaries": [
@@ -143,12 +141,6 @@
 	"ignoreDependencies": [
 		"@babel/core",
 		"@babel/preset-env",
-		"@microsoft/api-extractor",
-		"@rollup/plugin-babel",
-		"@rollup/plugin-commonjs",
-		"@rollup/plugin-node-resolve",
-		"@rollup/plugin-terser",
-		"@rollup/plugin-typescript",
 		"@stryker-mutator/command-runner",
 		"tslib"
 	]
