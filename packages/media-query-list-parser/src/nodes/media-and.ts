@@ -56,6 +56,9 @@ export class MediaAnd {
 		return this.media.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON(): unknown {
 		return {
 			type: this.type,
@@ -64,6 +67,9 @@ export class MediaAnd {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaAnd(): this is MediaAnd {
 		return MediaAnd.isMediaAnd(this);
 	}

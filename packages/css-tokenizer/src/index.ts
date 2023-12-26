@@ -1,3 +1,35 @@
+/**
+ * Tokenize CSS following the CSS Syntax Level 3 specification.
+ *
+ * @remarks
+ * The tokenizing and parsing tools provided by CSSTools are designed to be low level and generic with strong ties to their respective specifications.
+ *
+ * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task.
+ * For many applications it is sufficient to work with tokens.
+ * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | `@csstools/css-parser-algorithms`} or even a specific parser.
+ *
+ * @example
+ * Tokenize a string of CSS into an array of tokens:
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ *
+ * const myCSS = `@media only screen and (min-width: 768rem) {
+ * 	.foo {
+ * 		content: 'Some content!' !important;
+ * 	}
+ * }
+ * `;
+ *
+ * const tokens = tokenize({
+ * 	css: myCSS,
+ * });
+ *
+ * console.log(tokens);
+ * ```
+ *
+ * @packageDocumentation
+ */
+
 export type { CSSToken } from './interfaces/token';
 export type { CodePointReader } from './interfaces/code-point-reader';
 export type { Token } from './interfaces/token';

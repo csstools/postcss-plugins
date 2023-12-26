@@ -54,6 +54,7 @@
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"test": "bash ./test-self/test.sh"
 	},

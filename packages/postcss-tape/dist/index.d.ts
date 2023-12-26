@@ -63,6 +63,7 @@ export declare const declarationClonerPlugin: {
  * postcssTape(plugin, {
  *   skipPackageNameCheck: true,
  * })(...);
+ * ```
  */
 export declare type Options = {
     /**
@@ -75,7 +76,7 @@ export declare type Options = {
 /**
  * Create a test suite for a PostCSS plugin.
  */
-export declare function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void>;
+export declare function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void>;
 
 /**
  * A dummy PostCSS plugin that clones any rule with the selector `to-clone` to a new rule with the selector `cloned`.
@@ -87,6 +88,9 @@ export declare const ruleClonerPlugin: {
     };
 };
 
+/**
+ * Options for a test case.
+ */
 export declare type TestCaseOptions = {
     /** Debug message */
     message?: string;

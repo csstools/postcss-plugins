@@ -24,8 +24,11 @@ export declare function parse(source: string, options?: {
     onParseError?: (error: ParseError) => void;
 }): LayerName[];
 
+/**
+ * Parses an array of {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md | CSSTokens} into a list of cascade layer names.
+ */
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): LayerName[];
+}): Array<LayerName>;
 
 export { }

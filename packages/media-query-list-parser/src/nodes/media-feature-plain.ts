@@ -74,6 +74,9 @@ export class MediaFeaturePlain {
 		return this.value.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -83,6 +86,9 @@ export class MediaFeaturePlain {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeaturePlain(): this is MediaFeaturePlain {
 		return MediaFeaturePlain.isMediaFeaturePlain(this);
 	}

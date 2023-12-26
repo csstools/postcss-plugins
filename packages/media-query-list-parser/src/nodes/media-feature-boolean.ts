@@ -42,6 +42,9 @@ export class MediaFeatureBoolean {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -50,6 +53,9 @@ export class MediaFeatureBoolean {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeatureBoolean(): this is MediaFeatureBoolean {
 		return MediaFeatureBoolean.isMediaFeatureBoolean(this);
 	}

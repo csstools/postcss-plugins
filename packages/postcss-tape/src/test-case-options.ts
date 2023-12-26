@@ -1,5 +1,8 @@
 import type { Plugin } from 'postcss';
 
+/**
+ * Options for a test case.
+ */
 export type TestCaseOptions = {
 	/** Debug message */
 	message?: string,

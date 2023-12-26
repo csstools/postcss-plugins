@@ -245,6 +245,9 @@ export class MediaConditionListWithOr {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON(): unknown {
 		return {
 			type: this.type,
@@ -255,6 +258,9 @@ export class MediaConditionListWithOr {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaConditionListWithOr(): this is MediaConditionListWithOr {
 		return MediaConditionListWithOr.isMediaConditionListWithOr(this);
 	}

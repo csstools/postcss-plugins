@@ -1,4 +1,7 @@
-# PostCSS Tape for csstools/postcss-plugins
+# PostCSS Tape
+
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-tape.svg" height="20">][npm-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 
 - compare the output of your PostCSS plugin with the expected output
 - test that the output can be re-parsed by PostCSS
@@ -36,8 +39,12 @@ postcssTape(plugin)({
 Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
 
 > [!NOTE]
-> We use `test/_tape.mjs` for our tests, but you can use any file name you want.
+> We use `test/_tape.mjs` for our tests, but you can use any file name you want.  
 > We like to group things in a `test` directory and we use a leading underscore to sort it before the css files.
+
+## API
+
+[Read the API docs](./docs/postcss-tape.md)
 
 ## File name format and test case naming
 
@@ -66,25 +73,13 @@ Set env variable `REWRITE_EXPECTS` to `true` to update all `.expect` files.
 example :
 
 ```json
+{
 	"scripts": {
 		"test": "node --test",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
-	},
+	}
+}
 ```
 
-## Options
-
-### `skipPackageNameCheck`
-
-When your plugin name does not start with `postcss-`:
-
-```js
-import { postcssTape } from '@csstools/postcss-tape';
-import plugin from '<your plugin package name>';
-
-postcssTape(plugin, { skipPackageNameCheck: true })({
-	basic: {
-		message: "supports basic usage",
-	},
-});
-```
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[npm-url]: https://www.npmjs.com/package/@csstools/media-query-list-parser

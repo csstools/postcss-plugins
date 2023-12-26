@@ -85,6 +85,9 @@ export class MediaFeatureRangeNameValue {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -94,6 +97,9 @@ export class MediaFeatureRangeNameValue {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeatureRangeNameValue(): this is MediaFeatureRangeNameValue {
 		return MediaFeatureRangeNameValue.isMediaFeatureRangeNameValue(this);
 	}
@@ -187,6 +193,9 @@ export class MediaFeatureRangeValueName {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -196,6 +205,9 @@ export class MediaFeatureRangeValueName {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeatureRangeValueName(): this is MediaFeatureRangeValueName {
 		return MediaFeatureRangeValueName.isMediaFeatureRangeValueName(this);
 	}
@@ -325,6 +337,9 @@ export class MediaFeatureRangeValueNameValue {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -335,6 +350,9 @@ export class MediaFeatureRangeValueNameValue {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaFeatureRangeValueNameValue(): this is MediaFeatureRangeValueNameValue {
 		return MediaFeatureRangeValueNameValue.isMediaFeatureRangeValueNameValue(this);
 	}
