@@ -30,7 +30,7 @@ Browse the [source code and tests here](https://github.com/csstools/postcss-plug
 ## File name format and test case naming
 
 Test source files and test case names are related.  
-The test case name is expected to be the file basename with the `.css` extension removed.
+The test case name is expected to be the relative file path with the `.css` extension removed.
 
 Test variants (with different plugin options) are separated by a colon `:`.
 
