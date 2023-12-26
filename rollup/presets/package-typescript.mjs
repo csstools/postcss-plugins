@@ -2,8 +2,10 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { externalsForPlugin } from '../configs/externals.mjs';
 import { apiExtractor } from '../transforms/api-extractor.mjs';
+import { nodeCoverageDisable } from '../transforms/node-coverage-disable.mjs';
 
-export function packageTypescript() {
+export function packageTypescript(options) {
+	options = options || {};
 	return [
 		{
 			input: 'src/index.ts',
@@ -25,6 +27,7 @@ export function packageTypescript() {
 					keep_classnames: true,
 					keep_fnames: true,
 				}),
+				options.nodeCoverageDisable ? nodeCoverageDisable() : undefined,
 			],
 		},
 		{
@@ -47,6 +50,7 @@ export function packageTypescript() {
 					keep_classnames: true,
 					keep_fnames: true,
 				}),
+				options.nodeCoverageDisable ? nodeCoverageDisable() : undefined,
 				apiExtractor(),
 			],
 		},

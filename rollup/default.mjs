@@ -17,11 +17,16 @@ const isTypescript = (() => {
 	}
 })();
 
+let nodeCoverageDisable = false;
+if (packageInfo.name === '@csstools/postcss-tape') {
+	nodeCoverageDisable = true;
+}
+
 const presets = [];
 
 if (isTypescript) {
 	if (packageInfo.main || packageInfo.module) {
-		presets.push(...packageTypescript());
+		presets.push(...packageTypescript({nodeCoverageDisable: nodeCoverageDisable}));
 	}
 
 	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {

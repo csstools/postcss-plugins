@@ -2,6 +2,8 @@ export const externalsForCLI = [
 	'fs',
 	'fs/promises',
 	'https',
+	'node:assert/strict',
+	'node:test',
 	'path',
 	'url',
 
@@ -94,6 +96,8 @@ export const externalsForPlugin = [
 	'fs/promises',
 	'https',
 	'module',
+	'node:assert/strict',
+	'node:test',
 	'path',
 	'url',
 
