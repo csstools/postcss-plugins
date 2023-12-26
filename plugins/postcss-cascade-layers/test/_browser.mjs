@@ -3,21 +3,22 @@ import http from 'http';
 import { promises as fsp } from 'fs';
 import plugin from '@csstools/postcss-cascade-layers';
 import postcss from 'postcss';
+import test from 'node:test';
+import process from 'node:process';
 
-(async () => {
-	const requestListener = async function (req, res) {
+const requestListener = async function (req, res) {
 
-		const parsedUrl = new URL(req.url, 'http://localhost:8080');
-		const pathname = parsedUrl.pathname;
+	const parsedUrl = new URL(req.url, 'http://localhost:8080');
+	const pathname = parsedUrl.pathname;
 
-		switch (pathname) {
-			case '':
-			case '/':
-				res.setHeader('Content-type', 'text/html');
-				res.writeHead(200);
+	switch (pathname) {
+		case '':
+		case '/':
+			res.setHeader('Content-type', 'text/html');
+			res.writeHead(200);
 
-				// write html string with list of links to cases.
-				res.end(`<!DOCTYPE html>
+			// write html string with list of links to cases.
+			res.end(`<!DOCTYPE html>
 					<html>
 						<head>
 							<title>Cascade Layers Test</title>
@@ -37,56 +38,57 @@ import postcss from 'postcss';
 						</body>
 					</html>
 				`);
-				break;
-			case '/wpt/layer-basic.html':
-			case '/wpt/layer-buckets.html':
-			case '/wpt/layer-counter-style-override.html':
-			case '/wpt/layer-important.html':
-			case '/wpt/layer-keyframes-override.html':
-			case '/wpt/layer-media-query.html':
-			case '/wpt/layer-property-override.html':
-			case '/wpt/layer-vs-inline-style.html':
-				res.setHeader('Content-type', 'text/html');
-				res.writeHead(200);
-				res.end(await fsp.readFile('test' + pathname, 'utf8'));
-				break;
-			case '/test/styles.css':
-				if (req.method === 'POST') {
-					const data = await new Promise((resolve, reject) => {
-						let buf = [];
-						req.on('data', (chunk) => {
-							buf.push(chunk);
-						});
-
-						req.on('end', () => {
-							resolve(Buffer.concat(buf).toString());
-						});
-
-						req.on('error', (err) => {
-							reject(err);
-						});
+			break;
+		case '/wpt/layer-basic.html':
+		case '/wpt/layer-buckets.html':
+		case '/wpt/layer-counter-style-override.html':
+		case '/wpt/layer-important.html':
+		case '/wpt/layer-keyframes-override.html':
+		case '/wpt/layer-media-query.html':
+		case '/wpt/layer-property-override.html':
+		case '/wpt/layer-vs-inline-style.html':
+			res.setHeader('Content-type', 'text/html');
+			res.writeHead(200);
+			res.end(await fsp.readFile('test' + pathname, 'utf8'));
+			break;
+		case '/test/styles.css':
+			if (req.method === 'POST') {
+				const data = await new Promise((resolve, reject) => {
+					let buf = [];
+					req.on('data', (chunk) => {
+						buf.push(chunk);
 					});
 
-					const css = await postcss([plugin]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
-					res.setHeader('Content-type', 'text/css');
-					res.writeHead(200);
-					res.end(css.css);
-					break;
-				}
+					req.on('end', () => {
+						resolve(Buffer.concat(buf).toString());
+					});
 
-			// eslint-disable-next-line no-fallthrough
-			default:
-				res.setHeader('Content-type', 'text/plain');
-				res.writeHead(404);
-				res.end('Not found');
+					req.on('error', (err) => {
+						reject(err);
+					});
+				});
+
+				const css = await postcss([plugin]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
+				res.setHeader('Content-type', 'text/css');
+				res.writeHead(200);
+				res.end(css.css);
 				break;
-		}
-	};
+			}
 
-	const server = http.createServer(requestListener);
-	server.listen(8080);
+		// eslint-disable-next-line no-fallthrough
+		default:
+			res.setHeader('Content-type', 'text/plain');
+			res.writeHead(404);
+			res.end('Not found');
+			break;
+	}
+};
 
-	if (!process.env.DEBUG) {
+const server = http.createServer(requestListener);
+server.listen(8080);
+
+if (!process.env.DEBUG) {
+	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
 		const browser = await puppeteer.launch({
 			headless: 'new',
 		});
@@ -119,7 +121,7 @@ import postcss from 'postcss';
 		await browser.close();
 
 		await server.close();
-	} else {
-		console.log('visit : http://localhost:8080');
-	}
-})();
+	});
+} else {
+	console.log('visit : http://localhost:8080');
+}
