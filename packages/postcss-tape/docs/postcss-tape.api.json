@@ -239,7 +239,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@csstools/postcss-tape!Options:type",
-          "docComment": "/**\n * General options for `@csstools/postcss-tape`. These affect the entire test run, not individual test cases.\n *\n * @example\n *\n * ```js import { postcssTape } from '@csstools/postcss-tape'; import plugin from 'your-postcss-plugin';\n *\n * postcssTape(plugin, { skipPackageNameCheck: true, })(...);\n */\n",
+          "docComment": "/**\n * General options for `@csstools/postcss-tape`. These affect the entire test run, not individual test cases.\n *\n * @example\n * ```js\n * import { postcssTape } from '@csstools/postcss-tape';\n * import plugin from 'your-postcss-plugin';\n *\n * postcssTape(plugin, {\n *   skipPackageNameCheck: true,\n * })(...);\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

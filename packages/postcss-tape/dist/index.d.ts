@@ -63,6 +63,7 @@ export declare const declarationClonerPlugin: {
  * postcssTape(plugin, {
  *   skipPackageNameCheck: true,
  * })(...);
+ * ```
  */
 export declare type Options = {
     /**

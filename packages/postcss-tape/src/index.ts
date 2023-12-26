@@ -56,6 +56,7 @@ export type { TestCaseOptions } from './test-case-options';
  * postcssTape(plugin, {
  *   skipPackageNameCheck: true,
  * })(...);
+ * ```
  */
 export type Options = {
 	/**

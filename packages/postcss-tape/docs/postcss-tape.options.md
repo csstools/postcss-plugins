@@ -16,7 +16,13 @@ export type Options = {
 
 ## Example
 
-\`\`\`<!-- -->js import { postcssTape } from '<!-- -->@<!-- -->csstools/postcss-tape'; import plugin from 'your-postcss-plugin';
 
-postcssTape(plugin, { skipPackageNameCheck: true, }<!-- -->)(...);
+```js
+import { postcssTape } from '@csstools/postcss-tape';
+import plugin from 'your-postcss-plugin';
+
+postcssTape(plugin, {
+  skipPackageNameCheck: true,
+})(...);
+```
 
