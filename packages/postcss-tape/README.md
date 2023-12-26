@@ -36,7 +36,7 @@ postcssTape(plugin)({
 Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
 
 > [!NOTE]
-> We use `test/_tape.mjs` for our tests, but you can use any file name you want.
+> We use `test/_tape.mjs` for our tests, but you can use any file name you want.  
 > We like to group things in a `test` directory and we use a leading underscore to sort it before the css files.
 
 ## API
