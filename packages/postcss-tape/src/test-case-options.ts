@@ -10,7 +10,6 @@ export type TestCaseOptions = {
 	/** The expected number of warnings. */
 	warnings?: number,
 	/** Expected exception */
-	/** NOTE: plugins should not throw exceptions, this goes against best practices. Use `errors` instead. */
 	exception?: RegExp,
 
 	/** Override the file name of the "expect" file. */
@@ -19,10 +18,7 @@ export type TestCaseOptions = {
 	result?: string,
 
 	/** Do something before the test is run. */
-	before?: () => void,
+	before?: () => void | Promise<void>,
 	/** Do something after the test is run. */
 	after?: () => void | Promise<void>,
-
-	/** Process the test cases with "postcss-html" as the syntax */
-	postcssSyntaxHTML?: boolean,
 }

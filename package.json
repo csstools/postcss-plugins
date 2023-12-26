@@ -52,7 +52,6 @@
 		"release-plan": "node .github/bin/release-plan/release-plan.mjs",
 		"release-plan:dry-run": "node .github/bin/release-plan/release-plan.mjs --dry-run",
 		"test": "npm run test --workspaces --if-present",
-		"test:browser": "npm run test:browser --workspaces --if-present",
 		"knip": "knip"
 	},
 	"volta": {
