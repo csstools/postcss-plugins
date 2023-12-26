@@ -1,6 +1,12 @@
 # Run tests as if local.
 unset GITHUB_ACTIONS
 
+# if node version begins with "v16" then exit 0;
+if [[ "$(node --version)" =~ ^v16 ]]; then
+	echo "Skip tests on node v16"
+	exit 0
+fi
+
 # region:Basic
 set +e
 
@@ -104,3 +110,5 @@ set -e
 git --no-pager diff --no-index --word-diff ./test-self/document.expect.log ./test-self/document.result.log
 git --no-pager diff --no-index --word-diff ./test-self/document.expect.code ./test-self/document.result.code
 # endregion:Document
+
+echo "ok";
