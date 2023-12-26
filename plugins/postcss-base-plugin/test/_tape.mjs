@@ -11,10 +11,6 @@ postcssTape(plugin)({
 			color: 'purple',
 		},
 	},
-	document: {
-		postcssSyntaxHTML: true,
-		message: 'supports document usage',
-	},
 	'examples/example': {
 		message: 'minimal example',
 	},

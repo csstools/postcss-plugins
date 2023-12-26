@@ -1,11 +1,22 @@
 # PostCSS Tape for csstools/postcss-plugins
 
+- compare the output of your PostCSS plugin with the expected output
+- test that the output can be re-parsed by PostCSS
+- test Sourcemap validity
+- test interop with other PostCSS plugins
+- enforce [guidelines for PostCSS plugins](https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md)
+- test both latest `PostCSS` and an older minor version to ensure compatibility
+- uses [`node:test`](https://nodejs.org/docs/latest/api/test.html) under the hood
+
 See [`test/_tape.mjs`](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/test/_tape.mjs) in the base plugin for a minimal example.
 
-Uses native `node:test` and `node:assert`.  
-See [`test` documentation](https://nodejs.org/docs/latest/api/test.html) for more usage details.
+```sh
+# See https://nodejs.org/docs/latest/api/test.html for more usage details.
+node --test
+```
 
 ```js
+/* test/_tape.mjs */
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '<your plugin package name>';
 
@@ -23,6 +34,10 @@ postcssTape(plugin)({
 ```
 
 Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
+
+> [!NOTE]
+> We use `test/_tape.mjs` for our tests, but you can use any file name you want.
+> We like to group things in a `test` directory and we use a leading underscore to sort it before the css files.
 
 ## File name format and test case naming
 
@@ -46,7 +61,7 @@ This is not functionally required, but it will reduce noise in your git history.
 
 ## Quickly update all `expect.css` files.
 
-Set an env variable `REWRITE_EXPECTS` to `true` to update all `expect` files.
+Set env variable `REWRITE_EXPECTS` to `true` to update all `.expect` files.
 
 example :
 

@@ -6,8 +6,4 @@ postcssTape(plugin)({
 		message: 'supports basic usage',
 		options: {},
 	},
-	document: {
-		postcssSyntaxHTML: true,
-		message: 'supports document usage',
-	},
 });

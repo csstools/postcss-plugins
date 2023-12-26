@@ -1,19 +1,62 @@
+/**
+ * A test suite for PostCSS plugins.
+ *
+ * @example
+ * ```sh
+ * node --test
+ * ```
+ *
+ * ```js
+ * // test/_tape.mjs
+ * import { postcssTape } from '@csstools/postcss-tape';
+ * import plugin from '<your plugin package name>';
+ *
+ * postcssTape(plugin)({
+ * 	basic: {
+ * 		message: "supports basic usage",
+ * 	},
+ * 	'basic:color': {
+ * 		message: "supports { color: '<a color>' }",
+ * 		options: {
+ * 			color: 'purple'
+ * 		}
+ * 	},
+ * });
+ * ```
+ *
+ * @packageDocumentation
+ */
+
+import assert from 'node:assert/strict';
 import fs from 'fs/promises';
 import noopPlugin from './noop-plugin';
 import path from 'path';
 import postcss from 'postcss';
-import postcssOldestSupported, { AcceptedPlugin } from 'postcss-8.4';
-import syntaxHTML from 'postcss-html';
+import postcssOldestSupported from 'postcss-8.4';
+import test from 'node:test';
+import { fileContentsOrEmptyString } from './file-contents-or-empty-string';
+import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
+
+import type { AcceptedPlugin } from 'postcss-8.4';
 import type { AtRule, Declaration, Rule } from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
 import type { TestCaseOptions } from './test-case-options';
-import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
-import assert from 'node:assert/strict';
-import test from 'node:test';
-import { fileContentsOrEmptyString } from './file-contents-or-empty-string';
 
 export type { TestCaseOptions } from './test-case-options';
 
+/**
+ * General options for `@csstools/postcss-tape`.
+ * These affect the entire test run, not individual test cases.
+ *
+ * @example
+ * ```js
+ * import { postcssTape } from '@csstools/postcss-tape';
+ * import plugin from 'your-postcss-plugin';
+ *
+ * postcssTape(plugin, {
+ *   skipPackageNameCheck: true,
+ * })(...);
+ */
 export type Options = {
 	/**
 	 * PostCSS plugins should start their name with `postcss-`.
@@ -22,22 +65,9 @@ export type Options = {
 	skipPackageNameCheck?: boolean,
 }
 
-function postcssSyntax(options: TestCaseOptions) {
-	if (options.postcssSyntaxHTML) {
-		return syntaxHTML();
-	}
-
-	return undefined;
-}
-
-function postcssSyntaxSupportsSourceMaps(options: TestCaseOptions) {
-	if (options.postcssSyntaxHTML) {
-		return false;
-	}
-
-	return true;
-}
-
+/**
+ * Create a test suite for a PostCSS plugin.
+ */
 export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: Options) {
 	runOptions = runOptions ?? {};
 
@@ -112,11 +142,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 					const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
 					const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
 
-					let extension = 'css';
-					if (testCaseOptions.postcssSyntaxHTML) {
-						extension = 'html';
-					}
-
+					const extension = 'css';
 					const testFilePath = `${testSourceFilePathWithoutExtension}.${extension}`;
 					let expectFilePath = `${testFilePathWithoutExtension}.expect.${extension}`;
 					let resultFilePath = `${testFilePathWithoutExtension}.result.${extension}`;
@@ -140,11 +166,10 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 						result = await postcss(plugins).process(input, {
 							from: testFilePath,
 							to: resultFilePath,
-							map: postcssSyntaxSupportsSourceMaps(testCaseOptions) ? {
+							map: {
 								inline: false,
 								annotation: false,
-							} : false,
-							syntax: postcssSyntax(testCaseOptions),
+							},
 						});
 					} catch (err) {
 						reduceInformationInCssSyntaxError(err);
@@ -185,7 +210,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 					});
 
 					// Assert result sourcemaps with recent PostCSS.
-					await t2.test('sourcemaps', { skip: !postcssSyntaxSupportsSourceMaps(testCaseOptions) }, async () => {
+					await t2.test('sourcemaps', async () => {
 						assert.ok(!result.map.toJSON().sources.includes('<no source>'), 'Sourcemap is broken. This is most likely a newly created PostCSS AST Node without a value for "source". See: https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes');
 					});
 
@@ -200,11 +225,10 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 						const secondPassResult = await postcss([noopPlugin()]).process(resultContents, {
 							from: resultFilePath,
 							to: resultFilePath,
-							map: postcssSyntaxSupportsSourceMaps(testCaseOptions) ? {
+							map: {
 								inline: false,
 								annotation: false,
-							} : false,
-							syntax: postcssSyntax(testCaseOptions),
+							},
 						});
 
 						assert.deepStrictEqual(secondPassResult.warnings(), [], 'Unexpected warnings on second pass');
@@ -217,10 +241,10 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 							const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPlugin>).process(input, {
 								from: testFilePath,
 								to: resultFilePath,
-								map: postcssSyntaxSupportsSourceMaps(testCaseOptions) ? {
+								map: {
 									inline: false,
 									annotation: false,
-								} : false,
+								},
 							});
 
 							assert.strictEqual(resultFromOldestPostCSS.css.toString(), resultString);
@@ -232,6 +256,9 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 	};
 }
 
+/**
+ * A dummy PostCSS plugin that clones any declaration with the property `to-clone` to a new declaration with the property `cloned`.
+ */
 export const declarationClonerPlugin = {
 	postcssPlugin: 'declaration-cloner',
 	Declaration(decl: Declaration) {
@@ -241,6 +268,9 @@ export const declarationClonerPlugin = {
 	},
 };
 
+/**
+ * A dummy PostCSS plugin that clones any rule with the selector `to-clone` to a new rule with the selector `cloned`.
+ */
 export const ruleClonerPlugin = {
 	postcssPlugin: 'rule-cloner',
 	prepare() {
@@ -261,6 +291,9 @@ export const ruleClonerPlugin = {
 	},
 };
 
+/**
+ * A dummy PostCSS plugin that clones any at rule with params `to-clone` to a new at rule with params `cloned`.
+ */
 export const atRuleClonerPlugin = {
 	postcssPlugin: 'at-rule-cloner',
 	prepare() {
