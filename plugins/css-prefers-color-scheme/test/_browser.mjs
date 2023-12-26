@@ -48,20 +48,30 @@ const requestListener = async function (req, res) {
 	}
 };
 
-// Use different servers for HTML/CSS/JS to trigger CORS
-//
-// HTML:
-const serverA = http.createServer(requestListener);
-serverA.listen(8080);
-// CSS:
-const serverB = http.createServer(requestListener);
-serverB.listen(8081);
-// JS:
-const serverC = http.createServer(requestListener);
-serverC.listen(8082);
+function startServers() {
+	// Use different servers for HTML/CSS/JS to trigger CORS
+	//
+	// HTML:
+	const serverA = http.createServer(requestListener);
+	serverA.listen(8080);
+	// CSS:
+	const serverB = http.createServer(requestListener);
+	serverB.listen(8081);
+	// JS:
+	const serverC = http.createServer(requestListener);
+	serverC.listen(8082);
+
+	return () => {
+		serverA.close();
+		serverB.close();
+		serverC.close();
+	};
+}
 
 if (!process.env.DEBUG) {
 	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
+		const cleanup = startServers();
+
 		const browser = await puppeteer.launch({
 			headless: 'new',
 		});
@@ -151,10 +161,10 @@ if (!process.env.DEBUG) {
 
 		await browser.close();
 
-		await serverA.close();
-		await serverB.close();
-		await serverC.close();
+		await cleanup();
 	});
 } else {
+	startServers();
+
 	console.log('visit : http://localhost:8080');
 }

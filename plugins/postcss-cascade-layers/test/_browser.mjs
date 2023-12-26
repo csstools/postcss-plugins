@@ -84,11 +84,19 @@ const requestListener = async function (req, res) {
 	}
 };
 
-const server = http.createServer(requestListener);
-server.listen(8080);
+function startServers() {
+	const server = http.createServer(requestListener);
+	server.listen(8080);
+
+	return () => {
+		server.close();
+	};
+}
 
 if (!process.env.DEBUG) {
 	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
+		const cleanup = startServers();
+
 		const browser = await puppeteer.launch({
 			headless: 'new',
 		});
@@ -120,8 +128,10 @@ if (!process.env.DEBUG) {
 
 		await browser.close();
 
-		await server.close();
+		await cleanup();
 	});
 } else {
+	startServers();
+
 	console.log('visit : http://localhost:8080');
 }
