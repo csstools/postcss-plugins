@@ -1,4 +1,7 @@
-# PostCSS Tape for csstools/postcss-plugins
+# PostCSS Tape
+
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-tape.svg" height="20">][npm-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 
 - compare the output of your PostCSS plugin with the expected output
 - test that the output can be re-parsed by PostCSS
@@ -77,3 +80,6 @@ example :
 	}
 }
 ```
+
+[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
+[npm-url]: https://www.npmjs.com/package/@csstools/media-query-list-parser
