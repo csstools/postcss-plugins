@@ -1,7 +1,7 @@
 import { declarationClonerPlugin, postcssTape } from '@csstools/postcss-tape';
 import plugin from 'css-prefers-color-scheme';
 
-postcssTape(plugin)({
+postcssTape(plugin, { skipPackageNameCheck: true })({
 	'basic': {
 		message: 'supports basic usage',
 	},

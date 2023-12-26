@@ -4,7 +4,7 @@ import postcssLogical from 'postcss-logical';
 import postcssNesting from 'postcss-nesting';
 import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 
-postcssTape(plugin)({
+postcssTape(plugin, { skipPackageNameCheck: true })({
 	'basic': {
 		message: 'supports basic usage',
 	},

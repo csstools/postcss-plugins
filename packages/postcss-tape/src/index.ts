@@ -72,14 +72,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 			assert.ok(packageInfo.keywords.includes('postcss-plugin'));
 		});
 
-		const skipPackageNameCheck = runOptions?.skipPackageNameCheck || [
-			'css-has-pseudo',
-			'css-blank-pseudo',
-			'css-prefers-color-scheme',
-			'@csstools/css-has-pseudo-experimental',
-		].includes(packageInfo.name);
-
-		await t.test('name starts with "postcss-"', {skip: skipPackageNameCheck}, () => {
+		await t.test('name starts with "postcss-"', { skip: runOptions?.skipPackageNameCheck }, () => {
 			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#11-clear-name-with-postcss--prefix
 			// Clear name with postcss- prefix
 

@@ -7,7 +7,7 @@ See [`test` documentation](https://nodejs.org/docs/latest/api/test.html) for mor
 
 ```js
 import { postcssTape } from '@csstools/postcss-tape';
-import plugin from '@csstools/postcss-base-plugin';
+import plugin from '<your plugin package name>';
 
 postcssTape(plugin)({
 	basic: {
@@ -18,9 +18,6 @@ postcssTape(plugin)({
 		options: {
 			color: 'purple'
 		}
-	},
-	example: {
-		message: "minimal example",
 	},
 });
 ```
@@ -58,4 +55,21 @@ example :
 		"test": "node --test",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
+```
+
+## Options
+
+### `skipPackageNameCheck`
+
+When your plugin name does not start with `postcss-`:
+
+```js
+import { postcssTape } from '@csstools/postcss-tape';
+import plugin from '<your plugin package name>';
+
+postcssTape(plugin, { skipPackageNameCheck: true })({
+	basic: {
+		message: "supports basic usage",
+	},
+});
 ```
