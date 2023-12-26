@@ -52,7 +52,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'src', 'index.ts'));
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'test', '_import.mjs'));
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'test', '_require.cjs'));
-	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, '.tape.mjs'));
+	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'test', '_tape.mjs'));
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'README.md'));
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'INSTALL.md'));
 	await fsp.writeFile(

@@ -9,12 +9,9 @@
 		},
 		"packages/*": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"scripts/**/*.mjs",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs",
-				"test/test.mjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -23,10 +20,8 @@
 		},
 		"plugins/postcss-design-tokens": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.ts",
@@ -38,10 +33,8 @@
 		},
 		"plugins/postcss-global-data": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.ts",
@@ -53,15 +46,12 @@
 		},
 		"plugins/*": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"scripts/**/*.mjs",
 				"src/browser-global.js",
 				"src/browser.js",
 				"src/index.js",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs",
-				"test/test.mjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -70,15 +60,12 @@
 		},
 		"experimental/*": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"scripts/**/*.mjs",
 				"src/browser-global.js",
 				"src/browser.js",
 				"src/index.js",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs",
-				"test/test.mjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -87,11 +74,8 @@
 		},
 		"plugin-packs/postcss-bundler": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs",
-				"test/test.mjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.ts",
@@ -105,12 +89,9 @@
 		},
 		"plugin-packs/*": {
 			"entry": [
-				".tape.{cjs,mjs}",
 				"scripts/**/*.mjs",
 				"src/index.ts",
-				"test/_import.mjs",
-				"test/_require.cjs",
-				"test/test.mjs"
+				"test/**/*.{cjs,mjs}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",

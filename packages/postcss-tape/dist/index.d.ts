@@ -16,7 +16,15 @@ export declare const declarationClonerPlugin: {
     Declaration(decl: Declaration): void;
 };
 
-export declare function postcssTape(currentPlugin: PluginCreator<unknown>): (options: Record<string, TestCaseOptions>) => Promise<void>;
+export declare type Options = {
+    /**
+     * PostCSS plugins should start their name with `postcss-`.
+     * If this is something you do not want to do, you can set this to `true` to skip this check.
+     */
+    skipPackageNameCheck?: boolean;
+};
+
+export declare function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void>;
 
 export declare const ruleClonerPlugin: {
     postcssPlugin: string;

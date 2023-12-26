@@ -41,7 +41,7 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node ./test/test.mjs"
+		"test": "node --test"
 	},
 	"repository": {
 		"type": "git",

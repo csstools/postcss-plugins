@@ -1,4 +1,5 @@
-import assert from 'assert';
+import assert from 'node:assert/strict';
+import test from 'node:test';
 import { parseArguments } from '@csstools/base-cli';
 
 const argumentParsingCases = [
@@ -408,9 +409,9 @@ const argumentParsingCases = [
 	},
 ];
 
-argumentParsingCases.forEach((testCase) => {
-	const result = parseArguments(testCase.args, testCase.allowedPluginOpts, () => { });
-	assert.strict.deepEqual(result, testCase.expected, testCase.message);
-});
-
-console.log('pass base-cli');
+for (const testCase of argumentParsingCases) {
+	test(testCase.message, () => {
+		const result = parseArguments(testCase.args, testCase.allowedPluginOpts, () => { });
+		assert.deepEqual(result, testCase.expected);
+	});
+}

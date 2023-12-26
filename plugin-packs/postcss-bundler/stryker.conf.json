@@ -8,7 +8,7 @@
 	"coverageAnalysis": "perTest",
 	"tempDirName": "../../.stryker-tmp",
 	"commandRunner": {
-		"command": "node ./.tape.mjs"
+		"command": "node --test"
 	},
 	"thresholds": {
 		"high": 100,
