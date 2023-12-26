@@ -61,7 +61,7 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node ./test/test.mjs && node ./test/_import.mjs && node ./test/_require.cjs"
+		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser#readme",
 	"repository": {

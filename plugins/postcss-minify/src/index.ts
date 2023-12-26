@@ -168,7 +168,14 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 					case 'comment':
 
-						if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+						if (
+							// `/*! ... */` is a common pattern to indicate that a comment is important and should not be removed.
+							node.text.startsWith('!') ||
+							// Comments containing the words `license` or `copyright` should not be removed.
+							HAS_LEGAL_KEYWORDS.test(node.text) ||
+							// Comments containing the word `sourceMappingURL` should not be removed.
+							HAS_SOURCE_MAP.test(node.text)
+						) {
 							node.raws.before = '';
 							return;
 						}

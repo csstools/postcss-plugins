@@ -50,11 +50,11 @@
 	],
 	"dependencies": {
 		"postcss": "~8.4",
-		"postcss-8.4": "npm:postcss@~8.4",
-		"postcss-html": "^1.5.0"
+		"postcss-8.4": "npm:postcss@~8.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"test": "bash ./test-self/test.sh"
 	},

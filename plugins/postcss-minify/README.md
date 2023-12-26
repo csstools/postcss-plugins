@@ -28,6 +28,8 @@ Compared to other minifiers, [PostCSS Minify] is purely focused on correctness a
  * legal text is preserved
  */
 
+/*! an important comment */
+
 :root {
 	--mainColor: #12345678;
 }
@@ -63,7 +65,7 @@ becomes :
  *//*
  * Copyright: CSSTools Authors
  * legal text is preserved
- */:root{--mainColor: #12345678;}body{color:var(--mainColor);font-family:system-ui}a{color:rgb(0 0 100% / 90%);&:hover{color:rebeccapurple}> span{color:color-mix(in oklch, cyan, green 25%)}}:is(input, button):is(:hover, :focus){color:oklch(40% 0.268735435 34.568626)}
+ *//*! an important comment */:root{--mainColor: #12345678;}body{color:var(--mainColor);font-family:system-ui}a{color:rgb(0 0 100% / 90%);&:hover{color:rebeccapurple}> span{color:color-mix(in oklch, cyan, green 25%)}}:is(input, button):is(:hover, :focus){color:oklch(40% 0.268735435 34.568626)}
 ```
 
 ## Usage

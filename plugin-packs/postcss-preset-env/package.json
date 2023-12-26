@@ -118,7 +118,7 @@
 	"devDependencies": {
 		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.10.0"
+		"@webref/css": "^6.10.1"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",
@@ -126,8 +126,8 @@
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ./docs/generate.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
-		"test": "node .tape.mjs && node ./src/test/test.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#readme",
 	"repository": {
