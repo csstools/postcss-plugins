@@ -77,20 +77,3 @@ example :
 	}
 }
 ```
-
-## Options
-
-### `skipPackageNameCheck`
-
-When your plugin name does not start with `postcss-`:
-
-```js
-import { postcssTape } from '@csstools/postcss-tape';
-import plugin from '<your plugin package name>';
-
-postcssTape(plugin, { skipPackageNameCheck: true })({
-	basic: {
-		message: "supports basic usage",
-	},
-});
-```
