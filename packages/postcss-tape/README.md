@@ -39,6 +39,10 @@ Browse the [source code and tests here](https://github.com/csstools/postcss-plug
 > We use `test/_tape.mjs` for our tests, but you can use any file name you want.
 > We like to group things in a `test` directory and we use a leading underscore to sort it before the css files.
 
+## API
+
+[Read the API docs](./docs/postcss-tape.md)
+
 ## File name format and test case naming
 
 Test source files and test case names are related.  
@@ -66,10 +70,12 @@ Set env variable `REWRITE_EXPECTS` to `true` to update all `.expect` files.
 example :
 
 ```json
+{
 	"scripts": {
 		"test": "node --test",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
-	},
+	}
+}
 ```
 
 ## Options
