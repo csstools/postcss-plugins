@@ -1,5 +1,9 @@
 # Changes to PostCSS Minify
 
+### Unreleased (minor)
+
+- Preserve important comments (e.g. `/*! something important */`)
+
 ### 1.0.3
 
 _December 15, 2023_
