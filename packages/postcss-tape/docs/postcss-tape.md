@@ -35,7 +35,7 @@ postcssTape(plugin)({
 
 |  Function | Description |
 |  --- | --- |
-|  [postcssTape(currentPlugin, runOptions)](./postcss-tape.postcsstape.md) | Create a test suite for a PostCSS plugin. |
+|  [postcssTape(pluginCreator, runOptions)](./postcss-tape.postcsstape.md) | Create a test suite for a PostCSS plugin. |
 
 ## Variables
 

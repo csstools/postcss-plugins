@@ -9,14 +9,14 @@ Create a test suite for a PostCSS plugin.
 **Signature:**
 
 ```typescript
-export declare function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void>;
+export declare function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  currentPlugin | PluginCreator&lt;unknown&gt; |  |
+|  pluginCreator | PluginCreator&lt;unknown&gt; |  |
 |  runOptions | [Options](./postcss-tape.options.md) | _(Optional)_ |
 
 **Returns:**

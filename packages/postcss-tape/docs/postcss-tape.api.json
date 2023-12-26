@@ -269,7 +269,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare function postcssTape(currentPlugin: "
+              "text": "export declare function postcssTape(pluginCreator: "
             },
             {
               "kind": "Reference",
@@ -338,7 +338,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "currentPlugin",
+              "parameterName": "pluginCreator",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3

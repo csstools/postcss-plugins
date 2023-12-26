@@ -69,23 +69,23 @@ export type Options = {
 /**
  * Create a test suite for a PostCSS plugin.
  */
-export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: Options) {
+export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: Options) {
 	runOptions = runOptions ?? {};
 
 	// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
 	test('`postcss` flag is set on exported plugin creator', () => {
-		assert.strictEqual(currentPlugin.postcss, true);
+		assert.strictEqual(pluginCreator.postcss, true);
 	});
 
 	test('exported plugin creator is a function', () => {
-		assert.strictEqual(typeof currentPlugin, 'function');
+		assert.strictEqual(typeof pluginCreator, 'function');
 	});
 
 	test('`postcssPlugin` is set on a plugin instance', () => {
 		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#15-set-pluginpostcssplugin-with-plugin-name
 		// Set plugin.postcssPlugin with plugin name
 
-		const plugin = currentPlugin() as Plugin;
+		const plugin = pluginCreator() as Plugin;
 
 		assert.ok(plugin.postcssPlugin);
 		assert.strictEqual(typeof plugin.postcssPlugin, 'string');
@@ -116,7 +116,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 			assert.ok(packageName.startsWith('postcss-'), `package name "${packageName}" does not start with "postcss-"`);
 		});
 
-		await t.test('`postcss` is a peer dependency and not a direct dependency', { skip: ('postcssTapeSelfTest' in currentPlugin) }, () => {
+		await t.test('`postcss` is a peer dependency and not a direct dependency', { skip: ('postcssTapeSelfTest' in pluginCreator) }, () => {
 			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#14-keep-postcss-to-peerdependencies
 			// Keep postcss to peerDependencies
 
@@ -126,7 +126,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 		});
 	});
 
-	const pluginName = (currentPlugin() as Plugin).postcssPlugin;
+	const pluginName = (pluginCreator() as Plugin).postcssPlugin;
 
 	// Test cases
 	return async (options: Record<string, TestCaseOptions>) => {
@@ -155,7 +155,7 @@ export function postcssTape(currentPlugin: PluginCreator<unknown>, runOptions?: 
 						resultFilePath = path.join('.', 'test', testCaseOptions.result);
 					}
 
-					const plugins = testCaseOptions.plugins ?? [currentPlugin(testCaseOptions.options)];
+					const plugins = testCaseOptions.plugins ?? [pluginCreator(testCaseOptions.options)];
 
 					const input = await fileContentsOrEmptyString(testFilePath);
 					const expected = await fileContentsOrEmptyString(expectFilePath);
