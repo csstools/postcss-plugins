@@ -13,9 +13,8 @@
 
 See [`test/_tape.mjs`](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/test/_tape.mjs) in the base plugin for a minimal example.
 
-```sh
-# See https://nodejs.org/docs/latest/api/test.html for more usage details.
-node --test
+```bash
+npm install @csstools/postcss-tape --save-dev
 ```
 
 ```js
@@ -34,6 +33,11 @@ postcssTape(plugin)({
 		}
 	},
 });
+```
+
+```sh
+# See https://nodejs.org/docs/latest/api/test.html for more usage details.
+node --test
 ```
 
 Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
@@ -82,4 +86,4 @@ example :
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
-[npm-url]: https://www.npmjs.com/package/@csstools/media-query-list-parser
+[npm-url]: https://www.npmjs.com/package/@csstools/postcss-tape
