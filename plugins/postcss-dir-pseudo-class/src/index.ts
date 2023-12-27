@@ -114,7 +114,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 									if (first && !firstIsHtml && !firstIsRoot && !firstIsSpaceCombinator) {
 										parent.prepend(
-											// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 											selectorParser.combinator({
 												value: ' ',
 											}),
@@ -171,7 +170,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 											parent.insertAfter(first, notDirAttr);
 										} else {
 											// prepend :root
-											// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 											parent.prepend(notDirAttr);
 										}
 									} else if (firstIsHtml) {
@@ -179,11 +177,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										parent.insertAfter(first, dirAttr);
 									} else if (options.shadow && !firstIsRoot) {
 										// prepend :host-context([dir])
-										// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 										parent.prepend(hostContextPseudo);
 									} else {
 										// otherwise, prepend the dir attribute
-										// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 										parent.prepend(dirAttr);
 									}
 								});
