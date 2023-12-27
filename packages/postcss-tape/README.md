@@ -72,7 +72,7 @@ This is not functionally required, but it will reduce noise in your git history.
 
 ## Quickly update all `expect.css` files.
 
-Set env variable `REWRITE_EXPECTS` to `true` to update all `.expect` files.
+Set env variable `REWRITE_EXPECTS` to `true` to update all `expect.css` files.
 
 example :
 
