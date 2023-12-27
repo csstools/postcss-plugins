@@ -4,7 +4,7 @@
 
 - Fix type definitions
 - Remove extraneous dependency on `postcss-value-parser`
-- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.9.1`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#791-december-11-2023) (patch)
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`7.10.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#7100-december-27-2023) (minor)
 - Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#402) (patch)
 - Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#308) (patch)
 - Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#208) (patch)

@@ -1,9 +1,11 @@
 # PostCSS Is Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
-[![CSS Standard Status][css-img]][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+<br><br>
+[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/is-pseudo-class.svg" height="20">][css-url]
+[![CSS Standard Status][css-img]][css-url]
 
 [PostCSS Is Pseudo Class] lets you use the `:is` pseudo class function, following the
 [CSS Selector] specification.

@@ -1,0 +1,6 @@
+:root {
+	--firebrick: rgb(178, 34, 34);
+	--firebrick-a50: rgba(179, 34, 34, 0.5);
+	--firebrick-hsl: hsl(0, 68%, 42%);
+	--firebrick-hsl-a50: hsla(0, 68%, 42%, 0.5);
+}
