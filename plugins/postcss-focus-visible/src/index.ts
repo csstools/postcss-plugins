@@ -97,7 +97,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 									if (i === selectorAST.nodes[0].nodes.length - 1) {
 										// Append the class to the end of the selector if not combinator or pseudo element was found.
-										// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 										selectorAST.nodes[0].append(parser.className({ value: POLYFILL_READY_CLASSNAME }));
 										break;
 									}
@@ -106,9 +105,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 							if (selectorAST.nodes?.[0]?.nodes) {
 								// Prepend a space combinator and the class to the beginning of the selector.
-								// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 								selectorASTClone.nodes[0].prepend(parser.combinator({ value: ' ' }));
-								// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 								selectorASTClone.nodes[0].prepend(parser.className({ value: POLYFILL_READY_CLASSNAME }));
 							}
 

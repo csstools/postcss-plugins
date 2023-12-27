@@ -136,12 +136,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									if (x.type === 'selector') {
 										x.nodes.forEach((y) => {
 											delete y.parent;
-											// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 											hasContainingSelector.append(y);
 										});
 									} else {
 										delete x.parent;
-										// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 										hasContainingSelector.append(x);
 									}
 								});
@@ -167,7 +165,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							const replacementNodes = encodedSelectorAST.nodes[0].nodes;
 
 							for (let i = replacementNodes.length - 1; i >= 0; i--) {
-								// @ts-expect-error https://github.com/postcss/postcss-selector-parser/pull/284
 								container.prepend(replacementNodes[i]);
 							}
 						});
