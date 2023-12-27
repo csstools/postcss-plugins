@@ -3,8 +3,8 @@ import fs from 'fs/promises';
 
 let featuresTable = '';
 
-featuresTable = featuresTable + '| ID | Feature | example | docs |\n';
-featuresTable = featuresTable + '|:--- |:--- |:--- |:--- |\n';
+featuresTable = featuresTable + '| | ID | Feature | example | docs |\n';
+featuresTable = featuresTable + '|:--- |:--- |:--- |:--- |:--- |\n';
 
 const pluginsData = await fs.readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
 pluginsData.sort((a, b) => a.id.localeCompare(b.id));
@@ -31,11 +31,13 @@ for (const pluginData of pluginsData) {
 	});
 
 	if (cssdbFeature && cssdbPlugins.length > 0) {
+		featuresTable = featuresTable + `| [<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/${pluginData.id}.svg" height="18">](https://cssdb.org/#${pluginData.id}) `;
 		featuresTable = featuresTable + `| \`${pluginData.id}\` `;
 		featuresTable = featuresTable + `| ${cssdbFeature.title} `;
 		featuresTable = featuresTable + `| [example](https://preset-env.cssdb.org/features/#${pluginData.id}) `;
 		featuresTable = featuresTable + `| [docs](${cssdbPlugins[0].link}#readme) |\n`;
 	} else {
+		featuresTable = featuresTable + '|   ';
 		featuresTable = featuresTable + `| \`${pluginData.id}\` `;
 		featuresTable = featuresTable + '|   ';
 		featuresTable = featuresTable + '|   ';

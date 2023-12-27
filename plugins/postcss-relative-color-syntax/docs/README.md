@@ -27,6 +27,9 @@
 <example.expect.css>
 ```
 
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in relative color syntax, only static values will work.
+
 <usage>
 
 <envSupport>

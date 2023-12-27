@@ -41,4 +41,20 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-true': {
+		message: 'minimal example',
+		options: {
+			preserve: true,
+		},
+	},
+	'examples/example:preserve-true:progressive-false': {
+		message: 'minimal example',
+		options: {
+			preserve: true,
+			enableProgressiveCustomProperties: false,
+		},
+	},
 });

@@ -1,9 +1,11 @@
 # PostCSS OKLab Function [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-oklab-function.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/oklab-function.svg" height="20">][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+<br><br>
+[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/oklab-function.svg" height="20">][css-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/oklab-function.svg" height="20">][css-url]
 
 [PostCSS OKLab Function] lets you use `oklab` and `oklch` color functions in
 CSS, following the [CSS Color] specification.
@@ -96,7 +98,8 @@ The `enableProgressiveCustomProperties` option determines whether the original n
 is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
 
 > [!NOTE]
-> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties.  
+> See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
 
 ```js
 postcssOKLabFunction({ enableProgressiveCustomProperties: false })

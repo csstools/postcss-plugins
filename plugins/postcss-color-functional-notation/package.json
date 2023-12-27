@@ -51,7 +51,7 @@
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"test": "node --test",
@@ -82,8 +82,10 @@
 		"syntax"
 	],
 	"csstools": {
+		"cssdbId": "color-functional-notation",
 		"exportName": "postcssColorFunctionalNotation",
-		"humanReadableName": "PostCSS Color Functional Notation"
+		"humanReadableName": "PostCSS Color Functional Notation",
+		"specUrl": "https://www.w3.org/TR/css-color-4/#funcdef-rgb"
 	},
 	"volta": {
 		"extends": "../../package.json"
