@@ -3,6 +3,8 @@
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-tape.svg" height="20">][npm-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 
+## Features
+
 - compare the output of your PostCSS plugin with the expected output
 - test that the output can be re-parsed by PostCSS
 - test Sourcemap validity
@@ -11,11 +13,32 @@
 - test both latest `PostCSS` and an older minor version to ensure compatibility
 - uses [`node:test`](https://nodejs.org/docs/latest/api/test.html) under the hood
 
+## API
+
+[Read the API docs](./docs/postcss-tape.md)
+
+## Usage
+
 See [`test/_tape.mjs`](https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-base-plugin/test/_tape.mjs) in the base plugin for a minimal example.
+
+1. Install this package as a dev dependency.
 
 ```bash
 npm install @csstools/postcss-tape --save-dev
 ```
+
+2. Create a `test` directory in your project.
+
+3. Write some CSS that will be processed by your plugin.
+
+```css
+/* test/basic.css */
+.foo {
+	color: oklch(40% 0.268735435 34.568626);
+}
+```
+
+4. Describe your test cases in a JavaScript file.
 
 ```js
 /* test/_tape.mjs */
@@ -35,9 +58,19 @@ postcssTape(plugin)({
 });
 ```
 
+5. Run the tests.
+
 ```sh
 # See https://nodejs.org/docs/latest/api/test.html for more usage details.
 node --test
+```
+
+```json
+{
+	"scripts": {
+		"test": "node --test"
+	}
+}
 ```
 
 Browse the [source code and tests here](https://github.com/csstools/postcss-plugins/tree/main/packages/postcss-tape) or see [tests in plugins](https://github.com/csstools/postcss-plugins/tree/main/plugins) for more usage details.
@@ -45,10 +78,6 @@ Browse the [source code and tests here](https://github.com/csstools/postcss-plug
 > [!NOTE]
 > We use `test/_tape.mjs` for our tests, but you can use any file name you want.  
 > We like to group things in a `test` directory and we use a leading underscore to sort it before the css files.
-
-## API
-
-[Read the API docs](./docs/postcss-tape.md)
 
 ## File name format and test case naming
 
