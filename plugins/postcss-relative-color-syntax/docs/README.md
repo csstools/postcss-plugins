@@ -19,9 +19,6 @@
 
 [<humanReadableName>] lets you use the relative color syntax in CSS color functions following [CSS Color Module 5].
 
-> [!NOTE]
-> We can not dynamically resolve `var()` arguments in relative color syntax, only static values will work.
-
 ```pcss
 <example.css>
 
@@ -29,6 +26,9 @@
 
 <example.expect.css>
 ```
+
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in relative color syntax, only static values will work.
 
 <usage>
 

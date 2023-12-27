@@ -8,9 +8,6 @@ npm install @csstools/postcss-color-mix-function --save-dev
 
 [PostCSS Color Mix Function] lets you use the `color-mix()` function following the [CSS Color 5 Specification].
 
-> [!NOTE]
-> We can not dynamically resolve `var()` arguments in `color-mix()`, only static values will work.
-
 ```pcss
 .purple_plum {
 	color: color-mix(in lch, purple 50%, plum 50%);
@@ -22,6 +19,9 @@ npm install @csstools/postcss-color-mix-function --save-dev
 	color: rgb(175, 92, 174);
 }
 ```
+
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in `color-mix()`, only static values will work.
 
 ## Usage
 

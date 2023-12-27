@@ -8,9 +8,6 @@ npm install @csstools/postcss-relative-color-syntax --save-dev
 
 [PostCSS Relative Color Syntax] lets you use the relative color syntax in CSS color functions following [CSS Color Module 5].
 
-> [!NOTE]
-> We can not dynamically resolve `var()` arguments in relative color syntax, only static values will work.
-
 ```pcss
 .example {
 	background: oklab(from oklab(54.3% -22.5% -5%) calc(1.0 - l) calc(a * 0.8) b);
@@ -22,6 +19,9 @@ npm install @csstools/postcss-relative-color-syntax --save-dev
 	background: rgb(12, 100, 100);
 }
 ```
+
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in relative color syntax, only static values will work.
 
 ## Usage
 

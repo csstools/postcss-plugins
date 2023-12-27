@@ -19,9 +19,6 @@
 
 [<humanReadableName>] lets you use the `color-mix()` function following the [CSS Color 5 Specification].
 
-> [!NOTE]
-> We can not dynamically resolve `var()` arguments in `color-mix()`, only static values will work.
-
 ```pcss
 <example.css>
 
@@ -29,6 +26,9 @@
 
 <example.expect.css>
 ```
+
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in `color-mix()`, only static values will work.
 
 <usage>
 
