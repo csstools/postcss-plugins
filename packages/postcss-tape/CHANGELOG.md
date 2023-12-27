@@ -1,6 +1,8 @@
 # Changes to PostCSS Tape
 
-## Unreleased (major)
+## 4.0.0
+
+_December 27, 2023_
 
 - Use `node:test` instead of custom logic.
 
