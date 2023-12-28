@@ -1,6 +1,8 @@
 # Changes to PostCSS Tape
 
-### Unreleased (minor)
+### 4.1.0
+
+_December 28, 2023_
 
 - Add `source` test case option.
 
