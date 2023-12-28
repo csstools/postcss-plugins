@@ -37,6 +37,12 @@ postcssTape(plugin)({
 |  --- | --- |
 |  [postcssTape(pluginCreator, runOptions)](./postcss-tape.postcsstape.md) | Create a test suite for a PostCSS plugin. |
 
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [TestCaseOptions](./postcss-tape.testcaseoptions.md) | Options for a test case. |
+
 ## Variables
 
 |  Variable | Description |
@@ -50,5 +56,4 @@ postcssTape(plugin)({
 |  Type Alias | Description |
 |  --- | --- |
 |  [Options](./postcss-tape.options.md) | General options for <code>@csstools/postcss-tape</code>. These affect the entire test run, not individual test cases. |
-|  [TestCaseOptions](./postcss-tape.testcaseoptions.md) | Options for a test case. |
 

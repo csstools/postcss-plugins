@@ -140,14 +140,17 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						await testCaseOptions.before();
 					}
 
-					const testSourceFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.split(':')[0]);
-					const testFilePathWithoutExtension = path.join('.', 'test', testCaseLabel.replace(/:/g, '.'));
+					const testSourceFilePathWithoutExtension = path.join('.', 'test', ...(testCaseLabel.split(':')[0]).split(path.posix.sep));
+					const testFilePathWithoutExtension = path.join('.', 'test', ...testCaseLabel.replace(/:/g, '.').split(path.posix.sep));
 
 					const extension = 'css';
-					const testFilePath = `${testSourceFilePathWithoutExtension}.${extension}`;
+					let testFilePath = `${testSourceFilePathWithoutExtension}.${extension}`;
 					let expectFilePath = `${testFilePathWithoutExtension}.expect.${extension}`;
 					let resultFilePath = `${testFilePathWithoutExtension}.result.${extension}`;
 
+					if (testCaseOptions.source) {
+						testFilePath = path.join('.', 'test', testCaseOptions.source);
+					}
 					if (testCaseOptions.expect) {
 						expectFilePath = path.join('.', 'test', testCaseOptions.expect);
 					}
@@ -201,7 +204,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						await Promise.all(fileWriters);
 					}
 
-					assert.ok(expected, 'Missing expected result file');
+					assert.ok(expected, `Missing expect file: "${expectFilePath}"`);
 
 					await t2.test('has expected output', () => {
 						assert.strictEqual(resultString, expected);
