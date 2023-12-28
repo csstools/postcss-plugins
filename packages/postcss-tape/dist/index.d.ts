@@ -91,7 +91,7 @@ export declare const ruleClonerPlugin: {
 /**
  * Options for a test case.
  */
-export declare type TestCaseOptions = {
+export declare interface TestCaseOptions {
     /** Debug message */
     message?: string;
     /** Plugin options. Only used if `plugins` is not specified. */
@@ -102,6 +102,8 @@ export declare type TestCaseOptions = {
     warnings?: number;
     /** Expected exception */
     exception?: RegExp;
+    /** Override the file name of the "source" file. */
+    source?: string;
     /** Override the file name of the "expect" file. */
     expect?: string;
     /** Override the file name of the "result" file. */
@@ -110,6 +112,6 @@ export declare type TestCaseOptions = {
     before?: () => void | Promise<void>;
     /** Do something after the test is run. */
     after?: () => void | Promise<void>;
-};
+}
 
 export { }

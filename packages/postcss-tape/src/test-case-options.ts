@@ -3,7 +3,7 @@ import type { Plugin } from 'postcss';
 /**
  * Options for a test case.
  */
-export type TestCaseOptions = {
+export interface TestCaseOptions {
 	/** Debug message */
 	message?: string,
 	/** Plugin options. Only used if `plugins` is not specified. */
@@ -15,6 +15,8 @@ export type TestCaseOptions = {
 	/** Expected exception */
 	exception?: RegExp,
 
+	/** Override the file name of the "source" file. */
+	source?: string,
 	/** Override the file name of the "expect" file. */
 	expect?: string,
 	/** Override the file name of the "result" file. */

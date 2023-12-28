@@ -98,4 +98,17 @@ git --no-pager diff --no-index --word-diff ./test-self/basic.break-css.expect.lo
 git --no-pager diff --no-index --word-diff ./test-self/basic.break-css.expect.code ./test-self/basic.break-css.result.code
 # endregion:Basic with broken result CSS
 
+# region:File overrides
+set +e
+
+echo "" > ./test-self/file-overrides.result.log
+
+node --test-reporter dot ./test/file-overrides.mjs > ./test-self/file-overrides.result.log 2>&1
+echo "$?" > ./test-self/file-overrides.result.code
+
+set -e
+git --no-pager diff --no-index --word-diff ./test-self/file-overrides.expect.log ./test-self/file-overrides.result.log
+git --no-pager diff --no-index --word-diff ./test-self/file-overrides.expect.code ./test-self/file-overrides.result.code
+# endregion:File overrides
+
 echo "ok";
