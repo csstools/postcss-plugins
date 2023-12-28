@@ -29,6 +29,7 @@
 
 import assert from 'node:assert/strict';
 import fs from 'fs/promises';
+import fsSync from 'fs';
 import noopPlugin from './noop-plugin';
 import path from 'path';
 import postcss from 'postcss';
@@ -204,7 +205,9 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						await Promise.all(fileWriters);
 					}
 
-					assert.ok(expected, `Missing expect file: "${expectFilePath}"`);
+					if (!expected) {
+						assert.ok(fsSync.existsSync(expectFilePath), `Missing expect file: "${expectFilePath}"`);
+					}
 
 					await t2.test('has expected output', () => {
 						assert.strictEqual(resultString, expected);

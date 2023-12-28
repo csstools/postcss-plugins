@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (patch)
+
+- Fix tests with empty result files.
+
 ### 4.1.0
 
 _December 28, 2023_
