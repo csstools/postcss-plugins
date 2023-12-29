@@ -32,5 +32,3 @@ test('sourcemaps', async () => {
 		},
 	);
 });
-
-
