@@ -2,15 +2,22 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenHash](./css-tokenizer.tokenhash.md)
 
-## TokenHash type
+## TokenHash interface
 
 **Signature:**
 
 ```typescript
-export type TokenHash = Token<TokenType.Hash, {
+export interface TokenHash extends Token<TokenType.Hash, {
     value: string;
     type: HashType;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Hash](./css-tokenizer.tokentype.md)<!-- -->, [HashType](./css-tokenizer.hashtype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Hash](./css-tokenizer.tokentype.md)<!-- -->, { value: string; type: [HashType](./css-tokenizer.hashtype.md)<!-- -->; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type](./css-tokenizer.tokenhash.type.md) |  | [HashType](./css-tokenizer.hashtype.md) | The hash type. |
+|  [value](./css-tokenizer.tokenhash.value.md) |  | string | The unescaped hash value without the leading <code>#</code>. |
 

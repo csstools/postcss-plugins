@@ -273,7 +273,7 @@
             {
               "kind": "Reference",
               "text": "TokenDelim",
-              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
             },
             {
               "kind": "Content",
@@ -282,7 +282,7 @@
             {
               "kind": "Reference",
               "text": "TokenDelim",
-              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
             },
             {
               "kind": "Content",
@@ -291,7 +291,7 @@
             {
               "kind": "Reference",
               "text": "TokenDelim",
-              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
             },
             {
               "kind": "Content",
@@ -7822,7 +7822,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenColon",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenColon:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenColon:interface"
                 },
                 {
                   "kind": "Content",
@@ -7942,7 +7942,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenColon",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenColon:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenColon:interface"
                 },
                 {
                   "kind": "Content",
@@ -8578,7 +8578,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -8587,7 +8587,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -8596,7 +8596,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -8934,7 +8934,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -8943,7 +8943,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -8952,7 +8952,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -9301,7 +9301,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -9310,7 +9310,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -9319,7 +9319,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -9657,7 +9657,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -9666,7 +9666,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -9675,7 +9675,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10033,7 +10033,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10042,7 +10042,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10051,7 +10051,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10077,7 +10077,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10086,7 +10086,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10095,7 +10095,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10578,7 +10578,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10587,7 +10587,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10596,7 +10596,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10702,7 +10702,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10711,7 +10711,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -10720,7 +10720,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenDelim",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
                 },
                 {
                   "kind": "Content",
@@ -16250,7 +16250,7 @@
             {
               "kind": "Reference",
               "text": "TokenIdent",
-              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:interface"
             },
             {
               "kind": "Content",
@@ -17188,7 +17188,7 @@
             {
               "kind": "Reference",
               "text": "TokenIdent",
-              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:interface"
             },
             {
               "kind": "Content",

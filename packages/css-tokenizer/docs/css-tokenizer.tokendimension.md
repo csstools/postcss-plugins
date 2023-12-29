@@ -2,17 +2,26 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenDimension](./css-tokenizer.tokendimension.md)
 
-## TokenDimension type
+## TokenDimension interface
 
 **Signature:**
 
 ```typescript
-export type TokenDimension = Token<TokenType.Dimension, {
+export interface TokenDimension extends Token<TokenType.Dimension, {
     value: number;
-    signCharacter?: '+' | '-';
     unit: string;
     type: NumberType;
-}>;
+    signCharacter?: '+' | '-';
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Dimension](./css-tokenizer.tokentype.md)<!-- -->, [NumberType](./css-tokenizer.numbertype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Dimension](./css-tokenizer.tokentype.md)<!-- -->, { value: number; unit: string; type: [NumberType](./css-tokenizer.numbertype.md)<!-- -->; signCharacter?: '+' \| '-'; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [signCharacter?](./css-tokenizer.tokendimension.signcharacter.md) |  | '+' \| '-' | _(Optional)_ The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as "2px" or "+2px". |
+|  [type](./css-tokenizer.tokendimension.type.md) |  | [NumberType](./css-tokenizer.numbertype.md) | <code>integer</code> or <code>number</code> |
+|  [unit](./css-tokenizer.tokendimension.unit.md) |  | string | The unescaped unit name. |
+|  [value](./css-tokenizer.tokendimension.value.md) |  | number | The numeric value. |
 

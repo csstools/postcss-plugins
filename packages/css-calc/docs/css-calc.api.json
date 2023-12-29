@@ -380,7 +380,7 @@
             {
               "kind": "Reference",
               "text": "TokenDimension",
-              "canonicalReference": "@csstools/css-tokenizer!TokenDimension:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenDimension:interface"
             },
             {
               "kind": "Content",
@@ -389,7 +389,7 @@
             {
               "kind": "Reference",
               "text": "TokenNumber",
-              "canonicalReference": "@csstools/css-tokenizer!TokenNumber:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenNumber:interface"
             },
             {
               "kind": "Content",
@@ -398,7 +398,7 @@
             {
               "kind": "Reference",
               "text": "TokenPercentage",
-              "canonicalReference": "@csstools/css-tokenizer!TokenPercentage:type"
+              "canonicalReference": "@csstools/css-tokenizer!TokenPercentage:interface"
             },
             {
               "kind": "Content",

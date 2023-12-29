@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenOpenParen](./css-tokenizer.tokenopenparen.md)
 
-## TokenOpenParen type
+## TokenOpenParen interface
 
 **Signature:**
 
 ```typescript
-export type TokenOpenParen = Token<TokenType.OpenParen, undefined>;
+export interface TokenOpenParen extends Token<TokenType.OpenParen, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.OpenParen](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.OpenParen](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

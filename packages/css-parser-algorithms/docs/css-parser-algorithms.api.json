@@ -1216,7 +1216,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenFunction",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenFunction:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenFunction:interface"
                 },
                 {
                   "kind": "Content",
@@ -1452,7 +1452,7 @@
                 {
                   "kind": "Reference",
                   "text": "TokenFunction",
-                  "canonicalReference": "@csstools/css-tokenizer!TokenFunction:type"
+                  "canonicalReference": "@csstools/css-tokenizer!TokenFunction:interface"
                 },
                 {
                   "kind": "Content",

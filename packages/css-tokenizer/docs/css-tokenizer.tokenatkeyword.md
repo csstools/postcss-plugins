@@ -2,14 +2,20 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenAtKeyword](./css-tokenizer.tokenatkeyword.md)
 
-## TokenAtKeyword type
+## TokenAtKeyword interface
 
 **Signature:**
 
 ```typescript
-export type TokenAtKeyword = Token<TokenType.AtKeyword, {
+export interface TokenAtKeyword extends Token<TokenType.AtKeyword, {
     value: string;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.AtKeyword](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.AtKeyword](./css-tokenizer.tokentype.md)<!-- -->, { value: string; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [value](./css-tokenizer.tokenatkeyword.value.md) |  | string | The unescaped at-keyword name without the leading <code>@</code>. |
 

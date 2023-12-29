@@ -2,14 +2,20 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenString](./css-tokenizer.tokenstring.md)
 
-## TokenString type
+## TokenString interface
 
 **Signature:**
 
 ```typescript
-export type TokenString = Token<TokenType.String, {
+export interface TokenString extends Token<TokenType.String, {
     value: string;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.String](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.String](./css-tokenizer.tokentype.md)<!-- -->, { value: string; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [value](./css-tokenizer.tokenstring.value.md) |  | string | The unescaped string value without the leading and trailing quotes. |
 

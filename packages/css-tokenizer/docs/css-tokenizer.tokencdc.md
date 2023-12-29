@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenCDC](./css-tokenizer.tokencdc.md)
 
-## TokenCDC type
+## TokenCDC interface
 
 **Signature:**
 
 ```typescript
-export type TokenCDC = Token<TokenType.CDC, undefined>;
+export interface TokenCDC extends Token<TokenType.CDC, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.CDC](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.CDC](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

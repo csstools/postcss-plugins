@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenWhitespace](./css-tokenizer.tokenwhitespace.md)
 
-## TokenWhitespace type
+## TokenWhitespace interface
 
 **Signature:**
 
 ```typescript
-export type TokenWhitespace = Token<TokenType.Whitespace, undefined>;
+export interface TokenWhitespace extends Token<TokenType.Whitespace, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Whitespace](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Whitespace](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

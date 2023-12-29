@@ -4,6 +4,8 @@
 
 ## HashType enum
 
+The type of hash token
+
 **Signature:**
 
 ```typescript
@@ -14,6 +16,6 @@ export declare enum HashType
 
 |  Member | Value | Description |
 |  --- | --- | --- |
-|  ID | <code>&quot;id&quot;</code> |  |
-|  Unrestricted | <code>&quot;unrestricted&quot;</code> |  |
+|  ID | <code>&quot;id&quot;</code> | The hash token started with an ident sequence (e.g. <code>#foo</code>) Only hash tokens with the "id" type are valid ID selectors. |
+|  Unrestricted | <code>&quot;unrestricted&quot;</code> | The hash token did not start with an ident sequence (e.g. <code>#-2</code>) |
 

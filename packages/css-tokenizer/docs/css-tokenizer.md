@@ -8,9 +8,9 @@ Tokenize CSS following the CSS Syntax Level 3 specification.
 
 ## Remarks
 
-The tokenizing and parsing tools provided by CSSTools are designed to be low level and generic with strong ties to their respective specifications.
+The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.
 
-Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [\`@csstools/css-parser-algorithms\`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or even a specific parser.
+Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [@csstools/css-parser-algorithms](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or even a specific parser.
 
 ## Example
 
@@ -43,9 +43,9 @@ console.log(tokens);
 
 |  Enumeration | Description |
 |  --- | --- |
-|  [HashType](./css-tokenizer.hashtype.md) |  |
+|  [HashType](./css-tokenizer.hashtype.md) | The type of hash token |
 |  [NumberType](./css-tokenizer.numbertype.md) |  |
-|  [TokenType](./css-tokenizer.tokentype.md) |  |
+|  [TokenType](./css-tokenizer.tokentype.md) | All possible CSS token types |
 
 ## Functions
 
@@ -60,12 +60,10 @@ console.log(tokens);
 |  [tokenize(input, options)](./css-tokenizer.tokenize.md) |  |
 |  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) |  |
 
-## Type Aliases
+## Interfaces
 
-|  Type Alias | Description |
+|  Interface | Description |
 |  --- | --- |
-|  [CodePointReader](./css-tokenizer.codepointreader.md) |  |
-|  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
 |  [Token](./css-tokenizer.token.md) | The CSS Token interface |
 |  [TokenAtKeyword](./css-tokenizer.tokenatkeyword.md) |  |
 |  [TokenBadString](./css-tokenizer.tokenbadstring.md) |  |
@@ -94,4 +92,11 @@ console.log(tokens);
 |  [TokenUnicodeRange](./css-tokenizer.tokenunicoderange.md) |  |
 |  [TokenURL](./css-tokenizer.tokenurl.md) |  |
 |  [TokenWhitespace](./css-tokenizer.tokenwhitespace.md) |  |
+
+## Type Aliases
+
+|  Type Alias | Description |
+|  --- | --- |
+|  [CodePointReader](./css-tokenizer.codepointreader.md) |  |
+|  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
 

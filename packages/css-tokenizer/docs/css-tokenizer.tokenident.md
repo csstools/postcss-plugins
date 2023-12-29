@@ -2,14 +2,20 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenIdent](./css-tokenizer.tokenident.md)
 
-## TokenIdent type
+## TokenIdent interface
 
 **Signature:**
 
 ```typescript
-export type TokenIdent = Token<TokenType.Ident, {
+export interface TokenIdent extends Token<TokenType.Ident, {
     value: string;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Ident](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Ident](./css-tokenizer.tokentype.md)<!-- -->, { value: string; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [value](./css-tokenizer.tokenident.value.md) |  | string | The unescaped ident value. |
 

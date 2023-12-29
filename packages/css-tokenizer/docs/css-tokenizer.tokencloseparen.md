@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenCloseParen](./css-tokenizer.tokencloseparen.md)
 
-## TokenCloseParen type
+## TokenCloseParen interface
 
 **Signature:**
 
 ```typescript
-export type TokenCloseParen = Token<TokenType.CloseParen, undefined>;
+export interface TokenCloseParen extends Token<TokenType.CloseParen, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.CloseParen](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.CloseParen](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

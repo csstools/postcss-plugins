@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenComma](./css-tokenizer.tokencomma.md)
 
-## TokenComma type
+## TokenComma interface
 
 **Signature:**
 
 ```typescript
-export type TokenComma = Token<TokenType.Comma, undefined>;
+export interface TokenComma extends Token<TokenType.Comma, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Comma](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Comma](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

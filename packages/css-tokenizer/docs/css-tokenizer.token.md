@@ -2,55 +2,30 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [Token](./css-tokenizer.token.md)
 
-## Token type
+## Token interface
 
 The CSS Token interface
 
 **Signature:**
 
 ```typescript
-export type Token<T extends TokenType, U> = [
-    /**
-     * The type of token
-     */
-    T,
-    /**
-     * The token representation
-     *
-     * @remarks
-     * This field will be used when stringifying the token.
-     * Any stored value is assumed to be valid CSS.
-     *
-     * You should never use this field when analyzing the token when there is a parsed value available.
-     * But you must store mutated values here.
-     */
-    string,
-    /**
-     * Start position of representation
-     */
-    number,
-    /**
-     * End position of representation
-     */
-    number,
-    /**
-     * Extra data
-     *
-     * @remarks
-     * This holds the parsed value of each token.
-     * These values are unescaped, unquoted, converted to numbers, etc.
-     *
-     * You should always use this field when analyzing the token.
-     * But you must not assume that mutating only this field will have any effect.
-     */
-    U
-];
+export interface Token<T extends TokenType, U> extends Array<T | string | number | U> 
 ```
-**References:** [TokenType](./css-tokenizer.tokentype.md)
+**Extends:** Array&lt;T \| string \| number \| U&gt;
 
 ## Remarks
 
 CSS Tokens are fully typed and have a strict structure. This makes it easier to iterate and analyze a token stream.
 
 The string representation and the parsed value are stored separately for many token types. It is always assumed that the string representation will be used when stringifying, while the parsed value should be used when analyzing tokens.
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  ["0"](./css-tokenizer.token._0_.md) |  | T | The type of token |
+|  ["1"](./css-tokenizer.token._1_.md) |  | string | The token representation |
+|  ["2"](./css-tokenizer.token._2_.md) |  | number | Start position of representation |
+|  ["3"](./css-tokenizer.token._3_.md) |  | number | End position of representation |
+|  ["4"](./css-tokenizer.token._4_.md) |  | U | Extra data |
 

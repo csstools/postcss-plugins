@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenOpenCurly](./css-tokenizer.tokenopencurly.md)
 
-## TokenOpenCurly type
+## TokenOpenCurly interface
 
 **Signature:**
 
 ```typescript
-export type TokenOpenCurly = Token<TokenType.OpenCurly, undefined>;
+export interface TokenOpenCurly extends Token<TokenType.OpenCurly, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.OpenCurly](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.OpenCurly](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

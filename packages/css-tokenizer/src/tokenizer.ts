@@ -48,7 +48,7 @@ export function tokenizer(input: { css: { valueOf(): string }, unicodeRangesAllo
 	const reader = new Reader(css);
 
 	const ctx = {
-		onParseError: options?.onParseError ?? (() => { /* noop */ }),
+		onParseError: options?.onParseError ?? noop,
 	};
 
 	function endOfFile() {
@@ -227,4 +227,8 @@ export function tokenizer(input: { css: { valueOf(): string }, unicodeRangesAllo
 		nextToken: nextToken,
 		endOfFile: endOfFile,
 	};
+}
+
+function noop() {
+	/* do nothing */
 }

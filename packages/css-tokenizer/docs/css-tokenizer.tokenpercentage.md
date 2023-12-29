@@ -2,15 +2,22 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenPercentage](./css-tokenizer.tokenpercentage.md)
 
-## TokenPercentage type
+## TokenPercentage interface
 
 **Signature:**
 
 ```typescript
-export type TokenPercentage = Token<TokenType.Percentage, {
+export interface TokenPercentage extends Token<TokenType.Percentage, {
     value: number;
     signCharacter?: '+' | '-';
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Percentage](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Percentage](./css-tokenizer.tokentype.md)<!-- -->, { value: number; signCharacter?: '+' \| '-'; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [signCharacter?](./css-tokenizer.tokenpercentage.signcharacter.md) |  | '+' \| '-' | _(Optional)_ The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as "2%" or "+2%". |
+|  [value](./css-tokenizer.tokenpercentage.value.md) |  | number | The numeric value. |
 
