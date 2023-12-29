@@ -15,8 +15,12 @@ test('sourcemaps', async () => {
 		},
 	});
 
+	const map = result.map.toJSON();
+	map.sources = map.sources.map((x) => x.split(path.posix.sep).join(path.sep));
+	map.file = map.file.split(path.posix.sep).join(path.sep);
+
 	assert.deepStrictEqual(
-		result.map.toJSON(),
+		map,
 		{
 			version: 3,
 			sources: [
