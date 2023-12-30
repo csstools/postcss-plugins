@@ -20,7 +20,7 @@ export declare class WhitespaceNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.whitespacenode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.WhiteSpace</code> |
+|  [type](./css-parser-algorithms.whitespacenode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.WhiteSpace</code> |
 |  [value](./css-parser-algorithms.whitespacenode.value.md) |  | Array&lt;CSSToken&gt; | The list of consecutive whitespace tokens. |
 
 ## Methods

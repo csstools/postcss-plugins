@@ -20,7 +20,7 @@ export declare class TokenNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.tokennode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.Token</code> |
+|  [type](./css-parser-algorithms.tokennode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.Token</code> |
 |  [value](./css-parser-algorithms.tokennode.value.md) |  | CSSToken | The token. |
 
 ## Methods

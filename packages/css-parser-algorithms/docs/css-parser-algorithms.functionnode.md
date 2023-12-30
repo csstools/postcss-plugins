@@ -35,7 +35,7 @@ node.getName(); // 'calc'
 |  --- | --- | --- | --- |
 |  [endToken](./css-parser-algorithms.functionnode.endtoken.md) |  | CSSToken | The token for the closing parenthesis of the function. If the function is unclosed, this will be an EOF token. |
 |  [name](./css-parser-algorithms.functionnode.name.md) |  | TokenFunction | The token for the name of the function. |
-|  [type](./css-parser-algorithms.functionnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.Function</code> |
+|  [type](./css-parser-algorithms.functionnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.Function</code> |
 
 ## Methods
 

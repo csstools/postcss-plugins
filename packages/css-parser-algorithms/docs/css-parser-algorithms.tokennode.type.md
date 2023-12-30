@@ -4,7 +4,7 @@
 
 ## TokenNode.type property
 
-The node type Always `ComponentValueType.Token`
+The node type, always `ComponentValueType.Token`
 
 **Signature:**
 

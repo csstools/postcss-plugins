@@ -78,8 +78,7 @@ import { TokenFunction } from '@csstools/css-tokenizer';
 
 export declare class CommentNode {
     /**
-     * The node type
-     * Always `ComponentValueType.Comment`
+     * The node type, always `ComponentValueType.Comment`
      */
     type: ComponentValueType;
     /**
@@ -200,8 +199,7 @@ export declare abstract class ContainerNodeBaseClass {
  */
 export declare class FunctionNode extends ContainerNodeBaseClass {
     /**
-     * The node type
-     * Always `ComponentValueType.Function`
+     * The node type, always `ComponentValueType.Function`
      */
     type: ComponentValueType;
     /**
@@ -346,8 +344,7 @@ export declare function replaceComponentValues(componentValuesList: Array<Array<
  */
 export declare class SimpleBlockNode extends ContainerNodeBaseClass {
     /**
-     * The node type
-     * Always `ComponentValueType.SimpleBlock`
+     * The node type, always `ComponentValueType.SimpleBlock`
      */
     type: ComponentValueType;
     /**
@@ -412,8 +409,7 @@ export declare function stringify(componentValueLists: Array<Array<ComponentValu
 
 export declare class TokenNode {
     /**
-     * The node type
-     * Always `ComponentValueType.Token`
+     * The node type, always `ComponentValueType.Token`
      */
     type: ComponentValueType;
     /**
@@ -465,8 +461,7 @@ export declare function walkerIndexGenerator<T>(initialList: Array<T>): (list: A
 
 export declare class WhitespaceNode {
     /**
-     * The node type
-     * Always `ComponentValueType.WhiteSpace`
+     * The node type, always `ComponentValueType.WhiteSpace`
      */
     type: ComponentValueType;
     /**

@@ -170,8 +170,7 @@ export abstract class ContainerNodeBaseClass {
  */
 export class FunctionNode extends ContainerNodeBaseClass {
 	/**
-	 * The node type
-	 * Always `ComponentValueType.Function`
+	 * The node type, always `ComponentValueType.Function`
 	 */
 	type: ComponentValueType = ComponentValueType.Function;
 
@@ -349,8 +348,7 @@ function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: numb
  */
 export class SimpleBlockNode extends ContainerNodeBaseClass {
 	/**
-	 * The node type
-	 * Always `ComponentValueType.SimpleBlock`
+	 * The node type, always `ComponentValueType.SimpleBlock`
 	 */
 	type: ComponentValueType = ComponentValueType.SimpleBlock;
 
@@ -518,8 +516,7 @@ function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: n
 
 export class WhitespaceNode {
 	/**
-	 * The node type
-	 * Always `ComponentValueType.WhiteSpace`
+	 * The node type, always `ComponentValueType.WhiteSpace`
 	 */
 	type: ComponentValueType = ComponentValueType.Whitespace;
 
@@ -604,8 +601,7 @@ function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: nu
 
 export class CommentNode {
 	/**
-	 * The node type
-	 * Always `ComponentValueType.Comment`
+	 * The node type, always `ComponentValueType.Comment`
 	 */
 	type: ComponentValueType = ComponentValueType.Comment;
 
@@ -709,8 +705,7 @@ function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>):
 
 export class TokenNode {
 	/**
-	 * The node type
-	 * Always `ComponentValueType.Token`
+	 * The node type, always `ComponentValueType.Token`
 	 */
 	type: ComponentValueType = ComponentValueType.Token;
 

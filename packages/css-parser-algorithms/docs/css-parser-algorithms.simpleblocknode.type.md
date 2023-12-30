@@ -4,7 +4,7 @@
 
 ## SimpleBlockNode.type property
 
-The node type Always `ComponentValueType.SimpleBlock`
+The node type, always `ComponentValueType.SimpleBlock`
 
 **Signature:**
 

@@ -20,7 +20,7 @@ export declare class CommentNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.commentnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.Comment</code> |
+|  [type](./css-parser-algorithms.commentnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.Comment</code> |
 |  [value](./css-parser-algorithms.commentnode.value.md) |  | CSSToken | The comment token. |
 
 ## Methods

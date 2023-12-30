@@ -300,7 +300,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!CommentNode#type:member",
-              "docComment": "/**\n * The node type Always `ComponentValueType.Comment`\n */\n",
+              "docComment": "/**\n * The node type, always `ComponentValueType.Comment`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1344,7 +1344,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode#type:member",
-              "docComment": "/**\n * The node type Always `ComponentValueType.Function`\n */\n",
+              "docComment": "/**\n * The node type, always `ComponentValueType.Function`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2368,7 +2368,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!SimpleBlockNode#type:member",
-              "docComment": "/**\n * The node type Always `ComponentValueType.SimpleBlock`\n */\n",
+              "docComment": "/**\n * The node type, always `ComponentValueType.SimpleBlock`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2689,7 +2689,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!TokenNode#type:member",
-              "docComment": "/**\n * The node type Always `ComponentValueType.Token`\n */\n",
+              "docComment": "/**\n * The node type, always `ComponentValueType.Token`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2964,7 +2964,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!WhitespaceNode#type:member",
-              "docComment": "/**\n * The node type Always `ComponentValueType.WhiteSpace`\n */\n",
+              "docComment": "/**\n * The node type, always `ComponentValueType.WhiteSpace`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

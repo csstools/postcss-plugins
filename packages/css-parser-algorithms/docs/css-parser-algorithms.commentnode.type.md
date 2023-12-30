@@ -4,7 +4,7 @@
 
 ## CommentNode.type property
 
-The node type Always `ComponentValueType.Comment`
+The node type, always `ComponentValueType.Comment`
 
 **Signature:**
 

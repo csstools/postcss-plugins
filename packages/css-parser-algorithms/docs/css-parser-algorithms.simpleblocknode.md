@@ -35,7 +35,7 @@ node.startToken; // [TokenType.OpenSquare, '[', 0, 0, undefined]
 |  --- | --- | --- | --- |
 |  [endToken](./css-parser-algorithms.simpleblocknode.endtoken.md) |  | CSSToken | The token for the closing token of the block. If the block is closed it will be the mirror variant of the <code>startToken</code>. If the block is unclosed, this will be an EOF token. |
 |  [startToken](./css-parser-algorithms.simpleblocknode.starttoken.md) |  | CSSToken | The token for the opening token of the block. |
-|  [type](./css-parser-algorithms.simpleblocknode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.SimpleBlock</code> |
+|  [type](./css-parser-algorithms.simpleblocknode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.SimpleBlock</code> |
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 ## WhitespaceNode.type property
 
-The node type Always `ComponentValueType.WhiteSpace`
+The node type, always `ComponentValueType.WhiteSpace`
 
 **Signature:**
 

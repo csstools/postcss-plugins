@@ -4,7 +4,7 @@
 
 ## FunctionNode.type property
 
-The node type Always `ComponentValueType.Function`
+The node type, always `ComponentValueType.Function`
 
 **Signature:**
 
