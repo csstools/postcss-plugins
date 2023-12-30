@@ -36,6 +36,9 @@
  */
 export declare function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken>;
 
+/**
+ * @internal
+ */
 export declare type CodePointReader = {
     representationStart: number;
     representationEnd: number;

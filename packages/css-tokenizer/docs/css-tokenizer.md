@@ -97,6 +97,5 @@ console.log(tokens);
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [CodePointReader](./css-tokenizer.codepointreader.md) |  |
 |  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
 

@@ -247,50 +247,6 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "@csstools/css-tokenizer!CodePointReader:type",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export type CodePointReader = "
-            },
-            {
-              "kind": "Content",
-              "text": "{\n    representationStart: number;\n    representationEnd: number;\n    cursor: number;\n    codePointSource: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Array",
-              "canonicalReference": "!Array:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<number>;\n    representationIndices: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Array",
-              "canonicalReference": "!Array:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<number>;\n    source: string;\n    advanceCodePoint(n?: number): void;\n    readCodePoint(n?: number): number | false;\n    unreadCodePoint(n?: number): void;\n    resetRepresentation(): void;\n}"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "fileUrlPath": "dist/_types/interfaces/code-point-reader.d.ts",
-          "releaseTag": "Public",
-          "name": "CodePointReader",
-          "typeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 6
-          }
-        },
-        {
-          "kind": "TypeAlias",
           "canonicalReference": "@csstools/css-tokenizer!CSSToken:type",
           "docComment": "/**\n * The union of all possible CSS tokens\n */\n",
           "excerptTokens": [
