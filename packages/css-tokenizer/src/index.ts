@@ -1,5 +1,5 @@
 /**
- * Tokenize CSS following the CSS Syntax Level 3 specification.
+ * Tokenize CSS following the {@link https://drafts.csswg.org/css-syntax/#tokenization | CSS Syntax Level 3 specification}.
  *
  * @remarks
  * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.

@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [@csstools/css-tokenizer](./css-tokenizer.md) | Tokenize CSS following the CSS Syntax Level 3 specification. |
+|  [@csstools/css-tokenizer](./css-tokenizer.md) | Tokenize CSS following the [CSS Syntax Level 3 specification](https://drafts.csswg.org/css-syntax/#tokenization)<!-- -->. |
 
