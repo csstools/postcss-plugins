@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenBadURL](./css-tokenizer.tokenbadurl.md)
 
-## TokenBadURL type
+## TokenBadURL interface
 
 **Signature:**
 
 ```typescript
-export type TokenBadURL = Token<TokenType.BadURL, undefined>;
+export interface TokenBadURL extends Token<TokenType.BadURL, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.BadURL](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.BadURL](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

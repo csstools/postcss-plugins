@@ -1,3 +1,7 @@
+/**
+ * The CSS Tokenizer is forgiving and will never throw on invalid input.
+ * Any errors are reported through the `onParseError` callback.
+ */
 export class ParseError extends Error {
 	/** The index of the start character of the current token. */
 	sourceStart: number;

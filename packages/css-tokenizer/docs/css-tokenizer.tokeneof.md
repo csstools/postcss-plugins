@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenEOF](./css-tokenizer.tokeneof.md)
 
-## TokenEOF type
+## TokenEOF interface
 
 **Signature:**
 
 ```typescript
-export type TokenEOF = Token<TokenType.EOF, undefined>;
+export interface TokenEOF extends Token<TokenType.EOF, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.EOF](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.EOF](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

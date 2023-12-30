@@ -2,14 +2,20 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenDelim](./css-tokenizer.tokendelim.md)
 
-## TokenDelim type
+## TokenDelim interface
 
 **Signature:**
 
 ```typescript
-export type TokenDelim = Token<TokenType.Delim, {
+export interface TokenDelim extends Token<TokenType.Delim, {
     value: string;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Delim](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Delim](./css-tokenizer.tokentype.md)<!-- -->, { value: string; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [value](./css-tokenizer.tokendelim.value.md) |  | string | The delim character. |
 

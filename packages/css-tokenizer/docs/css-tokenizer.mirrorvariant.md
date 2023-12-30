@@ -4,6 +4,8 @@
 
 ## mirrorVariant() function
 
+Get the mirror variant of a given token
+
 **Signature:**
 
 ```typescript
@@ -19,4 +21,14 @@ export declare function mirrorVariant(token: CSSToken): CSSToken | null;
 **Returns:**
 
 [CSSToken](./css-tokenizer.csstoken.md) \| null
+
+## Example
+
+
+```js
+const input = [TokenType.OpenParen, '(', 0, 1, undefined];
+const output = mirrorVariant(input);
+
+console.log(output); // [TokenType.CloseParen, ')', -1, -1, undefined]
+```
 

@@ -2,14 +2,20 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenURL](./css-tokenizer.tokenurl.md)
 
-## TokenURL type
+## TokenURL interface
 
 **Signature:**
 
 ```typescript
-export type TokenURL = Token<TokenType.URL, {
+export interface TokenURL extends Token<TokenType.URL, {
     value: string;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.URL](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.URL](./css-tokenizer.tokentype.md)<!-- -->, { value: string; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [value](./css-tokenizer.tokenurl.value.md) |  | string | The unescaped URL value without the leading <code>url(</code> and trailing <code>)</code>. |
 

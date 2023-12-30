@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenColon](./css-tokenizer.tokencolon.md)
 
-## TokenColon type
+## TokenColon interface
 
 **Signature:**
 
 ```typescript
-export type TokenColon = Token<TokenType.Colon, undefined>;
+export interface TokenColon extends Token<TokenType.Colon, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Colon](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Colon](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

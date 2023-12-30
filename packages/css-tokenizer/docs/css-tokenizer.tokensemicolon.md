@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenSemicolon](./css-tokenizer.tokensemicolon.md)
 
-## TokenSemicolon type
+## TokenSemicolon interface
 
 **Signature:**
 
 ```typescript
-export type TokenSemicolon = Token<TokenType.Semicolon, undefined>;
+export interface TokenSemicolon extends Token<TokenType.Semicolon, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Semicolon](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Semicolon](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

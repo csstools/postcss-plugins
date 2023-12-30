@@ -4,13 +4,13 @@
 
 ## css-tokenizer package
 
-Tokenize CSS following the CSS Syntax Level 3 specification.
+Tokenize CSS following the [CSS Syntax Level 3 specification](https://drafts.csswg.org/css-syntax/#tokenization)<!-- -->.
 
 ## Remarks
 
-The tokenizing and parsing tools provided by CSSTools are designed to be low level and generic with strong ties to their respective specifications.
+The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.
 
-Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [\`@csstools/css-parser-algorithms\`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or even a specific parser.
+Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [@csstools/css-parser-algorithms](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or even a specific parser.
 
 ## Example
 
@@ -37,35 +37,33 @@ console.log(tokens);
 
 |  Class | Description |
 |  --- | --- |
-|  [ParseError](./css-tokenizer.parseerror.md) |  |
+|  [ParseError](./css-tokenizer.parseerror.md) | The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the <code>onParseError</code> callback. |
 
 ## Enumerations
 
 |  Enumeration | Description |
 |  --- | --- |
-|  [HashType](./css-tokenizer.hashtype.md) |  |
-|  [NumberType](./css-tokenizer.numbertype.md) |  |
-|  [TokenType](./css-tokenizer.tokentype.md) |  |
+|  [HashType](./css-tokenizer.hashtype.md) | The type of hash token |
+|  [NumberType](./css-tokenizer.numbertype.md) | The type of number token Either <code>integer</code> or <code>number</code> |
+|  [TokenType](./css-tokenizer.tokentype.md) | All possible CSS token types |
 
 ## Functions
 
 |  Function | Description |
 |  --- | --- |
-|  [cloneTokens(tokens)](./css-tokenizer.clonetokens.md) |  |
-|  [isToken(x)](./css-tokenizer.istoken.md) |  |
-|  [mirrorVariant(token)](./css-tokenizer.mirrorvariant.md) |  |
-|  [mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md) |  |
-|  [mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md) |  |
-|  [stringify(tokens)](./css-tokenizer.stringify.md) |  |
-|  [tokenize(input, options)](./css-tokenizer.tokenize.md) |  |
-|  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) |  |
+|  [cloneTokens(tokens)](./css-tokenizer.clonetokens.md) | Deep clone a list of tokens. Useful for mutations without altering the original list. |
+|  [isToken(x)](./css-tokenizer.istoken.md) | Assert that a given value has the general structure of a CSS token: 1. is an array. 2. has at least four items. 3. has a known token type. 4. has a string representation. 5. has a start position. 6. has an end position. |
+|  [mirrorVariant(token)](./css-tokenizer.mirrorvariant.md) | Get the mirror variant of a given token |
+|  [mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md) | Get the mirror variant type of a given token type |
+|  [mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md) | Set the ident value and update the string representation. This handles escaping. |
+|  [stringify(tokens)](./css-tokenizer.stringify.md) | Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid. |
+|  [tokenize(input, options)](./css-tokenizer.tokenize.md) | Tokenize a CSS string into a list of tokens. |
+|  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) | Create a tokenizer for a CSS string. |
 
-## Type Aliases
+## Interfaces
 
-|  Type Alias | Description |
+|  Interface | Description |
 |  --- | --- |
-|  [CodePointReader](./css-tokenizer.codepointreader.md) |  |
-|  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
 |  [Token](./css-tokenizer.token.md) | The CSS Token interface |
 |  [TokenAtKeyword](./css-tokenizer.tokenatkeyword.md) |  |
 |  [TokenBadString](./css-tokenizer.tokenbadstring.md) |  |
@@ -94,4 +92,10 @@ console.log(tokens);
 |  [TokenUnicodeRange](./css-tokenizer.tokenunicoderange.md) |  |
 |  [TokenURL](./css-tokenizer.tokenurl.md) |  |
 |  [TokenWhitespace](./css-tokenizer.tokenwhitespace.md) |  |
+
+## Type Aliases
+
+|  Type Alias | Description |
+|  --- | --- |
+|  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
 

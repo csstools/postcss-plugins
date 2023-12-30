@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenComment](./css-tokenizer.tokencomment.md)
 
-## TokenComment type
+## TokenComment interface
 
 **Signature:**
 
 ```typescript
-export type TokenComment = Token<TokenType.Comment, undefined>;
+export interface TokenComment extends Token<TokenType.Comment, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.Comment](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.Comment](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

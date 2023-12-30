@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenCDO](./css-tokenizer.tokencdo.md)
 
-## TokenCDO type
+## TokenCDO interface
 
 **Signature:**
 
 ```typescript
-export type TokenCDO = Token<TokenType.CDO, undefined>;
+export interface TokenCDO extends Token<TokenType.CDO, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.CDO](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.CDO](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

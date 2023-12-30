@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenCloseSquare](./css-tokenizer.tokenclosesquare.md)
 
-## TokenCloseSquare type
+## TokenCloseSquare interface
 
 **Signature:**
 
 ```typescript
-export type TokenCloseSquare = Token<TokenType.CloseSquare, undefined>;
+export interface TokenCloseSquare extends Token<TokenType.CloseSquare, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.CloseSquare](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.CloseSquare](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

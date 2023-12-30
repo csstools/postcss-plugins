@@ -4,6 +4,8 @@
 
 ## cloneTokens() function
 
+Deep clone a list of tokens. Useful for mutations without altering the original list.
+
 **Signature:**
 
 ```typescript

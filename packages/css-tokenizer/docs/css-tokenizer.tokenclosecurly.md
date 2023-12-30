@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenCloseCurly](./css-tokenizer.tokenclosecurly.md)
 
-## TokenCloseCurly type
+## TokenCloseCurly interface
 
 **Signature:**
 
 ```typescript
-export type TokenCloseCurly = Token<TokenType.CloseCurly, undefined>;
+export interface TokenCloseCurly extends Token<TokenType.CloseCurly, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.CloseCurly](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.CloseCurly](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 

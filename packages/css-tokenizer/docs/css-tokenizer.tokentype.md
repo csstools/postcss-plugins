@@ -4,6 +4,8 @@
 
 ## TokenType enum
 
+All possible CSS token types
+
 **Signature:**
 
 ```typescript
@@ -14,31 +16,31 @@ export declare enum TokenType
 
 |  Member | Value | Description |
 |  --- | --- | --- |
-|  AtKeyword | <code>&quot;at-keyword-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-at-keyword-token |
-|  BadString | <code>&quot;bad-string-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-bad-string-token |
-|  BadURL | <code>&quot;bad-url-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-bad-url-token |
-|  CDC | <code>&quot;CDC-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-cdc-token |
-|  CDO | <code>&quot;CDO-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-cdo-token |
-|  CloseCurly | <code>&quot;}-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#tokendef-close-curly |
-|  CloseParen | <code>&quot;)-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#tokendef-close-paren |
-|  CloseSquare | <code>&quot;]-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#tokendef-close-square |
-|  Colon | <code>&quot;colon-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-colon-token |
-|  Comma | <code>&quot;comma-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-comma-token |
-|  Comment | <code>&quot;comment&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#comment-diagram |
-|  Delim | <code>&quot;delim-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-delim-token |
-|  Dimension | <code>&quot;dimension-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-dimension-token |
-|  EOF | <code>&quot;EOF-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-eof-token |
-|  Function | <code>&quot;function-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-function-token |
-|  Hash | <code>&quot;hash-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-hash-token |
-|  Ident | <code>&quot;ident-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-ident-token |
-|  Number | <code>&quot;number-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-percentage-token |
-|  OpenCurly | <code>&quot;{-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#tokendef-open-curly |
-|  OpenParen | <code>&quot;(-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#tokendef-open-paren |
-|  OpenSquare | <code>&quot;[-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#tokendef-open-square |
-|  Percentage | <code>&quot;percentage-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-percentage-token |
-|  Semicolon | <code>&quot;semicolon-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-semicolon-token |
-|  String | <code>&quot;string-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-string-token |
-|  UnicodeRange | <code>&quot;unicode-range-token&quot;</code> | https://drafts.csswg.org/css-syntax/\#typedef-unicode-range-token |
-|  URL | <code>&quot;url-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-url-token |
-|  Whitespace | <code>&quot;whitespace-token&quot;</code> | https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/\#typedef-whitespace-token |
+|  AtKeyword | <code>&quot;at-keyword-token&quot;</code> |  |
+|  BadString | <code>&quot;bad-string-token&quot;</code> |  |
+|  BadURL | <code>&quot;bad-url-token&quot;</code> |  |
+|  CDC | <code>&quot;CDC-token&quot;</code> |  |
+|  CDO | <code>&quot;CDO-token&quot;</code> |  |
+|  CloseCurly | <code>&quot;}-token&quot;</code> |  |
+|  CloseParen | <code>&quot;)-token&quot;</code> |  |
+|  CloseSquare | <code>&quot;]-token&quot;</code> |  |
+|  Colon | <code>&quot;colon-token&quot;</code> |  |
+|  Comma | <code>&quot;comma-token&quot;</code> |  |
+|  Comment | <code>&quot;comment&quot;</code> |  |
+|  Delim | <code>&quot;delim-token&quot;</code> |  |
+|  Dimension | <code>&quot;dimension-token&quot;</code> |  |
+|  EOF | <code>&quot;EOF-token&quot;</code> |  |
+|  Function | <code>&quot;function-token&quot;</code> |  |
+|  Hash | <code>&quot;hash-token&quot;</code> |  |
+|  Ident | <code>&quot;ident-token&quot;</code> |  |
+|  Number | <code>&quot;number-token&quot;</code> |  |
+|  OpenCurly | <code>&quot;{-token&quot;</code> |  |
+|  OpenParen | <code>&quot;(-token&quot;</code> |  |
+|  OpenSquare | <code>&quot;[-token&quot;</code> |  |
+|  Percentage | <code>&quot;percentage-token&quot;</code> |  |
+|  Semicolon | <code>&quot;semicolon-token&quot;</code> |  |
+|  String | <code>&quot;string-token&quot;</code> |  |
+|  UnicodeRange | <code>&quot;unicode-range-token&quot;</code> | Only appears in the token stream when the <code>unicodeRangesAllowed</code> option is set to true. |
+|  URL | <code>&quot;url-token&quot;</code> |  |
+|  Whitespace | <code>&quot;whitespace-token&quot;</code> |  |
 

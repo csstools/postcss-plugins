@@ -2,15 +2,22 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenUnicodeRange](./css-tokenizer.tokenunicoderange.md)
 
-## TokenUnicodeRange type
+## TokenUnicodeRange interface
 
 **Signature:**
 
 ```typescript
-export type TokenUnicodeRange = Token<TokenType.UnicodeRange, {
+export interface TokenUnicodeRange extends Token<TokenType.UnicodeRange, {
     startOfRange: number;
     endOfRange: number;
-}>;
+}> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.UnicodeRange](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.UnicodeRange](./css-tokenizer.tokentype.md)<!-- -->, { startOfRange: number; endOfRange: number; }&gt;
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [endOfRange](./css-tokenizer.tokenunicoderange.endofrange.md) |  | number |  |
+|  [startOfRange](./css-tokenizer.tokenunicoderange.startofrange.md) |  | number |  |
 

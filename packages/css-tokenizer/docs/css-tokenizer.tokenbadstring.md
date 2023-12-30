@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@csstools/css-tokenizer](./css-tokenizer.md) &gt; [TokenBadString](./css-tokenizer.tokenbadstring.md)
 
-## TokenBadString type
+## TokenBadString interface
 
 **Signature:**
 
 ```typescript
-export type TokenBadString = Token<TokenType.BadString, undefined>;
+export interface TokenBadString extends Token<TokenType.BadString, undefined> 
 ```
-**References:** [Token](./css-tokenizer.token.md)<!-- -->, [TokenType.BadString](./css-tokenizer.tokentype.md)
+**Extends:** [Token](./css-tokenizer.token.md)<!-- -->&lt;[TokenType.BadString](./css-tokenizer.tokentype.md)<!-- -->, undefined&gt;
 
