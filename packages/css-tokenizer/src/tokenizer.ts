@@ -19,6 +19,9 @@ import { ParseError } from './interfaces/error';
 import { checkIfThreeCodePointsWouldStartAUnicodeRange } from './checks/three-code-points-would-start-unicode-range';
 import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 
+/**
+ * Tokenize a CSS string into a list of tokens.
+ */
 export function tokenize(input: { css: { valueOf(): string }, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
 	const t = tokenizer(input, options);
 

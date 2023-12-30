@@ -4,6 +4,8 @@
 
 ## NumberType enum
 
+The type of number token Either `integer` or `number`
+
 **Signature:**
 
 ```typescript

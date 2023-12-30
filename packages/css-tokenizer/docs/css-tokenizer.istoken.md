@@ -4,6 +4,8 @@
 
 ## isToken() function
 
+Assert that a given value has the general structure of a CSS token: - is an array - has a length of at least 4 - has a known token type - has a string representation - has a start position - has an end position
+
 **Signature:**
 
 ```typescript

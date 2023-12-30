@@ -44,7 +44,7 @@ console.log(tokens);
 |  Enumeration | Description |
 |  --- | --- |
 |  [HashType](./css-tokenizer.hashtype.md) | The type of hash token |
-|  [NumberType](./css-tokenizer.numbertype.md) |  |
+|  [NumberType](./css-tokenizer.numbertype.md) | The type of number token Either <code>integer</code> or <code>number</code> |
 |  [TokenType](./css-tokenizer.tokentype.md) | All possible CSS token types |
 
 ## Functions
@@ -52,12 +52,12 @@ console.log(tokens);
 |  Function | Description |
 |  --- | --- |
 |  [cloneTokens(tokens)](./css-tokenizer.clonetokens.md) |  |
-|  [isToken(x)](./css-tokenizer.istoken.md) |  |
-|  [mirrorVariant(token)](./css-tokenizer.mirrorvariant.md) |  |
-|  [mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md) |  |
+|  [isToken(x)](./css-tokenizer.istoken.md) | Assert that a given value has the general structure of a CSS token: - is an array - has a length of at least 4 - has a known token type - has a string representation - has a start position - has an end position |
+|  [mirrorVariant(token)](./css-tokenizer.mirrorvariant.md) | Get the mirror variant of a given token |
+|  [mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md) | Get the mirror variant type of a given token type |
 |  [mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md) |  |
 |  [stringify(tokens)](./css-tokenizer.stringify.md) |  |
-|  [tokenize(input, options)](./css-tokenizer.tokenize.md) |  |
+|  [tokenize(input, options)](./css-tokenizer.tokenize.md) | Tokenize a CSS string into a list of tokens. |
 |  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) |  |
 
 ## Interfaces

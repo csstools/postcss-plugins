@@ -129,6 +129,10 @@ export enum TokenType {
 	UnicodeRange = 'unicode-range-token',
 }
 
+/**
+ * The type of number token
+ * Either `integer` or `number`
+ */
 export enum NumberType {
 	Integer = 'integer',
 	Number = 'number',
@@ -341,6 +345,18 @@ export interface Token<T extends TokenType, U> extends Array<T | string | number
 	4: U,
 }
 
+/**
+ * Get the mirror variant type of a given token type
+ *
+ * @example
+ *
+ * ```js
+ * const input = TokenType.OpenParen;
+ * const output = mirrorVariantType(input);
+ *
+ * console.log(output); // TokenType.CloseParen
+ * ```
+ */
 export function mirrorVariantType(type: TokenType): TokenType | null {
 	switch (type) {
 		case TokenType.OpenParen:
@@ -363,6 +379,18 @@ export function mirrorVariantType(type: TokenType): TokenType | null {
 	}
 }
 
+/**
+ * Get the mirror variant of a given token
+ *
+ * @example
+ *
+ * ```js
+ * const input = [TokenType.OpenParen, '(', 0, 1, undefined];
+ * const output = mirrorVariant(input);
+ *
+ * console.log(output); // [TokenType.CloseParen, ')', -1, -1, undefined]
+ * ```
+ */
 export function mirrorVariant(token: CSSToken): CSSToken | null {
 	switch (token[0]) {
 		case TokenType.OpenParen:
@@ -387,8 +415,16 @@ export function mirrorVariant(token: CSSToken): CSSToken | null {
 
 const tokenTypes = Object.values(TokenType);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isToken(x: any): x is CSSToken {
+/**
+ * Assert that a given value has the general structure of a CSS token:
+ * - is an array
+ * - has a length of at least 4
+ * - has a known token type
+ * - has a string representation
+ * - has a start position
+ * - has an end position
+ */
+export function isToken(x: any): x is CSSToken { // eslint-disable-line @typescript-eslint/no-explicit-any
 	if (!Array.isArray(x)) {
 		return false;
 	}

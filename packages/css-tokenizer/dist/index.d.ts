@@ -65,14 +65,51 @@ export declare enum HashType {
     ID = "id"
 }
 
+/**
+ * Assert that a given value has the general structure of a CSS token:
+ * - is an array
+ * - has a length of at least 4
+ * - has a known token type
+ * - has a string representation
+ * - has a start position
+ * - has an end position
+ */
 export declare function isToken(x: any): x is CSSToken;
 
+/**
+ * Get the mirror variant of a given token
+ *
+ * @example
+ *
+ * ```js
+ * const input = [TokenType.OpenParen, '(', 0, 1, undefined];
+ * const output = mirrorVariant(input);
+ *
+ * console.log(output); // [TokenType.CloseParen, ')', -1, -1, undefined]
+ * ```
+ */
 export declare function mirrorVariant(token: CSSToken): CSSToken | null;
 
+/**
+ * Get the mirror variant type of a given token type
+ *
+ * @example
+ *
+ * ```js
+ * const input = TokenType.OpenParen;
+ * const output = mirrorVariantType(input);
+ *
+ * console.log(output); // TokenType.CloseParen
+ * ```
+ */
 export declare function mirrorVariantType(type: TokenType): TokenType | null;
 
 export declare function mutateIdent(ident: TokenIdent, newValue: string): void;
 
+/**
+ * The type of number token
+ * Either `integer` or `number`
+ */
 export declare enum NumberType {
     Integer = "integer",
     Number = "number"
@@ -253,6 +290,9 @@ export declare interface TokenIdent extends Token<TokenType.Ident, {
 }> {
 }
 
+/**
+ * Tokenize a CSS string into a list of tokens.
+ */
 export declare function tokenize(input: {
     css: {
         valueOf(): string;

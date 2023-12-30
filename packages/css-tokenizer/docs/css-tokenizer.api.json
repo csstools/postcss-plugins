@@ -612,7 +612,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!isToken:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Assert that a given value has the general structure of a CSS token: - is an array - has a length of at least 4 - has a known token type - has a string representation - has a start position - has an end position\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -667,7 +667,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!mirrorVariant:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Get the mirror variant of a given token\n *\n * @example\n * ```js\n * const input = [TokenType.OpenParen, '(', 0, 1, undefined];\n * const output = mirrorVariant(input);\n *\n * console.log(output); // [TokenType.CloseParen, ')', -1, -1, undefined]\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -718,7 +718,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!mirrorVariantType:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Get the mirror variant type of a given token type\n *\n * @example\n * ```js\n * const input = TokenType.OpenParen;\n * const output = mirrorVariantType(input);\n *\n * console.log(output); // TokenType.CloseParen\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -831,7 +831,7 @@
         {
           "kind": "Enum",
           "canonicalReference": "@csstools/css-tokenizer!NumberType:enum",
-          "docComment": "",
+          "docComment": "/**\n * The type of number token Either `integer` or `number`\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2409,7 +2409,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!tokenize:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Tokenize a CSS string into a list of tokens.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

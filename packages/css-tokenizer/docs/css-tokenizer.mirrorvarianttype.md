@@ -4,6 +4,8 @@
 
 ## mirrorVariantType() function
 
+Get the mirror variant type of a given token type
+
 **Signature:**
 
 ```typescript
@@ -19,4 +21,14 @@ export declare function mirrorVariantType(type: TokenType): TokenType | null;
 **Returns:**
 
 [TokenType](./css-tokenizer.tokentype.md) \| null
+
+## Example
+
+
+```js
+const input = TokenType.OpenParen;
+const output = mirrorVariantType(input);
+
+console.log(output); // TokenType.CloseParen
+```
 
