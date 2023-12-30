@@ -4,6 +4,8 @@
 
 ## TokenNode.tokens() method
 
+This is the inverse of parsing from a list of tokens.
+
 **Signature:**
 
 ```typescript

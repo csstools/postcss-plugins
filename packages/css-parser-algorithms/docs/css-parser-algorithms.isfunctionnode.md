@@ -4,6 +4,8 @@
 
 ## isFunctionNode() function
 
+Check if the current object is a `FunctionNode`<!-- -->. This is a type guard.
+
 **Signature:**
 
 ```typescript

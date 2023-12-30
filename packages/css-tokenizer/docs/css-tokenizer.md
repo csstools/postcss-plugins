@@ -10,7 +10,7 @@ Tokenize CSS following the [CSS Syntax Level 3 specification](https://drafts.css
 
 The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.
 
-Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [@csstools/css-parser-algorithms](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or even a specific parser.
+Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [@csstools/css-parser-algorithms](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or a more specific parser.
 
 ## Example
 

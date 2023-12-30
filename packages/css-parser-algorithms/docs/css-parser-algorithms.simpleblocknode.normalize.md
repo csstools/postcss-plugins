@@ -4,7 +4,7 @@
 
 ## SimpleBlockNode.normalize() method
 
-Normalize the current Simple Block: - if the "endToken" is EOF, replace with the mirror token of the "startToken"
+Normalize the current simple block 1. if the "endToken" is EOF, replace with the mirror token of the "startToken"
 
 **Signature:**
 

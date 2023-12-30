@@ -4,6 +4,8 @@
 
 ## isWhitespaceNode() function
 
+Check if the current object is a `WhitespaceNode`<!-- -->. This is a type guard.
+
 **Signature:**
 
 ```typescript

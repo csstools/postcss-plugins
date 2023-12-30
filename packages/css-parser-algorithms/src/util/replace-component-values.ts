@@ -1,6 +1,10 @@
-import type { ComponentValue } from '../consume/consume-component-block-function';
+import type { ComponentValue } from '../consume/component-block-function';
 import { isFunctionNode, isSimpleBlockNode } from './type-predicates';
 
+/**
+ * Replace specific component values in a list of component values.
+ * A helper for the most common and simplistic cases when mutating an AST.
+ */
 export function replaceComponentValues(
 	componentValuesList: Array<Array<ComponentValue>>,
 	replaceWith: (componentValue: ComponentValue) => ComponentValue | void,

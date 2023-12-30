@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [@csstools/css-parser-algorithms](./css-parser-algorithms.md) |  |
+|  [@csstools/css-parser-algorithms](./css-parser-algorithms.md) | Parse CSS following the [CSS Syntax Level 3 specification](https://drafts.csswg.org/css-syntax/#parsing)<!-- -->. |
 

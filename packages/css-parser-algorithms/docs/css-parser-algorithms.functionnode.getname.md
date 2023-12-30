@@ -4,7 +4,7 @@
 
 ## FunctionNode.getName() method
 
-Retrieve the name of the current Function. This is the parsed and unescaped name of the function.
+Retrieve the name of the current function. This is the parsed and unescaped name of the function.
 
 **Signature:**
 

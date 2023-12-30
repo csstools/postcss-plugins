@@ -4,6 +4,8 @@
 
 ## TokenNode.toString() method
 
+Convert the current token to a string. This is not a true serialization. It is purely the string representation of token.
+
 **Signature:**
 
 ```typescript

@@ -157,6 +157,17 @@ export abstract class ContainerNodeBaseClass {
 	}
 }
 
+/**
+ * A function node.
+ *
+ * @example
+ * ```js
+ * const node = parseComponentValue(tokenize('calc(1 + 1)'));
+ *
+ * isFunctionNode(node); // true
+ * node.getName(); // 'calc'
+ * ```
+ */
 export class FunctionNode extends ContainerNodeBaseClass {
 	/**
 	 * The node type
@@ -184,7 +195,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	}
 
 	/**
-	 * Retrieve the name of the current Function.
+	 * Retrieve the name of the current function.
 	 * This is the parsed and unescaped name of the function.
 	 */
 	getName(): string {
@@ -192,8 +203,8 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	}
 
 	/**
-	 * Normalize the current Function:
-	 * - if the "endToken" is EOF, replace with a ")-token"
+	 * Normalize the current function:
+	 * 1. if the "endToken" is EOF, replace with a ")-token"
 	 */
 	normalize() {
 		if (this.endToken[0] === TokenType.EOF) {
@@ -202,7 +213,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	}
 
 	/**
-	 * Retrieve the tokens for the current Function.
+	 * Retrieve the tokens for the current function.
 	 * This is the inverse of parsing from a list of tokens.
 	 */
 	tokens(): Array<CSSToken> {
@@ -225,7 +236,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	}
 
 	/**
-	 * Convert the current Function to a string.
+	 * Convert the current function to a string.
 	 * This is not a true serialization.
 	 * It is purely a concatenation of the string representation of the tokens.
 	 */
@@ -242,6 +253,8 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	}
 
 	/**
+	 * @internal
+	 *
 	 * A debug helper to convert the current object to a JSON representation.
 	 * This is useful in asserts and to store large ASTs in files.
 	 */
@@ -255,16 +268,14 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	}
 
 	/**
-	 * Check if the current object is a FunctionNode.
-	 * This is a type guard to help with type narrowing.
+	 * @internal
 	 */
 	isFunctionNode(): this is FunctionNode {
 		return FunctionNode.isFunctionNode(this);
 	}
 
 	/**
-	 * Check if the given object is a FunctionNode.
-	 * This is a type guard to help with type narrowing.
+	 * @internal
 	 */
 	static isFunctionNode(x: unknown): x is FunctionNode {
 		if (!x) {
@@ -325,10 +336,34 @@ function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: numb
 	}
 }
 
+/**
+ * A simple block node.
+ *
+ * @example
+ * ```js
+ * const node = parseComponentValue(tokenize('[foo=bar]'));
+ *
+ * isSimpleBlockNode(node); // true
+ * node.startToken; // [TokenType.OpenSquare, '[', 0, 0, undefined]
+ * ```
+ */
 export class SimpleBlockNode extends ContainerNodeBaseClass {
+	/**
+	 * The node type
+	 * Always `ComponentValueType.SimpleBlock`
+	 */
 	type: ComponentValueType = ComponentValueType.SimpleBlock;
 
+	/**
+	 * The token for the opening token of the block.
+	 */
 	startToken: CSSToken;
+
+	/**
+	 * The token for the closing token of the block.
+	 * If the block is closed it will be the mirror variant of the `startToken`.
+	 * If the block is unclosed, this will be an EOF token.
+	 */
 	endToken: CSSToken;
 
 	constructor(startToken: CSSToken, endToken: CSSToken, value: Array<ComponentValue>) {
@@ -340,8 +375,8 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 	}
 
 	/**
-	 * Normalize the current Simple Block:
-	 * - if the "endToken" is EOF, replace with the mirror token of the "startToken"
+	 * Normalize the current simple block
+	 * 1. if the "endToken" is EOF, replace with the mirror token of the "startToken"
 	 */
 	normalize() {
 		if (this.endToken[0] === TokenType.EOF) {
@@ -352,6 +387,10 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 		}
 	}
 
+	/**
+	 * Retrieve the tokens for the current simple block.
+	 * This is the inverse of parsing from a list of tokens.
+	 */
 	tokens(): Array<CSSToken> {
 		if (this.endToken[0] === TokenType.EOF) {
 			return [
@@ -371,6 +410,11 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 		];
 	}
 
+	/**
+	 * Convert the current simple block to a string.
+	 * This is not a true serialization.
+	 * It is purely a concatenation of the string representation of the tokens.
+	 */
 	toString(): string {
 		const valueString = this.value.map((x) => {
 			if (isToken(x)) {
@@ -383,19 +427,12 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 		return stringify(this.startToken) + valueString + stringify(this.endToken);
 	}
 
-	indexOf(item: ComponentValue): number | string {
-		return this.value.indexOf(item);
-	}
-
-	at(index: number | string): ComponentValue | undefined {
-		if (typeof index === 'number') {
-			if (index < 0) {
-				index = this.value.length + index;
-			}
-			return this.value[index];
-		}
-	}
-
+	/**
+	 * @internal
+	 *
+	 * A debug helper to convert the current object to a JSON representation.
+	 * This is useful in asserts and to store large ASTs in files.
+	 */
 	toJSON(): unknown {
 		return {
 			type: this.type,
@@ -405,10 +442,16 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isSimpleBlockNode(): this is SimpleBlockNode {
 		return SimpleBlockNode.isSimpleBlockNode(this);
 	}
 
+	/**
+	 * @internal
+	 */
 	static isSimpleBlockNode(x: unknown): x is SimpleBlockNode {
 		if (!x) {
 			return false;
@@ -474,22 +517,44 @@ function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: n
 }
 
 export class WhitespaceNode {
+	/**
+	 * The node type
+	 * Always `ComponentValueType.WhiteSpace`
+	 */
 	type: ComponentValueType = ComponentValueType.Whitespace;
 
+	/**
+	 * The list of consecutive whitespace tokens.
+	 */
 	value: Array<CSSToken>;
 
 	constructor(value: Array<CSSToken>) {
 		this.value = value;
 	}
 
+	/**
+	 * Retrieve the tokens for the current whitespace.
+	 * This is the inverse of parsing from a list of tokens.
+	 */
 	tokens(): Array<CSSToken> {
 		return this.value;
 	}
 
+	/**
+	 * Convert the current whitespace to a string.
+	 * This is not a true serialization.
+	 * It is purely a concatenation of the string representation of the tokens.
+	 */
 	toString(): string {
 		return stringify(...this.value);
 	}
 
+	/**
+	 * @internal
+	 *
+	 * A debug helper to convert the current object to a JSON representation.
+	 * This is useful in asserts and to store large ASTs in files.
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -497,10 +562,16 @@ export class WhitespaceNode {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isWhitespaceNode(): this is WhitespaceNode {
 		return WhitespaceNode.isWhitespaceNode(this);
 	}
 
+	/**
+	 * @internal
+	 */
 	static isWhitespaceNode(x: unknown): x is WhitespaceNode {
 		if (!x) {
 			return false;
@@ -532,24 +603,46 @@ function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: nu
 }
 
 export class CommentNode {
+	/**
+	 * The node type
+	 * Always `ComponentValueType.Comment`
+	 */
 	type: ComponentValueType = ComponentValueType.Comment;
 
+	/**
+	 * The comment token.
+	 */
 	value: CSSToken;
 
 	constructor(value: CSSToken) {
 		this.value = value;
 	}
 
+	/**
+	 * Retrieve the tokens for the current comment.
+	 * This is the inverse of parsing from a list of tokens.
+	 */
 	tokens(): Array<CSSToken> {
 		return [
 			this.value,
 		];
 	}
 
+	/**
+	 * Convert the current comment to a string.
+	 * This is not a true serialization.
+	 * It is purely a concatenation of the string representation of the tokens.
+	 */
 	toString(): string {
 		return stringify(this.value);
 	}
 
+	/**
+	 * @internal
+	 *
+	 * A debug helper to convert the current object to a JSON representation.
+	 * This is useful in asserts and to store large ASTs in files.
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -557,10 +650,16 @@ export class CommentNode {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isCommentNode(): this is CommentNode {
 		return CommentNode.isCommentNode(this);
 	}
 
+	/**
+	 * @internal
+	 */
 	static isCommentNode(x: unknown): x is CommentNode {
 		if (!x) {
 			return false;
@@ -609,24 +708,45 @@ function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>):
 }
 
 export class TokenNode {
+	/**
+	 * The node type
+	 * Always `ComponentValueType.Token`
+	 */
 	type: ComponentValueType = ComponentValueType.Token;
 
+	/**
+	 * The token.
+	 */
 	value: CSSToken;
 
 	constructor(value: CSSToken) {
 		this.value = value;
 	}
 
+	/**
+	 * This is the inverse of parsing from a list of tokens.
+	 */
 	tokens(): Array<CSSToken> {
 		return [
 			this.value,
 		];
 	}
 
+	/**
+	 * Convert the current token to a string.
+	 * This is not a true serialization.
+	 * It is purely the string representation of token.
+	 */
 	toString(): string {
-		return stringify(this.value);
+		return this.value[1];
 	}
 
+	/**
+	 * @internal
+	 *
+	 * A debug helper to convert the current object to a JSON representation.
+	 * This is useful in asserts and to store large ASTs in files.
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -634,10 +754,16 @@ export class TokenNode {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isTokenNode(): this is TokenNode {
 		return TokenNode.isTokenNode(this);
 	}
 
+	/**
+	 * @internal
+	 */
 	static isTokenNode(x: unknown): x is TokenNode {
 		if (!x) {
 			return false;

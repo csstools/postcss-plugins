@@ -20,16 +20,13 @@ export declare class CommentNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.commentnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) |  |
-|  [value](./css-parser-algorithms.commentnode.value.md) |  | CSSToken |  |
+|  [type](./css-parser-algorithms.commentnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.Comment</code> |
+|  [value](./css-parser-algorithms.commentnode.value.md) |  | CSSToken | The comment token. |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [isCommentNode()](./css-parser-algorithms.commentnode.iscommentnode.md) |  |  |
-|  [isCommentNode(x)](./css-parser-algorithms.commentnode.iscommentnode.md) | <code>static</code> |  |
-|  [toJSON()](./css-parser-algorithms.commentnode.tojson.md) |  |  |
-|  [tokens()](./css-parser-algorithms.commentnode.tokens.md) |  |  |
-|  [toString()](./css-parser-algorithms.commentnode.tostring.md) |  |  |
+|  [tokens()](./css-parser-algorithms.commentnode.tokens.md) |  | Retrieve the tokens for the current comment. This is the inverse of parsing from a list of tokens. |
+|  [toString()](./css-parser-algorithms.commentnode.tostring.md) |  | Convert the current comment to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens. |
 

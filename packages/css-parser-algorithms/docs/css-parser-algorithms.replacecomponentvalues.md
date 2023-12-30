@@ -4,6 +4,8 @@
 
 ## replaceComponentValues() function
 
+Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST.
+
 **Signature:**
 
 ```typescript

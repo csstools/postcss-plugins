@@ -4,6 +4,8 @@
 
 ## WhitespaceNode.type property
 
+The node type Always `ComponentValueType.WhiteSpace`
+
 **Signature:**
 
 ```typescript

@@ -1,7 +1,7 @@
 import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
-import { ComponentValue, consumeComponentValue } from '../consume/consume-component-block-function';
+import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
-export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
+export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
 	const ctx = {
 		onParseError: options?.onParseError ?? (() => { /* noop */ }),
 	};
@@ -9,6 +9,10 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 	const tokensCopy = [
 		...tokens,
 	];
+
+	if (tokens.length === 0) {
+		return [];
+	}
 
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
@@ -22,17 +26,29 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 		]);
 	}
 
-	const list: Array<ComponentValue> = [];
+	const listOfCvls: Array<Array<ComponentValue>> = [];
+	let list: Array<ComponentValue> = [];
 
 	let i = 0;
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (!tokensCopy[i] || tokensCopy[i][0] === TokenType.EOF) {
-			return list;
+			if (list.length) {
+				listOfCvls.push(list);
+			}
+
+			return listOfCvls;
 		}
 
-		const result = consumeComponentValue(ctx, tokensCopy.slice(i));
+		if (tokensCopy[i][0] === TokenType.Comma) {
+			listOfCvls.push(list);
+			list = [];
+			i++;
+			continue;
+		}
+
+		const result = consumeComponentValue(ctx, tokens.slice(i));
 		list.push(result.node);
 		i += result.advance;
 	}

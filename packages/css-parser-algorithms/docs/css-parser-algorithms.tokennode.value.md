@@ -4,6 +4,8 @@
 
 ## TokenNode.value property
 
+The token.
+
 **Signature:**
 
 ```typescript

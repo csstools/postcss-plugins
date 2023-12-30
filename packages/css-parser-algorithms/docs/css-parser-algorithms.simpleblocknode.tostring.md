@@ -4,6 +4,8 @@
 
 ## SimpleBlockNode.toString() method
 
+Convert the current simple block to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.
+
 **Signature:**
 
 ```typescript

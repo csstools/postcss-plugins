@@ -20,16 +20,13 @@ export declare class TokenNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.tokennode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) |  |
-|  [value](./css-parser-algorithms.tokennode.value.md) |  | CSSToken |  |
+|  [type](./css-parser-algorithms.tokennode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.Token</code> |
+|  [value](./css-parser-algorithms.tokennode.value.md) |  | CSSToken | The token. |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [isTokenNode()](./css-parser-algorithms.tokennode.istokennode.md) |  |  |
-|  [isTokenNode(x)](./css-parser-algorithms.tokennode.istokennode.md) | <code>static</code> |  |
-|  [toJSON()](./css-parser-algorithms.tokennode.tojson.md) |  |  |
-|  [tokens()](./css-parser-algorithms.tokennode.tokens.md) |  |  |
-|  [toString()](./css-parser-algorithms.tokennode.tostring.md) |  |  |
+|  [tokens()](./css-parser-algorithms.tokennode.tokens.md) |  | This is the inverse of parsing from a list of tokens. |
+|  [toString()](./css-parser-algorithms.tokennode.tostring.md) |  | Convert the current token to a string. This is not a true serialization. It is purely the string representation of token. |
 

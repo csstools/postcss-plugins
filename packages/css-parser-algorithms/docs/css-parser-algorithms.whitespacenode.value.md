@@ -4,6 +4,8 @@
 
 ## WhitespaceNode.value property
 
+The list of consecutive whitespace tokens.
+
 **Signature:**
 
 ```typescript

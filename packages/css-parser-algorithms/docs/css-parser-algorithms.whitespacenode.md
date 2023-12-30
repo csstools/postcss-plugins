@@ -20,16 +20,13 @@ export declare class WhitespaceNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.whitespacenode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) |  |
-|  [value](./css-parser-algorithms.whitespacenode.value.md) |  | Array&lt;CSSToken&gt; |  |
+|  [type](./css-parser-algorithms.whitespacenode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.WhiteSpace</code> |
+|  [value](./css-parser-algorithms.whitespacenode.value.md) |  | Array&lt;CSSToken&gt; | The list of consecutive whitespace tokens. |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [isWhitespaceNode()](./css-parser-algorithms.whitespacenode.iswhitespacenode.md) |  |  |
-|  [isWhitespaceNode(x)](./css-parser-algorithms.whitespacenode.iswhitespacenode.md) | <code>static</code> |  |
-|  [toJSON()](./css-parser-algorithms.whitespacenode.tojson.md) |  |  |
-|  [tokens()](./css-parser-algorithms.whitespacenode.tokens.md) |  |  |
-|  [toString()](./css-parser-algorithms.whitespacenode.tostring.md) |  |  |
+|  [tokens()](./css-parser-algorithms.whitespacenode.tokens.md) |  | Retrieve the tokens for the current whitespace. This is the inverse of parsing from a list of tokens. |
+|  [toString()](./css-parser-algorithms.whitespacenode.tostring.md) |  | Convert the current whitespace to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens. |
 

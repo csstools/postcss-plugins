@@ -4,7 +4,7 @@
 
 ## FunctionNode.normalize() method
 
-Normalize the current Function: - if the "endToken" is EOF, replace with a ")-token"
+Normalize the current function: 1. if the "endToken" is EOF, replace with a ")-token"
 
 **Signature:**
 

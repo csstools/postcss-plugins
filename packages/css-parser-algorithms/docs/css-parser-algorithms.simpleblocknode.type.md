@@ -4,6 +4,8 @@
 
 ## SimpleBlockNode.type property
 
+The node type Always `ComponentValueType.SimpleBlock`
+
 **Signature:**
 
 ```typescript

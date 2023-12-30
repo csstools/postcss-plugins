@@ -4,6 +4,8 @@
 
 ## SimpleBlockNode.endToken property
 
+The token for the closing token of the block. If the block is closed it will be the mirror variant of the `startToken`<!-- -->. If the block is unclosed, this will be an EOF token.
+
 **Signature:**
 
 ```typescript

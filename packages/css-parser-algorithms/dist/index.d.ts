@@ -1,18 +1,120 @@
+/**
+ * Parse CSS following the {@link https://drafts.csswg.org/css-syntax/#parsing | CSS Syntax Level 3 specification}.
+ *
+ * @remarks
+ * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.
+ *
+ * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task.
+ * For many applications it is sufficient to work with tokens.
+ * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.
+ *
+ * The implementation of the AST nodes is kept lightweight and simple.
+ * Do not expect magic methods, instead assume that arrays and class instances behave like any other JavaScript.
+ *
+ * @example
+ * Parse a string of CSS into a component value:
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseComponentValue } from '@csstools/css-parser';
+ *
+ * const myCSS = `calc(1px * 2)`;
+ *
+ * const componentValue = parseComponentValue(tokenize({
+ * 	css: myCSS,
+ * }));
+ *
+ * console.log(componentValue);
+ * ```
+ *
+ * @example
+ * Use the right algorithm for the job.
+ *
+ * If your context allows a list of component values, use {@link parseListOfComponentValues}:
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseComponentValue(tokenize({ css: `10x 20px` }));
+ * ```
+ *
+ * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
+ * ```
+ *
+ * @example
+ * Use the stateful walkers to keep track of the context of a given component value.
+ *
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';
+ *
+ * const myCSS = `calc(1px * (5 / 2))`;
+ *
+ * const componentValue = parseComponentValue(tokenize({ css: myCSS }));
+ *
+ * let state = { inSimpleBlock: false };
+ * componentValue.walk((entry) => {
+ * 	if (isSimpleBlockNode(entry)) {
+ * 		entry.state.inSimpleBlock = true;
+ * 		return;
+ * 	}
+ *
+ * 	if (entry.state.inSimpleBlock) {
+ * 		console.log(entry.node.toString()); // `5`, ...
+ * 	}
+ * }, state);
+ * ```
+ *
+ * @packageDocumentation
+ */
+
 import { CSSToken } from '@csstools/css-tokenizer';
 import { ParseError } from '@csstools/css-tokenizer';
 import { TokenFunction } from '@csstools/css-tokenizer';
 
 export declare class CommentNode {
+    /**
+     * The node type
+     * Always `ComponentValueType.Comment`
+     */
     type: ComponentValueType;
+    /**
+     * The comment token.
+     */
     value: CSSToken;
     constructor(value: CSSToken);
+    /**
+     * Retrieve the tokens for the current comment.
+     * This is the inverse of parsing from a list of tokens.
+     */
     tokens(): Array<CSSToken>;
+    /**
+     * Convert the current comment to a string.
+     * This is not a true serialization.
+     * It is purely a concatenation of the string representation of the tokens.
+     */
     toString(): string;
+    /**
+     * @internal
+     *
+     * A debug helper to convert the current object to a JSON representation.
+     * This is useful in asserts and to store large ASTs in files.
+     */
     toJSON(): {
         type: ComponentValueType;
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isCommentNode(): this is CommentNode;
+    /**
+     * @internal
+     */
     static isCommentNode(x: unknown): x is CommentNode;
 }
 
@@ -85,6 +187,17 @@ export declare abstract class ContainerNodeBaseClass {
     }, index: number | string) => boolean | void, state?: T): false | undefined;
 }
 
+/**
+ * A function node.
+ *
+ * @example
+ * ```js
+ * const node = parseComponentValue(tokenize('calc(1 + 1)'));
+ *
+ * isFunctionNode(node); // true
+ * node.getName(); // 'calc'
+ * ```
+ */
 export declare class FunctionNode extends ContainerNodeBaseClass {
     /**
      * The node type
@@ -102,39 +215,39 @@ export declare class FunctionNode extends ContainerNodeBaseClass {
     endToken: CSSToken;
     constructor(name: TokenFunction, endToken: CSSToken, value: Array<ComponentValue>);
     /**
-     * Retrieve the name of the current Function.
+     * Retrieve the name of the current function.
      * This is the parsed and unescaped name of the function.
      */
     getName(): string;
     /**
-     * Normalize the current Function:
-     * - if the "endToken" is EOF, replace with a ")-token"
+     * Normalize the current function:
+     * 1. if the "endToken" is EOF, replace with a ")-token"
      */
     normalize(): void;
     /**
-     * Retrieve the tokens for the current Function.
+     * Retrieve the tokens for the current function.
      * This is the inverse of parsing from a list of tokens.
      */
     tokens(): Array<CSSToken>;
     /**
-     * Convert the current Function to a string.
+     * Convert the current function to a string.
      * This is not a true serialization.
      * It is purely a concatenation of the string representation of the tokens.
      */
     toString(): string;
     /**
+     * @internal
+     *
      * A debug helper to convert the current object to a JSON representation.
      * This is useful in asserts and to store large ASTs in files.
      */
     toJSON(): unknown;
     /**
-     * Check if the current object is a FunctionNode.
-     * This is a type guard to help with type narrowing.
+     * @internal
      */
     isFunctionNode(): this is FunctionNode;
     /**
-     * Check if the given object is a FunctionNode.
-     * This is a type guard to help with type narrowing.
+     * @internal
      */
     static isFunctionNode(x: unknown): x is FunctionNode;
 }
@@ -172,14 +285,34 @@ export declare function gatherNodeAncestry(node: {
     }, index: number | string) => boolean | void): false | undefined;
 }): Map<unknown, unknown>;
 
+/**
+ * Check if the current object is a `CommentNode`.
+ * This is a type guard.
+ */
 export declare function isCommentNode(x: unknown): x is CommentNode;
 
+/**
+ * Check if the current object is a `FunctionNode`.
+ * This is a type guard.
+ */
 export declare function isFunctionNode(x: unknown): x is FunctionNode;
 
+/**
+ * Check if the current object is a `SimpleBlockNode`.
+ * This is a type guard.
+ */
 export declare function isSimpleBlockNode(x: unknown): x is SimpleBlockNode;
 
+/**
+ * Check if the current object is a `TokenNode`.
+ * This is a type guard.
+ */
 export declare function isTokenNode(x: unknown): x is TokenNode;
 
+/**
+ * Check if the current object is a `WhitespaceNode`.
+ * This is a type guard.
+ */
 export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
 
 export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: {
@@ -194,24 +327,70 @@ export declare function parseListOfComponentValues(tokens: Array<CSSToken>, opti
     onParseError?: (error: ParseError) => void;
 }): ComponentValue[];
 
+/**
+ * Replace specific component values in a list of component values.
+ * A helper for the most common and simplistic cases when mutating an AST.
+ */
 export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => ComponentValue | void): ComponentValue[][];
 
+/**
+ * A simple block node.
+ *
+ * @example
+ * ```js
+ * const node = parseComponentValue(tokenize('[foo=bar]'));
+ *
+ * isSimpleBlockNode(node); // true
+ * node.startToken; // [TokenType.OpenSquare, '[', 0, 0, undefined]
+ * ```
+ */
 export declare class SimpleBlockNode extends ContainerNodeBaseClass {
+    /**
+     * The node type
+     * Always `ComponentValueType.SimpleBlock`
+     */
     type: ComponentValueType;
+    /**
+     * The token for the opening token of the block.
+     */
     startToken: CSSToken;
+    /**
+     * The token for the closing token of the block.
+     * If the block is closed it will be the mirror variant of the `startToken`.
+     * If the block is unclosed, this will be an EOF token.
+     */
     endToken: CSSToken;
     constructor(startToken: CSSToken, endToken: CSSToken, value: Array<ComponentValue>);
     /**
-     * Normalize the current Simple Block:
-     * - if the "endToken" is EOF, replace with the mirror token of the "startToken"
+     * Normalize the current simple block
+     * 1. if the "endToken" is EOF, replace with the mirror token of the "startToken"
      */
     normalize(): void;
+    /**
+     * Retrieve the tokens for the current simple block.
+     * This is the inverse of parsing from a list of tokens.
+     */
     tokens(): Array<CSSToken>;
+    /**
+     * Convert the current simple block to a string.
+     * This is not a true serialization.
+     * It is purely a concatenation of the string representation of the tokens.
+     */
     toString(): string;
-    indexOf(item: ComponentValue): number | string;
-    at(index: number | string): ComponentValue | undefined;
+    /**
+     * @internal
+     *
+     * A debug helper to convert the current object to a JSON representation.
+     * This is useful in asserts and to store large ASTs in files.
+     */
     toJSON(): unknown;
+    /**
+     * @internal
+     */
     isSimpleBlockNode(): this is SimpleBlockNode;
+    /**
+     * @internal
+     */
     static isSimpleBlockNode(x: unknown): x is SimpleBlockNode;
 }
 
@@ -225,23 +404,50 @@ export declare function sourceIndices(x: {
 }>): [number, number];
 
 /**
- * Concatenate the string representation of the token lists of a collection of component values.
+ * Concatenate the string representation of a collection of component values.
  * This is not a proper serializer that will handle escaping and whitespace.
  * It only produces valid CSS for token lists that are also valid.
  */
 export declare function stringify(componentValueLists: Array<Array<ComponentValue>>): string;
 
 export declare class TokenNode {
+    /**
+     * The node type
+     * Always `ComponentValueType.Token`
+     */
     type: ComponentValueType;
+    /**
+     * The token.
+     */
     value: CSSToken;
     constructor(value: CSSToken);
+    /**
+     * This is the inverse of parsing from a list of tokens.
+     */
     tokens(): Array<CSSToken>;
+    /**
+     * Convert the current token to a string.
+     * This is not a true serialization.
+     * It is purely the string representation of token.
+     */
     toString(): string;
+    /**
+     * @internal
+     *
+     * A debug helper to convert the current object to a JSON representation.
+     * This is useful in asserts and to store large ASTs in files.
+     */
     toJSON(): {
         type: ComponentValueType;
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isTokenNode(): this is TokenNode;
+    /**
+     * @internal
+     */
     static isTokenNode(x: unknown): x is TokenNode;
 }
 
@@ -258,16 +464,44 @@ export declare class TokenNode {
 export declare function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>, child: T, index: number) => number;
 
 export declare class WhitespaceNode {
+    /**
+     * The node type
+     * Always `ComponentValueType.WhiteSpace`
+     */
     type: ComponentValueType;
+    /**
+     * The list of consecutive whitespace tokens.
+     */
     value: Array<CSSToken>;
     constructor(value: Array<CSSToken>);
+    /**
+     * Retrieve the tokens for the current whitespace.
+     * This is the inverse of parsing from a list of tokens.
+     */
     tokens(): Array<CSSToken>;
+    /**
+     * Convert the current whitespace to a string.
+     * This is not a true serialization.
+     * It is purely a concatenation of the string representation of the tokens.
+     */
     toString(): string;
+    /**
+     * @internal
+     *
+     * A debug helper to convert the current object to a JSON representation.
+     * This is useful in asserts and to store large ASTs in files.
+     */
     toJSON(): {
         type: ComponentValueType;
         tokens: CSSToken[];
     };
+    /**
+     * @internal
+     */
     isWhitespaceNode(): this is WhitespaceNode;
+    /**
+     * @internal
+     */
     static isWhitespaceNode(x: unknown): x is WhitespaceNode;
 }
 
