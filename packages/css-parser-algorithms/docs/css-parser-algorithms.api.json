@@ -798,7 +798,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#forEach:member(1)",
-              "docComment": "/**\n * Iterates over each item in the `value` array of the current node.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n *\n * @template T - The type of the `state` object.  @template U - The type of the current node.\n */\n",
+              "docComment": "/**\n * Iterates over each item in the `value` array of the current node.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1035,7 +1035,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#walk:member(1)",
-              "docComment": "/**\n * Walks the current node and all its children.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n *\n * @template T - The type of the `state` object.  @template U - The type of the current node.\n */\n",
+              "docComment": "/**\n * Walks the current node and all its children.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1650,7 +1650,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!gatherNodeAncestry:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * AST nodes do not have a `parent` property or method. This makes it harder to traverse the AST upwards. This function builds a `Map<Child, Parent>` that can be used to lookup ancestors of a node.\n *\n * @remarks\n *\n * There is no magic behind this or the map it returns. Mutating the AST will not update the map.\n *\n * Types are erased and any content of the map has type `unknown`. If someone knows a clever way to type this, please let us know.\n *\n * @example\n * ```js\n * const ancestry = gatherNodeAncestry(mediaQuery);\n * mediaQuery.walk((entry) => {\n * \tconst node = entry.node; // directly exposed\n * \tconst parent = entry.parent; // directly exposed\n * \tconst grandParent: unknown = ancestry.get(parent); // lookup\n *\n * \tconsole.log('node', node);\n * \tconsole.log('parent', parent);\n * \tconsole.log('grandParent', grandParent);\n * });\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2991,7 +2991,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!stringify:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Concatenate the string representation of the token lists of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3392,7 +3392,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!walkerIndexGenerator:function(1)",
-          "docComment": "/**\n * Generate a function that finds the next element that should be visited when walking an AST. Rules : - the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. - the next element always appears after the current index. - the next element always exists in the list. - replacing an element does not cause the replaced element to be visited. - removing an element does not cause elements to be skipped. - an element added later in the list will be visited.\n */\n",
+          "docComment": "/**\n * Generate a function that finds the next element that should be visited when walking an AST. Rules : 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. 2. the next element always appears after the current index. 3. the next element always exists in the list. 4. replacing an element does not cause the replaced element to be visited. 5. removing an element does not cause elements to be skipped. 6. an element added later in the list will be visited.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

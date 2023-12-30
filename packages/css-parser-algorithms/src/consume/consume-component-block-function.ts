@@ -93,9 +93,6 @@ export abstract class ContainerNodeBaseClass {
 	 * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.
 	 *
 	 * @returns `false` if the iteration was halted, `undefined` otherwise.
-	 *
-	 * @template T - The type of the `state` object.
-	 * @template U - The type of the current node.
 	 */
 	forEach<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		if (this.value.length === 0) {
@@ -140,9 +137,6 @@ export abstract class ContainerNodeBaseClass {
 	 * However changes are passed down to child node iterations.
 	 *
 	 * @returns `false` if the iteration was halted, `undefined` otherwise.
-	 *
-	 * @template T - The type of the `state` object.
-	 * @template U - The type of the current node.
 	 */
 	walk<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: { node: ComponentValue, parent: ContainerNode, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		if (this.value.length === 0) {

@@ -30,5 +30,3 @@ false \| undefined
 
 `false` if the iteration was halted, `undefined` otherwise.
 
- T - The type of the `state` object.  U - The type of the current node.
-

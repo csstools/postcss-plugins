@@ -6,6 +6,10 @@
 
 Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
 
+## API
+
+[Read the API docs](./docs/css-parser-algorithms.md)
+
 ## Usage
 
 Add [CSS Parser Algorithms] to your project:

@@ -57,9 +57,6 @@ export declare abstract class ContainerNodeBaseClass {
      * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.
      *
      * @returns `false` if the iteration was halted, `undefined` otherwise.
-     *
-     * @template T - The type of the `state` object.
-     * @template U - The type of the current node.
      */
     forEach<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: {
         node: ComponentValue;
@@ -80,9 +77,6 @@ export declare abstract class ContainerNodeBaseClass {
      * However changes are passed down to child node iterations.
      *
      * @returns `false` if the iteration was halted, `undefined` otherwise.
-     *
-     * @template T - The type of the `state` object.
-     * @template U - The type of the current node.
      */
     walk<T extends Record<string, unknown>, U extends ContainerNode>(this: U, cb: (entry: {
         node: ComponentValue;
@@ -145,6 +139,32 @@ export declare class FunctionNode extends ContainerNodeBaseClass {
     static isFunctionNode(x: unknown): x is FunctionNode;
 }
 
+/**
+ * AST nodes do not have a `parent` property or method.
+ * This makes it harder to traverse the AST upwards.
+ * This function builds a `Map<Child, Parent>` that can be used to lookup ancestors of a node.
+ *
+ * @remarks
+ * There is no magic behind this or the map it returns.
+ * Mutating the AST will not update the map.
+ *
+ * Types are erased and any content of the map has type `unknown`.
+ * If someone knows a clever way to type this, please let us know.
+ *
+ * @example
+ * ```js
+ * const ancestry = gatherNodeAncestry(mediaQuery);
+ * mediaQuery.walk((entry) => {
+ * 	const node = entry.node; // directly exposed
+ * 	const parent = entry.parent; // directly exposed
+ * 	const grandParent: unknown = ancestry.get(parent); // lookup
+ *
+ * 	console.log('node', node);
+ * 	console.log('parent', parent);
+ * 	console.log('grandParent', grandParent);
+ * });
+ * ```
+ */
 export declare function gatherNodeAncestry(node: {
     walk(cb: (entry: {
         node: Array<unknown> | unknown;
@@ -204,6 +224,11 @@ export declare function sourceIndices(x: {
     tokens(): Array<CSSToken>;
 }>): [number, number];
 
+/**
+ * Concatenate the string representation of the token lists of a collection of component values.
+ * This is not a proper serializer that will handle escaping and whitespace.
+ * It only produces valid CSS for token lists that are also valid.
+ */
 export declare function stringify(componentValueLists: Array<Array<ComponentValue>>): string;
 
 export declare class TokenNode {
@@ -223,12 +248,12 @@ export declare class TokenNode {
 /**
  * Generate a function that finds the next element that should be visited when walking an AST.
  * Rules :
- * - the previous iteration is used as a reference, so any checks are relative to the start of the current iteration.
- * - the next element always appears after the current index.
- * - the next element always exists in the list.
- * - replacing an element does not cause the replaced element to be visited.
- * - removing an element does not cause elements to be skipped.
- * - an element added later in the list will be visited.
+ * 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration.
+ * 2. the next element always appears after the current index.
+ * 3. the next element always exists in the list.
+ * 4. replacing an element does not cause the replaced element to be visited.
+ * 5. removing an element does not cause elements to be skipped.
+ * 6. an element added later in the list will be visited.
  */
 export declare function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>, child: T, index: number) => number;
 
