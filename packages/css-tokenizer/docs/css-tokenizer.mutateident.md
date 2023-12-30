@@ -4,6 +4,8 @@
 
 ## mutateIdent() function
 
+Set the ident value and update the string representation. This handles escaping.
+
 **Signature:**
 
 ```typescript

@@ -175,7 +175,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!cloneTokens:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Deep clone a list of tokens. Useful for mutations without altering the original list.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -612,7 +612,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!isToken:function(1)",
-          "docComment": "/**\n * Assert that a given value has the general structure of a CSS token: - is an array - has a length of at least 4 - has a known token type - has a string representation - has a start position - has an end position\n */\n",
+          "docComment": "/**\n * Assert that a given value has the general structure of a CSS token: 1. is an array. 2. has at least four items. 3. has a known token type. 4. has a string representation. 5. has a start position. 6. has an end position.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -769,7 +769,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!mutateIdent:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Set the ident value and update the string representation. This handles escaping.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -890,7 +890,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@csstools/css-tokenizer!ParseError:class",
-          "docComment": "",
+          "docComment": "/**\n * The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the `onParseError` callback.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1102,7 +1102,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!stringify:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2493,7 +2493,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!tokenizer:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Create a tokenizer for a CSS string.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

@@ -417,12 +417,12 @@ const tokenTypes = Object.values(TokenType);
 
 /**
  * Assert that a given value has the general structure of a CSS token:
- * - is an array
- * - has a length of at least 4
- * - has a known token type
- * - has a string representation
- * - has a start position
- * - has an end position
+ * 1. is an array.
+ * 2. has at least four items.
+ * 3. has a known token type.
+ * 4. has a string representation.
+ * 5. has a start position.
+ * 6. has an end position.
  */
 export function isToken(x: any): x is CSSToken { // eslint-disable-line @typescript-eslint/no-explicit-any
 	if (!Array.isArray(x)) {

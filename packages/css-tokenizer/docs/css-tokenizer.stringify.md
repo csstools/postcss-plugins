@@ -4,6 +4,8 @@
 
 ## stringify() function
 
+Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid.
+
 **Signature:**
 
 ```typescript

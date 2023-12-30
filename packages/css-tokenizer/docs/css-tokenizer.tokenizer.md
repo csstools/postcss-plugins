@@ -4,6 +4,8 @@
 
 ## tokenizer() function
 
+Create a tokenizer for a CSS string.
+
 **Signature:**
 
 ```typescript

@@ -2,17 +2,17 @@ import { HYPHEN_MINUS } from '../code-points/code-points';
 import { isIdentCodePoint, isIdentStartCodePoint } from '../code-points/ranges';
 import { TokenIdent } from '../interfaces/token';
 
+/**
+ * Set the ident value and update the string representation.
+ * This handles escaping.
+ */
 export function mutateIdent(ident: TokenIdent, newValue: string): void {
 	let result = '';
 
 	const codePoints: Array<number> = [];
-
-	{
-		let codePoint = '';
-		for (codePoint of newValue) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			codePoints.push(codePoint.codePointAt(0)!);
-		}
+	for (const codePoint of newValue) {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		codePoints.push(codePoint.codePointAt(0)!);
 	}
 
 	let remainderStartIndex = 0;

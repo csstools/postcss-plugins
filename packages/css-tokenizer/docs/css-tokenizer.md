@@ -37,7 +37,7 @@ console.log(tokens);
 
 |  Class | Description |
 |  --- | --- |
-|  [ParseError](./css-tokenizer.parseerror.md) |  |
+|  [ParseError](./css-tokenizer.parseerror.md) | The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the <code>onParseError</code> callback. |
 
 ## Enumerations
 
@@ -51,14 +51,14 @@ console.log(tokens);
 
 |  Function | Description |
 |  --- | --- |
-|  [cloneTokens(tokens)](./css-tokenizer.clonetokens.md) |  |
-|  [isToken(x)](./css-tokenizer.istoken.md) | Assert that a given value has the general structure of a CSS token: - is an array - has a length of at least 4 - has a known token type - has a string representation - has a start position - has an end position |
+|  [cloneTokens(tokens)](./css-tokenizer.clonetokens.md) | Deep clone a list of tokens. Useful for mutations without altering the original list. |
+|  [isToken(x)](./css-tokenizer.istoken.md) | Assert that a given value has the general structure of a CSS token: 1. is an array. 2. has at least four items. 3. has a known token type. 4. has a string representation. 5. has a start position. 6. has an end position. |
 |  [mirrorVariant(token)](./css-tokenizer.mirrorvariant.md) | Get the mirror variant of a given token |
 |  [mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md) | Get the mirror variant type of a given token type |
-|  [mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md) |  |
-|  [stringify(tokens)](./css-tokenizer.stringify.md) |  |
+|  [mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md) | Set the ident value and update the string representation. This handles escaping. |
+|  [stringify(tokens)](./css-tokenizer.stringify.md) | Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid. |
 |  [tokenize(input, options)](./css-tokenizer.tokenize.md) | Tokenize a CSS string into a list of tokens. |
-|  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) |  |
+|  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) | Create a tokenizer for a CSS string. |
 
 ## Interfaces
 

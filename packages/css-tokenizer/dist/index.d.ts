@@ -30,6 +30,10 @@
  * @packageDocumentation
  */
 
+/**
+ * Deep clone a list of tokens.
+ * Useful for mutations without altering the original list.
+ */
 export declare function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken>;
 
 export declare type CodePointReader = {
@@ -67,12 +71,12 @@ export declare enum HashType {
 
 /**
  * Assert that a given value has the general structure of a CSS token:
- * - is an array
- * - has a length of at least 4
- * - has a known token type
- * - has a string representation
- * - has a start position
- * - has an end position
+ * 1. is an array.
+ * 2. has at least four items.
+ * 3. has a known token type.
+ * 4. has a string representation.
+ * 5. has a start position.
+ * 6. has an end position.
  */
 export declare function isToken(x: any): x is CSSToken;
 
@@ -104,6 +108,10 @@ export declare function mirrorVariant(token: CSSToken): CSSToken | null;
  */
 export declare function mirrorVariantType(type: TokenType): TokenType | null;
 
+/**
+ * Set the ident value and update the string representation.
+ * This handles escaping.
+ */
 export declare function mutateIdent(ident: TokenIdent, newValue: string): void;
 
 /**
@@ -115,6 +123,10 @@ export declare enum NumberType {
     Number = "number"
 }
 
+/**
+ * The CSS Tokenizer is forgiving and will never throw on invalid input.
+ * Any errors are reported through the `onParseError` callback.
+ */
 export declare class ParseError extends Error {
     /** The index of the start character of the current token. */
     sourceStart: number;
@@ -143,6 +155,11 @@ export declare class Reader implements CodePointReader {
     resetRepresentation(): void;
 }
 
+/**
+ * Concatenate the string representation of a list of tokens.
+ * This is not a proper serializer that will handle escaping and whitespace.
+ * It only produces valid CSS for a token list that is also valid.
+ */
 export declare function stringify(...tokens: Array<CSSToken>): string;
 
 /**
@@ -302,6 +319,9 @@ export declare function tokenize(input: {
     onParseError?: (error: ParseError) => void;
 }): Array<CSSToken>;
 
+/**
+ * Create a tokenizer for a CSS string.
+ */
 export declare function tokenizer(input: {
     css: {
         valueOf(): string;

@@ -22,7 +22,15 @@ import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 /**
  * Tokenize a CSS string into a list of tokens.
  */
-export function tokenize(input: { css: { valueOf(): string }, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }): Array<CSSToken> {
+export function tokenize(
+	input: {
+		css: { valueOf(): string },
+		unicodeRangesAllowed?: boolean
+	},
+	options?: {
+		onParseError?: (error: ParseError) => void
+	},
+): Array<CSSToken> {
 	const t = tokenizer(input, options);
 
 	const tokens: Array<CSSToken> = [];
@@ -44,7 +52,20 @@ export function tokenize(input: { css: { valueOf(): string }, unicodeRangesAllow
 	return tokens;
 }
 
-export function tokenizer(input: { css: { valueOf(): string }, unicodeRangesAllowed?: boolean }, options?: { onParseError?: (error: ParseError) => void }) {
+/**
+ * Create a tokenizer for a CSS string.
+ */
+export function tokenizer(
+	input: {
+		css: {
+			valueOf(): string
+		},
+		unicodeRangesAllowed?: boolean
+	},
+	options?: {
+		onParseError?: (error: ParseError) => void
+	},
+) {
 	const css = input.css.valueOf();
 	const unicodeRangesAllowed = input.unicodeRangesAllowed ?? false;
 
@@ -232,6 +253,4 @@ export function tokenizer(input: { css: { valueOf(): string }, unicodeRangesAllo
 	};
 }
 
-function noop() {
-	/* do nothing */
-}
+function noop() { /* do nothing */ }

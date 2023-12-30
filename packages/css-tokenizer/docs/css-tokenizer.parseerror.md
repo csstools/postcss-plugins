@@ -4,6 +4,8 @@
 
 ## ParseError class
 
+The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the `onParseError` callback.
+
 **Signature:**
 
 ```typescript
