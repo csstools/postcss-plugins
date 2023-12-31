@@ -92,8 +92,8 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calcu
 			if (subCalc === -1) {
 				return -1;
 			}
-			nodes.splice(i, 1, subCalc);
 
+			nodes.splice(i, 1, subCalc);
 			continue;
 		}
 
