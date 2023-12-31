@@ -52,6 +52,7 @@
 - Updated [`postcss-overflow-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand/CHANGELOG.md#501) (patch)
 - Updated [`postcss-place`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place/CHANGELOG.md#901) (patch)
 - Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#901) (patch)
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#205) (patch)
 
 ### 9.3.0
 
