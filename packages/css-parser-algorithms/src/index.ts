@@ -90,6 +90,7 @@ export { parseCommaSeparatedListOfComponentValues } from './parse/comma-separate
 export { gatherNodeAncestry } from './util/node-ancestry';
 export { replaceComponentValues } from './util/replace-component-values';
 export { stringify } from './util/stringify';
+export { forEach, walk } from './util/walk';
 export { walkerIndexGenerator } from './util/walker-index-generator';
 export { ComponentValueType } from './util/component-value-type';
 export {

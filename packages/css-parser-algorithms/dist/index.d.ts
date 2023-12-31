@@ -186,6 +186,14 @@ export declare abstract class ContainerNodeBaseClass {
     }, index: number | string) => boolean | void, state?: T): false | undefined;
 }
 
+export declare function forEach<T extends Record<string, unknown>>(componentValues: Array<ComponentValue>, cb: (entry: {
+    node: ComponentValue;
+    parent: ContainerNode | {
+        value: Array<ComponentValue>;
+    };
+    state?: T;
+}, index: number | string) => boolean | void, state?: T): false | undefined;
+
 /**
  * A function node.
  *
@@ -446,6 +454,14 @@ export declare class TokenNode {
      */
     static isTokenNode(x: unknown): x is TokenNode;
 }
+
+export declare function walk<T extends Record<string, unknown>>(componentValues: Array<ComponentValue>, cb: (entry: {
+    node: ComponentValue;
+    parent: ContainerNode | {
+        value: Array<ComponentValue>;
+    };
+    state?: T;
+}, index: number | string) => boolean | void, state?: T): false | undefined;
 
 /**
  * Generate a function that finds the next element that should be visited when walking an AST.

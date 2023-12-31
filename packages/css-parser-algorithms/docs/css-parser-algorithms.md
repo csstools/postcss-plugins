@@ -103,6 +103,7 @@ componentValue.walk((entry) => {
 
 |  Function | Description |
 |  --- | --- |
+|  [forEach(componentValues, cb, state)](./css-parser-algorithms.foreach.md) |  |
 |  [gatherNodeAncestry(node)](./css-parser-algorithms.gathernodeancestry.md) | AST nodes do not have a <code>parent</code> property or method. This makes it harder to traverse the AST upwards. This function builds a <code>Map&lt;Child, Parent&gt;</code> that can be used to lookup ancestors of a node. |
 |  [isCommentNode(x)](./css-parser-algorithms.iscommentnode.md) | Check if the current object is a <code>CommentNode</code>. This is a type guard. |
 |  [isFunctionNode(x)](./css-parser-algorithms.isfunctionnode.md) | Check if the current object is a <code>FunctionNode</code>. This is a type guard. |
@@ -115,6 +116,7 @@ componentValue.walk((entry) => {
 |  [replaceComponentValues(componentValuesList, replaceWith)](./css-parser-algorithms.replacecomponentvalues.md) | Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST. |
 |  [sourceIndices(x)](./css-parser-algorithms.sourceindices.md) | Returns the start and end index of a node in the CSS source string. |
 |  [stringify(componentValueLists)](./css-parser-algorithms.stringify.md) | Concatenate the string representation of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid. |
+|  [walk(componentValues, cb, state)](./css-parser-algorithms.walk.md) |  |
 |  [walkerIndexGenerator(initialList)](./css-parser-algorithms.walkerindexgenerator.md) | Generate a function that finds the next element that should be visited when walking an AST. Rules : 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. 2. the next element always appears after the current index. 3. the next element always exists in the list. 4. replacing an element does not cause the replaced element to be visited. 5. removing an element does not cause elements to be skipped. 6. an element added later in the list will be visited. |
 
 ## Type Aliases
