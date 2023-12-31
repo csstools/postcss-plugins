@@ -21,14 +21,18 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 	const tokenizedGlobals = tokenizeGlobals(options?.globals);
 
 	return replaceComponentValues(componentValuesList, (componentValue) => {
-		if (isFunctionNode(componentValue)) {
-			const mathFunction = mathFunctions.get(toLowerCaseAZ(componentValue.getName()));
-			if (mathFunction) {
-				const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
-				if (calcResult !== -1) {
-					return calcResult;
-				}
-			}
+		if (!isFunctionNode(componentValue)) {
+			return;
+		}
+
+		const mathFunction = mathFunctions.get(toLowerCaseAZ(componentValue.getName()));
+		if (!mathFunction) {
+			return;
+		}
+
+		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
+		if (calcResult !== -1) {
+			return calcResult;
 		}
 	});
 }

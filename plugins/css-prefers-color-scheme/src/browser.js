@@ -1,5 +1,5 @@
 /* global document,window */
-const prefersColorSchemeRegExp = /prefers-color-scheme:/i;
+const PREFERS_COLOR_SCHEME_REGEX = /prefers-color-scheme:/i;
 
 const prefersColorSchemeInit = (initialColorScheme, options) => {
 	// OPTIONS
@@ -50,7 +50,7 @@ const prefersColorSchemeInit = (initialColorScheme, options) => {
 				});
 
 				rules.forEach(cssRule => {
-					const colorSchemeMatch = prefersColorSchemeRegExp.test(Object(cssRule.media).mediaText);
+					const colorSchemeMatch = PREFERS_COLOR_SCHEME_REGEX.test(Object(cssRule.media).mediaText);
 
 					if (colorSchemeMatch) {
 						const index = [].indexOf.call(cssRule.parentStyleSheet.cssRules, cssRule);

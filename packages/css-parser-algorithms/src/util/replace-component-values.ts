@@ -1,5 +1,5 @@
 import type { ComponentValue } from '../consume/component-block-function';
-import { isFunctionNode, isSimpleBlockNode } from './type-predicates';
+import { walk } from './walk';
 
 /**
  * Replace specific component values in a list of component values.
@@ -12,32 +12,18 @@ export function replaceComponentValues(
 	for (let i = 0; i < componentValuesList.length; i++) {
 		const componentValues = componentValuesList[i];
 
-		for (let j = 0; j < componentValues.length; j++) {
-			const componentValue = componentValues[j];
-
-			{
-				const replacement = replaceWith(componentValue);
-				if (replacement) {
-					componentValues.splice(j, 1, replacement);
-					continue;
-				}
+		walk(componentValues, (entry, index) => {
+			if (typeof index !== 'number') {
+				return;
 			}
 
-			if (isSimpleBlockNode(componentValue) || isFunctionNode(componentValue)) {
-				componentValue.walk((entry, index) => {
-					if (typeof index !== 'number') {
-						return;
-					}
-
-					const node = entry.node;
-					const replacement = replaceWith(node);
-					if (replacement) {
-						entry.parent.value.splice(index, 1, replacement);
-						return;
-					}
-				});
+			const replacement = replaceWith(entry.node);
+			if (!replacement) {
+				return;
 			}
-		}
+
+			entry.parent.value.splice(index, 1, replacement);
+		});
 	}
 
 	return componentValuesList;

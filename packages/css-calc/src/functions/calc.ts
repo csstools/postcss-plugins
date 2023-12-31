@@ -84,15 +84,15 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calcu
 
 		if (isFunctionNode(child)) {
 			const mathFunction = mathFunctions.get(toLowerCaseAZ(child.getName()));
-			if (mathFunction) {
-				const subCalc = mathFunction(child, globals);
-				if (subCalc === -1) {
-					return -1;
-				}
-				nodes.splice(i, 1, subCalc);
-			} else {
+			if (!mathFunction) {
 				return -1;
 			}
+
+			const subCalc = mathFunction(child, globals);
+			if (subCalc === -1) {
+				return -1;
+			}
+			nodes.splice(i, 1, subCalc);
 
 			continue;
 		}

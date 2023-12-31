@@ -1,19 +1,19 @@
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { gradientNameRegex } from './is-gradient';
+import { GRADIENT_NAME_REGEX } from './is-gradient';
 import { interpolateColorsInColorStopsList } from './color-stop-list';
 import { isCommentNode, isTokenNode, isWhitespaceNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseColorStops } from './parse-color-stops';
 import { TokenType } from '@csstools/css-tokenizer';
 
-const colorSpaceRegex = /^(srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
-const polarColorSpaceRegex = /^(hsl|hwb|lch|oklch)$/i;
-const hueInterpolationMethodRegex = /^(shorter|longer|increasing|decreasing)$/i;
-const inKeywordRegex = /^in$/i;
-const hueKeywordRegex = /^hue$/i;
+const COLOR_SPACE_REGEX = /^(srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
+const POLAR_COLOR_SPACE_REGEX = /^(hsl|hwb|lch|oklch)$/i;
+const HUE_INTERPOLATION_METHOD_REGEX = /^(shorter|longer|increasing|decreasing)$/i;
+const IN_KEYWORD_REGEX = /^in$/i;
+const HUE_KEYWORD_REGEX = /^hue$/i;
 
 export function modifyGradientFunctionComponentValues(gradientFunction: FunctionNode, wideGamut = false): Array<ComponentValue> | false {
 	const functionName = gradientFunction.getName();
-	if (!gradientNameRegex.test(functionName)) {
+	if (!GRADIENT_NAME_REGEX.test(functionName)) {
 		return false;
 	}
 
@@ -33,7 +33,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 
 		{
 			// Advance to "in" keyword
-			while (node && !(isTokenNode(node) && node.value[0] === TokenType.Ident && inKeywordRegex.test(node.value[4].value))) {
+			while (node && !(isTokenNode(node) && node.value[0] === TokenType.Ident && IN_KEYWORD_REGEX.test(node.value[4].value))) {
 				if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
 					// comma before "in" keyword
 					return false;
@@ -57,7 +57,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		if (
 			isTokenNode(node) &&
 			node.value[0] === TokenType.Ident &&
-			colorSpaceRegex.test(node.value[4].value)
+			COLOR_SPACE_REGEX.test(node.value[4].value)
 		) {
 			if (colorSpace) {
 				return false;
@@ -79,8 +79,8 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		if (
 			isTokenNode(node) &&
 			node.value[0] === TokenType.Ident &&
-			hueInterpolationMethodRegex.test(node.value[4].value) &&
-			polarColorSpaceRegex.test(colorSpaceName)
+			HUE_INTERPOLATION_METHOD_REGEX.test(node.value[4].value) &&
+			POLAR_COLOR_SPACE_REGEX.test(colorSpaceName)
 		) {
 			if (hueInterpolationMethod || !colorSpace) {
 				return false;
@@ -101,7 +101,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		if (
 			isTokenNode(node) &&
 			node.value[0] === TokenType.Ident &&
-			hueKeywordRegex.test(node.value[4].value)
+			HUE_KEYWORD_REGEX.test(node.value[4].value)
 		) {
 			if (hueKeyword || !colorSpace || !hueInterpolationMethod) {
 				return false;

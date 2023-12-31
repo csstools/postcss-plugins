@@ -3,7 +3,7 @@ import valueParser from 'postcss-value-parser';
 
 export function onCSSDeclaration(decl: Declaration, result: Result , options: { preserve: boolean }) {
 	// alignment
-	const alignment = decl.prop.toLowerCase().match(placeMatch)?.[1];
+	const alignment = decl.prop.match(PLACE_MATCH_REGEX)?.[1].toLowerCase();
 	if (!alignment) {
 		return;
 	}
@@ -52,4 +52,4 @@ export function onCSSDeclaration(decl: Declaration, result: Result , options: { 
 	}
 }
 
-export const placeMatch = /^place-(content|items|self)/;
+export const PLACE_MATCH_REGEX = /^place-(content|items|self)/i;

@@ -11,8 +11,8 @@ type basePluginOptions = {
 	preserve: boolean,
 }
 
-const colorFunctionRegex = /(color)\(/i;
-const colorNameRegex = /^(color)$/i;
+const COLOR_FUNCTION_REGEX = /(color)\(/i;
+const COLOR_NAME_REGEX = /^(color)$/i;
 
 /* Transform the color() function in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -20,7 +20,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-color-function',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(colorFunctionRegex.test(originalValue))) {
+			if (!(COLOR_FUNCTION_REGEX.test(originalValue))) {
 				return;
 			}
 
@@ -36,26 +36,24 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			const replacedRGB = replaceComponentValues(
 				parseCommaSeparatedListOfComponentValues(tokens),
 				(componentValue) => {
-					if (isFunctionNode(componentValue) && colorNameRegex.test(componentValue.getName())) {
-						const colorData = color(componentValue);
-						if (!colorData) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
-							return;
-						}
-
-						return serializeRGB(colorData);
+					if (!isFunctionNode(componentValue) || !COLOR_NAME_REGEX.test(componentValue.getName())) {
+						return;
 					}
+
+					const colorData = color(componentValue);
+					if (!colorData) {
+						return;
+					}
+
+					if (
+						colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+						colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+						colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+					) {
+						return;
+					}
+
+					return serializeRGB(colorData);
 				},
 			);
 

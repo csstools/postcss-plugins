@@ -23,7 +23,7 @@ export const ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS = [
 	'keyframes',
 ];
 
-export const IS_REVERT_LAYER = /^revert-layer$/i;
-export const IS_IMPORT = /^import$/i;
-export const IS_LAYER = /^layer$/i;
-export const HAS_LAYER = /layer/i;
+export const IS_REVERT_LAYER_REGEX = /^revert-layer$/i;
+export const IS_IMPORT_REGEX = /^import$/i;
+export const IS_LAYER_REGEX = /^layer$/i;
+export const HAS_LAYER_REGEX = /layer/i;

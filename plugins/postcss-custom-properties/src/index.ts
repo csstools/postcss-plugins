@@ -6,7 +6,7 @@ import { isDeclarationIgnored } from './is-ignored';
 import { transformProperties } from './transform-properties';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { parseOrCached } from './parse-or-cached';
-import { HAS_VAR_FUNCTION } from './is-var-function';
+import { HAS_VAR_FUNCTION_REGEX } from './is-var-function';
 
 /** postcss-custom-properties plugin options */
 export type pluginOptions = {
@@ -14,7 +14,7 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const IS_INITIAL = /^initial$/i;
+const IS_INITIAL_REGEX = /^initial$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;
@@ -38,7 +38,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					customProperties = getCustomPropertiesFromRoot(root, parsedValuesCache);
 				},
 				Declaration: (decl) => {
-					if (!HAS_VAR_FUNCTION.test(decl.value)) {
+					if (!HAS_VAR_FUNCTION_REGEX.test(decl.value)) {
 						return;
 					}
 
@@ -61,7 +61,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								return;
 							}
 
-							if (IS_INITIAL.test(siblingDecl.value)) {
+							if (IS_INITIAL_REGEX.test(siblingDecl.value)) {
 								localCustomProperties.delete(siblingDecl.prop);
 								return;
 							}

@@ -7,7 +7,7 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const FUNCTION_CALL_REGEXP = /(?<![-\w])(?:mod|rem|round)\(/i;
+const FUNCTION_CALL_REGEX = /(?<![-\w])(?:mod|rem|round)\(/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
@@ -22,7 +22,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-stepped-value-functions',
 		Declaration(decl) {
-			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
+			if (!FUNCTION_CALL_REGEX.test(decl.value)) {
 				return;
 			}
 

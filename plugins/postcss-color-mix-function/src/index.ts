@@ -14,8 +14,8 @@ type basePluginOptions = {
 	}
 };
 
-const colorMixFunctionRegex = /(color-mix)\(/i;
-const colorMixNameRegex = /^(color-mix)$/i;
+const COLOR_MIX_FUNCTION_REGEX = /(color-mix)\(/i;
+const COLOR_MIX_NAME_REGEX = /^(color-mix)$/i;
 
 /* Transform color-mix() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -23,7 +23,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-color-mix-function',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(colorMixFunctionRegex.test(originalValue))) {
+			if (!(COLOR_MIX_FUNCTION_REGEX.test(originalValue))) {
 				return;
 			}
 
@@ -39,18 +39,20 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			const replacedRGB = replaceComponentValues(
 				parseCommaSeparatedListOfComponentValues(tokens),
 				(componentValue) => {
-					if (isFunctionNode(componentValue) && colorMixNameRegex.test(componentValue.getName())) {
-						const colorData = color(componentValue);
-						if (!colorData) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
-							return;
-						}
-
-						return serializeRGB(colorData);
+					if (!isFunctionNode(componentValue) || !COLOR_MIX_NAME_REGEX.test(componentValue.getName())) {
+						return;
 					}
+
+					const colorData = color(componentValue);
+					if (!colorData) {
+						return;
+					}
+
+					if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
+						return;
+					}
+
+					return serializeRGB(colorData);
 				},
 			);
 
@@ -64,18 +66,24 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				modifiedP3 = stringify(replaceComponentValues(
 					parseCommaSeparatedListOfComponentValues(tokens),
 					(componentValue) => {
-						if (isFunctionNode(componentValue) && colorMixNameRegex.test(componentValue.getName())) {
-							const colorData = color(componentValue);
-							if (!colorData) {
-								return;
-							}
-
-							if (colorDataFitsRGB_Gamut(colorData)) {
-								return serializeRGB(colorData);
-							}
-
-							return serializeP3(colorData);
+						if (!isFunctionNode(componentValue) || !COLOR_MIX_NAME_REGEX.test(componentValue.getName())) {
+							return;
 						}
+
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
+							return;
+						}
+
+						if (colorDataFitsRGB_Gamut(colorData)) {
+							return serializeRGB(colorData);
+						}
+
+						return serializeP3(colorData);
 					},
 				));
 			}

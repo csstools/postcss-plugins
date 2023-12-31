@@ -1,9 +1,9 @@
 import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
 
-const HAS_VARIABLE_FUNCTION = /var\(/i;
-const IS_INITIAL = /^initial$/i;
-const EMPTY_OR_WHITESPACE = /^\s*$/;
+const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;
+const IS_INITIAL_REGEX = /^initial$/i;
+const EMPTY_OR_WHITESPACE_REGEX = /^\s*$/;
 
 type State = {
 	conditionalRules: Array<AtRule>,
@@ -54,16 +54,16 @@ const creator: PluginCreator<null> = () => {
 							}
 						}
 
-						if (!(decl.variable || HAS_VARIABLE_FUNCTION.test(decl.value))) {
+						if (!(decl.variable || HAS_VARIABLE_FUNCTION_REGEX.test(decl.value))) {
 							return;
 						}
 
-						if (IS_INITIAL.test(decl.value)) {
+						if (IS_INITIAL_REGEX.test(decl.value)) {
 							// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
 							return;
 						}
 
-						if (EMPTY_OR_WHITESPACE.test(decl.value)) { // empty string value
+						if (EMPTY_OR_WHITESPACE_REGEX.test(decl.value)) { // empty string value
 							// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
 							return;
 						}

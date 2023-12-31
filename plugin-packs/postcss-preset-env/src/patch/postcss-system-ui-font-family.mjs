@@ -2,9 +2,9 @@ export default function postcssSystemUiFont() {
 	return {
 		postcssPlugin: 'postcss-system-ui-font',
 		Declaration(/** @type {import('postcss').Declaration} */ node) {
-			if (propertyRegExp.test(node.prop)) {
+			if (PROPERTY_REGEX.test(node.prop)) {
 				if (!node.value.includes(systemUIFamilies)) {
-					node.value = node.value.replace(systemUiMatch, systemUiReplace);
+					node.value = node.value.replace(SYSTEM_UI_MATCH, systemUiReplace);
 				}
 			}
 		},
@@ -13,7 +13,7 @@ export default function postcssSystemUiFont() {
 
 postcssSystemUiFont.postcss = true;
 
-const propertyRegExp = /(?:^(?:-|\\002d){2})|(?:^font(?:-family)?$)/i;
+const PROPERTY_REGEX = /(?:^(?:-|\\002d){2})|(?:^font(?:-family)?$)/i;
 const whitespace = '[\\f\\n\\r\\x09\\x20]';
 const systemUiFamily = [
 	'system-ui',
@@ -26,5 +26,5 @@ const systemUiFamily = [
 	/* fallback */ 'sans-serif',
 ];
 const systemUIFamilies = systemUiFamily.join(', ');
-const systemUiMatch = new RegExp(`(^|,|${whitespace}+)(?:system-ui${whitespace}*)(?:,${whitespace}*(?:${systemUiFamily.join('|')})${whitespace}*)?(,|$)`, 'i');
+const SYSTEM_UI_MATCH = new RegExp(`(^|,|${whitespace}+)(?:system-ui${whitespace}*)(?:,${whitespace}*(?:${systemUiFamily.join('|')})${whitespace}*)?(,|$)`, 'i');
 const systemUiReplace = `$1${systemUIFamilies}$2`;

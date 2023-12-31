@@ -1,6 +1,6 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
-import { gradientFunctionRegex } from './is-gradient';
+import { GRADIENT_FUNCTION_REGEX } from './is-gradient';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
@@ -16,7 +16,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 	return {
 		postcssPlugin: 'postcss-gradients-interpolation-method',
 		Declaration(decl) {
-			if (!gradientFunctionRegex.test(decl.value)) {
+			if (!GRADIENT_FUNCTION_REGEX.test(decl.value)) {
 				return;
 			}
 

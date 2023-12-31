@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'postcss';
-import { onCSSDeclaration, placeMatch } from './onCSSDeclaration';
+import { onCSSDeclaration, PLACE_MATCH_REGEX } from './on-css-declaration';
 
 /** postcss-place plugin options */
 export type pluginOptions = {
@@ -20,7 +20,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-place',
 		Declaration: (decl, { result }) => {
-			if (!placeMatch.test(decl.prop.toLowerCase())) {
+			if (!PLACE_MATCH_REGEX.test(decl.prop)) {
 				return;
 			}
 
