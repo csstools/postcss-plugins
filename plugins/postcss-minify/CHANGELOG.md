@@ -1,6 +1,8 @@
 # Changes to PostCSS Minify
 
-### Unreleased (minor)
+### 1.1.0
+
+_December 31, 2023_
 
 - Preserve important comments (e.g. `/*! something important */`)
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#223) (patch)
