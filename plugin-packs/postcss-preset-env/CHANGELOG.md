@@ -52,6 +52,15 @@
 - Updated [`postcss-overflow-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand/CHANGELOG.md#501) (patch)
 - Updated [`postcss-place`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place/CHANGELOG.md#901) (patch)
 - Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#901) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#309) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#209) (patch)
+- Updated [`@csstools/postcss-gamut-mapping`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping) to [`1.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping/CHANGELOG.md#102) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#409) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`3.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#308) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`3.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#309) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`2.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#209) (patch)
+- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`6.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#604) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`6.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#609) (patch)
 
 ### 9.3.0
 
