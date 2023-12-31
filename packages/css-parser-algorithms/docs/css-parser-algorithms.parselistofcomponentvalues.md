@@ -4,6 +4,8 @@
 
 ## parseListOfComponentValues() function
 
+Parse a list of component values.
+
 **Signature:**
 
 ```typescript
@@ -22,4 +24,14 @@ export declare function parseListOfComponentValues(tokens: Array<CSSToken>, opti
 **Returns:**
 
 [ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->\[\]
+
+## Example
+
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseListOfComponentValues } from '@csstools/css-parser';
+
+parseListOfComponentValues(tokenize({ css: `20deg 30%` }));
+```
 

@@ -162,7 +162,7 @@
   },
   "kind": "Package",
   "canonicalReference": "@csstools/css-parser-algorithms!",
-  "docComment": "/**\n * Parse CSS following the {@link https://drafts.csswg.org/css-syntax/#parsing | CSS Syntax Level 3 specification}.\n *\n * @remarks\n *\n * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.\n *\n * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.\n *\n * The implementation of the AST nodes is kept lightweight and simple. Do not expect magic methods, instead assume that arrays and class instances behave like any other JavaScript.\n *\n * @example\n *\n * Parse a string of CSS into a component value:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue } from '@csstools/css-parser';\n *\n * const myCSS = `calc(1px * 2)`;\n *\n * const componentValue = parseComponentValue(tokenize({\n * \tcss: myCSS,\n * }));\n *\n * console.log(componentValue);\n * ```\n *\n * @example\n *\n * Use the right algorithm for the job.\n *\n * If your context allows a list of component values, use {@link parseListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues } from '@csstools/css-parser';\n *\n * parseComponentValue(tokenize({ css: `10x 20px` }));\n * ```\n *\n * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));\n * ```\n *\n * @example\n *\n * Use the stateful walkers to keep track of the context of a given component value.\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';\n *\n * const myCSS = `calc(1px * (5 / 2))`;\n *\n * const componentValue = parseComponentValue(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * componentValue.walk((entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * Parse CSS following the {@link https://drafts.csswg.org/css-syntax/#parsing | CSS Syntax Level 3 specification}.\n *\n * @remarks\n *\n * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.\n *\n * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.\n *\n * The implementation of the AST nodes is kept lightweight and simple. Do not expect magic methods, instead assume that arrays and class instances behave like any other JavaScript.\n *\n * @example\n *\n * Parse a string of CSS into a component value:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue } from '@csstools/css-parser';\n *\n * const myCSS = `calc(1px * 2)`;\n *\n * const componentValue = parseComponentValue(tokenize({\n * \tcss: myCSS,\n * }));\n *\n * console.log(componentValue);\n * ```\n *\n * @example\n *\n * Use the right algorithm for the job.\n *\n * Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures. However, the opposite is not true.\n *\n * If your context allows a list of component values, use {@link parseListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues } from '@csstools/css-parser';\n *\n * parseComponentValue(tokenize({ css: `10x 20px` }));\n * ```\n *\n * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));\n * ```\n *\n * @example\n *\n * Use the stateful walkers to keep track of the context of a given component value.\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';\n *\n * const myCSS = `calc(1px * (5 / 2))`;\n *\n * const componentValue = parseComponentValue(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * componentValue.walk((entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n * @packageDocumentation\n */\n",
   "name": "@csstools/css-parser-algorithms",
   "preserveMemberOrder": false,
   "members": [
@@ -1039,7 +1039,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!forEach:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Iterates over each item in a list of component values.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1869,7 +1869,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!parseCommaSeparatedListOfComponentValues:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parse a comma-separated list of component values.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1958,7 +1958,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!parseComponentValue:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parse a single component value.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2051,7 +2051,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!parseListOfComponentValues:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parse a list of component values.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues } from '@csstools/css-parser';\n *\n * parseListOfComponentValues(tokenize({ css: `20deg 30%` }));\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2907,7 +2907,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!walk:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Walks each item in a list of component values all of their children.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser';\n *\n * const myCSS = `calc(1px * (5 / 2)) 10px`;\n *\n * const componentValues = parseListOfComponentValues(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * walk(componentValues, (entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

@@ -4,6 +4,8 @@
 
 ## parseComponentValue() function
 
+Parse a single component value.
+
 **Signature:**
 
 ```typescript
@@ -22,4 +24,15 @@ export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
 **Returns:**
 
 import("../consume/component-block-function").[ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined
+
+## Example
+
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+
+parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
+parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
+```
 

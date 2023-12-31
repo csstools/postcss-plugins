@@ -29,6 +29,9 @@
  * @example
  * Use the right algorithm for the job.
  *
+ * Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures.
+ * However, the opposite is not true.
+ *
  * If your context allows a list of component values, use {@link parseListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
@@ -186,6 +189,20 @@ export declare abstract class ContainerNodeBaseClass {
     }, index: number | string) => boolean | void, state?: T): false | undefined;
 }
 
+/**
+ * Iterates over each item in a list of component values.
+ *
+ * @param cb - The callback function to execute for each item.
+ * The function receives an object containing the current node (`node`), its parent (`parent`),
+ * and an optional `state` object.
+ * A second parameter is the index of the current node.
+ * The function can return `false` to stop the iteration.
+ *
+ * @param state - An optional state object that can be used to pass additional information to the callback function.
+ * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.
+ *
+ * @returns `false` if the iteration was halted, `undefined` otherwise.
+ */
 export declare function forEach<T extends Record<string, unknown>>(componentValues: Array<ComponentValue>, cb: (entry: {
     node: ComponentValue;
     parent: ContainerNode | {
@@ -321,14 +338,48 @@ export declare function isTokenNode(x: unknown): x is TokenNode;
  */
 export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
 
+/**
+ * Parse a comma-separated list of component values.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
+ * ```
+ */
 export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): ComponentValue[][];
 
+/**
+ * Parse a single component value.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
+ * ```
+ */
 export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): ComponentValue | undefined;
 
+/**
+ * Parse a list of component values.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseListOfComponentValues(tokenize({ css: `20deg 30%` }));
+ * ```
+ */
 export declare function parseListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): ComponentValue[];
@@ -455,6 +506,43 @@ export declare class TokenNode {
     static isTokenNode(x: unknown): x is TokenNode;
 }
 
+/**
+ * Walks each item in a list of component values all of their children.
+ *
+ * @param cb - The callback function to execute for each item.
+ * The function receives an object containing the current node (`node`), its parent (`parent`),
+ * and an optional `state` object.
+ * A second parameter is the index of the current node.
+ * The function can return `false` to stop the iteration.
+ *
+ * @param state - An optional state object that can be used to pass additional information to the callback function.
+ * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.
+ * However changes are passed down to child node iterations.
+ *
+ * @returns `false` if the iteration was halted, `undefined` otherwise.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser';
+ *
+ * const myCSS = `calc(1px * (5 / 2)) 10px`;
+ *
+ * const componentValues = parseListOfComponentValues(tokenize({ css: myCSS }));
+ *
+ * let state = { inSimpleBlock: false };
+ * walk(componentValues, (entry) => {
+ * 	if (isSimpleBlockNode(entry)) {
+ * 		entry.state.inSimpleBlock = true;
+ * 		return;
+ * 	}
+ *
+ * 	if (entry.state.inSimpleBlock) {
+ * 		console.log(entry.node.toString()); // `5`, ...
+ * 	}
+ * }, state);
+ * ```
+ */
 export declare function walk<T extends Record<string, unknown>>(componentValues: Array<ComponentValue>, cb: (entry: {
     node: ComponentValue;
     parent: ContainerNode | {

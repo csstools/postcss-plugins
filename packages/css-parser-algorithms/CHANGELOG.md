@@ -1,5 +1,10 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (minor)
+
+- Add a `forEach` and `walk` function.
+- Improve documentation.
+
 ### 2.4.0
 
 _December 15, 2023_
