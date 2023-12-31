@@ -28,13 +28,14 @@
  */
 
 import assert from 'node:assert/strict';
-import fs from 'fs/promises';
-import fsSync from 'fs';
+import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import noopPlugin from './noop-plugin';
-import path from 'path';
+import path from 'node:path';
 import postcss from 'postcss';
 import postcssOldestSupported from 'postcss-8.4';
 import test from 'node:test';
+import url from 'node:url';
 import { fileContentsOrEmptyString } from './file-contents-or-empty-string';
 import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 
@@ -100,8 +101,10 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
 			// Include postcss-plugin keyword in package.json
 
-			assert.ok(packageInfo.keywords);
-			assert.ok(packageInfo.keywords.includes('postcss-plugin'));
+			assert.ok(
+				packageInfo.keywords?.includes('postcss-plugin'),
+				new PackageDescriptionError('Missing "postcss-plugin" keyword in package.json', 'keywords'),
+			);
 		});
 
 		await t.test('name starts with "postcss-"', { skip: runOptions?.skipPackageNameCheck }, () => {
@@ -114,16 +117,24 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 				packageName = parts.slice(1).join('/');
 			}
 
-			assert.ok(packageName.startsWith('postcss-'), `package name "${packageName}" does not start with "postcss-"`);
+			assert.ok(
+				packageName.startsWith('postcss-'),
+				new PackageDescriptionError(`package name "${packageName}" does not start with "postcss-"`, 'name'),
+			);
 		});
 
 		await t.test('`postcss` is a peer dependency and not a direct dependency', { skip: ('postcssTapeSelfTest' in pluginCreator) }, () => {
 			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#14-keep-postcss-to-peerdependencies
 			// Keep postcss to peerDependencies
 
-			assert.ok(packageInfo.peerDependencies);
-			assert.ok(Object.keys(Object(packageInfo.peerDependencies)).includes('postcss'));
-			assert.ok(!Object.keys(Object(packageInfo.dependencies)).includes('postcss'));
+			assert.ok(
+				Object.keys(Object(packageInfo.peerDependencies)).includes('postcss'),
+				new PackageDescriptionError('"postcss" is not listed in "peerDependencies"', 'peerDependencies'),
+			);
+			assert.ok(
+				!Object.keys(Object(packageInfo.dependencies)).includes('postcss'),
+				new PackageDescriptionError('"postcss" must not be listed in "dependencies"', 'dependencies'),
+			);
 		});
 	});
 
@@ -329,3 +340,12 @@ export const atRuleClonerPlugin = {
 		};
 	},
 };
+
+class PackageDescriptionError extends Error {
+	constructor(message: string, key: string) {
+		super(message);
+
+		this.name = 'PackageDescriptionError';
+		this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json')).pathname})`;
+	}
+}
