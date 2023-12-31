@@ -50,7 +50,7 @@
 	"dependencies": {
 		"@csstools/css-color-parser": "^1.5.0",
 		"@csstools/css-parser-algorithms": "^2.4.0",
-		"@csstools/css-tokenizer": "^2.2.2"
+		"@csstools/css-tokenizer": "^2.2.3"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
