@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (patch)
+
+- Improve stack traces for issues in `package.json` of postcss plugins.
+
 ### 4.1.1
 
 _December 28, 2023_
