@@ -4,6 +4,8 @@
 
 ## SimpleBlockNode.tokens() method
 
+Retrieve the tokens for the current simple block. This is the inverse of parsing from a list of tokens.
+
 **Signature:**
 
 ```typescript

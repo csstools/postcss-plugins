@@ -4,6 +4,8 @@
 
 ## CommentNode.type property
 
+The node type, always `ComponentValueType.Comment`
+
 **Signature:**
 
 ```typescript

@@ -13,7 +13,7 @@ export type pluginOptions = {
 	inlineDirection?: DirectionFlow,
 };
 
-const HAS_VIEWPORT_UNITS = /(?:vi|vb)\b/i;
+const HAS_VIEWPORT_UNITS_REGEX = /(?:vi|vb)\b/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -52,7 +52,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-logical-viewport-units',
 		Declaration(decl, { atRule }) {
 			{
-				if (!HAS_VIEWPORT_UNITS.test(decl.value)) {
+				if (!HAS_VIEWPORT_UNITS_REGEX.test(decl.value)) {
 					return;
 				}
 

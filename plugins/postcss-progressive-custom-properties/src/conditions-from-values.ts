@@ -3,7 +3,7 @@ import { doublePositionGradients } from './custom/double-position-gradients';
 import { matchers } from './matchers';
 import { matches } from './match';
 
-const varFunctionName = /^var$/i;
+const VAR_FUNCTION_NAME_REGEX = /^var$/i;
 
 export function conditionsFromValue(value: string, mustContainVar = false): { support: Array<string> } {
 	const supportConditions: Array<string> = [];
@@ -17,7 +17,7 @@ export function conditionsFromValue(value: string, mustContainVar = false): { su
 	try {
 		const ast = valueParser(value);
 		ast.walk((node) => {
-			if (node.type === 'function' && varFunctionName.test(node.value)) {
+			if (node.type === 'function' && VAR_FUNCTION_NAME_REGEX.test(node.value)) {
 				hasVar = true;
 			}
 

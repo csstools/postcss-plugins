@@ -2,7 +2,7 @@ import valuesParser from 'postcss-value-parser';
 import transformValueAST from './transform-value-ast';
 import type { Declaration } from 'postcss';
 import { isDeclarationIgnored } from './is-ignored';
-import { HAS_VAR_FUNCTION } from './is-var-function';
+import { HAS_VAR_FUNCTION_REGEX } from './is-var-function';
 
 // transform custom pseudo selectors with custom selectors
 export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }) {
@@ -14,7 +14,7 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 		// protect against circular references
 		const valueSet = new Set();
 
-		while (HAS_VAR_FUNCTION.test(value) && !valueSet.has(value)) {
+		while (HAS_VAR_FUNCTION_REGEX.test(value) && !valueSet.has(value)) {
 			valueSet.add(value);
 			const parsedValueAST = valuesParser(value);
 			value = transformValueAST(parsedValueAST, customProperties, localCustomProperties);
@@ -34,15 +34,15 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 				const beforeDecl = decl.cloneBefore({ value });
 
 				if (hasTrailingComment(beforeDecl) && beforeDecl.raws?.value) {
-					beforeDecl.raws.value.value = beforeDecl.value.replace(trailingCommentRegExp, '$1');
-					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(trailingCommentRegExp, '$2');
+					beforeDecl.raws.value.value = beforeDecl.value.replace(TRAILING_COMMENT_REGEX, '$1');
+					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
 				}
 			} else {
 				decl.value = value;
 
 				if (hasTrailingComment(decl) && decl.raws?.value) {
-					decl.raws.value.value = decl.value.replace(trailingCommentRegExp, '$1');
-					decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(trailingCommentRegExp, '$2');
+					decl.raws.value.value = decl.value.replace(TRAILING_COMMENT_REGEX, '$1');
+					decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
 				}
 			}
 		}
@@ -55,8 +55,8 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 const isTransformableDecl = (decl: Declaration) => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
 
 // whether the declaration has a trailing comment
-const hasTrailingComment = (decl: Declaration) => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && trailingCommentRegExp.test(decl.raws.value?.raw ?? '');
-const trailingCommentRegExp = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
+const hasTrailingComment = (decl: Declaration) => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && TRAILING_COMMENT_REGEX.test(decl.raws.value?.raw ?? '');
+const TRAILING_COMMENT_REGEX = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
 
 function parentHasExactFallback(decl: Declaration, value: string): boolean {
 	if (!decl || !decl.parent) {

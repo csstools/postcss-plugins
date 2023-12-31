@@ -4,6 +4,8 @@
 
 ## isTokenNode() function
 
+Check if the current object is a `TokenNode`<!-- -->. This is a type guard.
+
 **Signature:**
 
 ```typescript

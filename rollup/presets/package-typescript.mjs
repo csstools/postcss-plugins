@@ -19,6 +19,7 @@ export function packageTypescript(options) {
 					declaration: false,
 					declarationDir: undefined,
 					noEmit: false,
+					noEmitOnError: true,
 				}),
 				terser({
 					compress: {
@@ -42,6 +43,7 @@ export function packageTypescript(options) {
 					declaration: true,
 					declarationDir: './dist/_types',
 					noEmit: false,
+					noEmitOnError: true,
 				}),
 				terser({
 					compress: {

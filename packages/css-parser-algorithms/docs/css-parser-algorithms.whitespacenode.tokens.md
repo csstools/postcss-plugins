@@ -4,6 +4,8 @@
 
 ## WhitespaceNode.tokens() method
 
+Retrieve the tokens for the current whitespace. This is the inverse of parsing from a list of tokens.
+
 **Signature:**
 
 ```typescript

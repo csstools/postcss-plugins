@@ -4,6 +4,8 @@
 
 ## isSimpleBlockNode() function
 
+Check if the current object is a `SimpleBlockNode`<!-- -->. This is a type guard.
+
 **Signature:**
 
 ```typescript

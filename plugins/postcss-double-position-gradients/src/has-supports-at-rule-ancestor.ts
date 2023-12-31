@@ -1,5 +1,5 @@
 import type { AtRule, Node } from 'postcss';
-import { HAS_GRADIENT_FUNCTION } from './is-gradient';
+import { HAS_GRADIENT_FUNCTION_REGEX } from './is-gradient';
 
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
@@ -9,7 +9,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name.toLowerCase() === 'supports' && HAS_GRADIENT_FUNCTION.test((parent as AtRule).params)) {
+		if ((parent as AtRule).name.toLowerCase() === 'supports' && HAS_GRADIENT_FUNCTION_REGEX.test((parent as AtRule).params)) {
 			return true;
 		}
 

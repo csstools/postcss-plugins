@@ -2,7 +2,7 @@ import type { Root } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
-import { HTML_SELECTOR_REGEXP, HTML_WHERE_SELECTOR_REGEXP, MAYBE_HTML_OR_ROOT_RULE_REGEXP, ROOT_SELECTOR_REGEXP, ROOT_WHERE_SELECTOR_REGEXP, isProcessableRule } from './is-processable-rule';
+import { HTML_SELECTOR_REGEX, HTML_WHERE_SELECTOR_REGEX, MAYBE_HTML_OR_ROOT_RULE_REGEX, ROOT_SELECTOR_REGEX, ROOT_WHERE_SELECTOR_REGEX, isProcessableRule } from './is-processable-rule';
 import { isVarFunction } from './is-var-function';
 import { removeCyclicReferences } from './toposort';
 import { parseOrCached } from './parse-or-cached';
@@ -16,7 +16,7 @@ export default function getCustomPropertiesFromRoot(root: Root, parsedValuesCach
 
 	// for each html or :root rule
 	root.walkRules((rule) => {
-		if (!MAYBE_HTML_OR_ROOT_RULE_REGEXP.test(rule.selector) || !rule.nodes?.length) {
+		if (!MAYBE_HTML_OR_ROOT_RULE_REGEX.test(rule.selector) || !rule.nodes?.length) {
 			return;
 		}
 
@@ -31,11 +31,11 @@ export default function getCustomPropertiesFromRoot(root: Root, parsedValuesCach
 		rule.selectors.forEach((selector) => {
 			let specificity = -1;
 
-			if (HTML_WHERE_SELECTOR_REGEXP.test(selector) || ROOT_WHERE_SELECTOR_REGEXP.test(selector)) {
+			if (HTML_WHERE_SELECTOR_REGEX.test(selector) || ROOT_WHERE_SELECTOR_REGEX.test(selector)) {
 				specificity = 0;
-			} else if (HTML_SELECTOR_REGEXP.test(selector)) {
+			} else if (HTML_SELECTOR_REGEX.test(selector)) {
 				specificity = 1;
-			} else if (ROOT_SELECTOR_REGEXP.test(selector)) {
+			} else if (ROOT_SELECTOR_REGEX.test(selector)) {
 				specificity = 2;
 			} else {
 				return;

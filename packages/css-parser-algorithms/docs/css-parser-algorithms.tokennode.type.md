@@ -4,6 +4,8 @@
 
 ## TokenNode.type property
 
+The node type, always `ComponentValueType.Token`
+
 **Signature:**
 
 ```typescript

@@ -4,7 +4,7 @@
 
 ## FunctionNode.tokens() method
 
-Retrieve the tokens for the current Function. This is the inverse of parsing from a list of tokens.
+Retrieve the tokens for the current function. This is the inverse of parsing from a list of tokens.
 
 **Signature:**
 

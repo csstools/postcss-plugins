@@ -4,6 +4,8 @@
 
 ## isCommentNode() function
 
+Check if the current object is a `CommentNode`<!-- -->. This is a type guard.
+
 **Signature:**
 
 ```typescript

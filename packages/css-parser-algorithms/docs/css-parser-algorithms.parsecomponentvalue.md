@@ -9,7 +9,7 @@
 ```typescript
 export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): import("../consume/consume-component-block-function").ComponentValue | undefined;
+}): import("../consume/component-block-function").ComponentValue | undefined;
 ```
 
 ## Parameters
@@ -21,5 +21,5 @@ export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
 
 **Returns:**
 
-import("../consume/consume-component-block-function").[ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined
+import("../consume/component-block-function").[ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined
 

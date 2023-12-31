@@ -7,8 +7,8 @@ import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceCompon
 import { serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { tokenize } from '@csstools/css-tokenizer';
 
-const hwbFunctionRegex = /hwb\(/i;
-const hwbNameRegex = /^hwb$/i;
+const HWB_FUNCTION_REGEX = /hwb\(/i;
+const HWB_NAME_REGEX = /^hwb$/i;
 
 /** postcss-hwb-function plugin options */
 export type pluginOptions = {
@@ -24,7 +24,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-hwb-function',
 		Declaration: (decl: Declaration, { postcss }: { result: Result, postcss: Postcss }) => {
 			const originalValue = decl.value;
-			if (!hwbFunctionRegex.test(originalValue)) {
+			if (!HWB_FUNCTION_REGEX.test(originalValue)) {
 				return;
 			}
 
@@ -39,26 +39,24 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const replaced = replaceComponentValues(
 				parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
 				(componentValue) => {
-					if (isFunctionNode(componentValue) && hwbNameRegex.test(componentValue.getName())) {
-						const colorData = color(componentValue);
-						if (!colorData) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.Experimental)) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
-							return;
-						}
-
-						return serializeRGB(colorData);
+					if (!isFunctionNode(componentValue) || !HWB_NAME_REGEX.test(componentValue.getName())) {
+						return;
 					}
+
+					const colorData = color(componentValue);
+					if (!colorData) {
+						return;
+					}
+
+					if (
+						colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+						colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+						colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+					) {
+						return;
+					}
+
+					return serializeRGB(colorData);
 				},
 			);
 

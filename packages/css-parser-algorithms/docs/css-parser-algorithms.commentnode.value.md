@@ -4,6 +4,8 @@
 
 ## CommentNode.value property
 
+The comment token.
+
 **Signature:**
 
 ```typescript

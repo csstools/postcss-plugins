@@ -4,13 +4,86 @@
 
 ## css-parser-algorithms package
 
+Parse CSS following the [CSS Syntax Level 3 specification](https://drafts.csswg.org/css-syntax/#parsing)<!-- -->.
+
+## Remarks
+
+The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.
+
+Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use [@csstools/css-parser-algorithms](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) or a more specific parser.
+
+The implementation of the AST nodes is kept lightweight and simple. Do not expect magic methods, instead assume that arrays and class instances behave like any other JavaScript.
+
+## Example 1
+
+Parse a string of CSS into a component value:
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseComponentValue } from '@csstools/css-parser';
+
+const myCSS = `calc(1px * 2)`;
+
+const componentValue = parseComponentValue(tokenize({
+	css: myCSS,
+}));
+
+console.log(componentValue);
+```
+
+## Example 2
+
+Use the right algorithm for the job.
+
+If your context allows a list of component values, use [parseListOfComponentValues()](./css-parser-algorithms.parselistofcomponentvalues.md)<!-- -->:
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseListOfComponentValues } from '@csstools/css-parser';
+
+parseComponentValue(tokenize({ css: `10x 20px` }));
+```
+If your context allows a comma-separated list of component values, use [parseCommaSeparatedListOfComponentValues()](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md)<!-- -->:
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+
+parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
+```
+
+## Example 3
+
+Use the stateful walkers to keep track of the context of a given component value.
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';
+
+const myCSS = `calc(1px * (5 / 2))`;
+
+const componentValue = parseComponentValue(tokenize({ css: myCSS }));
+
+let state = { inSimpleBlock: false };
+componentValue.walk((entry) => {
+	if (isSimpleBlockNode(entry)) {
+		entry.state.inSimpleBlock = true;
+		return;
+	}
+
+	if (entry.state.inSimpleBlock) {
+		console.log(entry.node.toString()); // `5`, ...
+	}
+}, state);
+```
+
 ## Classes
 
 |  Class | Description |
 |  --- | --- |
 |  [CommentNode](./css-parser-algorithms.commentnode.md) |  |
-|  [FunctionNode](./css-parser-algorithms.functionnode.md) |  |
-|  [SimpleBlockNode](./css-parser-algorithms.simpleblocknode.md) |  |
+|  [FunctionNode](./css-parser-algorithms.functionnode.md) | A function node. |
+|  [SimpleBlockNode](./css-parser-algorithms.simpleblocknode.md) | A simple block node. |
 |  [TokenNode](./css-parser-algorithms.tokennode.md) |  |
 |  [WhitespaceNode](./css-parser-algorithms.whitespacenode.md) |  |
 
@@ -30,19 +103,21 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [gatherNodeAncestry(node)](./css-parser-algorithms.gathernodeancestry.md) |  |
-|  [isCommentNode(x)](./css-parser-algorithms.iscommentnode.md) |  |
-|  [isFunctionNode(x)](./css-parser-algorithms.isfunctionnode.md) |  |
-|  [isSimpleBlockNode(x)](./css-parser-algorithms.issimpleblocknode.md) |  |
-|  [isTokenNode(x)](./css-parser-algorithms.istokennode.md) |  |
-|  [isWhitespaceNode(x)](./css-parser-algorithms.iswhitespacenode.md) |  |
+|  [forEach(componentValues, cb, state)](./css-parser-algorithms.foreach.md) |  |
+|  [gatherNodeAncestry(node)](./css-parser-algorithms.gathernodeancestry.md) | AST nodes do not have a <code>parent</code> property or method. This makes it harder to traverse the AST upwards. This function builds a <code>Map&lt;Child, Parent&gt;</code> that can be used to lookup ancestors of a node. |
+|  [isCommentNode(x)](./css-parser-algorithms.iscommentnode.md) | Check if the current object is a <code>CommentNode</code>. This is a type guard. |
+|  [isFunctionNode(x)](./css-parser-algorithms.isfunctionnode.md) | Check if the current object is a <code>FunctionNode</code>. This is a type guard. |
+|  [isSimpleBlockNode(x)](./css-parser-algorithms.issimpleblocknode.md) | Check if the current object is a <code>SimpleBlockNode</code>. This is a type guard. |
+|  [isTokenNode(x)](./css-parser-algorithms.istokennode.md) | Check if the current object is a <code>TokenNode</code>. This is a type guard. |
+|  [isWhitespaceNode(x)](./css-parser-algorithms.iswhitespacenode.md) | Check if the current object is a <code>WhitespaceNode</code>. This is a type guard. |
 |  [parseCommaSeparatedListOfComponentValues(tokens, options)](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md) |  |
 |  [parseComponentValue(tokens, options)](./css-parser-algorithms.parsecomponentvalue.md) |  |
 |  [parseListOfComponentValues(tokens, options)](./css-parser-algorithms.parselistofcomponentvalues.md) |  |
-|  [replaceComponentValues(componentValuesList, replaceWith)](./css-parser-algorithms.replacecomponentvalues.md) |  |
+|  [replaceComponentValues(componentValuesList, replaceWith)](./css-parser-algorithms.replacecomponentvalues.md) | Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST. |
 |  [sourceIndices(x)](./css-parser-algorithms.sourceindices.md) | Returns the start and end index of a node in the CSS source string. |
-|  [stringify(componentValueLists)](./css-parser-algorithms.stringify.md) |  |
-|  [walkerIndexGenerator(initialList)](./css-parser-algorithms.walkerindexgenerator.md) | Generate a function that finds the next element that should be visited when walking an AST. Rules : - the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. - the next element always appears after the current index. - the next element always exists in the list. - replacing an element does not cause the replaced element to be visited. - removing an element does not cause elements to be skipped. - an element added later in the list will be visited. |
+|  [stringify(componentValueLists)](./css-parser-algorithms.stringify.md) | Concatenate the string representation of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid. |
+|  [walk(componentValues, cb, state)](./css-parser-algorithms.walk.md) |  |
+|  [walkerIndexGenerator(initialList)](./css-parser-algorithms.walkerindexgenerator.md) | Generate a function that finds the next element that should be visited when walking an AST. Rules : 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. 2. the next element always appears after the current index. 3. the next element always exists in the list. 4. replacing an element does not cause the replaced element to be visited. 5. removing an element does not cause elements to be skipped. 6. an element added later in the list will be visited. |
 
 ## Type Aliases
 

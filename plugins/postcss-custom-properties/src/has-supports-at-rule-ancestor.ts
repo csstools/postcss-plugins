@@ -1,5 +1,7 @@
 import type { Node, AtRule } from 'postcss';
 
+const HAS_VAR_FUNCTION_REGEX = /([^\w]var\()|(\(top: var\(--f\))/i;
+
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
 	while (parent) {
@@ -9,7 +11,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 		}
 
 		if ((parent as AtRule).name.toLowerCase() === 'supports') {
-			if (/([^\w]var\()|(\(top: var\(--f\))/i.test((parent as AtRule).params)) {
+			if (HAS_VAR_FUNCTION_REGEX.test((parent as AtRule).params)) {
 				return true;
 			}
 		}

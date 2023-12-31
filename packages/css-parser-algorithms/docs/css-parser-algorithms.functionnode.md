@@ -4,12 +4,24 @@
 
 ## FunctionNode class
 
+A function node.
+
 **Signature:**
 
 ```typescript
 export declare class FunctionNode extends ContainerNodeBaseClass 
 ```
 **Extends:** [ContainerNodeBaseClass](./css-parser-algorithms.containernodebaseclass.md)
+
+## Example
+
+
+```js
+const node = parseComponentValue(tokenize('calc(1 + 1)'));
+
+isFunctionNode(node); // true
+node.getName(); // 'calc'
+```
 
 ## Constructors
 
@@ -23,17 +35,14 @@ export declare class FunctionNode extends ContainerNodeBaseClass
 |  --- | --- | --- | --- |
 |  [endToken](./css-parser-algorithms.functionnode.endtoken.md) |  | CSSToken | The token for the closing parenthesis of the function. If the function is unclosed, this will be an EOF token. |
 |  [name](./css-parser-algorithms.functionnode.name.md) |  | TokenFunction | The token for the name of the function. |
-|  [type](./css-parser-algorithms.functionnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type Always <code>ComponentValueType.Function</code> |
+|  [type](./css-parser-algorithms.functionnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.Function</code> |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getName()](./css-parser-algorithms.functionnode.getname.md) |  | Retrieve the name of the current Function. This is the parsed and unescaped name of the function. |
-|  [isFunctionNode()](./css-parser-algorithms.functionnode.isfunctionnode.md) |  | Check if the current object is a FunctionNode. This is a type guard to help with type narrowing. |
-|  [isFunctionNode(x)](./css-parser-algorithms.functionnode.isfunctionnode.md) | <code>static</code> | Check if the given object is a FunctionNode. This is a type guard to help with type narrowing. |
-|  [normalize()](./css-parser-algorithms.functionnode.normalize.md) |  | Normalize the current Function: - if the "endToken" is EOF, replace with a ")-token" |
-|  [toJSON()](./css-parser-algorithms.functionnode.tojson.md) |  | A debug helper to convert the current object to a JSON representation. This is useful in asserts and to store large ASTs in files. |
-|  [tokens()](./css-parser-algorithms.functionnode.tokens.md) |  | Retrieve the tokens for the current Function. This is the inverse of parsing from a list of tokens. |
-|  [toString()](./css-parser-algorithms.functionnode.tostring.md) |  | Convert the current Function to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens. |
+|  [getName()](./css-parser-algorithms.functionnode.getname.md) |  | Retrieve the name of the current function. This is the parsed and unescaped name of the function. |
+|  [normalize()](./css-parser-algorithms.functionnode.normalize.md) |  | Normalize the current function: 1. if the "endToken" is EOF, replace with a ")-token" |
+|  [tokens()](./css-parser-algorithms.functionnode.tokens.md) |  | Retrieve the tokens for the current function. This is the inverse of parsing from a list of tokens. |
+|  [toString()](./css-parser-algorithms.functionnode.tostring.md) |  | Convert the current function to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens. |
 

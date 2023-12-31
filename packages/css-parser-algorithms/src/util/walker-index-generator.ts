@@ -1,12 +1,12 @@
 /**
  * Generate a function that finds the next element that should be visited when walking an AST.
  * Rules :
- * - the previous iteration is used as a reference, so any checks are relative to the start of the current iteration.
- * - the next element always appears after the current index.
- * - the next element always exists in the list.
- * - replacing an element does not cause the replaced element to be visited.
- * - removing an element does not cause elements to be skipped.
- * - an element added later in the list will be visited.
+ * 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration.
+ * 2. the next element always appears after the current index.
+ * 3. the next element always exists in the list.
+ * 4. replacing an element does not cause the replaced element to be visited.
+ * 5. removing an element does not cause elements to be skipped.
+ * 6. an element added later in the list will be visited.
  */
 export function walkerIndexGenerator<T>(initialList: Array<T>) {
 	// 1. Keep a reference of the original ordered list.

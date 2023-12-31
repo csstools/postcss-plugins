@@ -11,9 +11,9 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const gradientFunctionRegex = /(repeating-)?(linear|radial|conic)-gradient\(/i;
-const gradientNameRegex = /^(repeating-)?(linear|radial|conic)-gradient$/i;
-const mathFunctionNameRegex = /^(abs|acos|asin|atan|atan2|calc|clamp|cos|exp|hypot|log|max|min|mod|pow|rem|round|sign|sin|sqrt|tan)$/i;
+const GRADIENT_FUNCTION_REGEX = /(repeating-)?(linear|radial|conic)-gradient\(/i;
+const GRADIENT_NAME_REGEX = /^(repeating-)?(linear|radial|conic)-gradient$/i;
+const MATH_FUNCTION_NAME_REGEX = /^(abs|acos|asin|atan|atan2|calc|clamp|cos|exp|hypot|log|max|min|mod|pow|rem|round|sign|sin|sqrt|tan)$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
@@ -28,7 +28,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-gradient-stop-increments',
 		Declaration(decl) {
-			if (!gradientFunctionRegex.test(decl.value)) {
+			if (!GRADIENT_FUNCTION_REGEX.test(decl.value)) {
 				return;
 			}
 
@@ -47,7 +47,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const functionName = componentValue.getName();
-					if (!gradientNameRegex.test(functionName)) {
+					if (!GRADIENT_NAME_REGEX.test(functionName)) {
 						return;
 					}
 
@@ -85,7 +85,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							continue;
 						}
 
-						if (isFunctionNode(node) && mathFunctionNameRegex.test(node.getName())) {
+						if (isFunctionNode(node) && MATH_FUNCTION_NAME_REGEX.test(node.getName())) {
 							lastLengthNode = maxOfLastAndCurrentLengthNode(lastLengthNode, node);
 							continue;
 						}

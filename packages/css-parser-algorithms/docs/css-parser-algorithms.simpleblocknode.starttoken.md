@@ -4,6 +4,8 @@
 
 ## SimpleBlockNode.startToken property
 
+The token for the opening token of the block.
+
 **Signature:**
 
 ```typescript

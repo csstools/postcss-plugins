@@ -23,7 +23,7 @@ export function getUnsupportedBrowsersByFeature(feature) {
 		const browserSupport = feature.browser_support[browser];
 		// Browser support info must be a valid version.
 		// TP or Beta versions are considered unsupported.
-		const isValid = (typeof browserSupport === 'string') && (/^[0-9|.]+$/.test(browserSupport));
+		const isValid = (typeof browserSupport === 'string') && (DIGITS_OR_DOTS_REGEX.test(browserSupport));
 		if (isValid) {
 			query.push(`${browser} < ${feature.browser_support[browser]}`);
 		} else {
@@ -33,3 +33,5 @@ export function getUnsupportedBrowsersByFeature(feature) {
 
 	return query;
 }
+
+const DIGITS_OR_DOTS_REGEX = /^[0-9|.]+$/;

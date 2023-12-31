@@ -4,8 +4,8 @@ import type { PluginCreator } from 'postcss';
 import { handleInvalidation } from './lib/handle-invalidation';
 import { hasFallback } from './has-fallback-decl';
 
-const IMAGE_SET_VALUE_MATCH_REG_EXP = /(^|[^\w-])(-webkit-)?image-set\(/i;
-const IMAGE_SET_FUNCTION_MATCH_REG_EXP = /^(-webkit-)?image-set$/i;
+const IMAGE_SET_VALUE_MATCH_REGEX = /(^|[^\w-])(-webkit-)?image-set\(/i;
+const IMAGE_SET_FUNCTION_MATCH_REGEX = /^(-webkit-)?image-set$/i;
 
 /** postcss-image-set-function plugin options */
 export type pluginOptions = {
@@ -35,7 +35,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const value = decl.value;
 
 			// if a declaration likely uses an image-set() function
-			if (!IMAGE_SET_VALUE_MATCH_REG_EXP.test(value)) {
+			if (!IMAGE_SET_VALUE_MATCH_REGEX.test(value)) {
 				return;
 			}
 
@@ -69,7 +69,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 
-				if (!IMAGE_SET_FUNCTION_MATCH_REG_EXP.test(node.value)) {
+				if (!IMAGE_SET_FUNCTION_MATCH_REGEX.test(node.value)) {
 					return;
 				}
 
@@ -77,7 +77,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				valueParser.walk(node.nodes, (child) => {
 					if (
 						child.type === 'function' &&
-						IMAGE_SET_FUNCTION_MATCH_REG_EXP.test(child.value)
+						IMAGE_SET_FUNCTION_MATCH_REGEX.test(child.value)
 					) {
 						foundNestedImageSet = true;
 					}

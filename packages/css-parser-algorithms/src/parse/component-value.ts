@@ -1,5 +1,5 @@
 import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
-import { consumeComponentValue } from '../consume/consume-component-block-function';
+import { consumeComponentValue } from '../consume/component-block-function';
 
 export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
 	const ctx = {

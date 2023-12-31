@@ -24,7 +24,7 @@ export type pluginOptions = {
 	specificityMatchingName?: string
 };
 
-const HAS_IS_PSEUDO = /:is\(/i;
+const HAS_IS_PSEUDO_REGEX = /:is\(/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {
@@ -43,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					if (!HAS_IS_PSEUDO.test(rule.selector)) {
+					if (!HAS_IS_PSEUDO_REGEX.test(rule.selector)) {
 						return;
 					}
 

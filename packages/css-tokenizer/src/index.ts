@@ -6,7 +6,7 @@
  *
  * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task.
  * For many applications it is sufficient to work with tokens.
- * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or even a specific parser.
+ * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.
  *
  * @example
  * Tokenize a string of CSS into an array of tokens:

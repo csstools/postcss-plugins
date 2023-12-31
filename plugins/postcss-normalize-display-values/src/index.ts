@@ -26,7 +26,7 @@ function transform(value: string) {
 	return match;
 }
 
-const IS_DISPLAY = /^display$/i;
+const IS_DISPLAY_REGEX = /^display$/i;
 
 /** postcss-normalize-display-values plugin options */
 export type pluginOptions = {
@@ -43,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const cache = new Map();
 			return {
 				Declaration(decl) {
-					if (!IS_DISPLAY.test(decl.prop)) {
+					if (!IS_DISPLAY_REGEX.test(decl.prop)) {
 						return;
 					}
 

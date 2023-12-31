@@ -1,6 +1,6 @@
 import type { Node, AtRule } from 'postcss';
 
-const supportsRegex = /(rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(\s*?from/i;
+const SUPPORTS_REGEX = /(rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(\s*?from/i;
 
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
@@ -11,7 +11,7 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 		}
 
 		if ((parent as AtRule).name.toLowerCase() === 'supports') {
-			if (supportsRegex.test((parent as AtRule).params)) {
+			if (SUPPORTS_REGEX.test((parent as AtRule).params)) {
 				return true;
 			}
 		}

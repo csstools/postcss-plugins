@@ -4,6 +4,8 @@
 
 ## CommentNode.tokens() method
 
+Retrieve the tokens for the current comment. This is the inverse of parsing from a list of tokens.
+
 **Signature:**
 
 ```typescript

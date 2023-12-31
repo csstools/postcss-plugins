@@ -8,8 +8,8 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const HAS_REBECCAPURPLE = /rebeccapurple/i;
-const IS_REBECCAPURPLE = /^rebeccapurple$/i;
+const HAS_REBECCAPURPLE_REGEX = /rebeccapurple/i;
+const IS_REBECCAPURPLE_REGEX = /^rebeccapurple$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -24,7 +24,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-rebeccapurple',
 		Declaration(decl) {
-			if (!HAS_REBECCAPURPLE.test(decl.value)) {
+			if (!HAS_REBECCAPURPLE_REGEX.test(decl.value)) {
 				return;
 			}
 
@@ -34,7 +34,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			const valueAST = valuesParser(decl.value);
 			valueAST.walk(node => {
-				if (node.type === 'word' && IS_REBECCAPURPLE.test(node.value)) {
+				if (node.type === 'word' && IS_REBECCAPURPLE_REGEX.test(node.value)) {
 					node.value = '#639';
 				}
 			});

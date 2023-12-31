@@ -9,7 +9,7 @@ import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
 import { someAtRuleInTree } from './some-in-tree';
 import { sortRootNodes } from './sort-root-nodes';
 import { recordLayerOrder } from './record-layer-order';
-import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, HAS_LAYER, INVALID_LAYER_NAME, IS_IMPORT, IS_LAYER, IS_REVERT_LAYER } from './constants';
+import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS, HAS_LAYER_REGEX, INVALID_LAYER_NAME, IS_IMPORT_REGEX, IS_LAYER_REGEX, IS_REVERT_LAYER_REGEX } from './constants';
 import { splitImportantStyles } from './split-important-styles';
 import type { pluginOptions } from './options';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
@@ -32,7 +32,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			if (options.onRevertLayerKeyword || options.onImportLayerRule) {
 				root.walk((node) => {
 					if (node.type === 'decl') {
-						if (IS_REVERT_LAYER.test(node.value)) {
+						if (IS_REVERT_LAYER_REGEX.test(node.value)) {
 							node.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
 							return;
 						}
@@ -41,12 +41,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					if (node.type === 'atrule') {
-						if (IS_IMPORT.test(node.name) && HAS_LAYER.test(node.params)) {
+						if (IS_IMPORT_REGEX.test(node.name) && HAS_LAYER_REGEX.test(node.params)) {
 							node.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
 							return;
 						}
 
-						if (IS_LAYER.test(node.name)) {
+						if (IS_LAYER_REGEX.test(node.name)) {
 							hasAnyLayer = true;
 							return;
 						}

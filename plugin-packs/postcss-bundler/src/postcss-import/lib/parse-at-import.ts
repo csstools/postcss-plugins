@@ -1,6 +1,6 @@
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
-import { IS_LAYER, IS_SUPPORTS, IS_URL } from './names';
+import { IS_LAYER_REGEX, IS_SUPPORTS_REGEX, IS_URL_REGEX } from './names';
 
 export function parseAtImport(params: string) : false | { uri: string; fullUri: string; layer?: string; media?: string; supports?: string; } {
 	const tokens = tokenize({ css: params });
@@ -56,7 +56,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 
 		if (
 			isFunctionNode(componentValue) &&
-			IS_URL.test(componentValue.getName())
+			IS_URL_REGEX.test(componentValue.getName())
 		) {
 			if (uri) {
 				return false;
@@ -91,7 +91,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 		if (
 			isTokenNode(componentValue) &&
 			componentValue.value[0] === TokenType.Ident &&
-			IS_LAYER.test(componentValue.value[4].value)
+			IS_LAYER_REGEX.test(componentValue.value[4].value)
 		) {
 			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
 				return false;
@@ -103,7 +103,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 
 		if (
 			isFunctionNode(componentValue) &&
-			IS_LAYER.test(componentValue.getName())
+			IS_LAYER_REGEX.test(componentValue.getName())
 		) {
 			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
 				return false;
@@ -115,7 +115,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 
 		if (
 			isFunctionNode(componentValue) &&
-			IS_SUPPORTS.test(componentValue.getName())
+			IS_SUPPORTS_REGEX.test(componentValue.getName())
 		) {
 			if (typeof supports !== 'undefined') {
 				return false;

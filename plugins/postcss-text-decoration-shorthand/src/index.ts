@@ -8,7 +8,7 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const IS_TEXT_DECORATION = /^text-decoration$/i;
+const IS_TEXT_DECORATION_REGEX = /^text-decoration$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -30,7 +30,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					convertedValues.clear();
 				},
 				Declaration: (decl) => {
-					if (!IS_TEXT_DECORATION.test(decl.prop)) {
+					if (!IS_TEXT_DECORATION_REGEX.test(decl.prop)) {
 						return;
 					}
 
@@ -42,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const ownIndex = parent.index(decl);
 					const hasFallbacksOrOverrides = parent.nodes.some((node) => {
 						return node.type === 'decl' &&
-							IS_TEXT_DECORATION.test(node.prop) &&
+							IS_TEXT_DECORATION_REGEX.test(node.prop) &&
 							convertedValues.get(decl.value) === node.value &&
 							parent.index(node) !== ownIndex;
 					});

@@ -45,10 +45,9 @@
 			element.setAttribute('aria-current', 'page');
 		});
 
-		const stageRegExp = /^#stage-([0-4])$/;
-
-		if (stageRegExp.test(location.hash)) {
-			const stageNumber = location.hash.match(stageRegExp)[1];
+		const STAGE_REGEX = /^#stage-([0-4])$/;
+		if (STAGE_REGEX.test(location.hash)) {
+			const stageNumber = location.hash.match(STAGE_REGEX)[1];
 
 			updateStage(stageNumber);
 		}

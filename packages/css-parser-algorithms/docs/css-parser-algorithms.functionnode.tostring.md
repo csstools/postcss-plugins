@@ -4,7 +4,7 @@
 
 ## FunctionNode.toString() method
 
-Convert the current Function to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.
+Convert the current function to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.
 
 **Signature:**
 
