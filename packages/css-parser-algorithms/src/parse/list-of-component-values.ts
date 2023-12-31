@@ -1,6 +1,17 @@
 import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
 import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
+/**
+ * Parse a list of component values.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseListOfComponentValues(tokenize({ css: `20deg 30%` }));
+ * ```
+ */
 export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
 	const ctx = {
 		onParseError: options?.onParseError ?? (() => { /* noop */ }),

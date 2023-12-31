@@ -29,6 +29,9 @@
  * @example
  * Use the right algorithm for the job.
  *
+ * Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures.
+ * However, the opposite is not true.
+ *
  * If your context allows a list of component values, use {@link parseListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
@@ -335,14 +338,48 @@ export declare function isTokenNode(x: unknown): x is TokenNode;
  */
 export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
 
+/**
+ * Parse a comma-separated list of component values.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
+ * ```
+ */
 export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): ComponentValue[][];
 
+/**
+ * Parse a single component value.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
+ * ```
+ */
 export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): ComponentValue | undefined;
 
+/**
+ * Parse a list of component values.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseListOfComponentValues(tokenize({ css: `20deg 30%` }));
+ * ```
+ */
 export declare function parseListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): ComponentValue[];

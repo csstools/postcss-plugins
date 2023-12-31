@@ -4,6 +4,8 @@
 
 ## parseCommaSeparatedListOfComponentValues() function
 
+Parse a comma-separated list of component values.
+
 **Signature:**
 
 ```typescript
@@ -22,4 +24,14 @@ export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<C
 **Returns:**
 
 [ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->\[\]\[\]
+
+## Example
+
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+
+parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
+```
 

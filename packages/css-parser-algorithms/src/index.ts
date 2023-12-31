@@ -29,6 +29,9 @@
  * @example
  * Use the right algorithm for the job.
  *
+ * Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures.
+ * However, the opposite is not true.
+ *
  * If your context allows a list of component values, use {@link parseListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';

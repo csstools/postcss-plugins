@@ -35,6 +35,8 @@ console.log(componentValue);
 
 Use the right algorithm for the job.
 
+Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures. However, the opposite is not true.
+
 If your context allows a list of component values, use [parseListOfComponentValues()](./css-parser-algorithms.parselistofcomponentvalues.md)<!-- -->:
 
 ```js
@@ -110,9 +112,9 @@ componentValue.walk((entry) => {
 |  [isSimpleBlockNode(x)](./css-parser-algorithms.issimpleblocknode.md) | Check if the current object is a <code>SimpleBlockNode</code>. This is a type guard. |
 |  [isTokenNode(x)](./css-parser-algorithms.istokennode.md) | Check if the current object is a <code>TokenNode</code>. This is a type guard. |
 |  [isWhitespaceNode(x)](./css-parser-algorithms.iswhitespacenode.md) | Check if the current object is a <code>WhitespaceNode</code>. This is a type guard. |
-|  [parseCommaSeparatedListOfComponentValues(tokens, options)](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md) |  |
-|  [parseComponentValue(tokens, options)](./css-parser-algorithms.parsecomponentvalue.md) |  |
-|  [parseListOfComponentValues(tokens, options)](./css-parser-algorithms.parselistofcomponentvalues.md) |  |
+|  [parseCommaSeparatedListOfComponentValues(tokens, options)](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md) | Parse a comma-separated list of component values. |
+|  [parseComponentValue(tokens, options)](./css-parser-algorithms.parsecomponentvalue.md) | Parse a single component value. |
+|  [parseListOfComponentValues(tokens, options)](./css-parser-algorithms.parselistofcomponentvalues.md) | Parse a list of component values. |
 |  [replaceComponentValues(componentValuesList, replaceWith)](./css-parser-algorithms.replacecomponentvalues.md) | Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST. |
 |  [sourceIndices(x)](./css-parser-algorithms.sourceindices.md) | Returns the start and end index of a node in the CSS source string. |
 |  [stringify(componentValueLists)](./css-parser-algorithms.stringify.md) | Concatenate the string representation of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid. |

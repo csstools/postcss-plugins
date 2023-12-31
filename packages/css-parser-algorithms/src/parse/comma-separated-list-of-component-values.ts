@@ -1,6 +1,17 @@
 import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
 import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
+/**
+ * Parse a comma-separated list of component values.
+ *
+ * @example
+ * ```js
+ * import { tokenize } from '@csstools/css-tokenizer';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ *
+ * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
+ * ```
+ */
 export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
 	const ctx = {
 		onParseError: options?.onParseError ?? (() => { /* noop */ }),
