@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-rebase-url",
 	"description": "Rebase url() functions when transforming CSS",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
