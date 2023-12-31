@@ -342,14 +342,10 @@ export const atRuleClonerPlugin = {
 };
 
 class PackageDescriptionError extends Error {
-	constructor(message: string, key?: string) {
+	constructor(message: string, key: string) {
 		super(message);
 
 		this.name = 'PackageDescriptionError';
-		this.stack = undefined;
-
-		if (key) {
-			this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json')).pathname})`;
-		}
+		this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json')).pathname})`;
 	}
 }
