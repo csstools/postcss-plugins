@@ -40,6 +40,8 @@ export enum SyntaxFlag {
 	RelativeColorSyntax = 'relative-color-syntax',
 	/** Is a mixed color, e.g. `color-mix(in oklch, red, blue)` */
 	ColorMix = 'color-mix',
+	/** Is a contrasting color, e.g. `contrast-color()` */
+	ContrastColor = 'contrast-color',
 	/** Is an experimental color syntax */
 	Experimental = 'experimental',
 }

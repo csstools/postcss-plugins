@@ -1098,6 +1098,27 @@
             },
             {
               "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.ContrastColor:member",
+              "docComment": "/**\n * Is a contrasting color, e.g. `contrast-color()`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ContrastColor = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"contrast-color\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ContrastColor"
+            },
+            {
+              "kind": "EnumMember",
               "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.Experimental:member",
               "docComment": "/**\n * Is an experimental color syntax\n */\n",
               "excerptTokens": [
