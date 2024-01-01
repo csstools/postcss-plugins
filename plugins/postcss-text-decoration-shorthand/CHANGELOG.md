@@ -1,5 +1,12 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### 3.0.4
+
+_December 15, 2023_
+
+- Fix type definitions
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#400) (major)
+
 ### 3.0.3
 
 _September 18, 2023_

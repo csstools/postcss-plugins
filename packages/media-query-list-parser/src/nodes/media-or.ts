@@ -53,6 +53,9 @@ export class MediaOr {
 		return this.media.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -61,6 +64,9 @@ export class MediaOr {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaOr(): this is MediaOr {
 		return MediaOr.isMediaOr(this);
 	}

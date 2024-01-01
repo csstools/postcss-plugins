@@ -1,6 +1,6 @@
 # Prefers Color Scheme [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/css-prefers-color-scheme.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/prefers-color-scheme-query.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/css-prefers-color-scheme.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/prefers-color-scheme-query.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/prefers-color-scheme-query.svg" height="20">][css-url] 
 
 ```bash
 npm install css-prefers-color-scheme --save-dev
@@ -146,12 +146,13 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme@9.0.1/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit()</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+> [!TIP]
+> Please use a versioned url, like this : `https://unpkg.com/css-prefers-color-scheme@9.0.1/dist/browser-global.js`
+> Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [Prefers Color Scheme] works in all major browsers, including Safari 6+ and
 Internet Explorer 9+ without any additional polyfills.
@@ -224,7 +225,7 @@ const prefersColorScheme = prefersColorSchemeInit('light', { debug: true });
 ```
 
 ```html
-<script src="https://unpkg.com/css-prefers-color-scheme@9.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-prefers-color-scheme@9.0.1/dist/browser-global.js"></script>
 <script>prefersColorSchemeInit('light', { debug: true })</script>
 ```
 
@@ -246,10 +247,11 @@ ECMA Script:
 
 ## CORS
 
-⚠️ Applies to you if you load CSS from a different domain than the page.
-
-In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
-The polyfill will not work without applying the correct configuration for CORS.
+> [!IMPORTANT]
+> Applies to you if you load CSS from a different domain than the page.
+>
+> In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
+> The polyfill will not work without applying the correct configuration for CORS.
 
 Example :
 

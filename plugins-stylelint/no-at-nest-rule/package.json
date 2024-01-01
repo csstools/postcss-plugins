@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-no-at-nest-rule",
 	"description": "Do not allow @nest rules",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -27,25 +27,25 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
-	"main": "index.js",
+	"type": "module",
+	"main": "index.mjs",
 	"files": [
 		"LICENSE.md",
 		"README.md",
-		"index.js"
+		"index.mjs"
 	],
 	"peerDependencies": {
 		"postcss": "^8.4",
-		"stylelint": "^15.0.0"
+		"stylelint": "^16.0.2"
 	},
 	"devDependencies": {
-		"jest": "^29.7.0",
-		"jest-preset-stylelint": "^6.3.2",
 		"postcss": "^8.4",
-		"stylelint": "^15.11.0"
+		"stylelint": "^16.0.2",
+		"stylelint-test-rule-node": "^0.2.1"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
-		"test": "jest"
+		"test": "node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-at-nest-rule#readme",
 	"repository": {
@@ -58,7 +58,7 @@
 		"stylelint",
 		"stylelint-plugin"
 	],
-	"jest": {
-		"preset": "jest-preset-stylelint"
+	"volta": {
+		"extends": "../../package.json"
 	}
 }

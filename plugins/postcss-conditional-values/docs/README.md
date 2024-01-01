@@ -12,6 +12,7 @@
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -36,6 +37,8 @@ For more information on how the trick works, you can read more on these articles
 
 - [The CSS Custom Property Toggle Trick](https://css-tricks.com/the-css-custom-property-toggle-trick/)
 - [The -​-var: ; hack to toggle multiple values with one custom property](https://lea.verou.me/2020/10/the-var-space-hack-to-toggle-multiple-values-with-one-custom-property/)
+
+<parallelBuildsNotice>
 
 <usage>
 

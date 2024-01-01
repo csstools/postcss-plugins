@@ -1,20 +1,18 @@
-import type { Color } from 'types/color';
-import { multiplyMatrices } from 'calculations/multiply-matrices';
+import type { Color } from '../types/color';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 /**
- * Convert XYZ to linear-light prophoto-rgb
+ * Convert D50 XYZ to linear-light prophoto-rgb
  *
  * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
- *
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
  */
 export function XYZ_to_lin_ProPhoto(XYZ: Color): Color {
 	const M = [
-		[1.3457989731028281, -0.25558010007997534, -0.05110628506753401],
-		[-0.5446224939028347, 1.5082327413132781, 0.02053603239147973],
-		[0.0, 0.0, 1.2119675456389454],
+		[1.34578688164715830, -0.25557208737979464, -0.05110186497554526],
+		[-0.54463070512490190, 1.50824774284514680, 0.02052744743642139],
+		[0.00000000000000000, 0.00000000000000000, 1.21196754563894520],
 	];
 
 	return multiplyMatrices(M, XYZ) as Color;

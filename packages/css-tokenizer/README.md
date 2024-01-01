@@ -6,6 +6,10 @@
 
 Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
 
+## API
+
+[Read the API docs](./docs/css-tokenizer.md)
+
 ## Usage
 
 Add [CSS Tokenizer] to your project:
@@ -17,7 +21,7 @@ npm install @csstools/css-tokenizer --save-dev
 ```js
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 
-const myCSS =  `@media only screen and (min-width: 768rem) {
+const myCSS = `@media only screen and (min-width: 768rem) {
 	.foo {
 		content: 'Some content!' !important;
 	}
@@ -68,7 +72,6 @@ console.log(tokens);
 #### `onParseError`
 
 The tokenizer is forgiving and won't stop when a parse error is encountered.
-Parse errors also aren't tokens.
 
 To receive parsing error information you can set a callback.
 
@@ -87,8 +90,8 @@ while (true) {
 }
 ```
 
-Parser errors will try to inform you about the point in the tokenizer logic the error happened.
-This tells you the kind of error.
+Parser errors will try to inform you where in the tokenizer logic the error happened.
+This tells you what kind of error occurred.
 
 ## Goals and non-goals
 

@@ -1,4 +1,5 @@
 import { GlobalsWithStrings } from './util/globals';
+export type { GlobalsWithStrings } from './util/globals';
 
 export type conversionOptions = {
 	/**

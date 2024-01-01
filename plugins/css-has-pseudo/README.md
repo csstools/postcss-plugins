@@ -1,6 +1,6 @@
 # PostCSS Has Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/css-has-pseudo.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/has-pseudo-class.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/css-has-pseudo.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/has-pseudo-class.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/has-pseudo-class.svg" height="20">][css-url] 
 
 ```bash
 npm install css-has-pseudo --save-dev
@@ -166,12 +166,13 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-has-pseudo@6.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-has-pseudo@6.0.1/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@6.0.0/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+> [!TIP]
+> Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@6.0.1/dist/browser-global.js`
+> Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [PostCSS Has Pseudo] works in all major browsers, including
 Internet Explorer 11. With a [Mutation Observer polyfill](https://github.com/webmodules/mutation-observer), the script will work
@@ -238,10 +239,11 @@ ECMA Script:
 
 ## CORS
 
-⚠️ Applies to you if you load CSS from a different domain than the page.
-
-In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
-The polyfill will not work without applying the correct configuration for CORS.
+> [!IMPORTANT]
+> Applies to you if you load CSS from a different domain than the page.
+>
+> In this case the CSS is treated as untrusted and will not be made available to the JavaScript polyfill.
+> The polyfill will not work without applying the correct configuration for CORS.
 
 Example :
 

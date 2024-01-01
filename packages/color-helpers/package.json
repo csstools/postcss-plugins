@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/color-helpers",
 	"description": "Color helpers to ease transformation between formats, gamut, etc",
-	"version": "3.0.2",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -27,14 +27,18 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
+	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
 		}
 	},
 	"files": [
@@ -47,9 +51,10 @@
 		"build": "rollup -c ../../rollup/default.mjs",
 		"check-sources-integrity": "node ./scripts/check-changes.mjs",
 		"check-sources-integrity:rewrite": "REWRITE_HASHES=true node ./scripts/check-changes.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
-		"test": "node ./test/_import.mjs && node ./test/_require.cjs"
+		"test": "node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers#readme",
 	"repository": {

@@ -1,5 +1,11 @@
 # Changes to PostCSS Normalize Display Values
 
+### 3.0.2
+
+_December 15, 2023_
+
+- Fix type definitions
+
 ### 3.0.1
 
 _September 18, 2023_

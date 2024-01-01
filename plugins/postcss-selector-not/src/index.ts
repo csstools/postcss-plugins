@@ -1,7 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-function cleanupWhitespace(node) {
+function cleanupWhitespace(node: parser.Selector) {
 	if (node.spaces) {
 		node.spaces.after = '';
 		node.spaces.before = '';
@@ -43,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					const replacements = [];
+					const replacements: Array<parser.Pseudo> = [];
 
 					pseudo.nodes.forEach((node) => {
 						cleanupWhitespace(node);
@@ -65,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 					rule.replaceWith(rule.clone({selector: modifiedSelector}));
 				}
 			} catch (err) {
-				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+				rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 			}
 		},
 	};

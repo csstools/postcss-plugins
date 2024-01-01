@@ -14,8 +14,8 @@ type basePluginOptions = {
 	}
 };
 
-const lab_lch_functionRegex = /(lab|lch)\(/i;
-const lab_lch_nameRegex = /^(lab|lch)$/i;
+const LAB_LCH_FUNCTION_REGEX = /(lab|lch)\(/i;
+const LAB_LCH_NAME_REGEX = /^(lab|lch)$/i;
 
 /* Transform lab() and lch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -23,7 +23,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-lab-function',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(lab_lch_functionRegex.test(originalValue))) {
+			if (!(LAB_LCH_FUNCTION_REGEX.test(originalValue))) {
 				return;
 			}
 
@@ -39,22 +39,24 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			const replacedRGB = replaceComponentValues(
 				parseCommaSeparatedListOfComponentValues(tokens),
 				(componentValue) => {
-					if (isFunctionNode(componentValue) && lab_lch_nameRegex.test(componentValue.getName())) {
-						const colorData = color(componentValue);
-						if (!colorData) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
-							return;
-						}
-
-						return serializeRGB(colorData);
+					if (!isFunctionNode(componentValue) || !LAB_LCH_NAME_REGEX.test(componentValue.getName())) {
+						return;
 					}
+
+					const colorData = color(componentValue);
+					if (!colorData) {
+						return;
+					}
+
+					if (
+						colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+						colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+						colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+					) {
+						return;
+					}
+
+					return serializeRGB(colorData);
 				},
 			);
 
@@ -68,26 +70,28 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				modifiedP3 = stringify(replaceComponentValues(
 					parseCommaSeparatedListOfComponentValues(tokens),
 					(componentValue) => {
-						if (isFunctionNode(componentValue) && lab_lch_nameRegex.test(componentValue.getName())) {
-							const colorData = color(componentValue);
-							if (!colorData) {
-								return;
-							}
-
-							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-								return;
-							}
-
-							if (colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
-								return;
-							}
-
-							if (colorDataFitsRGB_Gamut(colorData)) {
-								return serializeRGB(colorData);
-							}
-
-							return serializeP3(colorData);
+						if (!isFunctionNode(componentValue) || !LAB_LCH_NAME_REGEX.test(componentValue.getName())) {
+							return;
 						}
+
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (
+							colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+							colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+							colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+						) {
+							return;
+						}
+
+						if (colorDataFitsRGB_Gamut(colorData)) {
+							return serializeRGB(colorData);
+						}
+
+						return serializeP3(colorData);
 					},
 				));
 			}

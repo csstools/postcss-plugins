@@ -2,10 +2,10 @@ import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
 import type { CSSToken } from '@csstools/css-tokenizer';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 
-const HAS_LEGAL_KEYWORDS = /(?:license|copyright)/i;
-const HAS_SOURCE_MAP = /sourceMappingURL/i;
-const HAS_WHITESPACE_OR_COMMENTS = /(?:\s|\/\*)/;
-const IS_LAYER = /^layer$/i;
+const HAS_LEGAL_KEYWORDS_REGEX = /(?:license|copyright)/i;
+const HAS_SOURCE_MAP_REGEX = /sourceMappingURL/i;
+const HAS_WHITESPACE_OR_COMMENTS_REGEX = /(?:\s|\/\*)/;
+const IS_LAYER_REGEX = /^layer$/i;
 
 function minify(cache: Map<string, string>, x: string | undefined): string | undefined {
 	if (!x) {
@@ -22,7 +22,7 @@ function minify(cache: Map<string, string>, x: string | undefined): string | und
 		return '';
 	}
 
-	if (!HAS_WHITESPACE_OR_COMMENTS.test(y)) {
+	if (!HAS_WHITESPACE_OR_COMMENTS_REGEX.test(y)) {
 		cache.set(x, y);
 		return y;
 	}
@@ -74,7 +74,7 @@ function removeEmptyNodes(node: Container | Document): boolean {
 		}
 
 	} else if (node.type === 'atrule') {
-		if (node.nodes?.length === 0 && !IS_LAYER.test((node as AtRule).name)) {
+		if (node.nodes?.length === 0 && !IS_LAYER_REGEX.test((node as AtRule).name)) {
 			const parent = node.parent;
 			if (!parent) {
 				return false;
@@ -168,7 +168,14 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 					case 'comment':
 
-						if (HAS_LEGAL_KEYWORDS.test(node.text) || HAS_SOURCE_MAP.test(node.text)) {
+						if (
+							// `/*! ... */` is a common pattern to indicate that a comment is important and should not be removed.
+							node.text.startsWith('!') ||
+							// Comments containing the words `license` or `copyright` should not be removed.
+							HAS_LEGAL_KEYWORDS_REGEX.test(node.text) ||
+							// Comments containing the word `sourceMappingURL` should not be removed.
+							HAS_SOURCE_MAP_REGEX.test(node.text)
+						) {
 							node.raws.before = '';
 							return;
 						}

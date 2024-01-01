@@ -8,9 +8,9 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const IS_INITIAL = /^\s?initial\s?$/i;
-const IS_FONT = /^font$/i;
-const IS_ALL = /^all$/i;
+const IS_INITIAL_REGEX = /^\s?initial\s?$/i;
+const IS_FONT_REGEX = /^font$/i;
+const IS_ALL_REGEX = /^all$/i;
 
 const fontProperties = [
 	'font-family',
@@ -39,14 +39,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (!IS_INITIAL.test(decl.value)) {
+			if (!IS_INITIAL_REGEX.test(decl.value)) {
 				return;
 			}
 
 			let lookupProperties;
-			if (IS_FONT.test(decl.prop)) {
+			if (IS_FONT_REGEX.test(decl.prop)) {
 				lookupProperties = fontProperties;
-			} else if (IS_ALL.test(decl.prop)) {
+			} else if (IS_ALL_REGEX.test(decl.prop)) {
 				lookupProperties = allProperties;
 			} else {
 				lookupProperties = [decl.prop.toLowerCase()];

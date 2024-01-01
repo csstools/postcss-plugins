@@ -3,6 +3,8 @@ import { Axes, DirectionConfig, DirectionFlow } from './lib/types';
 import { transformResize } from './lib/transform-resize';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 
+export type { DirectionFlow } from './lib/types';
+
 /** postcss-logical-resize plugin options */
 export type pluginOptions = {
 	/** Sets the direction for block. default: top-to-bottom */
@@ -59,8 +61,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			try {
 				transformed = transform(decl);
-			} catch (error) {
-				decl.warn(result, error.message);
+			} catch (err) {
+				decl.warn(result, (err instanceof Error) ? err.message : String(err));
 				return;
 			}
 

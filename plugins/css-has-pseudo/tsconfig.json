@@ -2,8 +2,9 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"declarationDir": "."
+		"declarationDir": ".",
+		"strict": true
 	},
-	"include": ["./src/**/*"],
+	"include": ["./src/**/*", "test/_encode-decode.mjs"],
 	"exclude": ["dist"],
 }

@@ -43,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 			} catch (err) {
-				atRule.warn(result, `Failed to transform @media params for "${atRule.params}" with message: "${err.message}"`);
+				atRule.warn(result, `Failed to transform @media params for "${atRule.params}" with message: "${(err instanceof Error) ? err.message : err}"`);
 				return;
 			}
 

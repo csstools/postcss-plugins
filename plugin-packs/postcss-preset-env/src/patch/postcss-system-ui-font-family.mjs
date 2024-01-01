@@ -2,9 +2,9 @@ export default function postcssSystemUiFont() {
 	return {
 		postcssPlugin: 'postcss-system-ui-font',
 		Declaration(/** @type {import('postcss').Declaration} */ node) {
-			if (propertyRegExp.test(node.prop)) {
-				if (!node.value.includes(systemUiFamily.join(', '))) {
-					node.value = node.value.replace(systemUiMatch, systemUiReplace);
+			if (PROPERTY_REGEX.test(node.prop)) {
+				if (!node.value.includes(systemUIFamilies)) {
+					node.value = node.value.replace(SYSTEM_UI_MATCH, systemUiReplace);
 				}
 			}
 		},
@@ -13,7 +13,7 @@ export default function postcssSystemUiFont() {
 
 postcssSystemUiFont.postcss = true;
 
-const propertyRegExp = /(?:^(?:-|\\002d){2})|(?:^font(?:-family)?$)/i;
+const PROPERTY_REGEX = /(?:^(?:-|\\002d){2})|(?:^font(?:-family)?$)/i;
 const whitespace = '[\\f\\n\\r\\x09\\x20]';
 const systemUiFamily = [
 	'system-ui',
@@ -25,5 +25,6 @@ const systemUiFamily = [
 	/* KDE Plasma 5+ */ 'Noto Sans',
 	/* fallback */ 'sans-serif',
 ];
-const systemUiMatch = new RegExp(`(^|,|${whitespace}+)(?:system-ui${whitespace}*)(?:,${whitespace}*(?:${systemUiFamily.join('|')})${whitespace}*)?(,|$)`, 'i');
-const systemUiReplace = `$1${systemUiFamily.join(', ')}$2`;
+const systemUIFamilies = systemUiFamily.join(', ');
+const SYSTEM_UI_MATCH = new RegExp(`(^|,|${whitespace}+)(?:system-ui${whitespace}*)(?:,${whitespace}*(?:${systemUiFamily.join('|')})${whitespace}*)?(,|$)`, 'i');
+const systemUiReplace = `$1${systemUIFamilies}$2`;

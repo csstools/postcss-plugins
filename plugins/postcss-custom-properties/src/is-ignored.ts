@@ -19,7 +19,7 @@ export function isBlockIgnored(container: Container | undefined) {
 	return result;
 }
 
-const declarationRegExp = /(!\s*)?postcss-custom-properties:\s*ignore\s+next\b/i;
+const DECLARATION_REG_EXP = /(!\s*)?postcss-custom-properties:\s*ignore\s+next\b/i;
 
 export function isDeclarationIgnored(decl: Declaration | undefined) {
 	if (!decl) {
@@ -30,7 +30,7 @@ export function isDeclarationIgnored(decl: Declaration | undefined) {
 		return true;
 	}
 
-	return isIgnoreComment(decl.prev(), declarationRegExp);
+	return isIgnoreComment(decl.prev(), DECLARATION_REG_EXP);
 }
 
 function isIgnoreComment(node: Node | undefined, regexp: RegExp) {

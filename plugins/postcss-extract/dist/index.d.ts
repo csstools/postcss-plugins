@@ -1,5 +1,9 @@
 import type { PluginCreator } from 'postcss';
-export type pluginOptions = {
+
+declare const creator: PluginCreator<pluginOptions>;
+export default creator;
+
+export declare type pluginOptions = {
     /** Mapping of queries */
     queries: Record<string, string>;
     /** Extract after transforms are likely to be done, or before it */
@@ -7,5 +11,5 @@ export type pluginOptions = {
     /** Callback for results */
     results: (results: Record<string, Array<Record<string, unknown>>>) => void;
 };
-declare const creator: PluginCreator<pluginOptions>;
-export default creator;
+
+export { }

@@ -6,7 +6,7 @@ import { parseStylesheet } from './parse-stylesheet';
 import { createRequire, resolveId } from './resolve-id';
 import { loadContent } from './load-content';
 import noopPlugin from './noop-plugin';
-import { IS_CHARSET } from './names';
+import { IS_CHARSET_REGEX } from './names';
 
 export async function parseStyles(
 	result: Result,
@@ -135,7 +135,7 @@ async function loadImportContent(
 	const styles = importedResult.root;
 	result.messages = result.messages.concat(importedResult.messages);
 
-	if (styles.first?.type === 'atrule' && IS_CHARSET.test(styles.first.name)) {
+	if (styles.first?.type === 'atrule' && IS_CHARSET_REGEX.test(styles.first.name)) {
 		styles.first.after(postcss.comment({ text: `${stmt.uri}`, source: node.source }));
 	} else {
 		styles.prepend(postcss.comment({ text: `${stmt.uri}`, source: node.source }));
@@ -152,9 +152,11 @@ async function loadImportContent(
 	);
 }
 
+const PROTOCOL_REGEX = /^(?:[a-z]+:)?\/\//i;
+
 function isProcessableURL(uri: string): boolean {
 	// skip protocol base uri (protocol://url) or protocol-relative
-	if (/^(?:[a-z]+:)?\/\//i.test(uri)) {
+	if (PROTOCOL_REGEX.test(uri)) {
 		return false;
 	}
 

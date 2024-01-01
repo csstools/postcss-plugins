@@ -1,5 +1,4 @@
 import type { PluginCreator } from 'postcss';
-import { FUNCTION_CALL_REGEXP } from './checks';
 import { calc } from '@csstools/css-calc';
 
 /** postcss-exponential-functions plugin options */
@@ -7,6 +6,8 @@ export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
 };
+
+const FUNCTION_CALL_REGEX = /(?<![-\w])(?:exp|hypot|log|pow|sqrt)\(/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
@@ -21,7 +22,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-exponential-functions',
 		Declaration(decl) {
-			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
+			if (!FUNCTION_CALL_REGEX.test(decl.value)) {
 				return;
 			}
 

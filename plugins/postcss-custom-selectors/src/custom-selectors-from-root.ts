@@ -44,22 +44,26 @@ export default function getCustomSelectors(root: PostCSSRoot, result: Result, op
 				removeEmptyAncestorBlocks(parent);
 			}
 		} catch (err) {
-			atRule.warn(result, `Failed to parse custom selector : "${atRule.params}" with message: "${err.message}"`);
+			atRule.warn(result, `Failed to parse selector : "${atRule.params}" with message: "${(err instanceof Error) ? err.message : err}"`);
 		}
 	});
 
 	return customSelectors;
 }
 
-function removeEmptyAncestorBlocks(block: Container) {
-	let currentNode: Document | Container<ChildNode> = block;
+function removeEmptyAncestorBlocks(block: Container | undefined) {
+	if (!block) {
+		return;
+	}
+
+	let currentNode: Document | Container<ChildNode> | undefined = block;
 
 	while (currentNode) {
 		if (currentNode.nodes && currentNode.nodes.length > 0) {
 			return;
 		}
 
-		const parent = currentNode.parent;
+		const parent: Document | Container<ChildNode> | undefined = currentNode.parent;
 		currentNode.remove();
 		currentNode = parent;
 	}

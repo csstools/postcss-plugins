@@ -1,5 +1,12 @@
 # Changes to PostCSS Double Position Gradients
 
+### 5.0.3
+
+_December 15, 2023_
+
+- Fix type definitions
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#303) (patch)
+
 ### 5.0.2
 
 _October 9, 2023_

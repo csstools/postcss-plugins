@@ -1,26 +1,26 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import valueParser from 'postcss-value-parser';
-import type { ParsedValue, FunctionNode } from 'postcss-value-parser';
-import type { Declaration, Result } from 'postcss';
-import onCSSFunction from './on-css-function';
-
+import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { tokenize } from '@csstools/css-tokenizer';
+import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback } from './has-fallback-decl';
+import { hasSupportsAtRuleAncestor, RGB_HSL_FUNCTION_REGEX } from './has-supports-at-rule-ancestor';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { serializeHSL } from '@csstools/css-color-parser';
 
 type basePluginOptions = {
 	preserve: boolean,
-}
+};
 
-const HAS_COLOR_FUNCTION = /(?:rgb|hsl)a?\(/i;
+const RGB_HSL_NAME_REGEX = /^(?:rgb|hsl)a?$/i;
 
 /* Transform the color functional notation in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
-		postcssPlugin: 'postcss-color-function',
-		Declaration: (decl: Declaration, { result }: { result: Result }) => {
+		postcssPlugin: 'postcss-color-functional-notation',
+		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!HAS_COLOR_FUNCTION.test(originalValue)) {
+			if (!(RGB_HSL_FUNCTION_REGEX.test(originalValue))) {
 				return;
 			}
 
@@ -32,41 +32,47 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			let valueAST: ParsedValue | undefined;
+			const replacedRGB = replaceComponentValues(
+				parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
+				(componentValue) => {
+					if (!isFunctionNode(componentValue) || !RGB_HSL_NAME_REGEX.test(componentValue.getName())) {
+						return;
+					}
 
-			try {
-				valueAST = valueParser(originalValue);
-			} catch (error) {
-				decl.warn(
-					result,
-					`Failed to parse value '${originalValue}' as a hsl or rgb function. Leaving the original value intact.`,
-				);
-			}
+					const colorData = color(componentValue);
+					if (!colorData) {
+						return;
+					}
 
-			if (typeof valueAST === 'undefined') {
-				return;
-			}
+					if (
+						colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+						colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+						colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+					) {
+						return;
+					}
 
-			valueAST.walk((node) => {
-				if (!node.type || node.type !== 'function') {
-					return;
-				}
+					// Any modern `rgb()` or `hsl()`
+					// Or any legacy `rgb()` or `hsl()` with percentage alpha
+					if (
+						(
+							colorData.syntaxFlags.has(SyntaxFlag.LegacyRGB) ||
+								colorData.syntaxFlags.has(SyntaxFlag.LegacyHSL)
+						) &&
+							!colorData.syntaxFlags.has(SyntaxFlag.HasPercentageAlpha)
+					) {
+						return;
+					}
 
-				const lowerCaseNodeValue = node.value.toLowerCase();
+					if (colorData.colorNotation === 'hsl') {
+						return serializeHSL(colorData);
+					}
 
-				if (
-					lowerCaseNodeValue !== 'hsl' &&
-					lowerCaseNodeValue !== 'hsla' &&
-					lowerCaseNodeValue !== 'rgb' &&
-					lowerCaseNodeValue !== 'rgba'
-				) {
-					return;
-				}
+					return serializeRGB(colorData);
+				},
+			);
 
-				onCSSFunction(node as FunctionNode);
-			});
-			const modifiedValue = String(valueAST);
-
+			const modifiedValue = stringify(replacedRGB);
 			if (modifiedValue === originalValue) {
 				return;
 			}
@@ -90,7 +96,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform the color() function in CSS. */
+/* Transform the color functional notation in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		preserve: false,
@@ -99,7 +105,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	if (options.enableProgressiveCustomProperties && options.preserve) {
 		return {
-			postcssPlugin: 'postcss-color-function',
+			postcssPlugin: 'postcss-color-functional-notation',
 			plugins: [
 				postcssProgressiveCustomProperties(),
 				basePlugin(options),

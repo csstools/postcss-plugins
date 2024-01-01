@@ -1,0 +1,129 @@
+{
+	"$schema": "https://unpkg.com/knip@2/schema.json",
+	"workspaces": {
+		".": {
+			"entry": [
+				".github/bin/**/*.mjs",
+				"rollup/**/*.mjs"
+			]
+		},
+		"packages/*": {
+			"entry": [
+				"scripts/**/*.mjs",
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
+		},
+		"plugins/postcss-design-tokens": {
+			"entry": [
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.ts",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"style-dictionary-design-tokens-example"
+			]
+		},
+		"plugins/postcss-global-data": {
+			"entry": [
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.ts",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"open-props"
+			]
+		},
+		"plugins/*": {
+			"entry": [
+				"scripts/**/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.js",
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
+		},
+		"experimental/*": {
+			"entry": [
+				"scripts/**/*.mjs",
+				"src/browser-global.js",
+				"src/browser.js",
+				"src/index.js",
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
+		},
+		"plugin-packs/postcss-bundler": {
+			"entry": [
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.ts",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"@rmenke/css-package-conditional-3",
+				"@rmenke/css-package-main",
+				"open-props"
+			]
+		},
+		"plugin-packs/*": {
+			"entry": [
+				"scripts/**/*.mjs",
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			]
+		},
+		"cli/*": {
+			"entry": "src/cli.ts",
+			"project": "**/*.ts"
+		},
+		"plugins-stylelint/*": {
+			"entry": "{index,index.test}.mjs",
+			"project": "**/*.mjs"
+		}
+	},
+	"ignore": [
+		"e2e-package-managers/**",
+		"e2e/**",
+		"packages/postcss-tape/test/**",
+		"plugins/postcss-env-function/test/import-variables.cjs",
+		"plugins/postcss-env-function/test/import-variables.js",
+		"postcss-recipes/**",
+		"sites/**"
+	],
+	"ignoreBinaries": [
+		"csstools-cli"
+	],
+	"ignoreDependencies": [
+		"@babel/core",
+		"@babel/preset-env",
+		"@microsoft/api-documenter",
+		"@stryker-mutator/command-runner",
+		"tslib"
+	]
+}

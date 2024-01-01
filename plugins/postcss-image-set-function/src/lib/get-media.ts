@@ -61,7 +61,7 @@ function isNumericNode(node: valueParser.Node): boolean {
 
 	try {
 		return valueParser.unit(node.value) !== false;
-	} catch (e) {
+	} catch (_) {
 		return false;
 	}
 }

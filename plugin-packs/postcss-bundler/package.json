@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-bundler",
 	"description": "Bundle CSS",
-	"version": "1.0.7",
+	"version": "1.0.9",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -27,15 +27,18 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
+	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
 		}
 	},
 	"files": [
@@ -45,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.3.2",
-		"@csstools/css-tokenizer": "^2.2.1",
-		"@csstools/postcss-rebase-url": "^1.0.3"
+		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-tokenizer": "^2.2.3",
+		"@csstools/postcss-rebase-url": "^1.0.5"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -56,7 +59,7 @@
 		"@csstools/postcss-tape": "*",
 		"@rmenke/css-package-conditional-3": "^1.0.0",
 		"@rmenke/css-package-main": "^1.0.0",
-		"open-props": "^1.6.13"
+		"open-props": "^1.6.16"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -64,8 +67,8 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler#readme",
 	"repository": {

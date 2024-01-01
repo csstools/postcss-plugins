@@ -1,6 +1,6 @@
 import type { Node, AtRule } from 'postcss';
 
-const HAS_COLOR_GAMUT = /\bcolor-gamut\b/i;
+const HAS_COLOR_GAMUT_REGEX = /\bcolor-gamut\b/i;
 
 export function hasConditionalAncestor(node: Node): boolean {
 	let parent = node.parent;
@@ -12,7 +12,7 @@ export function hasConditionalAncestor(node: Node): boolean {
 
 		if (
 			(parent as AtRule).name.toLowerCase() === 'media' &&
-			HAS_COLOR_GAMUT.test((parent as AtRule).params)
+			HAS_COLOR_GAMUT_REGEX.test((parent as AtRule).params)
 		) {
 			return true;
 		}

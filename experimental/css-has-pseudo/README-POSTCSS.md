@@ -3,7 +3,8 @@
 [![NPM Version][npm-img]][npm-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-⚠️ Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
+> [!WARNING]
+> Experimental version of [CSS Has Pseudo](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo)
 
 [EXPERIMENTAL CSS Has Pseudo] lets you style elements relative to other elements in CSS,
 following the [Selectors Level 4] specification.

@@ -51,3 +51,9 @@
 [foo="a b" i] {
 	to-clone: 1;
 }
+
+[foo="ab" i]:not([foo="ab" i], :is(:is([foo="ab" i]))) {
+	/* Case insenstive attribute matching is quite old, it's fine that we don't support this in pseudo class functions */
+	/* However, we must ensure that we don't have infinite loops when authors write selectors like this one */
+	order: 6;
+}

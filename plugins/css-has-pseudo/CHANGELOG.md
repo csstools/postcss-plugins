@@ -1,5 +1,12 @@
 # Changes to CSS Has Pseudo
 
+### 6.0.1
+
+_December 15, 2023_
+
+- Fix type definitions
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#301) (patch)
+
 ### 6.0.0
 
 _July 3, 2023_

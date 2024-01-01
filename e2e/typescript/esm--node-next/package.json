@@ -2,12 +2,14 @@
 	"name": "@csstools/e2e--typescript--esm--node-next",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"description": "Can you use PostCSS with one of our plugins from a Typescript file?",
 	"scripts": {
-		"build": "tsc"
+		"build": "tsc",
+		"test": "node ./dist/index.js"
 	},
 	"devDependencies": {
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env",
-		"typescript": "^5.3.2"
+		"typescript": "^5.3.3"
 	}
 }

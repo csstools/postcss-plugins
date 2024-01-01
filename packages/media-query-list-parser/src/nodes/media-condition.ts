@@ -50,6 +50,9 @@ export class MediaCondition {
 		return this.media.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON(): unknown {
 		return {
 			type: this.type,
@@ -57,6 +60,9 @@ export class MediaCondition {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaCondition(): this is MediaCondition {
 		return MediaCondition.isMediaCondition(this);
 	}

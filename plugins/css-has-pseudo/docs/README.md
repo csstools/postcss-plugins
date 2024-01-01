@@ -12,6 +12,7 @@
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -143,8 +144,9 @@ or
 <script>cssHasPseudo(document)</script>
 ```
 
-⚠️ Please use a versioned url, like this : `https://unpkg.com/<packageName>@<packageVersion>/dist/browser-global.js`
-Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+> [!TIP]
+> Please use a versioned url, like this : `https://unpkg.com/<packageName>@<packageVersion>/dist/browser-global.js`
+> Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [<humanReadableName>] works in all major browsers, including
 Internet Explorer 11. With a [Mutation Observer polyfill](https://github.com/webmodules/mutation-observer), the script will work

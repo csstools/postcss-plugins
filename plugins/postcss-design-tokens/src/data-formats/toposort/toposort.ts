@@ -48,7 +48,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 			let nodeRep;
 			try {
 				nodeRep = ', token was: ' + JSON.stringify(node);
-			} catch (e) {
+			} catch (_) {
 				nodeRep = '';
 			}
 			throw new Error('Cyclic dependency' + nodeRep);

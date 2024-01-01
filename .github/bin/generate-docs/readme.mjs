@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { parallelBuildsNotice } from './parallel-builds-notice.mjs';
 
 const template = fs.readFileSync(path.join('docs', './README.md'), 'utf8');
 const corsTemplate = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), './cors-template.md'), 'utf8');
@@ -33,6 +34,7 @@ readmeDoc = readmeDoc.replace(`<!-- Available Variables: -->
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 `, '');
@@ -43,14 +45,18 @@ readmeDoc = readmeDoc.replaceAll('<corsWarning>', corsTemplate);
 // Insert "Header" section
 readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-` + '[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ' +
-`${
-	packageJSONInfo.csstools?.cssdbId ?
-		'[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url] ' :
-		''
-}` +
+` +
+'[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ' +
 '[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] ' +
-	'[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]' +
+'[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]' +
+`${packageJSONInfo.csstools?.cssdbId ?
+	'<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/<cssdbId>.svg" height="20">][css-url] ' :
+	''
+}` +
+`${packageJSONInfo.csstools?.cssdbId ?
+	'[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url] ' :
+	''
+}` +
 `\n
 \`\`\`bash
 npm install <packageName> --save-dev
@@ -109,6 +115,12 @@ readmeDoc = readmeDoc.replaceAll('<packageName>', packageJSONInfo.name);
 readmeDoc = readmeDoc.replaceAll('<packageVersion>', packageJSONInfo.version);
 readmeDoc = readmeDoc.replaceAll('<packagePath>', path.join(path.basename(path.dirname(process.cwd())), path.basename(process.cwd())));
 readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
+
+if (packageJSONInfo?.csstools?.assumesToProcessBundledCSS) {
+	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', parallelBuildsNotice(packageJSONInfo.csstools.humanReadableName));
+} else {
+	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', ``);
+}
 
 for (const exampleFilePath of exampleFilePaths) {
 	readmeDoc = readmeDoc.replaceAll(

@@ -38,9 +38,9 @@ function generatePluginOptions(data) {
 		const plugin = plugins[i];
 
 		if (existsSync(path.join('./src/types/', plugin.packageName, 'plugin-options.ts'))) {
-			result += `import type { pluginOptions as ${plugin.importName} } from '${path.posix.join('../types/', plugin.packageName, 'plugin-options')}';\n`;
+			result += `import type { ${plugin.importName}Options } from '${path.posix.join('../types/', plugin.packageName, 'plugin-options')}';\n`;
 		} else {
-			result += `import type { pluginOptions as ${plugin.importName} } from '${plugin.packageName}';\n`;
+			result += `import type { pluginOptions as ${plugin.importName}Options } from '${plugin.packageName}';\n`;
 		}
 	}
 
@@ -49,7 +49,7 @@ function generatePluginOptions(data) {
 	for (let i = 0; i < plugins.length; i++) {
 		const plugin = plugins[i];
 		result += `\t/** plugin options for "${plugin.packageName}" */\n`;
-		result += `\t'${plugin.id}'?: ${plugin.importName} | boolean\n`;
+		result += `\t'${plugin.id}'?: ${plugin.importName}Options | boolean\n`;
 	}
 
 	result += '};\n';

@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export type CodePointReader = {
 	representationStart: number;
 	representationEnd: number;

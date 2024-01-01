@@ -4,11 +4,19 @@ import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { XYZ_D50_to_P3 } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
 import { XYZ_D50_to_P3_Gamut } from '../gamut-mapping/p3';
 import { serializeWithAlpha } from './with-alpha';
 
+/**
+ * Convert color data to component values in the display-p3 color space.
+ * The return value can be converted to a string by calling `toString()` on it.
+ *
+ * @param {ColorData} color - The color data to be serialized.
+ * @param {boolean} gamutMapping - Whether to perform gamut mapping, defaults to `true`.
+ * @returns {FunctionNode} The serialized color data as a FunctionNode object.
+ */
 export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
@@ -19,7 +27,7 @@ export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode
 		if (gamutMapping) {
 			p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
 		} else {
-			p3 = xyz.XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
+			p3 = XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
 		}
 	}
 

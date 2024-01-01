@@ -53,6 +53,9 @@ export class MediaNot {
 		return this.media.walk(cb, stateClone);
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -61,6 +64,9 @@ export class MediaNot {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isMediaNot(): this is MediaNot {
 		return MediaNot.isMediaNot(this);
 	}

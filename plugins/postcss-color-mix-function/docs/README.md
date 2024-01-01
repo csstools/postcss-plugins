@@ -12,6 +12,7 @@
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -25,6 +26,9 @@
 
 <example.expect.css>
 ```
+
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in `color-mix()`, only static values will work.
 
 <usage>
 

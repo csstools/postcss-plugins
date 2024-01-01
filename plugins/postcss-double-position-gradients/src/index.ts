@@ -3,7 +3,7 @@ import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { HAS_GRADIENT_FUNCTION, IS_GRADIENT_FUNCTION } from './is-gradient';
+import { HAS_GRADIENT_FUNCTION_REGEX, IS_GRADIENT_FUNCTION_REGEX } from './is-gradient';
 
 const keywords = [
 	'at',
@@ -28,7 +28,7 @@ const isPunctuationCommaNode = (node: valueParser.Node) => node.type === 'div' &
 function isNumericNode(node: valueParser.Node) {
 	try {
 		return valueParser.unit(node?.value) !== false;
-	} catch (e) {
+	} catch (_) {
 		return false;
 	}
 }
@@ -42,7 +42,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
 		Declaration(decl, { result }) {
-			if (!HAS_GRADIENT_FUNCTION.test(decl.value)) {
+			if (!HAS_GRADIENT_FUNCTION_REGEX.test(decl.value)) {
 				return;
 			}
 
@@ -58,7 +58,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 
 			try {
 				valueAST = valueParser(decl.value);
-			} catch (error) {
+			} catch (_) {
 				decl.warn(
 					result,
 					`Failed to parse value '${decl.value}' as a CSS gradient. Leaving the original value intact.`,
@@ -71,7 +71,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 			}
 
 			valueAST.walk(func => {
-				if (func.type !== 'function' || !IS_GRADIENT_FUNCTION.test(func.value)) {
+				if (func.type !== 'function' || !IS_GRADIENT_FUNCTION_REGEX.test(func.value)) {
 					return;
 				}
 

@@ -1,6 +1,6 @@
 # PostCSS Gradients Interpolation Method [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-gradients-interpolation-method.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/gradients-interpolation-method.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-gradients-interpolation-method.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/gradients-interpolation-method.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/gradients-interpolation-method.svg" height="20">][css-url] 
 
 ```bash
 npm install @csstools/postcss-gradients-interpolation-method --save-dev
@@ -37,7 +37,8 @@ npm install @csstools/postcss-gradients-interpolation-method --save-dev
 
 ## Shortcomings
 
-⚠️ Color stops with only a color or only an interpolation hint are not supported.
+> [!CAUTION]
+> Color stops with only a color or only an interpolation hint are not supported.
 
 For best results you should always provide at least the color and position for each color stop.
 Double position color stops are supported.
@@ -52,8 +53,9 @@ Double position color stops are supported.
 }
 ```
 
-⚠️ Variable colors are also not supported.
-We can not mix colors when the color is a variable.
+> [!CAUTION]
+> Variable colors are not supported.
+> We can not mix colors when the color is a variable.
 
 ```pcss
 .foo {
@@ -129,7 +131,9 @@ postcssGradientsInterpolationMethod({ preserve: false })
 The `enableProgressiveCustomProperties` option determines whether the original notation
 is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
 
-⚠️ We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+> [!NOTE]
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties.  
+> See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
 
 ```js
 postcssGradientsInterpolationMethod({ enableProgressiveCustomProperties: false })

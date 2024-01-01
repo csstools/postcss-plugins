@@ -1,6 +1,6 @@
 import type { Declaration } from 'postcss';
 
-export enum Direction {
+enum Direction {
 	Block = 'block',
 	Inline = 'inline',
 }

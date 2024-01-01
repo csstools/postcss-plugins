@@ -1,4 +1,4 @@
-import type { AtRule, Container, Node, PluginCreator } from 'postcss';
+import type { AtRule, Container, Document, Node, PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 
 /** postcss-scope-pseudo-class plugin options */
@@ -34,7 +34,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					{
 						// We ignore rules withing `@scope`
-						let parent: Container<Node> = rule.parent;
+						let parent: Container<Node> | Document | undefined = rule.parent;
 						while (parent) {
 							if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'scope') {
 								return;
@@ -63,7 +63,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 						modifiedSelector = selectorAST.toString();
 					} catch (err) {
-						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
+						rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 					}
 
 					if (modifiedSelector === rule.selector) {

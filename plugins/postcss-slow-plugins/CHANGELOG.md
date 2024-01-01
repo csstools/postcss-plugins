@@ -1,5 +1,11 @@
 # Changes to PostCSS Slow Plugins
 
+### 1.0.2
+
+_December 15, 2023_
+
+- Fix type definitions
+
 ### 1.0.1
 
 _September 4, 2023_

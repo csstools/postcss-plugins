@@ -1,5 +1,12 @@
 # Changes to PostCSS Cascade Layers
 
+### 4.0.2
+
+_December 15, 2023_
+
+- Fix type definitions
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#301) (patch)
+
 ### 4.0.1
 
 _October 31, 2023_

@@ -8,8 +8,8 @@ import { hasOverrideOrFallback } from './has-override-decl';
 /** postcss-gamut-mapping plugin options */
 export type pluginOptions = never;
 
-const HAS_WIDE_GAMUT_COLOR_FUNCTION = /\b(?:color|lab|lch|oklab|oklch)\(/i;
-const HAS_WIDE_GAMUT_COLOR_NAME = /^(?:color|lab|lch|oklab|oklch)$/i;
+const HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX = /\b(?:color|lab|lch|oklab|oklch)\(/i;
+const HAS_WIDE_GAMUT_COLOR_NAME_REGEX = /^(?:color|lab|lch|oklab|oklch)$/i;
 
 type State = {
 	conditionalRules: Array<AtRule>,
@@ -31,7 +31,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 				OnceExit: (root, { postcss }) => {
 					root.walkDecls((decl) => {
 						const originalValue = decl.value;
-						if (!HAS_WIDE_GAMUT_COLOR_FUNCTION.test(originalValue)) {
+						if (!HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX.test(originalValue)) {
 							return;
 						}
 
@@ -60,7 +60,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 						const replacedRGB = replaceComponentValues(
 							parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
 							(componentValue) => {
-								if (!isFunctionNode(componentValue) || !HAS_WIDE_GAMUT_COLOR_NAME.test(componentValue.getName())) {
+								if (!isFunctionNode(componentValue) || !HAS_WIDE_GAMUT_COLOR_NAME_REGEX.test(componentValue.getName())) {
 									return;
 								}
 

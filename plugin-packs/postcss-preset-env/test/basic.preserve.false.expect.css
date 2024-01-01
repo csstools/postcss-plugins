@@ -151,7 +151,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .test-color-functional-notation {
-	color: rgba(178, 34, 34, 0.5);
+	color: rgba(179, 34, 34, 0.5);
 	-webkit-box-ordinal-group: 17;
 	-webkit-order: 16;
 	   -moz-box-ordinal-group: 17;

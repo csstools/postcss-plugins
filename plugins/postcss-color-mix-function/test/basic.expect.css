@@ -169,3 +169,7 @@
 	color-6: rgb(255, 255, 255);
 	color-6: color(display-p3 1 1 1);
 }
+
+.experimental-features-from-the-color-parser {
+	color: color-mix(in srgb, contrast-color(pink) 30%, yellow);
+}

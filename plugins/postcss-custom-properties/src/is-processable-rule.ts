@@ -16,8 +16,8 @@ export function isProcessableRule(rule: Rule): boolean {
 }
 
 // match html and :root rules
-export const HTML_SELECTOR_REGEXP = /^html$/i;
-export const HTML_WHERE_SELECTOR_REGEXP = /^:where\(html\)$/i;
-export const ROOT_SELECTOR_REGEXP = /^:root$/i;
-export const ROOT_WHERE_SELECTOR_REGEXP = /^:where\(:root\)$/i;
-export const MAYBE_HTML_OR_ROOT_RULE_REGEXP = /(html|:root)/i;
+export const HTML_SELECTOR_REGEX = /^html$/i;
+export const HTML_WHERE_SELECTOR_REGEX = /^:where\(html\)$/i;
+export const ROOT_SELECTOR_REGEX = /^:root$/i;
+export const ROOT_WHERE_SELECTOR_REGEX = /^:where\(:root\)$/i;
+export const MAYBE_HTML_OR_ROOT_RULE_REGEX = /(html|:root)/i;

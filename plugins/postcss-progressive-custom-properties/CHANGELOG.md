@@ -4,6 +4,12 @@
 
 - Test for mixed component types in color values (e.g. `lab(100 50% 50)`)
 
+### 3.0.3
+
+_December 15, 2023_
+
+- Fix type definitions
+
 ### 3.0.2
 
 _October 9, 2023_
