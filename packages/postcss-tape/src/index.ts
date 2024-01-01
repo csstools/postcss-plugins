@@ -76,11 +76,11 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 
 	// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
 	test('`postcss` flag is set on exported plugin creator', () => {
-		assert.strictEqual(pluginCreator.postcss, true);
+		assert.equal(pluginCreator.postcss, true);
 	});
 
 	test('exported plugin creator is a function', () => {
-		assert.strictEqual(typeof pluginCreator, 'function');
+		assert.equal(typeof pluginCreator, 'function');
 	});
 
 	test('`postcssPlugin` is set on a plugin instance', () => {
@@ -90,7 +90,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 		const plugin = pluginCreator() as Plugin;
 
 		assert.ok(plugin.postcssPlugin);
-		assert.strictEqual(typeof plugin.postcssPlugin, 'string');
+		assert.equal(typeof plugin.postcssPlugin, 'string');
 	});
 
 	test('package.json', async (t) => {
@@ -129,7 +129,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 
 			assert.ok(
 				Object.keys(Object(packageInfo.peerDependencies)).includes('postcss'),
-				new PackageDescriptionError('"postcss" is not listed in "peerDependencies"', 'peerDependencies'),
+				new PackageDescriptionError('"postcss" must be listed in "peerDependencies"', 'peerDependencies'),
 			);
 			assert.ok(
 				!Object.keys(Object(packageInfo.dependencies)).includes('postcss'),
@@ -176,7 +176,6 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 					const expected = await fileContentsOrEmptyString(expectFilePath);
 
 					let result: Result;
-					let sawException = false;
 
 					try {
 						result = await postcss(plugins).process(input, {
@@ -189,16 +188,18 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						});
 					} catch (err) {
 						reduceInformationInCssSyntaxError(err);
-						sawException = true;
 						if (testCaseOptions.exception && testCaseOptions.exception.test(err.message)) {
 							// expected an exception and got one.
 							return;
 						}
 
-						assert.ifError(err);
+						throw err;
 					}
 
-					assert.notEqual(!sawException, testCaseOptions.exception, 'expected an exception but got none');
+					assert.ok(
+						!testCaseOptions.exception,
+						new OutcomeError(`expected an exception matching "${testCaseOptions.exception}"`, testFilePath),
+					);
 
 					const resultString = result.css.toString();
 
@@ -217,14 +218,17 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 					}
 
 					if (!expected) {
-						assert.ok(fsSync.existsSync(expectFilePath), `Missing expect file: "${expectFilePath}"`);
+						assert.ok(
+							fsSync.existsSync(expectFilePath),
+							new OutcomeError(`Missing expect file: "${expectFilePath}"`, testFilePath),
+						);
 					}
 
 					await t2.test('has expected output', () => {
-						assert.strictEqual(resultString, expected);
+						assert.deepEqual(resultString, expected);
 
 						// Assert that warnings have the expected amount.
-						assert.deepStrictEqual(result.warnings().length, testCaseOptions.warnings ?? 0, 'Unexpected number warnings');
+						assert.deepEqual(result.warnings().length, testCaseOptions.warnings ?? 0, 'Unexpected number warnings');
 					});
 
 					// Assert result sourcemaps with recent PostCSS.
@@ -249,7 +253,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 							},
 						});
 
-						assert.deepStrictEqual(secondPassResult.warnings(), [], 'Unexpected warnings on second pass');
+						assert.deepEqual(secondPassResult.warnings(), [], 'Unexpected warnings on second pass');
 					});
 
 					await t2.test(
@@ -265,7 +269,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 								},
 							});
 
-							assert.strictEqual(resultFromOldestPostCSS.css.toString(), resultString);
+							assert.deepEqual(resultFromOldestPostCSS.css.toString(), resultString);
 						},
 					);
 				});
@@ -346,6 +350,15 @@ class PackageDescriptionError extends Error {
 		super(message);
 
 		this.name = 'PackageDescriptionError';
-		this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json')).pathname})`;
+		this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json'))}:1:1)`;
+	}
+}
+
+class OutcomeError extends Error {
+	constructor(message: string, sourceFile: string) {
+		super(message);
+
+		this.name = 'OutcomeError';
+		this.stack = `${this.name}: ${this.message}\n    at ${url.pathToFileURL(path.resolve(sourceFile))}:1:1`;
 	}
 }
