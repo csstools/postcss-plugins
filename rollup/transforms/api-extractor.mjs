@@ -16,6 +16,13 @@ export function apiExtractor() {
 				);
 			}
 
+			if (extractorConfig.docModelEnabled) {
+				// The tool version changes with the version of the package, so we need to remove it to keep the changes minimal.
+				const api = JSON.parse(await fs.readFile(extractorConfig.apiJsonFilePath, 'utf8'));
+				delete api.metadata.toolVersion;
+				await fs.writeFile(extractorConfig.apiJsonFilePath, JSON.stringify(api, null, 2));
+			}
+
 			await fs.rm(path.join('dist', '_types'), { recursive: true, force: true });
 		},
 	};
