@@ -59,7 +59,7 @@
 		"@csstools/postcss-tape": "*",
 		"@rmenke/css-package-conditional-3": "^1.0.0",
 		"@rmenke/css-package-main": "^1.0.0",
-		"open-props": "^1.6.16"
+		"open-props": "^1.6.17"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
