@@ -94,6 +94,11 @@ assert.deepStrictEqual(
 	'',
 );
 
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('color(from red xyz x y z)'))),
+	'rgb(255, 0, 0)',
+);
+
 [
 	['color(from color(srgb 0 1 0) srgb r g b)', 'rgb(0, 255, 0)'],
 	['color(from color(srgb-linear 0 1 0) srgb r g b)', 'rgb(0, 255, 0)'],

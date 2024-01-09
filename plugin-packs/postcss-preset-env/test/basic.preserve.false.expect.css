@@ -777,3 +777,25 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 .out-of-gamut {
 	--color: rgb(0, 249, 66);
 }
+
+.issue-1244--a {
+	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--b {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
+	background-image: -webkit-linear-gradient(top, red 0%, blue 100%);
+	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--c {
+	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
+	background-image: -webkit-linear-gradient(top, red 0%, blue 100%);
+	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}
