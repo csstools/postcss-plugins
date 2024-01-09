@@ -32,7 +32,8 @@ body:
   - type: textarea
     id: playground_link
     attributes:
-      label: [Playgound example](https://preset-env.cssdb.org/playground/)
+      label: Playgound example
+      description: If you can recreate your issue in the [playground](https://preset-env.cssdb.org/playground/) you can link to your example here.
   - type: dropdown
     id: npx
     attributes:
