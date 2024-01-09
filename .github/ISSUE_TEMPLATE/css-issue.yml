@@ -29,6 +29,10 @@ body:
       label: Actual CSS
     validations:
       required: true
+  - type: textarea
+    id: playground_link
+    attributes:
+      label: [Playgound example](https://preset-env.cssdb.org/playground/)
   - type: dropdown
     id: npx
     attributes:
@@ -42,7 +46,7 @@ body:
     id: debug
     attributes:
       label: Debug output
-      description: If this issue is about `postcss-preset-env`, can you provide the output of using the [debug](https://github.com/csstools/postcss-preset-env#debug) option?
+      description: If this issue is about `postcss-preset-env`, can you provide the output of using the [debug](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#debug) option?
     validations:
       required: false
   - type: textarea
