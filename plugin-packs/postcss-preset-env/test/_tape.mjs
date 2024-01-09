@@ -176,6 +176,14 @@ postcssTape(plugin)({
 			autoprefixer: false,
 		},
 	},
+	'basic:autoprefixer:remove:false': {
+		message: 'supports { autoprefixer: { remove: false } } usage',
+		options: {
+			autoprefixer: {
+				remove: false,
+			},
+		},
+	},
 	'basic:preserve:true': {
 		message: 'supports { preserve: true, stage: 0, browsers: "> 0%" } usage',
 		options: {

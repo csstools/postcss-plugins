@@ -4,10 +4,35 @@ import { ColorNotation } from './color-notation';
 import { NumberType, TokenNumber, TokenType } from '@csstools/css-tokenizer';
 import { HSL_to_XYZ_D50, HWB_to_XYZ_D50, LCH_to_XYZ_D50, Lab_to_XYZ_D50, OKLCH_to_XYZ_D50, OKLab_to_XYZ_D50, P3_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D50, XYZ_D50_to_HSL, XYZ_D50_to_HWB, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_OKLCH, XYZ_D50_to_OKLab, XYZ_D50_to_P3, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D50_to_a98_RGB, XYZ_D50_to_lin_sRGB, XYZ_D50_to_rec_2020, XYZ_D50_to_sRGB, XYZ_D65_to_XYZ_D50, a98_RGB_to_XYZ_D50, lin_sRGB_to_XYZ_D50, rec_2020_to_XYZ_D50, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
 
-export type ColorData = {
+/**
+ * A color data object.
+ * It contains as much information as possible about the color and the original parsed syntax.
+ */
+export interface ColorData {
+	/**
+	 * The color notation of the color data.
+	 *
+	 * We use "color notation" and not "color space" because these represent the original notation and not the actual color space.
+	 * The actual color space is however always implied by the color notation.
+	 */
 	colorNotation: ColorNotation,
+	/**
+	 * The color channels.
+	 * This is always an array of three numbers
+	 * but the channels can only be interpreted by looking at the color notation.
+	 */
 	channels: Color,
+	/**
+	 * The alpha channel.
+	 * This is either a number between `0` and `1` or a `ComponentValue` object.
+	 *
+	 * Since most computations are not dependent on the alpha channel,
+	 * we allow things like `var(--some-alpha)` as an alpha channel value for most inputs.
+	 */
 	alpha: number | ComponentValue,
+	/**
+	 * Information about the original syntax.
+	 */
 	syntaxFlags: Set<SyntaxFlag>
 }
 
@@ -544,7 +569,7 @@ export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
 	const srgb = colorDataTo(copy, ColorNotation.RGB);
-	if (!srgb.channels.find((y) => y < -0.00001 || y > 1.00001)) {
+	if (!srgb.channels.find((y: number) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}
 
@@ -567,7 +592,7 @@ export function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean {
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
 	const displayP3 = colorDataTo(copy, ColorNotation.Display_P3);
-	if (!displayP3.channels.find((y) => y < -0.00001 || y > 1.00001)) {
+	if (!displayP3.channels.find((y: number) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}
 

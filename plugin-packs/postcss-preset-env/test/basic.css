@@ -478,3 +478,20 @@
 .out-of-gamut {
 	--color: color(display-p3 0 1 0);
 }
+
+.issue-1244--a {
+	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--b {
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--c {
+	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}
