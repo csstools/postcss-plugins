@@ -18,15 +18,14 @@
 |  [color(colorNode)](./css-color-parser.color.md) | Convert a color function to a <code>ColorData</code> object. |
 |  [colorDataFitsDisplayP3\_Gamut(x)](./css-color-parser.colordatafitsdisplayp3_gamut.md) | Check if a color data object fits the <code>display-p3</code> gamut. |
 |  [colorDataFitsRGB\_Gamut(x)](./css-color-parser.colordatafitsrgb_gamut.md) | Check if a color data object fits the <code>sRGB</code> gamut. |
-|  [colorDataTo(colorData, toNotation)](./css-color-parser.colordatato.md) |  |
 |  [serializeHSL(color, gamutMapping)](./css-color-parser.serializehsl.md) |  |
 |  [serializeOKLCH(color)](./css-color-parser.serializeoklch.md) | Convert color data to component values in the OKLCH color space. The return value can be converted to a string by calling <code>toString()</code> on it. |
 |  [serializeP3(color, gamutMapping)](./css-color-parser.serializep3.md) | Convert color data to component values in the display-p3 color space. The return value can be converted to a string by calling <code>toString()</code> on it. |
 |  [serializeRGB(color, gamutMapping)](./css-color-parser.serializergb.md) | Convert color data to component values in the srgb color space. The return value can be converted to a string by calling <code>toString()</code> on it. |
 
-## Type Aliases
+## Interfaces
 
-|  Type Alias | Description |
+|  Interface | Description |
 |  --- | --- |
-|  [ColorData](./css-color-parser.colordata.md) |  |
+|  [ColorData](./css-color-parser.colordata.md) | A color data object. It contains as much information as possible about the color and the original parsed syntax. |
 
