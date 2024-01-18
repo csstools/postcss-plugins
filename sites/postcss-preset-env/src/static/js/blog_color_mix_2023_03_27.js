@@ -8,6 +8,7 @@ const colorSpaceInput = document.getElementById('color-space');
 const interpolationMethodInput = document.getElementById('interpolation-method');
 const colorMixOutput = document.getElementById('output-color-mix');
 const colorMixOutputCSS = document.getElementById('output-color-mix-css');
+const colorHexOutput = document.getElementById('output-color-hex');
 const colorMixPercentage = document.getElementById('color-mix-percentage');
 const colorInputA = document.getElementById('color-a');
 const colorOutputA = document.getElementById('output-color-a');
@@ -81,7 +82,6 @@ function renderResult() {
 	colorMixOutputCSS.value = colorMix;
 
 	const parsedColorValue = color(parseComponentValue(tokenize({ css: colorMix })));
-
 	if (!parsedColorValue) {
 		colorMixOutput.style.outline = '1px solid rgb(255 0 0 / 25%)';
 		return;
@@ -99,6 +99,9 @@ function renderResult() {
 		colorMixOutput.value = outputColorValueRGB;
 		colorMixOutput.style.setProperty('--color', outputColorValueRGB);
 	}
+
+	const [r, , , g, , , b] = outputColorValueRGB.value; // r, g, b -> <number><comma><space><number><comma><space><number><comma><space>
+	colorHexOutput.value = '#' + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
 
 colorMixPercentage.addEventListener('input', handleSliderInput);
