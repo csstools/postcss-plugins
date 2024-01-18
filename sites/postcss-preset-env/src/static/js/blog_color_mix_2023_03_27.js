@@ -40,6 +40,34 @@ function handleSliderInput() {
 	debouncedReenable();
 }
 
+function readState() {
+	try {
+		const hash = window.location.hash.slice(1);
+		if (!hash) {
+			return {};
+		}
+
+		return JSON.parse(window.decodeURIComponent(window.atob(hash)));
+	} catch (err) {
+		console.error(err);
+		return {};
+	}
+}
+
+function writeState() {
+	try {
+		window.location.hash = window.btoa(window.encodeURIComponent(JSON.stringify({
+			cs: colorSpaceInput.value,
+			im: interpolationMethodInput.value,
+			p: colorMixPercentage.value,
+			a: colorInputA.value,
+			b: colorInputB.value,
+		})));
+	} catch (err) {
+		console.error(err);
+	}
+}
+
 function renderResult() {
 	if (
 		!colorSpaceInput ||
@@ -54,6 +82,8 @@ function renderResult() {
 	) {
 		return;
 	}
+
+	writeState();
 
 	switch (colorSpaceInput.value) {
 		case 'hsl':
@@ -108,3 +138,24 @@ colorMixPercentage.addEventListener('input', handleSliderInput);
 
 addEventListener('change', renderResult);
 addEventListener('keyup', renderResult);
+
+{
+	const state = readState();
+	if (state.cs) {
+		colorSpaceInput.value = state.cs;
+	}
+	if (state.im) {
+		interpolationMethodInput.value = state.im;
+	}
+	if (state.p) {
+		colorMixPercentage.value = state.p;
+	}
+	if (state.a) {
+		colorInputA.value = state.a;
+	}
+	if (state.b) {
+		colorInputB.value = state.b;
+	}
+
+	renderResult();
+}
