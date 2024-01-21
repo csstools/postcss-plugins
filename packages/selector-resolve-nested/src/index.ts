@@ -22,6 +22,7 @@
 import type { Container, Node, Root, Selector } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
+import { sourceFrom } from './source';
 
 /**
  * Resolve a nested selector against a given parent selector.
@@ -44,10 +45,10 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root): Roo
 			});
 
 			if (!isNestContaining) {
-				selectorAST.prepend(parser.combinator({ value: ' ' }));
-				selectorAST.prepend(parser.nesting({}));
+				selectorAST.prepend(parser.combinator({ value: ' ', ...sourceFrom(selectorAST) }));
+				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 			} else if (selectorAST.nodes[0]?.type === 'combinator') {
-				selectorAST.prepend(parser.nesting({}));
+				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 			}
 		}
 
@@ -86,6 +87,7 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root): Roo
 	return parser.root({
 		nodes: result,
 		value: '',
+		...sourceFrom(selector),
 	});
 }
 
@@ -98,6 +100,7 @@ function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = 
 			parser.pseudo({
 				value: ':is',
 				nodes: parentSelectors.nodes.map((x) => x.clone()),
+				...sourceFrom(parentSelectors),
 			}),
 		];
 	}

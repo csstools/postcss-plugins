@@ -1,5 +1,6 @@
 import parser from 'postcss-selector-parser';
 import type { Container, Node } from 'postcss-selector-parser';
+import { sourceFrom } from './source';
 
 export function sortCompoundSelectorsInsideComplexSelector(node: Container<string, Node>) {
 	const compoundSelectors: Array<Array<Node>> = [];
@@ -37,10 +38,11 @@ export function sortCompoundSelectorsInsideComplexSelector(node: Container<strin
 		if (childNode.type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag')) {
 			childNode.remove();
 
-			const isPseudoClone = parser.pseudo({ value: ':is' });
+			const isPseudoClone = parser.pseudo({ value: ':is', ...sourceFrom(childNode) });
 			isPseudoClone.append(parser.selector({
 				nodes: [childNode],
 				value: '',
+				...sourceFrom(childNode),
 			}));
 
 			currentCompoundSelector.push(isPseudoClone);
