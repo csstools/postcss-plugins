@@ -70,8 +70,8 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"css",
-		"postcss-selector-parser",
-		"nested"
+		"nested",
+		"postcss-selector-parser"
 	],
 	"volta": {
 		"extends": "../../package.json"
