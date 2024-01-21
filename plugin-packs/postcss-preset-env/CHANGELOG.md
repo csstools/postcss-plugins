@@ -1,6 +1,6 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (skip)
+### Unreleased (patch)
 
 - Fix type definitions
 - Remove extraneous dependency on `postcss-value-parser`
