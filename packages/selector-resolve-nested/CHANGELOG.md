@@ -1,6 +1,8 @@
 # Changes to Selector Resolve Nested
 
-### Unreleased (patch)
+### 1.0.1
+
+_January 21, 2024_
 
 - Improve source index resolution
 
