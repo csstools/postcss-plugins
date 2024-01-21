@@ -14,9 +14,9 @@ type basePluginOptions = {
 	}
 };
 
-const functionRegex = /(rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(/i;
-const nameRegex = /^(rgb|hsl|hwb|lab|lch|oklch|oklab|color)$/i;
-const fromRegex = /from/i;
+const FUNCTION_REGEX = /(rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(/i;
+const NAME_REGEX = /^(rgb|hsl|hwb|lab|lch|oklch|oklab|color)$/i;
+const FROM_REGEX = /from/i;
 
 /* Transform relative color syntax in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -24,11 +24,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 		postcssPlugin: 'postcss-relative-color-syntax',
 		Declaration: (decl: Declaration) => {
 			const originalValue = decl.value;
-			if (!(functionRegex.test(originalValue))) {
-				return;
-			}
-
-			if (!(fromRegex.test(originalValue))) {
+			if (!FUNCTION_REGEX.test(originalValue) || !FROM_REGEX.test(originalValue)) {
 				return;
 			}
 
@@ -44,22 +40,24 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 			const replacedRGB = replaceComponentValues(
 				parseCommaSeparatedListOfComponentValues(tokens),
 				(componentValue) => {
-					if (isFunctionNode(componentValue) && nameRegex.test(componentValue.getName())) {
-						const colorData = color(componentValue);
-						if (!colorData) {
-							return;
-						}
-
-						if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-							return;
-						}
-
-						if (!colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
-							return;
-						}
-
-						return serializeRGB(colorData);
+					if (!isFunctionNode(componentValue) || !NAME_REGEX.test(componentValue.getName())) {
+						return;
 					}
+
+					const colorData = color(componentValue);
+					if (!colorData) {
+						return;
+					}
+
+					if (
+						colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+						colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+						!colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+					) {
+						return;
+					}
+
+					return serializeRGB(colorData);
 				},
 			);
 
@@ -73,26 +71,28 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				modifiedP3 = stringify(replaceComponentValues(
 					parseCommaSeparatedListOfComponentValues(tokens),
 					(componentValue) => {
-						if (isFunctionNode(componentValue) && nameRegex.test(componentValue.getName())) {
-							const colorData = color(componentValue);
-							if (!colorData) {
-								return;
-							}
-
-							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-								return;
-							}
-
-							if (!colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)) {
-								return;
-							}
-
-							if (colorDataFitsRGB_Gamut(colorData)) {
-								return serializeRGB(colorData);
-							}
-
-							return serializeP3(colorData);
+						if (!isFunctionNode(componentValue) || !NAME_REGEX.test(componentValue.getName())) {
+							return;
 						}
+
+						const colorData = color(componentValue);
+						if (!colorData) {
+							return;
+						}
+
+						if (
+							colorData.syntaxFlags.has(SyntaxFlag.Experimental) ||
+							colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords) ||
+							!colorData.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax)
+						) {
+							return;
+						}
+
+						if (colorDataFitsRGB_Gamut(colorData)) {
+							return serializeRGB(colorData);
+						}
+
+						return serializeP3(colorData);
 					},
 				));
 			}

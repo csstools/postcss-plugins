@@ -2,11 +2,19 @@ import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { XYZ_D50_to_sRGB } from '@csstools/color-helpers';
 import { colorData_to_XYZ_D50 } from '../color-data';
 import { toPrecision } from './to-precision';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 
+/**
+ * Convert color data to component values in the srgb color space.
+ * The return value can be converted to a string by calling `toString()` on it.
+ *
+ * @param {ColorData} color - The color data to be serialized.
+ * @param {boolean} gamutMapping - Whether to perform gamut mapping, defaults to `true`.
+ * @returns {FunctionNode} The serialized color data as a FunctionNode object.
+ */
 export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
@@ -14,7 +22,7 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 	if (gamutMapping) {
 		srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
 	} else {
-		srgb = xyz.XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
+		srgb = XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
 	}
 
 	const r = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[0]) * 255)));

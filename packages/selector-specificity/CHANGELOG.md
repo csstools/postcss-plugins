@@ -1,5 +1,13 @@
 # Changes to Selector Specificity
 
+### 3.0.1
+
+_December 15, 2023_
+
+- Add support for:
+	- `:active-view-transition(*)`
+	- `:active-view-transition(name)`
+
 ### 3.0.0
 
 _July 3, 2023_

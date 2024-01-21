@@ -219,7 +219,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .test-color-functional-notation {
-	color: rgba(178, 34, 34, 0.5);
+	color: rgba(179, 34, 34, 0.5);
 	color: rgb(70% 13.5% 13.5% / 50%);
 	-webkit-box-ordinal-group: 17;
 	-webkit-order: 16;
@@ -681,7 +681,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .color-function {
 	prop-1: rgb(0, 129, 96);
-	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgb(7, 3, 1);
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
@@ -690,6 +689,12 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / -moz-calc(33 / 22));
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+}
+
+@media (color-gamut: p3) {
+.color-function {
+	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+}
 }
 
 .oklab {
@@ -735,20 +740,14 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-7: rgb(0, 149, 131);
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
-
-	color-7: oklch(60% 0.1250 180);
 	color-8: rgb(0, 149, 131);
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
-	color-8: oklch(60% 0.1250 180deg);
 	color-9: rgb(0, 149, 131);
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
-	color-9: oklch(60% 0.1250 0.5turn);
 	color-10: rgb(0, 149, 131);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
-	color-10: oklch(60% 0.1250 200grad);
 	color-11: rgb(0, 149, 131);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
-	color-11: oklch(60% 0.1250 3.14159rad);
 
 	color-12: rgb(188, 101, 59);
 
@@ -762,6 +761,17 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-16: rgb(188, 101, 59);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+@media (color-gamut: p3) {
+.oklch {
+
+	color-7: oklch(60% 0.1250 180);
+	color-8: oklch(60% 0.1250 180deg);
+	color-9: oklch(60% 0.1250 0.5turn);
+	color-10: oklch(60% 0.1250 200grad);
+	color-11: oklch(60% 0.1250 3.14159rad);
+}
 }
 
 .ic-unit {
@@ -784,7 +794,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	padding: 2    ic;
 }
 
-@supports (font-size: 1ic) and (top: var(--f)) {
+@supports (font-size: 1ic) {
 .ic-unit {
 	left: var(--non-existing, 2ic);
 }
@@ -963,7 +973,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-3: rgba(0, 0, 255, 0.65);
 	color-3: color-mix(in xyz, rgb(255 0 0 / 0), blue 65%);
 	color-4: rgba(122, 0, 182, 0.65);
-	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
+	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
 	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
 	color-5: rgba(149, 0, 122, 0.65);
 	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
@@ -986,6 +996,10 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	background-image: -moz-radial-gradient(50% 115%, farthest-corner circle, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.3004), color(display-p3 1.15167 0.57912 -0.3946), color(display-p3 1.06645 0.68611 -0.4296), color(display-p3 0.94738 0.78766 -0.4263), color(display-p3 0.79233 0.87807 -0.3707), color(display-p3 0.59026 0.95319 -0.1467), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.5392 1.05733 0.93686), color(display-p3 -0.5777 1.04644 1.15396) 100%);
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115%, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.3004), color(display-p3 1.15167 0.57912 -0.3946), color(display-p3 1.06645 0.68611 -0.4296), color(display-p3 0.94738 0.78766 -0.4263), color(display-p3 0.79233 0.87807 -0.3707), color(display-p3 0.59026 0.95319 -0.1467), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.5392 1.05733 0.93686), color(display-p3 -0.5777 1.04644 1.15396) 100%);
+}
+
+@media (color-gamut: rec2020) {
+.gradients-interpolation-method {
 
 	background-image: -webkit-radial-gradient(50% 115% in oklch, farthest-corner circle, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
 
@@ -993,10 +1007,17 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
 }
+}
 
 @supports (color: color(display-p3 0 0 0)) {
 .gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(189, 181, 255), rgb(172, 194, 255), rgb(155, 205, 255), rgb(126, 217, 255), rgb(99, 228, 255), rgb(94, 237, 237) 100%);
+}
+
+@media (color-gamut: rec2020) {
+.gradients-interpolation-method {
 	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
+}
 }
 }
 
@@ -1023,10 +1044,15 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-7: lch(from lch(40% 56.6 39) l c h);
 	color-8: rgb(141, 0, 0);
 	color-8: color(display-p3 0.50566 0.0781 0);
-	color-8: oklab(from oklab(40% 0.566 0.39) l a b);
 	color-9: rgb(130, 31, 0);
 	color-9: color(display-p3 0.48896 0.1211 0);
+}
+
+@media (color-gamut: rec2020) {
+.test-css-color-5-interop {
+	color-8: oklab(from oklab(40% 0.566 0.39) l a b);
 	color-9: oklch(from oklch(40% 0.566 39deg) l c h);
+}
 }
 
 .test-property-with-var {
@@ -1036,7 +1062,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color: rgba(87 107 149 / 1);
 }
 
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgba(0 0 0 / 0)) {
 .test-property-with-var {
 	color: rgba(87 107 149 / var(--opacity));
 }
@@ -1047,4 +1073,42 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	width: -webkit-calc(1px * pow(2, 3));
 	width: -moz-calc(1px * pow(2, 3));
 	width: calc(1px * pow(2, 3));
+}
+
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+.out-of-gamut {
+	--color: rgb(0, 249, 66);
+}
+
+@media (color-gamut: p3) {
+.out-of-gamut {
+	--color: color(display-p3 0 1 0);
+}
+}
+}
+
+.issue-1244--a {
+	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--b {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
+	background-image: -webkit-linear-gradient(top, red 0%, blue 100%);
+	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--c {
+	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
+	background-image: -webkit-linear-gradient(top, red 0%, blue 100%);
+	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }

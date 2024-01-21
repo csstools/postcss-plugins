@@ -106,3 +106,7 @@
 .spec-example-27 {
 	color: oklch(from lch(60% 90 320) l c calc(h - 120));
 }
+
+.experimental-features-from-the-color-parser {
+	color: hsla(from contrast-color(pink) h s l / alpha);
+}

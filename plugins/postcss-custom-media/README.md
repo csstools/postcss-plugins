@@ -1,6 +1,6 @@
 # PostCSS Custom Media [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-custom-media.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/custom-media-queries.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-custom-media.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/custom-media-queries.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/custom-media-queries.svg" height="20">][css-url] 
 
 ```bash
 npm install postcss-custom-media --save-dev
@@ -69,8 +69,9 @@ as these depend on the browser the queries will eventually run in.
 
 _Some of these queries will have only one possible outcome but we have to account for all possible queries in this plugin._
 
-⚠️ When handling complex media queries you will see that your CSS is doubled for each level of complexity.<br>
-GZIP works great to de-dupe this but having a lot of complex media queries will have a performance impact.
+> [!NOTE]
+> When handling complex media queries you will see that your CSS is doubled for each level of complexity.<br>
+> GZIP works great to de-dupe this but having a lot of complex media queries will have a performance impact.
 
 An example of a very complex (and artificial) use-case :
 

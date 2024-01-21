@@ -1,6 +1,6 @@
 import path from 'path';
 
-const HAS_PROTOCOL = /^([-_a-z0-9]+:)?\/\//i;
+const HAS_PROTOCOL_REGEX = /^([-_a-z0-9]+:)?\/\//i;
 
 /**
  * Rebase a URL from one directory to another.
@@ -15,7 +15,7 @@ export function rebase(url, fromDir, fromEntryPointDir) {
 		return false;
 	}
 
-	if (HAS_PROTOCOL.test(url)) {
+	if (HAS_PROTOCOL_REGEX.test(url)) {
 		return false;
 	}
 

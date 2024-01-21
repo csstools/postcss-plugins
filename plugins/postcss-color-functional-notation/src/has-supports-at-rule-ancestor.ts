@@ -1,6 +1,6 @@
 import type { Node, AtRule } from 'postcss';
 
-const supportsCheck = /(\(color: rgb(a?)\(0 0 0 \/ 0)|(\(color: hsl(a?)\(0 0% 0% \/ 0)/i;
+export const RGB_HSL_FUNCTION_REGEX = /(?:rgb|hsl)a?\(/i;
 
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
@@ -10,8 +10,10 @@ export function hasSupportsAtRuleAncestor(node: Node): boolean {
 			continue;
 		}
 
-		if ((parent as AtRule).name === 'supports' && supportsCheck.test((parent as AtRule).params)) {
-			return true;
+		if ((parent as AtRule).name.toLowerCase() === 'supports') {
+			if (RGB_HSL_FUNCTION_REGEX.test((parent as AtRule).params)) {
+				return true;
+			}
 		}
 
 		parent = parent.parent;

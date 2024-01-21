@@ -1,6 +1,6 @@
 # PostCSS Cascade Layers [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-cascade-layers.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/cascade-layers.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-cascade-layers.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/cascade-layers.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/cascade-layers.svg" height="20">][css-url] 
 
 ```bash
 npm install @csstools/postcss-cascade-layers --save-dev
@@ -85,8 +85,9 @@ And layers have enough room internally so that each selector works and overrides
 
 More layers with more specificity will cause longer `:not(...)` selectors to be generated.
 
-⚠️ For this to work the plugin needs to analyze your entire stylesheet at once.<br>
-If you have different assets that are unaware of each other it will not work correctly as the analysis will be incorrect.
+> [!IMPORTANT]
+> [PostCSS Cascade Layers] assumes to process your complete CSS bundle.<br>If your build tool processes files individually or processes files in parallel the output will be incorrect.<br>Using [`@csstools/postcss-bundler`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-bundler) and `@import` statements is one way to make sure your CSS is bundled before it is processed by this plugin.
+
 
 ## Usage
 

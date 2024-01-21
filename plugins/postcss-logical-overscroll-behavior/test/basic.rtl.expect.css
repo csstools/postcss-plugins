@@ -1,0 +1,31 @@
+.block {
+	overscroll-behavior-y: contain;
+}
+
+.inline {
+	overscroll-behavior-x: auto;
+}
+
+.BLOCK {
+	overscroll-behavior-y: CONTAIN;
+}
+
+.INLINE {
+	overscroll-behavior-x: AUTO;
+}
+
+.ignore-block {
+	overscroll-behavior-block-zzz: contain;
+}
+
+.ignore-inline {
+	overscroll-behavior-inline-zzz: auto;
+}
+
+.ignore-block {
+	zzz-overscroll-behavior-block: contain;
+}
+
+.ignore-inline {
+	zzz-overscroll-behavior-inline: auto;
+}

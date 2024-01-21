@@ -12,6 +12,7 @@
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -77,8 +78,7 @@ And layers have enough room internally so that each selector works and overrides
 
 More layers with more specificity will cause longer `:not(...)` selectors to be generated.
 
-⚠️ For this to work the plugin needs to analyze your entire stylesheet at once.<br>
-If you have different assets that are unaware of each other it will not work correctly as the analysis will be incorrect.
+<parallelBuildsNotice>
 
 <usage>
 

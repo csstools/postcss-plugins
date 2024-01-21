@@ -3,11 +3,15 @@ import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-a
 import { CSSToken, tokenizer, TokenType, ParseError } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
-export type Options = {
-	onParseError?: (error: ParseError) => void
-}
-
-export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
+/**
+ * Parses an array of {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md | CSSTokens} into a list of cascade layer names.
+ */
+export function parseFromTokens(
+	tokens: Array<CSSToken>,
+	options?: {
+		onParseError?: (error: ParseError) => void
+	},
+): Array<LayerName> {
 	const componentValuesLists = parseCommaSeparatedListOfComponentValues(tokens, {
 		onParseError: options?.onParseError,
 	});
@@ -170,7 +174,12 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 	return result;
 }
 
-export function parse(source: string, options?: Options) {
+export function parse(
+	source: string,
+	options?: {
+		onParseError?: (error: ParseError) => void
+	},
+) {
 	const t = tokenizer({ css: source }, {
 		onParseError: options?.onParseError,
 	});

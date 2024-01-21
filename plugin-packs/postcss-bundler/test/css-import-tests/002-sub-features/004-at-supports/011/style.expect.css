@@ -1,0 +1,10 @@
+/* green.css */
+@media (min-width: 10px) {
+    @supports (selector(&)) {
+        @layer {
+            .box {
+	background-color: green;
+}
+        }
+    }
+}

@@ -8,13 +8,13 @@ type basePluginOptions = {
 	preserve: boolean,
 }
 
-const HAS_IC_UNIT = /ic\b/i;
+const HAS_IC_UNIT_REGEX = /ic\b/i;
 
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-ic-unit',
 		Declaration(decl) {
-			if (!HAS_IC_UNIT.test(decl.value)) {
+			if (!HAS_IC_UNIT_REGEX.test(decl.value)) {
 				return;
 			}
 

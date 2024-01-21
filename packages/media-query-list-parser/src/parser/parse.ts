@@ -3,12 +3,13 @@ import { CSSToken, tokenizer, ParseError } from '@csstools/css-tokenizer';
 import { MediaQuery, MediaQueryInvalid } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
 
-export type Options = {
-	preserveInvalidMediaQueries?: boolean,
-	onParseError?: (error: ParseError) => void
-}
-
-export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
+export function parseFromTokens(
+	tokens: Array<CSSToken>,
+	options?: {
+		preserveInvalidMediaQueries?: boolean,
+		onParseError?: (error: ParseError) => void
+	},
+) {
 	const componentValuesLists = parseCommaSeparatedListOfComponentValues(tokens, {
 		onParseError: options?.onParseError,
 	});
@@ -23,7 +24,13 @@ export function parseFromTokens(tokens: Array<CSSToken>, options?: Options) {
 	}).filter((x) => !!x) as Array<MediaQuery>;
 }
 
-export function parse(source: string, options?: Options) {
+export function parse(
+	source: string,
+	options?: {
+		preserveInvalidMediaQueries?: boolean,
+		onParseError?: (error: ParseError) => void
+	},
+) {
 	const t = tokenizer({ css: source }, {
 		onParseError: options?.onParseError,
 	});

@@ -3,6 +3,8 @@ import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { DirectionFlow } from './lib/types';
 import { transform } from './transform';
 
+export type { DirectionFlow } from './lib/types';
+
 /** postcss-logical-viewport-units plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
@@ -11,7 +13,7 @@ export type pluginOptions = {
 	inlineDirection?: DirectionFlow,
 };
 
-const HAS_VIEWPORT_UNITS = /(?:vi|vb)\b/i;
+const HAS_VIEWPORT_UNITS_REGEX = /(?:vi|vb)\b/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -24,9 +26,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		opts,
 	);
 
-	const directionValues = Object.values(DirectionFlow);
-	if (!directionValues.includes(options.inlineDirection)) {
-		throw new Error(`[postcss-logical-viewport-units] "inlineDirection" must be one of ${directionValues.join(', ')}`);
+	switch (options.inlineDirection) {
+		case DirectionFlow.LeftToRight:
+		case DirectionFlow.RightToLeft:
+		case DirectionFlow.TopToBottom:
+		case DirectionFlow.BottomToTop:
+			break;
+		default:
+			throw new Error(`[postcss-logical-viewport-units] "inlineDirection" must be one of ${Object.values(DirectionFlow).join(', ')}`);
 	}
 
 	const isHorizontal = [DirectionFlow.LeftToRight, DirectionFlow.RightToLeft].includes(options.inlineDirection);
@@ -45,7 +52,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-logical-viewport-units',
 		Declaration(decl, { atRule }) {
 			{
-				if (!HAS_VIEWPORT_UNITS.test(decl.value)) {
+				if (!HAS_VIEWPORT_UNITS_REGEX.test(decl.value)) {
 					return;
 				}
 

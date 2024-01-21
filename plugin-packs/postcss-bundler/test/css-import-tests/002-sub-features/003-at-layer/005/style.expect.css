@@ -1,13 +1,9 @@
-@media (min-width: 1px) {
-	@layer a {
-		/* a.css */
-	}
-}
+/* a.css */
+/* b.css */
 @media (min-width: 1px) {
 	@layer a {
 		@media (width: 1px) {
 			@layer b {
-				/* b.css */
 				.box {
 	background-color: red;
 }

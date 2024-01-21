@@ -38,6 +38,7 @@ import postcssOverflowShorthand from './plugins/postcss-overflow-shorthand';
 import postcssPlace from './plugins/postcss-place';
 import postcssPresetEnv from './plugins/postcss-preset-env';
 import postcssPseudoClassAnyLink from './plugins/postcss-pseudo-class-any-link';
+import postcssRelativeColorSyntax from './plugins/postcss-relative-color-syntax';
 import postcssScopePseudoClass from './plugins/postcss-scope-pseudo-class';
 import postcssSelectorNot from './plugins/postcss-selector-not';
 import postcssSteppedValueFunctions from './plugins/postcss-stepped-value-functions';
@@ -171,6 +172,9 @@ function main() {
 		case 'postcss-scope-pseudo-class':
 			postcssScopePseudoClass();
 			return;
+		case 'postcss-relative-color-syntax':
+			postcssRelativeColorSyntax();
+			return;
 		case 'postcss-selector-not':
 			postcssSelectorNot();
 			return;
@@ -238,6 +242,7 @@ function main() {
 				'  postcss-overflow-shorthand',
 				'  postcss-place',
 				'  postcss-pseudo-class-any-link',
+				'  postcss-relative-color-syntax',
 				'  postcss-scope-pseudo-class',
 				'  postcss-selector-not',
 				'  postcss-stepped-value-functions',

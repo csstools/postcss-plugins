@@ -25,8 +25,12 @@ export async function stdinToStdout(plugin: Plugin, argo : Arguments, helpLogger
 		});
 
 		resultCSS = result.css;
-	} catch (error) {
-		console.error(argo.debug ? error : error.message);
+	} catch (err) {
+		if (err instanceof Error) {
+			console.error(argo.debug ? err : err.message);
+		} else {
+			console.error(err);
+		}
 
 		process.exit(1);
 	}

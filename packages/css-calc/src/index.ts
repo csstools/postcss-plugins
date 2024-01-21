@@ -1,4 +1,4 @@
-export type { conversionOptions } from './options';
+export type { conversionOptions, GlobalsWithStrings } from './options';
 import type { conversionOptions } from './options';
 import { ComponentValue, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { mathFunctions } from './functions/calc';
@@ -21,14 +21,18 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 	const tokenizedGlobals = tokenizeGlobals(options?.globals);
 
 	return replaceComponentValues(componentValuesList, (componentValue) => {
-		if (isFunctionNode(componentValue)) {
-			const mathFunction = mathFunctions.get(toLowerCaseAZ(componentValue.getName()));
-			if (mathFunction) {
-				const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
-				if (calcResult !== -1) {
-					return calcResult;
-				}
-			}
+		if (!isFunctionNode(componentValue)) {
+			return;
+		}
+
+		const mathFunction = mathFunctions.get(toLowerCaseAZ(componentValue.getName()));
+		if (!mathFunction) {
+			return;
+		}
+
+		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
+		if (calcResult !== -1) {
+			return calcResult;
 		}
 	});
 }

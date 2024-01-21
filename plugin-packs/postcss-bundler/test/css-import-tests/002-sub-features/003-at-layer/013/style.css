@@ -1,0 +1,2 @@
+@import url("green.css");
+@import layer(foo) url("red.css");

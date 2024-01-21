@@ -59,8 +59,8 @@ export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buil
 		} else {
 			resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
 		}
-	} catch (e) {
-		throw new Error(`Failed to read ${filePath} with error ${(e as Error).message}`);
+	} catch (err) {
+		throw new Error(`Failed to read ${filePath} with error ${(err instanceof Error) ? err.message : err}`);
 	}
 
 	if (alreadyImported.has(resolvedPath)) {

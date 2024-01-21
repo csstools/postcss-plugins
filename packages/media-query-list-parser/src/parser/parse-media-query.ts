@@ -109,7 +109,7 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQu
 	}
 }
 
-export function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>): MediaConditionListWithOr | false {
+function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>): MediaConditionListWithOr | false {
 	let leading: MediaInParens | false = false;
 	const list: Array<MediaOr> = [];
 	let firstIndex = -1;
@@ -169,7 +169,7 @@ export function parseMediaConditionListWithOr(componentValues: Array<ComponentVa
 	return false;
 }
 
-export function parseMediaConditionListWithAnd(componentValues: Array<ComponentValue>): MediaConditionListWithAnd | false {
+function parseMediaConditionListWithAnd(componentValues: Array<ComponentValue>): MediaConditionListWithAnd | false {
 	let leading: MediaInParens | false = false;
 	const list: Array<MediaAnd> = [];
 	let firstIndex = -1;
@@ -229,7 +229,7 @@ export function parseMediaConditionListWithAnd(componentValues: Array<ComponentV
 	return false;
 }
 
-export function parseMediaCondition(componentValues: Array<ComponentValue>): MediaCondition | false {
+function parseMediaCondition(componentValues: Array<ComponentValue>): MediaCondition | false {
 	const mediaNot = parseMediaNot(componentValues);
 	if (mediaNot !== false) {
 		return new MediaCondition(mediaNot);
@@ -253,7 +253,7 @@ export function parseMediaCondition(componentValues: Array<ComponentValue>): Med
 	return false;
 }
 
-export function parseMediaConditionWithoutOr(componentValues: Array<ComponentValue>): MediaCondition | false {
+function parseMediaConditionWithoutOr(componentValues: Array<ComponentValue>): MediaCondition | false {
 	const mediaNot = parseMediaNot(componentValues);
 	if (mediaNot !== false) {
 		return new MediaCondition(mediaNot);
@@ -272,7 +272,7 @@ export function parseMediaConditionWithoutOr(componentValues: Array<ComponentVal
 	return false;
 }
 
-export function parseMediaInParens(componentValues: Array<ComponentValue>): MediaInParens | false {
+function parseMediaInParens(componentValues: Array<ComponentValue>): MediaInParens | false {
 	let singleSimpleBlockIndex = -1;
 
 	for (let i = 0; i < componentValues.length; i++) {
@@ -343,7 +343,7 @@ export function parseMediaInParens(componentValues: Array<ComponentValue>): Medi
 	);
 }
 
-export function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode): MediaInParens | false {
+function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode): MediaInParens | false {
 	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
 		return false;
 	}
@@ -361,7 +361,7 @@ export function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode):
 	return new MediaInParens(new GeneralEnclosed(simpleBlock));
 }
 
-export function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot | false {
+function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot | false {
 	let sawNot = false;
 	let node: MediaNot | null = null;
 
@@ -416,7 +416,7 @@ export function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot 
 	return false;
 }
 
-export function parseMediaOr(componentValues: Array<ComponentValue>) {
+function parseMediaOr(componentValues: Array<ComponentValue>) {
 	let sawOr = false;
 
 	for (let i = 0; i < componentValues.length; i++) {
@@ -467,7 +467,7 @@ export function parseMediaOr(componentValues: Array<ComponentValue>) {
 	return false;
 }
 
-export function parseMediaAnd(componentValues: Array<ComponentValue>) {
+function parseMediaAnd(componentValues: Array<ComponentValue>) {
 	let sawAnd = false;
 
 	for (let i = 0; i < componentValues.length; i++) {

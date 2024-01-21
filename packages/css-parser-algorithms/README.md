@@ -6,6 +6,10 @@
 
 Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
 
+## API
+
+[Read the API docs](./docs/css-parser-algorithms.md)
+
 ## Usage
 
 Add [CSS Parser Algorithms] to your project:
@@ -71,7 +75,7 @@ To gather the entire ancestry for a a given sub tree of the AST you can use `gat
 The result is a `Map` with the child nodes as keys and the parents as values.
 This allows you to lookup any ancestor of any node.
 
-```css
+```js
 import { parseComponentValue } from '@csstools/css-parser-algorithms';
 
 const result = parseComponentValue(tokens, options);

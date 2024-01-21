@@ -1,5 +1,18 @@
 # Changes to PostCSS IC Unit
 
+### 3.0.3
+
+_December 15, 2023_
+
+- Fix type definitions
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#303) (patch)
+
+### 3.0.2
+
+_October 9, 2023_
+
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#302) (patch)
+
 ### 3.0.1
 
 _September 18, 2023_

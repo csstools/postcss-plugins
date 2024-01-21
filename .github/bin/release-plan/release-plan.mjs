@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { commitAfterDependencyUpdates, commitSingleDirectory } from './commit.mjs';
-import { discordAnnounce } from './discord-announce.mjs';
+import { discordAnnounce, discordAnnounceDryRun } from './discord-announce.mjs';
 import { nowFormatted } from './date-format.mjs';
 import { npmInstall } from './npm-install.mjs';
 import { npmPublish } from './npm-publish.mjs';
@@ -10,6 +10,8 @@ import { updateDocumentation } from './docs.mjs';
 import { prepareCurrentReleasePlan } from './prepare-current-release-plan.mjs';
 import { prepareNextReleasePlan } from './prepare-next-release-plan.mjs';
 import { runAndPrintDebugOnFail } from './run-and-print-debug-on-fail.mjs';
+import { npmPrepublishScripts } from './npm-prepublish-scripts.mjs';
+import { minifyChangelogAndPackageJSON } from './minify-changelog-and-package-json.mjs';
 
 const {
 	needsRelease,
@@ -18,6 +20,7 @@ const {
 } = await prepareCurrentReleasePlan();
 
 if (process.argv.slice(2).includes('--dry-run')) {
+	discordAnnounceDryRun();
 	process.exit(0);
 }
 
@@ -50,6 +53,17 @@ for (const workspace of needsRelease.values()) {
 		'Please fix the error and try again from a clean git state.'
 	);
 
+	// Run pre-publish scripts
+	await runAndPrintDebugOnFail(
+		npmPrepublishScripts(workspace.path, workspace.name),
+		`When releasing ${workspace.name} an error occurred.`,
+		'This happened while running the pre-publish scripts.\n' +
+		'A commit with changes relevant to this release has already been made.\n' +
+		'Please fix the error and try again.'
+	);
+
+	const restoreChangelogAndPackageJSON = await minifyChangelogAndPackageJSON(workspace);
+
 	// Publish to npm
 	await runAndPrintDebugOnFail(
 		npmPublish(workspace.path, workspace.name),
@@ -58,6 +72,8 @@ for (const workspace of needsRelease.values()) {
 		'A commit with changes relevant to this release has already been made.\n' +
 		'Please fix the error and try again.'
 	);
+
+	await restoreChangelogAndPackageJSON();
 
 	// Announce on discord
 	await runAndPrintDebugOnFail(
@@ -68,7 +84,7 @@ for (const workspace of needsRelease.values()) {
 	);
 }
 
-const didChangeDownstreamPackages = await prepareNextReleasePlan(needsRelease, notReleasableNow, maybeNextPlan);
+const didChangeDownstreamPackages = await prepareNextReleasePlan(needsRelease, notReleasableNow);
 
 console.log('\nUpdating lock file');
 await npmInstall();
@@ -85,6 +101,6 @@ if (didChangeDownstreamPackages || maybeNextPlan.size > 0) {
 		console.log('  - updated "package.json" files of downstream packages.');
 	}
 	if (maybeNextPlan.size) {
-		console.log('  - some packages where excluded from this plan. A next plan of releases might be available now.');
+		console.log('  - some packages were excluded from this plan. A next plan of releases might be available now.');
 	}
 }

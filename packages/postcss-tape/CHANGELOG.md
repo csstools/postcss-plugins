@@ -1,5 +1,35 @@
 # Changes to PostCSS Tape
 
+### 4.1.2
+
+_January 1, 2024_
+
+- Improve stack traces for issues in `package.json` of postcss plugins.
+
+### 4.1.1
+
+_December 28, 2023_
+
+- Fix tests with empty result files.
+
+### 4.1.0
+
+_December 28, 2023_
+
+- Add `source` test case option.
+
+### 4.0.0
+
+_December 27, 2023_
+
+- Use `node:test` instead of custom logic.
+
+### 3.0.2
+
+_December 15, 2023_
+
+- Fix type definitions
+
 ### 3.0.1
 
 _August 28, 2023_

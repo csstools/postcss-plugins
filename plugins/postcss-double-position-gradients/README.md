@@ -1,8 +1,10 @@
 # PostCSS Double Position Gradients [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-double-position-gradients.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/double-position-gradients.svg" height="20">][css-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+<br><br>
+[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/double-position-gradients.svg" height="20">][css-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/double-position-gradients.svg" height="20">][css-url]
 
 [PostCSS Double Position Gradients] lets you use double-position gradients in
 CSS, following the [CSS Image Values and Replaced Content] specification.
@@ -97,7 +99,9 @@ postcssDoublePositionGradients({ preserve: false })
 The `enableProgressiveCustomProperties` option determines whether the original notation
 is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
 
-⚠️ We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties. See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+> [!NOTE]
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties.  
+> See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
 
 ```js
 postcssDoublePositionGradients({ enableProgressiveCustomProperties: false })

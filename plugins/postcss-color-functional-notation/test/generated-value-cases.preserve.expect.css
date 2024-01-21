@@ -1,33 +1,33 @@
 .order-0 {
-	order: rgba(178, 34, 34, 1) !important;
+	order: rgb(178, 34, 34) !important;
 	order: rgba(178 34 34 / 1) !important;
 }
 
 .order-1 {
-	order: var(1, rgba(178, 34, 34, 1));
+	order: var(1, rgb(178, 34, 34));
 }
 
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgba(0 0 0 / 0)) {
 .order-1 {
 	order: var(1, rgba(178 34 34 / 1));
 }
 }
 
 .order-2 {
-	order: var(rgba(178, 34, 34, 1), 1);
+	order: var(rgb(178, 34, 34), 1);
 }
 
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgba(0 0 0 / 0)) {
 .order-2 {
 	order: var(rgba(178 34 34 / 1), 1);
 }
 }
 
 .order-3 {
-	order: var(rgba(178, 34, 34, 1), rgba(178, 34, 34, 1));
+	order: var(rgb(178, 34, 34), rgb(178, 34, 34));
 }
 
-@supports (color: rgba(0 0 0 / 0)) and (top: var(--f)) {
+@supports (color: rgba(0 0 0 / 0)) {
 .order-3 {
 	order: var(rgba(178 34 34 / 1), rgba(178 34 34 / 1));
 }
@@ -38,34 +38,34 @@
 }
 
 .order-5 {
-	order: pre rgba(178, 34, 34, 1);
+	order: pre rgb(178, 34, 34);
 	order: pre rgba(178 34 34 / 1);
 }
 
 .order-6 {
-	order: pre,rgba(178, 34, 34, 1);
+	order: pre,rgb(178, 34, 34);
 	order: pre,rgba(178 34 34 / 1);
 }
 
 .order-7 {
-	order: rgba(178, 34, 34, 1)post;
+	order: rgb(178, 34, 34)post;
 	order: rgba(178 34 34 / 1)post;
 }
 
 .order-8 {
-	order: rgba(178, 34, 34, 1) post;
+	order: rgb(178, 34, 34) post;
 	order: rgba(178 34 34 / 1) post;
 }
 
 .order-9 {
-	order: rgba(178, 34, 34, 1),post;
+	order: rgb(178, 34, 34),post;
 	order: rgba(178 34 34 / 1),post;
 }
 
 /* rgba(178 34 34 / 1) */
 
 :root {
-	--some-var: rgba(178, 34, 34, 1);
+	--some-var: rgb(178, 34, 34);
 }
 
 @supports (color: rgba(0 0 0 / 0)) {
@@ -80,41 +80,40 @@
 
 @supports (order: rgba(178 34 34 / 1)) {
 	.support {
-		order: rgba(178, 34, 34, 1);
 		order: rgba(178 34 34 / 1);
 	}
 }
 
 .order-0 {
-	order: hsla(120, 100%, 50%, 1) !important;
+	order: hsl(120, 100%, 50%) !important;
 	order: hsl(120 100% 50% / 1) !important;
 }
 
 .order-1 {
-	order: var(1, hsla(120, 100%, 50%, 1));
+	order: var(1, hsl(120, 100%, 50%));
 }
 
-@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 .order-1 {
 	order: var(1, hsl(120 100% 50% / 1));
 }
 }
 
 .order-2 {
-	order: var(hsla(120, 100%, 50%, 1), 1);
+	order: var(hsl(120, 100%, 50%), 1);
 }
 
-@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 .order-2 {
 	order: var(hsl(120 100% 50% / 1), 1);
 }
 }
 
 .order-3 {
-	order: var(hsla(120, 100%, 50%, 1), hsla(120, 100%, 50%, 1));
+	order: var(hsl(120, 100%, 50%), hsl(120, 100%, 50%));
 }
 
-@supports (color: hsl(0 0% 0% / 0)) and (top: var(--f)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 .order-3 {
 	order: var(hsl(120 100% 50% / 1), hsl(120 100% 50% / 1));
 }
@@ -125,34 +124,34 @@
 }
 
 .order-5 {
-	order: pre hsla(120, 100%, 50%, 1);
+	order: pre hsl(120, 100%, 50%);
 	order: pre hsl(120 100% 50% / 1);
 }
 
 .order-6 {
-	order: pre,hsla(120, 100%, 50%, 1);
+	order: pre,hsl(120, 100%, 50%);
 	order: pre,hsl(120 100% 50% / 1);
 }
 
 .order-7 {
-	order: hsla(120, 100%, 50%, 1)post;
+	order: hsl(120, 100%, 50%)post;
 	order: hsl(120 100% 50% / 1)post;
 }
 
 .order-8 {
-	order: hsla(120, 100%, 50%, 1) post;
+	order: hsl(120, 100%, 50%) post;
 	order: hsl(120 100% 50% / 1) post;
 }
 
 .order-9 {
-	order: hsla(120, 100%, 50%, 1),post;
+	order: hsl(120, 100%, 50%),post;
 	order: hsl(120 100% 50% / 1),post;
 }
 
 /* hsl(120 100% 50% / 1) */
 
 :root {
-	--some-var: hsla(120, 100%, 50%, 1);
+	--some-var: hsl(120, 100%, 50%);
 }
 
 @supports (color: hsl(0 0% 0% / 0)) {
@@ -167,7 +166,6 @@
 
 @supports (order: hsl(120 100% 50% / 1)) {
 	.support {
-		order: hsla(120, 100%, 50%, 1);
 		order: hsl(120 100% 50% / 1);
 	}
 }

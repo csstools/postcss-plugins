@@ -1,5 +1,13 @@
 # Changes to Color Helpers
 
+### 4.0.0
+
+_December 15, 2023_
+
+- Remove barrel files
+- Fix type definitions
+- Use higher precision color conversion matrices.
+
 ### 3.0.2
 
 _September 2, 2023_

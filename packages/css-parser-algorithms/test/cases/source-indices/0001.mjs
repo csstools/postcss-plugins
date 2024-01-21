@@ -1,12 +1,13 @@
 import { tokenize } from '@csstools/css-tokenizer';
 import assert from 'assert';
+import test from 'node:test';
 import { parseCommaSeparatedListOfComponentValues, sourceIndices } from '@csstools/css-parser-algorithms';
 
 const onParseError = (err) => {
 	throw err;
 };
 
-{
+test('source indices', () => {
 	const indicesAndParts = [
 		[[0, 49], '(image-set( url("image1.jpg") calc(2 * 1x)), 50px)'],
 		[[0, 49], '(image-set( url("image1.jpg") calc(2 * 1x)), 50px)'],
@@ -59,4 +60,4 @@ const onParseError = (err) => {
 			}
 		});
 	});
-}
+});

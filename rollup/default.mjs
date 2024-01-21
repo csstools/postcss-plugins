@@ -10,22 +10,23 @@ fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');
 const packageInfo = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
 const isTypescript = (() => {
-	if (packageInfo.types) {
-		try {
-			fs.statSync('./tsconfig.json').isFile();
-			return true;
-		} catch (_) {
-			return false;
-		}
+	try {
+		return fs.statSync('./tsconfig.json').isFile() && fs.statSync('./src/index.ts').isFile();
+	} catch (_) {
+		return false;
 	}
-	return false;
 })();
+
+let nodeCoverageDisable = false;
+if (packageInfo.name === '@csstools/postcss-tape') {
+	nodeCoverageDisable = true;
+}
 
 const presets = [];
 
 if (isTypescript) {
 	if (packageInfo.main || packageInfo.module) {
-		presets.push(...packageTypescript());
+		presets.push(...packageTypescript({nodeCoverageDisable: nodeCoverageDisable}));
 	}
 
 	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {

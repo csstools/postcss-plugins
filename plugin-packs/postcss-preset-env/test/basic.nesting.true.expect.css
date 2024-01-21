@@ -478,3 +478,19 @@
 .exponential-functions {
 	width: calc(1px * pow(2, 3));
 }
+
+.out-of-gamut {
+	--color: color(display-p3 0 1 0);
+}
+
+.issue-1244--a {
+	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--b {
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}
+
+.issue-1244--c {
+	background-image: linear-gradient(180deg, red 0%, blue 100%);
+}

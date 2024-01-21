@@ -1,9 +1,7 @@
-@media (min-height: 1px) {
-    /* a.css */
-}
+/* a.css */
+/* b.css */
 @media (min-height: 1px) {
     @media (min-width: 1px) {
-        /* b.css */
         .box {
 	background-color: green;
 }

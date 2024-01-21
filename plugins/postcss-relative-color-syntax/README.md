@@ -1,6 +1,6 @@
 # PostCSS Relative Color Syntax [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-relative-color-syntax.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/relative-color-syntax.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-relative-color-syntax.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/relative-color-syntax.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/relative-color-syntax.svg" height="20">][css-url] 
 
 ```bash
 npm install @csstools/postcss-relative-color-syntax --save-dev
@@ -19,6 +19,9 @@ npm install @csstools/postcss-relative-color-syntax --save-dev
 	background: rgb(12, 100, 100);
 }
 ```
+
+> [!NOTE]
+> We can not dynamically resolve `var()` arguments in relative color syntax, only static values will work.
 
 ## Usage
 

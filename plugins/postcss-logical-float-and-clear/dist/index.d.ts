@@ -1,9 +1,19 @@
 import type { PluginCreator } from 'postcss';
-import { DirectionFlow } from './lib/types';
+
+declare const creator: PluginCreator<pluginOptions>;
+export default creator;
+
+export declare enum DirectionFlow {
+    TopToBottom = "top-to-bottom",
+    BottomToTop = "bottom-to-top",
+    RightToLeft = "right-to-left",
+    LeftToRight = "left-to-right"
+}
+
 /** postcss-logical-float-and-clear plugin options */
-export type pluginOptions = {
+export declare type pluginOptions = {
     /** Sets the direction for inline. default: left-to-right */
     inlineDirection?: DirectionFlow;
 };
-declare const creator: PluginCreator<pluginOptions>;
-export default creator;
+
+export { }

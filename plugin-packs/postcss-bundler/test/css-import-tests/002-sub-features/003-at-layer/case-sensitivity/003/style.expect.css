@@ -1,0 +1,13 @@
+@layer blacK;
+/* ./green.css */
+@layer blacK{
+    .box {
+	background-color: green;
+}
+}
+/* ./red.css */
+@layer blacK{
+    .box {
+	background-color: red;
+}
+}

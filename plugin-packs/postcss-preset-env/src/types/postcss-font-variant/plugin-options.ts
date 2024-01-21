@@ -1,2 +1,2 @@
 /** postcss-font-variant plugin options */
-export type pluginOptions = Record<string, never>;
+export type postcssFontVariantOptions = Record<string, never>;

@@ -1,5 +1,11 @@
 # Changes to PostCSS Color Hex Alpha
 
+### 9.0.3
+
+_December 15, 2023_
+
+- Fix type definitions
+
 ### 9.0.2
 
 _February 6, 2023_

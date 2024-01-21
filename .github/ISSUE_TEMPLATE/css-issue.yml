@@ -29,6 +29,11 @@ body:
       label: Actual CSS
     validations:
       required: true
+  - type: textarea
+    id: playground_link
+    attributes:
+      label: Playgound example
+      description: If you can recreate your issue in the [playground](https://preset-env.cssdb.org/playground/) you can link to your example here.
   - type: dropdown
     id: npx
     attributes:
@@ -42,7 +47,7 @@ body:
     id: debug
     attributes:
       label: Debug output
-      description: If this issue is about `postcss-preset-env`, can you provide the output of using the [debug](https://github.com/csstools/postcss-preset-env#debug) option?
+      description: If this issue is about `postcss-preset-env`, can you provide the output of using the [debug](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#debug) option?
     validations:
       required: false
   - type: textarea
@@ -82,6 +87,7 @@ body:
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
+        - PostCSS Gamut Mapping
         - PostCSS Gap Properties
         - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
@@ -93,6 +99,8 @@ body:
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Logical Float and Clear
+        - PostCSS Logical Overflow
+        - PostCSS Logical Overscroll Behavior
         - PostCSS Logical Resize
         - PostCSS Logical Viewport Units
         - PostCSS Media Queries Aspect-Ratio Number Values

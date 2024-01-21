@@ -1,6 +1,5 @@
 import type { PluginCreator } from 'postcss';
-import { FUNCTION_CALL_REGEXP } from './checks';
-import { calc } from './calc';
+import { calc } from '@csstools/css-calc';
 
 /** postcss-trigonometric-functions plugin options */
 export type pluginOptions = {
@@ -8,8 +7,10 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
+const FUNCTION_CALL_REGEXP = /(?<![-\w])(?:asin|acos|atan|atan2|sin|cos|tan)\(/i;
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
+	const options: pluginOptions = Object.assign(
 		// Default options
 		{
 			preserve: false,
@@ -25,7 +26,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const modifiedValue = calc(decl.value);
+			const modifiedValue = calc(decl.value, {
+				precision: 5,
+				toCanonicalUnits: true,
+			});
 			if (modifiedValue === decl.value) {
 				return;
 			}

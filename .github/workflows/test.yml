@@ -34,13 +34,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: npm ci
         run: |
-          npm ci --ignore-scripts
+          npm ci
+        env:
+          BROWSER_TESTS: true
+        if: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
+
+      - name: npm ci
+        run: |
+          NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
+        if: ${{ !(matrix.is_base_node_version && matrix.is_base_os_version) }}
 
       - name: determine modified workspaces
         run: |
@@ -76,16 +84,8 @@ jobs:
         # running "npm install" places the cli in node_modules/bin
       - name: test:cli
         run: |
-          npm install --ignore-scripts
+          NPM_CONFIG_ENGINE_STRICT=false npm install --ignore-scripts
           npm run test:cli --if-present $MODIFIED_WORKSPACES
-
-        # Browser Tests
-        # running "npm ci" again, but allowing scripts so that Chrome is installed
-      - name: test:browser
-        run: |
-          npm ci
-          npm run test:browser --if-present $MODIFIED_WORKSPACES
-        if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # E2E Tests
       - name: test:e2e

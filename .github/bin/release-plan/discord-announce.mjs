@@ -57,3 +57,24 @@ export async function discordAnnounce(workspace) {
 		headers: { 'Content-Type': 'application/json' },
 	});
 }
+
+export async function discordAnnounceDryRun() {
+	if (process.env.DEBUG) {
+		return;
+	}
+
+	const discordArgument = process.argv.slice(2).find(arg => arg.includes('--discord='));
+	if (!discordArgument) {
+		console.log(`Discord announce webhook URL: not set`);
+		return;
+	}
+
+	const [, webHookUrl] = discordArgument.split('=');
+
+	if (!webHookUrl) {
+		console.log(`Discord announce webhook URL: not set`);
+		return;
+	}
+
+	console.log(`Discord announce webhook URL: ${webHookUrl}`);
+}

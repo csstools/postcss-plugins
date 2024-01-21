@@ -1,6 +1,5 @@
 import type { PluginCreator } from 'postcss';
-import { calc } from './calc';
-import { FUNCTION_CALL_REGEXP } from './checks';
+import { calc } from '@csstools/css-calc';
 
 /** postcss-stepped-value-functions plugin options */
 export type pluginOptions = {
@@ -8,12 +7,13 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
+const FUNCTION_CALL_REGEX = /(?<![-\w])(?:mod|rem|round)\(/i;
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
+	const options: pluginOptions = Object.assign(
 		// Default options
 		{
 			preserve: false,
-			onInvalid: '',
 		},
 		// Provided options
 		opts,
@@ -22,11 +22,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-stepped-value-functions',
 		Declaration(decl) {
-			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
+			if (!FUNCTION_CALL_REGEX.test(decl.value)) {
 				return;
 			}
 
-			const modifiedValue = calc(decl.value);
+			const modifiedValue = calc(decl.value, {
+				precision: 5,
+				toCanonicalUnits: true,
+			});
 			if (modifiedValue === decl.value) {
 				return;
 			}

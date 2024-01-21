@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-tape",
 	"description": "Quickly test PostCSS plugins",
-	"version": "3.0.1",
+	"version": "4.1.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -31,14 +31,18 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
+	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
 		}
 	},
 	"files": [
@@ -46,11 +50,11 @@
 	],
 	"dependencies": {
 		"postcss": "~8.4",
-		"postcss-8.4": "npm:postcss@~8.4",
-		"postcss-html": "^1.5.0"
+		"postcss-8.4": "npm:postcss@~8.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"test": "bash ./test-self/test.sh"
 	},

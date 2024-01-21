@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-todo-or-die",
 	"description": "Write TODOs in CSS that ensure you actually do them.",
-	"version": "2.0.2",
+	"version": "2.0.4",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -27,14 +27,18 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
+	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
 		}
 	},
 	"files": [
@@ -44,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.3.2",
-		"@csstools/css-tokenizer": "^2.2.1",
-		"browserslist": "^4.22.1"
+		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-tokenizer": "^2.2.3",
+		"browserslist": "^4.22.2"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -59,8 +63,8 @@
 		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
-		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-todo-or-die#readme",
 	"repository": {

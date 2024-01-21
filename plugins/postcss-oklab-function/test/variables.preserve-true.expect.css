@@ -27,19 +27,19 @@
 }
 }
 
-@supports (color: oklch(0% 0 0)) {
+@supports (color: oklab(0% 0 0)) {
 :root {
 	--firebrick-a50: oklch(40% 0.4 0.039 / 50%);
 }
 }
 
-@supports (color: color(display-p3 0 0 0)) and (top: var(--f)) {
+@supports (color: color(display-p3 0 0 0)) {
 :root {
 	--firebrick-a50-var: color(display-p3 0.51567 0 0.25999 / var(--opacity-50));
 }
 }
 
-@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
+@supports (color: oklab(0% 0 0)) {
 :root {
 	--firebrick-a50-var: oklch(40% 0.4 0.039 / var(--opacity-50));
 }

@@ -74,7 +74,7 @@
 	color-1: color-mix(in lch, white, blue);
 	/* https://github.com/w3c/csswg-drafts/issues/8609 */
 	color-2: rgb(119, 163, 255);
-	color-2: color(display-p3 0.49508 0.63377 1);
+	color-2: color(display-p3 0.49508 0.63378 1);
 	color-2: color-mix(in oklch, white, blue);
 	color-3: rgb(128, 128, 255);
 	color-3: color-mix(in srgb, white, blue);
@@ -202,7 +202,7 @@
 
 .zero-alpha-cylindrical {
 	color-4: rgba(122, 0, 182, 0.65);
-	color-4: color(display-p3 0.44471 0 0.71665 / 0.65);
+	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
 	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
 	color-5: rgba(149, 0, 122, 0.65);
 	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
@@ -243,4 +243,8 @@
 	color-6: rgb(255, 255, 255);
 	color-6: color(display-p3 1 1 1);
 	color-6: color-mix(in lch, color(xyz-d65 1 1 1) 100%, black);
+}
+
+.experimental-features-from-the-color-parser {
+	color: color-mix(in srgb, contrast-color(pink) 30%, yellow);
 }

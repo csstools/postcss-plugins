@@ -1,5 +1,10 @@
 # Changes to PostCSS Attribute Case Insensitive
 
+### Unreleased (patch)
+
+- Fix type definitions
+- Fix an infinite loop when a pseudo selector function contains a case insensitive attribute selector
+
 ### 6.0.2
 
 _February 6, 2023_

@@ -4,10 +4,17 @@ import {  colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { xyz } from '@csstools/color-helpers';
+import { XYZ_D50_to_OKLCH } from '@csstools/color-helpers';
 import { toPrecision } from './to-precision';
 import { serializeWithAlpha } from './with-alpha';
 
+/**
+ * Convert color data to component values in the OKLCH color space.
+ * The return value can be converted to a string by calling `toString()` on it.
+ *
+ * @param {ColorData} color - The color data to be serialized.
+ * @returns {FunctionNode} The serialized color data as a FunctionNode object.
+ */
 export function serializeOKLCH(color: ColorData): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let oklch = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
@@ -15,7 +22,7 @@ export function serializeOKLCH(color: ColorData): FunctionNode {
 	if (
 		color.colorNotation !== ColorNotation.OKLCH
 	) {
-		oklch = xyz.XYZ_D50_to_OKLCH(colorData_to_XYZ_D50(color).channels);
+		oklch = XYZ_D50_to_OKLCH(colorData_to_XYZ_D50(color).channels);
 	}
 
 	const l = toPrecision(oklch[0], 6);

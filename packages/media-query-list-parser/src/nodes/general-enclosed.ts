@@ -50,6 +50,9 @@ export class GeneralEnclosed {
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	toJSON() {
 		return {
 			type: this.type,
@@ -57,6 +60,9 @@ export class GeneralEnclosed {
 		};
 	}
 
+	/**
+	 * @internal
+	 */
 	isGeneralEnclosed(): this is GeneralEnclosed {
 		return GeneralEnclosed.isGeneralEnclosed(this);
 	}

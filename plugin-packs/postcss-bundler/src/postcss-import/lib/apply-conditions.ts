@@ -1,34 +1,15 @@
 import type { AtRule, AtRuleProps } from 'postcss';
-import { Statement, isCharsetStatement, isImportStatement, isWarning } from './statement';
-import { formatImportPrelude } from './format-import-prelude';
+import { Stylesheet, isImportStatement, isPreImportStatement, isWarning } from './statement';
+import { base64EncodedConditionalImport } from './base64-encoded-import';
 
-export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: AtRuleProps) => AtRule) {
-	bundle.forEach((stmt, index) => {
-		if (isWarning(stmt) || isCharsetStatement(stmt) || !stmt.conditions?.length) {
+export function applyConditions(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule) {
+	stylesheet.statements.forEach((stmt, index) => {
+		if (isWarning(stmt) || isPreImportStatement(stmt) || !stmt.conditions?.length) {
 			return;
 		}
 
 		if (isImportStatement(stmt)) {
-			stmt.conditions.reverse();
-			const first = stmt.conditions.pop()!;
-			let params = `${stmt.fullUri} ${formatImportPrelude(
-				first.layer,
-				first.media,
-				first.supports,
-			)}`;
-
-			for (const condition of stmt.conditions) {
-				params = `'data:text/css;base64,${Buffer.from(
-					`@import ${params}`,
-				).toString('base64')}' ${formatImportPrelude(
-					condition.layer,
-					condition.media,
-					condition.supports,
-				)}`;
-			}
-
-			stmt.node.params = params;
-
+			stmt.node.params = base64EncodedConditionalImport(stmt.fullUri, stmt.conditions);
 			return;
 		}
 
@@ -98,7 +79,7 @@ export function applyConditions(bundle: Array<Statement>, atRule: (defaults?: At
 		// wrap new rules with media query and/or layer at rule
 		innerAtRule.append(nodes);
 
-		bundle[index] = {
+		stylesheet.statements[index] = {
 			type: 'nodes',
 			nodes: [outerAtRule],
 			conditions: stmt.conditions,

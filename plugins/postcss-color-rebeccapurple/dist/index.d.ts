@@ -1,8 +1,12 @@
 import type { PluginCreator } from 'postcss';
+
+declare const creator: PluginCreator<pluginOptions>;
+export default creator;
+
 /** postcss-color-rebeccapurple plugin options */
-export type pluginOptions = {
+export declare type pluginOptions = {
     /** Preserve the original notation. default: false */
     preserve?: boolean;
 };
-declare const creator: PluginCreator<pluginOptions>;
-export default creator;
+
+export { }

@@ -1,3 +1,5 @@
 .box {
 	background-color: green;
 }
+
+@import url("./red.css");

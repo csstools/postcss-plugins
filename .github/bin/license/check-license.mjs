@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { getFiles } from '../util/get-files.mjs';
 import { parseLicenseField } from './parse-license-field.mjs';
-import { licenseIsOkByException, osiApprovedWithCCO } from './allowed.mjs';
+import { licenseIsOkByException, missingLicenseIsOkByException, osiApprovedWithCCO } from './allowed.mjs';
 
 // Checks 2 things
 // 1. Do all our dependencies have an appropriate license?
@@ -86,7 +86,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 		const data = fs.readFileSync(file, 'utf8');
 		const packageJson = JSON.parse(data);
 
-		if (!packageJson.license && !packageJson.licenses) {
+		if (!packageJson.license && !packageJson.licenses && !missingLicenseIsOkByException(file)) {
 			withoutLicense.add(file);
 			continue;
 		}

@@ -3,33 +3,25 @@
 .box {
 	background-color: green;
 }
-@media all {
 /* a.css */
-}
+/* red.css */
 @media all {
-	/* red.css */
 	.box {
 	background-color: red;
 }
 }
 /* c.css */
-@media not print {
 /* a.css */
-}
+/* red.css */
 @media not print {
-	/* red.css */
 	.box {
 	background-color: red;
 }
 }
-@media not print {
-	@media screen {
 /* b.css */
-	}
-}
+/* green.css */
 @media not print {
 	@media screen {
-		/* green.css */
 		.box {
 	background-color: green;
 }

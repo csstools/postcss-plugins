@@ -1,17 +1,20 @@
-import { getFeaturesIds } from '../src/plugins/plugins-map.mjs';
 import cssdb from 'cssdb';
-import { promises as fsp } from 'fs';
+import fs from 'fs/promises';
 
 let featuresTable = '';
 
-featuresTable = featuresTable + '| ID | Feature | example | docs |\n';
-featuresTable = featuresTable + '|:--- |:--- |:--- |:--- |\n';
+featuresTable = featuresTable + '| | ID | Feature | example | docs |\n';
+featuresTable = featuresTable + '|:--- |:--- |:--- |:--- |:--- |\n';
 
-const ids = getFeaturesIds();
-ids.sort();
+const pluginsData = await fs.readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
+pluginsData.sort((a, b) => a.id.localeCompare(b.id));
 
-for (const id of ids) {
-	const cssdbFeature = cssdb.find(feature => feature.id === id);
+for (const pluginData of pluginsData) {
+	if (pluginData.omitDocs) {
+		continue;
+	}
+
+	const cssdbFeature = cssdb.find(feature => feature.id === pluginData.id);
 	const polyfills = cssdbFeature?.polyfills || [];
 	const cssdbPlugins = polyfills?.filter(polyfill => polyfill.type === 'PostCSS Plugin');
 
@@ -28,19 +31,21 @@ for (const id of ids) {
 	});
 
 	if (cssdbFeature && cssdbPlugins.length > 0) {
-		featuresTable = featuresTable + `| \`${id}\` `;
+		featuresTable = featuresTable + `| [<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/${pluginData.id}.svg" height="18">](https://cssdb.org/#${pluginData.id}) `;
+		featuresTable = featuresTable + `| \`${pluginData.id}\` `;
 		featuresTable = featuresTable + `| ${cssdbFeature.title} `;
-		featuresTable = featuresTable + `| [example](https://preset-env.cssdb.org/features/#${id}) `;
+		featuresTable = featuresTable + `| [example](https://preset-env.cssdb.org/features/#${pluginData.id}) `;
 		featuresTable = featuresTable + `| [docs](${cssdbPlugins[0].link}#readme) |\n`;
 	} else {
-		featuresTable = featuresTable + `| \`${id}\` `;
+		featuresTable = featuresTable + '|   ';
+		featuresTable = featuresTable + `| \`${pluginData.id}\` `;
 		featuresTable = featuresTable + '|   ';
 		featuresTable = featuresTable + '|   ';
 		featuresTable = featuresTable + '|   |\n';
 	}
 }
 
-let featuresDoc = (await fsp.readFile('./docs/FEATURES.md', 'utf8')).toString();
+let featuresDoc = (await fs.readFile('./docs/FEATURES.md', 'utf8')).toString();
 featuresDoc = featuresDoc.replaceAll('<featuresTable>', featuresTable);
 
-fsp.writeFile('FEATURES.md', featuresDoc, 'utf8');
+fs.writeFile('FEATURES.md', featuresDoc, 'utf8');

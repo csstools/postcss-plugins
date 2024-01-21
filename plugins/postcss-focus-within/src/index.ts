@@ -65,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						try {
 							selectorAST = parser().astSync(selector);
 						} catch (err) {
-							rule.warn(result, `Failed to parse selector : "${selector}" with message: "${err.message}"`);
+							rule.warn(result, `Failed to parse selector : "${selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 							return selector;
 						}
 

@@ -12,17 +12,7 @@
 @supports (color: oklab(0% 0 0)) {
 :root {
 	--firebrick: oklab(40% 0.4 0.039);
-}
-}
-
-@supports (color: oklch(0% 0 0)) {
-:root {
 	--firebrick-a50: oklch(40% 0.4 0.039 / 50%);
-}
-}
-
-@supports (color: oklch(0% 0 0)) and (top: var(--f)) {
-:root {
 	--firebrick-a50-var: oklch(40% 0.4 0.039 / var(--opacity-50));
 }
 }

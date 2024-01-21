@@ -1,0 +1,31 @@
+.block {
+	overflow-x: scroll;
+}
+
+.inline {
+	overflow-y: clip;
+}
+
+.BLOCK {
+	overflow-x: SCROLL;
+}
+
+.INLINE {
+	overflow-y: CLIP;
+}
+
+.ignore-block{
+	overflow-block-zzz: scroll;
+}
+
+.ignore-inline {
+	overflow-inline-zzz: clip;
+}
+
+.ignore-block {
+	zzz-overflow-block: scroll;
+}
+
+.ignore-inline {
+	zzz-overflow-inline: clip;
+}

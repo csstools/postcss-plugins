@@ -1,4 +1,5 @@
 import type { AtRule, ChildNode, Container, Document } from 'postcss';
+import { IS_LAYER_REGEX } from './constants';
 
 const allowedParentAtRules = new Set(['layer', 'supports', 'media', 'container', 'scope']);
 
@@ -7,7 +8,7 @@ export function isProcessableLayerRule(atRule: AtRule): boolean {
 		return false;
 	}
 
-	if (atRule.name.toLowerCase() !== 'layer') {
+	if (!IS_LAYER_REGEX.test(atRule.name)) {
 		return false;
 	}
 

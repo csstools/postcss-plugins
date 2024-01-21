@@ -56,7 +56,7 @@ export const mathFunctions = new Map([
 	['tan', tan],
 ]);
 
-export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
+function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = resolveGlobalsAndConstants(
 		[...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
 		globals,
@@ -84,16 +84,16 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 
 		if (isFunctionNode(child)) {
 			const mathFunction = mathFunctions.get(toLowerCaseAZ(child.getName()));
-			if (mathFunction) {
-				const subCalc = mathFunction(child, globals);
-				if (subCalc === -1) {
-					return -1;
-				}
-				nodes.splice(i, 1, subCalc);
-			} else {
+			if (!mathFunction) {
 				return -1;
 			}
 
+			const subCalc = mathFunction(child, globals);
+			if (subCalc === -1) {
+				return -1;
+			}
+
+			nodes.splice(i, 1, subCalc);
 			continue;
 		}
 
@@ -211,7 +211,7 @@ export function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals)
 	return -1;
 }
 
-export function singleNodeSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, a: TokenNode) => Calculation | -1): Calculation | -1 {
+function singleNodeSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, a: TokenNode) => Calculation | -1): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
 		[...(fnNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
 		globals,
@@ -230,7 +230,7 @@ export function singleNodeSolver(fnNode: FunctionNode, globals: Globals, solveFn
 	return solveFn(fnNode, a);
 }
 
-export function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, a: TokenNode, b: TokenNode) => Calculation | -1): Calculation | -1 {
+function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, a: TokenNode, b: TokenNode) => Calculation | -1): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
 		[...(fnNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
 		globals,
@@ -285,7 +285,7 @@ export function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Glob
 	return solveFn(fnNode, a, b);
 }
 
-export function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, x: Array<ComponentValue>) => Calculation | -1): Calculation | -1 {
+function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node: FunctionNode, x: Array<ComponentValue>) => Calculation | -1): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
 		[...(fnNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
 		globals,
@@ -330,7 +330,7 @@ export function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, solv
 	return solveFn(fnNode, solvedNodes);
 }
 
-export function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1 {
+function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
 		[...(clampNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
 		globals,
@@ -400,11 +400,11 @@ export function clamp(clampNode: FunctionNode, globals: Globals): Calculation | 
 	return solveClamp(clampNode, minimum, central, maximum);
 }
 
-export function max(maxNode: FunctionNode, globals: Globals): Calculation | -1 {
+function max(maxNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return variadicNodesSolver(maxNode, globals, solveMax);
 }
 
-export function min(minNode: FunctionNode, globals: Globals): Calculation | -1 {
+function min(minNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return variadicNodesSolver(minNode, globals, solveMin);
 }
 
@@ -415,7 +415,7 @@ const roundingStrategies = new Set([
 	'to-zero',
 ]);
 
-export function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
+function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
 		[...(roundNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
 		globals,
@@ -487,66 +487,66 @@ export function round(roundNode: FunctionNode, globals: Globals): Calculation | 
 	return solveRound(roundNode, roundingStrategy, a, b);
 }
 
-export function mod(modNode: FunctionNode, globals: Globals): Calculation | -1 {
+function mod(modNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return twoCommaSeparatedNodesSolver(modNode, globals, solveMod);
 }
 
-export function rem(remNode: FunctionNode, globals: Globals): Calculation | -1 {
+function rem(remNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return twoCommaSeparatedNodesSolver(remNode, globals, solveRem);
 }
 
-export function abs(absNode: FunctionNode, globals: Globals): Calculation | -1 {
+function abs(absNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(absNode, globals, solveAbs);
 }
 
-export function sign(signNode: FunctionNode, globals: Globals): Calculation | -1 {
+function sign(signNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(signNode, globals, solveSign);
 }
 
-export function sin(sinNode: FunctionNode, globals: Globals): Calculation | -1 {
+function sin(sinNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(sinNode, globals, solveSin);
 }
 
-export function cos(codNode: FunctionNode, globals: Globals): Calculation | -1 {
+function cos(codNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(codNode, globals, solveCos);
 }
 
-export function tan(tanNode: FunctionNode, globals: Globals): Calculation | -1 {
+function tan(tanNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(tanNode, globals, solveTan);
 }
 
-export function asin(asinNode: FunctionNode, globals: Globals): Calculation | -1 {
+function asin(asinNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(asinNode, globals, solveASin);
 }
 
-export function acos(acosNode: FunctionNode, globals: Globals): Calculation | -1 {
+function acos(acosNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(acosNode, globals, solveACos);
 }
 
-export function atan(atanNode: FunctionNode, globals: Globals): Calculation | -1 {
+function atan(atanNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(atanNode, globals, solveATan);
 }
 
-export function atan2(atan2Node: FunctionNode, globals: Globals): Calculation | -1 {
+function atan2(atan2Node: FunctionNode, globals: Globals): Calculation | -1 {
 	return twoCommaSeparatedNodesSolver(atan2Node, globals, solveATan2);
 }
 
-export function exp(expNode: FunctionNode, globals: Globals): Calculation | -1 {
+function exp(expNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(expNode, globals, solveExp);
 }
 
-export function sqrt(sqrtNode: FunctionNode, globals: Globals): Calculation | -1 {
+function sqrt(sqrtNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return singleNodeSolver(sqrtNode, globals, solveSqrt);
 }
 
-export function pow(powNode: FunctionNode, globals: Globals): Calculation | -1 {
+function pow(powNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return twoCommaSeparatedNodesSolver(powNode, globals, solvePow);
 }
 
-export function hypot(hypotNode: FunctionNode, globals: Globals): Calculation | -1 {
+function hypot(hypotNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return variadicNodesSolver(hypotNode, globals, solveHypot);
 }
 
-export function log(logNode: FunctionNode, globals: Globals): Calculation | -1 {
+function log(logNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return variadicNodesSolver(logNode, globals, solveLog);
 }

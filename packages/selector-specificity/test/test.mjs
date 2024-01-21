@@ -46,6 +46,16 @@ assert.deepEqual(calculate(':nth-last-child'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':nth-last-child()'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':nth-last-child(1n)'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':nth-last-child(.a)'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(2)'), { a: 1, b: 1, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(even)'), { a: 1, b: 1, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(-n + 2)'), { a: 1, b: 1, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(n of.li)'), { a: 1, b: 2, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(n of.li,.li.li)'), { a: 1, b: 3, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(n of.li, .li.li)'), { a: 1, b: 3, c: 0 });
+assert.deepEqual(calculate('#foo:nth-child(n of li)'), { a: 1, b: 1, c: 1 });
+assert.deepEqual(calculate('#foo:nth-child(-n+3 of li.important)'), { a: 1, b: 2, c: 1 });
+assert.deepEqual(calculate('#foo:nth-child(-n+3 of li.important, .class1.class2.class3)'), { a: 1, b: 4, c: 0 });
+assert.deepEqual(calculate('#foo:nth-last-child(-n+3 of li, .important)'), { a: 1, b: 2, c: 0 });
 
 assert.deepEqual(calculate(':nth-of-type'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':nth-of-type()'), { a: 0, b: 1, c: 0 });
@@ -103,3 +113,12 @@ assert.deepEqual(calculate('::view-transition-old(foo)'), { a: 0, b: 0, c: 1 });
 assert.deepEqual(calculate('::view-transition-old(*)'), { a: 0, b: 0, c: 0 });
 assert.deepEqual(calculate('::view-transition-new(foo)'), { a: 0, b: 0, c: 1 });
 assert.deepEqual(calculate('::view-transition-new(*)'), { a: 0, b: 0, c: 0 });
+
+assert.deepEqual(calculate(':active-view-transition(*)'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':active-view-transition(foo)'), { a: 0, b: 2, c: 0 });
+assert.deepEqual(calculate(':active-view-transition(foo, bar)'), { a: 0, b: 2, c: 0 });
+
+// Invalid CSS, must be either `*` or a list of one or more custom idents
+// We should still calculate some specificity.
+assert.deepEqual(calculate(':active-view-transition(*, bar)'), { a: 0, b: 2, c: 0 });
+assert.deepEqual(calculate(':active-view-transition(*, *)'), { a: 0, b: 2, c: 0 });

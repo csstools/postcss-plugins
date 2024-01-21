@@ -84,6 +84,7 @@ body:
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
+        - PostCSS Gamut Mapping
         - PostCSS Gap Properties
         - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
@@ -95,6 +96,8 @@ body:
         - PostCSS Lab Function
         - PostCSS Logical
         - PostCSS Logical Float and Clear
+        - PostCSS Logical Overflow
+        - PostCSS Logical Overscroll Behavior
         - PostCSS Logical Resize
         - PostCSS Logical Viewport Units
         - PostCSS Media Queries Aspect-Ratio Number Values

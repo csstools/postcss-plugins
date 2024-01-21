@@ -12,6 +12,7 @@
 <!-- <envSupport> -->
 <!-- <corsWarning> -->
 <!-- <linkList> -->
+<!-- <parallelBuildsNotice> -->
 <!-- to generate : npm run docs -->
 
 <header>
@@ -61,8 +62,9 @@ as these depend on the browser the queries will eventually run in.
 
 _Some of these queries will have only one possible outcome but we have to account for all possible queries in this plugin._
 
-⚠️ When handling complex media queries you will see that your CSS is doubled for each level of complexity.<br>
-GZIP works great to de-dupe this but having a lot of complex media queries will have a performance impact.
+> [!NOTE]
+> When handling complex media queries you will see that your CSS is doubled for each level of complexity.<br>
+> GZIP works great to de-dupe this but having a lot of complex media queries will have a performance impact.
 
 An example of a very complex (and artificial) use-case :
 

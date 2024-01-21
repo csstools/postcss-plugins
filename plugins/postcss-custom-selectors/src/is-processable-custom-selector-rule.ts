@@ -19,7 +19,7 @@ export function isProcessableCustomSelectorRule(atRule: AtRule): boolean {
 		return false;
 	}
 
-	let parent: Container<ChildNode> | Document = atRule.parent;
+	let parent: Container<ChildNode> | Document | undefined = atRule.parent;
 	while (parent) {
 		if (parent.type === 'rule') {
 			return false;

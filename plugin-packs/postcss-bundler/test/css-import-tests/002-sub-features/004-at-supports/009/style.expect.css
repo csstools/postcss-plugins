@@ -1,0 +1,10 @@
+/* green.css */
+@media screen {
+    @supports (display: block) {
+        @layer b {
+            .box {
+	background-color: green;
+}
+        }
+    }
+}

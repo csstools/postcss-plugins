@@ -1,10 +1,15 @@
 import type { AtRule, ChildNode, Warning } from 'postcss';
 import { Condition } from './conditions';
 
-export type Statement = ImportStatement | CharsetStatement | NodesStatement | Warning;
+export type Stylesheet = {
+	charset?: AtRule;
+	statements: Array<Statement>;
+}
+
+export type Statement = ImportStatement | PreImportStatement | NodesStatement | Warning;
 
 export type NodesStatement = {
-	type: string
+	type: 'nodes'
 	nodes: Array<ChildNode>
 	conditions: Array<Condition>
 	from: Array<string>
@@ -14,19 +19,8 @@ export type NodesStatement = {
 	importingNode: AtRule | null
 }
 
-export type CharsetStatement = {
-	type: string
-	node: AtRule
-	conditions: Array<Condition>
-	from: Array<string>
-
-	parent?: Statement
-
-	importingNode: AtRule | null
-}
-
 export type ImportStatement = {
-	type: string
+	type: 'import'
 	uri: string
 	fullUri: string
 	node: AtRule
@@ -34,7 +28,18 @@ export type ImportStatement = {
 	from: Array<string>
 
 	parent?: Statement
-	children?: Array<Statement>
+	stylesheet?: Stylesheet
+
+	importingNode: AtRule | null
+}
+
+type PreImportStatement = {
+	type: 'pre-import'
+	node: ChildNode
+	conditions: Array<Condition>
+	from: Array<string>
+
+	parent?: Statement
 
 	importingNode: AtRule | null
 }
@@ -47,10 +52,10 @@ export function isNodesStatement(stmt: Statement): stmt is NodesStatement {
 	return stmt.type === 'nodes';
 }
 
-export function isCharsetStatement(stmt: Statement): stmt is CharsetStatement {
-	return stmt.type === 'charset';
-}
-
 export function isImportStatement(stmt: Statement): stmt is ImportStatement {
 	return stmt.type === 'import';
+}
+
+export function isPreImportStatement(stmt: Statement): stmt is PreImportStatement {
+	return stmt.type === 'pre-import';
 }

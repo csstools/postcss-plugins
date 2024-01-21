@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-is-pseudo-class",
 	"description": "A pseudo-class for matching elements in a selector list",
-	"version": "4.0.3",
+	"version": "4.0.4",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -17,15 +17,18 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
+	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
 		}
 	},
 	"files": [
@@ -35,7 +38,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^3.0.0",
+		"@csstools/selector-specificity": "^3.0.1",
 		"postcss-selector-parser": "^6.0.13"
 	},
 	"peerDependencies": {
@@ -43,16 +46,15 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^21.3.6"
+		"puppeteer": "^21.7.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
-		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:browser": "node ./test/_browser.mjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class#readme",
 	"repository": {

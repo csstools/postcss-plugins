@@ -8,12 +8,12 @@ import { normalizedDir } from './normalized-dir';
 /** postcss-rebase-url plugin options */
 export type pluginOptions = never;
 
-const INITIAL_VALUE_PROPERTY = /^initial-value$/i;
-const PROPERTY_NAME = /^property$/i;
-const SYNTAX_PROPERTY = /^syntax$/i;
-const URL_FUNCTION_CALL = /url\(/i;
-const URL_FUNCTION_NAME = /^url$/i;
-const URL_SYNTAX = /<url>/i;
+const INITIAL_VALUE_PROPERTY_REGEX = /^initial-value$/i;
+const PROPERTY_NAME_REGEX = /^property$/i;
+const SYNTAX_PROPERTY_REGEX = /^syntax$/i;
+const URL_FUNCTION_CALL_REGEX = /url\(/i;
+const URL_FUNCTION_NAME_REGEX = /^url$/i;
+const URL_SYNTAX_REGEX = /<url>/i;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
@@ -24,13 +24,13 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 			return {
 				Once(root) {
-					root.walkAtRules(PROPERTY_NAME, (atRule) => {
+					root.walkAtRules(PROPERTY_NAME_REGEX, (atRule) => {
 						if (!atRule.nodes) {
 							return;
 						}
 
 						const syntaxDescriptor = atRule.nodes.find((x) => {
-							if (x.type === 'decl' && SYNTAX_PROPERTY.test(x.prop)) {
+							if (x.type === 'decl' && SYNTAX_PROPERTY_REGEX.test(x.prop)) {
 								return true;
 							}
 						}) as Declaration | undefined;
@@ -39,7 +39,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							return;
 						}
 
-						if (URL_SYNTAX.test(syntaxDescriptor.value)) {
+						if (URL_SYNTAX_REGEX.test(syntaxDescriptor.value)) {
 							registeredPropsWithURL_Type.add(atRule.params.trim());
 						}
 					});
@@ -54,9 +54,9 @@ const creator: PluginCreator<pluginOptions> = () => {
 					}
 
 					if (
-						INITIAL_VALUE_PROPERTY.test(decl.prop) &&
+						INITIAL_VALUE_PROPERTY_REGEX.test(decl.prop) &&
 						decl.parent?.type === 'atrule' &&
-						PROPERTY_NAME.test((decl.parent as AtRule).name)
+						PROPERTY_NAME_REGEX.test((decl.parent as AtRule).name)
 					) {
 						return;
 					}
@@ -70,7 +70,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 						return;
 					}
 
-					if (!URL_FUNCTION_CALL.test(decl.value)) {
+					if (!URL_FUNCTION_CALL_REGEX.test(decl.value)) {
 						return;
 					}
 
@@ -102,24 +102,26 @@ const creator: PluginCreator<pluginOptions> = () => {
 							}
 
 							if (
-								isFunctionNode(componentValue) &&
-								URL_FUNCTION_NAME.test(componentValue.getName())
+								!isFunctionNode(componentValue) ||
+								!URL_FUNCTION_NAME_REGEX.test(componentValue.getName())
 							) {
-								for (const x of componentValue.value) {
-									if (isWhitespaceNode(x) || isCommentNode(x)) {
-										continue;
+								return;
+							}
+
+							for (const x of componentValue.value) {
+								if (isWhitespaceNode(x) || isCommentNode(x)) {
+									continue;
+								}
+
+								if (isTokenNode(x) && x.value[0] === TokenType.String) {
+									const rebased = rebase(x.value[4].value.trim(), fromDir, fromEntryPointDir);
+									if (rebased) {
+										x.value[4].value = rebased;
+										x.value[1] = `"${serializeString(rebased)}"`;
+										return componentValue;
 									}
 
-									if (isTokenNode(x) && x.value[0] === TokenType.String) {
-										const rebased = rebase(x.value[4].value.trim(), fromDir, fromEntryPointDir);
-										if (rebased) {
-											x.value[4].value = rebased;
-											x.value[1] = `"${serializeString(rebased)}"`;
-											return componentValue;
-										}
-
-										break;
-									}
+									break;
 								}
 							}
 						},

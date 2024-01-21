@@ -1,0 +1,1388 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@csstools/css-color-parser!",
+  "docComment": "",
+  "name": "@csstools/css-color-parser",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@csstools/css-color-parser!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!color:function(1)",
+          "docComment": "/**\n * Convert a color function to a `ColorData` object.\n *\n * @param colorNode - The color function to be converted.\n *\n * @returns {ColorData|false} The color function as a `ColorData` object or `false` if it could not be converted.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function color(colorNode: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentValue",
+              "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | false"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/index.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "colorNode",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "color"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/css-color-parser!ColorData:interface",
+          "docComment": "/**\n * A color data object. It contains as much information as possible about the color and the original parsed syntax.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ColorData "
+            }
+          ],
+          "fileUrlPath": "dist/_types/color-data.d.ts",
+          "releaseTag": "Public",
+          "name": "ColorData",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-color-parser!ColorData#alpha:member",
+              "docComment": "/**\n * The alpha channel. This is either a number between `0` and `1` or a `ComponentValue` object.\n *\n * Since most computations are not dependent on the alpha channel, we allow things like `var(--some-alpha)` as an alpha channel value for most inputs.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "alpha: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ComponentValue",
+                  "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "alpha",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-color-parser!ColorData#channels:member",
+              "docComment": "/**\n * The color channels. This is always an array of three numbers but the channels can only be interpreted by looking at the color notation.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "channels: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Color",
+                  "canonicalReference": "@csstools/color-helpers!Color:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "channels",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-color-parser!ColorData#colorNotation:member",
+              "docComment": "/**\n * The color notation of the color data.\n *\n * We use \"color notation\" and not \"color space\" because these represent the original notation and not the actual color space. The actual color space is however always implied by the color notation.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "colorNotation: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ColorNotation",
+                  "canonicalReference": "@csstools/css-color-parser!ColorNotation:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "colorNotation",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-color-parser!ColorData#syntaxFlags:member",
+              "docComment": "/**\n * Information about the original syntax.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "syntaxFlags: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Set",
+                  "canonicalReference": "!Set:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SyntaxFlag",
+                  "canonicalReference": "@csstools/css-color-parser!SyntaxFlag:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "syntaxFlags",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!colorDataFitsDisplayP3_Gamut:function(1)",
+          "docComment": "/**\n * Check if a color data object fits the `display-p3` gamut.\n *\n * @param x - The color data to be checked.\n *\n * @returns {boolean} Whether the color data fits the `display-p3` gamut.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function colorDataFitsDisplayP3_Gamut(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/color-data.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "colorDataFitsDisplayP3_Gamut"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!colorDataFitsRGB_Gamut:function(1)",
+          "docComment": "/**\n * Check if a color data object fits the `sRGB` gamut.\n *\n * @param x - The color data to be checked.\n *\n * @returns {boolean} Whether the color data fits the `sRGB` gamut.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function colorDataFitsRGB_Gamut(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/color-data.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "colorDataFitsRGB_Gamut"
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@csstools/css-color-parser!ColorNotation:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum ColorNotation "
+            }
+          ],
+          "fileUrlPath": "dist/_types/color-notation.d.ts",
+          "releaseTag": "Public",
+          "name": "ColorNotation",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.A98_RGB:member",
+              "docComment": "/**\n * Adobe 1999, expressed through `color(a98-rgb 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "A98_RGB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"a98-rgb\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "A98_RGB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.Display_P3:member",
+              "docComment": "/**\n * Display P3, expressed through `color(display-p3 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Display_P3 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"display-p3\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Display_P3"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.HEX:member",
+              "docComment": "/**\n * Hex, expressed through `#000`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HEX = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"hex\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HEX"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.HSL:member",
+              "docComment": "/**\n * HSL, expressed through `hsl(0 0% 0%)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HSL = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"hsl\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HSL"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.HWB:member",
+              "docComment": "/**\n * HWB, expressed through `hwb(0 0% 0%)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HWB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"hwb\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HWB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.Lab:member",
+              "docComment": "/**\n * Lab, expressed through `lab(0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Lab = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"lab\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Lab"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.LCH:member",
+              "docComment": "/**\n * LCH, expressed through `lch(0 0% 0deg)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "LCH = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"lch\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "LCH"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.Linear_sRGB:member",
+              "docComment": "/**\n * Linear sRGB, expressed through `color(linear-srgb 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Linear_sRGB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"srgb-linear\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Linear_sRGB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.OKLab:member",
+              "docComment": "/**\n * Oklab, expressed through `oklab(0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "OKLab = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"oklab\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "OKLab"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.OKLCH:member",
+              "docComment": "/**\n * Oklch, expressed through `oklch(0 0% 0deg)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "OKLCH = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"oklch\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "OKLCH"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.ProPhoto_RGB:member",
+              "docComment": "/**\n * ProPhoto RGB, expressed through `color(prophoto-rgb 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ProPhoto_RGB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"prophoto-rgb\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ProPhoto_RGB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.Rec2020:member",
+              "docComment": "/**\n * Rec. 2020, expressed through `color(rec2020 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Rec2020 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"rec2020\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Rec2020"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.RGB:member",
+              "docComment": "/**\n * RGB, expressed through `rgb(0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "RGB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"rgb\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "RGB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.sRGB:member",
+              "docComment": "/**\n * sRGB, expressed through `color(srgb 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "sRGB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"srgb\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "sRGB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.XYZ_D50:member",
+              "docComment": "/**\n * XYZ, expressed through `color(xyz-d50 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "XYZ_D50 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"xyz-d50\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "XYZ_D50"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.XYZ_D65:member",
+              "docComment": "/**\n * XYZ, expressed through `color(xyz-d65 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "XYZ_D65 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"xyz-d65\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "XYZ_D65"
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!serializeHSL:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function serializeHSL(color: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", gamutMapping?: "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "FunctionNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/serialize/hsl.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "color",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "gamutMapping",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "serializeHSL"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!serializeOKLCH:function(1)",
+          "docComment": "/**\n * Convert color data to component values in the OKLCH color space. The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function serializeOKLCH(color: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "FunctionNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/serialize/oklch.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "color",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "serializeOKLCH"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!serializeP3:function(1)",
+          "docComment": "/**\n * Convert color data to component values in the display-p3 color space. The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @param gamutMapping - Whether to perform gamut mapping, defaults to `true`.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function serializeP3(color: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", gamutMapping?: "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "FunctionNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/serialize/p3.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "color",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "gamutMapping",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "serializeP3"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!serializeRGB:function(1)",
+          "docComment": "/**\n * Convert color data to component values in the srgb color space. The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @param gamutMapping - Whether to perform gamut mapping, defaults to `true`.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function serializeRGB(color: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", gamutMapping?: "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "FunctionNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/serialize/rgb.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "color",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "gamutMapping",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "serializeRGB"
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@csstools/css-color-parser!SyntaxFlag:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum SyntaxFlag "
+            }
+          ],
+          "fileUrlPath": "dist/_types/color-data.d.ts",
+          "releaseTag": "Public",
+          "name": "SyntaxFlag",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.ColorKeyword:member",
+              "docComment": "/**\n * Is a color keyword, e.g. `transparent`, `currentColor`, ...\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ColorKeyword = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"color-keyword\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ColorKeyword"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.ColorMix:member",
+              "docComment": "/**\n * Is a mixed color, e.g. `color-mix(in oklch, red, blue)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ColorMix = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"color-mix\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ColorMix"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.Experimental:member",
+              "docComment": "/**\n * Is an experimental color syntax\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Experimental = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"experimental\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Experimental"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasAlpha:member",
+              "docComment": "/**\n * Has an explicit alpha channel\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasAlpha = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-alpha\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasAlpha"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasDimensionValues:member",
+              "docComment": "/**\n * Has a channel with a dimension value, e.g. `50deg`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasDimensionValues = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-dimension-values\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasDimensionValues"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasNoneKeywords:member",
+              "docComment": "/**\n * Has a channel with the `none` keyword\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasNoneKeywords = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-none-keywords\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasNoneKeywords"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasNumberValues:member",
+              "docComment": "/**\n * Has a channel with a number value\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasNumberValues = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-number-values\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasNumberValues"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasPercentageAlpha:member",
+              "docComment": "/**\n * Has an alpha channel with a percentage value\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasPercentageAlpha = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-percentage-alpha\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasPercentageAlpha"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasPercentageValues:member",
+              "docComment": "/**\n * Has a channel with a percentage value\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasPercentageValues = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-percentage-values\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasPercentageValues"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.HasVariableAlpha:member",
+              "docComment": "/**\n * Has an alpha channel with a `var()` function value\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "HasVariableAlpha = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"has-variable-alpha\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "HasVariableAlpha"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.Hex:member",
+              "docComment": "/**\n * Is Hex notation\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Hex = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"hex\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Hex"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.LegacyHSL:member",
+              "docComment": "/**\n * Is legacy HSL, e.g. `hsl(50deg, 0%, 0%)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "LegacyHSL = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"legacy-hsl\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "LegacyHSL"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.LegacyRGB:member",
+              "docComment": "/**\n * Is legacy RGB, e.g. `rgb(0, 0, 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "LegacyRGB = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"legacy-rgb\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "LegacyRGB"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.NamedColor:member",
+              "docComment": "/**\n * Is a named color, e.g. `red`, `blue`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "NamedColor = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"named-color\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "NamedColor"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.RelativeColorSyntax:member",
+              "docComment": "/**\n * Is a relative color syntax, e.g. `rgb(from purple r g b)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "RelativeColorSyntax = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"relative-color-syntax\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "RelativeColorSyntax"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

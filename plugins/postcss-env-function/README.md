@@ -1,9 +1,11 @@
 # PostCSS Environment Variables [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
 
 [<img alt="NPM Version" src="https://img.shields.io/npm/v/postcss-env-function.svg" height="20">][npm-url]
-[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/environment-variables.svg" height="20">][css-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+<br><br>
+[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/environment-variables.svg" height="20">][css-url]
+[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/environment-variables.svg" height="20">][css-url]
 
 [PostCSS Environment Variables] lets you use `env()` variables in CSS, following the [CSS Environment Variables] specification.
 

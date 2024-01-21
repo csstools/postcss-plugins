@@ -22,7 +22,7 @@ const tests = [
 	['oklab(0.2 0 0.1/0.5)', 'rgba(31, 20, 0, 0.5)', 'color(display-p3 0.11443 0.08142 0 / 0.5)'],
 	['oklab(0.2 0 0.1/50%)', 'rgba(31, 20, 0, 0.5)', 'color(display-p3 0.11443 0.08142 0 / 0.5)'],
 	['oklab(4 0 0.1/50%)', 'rgba(255, 255, 255, 0.5)', 'color(display-p3 1 1 1 / 0.5)'],
-	['oklab(0.5 -0.4 0.4)', 'rgb(53, 117, 0)', 'color(display-p3 0.25974 0.45978 0)'],
+	['oklab(0.5 -0.4 0.4)', 'rgb(53, 117, 0)', 'color(display-p3 0.25974 0.45977 0)'],
 	['oklab(0.5 -1 1)', 'rgb(55, 117, 0)', 'color(display-p3 0.25974 0.45977 0)'],
 	['oklab(0 0 0 / -10%)', 'rgba(0, 0, 0, 0)', 'color(display-p3 0 0 0 / 0)'],
 	['oklab(0 0 0 / 110%)', 'rgb(0, 0, 0)', 'color(display-p3 0 0 0)'],
@@ -31,7 +31,7 @@ const tests = [
 	['oklab(0.5 -0.1 0)', 'rgb(0, 116, 101)', 'color(display-p3 0.1594 0.45196 0.39888)'],
 	['oklab(0.5 0 -0.1)', 'rgb(77, 95, 156)', 'color(display-p3 0.31641 0.3713 0.59541)'],
 	['oklab(calc(0.50 * 3) calc(0.5 - 1) calc(1.5) / calc(-0.5 + 1))', 'rgba(255, 255, 255, 0.5)', 'color(display-p3 1 1 1 / 0.5)'],
-	['oklab(calc(0.50 / 3) calc(0.5 - 1) calc(1.5) / calc(-0.5 + 1))', 'rgba(17, 16, 0, 0.5)', 'color(display-p3 0.06561 0.06186 0 / 0.5)'],
+	['oklab(calc(0.50 / 3) calc(0.5 - 1) calc(1.5) / calc(-0.5 + 1))', 'rgba(17, 16, 0, 0.5)', 'color(display-p3 0.06561 0.06185 0 / 0.5)'],
 	['oklab(calc(-0.50 * 3) calc(0.5 + 1) calc(-1.5) / calc(-0.5 * 2))', 'rgba(0, 0, 0, 0)', 'color(display-p3 0 0 0 / 0)'],
 
 	['oklab(none none none / none)', 'rgba(0, 0, 0, 0)', 'color(display-p3 0 0 0 / 0)'],

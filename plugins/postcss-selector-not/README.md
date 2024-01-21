@@ -1,6 +1,6 @@
 # PostCSS Selector Not [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-selector-not.svg" height="20">][npm-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/not-pseudo-class.svg" height="20">][css-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-selector-not.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/not-pseudo-class.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/not-pseudo-class.svg" height="20">][css-url] 
 
 ```bash
 npm install postcss-selector-not --save-dev
@@ -20,8 +20,9 @@ p:not(:first-child):not(.special) {
 }
 ```
 
-⚠️ Only lists of simple selectors (`:not(.a, .b)`) will work as expected.
-Complex selectors (`:not(.a > .b, .c ~ .d)`) can not be downgraded.
+> [!CAUTION]
+> Only lists of simple selectors (`:not(.a, .b)`) will work as expected.
+> Complex selectors (`:not(.a > .b, .c ~ .d)`) can not be downgraded.
 
 ## Usage
 

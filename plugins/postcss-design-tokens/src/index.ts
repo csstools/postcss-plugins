@@ -3,6 +3,7 @@ import { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
 import { parsePluginOptions, pluginOptions } from './options';
+export type { pluginOptions } from './options';
 import { transform } from './transform';
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
@@ -48,8 +49,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							if (!importResult) {
 								continue;
 							}
-						} catch (e) {
-							atRule.node.warn(postcssHelpers.result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + (e as Error).message);
+						} catch (err) {
+							atRule.node.warn(postcssHelpers.result, `Failed to import design tokens from "${atRule.params}" with error:\n\t` + ((err instanceof Error) ? err.message : err));
 							continue;
 						}
 
@@ -75,7 +76,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 
 						decl.value = modifiedValue;
-					} catch (err) {
+					} catch (_) {
 						decl.warn(result, `Failed to parse and transform "${decl.value}"`);
 					}
 				},

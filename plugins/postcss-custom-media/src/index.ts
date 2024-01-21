@@ -53,7 +53,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					try {
 						transformedParams = transformAtMediaListTokens(atRule.params, customMedia);
 					} catch (err) {
-						atRule.warn(result, `Failed to parse @custom-media params with error message: "${err.message}"`);
+						atRule.warn(result, `Failed to parse @custom-media params with error message: "${(err instanceof Error) ? err.message : err}"`);
 						return;
 					}
 

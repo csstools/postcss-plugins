@@ -1,7 +1,7 @@
 import { color } from '@csstools/css-color-parser';
 import assert from 'assert';
 import { parse } from '../util/parse.mjs';
-import { serialize_sRGB_data } from '../util/serialize.mjs';
+import { serialize_HSL_data, serialize_sRGB_data } from '../util/serialize.mjs';
 
 [
 	'rgb( )',
@@ -158,4 +158,34 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('color-mix(in srgb, red min(10%, 20%), blue)'))),
 	'rgb(26, 0, 230)',
+);
+
+assert.ok(color(parse('rgb(50% 0 0 / 1)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgb(127, 0, 0, 1)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgba(127, 0, 0, 1)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('#f00f')).syntaxFlags.has('has-alpha'));
+
+assert.ok(color(parse('rgb(50% 0 0 / 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgb(127, 0, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('rgba(127, 0, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(color(parse('#f000')).syntaxFlags.has('has-alpha'));
+
+assert.ok(!color(parse('rgb(50% 0 0')).syntaxFlags.has('has-alpha'));
+assert.ok(!color(parse('rgb(127, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(!color(parse('rgba(127, 0, 0)')).syntaxFlags.has('has-alpha'));
+assert.ok(!color(parse('#f00')).syntaxFlags.has('has-alpha'));
+
+assert.deepStrictEqual(
+	serialize_HSL_data(color(parse('hsl(50deg 50 65% / 0.5)'))),
+	'hsla(50, 50%, 65%, 0.5)',
+);
+
+assert.deepStrictEqual(
+	serialize_HSL_data(color(parse('hsla(50deg, 50%, 65%, 45%)'))),
+	'hsla(50, 50%, 65%, 0.45)',
+);
+
+assert.deepStrictEqual(
+	serialize_HSL_data(color(parse('hsl(0 0% 100%)'))),
+	'hsl(0, 0%, 100%)',
 );

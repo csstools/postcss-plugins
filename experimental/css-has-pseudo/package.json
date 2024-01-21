@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-has-pseudo-experimental",
 	"description": "EXPERIMENTAL : Style elements relative to other elements in CSS",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": [
@@ -17,14 +17,18 @@
 	"engines": {
 		"node": "^14 || ^16 || >=18"
 	},
+	"type": "module",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
 		},
 		"./browser": {
 			"import": "./dist/browser.mjs",
@@ -52,8 +56,8 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node .tape.mjs && node ./test/_import.mjs && node ./test/_require.cjs",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node .tape.mjs"
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/experimental/css-has-pseudo#readme",
 	"repository": {

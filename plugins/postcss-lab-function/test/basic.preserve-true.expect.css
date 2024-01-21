@@ -120,7 +120,7 @@
 	color-6: lab(1% 1 1 / calc(20% * 3));
 }
 
-@supports (color: lab(0% 0 0)) and (top: var(--f)) {
+@supports (color: lab(0% 0 0)) {
 .test-alpha-lab {
 	color-4: lab(1% 1 1 / var(--foo));
 }
@@ -139,7 +139,7 @@
 	color-6: lch(1% 1 1 / calc(20% * 3));
 }
 
-@supports (color: lch(0% 0 0)) and (top: var(--f)) {
+@supports (color: lab(0% 0 0)) {
 .test-alpha-lch {
 	color-4: lch(1% 1 1 / var(--foo));
 }
@@ -226,7 +226,7 @@
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B87%2C-94%2C103%5D%2C%5B88%2C-9%2C62%5D%5D */
 	/* out */
 	prop-9: rgb(0, 252, 0);
-	prop-9: color(display-p3 0.32231 0.99185 0.02928);
+	prop-9: color(display-p3 0.32231 0.99185 0.02929);
 	prop-9: lab(87% -94 103);
 	/* in */
 	prop-10: rgb(231, 224, 96);

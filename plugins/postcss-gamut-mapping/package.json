@@ -1,0 +1,97 @@
+{
+	"name": "@csstools/postcss-gamut-mapping",
+	"description": "Gamut map css colors to fit display specific gamuts",
+	"version": "1.0.2",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": "^14 || ^16 || >=18"
+	},
+	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"@csstools/css-color-parser": "^1.5.1",
+		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-tokenizer": "^2.2.3"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"@csstools/postcss-tape": "*"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins/postcss-gamut-mapping"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"color",
+		"css",
+		"display-p3",
+		"gamut mapping",
+		"p3",
+		"postcss",
+		"postcss-plugin",
+		"rec2020",
+		"srgb",
+		"wide gamut"
+	],
+	"csstools": {
+		"cssdbId": "gamut-mapping",
+		"exportName": "postcssGamutMapping",
+		"humanReadableName": "PostCSS Gamut Mapping",
+		"specUrl": "https://www.w3.org/TR/css-color-4/#gamut-mapping"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}
