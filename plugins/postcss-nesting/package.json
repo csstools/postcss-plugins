@@ -54,7 +54,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-resolve-nested": "^0.0.0",
+		"@csstools/selector-resolve-nested": "^1.0.0",
 		"postcss-selector-parser": "^6.0.13"
 	},
 	"peerDependencies": {
