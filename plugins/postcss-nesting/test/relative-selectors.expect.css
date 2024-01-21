@@ -24,47 +24,47 @@
 	}
 
 
-.foo .bar, .foo .other {
+.foo .bar,.foo .other {
 		order: 11;
 	}
 
 
-.foo  > .bar, .foo .other {
+.foo  > .bar,.foo .other {
 		order: 12;
 	}
 
 
-.foo  + .bar, .foo .other {
+.foo  + .bar,.foo .other {
 		order: 13;
 	}
 
 
-.foo  ~ .bar, .foo .other {
+.foo  ~ .bar,.foo .other {
 		order: 14;
 	}
 
 
-.foo ::before, .foo .other {
+.foo ::before,.foo .other {
 		order: 15;
 	}
 
-.bar .foo, .foo .other {
+.bar .foo,.foo .other {
 		order: 21;
 	}
 
-.foo > .bar .foo, .foo .other {
+.foo > .bar .foo,.foo .other {
 		order: 22;
 	}
 
-.foo + .bar .foo, .foo .other {
+.foo + .bar .foo,.foo .other {
 		order: 23;
 	}
 
-.foo ~ .bar .foo, .foo .other {
+.foo ~ .bar .foo,.foo .other {
 		order: 24;
 	}
 
-::before .foo, .foo .other {
+::before .foo,.foo .other {
 		order: 25;
 	}
 

@@ -4,6 +4,7 @@ import validAtrules from './valid-atrules.js';
 import { walkFunc } from './walk-func.js';
 import type { AtRule, Result, Rule } from 'postcss';
 import groupDeclarations from './group-declarations.js';
+import mergeSelectors from './merge-selectors.js';
 
 export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc) {
 	// Group all declarations after the first one.
@@ -15,6 +16,11 @@ export default function atruleWithinRule(node: AtRule, parent: Rule, result: Res
 	// clone the parent as a new rule with children appended to it
 	if (node.nodes) {
 		const rule = parent.clone().removeAll().append(node.nodes);
+
+		const selectors = mergeSelectors(node, '&', parent.selector, result);
+		if (selectors) {
+			rule.selector = selectors;
+		}
 
 		// append the new rule to the node
 		node.append(rule);

@@ -11,6 +11,14 @@
 				        order: 5.1;
 		}
 
+			:is(.test-nesting-rules p):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+				is-layer: C_D;
+				-webkit-box-ordinal-group: 6;
+				-webkit-order: 5.1;
+				   -moz-box-ordinal-group: 6;
+				        order: 5.1;
+		}
+
 :root:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		is-layer: C;
 		--order: 1;

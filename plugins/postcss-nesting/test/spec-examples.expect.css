@@ -10,7 +10,7 @@ table.colortable td {
 			text-transform: uppercase
 		}
 
-:is(table.colortable td):first-child, :is(table.colortable td):first-child + td {
+:is(table.colortable td):first-child,:is(table.colortable td):first-child + td {
 			border: 1px solid black
 		}
 
@@ -55,7 +55,7 @@ table.colortable th {
 .bar {
 	color: blue;
 }
-:is(.foo,.bar) + .baz, .qux:is(.foo,.bar) {
+:is(.foo,.bar) + .baz,.qux:is(.foo,.bar) {
 		color: red;
 	}
 
@@ -175,7 +175,7 @@ __bar.foo {
 .bar {
 	color: blue;
 }
-:is(.foo,.bar) + .baz, :is(.foo,.bar) .qux {
+:is(.foo,.bar) + .baz,:is(.foo,.bar) .qux {
 		color: red;
 	}
 
@@ -232,7 +232,7 @@ __bar.foo {
 	color: red;
 }
 
-.foo .bar, .foo .baz {
+.foo .bar,.foo .baz {
 		color: blue;
 	}
 
@@ -324,7 +324,7 @@ __bar.foo {
 
 @media (min-width: 480px) {
 
-		.foo h1, .foo h2 {
+		.foo h1,.foo h2 {
 			color: blue;
 		}
 	}

@@ -1,9 +1,9 @@
 
-	.foo:is(::before), :is(::before):focus {
+	.foo:is(::before),:is(::before):focus {
 		order: 1;
 	}
 
-:is(.a:hover,.b:focus)::before, :is(.a:hover,.b:focus)::after {
+:is(.a:hover,.b:focus)::before,:is(.a:hover,.b:focus)::after {
 		order: 2;
 	}
 
@@ -19,7 +19,7 @@
 		order: 5;
 	}
 
-.a::before:focus {
+:is(.a::before):focus {
 			order: 6;
 		}
 
@@ -27,10 +27,10 @@
 		order: 7;
 	}
 
-.a::after:hover {
+:is(.a::after):hover {
 			order: 8;
 		}
 
-.something_else > .anything::before {
+.something_else > :is(.anything::before) {
 		order: 9;
 	}

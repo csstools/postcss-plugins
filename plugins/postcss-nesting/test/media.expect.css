@@ -12,11 +12,11 @@ a {
 }
 		}
 @media (min-width: 100px) and (max-width: 200px) {
-		a b {
+		:is(a b) {
 				order: 4;
 		}
 			}
-@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and (width) and (max-width: 300px), print and (width) and (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
@@ -38,11 +38,11 @@ a {
 }
 		}
 @media (min-width: 100px) and (max-width: 200px) {
-		a b {
+		:is(a b) {
 				order: 4;
 		}
 			}
-@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and (width) and (max-width: 300px), print and (width) and (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
@@ -50,3 +50,14 @@ a {
 				order: 6;
 			}
 		}
+
+#foo, div {
+	color: green;
+}
+
+@media screen and (min-width: 100px) {
+
+:is(#foo,div) {
+		color: red;
+}
+	}

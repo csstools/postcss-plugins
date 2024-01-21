@@ -1,7 +1,7 @@
 a, b {
 	order: 1;
 }
-:is(a,b) c, :is(a,b) d {
+:is(a,b) c,:is(a,b) d {
 		order: 2;
 	}
 :scope e {
@@ -13,7 +13,7 @@ f:is(g) {
 a, b {
 	order: 1;
 }
-:is(a,b) c, :is(a,b) d {
+:is(a,b) c,:is(a,b) d {
 		order: 2;
 	}
 :scope e {

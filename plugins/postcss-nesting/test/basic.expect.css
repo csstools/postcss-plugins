@@ -83,7 +83,7 @@ a.foo {
 		order: 22;
 	}
 
-h1.foo, h2.foo {
+h1.foo,h2.foo {
 		color: red;
 	}
 
@@ -103,7 +103,7 @@ a b[a="a&b"] {
 			order: 41;
 		}
 
-:is(.a:hover,.b:focus)::before, :is(.a:hover,.b:focus)::after {
+:is(.a:hover,.b:focus)::before,:is(.a:hover,.b:focus)::after {
 		order: 51;
 	}
 
