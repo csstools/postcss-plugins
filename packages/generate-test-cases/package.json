@@ -21,7 +21,7 @@
 	"type": "module",
 	"main": "src/index.mjs",
 	"devDependencies": {
-		"mdn-data": "^2.3.3"
+		"mdn-data": "^2.3.5"
 	},
 	"scripts": {
 		"build": "exit 0;",
