@@ -1,5 +1,11 @@
 # Changes to Selector Resolve Nested
 
+## 1.0.3
+
+_January 25, 2024_
+
+- Correctly add child nodes to newly constructed `Selector` and `Root` AST nodes.
+
 ## 1.0.2
 
 _January 22, 2024_

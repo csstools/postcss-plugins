@@ -38,12 +38,14 @@ export function sortCompoundSelectorsInsideComplexSelector(node: Container<strin
 		if (childNode.type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag')) {
 			childNode.remove();
 
-			const isPseudoClone = parser.pseudo({ value: ':is', ...sourceFrom(childNode) });
-			isPseudoClone.append(parser.selector({
-				nodes: [childNode],
+			const selector = parser.selector({
 				value: '',
 				...sourceFrom(childNode),
-			}));
+			});
+			selector.append(childNode);
+
+			const isPseudoClone = parser.pseudo({ value: ':is', ...sourceFrom(childNode) });
+			isPseudoClone.append(selector);
 
 			currentCompoundSelector.push(isPseudoClone);
 			return;

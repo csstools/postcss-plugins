@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/selector-resolve-nested",
 	"description": "Resolve nested CSS selectors",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

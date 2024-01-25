@@ -84,11 +84,16 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root): Roo
 		result.push(selectorAST);
 	}
 
-	return parser.root({
-		nodes: result,
+	const root = parser.root({
 		value: '',
 		...sourceFrom(selector),
 	});
+
+	result.forEach((x) => {
+		root.append(x);
+	});
+
+	return root;
 }
 
 function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = false) {
@@ -96,12 +101,18 @@ function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = 
 		forceIsPseudo ||
 		!isCompoundSelector(parentSelectors.nodes)
 	) {
+
+		const isPseudo = parser.pseudo({
+			value: ':is',
+			...sourceFrom(parentSelectors),
+		});
+
+		parentSelectors.nodes.forEach((x) => {
+			isPseudo.append(x.clone());
+		});
+
 		return [
-			parser.pseudo({
-				value: ':is',
-				nodes: parentSelectors.nodes.map((x) => x.clone()),
-				...sourceFrom(parentSelectors),
-			}),
+			isPseudo,
 		];
 	}
 
