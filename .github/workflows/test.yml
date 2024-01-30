@@ -22,7 +22,7 @@ jobs:
         os: [ubuntu-latest]
         node: [16, 18, 20]
         include:
-        - os: macos-latest
+        - os: macos-14
           node: 20
         - os: windows-latest
           node: 20
