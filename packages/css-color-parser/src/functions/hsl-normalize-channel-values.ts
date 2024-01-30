@@ -107,6 +107,8 @@ export function normalize_modern_HSL_ChannelValues(token: CSSToken, index: numbe
 		let value = token[4].value;
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
+		} else if (index === 1) {
+			value = normalize(token[4].value, 1, 0, Infinity);
 		}
 
 		return [
@@ -129,6 +131,8 @@ export function normalize_modern_HSL_ChannelValues(token: CSSToken, index: numbe
 		let value = token[4].value;
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
+		} else if (index === 1) {
+			value = normalize(token[4].value, 1, 0, Infinity);
 		}
 
 		return [

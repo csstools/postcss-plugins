@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Clamp negative saturation to zero in modern `hsl`
+
 ### 1.5.1
 
 _December 31, 2023_

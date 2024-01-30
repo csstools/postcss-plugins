@@ -18,3 +18,4 @@ import './color-invalid-named-color.mjs';
 import './color-invalid-relative-color.mjs';
 import './color-invalid-rgb.mjs';
 import './color-mix-out-of-gamut.mjs';
+import './color-valid-hsl.mjs';
