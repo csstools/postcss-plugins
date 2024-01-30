@@ -73,7 +73,7 @@ export function forEach<T extends Record<string, unknown>>(
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser';
+ * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser-algorithms';
  *
  * const myCSS = `calc(1px * (5 / 2)) 10px`;
  *

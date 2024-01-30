@@ -20,7 +20,7 @@ Parse a string of CSS into a component value:
 
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
-import { parseComponentValue } from '@csstools/css-parser';
+import { parseComponentValue } from '@csstools/css-parser-algorithms';
 
 const myCSS = `calc(1px * 2)`;
 
@@ -41,7 +41,7 @@ If your context allows a list of component values, use [parseListOfComponentValu
 
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
-import { parseListOfComponentValues } from '@csstools/css-parser';
+import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 
 parseComponentValue(tokenize({ css: `10x 20px` }));
 ```
@@ -49,7 +49,7 @@ If your context allows a comma-separated list of component values, use [parseCom
 
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
-import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 
 parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
 ```
@@ -60,7 +60,7 @@ Use the stateful walkers to keep track of the context of a given component value
 
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
-import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';
+import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser-algorithms';
 
 const myCSS = `calc(1px * (5 / 2))`;
 

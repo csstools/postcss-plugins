@@ -7,7 +7,7 @@ import { ComponentValue, consumeComponentValue } from '../consume/component-bloc
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
  * ```

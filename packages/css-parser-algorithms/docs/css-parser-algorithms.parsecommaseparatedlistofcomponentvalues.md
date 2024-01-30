@@ -30,7 +30,7 @@ export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<C
 
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
-import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 
 parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
 ```
