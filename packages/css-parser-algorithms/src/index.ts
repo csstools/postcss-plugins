@@ -15,7 +15,7 @@
  * Parse a string of CSS into a component value:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseComponentValue } from '@csstools/css-parser';
+ * import { parseComponentValue } from '@csstools/css-parser-algorithms';
  *
  * const myCSS = `calc(1px * 2)`;
  *
@@ -35,7 +35,7 @@
  * If your context allows a list of component values, use {@link parseListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseListOfComponentValues } from '@csstools/css-parser';
+ * import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseComponentValue(tokenize({ css: `10x 20px` }));
  * ```
@@ -43,7 +43,7 @@
  * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
  * ```
@@ -53,7 +53,7 @@
  *
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';
+ * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser-algorithms';
  *
  * const myCSS = `calc(1px * (5 / 2))`;
  *
