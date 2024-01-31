@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { resolveNestedSelector } from '@csstools/selector-resolve-nested';
-import { parse } from './util/parse.mjs';
+import { parse } from '../util/parse.mjs';
 
 test('simple - list', async () => {
 	assert.equal(
