@@ -26,5 +26,6 @@ console.log(
 
 |  Function | Description |
 |  --- | --- |
+|  [flattenNestedSelector(selector, parentSelector)](./selector-resolve-nested.flattennestedselector.md) | <p>Flatten a nested selector against a given parent selector.</p><p>⚠️ This is not a method to generate the equivalent un-nested selector. It is purely a method to construct a single selector AST that contains the parts of both the current and parent selector. It will not have the correct specificity and it will not match the right elements when used as a selector. It will not always serialize to a valid selector.</p> |
 |  [resolveNestedSelector(selector, parentSelector)](./selector-resolve-nested.resolvenestedselector.md) | Resolve a nested selector against a given parent selector. |
 

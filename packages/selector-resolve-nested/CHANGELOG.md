@@ -1,5 +1,9 @@
 # Changes to Selector Resolve Nested
 
+## Unreleased (minor)
+
+- Add `flattenNestedSelector` function to support more kinds of static analysis for nested selectors.
+
 ## 1.0.3
 
 _January 25, 2024_

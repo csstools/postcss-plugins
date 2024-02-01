@@ -22,6 +22,20 @@
 import type { Root } from 'postcss-selector-parser';
 
 /**
+ * Flatten a nested selector against a given parent selector.
+ *
+ * ⚠️ This is not a method to generate the equivalent un-nested selector.
+ * It is purely a method to construct a single selector AST that contains the parts of both the current and parent selector.
+ * It will not have the correct specificity and it will not match the right elements when used as a selector.
+ * It will not always serialize to a valid selector.
+ *
+ * @param selector - The selector to resolve.
+ * @param parentSelector - The parent selector to resolve against.
+ * @returns The resolved selector.
+ */
+export declare function flattenNestedSelector(selector: Root, parentSelector: Root): Root;
+
+/**
  * Resolve a nested selector against a given parent selector.
  *
  * @param selector - The selector to resolve.
