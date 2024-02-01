@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { desugarNestedSelector } from '@csstools/selector-resolve-nested';
+import { flattenNestedSelector } from '@csstools/selector-resolve-nested';
 import parser from 'postcss-selector-parser';
 
 test('multiple resolves', async () => {
@@ -10,12 +10,12 @@ test('multiple resolves', async () => {
 
 	const a2 = parser().astSync('.a2 .aa2');
 
-	const cb = desugarNestedSelector(c, b);
+	const cb = flattenNestedSelector(c, b);
 	assert.equal(cb.toString(), '& + .b .c,& + .b');
 
-	const cba = desugarNestedSelector(cb, a);
+	const cba = flattenNestedSelector(cb, a);
 	assert.equal(cba.toString(), '.a .aa + .b .c,.a .aa + .b');
 
-	const cba2 = desugarNestedSelector(cb, a2);
+	const cba2 = flattenNestedSelector(cb, a2);
 	assert.equal(cba2.toString(), '.a2 .aa2 + .b .c,.a2 .aa2 + .b');
 });

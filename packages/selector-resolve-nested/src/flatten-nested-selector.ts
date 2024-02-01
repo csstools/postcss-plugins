@@ -4,7 +4,7 @@ import { sourceFrom } from './source';
 import { combinationsWithSizeN } from './combinations';
 
 /**
- * Desugar a nested selector against a given parent selector.
+ * Flatten a nested selector against a given parent selector.
  *
  * ⚠️ This is not a method to generate the equivalent un-nested selector.
  * It is purely a method to construct a single selector AST that contains the parts of both the current and parent selector.
@@ -15,7 +15,7 @@ import { combinationsWithSizeN } from './combinations';
  * @param parentSelector - The parent selector to resolve against.
  * @returns The resolved selector.
  */
-export function desugarNestedSelector(selector: Root, parentSelector: Root): Root {
+export function flattenNestedSelector(selector: Root, parentSelector: Root): Root {
 	const result: Array<Selector> = [];
 
 	for (let x = 0; x < selector.nodes.length; x++) {

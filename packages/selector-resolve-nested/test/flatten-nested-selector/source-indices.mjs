@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { desugarNestedSelector } from '@csstools/selector-resolve-nested';
+import { flattenNestedSelector } from '@csstools/selector-resolve-nested';
 import parser from 'postcss-selector-parser';
 
 test('source indices - a', async () => {
@@ -19,7 +19,7 @@ test('source indices - a', async () => {
 		node.source.node = bNode;
 	});
 
-	const ba = desugarNestedSelector(b, a);
+	const ba = flattenNestedSelector(b, a);
 	assert.equal(ba.toString(), '.a .aa + .b');
 
 	const firstSelector = ba.nodes[0];
@@ -76,7 +76,7 @@ test('source indices - b', async () => {
 		5,
 	);
 
-	const ba = desugarNestedSelector(b, a);
+	const ba = flattenNestedSelector(b, a);
 	assert.equal(ba.toString(), '.a .b,.a \n .bb');
 
 	assert.equal(

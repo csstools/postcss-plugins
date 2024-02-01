@@ -2,7 +2,7 @@
 
 ## Unreleased (minor)
 
-- Add `desugarNestedSelector` function to support more kinds of static analysis for nested selectors.
+- Add `flattenNestedSelector` function to support more kinds of static analysis for nested selectors.
 
 ## 1.0.3
 

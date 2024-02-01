@@ -20,4 +20,4 @@
  */
 
 export { resolveNestedSelector } from './resolve-nested-selector';
-export { desugarNestedSelector } from './desugar-nested-selector';
+export { flattenNestedSelector } from './flatten-nested-selector';
