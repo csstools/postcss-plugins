@@ -165,7 +165,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					atRule.replaceWith(atRule.nodes);
+					if (atRule.nodes) {
+						atRule.replaceWith(atRule.nodes);
+					} else {
+						atRule.remove();
+					}
 				});
 			}
 
