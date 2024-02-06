@@ -89,8 +89,7 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 		return;
 	}
 
-	const smallestSize = mediaSizes[0];
-	const smallestValue = mediasByDpr.get(smallestSize)?.value;
+	const smallestValue = mediasByDpr.get(mediaSizes[0])?.value;
 	if (!smallestValue) {
 		return;
 	}
@@ -101,7 +100,7 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 		parent.after(mediasWithoutSmallest);
 	}
 
-	decl.cloneBefore({ value: mediasByDpr.get(smallestSize)?.value.trim() });
+	decl.cloneBefore({ value: smallestValue.trim() });
 
 	if (!opts.preserve) {
 		decl.remove();
