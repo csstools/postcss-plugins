@@ -86,6 +86,6 @@ We also want to thank these organizations and people for making their tools avai
 [ci-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS
 [PostCSS]: https://github.com/postcss/postcss
-[contributing guide]: https://github.com/csstools/postcss-plugins/CONTRIBUTING.md
+[contributing guide]: https://github.com/csstools/postcss-plugins/blob/main/CONTRIBUTING.md
 [CSSDB]: https://cssdb.org/
 [CSSDB Repo]: https://github.com/csstools/cssdb
