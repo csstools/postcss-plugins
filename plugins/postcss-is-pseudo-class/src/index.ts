@@ -24,7 +24,7 @@ export type pluginOptions = {
 	specificityMatchingName?: string
 };
 
-const HAS_IS_PSEUDO_REGEX = /:is\(/i;
+const HAS_IS_PSEUDO_REGEX = /:(is|matches)\(/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {

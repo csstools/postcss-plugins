@@ -7,7 +7,7 @@ import { isPseudoInFirstCompound } from './complex/is-pseudo-in-first-compound';
 
 export default function complexSelectors(selectors: Array<string>, pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
 	return selectors.flatMap((selector) => {
-		if (selector.indexOf(':-csstools-matches') === -1 && selector.toLowerCase().indexOf(':is') === -1) {
+		if (selector.test(/:(-csstools-matches|is|matches)/i)) {
 			return selector;
 		}
 
@@ -15,7 +15,7 @@ export default function complexSelectors(selectors: Array<string>, pluginOptions
 		selectorAST.walkPseudos((pseudo) => {
 			// `:is()` -> `:not(*)`
 			if (
-				pseudo.value.toLowerCase() === ':is' &&
+				pseudo.value.test(/^:(is|matches)$/i) &&
 				pseudo.nodes &&
 				pseudo.nodes.length &&
 				pseudo.nodes[0].type === 'selector' &&
