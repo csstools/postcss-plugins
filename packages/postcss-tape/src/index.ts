@@ -43,6 +43,7 @@ import type { AcceptedPlugin } from 'postcss-8.4';
 import type { AtRule, Declaration, Rule } from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
 import type { TestCaseOptions } from './test-case-options';
+import typeCheckerPlugin from './type-checker-plugin';
 
 export type { TestCaseOptions } from './test-case-options';
 
@@ -171,6 +172,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 					}
 
 					const plugins = testCaseOptions.plugins ?? [pluginCreator(testCaseOptions.options)];
+					plugins.push(typeCheckerPlugin());
 
 					const input = await fileContentsOrEmptyString(testFilePath);
 					const expected = await fileContentsOrEmptyString(expectFilePath);

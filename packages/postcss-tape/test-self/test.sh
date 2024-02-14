@@ -111,4 +111,17 @@ git --no-pager diff --no-index --word-diff ./test-self/file-overrides.expect.log
 git --no-pager diff --no-index --word-diff ./test-self/file-overrides.expect.code ./test-self/file-overrides.result.code
 # endregion:File overrides
 
+# region:Type Checking
+set +e
+
+echo "" > ./test-self/type-checking.result.log
+
+node --test-reporter dot ./test/type-checking.mjs > ./test-self/type-checking.result.log 2>&1
+echo "$?" > ./test-self/type-checking.result.code
+
+set -e
+git --no-pager diff --no-index --word-diff ./test-self/type-checking.expect.log ./test-self/type-checking.result.log
+git --no-pager diff --no-index --word-diff ./test-self/type-checking.expect.code ./test-self/type-checking.result.code
+# endregion:Type Checking
+
 echo "ok";

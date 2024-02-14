@@ -1,0 +1,5 @@
+@media (min-width: 600px) {
+	.foo {
+		order: 1;
+	}
+}
