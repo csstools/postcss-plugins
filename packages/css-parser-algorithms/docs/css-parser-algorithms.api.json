@@ -2191,6 +2191,24 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentValue",
+              "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": "> | "
+            },
+            {
+              "kind": "Reference",
               "text": "ComponentValue",
               "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
             },
@@ -2218,8 +2236,8 @@
           ],
           "fileUrlPath": "dist/_types/util/replace-component-values.d.ts",
           "returnTypeTokenRange": {
-            "startIndex": 14,
-            "endIndex": 16
+            "startIndex": 18,
+            "endIndex": 20
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -2236,7 +2254,7 @@
               "parameterName": "replaceWith",
               "parameterTypeTokenRange": {
                 "startIndex": 8,
-                "endIndex": 13
+                "endIndex": 17
               },
               "isOptional": false
             }

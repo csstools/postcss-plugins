@@ -1,0 +1,11 @@
+.dark {
+	color-scheme: dark;
+}
+
+.light {
+	color-scheme: light;
+}
+
+.theme {
+	color: light-dark(pink, magenta);
+}
