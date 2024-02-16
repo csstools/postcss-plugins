@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/postcss-light-dark-function",
-	"description": "TODO: Add description for Light Dark Function",
+	"description": "Use the light-dark() color function in CSS",
 	"version": "0.0.0",
 	"contributors": [
 		{
@@ -80,7 +80,7 @@
 		"cssdbId": "TODO",
 		"exportName": "postcssLightDarkFunction",
 		"humanReadableName": "PostCSS Light Dark Function",
-		"specUrl": "#TODO"
+		"specUrl": "https://drafts.csswg.org/css-color-5/#light-dark"
 	},
 	"volta": {
 		"extends": "../../package.json"

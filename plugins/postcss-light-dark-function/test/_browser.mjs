@@ -56,7 +56,7 @@ const requestListener = async function (req, res) {
 					});
 				});
 
-				const css = await postcss([plugin]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
+				const css = await postcss([plugin({preserve: false})]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
 				res.setHeader('Content-type', 'text/css');
 				res.writeHead(200);
 				res.end(css.css);

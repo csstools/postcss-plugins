@@ -6,7 +6,8 @@
 npm install @csstools/postcss-light-dark-function --save-dev
 ```
 
-[PostCSS Light Dark Function] lets you easily create new plugins following some [CSS Specification].
+[PostCSS Light Dark Function] lets you use the `light-dark` color function in
+CSS, following the [CSS Color 5 Specification].
 
 ```pcss
 .dark {
@@ -89,10 +90,10 @@ instructions for:
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is not preserved.
+is preserved. By default, it is preserved.
 
 ```js
-postcssLightDarkFunction({ preserve: true })
+postcssLightDarkFunction({ preserve: false })
 ```
 
 ```pcss
@@ -110,7 +111,34 @@ postcssLightDarkFunction({ preserve: true })
 
 /* becomes */
 
-<example.preserve-true.expect.css>
+.dark {
+	--csstools-color-scheme--light:  ;
+	--csstools-color-scheme--dark: initial;
+	color-scheme: dark;
+}
+
+.light {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light;
+}
+
+.theme {
+	color: var(--csstools-color-scheme--light, pink) var(--csstools-color-scheme--dark, magenta);
+}
+
+:root {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+		--csstools-color-scheme--light:  ;
+		--csstools-color-scheme--dark: initial;
+	}
+}
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
@@ -120,4 +148,4 @@ postcssLightDarkFunction({ preserve: true })
 
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Light Dark Function]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function
-[CSS Specification]: #TODO
+[CSS Color 5 Specification]: https://drafts.csswg.org/css-color-5/#light-dark
