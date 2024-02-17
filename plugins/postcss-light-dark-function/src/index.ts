@@ -1,20 +1,15 @@
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator, Source } from 'postcss';
+import { DARK_PROP, LIGHT_PROP, OFF, ON } from './props';
+import { colorSchemes } from './color-schemes';
 import { hasFallback } from './has-fallback-decl';
 import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-import { colorSchemes } from './color-schemes';
 import { transformLightDark } from './transform-light-dark';
-import { DARK_PROP, LIGHT_PROP, OFF, ON } from './props';
-
-/** postcss-light-dark-function plugin options */
-export type pluginOptions = {
-	/** Preserve the original notation. default: true */
-	preserve?: boolean,
-};
 
 const COLOR_SCHEME_REGEX = /color-scheme/i;
 const LIGHT_DARK_FUNCTION_REGEX = /light-dark\(/i;
 
-const creator: PluginCreator<pluginOptions> = (opts) => {
+const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	const options: pluginOptions = Object.assign(
 		// Default options
 		{
@@ -133,6 +128,36 @@ const creator: PluginCreator<pluginOptions> = (opts) => {
 	};
 };
 
-creator.postcss = true;
+basePlugin.postcss = true;
 
-export default creator;
+/** postcss-light-dark-function plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
+};
+
+/* Transform the light-dark() function in CSS. */
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign({
+		enableProgressiveCustomProperties: true,
+		preserve: true,
+	}, opts);
+
+	if (options.enableProgressiveCustomProperties && options.preserve) {
+		return {
+			postcssPlugin: 'postcss-light-dark-function',
+			plugins: [
+				postcssProgressiveCustomProperties(),
+				basePlugin(options),
+			],
+		};
+	}
+
+	return basePlugin(options);
+};
+
+postcssPlugin.postcss = true;
+
+export default postcssPlugin;

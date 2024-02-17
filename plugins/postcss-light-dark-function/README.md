@@ -141,6 +141,19 @@ postcssLightDarkFunction({ preserve: false })
 }
 ```
 
+### enableProgressiveCustomProperties
+
+The `enableProgressiveCustomProperties` option determines whether the original notation
+is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
+
+> [!NOTE]
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties.  
+> See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+
+```js
+postcssLightDarkFunction({ enableProgressiveCustomProperties: false })
+```
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#light-dark-function
 [discord]: https://discord.gg/bUadyRwkJS

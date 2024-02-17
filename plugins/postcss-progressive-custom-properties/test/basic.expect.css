@@ -398,3 +398,23 @@
 	}
 }
 }
+
+:root {
+	--color-light-dark-1: green;
+}
+
+@supports (color: light-dark(red, red)) {
+:root {
+	--color-light-dark-1: light-dark(green, blue);
+}
+}
+
+:root {
+	color: var(--green);
+}
+
+@supports (color: light-dark(red, red)) {
+:root {
+	color: light-dark(var(--green), blue);
+}
+}

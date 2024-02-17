@@ -5,6 +5,18 @@ postcssTape(plugin)({
 	basic: {
 		message: 'supports basic usage',
 	},
+	'basic:preserve-false': {
+		message: 'supports basic usage',
+		options: {
+			preserve: false,
+		},
+	},
+	ignore: {
+		message: 'ignores values with fallbacks or guard by @supports',
+	},
+	variables: {
+		message: 'supports css variables',
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

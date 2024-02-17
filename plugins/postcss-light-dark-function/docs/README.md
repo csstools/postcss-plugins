@@ -51,5 +51,18 @@ is preserved. By default, it is preserved.
 <example.preserve-false.expect.css>
 ```
 
+### enableProgressiveCustomProperties
+
+The `enableProgressiveCustomProperties` option determines whether the original notation
+is wrapped with `@supports` when used in Custom Properties. By default, it is enabled.
+
+> [!NOTE]
+> We only recommend disabling this when you set `preserve` to `false` or if you bring your own fix for Custom Properties.  
+> See what the plugin does in its [README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties#readme).
+
+```js
+<exportName>({ enableProgressiveCustomProperties: false })
+```
+
 <linkList>
 [CSS Color 5 Specification]: <specUrl>
