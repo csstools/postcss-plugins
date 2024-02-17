@@ -388,7 +388,7 @@ export declare function parseListOfComponentValues(tokens: Array<CSSToken>, opti
  * Replace specific component values in a list of component values.
  * A helper for the most common and simplistic cases when mutating an AST.
  */
-export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => ComponentValue | void): ComponentValue[][];
+export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void): ComponentValue[][];
 
 /**
  * A simple block node.
