@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (minor)
+
+- Add matching rules for `light-dark`
+
 ### 3.0.3
 
 _December 15, 2023_
