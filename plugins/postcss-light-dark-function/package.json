@@ -77,7 +77,7 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
+		"cssdbId": "light-dark-function",
 		"exportName": "postcssLightDarkFunction",
 		"humanReadableName": "PostCSS Light Dark Function",
 		"specUrl": "https://drafts.csswg.org/css-color-5/#light-dark"
