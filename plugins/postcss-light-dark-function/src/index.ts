@@ -2,12 +2,11 @@ import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-cu
 import type { PluginCreator, Source } from 'postcss';
 import { DARK_PROP, LIGHT_PROP, OFF, ON } from './props';
 import { colorSchemes } from './color-schemes';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { transformLightDark } from './transform-light-dark';
 
-const COLOR_SCHEME_REGEX = /color-scheme/i;
-const LIGHT_DARK_FUNCTION_REGEX = /light-dark\(/i;
+const COLOR_SCHEME_REGEX = /^color-scheme$/i;
+const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
 
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	const options: pluginOptions = Object.assign(
@@ -75,7 +74,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 							return;
 						}
 
-						if (hasSupportsAtRuleAncestor(decl)) {
+						if (hasSupportsAtRuleAncestor(decl, LIGHT_DARK_FUNCTION_REGEX)) {
 							return;
 						}
 
