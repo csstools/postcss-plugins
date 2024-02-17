@@ -28,6 +28,7 @@ const requestListener = async function (req, res) {
 							<ul>
 								<li><a href="/wpt/light-dark-basic.html">light-dark-basic.html</a></li>
 								<li><a href="/wpt/light-dark-currentcolor-in-color.html">light-dark-currentcolor-in-color.html</a></li>
+								<li><a href="/wpt/light-dark-inherited.html">light-dark-inherited.html</a></li>
 							</ul>
 						</body>
 					</html>
@@ -35,6 +36,7 @@ const requestListener = async function (req, res) {
 			break;
 		case '/wpt/light-dark-basic.html':
 		case '/wpt/light-dark-currentcolor-in-color.html':
+		case '/wpt/light-dark-inherited.html':
 			res.setHeader('Content-type', 'text/html');
 			res.writeHead(200);
 			res.end(await fsp.readFile('test' + pathname, 'utf8'));
@@ -99,6 +101,7 @@ if (!process.env.DEBUG) {
 		for (const url of [
 			'wpt/light-dark-basic.html',
 			'wpt/light-dark-currentcolor-in-color.html',
+			'wpt/light-dark-inherited.html',
 		]) {
 			await page.goto('http://localhost:8080/' + url);
 
@@ -119,6 +122,7 @@ if (!process.env.DEBUG) {
 		for (const url of [
 			'wpt/light-dark-basic.html',
 			'wpt/light-dark-currentcolor-in-color.html',
+			'wpt/light-dark-inherited.html',
 		]) {
 			await page.goto('http://localhost:8080/' + url);
 

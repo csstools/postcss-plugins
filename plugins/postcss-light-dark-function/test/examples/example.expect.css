@@ -15,6 +15,19 @@
 	color: light-dark(pink, magenta);
 }
 
+.prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	& * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	}
+}
+
+@supports (color: light-dark(red, red)) {
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}
+}
+
 :root {
 	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;

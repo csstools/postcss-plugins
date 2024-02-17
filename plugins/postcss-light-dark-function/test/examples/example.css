@@ -9,3 +9,7 @@
 .theme {
 	color: light-dark(pink, magenta);
 }
+
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}

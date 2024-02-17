@@ -14,6 +14,13 @@
 	color: var(--csstools-color-scheme--light, pink) var(--csstools-color-scheme--dark, magenta);
 }
 
+.prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	& * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	}
+}
+
 :root {
 	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;

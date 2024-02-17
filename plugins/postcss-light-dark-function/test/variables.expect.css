@@ -1,5 +1,8 @@
 :root {
 	--color-light-dark-1: var(--csstools-color-scheme--light, green) var(--csstools-color-scheme--dark, blue);
+	& * {
+	--color-light-dark-1: var(--csstools-color-scheme--light, green) var(--csstools-color-scheme--dark, blue);
+	}
 }
 
 @supports (color: light-dark(red, red)) {
@@ -24,7 +27,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-
 	:root {
 		--csstools-color-scheme--light:  ;
 		--csstools-color-scheme--dark: initial;

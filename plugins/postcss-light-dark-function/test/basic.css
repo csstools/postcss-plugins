@@ -64,3 +64,8 @@
 .light-dark-function-rcs {
 	color: light-dark(cyan, rgb(from light-dark(white, blue) r g b));
 }
+
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+	color: blue;
+}

@@ -26,7 +26,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 			let transformedValueSource: Source | undefined = undefined;
 
 			return {
-				Declaration(decl, { atRule }) {
+				Declaration(decl, { atRule, rule }) {
 					const parent = decl.parent;
 					if (!parent) {
 						return;
@@ -90,6 +90,16 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						}
 
 						decl.cloneBefore({ value: modified });
+
+						if (decl.variable && decl.parent) {
+							const variableInheritanceRule = rule({
+								selector: '& *',
+								source: decl.source,
+							});
+
+							variableInheritanceRule.append(decl.clone({ value: modified }));
+							decl.parent.append(variableInheritanceRule);
+						}
 
 						if (!options.preserve) {
 							decl.remove();

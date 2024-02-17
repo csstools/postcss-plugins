@@ -22,6 +22,10 @@ CSS, following the [CSS Color 5 Specification].
 	color: light-dark(pink, magenta);
 }
 
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}
+
 /* becomes */
 
 .dark {
@@ -39,6 +43,19 @@ CSS, following the [CSS Color 5 Specification].
 .theme {
 	color: var(--csstools-color-scheme--light, pink) var(--csstools-color-scheme--dark, magenta);
 	color: light-dark(pink, magenta);
+}
+
+.prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	& * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	}
+}
+
+@supports (color: light-dark(red, red)) {
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}
 }
 
 :root {
@@ -109,6 +126,10 @@ postcssLightDarkFunction({ preserve: false })
 	color: light-dark(pink, magenta);
 }
 
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}
+
 /* becomes */
 
 .dark {
@@ -125,6 +146,13 @@ postcssLightDarkFunction({ preserve: false })
 
 .theme {
 	color: var(--csstools-color-scheme--light, pink) var(--csstools-color-scheme--dark, magenta);
+}
+
+.prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	& * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	}
 }
 
 :root {
