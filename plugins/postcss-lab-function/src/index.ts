@@ -3,8 +3,7 @@ import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import { tokenize } from '@csstools/css-tokenizer';
 import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 
 type basePluginOptions = {
@@ -14,8 +13,8 @@ type basePluginOptions = {
 	}
 };
 
-const LAB_LCH_FUNCTION_REGEX = /(lab|lch)\(/i;
-const LAB_LCH_NAME_REGEX = /^(lab|lch)$/i;
+const LAB_LCH_FUNCTION_REGEX = /\b(?:lab|lch)\(/i;
+const LAB_LCH_NAME_REGEX = /^(?:lab|lch)$/i;
 
 /* Transform lab() and lch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -31,7 +30,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, LAB_LCH_FUNCTION_REGEX)) {
 				return;
 			}
 

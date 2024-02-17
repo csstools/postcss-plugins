@@ -2,7 +2,7 @@ import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'post
 import type { PluginCreator } from 'postcss';
 import { atSupportsHwbParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { color } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
+import { hasFallback } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { tokenize } from '@csstools/css-tokenizer';

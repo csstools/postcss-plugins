@@ -3,16 +3,15 @@ import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import { tokenize } from '@csstools/css-tokenizer';
 import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 
 type basePluginOptions = {
 	preserve: boolean,
 }
 
-const COLOR_FUNCTION_REGEX = /(color)\(/i;
-const COLOR_NAME_REGEX = /^(color)$/i;
+const COLOR_FUNCTION_REGEX = /\b(?:color)\(/i;
+const COLOR_NAME_REGEX = /^(?:color)$/i;
 
 /* Transform the color() function in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -28,7 +27,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, COLOR_FUNCTION_REGEX)) {
 				return;
 			}
 

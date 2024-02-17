@@ -3,8 +3,7 @@ import type { Declaration } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import { tokenize } from '@csstools/css-tokenizer';
 import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor, RGB_HSL_FUNCTION_REGEX } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { serializeHSL } from '@csstools/css-color-parser';
 
@@ -13,6 +12,7 @@ type basePluginOptions = {
 };
 
 const RGB_HSL_NAME_REGEX = /^(?:rgb|hsl)a?$/i;
+const RGB_HSL_FUNCTION_REGEX = /\b(?:rgb|hsl)a?\(/i;
 
 /* Transform the color functional notation in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -28,7 +28,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, RGB_HSL_FUNCTION_REGEX)) {
 				return;
 			}
 
