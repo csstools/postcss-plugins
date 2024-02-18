@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 3.0.9
 
 _December 31, 2023_

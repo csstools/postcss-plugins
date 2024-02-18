@@ -1,14 +1,14 @@
 import type { AtRule, Container, Declaration, Node, Postcss, Result } from 'postcss';
 import type { PluginCreator } from 'postcss';
-import { atSupportsHwbParams, hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
 import { color } from '@csstools/css-color-parser';
-import { hasFallback } from '@csstools/utilities';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { tokenize } from '@csstools/css-tokenizer';
 
-const HWB_FUNCTION_REGEX = /hwb\(/i;
+const HWB_FUNCTION_REGEX = /\bhwb\(/i;
 const HWB_NAME_REGEX = /^hwb$/i;
+const SUPPORTS_PARAMS = '(color: hwb(0 0% 0%))';
 
 /** postcss-hwb-function plugin options */
 export type pluginOptions = {
@@ -28,7 +28,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (preserve && hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, HWB_FUNCTION_REGEX)) {
 				return;
 			}
 
@@ -67,7 +67,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			if (decl.variable && preserve && decl.parent) {
 				const parent = decl.parent;
-				const atSupports = postcss.atRule({ name: 'supports', params: atSupportsHwbParams, source: decl.source });
+				const atSupports = postcss.atRule({ name: 'supports', params: SUPPORTS_PARAMS, source: decl.source });
 
 				const parentClone = parent.clone();
 				parentClone.removeAll();
@@ -75,7 +75,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				parentClone.append(decl.clone());
 				atSupports.append(parentClone);
 
-				insertAtSupportsAfterCorrectRule(atSupports, parent, atSupportsHwbParams);
+				insertAtSupportsAfterCorrectRule(atSupports, parent, SUPPORTS_PARAMS);
 
 				decl.replaceWith(decl.clone({ value: modified }));
 			} else if (preserve) {

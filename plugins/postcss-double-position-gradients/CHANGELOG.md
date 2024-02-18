@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 5.0.3
 
 _December 15, 2023_

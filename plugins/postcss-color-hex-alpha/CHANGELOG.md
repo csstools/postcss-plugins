@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Hex Alpha
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 9.0.3
 
 _December 15, 2023_

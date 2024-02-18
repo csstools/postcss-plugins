@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 13.3.4
 
 _December 31, 2023_

@@ -1,5 +1,9 @@
 # Changes to PostCSS IC Unit
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 3.0.3
 
 _December 15, 2023_

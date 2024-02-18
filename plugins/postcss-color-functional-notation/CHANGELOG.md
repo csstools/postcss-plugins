@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 6.0.4
 
 _December 31, 2023_
