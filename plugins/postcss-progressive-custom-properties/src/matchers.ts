@@ -2342,6 +2342,31 @@ export const matchers = [
 		],
 	},
 	{
+		'supports': 'light-dark(red, red)',
+		'property': 'color',
+		'sniff': 'light-dark',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'light-dark',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': ',',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
 		'supports': '1ic',
 		'property': 'font-size',
 		'sniff': 'ic',

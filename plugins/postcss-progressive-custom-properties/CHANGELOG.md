@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Test for mixed component types in color values (e.g. `lab(100 50% 50)`)
+- Add matching rules for `light-dark`
 
 ### 3.0.3
 

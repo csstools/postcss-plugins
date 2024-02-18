@@ -2,7 +2,17 @@
 	"name": "@csstools/postcss-hwb-function",
 	"description": "Use hwb() color functions in CSS",
 	"version": "3.0.8",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
 	"license": "MIT-0",
 	"funding": [
 		{
@@ -33,7 +43,6 @@
 	},
 	"files": [
 		"CHANGELOG.md",
-		"INSTALL.md",
 		"LICENSE.md",
 		"README.md",
 		"dist"
@@ -41,7 +50,8 @@
 	"dependencies": {
 		"@csstools/css-color-parser": "^1.5.1",
 		"@csstools/css-parser-algorithms": "^2.5.0",
-		"@csstools/css-tokenizer": "^2.2.3"
+		"@csstools/css-tokenizer": "^2.2.3",
+		"@csstools/postcss-progressive-custom-properties": "^3.0.3"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -51,7 +61,7 @@
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
-		"docs": "node ../../.github/bin/generate-docs/install.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"test": "node --test",
@@ -66,24 +76,20 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"color",
-		"comma",
 		"css",
 		"design",
-		"functional",
-		"hsl",
-		"hsla",
 		"hwb",
 		"notation",
 		"postcss",
 		"postcss-plugin",
-		"rgb",
-		"rgba",
-		"space",
 		"syntax"
 	],
 	"csstools": {
+		"cssdbId": "hwb-function",
 		"exportName": "postcssHWBFunction",
-		"humanReadableName": "PostCSS HWB Function"
+		"humanReadableName": "PostCSS HWB Function",
+		"specUrl": "https://www.w3.org/TR/css-color-4/#the-hwb-notation"
+
 	},
 	"volta": {
 		"extends": "../../package.json"

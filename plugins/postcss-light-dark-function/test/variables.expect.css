@@ -1,0 +1,34 @@
+:root {
+	--color-light-dark-1: var(--csstools-color-scheme--light, green) var(--csstools-color-scheme--dark, blue);
+	& * {
+	--color-light-dark-1: var(--csstools-color-scheme--light, green) var(--csstools-color-scheme--dark, blue);
+	}
+}
+
+@supports (color: light-dark(red, red)) {
+:root {
+	--color-light-dark-1: light-dark(green, blue);
+}
+}
+
+:root {
+	color: var(--csstools-color-scheme--light, var(--green)) var(--csstools-color-scheme--dark, blue);
+}
+
+@supports (color: light-dark(red, red)) {
+:root {
+	color: light-dark(var(--green), blue);
+}
+}
+
+:root {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--csstools-color-scheme--light:  ;
+		--csstools-color-scheme--dark: initial;
+	}
+}

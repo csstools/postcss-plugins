@@ -251,6 +251,12 @@
       - plugins/postcss-lab-function/**
       - experimental/postcss-lab-function/**
 
+"plugins/postcss-light-dark-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-light-dark-function/**
+      - experimental/postcss-light-dark-function/**
+
 "plugins/postcss-logical":
   - changed-files:
     - any-glob-to-any-file:

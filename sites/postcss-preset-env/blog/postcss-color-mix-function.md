@@ -64,6 +64,7 @@ Try it out in this interactive demo that showcases with a Venn diagram how color
 </div>
 
 <output id="output-color-mix-css" for="color-space interpolation-method color-mix-percentage color-a color-b">color-mix(in srgb, #ff0000, #0000ff 50%)</output>
+<output id="output-color-hex" for="color-space interpolation-method color-mix-percentage color-a color-b">#800080</output>
 
 Definitely check out the [awesome blog post by Una on color-mix](https://una.im/color-mix-opacity/). It showcases a similar widget but purely using native `color-mix()`, so it's a great way to compare the two.
 
@@ -194,7 +195,8 @@ After `color-mix()` we will focus on bringing relative color syntax to PostCSS P
 		z-index: 6;
 	}
 
-	#output-color-mix-css {
+	#output-color-mix-css,
+	#output-color-hex {
 		background-color: #263238;
 		border-radius: 3px;
 		border: 1px solid grey;

@@ -106,15 +106,19 @@ export function selectorSpecificity(node: Node): Specificity {
 
 	} else if (parser.isPseudoClass(node)) {
 		switch (toLowerCaseAZ(node.value)) {
-			case ':-moz-any':
+			// The specificity of :any() and :-webkit-any() as implemented in browsers is 1 nomatter the content.
 			case ':-webkit-any':
 			case ':any':
+				b += 1;
+				break;
+
+			case ':-moz-any':
 			case ':has':
 			case ':is':
 			case ':matches':
 			case ':not':
 
-			// The specificity of an :is(), :not(), or :has() pseudo-class is replaced by the specificity of the most specific complex selector in its selector list argument.
+			// The specificity of an :is(), :-moz-any(), :not(), or :has() pseudo-class is replaced by the specificity of the most specific complex selector in its selector list argument.
 			{
 				if (node.nodes && node.nodes.length > 0) {
 					const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);

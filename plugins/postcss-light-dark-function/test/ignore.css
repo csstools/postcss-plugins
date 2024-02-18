@@ -1,0 +1,10 @@
+.fallback {
+	color: red;
+	color: light-dark(pink, magenta);
+}
+
+@supports (color: light-dark(pink, magenta)) {
+	.supports {
+		color: light-dark(pink, magenta);
+	}
+}

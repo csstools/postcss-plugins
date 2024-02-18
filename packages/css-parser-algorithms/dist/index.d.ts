@@ -15,7 +15,7 @@
  * Parse a string of CSS into a component value:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseComponentValue } from '@csstools/css-parser';
+ * import { parseComponentValue } from '@csstools/css-parser-algorithms';
  *
  * const myCSS = `calc(1px * 2)`;
  *
@@ -35,7 +35,7 @@
  * If your context allows a list of component values, use {@link parseListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseListOfComponentValues } from '@csstools/css-parser';
+ * import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseComponentValue(tokenize({ css: `10x 20px` }));
  * ```
@@ -43,7 +43,7 @@
  * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
  * ```
@@ -53,7 +53,7 @@
  *
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser';
+ * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser-algorithms';
  *
  * const myCSS = `calc(1px * (5 / 2))`;
  *
@@ -344,7 +344,7 @@ export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
  * ```
@@ -359,7 +359,7 @@ export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<C
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
@@ -375,7 +375,7 @@ export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseListOfComponentValues } from '@csstools/css-parser';
+ * import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseListOfComponentValues(tokenize({ css: `20deg 30%` }));
  * ```
@@ -388,7 +388,7 @@ export declare function parseListOfComponentValues(tokens: Array<CSSToken>, opti
  * Replace specific component values in a list of component values.
  * A helper for the most common and simplistic cases when mutating an AST.
  */
-export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => ComponentValue | void): ComponentValue[][];
+export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void): ComponentValue[][];
 
 /**
  * A simple block node.
@@ -524,7 +524,7 @@ export declare class TokenNode {
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser';
+ * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser-algorithms';
  *
  * const myCSS = `calc(1px * (5 / 2)) 10px`;
  *
