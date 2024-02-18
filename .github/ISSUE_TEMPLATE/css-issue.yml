@@ -97,6 +97,7 @@ body:
         - PostCSS Initial
         - PostCSS Is Pseudo Class
         - PostCSS Lab Function
+        - PostCSS Light Dark Function
         - PostCSS Logical
         - PostCSS Logical Float and Clear
         - PostCSS Logical Overflow

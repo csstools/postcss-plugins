@@ -1,5 +1,9 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (minor)
+
+- Add support for multiple replacement values in `replaceComponentValues`
+
 ### 2.5.0
 
 _December 31, 2023_

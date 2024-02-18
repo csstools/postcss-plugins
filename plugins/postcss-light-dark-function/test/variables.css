@@ -1,0 +1,7 @@
+:root {
+	--color-light-dark-1: light-dark(green, blue);
+}
+
+:root {
+	color: light-dark(var(--green), blue);
+}
