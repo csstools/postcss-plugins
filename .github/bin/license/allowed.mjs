@@ -139,6 +139,7 @@ const osiApproved = [
 	'BSL-1.0',
 	'Artistic-1.0-Perl',
 	'NPOSL-3.0',
+	'BlueOak-1.0.0' // https://github.com/spdx/license-list-XML/commit/d2709ad9c8c3f92989d2e7cadba3af8d1e0bc166
 ];
 
 export const osiApprovedWithCCO = [
@@ -156,16 +157,6 @@ const licenseExceptions = [
 		// see : https://github.com/Fyrd/caniuse/issues/4062
 		file: 'node_modules/caniuse-lite/package.json',
 		license: 'CC-BY-4.0',
-	},
-	{
-		// see : https://github.com/isaacs/path-scurry/issues/7
-		file: 'node_modules/path-scurry/package.json',
-		license: 'BlueOak-1.0.0',
-	},
-	{
-		// see : https://github.com/isaacs/path-scurry/issues/7
-		file: 'node_modules/jackspeak/package.json',
-		license: 'BlueOak-1.0.0',
 	},
 
 	// These packages have "public domain" in the "license" field, which is incorrect but acceptable for our purposes.
