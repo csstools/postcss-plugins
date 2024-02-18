@@ -9,15 +9,6 @@ const COLOR_SCHEME_REGEX = /^color-scheme$/i;
 const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
 
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
-	const options: pluginOptions = Object.assign(
-		// Default options
-		{
-			preserve: true,
-		},
-		// Provided options
-		opts,
-	);
-
 	return {
 		postcssPlugin: 'postcss-light-dark-function',
 		prepare() {
@@ -100,7 +91,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 							decl.parent.append(variableInheritanceRule);
 						}
 
-						if (!options.preserve) {
+						if (!opts?.preserve) {
 							decl.remove();
 						}
 					}
