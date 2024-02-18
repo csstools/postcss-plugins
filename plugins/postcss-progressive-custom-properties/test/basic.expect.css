@@ -294,7 +294,7 @@
 }
 }
 
-@supports (color: hwb(0 0% 0%)) and (color: rgb(from red r g b)) {
+@supports (color: hwb(0 0% 0)) and (color: rgb(from red r g b)) {
 :root {
 	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
 }
@@ -346,7 +346,7 @@
 	color: rgba(87, 107, 149, 1);
 }
 
-@supports (color: rgb(0 0 0 / 0)) {
+@supports (color: rgb(0 0 0% / 0)) {
 .property-with-var--1 {
 	color: rgb(87 107 149 / var(--opacity));
 }
@@ -357,7 +357,7 @@
 	color: rgba(87, 107, 149, var(--opacity));
 }
 
-@supports (color: rgb(0 0 0 / 0)) {
+@supports (color: rgb(0 0 0% / 0)) {
 .property-with-var--1-1 {
 	color: rgb(87 107 149 / var(--opacity));
 }
@@ -368,7 +368,7 @@
 	color: rgba(87, 107, 149, 1);
 }
 
-@supports (color: rgb(0 0 0 / 0)) {
+@supports (color: rgb(0 0 0% / 0)) {
 .property-with-var--2 {
 	color: rgb(87 107 149 / calc(var(--opacity) / 2));
 }

@@ -523,7 +523,7 @@
 }
 }
 
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0 / 0)) {
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }

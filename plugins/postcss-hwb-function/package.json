@@ -89,7 +89,6 @@
 		"exportName": "postcssHWBFunction",
 		"humanReadableName": "PostCSS HWB Function",
 		"specUrl": "https://www.w3.org/TR/css-color-4/#the-hwb-notation"
-
 	},
 	"volta": {
 		"extends": "../../package.json"

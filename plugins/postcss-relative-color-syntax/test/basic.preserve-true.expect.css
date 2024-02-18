@@ -20,7 +20,7 @@
 }
 }
 
-@supports (color: hwb(0 0% 0%)) and (color: rgb(from red r g b)) {
+@supports (color: hwb(0 0% 0)) and (color: rgb(from red r g b)) {
 .valid {
 	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
 }

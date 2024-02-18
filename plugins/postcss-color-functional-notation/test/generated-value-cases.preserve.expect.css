@@ -93,7 +93,7 @@
 	order: var(1, hsl(120, 100%, 50%));
 }
 
-@supports (color: hsl(0 0% 0% / 0)) {
+@supports (color: hsl(0 0% 0 / 0)) {
 .order-1 {
 	order: var(1, hsl(120 100% 50% / 1));
 }
@@ -103,7 +103,7 @@
 	order: var(hsl(120, 100%, 50%), 1);
 }
 
-@supports (color: hsl(0 0% 0% / 0)) {
+@supports (color: hsl(0 0% 0 / 0)) {
 .order-2 {
 	order: var(hsl(120 100% 50% / 1), 1);
 }
@@ -113,7 +113,7 @@
 	order: var(hsl(120, 100%, 50%), hsl(120, 100%, 50%));
 }
 
-@supports (color: hsl(0 0% 0% / 0)) {
+@supports (color: hsl(0 0% 0 / 0)) {
 .order-3 {
 	order: var(hsl(120 100% 50% / 1), hsl(120 100% 50% / 1));
 }
@@ -154,7 +154,7 @@
 	--some-var: hsl(120, 100%, 50%);
 }
 
-@supports (color: hsl(0 0% 0% / 0)) {
+@supports (color: hsl(0 0% 0 / 0)) {
 :root {
 	--some-var: hsl(120 100% 50% / 1);
 }

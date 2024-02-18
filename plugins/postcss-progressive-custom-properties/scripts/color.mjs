@@ -46,7 +46,7 @@ export const hslMatchers = [
 		],
 	},
 	{
-		'supports': 'hsl(0 0% 0% / 0)',
+		'supports': 'hsl(0 0% 0 / 0)',
 		'property': 'color',
 		'sniff': 'hsl',
 		'matchers': [
@@ -66,7 +66,7 @@ export const hslMatchers = [
 
 export const hwbMatchers = [
 	{
-		'supports': 'hwb(0 0% 0%)',
+		'supports': 'hwb(0 0% 0)',
 		'property': 'color',
 		'sniff': 'hwb',
 		'matchers': [
@@ -134,7 +134,7 @@ export const rgbMatchers = [
 		],
 	},
 	{
-		'supports': 'rgb(0 0 0 / 0)',
+		'supports': 'rgb(0 0 0% / 0)',
 		'property': 'color',
 		'sniff': 'rgb',
 		'matchers': [
