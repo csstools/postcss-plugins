@@ -1,5 +1,9 @@
 # Changes to Selector Specificity
 
+### Unreleased (patch)
+
+- Fixed specificity calculation for `:any()` and `:-webkit-any()` pseudo class functions. by @carlosjeurissen
+
 ### 3.0.1
 
 _December 15, 2023_
