@@ -1,11 +1,9 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration } from 'postcss';
-import type { PluginCreator } from 'postcss';
-import { tokenize } from '@csstools/css-tokenizer';
-import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
+import type { Declaration, PluginCreator } from 'postcss';
+import { color, serializeRGB, serializeHSL, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
-import { serializeHSL } from '@csstools/css-color-parser';
+import { tokenize } from '@csstools/css-tokenizer';
 
 type basePluginOptions = {
 	preserve: boolean,

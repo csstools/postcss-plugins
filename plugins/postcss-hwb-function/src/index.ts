@@ -1,10 +1,8 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration } from 'postcss';
-import type { PluginCreator } from 'postcss';
-import { color } from '@csstools/css-color-parser';
+import type { Declaration, PluginCreator } from 'postcss';
+import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
-import { serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
 import { tokenize } from '@csstools/css-tokenizer';
 
 const HWB_FUNCTION_REGEX = /\bhwb\(/i;
