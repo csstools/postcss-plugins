@@ -1,6 +1,6 @@
 import type { Node, AtRule } from 'postcss';
 
-export const atSupportsHwbParams = '(color: hwb(0 0% 0%))';
+const atSupportsHwbParams = '(color: hwb(0 0% 0%))';
 
 export function hasSupportsAtRuleAncestor(node: Node): boolean {
 	let parent = node.parent;
