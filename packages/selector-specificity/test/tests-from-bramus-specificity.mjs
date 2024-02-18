@@ -88,8 +88,8 @@ assert.deepEqual(calculate(':focus'), { a: 0, b: 1, c: 0 }, ':focus');
 // CSS :is() - :matches() - :any() = Specificity of the most specific complex selector in its selector list argument
 assert.deepEqual(calculate(':is(#foo, .bar, baz)'), { a: 1, b: 0, c: 0 }, ':is(#foo, .bar, baz) = (1,0,0)');
 assert.deepEqual(calculate(':matches(#foo, .bar, baz)'), { a: 1, b: 0, c: 0 }, ':matches(#foo, .bar, baz) = (1,0,0)');
+assert.deepEqual(calculate(':-moz-any(#foo, .bar, baz)'), { a: 1, b: 0, c: 0 }, ':-moz-any(#foo, .bar, baz) = (1,0,0)');
 assert.deepEqual(calculate(':any(#foo, .bar, baz)'), { a: 0, b: 1, c: 0 }, ':any(#foo, .bar, baz) = (1,0,0)');
-assert.deepEqual(calculate(':-moz-any(#foo, .bar, baz)'), { a: 0, b: 1, c: 0 }, ':-moz-any(#foo, .bar, baz) = (1,0,0)');
 assert.deepEqual(calculate(':-webkit-any(#foo, .bar, baz)'), { a: 0, b: 1, c: 0 }, ':-webkit-any(#foo, .bar, baz) = (1,0,0)');
 
 // CSS :has() = Specificity of the most specific complex selector in its selector list argument

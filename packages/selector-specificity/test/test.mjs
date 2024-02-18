@@ -13,8 +13,8 @@ assert.deepEqual(calculate(':is(*)'), { a: 0, b: 0, c: 0 });
 assert.deepEqual(calculate(':not(*)'), { a: 0, b: 0, c: 0 });
 assert.deepEqual(calculate(':where(*)'), { a: 0, b: 0, c: 0 });
 
-assert.deepEqual(calculate(':-moz-any'), { a: 0, b: 1, c: 0 });
-assert.deepEqual(calculate(':-moz-any()'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':-moz-any'), { a: 0, b: 0, c: 0 });
+assert.deepEqual(calculate(':-moz-any()'), { a: 0, b: 0, c: 0 });
 assert.deepEqual(calculate(':-moz-any(.a)'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':-webkit-any'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':-webkit-any()'), { a: 0, b: 1, c: 0 });
