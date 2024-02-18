@@ -106,9 +106,13 @@ export function selectorSpecificity(node: Node): Specificity {
 
 	} else if (parser.isPseudoClass(node)) {
 		switch (toLowerCaseAZ(node.value)) {
+			// The specificity of :-moz-any() and :-webkit-any() as implemented in browsers is 1 nomatter the content.
 			case ':-moz-any':
 			case ':-webkit-any':
 			case ':any':
+				b += 1;
+				break;
+
 			case ':has':
 			case ':is':
 			case ':matches':
