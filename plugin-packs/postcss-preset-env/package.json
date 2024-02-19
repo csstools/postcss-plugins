@@ -87,14 +87,14 @@
 		"css-has-pseudo": "^6.0.2",
 		"css-prefers-color-scheme": "^9.0.1",
 		"cssdb": "^7.11.0",
-		"postcss-attribute-case-insensitive": "^6.0.2",
+		"postcss-attribute-case-insensitive": "^6.0.3",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^6.0.5",
 		"postcss-color-hex-alpha": "^9.0.4",
 		"postcss-color-rebeccapurple": "^9.0.3",
-		"postcss-custom-media": "^10.0.2",
+		"postcss-custom-media": "^10.0.3",
 		"postcss-custom-properties": "^13.3.5",
-		"postcss-custom-selectors": "^7.1.6",
+		"postcss-custom-selectors": "^7.1.7",
 		"postcss-dir-pseudo-class": "^8.0.1",
 		"postcss-double-position-gradients": "^5.0.4",
 		"postcss-focus-visible": "^9.0.1",
@@ -111,7 +111,7 @@
 		"postcss-place": "^9.0.1",
 		"postcss-pseudo-class-any-link": "^9.0.1",
 		"postcss-replace-overflow-wrap": "^4.0.0",
-		"postcss-selector-not": "^7.0.1"
+		"postcss-selector-not": "^7.0.2"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
