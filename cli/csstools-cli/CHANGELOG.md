@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 3.0.8
+
+_February 19, 2024_
 
 - Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#403) (patch)
 - Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.10`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#3010) (patch)
