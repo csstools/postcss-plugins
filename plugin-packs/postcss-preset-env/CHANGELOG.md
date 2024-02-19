@@ -59,6 +59,12 @@
 - Updated [`postcss-color-hex-alpha`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha) to [`9.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha/CHANGELOG.md#904) (patch)
 - Updated [`postcss-color-rebeccapurple`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple) to [`9.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple/CHANGELOG.md#903) (patch)
 - Updated [`postcss-image-set-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) to [`6.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function/CHANGELOG.md#603) (patch)
+- Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#405) (patch)
+- Updated [`css-has-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo) to [`6.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo/CHANGELOG.md#602) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`5.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#504) (patch)
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1203) (patch)
 
 ### 9.3.0
 
