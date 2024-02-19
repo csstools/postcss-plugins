@@ -228,7 +228,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						assert.deepEqual(resultString, expected);
 
 						// Assert that warnings have the expected amount.
-						assert.deepEqual(result.warnings().length, testCaseOptions.warnings ?? 0, 'Unexpected number warnings');
+						assert.deepEqual(result.warnings().length, testCaseOptions.warnings ?? 0, `Unexpected number warnings:\n${result.warnings()}`);
 					});
 
 					// Assert result sourcemaps with recent PostCSS.
