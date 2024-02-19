@@ -1,6 +1,8 @@
 # Changes to PostCSS Media MinMax
 
-### Unreleased (patch)
+### 1.1.3
+
+_February 19, 2024_
 
 - Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.6.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#260) (minor)
 - Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`1.1.7`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#117) (patch)
