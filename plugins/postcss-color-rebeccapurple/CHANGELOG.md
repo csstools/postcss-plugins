@@ -1,6 +1,8 @@
 # Changes to PostCSS RebeccaPurple
 
-### Unreleased (patch)
+### 9.0.3
+
+_February 19, 2024_
 
 - Reuse code with `@csstools/utilities`
 
