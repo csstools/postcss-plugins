@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 9.4.0
+
+_February 19, 2024_
 
 - Added `@csstools/postcss-light-dark-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function#readme) for usage details.
 - Fix type definitions
