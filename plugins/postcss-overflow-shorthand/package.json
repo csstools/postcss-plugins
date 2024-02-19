@@ -71,7 +71,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-overflow-shorthand"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

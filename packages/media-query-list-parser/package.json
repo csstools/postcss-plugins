@@ -63,7 +63,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/media-query-list-parser"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

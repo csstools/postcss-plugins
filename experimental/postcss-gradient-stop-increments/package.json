@@ -69,7 +69,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradient-stop-increments#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "experimental/postcss-gradient-stop-increments"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

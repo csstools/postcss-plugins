@@ -62,7 +62,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/css-parser-algorithms"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

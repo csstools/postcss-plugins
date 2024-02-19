@@ -103,7 +103,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/cli/csstools-cli#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "cli/csstools-cli"
 	},
 	"volta": {

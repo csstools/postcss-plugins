@@ -75,7 +75,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-color-hex-alpha"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
