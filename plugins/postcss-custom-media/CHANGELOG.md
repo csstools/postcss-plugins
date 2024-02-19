@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (patch)
+### 10.0.3
+
+_February 19, 2024_
 
 - Fix type definitions
 - Updated [`@csstools/cascade-layer-name-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser) to [`1.0.8`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser/CHANGELOG.md#108) (patch)
