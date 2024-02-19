@@ -1,13 +1,11 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration } from 'postcss';
-import type { PluginCreator } from 'postcss';
-import { tokenize } from '@csstools/css-tokenizer';
+import type { Declaration, PluginCreator } from 'postcss';
 import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { tokenize } from '@csstools/css-tokenizer';
 
-const HWB_FUNCTION_REGEX = /hwb\(/i;
+const HWB_FUNCTION_REGEX = /\bhwb\(/i;
 const HWB_NAME_REGEX = /^hwb$/i;
 
 /** postcss-hwb-function plugin options */
@@ -30,7 +28,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, HWB_FUNCTION_REGEX)) {
 				return;
 			}
 

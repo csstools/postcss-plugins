@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Mix Function
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 2.0.9
 
 _December 31, 2023_

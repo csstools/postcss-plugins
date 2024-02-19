@@ -1,14 +1,14 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 
 type basePluginOptions = {
 	preserve: boolean,
 }
 
 const HAS_IC_UNIT_REGEX = /ic\b/i;
+const HAS_IC_DECLARATION_REGEX = /\(font-size: \d+ic\)/i;
 
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
@@ -22,7 +22,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, HAS_IC_DECLARATION_REGEX)) {
 				return;
 			}
 

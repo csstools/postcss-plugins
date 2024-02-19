@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 4.0.9
 
 _December 31, 2023_

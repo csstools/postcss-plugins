@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 6.0.2
 
 _December 15, 2023_

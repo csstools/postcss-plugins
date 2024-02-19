@@ -1,5 +1,9 @@
 # Changes to PostCSS RebeccaPurple
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 9.0.2
 
 _December 15, 2023_

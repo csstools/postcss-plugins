@@ -1,5 +1,9 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (patch)
+
+- Reuse code with `@csstools/utilities`
+
 ### 6.0.9
 
 _December 31, 2023_

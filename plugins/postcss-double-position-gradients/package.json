@@ -39,6 +39,7 @@
 	],
 	"dependencies": {
 		"@csstools/postcss-progressive-custom-properties": "^3.0.3",
+		"@csstools/utilities": "^0.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {

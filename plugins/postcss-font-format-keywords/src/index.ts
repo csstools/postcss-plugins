@@ -1,6 +1,6 @@
 import type { AtRule, PluginCreator } from 'postcss';
 import valueParser, { StringNode } from 'postcss-value-parser';
-import { hasFallback } from './has-fallback-decl';
+import { hasFallback } from '@csstools/utilities';
 
 const keywords = [
 	'woff',
