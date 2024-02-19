@@ -23,29 +23,30 @@ import type { pluginOptions as pluginOptions_28 } from 'postcss-image-set-functi
 import type { pluginOptions as pluginOptions_29 } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as pluginOptions_3 } from 'postcss-pseudo-class-any-link';
 import type { pluginOptions as pluginOptions_30 } from 'postcss-lab-function';
-import type { pluginOptions as pluginOptions_31 } from '@csstools/postcss-logical-overflow';
-import type { pluginOptions as pluginOptions_32 } from '@csstools/postcss-logical-overscroll-behavior';
-import type { pluginOptions as pluginOptions_33 } from 'postcss-logical';
-import type { pluginOptions as pluginOptions_34 } from '@csstools/postcss-logical-resize';
-import type { pluginOptions as pluginOptions_35 } from '@csstools/postcss-logical-viewport-units';
-import type { pluginOptions as pluginOptions_36 } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
-import type { pluginOptions as pluginOptions_37 } from '@csstools/postcss-media-minmax';
-import type { pluginOptions as pluginOptions_38 } from '@csstools/postcss-nested-calc';
-import type { pluginOptions as pluginOptions_39 } from 'postcss-nesting';
+import type { pluginOptions as pluginOptions_31 } from '@csstools/postcss-light-dark-function';
+import type { pluginOptions as pluginOptions_32 } from '@csstools/postcss-logical-overflow';
+import type { pluginOptions as pluginOptions_33 } from '@csstools/postcss-logical-overscroll-behavior';
+import type { pluginOptions as pluginOptions_34 } from 'postcss-logical';
+import type { pluginOptions as pluginOptions_35 } from '@csstools/postcss-logical-resize';
+import type { pluginOptions as pluginOptions_36 } from '@csstools/postcss-logical-viewport-units';
+import type { pluginOptions as pluginOptions_37 } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
+import type { pluginOptions as pluginOptions_38 } from '@csstools/postcss-media-minmax';
+import type { pluginOptions as pluginOptions_39 } from '@csstools/postcss-nested-calc';
 import type { pluginOptions as pluginOptions_4 } from 'css-blank-pseudo';
-import type { pluginOptions as pluginOptions_40 } from 'postcss-selector-not';
-import type { pluginOptions as pluginOptions_41 } from '@csstools/postcss-oklab-function';
-import type { pluginOptions as pluginOptions_42 } from 'postcss-overflow-shorthand';
-import type { pluginOptions as pluginOptions_43 } from 'postcss-place';
-import type { pluginOptions as pluginOptions_44 } from 'css-prefers-color-scheme';
-import type { pluginOptions as pluginOptions_45 } from 'postcss-color-rebeccapurple';
-import type { pluginOptions as pluginOptions_46 } from '@csstools/postcss-relative-color-syntax';
-import type { pluginOptions as pluginOptions_47 } from '@csstools/postcss-scope-pseudo-class';
-import type { pluginOptions as pluginOptions_48 } from '@csstools/postcss-stepped-value-functions';
-import type { pluginOptions as pluginOptions_49 } from '@csstools/postcss-text-decoration-shorthand';
+import type { pluginOptions as pluginOptions_40 } from 'postcss-nesting';
+import type { pluginOptions as pluginOptions_41 } from 'postcss-selector-not';
+import type { pluginOptions as pluginOptions_42 } from '@csstools/postcss-oklab-function';
+import type { pluginOptions as pluginOptions_43 } from 'postcss-overflow-shorthand';
+import type { pluginOptions as pluginOptions_44 } from 'postcss-place';
+import type { pluginOptions as pluginOptions_45 } from 'css-prefers-color-scheme';
+import type { pluginOptions as pluginOptions_46 } from 'postcss-color-rebeccapurple';
+import type { pluginOptions as pluginOptions_47 } from '@csstools/postcss-relative-color-syntax';
+import type { pluginOptions as pluginOptions_48 } from '@csstools/postcss-scope-pseudo-class';
+import type { pluginOptions as pluginOptions_49 } from '@csstools/postcss-stepped-value-functions';
 import type { pluginOptions as pluginOptions_5 } from '@csstools/postcss-cascade-layers';
-import type { pluginOptions as pluginOptions_50 } from '@csstools/postcss-trigonometric-functions';
-import type { pluginOptions as pluginOptions_51 } from '@csstools/postcss-unset-value';
+import type { pluginOptions as pluginOptions_50 } from '@csstools/postcss-text-decoration-shorthand';
+import type { pluginOptions as pluginOptions_51 } from '@csstools/postcss-trigonometric-functions';
+import type { pluginOptions as pluginOptions_52 } from '@csstools/postcss-unset-value';
 import type { pluginOptions as pluginOptions_6 } from 'postcss-attribute-case-insensitive';
 import type { pluginOptions as pluginOptions_7 } from '@csstools/postcss-color-function';
 import type { pluginOptions as pluginOptions_8 } from 'postcss-color-functional-notation';
@@ -211,54 +212,56 @@ export declare type pluginsOptions = {
     'is-pseudo-class'?: pluginOptions_29 | boolean;
     /** plugin options for "postcss-lab-function" */
     'lab-function'?: pluginOptions_30 | boolean;
+    /** plugin options for "@csstools/postcss-light-dark-function" */
+    'light-dark-function'?: pluginOptions_31 | boolean;
     /** plugin options for "@csstools/postcss-logical-overflow" */
-    'logical-overflow'?: pluginOptions_31 | boolean;
+    'logical-overflow'?: pluginOptions_32 | boolean;
     /** plugin options for "@csstools/postcss-logical-overscroll-behavior" */
-    'logical-overscroll-behavior'?: pluginOptions_32 | boolean;
+    'logical-overscroll-behavior'?: pluginOptions_33 | boolean;
     /** plugin options for "postcss-logical" */
-    'logical-properties-and-values'?: pluginOptions_33 | boolean;
+    'logical-properties-and-values'?: pluginOptions_34 | boolean;
     /** plugin options for "@csstools/postcss-logical-resize" */
-    'logical-resize'?: pluginOptions_34 | boolean;
+    'logical-resize'?: pluginOptions_35 | boolean;
     /** plugin options for "@csstools/postcss-logical-viewport-units" */
-    'logical-viewport-units'?: pluginOptions_35 | boolean;
+    'logical-viewport-units'?: pluginOptions_36 | boolean;
     /** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
-    'media-queries-aspect-ratio-number-values'?: pluginOptions_36 | boolean;
+    'media-queries-aspect-ratio-number-values'?: pluginOptions_37 | boolean;
     /** plugin options for "@csstools/postcss-media-minmax" */
-    'media-query-ranges'?: pluginOptions_37 | boolean;
+    'media-query-ranges'?: pluginOptions_38 | boolean;
     /** plugin options for "@csstools/postcss-nested-calc" */
-    'nested-calc'?: pluginOptions_38 | boolean;
+    'nested-calc'?: pluginOptions_39 | boolean;
     /** plugin options for "postcss-nesting" */
-    'nesting-rules'?: pluginOptions_39 | boolean;
+    'nesting-rules'?: pluginOptions_40 | boolean;
     /** plugin options for "postcss-selector-not" */
-    'not-pseudo-class'?: pluginOptions_40 | boolean;
+    'not-pseudo-class'?: pluginOptions_41 | boolean;
     /** plugin options for "@csstools/postcss-oklab-function" */
-    'oklab-function'?: pluginOptions_41 | boolean;
+    'oklab-function'?: pluginOptions_42 | boolean;
     /** plugin options for "postcss-opacity-percentage" */
     'opacity-percentage'?: postcssOpacityPercentageOptions | boolean;
     /** plugin options for "postcss-overflow-shorthand" */
-    'overflow-property'?: pluginOptions_42 | boolean;
+    'overflow-property'?: pluginOptions_43 | boolean;
     /** plugin options for "postcss-replace-overflow-wrap" */
     'overflow-wrap-property'?: postcssReplaceOverflowWrapOptions | boolean;
     /** plugin options for "postcss-place" */
-    'place-properties'?: pluginOptions_43 | boolean;
+    'place-properties'?: pluginOptions_44 | boolean;
     /** plugin options for "css-prefers-color-scheme" */
-    'prefers-color-scheme-query'?: pluginOptions_44 | boolean;
+    'prefers-color-scheme-query'?: pluginOptions_45 | boolean;
     /** plugin options for "postcss-color-rebeccapurple" */
-    'rebeccapurple-color'?: pluginOptions_45 | boolean;
+    'rebeccapurple-color'?: pluginOptions_46 | boolean;
     /** plugin options for "@csstools/postcss-relative-color-syntax" */
-    'relative-color-syntax'?: pluginOptions_46 | boolean;
+    'relative-color-syntax'?: pluginOptions_47 | boolean;
     /** plugin options for "@csstools/postcss-scope-pseudo-class" */
-    'scope-pseudo-class'?: pluginOptions_47 | boolean;
+    'scope-pseudo-class'?: pluginOptions_48 | boolean;
     /** plugin options for "@csstools/postcss-stepped-value-functions" */
-    'stepped-value-functions'?: pluginOptions_48 | boolean;
+    'stepped-value-functions'?: pluginOptions_49 | boolean;
     /** plugin options for "postcss-system-ui-font-family" */
     'system-ui-font-family'?: postcssFontFamilySystemUIOptions | boolean;
     /** plugin options for "@csstools/postcss-text-decoration-shorthand" */
-    'text-decoration-shorthand'?: pluginOptions_49 | boolean;
+    'text-decoration-shorthand'?: pluginOptions_50 | boolean;
     /** plugin options for "@csstools/postcss-trigonometric-functions" */
-    'trigonometric-functions'?: pluginOptions_50 | boolean;
+    'trigonometric-functions'?: pluginOptions_51 | boolean;
     /** plugin options for "@csstools/postcss-unset-value" */
-    'unset-value'?: pluginOptions_51 | boolean;
+    'unset-value'?: pluginOptions_52 | boolean;
 };
 
 /** postcss-clamp plugin options */

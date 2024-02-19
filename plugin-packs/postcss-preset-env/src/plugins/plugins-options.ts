@@ -30,6 +30,7 @@ import type { pluginOptions as postcssICUnitOptions } from '@csstools/postcss-ic
 import type { pluginOptions as postcssImageSetFunctionOptions } from 'postcss-image-set-function';
 import type { pluginOptions as postcssIsPseudoClassOptions } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunctionOptions } from 'postcss-lab-function';
+import type { pluginOptions as postcssLightDarkFunctionOptions } from '@csstools/postcss-light-dark-function';
 import type { pluginOptions as postcssLogicalOverflowOptions } from '@csstools/postcss-logical-overflow';
 import type { pluginOptions as postcssLogicalOverscrollBehavorOptions } from '@csstools/postcss-logical-overscroll-behavior';
 import type { pluginOptions as postcssLogicalOptions } from 'postcss-logical';
@@ -120,6 +121,8 @@ export type pluginsOptions = {
 	'is-pseudo-class'?: postcssIsPseudoClassOptions | boolean
 	/** plugin options for "postcss-lab-function" */
 	'lab-function'?: postcssLabFunctionOptions | boolean
+	/** plugin options for "@csstools/postcss-light-dark-function" */
+	'light-dark-function'?: postcssLightDarkFunctionOptions | boolean
 	/** plugin options for "@csstools/postcss-logical-overflow" */
 	'logical-overflow'?: postcssLogicalOverflowOptions | boolean
 	/** plugin options for "@csstools/postcss-logical-overscroll-behavior" */

@@ -495,3 +495,19 @@
 	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
 	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }
+
+.dark {
+	color-scheme: dark;
+}
+
+.light {
+	color-scheme: light;
+}
+
+.schemed-colors {
+	color: light-dark(lch(from oklab(40% 0.566 0.39) l c h), magenta);
+}
+
+.schemed-prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}

@@ -150,6 +150,11 @@ export default [
 		'importName': 'postcssLabFunction',
 	},
 	{
+		'packageName': '@csstools/postcss-light-dark-function',
+		'id': 'light-dark-function',
+		'importName': 'postcssLightDarkFunction',
+	},
+	{
 		'packageName': 'postcss-logical',
 		'id': 'logical-properties-and-values',
 		'importName': 'postcssLogical',

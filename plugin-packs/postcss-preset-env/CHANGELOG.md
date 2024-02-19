@@ -1,7 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### Unreleased (minor)
 
+- Added `@csstools/postcss-light-dark-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function#readme) for usage details.
 - Fix type definitions
 - Remove extraneous dependency on `postcss-value-parser`
 - Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#403) (patch)
