@@ -38,7 +38,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^3.0.1",
+		"@csstools/selector-specificity": "^3.0.2",
 		"postcss-selector-parser": "^6.0.13"
 	},
 	"peerDependencies": {
