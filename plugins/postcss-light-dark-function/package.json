@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-light-dark-function",
 	"description": "Use the light-dark() color function in CSS",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
