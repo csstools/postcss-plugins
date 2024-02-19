@@ -1,7 +1,7 @@
 {
 	"name": "postcss-color-hex-alpha",
 	"description": "Use 4 & 8 character hex color notation in CSS",
-	"version": "9.0.3",
+	"version": "9.0.4",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
