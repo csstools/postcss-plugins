@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
 	"description": "Use cascade layers in CSS",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"contributors": [
 		{
 			"name": "Olu Niyi-Awosusi",
