@@ -1,6 +1,8 @@
 # Changes to PostCSS Font Format
 
-### Unreleased (patch)
+### 3.0.2
+
+_February 19, 2024_
 
 - Reuse code with `@csstools/utilities`
 
