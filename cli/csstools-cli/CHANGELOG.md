@@ -48,6 +48,7 @@
 - Updated [`postcss-custom-media`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) to [`10.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media/CHANGELOG.md#1003) (patch)
 - Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`7.1.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#717) (patch)
 - Updated [`postcss-selector-not`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not) to [`7.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not/CHANGELOG.md#702) (patch)
+- Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`9.4.0`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#940) (minor)
 
 ### 3.0.7
 
