@@ -1,5 +1,13 @@
 import type { ChildNode, Container } from 'postcss';
 
+function isMixinAtRule(node: ChildNode): boolean {
+	return node.type === 'atrule' && node.name.toLowerCase() === 'mixin';
+}
+
+function isNonMixinAtRule(node: ChildNode): boolean {
+	return node.type === 'atrule' && !isMixinAtRule(node);
+}
+
 export default function groupDeclarations(node: Container<ChildNode>) {
 	// https://drafts.csswg.org/css-nesting/#mixing
 	// When a style rule contains both declarations and nested style rules or nested conditional group rules,
@@ -24,13 +32,13 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 			return;
 		}
 
-		if (child.type === 'atrule' && child.name.toLowerCase() === 'mixin') {
+		if (isMixinAtRule(child)) {
 			let prev = child.prev();
 			// We assume that
 			// - a mixin after declarations will resolve to more declarations
-			// - a mixin after rules or at-rules will resolve to more rules or at-rules
+			// - a mixin after rules or at-rules will resolve to more rules or at-rules (except after another mixin)
 			while (prev) {
-				if ((prev.type === 'rule' || prev.type === 'atrule')) {
+				if ((prev.type === 'rule' || (isNonMixinAtRule(prev)))) {
 					return;
 				}
 
@@ -50,7 +58,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 
 		if (child.type === 'comment') {
 			const next = child.next();
-			if (next && (next.type === 'comment' || next.type === 'rule' || (next.type === 'atrule' && next.name.toLowerCase() !== 'mixin'))) {
+			if (next && (next.type === 'comment' || next.type === 'rule' || isNonMixinAtRule(next))) {
 				return;
 			}
 

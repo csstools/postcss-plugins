@@ -1,0 +1,10 @@
+a {
+	color: yellow;
+	display: inline-flex;
+
+	@media (min-width: 768px) {
+		color: red;
+	}
+
+	@mixin nestedMixins;
+}

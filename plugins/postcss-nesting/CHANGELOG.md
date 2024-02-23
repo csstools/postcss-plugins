@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Fix reorder of declarations inside nested `@mixin` rules
+
 ### 12.0.3
 
 _February 19, 2024_

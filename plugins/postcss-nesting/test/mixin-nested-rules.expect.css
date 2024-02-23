@@ -1,0 +1,7 @@
+a {
+	color: yellow;
+}
+a b {color: blue;display: flex;
+		display: inline-flex;
+	}
+a b:disabled { color: white; }

@@ -1,0 +1,8 @@
+a {
+	color: yellow;
+
+	& b {
+		@mixin nestedMixins;
+		display: inline-flex;
+	}
+}
