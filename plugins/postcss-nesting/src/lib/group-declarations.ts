@@ -1,5 +1,5 @@
 import type { ChildNode, Container } from 'postcss';
-import {isAtRule, isMixinRule, isRule} from "./is-type-of-rule";
+import { isAtRule, isMixinRule, isRule } from "./is-type-of-rule";
 
 export default function groupDeclarations(node: Container<ChildNode>) {
 	// https://drafts.csswg.org/css-nesting/#mixing
