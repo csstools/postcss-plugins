@@ -1,12 +1,5 @@
 import type { ChildNode, Container } from 'postcss';
-
-function isMixinAtRule(node: ChildNode): boolean {
-	return node.type === 'atrule' && node.name.toLowerCase() === 'mixin';
-}
-
-function isNonMixinAtRule(node: ChildNode): boolean {
-	return node.type === 'atrule' && !isMixinAtRule(node);
-}
+import {isAtRule, isMixinRule, isRule} from "./is-type-of-rule";
 
 export default function groupDeclarations(node: Container<ChildNode>) {
 	// https://drafts.csswg.org/css-nesting/#mixing
@@ -32,13 +25,13 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 			return;
 		}
 
-		if (isMixinAtRule(child)) {
+		if (isMixinRule(child)) {
 			let prev = child.prev();
 			// We assume that
 			// - a mixin after declarations will resolve to more declarations
 			// - a mixin after rules or at-rules will resolve to more rules or at-rules (except after another mixin)
 			while (prev) {
-				if ((prev.type === 'rule' || (isNonMixinAtRule(prev)))) {
+				if ((prev.type === 'rule' || (isAtRule(prev) && !isMixinRule(prev)))) {
 					return;
 				}
 
@@ -58,7 +51,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 
 		if (child.type === 'comment') {
 			const next = child.next();
-			if (next && (next.type === 'comment' || next.type === 'rule' || isNonMixinAtRule(next))) {
+			if (next && (next.type === 'comment' || isRule(next) || (isAtRule(next) && !isMixinRule(next)))) {
 				return;
 			}
 
