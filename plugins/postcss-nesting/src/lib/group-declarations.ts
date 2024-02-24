@@ -1,5 +1,4 @@
 import type { ChildNode, Container } from 'postcss';
-import { isAtRule, isMixinRule, isRule } from "./is-type-of-rule";
 
 export default function groupDeclarations(node: Container<ChildNode>) {
 	// https://drafts.csswg.org/css-nesting/#mixing
@@ -10,60 +9,54 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 	// For the purpose of determining the Order Of Appearance,
 	// nested style rules and nested conditional group rules are considered to come after their parent rule.
 
-	let indexOfLastDeclarationInFirstDeclarationList = -1;
+	const declarationLikeThings: Array<ChildNode> = [];
+	const ruleLikeThings: Array<ChildNode> = [];
 
-	node.each((child, index) => {
-		if (child.type === 'decl') {
-			if (indexOfLastDeclarationInFirstDeclarationList === index - 1) {
-				indexOfLastDeclarationInFirstDeclarationList = index;
-				return;
-			}
-
-			child.remove();
-			node.insertAfter(indexOfLastDeclarationInFirstDeclarationList, child);
-			indexOfLastDeclarationInFirstDeclarationList = node.index(child);
-			return;
-		}
-
-		if (isMixinRule(child)) {
-			let prev = child.prev();
-			// We assume that
-			// - a mixin after declarations will resolve to more declarations
-			// - a mixin after rules or at-rules will resolve to more rules or at-rules (except after another mixin)
-			while (prev) {
-				if ((prev.type === 'rule' || (isAtRule(prev) && !isMixinRule(prev)))) {
-					return;
-				}
-
-				prev = prev.prev();
-			}
-
-			if (indexOfLastDeclarationInFirstDeclarationList === index - 1) {
-				indexOfLastDeclarationInFirstDeclarationList = index;
-				return;
-			}
-
-			child.remove();
-			node.insertAfter(indexOfLastDeclarationInFirstDeclarationList, child);
-			indexOfLastDeclarationInFirstDeclarationList = node.index(child);
+	node.each((child) => {
+		if (isDeclarationLike(child, ruleLikeThings.length > 0)) {
+			declarationLikeThings.push(child);
 			return;
 		}
 
 		if (child.type === 'comment') {
-			const next = child.next();
-			if (next && (next.type === 'comment' || isRule(next) || (isAtRule(next) && !isMixinRule(next)))) {
-				return;
+			let next = child.next();
+			while (next && next.type === 'comment') {
+				next = next.next();
 			}
 
-			if (indexOfLastDeclarationInFirstDeclarationList === index - 1) {
-				indexOfLastDeclarationInFirstDeclarationList = index;
+			if (isDeclarationLike(next, ruleLikeThings.length > 0)) {
+				declarationLikeThings.push(child);
 				return;
 			}
-
-			child.remove();
-			node.insertAfter(indexOfLastDeclarationInFirstDeclarationList, child);
-			indexOfLastDeclarationInFirstDeclarationList = node.index(child);
-			return;
 		}
+
+		ruleLikeThings.push(child);
 	});
+
+	node.removeAll();
+
+	declarationLikeThings.forEach((child) => {
+		node.append(child);
+	});
+
+	ruleLikeThings.forEach((child) => {
+		node.append(child);
+	});
+}
+
+function isDeclarationLike(node: ChildNode | undefined, didSeeRuleLikeThings: boolean): boolean {
+	if (!node) {
+		return false;
+	}
+
+	if (node.type === 'decl') {
+		return true;
+	}
+
+	// We assume that
+	// - a mixin after declarations will resolve to declarations
+	// - a mixin after rules or at-rules will resolve to rules or at-rules
+	return node.type === 'atrule' &&
+		node.name.toLowerCase() === 'mixin' &&
+		!didSeeRuleLikeThings;
 }

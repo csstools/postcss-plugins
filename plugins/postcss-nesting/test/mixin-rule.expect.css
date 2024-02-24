@@ -5,10 +5,10 @@
 
 a .in.deep { color: blue; }
 
-/* a comment */
-
 f g {
 		color: red;
 	}
+
+/* a comment */
 
 f .in.deep { color: blue; }

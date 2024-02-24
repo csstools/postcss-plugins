@@ -1,8 +1,6 @@
 a {
-	color: yellow;
-
 	& b {
-		@mixin nestedMixins;
+		@mixin alpha;
 		display: inline-flex;
 	}
 }

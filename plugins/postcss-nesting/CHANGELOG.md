@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Fix reorder of declarations inside nested `@mixin` rules
+- Fix order of final CSS with complex usage of both nesting and mixins, by @pciarach
 
 ### 12.0.3
 
