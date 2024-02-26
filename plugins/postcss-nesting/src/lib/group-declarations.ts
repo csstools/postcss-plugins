@@ -13,7 +13,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 	const ruleLikeThings: Array<ChildNode> = [];
 
 	node.each((child) => {
-		if (isDeclarationLike(child, ruleLikeThings.length > 0)) {
+		if (isDeclaration(child) || canContainDeclarations(child, ruleLikeThings.length === 0)) {
 			declarationLikeThings.push(child);
 			return;
 		}
@@ -24,7 +24,7 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 				next = next.next();
 			}
 
-			if (isDeclarationLike(next, ruleLikeThings.length > 0)) {
+			if (isDeclaration(next) || canContainDeclarations(next, ruleLikeThings.length === 0)) {
 				declarationLikeThings.push(child);
 				return;
 			}
@@ -44,19 +44,16 @@ export default function groupDeclarations(node: Container<ChildNode>) {
 	});
 }
 
-function isDeclarationLike(node: ChildNode | undefined, didSeeRuleLikeThings: boolean): boolean {
-	if (!node) {
-		return false;
-	}
+function isDeclaration(node: ChildNode | undefined): boolean {
+	return node && node.type === 'decl';
+}
 
-	if (node.type === 'decl') {
-		return true;
-	}
-
+function canContainDeclarations(node: ChildNode | undefined, wouldBeFirstRuleLike: boolean): boolean {
 	// We assume that
 	// - a mixin after declarations will resolve to declarations
 	// - a mixin after rules or at-rules will resolve to rules or at-rules
-	return node.type === 'atrule' &&
+	return node &&
+		node.type === 'atrule' &&
 		node.name.toLowerCase() === 'mixin' &&
-		!didSeeRuleLikeThings;
+		wouldBeFirstRuleLike;
 }
