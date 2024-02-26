@@ -27,6 +27,25 @@ const mixinPluginDeclaration = () => {
 
 mixinPluginDeclaration.postcss = true;
 
+const mixinPluginNestedRules = () => {
+	return {
+		postcssPlugin: 'mixin',
+		AtRule: {
+			mixin(node, { postcss }) {
+				if (node.params === 'alpha') {
+					node.replaceWith(postcss.parse('@mixin alpha-1; @mixin alpha-2; & { color: white; }', {from : 'mixin.css'}));
+				} else if (node.params === 'alpha-1') {
+					node.replaceWith(postcss.parse('color: blue;', {from : 'mixin.css'}));
+				} else if (node.params === 'alpha-2') {
+					node.replaceWith(postcss.parse('display: flex;', {from : 'mixin.css'}));
+				}
+			},
+		},
+	};
+};
+
+mixinPluginNestedRules.postcss = true;
+
 postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage',
@@ -167,6 +186,10 @@ postcssTape(plugin)({
 		options: {
 			noIsPseudoSelector: true,
 		},
+	},
+	'mixin-nested-rules': {
+		message: 'supports mixin with nested rules',
+		plugins: [mixinPluginNestedRules(), plugin()],
 	},
 	'spec-examples': {
 		message: 'supports all spec examples',
