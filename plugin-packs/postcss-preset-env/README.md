@@ -266,7 +266,9 @@ postcssPresetEnv({
 })
 ```
 
-If you want to preserve automatic enabling of features based on the stage, you can pass an array: `['auto', { /* plugin options */ }]`.
+If you want to preserve automatic enabling of features  
+based on the stage, implementations and or browserslist,  
+you can pass an array: `['auto', { /* plugin options */ }]`.
 
 ```js
 postcssPresetEnv({
