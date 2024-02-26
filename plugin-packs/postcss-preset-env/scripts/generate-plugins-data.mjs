@@ -44,12 +44,13 @@ function generatePluginOptions(data) {
 		}
 	}
 
+	result += '\nexport type subPluginOptions<T> = [\'auto\' | boolean, T] | T | boolean;\n';
 	result += '\nexport type pluginsOptions = {\n';
 
 	for (let i = 0; i < plugins.length; i++) {
 		const plugin = plugins[i];
 		result += `\t/** plugin options for "${plugin.packageName}" */\n`;
-		result += `\t'${plugin.id}'?: ${plugin.importName}Options | boolean\n`;
+		result += `\t'${plugin.id}'?: subPluginOptions<${plugin.importName}Options>\n`;
 	}
 
 	result += '};\n';

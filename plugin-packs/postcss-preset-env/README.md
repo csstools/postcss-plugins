@@ -28,9 +28,9 @@ const yourConfig = {
 		postcssPresetEnv({
 			/* pluginOptions */
 			features: {
-				'nesting-rules': {
+				'nesting-rules': ['auto', {
 					noIsPseudoSelector: false,
-				},
+				}],
 			},
 		})
 	]
@@ -262,6 +262,18 @@ postcssPresetEnv({
   stage: 3,
   features: {
     'custom-selectors': { preserve: true }
+  }
+})
+```
+
+If you want to preserve automatic enabling of features based on the stage, you can pass an array: `['auto', { /* plugin options */ }]`.
+
+```js
+postcssPresetEnv({
+  /* use stage 3 features + custom-selectors (preserving the original CSS) */
+  stage: 3,
+  features: {
+    'custom-selectors': ['auto', { preserve: true }]
   }
 })
 ```
