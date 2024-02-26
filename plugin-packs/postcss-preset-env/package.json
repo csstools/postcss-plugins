@@ -58,7 +58,7 @@
 		"@csstools/postcss-exponential-functions": "^1.0.4",
 		"@csstools/postcss-font-format-keywords": "^3.0.2",
 		"@csstools/postcss-gamut-mapping": "^1.0.3",
-		"@csstools/postcss-gradients-interpolation-method": "^4.0.10",
+		"@csstools/postcss-gradients-interpolation-method": "^4.0.11",
 		"@csstools/postcss-hwb-function": "^3.0.9",
 		"@csstools/postcss-ic-unit": "^3.0.4",
 		"@csstools/postcss-initial": "^1.0.1",
