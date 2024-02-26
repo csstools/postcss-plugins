@@ -1,6 +1,8 @@
 # Changes to PostCSS Gradients Interpolation Method
 
-### Unreleased (patch) 
+### 4.0.11
+
+_February 26, 2024_ 
 
 - Improve the regex for gradient function detection
 
