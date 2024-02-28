@@ -1,5 +1,10 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Correctly serialize negative zero `-0` values
+- Add support for `round` with only a single number argument
+
 ### 1.1.7
 
 _February 19, 2024_

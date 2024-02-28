@@ -1,5 +1,5 @@
 import type { Calculation } from '../calculation';
-import type { ComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
 import { TokenType } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
@@ -31,6 +31,7 @@ import { subtraction } from '../operation/subtraction';
 import { unary } from '../operation/unary';
 import { solveLog } from './log';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { NumberType } from '@csstools/css-tokenizer';
 
 export const mathFunctions = new Map([
 	['abs', abs],
@@ -422,6 +423,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 	);
 
 	let roundingStrategy = '';
+	let hasComma = false;
 	const aValue: Array<ComponentValue> = [];
 	const bValue: Array<ComponentValue> = [];
 
@@ -449,6 +451,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 				}
 
 				if (focus === aValue) {
+					hasComma = true;
 					focus = bValue;
 					continue;
 				}
@@ -468,6 +471,14 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 
 	if (a === -1) {
 		return -1;
+	}
+
+	if (!hasComma && bValue.length === 0) {
+		bValue.push(
+			new TokenNode(
+				[TokenType.Number, '1', -1, -1, { value: 1, type: NumberType.Integer }],
+			),
+		);
 	}
 
 	const b = solve(calc(new FunctionNode(
