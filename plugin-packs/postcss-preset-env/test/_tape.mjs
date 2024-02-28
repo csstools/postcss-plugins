@@ -147,9 +147,9 @@ postcssTape(plugin)({
 		options: {
 			stage: false,
 			features: {
-				'nesting-rules': {
+				'nesting-rules': [true, {
 					noIsPseudoSelector: false,
-				},
+				}],
 			},
 		},
 	},

@@ -8,7 +8,7 @@ import { pluginIdHelp } from './plugins/plugin-id-help.mjs';
 import type { pluginOptions } from './options';
 import type { PluginCreator } from 'postcss';
 export type { pluginOptions, DirectionFlow } from './options';
-export type { pluginsOptions } from './plugins/plugins-options';
+export type { pluginsOptions, subPluginOptions } from './plugins/plugins-options';
 export type { postcssClampOptions } from './types/postcss-clamp/plugin-options';
 export type { postcssFontFamilySystemUIOptions } from './types/postcss-system-ui-font-family/plugin-options';
 export type { postcssFontVariantOptions } from './types/postcss-font-variant/plugin-options';
