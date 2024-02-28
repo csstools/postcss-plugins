@@ -42,3 +42,15 @@ a {
 		}
 	}
 }
+
+a, .a {
+	@media screen {
+		order: 7;
+	}
+}
+
+a, a::after {
+	@media screen {
+		order: 8;
+	}
+}

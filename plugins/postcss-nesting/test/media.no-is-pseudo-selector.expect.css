@@ -50,3 +50,17 @@ a {
 				order: 6;
 			}
 		}
+
+@media screen {
+
+a, .a {
+		order: 7;
+}
+	}
+
+@media screen {
+
+a, a::after {
+		order: 8;
+}
+	}

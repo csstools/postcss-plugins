@@ -171,10 +171,7 @@ postcssTape(plugin)({
 	},
 	'mixin-declaration:no-is-pseudo-selector': {
 		message: 'supports other visitors (mixin declaration) { noIsPseudoSelector: true }',
-		plugins: [mixinPluginDeclaration(), plugin()],
-		options: {
-			noIsPseudoSelector: true,
-		},
+		plugins: [mixinPluginDeclaration(), plugin({ noIsPseudoSelector: true })],
 	},
 	'mixin-rule': {
 		message: 'supports other visitors (mixin rule)',
@@ -182,10 +179,7 @@ postcssTape(plugin)({
 	},
 	'mixin-rule:no-is-pseudo-selector': {
 		message: 'supports other visitors (mixin rule) { noIsPseudoSelector: true }',
-		plugins: [mixinPluginRule(), plugin()],
-		options: {
-			noIsPseudoSelector: true,
-		},
+		plugins: [mixinPluginRule(), plugin({ noIsPseudoSelector: true })],
 	},
 	'mixin-nested-rules': {
 		message: 'supports mixin with nested rules',
