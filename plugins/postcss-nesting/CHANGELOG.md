@@ -1,5 +1,11 @@
 # Changes to PostCSS Nesting
 
+### 12.0.4
+
+_February 26, 2024_
+
+- Fix order of final CSS with complex usage of both nesting and mixins, by @pciarach
+
 ### 12.0.3
 
 _February 19, 2024_

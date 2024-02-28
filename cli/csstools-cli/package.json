@@ -81,7 +81,7 @@
 		"postcss-image-set-function": "^6.0.3",
 		"postcss-lab-function": "^6.0.10",
 		"postcss-logical": "^7.0.1",
-		"postcss-nesting": "^12.0.3",
+		"postcss-nesting": "^12.0.4",
 		"postcss-overflow-shorthand": "^5.0.1",
 		"postcss-place": "^9.0.1",
 		"postcss-preset-env": "^9.4.0",
