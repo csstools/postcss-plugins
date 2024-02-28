@@ -1,11 +1,11 @@
 import type { Calculation } from '../calculation';
-import { ComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
-import { TokenType } from '@csstools/css-tokenizer';
+import { TokenType, NumberType } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
-import { isCommentNode, FunctionNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { isCommentNode, FunctionNode, TokenNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { multiplication } from '../operation/multiplication';
 import { resolveGlobalsAndConstants } from './globals-and-constants';
 import { solveACos } from './acos';
@@ -31,7 +31,6 @@ import { subtraction } from '../operation/subtraction';
 import { unary } from '../operation/unary';
 import { solveLog } from './log';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
-import { NumberType } from '@csstools/css-tokenizer';
 
 export const mathFunctions = new Map([
 	['abs', abs],
