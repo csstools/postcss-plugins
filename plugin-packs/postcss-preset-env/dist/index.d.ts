@@ -149,119 +149,119 @@ export declare type pluginOptions = {
 
 export declare type pluginsOptions = {
     /** plugin options for "@csstools/postcss-initial" */
-    'all-property'?: pluginOptions_2 | boolean;
+    'all-property'?: subPluginOptions<pluginOptions_2>;
     /** plugin options for "postcss-pseudo-class-any-link" */
-    'any-link-pseudo-class'?: pluginOptions_3 | boolean;
+    'any-link-pseudo-class'?: subPluginOptions<pluginOptions_3>;
     /** plugin options for "css-blank-pseudo" */
-    'blank-pseudo-class'?: pluginOptions_4 | boolean;
+    'blank-pseudo-class'?: subPluginOptions<pluginOptions_4>;
     /** plugin options for "postcss-page-break" */
-    'break-properties'?: postcssPageBreakOptions | boolean;
+    'break-properties'?: subPluginOptions<postcssPageBreakOptions>;
     /** plugin options for "@csstools/postcss-cascade-layers" */
-    'cascade-layers'?: pluginOptions_5 | boolean;
+    'cascade-layers'?: subPluginOptions<pluginOptions_5>;
     /** plugin options for "postcss-attribute-case-insensitive" */
-    'case-insensitive-attributes'?: pluginOptions_6 | boolean;
+    'case-insensitive-attributes'?: subPluginOptions<pluginOptions_6>;
     /** plugin options for "postcss-clamp" */
-    'clamp'?: postcssClampOptions | boolean;
+    'clamp'?: subPluginOptions<postcssClampOptions>;
     /** plugin options for "@csstools/postcss-color-function" */
-    'color-function'?: pluginOptions_7 | boolean;
+    'color-function'?: subPluginOptions<pluginOptions_7>;
     /** plugin options for "postcss-color-functional-notation" */
-    'color-functional-notation'?: pluginOptions_8 | boolean;
+    'color-functional-notation'?: subPluginOptions<pluginOptions_8>;
     /** plugin options for "@csstools/postcss-color-mix-function" */
-    'color-mix'?: pluginOptions_9 | boolean;
+    'color-mix'?: subPluginOptions<pluginOptions_9>;
     /** plugin options for "postcss-custom-media" */
-    'custom-media-queries'?: pluginOptions_10 | boolean;
+    'custom-media-queries'?: subPluginOptions<pluginOptions_10>;
     /** plugin options for "postcss-custom-properties" */
-    'custom-properties'?: pluginOptions_11 | boolean;
+    'custom-properties'?: subPluginOptions<pluginOptions_11>;
     /** plugin options for "postcss-custom-selectors" */
-    'custom-selectors'?: pluginOptions_12 | boolean;
+    'custom-selectors'?: subPluginOptions<pluginOptions_12>;
     /** plugin options for "postcss-dir-pseudo-class" */
-    'dir-pseudo-class'?: pluginOptions_13 | boolean;
+    'dir-pseudo-class'?: subPluginOptions<pluginOptions_13>;
     /** plugin options for "@csstools/postcss-normalize-display-values" */
-    'display-two-values'?: pluginOptions_14 | boolean;
+    'display-two-values'?: subPluginOptions<pluginOptions_14>;
     /** plugin options for "postcss-double-position-gradients" */
-    'double-position-gradients'?: pluginOptions_15 | boolean;
+    'double-position-gradients'?: subPluginOptions<pluginOptions_15>;
     /** plugin options for "@csstools/postcss-exponential-functions" */
-    'exponential-functions'?: pluginOptions_16 | boolean;
+    'exponential-functions'?: subPluginOptions<pluginOptions_16>;
     /** plugin options for "@csstools/postcss-logical-float-and-clear" */
-    'float-clear-logical-values'?: pluginOptions_17 | boolean;
+    'float-clear-logical-values'?: subPluginOptions<pluginOptions_17>;
     /** plugin options for "postcss-focus-visible" */
-    'focus-visible-pseudo-class'?: pluginOptions_18 | boolean;
+    'focus-visible-pseudo-class'?: subPluginOptions<pluginOptions_18>;
     /** plugin options for "postcss-focus-within" */
-    'focus-within-pseudo-class'?: pluginOptions_19 | boolean;
+    'focus-within-pseudo-class'?: subPluginOptions<pluginOptions_19>;
     /** plugin options for "@csstools/postcss-font-format-keywords" */
-    'font-format-keywords'?: pluginOptions_20 | boolean;
+    'font-format-keywords'?: subPluginOptions<pluginOptions_20>;
     /** plugin options for "postcss-font-variant" */
-    'font-variant-property'?: postcssFontVariantOptions | boolean;
+    'font-variant-property'?: subPluginOptions<postcssFontVariantOptions>;
     /** plugin options for "@csstools/postcss-gamut-mapping" */
-    'gamut-mapping'?: pluginOptions_21 | boolean;
+    'gamut-mapping'?: subPluginOptions<pluginOptions_21>;
     /** plugin options for "postcss-gap-properties" */
-    'gap-properties'?: pluginOptions_22 | boolean;
+    'gap-properties'?: subPluginOptions<pluginOptions_22>;
     /** plugin options for "@csstools/postcss-gradients-interpolation-method" */
-    'gradients-interpolation-method'?: pluginOptions_23 | boolean;
+    'gradients-interpolation-method'?: subPluginOptions<pluginOptions_23>;
     /** plugin options for "css-has-pseudo" */
-    'has-pseudo-class'?: pluginOptions_24 | boolean;
+    'has-pseudo-class'?: subPluginOptions<pluginOptions_24>;
     /** plugin options for "postcss-color-hex-alpha" */
-    'hexadecimal-alpha-notation'?: pluginOptions_25 | boolean;
+    'hexadecimal-alpha-notation'?: subPluginOptions<pluginOptions_25>;
     /** plugin options for "@csstools/postcss-hwb-function" */
-    'hwb-function'?: pluginOptions_26 | boolean;
+    'hwb-function'?: subPluginOptions<pluginOptions_26>;
     /** plugin options for "@csstools/postcss-ic-unit" */
-    'ic-unit'?: pluginOptions_27 | boolean;
+    'ic-unit'?: subPluginOptions<pluginOptions_27>;
     /** plugin options for "postcss-image-set-function" */
-    'image-set-function'?: pluginOptions_28 | boolean;
+    'image-set-function'?: subPluginOptions<pluginOptions_28>;
     /** plugin options for "@csstools/postcss-is-pseudo-class" */
-    'is-pseudo-class'?: pluginOptions_29 | boolean;
+    'is-pseudo-class'?: subPluginOptions<pluginOptions_29>;
     /** plugin options for "postcss-lab-function" */
-    'lab-function'?: pluginOptions_30 | boolean;
+    'lab-function'?: subPluginOptions<pluginOptions_30>;
     /** plugin options for "@csstools/postcss-light-dark-function" */
-    'light-dark-function'?: pluginOptions_31 | boolean;
+    'light-dark-function'?: subPluginOptions<pluginOptions_31>;
     /** plugin options for "@csstools/postcss-logical-overflow" */
-    'logical-overflow'?: pluginOptions_32 | boolean;
+    'logical-overflow'?: subPluginOptions<pluginOptions_32>;
     /** plugin options for "@csstools/postcss-logical-overscroll-behavior" */
-    'logical-overscroll-behavior'?: pluginOptions_33 | boolean;
+    'logical-overscroll-behavior'?: subPluginOptions<pluginOptions_33>;
     /** plugin options for "postcss-logical" */
-    'logical-properties-and-values'?: pluginOptions_34 | boolean;
+    'logical-properties-and-values'?: subPluginOptions<pluginOptions_34>;
     /** plugin options for "@csstools/postcss-logical-resize" */
-    'logical-resize'?: pluginOptions_35 | boolean;
+    'logical-resize'?: subPluginOptions<pluginOptions_35>;
     /** plugin options for "@csstools/postcss-logical-viewport-units" */
-    'logical-viewport-units'?: pluginOptions_36 | boolean;
+    'logical-viewport-units'?: subPluginOptions<pluginOptions_36>;
     /** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
-    'media-queries-aspect-ratio-number-values'?: pluginOptions_37 | boolean;
+    'media-queries-aspect-ratio-number-values'?: subPluginOptions<pluginOptions_37>;
     /** plugin options for "@csstools/postcss-media-minmax" */
-    'media-query-ranges'?: pluginOptions_38 | boolean;
+    'media-query-ranges'?: subPluginOptions<pluginOptions_38>;
     /** plugin options for "@csstools/postcss-nested-calc" */
-    'nested-calc'?: pluginOptions_39 | boolean;
+    'nested-calc'?: subPluginOptions<pluginOptions_39>;
     /** plugin options for "postcss-nesting" */
-    'nesting-rules'?: pluginOptions_40 | boolean;
+    'nesting-rules'?: subPluginOptions<pluginOptions_40>;
     /** plugin options for "postcss-selector-not" */
-    'not-pseudo-class'?: pluginOptions_41 | boolean;
+    'not-pseudo-class'?: subPluginOptions<pluginOptions_41>;
     /** plugin options for "@csstools/postcss-oklab-function" */
-    'oklab-function'?: pluginOptions_42 | boolean;
+    'oklab-function'?: subPluginOptions<pluginOptions_42>;
     /** plugin options for "postcss-opacity-percentage" */
-    'opacity-percentage'?: postcssOpacityPercentageOptions | boolean;
+    'opacity-percentage'?: subPluginOptions<postcssOpacityPercentageOptions>;
     /** plugin options for "postcss-overflow-shorthand" */
-    'overflow-property'?: pluginOptions_43 | boolean;
+    'overflow-property'?: subPluginOptions<pluginOptions_43>;
     /** plugin options for "postcss-replace-overflow-wrap" */
-    'overflow-wrap-property'?: postcssReplaceOverflowWrapOptions | boolean;
+    'overflow-wrap-property'?: subPluginOptions<postcssReplaceOverflowWrapOptions>;
     /** plugin options for "postcss-place" */
-    'place-properties'?: pluginOptions_44 | boolean;
+    'place-properties'?: subPluginOptions<pluginOptions_44>;
     /** plugin options for "css-prefers-color-scheme" */
-    'prefers-color-scheme-query'?: pluginOptions_45 | boolean;
+    'prefers-color-scheme-query'?: subPluginOptions<pluginOptions_45>;
     /** plugin options for "postcss-color-rebeccapurple" */
-    'rebeccapurple-color'?: pluginOptions_46 | boolean;
+    'rebeccapurple-color'?: subPluginOptions<pluginOptions_46>;
     /** plugin options for "@csstools/postcss-relative-color-syntax" */
-    'relative-color-syntax'?: pluginOptions_47 | boolean;
+    'relative-color-syntax'?: subPluginOptions<pluginOptions_47>;
     /** plugin options for "@csstools/postcss-scope-pseudo-class" */
-    'scope-pseudo-class'?: pluginOptions_48 | boolean;
+    'scope-pseudo-class'?: subPluginOptions<pluginOptions_48>;
     /** plugin options for "@csstools/postcss-stepped-value-functions" */
-    'stepped-value-functions'?: pluginOptions_49 | boolean;
+    'stepped-value-functions'?: subPluginOptions<pluginOptions_49>;
     /** plugin options for "postcss-system-ui-font-family" */
-    'system-ui-font-family'?: postcssFontFamilySystemUIOptions | boolean;
+    'system-ui-font-family'?: subPluginOptions<postcssFontFamilySystemUIOptions>;
     /** plugin options for "@csstools/postcss-text-decoration-shorthand" */
-    'text-decoration-shorthand'?: pluginOptions_50 | boolean;
+    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_50>;
     /** plugin options for "@csstools/postcss-trigonometric-functions" */
-    'trigonometric-functions'?: pluginOptions_51 | boolean;
+    'trigonometric-functions'?: subPluginOptions<pluginOptions_51>;
     /** plugin options for "@csstools/postcss-unset-value" */
-    'unset-value'?: pluginOptions_52 | boolean;
+    'unset-value'?: subPluginOptions<pluginOptions_52>;
 };
 
 /** postcss-clamp plugin options */
@@ -295,5 +295,7 @@ export declare type postcssReplaceOverflowWrapOptions = {
     /** Preserve the original notation. default: false */
     preserve?: boolean;
 };
+
+export declare type subPluginOptions<T> = ['auto' | boolean, T] | T | boolean;
 
 export { }

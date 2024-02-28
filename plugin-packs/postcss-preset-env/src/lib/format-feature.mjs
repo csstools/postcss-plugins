@@ -39,16 +39,10 @@ export function formatStagedFeature(cssdbList, supportedBrowsers, features, feat
 
 	pluginOption = getOptionsForBrowsersByFeature(supportedBrowsers, feature, cssdbList, options, logger);
 
-	if (features[feature.id] === true) {
-		if (sharedOptions) {
-			pluginOption = Object.assign({}, pluginOption, sharedOptions);
-		}
+	if (sharedOptions) {
+		pluginOption = Object.assign({}, pluginOption, sharedOptions, featureOptions(features, feature.id));
 	} else {
-		if (sharedOptions) {
-			pluginOption = Object.assign({}, pluginOption, sharedOptions, features[feature.id]);
-		} else {
-			pluginOption = Object.assign({}, pluginOption, features[feature.id]);
-		}
+		pluginOption = Object.assign({}, pluginOption, featureOptions(features, feature.id));
 	}
 
 	// postcss-preset-env : option overrides
@@ -76,4 +70,17 @@ export function formatStagedFeature(cssdbList, supportedBrowsers, features, feat
 		pluginOptions: pluginOption,
 		id: feature.id,
 	};
+}
+
+function featureOptions(features, featureId) {
+	if (!(featureId in features)) {
+		return undefined;
+	}
+
+	const value = features[featureId];
+	if (Array.isArray(value)) {
+		return value[1];
+	}
+
+	return value;
 }

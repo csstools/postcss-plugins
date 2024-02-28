@@ -62,7 +62,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			return true;
 		}
 
-		if (features[feature.id]) {
+		if (featureEnabledByOptions(features, feature.id) === true) {
 			// feature is explicitly enabled
 			logger.log(`  ${feature.id} does not meet the required vendor implementations but has been enabled by options`);
 			return true;
@@ -86,8 +86,9 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 		// TODO : this filter needs to be split up.
 		const isAllowedStage = feature.stage >= stage;
 		const isAllowedByType = enableClientSidePolyfills || !featuresWithClientSide.includes(feature.id);
-		const isDisabled = features[feature.id] === false;
-		const isAllowedFeature = features[feature.id] ? features[feature.id] : isAllowedStage && isAllowedByType;
+		const enabledByOptions = featureEnabledByOptions(features, feature.id);
+		const isDisabled = enabledByOptions === false;
+		const isAllowedFeature = enabledByOptions === true ? true : isAllowedStage && isAllowedByType;
 
 		if (isDisabled) {
 			logger.log(`  ${feature.id} has been disabled by options`);
@@ -101,7 +102,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			logger.log(`  ${feature.id} has been disabled by "enableClientSidePolyfills: false".`);
 		}
 
-		return isAllowedFeature;
+		return !isDisabled && isAllowedFeature;
 	}).map((feature) => {
 		return formatStagedFeature(cssdbList, supportedBrowsers, features, feature, sharedOptions, options, logger);
 	});
@@ -114,8 +115,9 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			return true;
 		}
 
-		if (feature.id in features) {
-			return features[feature.id];
+		const enabledByOptions = featureEnabledByOptions(features, feature.id);
+		if (enabledByOptions === true || enabledByOptions === false) {
+			return enabledByOptions;
 		}
 
 		const unsupportedBrowsers = browserslist(feature.browsers, {
@@ -134,4 +136,25 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	});
 
 	return supportedFeatures;
+}
+
+function featureEnabledByOptions(features, featureId) {
+	if (!(featureId in features)) {
+		return 'auto';
+	}
+
+	const value = features[featureId];
+	if (Array.isArray(value)) {
+		if (value[0] === true) {
+			return true;
+		}
+
+		if (value[0] === false) {
+			return false;
+		}
+
+		return 'auto';
+	}
+
+	return Boolean(value);
 }
