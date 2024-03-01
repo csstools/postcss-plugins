@@ -10,7 +10,7 @@ This little tool aims to show the channel values at each step of the process.
 <hr>
 
 <label id="color-input-label-1" for="color-input-1" style="--color: oklch(0.31398 0.268 29.2339);">Channel values for:</label>
-<textarea	id="color-input-1" class="color-input" rows="1">oklch(from red calc(l / 2) 0.268 h)</textarea>
+<textarea	id="color-input-1" class="color-input" rows="2">oklch(from red calc(l / 2) 0.268 h)</textarea>
 
 <div class="channel-group">
 	<div class="channel-group__label"></div>
@@ -57,7 +57,7 @@ This little tool aims to show the channel values at each step of the process.
 		line-height: 2;
 		padding: 2px 8px;
 		position: relative;
-		text-align: right;
+		text-align: left;
 	}
 
 	.color-input {

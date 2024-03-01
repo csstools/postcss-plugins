@@ -72,6 +72,8 @@ function renderResult() {
 			return;
 		}
 
+		const functionName = componentValue.getName().toLowerCase();
+
 		const originColor = (() => {
 			let didSeeFrom = false;
 
@@ -104,7 +106,7 @@ function renderResult() {
 			let didSeeOrigin = false;
 
 			let nodes = [];
-			let expectColorSpace = componentValue.getName().toLowerCase() === 'color';
+			let expectColorSpace = functionName === 'color';
 			let colorSpace = null;
 
 			for (let i = 0; i < componentValue.value.length; i++) {
@@ -161,10 +163,9 @@ function renderResult() {
 			return;
 		}
 
-		const functionNodeName = componentValue.getName().toLowerCase();
 		let passThroughColor = originColor;
-		let channelNames = ['l', 'c', 'h'];
-		switch (functionNodeName) {
+		let channelNames = ['-', '-', '-'];
+		switch (functionName) {
 			case 'rgb':
 				passThroughColor = parseComponentValue(tokenize({ css: `rgb(from ${originColor.toString()} r g b / alpha)` }));
 				channelNames = ['r', 'g', 'b'];
@@ -207,11 +208,21 @@ function renderResult() {
 				break;
 		}
 
+		outputChannel1Name.value = channelNames[0];
+		outputChannel2Name.value = channelNames[1];
+		outputChannel3Name.value = channelNames[2];
+		outputChannel4Name.value = 'alpha';
+
 		const passThroughColorValue = color(passThroughColor);
 		if (!passThroughColorValue) {
 			inputEl.style.outline = '2px solid rgb(255 0 0 / 70%)';
 			return;
 		}
+
+		outputChannel1Calc.value = channel1.toString();
+		outputChannel2Calc.value = channel2.toString();
+		outputChannel3Calc.value = channel3.toString();
+		outputChannel4Calc.value = alpha ? alpha.toString() : round(passThroughColorValue.alpha);
 
 		const outputColorValue = color(componentValue);
 		if (!outputColorValue) {
@@ -219,12 +230,9 @@ function renderResult() {
 			return;
 		}
 
-		inputEl.style.outline = 'none';
+		const outputColorValueStr = serializeOKLCH(outputColorValue).toString();
 
-		outputChannel1Name.value = channelNames[0];
-		outputChannel2Name.value = channelNames[1];
-		outputChannel3Name.value = channelNames[2];
-		outputChannel4Name.value = 'alpha';
+		inputEl.style.outline = 'none';
 
 		if (passThroughColorValue.colorNotation === 'rgb' || passThroughColorValue.colorNotation === 'hex') {
 			passThroughColorValue.channels = passThroughColorValue.channels.map((channel) => channel * 255);
@@ -235,13 +243,6 @@ function renderResult() {
 		outputChannel3Input.value = round(passThroughColorValue.channels[2]);
 		outputChannel4Input.value = round(passThroughColorValue.alpha);
 
-		outputChannel1Calc.value = channel1.toString();
-		outputChannel2Calc.value = channel2.toString();
-		outputChannel3Calc.value = channel3.toString();
-		outputChannel4Calc.value = alpha ? alpha.toString() : round(passThroughColorValue.alpha);
-
-		document.getElementById('color-input-label-1').style.setProperty('--color', serializeOKLCH(outputColorValue));
-
 		if (outputColorValue.colorNotation === 'rgb' || outputColorValue.colorNotation === 'hex') {
 			outputColorValue.channels = outputColorValue.channels.map((channel) => channel * 255);
 		}
@@ -250,6 +251,8 @@ function renderResult() {
 		outputChannel2Output.value = round(outputColorValue.channels[1]);
 		outputChannel3Output.value = round(outputColorValue.channels[2]);
 		outputChannel4Output.value = round(outputColorValue.alpha);
+
+		document.getElementById('color-input-label-1').style.setProperty('--color', outputColorValueStr);
 	});
 }
 
