@@ -170,47 +170,47 @@ function renderResult() {
 			case 'rgb':
 				passThroughColor = parseComponentValue(tokenize({ css: `rgb(from ${originColor.toString()} r g b / alpha)` }));
 				channelNames = ['r', 'g', 'b'];
-				channelPercentageReferenceValues = ['0 — 255', '0 — 255', '0 — 255'];
+				channelPercentageReferenceValues = ['0,255', '0,255', '0,255'];
 				break;
 			case 'hsl':
 				passThroughColor = parseComponentValue(tokenize({ css: `hsl(from ${originColor.toString()} h s l / alpha)` }));
 				channelNames = ['h', 's', 'l'];
-				channelPercentageReferenceValues = ['0 — 360', '0 — 100', '0 — 100'];
+				channelPercentageReferenceValues = ['0,360', '0,100', '0,100'];
 				break;
 			case 'hwb':
 				passThroughColor = parseComponentValue(tokenize({ css: `hwb(from ${originColor.toString()} h w b / alpha)` }));
 				channelNames = ['h', 'w', 'b'];
-				channelPercentageReferenceValues = ['0 — 360', '0 — 100', '0 — 100'];
+				channelPercentageReferenceValues = ['0,360', '0,100', '0,100'];
 				break;
 			case 'lab':
 				passThroughColor = parseComponentValue(tokenize({ css: `lab(from ${originColor.toString()} l a b / alpha)` }));
 				channelNames = ['l', 'a', 'b'];
-				channelPercentageReferenceValues = ['0 — 100', '-125 — 125', '-125 — 125'];
+				channelPercentageReferenceValues = ['0,100', '-125,125', '-125,125'];
 				break;
 			case 'oklab':
 				passThroughColor = parseComponentValue(tokenize({ css: `oklab(from ${originColor.toString()} l a b / alpha)` }));
 				channelNames = ['l', 'a', 'b'];
-				channelPercentageReferenceValues = ['0 — 1', '-0.4 — 0.4', '-0.4 — 0.4'];
+				channelPercentageReferenceValues = ['0,1', '-0.4,0.4', '-0.4,0.4'];
 				break;
 			case 'lch':
 				passThroughColor = parseComponentValue(tokenize({ css: `lch(from ${originColor.toString()} l c h / alpha)` }));
 				channelNames = ['l', 'c', 'h'];
-				channelPercentageReferenceValues = ['0 — 100', '0 — 150', '0 — 360'];
+				channelPercentageReferenceValues = ['0,100', '0,150', '0,360'];
 				break;
 			case 'oklch':
 				passThroughColor = parseComponentValue(tokenize({ css: `oklch(from ${originColor.toString()} l c h / alpha)` }));
 				channelNames = ['l', 'c', 'h'];
-				channelPercentageReferenceValues = ['0 — 1', '0 — 0.4', '0 — 360'];
+				channelPercentageReferenceValues = ['0,1', '0,0.4', '0,360'];
 				break;
 			case 'color':
 				if (colorSpace?.toString().includes('xyz')) {
 					passThroughColor = parseComponentValue(tokenize({ css: `color(from ${originColor.toString()} ${colorSpace.toString()} x y z / alpha)` }));
 					channelNames = ['x', 'y', 'z'];
-					channelPercentageReferenceValues = ['0 — 1', '0 — 1', '0 — 1'];
+					channelPercentageReferenceValues = ['0,1', '0,1', '0,1'];
 				} else if (colorSpace) {
 					passThroughColor = parseComponentValue(tokenize({ css: `color(from ${originColor.toString()} ${colorSpace.toString()} r g b / alpha)` }));
 					channelNames = ['r', 'g', 'b'];
-					channelPercentageReferenceValues = ['0 — 1', '0 — 1', '0 — 1'];
+					channelPercentageReferenceValues = ['0,1', '0,1', '0,1'];
 				}
 				break;
 
