@@ -14,9 +14,9 @@ This little tool aims to show the channel values at each step of the process.
 
 <div class="channel-group">
 	<div class="channel-group__label"></div>
-	<output class="color-output-channel-name" channel="1 name" for="color-input-1">l</output>
-	<output class="color-output-channel-name" channel="2 name" for="color-input-1">c</output>
-	<output class="color-output-channel-name" channel="3 name" for="color-input-1">h</output>
+	<output class="color-output-channel-name" channel="1 name" for="color-input-1">l <sup>0 — 1</sup></output>
+	<output class="color-output-channel-name" channel="2 name" for="color-input-1">c <sup>0 — 0.4</sup></output>
+	<output class="color-output-channel-name" channel="3 name" for="color-input-1">h <sup>0 — 360</sup></output>
 	<output class="color-output-channel-name" channel="4 name" for="color-input-1">alpha</output>
 </div>
 
@@ -96,6 +96,21 @@ This little tool aims to show the channel values at each step of the process.
 		font-size: 1rem;
 		max-width: 20%;
 		text-align: center;
+	}
+
+	.color-output-channel-name sup {
+		display: inline-block;
+		padding-left: 0.75rem;
+	}
+
+	.color-output-channel-name sup::before {
+		content: "[";
+		content: "[" / "";
+	}
+
+	.color-output-channel-name sup::after {
+		content: "]";
+		content: "]" / "";
 	}
 
 	#color-input-label-1 {
