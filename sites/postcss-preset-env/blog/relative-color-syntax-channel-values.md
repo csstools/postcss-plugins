@@ -44,6 +44,11 @@ This little tool aims to show the channel values at each step of the process.
 	<output class="color-output-channel" channel="4 output" for="color-input-1">1.000</output>
 </div>
 
+<hr>
+
+The indicated ranges of values correspond to 0% and 100% for each channel.  
+They are not the minimum and maximum allowed values, you can use values beyond these ranges.
+
 {% block scripts %}<script async defer src="{{ '/static/js/blog_relative_color_syntax_channel_values_2024_03_02.js' | addHash }}"></script>{% endblock %}
 
 <style>
