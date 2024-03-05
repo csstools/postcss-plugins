@@ -58,6 +58,48 @@ You can silence this warning with a new `silenceAtNestWarning` plugin option.
 
 ## Options
 
+### edition
+
+The default behavior is to transpile CSS following an older version of the CSS nesting specification.
+
+If you want to already use the latest version you can set the `edition` option to `2024-02`.
+
+```js
+<exportName>({
+	edition: '2024-02'
+})
+```
+
+#### `2021` (default)
+
+This version is a continuation of what existed before CSS nesting was implemented in browsers.  
+It made a few non-invasive changes to keep up with implementations but it is falling behind.
+
+In a feature version of this plugin this will no longer be the default.
+
+```pcss
+<example.css>
+
+/* becomes */
+
+<example.expect.css>
+```
+
+#### `2024-02`
+
+- usage of `:is()` pseudo-class is no longer optional
+- at rules are not combined with the `and` keyword
+- `@nest` is removed from the specification
+- declarations and nested rules/at-rules are no longer re-ordered
+
+```pcss
+<example.css>
+
+/* becomes */
+
+<example.edition-2024-02.expect.css>
+```
+
 ### noIsPseudoSelector
 
 #### Specificity
