@@ -1,10 +1,10 @@
-import cleanupParent from './cleanup-parent.js';
-import { options } from './options.js';
-import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
-import validAtrules from './valid-atrules.js';
-import { walkFunc } from './walk-func.js';
 import type { AtRule, Result, Rule } from 'postcss';
+import type { walkFunc } from './walk-func.js';
+import cleanupParent from '../../shared/lib/cleanup-parent.js';
 import groupDeclarations from './group-declarations.js';
+import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
+import validAtrules from '../../shared/lib/valid-atrules.js';
+import { options } from './options.js';
 
 export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options) {
 	// Group all declarations after the first one.

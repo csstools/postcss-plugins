@@ -7,16 +7,13 @@ a {
 a {
 		order: 2;
 }
-	}
 
-@media screen and (min-width: 480px), print and (min-width: 480px) {
+		@media (min-width: 480px) {
 
 a {
 			order: 3;
 }
 		}
-
-@media screen, print {
 
 a {
 
@@ -71,14 +68,14 @@ a {
 a {
 		order: 15;
 }
-	}
 
-@media screen and (min-width: 480px) {
+		@media (min-width: 480px) {
 
 a {
 			order: 16;
 }
 		}
+	}
 
 body:is(a) {
 		order: 17;

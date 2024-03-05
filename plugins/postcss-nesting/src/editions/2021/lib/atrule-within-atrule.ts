@@ -1,9 +1,9 @@
 import type { AtRule } from 'postcss';
-import cleanupParent from './cleanup-parent.js';
+import cleanupParent from '../../shared/lib/cleanup-parent.js';
 import groupDeclarations from './group-declarations.js';
 import mergeParams from './merge-params.js';
-import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
-import validAtrules from './valid-atrules.js';
+import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
+import validAtrules from '../../shared/lib/valid-atrules.js';
 
 export default function transformAtruleWithinAtrule(node: AtRule, parent: AtRule) {
 	// Group all declarations after the first one.

@@ -5,18 +5,19 @@ a {
 a {
 		order: 2;
 }
-	}
-@media (min-width: 100px) and (max-width: 200px) {
+		@media (max-width: 200px) {
 a {
 			order: 3;
 }
 		}
-@media (min-width: 100px) and (max-width: 200px) {
+			@media (max-width: 200px) {
 		:is(a b) {
 				order: 4;
 		}
 			}
-@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+	}
+@media screen, print and (color) {
+		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
@@ -24,6 +25,7 @@ a {
 				order: 6;
 			}
 		}
+	}
 a {
 	order: 1;
 }
@@ -31,18 +33,19 @@ a {
 a {
 		order: 2;
 }
-	}
-@media (min-width: 100px) and (max-width: 200px) {
+		@media (max-width: 200px) {
 a {
 			order: 3;
 }
 		}
-@media (min-width: 100px) and (max-width: 200px) {
+			@media (max-width: 200px) {
 		:is(a b) {
 				order: 4;
 		}
 			}
-@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+	}
+@media screen, print and (color) {
+		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
@@ -50,6 +53,7 @@ a {
 				order: 6;
 			}
 		}
+	}
 
 @media screen {
 
@@ -63,4 +67,15 @@ a {
 :is(a,a::after) {
 		order: 8;
 }
+	}
+
+
+@media screen {
+		@media screen {
+
+
+.foo {
+			order: 9;
+}
+		}
 	}

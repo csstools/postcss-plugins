@@ -1,10 +1,10 @@
-import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-rule.js';
-import transformNestRuleWithinRule, { isValidNestRuleWithinRule } from './nest-rule-within-rule.js';
-import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-rule.js';
-import transformAtruleWithinAtrule, { isAtruleWithinAtrule } from './atrule-within-atrule.js';
 import type { Container, Result } from 'postcss';
+import transformAtruleWithinAtrule, { isAtruleWithinAtrule } from './atrule-within-atrule.js';
+import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-rule.js';
+import transformNestRuleWithinRule, { isValidNestRuleWithinRule } from './nest-rule-within-rule.js';
+import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-rule.js';
+import { isAtRule, isNestRule, isRule } from '../../shared/lib/is-type-of-rule.js';
 import { options } from './options.js';
-import { isAtRule, isNestRule, isRule } from './is-type-of-rule.js';
 
 export default function walk(node: Container, result: Result, opts: options) {
 	node.each((child) => {

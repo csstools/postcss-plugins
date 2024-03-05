@@ -16,7 +16,7 @@ a {
 				order: 4;
 		}
 			}
-@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and (color) and (max-width: 300px), print and (color) and (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
@@ -42,7 +42,7 @@ a {
 				order: 4;
 		}
 			}
-@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and speech and (max-width: 300px), print and speech and (min-aspect-ratio: 16/9) {
+@media screen and (max-width: 300px), screen and (min-aspect-ratio: 16/9), print and (color) and (max-width: 300px), print and (color) and (min-aspect-ratio: 16/9) {
 a {
 			order: 5;
 }
@@ -64,3 +64,12 @@ a, a::after {
 		order: 8;
 }
 	}
+
+
+@media screen and screen {
+
+
+.foo {
+			order: 9;
+}
+		}

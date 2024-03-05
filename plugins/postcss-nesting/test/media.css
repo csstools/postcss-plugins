@@ -11,7 +11,7 @@ a {
 			}
 		}
 	}
-	@media screen, print and speech {
+	@media screen, print and (color) {
 		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
 			order: 5;
 			& c {
@@ -33,7 +33,7 @@ a {
 			}
 		}
 	}
-	@media screen, print and speech {
+	@media screen, print and (color) {
 		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
 			order: 5;
 			& c {
@@ -52,5 +52,14 @@ a, .a {
 a, a::after {
 	@media screen {
 		order: 8;
+	}
+}
+
+
+.foo {
+	@media screen {
+		@media screen {
+			order: 9;
+		}
 	}
 }
