@@ -1,0 +1,64 @@
+{
+	"name": "@csstools/stylelint-at-risk",
+	"description": "Warn on CSS features at risk of changes or removal",
+	"version": "1.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": "^14 || ^16 || >=18"
+	},
+	"type": "module",
+	"main": "index.mjs",
+	"files": [
+		"LICENSE.md",
+		"README.md",
+		"index.mjs"
+	],
+	"peerDependencies": {
+		"stylelint": "^16.2.1"
+	},
+	"devDependencies": {
+		"stylelint": "^16.2.1",
+		"stylelint-test-rule-node": "^0.2.1"
+	},
+	"scripts": {
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"test": "node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/at-risk#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins-stylelint/at-risk"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"csswg",
+		"standards",
+		"stylelint",
+		"stylelint-plugin"
+	],
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

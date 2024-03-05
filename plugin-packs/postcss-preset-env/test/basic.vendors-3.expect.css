@@ -620,7 +620,7 @@
 }
 
 .exponential-functions {
-	width: calc(1px * pow(2, 3));
+	width: 8px;
 }
 
 .out-of-gamut {
