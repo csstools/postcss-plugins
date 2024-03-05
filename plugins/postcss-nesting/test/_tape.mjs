@@ -191,6 +191,10 @@ postcssTape(plugin)({
 		message: 'supports mixin with nested rules',
 		plugins: [mixinPluginNestedRules(), plugin()],
 	},
+	'mixin-rule-order': {
+		message: 'preserves expected rule order with mixins',
+		plugins: [mixinPluginDeclaration(), plugin()],
+	},
 	'spec-examples': {
 		message: 'supports all spec examples',
 	},
