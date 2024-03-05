@@ -77,3 +77,11 @@ html {
 
 	margin: 0;
 }
+
+a b {
+		color: cyan
+	}
+
+a {color: blue;
+	color: green;
+}
