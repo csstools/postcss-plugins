@@ -55,10 +55,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"stylelint",
-		"stylelint-plugin",
 		"csswg",
-		"standards"
+		"standards",
+		"stylelint",
+		"stylelint-plugin"
 	],
 	"volta": {
 		"extends": "../../package.json"
