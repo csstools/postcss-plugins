@@ -4,6 +4,7 @@
 
 - Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.11`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#4011) (patch)
 - Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1204) (patch)
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1210) (minor)
 
 ### 3.0.8
 
