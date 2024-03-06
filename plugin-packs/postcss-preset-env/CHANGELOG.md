@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 9.5.0
+
+_March 6, 2024_
 
 - Add support for array options, e.g. `{ 'nesting-rules': ['auto', { noIsPseudoSelector: false }] }`
 - Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.11`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#4011) (patch)
