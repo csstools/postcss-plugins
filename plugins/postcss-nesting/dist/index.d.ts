@@ -19,7 +19,7 @@ export declare type pluginOptions2021 = {
 
 /** postcss-nesting plugin options */
 export declare type pluginOptions2024_02 = {
-    /** This option was removed. You must migrate your CSS to the latest speciation to continue using this plugin. */
+    /** @deprecated This option was removed. You must migrate your CSS to the latest speciation to continue using this plugin. */
     noIsPseudoSelector?: boolean;
 };
 

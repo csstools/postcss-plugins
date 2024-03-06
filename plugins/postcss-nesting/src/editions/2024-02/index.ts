@@ -4,24 +4,11 @@ import walk from './lib/walk.js';
 
 /** postcss-nesting plugin options */
 export type pluginOptions = {
-	/** This option was removed. You must migrate your CSS to the latest speciation to continue using this plugin. */
+	/** @deprecated This option was removed. You must migrate your CSS to the latest speciation to continue using this plugin. */
 	noIsPseudoSelector?: boolean,
 };
 
-const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
-	const options = Object.assign(
-		// Default options
-		{
-			noIsPseudoSelector: false,
-		},
-		// Provided options
-		opts,
-	);
-
-	if (options.noIsPseudoSelector) {
-		throw new Error('The `noIsPseudoSelector` option is no longer supported. Migrate your CSS to use the latest CSS nesting syntax.');
-	}
-
+const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-nesting',
 		Rule(rule, { result }) {
