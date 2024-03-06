@@ -161,6 +161,18 @@ test('surrounding whitespace', async () => {
 			expected_resolved: '#foo.foo.foo',
 			expected_flat: '.foo#foo.foo',
 		},
+		{
+			a: '&',
+			b: 'a, .a',
+			expected_resolved: ':is(a,.a)',
+			expected_flat: 'a, .a',
+		},
+		{
+			a: '&',
+			b: '::before',
+			expected_resolved: ':is(::before)',
+			expected_flat: '::before',
+		},
 	];
 
 	for (const { a, b, expected_resolved, expected_flat } of testCases) {

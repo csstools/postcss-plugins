@@ -1,65 +1,81 @@
 a {
 	order: 1;
-	@media (min-width: 100px) {
+}
+@media (min-width: 100px) {
+a {
 		order: 2;
+}
 		@media (max-width: 200px) {
+a {
 			order: 3;
+}
 		}
-		& b {
 			@media (max-width: 200px) {
+		:is(a b) {
 				order: 4;
-			}
 		}
+			}
 	}
-	@media screen, print and (color) {
+@media screen, print and (color) {
 		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
+a {
 			order: 5;
-			& c {
+}
+			a c {
 				order: 6;
 			}
 		}
 	}
-}
 a {
 	order: 1;
-	@media (min-width: 100px) {
+}
+@media (min-width: 100px) {
+a {
 		order: 2;
+}
 		@media (max-width: 200px) {
+a {
 			order: 3;
+}
 		}
-		& b {
 			@media (max-width: 200px) {
+		:is(a b) {
 				order: 4;
-			}
 		}
+			}
 	}
-	@media screen, print and (color) {
+@media screen, print and (color) {
 		@media (max-width: 300px), (min-aspect-ratio: 16/9) {
+a {
 			order: 5;
-			& c {
+}
+			a c {
 				order: 6;
 			}
 		}
 	}
-}
 
-a, .a {
-	@media screen {
+@media screen {
+
+:is(a,.a) {
 		order: 7;
-	}
 }
+	}
 
-a, a::after {
-	@media screen {
+@media screen {
+
+:is(a,a::after) {
 		order: 8;
-	}
 }
+	}
+
+
+@media screen {
+		@media screen {
 
 
 .foo {
-	@media screen {
-		@media screen {
 			order: 9;
+}
 		}
 	}
-}

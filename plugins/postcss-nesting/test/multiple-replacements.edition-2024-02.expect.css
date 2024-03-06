@@ -1,0 +1,28 @@
+
+	.a.b .a {
+		order: 1;
+	}
+
+.a.b :is(.a) {
+		order: 2;
+	}
+
+.a.b :not(.a + .a) {
+		order: 3;
+	}
+
+.a.b.a {
+		order: 4;
+	}
+
+.a.b:is(.a) {
+		order: 5;
+	}
+
+.a.b:not(.a + .a) {
+		order: 6;
+	}
+
+a + a {
+		order: 7
+	}

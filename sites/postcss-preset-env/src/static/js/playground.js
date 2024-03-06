@@ -42,9 +42,9 @@ const currentConfig = stateAtLoad.config ?? {
 		blockDirection: 'top-to-bottom',
 	},
 	features: {
-		'nesting-rules': {
-			noIsPseudoSelector: false,
-		},
+		'nesting-rules': ['auto', {
+			edition: '2024-02',
+		}],
 	},
 };
 

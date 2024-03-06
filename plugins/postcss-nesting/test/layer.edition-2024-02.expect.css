@@ -1,0 +1,57 @@
+.unlayered {
+	contain: layout inline-size;
+}
+
+.partially-layered {
+	background-color: blue;
+	height: 100px;
+	width: 100px;
+}
+
+@layer A {
+
+.partially-layered {
+		background-color: red;
+}
+	}
+
+/* see: https: //drafts.csswg.org/css-nesting/#nesting */
+/* Example usage with Cascade Layers */
+@layer base {
+	html {
+		block-size: 100%;
+	}
+
+		html body {
+			min-block-size: 100%;
+		}
+}
+
+/* equivalent to
+  @layer base {
+    html { block-size: 100%; }
+    html body { min-block-size: 100%; }
+  }
+*/
+
+/* Example nesting Cascade Layers */
+@layer base {
+	html {
+		block-size: 100%;
+	}
+
+		@layer support {
+			html body {
+				min-block-size: 100%;
+			}
+		}
+}
+
+/* equivalent to
+  @layer base {
+    html { block-size: 100%; }
+  }
+  @layer base.support {
+    html body { min-block-size: 100%; }
+  }
+*/

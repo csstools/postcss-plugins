@@ -1,0 +1,7 @@
+
+	a b {color: blue;display: flex;
+	}
+:is(a b) { color: white; }
+a b {
+		display: inline-flex;
+	}
