@@ -75,7 +75,7 @@ If you want to already use the latest version you can set the `edition` option t
 This version is a continuation of what existed before CSS nesting was implemented in browsers.  
 It made a few non-invasive changes to keep up with implementations but it is falling behind.
 
-In a feature version of this plugin this will no longer be the default.
+In a future version of this plugin this will no longer be the default.
 
 ```pcss
 <example.css>
