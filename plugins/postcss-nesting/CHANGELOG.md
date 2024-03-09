@@ -1,5 +1,11 @@
 # Changes to PostCSS Nesting
 
+### 12.1.0
+
+_March 6, 2024_
+
+- Add the `edition` plugin option to control which CSS nesting specification version should be used. The default is `2021` but you can also set it to the newer `2024-02` edition to have more modern behavior.
+
 ### 12.0.4
 
 _February 26, 2024_

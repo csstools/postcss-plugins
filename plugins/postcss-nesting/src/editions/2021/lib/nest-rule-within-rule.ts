@@ -1,10 +1,10 @@
-import { comma } from './list.js';
-import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
-import cleanupParent from './cleanup-parent.js';
-import mergeSelectors from './merge-selectors/merge-selectors.js';
 import type { AtRule, Result, Rule } from 'postcss';
-import { walkFunc } from './walk-func.js';
+import type { walkFunc } from './walk-func.js';
+import mergeSelectors from './merge-selectors/merge-selectors.js';
+import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
+import { comma } from './list.js';
 import { options } from './options.js';
+import cleanupParent from '../../shared/lib/cleanup-parent.js';
 
 export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options) {
 	let selectors = [];

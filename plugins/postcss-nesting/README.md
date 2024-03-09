@@ -26,12 +26,16 @@ you might want to use [PostCSS Nested] instead.
 	@media (prefers-color-scheme: dark) {
 		color: cyan;
 	}
+
+	color: pink;
 }
 
 /* becomes */
 
 .foo {
 	color: red;
+
+	color: pink;
 }
 .foo:hover {
 		color: green;
@@ -99,6 +103,112 @@ postcssNesting({
 ```
 
 ## Options
+
+### edition
+
+The default behavior is to transpile CSS following an older version of the CSS nesting specification.
+
+If you want to already use the latest version you can set the `edition` option to `2024-02`.
+
+```js
+postcssNesting({
+	edition: '2024-02'
+})
+```
+
+#### `2021` (default)
+
+This version is a continuation of what existed before CSS nesting was implemented in browsers.  
+It made a few non-invasive changes to keep up with implementations but it is falling behind.
+
+In a future version of this plugin this will no longer be the default.
+
+```pcss
+.foo {
+	color: red;
+
+	&:hover {
+		color: green;
+	}
+
+	> .bar {
+		color: blue;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		color: cyan;
+	}
+
+	color: pink;
+}
+
+/* becomes */
+
+.foo {
+	color: red;
+
+	color: pink;
+}
+.foo:hover {
+		color: green;
+	}
+.foo > .bar {
+		color: blue;
+	}
+@media (prefers-color-scheme: dark) {
+	.foo {
+		color: cyan;
+}
+	}
+```
+
+#### `2024-02`
+
+- usage of `:is()` pseudo-class is no longer optional
+- at rules are not combined with the `and` keyword
+- `@nest` is removed from the specification
+- declarations and nested rules/at-rules are no longer re-ordered
+
+```pcss
+.foo {
+	color: red;
+
+	&:hover {
+		color: green;
+	}
+
+	> .bar {
+		color: blue;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		color: cyan;
+	}
+
+	color: pink;
+}
+
+/* becomes */
+
+.foo {
+	color: red;
+}
+.foo:hover {
+		color: green;
+	}
+.foo  > .bar {
+		color: blue;
+	}
+@media (prefers-color-scheme: dark) {
+	.foo {
+		color: cyan;
+}
+	}
+.foo {
+
+	color: pink;
+}
+```
 
 ### noIsPseudoSelector
 

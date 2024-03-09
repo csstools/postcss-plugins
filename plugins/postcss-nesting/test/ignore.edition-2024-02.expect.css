@@ -1,0 +1,29 @@
+a, b {
+	order: 1;
+}
+:is(a,b) c,:is(a,b) d {
+		order: 2;
+	}
+:scope e {
+	order: 3;
+}
+f:is(g) {
+		order: 5;
+	}
+a, b {
+	order: 1;
+}
+:is(a,b) c,:is(a,b) d {
+		order: 2;
+	}
+:scope e {
+	order: 3;
+}
+f:is(h) {
+		order: 5;
+	}
+f {
+	&|i {
+		order: 6;
+	}
+}

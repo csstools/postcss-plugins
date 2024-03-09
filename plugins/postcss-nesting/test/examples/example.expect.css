@@ -1,5 +1,7 @@
 .foo {
 	color: red;
+
+	color: pink;
 }
 .foo:hover {
 		color: green;

@@ -68,3 +68,14 @@ html {
 		background: green;
 }
 	}
+
+a {
+	color: green;
+}
+
+a b {
+		color: cyan
+	}
+
+a {color: blue;
+}

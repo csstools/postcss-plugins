@@ -12,4 +12,6 @@
 	@media (prefers-color-scheme: dark) {
 		color: cyan;
 	}
+
+	color: pink;
 }

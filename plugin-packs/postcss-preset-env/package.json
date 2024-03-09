@@ -1,7 +1,7 @@
 {
 	"name": "postcss-preset-env",
 	"description": "Convert modern CSS into something browsers understand",
-	"version": "9.4.0",
+	"version": "9.5.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -81,12 +81,12 @@
 		"@csstools/postcss-text-decoration-shorthand": "^3.0.4",
 		"@csstools/postcss-trigonometric-functions": "^3.0.5",
 		"@csstools/postcss-unset-value": "^3.0.1",
-		"autoprefixer": "^10.4.17",
+		"autoprefixer": "^10.4.18",
 		"browserslist": "^4.22.3",
 		"css-blank-pseudo": "^6.0.1",
 		"css-has-pseudo": "^6.0.2",
 		"css-prefers-color-scheme": "^9.0.1",
-		"cssdb": "^7.11.0",
+		"cssdb": "^7.11.1",
 		"postcss-attribute-case-insensitive": "^6.0.3",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^6.0.5",
@@ -104,7 +104,7 @@
 		"postcss-image-set-function": "^6.0.3",
 		"postcss-lab-function": "^6.0.10",
 		"postcss-logical": "^7.0.1",
-		"postcss-nesting": "^12.0.4",
+		"postcss-nesting": "^12.1.0",
 		"postcss-opacity-percentage": "^2.0.0",
 		"postcss-overflow-shorthand": "^5.0.1",
 		"postcss-page-break": "^3.0.4",
@@ -119,7 +119,7 @@
 	"devDependencies": {
 		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.12.0"
+		"@webref/css": "^6.12.1"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",

@@ -1,9 +1,9 @@
-import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
-import cleanupParent from './cleanup-parent.js';
-import mergeSelectors from './merge-selectors/merge-selectors.js';
 import type { Result, Rule } from 'postcss';
-import { options } from './options.js';
+import cleanupParent from '../../shared/lib/cleanup-parent.js';
 import groupDeclarations from './group-declarations.js';
+import mergeSelectors from './merge-selectors/merge-selectors.js';
+import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
+import { options } from './options.js';
 
 export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result, opts: options) {
 	let selectors = [];
