@@ -109,7 +109,7 @@
 	color-6: lab(1% 1 1 / calc(20% * 3));
 }
 
-@supports (color: lab(0% 0 0)) {
+@supports (color: lab(0% 0 0%)) {
 .test-alpha-lab {
 	color-4: lab(1% 1 1 / var(--foo));
 }
@@ -128,7 +128,7 @@
 	color-6: lch(1% 1 1 / calc(20% * 3));
 }
 
-@supports (color: lab(0% 0 0)) {
+@supports (color: lab(0% 0 0%)) {
 .test-alpha-lch {
 	color-4: lch(1% 1 1 / var(--foo));
 }

@@ -9,7 +9,7 @@
 	--firebrick-var: lch(40% var(--fifty) 34.5 / var(--opacity-50));
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--firebrick: color(display-p3 0.70967 0 0.17938);
 	--firebrick-a50: color(display-p3 0.68093 0.12342 0.14054 / 0.5);

@@ -606,7 +606,7 @@
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 .gradients-interpolation-method {
 	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
 }
@@ -676,7 +676,7 @@
 	color: light-dark(lch(from color(display-p3 0.50566 0.0781 0) l c h), magenta);
 }
 
-@supports (color: rgb(from red r g b)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .schemed-colors {
 	color: var(--csstools-color-scheme--light, lch(from rgb(141, 0, 0) l c h)) var(--csstools-color-scheme--dark, magenta);
 }
