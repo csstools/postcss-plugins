@@ -124,7 +124,7 @@
 	order: -90deg;
 	order: 45deg;
 	order: 0deg;
-	order: calc(-1 * 0deg);
+	order: -0deg;
 	order: 45deg; /* 45deg */
 	order: 45deg; /* 45deg */
 	order: 45deg; /* 45deg */
@@ -150,14 +150,14 @@
 	order: -90deg;
 	order: -90deg;
 	order: -45deg;
-	order: calc(-1 * 0deg);
+	order: -0deg;
 
 	order: -180deg;
 	order: -180deg;
 	order: -180deg;
-	order: calc(-1 * 0deg);
-	order: calc(-1 * 0deg);
-	order: calc(-1 * 0deg);
+	order: -0deg;
+	order: -0deg;
+	order: -0deg;
 
 	order: 180deg;
 	order: 180deg;

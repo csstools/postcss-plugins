@@ -1,11 +1,11 @@
 import type { Calculation } from '../calculation';
-import type { ComponentValue, SimpleBlockNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
-import { TokenType } from '@csstools/css-tokenizer';
+import { TokenType, NumberType } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
-import { isCommentNode, FunctionNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { isCommentNode, FunctionNode, TokenNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { multiplication } from '../operation/multiplication';
 import { resolveGlobalsAndConstants } from './globals-and-constants';
 import { solveACos } from './acos';
@@ -31,6 +31,7 @@ import { subtraction } from '../operation/subtraction';
 import { unary } from '../operation/unary';
 import { solveLog } from './log';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { isNone } from '../util/is-none';
 
 export const mathFunctions = new Map([
 	['abs', abs],
@@ -217,12 +218,7 @@ function singleNodeSolver(fnNode: FunctionNode, globals: Globals, solveFn: (node
 		globals,
 	);
 
-	const a = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		nodes,
-	), globals));
-
+	const a = solve(calc(calcWrapper(nodes), globals));
 	if (a === -1) {
 		return -1;
 	}
@@ -262,22 +258,12 @@ function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, so
 		}
 	}
 
-	const a = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		aValue,
-	), globals));
-
+	const a = solve(calc(calcWrapper(aValue), globals));
 	if (a === -1) {
 		return -1;
 	}
 
-	const b = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		bValue,
-	), globals));
-
+	const b = solve(calc(calcWrapper(bValue), globals));
 	if (b === -1) {
 		return -1;
 	}
@@ -314,11 +300,7 @@ function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, solveFn: (n
 				return -1;
 			}
 
-			const solvedChunk = solve(calc(new FunctionNode(
-				[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-				[TokenType.CloseParen, ')', -1, -1, undefined],
-				chunks[i],
-			), globals));
+			const solvedChunk = solve(calc(calcWrapper(chunks[i]), globals));
 			if (solvedChunk === -1) {
 				return -1;
 			}
@@ -367,32 +349,41 @@ function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1 {
 		}
 	}
 
-	const minimum = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		minimumValue,
-	), globals));
-
-	if (minimum === -1) {
-		return -1;
+	const minimumIsNone = isNone(minimumValue);
+	const maximumIsNone = isNone(maximumValue);
+	if (minimumIsNone && maximumIsNone) {
+		return calc(calcWrapper(centralValue), globals);
 	}
 
-	const central = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		centralValue,
-	), globals));
-
+	const central = solve(calc(calcWrapper(centralValue), globals));
 	if (central === -1) {
 		return -1;
 	}
 
-	const maximum = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		maximumValue,
-	), globals));
+	{
+		if (minimumIsNone) {
+			const maximum = solve(calc(calcWrapper(maximumValue), globals));
+			if (maximum === -1) {
+				return -1;
+			}
 
+			return solveMin(minWrapper(central, maximum), [central, maximum]);
+		} else if (maximumIsNone) {
+			const minimum = solve(calc(calcWrapper(minimumValue), globals));
+			if (minimum === -1) {
+				return -1;
+			}
+
+			return solveMax(maxWrapper(minimum, central), [minimum, central]);
+		}
+	}
+
+	const minimum = solve(calc(calcWrapper(minimumValue), globals));
+	if (minimum === -1) {
+		return -1;
+	}
+
+	const maximum = solve(calc(calcWrapper(maximumValue), globals));
 	if (maximum === -1) {
 		return -1;
 	}
@@ -422,6 +413,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 	);
 
 	let roundingStrategy = '';
+	let hasComma = false;
 	const aValue: Array<ComponentValue> = [];
 	const bValue: Array<ComponentValue> = [];
 
@@ -449,6 +441,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 				}
 
 				if (focus === aValue) {
+					hasComma = true;
 					focus = bValue;
 					continue;
 				}
@@ -460,22 +453,20 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 		}
 	}
 
-	const a = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		aValue,
-	), globals));
-
+	const a = solve(calc(calcWrapper(aValue), globals));
 	if (a === -1) {
 		return -1;
 	}
 
-	const b = solve(calc(new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
-		bValue,
-	), globals));
+	if (!hasComma && bValue.length === 0) {
+		bValue.push(
+			new TokenNode(
+				[TokenType.Number, '1', -1, -1, { value: 1, type: NumberType.Integer }],
+			),
+		);
+	}
 
+	const b = solve(calc(calcWrapper(bValue), globals));
 	if (b === -1) {
 		return -1;
 	}
@@ -549,4 +540,36 @@ function hypot(hypotNode: FunctionNode, globals: Globals): Calculation | -1 {
 
 function log(logNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return variadicNodesSolver(logNode, globals, solveLog);
+}
+
+function calcWrapper(v: Array<ComponentValue>) {
+	return new FunctionNode(
+		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		v,
+	);
+}
+
+function minWrapper(a: ComponentValue, b: ComponentValue) {
+	return new FunctionNode(
+		[TokenType.Function, 'min(', -1, -1, { value: 'min' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		[
+			a,
+			new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+			b,
+		],
+	);
+}
+
+function maxWrapper(a: ComponentValue, b: ComponentValue) {
+	return new FunctionNode(
+		[TokenType.Function, 'max(', -1, -1, { value: 'max' }],
+		[TokenType.CloseParen, ')', -1, -1, undefined],
+		[
+			a,
+			new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+			b,
+		],
+	);
 }

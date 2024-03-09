@@ -28,6 +28,13 @@ export function patchMinusZero(x: TokenNode | FunctionNode | -1): TokenNode | Fu
 		return x;
 	}
 
-	token[1] = `calc(-1 * ${token[1]})`;
+	if (token[0] === TokenType.Percentage) {
+		token[1] = '-0%';
+	} else if (token[0] === TokenType.Dimension) {
+		token[1] = '-0' + token[4].unit;
+	} else {
+		token[1] = '-0';
+	}
+
 	return x;
 }

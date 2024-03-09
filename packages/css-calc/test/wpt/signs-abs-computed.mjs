@@ -77,8 +77,8 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('calc(sign(calc(-1 * 0)))'),
-	'calc(-1 * 0)',
+	calc('calc(sign(-0))'),
+	'-0',
 );
 
 assert.strictEqual(
@@ -372,78 +372,78 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0px))'),
-	'calc(-1 * 0)',
+	calc('sign(-0px)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0cm))'),
-	'calc(-1 * 0)',
+	calc('sign(-0cm)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0mm))'),
-	'calc(-1 * 0)',
+	calc('sign(-0mm)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0Q))'),
-	'calc(-1 * 0)',
+	calc('sign(-0Q)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0in))'),
-	'calc(-1 * 0)',
+	calc('sign(-0in)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0pc))'),
-	'calc(-1 * 0)',
+	calc('sign(-0pc)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0pt))'),
-	'calc(-1 * 0)',
+	calc('sign(-0pt)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0em))'),
-	'calc(-1 * 0)',
+	calc('sign(-0em)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0ex))'),
-	'calc(-1 * 0)',
+	calc('sign(-0ex)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0ch))'),
-	'calc(-1 * 0)',
+	calc('sign(-0ch)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0rem))'),
-	'calc(-1 * 0)',
+	calc('sign(-0rem)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0vh))'),
-	'calc(-1 * 0)',
+	calc('sign(-0vh)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0vw))'),
-	'calc(-1 * 0)',
+	calc('sign(-0vw)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0vmin))'),
-	'calc(-1 * 0)',
+	calc('sign(-0vmin)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0vmax))'),
-	'calc(-1 * 0)',
+	calc('sign(-0vmax)'),
+	'-0',
 );
 
 assert.strictEqual(
@@ -477,23 +477,23 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0deg))'),
-	'calc(-1 * 0)',
+	calc('sign(-0deg)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0grad))'),
-	'calc(-1 * 0)',
+	calc('sign(-0grad)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0rad))'),
-	'calc(-1 * 0)',
+	calc('sign(-0rad)'),
+	'-0',
 );
 
 assert.strictEqual(
-	calc('sign(calc(-1 * 0turn))'),
-	'calc(-1 * 0)',
+	calc('sign(-0turn)'),
+	'-0',
 );
 
 assert.strictEqual(

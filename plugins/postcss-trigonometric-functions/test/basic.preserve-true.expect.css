@@ -215,7 +215,7 @@
 	order: atan(1);
 	order: 0deg;
 	order: atan(0);
-	order: calc(-1 * 0deg);
+	order: -0deg;
 	order: atan(calc(-1 * 0));
 	order: 45deg;
 	order: atan(tan(45deg)); /* 45deg */
@@ -264,7 +264,7 @@
 	order: atan2(-1, 0);
 	order: -45deg;
 	order: atan2(-1, 1);
-	order: calc(-1 * 0deg);
+	order: -0deg;
 	order: atan2(-1, infinity);
 
 	order: -180deg;
@@ -274,11 +274,11 @@
 	order: atan2(calc(-1 * 0), -1);
 	order: -180deg;
 	order: atan2(calc(-1 * 0), calc(-1 * 0));
-	order: calc(-1 * 0deg);
+	order: -0deg;
 	order: atan2(calc(-1 * 0), 0);
-	order: calc(-1 * 0deg);
+	order: -0deg;
 	order: atan2(calc(-1 * 0), 1);
-	order: calc(-1 * 0deg);
+	order: -0deg;
 	order: atan2(calc(-1 * 0), infinity);
 
 	order: 180deg;
