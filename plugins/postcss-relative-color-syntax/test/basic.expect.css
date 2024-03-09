@@ -13,7 +13,7 @@
 	--color-rcs-14: hsla(from blue h s l / alpha);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 .valid {
 	--color-rcs-8: color(display-p3 0.50566 0.0781 0);
 	--color-rcs-9: color(display-p3 0.48896 0.1211 0);

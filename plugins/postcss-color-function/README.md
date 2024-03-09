@@ -90,7 +90,7 @@ postcssColorFunction({ preserve: true })
 	--a-color: rgb(164, 49, 43);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--a-color: color(srgb 0.64331 0.19245 0.16771);
 }

@@ -130,13 +130,13 @@
 	color-5: oklab(1% 0.01 0.01 /);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 .test-alpha-oklab {
 	color-4: color(display-p3 0.00015 0 0 / var(--foo));
 }
 }
 
-@supports (color: oklab(0% 0 0)) {
+@supports (color: oklab(0% 0 0%)) {
 .test-alpha-oklab {
 	color-4: oklab(1% 0.01 0.01 / var(--foo));
 }
@@ -156,13 +156,13 @@
 	color-5: oklch(1% 0.01 0.01 /);
 }
 
-@supports (color: color(display-p3 0 0 0)) {
+@supports (color: color(display-p3 0 0 0%)) {
 .test-alpha-oklch {
 	color-4: color(display-p3 0.00009 0 0.00001 / var(--foo));
 }
 }
 
-@supports (color: oklab(0% 0 0)) {
+@supports (color: oklab(0% 0 0%)) {
 .test-alpha-oklch {
 	color-4: oklch(1% 0.01 0.01 / var(--foo));
 }
