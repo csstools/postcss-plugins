@@ -360,7 +360,7 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 	return colorData;
 }
 
-export function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, colors: ColorMixColors | false): ColorData | false {
+function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, colors: ColorMixColors | false): ColorData | false {
 	if (!colors) {
 		return false;
 	}

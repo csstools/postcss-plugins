@@ -4,30 +4,34 @@ import { parse } from '../util/parse.mjs';
 import { serialize_sRGB_data } from '../util/serialize.mjs';
 
 const tests = [
-	['contrast-color(black)', 'rgb(222, 222, 222)'],
-	['contrast-color(#333)', 'rgb(232, 232, 232)'],
-	['contrast-color(grey)', 'rgb(0, 0, 0)'],
-	['contrast-color(#ccc)', 'rgb(25, 25, 25)'],
-	['contrast-color(white)', 'rgb(34, 34, 34)'],
-	['contrast-color(#1234b0)', 'rgb(229, 235, 249)'],
-	['contrast-color(#b012a0)', 'rgb(255, 255, 255)'],
+	['contrast-color( black max )', 'rgb(255, 255, 255)'],
+	['contrast-color(#333/* */max/* */)', 'rgb(255, 255, 255)'],
+	['contrast-color(grey max)', 'rgb(0, 0, 0)'],
+	['contrast-color(#ccc max)', 'rgb(0, 0, 0)'],
+	['contrast-color(white max)', 'rgb(0, 0, 0)'],
+	['contrast-color(#1234b0 max)', 'rgb(255, 255, 255)'],
+	['contrast-color(#b012a0 max)', 'rgb(255, 255, 255)'],
 
-	['contrast-color(rgb(0 0 0))', 'rgb(222, 222, 222)'],
-	['contrast-color(color(srgb 0 0 0))', 'rgb(222, 222, 222)'],
-	['contrast-color(color(display-p3 0 0 0))', 'rgb(222, 222, 222)'],
-	['contrast-color(rgb(255 255 255))', 'rgb(34, 34, 34)'],
-	['contrast-color(color(srgb 1 1 1))', 'rgb(34, 34, 34)'],
-	['contrast-color(color(display-p3 1 1 1))', 'rgb(34, 34, 34)'],
+	['contrast-color(rgb(0 0 0) max)', 'rgb(255, 255, 255)'],
+	['contrast-color(color(srgb 0 0 0) max)', 'rgb(255, 255, 255)'],
+	['contrast-color(color(display-p3 0 0 0) max)', 'rgb(255, 255, 255)'],
+	['contrast-color(rgb(255 255 255) max)', 'rgb(0, 0, 0)'],
+	['contrast-color(color(srgb 1 1 1) max)', 'rgb(0, 0, 0)'],
+	['contrast-color(color(display-p3 1 1 1) max)', 'rgb(0, 0, 0)'],
 
-	['contrast-color(rgb(0 0 0 / 0))', 'rgb(222, 222, 222)'],
-	['contrast-color(rgb(0 0 0 / 0.5))', 'rgb(222, 222, 222)'],
-	['contrast-color(rgb(255 255 255 / 0))', 'rgb(34, 34, 34)'],
-	['contrast-color(rgb(255 255 255 / 0.5))', 'rgb(34, 34, 34)'],
+	['contrast-color(rgb(0 0 0 / 0) max)', 'rgb(255, 255, 255)'],
+	['contrast-color(rgb(0 0 0 / 0.5) max)', 'rgb(255, 255, 255)'],
+	['contrast-color(rgb(255 255 255 / 0) max)', 'rgb(0, 0, 0)'],
+	['contrast-color(rgb(255 255 255 / 0.5) max)', 'rgb(0, 0, 0)'],
 
-	['contrast-color(contrast-color(#b012a0))', 'rgb(34, 34, 34)'],
+	['contrast-color(contrast-color(#b012a0 max) max)', 'rgb(0, 0, 0)'],
 
-	['contrast-color(#3b9595)', 'rgb(0, 0, 0)'],
-	['contrast-color(contrast-color(contrast-color(#3b9595)))', 'rgb(28, 28, 28)'],
+	['contrast-color(#3b9595 max)', 'rgb(0, 0, 0)'],
+	['contrast-color(contrast-color(contrast-color(#3b9595 max) max) max)', 'rgb(0, 0, 0)'],
+
+	// ignore
+	['contrast-color( black )', ''],
+	['contrast-color( black min )', ''],
 ];
 
 for (const test of tests) {
@@ -45,9 +49,9 @@ for (const test of tests) {
 
 {
 	[
-		'contrast-color(black)',
-		'color-mix(in srgb, contrast-color(black), contrast-color(white))',
-		'rgb(from contrast-color(black) r g b)',
+		'contrast-color(black max)',
+		'color-mix(in srgb, contrast-color(black max), contrast-color(white max))',
+		'rgb(from contrast-color(black max) r g b)',
 	].forEach((testCase) => {
 		assert.ok(
 			color(parse(testCase)).syntaxFlags.has('experimental'),

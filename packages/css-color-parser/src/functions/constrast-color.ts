@@ -2,14 +2,16 @@ import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from '../color-notation';
-import { SyntaxFlag, colorDataTo, colorData_to_XYZ_D50 } from '../color-data';
-import { isCommentNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { SyntaxFlag, colorData_to_XYZ_D50 } from '../color-data';
+import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { Color } from '@csstools/color-helpers';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
-import { colorMixPolar } from './color-mix';
+import { TokenType } from '@csstools/css-tokenizer';
+import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	let backgroundColorData: ColorData | false = false;
+	let maxKeyword: boolean = false;
 
 	for (let i = 0; i < colorMixNode.value.length; i++) {
 		const node = colorMixNode.value[i];
@@ -17,19 +19,28 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 			continue;
 		}
 
-		if (backgroundColorData) {
-			return false;
+		if (!backgroundColorData) {
+			backgroundColorData = colorParser(node);
+			if (backgroundColorData) {
+				continue;
+			}
 		}
 
-		backgroundColorData = colorParser(node);
-		if (backgroundColorData) {
-			continue;
+		if (backgroundColorData && !maxKeyword) {
+			if (
+				isTokenNode(node) &&
+				node.value[0] === TokenType.Ident &&
+				toLowerCaseAZ(node.value[4].value) === 'max'
+			) {
+				maxKeyword = true;
+				continue;
+			}
 		}
 
 		return false;
 	}
 
-	if (!backgroundColorData) {
+	if (!backgroundColorData || !maxKeyword) {
 		return false;
 	}
 
@@ -48,35 +59,10 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 	const contrastWhite = contrastRatio(backgroundColorData.channels, [1, 1, 1]);
 	const contrastBlack = contrastRatio(backgroundColorData.channels, [0, 0, 0]);
 
-	let lighten = false;
 	if (contrastWhite > contrastBlack) {
 		colorData.channels = [1, 1, 1];
-		lighten = true;
 	} else {
 		colorData.channels = [0, 0, 0];
-	}
-
-	if (Math.max(contrastWhite, contrastBlack) <= 8) {
-		return colorData;
-	}
-
-	// oklch has a larger area that maps to black than the area that maps to white.
-	// we mix more of the original color into a black contrast color to compensate.
-	const options = [
-		lighten ? 90 : 75,
-		lighten ? 92.5 : 80,
-		lighten ? 95 : 85,
-	];
-
-	for (const option of options) {
-		const mixedColor = mix(colorData, option, backgroundColorData, 100 - option);
-		const mixedColorSrgb = colorDataTo(mixedColor, ColorNotation.sRGB);
-		mixedColorSrgb.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(mixedColorSrgb).channels);
-
-		if (contrastRatio(backgroundColorData.channels, mixedColorSrgb.channels) > 7.5) {
-			colorData.channels = mixedColorSrgb.channels;
-			return colorData;
-		}
 	}
 
 	return colorData;
@@ -102,24 +88,4 @@ function contrastRatio(color1: Color, color2: Color): number {
 	const l2 = Math.min(color1luminance, color2luminance);
 
 	return (l1 + 0.05) / (l2 + 0.05);
-}
-
-function mix(colorData: ColorData, colorDataPercentage: number, backgroundColorData: ColorData, backgroundColorDataPercentage: number): ColorData {
-	const mixedColor = colorMixPolar('oklch', 'shorter', {
-		a: {
-			color: { ...colorData, alpha: 1 },
-			percentage: colorDataPercentage,
-		},
-		b: {
-			color: { ...backgroundColorData, alpha: 1 },
-			percentage: backgroundColorDataPercentage,
-		},
-		alphaMultiplier: 1,
-	});
-
-	if (!mixedColor) {
-		return colorData;
-	}
-
-	return mixedColor;
 }

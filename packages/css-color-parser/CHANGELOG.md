@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (minor)
+
+- Add support for `contrast-color( <color> max )`
+
 ### 1.5.2
 
 _February 19, 2024_
