@@ -14,7 +14,7 @@
 	color-7: rgb(178 34 34 / calc(1 / 2));
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .test-rgb {
 	color-6: rgb(178 34 34 / var(--alpha-50));
 }
@@ -77,7 +77,7 @@
 	color-13: hsl(3.14159rad 100% 50 / calc(1 / 2));
 }
 
-@supports (color: hsl(0 0% 0 / 0)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 .test-hsl {
 	color-12: hsl(3.14159rad 100% 50 / var(--alpha-50));
 }

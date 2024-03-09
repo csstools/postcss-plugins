@@ -6,14 +6,14 @@
 	--firebrick-hsl-a50: hsla(0, 68%, 42%, 0.5);
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 :root {
 	--firebrick: rgb(178 34 34);
 	--firebrick-a50: rgb(70% 13.5% 13.5% / 50%);
 }
 }
 
-@supports (color: hsl(0 0% 0 / 0)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 :root {
 	--firebrick-hsl-a50: hsl(0 68% 42% / 50%);
 }

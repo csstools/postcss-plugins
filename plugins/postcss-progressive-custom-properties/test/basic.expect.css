@@ -285,7 +285,7 @@
 	--color-rcs-12: green;
 }
 
-@supports (color: color(xyz 0 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: color(xyz 0 0 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 :root {
 	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
 	--color-rcs-2: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / none);
@@ -294,27 +294,27 @@
 }
 }
 
-@supports (color: hwb(0 0% 0)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: hwb(0 0% 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 :root {
 	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
 }
 }
 
-@supports (color: lab(0% 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(0% 0 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 :root {
 	--color-rcs-6: lab(from lab(40% 56.6 39) l a b);
 	--color-rcs-7: lch(from lch(40% 56.6 39) l c h);
 }
 }
 
-@supports (color: oklab(0% 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) and (color: oklab(0% 0 0%)) {
 :root {
 	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
 	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
 }
 }
 
-@supports (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 :root {
 	--color-rcs-10: rgb(from blue r g b);
 	--color-rcs-11: rgb(from blue r g b / alpha);
@@ -346,7 +346,7 @@
 	color: rgba(87, 107, 149, 1);
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .property-with-var--1 {
 	color: rgb(87 107 149 / var(--opacity));
 }
@@ -357,7 +357,7 @@
 	color: rgba(87, 107, 149, var(--opacity));
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .property-with-var--1-1 {
 	color: rgb(87 107 149 / var(--opacity));
 }
@@ -368,7 +368,7 @@
 	color: rgba(87, 107, 149, 1);
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 .property-with-var--2 {
 	color: rgb(87 107 149 / calc(var(--opacity) / 2));
 }

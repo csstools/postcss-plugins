@@ -2,7 +2,7 @@ import { matcherForValue } from './matcher-for-value.mjs';
 
 export const relativeColorSyntaxMatches = [
 	{
-		'supports': 'rgb(from red calc(r + 1) 1 1%)',
+		'supports': 'lab(from red l 1 1% / calc(alpha + 0.1))',
 		'property': 'color',
 		'sniff': 'from ',
 		'matchers': [

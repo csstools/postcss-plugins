@@ -13,20 +13,20 @@
 	--color-rcs-14: hsla(from blue h s l / alpha);
 }
 
-@supports (color: color(xyz 0 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: color(xyz 0 0 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .valid {
 	--color-rcs-1: color(from color(a98-rgb 0.7 0.5 0.3) a98-rgb r g b / alpha);
 	--color-rcs-3: color(from color(prophoto-rgb 0.7 0.5 0.3) prophoto-rgb r g b);
 }
 }
 
-@supports (color: hwb(0 0% 0)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: hwb(0 0% 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .valid {
 	--color-rcs-5: hwb(from hwb(50deg 20% 30%) h w b);
 }
 }
 
-@supports (color: lab(0% 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(0% 0 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .valid {
 	--color-rcs-6: lab(from lab(40% 56.6 39) l a b);
 	--color-rcs-7: lch(from lch(40% 56.6 39) l c h);
@@ -39,7 +39,7 @@
 }
 }
 
-@supports (color: oklab(0% 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) and (color: oklab(0% 0 0%)) {
 .valid {
 	--color-rcs-8: oklab(from oklab(40% 0.566 0.39) l a b);
 }
@@ -51,13 +51,13 @@
 }
 }
 
-@supports (color: oklab(0% 0 0%)) and (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) and (color: oklab(0% 0 0%)) {
 .valid {
 	--color-rcs-9: oklch(from oklch(40% 0.566 39deg) l c h);
 }
 }
 
-@supports (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .valid {
 	--color-rcs-10: rgb(from blue r g b);
 	--color-rcs-11: rgb(from blue r g b / alpha);
@@ -105,7 +105,7 @@
 	--darkolivegreen-into-gray: rgb(94, 94, 94);
 }
 
-@supports (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .spec-example-14 {
 	--blue-into-gray: rgb(from blue calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11));
 	--red-into-gray: rgb(from red calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11) calc(r * .3 + g * .59 + b * .11));
@@ -159,7 +159,7 @@
 	--mygray: rgb(152, 152, 152);
 }
 
-@supports (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .spec-example-22 {
 	--mygray: lab(from orchid l 0 0);
 }
@@ -174,7 +174,7 @@
 	--complement: rgb(225, 130, 149);
 }
 
-@supports (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .spec-example-24 {
 	--complement: lch(from lightseagreen l c calc(h + 180));
 }
@@ -185,7 +185,7 @@
 	--mymuted: rgb(185, 136, 182);
 }
 
-@supports (color: rgb(from red calc(r + 1) 1 1%)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .spec-example-25 {
 	--mygray: lch(from orchid l 0 h);
 	--mymuted: lch(from lch(from orchid l 0 h) l 30 h);

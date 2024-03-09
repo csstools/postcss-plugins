@@ -1,4 +1,4 @@
 .test-lab {
-	background-color: lab(50% 30 0 / 100%);
+	background-color: rgb(166, 98, 120);
 	after: changed-this-declaration;
 }

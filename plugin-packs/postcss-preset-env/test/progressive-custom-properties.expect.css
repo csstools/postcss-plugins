@@ -40,7 +40,7 @@
 }
 }
 
-@supports (color: hwb(0 0% 0)) {
+@supports (color: hwb(0 0% 0%)) {
 :root {
 
 	--hwb: hwb(20 10% 10%);

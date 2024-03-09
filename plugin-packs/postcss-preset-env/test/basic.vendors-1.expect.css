@@ -612,7 +612,7 @@
 }
 }
 
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0 / 0)) {
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
@@ -676,7 +676,7 @@
 	color: light-dark(lch(from color(display-p3 0.50566 0.0781 0) l c h), magenta);
 }
 
-@supports (color: rgb(from red r g b)) {
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
 .schemed-colors {
 	color: var(--csstools-color-scheme--light, lch(from rgb(141, 0, 0) l c h)) var(--csstools-color-scheme--dark, magenta);
 }

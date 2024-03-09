@@ -9,7 +9,7 @@
 	--firebrick-var: hwb(40% var(--fifty) 34.5 / var(--opacity-50));
 }
 
-@supports (color: hwb(0 0% 0)) {
+@supports (color: hwb(0 0% 0%)) {
 :root {
 	--firebrick: hwb(194 0% 0%);
 	--firebrick-a50: hwb(194 0% 0%);

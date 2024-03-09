@@ -10,20 +10,20 @@
 	--firebrick-var: hsl(40 var(--fifty) 34.5% / var(--opacity-50));
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 :root {
 	--firebrick: rgb(40% 56.6 39);
 	--firebrick-a50: rgb(40% 68.8 34.5 / 50%);
 }
 }
 
-@supports (color: hsl(0 0% 0 / 0)) {
+@supports (color: hsl(0 0% 0% / 0)) {
 :root {
 	--firebrick-a50-var: hsl(40 68.8% 34.5% / var(--opacity-50));
 }
 }
 
-@supports (color: rgb(0 0 0% / 0)) {
+@supports (color: rgb(0 0 0 / 0)) {
 :root {
 	--firebrick-rgb-a50-var: rgb(40% 68.8 34.5 / var(--opacity-50));
 }

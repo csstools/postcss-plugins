@@ -3,7 +3,7 @@
 }
 
 .test-custom-property-fallbacks {
-	--firebrick: lab(40% 56.6 39);
+	--firebrick: rgb(179, 35, 35);
 }
 
 .test-custom-properties {
@@ -98,8 +98,8 @@
 }
 
 .test-lab-function {
-	background-color: lab(40% 56.6 39);
-	color: lch(40% 68.8 34.5 / 50%);
+	background-color: rgb(179, 35, 35);
+	color: rgba(179, 34, 35, 0.5);
 	order: 17;
 }
 
@@ -499,7 +499,7 @@
 }
 }
 
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0 / 0)) {
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
