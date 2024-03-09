@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-calc",
 	"description": "Solve CSS math expressions",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3"
 	},
 	"scripts": {
@@ -62,7 +62,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/css-calc"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

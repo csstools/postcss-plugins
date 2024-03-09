@@ -1,7 +1,7 @@
 {
 	"name": "postcss-custom-media",
 	"description": "Use Custom Media Queries in CSS",
-	"version": "10.0.2",
+	"version": "10.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -55,10 +55,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^1.0.7",
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/cascade-layer-name-parser": "^1.0.8",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/media-query-list-parser": "^2.1.7"
+		"@csstools/media-query-list-parser": "^2.1.8"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -77,7 +77,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-custom-media"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

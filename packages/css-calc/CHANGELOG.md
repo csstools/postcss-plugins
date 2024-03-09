@@ -1,5 +1,17 @@
 # Changes to CSS Calc
 
+### Unreleased (minor)
+
+- Correctly serialize negative zero `-0` values
+- Add support for `round()` with only a single number argument
+- Add support for `none` in `clamp()`
+
+### 1.1.7
+
+_February 19, 2024_
+
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.6.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#260) (minor)
+
 ### 1.1.6
 
 _December 31, 2023_

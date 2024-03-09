@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="help" href="https://drafts.csswg.org/css-color-adjust/#color-scheme-effect">
+	<link rel="help" href="https://github.com/w3c/csswg-drafts/issues/7561">
+	<title>light-dark() color-scheme propagation</title>
+</head>
+<body>
+	<style>
+		:root {
+			color-scheme: light dark;
+		}
+
+		.box {
+			width: 100px;
+			height: 100px;
+			margin: 8px;
+		}
+	</style>
+		<div class="box" id="system"></div>
+		<div id="parent">
+			<div id="child">Text should be green</div>
+		</div>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			const system_is_dark = matchMedia("(prefers-color-scheme: dark)").matches;
+			const elements = ["child"].map(document.getElementById.bind(document));
+
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			var testCases = [
+				{
+					title: 'Light Dark CurrentColor - A',
+					style: `
+						#parent { color: green; }
+						#child {
+							color-scheme: dark;
+							color: light-dark(red, currentColor);
+						}
+					`,
+					expected_light: 'rgb(0, 128, 0)',
+					expected_dark: 'rgb(0, 128, 0)',
+				}
+			];
+
+			for (let testCase of testCases) {
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: testCase['style'],
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				for (let element of elements) {
+					let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark);
+					assert_equals(getComputedStyle(element).color, should_be_dark ? testCase.expected_dark : testCase.expected_light);
+				}
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>
+</html>

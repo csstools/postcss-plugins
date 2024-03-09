@@ -31,6 +31,7 @@ export default [
 	'color-functional-notation',
 	'rebeccapurple-color',
 	'hexadecimal-alpha-notation',
+	'light-dark-function', // run after any other color functions
 	'double-position-gradients',
 	'blank-pseudo-class',
 	'break-properties',

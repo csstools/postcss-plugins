@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gradients-interpolation-method",
 	"description": "Use interpolation methods in CSS gradient functions",
-	"version": "4.0.9",
+	"version": "4.0.11",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -38,10 +38,11 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.5.1",
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-color-parser": "^1.5.2",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/postcss-progressive-custom-properties": "^3.0.3"
+		"@csstools/postcss-progressive-custom-properties": "^3.1.0",
+		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -60,7 +61,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-gradients-interpolation-method"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

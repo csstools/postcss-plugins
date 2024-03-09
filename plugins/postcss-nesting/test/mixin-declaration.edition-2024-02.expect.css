@@ -1,0 +1,87 @@
+/* prevent regressions : https://github.com/csstools/postcss-nesting/issues/95 */
+body {color: blue;
+
+	background: red;
+	font-size: 1rem;
+}
+@media (min-width: 64em) {
+body {
+		background: green;
+}
+	}
+body {
+
+	margin: 0;
+}
+
+
+:root {
+	/* a comment */color: blue;
+
+	background: red;
+	font-size: 1rem;
+}
+
+
+@media (min-width: 64em) {
+
+
+:root {
+		background: green;
+}
+	}
+
+
+:root {
+
+	margin: 0;
+}
+
+html {
+	color: pink;color: blue;
+
+	background: red;
+	font-size: 1rem;
+}
+
+@media (min-width: 64em) {
+
+html {
+		background: green;
+}
+	}
+
+html {
+
+	margin: 0;
+}
+
+.other .a-rule {
+		color: cyan;
+	}
+
+.other {color: blue;
+
+	background: red;
+	font-size: 1rem;
+}
+
+@media (min-width: 64em) {
+
+.other {
+		background: green;
+}
+	}
+
+.other {
+
+	margin: 0;
+}
+
+a b {
+		color: cyan
+	}
+
+a {color: blue;
+	color: green;
+}

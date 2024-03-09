@@ -1105,3 +1105,55 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
 	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }
+
+.dark {
+	--csstools-color-scheme--light:  ;
+	--csstools-color-scheme--dark: initial;
+	color-scheme: dark;
+}
+
+.light {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light;
+}
+
+.schemed-colors {
+	color: rgb(141, 0, 0) magenta;
+	color: var(--csstools-color-scheme--light, rgb(141, 0, 0)) var(--csstools-color-scheme--dark, magenta);
+	color: light-dark(rgb(141, 0, 0), magenta);
+	color: light-dark(color(display-p3 0.50566 0.0781 0), magenta);
+}
+
+@media (color-gamut: rec2020) {
+.schemed-colors {
+	color: light-dark(lch(from oklab(40% 0.566 0.39) l c h), magenta);
+}
+}
+
+.schemed-prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+}
+
+@supports (color: light-dark(red, red)) {
+.schemed-prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}
+}
+
+.schemed-prop * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+}
+
+:root {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+		--csstools-color-scheme--light:  ;
+		--csstools-color-scheme--dark: initial;
+	}
+}

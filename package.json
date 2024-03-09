@@ -26,21 +26,21 @@
 		"plugins-stylelint/*"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.23.6",
-		"@babel/preset-env": "^7.23.6",
-		"@microsoft/api-extractor": "^7.39.1",
-		"@microsoft/api-documenter": "^7.23.16",
+		"@babel/core": "^7.24.0",
+		"@babel/preset-env": "^7.24.0",
+		"@microsoft/api-extractor": "^7.42.3",
+		"@microsoft/api-documenter": "^7.23.36",
 		"@rollup/plugin-babel": "^6.0.3",
 		"@rollup/plugin-commonjs": "^25.0.7",
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.3",
-		"@rollup/plugin-typescript": "^11.1.4",
-		"@stryker-mutator/core": "^8.0.0",
-		"@typescript-eslint/eslint-plugin": "^6.18.0",
-		"@typescript-eslint/parser": "^6.18.0",
-		"eslint": "^8.56.0",
-		"knip": "^3.11.0",
-		"rollup": "^4.9.4",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@stryker-mutator/core": "^8.2.6",
+		"@typescript-eslint/eslint-plugin": "^7.1.0",
+		"@typescript-eslint/parser": "^7.1.0",
+		"eslint": "^8.57.0",
+		"knip": "^5.0.2",
+		"rollup": "^4.9.6",
 		"tslib": "^2.6.2",
 		"typescript": "^5.3.3"
 	},
@@ -56,6 +56,6 @@
 		"knip": "knip"
 	},
 	"volta": {
-		"node": "20.10.0"
+		"node": "20.11.1"
 	}
 }

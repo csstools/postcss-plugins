@@ -1,0 +1,14 @@
+
+	a b {
+		color: red;
+	}
+
+.deep:is(a .in) { color: blue; }
+
+f g {
+		color: red;
+	}
+
+/* a comment */
+
+.deep:is(f .in) { color: blue; }

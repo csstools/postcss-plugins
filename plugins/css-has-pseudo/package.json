@@ -1,7 +1,7 @@
 {
 	"name": "css-has-pseudo",
 	"description": "Style elements relative to other elements in CSS",
-	"version": "6.0.1",
+	"version": "6.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -60,7 +60,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^3.0.1",
+		"@csstools/selector-specificity": "^3.0.2",
 		"postcss-selector-parser": "^6.0.13",
 		"postcss-value-parser": "^4.2.0"
 	},
@@ -69,11 +69,11 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"@mrhenry/core-web": "^1.2.1",
+		"@mrhenry/core-web": "^1.2.2",
 		"postcss-dir-pseudo-class": "*",
 		"postcss-logical": "*",
 		"postcss-nesting": "*",
-		"puppeteer": "^21.7.0"
+		"puppeteer": "^22.3.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -86,7 +86,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/css-has-pseudo"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

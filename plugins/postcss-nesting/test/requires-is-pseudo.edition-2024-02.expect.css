@@ -1,0 +1,46 @@
+/*
+ * two tag selectors in a compound selector
+ * would never match any elements selector, but :is required to have a correct selector
+ */
+body:is(html) {
+		order: 1;
+	}
+
+/*
+ * Adjacent element of parent/child selector
+ * Without :is it is not possible to match the selector
+ */
+:is(.alpha > .beta) + :is(.alpha > .beta) {
+		order: 2;
+	}
+
+/* Would be better written without nesting : */
+.alpha > .beta + .beta {
+	order: 2;
+}
+
+/*
+ * Selector lists with mixed specificity
+ * In practice this will rarely be an issue.
+ * But we have to verify this once nesting is implemented in browsers.
+ */
+:is(#alpha,.beta):hover {
+		order: 3;
+	}
+
+/* will give unexpected results for <div class"beta delta"> when the rule is followed by : */
+.delta:hover {
+	/*
+	 * order will be 3
+	 * as the previous rule will have higher specificity
+	 *
+	 * only starts having effect once there is native support and when shipping untransformed code.
+	 */
+	order: 2;
+}
+
+/* Would be better written without nesting : */
+#alpha:hover,
+.beta:hover {
+	order: 3;
+}

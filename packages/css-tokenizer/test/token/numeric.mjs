@@ -104,7 +104,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 			css: '-0.0 ',
 		});
 
-		assert.ok(Object.is(0, collectTokens(t)[0][4].value));
+		assert.ok(Object.is(-0, collectTokens(t)[0][4].value));
 	}
 
 	{
@@ -112,7 +112,7 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 			css: '-0 ',
 		});
 
-		assert.ok(Object.is(0, collectTokens(t)[0][4].value));
+		assert.ok(Object.is(-0, collectTokens(t)[0][4].value));
 	}
 
 	{

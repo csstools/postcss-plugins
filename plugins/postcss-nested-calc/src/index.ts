@@ -2,7 +2,7 @@ import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import type { ParsedValue } from 'postcss-value-parser';
 import { numberOfCalcOccurrences } from './occurrences';
-import { hasFallback } from './has-fallback-decl';
+import { hasFallback } from '@csstools/utilities';
 
 /** postcss-nested-calc plugin options */
 export type pluginOptions = {

@@ -1,5 +1,11 @@
 # Changes to PostCSS Nested Calc
 
+### 3.0.2
+
+_February 19, 2024_
+
+- Reuse code with `@csstools/utilities`
+
 ### 3.0.1
 
 _December 15, 2023_

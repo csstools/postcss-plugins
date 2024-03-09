@@ -23,11 +23,7 @@ const yourConfig = {
 		/* remove autoprefixer if you had it here, it's part of postcss-preset-env */
 		postcssPresetEnv({
 			/* pluginOptions */
-			features: {
-				'nesting-rules': {
-					noIsPseudoSelector: false,
-				},
-			},
+			features: {},
 		})
 	]
 }
@@ -64,9 +60,28 @@ From time to time we will publish plugins that aren't related to a standard CSS 
 
 Thanks for being willing to contribute! Please read our [contributing guide]!
 
+## Acknowledgements
+
+We could not do this work without the contributions of the community.  
+We appreciate all of you!
+
+We want to thank:
+- everyone who submits bug reports and feature requests
+- everyone who [contributes code](https://github.com/csstools/postcss-plugins/graphs/contributors)
+- everyone who contributes financially:
+  - [Open Collective](https://opencollective.com/csstools)
+  - [GitHub Sponsors](https://github.com/sponsors/csstools)
+  - [Thanks.dev](https://thanks.dev)
+  - [Stackaid](https://www.stackaid.us)
+
+We also want to thank these organizations and people for making their tools available to Open Source maintainers:
+- [OrbStack](https://orbstack.dev)
+- [GitHub Copilot](https://github.com/features/copilot)
+
+
 [ci-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS
 [PostCSS]: https://github.com/postcss/postcss
-[contributing guide]: https://github.com/csstools/postcss-plugins/CONTRIBUTING.md
+[contributing guide]: https://github.com/csstools/postcss-plugins/blob/main/CONTRIBUTING.md
 [CSSDB]: https://cssdb.org/
 [CSSDB Repo]: https://github.com/csstools/cssdb

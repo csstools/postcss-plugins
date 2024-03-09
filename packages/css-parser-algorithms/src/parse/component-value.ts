@@ -7,7 +7,7 @@ import { consumeComponentValue } from '../consume/component-block-function';
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser';
+ * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));

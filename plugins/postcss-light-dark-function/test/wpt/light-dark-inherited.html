@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="help" href="https://drafts.csswg.org/css-color-adjust/#color-scheme-effect">
+	<link rel="help" href="https://github.com/w3c/csswg-drafts/issues/7561">
+	<title>light-dark() color-scheme propagation</title>
+</head>
+<body>
+	<style>
+		:root {
+			color-scheme: light dark;
+		}
+
+		.box {
+			min-width: 100px;
+			min-height: 100px;
+			margin: 10px;
+			padding: 10px;
+			border-width: 2px;
+			border-style: solid;
+		}
+	</style>
+	<div class="box" id="a">
+		<div class="box light" id="b">
+			<div class="box" id="c">
+				<div class="box dark" id="d">
+					<div class="box" id="e"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			const system_is_dark = matchMedia("(prefers-color-scheme: dark)").matches;
+
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			{
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: `
+					.light {
+						color-scheme: light;
+					}
+
+					.dark {
+						color-scheme: dark;
+					}
+
+					#a {
+						--color-a: light-dark(rgb(1, 0, 0), rgb(0, 1, 0));
+						color: light-dark(rgb(2, 0, 0), rgb(0, 2, 0));
+					}
+
+					.box {
+						border-color: var(--color-a);
+					}
+				`,
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				const a = getComputedStyle(document.getElementById('a'));
+				const b = getComputedStyle(document.getElementById('b'));
+				const c = getComputedStyle(document.getElementById('c'));
+				const d = getComputedStyle(document.getElementById('d'));
+				const e = getComputedStyle(document.getElementById('e'));
+
+				assert_equals(a.color, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'a color');
+				assert_equals(a.borderColor, system_is_dark ? 'rgb(0, 1, 0)' : 'rgb(1, 0, 0)', 'a border-color');
+
+				assert_equals(b.color, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'b color');
+				assert_equals(b.borderColor, 'rgb(1, 0, 0)', 'b border-color');
+
+				assert_equals(c.color, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'c color');
+				assert_equals(c.borderColor, 'rgb(1, 0, 0)', 'c border-color');
+
+				assert_equals(d.color, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'd color');
+				assert_equals(d.borderColor, 'rgb(0, 1, 0)', 'd border-color');
+
+				assert_equals(e.color, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'e color');
+				assert_equals(e.borderColor, 'rgb(0, 1, 0)', 'e border-color');
+
+				styleElement.remove();
+			}
+
+			{
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: `
+					.light {
+						color-scheme: light;
+					}
+
+					.dark {
+						color-scheme: dark;
+					}
+
+					#a {
+						--color-a: light-dark(rgb(1, 0, 0), rgb(0, 1, 0));
+						color: green;
+						background-color: light-dark(rgb(2, 0, 0), rgb(0, 2, 0));
+						border-color: var(--color-a);
+					}
+				`,
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				const a = getComputedStyle(document.getElementById('a'));
+				const b = getComputedStyle(document.getElementById('b'));
+				const c = getComputedStyle(document.getElementById('c'));
+				const d = getComputedStyle(document.getElementById('d'));
+				const e = getComputedStyle(document.getElementById('e'));
+
+				assert_equals(a.color, 'rgb(0, 128, 0)', 'a color');
+				assert_equals(a.backgroundColor, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'a background-color');
+				assert_equals(a.borderColor, system_is_dark ? 'rgb(0, 1, 0)' : 'rgb(1, 0, 0)', 'a border-color');
+
+				assert_equals(b.color, 'rgb(0, 128, 0)', 'a color');
+				assert_equals(b.backgroundColor, 'rgba(0, 0, 0, 0)', 'a background-color');
+				assert_equals(b.borderColor, 'rgb(0, 128, 0)', 'a border-color');
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>
+</html>

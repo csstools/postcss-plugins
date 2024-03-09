@@ -1,5 +1,23 @@
 # Changes to PostCSS Nesting
 
+### 12.1.0
+
+_March 6, 2024_
+
+- Add the `edition` plugin option to control which CSS nesting specification version should be used. The default is `2021` but you can also set it to the newer `2024-02` edition to have more modern behavior.
+
+### 12.0.4
+
+_February 26, 2024_
+
+- Fix order of final CSS with complex usage of both nesting and mixins, by @pciarach
+
+### 12.0.3
+
+_February 19, 2024_
+
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#302) (patch)
+
 ### 12.0.2
 
 _December 15, 2023_

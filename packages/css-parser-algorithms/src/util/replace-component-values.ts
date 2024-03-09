@@ -7,7 +7,7 @@ import { walk } from './walk';
  */
 export function replaceComponentValues(
 	componentValuesList: Array<Array<ComponentValue>>,
-	replaceWith: (componentValue: ComponentValue) => ComponentValue | void,
+	replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void,
 ) {
 	for (let i = 0; i < componentValuesList.length; i++) {
 		const componentValues = componentValuesList[i];
@@ -22,7 +22,11 @@ export function replaceComponentValues(
 				return;
 			}
 
-			entry.parent.value.splice(index, 1, replacement);
+			if (Array.isArray(replacement)) {
+				entry.parent.value.splice(index, 1, ...replacement);
+			} else {
+				entry.parent.value.splice(index, 1, replacement);
+			}
 		});
 	}
 

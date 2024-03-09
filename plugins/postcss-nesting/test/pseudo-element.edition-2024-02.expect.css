@@ -1,0 +1,36 @@
+
+	.foo:is(::before),:is(::before):focus {
+		order: 1;
+	}
+
+:is(.a:hover,.b:focus)::before,:is(.a:hover,.b:focus)::after {
+		order: 2;
+	}
+
+.a::before {
+		order: 3;
+	}
+
+.a::after {
+		order: 4;
+	}
+
+.a::before {
+		order: 5;
+	}
+
+:is(.a::before):focus {
+			order: 6;
+		}
+
+.a::after {
+		order: 7;
+	}
+
+:is(.a::after):hover {
+			order: 8;
+		}
+
+.something_else > :is(.anything::before) {
+		order: 9;
+	}

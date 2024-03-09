@@ -64,7 +64,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^21.7.0"
+		"puppeteer": "^22.3.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -77,7 +77,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/css-prefers-color-scheme"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

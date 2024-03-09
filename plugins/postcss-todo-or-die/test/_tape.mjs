@@ -1,7 +1,7 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-todo-or-die';
 
-process.env['BROWSERSLIST'] = '> 1%, chrome 79, safari 16';
+process.env['BROWSERSLIST'] = '> 1%, chrome 79, safari 16, last 10 Safari versions';
 
 postcssTape(plugin)({
 	basic: {

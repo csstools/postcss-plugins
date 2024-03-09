@@ -1,7 +1,7 @@
 {
 	"name": "postcss-custom-properties",
 	"description": "Use Custom Properties Queries in CSS",
-	"version": "13.3.4",
+	"version": "13.3.5",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"contributors": [
 		"Maxime Thirouin"
@@ -42,9 +42,10 @@
 		"index.d.ts"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^1.0.7",
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/cascade-layer-name-parser": "^1.0.8",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
+		"@csstools/utilities": "^1.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
@@ -65,7 +66,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-custom-properties"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

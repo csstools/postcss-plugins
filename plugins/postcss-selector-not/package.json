@@ -1,7 +1,7 @@
 {
 	"name": "postcss-selector-not",
 	"description": "PostCSS plugin to transform :not() W3C CSS level 4 pseudo class to :not() CSS level 3 selectors",
-	"version": "7.0.1",
+	"version": "7.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -70,7 +70,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-selector-not"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

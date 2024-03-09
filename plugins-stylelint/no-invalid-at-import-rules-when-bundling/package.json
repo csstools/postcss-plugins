@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-no-invalid-at-import-rules-when-bundling",
 	"description": "Do not allow @import rules that can not be bundled correctly",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -35,14 +35,14 @@
 		"index.mjs"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3"
 	},
 	"peerDependencies": {
-		"stylelint": "^16.0.2"
+		"stylelint": "^16.2.1"
 	},
 	"devDependencies": {
-		"stylelint": "^16.0.2",
+		"stylelint": "^16.2.1",
 		"stylelint-test-rule-node": "^0.2.1"
 	},
 	"scripts": {
@@ -52,7 +52,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-invalid-at-import-rules-when-bundling#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins-stylelint/no-invalid-at-import-rules-when-bundling"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

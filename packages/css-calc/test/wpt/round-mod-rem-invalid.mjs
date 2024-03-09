@@ -78,7 +78,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(nearest, 1)'),
-	'round(nearest, 1)',
+	'1',
 );
 
 assert.strictEqual(

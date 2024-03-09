@@ -1,11 +1,9 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration } from 'postcss';
-import type { PluginCreator } from 'postcss';
-import { tokenize } from '@csstools/css-tokenizer';
+import type { Declaration, PluginCreator } from 'postcss';
 import { color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { tokenize } from '@csstools/css-tokenizer';
 
 type basePluginOptions = {
 	preserve: boolean,
@@ -14,8 +12,8 @@ type basePluginOptions = {
 	}
 };
 
-const OKLAB_OKLCH_FUNCTION_REGEX = /(oklab|oklch)\(/i;
-const OKLAB_OKLCH_NAME_REGEX = /^(oklab|oklch)$/i;
+const OKLAB_OKLCH_FUNCTION_REGEX = /\b(?:oklab|oklch)\(/i;
+const OKLAB_OKLCH_NAME_REGEX = /^(?:oklab|oklch)$/i;
 
 /* Transform oklab() and oklch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
@@ -31,7 +29,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, OKLAB_OKLCH_FUNCTION_REGEX)) {
 				return;
 			}
 

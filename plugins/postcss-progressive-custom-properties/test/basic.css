@@ -233,3 +233,13 @@
 		--prop-8: 1px solid oklch(40% 0.234 0.39 / var(--opacity-50));
 	}
 }
+
+:root {
+	--color-light-dark-1: green;
+	--color-light-dark-1: light-dark(green, blue);
+}
+
+:root {
+	color: var(--green);
+	color: light-dark(var(--green), blue);
+}

@@ -3,7 +3,7 @@ import { getComma } from './get-comma';
 import { getImage } from './get-image';
 import { getMedia, getMediaDPI } from './get-media';
 import { handleInvalidation } from './handle-invalidation';
-import type { AtRule, Container, Declaration, Result, Postcss } from 'postcss';
+import type { AtRule, Declaration, Result, Postcss } from 'postcss';
 import type { Node } from 'postcss-value-parser';
 
 type imageSetFunction = {
@@ -78,8 +78,10 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 		atRule.append(parentClone);
 	}
 
-	const medias: Array<AtRule> = Array.from(mediasByDpr.keys())
-		.sort((a, b) => a - b)
+	const mediaSizes = Array.from(mediasByDpr.keys())
+		.sort((a, b) => a - b);
+
+	const medias: Array<AtRule> = mediaSizes
 		.map(params => mediasByDpr.get(params)?.atRule)
 		.filter((x) => !!x) as Array<AtRule>;
 
@@ -87,21 +89,24 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 		return;
 	}
 
-	const smallestMedia = medias[0];
+	const smallestValue = mediasByDpr.get(mediaSizes[0])?.value;
+	if (!smallestValue) {
+		return;
+	}
+
 	const mediasWithoutSmallest = medias.slice(1);
 
 	if (mediasWithoutSmallest.length) {
 		parent.after(mediasWithoutSmallest);
 	}
 
-	const firstDecl = (smallestMedia.nodes[0] as Container).nodes[0] as Declaration;
-	decl.cloneBefore({ value: firstDecl.value.trim() });
+	decl.cloneBefore({ value: smallestValue.trim() });
 
 	if (!opts.preserve) {
 		decl.remove();
 
 		// and then conditionally remove its parent
-		if (!parent.nodes.length) {
+		if (!parent.nodes?.length) {
 			parent.remove();
 		}
 	}

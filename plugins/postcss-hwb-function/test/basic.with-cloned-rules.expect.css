@@ -17,7 +17,12 @@
 	color-8: hwb(0 60% 40%);
 	color-9: hwb(none 60% 40%);
 	color-10: rgba(153, 153, 153, var(--alpha));
+}
+
+@supports (color: hwb(0 0% 0%)) {
+.test-hwb {
 	color-10: hwb(0 60% 40% / var(--alpha));
+}
 }
 
 .test-ignore {

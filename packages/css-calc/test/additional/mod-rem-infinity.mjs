@@ -27,7 +27,7 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('mod(calc(-1 * 0), infinity)'),
+	calc('mod(-0, infinity)'),
 	'calc(NaN)',
 );
 
@@ -37,8 +37,8 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('mod(calc(-1 * 0), -infinity)'),
-	'calc(-1 * 0)',
+	calc('mod(-0, -infinity)'),
+	'-0',
 );
 
 assert.strictEqual(
@@ -87,8 +87,8 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('rem(calc(-1 * 0), infinity)'),
-	'calc(-1 * 0)',
+	calc('rem(-0, infinity)'),
+	'-0',
 );
 
 assert.strictEqual(
@@ -97,8 +97,8 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('rem(calc(-1 * 0), -infinity)'),
-	'calc(-1 * 0)',
+	calc('rem(-0, -infinity)'),
+	'-0',
 );
 
 assert.strictEqual(
@@ -112,11 +112,11 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('rem(-infinity, calc(-1 * 0))'),
+	calc('rem(-infinity, -0)'),
 	'calc(NaN)',
 );
 
 assert.strictEqual(
-	calc('rem(infinity, calc(-1 * 0))'),
+	calc('rem(infinity, -0)'),
 	'calc(NaN)',
 );

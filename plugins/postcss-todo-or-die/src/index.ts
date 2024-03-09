@@ -141,7 +141,7 @@ const creator: PluginCreator<never> = () => {
 					}
 				}
 
-				if (atRule.nodes && atRule.nodes.length) {
+				if (atRule.nodes) {
 					atRule.replaceWith(atRule.nodes);
 				} else {
 					atRule.remove();

@@ -8,6 +8,10 @@ import { isProcessableLayerRule } from './is-processable-layer-rule';
 // Sort root nodes to apply the preferred order by layer priority for non-selector rules.
 // Selector rules are adjusted by specificity.
 export function sortRootNodes(root: Container, model: Model) {
+	if (!root.nodes) {
+		return;
+	}
+
 	// Separate selector rules from other rules
 	root.walkAtRules((layerRule) => {
 		if (!isProcessableLayerRule(layerRule)) {
@@ -61,11 +65,11 @@ export function sortRootNodes(root: Container, model: Model) {
 		withSelectorRules.name = WITH_SELECTORS_LAYER_NAME;
 
 		layerRule.replaceWith(withSelectorRules, withoutSelectorRules);
-		if (withSelectorRules.nodes.length === 0) {
+		if (!withSelectorRules.nodes?.length) {
 			withSelectorRules.remove();
 		}
 
-		if (withoutSelectorRules.nodes.length === 0) {
+		if (!withoutSelectorRules.nodes?.length) {
 			withoutSelectorRules.remove();
 		}
 	});

@@ -75,7 +75,7 @@ To gather the entire ancestry for a a given sub tree of the AST you can use `gat
 The result is a `Map` with the child nodes as keys and the parents as values.
 This allows you to lookup any ancestor of any node.
 
-```css
+```js
 import { parseComponentValue } from '@csstools/css-parser-algorithms';
 
 const result = parseComponentValue(tokens, options);

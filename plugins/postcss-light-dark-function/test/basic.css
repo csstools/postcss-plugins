@@ -1,0 +1,71 @@
+.color-scheme--dark {
+	color-scheme: dark;
+}
+
+.color-scheme--light {
+	color-scheme: light;
+}
+
+.color-scheme--light-dark {
+	color-scheme: light dArk;
+}
+
+.color-scheme--dark-light {
+	color-scheme: LIGHT dark;
+}
+
+.light-dark-function {
+	color: light-dark(cyan, blue);
+}
+
+.ignore {
+	color-1: light-dark(cyan, blue, green);
+	color-2: light-dark(cyan, , blue);
+	color-3: light-dark(cyan, ,);
+	color-4: light-dark(cyan, /* comment */);
+}
+
+.light-dark-function-recurse-1 {
+	color: light-dark(light-dark(cyan, rgb(0, 0, 0)), blue);
+}
+
+.light-dark-function-recurse-1 {
+	color: light-dark(cyan, light-dark(white, blue));
+}
+
+.light-dark-function-recurse-2 {
+	color: light-dark(light-dark(light-dark(cyan, rgb(33, 33, 33)), rgb(0, 0, 0)), blue);
+}
+
+.light-dark-function-recurse-2 {
+	color: light-dark(cyan, light-dark(white, light-dark(rgb(204, 204, 204), blue)));
+}
+
+.light-dark-function-recurse-3 {
+	color: light-dark(light-dark(light-dark(light-dark(cyan, rgb(71, 71, 71)), rgb(33, 33, 33)), rgb(0, 0, 0)), blue);
+}
+
+.light-dark-function-recurse-3 {
+	color: light-dark(cyan, light-dark(white, light-dark(light-dark(rgb(155, 155, 155), blue), blue)));
+}
+
+.light-dark-function-mix {
+	color: light-dark(color-mix(in oklch, red, light-dark(cyan, rgb(0, 0, 0))), blue);
+}
+
+.light-dark-function-mix {
+	color: light-dark(cyan, color-mix(in oklch, red, light-dark(white, blue)));
+}
+
+.light-dark-function-rcs {
+	color: light-dark(rgb(from light-dark(cyan, rgb(0, 0, 0)) r g b), blue);
+}
+
+.light-dark-function-rcs {
+	color: light-dark(cyan, rgb(from light-dark(white, blue) r g b));
+}
+
+.prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+	color: blue;
+}

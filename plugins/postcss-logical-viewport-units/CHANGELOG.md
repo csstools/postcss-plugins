@@ -1,5 +1,11 @@
 # Changes to PostCSS Logical Viewport Units
 
+### 2.0.6
+
+_February 19, 2024_
+
+- Reuse code with `@csstools/utilities`
+
 ### 2.0.5
 
 _December 31, 2023_

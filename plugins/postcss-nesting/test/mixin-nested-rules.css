@@ -1,0 +1,6 @@
+a {
+	& b {
+		@mixin alpha;
+		display: inline-flex;
+	}
+}

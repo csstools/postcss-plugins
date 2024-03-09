@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-nested-calc",
 	"description": "Use nested calc() expressions in CSS",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,6 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/utilities": "^1.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
@@ -67,7 +68,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-nested-calc"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

@@ -4,7 +4,7 @@ import type valuesParser from 'postcss-value-parser';
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import { isDeclarationIgnored } from './is-ignored';
 import { transformProperties } from './transform-properties';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { parseOrCached } from './parse-or-cached';
 import { HAS_VAR_FUNCTION_REGEX } from './is-var-function';
 
@@ -15,6 +15,7 @@ export type pluginOptions = {
 };
 
 const IS_INITIAL_REGEX = /^initial$/i;
+const SUPPORTS_REGEX = /(?:\bvar\()|(?:\(top: var\(--f\))/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;
@@ -42,7 +43,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					if (hasSupportsAtRuleAncestor(decl)) {
+					if (hasSupportsAtRuleAncestor(decl, SUPPORTS_REGEX)) {
 						return;
 					}
 
