@@ -1,8 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { HAS_GRADIENT_FUNCTION_REGEX, IS_GRADIENT_FUNCTION_REGEX } from './is-gradient';
 
 const keywords = [
@@ -50,7 +49,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, HAS_GRADIENT_FUNCTION_REGEX)) {
 				return;
 			}
 

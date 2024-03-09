@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-light-dark-function",
 	"description": "Use the light-dark() color function in CSS",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,16 +48,17 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/postcss-progressive-custom-properties": "^3.0.3"
+		"@csstools/postcss-progressive-custom-properties": "^3.1.0",
+		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^22.0.0"
+		"puppeteer": "^22.3.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -70,7 +71,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-light-dark-function"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

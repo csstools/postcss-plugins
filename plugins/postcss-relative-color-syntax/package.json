@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-relative-color-syntax",
 	"description": "Use the relative color syntax in CSS",
-	"version": "2.0.9",
+	"version": "2.0.10",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,10 +48,11 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.5.1",
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-color-parser": "^1.5.2",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/postcss-progressive-custom-properties": "^3.0.3"
+		"@csstools/postcss-progressive-custom-properties": "^3.1.0",
+		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -70,7 +71,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-relative-color-syntax"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

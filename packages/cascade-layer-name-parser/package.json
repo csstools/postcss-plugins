@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/cascade-layer-name-parser",
 	"description": "Parse CSS Cascade Layer names.",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3"
 	},
 	"scripts": {
@@ -63,7 +63,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/cascade-layer-name-parser"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

@@ -238,7 +238,7 @@ const testCases = [
 	'round(1, nearest, 12)',
 	'round(1, nearest)',
 	'round(nearest, 1, nearest)',
-	'round(nearest, 1)',
+	// 'round(nearest, 1)', // valid since https://github.com/w3c/csswg-drafts/issues/9668
 	'round(1, , 2)',
 	'mod()',
 	'mod( )',

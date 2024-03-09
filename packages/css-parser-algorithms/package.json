@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-parser-algorithms",
 	"description": "Algorithms to help you parse CSS from an array of tokens.",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -62,7 +62,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/css-parser-algorithms"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

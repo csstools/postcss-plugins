@@ -23,11 +23,7 @@ const yourConfig = {
 		/* remove autoprefixer if you had it here, it's part of postcss-preset-env */
 		postcssPresetEnv({
 			/* pluginOptions */
-			features: {
-				'nesting-rules': {
-					noIsPseudoSelector: false,
-				},
-			},
+			features: {},
 		})
 	]
 }

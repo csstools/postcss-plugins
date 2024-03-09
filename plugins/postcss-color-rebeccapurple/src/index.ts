@@ -1,6 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
-import { hasFallback } from './has-fallback-decl';
+import { hasFallback } from '@csstools/utilities';
 
 /** postcss-color-rebeccapurple plugin options */
 export type pluginOptions = {

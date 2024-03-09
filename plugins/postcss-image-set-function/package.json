@@ -1,7 +1,7 @@
 {
 	"name": "postcss-image-set-function",
 	"description": "Display resolution-dependent images using the image-set() function in CSS",
-	"version": "6.0.2",
+	"version": "6.0.3",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -38,6 +38,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/utilities": "^1.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
@@ -57,7 +58,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-image-set-function"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

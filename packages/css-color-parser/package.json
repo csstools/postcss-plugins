@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-color-parser",
 	"description": "Parse CSS color values",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -49,10 +49,10 @@
 	],
 	"dependencies": {
 		"@csstools/color-helpers": "^4.0.0",
-		"@csstools/css-calc": "^1.1.6"
+		"@csstools/css-calc": "^1.1.7"
 	},
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3"
 	},
 	"scripts": {
@@ -66,7 +66,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/css-color-parser"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

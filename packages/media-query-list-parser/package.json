@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/media-query-list-parser",
 	"description": "Parse CSS media query lists.",
-	"version": "2.1.7",
+	"version": "2.1.8",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3"
 	},
 	"scripts": {
@@ -63,7 +63,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/media-query-list-parser"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

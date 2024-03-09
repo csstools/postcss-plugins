@@ -59,6 +59,7 @@ Available Plugins:
   postcss-image-set-function
   postcss-is-pseudo-class
   postcss-lab-function
+  postcss-light-dark-function
   postcss-logical
   postcss-logical-float-and-clear
   postcss-logical-resize

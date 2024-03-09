@@ -1019,8 +1019,6 @@ article {
 		This declaration is preserved
 	*/
 	color: red;
-
-	/* valid! */
 }
 
 article {
@@ -1030,3 +1028,5 @@ article {
 article.foo {
 		color: yellow;
 	}
+
+/* valid! */

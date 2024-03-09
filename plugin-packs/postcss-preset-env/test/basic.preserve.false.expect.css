@@ -799,3 +799,46 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
 	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }
+
+.dark {
+	--csstools-color-scheme--light:  ;
+	--csstools-color-scheme--dark: initial;
+	color-scheme: dark;
+}
+
+.light {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light;
+}
+
+.schemed-colors {
+	color: rgb(141, 0, 0) magenta;
+}
+
+@media (color-gamut: p3) {
+.schemed-colors {
+	color: light-dark(color(display-p3 0.50566 0.0781 0), magenta);
+}
+}
+
+.schemed-prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+}
+
+.schemed-prop * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+}
+
+:root {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+		--csstools-color-scheme--light:  ;
+		--csstools-color-scheme--dark: initial;
+	}
+}

@@ -2,11 +2,15 @@ export default function postcssSystemUiFont() {
 	return {
 		postcssPlugin: 'postcss-system-ui-font',
 		Declaration(/** @type {import('postcss').Declaration} */ node) {
-			if (PROPERTY_REGEX.test(node.prop)) {
-				if (!node.value.includes(systemUIFamilies)) {
-					node.value = node.value.replace(SYSTEM_UI_MATCH, systemUiReplace);
-				}
+			if (!PROPERTY_REGEX.test(node.prop)) {
+				return;
 			}
+
+			if (node.value.includes(systemUIFamilies)) {
+				return;
+			}
+
+			node.value = node.value.replace(SYSTEM_UI_MATCH, systemUiReplace);
 		},
 	};
 }

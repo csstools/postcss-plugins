@@ -64,7 +64,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/selector-resolve-nested"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

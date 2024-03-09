@@ -696,3 +696,54 @@
 .issue-1244--c {
 	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }
+
+.dark {
+	--csstools-color-scheme--light:  ;
+	--csstools-color-scheme--dark: initial;
+	color-scheme: dark;
+}
+
+.light {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light;
+}
+
+.schemed-colors {
+	color: rgb(141, 0, 0) magenta;
+	color: var(--csstools-color-scheme--light, rgb(141, 0, 0)) var(--csstools-color-scheme--dark, magenta);
+	color: light-dark(rgb(141, 0, 0), magenta);
+}
+
+@media (color-gamut: p3) {
+.schemed-colors {
+	color: light-dark(color(display-p3 0.50566 0.0781 0), magenta);
+}
+}
+
+.schemed-prop {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+}
+
+@supports (color: light-dark(red, red)) {
+.schemed-prop {
+	--theme-color: light-dark(cyan, deepskyblue);
+}
+}
+
+.schemed-prop * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+}
+
+:root {
+	--csstools-color-scheme--light: initial;
+	--csstools-color-scheme--dark:  ;
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+		--csstools-color-scheme--light:  ;
+		--csstools-color-scheme--dark: initial;
+	}
+}

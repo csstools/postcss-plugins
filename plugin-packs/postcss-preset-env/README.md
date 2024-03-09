@@ -27,11 +27,7 @@ const yourConfig = {
 		/* remove autoprefixer if you had it here, it's part of postcss-preset-env */
 		postcssPresetEnv({
 			/* pluginOptions */
-			features: {
-				'nesting-rules': {
-					noIsPseudoSelector: false,
-				},
-			},
+			features: {},
 		})
 	]
 }
@@ -262,6 +258,20 @@ postcssPresetEnv({
   stage: 3,
   features: {
     'custom-selectors': { preserve: true }
+  }
+})
+```
+
+If you want to preserve automatic enabling of features  
+based on the stage, implementations and or browserslist,  
+you can pass an array: `['auto', { /* plugin options */ }]`.
+
+```js
+postcssPresetEnv({
+  /* use stage 3 features + custom-selectors (preserving the original CSS) */
+  stage: 3,
+  features: {
+    'custom-selectors': ['auto', { preserve: true }]
   }
 })
 ```

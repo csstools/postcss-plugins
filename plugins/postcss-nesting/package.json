@@ -1,7 +1,7 @@
 {
 	"name": "postcss-nesting",
 	"description": "Nest rules inside each other in CSS",
-	"version": "12.0.2",
+	"version": "12.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -54,7 +54,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^3.0.1",
+		"@csstools/selector-resolve-nested": "^1.1.0",
+		"@csstools/selector-specificity": "^3.0.2",
 		"postcss-selector-parser": "^6.0.13"
 	},
 	"peerDependencies": {
@@ -62,7 +63,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^22.0.0"
+		"puppeteer": "^22.3.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -75,7 +76,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-nesting"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

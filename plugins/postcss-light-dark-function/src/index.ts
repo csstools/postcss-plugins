@@ -2,23 +2,13 @@ import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-cu
 import type { PluginCreator, Source } from 'postcss';
 import { DARK_PROP, LIGHT_PROP, OFF, ON } from './props';
 import { colorSchemes } from './color-schemes';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { transformLightDark } from './transform-light-dark';
 
-const COLOR_SCHEME_REGEX = /color-scheme/i;
-const LIGHT_DARK_FUNCTION_REGEX = /light-dark\(/i;
+const COLOR_SCHEME_REGEX = /^color-scheme$/i;
+const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
 
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
-	const options: pluginOptions = Object.assign(
-		// Default options
-		{
-			preserve: true,
-		},
-		// Provided options
-		opts,
-	);
-
 	return {
 		postcssPlugin: 'postcss-light-dark-function',
 		prepare() {
@@ -75,7 +65,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 							return;
 						}
 
-						if (hasSupportsAtRuleAncestor(decl)) {
+						if (hasSupportsAtRuleAncestor(decl, LIGHT_DARK_FUNCTION_REGEX)) {
 							return;
 						}
 
@@ -101,7 +91,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 							decl.parent.append(variableInheritanceRule);
 						}
 
-						if (!options.preserve) {
+						if (!opts?.preserve) {
 							decl.remove();
 						}
 					}

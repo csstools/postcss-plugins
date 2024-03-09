@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-cascade-layers",
 	"description": "Use cascade layers in CSS",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"contributors": [
 		{
 			"name": "Olu Niyi-Awosusi",
@@ -56,7 +56,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^3.0.1",
+		"@csstools/selector-specificity": "^3.0.2",
 		"postcss-selector-parser": "^6.0.13"
 	},
 	"peerDependencies": {
@@ -65,7 +65,7 @@
 	"devDependencies": {
 		"@csstools/postcss-bundler": "^1.0.3",
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^22.0.0"
+		"puppeteer": "^22.3.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -78,7 +78,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-cascade-layers"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

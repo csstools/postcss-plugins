@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-design-tokens",
 	"description": "Use design tokens in your CSS",
-	"version": "3.1.3",
+	"version": "3.1.4",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
 		"postcss-value-parser": "^4.2.0"
 	},
@@ -71,7 +71,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-design-tokens#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-design-tokens"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

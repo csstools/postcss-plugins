@@ -1,7 +1,7 @@
 {
 	"name": "postcss-attribute-case-insensitive",
 	"description": "Enable support for case insensitive attribute matching in selectors",
-	"version": "6.0.2",
+	"version": "6.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -70,7 +70,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-attribute-case-insensitive"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

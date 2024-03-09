@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-oklab-function",
 	"description": "Use oklab() and oklch() color functions in CSS",
-	"version": "3.0.9",
+	"version": "3.0.10",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -38,10 +38,11 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.5.1",
-		"@csstools/css-parser-algorithms": "^2.5.0",
+		"@csstools/css-color-parser": "^1.5.2",
+		"@csstools/css-parser-algorithms": "^2.6.0",
 		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/postcss-progressive-custom-properties": "^3.0.3"
+		"@csstools/postcss-progressive-custom-properties": "^3.1.0",
+		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -60,7 +61,7 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-oklab-function"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",

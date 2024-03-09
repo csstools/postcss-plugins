@@ -1,7 +1,8 @@
 import type { PluginCreator } from 'postcss';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { DirectionFlow } from './lib/types';
 import { transform } from './transform';
+import { predicate } from './has-feature';
 
 export type { DirectionFlow } from './lib/types';
 
@@ -56,14 +57,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 
-				// Declaration already has a fallback
-				const prev = decl.prev();
-				if (prev && prev.type === 'decl' && prev.prop === decl.prop) {
+				if (hasFallback(decl)) {
 					return;
 				}
 
 				// Is wrapped in a relevant `@supports`
-				if (hasSupportsAtRuleAncestor(decl)) {
+				if (hasSupportsAtRuleAncestor(decl, predicate)) {
 					return;
 				}
 			}

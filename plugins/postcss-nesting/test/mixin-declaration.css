@@ -58,3 +58,12 @@ html {
 
 	margin: 0;
 }
+
+a {
+	& b {
+		color: cyan
+	}
+
+	@mixin;
+	color: green;
+}

@@ -24,6 +24,7 @@ import postcssICUnit from './plugins/postcss-ic-unit';
 import postcssImageSetFunction from './plugins/postcss-image-set-function';
 import postcssIsPseudoClass from './plugins/postcss-is-pseudo-class';
 import postcssLabFunction from './plugins/postcss-lab-function';
+import postcssLightDarkFunction from './plugins/postcss-light-dark-function';
 import postcssLogical from './plugins/postcss-logical';
 import postcssLogicalFloatAndClear from './plugins/postcss-logical-float-and-clear';
 import postcssLogicalResize from './plugins/postcss-logical-resize';
@@ -127,6 +128,9 @@ function main() {
 		case 'postcss-lab-function':
 			postcssLabFunction();
 			return;
+		case 'postcss-light-dark-function':
+			postcssLightDarkFunction();
+			return;
 		case 'postcss-logical':
 			postcssLogical();
 			return;
@@ -229,6 +233,7 @@ function main() {
 				'  postcss-image-set-function',
 				'  postcss-is-pseudo-class',
 				'  postcss-lab-function',
+				'  postcss-light-dark-function',
 				'  postcss-logical',
 				'  postcss-logical-float-and-clear',
 				'  postcss-logical-resize',

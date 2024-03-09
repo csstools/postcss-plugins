@@ -1,11 +1,9 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Declaration } from 'postcss';
-import type { PluginCreator } from 'postcss';
-import { tokenize } from '@csstools/css-tokenizer';
+import type { Declaration, PluginCreator } from 'postcss';
 import { SyntaxFlag, color, colorDataFitsRGB_Gamut, serializeP3, serializeRGB } from '@csstools/css-color-parser';
-import { hasFallback } from './has-fallback-decl';
-import { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
+import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { tokenize } from '@csstools/css-tokenizer';
 
 type basePluginOptions = {
 	preserve: boolean,
@@ -14,8 +12,9 @@ type basePluginOptions = {
 	}
 };
 
-const FUNCTION_REGEX = /(rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(/i;
-const NAME_REGEX = /^(rgb|hsl|hwb|lab|lch|oklch|oklab|color)$/i;
+const FUNCTION_REGEX = /\b(?:rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(/i;
+const SUPPORTS_REGEX = /\b(?:rgb|hsl|hwb|lab|lch|oklch|oklab|color)\(\s*?from/i;
+const NAME_REGEX = /^(?:rgb|hsl|hwb|lab|lch|oklch|oklab|color)$/i;
 const FROM_REGEX = /from/i;
 
 /* Transform relative color syntax in CSS. */
@@ -32,7 +31,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			if (hasSupportsAtRuleAncestor(decl)) {
+			if (hasSupportsAtRuleAncestor(decl, SUPPORTS_REGEX)) {
 				return;
 			}
 

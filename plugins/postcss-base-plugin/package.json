@@ -64,7 +64,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/csstools/postcss-plugins.git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-base-plugin"
 	},
 	"keywords": [
