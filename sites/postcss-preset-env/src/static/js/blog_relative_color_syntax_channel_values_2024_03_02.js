@@ -257,6 +257,8 @@ function renderResult() {
 			outputColorValue.channels = outputColorValue.channels.map((channel) => channel * 255);
 		}
 
+		outputColorValue.channels = outputColorValue.channels.map((channel) => Number.isNaN(channel) ? 0 : channel);
+
 		outputChannel1Output.value = round(outputColorValue.channels[0]);
 		outputChannel2Output.value = round(outputColorValue.channels[1]);
 		outputChannel3Output.value = round(outputColorValue.channels[2]);
