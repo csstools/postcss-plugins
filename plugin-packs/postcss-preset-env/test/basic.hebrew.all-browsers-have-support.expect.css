@@ -3,7 +3,7 @@
 }
 
 .test-custom-property-fallbacks {
-	--firebrick: lab(40% 56.6 39);
+	--firebrick: rgb(179, 35, 35);
 }
 
 .test-custom-properties {
@@ -23,7 +23,7 @@
 }
 
 .test-logical-resize {
-	resize: inline;
+	resize: horizontal;
 }
 
 .test-logical-viewport-units {
@@ -33,23 +33,23 @@
 .test-nesting-rules {
 	order: 4;
 
-	& p {
-		order: 5;
-	}
-
 	order: 6;
 }
+
+.test-nesting-rules p {
+		order: 5;
+	}
 
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
 
-	& + p {
-		order: 8;
-	}
-
 	order: 9;
 }
+
+:is(.test-nesting-rules,#test-is-pseudo) + p {
+		order: 8;
+	}
 
 @media (max-width: 30em) {
 	.test-custom-media-queries {
@@ -95,8 +95,8 @@
 }
 
 .test-lab-function {
-	background-color: lab(40% 56.6 39);
-	color: lch(40% 68.8 34.5 / 50%);
+	background-color: rgb(179, 35, 35);
+	color: rgba(179, 34, 35, 0.5);
 	order: 17;
 }
 
@@ -106,6 +106,7 @@
 }
 
 .test-font-variant-property {
+	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
@@ -127,7 +128,7 @@
 	order: 23;
 }
 
-.test-dir-pseudo-class:dir(rtl) {
+[dir="rtl"] .test-dir-pseudo-class {
 	order: 24;
 }
 
@@ -206,79 +207,97 @@
 }
 
 .block-flow {
+	display: block;
 	display: block flow;
 }
 
 .block-flow-root {
+	display: flow-root;
 	display: block flow-root;
 }
 
 .inline-flow {
+	display: inline;
 	display: inline flow;
 }
 
 .inline-flow-root {
+	display: inline-block;
 	display: inline flow-root;
 }
 
 .run-in-flow {
+	display: run-in;
 	display: run-in flow;
 }
 
 .list-item-block-flow {
+	display: list-item;
 	display: list-item block flow;
 }
 
 .inline-flow-list-item {
+	display: inline list-item;
 	display: inline flow list-item;
 }
 
 .block-flex {
+	display: flex;
 	display: block flex;
 }
 
 .inline-flex {
+	display: inline-flex;
 	display: inline flex;
 }
 
 .block-grid {
+	display: grid;
 	display: block grid;
 }
 
 .inline-grid {
+	display: inline-grid;
 	display: inline grid;
 }
 
 .inline-ruby {
+	display: ruby;
 	display: inline ruby;
 }
 
 .block-table {
+	display: table;
 	display: block table;
 }
 
 .inline-table {
+	display: inline-table;
 	display: inline table;
 }
 
 .table-cell-flow {
+	display: table-cell;
 	display: table-cell flow;
 }
 
 .table-caption-flow {
+	display: table-caption;
 	display: table-caption flow;
 }
 
 .ruby-base-flow {
+	display: ruby-base;
 	display: ruby-base flow;
 }
 
 .ruby-text-flow {
+	display: ruby-text;
 	display: ruby-text flow;
 }
 
 .logical-float {
-	float: inline-start;
+	float: right;
 }
 
 .color-function {
@@ -296,27 +315,27 @@
 }
 
 .oklab {
-	color-1: oklab(40% 0.001236 0.0039);
-	color-2: oklab(40% 0.1236 0.0039 / 1);
-	color-3: oklab(40% 0.1236 0.0039 / .5);
-	color-4: oklab(40% 0.1236 0.0039 / 100%);
-	color-5: oklab(40% 0.1236 0.0039 / 50%);
-	color-6: oklab(60% 0.1 0);
+	color-1: rgb(73, 71, 69);
+	color-2: rgb(121, 34, 67);
+	color-3: rgba(121, 34, 67, 0.5);
+	color-4: rgb(121, 34, 67);
+	color-5: rgba(121, 34, 67, 0.5);
+	color-6: rgb(177, 102, 126);
 	color-7: oklab(60% 0.1 0 foo);
-	color-8: oklab(40.101% 0.1147 0.0453);
-	color-9: oklab(59.686% 0.1009 0.1192);
-	color-10: oklab(65.125% -0.0320 0.1274);
-	color-11: oklab(66.016% -0.1084 0.1114);
-	color-12: oklab(72.322% -0.0465 -0.1150);
+	color-8: rgb(125, 35, 41);
+	color-9: rgb(198, 93, 7);
+	color-10: rgb(157, 147, 24);
+	color-11: rgb(104, 166, 57);
+	color-12: rgb(98, 172, 239);
 }
 
 .oklch {
-	color-1: oklch(40% 0.1268735435 34.568626);
-	color-2: oklch(40% 0.1268735435 34.568626 / 1);
-	color-3: oklch(40% 0.1268735435 34.568626 / .5);
-	color-4: oklch(40% 0.1268735435 34.568626 / 100%);
-	color-5: oklch(40% 0.1268735435 34.568626 / 50%);
-	color-6: oklch(60% 0.150 0);
+	color-1: rgb(126, 37, 15);
+	color-2: rgb(126, 37, 15);
+	color-3: rgba(126, 37, 15, 0.5);
+	color-4: rgb(126, 37, 15);
+	color-5: rgba(126, 37, 15, 0.5);
+	color-6: rgb(197, 84, 124);
 
 	color-7: rgb(0, 149, 131);
 	color-8: rgb(0, 149, 131);
@@ -324,22 +343,22 @@
 	color-10: rgb(0, 149, 131);
 	color-11: rgb(0, 149, 131);
 
-	color-12: oklch(60% 0.1250 45);
-	color-13: oklch(60% 0.1250 45deg);
-	color-14: oklch(60% 0.1250 0.125turn);
-	color-15: oklch(60% 0.1250 50grad);
-	color-16: oklch(60% 0.1250 0.785398rad);
+	color-12: rgb(188, 101, 59);
+	color-13: rgb(188, 101, 59);
+	color-14: rgb(188, 101, 59);
+	color-15: rgb(188, 101, 59);
+	color-16: rgb(188, 101, 59);
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
 @media (color-gamut: p3) {
 .oklch {
 
-	color-7: oklch(60% 0.1250 180);
-	color-8: oklch(60% 0.1250 180deg);
-	color-9: oklch(60% 0.1250 0.5turn);
-	color-10: oklch(60% 0.1250 200grad);
-	color-11: oklch(60% 0.1250 3.14159rad);
+	color-7: color(display-p3 0.19244 0.58461 0.51559);
+	color-8: color(display-p3 0.19244 0.58461 0.51559);
+	color-9: color(display-p3 0.19244 0.58461 0.51559);
+	color-10: color(display-p3 0.19244 0.58461 0.51559);
+	color-11: color(display-p3 0.19244 0.58461 0.51559);
 }
 }
 
@@ -410,11 +429,9 @@
 	left: atan2();
 }
 
-.view {
-	:is([data-view-size=m]) & {
+:is([data-view-size=m]) .view {
 		background: red;
 	}
-}
 
 .nested-calc {
 	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
@@ -463,10 +480,10 @@
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, rgb(255, 157, 133) 0%, rgb(31, 251, 255) 100%);
 }
 
-@media (color-gamut: rec2020) {
+@media (color-gamut: p3) {
 .gradients-interpolation-method {
 
-	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, color(display-p3 1 0.61669 0.51066) 0%, color(display-p3 0.46442 0.97081 1) 100%);
 }
 }
 
@@ -495,7 +512,7 @@
 }
 
 .exponential-functions {
-	width: calc(1px * pow(2, 3));
+	width: 8px;
 }
 
 .out-of-gamut {
@@ -545,15 +562,16 @@
 
 .schemed-prop {
 	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
-	& * {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
-	}
 }
 
 @supports (color: light-dark(red, red)) {
 .schemed-prop {
 	--theme-color: light-dark(cyan, deepskyblue);
 }
+}
+
+.schemed-prop * {
+	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
 }
 
 :root {

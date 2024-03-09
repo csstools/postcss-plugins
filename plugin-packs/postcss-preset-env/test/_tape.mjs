@@ -213,7 +213,7 @@ postcssTape(plugin)({
 		message: 'supports { logical: { inlineDirection: "right-to-left" }, stage: 0, browsers: "> 0%" } usage',
 		options: {
 			stage: 0,
-			browsers: 'Chrome 120',
+			browsers: 'Chrome 114',
 			logical: {
 				inlineDirection: 'right-to-left',
 			},
