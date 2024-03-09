@@ -1,9 +1,10 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### Unreleased (minor)
 
 - Correctly serialize negative zero `-0` values
-- Add support for `round` with only a single number argument
+- Add support for `round()` with only a single number argument
+- Add support for `none` in `clamp()`
 
 ### 1.1.7
 
