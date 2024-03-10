@@ -19,8 +19,8 @@ export type pluginOptions = {
 	rewriter: Rewriter;
 };
 
-const URL_FUNCTION_CALL_REGEX = /url\(/i;
-const URL_FUNCTION_NAME_REGEX = /^url$/i;
+const URL_FUNCTION_CALL_REGEX = /rewrite-url\(/i;
+const URL_FUNCTION_NAME_REGEX = /^rewrite-url$/i;
 
 const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 	const rewriter: Rewriter = options?.rewriter ?? ((x) => {
@@ -30,14 +30,8 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-rewrite-url',
 		prepare() {
-			const visited = new WeakSet();
-
 			return {
 				Declaration(decl, { result }) {
-					if (visited.has(decl)) {
-						return;
-					}
-
 					if (!URL_FUNCTION_CALL_REGEX.test(decl.value)) {
 						return;
 					}
@@ -51,21 +45,6 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 					const modifiedComponentValuesList = replaceComponentValues(
 						componentValuesList,
 						(componentValue) => {
-							if (
-								isTokenNode(componentValue) &&
-								componentValue.value[0] === TokenType.URL
-							) {
-								const original = componentValue.value[4].value.trim();
-								const modified = rewriter({ url: original }, rewriteContext);
-								if (modified.url === original) {
-									return;
-								}
-
-								componentValue.value[4].value = modified.url;
-								componentValue.value[1] = `url(${serializeString(modified.url)})`;
-								return componentValue;
-							}
-
 							if (
 								!isFunctionNode(componentValue) ||
 								!URL_FUNCTION_NAME_REGEX.test(componentValue.getName())
@@ -87,6 +66,10 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 
 									x.value[4].value = modified.url;
 									x.value[1] = `"${serializeString(modified.url)}"`;
+
+									componentValue.name[1] = 'url(';
+									componentValue.name[4].value = 'url';
+
 									return componentValue;
 								}
 							}
@@ -96,7 +79,6 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 					const modifiedValue = stringify(modifiedComponentValuesList);
 					if (modifiedValue !== decl.value) {
 						decl.value = modifiedValue;
-						visited.add(decl);
 					}
 				},
 			};

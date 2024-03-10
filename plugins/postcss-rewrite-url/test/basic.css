@@ -1,12 +1,16 @@
 .foo {
-	background: url('foo.png');
+	background: rewrite-url('foo.png');
 }
 
 @font-face {
 	font-family: "Trickster";
 	src:
 		local("Trickster"),
-		url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
-		url("trickster-outline.otf") format("opentype"),
-		url("trickster-outline.woff") format("woff");
+		rewrite-url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
+		rewrite-url("trickster-outline.otf") format("opentype"),
+		rewrite-url("trickster-outline.woff") format("woff");
+}
+
+.ignore {
+	background: url('foo.png');
 }

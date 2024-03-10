@@ -10,14 +10,14 @@ npm install @csstools/postcss-rewrite-url --save-dev
 
 ```pcss
 .foo {
-	background: url('foo.png');
+	background: rewrite-url('foo.png');
 }
 
 @font-face {
 	font-family: "Trickster";
 	src:
 		local("Trickster"),
-		url("trickster-COLRv1.otf") format("opentype");
+		rewrite-url("trickster-COLRv1.otf") format("opentype");
 }
 
 /* becomes */

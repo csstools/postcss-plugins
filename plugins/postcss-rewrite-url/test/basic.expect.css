@@ -10,3 +10,7 @@
 		url("trickster-outline.otf#modified") format("opentype"),
 		url("trickster-outline.woff#modified") format("woff");
 }
+
+.ignore {
+	background: url('foo.png');
+}
