@@ -94,7 +94,7 @@
 		"babel-eslint": "^10.1.0",
 		"browser-sync": "^3.0.2",
 		"codemirror": "^6.0.1",
-		"cssdb": "^7.11.1",
+		"cssdb": "^7.11.2",
 		"eslint": "^8.57.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-plugin-import": "^2.29.1",
@@ -108,7 +108,7 @@
 		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-livereload": "^2.0.5",
 		"tslib": "^2.6.2",
-		"typescript": "^5.3.3"
+		"typescript": "^5.4.2"
 	},
 	"volta": {
 		"node": "20.10.0"
