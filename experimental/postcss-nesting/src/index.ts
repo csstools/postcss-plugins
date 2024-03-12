@@ -5,7 +5,7 @@ import walk from './lib/walk.js';
 const creator: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Rule(rule, { result }) {
+		Rule(rule, { result }): void {
 			walk(rule, result);
 
 			if (rule.selector.trim().includes('&')) {

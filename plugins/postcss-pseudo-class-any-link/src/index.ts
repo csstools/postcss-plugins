@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import { replaceAnyLink } from './replace-any-link';
 
 /** postcss-pseudo-class-any-link plugin options */
@@ -24,11 +24,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-pseudo-class-any-link',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-pseudo-class-any-link',
+				Rule(rule, { result }): void {
 					if (!rule.selector.toLowerCase().includes(':any-link')) {
 						return;
 					}

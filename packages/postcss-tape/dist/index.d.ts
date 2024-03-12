@@ -27,20 +27,16 @@
  * @packageDocumentation
  */
 
-import type { AtRule } from 'postcss';
 import type { Declaration } from 'postcss';
 import type { Plugin } from 'postcss';
 import type { PluginCreator } from 'postcss';
-import type { Rule } from 'postcss';
 
 /**
  * A dummy PostCSS plugin that clones any at rule with params `to-clone` to a new at rule with params `cloned`.
  */
 export declare const atRuleClonerPlugin: {
     postcssPlugin: string;
-    prepare(): {
-        AtRuleExit(atRule: AtRule): void;
-    };
+    prepare(): Plugin;
 };
 
 /**
@@ -83,9 +79,7 @@ export declare function postcssTape(pluginCreator: PluginCreator<unknown>, runOp
  */
 export declare const ruleClonerPlugin: {
     postcssPlugin: string;
-    prepare(): {
-        RuleExit(rule: Rule): void;
-    };
+    prepare(): Plugin;
 };
 
 /**

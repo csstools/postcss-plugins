@@ -28,32 +28,23 @@
 export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array<Array<string>>): Set<string> {
 	const cyclicReferences: Set<string> = new Set();
 
-	// eslint-disable-next-line no-constant-condition
-	let _edges = edges;
 	while (nodes.size > 0) {
-		try {
-			toposort(Array.from(nodes.keys()), _edges);
-			break;
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		} catch (e: any) {
-			/* see the hack below */
-			if (e['_graphNode']) {
-
-				nodes.delete(e['_graphNode']);
-				cyclicReferences.add(e['_graphNode']);
-				_edges = _edges.filter((x) => {
-					return x.indexOf(e['_graphNode']) === -1;
-				});
-			} else {
-				throw e;
-			}
+		const cyclicNode = findCyclicNode(Array.from(nodes.keys()), edges);
+		if (!cyclicNode) {
+			return cyclicReferences;
 		}
+
+		nodes.delete(cyclicNode);
+		cyclicReferences.add(cyclicNode);
+		edges = edges.filter((x) => {
+			return x.indexOf(cyclicNode) === -1;
+		});
 	}
 
 	return cyclicReferences;
 }
 
-function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
+function findCyclicNode(nodes: Array<string>, edges: Array<Array<string>>): string | undefined {
 	let cursor = nodes.length;
 	const sorted: Array<string> = new Array(cursor);
 	const visited: Record<number, boolean> = {};
@@ -64,19 +55,18 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 
 	while (i--) {
 		if (!visited[i]) {
-			visit(nodes[i], i, new Set());
+			const cyclicNode = visit(nodes[i], i, new Set());
+			if (!cyclicNode) {
+				continue;
+			}
+
+			return cyclicNode;
 		}
 	}
 
-	return sorted;
-
-	function visit(node: string, j: number, predecessors: Set<string>) {
+	function visit(node: string, j: number, predecessors: Set<string>): string | undefined {
 		if (predecessors.has(node)) {
-			const err = new Error('Cyclic dependency' + JSON.stringify(node));
-			// @ts-expect-error custom field on object
-			err['_graphNode'] = node; /* a hack to communicate which node is causing the cyclic error */
-
-			throw err;
+			return node;
 		}
 
 		if (!nodesHash.has(node)) {
@@ -86,17 +76,22 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 		if (visited[j]) {
 			return;
 		}
+
 		visited[j] = true;
 
-		let outgoing = outgoingEdges.get(node) || new Set();
-		outgoing = Array.from(outgoing);
+		const outgoing: Array<string> = Array.from(outgoingEdges.get(node) || new Set());
 
 		// eslint-disable-next-line no-cond-assign
 		if (j = outgoing.length) {
 			predecessors.add(node);
 			do {
 				const child = outgoing[--j];
-				visit(child, nodesHash.get(child), predecessors);
+				const cyclicNode = visit(child, nodesHash.get(child)!, predecessors);
+				if (!cyclicNode) {
+					continue;
+				}
+
+				return cyclicNode;
 			} while (j);
 			predecessors.delete(node);
 		}
@@ -105,8 +100,8 @@ function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<stri
 	}
 }
 
-function makeOutgoingEdges(arr: Array<Array<string>>) {
-	const edges = new Map();
+function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> {
+	const edges: Map<string, Set<string>> = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		const edge = arr[i];
 		if (!edges.has(edge[0])) {
@@ -115,12 +110,12 @@ function makeOutgoingEdges(arr: Array<Array<string>>) {
 		if (!edges.has(edge[1])) {
 			edges.set(edge[1], new Set());
 		}
-		edges.get(edge[0]).add(edge[1]);
+		edges.get(edge[0])!.add(edge[1]);
 	}
 	return edges;
 }
 
-function makeNodesHash(arr: Array<string>) {
+function makeNodesHash(arr: Array<string>): Map<string, number> {
 	const res = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		res.set(arr[i], i);

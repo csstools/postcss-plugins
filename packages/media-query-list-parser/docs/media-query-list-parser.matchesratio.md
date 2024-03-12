@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export declare function matchesRatio(componentValues: Array<ComponentValue>): number[] | -1;
+export declare function matchesRatio(componentValues: Array<ComponentValue>): -1 | [number, number];
 ```
 
 ## Parameters
@@ -18,5 +18,5 @@ export declare function matchesRatio(componentValues: Array<ComponentValue>): nu
 
 **Returns:**
 
-number\[\] \| -1
+-1 \| \[number, number\]
 

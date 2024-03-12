@@ -2,7 +2,7 @@ import type { AtRule, AtRuleProps } from 'postcss';
 import { Stylesheet, isImportStatement, isPreImportStatement, isWarning } from './statement';
 import { base64EncodedConditionalImport } from './base64-encoded-import';
 
-export function applyConditions(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule) {
+export function applyConditions(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule): void {
 	stylesheet.statements.forEach((stmt, index) => {
 		if (isWarning(stmt) || isPreImportStatement(stmt) || !stmt.conditions?.length) {
 			return;

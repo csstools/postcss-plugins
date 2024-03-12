@@ -1,4 +1,4 @@
-import type { Declaration, PluginCreator } from 'postcss';
+import type { PluginCreator } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 import { hasFallback } from '@csstools/utilities';
 
@@ -20,8 +20,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-color-hex-alpha',
-		Declaration(decl) {
-			if (!hasAlphaHex(decl)) {
+		Declaration(decl): void {
+			if (!HAS_HEX_ALPHA_REGEX.test(decl.value)) {
 				return;
 			}
 
@@ -39,7 +39,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return false;
 				}
 
-				if (isAlphaHex(node)) {
+				if (node.type === 'word' && IS_HEX_ALPHA_REGEX.test(node.value)) {
 					hexa2rgba(node);
 				}
 			});
@@ -64,28 +64,21 @@ creator.postcss = true;
 
 export default creator;
 
+const HAS_HEX_ALPHA_REGEX = /#([0-9a-f]{4}(?:[0-9a-f]{4})?)\b/i;
 
-/** Returns whether a node has a hexa. */
-function hasAlphaHex(node: Declaration) {
-	/** Expresssion to match any hexa */
-	return /#([0-9A-Fa-f]{4}(?:[0-9A-Fa-f]{4})?)\b/.test(node.value);
-}
-
-/** Returns whether a node matches a hexa node. */
-function isAlphaHex(node: valuesParser.Node) {
-	/** Expresssion to match an exact hexa */
-	return node.type === 'word' && /^#([0-9A-Fa-f]{4}(?:[0-9A-Fa-f]{4})?)$/.test(node.value);
-}
+const IS_HEX_ALPHA_REGEX = /^#([0-9a-f]{4}(?:[0-9a-f]{4})?)$/i;
 
 /** Decimal precision. */
 const alphaDecimalPrecision = 100000;
 
-const hexa2rgba = (node: valuesParser.Node) => {
+const HEX_ALPHA_REPLACER_REGEX = /[0-9a-f]/gi;
+
+function hexa2rgba(node: valuesParser.Node): void {
 	// hex is the node value
 	const hex = node.value;
 
 	// conditionally expand a hex
-	const hex8 = `0x${hex.length === 5 ? hex.slice(1).replace(/[0-9A-Fa-f]/g, '$&$&') : hex.slice(1)}`;
+	const hex8 = `0x${hex.length === 5 ? hex.slice(1).replace(HEX_ALPHA_REPLACER_REGEX, '$&$&') : hex.slice(1)}`;
 
 	// extract the red, blue, green, and alpha values from the hex
 	const [r, g, b, a] = [
@@ -98,4 +91,4 @@ const hexa2rgba = (node: valuesParser.Node) => {
 	];
 
 	node.value = `rgba(${r},${g},${b},${a})`;
-};
+}

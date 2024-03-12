@@ -1,8 +1,8 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import mappings from './mappings';
 
-function transform(value: string) {
+function transform(value: string): string {
 	const { nodes } = valueParser(value);
 
 	if (nodes.length === 1) {
@@ -39,10 +39,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-normalize-display-values',
-		prepare() {
+		prepare(): Plugin {
 			const cache = new Map();
 			return {
-				Declaration(decl) {
+				postcssPlugin: 'postcss-normalize-display-values',
+				Declaration(decl): void {
 					if (!IS_DISPLAY_REGEX.test(decl.prop)) {
 						return;
 					}

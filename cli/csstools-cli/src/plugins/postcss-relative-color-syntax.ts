@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-relative-color-syntax';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssRelativeColorSyntax() {
+export default function postcssRelativeColorSyntax(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties', 'subFeatures'],

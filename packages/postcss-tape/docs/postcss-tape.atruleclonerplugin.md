@@ -11,8 +11,6 @@ A dummy PostCSS plugin that clones any at rule with params `to-clone` to a new a
 ```typescript
 atRuleClonerPlugin: {
     postcssPlugin: string;
-    prepare(): {
-        AtRuleExit(atRule: AtRule): void;
-    };
+    prepare(): Plugin;
 }
 ```

@@ -21,7 +21,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-trigonometric-functions',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (!FUNCTION_CALL_REGEXP.test(decl.value)) {
 				return;
 			}

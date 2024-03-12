@@ -1,7 +1,7 @@
 import plugin from 'postcss-color-functional-notation';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorFunctionalNotation() {
+export default function postcssColorFunctionalNotation(): void {
 	cli(
 		plugin,
 		['preserve'],

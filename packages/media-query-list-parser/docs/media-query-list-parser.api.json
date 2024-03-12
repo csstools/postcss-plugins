@@ -2844,7 +2844,7 @@
             },
             {
               "kind": "Content",
-              "text": "number[] | -1"
+              "text": "-1 | [number, number]"
             },
             {
               "kind": "Content",
@@ -2903,7 +2903,7 @@
             },
             {
               "kind": "Content",
-              "text": "number[] | -1"
+              "text": "-1 | [number, number]"
             },
             {
               "kind": "Content",
@@ -16883,12 +16883,21 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "MediaQuery",
               "canonicalReference": "@csstools/media-query-list-parser!MediaQuery:type"
             },
             {
               "kind": "Content",
-              "text": "[]"
+              "text": ">"
             },
             {
               "kind": "Content",
@@ -16898,7 +16907,7 @@
           "fileUrlPath": "dist/_types/parser/parse.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 7,
-            "endIndex": 9
+            "endIndex": 11
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -17136,12 +17145,21 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "MediaQuery",
               "canonicalReference": "@csstools/media-query-list-parser!MediaQuery:type"
             },
             {
               "kind": "Content",
-              "text": "[]"
+              "text": ">"
             },
             {
               "kind": "Content",
@@ -17151,7 +17169,7 @@
           "fileUrlPath": "dist/_types/parser/parse.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 10,
-            "endIndex": 12
+            "endIndex": 14
           },
           "releaseTag": "Public",
           "overloadIndex": 1,

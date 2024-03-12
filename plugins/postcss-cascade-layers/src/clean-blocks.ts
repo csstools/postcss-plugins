@@ -1,7 +1,7 @@
 import type { ChildNode, Container, Document } from 'postcss';
 import { CONDITIONAL_ATRULES } from './constants';
 
-export function removeEmptyDescendantBlocks(block: Container | undefined) {
+export function removeEmptyDescendantBlocks(block: Container | undefined): void {
 	if (!block) {
 		return;
 	}
@@ -19,7 +19,7 @@ export function removeEmptyDescendantBlocks(block: Container | undefined) {
 	}
 }
 
-export function removeEmptyAncestorBlocks(block: Container | undefined) {
+export function removeEmptyAncestorBlocks(block: Container | undefined): void {
 	if (!block) {
 		return;
 	}

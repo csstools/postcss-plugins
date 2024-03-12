@@ -1,7 +1,7 @@
 import plugin from 'postcss-custom-media';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCustomMedia() {
+export default function postcssCustomMedia(): void {
 	cli(
 		plugin,
 		['preserve'],

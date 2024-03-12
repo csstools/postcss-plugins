@@ -1,7 +1,7 @@
 import plugin from 'postcss-focus-visible';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssFocusVisible() {
+export default function postcssFocusVisible(): void {
 	cli(
 		plugin,
 		['preserve', 'replaceWith'],

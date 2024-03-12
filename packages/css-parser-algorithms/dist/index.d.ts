@@ -106,10 +106,7 @@ export declare class CommentNode {
      * A debug helper to convert the current object to a JSON representation.
      * This is useful in asserts and to store large ASTs in files.
      */
-    toJSON(): {
-        type: ComponentValueType;
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -351,7 +348,7 @@ export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
  */
 export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): ComponentValue[][];
+}): Array<Array<ComponentValue>>;
 
 /**
  * Parse a single component value.
@@ -382,13 +379,13 @@ export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
  */
 export declare function parseListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): ComponentValue[];
+}): Array<ComponentValue>;
 
 /**
  * Replace specific component values in a list of component values.
  * A helper for the most common and simplistic cases when mutating an AST.
  */
-export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void): ComponentValue[][];
+export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void): Array<Array<ComponentValue>>;
 
 /**
  * A simple block node.
@@ -492,10 +489,7 @@ export declare class TokenNode {
      * A debug helper to convert the current object to a JSON representation.
      * This is useful in asserts and to store large ASTs in files.
      */
-    toJSON(): {
-        type: ComponentValueType;
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -590,10 +584,7 @@ export declare class WhitespaceNode {
      * A debug helper to convert the current object to a JSON representation.
      * This is useful in asserts and to store large ASTs in files.
      */
-    toJSON(): {
-        type: ComponentValueType;
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */

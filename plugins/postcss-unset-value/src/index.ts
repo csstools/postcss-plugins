@@ -13,7 +13,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-unset-value',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (decl.value.toLowerCase() !== 'unset') {
 				return;
 			}

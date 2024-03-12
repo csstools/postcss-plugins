@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-nested-calc';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssNestedCalc() {
+export default function postcssNestedCalc(): void {
 	cli(
 		plugin,
 		['preserve'],

@@ -21,7 +21,7 @@ const FROM_REGEX = /from/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-relative-color-syntax',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!FUNCTION_REGEX.test(originalValue) || !FROM_REGEX.test(originalValue)) {
 				return;

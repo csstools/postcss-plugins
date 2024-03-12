@@ -19,7 +19,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-place',
-		Declaration: (decl, { result }) => {
+		Declaration(decl, { result }): void {
 			if (!PLACE_MATCH_REGEX.test(decl.prop)) {
 				return;
 			}

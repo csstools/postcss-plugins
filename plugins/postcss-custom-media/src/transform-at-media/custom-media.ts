@@ -3,7 +3,7 @@ import { parseFromTokens, MediaQuery } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
 
-export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<MediaQuery>, dependsOn: Array<[string, string]> } | false {
+export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<MediaQuery>, dependencies: Array<[string, string]> } | false {
 	const tokens = atMediaParamsTokens(params);
 
 	const customMediaReferences: Set<string> = new Set();
@@ -62,8 +62,8 @@ export function parseCustomMedia(params: string): { name: string, truthy: Array<
 		name: name,
 		truthy: mediaQueryListTruthy,
 		falsy: mediaQueryListFalsy,
-		dependsOn: Array.from(customMediaReferences).map((x) => {
-			return [x, name];
+		dependencies: Array.from(customMediaReferences).map((x) => {
+			return [name, x];
 		}),
 	};
 }

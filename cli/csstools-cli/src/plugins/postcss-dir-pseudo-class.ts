@@ -1,7 +1,7 @@
 import plugin from 'postcss-dir-pseudo-class';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssDirPseudoClass() {
+export default function postcssDirPseudoClass(): void {
 	cli(
 		plugin,
 		['dir', 'preserve', 'shadow'],

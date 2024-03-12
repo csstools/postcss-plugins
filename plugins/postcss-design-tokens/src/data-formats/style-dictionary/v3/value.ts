@@ -45,7 +45,7 @@ export function extractStyleDictionaryV3Token(node: Record<string, unknown>, key
 
 	return {
 		value: value,
-		cssValue: (transformOptions?: TokenTransformOptions) => {
+		cssValue: (transformOptions?: TokenTransformOptions): string => {
 			return applyTransformsToValue(value, transformOptions);
 		},
 		name: String(node['name'] ?? '') || key,

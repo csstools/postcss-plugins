@@ -1,7 +1,7 @@
 import type { ChildNode, Container } from 'postcss';
 import cleanupParent from './cleanup-parent';
 
-export default function shiftNodesBeforeParent(node: ChildNode, parent: Container<ChildNode>) {
+export default function shiftNodesBeforeParent(node: ChildNode, parent: Container<ChildNode>): void {
 	const index = parent.index(node);
 
 	// conditionally move previous siblings into a clone of the parent

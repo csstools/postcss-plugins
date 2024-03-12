@@ -14,7 +14,7 @@ type basePluginOptions = {
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-gradients-interpolation-method',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (!IS_GRADIENT_FUNCTION.test(decl.value)) {
 				return;
 			}

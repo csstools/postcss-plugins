@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): LayerName[];
+export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): void;
 ```
 
 ## Parameters
@@ -19,5 +19,5 @@ export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNa
 
 **Returns:**
 
-[LayerName](./cascade-layer-name-parser.layername.md)<!-- -->\[\]
+void
 

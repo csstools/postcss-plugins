@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-logical-resize';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLogicalResize() {
+export default function postcssLogicalResize(): void {
 	cli(
 		plugin,
 		['inlineDirection'],

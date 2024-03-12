@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import alwaysValidSelector from './split-selectors/always-valid';
 import complexSelectors from './split-selectors/complex';
 import splitSelectors from './split-selectors/split-selectors';
@@ -34,11 +34,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-is-pseudo-class',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-is-pseudo-class',
+				Rule(rule, { result }): void {
 					if (!rule.selector) {
 						return;
 					}
@@ -53,7 +54,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					// Because of loops and recursion we try to only warn once per selector.
 					let didWarnForComplexSelectors = false;
-					const warnOnComplexSelector = () => {
+					const warnOnComplexSelector = (): void => {
 						if (options.onComplexSelector !== 'warning') {
 							return;
 						}
@@ -67,7 +68,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					// Because of loops and recursion we try to only warn once per selector.
 					let didWarnForPseudoElements = false;
-					const warnOnPseudoElements = () => {
+					const warnOnPseudoElements = (): void => {
 						if (options.onPseudoElement !== 'warning') {
 							return;
 						}
@@ -80,7 +81,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					};
 
 					try {
-						let didModifiy = false;
+						let didModify = false;
 						const selectorListOnOriginalNode = [];
 
 						// 1. List behavior.
@@ -109,7 +110,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							// `::is()` is incorrect but can't be detected without parsing.
 							// It will be left as is and will eventually trigger this condition.
 							// This prevents an infinite loop.
-							// didModifiy is the signal to prevent the infinite loop.
+							// didModify is the signal to prevent the infinite loop.
 							if (rule.selectors.indexOf(modifiedSelector) > -1) {
 								selectorListOnOriginalNode.push(modifiedSelector);
 								return;
@@ -117,22 +118,22 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 							if (alwaysValidSelector(modifiedSelector)) {
 								selectorListOnOriginalNode.push(modifiedSelector);
-								didModifiy = true;
+								didModify = true;
 								return;
 							}
 
 							transformedNodes.add(rule);
 							rule.cloneBefore({ selector: modifiedSelector });
-							didModifiy = true;
+							didModify = true;
 						});
 
-						if (selectorListOnOriginalNode.length && didModifiy) {
+						if (selectorListOnOriginalNode.length && didModify) {
 							transformedNodes.add(rule);
 							rule.cloneBefore({ selectors: selectorListOnOriginalNode });
 						}
 
 						if (!options.preserve) {
-							if (!didModifiy) {
+							if (!didModify) {
 								return;
 							}
 

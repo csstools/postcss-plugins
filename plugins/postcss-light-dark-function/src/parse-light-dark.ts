@@ -64,7 +64,7 @@ export function parseLightDark(componentValue: ComponentValue): [ComponentValue,
 	return [light, dark];
 }
 
-function recurseLightDark(node: ComponentValue, parent: { value: Array<ComponentValue> }, index: number | string, isLight: boolean) {
+function recurseLightDark(node: ComponentValue, parent: { value: Array<ComponentValue> }, index: number | string, isLight: boolean): void {
 	if (typeof index !== 'number') {
 		return;
 	}

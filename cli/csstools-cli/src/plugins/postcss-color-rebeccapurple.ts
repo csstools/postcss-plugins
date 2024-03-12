@@ -1,7 +1,7 @@
 import plugin from 'postcss-color-rebeccapurple';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorRebeccaPurple() {
+export default function postcssColorRebeccaPurple(): void {
 	cli(
 		plugin,
 		['preserve'],

@@ -4,7 +4,7 @@ import mergeSelectors from './merge-selectors/merge-selectors.js';
 import type { Result, Rule } from 'postcss';
 import groupDeclarations from './group-declarations.js';
 
-export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result) {
+export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result): void {
 	let selectors = [];
 
 	try {

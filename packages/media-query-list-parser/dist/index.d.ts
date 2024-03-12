@@ -26,31 +26,7 @@ export declare class CustomMedia {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        string: string;
-        nameValue: string;
-        name: CSSToken[];
-        hasFalseKeyword: boolean;
-        hasTrueKeyword: boolean;
-        trueOrFalseKeyword: CSSToken[] | null;
-        mediaQueryList: ({
-            type: NodeType;
-            string: string;
-            modifier: CSSToken[];
-            mediaType: CSSToken[];
-            and: CSSToken[] | undefined;
-            media: MediaCondition | undefined;
-        } | {
-            type: NodeType;
-            string: string;
-            media: MediaCondition;
-        } | {
-            type: NodeType;
-            string: string;
-            media: ComponentValue[];
-        })[] | undefined;
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -74,10 +50,7 @@ export declare class GeneralEnclosed {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -139,9 +112,9 @@ export declare function isMediaQueryWithType(x: unknown): x is MediaQueryWithTyp
 
 export declare function matchesComparison(componentValues: Array<ComponentValue>): false | [number, number];
 
-export declare function matchesRatio(componentValues: Array<ComponentValue>): number[] | -1;
+export declare function matchesRatio(componentValues: Array<ComponentValue>): -1 | [number, number];
 
-export declare function matchesRatioExactly(componentValues: Array<ComponentValue>): number[] | -1;
+export declare function matchesRatioExactly(componentValues: Array<ComponentValue>): -1 | [number, number];
 
 export declare class MediaAnd {
     type: NodeType;
@@ -278,20 +251,7 @@ export declare class MediaFeature {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        feature: {
-            type: NodeType;
-            name: {
-                type: NodeType;
-                name: string;
-                tokens: CSSToken[];
-            };
-            tokens: CSSToken[];
-        };
-        before: CSSToken[];
-        after: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -312,15 +272,7 @@ export declare class MediaFeatureBoolean {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        name: {
-            type: NodeType;
-            name: string;
-            tokens: CSSToken[];
-        };
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -359,11 +311,7 @@ export declare class MediaFeatureName {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        name: string;
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -391,20 +339,7 @@ export declare class MediaFeaturePlain {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        name: {
-            type: NodeType;
-            name: string;
-            tokens: CSSToken[];
-        };
-        value: {
-            type: NodeType;
-            value: unknown;
-            tokens: CSSToken[];
-        };
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -439,20 +374,7 @@ export declare class MediaFeatureRangeNameValue {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        name: {
-            type: NodeType;
-            name: string;
-            tokens: CSSToken[];
-        };
-        value: {
-            type: NodeType;
-            value: unknown;
-            tokens: CSSToken[];
-        };
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -481,20 +403,7 @@ export declare class MediaFeatureRangeValueName {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        name: {
-            type: NodeType;
-            name: string;
-            tokens: CSSToken[];
-        };
-        value: {
-            type: NodeType;
-            value: unknown;
-            tokens: CSSToken[];
-        };
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -526,25 +435,7 @@ export declare class MediaFeatureRangeValueNameValue {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        name: {
-            type: NodeType;
-            name: string;
-            tokens: CSSToken[];
-        };
-        valueOne: {
-            type: NodeType;
-            value: unknown;
-            tokens: CSSToken[];
-        };
-        valueTwo: {
-            type: NodeType;
-            value: unknown;
-            tokens: CSSToken[];
-        };
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -574,11 +465,7 @@ export declare class MediaFeatureValue {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        value: unknown;
-        tokens: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -612,12 +499,7 @@ export declare class MediaInParens {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        media: unknown;
-        before: CSSToken[];
-        after: CSSToken[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -646,16 +528,7 @@ export declare class MediaNot {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        modifier: CSSToken[];
-        media: {
-            type: NodeType;
-            media: unknown;
-            before: CSSToken[];
-            after: CSSToken[];
-        };
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -684,16 +557,7 @@ export declare class MediaOr {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        modifier: CSSToken[];
-        media: {
-            type: NodeType;
-            media: unknown;
-            before: CSSToken[];
-            after: CSSToken[];
-        };
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -722,11 +586,7 @@ export declare class MediaQueryInvalid {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        string: string;
-        media: ComponentValue[];
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -760,11 +620,7 @@ export declare class MediaQueryWithoutType {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        string: string;
-        media: MediaCondition;
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -798,14 +654,7 @@ export declare class MediaQueryWithType {
     /**
      * @internal
      */
-    toJSON(): {
-        type: NodeType;
-        string: string;
-        modifier: CSSToken[];
-        mediaType: CSSToken[];
-        and: CSSToken[] | undefined;
-        media: MediaCondition | undefined;
-    };
+    toJSON(): Record<string, unknown>;
     /**
      * @internal
      */
@@ -872,7 +721,7 @@ export declare enum NodeType {
 export declare function parse(source: string, options?: {
     preserveInvalidMediaQueries?: boolean;
     onParseError?: (error: ParseError) => void;
-}): MediaQuery[];
+}): Array<MediaQuery>;
 
 export declare function parseCustomMedia(source: string, options?: {
     preserveInvalidMediaQueries?: boolean;
@@ -887,7 +736,7 @@ export declare function parseCustomMediaFromTokens(tokens: Array<CSSToken>, opti
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     preserveInvalidMediaQueries?: boolean;
     onParseError?: (error: ParseError) => void;
-}): MediaQuery[];
+}): Array<MediaQuery>;
 
 export declare function typeFromToken(token: TokenIdent): MediaType | false;
 

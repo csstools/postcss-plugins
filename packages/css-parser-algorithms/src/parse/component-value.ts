@@ -1,5 +1,5 @@
 import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
-import { consumeComponentValue } from '../consume/component-block-function';
+import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
 /**
  * Parse a single component value.
@@ -13,9 +13,9 @@ import { consumeComponentValue } from '../consume/component-block-function';
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
  * ```
  */
-export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
+export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }): ComponentValue|undefined {
 	const ctx = {
-		onParseError: options?.onParseError ?? (() => { /* noop */ }),
+		onParseError: options?.onParseError ?? ((): void => { /* noop */ }),
 	};
 
 	const tokensCopy = [

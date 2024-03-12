@@ -7,7 +7,7 @@ import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 // Sort root nodes to apply the preferred order by layer priority for non-selector rules.
 // Selector rules are adjusted by specificity.
-export function sortRootNodes(root: Container, model: Model) {
+export function sortRootNodes(root: Container, model: Model): void {
 	if (!root.nodes) {
 		return;
 	}

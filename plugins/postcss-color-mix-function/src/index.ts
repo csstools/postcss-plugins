@@ -19,7 +19,7 @@ const COLOR_MIX_NAME_REGEX = /^(?:color-mix)$/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-mix-function',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(COLOR_MIX_FUNCTION_REGEX.test(originalValue))) {
 				return;

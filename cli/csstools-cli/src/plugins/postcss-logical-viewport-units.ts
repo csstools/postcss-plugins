@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-logical-viewport-units';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLogicalViewportUnits() {
+export default function postcssLogicalViewportUnits(): void {
 	cli(
 		plugin,
 		['inlineDirection', 'preserve'],

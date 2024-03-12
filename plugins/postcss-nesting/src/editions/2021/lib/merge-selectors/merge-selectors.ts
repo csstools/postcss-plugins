@@ -5,7 +5,7 @@ import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-
 import { nodesAreEquallySpecific } from './specificity';
 import { options } from '../options';
 
-export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options) {
+export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options): Array<string> {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
 	let fromSelectorsAST = [];
@@ -189,7 +189,7 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 	return result;
 }
 
-function isSimpleSelector(selector) {
+function isSimpleSelector(selector): boolean {
 	if (selector.type === 'combinator') {
 		return false;
 	}
@@ -201,7 +201,7 @@ function isSimpleSelector(selector) {
 	return true;
 }
 
-function isCompoundSelector(selector, toSelector = null) {
+function isCompoundSelector(selector, toSelector = null): boolean {
 	if (isSimpleSelector(selector)) {
 		return false;
 	}
@@ -230,7 +230,7 @@ function isCompoundSelector(selector, toSelector = null) {
 }
 
 
-function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selector) {
+function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selector): boolean {
 	if (!selector.parent) {
 		return false;
 	}
@@ -248,7 +248,7 @@ function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selecto
 	return true;
 }
 
-function nestingIsNotInsideCompoundSelector(selector: Nesting) {
+function nestingIsNotInsideCompoundSelector(selector: Nesting): boolean {
 	if (isSimpleSelector(selector)) {
 		return true;
 	}

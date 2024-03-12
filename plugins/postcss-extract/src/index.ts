@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 import { extract } from './select-nodes';
 
@@ -21,23 +21,25 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	});
 
 	if (!options.results) {
-		options.results = (results) => {
+		options.results = (results): void => {
 			console.log(results);
 		};
 	}
 
 	return {
 		postcssPlugin: 'postcss-extract',
-		prepare: () => {
+		prepare(): Plugin {
 			if (options.extractLate) {
 				return {
-					OnceExit: (root) => {
+					postcssPlugin: 'postcss-extract',
+					OnceExit(root): void {
 						options.results(extract(root, parsedQueries));
 					},
 				};
 			} else {
 				return {
-					Once: (root) => {
+					postcssPlugin: 'postcss-extract',
+					Once(root): void {
 						options.results(extract(root, parsedQueries));
 					},
 				};

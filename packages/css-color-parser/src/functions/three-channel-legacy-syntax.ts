@@ -6,7 +6,6 @@ import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { normalizeChannelValuesFn } from './normalize-channel-values';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 
 export function threeChannelLegacySyntax(
@@ -56,13 +55,13 @@ export function threeChannelLegacySyntax(
 		}
 
 		if (isFunctionNode(node)) {
-			if (focus === channelAlpha && toLowerCaseAZ(node.getName()) === 'var') {
+			if (focus === channelAlpha && node.getName().toLowerCase() === 'var') {
 				colorData.syntaxFlags.add(SyntaxFlag.HasVariableAlpha);
 				focus.push(node);
 				continue;
 			}
 
-			if (!mathFunctionNames.has(toLowerCaseAZ(node.getName()))) {
+			if (!mathFunctionNames.has(node.getName().toLowerCase())) {
 				return false;
 			}
 

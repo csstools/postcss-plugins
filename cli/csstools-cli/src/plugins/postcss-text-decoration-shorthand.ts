@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-text-decoration-shorthand';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssTextDecorationShorthand() {
+export default function postcssTextDecorationShorthand(): void {
 	cli(
 		plugin,
 		['preserve'],

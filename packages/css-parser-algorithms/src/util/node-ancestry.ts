@@ -24,7 +24,7 @@
  * });
  * ```
  */
-export function gatherNodeAncestry(node: { walk(cb: (entry: { node: Array<unknown> | unknown, parent: unknown }, index: number | string) => boolean | void): false | undefined }) {
+export function gatherNodeAncestry(node: { walk(cb: (entry: { node: Array<unknown> | unknown, parent: unknown }, index: number | string) => boolean | void): false | undefined }): Map<unknown, unknown> {
 	const ancestry: Map<unknown, unknown> = new Map();
 
 	node.walk((entry) => {

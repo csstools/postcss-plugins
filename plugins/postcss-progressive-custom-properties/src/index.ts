@@ -1,4 +1,4 @@
-import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
+import { type Node, type AtRule, type PluginCreator, type Container, Plugin } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
 
 const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;
@@ -17,11 +17,12 @@ type State = {
 const creator: PluginCreator<null> = () => {
 	return {
 		postcssPlugin: 'postcss-progressive-custom-properties',
-		prepare() {
+		prepare(): Plugin {
 			const states = new WeakMap<Node, State>();
 
 			return {
-				OnceExit: (root, { postcss }) => {
+				postcssPlugin: 'postcss-progressive-custom-properties',
+				OnceExit(root, { postcss }): void {
 					root.walkDecls((decl) => {
 						if (!decl.parent) {
 							return;

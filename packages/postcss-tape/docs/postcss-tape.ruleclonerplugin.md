@@ -11,8 +11,6 @@ A dummy PostCSS plugin that clones any rule with the selector `to-clone` to a ne
 ```typescript
 ruleClonerPlugin: {
     postcssPlugin: string;
-    prepare(): {
-        RuleExit(rule: Rule): void;
-    };
+    prepare(): Plugin;
 }
 ```

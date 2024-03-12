@@ -3,7 +3,7 @@ import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-r
 import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-rule.js';
 import { isAtRule, isRule } from '../../shared/lib/is-type-of-rule.js';
 
-export default function walk(node: Container, result: Result) {
+export default function walk(node: Container, result: Result): void {
 	node.each((child) => {
 		const parent = child.parent;
 

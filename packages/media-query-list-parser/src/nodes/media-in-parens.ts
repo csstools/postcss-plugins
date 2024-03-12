@@ -73,7 +73,7 @@ export class MediaInParens {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			media: this.media.toJSON(),

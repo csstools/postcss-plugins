@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-color-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorFunction() {
+export default function postcssColorFunction(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],

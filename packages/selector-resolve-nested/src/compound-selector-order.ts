@@ -2,7 +2,7 @@ import parser from 'postcss-selector-parser';
 import type { Container, Node } from 'postcss-selector-parser';
 import { sourceFrom } from './source';
 
-export function sortCompoundSelectorsInsideComplexSelector(node: Container<string, Node>) {
+export function sortCompoundSelectorsInsideComplexSelector(node: Container<string, Node>): void {
 	const compoundSelectors: Array<Array<Node>> = [];
 	let currentCompoundSelector: Array<Node> = [];
 

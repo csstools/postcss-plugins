@@ -1,4 +1,4 @@
-import type { ChildNode, PluginCreator } from 'postcss';
+import type { ChildNode, Plugin, PluginCreator } from 'postcss';
 import { parseImport } from './parse-import';
 
 /** postcss-global-data plugin options */
@@ -19,12 +19,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-global-data',
-		prepare() {
+		prepare(): Plugin {
 			let importedFiles = new Set<string>();
 			let importedCSS = new Set<ChildNode>();
 
 			return {
-				Once: (root, postcssHelpers) => {
+				postcssPlugin: 'postcss-global-data',
+				Once(root, postcssHelpers): void {
 					options.files.forEach((file) => {
 						if (importedFiles.has(file)) {
 							return;
@@ -41,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						});
 					});
 				},
-				OnceExit: () => {
+				OnceExit(): void {
 					importedCSS.forEach((node) => {
 						node.remove();
 					});

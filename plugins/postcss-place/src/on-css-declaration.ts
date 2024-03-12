@@ -1,7 +1,7 @@
 import type { Declaration, Result } from 'postcss';
 import valueParser from 'postcss-value-parser';
 
-export function onCSSDeclaration(decl: Declaration, result: Result , options: { preserve: boolean }) {
+export function onCSSDeclaration(decl: Declaration, result: Result , options: { preserve: boolean }): void {
 	// alignment
 	const alignment = decl.prop.match(PLACE_MATCH_REGEX)?.[1].toLowerCase();
 	if (!alignment) {

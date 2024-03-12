@@ -38,7 +38,7 @@ export default function getCustomMedia(root: PostCSSRoot, result: Result, opts: 
 				falsy: parsed.falsy,
 			});
 
-			customMediaGraph.push(...parsed.dependsOn);
+			customMediaGraph.push(...parsed.dependencies);
 		}
 
 		if (!opts.preserve) {
@@ -56,7 +56,7 @@ export default function getCustomMedia(root: PostCSSRoot, result: Result, opts: 
 	return customMedia;
 }
 
-function removeEmptyAncestorBlocks(block: Container | undefined) {
+function removeEmptyAncestorBlocks(block: Container | undefined): void {
 	if (!block) {
 		return;
 	}

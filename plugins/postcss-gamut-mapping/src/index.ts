@@ -1,4 +1,4 @@
-import type { AtRule, Container, Node, PluginCreator } from 'postcss';
+import type { AtRule, Container, Node, Plugin, PluginCreator } from 'postcss';
 import { hasConditionalAncestor } from './has-conditional-ancestor';
 import { tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
@@ -24,11 +24,12 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 	return {
 		postcssPlugin: 'postcss-gamut-mapping',
-		prepare() {
+		prepare(): Plugin {
 			const states = new WeakMap<Node, State>();
 
 			return {
-				OnceExit: (root, { postcss }) => {
+				postcssPlugin: 'postcss-gamut-mapping',
+				OnceExit(root, { postcss }): void {
 					root.walkDecls((decl) => {
 						const originalValue = decl.value;
 						if (!HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX.test(originalValue)) {

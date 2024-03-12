@@ -1,5 +1,5 @@
 import valueParser from 'postcss-value-parser';
-import { getComma } from './get-comma';
+import { isComma } from './is-comma';
 import { getImage } from './get-image';
 import { getMedia, getMediaDPI } from './get-media';
 import { handleInvalidation } from './handle-invalidation';
@@ -16,7 +16,7 @@ type mediaByDpr = {
 	value: string;
 }
 
-export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: 'warn' | 'throw' | 'ignore' | false | undefined, preserve: boolean, result: Result, postcss: Postcss }) => {
+export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: 'warn' | 'throw' | 'ignore' | false | undefined, preserve: boolean, result: Result, postcss: Postcss }): void => {
 	const parent = decl.parent;
 	if (!parent) {
 		return;
@@ -33,7 +33,7 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 		let index = -1;
 
 		while (index < length) {
-			const comma = index < 0 ? true : getComma(imageSetOptionNodes[index]);
+			const comma = index < 0 ? true : isComma(imageSetOptionNodes[index]);
 			const value = getImage(imageSetOptionNodes[index + 1]);
 			const mediaDPI = getMediaDPI(imageSetOptionNodes[index + 2]);
 

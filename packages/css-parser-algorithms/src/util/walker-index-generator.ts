@@ -8,7 +8,7 @@
  * 5. removing an element does not cause elements to be skipped.
  * 6. an element added later in the list will be visited.
  */
-export function walkerIndexGenerator<T>(initialList: Array<T>) {
+export function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>, child: T, index: number) => number {
 	// 1. Keep a reference of the original ordered list.
 	let reference: Array<T> = initialList.slice();
 

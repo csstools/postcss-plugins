@@ -6,7 +6,7 @@ import { comma } from './list.js';
 import { options } from './options.js';
 import cleanupParent from '../../shared/lib/cleanup-parent.js';
 
-export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options) {
+export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options): void {
 	let selectors = [];
 
 	try {
@@ -40,7 +40,7 @@ export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, 
 	walk(rule, result, opts);
 }
 
-export function isValidNestRuleWithinRule(node: AtRule) {
+export function isValidNestRuleWithinRule(node: AtRule): boolean {
 	return comma(node.params).every((selector) => {
 		return selector.split('&').length >= 2 &&
 			selector.indexOf('|') === -1;

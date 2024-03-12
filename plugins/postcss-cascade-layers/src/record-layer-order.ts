@@ -5,7 +5,7 @@ import { isProcessableLayerRule } from './is-processable-layer-rule';
 import type { Model } from './model';
 import { pluginOptions } from './options';
 
-export function recordLayerOrder(root: Container, model: Model, { result, options }: { result: Result, options: pluginOptions }) {
+export function recordLayerOrder(root: Container, model: Model, { result, options }: { result: Result, options: pluginOptions }): void {
 	// record layer order
 	root.walkAtRules((layerRule) => {
 		if (!isProcessableLayerRule(layerRule)) {

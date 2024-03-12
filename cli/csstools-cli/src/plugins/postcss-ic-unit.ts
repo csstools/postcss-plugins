@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-ic-unit';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssICUnit() {
+export default function postcssICUnit(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],

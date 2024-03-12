@@ -5,7 +5,7 @@ import { walkFunc } from './walk-func.js';
 import type { AtRule, Result, Rule } from 'postcss';
 import groupDeclarations from './group-declarations.js';
 
-export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc) {
+export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc): void {
 	// Group all declarations after the first one.
 	groupDeclarations(parent);
 
@@ -27,6 +27,6 @@ export default function atruleWithinRule(node: AtRule, parent: Rule, result: Res
 	}
 }
 
-export function isAtruleWithinRule(node: AtRule) {
+export function isAtruleWithinRule(node: AtRule): boolean {
 	return validAtrules.includes(node.name);
 }

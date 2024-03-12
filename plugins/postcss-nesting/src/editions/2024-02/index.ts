@@ -11,7 +11,7 @@ export type pluginOptions = {
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Rule(rule, { result }) {
+		Rule(rule, { result }): void {
 			walk(rule, result);
 
 			if (rule.selector.includes('&')) {
@@ -19,7 +19,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 			}
 		},
 		AtRule: {
-			nest(rule) {
+			nest(rule): void {
 				throw rule.error(
 					'`@nest` was removed from the CSS Nesting specification and will be removed from PostCSS Nesting in the next major version.\n' +
 					`Change \`@nest ${rule.params} {}\` to \`${rule.params} {}\` to migrate to the latest standard.`,

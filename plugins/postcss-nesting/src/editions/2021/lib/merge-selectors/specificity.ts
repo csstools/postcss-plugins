@@ -1,7 +1,7 @@
 import parser from 'postcss-selector-parser';
 import { selectorSpecificity } from '@csstools/selector-specificity';
 
-export function nodesAreEquallySpecific(nodes: Array<string>) {
+export function nodesAreEquallySpecific(nodes: Array<string>): boolean {
 	// Selector specificity is important when the parent selector is a list.
 	// These cases should be resolved with `:is()` pseudo.
 	// Since browser support for `:is()` is not great, we try to avoid it.

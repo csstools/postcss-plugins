@@ -23,7 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-nesting',
-		Rule(rule, { result }) {
+		Rule(rule, { result }): void {
 			walk(rule, result, options);
 
 			if (rule.selector.includes('&')) {

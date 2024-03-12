@@ -2,7 +2,7 @@ import type { Container, Node, Result, Rule } from 'postcss';
 import parser from 'postcss-selector-parser';
 import { sortCompoundSelectorsInsideComplexSelector } from './merge-selectors/compound-selector-order';
 
-export default function ampersandToScope(rule: Rule, result: Result) {
+export default function ampersandToScope(rule: Rule, result: Result): void {
 	let parent: Container<Node> = rule.parent;
 
 	while (parent) {

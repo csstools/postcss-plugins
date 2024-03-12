@@ -16,7 +16,7 @@ export function parseFromTokens(
 		onParseError: options?.onParseError,
 	});
 
-	const onParseError = options?.onParseError ?? (() => {
+	const onParseError = options?.onParseError ?? ((): void => {
 		// noop;
 	});
 
@@ -179,7 +179,7 @@ export function parse(
 	options?: {
 		onParseError?: (error: ParseError) => void
 	},
-) {
+): Array<LayerName> {
 	const t = tokenizer({ css: source }, {
 		onParseError: options?.onParseError,
 	});
