@@ -1,6 +1,6 @@
 import encodeCSS from './encode/encode.mjs';
 import parser from 'postcss-selector-parser';
-import type { AtRule, ChildNode, Container, Document, PluginCreator, Rule } from 'postcss';
+import type { AtRule, ChildNode, Container, Document, Plugin, PluginCreator, Rule } from 'postcss';
 import { isGuardedByAtSupportsFromAtRuleParams } from './is-guarded-by-at-supports.js';
 import { selectorSpecificity } from '@csstools/selector-specificity';
 
@@ -25,11 +25,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'css-has-pseudo',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				RuleExit: (rule, { result }) => {
+				postcssPlugin: 'css-has-pseudo',
+				RuleExit(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}
@@ -197,7 +198,7 @@ creator.postcss = true;
 
 export default creator;
 
-function isWithinSupportCheck(rule: Rule) {
+function isWithinSupportCheck(rule: Rule): boolean {
 	let ruleParent: Container<ChildNode> | Document | undefined = rule.parent;
 
 	while (ruleParent) {

@@ -445,6 +445,90 @@ export const matchers = [
 			},
 			{
 				'type': 'function',
+				'value': 'rgba',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'rgba',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
 				'value': 'hsl',
 				'nodes': [
 					{
@@ -484,6 +568,90 @@ export const matchers = [
 			{
 				'type': 'function',
 				'value': 'hsl',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'div',
+						'value': '/',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'hsla',
+				'nodes': [
+					{
+						'type': 'word',
+						'value': 'from',
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'hsla',
 				'nodes': [
 					{
 						'type': 'word',

@@ -1,6 +1,6 @@
 import type { ChildNode, Container } from 'postcss';
 
-export default function groupDeclarations(node: Container<ChildNode>) {
+export default function groupDeclarations(node: Container<ChildNode>): void {
 	// https://drafts.csswg.org/css-nesting/#mixing
 	// When a style rule contains both declarations and nested style rules or nested conditional group rules,
 	// all three can be arbitrarily mixed.

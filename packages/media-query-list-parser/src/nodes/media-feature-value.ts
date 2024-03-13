@@ -121,7 +121,7 @@ export class MediaFeatureValue {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		if (Array.isArray(this.value)) {
 			return {
 				type: this.type,
@@ -228,7 +228,7 @@ export function parseMediaFeatureValue(componentValues: Array<ComponentValue>, i
 	);
 }
 
-export function matchesRatioExactly(componentValues: Array<ComponentValue>) {
+export function matchesRatioExactly(componentValues: Array<ComponentValue>): -1 | [number, number] {
 	let firstNumber = -1;
 	let secondNumber = -1;
 
@@ -256,7 +256,7 @@ export function matchesRatioExactly(componentValues: Array<ComponentValue>) {
 	return [firstNumber, secondNumber];
 }
 
-export function matchesRatio(componentValues: Array<ComponentValue>) {
+export function matchesRatio(componentValues: Array<ComponentValue>): -1 | [number, number] {
 	let firstNumber = -1;
 	let delim = -1;
 

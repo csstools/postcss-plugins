@@ -205,7 +205,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	 * Normalize the current function:
 	 * 1. if the "endToken" is EOF, replace with a ")-token"
 	 */
-	normalize() {
+	normalize(): void {
 		if (this.endToken[0] === TokenType.EOF) {
 			this.endToken = [TokenType.CloseParen, ')', -1, -1, undefined];
 		}
@@ -376,7 +376,7 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 	 * Normalize the current simple block
 	 * 1. if the "endToken" is EOF, replace with the mirror token of the "startToken"
 	 */
-	normalize() {
+	normalize(): void {
 		if (this.endToken[0] === TokenType.EOF) {
 			const mirror = mirrorVariant(this.startToken);
 			if (mirror) {
@@ -552,7 +552,7 @@ export class WhitespaceNode {
 	 * A debug helper to convert the current object to a JSON representation.
 	 * This is useful in asserts and to store large ASTs in files.
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			tokens: this.tokens(),
@@ -639,7 +639,7 @@ export class CommentNode {
 	 * A debug helper to convert the current object to a JSON representation.
 	 * This is useful in asserts and to store large ASTs in files.
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			tokens: this.tokens(),
@@ -742,7 +742,7 @@ export class TokenNode {
 	 * A debug helper to convert the current object to a JSON representation.
 	 * This is useful in asserts and to store large ASTs in files.
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			tokens: this.tokens(),

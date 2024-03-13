@@ -31,7 +31,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-image-set-function',
-		Declaration(decl, { result, postcss }) {
+		Declaration(decl, { result, postcss }): void {
 			const value = decl.value;
 
 			// if a declaration likely uses an image-set() function

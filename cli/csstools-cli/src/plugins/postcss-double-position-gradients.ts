@@ -1,7 +1,7 @@
 import plugin from 'postcss-double-position-gradients';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssDoublePositionGradients() {
+export default function postcssDoublePositionGradients(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],

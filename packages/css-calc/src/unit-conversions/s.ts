@@ -1,13 +1,13 @@
 export const convert_s: Map<string, (number: number) => number> = new Map([
 	[
 		'ms',
-		(x: number) => {
+		(x: number): number => {
 			return x * 1000;
 		},
 	],
 	[
 		's',
-		(x: number) => {
+		(x: number): number => {
 			return x;
 		},
 	],

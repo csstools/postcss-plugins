@@ -22,9 +22,9 @@ const keywords = [
 	'top',
 ];
 
-const isPunctuationCommaNode = (node: valueParser.Node) => node.type === 'div' && node.value === ',';
+const isPunctuationCommaNode = (node: valueParser.Node): boolean => node.type === 'div' && node.value === ',';
 
-function isNumericNode(node: valueParser.Node) {
+function isNumericNode(node: valueParser.Node): boolean {
 	try {
 		return valueParser.unit(node?.value) !== false;
 	} catch (_) {
@@ -40,7 +40,7 @@ function isNumericNode(node: valueParser.Node) {
 const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: boolean }) => {
 	return {
 		postcssPlugin: 'postcss-double-position-gradients',
-		Declaration(decl, { result }) {
+		Declaration(decl, { result }): void {
 			if (!HAS_GRADIENT_FUNCTION_REGEX.test(decl.value)) {
 				return;
 			}

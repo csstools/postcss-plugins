@@ -1,5 +1,9 @@
 # Changes to PostCSS Relative Color Syntax
 
+### Unreleased (patch)
+
+- Allow relative color syntax in `rgba` and `hsla` color notations.
+
 ### 2.0.10
 
 _February 19, 2024_

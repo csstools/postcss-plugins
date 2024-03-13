@@ -55,7 +55,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			const currentToken = tokens.get(id)!;
 
 			currentToken.value = value;
-			currentToken.cssValue = (transformOptions: TokenTransformOptions) => {
+			currentToken.cssValue = (transformOptions: TokenTransformOptions): string => {
 				return applyTransformsToValue(value, transformOptions);
 			};
 
@@ -127,7 +127,7 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			const currentToken = tokens.get(id)!;
 
 			currentToken.value = value;
-			currentToken.cssValue = (transformOptions: TokenTransformOptions) => {
+			currentToken.cssValue = (transformOptions: TokenTransformOptions): string => {
 				return applyTransformsToValue(value, transformOptions);
 			};
 

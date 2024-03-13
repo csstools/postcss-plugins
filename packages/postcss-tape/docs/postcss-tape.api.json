@@ -182,16 +182,16 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    postcssPlugin: string;\n    prepare(): {\n        AtRuleExit(atRule: "
+              "text": "{\n    postcssPlugin: string;\n    prepare(): "
             },
             {
               "kind": "Reference",
-              "text": "AtRule",
-              "canonicalReference": "postcss!AtRule_:class"
+              "text": "Plugin",
+              "canonicalReference": "postcss!postcss.Plugin:interface"
             },
             {
               "kind": "Content",
-              "text": "): void;\n    };\n}"
+              "text": ";\n}"
             }
           ],
           "fileUrlPath": "dist/_types/index.d.ts",
@@ -366,16 +366,16 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    postcssPlugin: string;\n    prepare(): {\n        RuleExit(rule: "
+              "text": "{\n    postcssPlugin: string;\n    prepare(): "
             },
             {
               "kind": "Reference",
-              "text": "Rule",
-              "canonicalReference": "postcss!Rule_:class"
+              "text": "Plugin",
+              "canonicalReference": "postcss!postcss.Plugin:interface"
             },
             {
               "kind": "Content",
-              "text": "): void;\n    };\n}"
+              "text": ";\n}"
             }
           ],
           "fileUrlPath": "dist/_types/index.d.ts",

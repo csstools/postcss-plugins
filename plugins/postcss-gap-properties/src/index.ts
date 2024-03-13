@@ -25,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-gap-properties',
 		// walk decl shorthand gap, column-gap, or row-gap declaration
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (!gapProperties.includes(decl.prop.toLowerCase())) {
 				return;
 			}

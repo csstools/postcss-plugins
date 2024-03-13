@@ -9,7 +9,7 @@
 ```typescript
 export declare function parse(source: string, options?: {
     onParseError?: (error: ParseError) => void;
-}): LayerName[];
+}): Array<LayerName>;
 ```
 
 ## Parameters
@@ -21,5 +21,5 @@ export declare function parse(source: string, options?: {
 
 **Returns:**
 
-[LayerName](./cascade-layer-name-parser.layername.md)<!-- -->\[\]
+Array&lt;[LayerName](./cascade-layer-name-parser.layername.md)<!-- -->&gt;
 

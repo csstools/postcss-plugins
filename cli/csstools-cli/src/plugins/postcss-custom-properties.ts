@@ -1,7 +1,7 @@
 import plugin from 'postcss-custom-properties';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCustomProperties() {
+export default function postcssCustomProperties(): void {
 	cli(
 		plugin,
 		['preserve'],

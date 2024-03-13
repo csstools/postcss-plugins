@@ -8,8 +8,12 @@ export const relativeColorSyntaxMatches = [
 		'matchers': [
 			matcherForValue('rgb(from $a $1 $2 $3)'),
 			matcherForValue('rgb(from $a $1 $2 $3 / $4)'),
+			matcherForValue('rgba(from $a $1 $2 $3)'),
+			matcherForValue('rgba(from $a $1 $2 $3 / $4)'),
 			matcherForValue('hsl(from $a $1 $2 $3)'),
 			matcherForValue('hsl(from $a $1 $2 $3 / $4)'),
+			matcherForValue('hsla(from $a $1 $2 $3)'),
+			matcherForValue('hsla(from $a $1 $2 $3 / $4)'),
 			matcherForValue('hwb(from $a $1 $2 $3)'),
 			matcherForValue('hwb(from $a $1 $2 $3 / $4)'),
 			matcherForValue('lch(from $a $1 $2 $3)'),

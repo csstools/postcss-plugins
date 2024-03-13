@@ -9,19 +9,19 @@ export function parseFromTokens(
 		preserveInvalidMediaQueries?: boolean,
 		onParseError?: (error: ParseError) => void
 	},
-) {
+): Array<MediaQuery> {
 	const componentValuesLists = parseCommaSeparatedListOfComponentValues(tokens, {
 		onParseError: options?.onParseError,
 	});
 
 	return componentValuesLists.map((componentValuesList, index) => {
 		const mediaQuery = parseMediaQuery(componentValuesList);
-		if (mediaQuery == false && options?.preserveInvalidMediaQueries === true) {
+		if (mediaQuery === false && options?.preserveInvalidMediaQueries === true) {
 			return new MediaQueryInvalid(componentValuesLists[index]);
 		}
 
 		return mediaQuery;
-	}).filter((x) => !!x) as Array<MediaQuery>;
+	}).filter((x): x is MediaQuery => !!x);
 }
 
 export function parse(
@@ -30,7 +30,7 @@ export function parse(
 		preserveInvalidMediaQueries?: boolean,
 		onParseError?: (error: ParseError) => void
 	},
-) {
+): Array<MediaQuery> {
 	const t = tokenizer({ css: source }, {
 		onParseError: options?.onParseError,
 	});

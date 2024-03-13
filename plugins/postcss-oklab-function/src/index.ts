@@ -19,7 +19,7 @@ const OKLAB_OKLCH_NAME_REGEX = /^(?:oklab|oklch)$/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-oklab-function',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(OKLAB_OKLCH_FUNCTION_REGEX.test(originalValue))) {
 				return;

@@ -10,7 +10,7 @@
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     preserveInvalidMediaQueries?: boolean;
     onParseError?: (error: ParseError) => void;
-}): MediaQuery[];
+}): Array<MediaQuery>;
 ```
 
 ## Parameters
@@ -22,5 +22,5 @@ export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
 
 **Returns:**
 
-[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->\[\]
+Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt;
 

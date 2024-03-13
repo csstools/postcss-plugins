@@ -90,7 +90,7 @@ function removeEmptyNodes(node: Container | Document): boolean {
 	return false;
 }
 
-function setSemicolon(node: AtRule | Rule) {
+function setSemicolon(node: AtRule | Rule): void {
 	if (node.raws.semicolon) {
 		const last = node.last;
 		if (last?.type !== 'decl' || !last.variable) {
@@ -107,7 +107,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 	return {
 		postcssPlugin: 'postcss-minify',
-		OnceExit(css) {
+		OnceExit(css): void {
 			css.raws.before = '';
 			css.raws.after = '\n';
 

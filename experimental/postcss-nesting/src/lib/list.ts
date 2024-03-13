@@ -1,4 +1,4 @@
-export function comma(string: string) {
+export function comma(string: string): Array<string> {
 	const array: Array<string> = [];
 	let current = '';
 	let split = false;

@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-gradients-interpolation-method';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssGradientsInterpolationMethod() {
+export default function postcssGradientsInterpolationMethod(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],

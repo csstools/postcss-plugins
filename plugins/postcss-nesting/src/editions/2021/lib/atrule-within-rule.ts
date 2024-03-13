@@ -6,7 +6,7 @@ import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.j
 import validAtrules from '../../shared/lib/valid-atrules.js';
 import { options } from './options.js';
 
-export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options) {
+export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options): void {
 	// Group all declarations after the first one.
 	groupDeclarations(parent);
 
@@ -31,6 +31,6 @@ export default function atruleWithinRule(node: AtRule, parent: Rule, result: Res
 	}
 }
 
-export function isAtruleWithinRule(node: AtRule) {
+export function isAtruleWithinRule(node: AtRule): boolean {
 	return validAtrules.includes(node.name);
 }

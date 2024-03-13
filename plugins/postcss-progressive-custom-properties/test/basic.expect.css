@@ -22,6 +22,8 @@
 	--prop-8: 1px solid red;
 
 	--prop-9: red;
+
+	--prop-10: magenta;
 }
 
 @supports (color: oklab(0% 0 0%)) {
@@ -90,6 +92,12 @@
 @supports (color: rgb(0, 0, 0, 0)) {
 :root {
 	--prop-9: rgb(1,1,1,1);
+}
+}
+
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+:root {
+	--prop-10: rgba(from magenta calc(r * 2) g b);
 }
 }
 
@@ -324,13 +332,9 @@
 
 :root {
 	--color-rcs-invalid-1: green;
-	--color-rcs-invalid-1: rgba(from blue r g b);
 	--color-rcs-invalid-2: green;
-	--color-rcs-invalid-2: hsla(from blue h s l);
 	--color-rcs-invalid-3: green;
-	--color-rcs-invalid-3: rgba(from blue r g b / alpha);
 	--color-rcs-invalid-4: green;
-	--color-rcs-invalid-4: hsla(from blue h s l / alpha);
 	--color-rcs-invalid-5: green;
 	--color-rcs-invalid-5: rgb(from blue r, g, b);
 	--color-rcs-invalid-6: green;
@@ -339,6 +343,15 @@
 	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
 	--color-rcs-invalid-8: green;
 	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+}
+
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+:root {
+	--color-rcs-invalid-1: rgba(from blue r g b);
+	--color-rcs-invalid-2: hsla(from blue h s l);
+	--color-rcs-invalid-3: rgba(from blue r g b / alpha);
+	--color-rcs-invalid-4: hsla(from blue h s l / alpha);
+}
 }
 
 .property-with-var--1 {

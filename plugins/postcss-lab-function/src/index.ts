@@ -19,7 +19,7 @@ const LAB_LCH_NAME_REGEX = /^(?:lab|lch)$/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-lab-function',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(LAB_LCH_FUNCTION_REGEX.test(originalValue))) {
 				return;

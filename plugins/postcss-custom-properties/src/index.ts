@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import type valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
@@ -30,15 +30,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-custom-properties',
-		prepare: () => {
+		prepare(): Plugin {
 			let customProperties: Map<string, valuesParser.ParsedValue> = new Map();
 			const parsedValuesCache: Map<string, valuesParser.ParsedValue> = new Map();
 
 			return {
-				Once: (root) => {
+				postcssPlugin: 'postcss-custom-properties',
+				Once(root): void {
 					customProperties = getCustomPropertiesFromRoot(root, parsedValuesCache);
 				},
-				Declaration: (decl) => {
+				Declaration(decl): void {
 					if (!HAS_VAR_FUNCTION_REGEX.test(decl.value)) {
 						return;
 					}

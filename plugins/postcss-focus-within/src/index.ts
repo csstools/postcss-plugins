@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import isValidReplacement from './is-valid-replacement.mjs';
 
 /** postcss-focus-within plugin options */
@@ -31,7 +31,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	if (!isValidReplacement(options.replaceWith)) {
 		return {
 			postcssPlugin: 'postcss-focus-within',
-			Once: (root, { result }) => {
+			Once(root, { result }): void {
 				root.warn(
 					result,
 					`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`,
@@ -42,11 +42,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-focus-within',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-focus-within',
+				Rule(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}

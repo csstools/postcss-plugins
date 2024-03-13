@@ -128,11 +128,11 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 }
 
 // https://en.wikipedia.org/wiki/Cartesian_product
-function cartesianProduct(...args) {
+function cartesianProduct<T>(...args: Array<Array<T>>): Array<Array<T>> {
 	const r = [];
 	const max = args.length - 1;
 
-	function helper(arr, i) {
+	function helper(arr, i): void {
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);
@@ -143,6 +143,8 @@ function cartesianProduct(...args) {
 			}
 		}
 	}
+
 	helper([], 0);
+
 	return r;
 }

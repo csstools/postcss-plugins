@@ -48,7 +48,7 @@ import postcssTrigonometricFunctions from './plugins/postcss-trigonometric-funct
 import postcssUnsetValue from './plugins/postcss-unset-value';
 
 main();
-function main() {
+function main(): void {
 	switch (process.argv[2] ?? false) {
 		case 'css-blank-pseudo':
 			cssBlankPseudo();

@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 
 /** postcss-dir-pseudo-class plugin options */
@@ -29,11 +29,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-dir-pseudo-class',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-dir-pseudo-class',
+				Rule(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}

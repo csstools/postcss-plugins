@@ -24,7 +24,7 @@ export function HSL_to_sRGB(HSL: Color): Color {
 	sat = sat / 100;
 	light = light / 100;
 
-	function f(n: number) {
+	function f(n: number): number {
 		const k = (n + hue / 30) % 12;
 		const a = sat * Math.min(light, 1 - light);
 		return light - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));

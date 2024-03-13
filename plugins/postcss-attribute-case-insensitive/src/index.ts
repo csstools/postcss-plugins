@@ -1,15 +1,15 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 
 function nodeIsInsensitiveAttribute(node: selectorParser.Node): node is selectorParser.Attribute {
 	return node.type === 'attribute' && (node.insensitive ?? false);
 }
 
-function selectorHasInsensitiveAttribute(selector: selectorParser.Selector) {
+function selectorHasInsensitiveAttribute(selector: selectorParser.Selector): boolean {
 	return selector.some(nodeIsInsensitiveAttribute);
 }
 
-function transformString(strings: Array<string>, charPos: number, string: string) {
+function transformString(strings: Array<string>, charPos: number, string: string): Array<string> {
 	const char = string.charAt(charPos);
 	if (char === '') {
 		return strings;
@@ -25,7 +25,7 @@ function transformString(strings: Array<string>, charPos: number, string: string
 	return transformString(newStrings, charPos + 1, string);
 }
 
-function createSensitiveAttributes(attribute: selectorParser.Attribute) {
+function createSensitiveAttributes(attribute: selectorParser.Attribute): Array<selectorParser.Attribute> {
 	const attributes = transformString([''], 0, attribute.value ?? '');
 	return attributes.map(x => {
 		const newAttribute = attribute.clone({
@@ -42,7 +42,7 @@ function createSensitiveAttributes(attribute: selectorParser.Attribute) {
 	});
 }
 
-function createNewSelectors(selector: selectorParser.Selector) {
+function createNewSelectors(selector: selectorParser.Selector): Array<selectorParser.Selector> {
 	let newSelectors: Array<selectorParser.Selector> = [selectorParser.selector({ value: '', nodes: [] })];
 
 	selector.each((node) => {
@@ -88,11 +88,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-attribute-case-insensitive',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-attribute-case-insensitive',
+				Rule(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}

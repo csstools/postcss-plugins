@@ -1,7 +1,7 @@
 import plugin from 'postcss-preset-env';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssPresetEnv() {
+export default function postcssPresetEnv(): void {
 	cli(
 		plugin,
 		[

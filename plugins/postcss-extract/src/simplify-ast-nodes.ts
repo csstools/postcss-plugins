@@ -39,7 +39,7 @@ export function simplifyASTNode(node: Node): Record<string, unknown> {
 	}
 }
 
-function cleanUndefinedValues(object: Record<string, unknown>) {
+function cleanUndefinedValues<T extends Record<string, unknown>>(object: T): T {
 	Object.keys(object).forEach((key) => {
 		if (typeof object[key] === 'undefined') {
 			delete object[key];

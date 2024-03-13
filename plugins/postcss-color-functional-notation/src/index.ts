@@ -16,7 +16,7 @@ const RGB_HSL_FUNCTION_REGEX = /\b(?:rgb|hsl)a?\(/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-functional-notation',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(RGB_HSL_FUNCTION_REGEX.test(originalValue))) {
 				return;

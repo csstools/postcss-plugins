@@ -37,10 +37,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	logFeaturesList(features, options, logger);
 
-	const internalPlugin = () => {
+	const internalPlugin: PluginCreator<never> = () => {
 		return {
 			postcssPlugin: 'postcss-preset-env',
-			OnceExit: function (root, { result }) {
+			OnceExit(root, { result }): void {
 				pluginIdHelp(featureNamesInOptions, root, result);
 
 				if (options.debug) {

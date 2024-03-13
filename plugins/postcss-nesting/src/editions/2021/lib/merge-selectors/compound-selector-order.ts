@@ -3,7 +3,7 @@ import type { Container, Node, Pseudo } from 'postcss-selector-parser';
 
 const isPseudo = parser.pseudo({ value: ':is' });
 
-export function sortCompoundSelectorsInsideComplexSelector(node: Container<string, Node>) {
+export function sortCompoundSelectorsInsideComplexSelector(node: Container<string, Node>): void {
 	if (!node || !node.nodes) {
 		return;
 	}
@@ -79,7 +79,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node: Container<strin
 	}
 }
 
-function selectorTypeOrder(selector: Node) {
+function selectorTypeOrder(selector: Node): number {
 	if (parser.isPseudoElement(selector)) {
 		return selectorTypeOrderIndex.pseudoElement;
 	}

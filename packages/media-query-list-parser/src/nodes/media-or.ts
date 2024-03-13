@@ -56,7 +56,7 @@ export class MediaOr {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			modifier: this.modifier,

@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-light-dark-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLightDarkFunction() {
+export default function postcssLightDarkFunction(): void {
 	cli(
 		plugin,
 		['preserve'],

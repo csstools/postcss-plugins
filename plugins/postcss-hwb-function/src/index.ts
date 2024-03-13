@@ -18,7 +18,7 @@ export type basePluginOptions = {
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-hwb-function',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(HWB_FUNCTION_REGEX.test(originalValue))) {
 				return;

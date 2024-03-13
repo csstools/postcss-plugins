@@ -16,7 +16,7 @@ const COLOR_NAME_REGEX = /^(?:color)$/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-function',
-		Declaration: (decl: Declaration) => {
+		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(COLOR_FUNCTION_REGEX.test(originalValue))) {
 				return;

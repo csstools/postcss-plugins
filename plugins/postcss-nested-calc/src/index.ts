@@ -22,7 +22,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-nested-calc',
-		Declaration(decl, { result }) {
+		Declaration(decl, { result }): void {
 			if (numberOfCalcOccurrences(decl.value) < 2) {
 				// must have at least two calc functions.
 				return;

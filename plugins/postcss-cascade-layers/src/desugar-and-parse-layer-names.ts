@@ -7,7 +7,7 @@ import { getLayerAtRuleAncestor } from './get-layer-atrule-ancestor';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
 
-export function desugarAndParseLayerNames(root: Container, model: Model) {
+export function desugarAndParseLayerNames(root: Container, model: Model): void {
 	// - parse layer names
 	// - rename anon layers
 	// - handle empty layers

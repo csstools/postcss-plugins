@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-scope-pseudo-class';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssScopePseudoClass() {
+export default function postcssScopePseudoClass(): void {
 	cli(
 		plugin,
 		['preserve'],

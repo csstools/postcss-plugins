@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-hwb-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssHWBFunction() {
+export default function postcssHWBFunction(): void {
 	cli(
 		plugin,
 		['preserve'],

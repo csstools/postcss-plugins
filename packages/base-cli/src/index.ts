@@ -11,7 +11,7 @@ export { helpTextLogger } from './help';
 export type { Arguments, SignalValue } from './args';
 export type PluginCreatorOptions = Record<string, unknown> | null;
 
-export async function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPluginOpts: Array<string>, helpLogger: () => void, standalone = true) {
+export async function cli(plugin: PluginCreator<PluginCreatorOptions>, allowedPluginOpts: Array<string>, helpLogger: () => void, standalone = true): Promise<void> {
 	// Get process and plugin options from the command line
 	const argo = parseArguments(process.argv.slice(standalone ? 2 : 3), allowedPluginOpts, helpLogger);
 	if (argo === SignalValue.InvalidArguments) {

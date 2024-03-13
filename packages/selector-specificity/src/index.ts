@@ -1,6 +1,5 @@
 import parser from 'postcss-selector-parser';
 import type { Node, Selector } from 'postcss-selector-parser';
-import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 export type Specificity = {
 	a: number,
@@ -50,7 +49,7 @@ export function selectorSpecificity(node: Node): Specificity {
 	} else if (isPseudoElement(node)) {
 		node = node as parser.Pseudo;
 
-		switch (toLowerCaseAZ(node.value)) {
+		switch (node.value.toLowerCase()) {
 			case '::slotted':
 				// “The specificity of ::slotted() is that of a pseudo-element, plus the specificity of its argument.”
 
@@ -105,7 +104,7 @@ export function selectorSpecificity(node: Node): Specificity {
 		}
 
 	} else if (parser.isPseudoClass(node)) {
-		switch (toLowerCaseAZ(node.value)) {
+		switch (node.value.toLowerCase()) {
 			// The specificity of :any() and :-webkit-any() as implemented in browsers is 1 nomatter the content.
 			case ':-webkit-any':
 			case ':any':
@@ -144,7 +143,7 @@ export function selectorSpecificity(node: Node): Specificity {
 
 					if (node.nodes && node.nodes.length > 0) {
 						const ofSeparatorIndex = node.nodes[0].nodes.findIndex((x) => {
-							return x.type === 'tag' && toLowerCaseAZ(x.value) === 'of';
+							return x.type === 'tag' && x.value.toLowerCase() === 'of';
 						});
 
 						if (ofSeparatorIndex > -1) {
@@ -249,7 +248,7 @@ export function selectorSpecificity(node: Node): Specificity {
 	};
 }
 
-function specificityOfMostSpecificListItem(nodes: Array<Node>) {
+function specificityOfMostSpecificListItem(nodes: Array<Node>): { a: number, b: number, c: number } {
 	let mostSpecificListItem = {
 		a: 0,
 		b: 0,

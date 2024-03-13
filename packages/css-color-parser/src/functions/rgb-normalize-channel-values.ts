@@ -2,7 +2,6 @@ import type { ColorData } from '../color-data';
 import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
 	if (token[0] === TokenType.Percentage) {
@@ -52,7 +51,7 @@ export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: numb
 }
 
 export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
-	if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'none') {
+	if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'none') {
 		colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
 
 		return [

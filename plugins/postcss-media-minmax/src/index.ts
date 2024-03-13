@@ -10,7 +10,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-media-minmax',
 		AtRule: {
-			media: (atRule) => {
+			media(atRule): void {
 				if (!(atRule.params.includes('<') || atRule.params.includes('>') || atRule.params.includes('='))) {
 					return;
 				}
@@ -29,7 +29,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 				atRule.params = transformed;
 			},
-			'custom-media': (atRule) => {
+			'custom-media'(atRule): void {
 				if (!(atRule.params.includes('<') || atRule.params.includes('>') || atRule.params.includes('='))) {
 					return;
 				}

@@ -1,7 +1,7 @@
 import type { AtRule, AtRuleProps } from 'postcss';
 import { ImportStatement, NodesStatement, Stylesheet, isImportStatement, isNodesStatement, isPreImportStatement } from './statement';
 
-export function postProcess(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule) {
+export function postProcess(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule): void {
 	let indexOfFirstImport = -1;
 	let indexOfFirstPreImport = -1;
 	let indexOfFirstMeaningfulNode = -1;

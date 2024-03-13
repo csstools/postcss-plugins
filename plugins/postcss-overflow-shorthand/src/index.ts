@@ -19,7 +19,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-overflow-shorthand',
-		Declaration: (decl, { result }) => {
+		Declaration(decl, { result }): void {
 			if (decl.prop.toLowerCase() !== 'overflow') {
 				return;
 			}

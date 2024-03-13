@@ -63,6 +63,6 @@ export function parsePluginOptions(opts?: pluginOptions): parsedPluginOptions {
 	return options;
 }
 
-function isPositiveAndNotZero(x: number) {
+function isPositiveAndNotZero(x: number): boolean {
 	return x > 0 && x !== Infinity;
 }

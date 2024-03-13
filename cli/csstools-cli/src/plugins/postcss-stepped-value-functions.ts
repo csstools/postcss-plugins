@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-stepped-value-functions';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssSteppedValueFunctions() {
+export default function postcssSteppedValueFunctions(): void {
 	cli(
 		plugin,
 		['preserve', 'onInvalid'],

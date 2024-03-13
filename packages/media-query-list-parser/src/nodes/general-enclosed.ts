@@ -53,7 +53,7 @@ export class GeneralEnclosed {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			tokens: this.tokens(),

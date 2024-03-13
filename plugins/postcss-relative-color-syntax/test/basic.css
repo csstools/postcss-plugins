@@ -9,19 +9,21 @@
 	--color-rcs-10: rgb(from blue r g b);
 	--color-rcs-11: rgb(from blue r g b / alpha);
 	--color-rcs-12: hsl(from blue h s l / alpha);
-	--color-rcs-13: rgba(from blue r g b / alpha);
-	--color-rcs-14: hsla(from blue h s l / alpha);
+	--color-rcs-13: rgba(from blue r g b);
+	--color-rcs-14: hsla(from blue h s l);
+	--color-rcs-15: rgba(from blue r g b / alpha);
+	--color-rcs-16: hsla(from blue h s l / alpha);
 }
 
 .invalid {
-	--color-rcs-invalid-1: rgba(from blue r g b);
-	--color-rcs-invalid-2: hsla(from blue h s l);
-	--color-rcs-invalid-3: rgba(from blue r g b / alpha);
-	--color-rcs-invalid-4: hsla(from blue h s l / alpha);
-	--color-rcs-invalid-5: rgb(from blue r, g, b);
-	--color-rcs-invalid-6: hsl(from blue h, s, l);
-	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
-	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+	--color-rcs-invalid-1: rgb(from blue r, g, b);
+	--color-rcs-invalid-2: hsl(from blue h, s, l);
+	--color-rcs-invalid-3: rgb(from blue r, g, b, alpha);
+	--color-rcs-invalid-4: hsl(from blue h, s, l, alpha);
+	--color-rcs-invalid-5: rgba(from blue r, g, b);
+	--color-rcs-invalid-6: hsla(from blue h, s, l);
+	--color-rcs-invalid-7: rgba(from blue r, g, b, alpha);
+	--color-rcs-invalid-8: hsla(from blue h, s, l, alpha);
 }
 
 
