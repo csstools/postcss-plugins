@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 3.0.10
+
+_March 13, 2024_
 
 - Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#305) (patch)
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#207) (patch)
