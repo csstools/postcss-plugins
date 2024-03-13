@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Allow relative color syntax in `rgba` and `hsla` color notations.
+
 ### 1.5.2
 
 _February 19, 2024_
