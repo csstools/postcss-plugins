@@ -1,7 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### Unreleased (minor)
 
+- Add support for `contrast-color( <color> max )`
 - Allow relative color syntax in `rgba` and `hsla` color notations.
 
 ### 1.5.2
