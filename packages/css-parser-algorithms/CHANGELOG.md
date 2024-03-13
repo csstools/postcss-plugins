@@ -1,5 +1,9 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#224) (patch)
+
 ### 2.6.0
 
 _February 19, 2024_

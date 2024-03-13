@@ -4,6 +4,7 @@
 
 - Add support for `contrast-color( <color> max )`
 - Allow relative color syntax in `rgba` and `hsla` color notations.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#224) (patch)
 
 ### 1.5.2
 

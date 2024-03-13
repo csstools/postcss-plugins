@@ -5,6 +5,7 @@
 - Correctly serialize negative zero `-0` values
 - Add support for `round()` with only a single number argument
 - Add support for `none` in `clamp()`
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#224) (patch)
 
 ### 1.1.7
 

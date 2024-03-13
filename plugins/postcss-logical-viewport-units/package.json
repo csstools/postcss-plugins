@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-tokenizer": "^2.2.3",
+		"@csstools/css-tokenizer": "^2.2.4",
 		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {
