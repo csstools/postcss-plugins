@@ -1,7 +1,7 @@
 {
 	"name": "postcss-preset-env",
 	"description": "Convert modern CSS into something browsers understand",
-	"version": "9.5.0",
+	"version": "9.5.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
