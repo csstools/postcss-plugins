@@ -1,6 +1,6 @@
 import parser from 'postcss-selector-parser';
 
-export function sortCompoundSelectorsInsideComplexSelector(node) {
+export function sortCompoundSelectorsInsideComplexSelector(node): void {
 	if (!node || !node.nodes || node.nodes.length === 1) {
 		return;
 	}
@@ -99,7 +99,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node) {
 	}
 }
 
-function selectorTypeOrder(selector, type) {
+function selectorTypeOrder(selector, type): number {
 	if (parser.isPseudoElement(selector)) {
 		return selectorTypeOrderIndex.pseudoElement;
 	}

@@ -1,7 +1,7 @@
 import plugin from 'css-has-pseudo';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function cssHasPseudo() {
+export default function cssHasPseudo(): void {
 	cli(
 		plugin,
 		['preserve'],

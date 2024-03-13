@@ -17,7 +17,7 @@ const creator: PluginCreator<never> = () => {
 
 	return {
 		postcssPlugin: 'postcss-todo-or-die',
-		async Once(root, { result }) {
+		async Once(root, { result }): Promise<void> {
 			const atRules: Array<AtRule> = [];
 
 			root.walkAtRules((atRule) => {
@@ -33,7 +33,7 @@ const creator: PluginCreator<never> = () => {
 			});
 
 			for (const atRule of atRules) {
-				const errorHandler = (err: ParseError) => {
+				const errorHandler = (err: ParseError): void => {
 					throw atRule.error(err.message);
 				};
 

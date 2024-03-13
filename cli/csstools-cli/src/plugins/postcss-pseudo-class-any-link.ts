@@ -1,7 +1,7 @@
 import plugin from 'postcss-pseudo-class-any-link';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssPseudoClassAnyLink() {
+export default function postcssPseudoClassAnyLink(): void {
 	cli(
 		plugin,
 		['preserve'],

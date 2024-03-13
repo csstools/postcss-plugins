@@ -1,7 +1,7 @@
 import plugin from 'css-blank-pseudo';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function cssBlankPseudo() {
+export default function cssBlankPseudo(): void {
 	cli(
 		plugin,
 		['preserve', 'replaceWith'],

@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export declare function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): ComponentValue[][];
+export declare function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): Array<Array<ComponentValue>>;
 ```
 
 ## Parameters
@@ -19,5 +19,5 @@ export declare function calcFromComponentValues(componentValuesList: Array<Array
 
 **Returns:**
 
-ComponentValue\[\]\[\]
+Array&lt;Array&lt;ComponentValue&gt;&gt;
 

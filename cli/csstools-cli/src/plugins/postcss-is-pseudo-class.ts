@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-is-pseudo-class';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssIsPseudoClass() {
+export default function postcssIsPseudoClass(): void {
 	cli(
 		plugin,
 		['onComplexSelector', 'preserve', 'specificityMatchingName'],

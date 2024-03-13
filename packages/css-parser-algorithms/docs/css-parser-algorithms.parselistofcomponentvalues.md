@@ -11,7 +11,7 @@ Parse a list of component values.
 ```typescript
 export declare function parseListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): ComponentValue[];
+}): Array<ComponentValue>;
 ```
 
 ## Parameters
@@ -23,7 +23,7 @@ export declare function parseListOfComponentValues(tokens: Array<CSSToken>, opti
 
 **Returns:**
 
-[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->\[\]
+Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;
 
 ## Example
 

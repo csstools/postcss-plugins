@@ -1,7 +1,7 @@
 import plugin from 'postcss-custom-selectors';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCustomSelectors() {
+export default function postcssCustomSelectors(): void {
 	cli(
 		plugin,
 		['preserve'],

@@ -23,7 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-color-rebeccapurple',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (!HAS_REBECCAPURPLE_REGEX.test(decl.value)) {
 				return;
 			}

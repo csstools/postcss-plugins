@@ -5,7 +5,7 @@ import { Token, TokenTransformOptions } from './data-formats/base/token';
 import { parsedPluginOptions } from './options';
 import { parseComponentValues } from './parse-component-values';
 
-export function transform(tokens: Map<string, Token>, result: Result, postCSSNode: Node, source: string, opts: parsedPluginOptions) {
+export function transform(tokens: Map<string, Token>, result: Result, postCSSNode: Node, source: string, opts: parsedPluginOptions): string {
 	const componentValues = parseComponentValues(source);
 
 	let didChangeSomething = false;
@@ -46,7 +46,7 @@ export function transform(tokens: Map<string, Token>, result: Result, postCSSNod
 }
 
 
-function transformComponentValue(node: ComponentValue, tokens: Map<string, Token>, result: Result, postCSSNode: Node, opts: parsedPluginOptions) {
+function transformComponentValue(node: ComponentValue, tokens: Map<string, Token>, result: Result, postCSSNode: Node, opts: parsedPluginOptions): Array<ComponentValue> | undefined {
 	if (!isFunctionNode(node)) {
 		return;
 	}

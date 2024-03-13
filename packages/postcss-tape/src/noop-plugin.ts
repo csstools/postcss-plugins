@@ -1,7 +1,9 @@
-const noopPlugin = () => {
+import type { PluginCreator } from 'postcss';
+
+const noopPlugin: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'noop-plugin',
-		Rule() {
+		Once(): void {
 			// do nothing
 		},
 	};

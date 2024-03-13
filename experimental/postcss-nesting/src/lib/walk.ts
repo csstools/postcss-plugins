@@ -4,7 +4,7 @@ import transformAtruleWithinAtrule, { isAtruleWithinAtrule } from './atrule-with
 import type { Container, Result } from 'postcss';
 import { isAtRule, isRule } from './is-type-of-rule.js';
 
-export default function walk(node: Container, result: Result) {
+export default function walk(node: Container, result: Result): void {
 	node.each((child) => {
 		const parent = child.parent;
 

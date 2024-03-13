@@ -12,7 +12,6 @@ import { MediaOr } from '../nodes/media-or';
 import { MediaQuery, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 import { modifierFromToken } from '../nodes/media-query-modifier';
 import { isIdent } from '../util/component-value-is';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQuery | false {
 	{
@@ -49,7 +48,7 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQu
 					continue;
 				}
 
-				if (andIndex === -1 && token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'and') {
+				if (andIndex === -1 && token[0] === TokenType.Ident && IS_AND_REGEX.test(token[4].value)) {
 					andIndex = i;
 					const condition = parseMediaConditionWithoutOr(componentValues.slice(i+1));
 					if (condition === false) {
@@ -361,6 +360,8 @@ function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode): MediaI
 	return new MediaInParens(new GeneralEnclosed(simpleBlock));
 }
 
+const IS_NOT_REGEX = /^not$/i;
+
 function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot | false {
 	let sawNot = false;
 	let node: MediaNot | null = null;
@@ -377,7 +378,7 @@ function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot | false
 
 		if (isIdent(componentValue)) {
 			const token = (componentValue.value as TokenIdent);
-			if (toLowerCaseAZ(token[4].value) === 'not') {
+			if (IS_NOT_REGEX.test(token[4].value)) {
 				if (sawNot) {
 					return false;
 				}
@@ -416,7 +417,9 @@ function parseMediaNot(componentValues: Array<ComponentValue>): MediaNot | false
 	return false;
 }
 
-function parseMediaOr(componentValues: Array<ComponentValue>) {
+const IS_OR_REGEX = /^or$/i;
+
+function parseMediaOr(componentValues: Array<ComponentValue>): { advance: number, node: MediaOr } | false {
 	let sawOr = false;
 
 	for (let i = 0; i < componentValues.length; i++) {
@@ -431,7 +434,7 @@ function parseMediaOr(componentValues: Array<ComponentValue>) {
 
 		if (isIdent(componentValue)) {
 			const token = (componentValue.value as TokenIdent);
-			if (toLowerCaseAZ(token[4].value) === 'or') {
+			if (IS_OR_REGEX.test(token[4].value)) {
 				if (sawOr) {
 					return false;
 				}
@@ -467,7 +470,9 @@ function parseMediaOr(componentValues: Array<ComponentValue>) {
 	return false;
 }
 
-function parseMediaAnd(componentValues: Array<ComponentValue>) {
+const IS_AND_REGEX = /^and$/i;
+
+function parseMediaAnd(componentValues: Array<ComponentValue>): { advance: number, node: MediaAnd } | false {
 	let sawAnd = false;
 
 	for (let i = 0; i < componentValues.length; i++) {
@@ -482,7 +487,7 @@ function parseMediaAnd(componentValues: Array<ComponentValue>) {
 
 		if (isIdent(componentValue)) {
 			const token = (componentValue.value as TokenIdent);
-			if (toLowerCaseAZ(token[4].value) === 'and') {
+			if (IS_AND_REGEX.test(token[4].value)) {
 				if (sawAnd) {
 					return false;
 				}

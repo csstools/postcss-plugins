@@ -21,7 +21,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-base-plugin',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (decl.value === 'red') {
 				// Determine the new value.
 				let newValue = 'blue';

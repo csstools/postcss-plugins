@@ -51,7 +51,7 @@ export default function getCustomSelectors(root: PostCSSRoot, result: Result, op
 	return customSelectors;
 }
 
-function removeEmptyAncestorBlocks(block: Container | undefined) {
+function removeEmptyAncestorBlocks(block: Container | undefined): void {
 	if (!block) {
 		return;
 	}

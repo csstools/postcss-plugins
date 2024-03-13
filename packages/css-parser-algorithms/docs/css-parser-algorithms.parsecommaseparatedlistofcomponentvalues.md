@@ -11,7 +11,7 @@ Parse a comma-separated list of component values.
 ```typescript
 export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): ComponentValue[][];
+}): Array<Array<ComponentValue>>;
 ```
 
 ## Parameters
@@ -23,7 +23,7 @@ export declare function parseCommaSeparatedListOfComponentValues(tokens: Array<C
 
 **Returns:**
 
-[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->\[\]\[\]
+Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;&gt;
 
 ## Example
 

@@ -31,14 +31,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	if (!isHorizontal) {
 		return {
 			postcssPlugin: 'postcss-logical-float-and-clear',
-			Once() {
+			Once(): void {
 				// noop
 			},
 		};
 	}
 
 	const [inlineStart, inlineEnd] = directionFlowToAxes(options.inlineDirection);
-	const makeTransform = (decl: Declaration) => {
+	const makeTransform = (decl: Declaration): void => {
 		const value = decl.value.toLowerCase();
 		const possibleValues = [DirectionValues.InlineStart, DirectionValues.InlineEnd];
 

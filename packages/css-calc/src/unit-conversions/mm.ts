@@ -1,43 +1,43 @@
 export const convert_mm: Map<string, (number: number) => number> = new Map([
 	[
 		'cm',
-		(x: number) => {
+		(x: number): number => {
 			return x / 10;
 		},
 	],
 	[
 		'mm',
-		(x: number) => {
+		(x: number): number => {
 			return x;
 		},
 	],
 	[
 		'q',
-		(x: number) => {
+		(x: number): number => {
 			return x * 4;
 		},
 	],
 	[
 		'in',
-		(x: number) => {
+		(x: number): number => {
 			return x / 25.4;
 		},
 	],
 	[
 		'pc',
-		(x: number) => {
+		(x: number): number => {
 			return (x / 25.4) * 6;
 		},
 	],
 	[
 		'pt',
-		(x: number) => {
+		(x: number): number => {
 			return (x / 25.4) * 72;
 		},
 	],
 	[
 		'px',
-		(x: number) => {
+		(x: number): number => {
 			return (x / 25.4) * 96;
 		},
 	],

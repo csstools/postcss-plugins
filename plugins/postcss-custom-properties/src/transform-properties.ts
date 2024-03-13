@@ -5,7 +5,7 @@ import { isDeclarationIgnored } from './is-ignored';
 import { HAS_VAR_FUNCTION_REGEX } from './is-var-function';
 
 // transform custom pseudo selectors with custom selectors
-export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }) {
+export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }): void {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.value;
 		const valueAST = valuesParser(originalValue);
@@ -52,10 +52,10 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 // match custom properties
 
 // whether the declaration should be potentially transformed
-const isTransformableDecl = (decl: Declaration) => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
+const isTransformableDecl = (decl: Declaration): boolean => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
 
 // whether the declaration has a trailing comment
-const hasTrailingComment = (decl: Declaration) => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && TRAILING_COMMENT_REGEX.test(decl.raws.value?.raw ?? '');
+const hasTrailingComment = (decl: Declaration): boolean => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && TRAILING_COMMENT_REGEX.test(decl.raws.value?.raw ?? '');
 const TRAILING_COMMENT_REGEX = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
 
 function parentHasExactFallback(decl: Declaration, value: string): boolean {

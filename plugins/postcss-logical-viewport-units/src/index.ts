@@ -51,7 +51,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-logical-viewport-units',
-		Declaration(decl, { atRule }) {
+		Declaration(decl, { atRule }): void {
 			{
 				if (!HAS_VIEWPORT_UNITS_REGEX.test(decl.value)) {
 					return;

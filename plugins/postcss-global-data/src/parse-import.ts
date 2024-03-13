@@ -3,7 +3,7 @@ import fs from 'fs';
 import type { Helpers, Root } from 'postcss';
 import module from 'module';
 
-export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>) {
+export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>): Root|false {
 	let resolvedPath = '';
 
 	try {

@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-font-format-keywords';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssFontFormatKeywords() {
+export default function postcssFontFormatKeywords(): void {
 	cli(
 		plugin,
 		['preserve'],

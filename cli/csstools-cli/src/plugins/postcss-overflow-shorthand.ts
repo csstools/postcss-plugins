@@ -1,7 +1,7 @@
 import plugin from 'postcss-overflow-shorthand';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssOverflowShorthand() {
+export default function postcssOverflowShorthand(): void {
 	cli(
 		plugin,
 		['preserve'],

@@ -8,7 +8,7 @@ type MatcherNode = {
 	isVariable?: boolean
 }
 
-export function matches(a: MatcherNode, b: MatcherNode) {
+export function matches(a: MatcherNode, b: MatcherNode): boolean {
 	if (
 		a.isVariable &&
 		(
@@ -60,7 +60,7 @@ export function matches(a: MatcherNode, b: MatcherNode) {
 	return true;
 }
 
-function doesNotMatchValue(a: MatcherNode, b: MatcherNode) {
+function doesNotMatchValue(a: MatcherNode, b: MatcherNode): boolean {
 	if (
 		a.type === 'space' && b.type === 'space' &&
 		a.value?.trim() === b.value?.trim()

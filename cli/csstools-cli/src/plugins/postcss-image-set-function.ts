@@ -1,7 +1,7 @@
 import plugin from 'postcss-image-set-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssImageSetFunction() {
+export default function postcssImageSetFunction(): void {
 	cli(
 		plugin,
 		['oninvalid', 'preserve'],

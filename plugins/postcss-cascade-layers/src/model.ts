@@ -114,7 +114,7 @@ export class Model {
 		return layerNameList;
 	}
 
-	sortLayerNames() {
+	sortLayerNames(): void {
 		for (const [layerName, layerIndex] of this.layerOrder) {
 			const parts = this.layerNameParts.get(layerName) ?? [];
 

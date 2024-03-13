@@ -1,7 +1,7 @@
-import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { ComponentValue, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { CSSToken, tokenizer } from '@csstools/css-tokenizer';
 
-function parseComponentValuesFromTokens(tokens: Array<CSSToken>) {
+function parseComponentValuesFromTokens(tokens: Array<CSSToken>): Array<ComponentValue> {
 	return parseListOfComponentValues(tokens, {
 		onParseError: (err) => {
 			throw err;
@@ -9,7 +9,7 @@ function parseComponentValuesFromTokens(tokens: Array<CSSToken>) {
 	});
 }
 
-export function parseComponentValues(source: string) {
+export function parseComponentValues(source: string): Array<ComponentValue> {
 	const t = tokenizer({ css: source }, {
 		onParseError: (err) => {
 			throw err;

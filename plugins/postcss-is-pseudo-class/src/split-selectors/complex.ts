@@ -5,7 +5,7 @@ import { isInCompoundWithOneOtherElement } from './complex/is-in-compound';
 import type { Container } from 'postcss-selector-parser';
 import { isPseudoInFirstCompound } from './complex/is-pseudo-in-first-compound';
 
-export default function complexSelectors(selectors: Array<string>, pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void) {
+export default function complexSelectors(selectors: Array<string>, pluginOptions: { onComplexSelector?: 'warning' }, warnOnComplexSelector: () => void, warnOnPseudoElements: () => void): Array<string> {
 	return selectors.flatMap((selector) => {
 		if (selector.indexOf(':-csstools-matches') === -1 && selector.toLowerCase().indexOf(':is') === -1) {
 			return selector;

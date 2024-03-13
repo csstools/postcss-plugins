@@ -12,9 +12,9 @@ import { ComponentValue, consumeComponentValue } from '../consume/component-bloc
  * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));
  * ```
  */
-export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }) {
+export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }): Array<Array<ComponentValue>> {
 	const ctx = {
-		onParseError: options?.onParseError ?? (() => { /* noop */ }),
+		onParseError: options?.onParseError ?? ((): void => { /* noop */ }),
 	};
 
 	const tokensCopy = [

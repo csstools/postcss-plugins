@@ -1,7 +1,7 @@
 import type { Node, Result } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>) {
+export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>): Array<string> {
 	const result = [];
 	if (toSelectors.length === 0) {
 		return;

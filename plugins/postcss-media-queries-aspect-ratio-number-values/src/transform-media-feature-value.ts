@@ -5,7 +5,7 @@ import { matchesRatioExactly, MediaFeatureValue } from '@csstools/media-query-li
 const precision = 100000;
 const nearInfinity = 2147483647;
 
-export function transformMediaFeatureValue(value: MediaFeatureValue) {
+export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 	if (Array.isArray(value.value) && matchesRatioExactly(value.value)) {
 		const nodes: Array<ComponentValue> = [];
 
@@ -220,7 +220,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue) {
 	return;
 }
 
-function modifyCalc(focus: FunctionNode) {
+function modifyCalc(focus: FunctionNode): FunctionNode {
 	return new FunctionNode(
 		[TokenType.Function, 'calc(', -1, -1, { value: 'calc(' }],
 		[TokenType.CloseParen, ')', -1, -1, undefined],
@@ -247,7 +247,7 @@ function modifyCalc(focus: FunctionNode) {
 }
 
 // https://stackoverflow.com/questions/17445231/js-how-to-find-the-greatest-common-divisor
-function greatestCommonDivisor(a: number, b: number) {
+function greatestCommonDivisor(a: number, b: number): number {
 	if (Number.isNaN(a) || Number.isNaN(b)) {
 		throw new Error('Unexpected \'NaN\' when calculating the greatest common divisor.');
 	}

@@ -5,7 +5,7 @@ import mergeParams from './merge-params.js';
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import validAtrules from './valid-atrules.js';
 
-export default function transformAtruleWithinAtrule(node: AtRule, parent: AtRule) {
+export default function transformAtruleWithinAtrule(node: AtRule, parent: AtRule): void {
 	// Group all declarations after the first one.
 	groupDeclarations(parent);
 
@@ -19,7 +19,7 @@ export default function transformAtruleWithinAtrule(node: AtRule, parent: AtRule
 	cleanupParent(parent);
 }
 
-export function isAtruleWithinAtrule(node: AtRule, parent: AtRule) {
+export function isAtruleWithinAtrule(node: AtRule, parent: AtRule): boolean {
 	return validAtrules.includes(node.name) &&
 		node.name === parent.name;
 }

@@ -1,7 +1,7 @@
 import plugin from 'postcss-focus-within';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssFocusWithin() {
+export default function postcssFocusWithin(): void {
 	cli(
 		plugin,
 		['preserve', 'replaceWith'],

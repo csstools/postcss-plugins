@@ -6,7 +6,7 @@ import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-ru
 import { isAtRule, isNestRule, isRule } from '../../shared/lib/is-type-of-rule.js';
 import { options } from './options.js';
 
-export default function walk(node: Container, result: Result, opts: options) {
+export default function walk(node: Container, result: Result, opts: options): void {
 	node.each((child) => {
 		const parent = child.parent;
 

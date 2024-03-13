@@ -1,5 +1,5 @@
 import { MediaQuery } from '@csstools/media-query-list-parser';
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import getCustomMedia from './custom-media-from-root';
 import { transformAtMediaListTokens } from './transform-at-media/transform-at-media';
 
@@ -23,15 +23,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-custom-media',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 			let customMedia: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> = new Map();
 
 			return {
-				Once: (root, { result }) => {
+				postcssPlugin: 'postcss-custom-media',
+				Once(root, { result }): void {
 					customMedia = getCustomMedia(root, result, { preserve: preserve });
 				},
-				AtRule: (atRule, { result }) => {
+				AtRule(atRule, { result }): void {
 					if (transformedNodes.has(atRule)) {
 						return;
 					}

@@ -1,7 +1,6 @@
 import { gatherNodeAncestry } from '@csstools/css-parser-algorithms';
 import { stringify, TokenType } from '@csstools/css-tokenizer';
 import { isMediaAnd, isMediaCondition, isMediaConditionListWithAnd, isMediaFeature, isMediaFeatureRange, isMediaFeatureRangeNameValue, isMediaFeatureRangeValueName, isMediaInParens, isMediaQuery, MediaAnd, MediaCondition, MediaConditionListWithAnd, MediaFeature, MediaInParens, MediaQuery, MediaFeatureLT } from '@csstools/media-query-list-parser';
-import { toLowerCaseAZ } from './to-lower-case-a-z';
 import { transformSingleNameValuePair } from './transform-single-pair';
 
 const supportedFeatureNames = new Set([
@@ -19,7 +18,7 @@ const supportedFeatureNames = new Set([
 	'width',
 ]);
 
-export function transform(mediaQueries: Array<MediaQuery>) {
+export function transform(mediaQueries: Array<MediaQuery>): string {
 	return mediaQueries.map((mediaQuery, mediaQueryIndex) => {
 		const ancestry = gatherNodeAncestry(mediaQuery);
 
@@ -34,7 +33,7 @@ export function transform(mediaQueries: Array<MediaQuery>) {
 				return;
 			}
 
-			const name = toLowerCaseAZ(node.name.getName());
+			const name = node.name.getName().toLowerCase();
 			if (!supportedFeatureNames.has(name)) {
 				return;
 			}

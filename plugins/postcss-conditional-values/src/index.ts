@@ -1,4 +1,4 @@
-import type { Rule, PluginCreator } from 'postcss';
+import type { Rule, PluginCreator, Plugin } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
 export type pluginOptions = {
@@ -10,13 +10,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-conditional-values',
-		prepare() {
+		prepare(): Plugin {
 			const counters = new Map<string, number>();
 			const didReplaceTrueFalse = new Set<string>();
 			const didFindFalse = new Set<string>();
 
 			return {
-				Declaration(decl, { postcss }) {
+				postcssPlugin: 'postcss-conditional-values',
+				Declaration(decl, { postcss }): void {
 					if (!decl.value.toLowerCase().includes(pluginOptions.functionName)) {
 						return;
 					}

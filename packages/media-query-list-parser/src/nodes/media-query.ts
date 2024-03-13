@@ -1,7 +1,6 @@
 import { ComponentValue, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
 import { MediaInParens } from './media-in-parens';
 import { MediaNot } from './media-not';
@@ -54,12 +53,12 @@ export class MediaQueryWithType {
 
 		for (let i = 0; i < copy.modifier.length; i++) {
 			const token = copy.modifier[i];
-			if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'not') {
+			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'not') {
 				copy.modifier.splice(i, 1);
 				break;
 			}
 
-			if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'only') {
+			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'only') {
 				token[1] = 'not';
 				token[4].value = 'not';
 				break;
@@ -144,7 +143,7 @@ export class MediaQueryWithType {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			string: this.toString(),
@@ -270,7 +269,7 @@ export class MediaQueryWithoutType {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			string: this.toString(),
@@ -360,7 +359,7 @@ export class MediaQueryInvalid {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			string: this.toString(),

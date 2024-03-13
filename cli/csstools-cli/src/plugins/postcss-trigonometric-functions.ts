@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-trigonometric-functions';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssTrigonometricFunctions() {
+export default function postcssTrigonometricFunctions(): void {
 	cli(
 		plugin,
 		['preserve'],

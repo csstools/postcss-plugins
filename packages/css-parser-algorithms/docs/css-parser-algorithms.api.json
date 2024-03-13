@@ -1915,12 +1915,30 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "ComponentValue",
               "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
             },
             {
               "kind": "Content",
-              "text": "[][]"
+              "text": ">>"
             },
             {
               "kind": "Content",
@@ -1930,7 +1948,7 @@
           "fileUrlPath": "dist/_types/parse/comma-separated-list-of-component-values.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 10,
-            "endIndex": 12
+            "endIndex": 16
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -2003,10 +2021,6 @@
               "text": "): "
             },
             {
-              "kind": "Content",
-              "text": "import(\"../consume/component-block-function\")."
-            },
-            {
               "kind": "Reference",
               "text": "ComponentValue",
               "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
@@ -2023,7 +2037,7 @@
           "fileUrlPath": "dist/_types/parse/component-value.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 10,
-            "endIndex": 13
+            "endIndex": 12
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -2097,12 +2111,21 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "ComponentValue",
               "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
             },
             {
               "kind": "Content",
-              "text": "[]"
+              "text": ">"
             },
             {
               "kind": "Content",
@@ -2112,7 +2135,7 @@
           "fileUrlPath": "dist/_types/parse/list-of-component-values.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 10,
-            "endIndex": 12
+            "endIndex": 14
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -2222,12 +2245,30 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "ComponentValue",
               "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
             },
             {
               "kind": "Content",
-              "text": "[][]"
+              "text": ">>"
             },
             {
               "kind": "Content",
@@ -2237,7 +2278,7 @@
           "fileUrlPath": "dist/_types/util/replace-component-values.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 18,
-            "endIndex": 20
+            "endIndex": 24
           },
           "releaseTag": "Public",
           "overloadIndex": 1,

@@ -11,7 +11,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-slow-plugins',
-		Once: async (root, { result, postcss }) => {
+		async Once(root, { result, postcss }): Promise<void> {
 			console.log('Analyzing with file:\n  ' + root.source?.input.from + '\n');
 
 			const inputCSS = root.source?.input.css ?? '';
@@ -22,8 +22,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			const outputCSS_KB = (await postcss(plugins).process(inputCSS ?? '', result.opts)).css.length / 1024;
 
-			const medianDuration = async (cb: () => Promise<void>) => {
-				const durations = [];
+			const medianDuration = async (cb: () => Promise<void>): Promise<number> => {
+				const durations: Array<number> = [];
 				for (let i = 0; i < 21; i++) {
 					const start = performance.now();
 					await cb();

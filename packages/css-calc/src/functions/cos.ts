@@ -6,7 +6,6 @@ import { convert_grad } from '../unit-conversions/grad';
 import { convert_turn } from '../unit-conversions/turn';
 import { numberToCalculation } from './result-to-calculation';
 import { isDimensionOrNumber } from '../util/kind-of-number';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function solveCos(cosNode: FunctionNode, a: TokenNode): Calculation | -1 {
 	const aToken = a.value;
@@ -16,7 +15,7 @@ export function solveCos(cosNode: FunctionNode, a: TokenNode): Calculation | -1 
 
 	let result = aToken[4].value;
 	if (aToken[0] === TokenType.Dimension) {
-		switch (toLowerCaseAZ(aToken[4].unit)) {
+		switch (aToken[4].unit.toLowerCase()) {
 			case 'rad':
 				break;
 			case 'deg':

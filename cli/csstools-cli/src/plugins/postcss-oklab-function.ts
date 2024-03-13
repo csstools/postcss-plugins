@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-oklab-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssOKLabFunction() {
+export default function postcssOKLabFunction(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties', 'subFeatures'],

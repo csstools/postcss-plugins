@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-color-mix-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorMixFunction() {
+export default function postcssColorMixFunction(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],

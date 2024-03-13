@@ -74,7 +74,7 @@ export class MediaFeature {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			feature: this.feature.toJSON(),
@@ -106,7 +106,7 @@ export class MediaFeature {
 export type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatureRangeWalkerEntry | MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange;
 export type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
 
-export function parseMediaFeature(simpleBlock: SimpleBlockNode, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
+export function parseMediaFeature(simpleBlock: SimpleBlockNode, before: Array<CSSToken> = [], after: Array<CSSToken> = []): false | MediaFeature {
 	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
 		return false;
 	}

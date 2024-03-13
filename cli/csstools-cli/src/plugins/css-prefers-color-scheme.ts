@@ -1,7 +1,7 @@
 import plugin from 'css-prefers-color-scheme';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function cssPrefersColorScheme() {
+export default function cssPrefersColorScheme(): void {
 	cli(
 		plugin,
 		['preserve', 'mediaQuery'],

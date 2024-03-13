@@ -19,7 +19,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-media-queries-aspect-ratio-number-values',
-		AtRule(atRule, { result }) {
+		AtRule(atRule, { result }): void {
 			if (atRule.name.toLowerCase() !== 'media') {
 				return;
 			}
