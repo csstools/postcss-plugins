@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Test for mixed component types in color values (e.g. `lab(100 50% 50)`)
+- Allow relative color syntax in `rgba` and `hsla` color notations.
 
 ### 3.1.0
 
