@@ -4,6 +4,7 @@
 
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#224) (patch)
 - Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.6.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#261) (patch)
+- Updated [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url) to [`1.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url/CHANGELOG.md#107) (patch)
 
 ### 1.0.10
 
