@@ -213,7 +213,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in lch, lch(10 20 30deg), lch(none none none))', canonicalize('lch(10 20 30)')],
 		['color-mix(in lch, lch(10 20 none), lch(50 60 70deg))', canonicalize('lch(30 40 70)')],
 		['color-mix(in lch, lch(10 20 30deg), lch(50 60 none))', canonicalize('lch(30 40 30)')],
-		['color-mix(in lch, lch(none 20 30deg), lch(50 none 70deg))', canonicalize('lch(50 20 30)')],
+		['color-mix(in lch, lch(none 20 30deg), lch(50 none 70deg))', canonicalize('lch(50 20 50)')],
 		['color-mix(in lch, lch(10 20 30deg / none), lch(50 60 70deg))', canonicalize('lch(30 40 50)')],
 		['color-mix(in lch, lch(10 20 30deg / none), lch(50 60 70deg / 0.5))', canonicalize('lch(30 40 50 / 0.5)')],
 		['color-mix(in lch, lch(10 20 30deg / none), lch(50 60 70deg / none))', canonicalize('lch(30 40 50 / none)')],
@@ -287,6 +287,25 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in oklch, oklch(10 20 30deg / none), oklch(50 60 70deg))', canonicalize('oklch(30 40 50)')],
 		['color-mix(in oklch, oklch(10 20 30deg / none), oklch(50 60 70deg / 0.5))', canonicalize('oklch(30 40 50 / 0.5)')],
 		['color-mix(in oklch, oklch(10 20 30deg / none), oklch(50 60 70deg / none))', canonicalize('oklch(30 40 50 / none)')],
+
+		['color-mix(in oklch, oklch(none none none), oklch(none none none))', canonicalize('oklch(none none none)')],
+		['color-mix(in oklch, oklch(none none none), oklch(0.5 0.6 70deg))', canonicalize('oklch(0.5 0.6 70)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg), oklch(none none none))', canonicalize('oklch(0.1 0.2 30)')],
+		['color-mix(in oklch, oklch(0.1 0.2 none), oklch(0.5 0.6 70deg))', canonicalize('oklch(0.3 0.4 70)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg), oklch(0.5 0.6 none))', canonicalize('oklch(0.3 0.4 30)')],
+		['color-mix(in oklch, oklch(none 0.2 30deg), oklch(0.5 none 70deg))', canonicalize('oklch(0.5 0.2 50)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / none), oklch(0.5 0.6 70deg))', canonicalize('oklch(0.3 0.4 50)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / none), oklch(0.5 0.6 70deg / 0.5))', canonicalize('oklch(0.3 0.4 50 / 0.5)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / none), oklch(0.5 0.6 70deg / none))', canonicalize('oklch(0.3 0.4 50 / none)')],
+
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / 25%) 0%, oklch(0.5 none none / none))', canonicalize('oklch(0.5 0.2 30 / 0.25)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / 25%) 0%, oklch(none 0.5 none / none))', canonicalize('oklch(0.1 0.5 30 / 0.25)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / 25%) 0%, oklch(none none 90deg / none))', canonicalize('oklch(0.1 0.2 90 / 0.25)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / 25%) 0%, oklch(0.5 0.5 none / none))', canonicalize('oklch(0.5 0.5 30 / 0.25)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / 25%) 0%, oklch(none none none / 0.5))', canonicalize('oklch(0.1 0.2 30 / 0.5)')],
+		['color-mix(in oklch, oklch(0.1 0.2 30deg / 25%) 0%, oklch(0.5 none none / 0.5))', canonicalize('oklch(0.5 0.2 30 / 0.5)')],
+		// Achromatic colors should have powerless hues. https://www.w3.org/TR/css-color-4/#lab-to-lch
+		['color-mix(in oklch, oklab(0.5 0 0), black)', canonicalize('oklch(0.25 0 none)')],
 
 		// https://github.com/w3c/csswg-drafts/issues/8563
 		['color-mix(in hsl, hsl(90deg 100% none), hsl(90deg 100% 50%))', canonicalize('hsl(90deg 100% 50%)')],

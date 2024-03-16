@@ -355,13 +355,13 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 			break;
 		case ColorNotation.LCH:
-			if (reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
 				out[2] = NaN;
 			}
 
 			break;
 		case ColorNotation.OKLCH:
-			if (reducePrecision(out[1], 6) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 6) <= 0) {
 				out[2] = NaN;
 			}
 

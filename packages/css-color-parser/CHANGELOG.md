@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix powerless components for `lch` and `oklch` with `none` chroma.
+
 ### 1.6.1
 
 _March 16, 2024_
