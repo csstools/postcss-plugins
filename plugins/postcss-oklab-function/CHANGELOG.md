@@ -1,5 +1,9 @@
 # Changes to PostCSS OKLab Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`1.6.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#161) (patch)
+
 ### 3.0.11
 
 _March 13, 2024_

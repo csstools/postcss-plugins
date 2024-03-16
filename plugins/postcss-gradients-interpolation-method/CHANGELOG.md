@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`1.6.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#161) (patch)
+
 ### 4.0.12
 
 _March 13, 2024_
