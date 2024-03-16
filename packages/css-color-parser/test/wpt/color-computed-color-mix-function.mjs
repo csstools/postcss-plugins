@@ -72,7 +72,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in hsl, hsl(120deg 20% 40%), hsl(none none none))', canonicalize('hsl(120deg 20% 40%)')],
 		['color-mix(in hsl, hsl(120deg 20% none), hsl(30deg 40% 60%))', canonicalize('hsl(75deg 30% 60%)')],
 		['color-mix(in hsl, hsl(120deg 20% 40%), hsl(30deg 20% none))', canonicalize('hsl(75deg 20% 40%)')],
-		['color-mix(in hsl, hsl(none 20% 40%), hsl(30deg none 80%))', canonicalize('hsl(0deg 20% 60%)')],
+		['color-mix(in hsl, hsl(none 20% 40%), hsl(30deg none 80%))', canonicalize('hsl(30deg 20% 60%)')],
 
 		['color-mix(in hsl, hsl(120deg 40% 40% / none), hsl(0deg 40% 40%))', canonicalize('hsl(60deg 40% 40%)')],
 		['color-mix(in hsl, hsl(120deg 40% 40% / none), hsl(0deg 40% 40% / 0.5))', canonicalize('hsl(60deg 40% 40% / 0.5)')],

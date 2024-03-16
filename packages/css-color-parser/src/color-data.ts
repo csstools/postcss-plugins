@@ -343,7 +343,7 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
 				out[0] = NaN;
 			}
 
