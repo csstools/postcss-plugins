@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix powerless components for `hsl` with `none` saturation.
+
 ### 1.6.0
 
 _March 13, 2024_
