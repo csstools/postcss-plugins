@@ -371,6 +371,12 @@
       - plugins/postcss-rebase-url/**
       - experimental/postcss-rebase-url/**
 
+"plugins/postcss-rewrite-url":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-rewrite-url/**
+      - experimental/postcss-rewrite-url/**
+
 "plugins/postcss-relative-color-syntax":
   - changed-files:
     - any-glob-to-any-file:
