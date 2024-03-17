@@ -12,24 +12,175 @@ export declare class MediaQueryInvalid
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(media)](./media-query-list-parser.mediaqueryinvalid._constructor_.md) |  | Constructs a new instance of the <code>MediaQueryInvalid</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(media)](./media-query-list-parser.mediaqueryinvalid._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaQueryInvalid` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [media](./media-query-list-parser.mediaqueryinvalid.media.md) |  | Array&lt;ComponentValue&gt; |  |
-|  [type](./media-query-list-parser.mediaqueryinvalid.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[media](./media-query-list-parser.mediaqueryinvalid.media.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;ComponentValue&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediaqueryinvalid.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [isMediaQueryInvalid(x)](./media-query-list-parser.mediaqueryinvalid.ismediaqueryinvalid.md) | <code>static</code> |  |
-|  [negateQuery()](./media-query-list-parser.mediaqueryinvalid.negatequery.md) |  |  |
-|  [tokens()](./media-query-list-parser.mediaqueryinvalid.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediaqueryinvalid.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediaqueryinvalid.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[isMediaQueryInvalid(x)](./media-query-list-parser.mediaqueryinvalid.ismediaqueryinvalid.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[negateQuery()](./media-query-list-parser.mediaqueryinvalid.negatequery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediaqueryinvalid.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediaqueryinvalid.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediaqueryinvalid.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

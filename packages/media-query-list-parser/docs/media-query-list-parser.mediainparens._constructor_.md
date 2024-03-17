@@ -14,9 +14,66 @@ constructor(media: MediaCondition | MediaFeature | GeneralEnclosed, before?: Arr
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  media | [MediaCondition](./media-query-list-parser.mediacondition.md) \| [MediaFeature](./media-query-list-parser.mediafeature.md) \| [GeneralEnclosed](./media-query-list-parser.generalenclosed.md) |  |
-|  before | Array&lt;CSSToken&gt; | _(Optional)_ |
-|  after | Array&lt;CSSToken&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+media
+
+
+</td><td>
+
+[MediaCondition](./media-query-list-parser.mediacondition.md) \| [MediaFeature](./media-query-list-parser.mediafeature.md) \| [GeneralEnclosed](./media-query-list-parser.generalenclosed.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+before
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+after
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

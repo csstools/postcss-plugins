@@ -12,10 +12,37 @@ static isMediaQueryWithoutType(x: unknown): x is MediaQueryWithoutType;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  x | unknown |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+x
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 x is [MediaQueryWithoutType](./media-query-list-parser.mediaquerywithouttype.md)

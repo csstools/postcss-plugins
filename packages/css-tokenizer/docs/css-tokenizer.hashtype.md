@@ -14,8 +14,52 @@ export declare enum HashType
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  ID | <code>&quot;id&quot;</code> | The hash token started with an ident sequence (e.g. <code>#foo</code>) Only hash tokens with the "id" type are valid ID selectors. |
-|  Unrestricted | <code>&quot;unrestricted&quot;</code> | The hash token did not start with an ident sequence (e.g. <code>#-2</code>) |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+ID
+
+
+</td><td>
+
+`"id"`
+
+
+</td><td>
+
+The hash token started with an ident sequence (e.g. `#foo`<!-- -->) Only hash tokens with the "id" type are valid ID selectors.
+
+
+</td></tr>
+<tr><td>
+
+Unrestricted
+
+
+</td><td>
+
+`"unrestricted"`
+
+
+</td><td>
+
+The hash token did not start with an ident sequence (e.g. `#-2`<!-- -->)
+
+
+</td></tr>
+</tbody></table>

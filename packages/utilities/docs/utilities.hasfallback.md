@@ -14,10 +14,39 @@ export declare function hasFallback(node: Declaration): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  node | Declaration | The declaration node to check |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+node
+
+
+</td><td>
+
+Declaration
+
+
+</td><td>
+
+The declaration node to check
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

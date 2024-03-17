@@ -25,23 +25,178 @@ node.startToken; // [TokenType.OpenSquare, '[', 0, 0, undefined]
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(startToken, endToken, value)](./css-parser-algorithms.simpleblocknode._constructor_.md) |  | Constructs a new instance of the <code>SimpleBlockNode</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(startToken, endToken, value)](./css-parser-algorithms.simpleblocknode._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `SimpleBlockNode` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [endToken](./css-parser-algorithms.simpleblocknode.endtoken.md) |  | CSSToken | The token for the closing token of the block. If the block is closed it will be the mirror variant of the <code>startToken</code>. If the block is unclosed, this will be an EOF token. |
-|  [startToken](./css-parser-algorithms.simpleblocknode.starttoken.md) |  | CSSToken | The token for the opening token of the block. |
-|  [type](./css-parser-algorithms.simpleblocknode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.SimpleBlock</code> |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[endToken](./css-parser-algorithms.simpleblocknode.endtoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+The token for the closing token of the block. If the block is closed it will be the mirror variant of the `startToken`<!-- -->. If the block is unclosed, this will be an EOF token.
+
+
+</td></tr>
+<tr><td>
+
+[startToken](./css-parser-algorithms.simpleblocknode.starttoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+The token for the opening token of the block.
+
+
+</td></tr>
+<tr><td>
+
+[type](./css-parser-algorithms.simpleblocknode.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ComponentValueType](./css-parser-algorithms.componentvaluetype.md)
+
+
+</td><td>
+
+The node type, always `ComponentValueType.SimpleBlock`
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [normalize()](./css-parser-algorithms.simpleblocknode.normalize.md) |  | Normalize the current simple block 1. if the "endToken" is EOF, replace with the mirror token of the "startToken" |
-|  [tokens()](./css-parser-algorithms.simpleblocknode.tokens.md) |  | Retrieve the tokens for the current simple block. This is the inverse of parsing from a list of tokens. |
-|  [toString()](./css-parser-algorithms.simpleblocknode.tostring.md) |  | Convert the current simple block to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[normalize()](./css-parser-algorithms.simpleblocknode.normalize.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Normalize the current simple block 1. if the "endToken" is EOF, replace with the mirror token of the "startToken"
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./css-parser-algorithms.simpleblocknode.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the tokens for the current simple block. This is the inverse of parsing from a list of tokens.
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./css-parser-algorithms.simpleblocknode.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Convert the current simple block to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.
+
+
+</td></tr>
+</tbody></table>

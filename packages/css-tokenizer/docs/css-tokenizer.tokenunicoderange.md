@@ -16,8 +16,59 @@ export interface TokenUnicodeRange extends Token<TokenType.UnicodeRange, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [endOfRange](./css-tokenizer.tokenunicoderange.endofrange.md) |  | number |  |
-|  [startOfRange](./css-tokenizer.tokenunicoderange.startofrange.md) |  | number |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[endOfRange](./css-tokenizer.tokenunicoderange.endofrange.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[startOfRange](./css-tokenizer.tokenunicoderange.startofrange.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -14,16 +14,215 @@ export interface TestCaseOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after?](./postcss-tape.testcaseoptions.after.md) |  | () =&gt; void \| Promise&lt;void&gt; | _(Optional)_ Do something after the test is run. |
-|  [before?](./postcss-tape.testcaseoptions.before.md) |  | () =&gt; void \| Promise&lt;void&gt; | _(Optional)_ Do something before the test is run. |
-|  [exception?](./postcss-tape.testcaseoptions.exception.md) |  | RegExp | _(Optional)_ Expected exception |
-|  [expect?](./postcss-tape.testcaseoptions.expect.md) |  | string | _(Optional)_ Override the file name of the "expect" file. |
-|  [message?](./postcss-tape.testcaseoptions.message.md) |  | string | _(Optional)_ Debug message |
-|  [options?](./postcss-tape.testcaseoptions.options.md) |  | unknown | _(Optional)_ Plugin options. Only used if <code>plugins</code> is not specified. |
-|  [plugins?](./postcss-tape.testcaseoptions.plugins.md) |  | Array&lt;Plugin&gt; | _(Optional)_ Plugins to use. When specified the original plugin is not used. |
-|  [result?](./postcss-tape.testcaseoptions.result.md) |  | string | _(Optional)_ Override the file name of the "result" file. |
-|  [source?](./postcss-tape.testcaseoptions.source.md) |  | string | _(Optional)_ Override the file name of the "source" file. |
-|  [warnings?](./postcss-tape.testcaseoptions.warnings.md) |  | number | _(Optional)_ The expected number of warnings. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after?](./postcss-tape.testcaseoptions.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+() =&gt; void \| Promise&lt;void&gt;
+
+
+</td><td>
+
+_(Optional)_ Do something after the test is run.
+
+
+</td></tr>
+<tr><td>
+
+[before?](./postcss-tape.testcaseoptions.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+() =&gt; void \| Promise&lt;void&gt;
+
+
+</td><td>
+
+_(Optional)_ Do something before the test is run.
+
+
+</td></tr>
+<tr><td>
+
+[exception?](./postcss-tape.testcaseoptions.exception.md)
+
+
+</td><td>
+
+
+</td><td>
+
+RegExp
+
+
+</td><td>
+
+_(Optional)_ Expected exception
+
+
+</td></tr>
+<tr><td>
+
+[expect?](./postcss-tape.testcaseoptions.expect.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Override the file name of the "expect" file.
+
+
+</td></tr>
+<tr><td>
+
+[message?](./postcss-tape.testcaseoptions.message.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Debug message
+
+
+</td></tr>
+<tr><td>
+
+[options?](./postcss-tape.testcaseoptions.options.md)
+
+
+</td><td>
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+_(Optional)_ Plugin options. Only used if `plugins` is not specified.
+
+
+</td></tr>
+<tr><td>
+
+[plugins?](./postcss-tape.testcaseoptions.plugins.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;Plugin&gt;
+
+
+</td><td>
+
+_(Optional)_ Plugins to use. When specified the original plugin is not used.
+
+
+</td></tr>
+<tr><td>
+
+[result?](./postcss-tape.testcaseoptions.result.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Override the file name of the "result" file.
+
+
+</td></tr>
+<tr><td>
+
+[source?](./postcss-tape.testcaseoptions.source.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Override the file name of the "source" file.
+
+
+</td></tr>
+<tr><td>
+
+[warnings?](./postcss-tape.testcaseoptions.warnings.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The expected number of warnings.
+
+
+</td></tr>
+</tbody></table>

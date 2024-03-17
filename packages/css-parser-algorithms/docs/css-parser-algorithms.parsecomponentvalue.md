@@ -16,11 +16,53 @@ export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  tokens | Array&lt;CSSToken&gt; |  |
-|  options | { onParseError?: (error: ParseError) =&gt; void; } | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+tokens
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+{ onParseError?: (error: ParseError) =&gt; void; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined

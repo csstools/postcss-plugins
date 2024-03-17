@@ -12,11 +12,90 @@ export declare enum ComponentValueType
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  Comment | <code>&quot;comment&quot;</code> |  |
-|  Function | <code>&quot;function&quot;</code> |  |
-|  SimpleBlock | <code>&quot;simple-block&quot;</code> |  |
-|  Token | <code>&quot;token&quot;</code> |  |
-|  Whitespace | <code>&quot;whitespace&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+Comment
+
+
+</td><td>
+
+`"comment"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Function
+
+
+</td><td>
+
+`"function"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+SimpleBlock
+
+
+</td><td>
+
+`"simple-block"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Token
+
+
+</td><td>
+
+`"token"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Whitespace
+
+
+</td><td>
+
+`"whitespace"`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

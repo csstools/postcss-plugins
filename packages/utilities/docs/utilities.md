@@ -6,8 +6,37 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [hasFallback(node)](./utilities.hasfallback.md) | Check if a declaration has a fallback. Returns true if a declaration with the same property name appears before the current declaration. |
-|  [hasSupportsAtRuleAncestor(node, predicate)](./utilities.hassupportsatruleancestor.md) | Check if a node has a <code>@supports</code> at-rule ancestor with a given regex in its params. |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[hasFallback(node)](./utilities.hasfallback.md)
+
+
+</td><td>
+
+Check if a declaration has a fallback. Returns true if a declaration with the same property name appears before the current declaration.
+
+
+</td></tr>
+<tr><td>
+
+[hasSupportsAtRuleAncestor(node, predicate)](./utilities.hassupportsatruleancestor.md)
+
+
+</td><td>
+
+Check if a node has a `@supports` at-rule ancestor with a given regex in its params.
+
+
+</td></tr>
+</tbody></table>

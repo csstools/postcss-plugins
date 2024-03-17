@@ -12,26 +12,199 @@ export declare class MediaFeatureBoolean
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(name)](./media-query-list-parser.mediafeatureboolean._constructor_.md) |  | Constructs a new instance of the <code>MediaFeatureBoolean</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(name)](./media-query-list-parser.mediafeatureboolean._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaFeatureBoolean` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name](./media-query-list-parser.mediafeatureboolean.name.md) |  | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
-|  [type](./media-query-list-parser.mediafeatureboolean.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name](./media-query-list-parser.mediafeatureboolean.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediafeatureboolean.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediafeatureboolean.at.md) |  |  |
-|  [getName()](./media-query-list-parser.mediafeatureboolean.getname.md) |  |  |
-|  [getNameToken()](./media-query-list-parser.mediafeatureboolean.getnametoken.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediafeatureboolean.indexof.md) |  |  |
-|  [isMediaFeatureBoolean(x)](./media-query-list-parser.mediafeatureboolean.ismediafeatureboolean.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediafeatureboolean.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediafeatureboolean.tostring.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediafeatureboolean.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getName()](./media-query-list-parser.mediafeatureboolean.getname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getNameToken()](./media-query-list-parser.mediafeatureboolean.getnametoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediafeatureboolean.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaFeatureBoolean(x)](./media-query-list-parser.mediafeatureboolean.ismediafeatureboolean.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediafeatureboolean.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediafeatureboolean.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -12,29 +12,245 @@ export declare class MediaFeaturePlain
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(name, colon, value)](./media-query-list-parser.mediafeatureplain._constructor_.md) |  | Constructs a new instance of the <code>MediaFeaturePlain</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(name, colon, value)](./media-query-list-parser.mediafeatureplain._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaFeaturePlain` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [colon](./media-query-list-parser.mediafeatureplain.colon.md) |  | TokenColon |  |
-|  [name](./media-query-list-parser.mediafeatureplain.name.md) |  | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
-|  [type](./media-query-list-parser.mediafeatureplain.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
-|  [value](./media-query-list-parser.mediafeatureplain.value.md) |  | [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[colon](./media-query-list-parser.mediafeatureplain.colon.md)
+
+
+</td><td>
+
+
+</td><td>
+
+TokenColon
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./media-query-list-parser.mediafeatureplain.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediafeatureplain.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[value](./media-query-list-parser.mediafeatureplain.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediafeatureplain.at.md) |  |  |
-|  [getName()](./media-query-list-parser.mediafeatureplain.getname.md) |  |  |
-|  [getNameToken()](./media-query-list-parser.mediafeatureplain.getnametoken.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediafeatureplain.indexof.md) |  |  |
-|  [isMediaFeaturePlain(x)](./media-query-list-parser.mediafeatureplain.ismediafeatureplain.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediafeatureplain.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediafeatureplain.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediafeatureplain.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediafeatureplain.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getName()](./media-query-list-parser.mediafeatureplain.getname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getNameToken()](./media-query-list-parser.mediafeatureplain.getnametoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediafeatureplain.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaFeaturePlain(x)](./media-query-list-parser.mediafeatureplain.ismediafeatureplain.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediafeatureplain.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediafeatureplain.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediafeatureplain.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

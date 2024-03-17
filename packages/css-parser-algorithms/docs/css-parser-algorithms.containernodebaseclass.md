@@ -12,16 +12,120 @@ export declare abstract class ContainerNodeBaseClass
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-parser-algorithms.containernodebaseclass.value.md) |  | Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt; | The contents of the <code>Function</code> or <code>Simple Block</code>. This is a list of component values. |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-parser-algorithms.containernodebaseclass.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;
+
+
+</td><td>
+
+The contents of the `Function` or `Simple Block`<!-- -->. This is a list of component values.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./css-parser-algorithms.containernodebaseclass.at.md) |  | Retrieve the item at the given index in the current node. For most node types this will be trivially implemented as <code>this.value[index]</code>. |
-|  [forEach(this, cb, state)](./css-parser-algorithms.containernodebaseclass.foreach.md) |  | Iterates over each item in the <code>value</code> array of the current node. |
-|  [indexOf(item)](./css-parser-algorithms.containernodebaseclass.indexof.md) |  | Retrieve the index of the given item in the current node. For most node types this will be trivially implemented as <code>this.value.indexOf(item)</code>. |
-|  [walk(this, cb, state)](./css-parser-algorithms.containernodebaseclass.walk.md) |  | Walks the current node and all its children. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./css-parser-algorithms.containernodebaseclass.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the item at the given index in the current node. For most node types this will be trivially implemented as `this.value[index]`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[forEach(this, cb, state)](./css-parser-algorithms.containernodebaseclass.foreach.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Iterates over each item in the `value` array of the current node.
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./css-parser-algorithms.containernodebaseclass.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the index of the given item in the current node. For most node types this will be trivially implemented as `this.value.indexOf(item)`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[walk(this, cb, state)](./css-parser-algorithms.containernodebaseclass.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Walks the current node and all its children.
+
+
+</td></tr>
+</tbody></table>

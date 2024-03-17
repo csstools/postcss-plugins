@@ -14,10 +14,37 @@ export declare function XYZ_to_lin_P3(XYZ: Color): Color;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  XYZ | [Color](./color-helpers.color.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+XYZ
+
+
+</td><td>
+
+[Color](./color-helpers.color.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Color](./color-helpers.color.md)

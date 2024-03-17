@@ -14,9 +14,62 @@ constructor(startToken: CSSToken, endToken: CSSToken, value: Array<ComponentValu
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  startToken | CSSToken |  |
-|  endToken | CSSToken |  |
-|  value | Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+startToken
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+endToken
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+value
+
+
+</td><td>
+
+Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -14,10 +14,80 @@ constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<C
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  modifier | Array&lt;CSSToken&gt; |  |
-|  mediaType | Array&lt;CSSToken&gt; |  |
-|  and | Array&lt;CSSToken&gt; \| undefined | _(Optional)_ |
-|  media | [MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+modifier
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+mediaType
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+and
+
+
+</td><td>
+
+Array&lt;CSSToken&gt; \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+media
+
+
+</td><td>
+
+[MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -16,11 +16,53 @@ walk<T extends Record<string, unknown>>(cb: (entry: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  cb | (entry: { node: [MediaFeatureRangeWalkerEntry](./media-query-list-parser.mediafeaturerangewalkerentry.md)<!-- -->; parent: [MediaFeatureRangeWalkerParent](./media-query-list-parser.mediafeaturerangewalkerparent.md)<!-- -->; state?: T; }, index: number \| string) =&gt; boolean \| void |  |
-|  state | T | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+cb
+
+
+</td><td>
+
+(entry: { node: [MediaFeatureRangeWalkerEntry](./media-query-list-parser.mediafeaturerangewalkerentry.md)<!-- -->; parent: [MediaFeatureRangeWalkerParent](./media-query-list-parser.mediafeaturerangewalkerparent.md)<!-- -->; state?: T; }, index: number \| string) =&gt; boolean \| void
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+state
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 false \| undefined

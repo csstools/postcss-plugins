@@ -12,10 +12,37 @@ indexOf(item: MediaCondition | MediaFeature | GeneralEnclosed): number | string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  item | [MediaCondition](./media-query-list-parser.mediacondition.md) \| [MediaFeature](./media-query-list-parser.mediafeature.md) \| [GeneralEnclosed](./media-query-list-parser.generalenclosed.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+item
+
+
+</td><td>
+
+[MediaCondition](./media-query-list-parser.mediacondition.md) \| [MediaFeature](./media-query-list-parser.mediafeature.md) \| [GeneralEnclosed](./media-query-list-parser.generalenclosed.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number \| string

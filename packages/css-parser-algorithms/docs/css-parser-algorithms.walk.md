@@ -20,12 +20,69 @@ export declare function walk<T extends Record<string, unknown>>(componentValues:
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  componentValues | Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt; |  |
-|  cb | (entry: { node: [ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->; parent: [ContainerNode](./css-parser-algorithms.containernode.md) \| { value: Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;; }; state?: T; }, index: number \| string) =&gt; boolean \| void | The callback function to execute for each item. The function receives an object containing the current node (<code>node</code>), its parent (<code>parent</code>), and an optional <code>state</code> object. A second parameter is the index of the current node. The function can return <code>false</code> to stop the iteration. |
-|  state | T | _(Optional)_ An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+componentValues
+
+
+</td><td>
+
+Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+cb
+
+
+</td><td>
+
+(entry: { node: [ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->; parent: [ContainerNode](./css-parser-algorithms.containernode.md) \| { value: Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;; }; state?: T; }, index: number \| string) =&gt; boolean \| void
+
+
+</td><td>
+
+The callback function to execute for each item. The function receives an object containing the current node (`node`<!-- -->), its parent (`parent`<!-- -->), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.
+
+
+</td></tr>
+<tr><td>
+
+state
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+_(Optional)_ An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 false \| undefined

@@ -14,10 +14,80 @@ constructor(leading: MediaInParens, list: Array<MediaAnd>, before?: Array<CSSTok
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  leading | [MediaInParens](./media-query-list-parser.mediainparens.md) |  |
-|  list | Array&lt;[MediaAnd](./media-query-list-parser.mediaand.md)<!-- -->&gt; |  |
-|  before | Array&lt;CSSToken&gt; | _(Optional)_ |
-|  after | Array&lt;CSSToken&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+leading
+
+
+</td><td>
+
+[MediaInParens](./media-query-list-parser.mediainparens.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+list
+
+
+</td><td>
+
+Array&lt;[MediaAnd](./media-query-list-parser.mediaand.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+before
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+after
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

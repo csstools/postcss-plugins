@@ -12,8 +12,48 @@ export declare enum MediaFeatureLT
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  LT | <code>&quot;&lt;&quot;</code> |  |
-|  LT\_OR\_EQ | <code>&quot;&lt;=&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+LT
+
+
+</td><td>
+
+`"<"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+LT\_OR\_EQ
+
+
+</td><td>
+
+`"<="`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

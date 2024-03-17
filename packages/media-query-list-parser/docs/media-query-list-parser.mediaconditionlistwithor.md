@@ -12,28 +12,238 @@ export declare class MediaConditionListWithOr
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(leading, list, before, after)](./media-query-list-parser.mediaconditionlistwithor._constructor_.md) |  | Constructs a new instance of the <code>MediaConditionListWithOr</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(leading, list, before, after)](./media-query-list-parser.mediaconditionlistwithor._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaConditionListWithOr` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after](./media-query-list-parser.mediaconditionlistwithor.after.md) |  | Array&lt;CSSToken&gt; |  |
-|  [before](./media-query-list-parser.mediaconditionlistwithor.before.md) |  | Array&lt;CSSToken&gt; |  |
-|  [leading](./media-query-list-parser.mediaconditionlistwithor.leading.md) |  | [MediaInParens](./media-query-list-parser.mediainparens.md) |  |
-|  [list](./media-query-list-parser.mediaconditionlistwithor.list.md) |  | Array&lt;[MediaOr](./media-query-list-parser.mediaor.md)<!-- -->&gt; |  |
-|  [type](./media-query-list-parser.mediaconditionlistwithor.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after](./media-query-list-parser.mediaconditionlistwithor.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[before](./media-query-list-parser.mediaconditionlistwithor.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[leading](./media-query-list-parser.mediaconditionlistwithor.leading.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaInParens](./media-query-list-parser.mediainparens.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[list](./media-query-list-parser.mediaconditionlistwithor.list.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[MediaOr](./media-query-list-parser.mediaor.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediaconditionlistwithor.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediaconditionlistwithor.at.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediaconditionlistwithor.indexof.md) |  |  |
-|  [isMediaConditionListWithOr(x)](./media-query-list-parser.mediaconditionlistwithor.ismediaconditionlistwithor.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediaconditionlistwithor.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediaconditionlistwithor.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediaconditionlistwithor.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediaconditionlistwithor.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediaconditionlistwithor.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaConditionListWithOr(x)](./media-query-list-parser.mediaconditionlistwithor.ismediaconditionlistwithor.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediaconditionlistwithor.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediaconditionlistwithor.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediaconditionlistwithor.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

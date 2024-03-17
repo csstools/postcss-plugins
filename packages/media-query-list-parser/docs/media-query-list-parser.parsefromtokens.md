@@ -15,11 +15,53 @@ export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  tokens | Array&lt;CSSToken&gt; |  |
-|  options | { preserveInvalidMediaQueries?: boolean; onParseError?: (error: ParseError) =&gt; void; } | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+tokens
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+{ preserveInvalidMediaQueries?: boolean; onParseError?: (error: ParseError) =&gt; void; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt;

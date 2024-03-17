@@ -21,11 +21,120 @@ The string representation and the parsed value are stored separately for many to
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  ["0"](./css-tokenizer.token._0_.md) |  | T | The type of token |
-|  ["1"](./css-tokenizer.token._1_.md) |  | string | The token representation |
-|  ["2"](./css-tokenizer.token._2_.md) |  | number | Start position of representation |
-|  ["3"](./css-tokenizer.token._3_.md) |  | number | End position of representation |
-|  ["4"](./css-tokenizer.token._4_.md) |  | U | Extra data |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+["0"](./css-tokenizer.token._0_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+The type of token
+
+
+</td></tr>
+<tr><td>
+
+["1"](./css-tokenizer.token._1_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The token representation
+
+
+</td></tr>
+<tr><td>
+
+["2"](./css-tokenizer.token._2_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Start position of representation
+
+
+</td></tr>
+<tr><td>
+
+["3"](./css-tokenizer.token._3_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+End position of representation
+
+
+</td></tr>
+<tr><td>
+
+["4"](./css-tokenizer.token._4_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+U
+
+
+</td><td>
+
+Extra data
+
+
+</td></tr>
+</tbody></table>

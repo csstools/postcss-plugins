@@ -12,25 +12,180 @@ export declare class LayerName
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(parts)](./cascade-layer-name-parser.layername._constructor_.md) |  | Constructs a new instance of the <code>LayerName</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(parts)](./cascade-layer-name-parser.layername._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `LayerName` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [parts](./cascade-layer-name-parser.layername.parts.md) |  | Array&lt;CSSToken&gt; |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[parts](./cascade-layer-name-parser.layername.parts.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [concat(other)](./cascade-layer-name-parser.layername.concat.md) |  |  |
-|  [equal(other)](./cascade-layer-name-parser.layername.equal.md) |  |  |
-|  [name()](./cascade-layer-name-parser.layername.name.md) |  |  |
-|  [segments()](./cascade-layer-name-parser.layername.segments.md) |  |  |
-|  [slice(start, end)](./cascade-layer-name-parser.layername.slice.md) |  |  |
-|  [tokens()](./cascade-layer-name-parser.layername.tokens.md) |  |  |
-|  [toString()](./cascade-layer-name-parser.layername.tostring.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[concat(other)](./cascade-layer-name-parser.layername.concat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[equal(other)](./cascade-layer-name-parser.layername.equal.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name()](./cascade-layer-name-parser.layername.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[segments()](./cascade-layer-name-parser.layername.segments.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[slice(start, end)](./cascade-layer-name-parser.layername.slice.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./cascade-layer-name-parser.layername.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./cascade-layer-name-parser.layername.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

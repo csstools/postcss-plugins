@@ -81,50 +81,325 @@ componentValue.walk((entry) => {
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [CommentNode](./css-parser-algorithms.commentnode.md) |  |
-|  [FunctionNode](./css-parser-algorithms.functionnode.md) | A function node. |
-|  [SimpleBlockNode](./css-parser-algorithms.simpleblocknode.md) | A simple block node. |
-|  [TokenNode](./css-parser-algorithms.tokennode.md) |  |
-|  [WhitespaceNode](./css-parser-algorithms.whitespacenode.md) |  |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[CommentNode](./css-parser-algorithms.commentnode.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[FunctionNode](./css-parser-algorithms.functionnode.md)
+
+
+</td><td>
+
+A function node.
+
+
+</td></tr>
+<tr><td>
+
+[SimpleBlockNode](./css-parser-algorithms.simpleblocknode.md)
+
+
+</td><td>
+
+A simple block node.
+
+
+</td></tr>
+<tr><td>
+
+[TokenNode](./css-parser-algorithms.tokennode.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[WhitespaceNode](./css-parser-algorithms.whitespacenode.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Abstract Classes
 
-|  Abstract Class | Description |
-|  --- | --- |
-|  [ContainerNodeBaseClass](./css-parser-algorithms.containernodebaseclass.md) |  |
+<table><thead><tr><th>
+
+Abstract Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ContainerNodeBaseClass](./css-parser-algorithms.containernodebaseclass.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Enumerations
 
-|  Enumeration | Description |
-|  --- | --- |
-|  [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) |  |
+<table><thead><tr><th>
+
+Enumeration
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ComponentValueType](./css-parser-algorithms.componentvaluetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [forEach(componentValues, cb, state)](./css-parser-algorithms.foreach.md) | Iterates over each item in a list of component values. |
-|  [gatherNodeAncestry(node)](./css-parser-algorithms.gathernodeancestry.md) | AST nodes do not have a <code>parent</code> property or method. This makes it harder to traverse the AST upwards. This function builds a <code>Map&lt;Child, Parent&gt;</code> that can be used to lookup ancestors of a node. |
-|  [isCommentNode(x)](./css-parser-algorithms.iscommentnode.md) | Check if the current object is a <code>CommentNode</code>. This is a type guard. |
-|  [isFunctionNode(x)](./css-parser-algorithms.isfunctionnode.md) | Check if the current object is a <code>FunctionNode</code>. This is a type guard. |
-|  [isSimpleBlockNode(x)](./css-parser-algorithms.issimpleblocknode.md) | Check if the current object is a <code>SimpleBlockNode</code>. This is a type guard. |
-|  [isTokenNode(x)](./css-parser-algorithms.istokennode.md) | Check if the current object is a <code>TokenNode</code>. This is a type guard. |
-|  [isWhitespaceNode(x)](./css-parser-algorithms.iswhitespacenode.md) | Check if the current object is a <code>WhitespaceNode</code>. This is a type guard. |
-|  [parseCommaSeparatedListOfComponentValues(tokens, options)](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md) | Parse a comma-separated list of component values. |
-|  [parseComponentValue(tokens, options)](./css-parser-algorithms.parsecomponentvalue.md) | Parse a single component value. |
-|  [parseListOfComponentValues(tokens, options)](./css-parser-algorithms.parselistofcomponentvalues.md) | Parse a list of component values. |
-|  [replaceComponentValues(componentValuesList, replaceWith)](./css-parser-algorithms.replacecomponentvalues.md) | Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST. |
-|  [sourceIndices(x)](./css-parser-algorithms.sourceindices.md) | Returns the start and end index of a node in the CSS source string. |
-|  [stringify(componentValueLists)](./css-parser-algorithms.stringify.md) | Concatenate the string representation of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid. |
-|  [walk(componentValues, cb, state)](./css-parser-algorithms.walk.md) | Walks each item in a list of component values all of their children. |
-|  [walkerIndexGenerator(initialList)](./css-parser-algorithms.walkerindexgenerator.md) | Generate a function that finds the next element that should be visited when walking an AST. Rules : 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. 2. the next element always appears after the current index. 3. the next element always exists in the list. 4. replacing an element does not cause the replaced element to be visited. 5. removing an element does not cause elements to be skipped. 6. an element added later in the list will be visited. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[forEach(componentValues, cb, state)](./css-parser-algorithms.foreach.md)
+
+
+</td><td>
+
+Iterates over each item in a list of component values.
+
+
+</td></tr>
+<tr><td>
+
+[gatherNodeAncestry(node)](./css-parser-algorithms.gathernodeancestry.md)
+
+
+</td><td>
+
+AST nodes do not have a `parent` property or method. This makes it harder to traverse the AST upwards. This function builds a `Map<Child, Parent>` that can be used to lookup ancestors of a node.
+
+
+</td></tr>
+<tr><td>
+
+[isCommentNode(x)](./css-parser-algorithms.iscommentnode.md)
+
+
+</td><td>
+
+Check if the current object is a `CommentNode`<!-- -->. This is a type guard.
+
+
+</td></tr>
+<tr><td>
+
+[isFunctionNode(x)](./css-parser-algorithms.isfunctionnode.md)
+
+
+</td><td>
+
+Check if the current object is a `FunctionNode`<!-- -->. This is a type guard.
+
+
+</td></tr>
+<tr><td>
+
+[isSimpleBlockNode(x)](./css-parser-algorithms.issimpleblocknode.md)
+
+
+</td><td>
+
+Check if the current object is a `SimpleBlockNode`<!-- -->. This is a type guard.
+
+
+</td></tr>
+<tr><td>
+
+[isTokenNode(x)](./css-parser-algorithms.istokennode.md)
+
+
+</td><td>
+
+Check if the current object is a `TokenNode`<!-- -->. This is a type guard.
+
+
+</td></tr>
+<tr><td>
+
+[isWhitespaceNode(x)](./css-parser-algorithms.iswhitespacenode.md)
+
+
+</td><td>
+
+Check if the current object is a `WhitespaceNode`<!-- -->. This is a type guard.
+
+
+</td></tr>
+<tr><td>
+
+[parseCommaSeparatedListOfComponentValues(tokens, options)](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md)
+
+
+</td><td>
+
+Parse a comma-separated list of component values.
+
+
+</td></tr>
+<tr><td>
+
+[parseComponentValue(tokens, options)](./css-parser-algorithms.parsecomponentvalue.md)
+
+
+</td><td>
+
+Parse a single component value.
+
+
+</td></tr>
+<tr><td>
+
+[parseListOfComponentValues(tokens, options)](./css-parser-algorithms.parselistofcomponentvalues.md)
+
+
+</td><td>
+
+Parse a list of component values.
+
+
+</td></tr>
+<tr><td>
+
+[replaceComponentValues(componentValuesList, replaceWith)](./css-parser-algorithms.replacecomponentvalues.md)
+
+
+</td><td>
+
+Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST.
+
+
+</td></tr>
+<tr><td>
+
+[sourceIndices(x)](./css-parser-algorithms.sourceindices.md)
+
+
+</td><td>
+
+Returns the start and end index of a node in the CSS source string.
+
+
+</td></tr>
+<tr><td>
+
+[stringify(componentValueLists)](./css-parser-algorithms.stringify.md)
+
+
+</td><td>
+
+Concatenate the string representation of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid.
+
+
+</td></tr>
+<tr><td>
+
+[walk(componentValues, cb, state)](./css-parser-algorithms.walk.md)
+
+
+</td><td>
+
+Walks each item in a list of component values all of their children.
+
+
+</td></tr>
+<tr><td>
+
+[walkerIndexGenerator(initialList)](./css-parser-algorithms.walkerindexgenerator.md)
+
+
+</td><td>
+
+Generate a function that finds the next element that should be visited when walking an AST. Rules : 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. 2. the next element always appears after the current index. 3. the next element always exists in the list. 4. replacing an element does not cause the replaced element to be visited. 5. removing an element does not cause elements to be skipped. 6. an element added later in the list will be visited.
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [ComponentValue](./css-parser-algorithms.componentvalue.md) |  |
-|  [ContainerNode](./css-parser-algorithms.containernode.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ComponentValue](./css-parser-algorithms.componentvalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ContainerNode](./css-parser-algorithms.containernode.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

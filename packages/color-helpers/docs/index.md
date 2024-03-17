@@ -6,7 +6,24 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/color-helpers](./color-helpers.md) |  |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/color-helpers](./color-helpers.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

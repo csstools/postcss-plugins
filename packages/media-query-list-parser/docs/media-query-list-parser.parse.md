@@ -15,11 +15,53 @@ export declare function parse(source: string, options?: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  source | string |  |
-|  options | { preserveInvalidMediaQueries?: boolean; onParseError?: (error: ParseError) =&gt; void; } | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+source
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+{ preserveInvalidMediaQueries?: boolean; onParseError?: (error: ParseError) =&gt; void; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt;

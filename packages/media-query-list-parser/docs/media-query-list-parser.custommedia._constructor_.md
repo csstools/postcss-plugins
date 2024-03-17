@@ -14,9 +14,64 @@ constructor(name: Array<CSSToken>, mediaQueryList: Array<MediaQuery> | null, tru
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | Array&lt;CSSToken&gt; |  |
-|  mediaQueryList | Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt; \| null |  |
-|  trueOrFalseKeyword | Array&lt;CSSToken&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+mediaQueryList
+
+
+</td><td>
+
+Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt; \| null
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+trueOrFalseKeyword
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

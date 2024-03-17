@@ -12,10 +12,37 @@ export declare function invertComparison(operator: MediaFeatureComparison): Medi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  operator | [MediaFeatureComparison](./media-query-list-parser.mediafeaturecomparison.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+operator
+
+
+</td><td>
+
+[MediaFeatureComparison](./media-query-list-parser.mediafeaturecomparison.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MediaFeatureComparison](./media-query-list-parser.mediafeaturecomparison.md) \| false

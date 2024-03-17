@@ -12,30 +12,262 @@ export declare class MediaConditionListWithAnd
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(leading, list, before, after)](./media-query-list-parser.mediaconditionlistwithand._constructor_.md) |  | Constructs a new instance of the <code>MediaConditionListWithAnd</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(leading, list, before, after)](./media-query-list-parser.mediaconditionlistwithand._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaConditionListWithAnd` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after](./media-query-list-parser.mediaconditionlistwithand.after.md) |  | Array&lt;CSSToken&gt; |  |
-|  [before](./media-query-list-parser.mediaconditionlistwithand.before.md) |  | Array&lt;CSSToken&gt; |  |
-|  [leading](./media-query-list-parser.mediaconditionlistwithand.leading.md) |  | [MediaInParens](./media-query-list-parser.mediainparens.md) |  |
-|  [list](./media-query-list-parser.mediaconditionlistwithand.list.md) |  | Array&lt;[MediaAnd](./media-query-list-parser.mediaand.md)<!-- -->&gt; |  |
-|  [type](./media-query-list-parser.mediaconditionlistwithand.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after](./media-query-list-parser.mediaconditionlistwithand.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[before](./media-query-list-parser.mediaconditionlistwithand.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[leading](./media-query-list-parser.mediaconditionlistwithand.leading.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaInParens](./media-query-list-parser.mediainparens.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[list](./media-query-list-parser.mediaconditionlistwithand.list.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[MediaAnd](./media-query-list-parser.mediaand.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediaconditionlistwithand.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediaconditionlistwithand.at.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediaconditionlistwithand.indexof.md) |  |  |
-|  [isMediaConditionListWithAnd()](./media-query-list-parser.mediaconditionlistwithand.ismediaconditionlistwithand.md) |  |  |
-|  [isMediaConditionListWithAnd(x)](./media-query-list-parser.mediaconditionlistwithand.ismediaconditionlistwithand.md) | <code>static</code> |  |
-|  [toJSON()](./media-query-list-parser.mediaconditionlistwithand.tojson.md) |  |  |
-|  [tokens()](./media-query-list-parser.mediaconditionlistwithand.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediaconditionlistwithand.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediaconditionlistwithand.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediaconditionlistwithand.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediaconditionlistwithand.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaConditionListWithAnd()](./media-query-list-parser.mediaconditionlistwithand.ismediaconditionlistwithand.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaConditionListWithAnd(x)](./media-query-list-parser.mediaconditionlistwithand.ismediaconditionlistwithand.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toJSON()](./media-query-list-parser.mediaconditionlistwithand.tojson.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediaconditionlistwithand.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediaconditionlistwithand.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediaconditionlistwithand.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

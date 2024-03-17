@@ -12,17 +12,192 @@ export declare enum MediaType
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  All | <code>&quot;all&quot;</code> | Always matches |
-|  Aural | <code>&quot;aural&quot;</code> | Never matches |
-|  Braille | <code>&quot;braille&quot;</code> | Never matches |
-|  Embossed | <code>&quot;embossed&quot;</code> | Never matches |
-|  Handheld | <code>&quot;handheld&quot;</code> | Never matches |
-|  Print | <code>&quot;print&quot;</code> |  |
-|  Projection | <code>&quot;projection&quot;</code> | Never matches |
-|  Screen | <code>&quot;screen&quot;</code> |  |
-|  Speech | <code>&quot;speech&quot;</code> | Never matches |
-|  Tty | <code>&quot;tty&quot;</code> | Never matches |
-|  Tv | <code>&quot;tv&quot;</code> | Never matches |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+All
+
+
+</td><td>
+
+`"all"`
+
+
+</td><td>
+
+Always matches
+
+
+</td></tr>
+<tr><td>
+
+Aural
+
+
+</td><td>
+
+`"aural"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Braille
+
+
+</td><td>
+
+`"braille"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Embossed
+
+
+</td><td>
+
+`"embossed"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Handheld
+
+
+</td><td>
+
+`"handheld"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Print
+
+
+</td><td>
+
+`"print"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Projection
+
+
+</td><td>
+
+`"projection"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Screen
+
+
+</td><td>
+
+`"screen"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Speech
+
+
+</td><td>
+
+`"speech"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Tty
+
+
+</td><td>
+
+`"tty"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+<tr><td>
+
+Tv
+
+
+</td><td>
+
+`"tv"`
+
+
+</td><td>
+
+Never matches
+
+
+</td></tr>
+</tbody></table>

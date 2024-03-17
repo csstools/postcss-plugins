@@ -14,8 +14,48 @@ constructor(modifier: Array<CSSToken>, media: MediaInParens);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  modifier | Array&lt;CSSToken&gt; |  |
-|  media | [MediaInParens](./media-query-list-parser.mediainparens.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+modifier
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+media
+
+
+</td><td>
+
+[MediaInParens](./media-query-list-parser.mediainparens.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

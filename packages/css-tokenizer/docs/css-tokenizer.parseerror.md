@@ -15,15 +15,116 @@ export declare class ParseError extends Error
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(message, sourceStart, sourceEnd, parserState)](./css-tokenizer.parseerror._constructor_.md) |  | Constructs a new instance of the <code>ParseError</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(message, sourceStart, sourceEnd, parserState)](./css-tokenizer.parseerror._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `ParseError` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [parserState](./css-tokenizer.parseerror.parserstate.md) |  | Array&lt;string&gt; | The parser steps that preceded the error. |
-|  [sourceEnd](./css-tokenizer.parseerror.sourceend.md) |  | number | The index of the end character of the current token. |
-|  [sourceStart](./css-tokenizer.parseerror.sourcestart.md) |  | number | The index of the start character of the current token. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[parserState](./css-tokenizer.parseerror.parserstate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;string&gt;
+
+
+</td><td>
+
+The parser steps that preceded the error.
+
+
+</td></tr>
+<tr><td>
+
+[sourceEnd](./css-tokenizer.parseerror.sourceend.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The index of the end character of the current token.
+
+
+</td></tr>
+<tr><td>
+
+[sourceStart](./css-tokenizer.parseerror.sourcestart.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The index of the start character of the current token.
+
+
+</td></tr>
+</tbody></table>

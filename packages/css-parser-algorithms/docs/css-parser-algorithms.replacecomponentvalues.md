@@ -14,11 +14,51 @@ export declare function replaceComponentValues(componentValuesList: Array<Array<
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  componentValuesList | Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;&gt; |  |
-|  replaceWith | (componentValue: [ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->) =&gt; Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt; \| [ComponentValue](./css-parser-algorithms.componentvalue.md) \| void |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+componentValuesList
+
+
+</td><td>
+
+Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+replaceWith
+
+
+</td><td>
+
+(componentValue: [ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->) =&gt; Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt; \| [ComponentValue](./css-parser-algorithms.componentvalue.md) \| void
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;&gt;

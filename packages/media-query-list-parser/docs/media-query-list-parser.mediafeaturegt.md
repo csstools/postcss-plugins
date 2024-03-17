@@ -12,8 +12,48 @@ export declare enum MediaFeatureGT
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  GT | <code>&quot;&gt;&quot;</code> |  |
-|  GT\_OR\_EQ | <code>&quot;&gt;=&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+GT
+
+
+</td><td>
+
+`">"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+GT\_OR\_EQ
+
+
+</td><td>
+
+`">="`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

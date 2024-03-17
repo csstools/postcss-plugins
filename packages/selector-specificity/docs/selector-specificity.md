@@ -6,14 +6,57 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [compare(s1, s2)](./selector-specificity.compare.md) |  |
-|  [selectorSpecificity(node)](./selector-specificity.selectorspecificity.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[compare(s1, s2)](./selector-specificity.compare.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[selectorSpecificity(node)](./selector-specificity.selectorspecificity.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Specificity](./selector-specificity.specificity.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Specificity](./selector-specificity.specificity.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

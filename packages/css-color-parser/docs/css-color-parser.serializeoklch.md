@@ -14,10 +14,39 @@ export declare function serializeOKLCH(color: ColorData): FunctionNode;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  color | [ColorData](./css-color-parser.colordata.md) | The color data to be serialized. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+color
+
+
+</td><td>
+
+[ColorData](./css-color-parser.colordata.md)
+
+
+</td><td>
+
+The color data to be serialized.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 FunctionNode

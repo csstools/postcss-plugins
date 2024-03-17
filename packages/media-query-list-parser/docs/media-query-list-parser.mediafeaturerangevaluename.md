@@ -12,30 +12,257 @@ export declare class MediaFeatureRangeValueName
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(name, operator, value)](./media-query-list-parser.mediafeaturerangevaluename._constructor_.md) |  | Constructs a new instance of the <code>MediaFeatureRangeValueName</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(name, operator, value)](./media-query-list-parser.mediafeaturerangevaluename._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaFeatureRangeValueName` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name](./media-query-list-parser.mediafeaturerangevaluename.name.md) |  | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
-|  [operator](./media-query-list-parser.mediafeaturerangevaluename.operator.md) |  | \[TokenDelim, TokenDelim\] \| \[TokenDelim\] |  |
-|  [type](./media-query-list-parser.mediafeaturerangevaluename.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
-|  [value](./media-query-list-parser.mediafeaturerangevaluename.value.md) |  | [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name](./media-query-list-parser.mediafeaturerangevaluename.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[operator](./media-query-list-parser.mediafeaturerangevaluename.operator.md)
+
+
+</td><td>
+
+
+</td><td>
+
+\[TokenDelim, TokenDelim\] \| \[TokenDelim\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediafeaturerangevaluename.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[value](./media-query-list-parser.mediafeaturerangevaluename.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediafeaturerangevaluename.at.md) |  |  |
-|  [getName()](./media-query-list-parser.mediafeaturerangevaluename.getname.md) |  |  |
-|  [getNameToken()](./media-query-list-parser.mediafeaturerangevaluename.getnametoken.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediafeaturerangevaluename.indexof.md) |  |  |
-|  [isMediaFeatureRangeValueName(x)](./media-query-list-parser.mediafeaturerangevaluename.ismediafeaturerangevaluename.md) | <code>static</code> |  |
-|  [operatorKind()](./media-query-list-parser.mediafeaturerangevaluename.operatorkind.md) |  |  |
-|  [tokens()](./media-query-list-parser.mediafeaturerangevaluename.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediafeaturerangevaluename.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediafeaturerangevaluename.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediafeaturerangevaluename.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getName()](./media-query-list-parser.mediafeaturerangevaluename.getname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getNameToken()](./media-query-list-parser.mediafeaturerangevaluename.getnametoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediafeaturerangevaluename.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaFeatureRangeValueName(x)](./media-query-list-parser.mediafeaturerangevaluename.ismediafeaturerangevaluename.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[operatorKind()](./media-query-list-parser.mediafeaturerangevaluename.operatorkind.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediafeaturerangevaluename.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediafeaturerangevaluename.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediafeaturerangevaluename.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

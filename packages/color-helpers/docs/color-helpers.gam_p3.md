@@ -14,10 +14,37 @@ export declare function gam_P3(RGB: Color): Color;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  RGB | [Color](./color-helpers.color.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+RGB
+
+
+</td><td>
+
+[Color](./color-helpers.color.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Color](./color-helpers.color.md)

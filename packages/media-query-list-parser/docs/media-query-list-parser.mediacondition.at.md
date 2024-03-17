@@ -12,10 +12,37 @@ at(index: number | string): MediaNot | MediaInParens | MediaConditionListWithAnd
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  index | number \| string |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+index
+
+
+</td><td>
+
+number \| string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MediaNot](./media-query-list-parser.medianot.md) \| [MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaConditionListWithAnd](./media-query-list-parser.mediaconditionlistwithand.md) \| [MediaConditionListWithOr](./media-query-list-parser.mediaconditionlistwithor.md) \| undefined

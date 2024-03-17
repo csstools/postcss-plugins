@@ -14,11 +14,55 @@ export declare function serializeP3(color: ColorData, gamutMapping?: boolean): F
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  color | [ColorData](./css-color-parser.colordata.md) | The color data to be serialized. |
-|  gamutMapping | boolean | _(Optional)_ Whether to perform gamut mapping, defaults to <code>true</code>. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+color
+
+
+</td><td>
+
+[ColorData](./css-color-parser.colordata.md)
+
+
+</td><td>
+
+The color data to be serialized.
+
+
+</td></tr>
+<tr><td>
+
+gamutMapping
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Whether to perform gamut mapping, defaults to `true`<!-- -->.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 FunctionNode

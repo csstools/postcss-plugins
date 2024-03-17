@@ -24,11 +24,53 @@ export declare function tokenizer(input: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  input | { css: { valueOf(): string; }; unicodeRangesAllowed?: boolean; } |  |
-|  options | { onParseError?: (error: [ParseError](./css-tokenizer.parseerror.md)<!-- -->) =&gt; void; } | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+input
+
+
+</td><td>
+
+{ css: { valueOf(): string; }; unicodeRangesAllowed?: boolean; }
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+{ onParseError?: (error: [ParseError](./css-tokenizer.parseerror.md)<!-- -->) =&gt; void; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 { nextToken: () =&gt; [CSSToken](./css-tokenizer.csstoken.md) \| undefined; endOfFile: () =&gt; boolean; }

@@ -16,11 +16,55 @@ export declare function flattenNestedSelector(selector: Root, parentSelector: Ro
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  selector | Root | The selector to resolve. |
-|  parentSelector | Root | The parent selector to resolve against. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+selector
+
+
+</td><td>
+
+Root
+
+
+</td><td>
+
+The selector to resolve.
+
+
+</td></tr>
+<tr><td>
+
+parentSelector
+
+
+</td><td>
+
+Root
+
+
+</td><td>
+
+The parent selector to resolve against.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Root

@@ -16,11 +16,55 @@ export declare function hasSupportsAtRuleAncestor(node: Node, predicate: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  node | Node | The node to check |
-|  predicate | { test(str: string): boolean; } | The test to match against the <code>@supports</code> at-rule's params |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+node
+
+
+</td><td>
+
+Node
+
+
+</td><td>
+
+The node to check
+
+
+</td></tr>
+<tr><td>
+
+predicate
+
+
+</td><td>
+
+{ test(str: string): boolean; }
+
+
+</td><td>
+
+The test to match against the `@supports` at-rule's params
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

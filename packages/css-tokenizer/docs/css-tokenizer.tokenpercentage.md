@@ -16,8 +16,63 @@ export interface TokenPercentage extends Token<TokenType.Percentage, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [signCharacter?](./css-tokenizer.tokenpercentage.signcharacter.md) |  | '+' \| '-' | _(Optional)_ The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as "2%" or "+2%". |
-|  [value](./css-tokenizer.tokenpercentage.value.md) |  | number | The numeric value. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[signCharacter?](./css-tokenizer.tokenpercentage.signcharacter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'+' \| '-'
+
+
+</td><td>
+
+_(Optional)_ The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as "2%" or "+2%".
+
+
+</td></tr>
+<tr><td>
+
+[value](./css-tokenizer.tokenpercentage.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The numeric value.
+
+
+</td></tr>
+</tbody></table>

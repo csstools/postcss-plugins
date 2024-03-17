@@ -12,10 +12,37 @@ at(index: number | string): MediaFeatureBoolean | MediaFeaturePlain | MediaFeatu
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  index | number \| string |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+index
+
+
+</td><td>
+
+number \| string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md) \| undefined

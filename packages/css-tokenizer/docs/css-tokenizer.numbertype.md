@@ -14,8 +14,48 @@ export declare enum NumberType
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  Integer | <code>&quot;integer&quot;</code> |  |
-|  Number | <code>&quot;number&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+Integer
+
+
+</td><td>
+
+`"integer"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Number
+
+
+</td><td>
+
+`"number"`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

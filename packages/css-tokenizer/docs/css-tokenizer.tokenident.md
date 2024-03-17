@@ -15,7 +15,44 @@ export interface TokenIdent extends Token<TokenType.Ident, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-tokenizer.tokenident.value.md) |  | string | The unescaped ident value. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-tokenizer.tokenident.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unescaped ident value.
+
+
+</td></tr>
+</tbody></table>

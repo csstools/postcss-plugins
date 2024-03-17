@@ -14,11 +14,53 @@ export declare function postcssTape(pluginCreator: PluginCreator<unknown>, runOp
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  pluginCreator | PluginCreator&lt;unknown&gt; |  |
-|  runOptions | [Options](./postcss-tape.options.md) | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+pluginCreator
+
+
+</td><td>
+
+PluginCreator&lt;unknown&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+runOptions
+
+
+</td><td>
+
+[Options](./postcss-tape.options.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 (options: Record&lt;string, [TestCaseOptions](./postcss-tape.testcaseoptions.md)<!-- -->&gt;) =&gt; Promise&lt;void&gt;

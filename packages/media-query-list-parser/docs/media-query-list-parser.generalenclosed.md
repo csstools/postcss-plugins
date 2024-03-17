@@ -12,25 +12,187 @@ export declare class GeneralEnclosed
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(value)](./media-query-list-parser.generalenclosed._constructor_.md) |  | Constructs a new instance of the <code>GeneralEnclosed</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(value)](./media-query-list-parser.generalenclosed._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `GeneralEnclosed` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./media-query-list-parser.generalenclosed.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
-|  [value](./media-query-list-parser.generalenclosed.value.md) |  | ComponentValue |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type](./media-query-list-parser.generalenclosed.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[value](./media-query-list-parser.generalenclosed.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ComponentValue
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.generalenclosed.at.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.generalenclosed.indexof.md) |  |  |
-|  [isGeneralEnclosed(x)](./media-query-list-parser.generalenclosed.isgeneralenclosed.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.generalenclosed.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.generalenclosed.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.generalenclosed.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.generalenclosed.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.generalenclosed.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isGeneralEnclosed(x)](./media-query-list-parser.generalenclosed.isgeneralenclosed.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.generalenclosed.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.generalenclosed.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.generalenclosed.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

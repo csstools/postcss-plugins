@@ -14,7 +14,34 @@ constructor(value: CSSToken);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | CSSToken |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

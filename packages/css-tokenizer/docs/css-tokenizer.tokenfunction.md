@@ -15,7 +15,44 @@ export interface TokenFunction extends Token<TokenType.Function, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-tokenizer.tokenfunction.value.md) |  | string | The unescaped function name without the trailing <code>(</code>. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-tokenizer.tokenfunction.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unescaped function name without the trailing `(`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

@@ -12,21 +12,145 @@ export declare class TokenNode
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(value)](./css-parser-algorithms.tokennode._constructor_.md) |  | Constructs a new instance of the <code>TokenNode</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(value)](./css-parser-algorithms.tokennode._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `TokenNode` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.tokennode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.Token</code> |
-|  [value](./css-parser-algorithms.tokennode.value.md) |  | CSSToken | The token. |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type](./css-parser-algorithms.tokennode.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ComponentValueType](./css-parser-algorithms.componentvaluetype.md)
+
+
+</td><td>
+
+The node type, always `ComponentValueType.Token`
+
+
+</td></tr>
+<tr><td>
+
+[value](./css-parser-algorithms.tokennode.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+The token.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [tokens()](./css-parser-algorithms.tokennode.tokens.md) |  | This is the inverse of parsing from a list of tokens. |
-|  [toString()](./css-parser-algorithms.tokennode.tostring.md) |  | Convert the current token to a string. This is not a true serialization. It is purely the string representation of token. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[tokens()](./css-parser-algorithms.tokennode.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+This is the inverse of parsing from a list of tokens.
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./css-parser-algorithms.tokennode.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Convert the current token to a string. This is not a true serialization. It is purely the string representation of token.
+
+
+</td></tr>
+</tbody></table>

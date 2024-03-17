@@ -14,11 +14,90 @@ constructor(name: MediaFeatureName, valueOne: MediaFeatureValue, valueOneOperato
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
-|  valueOne | [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md) |  |
-|  valueOneOperator | \[TokenDelim, TokenDelim\] \| \[TokenDelim\] |  |
-|  valueTwo | [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md) |  |
-|  valueTwoOperator | \[TokenDelim, TokenDelim\] \| \[TokenDelim\] |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+valueOne
+
+
+</td><td>
+
+[MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+valueOneOperator
+
+
+</td><td>
+
+\[TokenDelim, TokenDelim\] \| \[TokenDelim\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+valueTwo
+
+
+</td><td>
+
+[MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+valueTwoOperator
+
+
+</td><td>
+
+\[TokenDelim, TokenDelim\] \| \[TokenDelim\]
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

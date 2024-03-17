@@ -12,10 +12,37 @@ export declare function matchesRatio(componentValues: Array<ComponentValue>): -1
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  componentValues | Array&lt;ComponentValue&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+componentValues
+
+
+</td><td>
+
+Array&lt;ComponentValue&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 -1 \| \[number, number\]

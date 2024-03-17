@@ -12,10 +12,37 @@ export declare function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  tokens | \[TokenDelim, TokenDelim\] \| \[TokenDelim\] |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+tokens
+
+
+</td><td>
+
+\[TokenDelim, TokenDelim\] \| \[TokenDelim\]
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MediaFeatureComparison](./media-query-list-parser.mediafeaturecomparison.md) \| false

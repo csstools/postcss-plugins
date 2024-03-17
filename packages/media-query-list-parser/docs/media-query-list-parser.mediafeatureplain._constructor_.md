@@ -14,9 +14,62 @@ constructor(name: MediaFeatureName, colon: TokenColon, value: MediaFeatureValue)
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
-|  colon | TokenColon |  |
-|  value | [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+colon
+
+
+</td><td>
+
+TokenColon
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+value
+
+
+</td><td>
+
+[MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

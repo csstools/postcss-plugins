@@ -12,21 +12,145 @@ export declare class CommentNode
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(value)](./css-parser-algorithms.commentnode._constructor_.md) |  | Constructs a new instance of the <code>CommentNode</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(value)](./css-parser-algorithms.commentnode._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `CommentNode` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./css-parser-algorithms.commentnode.type.md) |  | [ComponentValueType](./css-parser-algorithms.componentvaluetype.md) | The node type, always <code>ComponentValueType.Comment</code> |
-|  [value](./css-parser-algorithms.commentnode.value.md) |  | CSSToken | The comment token. |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type](./css-parser-algorithms.commentnode.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ComponentValueType](./css-parser-algorithms.componentvaluetype.md)
+
+
+</td><td>
+
+The node type, always `ComponentValueType.Comment`
+
+
+</td></tr>
+<tr><td>
+
+[value](./css-parser-algorithms.commentnode.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+CSSToken
+
+
+</td><td>
+
+The comment token.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [tokens()](./css-parser-algorithms.commentnode.tokens.md) |  | Retrieve the tokens for the current comment. This is the inverse of parsing from a list of tokens. |
-|  [toString()](./css-parser-algorithms.commentnode.tostring.md) |  | Convert the current comment to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[tokens()](./css-parser-algorithms.commentnode.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the tokens for the current comment. This is the inverse of parsing from a list of tokens.
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./css-parser-algorithms.commentnode.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Convert the current comment to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.
+
+
+</td></tr>
+</tbody></table>
