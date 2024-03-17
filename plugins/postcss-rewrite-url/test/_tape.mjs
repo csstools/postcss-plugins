@@ -5,7 +5,11 @@ postcssTape(plugin)({
 	basic: {
 		message: 'supports basic usage',
 		options: {
-			rewriter: (value) => {
+			rewriter: (value, context) => {
+				if (context.property === 'background-image') {
+					return false;
+				}
+
 				return {
 					url: value.url + '#modified',
 				};

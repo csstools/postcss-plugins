@@ -15,7 +15,7 @@ export interface RewriteContext {
 	atRuleName?: string;
 }
 
-export type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite;
+export type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite | false;
 
 /** postcss-rewrite-url plugin options */
 export type pluginOptions = {
@@ -93,6 +93,10 @@ function rewrite(rewriter: Rewriter, value: string, context: RewriteContext): st
 				if (isTokenNode(x) && x.value[0] === TokenType.String) {
 					const original = x.value[4].value.trim();
 					const modified = rewriter({ url: original }, context);
+					if (modified === false) {
+						return;
+					}
+
 					if (modified.url === original) {
 						break;
 					}

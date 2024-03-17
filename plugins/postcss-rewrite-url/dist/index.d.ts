@@ -16,7 +16,7 @@ export declare interface RewriteContext {
     atRuleName?: string;
 }
 
-export declare type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite;
+export declare type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite | false;
 
 export declare interface ValueToRewrite {
     url: string;

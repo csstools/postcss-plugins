@@ -1,5 +1,6 @@
 .foo {
 	background: url("foo.png#modified");
+	background-image: rewrite-url('ignore.png');
 }
 
 @font-face {

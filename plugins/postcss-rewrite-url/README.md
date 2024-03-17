@@ -76,11 +76,14 @@ export interface ValueToRewrite {
 }
 
 export interface RewriteContext {
+	type: 'declaration-value' | 'at-rule-prelude';
 	from: string | undefined;
 	rootFrom: string | undefined;
+	property?: string;
+	atRuleName?: string;
 }
 
-export type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite;
+export type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite | false;
 
 /** postcss-rewrite-url plugin options */
 export type pluginOptions = {
@@ -91,6 +94,11 @@ export type pluginOptions = {
 ```js
 postcssRewriteURL({
 	rewriter: (value, context) => {
+		if (value.url === 'ignore-me') {
+			// return `false` to ignore this url and preserve `rewrite-url()` in the output
+			return false;
+		}
+
 		console.log(context); // for extra conditional logic
 		return {
 			url: value.url + '#modified',
