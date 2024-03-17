@@ -1,7 +1,7 @@
 import { CSSToken } from '@csstools/css-tokenizer';
 import { ParseError } from '@csstools/css-tokenizer';
 
-export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): LayerName[];
+export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): void;
 
 export declare class LayerName {
     parts: Array<CSSToken>;
@@ -13,16 +13,17 @@ export declare class LayerName {
     name(): string;
     equal(other: LayerName): boolean;
     toString(): string;
-    toJSON(): {
-        parts: CSSToken[];
-        segments: string[];
-        name: string;
-    };
+    /**
+     * @internal
+     *
+     * A debug helper to convert the current object to a JSON representation.
+     */
+    toJSON(): Record<string, unknown>;
 }
 
 export declare function parse(source: string, options?: {
     onParseError?: (error: ParseError) => void;
-}): LayerName[];
+}): Array<LayerName>;
 
 /**
  * Parses an array of {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md | CSSTokens} into a list of cascade layer names.

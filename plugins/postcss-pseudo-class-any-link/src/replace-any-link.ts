@@ -47,7 +47,7 @@ export function replaceAnyLink(rule: Rule, result: Result, preserve: boolean, ar
 	return true;
 }
 
-function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean) {
+function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean): Array<string> {
 	const out: Array<string> = [];
 
 	// update the selector
@@ -105,7 +105,7 @@ function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parse
 	const r: Array<Array<parser.Node>> = [];
 	const max = args.length - 1;
 
-	function helper(arr: Array<parser.Node>, i: number) {
+	function helper(arr: Array<parser.Node>, i: number): void {
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);
@@ -116,12 +116,14 @@ function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parse
 			}
 		}
 	}
+
 	helper([], 0);
+
 	return r;
 }
 
-function getTagElementsNextToPseudo(pseudo: parser.Pseudo) {
-	const tags = [];
+function getTagElementsNextToPseudo(pseudo: parser.Pseudo): Array<string> {
+	const tags: Array<string> = [];
 
 	let prev = pseudo.prev();
 	while (prev) {
@@ -155,7 +157,7 @@ function getTagElementsNextToPseudo(pseudo: parser.Pseudo) {
 // Inserts a node around a given node.
 // - in the same compound selector
 // - try to keep the result serializable without side effects
-function insertNode(container: parser.Container | undefined, aroundNode: parser.Node, node: parser.Node | undefined) {
+function insertNode(container: parser.Container | undefined, aroundNode: parser.Node, node: parser.Node | undefined): void {
 	if (!container || !node) {
 		return;
 	}

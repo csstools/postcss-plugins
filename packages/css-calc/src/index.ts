@@ -6,7 +6,6 @@ import { patchCalcResult } from './util/patch-result';
 import { replaceComponentValues } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
 import { stringify, tokenize } from '@csstools/css-tokenizer';
-import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { tokenizeGlobals } from './util/globals';
 
 export function calc(css: string, options?: conversionOptions): string {
@@ -17,7 +16,7 @@ export function calc(css: string, options?: conversionOptions): string {
 	}).join(',');
 }
 
-export function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions) {
+export function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): Array<Array<ComponentValue>> {
 	const tokenizedGlobals = tokenizeGlobals(options?.globals);
 
 	return replaceComponentValues(componentValuesList, (componentValue) => {
@@ -25,7 +24,7 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 			return;
 		}
 
-		const mathFunction = mathFunctions.get(toLowerCaseAZ(componentValue.getName()));
+		const mathFunction = mathFunctions.get(componentValue.getName().toLowerCase());
 		if (!mathFunction) {
 			return;
 		}

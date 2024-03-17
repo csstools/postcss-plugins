@@ -17,9 +17,9 @@ const tests = [
 	['rgb(from rebeccapurple l g b)'],
 	['rgb(from rebeccapurple h g b)'],
 
-	// Testing invalid function name variation (only rgb() is valid, rgba() is invalid)
-	['rgba(from rebeccapurple r g b)'],
-	['rgba(from rgb(10%, 20%, 30%, 40%) r g b / alpha)'],
+	// Testing invalid separator
+	['rgb(from rebeccapurple, r, g, b)'],
+	['rgba(from rgb(10%, 20%, 30%, 40%), r, g, b, alpha)'],
 
 
 	// hsl(from ...)
@@ -33,9 +33,9 @@ const tests = [
 	['hsl(from rebeccapurple x s l)'],
 	['hsl(from rebeccapurple h g b)'],
 
-	// Testing invalid function name variation (only hsl() is valid, hsla() is invalid)
-	['hsla(from rebeccapurple h s l)'],
-	['hsla(from rgb(10%, 20%, 30%, 40%) h s l / alpha)'],
+	// Testing invalid separator
+	['hsl(from rebeccapurple, h, s, l)'],
+	['hsla(from rgb(10%, 20%, 30%, 40%), h, s, l, alpha)'],
 
 	// hwb(from ...)
 

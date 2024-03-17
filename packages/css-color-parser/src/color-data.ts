@@ -65,6 +65,8 @@ export enum SyntaxFlag {
 	RelativeColorSyntax = 'relative-color-syntax',
 	/** Is a mixed color, e.g. `color-mix(in oklch, red, blue)` */
 	ColorMix = 'color-mix',
+	/** Is a contrasting color, e.g. `contrast-color()` */
+	ContrastColor = 'contrast-color',
 	/** Is an experimental color syntax */
 	Experimental = 'experimental',
 }
@@ -341,7 +343,7 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
 				out[0] = NaN;
 			}
 
@@ -353,13 +355,13 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 			break;
 		case ColorNotation.LCH:
-			if (reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
 				out[2] = NaN;
 			}
 
 			break;
 		case ColorNotation.OKLCH:
-			if (reducePrecision(out[1], 6) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 6) <= 0) {
 				out[2] = NaN;
 			}
 

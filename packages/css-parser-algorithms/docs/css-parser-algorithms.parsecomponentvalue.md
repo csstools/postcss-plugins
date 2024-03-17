@@ -11,7 +11,7 @@ Parse a single component value.
 ```typescript
 export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
-}): import("../consume/component-block-function").ComponentValue | undefined;
+}): ComponentValue | undefined;
 ```
 
 ## Parameters
@@ -23,7 +23,7 @@ export declare function parseComponentValue(tokens: Array<CSSToken>, options?: {
 
 **Returns:**
 
-import("../consume/component-block-function").[ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined
+[ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined
 
 ## Example
 

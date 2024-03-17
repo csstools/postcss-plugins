@@ -16,6 +16,7 @@ export declare enum SyntaxFlag
 |  --- | --- | --- |
 |  ColorKeyword | <code>&quot;color-keyword&quot;</code> | Is a color keyword, e.g. <code>transparent</code>, <code>currentColor</code>, ... |
 |  ColorMix | <code>&quot;color-mix&quot;</code> | Is a mixed color, e.g. <code>color-mix(in oklch, red, blue)</code> |
+|  ContrastColor | <code>&quot;contrast-color&quot;</code> | Is a contrasting color, e.g. <code>contrast-color()</code> |
 |  Experimental | <code>&quot;experimental&quot;</code> | Is an experimental color syntax |
 |  HasAlpha | <code>&quot;has-alpha&quot;</code> | Has an explicit alpha channel |
 |  HasDimensionValues | <code>&quot;has-dimension-values&quot;</code> | Has a channel with a dimension value, e.g. <code>50deg</code> |

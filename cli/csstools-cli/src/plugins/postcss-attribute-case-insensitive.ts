@@ -1,7 +1,7 @@
 import plugin from 'postcss-attribute-case-insensitive';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssAttributeCaseInsensitive() {
+export default function postcssAttributeCaseInsensitive(): void {
 	cli(
 		plugin,
 		[],

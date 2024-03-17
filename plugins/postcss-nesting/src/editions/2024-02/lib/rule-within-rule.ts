@@ -3,7 +3,7 @@ import cleanupParent from '../../shared/lib/cleanup-parent.js';
 import mergeSelectors from './merge-selectors.js';
 import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
 
-export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result) {
+export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result): void {
 	const selectors = mergeSelectors(node, node.selector, parent.selector, result);
 	if (!selectors) {
 		return;
@@ -26,7 +26,7 @@ export default function transformRuleWithinRule(node: Rule, parent: Rule, result
 	cleanupParent(parent);
 }
 
-export function isValidRuleWithinRule(node: Rule) {
+export function isValidRuleWithinRule(node: Rule): boolean {
 	return node.selectors.every((selector) => {
 		return selector.indexOf('|') === -1;
 	});

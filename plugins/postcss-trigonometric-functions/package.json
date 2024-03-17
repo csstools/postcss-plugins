@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-trigonometric-functions",
 	"description": "Use sin(), cos(), tan(), acos(), atan(), and atan2() to compute trigonometric relationships",
-	"version": "3.0.5",
+	"version": "3.0.6",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-calc": "^1.1.7",
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3"
+		"@csstools/css-calc": "^1.2.0",
+		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-tokenizer": "^2.2.4"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

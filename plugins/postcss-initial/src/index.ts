@@ -34,7 +34,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-initial',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (decl.variable) {
 				return;
 			}

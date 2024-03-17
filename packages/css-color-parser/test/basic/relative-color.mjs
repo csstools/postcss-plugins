@@ -10,6 +10,11 @@ assert.deepStrictEqual(
 );
 
 assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgba(from indianred 255 G b)'))),
+	'rgb(255, 92, 92)',
+);
+
+assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(from rgb(50 50 50 / 0.5) 30 30 30)'))),
 	'rgba(30, 30, 30, 0.5)',
 );

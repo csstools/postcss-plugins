@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 
 const prefersInterfaceRegExp = /\(\s*prefers-color-scheme\s*:\s*(dark|light)\s*\)/gi;
 
@@ -22,11 +22,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-prefers-color-scheme',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				AtRule: (atRule) => {
+				postcssPlugin: 'postcss-prefers-color-scheme',
+				AtRule(atRule): void {
 					if (transformedNodes.has(atRule)) {
 						return;
 					}

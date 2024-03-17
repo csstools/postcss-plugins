@@ -5,7 +5,7 @@ import mergeSelectors from './merge-selectors.js';
 import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
 import validAtrules from '../../shared/lib/valid-atrules.js';
 
-export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc) {
+export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc): void {
 	// move previous siblings and the node to before the parent
 	shiftNodesBeforeParent(node, parent);
 
@@ -34,6 +34,6 @@ export default function atruleWithinRule(node: AtRule, parent: Rule, result: Res
 	}
 }
 
-export function isAtruleWithinRule(node: AtRule) {
+export function isAtruleWithinRule(node: AtRule): boolean {
 	return validAtrules.includes(node.name);
 }

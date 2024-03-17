@@ -1,5 +1,27 @@
 # Changes to CSS Color Parser
 
+### 1.6.2
+
+_March 16, 2024_
+
+- Fix powerless components for `lch` and `oklch` with `none` chroma.
+
+### 1.6.1
+
+_March 16, 2024_
+
+- Fix powerless components for `hsl` with `none` saturation.
+
+### 1.6.0
+
+_March 13, 2024_
+
+- Add support for `contrast-color( <color> max )`
+- Allow relative color syntax in `rgba` and `hsla` color notations.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.2.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#224) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.6.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#261) (patch)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`1.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#120) (minor)
+
 ### 1.5.2
 
 _February 19, 2024_

@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-media-minmax';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssMediaMinMax() {
+export default function postcssMediaMinMax(): void {
 	cli(
 		plugin,
 		[],

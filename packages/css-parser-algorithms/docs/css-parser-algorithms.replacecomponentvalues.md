@@ -9,7 +9,7 @@ Replace specific component values in a list of component values. A helper for th
 **Signature:**
 
 ```typescript
-export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void): ComponentValue[][];
+export declare function replaceComponentValues(componentValuesList: Array<Array<ComponentValue>>, replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void): Array<Array<ComponentValue>>;
 ```
 
 ## Parameters
@@ -21,5 +21,5 @@ export declare function replaceComponentValues(componentValuesList: Array<Array<
 
 **Returns:**
 
-[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->\[\]\[\]
+Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;&gt;
 

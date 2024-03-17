@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-exponential-functions';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssExponentialFunctions() {
+export default function postcssExponentialFunctions(): void {
 	cli(
 		plugin,
 		['preserve'],

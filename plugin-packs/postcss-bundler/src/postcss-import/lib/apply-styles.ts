@@ -1,7 +1,7 @@
 import type { Document, Root } from 'postcss';
 import { Stylesheet, isImportStatement, isNodesStatement } from './statement';
 
-export function applyStyles(stylesheet: Stylesheet, styles: Root | Document) {
+export function applyStyles(stylesheet: Stylesheet, styles: Root | Document): void {
 	styles.nodes = [];
 
 	if (stylesheet.charset) {

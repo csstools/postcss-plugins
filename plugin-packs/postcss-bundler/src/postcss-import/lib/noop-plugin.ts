@@ -1,8 +1,10 @@
+import type { PluginCreator } from 'postcss';
+
 // https://github.com/postcss/postcss/issues/1869
-const noopPlugin = () => {
+const noopPlugin: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'noop-plugin',
-		Once() {
+		Once(): void {
 			// do nothing
 		},
 	};

@@ -4,7 +4,7 @@ const blockRegExp = /(!\s*)?postcss-custom-properties:\s*off\b/i;
 
 const blockIgnoredCache = new WeakMap();
 
-export function isBlockIgnored(container: Container | undefined) {
+export function isBlockIgnored(container: Container | undefined): boolean {
 	if (!container || !container.nodes) {
 		return false;
 	}
@@ -21,7 +21,7 @@ export function isBlockIgnored(container: Container | undefined) {
 
 const DECLARATION_REG_EXP = /(!\s*)?postcss-custom-properties:\s*ignore\s+next\b/i;
 
-export function isDeclarationIgnored(decl: Declaration | undefined) {
+export function isDeclarationIgnored(decl: Declaration | undefined): boolean {
 	if (!decl) {
 		return false;
 	}
@@ -33,6 +33,6 @@ export function isDeclarationIgnored(decl: Declaration | undefined) {
 	return isIgnoreComment(decl.prev(), DECLARATION_REG_EXP);
 }
 
-function isIgnoreComment(node: Node | undefined, regexp: RegExp) {
+function isIgnoreComment(node: Node | undefined, regexp: RegExp): boolean {
 	return !!node && node.type === 'comment' && regexp.test((node as Comment).text);
 }

@@ -88,7 +88,7 @@ export class MediaFeatureRangeNameValue {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			name: this.name.toJSON(),
@@ -176,7 +176,7 @@ export class MediaFeatureRangeValueName {
 		}
 	}
 
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		let stateClone: T | undefined = undefined;
 		if (state) {
 			stateClone = {
@@ -196,7 +196,7 @@ export class MediaFeatureRangeValueName {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			name: this.name.toJSON(),
@@ -302,7 +302,7 @@ export class MediaFeatureRangeValueNameValue {
 		}
 	}
 
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeatureRangeWalkerEntry, parent: MediaFeatureRangeWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		let stateClone: T | undefined = undefined;
 		if (state) {
 			stateClone = {
@@ -340,7 +340,7 @@ export class MediaFeatureRangeValueNameValue {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			name: this.name.toJSON(),

@@ -82,6 +82,8 @@ const tests = [
 	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
 	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
 	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
+	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(90deg 40% 80% / 25%)')],
+	['color-mix(in hwb, hwb(30deg 30% 40% / 25%) 0%, hwb(90deg none none / 0.5))', canonicalize('hwb(90deg 30% 40% / 0.5)')],
 ];
 
 for (const test of tests) {

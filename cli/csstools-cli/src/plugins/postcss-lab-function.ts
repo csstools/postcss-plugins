@@ -1,7 +1,7 @@
 import plugin from 'postcss-lab-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLabFunction() {
+export default function postcssLabFunction(): void {
 	cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties', 'subFeatures'],

@@ -1,7 +1,7 @@
 import plugin from 'postcss-place';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssPlace() {
+export default function postcssPlace(): void {
 	cli(
 		plugin,
 		['preserve'],

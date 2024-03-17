@@ -14,7 +14,7 @@ import { LayerName } from '../nodes/layer-name';
 // insert "c"
 
 // [["a", "b", "c"]]
-export function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>) {
+export function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): void {
 	currentLayerNames.forEach((layerName) => {
 		const allLayerNameParts = layerName.segments();
 
@@ -61,6 +61,4 @@ export function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Arr
 			}
 		}
 	});
-
-	return layers;
 }

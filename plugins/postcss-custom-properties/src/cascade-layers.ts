@@ -3,7 +3,7 @@ import { LayerName, parse as parseCascadeLayerNames, addLayerToModel } from '@cs
 
 const implicitLayerNameForCloning = parseCascadeLayerNames('csstools-implicit-layer')[0];
 
-export function collectCascadeLayerOrder(root: Root) {
+export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 	const references: Map<Node, LayerName> = new Map();
 	const referencesForLayerNames: Map<Node, LayerName> = new Map();
 
@@ -118,7 +118,7 @@ export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, numb
 	return 10_000_000;
 }
 
-function normalizeLayerName(layerName: string, counter: number) {
+function normalizeLayerName(layerName: string, counter: number): string {
 	if (layerName.trim()) {
 		return layerName;
 	}

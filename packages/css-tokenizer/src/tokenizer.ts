@@ -65,7 +65,7 @@ export function tokenizer(
 	options?: {
 		onParseError?: (error: ParseError) => void
 	},
-) {
+): { nextToken: () => CSSToken | undefined, endOfFile: () => boolean } {
 	const css = input.css.valueOf();
 	const unicodeRangesAllowed = input.unicodeRangesAllowed ?? false;
 
@@ -75,7 +75,7 @@ export function tokenizer(
 		onParseError: options?.onParseError ?? noop,
 	};
 
-	function endOfFile() {
+	function endOfFile(): boolean {
 		return reader.codePointSource[reader.cursor] === undefined;
 	}
 
@@ -253,4 +253,4 @@ export function tokenizer(
 	};
 }
 
-function noop() { /* do nothing */ }
+function noop(): void { /* do nothing */ }

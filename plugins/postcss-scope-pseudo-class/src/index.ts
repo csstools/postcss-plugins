@@ -1,4 +1,4 @@
-import type { AtRule, Container, Document, Node, PluginCreator } from 'postcss';
+import type { AtRule, Container, Document, Node, Plugin, PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 
 /** postcss-scope-pseudo-class plugin options */
@@ -19,11 +19,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-scope-pseudo-class',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-scope-pseudo-class',
+				Rule(rule, { result }): void {
 					if (!rule.selector.toLowerCase().includes(':scope')) {
 						return;
 					}

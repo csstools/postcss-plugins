@@ -25,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-cascade-layers',
-		OnceExit(root: Container, { result }: { result: Result }) {
+		OnceExit(root: Container, { result }: { result: Result }): void {
 
 			let hasAnyLayer = false;
 

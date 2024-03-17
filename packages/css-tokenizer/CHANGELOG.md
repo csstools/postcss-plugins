@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 2.2.4
+
+_March 13, 2024_
 
 - Correctly tokenize negative zero `-0` (for real this time)
 

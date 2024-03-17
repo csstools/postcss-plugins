@@ -1,7 +1,7 @@
 import plugin from 'postcss-nesting';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssNesting() {
+export default function postcssNesting(): void {
 	cli(
 		plugin,
 		['noIsPseudoSelector'],

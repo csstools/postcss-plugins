@@ -71,7 +71,7 @@ export type Options = {
 /**
  * Create a test suite for a PostCSS plugin.
  */
-export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: Options) {
+export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void> {
 	runOptions = runOptions ?? {};
 
 	// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
@@ -283,7 +283,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
  */
 export const declarationClonerPlugin = {
 	postcssPlugin: 'declaration-cloner',
-	Declaration(decl: Declaration) {
+	Declaration(decl: Declaration): void {
 		if (decl.prop === 'to-clone') {
 			decl.cloneBefore({ prop: 'cloned' });
 		}
@@ -295,11 +295,12 @@ export const declarationClonerPlugin = {
  */
 export const ruleClonerPlugin = {
 	postcssPlugin: 'rule-cloner',
-	prepare() {
+	prepare(): Plugin {
 		const transformedNodes = new WeakSet();
 
 		return {
-			RuleExit(rule: Rule) {
+			postcssPlugin: 'rule-cloner',
+			RuleExit(rule: Rule): void {
 				if (transformedNodes.has(rule)) {
 					return;
 				}
@@ -318,11 +319,12 @@ export const ruleClonerPlugin = {
  */
 export const atRuleClonerPlugin = {
 	postcssPlugin: 'at-rule-cloner',
-	prepare() {
+	prepare(): Plugin {
 		const transformedNodes = new WeakSet();
 
 		return {
-			AtRuleExit(atRule: AtRule) {
+			postcssPlugin: 'at-rule-cloner',
+			AtRuleExit(atRule: AtRule): void {
 				if (transformedNodes.has(atRule)) {
 					return;
 				}

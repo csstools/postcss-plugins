@@ -1,4 +1,4 @@
-import type { Declaration, Postcss } from 'postcss';
+import type { AtRule, Declaration, Postcss } from 'postcss';
 import type { Node } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
 
@@ -10,7 +10,7 @@ const dpiRatios: Map<string, number> = new Map([
 ]);
 
 // return a valid @media rule
-export function getMedia(dpi: number | false, postcss: Postcss, decl: Declaration) {
+export function getMedia(dpi: number | false, postcss: Postcss, decl: Declaration): AtRule|false {
 	if (typeof dpi === 'boolean') {
 		return false;
 	}
@@ -27,7 +27,7 @@ export function getMedia(dpi: number | false, postcss: Postcss, decl: Declaratio
 	return media;
 }
 
-export function getMediaDPI(node: Node) {
+export function getMediaDPI(node: Node): number|false {
 	if (!node) {
 		return false;
 	}

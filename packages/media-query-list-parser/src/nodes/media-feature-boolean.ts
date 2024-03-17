@@ -45,7 +45,7 @@ export class MediaFeatureBoolean {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			name: this.name.toJSON(),
@@ -73,7 +73,7 @@ export class MediaFeatureBoolean {
 	}
 }
 
-export function parseMediaFeatureBoolean(componentValues: Array<ComponentValue>) {
+export function parseMediaFeatureBoolean(componentValues: Array<ComponentValue>): MediaFeatureBoolean|false {
 	const mediaFeatureName = parseMediaFeatureName(componentValues);
 	if (mediaFeatureName === false) {
 		return mediaFeatureName;

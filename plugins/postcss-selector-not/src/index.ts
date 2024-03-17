@@ -1,7 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 
-function cleanupWhitespace(node: parser.Selector) {
+function cleanupWhitespace(node: parser.Selector): void {
 	if (node.spaces) {
 		node.spaces.after = '';
 		node.spaces.before = '';
@@ -27,7 +27,7 @@ export type pluginOptions = Record<string, never>;
 const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-selector-not',
-		Rule: (rule, { result }) => {
+		Rule(rule, { result }): void {
 			if (!rule.selector || !rule.selector.toLowerCase().includes(':not(')) {
 				return;
 			}

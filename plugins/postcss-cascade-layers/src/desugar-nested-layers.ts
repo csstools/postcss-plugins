@@ -4,7 +4,7 @@ import { isProcessableLayerRule } from './is-processable-layer-rule';
 import type { Model } from './model';
 import { someAtRuleInTree } from './some-in-tree';
 
-export function desugarNestedLayers(root: Container<ChildNode>, model: Model) {
+export function desugarNestedLayers(root: Container<ChildNode>, model: Model): void {
 	while (someAtRuleInTree(root, (node) => {
 		return !!node.nodes && someAtRuleInTree(node, (nested) => {
 			return isProcessableLayerRule(nested);

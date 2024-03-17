@@ -43,7 +43,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 
 	return sorted;
 
-	function visit(node: string, j: number, predecessors: Set<string>) {
+	function visit(node: string, j: number, predecessors: Set<string>): void {
 		if (predecessors.has(node)) {
 			let nodeRep;
 			try {
@@ -63,15 +63,14 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 		}
 		visited[j] = true;
 
-		let outgoing = outgoingEdges.get(node) || new Set();
-		outgoing = Array.from(outgoing);
+		const outgoing: Array<string> = Array.from(outgoingEdges.get(node) || new Set());
 
 		// eslint-disable-next-line no-cond-assign
 		if (j = outgoing.length) {
 			predecessors.add(node);
 			do {
 				const child = outgoing[--j];
-				visit(child, nodesHash.get(child), predecessors);
+				visit(child, nodesHash.get(child)!, predecessors);
 			} while (j);
 			predecessors.delete(node);
 		}
@@ -80,7 +79,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 	}
 }
 
-function makeOutgoingEdges(arr: Array<Array<string>>) {
+function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> {
 	const edges = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		const edge = arr[i];
@@ -95,7 +94,7 @@ function makeOutgoingEdges(arr: Array<Array<string>>) {
 	return edges;
 }
 
-function makeNodesHash(arr: Array<string>) {
+function makeNodesHash(arr: Array<string>): Map<string, number> {
 	const res = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		res.set(arr[i], i);

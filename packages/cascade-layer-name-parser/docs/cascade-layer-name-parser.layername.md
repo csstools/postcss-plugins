@@ -31,7 +31,6 @@ export declare class LayerName
 |  [name()](./cascade-layer-name-parser.layername.name.md) |  |  |
 |  [segments()](./cascade-layer-name-parser.layername.segments.md) |  |  |
 |  [slice(start, end)](./cascade-layer-name-parser.layername.slice.md) |  |  |
-|  [toJSON()](./cascade-layer-name-parser.layername.tojson.md) |  |  |
 |  [tokens()](./cascade-layer-name-parser.layername.tokens.md) |  |  |
 |  [toString()](./cascade-layer-name-parser.layername.tostring.md) |  |  |
 

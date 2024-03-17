@@ -168,11 +168,13 @@ function renderResult() {
 		let channelPercentageReferenceValues = ['', '', ''];
 		switch (functionName) {
 			case 'rgb':
+			case 'rgba':
 				passThroughColor = parseComponentValue(tokenize({ css: `rgb(from ${originColor.toString()} r g b / alpha)` }));
 				channelNames = ['r', 'g', 'b'];
 				channelPercentageReferenceValues = ['0,255', '0,255', '0,255'];
 				break;
 			case 'hsl':
+			case 'hsla':
 				passThroughColor = parseComponentValue(tokenize({ css: `hsl(from ${originColor.toString()} h s l / alpha)` }));
 				channelNames = ['h', 's', 'l'];
 				channelPercentageReferenceValues = ['0,360', '0,100', '0,100'];
@@ -244,7 +246,11 @@ function renderResult() {
 
 		inputEl.style.outline = 'none';
 
-		if (passThroughColorValue.colorNotation === 'rgb' || passThroughColorValue.colorNotation === 'hex') {
+		if (
+			passThroughColorValue.colorNotation === 'rgb' ||
+			passThroughColorValue.colorNotation === 'rgba' ||
+			passThroughColorValue.colorNotation === 'hex'
+		) {
 			passThroughColorValue.channels = passThroughColorValue.channels.map((channel) => channel * 255);
 		}
 
@@ -253,7 +259,11 @@ function renderResult() {
 		outputChannel3Input.value = round(passThroughColorValue.channels[2]);
 		outputChannel4Input.value = round(passThroughColorValue.alpha);
 
-		if (outputColorValue.colorNotation === 'rgb' || outputColorValue.colorNotation === 'hex') {
+		if (
+			passThroughColorValue.colorNotation === 'rgb' ||
+			passThroughColorValue.colorNotation === 'rgba' ||
+			passThroughColorValue.colorNotation === 'hex'
+		) {
 			outputColorValue.channels = outputColorValue.channels.map((channel) => channel * 255);
 		}
 

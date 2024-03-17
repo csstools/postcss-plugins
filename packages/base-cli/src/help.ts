@@ -1,4 +1,4 @@
-export function helpTextLogger(command: string, name: string, description: string, exampleOptions: Record<string, unknown> | null = null) {
+export function helpTextLogger(command: string, name: string, description: string, exampleOptions: Record<string, unknown> | null = null): () => void {
 	let pluginOptions: Array<string> = [];
 	if (exampleOptions) {
 		const longestPluginOptionLength = Math.max(...Object.keys(exampleOptions).map((x) => x.length));
@@ -37,7 +37,7 @@ export function helpTextLogger(command: string, name: string, description: strin
 		allHelp.push(...pluginOptions);
 	}
 
-	return () => {
+	return (): void => {
 		console.warn(allHelp.join('\n'));
 	};
 }

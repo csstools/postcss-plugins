@@ -1,7 +1,7 @@
 import plugin from 'postcss-gap-properties';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssGapProperties() {
+export default function postcssGapProperties(): void {
 	cli(
 		plugin,
 		['preserve'],

@@ -5,7 +5,7 @@ import type { TokenPercentage } from '@csstools/css-tokenizer';
 
 export declare function calc(css: string, options?: conversionOptions): string;
 
-export declare function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): ComponentValue[][];
+export declare function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): Array<Array<ComponentValue>>;
 
 export declare type conversionOptions = {
     /**

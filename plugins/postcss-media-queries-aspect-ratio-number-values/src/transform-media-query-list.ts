@@ -11,7 +11,7 @@ const featureNamesSet = new Set([
 	'max-device-aspect-ratio',
 ]);
 
-export function transformMediaQueryList(params: string, preserve: boolean) {
+export function transformMediaQueryList(params: string, preserve: boolean): string {
 	const mediaQueryList = parse(params, {
 		preserveInvalidMediaQueries: true,
 		onParseError: () => {

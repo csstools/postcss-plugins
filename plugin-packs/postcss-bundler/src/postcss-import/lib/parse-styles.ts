@@ -68,7 +68,7 @@ export async function parseStyles(
 	return stylesheet;
 }
 
-async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss, require: NodeRequire, sourceFile: string, base: string) {
+async function resolveImportId(result: Result, stmt: ImportStatement, postcss: Postcss, require: NodeRequire, sourceFile: string, base: string): Promise<void> {
 	if (isValidDataURL(stmt.uri)) {
 		stmt.stylesheet = await loadImportContent(
 			result,

@@ -30,7 +30,6 @@ import { solveTan } from './tan';
 import { subtraction } from '../operation/subtraction';
 import { unary } from '../operation/unary';
 import { solveLog } from './log';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { isNone } from '../util/is-none';
 
 export const mathFunctions = new Map([
@@ -84,7 +83,7 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calcu
 		}
 
 		if (isFunctionNode(child)) {
-			const mathFunction = mathFunctions.get(toLowerCaseAZ(child.getName()));
+			const mathFunction = mathFunctions.get(child.getName().toLowerCase());
 			if (!mathFunction) {
 				return -1;
 			}
@@ -424,7 +423,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 			const node = nodes[i];
 			if (!roundingStrategy && aValue.length === 0 && bValue.length === 0 && isTokenNode(node) && node.value[0] === TokenType.Ident) {
 				const token = node.value;
-				const tokenStr = toLowerCaseAZ(token[4].value);
+				const tokenStr = token[4].value.toLowerCase();
 				if (roundingStrategies.has(tokenStr)) {
 					roundingStrategy = tokenStr;
 					continue;
@@ -542,7 +541,7 @@ function log(logNode: FunctionNode, globals: Globals): Calculation | -1 {
 	return variadicNodesSolver(logNode, globals, solveLog);
 }
 
-function calcWrapper(v: Array<ComponentValue>) {
+function calcWrapper(v: Array<ComponentValue>): FunctionNode {
 	return new FunctionNode(
 		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
 		[TokenType.CloseParen, ')', -1, -1, undefined],
@@ -550,7 +549,7 @@ function calcWrapper(v: Array<ComponentValue>) {
 	);
 }
 
-function minWrapper(a: ComponentValue, b: ComponentValue) {
+function minWrapper(a: ComponentValue, b: ComponentValue): FunctionNode {
 	return new FunctionNode(
 		[TokenType.Function, 'min(', -1, -1, { value: 'min' }],
 		[TokenType.CloseParen, ')', -1, -1, undefined],
@@ -562,7 +561,7 @@ function minWrapper(a: ComponentValue, b: ComponentValue) {
 	);
 }
 
-function maxWrapper(a: ComponentValue, b: ComponentValue) {
+function maxWrapper(a: ComponentValue, b: ComponentValue): FunctionNode {
 	return new FunctionNode(
 		[TokenType.Function, 'max(', -1, -1, { value: 'max' }],
 		[TokenType.CloseParen, ')', -1, -1, undefined],

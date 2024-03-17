@@ -4,7 +4,7 @@ import { ATRULES_WITH_NON_SELECTOR_BLOCK_LISTS } from './constants';
 
 // Declarations with !important have inverse priority in layers.
 // Splitting rules allows us to assign different specificity to rules with or without !important declarations.
-export function splitImportantStyles(root: Container) {
+export function splitImportantStyles(root: Container): void {
 	root.walkDecls((decl) => {
 		if (!decl.important) {
 			return;

@@ -20,7 +20,7 @@ export function adjustSelectorSpecificity(selector: string, amount: number): str
 	return selectorAST.toString();
 }
 
-function generateNot(specificity: number) {
+function generateNot(specificity: number): string {
 	if (specificity === 0) {
 		return '';
 	}

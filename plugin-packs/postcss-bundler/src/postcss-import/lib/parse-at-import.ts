@@ -143,7 +143,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 	};
 }
 
-function stripHash(str: string) {
+function stripHash(str: string): string {
 	if (str.startsWith('#')) {
 		return '';
 	} else if (!str.includes('#')) {

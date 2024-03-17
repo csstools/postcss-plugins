@@ -23,7 +23,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-font-format-keywords',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (decl.prop.toLowerCase() !== 'src') {
 				return;
 			}

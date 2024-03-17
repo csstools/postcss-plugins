@@ -1,7 +1,7 @@
 import plugin from '@csstools/postcss-logical-float-and-clear';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLogical() {
+export default function postcssLogical(): void {
 	cli(
 		plugin,
 		['inlineDirection', 'blockDirection'],

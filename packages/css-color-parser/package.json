@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-color-parser",
 	"description": "Parse CSS color values",
-	"version": "1.5.2",
+	"version": "1.6.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -49,11 +49,11 @@
 	],
 	"dependencies": {
 		"@csstools/color-helpers": "^4.0.0",
-		"@csstools/css-calc": "^1.1.7"
+		"@csstools/css-calc": "^1.2.0"
 	},
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3"
+		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-tokenizer": "^2.2.4"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

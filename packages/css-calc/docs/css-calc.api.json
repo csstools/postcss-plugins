@@ -284,12 +284,30 @@
             },
             {
               "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
               "text": "ComponentValue",
               "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
             },
             {
               "kind": "Content",
-              "text": "[][]"
+              "text": ">>"
             },
             {
               "kind": "Content",
@@ -299,7 +317,7 @@
           "fileUrlPath": "dist/_types/index.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 10,
-            "endIndex": 12
+            "endIndex": 16
           },
           "releaseTag": "Public",
           "overloadIndex": 1,

@@ -151,7 +151,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			'border-start-end-radius': makeTransform(transforms['border-start-end-radius']),
 			'border-end-start-radius': makeTransform(transforms['border-end-start-radius']),
 			'border-end-end-radius': makeTransform(transforms['border-end-end-radius']),
-			'transition': (decl, { result, postcss }) => {
+			'transition': (decl, { result, postcss }): void => {
 				let transformed: Array<Declaration> = [];
 
 				try {

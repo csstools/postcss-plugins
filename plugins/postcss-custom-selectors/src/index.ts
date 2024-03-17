@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import getCustomSelectors from './custom-selectors-from-root';
 import { transformRule } from './transform-rule';
 
@@ -22,15 +22,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-custom-selectors',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 			let customSelectors = new Map();
 
 			return {
-				Once: (root, { result }) => {
+				postcssPlugin: 'postcss-custom-selectors',
+				Once(root, { result }): void {
 					customSelectors = getCustomSelectors(root, result, { preserve: preserve });
 				},
-				Rule: (rule, { result }) => {
+				Rule(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}

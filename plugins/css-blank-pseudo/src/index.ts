@@ -1,4 +1,4 @@
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
 import isValidReplacement from './is-valid-replacement.mjs';
 
@@ -31,7 +31,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	if (!isValidReplacement(options.replaceWith)) {
 		return {
 			postcssPlugin: 'css-blank-pseudo',
-			Once: (root, { result }) => {
+			Once(root, { result }): void {
 				root.warn(
 					result,
 					`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`,
@@ -42,11 +42,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'css-blank-pseudo',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'css-blank-pseudo',
+				Rule(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}

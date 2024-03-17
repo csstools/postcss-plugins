@@ -1,7 +1,7 @@
 import plugin from 'postcss-color-hex-alpha';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorHexAlpha() {
+export default function postcssColorHexAlpha(): void {
 	cli(
 		plugin,
 		['preserve'],

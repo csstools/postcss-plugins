@@ -59,7 +59,7 @@ export class MediaFeaturePlain {
 		}
 	}
 
-	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeaturePlainWalkerEntry, parent: MediaFeaturePlainWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T) {
+	walk<T extends Record<string, unknown>>(cb: (entry: { node: MediaFeaturePlainWalkerEntry, parent: MediaFeaturePlainWalkerParent, state?: T }, index: number | string) => boolean | void, state?: T): false | undefined {
 		let stateClone: T | undefined = undefined;
 		if (state) {
 			stateClone = {
@@ -77,7 +77,7 @@ export class MediaFeaturePlain {
 	/**
 	 * @internal
 	 */
-	toJSON() {
+	toJSON(): Record<string, unknown> {
 		return {
 			type: this.type,
 			name: this.name.toJSON(),

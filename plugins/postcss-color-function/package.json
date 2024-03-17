@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-function",
 	"description": "Use the color() function in CSS",
-	"version": "3.0.10",
+	"version": "3.0.11",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -38,10 +38,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^1.5.2",
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/postcss-progressive-custom-properties": "^3.1.0",
+		"@csstools/css-color-parser": "^1.6.2",
+		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-tokenizer": "^2.2.4",
+		"@csstools/postcss-progressive-custom-properties": "^3.1.1",
 		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {

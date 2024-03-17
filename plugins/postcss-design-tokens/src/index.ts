@@ -1,4 +1,4 @@
-import type { Node, PluginCreator } from 'postcss';
+import type { Node, Plugin, PluginCreator } from 'postcss';
 import { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
@@ -11,16 +11,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-design-tokens',
-		prepare() {
+		prepare(): Plugin {
 			let tokens = new Map<string, Token>();
 			let importedFiles = new Set<string>();
 
 			return {
-				OnceExit() {
+				postcssPlugin: 'postcss-design-tokens',
+				OnceExit(): void {
 					tokens = new Map<string, Token>();
 					importedFiles = new Set<string>();
 				},
-				Once: async (root, postcssHelpers) => {
+				async Once(root, postcssHelpers): Promise<void> {
 					const designTokenAtRules: Array<{filePath: string, params: string, node: Node}> = [];
 					root.walkAtRules((atRule) => {
 						if (atRule.name.toLowerCase() !== options.importAtRuleName) {
@@ -64,7 +65,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						tokens = mergeTokens(tokens, importResult.tokens);
 					}
 				},
-				Declaration(decl, { result }) {
+				Declaration(decl, { result }): void {
 					if (!decl.value.toLowerCase().includes(options.valueFunctionName)) {
 						return;
 					}
@@ -80,7 +81,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						decl.warn(result, `Failed to parse and transform "${decl.value}"`);
 					}
 				},
-				AtRule(atRule, { result }) {
+				AtRule(atRule, { result }): void {
 					if (!atRule.params.toLowerCase().includes(options.valueFunctionName)) {
 						return;
 					}

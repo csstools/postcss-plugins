@@ -75,7 +75,7 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root): Roo
 	return root;
 }
 
-function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = false) {
+function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = false): Array<Node> {
 	if (
 		forceIsPseudo ||
 		!isCompoundSelector(parentSelectors.nodes)

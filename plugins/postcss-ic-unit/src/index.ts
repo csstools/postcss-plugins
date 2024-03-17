@@ -13,7 +13,7 @@ const HAS_IC_DECLARATION_REGEX = /\(font-size: \d+ic\)/i;
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-ic-unit',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (!HAS_IC_UNIT_REGEX.test(decl.value)) {
 				return;
 			}

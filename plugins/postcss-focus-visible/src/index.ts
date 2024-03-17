@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 
 /** postcss-focus-visible plugin options */
 export type pluginOptions = {
@@ -30,11 +30,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-focus-visible',
-		prepare() {
+		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
 
 			return {
-				Rule(rule, { result }) {
+				postcssPlugin: 'postcss-focus-visible',
+				Rule(rule, { result }): void {
 					if (transformedNodes.has(rule)) {
 						return;
 					}

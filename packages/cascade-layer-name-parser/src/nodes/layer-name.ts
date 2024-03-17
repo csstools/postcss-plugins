@@ -84,7 +84,12 @@ export class LayerName {
 		return stringify(...this.parts);
 	}
 
-	toJSON() {
+	/**
+	 * @internal
+	 *
+	 * A debug helper to convert the current object to a JSON representation.
+	 */
+	toJSON(): Record<string, unknown>{
 		return {
 			parts: this.parts,
 			segments: this.segments(),

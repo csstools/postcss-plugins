@@ -27,7 +27,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-gradient-stop-increments',
-		Declaration(decl) {
+		Declaration(decl): void {
 			if (!GRADIENT_FUNCTION_REGEX.test(decl.value)) {
 				return;
 			}

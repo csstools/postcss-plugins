@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-exponential-functions",
 	"description": "Use pow(), sqrt(), hypot(), log(), exp() exponential functions in CSS",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-calc": "^1.1.7",
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3"
+		"@csstools/css-calc": "^1.2.0",
+		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-tokenizer": "^2.2.4"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

@@ -8,7 +8,7 @@ import { walk } from './walk';
 export function replaceComponentValues(
 	componentValuesList: Array<Array<ComponentValue>>,
 	replaceWith: (componentValue: ComponentValue) => Array<ComponentValue> | ComponentValue | void,
-) {
+): Array<Array<ComponentValue>> {
 	for (let i = 0; i < componentValuesList.length; i++) {
 		const componentValues = componentValuesList[i];
 

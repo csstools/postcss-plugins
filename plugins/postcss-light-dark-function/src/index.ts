@@ -1,5 +1,5 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { PluginCreator, Source } from 'postcss';
+import type { Plugin, PluginCreator, Source } from 'postcss';
 import { DARK_PROP, LIGHT_PROP, OFF, ON } from './props';
 import { colorSchemes } from './color-schemes';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
@@ -11,12 +11,13 @@ const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	return {
 		postcssPlugin: 'postcss-light-dark-function',
-		prepare() {
+		prepare(): Plugin {
 			let didTransformValues = false;
 			let transformedValueSource: Source | undefined = undefined;
 
 			return {
-				Declaration(decl, { atRule, rule }) {
+				postcssPlugin: 'postcss-light-dark-function',
+				Declaration(decl, { atRule, rule }): void {
 					const parent = decl.parent;
 					if (!parent) {
 						return;
@@ -96,7 +97,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						}
 					}
 				},
-				OnceExit(root, { atRule, rule, decl }) {
+				OnceExit(root, { atRule, rule, decl }): void {
 					if (!didTransformValues || !transformedValueSource) {
 						return;
 					}

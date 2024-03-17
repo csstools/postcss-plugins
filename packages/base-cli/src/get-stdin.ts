@@ -1,4 +1,4 @@
-export async function getStdin() {
+export async function getStdin(): Promise<string> {
 	return new Promise((resolve: (str: string) => void) => {
 		let data = '';
 		let timedOut = false;

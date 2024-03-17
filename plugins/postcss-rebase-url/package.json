@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-rebase-url",
 	"description": "Rebase url() functions when transforming CSS",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,8 +48,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3"
+		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-tokenizer": "^2.2.4"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

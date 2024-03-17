@@ -1,8 +1,11 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 3.1.1
+
+_March 13, 2024_
 
 - Test for mixed component types in color values (e.g. `lab(100 50% 50)`)
+- Allow relative color syntax in `rgba` and `hsla` color notations.
 
 ### 3.1.0
 

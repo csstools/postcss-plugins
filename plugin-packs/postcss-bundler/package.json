@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-bundler",
 	"description": "Bundle CSS",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3",
-		"@csstools/postcss-rebase-url": "^1.0.6"
+		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-tokenizer": "^2.2.4",
+		"@csstools/postcss-rebase-url": "^1.0.7"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

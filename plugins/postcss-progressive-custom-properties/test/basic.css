@@ -41,6 +41,9 @@
 
 	--prop-9: red;
 	--prop-9: rgb(1,1,1,1);
+
+	--prop-10: magenta;
+	--prop-10: rgba(from magenta calc(r * 2) g b);
 }
 
 .initial {

@@ -1,6 +1,6 @@
-import { namedColors } from '@csstools/color-helpers';
-import type { PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
+import { namedColors } from '@csstools/color-helpers';
 
 /** postcss-text-decoration-shorthand plugin options */
 export type pluginOptions = {
@@ -22,14 +22,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-text-decoration-shorthand',
-		prepare() {
+		prepare(): Plugin {
 			const convertedValues : Map<string, string> = new Map();
 
 			return {
-				OnceExit: () => {
+				postcssPlugin: 'postcss-text-decoration-shorthand',
+				OnceExit(): void {
 					convertedValues.clear();
 				},
-				Declaration: (decl) => {
+				Declaration(decl): void {
 					if (!IS_TEXT_DECORATION_REGEX.test(decl.prop)) {
 						return;
 					}
@@ -259,7 +260,7 @@ creator.postcss = true;
 
 export default creator;
 
-function nodeIsAColor(node: valueParser.Node) {
+function nodeIsAColor(node: valueParser.Node): boolean {
 	if ('word' === node.type && node.value.startsWith('#')) {
 		return true;
 	}
@@ -334,7 +335,7 @@ const colorNames = [
 	...Object.keys(namedColors),
 ];
 
-function genericNodeParts() {
+function genericNodeParts(): { before: '', after: '', sourceIndex: 0, sourceEndIndex: 0 } {
 	return {
 		before: '',
 		after: '',

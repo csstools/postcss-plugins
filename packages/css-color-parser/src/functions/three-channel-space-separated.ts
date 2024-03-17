@@ -6,7 +6,6 @@ import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { normalizeChannelValuesFn } from './normalize-channel-values';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 import { ColorParser } from '../color-parser';
 import { colorDataTo } from '../color-data';
@@ -19,8 +18,6 @@ export function threeChannelSpaceSeparated(
 	syntaxFlags: Array<SyntaxFlag>,
 	colorParser: ColorParser,
 ): ColorData | false {
-	const functionName = toLowerCaseAZ(colorFunctionNode.getName());
-
 	const channel1: Array<ComponentValue> = [];
 	const channel2: Array<ComponentValue> = [];
 	const channel3: Array<ComponentValue> = [];
@@ -66,13 +63,13 @@ export function threeChannelSpaceSeparated(
 		}
 
 		if (isFunctionNode(node)) {
-			if (focus === channelAlpha && toLowerCaseAZ(node.getName()) === 'var') {
+			if (focus === channelAlpha && node.getName().toLowerCase() === 'var') {
 				colorData.syntaxFlags.add(SyntaxFlag.HasVariableAlpha);
 				focus.push(node);
 				continue;
 			}
 
-			if (!mathFunctionNames.has(toLowerCaseAZ(node.getName()))) {
+			if (!mathFunctionNames.has(node.getName().toLowerCase())) {
 				return false;
 			}
 
@@ -100,9 +97,7 @@ export function threeChannelSpaceSeparated(
 			channel1.length === 0 &&
 			isTokenNode(node) &&
 			node.value[0] === TokenType.Ident &&
-			toLowerCaseAZ(node.value[4].value) === 'from' &&
-			functionName !== 'hsla' &&
-			functionName !== 'rgba'
+			node.value[4].value.toLowerCase() === 'from'
 		) {
 			if (relativeToColor) {
 				return false;
@@ -137,10 +132,14 @@ export function threeChannelSpaceSeparated(
 		}
 
 		if (isTokenNode(node)) {
-			if (node.value[0] === TokenType.Ident && relativeColorChannels && relativeColorChannels.has(toLowerCaseAZ(node.value[4].value))) {
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				focus.push(new TokenNode(relativeColorChannels.get(toLowerCaseAZ(node.value[4].value))!));
-				continue;
+			if (node.value[0] === TokenType.Ident && relativeColorChannels) {
+				const channelKeyword = node.value[4].value.toLowerCase();
+
+				if (relativeColorChannels.has(channelKeyword)) {
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					focus.push(new TokenNode(relativeColorChannels.get(channelKeyword)!));
+					continue;
+				}
 			}
 
 			focus.push(node);

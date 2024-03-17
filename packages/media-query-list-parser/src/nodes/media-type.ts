@@ -1,5 +1,4 @@
 import { TokenIdent, TokenType } from '@csstools/css-tokenizer';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export enum MediaType {
 	/** Always matches */
@@ -29,7 +28,7 @@ export function typeFromToken(token: TokenIdent): MediaType | false {
 		return false;
 	}
 
-	const matchingValue = toLowerCaseAZ(token[4].value);
+	const matchingValue = token[4].value.toLowerCase();
 	switch (matchingValue) {
 		case MediaType.All:
 			return MediaType.All;
