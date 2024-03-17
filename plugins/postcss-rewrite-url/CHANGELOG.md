@@ -1,5 +1,7 @@
 # Changes to PostCSS Rewrite URL
 
-### Unreleased (major)
+### 1.0.0
+
+_March 17, 2024_
 
 - Initial version
