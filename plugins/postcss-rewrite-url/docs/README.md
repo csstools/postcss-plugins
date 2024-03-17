@@ -17,7 +17,7 @@
 
 <header>
 
-[<humanReadableName>] lets you rewrite url values found in CSS declarations.
+[<humanReadableName>] lets you rewrite url values in CSS.
 
 ```pcss
 <example.css>

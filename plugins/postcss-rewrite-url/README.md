@@ -6,7 +6,7 @@
 npm install @csstools/postcss-rewrite-url --save-dev
 ```
 
-[PostCSS Rewrite URL] lets you rewrite url values found in CSS declarations.
+[PostCSS Rewrite URL] lets you rewrite url values in CSS.
 
 ```pcss
 .foo {
