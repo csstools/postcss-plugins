@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-hwb-function",
 	"description": "Use hwb() color functions in CSS",
-	"version": "3.0.10",
+	"version": "3.0.11",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
