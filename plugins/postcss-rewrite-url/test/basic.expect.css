@@ -14,3 +14,5 @@
 .ignore {
 	background: url('foo.png');
 }
+
+@foo url("foo.png#modified");

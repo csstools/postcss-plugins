@@ -8,8 +8,11 @@ export interface ValueToRewrite {
 }
 
 export interface RewriteContext {
+	type: 'declaration-value' | 'at-rule-prelude';
 	from: string | undefined;
 	rootFrom: string | undefined;
+	property?: string;
+	atRuleName?: string;
 }
 
 export type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite;
@@ -23,65 +26,45 @@ const URL_FUNCTION_CALL_REGEX = /rewrite-url\(/i;
 const URL_FUNCTION_NAME_REGEX = /^rewrite-url$/i;
 
 const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
-	const rewriter: Rewriter = options?.rewriter ?? ((x) => {
+	const rewriter: Rewriter = options?.rewriter ?? ((x: ValueToRewrite): ValueToRewrite => {
 		return x;
 	});
 
 	return {
 		postcssPlugin: 'postcss-rewrite-url',
-		prepare() {
-			return {
-				Declaration(decl, { result }) {
-					if (!URL_FUNCTION_CALL_REGEX.test(decl.value)) {
-						return;
-					}
+		Declaration(decl, { result }): void {
+			if (!URL_FUNCTION_CALL_REGEX.test(decl.value)) {
+				return;
+			}
 
-					const rewriteContext: RewriteContext = {
-						rootFrom: result.opts.from,
-						from: decl.source?.input.from,
-					};
-
-					const componentValuesList = parseCommaSeparatedListOfComponentValues(tokenize({ css: decl.value }));
-					const modifiedComponentValuesList = replaceComponentValues(
-						componentValuesList,
-						(componentValue) => {
-							if (
-								!isFunctionNode(componentValue) ||
-								!URL_FUNCTION_NAME_REGEX.test(componentValue.getName())
-							) {
-								return;
-							}
-
-							for (const x of componentValue.value) {
-								if (isWhitespaceNode(x) || isCommentNode(x)) {
-									continue;
-								}
-
-								if (isTokenNode(x) && x.value[0] === TokenType.String) {
-									const original = x.value[4].value.trim();
-									const modified = rewriter({ url: original }, rewriteContext);
-									if (modified.url === original) {
-										break;
-									}
-
-									x.value[4].value = modified.url;
-									x.value[1] = `"${serializeString(modified.url)}"`;
-
-									componentValue.name[1] = 'url(';
-									componentValue.name[4].value = 'url';
-
-									return componentValue;
-								}
-							}
-						},
-					);
-
-					const modifiedValue = stringify(modifiedComponentValuesList);
-					if (modifiedValue !== decl.value) {
-						decl.value = modifiedValue;
-					}
-				},
+			const context: RewriteContext = {
+				type: 'declaration-value',
+				rootFrom: result.opts.from,
+				from: decl.source?.input.from,
+				property: decl.prop,
 			};
+
+			const modifiedValue = rewrite(rewriter, decl.value, context);
+			if (modifiedValue !== decl.value) {
+				decl.value = modifiedValue;
+			}
+		},
+		AtRule(atRule, { result }): void {
+			if (!URL_FUNCTION_CALL_REGEX.test(atRule.params)) {
+				return;
+			}
+
+			const context: RewriteContext = {
+				type: 'at-rule-prelude',
+				rootFrom: result.opts.from,
+				from: atRule.source?.input.from,
+				atRuleName: atRule.name,
+			};
+
+			const modifiedParams = rewrite(rewriter, atRule.params, context);
+			if (modifiedParams !== atRule.params) {
+				atRule.params = modifiedParams;
+			}
 		},
 	};
 };
@@ -89,3 +72,42 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+
+function rewrite(rewriter: Rewriter, value: string, context: RewriteContext): string {
+	const componentValuesList = parseCommaSeparatedListOfComponentValues(tokenize({ css: value }));
+	const modifiedComponentValuesList = replaceComponentValues(
+		componentValuesList,
+		(componentValue) => {
+			if (
+				!isFunctionNode(componentValue) ||
+				!URL_FUNCTION_NAME_REGEX.test(componentValue.getName())
+			) {
+				return;
+			}
+
+			for (const x of componentValue.value) {
+				if (isWhitespaceNode(x) || isCommentNode(x)) {
+					continue;
+				}
+
+				if (isTokenNode(x) && x.value[0] === TokenType.String) {
+					const original = x.value[4].value.trim();
+					const modified = rewriter({ url: original }, context);
+					if (modified.url === original) {
+						break;
+					}
+
+					x.value[4].value = modified.url;
+					x.value[1] = `"${serializeString(modified.url)}"`;
+
+					componentValue.name[1] = 'url(';
+					componentValue.name[4].value = 'url';
+
+					return componentValue;
+				}
+			}
+		},
+	);
+
+	return stringify(modifiedComponentValuesList);
+}

@@ -9,8 +9,11 @@ export declare type pluginOptions = {
 };
 
 export declare interface RewriteContext {
+    type: 'declaration-value' | 'at-rule-prelude';
     from: string | undefined;
     rootFrom: string | undefined;
+    property?: string;
+    atRuleName?: string;
 }
 
 export declare type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite;
