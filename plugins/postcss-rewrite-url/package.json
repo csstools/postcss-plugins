@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/postcss-rewrite-url",
-	"description": "TODO: Add description for Rewrite URL",
+	"description": "Rewrite url values in CSS",
 	"version": "0.0.0",
 	"contributors": [
 		{
