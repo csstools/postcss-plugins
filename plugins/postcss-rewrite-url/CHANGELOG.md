@@ -1,6 +1,8 @@
 # Changes to PostCSS Rewrite URL
 
-### Unreleased (minor)
+### 1.1.0
+
+_March 19, 2024_
 
 - Add support for early transforms in the `Once` hook. This allows you to transform `rewrite-url()` values before any other plugin runs.
 
