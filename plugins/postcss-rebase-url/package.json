@@ -56,7 +56,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-import": "^16.0.0"
+		"postcss-import": "^16.1.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
