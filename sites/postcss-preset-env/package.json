@@ -73,8 +73,8 @@
 		"@11ty/eleventy": "^2.0.0",
 		"@11ty/eleventy-plugin-rss": "^1.2.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-		"@babel/core": "^7.24.0",
-		"@babel/preset-env": "^7.24.0",
+		"@babel/core": "^7.24.3",
+		"@babel/preset-env": "^7.24.3",
 		"@codemirror/lang-css": "^6.2.1",
 		"@codemirror/lang-javascript": "^6.2.2",
 		"@codemirror/state": "^6.4.0",
@@ -99,7 +99,7 @@
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-plugin-import": "^2.29.1",
 		"luxon": "^3.4.4",
-		"markdown-it": "^14.0.0",
+		"markdown-it": "^14.1.0",
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.4.36",
 		"postcss-cli": "^11.0.0",
@@ -108,7 +108,7 @@
 		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-livereload": "^2.0.5",
 		"tslib": "^2.6.2",
-		"typescript": "^5.4.2"
+		"typescript": "^5.4.3"
 	},
 	"volta": {
 		"node": "20.10.0"
