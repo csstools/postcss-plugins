@@ -10,6 +10,6 @@
 	},
 	"devDependencies": {
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env",
-		"typescript": "^5.4.2"
+		"typescript": "^5.4.3"
 	}
 }
