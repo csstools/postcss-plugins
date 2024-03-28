@@ -84,6 +84,16 @@ const tests = [
 	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
 	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(90deg 40% 80% / 25%)')],
 	['color-mix(in hwb, hwb(30deg 30% 40% / 25%) 0%, hwb(90deg none none / 0.5))', canonicalize('hwb(90deg 30% 40% / 0.5)')],
+	['color-mix(in hsl, hsl(from hsl(none 50% 50%) h s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(60deg 50% 50%)')],
+	['color-mix(in hsl, hsl(from hsl(0deg 50% 50%) none s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(120deg 50% 50%)')],
+	['color-mix(in hsl, hsl(from hsl(none 50% 50%) none s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(120deg 50% 50%)')],
+	['color-mix(in srgb, rgb(from rebeccapurple none g b), rebeccapurple)', canonicalize('rebeccapurple')],
+	['color-mix(in hsl, hsl(from rebeccapurple none s l), rebeccapurple)', canonicalize('rebeccapurple')],
+	['color-mix(in hwb, hwb(from rebeccapurple none w b), rebeccapurple)', canonicalize('rebeccapurple')],
+	['color-mix(in lab, lab(from lab(25 20 50) none a b), lab(25 20 50))', canonicalize('lab(25 20 50)')],
+	['color-mix(in oklab, oklab(from oklab(0.25 0.2 0.5) none a b), oklab(0.25 0.2 0.5))', canonicalize('oklab(0.25 0.2 0.5)')],
+	['color-mix(in lch, lch(from lch(0.7 45 30) l c none), lch(0.7 45 30))', canonicalize('lch(0.7 45 30)')],
+	['color-mix(in oklch, oklch(from oklch(0.7 0.45 30) l c none), oklch(0.7 0.45 30))', canonicalize('oklch(0.7 0.45 30)')],
 ];
 
 for (const test of tests) {

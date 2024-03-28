@@ -543,6 +543,10 @@ export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber
 }
 
 function dummyNumberToken(x: number): TokenNumber {
+	if (Number.isNaN(x)) {
+		x = 0;
+	}
+
 	return [TokenType.Number, x.toString(), -1, -1, { value: x, type: NumberType.Number }];
 }
 

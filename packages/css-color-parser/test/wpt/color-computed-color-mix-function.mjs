@@ -393,7 +393,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 }
 
 {
-	for (const colorSpace of ['srgb', 'srgb-linear', 'xyz', 'xyz-d50', 'xyz-d65']) {
+	for (const colorSpace of ['srgb', 'srgb-linear', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'xyz', 'xyz-d50', 'xyz-d65']) {
 		const tests = [
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7))`, canonicalize(`color(${colorSpace} 0.3 0.4 0.5)`)],
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3) 25%, color(${colorSpace} .5 .6 .7))`, canonicalize(`color(${colorSpace} 0.4 0.5 0.6)`)],
