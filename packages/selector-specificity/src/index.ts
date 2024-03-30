@@ -82,7 +82,7 @@ export function selectorSpecificity(node: Node): Specificity {
 					node.nodes &&
 					node.nodes.length === 1 &&
 					node.nodes[0].type === 'selector' &&
-					selectorNodeContainsOnlyUniversal(node.nodes[0])
+					selectorNodeContainsNothingOrOnlyUniversal(node.nodes[0])
 				) {
 					return {
 						a: 0,
@@ -206,26 +206,18 @@ export function selectorSpecificity(node: Node): Specificity {
 				}
 
 				break;
-
 			case ':active-view-transition':
 				// see : https://drafts.csswg.org/css-view-transitions-2/#the-active-view-transition-pseudo
-
-				if (
-					node.nodes &&
-							node.nodes.length === 1 &&
-							node.nodes[0].type === 'selector' &&
-							selectorNodeContainsOnlyUniversal(node.nodes[0])
-				) {
-					return {
-						a: 0,
-						b: 1,
-						c: 0,
-					};
-				}
-
 				return {
 					a: 0,
-					b: 2,
+					b: 1,
+					c: 0,
+				};
+			case ':active-view-transition-type':
+				// see : https://drafts.csswg.org/css-view-transitions-2/#the-active-view-transition-type-pseudo
+				return {
+					a: 0,
+					b: 1,
 					c: 0,
 				};
 
@@ -286,7 +278,7 @@ function isPseudoElement(node: Node): boolean {
 	return parser.isPseudoElement(node);
 }
 
-function selectorNodeContainsOnlyUniversal(node: Selector): boolean {
+function selectorNodeContainsNothingOrOnlyUniversal(node: Selector): boolean {
 	if (!node) {
 		return false;
 	}
@@ -298,6 +290,10 @@ function selectorNodeContainsOnlyUniversal(node: Selector): boolean {
 	const relevantNodes = node.nodes.filter((x) => {
 		return x.type !== 'comment';
 	});
+
+	if (relevantNodes.length === 0) {
+		return true;
+	}
 
 	if (relevantNodes.length !== 1) {
 		return false;

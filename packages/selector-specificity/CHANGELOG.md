@@ -1,5 +1,11 @@
 # Changes to Selector Specificity
 
+### Unreleased (patch)
+
+- Add support for:
+	- `:active-view-transition`
+	- `:active-view-transition-type(foo)`
+
 ### 3.0.2
 
 _February 19, 2024_
