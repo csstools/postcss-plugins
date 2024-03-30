@@ -303,6 +303,69 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!contrast_ratio_wcag_2_1:function(1)",
+          "docComment": "/**\n * WCAG 2.1 contrast ratio\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function contrast_ratio_wcag_2_1(color1: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", color2: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/calculations/contrast-ratio-wcag-2-1.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "color1",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "color2",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "contrast_ratio_wcag_2_1"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!gam_P3:function(1)",
           "docComment": "/**\n * Convert an array of linear-light display-p3 RGB in the range 0.0-1.0 to gamma corrected form\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n */\n",
           "excerptTokens": [

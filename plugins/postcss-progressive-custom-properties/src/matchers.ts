@@ -2535,6 +2535,40 @@ export const matchers = [
 		],
 	},
 	{
+		'supports': 'contrast-color(red max)',
+		'property': 'color',
+		'sniff': 'contrast-color',
+		'matchers': [
+			{
+				'type': 'function',
+				'value': 'contrast-color',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+			{
+				'type': 'function',
+				'value': 'contrast-color',
+				'nodes': [
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+					{
+						'type': 'space',
+					},
+					{
+						'type': 'word',
+						'isVariable': true,
+					},
+				],
+			},
+		],
+	},
+	{
 		'supports': '1ic',
 		'property': 'font-size',
 		'sniff': 'ic',

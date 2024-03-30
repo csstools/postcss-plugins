@@ -1,0 +1,55 @@
+.dynamic {
+	color: contrast-color(oklch(82.06% 0.2 330.35));
+}
+
+.max {
+	color: contrast-color(oklch(82.06% 0.19 79.41) max);
+}
+
+.both {
+	color: color-mix(in srgb, contrast-color(blue max), contrast-color(cyan));
+}
+
+
+.dynamic-green {
+	color: contrast-color(green);
+}
+
+.max-green {
+	color: contrast-color(green max);
+}
+
+.dynamic-lime {
+	color: contrast-color(lime);
+}
+
+.max-lime {
+	color: contrast-color(lime max);
+}
+
+.dynamic-darkgreen {
+	color: contrast-color(darkgreen);
+}
+
+.max-darkgreen {
+	color: contrast-color(darkgreen max);
+}
+
+.manual-fallback {
+	color: white;
+	color: contrast-color(darkgreen max);
+}
+
+.ignore {
+	color: contrast-color(darkgreen min);
+}
+
+.ignore {
+	color: contrast-color(var(--foo) max);
+}
+
+.ignore {
+	color: contrast-color(blue red);
+}
+
+

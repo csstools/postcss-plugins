@@ -1,5 +1,5 @@
 import { TokenType } from '@csstools/css-tokenizer';
-import { ComponentValue, isCommentNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, walk } from '@csstools/css-parser-algorithms';
+import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, walk } from '@csstools/css-parser-algorithms';
 
 const LIGHT_DARK_NAME_REGEX = /^light-dark$/i;
 
@@ -14,10 +14,6 @@ export function parseLightDark(componentValue: ComponentValue): [ComponentValue,
 
 	const meaningfulValues = componentValue.value.filter((value) => {
 		if (isWhitespaceNode(value) || isCommentNode(value)) {
-			return false;
-		}
-
-		if (isSimpleBlockNode(value)) {
 			return false;
 		}
 

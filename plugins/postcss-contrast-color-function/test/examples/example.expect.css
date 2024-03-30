@@ -1,0 +1,17 @@
+.dynamic {
+	color: color(display-p3 0.15441 0 0.16001);
+	color: contrast-color(oklch(82% 0.2 330));
+}@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {.dynamic {
+	color: rgb(0, 0, 0);
+}
+	}
+}@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {.dynamic {
+	color: color(display-p3 0.29262 0 0.30192);
+}
+	}
+}
+
+.max {
+	color: rgb(255, 255, 255);
+	color: contrast-color(oklch(30% 0.2 79) max);
+}

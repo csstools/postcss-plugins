@@ -4,6 +4,7 @@ import { colorMixMatchers } from './color-mix.mjs';
 import { icUnitMatchers } from './font-size.mjs';
 import { lightDarkMatchers } from './light-dark.mjs';
 import { relativeColorSyntaxMatches } from './relative-color-syntax.mjs';
+import { contrastColorMatchers } from './contrast-color.mjs';
 
 fsp.writeFile(
 	'./src/matchers.ts',
@@ -25,6 +26,7 @@ fsp.writeFile(
 			...oklchMatchers,
 			...rgbMatchers,
 			...lightDarkMatchers,
+			...contrastColorMatchers,
 
 			// font-size:
 			...icUnitMatchers,

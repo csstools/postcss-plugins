@@ -1,0 +1,120 @@
+.dynamic {
+	color: color(display-p3 0.15487 0 0.15914);
+	color: contrast-color(oklch(82.06% 0.2 330.35));
+}@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {.dynamic {
+	color: rgb(0, 0, 0);
+}
+	}
+}@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {.dynamic {
+	color: color(display-p3 0.29338 0 0.30048);
+}
+	}
+}
+
+.max {
+	color: rgb(0, 0, 0);
+	color: contrast-color(oklch(82.06% 0.19 79.41) max);
+}
+
+.both {
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11165 0.11567));
+	color: color-mix(in srgb, contrast-color(blue max), contrast-color(cyan));
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {
+
+.both {
+	color: color-mix(in srgb, rgb(255, 255, 255), rgb(0, 0, 0));
+}
+	}
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
+
+.both {
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21781 0.22292));
+}
+	}
+}
+
+
+.dynamic-green {
+	color: rgb(255, 255, 255);
+	color: contrast-color(green);
+}
+
+.max-green {
+	color: rgb(255, 255, 255);
+	color: contrast-color(green max);
+}
+
+.dynamic-lime {
+	color: color(display-p3 0.00418 0.11802 0);
+	color: contrast-color(lime);
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {
+
+.dynamic-lime {
+	color: rgb(0, 0, 0);
+}
+	}
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
+
+.dynamic-lime {
+	color: color(display-p3 0 0.23477 0);
+}
+	}
+}
+
+.max-lime {
+	color: rgb(0, 0, 0);
+	color: contrast-color(lime max);
+}
+
+.dynamic-darkgreen {
+	color: color(display-p3 0.81657 1 0.76626);
+	color: contrast-color(darkgreen);
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {
+
+.dynamic-darkgreen {
+	color: rgb(255, 255, 255);
+}
+	}
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
+
+.dynamic-darkgreen {
+	color: color(display-p3 0.71003 0.96022 0.64341);
+}
+	}
+}
+
+.max-darkgreen {
+	color: rgb(255, 255, 255);
+	color: contrast-color(darkgreen max);
+}
+
+.manual-fallback {
+	color: white;
+	color: contrast-color(darkgreen max);
+}
+
+.ignore {
+	color: contrast-color(darkgreen min);
+}
+
+.ignore {
+	color: contrast-color(var(--foo) max);
+}
+
+.ignore {
+	color: contrast-color(blue red);
+}
+
+

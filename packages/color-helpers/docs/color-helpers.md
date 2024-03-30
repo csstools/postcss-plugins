@@ -37,6 +37,17 @@ Description
 </td></tr>
 <tr><td>
 
+[contrast\_ratio\_wcag\_2\_1(color1, color2)](./color-helpers.contrast_ratio_wcag_2_1.md)
+
+
+</td><td>
+
+WCAG 2.1 contrast ratio
+
+
+</td></tr>
+<tr><td>
+
 [gam\_P3(RGB)](./color-helpers.gam_p3.md)
 
 

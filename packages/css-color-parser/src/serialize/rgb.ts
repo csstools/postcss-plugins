@@ -34,13 +34,13 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 	const comma: TokenComma = [TokenType.Comma, ',', -1, -1, undefined];
 
 	const channels = [
-		new TokenNode([TokenType.Number, r.toString(), -1, -1, { value: srgb[0], type: NumberType.Integer }]),
+		new TokenNode([TokenType.Number, r.toString(), -1, -1, { value: Math.min(255, Math.max(0, srgb[0]) * 255), type: NumberType.Integer }]),
 		new TokenNode(comma),
 		new WhitespaceNode([space]),
-		new TokenNode([TokenType.Number, g.toString(), -1, -1, { value: srgb[1], type: NumberType.Integer }]),
+		new TokenNode([TokenType.Number, g.toString(), -1, -1, { value: Math.min(255, Math.max(0, srgb[1]) * 255), type: NumberType.Integer }]),
 		new TokenNode(comma),
 		new WhitespaceNode([space]),
-		new TokenNode([TokenType.Number, b.toString(), -1, -1, { value: srgb[2], type: NumberType.Integer }]),
+		new TokenNode([TokenType.Number, b.toString(), -1, -1, { value: Math.min(255, Math.max(0, srgb[2]) * 255), type: NumberType.Integer }]),
 	];
 
 	if (typeof color.alpha === 'number') {

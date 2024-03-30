@@ -12,6 +12,11 @@ export declare function clip(color: Color): Color;
 export declare type Color = [number, number, number];
 
 /**
+ * WCAG 2.1 contrast ratio
+ */
+export declare function contrast_ratio_wcag_2_1(color1: Color, color2: Color): number;
+
+/**
  * Convert an array of linear-light display-p3 RGB in the range 0.0-1.0
  * to gamma corrected form
  *
