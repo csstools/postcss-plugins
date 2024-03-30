@@ -117,4 +117,63 @@
 	color: contrast-color(blue red);
 }
 
+.nested-dynamic {
+	color: color(display-p3 1 0.90229 0.91845);
+	color: contrast-color(contrast-color(pink));
+}
 
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {
+
+.nested-dynamic {
+	color: rgb(255, 255, 255);
+}
+	}
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
+
+.nested-dynamic {
+	color: color(display-p3 1 0.80594 0.83911);
+}
+	}
+}
+
+.nested-max {
+	color: rgb(255, 255, 255);
+	color: contrast-color(contrast-color(cyan max) max);
+}
+
+.nested-dynamic-max {
+	color: color(display-p3 0.93448 0.93448 0.93448);
+	color: contrast-color(contrast-color(pink max));
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {
+
+.nested-dynamic-max {
+	color: rgb(255, 255, 255);
+}
+	}
+}
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
+
+.nested-dynamic-max {
+	color: color(display-p3 0.86982 0.86982 0.86982);
+}
+	}
+}
+
+.nested-max-dynamic {
+	color: rgb(255, 255, 255);
+	color: contrast-color(contrast-color(cyan) max);
+}
+
+.nested-multiple-levels {
+	color: rgb(255, 255, 255);
+	color: contrast-color(green max);
+	background-color: rgb(0, 0, 0);
+	background-color: contrast-color(contrast-color(green max) max);
+	border-color: rgb(255, 255, 255);
+	border-color: contrast-color(contrast-color(contrast-color(green max) max) max);
+}

@@ -52,4 +52,24 @@
 	color: contrast-color(blue red);
 }
 
+.nested-dynamic {
+	color: contrast-color(contrast-color(pink));
+}
 
+.nested-max {
+	color: contrast-color(contrast-color(cyan max) max);
+}
+
+.nested-dynamic-max {
+	color: contrast-color(contrast-color(pink max));
+}
+
+.nested-max-dynamic {
+	color: contrast-color(contrast-color(cyan) max);
+}
+
+.nested-multiple-levels {
+	color: contrast-color(green max);
+	background-color: contrast-color(contrast-color(green max) max);
+	border-color: contrast-color(contrast-color(contrast-color(green max) max) max);
+}

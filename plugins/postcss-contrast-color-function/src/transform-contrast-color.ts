@@ -11,7 +11,9 @@ export enum PREFERS_CONTRAST {
 	NO_PREFERENCE,
 }
 
-export function transformContrastColor(value: string, prefersContrast: PREFERS_CONTRAST): string {
+export const CONTRAST_COLOR_FUNCTION_REGEX = /\bcontrast-color\(/i;
+
+export function transformContrastColor(value: string, prefersContrast: PREFERS_CONTRAST, depth = 0): string {
 	const replaced = replaceComponentValues(
 		parseCommaSeparatedListOfComponentValues(
 			tokenize({ css: value }),
@@ -123,5 +125,18 @@ export function transformContrastColor(value: string, prefersContrast: PREFERS_C
 		},
 	);
 
-	return stringify(replaced);
+	const modified = stringify(replaced);
+	if (modified === value) {
+		return value;
+	}
+
+	if (depth > 10) {
+		return modified;
+	}
+
+	if (CONTRAST_COLOR_FUNCTION_REGEX.test(modified)) {
+		return transformContrastColor(modified, prefersContrast, depth + 1);
+	}
+
+	return modified;
 }

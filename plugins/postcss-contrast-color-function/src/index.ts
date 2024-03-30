@@ -1,9 +1,7 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { Plugin, PluginCreator } from 'postcss';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
-import { PREFERS_CONTRAST, transformContrastColor } from './transform-contrast-color';
-
-const CONTRAST_COLOR_FUNCTION_REGEX = /\bcontrast-color\(/i;
+import { CONTRAST_COLOR_FUNCTION_REGEX, PREFERS_CONTRAST, transformContrastColor } from './transform-contrast-color';
 
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	return {
