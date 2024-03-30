@@ -72,6 +72,7 @@ body:
         - PostCSS Color Hex Alpha
         - PostCSS Color Mix Function
         - PostCSS Conditional Values
+        - PostCSS Contrast Color Functions
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties
         - PostCSS Custom Selectors
