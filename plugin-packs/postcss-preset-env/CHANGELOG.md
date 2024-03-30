@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.0.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#800-march-30-2024) (major)
+
 ### 9.5.2
 
 _March 17, 2024_
