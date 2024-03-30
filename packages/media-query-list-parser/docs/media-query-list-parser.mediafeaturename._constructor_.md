@@ -14,9 +14,66 @@ constructor(name: ComponentValue, before?: Array<CSSToken>, after?: Array<CSSTok
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | ComponentValue |  |
-|  before | Array&lt;CSSToken&gt; | _(Optional)_ |
-|  after | Array&lt;CSSToken&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+ComponentValue
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+before
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+after
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

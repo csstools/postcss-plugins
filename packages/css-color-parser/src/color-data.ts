@@ -343,7 +343,7 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
 				out[0] = NaN;
 			}
 
@@ -355,13 +355,13 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 			break;
 		case ColorNotation.LCH:
-			if (reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
 				out[2] = NaN;
 			}
 
 			break;
 		case ColorNotation.OKLCH:
-			if (reducePrecision(out[1], 6) <= 0) {
+			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 6) <= 0) {
 				out[2] = NaN;
 			}
 
@@ -543,6 +543,10 @@ export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber
 }
 
 function dummyNumberToken(x: number): TokenNumber {
+	if (Number.isNaN(x)) {
+		x = 0;
+	}
+
 	return [TokenType.Number, x.toString(), -1, -1, { value: x, type: NumberType.Number }];
 }
 

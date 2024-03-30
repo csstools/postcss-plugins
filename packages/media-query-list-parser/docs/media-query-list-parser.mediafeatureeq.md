@@ -12,7 +12,34 @@ export declare enum MediaFeatureEQ
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  EQ | <code>&quot;=&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+EQ
+
+
+</td><td>
+
+`"="`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

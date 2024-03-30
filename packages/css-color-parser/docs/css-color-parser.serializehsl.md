@@ -12,11 +12,53 @@ export declare function serializeHSL(color: ColorData, gamutMapping?: boolean): 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  color | [ColorData](./css-color-parser.colordata.md) |  |
-|  gamutMapping | boolean | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+color
+
+
+</td><td>
+
+[ColorData](./css-color-parser.colordata.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+gamutMapping
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 FunctionNode

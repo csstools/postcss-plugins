@@ -12,10 +12,37 @@ indexOf(item: MediaInParens | MediaAnd): number | string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  item | [MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaAnd](./media-query-list-parser.mediaand.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+item
+
+
+</td><td>
+
+[MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaAnd](./media-query-list-parser.mediaand.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number \| string

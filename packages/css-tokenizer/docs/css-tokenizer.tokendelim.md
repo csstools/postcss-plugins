@@ -15,7 +15,44 @@ export interface TokenDelim extends Token<TokenType.Delim, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-tokenizer.tokendelim.value.md) |  | string | The delim character. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-tokenizer.tokendelim.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The delim character.
+
+
+</td></tr>
+</tbody></table>

@@ -14,10 +14,37 @@ export declare function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  tokens | Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+tokens
+
+
+</td><td>
+
+Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;

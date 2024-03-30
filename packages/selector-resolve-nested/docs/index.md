@@ -6,7 +6,26 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/selector-resolve-nested](./selector-resolve-nested.md) | Resolve nested selectors following the CSS nesting specification. |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/selector-resolve-nested](./selector-resolve-nested.md)
+
+
+</td><td>
+
+Resolve nested selectors following the CSS nesting specification.
+
+
+</td></tr>
+</tbody></table>

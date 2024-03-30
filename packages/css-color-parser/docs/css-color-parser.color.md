@@ -14,10 +14,39 @@ export declare function color(colorNode: ComponentValue): ColorData | false;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  colorNode | ComponentValue | The color function to be converted. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+colorNode
+
+
+</td><td>
+
+ComponentValue
+
+
+</td><td>
+
+The color function to be converted.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [ColorData](./css-color-parser.colordata.md) \| false

@@ -12,10 +12,37 @@ export declare function OKLCH_to_OKLab(OKLCH: Color): Color;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  OKLCH | [Color](./color-helpers.color.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+OKLCH
+
+
+</td><td>
+
+[Color](./color-helpers.color.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Color](./color-helpers.color.md)

@@ -14,7 +14,34 @@ constructor(value: ComponentValue);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | ComponentValue |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+ComponentValue
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

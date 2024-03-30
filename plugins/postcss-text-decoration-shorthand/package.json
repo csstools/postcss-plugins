@@ -56,7 +56,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"autoprefixer": "^10.4.18"
+		"autoprefixer": "^10.4.19"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

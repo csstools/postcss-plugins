@@ -14,10 +14,76 @@ constructor(message: string, sourceStart: number, sourceEnd: number, parserState
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  message | string |  |
-|  sourceStart | number |  |
-|  sourceEnd | number |  |
-|  parserState | Array&lt;string&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+message
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+sourceStart
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+sourceEnd
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+parserState
+
+
+</td><td>
+
+Array&lt;string&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

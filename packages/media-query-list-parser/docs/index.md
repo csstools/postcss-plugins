@@ -6,7 +6,24 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/media-query-list-parser](./media-query-list-parser.md) |  |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/media-query-list-parser](./media-query-list-parser.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

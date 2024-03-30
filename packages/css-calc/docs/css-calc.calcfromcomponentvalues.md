@@ -12,11 +12,53 @@ export declare function calcFromComponentValues(componentValuesList: Array<Array
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  componentValuesList | Array&lt;Array&lt;ComponentValue&gt;&gt; |  |
-|  options | [conversionOptions](./css-calc.conversionoptions.md) | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+componentValuesList
+
+
+</td><td>
+
+Array&lt;Array&lt;ComponentValue&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[conversionOptions](./css-calc.conversionoptions.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Array&lt;Array&lt;ComponentValue&gt;&gt;

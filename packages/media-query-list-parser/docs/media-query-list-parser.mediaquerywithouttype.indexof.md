@@ -12,10 +12,37 @@ indexOf(item: MediaCondition): number | string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  item | [MediaCondition](./media-query-list-parser.mediacondition.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+item
+
+
+</td><td>
+
+[MediaCondition](./media-query-list-parser.mediacondition.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number \| string

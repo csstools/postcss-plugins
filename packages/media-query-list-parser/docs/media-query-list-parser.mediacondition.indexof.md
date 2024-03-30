@@ -12,10 +12,37 @@ indexOf(item: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaCondit
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  item | [MediaNot](./media-query-list-parser.medianot.md) \| [MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaConditionListWithAnd](./media-query-list-parser.mediaconditionlistwithand.md) \| [MediaConditionListWithOr](./media-query-list-parser.mediaconditionlistwithor.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+item
+
+
+</td><td>
+
+[MediaNot](./media-query-list-parser.medianot.md) \| [MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaConditionListWithAnd](./media-query-list-parser.mediaconditionlistwithand.md) \| [MediaConditionListWithOr](./media-query-list-parser.mediaconditionlistwithor.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number \| string

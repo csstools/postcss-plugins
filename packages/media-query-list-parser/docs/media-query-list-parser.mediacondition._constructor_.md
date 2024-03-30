@@ -14,7 +14,34 @@ constructor(media: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaC
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  media | [MediaNot](./media-query-list-parser.medianot.md) \| [MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaConditionListWithAnd](./media-query-list-parser.mediaconditionlistwithand.md) \| [MediaConditionListWithOr](./media-query-list-parser.mediaconditionlistwithor.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+media
+
+
+</td><td>
+
+[MediaNot](./media-query-list-parser.medianot.md) \| [MediaInParens](./media-query-list-parser.mediainparens.md) \| [MediaConditionListWithAnd](./media-query-list-parser.mediaconditionlistwithand.md) \| [MediaConditionListWithOr](./media-query-list-parser.mediaconditionlistwithor.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

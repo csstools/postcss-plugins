@@ -35,67 +35,472 @@ console.log(tokens);
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [ParseError](./css-tokenizer.parseerror.md) | The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the <code>onParseError</code> callback. |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ParseError](./css-tokenizer.parseerror.md)
+
+
+</td><td>
+
+The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the `onParseError` callback.
+
+
+</td></tr>
+</tbody></table>
 
 ## Enumerations
 
-|  Enumeration | Description |
-|  --- | --- |
-|  [HashType](./css-tokenizer.hashtype.md) | The type of hash token |
-|  [NumberType](./css-tokenizer.numbertype.md) | The type of number token Either <code>integer</code> or <code>number</code> |
-|  [TokenType](./css-tokenizer.tokentype.md) | All possible CSS token types |
+<table><thead><tr><th>
+
+Enumeration
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[HashType](./css-tokenizer.hashtype.md)
+
+
+</td><td>
+
+The type of hash token
+
+
+</td></tr>
+<tr><td>
+
+[NumberType](./css-tokenizer.numbertype.md)
+
+
+</td><td>
+
+The type of number token Either `integer` or `number`
+
+
+</td></tr>
+<tr><td>
+
+[TokenType](./css-tokenizer.tokentype.md)
+
+
+</td><td>
+
+All possible CSS token types
+
+
+</td></tr>
+</tbody></table>
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [cloneTokens(tokens)](./css-tokenizer.clonetokens.md) | Deep clone a list of tokens. Useful for mutations without altering the original list. |
-|  [isToken(x)](./css-tokenizer.istoken.md) | Assert that a given value has the general structure of a CSS token: 1. is an array. 2. has at least four items. 3. has a known token type. 4. has a string representation. 5. has a start position. 6. has an end position. |
-|  [mirrorVariant(token)](./css-tokenizer.mirrorvariant.md) | Get the mirror variant of a given token |
-|  [mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md) | Get the mirror variant type of a given token type |
-|  [mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md) | Set the ident value and update the string representation. This handles escaping. |
-|  [stringify(tokens)](./css-tokenizer.stringify.md) | Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid. |
-|  [tokenize(input, options)](./css-tokenizer.tokenize.md) | Tokenize a CSS string into a list of tokens. |
-|  [tokenizer(input, options)](./css-tokenizer.tokenizer.md) | Create a tokenizer for a CSS string. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[cloneTokens(tokens)](./css-tokenizer.clonetokens.md)
+
+
+</td><td>
+
+Deep clone a list of tokens. Useful for mutations without altering the original list.
+
+
+</td></tr>
+<tr><td>
+
+[isToken(x)](./css-tokenizer.istoken.md)
+
+
+</td><td>
+
+Assert that a given value has the general structure of a CSS token: 1. is an array. 2. has at least four items. 3. has a known token type. 4. has a string representation. 5. has a start position. 6. has an end position.
+
+
+</td></tr>
+<tr><td>
+
+[mirrorVariant(token)](./css-tokenizer.mirrorvariant.md)
+
+
+</td><td>
+
+Get the mirror variant of a given token
+
+
+</td></tr>
+<tr><td>
+
+[mirrorVariantType(type)](./css-tokenizer.mirrorvarianttype.md)
+
+
+</td><td>
+
+Get the mirror variant type of a given token type
+
+
+</td></tr>
+<tr><td>
+
+[mutateIdent(ident, newValue)](./css-tokenizer.mutateident.md)
+
+
+</td><td>
+
+Set the ident value and update the string representation. This handles escaping.
+
+
+</td></tr>
+<tr><td>
+
+[stringify(tokens)](./css-tokenizer.stringify.md)
+
+
+</td><td>
+
+Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid.
+
+
+</td></tr>
+<tr><td>
+
+[tokenize(input, options)](./css-tokenizer.tokenize.md)
+
+
+</td><td>
+
+Tokenize a CSS string into a list of tokens.
+
+
+</td></tr>
+<tr><td>
+
+[tokenizer(input, options)](./css-tokenizer.tokenizer.md)
+
+
+</td><td>
+
+Create a tokenizer for a CSS string.
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [Token](./css-tokenizer.token.md) | The CSS Token interface |
-|  [TokenAtKeyword](./css-tokenizer.tokenatkeyword.md) |  |
-|  [TokenBadString](./css-tokenizer.tokenbadstring.md) |  |
-|  [TokenBadURL](./css-tokenizer.tokenbadurl.md) |  |
-|  [TokenCDC](./css-tokenizer.tokencdc.md) |  |
-|  [TokenCDO](./css-tokenizer.tokencdo.md) |  |
-|  [TokenCloseCurly](./css-tokenizer.tokenclosecurly.md) |  |
-|  [TokenCloseParen](./css-tokenizer.tokencloseparen.md) |  |
-|  [TokenCloseSquare](./css-tokenizer.tokenclosesquare.md) |  |
-|  [TokenColon](./css-tokenizer.tokencolon.md) |  |
-|  [TokenComma](./css-tokenizer.tokencomma.md) |  |
-|  [TokenComment](./css-tokenizer.tokencomment.md) |  |
-|  [TokenDelim](./css-tokenizer.tokendelim.md) |  |
-|  [TokenDimension](./css-tokenizer.tokendimension.md) |  |
-|  [TokenEOF](./css-tokenizer.tokeneof.md) |  |
-|  [TokenFunction](./css-tokenizer.tokenfunction.md) |  |
-|  [TokenHash](./css-tokenizer.tokenhash.md) |  |
-|  [TokenIdent](./css-tokenizer.tokenident.md) |  |
-|  [TokenNumber](./css-tokenizer.tokennumber.md) |  |
-|  [TokenOpenCurly](./css-tokenizer.tokenopencurly.md) |  |
-|  [TokenOpenParen](./css-tokenizer.tokenopenparen.md) |  |
-|  [TokenOpenSquare](./css-tokenizer.tokenopensquare.md) |  |
-|  [TokenPercentage](./css-tokenizer.tokenpercentage.md) |  |
-|  [TokenSemicolon](./css-tokenizer.tokensemicolon.md) |  |
-|  [TokenString](./css-tokenizer.tokenstring.md) |  |
-|  [TokenUnicodeRange](./css-tokenizer.tokenunicoderange.md) |  |
-|  [TokenURL](./css-tokenizer.tokenurl.md) |  |
-|  [TokenWhitespace](./css-tokenizer.tokenwhitespace.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Token](./css-tokenizer.token.md)
+
+
+</td><td>
+
+The CSS Token interface
+
+
+</td></tr>
+<tr><td>
+
+[TokenAtKeyword](./css-tokenizer.tokenatkeyword.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenBadString](./css-tokenizer.tokenbadstring.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenBadURL](./css-tokenizer.tokenbadurl.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenCDC](./css-tokenizer.tokencdc.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenCDO](./css-tokenizer.tokencdo.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenCloseCurly](./css-tokenizer.tokenclosecurly.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenCloseParen](./css-tokenizer.tokencloseparen.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenCloseSquare](./css-tokenizer.tokenclosesquare.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenColon](./css-tokenizer.tokencolon.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenComma](./css-tokenizer.tokencomma.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenComment](./css-tokenizer.tokencomment.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenDelim](./css-tokenizer.tokendelim.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenDimension](./css-tokenizer.tokendimension.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenEOF](./css-tokenizer.tokeneof.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenFunction](./css-tokenizer.tokenfunction.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenHash](./css-tokenizer.tokenhash.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenIdent](./css-tokenizer.tokenident.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenNumber](./css-tokenizer.tokennumber.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenOpenCurly](./css-tokenizer.tokenopencurly.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenOpenParen](./css-tokenizer.tokenopenparen.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenOpenSquare](./css-tokenizer.tokenopensquare.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenPercentage](./css-tokenizer.tokenpercentage.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenSemicolon](./css-tokenizer.tokensemicolon.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenString](./css-tokenizer.tokenstring.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenUnicodeRange](./css-tokenizer.tokenunicoderange.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenURL](./css-tokenizer.tokenurl.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TokenWhitespace](./css-tokenizer.tokenwhitespace.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [CSSToken](./css-tokenizer.csstoken.md) | The union of all possible CSS tokens |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[CSSToken](./css-tokenizer.csstoken.md)
+
+
+</td><td>
+
+The union of all possible CSS tokens
+
+
+</td></tr>
+</tbody></table>

@@ -17,9 +17,82 @@ export interface TokenNumber extends Token<TokenType.Number, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [signCharacter?](./css-tokenizer.tokennumber.signcharacter.md) |  | '+' \| '-' | _(Optional)_ The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as "2" or "+2". |
-|  [type](./css-tokenizer.tokennumber.type.md) |  | [NumberType](./css-tokenizer.numbertype.md) | <code>integer</code> or <code>number</code> |
-|  [value](./css-tokenizer.tokennumber.value.md) |  | number | The numeric value. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[signCharacter?](./css-tokenizer.tokennumber.signcharacter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'+' \| '-'
+
+
+</td><td>
+
+_(Optional)_ The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as "2" or "+2".
+
+
+</td></tr>
+<tr><td>
+
+[type](./css-tokenizer.tokennumber.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NumberType](./css-tokenizer.numbertype.md)
+
+
+</td><td>
+
+`integer` or `number`
+
+
+</td></tr>
+<tr><td>
+
+[value](./css-tokenizer.tokennumber.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The numeric value.
+
+
+</td></tr>
+</tbody></table>

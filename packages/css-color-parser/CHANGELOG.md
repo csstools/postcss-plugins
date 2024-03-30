@@ -1,5 +1,22 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix missing rectangular color spaces for interpolation in `color-mix()`.
+- Fix `none` keyword conversion in relative color syntax origin values.
+
+### 1.6.2
+
+_March 16, 2024_
+
+- Fix powerless components for `lch` and `oklch` with `none` chroma.
+
+### 1.6.1
+
+_March 16, 2024_
+
+- Fix powerless components for `hsl` with `none` saturation.
+
 ### 1.6.0
 
 _March 13, 2024_

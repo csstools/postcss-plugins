@@ -12,26 +12,204 @@ export declare class MediaAnd
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(modifier, media)](./media-query-list-parser.mediaand._constructor_.md) |  | Constructs a new instance of the <code>MediaAnd</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(modifier, media)](./media-query-list-parser.mediaand._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaAnd` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [media](./media-query-list-parser.mediaand.media.md) |  | [MediaInParens](./media-query-list-parser.mediainparens.md) |  |
-|  [modifier](./media-query-list-parser.mediaand.modifier.md) |  | Array&lt;CSSToken&gt; |  |
-|  [type](./media-query-list-parser.mediaand.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[media](./media-query-list-parser.mediaand.media.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaInParens](./media-query-list-parser.mediainparens.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[modifier](./media-query-list-parser.mediaand.modifier.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediaand.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediaand.at.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediaand.indexof.md) |  |  |
-|  [isMediaAnd(x)](./media-query-list-parser.mediaand.ismediaand.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediaand.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediaand.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediaand.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediaand.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediaand.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaAnd(x)](./media-query-list-parser.mediaand.ismediaand.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediaand.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediaand.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediaand.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

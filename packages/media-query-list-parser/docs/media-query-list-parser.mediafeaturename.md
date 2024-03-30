@@ -12,28 +12,233 @@ export declare class MediaFeatureName
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(name, before, after)](./media-query-list-parser.mediafeaturename._constructor_.md) |  | Constructs a new instance of the <code>MediaFeatureName</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(name, before, after)](./media-query-list-parser.mediafeaturename._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaFeatureName` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after](./media-query-list-parser.mediafeaturename.after.md) |  | Array&lt;CSSToken&gt; |  |
-|  [before](./media-query-list-parser.mediafeaturename.before.md) |  | Array&lt;CSSToken&gt; |  |
-|  [name](./media-query-list-parser.mediafeaturename.name.md) |  | ComponentValue |  |
-|  [type](./media-query-list-parser.mediafeaturename.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after](./media-query-list-parser.mediafeaturename.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[before](./media-query-list-parser.mediafeaturename.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./media-query-list-parser.mediafeaturename.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ComponentValue
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediafeaturename.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediafeaturename.at.md) |  |  |
-|  [getName()](./media-query-list-parser.mediafeaturename.getname.md) |  |  |
-|  [getNameToken()](./media-query-list-parser.mediafeaturename.getnametoken.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediafeaturename.indexof.md) |  |  |
-|  [isMediaFeatureName(x)](./media-query-list-parser.mediafeaturename.ismediafeaturename.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediafeaturename.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediafeaturename.tostring.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediafeaturename.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getName()](./media-query-list-parser.mediafeaturename.getname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getNameToken()](./media-query-list-parser.mediafeaturename.getnametoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediafeaturename.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaFeatureName(x)](./media-query-list-parser.mediafeaturename.ismediafeaturename.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediafeaturename.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediafeaturename.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

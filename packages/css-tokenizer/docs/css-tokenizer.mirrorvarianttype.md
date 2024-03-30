@@ -14,10 +14,37 @@ export declare function mirrorVariantType(type: TokenType): TokenType | null;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  type | [TokenType](./css-tokenizer.tokentype.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+type
+
+
+</td><td>
+
+[TokenType](./css-tokenizer.tokentype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [TokenType](./css-tokenizer.tokentype.md) \| null

@@ -12,10 +12,37 @@ indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): numb
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  item | [MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+item
+
+
+</td><td>
+
+[MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number \| string

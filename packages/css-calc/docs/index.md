@@ -6,7 +6,24 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/css-calc](./css-calc.md) |  |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/css-calc](./css-calc.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

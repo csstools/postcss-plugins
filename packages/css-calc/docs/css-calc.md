@@ -6,21 +6,90 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [calc(css, options)](./css-calc.calc.md) |  |
-|  [calcFromComponentValues(componentValuesList, options)](./css-calc.calcfromcomponentvalues.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[calc(css, options)](./css-calc.calc.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[calcFromComponentValues(componentValuesList, options)](./css-calc.calcfromcomponentvalues.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Variables
 
-|  Variable | Description |
-|  --- | --- |
-|  [mathFunctionNames](./css-calc.mathfunctionnames.md) |  |
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[mathFunctionNames](./css-calc.mathfunctionnames.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [conversionOptions](./css-calc.conversionoptions.md) |  |
-|  [GlobalsWithStrings](./css-calc.globalswithstrings.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[conversionOptions](./css-calc.conversionoptions.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GlobalsWithStrings](./css-calc.globalswithstrings.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

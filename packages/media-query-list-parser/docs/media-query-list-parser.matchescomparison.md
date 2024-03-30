@@ -12,10 +12,37 @@ export declare function matchesComparison(componentValues: Array<ComponentValue>
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  componentValues | Array&lt;ComponentValue&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+componentValues
+
+
+</td><td>
+
+Array&lt;ComponentValue&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 false \| \[number, number\]

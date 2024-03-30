@@ -12,29 +12,245 @@ export declare class CustomMedia
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(name, mediaQueryList, trueOrFalseKeyword)](./media-query-list-parser.custommedia._constructor_.md) |  | Constructs a new instance of the <code>CustomMedia</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(name, mediaQueryList, trueOrFalseKeyword)](./media-query-list-parser.custommedia._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `CustomMedia` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [mediaQueryList](./media-query-list-parser.custommedia.mediaquerylist.md) |  | Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt; \| null |  |
-|  [name](./media-query-list-parser.custommedia.name.md) |  | Array&lt;CSSToken&gt; |  |
-|  [trueOrFalseKeyword](./media-query-list-parser.custommedia.trueorfalsekeyword.md) |  | Array&lt;CSSToken&gt; \| null |  |
-|  [type](./media-query-list-parser.custommedia.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[mediaQueryList](./media-query-list-parser.custommedia.mediaquerylist.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt; \| null
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./media-query-list-parser.custommedia.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[trueOrFalseKeyword](./media-query-list-parser.custommedia.trueorfalsekeyword.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt; \| null
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.custommedia.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getName()](./media-query-list-parser.custommedia.getname.md) |  |  |
-|  [getNameToken()](./media-query-list-parser.custommedia.getnametoken.md) |  |  |
-|  [hasFalseKeyword()](./media-query-list-parser.custommedia.hasfalsekeyword.md) |  |  |
-|  [hasMediaQueryList()](./media-query-list-parser.custommedia.hasmediaquerylist.md) |  |  |
-|  [hasTrueKeyword()](./media-query-list-parser.custommedia.hastruekeyword.md) |  |  |
-|  [isCustomMedia(x)](./media-query-list-parser.custommedia.iscustommedia.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.custommedia.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.custommedia.tostring.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getName()](./media-query-list-parser.custommedia.getname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getNameToken()](./media-query-list-parser.custommedia.getnametoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[hasFalseKeyword()](./media-query-list-parser.custommedia.hasfalsekeyword.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[hasMediaQueryList()](./media-query-list-parser.custommedia.hasmediaquerylist.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[hasTrueKeyword()](./media-query-list-parser.custommedia.hastruekeyword.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isCustomMedia(x)](./media-query-list-parser.custommedia.iscustommedia.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.custommedia.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.custommedia.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

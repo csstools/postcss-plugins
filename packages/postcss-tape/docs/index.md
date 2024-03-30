@@ -6,7 +6,26 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/postcss-tape](./postcss-tape.md) | A test suite for PostCSS plugins. |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/postcss-tape](./postcss-tape.md)
+
+
+</td><td>
+
+A test suite for PostCSS plugins.
+
+
+</td></tr>
+</tbody></table>

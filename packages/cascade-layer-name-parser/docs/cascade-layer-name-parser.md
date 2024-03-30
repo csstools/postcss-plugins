@@ -6,15 +6,68 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [LayerName](./cascade-layer-name-parser.layername.md) |  |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[LayerName](./cascade-layer-name-parser.layername.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [addLayerToModel(layers, currentLayerNames)](./cascade-layer-name-parser.addlayertomodel.md) |  |
-|  [parse(source, options)](./cascade-layer-name-parser.parse.md) |  |
-|  [parseFromTokens(tokens, options)](./cascade-layer-name-parser.parsefromtokens.md) | Parses an array of [CSSTokens](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md) into a list of cascade layer names. |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[addLayerToModel(layers, currentLayerNames)](./cascade-layer-name-parser.addlayertomodel.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[parse(source, options)](./cascade-layer-name-parser.parse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[parseFromTokens(tokens, options)](./cascade-layer-name-parser.parsefromtokens.md)
+
+
+</td><td>
+
+Parses an array of [CSSTokens](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/docs/css-tokenizer.csstoken.md) into a list of cascade layer names.
+
+
+</td></tr>
+</tbody></table>

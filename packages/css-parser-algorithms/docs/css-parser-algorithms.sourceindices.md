@@ -18,10 +18,37 @@ export declare function sourceIndices(x: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  x | { tokens(): Array&lt;CSSToken&gt;; } \| Array&lt;{ tokens(): Array&lt;CSSToken&gt;; }&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+x
+
+
+</td><td>
+
+{ tokens(): Array&lt;CSSToken&gt;; } \| Array&lt;{ tokens(): Array&lt;CSSToken&gt;; }&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 \[number, number\]

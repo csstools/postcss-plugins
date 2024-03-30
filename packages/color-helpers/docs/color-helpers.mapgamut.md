@@ -12,12 +12,65 @@ export declare function mapGamut(startOKLCH: Color, toDestination: (x: Color) =>
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  startOKLCH | [Color](./color-helpers.color.md) |  |
-|  toDestination | (x: [Color](./color-helpers.color.md)<!-- -->) =&gt; [Color](./color-helpers.color.md) |  |
-|  fromDestination | (x: [Color](./color-helpers.color.md)<!-- -->) =&gt; [Color](./color-helpers.color.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+startOKLCH
+
+
+</td><td>
+
+[Color](./color-helpers.color.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+toDestination
+
+
+</td><td>
+
+(x: [Color](./color-helpers.color.md)<!-- -->) =&gt; [Color](./color-helpers.color.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+fromDestination
+
+
+</td><td>
+
+(x: [Color](./color-helpers.color.md)<!-- -->) =&gt; [Color](./color-helpers.color.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Color](./color-helpers.color.md)

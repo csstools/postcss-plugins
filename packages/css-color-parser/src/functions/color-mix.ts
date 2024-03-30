@@ -10,7 +10,7 @@ import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@c
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 
-const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
+const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
 const polarColorSpaces = new Set(['hsl', 'hwb', 'lch', 'oklch']);
 const hueInterpolationMethods = new Set(['shorter', 'longer', 'increasing', 'decreasing']);
 
@@ -298,6 +298,18 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 			break;
 		case 'srgb-linear':
 			outputColorNotation = ColorNotation.Linear_sRGB;
+			break;
+		case 'display-p3':
+			outputColorNotation = ColorNotation.Display_P3;
+			break;
+		case 'a98-rgb':
+			outputColorNotation = ColorNotation.A98_RGB;
+			break;
+		case 'prophoto-rgb':
+			outputColorNotation = ColorNotation.ProPhoto_RGB;
+			break;
+		case 'rec2020':
+			outputColorNotation = ColorNotation.Rec2020;
 			break;
 		case 'lab':
 			outputColorNotation = ColorNotation.Lab;

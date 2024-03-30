@@ -6,7 +6,24 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/selector-specificity](./selector-specificity.md) |  |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/selector-specificity](./selector-specificity.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

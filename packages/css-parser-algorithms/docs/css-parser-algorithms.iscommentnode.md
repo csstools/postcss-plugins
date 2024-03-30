@@ -14,10 +14,37 @@ export declare function isCommentNode(x: unknown): x is CommentNode;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  x | unknown |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+x
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 x is [CommentNode](./css-parser-algorithms.commentnode.md)

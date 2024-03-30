@@ -14,10 +14,105 @@ export interface ColorData
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [alpha](./css-color-parser.colordata.alpha.md) |  | number \| ComponentValue | <p>The alpha channel. This is either a number between <code>0</code> and <code>1</code> or a <code>ComponentValue</code> object.</p><p>Since most computations are not dependent on the alpha channel, we allow things like <code>var(--some-alpha)</code> as an alpha channel value for most inputs.</p> |
-|  [channels](./css-color-parser.colordata.channels.md) |  | Color | The color channels. This is always an array of three numbers but the channels can only be interpreted by looking at the color notation. |
-|  [colorNotation](./css-color-parser.colordata.colornotation.md) |  | [ColorNotation](./css-color-parser.colornotation.md) | <p>The color notation of the color data.</p><p>We use "color notation" and not "color space" because these represent the original notation and not the actual color space. The actual color space is however always implied by the color notation.</p> |
-|  [syntaxFlags](./css-color-parser.colordata.syntaxflags.md) |  | Set&lt;[SyntaxFlag](./css-color-parser.syntaxflag.md)<!-- -->&gt; | Information about the original syntax. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[alpha](./css-color-parser.colordata.alpha.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number \| ComponentValue
+
+
+</td><td>
+
+The alpha channel. This is either a number between `0` and `1` or a `ComponentValue` object.
+
+Since most computations are not dependent on the alpha channel, we allow things like `var(--some-alpha)` as an alpha channel value for most inputs.
+
+
+</td></tr>
+<tr><td>
+
+[channels](./css-color-parser.colordata.channels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Color
+
+
+</td><td>
+
+The color channels. This is always an array of three numbers but the channels can only be interpreted by looking at the color notation.
+
+
+</td></tr>
+<tr><td>
+
+[colorNotation](./css-color-parser.colordata.colornotation.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ColorNotation](./css-color-parser.colornotation.md)
+
+
+</td><td>
+
+The color notation of the color data.
+
+We use "color notation" and not "color space" because these represent the original notation and not the actual color space. The actual color space is however always implied by the color notation.
+
+
+</td></tr>
+<tr><td>
+
+[syntaxFlags](./css-color-parser.colordata.syntaxflags.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Set&lt;[SyntaxFlag](./css-color-parser.syntaxflag.md)<!-- -->&gt;
+
+
+</td><td>
+
+Information about the original syntax.
+
+
+</td></tr>
+</tbody></table>

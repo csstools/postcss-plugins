@@ -12,22 +12,276 @@ export declare enum ColorNotation
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  A98\_RGB | <code>&quot;a98-rgb&quot;</code> | Adobe 1999, expressed through <code>color(a98-rgb 0 0 0)</code> |
-|  Display\_P3 | <code>&quot;display-p3&quot;</code> | Display P3, expressed through <code>color(display-p3 0 0 0)</code> |
-|  HEX | <code>&quot;hex&quot;</code> | Hex, expressed through <code>#000</code> |
-|  HSL | <code>&quot;hsl&quot;</code> | HSL, expressed through <code>hsl(0 0% 0%)</code> |
-|  HWB | <code>&quot;hwb&quot;</code> | HWB, expressed through <code>hwb(0 0% 0%)</code> |
-|  Lab | <code>&quot;lab&quot;</code> | Lab, expressed through <code>lab(0 0 0)</code> |
-|  LCH | <code>&quot;lch&quot;</code> | LCH, expressed through <code>lch(0 0% 0deg)</code> |
-|  Linear\_sRGB | <code>&quot;srgb-linear&quot;</code> | Linear sRGB, expressed through <code>color(linear-srgb 0 0 0)</code> |
-|  OKLab | <code>&quot;oklab&quot;</code> | Oklab, expressed through <code>oklab(0 0 0)</code> |
-|  OKLCH | <code>&quot;oklch&quot;</code> | Oklch, expressed through <code>oklch(0 0% 0deg)</code> |
-|  ProPhoto\_RGB | <code>&quot;prophoto-rgb&quot;</code> | ProPhoto RGB, expressed through <code>color(prophoto-rgb 0 0 0)</code> |
-|  Rec2020 | <code>&quot;rec2020&quot;</code> | Rec. 2020, expressed through <code>color(rec2020 0 0 0)</code> |
-|  RGB | <code>&quot;rgb&quot;</code> | RGB, expressed through <code>rgb(0 0 0)</code> |
-|  sRGB | <code>&quot;srgb&quot;</code> | sRGB, expressed through <code>color(srgb 0 0 0)</code> |
-|  XYZ\_D50 | <code>&quot;xyz-d50&quot;</code> | XYZ, expressed through <code>color(xyz-d50 0 0 0)</code> |
-|  XYZ\_D65 | <code>&quot;xyz-d65&quot;</code> | XYZ, expressed through <code>color(xyz-d65 0 0 0)</code> |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+A98\_RGB
+
+
+</td><td>
+
+`"a98-rgb"`
+
+
+</td><td>
+
+Adobe 1999, expressed through `color(a98-rgb 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+Display\_P3
+
+
+</td><td>
+
+`"display-p3"`
+
+
+</td><td>
+
+Display P3, expressed through `color(display-p3 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+HEX
+
+
+</td><td>
+
+`"hex"`
+
+
+</td><td>
+
+Hex, expressed through `#000`
+
+
+</td></tr>
+<tr><td>
+
+HSL
+
+
+</td><td>
+
+`"hsl"`
+
+
+</td><td>
+
+HSL, expressed through `hsl(0 0% 0%)`
+
+
+</td></tr>
+<tr><td>
+
+HWB
+
+
+</td><td>
+
+`"hwb"`
+
+
+</td><td>
+
+HWB, expressed through `hwb(0 0% 0%)`
+
+
+</td></tr>
+<tr><td>
+
+Lab
+
+
+</td><td>
+
+`"lab"`
+
+
+</td><td>
+
+Lab, expressed through `lab(0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+LCH
+
+
+</td><td>
+
+`"lch"`
+
+
+</td><td>
+
+LCH, expressed through `lch(0 0% 0deg)`
+
+
+</td></tr>
+<tr><td>
+
+Linear\_sRGB
+
+
+</td><td>
+
+`"srgb-linear"`
+
+
+</td><td>
+
+Linear sRGB, expressed through `color(linear-srgb 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+OKLab
+
+
+</td><td>
+
+`"oklab"`
+
+
+</td><td>
+
+Oklab, expressed through `oklab(0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+OKLCH
+
+
+</td><td>
+
+`"oklch"`
+
+
+</td><td>
+
+Oklch, expressed through `oklch(0 0% 0deg)`
+
+
+</td></tr>
+<tr><td>
+
+ProPhoto\_RGB
+
+
+</td><td>
+
+`"prophoto-rgb"`
+
+
+</td><td>
+
+ProPhoto RGB, expressed through `color(prophoto-rgb 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+Rec2020
+
+
+</td><td>
+
+`"rec2020"`
+
+
+</td><td>
+
+Rec. 2020, expressed through `color(rec2020 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+RGB
+
+
+</td><td>
+
+`"rgb"`
+
+
+</td><td>
+
+RGB, expressed through `rgb(0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+sRGB
+
+
+</td><td>
+
+`"srgb"`
+
+
+</td><td>
+
+sRGB, expressed through `color(srgb 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+XYZ\_D50
+
+
+</td><td>
+
+`"xyz-d50"`
+
+
+</td><td>
+
+XYZ, expressed through `color(xyz-d50 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
+XYZ\_D65
+
+
+</td><td>
+
+`"xyz-d65"`
+
+
+</td><td>
+
+XYZ, expressed through `color(xyz-d65 0 0 0)`
+
+
+</td></tr>
+</tbody></table>

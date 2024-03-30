@@ -6,7 +6,24 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/css-color-parser](./css-color-parser.md) |  |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/css-color-parser](./css-color-parser.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

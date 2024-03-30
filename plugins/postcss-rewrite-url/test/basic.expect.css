@@ -1,0 +1,19 @@
+.foo {
+	background: url("foo.png#modified");
+	background-image: rewrite-url('ignore.png');
+}
+
+@font-face {
+	font-family: "Trickster";
+	src:
+		local("Trickster"),
+		url("trickster-COLRv1.otf#modified") format("opentype") tech(color-COLRv1),
+		url("trickster-outline.otf#modified") format("opentype"),
+		url("trickster-outline.woff#modified") format("woff");
+}
+
+.ignore {
+	background: url('foo.png');
+}
+
+@foo url("foo.png#modified");

@@ -12,10 +12,37 @@ at(index: number | string): MediaCondition | undefined;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  index | number \| string |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+index
+
+
+</td><td>
+
+number \| string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined

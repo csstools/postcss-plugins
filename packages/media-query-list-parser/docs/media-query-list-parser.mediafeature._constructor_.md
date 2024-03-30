@@ -14,9 +14,66 @@ constructor(feature: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  feature | [MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md) |  |
-|  before | Array&lt;CSSToken&gt; | _(Optional)_ |
-|  after | Array&lt;CSSToken&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+feature
+
+
+</td><td>
+
+[MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+before
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+after
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

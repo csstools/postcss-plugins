@@ -12,10 +12,37 @@ static isMediaConditionListWithOr(x: unknown): x is MediaConditionListWithOr;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  x | unknown |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+x
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 x is [MediaConditionListWithOr](./media-query-list-parser.mediaconditionlistwithor.md)

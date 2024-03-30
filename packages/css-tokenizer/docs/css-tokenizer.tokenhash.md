@@ -16,8 +16,63 @@ export interface TokenHash extends Token<TokenType.Hash, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./css-tokenizer.tokenhash.type.md) |  | [HashType](./css-tokenizer.hashtype.md) | The hash type. |
-|  [value](./css-tokenizer.tokenhash.value.md) |  | string | The unescaped hash value without the leading <code>#</code>. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type](./css-tokenizer.tokenhash.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[HashType](./css-tokenizer.hashtype.md)
+
+
+</td><td>
+
+The hash type.
+
+
+</td></tr>
+<tr><td>
+
+[value](./css-tokenizer.tokenhash.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unescaped hash value without the leading `#`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

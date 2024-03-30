@@ -12,10 +12,37 @@ export declare function modifierFromToken(token: TokenIdent): MediaQueryModifier
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  token | TokenIdent |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+token
+
+
+</td><td>
+
+TokenIdent
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MediaQueryModifier](./media-query-list-parser.mediaquerymodifier.md) \| false

@@ -15,7 +15,44 @@ export interface TokenAtKeyword extends Token<TokenType.AtKeyword, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-tokenizer.tokenatkeyword.value.md) |  | string | The unescaped at-keyword name without the leading <code>@</code>. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-tokenizer.tokenatkeyword.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unescaped at-keyword name without the leading `@`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

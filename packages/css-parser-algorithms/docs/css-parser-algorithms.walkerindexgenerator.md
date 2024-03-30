@@ -14,10 +14,37 @@ export declare function walkerIndexGenerator<T>(initialList: Array<T>): (list: A
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  initialList | Array&lt;T&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+initialList
+
+
+</td><td>
+
+Array&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 (list: Array&lt;T&gt;, child: T, index: number) =&gt; number

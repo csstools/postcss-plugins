@@ -6,26 +6,149 @@
 
 ## Enumerations
 
-|  Enumeration | Description |
-|  --- | --- |
-|  [ColorNotation](./css-color-parser.colornotation.md) |  |
-|  [SyntaxFlag](./css-color-parser.syntaxflag.md) |  |
+<table><thead><tr><th>
+
+Enumeration
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ColorNotation](./css-color-parser.colornotation.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SyntaxFlag](./css-color-parser.syntaxflag.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [color(colorNode)](./css-color-parser.color.md) | Convert a color function to a <code>ColorData</code> object. |
-|  [colorDataFitsDisplayP3\_Gamut(x)](./css-color-parser.colordatafitsdisplayp3_gamut.md) | Check if a color data object fits the <code>display-p3</code> gamut. |
-|  [colorDataFitsRGB\_Gamut(x)](./css-color-parser.colordatafitsrgb_gamut.md) | Check if a color data object fits the <code>sRGB</code> gamut. |
-|  [serializeHSL(color, gamutMapping)](./css-color-parser.serializehsl.md) |  |
-|  [serializeOKLCH(color)](./css-color-parser.serializeoklch.md) | Convert color data to component values in the OKLCH color space. The return value can be converted to a string by calling <code>toString()</code> on it. |
-|  [serializeP3(color, gamutMapping)](./css-color-parser.serializep3.md) | Convert color data to component values in the display-p3 color space. The return value can be converted to a string by calling <code>toString()</code> on it. |
-|  [serializeRGB(color, gamutMapping)](./css-color-parser.serializergb.md) | Convert color data to component values in the srgb color space. The return value can be converted to a string by calling <code>toString()</code> on it. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[color(colorNode)](./css-color-parser.color.md)
+
+
+</td><td>
+
+Convert a color function to a `ColorData` object.
+
+
+</td></tr>
+<tr><td>
+
+[colorDataFitsDisplayP3\_Gamut(x)](./css-color-parser.colordatafitsdisplayp3_gamut.md)
+
+
+</td><td>
+
+Check if a color data object fits the `display-p3` gamut.
+
+
+</td></tr>
+<tr><td>
+
+[colorDataFitsRGB\_Gamut(x)](./css-color-parser.colordatafitsrgb_gamut.md)
+
+
+</td><td>
+
+Check if a color data object fits the `sRGB` gamut.
+
+
+</td></tr>
+<tr><td>
+
+[serializeHSL(color, gamutMapping)](./css-color-parser.serializehsl.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[serializeOKLCH(color)](./css-color-parser.serializeoklch.md)
+
+
+</td><td>
+
+Convert color data to component values in the OKLCH color space. The return value can be converted to a string by calling `toString()` on it.
+
+
+</td></tr>
+<tr><td>
+
+[serializeP3(color, gamutMapping)](./css-color-parser.serializep3.md)
+
+
+</td><td>
+
+Convert color data to component values in the display-p3 color space. The return value can be converted to a string by calling `toString()` on it.
+
+
+</td></tr>
+<tr><td>
+
+[serializeRGB(color, gamutMapping)](./css-color-parser.serializergb.md)
+
+
+</td><td>
+
+Convert color data to component values in the srgb color space. The return value can be converted to a string by calling `toString()` on it.
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [ColorData](./css-color-parser.colordata.md) | A color data object. It contains as much information as possible about the color and the original parsed syntax. |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ColorData](./css-color-parser.colordata.md)
+
+
+</td><td>
+
+A color data object. It contains as much information as possible about the color and the original parsed syntax.
+
+
+</td></tr>
+</tbody></table>

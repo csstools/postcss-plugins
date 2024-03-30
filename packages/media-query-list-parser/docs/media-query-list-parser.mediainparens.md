@@ -12,27 +12,221 @@ export declare class MediaInParens
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(media, before, after)](./media-query-list-parser.mediainparens._constructor_.md) |  | Constructs a new instance of the <code>MediaInParens</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(media, before, after)](./media-query-list-parser.mediainparens._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaInParens` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after](./media-query-list-parser.mediainparens.after.md) |  | Array&lt;CSSToken&gt; |  |
-|  [before](./media-query-list-parser.mediainparens.before.md) |  | Array&lt;CSSToken&gt; |  |
-|  [media](./media-query-list-parser.mediainparens.media.md) |  | [MediaCondition](./media-query-list-parser.mediacondition.md) \| [MediaFeature](./media-query-list-parser.mediafeature.md) \| [GeneralEnclosed](./media-query-list-parser.generalenclosed.md) |  |
-|  [type](./media-query-list-parser.mediainparens.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after](./media-query-list-parser.mediainparens.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[before](./media-query-list-parser.mediainparens.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[media](./media-query-list-parser.mediainparens.media.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaCondition](./media-query-list-parser.mediacondition.md) \| [MediaFeature](./media-query-list-parser.mediafeature.md) \| [GeneralEnclosed](./media-query-list-parser.generalenclosed.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediainparens.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediainparens.at.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediainparens.indexof.md) |  |  |
-|  [isMediaInParens(x)](./media-query-list-parser.mediainparens.ismediainparens.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediainparens.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediainparens.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediainparens.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediainparens.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediainparens.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaInParens(x)](./media-query-list-parser.mediainparens.ismediainparens.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediainparens.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediainparens.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediainparens.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

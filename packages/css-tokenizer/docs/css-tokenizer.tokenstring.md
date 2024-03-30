@@ -15,7 +15,44 @@ export interface TokenString extends Token<TokenType.String, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-tokenizer.tokenstring.value.md) |  | string | The unescaped string value without the leading and trailing quotes. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-tokenizer.tokenstring.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unescaped string value without the leading and trailing quotes.
+
+
+</td></tr>
+</tbody></table>

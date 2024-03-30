@@ -1,7 +1,7 @@
 import { color } from '@csstools/css-color-parser';
 import assert from 'assert';
 import { parse } from '../util/parse.mjs';
-import { serialize_HSL_data, serialize_sRGB_data } from '../util/serialize.mjs';
+import { serialize_HSL_data, serialize_P3_data, serialize_sRGB_data } from '../util/serialize.mjs';
 
 [
 	'rgb( )',
@@ -188,4 +188,14 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	serialize_HSL_data(color(parse('hsl(0 0% 100%)'))),
 	'hsl(0, 0%, 100%)',
+);
+
+assert.deepStrictEqual(
+	serialize_P3_data(color(parse('color(srgb 0.6 1 0.4)'))),
+	'color(display-p3 0.69403 0.98999 0.4832)',
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('rgb(from rgb(none none none / none) r g b / alpha)'))),
+	'rgba(0, 0, 0, 0)',
 );

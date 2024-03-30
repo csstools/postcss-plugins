@@ -14,10 +14,37 @@ export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  x | unknown |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+x
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 x is [WhitespaceNode](./css-parser-algorithms.whitespacenode.md)

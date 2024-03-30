@@ -6,7 +6,26 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@csstools/css-tokenizer](./css-tokenizer.md) | Tokenize CSS following the [CSS Syntax Level 3 specification](https://drafts.csswg.org/css-syntax/#tokenization)<!-- -->. |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@csstools/css-tokenizer](./css-tokenizer.md)
+
+
+</td><td>
+
+Tokenize CSS following the [CSS Syntax Level 3 specification](https://drafts.csswg.org/css-syntax/#tokenization)<!-- -->.
+
+
+</td></tr>
+</tbody></table>

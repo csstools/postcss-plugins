@@ -12,22 +12,276 @@ export declare enum SyntaxFlag
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  ColorKeyword | <code>&quot;color-keyword&quot;</code> | Is a color keyword, e.g. <code>transparent</code>, <code>currentColor</code>, ... |
-|  ColorMix | <code>&quot;color-mix&quot;</code> | Is a mixed color, e.g. <code>color-mix(in oklch, red, blue)</code> |
-|  ContrastColor | <code>&quot;contrast-color&quot;</code> | Is a contrasting color, e.g. <code>contrast-color()</code> |
-|  Experimental | <code>&quot;experimental&quot;</code> | Is an experimental color syntax |
-|  HasAlpha | <code>&quot;has-alpha&quot;</code> | Has an explicit alpha channel |
-|  HasDimensionValues | <code>&quot;has-dimension-values&quot;</code> | Has a channel with a dimension value, e.g. <code>50deg</code> |
-|  HasNoneKeywords | <code>&quot;has-none-keywords&quot;</code> | Has a channel with the <code>none</code> keyword |
-|  HasNumberValues | <code>&quot;has-number-values&quot;</code> | Has a channel with a number value |
-|  HasPercentageAlpha | <code>&quot;has-percentage-alpha&quot;</code> | Has an alpha channel with a percentage value |
-|  HasPercentageValues | <code>&quot;has-percentage-values&quot;</code> | Has a channel with a percentage value |
-|  HasVariableAlpha | <code>&quot;has-variable-alpha&quot;</code> | Has an alpha channel with a <code>var()</code> function value |
-|  Hex | <code>&quot;hex&quot;</code> | Is Hex notation |
-|  LegacyHSL | <code>&quot;legacy-hsl&quot;</code> | Is legacy HSL, e.g. <code>hsl(50deg, 0%, 0%)</code> |
-|  LegacyRGB | <code>&quot;legacy-rgb&quot;</code> | Is legacy RGB, e.g. <code>rgb(0, 0, 0)</code> |
-|  NamedColor | <code>&quot;named-color&quot;</code> | Is a named color, e.g. <code>red</code>, <code>blue</code> |
-|  RelativeColorSyntax | <code>&quot;relative-color-syntax&quot;</code> | Is a relative color syntax, e.g. <code>rgb(from purple r g b)</code> |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+ColorKeyword
+
+
+</td><td>
+
+`"color-keyword"`
+
+
+</td><td>
+
+Is a color keyword, e.g. `transparent`<!-- -->, `currentColor`<!-- -->, ...
+
+
+</td></tr>
+<tr><td>
+
+ColorMix
+
+
+</td><td>
+
+`"color-mix"`
+
+
+</td><td>
+
+Is a mixed color, e.g. `color-mix(in oklch, red, blue)`
+
+
+</td></tr>
+<tr><td>
+
+ContrastColor
+
+
+</td><td>
+
+`"contrast-color"`
+
+
+</td><td>
+
+Is a contrasting color, e.g. `contrast-color()`
+
+
+</td></tr>
+<tr><td>
+
+Experimental
+
+
+</td><td>
+
+`"experimental"`
+
+
+</td><td>
+
+Is an experimental color syntax
+
+
+</td></tr>
+<tr><td>
+
+HasAlpha
+
+
+</td><td>
+
+`"has-alpha"`
+
+
+</td><td>
+
+Has an explicit alpha channel
+
+
+</td></tr>
+<tr><td>
+
+HasDimensionValues
+
+
+</td><td>
+
+`"has-dimension-values"`
+
+
+</td><td>
+
+Has a channel with a dimension value, e.g. `50deg`
+
+
+</td></tr>
+<tr><td>
+
+HasNoneKeywords
+
+
+</td><td>
+
+`"has-none-keywords"`
+
+
+</td><td>
+
+Has a channel with the `none` keyword
+
+
+</td></tr>
+<tr><td>
+
+HasNumberValues
+
+
+</td><td>
+
+`"has-number-values"`
+
+
+</td><td>
+
+Has a channel with a number value
+
+
+</td></tr>
+<tr><td>
+
+HasPercentageAlpha
+
+
+</td><td>
+
+`"has-percentage-alpha"`
+
+
+</td><td>
+
+Has an alpha channel with a percentage value
+
+
+</td></tr>
+<tr><td>
+
+HasPercentageValues
+
+
+</td><td>
+
+`"has-percentage-values"`
+
+
+</td><td>
+
+Has a channel with a percentage value
+
+
+</td></tr>
+<tr><td>
+
+HasVariableAlpha
+
+
+</td><td>
+
+`"has-variable-alpha"`
+
+
+</td><td>
+
+Has an alpha channel with a `var()` function value
+
+
+</td></tr>
+<tr><td>
+
+Hex
+
+
+</td><td>
+
+`"hex"`
+
+
+</td><td>
+
+Is Hex notation
+
+
+</td></tr>
+<tr><td>
+
+LegacyHSL
+
+
+</td><td>
+
+`"legacy-hsl"`
+
+
+</td><td>
+
+Is legacy HSL, e.g. `hsl(50deg, 0%, 0%)`
+
+
+</td></tr>
+<tr><td>
+
+LegacyRGB
+
+
+</td><td>
+
+`"legacy-rgb"`
+
+
+</td><td>
+
+Is legacy RGB, e.g. `rgb(0, 0, 0)`
+
+
+</td></tr>
+<tr><td>
+
+NamedColor
+
+
+</td><td>
+
+`"named-color"`
+
+
+</td><td>
+
+Is a named color, e.g. `red`<!-- -->, `blue`
+
+
+</td></tr>
+<tr><td>
+
+RelativeColorSyntax
+
+
+</td><td>
+
+`"relative-color-syntax"`
+
+
+</td><td>
+
+Is a relative color syntax, e.g. `rgb(from purple r g b)`
+
+
+</td></tr>
+</tbody></table>

@@ -12,31 +12,274 @@ export declare class MediaQueryWithType
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(modifier, mediaType, and, media)](./media-query-list-parser.mediaquerywithtype._constructor_.md) |  | Constructs a new instance of the <code>MediaQueryWithType</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(modifier, mediaType, and, media)](./media-query-list-parser.mediaquerywithtype._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaQueryWithType` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [and](./media-query-list-parser.mediaquerywithtype.and.md) |  | Array&lt;CSSToken&gt; \| undefined |  |
-|  [media](./media-query-list-parser.mediaquerywithtype.media.md) |  | [MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined |  |
-|  [mediaType](./media-query-list-parser.mediaquerywithtype.mediatype.md) |  | Array&lt;CSSToken&gt; |  |
-|  [modifier](./media-query-list-parser.mediaquerywithtype.modifier.md) |  | Array&lt;CSSToken&gt; |  |
-|  [type](./media-query-list-parser.mediaquerywithtype.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[and](./media-query-list-parser.mediaquerywithtype.and.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt; \| undefined
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[media](./media-query-list-parser.mediaquerywithtype.media.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[mediaType](./media-query-list-parser.mediaquerywithtype.mediatype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[modifier](./media-query-list-parser.mediaquerywithtype.modifier.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediaquerywithtype.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediaquerywithtype.at.md) |  |  |
-|  [getMediaType()](./media-query-list-parser.mediaquerywithtype.getmediatype.md) |  |  |
-|  [getModifier()](./media-query-list-parser.mediaquerywithtype.getmodifier.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediaquerywithtype.indexof.md) |  |  |
-|  [isMediaQueryWithType(x)](./media-query-list-parser.mediaquerywithtype.ismediaquerywithtype.md) | <code>static</code> |  |
-|  [negateQuery()](./media-query-list-parser.mediaquerywithtype.negatequery.md) |  |  |
-|  [tokens()](./media-query-list-parser.mediaquerywithtype.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediaquerywithtype.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediaquerywithtype.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediaquerywithtype.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getMediaType()](./media-query-list-parser.mediaquerywithtype.getmediatype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getModifier()](./media-query-list-parser.mediaquerywithtype.getmodifier.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediaquerywithtype.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaQueryWithType(x)](./media-query-list-parser.mediaquerywithtype.ismediaquerywithtype.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[negateQuery()](./media-query-list-parser.mediaquerywithtype.negatequery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediaquerywithtype.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediaquerywithtype.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediaquerywithtype.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

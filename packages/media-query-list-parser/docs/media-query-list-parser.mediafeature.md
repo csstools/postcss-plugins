@@ -12,29 +12,245 @@ export declare class MediaFeature
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(feature, before, after)](./media-query-list-parser.mediafeature._constructor_.md) |  | Constructs a new instance of the <code>MediaFeature</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(feature, before, after)](./media-query-list-parser.mediafeature._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaFeature` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after](./media-query-list-parser.mediafeature.after.md) |  | Array&lt;CSSToken&gt; |  |
-|  [before](./media-query-list-parser.mediafeature.before.md) |  | Array&lt;CSSToken&gt; |  |
-|  [feature](./media-query-list-parser.mediafeature.feature.md) |  | [MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md) |  |
-|  [type](./media-query-list-parser.mediafeature.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after](./media-query-list-parser.mediafeature.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[before](./media-query-list-parser.mediafeature.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[feature](./media-query-list-parser.mediafeature.feature.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md) \| [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md) \| [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediafeature.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediafeature.at.md) |  |  |
-|  [getName()](./media-query-list-parser.mediafeature.getname.md) |  |  |
-|  [getNameToken()](./media-query-list-parser.mediafeature.getnametoken.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediafeature.indexof.md) |  |  |
-|  [isMediaFeature(x)](./media-query-list-parser.mediafeature.ismediafeature.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediafeature.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediafeature.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediafeature.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediafeature.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getName()](./media-query-list-parser.mediafeature.getname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[getNameToken()](./media-query-list-parser.mediafeature.getnametoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediafeature.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaFeature(x)](./media-query-list-parser.mediafeature.ismediafeature.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediafeature.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediafeature.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediafeature.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

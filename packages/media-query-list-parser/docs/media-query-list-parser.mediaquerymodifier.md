@@ -12,8 +12,48 @@ export declare enum MediaQueryModifier
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  Not | <code>&quot;not&quot;</code> |  |
-|  Only | <code>&quot;only&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+Not
+
+
+</td><td>
+
+`"not"`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+Only
+
+
+</td><td>
+
+`"only"`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -14,10 +14,37 @@ export declare function mirrorVariant(token: CSSToken): CSSToken | null;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  token | [CSSToken](./css-tokenizer.csstoken.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+token
+
+
+</td><td>
+
+[CSSToken](./css-tokenizer.csstoken.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [CSSToken](./css-tokenizer.csstoken.md) \| null

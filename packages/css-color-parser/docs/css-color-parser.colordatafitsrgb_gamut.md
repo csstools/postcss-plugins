@@ -14,10 +14,39 @@ export declare function colorDataFitsRGB_Gamut(x: ColorData): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  x | [ColorData](./css-color-parser.colordata.md) | The color data to be checked. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+x
+
+
+</td><td>
+
+[ColorData](./css-color-parser.colordata.md)
+
+
+</td><td>
+
+The color data to be checked.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

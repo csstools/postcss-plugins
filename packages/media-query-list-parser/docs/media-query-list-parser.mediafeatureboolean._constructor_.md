@@ -14,7 +14,34 @@ constructor(name: MediaFeatureName);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

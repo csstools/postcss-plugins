@@ -15,7 +15,44 @@ export interface TokenURL extends Token<TokenType.URL, {
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [value](./css-tokenizer.tokenurl.value.md) |  | string | The unescaped URL value without the leading <code>url(</code> and trailing <code>)</code>. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[value](./css-tokenizer.tokenurl.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unescaped URL value without the leading `url(` and trailing `)`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

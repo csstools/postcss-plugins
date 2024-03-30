@@ -12,27 +12,221 @@ export declare class MediaFeatureValue
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(value, before, after)](./media-query-list-parser.mediafeaturevalue._constructor_.md) |  | Constructs a new instance of the <code>MediaFeatureValue</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(value, before, after)](./media-query-list-parser.mediafeaturevalue._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `MediaFeatureValue` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after](./media-query-list-parser.mediafeaturevalue.after.md) |  | Array&lt;CSSToken&gt; |  |
-|  [before](./media-query-list-parser.mediafeaturevalue.before.md) |  | Array&lt;CSSToken&gt; |  |
-|  [type](./media-query-list-parser.mediafeaturevalue.type.md) |  | [NodeType](./media-query-list-parser.nodetype.md) |  |
-|  [value](./media-query-list-parser.mediafeaturevalue.value.md) |  | ComponentValue \| Array&lt;ComponentValue&gt; |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after](./media-query-list-parser.mediafeaturevalue.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[before](./media-query-list-parser.mediafeaturevalue.before.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./media-query-list-parser.mediafeaturevalue.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./media-query-list-parser.nodetype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[value](./media-query-list-parser.mediafeaturevalue.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ComponentValue \| Array&lt;ComponentValue&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [at(index)](./media-query-list-parser.mediafeaturevalue.at.md) |  |  |
-|  [indexOf(item)](./media-query-list-parser.mediafeaturevalue.indexof.md) |  |  |
-|  [isMediaFeatureValue(x)](./media-query-list-parser.mediafeaturevalue.ismediafeaturevalue.md) | <code>static</code> |  |
-|  [tokens()](./media-query-list-parser.mediafeaturevalue.tokens.md) |  |  |
-|  [toString()](./media-query-list-parser.mediafeaturevalue.tostring.md) |  |  |
-|  [walk(cb, state)](./media-query-list-parser.mediafeaturevalue.walk.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[at(index)](./media-query-list-parser.mediafeaturevalue.at.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[indexOf(item)](./media-query-list-parser.mediafeaturevalue.indexof.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[isMediaFeatureValue(x)](./media-query-list-parser.mediafeaturevalue.ismediafeaturevalue.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./media-query-list-parser.mediafeaturevalue.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./media-query-list-parser.mediafeaturevalue.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[walk(cb, state)](./media-query-list-parser.mediafeaturevalue.walk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

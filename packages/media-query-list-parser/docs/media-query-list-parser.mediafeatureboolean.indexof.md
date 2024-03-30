@@ -12,10 +12,37 @@ indexOf(item: MediaFeatureName): number | string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  item | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+item
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number \| string

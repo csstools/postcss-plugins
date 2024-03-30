@@ -33,27 +33,126 @@ postcssTape(plugin)({
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [postcssTape(pluginCreator, runOptions)](./postcss-tape.postcsstape.md) | Create a test suite for a PostCSS plugin. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[postcssTape(pluginCreator, runOptions)](./postcss-tape.postcsstape.md)
+
+
+</td><td>
+
+Create a test suite for a PostCSS plugin.
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [TestCaseOptions](./postcss-tape.testcaseoptions.md) | Options for a test case. |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[TestCaseOptions](./postcss-tape.testcaseoptions.md)
+
+
+</td><td>
+
+Options for a test case.
+
+
+</td></tr>
+</tbody></table>
 
 ## Variables
 
-|  Variable | Description |
-|  --- | --- |
-|  [atRuleClonerPlugin](./postcss-tape.atruleclonerplugin.md) | A dummy PostCSS plugin that clones any at rule with params <code>to-clone</code> to a new at rule with params <code>cloned</code>. |
-|  [declarationClonerPlugin](./postcss-tape.declarationclonerplugin.md) | A dummy PostCSS plugin that clones any declaration with the property <code>to-clone</code> to a new declaration with the property <code>cloned</code>. |
-|  [ruleClonerPlugin](./postcss-tape.ruleclonerplugin.md) | A dummy PostCSS plugin that clones any rule with the selector <code>to-clone</code> to a new rule with the selector <code>cloned</code>. |
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[atRuleClonerPlugin](./postcss-tape.atruleclonerplugin.md)
+
+
+</td><td>
+
+A dummy PostCSS plugin that clones any at rule with params `to-clone` to a new at rule with params `cloned`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[declarationClonerPlugin](./postcss-tape.declarationclonerplugin.md)
+
+
+</td><td>
+
+A dummy PostCSS plugin that clones any declaration with the property `to-clone` to a new declaration with the property `cloned`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[ruleClonerPlugin](./postcss-tape.ruleclonerplugin.md)
+
+
+</td><td>
+
+A dummy PostCSS plugin that clones any rule with the selector `to-clone` to a new rule with the selector `cloned`<!-- -->.
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Options](./postcss-tape.options.md) | General options for <code>@csstools/postcss-tape</code>. These affect the entire test run, not individual test cases. |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Options](./postcss-tape.options.md)
+
+
+</td><td>
+
+General options for `@csstools/postcss-tape`<!-- -->. These affect the entire test run, not individual test cases.
+
+
+</td></tr>
+</tbody></table>

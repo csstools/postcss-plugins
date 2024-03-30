@@ -1,0 +1,10 @@
+.foo {
+	background: url("foo.png#modified");
+}
+
+@font-face {
+	font-family: "Trickster";
+	src:
+		local("Trickster"),
+		url("trickster-COLRv1.otf#modified") format("opentype");
+}

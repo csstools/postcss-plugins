@@ -19,10 +19,37 @@ export declare function gatherNodeAncestry(node: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  node | { walk(cb: (entry: { node: Array&lt;unknown&gt; \| unknown; parent: unknown; }, index: number \| string) =&gt; boolean \| void): false \| undefined; } |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+node
+
+
+</td><td>
+
+{ walk(cb: (entry: { node: Array&lt;unknown&gt; \| unknown; parent: unknown; }, index: number \| string) =&gt; boolean \| void): false \| undefined; }
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Map&lt;unknown, unknown&gt;

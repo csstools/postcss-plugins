@@ -14,9 +14,62 @@ constructor(name: MediaFeatureName, operator: [TokenDelim, TokenDelim] | [TokenD
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | [MediaFeatureName](./media-query-list-parser.mediafeaturename.md) |  |
-|  operator | \[TokenDelim, TokenDelim\] \| \[TokenDelim\] |  |
-|  value | [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+[MediaFeatureName](./media-query-list-parser.mediafeaturename.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+operator
+
+
+</td><td>
+
+\[TokenDelim, TokenDelim\] \| \[TokenDelim\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+value
+
+
+</td><td>
+
+[MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

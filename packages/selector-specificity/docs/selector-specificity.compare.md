@@ -12,11 +12,51 @@ export declare function compare(s1: Specificity, s2: Specificity): number;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  s1 | [Specificity](./selector-specificity.specificity.md) |  |
-|  s2 | [Specificity](./selector-specificity.specificity.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+s1
+
+
+</td><td>
+
+[Specificity](./selector-specificity.specificity.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+s2
+
+
+</td><td>
+
+[Specificity](./selector-specificity.specificity.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number
