@@ -1,5 +1,16 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#404) (patch)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#406) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`1.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#102) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#305) (patch)
+- Updated [`css-has-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo) to [`6.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo/CHANGELOG.md#603) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`5.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#506) (patch)
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.1.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1211) (patch)
+
 ### 3.0.11
 
 _March 17, 2024_
