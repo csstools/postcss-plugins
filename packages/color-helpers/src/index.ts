@@ -48,3 +48,5 @@ export { lin_sRGB_to_XYZ } from './conversions/lin-srgb-to-xyz';
 
 export type { Color } from './types/color';
 export { namedColors } from './named-colors';
+
+export { contrast_ratio_wcag_2_1 } from './calculations/contrast-ratio-wcag-2-1';

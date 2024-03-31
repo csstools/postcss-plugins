@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (minor)
+
+- Add matching rules for `contrast-color`
+
 ### 3.1.1
 
 _March 13, 2024_

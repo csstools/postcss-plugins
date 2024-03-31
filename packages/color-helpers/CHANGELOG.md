@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (minor)
+
+- Add `contrast_ratio_wcag_2_1` function
+
 ### 4.0.0
 
 _December 15, 2023_

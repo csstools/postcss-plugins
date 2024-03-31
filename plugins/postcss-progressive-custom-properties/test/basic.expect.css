@@ -431,3 +431,35 @@
 	color: light-dark(var(--green), blue);
 }
 }
+
+:root {
+	--color-contrast-color-1: green;
+	--color-contrast-color-2: green;
+}
+
+@supports (color: contrast-color(red max)) {
+:root {
+	--color-contrast-color-1: contrast-color(green max);
+	--color-contrast-color-2: contrast-color(green);
+}
+}
+
+:root {
+	color: var(--green);
+}
+
+@supports (color: contrast-color(red max)) {
+:root {
+	color: contrast-color(var(--green) max);
+}
+}
+
+:root {
+	color: var(--green);
+}
+
+@supports (color: contrast-color(red max)) {
+:root {
+	color: contrast-color(var(--green));
+}
+}

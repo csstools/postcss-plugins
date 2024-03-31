@@ -113,6 +113,12 @@
       - plugins/postcss-conditional-values/**
       - experimental/postcss-conditional-values/**
 
+"plugins/postcss-contrast-color-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-contrast-color-function/**
+      - experimental/postcss-contrast-color-function/**
+
 "plugins/postcss-custom-media":
   - changed-files:
     - any-glob-to-any-file:
