@@ -1,9 +1,9 @@
-import type { AtRule, Container, Node, Plugin, PluginCreator } from 'postcss';
+import type { AtRule, Container, Declaration, Node, Plugin, PluginCreator } from 'postcss';
 import { hasConditionalAncestor } from './has-conditional-ancestor';
 import { tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { SyntaxFlag, color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut, serializeRGB } from '@csstools/css-color-parser';
-import { hasOverrideOrFallback } from './has-override-decl';
+import { sameProperty } from './same-property';
 
 /** postcss-gamut-mapping plugin options */
 export type pluginOptions = never;
@@ -20,19 +20,31 @@ type State = {
 	lastConditionalRule: Container | undefined,
 }
 
+type Modification = {
+	isRec2020: boolean,
+	matchesOriginal: boolean,
+	modifiedValue: string,
+	hasFallback: boolean,
+	item: Declaration,
+}
+
 const creator: PluginCreator<pluginOptions> = () => {
 
 	return {
 		postcssPlugin: 'postcss-gamut-mapping',
 		prepare(): Plugin {
 			const states = new WeakMap<Node, State>();
+			const visited = new WeakSet<Node>();
 
 			return {
 				postcssPlugin: 'postcss-gamut-mapping',
 				OnceExit(root, { postcss }): void {
 					root.walkDecls((decl) => {
-						const originalValue = decl.value;
-						if (!HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX.test(originalValue)) {
+						if (visited.has(decl)) {
+							return;
+						}
+
+						if (!HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX.test(decl.value)) {
 							return;
 						}
 
@@ -40,105 +52,138 @@ const creator: PluginCreator<pluginOptions> = () => {
 							return;
 						}
 
-						const { hasOverride, hasFallback } = hasOverrideOrFallback(decl);
-						if (hasOverride) {
-							return;
-						}
+						const declList = sameProperty(decl);
 
-						const state = states.get(decl.parent) || {
-							conditionalRules: [],
-							propNames: new Set<string>(),
-							lastConditionParams: {
-								media: undefined,
-							},
-							lastConditionalRule: undefined,
-						};
+						const maybeModified: Array<Modification> = declList.map((item, index) => {
+							visited.add(item);
 
-						states.set(decl.parent, state);
+							let isRec2020 = false;
 
-						let isRec2020 = false;
+							const originalValue = item.value;
+							const modified = replaceComponentValues(
+								parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
+								(componentValue) => {
+									if (!isFunctionNode(componentValue) || !HAS_WIDE_GAMUT_COLOR_NAME_REGEX.test(componentValue.getName())) {
+										return;
+									}
 
-						const replacedRGB = replaceComponentValues(
-							parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
-							(componentValue) => {
-								if (!isFunctionNode(componentValue) || !HAS_WIDE_GAMUT_COLOR_NAME_REGEX.test(componentValue.getName())) {
-									return;
-								}
+									const colorData = color(componentValue);
+									if (!colorData) {
+										return;
+									}
 
-								const colorData = color(componentValue);
-								if (!colorData) {
-									return;
-								}
+									if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+										return;
+									}
 
-								if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
-									return;
-								}
+									if (colorDataFitsRGB_Gamut(colorData)) {
+										return;
+									}
 
-								if (colorDataFitsRGB_Gamut(colorData)) {
-									return;
-								}
+									if (!isRec2020 && !colorDataFitsDisplayP3_Gamut(colorData)) {
+										isRec2020 = true;
+									}
 
-								if (!isRec2020 && !colorDataFitsDisplayP3_Gamut(colorData)) {
-									isRec2020 = true;
-								}
+									return serializeRGB(colorData, true);
+								},
+							);
 
-								return serializeRGB(colorData, true);
-							},
-						);
+							const modifiedValue = stringify(modified);
 
-						const modifiedRGB = stringify(replacedRGB);
-						if (modifiedRGB === originalValue) {
-							return;
-						}
-
-						const condition = `(color-gamut: ${isRec2020 ? 'rec2020' : 'p3'})`;
-
-						if (state.lastConditionParams.media !== condition) {
-							state.lastConditionalRule = undefined;
-						}
-
-						if (state.lastConditionalRule) {
-							if (!hasFallback) {
-								decl.cloneBefore({
-									value: modifiedRGB,
-								});
-							}
-
-							state.lastConditionalRule.append(decl.clone());
-
-							decl.remove();
-							return;
-						}
-
-						if (!hasFallback) {
-							decl.cloneBefore({
-								value: modifiedRGB,
-							});
-						}
-
-						const atRule = postcss.atRule({
-							name: 'media',
-							params: condition,
-							source: decl.parent.source,
-							raws: {
-								before: '\n\n',
-								after: '\n',
-							},
+							return {
+								isRec2020: isRec2020,
+								matchesOriginal: modifiedValue === originalValue,
+								modifiedValue: modifiedValue,
+								hasFallback: index > 0,
+								item: item,
+							};
 						});
 
-						const parentClone = decl.parent.clone();
-						parentClone.removeAll();
+						const modified: Array<Modification> = [];
 
-						parentClone.raws.before = '\n';
+						{
+							maybeModified.reverse();
 
-						parentClone.append(decl.clone());
-						decl.remove();
+							for (const item of maybeModified) {
+								if (item.matchesOriginal) {
+									break;
+								}
 
-						state.lastConditionParams.media = atRule.params;
-						state.lastConditionalRule = parentClone;
+								modified.push(item);
+							}
 
-						atRule.append(parentClone);
-						state.conditionalRules.push(atRule);
+							modified.reverse();
+						}
+
+						modified.forEach(({ isRec2020, modifiedValue, hasFallback, item }) => {
+							const parent = item.parent;
+							if (!parent) {
+								return;
+							}
+
+							const state = states.get(parent) || {
+								conditionalRules: [],
+								propNames: new Set<string>(),
+								lastConditionParams: {
+									media: undefined,
+								},
+								lastConditionalRule: undefined,
+							};
+
+							states.set(parent, state);
+
+							const condition = `(color-gamut: ${isRec2020 ? 'rec2020' : 'p3'})`;
+
+							if (state.lastConditionParams.media !== condition) {
+								state.lastConditionalRule = undefined;
+							}
+
+							if (!hasFallback) {
+								const clone = item.cloneBefore({
+									value: modifiedValue,
+								});
+
+								visited.add(clone);
+							}
+
+							if (state.lastConditionalRule) {
+								const clone = item.clone();
+								state.lastConditionalRule.append(clone);
+
+								visited.add(clone);
+
+								item.remove();
+								return;
+							}
+
+							const atRule = postcss.atRule({
+								name: 'media',
+								params: condition,
+								source: parent.source,
+								raws: {
+									before: '\n\n',
+									after: '\n',
+								},
+							});
+
+							const parentClone = parent.clone();
+							parentClone.removeAll();
+
+							parentClone.raws.before = '\n';
+
+							const clone = item.clone();
+
+							parentClone.append(clone);
+							item.remove();
+
+							visited.add(clone);
+
+							state.lastConditionParams.media = atRule.params;
+							state.lastConditionalRule = parentClone;
+
+							atRule.append(parentClone);
+							state.conditionalRules.push(atRule);
+						});
 					});
 
 					root.walk((node) => {

@@ -730,16 +730,10 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	color-6: oklch(60% 0.150 0);
 
 	color-7: rgb(0, 149, 131);
-
-	color-7: color(display-p3 0.19244 0.58461 0.51559);
 	color-8: rgb(0, 149, 131);
-	color-8: color(display-p3 0.19244 0.58461 0.51559);
 	color-9: rgb(0, 149, 131);
-	color-9: color(display-p3 0.19244 0.58461 0.51559);
 	color-10: rgb(0, 149, 131);
-	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: rgb(0, 149, 131);
-	color-11: color(display-p3 0.19244 0.58461 0.51559);
 
 	color-12: rgb(188, 101, 59);
 
@@ -758,10 +752,16 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 @media (color-gamut: p3){
 .oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 
+	color-7: color(display-p3 0.19244 0.58461 0.51559);
+
 	color-7: oklch(60% 0.1250 180);
+	color-8: color(display-p3 0.19244 0.58461 0.51559);
 	color-8: oklch(60% 0.1250 180deg);
+	color-9: color(display-p3 0.19244 0.58461 0.51559);
 	color-9: oklch(60% 0.1250 0.5turn);
+	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-10: oklch(60% 0.1250 200grad);
+	color-11: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: oklch(60% 0.1250 3.14159rad);
 }
 }
