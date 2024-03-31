@@ -1,6 +1,8 @@
 # Changes to PostCSS Light Dark Function
 
-### Unreleased (patch)
+### 1.0.2
+
+_March 31, 2024_
 
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.2.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#320) (minor)
 
