@@ -4,6 +4,7 @@
 
 - Fix missing rectangular color spaces for interpolation in `color-mix()`.
 - Fix `none` keyword conversion in relative color syntax origin values.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`4.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#410) (minor)
 
 ### 1.6.2
 
