@@ -1,6 +1,8 @@
 # Changes to Selector Specificity
 
-### Unreleased (patch)
+### 3.0.3
+
+_March 31, 2024_
 
 - Add support for:
 	- `:active-view-transition`
