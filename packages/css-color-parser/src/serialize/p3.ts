@@ -31,9 +31,9 @@ export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode
 		}
 	}
 
-	const r = toPrecision(p3[0], 6);
-	const g = toPrecision(p3[1], 6);
-	const b = toPrecision(p3[2], 6);
+	const r = gamutMapping ? Math.min(1, Math.max(0, toPrecision(p3[0], 6))) : toPrecision(p3[0], 6);
+	const g = gamutMapping ? Math.min(1, Math.max(0, toPrecision(p3[1], 6))) : toPrecision(p3[1], 6);
+	const b = gamutMapping ? Math.min(1, Math.max(0, toPrecision(p3[2], 6))) : toPrecision(p3[2], 6);
 
 	const fn: TokenFunction = [TokenType.Function, 'color(', -1, -1, { value: 'color' }];
 	const space: TokenWhitespace = [TokenType.Whitespace, ' ', -1, -1, undefined];

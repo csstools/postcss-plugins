@@ -1,9 +1,9 @@
 import { clip, XYZ_D50_to_OKLCH, OKLCH_to_OKLab, XYZ_to_lin_P3, gam_P3, XYZ_to_OKLab, OKLab_to_OKLCH, lin_P3_to_XYZ, lin_P3, OKLab_to_XYZ, mapGamut, XYZ_D50_to_P3, inGamut, Color } from '@csstools/color-helpers';
 
 export function XYZ_D50_to_P3_Gamut(color: Color): Color {
-	const srgb = XYZ_D50_to_P3(color);
-	if (inGamut(srgb)) {
-		return clip(srgb);
+	const p3 = XYZ_D50_to_P3(color);
+	if (inGamut(p3)) {
+		return clip(p3);
 	}
 
 	let oklch = color.slice() as Color;

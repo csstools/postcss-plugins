@@ -1,5 +1,9 @@
 # Changes to PostCSS gamut-mapping
 
+### Unreleased (patch)
+
+- Improve support for complex values
+
 ### 1.0.5
 
 _March 17, 2024_

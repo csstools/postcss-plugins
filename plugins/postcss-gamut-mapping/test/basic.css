@@ -138,3 +138,9 @@
 		color: color(display-p3 0 1 0);
 	}
 }
+
+:root {
+	background: linear-gradient(to right, rgb(180, 6, 95) 0%, rgb(185, 0, 68), rgb(187, 5, 34), rgb(186, 22, 0), rgb(182, 38, 0), rgb(174, 53, 0), rgb(164, 67, 0), rgb(151, 80, 0), rgb(134, 92, 0), rgb(113, 103, 0), rgb(87, 112, 0) 100%);
+	background: linear-gradient(to right, rgb(180, 6, 95) 0%, color(display-p3 0.66274 0.13281 0.2732), rgb(187, 5, 34), color(display-p3 0.66744 0.1674 -0.0377), color(display-p3 0.65449 0.20282 -0.1531), color(display-p3 0.63125 0.24386 -0.1941), color(display-p3 0.59786 0.28667 -0.2143), color(display-p3 0.55449 0.32865 -0.2232), color(display-p3 0.50119 0.3681 -0.2238), color(display-p3 0.43745 0.40384 -0.2152), color(display-p3 0.36142 0.435 -0.1928) 100%);
+	background: linear-gradient(to right in oklch, oklch(50% 50% 0deg) 0%, oklch(50% 50% 120deg) 100%)
+}

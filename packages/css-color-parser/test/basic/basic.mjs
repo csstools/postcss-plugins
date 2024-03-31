@@ -1,4 +1,4 @@
-import { color } from '@csstools/css-color-parser';
+import { color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut } from '@csstools/css-color-parser';
 import assert from 'assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_HSL_data, serialize_P3_data, serialize_sRGB_data } from '../util/serialize.mjs';
@@ -199,3 +199,14 @@ assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(from rgb(none none none / none) r g b / alpha)'))),
 	'rgba(0, 0, 0, 0)',
 );
+
+assert.equal(
+	colorDataFitsRGB_Gamut(color(parse('color(display-p3 0.99 1.0001 0.99)'))),
+	false,
+);
+
+assert.equal(
+	colorDataFitsDisplayP3_Gamut(color(parse('color(display-p3 0.99 1.0001 0.99)'))),
+	false,
+);
+
