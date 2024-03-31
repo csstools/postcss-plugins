@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (minor)
+### 4.1.0
+
+_March 31, 2024_
 
 - Add `contrast_ratio_wcag_2_1` function
 
