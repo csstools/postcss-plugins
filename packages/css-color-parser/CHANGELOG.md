@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 1.6.3
+
+_March 31, 2024_
 
 - Fix missing rectangular color spaces for interpolation in `color-mix()`.
 - Fix `none` keyword conversion in relative color syntax origin values.
