@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 9.5.3
+
+_March 31, 2024_
 
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.0.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#800-march-30-2024) (major)
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.2.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#320) (minor)
