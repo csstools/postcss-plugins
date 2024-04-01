@@ -1,0 +1,6 @@
+@layer theme {
+	:root {
+		color-scheme: dark;
+		--color: light-dark(red, blue);
+	}
+}

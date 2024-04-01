@@ -58,6 +58,13 @@ const requestListener = async function (req, res) {
 					});
 				});
 
+				if (parsedUrl.searchParams.has('native')) {
+					res.setHeader('Content-type', 'text/css');
+					res.writeHead(200);
+					res.end(data);
+					break;
+				}
+
 				const css = await postcss([plugin({preserve: false})]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
 				res.setHeader('Content-type', 'text/css');
 				res.writeHead(200);

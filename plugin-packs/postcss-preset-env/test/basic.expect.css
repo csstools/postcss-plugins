@@ -681,20 +681,19 @@
 }
 
 .dark {
-	--csstools-color-scheme--light:  ;
 	--csstools-color-scheme--dark: initial;
 	color-scheme: dark;
 }
 
 .light {
-	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;
 	color-scheme: light;
 }
 
 .schemed-colors {
-	color: rgb(141, 0, 0) magenta;
-	color: var(--csstools-color-scheme--light, rgb(141, 0, 0)) var(--csstools-color-scheme--dark, magenta);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(141, 0, 0);
+	color: var(--csstools-color-scheme--dark) rgb(141, 0, 0);
+	color: var(--csstools-light-dark-toggle--1, magenta);
 	color: light-dark(rgb(141, 0, 0), magenta);
 }
 
@@ -705,7 +704,8 @@
 }
 
 .schemed-prop {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
 }
 
 @supports (color: light-dark(red, red)) {
@@ -715,18 +715,6 @@
 }
 
 .schemed-prop * {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
-}
-
-:root {
-	--csstools-color-scheme--light: initial;
-	--csstools-color-scheme--dark:  ;
-}
-
-@media (prefers-color-scheme: dark) {
-
-	:root {
-		--csstools-color-scheme--light:  ;
-		--csstools-color-scheme--dark: initial;
-	}
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
 }

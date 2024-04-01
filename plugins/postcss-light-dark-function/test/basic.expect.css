@@ -1,17 +1,14 @@
 .color-scheme--dark {
-	--csstools-color-scheme--light:  ;
 	--csstools-color-scheme--dark: initial;
 	color-scheme: dark;
 }
 
 .color-scheme--light {
-	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;
 	color-scheme: light;
 }
 
 .color-scheme--light-dark {
-	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;
 	color-scheme: light dArk;
 }
@@ -19,13 +16,11 @@
 @media (prefers-color-scheme: dark) {
 
 .color-scheme--light-dark {
-	--csstools-color-scheme--light:  ;
 	--csstools-color-scheme--dark: initial;
 }
 }
 
 .color-scheme--dark-light {
-	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;
 	color-scheme: LIGHT dark;
 }
@@ -33,13 +28,13 @@
 @media (prefers-color-scheme: dark) {
 
 .color-scheme--dark-light {
-	--csstools-color-scheme--light:  ;
 	--csstools-color-scheme--dark: initial;
 }
 }
 
 .light-dark-function {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--0, blue);
 	color: light-dark(cyan, blue);
 }
 
@@ -51,60 +46,79 @@
 }
 
 .light-dark-function-recurse-1 {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--1, blue);
 	color: light-dark(light-dark(cyan, rgb(0, 0, 0)), blue);
 }
 
 .light-dark-function-recurse-1 {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--2: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--2, blue);
 	color: light-dark(cyan, light-dark(white, blue));
 }
 
 .light-dark-function-recurse-2 {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--3: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--3, blue);
 	color: light-dark(light-dark(light-dark(cyan, rgb(33, 33, 33)), rgb(0, 0, 0)), blue);
 }
 
 .light-dark-function-recurse-2 {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--4: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--4, blue);
 	color: light-dark(cyan, light-dark(white, light-dark(rgb(204, 204, 204), blue)));
 }
 
 .light-dark-function-recurse-3 {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--5: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--5, blue);
 	color: light-dark(light-dark(light-dark(light-dark(cyan, rgb(71, 71, 71)), rgb(33, 33, 33)), rgb(0, 0, 0)), blue);
 }
 
 .light-dark-function-recurse-3 {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--6: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--6, blue);
 	color: light-dark(cyan, light-dark(white, light-dark(light-dark(rgb(155, 155, 155), blue), blue)));
 }
 
 .light-dark-function-mix {
-	color: var(--csstools-color-scheme--light, color-mix(in oklch, red, cyan)) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--7: var(--csstools-color-scheme--dark) color-mix(in oklch, red, cyan);
+	color: var(--csstools-light-dark-toggle--7, blue);
 	color: light-dark(color-mix(in oklch, red, light-dark(cyan, rgb(0, 0, 0))), blue);
 }
 
 .light-dark-function-mix {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, color-mix(in oklch, red, blue));
+	--csstools-light-dark-toggle--8: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--8, color-mix(in oklch, red, blue));
 	color: light-dark(cyan, color-mix(in oklch, red, light-dark(white, blue)));
 }
 
 .light-dark-function-rcs {
-	color: var(--csstools-color-scheme--light, rgb(from cyan r g b)) var(--csstools-color-scheme--dark, blue);
+	--csstools-light-dark-toggle--9: var(--csstools-color-scheme--dark) rgb(from cyan r g b);
+	color: var(--csstools-light-dark-toggle--9, blue);
 	color: light-dark(rgb(from light-dark(cyan, rgb(0, 0, 0)) r g b), blue);
 }
 
 .light-dark-function-rcs {
-	color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, rgb(from blue r g b));
+	--csstools-light-dark-toggle--10: var(--csstools-color-scheme--dark) cyan;
+	color: var(--csstools-light-dark-toggle--10, rgb(from blue r g b));
 	color: light-dark(cyan, rgb(from light-dark(white, blue) r g b));
 }
 
+.light-dark-function-mix {
+	--csstools-light-dark-toggle--11: var(--csstools-color-scheme--dark) white;
+	--csstools-light-dark-toggle--12: var(--csstools-color-scheme--dark) yellow;
+	color: color-mix(in srgb, var(--csstools-light-dark-toggle--11, blue), var(--csstools-light-dark-toggle--12, red));
+	color: color-mix(in srgb, light-dark(white, blue), light-dark(yellow, red));
+}
+
 .prop {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	--csstools-light-dark-toggle--13: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--13, deepskyblue);
 	color: blue;
 	& * {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	--csstools-light-dark-toggle--13: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--13, deepskyblue);
 	}
 }
 
@@ -112,17 +126,4 @@
 .prop {
 	--theme-color: light-dark(cyan, deepskyblue);
 }
-}
-
-:root {
-	--csstools-color-scheme--light: initial;
-	--csstools-color-scheme--dark:  ;
-}
-
-@media (prefers-color-scheme: dark) {
-
-	:root {
-		--csstools-color-scheme--light:  ;
-		--csstools-color-scheme--dark: initial;
-	}
 }

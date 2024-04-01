@@ -1,0 +1,17 @@
+:root {
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light;
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) white;
+	--color: var(--csstools-light-dark-toggle--0, black);
+}
+
+@supports (color: light-dark(red, red)) {
+:root {
+	--color: light-dark(white, black);
+}
+}
+
+:root * {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) white;
+	--color: var(--csstools-light-dark-toggle--0, black);
+}

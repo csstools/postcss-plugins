@@ -9,10 +9,6 @@
 </head>
 <body>
 	<style>
-		:root {
-			color-scheme: light dark;
-		}
-
 		.box {
 			width: 100px;
 			height: 100px;
@@ -45,6 +41,10 @@
 				{
 					title: 'Light Dark CurrentColor - A',
 					style: `
+						:root {
+							color-scheme: light dark;
+						}
+
 						#parent { color: green; }
 						#child {
 							color-scheme: dark;
@@ -57,22 +57,24 @@
 			];
 
 			for (let testCase of testCases) {
-				const styleElement = document.createElement('style');
+				for (let params of ['', '?native=true']) {
+					const styleElement = document.createElement('style');
 
-				const testCaseStyle = await (fetch(`/test/styles.css`, {
-					method: 'POST',
-					body: testCase['style'],
-				}).then((response) => response.text()));
+					const testCaseStyle = await (fetch(`/test/styles.css${params}`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
 
-				styleElement.textContent = testCaseStyle;
-				document.head.append(styleElement);
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
 
-				for (let element of elements) {
-					let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark);
-					assert_equals(getComputedStyle(element).color, should_be_dark ? testCase.expected_dark : testCase.expected_light);
+					for (let element of elements) {
+						let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark);
+						assert_equals(getComputedStyle(element).color, should_be_dark ? testCase.expected_dark : testCase.expected_light);
+					}
+
+					styleElement.remove();
 				}
-
-				styleElement.remove();
 			}
 
 			return true;
