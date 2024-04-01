@@ -1,0 +1,16 @@
+@layer theme {
+	:root {
+		--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) red;
+		--color: var(--csstools-light-dark-toggle--0, blue);
+		& * {
+		--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) red;
+		--color: var(--csstools-light-dark-toggle--0, blue);
+		}
+	}
+
+@supports (color: light-dark(red, red)) {
+:root {
+		--color: light-dark(red, blue);
+	}
+}
+}

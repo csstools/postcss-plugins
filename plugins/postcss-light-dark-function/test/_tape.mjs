@@ -1,5 +1,6 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-light-dark-function';
+import postcssNesting from 'postcss-nesting';
 
 postcssTape(plugin)({
 	basic: {
@@ -10,6 +11,25 @@ postcssTape(plugin)({
 		options: {
 			preserve: false,
 		},
+	},
+	'both-in-root': {
+		message: 'limited bloat in :root when combined with nesting',
+		plugins: [
+			plugin(),
+			postcssNesting(),
+		],
+	},
+	'cascade-layers-a': {
+		message: 'supports cascade layers',
+	},
+	'cascade-layers-b': {
+		message: 'supports cascade layers',
+	},
+	'cascade-layers-c': {
+		message: 'supports cascade layers',
+	},
+	'cascade-layers-d': {
+		message: 'supports cascade layers',
 	},
 	ignore: {
 		message: 'ignores values with fallbacks or guard by @supports',

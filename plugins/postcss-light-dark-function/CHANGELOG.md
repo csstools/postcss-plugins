@@ -1,5 +1,9 @@
 # Changes to PostCSS Light Dark Function
 
+### Unreleased (patch)
+
+- Fix `light-dark()` and `color-scheme` when using cascade layers
+
 ### 1.0.2
 
 _March 31, 2024_

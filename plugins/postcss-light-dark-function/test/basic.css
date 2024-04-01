@@ -65,6 +65,10 @@
 	color: light-dark(cyan, rgb(from light-dark(white, blue) r g b));
 }
 
+.light-dark-function-mix {
+	color: color-mix(in srgb, light-dark(white, blue), light-dark(yellow, red));
+}
+
 .prop {
 	--theme-color: light-dark(cyan, deepskyblue);
 	color: blue;

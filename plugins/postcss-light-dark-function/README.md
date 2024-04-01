@@ -29,26 +29,27 @@ CSS, following the [CSS Color 5 Specification].
 /* becomes */
 
 .dark {
-	--csstools-color-scheme--light:  ;
 	--csstools-color-scheme--dark: initial;
 	color-scheme: dark;
 }
 
 .light {
-	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;
 	color-scheme: light;
 }
 
 .theme {
-	color: var(--csstools-color-scheme--light, pink) var(--csstools-color-scheme--dark, magenta);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
+	color: var(--csstools-light-dark-toggle--0, magenta);
 	color: light-dark(pink, magenta);
 }
 
 .prop {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
 	& * {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
 	}
 }
 
@@ -56,19 +57,6 @@ CSS, following the [CSS Color 5 Specification].
 .prop {
 	--theme-color: light-dark(cyan, deepskyblue);
 }
-}
-
-:root {
-	--csstools-color-scheme--light: initial;
-	--csstools-color-scheme--dark:  ;
-}
-
-@media (prefers-color-scheme: dark) {
-
-	:root {
-		--csstools-color-scheme--light:  ;
-		--csstools-color-scheme--dark: initial;
-	}
 }
 ```
 
@@ -133,38 +121,26 @@ postcssLightDarkFunction({ preserve: false })
 /* becomes */
 
 .dark {
-	--csstools-color-scheme--light:  ;
 	--csstools-color-scheme--dark: initial;
 	color-scheme: dark;
 }
 
 .light {
-	--csstools-color-scheme--light: initial;
 	--csstools-color-scheme--dark:  ;
 	color-scheme: light;
 }
 
 .theme {
-	color: var(--csstools-color-scheme--light, pink) var(--csstools-color-scheme--dark, magenta);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
+	color: var(--csstools-light-dark-toggle--0, magenta);
 }
 
 .prop {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
 	& * {
-	--theme-color: var(--csstools-color-scheme--light, cyan) var(--csstools-color-scheme--dark, deepskyblue);
-	}
-}
-
-:root {
-	--csstools-color-scheme--light: initial;
-	--csstools-color-scheme--dark:  ;
-}
-
-@media (prefers-color-scheme: dark) {
-
-	:root {
-		--csstools-color-scheme--light:  ;
-		--csstools-color-scheme--dark: initial;
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
 	}
 }
 ```

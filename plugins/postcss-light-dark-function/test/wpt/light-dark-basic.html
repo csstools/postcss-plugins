@@ -9,10 +9,6 @@
 </head>
 <body>
 	<style>
-		:root {
-			color-scheme: light dark;
-		}
-
 		.box {
 			width: 100px;
 			height: 100px;
@@ -44,6 +40,10 @@
 				{
 					title: 'Light Dark Basic - A',
 					style: `
+						:root {
+							color-scheme: light dark;
+						}
+
 						#light {
 							color-scheme: light;
 						}
@@ -62,6 +62,10 @@
 				{
 					title: 'Light Dark Basic - B',
 					style: `
+						:root {
+							color-scheme: light dark;
+						}
+
 						#light {
 							color-scheme: light;
 						}
@@ -77,25 +81,75 @@
 					expected_light: 'rgb(255, 255, 255)',
 					expected_dark: 'rgb(255, 0, 0)',
 				},
+				{
+					title: 'Light Dark Cascade Layers - A',
+					style: `
+						:root {
+							color-scheme: light dark;
+						}
+
+						@layer {
+							#light {
+								color-scheme: light;
+							}
+
+							#dark {
+								color-scheme: dark;
+							}
+
+							.box {
+								background-color: light-dark(white, black);
+							}
+						}
+					`,
+					expected_light: 'rgb(255, 255, 255)',
+					expected_dark: 'rgb(0, 0, 0)',
+				},
+				{
+					title: 'Light Dark Cascade Layers - B',
+					style: `
+						:root {
+							color-scheme: light dark;
+						}
+
+						@layer {
+							#light {
+								color-scheme: light;
+							}
+
+							#dark {
+								color-scheme: dark;
+							}
+
+							.box {
+								background-color: light-dark(light-dark(white, red), red);
+							}
+						}
+					`,
+					expected_light: 'rgb(255, 255, 255)',
+					expected_dark: 'rgb(255, 0, 0)',
+				},
 			];
 
 			for (let testCase of testCases) {
-				const styleElement = document.createElement('style');
+				for (let params of ['', '?native=true']) {
+					const styleElement = document.createElement('style');
 
-				const testCaseStyle = await (fetch(`/test/styles.css`, {
-					method: 'POST',
-					body: testCase['style'],
-				}).then((response) => response.text()));
+					const testCaseStyle = await (fetch(`/test/styles.css${params}`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
 
-				styleElement.textContent = testCaseStyle;
-				document.head.append(styleElement);
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
 
-				for (let element of elements) {
-					let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark);
-					assert_equals(getComputedStyle(element).backgroundColor, should_be_dark ? testCase.expected_dark : testCase.expected_light);
+					for (let element of elements) {
+						let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark);
+						assert_equals(getComputedStyle(element).backgroundColor, should_be_dark ? testCase.expected_dark : testCase.expected_light);
+					}
+
+					styleElement.remove();
 				}
-
-				styleElement.remove();
 			}
 
 			return true;

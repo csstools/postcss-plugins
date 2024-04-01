@@ -9,10 +9,6 @@
 </head>
 <body>
 	<style>
-		:root {
-			color-scheme: light dark;
-		}
-
 		.box {
 			min-width: 100px;
 			min-height: 100px;
@@ -54,6 +50,10 @@
 				const testCaseStyle = await (fetch(`/test/styles.css`, {
 					method: 'POST',
 					body: `
+					:root {
+						color-scheme: light dark;
+					}
+
 					.light {
 						color-scheme: light;
 					}
@@ -106,6 +106,10 @@
 				const testCaseStyle = await (fetch(`/test/styles.css`, {
 					method: 'POST',
 					body: `
+					:root {
+						color-scheme: light dark;
+					}
+
 					.light {
 						color-scheme: light;
 					}

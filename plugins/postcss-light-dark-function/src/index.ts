@@ -1,6 +1,6 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Plugin, PluginCreator, Source } from 'postcss';
-import { DARK_PROP, LIGHT_PROP, OFF, ON } from './props';
+import type { Plugin, PluginCreator } from 'postcss';
+import { DARK_PROP, OFF, ON, toggleNameGenerator } from './props';
 import { colorSchemes } from './color-schemes';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { transformLightDark } from './transform-light-dark';
@@ -12,8 +12,10 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	return {
 		postcssPlugin: 'postcss-light-dark-function',
 		prepare(): Plugin {
-			let didTransformValues = false;
-			let transformedValueSource: Source | undefined = undefined;
+			let counter = 0;
+			const currentToggleNameGenerator = (): string => {
+				return toggleNameGenerator(counter++);
+			};
 
 			return {
 				postcssPlugin: 'postcss-light-dark-function',
@@ -24,16 +26,18 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 					}
 
 					if (COLOR_SCHEME_REGEX.test(decl.prop)) {
+						if (parent.some((sibling) => sibling.type === 'decl' && sibling.prop === DARK_PROP)) {
+							return;
+						}
+
 						const [light, dark] = colorSchemes(decl.value);
 
 						if (light && dark) {
-							decl.cloneBefore({ prop: LIGHT_PROP, value: ON });
 							decl.cloneBefore({ prop: DARK_PROP, value: OFF });
 
 							const parentClone = parent.clone();
 							parentClone.removeAll();
 
-							parentClone.append(decl.clone({ prop: LIGHT_PROP, value: OFF }));
 							parentClone.append(decl.clone({ prop: DARK_PROP, value: ON }));
 
 							const prefers = atRule({ name: 'media', params: '(prefers-color-scheme: dark)', source: parent.source });
@@ -45,14 +49,12 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						}
 
 						if (dark) {
-							decl.cloneBefore({ prop: LIGHT_PROP, value: OFF });
 							decl.cloneBefore({ prop: DARK_PROP, value: ON });
 
 							return;
 						}
 
 						if (light) {
-							decl.cloneBefore({ prop: LIGHT_PROP, value: ON });
 							decl.cloneBefore({ prop: DARK_PROP, value: OFF });
 
 							return;
@@ -70,17 +72,16 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 							return;
 						}
 
-						const modified = transformLightDark(decl.value);
-						if (modified === decl.value) {
+						const modified = transformLightDark(decl.value, currentToggleNameGenerator);
+						if (modified.value === decl.value) {
 							return;
 						}
 
-						didTransformValues = true;
-						if (!transformedValueSource) {
-							transformedValueSource = decl.source;
+						for (const [toggleName, toggle] of modified.toggles) {
+							decl.cloneBefore({ prop: toggleName, value: toggle });
 						}
 
-						decl.cloneBefore({ value: modified });
+						decl.cloneBefore({ value: modified.value });
 
 						if (decl.variable && decl.parent) {
 							const variableInheritanceRule = rule({
@@ -88,40 +89,17 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 								source: decl.source,
 							});
 
-							variableInheritanceRule.append(decl.clone({ value: modified }));
+							for (const [toggleName, toggle] of modified.toggles) {
+								variableInheritanceRule.append(decl.clone({ prop: toggleName, value: toggle }));
+							}
+
+							variableInheritanceRule.append(decl.clone({ value: modified.value }));
 							decl.parent.append(variableInheritanceRule);
 						}
 
 						if (!opts?.preserve) {
 							decl.remove();
 						}
-					}
-				},
-				OnceExit(root, { atRule, rule, decl }): void {
-					if (!didTransformValues || !transformedValueSource) {
-						return;
-					}
-
-					const light = decl({ prop: LIGHT_PROP, value: ON });
-					const dark = decl({ prop: DARK_PROP, value: OFF });
-					light.source = transformedValueSource;
-					dark.source = transformedValueSource;
-
-					{
-						const rootRule = rule({ selector: ':root', source: transformedValueSource });
-						rootRule.append(light, dark);
-
-						root.append(rootRule);
-					}
-
-					{
-						const rootRule = rule({ selector: ':root', source: transformedValueSource });
-						rootRule.append(light.clone({ value: OFF }), dark.clone({ value: ON }));
-
-						const prefers = atRule({ name: 'media', params: '(prefers-color-scheme: dark)', source: transformedValueSource });
-						prefers.append(rootRule);
-
-						root.append(prefers);
 					}
 				},
 			};
