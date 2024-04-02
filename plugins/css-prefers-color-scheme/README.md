@@ -74,7 +74,7 @@ const prefersColorScheme = require('css-prefers-color-scheme');
 
 postcss([
 	prefersColorScheme(/* pluginOptions */)
-]).process(YOUR_CSS /*, processOptions */);
+]).process(YOUR_CSS, /* processOptions */);
 ```
 
 [Prefers Color Scheme] runs in all Node environments, with special
