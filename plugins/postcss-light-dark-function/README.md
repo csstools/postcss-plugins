@@ -9,54 +9,88 @@ npm install @csstools/postcss-light-dark-function --save-dev
 [PostCSS Light Dark Function] lets you use the `light-dark` color function in
 CSS, following the [CSS Color 5 Specification].
 
+Read more about this feature on mdn:
+- define the colors for light and dark with [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark)
+- define which elements support light and/or dark with [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme)
+
+With both features combined you can mix and match color-schemes in a single document, while also respecting the user's preferences.
+
 ```pcss
-.dark {
-	color-scheme: dark;
-}
-
-.light {
-	color-scheme: light;
-}
-
-.theme {
+.foo {
 	color: light-dark(pink, magenta);
 }
 
-.prop {
-	--theme-color: light-dark(cyan, deepskyblue);
+.bar {
+	--bar: light-dark(cyan, deepskyblue);
 }
 
 /* becomes */
 
-.dark {
-	--csstools-color-scheme--dark: initial;
-	color-scheme: dark;
-}
-
-.light {
-	--csstools-color-scheme--dark:  ;
-	color-scheme: light;
-}
-
-.theme {
+.foo {
 	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
 	color: var(--csstools-light-dark-toggle--0, magenta);
 	color: light-dark(pink, magenta);
 }
 
-.prop {
+.bar {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
 	& * {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
 	}
 }
 
 @supports (color: light-dark(red, red)) {
-.prop {
-	--theme-color: light-dark(cyan, deepskyblue);
+.bar {
+	--bar: light-dark(cyan, deepskyblue);
 }
+}
+```
+
+Declare that your document supports both light and dark mode:
+
+```pcss
+:root {
+	color-scheme: light dark;
+}
+
+/* becomes */
+
+:root {
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light dark;
+}@media (prefers-color-scheme: dark) {:root {
+	--csstools-color-scheme--dark: initial;
+}
+}
+```
+
+Dynamically alter the supported color scheme for some elements:
+
+```pcss
+:root {
+	/* Root only supports light mode */
+	color-scheme: light;
+}
+
+.foo {
+	/* This element and its children only support dark mode */
+	color-scheme: dark;
+}
+
+/* becomes */
+
+:root {
+	/* Root only supports light mode */
+	--csstools-color-scheme--dark:  ;
+	color-scheme: light;
+}
+
+.foo {
+	/* This element and its children only support dark mode */
+	--csstools-color-scheme--dark: initial;
+	color-scheme: dark;
 }
 ```
 
@@ -102,45 +136,27 @@ postcssLightDarkFunction({ preserve: false })
 ```
 
 ```pcss
-.dark {
-	color-scheme: dark;
-}
-
-.light {
-	color-scheme: light;
-}
-
-.theme {
+.foo {
 	color: light-dark(pink, magenta);
 }
 
-.prop {
-	--theme-color: light-dark(cyan, deepskyblue);
+.bar {
+	--bar: light-dark(cyan, deepskyblue);
 }
 
 /* becomes */
 
-.dark {
-	--csstools-color-scheme--dark: initial;
-	color-scheme: dark;
-}
-
-.light {
-	--csstools-color-scheme--dark:  ;
-	color-scheme: light;
-}
-
-.theme {
+.foo {
 	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
 	color: var(--csstools-light-dark-toggle--0, magenta);
 }
 
-.prop {
+.bar {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
 	& * {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
 	}
 }
 ```

@@ -1,15 +1,7 @@
-.dark {
-	color-scheme: dark;
-}
-
-.light {
-	color-scheme: light;
-}
-
-.theme {
+.foo {
 	color: light-dark(pink, magenta);
 }
 
-.prop {
-	--theme-color: light-dark(cyan, deepskyblue);
+.bar {
+	--bar: light-dark(cyan, deepskyblue);
 }

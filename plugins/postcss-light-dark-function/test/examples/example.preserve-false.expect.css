@@ -1,23 +1,13 @@
-.dark {
-	--csstools-color-scheme--dark: initial;
-	color-scheme: dark;
-}
-
-.light {
-	--csstools-color-scheme--dark:  ;
-	color-scheme: light;
-}
-
-.theme {
+.foo {
 	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
 	color: var(--csstools-light-dark-toggle--0, magenta);
 }
 
-.prop {
+.bar {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
 	& * {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
 	}
 }

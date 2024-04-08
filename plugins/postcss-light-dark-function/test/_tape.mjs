@@ -46,4 +46,10 @@ postcssTape(plugin)({
 			preserve: false,
 		},
 	},
+	'examples/root': {
+		message: ':root example',
+	},
+	'examples/element': {
+		message: 'element example',
+	},
 });

@@ -1,0 +1,9 @@
+:root {
+	/* Root only supports light mode */
+	color-scheme: light;
+}
+
+.foo {
+	/* This element and its children only support dark mode */
+	color-scheme: dark;
+}
