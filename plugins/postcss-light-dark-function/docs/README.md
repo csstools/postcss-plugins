@@ -24,7 +24,7 @@ Read more about this feature on mdn:
 - define the colors for light and dark with [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark)
 - define which elements support light and/or dark with [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme)
 
-With both features combined you can mix and match color-schemes in a single document, while also respecting the user's preferences.
+With both features combined you can mix and match color schemes in a single document, while also respecting the user's preferences.
 
 ```pcss
 <example.css>
