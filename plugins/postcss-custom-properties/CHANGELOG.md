@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 13.3.7
+
+_April 11, 2024_
 
 - Improve handling of cross references between computed values of custom properties
 
