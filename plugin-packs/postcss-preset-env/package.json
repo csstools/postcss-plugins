@@ -93,7 +93,7 @@
 		"postcss-color-hex-alpha": "^9.0.4",
 		"postcss-color-rebeccapurple": "^9.0.3",
 		"postcss-custom-media": "^10.0.4",
-		"postcss-custom-properties": "^13.3.6",
+		"postcss-custom-properties": "^13.3.7",
 		"postcss-custom-selectors": "^7.1.8",
 		"postcss-dir-pseudo-class": "^8.0.1",
 		"postcss-double-position-gradients": "^5.0.6",
