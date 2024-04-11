@@ -1,12 +1,11 @@
-import type { Plugin, PluginCreator } from 'postcss';
-import type valuesParser from 'postcss-value-parser';
+import type { Node, Plugin, PluginCreator } from 'postcss';
+import valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
-import { isDeclarationIgnored } from './is-ignored';
-import { transformProperties } from './transform-properties';
-import { hasSupportsAtRuleAncestor } from '@csstools/utilities';
-import { parseOrCached } from './parse-or-cached';
+import getCustomPropertiesFromSiblings from './get-custom-properties-from-siblings';
 import { HAS_VAR_FUNCTION_REGEX } from './is-var-function';
+import { hasSupportsAtRuleAncestor } from '@csstools/utilities';
+import { transformProperties } from './transform-properties';
 
 /** postcss-custom-properties plugin options */
 export type pluginOptions = {
@@ -14,7 +13,6 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const IS_INITIAL_REGEX = /^initial$/i;
 const SUPPORTS_REGEX = /(?:\bvar\()|(?:\(top: var\(--f\))/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
@@ -31,13 +29,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-custom-properties',
 		prepare(): Plugin {
-			let customProperties: Map<string, valuesParser.ParsedValue> = new Map();
+			let rootCustomProperties: Map<string, valuesParser.ParsedValue> = new Map();
+			const customPropertiesByParent: WeakMap<Node, Map<string, valuesParser.ParsedValue>> = new WeakMap();
 			const parsedValuesCache: Map<string, valuesParser.ParsedValue> = new Map();
 
 			return {
 				postcssPlugin: 'postcss-custom-properties',
 				Once(root): void {
-					customProperties = getCustomPropertiesFromRoot(root, parsedValuesCache);
+					rootCustomProperties = getCustomPropertiesFromRoot(root, parsedValuesCache);
 				},
 				Declaration(decl): void {
 					if (!HAS_VAR_FUNCTION_REGEX.test(decl.value)) {
@@ -48,31 +47,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const localCustomProperties : Map<string, valuesParser.ParsedValue> = new Map();
+					let customProperties = rootCustomProperties;
+
 					if (preserve && decl.parent) {
-						decl.parent.each((siblingDecl) => {
-							if (siblingDecl.type !== 'decl' || !siblingDecl.variable) {
-								return;
-							}
-
-							if (decl === siblingDecl) {
-								return;
-							}
-
-							if (isDeclarationIgnored(siblingDecl)) {
-								return;
-							}
-
-							if (IS_INITIAL_REGEX.test(siblingDecl.value)) {
-								localCustomProperties.delete(siblingDecl.prop);
-								return;
-							}
-
-							localCustomProperties.set(siblingDecl.prop, parseOrCached(siblingDecl.value, parsedValuesCache));
-						});
+						customProperties = customPropertiesByParent.get(decl.parent) ?? getCustomPropertiesFromSiblings(decl, rootCustomProperties, parsedValuesCache);
+						customPropertiesByParent.set(decl.parent, customProperties);
 					}
 
-					transformProperties(decl, customProperties, localCustomProperties, parsedValuesCache, { preserve: preserve });
+					transformProperties(decl, customProperties, { preserve: preserve });
 				},
 			};
 		},

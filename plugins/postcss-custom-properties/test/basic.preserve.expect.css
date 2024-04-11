@@ -81,7 +81,7 @@ html {
 }
 
 .test--circular_var {
-	color: var(--circular-2);
+	color: var(--circular);
 }
 
 .test--z-index {
@@ -162,7 +162,7 @@ html {
 }
 
 .space-values {
-	a: list("a",/**/,"c");
+	a: list("a", ,"c");
 	b: list("a", ,"c");
 	c: list("a",  ,"c");
 }
@@ -235,4 +235,18 @@ html {
 		--something-local: 1;
 		left: var(--something-local);
 	}
+}
+
+:root {
+	--with-fallback-on-root-1: var(--does-not-exist, 2);
+	--with-fallback-on-root-2: var(--does-not-exist, );
+}
+
+.el {
+	order: 2;
+}
+
+.el {
+	order:  ;
+	color: rgb(calc(120) 130 140);
 }

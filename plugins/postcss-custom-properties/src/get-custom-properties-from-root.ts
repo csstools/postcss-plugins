@@ -3,9 +3,7 @@ import valuesParser from 'postcss-value-parser';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
 import { HTML_SELECTOR_REGEX, HTML_WHERE_SELECTOR_REGEX, MAYBE_HTML_OR_ROOT_RULE_REGEX, ROOT_SELECTOR_REGEX, ROOT_WHERE_SELECTOR_REGEX, isProcessableRule } from './is-processable-rule';
-import { isVarFunction } from './is-var-function';
-import { removeCyclicReferences } from './toposort';
-import { parseOrCached } from './parse-or-cached';
+import { buildCustomPropertiesMap } from './build-custom-properties-map';
 
 // return custom selectors from the css root, conditionally removing them
 export default function getCustomPropertiesFromRoot(root: Root, parsedValuesCache: Map<string, valuesParser.ParsedValue>): Map<string, valuesParser.ParsedValue> {
@@ -67,25 +65,5 @@ export default function getCustomPropertiesFromRoot(root: Root, parsedValuesCach
 		});
 	});
 
-	const customPropertyGraph: Array<[string, string]> = [];
-	const out: Map<string, valuesParser.ParsedValue> = new Map();
-
-	for (const [name, value] of customProperties.entries()) {
-		const parsedValue = parseOrCached(value, parsedValuesCache);
-
-		valuesParser.walk(parsedValue.nodes, (node) => {
-			if (isVarFunction(node)) {
-				const [nestedVariableNode] = node.nodes.filter((x) => x.type === 'word');
-
-				customPropertyGraph.push([nestedVariableNode.value, name]);
-			}
-		});
-
-		out.set(name, parsedValue);
-	}
-
-	removeCyclicReferences(out, customPropertyGraph);
-
-	// return all custom properties, preferring :root properties over html properties
-	return out;
+	return buildCustomPropertiesMap(customProperties, new Map(), parsedValuesCache);
 }

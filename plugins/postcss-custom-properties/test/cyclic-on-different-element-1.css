@@ -1,0 +1,8 @@
+:root {
+	--a: var(--b);
+}
+
+.foo {
+	color: var(--b);
+	--b: var(--a);
+}
