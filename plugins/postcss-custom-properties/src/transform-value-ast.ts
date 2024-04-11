@@ -1,83 +1,89 @@
-import valuesParser from 'postcss-value-parser';
-import type { FunctionNode, Node } from 'postcss-value-parser';
-import { isVarFunction } from './is-var-function';
+import valuesParser, { Node } from 'postcss-value-parser';
 
-export default function transformValueAST(root: valuesParser.ParsedValue, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>): string {
+import { isVarFunction } from './is-var-function';
+import { parseVarFunction } from './parse-var-function';
+
+export default function transformValueAST(root: valuesParser.ParsedValue, customProperties: Map<string, valuesParser.ParsedValue>): string {
 	if (!root.nodes?.length) {
 		return '';
 	}
 
-	const ancestry: Map<Node, FunctionNode | valuesParser.ParsedValue> = new Map();
-	root.nodes.forEach((child) => {
-		ancestry.set(child, root);
-	});
-
-	valuesParser.walk(root.nodes, (child) => {
-		if (('nodes' in child) && child.nodes.length) {
-			child.nodes.forEach((grandChild) => {
-				ancestry.set(grandChild, child);
-			});
-		}
-	});
-
-	valuesParser.walk(root.nodes, (child) => {
+	walk(root.nodes, (child, index, nodes) => {
 		if (!isVarFunction(child)) {
 			return;
 		}
 
-		const [propertyNode, ...fallbacks] = child.nodes.filter((x) => x.type !== 'div');
-		const { value: name } = propertyNode;
-
-		const parent = ancestry.get(child);
-		if (!parent) {
-			return;
-		}
-
-		const index = parent.nodes.indexOf(child);
-		if (index === -1) {
+		const parsed = parseVarFunction(child);
+		if (!parsed) {
 			return;
 		}
 
 		let fallbackContainsUnknownVariables = false;
-		if (fallbacks) {
-			valuesParser.walk(fallbacks, (childNodeInFallback) => {
-				if (isVarFunction(childNodeInFallback)) {
-					const [fallbackPropertyNode] = childNodeInFallback.nodes.filter((x) => x.type === 'word');
-					if (customProperties.has(fallbackPropertyNode.value) || localCustomProperties.has(fallbackPropertyNode.value)) {
-						return;
-					}
+		if (parsed.fallback) {
+			valuesParser.walk(parsed.fallback, (childNodeInFallback) => {
+				if (!isVarFunction(childNodeInFallback)) {
+					return;
+				}
 
+				const parsedFallback = parseVarFunction(childNodeInFallback);
+				if (!parsedFallback) {
+					return;
+				}
+
+				if (
+					!parsedFallback.fallback &&
+					!customProperties.has(parsedFallback.name.value)
+				) {
 					fallbackContainsUnknownVariables = true;
 					return false;
 				}
 			});
 		}
 
-		let nodes = localCustomProperties.get(name)?.nodes ?? customProperties.get(name)?.nodes;
-		if (!nodes && fallbacks.length && !fallbackContainsUnknownVariables) {
+		let resolvedNodes = customProperties.get(parsed.name.value)?.nodes;
+		if (!resolvedNodes && parsed.fallback && !fallbackContainsUnknownVariables) {
 			// No match, but fallback available
-			nodes = child.nodes.slice(child.nodes.indexOf(fallbacks[0]));
+			resolvedNodes = parsed.fallback;
 		}
 
-		if (typeof nodes === 'undefined') {
+		if (typeof resolvedNodes === 'undefined') {
 			return;
 		}
 
-		if (nodes.length) {
-			parent.nodes.splice(index, 1, ...nodes);
-			parent.nodes.forEach((x) => ancestry.set(x, parent));
+		if (resolvedNodes.length) {
+			nodes.splice(index, 1, ...resolvedNodes);
 		} else {
 			// `postcss-value-parser` throws when removing nodes.
 			// Inserting an empty comment produces equivalent CSS source code and avoids the exception.
-			parent.nodes.splice(index, 1, {
-				type: 'comment',
-				value: '',
+			nodes.splice(index, 1, {
+				type: 'div',
+				value: ' ',
+				before: '',
+				after: '',
 				sourceIndex: child.sourceIndex,
 				sourceEndIndex: child.sourceEndIndex,
 			});
-			parent.nodes.forEach((x) => ancestry.set(x, parent));
 		}
-	}, true);
+	});
 
 	return valuesParser.stringify(root.nodes);
+}
+
+function walk(nodes: Array<Node>, cb: valuesParser.WalkCallback): void {
+	let i, max, node, result;
+
+	for (i = 0, max = nodes.length; i < max; i += 1) {
+		node = nodes[i];
+
+		if (
+			result !== false &&
+			node.type === 'function' &&
+			Array.isArray(node.nodes)
+		) {
+			walk(node.nodes, cb);
+		}
+
+		cb(node, i, nodes);
+		max = nodes.length;
+	}
 }

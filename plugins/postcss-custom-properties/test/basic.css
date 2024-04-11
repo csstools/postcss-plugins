@@ -241,3 +241,17 @@ html {
 		left: var(--something-local);
 	}
 }
+
+:root {
+	--with-fallback-on-root-1: var(--does-not-exist, 2);
+	--with-fallback-on-root-2: var(--does-not-exist, );
+}
+
+.el {
+	order: var(--with-fallback-on-root-1);
+}
+
+.el {
+	order: var(--with-fallback-on-root-2);
+	color: rgb(calc(120)var(--with-fallback-on-root-2)130 140);
+}

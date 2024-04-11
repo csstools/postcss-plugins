@@ -1,49 +1,41 @@
-import valuesParser from 'postcss-value-parser';
-import transformValueAST from './transform-value-ast';
 import type { Declaration } from 'postcss';
+import valuesParser from 'postcss-value-parser';
+
+import transformValueAST from './transform-value-ast';
 import { isDeclarationIgnored } from './is-ignored';
-import { HAS_VAR_FUNCTION_REGEX } from './is-var-function';
 
 // transform custom pseudo selectors with custom selectors
-export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, localCustomProperties: Map<string, valuesParser.ParsedValue>, parsedValuesCache: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }): void {
+export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }): void {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.value;
 		const valueAST = valuesParser(originalValue);
-		let value = transformValueAST(valueAST, customProperties, localCustomProperties);
+		const value = transformValueAST(valueAST, customProperties);
 
-		// protect against circular references
-		const valueSet = new Set();
-
-		while (HAS_VAR_FUNCTION_REGEX.test(value) && !valueSet.has(value)) {
-			valueSet.add(value);
-			const parsedValueAST = valuesParser(value);
-			value = transformValueAST(parsedValueAST, customProperties, localCustomProperties);
+		if (value === originalValue) {
+			return;
 		}
 
-		// conditionally transform values that have changed
-		if (value !== originalValue) {
-			if (parentHasExactFallback(decl, value)) {
-				if (!opts.preserve) {
-					decl.remove();
-				}
-
-				return;
+		if (parentHasExactFallback(decl, value)) {
+			if (!opts.preserve) {
+				decl.remove();
 			}
 
-			if (opts.preserve) {
-				const beforeDecl = decl.cloneBefore({ value });
+			return;
+		}
 
-				if (hasTrailingComment(beforeDecl) && beforeDecl.raws?.value) {
-					beforeDecl.raws.value.value = beforeDecl.value.replace(TRAILING_COMMENT_REGEX, '$1');
-					beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
-				}
-			} else {
-				decl.value = value;
+		if (opts.preserve) {
+			const beforeDecl = decl.cloneBefore({ value });
 
-				if (hasTrailingComment(decl) && decl.raws?.value) {
-					decl.raws.value.value = decl.value.replace(TRAILING_COMMENT_REGEX, '$1');
-					decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
-				}
+			if (hasTrailingComment(beforeDecl) && beforeDecl.raws?.value) {
+				beforeDecl.raws.value.value = beforeDecl.value.replace(TRAILING_COMMENT_REGEX, '$1');
+				beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
+			}
+		} else {
+			decl.value = value;
+
+			if (hasTrailingComment(decl) && decl.raws?.value) {
+				decl.raws.value.value = decl.value.replace(TRAILING_COMMENT_REGEX, '$1');
+				decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
 			}
 		}
 	}

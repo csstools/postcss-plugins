@@ -678,7 +678,7 @@
 
 .schemed-colors {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(141, 0, 0);
-	color: var(--csstools-color-scheme--dark) rgb(141, 0, 0);
+	color: magenta;
 	color: var(--csstools-light-dark-toggle--1, magenta);
 	color: light-dark(rgb(141, 0, 0), magenta);
 }

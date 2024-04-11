@@ -15,6 +15,12 @@ postcssTape(plugin)({
 	'cascade-layers': {
 		message: 'supports cascade layers',
 	},
+	'cyclic-on-different-element-1': {
+		message: 'supports cyclic variables on different elements',
+	},
+	'cyclic-on-different-element-2': {
+		message: 'supports cyclic variables on different elements',
+	},
 	'chained': {
 		message: 'supports chained variables',
 	},

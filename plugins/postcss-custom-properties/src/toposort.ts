@@ -19,6 +19,59 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
+	let cursor = nodes.length;
+	const sorted: Array<string> = new Array(cursor);
+	const visited: Record<number, boolean> = {};
+	let i = cursor;
+	// Better data structures make algorithm much faster.
+	const outgoingEdges = makeOutgoingEdges(edges);
+	const nodesHash = makeNodesHash(nodes);
+
+	while (i--) {
+		if (!visited[i]) {
+			visit(nodes[i], i, new Set());
+		}
+	}
+
+	return sorted;
+
+	function visit(node: string, j: number, predecessors: Set<string>): string | undefined {
+		if (predecessors.has(node)) {
+			let nodeRep;
+			try {
+				nodeRep = ', node was:' + JSON.stringify(node);
+			} catch (e) {
+				nodeRep = '';
+			}
+			throw new Error('Cyclic dependency' + nodeRep);
+		}
+
+		if (!nodesHash.has(node)) {
+			throw new Error('Found unknown node. Make sure to provided all involved nodes. Unknown node: ' + JSON.stringify(node));
+		}
+
+		if (visited[j]) {
+			return;
+		}
+		visited[j] = true;
+
+		const outgoing: Array<string> = Array.from(outgoingEdges.get(node) || new Set());
+
+		// eslint-disable-next-line no-cond-assign
+		if (j = outgoing.length) {
+			predecessors.add(node);
+			do {
+				const child = outgoing[--j];
+				visit(child, nodesHash.get(child)!, predecessors);
+			} while (j);
+			predecessors.delete(node);
+		}
+
+		sorted[--cursor] = node;
+	}
+}
+
 // We (ab)use `toposort` to find cyclic references.
 // At the moment this is not optimized and uses a brute force approach.
 //
