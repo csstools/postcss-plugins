@@ -62,7 +62,7 @@ const tests = [
 	['color-mix(in oklch, green 40%, color(xyz-d50 0.5501693084815327 0.37536346388820246 0.6806345611398199))', 'rgb(0, 148, 253)'],
 	['color-mix(in oklch, green 40%, color(xyz-d65 0.5600582450343325 0.37782875858447507 0.904570025128693))', 'rgb(0, 148, 253)'],
 	['color-mix(in oklch, green 40%, color(xyz 0.5600582450343325 0.37782875858447507 0.904570025128693))', 'rgb(0, 148, 253)'],
-	['color-mix(in oklch, green 40%, oklch(0.747 0.196 322.2))', 'rgb(0, 148, 254)'],
+	['color-mix(in oklch, green 40%, oklch(0.747 0.196 322.2))', 'rgb(0, 148, 253)'],
 	['color-mix(in oklch, green 40%, hsl(292deg 85.71% 72.55%))', 'rgb(0, 148, 253)'],
 
 	['color-mix(in srgb, color(xyz 1 none 0) 30%, rgb(none 255 128))', 'rgb(255, 255, 255)'],

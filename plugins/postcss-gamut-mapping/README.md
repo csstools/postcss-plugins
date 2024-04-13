@@ -27,8 +27,8 @@ p {
 
 p {
 	background-color: oklch(80% 0.05 0.39 / 0.5);
-	color: rgba(50, 0, 20, 0.5);
-	border-color: rgb(0, 249, 66);
+	color: rgba(48, 0, 20, 0.5);
+	border-color: rgb(0, 247, 79);
 }
 
 @media (color-gamut: rec2020) {

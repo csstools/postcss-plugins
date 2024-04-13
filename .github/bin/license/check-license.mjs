@@ -62,6 +62,11 @@ const allFiles = (await getFiles('./')).filter((file) => {
 					continue;
 				}
 
+				if (line.startsWith(' * @license MIT')) {
+					// W3C license is ok
+					continue;
+				}
+
 				if (process.env.GITHUB_ACTIONS) {
 					logEntries.push(`::error file=${path.relative(process.env.GITHUB_WORKSPACE, path.join(file.split('/dist/')[0], 'package.json'))},line=1,col=1::Found an unexpected @license comment in a build artifact.`);
 				} else {

@@ -159,8 +159,8 @@
 
 .test-multiple-colors {
 	background-1: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
-	background-2: linear-gradient(rgb(161, 0, 74), rgb(136, 126, 121));
-	background-2: linear-gradient(color(display-p3 0.59283 0 0.2865), rgb(136, 126, 121));
+	background-2: linear-gradient(rgb(158, 0, 75), rgb(136, 126, 121));
+	background-2: linear-gradient(color(display-p3 0.59035 0 0.28704), rgb(136, 126, 121));
 }
 
 .test-unparseable-lab-function {
@@ -183,9 +183,9 @@
 
 .test-blue-teal {
 	/* PR 0.18049383596973165, 0.5091259470889729, 0.5339002129941043 */
-	color-1: rgb(0, 131, 136);
+	color-1: rgb(0, 131, 135);
 	color-1: color(display-p3 0.18049 0.50913 0.5339);
-	color-2: rgb(0, 131, 136);
+	color-2: rgb(0, 131, 135);
 	color-2: color(display-p3 0.18049 0.50913 0.5339);
 }
 
@@ -196,8 +196,8 @@
 }
 
 .test-css-color-5-interop {
-	color-1: oklab(from rgb(141, 0, 0) l a b);
-	color-1: oklab(from color(display-p3 0.50566 0.0781 0) l a b);
-	color-2: oklch(from rgb(130, 31, 0) l c h);
-	color-2: oklch(from color(display-p3 0.48896 0.1211 0) l c h);
+	color-1: oklab(from rgb(131, 27, 0) l a b);
+	color-1: oklab(from color(display-p3 0.4939 0.10676 0) l a b);
+	color-2: oklch(from rgb(126, 37, 0) l c h);
+	color-2: oklch(from color(display-p3 0.47553 0.14324 0) l c h);
 }
