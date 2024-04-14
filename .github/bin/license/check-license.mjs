@@ -63,7 +63,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 				}
 
 				if (line.startsWith(' * @license MIT')) {
-					// W3C license is ok
+					// MIT license is ok
 					continue;
 				}
 
