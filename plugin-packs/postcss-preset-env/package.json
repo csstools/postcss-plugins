@@ -83,7 +83,7 @@
 		"@csstools/postcss-unset-value": "^3.0.1",
 		"autoprefixer": "^10.4.19",
 		"browserslist": "^4.22.3",
-		"css-blank-pseudo": "^6.0.1",
+		"css-blank-pseudo": "^6.0.2",
 		"css-has-pseudo": "^6.0.3",
 		"css-prefers-color-scheme": "^9.0.1",
 		"cssdb": "^8.0.0",
