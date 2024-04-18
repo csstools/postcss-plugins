@@ -49,7 +49,7 @@ function generateHandler(replaceWith) {
 
 		const isSelect = element.nodeName === 'SELECT';
 		const hasValue = isSelect
-			? !!element.options[element.selectedIndex].value
+			? !!element.options[element.selectedIndex]?.value
 			: !!element.value;
 
 		if (hasValue) {

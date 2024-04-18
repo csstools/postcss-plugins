@@ -98,6 +98,7 @@ if (!process.env.DEBUG) {
 			await page.type('#password-input', '1234');
 			await page.type('#textarea', '1234');
 			await page.select('#select', 'non-empty');
+			await page.select('#multiselect', 'non-empty');
 
 			const fillingResults = await Promise.all([
 				page.evaluate(async () => window.checkElement('user typing', 'tel', false)),
@@ -106,6 +107,7 @@ if (!process.env.DEBUG) {
 				page.evaluate(async () => window.checkElement('user typing', 'password', false)),
 				page.evaluate(async () => window.checkElement('user typing', 'textarea', false)),
 				page.evaluate(async () => window.checkElement('user typing', 'select', false)),
+				page.evaluate(async () => window.checkElement('user typing', 'multiselect', false)),
 			]);
 
 			// Reverting now, should revert
@@ -115,6 +117,7 @@ if (!process.env.DEBUG) {
 			await clearInput(page, '#password-input');
 			await clearInput(page, '#textarea');
 			await page.select('#select', '');
+			await page.select('#multiselect', '');
 
 			const unfillingResults = await Promise.all([
 				page.evaluate(async () => window.checkElement('user typing', 'tel', true)),
@@ -123,6 +126,7 @@ if (!process.env.DEBUG) {
 				page.evaluate(async () => window.checkElement('user typing', 'password', true)),
 				page.evaluate(async () => window.checkElement('user typing', 'textarea', true)),
 				page.evaluate(async () => window.checkElement('user typing', 'select', true)),
+				page.evaluate(async () => window.checkElement('user typing', 'multiselect', true)),
 			]);
 
 			const result = [
@@ -147,6 +151,7 @@ if (!process.env.DEBUG) {
 			await page.evaluate(async () => window.document.getElementById('password-input').value = '1234');
 			await page.evaluate(async () => window.document.getElementById('textarea').value = '1234');
 			await page.evaluate(async () => window.document.getElementById('select').value = 'non-empty');
+			await page.evaluate(async () => window.document.getElementById('multiselect').value = 'non-empty');
 
 
 			const fillingResults = await Promise.all([
@@ -156,6 +161,7 @@ if (!process.env.DEBUG) {
 				page.evaluate(async () => window.checkElement('js value change', 'password', false)),
 				page.evaluate(async () => window.checkElement('js value change', 'textarea', false)),
 				page.evaluate(async () => window.checkElement('js value change', 'select', false)),
+				page.evaluate(async () => window.checkElement('js value change', 'multiselect', false)),
 			]);
 
 			// Reverting
@@ -165,6 +171,7 @@ if (!process.env.DEBUG) {
 			await page.evaluate(async () => window.document.getElementById('password-input').value = '');
 			await page.evaluate(async () => window.document.getElementById('textarea').value = '');
 			await page.evaluate(async () => window.document.getElementById('select').value = '');
+			await page.evaluate(async () => window.document.getElementById('multiselect').value = '');
 
 			const unfillingResults = await Promise.all([
 				page.evaluate(async () => window.checkElement('js value change', 'tel', true)),
@@ -173,12 +180,15 @@ if (!process.env.DEBUG) {
 				page.evaluate(async () => window.checkElement('js value change', 'password', true)),
 				page.evaluate(async () => window.checkElement('js value change', 'textarea', true)),
 				page.evaluate(async () => window.checkElement('js value change', 'select', true)),
+				page.evaluate(async () => window.checkElement('js value change', 'multiselect', true)),
 			]);
 
 			await page.evaluate(async () => {
 				window.document.getElementById('select').options[1].selected = true;
+				window.document.getElementById('multiselect').options[1].selected = true;
 			});
 			await page.evaluate(async () => window.checkElement('js value change', 'select', false));
+			await page.evaluate(async () => window.checkElement('js value change', 'multiselect', false));
 
 			const result = [
 				...fillingResults,
