@@ -87,7 +87,7 @@
 	        order: 9;
 }
 
-.test-nesting-rules + p, #test-is-pseudo + p {
+.test-nesting-rules:not(#does-not-exist) + p,#test-is-pseudo + p {
 		-webkit-box-ordinal-group: 9;
 		-webkit-order: 8;
 		   -moz-box-ordinal-group: 9;

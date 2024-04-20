@@ -48,7 +48,7 @@
 	order: 9;
 }
 
-.test-nesting-rules + p, #test-is-pseudo + p {
+:is(.test-nesting-rules,#test-is-pseudo) + p {
 		order: 8;
 	}
 
