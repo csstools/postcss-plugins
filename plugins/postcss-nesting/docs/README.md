@@ -34,35 +34,13 @@ you might want to use [PostCSS Nested] instead.
 
 <envSupport>
 
-## ⚠️ `@nest` has been removed from the specification.
-
-Previous iterations of the [CSS Nesting specification] required using `@nest` for certain selectors.
-
-`@nest` was removed from the specification completely.
-Future versions of this plugin will error if you use `@nest`.
-
-We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.  
-We published a [Stylelint Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins-stylelint/no-at-nest-rule#csstoolsstylelint-no-at-nest-rule) to help you migrate.
-
-example warning:
-> `@nest` was removed from the CSS Nesting specification and will be removed from PostCSS Nesting in the next major version.
-> Change `@nest foo & {}` to `foo & {}` to migrate to the latest standard.
-
-You can silence this warning with a new `silenceAtNestWarning` plugin option.
-
-```js
-<exportName>({
-	silenceAtNestWarning: true
-})
-```
-
 ## Options
 
 ### edition
 
-The default behavior is to transpile CSS following an older version of the CSS nesting specification.
+The default behavior is to transpile CSS following the version of the CSS nesting specification as it existed during the last major version of this plugin.
 
-If you want to already use the latest version you can set the `edition` option to `2024-02`.
+If you want to use an older or even more recent version you can set the `edition` option.
 
 ```js
 <exportName>({
@@ -70,22 +48,7 @@ If you want to already use the latest version you can set the `edition` option t
 })
 ```
 
-#### `2021` (default)
-
-This version is a continuation of what existed before CSS nesting was implemented in browsers.  
-It made a few non-invasive changes to keep up with implementations but it is falling behind.
-
-In a future version of this plugin this will no longer be the default.
-
-```pcss
-<example.css>
-
-/* becomes */
-
-<example.expect.css>
-```
-
-#### `2024-02`
+#### `2024-02` (default)
 
 - usage of `:is()` pseudo-class is no longer optional
 - at rules are not combined with the `and` keyword
@@ -100,7 +63,22 @@ In a future version of this plugin this will no longer be the default.
 <example.edition-2024-02.expect.css>
 ```
 
-### noIsPseudoSelector
+#### `2021`
+
+This version is a continuation of what existed before CSS nesting was implemented in browsers.  
+It made a few non-invasive changes to keep up with implementations but it is falling behind.
+
+In a future version of this plugin this will no longer be the default.
+
+```pcss
+<example.css>
+
+/* becomes */
+
+<example.expect.css>
+```
+
+### noIsPseudoSelector (edition: `2021`)
 
 #### Specificity
 

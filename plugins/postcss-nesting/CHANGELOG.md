@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (major)
+
+- Make edition `2024-02` the default.
+
 ### 12.1.1
 
 _March 31, 2024_
