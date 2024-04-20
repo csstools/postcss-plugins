@@ -377,10 +377,6 @@ article {
 		color: blue;
 	}
 
-	/*
-		NOTE : We are more forgiving than the spec
-		This declaration is preserved
-	*/
 	color: red;
 }
 
@@ -391,10 +387,6 @@ article {
 		color: blue;
 	}
 
-	/*
-		NOTE : We are more forgiving than the spec
-		This declaration is preserved
-	*/
 	color: red;
 
 	&.foo {
@@ -402,4 +394,20 @@ article {
 	}
 
 	/* valid! */
+}
+
+::after, .foo {
+	color: green;
+
+	& {
+		color: blue;
+	}
+
+	color: red;
+
+	@media screen {
+		color: purple;
+	}
+
+	color: orange;
 }
