@@ -34,13 +34,11 @@ you might want to use [PostCSS Nested] instead.
 
 .foo {
 	color: red;
-
-	color: pink;
 }
 .foo:hover {
 		color: green;
 	}
-.foo > .bar {
+.foo  > .bar {
 		color: blue;
 	}
 @media (prefers-color-scheme: dark) {
@@ -48,6 +46,10 @@ you might want to use [PostCSS Nested] instead.
 		color: cyan;
 }
 	}
+.foo {
+
+	color: pink;
+}
 ```
 
 ## Usage
@@ -100,47 +102,6 @@ postcssNesting({
 - at rules are not combined with the `and` keyword
 - `@nest` is removed from the specification
 - declarations and nested rules/at-rules are no longer re-ordered
-
-```pcss
-.foo {
-	color: red;
-
-	&:hover {
-		color: green;
-	}
-
-	> .bar {
-		color: blue;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		color: cyan;
-	}
-
-	color: pink;
-}
-
-/* becomes */
-
-.foo {
-	color: red;
-}
-.foo:hover {
-		color: green;
-	}
-.foo  > .bar {
-		color: blue;
-	}
-@media (prefers-color-scheme: dark) {
-	.foo {
-		color: cyan;
-}
-	}
-.foo {
-
-	color: pink;
-}
-```
 
 #### `2021`
 

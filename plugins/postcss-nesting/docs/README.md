@@ -27,7 +27,7 @@ you might want to use [PostCSS Nested] instead.
 
 /* becomes */
 
-<example.expect.css>
+<example.edition-2024-02.expect.css>
 ```
 
 <usage>
@@ -54,14 +54,6 @@ If you want to use an older or even more recent version you can set the `edition
 - at rules are not combined with the `and` keyword
 - `@nest` is removed from the specification
 - declarations and nested rules/at-rules are no longer re-ordered
-
-```pcss
-<example.css>
-
-/* becomes */
-
-<example.edition-2024-02.expect.css>
-```
 
 #### `2021`
 
