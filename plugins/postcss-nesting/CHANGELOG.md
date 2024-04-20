@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 12.1.1
 
 _March 31, 2024_

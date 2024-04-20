@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 4.0.6
 
 _March 31, 2024_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradient Stop Increments
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.8
 
 _March 13, 2024_

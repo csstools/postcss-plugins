@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Selectors
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 7.1.8
 
 _March 13, 2024_

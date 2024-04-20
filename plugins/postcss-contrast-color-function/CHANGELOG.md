@@ -1,5 +1,9 @@
 # Changes to PostCSS Contrast Color Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.0
 
 _March 31, 2024_
