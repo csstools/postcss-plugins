@@ -48,10 +48,6 @@
 .test-nesting-rules {
 	-ms-flex-order: 4;
 	    order: 4;
-
-	-ms-flex-order: 6;
-
-	    order: 6;
 }
 
 .test-nesting-rules p {
@@ -59,20 +55,31 @@
 		    order: 5;
 	}
 
+.test-nesting-rules {
+
+	-ms-flex-order: 6;
+
+	    order: 6;
+}
+
 .test-nesting-rules,
 #test-is-pseudo {
 	-ms-flex-order: 7;
 	    order: 7;
-
-	-ms-flex-order: 9;
-
-	    order: 9;
 }
 
 .test-nesting-rules:not(#does-not-exist) + p,#test-is-pseudo + p {
 		-ms-flex-order: 8;
 		    order: 8;
 	}
+
+.test-nesting-rules,
+#test-is-pseudo {
+
+	-ms-flex-order: 9;
+
+	    order: 9;
+}
 
 @media (max-width: 30em) {
 	.test-custom-media-queries {
