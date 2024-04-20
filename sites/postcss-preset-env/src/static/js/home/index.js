@@ -30,6 +30,7 @@
 			const op = (Math.cos(rad) + 1) / 2;
 			words[i].style.transform = `perspective(100px) translateZ(${translateZ}px) translateY(${translateY}%)`;
 			words[i].style.opacity = `${op}`;
+			words[i].style.filter = `blur(${(1 - op) * 2.5}px)`;
 		}
 	}
 })();
