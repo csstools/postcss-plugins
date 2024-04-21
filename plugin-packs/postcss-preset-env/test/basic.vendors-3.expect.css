@@ -420,7 +420,7 @@
 }
 
 .color-function {
-	prop-1: rgb(0, 132, 94);
+	prop-1: rgb(0, 129, 96);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
@@ -450,16 +450,16 @@
 	color-5: rgba(126, 37, 15, 0.5);
 	color-6: rgb(197, 84, 124);
 
-	color-7: rgb(0, 152, 131);
+	color-7: rgb(0, 149, 131);
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
-	color-8: rgb(0, 152, 131);
+	color-8: rgb(0, 149, 131);
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
-	color-9: rgb(0, 152, 131);
+	color-9: rgb(0, 149, 131);
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
-	color-10: rgb(0, 152, 131);
+	color-10: rgb(0, 149, 131);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
-	color-11: rgb(0, 152, 131);
+	color-11: rgb(0, 149, 131);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
 
 	color-12: rgb(188, 101, 59);
@@ -584,19 +584,19 @@
 	color-1: rgba(0, 0, 255, 0.65);
 	color-2: rgba(0, 0, 255, 0.65);
 	color-3: rgba(0, 0, 255, 0.65);
-	color-4: rgba(125, 0, 190, 0.65);
-	color-4: color(display-p3 0.44999 0 0.73423 / 0.65);
-	color-5: rgba(153, 0, 125, 0.65);
-	color-5: color(display-p3 0.5648 0 0.48884 / 0.65);
+	color-4: rgba(121, 0, 181, 0.65);
+	color-4: color(display-p3 0.44 0 0.70096 / 0.65);
+	color-5: rgba(148, 0, 122, 0.65);
+	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
 }
 
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
 
-	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, rgb(255, 154, 128) 0%, rgb(0, 254, 255) 100%);
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, rgb(255, 162, 140) 0%, rgb(97, 247, 255) 100%);
 
-	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, color(display-p3 1 0.58806 0.46644) 0%, color(display-p3 0.25144 0.99269 1) 100%);
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, color(display-p3 1 0.61806 0.51282) 0%, color(display-p3 0.51747 0.96259 1) 100%);
 }
 
 .test-css-color-5-interop {
@@ -607,10 +607,10 @@
 	color-5: hwb(from rgb(179, 157, 51) h w b);
 	color-6: lab(from rgb(179, 35, 35) l a b);
 	color-7: lch(from rgb(163, 57, 39) l c h);
-	color-8: oklab(from rgb(143, 0, 0) l a b);
-	color-8: oklab(from color(display-p3 0.52884 0 0) l a b);
-	color-9: oklch(from rgb(136, 19, 0) l c h);
-	color-9: oklch(from color(display-p3 0.50449 0.08687 0) l c h);
+	color-8: oklab(from rgb(131, 27, 0) l a b);
+	color-8: oklab(from color(display-p3 0.4939 0.10676 0) l a b);
+	color-9: oklch(from rgb(126, 37, 0) l c h);
+	color-9: oklch(from color(display-p3 0.47553 0.14324 0) l c h);
 }
 
 .test-property-with-var {
@@ -624,7 +624,7 @@
 }
 
 .out-of-gamut {
-	--color: rgb(0, 251, 41);
+	--color: rgb(0, 247, 79);
 }
 
 .issue-1244--a {
@@ -648,8 +648,8 @@
 }
 
 .schemed-colors {
-	color: light-dark(lch(from rgb(143, 0, 0) l c h), magenta);
-	color: light-dark(lch(from color(display-p3 0.52884 0 0) l c h), magenta);
+	color: light-dark(lch(from rgb(131, 27, 0) l c h), magenta);
+	color: light-dark(lch(from color(display-p3 0.4939 0.10676 0) l c h), magenta);
 }
 
 .schemed-prop {

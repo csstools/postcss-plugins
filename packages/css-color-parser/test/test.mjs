@@ -14,3 +14,5 @@ import './basic/relative-color.mjs';
 import './basic/variables.mjs';
 
 import './wpt/index.mjs';
+
+import './gamut-mapping/ray-trace.mjs';

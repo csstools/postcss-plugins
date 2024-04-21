@@ -14,11 +14,11 @@ const tests = [
 	['rgb(from rgb(from rebeccapurple r g b) r g b)', 'rgb(102, 51, 153)'],
 
 	// Testing non-sRGB origin colors to see gamut mapping.
-	['rgb(from color(display-p3 0 1 0) r g b / alpha)', 'rgb(0, 251, 41)'], // Naive clip based mapping would give rgb(0, 255, 0).
+	['rgb(from color(display-p3 0 1 0) r g b / alpha)', 'rgb(0, 247, 79)'], // Naive clip based mapping would give rgb(0, 255, 0).
 	['rgb(from lab(100 104.3 -50.9) r g b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 150, 255).
-	['rgb(from lab(0 104.3 -50.9) r g b)', 'rgb(42, 0, 34)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
+	['rgb(from lab(0 104.3 -50.9) r g b)', 'rgb(38, 0, 31)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
 	['rgb(from lch(100 116 334) r g b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 150, 255).
-	['rgb(from lch(0 116 334) r g b)', 'rgb(42, 0, 34)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
+	['rgb(from lch(0 116 334) r g b)', 'rgb(38, 0, 31)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
 	['rgb(from oklab(1 0.365 -0.16) r g b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 92, 255).
 	['rgb(from oklab(0 0.365 -0.16) r g b)', 'rgb(0, 0, 0)'], // Naive clip based mapping would give rgb(19, 0, 24).
 	['rgb(from oklch(1 0.399 336.3) r g b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 91, 255).
@@ -121,11 +121,11 @@ const tests = [
 	['hsl(from hsl(from rebeccapurple h s l) h s l)', 'rgb(102, 51, 153)'],
 
 	// Testing non-sRGB origin colors to see gamut mapping.
-	['hsl(from color(display-p3 0 1 0) h s l / alpha)', 'rgb(0, 251, 41)'], // Naive clip based mapping would give rgb(0, 255, 0).
+	['hsl(from color(display-p3 0 1 0) h s l / alpha)', 'rgb(0, 247, 79)'], // Naive clip based mapping would give rgb(0, 255, 0).
 	['hsl(from lab(100 104.3 -50.9) h s l)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 150, 255).
-	['hsl(from lab(0 104.3 -50.9) h s l)', 'rgb(42, 0, 34)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
+	['hsl(from lab(0 104.3 -50.9) h s l)', 'rgb(38, 0, 31)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
 	['hsl(from lch(100 116 334) h s l)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 150, 255).
-	['hsl(from lch(0 116 334) h s l)', 'rgb(42, 0, 34)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
+	['hsl(from lch(0 116 334) h s l)', 'rgb(38, 0, 31)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
 	['hsl(from oklab(1 0.365 -0.16) h s l)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 92, 255).
 	['hsl(from oklab(0 0.365 -0.16) h s l)', 'rgb(0, 0, 0)'], // Naive clip based mapping would give rgb(19, 0, 24).
 	['hsl(from oklch(1 0.399 336.3) h s l)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 91, 255).
@@ -202,11 +202,11 @@ const tests = [
 	['hwb(from hwb(from rebeccapurple h w b) h w b)', 'rgb(102, 51, 153)'],
 
 	// Testing non-sRGB origin colors to see gamut mapping.
-	['hwb(from color(display-p3 0 1 0) h w b / alpha)', 'rgb(0, 251, 41)'], // Naive clip based mapping would give rgb(0, 255, 0).
+	['hwb(from color(display-p3 0 1 0) h w b / alpha)', 'rgb(0, 247, 79)'], // Naive clip based mapping would give rgb(0, 255, 0).
 	['hwb(from lab(100 104.3 -50.9) h w b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 150, 255).
-	['hwb(from lab(0 104.3 -50.9) h w b)', 'rgb(42, 0, 34)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
+	['hwb(from lab(0 104.3 -50.9) h w b)', 'rgb(38, 0, 31)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
 	['hwb(from lch(100 116 334) h w b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 150, 255).
-	['hwb(from lch(0 116 334) h w b)', 'rgb(42, 0, 34)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
+	['hwb(from lch(0 116 334) h w b)', 'rgb(38, 0, 31)'], // Naive clip based mapping would give rgb(90, 0, 76). NOTE: 0% lightness in Lab/LCH does not automatically correspond with sRGB black,
 	['hwb(from oklab(1 0.365 -0.16) h w b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 92, 255).
 	['hwb(from oklab(0 0.365 -0.16) h w b)', 'rgb(0, 0, 0)'], // Naive clip based mapping would give rgb(19, 0, 24).
 	['hwb(from oklch(1 0.399 336.3) h w b)', 'rgb(255, 255, 255)'], // Naive clip based mapping would give rgb(255, 91, 255).

@@ -1,6 +1,6 @@
 :root {
 	--a-color: oklch(40% 0.05 0.39 / var(--opacity-50));
-	--b-color: rgba(139, 0, 67, var(--opacity-50));
+	--b-color: rgba(133, 0, 67, var(--opacity-50));
 }
 
 @media (color-gamut: rec2020) {
@@ -18,11 +18,11 @@
 	color-6: oklch(60% 0.150 0);
 
 	@supports (color: oklch(60% 0.1250 180)) {
-		color-7: rgb(0, 152, 131);
-		color-8: rgb(0, 152, 131);
-		color-9: rgb(0, 152, 131);
-		color-10: rgb(0, 152, 131);
-		color-11: rgb(0, 152, 131);
+		color-7: rgb(0, 149, 131);
+		color-8: rgb(0, 149, 131);
+		color-9: rgb(0, 149, 131);
+		color-10: rgb(0, 149, 131);
+		color-11: rgb(0, 149, 131);
 	}
 
 @media (color-gamut: p3) {
@@ -74,7 +74,7 @@
 
 .default-4 {
 	/* Out p3 of gamut */
-	color: rgb(252, 255, 252);
+	color: rgb(253, 255, 253);
 }
 
 @media (color-gamut: rec2020) {
@@ -195,7 +195,7 @@
 
 @supports (color: color(display-p3 0 1 0)) {
 	.guarded-by-supports {
-		color: rgb(0, 251, 41);
+		color: rgb(0, 247, 79);
 	}
 
 @media (color-gamut: p3) {

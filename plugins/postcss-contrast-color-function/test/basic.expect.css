@@ -1,12 +1,12 @@
 .dynamic {
-	color: color(display-p3 0.16781 0 0.17472);
+	color: color(display-p3 0.15472 0 0.15897);
 	color: contrast-color(oklch(82.06% 0.2 330.35));
 }@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {.dynamic {
 	color: rgb(0, 0, 0);
 }
 	}
 }@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.30767 0 0.31758);
+	color: color(display-p3 0.29314 0 0.30019);
 }
 	}
 }
@@ -17,7 +17,7 @@
 }
 
 .both {
-	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11433 0.11961));
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.10723 0.10958));
 	color: color-mix(in srgb, contrast-color(blue max), contrast-color(cyan));
 }
 
@@ -32,15 +32,35 @@
 @supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
 
 .both {
-	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.22235 0.22932));
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21431 0.2182));
 }
 	}
 }
 
 
 .dynamic-green {
-	color: rgb(255, 255, 255);
+	color: color(display-p3 0.82734 1 0.78138);
 	color: contrast-color(green);
+}
+
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {
+
+
+.dynamic-green {
+	color: rgb(255, 255, 255);
+}
+	}
+}
+
+
+@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
+
+
+.dynamic-green {
+	color: rgb(255, 255, 255);
+}
+	}
 }
 
 .max-green {
@@ -49,7 +69,7 @@
 }
 
 .dynamic-lime {
-	color: color(display-p3 0 0.12169 0);
+	color: color(display-p3 0.01598 0.11486 0);
 	color: contrast-color(lime);
 }
 
@@ -64,7 +84,7 @@
 @supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
 
 .dynamic-lime {
-	color: color(display-p3 0 0.23535 0);
+	color: color(display-p3 0.05256 0.22698 0);
 }
 	}
 }
@@ -75,7 +95,7 @@
 }
 
 .dynamic-darkgreen {
-	color: color(display-p3 0.77344 1 0.70604);
+	color: color(display-p3 0.82734 1 0.78138);
 	color: contrast-color(darkgreen);
 }
 
@@ -118,7 +138,7 @@
 }
 
 .nested-dynamic {
-	color: color(display-p3 1 0.88169 0.90871);
+	color: color(display-p3 1 0.9049 0.91971);
 	color: contrast-color(contrast-color(pink));
 }
 
@@ -133,7 +153,7 @@
 @supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
 
 .nested-dynamic {
-	color: color(display-p3 1 0.80372 0.83812);
+	color: color(display-p3 1 0.80648 0.83935);
 }
 	}
 }

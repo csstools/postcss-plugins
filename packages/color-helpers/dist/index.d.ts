@@ -127,6 +127,11 @@ export declare function lin_sRGB_to_XYZ_D50(x: Color): Color;
 
 export declare function mapGamut(startOKLCH: Color, toDestination: (x: Color) => Color, fromDestination: (x: Color) => Color): Color;
 
+/**
+ * @license MIT https://github.com/facelessuser/coloraide/blob/main/LICENSE.md
+ */
+export declare function mapGamutRayTrace(startOKLCH: Color, toLinear: (x: Color) => Color, fromLinear: (x: Color) => Color): Color;
+
 export declare const namedColors: Record<string, Color>;
 
 /**

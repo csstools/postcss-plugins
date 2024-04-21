@@ -20,14 +20,14 @@ npm install @csstools/postcss-contrast-color-function --save-dev
 /* becomes */
 
 .dynamic {
-	color: color(display-p3 0.16733 0 0.17585);
+	color: color(display-p3 0.15433 0 0.15992);
 	color: contrast-color(oklch(82% 0.2 330));
 }@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {.dynamic {
 	color: rgb(0, 0, 0);
 }
 	}
 }@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.30696 0 0.31938);
+	color: color(display-p3 0.2925 0 0.30177);
 }
 	}
 }
@@ -91,12 +91,12 @@ postcssContrastColorFunction({ preserve: false })
 /* becomes */
 
 .dynamic {
-	color: color(display-p3 0.16733 0 0.17585);
+	color: color(display-p3 0.15433 0 0.15992);
 }@media (prefers-contrast: more) {.dynamic {
 	color: rgb(0, 0, 0);
 }
 }@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.30696 0 0.31938);
+	color: color(display-p3 0.2925 0 0.30177);
 }
 }
 
