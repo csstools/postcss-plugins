@@ -38,16 +38,16 @@
 	color-6: rgb(197, 84, 124);
 	color-6: oklch(60% 0.150 0);
 
-	color-7: rgb(0, 149, 131);
+	color-7: rgb(0, 152, 131);
 
 	color-7: oklch(60% 0.1250 180);
-	color-8: rgb(0, 149, 131);
+	color-8: rgb(0, 152, 131);
 	color-8: oklch(60% 0.1250 180deg);
-	color-9: rgb(0, 149, 131);
+	color-9: rgb(0, 152, 131);
 	color-9: oklch(60% 0.1250 0.5turn);
-	color-10: rgb(0, 149, 131);
+	color-10: rgb(0, 152, 131);
 	color-10: oklch(60% 0.1250 200grad);
-	color-11: rgb(0, 149, 131);
+	color-11: rgb(0, 152, 131);
 	color-11: oklch(60% 0.1250 3.14159rad);
 
 	color-12: rgb(188, 101, 59);
@@ -65,16 +65,16 @@
 	color-18: rgb(188, 101, 59);
 	color-18: oklch(60% 0.1250 405);
 
-	color-20: rgb(0, 149, 131);
+	color-20: rgb(0, 152, 131);
 
 	color-20: OKLCH(60% 0.1250 180);
-	color-21: rgb(0, 149, 131);
+	color-21: rgb(0, 152, 131);
 	color-21: Oklch(60% 0.1250 180DEG);
-	color-22: rgb(0, 149, 131);
+	color-22: rgb(0, 152, 131);
 	color-22: oKlch(60% 0.1250 0.5TURN);
-	color-23: rgb(0, 149, 131);
+	color-23: rgb(0, 152, 131);
 	color-23: okLch(60% 0.1250 200GRAD);
-	color-24: rgb(0, 149, 131);
+	color-24: rgb(0, 152, 131);
 	color-24: oklCh(60% 0.1250 3.14159RAD);
 }
 
@@ -216,7 +216,7 @@
 .test-multiple-colors {
 	background-1: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
 	background-1: linear-gradient(oklab(45% 0.012 0.0129), oklch(60% 0.014 45deg));
-	background-2: linear-gradient(rgb(161, 0, 74), rgb(136, 126, 121));
+	background-2: linear-gradient(rgb(164, 0, 74), rgb(136, 126, 121));
 	background-2: linear-gradient(oklab(45% 0.22 0.0129), oklch(60% 0.014 45deg));
 }
 
@@ -242,9 +242,9 @@
 
 .test-blue-teal {
 	/* PR 0.18049383596973165, 0.5091259470889729, 0.5339002129941043 */
-	color-1: rgb(0, 131, 136);
+	color-1: rgb(0, 132, 138);
 	color-1: oklab(55.28594002784124% -0.09801573105773553 -0.0346259351134503);
-	color-2: rgb(0, 131, 136);
+	color-2: rgb(0, 132, 138);
 	color-2: oklch(55.28594002784124% 0.10395209914794032 199.45674366701544);
 }
 
@@ -257,8 +257,8 @@
 }
 
 .test-css-color-5-interop {
-	color-1: oklab(from rgb(141, 0, 0) l a b);
+	color-1: oklab(from rgb(143, 0, 0) l a b);
 	color-1: oklab(from oklab(40% 0.566 0.39) l a b);
-	color-2: oklch(from rgb(130, 31, 0) l c h);
+	color-2: oklch(from rgb(136, 19, 0) l c h);
 	color-2: oklch(from oklch(40% 0.566 39deg) l c h);
 }

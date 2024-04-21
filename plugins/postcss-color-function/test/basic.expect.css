@@ -72,9 +72,9 @@
 }
 
 .test-percentage-xyz {
-	color-1: rgb(249, 0, 135);
-	color-2: rgb(255, 0, 127);
-	color-3: rgb(255, 0, 127);
+	color-1: rgb(252, 0, 135);
+	color-2: rgb(255, 0, 126);
+	color-3: rgb(255, 0, 126);
 }
 
 .test-author-provided-fallback {
@@ -109,88 +109,88 @@
 .test-gamut {
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B48%2C-53%2C12%5D%2C%5B58%2C-54%2C69%5D%5D */
 	/* out */
-	prop-1: rgb(0, 129, 96);
+	prop-1: rgb(0, 132, 94);
 	/* out */
-	prop-2: rgb(50, 160, 0);
+	prop-2: rgb(38, 161, 0);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B45%2C-13%2C29%5D%2C%5B77%2C33%2C97%5D%5D */
 	/* in */
 	prop-3: rgb(97, 112, 56);
 	/* out */
-	prop-4: rgb(255, 169, 30);
+	prop-4: rgb(255, 166, 0);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B76%2C-29%2C-23%5D%2C%5B16%2C-32%2C24%5D%5D */
 	/* in */
 	prop-5: rgb(85, 204, 229);
 	/* out */
-	prop-6: rgb(0, 47, 8);
+	prop-6: rgb(0, 50, 0);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B85%2C16%2C29%5D%2C%5B55%2C-42%2C58%5D%5D */
 	/* out */
 	prop-7: rgb(255, 201, 158);
 	/* out */
-	prop-8: rgb(71, 149, 0);
+	prop-8: rgb(70, 149, 0);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B87%2C-94%2C103%5D%2C%5B88%2C-9%2C62%5D%5D */
 	/* out */
-	prop-9: rgb(0, 252, 0);
+	prop-9: rgb(0, 253, 0);
 	/* in */
 	prop-10: rgb(231, 224, 96);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B69%2C-35%2C-39%5D%2C%5B68%2C61%2C39%5D%5D */
 	/* out */
-	prop-11: rgb(0, 186, 229);
+	prop-11: rgb(0, 187, 234);
 	/* out */
-	prop-12: rgb(255, 122, 110);
+	prop-12: rgb(255, 117, 105);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C74%5D%2C%5B65%2C81%2C-13%5D%5D */
 	/* out */
-	prop-13: rgb(121, 156, 0);
+	prop-13: rgb(119, 157, 0);
 	/* out */
-	prop-14: rgb(255, 92, 182);
+	prop-14: rgb(255, 89, 183);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B60%2C-28%2C15%5D%2C%5B65%2C81%2C-11%5D%5D */
 	/* in */
 	prop-15: rgb(96, 158, 117);
 	/* out */
-	prop-16: rgb(255, 92, 179);
+	prop-16: rgb(255, 90, 179);
 
 	/* https://romainmenke.github.io/lab-lch-display-p3/lab-interactive-b.html#%5B%5B78%2C-64%2C-44%5D%2C%5B76%2C81%2C-11%5D%5D */
 	/* out */
-	prop-17: rgb(0, 212, 236);
+	prop-17: rgb(0, 214, 243);
 	/* out */
-	prop-18: rgb(255, 160, 204);
+	prop-18: rgb(255, 156, 205);
 }
 
 .test-out-of-range-values-srgb {
 	color-1: rgb(128, 0, 255);
-	color-2: rgb(122, 0, 236);
+	color-2: rgb(125, 0, 245);
 	color-3: rgb(26, 255, 26);
-	color-4: rgb(169, 255, 161);
+	color-4: rgb(159, 255, 151);
 }
 
 .test-lime {
-	color-1: rgb(1, 255, 0);
-	color-2: rgb(1, 255, 0);
-	color-3: rgb(1, 255, 0);
-	color-4: rgb(1, 255, 0);
-	color-5: rgb(1, 255, 0);
-	color-6: rgb(1, 255, 0);
-	color-7: rgb(1, 255, 0);
-	color-8: rgb(1, 255, 0);
-	color-9: rgb(1, 255, 0);
+	color-1: rgb(0, 255, 0);
+	color-2: rgb(0, 255, 0);
+	color-3: rgb(0, 255, 0);
+	color-4: rgb(0, 255, 0);
+	color-5: rgb(0, 255, 0);
+	color-6: rgb(0, 255, 0);
+	color-7: rgb(0, 255, 0);
+	color-8: rgb(0, 255, 0);
+	color-9: rgb(0, 255, 0);
 }
 
 .test-blue-teal {
-	color-1: rgb(0, 131, 136);
-	color-2: rgb(0, 131, 136);
-	color-3: rgb(0, 131, 136);
-	color-4: rgb(0, 131, 136);
-	color-5: rgb(0, 131, 136);
-	color-6: rgb(0, 131, 136);
-	color-7: rgb(0, 131, 136);
-	color-8: rgb(0, 131, 136);
-	color-9: rgb(0, 131, 136);
+	color-1: rgb(0, 132, 138);
+	color-2: rgb(0, 132, 138);
+	color-3: rgb(0, 132, 138);
+	color-4: rgb(0, 132, 138);
+	color-5: rgb(0, 132, 138);
+	color-6: rgb(0, 132, 138);
+	color-7: rgb(0, 132, 138);
+	color-8: rgb(0, 132, 138);
+	color-9: rgb(0, 132, 138);
 }
 
 .test-bright-purple {
@@ -213,5 +213,5 @@
 }
 
 to-clone {
-	color: rgb(255, 15, 14);
+	color: rgb(255, 11, 12);
 }

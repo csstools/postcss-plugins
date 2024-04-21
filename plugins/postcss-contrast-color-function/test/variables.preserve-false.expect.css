@@ -1,10 +1,10 @@
 .dynamic {
-	--color: color(display-p3 0.15487 0 0.15914);
+	--color: color(display-p3 0.16781 0 0.17472);
 }@media (prefers-contrast: more) {.dynamic {
 	--color: rgb(0, 0, 0);
 }
 }@media (prefers-contrast: less) {.dynamic {
-	--color: color(display-p3 0.29338 0 0.30048);
+	--color: color(display-p3 0.30767 0 0.31758);
 }
 }
 
@@ -13,7 +13,7 @@
 }
 
 .both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11165 0.11567));
+	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11433 0.11961));
 }
 
 @media (prefers-contrast: more) {
@@ -26,6 +26,6 @@
 @media (prefers-contrast: less) {
 
 .both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21781 0.22292));
+	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.22235 0.22932));
 }
 }

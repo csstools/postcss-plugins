@@ -1,5 +1,5 @@
 .dynamic {
-	--color: color(display-p3 0.15487 0 0.15914);
+	--color: color(display-p3 0.16781 0 0.17472);
 }
 
 @supports (color: contrast-color(red max)) and (color: oklab(0% 0 0%)) {
@@ -19,7 +19,7 @@
 @supports not (color: contrast-color(red max)) {
 
 	@media (prefers-contrast: less) {.dynamic {
-	--color: color(display-p3 0.29338 0 0.30048);
+	--color: color(display-p3 0.30767 0 0.31758);
 }
 	}
 }
@@ -35,7 +35,7 @@
 }
 
 .both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11165 0.11567));
+	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11433 0.11961));
 }
 
 @supports (color: color-mix(in lch, red, blue)) and (color: contrast-color(red max)) {
@@ -59,7 +59,7 @@
 	@media (prefers-contrast: less) {
 
 .both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21781 0.22292));
+	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.22235 0.22932));
 }
 	}
 }
