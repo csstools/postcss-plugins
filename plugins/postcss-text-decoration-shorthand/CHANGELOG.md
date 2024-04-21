@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.5
 
 _March 31, 2024_

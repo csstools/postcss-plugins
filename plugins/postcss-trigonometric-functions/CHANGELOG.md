@@ -1,5 +1,9 @@
 # Changes to PostCSS Trigonometric Functions
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.6
 
 _March 13, 2024_

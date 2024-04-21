@@ -75,7 +75,7 @@ const formatted = {};
 	delete packageJSONInfo.private;
 
 	formatted.engines = {
-		node: '^14 || ^16 || >=18'
+		node: '>=18'
 	};
 	delete packageJSONInfo.engines;
 

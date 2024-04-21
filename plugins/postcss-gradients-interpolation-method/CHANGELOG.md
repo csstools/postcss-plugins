@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradients Interpolation Method
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 4.0.14
 
 _March 31, 2024_

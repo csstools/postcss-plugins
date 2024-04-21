@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 6.0.8
 
 _March 31, 2024_

@@ -1,5 +1,9 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.6.1
 
 _March 13, 2024_

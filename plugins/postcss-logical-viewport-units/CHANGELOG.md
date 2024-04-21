@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Viewport Units
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.0.7
 
 _March 13, 2024_

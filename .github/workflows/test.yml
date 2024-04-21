@@ -15,12 +15,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      # Test node 14/16/18/20 on ubuntu
+      # Test node 18/20/* on ubuntu
       # Test node 20 on macos/windows
       # Enable annotations only for node 20 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [16, 18, 20]
+        node: [18, 20]
         include:
         - os: macos-latest
           node: 20

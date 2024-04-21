@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.0.3
 
 _March 13, 2024_

@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 6.0.3
 
 _March 31, 2024_

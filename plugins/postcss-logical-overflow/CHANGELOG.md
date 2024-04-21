@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Overflow
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.1
 
 _December 15, 2023_

@@ -1,5 +1,9 @@
 # Changes to PostCSS gamut-mapping
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.6
 
 _March 31, 2024_

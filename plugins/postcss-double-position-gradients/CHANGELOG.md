@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 5.0.6
 
 _March 31, 2024_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 9.5.6
 
 _April 18, 2024_
