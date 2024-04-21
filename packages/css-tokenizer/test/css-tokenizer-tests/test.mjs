@@ -9,7 +9,7 @@ import { tokenizer } from '@csstools/css-tokenizer';
 			css: testCorpus[testCase].css,
 		});
 
-		assert.deepEqual(
+		assert.deepStrictEqual(
 			collectTokens(t).map((x) => toUniversal(x)).slice(0, -1),
 			testCorpus[testCase].tokens,
 			`css-tokenizer-tests: ${testCase}`,
