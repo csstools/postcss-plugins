@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (minor)
+
+- Add `mapGamutRayTrace` function
+
 ### 4.1.0
 
 _March 31, 2024_

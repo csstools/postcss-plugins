@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (major)
+
+- Switch to the ray-tracing gamut mapping algorithm. This is a minimally invasive change when generating fallback colors for CSS but breaking if you relied on the exact output of the previous gamut mapping algorithm.
+
 ### Unreleased (patch)
 
 - Fix `none` keyword conversion in relative color syntax origin values. (again)
