@@ -47,14 +47,7 @@ a {
 body {
   color: rgba(18,52,86,0.47059);
   color: var(--mainColor);
-  font-family: system-ui,
-              -apple-system,
-              Segoe UI,
-              Roboto,
-              Ubuntu,
-              Cantarell,
-              Noto Sans,
-              sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 }
 
 a {
@@ -65,14 +58,24 @@ a:hover {
     color: #639;
   }
 
-a > span {
-    color: rgb(0, 223, 199);
-    color: color(display-p3 0.33498 0.86864 0.78466);
+  a  > span {
+    color: rgb(0, 222, 199);
   }
 
+@media (color-gamut: p3) {
+  a  > span {
+    color: color(display-p3 0.33498 0.86864 0.78466);
+  }
+}
+
 input:hover, input:focus, button:hover, button:focus {
-  color: rgb(140, 0, 0);
-  color: color(display-p3 0.50128 0.08996 0);
+  color: rgb(131, 27, 0);
+}
+
+@media (color-gamut: p3) {
+  input:hover, input:focus, button:hover, button:focus {
+    color: color(display-p3 0.49362 0.10739 0);
+  }
 }{% endhighlight %}
 					</div>
 				</div>
