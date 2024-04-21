@@ -1,6 +1,6 @@
 :root {
-	--firebrick: rgb(229, 68, 0);
-	--firebrick-a50: rgb(229, 68, 0);
+	--firebrick: rgb(235, 59, 0);
+	--firebrick-a50: rgb(235, 59, 0);
 
 	--opacity-50: 50%;
 	--firebrick-a50-var: color-mix(in lch, red, green var(--opacity-50));

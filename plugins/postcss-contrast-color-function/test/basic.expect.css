@@ -1,12 +1,12 @@
 .dynamic {
-	color: color(display-p3 0.15487 0 0.15914);
+	color: color(display-p3 0.16781 0 0.17472);
 	color: contrast-color(oklch(82.06% 0.2 330.35));
 }@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {.dynamic {
 	color: rgb(0, 0, 0);
 }
 	}
 }@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.29338 0 0.30048);
+	color: color(display-p3 0.30767 0 0.31758);
 }
 	}
 }
@@ -17,7 +17,7 @@
 }
 
 .both {
-	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11165 0.11567));
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.11433 0.11961));
 	color: color-mix(in srgb, contrast-color(blue max), contrast-color(cyan));
 }
 
@@ -32,7 +32,7 @@
 @supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
 
 .both {
-	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21781 0.22292));
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.22235 0.22932));
 }
 	}
 }
@@ -49,7 +49,7 @@
 }
 
 .dynamic-lime {
-	color: color(display-p3 0.00418 0.11802 0);
+	color: color(display-p3 0 0.12169 0);
 	color: contrast-color(lime);
 }
 
@@ -64,7 +64,7 @@
 @supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
 
 .dynamic-lime {
-	color: color(display-p3 0 0.23477 0);
+	color: color(display-p3 0 0.23535 0);
 }
 	}
 }
@@ -75,7 +75,7 @@
 }
 
 .dynamic-darkgreen {
-	color: color(display-p3 0.81657 1 0.76626);
+	color: color(display-p3 0.77344 1 0.70604);
 	color: contrast-color(darkgreen);
 }
 
@@ -118,7 +118,7 @@
 }
 
 .nested-dynamic {
-	color: color(display-p3 1 0.90229 0.91845);
+	color: color(display-p3 1 0.88169 0.90871);
 	color: contrast-color(contrast-color(pink));
 }
 
@@ -133,7 +133,7 @@
 @supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {
 
 .nested-dynamic {
-	color: color(display-p3 1 0.80594 0.83911);
+	color: color(display-p3 1 0.80372 0.83812);
 }
 	}
 }

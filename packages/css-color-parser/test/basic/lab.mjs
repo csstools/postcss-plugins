@@ -40,7 +40,7 @@ assert.deepStrictEqual(
 
 assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('lab(86.6146% -106.5599 102.8717)'))),
-	'rgb(0, 249, 66)',
+	'rgb(0, 251, 41)',
 );
 
 assert.deepStrictEqual(
