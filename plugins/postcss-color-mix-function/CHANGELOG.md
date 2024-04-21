@@ -1,6 +1,8 @@
 # Changes to PostCSS Color Mix Function
 
-### Unreleased (patch)
+### 2.0.14
+
+_April 21, 2024_
 
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#200) (major)
 
