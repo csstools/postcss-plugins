@@ -358,10 +358,6 @@ __bar.foo {
 article {
 	color: green;
 
-	/*
-		NOTE : We are more forgiving than the spec
-		This declaration is preserved
-	*/
 	color: red;
 }
 article {
@@ -371,10 +367,6 @@ article {
 article {
 	color: green;
 
-	/*
-		NOTE : We are more forgiving than the spec
-		This declaration is preserved
-	*/
 	color: red;
 }
 
@@ -387,3 +379,22 @@ article.foo {
 	}
 
 /* valid! */
+
+::after, .foo {
+	color: green;
+
+	color: red;
+
+	color: orange;
+}
+
+:is(::after,.foo) {
+		color: blue;
+	}
+
+@media screen {
+
+::after, .foo {
+		color: purple;
+}
+	}
