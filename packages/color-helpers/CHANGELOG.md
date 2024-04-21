@@ -4,6 +4,12 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 4.2.0
+
+_April 21, 2024_
+
+- Add `mapGamutRayTrace` function
+
 ### 4.1.0
 
 _March 31, 2024_

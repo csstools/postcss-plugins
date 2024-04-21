@@ -216,7 +216,7 @@
 .test-multiple-colors {
 	background-1: linear-gradient(rgb(94, 83, 77), rgb(136, 126, 121));
 	background-1: linear-gradient(oklab(45% 0.012 0.0129), oklch(60% 0.014 45deg));
-	background-2: linear-gradient(rgb(161, 0, 74), rgb(136, 126, 121));
+	background-2: linear-gradient(rgb(158, 0, 75), rgb(136, 126, 121));
 	background-2: linear-gradient(oklab(45% 0.22 0.0129), oklch(60% 0.014 45deg));
 }
 
@@ -242,9 +242,9 @@
 
 .test-blue-teal {
 	/* PR 0.18049383596973165, 0.5091259470889729, 0.5339002129941043 */
-	color-1: rgb(0, 131, 136);
+	color-1: rgb(0, 131, 135);
 	color-1: oklab(55.28594002784124% -0.09801573105773553 -0.0346259351134503);
-	color-2: rgb(0, 131, 136);
+	color-2: rgb(0, 131, 135);
 	color-2: oklch(55.28594002784124% 0.10395209914794032 199.45674366701544);
 }
 
@@ -257,8 +257,8 @@
 }
 
 .test-css-color-5-interop {
-	color-1: oklab(from rgb(141, 0, 0) l a b);
+	color-1: oklab(from rgb(131, 27, 0) l a b);
 	color-1: oklab(from oklab(40% 0.566 0.39) l a b);
-	color-2: oklch(from rgb(130, 31, 0) l c h);
+	color-2: oklch(from rgb(126, 37, 0) l c h);
 	color-2: oklch(from oklch(40% 0.566 39deg) l c h);
 }

@@ -1,9 +1,9 @@
 :root {
-	--firebrick: rgb(140, 0, 58);
-	--firebrick-a50: rgba(137, 0, 68, 0.5);
+	--firebrick: rgb(135, 0, 59);
+	--firebrick-a50: rgba(133, 0, 68, 0.5);
 
 	--opacity-50: 0.5;
-	--firebrick-a50-var: rgba(137, 0, 68, var(--opacity-50));
+	--firebrick-a50-var: rgba(133, 0, 68, var(--opacity-50));
 
 	--point-five: 0.5;
 	--firebrick-var: oklch(40% var(--point-five) 0.1324 / var(--opacity-50));
@@ -11,8 +11,8 @@
 
 @supports (color: color(display-p3 0 0 0%)) {
 :root {
-	--firebrick: color(display-p3 0.51193 0 0.22329);
-	--firebrick-a50: color(display-p3 0.51567 0 0.25999 / 0.5);
-	--firebrick-a50-var: color(display-p3 0.51567 0 0.25999 / var(--opacity-50));
+	--firebrick: color(display-p3 0.50431 0 0.22558);
+	--firebrick-a50: color(display-p3 0.49825 0 0.26185 / 0.5);
+	--firebrick-a50-var: color(display-p3 0.49825 0 0.26185 / var(--opacity-50));
 }
 }

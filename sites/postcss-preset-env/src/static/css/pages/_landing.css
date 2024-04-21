@@ -112,6 +112,7 @@
 	height: 1em;
 	position: relative;
 	display: inline-block;
+	text-align: center;
 
 	& li {
 		height: 1em;
@@ -119,6 +120,7 @@
 		bottom: 0;
 		left: 0;
 		transition: all 0.5s;
+		width: 100%;
 	}
 }
 

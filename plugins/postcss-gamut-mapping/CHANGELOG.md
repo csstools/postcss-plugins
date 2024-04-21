@@ -4,6 +4,12 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 1.0.7
+
+_April 21, 2024_
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#200) (major)
+
 ### 1.0.6
 
 _March 31, 2024_

@@ -4,6 +4,12 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 9.0.2
+
+_April 21, 2024_
+
+- Ignore `:any-link` in `:not()` pseudo class functions
+
 ### 9.0.1
 
 _December 15, 2023_

@@ -1035,6 +1035,113 @@
           "name": "mapGamut"
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!mapGamutRayTrace:function(1)",
+          "docComment": "/**\n * @license\n *\n * MIT https://github.com/facelessuser/coloraide/blob/main/LICENSE.md\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function mapGamutRayTrace(startOKLCH: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", toLinear: "
+            },
+            {
+              "kind": "Content",
+              "text": "(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", fromLinear: "
+            },
+            {
+              "kind": "Content",
+              "text": "(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/calculations/map-gamut-ray-trace.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 13,
+            "endIndex": 14
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "startOKLCH",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "toLinear",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "fromLinear",
+              "parameterTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 12
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "mapGamutRayTrace"
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "@csstools/color-helpers!namedColors:var",
           "docComment": "",
