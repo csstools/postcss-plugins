@@ -54,6 +54,10 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean): Array
 	parser((selectorsAST) => {
 		const replacements: Array<Array<parser.Selector>> = [];
 		selectorsAST.walkPseudos((pseudo) => {
+			if (pseudo.value.toLowerCase() === ':not') {
+				return false;
+			}
+
 			if (pseudo.value.toLowerCase() !== ':any-link' || (pseudo.nodes && pseudo.nodes.length)) {
 				return;
 			}
