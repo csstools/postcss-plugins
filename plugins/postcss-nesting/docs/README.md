@@ -45,6 +45,10 @@ The `edition` values correspond with rough dates when of a particular version of
 - `2024-02` (default)
 - `2021`
 
+> [!TIP]
+> If you wrote nested rules with `@nest` you definitely want to set the `edition` to `2021`.  
+> If you are unsure than you should try to omit the `edition` option and use the default.
+
 Eventually we will remove support for the older edition, and this plugin option, so it is strongly advised to update your CSS to the latest edition.
 
 
