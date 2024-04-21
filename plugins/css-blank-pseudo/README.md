@@ -149,7 +149,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-blank-pseudo@6.0.1/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-blank-pseudo@6.0.2/dist/browser-global.js"></script>
 <script>cssBlankPseudoInit()</script>
 ```
 

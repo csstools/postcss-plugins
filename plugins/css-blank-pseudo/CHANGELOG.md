@@ -1,5 +1,11 @@
 # Changes to CSS Blank Pseudo
 
+### 6.0.2
+
+_April 18, 2024_
+
+- Fix: Do not throw when a html select has the attribute "multiple" set.
+
 ### 6.0.1
 
 _December 15, 2023_
