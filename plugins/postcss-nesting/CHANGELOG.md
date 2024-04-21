@@ -1,6 +1,8 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 12.1.2
+
+_April 21, 2024_
 
 - Edition `2024-02`:
   - Do not rewrite selectors for declarations in conditional rules to a form with `:is()`
