@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-text-decoration-shorthand",
 	"description": "Use text-decoration in it's shorthand form in CSS",
-	"version": "3.0.5",
+	"version": "3.0.6",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,7 +25,7 @@
 		}
 	],
 	"engines": {
-		"node": "^14 || ^16 || >=18"
+		"node": ">=18"
 	},
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/color-helpers": "^4.1.0",
+		"@csstools/color-helpers": "^4.2.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {

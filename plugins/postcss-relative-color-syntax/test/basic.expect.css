@@ -4,8 +4,8 @@
 	--color-rcs-5: rgb(179, 157, 51);
 	--color-rcs-6: rgb(179, 35, 35);
 	--color-rcs-7: rgb(163, 57, 39);
-	--color-rcs-8: rgb(141, 0, 0);
-	--color-rcs-9: rgb(130, 31, 0);
+	--color-rcs-8: rgb(131, 27, 0);
+	--color-rcs-9: rgb(126, 37, 0);
 	--color-rcs-10: rgb(0, 0, 255);
 	--color-rcs-11: rgb(0, 0, 255);
 	--color-rcs-12: rgb(0, 0, 255);
@@ -17,8 +17,8 @@
 
 @supports (color: color(display-p3 0 0 0%)) {
 .valid {
-	--color-rcs-8: color(display-p3 0.50566 0.0781 0);
-	--color-rcs-9: color(display-p3 0.48896 0.1211 0);
+	--color-rcs-8: color(display-p3 0.4939 0.10676 0);
+	--color-rcs-9: color(display-p3 0.47553 0.14324 0);
 }
 }
 
@@ -43,8 +43,8 @@
 }
 
 .spec-example-12 {
-	color: rgb(1, 64, 0);
-	color: color(display-p3 0.06186 0.25379 0);
+	color: rgb(9, 63, 0);
+	color: color(display-p3 0.08202 0.2501 0);
 }
 
 .spec-example-13 {
@@ -109,14 +109,14 @@
 }
 
 .spec-example-26 {
-	color: rgb(0, 159, 164);
-	color: color(display-p3 0 0.63049 0.66369);
+	color: rgb(0, 157, 162);
+	color: color(display-p3 0 0.62656 0.65723);
 	color-2: rgb(85, 249, 219);
 }
 
 .spec-example-27 {
-	color: rgb(0, 178, 186);
-	color: color(display-p3 0 0.71015 0.76142);
+	color: rgb(0, 177, 184);
+	color: color(display-p3 0 0.70288 0.74818);
 }
 
 .experimental-features-from-the-color-parser {

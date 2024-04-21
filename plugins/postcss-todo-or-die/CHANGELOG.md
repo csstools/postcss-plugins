@@ -1,5 +1,9 @@
 # Changes to PostCSS Todo or Die
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.0.6
 
 _March 13, 2024_

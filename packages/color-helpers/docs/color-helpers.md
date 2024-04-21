@@ -177,6 +177,15 @@ Convert an array of of sRGB values where in-gamut values are in the range \[0 - 
 </td></tr>
 <tr><td>
 
+[mapGamutRayTrace(startOKLCH, toLinear, fromLinear)](./color-helpers.mapgamutraytrace.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [OKLab\_to\_OKLCH(OKLab)](./color-helpers.oklab_to_oklch.md)
 
 

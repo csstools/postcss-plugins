@@ -11,7 +11,7 @@ a {
 }
 		}
 			@media (max-width: 200px) {
-		:is(a b) {
+		a b {
 				order: 4;
 		}
 			}
@@ -39,7 +39,7 @@ a {
 }
 		}
 			@media (max-width: 200px) {
-		:is(a b) {
+		a b {
 				order: 4;
 		}
 			}
@@ -57,14 +57,14 @@ a {
 
 @media screen {
 
-:is(a,.a) {
+a, .a {
 		order: 7;
 }
 	}
 
 @media screen {
 
-:is(a,a::after) {
+a, a::after {
 		order: 8;
 }
 	}

@@ -1,5 +1,9 @@
 # Changes to Selector Resolve Nested
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ## 1.1.0
 
 _February 1, 2024_

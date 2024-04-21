@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-contrast-color-function",
 	"description": "Dynamically specify a text color with adequate contrast",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,7 +25,7 @@
 		}
 	],
 	"engines": {
-		"node": "^14 || ^16 || >=18"
+		"node": ">=18"
 	},
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -48,8 +48,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/color-helpers": "^4.1.0",
-		"@csstools/css-color-parser": "^1.6.3",
+		"@csstools/color-helpers": "^4.2.0",
+		"@csstools/css-color-parser": "^2.0.0",
 		"@csstools/css-parser-algorithms": "^2.6.1",
 		"@csstools/css-tokenizer": "^2.2.4",
 		"@csstools/postcss-progressive-custom-properties": "^3.2.0",

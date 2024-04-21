@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 4.1.2
 
 _January 1, 2024_

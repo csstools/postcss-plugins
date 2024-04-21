@@ -1,6 +1,6 @@
 :root {
 	--a-color: oklch(40% 0.05 0.39 / var(--opacity-50));
-	--b-color: rgba(138, 0, 67, var(--opacity-50));
+	--b-color: rgba(133, 0, 67, var(--opacity-50));
 }
 
 @media (color-gamut: rec2020) {
@@ -195,7 +195,7 @@
 
 @supports (color: color(display-p3 0 1 0)) {
 	.guarded-by-supports {
-		color: rgb(0, 249, 66);
+		color: rgb(0, 247, 79);
 	}
 
 @media (color-gamut: p3) {

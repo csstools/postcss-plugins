@@ -32,6 +32,7 @@ export { inGamut } from './utils/in-gamut';
 export { clip } from './utils/clip';
 
 export { mapGamut } from './calculations/map-gamut';
+export { mapGamutRayTrace } from './calculations/map-gamut-ray-trace';
 
 export { OKLCH_to_OKLab } from './conversions/oklch-to-oklab';
 export { OKLab_to_OKLCH } from './conversions/oklab-to-oklch';

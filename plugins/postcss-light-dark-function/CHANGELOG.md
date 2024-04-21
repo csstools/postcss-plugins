@@ -1,5 +1,9 @@
 # Changes to PostCSS Light Dark Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.3
 
 _April 1, 2024_

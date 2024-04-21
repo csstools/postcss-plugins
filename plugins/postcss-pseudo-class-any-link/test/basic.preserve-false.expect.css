@@ -127,3 +127,7 @@ b {
 :link, :visited {
 	to-clone: 1;
 }
+
+:not(:any-link) {
+	order: 110;
+}

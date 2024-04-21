@@ -467,15 +467,15 @@
 	color-1: rgba(0, 0, 255, 0.65);
 	color-2: rgba(0, 0, 255, 0.65);
 	color-3: rgba(0, 0, 255, 0.65);
-	color-4: rgba(122, 0, 182, 0.65);
-	color-5: rgba(149, 0, 122, 0.65);
+	color-4: rgba(121, 0, 181, 0.65);
+	color-5: rgba(148, 0, 122, 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
 }
 
 @media (color-gamut: p3) {
 .color-mix {
-	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
-	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
+	color-4: color(display-p3 0.44 0 0.70096 / 0.65);
+	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
 }
 }
 
@@ -496,7 +496,7 @@
 
 @supports (color: color(display-p3 0 0 0%)) {
 .gradients-interpolation-method {
-	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(189, 181, 255), rgb(172, 194, 255), rgb(155, 205, 255), rgb(126, 217, 255), rgb(99, 228, 255), rgb(94, 237, 237) 100%);
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(189, 182, 255), rgb(173, 195, 255), rgb(159, 205, 255), rgb(140, 215, 255), rgb(100, 228, 255), rgb(94, 237, 237) 100%);
 }
 
 @media (color-gamut: rec2020) {
@@ -520,14 +520,14 @@
 	color-5: rgb(179, 157, 51);
 	color-6: rgb(179, 35, 35);
 	color-7: rgb(163, 57, 39);
-	color-8: rgb(141, 0, 0);
-	color-9: rgb(130, 31, 0);
+	color-8: rgb(131, 27, 0);
+	color-9: rgb(126, 37, 0);
 }
 
 @media (color-gamut: p3) {
 .test-css-color-5-interop {
-	color-8: color(display-p3 0.50566 0.0781 0);
-	color-9: color(display-p3 0.48896 0.1211 0);
+	color-8: color(display-p3 0.4939 0.10676 0);
+	color-9: color(display-p3 0.47553 0.14324 0);
 }
 }
 
@@ -541,7 +541,7 @@
 }
 
 .out-of-gamut {
-	--color: rgb(0, 249, 66);
+	--color: rgb(0, 247, 79);
 }
 
 @media (color-gamut: p3) {
@@ -573,14 +573,14 @@
 }
 
 .schemed-colors {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(141, 0, 0);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(131, 27, 0);
 	color: var(--csstools-light-dark-toggle--1, magenta);
-	color: light-dark(rgb(141, 0, 0), magenta);
+	color: light-dark(rgb(131, 27, 0), magenta);
 }
 
 @media (color-gamut: p3) {
 .schemed-colors {
-	color: light-dark(color(display-p3 0.50566 0.0781 0), magenta);
+	color: light-dark(color(display-p3 0.4939 0.10676 0), magenta);
 }
 }
 

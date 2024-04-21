@@ -1,5 +1,9 @@
 # Changes to PostCSS global-data
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.1.1
 
 _December 15, 2023_

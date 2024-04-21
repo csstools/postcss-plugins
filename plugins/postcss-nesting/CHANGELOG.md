@@ -3,6 +3,32 @@
 ### Unreleased (major)
 
 - Make edition `2024-02` the default.
+- Updated: Support for Node v18+ (major).
+
+### 12.1.2
+
+_April 21, 2024_
+
+- Edition `2024-02`:
+  - Do not rewrite selectors for declarations in conditional rules to a form with `:is()`
+
+This will work:
+```css
+::before, ::after {
+	color: blue;
+
+	@media screen { color: cyan; }
+}
+```
+
+This still **wont** work:
+```css
+::before, ::after {
+	color: blue;
+
+	&:hover { color: cyan; }
+}
+```
 
 ### 12.1.1
 

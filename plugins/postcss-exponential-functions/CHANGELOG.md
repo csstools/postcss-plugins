@@ -1,5 +1,9 @@
 # Changes to PostCSS Exponential Functions
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.5
 
 _March 13, 2024_

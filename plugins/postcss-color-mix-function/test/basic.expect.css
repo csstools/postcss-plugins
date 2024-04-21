@@ -3,7 +3,7 @@
 }
 
 .complex {
-	color: rgba(255, 102, 0, 0.34);
+	color: rgba(254, 102, 0, 0.34);
 	color: color(display-p3 0.9361 0.42808 0.14191 / 0.34);
 }
 
@@ -40,18 +40,18 @@
 }
 
 .spec-example-6 {
-	color-1: rgb(174, 138, 255);
+	color-1: rgb(174, 139, 255);
 	color-1: color(display-p3 0.66273 0.5437 0.98509);
 	/* https://github.com/w3c/csswg-drafts/issues/8609 */
-	color-2: rgb(119, 163, 255);
-	color-2: color(display-p3 0.49508 0.63378 1);
+	color-2: rgb(121, 164, 255);
+	color-2: color(display-p3 0.49587 0.634 1);
 	color-3: rgb(128, 128, 255);
 }
 
 .spec-example-7 {
 	/* https://github.com/w3c/csswg-drafts/issues/8444 */
-	color-1: rgb(151, 255, 117);
-	color-1: color(display-p3 0.63217 1 0.41255);
+	color-1: rgb(156, 255, 126);
+	color-1: color(display-p3 0.68002 1 0.51046);
 }
 
 .spec-example-8 {
@@ -89,12 +89,12 @@
 	color-1: rgb(188, 92, 0);
 
 	/* rgb(161, 108, 0 */
-	color-2: rgb(161, 108, 0);
+	color-2: rgb(160, 108, 0);
 	color-2: color(display-p3 0.60204 0.43193 0.12323);
 
 	/* rgb(143, 117, 0) */
-	color-3: rgb(142, 117, 0);
-	color-3: color(display-p3 0.54586 0.46077 0);
+	color-3: rgb(140, 117, 0);
+	color-3: color(display-p3 0.54471 0.46107 0);
 
 	/* rgb(89, 122, 0) */
 	color-4: rgb(89, 122, 0);
@@ -104,7 +104,7 @@
 	color-5: color(display-p3 0.3137 0.48778 0.12828);
 
 	/* rgb(49, 128, 0) */
-	color-6: rgb(54, 127, 0);
+	color-6: rgb(57, 126, 0);
 	color-6: color(display-p3 0.2789 0.49535 0.06321);
 
 	/* rgb(243, 40, 0) */
@@ -115,7 +115,7 @@
 	color-8: color(display-p3 0.85526 0.28166 0.13354);
 
 	/* rgb(235, 59, 0) */
-	color-9: rgb(229, 68, 0);
+	color-9: rgb(228, 70, 0);
 	color-9: color(display-p3 0.84845 0.29298 0.07064);
 }
 
@@ -138,10 +138,10 @@
 }
 
 .zero-alpha-cylindrical {
-	color-4: rgba(122, 0, 182, 0.65);
-	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
-	color-5: rgba(149, 0, 122, 0.65);
-	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
+	color-4: rgba(121, 0, 181, 0.65);
+	color-4: color(display-p3 0.44 0 0.70096 / 0.65);
+	color-5: rgba(148, 0, 122, 0.65);
+	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
 }
 

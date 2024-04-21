@@ -248,3 +248,7 @@ b {
 :any-link {
 	to-clone: 1;
 }
+
+:not(:any-link) {
+	order: 110;
+}
