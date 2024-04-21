@@ -966,7 +966,7 @@ foo[baz=":any-link"] {
 	order: 221;
 }
 
-:not(:link), :not(:visited) {
+:not(:any-link) {
 	order: 222;
 }
 

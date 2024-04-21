@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased (patch)
+
+- Ignore `:any-link` in `:not()` pseudo class functions
+
 ### 9.0.1
 
 _December 15, 2023_

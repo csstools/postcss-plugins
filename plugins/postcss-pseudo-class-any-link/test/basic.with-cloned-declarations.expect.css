@@ -250,3 +250,7 @@ b {
 	cloned: 1;
 	to-clone: 1;
 }
+
+:not(:any-link) {
+	order: 110;
+}
