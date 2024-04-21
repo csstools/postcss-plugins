@@ -38,9 +38,15 @@ you might want to use [PostCSS Nested] instead.
 
 ### edition
 
-The default behavior is to transpile CSS following the version of the CSS nesting specification as it existed during the last major version of this plugin.
+The CSS nesting feature has gone through several iterations and what is currently implemented in browsers is not the same as what was originally proposed. This plugin dates back to the original proposal and you might have written your CSS expecting this older behavior.
 
-If you want to use an older or even more recent version you can set the `edition` option.
+You can pick the older behavior by setting the `edition` option.  
+The `edition` values correspond with rough dates when of a particular version of the specification:
+- `2024-02` (default)
+- `2021`
+
+Eventually we will remove support for the older edition, and this plugin option, so it is strongly advised to update your CSS to the latest edition.
+
 
 ```js
 <exportName>({
@@ -59,8 +65,6 @@ If you want to use an older or even more recent version you can set the `edition
 
 This version is a continuation of what existed before CSS nesting was implemented in browsers.  
 It made a few non-invasive changes to keep up with implementations but it is falling behind.
-
-In a future version of this plugin this will no longer be the default.
 
 ```pcss
 <example.css>
