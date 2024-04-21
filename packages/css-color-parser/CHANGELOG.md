@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix `none` keyword conversion in relative color syntax origin values. (again)
+
 ### 1.6.3
 
 _March 31, 2024_
