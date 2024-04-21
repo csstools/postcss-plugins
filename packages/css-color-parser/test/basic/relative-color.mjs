@@ -104,6 +104,36 @@ assert.deepStrictEqual(
 	'rgb(255, 0, 0)',
 );
 
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('color-mix(in hsl, hsl(from hsl(none 50% 50%) h s l), hsl(50deg 50% 50%))'))),
+	canonicalize('hsl(50deg 50% 50%)'),
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(from hsl(none 50% 50%) h s l)')),
+	{
+		colorNotation: 'hsl',
+		channels: [NaN, 50, 50],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('color-mix(in hsl, hsl(from hsl(none 50% 50%) calc(h) s l), hsl(50deg 50% 50%))'))),
+	canonicalize('hsl(25deg 50% 50%)'),
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(from hsl(none 50% 50%) calc(h) s l)')),
+	{
+		colorNotation: 'hsl',
+		channels: [0, 50, 50],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
 [
 	['color(from color(srgb 0 1 0) srgb r g b)', 'rgb(0, 255, 0)'],
 	['color(from color(srgb-linear 0 1 0) srgb r g b)', 'rgb(0, 255, 0)'],
