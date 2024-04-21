@@ -353,10 +353,6 @@ article {
 article {
 		color: blue;
 
-	/*
-		NOTE : We are more forgiving than the spec
-		This declaration is preserved
-	*/
 	color: red;
 	}
 
@@ -367,10 +363,6 @@ article {
 article {
 		color: blue;
 
-	/*
-		NOTE : We are more forgiving than the spec
-		This declaration is preserved
-	*/
 	color: red;
 	}
 
@@ -379,3 +371,28 @@ article.foo {
 	}
 
 /* valid! */
+
+::after, .foo {
+	color: green;
+}
+
+:is(::after,.foo) {
+		color: blue;
+	}
+
+::after, .foo {
+
+	color: red;
+}
+
+@media screen {
+
+::after, .foo {
+		color: purple;
+}
+	}
+
+::after, .foo {
+
+	color: orange;
+}
