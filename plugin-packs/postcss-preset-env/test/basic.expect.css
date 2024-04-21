@@ -417,7 +417,7 @@
 }
 
 .color-function {
-	prop-1: rgb(0, 129, 96);
+	prop-1: rgb(0, 132, 94);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
@@ -447,11 +447,11 @@
 	color-5: rgba(126, 37, 15, 0.5);
 	color-6: rgb(197, 84, 124);
 
-	color-7: rgb(0, 149, 131);
-	color-8: rgb(0, 149, 131);
-	color-9: rgb(0, 149, 131);
-	color-10: rgb(0, 149, 131);
-	color-11: rgb(0, 149, 131);
+	color-7: rgb(0, 152, 131);
+	color-8: rgb(0, 152, 131);
+	color-9: rgb(0, 152, 131);
+	color-10: rgb(0, 152, 131);
+	color-11: rgb(0, 152, 131);
 
 	color-12: rgb(188, 101, 59);
 	color-13: rgb(188, 101, 59);
@@ -590,15 +590,15 @@
 	color-1: rgba(0, 0, 255, 0.65);
 	color-2: rgba(0, 0, 255, 0.65);
 	color-3: rgba(0, 0, 255, 0.65);
-	color-4: rgba(122, 0, 182, 0.65);
-	color-5: rgba(149, 0, 122, 0.65);
+	color-4: rgba(125, 0, 190, 0.65);
+	color-5: rgba(153, 0, 125, 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
 }
 
 @media (color-gamut: p3) {
 .color-mix {
-	color-4: color(display-p3 0.4447 0 0.71665 / 0.65);
-	color-5: color(display-p3 0.55417 0 0.48083 / 0.65);
+	color-4: color(display-p3 0.44999 0 0.73423 / 0.65);
+	color-5: color(display-p3 0.5648 0 0.48884 / 0.65);
 }
 }
 
@@ -619,7 +619,7 @@
 
 @supports (color: color(display-p3 0 0 0%)) {
 .gradients-interpolation-method {
-	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(189, 181, 255), rgb(172, 194, 255), rgb(155, 205, 255), rgb(126, 217, 255), rgb(99, 228, 255), rgb(94, 237, 237) 100%);
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(168, 193, 255), rgb(146, 206, 255), rgb(116, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
 }
 
 @media (color-gamut: rec2020) {
@@ -643,14 +643,14 @@
 	color-5: rgb(179, 157, 51);
 	color-6: rgb(179, 35, 35);
 	color-7: rgb(163, 57, 39);
-	color-8: rgb(141, 0, 0);
-	color-9: rgb(130, 31, 0);
+	color-8: rgb(143, 0, 0);
+	color-9: rgb(136, 19, 0);
 }
 
 @media (color-gamut: p3) {
 .test-css-color-5-interop {
-	color-8: color(display-p3 0.50566 0.0781 0);
-	color-9: color(display-p3 0.48896 0.1211 0);
+	color-8: color(display-p3 0.52884 0 0);
+	color-9: color(display-p3 0.50449 0.08687 0);
 }
 }
 
@@ -665,7 +665,7 @@
 }
 
 .out-of-gamut {
-	--color: rgb(0, 249, 66);
+	--color: rgb(0, 251, 41);
 }
 
 .issue-1244--a {
@@ -691,15 +691,15 @@
 }
 
 .schemed-colors {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(141, 0, 0);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(143, 0, 0);
 	color: magenta;
 	color: var(--csstools-light-dark-toggle--1, magenta);
-	color: light-dark(rgb(141, 0, 0), magenta);
+	color: light-dark(rgb(143, 0, 0), magenta);
 }
 
 @media (color-gamut: p3) {
 .schemed-colors {
-	color: light-dark(color(display-p3 0.50566 0.0781 0), magenta);
+	color: light-dark(color(display-p3 0.52884 0 0), magenta);
 }
 }
 
