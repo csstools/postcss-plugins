@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#200) (major)
+
 ### 3.0.12
 
 _March 31, 2024_
