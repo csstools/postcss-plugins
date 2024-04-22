@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 13.3.8
+
+_April 22, 2024_
 
 - [Fix an error when a custom property has multiple dependencies and one of them is undefined](https://github.com/csstools/postcss-plugins/issues/1377)
 
