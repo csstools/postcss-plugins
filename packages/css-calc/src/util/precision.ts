@@ -3,7 +3,7 @@ import { isFunctionNode } from '@csstools/css-parser-algorithms';
 import { TokenType } from '@csstools/css-tokenizer';
 
 export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13): TokenNode | FunctionNode | -1 {
-	if (x === -1) {
+	if (x === -1 || precision < 0) {
 		return -1;
 	}
 

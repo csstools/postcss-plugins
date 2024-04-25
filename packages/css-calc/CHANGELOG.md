@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Allow uncapped precision in `calc()` serialization
+
 ### 1.2.0
 
 _March 13, 2024_
