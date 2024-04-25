@@ -2,9 +2,8 @@ import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from '../color-notation';
-import { SyntaxFlag, colorData_to_XYZ_D50 } from '../color-data';
+import { SyntaxFlag, colorData_to_XYZ_D50, convertNaNToZero } from '../color-data';
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { Color } from '@csstools/color-helpers';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 import { TokenType } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
@@ -46,7 +45,7 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 	}
 
 	// Treat missing as zero.
-	backgroundColorData.channels = backgroundColorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color;
+	backgroundColorData.channels = convertNaNToZero(backgroundColorData.channels);
 	backgroundColorData.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(backgroundColorData).channels);
 	backgroundColorData.colorNotation = ColorNotation.sRGB;
 

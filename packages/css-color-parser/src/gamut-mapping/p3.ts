@@ -7,14 +7,14 @@ export function XYZ_D50_to_P3_Gamut(color: Color): Color {
 		return clip(p3);
 	}
 
-	let oklch = color.slice() as Color;
+	let oklch: Color = color;
 	oklch = XYZ_D50_to_OKLCH(oklch);
 	if (oklch[0] < 0.000001) {
-		oklch = [0, 0, 0] as Color;
+		oklch = [0, 0, 0];
 	}
 
 	if (oklch[0] > 0.999999) {
-		oklch = [1, 0, 0] as Color;
+		oklch = [1, 0, 0];
 	}
 
 	return gam_P3(mapGamutRayTrace(oklch, oklch_to_lin_p3, lin_p3_to_oklch));

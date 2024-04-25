@@ -87,6 +87,32 @@ assert.strictEqual(
 	);
 }
 
+{
+	const globals = new Map([
+		['none', [TokenType.Number, '0', -1, -1, { value: 0, type: NumberType.Number }]],
+	]);
+
+	assert.strictEqual(
+		calc('calc(none + 0.2)', { globals: globals }),
+		'0.2',
+	);
+
+	assert.strictEqual(
+		calc('calc(none + 0.2)'),
+		'calc(none + 0.2)',
+	);
+
+	assert.strictEqual(
+		calc('clamp(1, 2, none)', { globals: globals }),
+		'1',
+	);
+
+	assert.strictEqual(
+		calc('clamp(1, 2, none)'),
+		'2',
+	);
+}
+
 assert.strictEqual(
 	calc('clamp(10, 20, 15)'),
 	(15).toString(),
