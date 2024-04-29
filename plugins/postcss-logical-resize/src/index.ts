@@ -52,7 +52,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		return (
 			decl: Declaration,
 			{ result }: { result: Result },
-		) => {
+		): void => {
 			if (!transform) {
 				return;
 			}

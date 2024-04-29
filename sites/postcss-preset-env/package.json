@@ -95,7 +95,7 @@
 		"browser-sync": "^3.0.2",
 		"codemirror": "^6.0.1",
 		"cssdb": "^8.0.0",
-		"eslint": "^9.1.1",
+		"eslint": "^8.57.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-plugin-import": "^2.29.1",
 		"luxon": "^3.4.4",
@@ -111,6 +111,6 @@
 		"typescript": "^5.4.5"
 	},
 	"volta": {
-		"node": "20.10.0"
+		"extends": "../../package.json"
 	}
 }
