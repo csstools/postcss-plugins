@@ -4,7 +4,7 @@ import path from 'path';
 const creator: PluginCreator<never> = () => {
 
 	const onceHandler = (label: string) => {
-		return (root: Root) => {
+		return (root: Root): void => {
 			let sourceFile = root.source?.input?.from;
 			if (sourceFile) {
 				sourceFile = path.relative(process.cwd(), sourceFile);
@@ -22,7 +22,7 @@ const creator: PluginCreator<never> = () => {
 	};
 
 	const documentHandler = (label: string) => {
-		return (document: Document) => {
+		return (document: Document): void => {
 			let sourceFile = document.source?.input?.from;
 			if (sourceFile) {
 				sourceFile = path.relative(process.cwd(), sourceFile);
@@ -39,7 +39,7 @@ const creator: PluginCreator<never> = () => {
 	};
 
 	const atRuleHandler = (label: string) => {
-		return (atrule: AtRule) => {
+		return (atrule: AtRule): void => {
 			let sourceFile = atrule.source?.input?.from;
 			if (sourceFile) {
 				sourceFile = path.relative(process.cwd(), sourceFile);
@@ -60,7 +60,7 @@ const creator: PluginCreator<never> = () => {
 	};
 
 	const ruleHandler = (label: string) => {
-		return (rule: Rule) => {
+		return (rule: Rule): void => {
 			let sourceFile = rule.source?.input?.from;
 			if (sourceFile) {
 				sourceFile = path.relative(process.cwd(), sourceFile);
@@ -80,7 +80,7 @@ const creator: PluginCreator<never> = () => {
 	};
 
 	const commentHandler = (label: string) => {
-		return (comment: Comment) => {
+		return (comment: Comment): void => {
 			let sourceFile = comment.source?.input?.from;
 			if (sourceFile) {
 				sourceFile = path.relative(process.cwd(), sourceFile);
@@ -99,7 +99,7 @@ const creator: PluginCreator<never> = () => {
 	};
 
 	const declHandler = (label: string) => {
-		return (decl: Declaration) => {
+		return (decl: Declaration): void => {
 			let sourceFile = decl.source?.input?.from;
 			if (sourceFile) {
 				sourceFile = path.relative(process.cwd(), sourceFile);
