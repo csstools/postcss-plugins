@@ -4,6 +4,8 @@
 
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.3.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#231) (patch)
 - Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.6.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#263) (patch)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`1.2.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#122) (patch)
+- Updated [`@csstools/media-query-list-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser) to [`2.1.11`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser/CHANGELOG.md#2111) (patch)
 
 ### 1.1.5
 

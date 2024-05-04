@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#209) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`1.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#105) (patch)
 
 ### 9.5.10
 

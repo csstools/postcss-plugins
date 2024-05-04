@@ -49,7 +49,7 @@
 	],
 	"dependencies": {
 		"@csstools/color-helpers": "^4.2.0",
-		"@csstools/css-calc": "^1.2.1"
+		"@csstools/css-calc": "^1.2.2"
 	},
 	"peerDependencies": {
 		"@csstools/css-parser-algorithms": "^2.6.3",
