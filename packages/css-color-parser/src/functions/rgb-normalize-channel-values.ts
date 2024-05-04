@@ -71,7 +71,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value = normalize(token[4].value, 100, -Infinity, Infinity);
+		let value = normalize(token[4].value, 100, -2_147_483_647, 2_147_483_647);
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		}
@@ -93,7 +93,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value = normalize(token[4].value, 255, -Infinity, Infinity);
+		let value = normalize(token[4].value, 255, -2_147_483_647, 2_147_483_647);
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		}

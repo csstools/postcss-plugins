@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Allow uncapped precision in `calc()` serialization
+- Add `censorIntoStandardRepresentableValues` conversion option 
 
 ### 1.2.0
 

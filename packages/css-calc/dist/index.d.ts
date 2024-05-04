@@ -28,6 +28,10 @@ export declare type conversionOptions = {
      * If you want to have outputs that are closes to CSS serialized values you can set `true`.
      */
     toCanonicalUnits?: boolean;
+    /**
+     * Convert NaN, Infinity, ... into standard representable values.
+     */
+    censorIntoStandardRepresentableValues?: boolean;
 };
 
 export declare type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;

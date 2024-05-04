@@ -171,17 +171,19 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 				isFunctionNode(node) &&
 				mathFunctionNames.has(toLowerCaseAZ(node.getName()))
 			) {
-				[[node]] = calcFromComponentValues([[node]], { toCanonicalUnits: true, precision: 100 });
+				[[node]] = calcFromComponentValues([[node]], {
+					censorIntoStandardRepresentableValues: true,
+					precision: -1,
+					toCanonicalUnits: true,
+				});
 
-				if (
-					!node ||
-					!isTokenNode(node) ||
-					(
-						isTokenNumeric(node.value) &&
-						Number.isNaN(node.value[4].value)
-					)
-				) {
+				if (!node || !isTokenNode(node) || !isTokenNumeric(node.value)) {
 					return false;
+				}
+
+				if (Number.isNaN(node.value[4].value)) {
+					// NaN does not escape a top-level calculation; it’s censored into a zero value
+					node.value[4].value = 0;
 				}
 			}
 

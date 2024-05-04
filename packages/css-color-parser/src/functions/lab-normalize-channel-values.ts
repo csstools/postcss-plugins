@@ -27,7 +27,7 @@ export function normalize_Lab_ChannelValues(token: CSSToken, index: number, colo
 
 		let value = normalize(token[4].value, 1, 0, 100);
 		if (index === 1 || index === 2) {
-			value = normalize(token[4].value, 0.8, -Infinity, Infinity);
+			value = normalize(token[4].value, 0.8, -2_147_483_647, 2_147_483_647);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		}
@@ -51,7 +51,7 @@ export function normalize_Lab_ChannelValues(token: CSSToken, index: number, colo
 
 		let value = normalize(token[4].value, 1, 0, 100);
 		if (index === 1 || index === 2) {
-			value = normalize(token[4].value, 1, -Infinity, Infinity);
+			value = normalize(token[4].value, 1, -2_147_483_647, 2_147_483_647);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		}

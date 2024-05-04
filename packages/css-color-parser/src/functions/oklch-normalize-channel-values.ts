@@ -41,7 +41,7 @@ export function normalize_OKLCH_ChannelValues(token: CSSToken, index: number, co
 
 		let value = normalize(token[4].value, 100, 0, 1);
 		if (index === 1) {
-			value = normalize(token[4].value, 250, 0, Infinity);
+			value = normalize(token[4].value, 250, 0, 2_147_483_647);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		}
@@ -65,7 +65,7 @@ export function normalize_OKLCH_ChannelValues(token: CSSToken, index: number, co
 
 		let value = normalize(token[4].value, 1, 0, 1);
 		if (index === 1) {
-			value = normalize(token[4].value, 1, 0, Infinity);
+			value = normalize(token[4].value, 1, 0, 2_147_483_647);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		}

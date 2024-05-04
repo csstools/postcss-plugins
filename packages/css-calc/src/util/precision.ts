@@ -3,8 +3,12 @@ import { isFunctionNode } from '@csstools/css-parser-algorithms';
 import { isTokenDimension, isTokenNumber, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 
 export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13): TokenNode | FunctionNode | -1 {
-	if (x === -1 || precision < 0) {
+	if (x === -1) {
 		return -1;
+	}
+
+	if (precision <= 0) {
+		return x;
 	}
 
 	if (isFunctionNode(x)) {
