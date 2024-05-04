@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (minor)
+### 2.3.0
+
+_May 4, 2024_
 
 - Add `mutateUnit` helper function
 - Add type guard helpers
