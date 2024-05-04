@@ -3,7 +3,7 @@ import { GRADIENT_NAME_REGEX } from './is-gradient';
 import { interpolateColorsInColorStopsList } from './color-stop-list';
 import { isCommentNode, isTokenNode, isWhitespaceNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseColorStops } from './parse-color-stops';
-import { TokenType } from '@csstools/css-tokenizer';
+import { TokenType, isTokenComma, isTokenIdent } from '@csstools/css-tokenizer';
 
 const COLOR_SPACE_REGEX = /^(srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
 const POLAR_COLOR_SPACE_REGEX = /^(hsl|hwb|lch|oklch)$/i;
@@ -33,8 +33,8 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 
 		{
 			// Advance to "in" keyword
-			while (node && !(isTokenNode(node) && node.value[0] === TokenType.Ident && IN_KEYWORD_REGEX.test(node.value[4].value))) {
-				if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+			while (node && !(isTokenNode(node) && isTokenIdent(node.value) && IN_KEYWORD_REGEX.test(node.value[4].value))) {
+				if (isTokenNode(node) && isTokenComma(node.value)) {
 					// comma before "in" keyword
 					return false;
 				}
@@ -56,7 +56,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		// color space
 		if (
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Ident &&
+			isTokenIdent(node.value) &&
 			COLOR_SPACE_REGEX.test(node.value[4].value)
 		) {
 			if (colorSpace) {
@@ -78,7 +78,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		// hue interpolation method
 		if (
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Ident &&
+			isTokenIdent(node.value) &&
 			HUE_INTERPOLATION_METHOD_REGEX.test(node.value[4].value) &&
 			POLAR_COLOR_SPACE_REGEX.test(colorSpaceName)
 		) {
@@ -100,7 +100,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		// "hue" keyword
 		if (
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Ident &&
+			isTokenIdent(node.value) &&
 			HUE_KEYWORD_REGEX.test(node.value[4].value)
 		) {
 			if (hueKeyword || !colorSpace || !hueInterpolationMethod) {
@@ -114,7 +114,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 		}
 
 		// Find first comma
-		while (node && (!isTokenNode(node) || node.value[0] !== TokenType.Comma)) {
+		while (node && (!isTokenNode(node) || !isTokenComma(node.value))) {
 			i++;
 			node = gradientFunction.value[i];
 		}

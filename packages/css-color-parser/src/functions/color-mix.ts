@@ -3,12 +3,13 @@ import type { ColorParser } from '../color-parser';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import { Color } from '@csstools/color-helpers';
 import { ColorNotation } from '../color-notation';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenIdent, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { colorDataTo, SyntaxFlag } from '../color-data';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
+import { isTokenComma } from '@csstools/css-tokenizer';
 
 const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
 const polarColorSpaces = new Set(['hsl', 'hwb', 'lch', 'oklch']);
@@ -29,7 +30,7 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 
 		if (
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Ident
+			isTokenIdent(node.value)
 		) {
 			if (
 				!inNode &&
@@ -73,7 +74,7 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 
 		if (
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Comma
+			isTokenComma(node.value)
 		) {
 			if (!colorSpace) {
 				return false;
@@ -139,7 +140,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 
 		if (
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Comma
+			isTokenComma(node.value)
 		) {
 			if (!color) {
 				return false;
@@ -176,11 +177,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 					!node ||
 					!isTokenNode(node) ||
 					(
-						(
-							node.value[0] === TokenType.Percentage ||
-							node.value[0] === TokenType.Number ||
-							node.value[0] === TokenType.Dimension
-						) &&
+						isTokenNumeric(node.value) &&
 						Number.isNaN(node.value[4].value)
 					)
 				) {
@@ -190,7 +187,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 
 			if (
 				isTokenNode(node) &&
-				node.value[0] === TokenType.Percentage &&
+				isTokenPercentage(node.value) &&
 				node.value[4].value >= 0
 			) {
 				percentage = node.value[4].value;

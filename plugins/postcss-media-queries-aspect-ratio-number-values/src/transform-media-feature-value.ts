@@ -1,5 +1,5 @@
 import { ComponentValue, FunctionNode, isFunctionNode, isTokenNode, SimpleBlockNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { isTokenNumber, NumberType, TokenType } from '@csstools/css-tokenizer';
 import { matchesRatioExactly, MediaFeatureValue } from '@csstools/media-query-list-parser';
 
 const precision = 100000;
@@ -11,7 +11,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 
 		for (let i = 0; i < value.value.length; i++) {
 			const node = value.value[i];
-			if (isTokenNode(node) && node.value[0] === TokenType.Number) {
+			if (isTokenNode(node) && isTokenNumber(node.value)) {
 				nodes.push(node);
 				continue;
 			}
@@ -33,7 +33,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 
 		// Ratio with division by 0
 		// "<any> / 0" -> "2147483647 / 1" (near infinity)
-		if (isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number && secondValue.value[4].value === 0) {
+		if (isTokenNode(secondValue) && isTokenNumber(secondValue.value) && secondValue.value[4].value === 0) {
 			value.value.splice(
 				firstValueIndex,
 				1,
@@ -56,8 +56,8 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 		// Ratio with only integers
 		// "1 / 1"
 		if (
-			(isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number && firstValue.value[4].type === NumberType.Integer) &&
-			(isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number && secondValue.value[4].type === NumberType.Integer)
+			(isTokenNode(firstValue) && isTokenNumber(firstValue.value) && firstValue.value[4].type === NumberType.Integer) &&
+			(isTokenNode(secondValue) && isTokenNumber(secondValue.value) && secondValue.value[4].type === NumberType.Integer)
 		) {
 			return;
 		}
@@ -89,8 +89,8 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 		// Numbers
 		{
 			if (
-				(isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number) &&
-				(isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number)
+				(isTokenNode(firstValue) && isTokenNumber(firstValue.value)) &&
+				(isTokenNode(secondValue) && isTokenNumber(secondValue.value))
 			) {
 				const firstToken = firstValue.value;
 				const secondToken = secondValue.value;
@@ -107,14 +107,14 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 					[TokenType.Number, Math.round(secondNumber / gcd).toString(), -1, -1, { value: Math.round(secondNumber / gcd), type: NumberType.Integer }],
 				);
 			} else {
-				if (isTokenNode(firstValue) && firstValue.value[0] === TokenType.Number) {
+				if (isTokenNode(firstValue) && isTokenNumber(firstValue.value)) {
 					const token = firstValue.value;
 					firstValueModified = new TokenNode(
 						[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
 					);
 				}
 
-				if (isTokenNode(secondValue) && secondValue.value[0] === TokenType.Number) {
+				if (isTokenNode(secondValue) && isTokenNumber(secondValue.value)) {
 					const token = secondValue.value;
 					secondValueModified = new TokenNode(
 						[TokenType.Number, Math.round(token[4].value * precision).toString(), -1, -1, { value: Math.round(token[4].value * precision), type: NumberType.Integer }],
@@ -148,7 +148,7 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 
 		if (isTokenNode(componentValue)) {
 			const token = componentValue.value;
-			if (token[0] !== TokenType.Number) {
+			if (!isTokenNumber(token)) {
 				return;
 			}
 

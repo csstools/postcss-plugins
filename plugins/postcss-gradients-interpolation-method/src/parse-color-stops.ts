@@ -1,6 +1,6 @@
 import type { ColorStop } from './color-stop-list';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenComma } from '@csstools/css-tokenizer';
 import { color, ColorData, SyntaxFlag } from '@csstools/css-color-parser';
 import { isCommentNode } from '@csstools/css-parser-algorithms';
 import { isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
@@ -21,7 +21,7 @@ export function parseColorStops(componentValues: Array<ComponentValue>): Array<C
 			continue;
 		}
 
-		if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+		if (isTokenNode(node) && isTokenComma(node.value)) {
 			if (currentColorStop.color && currentColorStop.colorData && currentColorStop.positionA) {
 				colorStops.push({ color: currentColorStop.color, colorData: currentColorStop.colorData, position: currentColorStop.positionA });
 

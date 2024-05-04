@@ -1,6 +1,6 @@
 import type { ColorData } from './color-data';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenHash, isTokenIdent } from '@csstools/css-tokenizer';
 import { color as colorFn } from './functions/color';
 import { colorKeyword } from './functions/color-keyword';
 import { colorMix } from './functions/color-mix';
@@ -63,11 +63,11 @@ export function color(colorNode: ComponentValue): ColorData | false {
 	}
 
 	if (isTokenNode(colorNode)) {
-		if (colorNode.value[0] === TokenType.Hash) {
+		if (isTokenHash(colorNode.value)) {
 			return hex(colorNode.value);
 		}
 
-		if (colorNode.value[0] === TokenType.Ident) {
+		if (isTokenIdent(colorNode.value)) {
 			const namedColorData = namedColor(colorNode.value[4].value);
 			if (namedColorData !== false) {
 				return namedColorData;

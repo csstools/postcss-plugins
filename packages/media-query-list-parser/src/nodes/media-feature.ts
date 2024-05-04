@@ -6,6 +6,7 @@ import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalke
 import { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent, parseMediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
+import { isTokenOpenParen } from '@csstools/css-tokenizer';
 
 export class MediaFeature {
 	type = NodeType.MediaFeature;
@@ -107,7 +108,7 @@ export type MediaFeatureWalkerEntry = MediaFeaturePlainWalkerEntry | MediaFeatur
 export type MediaFeatureWalkerParent = MediaFeaturePlainWalkerParent | MediaFeatureRangeWalkerParent | MediaFeature;
 
 export function parseMediaFeature(simpleBlock: SimpleBlockNode, before: Array<CSSToken> = [], after: Array<CSSToken> = []): false | MediaFeature {
-	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
+	if (!isTokenOpenParen(simpleBlock.startToken)) {
 		return false;
 	}
 

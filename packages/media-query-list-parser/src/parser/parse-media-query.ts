@@ -1,6 +1,6 @@
 import { isSimpleBlockNode } from '@csstools/css-parser-algorithms';
 import { ComponentValue, ComponentValueType, isCommentNode, isTokenNode, isWhitespaceNode, SimpleBlockNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, isTokenIdent, TokenIdent } from '@csstools/css-tokenizer';
 import { GeneralEnclosed } from '../nodes/general-enclosed';
 import { MediaAnd } from '../nodes/media-and';
 import { MediaCondition } from '../nodes/media-condition';
@@ -12,6 +12,7 @@ import { MediaOr } from '../nodes/media-or';
 import { MediaQuery, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 import { modifierFromToken } from '../nodes/media-query-modifier';
 import { isIdent } from '../util/component-value-is';
+import { isTokenOpenParen } from '@csstools/css-tokenizer';
 
 export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQuery | false {
 	{
@@ -38,17 +39,17 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQu
 
 			if (isTokenNode(componentValue)) {
 				const token = componentValue.value;
-				if (modifierIndex === -1 && token[0] === TokenType.Ident && modifierFromToken(token)) {
+				if (modifierIndex === -1 && isTokenIdent(token) && modifierFromToken(token)) {
 					modifierIndex = i;
 					continue;
 				}
 
-				if (typeIndex === -1 && token[0] === TokenType.Ident && !modifierFromToken(token)) {
+				if (typeIndex === -1 && isTokenIdent(token) && !modifierFromToken(token)) {
 					typeIndex = i;
 					continue;
 				}
 
-				if (andIndex === -1 && token[0] === TokenType.Ident && IS_AND_REGEX.test(token[4].value)) {
+				if (andIndex === -1 && isTokenIdent(token) && IS_AND_REGEX.test(token[4].value)) {
 					andIndex = i;
 					const condition = parseMediaConditionWithoutOr(componentValues.slice(i+1));
 					if (condition === false) {
@@ -301,7 +302,7 @@ function parseMediaInParens(componentValues: Array<ComponentValue>): MediaInPare
 	}
 
 	const simpleBlock = componentValues[singleSimpleBlockIndex] as SimpleBlockNode;
-	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
+	if (!isTokenOpenParen(simpleBlock.startToken)) {
 		return false;
 	}
 
@@ -343,7 +344,7 @@ function parseMediaInParens(componentValues: Array<ComponentValue>): MediaInPare
 }
 
 function parseMediaInParensFromSimpleBlock(simpleBlock: SimpleBlockNode): MediaInParens | false {
-	if (simpleBlock.startToken[0] !== TokenType.OpenParen) {
+	if (!isTokenOpenParen(simpleBlock.startToken)) {
 		return false;
 	}
 

@@ -1,5 +1,5 @@
 import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 
 const CONTRAST_COLOR_NAME_REGEX = /^contrast-color$/i;
 
@@ -32,7 +32,7 @@ export function parseContrastColor(componentValue: ComponentValue): [ComponentVa
 
 	if (
 		!isTokenNode(modifier) ||
-		modifier.value[0] !== TokenType.Ident ||
+		!isTokenIdent(modifier.value) ||
 		modifier.value[4].value.toLowerCase() !== 'max'
 	) {
 		return false;

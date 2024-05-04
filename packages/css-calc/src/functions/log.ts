@@ -1,6 +1,6 @@
 import type { Calculation } from '../calculation';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenNumber } from '@csstools/css-tokenizer';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { numberToCalculation } from './result-to-calculation';
 
@@ -12,7 +12,7 @@ export function solveLog(logNode: FunctionNode, solvedNodes: Array<ComponentValu
 		}
 
 		const aToken = aNode.value;
-		if (aToken[0] !== TokenType.Number) {
+		if (!isTokenNumber(aToken)) {
 			return -1;
 		}
 
@@ -28,7 +28,7 @@ export function solveLog(logNode: FunctionNode, solvedNodes: Array<ComponentValu
 		}
 
 		const aToken = aNode.value;
-		if (aToken[0] !== TokenType.Number) {
+		if (!isTokenNumber(aToken)) {
 			return -1;
 		}
 
@@ -38,7 +38,7 @@ export function solveLog(logNode: FunctionNode, solvedNodes: Array<ComponentValu
 		}
 
 		const bToken = bNode.value;
-		if (bToken[0] !== TokenType.Number) {
+		if (!isTokenNumber(bToken)) {
 			return -1;
 		}
 

@@ -29,19 +29,25 @@
  *
  * @packageDocumentation
  */
-
-export type { CSSToken } from './interfaces/token';
 export type { CodePointReader } from './interfaces/code-point-reader';
-export type { Token } from './interfaces/token';
 export { ParseError } from './interfaces/error';
 export { Reader } from './reader';
-export { TokenType, NumberType, mirrorVariantType, mirrorVariant, isToken } from './interfaces/token';
 export { cloneTokens } from './util/clone-tokens';
 export { stringify } from './stringify';
 export { tokenize, tokenizer } from './tokenizer';
 
-export type {
+export {
 	HashType,
+	NumberType,
+	TokenType,
+	mirrorVariant,
+	mirrorVariantType,
+} from './interfaces/token';
+
+export type {
+	CSSToken,
+	NumericToken,
+	Token,
 	TokenAtKeyword,
 	TokenBadString,
 	TokenBadURL,
@@ -73,4 +79,38 @@ export type {
 
 export {
 	mutateIdent,
+	mutateUnit,
 } from './util/mutations';
+
+export {
+	isTokenNumeric,
+	isToken,
+	isTokenAtKeyword,
+	isTokenBadString,
+	isTokenBadURL,
+	isTokenCDC,
+	isTokenCDO,
+	isTokenCloseCurly,
+	isTokenCloseParen,
+	isTokenCloseSquare,
+	isTokenColon,
+	isTokenComma,
+	isTokenComment,
+	isTokenDelim,
+	isTokenDimension,
+	isTokenEOF,
+	isTokenFunction,
+	isTokenHash,
+	isTokenIdent,
+	isTokenNumber,
+	isTokenOpenCurly,
+	isTokenOpenParen,
+	isTokenOpenSquare,
+	isTokenPercentage,
+	isTokenSemicolon,
+	isTokenString,
+	isTokenURL,
+	isTokenUnicodeRange,
+	isTokenWhitespace,
+	isTokenWhiteSpaceOrComment,
+} from './util/type-predicates';

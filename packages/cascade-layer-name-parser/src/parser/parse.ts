@@ -1,6 +1,6 @@
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, tokenizer, TokenType, ParseError } from '@csstools/css-tokenizer';
+import { CSSToken, tokenizer, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
 /**
@@ -58,11 +58,11 @@ export function parseFromTokens(
 		for (let j = 0; j < componentValueTokens.length; j++) {
 			const token = componentValueTokens[j];
 			if (!(
-				token[0] === TokenType.Comment ||
-				token[0] === TokenType.Whitespace ||
-				token[0] === TokenType.Ident ||
+				isTokenComment(token) ||
+				isTokenWhitespace(token) ||
+				isTokenIdent(token) ||
 				(
-					token[0] === TokenType.Delim &&
+					isTokenDelim(token) &&
 					token[4].value === '.'
 				)
 			)) {
@@ -77,7 +77,7 @@ export function parseFromTokens(
 			}
 
 			if (!inLayerNameSequence) {
-				if (token[0] === TokenType.Delim) {
+				if (isTokenDelim(token)) {
 					onParseError(new ParseError(
 						'Invalid cascade layer name. Layer names can not start with a dot.',
 						sourceStart,
@@ -90,12 +90,12 @@ export function parseFromTokens(
 			}
 
 			if (inLayerNameSequence) {
-				if (token[0] === TokenType.Whitespace) {
+				if (isTokenWhitespace(token)) {
 					sawWhiteSpaceAfterIdent = true;
 					continue;
 				}
 
-				if (sawWhiteSpaceAfterIdent && token[0] === TokenType.Comment) {
+				if (sawWhiteSpaceAfterIdent && isTokenComment(token)) {
 					continue;
 				}
 
@@ -110,38 +110,34 @@ export function parseFromTokens(
 					return [];
 				}
 
-				if (lastToken && lastToken[0] === TokenType.Ident) {
-					if (token[0] === TokenType.Ident) {
-						onParseError(new ParseError(
-							'Invalid cascade layer name. Layer name parts must be separated by dots.',
-							sourceStart,
-							sourceEnd,
-							genericErrorParseState,
-						));
+				if (isTokenIdent(lastToken) && isTokenIdent(token)) {
+					onParseError(new ParseError(
+						'Invalid cascade layer name. Layer name parts must be separated by dots.',
+						sourceStart,
+						sourceEnd,
+						genericErrorParseState,
+					));
 
-						return [];
-					}
+					return [];
 				}
 
-				if (lastToken && lastToken[0] === TokenType.Delim) {
-					if (token[0] === TokenType.Delim) {
-						onParseError(new ParseError(
-							'Invalid cascade layer name. Layer name parts must not be empty.',
-							sourceStart,
-							sourceEnd,
-							genericErrorParseState,
-						));
+				if (isTokenDelim(lastToken) && isTokenDelim(token)) {
+					onParseError(new ParseError(
+						'Invalid cascade layer name. Layer name parts must not be empty.',
+						sourceStart,
+						sourceEnd,
+						genericErrorParseState,
+					));
 
-						return [];
-					}
+					return [];
 				}
 			}
 
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				inLayerNameSequence = true;
 			}
 
-			if (token[0] === TokenType.Ident || token[0] === TokenType.Delim) {
+			if (isTokenIdent(token) || isTokenDelim(token)) {
 				lastToken = token;
 			}
 		}
@@ -157,7 +153,7 @@ export function parseFromTokens(
 			return [];
 		}
 
-		if (lastToken[0] === TokenType.Delim) {
+		if (isTokenDelim(lastToken)) {
 			onParseError(new ParseError(
 				'Invalid cascade layer name. Layer name must not end with a dot.',
 				sourceStart,

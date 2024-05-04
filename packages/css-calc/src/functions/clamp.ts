@@ -3,7 +3,8 @@ import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { convertUnit } from '../unit-conversions';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
-import { isNumeric, twoOfSameNumeric } from '../util/kind-of-number';
+import { twoOfSameNumeric } from '../util/kind-of-number';
+import { isTokenNumeric } from '@csstools/css-tokenizer';
 
 export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1): Calculation | -1 {
 	if (
@@ -15,7 +16,7 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 	}
 
 	const minimumToken = minimum.value;
-	if (!isNumeric(minimumToken)) {
+	if (!isTokenNumeric(minimumToken)) {
 		return -1;
 	}
 

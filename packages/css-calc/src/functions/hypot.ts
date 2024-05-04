@@ -3,7 +3,8 @@ import type { ComponentValue, FunctionNode, TokenNode } from '@csstools/css-pars
 import { convertUnit } from '../unit-conversions';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
-import { arrayOfSameNumeric, isNumeric } from '../util/kind-of-number';
+import { arrayOfSameNumeric } from '../util/kind-of-number';
+import { isTokenNumeric } from '@csstools/css-tokenizer';
 
 export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<ComponentValue>): Calculation | -1 {
 	const firstSolvedNode = solvedNodes[0];
@@ -17,7 +18,7 @@ export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<Component
 	}
 
 	const firstSolvedToken = firstSolvedNode.value;
-	if (!isNumeric(firstSolvedToken)) {
+	if (!isTokenNumeric(firstSolvedToken)) {
 		return -1;
 	}
 

@@ -1,6 +1,6 @@
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { isFunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenNumber, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 
 export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13): TokenNode | FunctionNode | -1 {
 	if (x === -1 || precision < 0) {
@@ -12,11 +12,7 @@ export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13)
 	}
 
 	const token = x.value;
-	if (
-		token[0] !== TokenType.Number &&
-		token[0] !== TokenType.Percentage &&
-		token[0] !== TokenType.Dimension
-	) {
+	if (!isTokenNumeric(token)) {
 		return x;
 	}
 
@@ -25,11 +21,11 @@ export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13)
 	}
 
 	const result = Number(token[4].value.toFixed(precision)).toString();
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		token[1] = result;
-	} else if (token[0] === TokenType.Percentage) {
+	} else if (isTokenPercentage(token)) {
 		token[1] = result + '%';
-	} else if (token[0] === TokenType.Dimension) {
+	} else if (isTokenDimension(token)) {
 		token[1] = result + token[4].unit;
 	}
 

@@ -1,10 +1,10 @@
 import type { ColorData } from '../color-data';
-import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
 
 export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
-	if (token[0] === TokenType.Percentage) {
+	if (isTokenPercentage(token)) {
 		if (index === 3) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageAlpha);
 		} else {
@@ -25,7 +25,7 @@ export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: numb
 		];
 	}
 
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		if (index !== 3) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
@@ -51,7 +51,7 @@ export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: numb
 }
 
 export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
-	if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'none') {
+	if (isTokenIdent(token) && token[4].value.toLowerCase() === 'none') {
 		colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
 
 		return [
@@ -66,7 +66,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 		];
 	}
 
-	if (token[0] === TokenType.Percentage) {
+	if (isTokenPercentage(token)) {
 		if (index !== 3) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
@@ -88,7 +88,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 		];
 	}
 
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		if (index !== 3) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}

@@ -1,5 +1,5 @@
 import { gatherNodeAncestry } from '@csstools/css-parser-algorithms';
-import { stringify, TokenType } from '@csstools/css-tokenizer';
+import { isTokenWhitespace, stringify, TokenType } from '@csstools/css-tokenizer';
 import { isMediaAnd, isMediaCondition, isMediaConditionListWithAnd, isMediaFeature, isMediaFeatureRange, isMediaFeatureRangeNameValue, isMediaFeatureRangeValueName, isMediaInParens, isMediaQuery, MediaAnd, MediaCondition, MediaConditionListWithAnd, MediaFeature, MediaInParens, MediaQuery, MediaFeatureLT } from '@csstools/media-query-list-parser';
 import { transformSingleNameValuePair } from './transform-single-pair';
 
@@ -205,12 +205,12 @@ export function transform(mediaQueries: Array<MediaQuery>): string {
 			...tokens.filter((x, i) => {
 				// The algorithms above will err on the side of caution and might insert to much whitespace.
 
-				if (i === 0 && mediaQueryIndex === 0 && x[0] === TokenType.Whitespace) {
+				if (i === 0 && mediaQueryIndex === 0 && isTokenWhitespace(x)) {
 					// Trim leading whitespace from the first media query.
 					return false;
 				}
 
-				if (x[0] === TokenType.Whitespace && tokens[i + 1] && tokens[i + 1][0] === TokenType.Whitespace) {
+				if (isTokenWhitespace(x) && tokens[i + 1] && isTokenWhitespace(tokens[i + 1])) {
 					// Collapse multiple sequential whitespace tokens
 					return false;
 				}

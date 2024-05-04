@@ -6,10 +6,10 @@ import { SyntaxFlag } from '../color-data';
 import { normalize_legacy_HSL_ChannelValues, normalize_modern_HSL_ChannelValues } from './hsl-normalize-channel-values';
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenComma } from '@csstools/css-tokenizer';
 
 export function hsl(hslNode: FunctionNode, colorParser: ColorParser): ColorData | false {
-	if (hslNode.value.some((x) => isTokenNode(x) && x.value[0] === TokenType.Comma)) {
+	if (hslNode.value.some((x) => isTokenNode(x) && isTokenComma(x.value))) {
 		const output = hslCommaSeparated(hslNode);
 		if (output !== false) {
 			return output;

@@ -39,6 +39,7 @@ import './wpt/inclusive-ranges.mjs';
 
 // Mutations
 import './mutations/ident.mjs';
+import './mutations/dimension.mjs';
 
 // css-tokenizer-tests
 //

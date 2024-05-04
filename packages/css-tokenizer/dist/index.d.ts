@@ -83,6 +83,70 @@ export declare enum HashType {
  */
 export declare function isToken(x: any): x is CSSToken;
 
+export declare function isTokenAtKeyword(x?: CSSToken | null): x is TokenAtKeyword;
+
+export declare function isTokenBadString(x?: CSSToken | null): x is TokenBadString;
+
+export declare function isTokenBadURL(x?: CSSToken | null): x is TokenBadURL;
+
+export declare function isTokenCDC(x?: CSSToken | null): x is TokenCDC;
+
+export declare function isTokenCDO(x?: CSSToken | null): x is TokenCDO;
+
+export declare function isTokenCloseCurly(x?: CSSToken | null): x is TokenCloseCurly;
+
+export declare function isTokenCloseParen(x?: CSSToken | null): x is TokenCloseParen;
+
+export declare function isTokenCloseSquare(x?: CSSToken | null): x is TokenCloseSquare;
+
+export declare function isTokenColon(x?: CSSToken | null): x is TokenColon;
+
+export declare function isTokenComma(x?: CSSToken | null): x is TokenComma;
+
+export declare function isTokenComment(x?: CSSToken | null): x is TokenComment;
+
+export declare function isTokenDelim(x?: CSSToken | null): x is TokenDelim;
+
+export declare function isTokenDimension(x?: CSSToken | null): x is TokenDimension;
+
+export declare function isTokenEOF(x?: CSSToken | null): x is TokenEOF;
+
+export declare function isTokenFunction(x?: CSSToken | null): x is TokenFunction;
+
+export declare function isTokenHash(x?: CSSToken | null): x is TokenHash;
+
+export declare function isTokenIdent(x?: CSSToken | null): x is TokenIdent;
+
+export declare function isTokenNumber(x?: CSSToken | null): x is TokenNumber;
+
+/**
+ * Assert that a token is a numeric token
+ */
+export declare function isTokenNumeric(x: CSSToken): x is NumericToken;
+
+export declare function isTokenOpenCurly(x?: CSSToken | null): x is TokenOpenCurly;
+
+export declare function isTokenOpenParen(x?: CSSToken | null): x is TokenOpenParen;
+
+export declare function isTokenOpenSquare(x?: CSSToken | null): x is TokenOpenSquare;
+
+export declare function isTokenPercentage(x?: CSSToken | null): x is TokenPercentage;
+
+export declare function isTokenSemicolon(x?: CSSToken | null): x is TokenSemicolon;
+
+export declare function isTokenString(x?: CSSToken | null): x is TokenString;
+
+export declare function isTokenUnicodeRange(x?: CSSToken | null): x is TokenUnicodeRange;
+
+export declare function isTokenURL(x?: CSSToken | null): x is TokenURL;
+
+export declare function isTokenWhitespace(x?: CSSToken | null): x is TokenWhitespace;
+
+/**
+ * Assert that a token is a whitespace or comment token
+ */
+export declare function isTokenWhiteSpaceOrComment(x: CSSToken): x is TokenWhitespace | TokenComment;
+
 /**
  * Get the mirror variant of a given token
  *
@@ -118,6 +182,12 @@ export declare function mirrorVariantType(type: TokenType): TokenType | null;
 export declare function mutateIdent(ident: TokenIdent, newValue: string): void;
 
 /**
+ * Set the unit and update the string representation.
+ * This handles escaping.
+ */
+export declare function mutateUnit(ident: TokenDimension, newUnit: string): void;
+
+/**
  * The type of number token
  * Either `integer` or `number`
  */
@@ -125,6 +195,11 @@ export declare enum NumberType {
     Integer = "integer",
     Number = "number"
 }
+
+/**
+ * The union of all possible CSS tokens that represent a numeric value
+ */
+export declare type NumericToken = TokenDimension | TokenNumber | TokenPercentage;
 
 /**
  * The CSS Tokenizer is forgiving and will never throw on invalid input.

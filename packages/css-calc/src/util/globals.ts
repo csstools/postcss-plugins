@@ -1,5 +1,5 @@
 import type { TokenDimension, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
-import { isToken, tokenizer, TokenType } from '@csstools/css-tokenizer';
+import { isTokenNumeric, isToken, tokenizer } from '@csstools/css-tokenizer';
 
 export type Globals = Map<string, TokenDimension | TokenNumber | TokenPercentage>;
 export type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
@@ -34,11 +34,7 @@ export function tokenizeGlobals(x: GlobalsWithStrings | undefined): Globals {
 				continue;
 			}
 
-			if (
-				token[0] !== TokenType.Number &&
-				token[0] !== TokenType.Dimension &&
-				token[0] !== TokenType.Percentage
-			) {
+			if (!isTokenNumeric(token)) {
 				continue;
 			}
 

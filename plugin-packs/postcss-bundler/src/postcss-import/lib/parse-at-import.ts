@@ -1,5 +1,5 @@
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
-import { TokenType, tokenize } from '@csstools/css-tokenizer';
+import { isTokenIdent, isTokenString, isTokenURL, tokenize } from '@csstools/css-tokenizer';
 import { IS_LAYER_REGEX, IS_SUPPORTS_REGEX, IS_URL_REGEX } from './names';
 
 export function parseAtImport(params: string) : false | { uri: string; fullUri: string; layer?: string; media?: string; supports?: string; } {
@@ -8,8 +8,8 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 	// Fast path for common cases:
 	if (
 		tokens.length === 2 && (
-			tokens[0][0] === TokenType.String ||
-			tokens[0][0] === TokenType.URL
+			isTokenString(tokens[0]) ||
+			isTokenURL(tokens[0])
 		)
 	) {
 		let uri = tokens[0][4].value;
@@ -41,8 +41,8 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 		if (
 			isTokenNode(componentValue) &&
 			(
-				componentValue.value[0] === TokenType.String ||
-				componentValue.value[0] === TokenType.URL
+				isTokenString(componentValue.value) ||
+				isTokenURL(componentValue.value)
 			)
 		) {
 			if (uri) {
@@ -71,7 +71,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 				if (
 					!uri &&
 					isTokenNode(childComponentValue) &&
-					childComponentValue.value[0] === TokenType.String
+					isTokenString(childComponentValue.value)
 				) {
 					uri = childComponentValue.value[4].value;
 					fullUri = stringify([[componentValue]]);
@@ -81,7 +81,6 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 				return false;
 			}
 
-			continue;
 		}
 
 		if (!uri) {
@@ -90,7 +89,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 
 		if (
 			isTokenNode(componentValue) &&
-			componentValue.value[0] === TokenType.Ident &&
+			isTokenIdent(componentValue.value) &&
 			IS_LAYER_REGEX.test(componentValue.value[4].value)
 		) {
 			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {

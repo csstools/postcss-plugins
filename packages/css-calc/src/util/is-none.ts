@@ -1,6 +1,6 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 
 const IS_NONE_REGEX = /^none$/i;
 
@@ -19,7 +19,7 @@ export function isNone(v: Array<ComponentValue> | ComponentValue): boolean {
 	}
 
 	const token = v.value;
-	if (token[0] !== TokenType.Ident) {
+	if (!isTokenIdent(token)) {
 		return false;
 	}
 

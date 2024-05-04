@@ -2831,13 +2831,8 @@
                   "text": "tokens(): "
                 },
                 {
-                  "kind": "Reference",
-                  "text": "Array",
-                  "canonicalReference": "!Array:interface"
-                },
-                {
                   "kind": "Content",
-                  "text": "<"
+                  "text": "["
                 },
                 {
                   "kind": "Reference",
@@ -2846,7 +2841,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ">"
+                  "text": "]"
                 },
                 {
                   "kind": "Content",
@@ -2856,7 +2851,7 @@
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 5
+                "endIndex": 4
               },
               "releaseTag": "Public",
               "isProtected": false,

@@ -1,12 +1,12 @@
 import type { ColorData } from '../color-data';
-import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
 import { normalizeHue } from './hue-normalize-channel-value';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalize_HWB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
-	if (token[0] === TokenType.Ident && toLowerCaseAZ(token[4].value) === 'none') {
+	if (isTokenIdent(token) && toLowerCaseAZ(token[4].value) === 'none') {
 		colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
 
 		return [
@@ -27,14 +27,14 @@ export function normalize_HWB_ChannelValues(token: CSSToken, index: number, colo
 			return false;
 		}
 
-		if (token[0] === TokenType.Dimension) {
+		if (isTokenDimension(token)) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasDimensionValues);
 		}
 
 		return hueToken;
 	}
 
-	if (token[0] === TokenType.Percentage) {
+	if (isTokenPercentage(token)) {
 		if (index === 3) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageAlpha);
 		} else {
@@ -58,7 +58,7 @@ export function normalize_HWB_ChannelValues(token: CSSToken, index: number, colo
 		];
 	}
 
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		if (index !== 3) {
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
