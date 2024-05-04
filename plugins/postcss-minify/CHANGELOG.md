@@ -1,6 +1,8 @@
 # Changes to PostCSS Minify
 
-### Unreleased (patch)
+### 1.1.2
+
+_May 4, 2024_
 
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.3.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#230) (minor)
 
