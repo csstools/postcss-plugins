@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-logical-viewport-units",
 	"description": "Use vb and vi length units in CSS",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
