@@ -1,7 +1,7 @@
 {
 	"name": "postcss-custom-media",
 	"description": "Use Custom Media Queries in CSS",
-	"version": "10.0.4",
+	"version": "10.0.5",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
