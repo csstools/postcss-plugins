@@ -15,7 +15,7 @@ export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | Fun
 		return x;
 	}
 
-	if (Number.isFinite(token[4].value)) {
+	if (Number.isFinite(token[4].value) || Number.isNaN(token[4].value)) {
 		return x;
 	}
 

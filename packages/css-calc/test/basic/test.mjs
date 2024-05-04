@@ -182,3 +182,23 @@ assert.strictEqual(
 	calc('sin(90deg)', { toCanonicalUnits: false }),
 	'1',
 );
+
+assert.strictEqual(
+	calc('calc(NaN)', { toCanonicalUnits: false }),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('calc(NaN)', { toCanonicalUnits: false, censorIntoStandardRepresentableValues: true }),
+	'NaN',
+);
+
+assert.strictEqual(
+	calc('calc(1 / 0)', { toCanonicalUnits: false }),
+	'calc(infinity)',
+);
+
+assert.strictEqual(
+	calc('calc(1 / 0)', { toCanonicalUnits: false, censorIntoStandardRepresentableValues: true }),
+	'Infinity',
+);

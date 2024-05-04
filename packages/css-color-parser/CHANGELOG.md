@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Improve handling of `NaN` and `Infinity` in color functions.
+
 ### 2.0.0
 
 _April 21, 2024_

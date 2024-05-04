@@ -69,16 +69,19 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 				return false;
 			}
 
-			const [[result]] = calcFromComponentValues([[node]], { toCanonicalUnits: true, precision: 100, globals: relativeColorChannelsWithoutNone });
-			if (
-				!result ||
-				!isTokenNode(result) ||
-				(
-					isTokenNumeric(result.value) &&
-					Number.isNaN(result.value[4].value)
-				)
-			) {
+			const [[result]] = calcFromComponentValues([[node]], {
+				censorIntoStandardRepresentableValues: true,
+				globals: relativeColorChannelsWithoutNone,
+				precision: -1,
+				toCanonicalUnits: true,
+			});
+			if (!result || !isTokenNode(result) || !isTokenNumeric(result.value)) {
 				return false;
+			}
+
+			if (Number.isNaN(result.value[4].value)) {
+				// NaN does not escape a top-level calculation; it’s censored into a zero value
+				result.value[4].value = 0;
 			}
 
 			node = result;

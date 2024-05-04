@@ -25,7 +25,7 @@ export function normalize_Color_ChannelValues(token: CSSToken, index: number, co
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value = normalize(token[4].value, 100, -Infinity, Infinity);
+		let value = normalize(token[4].value, 100, -2_147_483_647, 2_147_483_647);
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		}
@@ -47,7 +47,7 @@ export function normalize_Color_ChannelValues(token: CSSToken, index: number, co
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value = normalize(token[4].value, 1, -Infinity, Infinity);
+		let value = normalize(token[4].value, 1, -2_147_483_647, 2_147_483_647);
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		}

@@ -94,6 +94,11 @@ const tests = [
 	['color-mix(in oklab, oklab(from oklab(0.25 0.2 0.5) none a b), oklab(0.25 0.2 0.5))', canonicalize('oklab(0.25 0.2 0.5)')],
 	['color-mix(in lch, lch(from lch(0.7 45 30) l c none), lch(0.7 45 30))', canonicalize('lch(0.7 45 30)')],
 	['color-mix(in oklch, oklch(from oklch(0.7 0.45 30) l c none), oklch(0.7 0.45 30))', canonicalize('oklch(0.7 0.45 30)')],
+	['color-mix(in hsl, hsl(calc(NaN) 30% 40%), hsl(20deg 30% 40%))', canonicalize('hsl(10deg 30% 40%)')],
+	['color-mix(in hsl, hsl(calc(0 / 0) 30% 40%), hsl(20deg 30% 40%))', canonicalize('hsl(10deg 30% 40%)')],
+
+	// TODO : `none` containing support
+	['color-mix(in hsl, hsl(calc(none) 30% 40%), hsl(20deg 30% 40%))', ''],
 ];
 
 for (const test of tests) {
