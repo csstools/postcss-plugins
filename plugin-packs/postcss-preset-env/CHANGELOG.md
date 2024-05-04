@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#208) (patch)
+
 ### 9.5.9
 
 _April 22, 2024_

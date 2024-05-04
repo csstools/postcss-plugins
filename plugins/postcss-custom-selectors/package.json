@@ -59,7 +59,7 @@
 	],
 	"dependencies": {
 		"@csstools/cascade-layer-name-parser": "^1.0.9",
-		"@csstools/css-parser-algorithms": "^2.6.1",
+		"@csstools/css-parser-algorithms": "^2.6.2",
 		"@csstools/css-tokenizer": "^2.3.0",
 		"postcss-selector-parser": "^6.0.13"
 	},
