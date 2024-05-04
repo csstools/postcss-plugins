@@ -83,7 +83,10 @@ function insertEscapedCodePoint(codePoints: Array<number>, index: number, codePo
 	}
 
 	const next = codePoints[index + 1];
-	if (next && isHexDigitCodePoint(next)) {
+	if (
+		(index === codePoints.length - 1) ||
+		(next && isHexDigitCodePoint(next))
+	) {
 		codePoints.splice(
 			index,
 			1,
