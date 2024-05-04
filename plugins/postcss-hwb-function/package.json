@@ -50,7 +50,7 @@
 	"dependencies": {
 		"@csstools/css-color-parser": "^2.0.0",
 		"@csstools/css-parser-algorithms": "^2.6.1",
-		"@csstools/css-tokenizer": "^2.2.4",
+		"@csstools/css-tokenizer": "^2.3.0",
 		"@csstools/postcss-progressive-custom-properties": "^3.2.0",
 		"@csstools/utilities": "^1.0.0"
 	},
