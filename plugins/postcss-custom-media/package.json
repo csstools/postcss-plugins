@@ -56,7 +56,7 @@
 	],
 	"dependencies": {
 		"@csstools/cascade-layer-name-parser": "^1.0.10",
-		"@csstools/css-parser-algorithms": "^2.6.2",
+		"@csstools/css-parser-algorithms": "^2.6.3",
 		"@csstools/css-tokenizer": "^2.3.1",
 		"@csstools/media-query-list-parser": "^2.1.10"
 	},
