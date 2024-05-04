@@ -1,5 +1,5 @@
 import type { TokenNode } from '@csstools/css-parser-algorithms';
-import { isNumeric } from '../util/kind-of-number';
+import { isTokenNumeric } from '@csstools/css-tokenizer';
 
 export function unary(inputs: Array<TokenNode>): TokenNode | -1 {
 	if (inputs.length !== 1) {
@@ -7,7 +7,7 @@ export function unary(inputs: Array<TokenNode>): TokenNode | -1 {
 	}
 
 	const aToken = inputs[0].value;
-	if (isNumeric(aToken)) {
+	if (isTokenNumeric(aToken)) {
 		return inputs[0];
 	}
 

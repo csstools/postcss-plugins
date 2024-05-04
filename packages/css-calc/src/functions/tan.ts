@@ -1,6 +1,6 @@
 import type { Calculation } from '../calculation';
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension } from '@csstools/css-tokenizer';
 import { convert_deg } from '../unit-conversions/deg';
 import { convert_grad } from '../unit-conversions/grad';
 import { convert_rad } from '../unit-conversions/rad';
@@ -19,7 +19,7 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 
 	let degrees = 0;
 	let result = aToken[4].value;
-	if (aToken[0] === TokenType.Dimension) {
+	if (isTokenDimension(aToken)) {
 		switch (toLowerCaseAZ(aToken[4].unit)) {
 			case 'rad':
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion

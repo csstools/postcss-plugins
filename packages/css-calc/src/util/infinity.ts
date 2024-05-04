@@ -1,5 +1,5 @@
 import { FunctionNode, isFunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenNumber, isTokenNumeric, NumberType, TokenType } from '@csstools/css-tokenizer';
 
 export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
 	if (x === -1) {
@@ -11,11 +11,7 @@ export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | Fun
 	}
 
 	const token = x.value;
-	if (
-		token[0] !== TokenType.Number &&
-		token[0] !== TokenType.Percentage &&
-		token[0] !== TokenType.Dimension
-	) {
+	if (!isTokenNumeric(token)) {
 		return x;
 	}
 
@@ -28,7 +24,7 @@ export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | Fun
 		signStr = '-';
 	}
 
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		return new FunctionNode(
 			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
 			[TokenType.CloseParen, ')', token[2], token[3], undefined],
@@ -40,7 +36,7 @@ export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | Fun
 		);
 	}
 
-	if (token[0] === TokenType.Dimension) {
+	if (isTokenDimension(token)) {
 		return new FunctionNode(
 			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
 			[TokenType.CloseParen, ')', token[2], token[3], undefined],
@@ -70,33 +66,29 @@ export function patchInfinity(x: TokenNode | FunctionNode | -1): TokenNode | Fun
 		);
 	}
 
-	if (token[0] === TokenType.Percentage) {
-		return new FunctionNode(
-			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
-			[TokenType.CloseParen, ')', token[2], token[3], undefined],
-			[
-				new TokenNode([TokenType.Ident, signStr + 'infinity', token[2], token[3], {
-					value: signStr + 'infinity',
-				}]),
-				new WhitespaceNode(
-					[
-						[TokenType.Whitespace, ' ', token[2], token[3], undefined],
-					],
-				),
-				new TokenNode([TokenType.Delim, '*', token[2], token[3], {
-					value: '*',
-				}]),
-				new WhitespaceNode(
-					[
-						[TokenType.Whitespace, ' ', token[2], token[3], undefined],
-					],
-				),
-				new TokenNode([TokenType.Percentage, '1%', token[2], token[3], {
-					value: 1,
-				}]),
-			],
-		);
-	}
-
-	return -1;
+	return new FunctionNode(
+		[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
+		[TokenType.CloseParen, ')', token[2], token[3], undefined],
+		[
+			new TokenNode([TokenType.Ident, signStr + 'infinity', token[2], token[3], {
+				value: signStr + 'infinity',
+			}]),
+			new WhitespaceNode(
+				[
+					[TokenType.Whitespace, ' ', token[2], token[3], undefined],
+				],
+			),
+			new TokenNode([TokenType.Delim, '*', token[2], token[3], {
+				value: '*',
+			}]),
+			new WhitespaceNode(
+				[
+					[TokenType.Whitespace, ' ', token[2], token[3], undefined],
+				],
+			),
+			new TokenNode([TokenType.Percentage, '1%', token[2], token[3], {
+				value: 1,
+			}]),
+		],
+	);
 }

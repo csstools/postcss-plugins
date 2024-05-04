@@ -1,5 +1,5 @@
 import { IfCondition } from '../parse/if';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension } from '@csstools/css-tokenizer';
 
 export function matchIfCondition(condition: IfCondition): string | true | undefined {
 	const a = condition.a;
@@ -9,8 +9,8 @@ export function matchIfCondition(condition: IfCondition): string | true | undefi
 	}
 
 	if (
-		a[0] === TokenType.Dimension &&
-		b[0] === TokenType.Dimension &&
+		isTokenDimension(a) &&
+		isTokenDimension(b) &&
 		a[4].unit.toLowerCase() !== b[4].unit.toLowerCase()
 	) {
 		return;

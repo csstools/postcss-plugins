@@ -1,10 +1,11 @@
-import { ComponentValue, ComponentValueType, FunctionNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, TokenFunction, TokenType } from '@csstools/css-tokenizer';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isTokenNode  } from '@csstools/css-parser-algorithms';
+import { isTokenDimension, isTokenIdent, isTokenNumber } from '@csstools/css-tokenizer';
 
 export function isNumber(componentValue: ComponentValue): boolean {
 	if (
-		(componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Number) ||
-		(componentValue.type === ComponentValueType.Function && mathFunctions.has(((componentValue as FunctionNode).name as TokenFunction)[4].value.toLowerCase()))
+		(isTokenNode(componentValue) && isTokenNumber(componentValue.value)) ||
+		(isFunctionNode(componentValue) && mathFunctions.has(componentValue.getName().toLowerCase()))
 	) {
 		return true;
 	}
@@ -37,29 +38,13 @@ const mathFunctions = new Set([
 ]);
 
 export function isDimension(componentValue: ComponentValue): boolean {
-	if (componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Dimension) {
-		return true;
-	}
-
-	return false;
+	return isTokenNode(componentValue) && isTokenDimension(componentValue.value);
 }
 
 export function isIdent(componentValue: ComponentValue): boolean {
-	if (componentValue.type === ComponentValueType.Token && (componentValue.value as CSSToken)[0] === TokenType.Ident) {
-		return true;
-	}
-
-	return false;
+	return isTokenNode(componentValue) && isTokenIdent(componentValue.value);
 }
 
-const IS_ENV_REGEX = /^env$/i;
-
 export function isEnvironmentVariable(componentValue: ComponentValue): boolean {
-	if (componentValue.type === ComponentValueType.Function &&
-		IS_ENV_REGEX.test(((componentValue as FunctionNode).name as TokenFunction)[4].value)
-	) {
-		return true;
-	}
-
-	return false;
+	return isFunctionNode(componentValue) && componentValue.getName().toLowerCase() === 'env';
 }

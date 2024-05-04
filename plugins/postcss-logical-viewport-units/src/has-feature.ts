@@ -1,4 +1,4 @@
-import { tokenizer, TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenEOF, tokenizer } from '@csstools/css-tokenizer';
 
 export const predicate = {
 	test(source: string): boolean {
@@ -18,11 +18,11 @@ export const predicate = {
 				break;
 			}
 
-			if (token[0] === TokenType.EOF) {
+			if (isTokenEOF(token)) {
 				break;
 			}
 
-			if (token[0] !== TokenType.Dimension) {
+			if (!isTokenDimension(token)) {
 				continue;
 			}
 

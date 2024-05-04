@@ -1,6 +1,6 @@
 import { ColorData, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
 import { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
+import { TokenNumber, isTokenDelim, isTokenIdent, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
@@ -53,7 +53,7 @@ export function threeChannelSpaceSeparated(
 			focus = channel3;
 		}
 
-		if (isTokenNode(node) && node.value[0] === TokenType.Delim && node.value[4].value === '/') {
+		if (isTokenNode(node) && isTokenDelim(node.value) && node.value[4].value === '/') {
 			if (focus === channelAlpha) {
 				return false;
 			}
@@ -78,11 +78,7 @@ export function threeChannelSpaceSeparated(
 				!result ||
 				!isTokenNode(result) ||
 				(
-					(
-						result.value[0] === TokenType.Percentage ||
-						result.value[0] === TokenType.Number ||
-						result.value[0] === TokenType.Dimension
-					) &&
+					isTokenNumeric(result.value) &&
 					Number.isNaN(result.value[4].value)
 				)
 			) {
@@ -96,7 +92,7 @@ export function threeChannelSpaceSeparated(
 			focus === channel1 &&
 			channel1.length === 0 &&
 			isTokenNode(node) &&
-			node.value[0] === TokenType.Ident &&
+			isTokenIdent(node.value) &&
 			node.value[4].value.toLowerCase() === 'from'
 		) {
 			if (relativeToColor) {
@@ -132,7 +128,7 @@ export function threeChannelSpaceSeparated(
 		}
 
 		if (isTokenNode(node)) {
-			if (node.value[0] === TokenType.Ident && relativeColorChannels) {
+			if (isTokenIdent(node.value) && relativeColorChannels) {
 				const channelKeyword = node.value[4].value.toLowerCase();
 
 				if (relativeColorChannels.has(channelKeyword)) {
@@ -174,17 +170,17 @@ export function threeChannelSpaceSeparated(
 	}
 
 	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData);
-	if (!channelValue1 || channelValue1[0] !== TokenType.Number) {
+	if (!channelValue1 || !isTokenNumber(channelValue1)) {
 		return false;
 	}
 
 	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData);
-	if (!channelValue2 || channelValue2[0] !== TokenType.Number) {
+	if (!channelValue2 || !isTokenNumber(channelValue2)) {
 		return false;
 	}
 
 	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData);
-	if (!channelValue3 || channelValue3[0] !== TokenType.Number) {
+	if (!channelValue3 || !isTokenNumber(channelValue3)) {
 		return false;
 	}
 
@@ -199,7 +195,7 @@ export function threeChannelSpaceSeparated(
 
 		if (isTokenNode(channelAlpha[0])) {
 			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData);
-			if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+			if (!channelValueAlpha || !isTokenNumber(channelValueAlpha)) {
 				return false;
 			}
 
@@ -210,7 +206,7 @@ export function threeChannelSpaceSeparated(
 	} else if (relativeColorChannels && relativeColorChannels.has('alpha')) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const channelValueAlpha = normalizeChannelValues(relativeColorChannels.get('alpha')!, 3, colorData);
-		if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+		if (!channelValueAlpha || !isTokenNumber(channelValueAlpha)) {
 			return false;
 		}
 

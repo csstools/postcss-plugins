@@ -1,5 +1,5 @@
-import type { CSSToken } from '@csstools/css-tokenizer';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import type { CSSToken, TokenDimension } from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, mutateUnit } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { canonicalUnits } from './canonical';
 import { convert_cm } from './cm';
@@ -82,11 +82,11 @@ const conversions: Map<string, Map<string, (number: number) => number>> = new Ma
 ]);
 
 export function convertUnit<T extends CSSToken>(a: CSSToken, b: T): T {
-	if (a[0] !== TokenType.Dimension) {
+	if (!isTokenDimension(a)) {
 		return b;
 	}
 
-	if (b[0] !== TokenType.Dimension) {
+	if (!isTokenDimension(b)) {
 		return b;
 	}
 
@@ -108,21 +108,26 @@ export function convertUnit<T extends CSSToken>(a: CSSToken, b: T): T {
 	}
 
 	const value = conversion(b[4].value);
-	return [
+	const convertedToken: TokenDimension = [
 		TokenType.Dimension,
-		value.toString() + a[4].unit,
+		'',
 		b[2],
 		b[3],
 		{
-			value: value,
-			unit: a[4].unit,
+			...b[4],
+			signCharacter: value < 0 ? '-' : undefined,
 			type: Number.isInteger(value) ? NumberType.Integer : NumberType.Number,
+			value: value,
 		},
-	] as T;
+	];
+
+	mutateUnit(convertedToken, a[4].unit);
+
+	return convertedToken as T;
 }
 
 export function toCanonicalUnit<T extends CSSToken>(a: T): T {
-	if (a[0] !== TokenType.Dimension) {
+	if (!isTokenDimension(a)) {
 		return a;
 	}
 
@@ -144,15 +149,20 @@ export function toCanonicalUnit<T extends CSSToken>(a: T): T {
 	}
 
 	const value = conversion(a[4].value);
-	return [
+	const convertedToken: TokenDimension = [
 		TokenType.Dimension,
-		value.toString() + bUnit,
+		'',
 		a[2],
 		a[3],
 		{
-			value: value,
-			unit: bUnit,
+			...a[4],
+			signCharacter: value < 0 ? '-' : undefined,
 			type: Number.isInteger(value) ? NumberType.Integer : NumberType.Number,
+			value: value,
 		},
-	] as T;
+	];
+
+	mutateUnit(convertedToken, bUnit);
+
+	return convertedToken as T;
 }

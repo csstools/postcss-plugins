@@ -1,4 +1,4 @@
-import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, ParseError, TokenType, isTokenEOF } from '@csstools/css-tokenizer';
 import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
 /**
@@ -24,7 +24,7 @@ export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParse
 
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
-	if (tokensCopy[tokensCopy.length - 1][0] !== TokenType.EOF) {
+	if (isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
 		tokensCopy.push([
 			TokenType.EOF,
 			'',
@@ -35,7 +35,7 @@ export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParse
 	}
 
 	const result = consumeComponentValue(ctx, tokensCopy);
-	if (tokensCopy[Math.min(result.advance, tokensCopy.length - 1)][0] === TokenType.EOF) {
+	if (isTokenEOF(tokensCopy[Math.min(result.advance, tokensCopy.length - 1)])) {
 		return result.node;
 	}
 

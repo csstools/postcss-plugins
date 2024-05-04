@@ -1,8 +1,9 @@
 import { ComponentValue, ComponentValueType } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenColon, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, stringify, TokenColon } from '@csstools/css-tokenizer';
 import { parseMediaFeatureName, MediaFeatureName } from './media-feature-name';
 import { parseMediaFeatureValue, MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
 import { NodeType } from '../util/node-type';
+import { isTokenColon } from '@csstools/css-tokenizer';
 
 export class MediaFeaturePlain {
 	type = NodeType.MediaFeaturePlain;
@@ -118,7 +119,7 @@ export function parseMediaFeaturePlain(componentValues: Array<ComponentValue>): 
 		const componentValue = componentValues[i];
 		if (componentValue.type === ComponentValueType.Token) {
 			const token = componentValue.value as CSSToken;
-			if (token[0] === TokenType.Colon) {
+			if (isTokenColon(token)) {
 				a = componentValues.slice(0, i);
 				b = componentValues.slice(i + 1);
 				colon = token;

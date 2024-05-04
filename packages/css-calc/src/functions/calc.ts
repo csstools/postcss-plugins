@@ -1,7 +1,7 @@
 import type { Calculation } from '../calculation';
 import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
-import { TokenType, NumberType } from '@csstools/css-tokenizer';
+import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
@@ -73,7 +73,7 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calcu
 
 	while (i < nodes.length) {
 		const child = nodes[i];
-		if (isSimpleBlockNode(child) && child.startToken[0] === TokenType.OpenParen) {
+		if (isSimpleBlockNode(child) && isTokenOpenParen(child.startToken)) {
 			const subCalc = calc(child, globals);
 			if (subCalc === -1) {
 				return -1;
@@ -120,7 +120,7 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calcu
 		}
 
 		const token = operator.value;
-		if (token[0] !== TokenType.Delim || !(token[4].value === '*' || token[4].value === '/')) {
+		if (!isTokenDelim(token) || !(token[4].value === '*' || token[4].value === '/')) {
 			i++;
 			continue;
 		}
@@ -172,7 +172,7 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals): Calcu
 		}
 
 		const token = operator.value;
-		if (token[0] !== TokenType.Delim || !(token[4].value === '+' || token[4].value === '-')) {
+		if (!isTokenDelim(token) || !(token[4].value === '+' || token[4].value === '-')) {
 			i++;
 			continue;
 		}
@@ -240,7 +240,7 @@ function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, so
 		for (let i = 0; i < nodes.length; i++) {
 			const node = nodes[i];
 
-			if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+			if (isTokenNode(node) && isTokenComma(node.value)) {
 				if (focus === bValue) {
 					return -1;
 				}
@@ -283,7 +283,7 @@ function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, solveFn: (n
 		let chunk = [];
 		for (let i = 0; i < nodes.length; i++) {
 			const node = nodes[i];
-			if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+			if (isTokenNode(node) && isTokenComma(node.value)) {
 				chunks.push(chunk);
 				chunk = [];
 				continue;
@@ -326,7 +326,7 @@ function clamp(clampNode: FunctionNode, globals: Globals): Calculation | -1 {
 
 		for (let i = 0; i < nodes.length; i++) {
 			const node = nodes[i];
-			if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+			if (isTokenNode(node) && isTokenComma(node.value)) {
 				if (focus === maximumValue) {
 					return -1;
 				}
@@ -421,7 +421,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 
 		for (let i = 0; i < nodes.length; i++) {
 			const node = nodes[i];
-			if (!roundingStrategy && aValue.length === 0 && bValue.length === 0 && isTokenNode(node) && node.value[0] === TokenType.Ident) {
+			if (!roundingStrategy && aValue.length === 0 && bValue.length === 0 && isTokenNode(node) && isTokenIdent(node.value)) {
 				const token = node.value;
 				const tokenStr = token[4].value.toLowerCase();
 				if (roundingStrategies.has(tokenStr)) {
@@ -430,7 +430,7 @@ function round(roundNode: FunctionNode, globals: Globals): Calculation | -1 {
 				}
 			}
 
-			if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+			if (isTokenNode(node) && isTokenComma(node.value)) {
 				if (focus === bValue) {
 					return -1;
 				}

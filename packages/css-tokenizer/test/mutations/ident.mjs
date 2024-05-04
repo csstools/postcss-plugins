@@ -92,13 +92,13 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['ident-token', '\\2d ', 0, 2, { value: '-' }],
+		['ident-token', '\\2d', 0, 2, { value: '-' }],
 	);
 
 	const raw = stringify(token);
 	assert.deepEqual(
 		raw,
-		'\\2d ',
+		'\\2d',
 	);
 
 	const t = tokenizer({
@@ -108,7 +108,7 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 	assert.deepEqual(
 		collectTokens(t),
 		[
-			['ident-token', '\\2d ', 0, 3, { value: '-' }],
+			['ident-token', '\\2d', 0, 2, { value: '-' }],
 			['EOF-token', '', -1, -1, undefined],
 		],
 	);
@@ -148,13 +148,13 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['ident-token', '--\\25 other-prop', 0, 2, { value: '--%other-prop' }],
+		['ident-token', '--\\25other-prop', 0, 2, { value: '--%other-prop' }],
 	);
 
 	const raw = stringify(token);
 	assert.deepEqual(
 		raw,
-		'--\\25 other-prop',
+		'--\\25other-prop',
 	);
 
 	const t = tokenizer({
@@ -166,10 +166,44 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 		[
 			[
 				'ident-token',
-				'--\\25 other-prop',
+				'--\\25other-prop',
 				0,
-				15,
+				14,
 				{ value: '--%other-prop' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const token = ['ident-token', '--prop', 0, 2, { value: '--prop' }];
+	mutateIdent(token, '--%a-prop');
+
+	assert.deepEqual(
+		token,
+		['ident-token', '--\\25 a-prop', 0, 2, { value: '--%a-prop' }],
+	);
+
+	const raw = stringify(token);
+	assert.deepEqual(
+		raw,
+		'--\\25 a-prop',
+	);
+
+	const t = tokenizer({
+		css: raw,
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			[
+				'ident-token',
+				'--\\25 a-prop',
+				0,
+				11,
+				{ value: '--%a-prop' },
 			],
 			['EOF-token', '', -1, -1, undefined],
 		],
@@ -218,7 +252,7 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 		token,
 		[
 			'ident-token',
-			'-\\40 webkit-width',
+			'-\\40webkit-width',
 			0,
 			2,
 			{ value: '-@webkit-width' },
@@ -228,7 +262,7 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 	const raw = stringify(token);
 	assert.deepEqual(
 		raw,
-		'-\\40 webkit-width',
+		'-\\40webkit-width',
 	);
 
 	const t = tokenizer({
@@ -240,9 +274,9 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 		[
 			[
 				'ident-token',
-				'-\\40 webkit-width',
+				'-\\40webkit-width',
 				0,
-				16,
+				15,
 				{ value: '-@webkit-width' },
 			],
 			['EOF-token', '', -1, -1, undefined],
@@ -256,13 +290,13 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 
 	assert.deepEqual(
 		token,
-		['ident-token', '\\24 ', 0, 2, { value: '$' }],
+		['ident-token', '\\24', 0, 2, { value: '$' }],
 	);
 
 	const raw = stringify(token);
 	assert.deepEqual(
 		raw,
-		'\\24 ',
+		'\\24',
 	);
 
 	const t = tokenizer({
@@ -272,7 +306,7 @@ import { mutateIdent, tokenizer, stringify } from '@csstools/css-tokenizer';
 	assert.deepEqual(
 		collectTokens(t),
 		[
-			['ident-token', '\\24 ', 0, 3, { value: '$' }],
+			['ident-token', '\\24', 0, 2, { value: '$' }],
 			['EOF-token', '', -1, -1, undefined],
 		],
 	);

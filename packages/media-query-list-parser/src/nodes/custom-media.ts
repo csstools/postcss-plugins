@@ -1,4 +1,4 @@
-import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, isTokenIdent, isTokenWhiteSpaceOrComment, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 import { MediaQuery } from './media-query';
 
@@ -18,7 +18,7 @@ export class CustomMedia {
 	getName(): string {
 		for (let i = 0; i < this.name.length; i++) {
 			const token = this.name[i];
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				return token[4].value;
 			}
 		}
@@ -29,7 +29,7 @@ export class CustomMedia {
 	getNameToken(): CSSToken | null {
 		for (let i = 0; i < this.name.length; i++) {
 			const token = this.name[i];
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				return token;
 			}
 		}
@@ -48,15 +48,11 @@ export class CustomMedia {
 
 		for (let i = 0; i < this.trueOrFalseKeyword.length; i++) {
 			const token = this.trueOrFalseKeyword[i];
-			if (token[0] === TokenType.Comment) {
+			if (isTokenWhiteSpaceOrComment(token)) {
 				continue;
 			}
 
-			if (token[0] === TokenType.Whitespace) {
-				continue;
-			}
-
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				return token[4].value.toLowerCase() === 'true';
 			}
 
@@ -73,15 +69,11 @@ export class CustomMedia {
 
 		for (let i = 0; i < this.trueOrFalseKeyword.length; i++) {
 			const token = this.trueOrFalseKeyword[i];
-			if (token[0] === TokenType.Comment) {
+			if (isTokenWhiteSpaceOrComment(token)) {
 				continue;
 			}
 
-			if (token[0] === TokenType.Whitespace) {
-				continue;
-			}
-
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				return token[4].value.toLowerCase() === 'false';
 			}
 

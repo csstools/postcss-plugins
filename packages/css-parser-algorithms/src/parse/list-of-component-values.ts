@@ -1,4 +1,4 @@
-import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, ParseError, TokenType, isTokenEOF } from '@csstools/css-tokenizer';
 import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
 /**
@@ -23,7 +23,7 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
-	if (tokensCopy[tokensCopy.length - 1][0] !== TokenType.EOF) {
+	if (isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
 		tokensCopy.push([
 			TokenType.EOF,
 			'',
@@ -39,7 +39,7 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (!tokensCopy[i] || tokensCopy[i][0] === TokenType.EOF) {
+		if (!tokensCopy[i] || isTokenEOF(tokensCopy[i])) {
 			return list;
 		}
 

@@ -1,7 +1,8 @@
-import { cloneTokens, stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { cloneTokens, isTokenWhiteSpaceOrComment, stringify, TokenIdent } from '@csstools/css-tokenizer';
 import { parseFromTokens, MediaQuery } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 
 export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<MediaQuery>, dependencies: Array<[string, string]> } | false {
 	const tokens = atMediaParamsTokens(params);
@@ -11,14 +12,11 @@ export function parseCustomMedia(params: string): { name: string, truthy: Array<
 	let name = '';
 	let remainder = tokens;
 	for (let i = 0; i < tokens.length; i++) {
-		if (tokens[i][0] === TokenType.Comment) {
-			continue;
-		}
-		if (tokens[i][0] === TokenType.Whitespace) {
+		if (isTokenWhiteSpaceOrComment(tokens[i])) {
 			continue;
 		}
 
-		if (tokens[i][0] === TokenType.Ident) {
+		if (isTokenIdent(tokens[i])) {
 			const identToken = tokens[i] as TokenIdent;
 			if (identToken[4].value.startsWith('--')) {
 				name = identToken[4].value;
@@ -31,7 +29,7 @@ export function parseCustomMedia(params: string): { name: string, truthy: Array<
 	}
 
 	for (let i = 0; i < remainder.length; i++) {
-		if (remainder[i][0] === TokenType.Ident) {
+		if (isTokenIdent(remainder[i])) {
 			const identToken = remainder[i] as TokenIdent;
 			if (identToken[4].value.startsWith('--')) {
 				customMediaReferences.add(identToken[4].value);

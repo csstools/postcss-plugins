@@ -1,4 +1,4 @@
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenIdent } from '@csstools/css-tokenizer';
 import { ComponentValue, isTokenNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Globals } from '../util/globals';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
@@ -11,7 +11,7 @@ export function resolveGlobalsAndConstants(nodes: Array<ComponentValue>, globals
 		}
 
 		const token = node.value;
-		if (token[0] !== TokenType.Ident) {
+		if (!isTokenIdent(token)) {
 			continue;
 		}
 

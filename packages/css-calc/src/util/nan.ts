@@ -1,5 +1,6 @@
 import { FunctionNode, isFunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { isTokenNumber } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenNumeric, isTokenPercentage, NumberType, TokenType } from '@csstools/css-tokenizer';
 
 export function patchNaN(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
 	if (x === -1) {
@@ -11,11 +12,7 @@ export function patchNaN(x: TokenNode | FunctionNode | -1): TokenNode | Function
 	}
 
 	const token = x.value;
-	if (
-		token[0] !== TokenType.Number &&
-		token[0] !== TokenType.Percentage &&
-		token[0] !== TokenType.Dimension
-	) {
+	if (!isTokenNumeric(token)) {
 		return x;
 	}
 
@@ -23,7 +20,7 @@ export function patchNaN(x: TokenNode | FunctionNode | -1): TokenNode | Function
 		return x;
 	}
 
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		return new FunctionNode(
 			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
 			[TokenType.CloseParen, ')', token[2], token[3], undefined],
@@ -35,7 +32,7 @@ export function patchNaN(x: TokenNode | FunctionNode | -1): TokenNode | Function
 		);
 	}
 
-	if (token[0] === TokenType.Dimension) {
+	if (isTokenDimension(token)) {
 		return new FunctionNode(
 			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
 			[TokenType.CloseParen, ')', token[2], token[3], undefined],
@@ -65,7 +62,7 @@ export function patchNaN(x: TokenNode | FunctionNode | -1): TokenNode | Function
 		);
 	}
 
-	if (token[0] === TokenType.Percentage) {
+	if (isTokenPercentage(token)) {
 		return new FunctionNode(
 			[TokenType.Function, 'calc(', token[2], token[3], { value: 'calc' }],
 			[TokenType.CloseParen, ')', token[2], token[3], undefined],

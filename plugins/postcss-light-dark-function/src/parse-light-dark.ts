@@ -1,10 +1,10 @@
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenComma } from '@csstools/css-tokenizer';
 import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, walk } from '@csstools/css-parser-algorithms';
 
 const LIGHT_DARK_NAME_REGEX = /^light-dark$/i;
 
 function isComma(componentValue: ComponentValue | null): boolean {
-	return isTokenNode(componentValue) && componentValue.value[0] === TokenType.Comma;
+	return isTokenNode(componentValue) && isTokenComma(componentValue.value);
 }
 
 export function parseLightDark(componentValue: ComponentValue): [ComponentValue, ComponentValue] | false {

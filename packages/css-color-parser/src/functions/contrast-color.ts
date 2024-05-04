@@ -5,7 +5,7 @@ import { ColorNotation } from '../color-notation';
 import { SyntaxFlag, colorData_to_XYZ_D50, convertNaNToZero } from '../color-data';
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { contrast_ratio_wcag_2_1 } from '@csstools/color-helpers';
 
@@ -29,7 +29,7 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 		if (backgroundColorData && !maxKeyword) {
 			if (
 				isTokenNode(node) &&
-				node.value[0] === TokenType.Ident &&
+				isTokenIdent(node.value) &&
 				toLowerCaseAZ(node.value[4].value) === 'max'
 			) {
 				maxKeyword = true;

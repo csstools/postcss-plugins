@@ -1,20 +1,18 @@
-import { TokenType, TokenIdent } from '@csstools/css-tokenizer';
+import { TokenType, TokenIdent, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
 import type { CSSToken } from '@csstools/css-tokenizer';
 import { alwaysTrue, neverTrue } from './always-true-or-false';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 
 export function replaceTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSToken> {
 	let booleanToken;
 	let remainder : Array<CSSToken> = [];
 
 	for (let i = 0; i < tokens.length; i++) {
-		if (tokens[i][0] === TokenType.Comment) {
-			continue;
-		}
-		if (tokens[i][0] === TokenType.Whitespace) {
+		if (isTokenWhiteSpaceOrComment(tokens[i])) {
 			continue;
 		}
 
-		if (tokens[i][0] === TokenType.Ident) {
+		if (isTokenIdent(tokens[i])) {
 			const identToken = tokens[i] as TokenIdent;
 			if (identToken[4].value.toLowerCase() === 'true') {
 				booleanToken = 'true';
@@ -39,10 +37,7 @@ export function replaceTrueAndFalseTokens(tokens: Array<CSSToken>): Array<CSSTok
 	{
 		// Nothing is allowed after true|false except for comments and whitespace
 		for (let i = 0; i < remainder.length; i++) {
-			if (remainder[i][0] === TokenType.Comment) {
-				continue;
-			}
-			if (remainder[i][0] === TokenType.Whitespace) {
+			if (isTokenWhiteSpaceOrComment(remainder[i])) {
 				continue;
 			}
 

@@ -1,9 +1,10 @@
 import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenDelim, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, stringify, TokenDelim } from '@csstools/css-tokenizer';
 import { comparisonFromTokens, matchesComparison, MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT } from './media-feature-comparison';
 import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
 import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
+import { isTokenDelim } from '@csstools/css-tokenizer';
 
 export type MediaFeatureRange = MediaFeatureRangeNameValue |
 	MediaFeatureRangeValueName |
@@ -381,7 +382,7 @@ export function parseMediaFeatureRange(componentValues: Array<ComponentValue>): 
 		const componentValue = componentValues[i];
 		if (componentValue.type === ComponentValueType.Token) {
 			const token = componentValue.value as CSSToken;
-			if (token[0] === TokenType.Delim) {
+			if (isTokenDelim(token)) {
 				const comparison = matchesComparison(componentValues.slice(i));
 				if (comparison !== false) {
 					if (comparisonOne === false) {

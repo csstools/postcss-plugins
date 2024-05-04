@@ -1,6 +1,6 @@
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { isFunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 
 export function patchMinusZero(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
 	if (x === -1) {
@@ -12,11 +12,7 @@ export function patchMinusZero(x: TokenNode | FunctionNode | -1): TokenNode | Fu
 	}
 
 	const token = x.value;
-	if (
-		token[0] !== TokenType.Number &&
-		token[0] !== TokenType.Percentage &&
-		token[0] !== TokenType.Dimension
-	) {
+	if (!isTokenNumeric(token)) {
 		return x;
 	}
 
@@ -28,9 +24,9 @@ export function patchMinusZero(x: TokenNode | FunctionNode | -1): TokenNode | Fu
 		return x;
 	}
 
-	if (token[0] === TokenType.Percentage) {
+	if (isTokenPercentage(token)) {
 		token[1] = '-0%';
-	} else if (token[0] === TokenType.Dimension) {
+	} else if (isTokenDimension(token)) {
 		token[1] = '-0' + token[4].unit;
 	} else {
 		token[1] = '-0';

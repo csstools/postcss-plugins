@@ -1,6 +1,6 @@
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { isFunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension } from '@csstools/css-tokenizer';
 import { toCanonicalUnit } from '../unit-conversions';
 
 export function patchCanonicalUnit(x: TokenNode | FunctionNode | -1): TokenNode | FunctionNode | -1 {
@@ -12,7 +12,7 @@ export function patchCanonicalUnit(x: TokenNode | FunctionNode | -1): TokenNode 
 		return x;
 	}
 
-	if (x.value[0] !== TokenType.Dimension) {
+	if (!isTokenDimension(x.value)) {
 		return x;
 	}
 

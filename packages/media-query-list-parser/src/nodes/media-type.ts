@@ -1,4 +1,4 @@
-import { TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import { TokenIdent, isTokenIdent } from '@csstools/css-tokenizer';
 
 export enum MediaType {
 	/** Always matches */
@@ -24,7 +24,7 @@ export enum MediaType {
 }
 
 export function typeFromToken(token: TokenIdent): MediaType | false {
-	if (token[0] !== TokenType.Ident) {
+	if (!isTokenIdent(token)) {
 		return false;
 	}
 

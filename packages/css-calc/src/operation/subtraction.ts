@@ -1,5 +1,5 @@
 import { TokenNode } from '@csstools/css-parser-algorithms';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
@@ -12,7 +12,7 @@ export function subtraction(inputs: Array<TokenNode>): TokenNode | -1 {
 	let bToken = inputs[1].value;
 
 	// 10 - 5
-	if (aToken[0] === TokenType.Number && bToken[0] === TokenType.Number) {
+	if (isTokenNumber(aToken) && isTokenNumber(bToken)) {
 		const result = aToken[4].value - bToken[4].value;
 
 		return new TokenNode([TokenType.Number, result.toString(), aToken[2], bToken[3], {
@@ -22,7 +22,7 @@ export function subtraction(inputs: Array<TokenNode>): TokenNode | -1 {
 	}
 
 	// 10% - 5%
-	if (aToken[0] === TokenType.Percentage && bToken[0] === TokenType.Percentage) {
+	if (isTokenPercentage(aToken)  && isTokenPercentage(bToken)) {
 		const result = aToken[4].value - bToken[4].value;
 
 		return new TokenNode([TokenType.Percentage, result.toString() + '%', aToken[2], bToken[3], {
@@ -32,7 +32,7 @@ export function subtraction(inputs: Array<TokenNode>): TokenNode | -1 {
 
 	// 10px - 5px
 	if (
-		aToken[0] === TokenType.Dimension && bToken[0] === TokenType.Dimension
+		isTokenDimension(aToken)  && isTokenDimension(bToken)
 	) {
 		bToken = convertUnit(aToken, bToken);
 

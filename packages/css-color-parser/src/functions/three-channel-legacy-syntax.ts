@@ -1,6 +1,6 @@
 import type { ColorData } from '../color-data';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenNumber, TokenType } from '@csstools/css-tokenizer';
+import { TokenNumber, isTokenComma, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
@@ -33,7 +33,7 @@ export function threeChannelLegacySyntax(
 			continue;
 		}
 
-		if (isTokenNode(node) && node.value[0] === TokenType.Comma) {
+		if (isTokenNode(node) && isTokenComma(node.value)) {
 			if (focus === channel1) {
 				focus = channel2;
 				continue;
@@ -70,11 +70,7 @@ export function threeChannelLegacySyntax(
 				!result ||
 				!isTokenNode(result) ||
 				(
-					(
-						result.value[0] === TokenType.Percentage ||
-						result.value[0] === TokenType.Number ||
-						result.value[0] === TokenType.Dimension
-					) &&
+					isTokenNumeric(result.value) &&
 					Number.isNaN(result.value[4].value)
 				)
 			) {
@@ -113,17 +109,17 @@ export function threeChannelLegacySyntax(
 	}
 
 	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData);
-	if (!channelValue1 || channelValue1[0] !== TokenType.Number) {
+	if (!channelValue1 || !isTokenNumber(channelValue1)) {
 		return false;
 	}
 
 	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData);
-	if (!channelValue2 || channelValue2[0] !== TokenType.Number) {
+	if (!channelValue2 || !isTokenNumber(channelValue2)) {
 		return false;
 	}
 
 	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData);
-	if (!channelValue3 || channelValue3[0] !== TokenType.Number) {
+	if (!channelValue3 || !isTokenNumber(channelValue3)) {
 		return false;
 	}
 
@@ -138,7 +134,7 @@ export function threeChannelLegacySyntax(
 
 		if (isTokenNode(channelAlpha[0])) {
 			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData);
-			if (!channelValueAlpha || channelValueAlpha[0] !== TokenType.Number) {
+			if (!channelValueAlpha || !isTokenNumber(channelValueAlpha)) {
 				return false;
 			}
 

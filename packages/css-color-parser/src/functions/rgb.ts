@@ -6,10 +6,10 @@ import { SyntaxFlag } from '../color-data';
 import { normalize_legacy_sRGB_ChannelValues, normalize_modern_sRGB_ChannelValues } from './rgb-normalize-channel-values';
 import { threeChannelLegacySyntax } from './three-channel-legacy-syntax';
 import { threeChannelSpaceSeparated } from './three-channel-space-separated';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenComma } from '@csstools/css-tokenizer';
 
 export function rgb(rgbNode: FunctionNode, colorParser: ColorParser): ColorData | false {
-	if (rgbNode.value.some((x) => isTokenNode(x) && x.value[0] === TokenType.Comma)) {
+	if (rgbNode.value.some((x) => isTokenNode(x) && isTokenComma(x.value))) {
 		const output = rgbCommaSeparated(rgbNode);
 		if (output !== false) {
 			if (

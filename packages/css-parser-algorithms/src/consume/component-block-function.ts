@@ -1,7 +1,9 @@
-import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError } from '@csstools/css-tokenizer';
+import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError, isTokenWhitespace, isTokenComment, isTokenOpenParen, isTokenOpenCurly, isTokenOpenSquare, isTokenFunction, isTokenCloseParen } from '@csstools/css-tokenizer';
 import { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 import { walkerIndexGenerator } from '../util/walker-index-generator';
+import { isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
+import { isTokenEOF } from '@csstools/css-tokenizer';
 
 export type ContainerNode = FunctionNode | SimpleBlockNode;
 
@@ -11,9 +13,9 @@ export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | C
 export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
 	const token = tokens[0];
 	if (
-		token[0] === TokenType.OpenParen ||
-		token[0] === TokenType.OpenCurly ||
-		token[0] === TokenType.OpenSquare
+		isTokenOpenParen(token) ||
+		isTokenOpenCurly(token) ||
+		isTokenOpenSquare(token)
 	) {
 		const r = consumeSimpleBlock(ctx, tokens);
 		return {
@@ -22,7 +24,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 		};
 	}
 
-	if (token[0] === TokenType.Function) {
+	if (isTokenFunction(token)) {
 		const r = consumeFunction(ctx, tokens);
 		return {
 			advance: r.advance,
@@ -30,7 +32,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 		};
 	}
 
-	if (token[0] === TokenType.Whitespace) {
+	if (isTokenWhitespace(token)) {
 		const r = consumeWhitespace(ctx, tokens);
 		return {
 			advance: r.advance,
@@ -38,7 +40,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 		};
 	}
 
-	if (token[0] === TokenType.Comment) {
+	if (isTokenComment(token)) {
 		const r = consumeComment(ctx, tokens);
 		return {
 			advance: r.advance,
@@ -206,7 +208,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	 * 1. if the "endToken" is EOF, replace with a ")-token"
 	 */
 	normalize(): void {
-		if (this.endToken[0] === TokenType.EOF) {
+		if (isTokenEOF(this.endToken)) {
 			this.endToken = [TokenType.CloseParen, ')', -1, -1, undefined];
 		}
 	}
@@ -216,7 +218,7 @@ export class FunctionNode extends ContainerNodeBaseClass {
 	 * This is the inverse of parsing from a list of tokens.
 	 */
 	tokens(): Array<CSSToken> {
-		if (this.endToken[0] === TokenType.EOF) {
+		if (isTokenEOF(this.endToken)) {
 			return [
 				this.name,
 				...this.value.flatMap((x) => {
@@ -298,7 +300,7 @@ function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: numb
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = tokens[i];
-		if (!token || token[0] === TokenType.EOF) {
+		if (!token || isTokenEOF(token)) {
 			ctx.onParseError(new ParseError(
 				'Unexpected EOF while consuming a function.',
 				tokens[0][2],
@@ -315,14 +317,14 @@ function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: numb
 			};
 		}
 
-		if (token[0] === TokenType.CloseParen) {
+		if (isTokenCloseParen(token)) {
 			return {
 				advance: i + 1,
 				node: new FunctionNode(tokens[0] as TokenFunction, token, value),
 			};
 		}
 
-		if (token[0] === TokenType.Comment || token[0] === TokenType.Whitespace) {
+		if (isTokenWhiteSpaceOrComment(token)) {
 			const result = consumeAllCommentsAndWhitespace(ctx, tokens.slice(i));
 			i += result.advance;
 			value.push(...result.nodes);
@@ -377,7 +379,7 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 	 * 1. if the "endToken" is EOF, replace with the mirror token of the "startToken"
 	 */
 	normalize(): void {
-		if (this.endToken[0] === TokenType.EOF) {
+		if (isTokenEOF(this.endToken)) {
 			const mirror = mirrorVariant(this.startToken);
 			if (mirror) {
 				this.endToken = mirror;
@@ -390,7 +392,7 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 	 * This is the inverse of parsing from a list of tokens.
 	 */
 	tokens(): Array<CSSToken> {
-		if (this.endToken[0] === TokenType.EOF) {
+		if (isTokenEOF(this.endToken)) {
 			return [
 				this.startToken,
 				...this.value.flatMap((x) => {
@@ -477,7 +479,7 @@ function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: n
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = tokens[i];
-		if (!token || token[0] === TokenType.EOF) {
+		if (!token || isTokenEOF(token)) {
 			ctx.onParseError(new ParseError(
 				'Unexpected EOF while consuming a simple block.',
 				tokens[0][2],
@@ -501,7 +503,7 @@ function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: n
 			};
 		}
 
-		if (token[0] === TokenType.Comment || token[0] === TokenType.Whitespace) {
+		if (isTokenWhiteSpaceOrComment(token)) {
 			const result = consumeAllCommentsAndWhitespace(ctx, tokens.slice(i));
 			i += result.advance;
 			value.push(...result.nodes);
@@ -588,7 +590,7 @@ function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: nu
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = tokens[i];
-		if (token[0] !== TokenType.Whitespace) {
+		if (!isTokenWhitespace(token)) {
 			return {
 				advance: i,
 				node: new WhitespaceNode(tokens.slice(0, i)),
@@ -683,14 +685,14 @@ function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>):
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (tokens[i][0] === TokenType.Whitespace) {
+		if (isTokenWhitespace(tokens[i])) {
 			const result = consumeWhitespace(ctx, tokens.slice(i));
 			i += result.advance;
 			nodes.push(result.node);
 			continue;
 		}
 
-		if (tokens[i][0] === TokenType.Comment) {
+		if (isTokenComment(tokens[i])) {
 			nodes.push(new CommentNode(tokens[i]));
 			i++;
 			continue;
@@ -721,7 +723,7 @@ export class TokenNode {
 	/**
 	 * This is the inverse of parsing from a list of tokens.
 	 */
-	tokens(): Array<CSSToken> {
+	tokens(): [CSSToken] {
 		return [
 			this.value,
 		];
@@ -752,7 +754,7 @@ export class TokenNode {
 	/**
 	 * @internal
 	 */
-	isTokenNode(): this is TokenNode {
+	isTokenNod(): this is TokenNode {
 		return TokenNode.isTokenNode(this);
 	}
 

@@ -1,15 +1,15 @@
 import type { TokenNumber } from '@csstools/css-tokenizer';
-import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenNumber } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalizeHue(token: CSSToken): TokenNumber | false {
-	if (token[0] === TokenType.Number) {
+	if (isTokenNumber(token)) {
 		token[4].value = token[4].value % 360;
 		token[1] = token[4].value.toString();
 		return token;
 	}
 
-	if (token[0] === TokenType.Dimension) {
+	if (isTokenDimension(token)) {
 		let value = token[4].value;
 
 		switch (toLowerCaseAZ(token[4].unit)) {

@@ -1,5 +1,5 @@
 import { ComponentValue, ComponentValueType } from '@csstools/css-parser-algorithms';
-import { CSSToken, TokenDelim, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, TokenDelim, isTokenDelim } from '@csstools/css-tokenizer';
 
 export enum MediaFeatureLT {
 	LT = '<',
@@ -24,7 +24,7 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 		const componentValue = componentValues[i];
 		if (componentValue.type === ComponentValueType.Token) {
 			const token = componentValue.value as CSSToken;
-			if (token[0] === TokenType.Delim) {
+			if (isTokenDelim(token)) {
 				if (token[4].value === MediaFeatureEQ.EQ) {
 					if (firstTokenIndex !== -1) {
 						return [firstTokenIndex, i];
@@ -60,7 +60,7 @@ export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDe
 		return false;
 	}
 
-	if (tokens[0][0] !== TokenType.Delim) {
+	if (!isTokenDelim(tokens[0])) {
 		return false;
 	}
 
@@ -77,7 +77,7 @@ export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDe
 		}
 	}
 
-	if (tokens[1][0] !== TokenType.Delim) {
+	if (!isTokenDelim(tokens[1])) {
 		return false;
 	}
 
