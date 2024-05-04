@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-calc",
 	"description": "Solve CSS math expressions",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

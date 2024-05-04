@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 1.2.1
+
+_May 4, 2024_
 
 - Allow uncapped precision in `calc()` serialization
 - Add `censorIntoStandardRepresentableValues` conversion option 
