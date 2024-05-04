@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-contrast-color-function",
 	"description": "Dynamically specify a text color with adequate contrast",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
