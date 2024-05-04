@@ -1,5 +1,9 @@
 # Changes to PostCSS Exponential Functions
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.3.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#231) (patch)
+
 ### 1.0.6
 
 _May 4, 2024_
