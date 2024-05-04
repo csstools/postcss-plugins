@@ -81,6 +81,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 				return false;
 			}
 
+			continue;
 		}
 
 		if (!uri) {

@@ -1,6 +1,6 @@
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, tokenizer, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim } from '@csstools/css-tokenizer';
+import { CSSToken, tokenizer, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
 /**
@@ -58,8 +58,7 @@ export function parseFromTokens(
 		for (let j = 0; j < componentValueTokens.length; j++) {
 			const token = componentValueTokens[j];
 			if (!(
-				isTokenComment(token) ||
-				isTokenWhitespace(token) ||
+				isTokenWhiteSpaceOrComment(token) ||
 				isTokenIdent(token) ||
 				(
 					isTokenDelim(token) &&
