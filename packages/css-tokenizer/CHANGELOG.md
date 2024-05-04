@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 2.3.1
+
+_May 4, 2024_
 
 - Fix escaping for the last code point in an ident sequence.
 
