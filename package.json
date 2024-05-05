@@ -36,11 +36,11 @@
 		"@rollup/plugin-terser": "^0.4.3",
 		"@rollup/plugin-typescript": "^11.1.6",
 		"@stryker-mutator/core": "^8.2.6",
-		"@typescript-eslint/eslint-plugin": "^7.6.0",
-		"@typescript-eslint/parser": "^7.6.0",
+		"@typescript-eslint/eslint-plugin": "^7.7.1",
+		"@typescript-eslint/parser": "^7.7.1",
 		"eslint": "^8.57.0",
-		"knip": "^5.9.4",
-		"rollup": "^4.14.2",
+		"knip": "^5.11.0",
+		"rollup": "^4.17.0",
 		"tslib": "^2.6.2",
 		"typescript": "^5.4.5"
 	},
@@ -56,6 +56,6 @@
 		"knip": "knip"
 	},
 	"volta": {
-		"node": "20.11.1"
+		"node": "22.0.0"
 	}
 }

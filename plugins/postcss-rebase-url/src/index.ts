@@ -1,5 +1,5 @@
 import type { PluginCreator, Declaration, AtRule, Plugin } from 'postcss';
-import { TokenType, tokenize } from '@csstools/css-tokenizer';
+import { isTokenString, isTokenURL, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { rebase } from './rebase';
 import { serializeString } from './serialize-string';
@@ -90,7 +90,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 						(componentValue) => {
 							if (
 								isTokenNode(componentValue) &&
-								componentValue.value[0] === TokenType.URL
+								isTokenURL(componentValue.value)
 							) {
 								const rebased = rebase(componentValue.value[4].value.trim(), fromDir, fromEntryPointDir);
 								if (rebased) {
@@ -114,7 +114,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 									continue;
 								}
 
-								if (isTokenNode(x) && x.value[0] === TokenType.String) {
+								if (isTokenNode(x) && isTokenString(x.value)) {
 									const rebased = rebase(x.value[4].value.trim(), fromDir, fromEntryPointDir);
 									if (rebased) {
 										x.value[4].value = rebased;

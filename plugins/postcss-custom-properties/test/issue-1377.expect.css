@@ -1,0 +1,22 @@
+:root {
+	--root-a: 1;
+	--root-b: var(--does-not-exist);
+	--root-c: calc(var(--root-a) + var(--root-b));
+}
+
+.foo {
+	--foo-a: 1;
+	--foo-b: var(--does-not-exist);
+	--foo-c: calc(var(--foo-a) + var(--foo-b));
+}
+
+:root {
+	--combined-a: 1;
+	--combined-b: 2;
+
+}
+
+.foo {
+	--combined-b: var(--does-not-exist);
+	--combined-c: calc(var(--combined-a) + var(--combined-b));
+}

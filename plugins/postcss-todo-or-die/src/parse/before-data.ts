@@ -1,5 +1,5 @@
 import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, isTokenNumber } from '@csstools/css-tokenizer';
 
 type BeforeDateCondition = {
 	year: number,
@@ -31,15 +31,15 @@ export function parseBeforeDateCondition(componentValue: FunctionNode): BeforeDa
 	const monthToken = month.value;
 	const dayToken = day.value;
 
-	if (yearToken[0] !== TokenType.Number || yearToken[4].type !== NumberType.Integer) {
+	if (!isTokenNumber(yearToken) || yearToken[4].type !== NumberType.Integer) {
 		return false;
 	}
 
-	if (monthToken[0] !== TokenType.Number || monthToken[4].type !== NumberType.Integer) {
+	if (!isTokenNumber(monthToken) || monthToken[4].type !== NumberType.Integer) {
 		return false;
 	}
 
-	if (dayToken[0] !== TokenType.Number || dayToken[4].type !== NumberType.Integer) {
+	if (!isTokenNumber(dayToken) || dayToken[4].type !== NumberType.Integer) {
 		return false;
 	}
 

@@ -1,5 +1,5 @@
 import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenDimension, TokenIdent, TokenNumber, TokenPercentage, TokenType } from '@csstools/css-tokenizer';
+import { TokenDimension, TokenIdent, TokenNumber, TokenPercentage, TokenType, isTokenDelim } from '@csstools/css-tokenizer';
 
 const supportedTokenTypes = [TokenType.Ident, TokenType.Number, TokenType.Percentage, TokenType.Dimension];
 const allowedOperators = ['<', '>', '='];
@@ -36,7 +36,7 @@ export function parseIfCondition(componentValue: FunctionNode): IfCondition | fa
 	const operatorToken = operator.value;
 	const bToken = b.value;
 
-	if (operatorToken[0] !== TokenType.Delim) {
+	if (!isTokenDelim(operatorToken)) {
 		return false;
 	}
 

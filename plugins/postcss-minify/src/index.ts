@@ -1,6 +1,6 @@
 import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
 import type { CSSToken } from '@csstools/css-tokenizer';
-import { TokenType, tokenize } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
 
 const HAS_LEGAL_KEYWORDS_REGEX = /(?:license|copyright)/i;
 const HAS_SOURCE_MAP_REGEX = /sourceMappingURL/i;
@@ -33,10 +33,7 @@ function minify(cache: Map<string, string>, x: string | undefined): string | und
 	let token: CSSToken;
 	for (let i = 0; i < tokens.length; i++) {
 		token = tokens[i];
-		if (
-			token[0] === TokenType.Comment ||
-			token[0] === TokenType.Whitespace
-		) {
+		if (isTokenWhiteSpaceOrComment(token)) {
 			if (lastWasWhitespace) {
 				token[1] = '';
 			} else {

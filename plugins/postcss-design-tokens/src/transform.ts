@@ -1,5 +1,5 @@
 import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenIdent, isTokenString } from '@csstools/css-tokenizer';
 import type { Node, Result } from 'postcss';
 import { Token, TokenTransformOptions } from './data-formats/base/token';
 import { parsedPluginOptions } from './options';
@@ -68,7 +68,7 @@ function transformComponentValue(node: ComponentValue, tokens: Map<string, Token
 		if (
 			!tokenName &&
 			isTokenNode(subValue) &&
-			subValue.value[0] === TokenType.String
+			isTokenString(subValue.value)
 		) {
 			tokenName = subValue.value[4].value;
 			continue;
@@ -78,7 +78,7 @@ function transformComponentValue(node: ComponentValue, tokens: Map<string, Token
 			tokenName &&
 			!operator &&
 			isTokenNode(subValue) &&
-			subValue.value[0] === TokenType.Ident &&
+			isTokenIdent(subValue.value) &&
 			subValue.value[4].value.toLowerCase() === 'to'
 		) {
 			operator = 'to';
@@ -89,7 +89,7 @@ function transformComponentValue(node: ComponentValue, tokens: Map<string, Token
 			tokenName &&
 			operator &&
 			isTokenNode(subValue) &&
-			subValue.value[0] === TokenType.Ident
+			isTokenIdent(subValue.value)
 		) {
 			operatorSubject = subValue.value[4].value;
 			continue;

@@ -36,6 +36,14 @@ export interface ColorData {
 	syntaxFlags: Set<SyntaxFlag>
 }
 
+export function convertNaNToZero(x: Color): Color {
+	return [
+		Number.isNaN(x[0]) ? 0 : x[0],
+		Number.isNaN(x[1]) ? 0 : x[1],
+		Number.isNaN(x[2]) ? 0 : x[2],
+	];
+}
+
 export enum SyntaxFlag {
 	/** Is a color keyword, e.g. `transparent`, `currentColor`, ... */
 	ColorKeyword = 'color-keyword',
@@ -79,85 +87,85 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: sRGB_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.Linear_sRGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: lin_sRGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: lin_sRGB_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.Display_P3:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: P3_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: P3_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.Rec2020:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: rec_2020_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: rec_2020_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.A98_RGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: a98_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: a98_RGB_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.ProPhoto_RGB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: ProPhoto_RGB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: ProPhoto_RGB_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.HSL:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: HSL_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: HSL_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.HWB:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: HWB_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: HWB_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.Lab:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: Lab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: Lab_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.OKLab:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: OKLab_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: OKLab_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.LCH:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: LCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: LCH_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.OKLCH:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: OKLCH_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: OKLCH_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.XYZ_D50:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: XYZ_D50_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: XYZ_D50_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.XYZ_D65:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
-				channels: XYZ_D65_to_XYZ_D50(colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color),
+				channels: XYZ_D65_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		default:
 			throw new Error('Unsupported color notation');
@@ -252,7 +260,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 				throw new Error('Unsupported color notation');
 		}
 	} else {
-		outputColorData.channels = colorData.channels.map((x) => Number.isNaN(x) ? 0 : x) as Color;
+		outputColorData.channels = convertNaNToZero(colorData.channels);
 	}
 
 	// 2. Carry forward missing components

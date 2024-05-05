@@ -600,7 +600,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 6
@@ -618,6 +618,1747 @@
             }
           ],
           "name": "isToken"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenAtKeyword:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenAtKeyword(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenAtKeyword",
+              "canonicalReference": "@csstools/css-tokenizer!TokenAtKeyword:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenAtKeyword"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenBadString:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenBadString(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenBadString",
+              "canonicalReference": "@csstools/css-tokenizer!TokenBadString:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenBadString"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenBadURL:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenBadURL(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenBadURL",
+              "canonicalReference": "@csstools/css-tokenizer!TokenBadURL:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenBadURL"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenCDC:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenCDC(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCDC",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCDC:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenCDC"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenCDO:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenCDO(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCDO",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCDO:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenCDO"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenCloseCurly:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenCloseCurly(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCloseCurly",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCloseCurly:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenCloseCurly"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenCloseParen:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenCloseParen(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCloseParen",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCloseParen:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenCloseParen"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenCloseSquare:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenCloseSquare(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenCloseSquare",
+              "canonicalReference": "@csstools/css-tokenizer!TokenCloseSquare:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenCloseSquare"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenColon:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenColon(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenColon",
+              "canonicalReference": "@csstools/css-tokenizer!TokenColon:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenColon"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenComma:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenComma(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenComma",
+              "canonicalReference": "@csstools/css-tokenizer!TokenComma:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenComma"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenComment:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenComment(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenComment",
+              "canonicalReference": "@csstools/css-tokenizer!TokenComment:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenComment"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenDelim:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenDelim(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenDelim",
+              "canonicalReference": "@csstools/css-tokenizer!TokenDelim:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenDelim"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenDimension:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenDimension(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenDimension",
+              "canonicalReference": "@csstools/css-tokenizer!TokenDimension:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenDimension"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenEOF:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenEOF(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenEOF",
+              "canonicalReference": "@csstools/css-tokenizer!TokenEOF:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenEOF"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenFunction:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenFunction(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenFunction",
+              "canonicalReference": "@csstools/css-tokenizer!TokenFunction:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenFunction"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenHash:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenHash(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenHash",
+              "canonicalReference": "@csstools/css-tokenizer!TokenHash:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenHash"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenIdent:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenIdent(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenIdent",
+              "canonicalReference": "@csstools/css-tokenizer!TokenIdent:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenIdent"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenNumber:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenNumber(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenNumber",
+              "canonicalReference": "@csstools/css-tokenizer!TokenNumber:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenNumber"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenNumeric:function(1)",
+          "docComment": "/**\n * Assert that a token is a numeric token\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenNumeric(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "NumericToken",
+              "canonicalReference": "@csstools/css-tokenizer!NumericToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "isTokenNumeric"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenOpenCurly:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenOpenCurly(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenOpenCurly",
+              "canonicalReference": "@csstools/css-tokenizer!TokenOpenCurly:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenOpenCurly"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenOpenParen:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenOpenParen(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenOpenParen",
+              "canonicalReference": "@csstools/css-tokenizer!TokenOpenParen:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenOpenParen"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenOpenSquare:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenOpenSquare(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenOpenSquare",
+              "canonicalReference": "@csstools/css-tokenizer!TokenOpenSquare:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenOpenSquare"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenPercentage:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenPercentage(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenPercentage",
+              "canonicalReference": "@csstools/css-tokenizer!TokenPercentage:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenPercentage"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenSemicolon:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenSemicolon(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenSemicolon",
+              "canonicalReference": "@csstools/css-tokenizer!TokenSemicolon:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenSemicolon"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenString:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenString(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenString",
+              "canonicalReference": "@csstools/css-tokenizer!TokenString:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenString"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenUnicodeRange:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenUnicodeRange(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenUnicodeRange",
+              "canonicalReference": "@csstools/css-tokenizer!TokenUnicodeRange:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenUnicodeRange"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenURL:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenURL(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenURL",
+              "canonicalReference": "@csstools/css-tokenizer!TokenURL:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenURL"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenWhitespace:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenWhitespace(x?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenWhitespace",
+              "canonicalReference": "@csstools/css-tokenizer!TokenWhitespace:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "isTokenWhitespace"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!isTokenWhiteSpaceOrComment:function(1)",
+          "docComment": "/**\n * Assert that a token is a whitespace or comment token\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isTokenWhiteSpaceOrComment(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-tokenizer!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenWhitespace",
+              "canonicalReference": "@csstools/css-tokenizer!TokenWhitespace:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenComment",
+              "canonicalReference": "@csstools/css-tokenizer!TokenComment:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "isTokenWhiteSpaceOrComment"
         },
         {
           "kind": "Function",
@@ -784,6 +2525,68 @@
           "name": "mutateIdent"
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!mutateUnit:function(1)",
+          "docComment": "/**\n * Set the unit and update the string representation. This handles escaping.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function mutateUnit(ident: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenDimension",
+              "canonicalReference": "@csstools/css-tokenizer!TokenDimension:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", newUnit: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/mutations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "ident",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "newUnit",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "mutateUnit"
+        },
+        {
           "kind": "Enum",
           "canonicalReference": "@csstools/css-tokenizer!NumberType:enum",
           "docComment": "/**\n * The type of number token Either `integer` or `number`\n */\n",
@@ -841,6 +2644,51 @@
               "name": "Number"
             }
           ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@csstools/css-tokenizer!NumericToken:type",
+          "docComment": "/**\n * The union of all possible CSS tokens that represent a numeric value\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type NumericToken = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenDimension",
+              "canonicalReference": "@csstools/css-tokenizer!TokenDimension:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenNumber",
+              "canonicalReference": "@csstools/css-tokenizer!TokenNumber:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "TokenPercentage",
+              "canonicalReference": "@csstools/css-tokenizer!TokenPercentage:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token.d.ts",
+          "releaseTag": "Public",
+          "name": "NumericToken",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
         },
         {
           "kind": "Class",

@@ -37,7 +37,7 @@
  * import { tokenize } from '@csstools/css-tokenizer';
  * import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
  *
- * parseComponentValue(tokenize({ css: `10x 20px` }));
+ * parseListOfComponentValues(tokenize({ css: `10x 20px` }));
  * ```
  *
  * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:
@@ -476,7 +476,7 @@ export declare class TokenNode {
     /**
      * This is the inverse of parsing from a list of tokens.
      */
-    tokens(): Array<CSSToken>;
+    tokens(): [CSSToken];
     /**
      * Convert the current token to a string.
      * This is not a true serialization.
@@ -493,7 +493,7 @@ export declare class TokenNode {
     /**
      * @internal
      */
-    isTokenNode(): this is TokenNode;
+    isTokenNod(): this is TokenNode;
     /**
      * @internal
      */

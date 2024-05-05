@@ -1,5 +1,5 @@
 import { ComponentValue, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, isTokenIdent, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
 import { MediaInParens } from './media-in-parens';
@@ -32,7 +32,7 @@ export class MediaQueryWithType {
 
 		for (let i = 0; i < this.modifier.length; i++) {
 			const token = this.modifier[i];
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				return token[4].value;
 			}
 		}
@@ -53,12 +53,12 @@ export class MediaQueryWithType {
 
 		for (let i = 0; i < copy.modifier.length; i++) {
 			const token = copy.modifier[i];
-			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'not') {
+			if (isTokenIdent(token) && token[4].value.toLowerCase() === 'not') {
 				copy.modifier.splice(i, 1);
 				break;
 			}
 
-			if (token[0] === TokenType.Ident && token[4].value.toLowerCase() === 'only') {
+			if (isTokenIdent(token) && token[4].value.toLowerCase() === 'only') {
 				token[1] = 'not';
 				token[4].value = 'not';
 				break;
@@ -75,7 +75,7 @@ export class MediaQueryWithType {
 
 		for (let i = 0; i < this.mediaType.length; i++) {
 			const token = this.mediaType[i];
-			if (token[0] === TokenType.Ident) {
+			if (isTokenIdent(token)) {
 				return token[4].value;
 			}
 		}

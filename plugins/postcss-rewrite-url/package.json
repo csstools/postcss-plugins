@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-rewrite-url",
 	"description": "Rewrite url values in CSS",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,8 +48,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.6.0",
-		"@csstools/css-tokenizer": "^2.2.3"
+		"@csstools/css-parser-algorithms": "^2.6.3",
+		"@csstools/css-tokenizer": "^2.3.1"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

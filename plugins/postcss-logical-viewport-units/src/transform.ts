@@ -1,4 +1,4 @@
-import { stringify, tokenizer, TokenType } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenEOF, stringify, tokenizer } from '@csstools/css-tokenizer';
 
 export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: 'vw' | 'vh' }): string {
 	const t = tokenizer({ css: source });
@@ -14,11 +14,11 @@ export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: '
 
 		tokens.push(token);
 
-		if (token[0] === TokenType.EOF) {
+		if (isTokenEOF(token)) {
 			break;
 		}
 
-		if (token[0] !== TokenType.Dimension) {
+		if (!isTokenDimension(token)) {
 			continue;
 		}
 

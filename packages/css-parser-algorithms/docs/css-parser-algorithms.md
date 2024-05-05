@@ -43,7 +43,7 @@ If your context allows a list of component values, use [parseListOfComponentValu
 import { tokenize } from '@csstools/css-tokenizer';
 import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 
-parseComponentValue(tokenize({ css: `10x 20px` }));
+parseListOfComponentValues(tokenize({ css: `10x 20px` }));
 ```
 If your context allows a comma-separated list of component values, use [parseCommaSeparatedListOfComponentValues()](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md)<!-- -->:
 

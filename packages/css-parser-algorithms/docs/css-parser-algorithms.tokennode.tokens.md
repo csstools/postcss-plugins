@@ -9,9 +9,9 @@ This is the inverse of parsing from a list of tokens.
 **Signature:**
 
 ```typescript
-tokens(): Array<CSSToken>;
+tokens(): [CSSToken];
 ```
 **Returns:**
 
-Array&lt;CSSToken&gt;
+\[CSSToken\]
 

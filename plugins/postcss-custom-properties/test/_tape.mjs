@@ -30,6 +30,9 @@ postcssTape(plugin)({
 			preserve: false,
 		},
 	},
+	'issue-1377': {
+		message: 'prevent regressions of https://github.com/csstools/postcss-plugins/issues/1377',
+	},
 	'specificity': {
 		message: 'supports different specificities of html and :root selectors',
 	},

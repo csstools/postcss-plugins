@@ -119,7 +119,7 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		transition: all 0.5s;
+		transition: transform 0.5s, opacity 0.5s, filter 0.5s;
 		width: 100%;
 	}
 }

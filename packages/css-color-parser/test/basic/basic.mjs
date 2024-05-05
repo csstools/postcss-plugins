@@ -122,12 +122,12 @@ assert.deepStrictEqual(
 
 assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(255 255 calc(0 / 0))'))),
-	'',
+	'rgb(255, 255, 0)',
 );
 
 assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(255 255 calc(1 / 0))'))),
-	'',
+	'rgb(255, 255, 255)',
 );
 
 assert.deepStrictEqual(
@@ -188,6 +188,11 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
 	serialize_HSL_data(color(parse('hsl(0 0% 100%)'))),
 	'hsl(0, 0%, 100%)',
+);
+
+assert.deepStrictEqual(
+	serialize_HSL_data(color(parse('hsl(calc(1 / 0) 100% 50%)'))),
+	'hsl(0, 100%, 50%)',
 );
 
 assert.deepStrictEqual(

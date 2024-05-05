@@ -1,18 +1,18 @@
-import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { Calculation } from '../calculation';
 import { unary } from '../operation/unary';
 
 export function resultToCalculation(node: FunctionNode, aToken: CSSToken, result: number): Calculation | -1 {
-	if (aToken[0] === TokenType.Dimension) {
+	if (isTokenDimension(aToken)) {
 		return dimensionToCalculation(node, aToken[4].unit, result);
 	}
 
-	if (aToken[0] === TokenType.Percentage) {
+	if (isTokenPercentage(aToken)) {
 		return percentageToCalculation(node, result);
 	}
 
-	if (aToken[0] === TokenType.Number) {
+	if (isTokenNumber(aToken)) {
 		return numberToCalculation(node, result);
 	}
 

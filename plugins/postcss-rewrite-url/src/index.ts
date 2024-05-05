@@ -1,5 +1,5 @@
 import type { AtRule, Declaration, PluginCreator, Result } from 'postcss';
-import { TokenType, tokenize } from '@csstools/css-tokenizer';
+import { isTokenString, tokenize } from '@csstools/css-tokenizer';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { serializeString } from './serialize-string';
 
@@ -107,7 +107,7 @@ function rewrite(rewriter: Rewriter, value: string, context: RewriteContext): st
 					continue;
 				}
 
-				if (isTokenNode(x) && x.value[0] === TokenType.String) {
+				if (isTokenNode(x) && isTokenString(x.value)) {
 					const original = x.value[4].value.trim();
 					const modified = rewriter({ url: original }, context);
 					if (modified === false) {

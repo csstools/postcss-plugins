@@ -1,4 +1,4 @@
-import { CSSToken, tokenizer, ParseError, TokenType, TokenIdent, cloneTokens } from '@csstools/css-tokenizer';
+import { CSSToken, tokenizer, ParseError, TokenIdent, cloneTokens, isTokenWhiteSpaceOrComment, isTokenIdent, isTokenEOF } from '@csstools/css-tokenizer';
 import { CustomMedia } from '../nodes/custom-media';
 import { parseFromTokens } from './parse';
 
@@ -12,14 +12,11 @@ export function parseCustomMediaFromTokens(
 	let name: Array<CSSToken> = [];
 	let remainder = tokens;
 	for (let i = 0; i < tokens.length; i++) {
-		if (tokens[i][0] === TokenType.Comment) {
-			continue;
-		}
-		if (tokens[i][0] === TokenType.Whitespace) {
+		if (isTokenWhiteSpaceOrComment(tokens[i])) {
 			continue;
 		}
 
-		if (tokens[i][0] === TokenType.Ident) {
+		if (isTokenIdent(tokens[i])) {
 			const identToken = tokens[i] as TokenIdent;
 			if (identToken[4].value.startsWith('--')) {
 				name = tokens.slice(0, i + 1);
@@ -33,14 +30,11 @@ export function parseCustomMediaFromTokens(
 
 	let hasOnlyTrueOrFalse = true;
 	for (let i = 0; i < remainder.length; i++) {
-		if (remainder[i][0] === TokenType.Comment) {
-			continue;
-		}
-		if (remainder[i][0] === TokenType.Whitespace) {
+		if (isTokenWhiteSpaceOrComment(remainder[i])) {
 			continue;
 		}
 
-		if (remainder[i][0] === TokenType.Ident) {
+		if (isTokenIdent(remainder[i])) {
 			const identToken = remainder[i] as TokenIdent;
 			const identValue = identToken[4].value.toLowerCase();
 			if (identValue === 'false') {
@@ -52,7 +46,7 @@ export function parseCustomMediaFromTokens(
 			}
 		}
 
-		if (remainder[i][0] === TokenType.EOF) {
+		if (isTokenEOF(remainder[i])) {
 			break;
 		}
 

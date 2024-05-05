@@ -1,4 +1,4 @@
-import { CSSToken, ParseError, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, ParseError, TokenType, isTokenComma, isTokenEOF } from '@csstools/css-tokenizer';
 import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
 
 /**
@@ -27,7 +27,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
-	if (tokensCopy[tokensCopy.length - 1][0] !== TokenType.EOF) {
+	if (isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
 		tokensCopy.push([
 			TokenType.EOF,
 			'',
@@ -44,7 +44,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		if (!tokensCopy[i] || tokensCopy[i][0] === TokenType.EOF) {
+		if (!tokensCopy[i] || isTokenEOF(tokensCopy[i])) {
 			if (list.length) {
 				listOfCvls.push(list);
 			}
@@ -52,7 +52,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 			return listOfCvls;
 		}
 
-		if (tokensCopy[i][0] === TokenType.Comma) {
+		if (isTokenComma(tokensCopy[i])) {
 			listOfCvls.push(list);
 			list = [];
 			i++;

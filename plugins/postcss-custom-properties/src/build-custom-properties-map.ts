@@ -76,6 +76,13 @@ export function buildCustomPropertiesMap(customProperties: Map<string, string>, 
 			});
 		}
 
+		for (let i = 0; i < customPropertyGraph.length; i++) {
+			const [from, to] = customPropertyGraph[i];
+			if (!out.has(from) || !out.has(to)) {
+				customPropertyGraph.splice(i--, 1);
+			}
+		}
+
 		const sortedCustomPropertyNames = toposort(Array.from(out.keys()), customPropertyGraph);
 
 		for (const customPropertyName of sortedCustomPropertyNames) {

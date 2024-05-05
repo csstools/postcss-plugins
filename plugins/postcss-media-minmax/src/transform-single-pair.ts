@@ -1,6 +1,6 @@
 import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';
 import { ComponentValue, isFunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, NumberType, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
 import { invertComparison, matchesRatio, matchesRatioExactly, MediaFeature, MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, MediaFeatureValue, newMediaFeaturePlain } from '@csstools/media-query-list-parser';
 
 const unitsForFeature: Record<string, string | undefined> = {
@@ -122,11 +122,7 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 			if (
 				result &&
 				isTokenNode(result) &&
-				(
-					result.value[0] === TokenType.Number ||
-					result.value[0] === TokenType.Percentage ||
-					result.value[0] === TokenType.Dimension
-				) &&
+				isTokenNumeric(result.value) &&
 				Number.isInteger(result.value[4].value)
 			) {
 				// 1.a. If the result is an integer it is safe to use the result as the value and proceed as if there was no calc() function.
@@ -187,31 +183,31 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 	let tokenValue: number;
 	let tokenUnit = '';
 
-	if (typeof featureUnit !== 'undefined' && token[0] === TokenType.Number && token[4].value === 0) {
+	if (typeof featureUnit !== 'undefined' && isTokenNumber(token) && token[4].value === 0) {
 		// unit-less zero for dimension features:
 		// - convert to "1<unit>" or "-1<unit>"
 		tokenValue = power[operator];
 		tokenUnit = featureUnit;
-	} else if (token[0] === TokenType.Number && token[4].value === 0) {
+	} else if (isTokenNumber(token) && token[4].value === 0) {
 		// unit-less zero for number features:
 		// - convert to "1" or "-1"
 		tokenValue = power[operator];
 		tokenUnit = '';
-	} else if ((token[0] === TokenType.Dimension) && token[4].value === 0) {
+	} else if ((isTokenDimension(token)) && token[4].value === 0) {
 		// Zero values:
 		// - convert to "1" or "-1"
 		// - assign a unit when needed
 		tokenValue = power[operator];
 		tokenUnit = token[4].unit;
-	} else if (token[0] === TokenType.Number && integerFeatures[name] === true) {
+	} else if (isTokenNumber(token) && integerFeatures[name] === true) {
 		// Integer features
 		// - add "+step" or "-step"
 		tokenValue = token[4].value + power[operator];
-	} else if (token[0] === TokenType.Dimension && token[4].unit === 'px' && token[4].type === NumberType.Integer) {
+	} else if (isTokenDimension(token) && token[4].unit === 'px' && token[4].type === NumberType.Integer) {
 		// Pixel values
 		// - add "+1" or "-1"
 		tokenValue = Number(Math.round(Number(token[4].value + pixelStep * power[operator] + 'e6')) + 'e-6');
-	} else if (token[0] === TokenType.Dimension || token[0] === TokenType.Number) {
+	} else if (isTokenDimension(token) || isTokenNumber(token)) {
 		// Float or non-pixel values
 		// - add "+step" or "-step"
 		tokenValue = Number(Math.round(Number(token[4].value + step * power[operator] + 'e6')) + 'e-6');
@@ -234,7 +230,7 @@ export function transformSingleNameValuePair(name: string, operator: MediaFeatur
 	}
 
 	token[4].value = tokenValue;
-	if (token[0] === TokenType.Dimension) {
+	if (isTokenDimension(token)) {
 		token[1] = token[4].value.toString() + token[4].unit;
 	} else {
 		token[1] = token[4].value.toString();

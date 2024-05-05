@@ -11,6 +11,7 @@ export type conversionOptions = {
     globals?: GlobalsWithStrings;
     precision?: number;
     toCanonicalUnits?: boolean;
+    censorIntoStandardRepresentableValues?: boolean;
 };
 ```
 **References:** [GlobalsWithStrings](./css-calc.globalswithstrings.md)

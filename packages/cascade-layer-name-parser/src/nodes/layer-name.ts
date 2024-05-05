@@ -1,4 +1,4 @@
-import { TokenDelim } from '@csstools/css-tokenizer';
+import { isTokenDelim, isTokenIdent, TokenDelim } from '@csstools/css-tokenizer';
 import { CSSToken, stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
 
 export class LayerName {
@@ -17,7 +17,7 @@ export class LayerName {
 	slice(start: number, end: number): LayerName {
 		const indices = [];
 		for (let i = 0; i < this.parts.length; i++) {
-			if (this.parts[i][0] === TokenType.Ident) {
+			if (isTokenIdent(this.parts[i])) {
 				indices.push(i);
 			}
 		}
@@ -37,18 +37,18 @@ export class LayerName {
 
 		return new LayerName([
 			...this.parts.filter((x) => {
-				return x[0] === TokenType.Ident || x[0] === TokenType.Delim;
+				return isTokenIdent(x) || isTokenDelim(x);
 			}),
 			dot,
 			...other.parts.filter((x) => {
-				return x[0] === TokenType.Ident || x[0] === TokenType.Delim;
+				return isTokenIdent(x) || isTokenDelim(x);
 			}),
 		]);
 	}
 
 	segments(): Array<string> {
 		return this.parts.filter((x) => {
-			return x[0] === TokenType.Ident;
+			return isTokenIdent(x);
 		}).map((x) => {
 			return (x as TokenIdent)[4].value;
 		});
@@ -56,7 +56,7 @@ export class LayerName {
 
 	name(): string {
 		return this.parts.filter((x) => {
-			return x[0] === TokenType.Ident || x[0] === TokenType.Delim;
+			return isTokenIdent(x) || isTokenDelim(x);
 		}).map((x) => {
 			return (x as TokenIdent | TokenDelim)[1];
 		}).join('');

@@ -1,7 +1,8 @@
 import { ComponentValue, ComponentValueType, ContainerNode, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenType } from '@csstools/css-tokenizer';
+import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { isDimension, isEnvironmentVariable, isIdent, isNumber } from '../util/component-value-is';
 import { NodeType } from '../util/node-type';
+import { isTokenDelim } from '@csstools/css-tokenizer';
 
 export class MediaFeatureValue {
 	type = NodeType.MediaFeatureValue;
@@ -272,7 +273,7 @@ export function matchesRatio(componentValues: Array<ComponentValue>): -1 | [numb
 
 		if (componentValue.type === 'token') {
 			const token = componentValue.value as CSSToken;
-			if (token[0] === TokenType.Delim && token[4].value === '/') {
+			if (isTokenDelim(token) && token[4].value === '/') {
 				if (firstNumber === -1) {
 					return -1;
 				}

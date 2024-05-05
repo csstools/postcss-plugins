@@ -1,5 +1,5 @@
 import { TokenNode } from '@csstools/css-parser-algorithms';
-import { NumberType, TokenType } from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 
 export function multiplication(inputs: Array<TokenNode>): TokenNode | -1 {
 	if (inputs.length !== 2) {
@@ -10,7 +10,7 @@ export function multiplication(inputs: Array<TokenNode>): TokenNode | -1 {
 	const bToken = inputs[1].value;
 
 	// 10 * 5
-	if (aToken[0] === TokenType.Number && bToken[0] === TokenType.Number) {
+	if (isTokenNumber(aToken) && isTokenNumber(bToken)) {
 		const result = aToken[4].value * bToken[4].value;
 
 		return new TokenNode([TokenType.Number, result.toString(), aToken[2], bToken[3], {
@@ -20,7 +20,7 @@ export function multiplication(inputs: Array<TokenNode>): TokenNode | -1 {
 	}
 
 	// 10% * 5
-	if (aToken[0] === TokenType.Percentage && bToken[0] === TokenType.Number) {
+	if (isTokenPercentage(aToken)  && isTokenNumber(bToken)) {
 		const result = aToken[4].value * bToken[4].value;
 
 		return new TokenNode([TokenType.Percentage, result.toString() + '%', aToken[2], bToken[3], {
@@ -29,7 +29,7 @@ export function multiplication(inputs: Array<TokenNode>): TokenNode | -1 {
 	}
 
 	// 10 * 5%
-	if (aToken[0] === TokenType.Number && bToken[0] === TokenType.Percentage) {
+	if (isTokenNumber(aToken) && isTokenPercentage(bToken)) {
 		const result = aToken[4].value * bToken[4].value;
 
 		return new TokenNode([TokenType.Percentage, result.toString() + '%', aToken[2], bToken[3], {
@@ -38,7 +38,7 @@ export function multiplication(inputs: Array<TokenNode>): TokenNode | -1 {
 	}
 
 	// 10px * 5
-	if (aToken[0] === TokenType.Dimension && bToken[0] === TokenType.Number) {
+	if (isTokenDimension(aToken)  && isTokenNumber(bToken)) {
 		const result = aToken[4].value * bToken[4].value;
 
 		return new TokenNode([TokenType.Dimension, result.toString() + aToken[4].unit, aToken[2], bToken[3], {
@@ -49,7 +49,7 @@ export function multiplication(inputs: Array<TokenNode>): TokenNode | -1 {
 	}
 
 	// 10 * 5px
-	if (aToken[0] === TokenType.Number && bToken[0] === TokenType.Dimension) {
+	if (isTokenNumber(aToken) && isTokenDimension(bToken)) {
 		const result = aToken[4].value * bToken[4].value;
 
 		return new TokenNode([TokenType.Dimension, result.toString() + bToken[4].unit, aToken[2], bToken[3], {

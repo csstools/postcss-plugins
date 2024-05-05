@@ -2,11 +2,12 @@ import type { Calculation } from '../calculation';
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
-import { isNumeric, twoOfSameNumeric } from '../util/kind-of-number';
+import { twoOfSameNumeric } from '../util/kind-of-number';
+import { isTokenNumeric } from '@csstools/css-tokenizer';
 
 export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a: TokenNode, b: TokenNode): Calculation | -1 {
 	const aToken = a.value;
-	if (!isNumeric(aToken)) {
+	if (!isTokenNumeric(aToken)) {
 		return -1;
 	}
 

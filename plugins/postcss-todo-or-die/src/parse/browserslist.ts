@@ -1,5 +1,5 @@
 import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenType } from '@csstools/css-tokenizer';
+import { isTokenString } from '@csstools/css-tokenizer';
 
 export function parseBrowserslistCondition(componentValue: FunctionNode) : string|false {
 	const relevantFunctionArguments = componentValue.value.filter((x) => {
@@ -19,7 +19,7 @@ export function parseBrowserslistCondition(componentValue: FunctionNode) : strin
 	}
 
 	const browserslistToken = browserslist.value;
-	if (browserslistToken[0] !== TokenType.String) {
+	if (!isTokenString(browserslistToken)) {
 		return false;
 	}
 

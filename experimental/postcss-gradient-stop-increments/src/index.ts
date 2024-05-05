@@ -2,7 +2,7 @@ import { ComponentValue, replaceComponentValues, stringify, TokenNode } from '@c
 import type { PluginCreator } from 'postcss';
 import { FunctionNode, isCommentNode, isTokenNode, WhitespaceNode, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { calcFromComponentValues } from '@csstools/css-calc';
-import { NumberType } from '@csstools/css-tokenizer';
+import { isTokenNumeric, isTokenDelim, NumberType } from '@csstools/css-tokenizer';
 import { tokenize, TokenType } from '@csstools/css-tokenizer';
 
 /** postcss-gradient-stop-increments plugin options */
@@ -35,7 +35,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const tokens = tokenize({
 				css: decl.value,
 			});
-			if (!tokens.find((token) => token[0] === TokenType.Delim && token[4].value === '+')) {
+			if (!tokens.find((token) => isTokenDelim(token) && token[4].value === '+')) {
 				return;
 			}
 
@@ -55,7 +55,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					for (let i = 0; i < componentValue.value.length; i++) {
 						const node = componentValue.value[i];
 
-						if (isTokenNode(node) && node.value[0] === TokenType.Delim && node.value[4].value === '+') {
+						if (isTokenNode(node) && isTokenDelim(node.value) && node.value[4].value === '+') {
 							const operatorNode = node;
 							const operatorIndex = i;
 
@@ -117,11 +117,7 @@ export default creator;
 function isNumericLargerThanZero(node: ComponentValue): boolean {
 	if (
 		isTokenNode(node) &&
-		(
-			node.value[0] === TokenType.Percentage ||
-			node.value[0] === TokenType.Dimension ||
-			node.value[0] === TokenType.Number
-		) &&
+		isTokenNumeric(node.value) &&
 		/*
 			Values can only increase.
 			For zero specifically we know that it will be smaller and normalized by browsers.
@@ -138,11 +134,7 @@ function isNumericLargerThanZero(node: ComponentValue): boolean {
 function isZeroOrNegative(node: ComponentValue): boolean {
 	if (
 		isTokenNode(node) &&
-		(
-			node.value[0] === TokenType.Percentage ||
-			node.value[0] === TokenType.Dimension ||
-			node.value[0] === TokenType.Number
-		) &&
+		isTokenNumeric(node.value) &&
 		/*
 			Values can only increase.
 			For zero specifically we know that it will be smaller and normalized by browsers.

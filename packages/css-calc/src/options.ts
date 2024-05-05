@@ -24,4 +24,9 @@ export type conversionOptions = {
 	 * If you want to have outputs that are closes to CSS serialized values you can set `true`.
 	 */
 	toCanonicalUnits?: boolean,
+
+	/**
+	 * Convert NaN, Infinity, ... into standard representable values.
+	 */
+	censorIntoStandardRepresentableValues?: boolean,
 };
