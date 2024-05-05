@@ -13,8 +13,6 @@ defaults:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    env:
-      NODE_COMPILE_CACHE: '.cache/v8'
     steps:
       - uses: actions/checkout@v4
         with:
