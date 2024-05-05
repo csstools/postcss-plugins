@@ -30,6 +30,8 @@ jobs:
           is_base_os_version: true
         - node: 22
           is_base_node_version: true
+    env:
+      NODE_COMPILE_CACHE: '.cache/v8'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,13 +43,10 @@ jobs:
       - name: npm ci
         run: |
           npm ci
-        env:
-          BROWSER_TESTS: true
         if: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
-
       - name: npm ci
         run: |
-          NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
+          npm ci --ignore-scripts
         if: ${{ !(matrix.is_base_node_version && matrix.is_base_os_version) }}
 
       - name: determine modified workspaces
@@ -65,10 +64,6 @@ jobs:
           npm run build --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
-      - name: docs
-        run: npm run docs
-        if: matrix.is_base_node_version && matrix.is_base_os_version
-
       - name: repo is clean after "build", "lint" and "docs" steps
         run: |
           git diff --name-only --exit-code
@@ -79,12 +74,13 @@ jobs:
         env:
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
+          BROWSER_TESTS: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
 
         # CLI Tests
         # running "npm install" places the cli in node_modules/bin
       - name: test:cli
         run: |
-          NPM_CONFIG_ENGINE_STRICT=false npm install --ignore-scripts
+          npm install --ignore-scripts
           npm run test:cli --if-present $MODIFIED_WORKSPACES
 
         # E2E Tests
