@@ -16,8 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       # Test node 18/20/22 on ubuntu
-      # Test node 20 on macos/windows
-      # Enable annotations only for node 20 + ubuntu
+      # Test node 22 on macos/windows
+      # Enable annotations only for node 22 + ubuntu
       matrix:
         os: [ubuntu-latest]
         node: [18, 20, 22]
