@@ -2,6 +2,7 @@
 
 ### Unreleased (major)
 
+- Make edition `2024-02` the default.
 - Updated: Support for Node v18+ (major).
 
 ### 12.1.2
