@@ -488,22 +488,22 @@
 }
 
 .mod {
-	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
-	transform: rotate(mod(-140deg, -90deg));
-	width: mod(mod(-18px, 5px), 5px);
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
+	width: 2px;
 }
 
 .rem {
-	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
-	transform: rotate(rem(-140deg, -90deg));
+	padding: 8px 3px 1px calc(3px + 50%);
+	transform: rotate(-50deg);
 }
 
 .round {
-	top: round(2.5px, 1px);
-	right: round(nearest, 2.5px, 1px);
-	bottom: round(up, 2.5px, 1px);
-	left: round(down, 2.5px, 1px);
-	padding-left: round(to-zero, 2.5px, 1px);
+	top: 3px;
+	right: 3px;
+	bottom: 3px;
+	left: 2px;
+	padding-left: 2px;
 }
 
 .trigonometric {
