@@ -11,3 +11,4 @@ reports
 !sites/package-lock.json
 .cached-commit
 _types
+.cache
