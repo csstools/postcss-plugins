@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`3.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#310) (minor)
+
 ### 4.0.4
 
 _March 31, 2024_
