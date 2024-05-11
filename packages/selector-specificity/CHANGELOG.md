@@ -1,6 +1,8 @@
 # Changes to Selector Specificity
 
-### Unreleased (minor)
+### 3.1.0
+
+_May 11, 2024_
 
 - Add an option to `selectorSpecificity` and `specificityOfMostSpecificListItem` to customize the calculation
 - Add `specificityOfMostSpecificListItem` as an exported function
