@@ -154,3 +154,7 @@ assert.deepEqual(calculate(':active-view-transition(*, *)'), { a: 0, b: 1, c: 0 
 assert.deepEqual(calculate(':active-view-transition-type(*)'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':active-view-transition-type(*, bar)'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':active-view-transition-type(*, *)'), { a: 0, b: 1, c: 0 });
+
+assert.deepEqual(calculate(':lang(\\*-Latn)'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':lang("*-Latn")'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':lang(nl-be, fr-be)'), { a: 0, b: 1, c: 0 });
