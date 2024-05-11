@@ -1,5 +1,12 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`4.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#405) (patch)
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`4.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#407) (patch)
+- Updated [`css-has-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo) to [`6.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo/CHANGELOG.md#604) (patch)
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`12.1.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1213) (patch)
+
 ### 3.0.20
 
 _May 4, 2024_
