@@ -4,6 +4,8 @@
 
 ## Specificity type
 
+The specificity of a selector
+
 **Signature:**
 
 ```typescript

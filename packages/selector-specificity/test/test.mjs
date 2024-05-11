@@ -57,6 +57,8 @@ assert.deepEqual(calculate('#foo:nth-child(-n+3 of li.important)'), { a: 1, b: 2
 assert.deepEqual(calculate('#foo:nth-child(-n+3 of li.important, .class1.class2.class3)'), { a: 1, b: 4, c: 0 });
 assert.deepEqual(calculate('#foo:nth-last-child(-n+3 of li, .important)'), { a: 1, b: 2, c: 0 });
 
+assert.deepEqual(calculate(':nth-child(n of .foo > .bar, .fooz > a.baz)'), { a: 0, b: 3, c: 1 });
+
 assert.deepEqual(calculate(':nth-of-type'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':nth-of-type()'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':nth-of-type(1n)'), { a: 0, b: 1, c: 0 });

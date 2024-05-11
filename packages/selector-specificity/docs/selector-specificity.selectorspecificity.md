@@ -4,10 +4,12 @@
 
 ## selectorSpecificity() function
 
+Calculate the specificity for a selector
+
 **Signature:**
 
 ```typescript
-export declare function selectorSpecificity(node: Node): Specificity;
+export declare function selectorSpecificity(node: Node, options?: CalculationOptions): Specificity;
 ```
 
 ## Parameters
@@ -39,6 +41,22 @@ Node
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[CalculationOptions](./selector-specificity.calculationoptions.md)
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

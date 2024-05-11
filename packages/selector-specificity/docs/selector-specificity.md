@@ -24,14 +24,29 @@ Description
 
 </td><td>
 
+Compare two specificities
+
 
 </td></tr>
 <tr><td>
 
-[selectorSpecificity(node)](./selector-specificity.selectorspecificity.md)
+[selectorSpecificity(node, options)](./selector-specificity.selectorspecificity.md)
 
 
 </td><td>
+
+Calculate the specificity for a selector
+
+
+</td></tr>
+<tr><td>
+
+[specificityOfMostSpecificListItem(nodes, options)](./selector-specificity.specificityofmostspecificlistitem.md)
+
+
+</td><td>
+
+Calculate the most specific selector in a list
 
 
 </td></tr>
@@ -52,10 +67,34 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[CalculationOptions](./selector-specificity.calculationoptions.md)
+
+
+</td><td>
+
+Options for the calculation of the specificity of a selector
+
+
+</td></tr>
+<tr><td>
+
+[CustomSpecificityCallback](./selector-specificity.customspecificitycallback.md)
+
+
+</td><td>
+
+Calculate a custom specificity for a node
+
+
+</td></tr>
+<tr><td>
+
 [Specificity](./selector-specificity.specificity.md)
 
 
 </td><td>
+
+The specificity of a selector
 
 
 </td></tr>
