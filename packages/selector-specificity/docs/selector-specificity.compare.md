@@ -4,6 +4,8 @@
 
 ## compare() function
 
+Compare two specificities
+
 **Signature:**
 
 ```typescript
@@ -40,6 +42,8 @@ s1
 
 </td><td>
 
+The first specificity
+
 
 </td></tr>
 <tr><td>
@@ -54,10 +58,14 @@ s2
 
 </td><td>
 
+The second specificity
+
 
 </td></tr>
 </tbody></table>
 **Returns:**
 
 number
+
+A value smaller than `0` if `s1` is less specific than `s2`<!-- -->, `0` if `s1` is equally specific as `s2`<!-- -->, a value larger than `0` if `s1` is more specific than `s2`
 

@@ -4,6 +4,13 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 3.1.0
+
+_May 11, 2024_
+
+- Add an option to `selectorSpecificity` and `specificityOfMostSpecificListItem` to customize the calculation
+- Add `specificityOfMostSpecificListItem` as an exported function
+
 ### 3.0.3
 
 _March 31, 2024_

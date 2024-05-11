@@ -5,6 +5,12 @@
 - Make edition `2024-02` the default.
 - Updated: Support for Node v18+ (major).
 
+### 12.1.3
+
+_May 11, 2024_
+
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`3.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#310) (minor)
+
 ### 12.1.2
 
 _April 21, 2024_
