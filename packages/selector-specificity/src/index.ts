@@ -1,12 +1,45 @@
 import parser from 'postcss-selector-parser';
 import type { Node, Selector } from 'postcss-selector-parser';
 
+/**
+ * The specificity of a selector
+ */
 export type Specificity = {
+	/**
+	 * The number of ID selectors in the selector
+	 */
 	a: number,
+	/**
+	 * The number of class selectors, attribute selectors, and pseudo-classes in the selector
+	 */
 	b: number,
+	/**
+	 * The number of type selectors and pseudo-elements in the selector
+	 */
 	c: number,
 };
 
+/**
+ * Options for the calculation of the specificity of a selector
+ */
+export type CalculationOptions = {
+	/**
+	 * The callback to calculate a custom specificity for a node
+	 */
+	customSpecificity?: CustomSpecificityCallback,
+};
+
+/**
+ * Calculate a custom specificity for a node
+ */
+export type CustomSpecificityCallback = (node: Node) => Specificity | void | false | null | undefined;
+
+/**
+ * Compare two specificities
+ * @param s1 The first specificity
+ * @param s2 The second specificity
+ * @returns A value smaller than `0` if `s1` is less specific than `s2`, `0` if `s1` is equally specific as `s2`, a value larger than `0` if `s1` is more specific than `s2`
+ */
 export function compare(s1: Specificity, s2: Specificity): number {
 	if (s1.a === s2.a) {
 		if (s1.b === s2.b) {
@@ -17,7 +50,15 @@ export function compare(s1: Specificity, s2: Specificity): number {
 	return s1.a - s2.a;
 }
 
-export function selectorSpecificity(node: Node): Specificity {
+/**
+ * Calculate the specificity for a selector
+ */
+export function selectorSpecificity(node: Node, options?: CalculationOptions): Specificity {
+	const customSpecificity = options?.customSpecificity?.(node);
+	if (customSpecificity) {
+		return customSpecificity;
+	}
+
 	// https://www.w3.org/TR/selectors-4/#specificity-rules
 
 	if (!node) {
@@ -62,7 +103,7 @@ export function selectorSpecificity(node: Node): Specificity {
 						//
 						// This code is correct for correct CSS.
 						// It is only different for invalid CSS.
-						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
+						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes, options);
 
 						a += mostSpecificListItem.a;
 						b += mostSpecificListItem.b;
@@ -105,7 +146,7 @@ export function selectorSpecificity(node: Node): Specificity {
 
 	} else if (parser.isPseudoClass(node)) {
 		switch (node.value.toLowerCase()) {
-			// The specificity of :any() and :-webkit-any() as implemented in browsers is 1 nomatter the content.
+			// The specificity of :any() and :-webkit-any() as implemented in browsers is 1 no matter the content.
 			case ':-webkit-any':
 			case ':any':
 				b += 1;
@@ -120,7 +161,7 @@ export function selectorSpecificity(node: Node): Specificity {
 			// The specificity of an :is(), :-moz-any(), :not(), or :has() pseudo-class is replaced by the specificity of the most specific complex selector in its selector list argument.
 			{
 				if (node.nodes && node.nodes.length > 0) {
-					const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
+					const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes, options);
 
 					a += mostSpecificListItem.a;
 					b += mostSpecificListItem.b;
@@ -147,18 +188,26 @@ export function selectorSpecificity(node: Node): Specificity {
 						});
 
 						if (ofSeparatorIndex > -1) {
-							const subSelector = [
-								parser.selector({
-									nodes: node.nodes[0].nodes.slice(ofSeparatorIndex + 1),
-									value: '',
-								}),
-							];
+							const selector = parser.selector({
+								nodes: [],
+								value: '',
+							});
+
+							selector.parent = node;
+
+							const firstPart = node.nodes[0].nodes.slice(ofSeparatorIndex + 1);
+							firstPart.forEach((child) => {
+								child.remove();
+								selector.append(child);
+							});
+
+							const selectorList = [selector];
 
 							if (node.nodes.length > 1) {
-								subSelector.push(...node.nodes.slice(1));
+								selectorList.push(...node.nodes.slice(1));
 							}
 
-							const mostSpecificListItem = specificityOfMostSpecificListItem(subSelector);
+							const mostSpecificListItem = specificityOfMostSpecificListItem(selectorList, options);
 
 							a += mostSpecificListItem.a;
 							b += mostSpecificListItem.b;
@@ -174,7 +223,7 @@ export function selectorSpecificity(node: Node): Specificity {
 				// see : https://github.com/css-modules/css-modules
 				if (node.nodes && node.nodes.length > 0) {
 					node.nodes.forEach((child) => {
-						const specificity = selectorSpecificity(child);
+						const specificity = selectorSpecificity(child, options);
 						a += specificity.a;
 						b += specificity.b;
 						c += specificity.c;
@@ -185,14 +234,14 @@ export function selectorSpecificity(node: Node): Specificity {
 
 			case ':host':
 			case ':host-context':
-				// “The specificity of :host is that of a pseudo-class. The specificity of :host() is that of a pseudo-class, plus the specificity of its argument.”
-				// “The specificity of :host-context() is that of a pseudo-class, plus the specificity of its argument.”
+				// The specificity of :host() is that of a pseudo-class, plus the specificity of its argument.
+				// The specificity of :host-context() is that of a pseudo-class, plus the specificity of its argument.
 
 				{
 					b += 1;
 
 					if (node.nodes && node.nodes.length > 0) {
-						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes);
+						const mostSpecificListItem = specificityOfMostSpecificListItem(node.nodes, options);
 
 						// We are more forgiving than the specification and use the most specific complex selector.
 						// This gives the community more options to do non-standard things.
@@ -226,7 +275,7 @@ export function selectorSpecificity(node: Node): Specificity {
 		}
 	} else if ((parser.isContainer(node)) && node.nodes.length > 0) {
 		node.nodes.forEach((child) => {
-			const specificity = selectorSpecificity(child);
+			const specificity = selectorSpecificity(child, options);
 			a += specificity.a;
 			b += specificity.b;
 			c += specificity.c;
@@ -240,7 +289,10 @@ export function selectorSpecificity(node: Node): Specificity {
 	};
 }
 
-function specificityOfMostSpecificListItem(nodes: Array<Node>): { a: number, b: number, c: number } {
+/**
+ * Calculate the most specific selector in a list
+ */
+export function specificityOfMostSpecificListItem(nodes: Array<Node>, options?: CalculationOptions): { a: number, b: number, c: number } {
 	let mostSpecificListItem = {
 		a: 0,
 		b: 0,
@@ -248,7 +300,7 @@ function specificityOfMostSpecificListItem(nodes: Array<Node>): { a: number, b: 
 	};
 
 	nodes.forEach((child) => {
-		const itemSpecificity = selectorSpecificity(child);
+		const itemSpecificity = selectorSpecificity(child, options);
 		if (itemSpecificity.a > mostSpecificListItem.a) {
 			mostSpecificListItem = itemSpecificity;
 			return;
