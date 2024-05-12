@@ -1,6 +1,8 @@
 # Changes to PostCSS Browser Comments
 
-### Unreleased (major)
+### 5.0.0
+
+_May 12, 2024_
 
 - Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
 - Updated: Node 14+ compatibility (major)
