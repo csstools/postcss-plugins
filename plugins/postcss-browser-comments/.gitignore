@@ -1,13 +1,6 @@
 node_modules
-index.cjs*
-index.mjs*
 package-lock.json
 yarn.lock
-*.log*
 *.result.css
-.*
-!.editorconfig
-!.gitignore
-!.rollup.js
-!.tape.js
-!.travis.yml
+*.result.css.map
+*.result.html

@@ -1,18 +1,31 @@
 # Changes to PostCSS Browser Comments
 
-### 4.0.0 (April 28, 2021)
+### Unreleased (major)
+
+- Change license to `MIT-0` ([read more about this change in the blog post](https://preset-env.cssdb.org/blog/license-change/))
+- Updated: Node 14+ compatibility (major)
+
+### 4.0.0
+	
+_April 28, 2021_
 
 - Updated: PostCSS 8 compatibility (major)
 
-### 3.0.0 (May 24, 2019)
+### 3.0.0
+
+_May 24, 2019_
 
 - Updated: Node 8+ compatibility (major)
 
-### 2.0.0 (September 6, 2018)
+### 2.0.0
+
+_September 6, 2018_
 
 - Update to PostCSS 7.0.2 (major)
 - Update to browserslist 4.1.1 (major)
 
-### 1.0.0 (June 15, 2018)
+### 1.0.0
+
+_June 15, 2018_
 
 - Initial version
