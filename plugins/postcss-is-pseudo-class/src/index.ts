@@ -145,7 +145,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							throw err;
 						}
 
-						rule.warn(result, `Failed to parse selector "${rule.selector}"`);
+						rule.warn(result, `Failed to parse selector "${rule.selector}" with error: ${err.message}`);
 					}
 				},
 			};
