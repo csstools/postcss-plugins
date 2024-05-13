@@ -419,3 +419,15 @@ header:is(.a .b) {
 :has(:is(.foo .bar) .fooz) {
 	color: green;
 }
+
+:nth-child(2n+1 of .foo) {
+	color: green;
+}
+
+.foo:not(.does-not-exist) {
+	color: green;
+}
+
+:is(:nth-child(2n+1 of .foo), .foo) {
+	color: green;
+}

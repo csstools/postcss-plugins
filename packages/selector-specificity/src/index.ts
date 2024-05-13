@@ -193,16 +193,11 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 								value: '',
 							});
 
-							selector.parent = node;
-
-							const firstPart = node.nodes[0].nodes.slice(ofSeparatorIndex + 1);
-							firstPart.forEach((child) => {
-								child.remove();
-								selector.append(child);
+							node.nodes[0].nodes.slice(ofSeparatorIndex + 1).forEach((child) => {
+								selector.append(child.clone());
 							});
 
 							const selectorList = [selector];
-
 							if (node.nodes.length > 1) {
 								selectorList.push(...node.nodes.slice(1));
 							}
@@ -273,7 +268,7 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 			default:
 				b += 1;
 		}
-	} else if ((parser.isContainer(node)) && node.nodes.length > 0) {
+	} else if ((parser.isContainer(node)) && node.nodes?.length > 0) {
 		node.nodes.forEach((child) => {
 			const specificity = selectorSpecificity(child, options);
 			a += specificity.a;
@@ -301,24 +296,11 @@ export function specificityOfMostSpecificListItem(nodes: Array<Node>, options?: 
 
 	nodes.forEach((child) => {
 		const itemSpecificity = selectorSpecificity(child, options);
-		if (itemSpecificity.a > mostSpecificListItem.a) {
-			mostSpecificListItem = itemSpecificity;
-			return;
-		} else if (itemSpecificity.a < mostSpecificListItem.a) {
+		if (compare(itemSpecificity, mostSpecificListItem) < 0) {
 			return;
 		}
 
-		if (itemSpecificity.b > mostSpecificListItem.b) {
-			mostSpecificListItem = itemSpecificity;
-			return;
-		} else if (itemSpecificity.b < mostSpecificListItem.b) {
-			return;
-		}
-
-		if (itemSpecificity.c > mostSpecificListItem.c) {
-			mostSpecificListItem = itemSpecificity;
-			return;
-		}
+		mostSpecificListItem = itemSpecificity;
 	});
 
 	return mostSpecificListItem;
