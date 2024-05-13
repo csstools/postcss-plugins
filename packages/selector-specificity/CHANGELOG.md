@@ -1,6 +1,8 @@
 # Changes to Selector Specificity
 
-### Unreleased (patch)
+### 3.1.1
+
+_May 13, 2024_
 
 - Prevent mutation of selectors with An+B microsyntax (e.g. `:nth-child(2n+1 of .foo)`) during specificity calculation
 
