@@ -12,10 +12,12 @@ export async function minifyChangelogAndPackageJSON(workspace) {
 	// - remove some fields that are not useful for end users
 	{
 		delete minifiedPackageInfo.devDependencies;
-		delete minifiedPackageInfo.scripts;
 		delete minifiedPackageInfo.csstools;
 		delete minifiedPackageInfo.volta;
 		delete minifiedPackageInfo.eslintConfig;
+
+		// NPM prefers an empty scripts object over a missing one.
+		minifiedPackageInfo.scripts = {};
 	}
 
 	// CHANGELOG.md
