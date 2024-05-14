@@ -166,3 +166,8 @@ assert.deepEqual(calculate(':dir()'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':dir(rtl)'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':dir(rtl, ltr)'), { a: 0, b: 1, c: 0 });
 assert.deepEqual(calculate(':dir(rtl ltr)'), { a: 0, b: 1, c: 0 });
+
+assert.deepEqual(calculate(':state()'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':state(foo)'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':state(foo bar)'), { a: 0, b: 1, c: 0 });
+assert.deepEqual(calculate(':state(foo, bar)'), { a: 0, b: 1, c: 0 });
