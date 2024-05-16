@@ -12,7 +12,7 @@ set +e
 
 echo "" > ./test-self/basic.result.log
 
-node --test-reporter dot ./test/basic.mjs > ./test-self/basic.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.mjs > ./test-self/basic.result.log 2>&1
 echo "$?" > ./test-self/basic.result.code
 
 set -e
@@ -25,7 +25,7 @@ set +e
 
 echo "" > ./test-self/basic.with-diff-in-expect.result.log
 
-node --test-reporter dot ./test/basic.with-diff-in-expect.mjs > ./test-self/basic.with-diff-in-expect.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.with-diff-in-expect.mjs > ./test-self/basic.with-diff-in-expect.result.log 2>&1
 echo "$?" > ./test-self/basic.with-diff-in-expect.result.code
 
 set -e
@@ -38,7 +38,7 @@ set +e
 
 echo "" > ./test-self/basic.without-expect.result.log
 
-node --test-reporter dot ./test/basic.without-expect.mjs > ./test-self/basic.without-expect.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.without-expect.mjs > ./test-self/basic.without-expect.result.log 2>&1
 echo "$?" > ./test-self/basic.without-expect.result.code
 
 set -e
@@ -51,7 +51,7 @@ set +e
 
 echo "" > ./test-self/basic.with-warnings.result.log
 
-node --test-reporter dot ./test/basic.with-warnings.mjs > ./test-self/basic.with-warnings.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.with-warnings.mjs > ./test-self/basic.with-warnings.result.log 2>&1
 echo "$?" > ./test-self/basic.with-warnings.result.code
 
 set -e
@@ -64,7 +64,7 @@ set +e
 
 echo "" > ./test-self/basic.broken-sourcemap.result.log
 
-node --test-reporter dot ./test/basic.broken-sourcemap.mjs > ./test-self/basic.broken-sourcemap.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.broken-sourcemap.mjs > ./test-self/basic.broken-sourcemap.result.log 2>&1
 echo "$?" > ./test-self/basic.broken-sourcemap.result.code
 
 set -e
@@ -77,7 +77,7 @@ set +e
 
 echo "" > ./test-self/basic.before-after.result.log
 
-node --test-reporter dot ./test/basic.before-after.mjs > ./test-self/basic.before-after.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.before-after.mjs > ./test-self/basic.before-after.result.log 2>&1
 echo "$?" > ./test-self/basic.before-after.result.code
 
 set -e
@@ -90,7 +90,7 @@ set +e
 
 echo "" > ./test-self/basic.break-css.result.log
 
-node --test-reporter dot ./test/basic.break-css.mjs > ./test-self/basic.break-css.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/basic.break-css.mjs > ./test-self/basic.break-css.result.log 2>&1
 echo "$?" > ./test-self/basic.break-css.result.code
 
 set -e
@@ -103,7 +103,7 @@ set +e
 
 echo "" > ./test-self/file-overrides.result.log
 
-node --test-reporter dot ./test/file-overrides.mjs > ./test-self/file-overrides.result.log 2>&1
+node --test-reporter ./test/dot-reporter.cjs ./test/file-overrides.mjs > ./test-self/file-overrides.result.log 2>&1
 echo "$?" > ./test-self/file-overrides.result.code
 
 set -e
