@@ -2,9 +2,9 @@ import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
 import type { CSSToken } from '@csstools/css-tokenizer';
 import { isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
 
-const HAS_LEGAL_KEYWORDS_REGEX = /(?:license|copyright)/i;
+const HAS_LEGAL_KEYWORDS_REGEX = /license|copyright/i;
 const HAS_SOURCE_MAP_REGEX = /sourceMappingURL/i;
-const HAS_WHITESPACE_OR_COMMENTS_REGEX = /(?:\s|\/\*)/;
+const HAS_WHITESPACE_OR_COMMENTS_REGEX = /\s|\/\*/;
 const IS_LAYER_REGEX = /^layer$/i;
 
 function minify(cache: Map<string, string>, x: string | undefined): string | undefined {

@@ -98,7 +98,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					if (!(/i\s*]/gmi.test(rule.selector))) {
+					if (!(/i\s*\]/i.test(rule.selector))) {
 						return;
 					}
 

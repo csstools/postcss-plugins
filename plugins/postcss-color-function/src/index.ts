@@ -9,8 +9,8 @@ type basePluginOptions = {
 	preserve: boolean,
 }
 
-const COLOR_FUNCTION_REGEX = /\b(?:color)\(/i;
-const COLOR_NAME_REGEX = /^(?:color)$/i;
+const COLOR_FUNCTION_REGEX = /\bcolor\(/i;
+const COLOR_NAME_REGEX = /^color$/i;
 
 /* Transform the color() function in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {

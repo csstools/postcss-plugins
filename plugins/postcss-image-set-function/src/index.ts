@@ -4,8 +4,8 @@ import type { PluginCreator } from 'postcss';
 import { handleInvalidation } from './lib/handle-invalidation';
 import { hasFallback } from '@csstools/utilities';
 
-const IMAGE_SET_VALUE_MATCH_REGEX = /(^|[^\w-])(-webkit-)?image-set\(/i;
-const IMAGE_SET_FUNCTION_MATCH_REGEX = /^(-webkit-)?image-set$/i;
+const IMAGE_SET_VALUE_MATCH_REGEX = /(?:^|[^\w-])(?:-webkit-)?image-set\(/i;
+const IMAGE_SET_FUNCTION_MATCH_REGEX = /^(?:-webkit-)?image-set$/i;
 
 /** postcss-image-set-function plugin options */
 export type pluginOptions = {
