@@ -3,6 +3,9 @@
 // https://github.com/nodejs/node/blob/303c80c50b945cc8c779f7e4f31b898bd41923bf/lib/internal/test_runner/reporter/dot.js
 // The dot reporter includes more debug info now, which makes it useless for our purposes.
 // This is a fork from before the changes were made.
+//
+// @license : see nodejs license
+// https://github.com/nodejs/node/blob/main/LICENSE
 
 module.exports = async function* dot(source) {
 	let count = 0;
