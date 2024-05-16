@@ -91,7 +91,7 @@ function isBrowserCommentNode(node: Node): node is Comment {
 	return node.next()?.type === 'rule';
 }
 
-const IS_BROWSER_COMMENT_NODE_REGEX = /^\*\n * /;
+const IS_BROWSER_COMMENT_NODE_REGEX = /^\*\n +/;
 
 // returns whether a node is a browser reference comment
 function isBrowserReferenceCommentNode(node: Node): node is Comment {
@@ -122,7 +122,7 @@ function getBrowserData(text: string): { browserslist: Array<string>, isNumbered
 	};
 }
 
-const BROWSER_DATA_MULTI_REGEX = /(\n \* \d+\. (?:[^\n]+|\n \* {4,})+)/g;
+const BROWSER_DATA_MULTI_REGEX = /(\n \* \d+\. (?:[^\n]|\n \* {4,})+)/g;
 const BROWSER_DATA_NEWLINE_REGEX = /^\*\n \* ?|\n \*/g;
 const BROWSER_DATA_NUMBERED_NEWLINE_REGEX = /\n \* (?:( )\s*)?/g;
 
@@ -148,7 +148,7 @@ function getBrowsersList(text: string): Array<string> {
 }
 
 const GET_BROWSERSLIST_IN_SPLIT_REGEX = /\s+in\s+/;
-const GET_BROWSERSLIST_AND_SPLIT_REGEX = /(?: and|, and|,)/;
+const GET_BROWSERSLIST_AND_SPLIT_REGEX = / and|, and|,/;
 const GET_BROWSERSLIST_QUERY_REGEX = /^\s*(\w+)(?: ((?:(?:\d*\.)?\d+-)?(?:\d*\.)?\d+[+-]?))?.*$/;
 
 function browserslistsOverlap(clientBrowserList: Set<string>, commentBrowsersList: Array<string>): boolean {

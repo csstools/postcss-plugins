@@ -11,9 +11,9 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const GRADIENT_FUNCTION_REGEX = /(repeating-)?(linear|radial|conic)-gradient\(/i;
-const GRADIENT_NAME_REGEX = /^(repeating-)?(linear|radial|conic)-gradient$/i;
-const MATH_FUNCTION_NAME_REGEX = /^(abs|acos|asin|atan|atan2|calc|clamp|cos|exp|hypot|log|max|min|mod|pow|rem|round|sign|sin|sqrt|tan)$/i;
+const GRADIENT_FUNCTION_REGEX = /(?:repeating-)?(?:linear|radial|conic)-gradient\(/i;
+const GRADIENT_NAME_REGEX = /^(?:repeating-)?(?:linear|radial|conic)-gradient$/i;
+const MATH_FUNCTION_NAME_REGEX = /^(?:abs|acos|asin|atan|atan2|calc|clamp|cos|exp|hypot|log|max|min|mod|pow|rem|round|sign|sin|sqrt|tan)$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(

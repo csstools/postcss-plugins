@@ -12,8 +12,8 @@ type basePluginOptions = {
 	}
 };
 
-const COLOR_MIX_FUNCTION_REGEX = /\b(?:color-mix)\(/i;
-const COLOR_MIX_NAME_REGEX = /^(?:color-mix)$/i;
+const COLOR_MIX_FUNCTION_REGEX = /\bcolor-mix\(/i;
+const COLOR_MIX_NAME_REGEX = /^color-mix$/i;
 
 /* Transform color-mix() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {

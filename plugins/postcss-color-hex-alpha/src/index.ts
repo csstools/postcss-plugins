@@ -64,9 +64,9 @@ creator.postcss = true;
 
 export default creator;
 
-const HAS_HEX_ALPHA_REGEX = /#([0-9a-f]{4}(?:[0-9a-f]{4})?)\b/i;
+const HAS_HEX_ALPHA_REGEX = /#[0-9a-f]{4}(?:[0-9a-f]{4})?\b/i;
 
-const IS_HEX_ALPHA_REGEX = /^#([0-9a-f]{4}(?:[0-9a-f]{4})?)$/i;
+const IS_HEX_ALPHA_REGEX = /^#[0-9a-f]{4}(?:[0-9a-f]{4})?$/i;
 
 /** Decimal precision. */
 const alphaDecimalPrecision = 100000;
