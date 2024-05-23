@@ -249,3 +249,31 @@ h1 {
 		background-color: transparent;
 }
 	}
+
+@scope (.foo) {
+	& {
+		order: 1000;
+	}
+}
+
+.outer {
+	@scope (.foo) {
+		order: 1001;
+	}
+}
+
+.outer {
+	@scope (.foo) {
+		& {
+			order: 1002;
+		}
+	}
+}
+
+.outer {
+	@scope (.foo) to (.bar) {
+		& {
+			order: 1003;
+		}
+	}
+}

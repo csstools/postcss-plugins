@@ -7,11 +7,11 @@
 }
 
 
-.foo:has(:scope, :not(:scope)) {
+.foo:has(:is(:scope),:not(:scope)) {
 	order: 3;
 }
 
-:scope:scope+:scope {
+:scope:scope + :scope {
 	order: 4;
 }
 
@@ -27,7 +27,7 @@
 	}
 }
 
-:scopehtml {
+html:scope {
 	order: 7;
 }
 
