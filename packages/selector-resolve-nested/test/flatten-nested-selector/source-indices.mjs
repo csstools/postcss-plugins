@@ -27,7 +27,7 @@ test('source indices - a', async () => {
 
 	assert.equal(
 		firstSelector.sourceIndex,
-		undefined,
+		0,
 	);
 
 	const classNodeA = firstSelector.nodes[0];
@@ -62,7 +62,7 @@ test('source indices - b', async () => {
 	const a = parser().astSync('.a');
 	assert.equal(
 		a.nodes[0].sourceIndex,
-		undefined,
+		0,
 	);
 
 	const b = parser().astSync('.b,\n .bb');
@@ -94,7 +94,7 @@ test('source indices - b', async () => {
 
 	assert.equal(
 		firstSelector.sourceIndex,
-		undefined,
+		0,
 	);
 
 	assert.equal(
