@@ -640,18 +640,35 @@
 }
 
 .dark {
+	--csstools-color-scheme--dark: initial;
 	color-scheme: dark;
 }
 
 .light {
+	--csstools-color-scheme--dark:  ;
 	color-scheme: light;
 }
 
 .schemed-colors {
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) lch(from rgb(131, 27, 0) l c h);
+	color: magenta;
+	color: var(--csstools-light-dark-toggle--1, magenta);
 	color: light-dark(lch(from rgb(131, 27, 0) l c h), magenta);
 	color: light-dark(lch(from color(display-p3 0.4939 0.10676 0) l c h), magenta);
 }
 
 .schemed-prop {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
+}
+
+@supports (color: light-dark(red, red)) {
+.schemed-prop {
 	--theme-color: light-dark(cyan, deepskyblue);
+}
+}
+
+.schemed-prop * {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
+	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
 }
