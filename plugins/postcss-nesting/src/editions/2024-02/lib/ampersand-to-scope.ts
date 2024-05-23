@@ -1,5 +1,6 @@
 import type { Container, Node, Result, Rule } from 'postcss';
 import parser from 'postcss-selector-parser';
+import { isAtRule } from '../../shared/lib/is-type-of-rule';
 
 export default function ampersandToScope(rule: Rule, result: Result): void {
 	let parent: Container<Node> = rule.parent;
@@ -8,6 +9,12 @@ export default function ampersandToScope(rule: Rule, result: Result): void {
 		if (parent.type === 'rule') {
 			// Skip any rules that nested.
 			// We only want to process "&" found in unnested rules.
+			return;
+		}
+
+		if (isAtRule(parent) && parent.name === 'scope') {
+			// Skip @scope rules.
+			// These are newer than nesting and we don't want to break these.
 			return;
 		}
 

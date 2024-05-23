@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Fix nested rules within `@scope`
+
 ### 12.1.4
 
 _May 13, 2024_
