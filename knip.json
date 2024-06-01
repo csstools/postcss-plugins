@@ -120,10 +120,8 @@
 		"csstools-cli"
 	],
 	"ignoreDependencies": [
-		"@babel/core",
 		"@babel/preset-env",
 		"@microsoft/api-documenter",
-		"@stryker-mutator/command-runner",
-		"tslib"
+		"@stryker-mutator/command-runner"
 	]
 }
