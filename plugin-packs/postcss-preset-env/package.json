@@ -82,7 +82,7 @@
 		"@csstools/postcss-trigonometric-functions": "^3.0.8",
 		"@csstools/postcss-unset-value": "^3.0.1",
 		"autoprefixer": "^10.4.19",
-		"browserslist": "^4.22.3",
+		"browserslist": "^4.23.1",
 		"css-blank-pseudo": "^6.0.2",
 		"css-has-pseudo": "^6.0.5",
 		"css-prefers-color-scheme": "^9.0.1",
