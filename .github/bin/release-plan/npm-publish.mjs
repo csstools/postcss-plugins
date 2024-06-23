@@ -14,13 +14,13 @@ export async function npmPublish(packageDirectory, packageName) {
 			[
 				'publish',
 				'--access',
-				'public'
+				'public',
 			],
 			{
 				stdio: 'inherit',
 				cwd: packageDirectory,
-				shell: platform === 'win32'
-			}
+				shell: platform === 'win32',
+			},
 		);
 
 		publishCmd.on('close', (code) => {

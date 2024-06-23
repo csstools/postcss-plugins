@@ -57,13 +57,13 @@ const formatted = {};
 
 	formatted.funding = [
 		{
-			"type": "github",
-			"url": "https://github.com/sponsors/csstools"
+			'type': 'github',
+			'url': 'https://github.com/sponsors/csstools',
 		},
 		{
-			"type": "opencollective",
-			"url": "https://opencollective.com/csstools"
-		}
+			'type': 'opencollective',
+			'url': 'https://opencollective.com/csstools',
+		},
 	];
 
 	delete packageJSONInfo.funding;
@@ -75,7 +75,7 @@ const formatted = {};
 	delete packageJSONInfo.private;
 
 	formatted.engines = {
-		node: '^14 || ^16 || >=18'
+		node: '^14 || ^16 || >=18',
 	};
 	delete packageJSONInfo.engines;
 

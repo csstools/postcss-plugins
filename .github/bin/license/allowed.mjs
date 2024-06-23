@@ -139,7 +139,7 @@ const osiApproved = [
 	'BSL-1.0',
 	'Artistic-1.0-Perl',
 	'NPOSL-3.0',
-	'BlueOak-1.0.0' // https://github.com/spdx/license-list-XML/commit/d2709ad9c8c3f92989d2e7cadba3af8d1e0bc166
+	'BlueOak-1.0.0', // https://github.com/spdx/license-list-XML/commit/d2709ad9c8c3f92989d2e7cadba3af8d1e0bc166
 ];
 
 export const osiApprovedWithCCO = [

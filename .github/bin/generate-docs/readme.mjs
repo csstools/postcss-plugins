@@ -12,7 +12,7 @@ let exampleFilePaths = [];
 try {
 	exampleFilePaths = (
 		await fs.promises.readdir(path.join('test', 'examples'), { recursive: true, withFileTypes: true })
-	).filter(x => x.isFile()).map(x => path.join(x.path, x.name));
+	).filter(x => x.isFile()).map(x => path.join(x.parentPath, x.name));
 } catch(error) {
 	// No examples
 }
@@ -60,7 +60,7 @@ readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="http
 `\n
 \`\`\`bash
 npm install <packageName> --save-dev
-\`\`\``
+\`\`\``,
 );
 
 // Insert "Usage" section
@@ -119,7 +119,7 @@ readmeDoc = readmeDoc.replaceAll('<specUrl>', packageJSONInfo.csstools.specUrl);
 if (packageJSONInfo?.csstools?.assumesToProcessBundledCSS) {
 	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', parallelBuildsNotice(packageJSONInfo.csstools.humanReadableName));
 } else {
-	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', ``);
+	readmeDoc = readmeDoc.replaceAll('<parallelBuildsNotice>', '');
 }
 
 for (const exampleFilePath of exampleFilePaths) {

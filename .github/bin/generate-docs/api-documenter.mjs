@@ -33,8 +33,8 @@ await new Promise((resolve, reject) => {
 		],
 		{
 			stdio: 'inherit',
-			shell: platform === 'win32'
-		}
+			shell: platform === 'win32',
+		},
 	);
 
 	publishCmd.on('close', (code) => {
@@ -49,6 +49,6 @@ await new Promise((resolve, reject) => {
 
 for (const file of await getFiles('docs', true)) {
 	const fileContents = fs.readFileSync(file, 'utf8').toString();
-	const cleanFileContents = fileContents.replace(/\r\n/g, "\n");
+	const cleanFileContents = fileContents.replace(/\r\n/g, '\n');
 	fs.writeFileSync(file, cleanFileContents);
 }

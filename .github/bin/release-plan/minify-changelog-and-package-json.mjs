@@ -1,5 +1,5 @@
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'fs/promises';
+import path from 'path';
 
 export async function minifyChangelogAndPackageJSON(workspace) {
 	const originalPackageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
@@ -49,5 +49,5 @@ export async function minifyChangelogAndPackageJSON(workspace) {
 	return async () => {
 		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(originalPackageInfo, null, '\t') + '\n');
 		await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), originalChangelog);
-	}
+	};
 }

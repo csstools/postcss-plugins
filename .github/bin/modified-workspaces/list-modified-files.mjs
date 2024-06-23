@@ -5,10 +5,11 @@ export async function listModifiedFilesInPullRequest(repository, pullRequestNumb
 
 	let page = 1;
 
+	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const newFiles = await getPullRequestFiles(repository, pullRequestNumber, page);
 		allFiles.push(...newFiles);
-		page++
+		page++;
 
 		if (newFiles.length < 100) {
 			break;
@@ -21,8 +22,8 @@ export async function listModifiedFilesInPullRequest(repository, pullRequestNumb
 async function getPullRequestFiles(repository, pullRequestNumber, page) {
 	return await (new Promise((resolve, reject) => {
 		const headers = {
-			'User-Agent': 'GitHub Workflow'
-		}
+			'User-Agent': 'GitHub Workflow',
+		};
 
 		if (process.env.GITHUB_TOKEN) {
 			headers['authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -33,10 +34,10 @@ async function getPullRequestFiles(repository, pullRequestNumber, page) {
 			port: 443,
 			path: `/repos/${repository}/pulls/${pullRequestNumber}/files?per_page=100&page=${page}`,
 			method: 'GET',
-			headers: headers
+			headers: headers,
 		}, (res) => {
 			if (!res.statusCode || (Math.floor(res.statusCode / 100) !== 2)) {
-				throw new Error(`Unexpected response code "${res.statusCode}" with message "${res.statusMessage}"`)
+				throw new Error(`Unexpected response code "${res.statusCode}" with message "${res.statusMessage}"`);
 			}
 
 			let data = [];
@@ -46,7 +47,7 @@ async function getPullRequestFiles(repository, pullRequestNumber, page) {
 
 			res.on('end', () => {
 				resolve(
-					JSON.parse(Buffer.concat(data).toString()).map((x) => x.filename)
+					JSON.parse(Buffer.concat(data).toString()).map((x) => x.filename),
 				);
 			});
 

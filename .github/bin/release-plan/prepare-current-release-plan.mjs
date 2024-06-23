@@ -1,6 +1,6 @@
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'fs/promises';
+import path from 'path';
 import { currentVersion } from './current-version.mjs';
 import { canPublish } from './npm-can-publish.mjs';
 import { whoami } from './npm-whoami.mjs';
@@ -8,7 +8,7 @@ import { whoami } from './npm-whoami.mjs';
 export async function prepareCurrentReleasePlan() {
 	const iam = await whoami();
 	if (!iam) {
-		throw new Error("Could not determine current npm user");
+		throw new Error('Could not determine current npm user');
 	}
 
 	const workspaces = await listWorkspaces();
@@ -49,7 +49,7 @@ export async function prepareCurrentReleasePlan() {
 			} else if (changelog.includes('Unreleased (major)')) {
 				increment = 'major';
 			} else {
-				console.warn("Invalid CHANGELOG.md in", workspace.name);
+				console.warn('Invalid CHANGELOG.md in', workspace.name);
 				notReleasableNow.set(workspace.name, workspace);
 				continue WORKSPACES_LOOP;
 			}
@@ -61,7 +61,7 @@ export async function prepareCurrentReleasePlan() {
 					notReleasableNow.set(workspace.name, workspace);
 				}
 
-				console.warn("Current npm user does not have write access for", workspace.name);
+				console.warn('Current npm user does not have write access for', workspace.name);
 				continue WORKSPACES_LOOP;
 			}
 

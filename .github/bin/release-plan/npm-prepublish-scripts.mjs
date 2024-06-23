@@ -14,13 +14,13 @@ export async function npmPrepublishScripts(packageDirectory, packageName) {
 			[
 				'run',
 				'prepublishOnly',
-				'--if-present'
+				'--if-present',
 			],
 			{
 				stdio: 'inherit',
 				cwd: packageDirectory,
-				shell: platform === 'win32'
-			}
+				shell: platform === 'win32',
+			},
 		);
 
 		publishCmd.on('close', (code) => {
