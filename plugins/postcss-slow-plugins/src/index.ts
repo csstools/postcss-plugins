@@ -34,7 +34,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			};
 
 			const baseline = await medianDuration(async () => {
-				(await postcss(plugins).process(inputCSS ?? '', result.opts)).css;
+				(await postcss(plugins).process(inputCSS ?? '', result.opts));
 			});
 
 			{
@@ -55,14 +55,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const pluginsWithoutCurrent = plugins.filter((x) => x !== plugins[i]);
 
 					const durationWithoutPlugin = await medianDuration(async () => {
-						(await postcss(pluginsWithoutCurrent).process(inputCSS ?? '', result.opts)).css;
+						(await postcss(pluginsWithoutCurrent).process(inputCSS ?? '', result.opts));
 					});
 
 					const durationDrop = baseline - durationWithoutPlugin;
 
 					results.push({
-						duration: `${durationWithoutPlugin.toFixed(3)}ms`,
-						'kb\'s per ms': `${(outputCSS_KB / durationWithoutPlugin).toFixed(3)}kb/ms`,
+						duration: `${durationWithoutPlugin.toFixed(2)}ms`,
+						'kb\'s per ms': `${(outputCSS_KB / durationWithoutPlugin).toFixed(2)}kb/ms`,
 						drop: durationDrop,
 						name: name,
 						'index in plugins list': i,
@@ -72,8 +72,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				results.sort((a, b) => Number(b.drop) - Number(a.drop));
 
 				results.splice(0, 0, {
-					duration: `${baseline.toFixed(3)}ms`,
-					'kb\'s per ms': `${(outputCSS_KB / baseline).toFixed(3)}kb/ms`,
+					duration: `${baseline.toFixed(2)}ms`,
+					'kb\'s per ms': `${(outputCSS_KB / baseline).toFixed(2)}kb/ms`,
 					drop: '--',
 					name: '-- all plugins --',
 					'index in plugins list': '--',
@@ -84,11 +84,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return x;
 					}
 
-					x.drop = `${x.drop.toFixed(3)}ms`;
+					x.drop = `${x.drop.toFixed(2)}ms`;
 					return x;
 				});
 
-				console.log('Most impactful to remove, ordered by drop in duration when excluded:');
+				console.log('Most impactful to improve, ordered by drop in duration when excluded:');
 				console.table(results.slice(0, 11));
 			}
 
@@ -118,14 +118,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					];
 
 					const durationWithOnlyPlugin = await medianDuration(async () => {
-						(await postcss(pluginsWithOnlyCurrent).process(inputCSS ?? '', result.opts)).css;
+						(await postcss(pluginsWithOnlyCurrent).process(inputCSS ?? '', result.opts));
 					});
 
 					const durationDrop = baseline - durationWithOnlyPlugin;
 
 					results.push({
-						duration: `${durationWithOnlyPlugin.toFixed(3)}ms`,
-						'kb\'s per ms': `${(outputCSS_KB / durationWithOnlyPlugin).toFixed(3)}kb/ms`,
+						duration: `${durationWithOnlyPlugin.toFixed(2)}ms`,
+						'kb\'s per ms': `${(outputCSS_KB / durationWithOnlyPlugin).toFixed(2)}kb/ms`,
 						drop: durationDrop,
 						name: name,
 						'index in plugins list': i,
@@ -139,7 +139,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return x;
 				});
 
-				console.log('Most impactful to remove, ordered by increase in duration when running alone:');
+				console.log('Most impactful to improve, ordered by increase in duration when running alone:');
 				console.table(results.slice(0, 11));
 			}
 		},

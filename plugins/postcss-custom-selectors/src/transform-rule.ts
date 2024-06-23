@@ -1,6 +1,6 @@
 import parser from 'postcss-selector-parser';
 import type { Result, Rule } from 'postcss';
-import type { Root, Selector } from 'postcss-selector-parser';
+import type { Root } from 'postcss-selector-parser';
 
 // transform custom pseudo selectors with custom selectors
 export function transformRule(rule: Rule, result: Result, customSelectors: Map<string, Root>): string {
@@ -25,7 +25,7 @@ export function transformRule(rule: Rule, result: Result, customSelectors: Map<s
 				}
 
 				base.each((node) => {
-					isWrapper.append(node.clone({}) as Selector);
+					isWrapper.append(node.clone());
 				});
 
 				pseudo.replaceWith(isWrapper);

@@ -22,12 +22,18 @@ const keywords = [
 	'top',
 ];
 
-const isPunctuationCommaNode = (node: valueParser.Node): boolean => node.type === 'div' && node.value === ',';
+function isPunctuationCommaNode(node?: valueParser.Node): node is valueParser.DivNode {
+	return !!node && node.type === 'div' && node.value === ',';
+}
 
-function isNumericNode(node: valueParser.Node): boolean {
+function isNumericNode(node?: valueParser.Node): boolean {
+	if (!node) {
+		return false;
+	}
+
 	try {
-		return valueParser.unit(node?.value) !== false;
-	} catch (_) {
+		return valueParser.unit(node.value) !== false;
+	} catch {
 		return false;
 	}
 }
@@ -57,7 +63,7 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 
 			try {
 				valueAST = valueParser(decl.value);
-			} catch (_) {
+			} catch {
 				decl.warn(
 					result,
 					`Failed to parse value '${decl.value}' as a CSS gradient. Leaving the original value intact.`,
@@ -94,10 +100,10 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 						return;
 					}
 
-					const oneValueBack = Object(currentNodes[index - 1]);
-					const twoValuesBack = Object(currentNodes[index - 2]);
-					const nextNode = Object(currentNodes[index + 1]);
-					const isDoublePositionLength = twoValuesBack.type && isNumericNode(oneValueBack) && isNumericNode(node);
+					const oneValueBack = currentNodes[index - 1];
+					const twoValuesBack = currentNodes[index - 2];
+					const nextNode = currentNodes[index + 1];
+					const isDoublePositionLength = twoValuesBack && twoValuesBack.type && isNumericNode(oneValueBack) && isNumericNode(node);
 
 					// if the argument concludes a double-position gradient
 					if (isDoublePositionLength) {

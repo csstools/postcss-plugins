@@ -136,7 +136,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							let valueAndUnit;
 							try {
 								valueAndUnit = valueParser.unit(currentNode.value);
-							} catch (_) {
+							} catch {
 								return;
 							}
 

@@ -1,5 +1,9 @@
 # Changes to PostCSS Slow Plugins
 
+### 1.0.3
+
+- Improve wording
+
 ### 1.0.2
 
 _December 15, 2023_

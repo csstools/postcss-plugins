@@ -6,6 +6,10 @@ export type StyleDictionaryV3TokenGroup = {
 	[key: string]: StyleDictionaryV3TokenGroup | StyleDictionaryV3TokenValue;
 }
 
+function isTokenGroup(node: unknown): node is StyleDictionaryV3TokenGroup {
+	return typeof node === 'object' && node !== null && typeof (node as Record<string, unknown>)['value'] === 'undefined';
+}
+
 function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, filePath: string): Map<string, StyleDictionaryV3TokenValue> {
 	const result: Map<string, StyleDictionaryV3TokenValue> = new Map();
 	for (const key in node) {
@@ -18,12 +22,12 @@ function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, f
 				throw new Error(`Parsing error at "${[...path, key].join('.')}"`);
 			}
 
-			const child = Object(node[key]);
+			const child = node[key];
 			if (!child) {
 				throw new Error(`Parsing error at "${[...path, key].join('.')}"`);
 			}
 
-			if (typeof child['value'] !== 'undefined') {
+			if (!isTokenGroup(child)) {
 				const token = extractStyleDictionaryV3Token(child, key, path, filePath);
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				result.set(token.metadata!.path.join('.'), token);

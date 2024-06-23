@@ -281,3 +281,7 @@ input:hover, input:focus, button:hover, button:focus {
 .foo:not(.something-random) {
 	color: green;
 }
+
+.a > div.b > .c {
+	color: green;
+}

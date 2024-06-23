@@ -1,4 +1,6 @@
-export function combinationsWithSizeN(set: Array<string>, n: number): Array<Array<string>> {
+import type { Root } from 'postcss-selector-parser';
+
+export function combinationsWithSizeN(set: Array<Root>, n: number): Array<Array<Root>> {
 	// set is the list of parent selectors
 	// n is the amount of `&` selectors in the current selector.
 	// all combinations of values in the set with an array size of n must be generated to match the nesting selector behavior.
@@ -20,6 +22,7 @@ export function combinationsWithSizeN(set: Array<string>, n: number): Array<Arra
 	// .bar + .bar {}
 
 
+	/* node:coverage disable */
 	if (n < 2) {
 		// should never happen and is checked by caller
 		throw new Error('n must be greater than 1');
@@ -36,6 +39,7 @@ export function combinationsWithSizeN(set: Array<string>, n: number): Array<Arra
 		// The user should reduce complexity.
 		throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
 	}
+	/* node:coverage enable */
 
 	const counters: Array<number> = [];
 
@@ -43,12 +47,12 @@ export function combinationsWithSizeN(set: Array<string>, n: number): Array<Arra
 		counters[i] = 0;
 	}
 
-	const result: Array<Array<string>> = [];
+	const result: Array<Array<Root>> = [];
 
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
-		const ss : Array<string> = [];
-		for (let i = n-1; i >=0; i--) {
+		const ss: Array<Root> = [];
+		for (let i = n - 1; i >= 0; i--) {
 			let currentCounter = counters[i];
 			if (currentCounter >= set.length) {
 				currentCounter = 0;
@@ -57,14 +61,14 @@ export function combinationsWithSizeN(set: Array<string>, n: number): Array<Arra
 				if (i === 0) {
 					return result;
 				} else {
-					counters[i-1] += 1;
+					counters[i - 1] += 1;
 				}
 			}
 
-			ss[i] = set[currentCounter];
+			ss[i] = set[currentCounter].clone();
 		}
 
 		result.push(ss);
-		counters[counters.length -1]++;
+		counters[counters.length - 1]++;
 	}
 }

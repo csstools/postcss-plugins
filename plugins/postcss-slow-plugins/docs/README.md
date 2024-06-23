@@ -26,7 +26,7 @@ Typical causes of slow PostCSS setups are :
 - you have a lot of plugins
 - a specific plugin is very slow
 
-This plugin is intended to make it visible which plugins are the most impactful to remove/disable.
+This plugin is intended to make it visible which plugins are the most impactful on the duration of CSS processing.
 
 We also welcome anyone to report performance issues so that we can improve the performance of popular plugins.  
 However we ask that everyone is respectful when doing so.  
@@ -45,8 +45,8 @@ This will take a long time.
 Seriously, a very long time.
 
 It will profile your build twice for each plugin :
-- once with only that plugin disabled
-- once with only that plugin enabled
+- once with only that plugin **disabled**
+- once with only that plugin **enabled**
 
 When profiling it will run your build 20 times to get a mean duration.
 
@@ -68,37 +68,37 @@ So expect this to take `N * 20 * 2` times longer than your normal build.
 Analyzing with file:
   plugins/postcss-slow-plugins/test/basic.css
 
-Most impactful to remove, ordered by drop in duration when excluded:
-┌─────────┬────────────┬──────────────┬───────────┬──────────────────────────────────────────┬───────────────────────┐
-│ (index) │  duration  │ kb's per ms  │   drop    │                   name                   │ index in plugins list │
-├─────────┼────────────┼──────────────┼───────────┼──────────────────────────────────────────┼───────────────────────┤
-│    0    │ '10.692ms' │ '0.937kb/ms' │   '--'    │           '-- all plugins --'            │         '--'          │
-│    1    │ '6.884ms'  │ '1.455kb/ms' │ '3.808ms' │ 'postcss-gradients-interpolation-method' │           9           │
-│    2    │ '7.128ms'  │ '1.405kb/ms' │ '3.564ms' │ 'postcss-progressive-custom-properties'  │          25           │
-│    3    │ '7.138ms'  │ '1.403kb/ms' │ '3.554ms' │    'postcss-normalize-display-values'    │          18           │
-│    4    │ '7.281ms'  │ '1.376kb/ms' │ '3.411ms' │       'postcss-color-mix-function'       │          10           │
-│    5    │ '7.286ms'  │ '1.375kb/ms' │ '3.406ms' │    'postcss-stepped-value-functions'     │          20           │
-│    6    │ '7.299ms'  │ '1.372kb/ms' │ '3.393ms' │         'postcss-cascade-layers'         │          23           │
-│    7    │ '7.327ms'  │ '1.367kb/ms' │ '3.366ms' │    'postcss-trigonometric-functions'     │          21           │
-│    8    │ '7.329ms'  │ '1.367kb/ms' │ '3.363ms' │         'postcss-color-function'         │          14           │
-│    9    │ '7.332ms'  │ '1.366kb/ms' │ '3.361ms' │            'postcss-ic-unit'             │          19           │
-│   10    │ '7.342ms'  │ '1.364kb/ms' │ '3.350ms' │          'postcss-lab-function'          │          12           │
-└─────────┴────────────┴──────────────┴───────────┴──────────────────────────────────────────┴───────────────────────┘
-Most impactful to remove, ordered by increase in duration when running alone:
+Most impactful to improve, ordered by drop in duration when excluded:
+┌─────────┬───────────┬─────────────┬──────────┬──────────────────────────────────────────┬───────────────────────┐
+│ (index) │  duration │ kb's per ms │   drop   │                   name                   │ index in plugins list │
+├─────────┼───────────┼─────────────┼──────────┼──────────────────────────────────────────┼───────────────────────┤
+│    0    │ '10.69ms' │ '0.93kb/ms' │   '--'   │           '-- all plugins --'            │         '--'          │
+│    1    │ '6.88ms'  │ '1.45kb/ms' │ '3.80ms' │ 'postcss-gradients-interpolation-method' │           9           │
+│    2    │ '7.12ms'  │ '1.40kb/ms' │ '3.56ms' │ 'postcss-progressive-custom-properties'  │          25           │
+│    3    │ '7.13ms'  │ '1.40kb/ms' │ '3.55ms' │    'postcss-normalize-display-values'    │          18           │
+│    4    │ '7.28ms'  │ '1.37kb/ms' │ '3.41ms' │       'postcss-color-mix-function'       │          10           │
+│    5    │ '7.28ms'  │ '1.37kb/ms' │ '3.40ms' │    'postcss-stepped-value-functions'     │          20           │
+│    6    │ '7.29ms'  │ '1.37kb/ms' │ '3.39ms' │         'postcss-cascade-layers'         │          23           │
+│    7    │ '7.32ms'  │ '1.36kb/ms' │ '3.36ms' │    'postcss-trigonometric-functions'     │          21           │
+│    8    │ '7.32ms'  │ '1.36kb/ms' │ '3.36ms' │         'postcss-color-function'         │          14           │
+│    9    │ '7.33ms'  │ '1.36kb/ms' │ '3.36ms' │            'postcss-ic-unit'             │          19           │
+│   10    │ '7.34ms'  │ '1.36kb/ms' │ '3.35ms' │          'postcss-lab-function'          │          12           │
+└─────────┴───────────┴─────────────┴──────────┴──────────────────────────────────────────┴───────────────────────┘
+Most impactful to improve, ordered by increase in duration when running alone:
 ┌─────────┬───────────┬──────────────┬──────────────────────────────────────────┬───────────────────────┐
 │ (index) │ duration  │ kb's per ms  │                   name                   │ index in plugins list │
 ├─────────┼───────────┼──────────────┼──────────────────────────────────────────┼───────────────────────┤
-│    0    │ '2.171ms' │ '4.613kb/ms' │ 'postcss-gradients-interpolation-method' │           9           │
-│    1    │ '2.000ms' │ '5.007kb/ms' │     'postcss-relative-color-syntax'      │          11           │
-│    2    │ '1.965ms' │ '5.097kb/ms' │          'postcss-lab-function'          │          12           │
-│    3    │ '1.948ms' │ '5.142kb/ms' │       'postcss-color-mix-function'       │          10           │
-│    4    │ '1.833ms' │ '5.465kb/ms' │            'postcss-nesting'             │           3           │
-│    5    │ '1.821ms' │ '5.500kb/ms' │          'postcss-custom-media'          │           0           │
-│    6    │ '1.819ms' │ '5.507kb/ms' │         'postcss-color-function'         │          14           │
-│    7    │ '1.762ms' │ '5.684kb/ms' │    'postcss-normalize-display-values'    │          18           │
-│    8    │ '1.750ms' │ '5.724kb/ms' │        'postcss-custom-selectors'        │           4           │
-│    9    │ '1.734ms' │ '5.777kb/ms' │    'postcss-stepped-value-functions'     │          20           │
-│   10    │ '1.729ms' │ '5.792kb/ms' │    'postcss-trigonometric-functions'     │          21           │
+│    0    │ '2.17ms'  │ '4.61kb/ms'  │ 'postcss-gradients-interpolation-method' │           9           │
+│    1    │ '2.00ms'  │ '5.00kb/ms'  │     'postcss-relative-color-syntax'      │          11           │
+│    2    │ '1.96ms'  │ '5.09kb/ms'  │          'postcss-lab-function'          │          12           │
+│    3    │ '1.94ms'  │ '5.14kb/ms'  │       'postcss-color-mix-function'       │          10           │
+│    4    │ '1.83ms'  │ '5.46kb/ms'  │            'postcss-nesting'             │           3           │
+│    5    │ '1.82ms'  │ '5.50kb/ms'  │          'postcss-custom-media'          │           0           │
+│    6    │ '1.81ms'  │ '5.50kb/ms'  │         'postcss-color-function'         │          14           │
+│    7    │ '1.76ms'  │ '5.68kb/ms'  │    'postcss-normalize-display-values'    │          18           │
+│    8    │ '1.75ms'  │ '5.72kb/ms'  │        'postcss-custom-selectors'        │           4           │
+│    9    │ '1.73ms'  │ '5.77kb/ms'  │    'postcss-stepped-value-functions'     │          20           │
+│   10    │ '1.72ms'  │ '5.79kb/ms'  │    'postcss-trigonometric-functions'     │          21           │
 └─────────┴───────────┴──────────────┴──────────────────────────────────────────┴───────────────────────┘
 ```
 

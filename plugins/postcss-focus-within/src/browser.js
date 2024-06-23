@@ -1,4 +1,3 @@
-/* global document */
 import isValidReplacement from './is-valid-replacement.mjs';
 function generateHandler(replaceWith) {
 	let selector;

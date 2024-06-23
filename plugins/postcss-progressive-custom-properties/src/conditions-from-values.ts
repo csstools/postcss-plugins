@@ -46,7 +46,7 @@ export function conditionsFromValue(value: string, mustContainVar = false): { su
 			supportConditions.push(...doublePositionGradients(node));
 		});
 
-	} catch (_) {
+	} catch {
 		/* ignore */
 	}
 

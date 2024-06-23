@@ -77,7 +77,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 
 						decl.value = modifiedValue;
-					} catch (_) {
+					} catch {
 						decl.warn(result, `Failed to parse and transform "${decl.value}"`);
 					}
 				},
@@ -93,7 +93,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 
 						atRule.params = modifiedValue;
-					} catch(err) {
+					} catch {
 						atRule.warn(result, `Failed to parse and transform "${atRule.params}"`);
 					}
 				},

@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import type { Container, Node, Pseudo } from 'postcss-selector-parser';
+import type { Container, Node } from 'postcss-selector-parser';
 
 const isPseudo = parser.pseudo({ value: ':is' });
 
@@ -35,7 +35,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node: Container<strin
 		}
 
 		if (node.nodes[i].type === 'tag' && currentCompoundSelector.find(x => x.type === 'tag')) {
-			const isPseudoClone = isPseudo.clone({}) as Pseudo;
+			const isPseudoClone = isPseudo.clone({});
 			const child = node.nodes[i];
 			child.replaceWith(isPseudoClone);
 			isPseudoClone.append(parser.selector({
@@ -49,7 +49,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node: Container<strin
 
 	compoundSelectors.push(currentCompoundSelector);
 
-	const sortedCompoundSelectors = [];
+	const sortedCompoundSelectors: Array<parser.Node> = [];
 	for (let i = 0; i < compoundSelectors.length; i++) {
 		const compoundSelector = compoundSelectors[i];
 		compoundSelector.sort((a, b) => {
@@ -87,7 +87,7 @@ function selectorTypeOrder(selector: Node): number {
 	return selectorTypeOrderIndex[selector.type];
 }
 
-const selectorTypeOrderIndex = {
+const selectorTypeOrderIndex: Record<string, number> = {
 	universal: 0,
 	tag: 1,
 	pseudoElement: 2,

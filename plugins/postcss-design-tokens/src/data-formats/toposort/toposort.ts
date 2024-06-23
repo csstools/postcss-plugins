@@ -21,7 +21,7 @@
 
 export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
 	let cursor = nodes.length;
-	const sorted: Array<string> = new Array(cursor);
+	const sorted: Array<string> = new Array(cursor) as Array<string>;
 	const visited: Record<number, boolean> = {};
 	let i = cursor;
 	// Better data structures make algorithm much faster.
@@ -48,7 +48,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 			let nodeRep;
 			try {
 				nodeRep = ', token was: ' + JSON.stringify(node);
-			} catch (_) {
+			} catch {
 				nodeRep = '';
 			}
 			throw new Error('Cyclic dependency' + nodeRep);
@@ -80,7 +80,7 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 }
 
 function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> {
-	const edges = new Map();
+	const edges: Map<string, Set<string>> = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		const edge = arr[i];
 		if (!edges.has(edge[0])) {
@@ -89,13 +89,13 @@ function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> 
 		if (!edges.has(edge[1])) {
 			edges.set(edge[1], new Set());
 		}
-		edges.get(edge[0]).add(edge[1]);
+		edges.get(edge[0])!.add(edge[1]);
 	}
 	return edges;
 }
 
 function makeNodesHash(arr: Array<string>): Map<string, number> {
-	const res = new Map();
+	const res: Map<string, number> = new Map();
 	for (let i = 0, len = arr.length; i < len; i++) {
 		res.set(arr[i], i);
 	}

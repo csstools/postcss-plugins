@@ -17,7 +17,7 @@ const creator: PluginCreator<never> = () => {
 
 	return {
 		postcssPlugin: 'postcss-todo-or-die',
-		async Once(root, { result }): Promise<void> {
+		Once(root, { result }): void {
 			const atRules: Array<AtRule> = [];
 
 			root.walkAtRules((atRule) => {

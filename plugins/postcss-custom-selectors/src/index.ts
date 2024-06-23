@@ -1,4 +1,5 @@
 import type { Plugin, PluginCreator } from 'postcss';
+import type { Root } from 'postcss-selector-parser';
 import getCustomSelectors from './custom-selectors-from-root';
 import { transformRule } from './transform-rule';
 
@@ -10,7 +11,7 @@ export type pluginOptions = {
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// whether to preserve custom selectors and rules using them
-	const preserve = Boolean(Object(opts).preserve);
+	const preserve = opts?.preserve ?? false;
 
 	if ('importFrom' in Object(opts)) {
 		throw new Error('[postcss-custom-selectors] "importFrom" is no longer supported');
@@ -24,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-custom-selectors',
 		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
-			let customSelectors = new Map();
+			let customSelectors: Map<string, Root> = new Map();
 
 			return {
 				postcssPlugin: 'postcss-custom-selectors',

@@ -47,7 +47,7 @@ export function matchAttribute(list: NodeList, attributeName: string, attributeV
 
 		if (typeof (node as unknown as Record<string, unknown>)[matchingPropertyName] === 'boolean') {
 			// Matches when the value is true
-			return ((node as unknown as Record<string, boolean>)[matchingPropertyName] as boolean);
+			return ((node as unknown as Record<string, boolean>)[matchingPropertyName]);
 		}
 
 		if (attributeValueIsNullish) {

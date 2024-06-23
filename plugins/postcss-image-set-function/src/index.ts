@@ -47,7 +47,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			try {
 				valueAST = valueParser(value);
-			} catch (_) {
+			} catch {
 				decl.warn(
 					result,
 					`Failed to parse value '${value}' as an image-set function. Leaving the original value intact.`,

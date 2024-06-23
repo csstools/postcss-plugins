@@ -2,7 +2,7 @@ import type { Comment, Container, Declaration, Node } from 'postcss';
 
 const blockRegExp = /(?:!\s*)?postcss-custom-properties:\s*off\b/i;
 
-const blockIgnoredCache = new WeakMap();
+const blockIgnoredCache: WeakMap<Node, boolean> = new WeakMap();
 
 export function isBlockIgnored(container: Container | undefined): boolean {
 	if (!container || !container.nodes) {
@@ -10,7 +10,7 @@ export function isBlockIgnored(container: Container | undefined): boolean {
 	}
 
 	if (blockIgnoredCache.has(container)) {
-		return blockIgnoredCache.get(container);
+		return blockIgnoredCache.get(container)!;
 	}
 
 	const result = container.some((child) => isIgnoreComment(child, blockRegExp));

@@ -13,7 +13,7 @@ export function onCSSDeclaration(decl: Declaration, result: Result , options: { 
 
 	try {
 		value = valueParser(decl.value);
-	} catch (_) {
+	} catch {
 		decl.warn(
 			result,
 			`Failed to parse value '${decl.value}'. Leaving the original value intact.`,
