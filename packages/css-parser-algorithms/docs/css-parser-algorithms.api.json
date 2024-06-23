@@ -1867,6 +1867,70 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@csstools/css-parser-algorithms!isWhiteSpaceOrCommentNode:function(1)",
+          "docComment": "/**\n * Check if the current object is a `WhiteSpaceNode` or a `CommentNode`. This is a type guard.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isWhiteSpaceOrCommentNode(x: "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "x",
+              "canonicalReference": "@csstools/css-parser-algorithms!~x"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "WhitespaceNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!WhitespaceNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "CommentNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!CommentNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/util/type-predicates.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "isWhiteSpaceOrCommentNode"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!parseCommaSeparatedListOfComponentValues:function(1)",
           "docComment": "/**\n * Parse a comma-separated list of component values.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));\n * ```\n *\n */\n",
           "excerptTokens": [

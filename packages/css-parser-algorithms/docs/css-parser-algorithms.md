@@ -283,6 +283,17 @@ Check if the current object is a `WhitespaceNode`<!-- -->. This is a type guard.
 </td></tr>
 <tr><td>
 
+[isWhiteSpaceOrCommentNode(x)](./css-parser-algorithms.iswhitespaceorcommentnode.md)
+
+
+</td><td>
+
+Check if the current object is a `WhiteSpaceNode` or a `CommentNode`<!-- -->. This is a type guard.
+
+
+</td></tr>
+<tr><td>
+
 [parseCommaSeparatedListOfComponentValues(tokens, options)](./css-parser-algorithms.parsecommaseparatedlistofcomponentvalues.md)
 
 

@@ -7,6 +7,7 @@ export default [
 		ignores: [
 			'**/dist/*',
 			'sites/**',
+			'e2e/**',
 		],
 	},
 	js.configs.recommended,

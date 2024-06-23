@@ -336,6 +336,12 @@ export declare function isTokenNode(x: unknown): x is TokenNode;
 export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
 
 /**
+ * Check if the current object is a `WhiteSpaceNode` or a `CommentNode`.
+ * This is a type guard.
+ */
+export declare function isWhiteSpaceOrCommentNode(x: unknown): x is WhitespaceNode | CommentNode;
+
+/**
  * Parse a comma-separated list of component values.
  *
  * @example

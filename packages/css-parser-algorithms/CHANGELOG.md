@@ -1,5 +1,9 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (minor)
+
+- Add `isWhiteSpaceOrCommentNode` utility function.
+
 ### 2.6.3
 
 _May 4, 2024_

@@ -1,3 +1,5 @@
+/* eslint-disable no-loss-of-precision */
+
 import type { Color } from '../types/color';
 import { multiplyMatrices } from '../calculations/multiply-matrices';
 

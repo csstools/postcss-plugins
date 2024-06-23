@@ -72,76 +72,76 @@ export type Options = {
  * Create a test suite for a PostCSS plugin.
  */
 export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: Options): (options: Record<string, TestCaseOptions>) => Promise<void> {
-	runOptions = runOptions ?? {};
-
-	// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
-	test('`postcss` flag is set on exported plugin creator', () => {
-		assert.equal(pluginCreator.postcss, true);
-	});
-
-	test('exported plugin creator is a function', () => {
-		assert.equal(typeof pluginCreator, 'function');
-	});
-
-	test('`postcssPlugin` is set on a plugin instance', () => {
-		// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#15-set-pluginpostcssplugin-with-plugin-name
-		// Set plugin.postcssPlugin with plugin name
-
-		const plugin = pluginCreator() as Plugin;
-
-		assert.ok(plugin.postcssPlugin);
-		assert.equal(typeof plugin.postcssPlugin, 'string');
-	});
-
-	test('package.json', async (t) => {
-		const packageData = await fs.readFile('./package.json', 'utf-8');
-		const packageInfo = JSON.parse(packageData);
-
-		await t.test('includes "postcss-plugin" keyword', () => {
-			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
-			// Include postcss-plugin keyword in package.json
-
-			assert.ok(
-				packageInfo.keywords?.includes('postcss-plugin'),
-				new PackageDescriptionError('Missing "postcss-plugin" keyword in package.json', 'keywords'),
-			);
-		});
-
-		await t.test('name starts with "postcss-"', { skip: runOptions?.skipPackageNameCheck }, () => {
-			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#11-clear-name-with-postcss--prefix
-			// Clear name with postcss- prefix
-
-			let packageName = packageInfo.name;
-			if (packageName.startsWith('@')) {
-				const parts = packageInfo.name.split('/');
-				packageName = parts.slice(1).join('/');
-			}
-
-			assert.ok(
-				packageName.startsWith('postcss-'),
-				new PackageDescriptionError(`package name "${packageName}" does not start with "postcss-"`, 'name'),
-			);
-		});
-
-		await t.test('`postcss` is a peer dependency and not a direct dependency', { skip: ('postcssTapeSelfTest' in pluginCreator) }, () => {
-			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#14-keep-postcss-to-peerdependencies
-			// Keep postcss to peerDependencies
-
-			assert.ok(
-				Object.keys(Object(packageInfo.peerDependencies)).includes('postcss'),
-				new PackageDescriptionError('"postcss" must be listed in "peerDependencies"', 'peerDependencies'),
-			);
-			assert.ok(
-				!Object.keys(Object(packageInfo.dependencies)).includes('postcss'),
-				new PackageDescriptionError('"postcss" must not be listed in "dependencies"', 'dependencies'),
-			);
-		});
-	});
-
-	const pluginName = (pluginCreator() as Plugin).postcssPlugin;
-
 	// Test cases
 	return async (options: Record<string, TestCaseOptions>) => {
+		runOptions = runOptions ?? {};
+
+		// Plugin conforms to https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md
+		await test('`postcss` flag is set on exported plugin creator', () => {
+			assert.equal(pluginCreator.postcss, true);
+		});
+
+		await test('exported plugin creator is a function', () => {
+			assert.equal(typeof pluginCreator, 'function');
+		});
+
+		await test('`postcssPlugin` is set on a plugin instance', () => {
+			// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#15-set-pluginpostcssplugin-with-plugin-name
+			// Set plugin.postcssPlugin with plugin name
+
+			const plugin = pluginCreator() as Plugin;
+
+			assert.ok(plugin.postcssPlugin);
+			assert.equal(typeof plugin.postcssPlugin, 'string');
+		});
+
+		await test('package.json', async (t) => {
+			const packageData = await fs.readFile('./package.json', 'utf-8');
+			const packageInfo: Record<string, unknown> = JSON.parse(packageData) as Record<string, unknown>;
+
+			await t.test('includes "postcss-plugin" keyword', () => {
+				// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#54-include-postcss-plugin-keyword-in-packagejson
+				// Include postcss-plugin keyword in package.json
+
+				assert.ok(
+					Array.isArray(packageInfo.keywords) && packageInfo.keywords?.includes('postcss-plugin'),
+					new PackageDescriptionError('Missing "postcss-plugin" keyword in package.json', 'keywords'),
+				);
+			});
+
+			await t.test('name starts with "postcss-"', { skip: runOptions?.skipPackageNameCheck }, () => {
+				// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#11-clear-name-with-postcss--prefix
+				// Clear name with postcss- prefix
+
+				let packageName = typeof packageInfo.name === 'string' ? packageInfo.name : '';
+				if (packageName.startsWith('@')) {
+					const parts = packageName.split('/');
+					packageName = parts.slice(1).join('/');
+				}
+
+				assert.ok(
+					packageName.startsWith('postcss-'),
+					new PackageDescriptionError(`package name "${packageName}" does not start with "postcss-"`, 'name'),
+				);
+			});
+
+			await t.test('`postcss` is a peer dependency and not a direct dependency', { skip: ('postcssTapeSelfTest' in pluginCreator) }, () => {
+				// https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#14-keep-postcss-to-peerdependencies
+				// Keep postcss to peerDependencies
+
+				assert.ok(
+					Object.keys(Object(packageInfo.peerDependencies) as Record<string, unknown>).includes('postcss'),
+					new PackageDescriptionError('"postcss" must be listed in "peerDependencies"', 'peerDependencies'),
+				);
+				assert.ok(
+					!Object.keys(Object(packageInfo.dependencies) as Record<string, unknown>).includes('postcss'),
+					new PackageDescriptionError('"postcss" must not be listed in "dependencies"', 'dependencies'),
+				);
+			});
+		});
+
+		const pluginName = (pluginCreator() as Plugin).postcssPlugin;
+
 		await test(pluginName, async (t1) => {
 			for (const testCaseLabel in options) {
 				await t1.test(testCaseLabel, async (t2) => {
@@ -187,6 +187,10 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 							},
 						});
 					} catch (err) {
+						if (!(err instanceof Error)) {
+							throw err;
+						}
+
 						reduceInformationInCssSyntaxError(err);
 						if (testCaseOptions.exception && testCaseOptions.exception.test(err.message)) {
 							// expected an exception and got one.
@@ -228,11 +232,11 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						assert.deepEqual(resultString, expected);
 
 						// Assert that warnings have the expected amount.
-						assert.deepEqual(result.warnings().length, testCaseOptions.warnings ?? 0, `Unexpected number warnings:\n${result.warnings()}`);
+						assert.deepEqual(result.warnings().length, testCaseOptions.warnings ?? 0, `Unexpected number warnings:\n${result.warnings().toString()}`);
 					});
 
 					// Assert result sourcemaps with recent PostCSS.
-					await t2.test('sourcemaps', async () => {
+					await t2.test('sourcemaps', () => {
 						assert.ok(!result.map.toJSON().sources.includes('<no source>'), 'Sourcemap is broken. This is most likely a newly created PostCSS AST Node without a value for "source". See: https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes');
 					});
 
@@ -352,7 +356,7 @@ class PackageDescriptionError extends Error {
 		super(message);
 
 		this.name = 'PackageDescriptionError';
-		this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json'))}:1:1)`;
+		this.stack = `${this.name}: ${this.message}\n    at "${key}" (${url.pathToFileURL(path.resolve('package.json')).href}:1:1)`;
 	}
 }
 
@@ -361,6 +365,6 @@ class OutcomeError extends Error {
 		super(message);
 
 		this.name = 'OutcomeError';
-		this.stack = `${this.name}: ${this.message}\n    at ${url.pathToFileURL(path.resolve(sourceFile))}:1:1`;
+		this.stack = `${this.name}: ${this.message}\n    at ${url.pathToFileURL(path.resolve(sourceFile)).href}:1:1`;
 	}
 }
