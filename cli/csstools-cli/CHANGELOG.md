@@ -1,5 +1,9 @@
 # Changes to CSSTools CLI
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.24
 
 _June 29, 2024_

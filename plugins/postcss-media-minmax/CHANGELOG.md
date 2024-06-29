@@ -1,5 +1,9 @@
 # Changes to PostCSS Media MinMax
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.1.7
 
 _June 29, 2024_

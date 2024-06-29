@@ -32,24 +32,31 @@
 
 .test-nesting-rules {
 	order: 4;
-
-	order: 6;
 }
 
 .test-nesting-rules p {
 		order: 5;
 	}
 
+.test-nesting-rules {
+
+	order: 6;
+}
+
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
-
-	order: 9;
 }
 
 :is(.test-nesting-rules,#test-is-pseudo) + p {
 		order: 8;
 	}
+
+.test-nesting-rules,
+#test-is-pseudo {
+
+	order: 9;
+}
 
 @media (max-width: 30em) {
 	.test-custom-media-queries {

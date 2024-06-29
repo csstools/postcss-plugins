@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.17
 
 _June 29, 2024_

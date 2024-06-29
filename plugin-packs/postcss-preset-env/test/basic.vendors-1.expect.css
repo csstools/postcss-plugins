@@ -44,24 +44,31 @@
 
 .test-nesting-rules {
 	order: 4;
-
-	order: 6;
 }
 
 .test-nesting-rules p {
 		order: 5;
 	}
 
+.test-nesting-rules {
+
+	order: 6;
+}
+
 .test-nesting-rules,
 #test-is-pseudo {
 	order: 7;
+}
+
+.test-nesting-rules:not(#does-not-exist) + p,#test-is-pseudo + p {
+		order: 8;
+	}
+
+.test-nesting-rules,
+#test-is-pseudo {
 
 	order: 9;
 }
-
-.test-nesting-rules + p, #test-is-pseudo + p {
-		order: 8;
-	}
 
 @custom-media --narrow-window (max-width: 30em);
 

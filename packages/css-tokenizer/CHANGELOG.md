@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.3.2
 
 _June 29, 2024_

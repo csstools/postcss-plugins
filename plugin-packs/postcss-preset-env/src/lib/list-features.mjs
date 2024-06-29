@@ -104,7 +104,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 		return !isDisabled && isAllowedFeature;
 	}).map((feature) => {
-		return formatStagedFeature(cssdbList, supportedBrowsers, features, feature, sharedOptions, options, logger);
+		return formatStagedFeature(supportedBrowsers, features, feature, sharedOptions, options, logger);
 	});
 
 	// - features supported by the stage

@@ -1,5 +1,9 @@
 # Changes to PostCSS Nested Calc
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.2
 
 _February 19, 2024_

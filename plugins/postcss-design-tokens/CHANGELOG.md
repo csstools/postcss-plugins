@@ -1,5 +1,9 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.1.8
 
 _June 29, 2024_

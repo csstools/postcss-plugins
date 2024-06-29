@@ -41,11 +41,6 @@ const currentConfig = stateAtLoad.config ?? {
 		inlineDirection: 'left-to-right',
 		blockDirection: 'top-to-bottom',
 	},
-	features: {
-		'nesting-rules': ['auto', {
-			edition: '2024-02',
-		}],
-	},
 };
 
 function processCss(source, config, isDefaultState = false) {

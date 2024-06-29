@@ -1,5 +1,9 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 6.0.17
 
 _June 29, 2024_

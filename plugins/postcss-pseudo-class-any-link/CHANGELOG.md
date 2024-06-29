@@ -1,5 +1,9 @@
 # Changes to PostCSS Pseudo Class Any Link
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 9.0.2
 
 _April 21, 2024_

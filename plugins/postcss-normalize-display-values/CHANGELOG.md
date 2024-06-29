@@ -1,5 +1,9 @@
 # Changes to PostCSS Normalize Display Values
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.2
 
 _December 15, 2023_

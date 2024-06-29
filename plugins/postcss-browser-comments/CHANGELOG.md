@@ -1,5 +1,9 @@
 # Changes to PostCSS Browser Comments
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 5.0.0
 
 _May 12, 2024_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Environment Variables
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 6.0.0
 
 _July 3, 2023_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Rewrite URL
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.1.3
 
 _June 29, 2024_

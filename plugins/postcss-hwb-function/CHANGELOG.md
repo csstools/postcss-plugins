@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.16
 
 _June 29, 2024_

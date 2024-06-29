@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Mix Function
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.0.17
 
 _June 29, 2024_

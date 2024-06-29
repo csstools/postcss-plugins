@@ -34,13 +34,11 @@ you might want to use [PostCSS Nested] instead.
 
 .foo {
 	color: red;
-
-	color: pink;
 }
 .foo:hover {
 		color: green;
 	}
-.foo > .bar {
+.foo  > .bar {
 		color: blue;
 	}
 @media (prefers-color-scheme: dark) {
@@ -48,6 +46,10 @@ you might want to use [PostCSS Nested] instead.
 		color: cyan;
 }
 	}
+.foo {
+
+	color: pink;
+}
 ```
 
 ## Usage
@@ -80,35 +82,23 @@ instructions for:
 - [Gulp](INSTALL.md#gulp)
 - [Grunt](INSTALL.md#grunt)
 
-## ⚠️ `@nest` has been removed from the specification.
-
-Previous iterations of the [CSS Nesting specification] required using `@nest` for certain selectors.
-
-`@nest` was removed from the specification completely.
-Future versions of this plugin will error if you use `@nest`.
-
-We advice everyone to migrate their codebase **now** to nested CSS without `@nest`.  
-We published a [Stylelint Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins-stylelint/no-at-nest-rule#csstoolsstylelint-no-at-nest-rule) to help you migrate.
-
-example warning:
-> `@nest` was removed from the CSS Nesting specification and will be removed from PostCSS Nesting in the next major version.
-> Change `@nest foo & {}` to `foo & {}` to migrate to the latest standard.
-
-You can silence this warning with a new `silenceAtNestWarning` plugin option.
-
-```js
-postcssNesting({
-	silenceAtNestWarning: true
-})
-```
-
 ## Options
 
 ### edition
 
-The default behavior is to transpile CSS following an older version of the CSS nesting specification.
+The CSS nesting feature has gone through several iterations and what is currently implemented in browsers is not the same as what was originally proposed. This plugin dates back to the original proposal and you might have written your CSS expecting this older behavior.
 
-If you want to already use the latest version you can set the `edition` option to `2024-02`.
+You can pick the older behavior by setting the `edition` option.  
+The `edition` values correspond with rough dates when of a particular version of the specification:
+- `2024-02` (default)
+- `2021`
+
+> [!TIP]
+> If you wrote nested rules with `@nest` you definitely want to set the `edition` to `2021`.  
+> If you are unsure than you should try to omit the `edition` option and use the default.
+
+Eventually we will remove support for the older edition, and this plugin option, so it is strongly advised to update your CSS to the latest edition.
+
 
 ```js
 postcssNesting({
@@ -116,12 +106,17 @@ postcssNesting({
 })
 ```
 
-#### `2021` (default)
+#### `2024-02` (default)
+
+- usage of `:is()` pseudo-class is no longer optional
+- at rules are not combined with the `and` keyword
+- `@nest` is removed from the specification
+- declarations and nested rules/at-rules are no longer re-ordered
+
+#### `2021`
 
 This version is a continuation of what existed before CSS nesting was implemented in browsers.  
 It made a few non-invasive changes to keep up with implementations but it is falling behind.
-
-In a future version of this plugin this will no longer be the default.
 
 ```pcss
 .foo {
@@ -162,55 +157,7 @@ In a future version of this plugin this will no longer be the default.
 	}
 ```
 
-#### `2024-02`
-
-- usage of `:is()` pseudo-class is no longer optional
-- at rules are not combined with the `and` keyword
-- `@nest` is removed from the specification
-- declarations and nested rules/at-rules are no longer re-ordered
-
-```pcss
-.foo {
-	color: red;
-
-	&:hover {
-		color: green;
-	}
-
-	> .bar {
-		color: blue;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		color: cyan;
-	}
-
-	color: pink;
-}
-
-/* becomes */
-
-.foo {
-	color: red;
-}
-.foo:hover {
-		color: green;
-	}
-.foo  > .bar {
-		color: blue;
-	}
-@media (prefers-color-scheme: dark) {
-	.foo {
-		color: cyan;
-}
-	}
-.foo {
-
-	color: pink;
-}
-```
-
-### noIsPseudoSelector
+### noIsPseudoSelector (edition: `2021`)
 
 #### Specificity
 

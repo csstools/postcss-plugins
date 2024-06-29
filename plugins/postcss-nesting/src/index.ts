@@ -10,7 +10,7 @@ export type { pluginOptions as pluginOptions2024_02 } from './editions/2024-02';
 
 /** postcss-nesting plugin options */
 export type pluginOptions = {
-	/** The implementation edition for CSS Nesting, default to '2021' */
+	/** The implementation edition for CSS Nesting, default to '2024-02' */
 	edition?: '2021' | '2024-02',
 } & pluginOptions2021 & pluginOptions2024_02;
 
@@ -18,7 +18,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
 		{
-			edition: '2021',
+			edition: '2024-02',
 		},
 		// Provided options
 		opts,

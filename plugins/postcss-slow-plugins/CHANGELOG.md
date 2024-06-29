@@ -1,5 +1,9 @@
 # Changes to PostCSS Slow Plugins
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.3
 
 - Improve wording

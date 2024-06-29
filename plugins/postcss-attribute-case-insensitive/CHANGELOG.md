@@ -1,5 +1,9 @@
 # Changes to PostCSS Attribute Case Insensitive
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 6.0.3
 
 _February 19, 2024_

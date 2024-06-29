@@ -1,5 +1,9 @@
 # Changes to Media Query List Parser
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.1.12
 
 _June 29, 2024_

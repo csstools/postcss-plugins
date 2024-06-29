@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 4.0.6
 
 _May 13, 2024_

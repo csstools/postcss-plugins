@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 7.0.1
 
 _December 15, 2023_

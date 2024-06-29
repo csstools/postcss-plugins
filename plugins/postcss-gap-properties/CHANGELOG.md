@@ -1,5 +1,9 @@
 # Changes to PostCSS Gap Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 5.0.1
 
 _December 15, 2023_

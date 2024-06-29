@@ -1,5 +1,9 @@
 # Changes to PostCSS Rebase URL
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.10
 
 _June 29, 2024_

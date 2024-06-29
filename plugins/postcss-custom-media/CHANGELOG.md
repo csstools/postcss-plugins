@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 10.0.7
 
 _June 29, 2024_
