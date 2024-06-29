@@ -1,23 +1,27 @@
 // :-csstools-matches(.a > .b) > .c
 // equivalent to
 // .a > .b > .c
+
+import parser from 'postcss-selector-parser';
+
 // because `:is()` is in the left-most compound selector
-export function isPseudoInFirstCompound(selector): boolean {
+export function isPseudoInFirstCompound(selector: parser.Container): boolean {
 	if (!selector || !selector.nodes) {
 		return false;
 	}
-	if (selector.type !== 'selector') {
+
+	if (!parser.isSelector(selector)) {
 		return false;
 	}
 
 	let isPseudoIndex = -1;
 	for (let i = 0; i < selector.nodes.length; i++) {
 		const node = selector.nodes[i];
-		if (node.type === 'combinator') {
+		if (parser.isCombinator(node)) {
 			return false;
 		}
 
-		if (node.type === 'pseudo' && node.value === ':-csstools-matches') {
+		if (parser.isPseudoClass(node) && node.value === ':-csstools-matches') {
 			if (!node.nodes || node.nodes.length !== 1) {
 				return false;
 			}
@@ -27,12 +31,12 @@ export function isPseudoInFirstCompound(selector): boolean {
 		}
 	}
 
-	if (isPseudoIndex === -1) {
+	const isPseudo = selector.nodes[isPseudoIndex];
+	if (!isPseudo || !parser.isPseudoClass(isPseudo)) {
 		return false;
 	}
 
 	const before = selector.nodes.slice(0, isPseudoIndex);
-	const isPseudo = selector.nodes[isPseudoIndex];
 	const after = selector.nodes.slice(isPseudoIndex + 1);
 
 	before.forEach((node) => {

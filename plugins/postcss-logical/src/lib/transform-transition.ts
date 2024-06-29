@@ -46,7 +46,7 @@ export function transformTransition(declaration: Declaration, postcss: Postcss, 
 			}
 
 			for (let k = transformedDeclarations.length - 1; k >= 0; k--) {
-				const clone = JSON.parse(JSON.stringify(chunk));
+				const clone: Array<Node> = JSON.parse(JSON.stringify(chunk)) as Array<Node>;
 				const clonedNode = clone[j];
 
 				clonedNode.value = transformedDeclarations[k].prop;

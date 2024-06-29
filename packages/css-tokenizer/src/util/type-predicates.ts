@@ -20,7 +20,7 @@ export function isToken(x: any): x is CSSToken { // eslint-disable-line @typescr
 		return false;
 	}
 
-	if (!tokenTypes.includes(x[0])) {
+	if (!tokenTypes.includes(x[0] as TokenType)) {
 		return false;
 	}
 

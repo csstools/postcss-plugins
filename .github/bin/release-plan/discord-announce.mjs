@@ -6,8 +6,8 @@ const defaultPayload = {
 			url: '',
 			description: '',
 			color: 3963146,
-		}
-	]
+		},
+	],
 };
 const BASE_URL = 'https://github.com/csstools/postcss-plugins/tree/main';
 const getChangelog = (changelog) => {
@@ -19,8 +19,8 @@ const getChangelog = (changelog) => {
 	const text = changelog.slice(firstLineBreakIndex + 1, secondRelease === -1 ? undefined : secondRelease).trim();
 
 	// Replace relative links with absolute links
-	return text.replace( /]\(\//g, `](${ BASE_URL }/` );
-}
+	return text.replace(/]\(\//g, `](${ BASE_URL }/`);
+};
 
 export async function discordAnnounce(workspace) {
 	if (process.env.DEBUG) {
@@ -65,14 +65,14 @@ export async function discordAnnounceDryRun() {
 
 	const discordArgument = process.argv.slice(2).find(arg => arg.includes('--discord='));
 	if (!discordArgument) {
-		console.log(`Discord announce webhook URL: not set`);
+		console.log('Discord announce webhook URL: not set');
 		return;
 	}
 
 	const [, webHookUrl] = discordArgument.split('=');
 
 	if (!webHookUrl) {
-		console.log(`Discord announce webhook URL: not set`);
+		console.log('Discord announce webhook URL: not set');
 		return;
 	}
 

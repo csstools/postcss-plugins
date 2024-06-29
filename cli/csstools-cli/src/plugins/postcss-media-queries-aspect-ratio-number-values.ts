@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssMediaQueriesAspectRatioNumberValues(): void {
-	cli(
+export default async function postcssMediaQueriesAspectRatioNumberValues(): Promise<void> {
+	await cli(
 		plugin,
 		[],
 		helpTextLogger(

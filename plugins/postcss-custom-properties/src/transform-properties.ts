@@ -47,6 +47,7 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 const isTransformableDecl = (decl: Declaration): boolean => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
 
 // whether the declaration has a trailing comment
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 const hasTrailingComment = (decl: Declaration): boolean => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && TRAILING_COMMENT_REGEX.test(decl.raws.value?.raw ?? '');
 const TRAILING_COMMENT_REGEX = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
 

@@ -1,8 +1,8 @@
 import plugin from 'postcss-custom-properties';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCustomProperties(): void {
-	cli(
+export default async function postcssCustomProperties(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

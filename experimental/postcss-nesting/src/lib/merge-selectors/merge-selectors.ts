@@ -2,7 +2,7 @@ import type { Node, Result } from 'postcss';
 import parser from 'postcss-selector-parser';
 
 export default function mergeSelectors(node: Node, postcssResult: Result, fromSelectors: Array<string>, toSelectors: Array<string>): Array<string> {
-	const result = [];
+	const result: Array<string> = [];
 	if (toSelectors.length === 0) {
 		return;
 	}
@@ -51,9 +51,11 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 			}
 
 			if (startsWithCombinator) {
-				selectorAST.insertBefore(selectorAST.at(0) , parser.nesting({}));
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
 			} else {
 				selectorAST.insertBefore(selectorAST.at(0), parser.combinator({value: ' '}));
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
 			}
 		}

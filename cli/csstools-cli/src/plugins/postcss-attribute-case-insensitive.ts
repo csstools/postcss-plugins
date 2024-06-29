@@ -1,8 +1,8 @@
 import plugin from 'postcss-attribute-case-insensitive';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssAttributeCaseInsensitive(): void {
-	cli(
+export default async function postcssAttributeCaseInsensitive(): Promise<void> {
+	await cli(
 		plugin,
 		[],
 		helpTextLogger(

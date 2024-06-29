@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-nested-calc';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssNestedCalc(): void {
-	cli(
+export default async function postcssNestedCalc(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

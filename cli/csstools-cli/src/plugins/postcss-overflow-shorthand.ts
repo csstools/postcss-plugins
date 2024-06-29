@@ -1,8 +1,8 @@
 import plugin from 'postcss-overflow-shorthand';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssOverflowShorthand(): void {
-	cli(
+export default async function postcssOverflowShorthand(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

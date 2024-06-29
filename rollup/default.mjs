@@ -12,7 +12,7 @@ const packageInfo = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 const isTypescript = (() => {
 	try {
 		return fs.statSync('./tsconfig.json').isFile() && fs.statSync('./src/index.ts').isFile();
-	} catch (_) {
+	} catch {
 		return false;
 	}
 })();

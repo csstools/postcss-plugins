@@ -28,7 +28,7 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQu
 		let andIndex = -1;
 
 		for (let i = 0; i < componentValues.length; i++) {
-			const componentValue = componentValues[i] as ComponentValue;
+			const componentValue = componentValues[i];
 			if (isWhitespaceNode(componentValue)) {
 				continue;
 			}
@@ -449,7 +449,7 @@ function parseMediaOr(componentValues: Array<ComponentValue>): { advance: number
 
 		if (sawOr && isSimpleBlockNode(componentValue)) {
 			componentValue.normalize();
-			const media = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
+			const media = parseMediaInParensFromSimpleBlock(componentValue);
 			if (media === false) {
 				return false;
 			}
@@ -502,7 +502,7 @@ function parseMediaAnd(componentValues: Array<ComponentValue>): { advance: numbe
 
 		if (sawAnd && isSimpleBlockNode(componentValue)) {
 			componentValue.normalize();
-			const media = parseMediaInParensFromSimpleBlock(componentValue as SimpleBlockNode);
+			const media = parseMediaInParensFromSimpleBlock(componentValue);
 			if (media === false) {
 				return false;
 			}

@@ -1,5 +1,5 @@
 import parser from 'postcss-selector-parser';
-import type { Root, Nesting } from 'postcss-selector-parser';
+import type { Nesting } from 'postcss-selector-parser';
 import { combinationsWithSizeN } from './combinations-of-size-n';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { nodesAreEquallySpecific } from './specificity';
@@ -8,7 +8,7 @@ import { options } from '../options';
 export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options): Array<string> {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
-	let fromSelectorsAST = [];
+	let fromSelectorsAST: Array<parser.Root> = [];
 
 	if (fromListHasUniformSpecificity || opts.noIsPseudoSelector) {
 		fromSelectorsAST = fromSelectors.map((selector) => {
@@ -18,7 +18,7 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 		fromSelectorsAST = [parser().astSync(`:is(${fromSelectors.join(',')})`)];
 	}
 
-	const result = [];
+	const result: Array<string> = [];
 
 	for (let x = 0; x < toSelectors.length; x++) {
 		let toSelector = toSelectors[x];
@@ -46,16 +46,18 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 
 			if (!isNestContaining) {
 				selectorAST.insertBefore(selectorAST.at(0), parser.combinator({ value: ' ' }));
-				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
+				// @ts-expect-error - `parser.nesting` is not recognized
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting()); // eslint-disable-line @typescript-eslint/no-unsafe-argument
 			} else if (startsWithCombinator) {
-				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
+				// @ts-expect-error - `parser.nesting` is not recognized
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting()); // eslint-disable-line @typescript-eslint/no-unsafe-argument
 			}
 
 			toSelector = toSelectorAST.toString();
 		}
 
 		let iterations: number;
-		let fromSelectorCombinations = [];
+		let fromSelectorCombinations: Array<Array<parser.Root>> = [];
 
 		let nestingCounter = 0;
 		parser().astSync(toSelector).walkNesting(() => {
@@ -85,7 +87,7 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 					return;
 				}
 
-				let fromSelectorAST = fromSelectorCombinations[y][counter];
+				let fromSelectorAST: parser.Root | parser.Selector = fromSelectorCombinations[y][counter];
 				counter++;
 
 				// If the from selector is simple we extract the first non root, non selector node
@@ -174,7 +176,7 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 				if (opts.noIsPseudoSelector) {
 					nesting.replaceWith(...(fromSelectorAST.clone().nodes));
 				} else {
-					nesting.replaceWith(...((fromSelectorWithIsAST.clone({}) as Root).nodes));
+					nesting.replaceWith(...((fromSelectorWithIsAST.clone({})).nodes));
 				}
 
 				if (parent) {
@@ -189,7 +191,7 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 	return result;
 }
 
-function isSimpleSelector(selector): boolean {
+function isSimpleSelector(selector: parser.Node): boolean {
 	if (selector.type === 'combinator') {
 		return false;
 	}
@@ -201,7 +203,7 @@ function isSimpleSelector(selector): boolean {
 	return true;
 }
 
-function isCompoundSelector(selector, toSelector = null): boolean {
+function isCompoundSelector(selector: parser.Node, toSelector: parser.Node | null = null): boolean {
 	if (isSimpleSelector(selector)) {
 		return false;
 	}
@@ -230,7 +232,7 @@ function isCompoundSelector(selector, toSelector = null): boolean {
 }
 
 
-function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selector): boolean {
+function nestingIsFirstAndOnlyInSelectorWithEitherSpaceOrChildCombinator(selector: parser.Node): boolean {
 	if (!selector.parent) {
 		return false;
 	}

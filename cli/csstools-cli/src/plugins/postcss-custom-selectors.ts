@@ -1,8 +1,8 @@
 import plugin from 'postcss-custom-selectors';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCustomSelectors(): void {
-	cli(
+export default async function postcssCustomSelectors(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

@@ -29,7 +29,7 @@ export function typeFromToken(token: TokenIdent): MediaType | false {
 	}
 
 	const matchingValue = token[4].value.toLowerCase();
-	switch (matchingValue) {
+	switch (matchingValue as MediaType) {
 		case MediaType.All:
 			return MediaType.All;
 		case MediaType.Print:

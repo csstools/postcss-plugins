@@ -8,12 +8,12 @@ export async function updateDocumentation(packageDirectory) {
 			[
 				'run',
 				'docs',
-				'--if-present'
+				'--if-present',
 			],
 			{
 				cwd: packageDirectory,
-				shell: platform === 'win32'
-			}
+				shell: platform === 'win32',
+			},
 		);
 
 		let stdoutBuffer = '';

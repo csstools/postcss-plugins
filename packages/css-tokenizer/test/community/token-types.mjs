@@ -56,7 +56,6 @@ ${openPropsSource}
 
 	let tokens = [];
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = t.nextToken();
 		tokens.push(token);
@@ -130,7 +129,6 @@ function csstoolsTokenToTypeWithSubIdentifiers(token) {
 
 	let tokens = [];
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = t.nextToken();
 		if (!token) {

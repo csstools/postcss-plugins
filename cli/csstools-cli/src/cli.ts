@@ -47,152 +47,153 @@ import postcssTextDecorationShorthand from './plugins/postcss-text-decoration-sh
 import postcssTrigonometricFunctions from './plugins/postcss-trigonometric-functions';
 import postcssUnsetValue from './plugins/postcss-unset-value';
 
-main();
-function main(): void {
+void main();
+
+async function main(): Promise<void> {
 	switch (process.argv[2] ?? false) {
 		case 'css-blank-pseudo':
-			cssBlankPseudo();
+			await cssBlankPseudo();
 			return;
 		case 'css-has-pseudo':
-			cssHasPseudo();
+			await cssHasPseudo();
 			return;
 		case 'css-prefers-color-scheme':
-			cssPrefersColorScheme();
+			await cssPrefersColorScheme();
 			return;
 		case 'postcss-attribute-case-insensitive':
-			postcssAttributeCaseInsensitive();
+			await postcssAttributeCaseInsensitive();
 			return;
 		case 'postcss-cascade-layers':
-			postcssCascadeLayers();
+			await postcssCascadeLayers();
 			return;
 		case 'postcss-color-function':
-			postcssColorFunction();
+			await postcssColorFunction();
 			return;
 		case 'postcss-color-mix-function':
-			postcssColorMixFunction();
+			await postcssColorMixFunction();
 			return;
 		case 'postcss-color-functional-notation':
-			postcssColorFunctionalNotation();
+			await postcssColorFunctionalNotation();
 			return;
 		case 'postcss-color-hex-alpha':
-			postcssColorHexAlpha();
+			await postcssColorHexAlpha();
 			return;
 		case 'postcss-color-rebeccapurple':
-			postcssColorRebeccaPurple();
+			await postcssColorRebeccaPurple();
 			return;
 		case 'postcss-custom-media':
-			postcssCustomMedia();
+			await postcssCustomMedia();
 			return;
 		case 'postcss-custom-properties':
-			postcssCustomProperties();
+			await postcssCustomProperties();
 			return;
 		case 'postcss-custom-selectors':
-			postcssCustomSelectors();
+			await postcssCustomSelectors();
 			return;
 		case 'postcss-dir-pseudo-class':
-			postcssDirPseudoClass();
+			await postcssDirPseudoClass();
 			return;
 		case 'postcss-double-position-gradients':
-			postcssDoublePositionGradients();
+			await postcssDoublePositionGradients();
 			return;
 		case 'postcss-exponential-functions':
-			postcssExponentialFunctions();
+			await postcssExponentialFunctions();
 			return;
 		case 'postcss-focus-visible':
-			postcssFocusVisible();
+			await postcssFocusVisible();
 			return;
 		case 'postcss-focus-within':
-			postcssFocusWithin();
+			await postcssFocusWithin();
 			return;
 		case 'postcss-font-format-keywords':
-			postcssFontFormatKeywords();
+			await postcssFontFormatKeywords();
 			return;
 		case 'postcss-gap-properties':
-			postcssGapProperties();
+			await postcssGapProperties();
 			return;
 		case 'postcss-gradients-interpolation-method':
-			postcssGradientsInterpolationMethod();
+			await postcssGradientsInterpolationMethod();
 			return;
 		case 'postcss-hwb-function':
-			postcssHWBFunction();
+			await postcssHWBFunction();
 			return;
 		case 'postcss-ic-unit':
-			postcssICUnit();
+			await postcssICUnit();
 			return;
 		case 'postcss-image-set-function':
-			postcssImageSetFunction();
+			await postcssImageSetFunction();
 			return;
 		case 'postcss-is-pseudo-class':
-			postcssIsPseudoClass();
+			await postcssIsPseudoClass();
 			return;
 		case 'postcss-lab-function':
-			postcssLabFunction();
+			await postcssLabFunction();
 			return;
 		case 'postcss-light-dark-function':
-			postcssLightDarkFunction();
+			await postcssLightDarkFunction();
 			return;
 		case 'postcss-logical':
-			postcssLogical();
+			await postcssLogical();
 			return;
 		case 'postcss-logical-float-and-clear':
-			postcssLogicalFloatAndClear();
+			await postcssLogicalFloatAndClear();
 			return;
 		case 'postcss-logical-resize':
-			postcssLogicalResize();
+			await postcssLogicalResize();
 			return;
 		case 'postcss-logical-viewport-units':
-			postcssLogicalViewportUnits();
+			await postcssLogicalViewportUnits();
 			return;
 		case 'postcss-media-minmax':
-			postcssMediaMinMax();
+			await postcssMediaMinMax();
 			return;
 		case 'postcss-media-queries-aspect-ratio-number-values':
-			postcssMediaQueriesAspectRatioNumberValues();
+			await postcssMediaQueriesAspectRatioNumberValues();
 			return;
 		case 'postcss-nested-calc':
-			postcssNestedCalc();
+			await postcssNestedCalc();
 			return;
 		case 'postcss-nesting':
-			postcssNesting();
+			await postcssNesting();
 			return;
 		case 'postcss-normalize-display-values':
-			postcssNormalizeDisplayValues();
+			await postcssNormalizeDisplayValues();
 			return;
 		case 'postcss-oklab-function':
-			postcssOKLabFunction();
+			await postcssOKLabFunction();
 			return;
 		case 'postcss-overflow-shorthand':
-			postcssOverflowShorthand();
+			await postcssOverflowShorthand();
 			return;
 		case 'postcss-place':
-			postcssPlace();
+			await postcssPlace();
 			return;
 		case 'postcss-preset-env':
-			postcssPresetEnv();
+			await postcssPresetEnv();
 			return;
 		case 'postcss-pseudo-class-any-link':
-			postcssPseudoClassAnyLink();
+			await postcssPseudoClassAnyLink();
 			return;
 		case 'postcss-scope-pseudo-class':
-			postcssScopePseudoClass();
+			await postcssScopePseudoClass();
 			return;
 		case 'postcss-relative-color-syntax':
-			postcssRelativeColorSyntax();
+			await postcssRelativeColorSyntax();
 			return;
 		case 'postcss-selector-not':
-			postcssSelectorNot();
+			await postcssSelectorNot();
 			return;
 		case 'postcss-stepped-value-functions':
-			postcssSteppedValueFunctions();
+			await postcssSteppedValueFunctions();
 			return;
 		case 'postcss-text-decoration-shorthand':
-			postcssTextDecorationShorthand();
+			await postcssTextDecorationShorthand();
 			return;
 		case 'postcss-trigonometric-functions':
-			postcssTrigonometricFunctions();
+			await postcssTrigonometricFunctions();
 			return;
 		case 'postcss-unset-value':
-			postcssUnsetValue();
+			await postcssUnsetValue();
 			return;
 		default:
 		{

@@ -52,7 +52,7 @@ export function transform(mediaQueries: Array<MediaQuery>): string {
 				return;
 			}
 
-			const grandParent: unknown | MediaInParens = ancestry.get(parent);
+			const grandParent: unknown = ancestry.get(parent);
 			if (!isMediaInParens(grandParent)) {
 				return;
 			}

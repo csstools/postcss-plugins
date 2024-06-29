@@ -40,7 +40,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 				xValue = valueParser.stringify(relevantNodes[0]);
 				yValue = valueParser.stringify(relevantNodes[1]);
-			} catch (_) {
+			} catch {
 				decl.warn(
 					result,
 					`Failed to parse value '${originalValue}' as a shorthand for "overflow". Leaving the original value intact.`,

@@ -8,7 +8,6 @@ import { TokenComment, TokenType } from '../interfaces/token';
 export function consumeComment(ctx: Context, reader: CodePointReader): TokenComment {
 	reader.advanceCodePoint(2);
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const codePoint = reader.readCodePoint();
 		if (codePoint === false) {

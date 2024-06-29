@@ -1,8 +1,8 @@
 import plugin from 'postcss-selector-not';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssSelectorNot(): void {
-	cli(
+export default async function postcssSelectorNot(): Promise<void> {
+	await cli(
 		plugin,
 		[],
 		helpTextLogger(

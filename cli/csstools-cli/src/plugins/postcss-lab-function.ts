@@ -1,8 +1,8 @@
 import plugin from 'postcss-lab-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLabFunction(): void {
-	cli(
+export default async function postcssLabFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties', 'subFeatures'],
 		helpTextLogger(

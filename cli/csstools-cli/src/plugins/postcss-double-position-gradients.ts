@@ -1,8 +1,8 @@
 import plugin from 'postcss-double-position-gradients';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssDoublePositionGradients(): void {
-	cli(
+export default async function postcssDoublePositionGradients(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],
 		helpTextLogger(

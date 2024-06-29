@@ -5,11 +5,15 @@ import type { Result, Rule } from 'postcss';
 import groupDeclarations from './group-declarations.js';
 
 export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result): void {
-	let selectors = [];
+	let selectors: Array<string> = [];
 
 	try {
 		selectors = mergeSelectors(node, result, parent.selectors, node.selectors);
 	} catch (err) {
+		if (!(err instanceof Error)) {
+			throw err;
+		}
+
 		node.warn(result, `Failed to transform selectors : "${parent.selector}" / "${node.selector}" with message: "${err.message}"`);
 		return;
 	}

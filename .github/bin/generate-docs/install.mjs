@@ -14,12 +14,12 @@ installDoc = installDoc.replaceAll('<packagePath>', path.join(path.basename(path
 
 if (packageJSONInfo?.csstools?.assumesToProcessBundledCSS) {
 	installDoc = installDoc.replaceAll('<parallelBuildsNotice>', parallelBuildsNotice(packageJSONInfo.csstools.humanReadableName));
-	installDoc = installDoc.replaceAll('<otherPluginsInWebpack>', `["@csstools/postcss-bundler"]`);
+	installDoc = installDoc.replaceAll('<otherPluginsInWebpack>', '["@csstools/postcss-bundler"]');
 	// <parallelBuildsNotice>
 } else {
 	// Just a filler so that formatting doesn't become too complex.
-	installDoc = installDoc.replaceAll('<parallelBuildsNotice>', ``);
-	installDoc = installDoc.replaceAll('<otherPluginsInWebpack>', `// Other plugins`);
+	installDoc = installDoc.replaceAll('<parallelBuildsNotice>', '');
+	installDoc = installDoc.replaceAll('<otherPluginsInWebpack>', '// Other plugins');
 }
 
 fs.writeFileSync('./INSTALL.md', installDoc);

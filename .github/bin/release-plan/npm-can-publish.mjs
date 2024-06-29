@@ -10,12 +10,12 @@ export async function canPublish(packageName, myName) {
 				'list',
 				'collaborators',
 				packageName,
-				myName
+				myName,
 			],
 			{
 				shell: platform === 'win32',
-				stdio: 'pipe'
-			}
+				stdio: 'pipe',
+			},
 		);
 
 		let result = '';
@@ -43,7 +43,7 @@ export async function canPublish(packageName, myName) {
 
 			resolve(
 				result.trim().includes(myName) &&
-				result.trim().includes('read-write')
+				result.trim().includes('read-write'),
 			);
 		});
 	});

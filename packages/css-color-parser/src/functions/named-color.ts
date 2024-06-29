@@ -1,10 +1,10 @@
 import type { ColorData } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
-import { namedColors } from '@csstools/color-helpers';
+import { Color, namedColors } from '@csstools/color-helpers';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
-const namedColorsMap = new Map();
+const namedColorsMap: Map<string, Color> = new Map();
 for (const [name, color] of Object.entries(namedColors)) {
 	namedColorsMap.set(name, color);
 }

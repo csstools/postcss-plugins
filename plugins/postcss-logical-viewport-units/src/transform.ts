@@ -5,7 +5,6 @@ export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: '
 	const tokens = [];
 	let didTransformUnits = false;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = t.nextToken();
 		if (!token) {

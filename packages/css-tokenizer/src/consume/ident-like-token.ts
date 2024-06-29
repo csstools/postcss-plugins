@@ -27,7 +27,6 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 		reader.advanceCodePoint();
 
 		let read = 0;
-		// eslint-disable-next-line no-constant-condition
 		while (true) {
 			const firstIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor]);
 			const secondIsWhitespace = isWhitespace(reader.codePointSource[reader.cursor+1]);

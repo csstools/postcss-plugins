@@ -61,7 +61,7 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 			const start = pseudo.sourceIndex;
 			const end = start + pseudo.toString().length;
 
-			const replacementsParts = [];
+			const replacementsParts: Array<{start: number, end: number, option: string}> = [];
 
 			pseudo.nodes.forEach((child) => {
 				const replacement = {
@@ -98,7 +98,7 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 			return [selector];
 		}
 
-		let results = [];
+		let results: Array<string> = [];
 		cartesianProduct(...replacements).forEach((replacement) => {
 			let result = '';
 
@@ -122,17 +122,17 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 		}
 
 		return results;
-	}).filter((x) => {
+	}).filter((x: string) => {
 		return !!x;
 	});
 }
 
 // https://en.wikipedia.org/wiki/Cartesian_product
 function cartesianProduct<T>(...args: Array<Array<T>>): Array<Array<T>> {
-	const r = [];
+	const r: Array<Array<T>> = [];
 	const max = args.length - 1;
 
-	function helper(arr, i): void {
+	function helper(arr: Array<T>, i: number): void {
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);

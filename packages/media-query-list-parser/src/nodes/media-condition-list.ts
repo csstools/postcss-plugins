@@ -40,7 +40,7 @@ export class MediaConditionListWithAnd {
 			return 'leading';
 		}
 
-		if (item.type === 'media-and') {
+		if (item.type === NodeType.MediaAnd) {
 			return this.list.indexOf(item as MediaAnd);
 		}
 
@@ -174,7 +174,7 @@ export class MediaConditionListWithOr {
 			return 'leading';
 		}
 
-		if (item.type === 'media-or') {
+		if (item.type === NodeType.MediaOr) {
 			return this.list.indexOf(item as MediaOr);
 		}
 

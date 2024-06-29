@@ -32,12 +32,12 @@ export async function npmVersion(increment, packageDirectory) {
 			'npm',
 			[
 				'version',
-				increment
+				increment,
 			],
 			{
 				cwd: packageDirectory,
-				shell: platform === 'win32'
-			}
+				shell: platform === 'win32',
+			},
 		);
 
 		let stdoutBuffer = '';

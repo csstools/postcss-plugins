@@ -1,8 +1,8 @@
 import plugin from 'postcss-custom-media';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCustomMedia(): void {
-	cli(
+export default async function postcssCustomMedia(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

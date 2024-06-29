@@ -1,5 +1,11 @@
 import type { Color } from '../types/color';
-import { multiplyMatrices } from '../calculations/multiply-matrices';
+import { Matrix, multiplyMatrices } from '../calculations/multiply-matrices';
+
+const M: Matrix = [
+	608311 / 1250200, 189793 / 714400, 198249 / 1000160,
+	35783 / 156275, 247089 / 357200, 198249 / 2500400,
+	0 / 1, 32229 / 714400, 5220557 / 5000800,
+];
 
 /**
  * Convert an array of linear-light display-p3 values to CIE XYZ
@@ -10,11 +16,5 @@ import { multiplyMatrices } from '../calculations/multiply-matrices';
  * @see http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
  */
 export function lin_P3_to_XYZ(rgb: Color): Color {
-	const M = [
-		[608311 / 1250200, 189793 / 714400, 198249 / 1000160],
-		[35783 / 156275, 247089 / 357200, 198249 / 2500400],
-		[0 / 1, 32229 / 714400, 5220557 / 5000800],
-	];
-
-	return multiplyMatrices(M, rgb) as Color;
+	return multiplyMatrices(M, rgb);
 }

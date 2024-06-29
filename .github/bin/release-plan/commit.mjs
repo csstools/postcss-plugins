@@ -13,11 +13,11 @@ export async function commitSingleDirectory(commitMessage, dir) {
 			[
 				'commit',
 				'-am',
-				commitMessage
+				commitMessage,
 			],
 			{
-				cwd: dir
-			}
+				cwd: dir,
+			},
 		);
 
 		let stdoutBuffer = '';
@@ -60,8 +60,8 @@ export async function commitAfterDependencyUpdates() {
 			[
 				'commit',
 				'-am',
-				`set dependencies to newly released versions`
-			]
+				'set dependencies to newly released versions',
+			],
 		);
 
 		let stdoutBuffer = '';

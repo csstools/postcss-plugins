@@ -49,7 +49,6 @@ export function combinationsWithSizeN(set: Array<Selector>, n: number): Array<Ar
 
 	const result: Array<Array<Selector>> = [];
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const ss: Array<Selector> = [];
 		for (let i = n - 1; i >= 0; i--) {

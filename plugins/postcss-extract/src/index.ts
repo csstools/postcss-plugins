@@ -16,7 +16,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	const parsedQueries: Map<string, selectorParser.Root> = new Map();
 	Object.keys(options.queries ?? {}).forEach((query) => {
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		parsedQueries.set(query, selectorParser().astSync(options.queries[query]));
 	});
 

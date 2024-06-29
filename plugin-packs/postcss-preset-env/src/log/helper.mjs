@@ -11,7 +11,7 @@ class Logger {
 		this.logs.length = 0;
 	}
 
-	dumpLogs(result) {
+	emitLogs(result) {
 		if (result) {
 			result.warn(this.logs.join('\n'));
 		}

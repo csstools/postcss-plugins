@@ -300,7 +300,7 @@ export declare class FunctionNode extends ContainerNodeBaseClass {
  */
 export declare function gatherNodeAncestry(node: {
     walk(cb: (entry: {
-        node: Array<unknown> | unknown;
+        node: unknown;
         parent: unknown;
     }, index: number | string) => boolean | void): false | undefined;
 }): Map<unknown, unknown>;
@@ -334,6 +334,12 @@ export declare function isTokenNode(x: unknown): x is TokenNode;
  * This is a type guard.
  */
 export declare function isWhitespaceNode(x: unknown): x is WhitespaceNode;
+
+/**
+ * Check if the current object is a `WhiteSpaceNode` or a `CommentNode`.
+ * This is a type guard.
+ */
+export declare function isWhiteSpaceOrCommentNode(x: unknown): x is WhitespaceNode | CommentNode;
 
 /**
  * Parse a comma-separated list of component values.

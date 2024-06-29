@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-gradients-interpolation-method';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssGradientsInterpolationMethod(): void {
-	cli(
+export default async function postcssGradientsInterpolationMethod(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],
 		helpTextLogger(

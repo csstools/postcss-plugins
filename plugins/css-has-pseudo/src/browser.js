@@ -1,5 +1,3 @@
-/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame,self,HTMLElement */
-
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
 import encodeCSS from './encode/encode.mjs';
@@ -100,7 +98,6 @@ export default function cssHasPseudo(document, options) {
 	// observe Javascript setters that effect pseudo-selectors
 	if ('defineProperty' in Object && 'getOwnPropertyDescriptor' in Object && 'hasOwnProperty' in Object) {
 		try {
-			// eslint-disable-next-line no-inner-declarations
 			function observeProperty(proto, property) {
 				// eslint-disable-next-line no-prototype-builtins
 				if (proto.hasOwnProperty(property)) {

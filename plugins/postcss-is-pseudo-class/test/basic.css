@@ -177,3 +177,7 @@ header:is(.a .b) {
 :is(:nth-child(2n+1 of .foo), .foo) {
 	color: green;
 }
+
+div:is(.a > .b) > .c {
+	color: green;
+}

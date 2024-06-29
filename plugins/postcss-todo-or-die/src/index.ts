@@ -1,6 +1,6 @@
 import type { AtRule, PluginCreator } from 'postcss';
 import browserslist from 'browserslist';
-import { CSSToken, ParseError, tokenizer } from '@csstools/css-tokenizer';
+import { ParseError, tokenize } from '@csstools/css-tokenizer';
 import { died } from './died';
 import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { matchBeforeDateCondition } from './match/before-date';
@@ -17,7 +17,7 @@ const creator: PluginCreator<never> = () => {
 
 	return {
 		postcssPlugin: 'postcss-todo-or-die',
-		async Once(root, { result }): Promise<void> {
+		Once(root, { result }): void {
 			const atRules: Array<AtRule> = [];
 
 			root.walkAtRules((atRule) => {
@@ -37,23 +37,11 @@ const creator: PluginCreator<never> = () => {
 					throw atRule.error(err.message);
 				};
 
-				const t = tokenizer({
+				const tokens = tokenize({
 					css: atRule.params,
 				}, {
 					onParseError: errorHandler,
 				});
-
-				const tokens: Array<CSSToken> = [];
-
-				{
-					while (!t.endOfFile()) {
-						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-						tokens.push(t.nextToken()!);
-					}
-
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					tokens.push(t.nextToken()!); // EOF-token
-				}
 
 				const todoOrDieConditions = parseCommaSeparatedListOfComponentValues(tokens, {
 					onParseError: errorHandler,

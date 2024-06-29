@@ -24,7 +24,7 @@ test('array options [false, ...] - A', () => {
 		],
 	);
 
-	testLogger.logger.dumpLogs(testLogger);
+	testLogger.logger.emitLogs(testLogger);
 	assert.deepStrictEqual(
 		testLogger.getLogs(),
 		[
@@ -55,7 +55,7 @@ test('array options [false, ...] - B', () => {
 		],
 	);
 
-	testLogger.logger.dumpLogs(testLogger);
+	testLogger.logger.emitLogs(testLogger);
 	assert.deepStrictEqual(
 		testLogger.getLogs(),
 		[
@@ -105,7 +105,7 @@ test('array options [true, ...] - A', () => {
 		],
 	);
 
-	testLogger.logger.dumpLogs(testLogger);
+	testLogger.logger.emitLogs(testLogger);
 	assert.deepStrictEqual(
 		testLogger.getLogs(),
 		['Using features from Stage 2 (default)\n  blank-pseudo-class with stage 1 has been disabled\nAdding area[href] fallbacks for ":any-link" support in Edge and IE.'],
@@ -151,7 +151,7 @@ test('array options [true, ...] - B', () => {
 		],
 	);
 
-	testLogger.logger.dumpLogs(testLogger);
+	testLogger.logger.emitLogs(testLogger);
 	assert.deepStrictEqual(
 		testLogger.getLogs(),
 		['Using features from Stage 2 (default)\n  blank-pseudo-class with stage 1 has been disabled\nAdding area[href] fallbacks for ":any-link" support in Edge and IE.'],
@@ -197,7 +197,7 @@ test('array options [true, ...] - C', () => {
 		],
 	);
 
-	testLogger.logger.dumpLogs(testLogger);
+	testLogger.logger.emitLogs(testLogger);
 	assert.deepStrictEqual(
 		testLogger.getLogs(),
 		['Using features from Stage 2 (default)\n  blank-pseudo-class with stage 1 has been disabled\nAdding area[href] fallbacks for ":any-link" support in Edge and IE.'],
@@ -286,7 +286,7 @@ test('array options - enabled', () => {
 			],
 		);
 
-		testLogger.logger.dumpLogs(testLogger);
+		testLogger.logger.emitLogs(testLogger);
 		assert.deepStrictEqual(
 			testLogger.getLogs(),
 			['Using features from Stage 2 (default)\n  blank-pseudo-class with stage 1 has been disabled\nAdding area[href] fallbacks for ":any-link" support in Edge and IE.'],
@@ -339,7 +339,7 @@ test('array options - disabled', () => {
 			],
 		);
 
-		testLogger.logger.dumpLogs(testLogger);
+		testLogger.logger.emitLogs(testLogger);
 		assert.deepStrictEqual(
 			testLogger.getLogs(),
 			['Using features from Stage 2 (default)\n  any-link-pseudo-class has been disabled by options\n  blank-pseudo-class with stage 1 has been disabled'],
@@ -368,7 +368,7 @@ test('array options - disabled - B', () => {
 		],
 	);
 
-	testLogger.logger.dumpLogs(testLogger);
+	testLogger.logger.emitLogs(testLogger);
 	assert.deepStrictEqual(
 		testLogger.getLogs(),
 		['Using features from Stage 2 (default)\n  blank-pseudo-class with stage 1 has been disabled\nAdding area[href] fallbacks for ":any-link" support in Edge and IE.\nany-link-pseudo-class disabled due to browser support'],

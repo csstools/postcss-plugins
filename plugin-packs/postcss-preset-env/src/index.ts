@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import autoprefixer from 'autoprefixer';
 import cssdb from 'cssdb';
 import logFeaturesList from './log/features-list.mjs';
@@ -44,10 +50,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				pluginIdHelp(featureNamesInOptions, root, result);
 
 				if (options.debug) {
-					logger.dumpLogs(result);
+					logger.emitLogs(result);
 				}
 
-				// Always reset the logger, if when debug is false
+				// Always reset the logger, even when debug is false
 				logger.resetLogger();
 			},
 		};

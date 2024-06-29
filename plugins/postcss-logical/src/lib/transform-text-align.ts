@@ -13,7 +13,7 @@ export function transformTextAlign(
 
 		valueAST.nodes.forEach((node) => {
 			if (node.type === 'word') {
-				const valueCandidate = node.value.toLowerCase();
+				const valueCandidate = node.value.toLowerCase() as DirectionValue;
 
 				if (valueCandidate === DirectionValue.End) {
 					node.value = end;
@@ -22,6 +22,7 @@ export function transformTextAlign(
 
 				if (valueCandidate === DirectionValue.Start) {
 					node.value = start;
+					return;
 				}
 			}
 		});

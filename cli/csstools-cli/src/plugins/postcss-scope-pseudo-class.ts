@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-scope-pseudo-class';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssScopePseudoClass(): void {
-	cli(
+export default async function postcssScopePseudoClass(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

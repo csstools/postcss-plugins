@@ -77,7 +77,6 @@ if (!process.env.DEBUG) {
 		{
 			await page.goto('http://localhost:8080');
 			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
 				return await window.runTest();
 			});
 
@@ -204,7 +203,7 @@ if (!process.env.DEBUG) {
 		{
 			await page.goto('http://localhost:8080');
 			await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
+
 				return await window.runTest();
 			});
 
@@ -229,7 +228,7 @@ if (!process.env.DEBUG) {
 		{
 			await page.goto('http://localhost:8080/replace-with');
 			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
+
 				return await window.runTest();
 			});
 

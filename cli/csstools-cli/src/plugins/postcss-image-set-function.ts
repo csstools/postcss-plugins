@@ -1,8 +1,8 @@
 import plugin from 'postcss-image-set-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssImageSetFunction(): void {
-	cli(
+export default async function postcssImageSetFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['oninvalid', 'preserve'],
 		helpTextLogger(

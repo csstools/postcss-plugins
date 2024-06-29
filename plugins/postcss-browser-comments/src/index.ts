@@ -14,7 +14,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			console.log('result', result.root?.source?.input.file);
 
 			const clientBrowserList = new Set(browserslist(
-				Object(opts).browsers || null,
+				opts?.browsers ?? null,
 				{
 					path: result.root?.source?.input.file,
 				},
@@ -138,7 +138,9 @@ function getBrowsersList(text: string): Array<string> {
 				($0, browser, query) => browser === 'all'
 					? '> 0%'
 					: `${browser}${query
+						// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 						? /^((?:\d*\.)?\d+)-$/.test(query)
+							// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
 							? ` <= ${query.slice(0, -1)}`
 							: ` ${query}`
 						: ' > 0'

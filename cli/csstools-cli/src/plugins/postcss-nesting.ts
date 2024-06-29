@@ -1,8 +1,8 @@
 import plugin from 'postcss-nesting';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssNesting(): void {
-	cli(
+export default async function postcssNesting(): Promise<void> {
+	await cli(
 		plugin,
 		['noIsPseudoSelector'],
 		helpTextLogger(

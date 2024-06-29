@@ -10,6 +10,7 @@ export function reduceInformationInCssSyntaxError(err: CssSyntaxError | TypeErro
 		// @ts-expect-error "input" is also added on "TypeError"
 		if (err.input) {
 			// @ts-expect-error "input" is also added on "TypeError"
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			delete err.input.source;
 		}
 
