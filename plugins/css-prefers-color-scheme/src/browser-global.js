@@ -1,4 +1,3 @@
-/* global self,window */
 import { default as prefersColorSchemeInit } from './browser';
 
 (function (global) {

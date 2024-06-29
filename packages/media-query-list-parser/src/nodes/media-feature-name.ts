@@ -17,12 +17,12 @@ export class MediaFeatureName {
 	}
 
 	getName(): string {
-		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
+		const token = (((this.name as TokenNode).value) as TokenIdent);
 		return token[4].value;
 	}
 
 	getNameToken(): CSSToken {
-		const token = (((this.name as TokenNode).value as CSSToken) as TokenIdent);
+		const token = (((this.name as TokenNode).value) as TokenIdent);
 		return token;
 	}
 

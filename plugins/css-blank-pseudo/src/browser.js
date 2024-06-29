@@ -1,4 +1,3 @@
-/* global document,window,self,MutationObserver */
 import isValidReplacement from './is-valid-replacement.mjs';
 
 const CSS_CLASS_LOADED = 'js-blank-pseudo';

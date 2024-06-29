@@ -1,5 +1,3 @@
-/* global MutationObserver,requestAnimationFrame,cancelAnimationFrame,self,HTMLElement */
-
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
 import encodeCSS from './encode/encode.mjs';

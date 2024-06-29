@@ -1,4 +1,3 @@
-/* global self,window */
 import { default as cssBlankPseudoInit } from './browser';
 
 (function (global) {

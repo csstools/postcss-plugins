@@ -25,7 +25,7 @@ export function isGuardedByAtSupportsFromAtRuleParams(atSupportsParams: string):
 			}
 		});
 
-	} catch (_) {
+	} catch {
 		/* ignore */
 	}
 
@@ -48,7 +48,7 @@ function selectorContainsHasPseudo(selector: string): boolean {
 			}
 		});
 
-	} catch (_) {
+	} catch {
 		/* ignore */
 	}
 

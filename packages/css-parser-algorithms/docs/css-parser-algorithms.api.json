@@ -1542,16 +1542,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    walk(cb: (entry: {\n        node: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Array",
-              "canonicalReference": "!Array:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<unknown> | unknown;\n        parent: unknown;\n    }, index: number | string) => boolean | void): false | undefined;\n}"
+              "text": "{\n    walk(cb: (entry: {\n        node: unknown;\n        parent: unknown;\n    }, index: number | string) => boolean | void): false | undefined;\n}"
             },
             {
               "kind": "Content",
@@ -1573,8 +1564,8 @@
           ],
           "fileUrlPath": "dist/_types/util/node-ancestry.d.ts",
           "returnTypeTokenRange": {
-            "startIndex": 5,
-            "endIndex": 7
+            "startIndex": 3,
+            "endIndex": 5
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -1583,7 +1574,7 @@
               "parameterName": "node",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 4
+                "endIndex": 2
               },
               "isOptional": false
             }

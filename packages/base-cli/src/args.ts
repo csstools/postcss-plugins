@@ -145,8 +145,8 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 	// Stryker disable next-line ConditionalExpression
 	if (pluginOpts) {
 		try {
-			parsedPluginOpts = JSON.parse(pluginOpts);
-		} catch (_) {
+			parsedPluginOpts = JSON.parse(pluginOpts) as Record<string, unknown>;
+		} catch {
 			// Stryker disable next-line all
 			console.warn('[error] plugin options must be valid JSON\n');
 			// Stryker disable next-line all

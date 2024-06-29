@@ -1,6 +1,6 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { Declaration, PluginCreator } from 'postcss';
-import { color, serializeRGB, serializeHSL, SyntaxFlag } from '@csstools/css-color-parser';
+import { color, serializeRGB, serializeHSL, SyntaxFlag, ColorNotation } from '@csstools/css-color-parser';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { tokenize } from '@csstools/css-tokenizer';
@@ -62,7 +62,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						return;
 					}
 
-					if (colorData.colorNotation === 'hsl') {
+					if (colorData.colorNotation === ColorNotation.HSL) {
 						return serializeHSL(colorData);
 					}
 

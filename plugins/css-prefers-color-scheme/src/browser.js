@@ -1,4 +1,3 @@
-/* global document,window */
 const PREFERS_COLOR_SCHEME_REGEX = /prefers-color-scheme:/i;
 
 const prefersColorSchemeInit = (initialColorScheme, options) => {

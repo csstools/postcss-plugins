@@ -300,7 +300,7 @@ export declare class FunctionNode extends ContainerNodeBaseClass {
  */
 export declare function gatherNodeAncestry(node: {
     walk(cb: (entry: {
-        node: Array<unknown> | unknown;
+        node: unknown;
         parent: unknown;
     }, index: number | string) => boolean | void): false | undefined;
 }): Map<unknown, unknown>;

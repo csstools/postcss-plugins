@@ -11,7 +11,7 @@ export function modifierFromToken(token: TokenIdent): MediaQueryModifier | false
 	}
 
 	const matchingValue = token[4].value.toLowerCase();
-	switch (matchingValue) {
+	switch (matchingValue as MediaQueryModifier) {
 		case MediaQueryModifier.Not:
 			return MediaQueryModifier.Not;
 		case MediaQueryModifier.Only:
