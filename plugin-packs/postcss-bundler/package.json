@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-bundler",
 	"description": "Bundle CSS",
-	"version": "1.0.13",
+	"version": "1.0.14",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
