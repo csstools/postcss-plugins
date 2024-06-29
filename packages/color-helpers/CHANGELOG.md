@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (patch)
+
+- Optimize matrix multiplication
+
 ### 4.2.0
 
 _April 21, 2024_

@@ -1,5 +1,11 @@
 import type { Color } from '../types/color';
-import { multiplyMatrices } from '../calculations/multiply-matrices';
+import { Matrix, multiplyMatrices } from '../calculations/multiply-matrices';
+
+const M: Matrix = [
+	573536 / 994567, 263643 / 1420810, 187206 / 994567,
+	591459 / 1989134, 6239551 / 9945670, 374412 / 4972835,
+	53769 / 1989134, 351524 / 4972835, 4929758 / 4972835,
+];
 
 /**
  * Convert an array of linear-light a98-rgb values to CIE XYZ
@@ -16,11 +22,5 @@ import { multiplyMatrices } from '../calculations/multiply-matrices';
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/matrixmaker.html
  */
 export function lin_a98rgb_to_XYZ(rgb: Color): Color {
-	const M = [
-		[573536 / 994567, 263643 / 1420810, 187206 / 994567],
-		[591459 / 1989134, 6239551 / 9945670, 374412 / 4972835],
-		[53769 / 1989134, 351524 / 4972835, 4929758 / 4972835],
-	];
-
-	return multiplyMatrices(M, rgb) as Color;
+	return multiplyMatrices(M, rgb);
 }

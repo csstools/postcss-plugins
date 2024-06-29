@@ -54,9 +54,7 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 }
 
 export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDelim]): MediaFeatureComparison | false {
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	/* @ts-ignore */
-	if (tokens.length === 0 || tokens.length > 2) {
+	if (tokens.length !== 1 && tokens.length !== 2) {
 		return false;
 	}
 
