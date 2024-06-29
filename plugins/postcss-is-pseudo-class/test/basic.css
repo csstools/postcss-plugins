@@ -173,3 +173,11 @@ header:is(.a .b) {
 :has(:is(.foo .bar) .fooz) {
 	color: green;
 }
+
+:is(:nth-child(2n+1 of .foo), .foo) {
+	color: green;
+}
+
+div:is(.a > .b) > .c {
+	color: green;
+}

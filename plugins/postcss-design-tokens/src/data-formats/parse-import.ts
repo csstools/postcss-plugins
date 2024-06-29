@@ -77,7 +77,7 @@ export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buil
 	alreadyImported.add(resolvedPath);
 
 	const fileContents = await fsp.readFile(resolvedPath, 'utf8');
-	const tokenContents = JSON.parse(fileContents);
+	const tokenContents: unknown = JSON.parse(fileContents);
 
 	switch (format) {
 		case 'style-dictionary3':

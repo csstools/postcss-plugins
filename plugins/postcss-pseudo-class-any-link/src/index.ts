@@ -13,13 +13,10 @@ export type pluginOptions = {
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = {
-		preserve: true,
-		...opts,
-	};
-
-	const subFeatures = {
-		areaHrefNeedsFixing: false,
-		...Object(options.subFeatures),
+		preserve: opts?.preserve ?? true,
+		subFeatures: {
+			areaHrefNeedsFixing: opts?.subFeatures?.areaHrefNeedsFixing ?? false,
+		},
 	};
 
 	return {
@@ -45,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const didReplace = replaceAnyLink(rule, result, options.preserve, subFeatures.areaHrefNeedsFixing);
+					const didReplace = replaceAnyLink(rule, result, options.preserve, options.subFeatures.areaHrefNeedsFixing);
 					if (didReplace) {
 						transformedNodes.add(rule);
 					}

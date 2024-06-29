@@ -11,7 +11,7 @@ export type pluginOptions = {
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// whether to preserve custom media and rules using them
-	const preserve = Boolean(Object(opts).preserve);
+	const preserve = opts?.preserve ?? false;
 
 	if ('importFrom' in Object(opts)) {
 		throw new Error('[postcss-custom-media] "importFrom" is no longer supported');

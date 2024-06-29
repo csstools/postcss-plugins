@@ -82,7 +82,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					try {
 						let didModify = false;
-						const selectorListOnOriginalNode = [];
+						const selectorListOnOriginalNode: Array<string> = [];
 
 						// 1. List behavior.
 						const split = splitSelectors(
@@ -140,12 +140,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							rule.remove();
 						}
 					} catch (err) {
+						if (!(err instanceof Error)) {
+							throw err;
+						}
+
 						// Do not ignore infinite recursion errors.
 						if (err.message.indexOf('call stack size exceeded') > -1) {
 							throw err;
 						}
 
-						rule.warn(result, `Failed to parse selector "${rule.selector}"`);
+						rule.warn(result, `Failed to parse selector "${rule.selector}" with error: ${err.message}`);
 					}
 				},
 			};

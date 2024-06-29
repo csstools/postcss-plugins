@@ -297,7 +297,6 @@ function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: numb
 
 	let i = 1;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = tokens[i];
 		if (!token || isTokenEOF(token)) {
@@ -476,7 +475,6 @@ function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: n
 
 	let i = 1;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = tokens[i];
 		if (!token || isTokenEOF(token)) {
@@ -587,7 +585,6 @@ export class WhitespaceNode {
 function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: WhitespaceNode } {
 	let i = 0;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = tokens[i];
 		if (!isTokenWhitespace(token)) {
@@ -683,7 +680,6 @@ function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>):
 
 	let i = 0;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (isTokenWhitespace(tokens[i])) {
 			const result = consumeWhitespace(ctx, tokens.slice(i));

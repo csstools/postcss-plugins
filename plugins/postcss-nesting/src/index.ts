@@ -30,6 +30,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		case '2024-02':
 			return plugin2024_02(opts);
 		default:
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 			throw new Error(`Invalid edition: ${options.edition}`);
 	}
 };

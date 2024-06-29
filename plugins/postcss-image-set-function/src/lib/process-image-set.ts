@@ -81,9 +81,9 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 	const mediaSizes = Array.from(mediasByDpr.keys())
 		.sort((a, b) => a - b);
 
-	const medias: Array<AtRule> = mediaSizes
+	const medias = mediaSizes
 		.map(params => mediasByDpr.get(params)?.atRule)
-		.filter((x) => !!x) as Array<AtRule>;
+		.filter((x): x is AtRule => !!x);
 
 	if (!medias.length) {
 		return;

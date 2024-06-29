@@ -1,9 +1,8 @@
 // check for "calc("
 // - case insensitive
 // - multiline
-// - multiple matches
-const calcExpressionRegExp = /calc\(/gim;
+const CALC_EXPRESSION_REGEX = /calc\(/gi;
 
 export function numberOfCalcOccurrences(value: string): number {
-	return (value.match(calcExpressionRegExp) || []).length;
+	return (value.match(CALC_EXPRESSION_REGEX) || []).length;
 }

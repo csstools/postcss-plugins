@@ -5,9 +5,9 @@ import { isCommentNode, isTokenNode, isWhitespaceNode, TokenNode, WhitespaceNode
 import { parseColorStops } from './parse-color-stops';
 import { TokenType, isTokenComma, isTokenIdent } from '@csstools/css-tokenizer';
 
-const COLOR_SPACE_REGEX = /^(srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
-const POLAR_COLOR_SPACE_REGEX = /^(hsl|hwb|lch|oklch)$/i;
-const HUE_INTERPOLATION_METHOD_REGEX = /^(shorter|longer|increasing|decreasing)$/i;
+const COLOR_SPACE_REGEX = /^(?:srgb|srgb-linear|lab|oklab|xyz|xyz-d50|xyz-d65|hsl|hwb|lch|oklch)$/i;
+const POLAR_COLOR_SPACE_REGEX = /^(?:hsl|hwb|lch|oklch)$/i;
+const HUE_INTERPOLATION_METHOD_REGEX = /^(?:shorter|longer|increasing|decreasing)$/i;
 const IN_KEYWORD_REGEX = /^in$/i;
 const HUE_KEYWORD_REGEX = /^hue$/i;
 

@@ -14,12 +14,12 @@ export async function listWorkspaces() {
 				const packageDirs = await getFiles(workspace.slice(0, -2), false);
 				for (const packageDir of packageDirs) {
 					packages.add(
-						path.resolve(path.join(packageDir, 'package.json'))
+						path.resolve(path.join(packageDir, 'package.json')),
 					);
 				}
 			} else {
 				packages.add(
-					path.resolve(path.join(workspace, 'package.json'))
+					path.resolve(path.join(workspace, 'package.json')),
 				);
 			}
 		}

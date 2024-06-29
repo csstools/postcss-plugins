@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gradient-stop-increments-experimental",
 	"description": "Increment CSS gradient stops",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-calc": "^1.2.2",
-		"@csstools/css-parser-algorithms": "^2.6.3",
-		"@csstools/css-tokenizer": "^2.3.1"
+		"@csstools/css-calc": "^1.2.3",
+		"@csstools/css-parser-algorithms": "^2.7.0",
+		"@csstools/css-tokenizer": "^2.3.2"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

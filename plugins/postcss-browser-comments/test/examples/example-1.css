@@ -1,0 +1,8 @@
+/**
+ * Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}

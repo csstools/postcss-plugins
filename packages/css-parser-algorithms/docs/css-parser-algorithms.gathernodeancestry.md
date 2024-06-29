@@ -11,7 +11,7 @@ AST nodes do not have a `parent` property or method. This makes it harder to tra
 ```typescript
 export declare function gatherNodeAncestry(node: {
     walk(cb: (entry: {
-        node: Array<unknown> | unknown;
+        node: unknown;
         parent: unknown;
     }, index: number | string) => boolean | void): false | undefined;
 }): Map<unknown, unknown>;
@@ -42,7 +42,7 @@ node
 
 </td><td>
 
-{ walk(cb: (entry: { node: Array&lt;unknown&gt; \| unknown; parent: unknown; }, index: number \| string) =&gt; boolean \| void): false \| undefined; }
+{ walk(cb: (entry: { node: unknown; parent: unknown; }, index: number \| string) =&gt; boolean \| void): false \| undefined; }
 
 
 </td><td>

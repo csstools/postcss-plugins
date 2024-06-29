@@ -1,8 +1,8 @@
 import plugin from 'css-blank-pseudo';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function cssBlankPseudo(): void {
-	cli(
+export default async function cssBlankPseudo(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'replaceWith'],
 		helpTextLogger(

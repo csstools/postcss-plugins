@@ -60,14 +60,14 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-selector-parser": "^6.0.13"
+		"postcss-selector-parser": "^6.1.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^22.7.1"
+		"puppeteer": "^22.11.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

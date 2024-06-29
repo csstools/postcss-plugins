@@ -1,8 +1,8 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
-const addHash = require('./eleventy/filters/add-hash');
-const inlineMarkdown = require('./eleventy/filters/inline-markdown');
-const cleanMarkdown = require('./eleventy/filters/clean-markdown');
+const addHash = require('./eleventy/filters/add-hash.cjs');
+const inlineMarkdown = require('./eleventy/filters/inline-markdown.cjs');
+const cleanMarkdown = require('./eleventy/filters/clean-markdown.cjs');
 const { DateTime } = require('luxon');
 
 module.exports = function (eleventyConfig) {
@@ -31,16 +31,16 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.setBrowserSyncConfig({
 		callbacks: {
 			ready: function(err, browserSync) {
-				browserSync.addMiddleware("*", (req, res) => {
+				browserSync.addMiddleware('*', (req, res) => {
 					// Provides the 404 content without redirect.
-					res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
+					res.writeHead(404, {'Content-Type': 'text/html; charset=UTF-8'});
 					res.write('');
 					res.end();
 				});
 			},
 		},
 		ui: false,
-		ghostMode: false
+		ghostMode: false,
 	});
 
 
@@ -51,12 +51,12 @@ module.exports = function (eleventyConfig) {
 			'md',
 			'njk',
 			'html',
-			'liquid'
+			'liquid',
 		],
 		markdownTemplateEngine: 'njk',
 		htmlTemplateEngine: 'njk',
 		dir: {
-			output: "dist"
+			output: 'dist',
 		},
 	};
 };

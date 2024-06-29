@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-color-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorFunction(): void {
-	cli(
+export default async function postcssColorFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],
 		helpTextLogger(

@@ -99,7 +99,7 @@ export function applyTransformsToValue(value: string|undefined|null, transformOp
 			}
 
 			unitValidity.set(transformOptions.toUnit, false);
-		} catch (_) {
+		} catch {
 			unitValidity.set(transformOptions.toUnit, false);
 		}
 

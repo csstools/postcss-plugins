@@ -51,6 +51,18 @@
 	<target class="test test-11">
 		<div></div>
 	</target>
+	<div>
+		<div>
+			<target class="test test-12"></target>
+		</div>
+	</div>
+	<div class="outer">
+		<div>
+			<div>
+				<target class="test test-13"></target>
+			</div>
+		</div>
+	</div>
 
 	<div id="log"></div>
 	<script type="module">
@@ -142,6 +154,32 @@
 								}
 
 								background-color: red;
+							}
+
+							@scope (div) {
+								& & target.test-12 {
+									background-color: green;
+								}
+
+								:scope :scope target.test-12 {
+									background-color: red;
+								}
+							}
+
+							.outer{
+								@scope (div) {
+									& & target.test-13 {
+										background-color: green;
+									}
+								}
+							}
+
+							.outer{
+								@scope (div) {
+									:scope :scope target.test-13 {
+										background-color: red;
+									}
+								}
 							}
 						`,
 				},

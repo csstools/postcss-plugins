@@ -13,7 +13,7 @@ type basePluginOptions = {
 };
 
 const FUNCTION_REGEX = /\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklch|oklab|color)\(/i;
-const SUPPORTS_REGEX = /\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklch|oklab|color)\(\s*?from/i;
+const SUPPORTS_REGEX = /\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklch|oklab|color)\(\s*from/i;
 const NAME_REGEX = /^(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklch|oklab|color)$/i;
 const FROM_REGEX = /from/i;
 

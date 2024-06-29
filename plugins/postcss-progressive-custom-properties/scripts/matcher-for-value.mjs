@@ -33,7 +33,7 @@ export function matcherForValue(value) {
 		} else {
 			return ast.nodes;
 		}
-	} catch (_) {
+	} catch {
 		/* ignore */
 	}
 }

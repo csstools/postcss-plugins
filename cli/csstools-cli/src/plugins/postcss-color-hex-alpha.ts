@@ -1,8 +1,8 @@
 import plugin from 'postcss-color-hex-alpha';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorHexAlpha(): void {
-	cli(
+export default async function postcssColorHexAlpha(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

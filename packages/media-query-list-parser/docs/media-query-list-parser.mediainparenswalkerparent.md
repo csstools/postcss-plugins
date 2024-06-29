@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | GeneralEnclosed | MediaInParens;
+export type MediaInParensWalkerParent = ContainerNode | GeneralEnclosed | MediaAnd | MediaNot | MediaOr | MediaConditionList | MediaCondition | MediaFeatureBoolean | MediaFeatureName | MediaFeaturePlain | MediaFeatureRange | MediaFeatureValue | MediaFeature | MediaInParens;
 ```
 **References:** [GeneralEnclosed](./media-query-list-parser.generalenclosed.md)<!-- -->, [MediaAnd](./media-query-list-parser.mediaand.md)<!-- -->, [MediaNot](./media-query-list-parser.medianot.md)<!-- -->, [MediaOr](./media-query-list-parser.mediaor.md)<!-- -->, [MediaConditionList](./media-query-list-parser.mediaconditionlist.md)<!-- -->, [MediaCondition](./media-query-list-parser.mediacondition.md)<!-- -->, [MediaFeatureBoolean](./media-query-list-parser.mediafeatureboolean.md)<!-- -->, [MediaFeatureName](./media-query-list-parser.mediafeaturename.md)<!-- -->, [MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md)<!-- -->, [MediaFeatureRange](./media-query-list-parser.mediafeaturerange.md)<!-- -->, [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)<!-- -->, [MediaFeature](./media-query-list-parser.mediafeature.md)<!-- -->, [MediaInParens](./media-query-list-parser.mediainparens.md)
 

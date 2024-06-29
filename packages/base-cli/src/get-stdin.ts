@@ -1,6 +1,6 @@
 export async function getStdin(): Promise<string> {
 	return new Promise((resolve: (str: string) => void) => {
-		let data = '';
+		let data: string = '';
 		let timedOut = false;
 		setTimeout(() => {
 			timedOut = true;
@@ -17,10 +17,10 @@ export async function getStdin(): Promise<string> {
 			process.stdin.setEncoding('utf8');
 
 			process.stdin.on('readable', () => {
-				let chunk;
+				let chunk: string | null = '';
 
-				while ((chunk = process.stdin.read())) {
-					data += chunk;
+				while ((chunk = process.stdin.read() as string | null)) {
+					data += chunk ?? '';
 				}
 			});
 

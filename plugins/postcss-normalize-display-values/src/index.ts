@@ -1,11 +1,15 @@
-import type { Plugin, PluginCreator } from 'postcss';
+import type { PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import mappings from './mappings';
 
 function transform(value: string): string {
+	if (!value.trim()) {
+		return value;
+	}
+
 	const { nodes } = valueParser(value);
 
-	if (nodes.length === 1) {
+	if (nodes.length <= 1) {
 		return value;
 	}
 
@@ -39,46 +43,26 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-normalize-display-values',
-		prepare(): Plugin {
-			const cache = new Map();
-			return {
-				postcssPlugin: 'postcss-normalize-display-values',
-				Declaration(decl): void {
-					if (!IS_DISPLAY_REGEX.test(decl.prop)) {
-						return;
-					}
+		Declaration(decl): void {
+			if (!IS_DISPLAY_REGEX.test(decl.prop)) {
+				return;
+			}
 
-					const value = decl.value;
-					if (!value) {
-						return;
-					}
+			const value = decl.value;
+			if (!value) {
+				return;
+			}
 
-					if (cache.has(value)) {
-						if (decl.value !== cache.get(value)) {
-							decl.cloneBefore({ value: cache.get(value) });
+			const result = transform(value);
+			if (decl.value === result) {
+				return;
+			}
 
-							if (!preserve) {
-								decl.remove();
-							}
-						}
+			decl.cloneBefore({ value: result });
 
-						return;
-					}
-
-					const result = transform(value);
-					cache.set(value, result);
-
-					if (decl.value === result) {
-						return;
-					}
-
-					decl.cloneBefore({ value: result });
-
-					if (!preserve) {
-						decl.remove();
-					}
-				},
-			};
+			if (!preserve) {
+				decl.remove();
+			}
 		},
 	};
 };

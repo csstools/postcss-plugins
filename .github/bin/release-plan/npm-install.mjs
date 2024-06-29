@@ -6,11 +6,11 @@ export async function npmInstall() {
 		const installCmd = spawn(
 			'npm',
 			[
-				'install'
+				'install',
 			],
 			{
-				shell: platform === 'win32'
-			}
+				shell: platform === 'win32',
+			},
 		);
 
 		installCmd.on('close', (code) => {

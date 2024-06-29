@@ -112,6 +112,7 @@ export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, numb
 			return 0;
 		}
 
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		return layers.get(node.parent)! + 1;
 	}
 

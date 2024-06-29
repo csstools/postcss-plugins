@@ -4,7 +4,8 @@
 		".": {
 			"entry": [
 				".github/bin/**/*.mjs",
-				"rollup/**/*.mjs"
+				"rollup/**/*.mjs",
+				"eslint.config.mjs"
 			]
 		},
 		"packages/*": {
@@ -120,10 +121,8 @@
 		"csstools-cli"
 	],
 	"ignoreDependencies": [
-		"@babel/core",
 		"@babel/preset-env",
 		"@microsoft/api-documenter",
-		"@stryker-mutator/command-runner",
-		"tslib"
+		"@stryker-mutator/command-runner"
 	]
 }

@@ -37,7 +37,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const { params } = atRule;
-					const altParamsColorDepth = params.replace(prefersInterfaceRegExp, ($0, style) => {
+					const altParamsColorDepth = params.replace(prefersInterfaceRegExp, ($0, style: string) => {
 						if (style.toLowerCase() === 'dark') {
 							return colorDepthByStyle.dark;
 						}

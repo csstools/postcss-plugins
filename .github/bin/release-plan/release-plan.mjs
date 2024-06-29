@@ -1,5 +1,5 @@
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'fs/promises';
+import path from 'path';
 import { commitAfterDependencyUpdates, commitSingleDirectory } from './commit.mjs';
 import { discordAnnounce, discordAnnounceDryRun } from './discord-announce.mjs';
 import { nowFormatted } from './date-format.mjs';
@@ -16,7 +16,7 @@ import { minifyChangelogAndPackageJSON } from './minify-changelog-and-package-js
 const {
 	needsRelease,
 	notReleasableNow,
-	maybeNextPlan
+	maybeNextPlan,
 } = await prepareCurrentReleasePlan();
 
 if (process.argv.slice(2).includes('--dry-run')) {
@@ -39,7 +39,7 @@ for (const workspace of needsRelease.values()) {
 		updateDocumentation(workspace.path),
 		`When releasing ${workspace.name} an error occurred.`,
 		'This happened during the documentation update and before committing and publishing changes.\n' +
-		'Please fix the error and try again from a clean git state.'
+		'Please fix the error and try again from a clean git state.',
 	);
 
 	// Commit changes
@@ -50,7 +50,7 @@ for (const workspace of needsRelease.values()) {
 		),
 		`When releasing ${workspace.name} an error occurred.`,
 		'This happened when committing changes.\n' +
-		'Please fix the error and try again from a clean git state.'
+		'Please fix the error and try again from a clean git state.',
 	);
 
 	// Run pre-publish scripts
@@ -59,7 +59,7 @@ for (const workspace of needsRelease.values()) {
 		`When releasing ${workspace.name} an error occurred.`,
 		'This happened while running the pre-publish scripts.\n' +
 		'A commit with changes relevant to this release has already been made.\n' +
-		'Please fix the error and try again.'
+		'Please fix the error and try again.',
 	);
 
 	const restoreChangelogAndPackageJSON = await minifyChangelogAndPackageJSON(workspace);
@@ -70,7 +70,7 @@ for (const workspace of needsRelease.values()) {
 		`When releasing ${workspace.name} an error occurred.`,
 		'This happened when publishing to npm.\n' +
 		'A commit with changes relevant to this release has already been made.\n' +
-		'Please fix the error and try again.'
+		'Please fix the error and try again.',
 	);
 
 	await restoreChangelogAndPackageJSON();
@@ -80,7 +80,7 @@ for (const workspace of needsRelease.values()) {
 		discordAnnounce(workspace),
 		`When releasing ${workspace.name} an error occurred.`,
 		'This happened when announcing the update on Discord.\n' +
-		'Committing relevant changes and publishing to npm succeeded.'
+		'Committing relevant changes and publishing to npm succeeded.',
 	);
 }
 

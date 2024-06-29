@@ -1,8 +1,8 @@
 import plugin from 'postcss-logical';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLogical(): void {
-	cli(
+export default async function postcssLogical(): Promise<void> {
+	await cli(
 		plugin,
 		['inlineDirection', 'blockDirection'],
 		helpTextLogger(

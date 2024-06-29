@@ -12606,15 +12606,6 @@
             },
             {
               "kind": "Reference",
-              "text": "GeneralEnclosed",
-              "canonicalReference": "@csstools/media-query-list-parser!GeneralEnclosed:class"
-            },
-            {
-              "kind": "Content",
-              "text": " | "
-            },
-            {
-              "kind": "Reference",
               "text": "MediaInParens",
               "canonicalReference": "@csstools/media-query-list-parser!MediaInParens:class"
             },
@@ -12628,7 +12619,7 @@
           "name": "MediaInParensWalkerEntry",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 30
+            "endIndex": 28
           }
         },
         {
@@ -12759,15 +12750,6 @@
             },
             {
               "kind": "Reference",
-              "text": "GeneralEnclosed",
-              "canonicalReference": "@csstools/media-query-list-parser!GeneralEnclosed:class"
-            },
-            {
-              "kind": "Content",
-              "text": " | "
-            },
-            {
-              "kind": "Reference",
               "text": "MediaInParens",
               "canonicalReference": "@csstools/media-query-list-parser!MediaInParens:class"
             },
@@ -12781,7 +12763,7 @@
           "name": "MediaInParensWalkerParent",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 30
+            "endIndex": 28
           }
         },
         {

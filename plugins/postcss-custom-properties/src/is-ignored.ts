@@ -1,8 +1,8 @@
 import type { Comment, Container, Declaration, Node } from 'postcss';
 
-const blockRegExp = /(!\s*)?postcss-custom-properties:\s*off\b/i;
+const blockRegExp = /(?:!\s*)?postcss-custom-properties:\s*off\b/i;
 
-const blockIgnoredCache = new WeakMap();
+const blockIgnoredCache: WeakMap<Node, boolean> = new WeakMap();
 
 export function isBlockIgnored(container: Container | undefined): boolean {
 	if (!container || !container.nodes) {
@@ -10,7 +10,8 @@ export function isBlockIgnored(container: Container | undefined): boolean {
 	}
 
 	if (blockIgnoredCache.has(container)) {
-		return blockIgnoredCache.get(container);
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		return blockIgnoredCache.get(container)!;
 	}
 
 	const result = container.some((child) => isIgnoreComment(child, blockRegExp));
@@ -19,7 +20,7 @@ export function isBlockIgnored(container: Container | undefined): boolean {
 	return result;
 }
 
-const DECLARATION_REG_EXP = /(!\s*)?postcss-custom-properties:\s*ignore\s+next\b/i;
+const DECLARATION_REG_EXP = /(?:!\s*)?postcss-custom-properties:\s*ignore\s+next\b/i;
 
 export function isDeclarationIgnored(decl: Declaration | undefined): boolean {
 	if (!decl) {

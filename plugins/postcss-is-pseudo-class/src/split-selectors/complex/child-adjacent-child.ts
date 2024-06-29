@@ -1,3 +1,5 @@
+import parser from 'postcss-selector-parser';
+
 // :-csstools-matches(.a > .b) + :-csstools-matches(.c > .d)
 // equivalent to
 // .a.c > .b + .d
@@ -9,7 +11,7 @@
 // .a.c ~ .b + .d
 //
 // because adjacent elements have the same parent element.
-export function childAdjacentChild(selector): boolean {
+export function childAdjacentChild(selector: parser.Container): boolean {
 	if (!selector || !selector.nodes) {
 		return false;
 	}

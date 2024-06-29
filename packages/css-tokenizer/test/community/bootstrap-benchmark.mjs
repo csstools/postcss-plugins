@@ -119,7 +119,6 @@ function csstoolsLargeSource() {
 				},
 			);
 
-			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				const token = t.nextToken();
 				if (token[0] === TokenType.EOF) {
@@ -162,7 +161,6 @@ function csstoolsSmallSource() {
 				},
 			);
 
-			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				const token = t.nextToken();
 				if (token[0] === TokenType.EOF) {
@@ -207,7 +205,6 @@ function csstoolsTinySource() {
 				},
 			);
 
-			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				const token = t.nextToken();
 				if (token[0] === TokenType.EOF) {
@@ -244,7 +241,6 @@ function postcssLargeSource() {
 				},
 			);
 
-			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				const token = t.nextToken();
 				if (!token) {
@@ -281,7 +277,6 @@ function postcssSmallSource() {
 				},
 			);
 
-			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				const token = t.nextToken();
 				if (!token) {
@@ -321,7 +316,6 @@ function postcssTinySource() {
 				},
 			);
 
-			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				const token = t.nextToken();
 				if (!token) {

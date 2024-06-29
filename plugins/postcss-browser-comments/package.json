@@ -1,0 +1,96 @@
+{
+	"name": "postcss-browser-comments",
+	"description": "Keep only the CSS you need based on comments and your browserslist",
+	"version": "5.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Jonathan Neal",
+			"email": "csstools@hotmail.com"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": "^14 || ^16 || >=18"
+	},
+	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"peerDependencies": {
+		"browserslist": "^4.23.1",
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"@csstools/postcss-tape": "*",
+		"browserslist": "^4.23.1"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-browser-comments#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins/postcss-browser-comments"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"browserlists",
+		"browsers",
+		"browserslists",
+		"caniuse",
+		"css",
+		"lists",
+		"postcss",
+		"postcss-plugin",
+		"support",
+		"target"
+	],
+	"csstools": {
+		"exportName": "postcssBrowserComments",
+		"humanReadableName": "PostCSS Browser Comments"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

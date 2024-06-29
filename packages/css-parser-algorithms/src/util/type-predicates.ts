@@ -33,6 +33,14 @@ export function isCommentNode(x: unknown): x is CommentNode {
 }
 
 /**
+ * Check if the current object is a `WhiteSpaceNode` or a `CommentNode`.
+ * This is a type guard.
+ */
+export function isWhiteSpaceOrCommentNode(x: unknown): x is WhitespaceNode | CommentNode {
+	return isWhitespaceNode(x) || isCommentNode(x);
+}
+
+/**
  * Check if the current object is a `TokenNode`.
  * This is a type guard.
  */

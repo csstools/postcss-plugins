@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-tokenizer",
 	"description": "Tokenize CSS",
-	"version": "2.3.1",
+	"version": "2.3.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

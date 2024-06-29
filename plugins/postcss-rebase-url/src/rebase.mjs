@@ -32,7 +32,7 @@ export function rebase(url, fromDir, fromEntryPointDir) {
 		if (x.port || x.protocol) {
 			return false;
 		}
-	} catch { } // eslint-disable-line no-empty
+	} catch {}
 
 	const absPath = path.posix.resolve(
 		path.posix.join(fromDir, url),

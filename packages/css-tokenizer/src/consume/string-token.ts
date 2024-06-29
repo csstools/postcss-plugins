@@ -12,7 +12,6 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 
 	const first = reader.readCodePoint();
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const next = reader.readCodePoint();
 		if (next === false) {

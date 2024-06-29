@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-light-dark-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLightDarkFunction(): void {
-	cli(
+export default async function postcssLightDarkFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

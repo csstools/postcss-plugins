@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-hwb-function",
 	"description": "Use hwb() color functions in CSS",
-	"version": "3.0.15",
+	"version": "3.0.16",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^2.0.2",
-		"@csstools/css-parser-algorithms": "^2.6.3",
-		"@csstools/css-tokenizer": "^2.3.1",
+		"@csstools/css-color-parser": "^2.0.3",
+		"@csstools/css-parser-algorithms": "^2.7.0",
+		"@csstools/css-tokenizer": "^2.3.2",
 		"@csstools/postcss-progressive-custom-properties": "^3.2.0",
 		"@csstools/utilities": "^1.0.0"
 	},

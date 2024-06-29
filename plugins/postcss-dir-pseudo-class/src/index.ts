@@ -103,6 +103,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										node.remove();
 									} else {
 										node.replaceWith(
+											// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 											selectorParser.universal(),
 										);
 									}
@@ -186,7 +187,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								});
 							});
 						}).processSync(rule.selector);
-					} catch (_) {
+					} catch {
 						rule.warn(result, `Failed to parse selector : ${rule.selector}`);
 						return;
 					}

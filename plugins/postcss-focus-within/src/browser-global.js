@@ -1,4 +1,3 @@
-/* global self,window */
 import { default as focusWithinInit } from './browser';
 
 (function (global) {

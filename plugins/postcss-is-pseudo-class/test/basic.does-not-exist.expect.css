@@ -273,3 +273,15 @@ input:hover, input:focus, button:hover, button:focus {
 :has(:is(.foo .bar) .fooz) {
 	color: green;
 }
+
+:nth-child(2n+1 of .foo) {
+	color: green;
+}
+
+.foo:not(.something-random) {
+	color: green;
+}
+
+.a > div.b > .c {
+	color: green;
+}

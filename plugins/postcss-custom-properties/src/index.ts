@@ -13,7 +13,7 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const SUPPORTS_REGEX = /(?:\bvar\()|(?:\(top: var\(--f\))/i;
+const SUPPORTS_REGEX = /\bvar\(|\(top: var\(--f\)/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;

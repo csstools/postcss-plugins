@@ -1,8 +1,8 @@
 import plugin from 'postcss-focus-visible';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssFocusVisible(): void {
-	cli(
+export default async function postcssFocusVisible(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'replaceWith'],
 		helpTextLogger(

@@ -1,4 +1,3 @@
-/* global self,window */
 import { default as cssHasPseudo } from './browser';
 
 (function (global) {

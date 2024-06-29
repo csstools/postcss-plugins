@@ -71,6 +71,12 @@
       - plugins/postcss-attribute-case-insensitive/**
       - experimental/postcss-attribute-case-insensitive/**
 
+"plugins/postcss-browser-comments":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-browser-comments/**
+      - experimental/postcss-browser-comments/**
+
 "plugins/postcss-cascade-layers":
   - changed-files:
     - any-glob-to-any-file:

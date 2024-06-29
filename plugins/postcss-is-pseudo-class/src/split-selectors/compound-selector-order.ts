@@ -1,12 +1,12 @@
 import parser from 'postcss-selector-parser';
 
-export function sortCompoundSelectorsInsideComplexSelector(node): void {
+export function sortCompoundSelectorsInsideComplexSelector(node: parser.Container): void {
 	if (!node || !node.nodes || node.nodes.length === 1) {
 		return;
 	}
 
 	const compoundSelectors: Array<Array<parser.Node>> = [];
-	let currentCompoundSelector = [];
+	let currentCompoundSelector: Array<parser.Node> = [];
 	for (let i = 0; i < node.nodes.length; i++) {
 		if (node.nodes[i].type === 'combinator') {
 			// Push the current compound selector
@@ -36,7 +36,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node): void {
 
 	compoundSelectors.push(currentCompoundSelector);
 
-	const sortedCompoundSelectors = [];
+	const sortedCompoundSelectors: Array<parser.Node> = [];
 	for (let i = 0; i < compoundSelectors.length; i++) {
 		const compoundSelector = compoundSelectors[i];
 
@@ -99,7 +99,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node): void {
 	}
 }
 
-function selectorTypeOrder(selector, type): number {
+function selectorTypeOrder(selector: parser.Node, type: string): number {
 	if (parser.isPseudoElement(selector)) {
 		return selectorTypeOrderIndex.pseudoElement;
 	}
@@ -107,7 +107,7 @@ function selectorTypeOrder(selector, type): number {
 	return selectorTypeOrderIndex[type];
 }
 
-const selectorTypeOrderIndex = {
+const selectorTypeOrderIndex: Record<string, number> = {
 	universal: 0,
 	tag: 1,
 	pseudoElement: 2,

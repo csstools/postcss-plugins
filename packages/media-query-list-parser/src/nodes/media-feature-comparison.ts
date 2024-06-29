@@ -25,18 +25,18 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 		if (componentValue.type === ComponentValueType.Token) {
 			const token = componentValue.value as CSSToken;
 			if (isTokenDelim(token)) {
-				if (token[4].value === MediaFeatureEQ.EQ) {
+				if ((token[4].value as MediaFeatureComparison) === MediaFeatureEQ.EQ) {
 					if (firstTokenIndex !== -1) {
 						return [firstTokenIndex, i];
 					}
 
 					return [i, i];
 				}
-				if (token[4].value === MediaFeatureLT.LT) {
+				if ((token[4].value as MediaFeatureComparison) === MediaFeatureLT.LT) {
 					firstTokenIndex = i;
 					continue;
 				}
-				if (token[4].value === MediaFeatureGT.GT) {
+				if ((token[4].value as MediaFeatureComparison) === MediaFeatureGT.GT) {
 					firstTokenIndex = i;
 					continue;
 				}
@@ -54,9 +54,7 @@ export function matchesComparison(componentValues: Array<ComponentValue>): false
 }
 
 export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDelim]): MediaFeatureComparison | false {
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	/* @ts-ignore */
-	if (tokens.length === 0 || tokens.length > 2) {
+	if (tokens.length !== 1 && tokens.length !== 2) {
 		return false;
 	}
 
@@ -65,7 +63,7 @@ export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDe
 	}
 
 	if (tokens.length === 1) {
-		switch (tokens[0][4].value) {
+		switch (tokens[0][4].value as MediaFeatureComparison) {
 			case MediaFeatureEQ.EQ:
 				return MediaFeatureEQ.EQ;
 			case MediaFeatureLT.LT:
@@ -81,11 +79,11 @@ export function comparisonFromTokens(tokens: [TokenDelim, TokenDelim] | [TokenDe
 		return false;
 	}
 
-	if (tokens[1][4].value !== MediaFeatureEQ.EQ) {
+	if ((tokens[1][4].value as MediaFeatureComparison) !== MediaFeatureEQ.EQ) {
 		return false;
 	}
 
-	switch (tokens[0][4].value) {
+	switch (tokens[0][4].value as MediaFeatureComparison) {
 		case MediaFeatureLT.LT:
 			return MediaFeatureLT.LT_OR_EQ;
 		case MediaFeatureGT.GT:

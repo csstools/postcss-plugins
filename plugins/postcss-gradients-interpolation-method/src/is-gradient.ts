@@ -1,4 +1,4 @@
-const GRADIENT_FUNCTION_REGEX = /(repeating-)?(linear|radial|conic)-gradient\(/i;
+const GRADIENT_FUNCTION_REGEX = /(?:repeating-)?(?:linear|radial|conic)-gradient\(/i;
 const IN_KEYWORD_REGEX = /\bin\b/i;
 
 export const IS_GRADIENT_FUNCTION = {

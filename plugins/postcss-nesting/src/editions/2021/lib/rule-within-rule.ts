@@ -6,7 +6,7 @@ import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.j
 import { options } from './options.js';
 
 export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result, opts: options): void {
-	let selectors = [];
+	let selectors: Array<string> = [];
 
 	// update the selectors of the node to be merged with the parent
 	try {

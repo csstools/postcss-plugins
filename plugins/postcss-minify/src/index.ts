@@ -2,18 +2,19 @@ import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
 import type { CSSToken } from '@csstools/css-tokenizer';
 import { isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
 
-const HAS_LEGAL_KEYWORDS_REGEX = /(?:license|copyright)/i;
+const HAS_LEGAL_KEYWORDS_REGEX = /license|copyright/i;
 const HAS_SOURCE_MAP_REGEX = /sourceMappingURL/i;
-const HAS_WHITESPACE_OR_COMMENTS_REGEX = /(?:\s|\/\*)/;
+const HAS_WHITESPACE_OR_COMMENTS_REGEX = /\s|\/\*/;
 const IS_LAYER_REGEX = /^layer$/i;
 
-function minify(cache: Map<string, string>, x: string | undefined): string | undefined {
+function minify(cache: Map<string, string>, x: string): string {
 	if (!x) {
 		return x;
 	}
 
 	if (cache.has(x)) {
-		return cache.get(x);
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		return cache.get(x)!;
 	}
 
 	const y = x.trim();
@@ -123,7 +124,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 						setSemicolon(node);
 
-						node.params = minify(cache, node.params)!;
+						node.params = minify(cache, node.params);
 
 						return;
 
@@ -140,7 +141,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 						setSemicolon(node);
 
-						node.selector = minify(cache, node.selector)!;
+						node.selector = minify(cache, node.selector);
 
 						return;
 
@@ -159,7 +160,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 						node.raws.important = node.important ? '!important' : '';
 						node.raws.value = undefined;
 
-						node.value = minify(cache, node.value)!;
+						node.value = minify(cache, node.value);
 
 						return;
 

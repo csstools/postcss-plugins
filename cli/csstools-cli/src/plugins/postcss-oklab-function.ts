@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-oklab-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssOKLabFunction(): void {
-	cli(
+export default async function postcssOKLabFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties', 'subFeatures'],
 		helpTextLogger(

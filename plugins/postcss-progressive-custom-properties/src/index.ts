@@ -119,6 +119,7 @@ const creator: PluginCreator<null> = () => {
 						const parentClone = decl.parent.clone();
 						parentClone.removeAll();
 
+						// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 						parentClone.raws.before = '\n';
 
 						parentClone.append(decl.clone());

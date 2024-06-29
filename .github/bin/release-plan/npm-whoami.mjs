@@ -1,17 +1,17 @@
 import { spawn } from 'child_process';
 import { platform } from 'process';
 
-export async function whoami(packageName) {
+export async function whoami() {
 	return await new Promise((resolve, reject) => {
 		const whoamiCmd = spawn(
 			'npm',
 			[
-				'whoami'
+				'whoami',
 			],
 			{
 				shell: platform === 'win32',
-				stdio: 'pipe'
-			}
+				stdio: 'pipe',
+			},
 		);
 
 		let result = '';

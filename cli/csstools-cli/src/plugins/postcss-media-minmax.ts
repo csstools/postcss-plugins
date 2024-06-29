@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-media-minmax';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssMediaMinMax(): void {
-	cli(
+export default async function postcssMediaMinMax(): Promise<void> {
+	await cli(
 		plugin,
 		[],
 		helpTextLogger(

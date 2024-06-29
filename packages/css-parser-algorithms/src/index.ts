@@ -102,5 +102,6 @@ export {
 	isSimpleBlockNode,
 	isTokenNode,
 	isWhitespaceNode,
+	isWhiteSpaceOrCommentNode,
 } from './util/type-predicates';
 export { sourceIndices } from './util/source-indices';

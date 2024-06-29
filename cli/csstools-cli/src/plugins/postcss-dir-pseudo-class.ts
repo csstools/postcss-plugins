@@ -1,8 +1,8 @@
 import plugin from 'postcss-dir-pseudo-class';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssDirPseudoClass(): void {
-	cli(
+export default async function postcssDirPseudoClass(): Promise<void> {
+	await cli(
 		plugin,
 		['dir', 'preserve', 'shadow'],
 		helpTextLogger(

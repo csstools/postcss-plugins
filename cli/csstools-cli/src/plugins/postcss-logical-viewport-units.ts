@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-logical-viewport-units';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLogicalViewportUnits(): void {
-	cli(
+export default async function postcssLogicalViewportUnits(): Promise<void> {
+	await cli(
 		plugin,
 		['inlineDirection', 'preserve'],
 		helpTextLogger(

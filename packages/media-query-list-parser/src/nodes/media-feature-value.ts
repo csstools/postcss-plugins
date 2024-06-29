@@ -1,8 +1,9 @@
-import { ComponentValue, ComponentValueType, ContainerNode, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
+import { ComponentValue, ComponentValueType, ContainerNode, isTokenNode, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
 import { CSSToken, stringify } from '@csstools/css-tokenizer';
 import { isDimension, isEnvironmentVariable, isIdent, isNumber } from '../util/component-value-is';
 import { NodeType } from '../util/node-type';
 import { isTokenDelim } from '@csstools/css-tokenizer';
+import { isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 
 export class MediaFeatureValue {
 	type = NodeType.MediaFeatureValue;
@@ -243,11 +244,7 @@ export function matchesRatioExactly(componentValues: Array<ComponentValue>): -1 
 
 	for (let i = secondNumber+1; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (componentValue.type === 'whitespace') {
-			continue;
-		}
-
-		if (componentValue.type === 'comment') {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
 			continue;
 		}
 
@@ -263,16 +260,12 @@ export function matchesRatio(componentValues: Array<ComponentValue>): -1 | [numb
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (componentValue.type === 'whitespace') {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
 			continue;
 		}
 
-		if (componentValue.type === 'comment') {
-			continue;
-		}
-
-		if (componentValue.type === 'token') {
-			const token = componentValue.value as CSSToken;
+		if (isTokenNode(componentValue)) {
+			const token = componentValue.value;
 			if (isTokenDelim(token) && token[4].value === '/') {
 				if (firstNumber === -1) {
 					return -1;

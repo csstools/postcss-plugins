@@ -17,7 +17,6 @@ eachTest((name, css) => {
 
 	const tokens = [];
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const token = t.nextToken();
 		if (token[0] === TokenType.EOF) {

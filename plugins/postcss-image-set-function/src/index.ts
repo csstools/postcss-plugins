@@ -4,8 +4,8 @@ import type { PluginCreator } from 'postcss';
 import { handleInvalidation } from './lib/handle-invalidation';
 import { hasFallback } from '@csstools/utilities';
 
-const IMAGE_SET_VALUE_MATCH_REGEX = /(^|[^\w-])(-webkit-)?image-set\(/i;
-const IMAGE_SET_FUNCTION_MATCH_REGEX = /^(-webkit-)?image-set$/i;
+const IMAGE_SET_VALUE_MATCH_REGEX = /(?:^|[^\w-])(?:-webkit-)?image-set\(/i;
+const IMAGE_SET_FUNCTION_MATCH_REGEX = /^(?:-webkit-)?image-set$/i;
 
 /** postcss-image-set-function plugin options */
 export type pluginOptions = {
@@ -47,7 +47,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			try {
 				valueAST = valueParser(value);
-			} catch (_) {
+			} catch {
 				decl.warn(
 					result,
 					`Failed to parse value '${value}' as an image-set function. Leaving the original value intact.`,

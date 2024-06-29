@@ -4,6 +4,12 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 3.1.1
+
+_May 13, 2024_
+
+- Prevent mutation of selectors with An+B microsyntax (e.g. `:nth-child(2n+1 of .foo)`) during specificity calculation
+
 ### 3.1.0
 
 _May 11, 2024_

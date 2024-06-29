@@ -35,7 +35,7 @@ assert.deepStrictEqual(
 	],
 );
 
-testLogger.logger.dumpLogs(testLogger);
+testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
@@ -89,7 +89,7 @@ assert.deepStrictEqual(
 	],
 );
 
-testLogger.logger.dumpLogs(testLogger);
+testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[
@@ -157,7 +157,7 @@ assert.deepStrictEqual(
 	],
 );
 
-testLogger.logger.dumpLogs(testLogger);
+testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
 	[

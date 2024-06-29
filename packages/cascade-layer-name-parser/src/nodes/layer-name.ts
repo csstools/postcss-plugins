@@ -47,18 +47,18 @@ export class LayerName {
 	}
 
 	segments(): Array<string> {
-		return this.parts.filter((x) => {
+		return this.parts.filter((x): x is TokenIdent => {
 			return isTokenIdent(x);
 		}).map((x) => {
-			return (x as TokenIdent)[4].value;
+			return x[4].value;
 		});
 	}
 
 	name(): string {
-		return this.parts.filter((x) => {
+		return this.parts.filter((x): x is TokenIdent | TokenDelim => {
 			return isTokenIdent(x) || isTokenDelim(x);
 		}).map((x) => {
-			return (x as TokenIdent | TokenDelim)[1];
+			return x[1];
 		}).join('');
 	}
 

@@ -1,8 +1,8 @@
 import plugin from 'postcss-focus-within';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssFocusWithin(): void {
-	cli(
+export default async function postcssFocusWithin(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'replaceWith'],
 		helpTextLogger(

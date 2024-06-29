@@ -31,9 +31,11 @@ export function flattenNestedSelector(selector: Root, parentSelector: Root): Roo
 
 			if (!isNestContaining) {
 				selectorAST.prepend(parser.combinator({ value: ' ', ...sourceFrom(selectorAST) }));
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 				nestingCounter++;
 			} else if (selectorAST.nodes[0]?.type === 'combinator') {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 				nestingCounter++;
 			}

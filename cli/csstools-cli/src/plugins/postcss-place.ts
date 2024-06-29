@@ -1,8 +1,8 @@
 import plugin from 'postcss-place';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssPlace(): void {
-	cli(
+export default async function postcssPlace(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

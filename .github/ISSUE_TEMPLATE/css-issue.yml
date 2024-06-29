@@ -69,6 +69,7 @@ body:
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
         - PostCSS Attribute Case Insensitive
+        - PostCSS Browser Comments
         - PostCSS Cascade Layers
         - PostCSS Color Function
         - PostCSS Color Functional Notation
