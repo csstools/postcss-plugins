@@ -1,4 +1,0 @@
-{
-  "include": ["src/static/**/*"],
-  "exclude": ["node_modules/*", "dist/*"]
-}

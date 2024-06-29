@@ -7,7 +7,6 @@ export default [
 	{
 		ignores: [
 			'**/dist/*',
-			'sites/**',
 			'e2e/**',
 		],
 	},
@@ -26,6 +25,9 @@ export default [
 			'**/*.js',
 			'**/*.cjs',
 			'**/*.mjs',
+		],
+		ignores: [
+			'sites/postcss-preset-env/src/static/js/**/*.js',
 		],
 
 		languageOptions: {
@@ -59,7 +61,9 @@ export default [
 		files: [
 			'**/src/browser.js',
 			'**/src/browser-global.js',
+			'sites/postcss-preset-env/src/**/*.js',
 		],
+
 		languageOptions: {
 			globals: {
 				...globals.browser,
@@ -67,6 +71,7 @@ export default [
 			ecmaVersion: 2022,
 			sourceType: 'module',
 		},
+
 		rules: {
 			'no-unused-vars': ['error', { 'caughtErrorsIgnorePattern': '_' }],
 			'no-constant-condition': 'off',
@@ -78,6 +83,7 @@ export default [
 			'**/*.cts',
 			'**/*.mts',
 		],
+
 		languageOptions: {
 			parserOptions: {
 				projectService: true,
