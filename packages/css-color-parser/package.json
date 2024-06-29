@@ -52,7 +52,7 @@
 		"@csstools/css-calc": "^1.2.2"
 	},
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^2.6.3",
+		"@csstools/css-parser-algorithms": "^2.7.0",
 		"@csstools/css-tokenizer": "^2.3.2"
 	},
 	"scripts": {
