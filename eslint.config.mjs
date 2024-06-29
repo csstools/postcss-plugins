@@ -95,7 +95,6 @@ export default [
 			'@typescript-eslint/explicit-function-return-type': 'error',
 			'@typescript-eslint/no-base-to-string': 'off',
 			'@typescript-eslint/no-non-null-assertion': 'error',
-			'@typescript-eslint/only-throw-error': 'off', // https://github.com/postcss/postcss/pull/1947
 		},
 	},
 ];
