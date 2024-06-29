@@ -4,6 +4,8 @@
 
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.3.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#232) (patch)
 - Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.7.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#270) (minor)
+- Updated [`@csstools/cascade-layer-name-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser) to [`1.0.12`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser/CHANGELOG.md#1012) (patch)
+- Updated [`@csstools/media-query-list-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser) to [`2.1.12`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser/CHANGELOG.md#2112) (patch)
 
 ### 10.0.6
 
