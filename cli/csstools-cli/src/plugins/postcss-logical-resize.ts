@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-logical-resize';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssLogicalResize(): void {
-	cli(
+export default async function postcssLogicalResize(): Promise<void> {
+	await cli(
 		plugin,
 		['inlineDirection'],
 		helpTextLogger(

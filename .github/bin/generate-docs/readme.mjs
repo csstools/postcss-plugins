@@ -13,7 +13,7 @@ try {
 	exampleFilePaths = (
 		await fs.promises.readdir(path.join('test', 'examples'), { recursive: true, withFileTypes: true })
 	).filter(x => x.isFile()).map(x => path.join(x.parentPath, x.name));
-} catch(error) {
+} catch {
 	// No examples
 }
 

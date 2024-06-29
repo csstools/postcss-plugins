@@ -86,6 +86,7 @@ function findCyclicNode(nodes: Array<string>, edges: Array<Array<string>>): stri
 			predecessors.add(node);
 			do {
 				const child = outgoing[--j];
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				const cyclicNode = visit(child, nodesHash.get(child)!, predecessors);
 				if (!cyclicNode) {
 					continue;
@@ -110,6 +111,7 @@ function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> 
 		if (!edges.has(edge[1])) {
 			edges.set(edge[1], new Set());
 		}
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		edges.get(edge[0])!.add(edge[1]);
 	}
 	return edges;

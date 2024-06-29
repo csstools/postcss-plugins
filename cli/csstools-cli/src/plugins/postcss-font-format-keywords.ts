@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-font-format-keywords';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssFontFormatKeywords(): void {
-	cli(
+export default async function postcssFontFormatKeywords(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

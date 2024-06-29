@@ -1,8 +1,8 @@
 import plugin from 'postcss-gap-properties';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssGapProperties(): void {
-	cli(
+export default async function postcssGapProperties(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

@@ -1,8 +1,8 @@
 import plugin from 'postcss-color-rebeccapurple';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorRebeccaPurple(): void {
-	cli(
+export default async function postcssColorRebeccaPurple(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

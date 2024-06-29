@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (patch)
+
+- Optimize `cloneTokens`
+
 ### 2.3.1
 
 _May 4, 2024_

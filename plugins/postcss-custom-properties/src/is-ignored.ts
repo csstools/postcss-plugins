@@ -10,6 +10,7 @@ export function isBlockIgnored(container: Container | undefined): boolean {
 	}
 
 	if (blockIgnoredCache.has(container)) {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		return blockIgnoredCache.get(container)!;
 	}
 

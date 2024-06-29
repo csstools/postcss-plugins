@@ -87,7 +87,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							const startNode = currentNode;
 							let endNode = currentNode;
 
-							// eslint-disable-next-line no-constant-condition
 							while (true) {
 								const nextNode = relevantNodes[i + 1];
 								if (nextNode && nextNode.type === 'word' && lineKeywords.includes(nextNode.value.toLowerCase())) {

@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-ic-unit';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssICUnit(): void {
-	cli(
+export default async function postcssICUnit(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],
 		helpTextLogger(

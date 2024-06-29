@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-is-pseudo-class';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssIsPseudoClass(): void {
-	cli(
+export default async function postcssIsPseudoClass(): Promise<void> {
+	await cli(
 		plugin,
 		['onComplexSelector', 'preserve', 'specificityMatchingName'],
 		helpTextLogger(

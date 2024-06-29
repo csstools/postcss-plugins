@@ -11,7 +11,6 @@ export const predicate = {
 
 		const t = tokenizer({ css: source });
 
-		// eslint-disable-next-line no-constant-condition
 		while (true) {
 			const token = t.nextToken();
 			if (!token) {

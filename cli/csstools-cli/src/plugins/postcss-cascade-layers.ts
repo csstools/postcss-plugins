@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-cascade-layers';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssCascadeLayers(): void {
-	cli(
+export default async function postcssCascadeLayers(): Promise<void> {
+	await cli(
 		plugin,
 		[],
 		helpTextLogger(

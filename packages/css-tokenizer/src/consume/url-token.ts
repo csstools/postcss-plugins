@@ -16,7 +16,6 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 
 	let string = '';
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (reader.codePointSource[reader.cursor] === undefined) {
 			ctx.onParseError(new ParseError(

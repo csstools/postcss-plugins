@@ -1,8 +1,8 @@
 import plugin from 'css-has-pseudo';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function cssHasPseudo(): void {
-	cli(
+export default async function cssHasPseudo(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

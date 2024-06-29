@@ -4,7 +4,8 @@
 		".": {
 			"entry": [
 				".github/bin/**/*.mjs",
-				"rollup/**/*.mjs"
+				"rollup/**/*.mjs",
+				"eslint.config.mjs"
 			]
 		},
 		"packages/*": {

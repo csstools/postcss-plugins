@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-stepped-value-functions';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssSteppedValueFunctions(): void {
-	cli(
+export default async function postcssSteppedValueFunctions(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'onInvalid'],
 		helpTextLogger(

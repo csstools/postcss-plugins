@@ -28,7 +28,6 @@
 	"devDependencies": {
 		"@babel/core": "^7.24.7",
 		"@babel/preset-env": "^7.24.7",
-		"@eslint/eslintrc": "^3.1.0",
 		"@eslint/js": "^9.5.0",
 		"@microsoft/api-documenter": "^7.25.3",
 		"@microsoft/api-extractor": "^7.47.0",
@@ -38,15 +37,13 @@
 		"@rollup/plugin-terser": "^0.4.3",
 		"@rollup/plugin-typescript": "^11.1.6",
 		"@stryker-mutator/core": "^8.2.6",
-		"@typescript-eslint/eslint-plugin": "^7.13.0",
-		"@typescript-eslint/parser": "^7.13.0",
-		"eslint": "^8.57.0",
+		"eslint": "^9.5.0",
 		"globals": "^15.6.0",
 		"knip": "^5.20.0",
 		"rollup": "^4.17.2",
 		"tslib": "^2.6.3",
 		"typescript": "^5.4.5",
-		"typescript-eslint": "^8.0.0-alpha.30"
+		"typescript-eslint": "^8.0.0-alpha.36"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",

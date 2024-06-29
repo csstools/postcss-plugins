@@ -25,8 +25,10 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root): Roo
 
 			if (!isNestContaining) {
 				selectorAST.prepend(parser.combinator({ value: ' ', ...sourceFrom(selectorAST) }));
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 			} else if (selectorAST.nodes[0]?.type === 'combinator') {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 			}
 		}
@@ -35,7 +37,10 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root): Roo
 			const needsSorting = new Set<Container<string, Node>>();
 
 			selectorAST.walkNesting((node) => {
-				const parent = node.parent!;
+				const parent = node.parent;
+
+				if (!parent) return;
+
 				needsSorting.add(parent);
 
 				if (parent.parent?.type === 'pseudo' && parent.parent.value?.toLowerCase() === ':has') {

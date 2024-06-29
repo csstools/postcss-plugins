@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-color-mix-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorMixFunction(): void {
-	cli(
+export default async function postcssColorMixFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'enableProgressiveCustomProperties'],
 		helpTextLogger(

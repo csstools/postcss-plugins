@@ -3,6 +3,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default [
+	js.configs.recommended,
 	{
 		ignores: [
 			'**/dist/*',
@@ -10,7 +11,6 @@ export default [
 			'e2e/**',
 		],
 	},
-	js.configs.recommended,
 	...tseslint.configs.recommendedTypeChecked.map((config) => {
 		return {
 			...config,
@@ -22,6 +22,12 @@ export default [
 		};
 	}),
 	{
+		files: [
+			'**/*.js',
+			'**/*.cjs',
+			'**/*.mjs',
+		],
+
 		languageOptions: {
 			globals: {
 				...globals.node,
@@ -43,18 +49,11 @@ export default [
 
 			radix: 'error',
 			'space-in-parens': ['error', 'never'],
+
+			'no-empty': ['error', {
+				'allowEmptyCatch': true,
+			}],
 		},
-	},
-	{
-		files: [
-			'**/*.js',
-			'**/*.cjs',
-			'**/*.mjs',
-		],
-		ignores: [
-			'**/src/browser.js',
-			'**/src/browser-global.js',
-		],
 	},
 	{
 		files: [
@@ -67,6 +66,10 @@ export default [
 			},
 			ecmaVersion: 2022,
 			sourceType: 'module',
+		},
+		rules: {
+			'no-unused-vars': ['error', { 'caughtErrorsIgnorePattern': '_' }],
+			'no-constant-condition': 'off',
 		},
 	},
 	{
@@ -91,6 +94,8 @@ export default [
 
 			'@typescript-eslint/explicit-function-return-type': 'error',
 			'@typescript-eslint/no-base-to-string': 'off',
+			'@typescript-eslint/no-non-null-assertion': 'error',
+			'@typescript-eslint/only-throw-error': 'off', // https://github.com/postcss/postcss/pull/1947
 		},
 	},
 ];

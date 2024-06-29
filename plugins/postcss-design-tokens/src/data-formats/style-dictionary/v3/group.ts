@@ -35,7 +35,6 @@ function extractTokens(node: StyleDictionaryV3TokenGroup, path: Array<string>, f
 			}
 
 			for (const [tokenPath, token] of extractTokens(child, [...path, key], filePath).entries()) {
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				result.set(tokenPath, token);
 				continue;
 			}

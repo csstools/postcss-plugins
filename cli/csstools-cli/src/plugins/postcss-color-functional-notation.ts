@@ -1,8 +1,8 @@
 import plugin from 'postcss-color-functional-notation';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssColorFunctionalNotation(): void {
-	cli(
+export default async function postcssColorFunctionalNotation(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

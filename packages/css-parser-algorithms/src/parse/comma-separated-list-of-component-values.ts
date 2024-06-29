@@ -42,7 +42,6 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 
 	let i = 0;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (!tokensCopy[i] || isTokenEOF(tokensCopy[i])) {
 			if (list.length) {

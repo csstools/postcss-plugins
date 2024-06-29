@@ -8,7 +8,11 @@ import { formatImportPrelude } from './format-import-prelude';
 // Each import can define a single group of conditions and a single cascade layer.
 export function base64EncodedConditionalImport(prelude: string, conditions: Array<Condition>): string {
 	conditions.reverse();
-	const first = conditions.pop()!;
+	const first = conditions.pop();
+	if (!first) {
+		return prelude;
+	}
+
 	let params = `${prelude} ${formatImportPrelude(
 		first.layer,
 		first.media,

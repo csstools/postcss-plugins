@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-hwb-function';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssHWBFunction(): void {
-	cli(
+export default async function postcssHWBFunction(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

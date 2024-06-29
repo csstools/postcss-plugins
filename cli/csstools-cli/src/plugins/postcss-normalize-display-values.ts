@@ -1,8 +1,8 @@
 import plugin from '@csstools/postcss-normalize-display-values';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssNormalizeDisplayValues(): void {
-	cli(
+export default async function postcssNormalizeDisplayValues(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve'],
 		helpTextLogger(

@@ -37,7 +37,6 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 
 	let i = 0;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (!tokensCopy[i] || isTokenEOF(tokensCopy[i])) {
 			return list;

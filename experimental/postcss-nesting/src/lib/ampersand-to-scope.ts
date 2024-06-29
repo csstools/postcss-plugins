@@ -16,6 +16,10 @@ export default function ampersandToScope(rule: Rule, result: Result): void {
 	try {
 		selectorAST = parser().astSync(rule.selector);
 	} catch (err) {
+		if (!(err instanceof Error)) {
+			throw err;
+		}
+
 		rule.warn(result, `Failed to parse selector : "${rule.selector}" with message: "${err.message}"`);
 		return;
 	}

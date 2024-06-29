@@ -21,7 +21,7 @@ export default function creator(opts) {
 
 			try {
 				replacedValue = getReplacedValue(atRule.params, await environmentVariablesPromise);
-			} catch (error) {
+			} catch {
 				atRule.warn(
 					result,
 					`Failed to parse params '${atRule.params}' as an environment value. Leaving the original value intact.`,
@@ -46,7 +46,7 @@ export default function creator(opts) {
 
 			try {
 				replacedValue = getReplacedValue(decl.value, await environmentVariablesPromise);
-			} catch (error) {
+			} catch {
 				decl.warn(
 					result,
 					`Failed to parse value '${decl.value}' as an environment value. Leaving the original value intact.`,

@@ -112,7 +112,7 @@ export default function cssBlankPseudoInit(opts) {
 		if (!options.force) {
 			return;
 		}
-	} catch (ignoredError) { /* do nothing and continue */ }
+	} catch (_) {}
 
 	const handler = generateHandler(options.replaceWith);
 	const bindEvents = () => {

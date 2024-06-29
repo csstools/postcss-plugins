@@ -59,7 +59,7 @@ export default function focusWithin(opts) {
 		if (!options.force) {
 			return;
 		}
-	} catch (ignoredError) { /* do nothing and continue */ }
+	} catch (_) {}
 
 	const handleFocusChange = generateHandler(options.replaceWith);
 

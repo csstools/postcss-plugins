@@ -1,8 +1,8 @@
 import plugin from 'postcss-preset-env';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function postcssPresetEnv(): void {
-	cli(
+export default async function postcssPresetEnv(): Promise<void> {
+	await cli(
 		plugin,
 		[
 			'stage',

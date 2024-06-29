@@ -1,8 +1,8 @@
 import plugin from 'css-prefers-color-scheme';
 import { cli, helpTextLogger } from '@csstools/base-cli';
 
-export default function cssPrefersColorScheme(): void {
-	cli(
+export default async function cssPrefersColorScheme(): Promise<void> {
+	await cli(
 		plugin,
 		['preserve', 'mediaQuery'],
 		helpTextLogger(

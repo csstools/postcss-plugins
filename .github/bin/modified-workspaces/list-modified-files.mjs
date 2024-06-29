@@ -5,7 +5,6 @@ export async function listModifiedFilesInPullRequest(repository, pullRequestNumb
 
 	let page = 1;
 
-	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		const newFiles = await getPullRequestFiles(repository, pullRequestNumber, page);
 		allFiles.push(...newFiles);
