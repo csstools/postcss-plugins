@@ -540,26 +540,6 @@
 	scroll-start-y: inherit;
 }
 
-.scroll-start-target {
-	/* scroll-start-target-block */
-	scroll-start-target-block: inherit;
-}
-
-.scroll-start-target {
-	/* scroll-start-target-inline */
-	scroll-start-target-inline: inherit;
-}
-
-.scroll-start-target {
-	/* scroll-start-target-x */
-	scroll-start-target-x: inherit;
-}
-
-.scroll-start-target {
-	/* scroll-start-target-y */
-	scroll-start-target-y: inherit;
-}
-
 .size {
 	/* block-size */
 	block-size: inherit;
