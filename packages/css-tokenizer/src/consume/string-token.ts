@@ -53,6 +53,13 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 			}
 
 			if (isNewLine(reader.codePointSource[reader.cursor])) {
+				if (
+					reader.codePointSource[reader.cursor] === 0x000d &&
+					reader.codePointSource[reader.cursor + 1] === 0x000a
+				) {
+					reader.advanceCodePoint();
+				}
+
 				reader.advanceCodePoint();
 				continue;
 			}

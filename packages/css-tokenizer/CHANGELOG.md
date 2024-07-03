@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (patch)
+
+- Fix tokenization of `string-token` containing a backslash followed by CRLF
+
 ### 2.3.2
 
 _June 29, 2024_

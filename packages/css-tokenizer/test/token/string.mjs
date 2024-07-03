@@ -83,3 +83,31 @@ bar";
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: '\'one\\\r\ntwo\'',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['string-token', '\'one\\\r\ntwo\'', 0, 10, { value: 'onetwo' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: '\'one\\\ntwo\'',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['string-token', '\'one\\\ntwo\'', 0, 9, { value: 'onetwo' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
