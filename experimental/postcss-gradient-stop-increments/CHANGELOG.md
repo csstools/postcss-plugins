@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradient Stop Increments
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.3.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#233) (patch)
+
 ### 1.0.11
 
 _June 29, 2024_

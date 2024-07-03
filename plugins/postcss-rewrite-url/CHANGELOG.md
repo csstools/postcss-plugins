@@ -1,5 +1,9 @@
 # Changes to PostCSS Rewrite URL
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.3.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#233) (patch)
+
 ### 1.1.3
 
 _June 29, 2024_
