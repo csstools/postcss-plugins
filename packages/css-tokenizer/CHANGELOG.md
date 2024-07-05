@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 2.4.1
+
+_July 5, 2024_
 
 - Remove `astNode` that was erroneously added to the `ParseError` base class.
 
