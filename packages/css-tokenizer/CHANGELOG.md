@@ -1,5 +1,10 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (minor)
+
+- Expose `ParseErrorMessage`, the list of known parser error messages object to facilitate detection of specific cases
+- Add an optional `astNode` field on `ParseError` to associate the error with a specific AST node
+
 ### 2.3.3
 
 _July 3, 2024_

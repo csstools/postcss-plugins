@@ -9,7 +9,7 @@ Constructs a new instance of the `ParseError` class
 **Signature:**
 
 ```typescript
-constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>);
+constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>, astNode?: CSSToken);
 ```
 
 ## Parameters
@@ -83,6 +83,22 @@ Array&lt;string&gt;
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+astNode
+
+
+</td><td>
+
+[CSSToken](./css-tokenizer.csstoken.md)
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

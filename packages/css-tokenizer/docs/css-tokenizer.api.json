@@ -2759,6 +2759,15 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", astNode?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CSSToken",
+                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+                },
+                {
+                  "kind": "Content",
                   "text": ");"
                 }
               ],
@@ -2797,8 +2806,46 @@
                     "endIndex": 9
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "astNode",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 10,
+                    "endIndex": 11
+                  },
+                  "isOptional": true
                 }
               ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/css-tokenizer!ParseError#astNode:member",
+              "docComment": "/**\n * The associated AST node.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "astNode?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "unknown"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "astNode",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
             },
             {
               "kind": "Property",
@@ -2901,6 +2948,29 @@
             "endIndex": 2
           },
           "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@csstools/css-tokenizer!ParseErrorMessage:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ParseErrorMessage: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    UnexpectedNewLineInString: string;\n    UnexpectedEOFInString: string;\n    UnexpectedEOFInComment: string;\n    UnexpectedEOFInURL: string;\n    UnexpectedEOFInEscapedCodePoint: string;\n    UnexpectedCharacterInURL: string;\n    InvalidEscapeSequenceInURL: string;\n    InvalidEscapeSequenceAfterBackslash: string;\n}"
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/error.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ParseErrorMessage",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
         },
         {
           "kind": "Function",

@@ -15,7 +15,7 @@ import { Reader } from './reader';
 import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
-import { ParseError } from './interfaces/error';
+import { ParseError, ParseErrorMessage } from './interfaces/error';
 import { checkIfThreeCodePointsWouldStartAUnicodeRange } from './checks/three-code-points-would-start-unicode-range';
 import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 
@@ -218,15 +218,19 @@ export function tokenizer(
 					value: '@',
 				}];
 
-			case REVERSE_SOLIDUS:
+			case REVERSE_SOLIDUS: {
 				if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 					return consumeIdentLikeToken(ctx, reader);
 				}
 
 				reader.advanceCodePoint();
 
+				const token: CSSToken = [TokenType.Delim, '\\', reader.representationStart, reader.representationEnd, {
+					value: '\\',
+				}];
+
 				ctx.onParseError(new ParseError(
-					'Invalid escape sequence after "\\"',
+					ParseErrorMessage.InvalidEscapeSequenceAfterBackslash,
 					reader.representationStart,
 					reader.representationEnd,
 					[
@@ -234,11 +238,11 @@ export function tokenizer(
 						'U+005C REVERSE SOLIDUS (\\)',
 						'The input stream does not start with a valid escape sequence',
 					],
+					token
 				));
 
-				return [TokenType.Delim, '\\', reader.representationStart, reader.representationEnd, {
-					value: '\\',
-				}];
+				return token;
+			}
 		}
 
 		reader.advanceCodePoint();

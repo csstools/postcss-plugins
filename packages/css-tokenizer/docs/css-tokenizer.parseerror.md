@@ -33,7 +33,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(message, sourceStart, sourceEnd, parserState)](./css-tokenizer.parseerror._constructor_.md)
+[(constructor)(message, sourceStart, sourceEnd, parserState, astNode)](./css-tokenizer.parseerror._constructor_.md)
 
 
 </td><td>
@@ -71,6 +71,25 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[astNode?](./css-tokenizer.parseerror.astnode.md)
+
+
+</td><td>
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+_(Optional)_ The associated AST node.
+
+
+</td></tr>
+<tr><td>
 
 [parserState](./css-tokenizer.parseerror.parserstate.md)
 

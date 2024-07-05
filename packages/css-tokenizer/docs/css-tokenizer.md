@@ -755,6 +755,30 @@ The CSS Token interface
 </td></tr>
 </tbody></table>
 
+## Variables
+
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ParseErrorMessage](./css-tokenizer.parseerrormessage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
 ## Type Aliases
 
 <table><thead><tr><th>
