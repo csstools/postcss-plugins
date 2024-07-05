@@ -3,7 +3,7 @@
 ### Unreleased (minor)
 
 - Expose `ParseErrorMessage`, the list of known parser error messages object to facilitate detection of specific cases
-- Add an optional `astNode` field on `ParseError` to associate the error with a specific AST node
+- Add a specific `ParseErrorWithToken` subclass. This contains the associated token.
 
 ### 2.3.3
 

@@ -3,7 +3,7 @@ import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_PA
 import { isNonPrintableCodePoint, isWhitespace } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
-import { ParseError, ParseErrorMessage } from '../interfaces/error';
+import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
 import { CSSToken, TokenBadURL, TokenType, TokenURL } from '../interfaces/token';
 import { consumeBadURL } from './bad-url';
 import { consumeEscapedCodePoint } from './escaped-code-point';
@@ -28,7 +28,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				},
 			];
 
-			ctx.onParseError(new ParseError(
+			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.UnexpectedEOFInURL,
 				reader.representationStart,
 				reader.representationEnd,
@@ -72,7 +72,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 					},
 				];
 
-				ctx.onParseError(new ParseError(
+				ctx.onParseError(new ParseErrorWithToken(
 					ParseErrorMessage.UnexpectedEOFInURL,
 					reader.representationStart,
 					reader.representationEnd,
@@ -121,7 +121,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				undefined,
 			];
 
-			ctx.onParseError(new ParseError(
+			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.UnexpectedCharacterInURL,
 				reader.representationStart,
 				reader.representationEnd,
@@ -152,7 +152,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				undefined,
 			]
 
-			ctx.onParseError(new ParseError(
+			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.InvalidEscapeSequenceInURL,
 				reader.representationStart,
 				reader.representationEnd,

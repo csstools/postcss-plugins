@@ -33,7 +33,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(message, sourceStart, sourceEnd, parserState, astNode)](./css-tokenizer.parseerror._constructor_.md)
+[(constructor)(message, sourceStart, sourceEnd, parserState)](./css-tokenizer.parseerror._constructor_.md)
 
 
 </td><td>

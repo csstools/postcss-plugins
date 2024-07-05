@@ -2,7 +2,7 @@ import { CARRIAGE_RETURN, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code
 import { isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
-import { ParseError, ParseErrorMessage } from '../interfaces/error';
+import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
 import { CSSToken, TokenBadString, TokenString, TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
@@ -18,7 +18,7 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 		if (next === false) {
 			const token: CSSToken = [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 
-			ctx.onParseError(new ParseError(
+			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.UnexpectedEOFInString,
 				reader.representationStart,
 				reader.representationEnd,
@@ -37,7 +37,7 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 
 			const token: CSSToken = [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
 
-			ctx.onParseError(new ParseError(
+			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.UnexpectedNewLineInString,
 				reader.representationStart,
 				(

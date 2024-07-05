@@ -14,14 +14,24 @@ export class ParseError extends Error {
 	/** The associated AST node. */
 	astNode?: unknown;
 
-	constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>, astNode?: CSSToken) {
+	constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>) {
 		super(message);
 		this.name = 'ParseError';
 
 		this.sourceStart = sourceStart;
 		this.sourceEnd = sourceEnd;
 		this.parserState = parserState;
-		this.astNode = astNode;
+	}
+}
+
+export class ParseErrorWithToken extends ParseError {
+	/** The associated token. */
+	token: CSSToken;
+
+	constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>, token: CSSToken) {
+		super(message, sourceStart, sourceEnd, parserState);
+
+		this.token = token;
 	}
 }
 

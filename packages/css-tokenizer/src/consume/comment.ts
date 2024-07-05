@@ -1,7 +1,7 @@
 import { ASTERISK, SOLIDUS } from '../code-points/code-points';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
-import { ParseError, ParseErrorMessage } from '../interfaces/error';
+import { ParseErrorMessage, ParseErrorWithToken } from '../interfaces/error';
 import { CSSToken, TokenComment, TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
@@ -19,7 +19,7 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 				undefined,
 			];
 
-			ctx.onParseError(new ParseError(
+			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.UnexpectedEOFInComment,
 				reader.representationStart,
 				reader.representationEnd,
