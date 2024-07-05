@@ -53,7 +53,7 @@
 	},
 	"peerDependencies": {
 		"@csstools/css-parser-algorithms": "^2.7.0",
-		"@csstools/css-tokenizer": "^2.4.0"
+		"@csstools/css-tokenizer": "^2.4.1"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

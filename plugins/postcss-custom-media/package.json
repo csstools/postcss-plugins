@@ -57,7 +57,7 @@
 	"dependencies": {
 		"@csstools/cascade-layer-name-parser": "^1.0.12",
 		"@csstools/css-parser-algorithms": "^2.7.0",
-		"@csstools/css-tokenizer": "^2.4.0",
+		"@csstools/css-tokenizer": "^2.4.1",
 		"@csstools/media-query-list-parser": "^2.1.12"
 	},
 	"peerDependencies": {
