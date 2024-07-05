@@ -1,4 +1,4 @@
-import { BACKSPACE, DELETE, INFORMATION_SEPARATOR_ONE, LINE_TABULATION, LOW_LINE, HYPHEN_MINUS, NULL, SHIFT_OUT } from './code-points';
+import { BACKSPACE, DELETE, INFORMATION_SEPARATOR_ONE, LINE_TABULATION, LOW_LINE, HYPHEN_MINUS, NULL, SHIFT_OUT, LINE_FEED, CARRIAGE_RETURN, FORM_FEED, SPACE, CHARACTER_TABULATION } from './code-points';
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokenizer-definitions
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#digit
@@ -82,12 +82,12 @@ export function isNonPrintableCodePoint(search: number): boolean {
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
 export function isNewLine(search: number): boolean {
-	return search === 0x000a || search === 0x000d || search === 0x000c;
+	return search === LINE_FEED || search === CARRIAGE_RETURN || search === FORM_FEED;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
 export function isWhitespace(search: number): boolean {
-	return search === 0x0020 || search === 0x000a || search === 0x0009 || search === 0x000d || search === 0x000c;
+	return search === SPACE || search === LINE_FEED || search === CHARACTER_TABULATION || search === CARRIAGE_RETURN || search === FORM_FEED;
 }
 
 // https://infra.spec.whatwg.org/#surrogate

@@ -212,7 +212,26 @@ export declare class ParseError extends Error {
     sourceEnd: number;
     /** The parser steps that preceded the error. */
     parserState: Array<string>;
+    /** The associated AST node. */
+    astNode?: unknown;
     constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>);
+}
+
+export declare const ParseErrorMessage: {
+    UnexpectedNewLineInString: string;
+    UnexpectedEOFInString: string;
+    UnexpectedEOFInComment: string;
+    UnexpectedEOFInURL: string;
+    UnexpectedEOFInEscapedCodePoint: string;
+    UnexpectedCharacterInURL: string;
+    InvalidEscapeSequenceInURL: string;
+    InvalidEscapeSequenceAfterBackslash: string;
+};
+
+export declare class ParseErrorWithToken extends ParseError {
+    /** The associated token. */
+    token: CSSToken;
+    constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>, token: CSSToken);
 }
 
 /**

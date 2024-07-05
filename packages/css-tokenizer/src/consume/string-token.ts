@@ -1,9 +1,9 @@
-import { REVERSE_SOLIDUS } from '../code-points/code-points';
+import { CARRIAGE_RETURN, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isNewLine } from '../code-points/ranges';
 import { CodePointReader } from '../interfaces/code-point-reader';
 import { Context } from '../interfaces/context';
-import { ParseError } from '../interfaces/error';
-import { TokenBadString, TokenString, TokenType } from '../interfaces/token';
+import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
+import { CSSToken, TokenBadString, TokenString, TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-string-token
@@ -14,33 +14,50 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 
 	while (true) {
 		const next = reader.readCodePoint();
+
 		if (next === false) {
-			ctx.onParseError(new ParseError(
-				'Unexpected EOF while consuming a string token.',
+			const token: CSSToken = [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
+
+			ctx.onParseError(new ParseErrorWithToken(
+				ParseErrorMessage.UnexpectedEOFInString,
 				reader.representationStart,
 				reader.representationEnd,
 				[
 					'4.3.5. Consume a string token',
 					'Unexpected EOF',
 				],
+				token
 			));
 
-			return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
+			return token;
 		}
 
 		if (isNewLine(next)) {
-			ctx.onParseError(new ParseError(
-				'Unexpected newline while consuming a string token.',
+			reader.unreadCodePoint();
+
+			const token: CSSToken = [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
+
+			ctx.onParseError(new ParseErrorWithToken(
+				ParseErrorMessage.UnexpectedNewLineInString,
 				reader.representationStart,
-				reader.representationEnd,
+				(
+					(
+						reader.codePointSource[reader.cursor] === CARRIAGE_RETURN &&
+						reader.codePointSource[reader.cursor + 1] === LINE_FEED
+					) ?
+						// CR LF
+						reader.representationEnd + 2 :
+						// LF
+						reader.representationEnd + 1
+				),
 				[
 					'4.3.5. Consume a string token',
 					'Unexpected newline',
 				],
+				token
 			));
 
-			reader.unreadCodePoint();
-			return [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
+			return token;
 		}
 
 		if (next === first) {
@@ -54,8 +71,8 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 
 			if (isNewLine(reader.codePointSource[reader.cursor])) {
 				if (
-					reader.codePointSource[reader.cursor] === 0x000d &&
-					reader.codePointSource[reader.cursor + 1] === 0x000a
+					reader.codePointSource[reader.cursor] === CARRIAGE_RETURN &&
+					reader.codePointSource[reader.cursor + 1] === LINE_FEED
 				) {
 					reader.advanceCodePoint();
 				}
