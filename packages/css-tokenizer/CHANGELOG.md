@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (minor)
+### 2.4.0
+
+_July 5, 2024_
 
 - Expose `ParseErrorMessage`, the list of known parser error messages object to facilitate detection of specific cases
 - Add a specific `ParseErrorWithToken` subclass. This contains the associated token.
