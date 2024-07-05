@@ -2802,36 +2802,6 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "@csstools/css-tokenizer!ParseError#astNode:member",
-              "docComment": "/**\n * The associated AST node.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "astNode?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "unknown"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "astNode",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
               "canonicalReference": "@csstools/css-tokenizer!ParseError#parserState:member",
               "docComment": "/**\n * The parser steps that preceded the error.\n */\n",
               "excerptTokens": [

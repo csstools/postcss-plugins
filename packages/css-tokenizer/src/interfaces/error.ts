@@ -11,8 +11,6 @@ export class ParseError extends Error {
 	sourceEnd: number;
 	/** The parser steps that preceded the error. */
 	parserState: Array<string>;
-	/** The associated AST node. */
-	astNode?: unknown;
 
 	constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>) {
 		super(message);
