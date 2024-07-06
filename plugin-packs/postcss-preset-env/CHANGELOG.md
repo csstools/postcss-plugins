@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 9.5.16
+
+_July 6, 2024_
 
 - Added list of browsers that require a polyfill in the log output of `debug` (by @clarfonthey)
 - Updated detection for `areaHrefNeedsFixing` to exclude Edge 79 and later
