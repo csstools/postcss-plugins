@@ -29,7 +29,7 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 	);
 
 	if (minimumVendorImplementations > 0) {
-		logger.log(`Using features with ${minimumVendorImplementations} or more vendor implementations`);
+		logger.log(`Using features with ${minimumVendorImplementations} or more vendor implementations.`);
 	}
 
 	const stage = stageFromOptions(options, logger);
@@ -64,11 +64,11 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 
 		if (featureEnabledByOptions(features, feature.id) === true) {
 			// feature is explicitly enabled
-			logger.log(`  ${feature.id} does not meet the required vendor implementations but has been enabled by options`);
+			logger.log(`- '${feature.id}' enabled manually even when it lacks the required interop (${feature.vendors_implementations} out of ${minimumVendorImplementations}).`);
 			return true;
 		}
 
-		logger.log(`  ${feature.id} with ${feature.vendors_implementations} vendor implementations has been disabled`);
+		logger.log(`- '${feature.id}' disabled because it lacks the required interop (${feature.vendors_implementations} out of ${minimumVendorImplementations}).`);
 		return false;
 	});
 
@@ -91,15 +91,15 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 		const isAllowedFeature = enabledByOptions === true ? true : isAllowedStage && isAllowedByType;
 
 		if (isDisabled) {
-			logger.log(`  ${feature.id} has been disabled by options`);
+			logger.log(`- '${feature.id}' disabled manually`);
 		} else if (!isAllowedStage) {
 			if (isAllowedFeature) {
-				logger.log(`  ${feature.id} does not meet the required stage but has been enabled by options`);
+				logger.log(`- '${feature.id}' enabled manually even when it lacks the required stage (${feature.stage} out of ${stage}).`);
 			} else {
-				logger.log(`  ${feature.id} with stage ${feature.stage} has been disabled`);
+				logger.log(`- '${feature.id}' disabled because it lacks the required stage (${feature.stage} out of ${stage}).`);
 			}
 		} else if (!isAllowedByType) {
-			logger.log(`  ${feature.id} has been disabled by "enableClientSidePolyfills: false".`);
+			logger.log(`- '${feature.id}' disabled because 'enableClientSidePolyfills' is 'false'.`);
 		}
 
 		return !isDisabled && isAllowedFeature;
@@ -129,13 +129,9 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 		});
 
 		if (needsPolyfill.length > 0) {
-			let logList = ">5 targets";
-			if (needsPolyfill.length <= 5) {
-				logList = needsPolyfill.join(', ');
-			}
-			logger.log(`${feature.id} needed (${logList})`);
+			logger.log(`- '${feature.id}' enabled for:\n    ${needsPolyfill.join('\n    ') }`);
 		} else {
-			logger.log(`${feature.id} disabled due to browser support`);
+			logger.log(`- '${feature.id}' disabled because all targeted browsers support it.`);
 		}
 
 		return needsPolyfill.length > 0;

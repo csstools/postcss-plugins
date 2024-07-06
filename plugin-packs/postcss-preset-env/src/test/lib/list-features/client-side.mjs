@@ -20,9 +20,6 @@ assert.deepStrictEqual(
 				'samsung < 1.0',
 			],
 			pluginOptions: {
-				subFeatures: {
-					areaHrefNeedsFixing: true,
-				},
 				enableProgressiveCustomProperties: false,
 			},
 			vendors_implementations: 3,
@@ -39,11 +36,14 @@ assert.deepStrictEqual(
 
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
-	testLogger.getLogs(),
+	testLogger.getLogs().map(x => x.split('\n')),
 	[
-		'Using features from Stage 0\n' +
-		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".\n' +
-		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
+		[
+			'Using features from Stage 0.',
+			'- \'blank-pseudo-class\' disabled because \'enableClientSidePolyfills\' is \'false\'.',
+			'- \'any-link-pseudo-class\' enabled for:',
+			'    op_mini all',
+		],
 	],
 );
 
@@ -63,7 +63,6 @@ assert.deepStrictEqual(
 			],
 			vendors_implementations: 3,
 			pluginOptions: {
-				subFeatures: { areaHrefNeedsFixing: true },
 				enableProgressiveCustomProperties: false,
 			},
 			id: 'any-link-pseudo-class',
@@ -93,10 +92,42 @@ assert.deepStrictEqual(
 
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
-	testLogger.getLogs(),
+	testLogger.getLogs().map(x => x.split('\n')),
 	[
-		'Using features from Stage 0\n' +
-		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
+		[
+			'Using features from Stage 0.',
+			'- \'any-link-pseudo-class\' enabled for:',
+			'    op_mini all',
+			'- \'blank-pseudo-class\' enabled for:',
+			'    and_chr 126',
+			'    and_ff 127',
+			'    android 126',
+			'    chrome 126',
+			'    chrome 125',
+			'    chrome 124',
+			'    chrome 123',
+			'    chrome 109',
+			'    edge 126',
+			'    edge 125',
+			'    edge 124',
+			'    firefox 127',
+			'    firefox 126',
+			'    firefox 125',
+			'    firefox 115',
+			'    ios_saf 17.5',
+			'    ios_saf 17.4',
+			'    ios_saf 16.6-16.7',
+			'    ios_saf 15.6-15.8',
+			'    op_mini all',
+			'    op_mob 80',
+			'    opera 111',
+			'    opera 110',
+			'    opera 109',
+			'    safari 17.5',
+			'    safari 17.4',
+			'    samsung 25',
+			'    samsung 24',
+		],
 	],
 );
 

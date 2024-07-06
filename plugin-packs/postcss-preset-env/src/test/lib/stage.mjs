@@ -13,7 +13,7 @@ assert.deepStrictEqual(
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
-	['Using features from Stage 4'],
+	['Using features from Stage 4.'],
 );
 
 testLogger.logger.resetLogger();
@@ -25,7 +25,7 @@ assert.deepStrictEqual(
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
-	['Using features from Stage 4'],
+	['Using features from Stage 4.'],
 );
 
 testLogger.logger.resetLogger();
@@ -37,7 +37,7 @@ assert.deepStrictEqual(
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
-	['Using features from Stage 0'],
+	['Using features from Stage 0.'],
 );
 
 testLogger.logger.resetLogger();
@@ -61,7 +61,7 @@ assert.deepStrictEqual(
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
-	['Using features from Stage 0'],
+	['Using features from Stage 0.'],
 );
 
 testLogger.logger.resetLogger();
@@ -73,7 +73,7 @@ assert.deepStrictEqual(
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
 	testLogger.getLogs(),
-	['Using features from Stage 2 (default)'],
+	['Using features from Stage 2 (default).'],
 );
 
 testLogger.logger.resetLogger();

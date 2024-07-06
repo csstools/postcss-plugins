@@ -30,7 +30,7 @@ export default function logFeaturesList(supportedFeatures, options, logger) {
 
 		if (clientSideFeatures.length) {
 			logger.log('These feature(s) need a browser library to work:');
-			clientSideFeatures.forEach(featureId => logger.log(` ${featureId}: ${clientSideDocumentation[featureId]}`));
+			clientSideFeatures.forEach(featureId => logger.log(`  ${featureId}: ${clientSideDocumentation[featureId]}`));
 		}
 	}
 }

@@ -21,7 +21,6 @@ assert.deepStrictEqual(
 			],
 			vendors_implementations: 3,
 			pluginOptions: {
-				subFeatures: { areaHrefNeedsFixing: true },
 				enableProgressiveCustomProperties: false,
 			},
 			id: 'any-link-pseudo-class',
@@ -37,11 +36,14 @@ assert.deepStrictEqual(
 
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
-	testLogger.getLogs(),
+	testLogger.getLogs().map(x => x.split('\n')),
 	[
-		'Using features from Stage 0\n' +
-		'  blank-pseudo-class has been disabled by "enableClientSidePolyfills: false".\n' +
-		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
+		[
+			'Using features from Stage 0.',
+			'- \'blank-pseudo-class\' disabled because \'enableClientSidePolyfills\' is \'false\'.',
+			'- \'any-link-pseudo-class\' enabled for:',
+			'    op_mini all',
+		],
 	],
 );
 

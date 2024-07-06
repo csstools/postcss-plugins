@@ -7,7 +7,7 @@ export function stageFromOptions(options, logger) {
 	let stage = DEFAULT_STAGE;
 
 	if (typeof options.stage === 'undefined') {
-		logger.log(`Using features from Stage ${stage} (default)`);
+		logger.log(`Using features from Stage ${DEFAULT_STAGE} (default).`);
 		return stage;
 	}
 
@@ -25,7 +25,7 @@ export function stageFromOptions(options, logger) {
 	if (stage === OUT_OF_RANGE_STAGE) {
 		logger.log('Stage has been disabled, features will be handled via the "features" option.');
 	} else {
-		logger.log(`Using features from Stage ${stage}`);
+		logger.log(`Using features from Stage ${stage}.`);
 	}
 
 	return stage;
