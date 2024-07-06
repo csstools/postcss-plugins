@@ -7,7 +7,6 @@
 }
 
 .test-custom-properties {
-	order: 1;
 	order: var(--order);
 }
 
@@ -18,7 +17,7 @@
 	order: 2;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (min-resolution: 192dpi) {
 
 .test-image-set-function {
 	background-image: url(img/test-2x.png);
@@ -63,9 +62,7 @@
 		order: 8;
 	}
 
-@custom-media --narrow-window (max-width: 30em);
-
-@media (--narrow-window) {
+@media (max-width: 30em) {
 	.test-custom-media-queries {
 		order: 10;
 	}
@@ -77,9 +74,7 @@
 	}
 }
 
-@custom-media --dark-mode (prefers-color-scheme: dark);
-
-@media (--dark-mode) {
+@media (prefers-color-scheme: dark) {
 	body {
 		background-color: black;
 		color: white;
@@ -97,7 +92,7 @@
 }
 
 .test-rebeccapurple-color {
-	color: #639;
+	color: rebeccapurple;
 	order: 14;
 }
 
@@ -135,8 +130,7 @@
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentcolor;
 	border-collapse: separate;
-	-o-border-image: none;
-	   border-image: none;
+	border-image: none;
 	border-radius: 0;
 	border-spacing: 0;
 	bottom: auto;
@@ -146,20 +140,13 @@
 	clear: none;
 	clip: auto;
 	color: #000;
-	-moz-columns: auto;
-	     columns: auto;
-	-moz-column-count: auto;
-	     column-count: auto;
-	-moz-column-fill: balance;
-	     column-fill: balance;
-	-moz-column-gap: normal;
-	     column-gap: normal;
-	-moz-column-rule: medium none currentcolor;
-	     column-rule: medium none currentcolor;
-	-moz-column-span: 1;
-	     column-span: 1;
-	-moz-column-width: auto;
-	     column-width: auto;
+	columns: auto;
+	column-count: auto;
+	column-fill: balance;
+	column-gap: normal;
+	column-rule: medium none currentcolor;
+	column-span: 1;
+	column-width: auto;
 	content: normal;
 	counter-increment: none;
 	counter-reset: none;
@@ -175,8 +162,8 @@
 	font-stretch: normal;
 	line-height: normal;
 	height: auto;
-	-webkit-hyphens: none;
-	        hyphens: none;
+	-ms-hyphens: none;
+	    hyphens: none;
 	left: auto;
 	letter-spacing: normal;
 	list-style: disc outside none;
@@ -199,14 +186,10 @@
 	perspective-origin: 50% 50%;
 	position: static;
 	right: auto;
-	-moz-tab-size: 8;
-	  -o-tab-size: 8;
-	     tab-size: 8;
+	tab-size: 8;
 	table-layout: auto;
 	text-align: left;
-	-moz-text-align-last: auto;
-	     text-align-last: auto;
-	-webkit-text-decoration: none;
+	text-align-last: auto;
 	text-decoration: none;
 	text-indent: 0;
 	text-shadow: none;
@@ -235,11 +218,7 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited {
-	order: 23;
-}
-
-.test-any-link-pseudo-class:-moz-any-link {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
 	order: 23;
 }
 
@@ -452,16 +431,10 @@
 	color-6: rgb(197, 84, 124);
 
 	color-7: rgb(0, 149, 131);
-
-	color-7: color(display-p3 0.19244 0.58461 0.51559);
 	color-8: rgb(0, 149, 131);
-	color-8: color(display-p3 0.19244 0.58461 0.51559);
 	color-9: rgb(0, 149, 131);
-	color-9: color(display-p3 0.19244 0.58461 0.51559);
 	color-10: rgb(0, 149, 131);
-	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: rgb(0, 149, 131);
-	color-11: color(display-p3 0.19244 0.58461 0.51559);
 
 	color-12: rgb(188, 101, 59);
 	color-13: rgb(188, 101, 59);
@@ -471,11 +444,21 @@
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
+@media (color-gamut: p3) {
+.oklch {
+
+	color-7: color(display-p3 0.19244 0.58461 0.51559);
+	color-8: color(display-p3 0.19244 0.58461 0.51559);
+	color-9: color(display-p3 0.19244 0.58461 0.51559);
+	color-10: color(display-p3 0.19244 0.58461 0.51559);
+	color-11: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+
 .ic-unit {
 	--value-2ic: initial;
 	text-indent: 2em;
 	content: var(--value-2ic);
-	left: 2em;
 	left: var(--non-existing, 2em);
 	width: calc(8em + 20px);
 	height: 10px;
@@ -484,8 +467,7 @@
 }
 
 .unset {
-	clip: auto;
-	clip: initial;
+	clip: unset;
 }
 
 .mod {
@@ -547,21 +529,17 @@
 	}
 
 .nested-calc {
-	order: calc(1 * (8 / 3 + (5 * 10)));
 	order: calc(1 * calc(8 / 3 + calc(5 * 10)));
 }
 
 .text-decoration-shorthand {
 	text-decoration: overline;
-	-webkit-text-decoration: overline wavy pink;
-	        text-decoration: overline wavy pink;
+	text-decoration: overline wavy pink;
 	text-decoration-thickness: 3px;
-	-webkit-text-decoration: 3px wavy pink overline;
-	        text-decoration: 3px wavy pink overline;
+	text-decoration: 3px wavy pink overline;
 }
 
 .stage__container {
-	left: 1rem;
 	left: var(--size, 1rem);
 }
 
@@ -590,25 +568,41 @@
 	color-2: rgba(0, 0, 255, 0.65);
 	color-3: rgba(0, 0, 255, 0.65);
 	color-4: rgba(121, 0, 181, 0.65);
-	color-4: color(display-p3 0.44 0 0.70096 / 0.65);
 	color-5: rgba(148, 0, 122, 0.65);
-	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
+}
+
+@media (color-gamut: p3) {
+.color-mix {
+	color-4: color(display-p3 0.44 0 0.70096 / 0.65);
+	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
+}
 }
 
 .gradients-interpolation-method {
 	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(164, 192, 255), rgb(137, 206, 255), rgb(111, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115%, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
+}
+
+@media (color-gamut: rec2020) {
+.gradients-interpolation-method {
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115%, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.3004), color(display-p3 1.15167 0.57912 -0.3946), color(display-p3 1.06645 0.68611 -0.4296), color(display-p3 0.94738 0.78766 -0.4263), color(display-p3 0.79233 0.87807 -0.3707), color(display-p3 0.59026 0.95319 -0.1467), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.5392 1.05733 0.93686), color(display-p3 -0.5777 1.04644 1.15396) 100%);
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
 }
+}
 
 @supports (color: color(display-p3 0 0 0%)) {
 .gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(189, 182, 255), rgb(173, 195, 255), rgb(159, 205, 255), rgb(140, 215, 255), rgb(100, 228, 255), rgb(94, 237, 237) 100%);
+}
+
+@media (color-gamut: rec2020) {
+.gradients-interpolation-method {
 	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
+}
 }
 }
 
@@ -619,22 +613,26 @@
 }
 
 .test-css-color-5-interop {
-	color-1: color(from rgb(196, 129, 72) a98-rgb r g b / alpha);
+	color-1: rgb(196, 129, 72);
 	color-2: color(from rgb(196, 129, 72) a98-rgb r g b / none);
-	color-3: color(from rgb(234, 133, 82) prophoto-rgb r g b);
+	color-3: rgb(234, 133, 82);
 	color-4: color(from rgb(234, 133, 82) prophoto-rgb r g none);
-	color-5: hwb(from rgb(179, 157, 51) h w b);
-	color-6: lab(from rgb(179, 35, 35) l a b);
-	color-7: lch(from rgb(163, 57, 39) l c h);
-	color-8: oklab(from rgb(131, 27, 0) l a b);
-	color-8: oklab(from color(display-p3 0.4939 0.10676 0) l a b);
-	color-9: oklch(from rgb(126, 37, 0) l c h);
-	color-9: oklch(from color(display-p3 0.47553 0.14324 0) l c h);
+	color-5: rgb(179, 157, 51);
+	color-6: rgb(179, 35, 35);
+	color-7: rgb(163, 57, 39);
+	color-8: rgb(131, 27, 0);
+	color-9: rgb(126, 37, 0);
+}
+
+@media (color-gamut: p3) {
+.test-css-color-5-interop {
+	color-8: color(display-p3 0.4939 0.10676 0);
+	color-9: color(display-p3 0.47553 0.14324 0);
+}
 }
 
 .test-property-with-var {
 	--opacity: 1;
-	color: rgba(87, 107, 149, 1);
 	color: rgba(87, 107, 149, var(--opacity));
 }
 
@@ -669,11 +667,15 @@
 }
 
 .schemed-colors {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) lch(from rgb(131, 27, 0) l c h);
-	color: magenta;
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) rgb(131, 27, 0);
 	color: var(--csstools-light-dark-toggle--1, magenta);
-	color: light-dark(lch(from rgb(131, 27, 0) l c h), magenta);
-	color: light-dark(lch(from color(display-p3 0.4939 0.10676 0) l c h), magenta);
+	color: light-dark(rgb(131, 27, 0), magenta);
+}
+
+@media (color-gamut: p3) {
+.schemed-colors {
+	color: light-dark(color(display-p3 0.4939 0.10676 0), magenta);
+}
 }
 
 .schemed-prop {
