@@ -124,15 +124,21 @@ export function listFeatures(cssdbList, options, sharedOptions, logger) {
 			ignoreUnknownVersions: true,
 		});
 
-		const needsPolyfill = supportedBrowsers.some(supportedBrowser => {
+		const needsPolyfill = supportedBrowsers.filter(supportedBrowser => {
 			return unsupportedBrowsers.some(unsupportedBrowser => unsupportedBrowser === supportedBrowser);
 		});
 
-		if (!needsPolyfill) {
+		if (needsPolyfill.length > 0) {
+			let logList = ">5 targets";
+			if (needsPolyfill.length <= 5) {
+				logList = needsPolyfill.join(', ');
+			}
+			logger.log(`${feature.id} needed (${logList})`);
+		} else {
 			logger.log(`${feature.id} disabled due to browser support`);
 		}
 
-		return needsPolyfill;
+		return needsPolyfill.length > 0;
 	});
 
 	return supportedFeatures;
