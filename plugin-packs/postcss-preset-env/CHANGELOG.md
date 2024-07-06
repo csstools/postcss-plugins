@@ -5,6 +5,7 @@
 - Added list of browsers that require a polyfill in the log output of `debug` (by @clarfonthey)
 - Updated detection for `areaHrefNeedsFixing` to exclude Edge 79 and later
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`2.0.11`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#2011) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`1.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#107) (patch)
 
 ### 9.5.15
 
