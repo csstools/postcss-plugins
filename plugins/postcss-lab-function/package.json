@@ -41,7 +41,7 @@
 		"@csstools/css-color-parser": "^2.0.4",
 		"@csstools/css-parser-algorithms": "^2.7.1",
 		"@csstools/css-tokenizer": "^2.4.1",
-		"@csstools/postcss-progressive-custom-properties": "^3.2.0",
+		"@csstools/postcss-progressive-custom-properties": "^3.3.0",
 		"@csstools/utilities": "^1.0.0"
 	},
 	"peerDependencies": {
