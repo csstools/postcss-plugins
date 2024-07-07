@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-function",
 	"description": "Use the color() function in CSS",
-	"version": "3.0.18",
+	"version": "3.0.19",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
