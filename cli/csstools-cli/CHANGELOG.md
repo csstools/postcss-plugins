@@ -1,7 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### Unreleased (minor)
 
+- Added `@csstools/postcss-content-alt-text` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text#readme) for usage details.
 - Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.19`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#3019) (patch)
 - Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`2.0.19`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#2019) (patch)
 - Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`4.0.20`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#4020) (patch)

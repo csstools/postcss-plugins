@@ -574,3 +574,11 @@
 	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
 	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
 }
+
+.content-alt-text {
+	content: url(tree.jpg) / "A beautiful tree in a dark forest";
+}
+
+.content-alt-text {
+	content: var(--foo) / "A beautiful tree in a dark forest";
+}

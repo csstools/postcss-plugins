@@ -46,6 +46,7 @@ export default [
 	'system-ui-font-family',
 	'font-format-keywords',
 	'display-two-values',
+	'content-alt-text',
 	'ic-unit',
 	'opacity-percentage',
 	'text-decoration-shorthand',
