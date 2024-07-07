@@ -2581,5 +2581,17 @@ export const matchers = [
 				}
 			}
 		]
+	},
+	{
+		"supports": "\"a\" / \"a\"",
+		"property": "content",
+		"only_on_property": "content",
+		"sniff": "/",
+		"matchers": [
+			{
+				"type": "div",
+				"value": "/"
+			}
+		]
 	}
 ]

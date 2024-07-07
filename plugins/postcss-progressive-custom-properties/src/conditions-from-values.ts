@@ -2,14 +2,17 @@ import valueParser from 'postcss-value-parser';
 import { doublePositionGradients } from './custom/double-position-gradients';
 import { matchers } from './matchers';
 import { matches } from './match';
+import type { Declaration } from 'postcss';
 
 const VAR_FUNCTION_NAME_REGEX = /^var$/i;
 
-export function conditionsFromValue(value: string, mustContainVar = false): { support: Array<string> } {
+export function conditionsFromValue(decl: Declaration, mustContainVar = false): { support: Array<string> } {
+	const value = decl.value;
+
 	const supportConditions: Array<string> = [];
 
 	const relevantMatchers = matchers.filter((matcher) => {
-		return value.includes(matcher.sniff);
+		return value.includes(matcher.sniff) && (matcher.only_on_property ?? decl.prop) === decl.prop;
 	});
 
 	let hasVar = false;
