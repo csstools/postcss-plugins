@@ -41,6 +41,7 @@
 		"@csstools/postcss-cascade-layers": "^4.0.6",
 		"@csstools/postcss-color-function": "^3.0.19",
 		"@csstools/postcss-color-mix-function": "^2.0.19",
+		"@csstools/postcss-content-alt-text": "^1.0.0",
 		"@csstools/postcss-exponential-functions": "^1.0.9",
 		"@csstools/postcss-font-format-keywords": "^3.0.2",
 		"@csstools/postcss-gradients-interpolation-method": "^4.0.20",
