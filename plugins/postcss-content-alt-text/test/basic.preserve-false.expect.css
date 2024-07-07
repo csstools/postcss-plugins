@@ -1,0 +1,43 @@
+.foo {
+	content: "1"  "0";
+}
+
+.foo {
+	content: var(--b)  var(--a);
+}
+
+.foo {
+	content: "2" "0"  "0";
+}
+
+.foo {
+	content: "3"  "0" "0";
+}
+
+.ignore {
+	content: "4" "0";
+}
+
+.ignore {
+	content: "5" / "0" / "0";
+}
+
+.ignore {
+	content: "6" var(--foo, "0" / "0");
+}
+
+.ignore {
+	content: "7";
+	content: "7" / "0";
+}
+
+.ignore {
+	content: "8" "0";
+	content: "8" / "0";
+}
+
+@supports (content: "b" / "c") {
+	.ignore {
+		content: "9" / "0";
+	}
+}
