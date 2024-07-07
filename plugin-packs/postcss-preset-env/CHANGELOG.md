@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 9.6.0
+
+_July 7, 2024_
 
 - Added `@csstools/postcss-content-alt-text` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.1.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#810-jul-7-2024) (minor)
