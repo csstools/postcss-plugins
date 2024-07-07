@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (minor)
+### 3.3.0
+
+_July 7, 2024_
 
 - Add matching rules for alt text in `content`
 
