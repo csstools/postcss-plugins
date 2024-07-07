@@ -1,6 +1,8 @@
 # Changes to PostCSS Color Mix Function
 
-### Unreleased (patch)
+### 2.0.19
+
+_July 7, 2024_
 
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`3.3.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#330) (minor)
 
