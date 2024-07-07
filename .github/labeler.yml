@@ -119,6 +119,12 @@
       - plugins/postcss-conditional-values/**
       - experimental/postcss-conditional-values/**
 
+"plugins/postcss-content-alt-text":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-content-alt-text/**
+      - experimental/postcss-content-alt-text/**
+
 "plugins/postcss-contrast-color-function":
   - changed-files:
     - any-glob-to-any-file:
