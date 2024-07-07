@@ -67,7 +67,7 @@ Only set this to `true` if you are sure the alt text is not needed.
 
 /* becomes */
 
-<example.preserve-false.expect.css>
+<example.strip-alt-text.expect.css>
 ```
 
 <linkList>

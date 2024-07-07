@@ -94,7 +94,8 @@ postcssContentAltText({ stripAltText: true })
 /* becomes */
 
 .foo {
-	content: url(tree.jpg)  "A beautiful tree in a dark forest";
+	content: url(tree.jpg) ;
+	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }
 ```
 
