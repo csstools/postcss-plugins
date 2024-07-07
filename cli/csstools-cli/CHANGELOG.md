@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (minor)
+### 3.1.0
+
+_July 7, 2024_
 
 - Added `@csstools/postcss-content-alt-text` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text#readme) for usage details.
 - Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`3.0.19`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#3019) (patch)
