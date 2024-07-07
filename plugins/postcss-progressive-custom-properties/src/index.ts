@@ -72,7 +72,7 @@ const creator: PluginCreator<null> = () => {
 						// if the property itself isn't a custom property, the value must contain a var() function
 						const mustContainVar = !decl.variable;
 
-						const conditions = conditionsFromValue(decl.value, mustContainVar);
+						const conditions = conditionsFromValue(decl, mustContainVar);
 						const supportParams = conditions.support.join(' and ');
 						if (!supportParams) {
 							return;

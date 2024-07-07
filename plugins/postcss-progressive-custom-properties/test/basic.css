@@ -263,3 +263,23 @@
 	color: var(--green);
 	color: contrast-color(var(--green));
 }
+
+.content-alt-text-a {
+	content: "a";
+	content: "a" / var(--foo);
+}
+
+.content-alt-text-b {
+	content: "a" attr(href) "b";
+	content: "a" attr(href) "b" / var(--foo) "c";
+}
+
+.content-alt-text-c {
+	content: "a" "b";
+	content: "a" "/" "b";
+}
+
+.content-alt-text-d {
+	content: "a" "b";
+	content: "a" / "b";
+}
