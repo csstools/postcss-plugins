@@ -57,6 +57,15 @@ The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors
 
 
 </td></tr>
+<tr><td>
+
+[ParseErrorWithToken](./css-tokenizer.parseerrorwithtoken.md)
+
+
+</td><td>
+
+
+</td></tr>
 </tbody></table>
 
 ## Enumerations
@@ -747,6 +756,30 @@ The CSS Token interface
 <tr><td>
 
 [TokenWhitespace](./css-tokenizer.tokenwhitespace.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
+## Variables
+
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ParseErrorMessage](./css-tokenizer.parseerrormessage.md)
 
 
 </td><td>

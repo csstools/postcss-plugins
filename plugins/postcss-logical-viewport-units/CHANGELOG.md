@@ -4,6 +4,12 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 2.0.11
+
+_July 6, 2024_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.4.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#241) (patch)
+
 ### 2.0.10
 
 _June 29, 2024_

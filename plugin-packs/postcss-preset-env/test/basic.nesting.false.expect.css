@@ -229,7 +229,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited {
 	order: 23;
 }
 
@@ -713,5 +713,20 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 @supports (color: light-dark(red, red)) {
 .schemed-prop {
 	--theme-color: light-dark(cyan, deepskyblue);
+}
+}
+
+.content-alt-text {
+	content: url(tree.jpg)  "A beautiful tree in a dark forest";
+	content: url(tree.jpg) / "A beautiful tree in a dark forest";
+}
+
+.content-alt-text {
+	content: var(--foo)  "A beautiful tree in a dark forest";
+}
+
+@supports (content: "a" / "a") {
+.content-alt-text {
+	content: var(--foo) / "A beautiful tree in a dark forest";
 }
 }

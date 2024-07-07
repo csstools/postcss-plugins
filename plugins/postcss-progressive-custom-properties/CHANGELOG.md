@@ -4,6 +4,12 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 3.3.0
+
+_July 7, 2024_
+
+- Add matching rules for alt text in `content`
+
 ### 3.2.0
 
 _March 31, 2024_

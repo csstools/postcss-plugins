@@ -241,7 +241,7 @@
 	order: 22;
 }
 
-.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited, area[href].test-any-link-pseudo-class {
+.test-any-link-pseudo-class:link, .test-any-link-pseudo-class:visited {
 	order: 23;
 }
 
@@ -599,11 +599,25 @@
 }
 
 .gradients-interpolation-method {
-	--background-image: linear-gradient(in oklch decreasing hue, hsl(0, 85%, 75%) 0%, hsl(180, 80%, 65%) 100%);
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(164, 192, 255), rgb(137, 206, 255), rgb(111, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
 
-	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, rgb(255, 162, 140) 0%, rgb(97, 247, 255) 100%);
+	background-image: radial-gradient(farthest-corner circle at 50% 115%, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
 
-	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, color(display-p3 1 0.61806 0.51282) 0%, color(display-p3 0.51747 0.96259 1) 100%);
+	background-image: radial-gradient(farthest-corner circle at 50% 115%, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.3004), color(display-p3 1.15167 0.57912 -0.3946), color(display-p3 1.06645 0.68611 -0.4296), color(display-p3 0.94738 0.78766 -0.4263), color(display-p3 0.79233 0.87807 -0.3707), color(display-p3 0.59026 0.95319 -0.1467), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.5392 1.05733 0.93686), color(display-p3 -0.5777 1.04644 1.15396) 100%);
+
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+.gradients-interpolation-method {
+	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
+}
+}
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
+.gradients-interpolation-method {
+	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
+}
 }
 
 .test-css-color-5-interop {
@@ -678,4 +692,19 @@
 .schemed-prop * {
 	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
 	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
+}
+
+.content-alt-text {
+	content: url(tree.jpg)  "A beautiful tree in a dark forest";
+	content: url(tree.jpg) / "A beautiful tree in a dark forest";
+}
+
+.content-alt-text {
+	content: var(--foo)  "A beautiful tree in a dark forest";
+}
+
+@supports (content: "a" / "a") {
+.content-alt-text {
+	content: var(--foo) / "A beautiful tree in a dark forest";
+}
 }

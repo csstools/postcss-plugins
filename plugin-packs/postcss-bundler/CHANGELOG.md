@@ -4,6 +4,14 @@
 
 - Updated: Support for Node v18+ (major).
 
+### 1.0.15
+
+_July 6, 2024_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`2.4.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#241) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`2.7.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#271) (patch)
+- Updated [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url) to [`1.0.11`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url/CHANGELOG.md#1011) (patch)
+
 ### 1.0.14
 
 _June 29, 2024_

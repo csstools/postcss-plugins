@@ -8,6 +8,7 @@ import postcssColorFunctionalNotation from './plugins/postcss-color-functional-n
 import postcssColorHexAlpha from './plugins/postcss-color-hex-alpha';
 import postcssColorMixFunction from './plugins/postcss-color-mix-function';
 import postcssColorRebeccaPurple from './plugins/postcss-color-rebeccapurple';
+import postcssContentAltText from './plugins/postcss-content-alt-text';
 import postcssCustomMedia from './plugins/postcss-custom-media';
 import postcssCustomProperties from './plugins/postcss-custom-properties';
 import postcssCustomSelectors from './plugins/postcss-custom-selectors';
@@ -80,6 +81,9 @@ async function main(): Promise<void> {
 			return;
 		case 'postcss-color-rebeccapurple':
 			await postcssColorRebeccaPurple();
+			return;
+		case 'postcss-content-alt-text':
+			await postcssContentAltText();
 			return;
 		case 'postcss-custom-media':
 			await postcssCustomMedia();
@@ -218,6 +222,7 @@ async function main(): Promise<void> {
 				'  postcss-color-hex-alpha',
 				'  postcss-color-mix-function',
 				'  postcss-color-rebeccapurple',
+				'  postcss-content-alt-text',
 				'  postcss-custom-media',
 				'  postcss-custom-properties',
 				'  postcss-custom-selectors',

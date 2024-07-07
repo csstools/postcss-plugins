@@ -20,6 +20,12 @@ postcssTape(plugin)({
 	'basic': {
 		message: 'supports basic usage',
 	},
+	'basic:edge16': {
+		message: 'supports { browsers: "edge >= 16" } usage',
+		options: {
+			browsers: 'edge >= 16',
+		},
+	},
 	'basic:ff49': {
 		message: 'supports { browsers: "ff >= 49" } usage',
 		options: {

@@ -4,8 +4,8 @@
 	"private": true,
 	"description": "Can you use yarn with our plugins?",
 	"devDependencies": {
-		"postcss": "^8.4.38",
-		"postcss-preset-env": "^9.5.14"
+		"postcss": "^8.4.39",
+		"postcss-preset-env": "^9.6.0"
 	},
 	"volta": {
 		"extends": "../../package.json",

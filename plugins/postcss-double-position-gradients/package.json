@@ -1,7 +1,7 @@
 {
 	"name": "postcss-double-position-gradients",
 	"description": "Use double-position gradients in CSS",
-	"version": "5.0.6",
+	"version": "5.0.7",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -38,7 +38,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/postcss-progressive-custom-properties": "^3.2.0",
+		"@csstools/postcss-progressive-custom-properties": "^3.3.0",
 		"@csstools/utilities": "^1.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},

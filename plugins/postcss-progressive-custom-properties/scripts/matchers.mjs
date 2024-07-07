@@ -5,6 +5,7 @@ import { icUnitMatchers } from './font-size.mjs';
 import { lightDarkMatchers } from './light-dark.mjs';
 import { relativeColorSyntaxMatches } from './relative-color-syntax.mjs';
 import { contrastColorMatchers } from './contrast-color.mjs';
+import { contentMatchers } from './content.mjs';
 
 fsp.writeFile(
 	'./src/matchers.ts',
@@ -30,6 +31,9 @@ fsp.writeFile(
 
 			// font-size:
 			...icUnitMatchers,
+
+			// content:
+			...contentMatchers,
 		],
 		null,
 		'\t',

@@ -45,6 +45,11 @@ export default [
 		'importName': 'postcssColorHexAlpha',
 	},
 	{
+		'packageName': '@csstools/postcss-content-alt-text',
+		'id': 'content-alt-text',
+		'importName': 'postcssContentAltText',
+	},
+	{
 		'packageName': 'postcss-color-rebeccapurple',
 		'id': 'rebeccapurple-color',
 		'importName': 'postcssColorRebeccapurple',

@@ -21,9 +21,6 @@ assert.deepStrictEqual(
 			],
 			vendors_implementations: 3,
 			pluginOptions: {
-				subFeatures: {
-					areaHrefNeedsFixing: true,
-				},
 				enableProgressiveCustomProperties: false,
 			},
 			id: 'any-link-pseudo-class',
@@ -39,11 +36,14 @@ assert.deepStrictEqual(
 
 testLogger.logger.emitLogs(testLogger);
 assert.deepStrictEqual(
-	testLogger.getLogs(),
+	testLogger.getLogs().map(x => x.split('\n')),
 	[
-		'Using features from Stage 2 (default)\n' +
-		'  blank-pseudo-class with stage 1 has been disabled\n' +
-		'Adding area[href] fallbacks for ":any-link" support in Edge and IE.',
+		[
+			'Using features from Stage 2 (default).',
+			'- \'blank-pseudo-class\' disabled because it lacks the required stage (1 out of 2).',
+			'- \'any-link-pseudo-class\' enabled for:',
+			'    op_mini all',
+		],
 	],
 );
 

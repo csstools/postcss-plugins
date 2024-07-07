@@ -38,12 +38,12 @@
 		"@rollup/plugin-typescript": "^11.1.6",
 		"@stryker-mutator/core": "^8.2.6",
 		"eslint": "^9.5.0",
-		"globals": "^15.6.0",
+		"globals": "^15.7.0",
 		"knip": "^5.20.0",
 		"rollup": "^4.17.2",
 		"tslib": "^2.6.3",
 		"typescript": "^5.4.5",
-		"typescript-eslint": "^8.0.0-alpha.36"
+		"typescript-eslint": "^8.0.0-alpha.37"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",

@@ -10,11 +10,18 @@ export default function getOptionsForBrowsersByFeature(supportedBrowsers, featur
 		case 'any-link-pseudo-class':
 			{
 				const hasIEOrEdge = supportedBrowsers.find((browserslistEntry) => {
-					return browserslistEntry.startsWith('ie ') || browserslistEntry.startsWith('edge ');
+					return browserslistEntry.startsWith('ie ') ||
+						browserslistEntry === 'edge 12' ||
+						browserslistEntry === 'edge 13' ||
+						browserslistEntry === 'edge 14' ||
+						browserslistEntry === 'edge 15' ||
+						browserslistEntry === 'edge 16' ||
+						browserslistEntry === 'edge 17' ||
+						browserslistEntry === 'edge 18';
 				});
 
 				if (hasIEOrEdge) {
-					logger.log('Adding area[href] fallbacks for ":any-link" support in Edge and IE.');
+					logger.log('- \'any-link-pseudo-class\' setting \'subFeatures: { areaHrefNeedsFixing: true }\' due to lack of browser support for area[href] in Edge and IE.');
 					return {
 						subFeatures: {
 							areaHrefNeedsFixing: true,
