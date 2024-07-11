@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- fix `serializeP3` when `gamutMapping` is `false`
+
 ### 2.0.4
 
 _July 6, 2024_
