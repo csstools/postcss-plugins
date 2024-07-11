@@ -21,14 +21,10 @@ export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
-	if (
-		color.colorNotation !== ColorNotation.Display_P3
-	) {
-		if (gamutMapping) {
-			p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
-		} else {
-			p3 = XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
-		}
+	if (gamutMapping) {
+		p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
+	} else if (color.colorNotation !== ColorNotation.Display_P3) {
+		p3 = XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
 	}
 
 	const r = gamutMapping ? Math.min(1, Math.max(0, toPrecision(p3[0], 6))) : toPrecision(p3[0], 6);
