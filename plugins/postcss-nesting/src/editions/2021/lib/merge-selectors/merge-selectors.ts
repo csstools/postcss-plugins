@@ -46,11 +46,9 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 
 			if (!isNestContaining) {
 				selectorAST.insertBefore(selectorAST.at(0), parser.combinator({ value: ' ' }));
-				// @ts-expect-error - `parser.nesting` is not recognized
-				selectorAST.insertBefore(selectorAST.at(0), parser.nesting()); // eslint-disable-line @typescript-eslint/no-unsafe-argument
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting());
 			} else if (startsWithCombinator) {
-				// @ts-expect-error - `parser.nesting` is not recognized
-				selectorAST.insertBefore(selectorAST.at(0), parser.nesting()); // eslint-disable-line @typescript-eslint/no-unsafe-argument
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting());
 			}
 
 			toSelector = toSelectorAST.toString();

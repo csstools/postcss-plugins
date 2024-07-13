@@ -201,6 +201,16 @@ assert.deepStrictEqual(
 );
 
 assert.deepStrictEqual(
+	serialize_sRGB_data(color(parse('color(display-p3 204 0.901 0.902)'))),
+	'rgb(255, 255, 255)',
+);
+
+assert.deepStrictEqual(
+	serialize_P3_data(color(parse('color(display-p3 204 0.901 0.902)'))),
+	'color(display-p3 1 1 1)',
+);
+
+assert.deepStrictEqual(
 	serialize_sRGB_data(color(parse('rgb(from rgb(none none none / none) r g b / alpha)'))),
 	'rgba(0, 0, 0, 0)',
 );
