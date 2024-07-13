@@ -22,7 +22,6 @@ export default function complexSelectors(selectors: Array<string>, pluginOptions
 				pseudo.nodes[0].nodes.length === 0
 			) {
 				pseudo.value = ':not';
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				pseudo.nodes[0].append(parser.universal());
 				return;
 			}
