@@ -103,7 +103,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 										node.remove();
 									} else {
 										node.replaceWith(
-											// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 											selectorParser.universal(),
 										);
 									}

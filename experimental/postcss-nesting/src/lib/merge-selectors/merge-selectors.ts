@@ -51,12 +51,10 @@ export default function mergeSelectors(node: Node, postcssResult: Result, fromSe
 			}
 
 			if (startsWithCombinator) {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting());
 			} else {
 				selectorAST.insertBefore(selectorAST.at(0), parser.combinator({value: ' '}));
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-				selectorAST.insertBefore(selectorAST.at(0), parser.nesting({}));
+				selectorAST.insertBefore(selectorAST.at(0), parser.nesting());
 			}
 		}
 

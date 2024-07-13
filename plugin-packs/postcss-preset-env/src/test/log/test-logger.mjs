@@ -16,3 +16,11 @@ export function newTestLogger() {
 		},
 	};
 }
+
+export function logsContainEnabledFor(logs, browsers) {
+	const tests = browsers.map(browser => new RegExp(`^    ${browser} \\d+`));
+
+	return tests.every(test => {
+		return logs.some(log => test.test(log));
+	});
+}
