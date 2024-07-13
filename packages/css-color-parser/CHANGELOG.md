@@ -4,7 +4,9 @@
 
 - Updated: Support for Node v18+ (major).
 
-### Unreleased (patch)
+### 2.0.5
+
+_July 13, 2024_
 
 - fix `serializeP3` when `gamutMapping` is `false`
 

@@ -231,10 +231,10 @@ function renderResult() {
 			return;
 		}
 
-		outputChannel1Calc.value = channel1.toString();
-		outputChannel2Calc.value = channel2.toString();
-		outputChannel3Calc.value = channel3.toString();
-		outputChannel4Calc.value = alpha ? alpha.toString() : round(passThroughColorValue.alpha);
+		outputChannel1Calc.value = nanToNone(channel1);
+		outputChannel2Calc.value = nanToNone(channel2);
+		outputChannel3Calc.value = nanToNone(channel3);
+		outputChannel4Calc.value = nanToNone(alpha ? alpha : round(passThroughColorValue.alpha));
 
 		const outputColorValue = color(componentValue);
 		if (!outputColorValue) {
@@ -254,10 +254,10 @@ function renderResult() {
 			passThroughColorValue.channels = passThroughColorValue.channels.map((channel) => channel * 255);
 		}
 
-		outputChannel1Input.value = round(passThroughColorValue.channels[0]);
-		outputChannel2Input.value = round(passThroughColorValue.channels[1]);
-		outputChannel3Input.value = round(passThroughColorValue.channels[2]);
-		outputChannel4Input.value = round(passThroughColorValue.alpha);
+		outputChannel1Input.value = nanToNone(round(passThroughColorValue.channels[0]));
+		outputChannel2Input.value = nanToNone(round(passThroughColorValue.channels[1]));
+		outputChannel3Input.value = nanToNone(round(passThroughColorValue.channels[2]));
+		outputChannel4Input.value = nanToNone(round(passThroughColorValue.alpha));
 
 		if (
 			passThroughColorValue.colorNotation === 'rgb' ||
@@ -267,19 +267,29 @@ function renderResult() {
 			outputColorValue.channels = outputColorValue.channels.map((channel) => channel * 255);
 		}
 
-		outputColorValue.channels = outputColorValue.channels.map((channel) => Number.isNaN(channel) ? 0 : channel);
-
-		outputChannel1Output.value = round(outputColorValue.channels[0]);
-		outputChannel2Output.value = round(outputColorValue.channels[1]);
-		outputChannel3Output.value = round(outputColorValue.channels[2]);
-		outputChannel4Output.value = round(outputColorValue.alpha);
+		outputChannel1Output.value = nanToNone(round(outputColorValue.channels[0]));
+		outputChannel2Output.value = nanToNone(round(outputColorValue.channels[1]));
+		outputChannel3Output.value = nanToNone(round(outputColorValue.channels[2]));
+		outputChannel4Output.value = nanToNone(round(outputColorValue.alpha));
 
 		document.getElementById('color-input-label-1').style.setProperty('--color', outputColorValueStr);
 	});
 }
 
 function round(x) {
+	if (Number.isNaN(x)) {
+		return x;
+	}
+
 	return Math.round(x * 1000) / 1000;
+}
+
+function nanToNone(x) {
+	if (Number.isNaN(x)) {
+		return 'none';
+	}
+
+	return x;
 }
 
 addEventListener('change', renderResult);
