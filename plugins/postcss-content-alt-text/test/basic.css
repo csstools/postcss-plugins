@@ -41,3 +41,11 @@
 		content: "9" / "0";
 	}
 }
+
+.ignore {
+	/*
+	 * An empty string is often used for illustrative items that do not require alt text.
+	 * Appending an empty string might be visually breaking without having any benefits at all.
+	 */
+	content: ">" / "";
+}

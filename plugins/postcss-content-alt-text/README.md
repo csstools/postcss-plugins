@@ -13,11 +13,20 @@ npm install @csstools/postcss-content-alt-text --save-dev
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }
 
+.bar {
+	content: ">" / "";
+}
+
 /* becomes */
 
 .foo {
 	content: url(tree.jpg)  "A beautiful tree in a dark forest";
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
+}
+
+.bar {
+	content: ">" ;
+	content: ">" / "";
 }
 ```
 
@@ -67,10 +76,18 @@ postcssContentAltText({ preserve: false })
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }
 
+.bar {
+	content: ">" / "";
+}
+
 /* becomes */
 
 .foo {
 	content: url(tree.jpg)  "A beautiful tree in a dark forest";
+}
+
+.bar {
+	content: ">" ;
 }
 ```
 
@@ -91,11 +108,20 @@ postcssContentAltText({ stripAltText: true })
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }
 
+.bar {
+	content: ">" / "";
+}
+
 /* becomes */
 
 .foo {
 	content: url(tree.jpg) ;
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
+}
+
+.bar {
+	content: ">" ;
+	content: ">" / "";
 }
 ```
 

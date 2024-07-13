@@ -1,8 +1,8 @@
-import { isTokenNode, parseListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenDelim, tokenize } from '@csstools/css-tokenizer';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import type { PluginCreator } from 'postcss';
+import { transform } from './transform';
+import { parse } from './parse';
 
 /** postcss-content-alt-text plugin options */
 export type basePluginOptions = {
@@ -34,42 +34,12 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 				return;
 			}
 
-			const componentValues = parseListOfComponentValues(
-				tokenize({ css: decl.value })
-			);
-
-			let slashCounter = 0;
-
-			for (let i = (componentValues.length - 1); i >= 0; i--) {
-				const componentValue = componentValues[i];
-				if (!isTokenNode(componentValue)) {
-					continue;
-				}
-
-				const token = componentValue.value;
-				if (!isTokenDelim(token)) {
-					continue;
-				}
-
-				if (token[4].value !== '/') {
-					continue;
-				}
-
-				slashCounter++;
-
-				if (opts?.stripAltText === true) {
-					componentValues.splice(i, componentValues.length);
-				} else {
-					componentValues.splice(i, 1);
-				}
-			}
-
-			if (slashCounter !== 1) {
-				// Either too few or too many slashes
+			const parts = parse(decl.value);
+			if (parts.length !== 2) {
 				return;
 			}
 
-			const modified = stringify([componentValues]);
+			const modified = transform(parts, opts?.stripAltText);
 
 			if (modified === decl.value) {
 				return;
