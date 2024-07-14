@@ -39,11 +39,11 @@
 		"@stryker-mutator/core": "^8.2.6",
 		"eslint": "^9.5.0",
 		"globals": "^15.7.0",
-		"knip": "^5.20.0",
+		"knip": "^5.26.0",
 		"rollup": "^4.17.2",
 		"tslib": "^2.6.3",
 		"typescript": "^5.4.5",
-		"typescript-eslint": "^8.0.0-alpha.37"
+		"typescript-eslint": "^8.0.0-alpha.42"
 	},
 	"scripts": {
 		"build": "npm run build --workspaces --if-present",
