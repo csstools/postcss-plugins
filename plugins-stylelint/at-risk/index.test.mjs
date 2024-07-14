@@ -13,6 +13,9 @@ testRule({
 			code: 'div { color: cyan; & { color: purple } }',
 			description: 'decl before rule',
 		},
+		{
+			code: 'div { position-area: inherit; }',
+		},
 	],
 
 	reject: [
@@ -42,6 +45,14 @@ testRule({
 			column: 35,
 			endLine: 1,
 			endColumn: 40,
+		},
+		{
+			code: 'div { inset-area: inherit; }',
+			message: rule.messages.rejectedAtRiskPropertyReplacement('inset-area', 'position-area'),
+			line: 1,
+			column: 7,
+			endLine: 1,
+			endColumn: 17,
 		},
 	],
 });
