@@ -30,7 +30,9 @@ jobs:
           npm ci --ignore-scripts
 
       - name: build
-        run: npm run build
+        run: |
+          cd sites/postcss-preset-env
+          npm run build
 
       - name: trigger deploy
         env:
