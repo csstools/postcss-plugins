@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process';
+import { platform } from 'node:process';
 import assert from 'node:assert';
 
 {
@@ -12,6 +13,9 @@ import assert from 'node:assert';
 			'--custom-formatter',
 			'@csstools/stylelint-formatter-github',
 		],
+		{
+			shell: platform === 'win32',
+		},
 	);
 
 	let stdoutBuffer = '';
