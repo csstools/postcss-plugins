@@ -17,7 +17,24 @@ jobs:
     name: Request Netlify Webhook
     runs-on: ubuntu-latest
     steps:
-      - name: Curl request
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: npm ci
+        run: |
+          cd sites/postcss-preset-env
+          npm ci --ignore-scripts
+
+      - name: build
+        run: |
+          cd sites/postcss-preset-env
+          npm run build
+
+      - name: trigger deploy
         env:
           DEPLOY_HOOK: ${{ secrets.PRESET_ENV_DEPLOY_HOOK }}
         run: curl -X POST -d {} $DEPLOY_HOOK

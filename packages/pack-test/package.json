@@ -1,0 +1,62 @@
+{
+	"name": "@csstools/pack-test",
+	"description": "Verify that the published contents of your node package will pass a basic smoke test.",
+	"version": "0.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": ">=18"
+	},
+	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"test": "node --test"
+	},
+	"keywords": [
+		"node",
+		"testing",
+		"tests",
+		"tools"
+	],
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

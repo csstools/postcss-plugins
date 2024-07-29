@@ -520,26 +520,6 @@
 	scroll-padding-top: inherit;
 }
 
-.scroll-start {
-	/* scroll-start-block */
-	scroll-start-block: inherit;
-}
-
-.scroll-start {
-	/* scroll-start-inline */
-	scroll-start-inline: inherit;
-}
-
-.scroll-start {
-	/* scroll-start-x */
-	scroll-start-x: inherit;
-}
-
-.scroll-start {
-	/* scroll-start-y */
-	scroll-start-y: inherit;
-}
-
 .size {
 	/* block-size */
 	height: inherit;
