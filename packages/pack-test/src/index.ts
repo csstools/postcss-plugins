@@ -26,6 +26,19 @@ import { spawn } from 'node:child_process';
 const PACKAGE_DIR_NAME = 'package';
 
 export async function testPack(moduleName: string): Promise<void> {
+	if (platform.startsWith('win')) {
+		console.log('Skipping test on Windows');
+
+		return;
+	}
+
+	if (!('resolve' in import.meta)) {
+		console.log('Skipping test on platform without `import.meta.resolve` support');
+
+		return;
+	}
+
+
 	const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'csstools-pack-test-'));
 	let didError = false;
 
