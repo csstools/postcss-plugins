@@ -39,6 +39,7 @@
 		"stylelint": "^16.6.0"
 	},
 	"devDependencies": {
+		"@csstools/pack-test": "^0.0.0",
 		"stylelint": "^16.6.0"
 	},
 	"scripts": {

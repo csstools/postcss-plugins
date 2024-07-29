@@ -38,9 +38,7 @@ export async function testPack(moduleName: string): Promise<void> {
 		return;
 	}
 
-
 	const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'csstools-pack-test-'));
-	let didError = false;
 
 	try {
 		const moduleURL = new URL(import.meta.resolve(moduleName));
@@ -63,15 +61,8 @@ export async function testPack(moduleName: string): Promise<void> {
 		await runNPMInstall(tempDir);
 
 		await runTest(tempDir);
-	} catch (err) {
-		console.error(err);
-		didError = true;
 	} finally {
 		await fs.rm(tempDir, { recursive: true });
-	}
-
-	if (didError) {
-		process.exit(1);
 	}
 }
 
