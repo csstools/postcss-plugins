@@ -32,7 +32,8 @@
 	"files": [
 		"LICENSE.md",
 		"README.md",
-		"index.mjs"
+		"index.mjs",
+		"parse-at-import.mjs"
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^2.7.1",
@@ -42,6 +43,7 @@
 		"stylelint": "^16.6.0"
 	},
 	"devDependencies": {
+		"@csstools/pack-test": "^0.0.0",
 		"stylelint": "^16.6.0",
 		"stylelint-test-rule-node": "^0.3.0"
 	},
