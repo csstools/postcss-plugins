@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (patch)
+
+- Fix `files` field in `package.json`
+
 ### 2.0.7
 
 _July 6, 2024_
