@@ -49,7 +49,7 @@
 	],
 	"devDependencies": {
 		"@rmenke/css-tokenizer-tests": "^1.1.5",
-		"postcss": "^8.4.38",
+		"postcss": "^8.4.40",
 		"postcss-parser-tests": "^8.8.0"
 	},
 	"scripts": {
