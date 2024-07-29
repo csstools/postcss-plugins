@@ -1,0 +1,64 @@
+{
+	"name": "@csstools/stylelint-formatter-github",
+	"description": "Format Stylelint errors as GitHub annotations",
+	"version": "0.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": "^14 || ^16 || >=18"
+	},
+	"type": "module",
+	"main": "index.mjs",
+	"files": [
+		"LICENSE.md",
+		"README.md",
+		"index.mjs",
+		"preprocess-warnings.mjs"
+	],
+	"peerDependencies": {
+		"stylelint": "^16.6.0"
+	},
+	"devDependencies": {
+		"@csstools/pack-test": "^0.0.0",
+		"stylelint": "^16.6.0"
+	},
+	"scripts": {
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"test": "node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/formatter-github#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins-stylelint/formatter-github"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"github",
+		"stylelint",
+		"stylelint-formatter"
+	],
+	"volta": {
+		"extends": "../../package.json"
+	}
+}
