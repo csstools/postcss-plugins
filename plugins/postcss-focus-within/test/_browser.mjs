@@ -62,107 +62,109 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
+			});
 
-		// Default
-		{
-			await page.goto('http://localhost:8080');
+			// Default
+			{
+				await page.goto('http://localhost:8080');
 
-			await page.evaluate(async () => window._focusWithinInit({ force: true }));
+				await page.evaluate(async () => window._focusWithinInit({ force: true }));
 
-			// None of the elements should have styles
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+				// None of the elements should have styles
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
 
-			await page.click('#a-grand-parent-input');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+				await page.click('#a-grand-parent-input');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
 
-			await page.click('#a-parent-input');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+				await page.click('#a-parent-input');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
 
-			await page.click('#a-child-input');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', true));
+				await page.click('#a-child-input');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', true));
 
-			await page.click('body');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+				await page.click('body');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+			}
+
+			// Replace with
+			{
+				await page.goto('http://localhost:8080/replace-with');
+
+				await page.evaluate(async () => window._focusWithinInit({ force: true, replaceWith: '.focus-within' }));
+
+				// None of the elements should have styles
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+
+				await page.click('#a-grand-parent-input');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+
+				await page.click('#a-parent-input');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+
+				await page.click('#a-child-input');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', true));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', true));
+
+				await page.click('body');
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child', false));
+				await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
+			}
+		} finally {
+			await browser.close();
+			await cleanup();
 		}
-
-		// Replace with
-		{
-			await page.goto('http://localhost:8080/replace-with');
-
-			await page.evaluate(async () => window._focusWithinInit({ force: true, replaceWith: '.focus-within' }));
-
-			// None of the elements should have styles
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
-
-			await page.click('#a-grand-parent-input');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
-
-			await page.click('#a-parent-input');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
-
-			await page.click('#a-child-input');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', true));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', true));
-
-			await page.click('body');
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-grand-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-parent-input', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child', false));
-			await page.evaluate(async () => window.checkElement('default', 'a-child-input', false));
-		}
-
-		await browser.close();
-		await cleanup();
 	});
 } else {
 	startServers();

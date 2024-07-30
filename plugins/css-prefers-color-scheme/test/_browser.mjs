@@ -76,92 +76,94 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
+			});
 
-		// Default
-		{
-			await page.goto('http://localhost:8080');
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+			// Default
+			{
+				await page.goto('http://localhost:8080');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
-		}
-		{
-			await page.goto('http://localhost:8080/no-polyfill.html');
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+			{
+				await page.goto('http://localhost:8080/no-polyfill.html');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
-		}
 
-		// Explicit "dark"
-		{
-			await await page.emulateMediaFeatures([{
-				name: 'prefers-color-scheme', value: 'dark',
-			}]);
-			await page.goto('http://localhost:8080#dark');
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+			// Explicit "dark"
+			{
+				await await page.emulateMediaFeatures([{
+					name: 'prefers-color-scheme', value: 'dark',
+				}]);
+				await page.goto('http://localhost:8080#dark');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
-		}
-		{
-			await await page.emulateMediaFeatures([{
-				name: 'prefers-color-scheme', value: 'dark',
-			}]);
-			await page.goto('http://localhost:8080/no-polyfill.html#dark');
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+			{
+				await await page.emulateMediaFeatures([{
+					name: 'prefers-color-scheme', value: 'dark',
+				}]);
+				await page.goto('http://localhost:8080/no-polyfill.html#dark');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
-		}
 
-		// Explicit "light"
-		{
-			await await page.emulateMediaFeatures([{
-				name: 'prefers-color-scheme', value: 'light',
-			}]);
-			await page.goto('http://localhost:8080#light');
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+			// Explicit "light"
+			{
+				await await page.emulateMediaFeatures([{
+					name: 'prefers-color-scheme', value: 'light',
+				}]);
+				await page.goto('http://localhost:8080#light');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
-		}
-		{
-			await await page.emulateMediaFeatures([{
-				name: 'prefers-color-scheme', value: 'light',
-			}]);
-			await page.goto('http://localhost:8080/no-polyfill.html#light');
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
-			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+			{
+				await await page.emulateMediaFeatures([{
+					name: 'prefers-color-scheme', value: 'light',
+				}]);
+				await page.goto('http://localhost:8080/no-polyfill.html#light');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();

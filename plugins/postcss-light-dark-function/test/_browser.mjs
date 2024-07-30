@@ -91,7 +91,7 @@ function startServers() {
 }
 
 if (!process.env.DEBUG) {
-	let errors = [];
+	const errors = [];
 
 	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
 		const cleanup = startServers();

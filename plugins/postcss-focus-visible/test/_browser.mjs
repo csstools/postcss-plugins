@@ -47,59 +47,61 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
+			});
 
-		// Default
-		{
-			await page.goto('http://localhost:8080');
+			// Default
+			{
+				await page.goto('http://localhost:8080');
 
-			// None of the elements should have styles
-			await page.evaluate(async () => window.checkElement('default', 'a', false));
-			await page.evaluate(async () => window.checkElement('default', 'b', false));
-			await page.evaluate(async () => window.checkElement('default', 'c', false));
+				// None of the elements should have styles
+				await page.evaluate(async () => window.checkElement('default', 'a', false));
+				await page.evaluate(async () => window.checkElement('default', 'b', false));
+				await page.evaluate(async () => window.checkElement('default', 'c', false));
 
-			await page.keyboard.press('Tab');
-			await page.evaluate(async () => window.checkElement('default', 'a', true));
-			await page.evaluate(async () => window.checkElement('default', 'b', false));
-			await page.evaluate(async () => window.checkElement('default', 'c', false));
+				await page.keyboard.press('Tab');
+				await page.evaluate(async () => window.checkElement('default', 'a', true));
+				await page.evaluate(async () => window.checkElement('default', 'b', false));
+				await page.evaluate(async () => window.checkElement('default', 'c', false));
 
-			await page.keyboard.press('Tab');
-			await page.evaluate(async () => window.checkElement('default', 'a', false));
-			await page.evaluate(async () => window.checkElement('default', 'b', true));
-			await page.evaluate(async () => window.checkElement('default', 'c', false));
+				await page.keyboard.press('Tab');
+				await page.evaluate(async () => window.checkElement('default', 'a', false));
+				await page.evaluate(async () => window.checkElement('default', 'b', true));
+				await page.evaluate(async () => window.checkElement('default', 'c', false));
 
-			await page.keyboard.press('Tab');
-			await page.evaluate(async () => window.checkElement('default', 'a', false));
-			await page.evaluate(async () => window.checkElement('default', 'b', false));
-			await page.evaluate(async () => window.checkElement('default', 'c', true));
+				await page.keyboard.press('Tab');
+				await page.evaluate(async () => window.checkElement('default', 'a', false));
+				await page.evaluate(async () => window.checkElement('default', 'b', false));
+				await page.evaluate(async () => window.checkElement('default', 'c', true));
+			}
+
+			// Clicking
+			{
+				await page.goto('http://localhost:8080');
+
+				// None of the elements should have styles
+				await page.evaluate(async () => window.checkElement('click', 'a', false));
+				await page.evaluate(async () => window.checkElement('click', 'b', false));
+				await page.evaluate(async () => window.checkElement('click', 'c', false));
+
+				await page.click('#a');
+				await page.evaluate(async () => window.checkElement('click', 'a', true));
+
+				await page.click('#b');
+				await page.evaluate(async () => window.checkElement('click', 'b', true));
+
+				// Clicking on a non-input element should not trigger focus-visible if not with keyboard
+				await page.click('#c');
+				await page.evaluate(async () => window.checkElement('click', 'c', false));
+			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		// Clicking
-		{
-			await page.goto('http://localhost:8080');
-
-			// None of the elements should have styles
-			await page.evaluate(async () => window.checkElement('click', 'a', false));
-			await page.evaluate(async () => window.checkElement('click', 'b', false));
-			await page.evaluate(async () => window.checkElement('click', 'c', false));
-
-			await page.click('#a');
-			await page.evaluate(async () => window.checkElement('click', 'a', true));
-
-			await page.click('#b');
-			await page.evaluate(async () => window.checkElement('click', 'b', true));
-
-			// Clicking on a non-input element should not trigger focus-visible if not with keyboard
-			await page.click('#c');
-			await page.evaluate(async () => window.checkElement('click', 'c', false));
-		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();

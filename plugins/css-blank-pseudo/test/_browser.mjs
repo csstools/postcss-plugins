@@ -62,184 +62,186 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
-
-		const clearInput = async (page, selector) => {
-			const input = await page.$(selector);
-			await input.click({ clickCount: 3 });
-			await page.keyboard.press('Backspace');
-		};
-
-		// Default
-		{
-			await page.goto('http://localhost:8080');
-			const result = await page.evaluate(async () => {
-				return await window.runTest();
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
 			});
 
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
-			}
-		}
+			const clearInput = async (page, selector) => {
+				const input = await page.$(selector);
+				await input.click({ clickCount: 3 });
+				await page.keyboard.press('Backspace');
+			};
 
-		// Changing values
-		{
-			await page.goto('http://localhost:8080');
-
-			await page.evaluate(async () => window.runTest());
-
-			await page.type('#tel-input', '1234');
-			await page.type('#text-input', '1234');
-			await page.type('#number-input', '1234');
-			await page.type('#password-input', '1234');
-			await page.type('#textarea', '1234');
-			await page.select('#select', 'non-empty');
-			await page.select('#multiselect', 'non-empty');
-
-			const fillingResults = await Promise.all([
-				page.evaluate(async () => window.checkElement('user typing', 'tel', false)),
-				page.evaluate(async () => window.checkElement('user typing', 'text', false)),
-				page.evaluate(async () => window.checkElement('user typing', 'number', false)),
-				page.evaluate(async () => window.checkElement('user typing', 'password', false)),
-				page.evaluate(async () => window.checkElement('user typing', 'textarea', false)),
-				page.evaluate(async () => window.checkElement('user typing', 'select', false)),
-				page.evaluate(async () => window.checkElement('user typing', 'multiselect', false)),
-			]);
-
-			// Reverting now, should revert
-			await clearInput(page, '#tel-input');
-			await clearInput(page, '#text-input');
-			await clearInput(page, '#number-input');
-			await clearInput(page, '#password-input');
-			await clearInput(page, '#textarea');
-			await page.select('#select', '');
-			await page.select('#multiselect', '');
-
-			const unfillingResults = await Promise.all([
-				page.evaluate(async () => window.checkElement('user typing', 'tel', true)),
-				page.evaluate(async () => window.checkElement('user typing', 'text', true)),
-				page.evaluate(async () => window.checkElement('user typing', 'number', true)),
-				page.evaluate(async () => window.checkElement('user typing', 'password', true)),
-				page.evaluate(async () => window.checkElement('user typing', 'textarea', true)),
-				page.evaluate(async () => window.checkElement('user typing', 'select', true)),
-				page.evaluate(async () => window.checkElement('user typing', 'multiselect', true)),
-			]);
-
-			const result = [
-				...fillingResults,
-				...unfillingResults,
-			].every(test => !!test);
-
-			if (!result) {
-				throw new Error('Test failed');
-			}
-		}
-
-		// Changing values via JS
-		{
-			await page.goto('http://localhost:8080');
-
-			await page.evaluate(async () => window.runTest());
-
-			await page.evaluate(async () => window.document.getElementById('tel-input').value = '1234');
-			await page.evaluate(async () => window.document.getElementById('text-input').value = '1234');
-			await page.evaluate(async () => window.document.getElementById('number-input').value = '1234');
-			await page.evaluate(async () => window.document.getElementById('password-input').value = '1234');
-			await page.evaluate(async () => window.document.getElementById('textarea').value = '1234');
-			await page.evaluate(async () => window.document.getElementById('select').value = 'non-empty');
-			await page.evaluate(async () => window.document.getElementById('multiselect').value = 'non-empty');
-
-
-			const fillingResults = await Promise.all([
-				page.evaluate(async () => window.checkElement('js value change', 'tel', false)),
-				page.evaluate(async () => window.checkElement('js value change', 'text', false)),
-				page.evaluate(async () => window.checkElement('js value change', 'number', false)),
-				page.evaluate(async () => window.checkElement('js value change', 'password', false)),
-				page.evaluate(async () => window.checkElement('js value change', 'textarea', false)),
-				page.evaluate(async () => window.checkElement('js value change', 'select', false)),
-				page.evaluate(async () => window.checkElement('js value change', 'multiselect', false)),
-			]);
-
-			// Reverting
-			await page.evaluate(async () => window.document.getElementById('tel-input').value = '');
-			await page.evaluate(async () => window.document.getElementById('text-input').value = '');
-			await page.evaluate(async () => window.document.getElementById('number-input').value = '');
-			await page.evaluate(async () => window.document.getElementById('password-input').value = '');
-			await page.evaluate(async () => window.document.getElementById('textarea').value = '');
-			await page.evaluate(async () => window.document.getElementById('select').value = '');
-			await page.evaluate(async () => window.document.getElementById('multiselect').value = '');
-
-			const unfillingResults = await Promise.all([
-				page.evaluate(async () => window.checkElement('js value change', 'tel', true)),
-				page.evaluate(async () => window.checkElement('js value change', 'text', true)),
-				page.evaluate(async () => window.checkElement('js value change', 'number', true)),
-				page.evaluate(async () => window.checkElement('js value change', 'password', true)),
-				page.evaluate(async () => window.checkElement('js value change', 'textarea', true)),
-				page.evaluate(async () => window.checkElement('js value change', 'select', true)),
-				page.evaluate(async () => window.checkElement('js value change', 'multiselect', true)),
-			]);
-
-			await page.evaluate(async () => {
-				window.document.getElementById('select').options[1].selected = true;
-				window.document.getElementById('multiselect').options[1].selected = true;
-			});
-			await page.evaluate(async () => window.checkElement('js value change', 'select', false));
-			await page.evaluate(async () => window.checkElement('js value change', 'multiselect', false));
-
-			const result = [
-				...fillingResults,
-				...unfillingResults,
-			].every(test => !!test);
-
-			if (!result) {
-				throw new Error('Test failed');
-			}
-		}
-
-		// Dynamic element
-		{
-			await page.goto('http://localhost:8080');
-			await page.evaluate(async () => {
-
-				return await window.runTest();
-			});
-
-			await page.evaluate(async () => {
-				const filledInput = window.document.createElement('input');
-				const unfilledInput = window.document.createElement('input');
-				filledInput.value = 'foo';
-
-				window.document.body.append(filledInput);
-				window.document.body.append(unfilledInput);
-
-				requestAnimationFrame(() => {
-					// Not blank
-					window.checkElement('dynamic input', filledInput, false);
-					// Blank
-					window.checkElement('dynamic input', unfilledInput, true);
+			// Default
+			{
+				await page.goto('http://localhost:8080');
+				const result = await page.evaluate(async () => {
+					return await window.runTest();
 				});
-			});
-		}
 
-		// Replace with
-		{
-			await page.goto('http://localhost:8080/replace-with');
-			const result = await page.evaluate(async () => {
-
-				return await window.runTest();
-			});
-
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
+
+			// Changing values
+			{
+				await page.goto('http://localhost:8080');
+
+				await page.evaluate(async () => window.runTest());
+
+				await page.type('#tel-input', '1234');
+				await page.type('#text-input', '1234');
+				await page.type('#number-input', '1234');
+				await page.type('#password-input', '1234');
+				await page.type('#textarea', '1234');
+				await page.select('#select', 'non-empty');
+				await page.select('#multiselect', 'non-empty');
+
+				const fillingResults = await Promise.all([
+					page.evaluate(async () => window.checkElement('user typing', 'tel', false)),
+					page.evaluate(async () => window.checkElement('user typing', 'text', false)),
+					page.evaluate(async () => window.checkElement('user typing', 'number', false)),
+					page.evaluate(async () => window.checkElement('user typing', 'password', false)),
+					page.evaluate(async () => window.checkElement('user typing', 'textarea', false)),
+					page.evaluate(async () => window.checkElement('user typing', 'select', false)),
+					page.evaluate(async () => window.checkElement('user typing', 'multiselect', false)),
+				]);
+
+				// Reverting now, should revert
+				await clearInput(page, '#tel-input');
+				await clearInput(page, '#text-input');
+				await clearInput(page, '#number-input');
+				await clearInput(page, '#password-input');
+				await clearInput(page, '#textarea');
+				await page.select('#select', '');
+				await page.select('#multiselect', '');
+
+				const unfillingResults = await Promise.all([
+					page.evaluate(async () => window.checkElement('user typing', 'tel', true)),
+					page.evaluate(async () => window.checkElement('user typing', 'text', true)),
+					page.evaluate(async () => window.checkElement('user typing', 'number', true)),
+					page.evaluate(async () => window.checkElement('user typing', 'password', true)),
+					page.evaluate(async () => window.checkElement('user typing', 'textarea', true)),
+					page.evaluate(async () => window.checkElement('user typing', 'select', true)),
+					page.evaluate(async () => window.checkElement('user typing', 'multiselect', true)),
+				]);
+
+				const result = [
+					...fillingResults,
+					...unfillingResults,
+				].every(test => !!test);
+
+				if (!result) {
+					throw new Error('Test failed');
+				}
+			}
+
+			// Changing values via JS
+			{
+				await page.goto('http://localhost:8080');
+
+				await page.evaluate(async () => window.runTest());
+
+				await page.evaluate(async () => window.document.getElementById('tel-input').value = '1234');
+				await page.evaluate(async () => window.document.getElementById('text-input').value = '1234');
+				await page.evaluate(async () => window.document.getElementById('number-input').value = '1234');
+				await page.evaluate(async () => window.document.getElementById('password-input').value = '1234');
+				await page.evaluate(async () => window.document.getElementById('textarea').value = '1234');
+				await page.evaluate(async () => window.document.getElementById('select').value = 'non-empty');
+				await page.evaluate(async () => window.document.getElementById('multiselect').value = 'non-empty');
+
+
+				const fillingResults = await Promise.all([
+					page.evaluate(async () => window.checkElement('js value change', 'tel', false)),
+					page.evaluate(async () => window.checkElement('js value change', 'text', false)),
+					page.evaluate(async () => window.checkElement('js value change', 'number', false)),
+					page.evaluate(async () => window.checkElement('js value change', 'password', false)),
+					page.evaluate(async () => window.checkElement('js value change', 'textarea', false)),
+					page.evaluate(async () => window.checkElement('js value change', 'select', false)),
+					page.evaluate(async () => window.checkElement('js value change', 'multiselect', false)),
+				]);
+
+				// Reverting
+				await page.evaluate(async () => window.document.getElementById('tel-input').value = '');
+				await page.evaluate(async () => window.document.getElementById('text-input').value = '');
+				await page.evaluate(async () => window.document.getElementById('number-input').value = '');
+				await page.evaluate(async () => window.document.getElementById('password-input').value = '');
+				await page.evaluate(async () => window.document.getElementById('textarea').value = '');
+				await page.evaluate(async () => window.document.getElementById('select').value = '');
+				await page.evaluate(async () => window.document.getElementById('multiselect').value = '');
+
+				const unfillingResults = await Promise.all([
+					page.evaluate(async () => window.checkElement('js value change', 'tel', true)),
+					page.evaluate(async () => window.checkElement('js value change', 'text', true)),
+					page.evaluate(async () => window.checkElement('js value change', 'number', true)),
+					page.evaluate(async () => window.checkElement('js value change', 'password', true)),
+					page.evaluate(async () => window.checkElement('js value change', 'textarea', true)),
+					page.evaluate(async () => window.checkElement('js value change', 'select', true)),
+					page.evaluate(async () => window.checkElement('js value change', 'multiselect', true)),
+				]);
+
+				await page.evaluate(async () => {
+					window.document.getElementById('select').options[1].selected = true;
+					window.document.getElementById('multiselect').options[1].selected = true;
+				});
+				await page.evaluate(async () => window.checkElement('js value change', 'select', false));
+				await page.evaluate(async () => window.checkElement('js value change', 'multiselect', false));
+
+				const result = [
+					...fillingResults,
+					...unfillingResults,
+				].every(test => !!test);
+
+				if (!result) {
+					throw new Error('Test failed');
+				}
+			}
+
+			// Dynamic element
+			{
+				await page.goto('http://localhost:8080');
+				await page.evaluate(async () => {
+
+					return await window.runTest();
+				});
+
+				await page.evaluate(async () => {
+					const filledInput = window.document.createElement('input');
+					const unfilledInput = window.document.createElement('input');
+					filledInput.value = 'foo';
+
+					window.document.body.append(filledInput);
+					window.document.body.append(unfilledInput);
+
+					requestAnimationFrame(() => {
+						// Not blank
+						window.checkElement('dynamic input', filledInput, false);
+						// Blank
+						window.checkElement('dynamic input', unfilledInput, true);
+					});
+				});
+			}
+
+			// Replace with
+			{
+				await page.goto('http://localhost:8080/replace-with');
+				const result = await page.evaluate(async () => {
+
+					return await window.runTest();
+				});
+
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
+			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();

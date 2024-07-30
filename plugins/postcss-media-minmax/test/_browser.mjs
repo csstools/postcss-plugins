@@ -87,34 +87,36 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
+		try {
+			const page = await browser.newPage();
 
-		await page.setViewport({
-			width: 1000,
-			height: 500,
-			deviceScaleFactor: 2,
-		});
-
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
-
-		for (const url of [
-			'browser/basic.html',
-		]) {
-			await page.goto('http://localhost:8080/' + url);
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
+			await page.setViewport({
+				width: 1000,
+				height: 500,
+				deviceScaleFactor: 2,
 			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+
+			page.on('pageerror', (msg) => {
+				throw msg;
+			});
+
+			for (const url of [
+				'browser/basic.html',
+			]) {
+				await page.goto('http://localhost:8080/' + url);
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();

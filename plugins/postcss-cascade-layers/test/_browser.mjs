@@ -101,34 +101,36 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
-
-		for (const url of [
-			'wpt/layer-basic.html',
-			'wpt/layer-buckets.html',
-			'wpt/layer-counter-style-override.html',
-			'wpt/layer-important.html',
-			'wpt/layer-keyframes-override.html',
-			'wpt/layer-media-query.html',
-			'wpt/layer-property-override.html',
-			'wpt/layer-vs-inline-style.html',
-		]) {
-			await page.goto('http://localhost:8080/' + url);
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
 			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+
+			for (const url of [
+				'wpt/layer-basic.html',
+				'wpt/layer-buckets.html',
+				'wpt/layer-counter-style-override.html',
+				'wpt/layer-important.html',
+				'wpt/layer-keyframes-override.html',
+				'wpt/layer-media-query.html',
+				'wpt/layer-property-override.html',
+				'wpt/layer-vs-inline-style.html',
+			]) {
+				await page.goto('http://localhost:8080/' + url);
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();
