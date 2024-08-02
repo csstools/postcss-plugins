@@ -1,7 +1,7 @@
 import { spawn } from 'child_process';
 import { platform } from 'process';
 
-export async function updateDocumentation(packageDirectory) {
+export async function updateDocumentation(packageDirectory, minimal = false) {
 	await new Promise((resolve, reject) => {
 		const docsCmd = spawn(
 			'npm',
@@ -11,6 +11,10 @@ export async function updateDocumentation(packageDirectory) {
 				'--if-present',
 			],
 			{
+				env: {
+					...process.env,
+					MINIMAL: minimal ? 'true': null,
+				},
 				cwd: packageDirectory,
 				shell: platform === 'win32',
 			},

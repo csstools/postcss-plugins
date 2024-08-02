@@ -1,7 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { updateDocumentation } from './docs.mjs';
 
-export async function minifyChangelogAndPackageJSON(workspace) {
+export async function minifyContextFiles(workspace) {
 	const originalPackageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
 	const originalChangelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
 
@@ -22,11 +23,11 @@ export async function minifyChangelogAndPackageJSON(workspace) {
 
 	// CHANGELOG.md
 	// - remove some older entries
-	// - keep the last 3 entries
+	// - keep the last 2 entries
 	// - add a link to the full changelog
 	{
 		let headingIndex = -1;
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 2; i++) {
 			headingIndex = minifiedChangelog.indexOf('\n### ', headingIndex + 1);
 
 			if (headingIndex === -1) {
@@ -46,8 +47,14 @@ export async function minifyChangelogAndPackageJSON(workspace) {
 	await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(minifiedPackageInfo, null, '\t') + '\n');
 	await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), minifiedChangelog);
 
+	// Render a smaller `README.md` file
+	await updateDocumentation(workspace.path, true);
+
 	return async () => {
 		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(originalPackageInfo, null, '\t') + '\n');
 		await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), originalChangelog);
+
+		// Render the full `README.md` file
+		await updateDocumentation(workspace.path);
 	};
 }

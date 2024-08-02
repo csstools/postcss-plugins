@@ -11,7 +11,7 @@ import { prepareCurrentReleasePlan } from './prepare-current-release-plan.mjs';
 import { prepareNextReleasePlan } from './prepare-next-release-plan.mjs';
 import { runAndPrintDebugOnFail } from './run-and-print-debug-on-fail.mjs';
 import { npmPrepublishScripts } from './npm-prepublish-scripts.mjs';
-import { minifyChangelogAndPackageJSON } from './minify-changelog-and-package-json.mjs';
+import { minifyContextFiles } from './minify-context-files.mjs';
 
 const {
 	needsRelease,
@@ -62,7 +62,7 @@ for (const workspace of needsRelease.values()) {
 		'Please fix the error and try again.',
 	);
 
-	const restoreChangelogAndPackageJSON = await minifyChangelogAndPackageJSON(workspace);
+	const restoreContextFiles = await minifyContextFiles(workspace);
 
 	// Publish to npm
 	await runAndPrintDebugOnFail(
@@ -73,7 +73,7 @@ for (const workspace of needsRelease.values()) {
 		'Please fix the error and try again.',
 	);
 
-	await restoreChangelogAndPackageJSON();
+	await restoreContextFiles();
 
 	// Announce on discord
 	await runAndPrintDebugOnFail(
