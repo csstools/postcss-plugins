@@ -44,7 +44,7 @@ jobs:
         if: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
       - name: npm ci
         run: |
-          npm ci --ignore-scripts
+          NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
         if: ${{ !(matrix.is_base_node_version && matrix.is_base_os_version) }}
 
       - name: determine modified workspaces
