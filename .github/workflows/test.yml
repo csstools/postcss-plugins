@@ -80,7 +80,7 @@ jobs:
         # running "npm install" places the cli in node_modules/bin
       - name: test:cli
         run: |
-          npm install --ignore-scripts
+          NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
           npm run test:cli --if-present $MODIFIED_WORKSPACES
 
         # E2E Tests
