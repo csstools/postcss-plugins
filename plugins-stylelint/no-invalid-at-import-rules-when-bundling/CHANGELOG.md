@@ -4,6 +4,7 @@
 
 - Updated: Support for Node v18+ (major).
 - Fix `files` field in `package.json`
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#300) (major)
 
 ### 2.0.7
 

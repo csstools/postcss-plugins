@@ -4,6 +4,8 @@
 
 - Updated: Support for Node v18+ (major).
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#205) (patch)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#300) (major)
+- Updated [`@csstools/utilities`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities/CHANGELOG.md#200) (major)
 
 ### 4.0.20
 
