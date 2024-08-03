@@ -1,7 +1,5 @@
 # PostCSS Blank Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/css-blank-pseudo.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/blank-pseudo-class.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/blank-pseudo-class.svg" height="20">][css-url] 
-
 ```bash
 npm install css-blank-pseudo --save-dev
 ```
@@ -47,16 +45,7 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Blank Pseudo] runs in all Node environments, with special
-instructions for:
 
-- [Node](INSTALL.md#node)
-- [PostCSS CLI](INSTALL.md#postcss-cli)
-- [PostCSS Load Config](INSTALL.md#postcss-load-config)
-- [Webpack](INSTALL.md#webpack)
-- [Next.js](INSTALL.md#nextjs)
-- [Gulp](INSTALL.md#gulp)
-- [Grunt](INSTALL.md#grunt)
 
 ## Options
 
@@ -149,7 +138,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-blank-pseudo@6.0.2/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-blank-pseudo@7.0.0/dist/browser-global.js"></script>
 <script>cssBlankPseudoInit()</script>
 ```
 
