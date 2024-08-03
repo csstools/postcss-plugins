@@ -33,6 +33,7 @@ export async function npmVersion(increment, packageDirectory) {
 			[
 				'version',
 				increment,
+				'--no-workspaces-update',
 			],
 			{
 				cwd: packageDirectory,
