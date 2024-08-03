@@ -39,7 +39,7 @@
 		"stylelint": "^16.8.0"
 	},
 	"devDependencies": {
-		"@csstools/pack-test": "^0.0.0",
+		"@csstools/pack-test": "^1.0.0",
 		"postcss": "^8.4",
 		"stylelint": "^16.8.0",
 		"stylelint-test-rule-node": "^0.3.0"
