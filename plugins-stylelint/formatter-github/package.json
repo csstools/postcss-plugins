@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-formatter-github",
 	"description": "Format Stylelint errors as GitHub annotations",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
