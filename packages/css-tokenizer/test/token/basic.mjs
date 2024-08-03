@@ -382,7 +382,7 @@ bar") and (fancy(baz))) {}`,
 
 {
 	const t = tokenizer({
-		css: `/*a𐀀*/
+		css: `\\0
 `,
 	});
 
