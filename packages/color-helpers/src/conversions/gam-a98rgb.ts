@@ -8,10 +8,16 @@ import type { Color } from '../types/color';
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export function gam_a98rgb(RGB: Color): Color {
-	return RGB.map(function (val) {
-		const sign = val < 0 ? -1 : 1;
-		const abs = Math.abs(val);
+	return [
+		gam_a98rgb_channel(RGB[0]),
+		gam_a98rgb_channel(RGB[1]),
+		gam_a98rgb_channel(RGB[2]),
+	];
+}
 
-		return sign * Math.pow(abs, 256 / 563);
-	}) as Color;
+function gam_a98rgb_channel(val: number): number {
+	const sign = val < 0 ? -1 : 1;
+	const abs = Math.abs(val);
+
+	return sign * Math.pow(abs, 256 / 563);
 }

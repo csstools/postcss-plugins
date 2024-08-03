@@ -12,14 +12,20 @@ import type { Color } from '../types/color';
  * @see https://en.wikipedia.org/wiki/SRGB
  */
 export function lin_sRGB(RGB: Color): Color {
-	return RGB.map(function (val) {
-		const sign = val < 0 ? -1 : 1;
-		const abs = Math.abs(val);
+	return [
+		lin_sRGB_channel(RGB[0]),
+		lin_sRGB_channel(RGB[1]),
+		lin_sRGB_channel(RGB[2]),
+	];
+}
 
-		if (abs <= 0.04045) {
-			return val / 12.92;
-		}
+function lin_sRGB_channel(val: number): number {
+	const sign = val < 0 ? -1 : 1;
+	const abs = Math.abs(val);
 
-		return sign * (Math.pow((abs + 0.055) / 1.055, 2.4));
-	}) as Color;
+	if (abs <= 0.04045) {
+		return val / 12.92;
+	}
+
+	return sign * (Math.pow((abs + 0.055) / 1.055, 2.4));
 }

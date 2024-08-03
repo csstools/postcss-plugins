@@ -9,19 +9,21 @@ import { D50 } from '../conversions/constants';
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export function XYZ_to_Lab(XYZ: Color): Color {
-	const ε = 216 / 24389;  // 6^3/29^3
-	const κ = 24389 / 27;   // 29^3/3^3
-
-	// compute xyz, which is XYZ scaled relative to reference white
-	const xyz = XYZ.map((value, i) => value / D50[i]);
-
-	// now compute f
-	const f = xyz.map(value => value > ε ? Math.cbrt(value) : (κ * value + 16) / 116);
+	const f0 = compute_f(XYZ[0] / D50[0]);
+	const f1 = compute_f(XYZ[1] / D50[1]);
+	const f2 = compute_f(XYZ[2] / D50[2]);
 
 	return [
-		(116 * f[1]) - 16, 	 // L
-		500 * (f[0] - f[1]), // a
-		200 * (f[1] - f[2]),  // b
+		(116 * f1) - 16, // L
+		500 * (f0 - f1), // a
+		200 * (f1 - f2), // b
 	];
 	// L in range [0,100]. For use in CSS, add a percent
+}
+
+const ε = 216 / 24389;  // 6^3/29^3
+const κ = 24389 / 27;   // 29^3/3^3
+
+function compute_f(val: number): number {
+	return val > ε ? Math.cbrt(val) : (κ * val + 16) / 116
 }

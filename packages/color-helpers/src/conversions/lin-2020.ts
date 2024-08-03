@@ -9,17 +9,23 @@ import type { Color } from '../types/color';
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export function lin_2020(RGB: Color): Color {
-	const α = 1.09929682680944;
-	const β = 0.018053968510807;
+	return [
+		lin_2020_channel(RGB[0]),
+		lin_2020_channel(RGB[1]),
+		lin_2020_channel(RGB[2]),
+	]
+}
 
-	return RGB.map(function (val) {
-		const sign = val < 0 ? -1 : 1;
-		const abs = Math.abs(val);
+const α = 1.09929682680944;
+const β = 0.018053968510807;
 
-		if (abs < β * 4.5) {
-			return val / 4.5;
-		}
+function lin_2020_channel(val: number): number {
+	const sign = val < 0 ? -1 : 1;
+	const abs = Math.abs(val);
 
-		return sign * (Math.pow((abs + α - 1) / α, 1 / 0.45));
-	}) as Color;
+	if (abs < β * 4.5) {
+		return val / 4.5;
+	}
+
+	return sign * (Math.pow((abs + α - 1) / α, 1 / 0.45));
 }

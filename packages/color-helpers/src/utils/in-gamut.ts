@@ -1,6 +1,5 @@
 import type { Color } from '../types/color';
 
 export function inGamut(x: Color): boolean {
-	const [xX, xY, xZ] = x;
-	return xX >= -0.0001 && xX <= 1.0001 && xY >= -0.0001 && xY <= 1.0001 && xZ >= -0.0001 && xZ <= 1.0001;
+	return x[0] >= -0.0001 && x[0] <= 1.0001 && x[1] >= -0.0001 && x[1] <= 1.0001 && x[2] >= -0.0001 && x[2] <= 1.0001;
 }

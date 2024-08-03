@@ -9,15 +9,22 @@ import type { Color } from '../types/color';
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export function lin_ProPhoto(RGB: Color): Color {
-	const Et2 = 16 / 512;
-	return RGB.map(function (val) {
-		const sign = val < 0 ? -1 : 1;
-		const abs = Math.abs(val);
+	return [
+		lin_ProPhoto_channel(RGB[0]),
+		lin_ProPhoto_channel(RGB[1]),
+		lin_ProPhoto_channel(RGB[2]),
+	];
+}
 
-		if (abs <= Et2) {
-			return val / 16;
-		}
+const Et2 = 16 / 512;
 
-		return sign * Math.pow(abs, 1.8);
-	}) as Color;
+function lin_ProPhoto_channel(val: number): number {
+	const sign = val < 0 ? -1 : 1;
+	const abs = Math.abs(val);
+
+	if (abs <= Et2) {
+		return val / 16;
+	}
+
+	return sign * Math.pow(abs, 1.8);
 }
