@@ -1,6 +1,8 @@
 # Changes to Pack Test
 
-### Unreleased (patch)
+### 1.0.1
+
+_August 3, 2024_
 
 - Fix `README.md`
 
