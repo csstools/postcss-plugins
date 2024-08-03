@@ -53,8 +53,8 @@
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
 		"open-props": "^1.7.4",
-		"postcss-custom-media": "^10.0.8",
-		"postcss-custom-properties": "^13.3.12"
+		"postcss-custom-media": "^11.0.0",
+		"postcss-custom-properties": "^14.0.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
