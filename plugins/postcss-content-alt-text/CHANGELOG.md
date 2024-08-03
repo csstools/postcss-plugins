@@ -6,6 +6,8 @@
 - Add specific handling of `content: ">" / "";` as this pattern is used in the same way as `<img alt="">`, i.e. to represent an item that does not need a text alternative.
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#300) (major)
 - Updated [`@csstools/utilities`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities/CHANGELOG.md#200) (major)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#300) (major)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#400) (major)
 
 ### 1.0.0
 

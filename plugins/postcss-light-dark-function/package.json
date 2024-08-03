@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^2.7.1",
+		"@csstools/css-parser-algorithms": "^3.0.0",
 		"@csstools/css-tokenizer": "^3.0.0",
-		"@csstools/postcss-progressive-custom-properties": "^3.3.0",
+		"@csstools/postcss-progressive-custom-properties": "^4.0.0",
 		"@csstools/utilities": "^2.0.0"
 	},
 	"peerDependencies": {
@@ -58,7 +58,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-nesting": "^12.1.1",
+		"postcss-nesting": "^13.0.0",
 		"puppeteer": "^22.14.0"
 	},
 	"scripts": {
