@@ -7,11 +7,12 @@ import { consumeEscapedCodePoint } from './escaped-code-point';
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-remnants-of-bad-url
 export function consumeBadURL(ctx: Context, reader: CodePointReader): void {
 	while (true) {
-		if (reader.codePointSource[reader.cursor] === undefined) {
+		const codePoint = reader.source.codePointAt(reader.cursor);
+		if (typeof codePoint === "undefined") {
 			return;
 		}
 
-		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
+		if (codePoint === RIGHT_PARENTHESIS) {
 			reader.advanceCodePoint();
 			return;
 		}

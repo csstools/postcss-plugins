@@ -43,11 +43,9 @@ export declare type CodePointReader = {
     representationStart: number;
     representationEnd: number;
     cursor: number;
-    codePointSource: Array<number>;
-    representationIndices: Array<number>;
     source: string;
     advanceCodePoint(n?: number): void;
-    readCodePoint(n?: number): number | false;
+    readCodePoint(): number | undefined;
     unreadCodePoint(n?: number): void;
     resetRepresentation(): void;
 };
@@ -238,14 +236,11 @@ export declare class ParseErrorWithToken extends ParseError {
 export declare class Reader implements CodePointReader {
     cursor: number;
     source: string;
-    codePointSource: Array<number>;
-    representationIndices: Array<number>;
-    length: number;
     representationStart: number;
     representationEnd: number;
     constructor(source: string);
     advanceCodePoint(n?: number): void;
-    readCodePoint(n?: number): number | false;
+    readCodePoint(): number | undefined;
     unreadCodePoint(n?: number): void;
     resetRepresentation(): void;
 }

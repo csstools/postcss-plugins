@@ -12,7 +12,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 	let signCharacter: undefined | '+' | '-' = undefined;
 
 	{
-		const peeked = reader.codePointSource[reader.cursor];
+		const peeked = reader.source.codePointAt(reader.cursor);
 		if (peeked === HYPHEN_MINUS) {
 			signCharacter = '-';
 		} else if (peeked === PLUS_SIGN) {
@@ -39,7 +39,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		];
 	}
 
-	if (reader.codePointSource[reader.cursor] === PERCENTAGE_SIGN) {
+	if (reader.source.codePointAt(reader.cursor) === PERCENTAGE_SIGN) {
 		reader.advanceCodePoint();
 
 		return [

@@ -11,9 +11,10 @@ import { consumeIdentSequence } from './ident-sequence';
 export function consumeHashToken(ctx: Context, reader: CodePointReader): TokenDelim|TokenHash {
 	reader.advanceCodePoint();
 
+	const codePoint = reader.source.codePointAt(reader.cursor);
 	if (
-		(reader.codePointSource[reader.cursor] !== undefined) && (
-			isIdentCodePoint(reader.codePointSource[reader.cursor]) ||
+		(typeof codePoint !== "undefined") && (
+			isIdentCodePoint(codePoint) ||
 			checkIfTwoCodePointsAreAValidEscape(reader)
 		)
 	) {

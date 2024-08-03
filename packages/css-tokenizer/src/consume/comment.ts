@@ -11,7 +11,7 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 
 	while (true) {
 		const codePoint = reader.readCodePoint();
-		if (codePoint === false) {
+		if (typeof codePoint === "undefined") {
 			const token: CSSToken = [
 				TokenType.Comment,
 				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
@@ -38,11 +38,11 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 			continue;
 		}
 
-		if (reader.codePointSource[reader.cursor] === undefined) {
+		if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
 			continue;
 		}
 
-		if (reader.codePointSource[reader.cursor] === SOLIDUS) {
+		if (reader.source.codePointAt(reader.cursor) === SOLIDUS) {
 			reader.advanceCodePoint();
 			break;
 		}
