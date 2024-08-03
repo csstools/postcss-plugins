@@ -1,7 +1,5 @@
 # PostCSS Has Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-[<img alt="npm version" src="https://img.shields.io/npm/v/css-has-pseudo.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/has-pseudo-class.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/has-pseudo-class.svg" height="20">][css-url] 
-
 ```bash
 npm install css-has-pseudo --save-dev
 ```
@@ -46,16 +44,7 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-[PostCSS Has Pseudo] runs in all Node environments, with special
-instructions for:
 
-- [Node](INSTALL.md#node)
-- [PostCSS CLI](INSTALL.md#postcss-cli)
-- [PostCSS Load Config](INSTALL.md#postcss-load-config)
-- [Webpack](INSTALL.md#webpack)
-- [Next.js](INSTALL.md#nextjs)
-- [Gulp](INSTALL.md#gulp)
-- [Grunt](INSTALL.md#grunt)
 
 ## Options
 
@@ -166,12 +155,12 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-has-pseudo@6.0.5/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-has-pseudo@7.0.0/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
 > [!TIP]
-> Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@6.0.5/dist/browser-global.js`
+> Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@7.0.0/dist/browser-global.js`
 > Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [PostCSS Has Pseudo] works in all major browsers, including
