@@ -37,6 +37,10 @@ Read more about the specific changes on our [wiki](https://github.com/csstools/p
 - Updated [`postcss-place`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place) to [`10.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place/CHANGELOG.md#1000) (major)
 - Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`10.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#1000) (major)
 - Updated [`postcss-selector-not`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not) to [`8.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not/CHANGELOG.md#800) (major)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#200) (major)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#400) (major)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#200) (major)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`6.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#600) (major)
 
 ### 9.6.0
 

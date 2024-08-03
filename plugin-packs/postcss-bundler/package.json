@@ -50,7 +50,7 @@
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^3.0.0",
 		"@csstools/css-tokenizer": "^3.0.0",
-		"@csstools/postcss-rebase-url": "^1.0.11"
+		"@csstools/postcss-rebase-url": "^2.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
