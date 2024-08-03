@@ -1,8 +1,6 @@
 # PostCSS Has Pseudo [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-```bash
-npm install css-has-pseudo --save-dev
-```
+`npm install css-has-pseudo --save-dev`
 
 [PostCSS Has Pseudo] lets you style elements relative to other elements in CSS, following the [Selectors Level 4] specification.
 

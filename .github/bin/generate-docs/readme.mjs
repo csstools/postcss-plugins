@@ -57,9 +57,7 @@ function headerText() {
 	if (process.env.MINIMAL) {
 		return `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-\`\`\`bash
-npm install <packageName> --save-dev
-\`\`\``;
+\`npm install <packageName> --save-dev\``;
 	}
 
 	return `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
