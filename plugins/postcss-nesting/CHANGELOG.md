@@ -1,6 +1,8 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (major)
+### 13.0.0
+
+_August 3, 2024_
 
 - Make edition `2024-02` the default (major).
 - Updated: Support for Node v18+ (major).
