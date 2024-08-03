@@ -1,6 +1,6 @@
-import fs from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
+import fs from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 
 const pluginsData = await fs.readFile('./scripts/plugins-data.json', 'utf8').then(JSON.parse);
 

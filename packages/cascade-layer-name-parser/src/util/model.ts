@@ -1,4 +1,4 @@
-import { LayerName } from '../nodes/layer-name';
+import type { LayerName } from '../nodes/layer-name';
 
 // Insert new items after the most similar current item
 //

@@ -1,8 +1,9 @@
-import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { isTokenIdent, isTokenString } from '@csstools/css-tokenizer';
 import type { Node, Result } from 'postcss';
-import { Token, TokenTransformOptions } from './data-formats/base/token';
-import { parsedPluginOptions } from './options';
+import type { Token, TokenTransformOptions } from './data-formats/base/token';
+import type { parsedPluginOptions } from './options';
 import { parseComponentValues } from './parse-component-values';
 
 export function transform(tokens: Map<string, Token>, result: Result, postCSSNode: Node, source: string, opts: parsedPluginOptions): string {

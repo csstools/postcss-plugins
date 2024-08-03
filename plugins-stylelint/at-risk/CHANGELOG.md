@@ -1,7 +1,8 @@
 # Changelog
 
-### Unreleased (minor)
+### Unreleased (major)
 
+- Updated: Support for Node v18+ (major).
 - Add a warning for `inset-area`
 
 ### 1.0.0

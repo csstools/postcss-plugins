@@ -1,4 +1,5 @@
-import { type Node, type AtRule, type PluginCreator, type Container, Plugin } from 'postcss';
+import type { Plugin } from 'postcss';
+import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
 
 const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;

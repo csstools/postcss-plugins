@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
-import http from 'http';
-import { promises as fsp } from 'fs';
+import http from 'node:http';
+import fs from 'node:fs/promises';
 import test from 'node:test';
 import process from 'node:process';
 
@@ -14,11 +14,11 @@ const requestListener = async function (req, res) {
 		case '/':
 			res.setHeader('Content-type', 'text/html');
 			res.writeHead(200);
-			res.end(await fsp.readFile('test/_browser.html', 'utf8'));
+			res.end(await fs.readFile('test/_browser.html', 'utf8'));
 			break;
 		case '/test/browser.expect.css':
 			res.writeHead(200);
-			res.end(await fsp.readFile('test/browser.expect.css', 'utf8'));
+			res.end(await fs.readFile('test/browser.expect.css', 'utf8'));
 			break;
 		default:
 			res.setHeader('Content-type', 'text/plain');
@@ -45,22 +45,24 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
-		await page.goto('http://localhost:8080');
-		const result = await page.evaluate(async () => {
-			// eslint-disable-next-line no-undef
-			return await window.runTest();
-		});
-		if (!result) {
-			throw new Error('Test failed, expected "window.runTest()" to return true');
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
+			});
+			await page.goto('http://localhost:8080');
+			const result = await page.evaluate(async () => {
+				// eslint-disable-next-line no-undef
+				return await window.runTest();
+			});
+			if (!result) {
+				throw new Error('Test failed, expected "window.runTest()" to return true');
+			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();

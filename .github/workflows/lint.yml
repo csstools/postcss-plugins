@@ -28,5 +28,12 @@ jobs:
       - name: lint
         run: npm run lint
 
+      - name: docs
+        run: npm run docs
+
       - name: knip
         run: npm run knip
+
+      - name: repo is clean after "build", "lint" and "docs" steps
+        run: |
+          git diff --name-only --exit-code

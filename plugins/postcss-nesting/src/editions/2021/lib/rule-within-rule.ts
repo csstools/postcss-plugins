@@ -3,7 +3,7 @@ import cleanupParent from '../../shared/lib/cleanup-parent.js';
 import groupDeclarations from './group-declarations.js';
 import mergeSelectors from './merge-selectors/merge-selectors.js';
 import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
-import { options } from './options.js';
+import type { options } from './options.js';
 
 export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result, opts: options): void {
 	let selectors: Array<string> = [];

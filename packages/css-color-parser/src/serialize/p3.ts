@@ -1,13 +1,14 @@
-import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
 import type { TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
-import {  colorData_to_XYZ_D50 } from '../color-data';
+import type { ColorData} from '../color-data';
+import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D50 } from '../color-data';
 import { ColorNotation } from '../color-notation';
-import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { FunctionNode} from '@csstools/css-parser-algorithms';
+import { TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { XYZ_D50_to_P3 } from '@csstools/color-helpers';
-import { toPrecision } from './to-precision';
 import { XYZ_D50_to_P3_Gamut } from '../gamut-mapping/p3';
 import { serializeWithAlpha } from './with-alpha';
+import { toPrecision } from './to-precision';
 
 /**
  * Convert color data to component values in the display-p3 color space.

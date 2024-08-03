@@ -1,6 +1,6 @@
 import { HYPHEN_MINUS } from '../code-points/code-points';
 import { isHexDigitCodePoint, isIdentCodePoint, isIdentStartCodePoint } from '../code-points/ranges';
-import { TokenDimension, TokenIdent } from '../interfaces/token';
+import type { TokenDimension, TokenIdent } from '../interfaces/token';
 
 /**
  * Set the ident value and update the string representation.

@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { isGeneralEnclosed, parseCustomMedia } from '@csstools/media-query-list-parser';
 
 export function runTestCustomMedia(source, testPath, assertEqual, expectGeneralEnclosed = 0) {

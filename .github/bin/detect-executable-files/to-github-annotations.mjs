@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 const data = fs.readFileSync(0, 'utf-8');
 let fileNames = data.split(/\r?\n/);
 

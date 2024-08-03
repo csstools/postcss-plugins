@@ -1,9 +1,10 @@
 import { CARRIAGE_RETURN, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isNewLine } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
-import { CSSToken, TokenBadString, TokenString, TokenType } from '../interfaces/token';
+import type { CSSToken, TokenBadString, TokenString} from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-string-token
@@ -15,7 +16,7 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 	while (true) {
 		const next = reader.readCodePoint();
 
-		if (next === false) {
+		if (typeof next === "undefined") {
 			const token: CSSToken = [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
 
 			ctx.onParseError(new ParseErrorWithToken(
@@ -42,8 +43,8 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 				reader.representationStart,
 				(
 					(
-						reader.codePointSource[reader.cursor] === CARRIAGE_RETURN &&
-						reader.codePointSource[reader.cursor + 1] === LINE_FEED
+						reader.source.codePointAt(reader.cursor) === CARRIAGE_RETURN &&
+						reader.source.codePointAt(reader.cursor + 1) === LINE_FEED
 					) ?
 						// CR LF
 						reader.representationEnd + 2 :
@@ -65,14 +66,14 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 		}
 
 		if (next === REVERSE_SOLIDUS) {
-			if (reader.codePointSource[reader.cursor] === undefined) {
+			if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
 				continue;
 			}
 
-			if (isNewLine(reader.codePointSource[reader.cursor])) {
+			if (isNewLine(reader.source.codePointAt(reader.cursor))) {
 				if (
-					reader.codePointSource[reader.cursor] === CARRIAGE_RETURN &&
-					reader.codePointSource[reader.cursor + 1] === LINE_FEED
+					reader.source.codePointAt(reader.cursor) === CARRIAGE_RETURN &&
+					reader.source.codePointAt(reader.cursor + 1) === LINE_FEED
 				) {
 					reader.advanceCodePoint();
 				}

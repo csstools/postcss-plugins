@@ -1,5 +1,5 @@
 import { tokenize } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import test from 'node:test';
 import { parseCommaSeparatedListOfComponentValues, sourceIndices } from '@csstools/css-parser-algorithms';
 

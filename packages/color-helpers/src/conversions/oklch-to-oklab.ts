@@ -7,9 +7,11 @@ import type { Color } from '../types/color';
  */
 
 export function OKLCH_to_OKLab(OKLCH: Color): Color {
+	const hue = OKLCH[2] * Math.PI / 180;
+
 	return [
 		OKLCH[0], // L is still L
-		OKLCH[1] * Math.cos(OKLCH[2] * Math.PI / 180), // a
-		OKLCH[1] * Math.sin(OKLCH[2] * Math.PI / 180),  // b
+		OKLCH[1] * Math.cos(hue), // a
+		OKLCH[1] * Math.sin(hue),  // b
 	];
 }

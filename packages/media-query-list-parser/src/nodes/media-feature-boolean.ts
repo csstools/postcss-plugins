@@ -1,7 +1,8 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
-import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import type { MediaFeatureName} from './media-feature-name';
+import { parseMediaFeatureName } from './media-feature-name';
 import { NodeType } from '../util/node-type';
-import { CSSToken } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
 
 export class MediaFeatureBoolean {
 	type = NodeType.MediaFeatureBoolean;

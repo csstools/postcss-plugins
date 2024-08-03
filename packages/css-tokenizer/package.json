@@ -25,7 +25,7 @@
 		}
 	],
 	"engines": {
-		"node": "^14 || ^16 || >=18"
+		"node": ">=18"
 	},
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"devDependencies": {
-		"@rmenke/css-tokenizer-tests": "^1.1.5",
+		"@rmenke/css-tokenizer-tests": "^1.1.6",
 		"postcss": "^8.4.38",
 		"postcss-parser-tests": "^8.8.0"
 	},

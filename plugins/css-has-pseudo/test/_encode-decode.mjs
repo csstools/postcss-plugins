@@ -1,4 +1,4 @@
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import encodeCSS from '../src/encode/encode.mjs';
 import decodeCSS from '../src/encode/decode.mjs';
 import extractEncodedSelectors from '../src/encode/extract.mjs';

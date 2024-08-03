@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { TokenTransformOptions } from '../../base/token';
+import type { TokenTransformOptions } from '../../base/token';
 import { toposort } from '../../toposort/toposort';
-import { applyTransformsToValue, StyleDictionaryV3TokenValue } from './value';
+import type { StyleDictionaryV3TokenValue } from './value';
+import { applyTransformsToValue } from './value';
 
 export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3TokenValue>): Map<string, StyleDictionaryV3TokenValue> {
 	const tainted = new Set<string>();

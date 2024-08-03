@@ -1,13 +1,13 @@
 import { MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
 import { isHexDigitCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { ParseError, ParseErrorMessage } from '../interfaces/error';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-escaped-code-point
 export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): number {
 	const codePoint = reader.readCodePoint();
-	if (codePoint === false) {
+	if (typeof codePoint === "undefined") {
 		ctx.onParseError(new ParseError(
 			ParseErrorMessage.UnexpectedEOFInEscapedCodePoint,
 			reader.representationStart,
@@ -24,12 +24,13 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 	if (isHexDigitCodePoint(codePoint)) {
 		const hexSequence: Array<number> = [codePoint];
 
-		while ((reader.codePointSource[reader.cursor] !== undefined) && isHexDigitCodePoint(reader.codePointSource[reader.cursor]) && hexSequence.length < 6) {
-			hexSequence.push(reader.codePointSource[reader.cursor]);
+		let nextCodePoint: number | undefined;
+		while ((typeof (nextCodePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") && isHexDigitCodePoint(nextCodePoint) && hexSequence.length < 6) {
+			hexSequence.push(nextCodePoint);
 			reader.advanceCodePoint();
 		}
 
-		if (isWhitespace(reader.codePointSource[reader.cursor])) {
+		if (isWhitespace(reader.source.codePointAt(reader.cursor))) {
 			reader.advanceCodePoint();
 		}
 

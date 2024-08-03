@@ -1,5 +1,6 @@
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
-import { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
+import type { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
 import { NodeType } from '../util/node-type';
 
 export class MediaNot {

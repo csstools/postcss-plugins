@@ -1,10 +1,10 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
-import { ContainerNode } from '@csstools/css-parser-algorithms';
-import { CSSToken } from '@csstools/css-tokenizer';
-import { ParseError } from '@csstools/css-tokenizer';
-import { TokenColon } from '@csstools/css-tokenizer';
-import { TokenDelim } from '@csstools/css-tokenizer';
-import { TokenIdent } from '@csstools/css-tokenizer';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import type { ContainerNode } from '@csstools/css-parser-algorithms';
+import type { CSSToken } from '@csstools/css-tokenizer';
+import type { ParseError } from '@csstools/css-tokenizer';
+import type { TokenColon } from '@csstools/css-tokenizer';
+import type { TokenDelim } from '@csstools/css-tokenizer';
+import type { TokenIdent } from '@csstools/css-tokenizer';
 
 export declare function cloneMediaQuery<T extends MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid>(x: T): T;
 

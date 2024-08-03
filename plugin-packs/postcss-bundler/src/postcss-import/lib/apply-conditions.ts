@@ -1,5 +1,6 @@
 import type { AtRule, AtRuleProps } from 'postcss';
-import { Stylesheet, isImportStatement, isPreImportStatement, isWarning } from './statement';
+import type { Stylesheet} from './statement';
+import { isImportStatement, isPreImportStatement, isWarning } from './statement';
 import { base64EncodedConditionalImport } from './base64-encoded-import';
 
 export function applyConditions(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule): void {

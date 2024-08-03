@@ -1,5 +1,6 @@
 import { isTokenComma } from '@csstools/css-tokenizer';
-import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, walk } from '@csstools/css-parser-algorithms';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, walk } from '@csstools/css-parser-algorithms';
 
 const LIGHT_DARK_NAME_REGEX = /^light-dark$/i;
 

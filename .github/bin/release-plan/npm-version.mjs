@@ -1,7 +1,7 @@
-import { spawn } from 'child_process';
-import { platform } from 'process';
-import fs from 'fs/promises';
-import path from 'path';
+import { spawn } from 'node:child_process';
+import { platform } from 'node:process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 export async function npmVersion(increment, packageDirectory) {
 	{

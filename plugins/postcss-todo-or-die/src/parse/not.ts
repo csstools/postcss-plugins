@@ -1,5 +1,5 @@
-import { FunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenDimension, TokenIdent, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
+import type { FunctionNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension, TokenIdent, TokenNumber, TokenPercentage } from '@csstools/css-tokenizer';
 import { parseIfCondition } from './if';
 
 type SubjectToken = TokenIdent | TokenNumber | TokenPercentage | TokenDimension;

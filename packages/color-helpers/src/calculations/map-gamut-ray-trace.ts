@@ -44,14 +44,14 @@ export function mapGamutRayTrace(
 		}
 
 		// 4.2 Perform a raytrace to find the intersection of the line between the achromatic and the current color
-		const intersection = rayTraceBox(achromatic, linear.slice() as Color);
+		const intersection = rayTraceBox(achromatic, linear);
 		// 4.3 If no intersection is found, we are already in gamut
 		if (!intersection) {
 			break;
 		}
 
 		// 4.4 Assign the intersection to the current color
-		linear = intersection.slice() as Color;
+		linear = intersection;
 	}
 
 	// 5. Clip the result to account for floating point errors
@@ -61,12 +61,16 @@ export function mapGamutRayTrace(
 function rayTraceBox(start: Color, end: Color): Color | false {
 	let tfar = Infinity;
 	let tnear = -Infinity;
-	const direction = [];
+
+	const direction = [0, 0, 0];
+
 	for (let i = 0; i < 3; i++) {
 		const a = start[i];
 		const b = end[i];
 		const d = b - a;
-		direction.push(d);
+
+		direction[i] = d;
+
 		const bn = 0;
 		const bx = 1;
 
@@ -94,8 +98,8 @@ function rayTraceBox(start: Color, end: Color): Color | false {
 	}
 
 	return [
-		start[0] + direction[0] * tnear,
-		start[1] + direction[1] * tnear,
-		start[2] + direction[2] * tnear,
+		start[0] + (direction[0] * tnear),
+		start[1] + (direction[1] * tnear),
+		start[2] + (direction[2] * tnear),
 	];
 }

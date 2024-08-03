@@ -1,5 +1,9 @@
 # Changes to Selector Specificity
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.1.1
 
 _May 13, 2024_

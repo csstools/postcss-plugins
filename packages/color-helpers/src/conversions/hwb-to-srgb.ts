@@ -13,21 +13,20 @@ import { HSL_to_sRGB } from './hsl-to-srgb';
  */
 export function HWB_to_sRGB(HWB: Color): Color {
 	const hue = HWB[0];
-	let white = HWB[1];
-	let black = HWB[2];
+	const white = HWB[1] / 100;
+	const black = HWB[2] / 100;
 
-	white /= 100;
-	black /= 100;
 	if (white + black >= 1) {
 		const gray = white / (white + black);
 		return [gray, gray, gray];
 	}
 
 	const rgb = HSL_to_sRGB([hue, 100, 50]);
-	for (let i = 0; i < 3; i++) {
-		rgb[i] *= (1 - white - black);
-		rgb[i] += white;
-	}
+	const l = (1 - white - black);
 
-	return rgb;
+	return [
+		(rgb[0] * l) + white,
+		(rgb[1] * l) + white,
+		(rgb[2] * l) + white,
+	]
 }

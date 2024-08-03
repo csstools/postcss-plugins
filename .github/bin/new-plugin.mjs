@@ -1,5 +1,5 @@
-import { promises as fsp } from 'fs';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 const pluginName = process.argv.slice(2).join(' ');
 
@@ -33,16 +33,16 @@ console.log(`- Creating new plugin ${pluginName}`);
 
 // Copy base plugin
 {
-	await fsp.rm(pluginDir, { recursive: true, force: true });
-	await fsp.cp(basePluginDir, pluginDir, { recursive: true });
+	await fs.rm(pluginDir, { recursive: true, force: true });
+	await fs.cp(basePluginDir, pluginDir, { recursive: true });
 
 	console.log('- Copied base plugin to', pluginDir);
 }
 
 // Remove unnecessary files
 {
-	await fsp.rm(path.join(pluginDir, 'dist'), { recursive: true, force: true });
-	await fsp.rm(path.join(pluginDir, 'node_modules'), { recursive: true, force: true });
+	await fs.rm(path.join(pluginDir, 'dist'), { recursive: true, force: true });
+	await fs.rm(path.join(pluginDir, 'node_modules'), { recursive: true, force: true });
 
 	console.log('- Cleaned up files and directories not required in a new plugin');
 }
@@ -55,7 +55,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'test', '_tape.mjs'));
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'README.md'));
 	await replaceBasePluginReferencesForFilePath(path.join(pluginDir, 'INSTALL.md'));
-	await fsp.writeFile(
+	await fs.writeFile(
 		path.join(pluginDir, 'CHANGELOG.md'),
 		`# Changes to PostCSS ${pluginName}
 
@@ -70,7 +70,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 
 // Update package.json
 {
-	const packageInfo = JSON.parse(await fsp.readFile(path.join(pluginDir, 'package.json'), 'utf8'));
+	const packageInfo = JSON.parse(await fs.readFile(path.join(pluginDir, 'package.json'), 'utf8'));
 	packageInfo.name = packageName;
 	packageInfo.description = `TODO: Add description for ${pluginName}`;
 	packageInfo.version = '0.0.0';
@@ -83,7 +83,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 
 	packageInfo.repository.directory = `plugins/${pluginSlug}`;
 
-	await fsp.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
+	await fs.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
 
 	console.log('- Updated "package.json"');
 }
@@ -104,10 +104,10 @@ console.log('\nDone! 🎉');
 
 // Helpers
 async function replaceBasePluginReferencesForFilePath(filePath) {
-	await fsp.writeFile(
+	await fs.writeFile(
 		filePath,
 		replaceBasePluginReferences(
-			(await fsp.readFile(filePath, 'utf8')).toString(),
+			(await fs.readFile(filePath, 'utf8')).toString(),
 		),
 	);
 }

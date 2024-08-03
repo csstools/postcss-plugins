@@ -1,7 +1,8 @@
 import type { ColorStop } from './color-stop-list';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { isTokenComma } from '@csstools/css-tokenizer';
-import { color, ColorData, SyntaxFlag } from '@csstools/css-color-parser';
+import type { ColorData} from '@csstools/css-color-parser';
+import { color, SyntaxFlag } from '@csstools/css-color-parser';
 import { isCommentNode } from '@csstools/css-parser-algorithms';
 import { isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 

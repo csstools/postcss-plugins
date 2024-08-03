@@ -1,9 +1,10 @@
 import { isWhitespace } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { TokenType, TokenWhitespace } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { TokenWhitespace } from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 
 export function consumeWhiteSpace(reader: CodePointReader): TokenWhitespace {
-	while (isWhitespace(reader.codePointSource[reader.cursor])) {
+	while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
 		reader.advanceCodePoint();
 	}
 

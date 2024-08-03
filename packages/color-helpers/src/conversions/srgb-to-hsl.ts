@@ -28,7 +28,9 @@ export function sRGB_to_HSL(RGB: Color): Color {
 	let sat = 0;
 
 	if (Math.round(d * 100_000) !== 0) {
-		if (Math.round(light * 100_000) === 0 || Math.round(light * 100_000) === 100_000) {
+		const light_00_000 = Math.round(light * 100_000);
+
+		if (light_00_000 === 0 || light_00_000 === 100_000) {
 			sat = 0;
 		} else {
 			sat = (max - light) / Math.min(light, 1 - light);
@@ -61,5 +63,9 @@ export function sRGB_to_HSL(RGB: Color): Color {
 		hue -= 360;
 	}
 
-	return [hue, sat * 100, light * 100];
+	return [
+		hue,
+		sat * 100,
+		light * 100
+	];
 }

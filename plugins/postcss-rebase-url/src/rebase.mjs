@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 
 const HAS_PROTOCOL_REGEX = /^([-_a-z0-9]+:)?\/\//i;
 

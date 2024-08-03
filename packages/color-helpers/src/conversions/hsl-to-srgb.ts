@@ -11,24 +11,23 @@ import type { Color } from '../types/color';
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hslToRgb.js
  */
 export function HSL_to_sRGB(HSL: Color): Color {
-	let hue = HSL[0];
-	let sat = HSL[1];
-	let light = HSL[2];
-
-	hue = hue % 360;
+	let hue = HSL[0] % 360;
+	const sat = HSL[1] / 100;
+	const light = HSL[2] / 100;
 
 	if (hue < 0) {
 		hue =  hue + 360;
 	}
 
-	sat = sat / 100;
-	light = light / 100;
+	return [
+		HSL_to_sRGB_channel(0, hue, sat, light),
+		HSL_to_sRGB_channel(8, hue, sat, light),
+		HSL_to_sRGB_channel(4, hue, sat, light)
+	];
+}
 
-	function f(n: number): number {
-		const k = (n + hue / 30) % 12;
-		const a = sat * Math.min(light, 1 - light);
-		return light - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
-	}
-
-	return [f(0), f(8), f(4)];
+function HSL_to_sRGB_channel(n: number, hue: number, sat: number, light: number): number {
+	const k = (n + hue / 30) % 12;
+	const a = sat * Math.min(light, 1 - light);
+	return light - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
 }

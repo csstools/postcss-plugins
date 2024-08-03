@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import { collectTokens } from '../util/collect-tokens.mjs';
 import { mutateUnit, tokenizer, stringify } from '@csstools/css-tokenizer';
 

@@ -1,7 +1,7 @@
-import crypto from 'crypto';
-import path from 'path';
-import { URL } from 'url';
-import fs from 'fs/promises';
+import crypto from 'node:crypto';
+import path from 'node:path';
+import { URL } from 'node:url';
+import fs from 'node:fs/promises';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const hashesPath = path.resolve(__dirname, './hashes.json');

@@ -1,5 +1,9 @@
 # Changes to Cascade Layer Name Parser
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.13
 
 _July 6, 2024_

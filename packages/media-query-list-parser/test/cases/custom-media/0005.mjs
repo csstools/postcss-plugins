@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import { runTestCustomMedia } from '../../util/run-test-custom-media.mjs';
 
 runTestCustomMedia(

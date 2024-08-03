@@ -1,5 +1,6 @@
 import type { Declaration, PluginCreator, Result } from 'postcss';
-import { Axes, DirectionConfig, DirectionFlow, TransformFunction } from './lib/types';
+import type { DirectionConfig, TransformFunction } from './lib/types';
+import { Axes, DirectionFlow } from './lib/types';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 import { transformTransition } from './lib/transform-transition';
 import { prepareTransforms } from './lib/transforms';

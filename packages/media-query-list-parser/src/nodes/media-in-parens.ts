@@ -1,18 +1,19 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
-import { GeneralEnclosed } from './general-enclosed';
-import { MediaAnd } from './media-and';
-import { MediaCondition } from './media-condition';
-import { MediaConditionList } from './media-condition-list';
-import { MediaFeature } from './media-feature';
-import { MediaFeatureBoolean } from './media-feature-boolean';
-import { MediaFeatureName } from './media-feature-name';
-import { MediaFeaturePlain } from './media-feature-plain';
-import { MediaFeatureRange } from './media-feature-range';
-import { MediaFeatureValue } from './media-feature-value';
+import type { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
+import type { GeneralEnclosed } from './general-enclosed';
+import type { MediaAnd } from './media-and';
+import type { MediaCondition } from './media-condition';
+import type { MediaConditionList } from './media-condition-list';
+import type { MediaFeature } from './media-feature';
+import type { MediaFeatureBoolean } from './media-feature-boolean';
+import type { MediaFeatureName } from './media-feature-name';
+import type { MediaFeaturePlain } from './media-feature-plain';
+import type { MediaFeatureRange } from './media-feature-range';
+import type { MediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
-import { MediaNot } from './media-not';
-import { MediaOr } from './media-or';
+import type { MediaNot } from './media-not';
+import type { MediaOr } from './media-or';
 
 export class MediaInParens {
 	type = NodeType.MediaInParens;

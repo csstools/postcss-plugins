@@ -1,5 +1,5 @@
 import getTransformedInsertions from '../../lib/get-transformed-insertions.mjs';
-import assert from 'assert';
+import assert from 'node:assert';
 import { insertAfterKey, insertBeforeKey, insertOrderKey, pluginKey } from '../../own-keys/keys.mjs';
 
 const labFunctionFixture = {

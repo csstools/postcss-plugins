@@ -1,6 +1,6 @@
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { currentVersion } from './current-version.mjs';
 import { canPublish } from './npm-can-publish.mjs';
 import { whoami } from './npm-whoami.mjs';

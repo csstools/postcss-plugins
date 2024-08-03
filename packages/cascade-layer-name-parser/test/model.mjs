@@ -1,5 +1,5 @@
 import { addLayerToModel, parse } from '@csstools/cascade-layer-name-parser';
-import assert from 'assert';
+import assert from 'node:assert';
 
 {
 	const model = [];

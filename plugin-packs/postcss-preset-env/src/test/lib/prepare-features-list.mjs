@@ -1,5 +1,5 @@
 import { prepareFeaturesList } from '../../lib/prepare-features-list.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { insertAfterKey, insertBeforeKey, insertOrderKey, pluginKey } from '../../own-keys/keys.mjs';
 
 const fixedList = [

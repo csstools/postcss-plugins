@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.0.15
 
 _July 6, 2024_

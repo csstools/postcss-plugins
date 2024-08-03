@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+import { spawn } from 'node:child_process';
 
 export async function commitSingleDirectory(commitMessage, dir) {
 	await new Promise((resolve, reject) => {

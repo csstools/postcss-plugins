@@ -4,7 +4,7 @@ import cleanupParent from '../../shared/lib/cleanup-parent.js';
 import groupDeclarations from './group-declarations.js';
 import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.js';
 import validAtrules from '../../shared/lib/valid-atrules.js';
-import { options } from './options.js';
+import type { options } from './options.js';
 
 export default function atruleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options): void {
 	// Group all declarations after the first one.

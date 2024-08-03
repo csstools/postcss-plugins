@@ -1,6 +1,6 @@
 import { listModifiedFilesInPullRequest } from './list-modified-files.mjs';
 import { listWorkspaces } from '../list-workspaces/list-workspaces.mjs';
-import path from 'path';
+import path from 'node:path';
 
 const internalDependencies = [
 	path.relative(process.cwd(), path.resolve('.github')),

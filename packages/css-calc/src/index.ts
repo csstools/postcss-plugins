@@ -1,6 +1,7 @@
 export type { conversionOptions, GlobalsWithStrings } from './options';
 import type { conversionOptions } from './options';
-import { ComponentValue, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { mathFunctions } from './functions/calc';
 import { patchCalcResult } from './util/patch-result';
 import { replaceComponentValues } from '@csstools/css-parser-algorithms';

@@ -10,20 +10,16 @@ import { D50 } from '../conversions/constants';
 export function Lab_to_XYZ(Lab: Color): Color {
 	const κ = 24389 / 27;   // 29^3/3^3
 	const ε = 216 / 24389;  // 6^3/29^3
-	const f = [];
 
 	// compute f, starting with the luminance-related term
-	f[1] = (Lab[0] + 16) / 116;
-	f[0] = Lab[1] / 500 + f[1];
-	f[2] = f[1] - Lab[2] / 200;
+	const f1 = (Lab[0] + 16) / 116;
+	const f0 = Lab[1] / 500 + f1;
+	const f2 = f1 - Lab[2] / 200;
 
 	// compute xyz
-	const xyz = [
-		Math.pow(f[0], 3) > ε ? Math.pow(f[0], 3) : (116 * f[0] - 16) / κ,
-		Lab[0] > κ * ε ? Math.pow((Lab[0] + 16) / 116, 3) : Lab[0] / κ,
-		Math.pow(f[2], 3) > ε ? Math.pow(f[2], 3) : (116 * f[2] - 16) / κ,
+	return [
+		(Math.pow(f0, 3) > ε ? Math.pow(f0, 3) : (116 * f0 - 16) / κ) * D50[0],
+		(Lab[0] > κ * ε ? Math.pow((Lab[0] + 16) / 116, 3) : Lab[0] / κ) * D50[1],
+		(Math.pow(f2, 3) > ε ? Math.pow(f2, 3) : (116 * f2 - 16) / κ) * D50[2],
 	];
-
-	// Compute XYZ by scaling xyz by reference white
-	return xyz.map((value, i) => value * D50[i]) as Color;
 }

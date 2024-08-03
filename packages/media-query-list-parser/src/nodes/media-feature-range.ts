@@ -1,8 +1,13 @@
-import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenDelim } from '@csstools/css-tokenizer';
-import { comparisonFromTokens, matchesComparison, MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT } from './media-feature-comparison';
-import { MediaFeatureName, parseMediaFeatureName } from './media-feature-name';
-import { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent, parseMediaFeatureValue } from './media-feature-value';
+import type { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValueType } from '@csstools/css-parser-algorithms';
+import type { CSSToken, TokenDelim } from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
+import type { MediaFeatureComparison} from './media-feature-comparison';
+import { comparisonFromTokens, matchesComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT } from './media-feature-comparison';
+import type { MediaFeatureName} from './media-feature-name';
+import { parseMediaFeatureName } from './media-feature-name';
+import type { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent} from './media-feature-value';
+import { parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
 import { isTokenDelim } from '@csstools/css-tokenizer';
 

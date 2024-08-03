@@ -1,5 +1,5 @@
 import { tokenizer } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import { collectTokens } from '../util/collect-tokens.mjs';
 
 // Single characters

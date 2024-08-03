@@ -1,9 +1,12 @@
-import { ComponentValue, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
-import { CSSToken, isTokenIdent, stringify, TokenType } from '@csstools/css-tokenizer';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { walkerIndexGenerator } from '@csstools/css-parser-algorithms';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { isTokenIdent, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
-import { MediaCondition, MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
+import type { MediaConditionWalkerEntry, MediaConditionWalkerParent } from './media-condition';
+import { MediaCondition } from './media-condition';
 import { MediaInParens } from './media-in-parens';
-import { MediaNot } from './media-not';
+import type { MediaNot } from './media-not';
 
 export type MediaQuery = MediaQueryWithType | MediaQueryWithoutType | MediaQueryInvalid;
 

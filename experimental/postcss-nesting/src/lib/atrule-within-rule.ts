@@ -1,7 +1,7 @@
 import cleanupParent from './cleanup-parent.js';
 import shiftNodesBeforeParent from './shift-nodes-before-parent.js';
 import validAtrules from './valid-atrules.js';
-import { walkFunc } from './walk-func.js';
+import type { walkFunc } from './walk-func.js';
 import type { AtRule, Result, Rule } from 'postcss';
 import groupDeclarations from './group-declarations.js';
 

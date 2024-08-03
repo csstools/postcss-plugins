@@ -1,5 +1,5 @@
 import { parse } from '@csstools/cascade-layer-name-parser';
-import assert from 'assert';
+import assert from 'node:assert';
 
 {
 	const a = parse(' some-layer./* a comment */sub-layer ')[0];

@@ -1,5 +1,7 @@
-import { ComponentValue, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, tokenizer } from '@csstools/css-tokenizer';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { tokenizer } from '@csstools/css-tokenizer';
 
 function parseComponentValuesFromTokens(tokens: Array<CSSToken>): Array<ComponentValue> {
 	return parseListOfComponentValues(tokens, {

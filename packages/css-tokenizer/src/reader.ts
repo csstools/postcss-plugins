@@ -1,4 +1,4 @@
-import { CodePointReader } from './interfaces/code-point-reader';
+import type { CodePointReader } from './interfaces/code-point-reader';
 
 /**
  * @internal
@@ -6,58 +6,40 @@ import { CodePointReader } from './interfaces/code-point-reader';
 export class Reader implements CodePointReader {
 	cursor = 0;
 	source = '';
-	codePointSource: Array<number> = [];
-	representationIndices: Array<number> = [-1];
-	length = 0;
 
 	representationStart = 0;
 	representationEnd = -1;
 
 	constructor(source: string) {
 		this.source = source;
-
-		{
-			let representationEnd = -1;
-			let codePoint = '';
-
-			for (codePoint of source) {
-				representationEnd += codePoint.length;
-
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				this.codePointSource.push(codePoint.codePointAt(0)!);
-				this.representationIndices.push(representationEnd);
-			}
-		}
-
-		this.length = this.codePointSource.length;
 	}
 
 	advanceCodePoint(n = 1): void {
 		this.cursor = this.cursor + n;
-		this.representationEnd = this.representationIndices[this.cursor];
+		this.representationEnd = this.cursor - 1;
 	}
 
-	readCodePoint(n = 1): number | false {
-		const codePoint = this.codePointSource[this.cursor];
-		if (codePoint === undefined) {
-			return false;
+	readCodePoint(): number | undefined {
+		const codePoint = this.source.codePointAt(this.cursor);
+		if (typeof codePoint === "undefined") {
+			return undefined;
 		}
 
-		this.cursor = this.cursor + n;
-		this.representationEnd = this.representationIndices[this.cursor];
+		this.cursor = this.cursor + 1;
+		this.representationEnd = this.cursor - 1;
 
 		return codePoint;
 	}
 
 	unreadCodePoint(n = 1): void {
 		this.cursor = this.cursor - n;
-		this.representationEnd = this.representationIndices[this.cursor];
+		this.representationEnd = this.cursor - 1;
 
 		return;
 	}
 
 	resetRepresentation(): void {
-		this.representationStart = this.representationIndices[this.cursor] + 1;
+		this.representationStart = this.cursor;
 		this.representationEnd = -1;
 	}
 }

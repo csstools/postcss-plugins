@@ -1,6 +1,7 @@
 import type { AtRule, PluginCreator } from 'postcss';
 import browserslist from 'browserslist';
-import { ParseError, tokenize } from '@csstools/css-tokenizer';
+import type { ParseError} from '@csstools/css-tokenizer';
+import { tokenize } from '@csstools/css-tokenizer';
 import { died } from './died';
 import { isCommentNode, isFunctionNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { matchBeforeDateCondition } from './match/before-date';

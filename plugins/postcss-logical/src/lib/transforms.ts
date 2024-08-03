@@ -1,4 +1,4 @@
-import { Axes, DirectionConfig, TransformFunction } from './types';
+import type { Axes, DirectionConfig, TransformFunction } from './types';
 import {
 	transformBorder,
 	transformBorderProperty,

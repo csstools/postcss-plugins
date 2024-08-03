@@ -1,5 +1,5 @@
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 
 {
 	const parseErrors = [];

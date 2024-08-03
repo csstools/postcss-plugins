@@ -1,6 +1,8 @@
-import { ComponentValue, FunctionNode, isFunctionNode, isTokenNode, SimpleBlockNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { FunctionNode, isFunctionNode, isTokenNode, SimpleBlockNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { isTokenNumber, NumberType, TokenType } from '@csstools/css-tokenizer';
-import { matchesRatioExactly, MediaFeatureValue } from '@csstools/media-query-list-parser';
+import type { MediaFeatureValue } from '@csstools/media-query-list-parser';
+import { matchesRatioExactly } from '@csstools/media-query-list-parser';
 
 const precision = 100000;
 const nearInfinity = 2147483647;

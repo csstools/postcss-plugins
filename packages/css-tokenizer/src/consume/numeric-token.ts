@@ -1,8 +1,9 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { HYPHEN_MINUS, PERCENTAGE_SIGN, PLUS_SIGN } from '../code-points/code-points';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
+import type { TokenDimension, TokenNumber, TokenPercentage} from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 import { consumeNumber } from './number';
 
@@ -11,7 +12,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 	let signCharacter: undefined | '+' | '-' = undefined;
 
 	{
-		const peeked = reader.codePointSource[reader.cursor];
+		const peeked = reader.source.codePointAt(reader.cursor);
 		if (peeked === HYPHEN_MINUS) {
 			signCharacter = '-';
 		} else if (peeked === PLUS_SIGN) {
@@ -38,7 +39,7 @@ export function consumeNumericToken(ctx: Context, reader: CodePointReader): Toke
 		];
 	}
 
-	if (reader.codePointSource[reader.cursor] === PERCENTAGE_SIGN) {
+	if (reader.source.codePointAt(reader.cursor) === PERCENTAGE_SIGN) {
 		reader.advanceCodePoint();
 
 		return [

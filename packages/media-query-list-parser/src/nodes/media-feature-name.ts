@@ -1,5 +1,7 @@
-import { ComponentValue, ComponentValueType, TokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenIdent } from '@csstools/css-tokenizer';
+import type { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
+import { ComponentValueType } from '@csstools/css-parser-algorithms';
+import type { CSSToken, TokenIdent } from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
 import { isIdent } from '../util/component-value-is';
 import { NodeType } from '../util/node-type';
 

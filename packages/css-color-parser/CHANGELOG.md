@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 2.0.5
 
 _July 13, 2024_

@@ -1,4 +1,4 @@
-import parser from 'postcss-selector-parser';
+import type parser from 'postcss-selector-parser';
 
 // :-csstools-matches(.a > .b) + :-csstools-matches(.c > .d)
 // equivalent to

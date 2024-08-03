@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 1.2.4
 
 _July 6, 2024_

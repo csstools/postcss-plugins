@@ -37,22 +37,6 @@
 export declare function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken>;
 
 /**
- * @internal
- */
-export declare type CodePointReader = {
-    representationStart: number;
-    representationEnd: number;
-    cursor: number;
-    codePointSource: Array<number>;
-    representationIndices: Array<number>;
-    source: string;
-    advanceCodePoint(n?: number): void;
-    readCodePoint(n?: number): number | false;
-    unreadCodePoint(n?: number): void;
-    resetRepresentation(): void;
-};
-
-/**
  * The union of all possible CSS tokens
  */
 export declare type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly | TokenUnicodeRange;
@@ -230,24 +214,6 @@ export declare class ParseErrorWithToken extends ParseError {
     /** The associated token. */
     token: CSSToken;
     constructor(message: string, sourceStart: number, sourceEnd: number, parserState: Array<string>, token: CSSToken);
-}
-
-/**
- * @internal
- */
-export declare class Reader implements CodePointReader {
-    cursor: number;
-    source: string;
-    codePointSource: Array<number>;
-    representationIndices: Array<number>;
-    length: number;
-    representationStart: number;
-    representationEnd: number;
-    constructor(source: string);
-    advanceCodePoint(n?: number): void;
-    readCodePoint(n?: number): number | false;
-    unreadCodePoint(n?: number): void;
-    resetRepresentation(): void;
 }
 
 /**

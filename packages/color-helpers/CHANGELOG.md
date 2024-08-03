@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 4.2.1
 
 _June 29, 2024_

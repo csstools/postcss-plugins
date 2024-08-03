@@ -1,6 +1,6 @@
 import type { AtRule, ChildNode, Document, Result, Root, Warning } from 'postcss';
-import { Condition } from './conditions';
-import { Stylesheet, ImportStatement, Statement } from './statement';
+import type { Condition } from './conditions';
+import type { Stylesheet, ImportStatement, Statement } from './statement';
 import { IS_CHARSET_REGEX, IS_IMPORT_REGEX, IS_LAYER_REGEX } from './names';
 import { parseAtImport } from './parse-at-import';
 

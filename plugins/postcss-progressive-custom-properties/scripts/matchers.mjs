@@ -1,4 +1,4 @@
-import { promises as fsp } from 'fs';
+import fs from 'node:fs/promises';
 import { colorMatchers, hslMatchers, hwbMatchers, labMatchers, lchMatchers, oklabMatchers, oklchMatchers, rgbMatchers } from './color.mjs';
 import { colorMixMatchers } from './color-mix.mjs';
 import { icUnitMatchers } from './font-size.mjs';
@@ -7,7 +7,7 @@ import { relativeColorSyntaxMatches } from './relative-color-syntax.mjs';
 import { contrastColorMatchers } from './contrast-color.mjs';
 import { contentMatchers } from './content.mjs';
 
-fsp.writeFile(
+fs.writeFile(
 	'./src/matchers.ts',
 	'export const matchers = ' + JSON.stringify(
 		[

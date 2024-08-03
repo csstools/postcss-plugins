@@ -1,5 +1,5 @@
-import { spawn } from 'child_process';
-import { platform } from 'process';
+import { spawn } from 'node:child_process';
+import { platform } from 'node:process';
 
 export async function npmPublish(packageDirectory, packageName) {
 	await new Promise((resolve, reject) => {

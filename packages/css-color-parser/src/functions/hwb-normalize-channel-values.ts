@@ -1,5 +1,6 @@
 import type { ColorData } from '../color-data';
-import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
 import { normalizeHue } from './hue-normalize-channel-value';

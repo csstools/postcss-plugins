@@ -1,4 +1,4 @@
-import { ColorData } from '../color-data';
+import type { ColorData } from '../color-data';
 import type { TokenCloseParen, TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';

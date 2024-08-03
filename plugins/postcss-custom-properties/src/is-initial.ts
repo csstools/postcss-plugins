@@ -1,4 +1,4 @@
-import valueParser from 'postcss-value-parser';
+import type valueParser from 'postcss-value-parser';
 
 const IS_INITIAL_REGEX = /^initial$/i;
 

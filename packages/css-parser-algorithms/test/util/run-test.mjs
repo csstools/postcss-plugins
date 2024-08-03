@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import test from 'node:test';
 import { parseCommaSeparatedListOfComponentValues, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { tokenizer } from '@csstools/css-tokenizer';

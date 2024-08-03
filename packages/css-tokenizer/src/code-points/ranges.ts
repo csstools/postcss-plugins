@@ -2,46 +2,46 @@ import { BACKSPACE, DELETE, INFORMATION_SEPARATOR_ONE, LINE_TABULATION, LOW_LINE
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokenizer-definitions
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#digit
-export function isDigitCodePoint(search: number): boolean {
-	return search >= 0x0030 && search <= 0x0039;
+export function isDigitCodePoint(search: number | undefined): search is number {
+	return (typeof search !== "undefined") && search >= 0x0030 && search <= 0x0039;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#uppercase-letter
-function isUppercaseLetterCodePoint(search: number): boolean {
-	return search >= 0x0041 && search <= 0x005a;
+function isUppercaseLetterCodePoint(search: number | undefined): search is number {
+	return (typeof search !== "undefined") && search >= 0x0041 && search <= 0x005a;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#lowercase-letter
-function isLowercaseLetterCodePoint(search: number): boolean {
-	return search >= 0x0061 && search <= 0x007a;
+function isLowercaseLetterCodePoint(search: number | undefined): search is number {
+	return (typeof search !== "undefined") && search >= 0x0061 && search <= 0x007a;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#hex-digit
-export function isHexDigitCodePoint(search: number): boolean {
-	return (
-		isDigitCodePoint(search) || // 0 .. 9
+export function isHexDigitCodePoint(search: number | undefined): search is number {
+	return (typeof search !== "undefined") && (
+		(search >= 0x0030 && search <= 0x0039) || // 0 .. 9
 		(search >= 0x0061 && search <= 0x0066) || // a .. f
 		(search >= 0x0041 && search <= 0x0046)    // A .. F
 	);
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#letter
-function isLetterCodePoint(search: number): boolean {
+function isLetterCodePoint(search: number | undefined): search is number {
 	return isLowercaseLetterCodePoint(search) || isUppercaseLetterCodePoint(search);
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-start-code-point
-export function isIdentStartCodePoint(search: number): boolean {
+export function isIdentStartCodePoint(search: number | undefined): search is number {
 	return isLetterCodePoint(search) || isNonASCII_IdentCodePoint(search) || search === LOW_LINE;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-code-point
-export function isIdentCodePoint(search: number): boolean {
+export function isIdentCodePoint(search: number | undefined): search is number {
 	return isIdentStartCodePoint(search) || isDigitCodePoint(search) || search === HYPHEN_MINUS;
 }
 
 // https://drafts.csswg.org/css-syntax/#non-ascii-ident-code-point
-function isNonASCII_IdentCodePoint(search: number): boolean {
+function isNonASCII_IdentCodePoint(search: number | undefined): search is number {
 	if (
 		search === 0x00B7 ||
 		search === 0x200C ||
@@ -51,6 +51,10 @@ function isNonASCII_IdentCodePoint(search: number): boolean {
 		search === 0x200C
 	) {
 		return true;
+	}
+
+	if (typeof search === "undefined") {
+		return false;
 	}
 
 	if (
@@ -71,8 +75,8 @@ function isNonASCII_IdentCodePoint(search: number): boolean {
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#non-printable-code-point
-export function isNonPrintableCodePoint(search: number): boolean {
-	return (
+export function isNonPrintableCodePoint(search: number | undefined): search is number {
+	return (typeof search !== "undefined") &&(
 		(search === LINE_TABULATION) ||
 		(search === DELETE) ||
 		(NULL <= search && search <= BACKSPACE) ||
@@ -81,16 +85,16 @@ export function isNonPrintableCodePoint(search: number): boolean {
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
-export function isNewLine(search: number): boolean {
+export function isNewLine(search: number | undefined): search is number {
 	return search === LINE_FEED || search === CARRIAGE_RETURN || search === FORM_FEED;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
-export function isWhitespace(search: number): boolean {
+export function isWhitespace(search: number | undefined): search is number {
 	return search === SPACE || search === LINE_FEED || search === CHARACTER_TABULATION || search === CARRIAGE_RETURN || search === FORM_FEED;
 }
 
 // https://infra.spec.whatwg.org/#surrogate
-export function isSurrogate(search: number): boolean {
-	return search >= 0xd800 && search <= 0xdfff;
+export function isSurrogate(search: number | undefined): search is number {
+	return (typeof search !== "undefined") && search >= 0xd800 && search <= 0xdfff;
 }

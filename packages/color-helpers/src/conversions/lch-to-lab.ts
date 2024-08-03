@@ -5,10 +5,12 @@ import type { Color } from '../types/color';
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
 export function LCH_to_Lab(LCH: Color): Color {
+	const h = LCH[2] * Math.PI / 180;
+
 	// Convert from polar form
 	return [
 		LCH[0], // L is still L
-		LCH[1] * Math.cos(LCH[2] * Math.PI / 180), // a
-		LCH[1] * Math.sin(LCH[2] * Math.PI / 180), // b
+		LCH[1] * Math.cos(h), // a
+		LCH[1] * Math.sin(h), // b
 	];
 }

@@ -1,6 +1,6 @@
 import type { Declaration } from 'postcss';
 import { cloneDeclaration } from './clone-declaration';
-import { DirectionConfig } from './types';
+import type { DirectionConfig } from './types';
 
 export function transformLogicalSize(
 	directionConfig: DirectionConfig,

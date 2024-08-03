@@ -1,6 +1,8 @@
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, tokenizer, ParseError } from '@csstools/css-tokenizer';
-import { MediaQuery, MediaQueryInvalid } from '../nodes/media-query';
+import type { CSSToken, ParseError } from '@csstools/css-tokenizer';
+import { tokenizer } from '@csstools/css-tokenizer';
+import type { MediaQuery} from '../nodes/media-query';
+import { MediaQueryInvalid } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
 
 export function parseFromTokens(

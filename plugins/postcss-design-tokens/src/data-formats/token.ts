@@ -1,4 +1,4 @@
-import { Token } from './base/token';
+import type { Token } from './base/token';
 
 export function mergeTokens(a: Map<string, Token>, b: Map<string, Token>): Map<string, Token> {
 	const result = new Map(a);

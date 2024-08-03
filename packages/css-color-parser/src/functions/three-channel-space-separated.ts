@@ -1,14 +1,15 @@
-import { ColorData, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
-import { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenNumber, isTokenDelim, isTokenIdent, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
-import { ColorNotation } from '../color-notation';
-import { SyntaxFlag } from '../color-data';
+import type { ColorData} from '../color-data';
+import { noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
+import type { TokenNumber} from '@csstools/css-tokenizer';
+import { isTokenDelim, isTokenIdent, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
+import type { ColorNotation } from '../color-notation';
+import { SyntaxFlag, colorDataTo } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { normalizeChannelValuesFn } from './normalize-channel-values';
+import type { normalizeChannelValuesFn } from './normalize-channel-values';
 import { mathFunctionNames } from '@csstools/css-calc';
-import { ColorParser } from '../color-parser';
-import { colorDataTo } from '../color-data';
+import type { ColorParser } from '../color-parser';
 import { TokenNode } from '@csstools/css-parser-algorithms';
 
 export function threeChannelSpaceSeparated(

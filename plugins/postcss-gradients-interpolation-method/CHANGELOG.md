@@ -1,7 +1,8 @@
 # Changes to PostCSS Gradients Interpolation Method
 
-### Unreleased (patch)
+### Unreleased (major)
 
+- Updated: Support for Node v18+ (major).
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#205) (patch)
 
 ### 4.0.20

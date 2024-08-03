@@ -1,8 +1,9 @@
 import { DIGIT_ZERO, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_F, QUESTION_MARK } from '../code-points/code-points';
 import { isHexDigitCodePoint } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-import { TokenType, TokenUnicodeRange } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
+import type { TokenUnicodeRange } from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 
 // https://drafts.csswg.org/css-syntax/#starts-a-unicode-range
 export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader): TokenUnicodeRange {
@@ -14,12 +15,13 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 
 	// 2. Consume as many hex digits as possible,
 	// but no more than 6.
+	let codePoint: number | undefined;
 	while (
-		(reader.codePointSource[reader.cursor] !== undefined) &&
+		(typeof (codePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") &&
 		firstSegment.length < 6 &&
-		isHexDigitCodePoint(reader.codePointSource[reader.cursor])
+		isHexDigitCodePoint(codePoint)
 	) {
-		firstSegment.push(reader.codePointSource[reader.cursor]);
+		firstSegment.push(codePoint);
 		reader.advanceCodePoint();
 	}
 
@@ -27,9 +29,9 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 	// consume as many U+003F QUESTION MARK (?) code points as possible,
 	// but no more than enough to make the total of hex digits and U+003F QUESTION MARK (?) code points equal to 6.
 	while (
-		(reader.codePointSource[reader.cursor] !== undefined) &&
+		(typeof (codePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") &&
 		firstSegment.length < 6 &&
-		reader.codePointSource[reader.cursor] === QUESTION_MARK
+		codePoint === QUESTION_MARK
 	) {
 		if (secondSegment.length === 0) {
 			secondSegment.push(...firstSegment);
@@ -46,8 +48,8 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 	if (!secondSegment.length) {
 		// 5. If the next 2 input code points are U+002D HYPHEN-MINUS (-) followed by a hex digit
 		if (
-			reader.codePointSource[reader.cursor] === HYPHEN_MINUS &&
-			isHexDigitCodePoint(reader.codePointSource[reader.cursor + 1])
+			reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS &&
+			isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))
 		) {
 			// 5.1. Consume the next input code point.
 			reader.advanceCodePoint();
@@ -55,11 +57,11 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 			// 5.2 Consume as many hex digits as possible,
 			// but no more than 6.
 			while (
-				(reader.codePointSource[reader.cursor] !== undefined) &&
+				(typeof (codePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") &&
 				secondSegment.length < 6 &&
-				isHexDigitCodePoint(reader.codePointSource[reader.cursor])
+				isHexDigitCodePoint(codePoint)
 			) {
-				secondSegment.push(reader.codePointSource[reader.cursor]);
+				secondSegment.push(codePoint);
 				reader.advanceCodePoint();
 			}
 		}

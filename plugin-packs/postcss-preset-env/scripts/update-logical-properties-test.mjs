@@ -1,5 +1,5 @@
 import css from '@webref/css';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 
 const logicalProperties = new Set();
 

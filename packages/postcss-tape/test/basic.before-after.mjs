@@ -1,6 +1,6 @@
 import { postcssTape } from '../dist/index.mjs';
 import plugin from './_a-plugin.mjs';
-import { promises as fsp } from 'fs';
+import fs from 'node:fs/promises';
 
 let original = '';
 
@@ -12,12 +12,12 @@ postcssTape(plugin)({
 		},
 		before: async () => {
 			if (original === '') {
-				original = await fsp.readFile('./test/basic.css', 'utf8');
+				original = await fs.readFile('./test/basic.css', 'utf8');
 			}
-			await fsp.writeFile('./test/basic.css', '.foos { order: 1; }');
+			await fs.writeFile('./test/basic.css', '.foos { order: 1; }');
 		},
 		after: async () => {
-			await fsp.writeFile('./test/basic.css', original);
+			await fs.writeFile('./test/basic.css', original);
 			original = '';
 		},
 	},

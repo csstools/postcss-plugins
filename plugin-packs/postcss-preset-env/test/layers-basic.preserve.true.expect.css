@@ -74,12 +74,6 @@
 		-webkit-order: 4;
 		   -moz-box-ordinal-group: 5;
 		        order: 4;
-
-		is-layer: C;
-		-webkit-box-ordinal-group: 7;
-		-webkit-order: 6;
-		   -moz-box-ordinal-group: 7;
-		        order: 6;
 	}
 
 .test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) p {
@@ -90,12 +84,39 @@
 			        order: 5;
 		}
 
+.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+
+		is-layer: C;
+		-webkit-box-ordinal-group: 7;
+		-webkit-order: 6;
+		   -moz-box-ordinal-group: 7;
+		        order: 6;
+	}
+
 .test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),
 #test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	-webkit-box-ordinal-group: 8;
 	-webkit-order: 7;
 	   -moz-box-ordinal-group: 8;
 	        order: 7;
+}
+
+.test-nesting-rules:not(#does-not-exist):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p,#test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p {
+		-webkit-box-ordinal-group: 9;
+		-webkit-order: 8;
+		   -moz-box-ordinal-group: 9;
+		        order: 8;
+	}
+
+:is(.test-nesting-rules,#test-is-pseudo):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p {
+		-webkit-box-ordinal-group: 9;
+		-webkit-order: 8;
+		   -moz-box-ordinal-group: 9;
+		        order: 8;
+	}
+
+.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#),
+#test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 
 	-webkit-box-ordinal-group: 10;
 
@@ -105,13 +126,6 @@
 
 	        order: 9;
 }
-
-.test-nesting-rules:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p, #test-is-pseudo:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) + p {
-		-webkit-box-ordinal-group: 9;
-		-webkit-order: 8;
-		   -moz-box-ordinal-group: 9;
-		        order: 8;
-	}
 
 @custom-media --narrow-window (max-width: 500px);
 

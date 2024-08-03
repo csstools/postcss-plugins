@@ -1,8 +1,9 @@
 import { ASTERISK, SOLIDUS } from '../code-points/code-points';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { ParseErrorMessage, ParseErrorWithToken } from '../interfaces/error';
-import { CSSToken, TokenComment, TokenType } from '../interfaces/token';
+import type { CSSToken, TokenComment} from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
 export function consumeComment(ctx: Context, reader: CodePointReader): TokenComment {
@@ -10,7 +11,7 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 
 	while (true) {
 		const codePoint = reader.readCodePoint();
-		if (codePoint === false) {
+		if (typeof codePoint === "undefined") {
 			const token: CSSToken = [
 				TokenType.Comment,
 				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
@@ -37,11 +38,11 @@ export function consumeComment(ctx: Context, reader: CodePointReader): TokenComm
 			continue;
 		}
 
-		if (reader.codePointSource[reader.cursor] === undefined) {
+		if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
 			continue;
 		}
 
-		if (reader.codePointSource[reader.cursor] === SOLIDUS) {
+		if (reader.source.codePointAt(reader.cursor) === SOLIDUS) {
 			reader.advanceCodePoint();
 			break;
 		}

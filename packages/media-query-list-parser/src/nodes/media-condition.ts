@@ -1,7 +1,7 @@
-import { CSSToken } from '@csstools/css-tokenizer';
-import { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
-import { MediaInParens } from './media-in-parens';
-import { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
+import type { CSSToken } from '@csstools/css-tokenizer';
+import type { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
+import type { MediaInParens } from './media-in-parens';
+import type { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
 import { NodeType } from '../util/node-type';
 
 export class MediaCondition {

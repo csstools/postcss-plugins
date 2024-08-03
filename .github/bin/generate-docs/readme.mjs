@@ -1,6 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import process from 'node:process';
+
 import { parallelBuildsNotice } from './parallel-builds-notice.mjs';
 
 const template = fs.readFileSync(path.join('docs', './README.md'), 'utf8');
@@ -43,25 +45,38 @@ readmeDoc = readmeDoc.replace(`<!-- Available Variables: -->
 readmeDoc = readmeDoc.replaceAll('<corsWarning>', corsTemplate);
 
 // Insert "Header" section
-readmeDoc = readmeDoc.replace('<header>', `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
+function headerText() {
+	const baselineBadge = packageJSONInfo.csstools?.cssdbId ?
+		'<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/<cssdbId>.svg" height="20">][css-url] ' :
+		'';
+
+	const cssdbBadge = packageJSONInfo.csstools?.cssdbId ?
+		'[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url] ' :
+		'';
+
+	if (process.env.MINIMAL) {
+		return `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
+
+\`\`\`bash
+npm install <packageName> --save-dev
+\`\`\``;
+	}
+
+	return `# <humanReadableName> [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
 ` +
 '[<img alt="npm version" src="https://img.shields.io/npm/v/<packageName>.svg" height="20">][npm-url] ' +
 '[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] ' +
 '[<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]' +
-`${packageJSONInfo.csstools?.cssdbId ?
-	'<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/<cssdbId>.svg" height="20">][css-url] ' :
-	''
-}` +
-`${packageJSONInfo.csstools?.cssdbId ?
-	'[<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/<cssdbId>.svg" height="20">][css-url] ' :
-	''
-}` +
+baselineBadge +
+cssdbBadge +
 `\n
 \`\`\`bash
 npm install <packageName> --save-dev
-\`\`\``,
-);
+\`\`\``;
+}
+
+readmeDoc = readmeDoc.replace('<header>', headerText());
 
 // Insert "Usage" section
 readmeDoc = readmeDoc.replace('<usage>', `## Usage
@@ -83,8 +98,12 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 \`\`\``);
 
-// Insert "Env Support" section
-readmeDoc = readmeDoc.replace('<envSupport>', `[<humanReadableName>] runs in all Node environments, with special
+function envSupport() {
+	if (process.env.MINIMAL) {
+		return '';
+	}
+
+	return `[<humanReadableName>] runs in all Node environments, with special
 instructions for:
 
 - [Node](INSTALL.md#node)
@@ -93,7 +112,11 @@ instructions for:
 - [Webpack](INSTALL.md#webpack)
 - [Next.js](INSTALL.md#nextjs)
 - [Gulp](INSTALL.md#gulp)
-- [Grunt](INSTALL.md#grunt)`);
+- [Grunt](INSTALL.md#grunt)`;
+}
+
+// Insert "Env Support" section
+readmeDoc = readmeDoc.replace('<envSupport>', envSupport());
 
 // Insert "Link List" section
 readmeDoc = readmeDoc.replace('<linkList>', `[cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

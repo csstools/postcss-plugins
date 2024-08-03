@@ -1,5 +1,7 @@
-import { CSSToken, ParseError, TokenType, isTokenEOF } from '@csstools/css-tokenizer';
-import { ComponentValue, consumeComponentValue } from '../consume/component-block-function';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { ParseError, TokenType, isTokenEOF } from '@csstools/css-tokenizer';
+import type { ComponentValue} from '../consume/component-block-function';
+import { consumeComponentValue } from '../consume/component-block-function';
 
 /**
  * Parse a single component value.

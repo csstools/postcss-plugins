@@ -1,5 +1,5 @@
 import type autoprefixer from 'autoprefixer';
-import { pluginsOptions } from './plugins/plugins-options';
+import type { pluginsOptions } from './plugins/plugins-options';
 
 export enum DirectionFlow {
 	TopToBottom = 'top-to-bottom',

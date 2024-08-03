@@ -1,5 +1,7 @@
-import { isTokenDelim, isTokenIdent, TokenDelim } from '@csstools/css-tokenizer';
-import { CSSToken, stringify, TokenIdent, TokenType } from '@csstools/css-tokenizer';
+import type { TokenDelim } from '@csstools/css-tokenizer';
+import { isTokenDelim, isTokenIdent } from '@csstools/css-tokenizer';
+import type { CSSToken, TokenIdent} from '@csstools/css-tokenizer';
+import { stringify, TokenType } from '@csstools/css-tokenizer';
 
 export class LayerName {
 	parts: Array<CSSToken>;

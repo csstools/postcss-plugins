@@ -1,5 +1,5 @@
 import { cloneTokens, stringify } from '@csstools/css-tokenizer';
-import { MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
+import type { MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 import { parseFromTokens } from '../parser/parse';
 import { isMediaQueryInvalid, isMediaQueryWithoutType, isMediaQueryWithType } from './type-predicates';
 

@@ -1,5 +1,5 @@
 import { calc } from '@csstools/css-calc';
-import assert from 'assert';
+import assert from 'node:assert';
 
 assert.strictEqual(
 	calc('clamp(10px, 20px, 30px)'),

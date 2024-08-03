@@ -1,6 +1,7 @@
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, tokenizer, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { tokenizer, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
 /**

@@ -1,6 +1,8 @@
-import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
-import { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
-import { Calculation } from '../calculation';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
+import type { FunctionNode} from '@csstools/css-parser-algorithms';
+import { TokenNode } from '@csstools/css-parser-algorithms';
+import type { Calculation } from '../calculation';
 import { unary } from '../operation/unary';
 
 export function resultToCalculation(node: FunctionNode, aToken: CSSToken, result: number): Calculation | -1 {

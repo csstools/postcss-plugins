@@ -3,7 +3,7 @@ import type { Nesting } from 'postcss-selector-parser';
 import { combinationsWithSizeN } from './combinations-of-size-n';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { nodesAreEquallySpecific } from './specificity';
-import { options } from '../options';
+import type { options } from '../options';
 
 export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options): Array<string> {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);

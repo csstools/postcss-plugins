@@ -1,5 +1,5 @@
 import { listModifiedWorkspaces } from './modified-workspaces.mjs';
-import { promises as fsp } from 'fs';
+import fs from 'node:fs/promises';
 
 const modifiedWorkspaces = await listModifiedWorkspaces();
 
@@ -27,7 +27,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 `;
 	}
 
-	await fsp.appendFile(
+	await fs.appendFile(
 		process.env.GITHUB_STEP_SUMMARY,
 		summary,
 	);

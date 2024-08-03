@@ -1,7 +1,7 @@
 import type { Declaration } from 'postcss';
 import { cloneDeclaration } from './clone-declaration';
 import { parseValueCouple } from '../utils/parse-value-couple';
-import { DirectionConfig } from './types';
+import type { DirectionConfig } from './types';
 
 export function transformBorder(
 	borderSetting: string,

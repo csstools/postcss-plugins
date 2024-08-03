@@ -1,4 +1,5 @@
-import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
+import type { ColorData} from '../color-data';
+import { convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';

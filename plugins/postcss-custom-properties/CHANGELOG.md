@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 13.3.12
 
 _July 6, 2024_

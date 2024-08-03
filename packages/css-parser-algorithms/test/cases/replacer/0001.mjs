@@ -1,5 +1,5 @@
 import { tokenize, TokenType } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import { CommentNode, replaceComponentValues, isCommentNode, parseCommaSeparatedListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
 
 const commentReplacer = (x) => {

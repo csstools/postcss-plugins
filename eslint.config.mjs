@@ -55,6 +55,8 @@ export default [
 			'no-empty': ['error', {
 				'allowEmptyCatch': true,
 			}],
+
+			'no-duplicate-imports': 'error',
 		},
 	},
 	{
@@ -101,6 +103,7 @@ export default [
 			'@typescript-eslint/explicit-function-return-type': 'error',
 			'@typescript-eslint/no-base-to-string': 'off',
 			'@typescript-eslint/no-non-null-assertion': 'error',
+			'@typescript-eslint/consistent-type-imports': 'error',
 		},
 	},
 ];

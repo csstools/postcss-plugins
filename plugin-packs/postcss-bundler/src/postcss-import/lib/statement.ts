@@ -1,5 +1,5 @@
 import type { AtRule, ChildNode, Warning } from 'postcss';
-import { Condition } from './conditions';
+import type { Condition } from './conditions';
 
 export type Stylesheet = {
 	charset?: AtRule;

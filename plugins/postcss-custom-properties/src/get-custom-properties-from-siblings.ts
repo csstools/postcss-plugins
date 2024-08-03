@@ -1,5 +1,5 @@
 import type { Declaration } from 'postcss';
-import valuesParser from 'postcss-value-parser';
+import type valuesParser from 'postcss-value-parser';
 
 import { buildCustomPropertiesMap } from './build-custom-properties-map';
 import { isDeclarationIgnored } from './is-ignored';

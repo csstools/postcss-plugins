@@ -1,5 +1,5 @@
 import { featureIsInsertedOrHasAPlugin } from '../../lib/feature-is-inserted-or-has-plugin.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { insertAfterKey, insertBeforeKey } from '../../own-keys/keys.mjs';
 
 // regular features

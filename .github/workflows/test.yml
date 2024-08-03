@@ -15,12 +15,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      # Test node 14/16/18/20/22 on ubuntu
-      # Test node 20 on macos/windows
-      # Enable annotations only for node 20 + ubuntu
+      # Test node 18/20/22 on ubuntu
+      # Test node 22 on macos/windows
+      # Enable annotations only for node 22 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [16, 18, 20, 22]
+        node: [18, 20, 22]
         include:
         - os: macos-latest
           node: 22
@@ -41,10 +41,7 @@ jobs:
       - name: npm ci
         run: |
           npm ci
-        env:
-          BROWSER_TESTS: true
         if: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
-
       - name: npm ci
         run: |
           NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
@@ -64,10 +61,8 @@ jobs:
         run: |
           npm run build --if-present $MODIFIED_WORKSPACES
         if: matrix.is_base_node_version && matrix.is_base_os_version
-
-      - name: docs
-        run: npm run docs
-        if: matrix.is_base_node_version && matrix.is_base_os_version
+        env:
+          NODE_COMPILE_CACHE: '.cache/v8'
 
       - name: repo is clean after "build", "lint" and "docs" steps
         run: |
@@ -77,6 +72,7 @@ jobs:
       - name: test
         run: npm run test --if-present $MODIFIED_WORKSPACES
         env:
+          BROWSER_TESTS: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
 
@@ -84,7 +80,7 @@ jobs:
         # running "npm install" places the cli in node_modules/bin
       - name: test:cli
         run: |
-          NPM_CONFIG_ENGINE_STRICT=false npm install --ignore-scripts
+          NPM_CONFIG_ENGINE_STRICT=false npm ci --ignore-scripts
           npm run test:cli --if-present $MODIFIED_WORKSPACES
 
         # E2E Tests

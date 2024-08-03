@@ -11,14 +11,20 @@ import type { Color } from '../types/color';
  * @see https://en.wikipedia.org/wiki/SRGB
  */
 export function gam_sRGB(RGB: Color): Color {
-	return RGB.map(function (val) {
-		const sign = val < 0 ? -1 : 1;
-		const abs = Math.abs(val);
+	return [
+		gam_sRGB_channel(RGB[0]),
+		gam_sRGB_channel(RGB[1]),
+		gam_sRGB_channel(RGB[2]),
+	]
+}
 
-		if (abs > 0.0031308) {
-			return sign * (1.055 * Math.pow(abs, 1 / 2.4) - 0.055);
-		}
+function gam_sRGB_channel(val: number): number {
+	const sign = val < 0 ? -1 : 1;
+	const abs = Math.abs(val);
 
-		return 12.92 * val;
-	}) as Color;
+	if (abs > 0.0031308) {
+		return sign * (1.055 * Math.pow(abs, 1 / 2.4) - 0.055);
+	}
+
+	return 12.92 * val;
 }

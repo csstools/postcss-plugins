@@ -1,4 +1,4 @@
-import { CSSToken } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
 import { ParseError } from '@csstools/css-tokenizer';
 
 export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): void;

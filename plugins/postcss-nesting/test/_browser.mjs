@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
-import http from 'http';
-import { promises as fsp } from 'fs';
+import http from 'node:http';
+import fs from 'node:fs/promises';
 import plugin from 'postcss-nesting';
 import postcss from 'postcss';
 import test from 'node:test';
@@ -41,7 +41,7 @@ const requestListener = async function (req, res) {
 		case '/wpt/nesting-basics.html':
 			res.setHeader('Content-type', 'text/html');
 			res.writeHead(200);
-			res.end(await fsp.readFile('test' + pathname, 'utf8'));
+			res.end(await fs.readFile('test' + pathname, 'utf8'));
 			break;
 		case '/test/styles.css':
 			if (req.method === 'POST') {
@@ -93,30 +93,32 @@ if (!process.env.DEBUG) {
 			headless: 'new',
 		});
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
-
-		for (const url of [
-			'wpt/conditional.html',
-			'wpt/implicit-nesting.html',
-			'wpt/nest-containing.html',
-			'wpt/nesting-basics.html',
-		]) {
-			await page.goto('http://localhost:8080/' + url);
-			const result = await page.evaluate(async () => {
-				// eslint-disable-next-line no-undef
-				return await window.runTest();
+		try {
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
 			});
-			if (!result) {
-				throw new Error('Test failed, expected "window.runTest()" to return true');
+
+			for (const url of [
+				'wpt/conditional.html',
+				'wpt/implicit-nesting.html',
+				'wpt/nest-containing.html',
+				'wpt/nesting-basics.html',
+			]) {
+				await page.goto('http://localhost:8080/' + url);
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
 			}
+		} finally {
+			await browser.close();
+
+			await cleanup();
 		}
-
-		await browser.close();
-
-		await cleanup();
 	});
 } else {
 	startServers();

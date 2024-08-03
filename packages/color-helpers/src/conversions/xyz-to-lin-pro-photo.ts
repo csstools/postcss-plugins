@@ -1,7 +1,8 @@
 /* eslint-disable no-loss-of-precision */
 
 import type { Color } from '../types/color';
-import { Matrix, multiplyMatrices } from '../calculations/multiply-matrices';
+import type { Matrix} from '../calculations/multiply-matrices';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 const M: Matrix = [
 	1.34578688164715830, -0.25557208737979464, -0.05110186497554526,

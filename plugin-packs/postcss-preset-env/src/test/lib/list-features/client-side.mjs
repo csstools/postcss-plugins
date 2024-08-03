@@ -1,5 +1,5 @@
 import { logsContainEnabledFor, newTestLogger } from '../../log/test-logger.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { listFeatures } from '../../../lib/list-features.mjs';
 import { cssdb } from './cssdb-fixture.mjs';
 

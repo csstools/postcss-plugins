@@ -2,7 +2,7 @@ import type { Declaration, Postcss } from 'postcss';
 import type { Node } from 'postcss-value-parser';
 import valueParser from 'postcss-value-parser';
 import { cloneDeclaration } from './clone-declaration';
-import { TransformFunction } from './types';
+import type { TransformFunction } from './types';
 
 export function transformTransition(declaration: Declaration, postcss: Postcss, transforms: Record<string, TransformFunction|null>): Array<Declaration> {
 	const { prop, value } = declaration;

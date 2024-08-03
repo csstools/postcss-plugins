@@ -1,4 +1,5 @@
-import { ComponentValue, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { isTokenIdent } from '@csstools/css-tokenizer';
 
 const CONTRAST_COLOR_NAME_REGEX = /^contrast-color$/i;

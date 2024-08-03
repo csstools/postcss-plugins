@@ -1,5 +1,6 @@
 import type { Document, Root } from 'postcss';
-import { Stylesheet, isImportStatement, isNodesStatement } from './statement';
+import type { Stylesheet} from './statement';
+import { isImportStatement, isNodesStatement } from './statement';
 
 export function applyStyles(stylesheet: Stylesheet, styles: Root | Document): void {
 	styles.nodes = [];

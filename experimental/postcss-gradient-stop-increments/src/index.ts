@@ -1,4 +1,5 @@
-import { ComponentValue, replaceComponentValues, stringify, TokenNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { replaceComponentValues, stringify, TokenNode } from '@csstools/css-parser-algorithms';
 import type { PluginCreator } from 'postcss';
 import { FunctionNode, isCommentNode, isTokenNode, WhitespaceNode, isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { calcFromComponentValues } from '@csstools/css-calc';

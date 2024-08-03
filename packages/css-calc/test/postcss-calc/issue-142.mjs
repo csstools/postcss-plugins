@@ -1,5 +1,5 @@
 import { calc } from '@csstools/css-calc';
-import assert from 'assert';
+import assert from 'node:assert';
 
 assert.strictEqual(
 	calc('0 calc(var(--my-var) * -1) 0 0'),

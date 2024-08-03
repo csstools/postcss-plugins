@@ -1,6 +1,6 @@
 import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { DirectionConfig } from './types';
+import type { DirectionConfig } from './types';
 import { cloneDeclaration } from './clone-declaration';
 
 export function transformResize(

@@ -1,5 +1,6 @@
 import type { ColorData } from '../color-data';
-import { CSSToken, NumberType, TokenType, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
 

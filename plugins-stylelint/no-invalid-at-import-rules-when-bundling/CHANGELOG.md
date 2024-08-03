@@ -1,7 +1,8 @@
 # Changelog
 
-### Unreleased (patch)
+### Unreleased (major)
 
+- Updated: Support for Node v18+ (major).
 - Fix `files` field in `package.json`
 
 ### 2.0.7

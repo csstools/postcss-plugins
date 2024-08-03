@@ -1,4 +1,4 @@
-import { TokenTransformOptions } from '../../base/token';
+import type { TokenTransformOptions } from '../../base/token';
 import valueParser from 'postcss-value-parser';
 
 export type StyleDictionaryV3TokenValue = {

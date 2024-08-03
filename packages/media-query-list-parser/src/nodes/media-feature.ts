@@ -1,9 +1,13 @@
-import { SimpleBlockNode, TokenNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { CSSToken, mutateIdent, stringify, TokenType } from '@csstools/css-tokenizer';
+import type { SimpleBlockNode} from '@csstools/css-parser-algorithms';
+import { TokenNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { mutateIdent, stringify, TokenType } from '@csstools/css-tokenizer';
 import { MediaFeatureBoolean, parseMediaFeatureBoolean } from './media-feature-boolean';
 import { MediaFeatureName } from './media-feature-name';
-import { MediaFeaturePlain, MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent, parseMediaFeaturePlain } from './media-feature-plain';
-import { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent, parseMediaFeatureRange } from './media-feature-range';
+import type { MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent} from './media-feature-plain';
+import { MediaFeaturePlain, parseMediaFeaturePlain } from './media-feature-plain';
+import type { MediaFeatureRange, MediaFeatureRangeWalkerEntry, MediaFeatureRangeWalkerParent} from './media-feature-range';
+import { parseMediaFeatureRange } from './media-feature-range';
 import { MediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
 import { isTokenOpenParen } from '@csstools/css-tokenizer';

@@ -5,7 +5,7 @@ export default creator;
 
 /** postcss-nesting plugin options */
 export declare type pluginOptions = {
-    /** The implementation edition for CSS Nesting, default to '2021' */
+    /** The implementation edition for CSS Nesting, default to '2024-02' */
     edition?: '2021' | '2024-02';
 } & pluginOptions2021 & pluginOptions2024_02;
 

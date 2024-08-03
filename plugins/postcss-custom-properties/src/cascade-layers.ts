@@ -1,5 +1,6 @@
 import type { AtRule, Container, Document, Node, Root } from 'postcss';
-import { LayerName, parse as parseCascadeLayerNames, addLayerToModel } from '@csstools/cascade-layer-name-parser';
+import type { LayerName} from '@csstools/cascade-layer-name-parser';
+import { parse as parseCascadeLayerNames, addLayerToModel } from '@csstools/cascade-layer-name-parser';
 
 const implicitLayerNameForCloning = parseCascadeLayerNames('csstools-implicit-layer')[0];
 

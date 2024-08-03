@@ -10,12 +10,14 @@ import { consumeHashToken } from './consume/hash-token';
 import { consumeIdentSequence } from './consume/ident-sequence';
 import { consumeNumericToken } from './consume/numeric-token';
 import { consumeWhiteSpace } from './consume/whitespace-token';
-import { CSSToken, TokenType } from './interfaces/token';
+import type { CSSToken} from './interfaces/token';
+import { TokenType } from './interfaces/token';
 import { Reader } from './reader';
 import { consumeStringToken } from './consume/string-token';
 import { consumeIdentLikeToken } from './consume/ident-like-token';
 import { checkIfTwoCodePointsAreAValidEscape } from './checks/two-code-points-are-valid-escape';
-import { ParseError, ParseErrorMessage, ParseErrorWithToken } from './interfaces/error';
+import type { ParseError} from './interfaces/error';
+import { ParseErrorMessage, ParseErrorWithToken } from './interfaces/error';
 import { checkIfThreeCodePointsWouldStartAUnicodeRange } from './checks/three-code-points-would-start-unicode-range';
 import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 
@@ -76,14 +78,14 @@ export function tokenizer(
 	};
 
 	function endOfFile(): boolean {
-		return reader.codePointSource[reader.cursor] === undefined;
+		return typeof reader.source.codePointAt(reader.cursor) === "undefined";
 	}
 
 	function nextToken(): CSSToken | undefined {
 		reader.resetRepresentation();
 
-		const peeked = reader.codePointSource[reader.cursor];
-		if (peeked === undefined) {
+		const peeked = reader.source.codePointAt(reader.cursor);
+		if (typeof peeked === "undefined") {
 			return [TokenType.EOF, '', -1, -1, undefined];
 		}
 

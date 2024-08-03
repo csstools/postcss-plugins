@@ -1,6 +1,7 @@
 import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
-import { FunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
+import type { FunctionNode} from '@csstools/css-parser-algorithms';
+import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { normalize_legacy_sRGB_ChannelValues, normalize_modern_sRGB_ChannelValues } from './rgb-normalize-channel-values';

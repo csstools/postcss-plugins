@@ -10,15 +10,23 @@ import type { Color } from '../types/color';
  */
 export function gam_ProPhoto(RGB: Color): Color {
 	// TODO for negative values, extend linear portion on reflection of axis, then add pow below that
-	const Et = 1 / 512;
-	return RGB.map(function (val) {
-		const sign = val < 0 ? -1 : 1;
-		const abs = Math.abs(val);
 
-		if (abs >= Et) {
-			return sign * Math.pow(abs, 1 / 1.8);
-		}
+	return [
+		gam_ProPhoto_channel(RGB[0]),
+		gam_ProPhoto_channel(RGB[1]),
+		gam_ProPhoto_channel(RGB[2]),
+	];
+}
 
-		return 16 * val;
-	}) as Color;
+const Et = 1 / 512;
+
+function gam_ProPhoto_channel(val: number): number {
+	const sign = val < 0 ? -1 : 1;
+	const abs = Math.abs(val);
+
+	if (abs >= Et) {
+		return sign * Math.pow(abs, 1 / 1.8);
+	}
+
+	return 16 * val;
 }

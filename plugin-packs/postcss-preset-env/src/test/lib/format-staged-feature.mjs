@@ -1,13 +1,12 @@
 import browserslist from 'browserslist';
 import { formatStagedFeature } from '../../lib/format-feature.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { newTestLogger } from '../log/test-logger.mjs';
 
 const testLogger = newTestLogger();
 
 assert.deepStrictEqual(
 	formatStagedFeature(
-		[],
 		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{},
 		{
@@ -40,7 +39,6 @@ assert.deepStrictEqual(
 
 assert.deepStrictEqual(
 	formatStagedFeature(
-		[],
 		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{
 			'any-link-pseudo-class': true,
@@ -75,7 +73,6 @@ assert.deepStrictEqual(
 
 assert.deepStrictEqual(
 	formatStagedFeature(
-		[],
 		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{
 			'any-link-pseudo-class': true,
@@ -113,7 +110,6 @@ assert.deepStrictEqual(
 
 assert.deepStrictEqual(
 	formatStagedFeature(
-		[],
 		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{},
 		{
@@ -150,7 +146,6 @@ assert.deepStrictEqual(
 // Logical does not get passed to a non-logical plugin
 assert.deepStrictEqual(
 	formatStagedFeature(
-		[],
 		browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 		{},
 		{
@@ -203,7 +198,6 @@ assert.deepStrictEqual(
 	for (const plugin of logicalPlugins) {
 		assert.deepStrictEqual(
 			formatStagedFeature(
-				[],
 				browserslist(['ie >= 1'], { ignoreUnknownVersions: true }),
 				{},
 				{

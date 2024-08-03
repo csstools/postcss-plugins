@@ -1,5 +1,9 @@
 # Changes to PostCSS Stepped Value Functions
 
+### Unreleased (major)
+
+- Updated: Support for Node v18+ (major).
+
 ### 3.0.10
 
 _July 6, 2024_
