@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (major)
+### 10.0.0
+
+_August 3, 2024_
 
 Read more about the specific changes on our [wiki](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-10)
 
