@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/utilities",
 	"description": "Utilities for PostCSS plugins",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
