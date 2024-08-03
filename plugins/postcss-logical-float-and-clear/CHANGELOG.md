@@ -1,6 +1,8 @@
 # Changes to PostCSS Logical Float And Clear
 
-### Unreleased (major)
+### 3.0.0
+
+_August 3, 2024_
 
 - Updated: Support for Node v18+ (major).
 
