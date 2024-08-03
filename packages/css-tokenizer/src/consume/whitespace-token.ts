@@ -4,7 +4,7 @@ import type { TokenWhitespace } from '../interfaces/token';
 import { TokenType } from '../interfaces/token';
 
 export function consumeWhiteSpace(reader: CodePointReader): TokenWhitespace {
-	while (isWhitespace(reader.codePointSource[reader.cursor])) {
+	while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
 		reader.advanceCodePoint();
 	}
 

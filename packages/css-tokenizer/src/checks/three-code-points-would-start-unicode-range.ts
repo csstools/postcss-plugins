@@ -7,15 +7,15 @@ export function checkIfThreeCodePointsWouldStartAUnicodeRange(reader: CodePointR
 	if (
 		// The first code point is either U+0055 LATIN CAPITAL LETTER U (U) or U+0075 LATIN SMALL LETTER U (u)
 		(
-			reader.codePointSource[reader.cursor] === LATIN_SMALL_LETTER_U ||
-			reader.codePointSource[reader.cursor] === LATIN_CAPITAL_LETTER_U
+			reader.source.codePointAt(reader.cursor) === LATIN_SMALL_LETTER_U ||
+			reader.source.codePointAt(reader.cursor) === LATIN_CAPITAL_LETTER_U
 		) &&
 		// The second code point is U+002B PLUS SIGN (+).
-		reader.codePointSource[reader.cursor + 1] === PLUS_SIGN &&
+		reader.source.codePointAt(reader.cursor + 1) === PLUS_SIGN &&
 		// The third code point is either U+003F QUESTION MARK (?) or a hex digit
 		(
-			reader.codePointSource[reader.cursor + 2] === QUESTION_MARK ||
-			isHexDigitCodePoint(reader.codePointSource[reader.cursor + 2])
+			reader.source.codePointAt(reader.cursor + 2) === QUESTION_MARK ||
+			isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 2))
 		)
 	) {
 		// then return true.

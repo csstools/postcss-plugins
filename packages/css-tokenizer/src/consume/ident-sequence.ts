@@ -9,9 +9,10 @@ export function consumeIdentSequence(ctx: Context, reader: CodePointReader): Arr
 	const result: Array<number> = [];
 
 	while (true) {
-		if (isIdentCodePoint(reader.codePointSource[reader.cursor])) {
-			result.push(reader.codePointSource[reader.cursor]);
-			reader.advanceCodePoint();
+		const codePoint = reader.source.codePointAt(reader.cursor);
+		if (isIdentCodePoint(codePoint)) {
+			result.push(codePoint);
+			reader.advanceCodePoint(1 + +(codePoint > 0xffff));
 			continue;
 		}
 

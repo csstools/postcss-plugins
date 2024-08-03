@@ -11,14 +11,14 @@ import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-url-token
 export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL|TokenBadURL {
-	while (isWhitespace(reader.codePointSource[reader.cursor])) {
+	while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
 		reader.advanceCodePoint();
 	}
 
 	let string = '';
 
 	while (true) {
-		if (reader.codePointSource[reader.cursor] === undefined) {
+		if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
 			const token: CSSToken = [
 				TokenType.URL,
 				reader.source.slice(reader.representationStart, reader.representationEnd + 1),
@@ -43,7 +43,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return token;
 		}
 
-		if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
+		if (reader.source.codePointAt(reader.cursor) === RIGHT_PARENTHESIS) {
 			reader.advanceCodePoint();
 			return [
 				TokenType.URL,
@@ -56,13 +56,13 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (isWhitespace(reader.codePointSource[reader.cursor])) {
+		if (isWhitespace(reader.source.codePointAt(reader.cursor))) {
 			reader.advanceCodePoint();
-			while (isWhitespace(reader.codePointSource[reader.cursor])) {
+			while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
 				reader.advanceCodePoint();
 			}
 
-			if (reader.codePointSource[reader.cursor] === undefined) {
+			if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
 				const token: CSSToken = [
 					TokenType.URL,
 					reader.source.slice(reader.representationStart, reader.representationEnd + 1),
@@ -88,7 +88,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				return token;
 			}
 
-			if (reader.codePointSource[reader.cursor] === RIGHT_PARENTHESIS) {
+			if (reader.source.codePointAt(reader.cursor) === RIGHT_PARENTHESIS) {
 				reader.advanceCodePoint();
 				return [
 					TokenType.URL,
@@ -111,7 +111,8 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (reader.codePointSource[reader.cursor] === QUOTATION_MARK || reader.codePointSource[reader.cursor] === APOSTROPHE || reader.codePointSource[reader.cursor] === LEFT_PARENTHESIS || isNonPrintableCodePoint(reader.codePointSource[reader.cursor])) {
+		const codePoint = reader.source.codePointAt(reader.cursor);
+		if (codePoint === QUOTATION_MARK || codePoint === APOSTROPHE || codePoint === LEFT_PARENTHESIS || isNonPrintableCodePoint(codePoint)) {
 			consumeBadURL(ctx, reader);
 
 			const token: CSSToken = [
@@ -136,7 +137,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return token;
 		}
 
-		if (reader.codePointSource[reader.cursor] === REVERSE_SOLIDUS) {
+		if (codePoint === REVERSE_SOLIDUS) {
 			if (checkIfTwoCodePointsAreAValidEscape(reader)) {
 				reader.advanceCodePoint();
 				string = string + String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
@@ -168,7 +169,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return token;
 		}
 
-		string = string + String.fromCodePoint(reader.codePointSource[reader.cursor]);
+		string = string + reader.source[reader.cursor];
 		reader.advanceCodePoint();
 	}
 }

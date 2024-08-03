@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Updated: Support for Node v18+ (major).
+- Improve performance.
 
 ### 2.4.1
 

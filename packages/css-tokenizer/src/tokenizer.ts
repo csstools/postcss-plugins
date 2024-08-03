@@ -78,14 +78,14 @@ export function tokenizer(
 	};
 
 	function endOfFile(): boolean {
-		return reader.codePointSource[reader.cursor] === undefined;
+		return typeof reader.source.codePointAt(reader.cursor) === "undefined";
 	}
 
 	function nextToken(): CSSToken | undefined {
 		reader.resetRepresentation();
 
-		const peeked = reader.codePointSource[reader.cursor];
-		if (peeked === undefined) {
+		const peeked = reader.source.codePointAt(reader.cursor);
+		if (typeof peeked === "undefined") {
 			return [TokenType.EOF, '', -1, -1, undefined];
 		}
 

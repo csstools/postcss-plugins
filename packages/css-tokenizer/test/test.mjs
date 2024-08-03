@@ -1,6 +1,3 @@
-// Reader
-import './test-reader.mjs';
-
 // Code points
 import './code-points/code-points.mjs';
 import './code-points/ranges.mjs';

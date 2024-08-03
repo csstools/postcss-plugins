@@ -29,9 +29,7 @@
  *
  * @packageDocumentation
  */
-export type { CodePointReader } from './interfaces/code-point-reader';
 export { ParseError, ParseErrorWithToken, ParseErrorMessage } from './interfaces/error';
-export { Reader } from './reader';
 export { cloneTokens } from './util/clone-tokens';
 export { stringify } from './stringify';
 export { tokenize, tokenizer } from './tokenizer';
