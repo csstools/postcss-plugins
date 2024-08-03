@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-has-pseudo-experimental",
 	"description": "EXPERIMENTAL : Style elements relative to other elements in CSS",
-	"version": "0.6.1",
+	"version": "1.0.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "CC0-1.0",
 	"funding": [
