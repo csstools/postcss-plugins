@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (major)
+### 4.0.0
+
+_August 3, 2024_
 
 - Updated: Support for Node v18+ (major).
 - Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`5.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#500) (major)
