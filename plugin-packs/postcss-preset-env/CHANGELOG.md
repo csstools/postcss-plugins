@@ -2,6 +2,8 @@
 
 ### Unreleased (major)
 
+Read more about the specific changes on our [wiki](https://github.com/csstools/postcss-plugins/wiki/PostCSS-Preset-Env-10)
+
 - Updated: Support for Node v18+ (major).
 
 ### 9.6.0
