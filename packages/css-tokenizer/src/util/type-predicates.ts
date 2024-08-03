@@ -1,4 +1,5 @@
-import { CSSToken, NumericToken, TokenAtKeyword, TokenBadString, TokenBadURL, TokenCDC, TokenCDO, TokenCloseCurly, TokenCloseParen, TokenCloseSquare, TokenColon, TokenComma, TokenComment, TokenDelim, TokenDimension, TokenEOF, TokenFunction, TokenHash, TokenIdent, TokenNumber, TokenOpenCurly, TokenOpenParen, TokenOpenSquare, TokenPercentage, TokenSemicolon, TokenString, TokenType, TokenURL, TokenUnicodeRange, TokenWhitespace } from '../interfaces/token';
+import type { CSSToken, NumericToken, TokenAtKeyword, TokenBadString, TokenBadURL, TokenCDC, TokenCDO, TokenCloseCurly, TokenCloseParen, TokenCloseSquare, TokenColon, TokenComma, TokenComment, TokenDelim, TokenDimension, TokenEOF, TokenFunction, TokenHash, TokenIdent, TokenNumber, TokenOpenCurly, TokenOpenParen, TokenOpenSquare, TokenPercentage, TokenSemicolon, TokenString, TokenURL, TokenUnicodeRange, TokenWhitespace } from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 
 const tokenTypes = Object.values(TokenType);
 

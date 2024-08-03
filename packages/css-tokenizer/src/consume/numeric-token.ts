@@ -1,8 +1,9 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { HYPHEN_MINUS, PERCENTAGE_SIGN, PLUS_SIGN } from '../code-points/code-points';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-import { TokenDimension, TokenNumber, TokenPercentage, TokenType } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
+import type { TokenDimension, TokenNumber, TokenPercentage} from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 import { consumeNumber } from './number';
 

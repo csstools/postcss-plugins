@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import { dataURLContents, isValidDataURL } from './data-url';
 
 export async function loadContent(filename: string): Promise<string> {

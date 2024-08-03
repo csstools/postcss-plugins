@@ -1,7 +1,7 @@
-import { spawn } from 'child_process';
-import { platform } from 'process';
-import path from 'path';
-import fs from 'fs';
+import { spawn } from 'node:child_process';
+import { platform } from 'node:process';
+import path from 'node:path';
+import fs from 'node:fs';
 import { getFiles } from '../util/get-files.mjs';
 
 const packageJSONInfo = JSON.parse(fs.readFileSync('./package.json', 'utf8'));

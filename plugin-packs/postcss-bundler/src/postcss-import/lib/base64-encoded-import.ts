@@ -1,4 +1,4 @@
-import { Condition } from './conditions';
+import type { Condition } from './conditions';
 import { formatImportPrelude } from './format-import-prelude';
 
 // Base64 encode an import with conditions

@@ -1,5 +1,5 @@
 import type { Root } from 'postcss';
-import valuesParser from 'postcss-value-parser';
+import type valuesParser from 'postcss-value-parser';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isBlockIgnored, isDeclarationIgnored } from './is-ignored';
 import { HTML_SELECTOR_REGEX, HTML_WHERE_SELECTOR_REGEX, MAYBE_HTML_OR_ROOT_RULE_REGEX, ROOT_SELECTOR_REGEX, ROOT_WHERE_SELECTOR_REGEX, isProcessableRule } from './is-processable-rule';

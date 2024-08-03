@@ -1,5 +1,5 @@
-import type { TokenNumber } from '@csstools/css-tokenizer';
-import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenNumber } from '@csstools/css-tokenizer';
+import type { TokenNumber , CSSToken} from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, isTokenNumber } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalizeHue(token: CSSToken): TokenNumber | false {

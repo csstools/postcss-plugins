@@ -1,5 +1,5 @@
-import { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
-import { CSSToken } from '@csstools/css-tokenizer';
+import type { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
+import type { CSSToken } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 
 export class GeneralEnclosed {

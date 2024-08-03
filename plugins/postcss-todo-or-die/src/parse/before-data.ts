@@ -1,4 +1,5 @@
-import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { FunctionNode} from '@csstools/css-parser-algorithms';
+import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, isTokenNumber } from '@csstools/css-tokenizer';
 
 type BeforeDateCondition = {

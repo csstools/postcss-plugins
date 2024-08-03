@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { parse } from '@csstools/cascade-layer-name-parser';
 
 export function runTest(source, testPath, assertEqual, expectSuccess = true) {

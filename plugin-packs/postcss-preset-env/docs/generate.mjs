@@ -1,5 +1,5 @@
 import cssdb from 'cssdb';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 
 let featuresTable = '';
 

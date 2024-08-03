@@ -1,4 +1,5 @@
-import { CSSToken, TokenDimension, TokenNumber, TokenPercentage, isTokenDimension, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
+import type { CSSToken, TokenDimension, TokenNumber, TokenPercentage} from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
 import { toLowerCaseAZ } from './to-lower-case-a-z';
 
 export function isDimensionOrNumber(x: CSSToken): x is TokenDimension | TokenNumber {

@@ -1,4 +1,4 @@
-import { CodePointReader } from './interfaces/code-point-reader';
+import type { CodePointReader } from './interfaces/code-point-reader';
 
 /**
  * @internal

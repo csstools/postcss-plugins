@@ -1,5 +1,6 @@
 import type { Color } from '../types/color';
-import { Matrix, multiplyMatrices } from '../calculations/multiply-matrices';
+import type { Matrix} from '../calculations/multiply-matrices';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 const M: Matrix = [
 	0.955473421488075, -0.02309845494876471, 0.06325924320057072,

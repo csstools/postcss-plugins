@@ -1,6 +1,7 @@
 import type { Declaration } from 'postcss';
 import valueParser from 'postcss-value-parser';
-import { DirectionConfig, DirectionValues } from './types';
+import type { DirectionConfig} from './types';
+import { DirectionValues } from './types';
 import { logicalToPhysical } from '../utils/logical-to-physical';
 import { cloneDeclaration } from './clone-declaration';
 

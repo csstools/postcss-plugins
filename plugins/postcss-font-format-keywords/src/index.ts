@@ -1,5 +1,6 @@
 import type { AtRule, PluginCreator } from 'postcss';
-import valueParser, { StringNode } from 'postcss-value-parser';
+import type { StringNode } from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 import { hasFallback } from '@csstools/utilities';
 
 const keywords = [

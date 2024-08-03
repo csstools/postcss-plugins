@@ -1,7 +1,7 @@
 import { HYPHEN_MINUS, REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isIdentStartCodePoint, isNewLine } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { checkIfTwoCodePointsAreAValidEscape } from './two-code-points-are-valid-escape';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#would-start-an-identifier

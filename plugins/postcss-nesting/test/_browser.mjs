@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
-import http from 'http';
-import { promises as fsp } from 'fs';
+import http from 'node:http';
+import fs from 'node:fs/promises';
 import plugin from 'postcss-nesting';
 import postcss from 'postcss';
 import test from 'node:test';
@@ -41,7 +41,7 @@ const requestListener = async function (req, res) {
 		case '/wpt/nesting-basics.html':
 			res.setHeader('Content-type', 'text/html');
 			res.writeHead(200);
-			res.end(await fsp.readFile('test' + pathname, 'utf8'));
+			res.end(await fs.readFile('test' + pathname, 'utf8'));
 			break;
 		case '/test/styles.css':
 			if (req.method === 'POST') {

@@ -1,4 +1,4 @@
-import { MediaQuery } from '@csstools/media-query-list-parser';
+import type { MediaQuery } from '@csstools/media-query-list-parser';
 import type { Plugin, PluginCreator } from 'postcss';
 import getCustomMedia from './custom-media-from-root';
 import { transformAtMediaListTokens } from './transform-at-media/transform-at-media';

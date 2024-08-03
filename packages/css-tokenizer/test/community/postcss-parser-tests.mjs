@@ -1,5 +1,5 @@
 import { eachTest } from 'postcss-parser-tests';
-import assert from 'assert';
+import assert from 'node:assert';
 import { tokenizer, stringify, TokenType } from '@csstools/css-tokenizer';
 
 eachTest((name, css) => {

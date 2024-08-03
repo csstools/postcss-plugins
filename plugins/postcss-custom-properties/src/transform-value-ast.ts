@@ -1,4 +1,5 @@
-import valuesParser, { Node } from 'postcss-value-parser';
+import type { Node } from 'postcss-value-parser';
+import valuesParser from 'postcss-value-parser';
 
 import { isVarFunction } from './is-var-function';
 import { parseVarFunction } from './parse-var-function';

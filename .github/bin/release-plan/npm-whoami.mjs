@@ -1,5 +1,5 @@
-import { spawn } from 'child_process';
-import { platform } from 'process';
+import { spawn } from 'node:child_process';
+import { platform } from 'node:process';
 
 export async function whoami() {
 	return await new Promise((resolve, reject) => {

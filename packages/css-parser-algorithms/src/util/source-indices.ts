@@ -1,4 +1,4 @@
-import { CSSToken } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
 
 /**
  * Returns the start and end index of a node in the CSS source string.

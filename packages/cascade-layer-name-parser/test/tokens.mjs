@@ -1,5 +1,5 @@
 import { parse } from '@csstools/cascade-layer-name-parser';
-import assert from 'assert';
+import assert from 'node:assert';
 
 // The "tokens" function exists for API parity with other parser tools.
 // It's value is the same as "parts".

@@ -1,14 +1,14 @@
 import postcss from 'postcss';
 import type { Plugin } from 'postcss';
-import { Arguments } from './args';
-import { promises as fsp } from 'fs';
+import type { Arguments } from './args';
+import fs from 'node:fs/promises';
 
 // Read from one or more files and write to stdout
 export async function fsToStdout(plugin: Plugin, argo: Arguments): Promise<never> {
 	let allCss: Array<string> = [];
 	try {
 		allCss = await Promise.all(argo.inputs.map(async (input) => {
-			const css = await fsp.readFile(input);
+			const css = await fs.readFile(input);
 			const result = await postcss([plugin]).process(css, {
 				from: input,
 				to: 'stdout',

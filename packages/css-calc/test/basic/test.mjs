@@ -1,6 +1,6 @@
 import { calc } from '@csstools/css-calc';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 
 assert.strictEqual(
 	calc('calc(10 * 2)'),

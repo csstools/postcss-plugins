@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import { runTest } from '../../util/run-test.mjs';
 
 runTest(

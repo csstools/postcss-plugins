@@ -98,8 +98,8 @@ function rayTraceBox(start: Color, end: Color): Color | false {
 	}
 
 	return [
-		start[0] + direction[0] * tnear,
-		start[1] + direction[1] * tnear,
-		start[2] + direction[2] * tnear,
+		start[0] + (direction[0] * tnear),
+		start[1] + (direction[1] * tnear),
+		start[2] + (direction[2] * tnear),
 	];
 }

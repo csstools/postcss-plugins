@@ -1,7 +1,7 @@
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 import postcssTokenizer from 'postcss/lib/tokenize';
-import assert from 'assert';
-import fs from 'fs';
+import assert from 'node:assert';
+import fs from 'node:fs';
 
 const bootstrapSource = fs.readFileSync('./test/community/bootstrap.css').toString();
 const openPropsSource = fs.readFileSync('./test/community/open-props.css').toString();

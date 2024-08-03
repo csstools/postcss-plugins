@@ -1,7 +1,8 @@
 import { alwaysTrue, neverTrue } from './always-true-or-false';
-import {
+import type {
 	MediaFeature,
-	MediaQuery,
+	MediaQuery} from '@csstools/media-query-list-parser';
+import {
 	isGeneralEnclosed,
 	isMediaAnd,
 	isMediaConditionList,

@@ -1,5 +1,5 @@
-import { mapGamutRayTrace } from '@csstools/color-helpers';
-import { clip, XYZ_D50_to_OKLCH, OKLCH_to_OKLab, XYZ_to_lin_P3, gam_P3, XYZ_to_OKLab, OKLab_to_OKLCH, lin_P3_to_XYZ, OKLab_to_XYZ, XYZ_D50_to_P3, inGamut, Color } from '@csstools/color-helpers';
+import type { Color } from '@csstools/color-helpers';
+import { mapGamutRayTrace, clip, XYZ_D50_to_OKLCH, OKLCH_to_OKLab, XYZ_to_lin_P3, gam_P3, XYZ_to_OKLab, OKLab_to_OKLCH, lin_P3_to_XYZ, OKLab_to_XYZ, XYZ_D50_to_P3, inGamut } from '@csstools/color-helpers';
 
 export function XYZ_D50_to_P3_Gamut(color: Color): Color {
 	const p3 = XYZ_D50_to_P3(color);

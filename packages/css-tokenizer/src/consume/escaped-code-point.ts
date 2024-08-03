@@ -1,7 +1,7 @@
 import { MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
 import { isHexDigitCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { ParseError, ParseErrorMessage } from '../interfaces/error';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-escaped-code-point

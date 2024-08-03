@@ -1,9 +1,10 @@
 import { CARRIAGE_RETURN, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
 import { isNewLine } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
-import { CSSToken, TokenBadString, TokenString, TokenType } from '../interfaces/token';
+import type { CSSToken, TokenBadString, TokenString} from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-string-token

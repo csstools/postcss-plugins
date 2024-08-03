@@ -1,4 +1,4 @@
-import { Color } from '../types/color';
+import type { Color } from '../types/color';
 
 export type Matrix = [
 	number, number, number,

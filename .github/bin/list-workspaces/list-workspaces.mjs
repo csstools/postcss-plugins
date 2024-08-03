@@ -1,11 +1,11 @@
-import path from 'path';
+import path from 'node:path';
 import { getFiles } from '../util/get-files.mjs';
-import fs, { promises as fsp } from 'fs';
+import fs from 'node:fs';
 import { toposort } from '../util/toposort.mjs';
 
 export async function listWorkspaces() {
 	try {
-		const rootPackageJSON = JSON.parse(await fsp.readFile('package.json'));
+		const rootPackageJSON = JSON.parse(await fs.promises.readFile('package.json'));
 		const workspaces = rootPackageJSON.workspaces;
 
 		const packages = new Set();
@@ -33,7 +33,7 @@ export async function listWorkspaces() {
 		const result = [];
 
 		for (const packageJSONPath of Array.from(packages)) {
-			const packageJSON = JSON.parse(await fsp.readFile(packageJSONPath));
+			const packageJSON = JSON.parse(await fs.promises.readFile(packageJSONPath));
 			const packagePath = path.relative(process.cwd(), path.dirname(packageJSONPath));
 
 			result.push({

@@ -1,7 +1,8 @@
 import type { ColorData } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
-import { Color, namedColors } from '@csstools/color-helpers';
+import type { Color} from '@csstools/color-helpers';
+import { namedColors } from '@csstools/color-helpers';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 const namedColorsMap: Map<string, Color> = new Map();

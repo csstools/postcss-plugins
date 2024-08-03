@@ -1,4 +1,4 @@
-import { CSSToken } from "./token";
+import type { CSSToken } from "./token";
 
 /**
  * The CSS Tokenizer is forgiving and will never throw on invalid input.

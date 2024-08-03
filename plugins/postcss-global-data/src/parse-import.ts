@@ -1,7 +1,7 @@
-import path from 'path';
-import fs from 'fs';
+import path from 'node:path';
+import fs from 'node:fs';
 import type { Helpers, Root } from 'postcss';
-import module from 'module';
+import module from 'node:module';
 
 export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>): Root|false {
 	let resolvedPath = '';

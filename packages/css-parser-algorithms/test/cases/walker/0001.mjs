@@ -1,5 +1,5 @@
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import { parseCommaSeparatedListOfComponentValues, isFunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
 
 const onParseError = (err) => {

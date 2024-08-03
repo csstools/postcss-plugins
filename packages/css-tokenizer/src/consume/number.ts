@@ -1,7 +1,7 @@
 import { FULL_STOP, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_E, LATIN_SMALL_LETTER_E, PLUS_SIGN } from '../code-points/code-points';
 import { isDigitCodePoint } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { NumberType } from '../interfaces/token';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-number

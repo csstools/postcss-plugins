@@ -1,5 +1,5 @@
 import type { Node, Plugin, PluginCreator } from 'postcss';
-import valuesParser from 'postcss-value-parser';
+import type valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
 import getCustomPropertiesFromSiblings from './get-custom-properties-from-siblings';

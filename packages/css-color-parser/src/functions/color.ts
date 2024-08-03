@@ -1,8 +1,11 @@
-import { ColorData, SyntaxFlag, colorDataTo, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import type { ColorData} from '../color-data';
+import { SyntaxFlag, colorDataTo, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import { ColorNotation } from '../color-notation';
-import { ComponentValue, FunctionNode, TokenNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenNumber, isTokenDelim, isTokenIdent, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
+import type { ComponentValue, FunctionNode} from '@csstools/css-parser-algorithms';
+import { TokenNode, isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { TokenNumber} from '@csstools/css-tokenizer';
+import { isTokenDelim, isTokenIdent, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
 import { normalize_Color_ChannelValues } from './color-normalize-channel-values';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';

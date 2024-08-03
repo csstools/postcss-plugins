@@ -1,5 +1,7 @@
-import { ComponentValue, ComponentValueType, ContainerNode, isTokenNode, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
+import type { ComponentValue, ContainerNode} from '@csstools/css-parser-algorithms';
+import { ComponentValueType, isTokenNode, walkerIndexGenerator } from '@csstools/css-parser-algorithms';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
 import { isDimension, isEnvironmentVariable, isIdent, isNumber } from '../util/component-value-is';
 import { NodeType } from '../util/node-type';
 import { isTokenDelim } from '@csstools/css-tokenizer';

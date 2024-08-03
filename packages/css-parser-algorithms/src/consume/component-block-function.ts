@@ -1,5 +1,6 @@
-import { CSSToken, mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, TokenFunction, ParseError, isTokenWhitespace, isTokenComment, isTokenOpenParen, isTokenOpenCurly, isTokenOpenSquare, isTokenFunction, isTokenCloseParen } from '@csstools/css-tokenizer';
-import { Context } from '../interfaces/context';
+import type { CSSToken, TokenFunction} from '@csstools/css-tokenizer';
+import { mirrorVariantType, mirrorVariant, stringify, TokenType, isToken, ParseError, isTokenWhitespace, isTokenComment, isTokenOpenParen, isTokenOpenCurly, isTokenOpenSquare, isTokenFunction, isTokenCloseParen } from '@csstools/css-tokenizer';
+import type { Context } from '../interfaces/context';
 import { ComponentValueType } from '../util/component-value-type';
 import { walkerIndexGenerator } from '../util/walker-index-generator';
 import { isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';

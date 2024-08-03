@@ -1,9 +1,10 @@
 import { checkIfThreeCodePointsWouldStartAnIdentSequence } from '../checks/three-code-points-would-start-ident-sequence';
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
 import { isIdentCodePoint } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-import { HashType, TokenDelim, TokenHash, TokenType } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
+import type { TokenDelim, TokenHash} from '../interfaces/token';
+import { HashType, TokenType } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token

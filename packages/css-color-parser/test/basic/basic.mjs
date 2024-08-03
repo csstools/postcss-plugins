@@ -1,5 +1,5 @@
 import { color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut } from '@csstools/css-color-parser';
-import assert from 'assert';
+import assert from 'node:assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_HSL_data, serialize_P3_data, serialize_sRGB_data } from '../util/serialize.mjs';
 

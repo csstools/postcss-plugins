@@ -1,6 +1,6 @@
 import browserslist from 'browserslist';
 import { formatStagedFeature } from '../../lib/format-feature.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { newTestLogger } from '../log/test-logger.mjs';
 
 const testLogger = newTestLogger();

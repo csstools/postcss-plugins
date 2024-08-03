@@ -1,4 +1,5 @@
-import { CSSToken, tokenizer, ParseError, TokenIdent, cloneTokens, isTokenWhiteSpaceOrComment, isTokenIdent, isTokenEOF } from '@csstools/css-tokenizer';
+import type { CSSToken, ParseError, TokenIdent} from '@csstools/css-tokenizer';
+import { tokenizer, cloneTokens, isTokenWhiteSpaceOrComment, isTokenIdent, isTokenEOF } from '@csstools/css-tokenizer';
 import { CustomMedia } from '../nodes/custom-media';
 import { parseFromTokens } from './parse';
 

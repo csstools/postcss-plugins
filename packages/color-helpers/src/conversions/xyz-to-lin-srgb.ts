@@ -1,5 +1,6 @@
 import type { Color } from '../types/color';
-import { Matrix, multiplyMatrices } from '../calculations/multiply-matrices';
+import type { Matrix} from '../calculations/multiply-matrices';
+import { multiplyMatrices } from '../calculations/multiply-matrices';
 
 const M: Matrix = [
 	12831 / 3959, -329 / 214, -1974 / 3959,

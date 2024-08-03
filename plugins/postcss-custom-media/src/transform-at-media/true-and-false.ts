@@ -1,5 +1,5 @@
-import { TokenType, TokenIdent, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
-import type { CSSToken } from '@csstools/css-tokenizer';
+import { TokenType, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
+import type { CSSToken , TokenIdent} from '@csstools/css-tokenizer';
 import { alwaysTrue, neverTrue } from './always-true-or-false';
 import { isTokenIdent } from '@csstools/css-tokenizer';
 

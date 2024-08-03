@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { browserJavascript } from './presets/browser-javascript.mjs';
 import { cliTypescript } from './presets/cli-typescript.mjs';
 import { packageJavascript } from './presets/package-javascript.mjs';

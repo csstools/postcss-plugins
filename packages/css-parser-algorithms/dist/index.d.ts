@@ -75,9 +75,9 @@
  * @packageDocumentation
  */
 
-import { CSSToken } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
 import { ParseError } from '@csstools/css-tokenizer';
-import { TokenFunction } from '@csstools/css-tokenizer';
+import type { TokenFunction } from '@csstools/css-tokenizer';
 
 export declare class CommentNode {
     /**

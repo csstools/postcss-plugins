@@ -1,4 +1,4 @@
-import { ComponentValue } from '@csstools/css-parser-algorithms';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import type { TokenDimension } from '@csstools/css-tokenizer';
 import type { TokenNumber } from '@csstools/css-tokenizer';
 import type { TokenPercentage } from '@csstools/css-tokenizer';

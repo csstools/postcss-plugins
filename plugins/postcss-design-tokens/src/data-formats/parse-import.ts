@@ -1,10 +1,10 @@
 import valueParser from 'postcss-value-parser';
-import { Token } from './base/token';
+import type { Token } from './base/token';
 import { extractStyleDictionaryTokens } from './style-dictionary/style-dictionary';
-import path from 'path';
-import { promises as fsp } from 'fs';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 import { DEFAULT_CONDITION } from '../constants';
-import module from 'module';
+import module from 'node:module';
 import type { Helpers, Root } from 'postcss';
 
 function parseImport(statement: string): { filePath: string, format: string, conditions: Array<string> } {
@@ -76,7 +76,7 @@ export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buil
 
 	alreadyImported.add(resolvedPath);
 
-	const fileContents = await fsp.readFile(resolvedPath, 'utf8');
+	const fileContents = await fs.readFile(resolvedPath, 'utf8');
 	const tokenContents: unknown = JSON.parse(fileContents);
 
 	switch (format) {

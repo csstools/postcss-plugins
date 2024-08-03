@@ -1,5 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
-import path from 'path';
+import path from 'node:path';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { addHashBang } from '../transforms/cli-hash-bang.mjs';

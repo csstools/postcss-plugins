@@ -1,6 +1,6 @@
 import type { Node, Result } from 'postcss';
-import path from 'path';
-import module from 'module';
+import path from 'node:path';
+import module from 'node:module';
 
 export function resolveId(node: Node, require: NodeRequire, id: string, base: string): string {
 	let resolvedPath = '';

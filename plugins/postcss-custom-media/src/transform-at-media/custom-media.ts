@@ -1,5 +1,7 @@
-import { cloneTokens, isTokenWhiteSpaceOrComment, stringify, TokenIdent } from '@csstools/css-tokenizer';
-import { parseFromTokens, MediaQuery } from '@csstools/media-query-list-parser';
+import type { TokenIdent } from '@csstools/css-tokenizer';
+import { cloneTokens, isTokenWhiteSpaceOrComment, stringify } from '@csstools/css-tokenizer';
+import type { MediaQuery } from '@csstools/media-query-list-parser';
+import { parseFromTokens } from '@csstools/media-query-list-parser';
 import { atMediaParamsTokens } from '../transform-at-media/at-media-params-tokens';
 import { replaceTrueAndFalseTokens } from './true-and-false';
 import { isTokenIdent } from '@csstools/css-tokenizer';

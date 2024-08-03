@@ -2,17 +2,20 @@ import { CustomMedia } from '../nodes/custom-media';
 import { GeneralEnclosed } from '../nodes/general-enclosed';
 import { MediaAnd } from '../nodes/media-and';
 import { MediaCondition } from '../nodes/media-condition';
-import { MediaConditionList, MediaConditionListWithAnd, MediaConditionListWithOr } from '../nodes/media-condition-list';
+import type { MediaConditionList} from '../nodes/media-condition-list';
+import { MediaConditionListWithAnd, MediaConditionListWithOr } from '../nodes/media-condition-list';
 import { MediaFeature } from '../nodes/media-feature';
 import { MediaFeatureBoolean } from '../nodes/media-feature-boolean';
 import { MediaFeatureName } from '../nodes/media-feature-name';
 import { MediaFeaturePlain } from '../nodes/media-feature-plain';
-import { MediaFeatureRange, MediaFeatureRangeNameValue, MediaFeatureRangeValueName, MediaFeatureRangeValueNameValue } from '../nodes/media-feature-range';
+import type { MediaFeatureRange} from '../nodes/media-feature-range';
+import { MediaFeatureRangeNameValue, MediaFeatureRangeValueName, MediaFeatureRangeValueNameValue } from '../nodes/media-feature-range';
 import { MediaFeatureValue } from '../nodes/media-feature-value';
 import { MediaInParens } from '../nodes/media-in-parens';
 import { MediaNot } from '../nodes/media-not';
 import { MediaOr } from '../nodes/media-or';
-import { MediaQuery, MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
+import type { MediaQuery} from '../nodes/media-query';
+import { MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 
 export function isCustomMedia(x: unknown): x is GeneralEnclosed {
 	return CustomMedia.isCustomMedia(x);

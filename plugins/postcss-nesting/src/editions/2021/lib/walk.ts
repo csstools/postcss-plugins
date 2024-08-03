@@ -4,7 +4,7 @@ import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-r
 import transformNestRuleWithinRule, { isValidNestRuleWithinRule } from './nest-rule-within-rule.js';
 import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-rule.js';
 import { isAtRule, isNestRule, isRule } from '../../shared/lib/is-type-of-rule.js';
-import { options } from './options.js';
+import type { options } from './options.js';
 
 export default function walk(node: Container, result: Result, opts: options): void {
 	node.each((child) => {

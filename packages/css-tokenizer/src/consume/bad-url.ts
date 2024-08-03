@@ -1,7 +1,7 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
 import { RIGHT_PARENTHESIS } from '../code-points/code-points';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-remnants-of-bad-url

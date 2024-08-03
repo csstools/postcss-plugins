@@ -1,8 +1,9 @@
 import { DIGIT_ZERO, HYPHEN_MINUS, LATIN_CAPITAL_LETTER_F, QUESTION_MARK } from '../code-points/code-points';
 import { isHexDigitCodePoint } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-import { TokenType, TokenUnicodeRange } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
+import type { TokenUnicodeRange } from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 
 // https://drafts.csswg.org/css-syntax/#starts-a-unicode-range
 export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader): TokenUnicodeRange {

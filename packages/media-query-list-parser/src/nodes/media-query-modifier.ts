@@ -1,4 +1,5 @@
-import { TokenIdent, isTokenIdent } from '@csstools/css-tokenizer';
+import type { TokenIdent} from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 
 export enum MediaQueryModifier {
 	Not = 'not',

@@ -1,5 +1,7 @@
-import { FunctionNode, isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { TokenDimension, TokenIdent, TokenNumber, TokenPercentage, TokenType, isTokenDelim } from '@csstools/css-tokenizer';
+import type { FunctionNode} from '@csstools/css-parser-algorithms';
+import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import type { TokenDimension, TokenIdent, TokenNumber, TokenPercentage} from '@csstools/css-tokenizer';
+import { TokenType, isTokenDelim } from '@csstools/css-tokenizer';
 
 const supportedTokenTypes = [TokenType.Ident, TokenType.Number, TokenType.Percentage, TokenType.Dimension];
 const allowedOperators = ['<', '>', '='];

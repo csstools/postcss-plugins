@@ -1,5 +1,5 @@
 import { tokenize } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import { parseListOfComponentValues, parseComponentValue, walk } from '@csstools/css-parser-algorithms';
 
 const onParseError = (err) => {

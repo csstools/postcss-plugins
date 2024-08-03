@@ -1,7 +1,7 @@
 import { tokenizer } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import { collectTokens } from '../util/collect-tokens.mjs';
-import fs from 'fs';
+import fs from 'node:fs';
 
 {
 	const t = tokenizer({

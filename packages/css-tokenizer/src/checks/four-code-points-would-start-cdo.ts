@@ -1,5 +1,5 @@
 import { EXCLAMATION_MARK, HYPHEN_MINUS, LESS_THAN_SIGN } from '../code-points/code-points';
-import { CodePointReader } from '../interfaces/code-point-reader';
+import type { CodePointReader } from '../interfaces/code-point-reader';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
 export function checkIfFourCodePointsWouldStartCDO(reader: CodePointReader): boolean {

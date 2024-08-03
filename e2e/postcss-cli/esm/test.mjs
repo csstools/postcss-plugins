@@ -1,5 +1,5 @@
-import assert from 'assert';
-import fs from 'fs/promises';
+import assert from 'node:assert';
+import fs from 'node:fs/promises';
 
 const result = await fs.readFile('./dist/result.css');
 const expect = await fs.readFile('./expect.css');

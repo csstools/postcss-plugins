@@ -1,5 +1,5 @@
 import { color } from '@csstools/css-color-parser';
-import assert from 'assert';
+import assert from 'node:assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_OKLCH_data } from '../util/serialize.mjs';
 

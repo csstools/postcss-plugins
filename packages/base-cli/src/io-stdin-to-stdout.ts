@@ -1,4 +1,4 @@
-import { Arguments } from './args';
+import type { Arguments } from './args';
 import postcss from 'postcss';
 import type { Plugin } from 'postcss';
 import { getStdin } from './get-stdin';

@@ -1,6 +1,6 @@
 import { LATIN_CAPITAL_LETTER_U, LATIN_SMALL_LETTER_U, PLUS_SIGN, QUESTION_MARK } from '../code-points/code-points';
 import { isHexDigitCodePoint } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
+import type { CodePointReader } from '../interfaces/code-point-reader';
 
 // https://drafts.csswg.org/css-syntax/#starts-a-unicode-range
 export function checkIfThreeCodePointsWouldStartAUnicodeRange(reader: CodePointReader): boolean {

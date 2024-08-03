@@ -1,5 +1,6 @@
 import type { AtRule, AtRuleProps } from 'postcss';
-import { ImportStatement, NodesStatement, Stylesheet, isImportStatement, isNodesStatement, isPreImportStatement } from './statement';
+import type { ImportStatement, NodesStatement, Stylesheet} from './statement';
+import { isImportStatement, isNodesStatement, isPreImportStatement } from './statement';
 
 export function postProcess(stylesheet: Stylesheet, atRule: (defaults?: AtRuleProps) => AtRule): void {
 	let indexOfFirstImport = -1;

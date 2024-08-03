@@ -1,8 +1,9 @@
 import type { Node, Plugin, PluginCreator } from 'postcss';
-import { Token } from './data-formats/base/token';
+import type { Token } from './data-formats/base/token';
 import { tokensFromImport } from './data-formats/parse-import';
 import { mergeTokens } from './data-formats/token';
-import { parsePluginOptions, pluginOptions } from './options';
+import type { pluginOptions } from './options';
+import { parsePluginOptions } from './options';
 export type { pluginOptions } from './options';
 import { transform } from './transform';
 

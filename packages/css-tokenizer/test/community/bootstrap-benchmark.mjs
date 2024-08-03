@@ -1,6 +1,6 @@
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
 import postcssTokenizer from 'postcss/lib/tokenize';
-import fs from 'fs';
+import fs from 'node:fs';
 
 function logResults(label, tokenStreamLength, results) {
 	console.log(`-------------- ${label} -------------`);

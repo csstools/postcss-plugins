@@ -1,4 +1,4 @@
-import { IfCondition } from '../parse/if';
+import type { IfCondition } from '../parse/if';
 import { isTokenDimension } from '@csstools/css-tokenizer';
 
 export function matchIfCondition(condition: IfCondition): string | true | undefined {

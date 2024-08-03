@@ -1,5 +1,5 @@
 import { newTestLogger } from '../log/test-logger.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { OUT_OF_RANGE_STAGE, stageFromOptions } from '../../lib/stage.mjs';
 
 const testLogger = newTestLogger();

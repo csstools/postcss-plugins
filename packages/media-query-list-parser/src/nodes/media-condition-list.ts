@@ -1,7 +1,8 @@
-import { CSSToken, stringify } from '@csstools/css-tokenizer';
-import { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and';
-import { MediaInParens } from './media-in-parens';
-import { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
+import type { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and';
+import type { MediaInParens } from './media-in-parens';
+import type { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
 import { NodeType } from '../util/node-type';
 import { walkerIndexGenerator } from '@csstools/css-parser-algorithms';
 

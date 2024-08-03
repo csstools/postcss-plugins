@@ -1,9 +1,9 @@
-import path from 'path';
+import path from 'node:path';
 import postcss from 'postcss';
 import type { Plugin } from 'postcss';
-import { Arguments } from './args';
+import type { Arguments } from './args';
 import { getStdin } from './get-stdin';
-import { promises as fsp } from 'fs';
+import fs from 'node:fs/promises';
 
 
 // Read from stdin and write to a file
@@ -37,11 +37,11 @@ export async function stdinToFs(plugin: Plugin, argo: Arguments, helpLogger: () 
 
 		if (argo.externalMap && result.map) {
 			await Promise.all([
-				await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
-				await fsp.writeFile(`${output}.map`, result.map.toString()),
+				await fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
+				await fs.writeFile(`${output}.map`, result.map.toString()),
 			]);
 		} else {
-			await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
+			await fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
 		}
 	} catch (err) {
 		if (err instanceof Error) {

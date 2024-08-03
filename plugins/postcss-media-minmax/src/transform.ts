@@ -1,6 +1,7 @@
 import { gatherNodeAncestry } from '@csstools/css-parser-algorithms';
 import { isTokenWhitespace, stringify, TokenType } from '@csstools/css-tokenizer';
-import { isMediaAnd, isMediaCondition, isMediaConditionListWithAnd, isMediaFeature, isMediaFeatureRange, isMediaFeatureRangeNameValue, isMediaFeatureRangeValueName, isMediaInParens, isMediaQuery, MediaAnd, MediaCondition, MediaConditionListWithAnd, MediaFeature, MediaInParens, MediaQuery, MediaFeatureLT } from '@csstools/media-query-list-parser';
+import type { MediaFeature, MediaQuery} from '@csstools/media-query-list-parser';
+import { isMediaAnd, isMediaCondition, isMediaConditionListWithAnd, isMediaFeature, isMediaFeatureRange, isMediaFeatureRangeNameValue, isMediaFeatureRangeValueName, isMediaInParens, isMediaQuery, MediaAnd, MediaCondition, MediaConditionListWithAnd, MediaInParens, MediaFeatureLT } from '@csstools/media-query-list-parser';
 import { transformSingleNameValuePair } from './transform-single-pair';
 
 const supportedFeatureNames = new Set([

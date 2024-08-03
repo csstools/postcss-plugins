@@ -1,7 +1,7 @@
 import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { Color } from '@csstools/color-helpers';
+import type { Color } from '@csstools/color-helpers';
 import { ColorNotation } from '../color-notation';
 import { isTokenIdent, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';

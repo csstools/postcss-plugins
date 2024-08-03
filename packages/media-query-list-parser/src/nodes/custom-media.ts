@@ -1,6 +1,7 @@
-import { CSSToken, isTokenIdent, isTokenWhiteSpaceOrComment, stringify, TokenType } from '@csstools/css-tokenizer';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { isTokenIdent, isTokenWhiteSpaceOrComment, stringify, TokenType } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
-import { MediaQuery } from './media-query';
+import type { MediaQuery } from './media-query';
 
 export class CustomMedia {
 	type = NodeType.CustomMedia;

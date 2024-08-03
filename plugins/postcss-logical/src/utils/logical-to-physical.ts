@@ -1,4 +1,5 @@
-import { DirectionConfig, DirectionValues } from '../lib/types';
+import type { DirectionConfig} from '../lib/types';
+import { DirectionValues } from '../lib/types';
 
 export function logicalToPhysical(logical: string, config: DirectionConfig): string {
 	const [blockStart, blockEnd] = config.block;

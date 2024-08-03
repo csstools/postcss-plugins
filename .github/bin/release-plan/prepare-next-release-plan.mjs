@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { addUpdatedPackagesToChangelog } from './add-to-changelog.mjs';
 
 export async function prepareNextReleasePlan(needsRelease, notReleasableNow) {

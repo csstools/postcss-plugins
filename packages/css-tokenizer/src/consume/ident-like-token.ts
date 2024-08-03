@@ -1,9 +1,10 @@
 import { checkIfCodePointsMatchURLIdent } from '../checks/matches-url-ident';
 import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK } from '../code-points/code-points';
 import { isWhitespace } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
-import { TokenBadURL, TokenFunction, TokenIdent, TokenType, TokenURL } from '../interfaces/token';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
+import type { TokenBadURL, TokenFunction, TokenIdent, TokenURL } from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 import { consumeIdentSequence } from './ident-sequence';
 import { consumeUrlToken } from './url-token';
 

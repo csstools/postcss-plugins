@@ -1,11 +1,11 @@
-import { ColorData, convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data';
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
+import type { ColorData} from '../color-data';
+import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D50 } from '../color-data';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { XYZ_D50_to_HSL, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
-import { colorData_to_XYZ_D50 } from '../color-data';
-import { toPrecision } from './to-precision';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
+import { toPrecision } from './to-precision';
 
 export function serializeHSL(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);

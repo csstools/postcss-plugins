@@ -1,5 +1,5 @@
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
-import fs from 'fs';
+import fs from 'node:fs';
 
 {
 	const source = fs.readFileSync('./test/community/open-props.css').toString();

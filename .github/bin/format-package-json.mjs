@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 function postcssPeerDependencyVersion() {
 	// "postcss-tape" is our reference for PostCSS versions.

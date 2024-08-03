@@ -1,5 +1,5 @@
 import { featureIsLess } from '../../lib/feature-is-less.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 import { insertAfterKey, insertBeforeKey, insertOrderKey } from '../../own-keys/keys.mjs';
 
 // "featureIsLess" works as a sorting function.

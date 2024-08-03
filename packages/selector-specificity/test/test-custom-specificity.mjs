@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import { selectorSpecificity, specificityOfMostSpecificListItem } from '@csstools/selector-specificity';
 import parser from 'postcss-selector-parser';
 

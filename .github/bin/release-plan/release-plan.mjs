@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { commitAfterDependencyUpdates, commitSingleDirectory } from './commit.mjs';
 import { discordAnnounce, discordAnnounceDryRun } from './discord-announce.mjs';
 import { nowFormatted } from './date-format.mjs';

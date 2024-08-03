@@ -1,5 +1,5 @@
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
-import assert from 'assert';
+import assert from 'node:assert';
 import {replaceComponentValues, parseComponentValue, isFunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 
 // https://github.com/csstools/postcss-plugins/issues/1202

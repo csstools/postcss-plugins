@@ -1,6 +1,7 @@
 import type { Document, Postcss, Result, Root, AtRule } from 'postcss';
-import { ImportStatement, Stylesheet, isImportStatement } from './statement';
-import { Condition } from './conditions';
+import type { ImportStatement, Stylesheet} from './statement';
+import { isImportStatement } from './statement';
+import type { Condition } from './conditions';
 import { isValidDataURL } from './data-url';
 import { parseStylesheet } from './parse-stylesheet';
 import { createRequire, resolveId } from './resolve-id';

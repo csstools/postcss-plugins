@@ -1,5 +1,5 @@
 import type { AtRule, Comment, Declaration, Document, PluginCreator, Root, Rule } from 'postcss';
-import path from 'path';
+import path from 'node:path';
 
 const creator: PluginCreator<never> = () => {
 

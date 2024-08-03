@@ -1,4 +1,4 @@
-import { CSSToken } from '../interfaces/token';
+import type { CSSToken } from '../interfaces/token';
 
 const supportsStructuredClone = (typeof globalThis !== 'undefined') && 'structuredClone' in globalThis;
 

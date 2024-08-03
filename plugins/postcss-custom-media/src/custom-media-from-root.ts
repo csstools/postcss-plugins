@@ -1,4 +1,4 @@
-import { MediaQuery } from '@csstools/media-query-list-parser';
+import type { MediaQuery } from '@csstools/media-query-list-parser';
 import type { ChildNode, Container, Document, Result, Root as PostCSSRoot } from 'postcss';
 import { collectCascadeLayerOrder, cascadeLayerNumberForNode } from './cascade-layers';
 import { isProcessableCustomMediaRule } from './is-processable-custom-media-rule';

@@ -1,10 +1,11 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
 import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_PARENTHESIS } from '../code-points/code-points';
 import { isNonPrintableCodePoint, isWhitespace } from '../code-points/ranges';
-import { CodePointReader } from '../interfaces/code-point-reader';
-import { Context } from '../interfaces/context';
+import type { CodePointReader } from '../interfaces/code-point-reader';
+import type { Context } from '../interfaces/context';
 import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
-import { CSSToken, TokenBadURL, TokenType, TokenURL } from '../interfaces/token';
+import type { CSSToken, TokenBadURL, TokenURL } from '../interfaces/token';
+import { TokenType } from '../interfaces/token';
 import { consumeBadURL } from './bad-url';
 import { consumeEscapedCodePoint } from './escaped-code-point';
 

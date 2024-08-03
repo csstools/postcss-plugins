@@ -1,5 +1,7 @@
-import { ComponentValue, ComponentValueType } from '@csstools/css-parser-algorithms';
-import { CSSToken, TokenDelim, isTokenDelim } from '@csstools/css-tokenizer';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { ComponentValueType } from '@csstools/css-parser-algorithms';
+import type { CSSToken, TokenDelim} from '@csstools/css-tokenizer';
+import { isTokenDelim } from '@csstools/css-tokenizer';
 
 export enum MediaFeatureLT {
 	LT = '<',

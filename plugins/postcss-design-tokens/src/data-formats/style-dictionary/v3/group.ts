@@ -1,6 +1,7 @@
-import { Token } from '../../base/token';
+import type { Token } from '../../base/token';
 import { dereferenceTokenValues } from './dereference';
-import { extractStyleDictionaryV3Token, StyleDictionaryV3TokenValue } from './value';
+import type { StyleDictionaryV3TokenValue } from './value';
+import { extractStyleDictionaryV3Token } from './value';
 
 export type StyleDictionaryV3TokenGroup = {
 	[key: string]: StyleDictionaryV3TokenGroup | StyleDictionaryV3TokenValue;

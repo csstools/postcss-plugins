@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import plugin from '@csstools/postcss-stepped-value-functions';
 plugin();
 

@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import { selectorSpecificity, compare } from '@csstools/selector-specificity';
 
 assert.equal(selectorSpecificity().a, 0);

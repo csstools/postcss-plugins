@@ -1,7 +1,10 @@
 import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';
-import { ComponentValue, isFunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
-import { CSSToken, NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
-import { invertComparison, matchesRatio, matchesRatioExactly, MediaFeature, MediaFeatureComparison, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, MediaFeatureValue, newMediaFeaturePlain } from '@csstools/media-query-list-parser';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isTokenNode } from '@csstools/css-parser-algorithms';
+import type { CSSToken} from '@csstools/css-tokenizer';
+import { NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
+import type { MediaFeature, MediaFeatureComparison, MediaFeatureValue} from '@csstools/media-query-list-parser';
+import { invertComparison, matchesRatio, matchesRatioExactly, MediaFeatureEQ, MediaFeatureGT, MediaFeatureLT, newMediaFeaturePlain } from '@csstools/media-query-list-parser';
 
 const unitsForFeature: Record<string, string | undefined> = {
 	'width': 'px',

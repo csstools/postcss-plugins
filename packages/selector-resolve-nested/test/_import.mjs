@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import { resolveNestedSelector } from '@csstools/selector-resolve-nested';
 import parser from 'postcss-selector-parser';
 

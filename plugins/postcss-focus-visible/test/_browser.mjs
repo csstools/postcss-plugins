@@ -1,7 +1,7 @@
 /* global window */
 import puppeteer from 'puppeteer';
-import http from 'http';
-import { promises as fsp } from 'fs';
+import http from 'node:http';
+import fs from 'node:fs/promises';
 import test from 'node:test';
 import process from 'node:process';
 
@@ -15,12 +15,12 @@ const requestListener = async function (req, res) {
 		case '/':
 			res.setHeader('Content-type', 'text/html');
 			res.writeHead(200);
-			res.end(await fsp.readFile('test/_browser.html', 'utf8'));
+			res.end(await fs.readFile('test/_browser.html', 'utf8'));
 			break;
 		case '/test/browser.expect.css':
 			res.setHeader('Content-type', 'text/css');
 			res.writeHead(200);
-			res.end(await fsp.readFile('test/browser.expect.css', 'utf8'));
+			res.end(await fs.readFile('test/browser.expect.css', 'utf8'));
 			break;
 		default:
 			res.setHeader('Content-type', 'text/plain');

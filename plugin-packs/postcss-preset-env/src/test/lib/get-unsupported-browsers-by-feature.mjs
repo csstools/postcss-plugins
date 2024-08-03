@@ -1,6 +1,6 @@
 
 import { getUnsupportedBrowsersByFeature } from '../../lib/get-unsupported-browsers-by-feature.mjs';
-import { strict as assert } from 'assert';
+import { strict as assert } from 'node:assert';
 
 assert.deepStrictEqual(
 	getUnsupportedBrowsersByFeature(),

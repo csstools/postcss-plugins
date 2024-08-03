@@ -1,11 +1,12 @@
 import type { ColorData } from '../color-data';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { TokenNumber, isTokenComma, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
-import { ColorNotation } from '../color-notation';
+import type { TokenNumber} from '@csstools/css-tokenizer';
+import { isTokenComma, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
+import type { ColorNotation } from '../color-notation';
 import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { normalizeChannelValuesFn } from './normalize-channel-values';
+import type { normalizeChannelValuesFn } from './normalize-channel-values';
 import { mathFunctionNames } from '@csstools/css-calc';
 
 export function threeChannelLegacySyntax(

@@ -1,7 +1,11 @@
-import { ComponentValue, ComponentValueType } from '@csstools/css-parser-algorithms';
-import { CSSToken, stringify, TokenColon } from '@csstools/css-tokenizer';
-import { parseMediaFeatureName, MediaFeatureName } from './media-feature-name';
-import { parseMediaFeatureValue, MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { ComponentValueType } from '@csstools/css-parser-algorithms';
+import type { CSSToken, TokenColon } from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
+import type { MediaFeatureName } from './media-feature-name';
+import { parseMediaFeatureName } from './media-feature-name';
+import type { MediaFeatureValue, MediaFeatureValueWalkerEntry, MediaFeatureValueWalkerParent } from './media-feature-value';
+import { parseMediaFeatureValue } from './media-feature-value';
 import { NodeType } from '../util/node-type';
 import { isTokenColon } from '@csstools/css-tokenizer';
 

@@ -1,8 +1,8 @@
-import path from 'path';
+import path from 'node:path';
 import postcss from 'postcss';
 import type { Plugin } from 'postcss';
-import { Arguments } from './args';
-import { promises as fsp } from 'fs';
+import type { Arguments } from './args';
+import fs from 'node:fs/promises';
 
 // Read from one or more files and write to as many files
 export async function fsToFs(plugin: Plugin, argo: Arguments): Promise<never> {
@@ -21,7 +21,7 @@ export async function fsToFs(plugin: Plugin, argo: Arguments): Promise<never> {
 				process.exit(0);
 			}
 
-			const css = await fsp.readFile(input);
+			const css = await fs.readFile(input);
 			const result = await postcss([plugin]).process(css, {
 				from: input,
 				to: output,
@@ -34,11 +34,11 @@ export async function fsToFs(plugin: Plugin, argo: Arguments): Promise<never> {
 
 			if (argo.externalMap && result.map) {
 				await Promise.all([
-					await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
-					await fsp.writeFile(`${output}.map`, result.map.toString()),
+					await fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
+					await fs.writeFile(`${output}.map`, result.map.toString()),
 				]);
 			} else {
-				await fsp.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
+				await fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));
 			}
 
 			console.log(`CSS was written to "${path.normalize(output)}"`);

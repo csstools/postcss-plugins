@@ -1,6 +1,6 @@
 import { postcssTape } from '@csstools/postcss-tape';
 import plugin from '@csstools/postcss-extract';
-import assert from 'assert';
+import assert from 'node:assert';
 
 postcssTape(plugin)({
 	'variables': {

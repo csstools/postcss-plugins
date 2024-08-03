@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { isGeneralEnclosed, parse } from '@csstools/media-query-list-parser';
 
 export function runTest(source, testPath, assertEqual, expectGeneralEnclosed = 0) {
