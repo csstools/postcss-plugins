@@ -1,6 +1,10 @@
 # PostCSS Custom Media [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-`npm install postcss-custom-media --save-dev`
+[<img alt="npm version" src="https://img.shields.io/npm/v/postcss-custom-media.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]<br><br>[<img alt="Baseline Status" src="https://cssdb.org/images/badges-baseline/custom-media-queries.svg" height="20">][css-url] [<img alt="CSS Standard Status" src="https://cssdb.org/images/badges/custom-media-queries.svg" height="20">][css-url] 
+
+```bash
+npm install postcss-custom-media --save-dev
+```
 
 [PostCSS Custom Media] lets you define `@custom-media` in CSS following the [Custom Media Specification].
 
@@ -113,7 +117,16 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
+[PostCSS Custom Media] runs in all Node environments, with special
+instructions for:
 
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
+- [Webpack](INSTALL.md#webpack)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 ## Options
 

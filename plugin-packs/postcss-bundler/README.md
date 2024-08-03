@@ -1,6 +1,10 @@
 # PostCSS Bundler [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-`npm install @csstools/postcss-bundler --save-dev`
+[<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/postcss-bundler.svg" height="20">][npm-url] [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url] [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
+
+```bash
+npm install @csstools/postcss-bundler --save-dev
+```
 
 [PostCSS Bundler] bundles your CSS.
 
@@ -50,7 +54,16 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
+[PostCSS Bundler] runs in all Node environments, with special
+instructions for:
 
+- [Node](INSTALL.md#node)
+- [PostCSS CLI](INSTALL.md#postcss-cli)
+- [PostCSS Load Config](INSTALL.md#postcss-load-config)
+- [Webpack](INSTALL.md#webpack)
+- [Next.js](INSTALL.md#nextjs)
+- [Gulp](INSTALL.md#gulp)
+- [Grunt](INSTALL.md#grunt)
 
 ## `postcss-import`
 

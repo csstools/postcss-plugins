@@ -13,7 +13,7 @@ export async function updateDocumentation(packageDirectory, minimal = false) {
 			{
 				env: {
 					...process.env,
-					MINIMAL: minimal ? 'true': null,
+					MINIMAL: minimal ? 'true': undefined,
 				},
 				cwd: packageDirectory,
 				shell: platform === 'win32',
