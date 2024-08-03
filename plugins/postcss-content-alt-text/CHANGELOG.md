@@ -1,6 +1,8 @@
 # Changes to PostCSS Content Alt Text
 
-### Unreleased (major)
+### 2.0.0
+
+_August 3, 2024_
 
 - Updated: Support for Node v18+ (major).
 - Add specific handling of `content: ">" / "";` as this pattern is used in the same way as `<img alt="">`, i.e. to represent an item that does not need a text alternative.
