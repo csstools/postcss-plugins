@@ -1,6 +1,8 @@
 # Changes to PostCSS Place Properties
 
-### Unreleased (major)
+### 10.0.0
+
+_August 3, 2024_
 
 - Updated: Support for Node v18+ (major).
 
