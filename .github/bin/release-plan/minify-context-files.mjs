@@ -3,6 +3,9 @@ import path from 'node:path';
 import { updateDocumentation } from './docs.mjs';
 
 export async function minifyContextFiles(workspace) {
+	// Render a smaller `README.md` file
+	await updateDocumentation(workspace.path, true);
+
 	const originalPackageInfo = JSON.parse(await fs.readFile(path.join(workspace.path, 'package.json')));
 	const originalChangelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
 
@@ -46,9 +49,6 @@ export async function minifyContextFiles(workspace) {
 
 	await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(minifiedPackageInfo, null, '\t') + '\n');
 	await fs.writeFile(path.join(workspace.path, 'CHANGELOG.md'), minifiedChangelog);
-
-	// Render a smaller `README.md` file
-	await updateDocumentation(workspace.path, true);
 
 	return async () => {
 		await fs.writeFile(path.join(workspace.path, 'package.json'), JSON.stringify(originalPackageInfo, null, '\t') + '\n');
