@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (patch)
+
+- fix `XYZ_D50_to_HWB` to not do corrections for out of gamut colors.
+
 ### 5.0.0
 
 _August 3, 2024_
