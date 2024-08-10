@@ -49,6 +49,7 @@
 	],
 	"devDependencies": {
 		"@rmenke/css-tokenizer-tests": "^1.1.6",
+		"porffor": "^0.37.0",
 		"postcss": "^8.4.38",
 		"postcss-parser-tests": "^8.8.0"
 	},
@@ -59,7 +60,12 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs"
+		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs && npm run porffor",
+		"preporffor": "node ./prepare-porffor.mjs",
+		"porffor": "npm run porffor:run; npm run porffor:wasm",
+		"porffor:run": "porf ./dist/porffor.mjs",
+		"porffor:wasm": "porf wasm ./dist/porffor.mjs ./dist/porffor.wasm",
+		"porffor:native": "porf native ./dist/porffor.mjs ./dist/porffor"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer#readme",
 	"repository": {
