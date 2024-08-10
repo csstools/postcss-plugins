@@ -1,1 +1,1552 @@
-class ParseError extends Error{sourceStart;sourceEnd;parserState;constructor(e,n,t,o){super(e),this.name="ParseError",this.sourceStart=n,this.sourceEnd=t,this.parserState=o}}class ParseErrorWithToken extends ParseError{token;constructor(e,n,t,o,r){super(e,n,t,o),this.token=r}}const e={UnexpectedNewLineInString:"Unexpected newline while consuming a string token.",UnexpectedEOFInString:"Unexpected EOF while consuming a string token.",UnexpectedEOFInComment:"Unexpected EOF while consuming a comment.",UnexpectedEOFInURL:"Unexpected EOF while consuming a url token.",UnexpectedEOFInEscapedCodePoint:"Unexpected EOF while consuming an escaped code point.",UnexpectedCharacterInURL:"Unexpected character while consuming a url token.",InvalidEscapeSequenceInURL:"Invalid escape sequence while consuming a url token.",InvalidEscapeSequenceAfterBackslash:'Invalid escape sequence after "\\"'},n="undefined"!=typeof globalThis&&"structuredClone"in globalThis;function cloneTokens(e){return n?structuredClone(e):JSON.parse(JSON.stringify(e))}function stringify(...e){let n="";for(let t=0;t<e.length;t++)n+=e[t][1];return n}const t=39,o=42,r=8,i=13,s=9,c=58,a=44,u=64,d=127,p=33,P=12,C=46,l=62,f=45,S=31,m=69,k=101,E=123,h=40,v=91,T=60,A=10,g=11,I=95,U=1114111,O=0,D=35,R=37,w=43,L=34,x=65533,W=92,y=125,F=41,q=93,N=59,b=14,B=47,H=32,V=117,K=85,z=114,M=82,$=108,J=76,_=63,j=48,Q=70;function checkIfFourCodePointsWouldStartCDO(e){return e.source.codePointAt(e.cursor)===T&&e.source.codePointAt(e.cursor+1)===p&&e.source.codePointAt(e.cursor+2)===f&&e.source.codePointAt(e.cursor+3)===f}function isDigitCodePoint(e){return void 0!==e&&e>=48&&e<=57}function isUppercaseLetterCodePoint(e){return void 0!==e&&e>=65&&e<=90}function isLowercaseLetterCodePoint(e){return void 0!==e&&e>=97&&e<=122}function isHexDigitCodePoint(e){return void 0!==e&&(e>=48&&e<=57||e>=97&&e<=102||e>=65&&e<=70)}function isLetterCodePoint(e){return isLowercaseLetterCodePoint(e)||isUppercaseLetterCodePoint(e)}function isIdentStartCodePoint(e){return isLetterCodePoint(e)||isNonASCII_IdentCodePoint(e)||e===I}function isIdentCodePoint(e){return isIdentStartCodePoint(e)||isDigitCodePoint(e)||e===f}function isNonASCII_IdentCodePoint(e){return 183===e||8204===e||8205===e||8255===e||8256===e||8204===e||void 0!==e&&(192<=e&&e<=214||216<=e&&e<=246||248<=e&&e<=893||895<=e&&e<=8191||8304<=e&&e<=8591||11264<=e&&e<=12271||12289<=e&&e<=55295||63744<=e&&e<=64975||65008<=e&&e<=65533||e>=65536)}function isNewLine(e){return e===A||e===i||e===P}function isWhitespace(e){return e===H||e===A||e===s||e===i||e===P}function checkIfTwoCodePointsAreAValidEscape(e){return e.source.codePointAt(e.cursor)===W&&!isNewLine(e.source.codePointAt(e.cursor+1))}function checkIfThreeCodePointsWouldStartAnIdentSequence(e,n){return n.source.codePointAt(n.cursor)===f?n.source.codePointAt(n.cursor+1)===f||(!!isIdentStartCodePoint(n.source.codePointAt(n.cursor+1))||n.source.codePointAt(n.cursor+1)===W&&!isNewLine(n.source.codePointAt(n.cursor+2))):!!isIdentStartCodePoint(n.source.codePointAt(n.cursor))||checkIfTwoCodePointsAreAValidEscape(n)}function checkIfThreeCodePointsWouldStartANumber(e){return e.source.codePointAt(e.cursor)===w||e.source.codePointAt(e.cursor)===f?!!isDigitCodePoint(e.source.codePointAt(e.cursor+1))||e.source.codePointAt(e.cursor+1)===C&&isDigitCodePoint(e.source.codePointAt(e.cursor+2)):e.source.codePointAt(e.cursor)===C?isDigitCodePoint(e.source.codePointAt(e.cursor+1)):isDigitCodePoint(e.source.codePointAt(e.cursor))}function checkIfTwoCodePointsStartAComment(e){return e.source.codePointAt(e.cursor)===B&&e.source.codePointAt(e.cursor+1)===o}function checkIfThreeCodePointsWouldStartCDC(e){return e.source.codePointAt(e.cursor)===f&&e.source.codePointAt(e.cursor+1)===f&&e.source.codePointAt(e.cursor+2)===l}var G,X,Y;function mirrorVariantType(e){switch(e){case G.OpenParen:return G.CloseParen;case G.CloseParen:return G.OpenParen;case G.OpenCurly:return G.CloseCurly;case G.CloseCurly:return G.OpenCurly;case G.OpenSquare:return G.CloseSquare;case G.CloseSquare:return G.OpenSquare;default:return null}}function mirrorVariant(e){switch(e[0]){case G.OpenParen:return[G.CloseParen,")",-1,-1,void 0];case G.CloseParen:return[G.OpenParen,"(",-1,-1,void 0];case G.OpenCurly:return[G.CloseCurly,"}",-1,-1,void 0];case G.CloseCurly:return[G.OpenCurly,"{",-1,-1,void 0];case G.OpenSquare:return[G.CloseSquare,"]",-1,-1,void 0];case G.CloseSquare:return[G.OpenSquare,"[",-1,-1,void 0];default:return null}}function consumeComment(n,t){for(t.advanceCodePoint(2);;){const r=t.readCodePoint();if(void 0===r){const o=[G.Comment,t.source.slice(t.representationStart,t.representationEnd+1),t.representationStart,t.representationEnd,void 0];return n.onParseError(new ParseErrorWithToken(e.UnexpectedEOFInComment,t.representationStart,t.representationEnd,["4.3.2. Consume comments","Unexpected EOF"],o)),o}if(r===o&&(void 0!==t.source.codePointAt(t.cursor)&&t.source.codePointAt(t.cursor)===B)){t.advanceCodePoint();break}}return[G.Comment,t.source.slice(t.representationStart,t.representationEnd+1),t.representationStart,t.representationEnd,void 0]}function consumeEscapedCodePoint(n,t){const o=t.readCodePoint();if(void 0===o)return n.onParseError(new ParseError(e.UnexpectedEOFInEscapedCodePoint,t.representationStart,t.representationEnd,["4.3.7. Consume an escaped code point","Unexpected EOF"])),x;if(isHexDigitCodePoint(o)){const e=[o];let n;for(;void 0!==(n=t.source.codePointAt(t.cursor))&&isHexDigitCodePoint(n)&&e.length<6;)e.push(n),t.advanceCodePoint();isWhitespace(t.source.codePointAt(t.cursor))&&t.advanceCodePoint();const i=parseInt(String.fromCodePoint(...e),16);return 0===i?x:void 0!==(r=i)&&r>=55296&&r<=57343||i>U?x:i}var r;return o}function consumeIdentSequence(e,n){const t=[];for(;;){const o=n.source.codePointAt(n.cursor);if(isIdentCodePoint(o))t.push(o),n.advanceCodePoint(+(o>65535)+1);else{if(!checkIfTwoCodePointsAreAValidEscape(n))return t;n.advanceCodePoint(),t.push(consumeEscapedCodePoint(e,n))}}}function consumeHashToken(e,n){n.advanceCodePoint();const t=n.source.codePointAt(n.cursor);if(void 0!==t&&(isIdentCodePoint(t)||checkIfTwoCodePointsAreAValidEscape(n))){let t=Y.Unrestricted;checkIfThreeCodePointsWouldStartAnIdentSequence(0,n)&&(t=Y.ID);const o=consumeIdentSequence(e,n);return[G.Hash,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:String.fromCodePoint(...o),type:t}]}return[G.Delim,"#",n.representationStart,n.representationEnd,{value:"#"}]}function consumeNumber(e,n){let t=X.Integer;for(n.source.codePointAt(n.cursor)!==w&&n.source.codePointAt(n.cursor)!==f||n.advanceCodePoint();isDigitCodePoint(n.source.codePointAt(n.cursor));)n.advanceCodePoint();if(n.source.codePointAt(n.cursor)===C&&isDigitCodePoint(n.source.codePointAt(n.cursor+1)))for(n.advanceCodePoint(2),t=X.Number;isDigitCodePoint(n.source.codePointAt(n.cursor));)n.advanceCodePoint();if(n.source.codePointAt(n.cursor)===k||n.source.codePointAt(n.cursor)===m){if(isDigitCodePoint(n.source.codePointAt(n.cursor+1)))n.advanceCodePoint(2);else{if(n.source.codePointAt(n.cursor+1)!==f&&n.source.codePointAt(n.cursor+1)!==w||!isDigitCodePoint(n.source.codePointAt(n.cursor+2)))return t;n.advanceCodePoint(3)}for(t=X.Number;isDigitCodePoint(n.source.codePointAt(n.cursor));)n.advanceCodePoint()}return t}function consumeNumericToken(e,n){let t;{const e=n.source.codePointAt(n.cursor);e===f?t="-":e===w&&(t="+")}const o=consumeNumber(0,n),r=parseFloat(n.source.slice(n.representationStart,n.representationEnd+1));if(checkIfThreeCodePointsWouldStartAnIdentSequence(0,n)){const i=consumeIdentSequence(e,n);return[G.Dimension,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:r,signCharacter:t,type:o,unit:String.fromCodePoint(...i)}]}return n.source.codePointAt(n.cursor)===R?(n.advanceCodePoint(),[G.Percentage,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:r,signCharacter:t}]):[G.Number,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:r,signCharacter:t,type:o}]}function consumeWhiteSpace(e){for(;isWhitespace(e.source.codePointAt(e.cursor));)e.advanceCodePoint();return[G.Whitespace,e.source.slice(e.representationStart,e.representationEnd+1),e.representationStart,e.representationEnd,void 0]}!function(e){e.Comment="comment",e.AtKeyword="at-keyword-token",e.BadString="bad-string-token",e.BadURL="bad-url-token",e.CDC="CDC-token",e.CDO="CDO-token",e.Colon="colon-token",e.Comma="comma-token",e.Delim="delim-token",e.Dimension="dimension-token",e.EOF="EOF-token",e.Function="function-token",e.Hash="hash-token",e.Ident="ident-token",e.Number="number-token",e.Percentage="percentage-token",e.Semicolon="semicolon-token",e.String="string-token",e.URL="url-token",e.Whitespace="whitespace-token",e.OpenParen="(-token",e.CloseParen=")-token",e.OpenSquare="[-token",e.CloseSquare="]-token",e.OpenCurly="{-token",e.CloseCurly="}-token",e.UnicodeRange="unicode-range-token"}(G||(G={})),function(e){e.Integer="integer",e.Number="number"}(X||(X={})),function(e){e.Unrestricted="unrestricted",e.ID="id"}(Y||(Y={}));class Reader{cursor=0;source="";representationStart=0;representationEnd=-1;constructor(e){this.source=e}advanceCodePoint(e=1){this.cursor=this.cursor+e,this.representationEnd=this.cursor-1}readCodePoint(){const e=this.source.codePointAt(this.cursor);if(void 0!==e)return this.cursor=this.cursor+1,this.representationEnd=this.cursor-1,e}unreadCodePoint(e=1){this.cursor=this.cursor-e,this.representationEnd=this.cursor-1}resetRepresentation(){this.representationStart=this.cursor,this.representationEnd=-1}}function consumeStringToken(n,t){let o="";const r=t.readCodePoint();for(;;){const s=t.readCodePoint();if(void 0===s){const r=[G.String,t.source.slice(t.representationStart,t.representationEnd+1),t.representationStart,t.representationEnd,{value:o}];return n.onParseError(new ParseErrorWithToken(e.UnexpectedEOFInString,t.representationStart,t.representationEnd,["4.3.5. Consume a string token","Unexpected EOF"],r)),r}if(isNewLine(s)){t.unreadCodePoint();const o=[G.BadString,t.source.slice(t.representationStart,t.representationEnd+1),t.representationStart,t.representationEnd,void 0];return n.onParseError(new ParseErrorWithToken(e.UnexpectedNewLineInString,t.representationStart,t.source.codePointAt(t.cursor)===i&&t.source.codePointAt(t.cursor+1)===A?t.representationEnd+2:t.representationEnd+1,["4.3.5. Consume a string token","Unexpected newline"],o)),o}if(s===r)return[G.String,t.source.slice(t.representationStart,t.representationEnd+1),t.representationStart,t.representationEnd,{value:o}];if(s!==W)o+=String.fromCodePoint(s);else{if(void 0===t.source.codePointAt(t.cursor))continue;if(isNewLine(t.source.codePointAt(t.cursor))){t.source.codePointAt(t.cursor)===i&&t.source.codePointAt(t.cursor+1)===A&&t.advanceCodePoint(),t.advanceCodePoint();continue}o+=String.fromCodePoint(consumeEscapedCodePoint(n,t))}}}function checkIfCodePointsMatchURLIdent(e){return!(3!==e.length||e[0]!==V&&e[0]!==K||e[1]!==z&&e[1]!==M||e[2]!==$&&e[2]!==J)}function consumeBadURL(e,n){for(;;){const t=n.source.codePointAt(n.cursor);if(void 0===t)return;if(t===F)return void n.advanceCodePoint();checkIfTwoCodePointsAreAValidEscape(n)?(n.advanceCodePoint(),consumeEscapedCodePoint(e,n)):n.advanceCodePoint()}}function consumeUrlToken(n,o){for(;isWhitespace(o.source.codePointAt(o.cursor));)o.advanceCodePoint();let i="";for(;;){if(void 0===o.source.codePointAt(o.cursor)){const t=[G.URL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,{value:i}];return n.onParseError(new ParseErrorWithToken(e.UnexpectedEOFInURL,o.representationStart,o.representationEnd,["4.3.6. Consume a url token","Unexpected EOF"],t)),t}if(o.source.codePointAt(o.cursor)===F)return o.advanceCodePoint(),[G.URL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,{value:i}];if(isWhitespace(o.source.codePointAt(o.cursor))){for(o.advanceCodePoint();isWhitespace(o.source.codePointAt(o.cursor));)o.advanceCodePoint();if(void 0===o.source.codePointAt(o.cursor)){const t=[G.URL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,{value:i}];return n.onParseError(new ParseErrorWithToken(e.UnexpectedEOFInURL,o.representationStart,o.representationEnd,["4.3.6. Consume a url token","Consume as much whitespace as possible","Unexpected EOF"],t)),t}return o.source.codePointAt(o.cursor)===F?(o.advanceCodePoint(),[G.URL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,{value:i}]):(consumeBadURL(n,o),[G.BadURL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,void 0])}const c=o.source.codePointAt(o.cursor);if(c===L||c===t||c===h||void 0!==(s=c)&&(s===g||s===d||O<=s&&s<=r||b<=s&&s<=S)){consumeBadURL(n,o);const t=[G.BadURL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,void 0];return n.onParseError(new ParseErrorWithToken(e.UnexpectedCharacterInURL,o.representationStart,o.representationEnd,["4.3.6. Consume a url token","Unexpected U+0022 QUOTATION MARK (\"), U+0027 APOSTROPHE ('), U+0028 LEFT PARENTHESIS (() or non-printable code point"],t)),t}if(c===W){if(checkIfTwoCodePointsAreAValidEscape(o)){o.advanceCodePoint(),i+=String.fromCodePoint(consumeEscapedCodePoint(n,o));continue}consumeBadURL(n,o);const t=[G.BadURL,o.source.slice(o.representationStart,o.representationEnd+1),o.representationStart,o.representationEnd,void 0];return n.onParseError(new ParseErrorWithToken(e.InvalidEscapeSequenceInURL,o.representationStart,o.representationEnd,["4.3.6. Consume a url token","U+005C REVERSE SOLIDUS (\\)","The input stream does not start with a valid escape sequence"],t)),t}i+=o.source[o.cursor],o.advanceCodePoint()}var s}function consumeIdentLikeToken(e,n){const o=consumeIdentSequence(e,n);if(n.source.codePointAt(n.cursor)!==h)return[G.Ident,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:String.fromCodePoint(...o)}];if(checkIfCodePointsMatchURLIdent(o)){n.advanceCodePoint();let r=0;for(;;){const e=isWhitespace(n.source.codePointAt(n.cursor)),i=isWhitespace(n.source.codePointAt(n.cursor+1));if(e&&i){r+=1,n.advanceCodePoint(1);continue}const s=e?n.source.codePointAt(n.cursor+1):n.source.codePointAt(n.cursor);if(s===L||s===t)return r>0&&n.unreadCodePoint(r),[G.Function,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:String.fromCodePoint(...o)}];break}return consumeUrlToken(e,n)}return n.advanceCodePoint(),[G.Function,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{value:String.fromCodePoint(...o)}]}function checkIfThreeCodePointsWouldStartAUnicodeRange(e){return!(e.source.codePointAt(e.cursor)!==V&&e.source.codePointAt(e.cursor)!==K||e.source.codePointAt(e.cursor+1)!==w||e.source.codePointAt(e.cursor+2)!==_&&!isHexDigitCodePoint(e.source.codePointAt(e.cursor+2)))}function consumeUnicodeRangeToken(e,n){n.advanceCodePoint(2);const t=[],o=[];let r;for(;void 0!==(r=n.source.codePointAt(n.cursor))&&t.length<6&&isHexDigitCodePoint(r);)t.push(r),n.advanceCodePoint();for(;void 0!==(r=n.source.codePointAt(n.cursor))&&t.length<6&&r===_;)0===o.length&&o.push(...t),t.push(j),o.push(Q),n.advanceCodePoint();if(!o.length&&n.source.codePointAt(n.cursor)===f&&isHexDigitCodePoint(n.source.codePointAt(n.cursor+1)))for(n.advanceCodePoint();void 0!==(r=n.source.codePointAt(n.cursor))&&o.length<6&&isHexDigitCodePoint(r);)o.push(r),n.advanceCodePoint();if(!o.length){const e=parseInt(String.fromCodePoint(...t),16);return[G.UnicodeRange,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{startOfRange:e,endOfRange:e}]}const i=parseInt(String.fromCodePoint(...t),16),s=parseInt(String.fromCodePoint(...o),16);return[G.UnicodeRange,n.source.slice(n.representationStart,n.representationEnd+1),n.representationStart,n.representationEnd,{startOfRange:i,endOfRange:s}]}function tokenize(e,n){const t=tokenizer(e,n),o=[];{for(;!t.endOfFile();){const e=t.nextToken();e&&o.push(e)}const e=t.nextToken();e&&o.push(e)}return o}function tokenizer(n,o){const r=n.css.valueOf(),d=n.unicodeRangesAllowed??!1,p=new Reader(r),l={onParseError:o?.onParseError??noop};return{nextToken:function nextToken(){p.resetRepresentation();const n=p.source.codePointAt(p.cursor);if(void 0===n)return[G.EOF,"",-1,-1,void 0];if(n===B&&checkIfTwoCodePointsStartAComment(p))return consumeComment(l,p);if(d&&(n===V||n===K)&&checkIfThreeCodePointsWouldStartAUnicodeRange(p))return consumeUnicodeRangeToken(0,p);if(isIdentStartCodePoint(n))return consumeIdentLikeToken(l,p);if(isDigitCodePoint(n))return consumeNumericToken(l,p);switch(n){case a:return p.advanceCodePoint(),[G.Comma,",",p.representationStart,p.representationEnd,void 0];case c:return p.advanceCodePoint(),[G.Colon,":",p.representationStart,p.representationEnd,void 0];case N:return p.advanceCodePoint(),[G.Semicolon,";",p.representationStart,p.representationEnd,void 0];case h:return p.advanceCodePoint(),[G.OpenParen,"(",p.representationStart,p.representationEnd,void 0];case F:return p.advanceCodePoint(),[G.CloseParen,")",p.representationStart,p.representationEnd,void 0];case v:return p.advanceCodePoint(),[G.OpenSquare,"[",p.representationStart,p.representationEnd,void 0];case q:return p.advanceCodePoint(),[G.CloseSquare,"]",p.representationStart,p.representationEnd,void 0];case E:return p.advanceCodePoint(),[G.OpenCurly,"{",p.representationStart,p.representationEnd,void 0];case y:return p.advanceCodePoint(),[G.CloseCurly,"}",p.representationStart,p.representationEnd,void 0];case t:case L:return consumeStringToken(l,p);case D:return consumeHashToken(l,p);case w:case C:return checkIfThreeCodePointsWouldStartANumber(p)?consumeNumericToken(l,p):(p.advanceCodePoint(),[G.Delim,p.source[p.representationStart],p.representationStart,p.representationEnd,{value:p.source[p.representationStart]}]);case A:case i:case P:case s:case H:return consumeWhiteSpace(p);case f:return checkIfThreeCodePointsWouldStartANumber(p)?consumeNumericToken(l,p):checkIfThreeCodePointsWouldStartCDC(p)?(p.advanceCodePoint(3),[G.CDC,"--\x3e",p.representationStart,p.representationEnd,void 0]):checkIfThreeCodePointsWouldStartAnIdentSequence(0,p)?consumeIdentLikeToken(l,p):(p.advanceCodePoint(),[G.Delim,"-",p.representationStart,p.representationEnd,{value:"-"}]);case T:return checkIfFourCodePointsWouldStartCDO(p)?(p.advanceCodePoint(4),[G.CDO,"\x3c!--",p.representationStart,p.representationEnd,void 0]):(p.advanceCodePoint(),[G.Delim,"<",p.representationStart,p.representationEnd,{value:"<"}]);case u:if(p.advanceCodePoint(),checkIfThreeCodePointsWouldStartAnIdentSequence(0,p)){const e=consumeIdentSequence(l,p);return[G.AtKeyword,p.source.slice(p.representationStart,p.representationEnd+1),p.representationStart,p.representationEnd,{value:String.fromCodePoint(...e)}]}return[G.Delim,"@",p.representationStart,p.representationEnd,{value:"@"}];case W:{if(checkIfTwoCodePointsAreAValidEscape(p))return consumeIdentLikeToken(l,p);p.advanceCodePoint();const n=[G.Delim,"\\",p.representationStart,p.representationEnd,{value:"\\"}];return l.onParseError(new ParseErrorWithToken(e.InvalidEscapeSequenceAfterBackslash,p.representationStart,p.representationEnd,["4.3.1. Consume a token","U+005C REVERSE SOLIDUS (\\)","The input stream does not start with a valid escape sequence"],n)),n}}return p.advanceCodePoint(),[G.Delim,p.source[p.representationStart],p.representationStart,p.representationEnd,{value:p.source[p.representationStart]}]},endOfFile:function endOfFile(){return void 0===p.source.codePointAt(p.cursor)}}}function noop(){}function mutateIdent(e,n){const t=[];for(const e of n)t.push(e.codePointAt(0));const o=String.fromCodePoint(...ensureThatValueRoundTripsAsIdent(t));e[1]=o,e[4].value=n}function mutateUnit(e,n){const t=[];for(const e of n)t.push(e.codePointAt(0));const o=ensureThatValueRoundTripsAsIdent(t);101===o[0]&&insertEscapedCodePoint(o,0,o[0]);const r=String.fromCodePoint(...o),i="+"===e[4].signCharacter?e[4].signCharacter:"",s=e[4].value.toString();e[1]=`${i}${s}${r}`,e[4].unit=n}function ensureThatValueRoundTripsAsIdent(e){let n=0;e[0]===f&&e[1]===f?n=2:e[0]===f&&e[1]?(n=2,isIdentStartCodePoint(e[1])||(n+=insertEscapedCodePoint(e,1,e[1]))):isIdentStartCodePoint(e[0])?n=1:(n=1,n+=insertEscapedCodePoint(e,0,e[0]));for(let t=n;t<e.length;t++)isIdentCodePoint(e[t])||(t+=insertEscapedCodePoint(e,t,e[t]));return e}function insertEscapedCodePoint(e,n,t){const o=t.toString(16),r=[];for(const e of o)r.push(e.codePointAt(0));const i=e[n+1];return n===e.length-1||i&&isHexDigitCodePoint(i)?(e.splice(n,1,92,...r,32),1+r.length):(e.splice(n,1,92,...r),r.length)}const Z=Object.values(G);function isToken(e){return!!Array.isArray(e)&&(!(e.length<4)&&(!!Z.includes(e[0])&&("string"==typeof e[1]&&("number"==typeof e[2]&&"number"==typeof e[3]))))}function isTokenNumeric(e){switch(e[0]){case G.Dimension:case G.Number:case G.Percentage:return!0;default:return!1}}function isTokenWhiteSpaceOrComment(e){switch(e[0]){case G.Whitespace:case G.Comment:return!0;default:return!1}}function isTokenAtKeyword(e){return!!e&&e[0]===G.AtKeyword}function isTokenBadString(e){return!!e&&e[0]===G.BadString}function isTokenBadURL(e){return!!e&&e[0]===G.BadURL}function isTokenCDC(e){return!!e&&e[0]===G.CDC}function isTokenCDO(e){return!!e&&e[0]===G.CDO}function isTokenColon(e){return!!e&&e[0]===G.Colon}function isTokenComma(e){return!!e&&e[0]===G.Comma}function isTokenComment(e){return!!e&&e[0]===G.Comment}function isTokenDelim(e){return!!e&&e[0]===G.Delim}function isTokenDimension(e){return!!e&&e[0]===G.Dimension}function isTokenEOF(e){return!!e&&e[0]===G.EOF}function isTokenFunction(e){return!!e&&e[0]===G.Function}function isTokenHash(e){return!!e&&e[0]===G.Hash}function isTokenIdent(e){return!!e&&e[0]===G.Ident}function isTokenNumber(e){return!!e&&e[0]===G.Number}function isTokenPercentage(e){return!!e&&e[0]===G.Percentage}function isTokenSemicolon(e){return!!e&&e[0]===G.Semicolon}function isTokenString(e){return!!e&&e[0]===G.String}function isTokenURL(e){return!!e&&e[0]===G.URL}function isTokenWhitespace(e){return!!e&&e[0]===G.Whitespace}function isTokenOpenParen(e){return!!e&&e[0]===G.OpenParen}function isTokenCloseParen(e){return!!e&&e[0]===G.CloseParen}function isTokenOpenSquare(e){return!!e&&e[0]===G.OpenSquare}function isTokenCloseSquare(e){return!!e&&e[0]===G.CloseSquare}function isTokenOpenCurly(e){return!!e&&e[0]===G.OpenCurly}function isTokenCloseCurly(e){return!!e&&e[0]===G.CloseCurly}function isTokenUnicodeRange(e){return!!e&&e[0]===G.UnicodeRange}export{Y as HashType,X as NumberType,ParseError,e as ParseErrorMessage,ParseErrorWithToken,G as TokenType,cloneTokens,isToken,isTokenAtKeyword,isTokenBadString,isTokenBadURL,isTokenCDC,isTokenCDO,isTokenCloseCurly,isTokenCloseParen,isTokenCloseSquare,isTokenColon,isTokenComma,isTokenComment,isTokenDelim,isTokenDimension,isTokenEOF,isTokenFunction,isTokenHash,isTokenIdent,isTokenNumber,isTokenNumeric,isTokenOpenCurly,isTokenOpenParen,isTokenOpenSquare,isTokenPercentage,isTokenSemicolon,isTokenString,isTokenURL,isTokenUnicodeRange,isTokenWhiteSpaceOrComment,isTokenWhitespace,mirrorVariant,mirrorVariantType,mutateIdent,mutateUnit,stringify,tokenize,tokenizer};
+/**
+ * The CSS Tokenizer is forgiving and will never throw on invalid input.
+ * Any errors are reported through the `onParseError` callback.
+ */
+class ParseError extends Error {
+    /** The index of the start character of the current token. */
+    sourceStart;
+    /** The index of the end character of the current token. */
+    sourceEnd;
+    /** The parser steps that preceded the error. */
+    parserState;
+    constructor(message, sourceStart, sourceEnd, parserState) {
+        super(message);
+        this.name = 'ParseError';
+        this.sourceStart = sourceStart;
+        this.sourceEnd = sourceEnd;
+        this.parserState = parserState;
+    }
+}
+class ParseErrorWithToken extends ParseError {
+    /** The associated token. */
+    token;
+    constructor(message, sourceStart, sourceEnd, parserState, token) {
+        super(message, sourceStart, sourceEnd, parserState);
+        this.token = token;
+    }
+}
+const ParseErrorMessage = {
+    UnexpectedNewLineInString: 'Unexpected newline while consuming a string token.',
+    UnexpectedEOFInString: 'Unexpected EOF while consuming a string token.',
+    UnexpectedEOFInComment: 'Unexpected EOF while consuming a comment.',
+    UnexpectedEOFInURL: 'Unexpected EOF while consuming a url token.',
+    UnexpectedEOFInEscapedCodePoint: 'Unexpected EOF while consuming an escaped code point.',
+    UnexpectedCharacterInURL: 'Unexpected character while consuming a url token.',
+    InvalidEscapeSequenceInURL: 'Invalid escape sequence while consuming a url token.',
+    InvalidEscapeSequenceAfterBackslash: 'Invalid escape sequence after "\\"',
+};
+
+const supportsStructuredClone = (typeof globalThis !== 'undefined') && 'structuredClone' in globalThis;
+/**
+ * Deep clone a list of tokens.
+ * Useful for mutations without altering the original list.
+ */
+function cloneTokens(tokens) {
+    if (supportsStructuredClone) {
+        return structuredClone(tokens);
+    }
+    return JSON.parse(JSON.stringify(tokens));
+}
+
+/**
+ * Concatenate the string representation of a list of tokens.
+ * This is not a proper serializer that will handle escaping and whitespace.
+ * It only produces valid CSS for a token list that is also valid.
+ */
+function stringify(...tokens) {
+    let buffer = '';
+    for (let i = 0; i < tokens.length; i++) {
+        buffer = buffer + tokens[i][1];
+    }
+    return buffer;
+}
+
+/** ' */
+const APOSTROPHE = 0x0027;
+/** * */
+const ASTERISK = 0x002a;
+/** \b */
+const BACKSPACE = 0x008;
+/** \r */
+const CARRIAGE_RETURN = 0x00d;
+/** \t */
+const CHARACTER_TABULATION = 0x009;
+/** : */
+const COLON = 0x003a;
+/** , */
+const COMMA = 0x002c;
+/** @ */
+const COMMERCIAL_AT = 0x0040;
+/** \x7F */
+const DELETE = 0x007f;
+/** ! */
+const EXCLAMATION_MARK = 0x0021;
+/** \f */
+const FORM_FEED = 0x000c;
+/** . */
+const FULL_STOP = 0x002e;
+/** > */
+const GREATER_THAN_SIGN = 0x003e;
+/** - */
+const HYPHEN_MINUS = 0x002d;
+/** \x1F */
+const INFORMATION_SEPARATOR_ONE = 0x001f;
+/** E */
+const LATIN_CAPITAL_LETTER_E = 0x0045;
+/** e */
+const LATIN_SMALL_LETTER_E = 0x0065;
+/** { */
+const LEFT_CURLY_BRACKET = 0x007b;
+/** ( */
+const LEFT_PARENTHESIS = 0x0028;
+/** [ */
+const LEFT_SQUARE_BRACKET = 0x005b;
+/** < */
+const LESS_THAN_SIGN = 0x003c;
+/** \n */
+const LINE_FEED = 0x00a;
+/** \v */
+const LINE_TABULATION = 0x00b;
+/** _ */
+const LOW_LINE = 0x005f;
+/** \x10FFFF */
+const MAXIMUM_ALLOWED_CODEPOINT = 0x10FFFF;
+/** \x00 */
+const NULL = 0x000;
+/** # */
+const NUMBER_SIGN = 0x0023;
+/** % */
+const PERCENTAGE_SIGN = 0x0025;
+/** + */
+const PLUS_SIGN = 0x002b;
+/** " */
+const QUOTATION_MARK = 0x0022;
+/** � */
+const REPLACEMENT_CHARACTER = 0xFFFD;
+/** \ */
+const REVERSE_SOLIDUS = 0x005c;
+/** } */
+const RIGHT_CURLY_BRACKET = 0x007d;
+/** ) */
+const RIGHT_PARENTHESIS = 0x0029;
+/** ] */
+const RIGHT_SQUARE_BRACKET = 0x005d;
+/** ; */
+const SEMICOLON = 0x003b;
+/** \u0E */
+const SHIFT_OUT = 0x00e;
+/** / */
+const SOLIDUS = 0x002f;
+/** \u20 */
+const SPACE = 0x0020;
+/** u */
+const LATIN_SMALL_LETTER_U = 0x0075;
+/** U */
+const LATIN_CAPITAL_LETTER_U = 0x0055;
+/** r */
+const LATIN_SMALL_LETTER_R = 0x0072;
+/** R */
+const LATIN_CAPITAL_LETTER_R = 0x0052;
+/** l */
+const LATIN_SMALL_LETTER_L = 0x006c;
+/** L */
+const LATIN_CAPITAL_LETTER_L = 0x004c;
+/** ? */
+const QUESTION_MARK = 0x003f;
+/** 0 */
+const DIGIT_ZERO = 0x0030;
+/** F */
+const LATIN_CAPITAL_LETTER_F = 0x0046;
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
+function checkIfFourCodePointsWouldStartCDO(reader) {
+    return reader.source.codePointAt(reader.cursor) === LESS_THAN_SIGN && reader.source.codePointAt(reader.cursor + 1) === EXCLAMATION_MARK && reader.source.codePointAt(reader.cursor + 2) === HYPHEN_MINUS && reader.source.codePointAt(reader.cursor + 3) === HYPHEN_MINUS;
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokenizer-definitions
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#digit
+function isDigitCodePoint(search) {
+    return (typeof search !== "undefined") && search >= 0x0030 && search <= 0x0039;
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#uppercase-letter
+function isUppercaseLetterCodePoint(search) {
+    return (typeof search !== "undefined") && search >= 0x0041 && search <= 0x005a;
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#lowercase-letter
+function isLowercaseLetterCodePoint(search) {
+    return (typeof search !== "undefined") && search >= 0x0061 && search <= 0x007a;
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#hex-digit
+function isHexDigitCodePoint(search) {
+    return (typeof search !== "undefined") && ((search >= 0x0030 && search <= 0x0039) || // 0 .. 9
+        (search >= 0x0061 && search <= 0x0066) || // a .. f
+        (search >= 0x0041 && search <= 0x0046) // A .. F
+    );
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#letter
+function isLetterCodePoint(search) {
+    return isLowercaseLetterCodePoint(search) || isUppercaseLetterCodePoint(search);
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-start-code-point
+function isIdentStartCodePoint(search) {
+    return isLetterCodePoint(search) || isNonASCII_IdentCodePoint(search) || search === LOW_LINE;
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-code-point
+function isIdentCodePoint(search) {
+    return isIdentStartCodePoint(search) || isDigitCodePoint(search) || search === HYPHEN_MINUS;
+}
+// https://drafts.csswg.org/css-syntax/#non-ascii-ident-code-point
+function isNonASCII_IdentCodePoint(search) {
+    if (search === 0x00B7 ||
+        search === 0x200C ||
+        search === 0x200D ||
+        search === 0x203F ||
+        search === 0x2040 ||
+        search === 0x200C) {
+        return true;
+    }
+    if (typeof search === "undefined") {
+        return false;
+    }
+    if ((0x00C0 <= search && search <= 0x00D6) ||
+        (0x00D8 <= search && search <= 0x00F6) ||
+        (0x00F8 <= search && search <= 0x037D) ||
+        (0x037F <= search && search <= 0x1FFF) ||
+        (0x2070 <= search && search <= 0x218F) ||
+        (0x2C00 <= search && search <= 0x2FEF) ||
+        (0x3001 <= search && search <= 0xD7FF) ||
+        (0xF900 <= search && search <= 0xFDCF) ||
+        (0xFDF0 <= search && search <= 0xFFFD)) {
+        return true;
+    }
+    return search >= 0x10000;
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#non-printable-code-point
+function isNonPrintableCodePoint(search) {
+    return (typeof search !== "undefined") && ((search === LINE_TABULATION) ||
+        (search === DELETE) ||
+        (NULL <= search && search <= BACKSPACE) ||
+        (SHIFT_OUT <= search && search <= INFORMATION_SEPARATOR_ONE));
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
+function isNewLine(search) {
+    return search === LINE_FEED || search === CARRIAGE_RETURN || search === FORM_FEED;
+}
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#whitespace
+function isWhitespace(search) {
+    return search === SPACE || search === LINE_FEED || search === CHARACTER_TABULATION || search === CARRIAGE_RETURN || search === FORM_FEED;
+}
+// https://infra.spec.whatwg.org/#surrogate
+function isSurrogate(search) {
+    return (typeof search !== "undefined") && search >= 0xd800 && search <= 0xdfff;
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#starts-with-a-valid-escape
+function checkIfTwoCodePointsAreAValidEscape(reader) {
+    return (
+    // If the first code point is not U+005C REVERSE SOLIDUS (\), return false.
+    reader.source.codePointAt(reader.cursor) === REVERSE_SOLIDUS &&
+        // Otherwise, if the second code point is a newline, return false.
+        !isNewLine(reader.source.codePointAt(reader.cursor + 1)));
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#would-start-an-identifier
+function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader) {
+    // // U+002D HYPHEN-MINUS
+    if (reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS) {
+        // If the second code point is a U+002D HYPHEN-MINUS return true
+        if (reader.source.codePointAt(reader.cursor + 1) === HYPHEN_MINUS) {
+            return true;
+        }
+        // If the second code point is an ident-start code point return true
+        if (isIdentStartCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+            return true;
+        }
+        // If the second and third code points are a valid escape return true
+        if (reader.source.codePointAt(reader.cursor + 1) === REVERSE_SOLIDUS && !isNewLine(reader.source.codePointAt(reader.cursor + 2))) {
+            return true;
+        }
+        return false;
+    }
+    // ident-start code point
+    // Return true.
+    if (isIdentStartCodePoint(reader.source.codePointAt(reader.cursor))) {
+        return true;
+    }
+    // U+005C REVERSE SOLIDUS (\)
+    return checkIfTwoCodePointsAreAValidEscape(reader);
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#starts-with-a-number
+function checkIfThreeCodePointsWouldStartANumber(reader) {
+    if (reader.source.codePointAt(reader.cursor) === PLUS_SIGN || reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS) { // U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-)
+        // If the second code point is a digit, return true.
+        if (isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+            return true;
+        }
+        // Otherwise, if the second code point is a U+002E FULL STOP (.)
+        if (reader.source.codePointAt(reader.cursor + 1) === FULL_STOP) {
+            // and the third code point is a digit, return true.
+            return isDigitCodePoint(reader.source.codePointAt(reader.cursor + 2));
+        }
+        // Otherwise, return false.
+        return false;
+    }
+    else if (reader.source.codePointAt(reader.cursor) === FULL_STOP) { // U+002E FULL STOP (.)
+        // If the second code point is a digit, return true.
+        // Otherwise, return false.
+        return isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1));
+    }
+    return isDigitCodePoint(reader.source.codePointAt(reader.cursor)); // digit
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comments
+function checkIfTwoCodePointsStartAComment(reader) {
+    return (reader.source.codePointAt(reader.cursor) === SOLIDUS &&
+        reader.source.codePointAt(reader.cursor + 1) === ASTERISK);
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
+function checkIfThreeCodePointsWouldStartCDC(reader) {
+    return reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS && reader.source.codePointAt(reader.cursor + 1) === HYPHEN_MINUS && reader.source.codePointAt(reader.cursor + 2) === GREATER_THAN_SIGN;
+}
+
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/**
+ * All possible CSS token types
+ */
+var TokenType;
+(function (TokenType) {
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#comment-diagram}
+     */
+    TokenType["Comment"] = "comment";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-at-keyword-token}
+     */
+    TokenType["AtKeyword"] = "at-keyword-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-string-token}
+     */
+    TokenType["BadString"] = "bad-string-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-bad-url-token}
+     */
+    TokenType["BadURL"] = "bad-url-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdc-token}
+     */
+    TokenType["CDC"] = "CDC-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-cdo-token}
+     */
+    TokenType["CDO"] = "CDO-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-colon-token}
+     */
+    TokenType["Colon"] = "colon-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-comma-token}
+     */
+    TokenType["Comma"] = "comma-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-delim-token}
+     */
+    TokenType["Delim"] = "delim-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-dimension-token}
+     */
+    TokenType["Dimension"] = "dimension-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-eof-token}
+     */
+    TokenType["EOF"] = "EOF-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-function-token}
+     */
+    TokenType["Function"] = "function-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-hash-token}
+     */
+    TokenType["Hash"] = "hash-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-ident-token}
+     */
+    TokenType["Ident"] = "ident-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token}
+     */
+    TokenType["Number"] = "number-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-percentage-token}
+     */
+    TokenType["Percentage"] = "percentage-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-semicolon-token}
+     */
+    TokenType["Semicolon"] = "semicolon-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-string-token}
+     */
+    TokenType["String"] = "string-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-url-token}
+     */
+    TokenType["URL"] = "url-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#typedef-whitespace-token}
+     */
+    TokenType["Whitespace"] = "whitespace-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-paren}
+     */
+    TokenType["OpenParen"] = "(-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-paren}
+     */
+    TokenType["CloseParen"] = ")-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-square}
+     */
+    TokenType["OpenSquare"] = "[-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-square}
+     */
+    TokenType["CloseSquare"] = "]-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-open-curly}
+     */
+    TokenType["OpenCurly"] = "{-token";
+    /**
+     * @see {@link https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokendef-close-curly}
+     */
+    TokenType["CloseCurly"] = "}-token";
+    /**
+     * Only appears in the token stream when the `unicodeRangesAllowed` option is set to true.
+     *
+     * @example
+     * ```js
+     * import { tokenize } from '@csstools/css-tokenizer';
+     *
+     * const tokens = tokenize({
+     * 	css: `U+0025-00FF, U+4??`,
+     * 	unicodeRangesAllowed: true,
+     * });
+     *
+     * console.log(tokens);
+     * ```
+     *
+     * @see {@link https://drafts.csswg.org/css-syntax/#typedef-unicode-range-token}
+     */
+    TokenType["UnicodeRange"] = "unicode-range-token";
+})(TokenType || (TokenType = {}));
+/**
+ * The type of number token
+ * Either `integer` or `number`
+ */
+var NumberType;
+(function (NumberType) {
+    NumberType["Integer"] = "integer";
+    NumberType["Number"] = "number";
+})(NumberType || (NumberType = {}));
+/**
+ * The type of hash token
+ */
+var HashType;
+(function (HashType) {
+    /**
+     * The hash token did not start with an ident sequence (e.g. `#-2`)
+     */
+    HashType["Unrestricted"] = "unrestricted";
+    /**
+     * The hash token started with an ident sequence (e.g. `#foo`)
+     * Only hash tokens with the "id" type are valid ID selectors.
+     */
+    HashType["ID"] = "id";
+})(HashType || (HashType = {}));
+/**
+ * Get the mirror variant type of a given token type
+ *
+ * @example
+ *
+ * ```js
+ * const input = TokenType.OpenParen;
+ * const output = mirrorVariantType(input);
+ *
+ * console.log(output); // TokenType.CloseParen
+ * ```
+ */
+function mirrorVariantType(type) {
+    switch (type) {
+        case TokenType.OpenParen:
+            return TokenType.CloseParen;
+        case TokenType.CloseParen:
+            return TokenType.OpenParen;
+        case TokenType.OpenCurly:
+            return TokenType.CloseCurly;
+        case TokenType.CloseCurly:
+            return TokenType.OpenCurly;
+        case TokenType.OpenSquare:
+            return TokenType.CloseSquare;
+        case TokenType.CloseSquare:
+            return TokenType.OpenSquare;
+        default:
+            return null;
+    }
+}
+/**
+ * Get the mirror variant of a given token
+ *
+ * @example
+ *
+ * ```js
+ * const input = [TokenType.OpenParen, '(', 0, 1, undefined];
+ * const output = mirrorVariant(input);
+ *
+ * console.log(output); // [TokenType.CloseParen, ')', -1, -1, undefined]
+ * ```
+ */
+function mirrorVariant(token) {
+    switch (token[0]) {
+        case TokenType.OpenParen:
+            return [TokenType.CloseParen, ')', -1, -1, undefined];
+        case TokenType.CloseParen:
+            return [TokenType.OpenParen, '(', -1, -1, undefined];
+        case TokenType.OpenCurly:
+            return [TokenType.CloseCurly, '}', -1, -1, undefined];
+        case TokenType.CloseCurly:
+            return [TokenType.OpenCurly, '{', -1, -1, undefined];
+        case TokenType.OpenSquare:
+            return [TokenType.CloseSquare, ']', -1, -1, undefined];
+        case TokenType.CloseSquare:
+            return [TokenType.OpenSquare, '[', -1, -1, undefined];
+        default:
+            return null;
+    }
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-comment
+function consumeComment(ctx, reader) {
+    reader.advanceCodePoint(2);
+    while (true) {
+        const codePoint = reader.readCodePoint();
+        if (typeof codePoint === "undefined") {
+            const token = [
+                TokenType.Comment,
+                reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                reader.representationStart,
+                reader.representationEnd,
+                undefined,
+            ];
+            ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.UnexpectedEOFInComment, reader.representationStart, reader.representationEnd, [
+                '4.3.2. Consume comments',
+                'Unexpected EOF',
+            ], token));
+            return token;
+        }
+        if (codePoint !== ASTERISK) {
+            continue;
+        }
+        if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
+            continue;
+        }
+        if (reader.source.codePointAt(reader.cursor) === SOLIDUS) {
+            reader.advanceCodePoint();
+            break;
+        }
+    }
+    return [
+        TokenType.Comment,
+        reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+        reader.representationStart,
+        reader.representationEnd,
+        undefined,
+    ];
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-escaped-code-point
+function consumeEscapedCodePoint(ctx, reader) {
+    const codePoint = reader.readCodePoint();
+    if (typeof codePoint === "undefined") {
+        ctx.onParseError(new ParseError(ParseErrorMessage.UnexpectedEOFInEscapedCodePoint, reader.representationStart, reader.representationEnd, [
+            '4.3.7. Consume an escaped code point',
+            'Unexpected EOF',
+        ]));
+        return REPLACEMENT_CHARACTER;
+    }
+    if (isHexDigitCodePoint(codePoint)) {
+        const hexSequence = [codePoint];
+        let nextCodePoint;
+        while ((typeof (nextCodePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") && isHexDigitCodePoint(nextCodePoint) && hexSequence.length < 6) {
+            hexSequence.push(nextCodePoint);
+            reader.advanceCodePoint();
+        }
+        if (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+            reader.advanceCodePoint();
+        }
+        const codePointLiteral = parseInt(String.fromCodePoint(...hexSequence), 16);
+        if (codePointLiteral === 0) {
+            return REPLACEMENT_CHARACTER;
+        }
+        if (isSurrogate(codePointLiteral)) {
+            return REPLACEMENT_CHARACTER;
+        }
+        if (codePointLiteral > MAXIMUM_ALLOWED_CODEPOINT) {
+            return REPLACEMENT_CHARACTER;
+        }
+        return codePointLiteral;
+    }
+    return codePoint;
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-name
+function consumeIdentSequence(ctx, reader) {
+    const result = [];
+    while (true) {
+        const codePoint = reader.source.codePointAt(reader.cursor);
+        if (isIdentCodePoint(codePoint)) {
+            result.push(codePoint);
+            reader.advanceCodePoint(1 + +(codePoint > 0xffff));
+            continue;
+        }
+        if (checkIfTwoCodePointsAreAValidEscape(reader)) {
+            reader.advanceCodePoint();
+            result.push(consumeEscapedCodePoint(ctx, reader));
+            continue;
+        }
+        return result;
+    }
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-token
+function consumeHashToken(ctx, reader) {
+    reader.advanceCodePoint();
+    const codePoint = reader.source.codePointAt(reader.cursor);
+    if ((typeof codePoint !== "undefined") && (isIdentCodePoint(codePoint) ||
+        checkIfTwoCodePointsAreAValidEscape(reader))) {
+        let hashType = HashType.Unrestricted;
+        if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
+            hashType = HashType.ID;
+        }
+        const identSequence = consumeIdentSequence(ctx, reader);
+        return [
+            TokenType.Hash,
+            reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+            reader.representationStart,
+            reader.representationEnd,
+            {
+                value: String.fromCodePoint(...identSequence),
+                type: hashType,
+            },
+        ];
+    }
+    return [
+        TokenType.Delim,
+        '#',
+        reader.representationStart,
+        reader.representationEnd,
+        {
+            value: '#',
+        },
+    ];
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-number
+function consumeNumber(ctx, reader) {
+    // 1. Initially set type to "integer".
+    let type = NumberType.Integer;
+    // 2. If the next input code point is U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-), consume it and append it to repr.
+    if (reader.source.codePointAt(reader.cursor) === PLUS_SIGN || reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS) {
+        reader.advanceCodePoint();
+    }
+    // 3. While the next input code point is a digit, consume it and append it to repr.
+    while (isDigitCodePoint(reader.source.codePointAt(reader.cursor))) {
+        reader.advanceCodePoint();
+    }
+    // 4. If the next 2 input code points are U+002E FULL STOP (.) followed by a digit, then:
+    if (reader.source.codePointAt(reader.cursor) === FULL_STOP && isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+        // 4.1. Consume them.
+        reader.advanceCodePoint(2);
+        // 4.3. Set type to "number".
+        type = NumberType.Number;
+        // 4.4. While the next input code point is a digit, consume it and append it to repr.
+        while (isDigitCodePoint(reader.source.codePointAt(reader.cursor))) {
+            reader.advanceCodePoint();
+        }
+    }
+    // 5. If the next 2 or 3 input code points are U+0045 LATIN CAPITAL LETTER E (E) or U+0065 LATIN SMALL LETTER E (e),
+    // optionally followed by U+002D HYPHEN-MINUS (-) or U+002B PLUS SIGN (+),
+    // followed by a digit, then:
+    if (reader.source.codePointAt(reader.cursor) === LATIN_SMALL_LETTER_E || reader.source.codePointAt(reader.cursor) === LATIN_CAPITAL_LETTER_E) {
+        if (isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+            // 5.1. Consume them.
+            reader.advanceCodePoint(2);
+        }
+        else if ((reader.source.codePointAt(reader.cursor + 1) === HYPHEN_MINUS || reader.source.codePointAt(reader.cursor + 1) === PLUS_SIGN) &&
+            isDigitCodePoint(reader.source.codePointAt(reader.cursor + 2))) {
+            // 5.1. Consume them.
+            reader.advanceCodePoint(3);
+        }
+        else {
+            return type;
+        }
+        // 5.3. Set type to "number".
+        type = NumberType.Number;
+        // 5.4. While the next input code point is a digit, consume it and append it to repr.
+        while (isDigitCodePoint(reader.source.codePointAt(reader.cursor))) {
+            reader.advanceCodePoint();
+        }
+    }
+    return type;
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-numeric-token
+function consumeNumericToken(ctx, reader) {
+    let signCharacter = undefined;
+    {
+        const peeked = reader.source.codePointAt(reader.cursor);
+        if (peeked === HYPHEN_MINUS) {
+            signCharacter = '-';
+        }
+        else if (peeked === PLUS_SIGN) {
+            signCharacter = '+';
+        }
+    }
+    const numberType = consumeNumber(ctx, reader);
+    const numberValue = parseFloat(reader.source.slice(reader.representationStart, reader.representationEnd + 1));
+    if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
+        const unit = consumeIdentSequence(ctx, reader);
+        return [
+            TokenType.Dimension,
+            reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+            reader.representationStart,
+            reader.representationEnd,
+            {
+                value: numberValue,
+                signCharacter: signCharacter,
+                type: numberType,
+                unit: String.fromCodePoint(...unit),
+            },
+        ];
+    }
+    if (reader.source.codePointAt(reader.cursor) === PERCENTAGE_SIGN) {
+        reader.advanceCodePoint();
+        return [
+            TokenType.Percentage,
+            reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+            reader.representationStart,
+            reader.representationEnd,
+            {
+                value: numberValue,
+                signCharacter: signCharacter,
+            },
+        ];
+    }
+    return [
+        TokenType.Number,
+        reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+        reader.representationStart,
+        reader.representationEnd,
+        {
+            value: numberValue,
+            signCharacter: signCharacter,
+            type: numberType,
+        },
+    ];
+}
+
+function consumeWhiteSpace(reader) {
+    while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+        reader.advanceCodePoint();
+    }
+    return [
+        TokenType.Whitespace,
+        reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+        reader.representationStart,
+        reader.representationEnd,
+        undefined,
+    ];
+}
+
+/**
+ * @internal
+ */
+class Reader {
+    cursor = 0;
+    source = '';
+    representationStart = 0;
+    representationEnd = -1;
+    constructor(source) {
+        this.source = source;
+    }
+    advanceCodePoint(n = 1) {
+        this.cursor = this.cursor + n;
+        this.representationEnd = this.cursor - 1;
+    }
+    readCodePoint() {
+        const codePoint = this.source.codePointAt(this.cursor);
+        if (typeof codePoint === "undefined") {
+            return undefined;
+        }
+        this.cursor = this.cursor + 1;
+        this.representationEnd = this.cursor - 1;
+        return codePoint;
+    }
+    unreadCodePoint(n = 1) {
+        this.cursor = this.cursor - n;
+        this.representationEnd = this.cursor - 1;
+        return;
+    }
+    resetRepresentation() {
+        this.representationStart = this.cursor;
+        this.representationEnd = -1;
+    }
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-string-token
+function consumeStringToken(ctx, reader) {
+    let result = '';
+    const first = reader.readCodePoint();
+    while (true) {
+        const next = reader.readCodePoint();
+        if (typeof next === "undefined") {
+            const token = [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
+            ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.UnexpectedEOFInString, reader.representationStart, reader.representationEnd, [
+                '4.3.5. Consume a string token',
+                'Unexpected EOF',
+            ], token));
+            return token;
+        }
+        if (isNewLine(next)) {
+            reader.unreadCodePoint();
+            const token = [TokenType.BadString, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, undefined];
+            ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.UnexpectedNewLineInString, reader.representationStart, ((reader.source.codePointAt(reader.cursor) === CARRIAGE_RETURN &&
+                reader.source.codePointAt(reader.cursor + 1) === LINE_FEED) ?
+                // CR LF
+                reader.representationEnd + 2 :
+                // LF
+                reader.representationEnd + 1), [
+                '4.3.5. Consume a string token',
+                'Unexpected newline',
+            ], token));
+            return token;
+        }
+        if (next === first) {
+            return [TokenType.String, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, { value: result }];
+        }
+        if (next === REVERSE_SOLIDUS) {
+            if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
+                continue;
+            }
+            if (isNewLine(reader.source.codePointAt(reader.cursor))) {
+                if (reader.source.codePointAt(reader.cursor) === CARRIAGE_RETURN &&
+                    reader.source.codePointAt(reader.cursor + 1) === LINE_FEED) {
+                    reader.advanceCodePoint();
+                }
+                reader.advanceCodePoint();
+                continue;
+            }
+            result = result + String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
+            continue;
+        }
+        result = result + String.fromCodePoint(next);
+    }
+}
+
+function checkIfCodePointsMatchURLIdent(codePoints) {
+    return (codePoints.length === 3 &&
+        (codePoints[0] === LATIN_SMALL_LETTER_U ||
+            codePoints[0] === LATIN_CAPITAL_LETTER_U) &&
+        (codePoints[1] === LATIN_SMALL_LETTER_R ||
+            codePoints[1] === LATIN_CAPITAL_LETTER_R) &&
+        (codePoints[2] === LATIN_SMALL_LETTER_L ||
+            codePoints[2] === LATIN_CAPITAL_LETTER_L));
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-remnants-of-bad-url
+function consumeBadURL(ctx, reader) {
+    while (true) {
+        const codePoint = reader.source.codePointAt(reader.cursor);
+        if (typeof codePoint === "undefined") {
+            return;
+        }
+        if (codePoint === RIGHT_PARENTHESIS) {
+            reader.advanceCodePoint();
+            return;
+        }
+        if (checkIfTwoCodePointsAreAValidEscape(reader)) {
+            reader.advanceCodePoint();
+            consumeEscapedCodePoint(ctx, reader);
+            continue;
+        }
+        reader.advanceCodePoint();
+        continue;
+    }
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-url-token
+function consumeUrlToken(ctx, reader) {
+    while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+        reader.advanceCodePoint();
+    }
+    let string = '';
+    while (true) {
+        if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
+            const token = [
+                TokenType.URL,
+                reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                reader.representationStart,
+                reader.representationEnd,
+                {
+                    value: string,
+                },
+            ];
+            ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.UnexpectedEOFInURL, reader.representationStart, reader.representationEnd, [
+                '4.3.6. Consume a url token',
+                'Unexpected EOF',
+            ], token));
+            return token;
+        }
+        if (reader.source.codePointAt(reader.cursor) === RIGHT_PARENTHESIS) {
+            reader.advanceCodePoint();
+            return [
+                TokenType.URL,
+                reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                reader.representationStart,
+                reader.representationEnd,
+                {
+                    value: string,
+                },
+            ];
+        }
+        if (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+            reader.advanceCodePoint();
+            while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+                reader.advanceCodePoint();
+            }
+            if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
+                const token = [
+                    TokenType.URL,
+                    reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                    reader.representationStart,
+                    reader.representationEnd,
+                    {
+                        value: string,
+                    },
+                ];
+                ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.UnexpectedEOFInURL, reader.representationStart, reader.representationEnd, [
+                    '4.3.6. Consume a url token',
+                    'Consume as much whitespace as possible',
+                    'Unexpected EOF',
+                ], token));
+                return token;
+            }
+            if (reader.source.codePointAt(reader.cursor) === RIGHT_PARENTHESIS) {
+                reader.advanceCodePoint();
+                return [
+                    TokenType.URL,
+                    reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                    reader.representationStart,
+                    reader.representationEnd,
+                    {
+                        value: string,
+                    },
+                ];
+            }
+            consumeBadURL(ctx, reader);
+            return [
+                TokenType.BadURL,
+                reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                reader.representationStart,
+                reader.representationEnd,
+                undefined,
+            ];
+        }
+        const codePoint = reader.source.codePointAt(reader.cursor);
+        if (codePoint === QUOTATION_MARK || codePoint === APOSTROPHE || codePoint === LEFT_PARENTHESIS || isNonPrintableCodePoint(codePoint)) {
+            consumeBadURL(ctx, reader);
+            const token = [
+                TokenType.BadURL,
+                reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                reader.representationStart,
+                reader.representationEnd,
+                undefined,
+            ];
+            ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.UnexpectedCharacterInURL, reader.representationStart, reader.representationEnd, [
+                '4.3.6. Consume a url token',
+                'Unexpected U+0022 QUOTATION MARK ("), U+0027 APOSTROPHE (\'), U+0028 LEFT PARENTHESIS (() or non-printable code point',
+            ], token));
+            return token;
+        }
+        if (codePoint === REVERSE_SOLIDUS) {
+            if (checkIfTwoCodePointsAreAValidEscape(reader)) {
+                reader.advanceCodePoint();
+                string = string + String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
+                continue;
+            }
+            consumeBadURL(ctx, reader);
+            const token = [
+                TokenType.BadURL,
+                reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                reader.representationStart,
+                reader.representationEnd,
+                undefined,
+            ];
+            ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.InvalidEscapeSequenceInURL, reader.representationStart, reader.representationEnd, [
+                '4.3.6. Consume a url token',
+                'U+005C REVERSE SOLIDUS (\\)',
+                'The input stream does not start with a valid escape sequence',
+            ], token));
+            return token;
+        }
+        string = string + reader.source[reader.cursor];
+        reader.advanceCodePoint();
+    }
+}
+
+// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-ident-like-token
+function consumeIdentLikeToken(ctx, reader) {
+    const codePoints = consumeIdentSequence(ctx, reader);
+    if (reader.source.codePointAt(reader.cursor) !== LEFT_PARENTHESIS) {
+        return [
+            TokenType.Ident,
+            reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+            reader.representationStart,
+            reader.representationEnd,
+            {
+                value: String.fromCodePoint(...codePoints),
+            },
+        ];
+    }
+    if (checkIfCodePointsMatchURLIdent(codePoints)) {
+        reader.advanceCodePoint();
+        let read = 0;
+        while (true) {
+            const firstIsWhitespace = isWhitespace(reader.source.codePointAt(reader.cursor));
+            const secondIsWhitespace = isWhitespace(reader.source.codePointAt(reader.cursor + 1));
+            if (firstIsWhitespace && secondIsWhitespace) {
+                read = read + 1;
+                reader.advanceCodePoint(1);
+                continue;
+            }
+            const firstNonWhitespace = firstIsWhitespace ? reader.source.codePointAt(reader.cursor + 1) : reader.source.codePointAt(reader.cursor);
+            if (firstNonWhitespace === QUOTATION_MARK || firstNonWhitespace === APOSTROPHE) {
+                if (read > 0) {
+                    // https://github.com/w3c/csswg-drafts/issues/8280#issuecomment-1370566921
+                    reader.unreadCodePoint(read);
+                }
+                return [
+                    TokenType.Function,
+                    reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+                    reader.representationStart,
+                    reader.representationEnd,
+                    {
+                        value: String.fromCodePoint(...codePoints),
+                    },
+                ];
+            }
+            break;
+        }
+        return consumeUrlToken(ctx, reader);
+    }
+    reader.advanceCodePoint();
+    return [
+        TokenType.Function,
+        reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+        reader.representationStart,
+        reader.representationEnd,
+        {
+            value: String.fromCodePoint(...codePoints),
+        },
+    ];
+}
+
+// https://drafts.csswg.org/css-syntax/#starts-a-unicode-range
+function checkIfThreeCodePointsWouldStartAUnicodeRange(reader) {
+    if (
+    // The first code point is either U+0055 LATIN CAPITAL LETTER U (U) or U+0075 LATIN SMALL LETTER U (u)
+    (reader.source.codePointAt(reader.cursor) === LATIN_SMALL_LETTER_U ||
+        reader.source.codePointAt(reader.cursor) === LATIN_CAPITAL_LETTER_U) &&
+        // The second code point is U+002B PLUS SIGN (+).
+        reader.source.codePointAt(reader.cursor + 1) === PLUS_SIGN &&
+        // The third code point is either U+003F QUESTION MARK (?) or a hex digit
+        (reader.source.codePointAt(reader.cursor + 2) === QUESTION_MARK ||
+            isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 2)))) {
+        // then return true.
+        return true;
+    }
+    // Otherwise return false.
+    return false;
+}
+
+// https://drafts.csswg.org/css-syntax/#starts-a-unicode-range
+function consumeUnicodeRangeToken(ctx, reader) {
+    // 1. Consume the next two input code points and discard them.
+    reader.advanceCodePoint(2);
+    const firstSegment = [];
+    const secondSegment = [];
+    // 2. Consume as many hex digits as possible,
+    // but no more than 6.
+    let codePoint;
+    while ((typeof (codePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") &&
+        firstSegment.length < 6 &&
+        isHexDigitCodePoint(codePoint)) {
+        firstSegment.push(codePoint);
+        reader.advanceCodePoint();
+    }
+    // 2. If less than 6 hex digits were consumed,
+    // consume as many U+003F QUESTION MARK (?) code points as possible,
+    // but no more than enough to make the total of hex digits and U+003F QUESTION MARK (?) code points equal to 6.
+    while ((typeof (codePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") &&
+        firstSegment.length < 6 &&
+        codePoint === QUESTION_MARK) {
+        if (secondSegment.length === 0) {
+            secondSegment.push(...firstSegment);
+        }
+        // 3. If first segment contains any question mark code points, then:
+        // 3.1 Replace the question marks in first segment with U+0030 DIGIT ZERO (0) code points.
+        firstSegment.push(DIGIT_ZERO);
+        // 3.2.Replace the question marks in first segment with U+0046 LATIN CAPITAL LETTER F (F) code points.
+        secondSegment.push(LATIN_CAPITAL_LETTER_F);
+        reader.advanceCodePoint();
+    }
+    if (!secondSegment.length) {
+        // 5. If the next 2 input code points are U+002D HYPHEN-MINUS (-) followed by a hex digit
+        if (reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS &&
+            isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+            // 5.1. Consume the next input code point.
+            reader.advanceCodePoint();
+            // 5.2 Consume as many hex digits as possible,
+            // but no more than 6.
+            while ((typeof (codePoint = reader.source.codePointAt(reader.cursor)) !== "undefined") &&
+                secondSegment.length < 6 &&
+                isHexDigitCodePoint(codePoint)) {
+                secondSegment.push(codePoint);
+                reader.advanceCodePoint();
+            }
+        }
+    }
+    if (!secondSegment.length) {
+        // Interpret the consumed code points as a hexadecimal number.
+        const startOfRange = parseInt(String.fromCodePoint(...firstSegment), 16);
+        // Return a new <unicode-range-token> both starting and ending at start of range.
+        return [
+            TokenType.UnicodeRange,
+            reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+            reader.representationStart,
+            reader.representationEnd,
+            {
+                startOfRange: startOfRange,
+                endOfRange: startOfRange,
+            },
+        ];
+    }
+    // Interpret the consumed code points as a hexadecimal number.
+    const startOfRange = parseInt(String.fromCodePoint(...firstSegment), 16);
+    const endOfRange = parseInt(String.fromCodePoint(...secondSegment), 16);
+    // Return a new <unicode-range-token> starting at start of range and ending at end of range.
+    return [
+        TokenType.UnicodeRange,
+        reader.source.slice(reader.representationStart, reader.representationEnd + 1),
+        reader.representationStart,
+        reader.representationEnd,
+        {
+            startOfRange: startOfRange,
+            endOfRange: endOfRange,
+        },
+    ];
+}
+
+/**
+ * Tokenize a CSS string into a list of tokens.
+ */
+function tokenize(input, options) {
+    const t = tokenizer(input, options);
+    const tokens = [];
+    {
+        while (!t.endOfFile()) {
+            const token = t.nextToken();
+            if (token) {
+                tokens.push(token);
+            }
+        }
+        const token = t.nextToken(); // EOF-token
+        if (token) {
+            tokens.push(token);
+        }
+    }
+    return tokens;
+}
+/**
+ * Create a tokenizer for a CSS string.
+ */
+function tokenizer(input, options) {
+    const css = input.css.valueOf();
+    console.log(css.codePointAt(0));
+    const unicodeRangesAllowed = input.unicodeRangesAllowed ?? false;
+    const reader = new Reader(css);
+    console.log(reader.source.codePointAt(0));
+    const ctx = {
+        onParseError: options?.onParseError ?? noop,
+    };
+    const endOfFile = () => {
+        console.log('ok? eof');
+        console.log(typeof reader);
+        const y = reader.source.codePointAt(reader.cursor);
+        console.log(y);
+        const x = typeof y === "undefined";
+        console.log('ok eof');
+        return x;
+    };
+    const nextToken = () => {
+        reader.resetRepresentation();
+        console.log('ok?');
+        const peeked = reader.source.codePointAt(reader.cursor);
+        console.log('ok');
+        if (typeof peeked === "undefined") {
+            return [TokenType.EOF, '', -1, -1, undefined];
+        }
+        if (peeked === SOLIDUS && checkIfTwoCodePointsStartAComment(reader)) {
+            return consumeComment(ctx, reader);
+        }
+        if (unicodeRangesAllowed && (peeked === LATIN_SMALL_LETTER_U ||
+            peeked === LATIN_CAPITAL_LETTER_U) &&
+            checkIfThreeCodePointsWouldStartAUnicodeRange(reader)) {
+            return consumeUnicodeRangeToken(ctx, reader);
+        }
+        if (isIdentStartCodePoint(peeked)) {
+            return consumeIdentLikeToken(ctx, reader);
+        }
+        if (isDigitCodePoint(peeked)) {
+            return consumeNumericToken(ctx, reader);
+        }
+        // Simple, one character tokens:
+        switch (peeked) {
+            case COMMA:
+                reader.advanceCodePoint();
+                return [TokenType.Comma, ',', reader.representationStart, reader.representationEnd, undefined];
+            case COLON:
+                reader.advanceCodePoint();
+                return [TokenType.Colon, ':', reader.representationStart, reader.representationEnd, undefined];
+            case SEMICOLON:
+                reader.advanceCodePoint();
+                return [TokenType.Semicolon, ';', reader.representationStart, reader.representationEnd, undefined];
+            case LEFT_PARENTHESIS:
+                reader.advanceCodePoint();
+                return [TokenType.OpenParen, '(', reader.representationStart, reader.representationEnd, undefined];
+            case RIGHT_PARENTHESIS:
+                reader.advanceCodePoint();
+                return [TokenType.CloseParen, ')', reader.representationStart, reader.representationEnd, undefined];
+            case LEFT_SQUARE_BRACKET:
+                reader.advanceCodePoint();
+                return [TokenType.OpenSquare, '[', reader.representationStart, reader.representationEnd, undefined];
+            case RIGHT_SQUARE_BRACKET:
+                reader.advanceCodePoint();
+                return [TokenType.CloseSquare, ']', reader.representationStart, reader.representationEnd, undefined];
+            case LEFT_CURLY_BRACKET:
+                reader.advanceCodePoint();
+                return [TokenType.OpenCurly, '{', reader.representationStart, reader.representationEnd, undefined];
+            case RIGHT_CURLY_BRACKET:
+                reader.advanceCodePoint();
+                return [TokenType.CloseCurly, '}', reader.representationStart, reader.representationEnd, undefined];
+            case APOSTROPHE:
+            case QUOTATION_MARK:
+                return consumeStringToken(ctx, reader);
+            case NUMBER_SIGN:
+                return consumeHashToken(ctx, reader);
+            case PLUS_SIGN:
+            case FULL_STOP:
+                if (checkIfThreeCodePointsWouldStartANumber(reader)) {
+                    return consumeNumericToken(ctx, reader);
+                }
+                reader.advanceCodePoint();
+                return [TokenType.Delim, reader.source[reader.representationStart], reader.representationStart, reader.representationEnd, {
+                        value: reader.source[reader.representationStart],
+                    }];
+            case LINE_FEED:
+            case CARRIAGE_RETURN:
+            case FORM_FEED:
+            case CHARACTER_TABULATION:
+            case SPACE:
+                return consumeWhiteSpace(reader);
+            case HYPHEN_MINUS:
+                if (checkIfThreeCodePointsWouldStartANumber(reader)) {
+                    return consumeNumericToken(ctx, reader);
+                }
+                if (checkIfThreeCodePointsWouldStartCDC(reader)) {
+                    reader.advanceCodePoint(3);
+                    return [TokenType.CDC, '-->', reader.representationStart, reader.representationEnd, undefined];
+                }
+                if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
+                    return consumeIdentLikeToken(ctx, reader);
+                }
+                reader.advanceCodePoint();
+                return [TokenType.Delim, '-', reader.representationStart, reader.representationEnd, {
+                        value: '-',
+                    }];
+            case LESS_THAN_SIGN:
+                if (checkIfFourCodePointsWouldStartCDO(reader)) {
+                    reader.advanceCodePoint(4);
+                    return [TokenType.CDO, '<!--', reader.representationStart, reader.representationEnd, undefined];
+                }
+                reader.advanceCodePoint();
+                return [TokenType.Delim, '<', reader.representationStart, reader.representationEnd, {
+                        value: '<',
+                    }];
+            case COMMERCIAL_AT:
+                reader.advanceCodePoint();
+                if (checkIfThreeCodePointsWouldStartAnIdentSequence(ctx, reader)) {
+                    const identSequence = consumeIdentSequence(ctx, reader);
+                    return [TokenType.AtKeyword, reader.source.slice(reader.representationStart, reader.representationEnd + 1), reader.representationStart, reader.representationEnd, {
+                            value: String.fromCodePoint(...identSequence),
+                        }];
+                }
+                return [TokenType.Delim, '@', reader.representationStart, reader.representationEnd, {
+                        value: '@',
+                    }];
+            case REVERSE_SOLIDUS: {
+                if (checkIfTwoCodePointsAreAValidEscape(reader)) {
+                    return consumeIdentLikeToken(ctx, reader);
+                }
+                reader.advanceCodePoint();
+                const token = [TokenType.Delim, '\\', reader.representationStart, reader.representationEnd, {
+                        value: '\\',
+                    }];
+                ctx.onParseError(new ParseErrorWithToken(ParseErrorMessage.InvalidEscapeSequenceAfterBackslash, reader.representationStart, reader.representationEnd, [
+                    '4.3.1. Consume a token',
+                    'U+005C REVERSE SOLIDUS (\\)',
+                    'The input stream does not start with a valid escape sequence',
+                ], token));
+                return token;
+            }
+        }
+        reader.advanceCodePoint();
+        return [TokenType.Delim, reader.source[reader.representationStart], reader.representationStart, reader.representationEnd, {
+                value: reader.source[reader.representationStart],
+            }];
+    };
+    return {
+        nextToken: nextToken,
+        endOfFile: endOfFile,
+    };
+}
+function noop() { }
+
+/**
+ * Set the ident value and update the string representation.
+ * This handles escaping.
+ */
+function mutateIdent(ident, newValue) {
+    const codePoints = [];
+    for (const codePoint of newValue) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        codePoints.push(codePoint.codePointAt(0));
+    }
+    const result = String.fromCodePoint(...ensureThatValueRoundTripsAsIdent(codePoints));
+    ident[1] = result;
+    ident[4].value = newValue;
+}
+/**
+ * Set the unit and update the string representation.
+ * This handles escaping.
+ */
+function mutateUnit(ident, newUnit) {
+    const codePoints = [];
+    for (const codePoint of newUnit) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        codePoints.push(codePoint.codePointAt(0));
+    }
+    const escapedCodePoints = ensureThatValueRoundTripsAsIdent(codePoints);
+    if (escapedCodePoints[0] === 101) { // `e`
+        insertEscapedCodePoint(escapedCodePoints, 0, escapedCodePoints[0]);
+    }
+    const result = String.fromCodePoint(...escapedCodePoints);
+    const signCharacter = ident[4].signCharacter === '+' ? ident[4].signCharacter : '';
+    const numericValue = ident[4].value.toString();
+    ident[1] = `${signCharacter}${numericValue}${result}`;
+    ident[4].unit = newUnit;
+}
+function ensureThatValueRoundTripsAsIdent(codePoints) {
+    let remainderStartIndex = 0;
+    if (codePoints[0] === HYPHEN_MINUS && codePoints[1] === HYPHEN_MINUS) {
+        remainderStartIndex = 2;
+    }
+    else if (codePoints[0] === HYPHEN_MINUS && codePoints[1]) {
+        remainderStartIndex = 2;
+        if (!isIdentStartCodePoint(codePoints[1])) {
+            remainderStartIndex += insertEscapedCodePoint(codePoints, 1, codePoints[1]);
+        }
+    }
+    else if (isIdentStartCodePoint(codePoints[0])) {
+        remainderStartIndex = 1;
+    }
+    else {
+        remainderStartIndex = 1;
+        remainderStartIndex += insertEscapedCodePoint(codePoints, 0, codePoints[0]);
+    }
+    for (let i = remainderStartIndex; i < codePoints.length; i++) {
+        if (isIdentCodePoint(codePoints[i])) {
+            continue;
+        }
+        i += insertEscapedCodePoint(codePoints, i, codePoints[i]);
+    }
+    return codePoints;
+}
+function insertEscapedCodePoint(codePoints, index, codePoint) {
+    const hexRepresentation = codePoint.toString(16);
+    const codePointsForHexRepresentation = [];
+    for (const x of hexRepresentation) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        codePointsForHexRepresentation.push(x.codePointAt(0));
+    }
+    const next = codePoints[index + 1];
+    if ((index === codePoints.length - 1) ||
+        (next && isHexDigitCodePoint(next))) {
+        codePoints.splice(index, 1, 92, // `\` backslash
+        ...codePointsForHexRepresentation, 32);
+        return 1 + codePointsForHexRepresentation.length;
+    }
+    codePoints.splice(index, 1, 92, // `\` backslash
+    ...codePointsForHexRepresentation);
+    return codePointsForHexRepresentation.length;
+}
+
+const tokenTypes = Object.values(TokenType);
+/**
+ * Assert that a given value has the general structure of a CSS token:
+ * 1. is an array.
+ * 2. has at least four items.
+ * 3. has a known token type.
+ * 4. has a string representation.
+ * 5. has a start position.
+ * 6. has an end position.
+ */
+function isToken(x) {
+    if (!Array.isArray(x)) {
+        return false;
+    }
+    if (x.length < 4) {
+        return false;
+    }
+    if (!tokenTypes.includes(x[0])) {
+        return false;
+    }
+    if (typeof x[1] !== 'string') {
+        return false;
+    }
+    if (typeof x[2] !== 'number') {
+        return false;
+    }
+    if (typeof x[3] !== 'number') {
+        return false;
+    }
+    return true;
+}
+/**
+ * Assert that a token is a numeric token
+ */
+function isTokenNumeric(x) {
+    switch (x[0]) {
+        case TokenType.Dimension:
+        case TokenType.Number:
+        case TokenType.Percentage:
+            return true;
+        default:
+            return false;
+    }
+}
+/**
+ * Assert that a token is a whitespace or comment token
+ */
+function isTokenWhiteSpaceOrComment(x) {
+    switch (x[0]) {
+        case TokenType.Whitespace:
+        case TokenType.Comment:
+            return true;
+        default:
+            return false;
+    }
+}
+function isTokenAtKeyword(x) {
+    return !!x && x[0] === TokenType.AtKeyword;
+}
+function isTokenBadString(x) {
+    return !!x && x[0] === TokenType.BadString;
+}
+function isTokenBadURL(x) {
+    return !!x && x[0] === TokenType.BadURL;
+}
+function isTokenCDC(x) {
+    return !!x && x[0] === TokenType.CDC;
+}
+function isTokenCDO(x) {
+    return !!x && x[0] === TokenType.CDO;
+}
+function isTokenColon(x) {
+    return !!x && x[0] === TokenType.Colon;
+}
+function isTokenComma(x) {
+    return !!x && x[0] === TokenType.Comma;
+}
+function isTokenComment(x) {
+    return !!x && x[0] === TokenType.Comment;
+}
+function isTokenDelim(x) {
+    return !!x && x[0] === TokenType.Delim;
+}
+function isTokenDimension(x) {
+    return !!x && x[0] === TokenType.Dimension;
+}
+function isTokenEOF(x) {
+    return !!x && x[0] === TokenType.EOF;
+}
+function isTokenFunction(x) {
+    return !!x && x[0] === TokenType.Function;
+}
+function isTokenHash(x) {
+    return !!x && x[0] === TokenType.Hash;
+}
+function isTokenIdent(x) {
+    return !!x && x[0] === TokenType.Ident;
+}
+function isTokenNumber(x) {
+    return !!x && x[0] === TokenType.Number;
+}
+function isTokenPercentage(x) {
+    return !!x && x[0] === TokenType.Percentage;
+}
+function isTokenSemicolon(x) {
+    return !!x && x[0] === TokenType.Semicolon;
+}
+function isTokenString(x) {
+    return !!x && x[0] === TokenType.String;
+}
+function isTokenURL(x) {
+    return !!x && x[0] === TokenType.URL;
+}
+function isTokenWhitespace(x) {
+    return !!x && x[0] === TokenType.Whitespace;
+}
+function isTokenOpenParen(x) {
+    return !!x && x[0] === TokenType.OpenParen;
+}
+function isTokenCloseParen(x) {
+    return !!x && x[0] === TokenType.CloseParen;
+}
+function isTokenOpenSquare(x) {
+    return !!x && x[0] === TokenType.OpenSquare;
+}
+function isTokenCloseSquare(x) {
+    return !!x && x[0] === TokenType.CloseSquare;
+}
+function isTokenOpenCurly(x) {
+    return !!x && x[0] === TokenType.OpenCurly;
+}
+function isTokenCloseCurly(x) {
+    return !!x && x[0] === TokenType.CloseCurly;
+}
+function isTokenUnicodeRange(x) {
+    return !!x && x[0] === TokenType.UnicodeRange;
+}
+
+export { HashType, NumberType, ParseError, ParseErrorMessage, ParseErrorWithToken, TokenType, cloneTokens, isToken, isTokenAtKeyword, isTokenBadString, isTokenBadURL, isTokenCDC, isTokenCDO, isTokenCloseCurly, isTokenCloseParen, isTokenCloseSquare, isTokenColon, isTokenComma, isTokenComment, isTokenDelim, isTokenDimension, isTokenEOF, isTokenFunction, isTokenHash, isTokenIdent, isTokenNumber, isTokenNumeric, isTokenOpenCurly, isTokenOpenParen, isTokenOpenSquare, isTokenPercentage, isTokenSemicolon, isTokenString, isTokenURL, isTokenUnicodeRange, isTokenWhiteSpaceOrComment, isTokenWhitespace, mirrorVariant, mirrorVariantType, mutateIdent, mutateUnit, stringify, tokenize, tokenizer };

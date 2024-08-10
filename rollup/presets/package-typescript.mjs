@@ -21,13 +21,13 @@ export function packageTypescript(options) {
 					noEmit: false,
 					noEmitOnError: true,
 				}),
-				terser({
-					compress: {
-						reduce_funcs: false, // https://github.com/terser/terser/issues/1305
-					},
-					keep_classnames: true,
-					keep_fnames: true,
-				}),
+				// terser({
+				// 	compress: {
+				// 		reduce_funcs: false, // https://github.com/terser/terser/issues/1305
+				// 	},
+				// 	keep_classnames: true,
+				// 	keep_fnames: true,
+				// }),
 				options.nodeCoverageDisable ? nodeCoverageDisable() : undefined,
 			],
 		},
@@ -45,13 +45,13 @@ export function packageTypescript(options) {
 					noEmit: false,
 					noEmitOnError: true,
 				}),
-				terser({
-					compress: {
-						reduce_funcs: false, // https://github.com/terser/terser/issues/1305
-					},
-					keep_classnames: true,
-					keep_fnames: true,
-				}),
+				// terser({
+				// 	compress: {
+				// 		reduce_funcs: false, // https://github.com/terser/terser/issues/1305
+				// 	},
+				// 	keep_classnames: true,
+				// 	keep_fnames: true,
+				// }),
 				options.nodeCoverageDisable ? nodeCoverageDisable() : undefined,
 				apiExtractor(),
 			],
