@@ -1,37 +1,38 @@
 import type { Color } from '../../types/color';
-import { D65_to_D50 } from '../../conversions/d65-to-d50';
-import { HSL_to_sRGB } from '../../conversions/hsl-to-srgb';
-import { HWB_to_sRGB } from '../../conversions/hwb-to-srgb';
-import { LCH_to_Lab } from '../../conversions/lch-to-lab';
-import { Lab_to_XYZ } from '../../conversions/lab-to-xyz';
-import { OKLCH_to_OKLab } from '../../conversions/oklch-to-oklab';
-import { OKLab_to_XYZ } from '../../conversions/oklab-to-xyz';
-import { lin_2020 } from '../../conversions/lin-2020';
-import { lin_2020_to_XYZ } from '../../conversions/lin-2020-to-xyz';
-import { lin_P3 } from '../../conversions/lin-p3';
-import { lin_P3_to_XYZ } from '../../conversions/lin-p3-to-xyz';
-import { lin_ProPhoto } from '../../conversions/lin-pro-photo';
-import { lin_ProPhoto_to_XYZ } from '../../conversions/lin-pro-photo-to-xyz';
-import { lin_a98rgb } from '../../conversions/lin-a98rgb';
-import { lin_a98rgb_to_XYZ } from '../../conversions/lin-a98rgb-to-xyz';
-import { lin_sRGB } from '../../conversions/lin-srgb';
-import { lin_sRGB_to_XYZ } from '../../conversions/lin-srgb-to-xyz';
-import { D50_to_D65 } from '../../conversions/d50-to-d65';
-import { XYZ_to_lin_sRGB } from '../../conversions/xyz-to-lin-srgb';
-import { gam_sRGB } from '../../conversions/gam-srgb';
-import { sRGB_to_HSL } from '../../conversions/srgb-to-hsl';
-import { XYZ_to_lin_P3 } from '../../conversions/xyz-to-lin-p3';
-import { gam_P3 } from '../../conversions/gam-p3';
-import { XYZ_to_Lab } from '../../conversions/xyz-to-lab';
-import { XYZ_to_OKLab } from '../../conversions/xyz-to-oklab';
-import { Lab_to_LCH } from '../../conversions/lab-to-lch';
-import { OKLab_to_OKLCH } from '../../conversions/oklab-to-oklch';
-import { XYZ_to_lin_a98rgb } from '../../conversions/xyz-to-lin-a98rgb';
-import { gam_a98rgb } from '../../conversions/gam-a98rgb';
-import { XYZ_to_lin_2020 } from '../../conversions/xyz-to-lin-2020';
-import { gam_2020 } from '../../conversions/gam-2020';
-import { XYZ_to_lin_ProPhoto } from '../../conversions/xyz-to-lin-pro-photo';
-import { gam_ProPhoto } from '../../conversions/gam-pro-photo';
+import { D50_to_D65 } from '../d50-to-d65';
+import { D65_to_D50 } from '../d65-to-d50';
+import { HSL_to_sRGB } from '../hsl-to-srgb';
+import { HWB_to_sRGB } from '../hwb-to-srgb';
+import { LCH_to_Lab } from '../lch-to-lab';
+import { Lab_to_LCH } from '../lab-to-lch';
+import { Lab_to_XYZ } from '../lab-to-xyz';
+import { OKLCH_to_OKLab } from '../oklch-to-oklab';
+import { OKLab_to_OKLCH } from '../oklab-to-oklch';
+import { OKLab_to_XYZ } from '../oklab-to-xyz';
+import { XYZ_to_Lab } from '../xyz-to-lab';
+import { XYZ_to_OKLab } from '../xyz-to-oklab';
+import { XYZ_to_lin_2020 } from '../xyz-to-lin-2020';
+import { XYZ_to_lin_P3 } from '../xyz-to-lin-p3';
+import { XYZ_to_lin_ProPhoto } from '../xyz-to-lin-pro-photo';
+import { XYZ_to_lin_a98rgb } from '../xyz-to-lin-a98rgb';
+import { XYZ_to_lin_sRGB } from '../xyz-to-lin-srgb';
+import { gam_2020 } from '../gam-2020';
+import { gam_P3 } from '../gam-p3';
+import { gam_ProPhoto } from '../gam-pro-photo';
+import { gam_a98rgb } from '../gam-a98rgb';
+import { gam_sRGB } from '../gam-srgb';
+import { lin_2020 } from '../lin-2020';
+import { lin_2020_to_XYZ } from '../lin-2020-to-xyz';
+import { lin_P3 } from '../lin-p3';
+import { lin_P3_to_XYZ } from '../lin-p3-to-xyz';
+import { lin_ProPhoto } from '../lin-pro-photo';
+import { lin_ProPhoto_to_XYZ } from '../lin-pro-photo-to-xyz';
+import { lin_a98rgb } from '../lin-a98rgb';
+import { lin_a98rgb_to_XYZ } from '../lin-a98rgb-to-xyz';
+import { lin_sRGB } from '../lin-srgb';
+import { lin_sRGB_to_XYZ } from '../lin-srgb-to-xyz';
+import { sRGB_to_HSL } from '../srgb-to-hsl';
+import { sRGB_to_Hue } from '../srgb-to-hue';
 
 /**
  * @param {Color} color [r, g, b]
@@ -132,11 +133,10 @@ export function XYZ_D50_to_HWB(x: Color): Color {
 	y = D50_to_D65(y);
 	y = XYZ_to_lin_sRGB(y);
 	const srgb = gam_sRGB(y);
-	y = sRGB_to_HSL(srgb);
 
 	const white = Math.min(srgb[0], srgb[1], srgb[2]);
 	const black = 1 - Math.max(srgb[0], srgb[1], srgb[2]);
-	return ([y[0], white * 100, black * 100]);
+	return [sRGB_to_Hue(srgb), white * 100, black * 100];
 }
 
 /**
