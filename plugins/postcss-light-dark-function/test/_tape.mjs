@@ -31,6 +31,9 @@ postcssTape(plugin)({
 	'cascade-layers-d': {
 		message: 'supports cascade layers',
 	},
+	'common-patterns-1': {
+		message: 'support common patterns',
+	},
 	ignore: {
 		message: 'ignores values with fallbacks or guard by @supports',
 	},

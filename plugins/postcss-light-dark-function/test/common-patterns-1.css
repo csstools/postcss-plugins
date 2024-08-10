@@ -1,0 +1,8 @@
+/* multiple color vars in ":root" */
+:root {
+	color-scheme: light dark;
+
+	--color-red: light-dark(red, pink);
+	--color-blue: light-dark(blue, cyan);
+	--color-green: light-dark(green, lime);
+}
