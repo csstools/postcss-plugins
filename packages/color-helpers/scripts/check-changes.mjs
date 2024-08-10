@@ -16,6 +16,7 @@ const WATCHED_FILES = [
 	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/hslToRgb.js',
 	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/better-rgbToHsl.js',
 	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/hwbToRgb.js',
+	'https://raw.githubusercontent.com/w3c/csswg-drafts/main/css-color-4/rgbToHwb.js',
 ];
 
 const newHashes = await Promise.all(WATCHED_FILES.map(async urlPath => {

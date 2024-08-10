@@ -12,18 +12,16 @@ export function sRGB_to_Hue(x: Color): number {
 
 	if (d !== 0) {
 		switch (max) {
-			case red: hue = ((green - blue) / d); break;
+			case red: hue = (green - blue) / d + (green < blue ? 6 : 0); break;
 			case green: hue = (blue - red) / d + 2; break;
 			case blue: hue = (red - green) / d + 4;
 		}
 
-		hue = hue * 60;
+		hue *= 60;
 	}
 
 	if (hue >= 360) {
 		hue -= 360;
-	} else if (hue < 0) {
-		hue += 360;
 	}
 
 	return hue;
