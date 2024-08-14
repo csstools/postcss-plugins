@@ -46,8 +46,8 @@
 		"typescript-eslint": "^8.0.0"
 	},
 	"scripts": {
+		"everything": "npm run lint && npm run knip && npm run build && npm run docs && npm run test",
 		"build": "npm run build --workspaces --if-present",
-		"clean": "npm run clean --workspaces --if-present",
 		"docs": "npm run docs --workspaces --if-present",
 		"lint": "npm run lint --workspaces --if-present && eslint ./ && bash .github/bin/detect-executable-files/detect-executable-files.sh && node .github/bin/license/check-license.mjs",
 		"new-plugin": "node ./.github/bin/new-plugin.mjs",
