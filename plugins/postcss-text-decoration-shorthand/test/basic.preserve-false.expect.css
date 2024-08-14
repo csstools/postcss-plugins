@@ -113,6 +113,11 @@
 	text-decoration-thickness: calc(2px * 4);
 }
 
+.none {
+	-webkit-text-decoration: none;
+	text-decoration: none;
+}
+
 .ignored--a {
 	text-decoration: green wavy overline calc(2px * 4) bogus;
 }

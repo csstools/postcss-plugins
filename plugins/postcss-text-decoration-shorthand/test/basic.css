@@ -78,6 +78,10 @@
 	text-decoration: green wavy overline calc(2px * 4);
 }
 
+.none {
+	text-decoration: none;
+}
+
 .ignored--a {
 	text-decoration: green wavy overline calc(2px * 4) bogus;
 }
