@@ -1,6 +1,8 @@
 # Changes to PostCSS Light Dark Function
 
-### Unreleased (patch)
+### 2.0.1
+
+_August 14, 2024_
 
 - Smaller generated CSS.
 
