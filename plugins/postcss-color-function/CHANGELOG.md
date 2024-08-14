@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#301) (patch)
+
 ### 4.0.0
 
 _August 3, 2024_

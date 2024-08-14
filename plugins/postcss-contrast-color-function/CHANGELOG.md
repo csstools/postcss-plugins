@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#501) (patch)
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#301) (patch)
 
 ### 2.0.0
 

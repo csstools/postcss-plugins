@@ -60,7 +60,7 @@
 		"@csstools/postcss-relative-color-syntax": "^3.0.0",
 		"@csstools/postcss-scope-pseudo-class": "^4.0.0",
 		"@csstools/postcss-stepped-value-functions": "^4.0.0",
-		"@csstools/postcss-text-decoration-shorthand": "^4.0.0",
+		"@csstools/postcss-text-decoration-shorthand": "^4.0.1",
 		"@csstools/postcss-trigonometric-functions": "^4.0.0",
 		"@csstools/postcss-unset-value": "^4.0.0",
 		"css-blank-pseudo": "^7.0.0",
