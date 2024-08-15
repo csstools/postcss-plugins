@@ -35,18 +35,15 @@ function minify(cache: Map<string, string>, x: string): string {
 		const token = t.nextToken();
 
 		if (isTokenWhiteSpaceOrComment(token)) {
-			if (lastWasWhitespace) {
-				token[1] = '';
-			} else {
-				token[1] = ' ';
+			if (!lastWasWhitespace) {
+				minified = minified + ' ';
 			}
 
 			lastWasWhitespace = true;
 		} else {
 			lastWasWhitespace = false;
+			minified = minified + token[1];
 		}
-
-		minified = minified + token[1];
 	}
 
 	cache.set(x, minified);
