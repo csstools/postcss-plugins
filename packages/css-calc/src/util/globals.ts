@@ -30,10 +30,6 @@ export function tokenizeGlobals(x: GlobalsWithStrings | undefined): Globals {
 				continue;
 			}
 
-			if (!token) {
-				continue;
-			}
-
 			if (!isTokenNumeric(token)) {
 				continue;
 			}

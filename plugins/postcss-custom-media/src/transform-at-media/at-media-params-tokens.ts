@@ -12,8 +12,7 @@ export function atMediaParamsTokens(params: string): Array<CSSToken> {
 
 	const tokens: Array<CSSToken> = [];
 	while (!t.endOfFile()) {
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		tokens.push(t.nextToken()!);
+		tokens.push(t.nextToken());
 	}
 
 	return tokens;

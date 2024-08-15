@@ -1,5 +1,5 @@
 import type { CSSToken, ParseError, TokenIdent} from '@csstools/css-tokenizer';
-import { tokenizer, cloneTokens, isTokenWhiteSpaceOrComment, isTokenIdent, isTokenEOF } from '@csstools/css-tokenizer';
+import { tokenize, cloneTokens, isTokenWhiteSpaceOrComment, isTokenIdent, isTokenEOF } from '@csstools/css-tokenizer';
 import { CustomMedia } from '../nodes/custom-media';
 import { parseFromTokens } from './parse';
 
@@ -68,21 +68,7 @@ export function parseCustomMedia(
 		onParseError?: (error: ParseError) => void
 	},
 ): CustomMedia | false {
-	const t = tokenizer({ css: source }, {
+	return parseCustomMediaFromTokens(tokenize({ css: source }, {
 		onParseError: options?.onParseError,
-	});
-
-	const tokens: Array<CSSToken> = [];
-
-	{
-		while (!t.endOfFile()) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			tokens.push(t.nextToken()!);
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		tokens.push(t.nextToken()!); // EOF-token
-	}
-
-	return parseCustomMediaFromTokens(tokens, options);
+	}), options);
 }

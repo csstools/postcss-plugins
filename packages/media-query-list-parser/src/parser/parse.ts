@@ -1,6 +1,6 @@
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import type { CSSToken, ParseError } from '@csstools/css-tokenizer';
-import { tokenizer } from '@csstools/css-tokenizer';
+import { tokenize } from '@csstools/css-tokenizer';
 import type { MediaQuery} from '../nodes/media-query';
 import { MediaQueryInvalid } from '../nodes/media-query';
 import { parseMediaQuery } from './parse-media-query';
@@ -33,21 +33,7 @@ export function parse(
 		onParseError?: (error: ParseError) => void
 	},
 ): Array<MediaQuery> {
-	const t = tokenizer({ css: source }, {
+	return parseFromTokens(tokenize({ css: source }, {
 		onParseError: options?.onParseError,
-	});
-
-	const tokens: Array<CSSToken> = [];
-
-	{
-		while (!t.endOfFile()) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			tokens.push(t.nextToken()!);
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		tokens.push(t.nextToken()!); // EOF-token
-	}
-
-	return parseFromTokens(tokens, options);
+	}), options);
 }

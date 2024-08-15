@@ -17,7 +17,7 @@ export declare function tokenizer(input: {
 }, options?: {
     onParseError?: (error: ParseError) => void;
 }): {
-    nextToken: () => CSSToken | undefined;
+    nextToken: () => CSSToken;
     endOfFile: () => boolean;
 };
 ```
@@ -73,5 +73,5 @@ _(Optional)_
 </tbody></table>
 **Returns:**
 
-{ nextToken: () =&gt; [CSSToken](./css-tokenizer.csstoken.md) \| undefined; endOfFile: () =&gt; boolean; }
+{ nextToken: () =&gt; [CSSToken](./css-tokenizer.csstoken.md)<!-- -->; endOfFile: () =&gt; boolean; }
 

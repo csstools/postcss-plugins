@@ -1,5 +1,9 @@
 # Changes to PostCSS Minify
 
+### Unreleased (patch)
+
+- Improve performance
+
 ### 2.0.0
 
 _August 3, 2024_

@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (patch)
+
+- Updated the return type of `nextToken()` to indicate that it always returns a value.
+
 ### 3.0.0
 
 _August 3, 2024_
