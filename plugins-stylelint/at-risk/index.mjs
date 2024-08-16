@@ -26,7 +26,6 @@ const atRiskProperties = {
 
 const meta = {
 	url: 'https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/at-risk',
-	fixable: true,
 };
 
 const ruleFunction = (primaryOption) => {

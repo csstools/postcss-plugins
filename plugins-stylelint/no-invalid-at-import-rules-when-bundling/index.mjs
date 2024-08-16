@@ -5,7 +5,6 @@ const ruleName = '@csstools/stylelint-no-invalid-at-import-rules-when-bundling';
 
 const meta = {
 	url: 'https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/no-invalid-at-import-rules-when-bundling',
-	fixable: true,
 };
 
 const ruleFunction = (primaryOption) => {

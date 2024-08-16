@@ -1,5 +1,10 @@
 # Changelog
 
+### Unreleased (major)
+
+- Updated: minimum Stylelint version to `v16.8.2`
+- Updated: use the new `report.fix` API
+
 ### 3.0.0
 
 _August 3, 2024_
