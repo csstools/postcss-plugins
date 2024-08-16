@@ -13,35 +13,32 @@ const meta = {
 	fixable: true,
 };
 
-const ruleFunction = (primaryOption, secondaryOptionObject, context) => {
+const ruleFunction = (primaryOption) => {
 	return (postcssRoot, postcssResult) => {
 		if (!primaryOption) {
 			return;
 		}
 
-		postcssRoot.walkAtRules(/^nest$/i, (atrule) => {
-			if (context.fix) {
-				const rule = postcss.rule({
-					selector: atrule.params,
-					source: atrule.source,
-				});
-
-				atrule.nodes.forEach((node) => {
-					rule.append(node);
-				});
-
-				atrule.replaceWith(rule);
-
-				return;
-			}
-
+		postcssRoot.walkAtRules(/^nest$/i, (atRule) => {
 			stylelint.utils.report({
 				message: messages.rejected(),
-				node: atrule,
+				node: atRule,
 				index: 0,
 				endIndex: 5,
 				result: postcssResult,
 				ruleName,
+				fix: () => {
+					const rule = postcss.rule({
+						selector: atRule.params,
+						source: atRule.source,
+					});
+
+					atRule.nodes.forEach((node) => {
+						rule.append(node);
+					});
+
+					atRule.replaceWith(rule);
+				},
 			});
 		});
 	};
