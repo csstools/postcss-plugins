@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (patch)
+
+- Remove incorrect `fixable` annotation in `rule.meta`
+
 ### 2.0.0
 
 _August 3, 2024_
