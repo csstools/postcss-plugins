@@ -1,7 +1,7 @@
 import type { ComponentValue} from '@csstools/css-parser-algorithms';
 import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { tokenizer } from '@csstools/css-tokenizer';
+import { tokenize } from '@csstools/css-tokenizer';
 
 function parseComponentValuesFromTokens(tokens: Array<CSSToken>): Array<ComponentValue> {
 	return parseListOfComponentValues(tokens, {
@@ -12,23 +12,9 @@ function parseComponentValuesFromTokens(tokens: Array<CSSToken>): Array<Componen
 }
 
 export function parseComponentValues(source: string): Array<ComponentValue> {
-	const t = tokenizer({ css: source }, {
+	return parseComponentValuesFromTokens(tokenize({ css: source }, {
 		onParseError: (err) => {
 			throw err;
 		},
-	});
-
-	const tokens: Array<CSSToken> = [];
-
-	{
-		while (!t.endOfFile()) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			tokens.push(t.nextToken()!);
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		tokens.push(t.nextToken()!); // EOF-token
-	}
-
-	return parseComponentValuesFromTokens(tokens);
+	}));
 }

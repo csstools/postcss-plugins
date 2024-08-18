@@ -1,9 +1,7 @@
 import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
-import type { CSSToken } from '@csstools/css-tokenizer';
-import { isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, tokenizer } from '@csstools/css-tokenizer';
 
-const HAS_LEGAL_KEYWORDS_REGEX = /license|copyright/i;
-const HAS_SOURCE_MAP_REGEX = /sourceMappingURL/i;
+const HAS_LEGAL_KEYWORDS_OR_SOURCE_MAP_REGEX = /license|copyright|sourcemappingurl/i;
 const HAS_WHITESPACE_OR_COMMENTS_REGEX = /\s|\/\*/;
 const IS_LAYER_REGEX = /^layer$/i;
 
@@ -28,28 +26,24 @@ function minify(cache: Map<string, string>, x: string): string {
 		return y;
 	}
 
-	const tokens = tokenize({ css: y });
-
 	let lastWasWhitespace = false;
-	let token: CSSToken;
-	for (let i = 0; i < tokens.length; i++) {
-		token = tokens[i];
+	let minified = '';
+
+	const t = tokenizer({ css: y });
+
+	while (!t.endOfFile()) {
+		const token = t.nextToken();
+
 		if (isTokenWhiteSpaceOrComment(token)) {
-			if (lastWasWhitespace) {
-				token[1] = '';
-			} else {
-				token[1] = ' ';
+			if (!lastWasWhitespace) {
+				minified = minified + ' ';
 			}
 
 			lastWasWhitespace = true;
 		} else {
 			lastWasWhitespace = false;
+			minified = minified + token[1];
 		}
-	}
-
-	let minified = '';
-	for (let i = 0; i < tokens.length; i++) {
-		minified = minified + tokens[i][1];
 	}
 
 	cache.set(x, minified);
@@ -89,12 +83,16 @@ function removeEmptyNodes(node: Container | Document): boolean {
 }
 
 function setSemicolon(node: AtRule | Rule): void {
-	if (node.raws.semicolon) {
-		const last = node.last;
-		if (last?.type !== 'decl' || !last.variable) {
-			node.raws.semicolon = false;
-		}
+	if (!node.raws.semicolon) {
+		return;
 	}
+
+	const last = node.last;
+	if (last?.type === 'decl' && last.variable) {
+		return;
+	}
+
+	node.raws.semicolon = false;
 }
 
 /** postcss-minify plugin options */
@@ -170,9 +168,8 @@ const creator: PluginCreator<pluginOptions> = () => {
 							// `/*! ... */` is a common pattern to indicate that a comment is important and should not be removed.
 							node.text.startsWith('!') ||
 							// Comments containing the words `license` or `copyright` should not be removed.
-							HAS_LEGAL_KEYWORDS_REGEX.test(node.text) ||
 							// Comments containing the word `sourceMappingURL` should not be removed.
-							HAS_SOURCE_MAP_REGEX.test(node.text)
+							HAS_LEGAL_KEYWORDS_OR_SOURCE_MAP_REGEX.test(node.text)
 						) {
 							node.raws.before = '';
 							return;

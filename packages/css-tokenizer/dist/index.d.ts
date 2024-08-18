@@ -391,7 +391,7 @@ export declare function tokenizer(input: {
 }, options?: {
     onParseError?: (error: ParseError) => void;
 }): {
-    nextToken: () => CSSToken | undefined;
+    nextToken: () => CSSToken;
     endOfFile: () => boolean;
 };
 

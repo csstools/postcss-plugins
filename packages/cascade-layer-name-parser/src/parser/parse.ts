@@ -1,7 +1,7 @@
 import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { tokenizer, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
+import { tokenize, ParseError, isTokenComment, isTokenWhitespace, isTokenIdent, isTokenDelim, isTokenWhiteSpaceOrComment } from '@csstools/css-tokenizer';
 import { LayerName } from '../nodes/layer-name';
 
 /**
@@ -176,21 +176,7 @@ export function parse(
 		onParseError?: (error: ParseError) => void
 	},
 ): Array<LayerName> {
-	const t = tokenizer({ css: source }, {
+	return parseFromTokens(tokenize({ css: source }, {
 		onParseError: options?.onParseError,
-	});
-
-	const tokens: Array<CSSToken> = [];
-
-	{
-		while (!t.endOfFile()) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			tokens.push(t.nextToken()!);
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		tokens.push(t.nextToken()!); // EOF-token
-	}
-
-	return parseFromTokens(tokens, options);
+	}), options);
 }

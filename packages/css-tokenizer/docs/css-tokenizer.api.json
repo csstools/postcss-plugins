@@ -4526,7 +4526,7 @@
             },
             {
               "kind": "Content",
-              "text": " | undefined;\n    endOfFile: () => boolean;\n}"
+              "text": ";\n    endOfFile: () => boolean;\n}"
             },
             {
               "kind": "Content",

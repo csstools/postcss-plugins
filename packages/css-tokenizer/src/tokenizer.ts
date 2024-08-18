@@ -37,19 +37,11 @@ export function tokenize(
 
 	const tokens: Array<CSSToken> = [];
 
-	{
-		while (!t.endOfFile()) {
-			const token = t.nextToken();
-			if (token) {
-				tokens.push(token);
-			}
-		}
-
-		const token = t.nextToken(); // EOF-token
-		if (token) {
-			tokens.push(token);
-		}
+	while (!t.endOfFile()) {
+		tokens.push(t.nextToken());
 	}
+
+	tokens.push(t.nextToken()); // EOF-token
 
 	return tokens;
 }
@@ -67,7 +59,7 @@ export function tokenizer(
 	options?: {
 		onParseError?: (error: ParseError) => void
 	},
-): { nextToken: () => CSSToken | undefined, endOfFile: () => boolean } {
+): { nextToken: () => CSSToken, endOfFile: () => boolean } {
 	const css = input.css.valueOf();
 	const unicodeRangesAllowed = input.unicodeRangesAllowed ?? false;
 
@@ -81,7 +73,7 @@ export function tokenizer(
 		return typeof reader.source.codePointAt(reader.cursor) === "undefined";
 	}
 
-	function nextToken(): CSSToken | undefined {
+	function nextToken(): CSSToken {
 		reader.resetRepresentation();
 
 		const peeked = reader.source.codePointAt(reader.cursor);
