@@ -49,7 +49,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-color-parser": "^3.0.1",
-		"@csstools/css-parser-algorithms": "^3.0.0",
+		"@csstools/css-parser-algorithms": "^3.0.1",
 		"@csstools/css-tokenizer": "^3.0.1"
 	},
 	"peerDependencies": {

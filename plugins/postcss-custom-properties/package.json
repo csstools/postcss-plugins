@@ -43,7 +43,7 @@
 	],
 	"dependencies": {
 		"@csstools/cascade-layer-name-parser": "^2.0.0",
-		"@csstools/css-parser-algorithms": "^3.0.0",
+		"@csstools/css-parser-algorithms": "^3.0.1",
 		"@csstools/css-tokenizer": "^3.0.1",
 		"@csstools/utilities": "^2.0.0",
 		"postcss-value-parser": "^4.2.0"
