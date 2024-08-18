@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gamut-mapping",
 	"description": "Gamut map css colors to fit display specific gamuts",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
