@@ -77,6 +77,7 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 				globals: relativeColorChannelsWithoutNone,
 				precision: -1,
 				toCanonicalUnits: true,
+				rawPercentages: true,
 			});
 			if (!result || !isTokenNode(result) || !isTokenNumeric(result.value)) {
 				return false;

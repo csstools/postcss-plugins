@@ -32,6 +32,13 @@ export declare type conversionOptions = {
      * Convert NaN, Infinity, ... into standard representable values.
      */
     censorIntoStandardRepresentableValues?: boolean;
+    /**
+     * Some percentages resolve against other values and might be negative or positive depending on context.
+     * Raw percentages are more likely to be safe to simplify outside of a browser context
+     *
+     * @see https://drafts.csswg.org/css-values-4/#calc-simplification
+     */
+    rawPercentages?: boolean;
 };
 
 export declare type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;

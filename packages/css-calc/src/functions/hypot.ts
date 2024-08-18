@@ -4,9 +4,10 @@ import { convertUnit } from '../unit-conversions';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
 import { arrayOfSameNumeric } from '../util/kind-of-number';
-import { isTokenNumeric } from '@csstools/css-tokenizer';
+import { isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
+import type { conversionOptions } from '../options';
 
-export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<ComponentValue>): Calculation | -1 {
+export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<ComponentValue>, options: conversionOptions): Calculation | -1 {
 	const firstSolvedNode = solvedNodes[0];
 	if (!firstSolvedNode || !isTokenNode(firstSolvedNode)) {
 		return -1;
@@ -19,6 +20,10 @@ export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<Component
 
 	const firstSolvedToken = firstSolvedNode.value;
 	if (!isTokenNumeric(firstSolvedToken)) {
+		return -1;
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(firstSolvedToken)) {
 		return -1;
 	}
 

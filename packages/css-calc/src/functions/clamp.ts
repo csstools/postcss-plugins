@@ -4,9 +4,10 @@ import { convertUnit } from '../unit-conversions';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
 import { twoOfSameNumeric } from '../util/kind-of-number';
-import { isTokenNumeric } from '@csstools/css-tokenizer';
+import type { conversionOptions } from '../options';
+import { isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 
-export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1): Calculation | -1 {
+export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, central: TokenNode | -1, maximum: TokenNode | -1, options: conversionOptions): Calculation | -1 {
 	if (
 		!isTokenNode(minimum) ||
 		!isTokenNode(central) ||
@@ -17,6 +18,10 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 
 	const minimumToken = minimum.value;
 	if (!isTokenNumeric(minimumToken)) {
+		return -1;
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(minimumToken)) {
 		return -1;
 	}
 

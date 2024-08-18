@@ -30,7 +30,7 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 			return;
 		}
 
-		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals)), options);
+		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals, options ?? {})), options);
 		if (calcResult !== -1) {
 			return calcResult;
 		}

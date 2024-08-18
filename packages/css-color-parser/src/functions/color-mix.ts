@@ -175,6 +175,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 					censorIntoStandardRepresentableValues: true,
 					precision: -1,
 					toCanonicalUnits: true,
+					rawPercentages: true,
 				});
 
 				if (!node || !isTokenNode(node) || !isTokenNumeric(node.value)) {

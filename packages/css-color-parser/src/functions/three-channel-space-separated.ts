@@ -79,6 +79,7 @@ export function threeChannelSpaceSeparated(
 				globals: relativeColorChannelsWithoutNone,
 				precision: -1,
 				toCanonicalUnits: true,
+				rawPercentages: true,
 			});
 			if (!result || !isTokenNode(result) || !isTokenNumeric(result.value)) {
 				return false;
