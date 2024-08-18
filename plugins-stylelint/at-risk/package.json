@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-at-risk",
 	"description": "Warn on CSS features at risk of changes or removal",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

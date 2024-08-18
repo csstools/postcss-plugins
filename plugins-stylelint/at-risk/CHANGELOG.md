@@ -1,6 +1,8 @@
 # Changelog
 
-### Unreleased (patch)
+### 2.0.1
+
+_August 18, 2024_
 
 - Remove incorrect `fixable` annotation in `rule.meta`
 
