@@ -319,6 +319,31 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(down, -0%, calc(1% * infinity))'),
+	'round(down, -0%, calc(infinity * 1%))',
+);
+
+assert.strictEqual(
+	calc('round(down, -0%, (1% * infinity))'),
+	'round(down, -0%, (1% * infinity))',
+);
+
+assert.strictEqual(
+	calc('round(down, -0%, 1% * infinity)'),
+	'round(down, -0%, 1% * infinity)',
+);
+
+assert.strictEqual(
+	calc('round(down, -0%, calc(1% * infinity))', { rawPercentages: true }),
+	'-0%',
+);
+
+assert.strictEqual(
+	calc('round(down, -0%, (1% * infinity))', { rawPercentages: true }),
+	'-0%',
+);
+
+assert.strictEqual(
+	calc('round(down, -0%, 1% * infinity)', { rawPercentages: true }),
 	'-0%',
 );
 

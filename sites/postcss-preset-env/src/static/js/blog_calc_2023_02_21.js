@@ -17,7 +17,7 @@ function renderResult() {
 	}
 
 	const wrappedValue = `calc(${value})`;
-	const solved = calc(wrappedValue);
+	const solved = calc(wrappedValue, { rawPercentages: true });
 	if (solved === wrappedValue) {
 		outputEl.value = value;
 		return;

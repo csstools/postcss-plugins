@@ -3,11 +3,16 @@ import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
 import { twoOfSameNumeric } from '../util/kind-of-number';
-import { isTokenNumeric } from '@csstools/css-tokenizer';
+import { isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
+import type { conversionOptions } from '../options';
 
-export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a: TokenNode, b: TokenNode): Calculation | -1 {
+export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a: TokenNode, b: TokenNode, options: conversionOptions): Calculation | -1 {
 	const aToken = a.value;
 	if (!isTokenNumeric(aToken)) {
+		return -1;
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(aToken)) {
 		return -1;
 	}
 

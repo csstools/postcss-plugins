@@ -1,11 +1,16 @@
 import type { Calculation } from '../calculation';
 import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { numberToCalculation } from './result-to-calculation';
-import { isDimensionOrNumber } from '../util/kind-of-number';
+import { isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
+import type { conversionOptions } from '../options';
 
-export function solveSign(signNode: FunctionNode, a: TokenNode): Calculation | -1 {
+export function solveSign(signNode: FunctionNode, a: TokenNode, options: conversionOptions): Calculation | -1 {
 	const aToken = a.value;
-	if (!isDimensionOrNumber(aToken)) {
+	if (!isTokenNumeric(aToken)) {
+		return -1;
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(aToken)) {
 		return -1;
 	}
 

@@ -70,6 +70,7 @@ export function threeChannelLegacySyntax(
 				censorIntoStandardRepresentableValues: true,
 				precision: -1,
 				toCanonicalUnits: true,
+				rawPercentages: true,
 			});
 			if (!result || !isTokenNode(result) || !isTokenNumeric(result.value)) {
 				return false;
