@@ -1,5 +1,9 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#301) (patch)
+
 ### 4.0.0
 
 _August 3, 2024_

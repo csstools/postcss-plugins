@@ -49,7 +49,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^3.0.0",
-		"@csstools/css-tokenizer": "^3.0.0",
+		"@csstools/css-tokenizer": "^3.0.1",
 		"@csstools/media-query-list-parser": "^3.0.0"
 	},
 	"peerDependencies": {

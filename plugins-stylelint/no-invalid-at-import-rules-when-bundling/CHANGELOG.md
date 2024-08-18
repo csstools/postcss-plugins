@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Remove incorrect `fixable` annotation in `rule.meta`
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#301) (patch)
 
 ### 3.0.0
 
