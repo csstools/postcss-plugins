@@ -1,0 +1,2150 @@
+{
+	"<anchor-element>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<dashed-ident>",
+		"comment": ""
+	},
+	"<anchor-side>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "inside | outside | top | left | right | bottom | start | end | self-start | self-end | <percentage> | center",
+		"comment": ""
+	},
+	"<anchor-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "width | height | block | inline | self-block | self-inline",
+		"comment": ""
+	},
+	"<angle-percentage>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <angle> | <percentage> ]",
+		"comment": ""
+	},
+	"<angular-color-hint>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<angle-percentage>",
+		"comment": ""
+	},
+	"<angular-color-stop-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<angular-color-stop> , [ <angular-color-hint>? , <angular-color-stop> ]#?",
+		"comment": ""
+	},
+	"<angular-color-stop>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<color> <color-stop-angle>?",
+		"comment": ""
+	},
+	"<animateable-feature>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "scroll-position | contents | <custom-ident>",
+		"comment": ""
+	},
+	"<attachment>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "scroll | fixed | local",
+		"comment": ""
+	},
+	"<attr-matcher>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ '~' | '|' | '^' | '$' | '*' ]? '='",
+		"comment": ""
+	},
+	"<attr-modifier>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "i | s",
+		"comment": ""
+	},
+	"<attr-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <ident-token> '|' ]? <ident-token>",
+		"comment": ""
+	},
+	"<attr-type>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>",
+		"comment": ""
+	},
+	"<attribute-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'[' <wq-name> ']' | '[' <wq-name> <attr-matcher> [ <string-token> | <ident-token> ] <attr-modifier>? ']'",
+		"comment": ""
+	},
+	"<auto-repeat>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <fixed-size> ]+ <line-names>? )",
+		"comment": ""
+	},
+	"<auto-track-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <line-names>? [ <fixed-size> | <fixed-repeat> ] ]* <line-names>? <auto-repeat> [ <line-names>? [ <fixed-size> | <fixed-repeat> ] ]* <line-names>?",
+		"comment": ""
+	},
+	"<autospace>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "no-autospace | [ ideograph-alpha || ideograph-numeric || punctuation ] || [ insert | replace ]",
+		"comment": ""
+	},
+	"<axis>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "block | inline | x | y",
+		"comment": ""
+	},
+	"<baseline-position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ first | last ]? && baseline",
+		"comment": ""
+	},
+	"<basic-shape-rect>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<inset()> | <rect()> | <xywh()>",
+		"comment": ""
+	},
+	"<bg-clip>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<visual-box> | border-area | text",
+		"comment": ""
+	},
+	"<bg-image>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<image> | none",
+		"comment": ""
+	},
+	"<bg-layer>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>",
+		"comment": ""
+	},
+	"<bg-position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]",
+		"comment": ""
+	},
+	"<bg-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
+		"comment": ""
+	},
+	"<blend-mode>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity",
+		"comment": ""
+	},
+	"<bool-and>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "and <bool-in-parens>",
+		"comment": ""
+	},
+	"<bool-in-parens>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <boolean> ) | <bool-test> | <general-enclosed>",
+		"comment": ""
+	},
+	"<bool-not>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <bool-in-parens>",
+		"comment": ""
+	},
+	"<bool-or>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "or <bool-in-parens>",
+		"comment": ""
+	},
+	"<boolean-without-or>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<bool-not> | <bool-in-parens> <bool-and>*",
+		"comment": ""
+	},
+	"<boolean>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<bool-not> | <bool-in-parens> [ <bool-and>* | <bool-or>* ]",
+		"comment": ""
+	},
+	"<calc-keyword>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "e | pi | infinity | -infinity | NaN",
+		"comment": ""
+	},
+	"<calc-mix()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "calc-mix( <progress> , <calc-sum> , <calc-sum> )",
+		"comment": ""
+	},
+	"<calc-product>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<calc-value> [ [ '*' | '/' ] <calc-value> ]*",
+		"comment": ""
+	},
+	"<calc-size-basis>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]",
+		"comment": ""
+	},
+	"<calc-sum>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<calc-product> [ [ '+' | '-' ] <calc-product> ]*",
+		"comment": ""
+	},
+	"<calc-value>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number> | <dimension> | <percentage> | <calc-keyword> | ( <calc-sum> )",
+		"comment": ""
+	},
+	"<cf-image>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <image> | <color> ] && <percentage [0,100]>?",
+		"comment": ""
+	},
+	"<class-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'.' <ident-token>",
+		"comment": ""
+	},
+	"<clip-source>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<url>",
+		"comment": ""
+	},
+	"<cmyk-component>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number> | <percentage> | none",
+		"comment": ""
+	},
+	"<color-base>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<hex-color> | <color-function> | <named-color> | transparent",
+		"comment": ""
+	},
+	"<color-font-tech>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ color-COLRv0 | color-COLRv1 | color-SVG | color-sbix | color-CBDT ]",
+		"comment": ""
+	},
+	"<color-function>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>",
+		"comment": ""
+	},
+	"<color-interpolation-method>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? ]",
+		"comment": ""
+	},
+	"<color-space>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<rectangular-color-space> | <polar-color-space>",
+		"comment": ""
+	},
+	"<color-stop-angle>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<angle-percentage>{1,2}",
+		"comment": ""
+	},
+	"<color-stop-length>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length-percentage>{1,2}",
+		"comment": ""
+	},
+	"<color-stop-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<linear-color-stop> , [ <linear-color-hint>? , <linear-color-stop> ]#?",
+		"comment": ""
+	},
+	"<color-stop>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<color-stop-length> | <color-stop-angle>",
+		"comment": ""
+	},
+	"<color-stripe>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<color> && [ <length-percentage> | <flex> ]?",
+		"comment": ""
+	},
+	"<color>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<color-base> | currentColor | <system-color>",
+		"comment": ""
+	},
+	"<colorspace-params>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
+		"comment": ""
+	},
+	"<combinator>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'>' | '+' | '~' | [ '|' '|' ]",
+		"comment": ""
+	},
+	"<common-lig-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ common-ligatures | no-common-ligatures ]",
+		"comment": ""
+	},
+	"<complex-real-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<complex-real-selector>#",
+		"comment": ""
+	},
+	"<complex-real-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<compound-selector> [ <combinator>? <compound-selector> ]*",
+		"comment": ""
+	},
+	"<complex-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<complex-selector>#",
+		"comment": ""
+	},
+	"<complex-selector-unit>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <compound-selector>? <pseudo-compound-selector>* ]!",
+		"comment": ""
+	},
+	"<complex-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<complex-selector-unit> [ <combinator>? <complex-selector-unit> ]*",
+		"comment": ""
+	},
+	"<composite-mode>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "clear | copy | source-over | destination-over | source-in | destination-in | source-out | destination-out | source-atop | destination-atop | xor | lighter | plus-darker | plus-lighter",
+		"comment": ""
+	},
+	"<compositing-operator>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "add | subtract | intersect | exclude",
+		"comment": ""
+	},
+	"<compound-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<compound-selector>#",
+		"comment": ""
+	},
+	"<compound-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <type-selector>? <subclass-selector>* ]!",
+		"comment": ""
+	},
+	"<conic-gradient-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ [ [ from <angle> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>",
+		"comment": ""
+	},
+	"<container-condition>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <container-name> ]? <container-query>",
+		"comment": ""
+	},
+	"<container-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<custom-ident>",
+		"comment": ""
+	},
+	"<container-progress()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "container-progress( <size-feature> [ of <container-name> ]? from <calc-sum> to <calc-sum> )",
+		"comment": ""
+	},
+	"<container-query>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]",
+		"comment": ""
+	},
+	"<content-distribution>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "space-between | space-around | space-evenly | stretch",
+		"comment": ""
+	},
+	"<content-level>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "element | content | text | <attr()> | <counter>",
+		"comment": ""
+	},
+	"<content-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+",
+		"comment": ""
+	},
+	"<content-position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "center | start | end | flex-start | flex-end",
+		"comment": ""
+	},
+	"<contextual-alt-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ contextual | no-contextual ]",
+		"comment": ""
+	},
+	"<coord-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<paint-box> | view-box",
+		"comment": ""
+	},
+	"<counter-style>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<counter-style-name> | <symbols()>",
+		"comment": ""
+	},
+	"<counter>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<counter()> | <counters()>",
+		"comment": ""
+	},
+	"<css-type>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<syntax-component> | <type()>",
+		"comment": ""
+	},
+	"<cubic-bezier-easing-function>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
+		"comment": ""
+	},
+	"<custom-arg>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "$ <ident-token> ;",
+		"comment": ""
+	},
+	"<custom-color-space>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<dashed-ident>",
+		"comment": ""
+	},
+	"<custom-params>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<dashed-ident> [ <number> | <percentage> | none ]+",
+		"comment": ""
+	},
+	"<custom-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<custom-arg>? : <extension-name> [ ( <custom-arg>+#? ) ]? ;",
+		"comment": ""
+	},
+	"<dasharray>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ [ <length-percentage> | <number> ]+ ]#",
+		"comment": ""
+	},
+	"<discretionary-lig-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ discretionary-ligatures | no-discretionary-ligatures ]",
+		"comment": ""
+	},
+	"<display-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "contents | none",
+		"comment": ""
+	},
+	"<display-inside>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "flow | flow-root | table | flex | grid | ruby",
+		"comment": ""
+	},
+	"<display-internal>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "table-row-group | table-header-group | table-footer-group | table-row | table-cell | table-column-group | table-column | table-caption | ruby-base | ruby-text | ruby-base-container | ruby-text-container",
+		"comment": ""
+	},
+	"<display-legacy>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "inline-block | inline-table | inline-flex | inline-grid",
+		"comment": ""
+	},
+	"<display-listitem>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<display-outside>? && [ flow | flow-root ]? && list-item",
+		"comment": ""
+	},
+	"<display-outside>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "block | inline | run-in",
+		"comment": ""
+	},
+	"<easing-function>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "linear | <linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>",
+		"comment": ""
+	},
+	"<east-asian-variant-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ jis78 | jis83 | jis90 | jis04 | simplified | traditional ]",
+		"comment": ""
+	},
+	"<east-asian-width-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ full-width | proportional-width ]",
+		"comment": ""
+	},
+	"<explicit-track-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <line-names>? <track-size> ]+ <line-names>?",
+		"comment": ""
+	},
+	"<family-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<string> | <custom-ident>+",
+		"comment": ""
+	},
+	"<feature-value-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ident>",
+		"comment": ""
+	},
+	"<filter-function>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<blur()> | <brightness()> | <contrast()> | <drop-shadow()> | <grayscale()> | <hue-rotate()> | <invert()> | <opacity()> | <sepia()> | <saturate()>",
+		"comment": ""
+	},
+	"<filter-value-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <filter-function> | <url> ]+",
+		"comment": ""
+	},
+	"<final-bg-layer>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box> || <'background-color'>",
+		"comment": ""
+	},
+	"<first-valid()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "first-valid( <declaration-value># )",
+		"comment": ""
+	},
+	"<fixed-breadth>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length-percentage [0,∞]>",
+		"comment": ""
+	},
+	"<fixed-repeat>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "repeat( [ <integer [1,∞]> ] , [ <line-names>? <fixed-size> ]+ <line-names>? )",
+		"comment": ""
+	},
+	"<fixed-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<fixed-breadth> | minmax( <fixed-breadth> , <track-breadth> ) | minmax( <inflexible-breadth> , <fixed-breadth> )",
+		"comment": ""
+	},
+	"<font-features-tech>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ features-opentype | features-aat | features-graphite ]",
+		"comment": ""
+	},
+	"<font-format>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <string> | collection | embedded-opentype | opentype | svg | truetype | woff | woff2 ]",
+		"comment": ""
+	},
+	"<font-src>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> )",
+		"comment": ""
+	},
+	"<font-tech>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <font-features-tech> | <color-font-tech> | variations | palettes | incremental ]",
+		"comment": ""
+	},
+	"<font-variant-css2>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ normal | small-caps ]",
+		"comment": ""
+	},
+	"<font-weight-absolute>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ normal | bold | <number [1,1000]> ]",
+		"comment": ""
+	},
+	"<font-width-css3>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded ]",
+		"comment": ""
+	},
+	"<frequency-percentage>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <frequency> | <percentage> ]",
+		"comment": ""
+	},
+	"<function-dependency-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<function-parameter>#",
+		"comment": ""
+	},
+	"<function-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<dashed-ident>",
+		"comment": ""
+	},
+	"<function-parameter-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<function-parameter>#",
+		"comment": ""
+	},
+	"<function-parameter>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
+		"comment": ""
+	},
+	"<general-enclosed>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <function-token> <any-value>? ) ] | [ ( <any-value>? ) ]",
+		"comment": ""
+	},
+	"<generic-complete>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "serif | sans-serif | system-ui | cursive | fantasy | math | monospace",
+		"comment": ""
+	},
+	"<generic-family>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<generic-script-specific> | <generic-complete> | <generic-incomplete>",
+		"comment": ""
+	},
+	"<generic-incomplete>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "ui-serif | ui-sans-serif | ui-monospace | ui-rounded",
+		"comment": ""
+	},
+	"<generic-script-specific>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "generic( kai ) | generic( fangsong ) | generic( nastaliq )",
+		"comment": ""
+	},
+	"<generic-voice>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <age>? <gender> <integer>? ]",
+		"comment": ""
+	},
+	"<geometry-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<shape-box> | fill-box | stroke-box | view-box",
+		"comment": ""
+	},
+	"<gradient>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()>",
+		"comment": ""
+	},
+	"<historical-lig-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ historical-ligatures | no-historical-ligatures ]",
+		"comment": ""
+	},
+	"<hue-interpolation-method>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ shorter | longer | increasing | decreasing ] hue",
+		"comment": ""
+	},
+	"<hue>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number> | <angle>",
+		"comment": ""
+	},
+	"<id-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<hash-token>",
+		"comment": ""
+	},
+	"<image-1D>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<stripes()>",
+		"comment": ""
+	},
+	"<image-set-option>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <image> | <string> ] [ <resolution> || type( <string> ) ]?",
+		"comment": ""
+	},
+	"<image-src>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <url> | <string> ]",
+		"comment": ""
+	},
+	"<image-tags>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ ltr | rtl ]",
+		"comment": ""
+	},
+	"<image>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<url> | <gradient>",
+		"comment": ""
+	},
+	"<import-conditions>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?",
+		"comment": ""
+	},
+	"<inflexible-breadth>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length-percentage [0,∞]> | min-content | max-content | auto",
+		"comment": ""
+	},
+	"<isolation-mode>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "auto | isolate",
+		"comment": ""
+	},
+	"<keyframe-block>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<keyframe-selector># { <declaration-list> }",
+		"comment": ""
+	},
+	"<keyframe-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "from | to | <percentage [0,100]>",
+		"comment": ""
+	},
+	"<keyframes-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<custom-ident> | <string>",
+		"comment": ""
+	},
+	"<layer-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ident> [ '.' <ident> ]*",
+		"comment": ""
+	},
+	"<layout-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<visual-box> | margin-box",
+		"comment": ""
+	},
+	"<leader-type>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "dotted | solid | space | <string>",
+		"comment": ""
+	},
+	"<legacy-device-cmyk-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "device-cmyk( <number>#{4} )",
+		"comment": ""
+	},
+	"<legacy-hsl-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )",
+		"comment": ""
+	},
+	"<legacy-hsla-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
+		"comment": ""
+	},
+	"<legacy-pseudo-element-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "':' [ before | after | first-line | first-letter ]",
+		"comment": ""
+	},
+	"<legacy-rgb-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )",
+		"comment": ""
+	},
+	"<legacy-rgba-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )",
+		"comment": ""
+	},
+	"<length-percentage>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <length> | <percentage> ]",
+		"comment": ""
+	},
+	"<line-name-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <line-names> | <name-repeat> ]+",
+		"comment": ""
+	},
+	"<line-names>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'[' <custom-ident>* ']'",
+		"comment": ""
+	},
+	"<line-style>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset",
+		"comment": ""
+	},
+	"<line-width>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length [0,∞]> | thin | medium | thick",
+		"comment": ""
+	},
+	"<linear-color-hint>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length-percentage>",
+		"comment": ""
+	},
+	"<linear-color-stop>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<color> <length-percentage>?",
+		"comment": ""
+	},
+	"<linear-easing-function>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "linear( <linear-stop-list> )",
+		"comment": ""
+	},
+	"<linear-gradient-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <angle> | to <side-or-corner> ]? , <color-stop-list>",
+		"comment": ""
+	},
+	"<linear-stop-length>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<percentage>{1,2}",
+		"comment": ""
+	},
+	"<linear-stop-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <linear-stop> ]#",
+		"comment": ""
+	},
+	"<linear-stop>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number> && <linear-stop-length>?",
+		"comment": ""
+	},
+	"<link-param>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "param( <custom-property-name> <declaration-value>? )",
+		"comment": ""
+	},
+	"<marker-ref>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<url>",
+		"comment": ""
+	},
+	"<mask-layer>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || <geometry-box> || [ <geometry-box> | no-clip ] || <compositing-operator> || <masking-mode>",
+		"comment": ""
+	},
+	"<mask-reference>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "none | <image> | <mask-source>",
+		"comment": ""
+	},
+	"<mask-source>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<url>",
+		"comment": ""
+	},
+	"<masking-mode>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "alpha | luminance | match-source",
+		"comment": ""
+	},
+	"<media-and>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "and <media-in-parens>",
+		"comment": ""
+	},
+	"<media-condition-without-or>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<media-not> | <media-in-parens> <media-and>*",
+		"comment": ""
+	},
+	"<media-condition>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<media-not> | <media-in-parens> [ <media-and>* | <media-or>* ]",
+		"comment": ""
+	},
+	"<media-feature>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <mf-plain> | <mf-boolean> | <mf-range> ]",
+		"comment": ""
+	},
+	"<media-in-parens>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <media-condition> ) | ( <media-feature> ) | <general-enclosed>",
+		"comment": ""
+	},
+	"<media-not>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <media-in-parens>",
+		"comment": ""
+	},
+	"<media-or>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "or <media-in-parens>",
+		"comment": ""
+	},
+	"<media-progress()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "media-progress( <media-feature> from <calc-sum> to <calc-sum> )",
+		"comment": ""
+	},
+	"<media-query>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<media-condition> | [ not | only ]? <media-type> [ and <media-condition-without-or> ]?",
+		"comment": ""
+	},
+	"<media-type>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ident>",
+		"comment": ""
+	},
+	"<mf-boolean>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<mf-name>",
+		"comment": ""
+	},
+	"<mf-comparison>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<mf-lt> | <mf-gt> | <mf-eq>",
+		"comment": ""
+	},
+	"<mf-eq>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'='",
+		"comment": ""
+	},
+	"<mf-gt>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'>' '='?",
+		"comment": ""
+	},
+	"<mf-lt>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'<' '='?",
+		"comment": ""
+	},
+	"<mf-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ident>",
+		"comment": ""
+	},
+	"<mf-plain>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<mf-name> : <mf-value>",
+		"comment": ""
+	},
+	"<mf-range>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<mf-name> <mf-comparison> <mf-value> | <mf-value> <mf-comparison> <mf-name> | <mf-value> <mf-lt> <mf-name> <mf-lt> <mf-value> | <mf-value> <mf-gt> <mf-name> <mf-gt> <mf-value>",
+		"comment": ""
+	},
+	"<mf-value>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number> | <dimension> | <ident> | <ratio>",
+		"comment": ""
+	},
+	"<mix()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <'animation-name'> )",
+		"comment": ""
+	},
+	"<modern-device-cmyk-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"<modern-hsl-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "hsl( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"<modern-hsla-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "hsla( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"<modern-rgb-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "rgb( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"<modern-rgba-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "rgba( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"<mq-boolean>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<integer [0,1]>",
+		"comment": ""
+	},
+	"<name-repeat>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "repeat( [ <integer [1,∞]> | auto-fill ] , <line-names>+ )",
+		"comment": ""
+	},
+	"<namespace-prefix>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ident>",
+		"comment": ""
+	},
+	"<ns-prefix>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <ident-token> | '*' ]? '|'",
+		"comment": ""
+	},
+	"<number-optional-number>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number> <number>?",
+		"comment": ""
+	},
+	"<numeric-figure-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ lining-nums | oldstyle-nums ]",
+		"comment": ""
+	},
+	"<numeric-fraction-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ diagonal-fractions | stacked-fractions ]",
+		"comment": ""
+	},
+	"<numeric-spacing-values>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ proportional-nums | tabular-nums ]",
+		"comment": ""
+	},
+	"<offset-path>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ray()> | <url> | <basic-shape>",
+		"comment": ""
+	},
+	"<opentype-tag>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<string>",
+		"comment": ""
+	},
+	"<overflow-position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "unsafe | safe",
+		"comment": ""
+	},
+	"<page-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<page-selector>#",
+		"comment": ""
+	},
+	"<page-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <ident-token>? <pseudo-page>* ]!",
+		"comment": ""
+	},
+	"<paint-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<visual-box> | fill-box | stroke-box",
+		"comment": ""
+	},
+	"<paint>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "none | <image> | <svg-paint>",
+		"comment": ""
+	},
+	"<points>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <number>+ ]#",
+		"comment": ""
+	},
+	"<polar-color-space>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "hsl | hwb | lch | oklch",
+		"comment": ""
+	},
+	"<position-area>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]",
+		"comment": ""
+	},
+	"<position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
+		"comment": ""
+	},
+	"<predefined-polar-params>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "jzczhz [ <number> | <percentage> | none ]{2} [ <hue> | none ]",
+		"comment": ""
+	},
+	"<predefined-rectangular-params>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
+		"comment": ""
+	},
+	"<predefined-rectangular>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "jzazbz | ictcp",
+		"comment": ""
+	},
+	"<predefined-rgb-params>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<predefined-rgb> [ <number> | <percentage> | none ]{3}",
+		"comment": ""
+	},
+	"<predefined-rgb>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
+		"comment": ""
+	},
+	"<progress()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "progress( <calc-sum> from <calc-sum> to <calc-sum> )",
+		"comment": ""
+	},
+	"<progress>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <percentage> | <number> | <'animation-timeline'> ]? && by <easing-function>",
+		"comment": ""
+	},
+	"<pseudo-class-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "':' <ident-token> | ':' <function-token> <any-value> ')'",
+		"comment": ""
+	},
+	"<pseudo-compound-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<pseudo-element-selector> <pseudo-class-selector>*",
+		"comment": ""
+	},
+	"<pseudo-element-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "':' <pseudo-class-selector> | <legacy-pseudo-element-selector>",
+		"comment": ""
+	},
+	"<pseudo-page>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "':' [ left | right | first | blank ]",
+		"comment": ""
+	},
+	"<pt-class-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ '.' <custom-ident> ]+",
+		"comment": ""
+	},
+	"<pt-name-and-class-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<pt-name-selector> <pt-class-selector>? | <pt-class-selector>",
+		"comment": ""
+	},
+	"<pt-name-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'*' | <custom-ident>",
+		"comment": ""
+	},
+	"<query-in-parens>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>",
+		"comment": ""
+	},
+	"<quote>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "open-quote | close-quote | no-open-quote | no-close-quote",
+		"comment": ""
+	},
+	"<radial-extent>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "closest-corner | closest-side | farthest-corner | farthest-side",
+		"comment": ""
+	},
+	"<radial-gradient-syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <radial-shape> || <radial-size> ]? [ at <position> ]? , <color-stop-list>",
+		"comment": ""
+	},
+	"<radial-shape>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "circle | ellipse",
+		"comment": ""
+	},
+	"<radial-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}",
+		"comment": ""
+	},
+	"<random-caching-options>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<dashed-ident> || per-element",
+		"comment": ""
+	},
+	"<ratio>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<number [0,∞]> [ / <number [0,∞]> ]?",
+		"comment": ""
+	},
+	"<ray-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "closest-side | closest-corner | farthest-side | farthest-corner | sides",
+		"comment": ""
+	},
+	"<rectangular-color-space>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65",
+		"comment": ""
+	},
+	"<relative-real-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<relative-real-selector>#",
+		"comment": ""
+	},
+	"<relative-real-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<combinator>? <complex-real-selector>",
+		"comment": ""
+	},
+	"<relative-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<relative-selector>#",
+		"comment": ""
+	},
+	"<relative-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<combinator>? <complex-selector>",
+		"comment": ""
+	},
+	"<repeat-style>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}",
+		"comment": ""
+	},
+	"<repetition>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "repeat | space | round | no-repeat",
+		"comment": ""
+	},
+	"<request-url-modifier>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<crossorigin-modifier> | <integrity-modifier> | <referrerpolicy-modifier>",
+		"comment": ""
+	},
+	"<reversed-counter-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "reversed( <counter-name> )",
+		"comment": ""
+	},
+	"<rounding-strategy>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "nearest | up | down | to-zero",
+		"comment": ""
+	},
+	"<scroller>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "root | nearest | self",
+		"comment": ""
+	},
+	"<selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<complex-selector-list>",
+		"comment": ""
+	},
+	"<self-position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "center | start | end | self-start | self-end | flex-start | flex-end",
+		"comment": ""
+	},
+	"<shadow>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<color>? && [ <length>{2} <length [0,∞]>? <length>? ] && inset?",
+		"comment": ""
+	},
+	"<shape-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<visual-box> | margin-box",
+		"comment": ""
+	},
+	"<shape-command>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close",
+		"comment": ""
+	},
+	"<side-or-corner>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ left | right ] || [ top | bottom ]",
+		"comment": ""
+	},
+	"<simple-selector-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<simple-selector>#",
+		"comment": ""
+	},
+	"<simple-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<type-selector> | <subclass-selector>",
+		"comment": ""
+	},
+	"<single-animation-composition>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "replace | add | accumulate",
+		"comment": ""
+	},
+	"<single-animation-direction>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "normal | reverse | alternate | alternate-reverse",
+		"comment": ""
+	},
+	"<single-animation-fill-mode>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "none | forwards | backwards | both",
+		"comment": ""
+	},
+	"<single-animation-iteration-count>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "infinite | <number [0,∞]>",
+		"comment": ""
+	},
+	"<single-animation-play-state>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "running | paused",
+		"comment": ""
+	},
+	"<single-animation-timeline>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "auto | none | <dashed-ident> | <scroll()> | <view()>",
+		"comment": ""
+	},
+	"<single-animation>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<time [0s,∞]> || <easing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ]",
+		"comment": ""
+	},
+	"<single-transition-property>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "all | <custom-ident>",
+		"comment": ""
+	},
+	"<single-transition>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time>",
+		"comment": ""
+	},
+	"<source-size-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<source-size>#? , <source-size-value>",
+		"comment": ""
+	},
+	"<source-size-value>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length> | auto",
+		"comment": ""
+	},
+	"<source-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<media-condition> <source-size-value> | auto",
+		"comment": ""
+	},
+	"<spacing-trim>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "space-all | normal | space-first | trim-start | trim-both | trim-all",
+		"comment": ""
+	},
+	"<spread-shadow>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<'box-shadow-color'>? && [ <'box-shadow-offset'> [ <'box-shadow-blur'> <'box-shadow-spread'>? ]? ] && <'box-shadow-position'>?",
+		"comment": ""
+	},
+	"<step-easing-function>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "step-start | step-end | steps( <integer> , <step-position>? )",
+		"comment": ""
+	},
+	"<step-position>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "jump-start | jump-end | jump-none | jump-both | start | end",
+		"comment": ""
+	},
+	"<style-in-parens>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <style-query> ) | ( <style-feature> ) | <general-enclosed>",
+		"comment": ""
+	},
+	"<style-query>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <style-in-parens> | <style-in-parens> [ [ and <style-in-parens> ]* | [ or <style-in-parens> ]* ] | <style-feature>",
+		"comment": ""
+	},
+	"<subclass-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>",
+		"comment": ""
+	},
+	"<supports-condition>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*",
+		"comment": ""
+	},
+	"<supports-decl>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <declaration> )",
+		"comment": ""
+	},
+	"<supports-feature>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<supports-decl>",
+		"comment": ""
+	},
+	"<supports-font-format-fn>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "font-format( <font-format> )",
+		"comment": ""
+	},
+	"<supports-font-tech-fn>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "font-tech( <font-tech> )",
+		"comment": ""
+	},
+	"<supports-in-parens>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <supports-condition> ) | <supports-feature> | <general-enclosed>",
+		"comment": ""
+	},
+	"<supports-selector-fn>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "selector( <complex-selector> )",
+		"comment": ""
+	},
+	"<svg-paint>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "child | child( <integer> )",
+		"comment": ""
+	},
+	"<symbol>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<string> | <image> | <custom-ident>",
+		"comment": ""
+	},
+	"<symbols-type>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "cyclic | numeric | alphabetic | symbolic | fixed",
+		"comment": ""
+	},
+	"<syntax-combinator>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'|'",
+		"comment": ""
+	},
+	"<syntax-component-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'<' <syntax-type> '>' | <custom-ident>",
+		"comment": ""
+	},
+	"<syntax-component>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'",
+		"comment": ""
+	},
+	"<syntax-multiplier>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ '#' | '+' ]",
+		"comment": ""
+	},
+	"<syntax-type>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function",
+		"comment": ""
+	},
+	"<syntax>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
+		"comment": ""
+	},
+	"<system-family-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "caption | icon | menu | message-box | small-caption | status-bar",
+		"comment": ""
+	},
+	"<target-contrast>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<wcag2>",
+		"comment": ""
+	},
+	"<target>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<target-counter()> | <target-counters()> | <target-text()>",
+		"comment": ""
+	},
+	"<text-edge>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?",
+		"comment": ""
+	},
+	"<time-percentage>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <time> | <percentage> ]",
+		"comment": ""
+	},
+	"<toggle()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "toggle( <whole-value># )",
+		"comment": ""
+	},
+	"<track-breadth>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<length-percentage [0,∞]> | <flex [0,∞]> | min-content | max-content | auto",
+		"comment": ""
+	},
+	"<track-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ <line-names>? [ <track-size> | <track-repeat> ] ]+ <line-names>?",
+		"comment": ""
+	},
+	"<track-repeat>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "repeat( [ <integer [1,∞]> ] , [ <line-names>? <track-size> ]+ <line-names>? )",
+		"comment": ""
+	},
+	"<track-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<track-breadth> | minmax( <inflexible-breadth> , <track-breadth> ) | fit-content( <length-percentage [0,∞]> )",
+		"comment": ""
+	},
+	"<transform-list>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<transform-function>+",
+		"comment": ""
+	},
+	"<transform-mix()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "transform-mix( <progress> , <transform-list> , <transform-list> )",
+		"comment": ""
+	},
+	"<transition-behavior-value>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "normal | allow-discrete",
+		"comment": ""
+	},
+	"<try-size>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "most-width | most-height | most-block-size | most-inline-size",
+		"comment": ""
+	},
+	"<type-selector>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<wq-name> | <ns-prefix>? '*'",
+		"comment": ""
+	},
+	"<type()>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "type( <syntax> )",
+		"comment": ""
+	},
+	"<url>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<url()> | <src()>",
+		"comment": ""
+	},
+	"<visual-box>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "content-box | padding-box | border-box",
+		"comment": ""
+	},
+	"<wcag2>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )",
+		"comment": ""
+	},
+	"<wq-name>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<ns-prefix>? <ident-token>",
+		"comment": ""
+	},
+	"<xyz-params>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<xyz> [ <number> | <percentage> | none ]{3}",
+		"comment": ""
+	},
+	"<xyz-space>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "xyz | xyz-d50 | xyz-d65",
+		"comment": ""
+	},
+	"<xyz>": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "xyz | xyz-d50 | xyz-d65",
+		"comment": ""
+	},
+	"anchor-size()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )",
+		"comment": ""
+	},
+	"anchor()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )",
+		"comment": ""
+	},
+	"attr()": {
+		"type": "modified",
+		"syntax-before": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
+		"syntax-after": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
+		"comment": ""
+	},
+	"calc-size()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "calc-size( <calc-size-basis> , <calc-sum> )",
+		"comment": ""
+	},
+	"clamp()": {
+		"type": "modified",
+		"syntax-before": "clamp( <calc-sum>#{3} )",
+		"syntax-after": "clamp( [ <calc-sum> | none ] , <calc-sum> , [ <calc-sum> | none ] )",
+		"comment": ""
+	},
+	"color-layers()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "color-layers( [ <blend-mode> , ]? <color># )",
+		"comment": ""
+	},
+	"color-mix()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
+		"comment": ""
+	},
+	"color()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "color( [ from <color> ]? <colorspace-params> [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"conic-gradient()": {
+		"type": "modified",
+		"syntax-before": "conic-gradient( [ from <angle> ]? [ at <position> ]? , <angular-color-stop-list> )",
+		"syntax-after": "conic-gradient( [ <conic-gradient-syntax> ] )",
+		"comment": ""
+	},
+	"content()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "content( [ text | before | after | first-letter | marker ]? )",
+		"comment": ""
+	},
+	"contrast-color()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast> , <color># ] ] )",
+		"comment": ""
+	},
+	"cross-fade()": {
+		"type": "modified",
+		"syntax-before": "cross-fade( <cf-mixing-image> , <cf-final-image>? )",
+		"syntax-after": "cross-fade( <cf-image># )",
+		"comment": ""
+	},
+	"device-cmyk()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>",
+		"comment": ""
+	},
+	"dynamic-range-limit-mix()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]>? ]#{2} )",
+		"comment": ""
+	},
+	"element()": {
+		"type": "modified",
+		"syntax-before": "element( <custom-ident> , [ first | start | last | first-except ]? ) | element( <id-selector> )",
+		"syntax-after": "element( <id-selector> )",
+		"comment": ""
+	},
+	"env()": {
+		"type": "modified",
+		"syntax-before": "env( <custom-ident> , <declaration-value>? )",
+		"syntax-after": "env( <custom-ident> <integer [0,∞]>* , <declaration-value>? )",
+		"comment": ""
+	},
+	"filter()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "filter( [ <image> | <string> ] , <filter-value-list> )",
+		"comment": ""
+	},
+	"hsl()": {
+		"type": "modified",
+		"syntax-before": "hsl( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )",
+		"syntax-after": "[ <legacy-hsl-syntax> | <modern-hsl-syntax> ]",
+		"comment": ""
+	},
+	"hsla()": {
+		"type": "modified",
+		"syntax-before": "hsla( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
+		"syntax-after": "[ <legacy-hsla-syntax> | <modern-hsla-syntax> ]",
+		"comment": ""
+	},
+	"hwb()": {
+		"type": "modified",
+		"syntax-before": "hwb( [ <hue> | none ] [ <percentage> | none ] [ <percentage> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "hwb( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"light-dark()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "light-dark( <color> , <color> )",
+		"comment": ""
+	},
+	"linear-gradient()": {
+		"type": "modified",
+		"syntax-before": "linear-gradient( [ <angle> | to <side-or-corner> ]? , <color-stop-list> )",
+		"syntax-after": "linear-gradient( [ <linear-gradient-syntax> ] )",
+		"comment": ""
+	},
+	"linear()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "linear( <linear-stop-list> )",
+		"comment": ""
+	},
+	"media()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "media( [ <mf-plain> | <mf-boolean> | <mf-range> ] )",
+		"comment": ""
+	},
+	"oklab()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "oklab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"oklch()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "oklch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"palette-mix()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )",
+		"comment": ""
+	},
+	"radial-gradient()": {
+		"type": "modified",
+		"syntax-before": "radial-gradient( [ <ending-shape> || <size> ]? [ at <position> ]? , <color-stop-list> )",
+		"syntax-after": "radial-gradient( [ <radial-gradient-syntax> ] )",
+		"comment": ""
+	},
+	"random-item()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "random-item( <random-caching-options> , [ <declaration-value>? ]# )",
+		"comment": ""
+	},
+	"random()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "random( <random-caching-options>? , <calc-sum> , <calc-sum> , [ by <calc-sum> ]? )",
+		"comment": ""
+	},
+	"ray()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )",
+		"comment": ""
+	},
+	"repeating-conic-gradient()": {
+		"type": "modified",
+		"syntax-before": "repeating-conic-gradient( [ from <angle> ]? [ at <position> ]? , <angular-color-stop-list> )",
+		"syntax-after": "repeating-conic-gradient( [ <conic-gradient-syntax> ] )",
+		"comment": ""
+	},
+	"repeating-linear-gradient()": {
+		"type": "modified",
+		"syntax-before": "repeating-linear-gradient( [ <angle> | to <side-or-corner> ]? , <color-stop-list> )",
+		"syntax-after": "repeating-linear-gradient( [ <linear-gradient-syntax> ] )",
+		"comment": ""
+	},
+	"repeating-radial-gradient()": {
+		"type": "modified",
+		"syntax-before": "repeating-radial-gradient( [ <ending-shape> || <size> ]? [ at <position> ]? , <color-stop-list> )",
+		"syntax-after": "repeating-radial-gradient( [ <radial-gradient-syntax> ] )",
+		"comment": ""
+	},
+	"rgb()": {
+		"type": "modified",
+		"syntax-before": "rgb( <percentage>{3} [ / <alpha-value> ]? ) | rgb( <number>{3} [ / <alpha-value> ]? ) | rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )",
+		"syntax-after": "[ <legacy-rgb-syntax> | <modern-rgb-syntax> ]",
+		"comment": ""
+	},
+	"rgba()": {
+		"type": "modified",
+		"syntax-before": "rgba( <percentage>{3} [ / <alpha-value> ]? ) | rgba( <number>{3} [ / <alpha-value> ]? ) | rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )",
+		"syntax-after": "[ <legacy-rgba-syntax> | <modern-rgba-syntax> ]",
+		"comment": ""
+	},
+	"round()": {
+		"type": "modified",
+		"syntax-before": "round( <rounding-strategy>? , <calc-sum> , <calc-sum> )",
+		"syntax-after": "round( <rounding-strategy>? , <calc-sum> , <calc-sum>? )",
+		"comment": ""
+	},
+	"running()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "running( <custom-ident> )",
+		"comment": ""
+	},
+	"scroll()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "scroll( [ <scroller> || <axis> ]? )",
+		"comment": ""
+	},
+	"shape()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "shape( <'fill-rule'>? from <coordinate-pair> , <shape-command># )",
+		"comment": ""
+	},
+	"src()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "src( <string> <url-modifier>* )",
+		"comment": ""
+	},
+	"string()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "string( <custom-ident> , [ first | start | last | first-except ]? )",
+		"comment": ""
+	},
+	"stripes()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "stripes( <color-stripe># )",
+		"comment": ""
+	},
+	"supports()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "supports( <declaration> )",
+		"comment": ""
+	},
+	"symbols()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "symbols( <symbols-type>? [ <string> | <image> ]+ )",
+		"comment": ""
+	},
+	"url()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "url( <string> <url-modifier>* ) | <url-token>",
+		"comment": ""
+	},
+	"view()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "view( [ <axis> || <'view-timeline-inset'> ]? )",
+		"comment": ""
+	}
+}
