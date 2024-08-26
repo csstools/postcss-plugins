@@ -1,10 +1,14 @@
 import css from '@webref/css';
 import { fork } from 'css-tree';
 import { generate_set } from './generate-set.mjs';
+import { trim_lt_gt } from './trim-lt-gt.mjs';
 
 const IGNORED_TYPES = new Set([
 	'<an+b>',
 ]);
+
+// TODO : some properties or values might have duplicates and currently we always erase and only preserve the last encountered prop
+// need to either keep all or somehow merge.
 
 export async function generate_webref_sets() {
 	const properties = Object(null);
@@ -17,15 +21,13 @@ export async function generate_webref_sets() {
 				properties[property.name] = (property.newValues ? ' | ' + property.newValues : property.value);
 			}
 
-			// if (property.values) {
-			// 	for (const value of property.values) {
-			// 		if (value.type !== 'type') {
-			// 			continue;
-			// 		}
-
-			// 		values[value.name] = value.value;
-			// 	}
-			// }
+			if (property.values) {
+				for (const value of property.values) {
+					if (value.type === 'type' && value.value) {
+						values[trim_lt_gt(value.name)] = value.value;
+					}
+				}
+			}
 		}
 
 		for (const value of data.values) {
@@ -34,18 +36,16 @@ export async function generate_webref_sets() {
 			}
 
 			if (value.value || value.newValues) {
-				values[value.name] = (value.newValues ? ' | ' + value.newValues : value.value);
+				values[trim_lt_gt(value.name)] = (value.newValues ? ' | ' + value.newValues : value.value);
 			}
 
-			// if (value.values) {
-			// 	for (const child_value of value.values) {
-			// 		if (child_value.type !== 'type') {
-			// 			continue;
-			// 		}
-
-			// 		values[child_value.name] = child_value.value;
-			// 	}
-			// }
+			if (value.values) {
+				for (const child_value of value.values) {
+					if (child_value.type === 'type' && child_value.value) {
+						values[trim_lt_gt(child_value.name)] = child_value.value;
+					}
+				}
+			}
 		}
 	}
 

@@ -109,6 +109,11 @@ const type_patches = Object(null);
 		for (const [kind, items] of Object.entries(invalid)) {
 			items.forEach((item) => {
 				console.log(`Unexpected invalid ${SINGULAR[kind]} '${item}'`);
+				// console.log(definitionSyntax.generate(forkedLexer[kind][item].syntax));
+				// console.log(definitionSyntax.generate(forkedLexer.types['modern-rgb-syntax'].syntax));
+
+
+				// process.exit(1);
 			});
 		}
 	}
