@@ -125,6 +125,12 @@
 		"syntax-after": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>",
 		"comment": ""
 	},
+	"bg-position": {
+		"type": "modified",
+		"syntax-before": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]",
+		"syntax-after": "[ [ left | center | right | top | bottom | start | end | <length-percentage> ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ center | [ left | right | x-start | x-end ] <length-percentage>? ] && [ center | [ top | bottom | y-start | y-end ] <length-percentage>? ] | [ center | [ start | end ] <length-percentage>? ] [ center | [ start | end ] <length-percentage>? ] ]",
+		"comment": ""
+	},
 	"bg-size": {
 		"type": "modified",
 		"syntax-before": "[ <length-percentage> | auto ]{1,2} | cover | contain",
@@ -230,13 +236,13 @@
 	"color": {
 		"type": "modified",
 		"syntax-before": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>",
-		"syntax-after": "<color-base> | currentColor | <system-color>",
+		"syntax-after": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()>",
 		"comment": ""
 	},
 	"color-base": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "<hex-color> | <color-function> | <named-color> | transparent",
+		"syntax-after": "<hex-color> | <color-function> | <named-color> | <color-mix()> | transparent",
 		"comment": ""
 	},
 	"color-font-tech": {
@@ -254,7 +260,7 @@
 	"color-interpolation-method": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? ]",
+		"syntax-after": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? | <custom-color-space> ]",
 		"comment": ""
 	},
 	"color-layers()": {
@@ -272,7 +278,7 @@
 	"color-space": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "<rectangular-color-space> | <polar-color-space>",
+		"syntax-after": "<rectangular-color-space> | <polar-color-space> | <custom-color-space>",
 		"comment": ""
 	},
 	"color-stop-list": {
@@ -674,7 +680,7 @@
 	"gradient": {
 		"type": "modified",
 		"syntax-before": "<linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()> | <conic-gradient()> | <repeating-conic-gradient()> | <-legacy-gradient>",
-		"syntax-after": "<linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()>",
+		"syntax-after": "[ <linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()> | <conic-gradient()> | <repeating-conic-gradient()> ]",
 		"comment": ""
 	},
 	"grid-line": {
@@ -710,13 +716,13 @@
 	"hwb()": {
 		"type": "modified",
 		"syntax-before": "hwb( [ <hue> | none ] [ <percentage> | none ] [ <percentage> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-after": "hwb( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"image": {
 		"type": "modified",
 		"syntax-before": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
-		"syntax-after": "<url> | <gradient>",
+		"syntax-after": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>",
 		"comment": ""
 	},
 	"image-1D": {
@@ -773,10 +779,22 @@
 		"syntax-after": "from | to | <percentage [0,100]>",
 		"comment": ""
 	},
+	"lab()": {
+		"type": "modified",
+		"syntax-before": "lab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "lab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
 	"layout-box": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> | margin-box",
+		"comment": ""
+	},
+	"lch()": {
+		"type": "modified",
+		"syntax-before": "lch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "lch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"legacy-device-cmyk-syntax": {
@@ -839,12 +857,6 @@
 		"syntax-after": "<length [0,∞]> | thin | medium | thick",
 		"comment": ""
 	},
-	"linear-color-stop": {
-		"type": "modified",
-		"syntax-before": "<color> <color-stop-length>?",
-		"syntax-after": "<color> <length-percentage>?",
-		"comment": ""
-	},
 	"linear-easing-function": {
 		"type": "added",
 		"syntax-before": "",
@@ -854,7 +866,7 @@
 	"linear-gradient-syntax": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "[ <angle> | to <side-or-corner> ]? , <color-stop-list>",
+		"syntax-after": "[ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>",
 		"comment": ""
 	},
 	"linear-gradient()": {
@@ -915,18 +927,6 @@
 		"type": "modified",
 		"syntax-before": "<media-not> | <media-and> | <media-in-parens>",
 		"syntax-after": "<media-not> | <media-in-parens> <media-and>*",
-		"comment": ""
-	},
-	"media-feature": {
-		"type": "modified",
-		"syntax-before": "( [ <mf-plain> | <mf-boolean> | <mf-range> ] )",
-		"syntax-after": "[ <mf-plain> | <mf-boolean> | <mf-range> ]",
-		"comment": ""
-	},
-	"media-in-parens": {
-		"type": "modified",
-		"syntax-before": "( <media-condition> ) | <media-feature> | <general-enclosed>",
-		"syntax-after": "( <media-condition> ) | ( <media-feature> ) | <general-enclosed>",
 		"comment": ""
 	},
 	"media-or": {
@@ -992,25 +992,25 @@
 	"modern-hsl-syntax": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "hsl( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"modern-hsla-syntax": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "hsla( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"modern-rgb-syntax": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "rgb( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "rgb( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"modern-rgba-syntax": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "rgba( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"move-command": {
@@ -1040,13 +1040,13 @@
 	"oklab()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "oklab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "oklab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"oklch()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "oklch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-after": "oklch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"opacity-value": {
@@ -1208,7 +1208,7 @@
 	"radial-gradient-syntax": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "[ <radial-shape> || <radial-size> ]? [ at <position> ]? , <color-stop-list>",
+		"syntax-after": "[ [ [ <radial-shape> || <radial-size> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <color-stop-list>",
 		"comment": ""
 	},
 	"radial-gradient()": {
@@ -1281,6 +1281,12 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<relative-real-selector>#",
+		"comment": ""
+	},
+	"repeat-style": {
+		"type": "modified",
+		"syntax-before": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}",
+		"syntax-after": "repeat-x | repeat-y | <repetition>{1,2}",
 		"comment": ""
 	},
 	"repeating-conic-gradient()": {
@@ -1394,7 +1400,7 @@
 	"single-animation": {
 		"type": "modified",
 		"syntax-before": "<time> || <easing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ]",
-		"syntax-after": "<time [0s,∞]> || <easing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ]",
+		"syntax-after": "<'animation-duration'> || <easing-function> || <'animation-delay'> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ] || <single-animation-timeline>",
 		"comment": ""
 	},
 	"single-animation-iteration-count": {
@@ -1407,6 +1413,12 @@
 		"type": "modified",
 		"syntax-before": "auto | none | <timeline-name> | scroll( <axis>? <scroller>? )",
 		"syntax-after": "auto | none | <dashed-ident> | <scroll()> | <view()>",
+		"comment": ""
+	},
+	"single-transition": {
+		"type": "modified",
+		"syntax-before": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time>",
+		"syntax-after": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time> || <transition-behavior-value>",
 		"comment": ""
 	},
 	"smooth-command": {
@@ -1484,7 +1496,7 @@
 	"supports-feature": {
 		"type": "modified",
 		"syntax-before": "<supports-decl> | <supports-selector-fn>",
-		"syntax-after": "<supports-decl>",
+		"syntax-after": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-decl>",
 		"comment": ""
 	},
 	"supports-font-format-fn": {

@@ -63,7 +63,7 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <dashed-ident>#",
-		"merged": "none | <custom-property-name>#",
+		"merged": "none | <dashed-ident>#",
 		"tests": {
 			"passing": [
 				{
@@ -88,7 +88,7 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | all | <dashed-ident>#",
-		"merged": "none | all | <custom-property-name>#",
+		"merged": "none | all | <dashed-ident>#",
 		"tests": {
 			"passing": [
 				{
@@ -156,6 +156,26 @@
 		"type": "modified",
 		"syntax-before": "none | auto | textfield | menulist-button | <compat-auto>",
 		"syntax-after": "none | auto | <compat-auto> | <compat-special>",
+		"merged": "none | auto | <compat-auto> | <compat-special>",
+		"tests": {
+			"passing": [
+				{
+					"value": "none"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "textfield"
+				},
+				{
+					"value": "menulist-button"
+				},
+				{
+					"value": "searchfield"
+				}
+			]
+		},
 		"comment": ""
 	},
 	"aspect-ratio": {

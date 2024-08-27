@@ -10,6 +10,8 @@
 //   5. each patch entry needs to match the source of csstree and the source of webref
 //   6. the manually resolved conflict is also stored in the `patches.json` file
 //   This gives us an automated mechanic to detect updates and to ensure that `patches.json` is always as small as needed
+// - backwards compat
+//   given that syntaxes are extensive users might depend on a specific type. No types can be removed or altered in a breaking way in semver patches or minors
 
 import { fork, parse } from 'css-tree';
 
@@ -19,6 +21,7 @@ import { write_set_files } from './write-set-files.mjs';
 import { diff_sets } from './diff-sets.mjs';
 import { read_patches } from './read-patches.mjs';
 import { write_final_file } from './write-final-file.mjs';
+import { apply_patches } from './apply-patches.mjs';
 
 const csstree_sets = await generate_csstree_sets();
 const webref_sets = await generate_webref_sets();
@@ -35,154 +38,106 @@ const SINGULAR = {
 	'properties': 'property',
 };
 
-let has_missing_patches = false;
-let has_outdated_patches = false;
 let has_missing_patch_tests = false;
 let has_invalid_items = false;
 let has_failing_tests = false;
+let flaws = 0;
 
-const property_patches = Object(null);
-const type_patches = Object(null);
+const {
+	properties: property_patches,
+	types: type_patches,
+	has_missing_patches,
+	has_outdated_patches,
+	has_unmerged_patches,
+	flaws: patch_flaws,
+} = apply_patches(patches.webref_over_csstree, webref_over_csstree_sets);
 
-{
-	// Properties
-	for (const [name, definition] of Object.entries(webref_over_csstree_sets.properties)) {
-		const patch = patches.webref_over_csstree.properties[name];
-		if (!patch) {
-			console.log(`Missing patch for property '${name}'`);
-			has_missing_patches = true;
+flaws += patch_flaws;
 
-			continue;
-		}
+const forkedLexer = fork({
+	properties: property_patches,
+	types: type_patches,
+}).lexer;
 
-		if (
-			patch['syntax-before'] !== definition['syntax-before'] ||
-			patch['syntax-after'] !== definition['syntax-after']
-		) {
-			console.log(`Outdated patch for property '${name}'`);
-			has_outdated_patches = true;
+const invalid = forkedLexer.validate();
+if (invalid) {
+	for (const [kind, items] of Object.entries(invalid)) {
+		items.forEach((item) => {
+			console.log(`Unexpected invalid ${SINGULAR[kind]} '${item}'`);
+			has_invalid_items = true;
+			flaws++;
+		});
+	}
+}
 
-			continue;
-		}
-
-		if (patch.omit) {
-			continue;
-		}
-
-		property_patches[name] = patch['merged'] ?? patch['syntax-after'];
+// Properties
+for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
+	const patch = patches.webref_over_csstree.properties[name];
+	if (!patch) {
+		continue;
 	}
 
-	// Types
-	for (const [name, definition] of Object.entries(webref_over_csstree_sets.types)) {
-		const patch = patches.webref_over_csstree.types[name];
-		if (!patch) {
-			console.log(`Missing patch for type '${name}'`);
-			has_missing_patches = true;
-
-			continue;
-		}
-
-		if (
-			patch['syntax-before'] !== definition['syntax-before'] ||
-			patch['syntax-after'] !== definition['syntax-after']
-		) {
-			console.log(`Outdated patch for type '${name}'`);
-			has_outdated_patches = true;
-
-			continue;
-		}
-
-		if (patch.omit) {
-			continue;
-		}
-
-		type_patches[name] = patch['merged'] ?? patch['syntax-after'];
+	if (patch.omit) {
+		continue;
 	}
 
-	const forkedLexer = fork({
-		properties: property_patches,
-		types: type_patches,
-	}).lexer;
+	if (!patch.tests) {
+		has_missing_patch_tests = true;
+		continue;
+	}
 
-	const invalid = forkedLexer.validate();
-	if (invalid) {
-		for (const [kind, items] of Object.entries(invalid)) {
-			items.forEach((item) => {
-				console.log(`Unexpected invalid ${SINGULAR[kind]} '${item}'`);
-				// console.log(definitionSyntax.generate(forkedLexer[kind][item].syntax));
-				// console.log(definitionSyntax.generate(forkedLexer.types['modern-rgb-syntax'].syntax));
-
-
-				// process.exit(1);
-			});
+	for (const test of (patch.tests.passing ?? [])) {
+		const csstree_value_node = parse(test.value, { context: 'value' });
+		const result = forkedLexer.matchProperty(name, csstree_value_node);
+		if (result.error) {
+			console.log(`Expected no error for '${name}: ${test.value}'`);
+			flaws++;
 		}
 	}
 
-	// Properties
-	for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
-		const patch = patches.webref_over_csstree.properties[name];
-		if (!patch) {
-			continue;
+
+	for (const test of (patch.tests.failing ?? [])) {
+		const csstree_value_node = parse(test.value, { context: 'value' });
+		const result = forkedLexer.matchProperty(name, csstree_value_node);
+		if (!result.error) {
+			console.log(`Expected an error for '${name}: ${test.value}'`);
+			flaws++;
 		}
+	}
+}
 
-		if (patch.omit) {
-			continue;
-		}
+// Types
+for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
+	const patch = patches.webref_over_csstree.types[name];
+	if (!patch) {
+		continue;
+	}
 
-		if (!patch.tests) {
-			has_missing_patch_tests = true;
-			continue;
-		}
+	if (patch.omit) {
+		continue;
+	}
 
-		for (const test of (patch.tests.passing ?? [])) {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(name, csstree_value_node);
-			if (result.error) {
-				console.log(`Expected no error for '${name}: ${test.value}'`);
-			}
-		}
+	if (!patch.tests) {
+		has_missing_patch_tests = true;
+		continue;
+	}
 
-
-		for (const test of (patch.tests.failing ?? [])) {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(name, csstree_value_node);
-			if (!result.error) {
-				console.log(`Expected an error for '${name}: ${test.value}'`);
-			}
+	for (const test of (patch.tests.passing ?? [])) {
+		const csstree_value_node = parse(test.value, { context: 'value' });
+		const result = forkedLexer.matchProperty(test.property, csstree_value_node);
+		if (result.error) {
+			console.log(`Expected no error for '${test.property}: ${test.value}'`);
+			flaws++;
 		}
 	}
 
-	// Types
-	for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
-		const patch = patches.webref_over_csstree.types[name];
-		if (!patch) {
-			continue;
-		}
 
-		if (patch.omit) {
-			continue;
-		}
-
-		if (!patch.tests) {
-			has_missing_patch_tests = true;
-			continue;
-		}
-
-		for (const test of (patch.tests.passing ?? [])) {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(test.property, csstree_value_node);
-			if (result.error) {
-				console.log(`Expected no error for '${test.property}: ${test.value}'`);
-			}
-		}
-
-
-		for (const test of (patch.tests.failing ?? [])) {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(test.property, csstree_value_node);
-			if (!result.error) {
-				console.log(`Expected an error for '${test.property}: ${test.value}'`);
-			}
+	for (const test of (patch.tests.failing ?? [])) {
+		const csstree_value_node = parse(test.value, { context: 'value' });
+		const result = forkedLexer.matchProperty(test.property, csstree_value_node);
+		if (!result.error) {
+			console.log(`Expected an error for '${test.property}: ${test.value}'`);
+			flaws++;
 		}
 	}
 }
@@ -201,7 +156,7 @@ await write_final_file({
 });
 
 {
-	if (has_missing_patches || has_outdated_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
+	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
 		console.log('-------------------');
 	}
 
@@ -211,6 +166,10 @@ await write_final_file({
 
 	if (has_outdated_patches) {
 		console.warn('Not all patches have been updated');
+	}
+
+	if (has_unmerged_patches) {
+		console.warn('Not all patches have been merged');
 	}
 
 	if (has_missing_patch_tests) {
@@ -225,7 +184,10 @@ await write_final_file({
 		console.warn('Not all tests passed');
 	}
 
-	if (has_missing_patches || has_outdated_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
+	console.log(`${flaws} flaws to resolve`);
+
+
+	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
 		process.exit(1);
 	}
 }

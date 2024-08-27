@@ -45,7 +45,7 @@
 		"syntax": "<single-animation-direction>#"
 	},
 	"animation-duration": {
-		"syntax": "<time [0s,∞]>#"
+		"syntax": "[ auto | <time [0s,∞]> ]#"
 	},
 	"animation-fill-mode": {
 		"syntax": "<single-animation-fill-mode>#"
@@ -105,7 +105,7 @@
 		"syntax": "<mix-blend-mode>#"
 	},
 	"background-clip": {
-		"syntax": "<visual-box>#"
+		"syntax": "<bg-clip>#"
 	},
 	"-moz-background-clip": {
 		"syntax": "padding | border"
@@ -609,7 +609,7 @@
 		"syntax": "<line-width>"
 	},
 	"column-span": {
-		"syntax": "none | all"
+		"syntax": "none | <integer [1,∞]> | all | auto"
 	},
 	"column-width": {
 		"syntax": "<length> | auto | min-content | max-content | fit-content( <length-percentage> )"
@@ -879,7 +879,7 @@
 		"syntax": "<absolute-size> | <relative-size> | <length-percentage [0,∞]> | math"
 	},
 	"font-size-adjust": {
-		"syntax": "none | <number [0,∞]>"
+		"syntax": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number [0,∞]> ]"
 	},
 	"font-smooth": {
 		"syntax": "auto | never | always | <absolute-size> | <length>"
@@ -1023,16 +1023,16 @@
 		"syntax": "none | <string>+"
 	},
 	"grid-template-columns": {
-		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?"
+		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry"
 	},
 	"grid-template-rows": {
-		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?"
+		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry"
 	},
 	"hanging-punctuation": {
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
 	},
 	"height": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
+		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain"
 	},
 	"-ms-high-contrast-adjust": {
 		"syntax": "auto | none"
@@ -1152,7 +1152,7 @@
 		"syntax": "auto | <length-percentage>"
 	},
 	"letter-spacing": {
-		"syntax": "normal | <length>"
+		"syntax": "normal | <length-percentage>"
 	},
 	"lighting-color": {
 		"syntax": "<color>"
@@ -1362,7 +1362,7 @@
 		"syntax": "<'max-width'> | stretch | fit-content | contain"
 	},
 	"max-height": {
-		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
+		"syntax": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain"
 	},
 	"max-inline-size": {
 		"syntax": "<'max-width'> | stretch | fit-content | contain"
@@ -1371,13 +1371,13 @@
 		"syntax": "none | <integer [1,∞]>"
 	},
 	"max-width": {
-		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
+		"syntax": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width> | stretch | fit-content | contain"
 	},
 	"min-block-size": {
 		"syntax": "<'min-width'> | stretch | fit-content | contain"
 	},
 	"min-height": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
+		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain"
 	},
 	"min-inline-size": {
 		"syntax": "<'min-width'> | stretch | fit-content | contain"
@@ -1386,7 +1386,7 @@
 		"syntax": "legacy | zero-if-scroll || zero-if-extrinsic"
 	},
 	"min-width": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
+		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width> | stretch | fit-content | contain"
 	},
 	"mix-blend-mode": {
 		"syntax": "<blend-mode> | plus-darker | plus-lighter"
@@ -1404,7 +1404,7 @@
 		"syntax": "auto | <id> [ current | root | <target-name> ]?"
 	},
 	"object-fit": {
-		"syntax": "fill | contain | cover | none | scale-down"
+		"syntax": "fill | none | [ contain | cover ] || scale-down"
 	},
 	"object-position": {
 		"syntax": "<position>"
@@ -2013,10 +2013,10 @@
 		"syntax": "<color>"
 	},
 	"text-align": {
-		"syntax": "start | end | left | right | center | justify | match-parent | justify-all"
+		"syntax": "start | end | left | right | center | <string> | justify | match-parent | justify-all"
 	},
 	"text-align-all": {
-		"syntax": "start | end | left | right | center | justify | match-parent"
+		"syntax": "start | end | left | right | center | <string> | justify | match-parent"
 	},
 	"text-align-last": {
 		"syntax": "auto | start | end | left | right | center | justify | match-parent"
@@ -2046,13 +2046,13 @@
 		"syntax": "none | all | [ digits <integer [2,4]>? ]"
 	},
 	"text-decoration": {
-		"syntax": "<'text-decoration-line'> || <'text-decoration-style'> || <'text-decoration-color'>"
+		"syntax": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>"
 	},
 	"text-decoration-color": {
 		"syntax": "<color>"
 	},
 	"text-decoration-line": {
-		"syntax": "none | [ underline || overline || line-through || blink ]"
+		"syntax": "none | [ underline || overline || line-through || blink ] | spelling-error | grammar-error"
 	},
 	"text-decoration-skip": {
 		"syntax": "none | auto"
@@ -2103,13 +2103,13 @@
 		"syntax": "[ <length-percentage> ] && hanging? && each-line?"
 	},
 	"text-justify": {
-		"syntax": "auto | none | inter-word | inter-character"
+		"syntax": "[ auto | none | inter-word | inter-character | ruby ] || no-compress"
 	},
 	"text-orientation": {
 		"syntax": "mixed | upright | sideways"
 	},
 	"text-overflow": {
-		"syntax": "clip | ellipsis"
+		"syntax": "[ clip | ellipsis | <string> | fade | <fade()> ]{1,2}"
 	},
 	"text-rendering": {
 		"syntax": "auto | optimizeSpeed | optimizeLegibility | geometricPrecision"
@@ -2118,7 +2118,7 @@
 		"syntax": "none | circle | disc | square"
 	},
 	"text-shadow": {
-		"syntax": "none | [ <color>? && <length>{2,3} ]#"
+		"syntax": "none | <shadow>#"
 	},
 	"text-size-adjust": {
 		"syntax": "auto | none | <percentage [0,∞]>"
@@ -2145,7 +2145,7 @@
 		"syntax": "auto | <length-percentage>"
 	},
 	"text-underline-position": {
-		"syntax": "auto | [ under || [ left | right ] ]"
+		"syntax": "auto | [ from-font | under ] || [ left | right ]"
 	},
 	"text-wrap": {
 		"syntax": "<'text-wrap-mode'> || <'text-wrap-style'>"
@@ -2292,7 +2292,7 @@
 		"syntax": "silent | [ [ x-soft | soft | medium | loud | x-loud ] || <decibel> ]"
 	},
 	"white-space": {
-		"syntax": "normal | pre | nowrap | pre-wrap | break-spaces | pre-line"
+		"syntax": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'> || <'white-space-trim'>"
 	},
 	"white-space-collapse": {
 		"syntax": "collapse | discard | preserve | preserve-breaks | preserve-spaces | break-spaces"
@@ -2304,7 +2304,7 @@
 		"syntax": "<integer [1,∞]>"
 	},
 	"width": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
+		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | fill | stretch | intrinsic | -moz-max-content | -webkit-max-content | -moz-fit-content | -webkit-fit-content | stretch | fit-content | contain"
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"
@@ -2316,13 +2316,13 @@
 		"syntax": "default | menu | tooltip | sheet | none"
 	},
 	"word-break": {
-		"syntax": "normal | keep-all | break-all | break-word"
+		"syntax": "normal | break-all | keep-all | manual | auto-phrase | break-word"
 	},
 	"word-space-transform": {
 		"syntax": "none | [ space | ideographic-space ] && auto-phrase?"
 	},
 	"word-spacing": {
-		"syntax": "normal | <length>"
+		"syntax": "normal | <length-percentage>"
 	},
 	"word-wrap": {
 		"syntax": "normal | break-word | anywhere"

@@ -309,12 +309,14 @@
 		"type": "modified",
 		"syntax-before": "searchfield | textarea | push-button | slider-horizontal | checkbox | radio | square-button | menulist | listbox | meter | progress-bar | button",
 		"syntax-after": "searchfield | textarea | checkbox | radio | menulist | listbox | meter | progress-bar | button",
-		"comment": ""
+		"omit": true,
+		"comment": "existing type is a super set"
 	},
 	"compat-special": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "textfield | menulist-button",
+		"merged": "textfield | menulist-button",
 		"comment": ""
 	},
 	"complex-real-selector": {

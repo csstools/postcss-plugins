@@ -117,7 +117,7 @@
 		"syntax": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>"
 	},
 	"bg-position": {
-		"syntax": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]"
+		"syntax": "[ [ left | center | right | top | bottom | start | end | <length-percentage> ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ center | [ left | right | x-start | x-end ] <length-percentage>? ] && [ center | [ top | bottom | y-start | y-end ] <length-percentage>? ] | [ center | [ start | end ] <length-percentage>? ] [ center | [ start | end ] <length-percentage>? ] ]"
 	},
 	"bg-size": {
 		"syntax": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain"
@@ -210,13 +210,13 @@
 		"syntax": "<number> | <percentage> | none"
 	},
 	"color": {
-		"syntax": "<color-base> | currentColor | <system-color>"
+		"syntax": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()>"
 	},
 	"-non-standard-color": {
 		"syntax": "-moz-ButtonDefault | -moz-ButtonHoverFace | -moz-ButtonHoverText | -moz-CellHighlight | -moz-CellHighlightText | -moz-Combobox | -moz-ComboboxText | -moz-Dialog | -moz-DialogText | -moz-dragtargetzone | -moz-EvenTreeRow | -moz-Field | -moz-FieldText | -moz-html-CellHighlight | -moz-html-CellHighlightText | -moz-mac-accentdarkestshadow | -moz-mac-accentdarkshadow | -moz-mac-accentface | -moz-mac-accentlightesthighlight | -moz-mac-accentlightshadow | -moz-mac-accentregularhighlight | -moz-mac-accentregularshadow | -moz-mac-chrome-active | -moz-mac-chrome-inactive | -moz-mac-focusring | -moz-mac-menuselect | -moz-mac-menushadow | -moz-mac-menutextselect | -moz-MenuHover | -moz-MenuHoverText | -moz-MenuBarText | -moz-MenuBarHoverText | -moz-nativehyperlinktext | -moz-OddTreeRow | -moz-win-communicationstext | -moz-win-mediatext | -moz-activehyperlinktext | -moz-default-background-color | -moz-default-color | -moz-hyperlinktext | -moz-visitedhyperlinktext | -webkit-activelink | -webkit-focus-ring-color | -webkit-link | -webkit-text"
 	},
 	"color-base": {
-		"syntax": "<hex-color> | <color-function> | <named-color> | transparent"
+		"syntax": "<hex-color> | <color-function> | <named-color> | <color-mix()> | transparent"
 	},
 	"color-font-tech": {
 		"syntax": "[ color-COLRv0 | color-COLRv1 | color-SVG | color-sbix | color-CBDT ]"
@@ -225,7 +225,7 @@
 		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
 	},
 	"color-interpolation-method": {
-		"syntax": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? ]"
+		"syntax": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? | <custom-color-space> ]"
 	},
 	"color-layers()": {
 		"syntax": "color-layers( [ <blend-mode> , ]? <color># )"
@@ -234,7 +234,7 @@
 		"syntax": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )"
 	},
 	"color-space": {
-		"syntax": "<rectangular-color-space> | <polar-color-space>"
+		"syntax": "<rectangular-color-space> | <polar-color-space> | <custom-color-space>"
 	},
 	"color-stop": {
 		"syntax": "<color-stop-length> | <color-stop-angle>"
@@ -615,7 +615,7 @@
 		"syntax": "<shape-box> | fill-box | stroke-box | view-box"
 	},
 	"gradient": {
-		"syntax": "<linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()>"
+		"syntax": "[ <linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()> | <conic-gradient()> | <repeating-conic-gradient()> ]"
 	},
 	"-legacy-gradient": {
 		"syntax": "<-webkit-gradient()> | <-legacy-linear-gradient> | <-legacy-repeating-linear-gradient> | <-legacy-radial-gradient> | <-legacy-repeating-radial-gradient>"
@@ -663,13 +663,13 @@
 		"syntax": "[ hline | vline ] <by-to> <length-percentage>"
 	},
 	"hwb()": {
-		"syntax": "hwb( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"hypot()": {
 		"syntax": "hypot( <calc-sum># )"
 	},
 	"image": {
-		"syntax": "<url> | <gradient>"
+		"syntax": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>"
 	},
 	"image-1D": {
 		"syntax": "<stripes()>"
@@ -723,7 +723,7 @@
 		"syntax": "<custom-ident> | <string>"
 	},
 	"lab()": {
-		"syntax": "lab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "lab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"layer-name": {
 		"syntax": "<ident> [ '.' <ident> ]*"
@@ -735,7 +735,7 @@
 		"syntax": "<visual-box> | margin-box"
 	},
 	"lch()": {
-		"syntax": "lch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "lch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"leader-type": {
 		"syntax": "dotted | solid | space | <string>"
@@ -789,7 +789,7 @@
 		"syntax": "<length-percentage>"
 	},
 	"linear-color-stop": {
-		"syntax": "<color> <length-percentage>?"
+		"syntax": "<color> <color-stop-length>?"
 	},
 	"linear-easing-function": {
 		"syntax": "linear( <linear-stop-list> )"
@@ -801,7 +801,7 @@
 		"syntax": "[ <angle> | <side-or-corner> ]? , <color-stop-list>"
 	},
 	"linear-gradient-syntax": {
-		"syntax": "[ <angle> | to <side-or-corner> ]? , <color-stop-list>"
+		"syntax": "[ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>"
 	},
 	"linear-gradient()": {
 		"syntax": "linear-gradient( [ <linear-gradient-syntax> ] )"
@@ -870,10 +870,10 @@
 		"syntax": "<media-not> | <media-in-parens> <media-and>*"
 	},
 	"media-feature": {
-		"syntax": "[ <mf-plain> | <mf-boolean> | <mf-range> ]"
+		"syntax": "( [ <mf-plain> | <mf-boolean> | <mf-range> ] )"
 	},
 	"media-in-parens": {
-		"syntax": "( <media-condition> ) | ( <media-feature> ) | <general-enclosed>"
+		"syntax": "( <media-condition> ) | <media-feature> | <general-enclosed>"
 	},
 	"media-not": {
 		"syntax": "not <media-in-parens>"
@@ -939,16 +939,16 @@
 		"syntax": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )"
 	},
 	"modern-hsl-syntax": {
-		"syntax": "hsl( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"modern-hsla-syntax": {
-		"syntax": "hsla( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"modern-rgb-syntax": {
-		"syntax": "rgb( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "rgb( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
 	},
 	"modern-rgba-syntax": {
-		"syntax": "rgba( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
 	},
 	"move-command": {
 		"syntax": "move <by-to> <coordinate-pair>"
@@ -996,10 +996,10 @@
 		"syntax": "<ray()> | <url> | <basic-shape>"
 	},
 	"oklab()": {
-		"syntax": "oklab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "oklab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"oklch()": {
-		"syntax": "oklch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "oklch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"opacity-value": {
 		"syntax": "<number> | <percentage>"
@@ -1137,7 +1137,7 @@
 		"syntax": "closest-side | closest-corner | farthest-side | farthest-corner | contain | cover"
 	},
 	"radial-gradient-syntax": {
-		"syntax": "[ <radial-shape> || <radial-size> ]? [ at <position> ]? , <color-stop-list>"
+		"syntax": "[ [ [ <radial-shape> || <radial-size> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <color-stop-list>"
 	},
 	"radial-gradient()": {
 		"syntax": "radial-gradient( [ <radial-gradient-syntax> ] )"
@@ -1191,7 +1191,7 @@
 		"syntax": "rem( <calc-sum> , <calc-sum> )"
 	},
 	"repeat-style": {
-		"syntax": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}"
+		"syntax": "repeat-x | repeat-y | <repetition>{1,2}"
 	},
 	"repeating-conic-gradient()": {
 		"syntax": "repeating-conic-gradient( [ <conic-gradient-syntax> ] )"
@@ -1326,7 +1326,7 @@
 		"syntax": "sin( <calc-sum> )"
 	},
 	"single-animation": {
-		"syntax": "<time [0s,∞]> || <easing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ]"
+		"syntax": "<'animation-duration'> || <easing-function> || <'animation-delay'> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ] || <single-animation-timeline>"
 	},
 	"single-animation-composition": {
 		"syntax": "replace | add | accumulate"
@@ -1347,7 +1347,7 @@
 		"syntax": "auto | none | <dashed-ident> | <scroll()> | <view()>"
 	},
 	"single-transition": {
-		"syntax": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time>"
+		"syntax": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time> || <transition-behavior-value>"
 	},
 	"single-transition-property": {
 		"syntax": "all | <custom-ident>"
@@ -1419,7 +1419,7 @@
 		"syntax": "( <declaration> )"
 	},
 	"supports-feature": {
-		"syntax": "<supports-decl>"
+		"syntax": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-decl>"
 	},
 	"supports-font-format-fn": {
 		"syntax": "font-format( <font-format> )"

@@ -1,5 +1,5 @@
 import css from '@webref/css';
-import { fork } from 'css-tree';
+import { fork, definitionSyntax } from 'css-tree';
 import { generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
 
@@ -15,7 +15,23 @@ export async function generate_webref_sets() {
 	const values = Object(null);
 
 	const parsedFiles = await css.listAll();
-	for (const [, data] of Object.entries(parsedFiles)) {
+	const entries = Array.from(Object.entries(parsedFiles));
+
+	entries.sort((a, b) => {
+		const name_a = a[0].replace(/-\d+$/, '');
+		const name_b = b[0].replace(/-\d+$/, '');
+
+		if (name_a !== name_b) {
+			return name_a.localeCompare(name_b);
+		}
+
+		const level_a = parseInt((a[0].match(/-(\d+)$/) ?? [])[1] ?? '0', 10);
+		const level_b = parseInt((b[0].match(/-(\d+)$/) ?? [])[1] ?? '0', 10);
+
+		return level_a - level_b;
+	});
+
+	for (const [, data] of entries) {
 		for (const property of data.properties) {
 			if (property.value || property.newValues) {
 				properties[property.name] = (property.newValues ? ' | ' + property.newValues : property.value);
@@ -54,8 +70,41 @@ export async function generate_webref_sets() {
 		types: values,
 	}).lexer;
 
+	const properties_set = generate_set(forkedLexer.properties);
+	const types_set = generate_set(forkedLexer.types);
+
+	const used = new Set();
+
+	for (const [, definition] of Object.entries(types_set)) {
+		definitionSyntax.walk(
+			definitionSyntax.parse(definition.syntax),
+			{
+				enter(node) {
+					if (node.type === 'Type') {
+						used.add(node.name);
+					}
+				},
+			},
+		);
+	}
+
+	for (const [name, definition] of Object.entries(properties_set)) {
+		used.add(name);
+
+		definitionSyntax.walk(
+			definitionSyntax.parse(definition.syntax),
+			{
+				enter(node) {
+					if (node.type === 'Type') {
+						used.add(node.name);
+					}
+				},
+			},
+		);
+	}
+
 	return {
-		properties: generate_set(forkedLexer.properties),
-		types: generate_set(forkedLexer.types),
+		properties: properties_set,
+		types: types_set,
 	};
 }
