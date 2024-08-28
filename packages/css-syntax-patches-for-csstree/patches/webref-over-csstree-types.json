@@ -4,10 +4,24 @@
 		"syntax-before": "",
 		"syntax-after": "<dashed-ident>",
 		"comment": "",
-		"merged": false,
+		"merged": "<dashed-ident>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "position-anchor",
+					"value": "--foo"
+				}
+			],
+			"failing": [
+				{
+					"property": "position-anchor",
+					"value": "-foo"
+				},
+				{
+					"property": "position-anchor",
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"anchor-side": {
@@ -2183,10 +2197,28 @@
 		"syntax-before": "",
 		"syntax-after": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "position-area",
+					"value": "left"
+				},
+				{
+					"property": "position-area",
+					"value": "left top"
+				},
+				{
+					"property": "position-area",
+					"value": "center center"
+				}
+			],
+			"failing": [
+				{
+					"property": "position-area",
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"predefined-polar-params": {
@@ -2823,10 +2855,24 @@
 		"syntax-before": "",
 		"syntax-after": "src( <string> <url-modifier>* )",
 		"comment": "",
-		"merged": false,
+		"merged": "src( <string> <url-modifier>* )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "src",
+					"value": "src('#foo')"
+				},
+				{
+					"property": "src",
+					"value": "src('#foo' modifier)"
+				}
+			],
+			"failing": [
+				{
+					"property": "src",
+					"value": "src(#foo)"
+				}
+			]
 		}
 	},
 	"step-easing-function": {
@@ -3169,10 +3215,28 @@
 		"syntax-before": "",
 		"syntax-after": "flip-block || flip-inline || flip-start",
 		"comment": "",
-		"merged": false,
+		"merged": "flip-block || flip-inline || flip-start",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "position-try-fallbacks",
+					"value": "flip-block"
+				},
+				{
+					"property": "position-try-fallbacks",
+					"value": "flip-start"
+				}
+			],
+			"failing": [
+				{
+					"property": "foo",
+					"value": "flip-block"
+				},
+				{
+					"property": "position-try-fallbacks",
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"type()": {
@@ -3191,21 +3255,61 @@
 		"syntax-before": "url( <string> <url-modifier>* ) | <url-token>",
 		"syntax-after": "<url()> | <src()>",
 		"comment": "",
-		"merged": false,
+		"merged": "<url()> | <src()> | <url-token>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "src",
+					"value": "url(https://example.com#foo)"
+				},
+				{
+					"property": "src",
+					"value": "url('#foo')"
+				},
+				{
+					"property": "src",
+					"value": "src('#foo')"
+				},
+				{
+					"property": "src",
+					"value": "src('#foo' modifier)"
+				}
+			],
+			"failing": [
+				{
+					"property": "src",
+					"value": "url(#foo modifier)"
+				},
+				{
+					"property": "src",
+					"value": "src(#foo)"
+				}
+			]
 		}
 	},
 	"url()": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "url( <string> <url-modifier>* ) | <url-token>",
+		"merged": "url( <string> <url-modifier>* ) | <url-token>",
 		"comment": "",
-		"merged": false,
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "src",
+					"value": "url(https://example.com#foo)"
+				},
+				{
+					"property": "src",
+					"value": "url('#foo')"
+				}
+			],
+			"failing": [
+				{
+					"property": "src",
+					"value": "url(#foo modifier)"
+				}
+			]
 		}
 	},
 	"view()": {
@@ -3235,6 +3339,10 @@
 		"syntax-before": "",
 		"syntax-after": "xyz | xyz-d50 | xyz-d65",
 		"merged": "xyz | xyz-d50 | xyz-d65",
+		"tests": {
+			"passing": [],
+			"failing": []
+		},
 		"comment": ""
 	},
 	"xyz-params": {
@@ -3271,7 +3379,7 @@
 		"syntax-before": "",
 		"syntax-after": "xyz | xyz-d50 | xyz-d65",
 		"comment": "",
-		"merged": false,
+		"merged": "xyz | xyz-d50 | xyz-d65",
 		"tests": {
 			"passing": [],
 			"failing": []

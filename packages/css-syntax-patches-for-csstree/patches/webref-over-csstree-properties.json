@@ -3200,7 +3200,7 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <anchor-element>",
-		"merged": "auto | <custom-property-name>",
+		"merged": "auto | <anchor-element>",
 		"tests": {
 			"passing": [
 				{
@@ -3209,7 +3209,6 @@
 			],
 			"failing": [
 				{
-					"property": "position-anchor",
 					"value": "foo"
 				}
 			]
@@ -3221,10 +3220,21 @@
 		"syntax-before": "",
 		"syntax-after": "none | <position-area>",
 		"comment": "",
-		"merged": false,
+		"merged": "none | <position-area>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "none"
+				},
+				{
+					"value": "left"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"position-try": {
@@ -3243,10 +3253,24 @@
 		"syntax-before": "",
 		"syntax-after": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",
 		"comment": "",
-		"merged": false,
+		"merged": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "none"
+				},
+				{
+					"value": "--foo"
+				},
+				{
+					"value": "left"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"position-try-order": {

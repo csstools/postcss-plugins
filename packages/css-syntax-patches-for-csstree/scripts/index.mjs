@@ -61,7 +61,9 @@ const {
 flaws += patch_flaws;
 
 const forkedLexer = fork({
-	properties: property_patches,
+	properties: {
+		...property_patches,
+	},
 	types: type_patches,
 }).lexer;
 
@@ -129,22 +131,33 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 	}
 
 	for (const test of (patch.tests.passing ?? [])) {
-		const csstree_value_node = parse(test.value, { context: 'value' });
-		const result = forkedLexer.matchProperty(test.property, csstree_value_node);
-		if (result.error) {
-			console.log(`Expected no error for '${test.property}: ${test.value}'`);
-			flaws++;
-		}
+		try {
+			const csstree_value_node = parse(test.value, { context: 'value' });
+			const result = forkedLexer.matchProperty(test.property, csstree_value_node);
+			if (!result.error) {
+				continue;
+			}
+
+		} catch {}
+
+		console.log(`Expected no error for '${test.property}: ${test.value}'`);
+		flaws++;
 	}
 
 
 	for (const test of (patch.tests.failing ?? [])) {
-		const csstree_value_node = parse(test.value, { context: 'value' });
-		const result = forkedLexer.matchProperty(test.property, csstree_value_node);
-		if (!result.error) {
-			console.log(`Expected an error for '${test.property}: ${test.value}'`);
-			flaws++;
+		try {
+			const csstree_value_node = parse(test.value, { context: 'value' });
+			const result = forkedLexer.matchProperty(test.property, csstree_value_node);
+			if (result.error) {
+				continue;
+			}
+		} catch {
+			continue;
 		}
+
+		console.log(`Expected an error for '${test.property}: ${test.value}'`);
+		flaws++;
 	}
 }
 
