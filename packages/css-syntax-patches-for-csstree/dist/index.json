@@ -7,6 +7,8 @@
 			"anchor-name": "none | <dashed-ident>#",
 			"anchor-scope": "none | all | <dashed-ident>#",
 			"appearance": "none | auto | <compat-auto> | <compat-special>",
+			"color-adjust": "<'print-color-adjust'>",
+			"justify-items": "| anchor-center",
 			"position-anchor": "auto | <anchor-element>",
 			"position-area": "none | <position-area>",
 			"position-try-fallbacks": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",

@@ -71,29 +71,60 @@ for (const css_file of css_files) {
 				continue;
 			}
 
-			if (decl.parent?.type === 'atrule' && decl.parent.name === 'page') {
+			if (
+				decl.parent?.type === 'atrule' &&
+				(
+					decl.parent.name === 'page' ||
+					decl.parent.name === 'font-face'
+				)
+			) {
+				// Remove this when adding support for descriptors.
 				continue;
 			}
 
-			if (css_file.includes('/bootstrap.') && /^-(?:o|moz|ms|webkit)-/i.test(decl.prop)) {
+			if (
+				(
+					css_file.includes('/bootstrap.') ||
+					css_file.includes('/foundation.') ||
+					css_file.includes('/pure.')
+				) &&
+				/^-(?:o|moz|ms|webkit|khtml)-/i.test(decl.prop)
+			) {
 				// Bootstrap contains too many generated vendor prefixed props.
 				// We don't want to test cycles between tools, only CSS written by humans.
 				continue;
 			}
 
-			await t.test(`(${i}) ${decl}`, () => {
-				const { prop, value } = decl;
+			if (
+				(
+					css_file.includes('/bootstrap.') ||
+					css_file.includes('/foundation.') ||
+					css_file.includes('/pure.')
+				) &&
+				(
+					/-(?:o|moz|ms|webkit|khtml)-/i.test(decl.value) ||
+					decl.value.includes('progid:') ||
+					decl.value.includes('alpha(opacity=')
+				)
+			) {
+				// Bootstrap contains too many generated vendor prefixed props.
+				// We don't want to test cycles between tools, only CSS written by humans.
+				continue;
+			}
 
-				const csstree_value_node = parse(value, { context: 'value' });
-				if (contains_unsupported_function(csstree_value_node)) {
-					return;
-				}
+			const { prop, value } = decl;
 
-				const result = forkedLexer.matchProperty(prop, csstree_value_node);
-				if (!result.error) {
-					return;
-				}
+			const csstree_value_node = parse(value, { context: 'value' });
+			if (contains_unsupported_function(csstree_value_node)) {
+				continue;
+			}
 
+			const result = forkedLexer.matchProperty(prop, csstree_value_node);
+			if (!result.error) {
+				continue;
+			}
+
+			await t.test(`(${path.basename(css_file) } - ${i}) ${decl}`, () => {
 				throw result.error;
 			});
 		}

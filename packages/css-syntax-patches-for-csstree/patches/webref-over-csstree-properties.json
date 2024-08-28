@@ -1210,10 +1210,21 @@
 		"syntax-before": "",
 		"syntax-after": "<'print-color-adjust'>",
 		"comment": "",
-		"merged": false,
+		"merged": "<'print-color-adjust'>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "exact"
+				},
+				{
+					"value": "economy"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"color-interpolation": {
@@ -2200,9 +2211,16 @@
 		"syntax-before": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
 		"syntax-after": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
 		"comment": "",
-		"merged": false,
+		"merged": "| anchor-center",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "anchor-center"
+				},
+				{
+					"value": "normal"
+				}
+			],
 			"failing": []
 		}
 	},
