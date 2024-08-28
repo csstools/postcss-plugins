@@ -127,19 +127,34 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ <'animation-range-start'> <'animation-range-end'>? ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"animation-range-end": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"animation-range-start": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"appearance": {
 		"type": "modified",
@@ -171,601 +186,1101 @@
 		"type": "modified",
 		"syntax-before": "auto | <ratio>",
 		"syntax-after": "auto || <ratio>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"backdrop-filter": {
 		"type": "modified",
 		"syntax-before": "none | <filter-function-list>",
 		"syntax-after": "none | <filter-value-list>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background": {
 		"type": "modified",
 		"syntax-before": "[ <bg-layer> , ]* <final-bg-layer>",
 		"syntax-after": "<bg-layer>#? , <final-bg-layer>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-blend-mode": {
 		"type": "modified",
 		"syntax-before": "<blend-mode>#",
 		"syntax-after": "<mix-blend-mode>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-origin": {
 		"type": "modified",
 		"syntax-before": "<box>#",
 		"syntax-after": "<visual-box>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-position-block": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-position-inline": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-repeat-block": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<repetition>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-repeat-inline": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<repetition>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-repeat-x": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<repetition>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-repeat-y": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<repetition>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"background-tbd": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<bg-layer>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"baseline-shift": {
 		"type": "modified",
 		"syntax-before": "baseline | sub | super | <svg-length>",
 		"syntax-after": "<length-percentage> | sub | super | top | center | bottom",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"baseline-source": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | first | last",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-ellipsis": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | auto | <string>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-size": {
 		"type": "modified",
 		"syntax-before": "<'width'>",
 		"syntax-after": "<'width'> | stretch | fit-content | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-step": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'block-step-size'> || <'block-step-insert'> || <'block-step-align'> || <'block-step-round'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-step-align": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | center | start | end",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-step-insert": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "margin | padding",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-step-round": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "up | down | nearest",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"block-step-size": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"bookmark-label": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<content-list>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"bookmark-level": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <integer [1,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"bookmark-state": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "open | closed",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
 		"syntax-after": "<'border-block-start'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-end": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
 		"syntax-after": "<line-width> || <line-style> || <color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-end-color": {
 		"type": "modified",
 		"syntax-before": "<'border-top-color'>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-end-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-end-style": {
 		"type": "modified",
 		"syntax-before": "<'border-top-style'>",
 		"syntax-after": "<line-style>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-end-width": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'>",
 		"syntax-after": "<line-width>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-start": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
 		"syntax-after": "<line-width> || <line-style> || <color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-start-color": {
 		"type": "modified",
 		"syntax-before": "<'border-top-color'>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-start-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-start-style": {
 		"type": "modified",
 		"syntax-before": "<'border-top-style'>",
 		"syntax-after": "<line-style>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-start-width": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'>",
 		"syntax-after": "<line-width>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-style": {
 		"type": "modified",
 		"syntax-before": "<'border-top-style'>",
 		"syntax-after": "<'border-top-style'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-block-width": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'>",
 		"syntax-after": "<'border-top-width'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-bottom-color": {
 		"type": "modified",
 		"syntax-before": "<'border-top-color'>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-bottom-left-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-bottom-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-bottom-right-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-boundary": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | parent | display",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-clip": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-clip-bottom": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-clip-left": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-clip-right": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-clip-top": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-collapse": {
 		"type": "modified",
 		"syntax-before": "collapse | separate",
 		"syntax-after": "separate | collapse",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-color": {
 		"type": "modified",
 		"syntax-before": "<color>{1,4}",
 		"syntax-after": "[ <color> | <image-1D> ]{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-end-end-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-end-start-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-image-outset": {
 		"type": "modified",
 		"syntax-before": "[ <length> | <number> ]{1,4}",
 		"syntax-after": "[ <length [0,∞]> | <number [0,∞]> ]{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-image-slice": {
 		"type": "modified",
 		"syntax-before": "<number-percentage>{1,4} && fill?",
 		"syntax-after": "[ <number [0,∞]> | <percentage [0,∞]> ]{1,4} && fill?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-image-width": {
 		"type": "modified",
 		"syntax-before": "[ <length-percentage> | <number> | auto ]{1,4}",
 		"syntax-after": "[ <length-percentage [0,∞]> | <number [0,∞]> | auto ]{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
 		"syntax-after": "<'border-block-start'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-end": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
 		"syntax-after": "<line-width> || <line-style> || <color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-end-color": {
 		"type": "modified",
 		"syntax-before": "<'border-top-color'>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-end-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-end-style": {
 		"type": "modified",
 		"syntax-before": "<'border-top-style'>",
 		"syntax-after": "<line-style>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-end-width": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'>",
 		"syntax-after": "<line-width>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-start": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
 		"syntax-after": "<line-width> || <line-style> || <color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-start-color": {
 		"type": "modified",
 		"syntax-before": "<'border-top-color'>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-start-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-start-style": {
 		"type": "modified",
 		"syntax-before": "<'border-top-style'>",
 		"syntax-after": "<line-style>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-start-width": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'>",
 		"syntax-after": "<line-width>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-style": {
 		"type": "modified",
 		"syntax-before": "<'border-top-style'>",
 		"syntax-after": "<'border-top-style'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-inline-width": {
 		"type": "modified",
 		"syntax-before": "<'border-top-width'>",
 		"syntax-after": "<'border-top-width'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-left-color": {
 		"type": "modified",
 		"syntax-before": "<color>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-left-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-limit": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "all | [ sides | corners ] <length-percentage [0,∞]>? | [ top | right | bottom | left ] <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,4} [ / <length-percentage>{1,4} ]?",
 		"syntax-after": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-right-color": {
 		"type": "modified",
 		"syntax-before": "<color>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-right-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-spacing": {
 		"type": "modified",
 		"syntax-before": "<length> <length>?",
 		"syntax-after": "<length>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-start-end-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-start-start-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-top-color": {
 		"type": "modified",
 		"syntax-before": "<color>",
 		"syntax-after": "<color> | <image-1D>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-top-left-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-top-radius": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"border-top-right-radius": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>{1,2}",
 		"syntax-after": "<length-percentage [0,∞]>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"bottom": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-shadow": {
 		"type": "modified",
 		"syntax-before": "none | <shadow>#",
 		"syntax-after": "<spread-shadow>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-shadow-blur": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length [0,∞]>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-shadow-color": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<color>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-shadow-offset": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ none | <length>{2} ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-shadow-position": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ outset | inset ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-shadow-spread": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"box-snap": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | block-start | block-end | center | baseline | last-baseline",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"caption-side": {
 		"type": "modified",
 		"syntax-before": "top | bottom | block-start | block-end | inline-start | inline-end",
 		"syntax-after": "top | bottom",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"caret": {
 		"type": "modified",
 		"syntax-before": "<'caret-color'> || <'caret-shape'>",
 		"syntax-after": "<'caret-color'> || <'caret-animation'> || <'caret-shape'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"caret-animation": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | manual",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"clear": {
 		"type": "modified",
 		"syntax-before": "none | left | right | both | inline-start | inline-end",
 		"syntax-after": "inline-start | inline-end | block-start | block-end | left | right | top | bottom | both-inline | both-block | both | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"clip": {
 		"type": "modified",
 		"syntax-before": "<shape> | auto",
 		"syntax-after": "<rect()> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"color-adjust": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'print-color-adjust'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"color-interpolation": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | sRGB | linearRGB",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"color-interpolation-filters": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | sRGB | linearRGB",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"column-count": {
 		"type": "modified",
 		"syntax-before": "<integer> | auto",
 		"syntax-after": "auto | <integer [1,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"column-gap": {
 		"type": "modified",
 		"syntax-before": "normal | <length-percentage>",
 		"syntax-after": "normal | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"column-rule-style": {
 		"type": "modified",
 		"syntax-before": "<'border-style'>",
 		"syntax-after": "<line-style>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"column-rule-width": {
 		"type": "modified",
 		"syntax-before": "<'border-width'>",
 		"syntax-after": "<line-width>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"column-span": {
 		"type": "modified",
@@ -782,283 +1297,518 @@
 		"type": "modified",
 		"syntax-before": "<length> | auto",
 		"syntax-after": "<length> | auto | min-content | max-content | fit-content( <length-percentage> )",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"contain": {
 		"type": "modified",
 		"syntax-before": "none | strict | content | [ [ size || inline-size ] || layout || style || paint ]",
 		"syntax-after": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"contain-intrinsic-block-size": {
 		"type": "modified",
 		"syntax-before": "none | <length> | auto <length>",
 		"syntax-after": "auto? [ none | <length> ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"contain-intrinsic-height": {
 		"type": "modified",
 		"syntax-before": "none | <length> | auto <length>",
 		"syntax-after": "auto? [ none | <length> ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"contain-intrinsic-inline-size": {
 		"type": "modified",
 		"syntax-before": "none | <length> | auto <length>",
 		"syntax-after": "auto? [ none | <length> ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"contain-intrinsic-size": {
 		"type": "modified",
 		"syntax-before": "[ none | <length> | auto <length> ]{1,2}",
 		"syntax-after": "[ auto? [ none | <length> ] ]{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"contain-intrinsic-width": {
 		"type": "modified",
 		"syntax-before": "none | <length> | auto <length>",
 		"syntax-after": "auto? [ none | <length> ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"container": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'container-name'> [ / <'container-type'> ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"container-name": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <custom-ident>+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"container-type": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | size | inline-size",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"content": {
 		"type": "modified",
 		"syntax-before": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]?",
 		"syntax-after": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]? | <element()>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"continue": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "overflow | paginate | fragments",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"copy-into": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ [ <custom-ident> <content-level> ] [, <custom-ident> <content-level> ]* ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"corner-shape": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ round | angle ]{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"corners": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'corner-shape'> || <'border-radius'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"cue-after": {
 		"type": "modified",
 		"syntax-before": "<url> <decibel>? | none",
 		"syntax-after": "<uri> <decibel>? | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"cue-before": {
 		"type": "modified",
 		"syntax-before": "<url> <decibel>? | none",
 		"syntax-after": "<uri> <decibel>? | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"cursor": {
 		"type": "modified",
 		"syntax-before": "[ [ <url> [ <x> <y> ]? , ]* [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out | grab | grabbing | hand | -webkit-grab | -webkit-grabbing | -webkit-zoom-in | -webkit-zoom-out | -moz-grab | -moz-grabbing | -moz-zoom-in | -moz-zoom-out ] ]",
 		"syntax-after": "[ [ <url> | <url-set> ] [ <x> <y> ]? ]#? [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | grabbing | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"cx": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"cy": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"d": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <string>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"display": {
 		"type": "modified",
 		"syntax-before": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
 		"syntax-after": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display> | <display-outside> || [ <display-inside> | math ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"dominant-baseline": {
 		"type": "modified",
 		"syntax-before": "auto | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge",
 		"syntax-after": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"dynamic-range-limit": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "standard | high | constrained-high",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"field-sizing": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "fixed | content",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-break": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "bounding-box | slice | clone",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-color": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-image": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<paint>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-opacity": {
 		"type": "modified",
 		"syntax-before": "<number-zero-one>",
 		"syntax-after": "<'opacity'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-origin": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "match-parent | fill-box | stroke-box | content-box | padding-box | border-box",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-position": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<position>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-repeat": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<repeat-style>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"fill-size": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<bg-size>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"filter": {
 		"type": "modified",
 		"syntax-before": "none | <filter-function-list> | <-ms-filter-function-list>",
 		"syntax-after": "none | <filter-value-list>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"flex-grow": {
 		"type": "modified",
 		"syntax-before": "<number>",
 		"syntax-after": "<number [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"flex-shrink": {
 		"type": "modified",
 		"syntax-before": "<number>",
 		"syntax-after": "<number [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"float": {
 		"type": "modified",
 		"syntax-before": "left | right | none | inline-start | inline-end",
 		"syntax-after": "block-start | block-end | inline-start | inline-end | snap-block | <snap-block()> | snap-inline | <snap-inline()> | left | right | top | bottom | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"float-defer": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<integer> | last | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"float-offset": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length> | <percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"float-reference": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "inline | column | region | page",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"flood-color": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"flood-opacity": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'opacity'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"flow-from": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<ident> | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"flow-into": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <ident> [ element | content ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font": {
 		"type": "modified",
 		"syntax-before": "[ [ <'font-style'> || <font-variant-css21> || <'font-weight'> || <'font-stretch'> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | caption | icon | menu | message-box | small-caption | status-bar",
 		"syntax-after": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | <system-family-name>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-palette": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | light | dark | <palette-identifier> | <palette-mix()>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-size": {
 		"type": "modified",
 		"syntax-before": "<absolute-size> | <relative-size> | <length-percentage>",
 		"syntax-after": "<absolute-size> | <relative-size> | <length-percentage [0,∞]> | math",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-size-adjust": {
 		"type": "modified",
@@ -1075,85 +1825,155 @@
 		"type": "modified",
 		"syntax-before": "normal | italic | oblique <angle>?",
 		"syntax-after": "normal | italic | oblique <angle [-90deg,90deg]>?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-synthesis": {
 		"type": "modified",
 		"syntax-before": "none | [ weight || style || small-caps ]",
 		"syntax-after": "none | [ weight || style || small-caps || position ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-synthesis-position": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-synthesis-small-caps": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-synthesis-style": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-synthesis-weight": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-variant": {
 		"type": "modified",
 		"syntax-before": "normal | none | [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> || stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero || <east-asian-variant-values> || <east-asian-width-values> || ruby ]",
 		"syntax-after": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-variant-emoji": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | text | emoji | unicode",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-variation-settings": {
 		"type": "modified",
 		"syntax-before": "normal | [ <string> <number> ]#",
 		"syntax-after": "normal | [ <opentype-tag> <number> ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-width": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | <percentage [0,∞]> | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"footnote-display": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "block | inline | compact",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"footnote-policy": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | line | block",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"forced-color-adjust": {
 		"type": "modified",
 		"syntax-before": "auto | none",
 		"syntax-after": "auto | none | preserve-parent-color",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"glyph-orientation-vertical": {
 		"type": "modified",
 		"syntax-before": "<angle>",
 		"syntax-after": "auto | 0deg | 90deg | 0 | 90",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"grid-template-columns": {
 		"type": "modified",
@@ -1192,319 +2012,584 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ auto | <integer> ]{1,3}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"hyphenate-limit-last": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | always | column | page | spread",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"hyphenate-limit-lines": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "no-limit | <integer>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"hyphenate-limit-zone": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"image-orientation": {
 		"type": "modified",
 		"syntax-before": "from-image | <angle> | [ <angle>? flip ]",
 		"syntax-after": "from-image | none | [ <angle> || flip ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"image-rendering": {
 		"type": "modified",
 		"syntax-before": "auto | crisp-edges | pixelated | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>",
 		"syntax-after": "auto | smooth | high-quality | pixelated | crisp-edges",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"initial-letter": {
 		"type": "modified",
 		"syntax-before": "normal | [ <number> <integer>? ]",
 		"syntax-after": "normal | <number [1,∞]> <integer [1,∞]> | <number [1,∞]> && [ drop | raise ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"initial-letter-align": {
 		"type": "modified",
 		"syntax-before": "[ auto | alphabetic | hanging | ideographic ]",
 		"syntax-after": "[ border-box? [ alphabetic | ideographic | hanging | leading ]? ]!",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"initial-letter-wrap": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | first | all | grid | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"inline-size": {
 		"type": "modified",
 		"syntax-before": "<'width'>",
 		"syntax-after": "<'width'> | stretch | fit-content | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"inline-sizing": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | stretch",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"inset-block-end": {
 		"type": "modified",
 		"syntax-before": "<'top'>",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"inset-block-start": {
 		"type": "modified",
 		"syntax-before": "<'top'>",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"inset-inline-end": {
 		"type": "modified",
 		"syntax-before": "<'top'>",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"inset-inline-start": {
 		"type": "modified",
 		"syntax-before": "<'top'>",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"interpolate-size": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "numeric-only | allow-keywords",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"isolation": {
 		"type": "modified",
 		"syntax-before": "auto | isolate",
 		"syntax-after": "<isolation-mode>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"justify-items": {
 		"type": "modified",
 		"syntax-before": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
 		"syntax-after": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"justify-self": {
 		"type": "modified",
 		"syntax-before": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
 		"syntax-after": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"left": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"lighting-color": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-clamp": {
 		"type": "modified",
 		"syntax-before": "none | <integer>",
 		"syntax-after": "none | <integer [1,∞]> || <'block-ellipsis'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"-webkit-line-clamp": {
 		"type": "modified",
 		"syntax-before": "none | <integer>",
 		"syntax-after": "none | <integer [1,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-fit-edge": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "leading | <text-edge>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-grid": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "match-parent | create",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-height": {
 		"type": "modified",
 		"syntax-before": "normal | <number> | <length> | <percentage>",
 		"syntax-after": "normal | <number [0,∞]> | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-height-step": {
 		"type": "modified",
 		"syntax-before": "<length>",
 		"syntax-after": "<length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-padding": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"line-snap": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | baseline | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"link-parameters": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <link-param>+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"list-style": {
 		"type": "modified",
 		"syntax-before": "<'list-style-type'> || <'list-style-position'> || <'list-style-image'>",
 		"syntax-after": "<'list-style-position'> || <'list-style-image'> || <'list-style-type'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin": {
 		"type": "modified",
 		"syntax-before": "[ <length> | <percentage> | auto ]{1,4}",
 		"syntax-after": "<'margin-top'>{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-block": {
 		"type": "modified",
 		"syntax-before": "<'margin-left'>{1,2}",
 		"syntax-after": "<'margin-top'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-block-end": {
 		"type": "modified",
 		"syntax-before": "<'margin-left'>",
 		"syntax-after": "<'margin-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-block-start": {
 		"type": "modified",
 		"syntax-before": "<'margin-left'>",
 		"syntax-after": "<'margin-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-bottom": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "<length-percentage> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-break": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | keep | discard",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-inline": {
 		"type": "modified",
 		"syntax-before": "<'margin-left'>{1,2}",
 		"syntax-after": "<'margin-top'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-inline-end": {
 		"type": "modified",
 		"syntax-before": "<'margin-left'>",
 		"syntax-after": "<'margin-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-inline-start": {
 		"type": "modified",
 		"syntax-before": "<'margin-left'>",
 		"syntax-after": "<'margin-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-left": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "<length-percentage> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-right": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "<length-percentage> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-top": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "<length-percentage> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"margin-trim": {
 		"type": "modified",
 		"syntax-before": "none | in-flow | all",
 		"syntax-after": "none | [ block || inline ] | [ block-start || inline-start || block-end || inline-end ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"marker": {
 		"type": "modified",
 		"syntax-before": "none | <url>",
 		"syntax-after": "none | <marker-ref>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"marker-end": {
 		"type": "modified",
 		"syntax-before": "none | <url>",
 		"syntax-after": "none | <marker-ref>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"marker-mid": {
 		"type": "modified",
 		"syntax-before": "none | <url>",
 		"syntax-after": "none | <marker-ref>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"marker-side": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "match-self | match-parent",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"marker-start": {
 		"type": "modified",
 		"syntax-before": "none | <url>",
 		"syntax-after": "none | <marker-ref>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"mask-border-slice": {
 		"type": "modified",
 		"syntax-before": "<number-percentage>{1,4} fill?",
 		"syntax-after": "[ <number> | <percentage> ]{1,4} fill?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"mask-clip": {
 		"type": "modified",
 		"syntax-before": "[ <geometry-box> | no-clip ]#",
 		"syntax-after": "[ <coord-box> | no-clip ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"mask-origin": {
 		"type": "modified",
 		"syntax-before": "<geometry-box>#",
 		"syntax-after": "<coord-box>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"max-block-size": {
 		"type": "modified",
 		"syntax-before": "<'max-width'>",
 		"syntax-after": "<'max-width'> | stretch | fit-content | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"max-height": {
 		"type": "modified",
@@ -1521,13 +2606,23 @@
 		"type": "modified",
 		"syntax-before": "<'max-width'>",
 		"syntax-after": "<'max-width'> | stretch | fit-content | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"max-lines": {
 		"type": "modified",
 		"syntax-before": "none | <integer>",
 		"syntax-after": "none | <integer [1,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"max-width": {
 		"type": "modified",
@@ -1544,7 +2639,12 @@
 		"type": "modified",
 		"syntax-before": "<'min-width'>",
 		"syntax-after": "<'min-width'> | stretch | fit-content | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"min-height": {
 		"type": "modified",
@@ -1561,13 +2661,23 @@
 		"type": "modified",
 		"syntax-before": "<'min-width'>",
 		"syntax-after": "<'min-width'> | stretch | fit-content | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"min-intrinsic-sizing": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "legacy | zero-if-scroll || zero-if-extrinsic",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"min-width": {
 		"type": "modified",
@@ -1584,31 +2694,56 @@
 		"type": "modified",
 		"syntax-before": "<blend-mode> | plus-lighter",
 		"syntax-after": "<blend-mode> | plus-darker | plus-lighter",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"nav-down": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"nav-left": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"nav-right": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"nav-up": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"object-fit": {
 		"type": "modified",
@@ -1625,241 +2760,441 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <basic-shape-rect>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"offset-path": {
 		"type": "modified",
 		"syntax-before": "none | ray( [ <angle> && <size> && contain? ] ) | <path()> | <url> | [ <basic-shape> || <geometry-box> ]",
 		"syntax-after": "none | <offset-path> || <coord-box>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"offset-position": {
 		"type": "modified",
 		"syntax-before": "auto | <position>",
 		"syntax-after": "normal | auto | <position>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"opacity": {
 		"type": "modified",
 		"syntax-before": "<alpha-value>",
 		"syntax-after": "<opacity-value>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"orphans": {
 		"type": "modified",
 		"syntax-before": "<integer>",
 		"syntax-after": "<integer [1,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"outline": {
 		"type": "modified",
 		"syntax-before": "[ <'outline-color'> || <'outline-style'> || <'outline-width'> ]",
 		"syntax-after": "[ <'outline-width'> || <'outline-style'> || <'outline-color'> ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"outline-color": {
 		"type": "modified",
 		"syntax-before": "<color> | invert",
 		"syntax-after": "auto | [ <color> | <image-1D> ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"outline-style": {
 		"type": "modified",
 		"syntax-before": "auto | <'border-style'>",
 		"syntax-after": "auto | <outline-line-style>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow": {
 		"type": "modified",
 		"syntax-before": "[ visible | hidden | clip | scroll | auto ]{1,2} | <-non-standard-overflow>",
 		"syntax-after": "<'overflow-block'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-block": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-block-end": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-block-start": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-bottom": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-inline": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-inline-end": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-inline-start": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-left": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-right": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overflow-clip-margin-top": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<visual-box> || <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"overlay": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding": {
 		"type": "modified",
 		"syntax-before": "[ <length> | <percentage> ]{1,4}",
 		"syntax-after": "<'padding-top'>{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-block": {
 		"type": "modified",
 		"syntax-before": "<'padding-left'>{1,2}",
 		"syntax-after": "<'padding-top'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-block-end": {
 		"type": "modified",
 		"syntax-before": "<'padding-left'>",
 		"syntax-after": "<'padding-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-block-start": {
 		"type": "modified",
 		"syntax-before": "<'padding-left'>",
 		"syntax-after": "<'padding-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-bottom": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage>",
 		"syntax-after": "<length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-inline": {
 		"type": "modified",
 		"syntax-before": "<'padding-left'>{1,2}",
 		"syntax-after": "<'padding-top'>{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-inline-end": {
 		"type": "modified",
 		"syntax-before": "<'padding-left'>",
 		"syntax-after": "<'padding-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-inline-start": {
 		"type": "modified",
 		"syntax-before": "<'padding-left'>",
 		"syntax-after": "<'padding-top'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-left": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage>",
 		"syntax-after": "<length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-right": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage>",
 		"syntax-after": "<length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"padding-top": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage>",
 		"syntax-after": "<length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"page": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <custom-ident>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"page-break-after": {
 		"type": "modified",
 		"syntax-before": "auto | always | avoid | left | right | recto | verso",
 		"syntax-after": "auto | always | avoid | left | right | inherit",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"page-break-before": {
 		"type": "modified",
 		"syntax-before": "auto | always | avoid | left | right | recto | verso",
 		"syntax-after": "auto | always | avoid | left | right | inherit",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"page-break-inside": {
 		"type": "modified",
 		"syntax-before": "auto | avoid",
 		"syntax-after": "avoid | auto | inherit",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"pause-after": {
 		"type": "modified",
 		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"pause-before": {
 		"type": "modified",
 		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"perspective": {
 		"type": "modified",
 		"syntax-before": "none | <length>",
 		"syntax-after": "none | <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"pointer-events": {
 		"type": "modified",
 		"syntax-before": "auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit",
 		"syntax-after": "auto | bounding-box | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"position": {
 		"type": "modified",
 		"syntax-before": "static | relative | absolute | sticky | fixed | -webkit-sticky",
 		"syntax-after": "static | relative | absolute | sticky | fixed",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"position-anchor": {
 		"type": "added",
@@ -1885,391 +3220,716 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <position-area>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"position-try": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'position-try-order'>? <'position-try-fallbacks'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"position-try-fallbacks": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"position-try-order": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | <try-size>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"position-visibility": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "always | [ anchors-valid || anchors-visible || no-overflow ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"quotes": {
 		"type": "modified",
 		"syntax-before": "none | auto | [ <string> <string> ]+",
 		"syntax-after": "auto | none | match-parent | [ <string> <string> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"r": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"reading-flow": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"region-fragment": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | break",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"rest-after": {
 		"type": "modified",
 		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"rest-before": {
 		"type": "modified",
 		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"right": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"row-gap": {
 		"type": "modified",
 		"syntax-before": "normal | <length-percentage>",
 		"syntax-after": "normal | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"ruby-merge": {
 		"type": "modified",
 		"syntax-before": "separate | collapse | auto",
 		"syntax-after": "separate | merge | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"ruby-overhang": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"rx": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"ry": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scale": {
 		"type": "modified",
 		"syntax-before": "none | <number>{1,3}",
 		"syntax-after": "none | [ <number> | <percentage> ]{1,3}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-marker-group": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | before | after",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding": {
 		"type": "modified",
 		"syntax-before": "[ auto | <length-percentage> ]{1,4}",
 		"syntax-after": "[ auto | <length-percentage [0,∞]> ]{1,4}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-block": {
 		"type": "modified",
 		"syntax-before": "[ auto | <length-percentage> ]{1,2}",
 		"syntax-after": "[ auto | <length-percentage [0,∞]> ]{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-block-end": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-block-start": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-bottom": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-inline": {
 		"type": "modified",
 		"syntax-before": "[ auto | <length-percentage> ]{1,2}",
 		"syntax-after": "[ auto | <length-percentage [0,∞]> ]{1,2}",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-inline-end": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-inline-start": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-left": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-right": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-padding-top": {
 		"type": "modified",
 		"syntax-before": "auto | <length-percentage>",
 		"syntax-after": "auto | <length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-start-target": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ none | auto ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-timeline": {
 		"type": "modified",
 		"syntax-before": "<scroll-timeline-name> || <scroll-timeline-axis>",
 		"syntax-after": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-timeline-axis": {
 		"type": "modified",
 		"syntax-before": "block | inline | vertical | horizontal",
 		"syntax-after": "[ block | inline | x | y ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"scroll-timeline-name": {
 		"type": "modified",
 		"syntax-before": "none | <custom-ident>",
 		"syntax-after": "[ none | <dashed-ident> ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"shape-image-threshold": {
 		"type": "modified",
 		"syntax-before": "<alpha-value>",
 		"syntax-after": "<opacity-value>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"shape-inside": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | outside-shape | [ <basic-shape> || shape-box ] | <image> | display",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"shape-margin": {
 		"type": "modified",
 		"syntax-before": "<length-percentage>",
 		"syntax-after": "<length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"shape-outside": {
 		"type": "modified",
 		"syntax-before": "none | [ <shape-box> || <basic-shape> ] | <image>",
 		"syntax-after": "none | [ <basic-shape> || <shape-box> ] | <image>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"shape-padding": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"shape-subtract": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ <basic-shape> | <uri> ]+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"spatial-navigation-action": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | focus | scroll",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"spatial-navigation-contain": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | contain",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"spatial-navigation-function": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | grid",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"speak": {
 		"type": "modified",
 		"syntax-before": "auto | none | normal",
 		"syntax-after": "auto | never | always",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"string-set": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ <custom-ident> <string>+ ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-align": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "center | inset | outset",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-alignment": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "center | inner | outer",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-break": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "bounding-box | slice | clone",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-color": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<color>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-dash-corner": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <length>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-dash-justify": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ stretch | compress ] || [ dashes || gaps ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-dashadjust": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ stretch | compress ] [ dashes | gaps ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-dasharray": {
 		"type": "modified",
 		"syntax-before": "none | [ <svg-length>+ ]#",
 		"syntax-after": "none | [ <length-percentage> | <number> ]+#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-dashcorner": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <length>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-dashoffset": {
 		"type": "modified",
 		"syntax-before": "<svg-length>",
 		"syntax-after": "<length-percentage> | <number>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-image": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<paint>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-linejoin": {
 		"type": "modified",
 		"syntax-before": "miter | round | bevel",
 		"syntax-after": "[ crop | arcs | miter ] || [ bevel | round | fallback ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-miterlimit": {
 		"type": "modified",
 		"syntax-before": "<number-one-or-greater>",
 		"syntax-after": "<number>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-opacity": {
 		"type": "modified",
 		"syntax-before": "<number-zero-one>",
 		"syntax-after": "<'opacity'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-origin": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "match-parent | fill-box | stroke-box | content-box | padding-box | border-box",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-position": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<position>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-repeat": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<repeat-style>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-size": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<bg-size>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"stroke-width": {
 		"type": "modified",
 		"syntax-before": "<svg-length>",
 		"syntax-after": "[ <length-percentage> | <number> ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"tab-size": {
 		"type": "modified",
 		"syntax-before": "<integer> | <length>",
 		"syntax-after": "<number [0,∞]> | <length [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-align": {
 		"type": "modified",
@@ -2297,37 +3957,67 @@
 		"type": "modified",
 		"syntax-before": "auto | start | end | left | right | center | justify",
 		"syntax-after": "auto | start | end | left | right | center | justify | match-parent",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-autospace": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | <autospace> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-box": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | <'text-box-trim'> || <'text-box-edge'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-box-edge": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | <text-edge>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-box-trim": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | trim-start | trim-end | trim-both",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-combine-upright": {
 		"type": "modified",
 		"syntax-before": "none | all | [ digits <integer>? ]",
 		"syntax-after": "none | all | [ digits <integer [2,4]>? ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration": {
 		"type": "modified",
@@ -2344,67 +4034,122 @@
 		"type": "modified",
 		"syntax-before": "none | [ objects || [ spaces | [ leading-spaces || trailing-spaces ] ] || edges || box-decoration ]",
 		"syntax-after": "none | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-skip-box": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | all",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-skip-ink": {
 		"type": "modified",
 		"syntax-before": "auto | all | none",
 		"syntax-after": "auto | none | all",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-skip-self": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | skip-all | [ skip-underline || skip-overline || skip-line-through ] | no-skip",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-skip-spaces": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | all | [ start || end ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-thickness": {
 		"type": "modified",
 		"syntax-before": "auto | from-font | <length> | <percentage>",
 		"syntax-after": "auto | from-font | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-trim": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length>{1,2} | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-emphasis-position": {
 		"type": "modified",
 		"syntax-before": "[ over | under ] && [ right | left ]",
 		"syntax-after": "[ over | under ] && [ right | left ]?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-emphasis-skip": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "spaces || punctuation || symbols || narrow",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-group-align": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | start | end | left | right | center",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-indent": {
 		"type": "modified",
 		"syntax-before": "<length-percentage> && hanging? && each-line?",
 		"syntax-after": "[ <length-percentage> ] && hanging? && each-line?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-justify": {
 		"type": "modified",
@@ -2443,43 +4188,78 @@
 		"type": "modified",
 		"syntax-before": "none | auto | <percentage>",
 		"syntax-after": "auto | none | <percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-spacing": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | auto | <spacing-trim> || <autospace>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-spacing-trim": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<spacing-trim> | auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"-webkit-text-stroke": {
 		"type": "modified",
 		"syntax-before": "<length> || <color>",
 		"syntax-after": "<line-width> || <color>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"-webkit-text-stroke-width": {
 		"type": "modified",
 		"syntax-before": "<length>",
 		"syntax-after": "<line-width>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-transform": {
 		"type": "modified",
 		"syntax-before": "none | capitalize | uppercase | lowercase | full-width | full-size-kana",
 		"syntax-after": "none | capitalize | uppercase | lowercase | full-width | full-size-kana | math-auto",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-underline-offset": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage>",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-underline-position": {
 		"type": "modified",
@@ -2496,133 +4276,243 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<'text-wrap-mode'> || <'text-wrap-style'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-wrap-mode": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "wrap | nowrap",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-wrap-style": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | balance | stable | pretty",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"timeline-scope": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | all | <dashed-ident>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"top": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"transform-origin": {
 		"type": "modified",
 		"syntax-before": "[ <length-percentage> | left | center | right | top | bottom ] | [ [ <length-percentage> | left | center | right ] && [ <length-percentage> | top | center | bottom ] ] <length>?",
 		"syntax-after": "[ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] <length>? | [ [ center | left | right ] && [ center | top | bottom ] ] <length>?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"transition-behavior": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<transition-behavior-value>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"transition-duration": {
 		"type": "modified",
 		"syntax-before": "<time>#",
 		"syntax-after": "<time [0s,∞]>#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"unicode-bidi": {
 		"type": "modified",
 		"syntax-before": "normal | embed | isolate | bidi-override | isolate-override | plaintext | -moz-isolate | -moz-isolate-override | -moz-plaintext | -webkit-isolate | -webkit-isolate-override | -webkit-plaintext",
 		"syntax-after": "normal | embed | isolate | bidi-override | isolate-override | plaintext",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"vector-effect": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | non-scaling-stroke | non-scaling-size | non-rotation | fixed-position",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"vertical-align": {
 		"type": "modified",
 		"syntax-before": "baseline | sub | super | text-top | text-bottom | middle | top | bottom | <percentage> | <length>",
 		"syntax-after": "[ first | last ] || <'alignment-baseline'> || <'baseline-shift'>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-timeline": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ <'view-timeline-name'> [ <'view-timeline-axis'> || <'view-timeline-inset'> ]? ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-timeline-axis": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ block | inline | x | y ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-timeline-inset": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ [ auto | <length-percentage> ]{1,2} ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-timeline-name": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ none | <dashed-ident> ]#",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-transition-class": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <custom-ident>+",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-transition-group": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "normal | contain | nearest | <custom-ident>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"view-transition-name": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | <custom-ident>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"voice-duration": {
 		"type": "modified",
 		"syntax-before": "auto | <time>",
 		"syntax-after": "auto | <time [0s,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"voice-pitch": {
 		"type": "modified",
 		"syntax-before": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
 		"syntax-after": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"voice-range": {
 		"type": "modified",
 		"syntax-before": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
 		"syntax-after": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"voice-rate": {
 		"type": "modified",
 		"syntax-before": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage>",
 		"syntax-after": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"white-space": {
 		"type": "modified",
@@ -2639,19 +4529,34 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "collapse | discard | preserve | preserve-breaks | preserve-spaces | break-spaces",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"white-space-trim": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | discard-before || discard-after || discard-inner",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"widows": {
 		"type": "modified",
 		"syntax-before": "<integer>",
 		"syntax-after": "<integer [1,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"width": {
 		"type": "modified",
@@ -2679,7 +4584,12 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ space | ideographic-space ] && auto-phrase?",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"word-spacing": {
 		"type": "modified",
@@ -2696,66 +4606,121 @@
 		"type": "modified",
 		"syntax-before": "normal | break-word",
 		"syntax-after": "normal | break-word | anywhere",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"wrap-after": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | avoid | avoid-line | avoid-flex | line | flex",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"wrap-before": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | avoid | avoid-line | avoid-flex | line | flex",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"wrap-flow": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | both | start | end | minimum | maximum | clear",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"wrap-inside": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "auto | avoid",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"wrap-through": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "wrap | none",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"writing-mode": {
 		"type": "modified",
 		"syntax-before": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr | <svg-writing-mode>",
 		"syntax-after": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"x": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"y": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<length-percentage>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"z-index": {
 		"type": "modified",
 		"syntax-before": "auto | <integer>",
 		"syntax-after": "auto | <integer> | inherit",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"zoom": {
 		"type": "modified",
 		"syntax-before": "normal | reset | <number> | <percentage>",
 		"syntax-after": "<number [0,∞]> || <percentage [0,∞]>",
-		"comment": ""
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	}
 }
