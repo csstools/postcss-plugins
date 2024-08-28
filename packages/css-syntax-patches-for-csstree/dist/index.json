@@ -9,7 +9,9 @@
 			"appearance": "none | auto | <compat-auto> | <compat-special>",
 			"position-anchor": "auto | <anchor-element>",
 			"position-area": "none | <position-area>",
-			"position-try-fallbacks": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#"
+			"position-try-fallbacks": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",
+			"position-try-order": "normal | <try-size>",
+			"transition-behavior": "<transition-behavior-value>#"
 		},
 		"types": {
 			"anchor-element": "<dashed-ident>",
@@ -28,6 +30,8 @@
 			"predefined-rgb-params": "<predefined-rgb> [ <number> | <percentage> | none ]{3}",
 			"src()": "src( <string> <url-modifier>* )",
 			"system-color": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText",
+			"transition-behavior-value": "normal | allow-discrete",
+			"try-size": "most-width | most-height | most-block-size | most-inline-size",
 			"try-tactic": "flip-block || flip-inline || flip-start",
 			"url": "<url()> | <src()> | <url-token>",
 			"url()": "url( <string> <url-modifier>* ) | <url-token>",

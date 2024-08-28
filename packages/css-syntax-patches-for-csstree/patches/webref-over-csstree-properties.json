@@ -3278,10 +3278,21 @@
 		"syntax-before": "",
 		"syntax-after": "normal | <try-size>",
 		"comment": "",
-		"merged": false,
+		"merged": "normal | <try-size>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "most-width"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"position-visibility": {
@@ -4367,10 +4378,21 @@
 		"syntax-before": "",
 		"syntax-after": "<transition-behavior-value>#",
 		"comment": "",
-		"merged": false,
+		"merged": "<transition-behavior-value>#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "allow-discrete"
+				},
+				{
+					"value": "allow-discrete, normal"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"transition-duration": {

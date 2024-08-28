@@ -948,6 +948,7 @@
 		"syntax-after": "<syntax-component> | <type()>",
 		"comment": "",
 		"merged": false,
+		"omit": true,
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1296,6 +1297,7 @@
 		"syntax-after": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
 		"comment": "",
 		"merged": false,
+		"omit": true,
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1307,6 +1309,7 @@
 		"syntax-after": "<function-parameter>#",
 		"comment": "",
 		"merged": false,
+		"omit": true,
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3193,10 +3196,24 @@
 		"syntax-before": "",
 		"syntax-after": "normal | allow-discrete",
 		"comment": "",
-		"merged": false,
+		"merged": "normal | allow-discrete",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "transition-behavior",
+					"value": "allow-discrete"
+				},
+				{
+					"property": "transition-behavior",
+					"value": "normal"
+				}
+			],
+			"failing": [
+				{
+					"property": "transition-behavior",
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"try-size": {
@@ -3204,10 +3221,23 @@
 		"syntax-before": "",
 		"syntax-after": "most-width | most-height | most-block-size | most-inline-size",
 		"comment": "",
-		"merged": false,
+		"merged": "most-width | most-height | most-block-size | most-inline-size",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "position-try-order",
+					"value": "most-width"
+				},
+				{
+					"property": "position-try-order",
+					"value": "most-inline-size"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"try-tactic": {
@@ -3245,6 +3275,7 @@
 		"syntax-after": "type( <syntax> )",
 		"comment": "",
 		"merged": false,
+		"omit": true,
 		"tests": {
 			"passing": [],
 			"failing": []
