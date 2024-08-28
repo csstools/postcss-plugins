@@ -12,6 +12,11 @@
 //   This gives us an automated mechanic to detect updates and to ensure that `patches.json` is always as small as needed
 // - backwards compat
 //   given that syntaxes are extensive users might depend on a specific type. No types can be removed or altered in a breaking way in semver patches or minors
+// - make it easier to roll forwards the patches files
+//   - read existing entries
+//   - override everything with contents from raw-data
+//   - restore unchanged entries
+//   - write to disk
 
 import { fork, parse } from 'css-tree';
 
@@ -22,6 +27,7 @@ import { diff_sets } from './diff-sets.mjs';
 import { read_patches } from './read-patches.mjs';
 import { write_final_file } from './write-final-file.mjs';
 import { apply_patches } from './apply-patches.mjs';
+import { write_patches } from './write-patches.mjs';
 
 const csstree_sets = await generate_csstree_sets();
 const webref_sets = await generate_webref_sets();
@@ -145,6 +151,10 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 await write_set_files({
 	csstree: csstree_sets,
 	webref: webref_sets,
+	webref_over_csstree: webref_over_csstree_sets,
+});
+
+await write_patches({
 	webref_over_csstree: webref_over_csstree_sets,
 });
 

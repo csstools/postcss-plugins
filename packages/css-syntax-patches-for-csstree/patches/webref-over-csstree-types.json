@@ -231,12 +231,32 @@
 		"type": "modified",
 		"syntax-before": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>",
 		"syntax-after": "<color-base> | currentColor | <system-color>",
+		"merged": "<color-base> | currentColor | <system-color>",
+		"tests": {
+			"passing": [
+				{
+					"property": "color",
+					"value": "currentcolor"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "current-color"
+				},
+				{
+					"property": "color",
+					"value": "10px"
+				}
+			]
+		},
 		"comment": ""
 	},
 	"color-base": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<hex-color> | <color-function> | <named-color> | transparent",
+		"merged": "<hex-color> | <color-function> | <named-color> | transparent",
 		"comment": ""
 	},
 	"color-font-tech": {
@@ -297,6 +317,29 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
+		"merged": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
+		"tests": {
+			"passing": [
+				{
+					"property": "color",
+					"value": "color(xyz 0 0 0)"
+				},
+				{
+					"property": "color",
+					"value": "color(xyz-d50 0 0 0)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "color(xyz 0 0)"
+				},
+				{
+					"property": "color",
+					"value": "color(xyz-d5 0 0 0)"
+				}
+			]
+		},
 		"comment": ""
 	},
 	"combinator": {
@@ -479,6 +522,7 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<dashed-ident> [ <number> | <percentage> | none ]+",
+		"merged": "<dashed-ident> [ <number> | <percentage> | none ]+",
 		"comment": ""
 	},
 	"custom-selector": {
@@ -1121,30 +1165,35 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "jzczhz [ <number> | <percentage> | none ]{2} [ <hue> | none ]",
+		"merged": "jzczhz [ <number> | <percentage> | none ]{2} [ <hue> | none ]",
 		"comment": ""
 	},
 	"predefined-rectangular": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "jzazbz | ictcp",
+		"merged": "jzazbz | ictcp",
 		"comment": ""
 	},
 	"predefined-rectangular-params": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
+		"merged": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
 		"comment": ""
 	},
 	"predefined-rgb": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
+		"merged": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
 		"comment": ""
 	},
 	"predefined-rgb-params": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<predefined-rgb> [ <number> | <percentage> | none ]{3}",
+		"merged": "<predefined-rgb> [ <number> | <percentage> | none ]{3}",
 		"comment": ""
 	},
 	"progress": {
@@ -1661,18 +1710,43 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "xyz | xyz-d50 | xyz-d65",
+		"merged": "xyz | xyz-d50 | xyz-d65",
 		"comment": ""
 	},
 	"xyz-params": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<xyz> [ <number> | <percentage> | none ]{3}",
+		"merged": "<xyz> [ <number> | <percentage> | none ]{3}",
+		"tests": {
+			"passing": [
+				{
+					"property": "color",
+					"value": "color(xyz 0 0 0)"
+				},
+				{
+					"property": "color",
+					"value": "color(xyz-d50 0 0 0)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "color(xyz 0 0)"
+				},
+				{
+					"property": "color",
+					"value": "color(xyz-d5 0 0 0)"
+				}
+			]
+		},
 		"comment": ""
 	},
 	"xyz-space": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "xyz | xyz-d50 | xyz-d65",
+		"omit": true,
 		"comment": ""
 	}
 }

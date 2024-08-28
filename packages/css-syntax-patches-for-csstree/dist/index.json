@@ -10,7 +10,16 @@
 			"position-anchor": "auto | <custom-property-name>"
 		},
 		"types": {
+			"colorspace-params": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
 			"compat-special": "textfield | menulist-button",
+			"custom-params": "<dashed-ident> [ <number> | <percentage> | none ]+",
+			"predefined-polar-params": "jzczhz [ <number> | <percentage> | none ]{2} [ <hue> | none ]",
+			"predefined-rectangular": "jzazbz | ictcp",
+			"predefined-rectangular-params": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
+			"predefined-rgb": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
+			"predefined-rgb-params": "<predefined-rgb> [ <number> | <percentage> | none ]{3}",
+			"xyz": "xyz | xyz-d50 | xyz-d65",
+			"xyz-params": "<xyz> [ <number> | <percentage> | none ]{3}",
 			"dashed-ident": "<custom-property-name>"
 		}
 	}

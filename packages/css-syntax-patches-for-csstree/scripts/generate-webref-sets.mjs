@@ -62,6 +62,10 @@ export async function generate_webref_sets() {
 					}
 				}
 			}
+
+			if (!value.value && value.values?.length > 0) {
+				values[trim_lt_gt(value.name)] = value.values.map(x => x.value).join(' | ');
+			}
 		}
 	}
 
