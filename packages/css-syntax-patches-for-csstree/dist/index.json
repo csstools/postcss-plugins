@@ -10,6 +10,10 @@
 			"position-anchor": "auto | <custom-property-name>"
 		},
 		"types": {
+			"color": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()>",
+			"color-base": "<hex-color> | <color-function> | <named-color> | <color-mix()> | transparent",
+			"color-function": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>",
+			"color()": "color( [ from <color> ]? <colorspace-params> [ / [ <alpha-value> | none ] ]? )",
 			"colorspace-params": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
 			"compat-special": "textfield | menulist-button",
 			"custom-params": "<dashed-ident> [ <number> | <percentage> | none ]+",
@@ -18,6 +22,7 @@
 			"predefined-rectangular-params": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
 			"predefined-rgb": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
 			"predefined-rgb-params": "<predefined-rgb> [ <number> | <percentage> | none ]{3}",
+			"system-color": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText",
 			"xyz": "xyz | xyz-d50 | xyz-d65",
 			"xyz-params": "<xyz> [ <number> | <percentage> | none ]{3}",
 			"dashed-ident": "<custom-property-name>"

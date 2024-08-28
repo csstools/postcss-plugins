@@ -154,9 +154,12 @@ await write_set_files({
 	webref_over_csstree: webref_over_csstree_sets,
 });
 
-await write_patches({
-	webref_over_csstree: webref_over_csstree_sets,
-});
+await write_patches(
+	{
+		webref_over_csstree: webref_over_csstree_sets,
+	},
+	patches,
+);
 
 await write_final_file({
 	next: {

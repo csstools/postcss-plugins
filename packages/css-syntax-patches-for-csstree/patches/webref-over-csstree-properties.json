@@ -4,7 +4,7 @@
 		"syntax-before": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]",
 		"syntax-after": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center",
 		"merged": "| anchor-center",
-		"tests":{
+		"tests": {
 			"passing": [
 				{
 					"value": "normal"
@@ -115,24 +115,13 @@
 	"animation-duration": {
 		"type": "modified",
 		"syntax-before": "<time>#",
-		"syntax-after": "<time [0s,∞]>#",
-		"merged": "<time [0s,∞]>#",
+		"syntax-after": "[ auto | <time [0s,∞]> ]#",
+		"comment": "",
+		"merged": false,
 		"tests": {
-			"passing": [
-				{
-					"value": "5s, 2ms, 0s"
-				},
-				{
-					"value": "5s"
-				}
-			],
-			"failing": [
-				{
-					"value": "10hz"
-				}
-			]
-		},
-		"comment": ""
+			"passing": [],
+			"failing": []
+		}
 	},
 	"animation-range": {
 		"type": "added",
@@ -200,12 +189,6 @@
 		"type": "modified",
 		"syntax-before": "<blend-mode>#",
 		"syntax-after": "<mix-blend-mode>#",
-		"comment": ""
-	},
-	"background-clip": {
-		"type": "modified",
-		"syntax-before": "<bg-clip>#",
-		"syntax-after": "<visual-box>#",
 		"comment": ""
 	},
 	"background-origin": {
@@ -784,6 +767,17 @@
 		"syntax-after": "<line-width>",
 		"comment": ""
 	},
+	"column-span": {
+		"type": "modified",
+		"syntax-before": "none | all",
+		"syntax-after": "none | <integer [1,∞]> | all | auto",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"column-width": {
 		"type": "modified",
 		"syntax-before": "<length> | auto",
@@ -1069,8 +1063,13 @@
 	"font-size-adjust": {
 		"type": "modified",
 		"syntax-before": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number> ]",
-		"syntax-after": "none | <number [0,∞]>",
-		"comment": ""
+		"syntax-after": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number [0,∞]> ]",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"font-style": {
 		"type": "modified",
@@ -1156,11 +1155,38 @@
 		"syntax-after": "auto | 0deg | 90deg | 0 | 90",
 		"comment": ""
 	},
+	"grid-template-columns": {
+		"type": "modified",
+		"syntax-before": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
+		"syntax-after": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"grid-template-rows": {
+		"type": "modified",
+		"syntax-before": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
+		"syntax-after": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"height": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> )",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
-		"comment": ""
+		"syntax-after": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"hyphenate-limit-chars": {
 		"type": "added",
@@ -1280,12 +1306,6 @@
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
 		"syntax-after": "auto | <length-percentage>",
-		"comment": ""
-	},
-	"letter-spacing": {
-		"type": "modified",
-		"syntax-before": "normal | <length-percentage>",
-		"syntax-after": "normal | <length>",
 		"comment": ""
 	},
 	"lighting-color": {
@@ -1489,8 +1509,13 @@
 	"max-height": {
 		"type": "modified",
 		"syntax-before": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> )",
-		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
-		"comment": ""
+		"syntax-after": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"max-inline-size": {
 		"type": "modified",
@@ -1507,8 +1532,13 @@
 	"max-width": {
 		"type": "modified",
 		"syntax-before": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width>",
-		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
-		"comment": ""
+		"syntax-after": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width> | stretch | fit-content | contain",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"min-block-size": {
 		"type": "modified",
@@ -1519,8 +1549,13 @@
 	"min-height": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> )",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
-		"comment": ""
+		"syntax-after": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"min-inline-size": {
 		"type": "modified",
@@ -1537,8 +1572,13 @@
 	"min-width": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width>",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
-		"comment": ""
+		"syntax-after": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width> | stretch | fit-content | contain",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"mix-blend-mode": {
 		"type": "modified",
@@ -1569,6 +1609,17 @@
 		"syntax-before": "",
 		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
 		"comment": ""
+	},
+	"object-fit": {
+		"type": "modified",
+		"syntax-before": "fill | contain | cover | none | scale-down",
+		"syntax-after": "fill | none | [ contain | cover ] || scale-down",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"object-view-box": {
 		"type": "added",
@@ -2223,14 +2274,24 @@
 	"text-align": {
 		"type": "modified",
 		"syntax-before": "start | end | left | right | center | justify | match-parent",
-		"syntax-after": "start | end | left | right | center | justify | match-parent | justify-all",
-		"comment": ""
+		"syntax-after": "start | end | left | right | center | <string> | justify | match-parent | justify-all",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-align-all": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "start | end | left | right | center | justify | match-parent",
-		"comment": ""
+		"syntax-after": "start | end | left | right | center | <string> | justify | match-parent",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-align-last": {
 		"type": "modified",
@@ -2271,14 +2332,13 @@
 	"text-decoration": {
 		"type": "modified",
 		"syntax-before": "<'text-decoration-line'> || <'text-decoration-style'> || <'text-decoration-color'> || <'text-decoration-thickness'>",
-		"syntax-after": "<'text-decoration-line'> || <'text-decoration-style'> || <'text-decoration-color'>",
-		"comment": ""
-	},
-	"text-decoration-line": {
-		"type": "modified",
-		"syntax-before": "none | [ underline || overline || line-through || blink ] | spelling-error | grammar-error",
-		"syntax-after": "none | [ underline || overline || line-through || blink ]",
-		"comment": ""
+		"syntax-after": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-decoration-skip": {
 		"type": "modified",
@@ -2349,20 +2409,35 @@
 	"text-justify": {
 		"type": "modified",
 		"syntax-before": "auto | inter-character | inter-word | none",
-		"syntax-after": "auto | none | inter-word | inter-character",
-		"comment": ""
+		"syntax-after": "[ auto | none | inter-word | inter-character | ruby ] || no-compress",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-overflow": {
 		"type": "modified",
 		"syntax-before": "[ clip | ellipsis | <string> ]{1,2}",
-		"syntax-after": "clip | ellipsis",
-		"comment": ""
+		"syntax-after": "[ clip | ellipsis | <string> | fade | <fade()> ]{1,2}",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-shadow": {
 		"type": "modified",
 		"syntax-before": "none | <shadow-t>#",
-		"syntax-after": "none | [ <color>? && <length>{2,3} ]#",
-		"comment": ""
+		"syntax-after": "none | <shadow>#",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-size-adjust": {
 		"type": "modified",
@@ -2409,8 +2484,13 @@
 	"text-underline-position": {
 		"type": "modified",
 		"syntax-before": "auto | from-font | [ under || [ left | right ] ]",
-		"syntax-after": "auto | [ under || [ left | right ] ]",
-		"comment": ""
+		"syntax-after": "auto | [ from-font | under ] || [ left | right ]",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"text-wrap": {
 		"type": "added",
@@ -2547,8 +2627,13 @@
 	"white-space": {
 		"type": "modified",
 		"syntax-before": "normal | pre | nowrap | pre-wrap | pre-line | break-spaces",
-		"syntax-after": "normal | pre | nowrap | pre-wrap | break-spaces | pre-line",
-		"comment": ""
+		"syntax-after": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'> || <'white-space-trim'>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"white-space-collapse": {
 		"type": "added",
@@ -2571,20 +2656,41 @@
 	"width": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | fill | stretch | intrinsic | -moz-max-content | -webkit-max-content | -moz-fit-content | -webkit-fit-content",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
-		"comment": ""
+		"syntax-after": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | fill | stretch | intrinsic | -moz-max-content | -webkit-max-content | -moz-fit-content | -webkit-fit-content | stretch | fit-content | contain",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"word-break": {
 		"type": "modified",
 		"syntax-before": "normal | break-all | keep-all | break-word",
-		"syntax-after": "normal | keep-all | break-all | break-word",
-		"comment": ""
+		"syntax-after": "normal | break-all | keep-all | manual | auto-phrase | break-word",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"word-space-transform": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "none | [ space | ideographic-space ] && auto-phrase?",
 		"comment": ""
+	},
+	"word-spacing": {
+		"type": "modified",
+		"syntax-before": "normal | <length>",
+		"syntax-after": "normal | <length-percentage>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
 	},
 	"word-wrap": {
 		"type": "modified",
