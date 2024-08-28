@@ -38,8 +38,8 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"css-tree": "^2.3.1",
-		"@webref/css": "^6.14.2"
+		"@webref/css": "^6.14.2",
+		"css-tree": "^2.3.1"
 	},
 	"scripts": {
 		"build": "node ./scripts/index.mjs",
@@ -56,8 +56,8 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"css",
-		"syntax",
-		"csstree"
+		"csstree",
+		"syntax"
 	],
 	"volta": {
 		"extends": "../../package.json"
