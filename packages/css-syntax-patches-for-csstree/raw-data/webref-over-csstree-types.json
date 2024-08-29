@@ -251,6 +251,12 @@
 		"syntax-after": "[ <image> | <color> ] && <percentage [0,100]>?",
 		"comment": ""
 	},
+	"circle()": {
+		"type": "modified",
+		"syntax-before": "circle( [ <shape-radius> ]? [ at <position> ]? )",
+		"syntax-after": "circle( <radial-size>? [ at <position> ]? )",
+		"comment": ""
+	},
 	"clamp()": {
 		"type": "modified",
 		"syntax-before": "clamp( <calc-sum>#{3} )",
@@ -497,6 +503,12 @@
 		"syntax-after": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
 		"comment": ""
 	},
+	"cubic-bezier()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
+		"comment": ""
+	},
 	"curve-command": {
 		"type": "added",
 		"syntax-before": "",
@@ -567,6 +579,12 @@
 		"type": "modified",
 		"syntax-before": "element( <custom-ident> , [ first | start | last | first-except ]? ) | element( <id-selector> )",
 		"syntax-after": "element( <id-selector> )",
+		"comment": ""
+	},
+	"ellipse()": {
+		"type": "modified",
+		"syntax-before": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )",
+		"syntax-after": "ellipse( <radial-size>? [ at <position> ]? )",
 		"comment": ""
 	},
 	"env()": {
@@ -1151,6 +1169,12 @@
 		"syntax-after": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )",
 		"comment": ""
 	},
+	"path()": {
+		"type": "modified",
+		"syntax-before": "path( [ <fill-rule> , ]? <string> )",
+		"syntax-after": "path( <'fill-rule'>? , <string> )",
+		"comment": ""
+	},
 	"points": {
 		"type": "added",
 		"syntax-before": "",
@@ -1161,6 +1185,12 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "hsl | hwb | lch | oklch",
+		"comment": ""
+	},
+	"polygon()": {
+		"type": "modified",
+		"syntax-before": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )",
+		"syntax-after": "polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# )",
 		"comment": ""
 	},
 	"position": {
@@ -1317,6 +1347,12 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )",
+		"comment": ""
+	},
+	"rect()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )",
 		"comment": ""
 	},
 	"rectangular-color-space": {
@@ -1541,6 +1577,12 @@
 		"syntax-after": "step-start | step-end | steps( <integer> , <step-position>? )",
 		"comment": ""
 	},
+	"steps()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "steps( <integer> , <step-position>? )",
+		"comment": ""
+	},
 	"string()": {
 		"type": "added",
 		"syntax-before": "",
@@ -1749,6 +1791,12 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )",
+		"comment": ""
+	},
+	"xywh()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
 		"comment": ""
 	},
 	"xyz": {

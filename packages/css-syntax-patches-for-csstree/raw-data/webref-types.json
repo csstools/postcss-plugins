@@ -201,7 +201,7 @@
 		"syntax": "<percentage>? && <image>"
 	},
 	"circle()": {
-		"syntax": "circle( [ <shape-radius> ]? [ at <position> ]? )"
+		"syntax": "circle( <radial-size>? [ at <position> ]? )"
 	},
 	"clamp()": {
 		"syntax": "clamp( [ <calc-sum> | none ] , <calc-sum> , [ <calc-sum> | none ] )"
@@ -392,6 +392,9 @@
 	"cubic-bezier-timing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
 	},
+	"cubic-bezier()": {
+		"syntax": "cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
+	},
 	"curve-command": {
 		"syntax": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]"
 	},
@@ -468,7 +471,7 @@
 		"syntax": "element( <id-selector> )"
 	},
 	"ellipse()": {
-		"syntax": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )"
+		"syntax": "ellipse( <radial-size>? [ at <position> ]? )"
 	},
 	"ending-shape": {
 		"syntax": "circle | ellipse"
@@ -1062,7 +1065,7 @@
 		"syntax": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )"
 	},
 	"path()": {
-		"syntax": "path( [ <fill-rule> , ]? <string> )"
+		"syntax": "path( <'fill-rule'>? , <string> )"
 	},
 	"perspective()": {
 		"syntax": "perspective( [ <length [0,∞]> | none ] )"
@@ -1074,7 +1077,7 @@
 		"syntax": "hsl | hwb | lch | oklch"
 	},
 	"polygon()": {
-		"syntax": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )"
+		"syntax": "polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# )"
 	},
 	"position": {
 		"syntax": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]"
@@ -1177,6 +1180,9 @@
 	},
 	"ray()": {
 		"syntax": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )"
+	},
+	"rect()": {
+		"syntax": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )"
 	},
 	"rectangular-color-space": {
 		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
@@ -1412,6 +1418,9 @@
 	"step-timing-function": {
 		"syntax": "step-start | step-end | steps( <integer> [, <step-position> ]? )"
 	},
+	"steps()": {
+		"syntax": "steps( <integer> , <step-position>? )"
+	},
 	"string()": {
 		"syntax": "string( <custom-ident> , [ first | start | last | first-except ]? )"
 	},
@@ -1612,6 +1621,9 @@
 	},
 	"x": {
 		"syntax": "<number>"
+	},
+	"xywh()": {
+		"syntax": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )"
 	},
 	"xyz": {
 		"syntax": "xyz | xyz-d50 | xyz-d65"

@@ -60,6 +60,10 @@ export async function generate_webref_sets() {
 					if (child_value.type === 'type' && child_value.value) {
 						values[trim_lt_gt(child_value.name)] = child_value.value;
 					}
+
+					if (child_value.type === 'function' && child_value.value) {
+						values[trim_lt_gt(child_value.name)] = child_value.value;
+					}
 				}
 			}
 

@@ -1199,9 +1199,13 @@
 		"syntax-before": "<shape> | auto",
 		"syntax-after": "<rect()> | auto",
 		"comment": "",
-		"merged": false,
+		"merged": "<rect()> | auto",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "rect(1px 2px 3px 4px)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -2790,10 +2794,44 @@
 		"syntax-before": "none | ray( [ <angle> && <size> && contain? ] ) | <path()> | <url> | [ <basic-shape> || <geometry-box> ]",
 		"syntax-after": "none | <offset-path> || <coord-box>",
 		"comment": "",
-		"merged": false,
+		"merged": "none | <offset-path> || <coord-box>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px);"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms);"
+				}
+			]
 		}
 	},
 	"offset-position": {

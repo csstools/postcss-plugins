@@ -370,10 +370,44 @@
 		"syntax-before": "<length> | auto",
 		"syntax-after": "auto",
 		"comment": "",
-		"merged": false,
+		"merged": "<length-percentage> | auto",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px);"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms);"
+				}
+			]
 		}
 	},
 	"box": {
@@ -468,6 +502,17 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "[ <image> | <color> ] && <percentage [0,100]>?",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"circle()": {
+		"type": "modified",
+		"syntax-before": "circle( [ <shape-radius> ]? [ at <position> ]? )",
+		"syntax-after": "circle( <radial-size>? [ at <position> ]? )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -965,6 +1010,17 @@
 			"failing": []
 		}
 	},
+	"cubic-bezier()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"curve-command": {
 		"type": "added",
 		"syntax-before": "",
@@ -1086,6 +1142,17 @@
 		"type": "modified",
 		"syntax-before": "element( <custom-ident> , [ first | start | last | first-except ]? ) | element( <id-selector> )",
 		"syntax-after": "element( <id-selector> )",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"ellipse()": {
+		"type": "modified",
+		"syntax-before": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )",
+		"syntax-after": "ellipse( <radial-size>? [ at <position> ]? )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1595,10 +1662,44 @@
 		"syntax-before": "<length> | auto",
 		"syntax-after": "auto",
 		"comment": "",
-		"merged": false,
+		"merged": "<length-percentage> | auto",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px);"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms);"
+				}
+			]
 		}
 	},
 	"legacy-device-cmyk-syntax": {
@@ -2162,6 +2263,17 @@
 			"failing": []
 		}
 	},
+	"path()": {
+		"type": "modified",
+		"syntax-before": "path( [ <fill-rule> , ]? <string> )",
+		"syntax-after": "path( <'fill-rule'>? , <string> )",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"points": {
 		"type": "added",
 		"syntax-before": "",
@@ -2177,6 +2289,17 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "hsl | hwb | lch | oklch",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"polygon()": {
+		"type": "modified",
+		"syntax-before": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )",
+		"syntax-after": "polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2468,6 +2591,51 @@
 			"failing": []
 		}
 	},
+	"rect()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )",
+		"comment": "",
+		"merged": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )",
+		"tests": {
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px);"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms);"
+				}
+			]
+		}
+	},
 	"rectangular-color-space": {
 		"type": "added",
 		"syntax-before": "",
@@ -2616,10 +2784,44 @@
 		"syntax-before": "<length> | auto",
 		"syntax-after": "auto",
 		"comment": "",
-		"merged": false,
+		"merged": "<length-percentage> | auto",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px);"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms);"
+				}
+			]
 		}
 	},
 	"round()": {
@@ -2882,6 +3084,17 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "step-start | step-end | steps( <integer> , <step-position>? )",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"steps()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "steps( <integer> , <step-position>? )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -3152,10 +3365,44 @@
 		"syntax-before": "<length> | auto",
 		"syntax-after": "auto",
 		"comment": "",
-		"merged": false,
+		"merged": "<length-percentage> | auto",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px);"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "rect(1px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px);"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms);"
+				}
+			]
 		}
 	},
 	"track-breadth": {
@@ -3358,6 +3605,17 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"xywh()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
 		"comment": "",
 		"merged": false,
 		"tests": {
