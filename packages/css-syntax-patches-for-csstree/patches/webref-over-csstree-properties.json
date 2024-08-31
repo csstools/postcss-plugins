@@ -957,10 +957,39 @@
 		"syntax-before": "<length-percentage>{1,4} [ / <length-percentage>{1,4} ]?",
 		"syntax-after": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
 		"comment": "",
-		"merged": false,
+		"merged": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "30px"
+				},
+				{
+					"value": "25% 10%"
+				},
+				{
+					"value": "10% 30% 50% 70%"
+				},
+				{
+					"value": "10% / 50%"
+				},
+				{
+					"value": "10px 100px / 120px"
+				},
+				{
+					"value": "50% 20% / 10% 40%"
+				}
+			],
+			"failing": [
+				{
+					"value": "10ms"
+				},
+				{
+					"value": "10% 30% 50% 70% 90%"
+				},
+				{
+					"value": "10% 30% 50% 70% 90% / 10% 30% 50% 70% 90%"
+				}
+			]
 		}
 	},
 	"border-right-color": {
@@ -2798,38 +2827,39 @@
 		"tests": {
 			"passing": [
 				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px);"
+					"value": "rect(1px 2px 3px 4px)"
 				},
 				{
-					"property": "offset-path",
-					"value": "rect(auto auto auto auto);"
+					"value": "rect(auto auto auto auto)"
 				},
 				{
-					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px);"
+					"value": "rect(0 1% auto 3% round 0 1px)"
+				},
+				{
+					"value": "rect(0 1% auto 3% round 0 1px) view-box"
+				},
+				{
+					"value": "view-box rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
-					"property": "offset-path",
-					"value": "rect(1px);"
+					"value": "rect(1px)"
 				},
 				{
-					"property": "offset-path",
-					"value": "rect(1px 2px);"
+					"value": "rect(1px 2px)"
 				},
 				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px);"
+					"value": "rect(1px 2px 3px)"
 				},
 				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px);"
+					"value": "rect(1px 2px 3px 4px 5px)"
 				},
 				{
-					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms);"
+					"value": "rect(1ms 2ms 3ms 4ms)"
+				},
+				{
+					"value": "fill-box border-box"
 				}
 			]
 		}

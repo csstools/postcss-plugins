@@ -204,11 +204,37 @@
 		"type": "modified",
 		"syntax-before": "<inset()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
 		"syntax-after": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
-		"comment": "",
-		"merged": false,
+		"comment": "https://github.com/w3c/csswg-drafts/issues/10812",
+		"merged": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( [ <radial-size>{2} ]? [ at <position> ]? ) | polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "inset(22% 12% 15px 35px)"
+				},
+				{
+					"property": "clip-path",
+					"value": "circle(6rem at 12rem 8rem)"
+				},
+				{
+					"property": "clip-path",
+					"value": "ellipse(115px 55px at 50% 40%)"
+				},
+				{
+					"property": "clip-path",
+					"value": "polygon(50% 2.4%, 34.5% 33.8%, 0% 38.8%, 25% 63.1%, 19.1% 97.6%, 50% 81.3%, 80.9% 97.6%, 75% 63.1%, 100% 38.8%, 65.5% 33.8%)"
+				},
+				{
+					"property": "clip-path",
+					"value": "path('M 50,245 A 160,160 0,0,1 360,120 z')"
+				}
+			],
+			"failing": [
+				{
+					"property": "clip-path",
+					"value": "inset(foo)"
+				}
+			]
 		}
 	},
 	"basic-shape-rect": {
@@ -375,37 +401,37 @@
 			"passing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px);"
+					"value": "rect(1px 2px 3px 4px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(auto auto auto auto);"
+					"value": "rect(auto auto auto auto)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px);"
+					"value": "rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px);"
+					"value": "rect(1px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px);"
+					"value": "rect(1px 2px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px);"
+					"value": "rect(1px 2px 3px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px);"
+					"value": "rect(1px 2px 3px 4px 5px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms);"
+					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -926,10 +952,28 @@
 		"syntax-before": "",
 		"syntax-after": "<paint-box> | view-box",
 		"comment": "",
-		"merged": false,
+		"merged": "<paint-box> | view-box",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) view-box"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) content-box"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) fill-box"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) margin-box"
+				}
+			]
 		}
 	},
 	"coordinate-pair": {
@@ -1154,9 +1198,18 @@
 		"syntax-before": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )",
 		"syntax-after": "ellipse( <radial-size>? [ at <position> ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "ellipse( <radial-size>? [ at <position> ]? )",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "ellipse(closest-corner closest-side at 5rem 6rem)"
+				},
+				{
+					"property": "clip-path",
+					"value": "ellipse(closest-side closest-side at 5rem 6rem)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -1667,37 +1720,37 @@
 			"passing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px);"
+					"value": "rect(1px 2px 3px 4px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(auto auto auto auto);"
+					"value": "rect(auto auto auto auto)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px);"
+					"value": "rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px);"
+					"value": "rect(1px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px);"
+					"value": "rect(1px 2px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px);"
+					"value": "rect(1px 2px 3px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px);"
+					"value": "rect(1px 2px 3px 4px 5px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms);"
+					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -2147,9 +2200,18 @@
 		"syntax-before": "",
 		"syntax-after": "<ray()> | <url> | <basic-shape>",
 		"comment": "",
-		"merged": false,
+		"merged": "<ray()> | <url> | <basic-shape>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "url('#foo')"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(45deg)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -2246,10 +2308,28 @@
 		"syntax-before": "",
 		"syntax-after": "<visual-box> | fill-box | stroke-box",
 		"comment": "",
-		"merged": false,
+		"merged": "<visual-box> | fill-box | stroke-box",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) view-box"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) content-box"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) fill-box"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg) margin-box"
+				}
+			]
 		}
 	},
 	"palette-mix()": {
@@ -2312,10 +2392,32 @@
 		"syntax-before": "[ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
 		"syntax-after": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at 100px 20px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at 50% 50%)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at center center)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at center)"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at foo bar)"
+				}
+			]
 		}
 	},
 	"position-area": {
@@ -2486,9 +2588,18 @@
 		"syntax-before": "",
 		"syntax-after": "closest-corner | closest-side | farthest-corner | farthest-side",
 		"comment": "",
-		"merged": false,
+		"merged": "closest-corner | closest-side | farthest-corner | farthest-side",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "ellipse(closest-corner closest-side at 5rem 6rem)"
+				},
+				{
+					"property": "clip-path",
+					"value": "ellipse(closest-side farthest-corner at 5rem 6rem)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -2529,10 +2640,23 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}",
-		"comment": "",
-		"merged": false,
+		"comment": "https://github.com/w3c/csswg-drafts/issues/10812",
+		"merged": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "ellipse(20px 50px)"
+				},
+				{
+					"property": "clip-path",
+					"value": "ellipse(4rem 50% at right center)"
+				},
+				{
+					"property": "clip-path",
+					"value": "ellipse(closest-side closest-side at 5rem 6rem)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -2574,21 +2698,69 @@
 		"syntax-before": "",
 		"syntax-after": "closest-side | closest-corner | farthest-side | farthest-corner | sides",
 		"comment": "",
-		"merged": false,
+		"merged": "closest-side | closest-corner | farthest-side | farthest-corner | sides",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at 100px 20px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg farthest-side contain at 100px 20px)"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "ray(50deg foo contain at 100px 20px)"
+				}
+			]
 		}
 	},
 	"ray()": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )",
-		"comment": "",
-		"merged": false,
+		"comment": "Without the extra group the order seems to matter anyway, possibly a bug in css-tree or the syntax definition",
+		"merged": "ray( [ <angle> && <ray-size>? && contain? && [ at <position> ]? ] )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "offset-path",
+					"value": "ray(45deg)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(200deg contain)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(contain 200deg)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at 100px 20px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain)"
+				}
+			],
+			"failing": [
+				{
+					"property": "offset-path",
+					"value": "ray()"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50deg closest-corner contain at)"
+				},
+				{
+					"property": "offset-path",
+					"value": "ray(50hz)"
+				}
+			]
 		}
 	},
 	"rect()": {
@@ -2601,37 +2773,37 @@
 			"passing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px);"
+					"value": "rect(1px 2px 3px 4px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(auto auto auto auto);"
+					"value": "rect(auto auto auto auto)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px);"
+					"value": "rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px);"
+					"value": "rect(1px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px);"
+					"value": "rect(1px 2px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px);"
+					"value": "rect(1px 2px 3px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px);"
+					"value": "rect(1px 2px 3px 4px 5px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms);"
+					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -2789,37 +2961,37 @@
 			"passing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px);"
+					"value": "rect(1px 2px 3px 4px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(auto auto auto auto);"
+					"value": "rect(auto auto auto auto)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px);"
+					"value": "rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px);"
+					"value": "rect(1px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px);"
+					"value": "rect(1px 2px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px);"
+					"value": "rect(1px 2px 3px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px);"
+					"value": "rect(1px 2px 3px 4px 5px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms);"
+					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -3370,37 +3542,37 @@
 			"passing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px);"
+					"value": "rect(1px 2px 3px 4px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(auto auto auto auto);"
+					"value": "rect(auto auto auto auto)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px);"
+					"value": "rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "offset-path",
-					"value": "rect(1px);"
+					"value": "rect(1px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px);"
+					"value": "rect(1px 2px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px);"
+					"value": "rect(1px 2px 3px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px);"
+					"value": "rect(1px 2px 3px 4px 5px)"
 				},
 				{
 					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms);"
+					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -3616,9 +3788,14 @@
 		"syntax-before": "",
 		"syntax-after": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "xywh(1px 2% 3px 4em round 0 1% 2px 3em)"
+				}
+			],
 			"failing": []
 		}
 	},
