@@ -891,7 +891,7 @@
 	"content-list": {
 		"type": "modified",
 		"syntax-before": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> ]+",
-		"syntax-after": "[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+",
+		"syntax-after": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -913,7 +913,7 @@
 	"contrast-color()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast> , <color># ] ] )",
+		"syntax-after": "contrast-color( <color> max? )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -3519,10 +3519,9 @@
 	"type()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "type( <syntax> )",
+		"syntax-after": "type( <string> )",
 		"comment": "",
 		"merged": false,
-		"omit": true,
 		"tests": {
 			"passing": [],
 			"failing": []

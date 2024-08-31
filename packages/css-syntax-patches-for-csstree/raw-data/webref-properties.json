@@ -612,7 +612,7 @@
 		"syntax": "none | <integer [1,∞]> | all | auto"
 	},
 	"column-width": {
-		"syntax": "<length> | auto | min-content | max-content | fit-content( <length-percentage> )"
+		"syntax": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )"
 	},
 	"columns": {
 		"syntax": "<'column-width'> || <'column-count'>"
@@ -645,7 +645,7 @@
 		"syntax": "normal | size | inline-size"
 	},
 	"content": {
-		"syntax": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]? | <element()>"
+		"syntax": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>"
 	},
 	"content-visibility": {
 		"syntax": "visible | auto | hidden"
@@ -678,7 +678,7 @@
 		"syntax": "none | [ fill | fill-opacity | stroke | stroke-opacity ]#"
 	},
 	"continue": {
-		"syntax": "overflow | paginate | fragments"
+		"syntax": "auto | discard | -webkit-discard | overflow | paginate | fragments"
 	},
 	"-moz-control-character-visibility": {
 		"syntax": "visible | hidden"
@@ -726,7 +726,7 @@
 		"syntax": "ltr | rtl"
 	},
 	"display": {
-		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display> | <display-outside> || [ <display-inside> | math ]"
+		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
@@ -822,7 +822,7 @@
 		"syntax": "nowrap | wrap | wrap-reverse"
 	},
 	"float": {
-		"syntax": "block-start | block-end | inline-start | inline-end | snap-block | <snap-block()> | snap-inline | <snap-inline()> | left | right | top | bottom | none"
+		"syntax": "block-start | block-end | inline-start | inline-end | snap-block | <snap-block()> | snap-inline | <snap-inline()> | left | right | top | bottom | none | footnote"
 	},
 	"float-defer": {
 		"syntax": "<integer> | last | none"
@@ -1032,7 +1032,7 @@
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
 	},
 	"height": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"-ms-high-contrast-adjust": {
 		"syntax": "auto | none"
@@ -1362,7 +1362,7 @@
 		"syntax": "<'max-width'> | stretch | fit-content | contain"
 	},
 	"max-height": {
-		"syntax": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain"
+		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"max-inline-size": {
 		"syntax": "<'max-width'> | stretch | fit-content | contain"
@@ -1371,13 +1371,13 @@
 		"syntax": "none | <integer [1,∞]>"
 	},
 	"max-width": {
-		"syntax": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width> | stretch | fit-content | contain"
+		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"min-block-size": {
 		"syntax": "<'min-width'> | stretch | fit-content | contain"
 	},
 	"min-height": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | fit-content | contain"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"min-inline-size": {
 		"syntax": "<'min-width'> | stretch | fit-content | contain"
@@ -1386,7 +1386,7 @@
 		"syntax": "legacy | zero-if-scroll || zero-if-extrinsic"
 	},
 	"min-width": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width> | stretch | fit-content | contain"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"mix-blend-mode": {
 		"syntax": "<blend-mode> | plus-darker | plus-lighter"
@@ -1632,7 +1632,7 @@
 		"syntax": "auto | bounding-box | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | none"
 	},
 	"position": {
-		"syntax": "static | relative | absolute | sticky | fixed"
+		"syntax": "static | relative | absolute | sticky | fixed | <running()>"
 	},
 	"position-anchor": {
 		"syntax": "auto | <anchor-element>"
@@ -2139,7 +2139,7 @@
 		"syntax": "<line-width>"
 	},
 	"text-transform": {
-		"syntax": "none | capitalize | uppercase | lowercase | full-width | full-size-kana | math-auto"
+		"syntax": "none | [ capitalize | uppercase | lowercase ] || full-width || full-size-kana | math-auto"
 	},
 	"text-underline-offset": {
 		"syntax": "auto | <length-percentage>"
@@ -2304,7 +2304,7 @@
 		"syntax": "<integer [1,∞]>"
 	},
 	"width": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | fill | stretch | intrinsic | -moz-max-content | -webkit-max-content | -moz-fit-content | -webkit-fit-content | stretch | fit-content | contain"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"

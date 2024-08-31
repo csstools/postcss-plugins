@@ -440,7 +440,7 @@
 	"content-list": {
 		"type": "modified",
 		"syntax-before": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> ]+",
-		"syntax-after": "[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+",
+		"syntax-after": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+",
 		"comment": ""
 	},
 	"content()": {
@@ -452,7 +452,7 @@
 	"contrast-color()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast> , <color># ] ] )",
+		"syntax-after": "contrast-color( <color> max? )",
 		"comment": ""
 	},
 	"coord-box": {
@@ -1766,7 +1766,7 @@
 	"type()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "type( <syntax> )",
+		"syntax-after": "type( <string> )",
 		"comment": ""
 	},
 	"url": {

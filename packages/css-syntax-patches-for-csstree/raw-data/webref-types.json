@@ -330,7 +330,7 @@
 		"syntax": "element | content | text | <attr()> | <counter>"
 	},
 	"content-list": {
-		"syntax": "[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+"
+		"syntax": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+"
 	},
 	"content-position": {
 		"syntax": "center | start | end | flex-start | flex-end"
@@ -345,7 +345,7 @@
 		"syntax": "[ contextual | no-contextual ]"
 	},
 	"contrast-color()": {
-		"syntax": "contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast> , <color># ] ] )"
+		"syntax": "contrast-color( <color> max? )"
 	},
 	"contrast()": {
 		"syntax": "contrast( [ <number-percentage> ] )"
@@ -1587,7 +1587,7 @@
 		"syntax": "<wq-name> | <ns-prefix>? '*'"
 	},
 	"type()": {
-		"syntax": "type( <syntax> )"
+		"syntax": "type( <string> )"
 	},
 	"url": {
 		"syntax": "<url()> | <src()>"
