@@ -1761,6 +1761,14 @@
 			"failing": [
 				{
 					"property": "color",
+					"value": "hsl(from red 20deg, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10, 5%)"
+				},
+				{
+					"property": "color",
 					"value": "hsl(20deg, 10%)"
 				},
 				{
@@ -1794,6 +1802,14 @@
 			"failing": [
 				{
 					"property": "color",
+					"value": "hsla(from red 20deg, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20deg, 10, 5%)"
+				},
+				{
+					"property": "color",
 					"value": "hsla(20deg, 10%)"
 				},
 				{
@@ -1819,10 +1835,48 @@
 		"syntax-before": "",
 		"syntax-after": "rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )",
 		"comment": "",
-		"merged": false,
+		"merged": "rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgb(20%, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20%, 10%, 5%, 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20, 10, 5)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20, 10, 5, 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "rgb(from red 20%, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20%, 10, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20%, 10%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20%, 10%, 5%, 2%, 1%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20%, 10%, 5% / 2%)"
+				}
+			]
 		}
 	},
 	"legacy-rgba-syntax": {
@@ -1830,10 +1884,48 @@
 		"syntax-before": "",
 		"syntax-after": "rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )",
 		"comment": "",
-		"merged": false,
+		"merged": "rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgba(20%, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20%, 10%, 5%, 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20, 10, 5)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20, 10, 5, 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "rgba(from red 20%, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20%, 10, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20%, 10%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20%, 10%, 5%, 2%, 1%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20%, 10%, 5% / 2%)"
+				}
+			]
 		}
 	},
 	"length-percentage": {
@@ -2235,10 +2327,48 @@
 		"syntax-before": "",
 		"syntax-after": "rgb( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "rgb( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgb(20 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20 10% 5% / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20% 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20 none none)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(55.5 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from red 20% 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) 20% 5 10)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "rgb(20% 10 5, 0.5)"
+				}
+			]
 		}
 	},
 	"modern-rgba-syntax": {
@@ -2246,10 +2376,48 @@
 		"syntax-before": "",
 		"syntax-after": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgba(20 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20 10% 5% / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20% 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20 none none)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(55.5 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(from red 20% 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(from rgba(20% 5 10) 20% 5 10)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "rgba(20% 10 5, 0.5)"
+				}
+			]
 		}
 	},
 	"move-command": {
@@ -3036,9 +3204,18 @@
 		"syntax-before": "rgb( <percentage>{3} [ / <alpha-value> ]? ) | rgb( <number>{3} [ / <alpha-value> ]? ) | rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )",
 		"syntax-after": "[ <legacy-rgb-syntax> | <modern-rgb-syntax> ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <legacy-rgb-syntax> | <modern-rgb-syntax> ]",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgb(20%, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(20 10 5)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -3047,9 +3224,18 @@
 		"syntax-before": "rgba( <percentage>{3} [ / <alpha-value> ]? ) | rgba( <number>{3} [ / <alpha-value> ]? ) | rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )",
 		"syntax-after": "[ <legacy-rgba-syntax> | <modern-rgba-syntax> ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <legacy-rgba-syntax> | <modern-rgba-syntax> ]",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgba(20%, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(20 10 5)"
+				}
+			],
 			"failing": []
 		}
 	},
