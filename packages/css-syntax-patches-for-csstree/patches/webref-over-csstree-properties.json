@@ -1227,8 +1227,8 @@
 		"type": "modified",
 		"syntax-before": "<shape> | auto",
 		"syntax-after": "<rect()> | auto",
-		"comment": "",
-		"merged": "<rect()> | auto",
+		"comment": "<shape> allows comma separated values",
+		"merged": "<shape> | auto",
 		"tests": {
 			"passing": [
 				{

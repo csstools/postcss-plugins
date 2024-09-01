@@ -8,7 +8,7 @@
 			"anchor-scope": "none | all | <dashed-ident>#",
 			"appearance": "none | auto | <compat-auto> | <compat-special>",
 			"border-radius": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
-			"clip": "<rect()> | auto",
+			"clip": "<shape> | auto",
 			"color-adjust": "<'print-color-adjust'>",
 			"justify-items": "| anchor-center",
 			"offset-path": "none | <offset-path> || <coord-box>",
