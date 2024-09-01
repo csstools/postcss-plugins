@@ -1984,6 +1984,7 @@
 		"syntax-before": "<media-in-parens> [ and <media-in-parens> ]+",
 		"syntax-after": "and <media-in-parens>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -1995,6 +1996,7 @@
 		"syntax-before": "<media-not> | <media-and> | <media-or> | <media-in-parens>",
 		"syntax-after": "<media-not> | <media-in-parens> [ <media-and>* | <media-or>* ]",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2006,6 +2008,7 @@
 		"syntax-before": "<media-not> | <media-and> | <media-in-parens>",
 		"syntax-after": "<media-not> | <media-in-parens> <media-and>*",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2017,6 +2020,7 @@
 		"syntax-before": "<media-in-parens> [ or <media-in-parens> ]+",
 		"syntax-after": "or <media-in-parens>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2039,6 +2043,7 @@
 		"syntax-before": "",
 		"syntax-after": "media( [ <mf-plain> | <mf-boolean> | <mf-range> ] )",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2050,6 +2055,7 @@
 		"syntax-before": "",
 		"syntax-after": "<mf-lt> | <mf-gt> | <mf-eq>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2061,6 +2067,7 @@
 		"syntax-before": "",
 		"syntax-after": "'='",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2072,6 +2079,7 @@
 		"syntax-before": "",
 		"syntax-after": "'>' '='?",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2083,6 +2091,7 @@
 		"syntax-before": "",
 		"syntax-after": "'<' '='?",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2094,6 +2103,7 @@
 		"syntax-before": "<mf-name> [ '<' | '>' ]? '='? <mf-value> | <mf-value> [ '<' | '>' ]? '='? <mf-name> | <mf-value> '<' '='? <mf-name> '<' '='? <mf-value> | <mf-value> '>' '='? <mf-name> '>' '='? <mf-value>",
 		"syntax-after": "<mf-name> <mf-comparison> <mf-value> | <mf-value> <mf-comparison> <mf-name> | <mf-value> <mf-lt> <mf-name> <mf-lt> <mf-value> | <mf-value> <mf-gt> <mf-name> <mf-gt> <mf-value>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -2258,6 +2268,7 @@
 		"syntax-before": "",
 		"syntax-after": "<integer [0,1]>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
