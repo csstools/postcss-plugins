@@ -1657,10 +1657,40 @@
 		"syntax-before": "lab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-after": "lab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "lab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "lab(20 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "lab(20% 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "lab(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "lab(20 10 5 / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "lab(from red 20 10 5 / 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "lab(20, 10, 5)"
+				},
+				{
+					"property": "color",
+					"value": "lab(20, 10, 5, 0.5)"
+				}
+			]
 		}
 	},
 	"layout-box": {
@@ -1679,10 +1709,40 @@
 		"syntax-before": "lch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-after": "lch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "lch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "lch(20 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "lch(20% 10% 5deg)"
+				},
+				{
+					"property": "color",
+					"value": "lch(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "lch(20 10 5 / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "lch(from red 20 10 5 / 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "lch(20, 10, 5)"
+				},
+				{
+					"property": "color",
+					"value": "lch(20, 10, 5, 0.5)"
+				}
+			]
 		}
 	},
 	"left": {
@@ -2490,10 +2550,40 @@
 		"syntax-before": "",
 		"syntax-after": "oklab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "oklab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "oklab(0.20 0.10 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "oklab(20% 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "oklab(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "oklab(.20 .10 .5 / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "oklab(from red .20 .10 .5 / 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "oklab(0.20, 0.10, 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "oklab(0.20, 0.10, 0.5, 0.5)"
+				}
+			]
 		}
 	},
 	"oklch()": {
@@ -2501,10 +2591,40 @@
 		"syntax-before": "",
 		"syntax-after": "oklch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "oklch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "oklch(0.20 0.10 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "oklch(20% 10% 5deg)"
+				},
+				{
+					"property": "color",
+					"value": "oklch(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "oklch(.20 .10 .5 / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "oklch(from red .20 .10 .5 / 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "oklch(0.20, 0.10, 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "oklch(0.20, 0.10, 0.5, 0.5)"
+				}
+			]
 		}
 	},
 	"opacity-value": {
