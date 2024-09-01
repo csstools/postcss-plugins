@@ -2241,10 +2241,24 @@
 		"syntax-before": "",
 		"syntax-after": "light-dark( <color> , <color> )",
 		"comment": "",
-		"merged": false,
+		"merged": "light-dark( <color> , <color> )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "light-dark(red, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "light-dark(red)"
+				},
+				{
+					"property": "color",
+					"value": "light-dark(red blue)"
+				}
+			]
 		}
 	},
 	"line-command": {

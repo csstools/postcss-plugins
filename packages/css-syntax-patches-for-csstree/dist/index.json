@@ -50,6 +50,7 @@
 			"legacy-hsla-syntax": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 			"legacy-rgb-syntax": "rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )",
 			"legacy-rgba-syntax": "rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )",
+			"light-dark()": "light-dark( <color> , <color> )",
 			"modern-device-cmyk-syntax": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )",
 			"modern-hsl-syntax": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 			"modern-hsla-syntax": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
