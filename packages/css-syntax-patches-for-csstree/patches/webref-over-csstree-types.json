@@ -562,10 +562,28 @@
 		"syntax-before": "",
 		"syntax-after": "<number> | <percentage> | none",
 		"comment": "",
-		"merged": false,
+		"merged": "<number> | <percentage> | none",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81% 81% 30%)"
+				},
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81 81% 30)"
+				},
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81 81 30)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81hz 81% 30%)"
+				}
+			]
 		}
 	},
 	"color": {
@@ -1267,9 +1285,18 @@
 		"syntax-before": "",
 		"syntax-after": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>",
 		"comment": "",
-		"merged": false,
+		"merged": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(10, 20, 30, 40)"
+				},
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81% 81% 30% / .5)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -1991,10 +2018,24 @@
 		"syntax-before": "",
 		"syntax-after": "device-cmyk( <number>#{4} )",
 		"comment": "",
-		"merged": false,
+		"merged": "device-cmyk( <number>#{4} )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(10, 20, 30, 40)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(10, 20, 30)"
+				},
+				{
+					"property": "color",
+					"value": "device-cmyk(10, 20, 30, 40, 50)"
+				}
+			]
 		}
 	},
 	"legacy-hsl-syntax": {
@@ -2474,10 +2515,24 @@
 		"syntax-before": "",
 		"syntax-after": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81% 81% 30%)"
+				},
+				{
+					"property": "color",
+					"value": "device-cmyk(0 81% 81% 30% / .5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "device-cmyk(0, 81%, 81%, 30% / .5)"
+				}
+			]
 		}
 	},
 	"modern-hsl-syntax": {
