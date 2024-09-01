@@ -31,6 +31,8 @@
 			"coord-box": "<paint-box> | view-box",
 			"custom-params": "<dashed-ident> [ <number> | <percentage> | none ]+",
 			"ellipse()": "ellipse( <radial-size>? [ at <position> ]? )",
+			"image": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
+			"image-set-option": "[ <image> | <string> ] [ <resolution> || type( <string> ) ]?",
 			"left": "<length-percentage> | auto",
 			"offset-path": "<ray()> | <url> | <basic-shape>",
 			"paint-box": "<visual-box> | fill-box | stroke-box",

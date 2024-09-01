@@ -383,9 +383,6 @@
 	"crossorigin-modifier": {
 		"syntax": "crossorigin( anonymous | use-credentials )"
 	},
-	"css-type": {
-		"syntax": "<syntax-component> | <type()>"
-	},
 	"cubic-bezier-easing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
 	},
@@ -586,18 +583,6 @@
 	},
 	"frequency-percentage": {
 		"syntax": "[ <frequency> | <percentage> ]"
-	},
-	"function-dependency-list": {
-		"syntax": "<function-parameter>#"
-	},
-	"function-name": {
-		"syntax": "<dashed-ident>"
-	},
-	"function-parameter": {
-		"syntax": "<custom-property-name> <css-type>? [ : <declaration-value> ]?"
-	},
-	"function-parameter-list": {
-		"syntax": "<function-parameter>#"
 	},
 	"gender": {
 		"syntax": "male | female | neutral"
@@ -1478,24 +1463,6 @@
 	"symbols()": {
 		"syntax": "symbols( <symbols-type>? [ <string> | <image> ]+ )"
 	},
-	"syntax": {
-		"syntax": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+"
-	},
-	"syntax-combinator": {
-		"syntax": "'|'"
-	},
-	"syntax-component": {
-		"syntax": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'"
-	},
-	"syntax-component-name": {
-		"syntax": "'<' <syntax-type> '>' | <custom-ident>"
-	},
-	"syntax-multiplier": {
-		"syntax": "[ '#' | '+' ]"
-	},
-	"syntax-type": {
-		"syntax": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function"
-	},
 	"system-color": {
 		"syntax": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText"
 	},
@@ -1585,9 +1552,6 @@
 	},
 	"type-selector": {
 		"syntax": "<wq-name> | <ns-prefix>? '*'"
-	},
-	"type()": {
-		"syntax": "type( <string> )"
 	},
 	"url": {
 		"syntax": "<url()> | <src()>"

@@ -491,12 +491,6 @@
 		"syntax-after": "crossorigin( anonymous | use-credentials )",
 		"comment": ""
 	},
-	"css-type": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<syntax-component> | <type()>",
-		"comment": ""
-	},
 	"cubic-bezier-easing-function": {
 		"type": "added",
 		"syntax-before": "",
@@ -681,30 +675,6 @@
 		"type": "modified",
 		"syntax-before": "<frequency> | <percentage>",
 		"syntax-after": "[ <frequency> | <percentage> ]",
-		"comment": ""
-	},
-	"function-dependency-list": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<function-parameter>#",
-		"comment": ""
-	},
-	"function-name": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<dashed-ident>",
-		"comment": ""
-	},
-	"function-parameter": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
-		"comment": ""
-	},
-	"function-parameter-list": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<function-parameter>#",
 		"comment": ""
 	},
 	"general-enclosed": {
@@ -1649,42 +1619,6 @@
 		"syntax-after": "symbols( <symbols-type>? [ <string> | <image> ]+ )",
 		"comment": ""
 	},
-	"syntax": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
-		"comment": ""
-	},
-	"syntax-combinator": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "'|'",
-		"comment": ""
-	},
-	"syntax-component": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'",
-		"comment": ""
-	},
-	"syntax-component-name": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "'<' <syntax-type> '>' | <custom-ident>",
-		"comment": ""
-	},
-	"syntax-multiplier": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ '#' | '+' ]",
-		"comment": ""
-	},
-	"syntax-type": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function",
-		"comment": ""
-	},
 	"system-color": {
 		"type": "added",
 		"syntax-before": "",
@@ -1761,12 +1695,6 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "flip-block || flip-inline || flip-start",
-		"comment": ""
-	},
-	"type()": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "type( <string> )",
 		"comment": ""
 	},
 	"url": {

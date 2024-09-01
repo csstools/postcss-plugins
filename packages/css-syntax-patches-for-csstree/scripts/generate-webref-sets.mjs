@@ -4,13 +4,15 @@ import { generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
 
 const IGNORED_SPECS = new Set([
-	// 'css-color-6',
+	'css-mixins', // 'type()' conflicts with a different definition from 'css-image'
 ]);
 
 const IGNORED_TYPES = new Map([
 	['<an+b>', '*'],
 	['<type()>', new Set(['css-mixins'])],
 	['type()', new Set(['css-mixins'])],
+	['<type()>', new Set(['css-images-4'])],
+	['type()', new Set(['css-images-4'])],
 ]);
 
 function is_ignored_type(type, spec_name) {

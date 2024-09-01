@@ -1031,18 +1031,6 @@
 			"failing": []
 		}
 	},
-	"css-type": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<syntax-component> | <type()>",
-		"comment": "",
-		"merged": false,
-		"omit": true,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"cubic-bezier-easing-function": {
 		"type": "added",
 		"syntax-before": "",
@@ -1389,52 +1377,6 @@
 			"failing": []
 		}
 	},
-	"function-dependency-list": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<function-parameter>#",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"function-name": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<dashed-ident>",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"function-parameter": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
-		"comment": "",
-		"merged": false,
-		"omit": true,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"function-parameter-list": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<function-parameter>#",
-		"comment": "",
-		"merged": false,
-		"omit": true,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"general-enclosed": {
 		"type": "modified",
 		"syntax-before": "[ <function-token> <any-value> ) ] | ( <ident> <any-value> )",
@@ -1571,8 +1513,8 @@
 		"type": "modified",
 		"syntax-before": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
 		"syntax-after": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>",
-		"comment": "",
-		"merged": false,
+		"comment": "https://developer.mozilla.org/en-US/docs/Web/CSS/image/paint",
+		"merged": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1594,10 +1536,20 @@
 		"syntax-before": "[ <image> | <string> ] [ <resolution> || type( <string> ) ]",
 		"syntax-after": "[ <image> | <string> ] [ <resolution> || type( <string> ) ]?",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <image> | <string> ] [ <resolution> || type( <string> ) ]?",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "background-image",
+					"value": "image-set( url('image1.avif') type('image/avif'), url('image2.jpg') type('image/jpeg') )"
+				}
+			],
+			"failing": [
+				{
+					"property": "background-image",
+					"value": "image-set( url('image1.avif') type(avif) )"
+				}
+			]
 		}
 	},
 	"image-src": {
@@ -3395,72 +3347,6 @@
 			"failing": []
 		}
 	},
-	"syntax": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"syntax-combinator": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "'|'",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"syntax-component": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"syntax-component-name": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "'<' <syntax-type> '>' | <custom-ident>",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"syntax-multiplier": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ '#' | '+' ]",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"syntax-type": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"system-color": {
 		"type": "added",
 		"syntax-before": "",
@@ -3686,17 +3572,6 @@
 					"value": "foo"
 				}
 			]
-		}
-	},
-	"type()": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "type( <string> )",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
 		}
 	},
 	"url": {
