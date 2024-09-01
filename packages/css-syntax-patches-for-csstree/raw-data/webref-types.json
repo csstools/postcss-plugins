@@ -201,7 +201,7 @@
 		"syntax": "<percentage>? && <image>"
 	},
 	"circle()": {
-		"syntax": "circle( <radial-size>? [ at <position> ]? )"
+		"syntax": "circle( [ <shape-radius> ]? [ at <position> ]? )"
 	},
 	"clamp()": {
 		"syntax": "clamp( [ <calc-sum> | none ] , <calc-sum> , [ <calc-sum> | none ] )"
@@ -383,14 +383,14 @@
 	"crossorigin-modifier": {
 		"syntax": "crossorigin( anonymous | use-credentials )"
 	},
+	"css-type": {
+		"syntax": "<syntax-component> | <type()>"
+	},
 	"cubic-bezier-easing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
 	},
 	"cubic-bezier-timing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
-	},
-	"cubic-bezier()": {
-		"syntax": "cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
 	},
 	"curve-command": {
 		"syntax": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]"
@@ -468,7 +468,7 @@
 		"syntax": "element( <id-selector> )"
 	},
 	"ellipse()": {
-		"syntax": "ellipse( <radial-size>? [ at <position> ]? )"
+		"syntax": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )"
 	},
 	"ending-shape": {
 		"syntax": "circle | ellipse"
@@ -583,6 +583,18 @@
 	},
 	"frequency-percentage": {
 		"syntax": "[ <frequency> | <percentage> ]"
+	},
+	"function-dependency-list": {
+		"syntax": "<function-parameter>#"
+	},
+	"function-name": {
+		"syntax": "<dashed-ident>"
+	},
+	"function-parameter": {
+		"syntax": "<custom-property-name> <css-type>? [ : <declaration-value> ]?"
+	},
+	"function-parameter-list": {
+		"syntax": "<function-parameter>#"
 	},
 	"gender": {
 		"syntax": "male | female | neutral"
@@ -1050,7 +1062,7 @@
 		"syntax": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )"
 	},
 	"path()": {
-		"syntax": "path( <'fill-rule'>? , <string> )"
+		"syntax": "path( [ <fill-rule> , ]? <string> )"
 	},
 	"perspective()": {
 		"syntax": "perspective( [ <length [0,∞]> | none ] )"
@@ -1062,7 +1074,7 @@
 		"syntax": "hsl | hwb | lch | oklch"
 	},
 	"polygon()": {
-		"syntax": "polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# )"
+		"syntax": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )"
 	},
 	"position": {
 		"syntax": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]"
@@ -1165,9 +1177,6 @@
 	},
 	"ray()": {
 		"syntax": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )"
-	},
-	"rect()": {
-		"syntax": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )"
 	},
 	"rectangular-color-space": {
 		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
@@ -1403,9 +1412,6 @@
 	"step-timing-function": {
 		"syntax": "step-start | step-end | steps( <integer> [, <step-position> ]? )"
 	},
-	"steps()": {
-		"syntax": "steps( <integer> , <step-position>? )"
-	},
 	"string()": {
 		"syntax": "string( <custom-ident> , [ first | start | last | first-except ]? )"
 	},
@@ -1462,6 +1468,24 @@
 	},
 	"symbols()": {
 		"syntax": "symbols( <symbols-type>? [ <string> | <image> ]+ )"
+	},
+	"syntax": {
+		"syntax": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+"
+	},
+	"syntax-combinator": {
+		"syntax": "'|'"
+	},
+	"syntax-component": {
+		"syntax": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'"
+	},
+	"syntax-component-name": {
+		"syntax": "'<' <syntax-type> '>' | <custom-ident>"
+	},
+	"syntax-multiplier": {
+		"syntax": "[ '#' | '+' ]"
+	},
+	"syntax-type": {
+		"syntax": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function"
 	},
 	"system-color": {
 		"syntax": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText"
@@ -1553,6 +1577,9 @@
 	"type-selector": {
 		"syntax": "<wq-name> | <ns-prefix>? '*'"
 	},
+	"type()": {
+		"syntax": "type( <syntax> )"
+	},
 	"url": {
 		"syntax": "<url()> | <src()>"
 	},
@@ -1585,9 +1612,6 @@
 	},
 	"x": {
 		"syntax": "<number>"
-	},
-	"xywh()": {
-		"syntax": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )"
 	},
 	"xyz": {
 		"syntax": "xyz | xyz-d50 | xyz-d65"

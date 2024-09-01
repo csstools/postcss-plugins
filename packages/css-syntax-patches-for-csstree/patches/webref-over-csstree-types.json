@@ -535,17 +535,6 @@
 			"failing": []
 		}
 	},
-	"circle()": {
-		"type": "modified",
-		"syntax-before": "circle( [ <shape-radius> ]? [ at <position> ]? )",
-		"syntax-after": "circle( <radial-size>? [ at <position> ]? )",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"clamp()": {
 		"type": "modified",
 		"syntax-before": "clamp( <calc-sum>#{3} )",
@@ -1171,21 +1160,22 @@
 			"failing": []
 		}
 	},
-	"cubic-bezier-easing-function": {
+	"css-type": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
+		"syntax-after": "<syntax-component> | <type()>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
 			"failing": []
 		}
 	},
-	"cubic-bezier()": {
+	"cubic-bezier-easing-function": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
+		"syntax-after": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1341,26 +1331,6 @@
 		"merged": false,
 		"tests": {
 			"passing": [],
-			"failing": []
-		}
-	},
-	"ellipse()": {
-		"type": "modified",
-		"syntax-before": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )",
-		"syntax-after": "ellipse( <radial-size>? [ at <position> ]? )",
-		"comment": "",
-		"merged": "ellipse( <radial-size>? [ at <position> ]? )",
-		"tests": {
-			"passing": [
-				{
-					"property": "clip-path",
-					"value": "ellipse(closest-corner closest-side at 5rem 6rem)"
-				},
-				{
-					"property": "clip-path",
-					"value": "ellipse(closest-side closest-side at 5rem 6rem)"
-				}
-			],
 			"failing": []
 		}
 	},
@@ -1533,6 +1503,52 @@
 		"type": "modified",
 		"syntax-before": "<frequency> | <percentage>",
 		"syntax-after": "[ <frequency> | <percentage> ]",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"function-dependency-list": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<function-parameter>#",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"function-name": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<dashed-ident>",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"function-parameter": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"function-parameter-list": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<function-parameter>#",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2998,17 +3014,6 @@
 			"failing": []
 		}
 	},
-	"path()": {
-		"type": "modified",
-		"syntax-before": "path( [ <fill-rule> , ]? <string> )",
-		"syntax-after": "path( <'fill-rule'>? , <string> )",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"points": {
 		"type": "added",
 		"syntax-before": "",
@@ -3041,17 +3046,6 @@
 					"value": "color-mix(in oklch, red 25%, blue)"
 				}
 			],
-			"failing": []
-		}
-	},
-	"polygon()": {
-		"type": "modified",
-		"syntax-before": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )",
-		"syntax-after": "polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# )",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
 			"failing": []
 		}
 	},
@@ -3427,51 +3421,6 @@
 				{
 					"property": "offset-path",
 					"value": "ray(50hz)"
-				}
-			]
-		}
-	},
-	"rect()": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )",
-		"comment": "",
-		"merged": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )",
-		"tests": {
-			"passing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(auto auto auto auto)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px)"
-				}
-			],
-			"failing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -4018,17 +3967,6 @@
 			"failing": []
 		}
 	},
-	"steps()": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "steps( <integer> , <step-position>? )",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"string()": {
 		"type": "added",
 		"syntax-before": "",
@@ -4144,6 +4082,78 @@
 		"syntax-before": "",
 		"syntax-after": "symbols( <symbols-type>? [ <string> | <image> ]+ )",
 		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-combinator": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'|'",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-component": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-component-name": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "'<' <syntax-type> '>' | <custom-ident>",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-multiplier": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "[ '#' | '+' ]",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-type": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function",
+		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -4378,6 +4388,18 @@
 			]
 		}
 	},
+	"type()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "type( <syntax> )",
+		"comment": "",
+		"omit": true,
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"url": {
 		"type": "modified",
 		"syntax-before": "url( <string> <url-modifier>* ) | <url-token>",
@@ -4488,22 +4510,6 @@
 		"merged": false,
 		"tests": {
 			"passing": [],
-			"failing": []
-		}
-	},
-	"xywh()": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
-		"comment": "",
-		"merged": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
-		"tests": {
-			"passing": [
-				{
-					"property": "clip-path",
-					"value": "xywh(1px 2% 3px 4em round 0 1% 2px 3em)"
-				}
-			],
 			"failing": []
 		}
 	},

@@ -4,15 +4,12 @@ import { generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
 
 const IGNORED_SPECS = new Set([
-	'css-mixins', // 'type()' conflicts with a different definition from 'css-image'
+	// 'a-spec',
 ]);
 
 const IGNORED_TYPES = new Map([
 	['<an+b>', '*'],
-	['<type()>', new Set(['css-mixins'])],
-	['type()', new Set(['css-mixins'])],
-	['<type()>', new Set(['css-images-4'])],
-	['type()', new Set(['css-images-4'])],
+	// ['a-type', new Set(['a-spec'])],
 ]);
 
 function is_ignored_type(type, spec_name) {
@@ -471,17 +468,6 @@ export async function generate_webref_sets() {
 					}
 
 					if (child_value.type === 'type' && child_value.value) {
-						assign_new_definition(
-							spec_name,
-							values,
-							trim_lt_gt(child_value.name),
-							child_value.value,
-						);
-
-						is_conflicting_type(spec_name, trim_lt_gt(child_value.name), values[trim_lt_gt(child_value.name)]);
-					}
-
-					if (child_value.type === 'function' && child_value.value) {
 						assign_new_definition(
 							spec_name,
 							values,
