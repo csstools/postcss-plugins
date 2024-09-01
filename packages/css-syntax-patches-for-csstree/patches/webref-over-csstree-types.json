@@ -3722,10 +3722,36 @@
 		"syntax-before": "",
 		"syntax-after": "scroll( [ <scroller> || <axis> ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "scroll( [ <scroller> || <axis> ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "animation-timeline",
+					"value": "scroll()"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "scroll(root)"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "scroll(block root)"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "scroll(root block)"
+				}
+			],
+			"failing": [
+				{
+					"property": "animation-timeline",
+					"value": "scroll"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "scroll(root block x)"
+				}
+			]
 		}
 	},
 	"scroller": {
@@ -3843,10 +3869,40 @@
 		"syntax-before": "auto | none | <timeline-name> | scroll( <axis>? <scroller>? )",
 		"syntax-after": "auto | none | <dashed-ident> | <scroll()> | <view()>",
 		"comment": "",
-		"merged": false,
+		"merged": "auto | none | <dashed-ident> | <scroll()> | <view()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "animation-timeline",
+					"value": "auto"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "none"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "--foo"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "scroll()"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "view()"
+				}
+			],
+			"failing": [
+				{
+					"property": "animation-timeline",
+					"value": "scroll() view()"
+				},
+				{
+					"property": "animation-timeline",
+					"value": "auto scroll"
+				}
+			]
 		}
 	},
 	"single-transition": {
@@ -4126,6 +4182,7 @@
 		"syntax-before": "",
 		"syntax-after": "<wcag2>",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],
@@ -4388,10 +4445,38 @@
 		"syntax-before": "",
 		"syntax-after": "view( [ <axis> || <'view-timeline-inset'> ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "view( [ <axis> || <'view-timeline-inset'> ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"tests": {
+				"passing": [
+					{
+						"property": "animation-timeline",
+						"value": "view()"
+					},
+					{
+						"property": "animation-timeline",
+						"value": "view(horizontal)"
+					},
+					{
+						"property": "animation-timeline",
+						"value": "view(horizontal 10px 20%)"
+					},
+					{
+						"property": "animation-timeline",
+						"value": "view(10px 20% horizontal)"
+					}
+				],
+				"failing": [
+					{
+						"property": "animation-timeline",
+						"value": "view"
+					},
+					{
+						"property": "animation-timeline",
+						"value": "view(horizontal inline)"
+					}
+				]
+			}
 		}
 	},
 	"wcag2": {
@@ -4399,6 +4484,7 @@
 		"syntax-before": "",
 		"syntax-after": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )",
 		"comment": "",
+		"omit": true,
 		"merged": false,
 		"tests": {
 			"passing": [],

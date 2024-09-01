@@ -6,6 +6,7 @@
 			"alignment-baseline": "| text-bottom | text-top",
 			"anchor-name": "none | <dashed-ident>#",
 			"anchor-scope": "none | all | <dashed-ident>#",
+			"animation-duration": "[ auto | <time [0s,∞]> ]#",
 			"appearance": "none | auto | <compat-auto> | <compat-special>",
 			"border-radius": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
 			"clip": "<shape> | auto",
@@ -16,7 +17,8 @@
 			"position-area": "none | <position-area>",
 			"position-try-fallbacks": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",
 			"position-try-order": "normal | <try-size>",
-			"transition-behavior": "<transition-behavior-value>#"
+			"transition-behavior": "<transition-behavior-value>#",
+			"view-timeline-inset": "[ [ auto | <length-percentage> ]{1,2} ]#"
 		},
 		"types": {
 			"anchor-element": "<dashed-ident>",
@@ -77,6 +79,8 @@
 			"rgb()": "[ <legacy-rgb-syntax> | <modern-rgb-syntax> ]",
 			"rgba()": "[ <legacy-rgba-syntax> | <modern-rgba-syntax> ]",
 			"right": "<length-percentage> | auto",
+			"scroll()": "scroll( [ <scroller> || <axis> ]? )",
+			"single-animation-timeline": "auto | none | <dashed-ident> | <scroll()> | <view()>",
 			"src()": "src( <string> <url-modifier>* )",
 			"system-color": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText",
 			"top": "<length-percentage> | auto",
@@ -85,6 +89,7 @@
 			"try-tactic": "flip-block || flip-inline || flip-start",
 			"url": "<url()> | <src()> | <url-token>",
 			"url()": "url( <string> <url-modifier>* ) | <url-token>",
+			"view()": "view( [ <axis> || <'view-timeline-inset'> ]? )",
 			"xywh()": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
 			"xyz": "xyz | xyz-d50 | xyz-d65",
 			"xyz-params": "<xyz> [ <number> | <percentage> | none ]{3}",

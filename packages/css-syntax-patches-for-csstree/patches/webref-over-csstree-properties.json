@@ -117,10 +117,30 @@
 		"syntax-before": "<time>#",
 		"syntax-after": "[ auto | <time [0s,∞]> ]#",
 		"comment": "",
-		"merged": false,
+		"merged": "[ auto | <time [0s,∞]> ]#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10ms"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "auto, 10ms, auto"
+				}
+			],
+			"failing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "none"
+				},
+				{
+					"value": "auto 10ms auto"
+				}
+			]
 		}
 	},
 	"animation-range": {
@@ -4552,10 +4572,36 @@
 		"syntax-before": "",
 		"syntax-after": "[ [ auto | <length-percentage> ]{1,2} ]#",
 		"comment": "",
-		"merged": false,
+		"merged": "[ [ auto | <length-percentage> ]{1,2} ]#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "auto"
+				},
+				{
+					"value": "auto 10px"
+				},
+				{
+					"value": "10px auto"
+				},
+				{
+					"value": "10px 10%"
+				},
+				{
+					"value": "10% 10%"
+				},
+				{
+					"value": "10px, 10%"
+				},
+				{
+					"value": "auto 10px, 10px auto"
+				}
+			],
+			"failing": [
+				{
+					"value": "auto auto auto"
+				}
+			]
 		}
 	},
 	"view-timeline-name": {
