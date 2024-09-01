@@ -600,7 +600,28 @@
 		"comment": "",
 		"merged": "<hex-color> | <color-function> | <named-color> | <color-mix()> | transparent",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "#f00"
+				},
+				{
+					"property": "color",
+					"value": "rgb(1 2 3)"
+				},
+				{
+					"property": "color",
+					"value": "red"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "transparent"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -620,17 +641,108 @@
 		"syntax-before": "",
 		"syntax-after": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>",
 		"merged": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>",
-		"comment": ""
+		"comment": "",
+		"tests": {
+			"passing": [
+				{
+					"property": "color",
+					"value": "rgb(1 2 3)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(1 2 3)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(1deg 2 3)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(1deg 2 3)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(1deg 2% 3%)"
+				},
+				{
+					"property": "color",
+					"value": "lab(1 2 3)"
+				},
+				{
+					"property": "color",
+					"value": "lch(1 2 3deg)"
+				},
+				{
+					"property": "color",
+					"value": "oklab(.1 .2 .3)"
+				},
+				{
+					"property": "color",
+					"value": "oklch(.1 .2 3deg)"
+				},
+				{
+					"property": "color",
+					"value": "color(display-p3 .1 .2 .3)"
+				}
+			],
+			"failing": []
+		}
 	},
 	"color-interpolation-method": {
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? | <custom-color-space> ]",
 		"comment": "",
-		"merged": false,
+		"merged": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? | <custom-color-space> ]",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red, blue 25%)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 12%, blue 25%)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in oklch longer hue, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in oklch shorter hue, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 25%, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "color-mix(in srgb longer hue, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in --foo longer hue, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in foo, red 25%, blue)"
+				}
+			]
 		}
 	},
 	"color-layers()": {
@@ -649,10 +761,20 @@
 		"syntax-before": "",
 		"syntax-after": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
 		"comment": "",
-		"merged": false,
+		"merged": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 25%, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "color-mix(red 25%, blue)"
+				}
+			]
 		}
 	},
 	"color-space": {
@@ -1080,10 +1202,24 @@
 		"syntax-before": "",
 		"syntax-after": "<dashed-ident>",
 		"comment": "",
-		"merged": false,
+		"merged": "<dashed-ident>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "color-mix(in --foo, red 25%, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "color-mix(in -foo, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in foo, red 25%, blue)"
+				}
+			]
 		}
 	},
 	"custom-params": {
@@ -1499,10 +1635,36 @@
 		"syntax-before": "",
 		"syntax-after": "[ shorter | longer | increasing | decreasing ] hue",
 		"comment": "",
-		"merged": false,
+		"merged": "[ shorter | longer | increasing | decreasing ] hue",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "color-mix(in hsl longer hue, red, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "color-mix(in hsl longer foo, red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in hsl foo hue, red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in hsl hue longer, red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in hsl longer, red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in hsl hue, red, blue)"
+				}
+			]
 		}
 	},
 	"hv-line-command": {
@@ -1521,10 +1683,44 @@
 		"syntax-before": "hwb( [ <hue> | none ] [ <percentage> | none ] [ <percentage> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-after": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "hwb(20deg 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(20deg 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(20deg 10% 5)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(20deg none 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(from red 20deg 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hwb(20deg 10% 5% / 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "hwb(20deg, 10%, 5%)"
+				}
+			]
 		}
 	},
 	"image": {
@@ -2760,9 +2956,22 @@
 		"syntax-before": "",
 		"syntax-after": "hsl | hwb | lch | oklch",
 		"comment": "",
-		"merged": false,
+		"merged": "hsl | hwb | lch | oklch",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "color-mix(in hsl, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in hwb, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in oklch, red 25%, blue)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -3203,9 +3412,22 @@
 		"syntax-before": "",
 		"syntax-after": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65",
 		"comment": "",
-		"merged": false,
+		"merged": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "color-mix(in srgb, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in srgb-linear, red 25%, blue)"
+				},
+				{
+					"property": "color",
+					"value": "color-mix(in oklab, red 25%, blue)"
+				}
+			],
 			"failing": []
 		}
 	},
