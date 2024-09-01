@@ -1459,9 +1459,18 @@
 		"syntax-before": "hsl( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 		"syntax-after": "[ <legacy-hsl-syntax> | <modern-hsl-syntax> ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <legacy-hsl-syntax> | <modern-hsl-syntax> ]",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg 10 5)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -1470,9 +1479,18 @@
 		"syntax-before": "hsla( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 		"syntax-after": "[ <legacy-hsla-syntax> | <modern-hsla-syntax> ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <legacy-hsla-syntax> | <modern-hsla-syntax> ]",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "color",
+					"value": "hsla(20deg, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20deg 10 5)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -1748,6 +1766,10 @@
 				{
 					"property": "color",
 					"value": "hsl(20deg, 10%, 5%, 2%, 1%)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10%, 5% / 2%)"
 				}
 			]
 		}
@@ -2105,10 +2127,48 @@
 		"syntax-before": "",
 		"syntax-after": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "hsl(20deg 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg 10% 5% / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg none none)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(0.5turn 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(from red 0.5turn 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(from hsl(0.5turn 5 10) 0.5turn 5 10)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "hsl(20deg 10 5, 0.5)"
+				}
+			]
 		}
 	},
 	"modern-hsla-syntax": {
@@ -2116,10 +2176,48 @@
 		"syntax-before": "",
 		"syntax-after": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": "",
-		"merged": false,
+		"merged": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "hsla(20deg 10% 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20deg 10% 5% / 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20 10 5)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(none none none)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20deg none none)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(0.5turn 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(from red 0.5turn 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(from hsla(0.5turn 5 10) 0.5turn 5 10)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "hsla(20deg 10 5, 0.5)"
+				}
+			]
 		}
 	},
 	"modern-rgb-syntax": {
