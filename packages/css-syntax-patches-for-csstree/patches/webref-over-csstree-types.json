@@ -1516,7 +1516,12 @@
 		"comment": "https://developer.mozilla.org/en-US/docs/Web/CSS/image/paint",
 		"merged": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "background-image",
+					"value": "paint(boxbg)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -1723,10 +1728,28 @@
 		"syntax-before": "",
 		"syntax-after": "hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 		"comment": "",
-		"merged": false,
+		"merged": "hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10%, 5%, 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10%)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(20deg, 10%, 5%, 2%, 1%)"
+				}
+			]
 		}
 	},
 	"legacy-hsla-syntax": {
@@ -1734,10 +1757,28 @@
 		"syntax-before": "",
 		"syntax-after": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 		"comment": "",
-		"merged": false,
+		"merged": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "hsla(20deg, 10%, 5%)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20deg, 10%, 5%, 0.5)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "hsla(20deg, 10%)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(20deg, 10%, 5%, 2%, 1%)"
+				}
+			]
 		}
 	},
 	"legacy-pseudo-element-selector": {
