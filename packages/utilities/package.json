@@ -51,7 +51,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"postcss": "^8.4.43"
+		"postcss": "^8.4.45"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

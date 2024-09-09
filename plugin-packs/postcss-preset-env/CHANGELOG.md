@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.1.1`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#811-september-9-2024) (patch)
+- Updated [`postcss-opacity-percentage`](https://github.com/mrcgrtz/postcss-opacity-percentage) to [`3.0.0`](https://github.com/mrcgrtz/postcss-opacity-percentage/releases/tag/v3.0.0) (now matches minimum node version of `postcss-preset-env`)
+
 ### 10.0.2
 
 _August 18, 2024_

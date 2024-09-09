@@ -10,6 +10,7 @@
 	-webkit-box-ordinal-group: 2;
 	-webkit-order: 1;
 	   -moz-box-ordinal-group: 2;
+	    -ms-flex-order: 1;
 	        order: 1;
 }
 
@@ -18,6 +19,7 @@
 	-webkit-box-ordinal-group: 3;
 	-webkit-order: 2;
 	   -moz-box-ordinal-group: 3;
+	    -ms-flex-order: 2;
 	        order: 2;
 }
 
@@ -34,6 +36,7 @@
 	-webkit-box-ordinal-group: 4;
 	-webkit-order: 3;
 	   -moz-box-ordinal-group: 4;
+	    -ms-flex-order: 3;
 	        order: 3;
 	padding-top: 4px;
 	padding-bottom: 4px;
@@ -53,6 +56,7 @@
 	-webkit-box-ordinal-group: 5;
 	-webkit-order: 4;
 	   -moz-box-ordinal-group: 5;
+	    -ms-flex-order: 4;
 	        order: 4;
 }
 
@@ -60,6 +64,7 @@
 		-webkit-box-ordinal-group: 6;
 		-webkit-order: 5;
 		   -moz-box-ordinal-group: 6;
+		    -ms-flex-order: 5;
 		        order: 5;
 	}
 
@@ -71,6 +76,8 @@
 
 	   -moz-box-ordinal-group: 7;
 
+	    -ms-flex-order: 6;
+
 	        order: 6;
 }
 
@@ -79,6 +86,7 @@
 	-webkit-box-ordinal-group: 8;
 	-webkit-order: 7;
 	   -moz-box-ordinal-group: 8;
+	    -ms-flex-order: 7;
 	        order: 7;
 }
 
@@ -86,6 +94,7 @@
 		-webkit-box-ordinal-group: 9;
 		-webkit-order: 8;
 		   -moz-box-ordinal-group: 9;
+		    -ms-flex-order: 8;
 		        order: 8;
 	}
 
@@ -98,6 +107,8 @@
 
 	   -moz-box-ordinal-group: 10;
 
+	    -ms-flex-order: 9;
+
 	        order: 9;
 }
 
@@ -106,6 +117,7 @@
 		-webkit-box-ordinal-group: 11;
 		-webkit-order: 10;
 		   -moz-box-ordinal-group: 11;
+		    -ms-flex-order: 10;
 		        order: 10;
 	}
 }
@@ -115,6 +127,7 @@
 		-webkit-box-ordinal-group: 12;
 		-webkit-order: 11;
 		   -moz-box-ordinal-group: 12;
+		    -ms-flex-order: 11;
 		        order: 11;
 	}
 }
@@ -130,6 +143,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group:13;
 	-webkit-order:12;
 	   -moz-box-ordinal-group:13;
+	    -ms-flex-order:12;
 	        order:12;
 }
 
@@ -137,6 +151,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 14;
 	-webkit-order: 13;
 	   -moz-box-ordinal-group: 14;
+	    -ms-flex-order: 13;
 	        order: 13;
 }
 
@@ -145,6 +160,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 15;
 	-webkit-order: 14;
 	   -moz-box-ordinal-group: 15;
+	    -ms-flex-order: 14;
 	        order: 14;
 }
 
@@ -154,6 +170,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 16;
 	-webkit-order: 15;
 	   -moz-box-ordinal-group: 16;
+	    -ms-flex-order: 15;
 	        order: 15;
 }
 
@@ -162,6 +179,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 17;
 	-webkit-order: 16;
 	   -moz-box-ordinal-group: 17;
+	    -ms-flex-order: 16;
 	        order: 16;
 }
 
@@ -171,6 +189,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 18;
 	-webkit-order: 17;
 	   -moz-box-ordinal-group: 18;
+	    -ms-flex-order: 17;
 	        order: 17;
 }
 
@@ -179,6 +198,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 19;
 	-webkit-order: 18;
 	   -moz-box-ordinal-group: 19;
+	    -ms-flex-order: 18;
 	        order: 18;
 }
 
@@ -190,6 +210,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 20;
 	-webkit-order: 19;
 	   -moz-box-ordinal-group: 20;
+	    -ms-flex-order: 19;
 	        order: 19;
 }
 
@@ -322,6 +343,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 21;
 	-webkit-order: 20;
 	   -moz-box-ordinal-group: 21;
+	    -ms-flex-order: 20;
 	        order: 20;
 }
 
@@ -329,6 +351,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 22;
 	-webkit-order: 21;
 	   -moz-box-ordinal-group: 22;
+	    -ms-flex-order: 21;
 	        order: 21;
 }
 
@@ -336,6 +359,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 23;
 	-webkit-order: 22;
 	   -moz-box-ordinal-group: 23;
+	    -ms-flex-order: 22;
 	        order: 22;
 }
 
@@ -343,6 +367,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 24;
 	-webkit-order: 23;
 	   -moz-box-ordinal-group: 24;
+	    -ms-flex-order: 23;
 	        order: 23;
 }
 
@@ -350,6 +375,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 25;
 	-webkit-order: 24;
 	   -moz-box-ordinal-group: 25;
+	    -ms-flex-order: 24;
 	        order: 24;
 }
 
@@ -357,6 +383,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 26;
 	-webkit-order: 25;
 	   -moz-box-ordinal-group: 26;
+	    -ms-flex-order: 25;
 	        order: 25;
 	word-wrap: break-word;
 }
@@ -365,6 +392,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 27;
 	-webkit-order: 26;
 	   -moz-box-ordinal-group: 27;
+	    -ms-flex-order: 26;
 	        order: 26;
 }
 
@@ -384,6 +412,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 28;
 	-webkit-order: 27;
 	   -moz-box-ordinal-group: 28;
+	    -ms-flex-order: 27;
 	        order: 27;
 }
 
@@ -391,6 +420,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: 29;
 	-webkit-order: 28;
 	   -moz-box-ordinal-group: 29;
+	    -ms-flex-order: 28;
 	        order: 28;
 }
 
@@ -477,6 +507,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 
@@ -484,6 +515,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
 	display: inline-flex;
 }
 
@@ -670,6 +702,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	-webkit-box-ordinal-group: NaN;
 	-webkit-order: -webkit-calc(1 * (8 / 3 + (5 * 10)));
 	   -moz-box-ordinal-group: NaN;
+	    -ms-flex-order: calc(1 * (8 / 3 + (5 * 10)));
 	        order: calc(1 * (8 / 3 + (5 * 10)));
 }
 

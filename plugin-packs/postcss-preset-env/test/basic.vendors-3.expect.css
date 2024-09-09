@@ -34,7 +34,7 @@
 }
 
 .test-logical-resize {
-	resize: horizontal;
+	resize: inline;
 }
 
 .test-logical-viewport-units {
