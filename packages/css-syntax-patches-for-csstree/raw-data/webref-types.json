@@ -570,7 +570,7 @@
 		"syntax": "[ <font-features-tech> | <color-font-tech> | variations | palettes | incremental ]"
 	},
 	"font-variant-css2": {
-		"syntax": "[ normal | small-caps ]"
+		"syntax": "normal | small-caps"
 	},
 	"font-variant-css21": {
 		"syntax": "[ normal | small-caps ]"
@@ -579,7 +579,7 @@
 		"syntax": "[ normal | bold | <number [1,1000]> ]"
 	},
 	"font-width-css3": {
-		"syntax": "[ normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded ]"
+		"syntax": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded"
 	},
 	"frequency-percentage": {
 		"syntax": "[ <frequency> | <percentage> ]"
@@ -800,9 +800,6 @@
 	"linear-color-stop": {
 		"syntax": "<color> <color-stop-length>?"
 	},
-	"linear-easing-function": {
-		"syntax": "linear( <linear-stop-list> )"
-	},
 	"-legacy-linear-gradient": {
 		"syntax": "-moz-linear-gradient( <-legacy-linear-gradient-arguments> ) | -webkit-linear-gradient( <-legacy-linear-gradient-arguments> ) | -o-linear-gradient( <-legacy-linear-gradient-arguments> )"
 	},
@@ -815,17 +812,8 @@
 	"linear-gradient()": {
 		"syntax": "linear-gradient( [ <linear-gradient-syntax> ] )"
 	},
-	"linear-stop": {
-		"syntax": "<number> && <linear-stop-length>?"
-	},
-	"linear-stop-length": {
-		"syntax": "<percentage>{1,2}"
-	},
-	"linear-stop-list": {
-		"syntax": "[ <linear-stop> ]#"
-	},
 	"linear()": {
-		"syntax": "linear( <linear-stop-list> )"
+		"syntax": "linear( [ <number> && <percentage>{0,2} ]# )"
 	},
 	"link-param": {
 		"syntax": "param( <custom-property-name> <declaration-value>? )"
@@ -1128,7 +1116,7 @@
 		"syntax": "'*' | <custom-ident>"
 	},
 	"query-in-parens": {
-		"syntax": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>"
+		"syntax": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | scroll-state( <scroll-state-query> ) | <general-enclosed>"
 	},
 	"quote": {
 		"syntax": "open-quote | close-quote | no-open-quote | no-close-quote"
@@ -1282,6 +1270,12 @@
 	},
 	"scaleZ()": {
 		"syntax": "scaleZ( [ <number> | <percentage> ] )"
+	},
+	"scroll-state-in-parens": {
+		"syntax": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>"
+	},
+	"scroll-state-query": {
+		"syntax": "not <scroll-state-in-parens> | <scroll-state-in-parens> [ [ and <scroll-state-in-parens> ]* | [ or <scroll-state-in-parens> ]* ] | <scroll-state-feature>"
 	},
 	"scroll-timeline-axis": {
 		"syntax": "block | inline | vertical | horizontal"

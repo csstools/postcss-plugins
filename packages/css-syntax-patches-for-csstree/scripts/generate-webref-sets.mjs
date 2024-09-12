@@ -52,7 +52,6 @@ const SPECS = [
 	['compat', []],
 	['compositing', []],
 	['css-align', []],
-	['css-anchor-position', []],
 	['css-animations', []],
 	['css-animations-2', []],
 	['css-backgrounds', []],
@@ -128,11 +127,12 @@ const SPECS = [
 	['css-size-adjust', []],
 	['css-sizing', ['css-multicol']],
 	['css-sizing-4', ['css-logical']],
+	['css-anchor-position', ['css-box', 'css-position', 'css-position-4', 'css-sizing', 'css-sizing-4']],
 	['css-speech', []],
 	['css-syntax', []],
 	['css-tables', []],
 	['css-text', []],
-	['mathml-core', ['css-text', 'css-display']],
+	['mathml-core', ['css-text', 'css-display', 'css-grid-3']],
 	['css-text-4', ['mathml-core']],
 	['css-text-decor', []],
 	['css-text-decor-4', []],
@@ -336,6 +336,36 @@ const property_deltas = new Set([
 	property_delta_key('justify-items', 'css-align', 'css-anchor-position'),
 	property_delta_key('align-self', 'css-align', 'css-anchor-position'),
 	property_delta_key('justify-self', 'css-align', 'css-anchor-position'),
+
+	property_delta_key('margin-top', 'css-box', 'css-anchor-position'),
+	property_delta_key('margin-left', 'css-box', 'css-anchor-position'),
+	property_delta_key('margin-right', 'css-box', 'css-anchor-position'),
+	property_delta_key('margin-bottom', 'css-box', 'css-anchor-position'),
+
+	property_delta_key('top', 'css-position', 'css-anchor-position'),
+	property_delta_key('left', 'css-position', 'css-anchor-position'),
+	property_delta_key('right', 'css-position', 'css-anchor-position'),
+	property_delta_key('bottom', 'css-position', 'css-anchor-position'),
+
+	property_delta_key('width', 'css-sizing', 'css-anchor-position'),
+	property_delta_key('height', 'css-sizing', 'css-anchor-position'),
+	property_delta_key('min-width', 'css-sizing', 'css-anchor-position'),
+	property_delta_key('min-height', 'css-sizing', 'css-anchor-position'),
+	property_delta_key('max-width', 'css-sizing', 'css-anchor-position'),
+	property_delta_key('max-height', 'css-sizing', 'css-anchor-position'),
+
+	property_delta_key('width', 'css-sizing-4', 'css-anchor-position'),
+	property_delta_key('height', 'css-sizing-4', 'css-anchor-position'),
+	property_delta_key('min-width', 'css-sizing-4', 'css-anchor-position'),
+	property_delta_key('min-height', 'css-sizing-4', 'css-anchor-position'),
+	property_delta_key('max-width', 'css-sizing-4', 'css-anchor-position'),
+	property_delta_key('max-height', 'css-sizing-4', 'css-anchor-position'),
+
+	property_delta_key('grid-auto-flow', 'css-grid', 'css-grid-3'),
+
+	property_delta_key('display', 'css-display', 'css-grid-3'),
+
+	property_delta_key('display', 'css-grid-3', 'mathml-core'),
 ]);
 
 const seen_property_definitions = new Map();

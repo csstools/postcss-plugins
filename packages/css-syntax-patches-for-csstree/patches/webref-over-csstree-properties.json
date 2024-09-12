@@ -1114,7 +1114,7 @@
 	"bottom": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1459,7 +1459,7 @@
 	"container-type": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "normal | size | inline-size",
+		"syntax-after": "normal | [ [ size | inline-size ] || scroll-state ]",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1591,7 +1591,7 @@
 	"display": {
 		"type": "modified",
 		"syntax-before": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
-		"syntax-after": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]",
+		"syntax-after": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | masonry | inline-masonry | <display-outside> || [ <display-inside> | math ]",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1844,7 +1844,7 @@
 	"font": {
 		"type": "modified",
 		"syntax-before": "[ [ <'font-style'> || <font-variant-css21> || <'font-weight'> || <'font-stretch'> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | caption | icon | menu | message-box | small-caption | status-bar",
-		"syntax-after": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | <system-family-name>",
+		"syntax-after": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2039,6 +2039,17 @@
 			"failing": []
 		}
 	},
+	"grid-auto-flow": {
+		"type": "modified",
+		"syntax-before": "[ row | column ] || dense",
+		"syntax-after": "[ row | column | row-reverse | column-reverse ] || dense || wrap-reverse",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"grid-template-columns": {
 		"type": "modified",
 		"syntax-before": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
@@ -2064,7 +2075,7 @@
 	"height": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> )",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain",
+		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2291,7 +2302,7 @@
 	"left": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2467,7 +2478,7 @@
 	"margin-bottom": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto",
+		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2522,7 +2533,7 @@
 	"margin-left": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto",
+		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2533,7 +2544,7 @@
 	"margin-right": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto",
+		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2544,7 +2555,7 @@
 	"margin-top": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto",
+		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2651,6 +2662,72 @@
 			"failing": []
 		}
 	},
+	"masonry-auto-tracks": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<'grid-auto-columns'>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"masonry-direction": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "row | column | row-reverse | column-reverse",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"masonry-fill": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "normal | reverse",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"masonry-flow": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<'masonry-direction'> || <'masonry-fill'>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"masonry-template-areas": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "none | <string>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"masonry-template-tracks": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "<'grid-template-columns'>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"max-block-size": {
 		"type": "modified",
 		"syntax-before": "<'max-width'>",
@@ -2665,7 +2742,7 @@
 	"max-height": {
 		"type": "modified",
 		"syntax-before": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> )",
-		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain",
+		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2698,7 +2775,7 @@
 	"max-width": {
 		"type": "modified",
 		"syntax-before": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width>",
-		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain",
+		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2720,7 +2797,7 @@
 	"min-height": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> )",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain",
+		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2753,7 +2830,7 @@
 	"min-width": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | <-non-standard-width>",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain",
+		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -3481,7 +3558,7 @@
 	"right": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -4460,7 +4537,7 @@
 	"top": {
 		"type": "modified",
 		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -4739,7 +4816,7 @@
 	"width": {
 		"type": "modified",
 		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | fill | stretch | intrinsic | -moz-max-content | -webkit-max-content | -moz-fit-content | -webkit-fit-content",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain",
+		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": "",
 		"merged": false,
 		"tests": {

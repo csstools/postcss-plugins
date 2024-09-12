@@ -1469,7 +1469,7 @@
 	"font-variant-css2": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "[ normal | small-caps ]",
+		"syntax-after": "normal | small-caps",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1491,7 +1491,7 @@
 	"font-width-css3": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "[ normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded ]",
+		"syntax-after": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2299,17 +2299,6 @@
 			"failing": []
 		}
 	},
-	"linear-easing-function": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "linear( <linear-stop-list> )",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"linear-gradient-syntax": {
 		"type": "added",
 		"syntax-before": "",
@@ -2332,43 +2321,10 @@
 			"failing": []
 		}
 	},
-	"linear-stop": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<number> && <linear-stop-length>?",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"linear-stop-length": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<percentage>{1,2}",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"linear-stop-list": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ <linear-stop> ]#",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"linear()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "linear( <linear-stop-list> )",
+		"syntax-after": "linear( [ <number> && <percentage>{0,2} ]# )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -3237,7 +3193,7 @@
 	"query-in-parens": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>",
+		"syntax-after": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | scroll-state( <scroll-state-query> ) | <general-enclosed>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -3659,6 +3615,28 @@
 		"type": "added",
 		"syntax-before": "",
 		"syntax-after": "running( <custom-ident> )",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-state-in-parens": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-state-query": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <scroll-state-in-parens> | <scroll-state-in-parens> [ [ and <scroll-state-in-parens> ]* | [ or <scroll-state-in-parens> ]* ] | <scroll-state-feature>",
 		"comment": "",
 		"merged": false,
 		"tests": {
