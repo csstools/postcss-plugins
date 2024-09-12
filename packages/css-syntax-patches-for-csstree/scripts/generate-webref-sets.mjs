@@ -1,5 +1,5 @@
 import css from '@webref/css';
-import { fork } from 'css-tree';
+import { fork } from 'css-tree-3.0.0';
 import { generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
 

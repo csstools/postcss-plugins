@@ -1,4 +1,4 @@
-import { definitionSyntax } from 'css-tree';
+import { definitionSyntax } from 'css-tree-3.0.0';
 import { sort_set } from './sort-set.mjs';
 
 export function generate_set(source) {

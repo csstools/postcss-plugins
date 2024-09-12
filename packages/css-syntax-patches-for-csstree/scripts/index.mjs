@@ -18,7 +18,7 @@
 //   - restore unchanged entries
 //   - write to disk
 
-import { fork, parse } from 'css-tree';
+import { fork, parse } from 'css-tree-3.0.0';
 
 import { generate_csstree_sets } from './generate-csstree-sets.mjs';
 import { generate_webref_sets } from './generate-webref-sets.mjs';
