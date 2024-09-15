@@ -21,10 +21,6 @@
 	"workspaces": [
 		"postcss-preset-env"
 	],
-	"devDependencies": {
-		"stylelint": "^16.9.0",
-		"stylelint-config-standard": "^36.0.0"
-	},
 	"scripts": {
 		"setup-workspace": "npm ci",
 		"build": "npm run build --workspaces --if-present",

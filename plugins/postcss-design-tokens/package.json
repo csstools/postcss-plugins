@@ -56,7 +56,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-bundler": "^1.0.3",
+		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
 		"style-dictionary-design-tokens-example": "^1.1.0"
 	},

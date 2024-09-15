@@ -27,22 +27,7 @@ module.exports = function (eleventyConfig) {
 		return inputPath.replace('./', 'https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env/');
 	});
 
-	// Override BrowserSync defaults (used only with --serve)
-	eleventyConfig.setBrowserSyncConfig({
-		callbacks: {
-			ready: function(err, browserSync) {
-				browserSync.addMiddleware('*', (req, res) => {
-					// Provides the 404 content without redirect.
-					res.writeHead(404, {'Content-Type': 'text/html; charset=UTF-8'});
-					res.write('');
-					res.end();
-				});
-			},
-		},
-		ui: false,
-		ghostMode: false,
-	});
-
+	eleventyConfig.addWatchTarget('./src/static');
 
 	// Let Eleventy transform HTML files as nunjucks
 	// So that we can use .html instead of .njk

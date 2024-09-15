@@ -638,7 +638,7 @@ export declare class MediaQueryWithType {
     mediaType: Array<CSSToken>;
     and: Array<CSSToken> | undefined;
     media: MediaCondition | undefined;
-    constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken> | undefined, media?: MediaCondition | undefined);
+    constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken>, media?: MediaCondition);
     getModifier(): string;
     negateQuery(): MediaQuery;
     getMediaType(): string;
