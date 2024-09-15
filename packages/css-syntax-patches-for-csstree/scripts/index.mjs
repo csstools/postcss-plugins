@@ -2,21 +2,8 @@
 // - toposort
 //   - check cycles
 //   - check missing definitions
-// - patches
-//   1. generate csstree syntaxes
-//   2. generate webref syntaxes
-//   3. take a diff
-//   4. for each entry with a difference there should be a matching entry in a `patches.json` file
-//   5. each patch entry needs to match the source of csstree and the source of webref
-//   6. the manually resolved conflict is also stored in the `patches.json` file
-//   This gives us an automated mechanic to detect updates and to ensure that `patches.json` is always as small as needed
 // - backwards compat
 //   given that syntaxes are extensive users might depend on a specific type. No types can be removed or altered in a breaking way in semver patches or minors
-// - make it easier to roll forwards the patches files
-//   - read existing entries
-//   - override everything with contents from raw-data
-//   - restore unchanged entries
-//   - write to disk
 
 import { fork, parse } from 'css-tree-3.0.0';
 
@@ -218,7 +205,6 @@ await write_final_file({
 	}
 
 	console.log(`${flaws} flaws to resolve`);
-
 
 	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
 		process.exit(1);

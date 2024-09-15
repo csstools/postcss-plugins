@@ -108,7 +108,7 @@
 		"syntax": "[ first | last ]? && baseline"
 	},
 	"basic-shape": {
-		"syntax": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )"
+		"syntax": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )"
 	},
 	"basic-shape-rect": {
 		"syntax": "<inset()> | <rect()> | <xywh()>"
@@ -393,10 +393,13 @@
 		"syntax": "<syntax-component> | <type()>"
 	},
 	"cubic-bezier-easing-function": {
-		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
+		"syntax": "ease | ease-in | ease-out | ease-in-out | <cubic-bezier()>"
 	},
 	"cubic-bezier-timing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
+	},
+	"cubic-bezier()": {
+		"syntax": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )"
 	},
 	"curve-command": {
 		"syntax": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]"
@@ -462,7 +465,7 @@
 		"syntax": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]>? ]#{2} )"
 	},
 	"easing-function": {
-		"syntax": "linear | <linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>"
+		"syntax": "<linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>"
 	},
 	"east-asian-variant-values": {
 		"syntax": "[ jis78 | jis83 | jis90 | jis04 | simplified | traditional ]"
@@ -573,7 +576,7 @@
 		"syntax": "[ <font-features-tech> | <color-font-tech> | variations | palettes | incremental ]"
 	},
 	"font-variant-css2": {
-		"syntax": "[ normal | small-caps ]"
+		"syntax": "normal | small-caps"
 	},
 	"font-variant-css21": {
 		"syntax": "[ normal | small-caps ]"
@@ -582,7 +585,7 @@
 		"syntax": "[ normal | bold | <number [1,1000]> ]"
 	},
 	"font-width-css3": {
-		"syntax": "[ normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded ]"
+		"syntax": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded"
 	},
 	"forgiving-relative-selector-list": {
 		"syntax": "<relative-real-selector-list>"
@@ -816,7 +819,7 @@
 		"syntax": "<color> <color-stop-length>?"
 	},
 	"linear-easing-function": {
-		"syntax": "linear( <linear-stop-list> )"
+		"syntax": "linear | <linear()>"
 	},
 	"-legacy-linear-gradient": {
 		"syntax": "-moz-linear-gradient( <-legacy-linear-gradient-arguments> ) | -webkit-linear-gradient( <-legacy-linear-gradient-arguments> ) | -o-linear-gradient( <-legacy-linear-gradient-arguments> )"
@@ -830,17 +833,8 @@
 	"linear-gradient()": {
 		"syntax": "linear-gradient( [ <linear-gradient-syntax> ] )"
 	},
-	"linear-stop": {
-		"syntax": "<number> && <linear-stop-length>?"
-	},
-	"linear-stop-length": {
-		"syntax": "<percentage>{1,2}"
-	},
-	"linear-stop-list": {
-		"syntax": "[ <linear-stop> ]#"
-	},
 	"linear()": {
-		"syntax": "linear( <linear-stop-list> )"
+		"syntax": "linear( [ <number> && <percentage>{0,2} ]# )"
 	},
 	"link-param": {
 		"syntax": "param( <custom-property-name> <declaration-value>? )"
@@ -1140,7 +1134,7 @@
 		"syntax": "'*' | <custom-ident>"
 	},
 	"query-in-parens": {
-		"syntax": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>"
+		"syntax": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | scroll-state( <scroll-state-query> ) | <general-enclosed>"
 	},
 	"quote": {
 		"syntax": "open-quote | close-quote | no-open-quote | no-close-quote"
@@ -1301,6 +1295,12 @@
 	"scope-start": {
 		"syntax": "<forgiving-selector-list>"
 	},
+	"scroll-state-in-parens": {
+		"syntax": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>"
+	},
+	"scroll-state-query": {
+		"syntax": "not <scroll-state-in-parens> | <scroll-state-in-parens> [ [ and <scroll-state-in-parens> ]* | [ or <scroll-state-in-parens> ]* ] | <scroll-state-feature>"
+	},
 	"scroll()": {
 		"syntax": "scroll( [ <scroller> || <axis> ]? )"
 	},
@@ -1422,13 +1422,16 @@
 		"syntax": "src( <string> <url-modifier>* )"
 	},
 	"step-easing-function": {
-		"syntax": "step-start | step-end | steps( <integer> , <step-position>? )"
+		"syntax": "step-start | step-end | <steps()>"
 	},
 	"step-position": {
 		"syntax": "jump-start | jump-end | jump-none | jump-both | start | end"
 	},
 	"step-timing-function": {
 		"syntax": "step-start | step-end | steps( <integer> [, <step-position> ]? )"
+	},
+	"steps()": {
+		"syntax": "steps( <integer> , <step-position>? )"
 	},
 	"string()": {
 		"syntax": "string( <custom-ident> , [ first | start | last | first-except ]? )"

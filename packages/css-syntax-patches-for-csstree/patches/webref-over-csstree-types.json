@@ -134,9 +134,9 @@
 	"basic-shape": {
 		"type": "modified",
 		"syntax-before": "<inset()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
-		"syntax-after": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
+		"syntax-after": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 		"comment": "https://github.com/w3c/csswg-drafts/issues/10812",
-		"merged": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( [ <radial-size>{2} ]? [ at <position> ]? ) | polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
+		"merged": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( [ <radial-size>{2} ]? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 		"tests": {
 			"passing": [
 				{
@@ -829,7 +829,18 @@
 	"cubic-bezier-easing-function": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )",
+		"syntax-after": "ease | ease-in | ease-out | ease-in-out | <cubic-bezier()>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"cubic-bezier()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -924,7 +935,7 @@
 	"easing-function": {
 		"type": "modified",
 		"syntax-before": "linear | <cubic-bezier-timing-function> | <step-timing-function>",
-		"syntax-after": "linear | <linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>",
+		"syntax-after": "<linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1075,32 +1086,10 @@
 			"failing": []
 		}
 	},
-	"font-variant-css2": {
-		"type": "modified",
-		"syntax-before": "normal | small-caps",
-		"syntax-after": "[ normal | small-caps ]",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"font-weight-absolute": {
 		"type": "modified",
 		"syntax-before": "normal | bold | <number [1,1000]>",
 		"syntax-after": "[ normal | bold | <number [1,1000]> ]",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"font-width-css3": {
-		"type": "modified",
-		"syntax-before": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded",
-		"syntax-after": "[ normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded ]",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1769,7 +1758,7 @@
 	"linear-easing-function": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "linear( <linear-stop-list> )",
+		"syntax-after": "linear | <linear()>",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -1799,43 +1788,10 @@
 			"failing": []
 		}
 	},
-	"linear-stop": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<number> && <linear-stop-length>?",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"linear-stop-length": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<percentage>{1,2}",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"linear-stop-list": {
-		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ <linear-stop> ]#",
-		"comment": "",
-		"merged": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"linear()": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "linear( <linear-stop-list> )",
+		"syntax-after": "linear( [ <number> && <percentage>{0,2} ]# )",
 		"comment": "",
 		"merged": false,
 		"tests": {
@@ -2595,7 +2551,7 @@
 	"query-in-parens": {
 		"type": "modified",
 		"syntax-before": "( <container-condition> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>",
-		"syntax-after": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>",
+		"syntax-after": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | scroll-state( <scroll-state-query> ) | <general-enclosed>",
 		"comment": "",
 		"merged": false,
 		"omit": true,
@@ -2954,6 +2910,28 @@
 			"failing": []
 		}
 	},
+	"scroll-state-in-parens": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-state-query": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "not <scroll-state-in-parens> | <scroll-state-in-parens> [ [ and <scroll-state-in-parens> ]* | [ or <scroll-state-in-parens> ]* ] | <scroll-state-feature>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"scroll()": {
 		"type": "modified",
 		"syntax-before": "scroll( [ <axis> || <scroller> ]? )",
@@ -3164,7 +3142,18 @@
 	"step-easing-function": {
 		"type": "added",
 		"syntax-before": "",
-		"syntax-after": "step-start | step-end | steps( <integer> , <step-position>? )",
+		"syntax-after": "step-start | step-end | <steps()>",
+		"comment": "",
+		"merged": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"steps()": {
+		"type": "added",
+		"syntax-before": "",
+		"syntax-after": "steps( <integer> , <step-position>? )",
 		"comment": "",
 		"merged": false,
 		"tests": {

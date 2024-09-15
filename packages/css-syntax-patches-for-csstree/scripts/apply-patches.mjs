@@ -78,6 +78,11 @@ export function apply_patches(patches, onto) {
 			continue;
 		}
 
+		if (patch['merged'] === patch['syntax-before']) {
+			// CSSTree is most correct
+			continue;
+		}
+
 		types[name] = patch['merged'];
 	}
 
