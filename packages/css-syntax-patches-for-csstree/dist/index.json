@@ -14,6 +14,7 @@
 			"clip": "<shape> | auto",
 			"color-adjust": "<'print-color-adjust'>",
 			"justify-items": "| anchor-center",
+			"mix-blend-mode": "<blend-mode> | plus-darker | plus-lighter",
 			"position-anchor": "auto | <anchor-element>"
 		},
 		"types": {

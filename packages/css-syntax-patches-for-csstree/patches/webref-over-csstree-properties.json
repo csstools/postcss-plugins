@@ -2662,8 +2662,8 @@
 		"type": "modified",
 		"syntax-before": "<blend-mode> | plus-lighter",
 		"syntax-after": "<blend-mode> | plus-darker | plus-lighter",
-		"comment": "<blend-mode> | plus-lighter",
-		"merged": false,
+		"comment": "",
+		"merged": "<blend-mode> | plus-darker | plus-lighter",
 		"tests": {
 			"passing": [
 				{
@@ -2671,11 +2671,14 @@
 				},
 				{
 					"value": "plus-lighter"
+				},
+				{
+					"value": "plus-darker"
 				}
 			],
 			"failing": [
 				{
-					"value": "plus-darker"
+					"value": "plus-foo"
 				}
 			]
 		}
