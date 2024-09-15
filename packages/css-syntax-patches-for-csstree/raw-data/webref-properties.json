@@ -173,9 +173,6 @@
 	"block-ellipsis": {
 		"syntax": "none | auto | <string>"
 	},
-	"block-overflow": {
-		"syntax": "clip | ellipsis | <string>"
-	},
 	"-ms-block-progression": {
 		"syntax": "tb | rl | bt | lr"
 	},
@@ -471,7 +468,7 @@
 		"syntax": "<line-width>{1,4}"
 	},
 	"bottom": {
-		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
+		"syntax": "auto | <length-percentage>"
 	},
 	"box-align": {
 		"syntax": "start | center | end | baseline | stretch"
@@ -642,7 +639,7 @@
 		"syntax": "none | <custom-ident>+"
 	},
 	"container-type": {
-		"syntax": "normal | [ [ size | inline-size ] || scroll-state ]"
+		"syntax": "normal | size | inline-size"
 	},
 	"content": {
 		"syntax": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>"
@@ -726,7 +723,7 @@
 		"syntax": "ltr | rtl"
 	},
 	"display": {
-		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | masonry | inline-masonry | <display-outside> || [ <display-inside> | math ]"
+		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
@@ -855,7 +852,7 @@
 		"syntax": "[ none | <custom-ident> ]#"
 	},
 	"font": {
-		"syntax": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>"
+		"syntax": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | <system-family-name>"
 	},
 	"font-family": {
 		"syntax": "[ <family-name> | <generic-family> ]#"
@@ -972,7 +969,7 @@
 		"syntax": "<track-size>+"
 	},
 	"grid-auto-flow": {
-		"syntax": "[ row | column | row-reverse | column-reverse ] || dense || wrap-reverse"
+		"syntax": "[ row | column ] || dense"
 	},
 	"grid-auto-rows": {
 		"syntax": "<track-size>+"
@@ -1032,7 +1029,7 @@
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
 	},
 	"height": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"-ms-high-contrast-adjust": {
 		"syntax": "auto | none"
@@ -1106,6 +1103,9 @@
 	"inset": {
 		"syntax": "<'top'>{1,4}"
 	},
+	"inset-area": {
+		"syntax": "none | <inset-area>"
+	},
 	"inset-block": {
 		"syntax": "<'top'>{1,2}"
 	},
@@ -1149,7 +1149,7 @@
 		"syntax": "auto | <svg-length>"
 	},
 	"left": {
-		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
+		"syntax": "auto | <length-percentage>"
 	},
 	"letter-spacing": {
 		"syntax": "normal | <length-percentage>"
@@ -1212,7 +1212,7 @@
 		"syntax": "<'margin-top'>"
 	},
 	"margin-bottom": {
-		"syntax": "<length-percentage> | auto | <anchor-size()>"
+		"syntax": "<length-percentage> | auto"
 	},
 	"margin-break": {
 		"syntax": "auto | keep | discard"
@@ -1227,13 +1227,13 @@
 		"syntax": "<'margin-top'>"
 	},
 	"margin-left": {
-		"syntax": "<length-percentage> | auto | <anchor-size()>"
+		"syntax": "<length-percentage> | auto"
 	},
 	"margin-right": {
-		"syntax": "<length-percentage> | auto | <anchor-size()>"
+		"syntax": "<length-percentage> | auto"
 	},
 	"margin-top": {
-		"syntax": "<length-percentage> | auto | <anchor-size()>"
+		"syntax": "<length-percentage> | auto"
 	},
 	"margin-trim": {
 		"syntax": "none | [ block || inline ] | [ block-start || inline-start || block-end || inline-end ]"
@@ -1349,24 +1349,6 @@
 	"masonry-auto-flow": {
 		"syntax": "[ pack | next ] || [ definite-first | ordered ]"
 	},
-	"masonry-auto-tracks": {
-		"syntax": "<'grid-auto-columns'>"
-	},
-	"masonry-direction": {
-		"syntax": "row | column | row-reverse | column-reverse"
-	},
-	"masonry-fill": {
-		"syntax": "normal | reverse"
-	},
-	"masonry-flow": {
-		"syntax": "<'masonry-direction'> || <'masonry-fill'>"
-	},
-	"masonry-template-areas": {
-		"syntax": "none | <string>"
-	},
-	"masonry-template-tracks": {
-		"syntax": "<'grid-template-columns'>"
-	},
 	"math-depth": {
 		"syntax": "auto-add | add( <integer> ) | <integer>"
 	},
@@ -1380,7 +1362,7 @@
 		"syntax": "<'max-width'> | stretch | fit-content | contain"
 	},
 	"max-height": {
-		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
+		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"max-inline-size": {
 		"syntax": "<'max-width'> | stretch | fit-content | contain"
@@ -1389,13 +1371,13 @@
 		"syntax": "none | <integer [1,∞]>"
 	},
 	"max-width": {
-		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
+		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"min-block-size": {
 		"syntax": "<'min-width'> | stretch | fit-content | contain"
 	},
 	"min-height": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"min-inline-size": {
 		"syntax": "<'min-width'> | stretch | fit-content | contain"
@@ -1404,7 +1386,7 @@
 		"syntax": "legacy | zero-if-scroll || zero-if-extrinsic"
 	},
 	"min-width": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"mix-blend-mode": {
 		"syntax": "<blend-mode> | plus-darker | plus-lighter"
@@ -1701,7 +1683,7 @@
 		"syntax": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong"
 	},
 	"right": {
-		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
+		"syntax": "auto | <length-percentage>"
 	},
 	"rotate": {
 		"syntax": "none | <angle> | [ x | y | z | <number>{3} ] && <angle>"
@@ -2178,7 +2160,7 @@
 		"syntax": "none | all | <dashed-ident>#"
 	},
 	"top": {
-		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
+		"syntax": "auto | <length-percentage>"
 	},
 	"touch-action": {
 		"syntax": "auto | none | [ [ pan-x | pan-left | pan-right ] || [ pan-y | pan-up | pan-down ] || pinch-zoom ] | manipulation"
@@ -2322,7 +2304,7 @@
 		"syntax": "<integer [1,∞]>"
 	},
 	"width": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain"
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"

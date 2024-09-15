@@ -31,6 +31,13 @@ const CUSTOM_OVERRIDES = {
 			'syntax-after': 'contrast-color( <color> max? )',
 		},
 	},
+	'motion': {
+		// See : https://github.com/w3c/fxtf-drafts/pull/573
+		'ray()': {
+			'syntax-before': 'ray( <angle> && <ray-size>? && contain? && [at <position>]? )',
+			'syntax-after': 'ray( [ <angle> && <ray-size>? && contain? && [at <position>]? ] )',
+		},
+	},
 };
 
 function maybe_override(spec_name, name, definition) {

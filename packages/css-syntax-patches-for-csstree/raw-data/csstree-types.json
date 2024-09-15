@@ -2,6 +2,12 @@
 	"abs()": {
 		"syntax": "abs( <calc-sum> )"
 	},
+	"absolute-color-base": {
+		"syntax": "<hex-color> | <absolute-color-function> | <named-color> | transparent"
+	},
+	"absolute-color-function": {
+		"syntax": "rgb( ) > | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
+	},
 	"absolute-size": {
 		"syntax": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large"
 	},
@@ -13,6 +19,21 @@
 	},
 	"alpha-value": {
 		"syntax": "<number> | <percentage>"
+	},
+	"anchor-element": {
+		"syntax": "<dashed-ident>"
+	},
+	"anchor-side": {
+		"syntax": "inside | outside | top | left | right | bottom | start | end | self-start | self-end | <percentage> | center"
+	},
+	"anchor-size": {
+		"syntax": "width | height | block | inline | self-block | self-inline"
+	},
+	"anchor-size()": {
+		"syntax": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )"
+	},
+	"anchor()": {
+		"syntax": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )"
 	},
 	"angle-percentage": {
 		"syntax": "<angle> | <percentage>"
@@ -137,11 +158,29 @@
 	"clip-source": {
 		"syntax": "<url>"
 	},
+	"cmyk-component": {
+		"syntax": "<number> | <percentage> | none"
+	},
 	"color": {
-		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>"
+		"syntax": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()> | <-non-standard-color>"
 	},
 	"-non-standard-color": {
 		"syntax": "-moz-ButtonDefault | -moz-ButtonHoverFace | -moz-ButtonHoverText | -moz-CellHighlight | -moz-CellHighlightText | -moz-Combobox | -moz-ComboboxText | -moz-Dialog | -moz-DialogText | -moz-dragtargetzone | -moz-EvenTreeRow | -moz-Field | -moz-FieldText | -moz-html-CellHighlight | -moz-html-CellHighlightText | -moz-mac-accentdarkestshadow | -moz-mac-accentdarkshadow | -moz-mac-accentface | -moz-mac-accentlightesthighlight | -moz-mac-accentlightshadow | -moz-mac-accentregularhighlight | -moz-mac-accentregularshadow | -moz-mac-chrome-active | -moz-mac-chrome-inactive | -moz-mac-focusring | -moz-mac-menuselect | -moz-mac-menushadow | -moz-mac-menutextselect | -moz-MenuHover | -moz-MenuHoverText | -moz-MenuBarText | -moz-MenuBarHoverText | -moz-nativehyperlinktext | -moz-OddTreeRow | -moz-win-communicationstext | -moz-win-mediatext | -moz-activehyperlinktext | -moz-default-background-color | -moz-default-color | -moz-hyperlinktext | -moz-visitedhyperlinktext | -webkit-activelink | -webkit-focus-ring-color | -webkit-link | -webkit-text"
+	},
+	"color-base": {
+		"syntax": "<hex-color> | <color-function> | <named-color> | <color-mix()> | transparent"
+	},
+	"color-function": {
+		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
+	},
+	"color-interpolation-method": {
+		"syntax": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? | <custom-color-space> ]"
+	},
+	"color-mix()": {
+		"syntax": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )"
+	},
+	"color-space": {
+		"syntax": "<rectangular-color-space> | <polar-color-space> | <custom-color-space>"
 	},
 	"color-stop": {
 		"syntax": "<color-stop-length> | <color-stop-angle>"
@@ -155,8 +194,14 @@
 	"color-stop-list": {
 		"syntax": "[ <linear-color-stop> [, <linear-color-hint> ]? ]# , <linear-color-stop>"
 	},
+	"color()": {
+		"syntax": "color( <colorspace-params> [ / [ <alpha-value> | none ] ]? )"
+	},
+	"colorspace-params": {
+		"syntax": "[ <predefined-rgb-params> | <xyz-params> ]"
+	},
 	"combinator": {
-		"syntax": "'>' | '+' | '~' | [ '||' ]"
+		"syntax": "'>' | '+' | '~' | [ '|' '|' ]"
 	},
 	"common-lig-values": {
 		"syntax": "[ common-ligatures | no-common-ligatures ]"
@@ -164,11 +209,20 @@
 	"compat-auto": {
 		"syntax": "searchfield | textarea | push-button | slider-horizontal | checkbox | radio | square-button | menulist | listbox | meter | progress-bar | button"
 	},
-	"complex-selector": {
+	"complex-real-selector": {
 		"syntax": "<compound-selector> [ <combinator>? <compound-selector> ]*"
+	},
+	"complex-real-selector-list": {
+		"syntax": "<complex-real-selector>#"
+	},
+	"complex-selector": {
+		"syntax": "<complex-selector-unit> [ <combinator>? <complex-selector-unit> ]*"
 	},
 	"complex-selector-list": {
 		"syntax": "<complex-selector>#"
+	},
+	"complex-selector-unit": {
+		"syntax": "[ <compound-selector>? <pseudo-compound-selector>* ]!"
 	},
 	"composite-style": {
 		"syntax": "clear | copy | source-over | source-in | source-out | source-atop | destination-over | destination-in | destination-out | destination-atop | xor"
@@ -177,13 +231,19 @@
 		"syntax": "add | subtract | intersect | exclude"
 	},
 	"compound-selector": {
-		"syntax": "[ <type-selector>? <subclass-selector>* [ <pseudo-element-selector> <pseudo-class-selector>* ]* ]!"
+		"syntax": "[ <type-selector>? <subclass-selector>* ]!"
 	},
 	"compound-selector-list": {
 		"syntax": "<compound-selector>#"
 	},
 	"conic-gradient()": {
 		"syntax": "conic-gradient( [ from <angle> ]? [ at <position> ]? , <angular-color-stop-list> )"
+	},
+	"container-condition": {
+		"syntax": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]"
+	},
+	"container-name": {
+		"syntax": "<custom-ident>"
 	},
 	"content-distribution": {
 		"syntax": "space-between | space-around | space-evenly | stretch"
@@ -202,6 +262,9 @@
 	},
 	"contrast()": {
 		"syntax": "contrast( [ <number-percentage> ] )"
+	},
+	"coord-box": {
+		"syntax": "content-box | padding-box | border-box | fill-box | stroke-box | view-box"
 	},
 	"cos()": {
 		"syntax": "cos( <calc-sum> )"
@@ -230,6 +293,9 @@
 	"cubic-bezier-timing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
 	},
+	"custom-color-space": {
+		"syntax": "<dashed-ident>"
+	},
 	"declaration": {
 		"syntax": "<ident-token> : <declaration-value>? [ '!' important ]?"
 	},
@@ -238,6 +304,9 @@
 	},
 	"deprecated-system-color": {
 		"syntax": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonFace | ButtonHighlight | ButtonShadow | ButtonText | CaptionText | GrayText | Highlight | HighlightText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText"
+	},
+	"device-cmyk()": {
+		"syntax": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>"
 	},
 	"discretionary-lig-values": {
 		"syntax": "[ discretionary-ligatures | no-discretionary-ligatures ]"
@@ -320,9 +389,6 @@
 	"fill-rule": {
 		"syntax": "nonzero | evenodd"
 	},
-	"-ms-filter": {
-		"syntax": "<string>"
-	},
 	"filter-function": {
 		"syntax": "<blur()> | <brightness()> | <contrast()> | <drop-shadow()> | <grayscale()> | <hue-rotate()> | <invert()> | <opacity()> | <saturate()> | <sepia()>"
 	},
@@ -359,11 +425,23 @@
 	"font-stretch-absolute": {
 		"syntax": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded | <percentage>"
 	},
+	"font-variant-css2": {
+		"syntax": "normal | small-caps"
+	},
 	"font-variant-css21": {
 		"syntax": "[ normal | small-caps ]"
 	},
 	"font-weight-absolute": {
 		"syntax": "normal | bold | <number [1,1000]>"
+	},
+	"font-width-css3": {
+		"syntax": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded"
+	},
+	"forgiving-relative-selector-list": {
+		"syntax": "<relative-real-selector-list>"
+	},
+	"forgiving-selector-list": {
+		"syntax": "<complex-real-selector-list>"
 	},
 	"frequency-percentage": {
 		"syntax": "<frequency> | <percentage>"
@@ -372,13 +450,25 @@
 		"syntax": "male | female | neutral"
 	},
 	"general-enclosed": {
-		"syntax": "[ <function-token> <any-value> ) ] | ( <ident> <any-value> )"
+		"syntax": "[ <function-token> <any-value>? ) ] | [ ( <any-value>? ) ]"
+	},
+	"generic-complete": {
+		"syntax": "serif | sans-serif | system-ui | cursive | fantasy | math | monospace"
 	},
 	"generic-family": {
-		"syntax": "serif | sans-serif | cursive | fantasy | monospace | -apple-system"
+		"syntax": "<generic-script-specific> | <generic-complete> | <generic-incomplete> | <-non-standard-generic-family>"
+	},
+	"-non-standard-generic-family": {
+		"syntax": "-apple-system | BlinkMacSystemFont"
+	},
+	"generic-incomplete": {
+		"syntax": "ui-serif | ui-sans-serif | ui-monospace | ui-rounded"
 	},
 	"generic-name": {
 		"syntax": "serif | sans-serif | cursive | fantasy | monospace"
+	},
+	"generic-script-specific": {
+		"syntax": "generic( kai ) | generic( fangsong ) | generic( nastaliq )"
 	},
 	"generic-voice": {
 		"syntax": "[ <age>? <gender> <integer>? ]"
@@ -425,6 +515,9 @@
 	"hue": {
 		"syntax": "<number> | <angle>"
 	},
+	"hue-interpolation-method": {
+		"syntax": "[ shorter | longer | increasing | decreasing ] hue"
+	},
 	"hue-rotate()": {
 		"syntax": "hue-rotate( <angle> )"
 	},
@@ -458,6 +551,9 @@
 	"inflexible-breadth": {
 		"syntax": "<length-percentage> | min-content | max-content | auto"
 	},
+	"inset-area": {
+		"syntax": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]"
+	},
 	"inset()": {
 		"syntax": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? )"
 	},
@@ -471,7 +567,7 @@
 		"syntax": "<keyframe-block>+"
 	},
 	"keyframe-selector": {
-		"syntax": "from | to | <percentage>"
+		"syntax": "from | to | <percentage> | <timeline-range-name> <percentage>"
 	},
 	"keyframes-name": {
 		"syntax": "<custom-ident> | <string>"
@@ -497,8 +593,17 @@
 	"left": {
 		"syntax": "<length> | auto"
 	},
+	"legacy-device-cmyk-syntax": {
+		"syntax": "device-cmyk( <number>#{4} )"
+	},
+	"legacy-pseudo-element-selector": {
+		"syntax": "':' [ before | after | first-line | first-letter ]"
+	},
 	"length-percentage": {
 		"syntax": "<length> | <percentage>"
+	},
+	"light-dark()": {
+		"syntax": "light-dark( <color> , <color> )"
 	},
 	"line-name-list": {
 		"syntax": "[ <line-names> | <name-repeat> ]+"
@@ -532,12 +637,6 @@
 	},
 	"-webkit-mask-box-repeat": {
 		"syntax": "repeat | stretch | round"
-	},
-	"-webkit-mask-clip-style": {
-		"syntax": "border | border-box | padding | padding-box | content | content-box | text"
-	},
-	"mask-image": {
-		"syntax": "<mask-reference>#"
 	},
 	"mask-layer": {
 		"syntax": "<mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || <geometry-box> || [ <geometry-box> | no-clip ] || <compositing-operator> || <masking-mode>"
@@ -617,11 +716,14 @@
 	"mod()": {
 		"syntax": "mod( <calc-sum> , <calc-sum> )"
 	},
+	"modern-device-cmyk-syntax": {
+		"syntax": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )"
+	},
 	"name-repeat": {
 		"syntax": "repeat( [ <integer [1,∞]> | auto-fill ] , <line-names>+ )"
 	},
 	"named-color": {
-		"syntax": "transparent | aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen | <-non-standard-color>"
+		"syntax": "transparent | aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen"
 	},
 	"namespace-prefix": {
 		"syntax": "<ident>"
@@ -650,6 +752,15 @@
 	"numeric-spacing-values": {
 		"syntax": "[ proportional-nums | tabular-nums ]"
 	},
+	"offset-path": {
+		"syntax": "<ray()> | <url> | <basic-shape>"
+	},
+	"oklab()": {
+		"syntax": "oklab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+	},
+	"oklch()": {
+		"syntax": "oklch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
+	},
 	"opacity()": {
 		"syntax": "opacity( [ <number-percentage> ] )"
 	},
@@ -657,7 +768,7 @@
 		"syntax": "<length> | <percentage>"
 	},
 	"-non-standard-overflow": {
-		"syntax": "-moz-scrollbars-none | -moz-scrollbars-horizontal | -moz-scrollbars-vertical | -moz-hidden-unscrollable"
+		"syntax": "overlay | -moz-scrollbars-none | -moz-scrollbars-horizontal | -moz-scrollbars-vertical | -moz-hidden-unscrollable"
 	},
 	"overflow-position": {
 		"syntax": "unsafe | safe"
@@ -686,11 +797,17 @@
 	"paint()": {
 		"syntax": "paint( <ident> , <declaration-value>? )"
 	},
+	"palette-identifier": {
+		"syntax": "<dashed-ident>"
+	},
 	"path()": {
 		"syntax": "path( [ <fill-rule> , ]? <string> )"
 	},
 	"perspective()": {
 		"syntax": "perspective( [ <length [0,∞]> | none ] )"
+	},
+	"polar-color-space": {
+		"syntax": "hsl | hwb | lch | oklch"
 	},
 	"polygon()": {
 		"syntax": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )"
@@ -698,17 +815,32 @@
 	"position": {
 		"syntax": "[ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]"
 	},
+	"position-area": {
+		"syntax": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]"
+	},
 	"pow()": {
 		"syntax": "pow( <calc-sum> , <calc-sum> )"
+	},
+	"predefined-rgb": {
+		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020"
+	},
+	"predefined-rgb-params": {
+		"syntax": "<predefined-rgb> [ <number> | <percentage> | none ]{3}"
 	},
 	"pseudo-class-selector": {
 		"syntax": "':' <ident-token> | ':' <function-token> <any-value> ')'"
 	},
+	"pseudo-compound-selector": {
+		"syntax": "<pseudo-element-selector> <pseudo-class-selector>*"
+	},
 	"pseudo-element-selector": {
-		"syntax": "':' <pseudo-class-selector>"
+		"syntax": "':' <pseudo-class-selector> | <legacy-pseudo-element-selector>"
 	},
 	"pseudo-page": {
 		"syntax": ": [ left | right | first | blank ]"
+	},
+	"query-in-parens": {
+		"syntax": "( <container-condition> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>"
 	},
 	"quote": {
 		"syntax": "open-quote | close-quote | no-open-quote | no-close-quote"
@@ -730,6 +862,21 @@
 	},
 	"ratio": {
 		"syntax": "<number [0,∞]> [ / <number [0,∞]> ]?"
+	},
+	"ray-size": {
+		"syntax": "closest-side | closest-corner | farthest-side | farthest-corner | sides"
+	},
+	"ray()": {
+		"syntax": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )"
+	},
+	"rectangular-color-space": {
+		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
+	},
+	"relative-real-selector": {
+		"syntax": "<combinator>? <complex-real-selector>"
+	},
+	"relative-real-selector-list": {
+		"syntax": "<relative-real-selector>#"
 	},
 	"relative-selector": {
 		"syntax": "<combinator>? <complex-selector>"
@@ -812,14 +959,20 @@
 	"scaleZ()": {
 		"syntax": "scaleZ( [ <number> | <percentage> ] )"
 	},
-	"scroll-timeline-axis": {
-		"syntax": "block | inline | vertical | horizontal"
+	"scope-end": {
+		"syntax": "<forgiving-selector-list>"
 	},
-	"scroll-timeline-name": {
-		"syntax": "none | <custom-ident>"
+	"scope-start": {
+		"syntax": "<forgiving-selector-list>"
+	},
+	"scroll()": {
+		"syntax": "scroll( [ <axis> || <scroller> ]? )"
 	},
 	"scroller": {
 		"syntax": "root | nearest"
+	},
+	"selector-list": {
+		"syntax": "<complex-selector-list>"
 	},
 	"self-position": {
 		"syntax": "center | start | end | self-start | self-end | flex-start | flex-end"
@@ -848,11 +1001,17 @@
 	"sign()": {
 		"syntax": "sign( <calc-sum> )"
 	},
+	"simple-selector": {
+		"syntax": "<type-selector> | <subclass-selector>"
+	},
+	"simple-selector-list": {
+		"syntax": "<simple-selector>#"
+	},
 	"sin()": {
 		"syntax": "sin( <calc-sum> )"
 	},
 	"single-animation": {
-		"syntax": "<time> || <easing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ]"
+		"syntax": "<'animation-duration'> || <easing-function> || <'animation-delay'> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ] || <single-animation-timeline>"
 	},
 	"single-animation-composition": {
 		"syntax": "replace | add | accumulate"
@@ -870,16 +1029,22 @@
 		"syntax": "running | paused"
 	},
 	"single-animation-timeline": {
-		"syntax": "auto | none | <timeline-name> | scroll( <axis>? <scroller>? )"
+		"syntax": "auto | none | <dashed-ident> | <scroll()> | <view()>"
 	},
 	"single-transition": {
-		"syntax": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time>"
+		"syntax": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time> || <transition-behavior-value>"
 	},
 	"single-transition-property": {
 		"syntax": "all | <custom-ident>"
 	},
 	"size": {
 		"syntax": "closest-side | farthest-side | closest-corner | farthest-corner | <length> | <length-percentage>{2}"
+	},
+	"-non-standard-size": {
+		"syntax": "intrinsic | min-intrinsic | -webkit-fill-available | -webkit-fit-content | -webkit-min-content | -webkit-max-content | -moz-available | -moz-fit-content | -moz-min-content | -moz-max-content"
+	},
+	"size-feature": {
+		"syntax": "<mf-plain> | <mf-boolean> | <mf-range>"
 	},
 	"skew()": {
 		"syntax": "skew( [ <angle> | <zero> ] , [ <angle> | <zero> ]? )"
@@ -898,6 +1063,18 @@
 	},
 	"step-timing-function": {
 		"syntax": "step-start | step-end | steps( <integer> [, <step-position> ]? )"
+	},
+	"style-condition": {
+		"syntax": "not <style-in-parens> | <style-in-parens> [ [ and <style-in-parens> ]* | [ or <style-in-parens> ]* ]"
+	},
+	"style-feature": {
+		"syntax": "<declaration>"
+	},
+	"style-in-parens": {
+		"syntax": "( <style-condition> ) | ( <style-feature> ) | <general-enclosed>"
+	},
+	"style-query": {
+		"syntax": "<style-condition> | <style-feature>"
 	},
 	"subclass-selector": {
 		"syntax": "<id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>"
@@ -926,6 +1103,12 @@
 	"symbol": {
 		"syntax": "<string> | <image> | <custom-ident>"
 	},
+	"system-color": {
+		"syntax": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText"
+	},
+	"system-family-name": {
+		"syntax": "caption | icon | menu | message-box | small-caption | status-bar"
+	},
 	"tan()": {
 		"syntax": "tan( <calc-sum> )"
 	},
@@ -944,8 +1127,8 @@
 	"time-percentage": {
 		"syntax": "<time> | <percentage>"
 	},
-	"timeline-name": {
-		"syntax": "<custom-ident> | <string>"
+	"timeline-range-name": {
+		"syntax": "cover | contain | entry | exit | entry-crossing | exit-crossing"
 	},
 	"top": {
 		"syntax": "<length> | auto"
@@ -968,6 +1151,9 @@
 	"transform-list": {
 		"syntax": "<transform-function>+"
 	},
+	"transition-behavior-value": {
+		"syntax": "normal | allow-discrete"
+	},
 	"translate()": {
 		"syntax": "translate( <length-percentage> , <length-percentage>? )"
 	},
@@ -982,6 +1168,12 @@
 	},
 	"translateZ()": {
 		"syntax": "translateZ( <length> )"
+	},
+	"try-size": {
+		"syntax": "most-width | most-height | most-block-size | most-inline-size"
+	},
+	"try-tactic": {
+		"syntax": "flip-block || flip-inline || flip-start"
 	},
 	"type-or-unit": {
 		"syntax": "string | color | url | integer | number | length | angle | time | frequency | cap | ch | em | ex | ic | lh | rlh | rem | vb | vi | vw | vh | vmin | vmax | mm | Q | cm | in | pt | pc | px | deg | grad | rad | turn | ms | s | Hz | kHz | %"
@@ -998,20 +1190,26 @@
 	"var()": {
 		"syntax": "var( <custom-property-name> , <declaration-value>? )"
 	},
+	"view()": {
+		"syntax": "view( [ <axis> || <'view-timeline-inset'> ]? )"
+	},
 	"viewport-length": {
 		"syntax": "auto | <length-percentage>"
 	},
 	"visual-box": {
 		"syntax": "content-box | padding-box | border-box"
 	},
-	"-non-standard-width": {
-		"syntax": "fill-available | min-intrinsic | intrinsic | -moz-available | -moz-fit-content | -moz-min-content | -moz-max-content | -webkit-min-content | -webkit-max-content"
-	},
 	"wq-name": {
 		"syntax": "<ns-prefix>? <ident-token>"
 	},
 	"x": {
 		"syntax": "<number>"
+	},
+	"xyz-params": {
+		"syntax": "<xyz-space> [ <number> | <percentage> | none ]{3}"
+	},
+	"xyz-space": {
+		"syntax": "xyz | xyz-d50 | xyz-d65"
 	},
 	"y": {
 		"syntax": "<number>"

@@ -2,6 +2,12 @@
 	"abs()": {
 		"syntax": "abs( <calc-sum> )"
 	},
+	"absolute-color-base": {
+		"syntax": "<hex-color> | <absolute-color-function> | <named-color> | transparent"
+	},
+	"absolute-color-function": {
+		"syntax": "rgb( ) > | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
+	},
 	"absolute-size": {
 		"syntax": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large"
 	},
@@ -509,9 +515,6 @@
 	"fill-rule": {
 		"syntax": "nonzero | evenodd"
 	},
-	"-ms-filter": {
-		"syntax": "<string>"
-	},
 	"filter-function": {
 		"syntax": "<blur()> | <brightness()> | <contrast()> | <drop-shadow()> | <grayscale()> | <hue-rotate()> | <invert()> | <opacity()> | <sepia()> | <saturate()>"
 	},
@@ -570,7 +573,7 @@
 		"syntax": "[ <font-features-tech> | <color-font-tech> | variations | palettes | incremental ]"
 	},
 	"font-variant-css2": {
-		"syntax": "normal | small-caps"
+		"syntax": "[ normal | small-caps ]"
 	},
 	"font-variant-css21": {
 		"syntax": "[ normal | small-caps ]"
@@ -579,7 +582,13 @@
 		"syntax": "[ normal | bold | <number [1,1000]> ]"
 	},
 	"font-width-css3": {
-		"syntax": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded"
+		"syntax": "[ normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded ]"
+	},
+	"forgiving-relative-selector-list": {
+		"syntax": "<relative-real-selector-list>"
+	},
+	"forgiving-selector-list": {
+		"syntax": "<complex-real-selector-list>"
 	},
 	"frequency-percentage": {
 		"syntax": "[ <frequency> | <percentage> ]"
@@ -607,6 +616,9 @@
 	},
 	"generic-family": {
 		"syntax": "<generic-script-specific> | <generic-complete> | <generic-incomplete>"
+	},
+	"-non-standard-generic-family": {
+		"syntax": "-apple-system | BlinkMacSystemFont"
 	},
 	"generic-incomplete": {
 		"syntax": "ui-serif | ui-sans-serif | ui-monospace | ui-rounded"
@@ -707,6 +719,9 @@
 	"inflexible-breadth": {
 		"syntax": "<length-percentage [0,∞]> | min-content | max-content | auto"
 	},
+	"inset-area": {
+		"syntax": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]"
+	},
 	"inset()": {
 		"syntax": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? )"
 	},
@@ -800,6 +815,9 @@
 	"linear-color-stop": {
 		"syntax": "<color> <color-stop-length>?"
 	},
+	"linear-easing-function": {
+		"syntax": "linear( <linear-stop-list> )"
+	},
 	"-legacy-linear-gradient": {
 		"syntax": "-moz-linear-gradient( <-legacy-linear-gradient-arguments> ) | -webkit-linear-gradient( <-legacy-linear-gradient-arguments> ) | -o-linear-gradient( <-legacy-linear-gradient-arguments> )"
 	},
@@ -812,8 +830,17 @@
 	"linear-gradient()": {
 		"syntax": "linear-gradient( [ <linear-gradient-syntax> ] )"
 	},
+	"linear-stop": {
+		"syntax": "<number> && <linear-stop-length>?"
+	},
+	"linear-stop-length": {
+		"syntax": "<percentage>{1,2}"
+	},
+	"linear-stop-list": {
+		"syntax": "[ <linear-stop> ]#"
+	},
 	"linear()": {
-		"syntax": "linear( [ <number> && <percentage>{0,2} ]# )"
+		"syntax": "linear( <linear-stop-list> )"
 	},
 	"link-param": {
 		"syntax": "param( <custom-property-name> <declaration-value>? )"
@@ -826,12 +853,6 @@
 	},
 	"-webkit-mask-box-repeat": {
 		"syntax": "repeat | stretch | round"
-	},
-	"-webkit-mask-clip-style": {
-		"syntax": "border | border-box | padding | padding-box | content | content-box | text"
-	},
-	"mask-image": {
-		"syntax": "<mask-reference>#"
 	},
 	"mask-layer": {
 		"syntax": "<mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || <geometry-box> || [ <geometry-box> | no-clip ] || <compositing-operator> || <masking-mode>"
@@ -1011,7 +1032,7 @@
 		"syntax": "<length> | <percentage>"
 	},
 	"-non-standard-overflow": {
-		"syntax": "-moz-scrollbars-none | -moz-scrollbars-horizontal | -moz-scrollbars-vertical | -moz-hidden-unscrollable"
+		"syntax": "overlay | -moz-scrollbars-none | -moz-scrollbars-horizontal | -moz-scrollbars-vertical | -moz-hidden-unscrollable"
 	},
 	"overflow-position": {
 		"syntax": "unsafe | safe"
@@ -1045,6 +1066,9 @@
 	},
 	"paint()": {
 		"syntax": "paint( <ident> , <declaration-value>? )"
+	},
+	"palette-identifier": {
+		"syntax": "<dashed-ident>"
 	},
 	"palette-mix()": {
 		"syntax": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )"
@@ -1116,7 +1140,7 @@
 		"syntax": "'*' | <custom-ident>"
 	},
 	"query-in-parens": {
-		"syntax": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | scroll-state( <scroll-state-query> ) | <general-enclosed>"
+		"syntax": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | <general-enclosed>"
 	},
 	"quote": {
 		"syntax": "open-quote | close-quote | no-open-quote | no-close-quote"
@@ -1164,7 +1188,7 @@
 		"syntax": "closest-side | closest-corner | farthest-side | farthest-corner | sides"
 	},
 	"ray()": {
-		"syntax": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )"
+		"syntax": "ray( [ <angle> && <ray-size>? && contain? && [ at <position> ]? ] )"
 	},
 	"rectangular-color-space": {
 		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
@@ -1271,17 +1295,11 @@
 	"scaleZ()": {
 		"syntax": "scaleZ( [ <number> | <percentage> ] )"
 	},
-	"scroll-state-in-parens": {
-		"syntax": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>"
+	"scope-end": {
+		"syntax": "<forgiving-selector-list>"
 	},
-	"scroll-state-query": {
-		"syntax": "not <scroll-state-in-parens> | <scroll-state-in-parens> [ [ and <scroll-state-in-parens> ]* | [ or <scroll-state-in-parens> ]* ] | <scroll-state-feature>"
-	},
-	"scroll-timeline-axis": {
-		"syntax": "block | inline | vertical | horizontal"
-	},
-	"scroll-timeline-name": {
-		"syntax": "none | <custom-ident>"
+	"scope-start": {
+		"syntax": "<forgiving-selector-list>"
 	},
 	"scroll()": {
 		"syntax": "scroll( [ <scroller> || <axis> ]? )"
@@ -1364,6 +1382,12 @@
 	"size": {
 		"syntax": "closest-side | farthest-side | closest-corner | farthest-corner | <length> | <length-percentage>{2}"
 	},
+	"-non-standard-size": {
+		"syntax": "intrinsic | min-intrinsic | -webkit-fill-available | -webkit-fit-content | -webkit-min-content | -webkit-max-content | -moz-available | -moz-fit-content | -moz-min-content | -moz-max-content"
+	},
+	"size-feature": {
+		"syntax": "<mf-plain> | <mf-boolean> | <mf-range>"
+	},
 	"skew()": {
 		"syntax": "skew( [ <angle> | <zero> ] , [ <angle> | <zero> ]? )"
 	},
@@ -1411,6 +1435,12 @@
 	},
 	"stripes()": {
 		"syntax": "stripes( <color-stripe># )"
+	},
+	"style-condition": {
+		"syntax": "not <style-in-parens> | <style-in-parens> [ [ and <style-in-parens> ]* | [ or <style-in-parens> ]* ]"
+	},
+	"style-feature": {
+		"syntax": "<declaration>"
 	},
 	"style-in-parens": {
 		"syntax": "( <style-query> ) | ( <style-feature> ) | <general-enclosed>"
@@ -1511,8 +1541,8 @@
 	"time-percentage": {
 		"syntax": "[ <time> | <percentage> ]"
 	},
-	"timeline-name": {
-		"syntax": "<custom-ident> | <string>"
+	"timeline-range-name": {
+		"syntax": "cover | contain | entry | exit | entry-crossing | exit-crossing"
 	},
 	"toggle()": {
 		"syntax": "toggle( <whole-value># )"
@@ -1597,9 +1627,6 @@
 	},
 	"wcag2": {
 		"syntax": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )"
-	},
-	"-non-standard-width": {
-		"syntax": "fill-available | min-intrinsic | intrinsic | -moz-available | -moz-fit-content | -moz-min-content | -moz-max-content | -webkit-min-content | -webkit-max-content"
 	},
 	"wq-name": {
 		"syntax": "<ns-prefix>? <ident-token>"
