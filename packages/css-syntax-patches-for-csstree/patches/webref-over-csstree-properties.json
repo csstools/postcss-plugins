@@ -121,10 +121,48 @@
 		"syntax-before": "auto | <ratio>",
 		"syntax-after": "auto || <ratio>",
 		"comment": "",
-		"merged": false,
+		"merged": "auto || <ratio>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "1"
+				},
+				{
+					"value": "1.1"
+				},
+				{
+					"value": "11 / 10"
+				},
+				{
+					"value": "calc(1.1)"
+				},
+				{
+					"value": "calc(11) / calc(10)"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "auto 1 / 2"
+				},
+				{
+					"value": "1 / 2 auto"
+				}
+			],
+			"failing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "auto auto"
+				},
+				{
+					"value": "auto / auto"
+				},
+				{
+					"value": "1 / 2 / auto"
+				}
+			]
 		}
 	},
 	"backdrop-filter": {
@@ -132,7 +170,7 @@
 		"syntax-before": "none | <filter-function-list>",
 		"syntax-after": "none | <filter-value-list>",
 		"comment": "",
-		"merged": false,
+		"merged": "none | <filter-value-list>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -143,7 +181,7 @@
 		"syntax-before": "[ <bg-layer> , ]* <final-bg-layer>",
 		"syntax-after": "<bg-layer>#? , <final-bg-layer>",
 		"comment": "",
-		"merged": false,
+		"merged": "<bg-layer>#? , <final-bg-layer>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -154,10 +192,21 @@
 		"syntax-before": "<blend-mode>#",
 		"syntax-after": "<mix-blend-mode>#",
 		"comment": "",
-		"merged": false,
+		"merged": "<'mix-blend-mode'>#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "multiply"
+				},
+				{
+					"value": "multiply, plus-lighter"
+				}
+			],
+			"failing": [
+				{
+					"value": "multiply plus-lighter"
+				}
+			]
 		}
 	},
 	"background-origin": {
@@ -2613,11 +2662,22 @@
 		"type": "modified",
 		"syntax-before": "<blend-mode> | plus-lighter",
 		"syntax-after": "<blend-mode> | plus-darker | plus-lighter",
-		"comment": "",
+		"comment": "<blend-mode> | plus-lighter",
 		"merged": false,
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "multiply"
+				},
+				{
+					"value": "plus-lighter"
+				}
+			],
+			"failing": [
+				{
+					"value": "plus-darker"
+				}
+			]
 		}
 	},
 	"nav-down": {

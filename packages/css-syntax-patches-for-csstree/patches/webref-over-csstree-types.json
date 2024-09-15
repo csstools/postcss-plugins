@@ -992,7 +992,7 @@
 		"syntax-before": "",
 		"syntax-after": "[ <filter-function> | <url> ]+",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <filter-function> | <url> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
