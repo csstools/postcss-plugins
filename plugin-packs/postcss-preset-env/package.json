@@ -1,7 +1,7 @@
 {
 	"name": "postcss-preset-env",
 	"description": "Convert modern CSS into something browsers understand",
-	"version": "10.0.2",
+	"version": "10.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -87,7 +87,7 @@
 		"css-blank-pseudo": "^7.0.0",
 		"css-has-pseudo": "^7.0.0",
 		"css-prefers-color-scheme": "^10.0.0",
-		"cssdb": "^8.1.0",
+		"cssdb": "^8.1.1",
 		"postcss-attribute-case-insensitive": "^7.0.0",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^7.0.2",
@@ -106,7 +106,7 @@
 		"postcss-lab-function": "^7.0.2",
 		"postcss-logical": "^8.0.0",
 		"postcss-nesting": "^13.0.0",
-		"postcss-opacity-percentage": "^2.0.0",
+		"postcss-opacity-percentage": "^3.0.0",
 		"postcss-overflow-shorthand": "^6.0.0",
 		"postcss-page-break": "^3.0.4",
 		"postcss-place": "^10.0.0",
@@ -120,7 +120,7 @@
 	"devDependencies": {
 		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.14.2"
+		"@webref/css": "^6.15.1"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",

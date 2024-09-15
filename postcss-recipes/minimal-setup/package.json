@@ -5,13 +5,13 @@
 	"description": "",
 	"license": "MIT-0",
 	"engines": {
-		"node": "^14 || ^16 || >=18"
+		"node": ">=18"
 	},
 	"devDependencies": {
-		"@csstools/postcss-bundler": "^1.0.2",
-		"@csstools/postcss-minify": "^1.0.0",
-		"postcss-cli": "^10.1.0",
-		"postcss-preset-env": "^9.3.0"
+		"@csstools/postcss-bundler": "^2.0.1",
+		"@csstools/postcss-minify": "^2.0.1",
+		"postcss-cli": "^11.0.0",
+		"postcss-preset-env": "^10.0.3"
 	},
 	"scripts": {
 		"build": "NODE_ENV=production postcss ./src/css/style.css -o ./dist/css/style.css",

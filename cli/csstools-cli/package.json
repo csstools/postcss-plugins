@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/csstools-cli",
 	"description": "Transform CSS with any plugin from csstools/postcss-plugins",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -66,7 +66,7 @@
 		"css-blank-pseudo": "^7.0.0",
 		"css-has-pseudo": "^7.0.0",
 		"css-prefers-color-scheme": "^10.0.0",
-		"postcss": "^8.4.38",
+		"postcss": "^8.4.45",
 		"postcss-attribute-case-insensitive": "^7.0.0",
 		"postcss-color-functional-notation": "^7.0.2",
 		"postcss-color-hex-alpha": "^10.0.0",
@@ -85,7 +85,7 @@
 		"postcss-nesting": "^13.0.0",
 		"postcss-overflow-shorthand": "^6.0.0",
 		"postcss-place": "^10.0.0",
-		"postcss-preset-env": "^10.0.2",
+		"postcss-preset-env": "^10.0.3",
 		"postcss-pseudo-class-any-link": "^10.0.0",
 		"postcss-selector-not": "^8.0.0"
 	},

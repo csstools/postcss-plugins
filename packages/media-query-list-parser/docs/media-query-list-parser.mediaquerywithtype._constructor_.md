@@ -9,7 +9,7 @@ Constructs a new instance of the `MediaQueryWithType` class
 **Signature:**
 
 ```typescript
-constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken> | undefined, media?: MediaCondition | undefined);
+constructor(modifier: Array<CSSToken>, mediaType: Array<CSSToken>, and?: Array<CSSToken>, media?: MediaCondition);
 ```
 
 ## Parameters
@@ -65,7 +65,7 @@ and
 
 </td><td>
 
-Array&lt;CSSToken&gt; \| undefined
+Array&lt;CSSToken&gt;
 
 
 </td><td>
@@ -81,7 +81,7 @@ media
 
 </td><td>
 
-[MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined
+[MediaCondition](./media-query-list-parser.mediacondition.md)
 
 
 </td><td>

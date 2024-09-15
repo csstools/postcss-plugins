@@ -18,37 +18,18 @@
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/sites/postcss-preset-env#readme",
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"scripts": {
-		"start": "npm-run-all clean --parallel css js browsersync eleventy",
+		"start": "npm-run-all clean --parallel css js eleventy",
 		"css": "postcss src/static/css/styles.css -o dist/static/css/styles.css --watch",
 		"js": "rollup -c rollup.config.mjs -w",
-		"eleventy": "eleventy --watch",
+		"eleventy": "eleventy --serve",
 		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
-		"browsersync": "browser-sync start --server 'dist' --files 'dist' --port 8080 --no-notify",
 		"build": "npm run clean && npm run build:css && npm run build:js && npm run build:eleventy",
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:css": "postcss src/static/css/styles.css -o dist/static/css/styles.css --env production",
 		"build:eleventy": "NODE_ENV=production eleventy"
 	},
 	"engines": {
-		"node": "^14 || ^16 || >=18"
-	},
-	"stylelint": {
-		"extends": "stylelint-config-standard",
-		"rules": {
-			"indentation": "tab",
-			"property-no-unknown": [
-				true,
-				{
-					"ignoreProperties": [
-						"font-smoothing"
-					]
-				}
-			],
-			"selector-class-pattern": null,
-			"no-descending-specificity": null,
-			"value-keyword-case": null,
-			"number-leading-zero": "never"
-		}
+		"node": ">=18"
 	},
 	"keywords": [
 		"postcss",
@@ -75,7 +56,7 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@babel/core": "^7.24.9",
 		"@babel/preset-env": "^7.25.4",
-		"@codemirror/lang-css": "^6.2.1",
+		"@codemirror/lang-css": "^6.3.0",
 		"@codemirror/lang-javascript": "^6.2.2",
 		"@codemirror/state": "^6.4.0",
 		"@codemirror/theme-one-dark": "^6.1.0",
@@ -91,16 +72,15 @@
 		"@rollup/plugin-json": "^6.1.0",
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.4",
-		"browser-sync": "^3.0.2",
 		"codemirror": "^6.0.1",
 		"cssdb": "^8.0.0",
 		"luxon": "^3.4.4",
 		"markdown-it": "^14.1.0",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.4.41",
+		"postcss": "^8.4.45",
 		"postcss-cli": "^11.0.0",
 		"postcss-preset-env": "^10.0.0",
-		"rollup": "^4.19.1",
+		"rollup": "^4.21.2",
 		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-livereload": "^2.0.5"
 	},
