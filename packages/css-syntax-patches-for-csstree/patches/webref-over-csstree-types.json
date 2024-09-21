@@ -4,10 +4,24 @@
 		"syntax-before": "<angle> | <percentage>",
 		"syntax-after": "[ <angle> | <percentage> ]",
 		"comment": "",
-		"merged": false,
+		"merged": "[ <angle> | <percentage> ]",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(red 10deg, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 10%, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(red 10px, blue)"
+				}
+			]
 		}
 	},
 	"angular-color-stop": {
@@ -15,10 +29,28 @@
 		"syntax-before": "<color> && <color-stop-angle>?",
 		"syntax-after": "<color> <color-stop-angle>?",
 		"comment": "",
-		"merged": false,
+		"merged": "<color> <color-stop-angle>?",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(red, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 0deg, blue)"
+				}
+			],
+			"failing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(0deg red, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(0deg, blue)"
+				}
+			]
 		}
 	},
 	"angular-color-stop-list": {
@@ -26,9 +58,46 @@
 		"syntax-before": "[ <angular-color-stop> [, <angular-color-hint> ]? ]# , <angular-color-stop>",
 		"syntax-after": "<angular-color-stop> , [ <angular-color-hint>? , <angular-color-stop> ]#?",
 		"comment": "",
-		"merged": false,
+		"merged": "<angular-color-stop> , [ <angular-color-hint>? , <angular-color-stop> ]#?",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(red)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 0deg)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 0deg, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red, blue 180deg)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 0deg, blue 180deg)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 0deg, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red, orange, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red, 10deg, blue)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -634,9 +703,22 @@
 		"syntax-before": "",
 		"syntax-after": "[ [ [ from <angle> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>",
 		"comment": "",
-		"merged": false,
+		"merged": "[ [ [ from <angle> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(red, orange)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(in oklch from 0turn, red, orange)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(from 0turn in oklch, red, orange)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -645,10 +727,32 @@
 		"syntax-before": "conic-gradient( [ from <angle> ]? [ at <position> ]? , <angular-color-stop-list> )",
 		"syntax-after": "conic-gradient( [ <conic-gradient-syntax> ] )",
 		"comment": "",
-		"merged": false,
+		"merged": "conic-gradient( [ <conic-gradient-syntax> ] )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(red, orange, yellow, green, blue)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #3f87a6, 350deg, #ebf8e1)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red 6deg, orange 6deg 18deg, yellow 18deg 45deg, green 45deg 110deg, blue 110deg 200deg, purple 200deg)"
+				}
+			],
+			"failing": [
+				{
+					"property": "background",
+					"value": "conic-gradient(at 50% 30% from 0.25turn, #f69d3c, 10deg, #3f87a6, 350deg, #ebf8e1)"
+				},
+				{
+					"property": "background",
+					"value": "conic-gradient(red, blue, from 0.25turn at 50% 30%)"
+				}
+			]
 		}
 	},
 	"container-condition": {

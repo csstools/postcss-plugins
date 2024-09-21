@@ -45,9 +45,9 @@ function contains_unsupported_function(cssTreeNode) {
 	);
 }
 
-const css_files = await get_files('./tests');
+const css_files = await get_files('tests');
 
-const patches = JSON.parse(await fs.readFile('./dist/index.json', 'utf-8')).next;
+const patches = JSON.parse(await fs.readFile(path.join('dist', 'index.json'), 'utf-8')).next;
 
 const forkedLexer = fork({
 	properties: patches.properties,
@@ -84,9 +84,9 @@ for (const css_file of css_files) {
 
 			if (
 				(
-					css_file.includes('/bootstrap.') ||
-					css_file.includes('/foundation.') ||
-					css_file.includes('/pure.')
+					css_file.includes('bootstrap.') ||
+					css_file.includes('foundation.') ||
+					css_file.includes('pure.')
 				) &&
 				/^-(?:o|moz|ms|webkit|khtml)-/i.test(decl.prop)
 			) {
@@ -97,9 +97,9 @@ for (const css_file of css_files) {
 
 			if (
 				(
-					css_file.includes('/bootstrap.') ||
-					css_file.includes('/foundation.') ||
-					css_file.includes('/pure.')
+					css_file.includes('bootstrap.') ||
+					css_file.includes('foundation.') ||
+					css_file.includes('pure.')
 				) &&
 				(
 					/-(?:o|moz|ms|webkit|khtml)-/i.test(decl.value) ||

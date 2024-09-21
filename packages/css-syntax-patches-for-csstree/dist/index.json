@@ -18,12 +18,17 @@
 			"position-anchor": "auto | <anchor-element>"
 		},
 		"types": {
+			"angle-percentage": "[ <angle> | <percentage> ]",
+			"angular-color-stop": "<color> <color-stop-angle>?",
+			"angular-color-stop-list": "<angular-color-stop> , [ <angular-color-hint>? , <angular-color-stop> ]#?",
 			"axis": "block | inline | x | y",
 			"basic-shape": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( [ <radial-size>{2} ]? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 			"bottom": "<length-percentage> | auto",
 			"color()": "color( [ from <color> ]? <colorspace-params> [ / [ <alpha-value> | none ] ]? )",
 			"colorspace-params": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
 			"compat-special": "textfield | menulist-button",
+			"conic-gradient-syntax": "[ [ [ from <angle> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>",
+			"conic-gradient()": "conic-gradient( [ <conic-gradient-syntax> ] )",
 			"coord-box": "<paint-box> | view-box",
 			"custom-params": "<dashed-ident> [ <number> | <percentage> | none ]+",
 			"filter-value-list": "[ <filter-function> | <url> ]+",
