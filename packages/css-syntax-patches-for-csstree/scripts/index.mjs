@@ -181,7 +181,7 @@ await write_final_file({
 	}
 
 	if (has_missing_patches) {
-		console.warn('Not all patches have been merged');
+		console.warn('Not all patches have been syntax-m');
 	}
 
 	if (has_outdated_patches) {
@@ -189,7 +189,7 @@ await write_final_file({
 	}
 
 	if (has_unmerged_patches) {
-		console.warn('Not all patches have been merged');
+		console.warn('Not all patches have been syntax-m');
 	}
 
 	if (has_missing_patch_tests) {

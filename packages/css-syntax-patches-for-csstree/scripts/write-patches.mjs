@@ -21,8 +21,8 @@ export async function write_patches(sets, patch_sets) {
 
 				if (
 					definition.type === patch_definition.type &&
-					definition['syntax-before'] === patch_definition['syntax-before'] &&
-					definition['syntax-after'] === patch_definition['syntax-after']
+					definition['syntax-b'] === patch_definition['syntax-b'] &&
+					definition['syntax-a'] === patch_definition['syntax-a']
 				) {
 					merged_sets[set_name][kind_name][name] = {
 						...patch_definition,
@@ -35,7 +35,7 @@ export async function write_patches(sets, patch_sets) {
 					...definition,
 				};
 
-				merged_sets[set_name][kind_name][name]['merged'] = false;
+				merged_sets[set_name][kind_name][name]['syntax-m'] = false;
 				merged_sets[set_name][kind_name][name]['tests'] = {
 					'passing': [],
 					'failing': [],
@@ -69,7 +69,7 @@ export async function write_patches(sets, patch_sets) {
 					...definition,
 				};
 
-				merged_sets[set_name][kind_name][name]['merged'] = false;
+				merged_sets[set_name][kind_name][name]['syntax-m'] = false;
 				merged_sets[set_name][kind_name][name]['tests'] = {
 					'passing': [],
 					'failing': [],

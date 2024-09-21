@@ -20,22 +20,22 @@ function is_ignored_type(type, spec_name) {
 const CUSTOM_OVERRIDES = {
 	'css-gcpm': {
 		'content-list': {
-			'syntax-before': '[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+',
-			'syntax-after': '[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+',
+			'syntax-b': '[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+',
+			'syntax-a': '[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+',
 		},
 	},
 	'css-color-6': {
 		// TODO : remove this override when `css-color-6` is updated
 		'contrast-color()': {
-			'syntax-before': 'contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>, <color># ] ] )',
-			'syntax-after': 'contrast-color( <color> max? )',
+			'syntax-b': 'contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>, <color># ] ] )',
+			'syntax-a': 'contrast-color( <color> max? )',
 		},
 	},
 	'motion': {
 		// See : https://github.com/w3c/fxtf-drafts/pull/573
 		'ray()': {
-			'syntax-before': 'ray( <angle> && <ray-size>? && contain? && [at <position>]? )',
-			'syntax-after': 'ray( [ <angle> && <ray-size>? && contain? && [at <position>]? ] )',
+			'syntax-b': 'ray( <angle> && <ray-size>? && contain? && [at <position>]? )',
+			'syntax-a': 'ray( [ <angle> && <ray-size>? && contain? && [at <position>]? ] )',
 		},
 	},
 };
@@ -46,11 +46,11 @@ function maybe_override(spec_name, name, definition) {
 		return definition;
 	}
 
-	if (override['syntax-before'] !== definition) {
+	if (override['syntax-b'] !== definition) {
 		throw new Error(`Override is obsolete: '${spec_name}' - '${name}'`);
 	}
 
-	return override['syntax-after'];
+	return override['syntax-a'];
 }
 
 const SPECS = [

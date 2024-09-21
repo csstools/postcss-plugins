@@ -6,8 +6,8 @@ export function diff_sets(a, b) {
 			// Note: Currently impossible for items to be removed because we fork the existing syntax and add to it.
 			diff[name] = {
 				type: 'deleted',
-				'syntax-before': definition.syntax,
-				'syntax-after': '',
+				'syntax-b': definition.syntax,
+				'syntax-a': '',
 				'comment': '',
 			};
 
@@ -19,8 +19,8 @@ export function diff_sets(a, b) {
 		if (!a[name]) {
 			diff[name] = {
 				type: 'added',
-				'syntax-before': '',
-				'syntax-after': definition.syntax,
+				'syntax-b': '',
+				'syntax-a': definition.syntax,
 				'comment': '',
 			};
 
@@ -30,8 +30,8 @@ export function diff_sets(a, b) {
 		if (a[name].syntax !== b[name].syntax) {
 			diff[name] = {
 				type: 'modified',
-				'syntax-before': a[name].syntax,
-				'syntax-after': b[name].syntax,
+				'syntax-b': a[name].syntax,
+				'syntax-a': b[name].syntax,
 				'comment': '',
 			};
 

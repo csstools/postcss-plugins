@@ -18,8 +18,8 @@ export function apply_patches(patches, onto) {
 		}
 
 		if (
-			patch['syntax-before'] !== definition['syntax-before'] ||
-			patch['syntax-after'] !== definition['syntax-after']
+			patch['syntax-b'] !== definition['syntax-b'] ||
+			patch['syntax-a'] !== definition['syntax-a']
 		) {
 			console.log(`Outdated patch for property '${name}'`);
 			has_outdated_patches = true;
@@ -32,15 +32,15 @@ export function apply_patches(patches, onto) {
 			continue;
 		}
 
-		if (!patch['merged']) {
-			console.log(`Unmerged patch for property '${name}'`);
+		if (!patch['syntax-m']) {
+			console.log(`Unsyntax-m patch for property '${name}'`);
 			has_unmerged_patches = true;
 			flaws++;
 
 			continue;
 		}
 
-		properties[name] = patch['merged'];
+		properties[name] = patch['syntax-m'];
 	}
 
 	let types = Object(null);
@@ -56,8 +56,8 @@ export function apply_patches(patches, onto) {
 		}
 
 		if (
-			patch['syntax-before'] !== definition['syntax-before'] ||
-			patch['syntax-after'] !== definition['syntax-after']
+			patch['syntax-b'] !== definition['syntax-b'] ||
+			patch['syntax-a'] !== definition['syntax-a']
 		) {
 			console.log(`Outdated patch for type '${name}'`);
 			has_outdated_patches = true;
@@ -70,20 +70,20 @@ export function apply_patches(patches, onto) {
 			continue;
 		}
 
-		if (!patch['merged']) {
-			console.log(`Unmerged patch for type '${name}'`);
+		if (!patch['syntax-m']) {
+			console.log(`Unsyntax-m patch for type '${name}'`);
 			has_unmerged_patches = true;
 			flaws++;
 
 			continue;
 		}
 
-		if (patch['merged'] === patch['syntax-before']) {
+		if (patch['syntax-m'] === patch['syntax-b']) {
 			// CSSTree is most correct
 			continue;
 		}
 
-		types[name] = patch['merged'];
+		types[name] = patch['syntax-m'];
 	}
 
 	// Manual patches to smooth over compat between csstree and webref/css

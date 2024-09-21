@@ -1,2342 +1,2342 @@
 {
 	"align-items": {
 		"type": "modified",
-		"syntax-before": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]",
-		"syntax-after": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center",
+		"syntax-b": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]",
+		"syntax-a": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center",
 		"comment": ""
 	},
 	"align-self": {
 		"type": "modified",
-		"syntax-before": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
-		"syntax-after": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
+		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
+		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
 		"comment": ""
 	},
 	"alignment-baseline": {
 		"type": "modified",
-		"syntax-before": "auto | baseline | before-edge | text-before-edge | middle | central | after-edge | text-after-edge | ideographic | alphabetic | hanging | mathematical",
-		"syntax-after": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top",
+		"syntax-b": "auto | baseline | before-edge | text-before-edge | middle | central | after-edge | text-after-edge | ideographic | alphabetic | hanging | mathematical",
+		"syntax-a": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top",
 		"comment": ""
 	},
 	"animation-duration": {
 		"type": "modified",
-		"syntax-before": "<time>#",
-		"syntax-after": "[ auto | <time [0s,∞]> ]#",
+		"syntax-b": "<time>#",
+		"syntax-a": "[ auto | <time [0s,∞]> ]#",
 		"comment": ""
 	},
 	"appearance": {
 		"type": "modified",
-		"syntax-before": "none | auto | textfield | menulist-button | <compat-auto>",
-		"syntax-after": "none | auto | <compat-auto> | <compat-special>",
+		"syntax-b": "none | auto | textfield | menulist-button | <compat-auto>",
+		"syntax-a": "none | auto | <compat-auto> | <compat-special>",
 		"comment": ""
 	},
 	"aspect-ratio": {
 		"type": "modified",
-		"syntax-before": "auto | <ratio>",
-		"syntax-after": "auto || <ratio>",
+		"syntax-b": "auto | <ratio>",
+		"syntax-a": "auto || <ratio>",
 		"comment": ""
 	},
 	"backdrop-filter": {
 		"type": "modified",
-		"syntax-before": "none | <filter-function-list>",
-		"syntax-after": "none | <filter-value-list>",
+		"syntax-b": "none | <filter-function-list>",
+		"syntax-a": "none | <filter-value-list>",
 		"comment": ""
 	},
 	"background": {
 		"type": "modified",
-		"syntax-before": "[ <bg-layer> , ]* <final-bg-layer>",
-		"syntax-after": "<bg-layer>#? , <final-bg-layer>",
+		"syntax-b": "[ <bg-layer> , ]* <final-bg-layer>",
+		"syntax-a": "<bg-layer>#? , <final-bg-layer>",
 		"comment": ""
 	},
 	"background-blend-mode": {
 		"type": "modified",
-		"syntax-before": "<blend-mode>#",
-		"syntax-after": "<mix-blend-mode>#",
+		"syntax-b": "<blend-mode>#",
+		"syntax-a": "<mix-blend-mode>#",
 		"comment": ""
 	},
 	"background-origin": {
 		"type": "modified",
-		"syntax-before": "<box>#",
-		"syntax-after": "<visual-box>#",
+		"syntax-b": "<box>#",
+		"syntax-a": "<visual-box>#",
 		"comment": ""
 	},
 	"background-position-block": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
+		"syntax-b": "",
+		"syntax-a": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
 		"comment": ""
 	},
 	"background-position-inline": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
+		"syntax-b": "",
+		"syntax-a": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
 		"comment": ""
 	},
 	"background-repeat-block": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<repetition>#",
+		"syntax-b": "",
+		"syntax-a": "<repetition>#",
 		"comment": ""
 	},
 	"background-repeat-inline": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<repetition>#",
+		"syntax-b": "",
+		"syntax-a": "<repetition>#",
 		"comment": ""
 	},
 	"background-repeat-x": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<repetition>#",
+		"syntax-b": "",
+		"syntax-a": "<repetition>#",
 		"comment": ""
 	},
 	"background-repeat-y": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<repetition>#",
+		"syntax-b": "",
+		"syntax-a": "<repetition>#",
 		"comment": ""
 	},
 	"background-tbd": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<bg-layer>#",
+		"syntax-b": "",
+		"syntax-a": "<bg-layer>#",
 		"comment": ""
 	},
 	"baseline-shift": {
 		"type": "modified",
-		"syntax-before": "baseline | sub | super | <svg-length>",
-		"syntax-after": "<length-percentage> | sub | super | top | center | bottom",
+		"syntax-b": "baseline | sub | super | <svg-length>",
+		"syntax-a": "<length-percentage> | sub | super | top | center | bottom",
 		"comment": ""
 	},
 	"baseline-source": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | first | last",
+		"syntax-b": "",
+		"syntax-a": "auto | first | last",
 		"comment": ""
 	},
 	"block-ellipsis": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | auto | <string>",
+		"syntax-b": "",
+		"syntax-a": "none | auto | <string>",
 		"comment": ""
 	},
 	"block-size": {
 		"type": "modified",
-		"syntax-before": "<'width'>",
-		"syntax-after": "<'width'> | stretch | fit-content | contain",
+		"syntax-b": "<'width'>",
+		"syntax-a": "<'width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"block-step": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'block-step-size'> || <'block-step-insert'> || <'block-step-align'> || <'block-step-round'>",
+		"syntax-b": "",
+		"syntax-a": "<'block-step-size'> || <'block-step-insert'> || <'block-step-align'> || <'block-step-round'>",
 		"comment": ""
 	},
 	"block-step-align": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | center | start | end",
+		"syntax-b": "",
+		"syntax-a": "auto | center | start | end",
 		"comment": ""
 	},
 	"block-step-insert": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "margin | padding",
+		"syntax-b": "",
+		"syntax-a": "margin | padding",
 		"comment": ""
 	},
 	"block-step-round": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "up | down | nearest",
+		"syntax-b": "",
+		"syntax-a": "up | down | nearest",
 		"comment": ""
 	},
 	"block-step-size": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "none | <length [0,∞]>",
 		"comment": ""
 	},
 	"bookmark-label": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<content-list>",
+		"syntax-b": "",
+		"syntax-a": "<content-list>",
 		"comment": ""
 	},
 	"bookmark-level": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <integer [1,∞]>",
+		"syntax-b": "",
+		"syntax-a": "none | <integer [1,∞]>",
 		"comment": ""
 	},
 	"bookmark-state": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "open | closed",
+		"syntax-b": "",
+		"syntax-a": "open | closed",
 		"comment": ""
 	},
 	"border-block": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-after": "<'border-block-start'>",
+		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
+		"syntax-a": "<'border-block-start'>",
 		"comment": ""
 	},
 	"border-block-end": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-after": "<line-width> || <line-style> || <color>",
+		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
+		"syntax-a": "<line-width> || <line-style> || <color>",
 		"comment": ""
 	},
 	"border-block-end-color": {
 		"type": "modified",
-		"syntax-before": "<'border-top-color'>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<'border-top-color'>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-block-end-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-block-end-style": {
 		"type": "modified",
-		"syntax-before": "<'border-top-style'>",
-		"syntax-after": "<line-style>",
+		"syntax-b": "<'border-top-style'>",
+		"syntax-a": "<line-style>",
 		"comment": ""
 	},
 	"border-block-end-width": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'>",
-		"syntax-after": "<line-width>",
+		"syntax-b": "<'border-top-width'>",
+		"syntax-a": "<line-width>",
 		"comment": ""
 	},
 	"border-block-start": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-after": "<line-width> || <line-style> || <color>",
+		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
+		"syntax-a": "<line-width> || <line-style> || <color>",
 		"comment": ""
 	},
 	"border-block-start-color": {
 		"type": "modified",
-		"syntax-before": "<'border-top-color'>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<'border-top-color'>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-block-start-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-block-start-style": {
 		"type": "modified",
-		"syntax-before": "<'border-top-style'>",
-		"syntax-after": "<line-style>",
+		"syntax-b": "<'border-top-style'>",
+		"syntax-a": "<line-style>",
 		"comment": ""
 	},
 	"border-block-start-width": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'>",
-		"syntax-after": "<line-width>",
+		"syntax-b": "<'border-top-width'>",
+		"syntax-a": "<line-width>",
 		"comment": ""
 	},
 	"border-block-style": {
 		"type": "modified",
-		"syntax-before": "<'border-top-style'>",
-		"syntax-after": "<'border-top-style'>{1,2}",
+		"syntax-b": "<'border-top-style'>",
+		"syntax-a": "<'border-top-style'>{1,2}",
 		"comment": ""
 	},
 	"border-block-width": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'>",
-		"syntax-after": "<'border-top-width'>{1,2}",
+		"syntax-b": "<'border-top-width'>",
+		"syntax-a": "<'border-top-width'>{1,2}",
 		"comment": ""
 	},
 	"border-bottom-color": {
 		"type": "modified",
-		"syntax-before": "<'border-top-color'>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<'border-top-color'>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-bottom-left-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-bottom-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-bottom-right-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-boundary": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | parent | display",
+		"syntax-b": "",
+		"syntax-a": "none | parent | display",
 		"comment": ""
 	},
 	"border-clip": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-b": "",
+		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-clip-bottom": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-b": "",
+		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-clip-left": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-b": "",
+		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-clip-right": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-b": "",
+		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-clip-top": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-b": "",
+		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-collapse": {
 		"type": "modified",
-		"syntax-before": "collapse | separate",
-		"syntax-after": "separate | collapse",
+		"syntax-b": "collapse | separate",
+		"syntax-a": "separate | collapse",
 		"comment": ""
 	},
 	"border-color": {
 		"type": "modified",
-		"syntax-before": "<color>{1,4}",
-		"syntax-after": "[ <color> | <image-1D> ]{1,4}",
+		"syntax-b": "<color>{1,4}",
+		"syntax-a": "[ <color> | <image-1D> ]{1,4}",
 		"comment": ""
 	},
 	"border-end-end-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-end-start-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-image-outset": {
 		"type": "modified",
-		"syntax-before": "[ <length> | <number> ]{1,4}",
-		"syntax-after": "[ <length [0,∞]> | <number [0,∞]> ]{1,4}",
+		"syntax-b": "[ <length> | <number> ]{1,4}",
+		"syntax-a": "[ <length [0,∞]> | <number [0,∞]> ]{1,4}",
 		"comment": ""
 	},
 	"border-image-slice": {
 		"type": "modified",
-		"syntax-before": "<number-percentage>{1,4} && fill?",
-		"syntax-after": "[ <number [0,∞]> | <percentage [0,∞]> ]{1,4} && fill?",
+		"syntax-b": "<number-percentage>{1,4} && fill?",
+		"syntax-a": "[ <number [0,∞]> | <percentage [0,∞]> ]{1,4} && fill?",
 		"comment": ""
 	},
 	"border-image-width": {
 		"type": "modified",
-		"syntax-before": "[ <length-percentage> | <number> | auto ]{1,4}",
-		"syntax-after": "[ <length-percentage [0,∞]> | <number [0,∞]> | auto ]{1,4}",
+		"syntax-b": "[ <length-percentage> | <number> | auto ]{1,4}",
+		"syntax-a": "[ <length-percentage [0,∞]> | <number [0,∞]> | auto ]{1,4}",
 		"comment": ""
 	},
 	"border-inline": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-after": "<'border-block-start'>",
+		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
+		"syntax-a": "<'border-block-start'>",
 		"comment": ""
 	},
 	"border-inline-end": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-after": "<line-width> || <line-style> || <color>",
+		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
+		"syntax-a": "<line-width> || <line-style> || <color>",
 		"comment": ""
 	},
 	"border-inline-end-color": {
 		"type": "modified",
-		"syntax-before": "<'border-top-color'>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<'border-top-color'>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-inline-end-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-inline-end-style": {
 		"type": "modified",
-		"syntax-before": "<'border-top-style'>",
-		"syntax-after": "<line-style>",
+		"syntax-b": "<'border-top-style'>",
+		"syntax-a": "<line-style>",
 		"comment": ""
 	},
 	"border-inline-end-width": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'>",
-		"syntax-after": "<line-width>",
+		"syntax-b": "<'border-top-width'>",
+		"syntax-a": "<line-width>",
 		"comment": ""
 	},
 	"border-inline-start": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-after": "<line-width> || <line-style> || <color>",
+		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
+		"syntax-a": "<line-width> || <line-style> || <color>",
 		"comment": ""
 	},
 	"border-inline-start-color": {
 		"type": "modified",
-		"syntax-before": "<'border-top-color'>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<'border-top-color'>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-inline-start-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-inline-start-style": {
 		"type": "modified",
-		"syntax-before": "<'border-top-style'>",
-		"syntax-after": "<line-style>",
+		"syntax-b": "<'border-top-style'>",
+		"syntax-a": "<line-style>",
 		"comment": ""
 	},
 	"border-inline-start-width": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'>",
-		"syntax-after": "<line-width>",
+		"syntax-b": "<'border-top-width'>",
+		"syntax-a": "<line-width>",
 		"comment": ""
 	},
 	"border-inline-style": {
 		"type": "modified",
-		"syntax-before": "<'border-top-style'>",
-		"syntax-after": "<'border-top-style'>{1,2}",
+		"syntax-b": "<'border-top-style'>",
+		"syntax-a": "<'border-top-style'>{1,2}",
 		"comment": ""
 	},
 	"border-inline-width": {
 		"type": "modified",
-		"syntax-before": "<'border-top-width'>",
-		"syntax-after": "<'border-top-width'>{1,2}",
+		"syntax-b": "<'border-top-width'>",
+		"syntax-a": "<'border-top-width'>{1,2}",
 		"comment": ""
 	},
 	"border-left-color": {
 		"type": "modified",
-		"syntax-before": "<color>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<color>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-left-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-limit": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "all | [ sides | corners ] <length-percentage [0,∞]>? | [ top | right | bottom | left ] <length-percentage [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "all | [ sides | corners ] <length-percentage [0,∞]>? | [ top | right | bottom | left ] <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"border-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,4} [ / <length-percentage>{1,4} ]?",
-		"syntax-after": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
+		"syntax-b": "<length-percentage>{1,4} [ / <length-percentage>{1,4} ]?",
+		"syntax-a": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
 		"comment": ""
 	},
 	"border-right-color": {
 		"type": "modified",
-		"syntax-before": "<color>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<color>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-right-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-spacing": {
 		"type": "modified",
-		"syntax-before": "<length> <length>?",
-		"syntax-after": "<length>{1,2}",
+		"syntax-b": "<length> <length>?",
+		"syntax-a": "<length>{1,2}",
 		"comment": ""
 	},
 	"border-start-end-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-start-start-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-top-color": {
 		"type": "modified",
-		"syntax-before": "<color>",
-		"syntax-after": "<color> | <image-1D>",
+		"syntax-b": "<color>",
+		"syntax-a": "<color> | <image-1D>",
 		"comment": ""
 	},
 	"border-top-left-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"border-top-radius": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?",
 		"comment": ""
 	},
 	"border-top-right-radius": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>{1,2}",
-		"syntax-after": "<length-percentage [0,∞]>{1,2}",
+		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-a": "<length-percentage [0,∞]>{1,2}",
 		"comment": ""
 	},
 	"bottom": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"box-shadow": {
 		"type": "modified",
-		"syntax-before": "none | <shadow>#",
-		"syntax-after": "<spread-shadow>#",
+		"syntax-b": "none | <shadow>#",
+		"syntax-a": "<spread-shadow>#",
 		"comment": ""
 	},
 	"box-shadow-blur": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length [0,∞]>#",
+		"syntax-b": "",
+		"syntax-a": "<length [0,∞]>#",
 		"comment": ""
 	},
 	"box-shadow-color": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<color>#",
+		"syntax-b": "",
+		"syntax-a": "<color>#",
 		"comment": ""
 	},
 	"box-shadow-offset": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ none | <length>{2} ]#",
+		"syntax-b": "",
+		"syntax-a": "[ none | <length>{2} ]#",
 		"comment": ""
 	},
 	"box-shadow-position": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ outset | inset ]#",
+		"syntax-b": "",
+		"syntax-a": "[ outset | inset ]#",
 		"comment": ""
 	},
 	"box-shadow-spread": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length>#",
+		"syntax-b": "",
+		"syntax-a": "<length>#",
 		"comment": ""
 	},
 	"box-snap": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | block-start | block-end | center | baseline | last-baseline",
+		"syntax-b": "",
+		"syntax-a": "none | block-start | block-end | center | baseline | last-baseline",
 		"comment": ""
 	},
 	"caption-side": {
 		"type": "modified",
-		"syntax-before": "top | bottom | block-start | block-end | inline-start | inline-end",
-		"syntax-after": "top | bottom",
+		"syntax-b": "top | bottom | block-start | block-end | inline-start | inline-end",
+		"syntax-a": "top | bottom",
 		"comment": ""
 	},
 	"caret": {
 		"type": "modified",
-		"syntax-before": "<'caret-color'> || <'caret-shape'>",
-		"syntax-after": "<'caret-color'> || <'caret-animation'> || <'caret-shape'>",
+		"syntax-b": "<'caret-color'> || <'caret-shape'>",
+		"syntax-a": "<'caret-color'> || <'caret-animation'> || <'caret-shape'>",
 		"comment": ""
 	},
 	"caret-animation": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | manual",
+		"syntax-b": "",
+		"syntax-a": "auto | manual",
 		"comment": ""
 	},
 	"clear": {
 		"type": "modified",
-		"syntax-before": "none | left | right | both | inline-start | inline-end",
-		"syntax-after": "inline-start | inline-end | block-start | block-end | left | right | top | bottom | both-inline | both-block | both | none",
+		"syntax-b": "none | left | right | both | inline-start | inline-end",
+		"syntax-a": "inline-start | inline-end | block-start | block-end | left | right | top | bottom | both-inline | both-block | both | none",
 		"comment": ""
 	},
 	"clip": {
 		"type": "modified",
-		"syntax-before": "<shape> | auto",
-		"syntax-after": "<rect()> | auto",
+		"syntax-b": "<shape> | auto",
+		"syntax-a": "<rect()> | auto",
 		"comment": ""
 	},
 	"color-adjust": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'print-color-adjust'>",
+		"syntax-b": "",
+		"syntax-a": "<'print-color-adjust'>",
 		"comment": ""
 	},
 	"color-interpolation": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | sRGB | linearRGB",
+		"syntax-b": "",
+		"syntax-a": "auto | sRGB | linearRGB",
 		"comment": ""
 	},
 	"column-count": {
 		"type": "modified",
-		"syntax-before": "<integer> | auto",
-		"syntax-after": "auto | <integer [1,∞]>",
+		"syntax-b": "<integer> | auto",
+		"syntax-a": "auto | <integer [1,∞]>",
 		"comment": ""
 	},
 	"column-gap": {
 		"type": "modified",
-		"syntax-before": "normal | <length-percentage>",
-		"syntax-after": "normal | <length-percentage [0,∞]>",
+		"syntax-b": "normal | <length-percentage>",
+		"syntax-a": "normal | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"column-rule-style": {
 		"type": "modified",
-		"syntax-before": "<'border-style'>",
-		"syntax-after": "<line-style>",
+		"syntax-b": "<'border-style'>",
+		"syntax-a": "<line-style>",
 		"comment": ""
 	},
 	"column-rule-width": {
 		"type": "modified",
-		"syntax-before": "<'border-width'>",
-		"syntax-after": "<line-width>",
+		"syntax-b": "<'border-width'>",
+		"syntax-a": "<line-width>",
 		"comment": ""
 	},
 	"column-span": {
 		"type": "modified",
-		"syntax-before": "none | all",
-		"syntax-after": "none | <integer [1,∞]> | all | auto",
+		"syntax-b": "none | all",
+		"syntax-a": "none | <integer [1,∞]> | all | auto",
 		"comment": ""
 	},
 	"column-width": {
 		"type": "modified",
-		"syntax-before": "<length> | auto",
-		"syntax-after": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )",
+		"syntax-b": "<length> | auto",
+		"syntax-a": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )",
 		"comment": ""
 	},
 	"contain": {
 		"type": "modified",
-		"syntax-before": "none | strict | content | [ [ size || inline-size ] || layout || style || paint ]",
-		"syntax-after": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]",
+		"syntax-b": "none | strict | content | [ [ size || inline-size ] || layout || style || paint ]",
+		"syntax-a": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]",
 		"comment": ""
 	},
 	"container-type": {
 		"type": "modified",
-		"syntax-before": "normal || [ size | inline-size ]",
-		"syntax-after": "normal | [ [ size | inline-size ] || scroll-state ]",
+		"syntax-b": "normal || [ size | inline-size ]",
+		"syntax-a": "normal | [ [ size | inline-size ] || scroll-state ]",
 		"comment": ""
 	},
 	"content": {
 		"type": "modified",
-		"syntax-before": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]?",
-		"syntax-after": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
+		"syntax-b": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]?",
+		"syntax-a": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
 		"comment": ""
 	},
 	"continue": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | discard | -webkit-discard | overflow | paginate | fragments",
+		"syntax-b": "",
+		"syntax-a": "auto | discard | -webkit-discard | overflow | paginate | fragments",
 		"comment": ""
 	},
 	"copy-into": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | [ [ <custom-ident> <content-level> ] [, <custom-ident> <content-level> ]* ]?",
+		"syntax-b": "",
+		"syntax-a": "none | [ [ <custom-ident> <content-level> ] [, <custom-ident> <content-level> ]* ]?",
 		"comment": ""
 	},
 	"corner-shape": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ round | angle ]{1,4}",
+		"syntax-b": "",
+		"syntax-a": "[ round | angle ]{1,4}",
 		"comment": ""
 	},
 	"corners": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'corner-shape'> || <'border-radius'>",
+		"syntax-b": "",
+		"syntax-a": "<'corner-shape'> || <'border-radius'>",
 		"comment": ""
 	},
 	"cue-after": {
 		"type": "modified",
-		"syntax-before": "<url> <decibel>? | none",
-		"syntax-after": "<uri> <decibel>? | none",
+		"syntax-b": "<url> <decibel>? | none",
+		"syntax-a": "<uri> <decibel>? | none",
 		"comment": ""
 	},
 	"cue-before": {
 		"type": "modified",
-		"syntax-before": "<url> <decibel>? | none",
-		"syntax-after": "<uri> <decibel>? | none",
+		"syntax-b": "<url> <decibel>? | none",
+		"syntax-a": "<uri> <decibel>? | none",
 		"comment": ""
 	},
 	"cursor": {
 		"type": "modified",
-		"syntax-before": "[ [ <url> [ <x> <y> ]? , ]* [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out | grab | grabbing | hand | -webkit-grab | -webkit-grabbing | -webkit-zoom-in | -webkit-zoom-out | -moz-grab | -moz-grabbing | -moz-zoom-in | -moz-zoom-out ] ]",
-		"syntax-after": "[ [ <url> | <url-set> ] [ <x> <y> ]? ]#? [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | grabbing | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out ]",
+		"syntax-b": "[ [ <url> [ <x> <y> ]? , ]* [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out | grab | grabbing | hand | -webkit-grab | -webkit-grabbing | -webkit-zoom-in | -webkit-zoom-out | -moz-grab | -moz-grabbing | -moz-zoom-in | -moz-zoom-out ] ]",
+		"syntax-a": "[ [ <url> | <url-set> ] [ <x> <y> ]? ]#? [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | grabbing | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out ]",
 		"comment": ""
 	},
 	"cx": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"cy": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"d": {
 		"type": "modified",
-		"syntax-before": "none | path( <string> )",
-		"syntax-after": "none | <string>",
+		"syntax-b": "none | path( <string> )",
+		"syntax-a": "none | <string>",
 		"comment": ""
 	},
 	"display": {
 		"type": "modified",
-		"syntax-before": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
-		"syntax-after": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | masonry | inline-masonry | <display-outside> || [ <display-inside> | math ]",
+		"syntax-b": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
+		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | masonry | inline-masonry | <display-outside> || [ <display-inside> | math ]",
 		"comment": ""
 	},
 	"dominant-baseline": {
 		"type": "modified",
-		"syntax-before": "auto | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge",
-		"syntax-after": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
+		"syntax-b": "auto | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge",
+		"syntax-a": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
 		"comment": ""
 	},
 	"dynamic-range-limit": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "standard | high | constrained-high",
+		"syntax-b": "",
+		"syntax-a": "standard | high | constrained-high",
 		"comment": ""
 	},
 	"field-sizing": {
 		"type": "modified",
-		"syntax-before": "content | fixed",
-		"syntax-after": "fixed | content",
+		"syntax-b": "content | fixed",
+		"syntax-a": "fixed | content",
 		"comment": ""
 	},
 	"fill-break": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "bounding-box | slice | clone",
+		"syntax-b": "",
+		"syntax-a": "bounding-box | slice | clone",
 		"comment": ""
 	},
 	"fill-color": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<color>",
+		"syntax-b": "",
+		"syntax-a": "<color>",
 		"comment": ""
 	},
 	"fill-image": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<paint>#",
+		"syntax-b": "",
+		"syntax-a": "<paint>#",
 		"comment": ""
 	},
 	"fill-opacity": {
 		"type": "modified",
-		"syntax-before": "<number-zero-one>",
-		"syntax-after": "<'opacity'>",
+		"syntax-b": "<number-zero-one>",
+		"syntax-a": "<'opacity'>",
 		"comment": ""
 	},
 	"fill-origin": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "match-parent | fill-box | stroke-box | content-box | padding-box | border-box",
+		"syntax-b": "",
+		"syntax-a": "match-parent | fill-box | stroke-box | content-box | padding-box | border-box",
 		"comment": ""
 	},
 	"fill-position": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<position>#",
+		"syntax-b": "",
+		"syntax-a": "<position>#",
 		"comment": ""
 	},
 	"fill-repeat": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<repeat-style>#",
+		"syntax-b": "",
+		"syntax-a": "<repeat-style>#",
 		"comment": ""
 	},
 	"fill-size": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<bg-size>#",
+		"syntax-b": "",
+		"syntax-a": "<bg-size>#",
 		"comment": ""
 	},
 	"filter": {
 		"type": "modified",
-		"syntax-before": "none | <filter-function-list> | <-ms-filter-function-list>",
-		"syntax-after": "none | <filter-value-list>",
+		"syntax-b": "none | <filter-function-list> | <-ms-filter-function-list>",
+		"syntax-a": "none | <filter-value-list>",
 		"comment": ""
 	},
 	"flex-grow": {
 		"type": "modified",
-		"syntax-before": "<number>",
-		"syntax-after": "<number [0,∞]>",
+		"syntax-b": "<number>",
+		"syntax-a": "<number [0,∞]>",
 		"comment": ""
 	},
 	"flex-shrink": {
 		"type": "modified",
-		"syntax-before": "<number>",
-		"syntax-after": "<number [0,∞]>",
+		"syntax-b": "<number>",
+		"syntax-a": "<number [0,∞]>",
 		"comment": ""
 	},
 	"float": {
 		"type": "modified",
-		"syntax-before": "left | right | none | inline-start | inline-end",
-		"syntax-after": "block-start | block-end | inline-start | inline-end | snap-block | <snap-block()> | snap-inline | <snap-inline()> | left | right | top | bottom | none | footnote",
+		"syntax-b": "left | right | none | inline-start | inline-end",
+		"syntax-a": "block-start | block-end | inline-start | inline-end | snap-block | <snap-block()> | snap-inline | <snap-inline()> | left | right | top | bottom | none | footnote",
 		"comment": ""
 	},
 	"float-defer": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<integer> | last | none",
+		"syntax-b": "",
+		"syntax-a": "<integer> | last | none",
 		"comment": ""
 	},
 	"float-offset": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length> | <percentage>",
+		"syntax-b": "",
+		"syntax-a": "<length> | <percentage>",
 		"comment": ""
 	},
 	"float-reference": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "inline | column | region | page",
+		"syntax-b": "",
+		"syntax-a": "inline | column | region | page",
 		"comment": ""
 	},
 	"flood-color": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<color>",
+		"syntax-b": "",
+		"syntax-a": "<color>",
 		"comment": ""
 	},
 	"flood-opacity": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'opacity'>",
+		"syntax-b": "",
+		"syntax-a": "<'opacity'>",
 		"comment": ""
 	},
 	"flow-from": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<ident> | none",
+		"syntax-b": "",
+		"syntax-a": "<ident> | none",
 		"comment": ""
 	},
 	"flow-into": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <ident> [ element | content ]?",
+		"syntax-b": "",
+		"syntax-a": "none | <ident> [ element | content ]?",
 		"comment": ""
 	},
 	"font": {
 		"type": "modified",
-		"syntax-before": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name> | <-non-standard-font>",
-		"syntax-after": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>",
+		"syntax-b": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name> | <-non-standard-font>",
+		"syntax-a": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>",
 		"comment": ""
 	},
 	"font-palette": {
 		"type": "modified",
-		"syntax-before": "normal | light | dark | <palette-identifier>",
-		"syntax-after": "normal | light | dark | <palette-identifier> | <palette-mix()>",
+		"syntax-b": "normal | light | dark | <palette-identifier>",
+		"syntax-a": "normal | light | dark | <palette-identifier> | <palette-mix()>",
 		"comment": ""
 	},
 	"font-size": {
 		"type": "modified",
-		"syntax-before": "<absolute-size> | <relative-size> | <length-percentage>",
-		"syntax-after": "<absolute-size> | <relative-size> | <length-percentage [0,∞]> | math",
+		"syntax-b": "<absolute-size> | <relative-size> | <length-percentage>",
+		"syntax-a": "<absolute-size> | <relative-size> | <length-percentage [0,∞]> | math",
 		"comment": ""
 	},
 	"font-size-adjust": {
 		"type": "modified",
-		"syntax-before": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number> ]",
-		"syntax-after": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number [0,∞]> ]",
+		"syntax-b": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number> ]",
+		"syntax-a": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number [0,∞]> ]",
 		"comment": ""
 	},
 	"font-style": {
 		"type": "modified",
-		"syntax-before": "normal | italic | oblique <angle>?",
-		"syntax-after": "normal | italic | oblique <angle [-90deg,90deg]>?",
+		"syntax-b": "normal | italic | oblique <angle>?",
+		"syntax-a": "normal | italic | oblique <angle [-90deg,90deg]>?",
 		"comment": ""
 	},
 	"font-variant": {
 		"type": "modified",
-		"syntax-before": "normal | none | [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> || stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero || <east-asian-variant-values> || <east-asian-width-values> || ruby ]",
-		"syntax-after": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]",
+		"syntax-b": "normal | none | [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> || stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero || <east-asian-variant-values> || <east-asian-width-values> || ruby ]",
+		"syntax-a": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]",
 		"comment": ""
 	},
 	"font-variation-settings": {
 		"type": "modified",
-		"syntax-before": "normal | [ <string> <number> ]#",
-		"syntax-after": "normal | [ <opentype-tag> <number> ]#",
+		"syntax-b": "normal | [ <string> <number> ]#",
+		"syntax-a": "normal | [ <opentype-tag> <number> ]#",
 		"comment": ""
 	},
 	"font-width": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | <percentage [0,∞]> | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded",
+		"syntax-b": "",
+		"syntax-a": "normal | <percentage [0,∞]> | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded",
 		"comment": ""
 	},
 	"footnote-display": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "block | inline | compact",
+		"syntax-b": "",
+		"syntax-a": "block | inline | compact",
 		"comment": ""
 	},
 	"footnote-policy": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | line | block",
+		"syntax-b": "",
+		"syntax-a": "auto | line | block",
 		"comment": ""
 	},
 	"forced-color-adjust": {
 		"type": "modified",
-		"syntax-before": "auto | none",
-		"syntax-after": "auto | none | preserve-parent-color",
+		"syntax-b": "auto | none",
+		"syntax-a": "auto | none | preserve-parent-color",
 		"comment": ""
 	},
 	"glyph-orientation-vertical": {
 		"type": "modified",
-		"syntax-before": "<angle>",
-		"syntax-after": "auto | 0deg | 90deg | 0 | 90",
+		"syntax-b": "<angle>",
+		"syntax-a": "auto | 0deg | 90deg | 0 | 90",
 		"comment": ""
 	},
 	"grid-auto-flow": {
 		"type": "modified",
-		"syntax-before": "[ row | column ] || dense",
-		"syntax-after": "[ row | column | row-reverse | column-reverse ] || dense || wrap-reverse",
+		"syntax-b": "[ row | column ] || dense",
+		"syntax-a": "[ row | column | row-reverse | column-reverse ] || dense || wrap-reverse",
 		"comment": ""
 	},
 	"grid-template-columns": {
 		"type": "modified",
-		"syntax-before": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
-		"syntax-after": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry",
+		"syntax-b": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
+		"syntax-a": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry",
 		"comment": ""
 	},
 	"grid-template-rows": {
 		"type": "modified",
-		"syntax-before": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
-		"syntax-after": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry",
+		"syntax-b": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?",
+		"syntax-a": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry",
 		"comment": ""
 	},
 	"height": {
 		"type": "modified",
-		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
+		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
 	"hyphenate-limit-last": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | always | column | page | spread",
+		"syntax-b": "",
+		"syntax-a": "none | always | column | page | spread",
 		"comment": ""
 	},
 	"hyphenate-limit-lines": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "no-limit | <integer>",
+		"syntax-b": "",
+		"syntax-a": "no-limit | <integer>",
 		"comment": ""
 	},
 	"hyphenate-limit-zone": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"image-orientation": {
 		"type": "modified",
-		"syntax-before": "from-image | <angle> | [ <angle>? flip ]",
-		"syntax-after": "from-image | none | [ <angle> || flip ]",
+		"syntax-b": "from-image | <angle> | [ <angle>? flip ]",
+		"syntax-a": "from-image | none | [ <angle> || flip ]",
 		"comment": ""
 	},
 	"image-rendering": {
 		"type": "modified",
-		"syntax-before": "auto | crisp-edges | pixelated | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>",
-		"syntax-after": "auto | smooth | high-quality | pixelated | crisp-edges",
+		"syntax-b": "auto | crisp-edges | pixelated | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>",
+		"syntax-a": "auto | smooth | high-quality | pixelated | crisp-edges",
 		"comment": ""
 	},
 	"initial-letter": {
 		"type": "modified",
-		"syntax-before": "normal | [ <number> <integer>? ]",
-		"syntax-after": "normal | <number [1,∞]> <integer [1,∞]> | <number [1,∞]> && [ drop | raise ]?",
+		"syntax-b": "normal | [ <number> <integer>? ]",
+		"syntax-a": "normal | <number [1,∞]> <integer [1,∞]> | <number [1,∞]> && [ drop | raise ]?",
 		"comment": ""
 	},
 	"initial-letter-align": {
 		"type": "modified",
-		"syntax-before": "[ auto | alphabetic | hanging | ideographic ]",
-		"syntax-after": "[ border-box? [ alphabetic | ideographic | hanging | leading ]? ]!",
+		"syntax-b": "[ auto | alphabetic | hanging | ideographic ]",
+		"syntax-a": "[ border-box? [ alphabetic | ideographic | hanging | leading ]? ]!",
 		"comment": ""
 	},
 	"initial-letter-wrap": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | first | all | grid | <length-percentage>",
+		"syntax-b": "",
+		"syntax-a": "none | first | all | grid | <length-percentage>",
 		"comment": ""
 	},
 	"inline-size": {
 		"type": "modified",
-		"syntax-before": "<'width'>",
-		"syntax-after": "<'width'> | stretch | fit-content | contain",
+		"syntax-b": "<'width'>",
+		"syntax-a": "<'width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"inline-sizing": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | stretch",
+		"syntax-b": "",
+		"syntax-a": "normal | stretch",
 		"comment": ""
 	},
 	"inset-block-end": {
 		"type": "modified",
-		"syntax-before": "<'top'>",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-b": "<'top'>",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"inset-block-start": {
 		"type": "modified",
-		"syntax-before": "<'top'>",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-b": "<'top'>",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"inset-inline-end": {
 		"type": "modified",
-		"syntax-before": "<'top'>",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-b": "<'top'>",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"inset-inline-start": {
 		"type": "modified",
-		"syntax-before": "<'top'>",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-b": "<'top'>",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"interpolate-size": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "numeric-only | allow-keywords",
+		"syntax-b": "",
+		"syntax-a": "numeric-only | allow-keywords",
 		"comment": ""
 	},
 	"isolation": {
 		"type": "modified",
-		"syntax-before": "auto | isolate",
-		"syntax-after": "<isolation-mode>",
+		"syntax-b": "auto | isolate",
+		"syntax-a": "<isolation-mode>",
 		"comment": ""
 	},
 	"justify-items": {
 		"type": "modified",
-		"syntax-before": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
-		"syntax-after": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
+		"syntax-b": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
 		"comment": ""
 	},
 	"justify-self": {
 		"type": "modified",
-		"syntax-before": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
-		"syntax-after": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
+		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
+		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
 		"comment": ""
 	},
 	"left": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"lighting-color": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<color>",
+		"syntax-b": "",
+		"syntax-a": "<color>",
 		"comment": ""
 	},
 	"line-clamp": {
 		"type": "modified",
-		"syntax-before": "none | <integer>",
-		"syntax-after": "none | <integer [1,∞]> || <'block-ellipsis'>",
+		"syntax-b": "none | <integer>",
+		"syntax-a": "none | <integer [1,∞]> || <'block-ellipsis'>",
 		"comment": ""
 	},
 	"-webkit-line-clamp": {
 		"type": "modified",
-		"syntax-before": "none | <integer>",
-		"syntax-after": "none | <integer [1,∞]>",
+		"syntax-b": "none | <integer>",
+		"syntax-a": "none | <integer [1,∞]>",
 		"comment": ""
 	},
 	"line-fit-edge": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "leading | <text-edge>",
+		"syntax-b": "",
+		"syntax-a": "leading | <text-edge>",
 		"comment": ""
 	},
 	"line-grid": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "match-parent | create",
+		"syntax-b": "",
+		"syntax-a": "match-parent | create",
 		"comment": ""
 	},
 	"line-height": {
 		"type": "modified",
-		"syntax-before": "normal | <number> | <length> | <percentage>",
-		"syntax-after": "normal | <number [0,∞]> | <length-percentage [0,∞]>",
+		"syntax-b": "normal | <number> | <length> | <percentage>",
+		"syntax-a": "normal | <number [0,∞]> | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"line-height-step": {
 		"type": "modified",
-		"syntax-before": "<length>",
-		"syntax-after": "<length [0,∞]>",
+		"syntax-b": "<length>",
+		"syntax-a": "<length [0,∞]>",
 		"comment": ""
 	},
 	"line-padding": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length>",
+		"syntax-b": "",
+		"syntax-a": "<length>",
 		"comment": ""
 	},
 	"line-snap": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | baseline | contain",
+		"syntax-b": "",
+		"syntax-a": "none | baseline | contain",
 		"comment": ""
 	},
 	"link-parameters": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <link-param>+",
+		"syntax-b": "",
+		"syntax-a": "none | <link-param>+",
 		"comment": ""
 	},
 	"list-style": {
 		"type": "modified",
-		"syntax-before": "<'list-style-type'> || <'list-style-position'> || <'list-style-image'>",
-		"syntax-after": "<'list-style-position'> || <'list-style-image'> || <'list-style-type'>",
+		"syntax-b": "<'list-style-type'> || <'list-style-position'> || <'list-style-image'>",
+		"syntax-a": "<'list-style-position'> || <'list-style-image'> || <'list-style-type'>",
 		"comment": ""
 	},
 	"margin": {
 		"type": "modified",
-		"syntax-before": "[ <length> | <percentage> | auto ]{1,4}",
-		"syntax-after": "<'margin-top'>{1,4}",
+		"syntax-b": "[ <length> | <percentage> | auto ]{1,4}",
+		"syntax-a": "<'margin-top'>{1,4}",
 		"comment": ""
 	},
 	"margin-block": {
 		"type": "modified",
-		"syntax-before": "<'margin-left'>{1,2}",
-		"syntax-after": "<'margin-top'>{1,2}",
+		"syntax-b": "<'margin-left'>{1,2}",
+		"syntax-a": "<'margin-top'>{1,2}",
 		"comment": ""
 	},
 	"margin-block-end": {
 		"type": "modified",
-		"syntax-before": "<'margin-left'>",
-		"syntax-after": "<'margin-top'>",
+		"syntax-b": "<'margin-left'>",
+		"syntax-a": "<'margin-top'>",
 		"comment": ""
 	},
 	"margin-block-start": {
 		"type": "modified",
-		"syntax-before": "<'margin-left'>",
-		"syntax-after": "<'margin-top'>",
+		"syntax-b": "<'margin-left'>",
+		"syntax-a": "<'margin-top'>",
 		"comment": ""
 	},
 	"margin-bottom": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
 		"comment": ""
 	},
 	"margin-break": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | keep | discard",
+		"syntax-b": "",
+		"syntax-a": "auto | keep | discard",
 		"comment": ""
 	},
 	"margin-inline": {
 		"type": "modified",
-		"syntax-before": "<'margin-left'>{1,2}",
-		"syntax-after": "<'margin-top'>{1,2}",
+		"syntax-b": "<'margin-left'>{1,2}",
+		"syntax-a": "<'margin-top'>{1,2}",
 		"comment": ""
 	},
 	"margin-inline-end": {
 		"type": "modified",
-		"syntax-before": "<'margin-left'>",
-		"syntax-after": "<'margin-top'>",
+		"syntax-b": "<'margin-left'>",
+		"syntax-a": "<'margin-top'>",
 		"comment": ""
 	},
 	"margin-inline-start": {
 		"type": "modified",
-		"syntax-before": "<'margin-left'>",
-		"syntax-after": "<'margin-top'>",
+		"syntax-b": "<'margin-left'>",
+		"syntax-a": "<'margin-top'>",
 		"comment": ""
 	},
 	"margin-left": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
 		"comment": ""
 	},
 	"margin-right": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
 		"comment": ""
 	},
 	"margin-top": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "<length-percentage> | auto | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
 		"comment": ""
 	},
 	"margin-trim": {
 		"type": "modified",
-		"syntax-before": "none | in-flow | all",
-		"syntax-after": "none | [ block || inline ] | [ block-start || inline-start || block-end || inline-end ]",
+		"syntax-b": "none | in-flow | all",
+		"syntax-a": "none | [ block || inline ] | [ block-start || inline-start || block-end || inline-end ]",
 		"comment": ""
 	},
 	"marker": {
 		"type": "modified",
-		"syntax-before": "none | <url>",
-		"syntax-after": "none | <marker-ref>",
+		"syntax-b": "none | <url>",
+		"syntax-a": "none | <marker-ref>",
 		"comment": ""
 	},
 	"marker-end": {
 		"type": "modified",
-		"syntax-before": "none | <url>",
-		"syntax-after": "none | <marker-ref>",
+		"syntax-b": "none | <url>",
+		"syntax-a": "none | <marker-ref>",
 		"comment": ""
 	},
 	"marker-mid": {
 		"type": "modified",
-		"syntax-before": "none | <url>",
-		"syntax-after": "none | <marker-ref>",
+		"syntax-b": "none | <url>",
+		"syntax-a": "none | <marker-ref>",
 		"comment": ""
 	},
 	"marker-side": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "match-self | match-parent",
+		"syntax-b": "",
+		"syntax-a": "match-self | match-parent",
 		"comment": ""
 	},
 	"marker-start": {
 		"type": "modified",
-		"syntax-before": "none | <url>",
-		"syntax-after": "none | <marker-ref>",
+		"syntax-b": "none | <url>",
+		"syntax-a": "none | <marker-ref>",
 		"comment": ""
 	},
 	"mask-border-slice": {
 		"type": "modified",
-		"syntax-before": "<number-percentage>{1,4} fill?",
-		"syntax-after": "[ <number> | <percentage> ]{1,4} fill?",
+		"syntax-b": "<number-percentage>{1,4} fill?",
+		"syntax-a": "[ <number> | <percentage> ]{1,4} fill?",
 		"comment": ""
 	},
 	"mask-clip": {
 		"type": "modified",
-		"syntax-before": "[ <geometry-box> | no-clip ]#",
-		"syntax-after": "[ <coord-box> | no-clip ]#",
+		"syntax-b": "[ <geometry-box> | no-clip ]#",
+		"syntax-a": "[ <coord-box> | no-clip ]#",
 		"comment": ""
 	},
 	"mask-origin": {
 		"type": "modified",
-		"syntax-before": "<geometry-box>#",
-		"syntax-after": "<coord-box>#",
+		"syntax-b": "<geometry-box>#",
+		"syntax-a": "<coord-box>#",
 		"comment": ""
 	},
 	"masonry": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'masonry-template-areas'> || <'masonry-template-tracks'> || <'masonry-direction'> || <'masonry-fill'>",
+		"syntax-b": "",
+		"syntax-a": "<'masonry-template-areas'> || <'masonry-template-tracks'> || <'masonry-direction'> || <'masonry-fill'>",
 		"comment": ""
 	},
 	"masonry-auto-tracks": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'grid-auto-columns'>",
+		"syntax-b": "",
+		"syntax-a": "<'grid-auto-columns'>",
 		"comment": ""
 	},
 	"masonry-direction": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "row | column | row-reverse | column-reverse",
+		"syntax-b": "",
+		"syntax-a": "row | column | row-reverse | column-reverse",
 		"comment": ""
 	},
 	"masonry-fill": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | reverse",
+		"syntax-b": "",
+		"syntax-a": "normal | reverse",
 		"comment": ""
 	},
 	"masonry-flow": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'masonry-direction'> || <'masonry-fill'>",
+		"syntax-b": "",
+		"syntax-a": "<'masonry-direction'> || <'masonry-fill'>",
 		"comment": ""
 	},
 	"masonry-slack": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"masonry-template-areas": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <string>",
+		"syntax-b": "",
+		"syntax-a": "none | <string>",
 		"comment": ""
 	},
 	"masonry-template-tracks": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<'grid-template-columns'>",
+		"syntax-b": "",
+		"syntax-a": "<'grid-template-columns'>",
 		"comment": ""
 	},
 	"max-block-size": {
 		"type": "modified",
-		"syntax-before": "<'max-width'>",
-		"syntax-after": "<'max-width'> | stretch | fit-content | contain",
+		"syntax-b": "<'max-width'>",
+		"syntax-a": "<'max-width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"max-height": {
 		"type": "modified",
-		"syntax-before": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
-		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
+		"syntax-b": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
 	"max-inline-size": {
 		"type": "modified",
-		"syntax-before": "<'max-width'>",
-		"syntax-after": "<'max-width'> | stretch | fit-content | contain",
+		"syntax-b": "<'max-width'>",
+		"syntax-a": "<'max-width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"max-lines": {
 		"type": "modified",
-		"syntax-before": "none | <integer>",
-		"syntax-after": "none | <integer [1,∞]>",
+		"syntax-b": "none | <integer>",
+		"syntax-a": "none | <integer [1,∞]>",
 		"comment": ""
 	},
 	"max-width": {
 		"type": "modified",
-		"syntax-before": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
-		"syntax-after": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
+		"syntax-b": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
 	"min-block-size": {
 		"type": "modified",
-		"syntax-before": "<'min-width'>",
-		"syntax-after": "<'min-width'> | stretch | fit-content | contain",
+		"syntax-b": "<'min-width'>",
+		"syntax-a": "<'min-width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"min-height": {
 		"type": "modified",
-		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
+		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
 	"min-inline-size": {
 		"type": "modified",
-		"syntax-before": "<'min-width'>",
-		"syntax-after": "<'min-width'> | stretch | fit-content | contain",
+		"syntax-b": "<'min-width'>",
+		"syntax-a": "<'min-width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"min-intrinsic-sizing": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "legacy | zero-if-scroll || zero-if-extrinsic",
+		"syntax-b": "",
+		"syntax-a": "legacy | zero-if-scroll || zero-if-extrinsic",
 		"comment": ""
 	},
 	"min-width": {
 		"type": "modified",
-		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
+		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
 	"mix-blend-mode": {
 		"type": "modified",
-		"syntax-before": "<blend-mode> | plus-lighter",
-		"syntax-after": "<blend-mode> | plus-darker | plus-lighter",
+		"syntax-b": "<blend-mode> | plus-lighter",
+		"syntax-a": "<blend-mode> | plus-darker | plus-lighter",
 		"comment": ""
 	},
 	"nav-down": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
+		"syntax-b": "",
+		"syntax-a": "auto | <id> [ current | root | <target-name> ]?",
 		"comment": ""
 	},
 	"nav-left": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
+		"syntax-b": "",
+		"syntax-a": "auto | <id> [ current | root | <target-name> ]?",
 		"comment": ""
 	},
 	"nav-right": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
+		"syntax-b": "",
+		"syntax-a": "auto | <id> [ current | root | <target-name> ]?",
 		"comment": ""
 	},
 	"nav-up": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | <id> [ current | root | <target-name> ]?",
+		"syntax-b": "",
+		"syntax-a": "auto | <id> [ current | root | <target-name> ]?",
 		"comment": ""
 	},
 	"object-fit": {
 		"type": "modified",
-		"syntax-before": "fill | contain | cover | none | scale-down",
-		"syntax-after": "fill | none | [ contain | cover ] || scale-down",
+		"syntax-b": "fill | contain | cover | none | scale-down",
+		"syntax-a": "fill | none | [ contain | cover ] || scale-down",
 		"comment": ""
 	},
 	"object-view-box": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <basic-shape-rect>",
+		"syntax-b": "",
+		"syntax-a": "none | <basic-shape-rect>",
 		"comment": ""
 	},
 	"opacity": {
 		"type": "modified",
-		"syntax-before": "<alpha-value>",
-		"syntax-after": "<opacity-value>",
+		"syntax-b": "<alpha-value>",
+		"syntax-a": "<opacity-value>",
 		"comment": ""
 	},
 	"orphans": {
 		"type": "modified",
-		"syntax-before": "<integer>",
-		"syntax-after": "<integer [1,∞]>",
+		"syntax-b": "<integer>",
+		"syntax-a": "<integer [1,∞]>",
 		"comment": ""
 	},
 	"outline-color": {
 		"type": "modified",
-		"syntax-before": "auto | <color>",
-		"syntax-after": "auto | [ <color> | <image-1D> ]",
+		"syntax-b": "auto | <color>",
+		"syntax-a": "auto | [ <color> | <image-1D> ]",
 		"comment": ""
 	},
 	"outline-style": {
 		"type": "modified",
-		"syntax-before": "auto | <'border-style'>",
-		"syntax-after": "auto | <outline-line-style>",
+		"syntax-b": "auto | <'border-style'>",
+		"syntax-a": "auto | <outline-line-style>",
 		"comment": ""
 	},
 	"overflow": {
 		"type": "modified",
-		"syntax-before": "[ visible | hidden | clip | scroll | auto ]{1,2} | <-non-standard-overflow>",
-		"syntax-after": "<'overflow-block'>{1,2}",
+		"syntax-b": "[ visible | hidden | clip | scroll | auto ]{1,2} | <-non-standard-overflow>",
+		"syntax-a": "<'overflow-block'>{1,2}",
 		"comment": ""
 	},
 	"overflow-clip-margin-block": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-block-end": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-block-start": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-bottom": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-inline": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-inline-end": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-inline-start": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-left": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-right": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"overflow-clip-margin-top": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<visual-box> || <length [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<visual-box> || <length [0,∞]>",
 		"comment": ""
 	},
 	"padding": {
 		"type": "modified",
-		"syntax-before": "[ <length> | <percentage> ]{1,4}",
-		"syntax-after": "<'padding-top'>{1,4}",
+		"syntax-b": "[ <length> | <percentage> ]{1,4}",
+		"syntax-a": "<'padding-top'>{1,4}",
 		"comment": ""
 	},
 	"padding-block": {
 		"type": "modified",
-		"syntax-before": "<'padding-left'>{1,2}",
-		"syntax-after": "<'padding-top'>{1,2}",
+		"syntax-b": "<'padding-left'>{1,2}",
+		"syntax-a": "<'padding-top'>{1,2}",
 		"comment": ""
 	},
 	"padding-block-end": {
 		"type": "modified",
-		"syntax-before": "<'padding-left'>",
-		"syntax-after": "<'padding-top'>",
+		"syntax-b": "<'padding-left'>",
+		"syntax-a": "<'padding-top'>",
 		"comment": ""
 	},
 	"padding-block-start": {
 		"type": "modified",
-		"syntax-before": "<'padding-left'>",
-		"syntax-after": "<'padding-top'>",
+		"syntax-b": "<'padding-left'>",
+		"syntax-a": "<'padding-top'>",
 		"comment": ""
 	},
 	"padding-bottom": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage [0,∞]>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"padding-inline": {
 		"type": "modified",
-		"syntax-before": "<'padding-left'>{1,2}",
-		"syntax-after": "<'padding-top'>{1,2}",
+		"syntax-b": "<'padding-left'>{1,2}",
+		"syntax-a": "<'padding-top'>{1,2}",
 		"comment": ""
 	},
 	"padding-inline-end": {
 		"type": "modified",
-		"syntax-before": "<'padding-left'>",
-		"syntax-after": "<'padding-top'>",
+		"syntax-b": "<'padding-left'>",
+		"syntax-a": "<'padding-top'>",
 		"comment": ""
 	},
 	"padding-inline-start": {
 		"type": "modified",
-		"syntax-before": "<'padding-left'>",
-		"syntax-after": "<'padding-top'>",
+		"syntax-b": "<'padding-left'>",
+		"syntax-a": "<'padding-top'>",
 		"comment": ""
 	},
 	"padding-left": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage [0,∞]>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"padding-right": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage [0,∞]>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"padding-top": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage [0,∞]>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"page-break-after": {
 		"type": "modified",
-		"syntax-before": "auto | always | avoid | left | right | recto | verso",
-		"syntax-after": "auto | always | avoid | left | right | inherit",
+		"syntax-b": "auto | always | avoid | left | right | recto | verso",
+		"syntax-a": "auto | always | avoid | left | right | inherit",
 		"comment": ""
 	},
 	"page-break-before": {
 		"type": "modified",
-		"syntax-before": "auto | always | avoid | left | right | recto | verso",
-		"syntax-after": "auto | always | avoid | left | right | inherit",
+		"syntax-b": "auto | always | avoid | left | right | recto | verso",
+		"syntax-a": "auto | always | avoid | left | right | inherit",
 		"comment": ""
 	},
 	"page-break-inside": {
 		"type": "modified",
-		"syntax-before": "auto | avoid",
-		"syntax-after": "avoid | auto | inherit",
+		"syntax-b": "auto | avoid",
+		"syntax-a": "avoid | auto | inherit",
 		"comment": ""
 	},
 	"pause-after": {
 		"type": "modified",
-		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"comment": ""
 	},
 	"pause-before": {
 		"type": "modified",
-		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"comment": ""
 	},
 	"perspective": {
 		"type": "modified",
-		"syntax-before": "none | <length>",
-		"syntax-after": "none | <length [0,∞]>",
+		"syntax-b": "none | <length>",
+		"syntax-a": "none | <length [0,∞]>",
 		"comment": ""
 	},
 	"pointer-events": {
 		"type": "modified",
-		"syntax-before": "auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit",
-		"syntax-after": "auto | bounding-box | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | none",
+		"syntax-b": "auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit",
+		"syntax-a": "auto | bounding-box | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | none",
 		"comment": ""
 	},
 	"position": {
 		"type": "modified",
-		"syntax-before": "static | relative | absolute | sticky | fixed | -webkit-sticky",
-		"syntax-after": "static | relative | absolute | sticky | fixed | <running()>",
+		"syntax-b": "static | relative | absolute | sticky | fixed | -webkit-sticky",
+		"syntax-a": "static | relative | absolute | sticky | fixed | <running()>",
 		"comment": ""
 	},
 	"position-anchor": {
 		"type": "modified",
-		"syntax-before": "<anchor-element>",
-		"syntax-after": "auto | <anchor-element>",
+		"syntax-b": "<anchor-element>",
+		"syntax-a": "auto | <anchor-element>",
 		"comment": ""
 	},
 	"quotes": {
 		"type": "modified",
-		"syntax-before": "none | auto | [ <string> <string> ]+",
-		"syntax-after": "auto | none | match-parent | [ <string> <string> ]+",
+		"syntax-b": "none | auto | [ <string> <string> ]+",
+		"syntax-a": "auto | none | match-parent | [ <string> <string> ]+",
 		"comment": ""
 	},
 	"r": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"reading-flow": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
+		"syntax-b": "",
+		"syntax-a": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
 		"comment": ""
 	},
 	"region-fragment": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | break",
+		"syntax-b": "",
+		"syntax-a": "auto | break",
 		"comment": ""
 	},
 	"rest-after": {
 		"type": "modified",
-		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"comment": ""
 	},
 	"rest-before": {
 		"type": "modified",
-		"syntax-before": "<time> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
+		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"comment": ""
 	},
 	"right": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"row-gap": {
 		"type": "modified",
-		"syntax-before": "normal | <length-percentage>",
-		"syntax-after": "normal | <length-percentage [0,∞]>",
+		"syntax-b": "normal | <length-percentage>",
+		"syntax-a": "normal | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"ruby-merge": {
 		"type": "modified",
-		"syntax-before": "separate | collapse | auto",
-		"syntax-after": "separate | merge | auto",
+		"syntax-b": "separate | collapse | auto",
+		"syntax-a": "separate | merge | auto",
 		"comment": ""
 	},
 	"ruby-overhang": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | none",
+		"syntax-b": "",
+		"syntax-a": "auto | none",
 		"comment": ""
 	},
 	"rx": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage> | auto",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage> | auto",
 		"comment": ""
 	},
 	"ry": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage> | auto",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage> | auto",
 		"comment": ""
 	},
 	"scale": {
 		"type": "modified",
-		"syntax-before": "none | <number>{1,3}",
-		"syntax-after": "none | [ <number> | <percentage> ]{1,3}",
+		"syntax-b": "none | <number>{1,3}",
+		"syntax-a": "none | [ <number> | <percentage> ]{1,3}",
 		"comment": ""
 	},
 	"scroll-marker-group": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | before | after",
+		"syntax-b": "",
+		"syntax-a": "none | before | after",
 		"comment": ""
 	},
 	"scroll-padding": {
 		"type": "modified",
-		"syntax-before": "[ auto | <length-percentage> ]{1,4}",
-		"syntax-after": "[ auto | <length-percentage [0,∞]> ]{1,4}",
+		"syntax-b": "[ auto | <length-percentage> ]{1,4}",
+		"syntax-a": "[ auto | <length-percentage [0,∞]> ]{1,4}",
 		"comment": ""
 	},
 	"scroll-padding-block": {
 		"type": "modified",
-		"syntax-before": "[ auto | <length-percentage> ]{1,2}",
-		"syntax-after": "[ auto | <length-percentage [0,∞]> ]{1,2}",
+		"syntax-b": "[ auto | <length-percentage> ]{1,2}",
+		"syntax-a": "[ auto | <length-percentage [0,∞]> ]{1,2}",
 		"comment": ""
 	},
 	"scroll-padding-block-end": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-block-start": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-bottom": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-inline": {
 		"type": "modified",
-		"syntax-before": "[ auto | <length-percentage> ]{1,2}",
-		"syntax-after": "[ auto | <length-percentage [0,∞]> ]{1,2}",
+		"syntax-b": "[ auto | <length-percentage> ]{1,2}",
+		"syntax-a": "[ auto | <length-percentage [0,∞]> ]{1,2}",
 		"comment": ""
 	},
 	"scroll-padding-inline-end": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-inline-start": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-left": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-right": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-padding-top": {
 		"type": "modified",
-		"syntax-before": "auto | <length-percentage>",
-		"syntax-after": "auto | <length-percentage [0,∞]>",
+		"syntax-b": "auto | <length-percentage>",
+		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"scroll-start-target": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "[ none | auto ]",
+		"syntax-b": "",
+		"syntax-a": "[ none | auto ]",
 		"comment": ""
 	},
 	"scroll-timeline": {
 		"type": "modified",
-		"syntax-before": "[ <'scroll-timeline-name'> || <'scroll-timeline-axis'> ]#",
-		"syntax-after": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#",
+		"syntax-b": "[ <'scroll-timeline-name'> || <'scroll-timeline-axis'> ]#",
+		"syntax-a": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#",
 		"comment": ""
 	},
 	"shape-image-threshold": {
 		"type": "modified",
-		"syntax-before": "<alpha-value>",
-		"syntax-after": "<opacity-value>",
+		"syntax-b": "<alpha-value>",
+		"syntax-a": "<opacity-value>",
 		"comment": ""
 	},
 	"shape-inside": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | outside-shape | [ <basic-shape> || shape-box ] | <image> | display",
+		"syntax-b": "",
+		"syntax-a": "auto | outside-shape | [ <basic-shape> || shape-box ] | <image> | display",
 		"comment": ""
 	},
 	"shape-margin": {
 		"type": "modified",
-		"syntax-before": "<length-percentage>",
-		"syntax-after": "<length-percentage [0,∞]>",
+		"syntax-b": "<length-percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"shape-outside": {
 		"type": "modified",
-		"syntax-before": "none | [ <shape-box> || <basic-shape> ] | <image>",
-		"syntax-after": "none | [ <basic-shape> || <shape-box> ] | <image>",
+		"syntax-b": "none | [ <shape-box> || <basic-shape> ] | <image>",
+		"syntax-a": "none | [ <basic-shape> || <shape-box> ] | <image>",
 		"comment": ""
 	},
 	"shape-padding": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length-percentage [0,∞]>",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"shape-subtract": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | [ <basic-shape> | <uri> ]+",
+		"syntax-b": "",
+		"syntax-a": "none | [ <basic-shape> | <uri> ]+",
 		"comment": ""
 	},
 	"spatial-navigation-action": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | focus | scroll",
+		"syntax-b": "",
+		"syntax-a": "auto | focus | scroll",
 		"comment": ""
 	},
 	"spatial-navigation-contain": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | contain",
+		"syntax-b": "",
+		"syntax-a": "auto | contain",
 		"comment": ""
 	},
 	"spatial-navigation-function": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | grid",
+		"syntax-b": "",
+		"syntax-a": "normal | grid",
 		"comment": ""
 	},
 	"string-set": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | [ <custom-ident> <string>+ ]#",
+		"syntax-b": "",
+		"syntax-a": "none | [ <custom-ident> <string>+ ]#",
 		"comment": ""
 	},
 	"stroke-align": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "center | inset | outset",
+		"syntax-b": "",
+		"syntax-a": "center | inset | outset",
 		"comment": ""
 	},
 	"stroke-alignment": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "center | inner | outer",
+		"syntax-b": "",
+		"syntax-a": "center | inner | outer",
 		"comment": ""
 	},
 	"stroke-break": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "bounding-box | slice | clone",
+		"syntax-b": "",
+		"syntax-a": "bounding-box | slice | clone",
 		"comment": ""
 	},
 	"stroke-color": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<color>#",
+		"syntax-b": "",
+		"syntax-a": "<color>#",
 		"comment": ""
 	},
 	"stroke-dash-corner": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <length>",
+		"syntax-b": "",
+		"syntax-a": "none | <length>",
 		"comment": ""
 	},
 	"stroke-dash-justify": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | [ stretch | compress ] || [ dashes || gaps ]",
+		"syntax-b": "",
+		"syntax-a": "none | [ stretch | compress ] || [ dashes || gaps ]",
 		"comment": ""
 	},
 	"stroke-dashadjust": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | [ stretch | compress ] [ dashes | gaps ]?",
+		"syntax-b": "",
+		"syntax-a": "none | [ stretch | compress ] [ dashes | gaps ]?",
 		"comment": ""
 	},
 	"stroke-dasharray": {
 		"type": "modified",
-		"syntax-before": "none | [ <svg-length>+ ]#",
-		"syntax-after": "none | [ <length-percentage> | <number> ]+#",
+		"syntax-b": "none | [ <svg-length>+ ]#",
+		"syntax-a": "none | [ <length-percentage> | <number> ]+#",
 		"comment": ""
 	},
 	"stroke-dashcorner": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <length>",
+		"syntax-b": "",
+		"syntax-a": "none | <length>",
 		"comment": ""
 	},
 	"stroke-dashoffset": {
 		"type": "modified",
-		"syntax-before": "<svg-length>",
-		"syntax-after": "<length-percentage> | <number>",
+		"syntax-b": "<svg-length>",
+		"syntax-a": "<length-percentage> | <number>",
 		"comment": ""
 	},
 	"stroke-image": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<paint>#",
+		"syntax-b": "",
+		"syntax-a": "<paint>#",
 		"comment": ""
 	},
 	"stroke-linejoin": {
 		"type": "modified",
-		"syntax-before": "miter | round | bevel",
-		"syntax-after": "[ crop | arcs | miter ] || [ bevel | round | fallback ]",
+		"syntax-b": "miter | round | bevel",
+		"syntax-a": "[ crop | arcs | miter ] || [ bevel | round | fallback ]",
 		"comment": ""
 	},
 	"stroke-miterlimit": {
 		"type": "modified",
-		"syntax-before": "<number-one-or-greater>",
-		"syntax-after": "<number>",
+		"syntax-b": "<number-one-or-greater>",
+		"syntax-a": "<number>",
 		"comment": ""
 	},
 	"stroke-opacity": {
 		"type": "modified",
-		"syntax-before": "<number-zero-one>",
-		"syntax-after": "<'opacity'>",
+		"syntax-b": "<number-zero-one>",
+		"syntax-a": "<'opacity'>",
 		"comment": ""
 	},
 	"stroke-origin": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "match-parent | fill-box | stroke-box | content-box | padding-box | border-box",
+		"syntax-b": "",
+		"syntax-a": "match-parent | fill-box | stroke-box | content-box | padding-box | border-box",
 		"comment": ""
 	},
 	"stroke-position": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<position>#",
+		"syntax-b": "",
+		"syntax-a": "<position>#",
 		"comment": ""
 	},
 	"stroke-repeat": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<repeat-style>#",
+		"syntax-b": "",
+		"syntax-a": "<repeat-style>#",
 		"comment": ""
 	},
 	"stroke-size": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<bg-size>#",
+		"syntax-b": "",
+		"syntax-a": "<bg-size>#",
 		"comment": ""
 	},
 	"stroke-width": {
 		"type": "modified",
-		"syntax-before": "<svg-length>",
-		"syntax-after": "[ <length-percentage> | <number> ]#",
+		"syntax-b": "<svg-length>",
+		"syntax-a": "[ <length-percentage> | <number> ]#",
 		"comment": ""
 	},
 	"tab-size": {
 		"type": "modified",
-		"syntax-before": "<integer> | <length>",
-		"syntax-after": "<number [0,∞]> | <length [0,∞]>",
+		"syntax-b": "<integer> | <length>",
+		"syntax-a": "<number [0,∞]> | <length [0,∞]>",
 		"comment": ""
 	},
 	"text-align": {
 		"type": "modified",
-		"syntax-before": "start | end | left | right | center | justify | match-parent",
-		"syntax-after": "start | end | left | right | center | <string> | justify | match-parent | justify-all",
+		"syntax-b": "start | end | left | right | center | justify | match-parent",
+		"syntax-a": "start | end | left | right | center | <string> | justify | match-parent | justify-all",
 		"comment": ""
 	},
 	"text-align-all": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "start | end | left | right | center | <string> | justify | match-parent",
+		"syntax-b": "",
+		"syntax-a": "start | end | left | right | center | <string> | justify | match-parent",
 		"comment": ""
 	},
 	"text-align-last": {
 		"type": "modified",
-		"syntax-before": "auto | start | end | left | right | center | justify",
-		"syntax-after": "auto | start | end | left | right | center | justify | match-parent",
+		"syntax-b": "auto | start | end | left | right | center | justify",
+		"syntax-a": "auto | start | end | left | right | center | justify | match-parent",
 		"comment": ""
 	},
 	"text-autospace": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | <autospace> | auto",
+		"syntax-b": "",
+		"syntax-a": "normal | <autospace> | auto",
 		"comment": ""
 	},
 	"text-box": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | <'text-box-trim'> || <'text-box-edge'>",
+		"syntax-b": "",
+		"syntax-a": "normal | <'text-box-trim'> || <'text-box-edge'>",
 		"comment": ""
 	},
 	"text-box-edge": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | <text-edge>",
+		"syntax-b": "",
+		"syntax-a": "auto | <text-edge>",
 		"comment": ""
 	},
 	"text-box-trim": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | trim-start | trim-end | trim-both",
+		"syntax-b": "",
+		"syntax-a": "none | trim-start | trim-end | trim-both",
 		"comment": ""
 	},
 	"text-combine-upright": {
 		"type": "modified",
-		"syntax-before": "none | all | [ digits <integer>? ]",
-		"syntax-after": "none | all | [ digits <integer [2,4]>? ]",
+		"syntax-b": "none | all | [ digits <integer>? ]",
+		"syntax-a": "none | all | [ digits <integer [2,4]>? ]",
 		"comment": ""
 	},
 	"text-decoration": {
 		"type": "modified",
-		"syntax-before": "<'text-decoration-line'> || <'text-decoration-style'> || <'text-decoration-color'> || <'text-decoration-thickness'>",
-		"syntax-after": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>",
+		"syntax-b": "<'text-decoration-line'> || <'text-decoration-style'> || <'text-decoration-color'> || <'text-decoration-thickness'>",
+		"syntax-a": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>",
 		"comment": ""
 	},
 	"text-decoration-skip": {
 		"type": "modified",
-		"syntax-before": "none | [ objects || [ spaces | [ leading-spaces || trailing-spaces ] ] || edges || box-decoration ]",
-		"syntax-after": "none | auto",
+		"syntax-b": "none | [ objects || [ spaces | [ leading-spaces || trailing-spaces ] ] || edges || box-decoration ]",
+		"syntax-a": "none | auto",
 		"comment": ""
 	},
 	"text-decoration-skip-box": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | all",
+		"syntax-b": "",
+		"syntax-a": "none | all",
 		"comment": ""
 	},
 	"text-decoration-skip-ink": {
 		"type": "modified",
-		"syntax-before": "auto | all | none",
-		"syntax-after": "auto | none | all",
+		"syntax-b": "auto | all | none",
+		"syntax-a": "auto | none | all",
 		"comment": ""
 	},
 	"text-decoration-skip-self": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | skip-all | [ skip-underline || skip-overline || skip-line-through ] | no-skip",
+		"syntax-b": "",
+		"syntax-a": "auto | skip-all | [ skip-underline || skip-overline || skip-line-through ] | no-skip",
 		"comment": ""
 	},
 	"text-decoration-skip-spaces": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | all | [ start || end ]",
+		"syntax-b": "",
+		"syntax-a": "none | all | [ start || end ]",
 		"comment": ""
 	},
 	"text-decoration-thickness": {
 		"type": "modified",
-		"syntax-before": "auto | from-font | <length> | <percentage>",
-		"syntax-after": "auto | from-font | <length-percentage>",
+		"syntax-b": "auto | from-font | <length> | <percentage>",
+		"syntax-a": "auto | from-font | <length-percentage>",
 		"comment": ""
 	},
 	"text-decoration-trim": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "<length>{1,2} | auto",
+		"syntax-b": "",
+		"syntax-a": "<length>{1,2} | auto",
 		"comment": ""
 	},
 	"text-emphasis-position": {
 		"type": "modified",
-		"syntax-before": "[ over | under ] && [ right | left ]",
-		"syntax-after": "[ over | under ] && [ right | left ]?",
+		"syntax-b": "[ over | under ] && [ right | left ]",
+		"syntax-a": "[ over | under ] && [ right | left ]?",
 		"comment": ""
 	},
 	"text-emphasis-skip": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "spaces || punctuation || symbols || narrow",
+		"syntax-b": "",
+		"syntax-a": "spaces || punctuation || symbols || narrow",
 		"comment": ""
 	},
 	"text-group-align": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | start | end | left | right | center",
+		"syntax-b": "",
+		"syntax-a": "none | start | end | left | right | center",
 		"comment": ""
 	},
 	"text-indent": {
 		"type": "modified",
-		"syntax-before": "<length-percentage> && hanging? && each-line?",
-		"syntax-after": "[ <length-percentage> ] && hanging? && each-line?",
+		"syntax-b": "<length-percentage> && hanging? && each-line?",
+		"syntax-a": "[ <length-percentage> ] && hanging? && each-line?",
 		"comment": ""
 	},
 	"text-justify": {
 		"type": "modified",
-		"syntax-before": "auto | inter-character | inter-word | none",
-		"syntax-after": "[ auto | none | inter-word | inter-character | ruby ] || no-compress",
+		"syntax-b": "auto | inter-character | inter-word | none",
+		"syntax-a": "[ auto | none | inter-word | inter-character | ruby ] || no-compress",
 		"comment": ""
 	},
 	"text-overflow": {
 		"type": "modified",
-		"syntax-before": "[ clip | ellipsis | <string> ]{1,2}",
-		"syntax-after": "[ clip | ellipsis | <string> | fade | <fade()> ]{1,2}",
+		"syntax-b": "[ clip | ellipsis | <string> ]{1,2}",
+		"syntax-a": "[ clip | ellipsis | <string> | fade | <fade()> ]{1,2}",
 		"comment": ""
 	},
 	"text-shadow": {
 		"type": "modified",
-		"syntax-before": "none | <shadow-t>#",
-		"syntax-after": "none | <shadow>#",
+		"syntax-b": "none | <shadow-t>#",
+		"syntax-a": "none | <shadow>#",
 		"comment": ""
 	},
 	"text-size-adjust": {
 		"type": "modified",
-		"syntax-before": "none | auto | <percentage>",
-		"syntax-after": "auto | none | <percentage [0,∞]>",
+		"syntax-b": "none | auto | <percentage>",
+		"syntax-a": "auto | none | <percentage [0,∞]>",
 		"comment": ""
 	},
 	"text-spacing": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | auto | <spacing-trim> || <autospace>",
+		"syntax-b": "",
+		"syntax-a": "none | auto | <spacing-trim> || <autospace>",
 		"comment": ""
 	},
 	"text-spacing-trim": {
 		"type": "modified",
-		"syntax-before": "space-all | normal | space-first | trim-start | trim-both | trim-all | auto",
-		"syntax-after": "<spacing-trim> | auto",
+		"syntax-b": "space-all | normal | space-first | trim-start | trim-both | trim-all | auto",
+		"syntax-a": "<spacing-trim> | auto",
 		"comment": ""
 	},
 	"-webkit-text-stroke": {
 		"type": "modified",
-		"syntax-before": "<length> || <color>",
-		"syntax-after": "<line-width> || <color>",
+		"syntax-b": "<length> || <color>",
+		"syntax-a": "<line-width> || <color>",
 		"comment": ""
 	},
 	"-webkit-text-stroke-width": {
 		"type": "modified",
-		"syntax-before": "<length>",
-		"syntax-after": "<line-width>",
+		"syntax-b": "<length>",
+		"syntax-a": "<line-width>",
 		"comment": ""
 	},
 	"text-transform": {
 		"type": "modified",
-		"syntax-before": "none | capitalize | uppercase | lowercase | full-width | full-size-kana",
-		"syntax-after": "none | [ capitalize | uppercase | lowercase ] || full-width || full-size-kana | math-auto",
+		"syntax-b": "none | capitalize | uppercase | lowercase | full-width | full-size-kana",
+		"syntax-a": "none | [ capitalize | uppercase | lowercase ] || full-width || full-size-kana | math-auto",
 		"comment": ""
 	},
 	"text-underline-offset": {
 		"type": "modified",
-		"syntax-before": "auto | <length> | <percentage>",
-		"syntax-after": "auto | <length-percentage>",
+		"syntax-b": "auto | <length> | <percentage>",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"text-underline-position": {
 		"type": "modified",
-		"syntax-before": "auto | from-font | [ under || [ left | right ] ]",
-		"syntax-after": "auto | [ from-font | under ] || [ left | right ]",
+		"syntax-b": "auto | from-font | [ under || [ left | right ] ]",
+		"syntax-a": "auto | [ from-font | under ] || [ left | right ]",
 		"comment": ""
 	},
 	"text-wrap": {
 		"type": "modified",
-		"syntax-before": "wrap | nowrap | balance | stable | pretty",
-		"syntax-after": "<'text-wrap-mode'> || <'text-wrap-style'>",
+		"syntax-b": "wrap | nowrap | balance | stable | pretty",
+		"syntax-a": "<'text-wrap-mode'> || <'text-wrap-style'>",
 		"comment": ""
 	},
 	"text-wrap-mode": {
 		"type": "modified",
-		"syntax-before": "auto | wrap | nowrap",
-		"syntax-after": "wrap | nowrap",
+		"syntax-b": "auto | wrap | nowrap",
+		"syntax-a": "wrap | nowrap",
 		"comment": ""
 	},
 	"timeline-scope": {
 		"type": "modified",
-		"syntax-before": "none | <dashed-ident>#",
-		"syntax-after": "none | all | <dashed-ident>#",
+		"syntax-b": "none | <dashed-ident>#",
+		"syntax-a": "none | all | <dashed-ident>#",
 		"comment": ""
 	},
 	"top": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage> | auto",
-		"syntax-after": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
+		"syntax-b": "<length> | <percentage> | auto",
+		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"transform-origin": {
 		"type": "modified",
-		"syntax-before": "[ <length-percentage> | left | center | right | top | bottom ] | [ [ <length-percentage> | left | center | right ] && [ <length-percentage> | top | center | bottom ] ] <length>?",
-		"syntax-after": "[ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] <length>? | [ [ center | left | right ] && [ center | top | bottom ] ] <length>?",
+		"syntax-b": "[ <length-percentage> | left | center | right | top | bottom ] | [ [ <length-percentage> | left | center | right ] && [ <length-percentage> | top | center | bottom ] ] <length>?",
+		"syntax-a": "[ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] <length>? | [ [ center | left | right ] && [ center | top | bottom ] ] <length>?",
 		"comment": ""
 	},
 	"transition-duration": {
 		"type": "modified",
-		"syntax-before": "<time>#",
-		"syntax-after": "<time [0s,∞]>#",
+		"syntax-b": "<time>#",
+		"syntax-a": "<time [0s,∞]>#",
 		"comment": ""
 	},
 	"unicode-bidi": {
 		"type": "modified",
-		"syntax-before": "normal | embed | isolate | bidi-override | isolate-override | plaintext | -moz-isolate | -moz-isolate-override | -moz-plaintext | -webkit-isolate | -webkit-isolate-override | -webkit-plaintext",
-		"syntax-after": "normal | embed | isolate | bidi-override | isolate-override | plaintext",
+		"syntax-b": "normal | embed | isolate | bidi-override | isolate-override | plaintext | -moz-isolate | -moz-isolate-override | -moz-plaintext | -webkit-isolate | -webkit-isolate-override | -webkit-plaintext",
+		"syntax-a": "normal | embed | isolate | bidi-override | isolate-override | plaintext",
 		"comment": ""
 	},
 	"vertical-align": {
 		"type": "modified",
-		"syntax-before": "baseline | sub | super | text-top | text-bottom | middle | top | bottom | <percentage> | <length>",
-		"syntax-after": "[ first | last ] || <'alignment-baseline'> || <'baseline-shift'>",
+		"syntax-b": "baseline | sub | super | text-top | text-bottom | middle | top | bottom | <percentage> | <length>",
+		"syntax-a": "[ first | last ] || <'alignment-baseline'> || <'baseline-shift'>",
 		"comment": ""
 	},
 	"view-timeline": {
 		"type": "modified",
-		"syntax-before": "[ <'view-timeline-name'> <'view-timeline-axis'>? ]#",
-		"syntax-after": "[ <'view-timeline-name'> [ <'view-timeline-axis'> || <'view-timeline-inset'> ]? ]#",
+		"syntax-b": "[ <'view-timeline-name'> <'view-timeline-axis'>? ]#",
+		"syntax-a": "[ <'view-timeline-name'> [ <'view-timeline-axis'> || <'view-timeline-inset'> ]? ]#",
 		"comment": ""
 	},
 	"view-timeline-name": {
 		"type": "modified",
-		"syntax-before": "none | <dashed-ident>#",
-		"syntax-after": "[ none | <dashed-ident> ]#",
+		"syntax-b": "none | <dashed-ident>#",
+		"syntax-a": "[ none | <dashed-ident> ]#",
 		"comment": ""
 	},
 	"view-transition-class": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | <custom-ident>+",
+		"syntax-b": "",
+		"syntax-a": "none | <custom-ident>+",
 		"comment": ""
 	},
 	"view-transition-group": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "normal | contain | nearest | <custom-ident>",
+		"syntax-b": "",
+		"syntax-a": "normal | contain | nearest | <custom-ident>",
 		"comment": ""
 	},
 	"voice-duration": {
 		"type": "modified",
-		"syntax-before": "auto | <time>",
-		"syntax-after": "auto | <time [0s,∞]>",
+		"syntax-b": "auto | <time>",
+		"syntax-a": "auto | <time [0s,∞]>",
 		"comment": ""
 	},
 	"voice-pitch": {
 		"type": "modified",
-		"syntax-before": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
-		"syntax-after": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
+		"syntax-b": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
+		"syntax-a": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
 		"comment": ""
 	},
 	"voice-range": {
 		"type": "modified",
-		"syntax-before": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
-		"syntax-after": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
+		"syntax-b": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
+		"syntax-a": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
 		"comment": ""
 	},
 	"voice-rate": {
 		"type": "modified",
-		"syntax-before": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage>",
-		"syntax-after": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage [0,∞]>",
+		"syntax-b": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage>",
+		"syntax-a": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage [0,∞]>",
 		"comment": ""
 	},
 	"white-space": {
 		"type": "modified",
-		"syntax-before": "normal | pre | nowrap | pre-wrap | pre-line | break-spaces | [ <'white-space-collapse'> || <'text-wrap'> || <'white-space-trim'> ]",
-		"syntax-after": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'> || <'white-space-trim'>",
+		"syntax-b": "normal | pre | nowrap | pre-wrap | pre-line | break-spaces | [ <'white-space-collapse'> || <'text-wrap'> || <'white-space-trim'> ]",
+		"syntax-a": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'> || <'white-space-trim'>",
 		"comment": ""
 	},
 	"widows": {
 		"type": "modified",
-		"syntax-before": "<integer>",
-		"syntax-after": "<integer [1,∞]>",
+		"syntax-b": "<integer>",
+		"syntax-a": "<integer [1,∞]>",
 		"comment": ""
 	},
 	"width": {
 		"type": "modified",
-		"syntax-before": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
-		"syntax-after": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
+		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
 	"word-break": {
 		"type": "modified",
-		"syntax-before": "normal | break-all | keep-all | break-word | auto-phrase",
-		"syntax-after": "normal | break-all | keep-all | manual | auto-phrase | break-word",
+		"syntax-b": "normal | break-all | keep-all | break-word | auto-phrase",
+		"syntax-a": "normal | break-all | keep-all | manual | auto-phrase | break-word",
 		"comment": ""
 	},
 	"word-space-transform": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "none | [ space | ideographic-space ] && auto-phrase?",
+		"syntax-b": "",
+		"syntax-a": "none | [ space | ideographic-space ] && auto-phrase?",
 		"comment": ""
 	},
 	"word-spacing": {
 		"type": "modified",
-		"syntax-before": "normal | <length>",
-		"syntax-after": "normal | <length-percentage>",
+		"syntax-b": "normal | <length>",
+		"syntax-a": "normal | <length-percentage>",
 		"comment": ""
 	},
 	"word-wrap": {
 		"type": "modified",
-		"syntax-before": "normal | break-word",
-		"syntax-after": "normal | break-word | anywhere",
+		"syntax-b": "normal | break-word",
+		"syntax-a": "normal | break-word | anywhere",
 		"comment": ""
 	},
 	"wrap-after": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | avoid | avoid-line | avoid-flex | line | flex",
+		"syntax-b": "",
+		"syntax-a": "auto | avoid | avoid-line | avoid-flex | line | flex",
 		"comment": ""
 	},
 	"wrap-before": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | avoid | avoid-line | avoid-flex | line | flex",
+		"syntax-b": "",
+		"syntax-a": "auto | avoid | avoid-line | avoid-flex | line | flex",
 		"comment": ""
 	},
 	"wrap-flow": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | both | start | end | minimum | maximum | clear",
+		"syntax-b": "",
+		"syntax-a": "auto | both | start | end | minimum | maximum | clear",
 		"comment": ""
 	},
 	"wrap-inside": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "auto | avoid",
+		"syntax-b": "",
+		"syntax-a": "auto | avoid",
 		"comment": ""
 	},
 	"wrap-through": {
 		"type": "added",
-		"syntax-before": "",
-		"syntax-after": "wrap | none",
+		"syntax-b": "",
+		"syntax-a": "wrap | none",
 		"comment": ""
 	},
 	"writing-mode": {
 		"type": "modified",
-		"syntax-before": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr | <svg-writing-mode>",
-		"syntax-after": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr",
+		"syntax-b": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr | <svg-writing-mode>",
+		"syntax-a": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr",
 		"comment": ""
 	},
 	"x": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"y": {
 		"type": "modified",
-		"syntax-before": "<length> | <percentage>",
-		"syntax-after": "<length-percentage>",
+		"syntax-b": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"z-index": {
 		"type": "modified",
-		"syntax-before": "auto | <integer>",
-		"syntax-after": "auto | <integer> | inherit",
+		"syntax-b": "auto | <integer>",
+		"syntax-a": "auto | <integer> | inherit",
 		"comment": ""
 	},
 	"zoom": {
 		"type": "modified",
-		"syntax-before": "normal | reset | <number> | <percentage>",
-		"syntax-after": "<number [0,∞]> || <percentage [0,∞]>",
+		"syntax-b": "normal | reset | <number> | <percentage>",
+		"syntax-a": "<number [0,∞]> || <percentage [0,∞]>",
 		"comment": ""
 	}
 }
