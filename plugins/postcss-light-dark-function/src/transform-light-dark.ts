@@ -2,7 +2,7 @@ import { tokenize } from '@csstools/css-tokenizer';
 import { TokenType } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode, WhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { parseLightDark } from './parse-light-dark';
-import { DARK_PROP } from './props';
+import { LIGHT_PROP } from './props';
 
 export function transformLightDark(value: string, toggleNameGenerator: () => string): { value: string, toggles: Map<string, string> } {
 	const toggles: Map<string, string> = new Map();
@@ -20,7 +20,7 @@ export function transformLightDark(value: string, toggleNameGenerator: () => str
 			const [light, dark] = lightDark;
 
 			const toggleName = toggleNameGenerator();
-			toggles.set(toggleName, `var(${DARK_PROP}) ${light.toString()}`);
+			toggles.set(toggleName, `var(${LIGHT_PROP}) ${dark.toString()}`);
 
 			return new FunctionNode(
 				[TokenType.Function, 'var(', -1, -1, { value: 'var' }],
@@ -35,7 +35,7 @@ export function transformLightDark(value: string, toggleNameGenerator: () => str
 					new WhitespaceNode(
 						[[TokenType.Whitespace, ' ', -1, -1, undefined]],
 					),
-					dark,
+					light,
 				],
 			);
 		},

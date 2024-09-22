@@ -1,9 +1,10 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { Container, Plugin, PluginCreator, Rule } from 'postcss';
-import { DARK_PROP, OFF, ON, toggleNameGenerator } from './props';
+import type { AtRule, Container, Plugin, PluginCreator, Rule } from 'postcss';
+import { LIGHT_PROP, OFF, ON, toggleNameGenerator } from './props';
 import { colorSchemes } from './color-schemes';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { transformLightDark } from './transform-light-dark';
+import { newNestedRuleWithSupportsNot } from './nested-rule';
 
 const COLOR_SCHEME_REGEX = /^color-scheme$/i;
 const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
@@ -17,7 +18,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 				return toggleNameGenerator(counter++);
 			};
 
-			const variableInheritanceRules: Map<Container, Rule> = new Map();
+			const variableInheritanceRules: Map<Container, { rule: Rule, supports: AtRule }> = new Map();
 
 			return {
 				postcssPlugin: 'postcss-light-dark-function',
@@ -28,19 +29,19 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 					}
 
 					if (COLOR_SCHEME_REGEX.test(decl.prop)) {
-						if (parent.some((sibling) => sibling.type === 'decl' && sibling.prop === DARK_PROP)) {
+						if (parent.some((sibling) => sibling.type === 'decl' && sibling.prop === LIGHT_PROP)) {
 							return;
 						}
 
 						const [light, dark] = colorSchemes(decl.value);
 
 						if (light && dark) {
-							decl.cloneBefore({ prop: DARK_PROP, value: OFF });
+							decl.cloneBefore({ prop: LIGHT_PROP, value: ON });
 
 							const parentClone = parent.clone();
 							parentClone.removeAll();
 
-							parentClone.append(decl.clone({ prop: DARK_PROP, value: ON }));
+							parentClone.append(decl.clone({ prop: LIGHT_PROP, value: OFF }));
 
 							const prefers = atRule({ name: 'media', params: '(prefers-color-scheme: dark)', source: parent.source });
 							prefers.append(parentClone);
@@ -51,13 +52,13 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						}
 
 						if (dark) {
-							decl.cloneBefore({ prop: DARK_PROP, value: ON });
+							decl.cloneBefore({ prop: LIGHT_PROP, value: OFF });
 
 							return;
 						}
 
 						if (light) {
-							decl.cloneBefore({ prop: DARK_PROP, value: OFF });
+							decl.cloneBefore({ prop: LIGHT_PROP, value: ON });
 
 							return;
 						}
@@ -86,19 +87,20 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						decl.cloneBefore({ value: modified.value });
 
 						if (decl.variable && decl.parent) {
-							const variableInheritanceRule = variableInheritanceRules.get(decl.parent) ?? rule({
-								selector: '& *',
-								source: decl.source,
-							});
+							const variableInheritanceRule = variableInheritanceRules.get(decl.parent) ?? newNestedRuleWithSupportsNot(
+								decl,
+								rule,
+								atRule
+							);
 
 							for (const [toggleName, toggle] of modified.toggles) {
-								variableInheritanceRule.append(decl.clone({ prop: toggleName, value: toggle }));
+								variableInheritanceRule.rule.append(decl.clone({ prop: toggleName, value: toggle }));
 							}
 
-							variableInheritanceRule.append(decl.clone({ value: modified.value }));
+							variableInheritanceRule.rule.append(decl.clone({ value: modified.value }));
 
 							if (!variableInheritanceRules.has(decl.parent)) {
-								decl.parent.append(variableInheritanceRule);
+								decl.parent.append(variableInheritanceRule.supports);
 								variableInheritanceRules.set(decl.parent, variableInheritanceRule);
 							}
 						}

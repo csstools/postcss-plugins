@@ -1,7 +1,7 @@
 :root {
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light dark;
 }@media (prefers-color-scheme: dark) {:root {
-	--csstools-color-scheme--dark: initial;
+	--csstools-color-scheme--light:  ;
 }
 }

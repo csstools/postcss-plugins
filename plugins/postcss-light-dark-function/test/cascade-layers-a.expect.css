@@ -1,6 +1,6 @@
 @layer theme {
 	:root {
-		--csstools-color-scheme--dark: initial;
+		--csstools-color-scheme--light:  ;
 		color-scheme: dark;
 	}
 }

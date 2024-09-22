@@ -31,6 +31,9 @@ postcssTape(plugin)({
 	'cascade-layers-d': {
 		message: 'supports cascade layers',
 	},
+	'color-scheme-normal': {
+		message: 'support color-scheme normal',
+	},
 	'common-patterns-1': {
 		message: 'support common patterns',
 	},

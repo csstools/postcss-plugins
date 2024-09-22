@@ -1,0 +1,21 @@
+:root {
+	color-scheme: normal;
+}
+
+.foo {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) black;
+	--color: var(--csstools-light-dark-toggle--0, white);
+	@supports not (color: light-dark(tan, tan)) {
+
+		& * {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) black;
+	--color: var(--csstools-light-dark-toggle--0, white);
+		}
+	}
+}
+
+@supports (color: light-dark(red, red)) {
+.foo {
+	--color: light-dark(white, black);
+}
+}

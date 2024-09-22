@@ -1,7 +1,9 @@
 :root {
 	--color-light-dark-1: light-dark(green, blue);
+	--color-light-dark-2: light-dark(lime, cyan);
 }
 
 :root {
 	color: light-dark(var(--green), blue);
+	background-color: light-dark(var(--pink), magenta);
 }

@@ -82,6 +82,25 @@
 					expected_dark: 'rgb(255, 0, 0)',
 				},
 				{
+					title: 'Light Dark Basic - C',
+					style: `
+						#light {
+							color-scheme: light;
+						}
+
+						#dark {
+							color-scheme: dark;
+						}
+
+						.box {
+							background-color: light-dark(white, black);
+						}
+					`,
+					expected_light: 'rgb(255, 255, 255)',
+					expected_dark: 'rgb(0, 0, 0)',
+					root_supports_only_light: true,
+				},
+				{
 					title: 'Light Dark Cascade Layers - A',
 					style: `
 						:root {
@@ -144,8 +163,15 @@
 					document.head.append(styleElement);
 
 					for (let element of elements) {
-						let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark);
-						assert_equals(getComputedStyle(element).backgroundColor, should_be_dark ? testCase.expected_dark : testCase.expected_light);
+						let should_be_dark = element.id == "dark" || (element.id == "system" && system_is_dark && !testCase.root_supports_only_light);
+						let actual_value = getComputedStyle(element).backgroundColor;
+						let expected_value = should_be_dark ? testCase.expected_dark : testCase.expected_light;
+
+						assert_equals(
+							actual_value,
+							expected_value,
+							`${testCase.title} (${element.id}, ${system_is_dark ? 'is dark' : 'is not dark'})`
+						);
 					}
 
 					styleElement.remove();
