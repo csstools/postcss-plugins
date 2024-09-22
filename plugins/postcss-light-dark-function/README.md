@@ -157,12 +157,9 @@ postcssLightDarkFunction({ preserve: false })
 .bar {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
 	--bar: var(--csstools-light-dark-toggle--1, cyan);
-	@supports not (color: light-dark(tan, tan)) {
-
-		& * {
+	& * {
 	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
 	--bar: var(--csstools-light-dark-toggle--1, cyan);
-		}
 	}
 }
 ```
