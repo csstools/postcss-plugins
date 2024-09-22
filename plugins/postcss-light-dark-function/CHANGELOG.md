@@ -1,6 +1,8 @@
 # Changes to PostCSS Light Dark Function
 
-### Unreleased (patch)
+### 2.0.4
+
+_September 22, 2024_
 
 - Fix inherited fallback custom props when `preserve` is `false`
 
