@@ -147,6 +147,49 @@
 				styleElement.remove();
 			}
 
+			{
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css`, {
+					method: 'POST',
+					body: `
+					.light {
+						color-scheme: light;
+					}
+
+					.dark {
+						color-scheme: dark;
+					}
+
+					#a {
+						--color-a: light-dark(rgb(1, 0, 0), rgb(0, 1, 0));
+						color: green;
+						background-color: light-dark(rgb(2, 0, 0), rgb(0, 2, 0));
+						border-color: var(--color-a);
+					}
+				`,
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				const a = getComputedStyle(document.getElementById('a'));
+				const b = getComputedStyle(document.getElementById('b'));
+				const c = getComputedStyle(document.getElementById('c'));
+				const d = getComputedStyle(document.getElementById('d'));
+				const e = getComputedStyle(document.getElementById('e'));
+
+				assert_equals(a.color, 'rgb(0, 128, 0)', 'a color');
+				assert_equals(a.backgroundColor, 'rgb(2, 0, 0)', 'a background-color');
+				assert_equals(a.borderColor, 'rgb(1, 0, 0)', 'a border-color');
+
+				assert_equals(b.color, 'rgb(0, 128, 0)', 'a color');
+				assert_equals(b.backgroundColor, 'rgba(0, 0, 0, 0)', 'a background-color');
+				assert_equals(b.borderColor, 'rgb(0, 128, 0)', 'a border-color');
+
+				styleElement.remove();
+			}
+
 			return true;
 		}
 	</script>

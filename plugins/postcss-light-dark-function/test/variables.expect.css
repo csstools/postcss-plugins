@@ -1,25 +1,35 @@
 :root {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) green;
-	--color-light-dark-1: var(--csstools-light-dark-toggle--0, blue);
-	& * {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) green;
-	--color-light-dark-1: var(--csstools-light-dark-toggle--0, blue);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) blue;
+	--color-light-dark-1: var(--csstools-light-dark-toggle--0, green);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) cyan;
+	--color-light-dark-2: var(--csstools-light-dark-toggle--1, lime);
+	@supports not (color: light-dark(tan, tan)) {
+		& * {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) blue;
+	--color-light-dark-1: var(--csstools-light-dark-toggle--0, green);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) cyan;
+	--color-light-dark-2: var(--csstools-light-dark-toggle--1, lime);
+		}
 	}
 }
 
 @supports (color: light-dark(red, red)) {
 :root {
 	--color-light-dark-1: light-dark(green, blue);
+	--color-light-dark-2: light-dark(lime, cyan);
 }
 }
 
 :root {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) var(--green);
-	color: var(--csstools-light-dark-toggle--1, blue);
+	--csstools-light-dark-toggle--2: var(--csstools-color-scheme--light) blue;
+	color: var(--csstools-light-dark-toggle--2, var(--green));
+	--csstools-light-dark-toggle--3: var(--csstools-color-scheme--light) magenta;
+	background-color: var(--csstools-light-dark-toggle--3, var(--pink));
 }
 
 @supports (color: light-dark(red, red)) {
 :root {
 	color: light-dark(var(--green), blue);
+	background-color: light-dark(var(--pink), magenta);
 }
 }

@@ -1,11 +1,11 @@
 :root {
 	/* Root only supports light mode */
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light;
 }
 
 .foo {
 	/* This element and its children only support dark mode */
-	--csstools-color-scheme--dark: initial;
+	--csstools-color-scheme--light:  ;
 	color-scheme: dark;
 }

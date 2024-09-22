@@ -1,8 +1,8 @@
 :root {
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light;
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) white;
-	--color: var(--csstools-light-dark-toggle--0, black);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) black;
+	--color: var(--csstools-light-dark-toggle--0, white);
 }
 
 @supports (color: light-dark(red, red)) {
@@ -11,7 +11,10 @@
 }
 }
 
-:root * {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) white;
-	--color: var(--csstools-light-dark-toggle--0, black);
+@supports not (color: light-dark(tan, tan)) {
+
+	:root * {
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) black;
+	--color: var(--csstools-light-dark-toggle--0, white);
+	}
 }

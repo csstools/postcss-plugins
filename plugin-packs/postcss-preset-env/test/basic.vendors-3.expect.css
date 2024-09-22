@@ -661,26 +661,31 @@
 }
 
 .dark {
-	--csstools-color-scheme--dark: initial;
+	--csstools-color-scheme--light:  ;
 	color-scheme: dark;
 }
 
 .light {
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light;
 }
 
 .schemed-colors {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) lch(from rgb(131, 27, 0) l c h);
-	color: magenta;
-	color: var(--csstools-light-dark-toggle--1, magenta);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) magenta;
+	color: lch(from rgb(131, 27, 0) l c h);
 	color: light-dark(lch(from rgb(131, 27, 0) l c h), magenta);
 	color: light-dark(lch(from color(display-p3 0.4939 0.10676 0) l c h), magenta);
 }
 
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+.schemed-colors {
+	color: var(--csstools-light-dark-toggle--1, lch(from rgb(131, 27, 0) l c h));
+}
+}
+
 .schemed-prop {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) deepskyblue;
+	--theme-color: var(--csstools-light-dark-toggle--0, cyan);
 }
 
 @supports (color: light-dark(red, red)) {
@@ -689,9 +694,12 @@
 }
 }
 
+@supports not (color: light-dark(tan, tan)) {
+
 .schemed-prop * {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) cyan;
-	--theme-color: var(--csstools-light-dark-toggle--0, deepskyblue);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) deepskyblue;
+	--theme-color: var(--csstools-light-dark-toggle--0, cyan);
+	}
 }
 
 .content-alt-text {

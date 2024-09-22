@@ -1,24 +1,26 @@
 /* multiple color vars in ":root" */
 :root {
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light dark;
 
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) red;
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) pink;
 
-	--color-red: var(--csstools-light-dark-toggle--0, pink);
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) blue;
-	--color-blue: var(--csstools-light-dark-toggle--1, cyan);
-	--csstools-light-dark-toggle--2: var(--csstools-color-scheme--dark) green;
-	--color-green: var(--csstools-light-dark-toggle--2, lime);
-	& * {
+	--color-red: var(--csstools-light-dark-toggle--0, red);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) cyan;
+	--color-blue: var(--csstools-light-dark-toggle--1, blue);
+	--csstools-light-dark-toggle--2: var(--csstools-color-scheme--light) lime;
+	--color-green: var(--csstools-light-dark-toggle--2, green);
+	@supports not (color: light-dark(tan, tan)) {
+		& * {
 
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) red;
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) pink;
 
-	--color-red: var(--csstools-light-dark-toggle--0, pink);
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) blue;
-	--color-blue: var(--csstools-light-dark-toggle--1, cyan);
-	--csstools-light-dark-toggle--2: var(--csstools-color-scheme--dark) green;
-	--color-green: var(--csstools-light-dark-toggle--2, lime);
+	--color-red: var(--csstools-light-dark-toggle--0, red);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) cyan;
+	--color-blue: var(--csstools-light-dark-toggle--1, blue);
+	--csstools-light-dark-toggle--2: var(--csstools-color-scheme--light) lime;
+	--color-green: var(--csstools-light-dark-toggle--2, green);
+		}
 	}
 }
 @supports (color: light-dark(red, red)) {
@@ -31,6 +33,6 @@
 }
 @media (prefers-color-scheme: dark) {
 :root {
-	--csstools-color-scheme--dark: initial;
+	--csstools-color-scheme--light:  ;
 }
 }

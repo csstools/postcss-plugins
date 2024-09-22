@@ -1,5 +1,10 @@
 # Changes to PostCSS Light Dark Function
 
+### Unreleased (patch)
+
+- Fix default behavior to be the `light` `color-scheme`
+- Wrap inherited fallback custom props with `@supports not (color: light-dark(tan, tan))` to reduce the number of assigned props in a document.
+
 ### 2.0.2
 
 _August 18, 2024_
