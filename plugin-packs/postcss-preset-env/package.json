@@ -64,7 +64,7 @@
 		"@csstools/postcss-ic-unit": "^4.0.0",
 		"@csstools/postcss-initial": "^2.0.0",
 		"@csstools/postcss-is-pseudo-class": "^5.0.0",
-		"@csstools/postcss-light-dark-function": "^2.0.2",
+		"@csstools/postcss-light-dark-function": "^2.0.3",
 		"@csstools/postcss-logical-float-and-clear": "^3.0.0",
 		"@csstools/postcss-logical-overflow": "^2.0.0",
 		"@csstools/postcss-logical-overscroll-behavior": "^2.0.0",
