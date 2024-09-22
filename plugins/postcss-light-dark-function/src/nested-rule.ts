@@ -1,25 +1,33 @@
-import type { AtRule, AtRuleProps, Declaration, Rule, RuleProps } from "postcss";
+import type { AtRule, AtRuleProps, ChildNode, Container, Declaration, Rule, RuleProps } from "postcss";
 
 export function newNestedRuleWithSupportsNot(
 	decl: Declaration,
 	rule: (ruleProps: RuleProps) => Rule,
-	atRule: (atRuleProps: AtRuleProps) => AtRule
-): { rule: Rule, supports: AtRule } {
+	atRule: (atRuleProps: AtRuleProps) => AtRule,
+	preserve?: boolean,
+): { inner: Rule, outer: Container<ChildNode> } {
+	const r = rule({
+		selector: '& *',
+		source: decl.source,
+	});
+
+	if (!preserve) {
+		return {
+			inner: r,
+			outer: r
+		}
+	}
+
 	const supports = atRule({
 		name: 'supports',
 		params: 'not (color: light-dark(tan, tan))',
 		source: decl.source,
 	});
 
-	const r = rule({
-		selector: '& *',
-		source: decl.source,
-	});
-
 	supports.append(r);
 
 	return {
-		rule: r,
-		supports: supports
+		inner: r,
+		outer: supports
 	}
 }

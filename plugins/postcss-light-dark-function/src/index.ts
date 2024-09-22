@@ -1,5 +1,5 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { AtRule, Container, Plugin, PluginCreator, Rule } from 'postcss';
+import type { ChildNode, Container, Plugin, PluginCreator, Rule } from 'postcss';
 import { LIGHT_PROP, OFF, ON, toggleNameGenerator } from './props';
 import { colorSchemes } from './color-schemes';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
@@ -18,7 +18,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 				return toggleNameGenerator(counter++);
 			};
 
-			const variableInheritanceRules: Map<Container, { rule: Rule, supports: AtRule }> = new Map();
+			const variableInheritanceRules: Map<Container, { inner: Rule, outer: Container<ChildNode> }> = new Map();
 
 			return {
 				postcssPlugin: 'postcss-light-dark-function',
@@ -90,17 +90,18 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 							const variableInheritanceRule = variableInheritanceRules.get(decl.parent) ?? newNestedRuleWithSupportsNot(
 								decl,
 								rule,
-								atRule
+								atRule,
+								opts?.preserve,
 							);
 
 							for (const [toggleName, toggle] of modified.toggles) {
-								variableInheritanceRule.rule.append(decl.clone({ prop: toggleName, value: toggle }));
+								variableInheritanceRule.inner.append(decl.clone({ prop: toggleName, value: toggle }));
 							}
 
-							variableInheritanceRule.rule.append(decl.clone({ value: modified.value }));
+							variableInheritanceRule.inner.append(decl.clone({ value: modified.value }));
 
 							if (!variableInheritanceRules.has(decl.parent)) {
-								decl.parent.append(variableInheritanceRule.supports);
+								decl.parent.append(variableInheritanceRule.outer);
 								variableInheritanceRules.set(decl.parent, variableInheritanceRule);
 							}
 						}

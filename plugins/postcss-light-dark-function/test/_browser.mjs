@@ -65,10 +65,10 @@ const requestListener = async function (req, res) {
 					break;
 				}
 
-				const css = await postcss([plugin({preserve: false})]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
+				const css = await postcss([plugin({ preserve: false })]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
 				res.setHeader('Content-type', 'text/css');
 				res.writeHead(200);
-				res.end(css.css.replaceAll('not (color: light-dark(tan, tan))', 'not (foo: foo)'));
+				res.end(css.css);
 				break;
 			}
 

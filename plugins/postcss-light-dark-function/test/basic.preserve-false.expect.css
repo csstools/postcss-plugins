@@ -104,11 +104,8 @@
 	--csstools-light-dark-toggle--13: var(--csstools-color-scheme--light) deepskyblue;
 	--theme-color: var(--csstools-light-dark-toggle--13, cyan);
 	color: blue;
-	@supports not (color: light-dark(tan, tan)) {
-
-		& * {
+	& * {
 	--csstools-light-dark-toggle--13: var(--csstools-color-scheme--light) deepskyblue;
 	--theme-color: var(--csstools-light-dark-toggle--13, cyan);
-		}
 	}
 }
