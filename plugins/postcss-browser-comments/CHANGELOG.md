@@ -1,5 +1,9 @@
 # Changes to PostCSS Browser Comments
 
+### Unreleased (patch)
+
+- Remove stray `console.log` statement
+
 ### 6.0.0
 
 _August 3, 2024_

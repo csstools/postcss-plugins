@@ -39,6 +39,7 @@ export default [
 		},
 
 		rules: {
+			'no-console': ['error'],
 			quotes: ['error', 'single'],
 			'comma-dangle': ['error', 'always-multiline'],
 			semi: ['error', 'always'],
@@ -75,6 +76,7 @@ export default [
 		},
 
 		rules: {
+			'no-console': ['error'],
 			'no-unused-vars': ['error', { 'caughtErrorsIgnorePattern': '_' }],
 			'no-constant-condition': 'off',
 		},
@@ -93,6 +95,7 @@ export default [
 			},
 		},
 		rules: {
+			'no-console': ['error'],
 			'no-shadow': 'off',
 			'@typescript-eslint/no-shadow': 'error',
 

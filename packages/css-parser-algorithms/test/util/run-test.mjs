@@ -11,6 +11,7 @@ export function runTest(source, testPath, assertEqual, expectParseError = false)
 				return;
 			}
 
+			// eslint-disable-next-line no-console
 			console.warn(err);
 			throw new Error(`Unable to parse "${source}"`);
 		};

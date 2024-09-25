@@ -16,6 +16,7 @@ export async function fsToStdout(plugin: Plugin, argo: Arguments): Promise<never
 			});
 
 			result.warnings().forEach(warn => {
+				// eslint-disable-next-line no-console
 				console.warn(warn.toString());
 			});
 
@@ -23,8 +24,10 @@ export async function fsToStdout(plugin: Plugin, argo: Arguments): Promise<never
 		}));
 	} catch (err) {
 		if (err instanceof Error) {
+			// eslint-disable-next-line no-console
 			console.error(argo.debug ? err : err.message);
 		} else {
+			// eslint-disable-next-line no-console
 			console.error(err);
 		}
 

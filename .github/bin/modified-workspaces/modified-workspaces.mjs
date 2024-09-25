@@ -61,6 +61,7 @@ export async function listModifiedWorkspaces() {
 
 		for (const internalDependency of internalDependencies) {
 			if (modifiedFile.startsWith(internalDependency)) {
+				// eslint-disable-next-line no-console
 				console.error('modified a private dependency', modifiedFile);
 				// this file can influence anything
 				// anything or everything might have changed
@@ -82,6 +83,7 @@ export async function listModifiedWorkspaces() {
 		}
 
 		if (isNonWorkspaceFile) {
+			// eslint-disable-next-line no-console
 			console.error('modifiedFile outside of workspaces', modifiedFile);
 			// files outside of workspaces include "package-lock.json", rollup config, ...
 			// anything or everything might have changed

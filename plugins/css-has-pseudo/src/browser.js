@@ -150,6 +150,7 @@ export default function cssHasPseudo(document, options) {
 			});
 		} catch (e) {
 			if (options.debug) {
+				// eslint-disable-next-line no-console
 				console.error(e);
 			}
 		}
@@ -176,6 +177,7 @@ export default function cssHasPseudo(document, options) {
 				matches = document.querySelectorAll(item.selector);
 			} catch (e) {
 				if (options.debug) {
+					// eslint-disable-next-line no-console
 					console.error(e);
 				}
 				return;
@@ -253,6 +255,7 @@ export default function cssHasPseudo(document, options) {
 						}
 					} catch (e) {
 						if (options.debug) {
+							// eslint-disable-next-line no-console
 							console.error(e);
 						}
 					}
@@ -262,6 +265,7 @@ export default function cssHasPseudo(document, options) {
 			});
 		} catch (e) {
 			if (options.debug) {
+				// eslint-disable-next-line no-console
 				console.error(e);
 			}
 		}

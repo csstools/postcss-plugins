@@ -21,14 +21,17 @@ export async function stdinToStdout(plugin: Plugin, argo : Arguments, helpLogger
 		});
 
 		result.warnings().forEach(warn => {
+			// eslint-disable-next-line no-console
 			console.warn(warn.toString());
 		});
 
 		resultCSS = result.css;
 	} catch (err) {
 		if (err instanceof Error) {
+			// eslint-disable-next-line no-console
 			console.error(argo.debug ? err : err.message);
 		} else {
+			// eslint-disable-next-line no-console
 			console.error(err);
 		}
 

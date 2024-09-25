@@ -27,12 +27,14 @@ const PACKAGE_DIR_NAME = 'package';
 
 export async function testPack(moduleName: string): Promise<void> {
 	if (platform.startsWith('win')) {
+		// eslint-disable-next-line no-console
 		console.log('Skipping test on Windows');
 
 		return;
 	}
 
 	if (!('resolve' in import.meta)) {
+		// eslint-disable-next-line no-console
 		console.log('Skipping test on platform without `import.meta.resolve` support');
 
 		return;
@@ -42,6 +44,7 @@ export async function testPack(moduleName: string): Promise<void> {
 
 	try {
 		const moduleURL = new URL(import.meta.resolve(moduleName));
+		// eslint-disable-next-line no-console
 		console.log(`Testing module: ${moduleName}`);
 
 		const modulePath = url.fileURLToPath(moduleURL);
@@ -105,6 +108,7 @@ async function pack(moduleDir: string, tmpDir: string): Promise<string> {
 			if (code === 0) {
 				resolve(stdoutBuffer.trim());
 			} else {
+				// eslint-disable-next-line no-console
 				console.error(stderrBuffer);
 				reject(new Error(`npm pack exited with code ${code}`));
 			}

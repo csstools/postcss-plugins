@@ -266,6 +266,7 @@ async function main(): Promise<void> {
 				'  @csstools/csstools-cli postcss-preset-env',
 			];
 
+			// eslint-disable-next-line no-console
 			console.warn(allHelp.join('\n'));
 		}
 	}

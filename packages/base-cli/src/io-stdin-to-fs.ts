@@ -32,6 +32,7 @@ export async function stdinToFs(plugin: Plugin, argo: Arguments, helpLogger: () 
 		});
 
 		result.warnings().forEach(warn => {
+			// eslint-disable-next-line no-console
 			console.warn(warn.toString());
 		});
 
@@ -45,14 +46,17 @@ export async function stdinToFs(plugin: Plugin, argo: Arguments, helpLogger: () 
 		}
 	} catch (err) {
 		if (err instanceof Error) {
+			// eslint-disable-next-line no-console
 			console.error(argo.debug ? err : err.message);
 		} else {
+			// eslint-disable-next-line no-console
 			console.error(err);
 		}
 
 		process.exit(1);
 	}
 
+	// eslint-disable-next-line no-console
 	console.log(`CSS was written to "${path.normalize(output)}"`);
 
 	process.exit(0);

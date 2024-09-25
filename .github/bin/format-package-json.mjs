@@ -251,6 +251,7 @@ const formatted = {};
 Object.assign(formatted, packageJSONInfo);
 
 if (process.env.GITHUB_ACTIONS && JSON.stringify(formatted, null, '\t') !== packageJSONInfoCopy) {
+	// eslint-disable-next-line no-console
 	console.error(`::error file=${path.relative(process.env.GITHUB_WORKSPACE, path.resolve('./package.json'))},line=1,col=1::package.json has an incorrect field order. Run "npm run lint" to resolve.`);
 	process.exit(1);
 }

@@ -6,6 +6,7 @@ export async function prepareNextReleasePlan(needsRelease, notReleasableNow) {
 	// Downstream dependents
 	let didChangeDownstreamPackages = false;
 
+	// eslint-disable-next-line no-console
 	console.log('\nPreparing next plan');
 
 	for (const workspace of notReleasableNow.values()) {

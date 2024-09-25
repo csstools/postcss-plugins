@@ -148,6 +148,7 @@ if (!process.env.DEBUG) {
 
 		if (errors.length > 0) {
 			errors.forEach((err) => {
+				// eslint-disable-next-line no-console
 				console.error(err);
 			});
 
@@ -157,5 +158,6 @@ if (!process.env.DEBUG) {
 } else {
 	startServers();
 
+	// eslint-disable-next-line no-console
 	console.log('visit : http://localhost:8080');
 }

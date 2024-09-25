@@ -3,16 +3,16 @@ import postcssTokenizer from 'postcss/lib/tokenize';
 import fs from 'node:fs';
 
 function logResults(label, tokenStreamLength, results) {
-	console.log(`-------------- ${label} -------------`);
-	console.log('tokens', tokenStreamLength);
-	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000);
-	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000);
-	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000);
-	console.log('-----------------------------------------------');
-	console.log('95th', results[949]);
-	console.log('50th', results[499]);
-	console.log('5th ', results[49]);
-	console.log('deviation', results[949] - results[49]);
+	console.log(`-------------- ${label} -------------`); // eslint-disable-line no-console
+	console.log('tokens', tokenStreamLength); // eslint-disable-line no-console
+	console.log('tokens/μs @ 95th', (tokenStreamLength / results[949]) / 1000); // eslint-disable-line no-console
+	console.log('tokens/μs @ 50th', (tokenStreamLength / results[499]) / 1000); // eslint-disable-line no-console
+	console.log('tokens/μs @ 5th ', (tokenStreamLength / results[49]) / 1000); // eslint-disable-line no-console
+	console.log('-----------------------------------------------'); // eslint-disable-line no-console
+	console.log('95th', results[949]); // eslint-disable-line no-console
+	console.log('50th', results[499]); // eslint-disable-line no-console
+	console.log('5th ', results[49]); // eslint-disable-line no-console
+	console.log('deviation', results[949] - results[49]); // eslint-disable-line no-console
 }
 
 const bootstrapSource = fs.readFileSync('./test/community/bootstrap.css').toString();
