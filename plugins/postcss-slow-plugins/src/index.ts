@@ -12,6 +12,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-slow-plugins',
 		async Once(root, { result, postcss }): Promise<void> {
+			// eslint-disable-next-line no-console
 			console.log('Analyzing with file:\n  ' + root.source?.input.from + '\n');
 
 			const inputCSS = root.source?.input.css ?? '';
@@ -88,7 +89,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return x;
 				});
 
+				// eslint-disable-next-line no-console
 				console.log('Most impactful to improve, ordered by drop in duration when excluded:');
+				// eslint-disable-next-line no-console
 				console.table(results.slice(0, 11));
 			}
 
@@ -139,7 +142,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return x;
 				});
 
+				// eslint-disable-next-line no-console
 				console.log('Most impactful to improve, ordered by increase in duration when running alone:');
+				// eslint-disable-next-line no-console
 				console.table(results.slice(0, 11));
 			}
 		},

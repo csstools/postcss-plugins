@@ -32,11 +32,14 @@ const changes = newHashes
 	.map(([,file]) => file);
 
 if (changes.length) {
+	// eslint-disable-next-line no-console
 	console.log('Changes have been detected in the following files:');
+	// eslint-disable-next-line no-console
 	changes.forEach(change => console.log('└ %s', change));
 
 	if (isRewriting) {
 		await fs.writeFile(hashesPath, JSON.stringify(newHashes, null, '\t'));
+		// eslint-disable-next-line no-console
 		console.log('Changes have been updated.');
 		process.exit(0);
 	} else {
@@ -44,4 +47,5 @@ if (changes.length) {
 	}
 }
 
+// eslint-disable-next-line no-console
 console.log('No changes detected');

@@ -168,5 +168,6 @@ if (!process.env.DEBUG) {
 } else {
 	startServers();
 
+	// eslint-disable-next-line no-console
 	console.log('visit : http://localhost:8080');
 }

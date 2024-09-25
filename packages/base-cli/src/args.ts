@@ -95,7 +95,7 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 			default:
 				if (arg.indexOf('-') === 0) {
 					// Stryker disable next-line all
-					console.warn(`[error] unknown argument : ${arg}\n`);
+					console.warn(`[error] unknown argument : ${arg}\n`); // eslint-disable-line no-console
 					// Stryker disable next-line all
 					helpLogger();
 					return SignalValue.InvalidArguments;
@@ -123,7 +123,7 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 
 	if (parsedArgs.inputs.length > 1 && parsedArgs.output) {
 		// Stryker disable next-line all
-		console.warn('[error] omit "--output" when processing multiple inputs\n');
+		console.warn('[error] omit "--output" when processing multiple inputs\n'); // eslint-disable-line no-console
 		// Stryker disable next-line all
 		helpLogger();
 		return SignalValue.InvalidArguments;
@@ -148,7 +148,7 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 			parsedPluginOpts = JSON.parse(pluginOpts) as Record<string, unknown>;
 		} catch {
 			// Stryker disable next-line all
-			console.warn('[error] plugin options must be valid JSON\n');
+			console.warn('[error] plugin options must be valid JSON\n'); // eslint-disable-line no-console
 			// Stryker disable next-line all
 			helpLogger();
 			return SignalValue.InvalidArguments;
@@ -161,7 +161,7 @@ export function parseArguments(args: Array<string>, allowedPluginOpts: Array<str
 			parsedArgs.pluginOptions[key] = value;
 		} else {
 			// Stryker disable next-line all
-			console.warn(`[error] unknown plugin option: ${key}\n`);
+			console.warn(`[error] unknown plugin option: ${key}\n`); // eslint-disable-line no-console
 			// Stryker disable next-line all
 			helpLogger();
 			return SignalValue.InvalidArguments;

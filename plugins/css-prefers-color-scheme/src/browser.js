@@ -72,6 +72,7 @@ const prefersColorSchemeInit = (initialColorScheme, options) => {
 				});
 			} catch (e) {
 				if (options.debug) {
+					// eslint-disable-next-line no-console
 					console.error(e);
 				}
 			}

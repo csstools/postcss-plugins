@@ -49,6 +49,7 @@ export async function prepareCurrentReleasePlan() {
 			} else if (changelog.includes('Unreleased (major)')) {
 				increment = 'major';
 			} else {
+				// eslint-disable-next-line no-console
 				console.warn('Invalid CHANGELOG.md in', workspace.name);
 				notReleasableNow.set(workspace.name, workspace);
 				continue WORKSPACES_LOOP;
@@ -61,6 +62,7 @@ export async function prepareCurrentReleasePlan() {
 					notReleasableNow.set(workspace.name, workspace);
 				}
 
+				// eslint-disable-next-line no-console
 				console.warn('Current npm user does not have write access for', workspace.name);
 				continue WORKSPACES_LOOP;
 			}
@@ -92,23 +94,30 @@ export async function prepareCurrentReleasePlan() {
 	}
 
 	if (needsRelease.size === 0) {
+		// eslint-disable-next-line no-console
 		console.log('Nothing to release');
 		process.exit(0);
 	}
 
 	if (maybeNextPlan.size) {
+		// eslint-disable-next-line no-console
 		console.log('Excluded:');
 		for (const workspace of maybeNextPlan.values()) {
+			// eslint-disable-next-line no-console
 			console.log(`  - ${workspace.name}`);
 		}
+		// eslint-disable-next-line no-console
 		console.log(''); // empty line
 	}
 
 	if (needsRelease.size) {
+		// eslint-disable-next-line no-console
 		console.log('Release plan:');
 		for (const workspace of needsRelease.values()) {
+			// eslint-disable-next-line no-console
 			console.log(`  - ${workspace.name} (${workspace.increment})`);
 		}
+		// eslint-disable-next-line no-console
 		console.log(''); // empty line
 	}
 

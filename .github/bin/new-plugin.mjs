@@ -6,16 +6,19 @@ const pluginName = process.argv.slice(2).join(' ');
 // Plugin name checks
 {
 	if (!pluginName) {
+		// eslint-disable-next-line no-console
 		console.warn('A plugin name must be provided:\n  new-plugin <human readable name>\n  new-plugin Cascade Layers');
 		process.exit(1);
 	}
 
 	if (pluginName.startsWith('postcss-')) {
+		// eslint-disable-next-line no-console
 		console.warn('Plugin name cannot start with "postcss-", it is added by this scripts.');
 		process.exit(1);
 	}
 
 	if (pluginName.includes('/')) {
+		// eslint-disable-next-line no-console
 		console.warn('Plugin name cannot contain "/"');
 		process.exit(1);
 	}
@@ -29,6 +32,7 @@ const exportName = 'postcss' + pluginName.replace(/\s+/g, '');
 const basePluginDir = './plugins/postcss-base-plugin';
 const pluginDir = './plugins/' + pluginSlug;
 
+// eslint-disable-next-line no-console
 console.log(`- Creating new plugin ${pluginName}`);
 
 // Copy base plugin
@@ -36,6 +40,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	await fs.rm(pluginDir, { recursive: true, force: true });
 	await fs.cp(basePluginDir, pluginDir, { recursive: true });
 
+	// eslint-disable-next-line no-console
 	console.log('- Copied base plugin to', pluginDir);
 }
 
@@ -44,6 +49,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 	await fs.rm(path.join(pluginDir, 'dist'), { recursive: true, force: true });
 	await fs.rm(path.join(pluginDir, 'node_modules'), { recursive: true, force: true });
 
+	// eslint-disable-next-line no-console
 	console.log('- Cleaned up files and directories not required in a new plugin');
 }
 
@@ -65,6 +71,7 @@ console.log(`- Creating new plugin ${pluginName}`);
 `,
 	);
 
+	// eslint-disable-next-line no-console
 	console.log('- Relabeled references to base plugin');
 }
 
@@ -85,21 +92,23 @@ console.log(`- Creating new plugin ${pluginName}`);
 
 	await fs.writeFile(path.join(pluginDir, 'package.json'), JSON.stringify(packageInfo, null, '\t'));
 
+	// eslint-disable-next-line no-console
 	console.log('- Updated "package.json"');
 }
 
+// eslint-disable-next-line no-console
 console.log('\nDone! 🎉');
 
 // Next steps
 {
-	console.log('\nYour next steps:');
-	console.log('- Run : "npm install" from the root directory');
-	console.log(`- Run : "cd plugins/${pluginSlug}"`);
-	console.log('- Run : "npm run docs" to generate documentation');
-	console.log('- Run : "npm run build" to build your plugin');
-	console.log('- Run : "npm run test" to test your plugin');
-	console.log('- Run : "npm run test:rewrite-expects" to update test expects');
-	console.log('\nChange "blue" to "purple" in "src/index.ts" and see how it affects the test outcome');
+	console.log('\nYour next steps:'); // eslint-disable-line no-console
+	console.log('- Run : "npm install" from the root directory'); // eslint-disable-line no-console
+	console.log(`- Run : "cd plugins/${pluginSlug}"`); // eslint-disable-line no-console
+	console.log('- Run : "npm run docs" to generate documentation'); // eslint-disable-line no-console
+	console.log('- Run : "npm run build" to build your plugin'); // eslint-disable-line no-console
+	console.log('- Run : "npm run test" to test your plugin'); // eslint-disable-line no-console
+	console.log('- Run : "npm run test:rewrite-expects" to update test expects'); // eslint-disable-line no-console
+	console.log('\nChange "blue" to "purple" in "src/index.ts" and see how it affects the test outcome'); // eslint-disable-line no-console
 }
 
 // Helpers

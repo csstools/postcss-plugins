@@ -21,6 +21,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	if (!options.results) {
 		options.results = (results): void => {
+			// eslint-disable-next-line no-console
 			console.log(results);
 		};
 	}
