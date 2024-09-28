@@ -66,6 +66,9 @@ const testCases = {
 		case 'test/css-import-tests/002-sub-features/004-at-supports/012':
 			testCases[key].warnings = 1;
 			break;
+		case 'test/css-import-tests/002-sub-features/005-at-scope/012':
+			testCases[key].warnings = 1;
+			break;
 		default:
 			break;
 	}

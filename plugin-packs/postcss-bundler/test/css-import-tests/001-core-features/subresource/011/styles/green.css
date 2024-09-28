@@ -1,0 +1,5 @@
+@property --background-image {
+	syntax: '<url>';
+	inherits: true;
+	initial-value: url(./green.png);
+}

@@ -17,6 +17,7 @@ export function base64EncodedConditionalImport(prelude: string, conditions: Arra
 		first.layer,
 		first.media,
 		first.supports,
+		first.scope,
 	)}`;
 
 	for (const condition of conditions) {
@@ -26,6 +27,7 @@ export function base64EncodedConditionalImport(prelude: string, conditions: Arra
 			condition.layer,
 			condition.media,
 			condition.supports,
+			condition.scope,
 		)}`;
 	}
 

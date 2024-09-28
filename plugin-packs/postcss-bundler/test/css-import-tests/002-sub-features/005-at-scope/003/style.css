@@ -1,0 +1,2 @@
+@import url("green.css") scope(.donut-edge);
+@import url("red.css") scope((.donut-edge) to (.donut-hole > *));

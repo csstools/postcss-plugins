@@ -1,0 +1,10 @@
+/* green.css */
+@media (min-width: 10px) {
+    @scope (.donut-edge) {
+        @layer {
+            .box {
+	background-color: green;
+}
+        }
+    }
+}

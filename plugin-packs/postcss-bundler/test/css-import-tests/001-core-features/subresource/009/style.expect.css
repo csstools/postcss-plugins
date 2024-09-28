@@ -1,15 +1,4 @@
-/* ./styles/green.css */
-
-@property --background-image {
-	syntax: '*';
-	inherits: true;
-	initial-value: none;
-}
-
+/* ./example.com/green.css */
 .box {
-	background-image: var(--background-image);
-}
-
-.box {
-	--background-image: url(./green.png);
+	background-image: url("example.com/green.png");
 }

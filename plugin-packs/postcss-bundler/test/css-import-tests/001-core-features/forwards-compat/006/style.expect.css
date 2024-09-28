@@ -1,0 +1,6 @@
+/* green.css */
+@media print totally-invalid(yup), screen {
+    .box {
+	background-color: green;
+}
+}
