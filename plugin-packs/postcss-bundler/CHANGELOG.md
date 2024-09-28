@@ -1,6 +1,8 @@
 # Changes to PostCSS Bundler
 
-### Unreleased (patch)
+### 2.0.2
+
+_September 28, 2024_
 
 - Add support for `scope()` conditions on `@import` statements
 
