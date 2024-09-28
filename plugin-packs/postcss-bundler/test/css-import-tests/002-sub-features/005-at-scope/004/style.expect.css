@@ -1,0 +1,13 @@
+/* a.css */
+/* b.css */
+@scope (.donut-edge) {
+    @layer a {
+        @scope (.donut-body) {
+            @layer b {
+                .box {
+	background-color: green;
+}
+            }
+        }
+    }
+}

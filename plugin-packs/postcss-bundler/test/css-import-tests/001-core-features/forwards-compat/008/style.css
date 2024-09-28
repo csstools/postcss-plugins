@@ -1,0 +1,2 @@
+@import url(green.css);
+@import url(red.css) screen totally-invalid(yup);

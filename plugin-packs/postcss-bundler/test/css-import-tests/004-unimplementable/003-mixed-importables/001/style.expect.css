@@ -1,17 +1,17 @@
 /* a.css */
-@layer a;
-/* b.css */
-@layer b;
-@import url("http://localhost:8080/c.css");
-/* green.css */
-@layer b{
-    .box {
-	background-color: green;
+
+.box {
+	animation: BOX;
+	animation-duration: 0s;
+	animation-fill-mode: both;
 }
+
+@keyframes BOX {
+
+	0%,
+	100% {
+		background-color: red;
+	}
 }
-/* red.css */
-@layer a{
-    .box {
-	background-color: red;
-}
-}
+
+@import url("http://localhost:8080/b.css");

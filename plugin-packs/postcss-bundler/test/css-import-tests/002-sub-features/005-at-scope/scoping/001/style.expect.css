@@ -1,0 +1,12 @@
+/* green.css */
+@scope (.donut-hole) {
+    .box {
+	background-color: green;
+}
+}
+/* red.css */
+@scope (.donut-edge) {
+    .box {
+	background-color: red;
+}
+}

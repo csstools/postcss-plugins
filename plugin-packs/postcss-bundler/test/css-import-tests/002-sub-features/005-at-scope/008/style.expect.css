@@ -1,0 +1,18 @@
+/* green.css */
+@scope (.donut-edge) {
+    .box {
+	background-color: green;
+}
+}
+/* red.css */
+@media (min-width: 1px) scope(.donut-edge) {
+    .box {
+	background-color: red;
+}
+}
+/* red.css */
+@media screen scope(.donut-edge) {
+    .box {
+	background-color: red;
+}
+}

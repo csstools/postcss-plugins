@@ -38,6 +38,16 @@ export function applyConditions(stylesheet: Stylesheet, atRule: (defaults?: AtRu
 				atRules.push(mediaNode);
 			}
 
+			if (typeof condition.scope !== 'undefined') {
+				const scopeNode = atRule({
+					name: 'scope',
+					params: condition.scope,
+					source: stmt.importingNode?.source ?? parent.source,
+				});
+
+				atRules.push(scopeNode);
+			}
+
 			if (typeof condition.supports !== 'undefined') {
 				const supportsNode = atRule({
 					name: 'supports',

@@ -1,8 +1,9 @@
-import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, isTokenString, isTokenURL, tokenize } from '@csstools/css-tokenizer';
-import { IS_LAYER_REGEX, IS_SUPPORTS_REGEX, IS_URL_REGEX } from './names';
+import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, SimpleBlockNode, stringify } from '@csstools/css-parser-algorithms';
+import { isTokenIdent, isTokenOpenParen, isTokenString, isTokenURL, tokenize, TokenType } from '@csstools/css-tokenizer';
+import { IS_LAYER_REGEX, IS_SCOPE_REGEX, IS_SUPPORTS_REGEX, IS_URL_REGEX } from './names';
 
-export function parseAtImport(params: string) : false | { uri: string; fullUri: string; layer?: string; media?: string; supports?: string; } {
+export function parseAtImport(params: string): false | { uri: string; fullUri: string; layer?: string; media?: string; supports?: string; scope?: string; } {
 	const tokens = tokenize({ css: params });
 
 	// Fast path for common cases:
@@ -30,11 +31,12 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 	let fullUri = '';
 	let layer : string | undefined;
 	let media : string | undefined;
-	let supports : string | undefined;
+	let supports: string | undefined;
+	let scope: string | undefined;
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
-		if (isWhitespaceNode(componentValue) || isCommentNode(componentValue)) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
 			continue;
 		}
 
@@ -64,7 +66,7 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 
 			for (let j = 0; j < componentValue.value.length; j++) {
 				const childComponentValue = componentValue.value[j];
-				if (isWhitespaceNode(childComponentValue) || isCommentNode(childComponentValue)) {
+				if (isWhiteSpaceOrCommentNode(childComponentValue)) {
 					continue;
 				}
 
@@ -125,6 +127,18 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 			continue;
 		}
 
+		if (
+			isFunctionNode(componentValue) &&
+			IS_SCOPE_REGEX.test(componentValue.getName())
+		) {
+			if (typeof scope !== 'undefined') {
+				return false;
+			}
+
+			scope = stringify([wrapInParenthesisIfNeeded(componentValue.value)]);
+			continue;
+		}
+
 		media = stringify([componentValues.slice(i)]);
 		break;
 	}
@@ -140,7 +154,29 @@ export function parseAtImport(params: string) : false | { uri: string; fullUri: 
 		layer,
 		media,
 		supports,
+		scope,
 	};
+}
+
+function wrapInParenthesisIfNeeded(componentValues: Array<ComponentValue>): Array<ComponentValue> {
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
+			continue;
+		}
+
+		if (isSimpleBlockNode(componentValue) && isTokenOpenParen(componentValue.startToken)) {
+			return componentValues;
+		}
+	}
+
+	return [
+		new SimpleBlockNode(
+			[TokenType.OpenParen, '(', -1, -1, undefined],
+			[TokenType.CloseParen, ')', -1, -1, undefined],
+			componentValues
+		)
+	];
 }
 
 function stripHash(str: string): string {

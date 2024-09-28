@@ -233,11 +233,17 @@ function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | nul
 		importingNode,
 	};
 
-	if (typeof parsed.layer !== 'undefined' || typeof parsed.media !== 'undefined' || typeof parsed.supports !== 'undefined') {
+	if (
+		typeof parsed.layer !== 'undefined' ||
+		typeof parsed.media !== 'undefined' ||
+		typeof parsed.supports !== 'undefined' ||
+		typeof parsed.scope !== 'undefined'
+	) {
 		stmt.conditions.push({
 			layer: parsed.layer,
 			media: parsed.media,
 			supports: parsed.supports,
+			scope: parsed.scope,
 		});
 	}
 

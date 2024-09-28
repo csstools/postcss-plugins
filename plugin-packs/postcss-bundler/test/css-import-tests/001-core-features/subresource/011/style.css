@@ -1,1 +1,5 @@
-@import url("./example.com/green.css");
+@import url("./styles/green.css");
+
+.box {
+	background-image: var(--background-image);
+}

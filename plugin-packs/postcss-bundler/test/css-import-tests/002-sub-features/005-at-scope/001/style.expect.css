@@ -1,0 +1,6 @@
+/* a.css */
+@scope (.donut-edge) {
+    .box {
+	background-color: green;
+}
+}

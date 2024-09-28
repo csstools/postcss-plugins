@@ -1,0 +1,10 @@
+/* green.css */
+.box {
+	background-color: green;
+}
+/* red.css */
+@media totally-invalid(yup) screen {
+	.box {
+	background-color: red;
+}
+}
