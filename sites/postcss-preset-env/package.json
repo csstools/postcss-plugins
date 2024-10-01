@@ -51,7 +51,7 @@
 		"directory": "sites/postcss-preset-env"
 	},
 	"devDependencies": {
-		"@11ty/eleventy": "^3.0.0-beta.1",
+		"@11ty/eleventy": "^3.0.0",
 		"@11ty/eleventy-plugin-rss": "^2.0.2",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@babel/core": "^7.24.9",
