@@ -82,7 +82,7 @@ function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<str
 
 		const name = node.getName();
 		if (!name.startsWith('--')) {
-			return false;
+			return;
 		}
 
 		const replacement = replacements.get(name);
@@ -114,7 +114,7 @@ function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<st
 
 		const name = node.getName();
 		if (!name.startsWith('--')) {
-			return false;
+			return;
 		}
 
 		const replacement = replacements.get(name);

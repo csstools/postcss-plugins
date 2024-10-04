@@ -197,3 +197,17 @@
 		to-clone: 1;
 	}
 }
+@media screen {
+@media (color) and (max-color:2147477350) {
+	.test5 {
+		background: green;
+	}
+}
+}
+@media not  screen {
+@media (color) and (color:2147477350) {
+	.test5 {
+		background: green;
+	}
+}
+}
