@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (patch)
+### 11.0.2
+
+_October 4, 2024_
 
 - Fix `@custom-media --foo screen; @media (color) and (--foo) {}` not transforming.
 
