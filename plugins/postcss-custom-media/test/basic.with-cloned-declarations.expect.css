@@ -383,3 +383,24 @@
 }
 
 @custom-media --foo (--does-not-exist-1);
+
+@custom-media --custom-bool-after-regular-bool screen;
+@media screen {
+@media (color) and (max-color:2147477350) {
+	.test5 {
+		background: green;
+	}
+}
+}
+@media not  screen {
+@media (color) and (color:2147477350) {
+	.test5 {
+		background: green;
+	}
+}
+}
+@media (color) and (--custom-bool-after-regular-bool) {
+	.test5 {
+		background: green;
+	}
+}
