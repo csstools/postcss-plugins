@@ -71,7 +71,7 @@
 		"postcss-color-functional-notation": "^7.0.2",
 		"postcss-color-hex-alpha": "^10.0.0",
 		"postcss-color-rebeccapurple": "^10.0.0",
-		"postcss-custom-media": "^11.0.1",
+		"postcss-custom-media": "^11.0.2",
 		"postcss-custom-properties": "^14.0.1",
 		"postcss-custom-selectors": "^8.0.1",
 		"postcss-dir-pseudo-class": "^9.0.0",
