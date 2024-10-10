@@ -25,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-custom-media',
 		prepare(): Plugin {
 			const transformedNodes = new WeakSet();
-			let customMedia: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }> = new Map();
+			let customMedia: Map<string, { truthy: Array<MediaQuery>, falsy: Array<Array<MediaQuery>> }> = new Map();
 
 			return {
 				postcssPlugin: 'postcss-custom-media',

@@ -1,5 +1,5 @@
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { stringify } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, stringify } from '@csstools/css-tokenizer';
 import type { MediaAnd, MediaAndWalkerEntry, MediaAndWalkerParent } from './media-and';
 import type { MediaInParens } from './media-in-parens';
 import type { MediaOr, MediaOrWalkerEntry, MediaOrWalkerParent } from './media-or';
@@ -34,6 +34,17 @@ export class MediaConditionListWithAnd {
 
 	toString(): string {
 		return stringify(...this.before) + this.leading.toString() + this.list.map((item) => item.toString()).join('') + stringify(...this.after);
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		if (!this.before.length) {
+			return this.leading.hasLeadingSpace();
+		}
+
+		return isTokenWhiteSpaceOrComment(this.before[0]);
 	}
 
 	indexOf(item: MediaInParens | MediaAnd): number | string {
@@ -168,6 +179,17 @@ export class MediaConditionListWithOr {
 
 	toString(): string {
 		return stringify(...this.before) + this.leading.toString() + this.list.map((item) => item.toString()).join('') + stringify(...this.after);
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		if (!this.before.length) {
+			return this.leading.hasLeadingSpace();
+		}
+
+		return isTokenWhiteSpaceOrComment(this.before[0]);
 	}
 
 	indexOf(item: MediaInParens | MediaOr): number | string {

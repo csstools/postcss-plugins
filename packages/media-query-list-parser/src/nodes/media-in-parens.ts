@@ -1,6 +1,6 @@
 import type { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { stringify } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, stringify } from '@csstools/css-tokenizer';
 import type { GeneralEnclosed } from './general-enclosed';
 import type { MediaAnd } from './media-and';
 import type { MediaCondition } from './media-condition';
@@ -38,6 +38,17 @@ export class MediaInParens {
 
 	toString(): string {
 		return stringify(...this.before) + this.media.toString() + stringify(...this.after);
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		if (!this.before.length) {
+			return this.media.hasLeadingSpace();
+		}
+
+		return isTokenWhiteSpaceOrComment(this.before[0]);
 	}
 
 	indexOf(item: MediaCondition | MediaFeature | GeneralEnclosed): number | string {

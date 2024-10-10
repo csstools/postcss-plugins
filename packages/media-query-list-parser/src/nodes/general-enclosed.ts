@@ -1,5 +1,5 @@
 import type { ComponentValue, ContainerNode } from '@csstools/css-parser-algorithms';
-import type { CSSToken } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, type CSSToken } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 
 export class GeneralEnclosed {
@@ -17,6 +17,13 @@ export class GeneralEnclosed {
 
 	toString(): string {
 		return this.value.toString();
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		return isTokenWhiteSpaceOrComment(this.value.tokens()[0]);
 	}
 
 	indexOf(item: ComponentValue): number | string {

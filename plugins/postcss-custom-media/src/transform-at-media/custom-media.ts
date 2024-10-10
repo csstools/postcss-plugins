@@ -6,7 +6,7 @@ import { atMediaParamsTokens } from '../transform-at-media/at-media-params-token
 import { replaceTrueAndFalseTokens } from './true-and-false';
 import { isTokenIdent } from '@csstools/css-tokenizer';
 
-export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<MediaQuery>, dependencies: Array<[string, string]> } | false {
+export function parseCustomMedia(params: string): { name: string, truthy: Array<MediaQuery>, falsy: Array<Array<MediaQuery>>, dependencies: Array<[string, string]> } | false {
 	const tokens = atMediaParamsTokens(params);
 
 	const customMediaReferences: Set<string> = new Set();
@@ -50,13 +50,11 @@ export function parseCustomMedia(params: string): { name: string, truthy: Array<
 	const mediaQueryListFalsy = parseFromTokens(cloneTokens(remainder), {
 		preserveInvalidMediaQueries: true,
 		onParseError: () => {
-			throw new Error(`Unable to parse media query "${stringify(...remainder) }"`);
+			throw new Error(`Unable to parse media query "${stringify(...remainder)}"`);
 		},
+	}).map((mediaQuery) => {
+		return mediaQuery.negateQuery();
 	});
-
-	for (let i = 0; i < mediaQueryListFalsy.length; i++) {
-		mediaQueryListFalsy[i] = mediaQueryListFalsy[i].negateQuery();
-	}
 
 	return {
 		name: name,

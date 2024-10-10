@@ -9,7 +9,7 @@
 }
 }
 
-@media not all and (min-width: 300px) and (min-height: 300px) {
+@media not all and ( (min-width: 300px) and (min-height: 300px)) {
 
 @media not screen and (color:2147477350) {
 	.a {

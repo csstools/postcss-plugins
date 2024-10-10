@@ -43,7 +43,9 @@ export function isToken(x: any): x is CSSToken { // eslint-disable-line @typescr
 /**
  * Assert that a token is a numeric token
  */
-export function isTokenNumeric(x: CSSToken): x is NumericToken {
+export function isTokenNumeric(x?: CSSToken | null): x is NumericToken {
+	if (!x) return false;
+
 	switch (x[0]) {
 		case TokenType.Dimension:
 		case TokenType.Number:
@@ -57,7 +59,9 @@ export function isTokenNumeric(x: CSSToken): x is NumericToken {
 /**
  * Assert that a token is a whitespace or comment token
  */
-export function isTokenWhiteSpaceOrComment(x: CSSToken): x is TokenWhitespace | TokenComment {
+export function isTokenWhiteSpaceOrComment(x?: CSSToken | null): x is TokenWhitespace | TokenComment {
+	if (!x) return false;
+
 	switch (x[0]) {
 		case TokenType.Whitespace:
 		case TokenType.Comment:

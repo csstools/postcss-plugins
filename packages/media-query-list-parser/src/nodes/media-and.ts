@@ -1,5 +1,5 @@
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { stringify } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, stringify } from '@csstools/css-tokenizer';
 import type { MediaInParens, MediaInParensWalkerEntry, MediaInParensWalkerParent } from './media-in-parens';
 import { NodeType } from '../util/node-type';
 
@@ -23,6 +23,13 @@ export class MediaAnd {
 
 	toString(): string {
 		return stringify(...this.modifier) + this.media.toString();
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		return isTokenWhiteSpaceOrComment(this.modifier[0]);
 	}
 
 	indexOf(item: MediaInParens): number | string {

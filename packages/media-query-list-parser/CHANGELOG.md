@@ -1,5 +1,9 @@
 # Changes to Media Query List Parser
 
+### Unreleased (major)
+
+- `MediaQuery.prototype.negateQuery()` now returns an array of `MediaQuery`. e.g. negating `screen and (color)` returns `['not screen', 'not (color)']`
+
 ### 3.0.1
 
 _August 18, 2024_

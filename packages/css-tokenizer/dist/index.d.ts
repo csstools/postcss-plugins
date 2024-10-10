@@ -106,7 +106,7 @@ export declare function isTokenNumber(x?: CSSToken | null): x is TokenNumber;
 /**
  * Assert that a token is a numeric token
  */
-export declare function isTokenNumeric(x: CSSToken): x is NumericToken;
+export declare function isTokenNumeric(x?: CSSToken | null): x is NumericToken;
 
 export declare function isTokenOpenCurly(x?: CSSToken | null): x is TokenOpenCurly;
 
@@ -129,7 +129,7 @@ export declare function isTokenWhitespace(x?: CSSToken | null): x is TokenWhites
 /**
  * Assert that a token is a whitespace or comment token
  */
-export declare function isTokenWhiteSpaceOrComment(x: CSSToken): x is TokenWhitespace | TokenComment;
+export declare function isTokenWhiteSpaceOrComment(x?: CSSToken | null): x is TokenWhitespace | TokenComment;
 
 /**
  * Get the mirror variant of a given token
