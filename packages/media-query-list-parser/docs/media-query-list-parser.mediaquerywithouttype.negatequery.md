@@ -7,9 +7,9 @@
 **Signature:**
 
 ```typescript
-negateQuery(): MediaQuery;
+negateQuery(): Array<MediaQuery>;
 ```
 **Returns:**
 
-[MediaQuery](./media-query-list-parser.mediaquery.md)
+Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt;
 

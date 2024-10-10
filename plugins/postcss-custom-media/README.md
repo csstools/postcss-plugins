@@ -91,7 +91,7 @@ An example of a very complex (and artificial) use-case :
 	/* Your CSS */
 }
 }
-@media not  tty and (min-width: 300px) {
+@media not tty,not all and (min-width: 300px) {
 @media not screen and ((not (color:2147477350)) or (color)) {
 	/* Your CSS */
 }

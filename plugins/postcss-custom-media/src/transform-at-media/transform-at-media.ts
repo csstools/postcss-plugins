@@ -16,7 +16,7 @@ import {
 	parse,
 } from '@csstools/media-query-list-parser';
 
-export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
+export function transformAtMediaListTokens(params: string, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<Array<MediaQuery>> }>): Array<{ replaceWith: string, encapsulateWith?: Array<string> }> {
 	const mediaQueries = parse(params, {
 		preserveInvalidMediaQueries: true, onParseError: () => {
 			throw new Error(`Unable to parse media query "${params}"`);
@@ -67,12 +67,12 @@ export function transformAtMediaListTokens(params: string, replacements: Map<str
 	return [];
 }
 
-function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): { replaceWith: string, encapsulateWith?: string } | null {
+function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<Array<MediaQuery>> }>): { replaceWith: string, encapsulateWith?: Array<string> } | null {
 	if (!mediaQueryIsSimple(mediaQuery)) {
 		return null;
 	}
 
-	let candidate: { replaceWith: string, encapsulateWith?: string } | null = null;
+	let candidate: { replaceWith: string, encapsulateWith?: Array<string> } | null = null;
 
 	mediaQuery.walk((entry) => {
 		const node = entry.node;
@@ -98,8 +98,8 @@ function transformSimpleMediaQuery(mediaQuery: MediaQuery, replacements: Map<str
 	return candidate;
 }
 
-function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<MediaQuery> }>): Array<{ replaceWith: string, encapsulateWith?: string }> {
-	let candidate: Array<{ replaceWith: string, encapsulateWith?: string }> = [];
+function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<string, { truthy: Array<MediaQuery>, falsy: Array<Array<MediaQuery>> }>): Array<{ replaceWith: string, encapsulateWith?: Array<string> }> {
+	let candidate: Array<{ replaceWith: string, encapsulateWith?: Array<string> }> = [];
 
 	mediaQuery.walk((entry) => {
 		const node = entry.node;
@@ -165,11 +165,11 @@ function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<st
 			candidate = [
 				{
 					replaceWith: replaceWithTrueString,
-					encapsulateWith: replacement.truthy.map((x) => x.toString().trim()).join(','),
+					encapsulateWith: [replacement.truthy.map((x) => x.toString().trim()).join(',')],
 				},
 				{
 					replaceWith: replaceWithFalseString,
-					encapsulateWith: replacement.falsy.map((x) => x.toString().trim()).join(','),
+					encapsulateWith: replacement.falsy.map((x) => x.map((y) => y.toString().trim()).join(',').toString().trim()),
 				},
 			];
 

@@ -45,7 +45,7 @@
 }
 }
 
-@media not screen and (min-width: 200px) {
+@media not screen,not all and (min-width: 200px) {
 
 @media print and (color:2147477350) {
 	.a {
@@ -69,7 +69,7 @@
 }
 }
 
-@media not screen and (min-width: 200px) {
+@media not screen,not all and (min-width: 200px) {
 
 @media  (not (color:2147477350)) {
 	.a {

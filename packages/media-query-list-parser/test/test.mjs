@@ -97,3 +97,5 @@ import './get-name/0001.mjs';
 import './new-feature/0001.mjs';
 
 import './serialize/0001.mjs';
+
+import './negate/0001.mjs';

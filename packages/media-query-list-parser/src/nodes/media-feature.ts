@@ -1,7 +1,7 @@
 import type { SimpleBlockNode} from '@csstools/css-parser-algorithms';
 import { TokenNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { mutateIdent, stringify, TokenType } from '@csstools/css-tokenizer';
+import { isTokenWhiteSpaceOrComment, mutateIdent, stringify, TokenType } from '@csstools/css-tokenizer';
 import { MediaFeatureBoolean, parseMediaFeatureBoolean } from './media-feature-boolean';
 import { MediaFeatureName } from './media-feature-name';
 import type { MediaFeaturePlainWalkerEntry, MediaFeaturePlainWalkerParent} from './media-feature-plain';
@@ -43,6 +43,13 @@ export class MediaFeature {
 
 	toString(): string {
 		return stringify(...this.before) + this.feature.toString() + stringify(...this.after);
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		return isTokenWhiteSpaceOrComment(this.before[0]);
 	}
 
 	indexOf(item: MediaFeaturePlain | MediaFeatureBoolean | MediaFeatureRange): number | string {

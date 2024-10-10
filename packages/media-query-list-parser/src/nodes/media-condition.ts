@@ -1,4 +1,4 @@
-import type { CSSToken } from '@csstools/css-tokenizer';
+import { type CSSToken } from '@csstools/css-tokenizer';
 import type { MediaConditionListWithAnd, MediaConditionListWithAndWalkerEntry, MediaConditionListWithAndWalkerParent, MediaConditionListWithOr, MediaConditionListWithOrWalkerEntry, MediaConditionListWithOrWalkerParent } from './media-condition-list';
 import type { MediaInParens } from './media-in-parens';
 import type { MediaNot, MediaNotWalkerEntry, MediaNotWalkerParent } from './media-not';
@@ -19,6 +19,13 @@ export class MediaCondition {
 
 	toString(): string {
 		return this.media.toString();
+	}
+
+	/**
+	 * @internal
+	 */
+	hasLeadingSpace(): boolean {
+		return this.media.hasLeadingSpace();
 	}
 
 	indexOf(item: MediaNot | MediaInParens | MediaConditionListWithAnd | MediaConditionListWithOr): number | string {

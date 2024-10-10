@@ -72,12 +72,15 @@
 }
 }
 
-@media not all and (color),not all and (hover) {
+@media not all and (hover) {
+
+@media not all and (color) {
 
 @media (color:2147477350) and (width > 1024px) {
 	.a {
 		color: green;
 	}
+}
 }
 }
 

@@ -43,32 +43,63 @@ export class MediaQueryWithType {
 		return '';
 	}
 
-	negateQuery(): MediaQuery {
-		const copy = new MediaQueryWithType([...this.modifier], [...this.mediaType], this.and, this.media);
-		if (copy.modifier.length === 0) {
-			copy.modifier = [
-				[TokenType.Ident, 'not', -1, -1, { value: 'not' }],
-				[TokenType.Whitespace, ' ', -1, -1, undefined],
+	negateQuery(): Array<MediaQuery> {
+		const isNegated = this.getModifier().toLowerCase() === 'not';
+		const mediaType = this.getMediaType();
+
+		if (!this.and || !this.media) {
+			if (isNegated) {
+				return [
+					new MediaQueryWithType(
+						[],
+						[
+							[TokenType.Ident, mediaType, -1, -1, { value: mediaType }]
+						]
+					)
+				];
+			}
+
+			return [
+				new MediaQueryWithType(
+					[
+						[TokenType.Ident, 'not', -1, -1, { value: 'not' }],
+						[TokenType.Whitespace, ' ', -1, -1, undefined],
+					],
+					[
+						[TokenType.Ident, mediaType, -1, -1, { value: mediaType }],
+					]
+				)
 			];
-
-			return copy;
 		}
 
-		for (let i = 0; i < copy.modifier.length; i++) {
-			const token = copy.modifier[i];
-			if (isTokenIdent(token) && token[4].value.toLowerCase() === 'not') {
-				copy.modifier.splice(i, 1);
-				break;
-			}
-
-			if (isTokenIdent(token) && token[4].value.toLowerCase() === 'only') {
-				token[1] = 'not';
-				token[4].value = 'not';
-				break;
-			}
+		if (isNegated) {
+			return [
+				new MediaQueryWithType(
+					[],
+					[
+						[TokenType.Ident, mediaType, -1, -1, { value: mediaType }]
+					]
+				),
+				new MediaQueryWithoutType(
+					this.media
+				)
+			];
 		}
 
-		return copy;
+		return [
+			new MediaQueryWithType(
+				[
+					[TokenType.Ident, 'not', -1, -1, { value: 'not' }],
+					[TokenType.Whitespace, ' ', -1, -1, undefined],
+				],
+				[
+					[TokenType.Ident, mediaType, -1, -1, { value: mediaType }]
+				]
+			),
+			...new MediaQueryWithoutType(
+				this.media
+			).negateQuery()
+		];
 	}
 
 	getMediaType(): string {
@@ -189,47 +220,64 @@ export class MediaQueryWithoutType {
 		this.media = media;
 	}
 
-	negateQuery(): MediaQuery {
+	negateQuery(): Array<MediaQuery> {
 		let mediaCondition = this.media;
 		if (mediaCondition.media.type === NodeType.MediaNot) {
-			return new MediaQueryWithoutType(
-				new MediaCondition(
-					(mediaCondition.media as MediaNot).media,
-				),
-			);
+			return [
+				new MediaQueryWithoutType(
+					new MediaCondition(
+						(mediaCondition.media as MediaNot).media,
+					),
+				)
+			];
 		}
 
-		if (mediaCondition.media.type === NodeType.MediaConditionListWithOr) {
+		if (
+			mediaCondition.media.type === NodeType.MediaConditionListWithOr ||
+			mediaCondition.media.type === NodeType.MediaConditionListWithAnd
+		) {
 			mediaCondition = new MediaCondition(
 				new MediaInParens(
 					mediaCondition,
 					[
-						[TokenType.Whitespace, ' ', 0, 0, undefined],
-						[TokenType.OpenParen, '(', 0, 0, undefined],
+						[TokenType.Whitespace, ' ', -1, -1, undefined],
+						[TokenType.OpenParen, '(', -1, -1, undefined],
 					],
 					[
-						[TokenType.CloseParen, ')', 0, 0, undefined],
+						[TokenType.CloseParen, ')', -1, -1, undefined],
 					],
 				),
 			);
 		}
 
+		if (
+			'before' in mediaCondition.media
+		) {
+			if (!mediaCondition.media.hasLeadingSpace()) {
+				mediaCondition.media.before.splice(
+					0,
+					0,
+					[TokenType.Whitespace, ' ', -1, -1, undefined],
+				);
+			}
+		}
+
 		const query = new MediaQueryWithType(
 			[
-				[TokenType.Ident, 'not', 0, 0, { value: 'not' }],
-				[TokenType.Whitespace, ' ', 0, 0, undefined],
+				[TokenType.Ident, 'not', -1, -1, { value: 'not' }],
+				[TokenType.Whitespace, ' ', -1, -1, undefined],
 			],
 			[
-				[TokenType.Ident, 'all', 0, 0, { value: 'all' }],
-				[TokenType.Whitespace, ' ', 0, 0, undefined],
+				[TokenType.Ident, 'all', -1, -1, { value: 'all' }],
+				[TokenType.Whitespace, ' ', -1, -1, undefined],
 			],
 			[
-				[TokenType.Ident, 'and', 0, 0, { value: 'and' }],
+				[TokenType.Ident, 'and', -1, -1, { value: 'and' }],
 			],
 			mediaCondition,
 		);
 
-		return query;
+		return [query];
 	}
 
 	tokens(): Array<CSSToken> {
@@ -312,8 +360,8 @@ export class MediaQueryInvalid {
 		this.media = media;
 	}
 
-	negateQuery(): MediaQuery {
-		return new MediaQueryInvalid(this.media);
+	negateQuery(): Array<MediaQuery> {
+		return [new MediaQueryInvalid(this.media)];
 	}
 
 	tokens(): Array<CSSToken> {

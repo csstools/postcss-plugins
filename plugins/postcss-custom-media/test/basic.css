@@ -145,3 +145,10 @@
 		background: green;
 	}
 }
+
+@custom-media --test5 print, screen;
+@media (color) and (not (--test5)) {
+	.test5 {
+		background: red;
+	}
+}
