@@ -17,10 +17,13 @@
 }
 }
 
-@media not all and (min-width: 3),not all and (min-width: 4) {
+@media not all and (min-width: 4) {
+
+@media not all and (min-width: 3) {
 
 @media (color:2147477350) and (width > 1024px) {
 	.a { order: 3; }
+}
 }
 }
 

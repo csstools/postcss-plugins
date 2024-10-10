@@ -49,7 +49,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					let transformedParams: Array<{ replaceWith: string, encapsulateWith?: string }> = [];
+					let transformedParams: Array<{ replaceWith: string, encapsulateWith?: Array<string> }> = [];
 
 					try {
 						transformedParams = transformAtMediaListTokens(atRule.params, customMedia);
@@ -79,7 +79,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const needsEncapsulation = !!(transformedParams.find((x) => {
-						return !!x.encapsulateWith;
+						return !!(x.encapsulateWith?.length);
 					}));
 
 					if (!needsEncapsulation) {
@@ -94,19 +94,28 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					transformedParams.forEach((transformed) => {
-						if (!transformed.encapsulateWith) {
+						if (!transformed.encapsulateWith?.length) {
 							atRule.cloneBefore({ params: transformed.replaceWith.trim() });
 							return;
 						}
 
 						const clone = atRule.clone({ params: transformed.replaceWith });
-						const encapsulate = atRule.clone({ params: transformed.encapsulateWith.trim(), nodes: [] });
-
 						clone.parent = undefined;
+
+						let encapsulate = atRule.clone({ params: transformed.encapsulateWith[0], nodes: [] })
 						encapsulate.parent = undefined;
 
-						transformedNodes.add(atRule);
 						encapsulate.append(clone);
+
+						transformed.encapsulateWith.slice(1).forEach((encapsulateWith) => {
+							const encapsulateAgain = atRule.clone({ params: encapsulateWith, nodes: [] });
+							encapsulateAgain.parent = undefined;
+
+							encapsulateAgain.append(encapsulate);
+							encapsulate = encapsulateAgain;
+						});
+
+						transformedNodes.add(atRule);
 						atRule.before(encapsulate);
 					});
 

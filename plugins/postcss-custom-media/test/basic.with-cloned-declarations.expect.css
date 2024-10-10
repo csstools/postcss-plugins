@@ -53,12 +53,15 @@
 }
 }
 
-@media not all and (max-width: 30em),not all and (max-height: 30em) {
+@media not all and (max-height: 30em) {
+
+@media not all and (max-width: 30em) {
 
 @media not all and (color:2147477350) {
 	body {
 		order: 4;
 	}
+}
 }
 }
 
@@ -77,12 +80,15 @@
 }
 }
 
-@media not all and (max-width: 30em),not all and (max-height: 30em) {
+@media not all and (max-height: 30em) {
+
+@media not all and (max-width: 30em) {
 
 @media not all and (color:2147477350) {
 	body {
 		order: 5;
 	}
+}
 }
 }
 
@@ -110,7 +116,9 @@
 }
 }
 
-@media not all and (max-width: 30em),not all and (max-height: 30em) {
+@media not all and (max-height: 30em) {
+
+@media not all and (max-width: 30em) {
 
 @media not all and (color:2147477350) {
 
@@ -118,6 +126,7 @@
 	body {
 		order: 6;
 	}
+}
 }
 }
 }
@@ -143,7 +152,9 @@
 }
 }
 
-@media not all and (max-width: 30em),not all and (max-height: 30em) {
+@media not all and (max-height: 30em) {
+
+@media not all and (max-width: 30em) {
 
 @media all and (color:2147477350) {
 
@@ -151,6 +162,7 @@
 	body {
 		order: 6;
 	}
+}
 }
 }
 }
@@ -402,5 +414,28 @@
 @media (color) and (--custom-bool-after-regular-bool) {
 	.test5 {
 		background: green;
+	}
+}
+
+@custom-media --test5 print, screen;
+@media print,screen {
+@media (color) and (not (max-color:2147477350)) {
+	.test5 {
+		background: red;
+	}
+}
+}
+@media not  screen {
+@media not  print {
+@media (color) and (not (color:2147477350)) {
+	.test5 {
+		background: red;
+	}
+}
+}
+}
+@media (color) and (not (--test5)) {
+	.test5 {
+		background: red;
 	}
 }

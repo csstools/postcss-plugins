@@ -9,12 +9,15 @@
 }
 }
 
-@media not all and (min-width: 101px),not all and (min-height: 102px) {
+@media not all and (min-height: 102px) {
+
+@media not all and (min-width: 101px) {
 
 @media screen and (color:2147477350) {
 	.a {
 		order: 1;
 	}
+}
 }
 }
 
@@ -27,12 +30,15 @@
 }
 }
 
-@media not all and (min-width: 101px),not all and (min-height: 102px) {
+@media not all and (min-height: 102px) {
+
+@media not all and (min-width: 101px) {
 
 @media ((other: feature) and (color:2147477350)) {
 	.a {
 		order: 2;
 	}
+}
 }
 }
 

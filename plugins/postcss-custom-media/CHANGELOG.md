@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (patch)
+
+- Fix inversion of logical expressions
+
 ### 11.0.2
 
 _October 4, 2024_
