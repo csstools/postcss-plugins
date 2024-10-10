@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix inversion of logical expressions
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#302) (patch)
 
 ### 11.0.2
 

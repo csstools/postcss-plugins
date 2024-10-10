@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - `MediaQuery.prototype.negateQuery()` now returns an array of `MediaQuery`. e.g. negating `screen and (color)` returns `['not screen', 'not (color)']`
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#302) (patch)
 
 ### 3.0.1
 
