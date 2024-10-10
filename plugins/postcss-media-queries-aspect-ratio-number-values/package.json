@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-media-queries-aspect-ratio-number-values",
 	"description": "Use number values in aspect-ratio media queries.",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
