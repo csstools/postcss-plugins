@@ -1,0 +1,65 @@
+.foo {
+/* Keyword values */
+	background-color: red;
+	background-color: indigo;
+
+	/* Hexadecimal value */
+	background-color: #bbff00;
+	/* Fully opaque */
+	background-color: #bf0;
+	/* Fully opaque shorthand */
+	background-color: #11ffee00;
+	/* Fully transparent */
+	background-color: #1fe0;
+	/* Fully transparent shorthand */
+	background-color: #11ffeeff;
+	/* Fully opaque */
+	background-color: #1fef;
+	/* Fully opaque shorthand */
+
+	/* RGB value */
+	background-color: rgb(255 255 128);
+	/* Fully opaque */
+	background-color: rgb(117 190 218 / 50%);
+	/* 50% transparent */
+
+	/* HSL value */
+	background-color: hsl(50 33% 25%);
+	/* Fully opaque */
+	background-color: hsl(50 33% 25% / 75%);
+	/* 75% opaque, i.e. 25% transparent */
+
+	/* Special keyword values */
+	background-color: currentcolor;
+	background-color: transparent;
+
+	/* Global values */
+	background-color: inherit;
+	background-color: initial;
+	background-color: revert;
+	background-color: revert-layer;
+	background-color: unset;
+
+	background-color: light-dark(#333b3c, #efefec);
+	background-color: light-dark(rgb(0 0 0), rgb(255 255 255));
+	background-color: light-dark(light-dark(#333b3c, #efefec), #efefec);
+
+	/* color-mix(in <polar-color-space>, <color>, <color> <percentage>) */
+	background-color: color-mix(in hsl, hsl(200 50 80), coral 80%);
+	/* color-mix(in <polar-color-space> <hue-interpolation-method>, <color>, <color>) */
+	background-color: color-mix(in lch longer hue, hsl(200deg 50% 80%), coral);
+	/* color-mix(in <rectangular-color-space>, <color>, <color>) */
+	background-color: color-mix(in srgb, plum, #f00);
+	/* color-mix(in <rectangular-color-space>, <color> <percentage>, <color> <percentage> */
+	background-color: color-mix(in lab, plum 60%, #f00 50%);
+	/* color-mix(in <custom-color-space>, <color>, <color>) */
+	background-color: color-mix(in --swop5c, red, blue);
+
+	/* Absolute values */
+	background-color: color(display-p3 1 0.5 0);
+	background-color: color(display-p3 1 0.5 0 / .5);
+
+	/* Relative values */
+	background-color: color(from green srgb r g b / 0.5);
+	background-color: color(from #0000FF xyz calc(x + 0.75) y calc(z - 0.35));
+}
