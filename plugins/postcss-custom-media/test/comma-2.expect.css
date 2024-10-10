@@ -49,7 +49,7 @@
 }
 }
 
-@media not  screen {
+@media not screen {
 
 @media ((color:2147477350) or (min-width: 300px)) {
 	.a {
@@ -67,7 +67,7 @@
 }
 }
 
-@media not  print {
+@media not print {
 
 @media ((color:2147477350) and (min-height: 300px)) {
 	.a {

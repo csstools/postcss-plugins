@@ -1,2 +1,2 @@
-@import url("green.css");
+@import url("green.css") supports(display: block);
 @import url("red.css") supports(display: block) layer(b);

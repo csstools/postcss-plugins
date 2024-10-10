@@ -138,3 +138,17 @@
 }
 
 @custom-media --foo (--does-not-exist-1);
+
+@custom-media --custom-bool-after-regular-bool screen;
+@media (color) and (--custom-bool-after-regular-bool) {
+	.test5 {
+		background: green;
+	}
+}
+
+@custom-media --test5 print, screen;
+@media (color) and (not (--test5)) {
+	.test5 {
+		background: red;
+	}
+}

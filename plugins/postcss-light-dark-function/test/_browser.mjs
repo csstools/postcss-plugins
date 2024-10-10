@@ -65,7 +65,7 @@ const requestListener = async function (req, res) {
 					break;
 				}
 
-				const css = await postcss([plugin({preserve: false})]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
+				const css = await postcss([plugin({ preserve: false })]).process(data, { from: 'test/styles.css', to: 'test/styles.css' });
 				res.setHeader('Content-type', 'text/css');
 				res.writeHead(200);
 				res.end(css.css);
@@ -148,6 +148,7 @@ if (!process.env.DEBUG) {
 
 		if (errors.length > 0) {
 			errors.forEach((err) => {
+				// eslint-disable-next-line no-console
 				console.error(err);
 			});
 
@@ -157,5 +158,6 @@ if (!process.env.DEBUG) {
 } else {
 	startServers();
 
+	// eslint-disable-next-line no-console
 	console.log('visit : http://localhost:8080');
 }

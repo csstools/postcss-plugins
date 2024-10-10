@@ -9,7 +9,7 @@ Assert that a token is a numeric token
 **Signature:**
 
 ```typescript
-export declare function isTokenNumeric(x: CSSToken): x is NumericToken;
+export declare function isTokenNumeric(x?: CSSToken | null): x is NumericToken;
 ```
 
 ## Parameters
@@ -37,10 +37,12 @@ x
 
 </td><td>
 
-[CSSToken](./css-tokenizer.csstoken.md)
+[CSSToken](./css-tokenizer.csstoken.md) \| null
 
 
 </td><td>
+
+_(Optional)_
 
 
 </td></tr>

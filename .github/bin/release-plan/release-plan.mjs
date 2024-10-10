@@ -25,6 +25,7 @@ if (process.argv.slice(2).includes('--dry-run')) {
 }
 
 for (const workspace of needsRelease.values()) {
+	// eslint-disable-next-line no-console
 	console.log(`Releasing : ${workspace.name}`);
 	// Increment the version
 	workspace.newVersion = await npmVersion(workspace.increment, workspace.path);
@@ -86,6 +87,7 @@ for (const workspace of needsRelease.values()) {
 
 const didChangeDownstreamPackages = await prepareNextReleasePlan(needsRelease, notReleasableNow);
 
+// eslint-disable-next-line no-console
 console.log('\nUpdating lock file');
 await npmInstall();
 
@@ -93,14 +95,18 @@ if (didChangeDownstreamPackages) {
 	await commitAfterDependencyUpdates();
 }
 
+// eslint-disable-next-line no-console
 console.log('\nDone 🎉');
 
 if (didChangeDownstreamPackages || maybeNextPlan.size > 0) {
+	// eslint-disable-next-line no-console
 	console.log('\nNotes:'); // empty line
 	if (didChangeDownstreamPackages) {
+		// eslint-disable-next-line no-console
 		console.log('  - updated "package.json" files of downstream packages.');
 	}
 	if (maybeNextPlan.size) {
+		// eslint-disable-next-line no-console
 		console.log('  - some packages were excluded from this plan. A next plan of releases might be available now.');
 	}
 }

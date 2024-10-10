@@ -28,6 +28,7 @@ const stateAtLoad = (() => {
 
 		return maybeState;
 	} catch (err) {
+		// eslint-disable-next-line no-console
 		console.warn(err);
 		return {};
 	}
@@ -51,6 +52,7 @@ function processCss(source, config, isDefaultState = false) {
 				config: config,
 			})));
 		} catch (err) {
+			// eslint-disable-next-line no-console
 			console.error(err);
 		}
 	}
@@ -63,6 +65,7 @@ function processCss(source, config, isDefaultState = false) {
 			alert(`${err.message}\n\nTry changing the browserslist config.`);
 		}
 
+		// eslint-disable-next-line no-console
 		console.warn(err);
 		return Promise.resolve();
 	}
@@ -76,6 +79,7 @@ function processCss(source, config, isDefaultState = false) {
 	).then((result) => {
 		return result.css;
 	}).catch((err) => {
+		// eslint-disable-next-line no-console
 		console.warn(err);
 	});
 }

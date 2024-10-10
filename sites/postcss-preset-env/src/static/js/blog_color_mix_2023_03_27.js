@@ -49,6 +49,7 @@ function readState() {
 
 		return JSON.parse(window.decodeURIComponent(window.atob(hash)));
 	} catch (err) {
+		// eslint-disable-next-line no-console
 		console.error(err);
 		return {};
 	}
@@ -64,6 +65,7 @@ function writeState() {
 			b: colorInputB.value,
 		})));
 	} catch (err) {
+		// eslint-disable-next-line no-console
 		console.error(err);
 	}
 }

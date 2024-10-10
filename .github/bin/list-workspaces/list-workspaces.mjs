@@ -73,7 +73,8 @@ export async function listWorkspaces() {
 		});
 
 		return result;
-	} catch(err) {
+	} catch (err) {
+		// eslint-disable-next-line no-console
 		console.error(err);
 		throw new Error('failed to get the list of workspaces');
 	}

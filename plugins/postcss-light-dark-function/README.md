@@ -27,17 +27,20 @@ With both features combined you can mix and match color schemes in a single docu
 /* becomes */
 
 .foo {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
-	color: var(--csstools-light-dark-toggle--0, magenta);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) magenta;
+	color: var(--csstools-light-dark-toggle--0, pink);
 	color: light-dark(pink, magenta);
 }
 
 .bar {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
-	& * {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
+	--bar: var(--csstools-light-dark-toggle--1, cyan);
+	@supports not (color: light-dark(tan, tan)) {
+
+		& * {
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
+	--bar: var(--csstools-light-dark-toggle--1, cyan);
+		}
 	}
 }
 
@@ -58,10 +61,10 @@ Declare that your document supports both light and dark mode:
 /* becomes */
 
 :root {
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light dark;
 }@media (prefers-color-scheme: dark) {:root {
-	--csstools-color-scheme--dark: initial;
+	--csstools-color-scheme--light:  ;
 }
 }
 ```
@@ -83,13 +86,13 @@ Dynamically alter the supported color scheme for some elements:
 
 :root {
 	/* Root only supports light mode */
-	--csstools-color-scheme--dark:  ;
+	--csstools-color-scheme--light: initial;
 	color-scheme: light;
 }
 
 .foo {
 	/* This element and its children only support dark mode */
-	--csstools-color-scheme--dark: initial;
+	--csstools-color-scheme--light:  ;
 	color-scheme: dark;
 }
 ```
@@ -147,16 +150,16 @@ postcssLightDarkFunction({ preserve: false })
 /* becomes */
 
 .foo {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
-	color: var(--csstools-light-dark-toggle--0, magenta);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) magenta;
+	color: var(--csstools-light-dark-toggle--0, pink);
 }
 
 .bar {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
+	--bar: var(--csstools-light-dark-toggle--1, cyan);
 	& * {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
+	--bar: var(--csstools-light-dark-toggle--1, cyan);
 	}
 }
 ```

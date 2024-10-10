@@ -1,0 +1,12 @@
+/* green.css */
+@media screen {
+    @scope (.donut-edge) {
+        @supports (display: block) {
+            @layer b {
+                .box {
+	background-color: green;
+}
+            }
+        }
+    }
+}

@@ -38,6 +38,7 @@ export function helpTextLogger(command: string, name: string, description: strin
 	}
 
 	return (): void => {
+		// eslint-disable-next-line no-console
 		console.warn(allHelp.join('\n'));
 	};
 }

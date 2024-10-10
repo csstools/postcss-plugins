@@ -1,0 +1,7 @@
+:root {
+	color-scheme: normal;
+}
+
+.foo {
+	--color: light-dark(white, black);
+}

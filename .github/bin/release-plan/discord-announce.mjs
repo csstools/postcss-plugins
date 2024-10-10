@@ -65,6 +65,7 @@ export async function discordAnnounceDryRun() {
 
 	const discordArgument = process.argv.slice(2).find(arg => arg.includes('--discord='));
 	if (!discordArgument) {
+		// eslint-disable-next-line no-console
 		console.log('Discord announce webhook URL: not set');
 		return;
 	}
@@ -72,9 +73,11 @@ export async function discordAnnounceDryRun() {
 	const [, webHookUrl] = discordArgument.split('=');
 
 	if (!webHookUrl) {
+		// eslint-disable-next-line no-console
 		console.log('Discord announce webhook URL: not set');
 		return;
 	}
 
+	// eslint-disable-next-line no-console
 	console.log(`Discord announce webhook URL: ${webHookUrl}`);
 }

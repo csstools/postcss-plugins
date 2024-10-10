@@ -1,5 +1,25 @@
 # Changes to PostCSS Light Dark Function
 
+### 2.0.5
+
+_October 10, 2024_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#302) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#302) (patch)
+
+### 2.0.4
+
+_September 22, 2024_
+
+- Fix inherited fallback custom props when `preserve` is `false`
+
+### 2.0.3
+
+_September 22, 2024_
+
+- Fix default behavior to be the `light` `color-scheme`
+- Wrap inherited fallback custom props with `@supports not (color: light-dark(tan, tan))` to reduce the number of assigned props in a document.
+
 ### 2.0.2
 
 _August 18, 2024_

@@ -1,5 +1,11 @@
 # Changes to CSS Tokenizer
 
+### 3.0.2
+
+_October 10, 2024_
+
+- `isTokenNumeric` and `isTokenWhiteSpaceOrComment` now accept `null` and `undefined` as input, in parallel with other type predicates.
+
 ### 3.0.1
 
 _August 18, 2024_

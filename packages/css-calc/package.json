@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-calc",
 	"description": "Solve CSS math expressions",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,8 +48,8 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.1",
-		"@csstools/css-tokenizer": "^3.0.1"
+		"@csstools/css-parser-algorithms": "^3.0.2",
+		"@csstools/css-tokenizer": "^3.0.2"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

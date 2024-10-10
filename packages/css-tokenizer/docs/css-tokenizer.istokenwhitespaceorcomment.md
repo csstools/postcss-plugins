@@ -9,7 +9,7 @@ Assert that a token is a whitespace or comment token
 **Signature:**
 
 ```typescript
-export declare function isTokenWhiteSpaceOrComment(x: CSSToken): x is TokenWhitespace | TokenComment;
+export declare function isTokenWhiteSpaceOrComment(x?: CSSToken | null): x is TokenWhitespace | TokenComment;
 ```
 
 ## Parameters
@@ -37,10 +37,12 @@ x
 
 </td><td>
 
-[CSSToken](./css-tokenizer.csstoken.md)
+[CSSToken](./css-tokenizer.csstoken.md) \| null
 
 
 </td><td>
+
+_(Optional)_
 
 
 </td></tr>

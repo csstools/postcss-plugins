@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-todo-or-die",
 	"description": "Write TODOs in CSS that ensure you actually do them.",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,8 +48,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.1",
-		"@csstools/css-tokenizer": "^3.0.1",
+		"@csstools/css-parser-algorithms": "^3.0.2",
+		"@csstools/css-tokenizer": "^3.0.2",
 		"browserslist": "^4.23.1"
 	},
 	"peerDependencies": {

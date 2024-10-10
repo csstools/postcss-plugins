@@ -1,13 +1,13 @@
 .foo {
-	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--dark) pink;
-	color: var(--csstools-light-dark-toggle--0, magenta);
+	--csstools-light-dark-toggle--0: var(--csstools-color-scheme--light) magenta;
+	color: var(--csstools-light-dark-toggle--0, pink);
 }
 
 .bar {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
+	--bar: var(--csstools-light-dark-toggle--1, cyan);
 	& * {
-	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--dark) cyan;
-	--bar: var(--csstools-light-dark-toggle--1, deepskyblue);
+	--csstools-light-dark-toggle--1: var(--csstools-color-scheme--light) deepskyblue;
+	--bar: var(--csstools-light-dark-toggle--1, cyan);
 	}
 }

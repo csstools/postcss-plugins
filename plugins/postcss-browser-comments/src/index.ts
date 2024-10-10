@@ -1,4 +1,4 @@
-import type { Comment, Node, Plugin, PluginCreator } from 'postcss';
+import type { Comment, Node, PluginCreator } from 'postcss';
 import browserslist from 'browserslist';
 
 /** postcss-browser-comments plugin options */
@@ -10,66 +10,59 @@ export type pluginOptions = {
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-browser-comments',
-		prepare(result): Plugin {
-			console.log('result', result.root?.source?.input.file);
-
+		Once(root): void {
 			const clientBrowserList = new Set(browserslist(
 				opts?.browsers ?? null,
 				{
-					path: result.root?.source?.input.file,
+					path: root?.source?.input.file,
 				},
 			));
 
-			return {
-				postcssPlugin: 'postcss-browser-comments',
-				Once(root): void {
-					// root children references
-					const references = root.nodes.slice(0);
+			// root children references
+			const references = root.nodes.slice(0);
 
-					// for each child node of the root children references
-					for (const node of references) {
-						// if the node is a comment browser comment node
-						if (!isBrowserCommentNode(node)) {
-							continue;
-						}
+			// for each child node of the root children references
+			for (const node of references) {
+				// if the node is a comment browser comment node
+				if (!isBrowserCommentNode(node)) {
+					continue;
+				}
 
-						// rule following the browser comment
-						const rule = node.next();
-						if (!rule || rule.type !== 'rule') {
-							continue;
-						}
+				// rule following the browser comment
+				const rule = node.next();
+				if (!rule || rule.type !== 'rule') {
+					continue;
+				}
 
-						// browser data
-						const browserdata = getBrowserData(node.text);
+				// browser data
+				const browserdata = getBrowserData(node.text);
 
-						if (!browserdata.isNumbered) {
-							if (!browserslistsOverlap(clientBrowserList, browserslist(browserdata.browserslist))) {
-								rule.remove();
-								node.remove();
-							}
-
-							continue;
-						}
-
-						rule.nodes.filter(isBrowserReferenceCommentNode).map((comment) => {
-							const browserdataIndex = parseFloat(comment.text) - 1;
-							const browserslistPart = browserslist(browserdata.browserslist[browserdataIndex]);
-
-							// conditionally remove the declaration and reference comment
-							if (!browserslistsOverlap(clientBrowserList, browserslistPart)) {
-								comment.prev()?.remove();
-								comment.remove();
-							}
-						});
-
-						// conditionally remove the empty rule and comment
-						if (!rule.nodes.length) {
-							rule.remove();
-							node.remove();
-						}
+				if (!browserdata.isNumbered) {
+					if (!browserslistsOverlap(clientBrowserList, browserslist(browserdata.browserslist))) {
+						rule.remove();
+						node.remove();
 					}
-				},
-			};
+
+					continue;
+				}
+
+				rule.nodes.filter(isBrowserReferenceCommentNode).map((comment) => {
+					const browserdataIndex = parseFloat(comment.text) - 1;
+					const browserslistPart = browserslist(browserdata.browserslist[browserdataIndex]);
+
+					// conditionally remove the declaration and reference comment
+					if (!browserslistsOverlap(clientBrowserList, browserslistPart)) {
+						comment.prev()?.remove();
+						comment.remove();
+					}
+				});
+
+				// conditionally remove the empty rule and comment
+				if (!rule.nodes.length) {
+					rule.remove();
+					node.remove();
+				}
+			}
 		},
 	};
 };

@@ -1,0 +1,36 @@
+/* a.css */
+/* green.css */
+@scope (.donut-edge) {
+	@layer alpha {
+		@scope (.does-not-exist) {
+			@layer alpha {
+				.box {
+	background-color: green;
+}
+			}
+		}
+	}
+}
+/* b.css */
+/* red.css */
+@scope (.donut-edge) {
+	@layer beta {
+		@scope (.does-not-exist) {
+			@layer beta {
+				.box {
+	background-color: red;
+}
+			}
+		}
+	}
+}
+@layer beta {
+	.box {
+		background-color: green;
+	}
+}
+@layer alpha {
+	.box {
+		background-color: red;
+	}
+}

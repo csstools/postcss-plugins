@@ -33,8 +33,10 @@ if (!fileNames || !fileNames.length) {
 }
 
 if (!process.env.GITHUB_ACTIONS) {
+	// eslint-disable-next-line no-console
 	console.log('Unexpected executables:');
 	fileNames.forEach((f) => {
+		// eslint-disable-next-line no-console
 		console.log(`chmod a-x ${f}`);
 	});
 	process.exit(1);
@@ -51,6 +53,7 @@ fileNames.forEach((f) => {
 		},
 	);
 
+	// eslint-disable-next-line no-console
 	console.log(annotation);
 });
 

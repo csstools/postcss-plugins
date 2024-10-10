@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-no-invalid-at-import-rules-when-bundling",
 	"description": "Do not allow @import rules that can not be bundled correctly",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -36,8 +36,8 @@
 		"parse-at-import.mjs"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.1",
-		"@csstools/css-tokenizer": "^3.0.1"
+		"@csstools/css-parser-algorithms": "^3.0.2",
+		"@csstools/css-tokenizer": "^3.0.2"
 	},
 	"peerDependencies": {
 		"stylelint": "^16.9.0"

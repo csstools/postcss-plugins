@@ -17,6 +17,7 @@ const creator: PluginCreator<never> = () => {
 			logContent += `\n  nodes      : ${root.nodes?.length}`;
 			logContent += `\n  input.from : ${sourceFile ?? 'N/A'}`;
 
+			// eslint-disable-next-line no-console
 			console.log(logContent + '\n');
 		};
 	};
@@ -34,6 +35,7 @@ const creator: PluginCreator<never> = () => {
 			logContent += `\n  nodes      : ${document.nodes?.length}`;
 			logContent += `\n  input.from : ${sourceFile ?? 'N/A'}`;
 
+			// eslint-disable-next-line no-console
 			console.log(logContent + '\n');
 		};
 	};
@@ -55,6 +57,7 @@ const creator: PluginCreator<never> = () => {
 			logContent += `\n  raw        : ${JSON.stringify(atrule.raws)}`;
 			logContent += `\n  input.from : ${sourceFile ?? 'N/A'}`;
 
+			// eslint-disable-next-line no-console
 			console.log(logContent + '\n');
 		};
 	};
@@ -75,6 +78,7 @@ const creator: PluginCreator<never> = () => {
 			logContent += `\n  raw        : ${JSON.stringify(rule.raws)}`;
 			logContent += `\n  input.from : ${sourceFile ?? 'N/A'}`;
 
+			// eslint-disable-next-line no-console
 			console.log(logContent + '\n');
 		};
 	};
@@ -94,6 +98,7 @@ const creator: PluginCreator<never> = () => {
 			logContent += `\n  raw        : ${JSON.stringify(comment.raws)}`;
 			logContent += `\n  input.from : ${sourceFile ?? 'N/A'}`;
 
+			// eslint-disable-next-line no-console
 			console.log(logContent + '\n');
 		};
 	};
@@ -114,6 +119,7 @@ const creator: PluginCreator<never> = () => {
 			logContent += `\n  raw        : ${JSON.stringify(decl.raws)}`;
 			logContent += `\n  input.from : ${sourceFile ?? 'N/A'}`;
 
+			// eslint-disable-next-line no-console
 			console.log(logContent + '\n');
 		};
 	};

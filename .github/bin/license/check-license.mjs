@@ -139,6 +139,7 @@ const allFiles = (await getFiles('./')).filter((file) => {
 }
 
 if (logEntries.length > 0) {
+	// eslint-disable-next-line no-console
 	console.log(logEntries.join('\n'));
 	process.exit(1);
 }
