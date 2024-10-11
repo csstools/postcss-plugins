@@ -33,7 +33,7 @@ export function apply_patches(patches, onto) {
 		}
 
 		if (!patch['syntax-m']) {
-			console.log(`Unsyntax-m patch for property '${name}'`);
+			console.log(`Unmerged patch for property '${name}'`);
 			has_unmerged_patches = true;
 			flaws++;
 
@@ -71,7 +71,7 @@ export function apply_patches(patches, onto) {
 		}
 
 		if (!patch['syntax-m']) {
-			console.log(`Unsyntax-m patch for type '${name}'`);
+			console.log(`Unmerged patch for type '${name}'`);
 			has_unmerged_patches = true;
 			flaws++;
 
