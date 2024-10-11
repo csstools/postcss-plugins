@@ -284,9 +284,9 @@
 	"bg-position": {
 		"type": "modified",
 		"syntax-b": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]",
-		"syntax-a": "[ [ left | center | right | top | bottom | start | end | <length-percentage> ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ center | [ left | right | x-start | x-end ] <length-percentage>? ] && [ center | [ top | bottom | y-start | y-end ] <length-percentage>? ] | [ center | [ start | end ] <length-percentage>? ] [ center | [ start | end ] <length-percentage>? ] ]",
+		"syntax-a": "<position> | <position-three>",
 		"comment": "",
-		"syntax-m": false,
+		"syntax-m": "<position> | <position-three>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -549,8 +549,8 @@
 	"color": {
 		"type": "modified",
 		"syntax-b": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
-		"syntax-a": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()>",
-		"syntax-m": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
+		"syntax-a": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()>",
+		"syntax-m": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
 		"tests": {
 			"passing": [
 				{
@@ -827,11 +827,37 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "contrast-color( <color> max? )",
+		"syntax-m": "contrast-color( <color> max? )",
 		"comment": "",
-		"syntax-m": false,
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "contrast-color(red max)"
+				},
+				{
+					"property": "color",
+					"value": "contrast-color(red)"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "contrast-color()"
+				},
+				{
+					"property": "color",
+					"value": "contrast-color(max)"
+				},
+				{
+					"property": "color",
+					"value": "contrast-color(max max)"
+				},
+				{
+					"property": "color",
+					"value": "contrast-color(red red)"
+				}
+			]
 		}
 	},
 	"coord-box": {
@@ -1925,6 +1951,17 @@
 			"failing": []
 		}
 	},
+	"masonry-auto-track-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-names>? [ <track-size> | <track-repeat> ] ]* <line-names>? <auto-repeat> <line-names>? [ [ <track-size> | <track-repeat> ] <line-names>? ]*",
+		"comment": "",
+		"syntax-m": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"media-and": {
 		"type": "modified",
 		"syntax-b": "<media-in-parens> [ and <media-in-parens> ]+",
@@ -2524,9 +2561,9 @@
 	"position": {
 		"type": "modified",
 		"syntax-b": "[ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
-		"syntax-a": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
+		"syntax-a": "<position-one> | <position-two> | <position-four>",
 		"comment": "",
-		"syntax-m": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
+		"syntax-m": "<position-one> | <position-two> | <position-four>",
 		"tests": {
 			"passing": [
 				{
@@ -2552,6 +2589,50 @@
 					"value": "ray(50deg closest-corner contain at foo bar)"
 				}
 			]
+		}
+	},
+	"position-four": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ [ left | right | x-start | x-end ] <length-percentage> ] && [ [ top | bottom | y-start | y-end ] <length-percentage> ] | [ [ block-start | block-end ] <length-percentage> ] && [ [ inline-start | inline-end ] <length-percentage> ] | [ [ start | end ] <length-percentage> ]{2} ]",
+		"comment": "",
+		"syntax-m": "[ [ [ left | right | x-start | x-end ] <length-percentage> ] && [ [ top | bottom | y-start | y-end ] <length-percentage> ] | [ [ block-start | block-end ] <length-percentage> ] && [ [ inline-start | inline-end ] <length-percentage> ] | [ [ start | end ] <length-percentage> ]{2} ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"position-one": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ left | center | right | top | bottom | x-start | x-end | y-start | y-end | block-start | block-end | inline-start | inline-end | <length-percentage> ]",
+		"comment": "",
+		"syntax-m": "[ left | center | right | top | bottom | x-start | x-end | y-start | y-end | block-start | block-end | inline-start | inline-end | <length-percentage> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"position-three": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ left | center | right ] && [ [ top | bottom ] <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ top | center | bottom ] ]",
+		"comment": "",
+		"syntax-m": "[ [ left | center | right ] && [ [ top | bottom ] <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ top | center | bottom ] ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"position-two": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ left | center | right | x-start | x-end ] && [ top | center | bottom | y-start | y-end ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ block-start | center | block-end ] && [ inline-start | center | inline-end ] | [ start | center | end ]{2} ]",
+		"comment": "",
+		"syntax-m": "[ [ left | center | right | x-start | x-end ] && [ top | center | bottom | y-start | y-end ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ block-start | center | block-end ] && [ inline-start | center | inline-end ] | [ start | center | end ]{2} ]",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"predefined-polar-params": {
@@ -2589,7 +2670,7 @@
 	"progress": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <percentage> | <number> | <'animation-timeline'> ]? && by <easing-function>",
+		"syntax-a": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
 		"comment": "",
 		"syntax-m": false,
 		"tests": {

@@ -123,7 +123,7 @@
 		"syntax": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>"
 	},
 	"bg-position": {
-		"syntax": "[ [ left | center | right | top | bottom | start | end | <length-percentage> ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ center | [ left | right | x-start | x-end ] <length-percentage>? ] && [ center | [ top | bottom | y-start | y-end ] <length-percentage>? ] | [ center | [ start | end ] <length-percentage>? ] [ center | [ start | end ] <length-percentage>? ] ]"
+		"syntax": "<position> | <position-three>"
 	},
 	"bg-size": {
 		"syntax": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain"
@@ -222,7 +222,7 @@
 		"syntax": "<number> | <percentage> | none"
 	},
 	"color": {
-		"syntax": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()>"
+		"syntax": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()>"
 	},
 	"-non-standard-color": {
 		"syntax": "-moz-ButtonDefault | -moz-ButtonHoverFace | -moz-ButtonHoverText | -moz-CellHighlight | -moz-CellHighlightText | -moz-Combobox | -moz-ComboboxText | -moz-Dialog | -moz-DialogText | -moz-dragtargetzone | -moz-EvenTreeRow | -moz-Field | -moz-FieldText | -moz-html-CellHighlight | -moz-html-CellHighlightText | -moz-mac-accentdarkestshadow | -moz-mac-accentdarkshadow | -moz-mac-accentface | -moz-mac-accentlightesthighlight | -moz-mac-accentlightshadow | -moz-mac-accentregularhighlight | -moz-mac-accentregularshadow | -moz-mac-chrome-active | -moz-mac-chrome-inactive | -moz-mac-focusring | -moz-mac-menuselect | -moz-mac-menushadow | -moz-mac-menutextselect | -moz-MenuHover | -moz-MenuHoverText | -moz-MenuBarText | -moz-MenuBarHoverText | -moz-nativehyperlinktext | -moz-OddTreeRow | -moz-win-communicationstext | -moz-win-mediatext | -moz-activehyperlinktext | -moz-default-background-color | -moz-default-color | -moz-hyperlinktext | -moz-visitedhyperlinktext | -webkit-activelink | -webkit-focus-ring-color | -webkit-link | -webkit-text"
@@ -863,6 +863,9 @@
 	"masking-mode": {
 		"syntax": "alpha | luminance | match-source"
 	},
+	"masonry-auto-track-list": {
+		"syntax": "[ <line-names>? [ <track-size> | <track-repeat> ] ]* <line-names>? <auto-repeat> <line-names>? [ [ <track-size> | <track-repeat> ] <line-names>? ]*"
+	},
 	"matrix()": {
 		"syntax": "matrix( <number>#{6} )"
 	},
@@ -1083,10 +1086,22 @@
 		"syntax": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )"
 	},
 	"position": {
-		"syntax": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]"
+		"syntax": "<position-one> | <position-two> | <position-four>"
 	},
 	"position-area": {
 		"syntax": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]"
+	},
+	"position-four": {
+		"syntax": "[ [ [ left | right | x-start | x-end ] <length-percentage> ] && [ [ top | bottom | y-start | y-end ] <length-percentage> ] | [ [ block-start | block-end ] <length-percentage> ] && [ [ inline-start | inline-end ] <length-percentage> ] | [ [ start | end ] <length-percentage> ]{2} ]"
+	},
+	"position-one": {
+		"syntax": "[ left | center | right | top | bottom | x-start | x-end | y-start | y-end | block-start | block-end | inline-start | inline-end | <length-percentage> ]"
+	},
+	"position-three": {
+		"syntax": "[ [ left | center | right ] && [ [ top | bottom ] <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ top | center | bottom ] ]"
+	},
+	"position-two": {
+		"syntax": "[ [ left | center | right | x-start | x-end ] && [ top | center | bottom | y-start | y-end ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ block-start | center | block-end ] && [ inline-start | center | inline-end ] | [ start | center | end ]{2} ]"
 	},
 	"pow()": {
 		"syntax": "pow( <calc-sum> , <calc-sum> )"
@@ -1107,7 +1122,7 @@
 		"syntax": "<predefined-rgb> [ <number> | <percentage> | none ]{3}"
 	},
 	"progress": {
-		"syntax": "[ <percentage> | <number> | <'animation-timeline'> ]? && by <easing-function>"
+		"syntax": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?"
 	},
 	"progress()": {
 		"syntax": "progress( <calc-sum> from <calc-sum> to <calc-sum> )"

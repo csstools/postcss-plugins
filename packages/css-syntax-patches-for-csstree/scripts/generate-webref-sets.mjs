@@ -233,6 +233,8 @@ const type_deltas = new Set([
 	type_delta_key('repeat-style', 'css-backgrounds', 'css-backgrounds-4'),
 
 	type_delta_key('single-animation', 'css-animations', 'css-animations-2'),
+
+	type_delta_key('position', 'css-values', 'css-values-5'),
 ]);
 
 const seen_type_definitions = new Map();

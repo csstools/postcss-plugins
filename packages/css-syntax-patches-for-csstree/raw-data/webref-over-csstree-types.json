@@ -104,7 +104,7 @@
 	"bg-position": {
 		"type": "modified",
 		"syntax-b": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]",
-		"syntax-a": "[ [ left | center | right | top | bottom | start | end | <length-percentage> ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ center | [ left | right | x-start | x-end ] <length-percentage>? ] && [ center | [ top | bottom | y-start | y-end ] <length-percentage>? ] | [ center | [ start | end ] <length-percentage>? ] [ center | [ start | end ] <length-percentage>? ] ]",
+		"syntax-a": "<position> | <position-three>",
 		"comment": ""
 	},
 	"bg-size": {
@@ -230,7 +230,7 @@
 	"color": {
 		"type": "modified",
 		"syntax-b": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
-		"syntax-a": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()>",
+		"syntax-a": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()>",
 		"comment": ""
 	},
 	"color-font-tech": {
@@ -767,6 +767,12 @@
 		"syntax-a": "<url>",
 		"comment": ""
 	},
+	"masonry-auto-track-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-names>? [ <track-size> | <track-repeat> ] ]* <line-names>? <auto-repeat> <line-names>? [ [ <track-size> | <track-repeat> ] <line-names>? ]*",
+		"comment": ""
+	},
 	"media-and": {
 		"type": "modified",
 		"syntax-b": "<media-in-parens> [ and <media-in-parens> ]+",
@@ -956,7 +962,31 @@
 	"position": {
 		"type": "modified",
 		"syntax-b": "[ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
-		"syntax-a": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right ] && [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]",
+		"syntax-a": "<position-one> | <position-two> | <position-four>",
+		"comment": ""
+	},
+	"position-four": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ [ left | right | x-start | x-end ] <length-percentage> ] && [ [ top | bottom | y-start | y-end ] <length-percentage> ] | [ [ block-start | block-end ] <length-percentage> ] && [ [ inline-start | inline-end ] <length-percentage> ] | [ [ start | end ] <length-percentage> ]{2} ]",
+		"comment": ""
+	},
+	"position-one": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ left | center | right | top | bottom | x-start | x-end | y-start | y-end | block-start | block-end | inline-start | inline-end | <length-percentage> ]",
+		"comment": ""
+	},
+	"position-three": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ left | center | right ] && [ [ top | bottom ] <length-percentage> ] | [ [ left | right ] <length-percentage> ] && [ top | center | bottom ] ]",
+		"comment": ""
+	},
+	"position-two": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ left | center | right | x-start | x-end ] && [ top | center | bottom | y-start | y-end ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ block-start | center | block-end ] && [ inline-start | center | inline-end ] | [ start | center | end ]{2} ]",
 		"comment": ""
 	},
 	"predefined-polar-params": {
@@ -986,7 +1016,7 @@
 	"progress": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <percentage> | <number> | <'animation-timeline'> ]? && by <easing-function>",
+		"syntax-a": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
 		"comment": ""
 	},
 	"progress()": {

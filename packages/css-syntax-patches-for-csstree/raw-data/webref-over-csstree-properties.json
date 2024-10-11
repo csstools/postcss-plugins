@@ -26,7 +26,7 @@
 	"appearance": {
 		"type": "modified",
 		"syntax-b": "none | auto | textfield | menulist-button | <compat-auto>",
-		"syntax-a": "none | auto | <compat-auto> | <compat-special>",
+		"syntax-a": "none | auto | base | <compat-auto> | <compat-special>",
 		"comment": ""
 	},
 	"aspect-ratio": {
@@ -1286,7 +1286,7 @@
 	"masonry-slack": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<length-percentage> | infinite",
 		"comment": ""
 	},
 	"masonry-template-areas": {
@@ -1298,7 +1298,7 @@
 	"masonry-template-tracks": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'grid-template-columns'>",
+		"syntax-a": "none | <track-list> | <masonry-auto-track-list> | subgrid <line-name-list>?",
 		"comment": ""
 	},
 	"max-block-size": {
@@ -2151,6 +2151,12 @@
 		"type": "modified",
 		"syntax-b": "auto | wrap | nowrap",
 		"syntax-a": "wrap | nowrap",
+		"comment": ""
+	},
+	"text-wrap-style": {
+		"type": "modified",
+		"syntax-b": "auto | balance | stable | pretty",
+		"syntax-a": "auto | balance | stable | pretty | avoid-orphans",
 		"comment": ""
 	},
 	"timeline-scope": {
