@@ -176,7 +176,11 @@
 		"syntax-a": "none | <filter-value-list>",
 		"syntax-m": "none | <filter-value-list>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "url(filters.svg#filter) blur(4px) saturate(150%)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -229,10 +233,30 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
-		"syntax-m": false,
+		"syntax-m": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "center"
+				},
+				{
+					"value": "center, center"
+				},
+				{
+					"value": "start, start"
+				},
+				{
+					"value": "start 50%"
+				},
+				{
+					"value": "start 50%, end 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "center start"
+				}
+			]
 		}
 	},
 	"background-position-inline": {
@@ -240,10 +264,30 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
-		"syntax-m": false,
+		"syntax-m": "[ center | [ [ start | end ]? <length-percentage>? ]! ]#",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "center"
+				},
+				{
+					"value": "center, center"
+				},
+				{
+					"value": "start, start"
+				},
+				{
+					"value": "start 50%"
+				},
+				{
+					"value": "start 50%, end 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "center start"
+				}
+			]
 		}
 	},
 	"background-repeat-block": {
@@ -251,9 +295,16 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<repetition>#",
-		"syntax-m": false,
+		"syntax-m": "<repetition>#",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "repeat"
+				},
+				{
+					"value": "repeat, no-repeat"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -262,9 +313,16 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<repetition>#",
-		"syntax-m": false,
+		"syntax-m": "<repetition>#",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "repeat"
+				},
+				{
+					"value": "repeat, no-repeat"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -273,9 +331,16 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<repetition>#",
-		"syntax-m": false,
+		"syntax-m": "<repetition>#",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "repeat"
+				},
+				{
+					"value": "repeat, no-repeat"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -284,9 +349,16 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<repetition>#",
-		"syntax-m": false,
+		"syntax-m": "<repetition>#",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "repeat"
+				},
+				{
+					"value": "repeat, no-repeat"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -306,10 +378,24 @@
 		"comment": "",
 		"syntax-b": "baseline | sub | super | <svg-length>",
 		"syntax-a": "<length-percentage> | sub | super | top | center | bottom",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage> | sub | super | top | center | bottom",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "sub"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"baseline-source": {
@@ -317,10 +403,21 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "auto | first | last",
-		"syntax-m": false,
+		"syntax-m": "auto | first | last",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "auto"
+				},
+				{
+					"value": "first"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"block-ellipsis": {
@@ -328,10 +425,24 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "none | auto | <string>",
-		"syntax-m": false,
+		"syntax-m": "none | auto | <string>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "none"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "':::'"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"block-size": {
@@ -339,10 +450,24 @@
 		"comment": "",
 		"syntax-b": "<'width'>",
 		"syntax-a": "<'width'> | stretch | fit-content | contain",
-		"syntax-m": false,
+		"syntax-m": "<'width'> | stretch | fit-content | contain",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "stretch"
+				},
+				{
+					"value": "contain"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"block-step": {
@@ -361,10 +486,21 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "auto | center | start | end",
-		"syntax-m": false,
+		"syntax-m": "auto | center | start | end",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "auto"
+				},
+				{
+					"value": "center"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"block-step-insert": {

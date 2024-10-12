@@ -10,6 +10,7 @@ export function apply_patches(patches, onto) {
 	for (const [name, definition] of Object.entries(onto.properties)) {
 		const patch = patches.properties[name];
 		if (!patch) {
+			// eslint-disable-next-line no-console
 			console.log(`Missing patch for property '${name}'`);
 			has_missing_patches = true;
 			flaws++;
@@ -21,6 +22,7 @@ export function apply_patches(patches, onto) {
 			patch['syntax-b'] !== definition['syntax-b'] ||
 			patch['syntax-a'] !== definition['syntax-a']
 		) {
+			// eslint-disable-next-line no-console
 			console.log(`Outdated patch for property '${name}'`);
 			has_outdated_patches = true;
 			flaws++;
@@ -33,6 +35,7 @@ export function apply_patches(patches, onto) {
 		}
 
 		if (!patch['syntax-m']) {
+			// eslint-disable-next-line no-console
 			console.log(`Unmerged patch for property '${name}'`);
 			has_unmerged_patches = true;
 			flaws++;
@@ -48,6 +51,7 @@ export function apply_patches(patches, onto) {
 	for (const [name, definition] of Object.entries(onto.types)) {
 		const patch = patches.types[name];
 		if (!patch) {
+			// eslint-disable-next-line no-console
 			console.log(`Missing patch for type '${name}'`);
 			has_missing_patches = true;
 			flaws++;
@@ -59,6 +63,7 @@ export function apply_patches(patches, onto) {
 			patch['syntax-b'] !== definition['syntax-b'] ||
 			patch['syntax-a'] !== definition['syntax-a']
 		) {
+			// eslint-disable-next-line no-console
 			console.log(`Outdated patch for type '${name}'`);
 			has_outdated_patches = true;
 			flaws++;
@@ -71,6 +76,7 @@ export function apply_patches(patches, onto) {
 		}
 
 		if (!patch['syntax-m']) {
+			// eslint-disable-next-line no-console
 			console.log(`Unmerged patch for type '${name}'`);
 			has_unmerged_patches = true;
 			flaws++;

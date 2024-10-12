@@ -56,6 +56,7 @@ const invalid = forkedLexer.validate();
 if (invalid) {
 	for (const [kind, items] of Object.entries(invalid)) {
 		items.forEach((item) => {
+			// eslint-disable-next-line no-console
 			console.log(`Unexpected invalid ${SINGULAR[kind]} '${item}'`);
 			has_invalid_items = true;
 			flaws++;
@@ -89,6 +90,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
 
 		} catch { }
 
+		// eslint-disable-next-line no-console
 		console.log(`Expected no error for '${name}: ${test.value}'`);
 		flaws++;
 	}
@@ -104,6 +106,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
 			continue;
 		}
 
+		// eslint-disable-next-line no-console
 		console.log(`Expected an error for '${name}: ${test.value}'`);
 		flaws++;
 	}
@@ -135,6 +138,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 
 		} catch {}
 
+		// eslint-disable-next-line no-console
 		console.log(`Expected no error for '${test.property}: ${test.value}'`);
 		flaws++;
 	}
@@ -150,6 +154,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 			continue;
 		}
 
+		// eslint-disable-next-line no-console
 		console.log(`Expected an error for '${test.property}: ${test.value}'`);
 		flaws++;
 	}
@@ -177,33 +182,41 @@ await write_final_file({
 
 {
 	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
+		// eslint-disable-next-line no-console
 		console.log('-------------------');
 	}
 
 	if (has_missing_patches) {
+		// eslint-disable-next-line no-console
 		console.warn('Not all patches have been merged');
 	}
 
 	if (has_outdated_patches) {
+		// eslint-disable-next-line no-console
 		console.warn('Not all patches have been updated');
 	}
 
 	if (has_unmerged_patches) {
+		// eslint-disable-next-line no-console
 		console.warn('Not all patches have been merged');
 	}
 
 	if (has_missing_patch_tests) {
+		// eslint-disable-next-line no-console
 		console.warn('Not all patches have test coverage');
 	}
 
 	if (has_invalid_items) {
+		// eslint-disable-next-line no-console
 		console.warn('Not all types or properties are valid');
 	}
 
 	if (has_failing_tests) {
+		// eslint-disable-next-line no-console
 		console.warn('Not all tests passed');
 	}
 
+	// eslint-disable-next-line no-console
 	console.log(`${flaws} flaws to resolve`);
 
 	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {

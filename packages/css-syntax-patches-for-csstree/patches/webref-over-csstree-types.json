@@ -2974,10 +2974,36 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "repeat | space | round | no-repeat",
-		"syntax-m": false,
+		"syntax-m": "repeat | space | round | no-repeat",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "background-repeat-inline",
+					"value": "repeat"
+				},
+				{
+					"property": "background-repeat-inline",
+					"value": "space"
+				},
+				{
+					"property": "background-repeat-inline",
+					"value": "no-repeat"
+				}
+			],
+			"failing": [
+				{
+					"property": "background-repeat-inline",
+					"value": "foo"
+				},
+				{
+					"property": "background-repeat-inline",
+					"value": "norepeat"
+				},
+				{
+					"property": "background-repeat-inline",
+					"value": "repeat space"
+				}
+			]
 		}
 	},
 	"request-url-modifier": {

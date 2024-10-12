@@ -180,6 +180,7 @@ SPECS.forEach(([spec, dependencies], index) => {
 	});
 
 	if (Math.min(...dependencyIndices) > index) {
+		// eslint-disable-next-line no-console
 		console.log(spec, index, dependencies, dependencyIndices);
 
 		throw new Error('SPECS in correctly sorted by dependency');
@@ -250,6 +251,7 @@ function is_conflicting_type(spec_name, name, syntax) {
 				return;
 			}
 
+			// eslint-disable-next-line no-console
 			console.log(`
 Type '${name}' from '${spec_name}' previously occurred in '${other_occurrence.spec_name}'
     ours: ${syntax}
@@ -390,6 +392,7 @@ function is_conflicting_property(spec_name, name, syntax) {
 				return;
 			}
 
+			// eslint-disable-next-line no-console
 			console.log(`
 Property '${name}' from '${spec_name}' previously occurred in '${other_occurrence.spec_name}'
     ours: ${syntax}
