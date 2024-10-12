@@ -106,7 +106,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "arc [ [ <by-to> <coordinate-pair> ] || [ of <length-percentage>{1,2} ] || <arc-sweep>? || <arc-size>? || [ rotate <angle> ]? ]",
-		"syntax-m": false,
+		"syntax-m": "arc [ [ <by-to> <coordinate-pair> ] || [ of <length-percentage>{1,2} ] || <arc-sweep>? || <arc-size>? || [ rotate <angle> ]? ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -117,7 +117,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "large | small",
-		"syntax-m": false,
+		"syntax-m": "large | small",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -128,7 +128,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "cw | ccw",
-		"syntax-m": false,
+		"syntax-m": "cw | ccw",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -139,10 +139,24 @@
 		"comment": "",
 		"syntax-b": "<wq-name>",
 		"syntax-a": "[ <ident-token> '|' ]? <ident-token>",
-		"syntax-m": false,
+		"syntax-m": "[ [ <ident-token> '|' ]? <ident-token> ]",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "content",
+					"value": "attr(value)"
+				},
+				{
+					"property": "content",
+					"value": "attr(svg|value)"
+				}
+			],
+			"failing": [
+				{
+					"property": "content",
+					"value": "attr(value data-value)"
+				}
+			]
 		}
 	},
 	"attr-type": {
@@ -150,10 +164,24 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>",
-		"syntax-m": false,
+		"syntax-m": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "content",
+					"value": "attr(value color)"
+				},
+				{
+					"property": "content",
+					"value": "attr(value ident)"
+				}
+			],
+			"failing": [
+				{
+					"property": "content",
+					"value": "attr(value foo)"
+				}
+			]
 		}
 	},
 	"attr()": {
@@ -161,10 +189,32 @@
 		"comment": "",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
 		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
-		"syntax-m": false,
+		"syntax-m": "attr( [ <attr-name> <attr-type>? , <declaration-value>? ] )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "content",
+					"value": "attr(value)"
+				},
+				{
+					"property": "content",
+					"value": "attr(value string)"
+				},
+				{
+					"property": "content",
+					"value": "attr(value string)"
+				},
+				{
+					"property": "content",
+					"value": "attr(value string, 'foo')"
+				}
+			],
+			"failing": [
+				{
+					"property": "content",
+					"value": "attr(value string 'string')"
+				}
+			]
 		}
 	},
 	"autospace": {
@@ -452,7 +502,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "by | to",
-		"syntax-m": false,
+		"syntax-m": "by | to",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -896,7 +946,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>{2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage>{2}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -984,7 +1034,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]",
-		"syntax-m": false,
+		"syntax-m": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1043,6 +1093,31 @@
 		"tests": {
 			"passing": [],
 			"failing": []
+		}
+	},
+	"dimension-unit": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
+		"syntax-m": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
+		"tests": {
+			"passing": [
+				{
+					"property": "content",
+					"value": "attr(value %)"
+				},
+				{
+					"property": "content",
+					"value": "attr(value px)"
+				}
+			],
+			"failing": [
+				{
+					"property": "content",
+					"value": "attr(value foo)"
+				}
+			]
 		}
 	},
 	"display-legacy": {
@@ -1365,7 +1440,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "[ hline | vline ] <by-to> <length-percentage>",
-		"syntax-m": false,
+		"syntax-m": "[ hline | vline ] <by-to> <length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1871,7 +1946,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "line <by-to> <coordinate-pair>",
-		"syntax-m": false,
+		"syntax-m": "line <by-to> <coordinate-pair>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2298,7 +2373,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "move <by-to> <coordinate-pair>",
-		"syntax-m": false,
+		"syntax-m": "move <by-to> <coordinate-pair>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3234,7 +3309,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close",
-		"syntax-m": false,
+		"syntax-m": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3245,7 +3320,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "shape( <'fill-rule'>? from <coordinate-pair> , <shape-command># )",
-		"syntax-m": false,
+		"syntax-m": "shape( <'fill-rule'>? from <coordinate-pair> , <shape-command># )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3267,7 +3342,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "smooth [ [ <by-to> <coordinate-pair> ] || [ using <coordinate-pair> ]? ]",
-		"syntax-m": false,
+		"syntax-m": "smooth [ [ <by-to> <coordinate-pair> ] || [ using <coordinate-pair> ]? ]",
 		"tests": {
 			"passing": [],
 			"failing": []

@@ -1487,9 +1487,25 @@
 		"comment": "",
 		"syntax-b": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]?",
 		"syntax-a": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
-		"syntax-m": false,
+		"syntax-m": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "none"
+				},
+				{
+					"value": "'foo'"
+				},
+				{
+					"value": "'foo' 'bar'"
+				},
+				{
+					"value": "counter(count, decimal)"
+				}
+			],
 			"failing": []
 		}
 	},

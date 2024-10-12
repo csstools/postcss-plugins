@@ -431,6 +431,12 @@
 		"syntax-a": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText",
 		"comment": ""
 	},
+	"dimension-unit": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
+		"comment": ""
+	},
 	"display-legacy": {
 		"type": "modified",
 		"syntax-b": "inline-block | inline-list-item | inline-table | inline-flex | inline-grid",

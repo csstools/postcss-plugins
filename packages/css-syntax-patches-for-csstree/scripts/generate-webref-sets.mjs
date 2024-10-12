@@ -1,3 +1,5 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import css from '@webref/css';
 import { fork } from 'css-tree-3.0.0';
 import { generate_set } from './generate-set.mjs';
@@ -534,6 +536,8 @@ export async function generate_webref_sets() {
 			}
 		}
 	}
+
+	values['dimension-unit'] = JSON.parse(await fs.readFile(path.join('raw-data', 'units.json'))).join(' | ');
 
 	const forkedLexer = fork({
 		properties: properties,

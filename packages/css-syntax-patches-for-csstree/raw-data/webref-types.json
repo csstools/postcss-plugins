@@ -434,6 +434,9 @@
 	"device-cmyk()": {
 		"syntax": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>"
 	},
+	"dimension-unit": {
+		"syntax": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr"
+	},
 	"discretionary-lig-values": {
 		"syntax": "[ discretionary-ligatures | no-discretionary-ligatures ]"
 	},
