@@ -5,6 +5,7 @@
 			"align-self": "| anchor-center",
 			"alignment-baseline": "| text-bottom | text-top",
 			"animation-duration": "[ auto | <time [0s,∞]> ]#",
+			"appearance": "none | auto | base | <compat-auto> | <compat-special>",
 			"aspect-ratio": "auto || <ratio>",
 			"backdrop-filter": "none | <filter-value-list>",
 			"background": "<bg-layer>#? , <final-bg-layer>",

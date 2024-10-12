@@ -79,6 +79,14 @@ export async function write_patches(sets, patch_sets) {
 		}
 	}
 
+	for (const [set_name, merged_set] of Object.entries(merged_sets)) {
+		for (const [kind_name, patch_kind] of Object.entries(merged_set)) {
+			for (const [name, patch_definition] of Object.entries(patch_kind)) {
+				merged_sets[set_name][kind_name][name] = sort_object_keys(patch_definition);
+			}
+		}
+	}
+
 	{
 		await fs.writeFile(
 			path.join('patches', 'webref-over-csstree-properties.json'),
@@ -92,4 +100,20 @@ export async function write_patches(sets, patch_sets) {
 			'utf-8',
 		);
 	}
+}
+
+function sort_object_keys(object) {
+	const copy = Object(null);
+
+	copy.type = object.type;
+	copy.comment = object.comment;
+	copy['syntax-b'] = object['syntax-b'];
+	copy['syntax-a'] = object['syntax-a'];
+	copy['syntax-m'] = object['syntax-m'];
+	copy.tests = {
+		passing: object.tests?.passing ?? [],
+		failing: object.tests?.failing ?? [],
+	};
+
+	return copy;
 }
