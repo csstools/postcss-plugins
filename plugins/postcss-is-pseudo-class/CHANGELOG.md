@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Make sorting compound selectors forwards compatible with potential future changes in `postcss-selector-parser`
+
 ### 5.0.0
 
 _August 3, 2024_

@@ -74,6 +74,7 @@ export function sortCompoundSelectorsInsideComplexSelector(node: parser.Containe
 		}
 	}
 
+	node.removeAll();
 	for (let i = sortedCompoundSelectors.length - 1; i >= 0; i--) {
 		const previous = sortedCompoundSelectors[i - 1];
 
@@ -92,9 +93,11 @@ export function sortCompoundSelectorsInsideComplexSelector(node: parser.Containe
 				],
 			});
 
-			node.prepend(wrapped);
+			wrapped.parent = node;
+			node.nodes.unshift(wrapped);
 		} else {
-			node.prepend(sortedCompoundSelectors[i]);
+			sortedCompoundSelectors[i].parent = node;
+			node.nodes.unshift(sortedCompoundSelectors[i]);
 		}
 	}
 }
