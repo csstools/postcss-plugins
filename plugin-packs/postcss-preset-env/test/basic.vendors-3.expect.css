@@ -131,7 +131,6 @@
 }
 
 .test-font-variant-property {
-	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
