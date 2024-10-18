@@ -209,6 +209,12 @@
       - plugins/postcss-font-format-keywords/**
       - experimental/postcss-font-format-keywords/**
 
+"plugins/postcss-font-weights":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-font-weights/**
+      - experimental/postcss-font-weights/**
+
 "plugins/postcss-gamut-mapping":
   - changed-files:
     - any-glob-to-any-file:
