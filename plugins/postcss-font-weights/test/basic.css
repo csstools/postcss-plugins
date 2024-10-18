@@ -1,0 +1,115 @@
+a {
+	font: thin 1em;
+}
+
+a {
+	fOnt: extralight 1em;
+}
+
+a {
+	font: ultralight 1em;
+}
+
+a {
+	font: light 1em;
+}
+
+a {
+	font: book 1em;
+}
+
+a {
+	font: regular 1em;
+}
+
+a {
+	font: roman 1em;
+}
+
+a {
+	font: medium 1em;
+}
+
+a {
+	font: demibold 1em;
+}
+
+a {
+	font: semibold 1em;
+}
+
+a {
+	font: extrabold 1em;
+}
+
+a {
+	font: ultrabold 1em;
+}
+
+a {
+	font: black 1em;
+}
+
+a {
+	font: heavy 1em;
+}
+
+b {
+	font-weight: thin;
+}
+
+b {
+	font-weight: extralight;
+}
+
+b {
+	font-weight: ultralight;
+}
+
+b {
+	font-weight: light;
+}
+
+b {
+	font-weight: book;
+}
+
+b {
+	font-weight: regular;
+}
+
+b {
+	font-weight: roman;
+}
+
+b {
+	font-weight: medium;
+}
+
+b {
+	fOnt-weight: demibold;
+}
+
+b {
+	font-weight: semibold;
+}
+
+b {
+	font-weight: extrabold;
+}
+
+b {
+	font-weight: ultrabold;
+}
+
+b {
+	font-weight: black;
+}
+
+b {
+	font-weight: heavy;
+}
+
+c {
+	font: normal normal normal 14px/1 FontAwesome;
+}

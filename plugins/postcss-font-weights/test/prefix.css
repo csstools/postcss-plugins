@@ -1,0 +1,111 @@
+a {
+	-x-font: thin 1em;
+}
+
+a {
+	-x-font: extralight 1em;
+}
+
+a {
+	-x-font: ultralight 1em;
+}
+
+a {
+	-x-font: light 1em;
+}
+
+a {
+	-x-font: book 1em;
+}
+
+a {
+	-x-font: regular 1em;
+}
+
+a {
+	-x-font: roman 1em;
+}
+
+a {
+	-x-font: medium 1em;
+}
+
+a {
+	-x-font: demibold 1em;
+}
+
+a {
+	-x-font: semibold 1em;
+}
+
+a {
+	-x-font: extrabold 1em;
+}
+
+a {
+	-x-font: ultrabold 1em;
+}
+
+a {
+	-x-font: black 1em;
+}
+
+a {
+	-x-font: heavy 1em;
+}
+
+b {
+	-x-font-weight: thin;
+}
+
+b {
+	-x-font-weight: extralight;
+}
+
+b {
+	-x-font-weight: ultralight;
+}
+
+b {
+	-x-font-weight: light;
+}
+
+b {
+	-x-font-weight: book;
+}
+
+b {
+	-x-font-weight: regular;
+}
+
+b {
+	-x-font-weight: roman;
+}
+
+b {
+	-x-font-weight: medium;
+}
+
+b {
+	-x-font-weight: demibold;
+}
+
+b {
+	-x-font-weight: semibold;
+}
+
+b {
+	-x-font-weight: extrabold;
+}
+
+b {
+	-x-font-weight: ultrabold;
+}
+
+b {
+	-x-font-weight: black;
+}
+
+b {
+	-x-font-weight: heavy;
+}

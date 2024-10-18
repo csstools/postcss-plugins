@@ -1,5 +1,9 @@
 # Changes to CSS Parser Algorithms
 
+### Unreleased (patch)
+
+- Fix typo `isTokenNod()` => `isTokenNode()`
+
 ### 3.0.2
 
 _October 10, 2024_
