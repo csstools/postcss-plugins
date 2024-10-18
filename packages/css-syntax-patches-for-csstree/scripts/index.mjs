@@ -5,7 +5,7 @@
 // - backwards compat
 //   given that syntaxes are extensive users might depend on a specific type. No types can be removed or altered in a breaking way in semver patches or minors
 
-import { fork, parse } from 'css-tree-3.0.0';
+import { fork } from 'css-tree-3.0.0';
 
 import { generate_csstree_sets } from './generate-csstree-sets.mjs';
 import { generate_webref_sets } from './generate-webref-sets.mjs';
@@ -82,8 +82,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
 
 	for (const test of (patch.tests.passing ?? [])) {
 		try {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(name, csstree_value_node);
+			const result = forkedLexer.matchProperty(name, test.value);
 			if (!result.error) {
 				continue;
 			}
@@ -97,8 +96,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
 
 	for (const test of (patch.tests.failing ?? [])) {
 		try {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(name, csstree_value_node);
+			const result = forkedLexer.matchProperty(name, test.value);
 			if (result.error) {
 				continue;
 			}
@@ -130,8 +128,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 
 	for (const test of (patch.tests.passing ?? [])) {
 		try {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(test.property, csstree_value_node);
+			const result = forkedLexer.matchProperty(test.property, test.value);
 			if (!result.error) {
 				continue;
 			}
@@ -145,8 +142,7 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 
 	for (const test of (patch.tests.failing ?? [])) {
 		try {
-			const csstree_value_node = parse(test.value, { context: 'value' });
-			const result = forkedLexer.matchProperty(test.property, csstree_value_node);
+			const result = forkedLexer.matchProperty(test.property, test.value);
 			if (result.error) {
 				continue;
 			}
