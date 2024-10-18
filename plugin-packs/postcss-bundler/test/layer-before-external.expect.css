@@ -1,0 +1,7 @@
+@layer reset, bootstrap;
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.css') layer(bootstrap);
+@layer reset {
+	h1 {
+		margin-top: 100px;
+	}
+}
