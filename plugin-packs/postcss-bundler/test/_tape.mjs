@@ -15,6 +15,9 @@ const testCases = {
 		message: 'errors on mismatched charset',
 		exception: /Incompatible @charset statements/,
 	},
+	'conditional-layer-before-external': {
+		message: 'correctly handles conditional stylesheets containing layer statements before external resources',
+	},
 	'does-not-exist-1': {
 		message: 'throws on files that don\'t exist',
 		exception: /Failed to find 'imports\/does-not-exist.css'/,
@@ -26,6 +29,9 @@ const testCases = {
 	'ignore': {
 		message: 'ignores incorrect syntax',
 		warnings: 4,
+	},
+	'layer-before-external': {
+		message: 'correctly handles layer statements before external resources',
 	},
 	'regexp': {
 		message: 'regexp sanity checks',

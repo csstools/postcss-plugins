@@ -1,16 +1,18 @@
+import path from 'node:path';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { externalsForPlugin } from '../configs/externals.mjs';
 import { apiExtractor } from '../transforms/api-extractor.mjs';
 import { nodeCoverageDisable } from '../transforms/node-coverage-disable.mjs';
+import { move } from '../transforms/move.mjs';
 
 export function packageTypescript(options) {
 	options = options || {};
 	return [
 		{
-			input: 'src/index.ts',
+			input: path.join('src', 'index.ts'),
 			output: [
-				{ file: 'dist/index.cjs', format: 'cjs', sourcemap: false, exports: 'auto' },
+				{ file: path.join('dist', 'index.cjs'), format: 'cjs', sourcemap: false, exports: 'auto' },
 			],
 			external: externalsForPlugin,
 			plugins: [
@@ -32,9 +34,9 @@ export function packageTypescript(options) {
 			],
 		},
 		{
-			input: 'src/index.ts',
+			input: path.join('src', 'index.ts'),
 			output: [
-				{ file: 'dist/index.mjs', format: 'esm', sourcemap: false, exports: 'auto' },
+				{ file: path.join('dist', '_types', 'index.mjs'), format: 'esm', sourcemap: false, exports: 'auto' },
 			],
 			external: externalsForPlugin,
 			plugins: [
@@ -53,6 +55,10 @@ export function packageTypescript(options) {
 					keep_fnames: true,
 				}),
 				options.nodeCoverageDisable ? nodeCoverageDisable() : undefined,
+				move(
+					path.join('dist', '_types', 'index.mjs'),
+					path.join('dist', 'index.mjs'),
+				),
 				apiExtractor(),
 			],
 		},

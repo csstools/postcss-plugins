@@ -73,9 +73,11 @@ export function sortCompoundSelectorsInsideComplexSelector(node: Container<strin
 		}
 	}
 
+	node.removeAll();
 	for (let i = sortedCompoundSelectors.length - 1; i >= 0; i--) {
 		sortedCompoundSelectors[i].remove();
-		node.prepend(sortedCompoundSelectors[i]);
+		sortedCompoundSelectors[i].parent = node;
+		node.nodes.unshift(sortedCompoundSelectors[i]);
 	}
 }
 
