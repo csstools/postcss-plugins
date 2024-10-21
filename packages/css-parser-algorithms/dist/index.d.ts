@@ -499,7 +499,7 @@ export declare class TokenNode {
     /**
      * @internal
      */
-    isTokenNod(): this is TokenNode;
+    isTokenNode(): this is TokenNode;
     /**
      * @internal
      */

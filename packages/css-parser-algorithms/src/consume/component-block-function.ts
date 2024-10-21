@@ -751,7 +751,7 @@ export class TokenNode {
 	/**
 	 * @internal
 	 */
-	isTokenNod(): this is TokenNode {
+	isTokenNode(): this is TokenNode {
 		return TokenNode.isTokenNode(this);
 	}
 
