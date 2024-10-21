@@ -1,4 +1,22 @@
 {
+	"anchor-name": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<dashed-ident>",
+		"comment": ""
+	},
+	"anchor-size()": {
+		"type": "modified",
+		"syntax-b": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )",
+		"syntax-a": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
+		"comment": ""
+	},
+	"anchor()": {
+		"type": "modified",
+		"syntax-b": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )",
+		"syntax-a": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
+		"comment": ""
+	},
 	"angle-percentage": {
 		"type": "modified",
 		"syntax-b": "<angle> | <percentage>",
@@ -1382,13 +1400,7 @@
 	"syntax-component": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'",
-		"comment": ""
-	},
-	"syntax-component-name": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "'<' <syntax-type> '>' | <custom-ident>",
+		"syntax-a": "<syntax-single-component> <syntax-multiplier>? | '<' transform-list '>'",
 		"comment": ""
 	},
 	"syntax-multiplier": {
@@ -1397,7 +1409,13 @@
 		"syntax-a": "[ '#' | '+' ]",
 		"comment": ""
 	},
-	"syntax-type": {
+	"syntax-single-component": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "'<' <syntax-type-name> '>' | <ident>",
+		"comment": ""
+	},
+	"syntax-type-name": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function",

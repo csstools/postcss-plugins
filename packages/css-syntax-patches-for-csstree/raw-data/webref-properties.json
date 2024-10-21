@@ -177,7 +177,7 @@
 		"syntax": "tb | rl | bt | lr"
 	},
 	"block-size": {
-		"syntax": "<'width'> | stretch | fit-content | contain"
+		"syntax": "<'width'>"
 	},
 	"block-step": {
 		"syntax": "<'block-step-size'> || <'block-step-insert'> || <'block-step-align'> || <'block-step-round'>"
@@ -1092,7 +1092,7 @@
 		"syntax": "none | first | all | grid | <length-percentage>"
 	},
 	"inline-size": {
-		"syntax": "<'width'> | stretch | fit-content | contain"
+		"syntax": "<'width'>"
 	},
 	"inline-sizing": {
 		"syntax": "normal | stretch"
@@ -1383,13 +1383,13 @@
 		"syntax": "normal | compact"
 	},
 	"max-block-size": {
-		"syntax": "<'max-width'> | stretch | fit-content | contain"
+		"syntax": "<'max-width'>"
 	},
 	"max-height": {
 		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
 	},
 	"max-inline-size": {
-		"syntax": "<'max-width'> | stretch | fit-content | contain"
+		"syntax": "<'max-width'>"
 	},
 	"max-lines": {
 		"syntax": "none | <integer [1,∞]>"
@@ -1398,13 +1398,13 @@
 		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
 	},
 	"min-block-size": {
-		"syntax": "<'min-width'> | stretch | fit-content | contain"
+		"syntax": "<'min-width'>"
 	},
 	"min-height": {
 		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>"
 	},
 	"min-inline-size": {
-		"syntax": "<'min-width'> | stretch | fit-content | contain"
+		"syntax": "<'min-width'>"
 	},
 	"min-intrinsic-sizing": {
 		"syntax": "legacy | zero-if-scroll || zero-if-extrinsic"
@@ -1659,7 +1659,7 @@
 		"syntax": "static | relative | absolute | sticky | fixed | <running()>"
 	},
 	"position-anchor": {
-		"syntax": "auto | <anchor-element>"
+		"syntax": "auto | <anchor-name>"
 	},
 	"position-area": {
 		"syntax": "none | <position-area>"

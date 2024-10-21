@@ -1,4 +1,47 @@
 {
+	"anchor-name": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<dashed-ident>",
+		"syntax-m": "<dashed-ident>",
+		"tests": {
+			"passing": [
+				{
+					"property": "position-anchor",
+					"value": "--foo"
+				}
+			],
+			"failing": [
+				{
+					"property": "position-anchor",
+					"value": "foo"
+				}
+			]
+		}
+	},
+	"anchor-size()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )",
+		"syntax-a": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
+		"syntax-m": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"anchor()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )",
+		"syntax-a": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
+		"syntax-m": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"angle-percentage": {
 		"type": "modified",
 		"comment": "",
@@ -3597,18 +3640,7 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'",
-		"syntax-m": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"syntax-component-name": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "'<' <syntax-type> '>' | <custom-ident>",
+		"syntax-a": "<syntax-single-component> <syntax-multiplier>? | '<' transform-list '>'",
 		"syntax-m": false,
 		"tests": {
 			"passing": [],
@@ -3626,7 +3658,18 @@
 			"failing": []
 		}
 	},
-	"syntax-type": {
+	"syntax-single-component": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "'<' <syntax-type-name> '>' | <ident>",
+		"syntax-m": false,
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-type-name": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",

@@ -19,7 +19,6 @@
 			"baseline-shift": "<length-percentage> | sub | super | top | center | bottom",
 			"baseline-source": "auto | first | last",
 			"block-ellipsis": "none | auto | <string>",
-			"block-size": "<'width'> | stretch | fit-content | contain",
 			"block-step-align": "auto | center | start | end",
 			"border-radius": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
 			"clip": "<shape> | auto",
@@ -27,10 +26,11 @@
 			"content": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
 			"justify-items": "| anchor-center",
 			"mix-blend-mode": "<blend-mode> | plus-darker | plus-lighter",
-			"position-anchor": "auto | <anchor-element>",
+			"position-anchor": "auto | <anchor-name>",
 			"text-wrap-style": "auto | balance | stable | pretty | avoid-orphans"
 		},
 		"types": {
+			"anchor-name": "<dashed-ident>",
 			"angle-percentage": "[ <angle> | <percentage> ]",
 			"angular-color-stop": "<color> <color-stop-angle>?",
 			"angular-color-stop-list": "<angular-color-stop> , [ <angular-color-hint>? , <angular-color-stop> ]#?",

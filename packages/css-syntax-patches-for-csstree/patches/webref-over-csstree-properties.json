@@ -445,31 +445,6 @@
 			]
 		}
 	},
-	"block-size": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<'width'>",
-		"syntax-a": "<'width'> | stretch | fit-content | contain",
-		"syntax-m": "<'width'> | stretch | fit-content | contain",
-		"tests": {
-			"passing": [
-				{
-					"value": "10px"
-				},
-				{
-					"value": "stretch"
-				},
-				{
-					"value": "contain"
-				}
-			],
-			"failing": [
-				{
-					"value": "foo"
-				}
-			]
-		}
-	},
 	"block-step": {
 		"type": "added",
 		"comment": "",
@@ -2136,17 +2111,6 @@
 			"failing": []
 		}
 	},
-	"inline-size": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<'width'>",
-		"syntax-a": "<'width'> | stretch | fit-content | contain",
-		"syntax-m": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"inline-sizing": {
 		"type": "added",
 		"comment": "",
@@ -2704,33 +2668,11 @@
 			"failing": []
 		}
 	},
-	"max-block-size": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<'max-width'>",
-		"syntax-a": "<'max-width'> | stretch | fit-content | contain",
-		"syntax-m": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"max-height": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
 		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
-		"syntax-m": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"max-inline-size": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<'max-width'>",
-		"syntax-a": "<'max-width'> | stretch | fit-content | contain",
 		"syntax-m": false,
 		"tests": {
 			"passing": [],
@@ -2759,33 +2701,11 @@
 			"failing": []
 		}
 	},
-	"min-block-size": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<'min-width'>",
-		"syntax-a": "<'min-width'> | stretch | fit-content | contain",
-		"syntax-m": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"min-height": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
-		"syntax-m": false,
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"min-inline-size": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<'min-width'>",
-		"syntax-a": "<'min-width'> | stretch | fit-content | contain",
 		"syntax-m": false,
 		"tests": {
 			"passing": [],
@@ -3283,8 +3203,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<anchor-element>",
-		"syntax-a": "auto | <anchor-element>",
-		"syntax-m": "auto | <anchor-element>",
+		"syntax-a": "auto | <anchor-name>",
+		"syntax-m": "auto | <anchor-name>",
 		"tests": {
 			"passing": [
 				{

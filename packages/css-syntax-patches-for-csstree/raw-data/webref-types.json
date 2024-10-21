@@ -23,6 +23,9 @@
 	"anchor-element": {
 		"syntax": "<dashed-ident>"
 	},
+	"anchor-name": {
+		"syntax": "<dashed-ident>"
+	},
 	"anchor-side": {
 		"syntax": "inside | outside | top | left | right | bottom | start | end | self-start | self-end | <percentage> | center"
 	},
@@ -30,10 +33,10 @@
 		"syntax": "width | height | block | inline | self-block | self-inline"
 	},
 	"anchor-size()": {
-		"syntax": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )"
+		"syntax": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )"
 	},
 	"anchor()": {
-		"syntax": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )"
+		"syntax": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )"
 	},
 	"angle-percentage": {
 		"syntax": "[ <angle> | <percentage> ]"
@@ -1521,15 +1524,15 @@
 		"syntax": "'|'"
 	},
 	"syntax-component": {
-		"syntax": "<syntax-component-name> <syntax-multiplier>? | '<' transform-list '>'"
-	},
-	"syntax-component-name": {
-		"syntax": "'<' <syntax-type> '>' | <custom-ident>"
+		"syntax": "<syntax-single-component> <syntax-multiplier>? | '<' transform-list '>'"
 	},
 	"syntax-multiplier": {
 		"syntax": "[ '#' | '+' ]"
 	},
-	"syntax-type": {
+	"syntax-single-component": {
+		"syntax": "'<' <syntax-type-name> '>' | <ident>"
+	},
+	"syntax-type-name": {
 		"syntax": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function"
 	},
 	"system-color": {

@@ -119,12 +119,6 @@
 		"syntax-a": "none | auto | <string>",
 		"comment": ""
 	},
-	"block-size": {
-		"type": "modified",
-		"syntax-b": "<'width'>",
-		"syntax-a": "<'width'> | stretch | fit-content | contain",
-		"comment": ""
-	},
 	"block-step": {
 		"type": "added",
 		"syntax-b": "",
@@ -995,12 +989,6 @@
 		"syntax-a": "none | first | all | grid | <length-percentage>",
 		"comment": ""
 	},
-	"inline-size": {
-		"type": "modified",
-		"syntax-b": "<'width'>",
-		"syntax-a": "<'width'> | stretch | fit-content | contain",
-		"comment": ""
-	},
 	"inline-sizing": {
 		"type": "added",
 		"syntax-b": "",
@@ -1301,22 +1289,10 @@
 		"syntax-a": "none | <track-list> | <masonry-auto-track-list> | subgrid <line-name-list>?",
 		"comment": ""
 	},
-	"max-block-size": {
-		"type": "modified",
-		"syntax-b": "<'max-width'>",
-		"syntax-a": "<'max-width'> | stretch | fit-content | contain",
-		"comment": ""
-	},
 	"max-height": {
 		"type": "modified",
 		"syntax-b": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
 		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
-		"comment": ""
-	},
-	"max-inline-size": {
-		"type": "modified",
-		"syntax-b": "<'max-width'>",
-		"syntax-a": "<'max-width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"max-lines": {
@@ -1331,22 +1307,10 @@
 		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
 		"comment": ""
 	},
-	"min-block-size": {
-		"type": "modified",
-		"syntax-b": "<'min-width'>",
-		"syntax-a": "<'min-width'> | stretch | fit-content | contain",
-		"comment": ""
-	},
 	"min-height": {
 		"type": "modified",
 		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
-		"comment": ""
-	},
-	"min-inline-size": {
-		"type": "modified",
-		"syntax-b": "<'min-width'>",
-		"syntax-a": "<'min-width'> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"min-intrinsic-sizing": {
@@ -1610,7 +1574,7 @@
 	"position-anchor": {
 		"type": "modified",
 		"syntax-b": "<anchor-element>",
-		"syntax-a": "auto | <anchor-element>",
+		"syntax-a": "auto | <anchor-name>",
 		"comment": ""
 	},
 	"quotes": {
