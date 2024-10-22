@@ -95,12 +95,6 @@
 		"syntax-a": "<repetition>#",
 		"comment": ""
 	},
-	"background-tbd": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<bg-layer>#",
-		"comment": ""
-	},
 	"baseline-shift": {
 		"type": "modified",
 		"syntax-b": "baseline | sub | super | <svg-length>",

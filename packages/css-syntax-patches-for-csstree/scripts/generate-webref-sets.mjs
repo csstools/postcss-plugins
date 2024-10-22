@@ -19,6 +19,16 @@ function is_ignored_type(type, spec_name) {
 	return is_ignored && (is_ignored === '*' || is_ignored.has(spec_name));
 }
 
+const IGNORED_PROPERTIES = new Map([
+	// ['a-property', '*'],
+	['background-tbd', new Set(['css-backgrounds-4'])], // https://drafts.csswg.org/css-backgrounds-4/#issue-54018dea
+]);
+
+function is_ignored_property(property, spec_name) {
+	const is_ignored = IGNORED_PROPERTIES.get(property);
+	return is_ignored && (is_ignored === '*' || is_ignored.has(spec_name));
+}
+
 const CUSTOM_OVERRIDES = {
 	'css-gcpm': {
 		'content-list': {
@@ -459,6 +469,11 @@ export async function generate_webref_sets() {
 
 		for (const property of data.properties) {
 			if (property.value || property.newValues) {
+
+				if (is_ignored_property(property.name, spec_name)) {
+					continue;
+				}
+
 				assign_new_definition(
 					spec_name,
 					properties,

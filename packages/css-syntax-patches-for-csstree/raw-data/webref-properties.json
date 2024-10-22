@@ -155,9 +155,6 @@
 	"background-size": {
 		"syntax": "<bg-size>#"
 	},
-	"background-tbd": {
-		"syntax": "<bg-layer>#"
-	},
 	"baseline-shift": {
 		"syntax": "<length-percentage> | sub | super | top | center | bottom"
 	},

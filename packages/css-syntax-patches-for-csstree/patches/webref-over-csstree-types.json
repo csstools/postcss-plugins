@@ -901,10 +901,28 @@
 		"comment": "",
 		"syntax-b": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> ]+",
 		"syntax-a": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+",
-		"syntax-m": false,
+		"syntax-m": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "content",
+					"value": "'a'"
+				},
+				{
+					"property": "content",
+					"value": "'a' 'b'"
+				},
+				{
+					"property": "content",
+					"value": "'a' counter(foo)"
+				}
+			],
+			"failing": [
+				{
+					"property": "content",
+					"value": "10"
+				}
+			]
 		}
 	},
 	"content()": {
@@ -912,9 +930,18 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "content( [ text | before | after | first-letter | marker ]? )",
-		"syntax-m": false,
+		"syntax-m": "content( [ text | before | after | first-letter | marker ]? )",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "content",
+					"value": "content(text)"
+				},
+				{
+					"property": "content",
+					"value": "content()"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -3498,9 +3525,22 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "string( <custom-ident> , [ first | start | last | first-except ]? )",
-		"syntax-m": false,
+		"syntax-m": "string( <custom-ident> , [ first | start | last | first-except ]? )",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "content",
+					"value": "string(foo)"
+				},
+				{
+					"property": "content",
+					"value": "string(foo, first)"
+				},
+				{
+					"property": "content",
+					"value": "string(foo, start)"
+				}
+			],
 			"failing": []
 		}
 	},
