@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Make sorting compound selectors forwards compatible with potential future changes in `postcss-selector-parser`
+- Updated: `postcss-selector-parser`
 
 ### 5.0.0
 

@@ -1,5 +1,9 @@
 # Changes to PostCSS Selector Not
 
+### Unreleased (patch)
+
+- Updated: `postcss-selector-parser`
+
 ### 8.0.0
 
 _August 3, 2024_

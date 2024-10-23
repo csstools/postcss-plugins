@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting Experimental
 
+### Unreleased (patch)
+
+- Updated: `postcss-selector-parser`
+
 ### 3.0.0
 
 _August 3, 2024_

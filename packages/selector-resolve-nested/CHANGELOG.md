@@ -1,8 +1,9 @@
 # Changes to Selector Resolve Nested
 
-### Unreleased (patch)
+### Unreleased (major)
 
 - Make sorting compound selectors forwards compatible with potential future changes in `postcss-selector-parser`
+- Updated: `postcss-selector-parser`
 
 ### 2.0.0
 
