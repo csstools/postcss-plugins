@@ -166,12 +166,12 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/css-has-pseudo@7.0.0/dist/browser-global.js"></script>
+<script src="https://unpkg.com/css-has-pseudo@7.0.1/dist/browser-global.js"></script>
 <script>cssHasPseudo(document)</script>
 ```
 
 > [!TIP]
-> Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@7.0.0/dist/browser-global.js`
+> Please use a versioned url, like this : `https://unpkg.com/css-has-pseudo@7.0.1/dist/browser-global.js`
 > Without the version, you might unexpectedly get a new major version of the library with breaking changes.
 
 [PostCSS Has Pseudo] works in all major browsers, including
