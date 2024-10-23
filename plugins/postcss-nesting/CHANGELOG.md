@@ -1,6 +1,8 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 13.0.1
+
+_October 23, 2024_
 
 - Make sorting compound selectors forwards compatible with potential future changes in `postcss-selector-parser`
 - Updated: `postcss-selector-parser`
