@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 4.0.8
+
+_October 23, 2024_
 
 - Updated [`@csstools/postcss-scope-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class/CHANGELOG.md#401) (patch)
 - Updated [`css-blank-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo) to [`7.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo/CHANGELOG.md#701) (patch)
