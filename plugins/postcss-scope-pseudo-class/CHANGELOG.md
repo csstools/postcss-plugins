@@ -1,6 +1,8 @@
 # Changes to PostCSS Scope Pseudo Class
 
-### Unreleased (patch)
+### 4.0.1
+
+_October 23, 2024_
 
 - Updated: `postcss-selector-parser`
 
