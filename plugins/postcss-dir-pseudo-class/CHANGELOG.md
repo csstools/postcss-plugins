@@ -1,5 +1,9 @@
 # Changes to PostCSS Dir Pseudo Class
 
+### Unreleased (patch)
+
+- Updated: `postcss-selector-parser`
+
 ### 9.0.0
 
 _August 3, 2024_

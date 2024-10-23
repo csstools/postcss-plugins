@@ -1,5 +1,9 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (patch)
+
+- Updated: `postcss-selector-parser`
+
 ### 7.0.0
 
 _August 3, 2024_

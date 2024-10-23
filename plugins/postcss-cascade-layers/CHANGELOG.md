@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Updated: `postcss-selector-parser`
+
 ### 5.0.0
 
 _August 3, 2024_
