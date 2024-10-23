@@ -36,7 +36,7 @@
 		"parse-at-import.mjs"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.2",
+		"@csstools/css-parser-algorithms": "^3.0.3",
 		"@csstools/css-tokenizer": "^3.0.2"
 	},
 	"peerDependencies": {

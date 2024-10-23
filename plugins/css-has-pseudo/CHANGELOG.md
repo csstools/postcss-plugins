@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated: `postcss-selector-parser`
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`5.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#500) (major)
 
 ### 7.0.0
 

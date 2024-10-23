@@ -60,7 +60,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/selector-specificity": "^4.0.0",
+		"@csstools/selector-specificity": "^5.0.0",
 		"postcss-selector-parser": "^7.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},

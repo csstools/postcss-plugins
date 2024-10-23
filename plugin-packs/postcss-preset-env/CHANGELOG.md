@@ -3,6 +3,14 @@
 ### Unreleased (patch)
 
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.1.2`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#812-october-14-2024) (patch)
+- Updated [`@csstools/postcss-scope-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class/CHANGELOG.md#401) (patch)
+- Updated [`css-blank-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo) to [`7.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo/CHANGELOG.md#701) (patch)
+- Updated [`postcss-attribute-case-insensitive`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive) to [`7.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive/CHANGELOG.md#701) (patch)
+- Updated [`postcss-dir-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class/CHANGELOG.md#901) (patch)
+- Updated [`postcss-focus-visible`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible) to [`10.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible/CHANGELOG.md#1001) (patch)
+- Updated [`postcss-focus-within`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within/CHANGELOG.md#901) (patch)
+- Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`10.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#1001) (patch)
+- Updated [`postcss-selector-not`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not/CHANGELOG.md#801) (patch)
 
 ### 10.0.7
 
