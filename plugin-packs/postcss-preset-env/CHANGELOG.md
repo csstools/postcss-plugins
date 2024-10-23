@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 10.0.8
+
+_October 23, 2024_
 
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.1.2`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#812-october-14-2024) (patch)
 - Updated [`@csstools/postcss-scope-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-scope-pseudo-class/CHANGELOG.md#401) (patch)
