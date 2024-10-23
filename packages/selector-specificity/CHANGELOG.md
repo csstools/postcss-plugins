@@ -1,6 +1,6 @@
 # Changes to Selector Specificity
 
-### Unreleased (patch)
+### Unreleased (major)
 
 - Updated: `postcss-selector-parser`
 
