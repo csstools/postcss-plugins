@@ -1,6 +1,8 @@
 # Changes to PostCSS Focus Within
 
-### Unreleased (patch)
+### 9.0.1
+
+_October 23, 2024_
 
 - Updated: `postcss-selector-parser`
 
