@@ -1,6 +1,8 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (patch)
+### 3.0.3
+
+_October 23, 2024_
 
 - Fix typo:
 ```diff
