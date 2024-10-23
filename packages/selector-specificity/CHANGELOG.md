@@ -1,6 +1,8 @@
 # Changes to Selector Specificity
 
-### Unreleased (major)
+### 5.0.0
+
+_October 23, 2024_
 
 - Updated: `postcss-selector-parser`
 

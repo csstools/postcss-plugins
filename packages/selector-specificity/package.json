@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/selector-specificity",
 	"description": "Determine selector specificity with postcss-selector-parser",
-	"version": "4.0.0",
+	"version": "5.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
