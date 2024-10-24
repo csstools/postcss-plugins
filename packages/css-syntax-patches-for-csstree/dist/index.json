@@ -36,6 +36,7 @@
 			"justify-items": "| anchor-center",
 			"mix-blend-mode": "<blend-mode> | plus-darker | plus-lighter",
 			"position-anchor": "auto | <anchor-name>",
+			"stroke-opacity": "<'opacity'>",
 			"text-wrap-style": "auto | balance | stable | pretty | avoid-orphans"
 		},
 		"types": {

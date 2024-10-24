@@ -3860,10 +3860,21 @@
 		"comment": "",
 		"syntax-b": "<number-zero-one>",
 		"syntax-a": "<'opacity'>",
-		"syntax-m": false,
+		"syntax-m": "<'opacity'>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "0.5"
+				},
+				{
+					"value": "50%"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"stroke-origin": {
