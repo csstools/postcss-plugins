@@ -1,0 +1,6 @@
+/* https: //drafts.csswg.org/css-shapes-2/#shape-function */
+.foo {
+	shape-outside: circle(50% at 50% 50%);
+	shape-outside: url(#circle_shape);
+	shape-outside: url(#path-shape);
+}
