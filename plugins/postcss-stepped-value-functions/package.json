@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-stepped-value-functions",
 	"description": "Use round, rem and mod functions in CSS",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,8 +48,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-calc": "^2.0.2",
-		"@csstools/css-parser-algorithms": "^3.0.2",
+		"@csstools/css-calc": "^2.0.3",
+		"@csstools/css-parser-algorithms": "^3.0.3",
 		"@csstools/css-tokenizer": "^3.0.2"
 	},
 	"peerDependencies": {

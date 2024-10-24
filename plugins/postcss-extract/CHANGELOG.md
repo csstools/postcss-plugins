@@ -1,5 +1,11 @@
 # Changes to PostCSS Extract
 
+### 4.0.1
+
+_October 23, 2024_
+
+- Updated: `postcss-selector-parser`
+
 ### 4.0.0
 
 _August 3, 2024_

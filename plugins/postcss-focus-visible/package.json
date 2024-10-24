@@ -1,7 +1,7 @@
 {
 	"name": "postcss-focus-visible",
 	"description": "Use the :focus-visible pseudo-selector in CSS",
-	"version": "10.0.0",
+	"version": "10.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-selector-parser": "^6.1.0"
+		"postcss-selector-parser": "^7.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

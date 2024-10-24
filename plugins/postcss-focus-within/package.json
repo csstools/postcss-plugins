@@ -1,7 +1,7 @@
 {
 	"name": "postcss-focus-within",
 	"description": "Use the :focus-within pseudo-selector in CSS",
-	"version": "9.0.0",
+	"version": "9.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -60,7 +60,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-selector-parser": "^6.1.0"
+		"postcss-selector-parser": "^7.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

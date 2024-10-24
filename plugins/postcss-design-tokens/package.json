@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-design-tokens",
 	"description": "Use design tokens in your CSS",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.2",
+		"@csstools/css-parser-algorithms": "^3.0.3",
 		"@csstools/css-tokenizer": "^3.0.2",
 		"postcss-value-parser": "^4.2.0"
 	},

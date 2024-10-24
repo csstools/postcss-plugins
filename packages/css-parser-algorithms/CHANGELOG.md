@@ -1,5 +1,15 @@
 # Changes to CSS Parser Algorithms
 
+### 3.0.3
+
+_October 23, 2024_
+
+- Fix typo:
+```diff
+- TokenNode.prototype.isTokenNod()
++ TokenNode.prototype.isTokenNode()
+```
+
 ### 3.0.2
 
 _October 10, 2024_
