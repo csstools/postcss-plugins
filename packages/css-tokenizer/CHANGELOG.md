@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 3.0.3
+
+_October 25, 2024_
 
 - Fix input preprocessing
 
