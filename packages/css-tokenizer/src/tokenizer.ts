@@ -27,7 +27,7 @@ import { consumeUnicodeRangeToken } from './consume/unicode-range-token';
 export function tokenize(
 	input: {
 		css: { valueOf(): string },
-		unicodeRangesAllowed?: boolean
+		unicodeRangesAllowed?: boolean,
 	},
 	options?: {
 		onParseError?: (error: ParseError) => void
@@ -54,7 +54,7 @@ export function tokenizer(
 		css: {
 			valueOf(): string
 		},
-		unicodeRangesAllowed?: boolean
+		unicodeRangesAllowed?: boolean,
 	},
 	options?: {
 		onParseError?: (error: ParseError) => void

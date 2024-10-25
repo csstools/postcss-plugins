@@ -14,12 +14,12 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, re
 		}
 
 		// If the second code point is an ident-start code point return true
-		if (isIdentStartCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+		if (isIdentStartCodePoint(reader.source.codePointAt(reader.cursor + 1) ?? -1)) {
 			return true;
 		}
 
 		// If the second and third code points are a valid escape return true
-		if (reader.source.codePointAt(reader.cursor + 1) === REVERSE_SOLIDUS && !isNewLine(reader.source.codePointAt(reader.cursor + 2))) {
+		if (reader.source.codePointAt(reader.cursor + 1) === REVERSE_SOLIDUS && !isNewLine(reader.source.codePointAt(reader.cursor + 2) ?? -1)) {
 			return true;
 		}
 
@@ -28,7 +28,7 @@ export function checkIfThreeCodePointsWouldStartAnIdentSequence(ctx: Context, re
 
 	// ident-start code point
 	// Return true.
-	if (isIdentStartCodePoint(reader.source.codePointAt(reader.cursor))) {
+	if (isIdentStartCodePoint(reader.source.codePointAt(reader.cursor) ?? -1)) {
 		return true;
 	}
 

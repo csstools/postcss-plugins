@@ -1,4 +1,4 @@
-import { MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
+import { CARRIAGE_RETURN, LINE_FEED, MAXIMUM_ALLOWED_CODEPOINT, REPLACEMENT_CHARACTER } from '../code-points/code-points';
 import { isHexDigitCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
 import type { CodePointReader } from '../interfaces/code-point-reader';
 import type { Context } from '../interfaces/context';
@@ -30,15 +30,19 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 			reader.advanceCodePoint();
 		}
 
-		if (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+		if (isWhitespace(reader.source.codePointAt(reader.cursor) ?? -1)) {
+			if (
+				reader.source.codePointAt(reader.cursor) === CARRIAGE_RETURN &&
+				reader.source.codePointAt(reader.cursor + 1) === LINE_FEED
+			) {
+				reader.advanceCodePoint();
+			}
+
 			reader.advanceCodePoint();
 		}
 
 		const codePointLiteral = parseInt(String.fromCodePoint(...hexSequence), 16);
-		if (codePointLiteral === 0) {
-			return REPLACEMENT_CHARACTER;
-		}
-		if (isSurrogate(codePointLiteral)) {
+		if (codePointLiteral === 0 || isSurrogate(codePointLiteral)) {
 			return REPLACEMENT_CHARACTER;
 		}
 		if (codePointLiteral > MAXIMUM_ALLOWED_CODEPOINT) {
@@ -46,6 +50,10 @@ export function consumeEscapedCodePoint(ctx: Context, reader: CodePointReader): 
 		}
 
 		return codePointLiteral;
+	}
+
+	if (codePoint === 0 || isSurrogate(codePoint)) {
+		return REPLACEMENT_CHARACTER;
 	}
 
 	return codePoint;

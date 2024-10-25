@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"devDependencies": {
-		"@rmenke/css-tokenizer-tests": "^1.1.6",
+		"@rmenke/css-tokenizer-tests": "^1.2.0",
 		"postcss": "^8.4.45",
 		"postcss-parser-tests": "^8.8.0"
 	},

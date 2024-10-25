@@ -15,7 +15,7 @@ export function checkIfThreeCodePointsWouldStartAUnicodeRange(reader: CodePointR
 		// The third code point is either U+003F QUESTION MARK (?) or a hex digit
 		(
 			reader.source.codePointAt(reader.cursor + 2) === QUESTION_MARK ||
-			isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 2))
+			isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 2) ?? -1)
 		)
 	) {
 		// then return true.

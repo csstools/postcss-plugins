@@ -15,12 +15,12 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): NumberType
 	}
 
 	// 3. While the next input code point is a digit, consume it and append it to repr.
-	while (isDigitCodePoint(reader.source.codePointAt(reader.cursor))) {
+	while (isDigitCodePoint(reader.source.codePointAt(reader.cursor) ?? -1)) {
 		reader.advanceCodePoint();
 	}
 
 	// 4. If the next 2 input code points are U+002E FULL STOP (.) followed by a digit, then:
-	if (reader.source.codePointAt(reader.cursor) === FULL_STOP && isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+	if (reader.source.codePointAt(reader.cursor) === FULL_STOP && isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1) ?? -1)) {
 		// 4.1. Consume them.
 		reader.advanceCodePoint(2);
 
@@ -28,7 +28,7 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): NumberType
 		type = NumberType.Number;
 
 		// 4.4. While the next input code point is a digit, consume it and append it to repr.
-		while (isDigitCodePoint(reader.source.codePointAt(reader.cursor))) {
+		while (isDigitCodePoint(reader.source.codePointAt(reader.cursor) ?? -1)) {
 			reader.advanceCodePoint();
 		}
 	}
@@ -37,12 +37,12 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): NumberType
 	// optionally followed by U+002D HYPHEN-MINUS (-) or U+002B PLUS SIGN (+),
 	// followed by a digit, then:
 	if (reader.source.codePointAt(reader.cursor) === LATIN_SMALL_LETTER_E || reader.source.codePointAt(reader.cursor) === LATIN_CAPITAL_LETTER_E) {
-		if (isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+		if (isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1) ?? -1)) {
 			// 5.1. Consume them.
 			reader.advanceCodePoint(2);
 		} else if (
 			(reader.source.codePointAt(reader.cursor + 1) === HYPHEN_MINUS || reader.source.codePointAt(reader.cursor + 1) === PLUS_SIGN) &&
-			isDigitCodePoint(reader.source.codePointAt(reader.cursor + 2))
+			isDigitCodePoint(reader.source.codePointAt(reader.cursor + 2) ?? -1)
 		) {
 			// 5.1. Consume them.
 			reader.advanceCodePoint(3);
@@ -54,7 +54,7 @@ export function consumeNumber(ctx: Context, reader: CodePointReader): NumberType
 		type = NumberType.Number;
 
 		// 5.4. While the next input code point is a digit, consume it and append it to repr.
-		while (isDigitCodePoint(reader.source.codePointAt(reader.cursor))) {
+		while (isDigitCodePoint(reader.source.codePointAt(reader.cursor) ?? -1)) {
 			reader.advanceCodePoint();
 		}
 	}

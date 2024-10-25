@@ -8,6 +8,6 @@ export function checkIfTwoCodePointsAreAValidEscape(reader: CodePointReader): bo
 		// If the first code point is not U+005C REVERSE SOLIDUS (\), return false.
 		reader.source.codePointAt(reader.cursor) === REVERSE_SOLIDUS &&
 		// Otherwise, if the second code point is a newline, return false.
-		!isNewLine(reader.source.codePointAt(reader.cursor + 1))
+		!isNewLine(reader.source.codePointAt(reader.cursor + 1) ?? -1)
 	);
 }
