@@ -49,7 +49,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^3.0.3",
-		"@csstools/css-tokenizer": "^3.0.2",
+		"@csstools/css-tokenizer": "^3.0.3",
 		"@csstools/postcss-rebase-url": "^2.0.3"
 	},
 	"peerDependencies": {
