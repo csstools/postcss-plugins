@@ -889,7 +889,7 @@
 		"comment": "",
 		"syntax-b": "collapse | separate",
 		"syntax-a": "separate | collapse",
-		"syntax-m": false,
+		"syntax-m": "collapse | separate",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -911,10 +911,30 @@
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
 		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10% 10px"
+				},
+				{
+					"value": "10% 20%"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"border-end-start-radius": {
@@ -922,10 +942,30 @@
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
 		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10% 10px"
+				},
+				{
+					"value": "10% 20%"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"border-image-outset": {
@@ -1204,10 +1244,24 @@
 		"comment": "",
 		"syntax-b": "<length> <length>?",
 		"syntax-a": "<length>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				},
+				{
+					"value": "5px 10px 20px"
+				}
+			]
 		}
 	},
 	"border-start-end-radius": {
@@ -1215,10 +1269,30 @@
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
 		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10% 10px"
+				},
+				{
+					"value": "10% 20%"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"border-start-start-radius": {
@@ -1226,10 +1300,30 @@
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
 		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10% 10px"
+				},
+				{
+					"value": "10% 20%"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"border-top-color": {
@@ -1248,10 +1342,30 @@
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
 		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10% 10px"
+				},
+				{
+					"value": "10% 20%"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"border-top-radius": {
@@ -1270,10 +1384,30 @@
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
 		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>{1,2}",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10% 10px"
+				},
+				{
+					"value": "10% 20%"
+				},
+				{
+					"value": "5px 10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"bottom": {
@@ -1389,13 +1523,24 @@
 	},
 	"caption-side": {
 		"type": "modified",
-		"comment": "",
+		"comment": "css-logical is missing caption-side exports",
 		"syntax-b": "top | bottom | block-start | block-end | inline-start | inline-end",
 		"syntax-a": "top | bottom",
-		"syntax-m": false,
+		"syntax-m": "top | bottom | block-start | block-end | inline-start | inline-end",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "inline-start"
+				},
+				{
+					"value": "top"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"caret": {
@@ -1425,10 +1570,21 @@
 		"comment": "",
 		"syntax-b": "none | left | right | both | inline-start | inline-end",
 		"syntax-a": "inline-start | inline-end | block-start | block-end | left | right | top | bottom | both-inline | both-block | both | none",
-		"syntax-m": false,
+		"syntax-m": "| block-start | block-end | top | bottom | both-inline | both-block",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "both"
+				},
+				{
+					"value": "inline-both"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"clip": {
@@ -1484,10 +1640,21 @@
 		"comment": "",
 		"syntax-b": "<integer> | auto",
 		"syntax-a": "auto | <integer [1,∞]>",
-		"syntax-m": false,
+		"syntax-m": "auto | <integer [1,∞]>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "auto"
+				},
+				{
+					"value": "2"
+				}
+			],
+			"failing": [
+				{
+					"value": "1.1"
+				}
+			]
 		}
 	},
 	"column-gap": {
@@ -1495,10 +1662,24 @@
 		"comment": "",
 		"syntax-b": "normal | <length-percentage>",
 		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "normal | <length-percentage [0,∞]>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "2px"
+				},
+				{
+					"value": "2%"
+				}
+			],
+			"failing": [
+				{
+					"value": "1.1"
+				}
+			]
 		}
 	},
 	"column-rule-style": {
@@ -1528,10 +1709,24 @@
 		"comment": "",
 		"syntax-b": "none | all",
 		"syntax-a": "none | <integer [1,∞]> | all | auto",
-		"syntax-m": false,
+		"syntax-m": "| <integer [1,∞]> | auto",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "1"
+				},
+				{
+					"value": "all"
+				},
+				{
+					"value": "auto"
+				}
+			],
+			"failing": [
+				{
+					"value": "1.1"
+				}
+			]
 		}
 	},
 	"column-width": {
@@ -4612,10 +4807,21 @@
 		"comment": "",
 		"syntax-b": "auto | <time>",
 		"syntax-a": "auto | <time [0s,∞]>",
-		"syntax-m": false,
+		"syntax-m": "auto | <time [0s,∞]>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10ms"
+				},
+				{
+					"value": "auto"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"voice-pitch": {
@@ -4645,10 +4851,18 @@
 		"comment": "",
 		"syntax-b": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage>",
 		"syntax-a": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage [0,∞]>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10%"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"white-space": {
@@ -4667,10 +4881,18 @@
 		"comment": "",
 		"syntax-b": "<integer>",
 		"syntax-a": "<integer [1,∞]>",
-		"syntax-m": false,
+		"syntax-m": "<integer [1,∞]>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "1"
+				}
+			],
+			"failing": [
+				{
+					"value": "1.1"
+				}
+			]
 		}
 	},
 	"width": {
@@ -4711,10 +4933,24 @@
 		"comment": "",
 		"syntax-b": "normal | <length>",
 		"syntax-a": "normal | <length-percentage>",
-		"syntax-m": false,
+		"syntax-m": "normal | <length-percentage>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10%"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"word-wrap": {
@@ -4722,10 +4958,21 @@
 		"comment": "",
 		"syntax-b": "normal | break-word",
 		"syntax-a": "normal | break-word | anywhere",
-		"syntax-m": false,
+		"syntax-m": "| anywhere",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "anywhere"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"wrap-after": {
@@ -4788,9 +5035,16 @@
 		"comment": "",
 		"syntax-b": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr | <svg-writing-mode>",
 		"syntax-a": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr",
-		"syntax-m": false,
+		"syntax-m": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr | <svg-writing-mode>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "lr-tb"
+				},
+				{
+					"value": "horizontal-tb"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -4799,10 +5053,21 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"y": {
@@ -4810,10 +5075,21 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10px"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"z-index": {
@@ -4821,21 +5097,48 @@
 		"comment": "",
 		"syntax-b": "auto | <integer>",
 		"syntax-a": "auto | <integer> | inherit",
-		"syntax-m": false,
+		"syntax-m": "auto | <integer>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "inherit"
+				},
+				{
+					"value": "1"
+				},
+				{
+					"value": "auto"
+				}
+			],
 			"failing": []
 		}
 	},
 	"zoom": {
 		"type": "modified",
-		"comment": "",
+		"comment": "CSSTree is still supporting legacy syntax",
 		"syntax-b": "normal | reset | <number> | <percentage>",
 		"syntax-a": "<number [0,∞]> || <percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "normal | reset | <number> | <percentage>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "reset"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10"
+				}
+			],
+			"failing": [
+				{
+					"value": "10px"
+				}
+			]
 		}
 	}
 }
