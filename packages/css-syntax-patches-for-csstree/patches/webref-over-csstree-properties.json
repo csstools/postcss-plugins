@@ -1281,10 +1281,33 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor()> | <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor(--foo top)"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"box-shadow": {
@@ -2309,10 +2332,33 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor()> | <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor(--foo top)"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"lighting-color": {
@@ -2485,10 +2531,30 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"margin-break": {
@@ -2540,10 +2606,30 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"margin-right": {
@@ -2551,10 +2637,30 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"margin-top": {
@@ -2562,10 +2668,30 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"margin-trim": {
@@ -3376,10 +3502,33 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor()> | <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "anchor(--foo top)"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"row-gap": {
@@ -4344,10 +4493,30 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage> | auto",
 		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "| <anchor()> | <anchor-size()>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "10px"
+				},
+				{
+					"value": "10rem"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "anchor(--foo top)"
+				},
+				{
+					"value": "anchor-size(--foo)"
+				}
+			],
+			"failing": [
+				{
+					"value": "10"
+				}
+			]
 		}
 	},
 	"transform-origin": {

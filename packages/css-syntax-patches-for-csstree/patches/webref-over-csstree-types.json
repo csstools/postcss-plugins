@@ -25,10 +25,44 @@
 		"comment": "",
 		"syntax-b": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )",
 		"syntax-a": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
-		"syntax-m": false,
+		"syntax-m": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "top",
+					"value": "anchor-size(--foo)"
+				},
+				{
+					"property": "top",
+					"value": "anchor-size(width)"
+				},
+				{
+					"property": "top",
+					"value": "anchor-size(self-block)"
+				},
+				{
+					"property": "top",
+					"value": "anchor-size(--foo, 10px)"
+				},
+				{
+					"property": "top",
+					"value": "anchor-size(width, 10%)"
+				},
+				{
+					"property": "top",
+					"value": "anchor-size(10px)"
+				}
+			],
+			"failing": [
+				{
+					"property": "top",
+					"value": "anchor-size(foo)"
+				},
+				{
+					"property": "top",
+					"value": "anchor-size(10)"
+				}
+			]
 		}
 	},
 	"anchor()": {
@@ -36,10 +70,56 @@
 		"comment": "",
 		"syntax-b": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )",
 		"syntax-a": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
-		"syntax-m": false,
+		"syntax-m": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "top",
+					"value": "anchor(--foo left)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(top)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(left)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(--foo left, 10px)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(top, 10%)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(10%, 10%)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(10%)"
+				}
+			],
+			"failing": [
+				{
+					"property": "top",
+					"value": "anchor(foo)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(--foo)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(10)"
+				},
+				{
+					"property": "top",
+					"value": "anchor(10px)"
+				}
+			]
 		}
 	},
 	"angle-percentage": {
