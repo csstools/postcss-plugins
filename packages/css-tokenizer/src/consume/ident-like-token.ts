@@ -29,8 +29,8 @@ export function consumeIdentLikeToken(ctx: Context, reader: CodePointReader): To
 
 		let read = 0;
 		while (true) {
-			const firstIsWhitespace = isWhitespace(reader.source.codePointAt(reader.cursor));
-			const secondIsWhitespace = isWhitespace(reader.source.codePointAt(reader.cursor + 1));
+			const firstIsWhitespace = isWhitespace(reader.source.codePointAt(reader.cursor) ?? -1);
+			const secondIsWhitespace = isWhitespace(reader.source.codePointAt(reader.cursor + 1) ?? -1);
 			if (firstIsWhitespace && secondIsWhitespace) {
 				read = read + 1;
 				reader.advanceCodePoint(1);

@@ -1,6 +1,6 @@
 import { checkIfTwoCodePointsAreAValidEscape } from '../checks/two-code-points-are-valid-escape';
-import { APOSTROPHE, LEFT_PARENTHESIS, QUOTATION_MARK, REVERSE_SOLIDUS, RIGHT_PARENTHESIS } from '../code-points/code-points';
-import { isNonPrintableCodePoint, isWhitespace } from '../code-points/ranges';
+import { APOSTROPHE, LEFT_PARENTHESIS, NULL, QUOTATION_MARK, REPLACEMENT_CHARACTER, REVERSE_SOLIDUS, RIGHT_PARENTHESIS } from '../code-points/code-points';
+import { isNonPrintableCodePoint, isSurrogate, isWhitespace } from '../code-points/ranges';
 import type { CodePointReader } from '../interfaces/code-point-reader';
 import type { Context } from '../interfaces/context';
 import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
@@ -11,7 +11,7 @@ import { consumeEscapedCodePoint } from './escaped-code-point';
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#consume-url-token
 export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL|TokenBadURL {
-	while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+	while (isWhitespace(reader.source.codePointAt(reader.cursor) ?? -1)) {
 		reader.advanceCodePoint();
 	}
 
@@ -56,9 +56,9 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			];
 		}
 
-		if (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+		if (isWhitespace(reader.source.codePointAt(reader.cursor) ?? -1)) {
 			reader.advanceCodePoint();
-			while (isWhitespace(reader.source.codePointAt(reader.cursor))) {
+			while (isWhitespace(reader.source.codePointAt(reader.cursor) ?? -1)) {
 				reader.advanceCodePoint();
 			}
 
@@ -112,7 +112,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 		}
 
 		const codePoint = reader.source.codePointAt(reader.cursor);
-		if (codePoint === QUOTATION_MARK || codePoint === APOSTROPHE || codePoint === LEFT_PARENTHESIS || isNonPrintableCodePoint(codePoint)) {
+		if (codePoint === QUOTATION_MARK || codePoint === APOSTROPHE || codePoint === LEFT_PARENTHESIS || isNonPrintableCodePoint(codePoint ?? -1)) {
 			consumeBadURL(ctx, reader);
 
 			const token: CSSToken = [
@@ -167,6 +167,12 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			));
 
 			return token;
+		}
+
+		if (reader.source.codePointAt(reader.cursor) === NULL || isSurrogate(reader.source.codePointAt(reader.cursor) ?? -1)) {
+			string = string + String.fromCodePoint(REPLACEMENT_CHARACTER);
+			reader.advanceCodePoint();
+			continue;
 		}
 
 		string = string + reader.source[reader.cursor];

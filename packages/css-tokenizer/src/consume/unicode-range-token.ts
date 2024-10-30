@@ -49,7 +49,7 @@ export function consumeUnicodeRangeToken(ctx: Context, reader: CodePointReader):
 		// 5. If the next 2 input code points are U+002D HYPHEN-MINUS (-) followed by a hex digit
 		if (
 			reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS &&
-			isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))
+			isHexDigitCodePoint(reader.source.codePointAt(reader.cursor + 1) ?? -1)
 		) {
 			// 5.1. Consume the next input code point.
 			reader.advanceCodePoint();

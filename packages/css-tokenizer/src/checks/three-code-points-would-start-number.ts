@@ -6,14 +6,14 @@ import type { CodePointReader } from '../interfaces/code-point-reader';
 export function checkIfThreeCodePointsWouldStartANumber(reader: CodePointReader): boolean {
 	if (reader.source.codePointAt(reader.cursor) === PLUS_SIGN || reader.source.codePointAt(reader.cursor) === HYPHEN_MINUS) { // U+002B PLUS SIGN (+) or U+002D HYPHEN-MINUS (-)
 		// If the second code point is a digit, return true.
-		if (isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1))) {
+		if (isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1) ?? -1)) {
 			return true;
 		}
 
 		// Otherwise, if the second code point is a U+002E FULL STOP (.)
 		if (reader.source.codePointAt(reader.cursor + 1) === FULL_STOP) {
 			// and the third code point is a digit, return true.
-			return isDigitCodePoint(reader.source.codePointAt(reader.cursor + 2));
+			return isDigitCodePoint(reader.source.codePointAt(reader.cursor + 2) ?? -1);
 		}
 
 		// Otherwise, return false.
@@ -22,8 +22,8 @@ export function checkIfThreeCodePointsWouldStartANumber(reader: CodePointReader)
 	} else if (reader.source.codePointAt(reader.cursor) === FULL_STOP) { // U+002E FULL STOP (.)
 		// If the second code point is a digit, return true.
 		// Otherwise, return false.
-		return isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1));
+		return isDigitCodePoint(reader.source.codePointAt(reader.cursor + 1) ?? -1);
 	}
 
-	return isDigitCodePoint(reader.source.codePointAt(reader.cursor)); // digit
+	return isDigitCodePoint(reader.source.codePointAt(reader.cursor) ?? -1); // digit
 }

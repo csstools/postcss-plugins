@@ -394,3 +394,120 @@ bar") and (fancy(baz))) {}`,
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: 'a\x00b()',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['function-token', 'a\x00b(', 0, 3, { value: 'a�b' }],
+			[')-token', ')', 4, 4, undefined],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: '"a\x00b"',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['string-token', '"a\x00b"', 0, 4, { value: 'a�b' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'ssrze7y4tu\x00U',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			[
+				'ident-token',
+				'ssrze7y4tu\x00U',
+				0,
+				11,
+				{ value: 'ssrze7y4tu�U' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'ssrze7y4tu\\\x00U',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			[
+				'ident-token',
+				'ssrze7y4tu\\\x00U',
+				0,
+				12,
+				{ value: 'ssrze7y4tu�U' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'ssrze7y4tu\\00U',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			[
+				'ident-token',
+				'ssrze7y4tu\\00U',
+				0,
+				13,
+				{ value: 'ssrze7y4tu�U' },
+			],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenize({
+		css: '"a\\12\r\nb"',
+	});
+
+	assert.deepEqual(
+		t,
+		[
+			['string-token', '"a\\12\r\nb"', 0, 8, { value: 'a\x12b' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenize({
+		css: '"fo\\',
+	});
+
+	assert.deepEqual(
+		t,
+		[
+			['string-token', '"fo\\', 0, 3, { value: 'fo' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}

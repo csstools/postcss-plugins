@@ -1,5 +1,5 @@
-import { CARRIAGE_RETURN, LINE_FEED, REVERSE_SOLIDUS } from '../code-points/code-points';
-import { isNewLine } from '../code-points/ranges';
+import { CARRIAGE_RETURN, LINE_FEED, NULL, REPLACEMENT_CHARACTER, REVERSE_SOLIDUS } from '../code-points/code-points';
+import { isNewLine, isSurrogate } from '../code-points/ranges';
 import type { CodePointReader } from '../interfaces/code-point-reader';
 import type { Context } from '../interfaces/context';
 import { ParseErrorWithToken, ParseErrorMessage } from '../interfaces/error';
@@ -69,8 +69,7 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 			if (typeof reader.source.codePointAt(reader.cursor) === "undefined") {
 				continue;
 			}
-
-			if (isNewLine(reader.source.codePointAt(reader.cursor))) {
+			if (isNewLine(reader.source.codePointAt(reader.cursor) ?? -1)) {
 				if (
 					reader.source.codePointAt(reader.cursor) === CARRIAGE_RETURN &&
 					reader.source.codePointAt(reader.cursor + 1) === LINE_FEED
@@ -83,6 +82,11 @@ export function consumeStringToken(ctx: Context, reader: CodePointReader): Token
 			}
 
 			result = result + String.fromCodePoint(consumeEscapedCodePoint(ctx, reader));
+			continue;
+		}
+
+		if (next === NULL || isSurrogate(next)) {
+			result = result + String.fromCodePoint(REPLACEMENT_CHARACTER);
 			continue;
 		}
 

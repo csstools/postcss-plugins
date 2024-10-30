@@ -1,5 +1,11 @@
 # Changes to CSS Tokenizer
 
+### 3.0.3
+
+_October 25, 2024_
+
+- Fix input preprocessing
+
 ### 3.0.2
 
 _October 10, 2024_
