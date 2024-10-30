@@ -43,6 +43,11 @@ export function apply_patches(patches, onto) {
 			continue;
 		}
 
+		if (patch['syntax-m'] === patch['syntax-b']) {
+			// CSSTree is most correct
+			continue;
+		}
+
 		properties[name] = patch['syntax-m'];
 	}
 

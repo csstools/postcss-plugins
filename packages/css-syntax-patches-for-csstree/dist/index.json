@@ -29,7 +29,6 @@
 			"bookmark-level": "none | <integer [1,∞]>",
 			"bookmark-state": "open | closed",
 			"border-boundary": "none | parent | display",
-			"border-collapse": "collapse | separate",
 			"border-end-end-radius": "<length-percentage [0,∞]>{1,2}",
 			"border-end-start-radius": "<length-percentage [0,∞]>{1,2}",
 			"border-radius": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
@@ -39,9 +38,7 @@
 			"border-top-left-radius": "<length-percentage [0,∞]>{1,2}",
 			"border-top-right-radius": "<length-percentage [0,∞]>{1,2}",
 			"bottom": "| <anchor()> | <anchor-size()>",
-			"caption-side": "top | bottom | block-start | block-end | inline-start | inline-end",
 			"clear": "| block-start | block-end | top | bottom | both-inline | both-block",
-			"clip": "<shape> | auto",
 			"color-adjust": "<'print-color-adjust'>",
 			"column-count": "auto | <integer [1,∞]>",
 			"column-gap": "normal | <length-percentage [0,∞]>",
@@ -64,11 +61,8 @@
 			"widows": "<integer [1,∞]>",
 			"word-spacing": "normal | <length-percentage>",
 			"word-wrap": "| anywhere",
-			"writing-mode": "horizontal-tb | vertical-rl | vertical-lr | sideways-rl | sideways-lr | <svg-writing-mode>",
 			"x": "<length-percentage>",
-			"y": "<length-percentage>",
-			"z-index": "auto | <integer>",
-			"zoom": "normal | reset | <number> | <percentage>"
+			"y": "<length-percentage>"
 		},
 		"types": {
 			"anchor-name": "<dashed-ident>",
