@@ -3136,7 +3136,7 @@
 		"comment": "",
 		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | fit-content | contain | <anchor-size()>",
-		"syntax-m": false,
+		"syntax-m": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | stretch | <-non-standard-size> | fit-content | contain | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3220,7 +3220,7 @@
 		"comment": "",
 		"syntax-b": "fill | contain | cover | none | scale-down",
 		"syntax-a": "fill | none | [ contain | cover ] || scale-down",
-		"syntax-m": false,
+		"syntax-m": "fill | none | [ contain | cover ] || scale-down",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3242,7 +3242,7 @@
 		"comment": "",
 		"syntax-b": "<alpha-value>",
 		"syntax-a": "<opacity-value>",
-		"syntax-m": false,
+		"syntax-m": "<opacity-value>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3253,7 +3253,7 @@
 		"comment": "",
 		"syntax-b": "<integer>",
 		"syntax-a": "<integer [1,∞]>",
-		"syntax-m": false,
+		"syntax-m": "<integer [1,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3264,7 +3264,7 @@
 		"comment": "",
 		"syntax-b": "auto | <color>",
 		"syntax-a": "auto | [ <color> | <image-1D> ]",
-		"syntax-m": false,
+		"syntax-m": "auto | [ <color> | <image-1D> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3275,7 +3275,7 @@
 		"comment": "",
 		"syntax-b": "auto | <'border-style'>",
 		"syntax-a": "auto | <outline-line-style>",
-		"syntax-m": false,
+		"syntax-m": "auto | none | dotted | dashed | solid | double | groove | ridge | inset | outset",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3286,7 +3286,7 @@
 		"comment": "",
 		"syntax-b": "[ visible | hidden | clip | scroll | auto ]{1,2} | <-non-standard-overflow>",
 		"syntax-a": "<'overflow-block'>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<'overflow-block'>{1,2} | <-non-standard-overflow>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3407,7 +3407,7 @@
 		"comment": "",
 		"syntax-b": "[ <length> | <percentage> ]{1,4}",
 		"syntax-a": "<'padding-top'>{1,4}",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>{1,4}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3418,7 +3418,7 @@
 		"comment": "",
 		"syntax-b": "<'padding-left'>{1,2}",
 		"syntax-a": "<'padding-top'>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>{1,2}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3429,7 +3429,7 @@
 		"comment": "",
 		"syntax-b": "<'padding-left'>",
 		"syntax-a": "<'padding-top'>",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3440,7 +3440,7 @@
 		"comment": "",
 		"syntax-b": "<'padding-left'>",
 		"syntax-a": "<'padding-top'>",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3451,7 +3451,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3462,7 +3462,7 @@
 		"comment": "",
 		"syntax-b": "<'padding-left'>{1,2}",
 		"syntax-a": "<'padding-top'>{1,2}",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>{1,2}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3473,7 +3473,7 @@
 		"comment": "",
 		"syntax-b": "<'padding-left'>",
 		"syntax-a": "<'padding-top'>",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3484,7 +3484,7 @@
 		"comment": "",
 		"syntax-b": "<'padding-left'>",
 		"syntax-a": "<'padding-top'>",
-		"syntax-m": false,
+		"syntax-m": "<'padding-top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3495,7 +3495,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3506,7 +3506,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3517,7 +3517,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3528,7 +3528,7 @@
 		"comment": "",
 		"syntax-b": "auto | always | avoid | left | right | recto | verso",
 		"syntax-a": "auto | always | avoid | left | right | inherit",
-		"syntax-m": false,
+		"syntax-m": "auto | always | avoid | left | right | recto | verso",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3539,7 +3539,7 @@
 		"comment": "",
 		"syntax-b": "auto | always | avoid | left | right | recto | verso",
 		"syntax-a": "auto | always | avoid | left | right | inherit",
-		"syntax-m": false,
+		"syntax-m": "auto | always | avoid | left | right | recto | verso",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3550,7 +3550,7 @@
 		"comment": "",
 		"syntax-b": "auto | avoid",
 		"syntax-a": "avoid | auto | inherit",
-		"syntax-m": false,
+		"syntax-m": "auto | avoid",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3561,7 +3561,7 @@
 		"comment": "",
 		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-m": false,
+		"syntax-m": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3572,7 +3572,7 @@
 		"comment": "",
 		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-m": false,
+		"syntax-m": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3583,7 +3583,7 @@
 		"comment": "",
 		"syntax-b": "none | <length>",
 		"syntax-a": "none | <length [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "none | <length [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3594,7 +3594,7 @@
 		"comment": "",
 		"syntax-b": "auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit",
 		"syntax-a": "auto | bounding-box | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | none",
-		"syntax-m": false,
+		"syntax-m": "| bounding-box",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3605,7 +3605,7 @@
 		"comment": "",
 		"syntax-b": "static | relative | absolute | sticky | fixed | -webkit-sticky",
 		"syntax-a": "static | relative | absolute | sticky | fixed | <running()>",
-		"syntax-m": false,
+		"syntax-m": "| <running()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3635,7 +3635,7 @@
 		"comment": "",
 		"syntax-b": "none | auto | [ <string> <string> ]+",
 		"syntax-a": "auto | none | match-parent | [ <string> <string> ]+",
-		"syntax-m": false,
+		"syntax-m": "| match-parent",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3646,7 +3646,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage>",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3679,7 +3679,7 @@
 		"comment": "",
 		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-m": false,
+		"syntax-m": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3690,7 +3690,7 @@
 		"comment": "",
 		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"syntax-m": false,
+		"syntax-m": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3735,7 +3735,7 @@
 		"comment": "",
 		"syntax-b": "normal | <length-percentage>",
 		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "normal | <length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3746,7 +3746,7 @@
 		"comment": "",
 		"syntax-b": "separate | collapse | auto",
 		"syntax-a": "separate | merge | auto",
-		"syntax-m": false,
+		"syntax-m": "separate | merge | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3768,7 +3768,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage> | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3779,7 +3779,7 @@
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
-		"syntax-m": false,
+		"syntax-m": "<length-percentage> | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3790,7 +3790,7 @@
 		"comment": "",
 		"syntax-b": "none | <number>{1,3}",
 		"syntax-a": "none | [ <number> | <percentage> ]{1,3}",
-		"syntax-m": false,
+		"syntax-m": "none | [ <number> | <percentage> ]{1,3}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3812,7 +3812,7 @@
 		"comment": "",
 		"syntax-b": "[ auto | <length-percentage> ]{1,4}",
 		"syntax-a": "[ auto | <length-percentage [0,∞]> ]{1,4}",
-		"syntax-m": false,
+		"syntax-m": "[ auto | <length-percentage [0,∞]> ]{1,4}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3823,7 +3823,7 @@
 		"comment": "",
 		"syntax-b": "[ auto | <length-percentage> ]{1,2}",
 		"syntax-a": "[ auto | <length-percentage [0,∞]> ]{1,2}",
-		"syntax-m": false,
+		"syntax-m": "[ auto | <length-percentage [0,∞]> ]{1,2}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3834,7 +3834,7 @@
 		"comment": "",
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "auto | <length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3845,7 +3845,7 @@
 		"comment": "",
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "auto | <length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3856,7 +3856,7 @@
 		"comment": "",
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
-		"syntax-m": false,
+		"syntax-m": "auto | <length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3867,7 +3867,7 @@
 		"comment": "",
 		"syntax-b": "[ auto | <length-percentage> ]{1,2}",
 		"syntax-a": "[ auto | <length-percentage [0,∞]> ]{1,2}",
-		"syntax-m": false,
+		"syntax-m": "[ auto | <length-percentage [0,∞]> ]{1,2}",
 		"tests": {
 			"passing": [],
 			"failing": []
