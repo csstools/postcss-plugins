@@ -1319,6 +1319,9 @@
 	"scope-start": {
 		"syntax": "<forgiving-selector-list>"
 	},
+	"scroll-state-feature": {
+		"syntax": "<ident> : <ident>"
+	},
 	"scroll-state-in-parens": {
 		"syntax": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>"
 	},
@@ -1636,6 +1639,12 @@
 	},
 	"url-modifier": {
 		"syntax": "<ident> | <function-token> <any-value> )"
+	},
+	"url-set-option": {
+		"syntax": "[ <url> | <string> ] [ <resolution> || type( <string> ) ]?"
+	},
+	"url-set()": {
+		"syntax": "url-set( <url-set-option># )"
 	},
 	"url()": {
 		"syntax": "url( <string> <url-modifier>* ) | <url-token>"

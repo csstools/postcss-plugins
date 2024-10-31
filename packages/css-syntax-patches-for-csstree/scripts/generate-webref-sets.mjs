@@ -556,6 +556,13 @@ export async function generate_webref_sets() {
 
 	values['intrinsic-size-keyword'] = JSON.parse(await fs.readFile(path.join('raw-data', 'intrinsic-size-keywords.json'))).join(' | ');
 
+	// https://github.com/w3c/csswg-drafts/issues/11127
+	values['scroll-state-feature'] = '<ident> : <ident>';
+
+	// https://drafts.csswg.org/css-ui-4/#cursor
+	values['url-set-option'] = '[ <url> | <string> ] [ <resolution> || type( <string> ) ]?';
+	values['url-set()'] = 'url-set( <url-set-option># )';
+
 	const forkedLexer = fork({
 		properties: properties,
 		types: values,

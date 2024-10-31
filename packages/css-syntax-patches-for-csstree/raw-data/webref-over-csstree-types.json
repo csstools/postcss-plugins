@@ -1217,6 +1217,12 @@
 		"syntax-a": "running( <custom-ident> )",
 		"comment": ""
 	},
+	"scroll-state-feature": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<ident> : <ident>",
+		"comment": ""
+	},
 	"scroll-state-in-parens": {
 		"type": "added",
 		"syntax-b": "",
@@ -1485,6 +1491,18 @@
 		"type": "modified",
 		"syntax-b": "url( <string> <url-modifier>* ) | <url-token>",
 		"syntax-a": "<url()> | <src()>",
+		"comment": ""
+	},
+	"url-set-option": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <url> | <string> ] [ <resolution> || type( <string> ) ]?",
+		"comment": ""
+	},
+	"url-set()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "url-set( <url-set-option># )",
 		"comment": ""
 	},
 	"url()": {
