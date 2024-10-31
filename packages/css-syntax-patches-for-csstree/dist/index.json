@@ -1,5 +1,6 @@
 {
 	"next": {
+		"atrules": {},
 		"properties": {
 			"align-items": "| anchor-center",
 			"align-self": "| anchor-center",
@@ -364,6 +365,7 @@
 			"y": "<length-percentage>"
 		},
 		"types": {
+			"dashed-ident": "<custom-property-name>",
 			"anchor-name": "<dashed-ident>",
 			"anchor-size()": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
 			"anchor()": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
@@ -604,8 +606,7 @@
 			"url()": "url( <string> <url-modifier>* ) | <url-token>",
 			"wcag2": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )",
 			"xyz": "xyz | xyz-d50 | xyz-d65",
-			"xyz-params": "<xyz> [ <number> | <percentage> | none ]{3}",
-			"dashed-ident": "<custom-property-name>"
+			"xyz-params": "<xyz> [ <number> | <percentage> | none ]{3}"
 		}
 	}
 }

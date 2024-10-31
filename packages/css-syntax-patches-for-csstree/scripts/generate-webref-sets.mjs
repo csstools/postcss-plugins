@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import css from '@webref/css';
 import { fork } from 'css-tree-3.0.0';
-import { generate_set } from './generate-set.mjs';
+import { generate_atrule_set, generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
 
 const IGNORED_SPECS = new Set([
@@ -449,6 +449,7 @@ function assign_new_definition(spec_name, set, name, definition) {
 }
 
 export async function generate_webref_sets() {
+	const atrules = Object(null);
 	const properties = Object(null);
 	const values = Object(null);
 
@@ -567,14 +568,17 @@ export async function generate_webref_sets() {
 	}
 
 	const forkedLexer = fork({
+		atrules: atrules,
 		properties: properties,
 		types: values,
 	}).lexer;
 
+	const atrules_set = generate_atrule_set(forkedLexer.atrules);
 	const properties_set = generate_set(forkedLexer.properties);
 	const types_set = generate_set(forkedLexer.types);
 
 	return {
+		atrules: atrules_set,
 		properties: properties_set,
 		types: types_set,
 	};

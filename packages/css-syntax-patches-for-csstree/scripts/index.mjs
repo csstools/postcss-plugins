@@ -10,7 +10,7 @@ import { fork } from 'css-tree-3.0.0';
 import { generate_csstree_sets } from './generate-csstree-sets.mjs';
 import { generate_webref_sets } from './generate-webref-sets.mjs';
 import { write_set_files } from './write-set-files.mjs';
-import { diff_sets } from './diff-sets.mjs';
+import { diff_atrule_sets, diff_sets } from './diff-sets.mjs';
 import { read_patches } from './read-patches.mjs';
 import { write_final_file } from './write-final-file.mjs';
 import { apply_patches } from './apply-patches.mjs';
@@ -22,13 +22,15 @@ const webref_sets = await generate_webref_sets();
 const patches = await read_patches();
 
 const webref_over_csstree_sets = {
+	atrules: diff_atrule_sets(csstree_sets.atrules, webref_sets.atrules),
 	properties: diff_sets(csstree_sets.properties, webref_sets.properties),
 	types: diff_sets(csstree_sets.types, webref_sets.types),
 };
 
 const SINGULAR = {
-	'types': 'type',
+	'atrules': 'atrule',
 	'properties': 'property',
+	'types': 'type',
 };
 
 let has_missing_patch_tests = false;
@@ -37,6 +39,7 @@ let has_failing_tests = false;
 let flaws = 0;
 
 const {
+	atrules: atrule_patches,
 	properties: property_patches,
 	types: type_patches,
 	has_missing_patches,
@@ -48,6 +51,7 @@ const {
 flaws += patch_flaws;
 
 const forkedLexer = fork({
+	atrules: atrule_patches,
 	properties: property_patches,
 	types: type_patches,
 }).lexer;
@@ -171,6 +175,7 @@ await write_patches(
 
 await write_final_file({
 	next: {
+		atrules: atrule_patches,
 		properties: property_patches,
 		types: type_patches,
 	},

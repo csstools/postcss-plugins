@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { sort_set } from './sort-set.mjs';
+import { sort_atrule_set, sort_set } from './sort-set.mjs';
 
 export async function write_patches(sets, patch_sets) {
 	const merged_sets = Object(null);
@@ -92,6 +92,12 @@ export async function write_patches(sets, patch_sets) {
 	}
 
 	{
+		await fs.writeFile(
+			path.join('patches', 'webref-over-csstree-atrules.json'),
+			JSON.stringify(sort_atrule_set(merged_sets.webref_over_csstree.atrules), null, '\t'),
+			'utf-8',
+		);
+
 		await fs.writeFile(
 			path.join('patches', 'webref-over-csstree-properties.json'),
 			JSON.stringify(sort_set(merged_sets.webref_over_csstree.properties), null, '\t'),

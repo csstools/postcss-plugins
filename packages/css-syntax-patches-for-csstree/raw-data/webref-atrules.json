@@ -1,0 +1,233 @@
+{
+	"counter-style": {
+		"descriptors": {
+			"additive-symbols": {
+				"syntax": "[ <integer> && <symbol> ]#"
+			},
+			"fallback": {
+				"syntax": "<counter-style-name>"
+			},
+			"negative": {
+				"syntax": "<symbol> <symbol>?"
+			},
+			"pad": {
+				"syntax": "<integer> && <symbol>"
+			},
+			"prefix": {
+				"syntax": "<symbol>"
+			},
+			"range": {
+				"syntax": "[ [ <integer> | infinite ]{2} ]# | auto"
+			},
+			"speak-as": {
+				"syntax": "auto | bullets | numbers | words | spell-out | <counter-style-name>"
+			},
+			"suffix": {
+				"syntax": "<symbol>"
+			},
+			"symbols": {
+				"syntax": "<symbol>+"
+			},
+			"system": {
+				"syntax": "cyclic | numeric | alphabetic | symbolic | additive | [ fixed <integer>? ] | [ extends <counter-style-name> ]"
+			}
+		}
+	},
+	"font-face": {
+		"descriptors": {
+			"ascent-override": {
+				"syntax": "normal | <percentage>"
+			},
+			"descent-override": {
+				"syntax": "normal | <percentage>"
+			},
+			"font-display": {
+				"syntax": "[ auto | block | swap | fallback | optional ]"
+			},
+			"font-family": {
+				"syntax": "<family-name>"
+			},
+			"font-feature-settings": {
+				"syntax": "normal | <feature-tag-value>#"
+			},
+			"font-stretch": {
+				"syntax": "<font-stretch-absolute>{1,2}"
+			},
+			"font-style": {
+				"syntax": "normal | italic | oblique <angle>{0,2}"
+			},
+			"font-variation-settings": {
+				"syntax": "normal | [ <string> <number> ]#"
+			},
+			"font-weight": {
+				"syntax": "<font-weight-absolute>{1,2}"
+			},
+			"line-gap-override": {
+				"syntax": "normal | <percentage>"
+			},
+			"size-adjust": {
+				"syntax": "<percentage>"
+			},
+			"src": {
+				"syntax": "[ <url> [ format( <string># ) ]? | local( <family-name> ) ]#"
+			},
+			"unicode-range": {
+				"syntax": "<urange>#"
+			}
+		}
+	},
+	"font-palette-values": {
+		"descriptors": {
+			"base-palette": {
+				"syntax": "light | dark | <integer [0,∞]>"
+			},
+			"font-family": {
+				"syntax": "<family-name>#"
+			},
+			"override-colors": {
+				"syntax": "[ <integer [0,∞]> <absolute-color-base> ]#"
+			}
+		}
+	},
+	"page": {
+		"descriptors": {
+			"bleed": {
+				"syntax": "auto | <length>"
+			},
+			"marks": {
+				"syntax": "none | [ crop || cross ]"
+			},
+			"page-orientation": {
+				"syntax": "upright | rotate-left | rotate-right"
+			},
+			"size": {
+				"syntax": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
+			}
+		}
+	},
+	"position-try": {
+		"descriptors": {
+			"align-self": {
+				"syntax": "<'align-self'> | anchor-center"
+			},
+			"block-size": {
+				"syntax": "<'block-size'>"
+			},
+			"bottom": {
+				"syntax": "<'bottom'>"
+			},
+			"height": {
+				"syntax": "<'height'>"
+			},
+			"inline-size": {
+				"syntax": "<'inline-size'>"
+			},
+			"inset": {
+				"syntax": "<'inset'>"
+			},
+			"inset-block": {
+				"syntax": "<'inset-block'>"
+			},
+			"inset-block-end": {
+				"syntax": "<'inset-block-end'>"
+			},
+			"inset-block-start": {
+				"syntax": "<'inset-block-start'>"
+			},
+			"inset-inline": {
+				"syntax": "<'inset-inline'>"
+			},
+			"inset-inline-end": {
+				"syntax": "<'inset-inline-end'>"
+			},
+			"inset-inline-start": {
+				"syntax": "<'inset-inline-start'>"
+			},
+			"justify-self": {
+				"syntax": "<'justify-self'> | anchor-center"
+			},
+			"left": {
+				"syntax": "<'left'>"
+			},
+			"margin": {
+				"syntax": "<'margin'>"
+			},
+			"margin-block": {
+				"syntax": "<'margin-block'>"
+			},
+			"margin-block-end": {
+				"syntax": "<'margin-block-end'>"
+			},
+			"margin-block-start": {
+				"syntax": "<'margin-block-start'>"
+			},
+			"margin-bottom": {
+				"syntax": "<'margin-bottom'>"
+			},
+			"margin-inline": {
+				"syntax": "<'margin-inline'>"
+			},
+			"margin-inline-end": {
+				"syntax": "<'margin-inline-end'>"
+			},
+			"margin-inline-start": {
+				"syntax": "<'margin-inline-start'>"
+			},
+			"margin-left": {
+				"syntax": "<'margin-left'>"
+			},
+			"margin-right": {
+				"syntax": "<'margin-right'>"
+			},
+			"margin-top": {
+				"syntax": "<'margin-top'>"
+			},
+			"max-block-size": {
+				"syntax": "<'max-block-size'>"
+			},
+			"max-height": {
+				"syntax": "<'max-height'>"
+			},
+			"max-inline-size": {
+				"syntax": "<'max-inline-size'>"
+			},
+			"max-width": {
+				"syntax": "<'max-width'>"
+			},
+			"min-block-size": {
+				"syntax": "<'min-block-size'>"
+			},
+			"min-height": {
+				"syntax": "<'min-height'>"
+			},
+			"min-inline-size": {
+				"syntax": "<'min-inline-size'>"
+			},
+			"min-width": {
+				"syntax": "<'min-width'>"
+			},
+			"right": {
+				"syntax": "<'right'>"
+			},
+			"top": {
+				"syntax": "<'top'>"
+			},
+			"width": {
+				"syntax": "<'width'>"
+			}
+		}
+	},
+	"property": {
+		"descriptors": {
+			"inherits": {
+				"syntax": "true | false"
+			},
+			"initial-value": {
+				"syntax": "<declaration-value>?"
+			},
+			"syntax": {
+				"syntax": "<string>"
+			}
+		}
+	}
+}

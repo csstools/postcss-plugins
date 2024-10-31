@@ -27,3 +27,15 @@ export function sort_set(source) {
 
 	return set;
 }
+
+export function sort_atrule_set(source) {
+	for (const [name, definition] of Object.entries(source)) {
+		if (!definition.descriptors) {
+			continue;
+		}
+
+		source[name].descriptors = sort_set(definition.descriptors);
+	}
+
+	return sort_set(source);
+}

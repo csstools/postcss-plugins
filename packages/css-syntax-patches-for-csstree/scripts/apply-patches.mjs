@@ -5,6 +5,8 @@ export function apply_patches(patches, onto) {
 	let has_outdated_patches = false;
 	let has_unmerged_patches = false;
 
+	let atrules = Object(null);
+
 	let properties = Object(null);
 
 	for (const [name, definition] of Object.entries(onto.properties)) {
@@ -53,6 +55,9 @@ export function apply_patches(patches, onto) {
 
 	let types = Object(null);
 
+	// Manual patches to smooth over compat between csstree and webref/css
+	types['dashed-ident'] = '<custom-property-name>';
+
 	for (const [name, definition] of Object.entries(onto.types)) {
 		const patch = patches.types[name];
 		if (!patch) {
@@ -97,10 +102,8 @@ export function apply_patches(patches, onto) {
 		types[name] = patch['syntax-m'];
 	}
 
-	// Manual patches to smooth over compat between csstree and webref/css
-	types['dashed-ident'] = '<custom-property-name>';
-
 	return {
+		atrules,
 		properties,
 		types,
 		has_missing_patches,
