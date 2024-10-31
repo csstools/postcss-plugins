@@ -677,6 +677,12 @@
 		"syntax-a": "integrity( <string> )",
 		"comment": ""
 	},
+	"intrinsic-size-keyword": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | max-content | min-content | stretch",
+		"comment": ""
+	},
 	"isolation-mode": {
 		"type": "added",
 		"syntax-b": "",

@@ -28,6 +28,10 @@ export async function write_patches(sets, patch_sets) {
 						...patch_definition,
 					};
 
+					if (definition.type === 'added' && !merged_sets[set_name][kind_name][name]['syntax-m']) {
+						merged_sets[set_name][kind_name][name]['syntax-m'] = merged_sets[set_name][kind_name][name]['syntax-a'];
+					}
+
 					continue;
 				}
 
@@ -35,7 +39,7 @@ export async function write_patches(sets, patch_sets) {
 					...definition,
 				};
 
-				merged_sets[set_name][kind_name][name]['syntax-m'] = false;
+				merged_sets[set_name][kind_name][name]['syntax-m'] = definition.type === 'added' ? definition['syntax-a'] : false;
 				merged_sets[set_name][kind_name][name]['tests'] = {
 					'passing': [],
 					'failing': [],
@@ -69,7 +73,7 @@ export async function write_patches(sets, patch_sets) {
 					...definition,
 				};
 
-				merged_sets[set_name][kind_name][name]['syntax-m'] = false;
+				merged_sets[set_name][kind_name][name]['syntax-m'] = definition.type === 'added' ? definition['syntax-a'] : false;
 				merged_sets[set_name][kind_name][name]['tests'] = {
 					'passing': [],
 					'failing': [],
@@ -107,6 +111,7 @@ function sort_object_keys(object) {
 
 	copy.type = object.type;
 	copy.comment = object.comment;
+	copy.omit = object.omit;
 	copy['syntax-b'] = object['syntax-b'];
 	copy['syntax-a'] = object['syntax-a'];
 	copy['syntax-m'] = object['syntax-m'];

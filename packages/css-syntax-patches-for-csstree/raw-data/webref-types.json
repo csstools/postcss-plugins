@@ -737,6 +737,9 @@
 	"integrity-modifier": {
 		"syntax": "integrity( <string> )"
 	},
+	"intrinsic-size-keyword": {
+		"syntax": "auto | max-content | min-content | stretch"
+	},
 	"invert()": {
 		"syntax": "invert( <number-percentage> )"
 	},

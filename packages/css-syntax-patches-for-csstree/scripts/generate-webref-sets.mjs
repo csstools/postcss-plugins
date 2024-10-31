@@ -554,6 +554,8 @@ export async function generate_webref_sets() {
 
 	values['dimension-unit'] = JSON.parse(await fs.readFile(path.join('raw-data', 'units.json'))).join(' | ');
 
+	values['intrinsic-size-keyword'] = JSON.parse(await fs.readFile(path.join('raw-data', 'intrinsic-size-keywords.json'))).join(' | ');
+
 	const forkedLexer = fork({
 		properties: properties,
 		types: values,
