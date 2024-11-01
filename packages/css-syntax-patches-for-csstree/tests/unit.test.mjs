@@ -174,6 +174,7 @@ for (const [name] of Object.entries(patches.types)) {
 		flaws++;
 	}
 }
+
 {
 	if (has_invalid_items || has_failing_tests) {
 		// eslint-disable-next-line no-console

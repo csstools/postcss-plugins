@@ -1,7 +1,4 @@
 // TODO:
-// - toposort
-//   - check cycles
-//   - check missing definitions
 // - backwards compat
 //   given that syntaxes are extensive users might depend on a specific type. No types can be removed or altered in a breaking way in semver patches or minors
 
