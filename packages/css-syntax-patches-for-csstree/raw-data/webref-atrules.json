@@ -1,8 +1,21 @@
 {
+	"color-profile": {
+		"descriptors": {
+			"components": {
+				"syntax": "<ident>#"
+			},
+			"rendering-intent": {
+				"syntax": "relative-colorimetric | absolute-colorimetric | perceptual | saturation"
+			},
+			"src": {
+				"syntax": "<url>"
+			}
+		}
+	},
 	"counter-style": {
 		"descriptors": {
 			"additive-symbols": {
-				"syntax": "[ <integer> && <symbol> ]#"
+				"syntax": "[ <integer [0,∞]> && <symbol> ]#"
 			},
 			"fallback": {
 				"syntax": "<counter-style-name>"
@@ -11,7 +24,7 @@
 				"syntax": "<symbol> <symbol>?"
 			},
 			"pad": {
-				"syntax": "<integer> && <symbol>"
+				"syntax": "<integer [0,∞]> && <symbol>"
 			},
 			"prefix": {
 				"syntax": "<symbol>"
@@ -36,13 +49,13 @@
 	"font-face": {
 		"descriptors": {
 			"ascent-override": {
-				"syntax": "normal | <percentage>"
+				"syntax": "[ normal | <percentage [0,∞]> ]{1,2}"
 			},
 			"descent-override": {
-				"syntax": "normal | <percentage>"
+				"syntax": "[ normal | <percentage [0,∞]> ]{1,2}"
 			},
 			"font-display": {
-				"syntax": "[ auto | block | swap | fallback | optional ]"
+				"syntax": "auto | block | swap | fallback | optional"
 			},
 			"font-family": {
 				"syntax": "<family-name>"
@@ -50,29 +63,81 @@
 			"font-feature-settings": {
 				"syntax": "normal | <feature-tag-value>#"
 			},
+			"font-language-override": {
+				"syntax": "normal | <string>"
+			},
+			"font-named-instance": {
+				"syntax": "auto | <string>"
+			},
+			"font-size": {
+				"syntax": "auto | [ <number> ]{1,2}"
+			},
 			"font-stretch": {
 				"syntax": "<font-stretch-absolute>{1,2}"
 			},
 			"font-style": {
-				"syntax": "normal | italic | oblique <angle>{0,2}"
+				"syntax": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?"
 			},
 			"font-variation-settings": {
 				"syntax": "normal | [ <string> <number> ]#"
 			},
 			"font-weight": {
-				"syntax": "<font-weight-absolute>{1,2}"
+				"syntax": "auto | <font-weight-absolute>{1,2}"
+			},
+			"font-width": {
+				"syntax": "auto | <'font-width'>{1,2}"
 			},
 			"line-gap-override": {
-				"syntax": "normal | <percentage>"
+				"syntax": "[ normal | <percentage [0,∞]> ]{1,2}"
 			},
 			"size-adjust": {
-				"syntax": "<percentage>"
+				"syntax": "<percentage [0,∞]>"
 			},
 			"src": {
-				"syntax": "[ <url> [ format( <string># ) ]? | local( <family-name> ) ]#"
+				"syntax": "<font-src-list>"
+			},
+			"subscript-position-override": {
+				"syntax": "[ normal | from-font | <percentage> ]{1,2}"
+			},
+			"subscript-size-override": {
+				"syntax": "[ normal | from-font | <percentage [0,∞]> ]{1,2}"
+			},
+			"superscript-position-override": {
+				"syntax": "[ normal | from-font | <percentage> ]{1,2}"
+			},
+			"superscript-size-override": {
+				"syntax": "[ normal | from-font | <percentage [0,∞]> ]{1,2}"
 			},
 			"unicode-range": {
 				"syntax": "<urange>#"
+			}
+		}
+	},
+	"font-feature-values": {
+		"descriptors": {
+			"@annotation": {
+				"syntax": "@annotation { <declaration-list> }"
+			},
+			"@character-variant": {
+				"syntax": "@character-variant { <declaration-list> }"
+			},
+			"@historical-forms": {
+				"syntax": "@historical-forms { <declaration-list> }"
+			},
+			"@ornaments": {
+				"syntax": "@ornaments { <declaration-list> }"
+			},
+			"@styleset": {
+				"syntax": "@styleset { <declaration-list> }"
+			},
+			"@stylistic": {
+				"syntax": "@stylistic { <declaration-list> }"
+			},
+			"@swash": {
+				"syntax": "@swash { <declaration-list> }"
+			},
+			"font-display": {
+				"syntax": "auto | block | swap | fallback | optional"
 			}
 		}
 	},
@@ -85,7 +150,14 @@
 				"syntax": "<family-name>#"
 			},
 			"override-colors": {
-				"syntax": "[ <integer [0,∞]> <absolute-color-base> ]#"
+				"syntax": "[ <integer [0,∞]> <color> ]#"
+			}
+		}
+	},
+	"function": {
+		"descriptors": {
+			"result": {
+				"syntax": "<declaration-value>?"
 			}
 		}
 	},
@@ -101,7 +173,7 @@
 				"syntax": "upright | rotate-left | rotate-right"
 			},
 			"size": {
-				"syntax": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
+				"syntax": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
 			}
 		}
 	},
@@ -227,6 +299,16 @@
 			},
 			"syntax": {
 				"syntax": "<string>"
+			}
+		}
+	},
+	"view-transition": {
+		"descriptors": {
+			"navigation": {
+				"syntax": "auto | none"
+			},
+			"types": {
+				"syntax": "none | <custom-ident>+"
 			}
 		}
 	}

@@ -7,6 +7,56 @@ export function apply_patches(patches, onto) {
 
 	let atrules = Object(null);
 
+	for (const [name, definition] of Object.entries(onto.atrules)) {
+		for (const [descriptor_name, descriptor] of Object.entries(definition.descriptors)) {
+			const patch = patches.atrules[name]?.descriptors[descriptor_name];
+			if (!patch) {
+				// eslint-disable-next-line no-console
+				console.log(`Missing patch for descriptor '${descriptor_name}' for '@${name}'`);
+				has_missing_patches = true;
+				flaws++;
+
+				continue;
+			}
+
+			if (
+				patch['syntax-b'] !== descriptor['syntax-b'] ||
+				patch['syntax-a'] !== descriptor['syntax-a']
+			) {
+				// eslint-disable-next-line no-console
+				console.log(`Outdated patch for descriptor '${descriptor_name}' for '@${name}'`);
+				has_outdated_patches = true;
+				flaws++;
+
+				continue;
+			}
+
+			if (patch.omit) {
+				continue;
+			}
+
+			if (!patch['syntax-m']) {
+				// eslint-disable-next-line no-console
+				console.log(`Unmerged patch for descriptor '${descriptor_name}' for '@${name}'`);
+				has_unmerged_patches = true;
+				flaws++;
+
+				continue;
+			}
+
+			if (patch['syntax-m'] === patch['syntax-b']) {
+				// CSSTree is most correct
+				continue;
+			}
+
+			atrules[name] ??= {
+				descriptors: Object(),
+			};
+
+			atrules[name].descriptors[descriptor_name] = patch['syntax-m'];
+		}
+	}
+
 	let properties = Object(null);
 
 	for (const [name, definition] of Object.entries(onto.properties)) {

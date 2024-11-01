@@ -4,6 +4,7 @@ import css from '@webref/css';
 import { fork } from 'css-tree-3.0.0';
 import { generate_atrule_set, generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
+import { trim_at } from './trim-at.mjs';
 
 const IGNORED_SPECS = new Set([
 	// 'a-spec',
@@ -26,6 +27,28 @@ const IGNORED_PROPERTIES = new Map([
 
 function is_ignored_property(property, spec_name) {
 	const is_ignored = IGNORED_PROPERTIES.get(property);
+	return is_ignored && (is_ignored === '*' || is_ignored.has(spec_name));
+}
+
+const IGNORED_DESCRIPTORS = new Map([
+	// ['an-atrule', new Map([['a-descriptor', '*']])],
+	// ['an-atrule', new Map([['a-descriptor', 'a-spec']])],
+]);
+
+function is_ignored_descriptor(atrule, descriptor, spec_name) {
+	const is_ignored = IGNORED_DESCRIPTORS.get(trim_at(atrule))?.get(descriptor);
+	return is_ignored && (is_ignored === '*' || is_ignored.has(spec_name));
+}
+
+const IGNORED_ATRULES = new Map([
+	// ['an-atrule', '*'],
+	['container', new Set(['css-conditional-5'])],
+	['media', new Set(['compat', 'css-round-display', 'mediaqueries', 'mediaqueries-5'])],
+	['viewport', new Set(['css-round-display'])],
+]);
+
+function is_ignored_atrule(atrule, spec_name) {
+	const is_ignored = IGNORED_ATRULES.get(trim_at(atrule));
 	return is_ignored && (is_ignored === '*' || is_ignored.has(spec_name));
 }
 
@@ -434,6 +457,62 @@ Property '${name}' from '${spec_name}' previously occurred in '${other_occurrenc
 	}]);
 }
 
+
+function descriptor_key(atrule, name) {
+	return `${trim_at(atrule)};;${name}`;
+}
+
+function descriptor_delta_key(atrule, name, from_spec, to_spec) {
+	return `descriptor;;${descriptor_key(atrule, name)};;${from_spec};;${to_spec}`;
+}
+
+const descriptor_deltas = new Set([]);
+
+const seen_descriptor_definitions = new Map();
+function is_conflicting_descriptor(spec_name, atrule, name, syntax) {
+	if (seen_descriptor_definitions.has(descriptor_key(atrule, name))) {
+		const other_occurrences = seen_descriptor_definitions.get(descriptor_key(atrule, name));
+		other_occurrences.forEach((other_occurrence) => {
+			if (syntax === other_occurrence.syntax) {
+				return;
+			}
+
+			if (descriptor_deltas.has(descriptor_delta_key(atrule, name, other_occurrence.spec_name, spec_name))) {
+				return;
+			}
+
+			// eslint-disable-next-line no-console
+			console.log(`
+Descriptor '${name}' for '@${atrule}' from '${spec_name}' previously occurred in '${other_occurrence.spec_name}'
+    ours: ${syntax}
+  theirs: ${other_occurrence.syntax}
+
+  // descriptor_delta_key('${atrule}', '${name}', '${other_occurrence.spec_name}', '${spec_name}'),
+  --
+`);
+			throw new Error('Ambiguous spec definition');
+		});
+
+		other_occurrences.push({
+			atrule: atrule,
+			name: name,
+			spec_name: spec_name,
+			syntax: syntax,
+		});
+
+		seen_descriptor_definitions.set(descriptor_key(atrule, name), other_occurrences);
+
+		return;
+	}
+
+	seen_descriptor_definitions.set(descriptor_key(atrule, name), [{
+		atrule: atrule,
+		name: name,
+		spec_name: spec_name,
+		syntax: syntax,
+	}]);
+}
+
 function assign_new_definition(spec_name, set, name, definition) {
 	const exists_in_set = set[name];
 	const is_extension = definition.trimStart()[0] === '|';
@@ -441,11 +520,29 @@ function assign_new_definition(spec_name, set, name, definition) {
 	definition = maybe_override(spec_name, name, definition);
 
 	if (exists_in_set && is_extension) {
-		set[name] = set[name] + definition;
+		set[name] = set[name] + ' ' + definition.trimStart();
 		return;
 	}
 
 	set[name] = definition;
+}
+
+function assign_new_atrule_definition(spec_name, set, atrule, name, definition) {
+	const exists_in_set = set[atrule]?.descriptors?.[name];
+	const is_extension = definition.trimStart()[0] === '|';
+
+	definition = maybe_override(spec_name, name, definition);
+
+	if (exists_in_set && is_extension) {
+		set[atrule].descriptors[name] = set[atrule].descriptors[name] + ' ' + definition.trimStart();
+		return;
+	}
+
+	set[atrule] ??= {
+		descriptors: Object(null),
+	};
+
+	set[atrule].descriptors[name] = definition;
 }
 
 export async function generate_webref_sets() {
@@ -480,6 +577,54 @@ export async function generate_webref_sets() {
 	for (const [spec_name, data] of entries) {
 		if (IGNORED_SPECS.has(spec_name)) {
 			continue;
+		}
+
+		for (const atrule of data.atrules) {
+			if (is_ignored_atrule(trim_at(atrule.name), spec_name)) {
+				continue;
+			}
+
+			if (!atrule.descriptors?.length) {
+				continue;
+			}
+
+			for (const descriptor of atrule.descriptors) {
+				if (descriptor.value || descriptor.newValues) {
+
+					if (is_ignored_descriptor(trim_at(atrule.name), descriptor.name, spec_name)) {
+						continue;
+					}
+
+					assign_new_atrule_definition(
+						spec_name,
+						atrules,
+						trim_at(atrule.name),
+						trim_lt_gt(descriptor.name),
+						descriptor.newValues ? ' | ' + descriptor.newValues : descriptor.value,
+					);
+
+					is_conflicting_descriptor(spec_name, trim_at(atrule.name), trim_lt_gt(descriptor.name), atrules[trim_at(atrule.name)][trim_lt_gt(descriptor.name)]);
+				}
+
+				if (descriptor.values) {
+					for (const value of descriptor.values) {
+						if (value.type === 'type' && value.value) {
+							if (is_ignored_type(value.name, spec_name)) {
+								continue;
+							}
+
+							assign_new_definition(
+								spec_name,
+								values,
+								trim_lt_gt(value.name),
+								value.value,
+							);
+
+							is_conflicting_type(spec_name, trim_lt_gt(value.name), values[trim_lt_gt(value.name)]);
+						}
+					}
+				}
+			}
 		}
 
 		for (const property of data.properties) {

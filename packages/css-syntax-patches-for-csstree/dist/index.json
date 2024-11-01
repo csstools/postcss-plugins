@@ -1,6 +1,49 @@
 {
 	"next": {
-		"atrules": {},
+		"atrules": {
+			"color-profile": {
+				"descriptors": {
+					"components": "<ident>#",
+					"rendering-intent": "relative-colorimetric | absolute-colorimetric | perceptual | saturation",
+					"src": "<url>"
+				}
+			},
+			"font-face": {
+				"descriptors": {
+					"font-language-override": "normal | <string>",
+					"font-named-instance": "auto | <string>",
+					"font-size": "auto | [ <number> ]{1,2}",
+					"font-width": "auto | <'font-width'>{1,2}",
+					"subscript-position-override": "[ normal | from-font | <percentage> ]{1,2}",
+					"subscript-size-override": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
+					"superscript-position-override": "[ normal | from-font | <percentage> ]{1,2}",
+					"superscript-size-override": "[ normal | from-font | <percentage [0,∞]> ]{1,2}"
+				}
+			},
+			"font-feature-values": {
+				"descriptors": {
+					"@annotation": "@annotation { <declaration-list> }",
+					"@character-variant": "@character-variant { <declaration-list> }",
+					"@historical-forms": "@historical-forms { <declaration-list> }",
+					"@ornaments": "@ornaments { <declaration-list> }",
+					"@styleset": "@styleset { <declaration-list> }",
+					"@stylistic": "@stylistic { <declaration-list> }",
+					"@swash": "@swash { <declaration-list> }",
+					"font-display": "auto | block | swap | fallback | optional"
+				}
+			},
+			"function": {
+				"descriptors": {
+					"result": "<declaration-value>?"
+				}
+			},
+			"view-transition": {
+				"descriptors": {
+					"navigation": "auto | none",
+					"types": "none | <custom-ident>+"
+				}
+			}
+		},
 		"properties": {
 			"align-items": "| anchor-center",
 			"align-self": "| anchor-center",

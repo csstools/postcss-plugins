@@ -2,6 +2,52 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { sort_atrule_set, sort_set } from './sort-set.mjs';
 
+function format_from_definition_to_patch(definition, patch_definition) {
+	if (
+		definition.type === patch_definition.type &&
+		definition['syntax-b'] === patch_definition['syntax-b'] &&
+		definition['syntax-a'] === patch_definition['syntax-a']
+	) {
+		const patch = {
+			...patch_definition,
+		};
+
+		if (definition.type === 'added' && !patch['syntax-m']) {
+			patch['syntax-m'] = patch['syntax-a'];
+		}
+
+		return patch;
+	}
+
+	const patch = {
+		...definition,
+	};
+
+	patch['syntax-m'] = definition.type === 'added' ? definition['syntax-a'] : false;
+	patch['tests'] = {
+		'passing': [],
+		'failing': [],
+	};
+	patch['comment'] = '';
+
+	return patch;
+}
+
+function format_definition(definition) {
+	const patch = {
+		...definition,
+	};
+
+	patch['syntax-m'] = definition.type === 'added' ? definition['syntax-a'] : false;
+	patch['tests'] = {
+		'passing': [],
+		'failing': [],
+	};
+	patch['comment'] = '';
+
+	return patch;
+}
+
 export async function write_patches(sets, patch_sets) {
 	const merged_sets = Object(null);
 
@@ -19,32 +65,24 @@ export async function write_patches(sets, patch_sets) {
 					continue;
 				}
 
-				if (
-					definition.type === patch_definition.type &&
-					definition['syntax-b'] === patch_definition['syntax-b'] &&
-					definition['syntax-a'] === patch_definition['syntax-a']
-				) {
+				if (patch_definition.descriptors) {
 					merged_sets[set_name][kind_name][name] = {
-						...patch_definition,
+						descriptors: Object(null),
 					};
 
-					if (definition.type === 'added' && !merged_sets[set_name][kind_name][name]['syntax-m']) {
-						merged_sets[set_name][kind_name][name]['syntax-m'] = merged_sets[set_name][kind_name][name]['syntax-a'];
+					for (const [descriptor_name, patch_descriptor] of Object.entries(patch_definition.descriptors)) {
+						const descriptor = definition.descriptors[descriptor_name];
+						if (!descriptor) {
+							continue;
+						}
+
+						merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = format_from_definition_to_patch(descriptor, patch_descriptor);
 					}
 
 					continue;
 				}
 
-				merged_sets[set_name][kind_name][name] = {
-					...definition,
-				};
-
-				merged_sets[set_name][kind_name][name]['syntax-m'] = definition.type === 'added' ? definition['syntax-a'] : false;
-				merged_sets[set_name][kind_name][name]['tests'] = {
-					'passing': [],
-					'failing': [],
-				};
-				merged_sets[set_name][kind_name][name]['comment'] = '';
+				merged_sets[set_name][kind_name][name] = format_from_definition_to_patch(definition, patch_definition);
 			}
 		}
 	}
@@ -64,29 +102,43 @@ export async function write_patches(sets, patch_sets) {
 			}
 
 			for (const [name, definition] of Object.entries(kind)) {
+				if (definition.descriptors) {
+					merged_sets[set_name][kind_name][name] ??= {
+						descriptors: Object(null),
+					};
+
+					for (const [descriptor_name, descriptor] of Object.entries(definition.descriptors)) {
+						const patch_descriptor = patch_kind[name]?.descriptors?.[descriptor_name];
+						if (patch_descriptor) {
+							continue;
+						}
+
+						merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = format_definition(descriptor);
+					}
+
+					continue;
+				}
+
 				const patch_definition = patch_kind[name];
 				if (patch_definition) {
 					continue;
 				}
 
-				merged_sets[set_name][kind_name][name] = {
-					...definition,
-				};
-
-				merged_sets[set_name][kind_name][name]['syntax-m'] = definition.type === 'added' ? definition['syntax-a'] : false;
-				merged_sets[set_name][kind_name][name]['tests'] = {
-					'passing': [],
-					'failing': [],
-				};
-				merged_sets[set_name][kind_name][name]['comment'] = '';
+				merged_sets[set_name][kind_name][name] = format_definition(definition);
 			}
 		}
 	}
 
 	for (const [set_name, merged_set] of Object.entries(merged_sets)) {
-		for (const [kind_name, patch_kind] of Object.entries(merged_set)) {
-			for (const [name, patch_definition] of Object.entries(patch_kind)) {
-				merged_sets[set_name][kind_name][name] = sort_object_keys(patch_definition);
+		for (const [kind_name, merged_kind] of Object.entries(merged_set)) {
+			for (const [name, merged_definition] of Object.entries(merged_kind)) {
+				if (merged_definition.descriptors) {
+					for (const [descriptor_name, descriptor] of Object.entries(merged_definition.descriptors)) {
+						merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = sort_object_keys(descriptor);
+					}
+				} else {
+					merged_sets[set_name][kind_name][name] = sort_object_keys(merged_definition);
+				}
 			}
 		}
 	}

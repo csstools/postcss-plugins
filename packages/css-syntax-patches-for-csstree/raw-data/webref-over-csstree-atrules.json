@@ -1,1 +1,238 @@
-{}
+{
+	"color-profile": {
+		"descriptors": {
+			"components": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<ident>#",
+				"comment": ""
+			},
+			"rendering-intent": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "relative-colorimetric | absolute-colorimetric | perceptual | saturation",
+				"comment": ""
+			},
+			"src": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<url>",
+				"comment": ""
+			}
+		}
+	},
+	"counter-style": {
+		"descriptors": {
+			"additive-symbols": {
+				"type": "modified",
+				"syntax-b": "[ <integer> && <symbol> ]#",
+				"syntax-a": "[ <integer [0,∞]> && <symbol> ]#",
+				"comment": ""
+			},
+			"pad": {
+				"type": "modified",
+				"syntax-b": "<integer> && <symbol>",
+				"syntax-a": "<integer [0,∞]> && <symbol>",
+				"comment": ""
+			}
+		}
+	},
+	"font-face": {
+		"descriptors": {
+			"ascent-override": {
+				"type": "modified",
+				"syntax-b": "normal | <percentage>",
+				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
+				"comment": ""
+			},
+			"descent-override": {
+				"type": "modified",
+				"syntax-b": "normal | <percentage>",
+				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
+				"comment": ""
+			},
+			"font-display": {
+				"type": "modified",
+				"syntax-b": "[ auto | block | swap | fallback | optional ]",
+				"syntax-a": "auto | block | swap | fallback | optional",
+				"comment": ""
+			},
+			"font-language-override": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "normal | <string>",
+				"comment": ""
+			},
+			"font-named-instance": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "auto | <string>",
+				"comment": ""
+			},
+			"font-size": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "auto | [ <number> ]{1,2}",
+				"comment": ""
+			},
+			"font-style": {
+				"type": "modified",
+				"syntax-b": "normal | italic | oblique <angle>{0,2}",
+				"syntax-a": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
+				"comment": ""
+			},
+			"font-weight": {
+				"type": "modified",
+				"syntax-b": "<font-weight-absolute>{1,2}",
+				"syntax-a": "auto | <font-weight-absolute>{1,2}",
+				"comment": ""
+			},
+			"font-width": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "auto | <'font-width'>{1,2}",
+				"comment": ""
+			},
+			"line-gap-override": {
+				"type": "modified",
+				"syntax-b": "normal | <percentage>",
+				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
+				"comment": ""
+			},
+			"size-adjust": {
+				"type": "modified",
+				"syntax-b": "<percentage>",
+				"syntax-a": "<percentage [0,∞]>",
+				"comment": ""
+			},
+			"src": {
+				"type": "modified",
+				"syntax-b": "[ <url> [ format( <string># ) ]? | local( <family-name> ) ]#",
+				"syntax-a": "<font-src-list>",
+				"comment": ""
+			},
+			"subscript-position-override": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "[ normal | from-font | <percentage> ]{1,2}",
+				"comment": ""
+			},
+			"subscript-size-override": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
+				"comment": ""
+			},
+			"superscript-position-override": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "[ normal | from-font | <percentage> ]{1,2}",
+				"comment": ""
+			},
+			"superscript-size-override": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
+				"comment": ""
+			}
+		}
+	},
+	"font-feature-values": {
+		"descriptors": {
+			"@annotation": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@annotation { <declaration-list> }",
+				"comment": ""
+			},
+			"@character-variant": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@character-variant { <declaration-list> }",
+				"comment": ""
+			},
+			"@historical-forms": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@historical-forms { <declaration-list> }",
+				"comment": ""
+			},
+			"@ornaments": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@ornaments { <declaration-list> }",
+				"comment": ""
+			},
+			"@styleset": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@styleset { <declaration-list> }",
+				"comment": ""
+			},
+			"@stylistic": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@stylistic { <declaration-list> }",
+				"comment": ""
+			},
+			"@swash": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "@swash { <declaration-list> }",
+				"comment": ""
+			},
+			"font-display": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "auto | block | swap | fallback | optional",
+				"comment": ""
+			}
+		}
+	},
+	"font-palette-values": {
+		"descriptors": {
+			"override-colors": {
+				"type": "modified",
+				"syntax-b": "[ <integer [0,∞]> <absolute-color-base> ]#",
+				"syntax-a": "[ <integer [0,∞]> <color> ]#",
+				"comment": ""
+			}
+		}
+	},
+	"function": {
+		"descriptors": {
+			"result": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<declaration-value>?",
+				"comment": ""
+			}
+		}
+	},
+	"page": {
+		"descriptors": {
+			"size": {
+				"type": "modified",
+				"syntax-b": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
+				"syntax-a": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
+				"comment": ""
+			}
+		}
+	},
+	"view-transition": {
+		"descriptors": {
+			"navigation": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "auto | none",
+				"comment": ""
+			},
+			"types": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "none | <custom-ident>+",
+				"comment": ""
+			}
+		}
+	}
+}
