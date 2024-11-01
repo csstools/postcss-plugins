@@ -3858,8 +3858,30 @@
 		"syntax-a": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?",
 		"syntax-m": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "text-box-edge",
+					"value": "text"
+				},
+				{
+					"property": "text-box-edge",
+					"value": "ex"
+				},
+				{
+					"property": "text-box-edge",
+					"value": "ex text"
+				}
+			],
+			"failing": [
+				{
+					"property": "text-box-edge",
+					"value": "alphabetic text"
+				},
+				{
+					"property": "text-box-edge",
+					"value": "text ex"
+				}
+			]
 		}
 	},
 	"time-percentage": {
