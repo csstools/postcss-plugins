@@ -1,5 +1,7 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (major)
+### 1.0.0
+
+_November 1, 2024_
 
 - initial version 
