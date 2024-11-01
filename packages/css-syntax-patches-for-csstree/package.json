@@ -48,11 +48,11 @@
 		"prepublishOnly": "npm run build && npm run test",
 		"test": "node --test"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/utilities#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-syntax-patches-for-csstree#readme",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/csstools/postcss-plugins.git",
-		"directory": "packages/utilities"
+		"directory": "packages/css-syntax-patches-for-csstree"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [

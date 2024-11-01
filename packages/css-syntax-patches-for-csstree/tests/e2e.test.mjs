@@ -45,7 +45,10 @@ function contains_unsupported_function(cssTreeNode) {
 	);
 }
 
-const css_files = await get_files('tests');
+const css_files = [
+	...await get_files(path.join('tests', 'community')),
+	...await get_files(path.join('tests', 'samples')),
+];
 
 const patches = JSON.parse(await fs.readFile(path.join('dist', 'index.json'), 'utf-8')).next;
 

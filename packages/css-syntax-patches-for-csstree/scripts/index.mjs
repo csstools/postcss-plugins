@@ -5,8 +5,6 @@
 // - backwards compat
 //   given that syntaxes are extensive users might depend on a specific type. No types can be removed or altered in a breaking way in semver patches or minors
 
-import { fork } from 'css-tree-3.0.0';
-
 import { generate_csstree_sets } from './generate-csstree-sets.mjs';
 import { generate_webref_sets } from './generate-webref-sets.mjs';
 import { write_set_files } from './write-set-files.mjs';
@@ -27,15 +25,7 @@ const webref_over_csstree_sets = {
 	types: diff_sets(csstree_sets.types, webref_sets.types),
 };
 
-const SINGULAR = {
-	'atrules': 'atrule',
-	'properties': 'property',
-	'types': 'type',
-};
-
 let has_missing_patch_tests = false;
-let has_invalid_items = false;
-let has_failing_tests = false;
 let flaws = 0;
 
 const {
@@ -49,24 +39,6 @@ const {
 } = apply_patches(patches.webref_over_csstree, webref_over_csstree_sets);
 
 flaws += patch_flaws;
-
-const forkedLexer = fork({
-	atrules: atrule_patches,
-	properties: property_patches,
-	types: type_patches,
-}).lexer;
-
-const invalid = forkedLexer.validate();
-if (invalid) {
-	for (const [kind, items] of Object.entries(invalid)) {
-		items.forEach((item) => {
-			// eslint-disable-next-line no-console
-			console.log(`Unexpected invalid ${SINGULAR[kind]} '${item}'`);
-			has_invalid_items = true;
-			flaws++;
-		});
-	}
-}
 
 // Atrules
 for (const [name, atrule] of Object.entries(webref_over_csstree_sets.atrules)) {
@@ -83,35 +55,6 @@ for (const [name, atrule] of Object.entries(webref_over_csstree_sets.atrules)) {
 		if (!patch.tests) {
 			has_missing_patch_tests = true;
 			continue;
-		}
-
-		for (const test of (patch.tests.passing ?? [])) {
-			try {
-				const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
-				if (!result.error) {
-					continue;
-				}
-
-			} catch { }
-
-			// eslint-disable-next-line no-console
-			console.log(`Expected no error for '@${name}' and '${descriptor_name}: ${test.value}'`);
-			flaws++;
-		}
-
-		for (const test of (patch.tests.failing ?? [])) {
-			try {
-				const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
-				if (result.error) {
-					continue;
-				}
-			} catch {
-				continue;
-			}
-
-			// eslint-disable-next-line no-console
-			console.log(`Expected an error for '@${name}' and '${descriptor_name}: ${test.value}'`);
-			flaws++;
 		}
 	}
 }
@@ -131,35 +74,6 @@ for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
 		has_missing_patch_tests = true;
 		continue;
 	}
-
-	for (const test of (patch.tests.passing ?? [])) {
-		try {
-			const result = forkedLexer.matchProperty(name, test.value);
-			if (!result.error) {
-				continue;
-			}
-
-		} catch { }
-
-		// eslint-disable-next-line no-console
-		console.log(`Expected no error for '${name}: ${test.value}'`);
-		flaws++;
-	}
-
-	for (const test of (patch.tests.failing ?? [])) {
-		try {
-			const result = forkedLexer.matchProperty(name, test.value);
-			if (result.error) {
-				continue;
-			}
-		} catch {
-			continue;
-		}
-
-		// eslint-disable-next-line no-console
-		console.log(`Expected an error for '${name}: ${test.value}'`);
-		flaws++;
-	}
 }
 
 // Types
@@ -176,35 +90,6 @@ for (const [name] of Object.entries(webref_over_csstree_sets.types)) {
 	if (!patch.tests) {
 		has_missing_patch_tests = true;
 		continue;
-	}
-
-	for (const test of (patch.tests.passing ?? [])) {
-		try {
-			const result = forkedLexer.matchProperty(test.property, test.value);
-			if (!result.error) {
-				continue;
-			}
-
-		} catch {}
-
-		// eslint-disable-next-line no-console
-		console.log(`Expected no error for '${test.property}: ${test.value}'`);
-		flaws++;
-	}
-
-	for (const test of (patch.tests.failing ?? [])) {
-		try {
-			const result = forkedLexer.matchProperty(test.property, test.value);
-			if (result.error) {
-				continue;
-			}
-		} catch {
-			continue;
-		}
-
-		// eslint-disable-next-line no-console
-		console.log(`Expected an error for '${test.property}: ${test.value}'`);
-		flaws++;
 	}
 }
 
@@ -230,7 +115,7 @@ await write_final_file({
 });
 
 {
-	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
+	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests) {
 		// eslint-disable-next-line no-console
 		console.log('-------------------');
 	}
@@ -255,20 +140,10 @@ await write_final_file({
 		console.warn('Not all patches have test coverage');
 	}
 
-	if (has_invalid_items) {
+	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests) {
 		// eslint-disable-next-line no-console
-		console.warn('Not all types or properties are valid');
-	}
+		console.log(`${flaws} flaws to resolve`);
 
-	if (has_failing_tests) {
-		// eslint-disable-next-line no-console
-		console.warn('Not all tests passed');
-	}
-
-	// eslint-disable-next-line no-console
-	console.log(`${flaws} flaws to resolve`);
-
-	if (has_missing_patches || has_outdated_patches || has_unmerged_patches || has_missing_patch_tests || has_invalid_items || has_failing_tests) {
 		process.exit(1);
 	}
 }
