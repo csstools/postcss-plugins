@@ -1,6 +1,8 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### 1.0.1
+
+_November 1, 2024_
 
 - Add TypeScript types
 
