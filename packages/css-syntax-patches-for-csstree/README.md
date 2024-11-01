@@ -8,7 +8,7 @@ Path [csstree](https://github.com/csstree/csstree) syntax definitions with the l
 ## Usage
 
 ```bash
-npm install @csstools/css-syntax-patches-for-csstree --save-dev
+npm install @csstools/css-syntax-patches-for-csstree
 ```
 
 ```js

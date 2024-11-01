@@ -58,5 +58,8 @@
 	},
 	"volta": {
 		"node": "22.1.0"
+	},
+	"dependencies": {
+		"@csstools/css-syntax-patches-for-csstree": "^1.0.0"
 	}
 }

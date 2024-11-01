@@ -28,6 +28,7 @@
 		"node": ">=18"
 	},
 	"main": "dist/index.json",
+	"types": "dist/index.d.ts",
 	"files": [
 		"CHANGELOG.md",
 		"LICENSE.md",
