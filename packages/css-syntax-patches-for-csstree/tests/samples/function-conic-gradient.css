@@ -1,0 +1,27 @@
+.foo {
+	/* A conic gradient rotated 45 degrees,
+	 starting blue and finishing red */
+	background: conic-gradient(from 45deg, blue, red);
+
+	/* A bluish purple box: the gradient goes from blue to red,
+	 but only the bottom right quadrant is visible, as the
+	 center of the conic gradient is at the top left corner */
+	background: conic-gradient(from 90deg at 0 0, blue, red);
+
+	/* Interpolation in polar color space
+	 with longer hue interpolation method */
+	background: conic-gradient(in hsl longer hue, red, blue, green, red);
+
+	/* Color wheel */
+	background: conic-gradient(
+		hsl(360 100% 50%),
+		hsl(315 100% 50%),
+		hsl(270 100% 50%),
+		hsl(225 100% 50%),
+		hsl(180 100% 50%),
+		hsl(135 100% 50%),
+		hsl(90 100% 50%),
+		hsl(45 100% 50%),
+		hsl(0 100% 50%)
+	);
+}

@@ -1,0 +1,49 @@
+.foo {
+	/* Function with no parameters set */
+	animation-timeline: view();
+
+	/* Values for selecting the axis */
+	animation-timeline: view(block);
+	/* Default */
+	animation-timeline: view(inline);
+	animation-timeline: view(y);
+	animation-timeline: view(x);
+
+	/* Values for the inset */
+	animation-timeline: view(auto);
+	/* Default */
+	animation-timeline: view(20%);
+	animation-timeline: view(200px);
+	animation-timeline: view(20% 40%);
+	animation-timeline: view(20% 200px);
+	animation-timeline: view(100px 200px);
+	animation-timeline: view(auto 200px);
+
+	/* Examples that specify axis and inset */
+	animation-timeline: view(block auto);
+	/* Default */
+	animation-timeline: view(inline 20%);
+	animation-timeline: view(x 200px auto);
+
+	/* Function with no parameters set */
+	animation-timeline: scroll();
+
+	/* Values for selecting the scroller element */
+	animation-timeline: scroll(nearest);
+	/* Default */
+	animation-timeline: scroll(root);
+	animation-timeline: scroll(self);
+
+	/* Values for selecting the axis */
+	animation-timeline: scroll(block);
+	/* Default */
+	animation-timeline: scroll(inline);
+	animation-timeline: scroll(y);
+	animation-timeline: scroll(x);
+
+	/* Examples that specify scroller and axis */
+	animation-timeline: scroll(block nearest);
+	/* Default */
+	animation-timeline: scroll(inline root);
+	animation-timeline: scroll(x self);
+}

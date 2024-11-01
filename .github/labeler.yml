@@ -2,16 +2,22 @@
   - changed-files:
     - any-glob-to-any-file:
       - .github/**
+      - base-cli
       - packages/base-cli/**
       - packages/cascade-layer-name-parser/**
       - packages/color-helpers/**
       - packages/css-calc/**
       - packages/css-color-parser/**
       - packages/css-parser-algorithms/**
+      - packages/css-syntax-patches-for-csstree/**
       - packages/css-tokenizer/**
+      - packages/generate-test-cases/**
       - packages/media-query-list-parser/**
+      - packages/pack-test/**
       - packages/postcss-tape/**
+      - packages/selector-resolve-nested/**
       - packages/selector-specificity/**
+      - packages/utilities/**
       - plugins/postcss-base-plugin/**
       - plugins/postcss-debug-logger/**
       - rollup/**
