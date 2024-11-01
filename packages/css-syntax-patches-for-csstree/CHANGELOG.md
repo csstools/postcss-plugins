@@ -1,5 +1,5 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### Unreleased (major)
 
 - initial version 

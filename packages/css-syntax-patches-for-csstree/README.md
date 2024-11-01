@@ -12,7 +12,7 @@ npm install @csstools/css-syntax-patches-for-csstree --save-dev
 ```
 
 ```js
-import { fork } from 'css-tree-3.0.0';
+import { fork } from 'css-tree';
 import syntax_patches from '@csstools/css-syntax-patches-for-csstree' with { type: 'json' };
 
 const forkedLexer = fork({
@@ -23,6 +23,13 @@ const forkedLexer = fork({
 ```
 
 ## `next`
+
+```js
+import syntax_patches from '@csstools/css-syntax-patches-for-csstree' with { type: 'json' };
+
+console.log(syntax_patches.next);
+//                         ^^^^
+```
 
 CSS specifications are often still in flux and various parts might change or disappear altogether.  
 Specifications also contains parts that haven't been implemented yet in a browser.  
