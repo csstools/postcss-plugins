@@ -545,6 +545,12 @@
 		"syntax-a": "<url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> )",
 		"comment": ""
 	},
+	"font-src-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> ) ]#",
+		"comment": ""
+	},
 	"font-tech": {
 		"type": "added",
 		"syntax-b": "",

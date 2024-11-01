@@ -1442,6 +1442,17 @@
 			"failing": []
 		}
 	},
+	"font-src-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> ) ]#",
+		"syntax-m": "[ <url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> ) ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"font-tech": {
 		"type": "added",
 		"comment": "",

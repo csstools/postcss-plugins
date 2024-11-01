@@ -8,12 +8,25 @@
 					"src": "<url>"
 				}
 			},
+			"counter-style": {
+				"descriptors": {
+					"additive-symbols": "[ <integer [0,∞]> && <symbol> ]#",
+					"pad": "<integer [0,∞]> && <symbol>"
+				}
+			},
 			"font-face": {
 				"descriptors": {
+					"ascent-override": "[ normal | <percentage [0,∞]> ]{1,2}",
+					"descent-override": "[ normal | <percentage [0,∞]> ]{1,2}",
 					"font-language-override": "normal | <string>",
 					"font-named-instance": "auto | <string>",
 					"font-size": "auto | [ <number> ]{1,2}",
+					"font-style": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
+					"font-weight": "| auto",
 					"font-width": "auto | <'font-width'>{1,2}",
+					"line-gap-override": "[ normal | <percentage [0,∞]> ]{1,2}",
+					"size-adjust": "<percentage [0,∞]>",
+					"src": "<font-src-list>",
 					"subscript-position-override": "[ normal | from-font | <percentage> ]{1,2}",
 					"subscript-size-override": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 					"superscript-position-override": "[ normal | from-font | <percentage> ]{1,2}",
@@ -32,9 +45,19 @@
 					"font-display": "auto | block | swap | fallback | optional"
 				}
 			},
+			"font-palette-values": {
+				"descriptors": {
+					"override-colors": "[ <integer [0,∞]> <color> ]#"
+				}
+			},
 			"function": {
 				"descriptors": {
 					"result": "<declaration-value>?"
+				}
+			},
+			"page": {
+				"descriptors": {
+					"size": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
 				}
 			},
 			"view-transition": {
@@ -489,6 +512,7 @@
 			"font-features-tech": "[ features-opentype | features-aat | features-graphite ]",
 			"font-format": "[ <string> | collection | embedded-opentype | opentype | svg | truetype | woff | woff2 ]",
 			"font-src": "<url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> )",
+			"font-src-list": "[ <url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> ) ]#",
 			"font-tech": "[ <font-features-tech> | <color-font-tech> | variations | palettes | incremental ]",
 			"font-weight-absolute": "[ normal | bold | <number [1,1000]> ]",
 			"frequency-percentage": "[ <frequency> | <percentage> ]",

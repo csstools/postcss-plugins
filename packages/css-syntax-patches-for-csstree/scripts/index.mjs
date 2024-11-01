@@ -68,6 +68,54 @@ if (invalid) {
 	}
 }
 
+// Atrules
+for (const [name, atrule] of Object.entries(webref_over_csstree_sets.atrules)) {
+	for (const [descriptor_name] of Object.entries(atrule.descriptors)) {
+		const patch = patches.webref_over_csstree.atrules[name].descriptors[descriptor_name];
+		if (!patch) {
+			continue;
+		}
+
+		if (patch.omit) {
+			continue;
+		}
+
+		if (!patch.tests) {
+			has_missing_patch_tests = true;
+			continue;
+		}
+
+		for (const test of (patch.tests.passing ?? [])) {
+			try {
+				const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
+				if (!result.error) {
+					continue;
+				}
+
+			} catch { }
+
+			// eslint-disable-next-line no-console
+			console.log(`Expected no error for '@${name}' and '${descriptor_name}: ${test.value}'`);
+			flaws++;
+		}
+
+		for (const test of (patch.tests.failing ?? [])) {
+			try {
+				const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
+				if (result.error) {
+					continue;
+				}
+			} catch {
+				continue;
+			}
+
+			// eslint-disable-next-line no-console
+			console.log(`Expected an error for '@${name}' and '${descriptor_name}: ${test.value}'`);
+			flaws++;
+		}
+	}
+}
+
 // Properties
 for (const [name] of Object.entries(webref_over_csstree_sets.properties)) {
 	const patch = patches.webref_over_csstree.properties[name];

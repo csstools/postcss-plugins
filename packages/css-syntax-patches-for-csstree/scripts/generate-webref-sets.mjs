@@ -562,6 +562,8 @@ export async function generate_webref_sets() {
 		// https://drafts.csswg.org/css-ui-4/#cursor
 		values['url-set-option'] = '[ <url> | <string> ] [ <resolution> || type( <string> ) ]?';
 		values['url-set()'] = 'url-set( <url-set-option># )';
+
+		values['font-src-list'] = '[ <url> [ format(<font-format>)]? [ tech( <font-tech>#)]? | local(<family-name>) ]#';
 	}
 
 	const parsedFiles = await css.listAll();

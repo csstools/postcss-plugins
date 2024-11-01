@@ -575,6 +575,9 @@
 	"font-src": {
 		"syntax": "<url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> )"
 	},
+	"font-src-list": {
+		"syntax": "[ <url> [ format( <font-format> ) ]? [ tech( <font-tech># ) ]? | local( <family-name> ) ]#"
+	},
 	"font-stretch-absolute": {
 		"syntax": "normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded | <percentage>"
 	},

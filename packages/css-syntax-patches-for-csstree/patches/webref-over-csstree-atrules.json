@@ -8,8 +8,22 @@
 				"syntax-a": "<ident>#",
 				"syntax-m": "<ident>#",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "foo"
+						},
+						{
+							"value": "foo, bar"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						},
+						{
+							"value": "foo bar"
+						}
+					]
 				}
 			},
 			"rendering-intent": {
@@ -43,7 +57,7 @@
 				"comment": "",
 				"syntax-b": "[ <integer> && <symbol> ]#",
 				"syntax-a": "[ <integer [0,∞]> && <symbol> ]#",
-				"syntax-m": false,
+				"syntax-m": "[ <integer [0,∞]> && <symbol> ]#",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -54,7 +68,7 @@
 				"comment": "",
 				"syntax-b": "<integer> && <symbol>",
 				"syntax-a": "<integer [0,∞]> && <symbol>",
-				"syntax-m": false,
+				"syntax-m": "<integer [0,∞]> && <symbol>",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -69,7 +83,7 @@
 				"comment": "",
 				"syntax-b": "normal | <percentage>",
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
-				"syntax-m": false,
+				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -80,7 +94,7 @@
 				"comment": "",
 				"syntax-b": "normal | <percentage>",
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
-				"syntax-m": false,
+				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -91,7 +105,7 @@
 				"comment": "",
 				"syntax-b": "[ auto | block | swap | fallback | optional ]",
 				"syntax-a": "auto | block | swap | fallback | optional",
-				"syntax-m": false,
+				"syntax-m": "[ auto | block | swap | fallback | optional ]",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -135,7 +149,7 @@
 				"comment": "",
 				"syntax-b": "normal | italic | oblique <angle>{0,2}",
 				"syntax-a": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
-				"syntax-m": false,
+				"syntax-m": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -146,7 +160,7 @@
 				"comment": "",
 				"syntax-b": "<font-weight-absolute>{1,2}",
 				"syntax-a": "auto | <font-weight-absolute>{1,2}",
-				"syntax-m": false,
+				"syntax-m": "| auto",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -168,7 +182,7 @@
 				"comment": "",
 				"syntax-b": "normal | <percentage>",
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
-				"syntax-m": false,
+				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -179,7 +193,7 @@
 				"comment": "",
 				"syntax-b": "<percentage>",
 				"syntax-a": "<percentage [0,∞]>",
-				"syntax-m": false,
+				"syntax-m": "<percentage [0,∞]>",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -190,10 +204,21 @@
 				"comment": "",
 				"syntax-b": "[ <url> [ format( <string># ) ]? | local( <family-name> ) ]#",
 				"syntax-a": "<font-src-list>",
-				"syntax-m": false,
+				"syntax-m": "<font-src-list>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "url(foo.ttf)"
+						},
+						{
+							"value": "local(Arial)"
+						}
+					],
+					"failing": [
+						{
+							"value": "local(10px)"
+						}
+					]
 				}
 			},
 			"subscript-position-override": {
@@ -341,7 +366,7 @@
 				"comment": "",
 				"syntax-b": "[ <integer [0,∞]> <absolute-color-base> ]#",
 				"syntax-a": "[ <integer [0,∞]> <color> ]#",
-				"syntax-m": false,
+				"syntax-m": "[ <integer [0,∞]> <color> ]#",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -371,7 +396,7 @@
 				"comment": "",
 				"syntax-b": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
 				"syntax-a": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
-				"syntax-m": false,
+				"syntax-m": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
 				"tests": {
 					"passing": [],
 					"failing": []
