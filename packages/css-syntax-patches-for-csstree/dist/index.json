@@ -45,19 +45,9 @@
 					"font-display": "auto | block | swap | fallback | optional"
 				}
 			},
-			"font-palette-values": {
-				"descriptors": {
-					"override-colors": "[ <integer [0,∞]> <color> ]#"
-				}
-			},
 			"function": {
 				"descriptors": {
 					"result": "<declaration-value>?"
-				}
-			},
-			"page": {
-				"descriptors": {
-					"size": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
 				}
 			},
 			"view-transition": {

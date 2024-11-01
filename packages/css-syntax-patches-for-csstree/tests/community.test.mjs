@@ -50,6 +50,7 @@ const css_files = await get_files('tests');
 const patches = JSON.parse(await fs.readFile(path.join('dist', 'index.json'), 'utf-8')).next;
 
 const forkedLexer = fork({
+	atrules: patches.atrules,
 	properties: patches.properties,
 	types: patches.types,
 }).lexer;
@@ -68,17 +69,6 @@ for (const css_file of css_files) {
 		for (let i = 0; i < all_declarations.length; i++) {
 			const decl = all_declarations[i];
 			if (decl.variable) {
-				continue;
-			}
-
-			if (
-				decl.parent?.type === 'atrule' &&
-				(
-					decl.parent.name === 'page' ||
-					decl.parent.name === 'font-face'
-				)
-			) {
-				// Remove this when adding support for descriptors.
 				continue;
 			}
 
@@ -112,7 +102,7 @@ for (const css_file of css_files) {
 				continue;
 			}
 
-			const { prop, value } = decl;
+			const { prop, value, parent } = decl;
 
 			const csstree_value_node = parse(value, { context: 'value' });
 			patch_relative_color_keywords(csstree_value_node);
@@ -121,8 +111,24 @@ for (const css_file of css_files) {
 				continue;
 			}
 
-			const result = forkedLexer.matchProperty(prop, csstree_value_node);
+			const nesting_supported_at_keywords = new Set([
+				'container',
+				'layer',
+				'media',
+				'scope',
+				'starting-style',
+				'supports',
+			]);
+
+			const result =
+				parent && parent.type === 'atrule' && !nesting_supported_at_keywords.has(parent.name.toLowerCase())
+					? forkedLexer.matchAtruleDescriptor(parent.name, prop, csstree_value_node)
+					: forkedLexer.matchProperty(prop, csstree_value_node);
 			if (!result.error) {
+				continue;
+			}
+
+			if (result.error.message.includes('Unknown at-rule descriptor')) {
 				continue;
 			}
 
