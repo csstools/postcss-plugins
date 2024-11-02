@@ -6,7 +6,7 @@
 		"syntax": "<hex-color> | <absolute-color-function> | <named-color> | transparent"
 	},
 	"absolute-color-function": {
-		"syntax": "rgb( ) > | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
+		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
 	},
 	"absolute-size": {
 		"syntax": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large"
@@ -1211,6 +1211,9 @@
 	"ray()": {
 		"syntax": "ray( [ <angle> && <ray-size>? && contain? && [ at <position> ]? ] )"
 	},
+	"rect()": {
+		"syntax": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )"
+	},
 	"rectangular-color-space": {
 		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
 	},
@@ -1672,6 +1675,9 @@
 	},
 	"x": {
 		"syntax": "<number>"
+	},
+	"xywh()": {
+		"syntax": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )"
 	},
 	"xyz": {
 		"syntax": "xyz | xyz-d50 | xyz-d65"

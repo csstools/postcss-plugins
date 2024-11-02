@@ -1,25 +1,4 @@
 {
-	"anchor-name": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<dashed-ident>",
-		"syntax-m": "<dashed-ident>",
-		"tests": {
-			"passing": [
-				{
-					"property": "position-anchor",
-					"value": "--foo"
-				}
-			],
-			"failing": [
-				{
-					"property": "position-anchor",
-					"value": "foo"
-				}
-			]
-		}
-	},
 	"anchor-size()": {
 		"type": "modified",
 		"comment": "",
@@ -375,8 +354,8 @@
 	},
 	"basic-shape": {
 		"type": "modified",
-		"comment": "https://github.com/w3c/csswg-drafts/issues/10812",
-		"syntax-b": "<inset()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
+		"comment": "",
+		"syntax-b": "<inset()> | <xywh()> | <rect()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
 		"syntax-a": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 		"syntax-m": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( [ <radial-size>{2} ]? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 		"tests": {
@@ -2167,12 +2146,34 @@
 	"linear-gradient()": {
 		"type": "modified",
 		"comment": "",
-		"syntax-b": "linear-gradient( [ <angle> | to <side-or-corner> ]? , <color-stop-list> )",
+		"syntax-b": "linear-gradient( [ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list> )",
 		"syntax-a": "linear-gradient( [ <linear-gradient-syntax> ] )",
 		"syntax-m": "linear-gradient( [ <linear-gradient-syntax> ] )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "background",
+					"value": "linear-gradient(45deg, blue, red)"
+				},
+				{
+					"property": "background",
+					"value": "linear-gradient(to left top, blue, red)"
+				},
+				{
+					"property": "background",
+					"value": "linear-gradient(in hsl longer hue, blue, red)"
+				}
+			],
+			"failing": [
+				{
+					"property": "background",
+					"value": "linear-gradient(in hsl)"
+				},
+				{
+					"property": "background",
+					"value": "linear-gradient()"
+				}
+			]
 		}
 	},
 	"linear()": {

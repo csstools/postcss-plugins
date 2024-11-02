@@ -120,55 +120,6 @@
 			"failing": []
 		}
 	},
-	"aspect-ratio": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "auto | <ratio>",
-		"syntax-a": "auto || <ratio>",
-		"syntax-m": "auto || <ratio>",
-		"tests": {
-			"passing": [
-				{
-					"value": "1"
-				},
-				{
-					"value": "1.1"
-				},
-				{
-					"value": "11 / 10"
-				},
-				{
-					"value": "calc(1.1)"
-				},
-				{
-					"value": "calc(11) / calc(10)"
-				},
-				{
-					"value": "auto"
-				},
-				{
-					"value": "auto 1 / 2"
-				},
-				{
-					"value": "1 / 2 auto"
-				}
-			],
-			"failing": [
-				{
-					"value": "10px"
-				},
-				{
-					"value": "auto auto"
-				},
-				{
-					"value": "auto / auto"
-				},
-				{
-					"value": "1 / 2 / auto"
-				}
-			]
-		}
-	},
 	"backdrop-filter": {
 		"type": "modified",
 		"comment": "",
@@ -1657,6 +1608,31 @@
 			]
 		}
 	},
+	"column-fill": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "auto | balance",
+		"syntax-a": "auto | balance | balance-all",
+		"syntax-m": "| balance-all",
+		"tests": {
+			"passing": [
+				{
+					"value": "balance"
+				},
+				{
+					"value": "balance-all"
+				}
+			],
+			"failing": [
+				{
+					"value": "balance all"
+				},
+				{
+					"value": "all"
+				}
+			]
+		}
+	},
 	"column-gap": {
 		"type": "modified",
 		"comment": "",
@@ -2466,17 +2442,6 @@
 		"syntax-b": "<'top'>",
 		"syntax-a": "auto | <length-percentage>",
 		"syntax-m": "auto | <length-percentage>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"interpolate-size": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "numeric-only | allow-keywords",
-		"syntax-m": "numeric-only | allow-keywords",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3611,25 +3576,6 @@
 			"failing": []
 		}
 	},
-	"position-anchor": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<anchor-element>",
-		"syntax-a": "auto | <anchor-name>",
-		"syntax-m": "auto | <anchor-name>",
-		"tests": {
-			"passing": [
-				{
-					"value": "--foo"
-				}
-			],
-			"failing": [
-				{
-					"value": "foo"
-				}
-			]
-		}
-	},
 	"quotes": {
 		"type": "modified",
 		"comment": "",
@@ -4203,28 +4149,6 @@
 			"failing": []
 		}
 	},
-	"stroke-opacity": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<number-zero-one>",
-		"syntax-a": "<'opacity'>",
-		"syntax-m": "<'opacity'>",
-		"tests": {
-			"passing": [
-				{
-					"value": "0.5"
-				},
-				{
-					"value": "50%"
-				}
-			],
-			"failing": [
-				{
-					"value": "foo"
-				}
-			]
-		}
-	},
 	"stroke-origin": {
 		"type": "added",
 		"comment": "",
@@ -4470,12 +4394,29 @@
 	"text-emphasis-position": {
 		"type": "modified",
 		"comment": "",
-		"syntax-b": "[ over | under ] && [ right | left ]",
+		"syntax-b": "auto | [ over | under ] && [ right | left ]?",
 		"syntax-a": "[ over | under ] && [ right | left ]?",
-		"syntax-m": "[ over | under ] && [ right | left ]?",
+		"syntax-m": "auto | [ over | under ] && [ right | left ]?",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "auto"
+				},
+				{
+					"value": "over right"
+				},
+				{
+					"value": "over"
+				}
+			],
+			"failing": [
+				{
+					"value": "over over"
+				},
+				{
+					"value": "auto over"
+				}
+			]
 		}
 	},
 	"text-emphasis-skip": {
@@ -4627,17 +4568,6 @@
 		"syntax-b": "auto | from-font | [ under || [ left | right ] ]",
 		"syntax-a": "auto | [ from-font | under ] || [ left | right ]",
 		"syntax-m": "auto | [ from-font | under ] || [ left | right ]",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"text-wrap": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "wrap | nowrap | balance | stable | pretty",
-		"syntax-a": "<'text-wrap-mode'> || <'text-wrap-style'>",
-		"syntax-m": "<'text-wrap-mode'> || <'text-wrap-style'>",
 		"tests": {
 			"passing": [],
 			"failing": []

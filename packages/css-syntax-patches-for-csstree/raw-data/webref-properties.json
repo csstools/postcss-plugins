@@ -1100,9 +1100,6 @@
 	"inset": {
 		"syntax": "<'top'>{1,4}"
 	},
-	"inset-area": {
-		"syntax": "none | <inset-area>"
-	},
 	"inset-block": {
 		"syntax": "<'top'>{1,2}"
 	},

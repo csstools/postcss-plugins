@@ -1,4 +1,4 @@
-import { lexer } from 'css-tree-3.0.0';
+import { lexer } from 'css-tree-3';
 import { generate_atrule_set, generate_set } from './generate-set.mjs';
 
 export async function generate_csstree_sets() {

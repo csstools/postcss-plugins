@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import postcss from 'postcss';
-import { find, fork, parse, walk } from 'css-tree-3.0.0';
+import { find, fork, parse, walk } from 'css-tree-3';
 
 async function get_files(dir, recursive = true) {
 	dir = path.resolve(dir);
