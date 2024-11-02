@@ -146,19 +146,19 @@ export async function write_patches(sets, patch_sets) {
 	{
 		await fs.writeFile(
 			path.join('patches', 'webref-over-csstree-atrules.json'),
-			JSON.stringify(sort_atrule_set(merged_sets.webref_over_csstree.atrules), null, '\t'),
+			JSON.stringify(sort_atrule_set(merged_sets.webref_over_csstree.atrules), null, '\t') + '\n',
 			'utf-8',
 		);
 
 		await fs.writeFile(
 			path.join('patches', 'webref-over-csstree-properties.json'),
-			JSON.stringify(sort_set(merged_sets.webref_over_csstree.properties), null, '\t'),
+			JSON.stringify(sort_set(merged_sets.webref_over_csstree.properties), null, '\t') + '\n',
 			'utf-8',
 		);
 
 		await fs.writeFile(
 			path.join('patches', 'webref-over-csstree-types.json'),
-			JSON.stringify(sort_set(merged_sets.webref_over_csstree.types), null, '\t'),
+			JSON.stringify(sort_set(merged_sets.webref_over_csstree.types), null, '\t') + '\n',
 			'utf-8',
 		);
 	}
