@@ -3,7 +3,7 @@
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/css-syntax-patches-for-csstree.svg" height="20">][npm-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
 
-Path [csstree](https://github.com/csstree/csstree) syntax definitions with the latest data from CSS specifications.  
+Patch [csstree](https://github.com/csstree/csstree) syntax definitions with the latest data from CSS specifications.  
 
 ## Usage
 
