@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import css from '@webref/css';
-import { fork } from 'css-tree-3.0.0';
+import { fork } from 'css-tree-3';
 import { generate_atrule_set, generate_set } from './generate-set.mjs';
 import { trim_lt_gt } from './trim-lt-gt.mjs';
 import { trim_at } from './trim-at.mjs';

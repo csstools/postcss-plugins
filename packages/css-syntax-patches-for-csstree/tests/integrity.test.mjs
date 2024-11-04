@@ -1,4 +1,4 @@
-import { fork, definitionSyntax } from 'css-tree-3.0.0';
+import { fork, definitionSyntax } from 'css-tree-3';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -94,7 +94,7 @@ for (const type of Object.values(forkedLexer.types)) {
 }
 
 {
-	if (has_missing_properties || has_missing_types) {
+	if (flaws || has_missing_properties || has_missing_types) {
 		// eslint-disable-next-line no-console
 		console.log('-------------------');
 

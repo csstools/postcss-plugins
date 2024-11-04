@@ -1,4 +1,4 @@
-import { fork } from 'css-tree-3.0.0';
+import { fork } from 'css-tree-3';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -176,7 +176,7 @@ for (const [name] of Object.entries(patches.types)) {
 }
 
 {
-	if (has_invalid_items || has_failing_tests) {
+	if (flaws || has_invalid_items || has_failing_tests) {
 		// eslint-disable-next-line no-console
 		console.log('-------------------');
 	}
@@ -191,7 +191,7 @@ for (const [name] of Object.entries(patches.types)) {
 		console.warn('Not all tests passed');
 	}
 
-	if (has_invalid_items || has_failing_tests) {
+	if (flaws || has_invalid_items || has_failing_tests) {
 		// eslint-disable-next-line no-console
 		console.log(`${flaws} flaws to resolve`);
 

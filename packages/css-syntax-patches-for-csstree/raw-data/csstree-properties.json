@@ -84,7 +84,7 @@
 		"syntax": "none | button | button-bevel | caps-lock-indicator | caret | checkbox | default-button | inner-spin-button | listbox | listitem | media-controls-background | media-controls-fullscreen-background | media-current-time-display | media-enter-fullscreen-button | media-exit-fullscreen-button | media-fullscreen-button | media-mute-button | media-overlay-play-button | media-play-button | media-seek-back-button | media-seek-forward-button | media-slider | media-sliderthumb | media-time-remaining-display | media-toggle-closed-captions-button | media-volume-slider | media-volume-slider-container | media-volume-sliderthumb | menulist | menulist-button | menulist-text | menulist-textfield | meter | progress-bar | progress-bar-value | push-button | radio | scrollbarbutton-down | scrollbarbutton-left | scrollbarbutton-right | scrollbarbutton-up | scrollbargripper-horizontal | scrollbargripper-vertical | scrollbarthumb-horizontal | scrollbarthumb-vertical | scrollbartrack-horizontal | scrollbartrack-vertical | searchfield | searchfield-cancel-button | searchfield-decoration | searchfield-results-button | searchfield-results-decoration | slider-horizontal | slider-vertical | sliderthumb-horizontal | sliderthumb-vertical | square-button | textarea | textfield | -apple-pay-button"
 	},
 	"aspect-ratio": {
-		"syntax": "auto | <ratio>"
+		"syntax": "auto || <ratio>"
 	},
 	"azimuth": {
 		"syntax": "<angle> | [ [ left-side | far-left | left | center-left | center | center-right | right | far-right | right-side ] || behind ] | leftwards | rightwards"
@@ -465,7 +465,7 @@
 		"syntax": "<integer> | auto"
 	},
 	"column-fill": {
-		"syntax": "auto | balance | balance-all"
+		"syntax": "auto | balance"
 	},
 	"column-gap": {
 		"syntax": "normal | <length-percentage>"
@@ -899,9 +899,6 @@
 	"inset": {
 		"syntax": "<'top'>{1,4}"
 	},
-	"inset-area": {
-		"syntax": "none | <inset-area>"
-	},
 	"inset-block": {
 		"syntax": "<'top'>{1,2}"
 	},
@@ -919,6 +916,9 @@
 	},
 	"inset-inline-start": {
 		"syntax": "<'top'>"
+	},
+	"interpolate-size": {
+		"syntax": "numeric-only | allow-keywords"
 	},
 	"-ms-interpolation-mode": {
 		"syntax": "nearest-neighbor | bicubic"
@@ -1356,7 +1356,7 @@
 		"syntax": "static | relative | absolute | sticky | fixed | -webkit-sticky"
 	},
 	"position-anchor": {
-		"syntax": "<anchor-element>"
+		"syntax": "auto | <anchor-name>"
 	},
 	"position-area": {
 		"syntax": "none | <position-area>"
@@ -1644,7 +1644,7 @@
 		"syntax": "<number-one-or-greater>"
 	},
 	"stroke-opacity": {
-		"syntax": "<number-zero-one>"
+		"syntax": "<'opacity'>"
 	},
 	"stroke-width": {
 		"syntax": "<svg-length>"
@@ -1704,7 +1704,7 @@
 		"syntax": "<color>"
 	},
 	"text-emphasis-position": {
-		"syntax": "[ over | under ] && [ right | left ]"
+		"syntax": "auto | [ over | under ] && [ right | left ]?"
 	},
 	"text-emphasis-style": {
 		"syntax": "none | [ [ filled | open ] || [ dot | circle | double-circle | triangle | sesame ] ] | <string>"
@@ -1758,7 +1758,7 @@
 		"syntax": "auto | from-font | [ under || [ left | right ] ]"
 	},
 	"text-wrap": {
-		"syntax": "wrap | nowrap | balance | stable | pretty"
+		"syntax": "<'text-wrap-mode'> || <'text-wrap-style'>"
 	},
 	"text-wrap-mode": {
 		"syntax": "auto | wrap | nowrap"

@@ -29,12 +29,6 @@
 		"syntax-a": "none | auto | base | <compat-auto> | <compat-special>",
 		"comment": ""
 	},
-	"aspect-ratio": {
-		"type": "modified",
-		"syntax-b": "auto | <ratio>",
-		"syntax-a": "auto || <ratio>",
-		"comment": ""
-	},
 	"backdrop-filter": {
 		"type": "modified",
 		"syntax-b": "none | <filter-function-list>",
@@ -593,6 +587,12 @@
 		"syntax-a": "auto | <integer [1,∞]>",
 		"comment": ""
 	},
+	"column-fill": {
+		"type": "modified",
+		"syntax-b": "auto | balance",
+		"syntax-a": "auto | balance | balance-all",
+		"comment": ""
+	},
 	"column-gap": {
 		"type": "modified",
 		"syntax-b": "normal | <length-percentage>",
@@ -1011,12 +1011,6 @@
 		"type": "modified",
 		"syntax-b": "<'top'>",
 		"syntax-a": "auto | <length-percentage>",
-		"comment": ""
-	},
-	"interpolate-size": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "numeric-only | allow-keywords",
 		"comment": ""
 	},
 	"isolation": {
@@ -1565,12 +1559,6 @@
 		"syntax-a": "static | relative | absolute | sticky | fixed | <running()>",
 		"comment": ""
 	},
-	"position-anchor": {
-		"type": "modified",
-		"syntax-b": "<anchor-element>",
-		"syntax-a": "auto | <anchor-name>",
-		"comment": ""
-	},
 	"quotes": {
 		"type": "modified",
 		"syntax-b": "none | auto | [ <string> <string> ]+",
@@ -1871,12 +1859,6 @@
 		"syntax-a": "<number>",
 		"comment": ""
 	},
-	"stroke-opacity": {
-		"type": "modified",
-		"syntax-b": "<number-zero-one>",
-		"syntax-a": "<'opacity'>",
-		"comment": ""
-	},
 	"stroke-origin": {
 		"type": "added",
 		"syntax-b": "",
@@ -2011,7 +1993,7 @@
 	},
 	"text-emphasis-position": {
 		"type": "modified",
-		"syntax-b": "[ over | under ] && [ right | left ]",
+		"syntax-b": "auto | [ over | under ] && [ right | left ]?",
 		"syntax-a": "[ over | under ] && [ right | left ]?",
 		"comment": ""
 	},
@@ -2097,12 +2079,6 @@
 		"type": "modified",
 		"syntax-b": "auto | from-font | [ under || [ left | right ] ]",
 		"syntax-a": "auto | [ from-font | under ] || [ left | right ]",
-		"comment": ""
-	},
-	"text-wrap": {
-		"type": "modified",
-		"syntax-b": "wrap | nowrap | balance | stable | pretty",
-		"syntax-a": "<'text-wrap-mode'> || <'text-wrap-style'>",
 		"comment": ""
 	},
 	"text-wrap-mode": {

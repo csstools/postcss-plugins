@@ -1,10 +1,4 @@
 {
-	"anchor-name": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<dashed-ident>",
-		"comment": ""
-	},
 	"anchor-size()": {
 		"type": "modified",
 		"syntax-b": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )",
@@ -91,7 +85,7 @@
 	},
 	"basic-shape": {
 		"type": "modified",
-		"syntax-b": "<inset()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
+		"syntax-b": "<inset()> | <xywh()> | <rect()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
 		"syntax-a": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
 		"comment": ""
 	},
@@ -781,7 +775,7 @@
 	},
 	"linear-gradient()": {
 		"type": "modified",
-		"syntax-b": "linear-gradient( [ <angle> | to <side-or-corner> ]? , <color-stop-list> )",
+		"syntax-b": "linear-gradient( [ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list> )",
 		"syntax-a": "linear-gradient( [ <linear-gradient-syntax> ] )",
 		"comment": ""
 	},
