@@ -1901,8 +1901,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "standard | high | constrained-high",
-		"syntax-m": "standard | high | constrained-high",
+		"syntax-a": "standard | high | constrained-high | <dynamic-range-limit-mix()>",
+		"syntax-m": "standard | high | constrained-high | <dynamic-range-limit-mix()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2066,8 +2066,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<length> | <percentage>",
-		"syntax-m": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3224,12 +3224,23 @@
 			"failing": []
 		}
 	},
+	"outline": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "[ <'outline-width'> || <'outline-style'> || <'outline-color'> ]",
+		"syntax-a": "<'outline-width'> || <'outline-style'> || <'outline-color'>",
+		"syntax-m": "<'outline-width'> || <'outline-style'> || <'outline-color'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"outline-color": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <color>",
-		"syntax-a": "auto | [ <color> | <image-1D> ]",
-		"syntax-m": "auto | [ <color> | <image-1D> ]",
+		"syntax-a": "auto | <color> | <image-1D>",
+		"syntax-m": "| <image-1D>",
 		"tests": {
 			"passing": [],
 			"failing": []

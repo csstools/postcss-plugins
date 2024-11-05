@@ -716,7 +716,7 @@
 	"dynamic-range-limit": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "standard | high | constrained-high",
+		"syntax-a": "standard | high | constrained-high | <dynamic-range-limit-mix()>",
 		"comment": ""
 	},
 	"field-sizing": {
@@ -806,7 +806,7 @@
 	"float-offset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length> | <percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"float-reference": {
@@ -1367,10 +1367,16 @@
 		"syntax-a": "<integer [1,∞]>",
 		"comment": ""
 	},
+	"outline": {
+		"type": "modified",
+		"syntax-b": "[ <'outline-width'> || <'outline-style'> || <'outline-color'> ]",
+		"syntax-a": "<'outline-width'> || <'outline-style'> || <'outline-color'>",
+		"comment": ""
+	},
 	"outline-color": {
 		"type": "modified",
 		"syntax-b": "auto | <color>",
-		"syntax-a": "auto | [ <color> | <image-1D> ]",
+		"syntax-a": "auto | <color> | <image-1D>",
 		"comment": ""
 	},
 	"outline-style": {

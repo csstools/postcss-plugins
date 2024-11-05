@@ -256,32 +256,7 @@
 			"failing": [
 				{
 					"property": "content",
-					"value": "attr(value data-value)"
-				}
-			]
-		}
-	},
-	"attr-type": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>",
-		"syntax-m": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>",
-		"tests": {
-			"passing": [
-				{
-					"property": "content",
-					"value": "attr(value color)"
-				},
-				{
-					"property": "content",
-					"value": "attr(value ident)"
-				}
-			],
-			"failing": [
-				{
-					"property": "content",
-					"value": "attr(value foo)"
+					"value": "attr(value ><)"
 				}
 			]
 		}
@@ -290,8 +265,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
-		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
-		"syntax-m": "attr( [ <attr-name> <attr-type>? , <declaration-value>? ] )",
+		"syntax-a": "attr( <attr-name> <syntax>? , <declaration-value>? )",
+		"syntax-m": "attr( <attr-name> <syntax>? , <declaration-value>? )",
 		"tests": {
 			"passing": [
 				{
@@ -300,21 +275,25 @@
 				},
 				{
 					"property": "content",
-					"value": "attr(value string)"
+					"value": "attr(value <string>)"
 				},
 				{
 					"property": "content",
-					"value": "attr(value string)"
-				},
-				{
-					"property": "content",
-					"value": "attr(value string, 'foo')"
+					"value": "attr(value foo)"
 				}
 			],
 			"failing": [
 				{
 					"property": "content",
+					"value": "attr(value ><)"
+				},
+				{
+					"property": "content",
 					"value": "attr(value string 'string')"
+				},
+				{
+					"property": "content",
+					"value": "attr(value <)"
 				}
 			]
 		}
@@ -450,78 +429,6 @@
 		"syntax-b": "[ <length-percentage> | auto ]{1,2} | cover | contain",
 		"syntax-a": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
 		"syntax-m": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"bool-and": {
-		"type": "added",
-		"comment": "",
-		"omit": true,
-		"syntax-b": "",
-		"syntax-a": "and <bool-in-parens>",
-		"syntax-m": "and <bool-in-parens>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"bool-in-parens": {
-		"type": "added",
-		"comment": "",
-		"omit": true,
-		"syntax-b": "",
-		"syntax-a": "( <boolean> ) | <bool-test> | <general-enclosed>",
-		"syntax-m": "( <boolean> ) | <bool-test> | <general-enclosed>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"bool-not": {
-		"type": "added",
-		"comment": "",
-		"omit": true,
-		"syntax-b": "",
-		"syntax-a": "not <bool-in-parens>",
-		"syntax-m": "not <bool-in-parens>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"bool-or": {
-		"type": "added",
-		"comment": "",
-		"omit": true,
-		"syntax-b": "",
-		"syntax-a": "or <bool-in-parens>",
-		"syntax-m": "or <bool-in-parens>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"boolean": {
-		"type": "added",
-		"comment": "",
-		"omit": true,
-		"syntax-b": "",
-		"syntax-a": "<bool-not> | <bool-in-parens> [ <bool-and>* | <bool-or>* ]",
-		"syntax-m": "<bool-not> | <bool-in-parens> [ <bool-and>* | <bool-or>* ]",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"boolean-without-or": {
-		"type": "added",
-		"comment": "",
-		"omit": true,
-		"syntax-b": "",
-		"syntax-a": "<bool-not> | <bool-in-parens> <bool-and>*",
-		"syntax-m": "<bool-not> | <bool-in-parens> <bool-and>*",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -932,8 +839,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "container-progress( <size-feature> [ of <container-name> ]? from <calc-sum> to <calc-sum> )",
-		"syntax-m": "container-progress( <size-feature> [ of <container-name> ]? from <calc-sum> to <calc-sum> )",
+		"syntax-a": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
+		"syntax-m": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1231,31 +1138,6 @@
 			"failing": []
 		}
 	},
-	"dimension-unit": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
-		"syntax-m": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
-		"tests": {
-			"passing": [
-				{
-					"property": "content",
-					"value": "attr(value %)"
-				},
-				{
-					"property": "content",
-					"value": "attr(value px)"
-				}
-			],
-			"failing": [
-				{
-					"property": "content",
-					"value": "attr(value foo)"
-				}
-			]
-		}
-	},
 	"display-legacy": {
 		"type": "modified",
 		"comment": "",
@@ -1271,8 +1153,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]>? ]#{2} )",
-		"syntax-m": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]>? ]#{2} )",
+		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )",
+		"syntax-m": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1638,6 +1520,30 @@
 			]
 		}
 	},
+	"if-test": {
+		"type": "added",
+		"comment": "",
+		"omit": true,
+		"syntax-b": "",
+		"syntax-a": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )",
+		"syntax-m": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"if()": {
+		"type": "added",
+		"comment": "",
+		"omit": true,
+		"syntax-b": "",
+		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )",
+		"syntax-m": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"image": {
 		"type": "modified",
 		"comment": "https://developer.mozilla.org/en-US/docs/Web/CSS/image/paint",
@@ -1725,6 +1631,17 @@
 		"syntax-b": "<length-percentage> | min-content | max-content | auto",
 		"syntax-a": "<length-percentage [0,∞]> | min-content | max-content | auto",
 		"syntax-m": "<length-percentage [0,∞]> | min-content | max-content | auto",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"inherit()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "inherit( <custom-property-name> , <declaration-value>? )",
+		"syntax-m": "inherit( <custom-property-name> , <declaration-value>? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2268,8 +2185,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "media-progress( <media-feature> from <calc-sum> to <calc-sum> )",
-		"syntax-m": "media-progress( <media-feature> from <calc-sum> to <calc-sum> )",
+		"syntax-a": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
+		"syntax-m": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2345,8 +2262,8 @@
 		"type": "added",
 		"comment": "TODO: csstree doesn't support <whole-value> https://github.com/csstree/csstree/issues/300",
 		"syntax-b": "",
-		"syntax-a": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <'animation-name'> )",
-		"syntax-m": "mix( <progress> , <any-value> , <any-value> ) | mix( <progress> && of <'animation-name'> )",
+		"syntax-a": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <keyframes-name> )",
+		"syntax-m": "mix( <progress> , <any-value> , <any-value> ) | mix( <progress> && of <keyframes-name> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2941,8 +2858,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "progress( <calc-sum> from <calc-sum> to <calc-sum> )",
-		"syntax-m": "progress( <calc-sum> from <calc-sum> to <calc-sum> )",
+		"syntax-a": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
+		"syntax-m": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3175,17 +3092,6 @@
 		"syntax-b": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}",
 		"syntax-a": "repeat-x | repeat-y | <repetition>{1,2}",
 		"syntax-m": "repeat-x | repeat-y | <repetition>{1,2}",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"repeat()": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "auto-fill | auto-fit",
-		"syntax-m": "auto-fill | auto-fit",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3779,8 +3685,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
-		"syntax-m": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
+		"syntax-a": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]* | <syntax-string>",
+		"syntax-m": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]* | <syntax-string>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3825,6 +3731,17 @@
 		"syntax-b": "",
 		"syntax-a": "'<' <syntax-type-name> '>' | <ident>",
 		"syntax-m": "'<' <syntax-type-name> '>' | <ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"syntax-string": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<string>",
+		"syntax-m": "<string>",
 		"tests": {
 			"passing": [],
 			"failing": []

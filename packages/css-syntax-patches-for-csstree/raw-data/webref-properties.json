@@ -726,7 +726,7 @@
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
 	},
 	"dynamic-range-limit": {
-		"syntax": "standard | high | constrained-high"
+		"syntax": "standard | high | constrained-high | <dynamic-range-limit-mix()>"
 	},
 	"empty-cells": {
 		"syntax": "show | hide"
@@ -825,7 +825,7 @@
 		"syntax": "border-box | content-box | margin-box | padding-box"
 	},
 	"float-offset": {
-		"syntax": "<length> | <percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"float-reference": {
 		"syntax": "inline | column | region | page"
@@ -1464,10 +1464,10 @@
 		"syntax": "auto | grayscale"
 	},
 	"outline": {
-		"syntax": "[ <'outline-width'> || <'outline-style'> || <'outline-color'> ]"
+		"syntax": "<'outline-width'> || <'outline-style'> || <'outline-color'>"
 	},
 	"outline-color": {
-		"syntax": "auto | [ <color> | <image-1D> ]"
+		"syntax": "auto | <color> | <image-1D>"
 	},
 	"outline-offset": {
 		"syntax": "<length>"

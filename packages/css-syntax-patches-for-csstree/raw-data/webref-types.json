@@ -86,11 +86,8 @@
 	"attr-name": {
 		"syntax": "[ <ident-token> '|' ]? <ident-token>"
 	},
-	"attr-type": {
-		"syntax": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>"
-	},
 	"attr()": {
-		"syntax": "attr( <attr-name> <attr-type>? , <declaration-value>? )"
+		"syntax": "attr( <attr-name> <syntax>? , <declaration-value>? )"
 	},
 	"attribute-selector": {
 		"syntax": "'[' <wq-name> ']' | '[' <wq-name> <attr-matcher> [ <string-token> | <ident-token> ] <attr-modifier>? ']'"
@@ -136,24 +133,6 @@
 	},
 	"blur()": {
 		"syntax": "blur( <length> )"
-	},
-	"bool-and": {
-		"syntax": "and <bool-in-parens>"
-	},
-	"bool-in-parens": {
-		"syntax": "( <boolean> ) | <bool-test> | <general-enclosed>"
-	},
-	"bool-not": {
-		"syntax": "not <bool-in-parens>"
-	},
-	"bool-or": {
-		"syntax": "or <bool-in-parens>"
-	},
-	"boolean": {
-		"syntax": "<bool-not> | <bool-in-parens> [ <bool-and>* | <bool-or>* ]"
-	},
-	"boolean-without-or": {
-		"syntax": "<bool-not> | <bool-in-parens> <bool-and>*"
 	},
 	"border-style": {
 		"syntax": "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset"
@@ -327,7 +306,7 @@
 		"syntax": "<custom-ident>"
 	},
 	"container-progress()": {
-		"syntax": "container-progress( <size-feature> [ of <container-name> ]? from <calc-sum> to <calc-sum> )"
+		"syntax": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )"
 	},
 	"container-query": {
 		"syntax": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]"
@@ -437,9 +416,6 @@
 	"device-cmyk()": {
 		"syntax": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>"
 	},
-	"dimension-unit": {
-		"syntax": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr"
-	},
 	"discretionary-lig-values": {
 		"syntax": "[ discretionary-ligatures | no-discretionary-ligatures ]"
 	},
@@ -468,7 +444,7 @@
 		"syntax": "drop-shadow( <length>{2,3} <color>? )"
 	},
 	"dynamic-range-limit-mix()": {
-		"syntax": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]>? ]#{2} )"
+		"syntax": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )"
 	},
 	"easing-function": {
 		"syntax": "<linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>"
@@ -701,6 +677,12 @@
 	"hypot()": {
 		"syntax": "hypot( <calc-sum># )"
 	},
+	"if-test": {
+		"syntax": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )"
+	},
+	"if()": {
+		"syntax": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )"
+	},
 	"image": {
 		"syntax": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>"
 	},
@@ -730,6 +712,9 @@
 	},
 	"inflexible-breadth": {
 		"syntax": "<length-percentage [0,∞]> | min-content | max-content | auto"
+	},
+	"inherit()": {
+		"syntax": "inherit( <custom-property-name> , <declaration-value>? )"
 	},
 	"inset-area": {
 		"syntax": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]"
@@ -909,7 +894,7 @@
 		"syntax": "or <media-in-parens>"
 	},
 	"media-progress()": {
-		"syntax": "media-progress( <media-feature> from <calc-sum> to <calc-sum> )"
+		"syntax": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )"
 	},
 	"media-query": {
 		"syntax": "<media-condition> | [ not | only ]? <media-type> [ and <media-condition-without-or> ]?"
@@ -957,7 +942,7 @@
 		"syntax": "minmax( [ <length-percentage> | min-content | max-content | auto ] , [ <length-percentage> | <flex> | min-content | max-content | auto ] )"
 	},
 	"mix()": {
-		"syntax": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <'animation-name'> )"
+		"syntax": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <keyframes-name> )"
 	},
 	"mod()": {
 		"syntax": "mod( <calc-sum> , <calc-sum> )"
@@ -1137,7 +1122,7 @@
 		"syntax": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?"
 	},
 	"progress()": {
-		"syntax": "progress( <calc-sum> from <calc-sum> to <calc-sum> )"
+		"syntax": "progress( <calc-sum> , <calc-sum> , <calc-sum> )"
 	},
 	"pseudo-class-selector": {
 		"syntax": "':' <ident-token> | ':' <function-token> <any-value> ')'"
@@ -1240,9 +1225,6 @@
 	},
 	"repeat-style": {
 		"syntax": "repeat-x | repeat-y | <repetition>{1,2}"
-	},
-	"repeat()": {
-		"syntax": "auto-fill | auto-fit"
 	},
 	"repeating-conic-gradient()": {
 		"syntax": "repeating-conic-gradient( [ <conic-gradient-syntax> ] )"
@@ -1530,7 +1512,7 @@
 		"syntax": "symbols( <symbols-type>? [ <string> | <image> ]+ )"
 	},
 	"syntax": {
-		"syntax": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+"
+		"syntax": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]* | <syntax-string>"
 	},
 	"syntax-combinator": {
 		"syntax": "'|'"
@@ -1543,6 +1525,9 @@
 	},
 	"syntax-single-component": {
 		"syntax": "'<' <syntax-type-name> '>' | <ident>"
+	},
+	"syntax-string": {
+		"syntax": "<string>"
 	},
 	"syntax-type-name": {
 		"syntax": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function"
