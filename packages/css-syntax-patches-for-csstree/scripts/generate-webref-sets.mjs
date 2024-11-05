@@ -552,8 +552,6 @@ export async function generate_webref_sets() {
 
 	// Set missing definitions
 	{
-		values['dimension-unit'] = JSON.parse(await fs.readFile(path.join('raw-data', 'units.json'))).join(' | ');
-
 		values['intrinsic-size-keyword'] = JSON.parse(await fs.readFile(path.join('raw-data', 'intrinsic-size-keywords.json'))).join(' | ');
 
 		// https://github.com/w3c/csswg-drafts/issues/11127
@@ -701,7 +699,7 @@ export async function generate_webref_sets() {
 				}
 			}
 
-			if (!value.value && value.values?.length > 0) {
+			if (value.type === 'type' && !value.value && value.values?.length > 0) {
 				assign_new_definition(
 					spec_name,
 					values,

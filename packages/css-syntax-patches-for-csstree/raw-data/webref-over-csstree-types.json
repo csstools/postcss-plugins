@@ -53,16 +53,10 @@
 		"syntax-a": "[ <ident-token> '|' ]? <ident-token>",
 		"comment": ""
 	},
-	"attr-type": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "string | ident | color | number | percentage | length | angle | time | frequency | flex | <dimension-unit>",
-		"comment": ""
-	},
 	"attr()": {
 		"type": "modified",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
-		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
+		"syntax-a": "attr( <attr-name> <syntax>? , <declaration-value>? )",
 		"comment": ""
 	},
 	"autospace": {
@@ -123,42 +117,6 @@
 		"type": "modified",
 		"syntax-b": "[ <length-percentage> | auto ]{1,2} | cover | contain",
 		"syntax-a": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
-		"comment": ""
-	},
-	"bool-and": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "and <bool-in-parens>",
-		"comment": ""
-	},
-	"bool-in-parens": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "( <boolean> ) | <bool-test> | <general-enclosed>",
-		"comment": ""
-	},
-	"bool-not": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "not <bool-in-parens>",
-		"comment": ""
-	},
-	"bool-or": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "or <bool-in-parens>",
-		"comment": ""
-	},
-	"boolean": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<bool-not> | <bool-in-parens> [ <bool-and>* | <bool-or>* ]",
-		"comment": ""
-	},
-	"boolean-without-or": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<bool-not> | <bool-in-parens> <bool-and>*",
 		"comment": ""
 	},
 	"border-style": {
@@ -320,7 +278,7 @@
 	"container-progress()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "container-progress( <size-feature> [ of <container-name> ]? from <calc-sum> to <calc-sum> )",
+		"syntax-a": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"container-query": {
@@ -443,12 +401,6 @@
 		"syntax-a": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText",
 		"comment": ""
 	},
-	"dimension-unit": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
-		"comment": ""
-	},
 	"display-legacy": {
 		"type": "modified",
 		"syntax-b": "inline-block | inline-list-item | inline-table | inline-flex | inline-grid",
@@ -458,7 +410,7 @@
 	"dynamic-range-limit-mix()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]>? ]#{2} )",
+		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )",
 		"comment": ""
 	},
 	"easing-function": {
@@ -629,6 +581,18 @@
 		"syntax-a": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
+	"if-test": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )",
+		"comment": ""
+	},
+	"if()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )",
+		"comment": ""
+	},
 	"image": {
 		"type": "modified",
 		"syntax-b": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
@@ -669,6 +633,12 @@
 		"type": "modified",
 		"syntax-b": "<length-percentage> | min-content | max-content | auto",
 		"syntax-a": "<length-percentage [0,∞]> | min-content | max-content | auto",
+		"comment": ""
+	},
+	"inherit()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "inherit( <custom-property-name> , <declaration-value>? )",
 		"comment": ""
 	},
 	"integrity-modifier": {
@@ -830,7 +800,7 @@
 	"media-progress()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "media-progress( <media-feature> from <calc-sum> to <calc-sum> )",
+		"syntax-a": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"media()": {
@@ -872,7 +842,7 @@
 	"mix()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <'animation-name'> )",
+		"syntax-a": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <keyframes-name> )",
 		"comment": ""
 	},
 	"modern-hsl-syntax": {
@@ -1052,7 +1022,7 @@
 	"progress()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "progress( <calc-sum> from <calc-sum> to <calc-sum> )",
+		"syntax-a": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"pseudo-page": {
@@ -1149,12 +1119,6 @@
 		"type": "modified",
 		"syntax-b": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}",
 		"syntax-a": "repeat-x | repeat-y | <repetition>{1,2}",
-		"comment": ""
-	},
-	"repeat()": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto-fill | auto-fit",
 		"comment": ""
 	},
 	"repeating-conic-gradient()": {
@@ -1400,7 +1364,7 @@
 	"syntax": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]+",
+		"syntax-a": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]* | <syntax-string>",
 		"comment": ""
 	},
 	"syntax-combinator": {
@@ -1425,6 +1389,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "'<' <syntax-type-name> '>' | <ident>",
+		"comment": ""
+	},
+	"syntax-string": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<string>",
 		"comment": ""
 	},
 	"syntax-type-name": {
