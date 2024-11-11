@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use the `sign` and `abs` functions, following the [CSS Values 4] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -53,7 +53,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
