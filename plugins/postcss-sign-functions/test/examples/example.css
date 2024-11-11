@@ -1,0 +1,23 @@
+.sign {
+	z-index: sign(-10px);
+}
+
+.sign {
+	z-index: sign(0);
+}
+
+.sign {
+	z-index: sign(10px);
+}
+
+.abs {
+	z-index: abs(-10px);
+}
+
+.abs {
+	z-index: abs(0);
+}
+
+.abs {
+	z-index: abs(10px);
+}
