@@ -1,5 +1,9 @@
 # Changes to PostCSS Random Function
 
+### Unreleased (patch)
+
+- Fix the package description
+
 ### 1.0.0
 
 _November 11, 2024_

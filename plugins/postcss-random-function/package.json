@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/postcss-random-function",
-	"description": "Use round, rem and mod functions in CSS",
+	"description": "Use the random function in CSS",
 	"version": "1.0.0",
 	"contributors": [
 		{
