@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-random-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function/CHANGELOG.md#101) (patch)
+
 ### 10.1.0
 
 _November 11, 2024_
