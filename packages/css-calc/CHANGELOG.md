@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (minor)
+### 2.1.0
+
+_November 11, 2024_
 
 - Add support for `random()`
 
