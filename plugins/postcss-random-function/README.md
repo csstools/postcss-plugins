@@ -38,6 +38,11 @@ div {
 }
 ```
 
+> [!NOTE]
+> Generated values are deterministic pseudo random numbers.
+> Generating values twice with the same input will give the same result.
+> The input length of the CSS source file is used as a random seed.
+
 ## Usage
 
 Add [PostCSS Random Function] to your project:
