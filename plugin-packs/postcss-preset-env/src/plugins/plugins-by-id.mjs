@@ -49,9 +49,11 @@ import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
+import postcssRandomFunction from '@csstools/postcss-random-function';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax';
 import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
+import postcssSignFunctions from '@csstools/postcss-sign-functions';
 import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
 import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
 import postcssTextDecorationShorthand from '@csstools/postcss-text-decoration-shorthand';
@@ -112,9 +114,11 @@ export const pluginsById = new Map(
 		['place-properties', postcssPlace],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
 		['progressive-custom-properties', postcssProgressiveCustomProperties],
+		['random-function', postcssRandomFunction],
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['relative-color-syntax', postcssRelativeColorSyntax],
 		['scope-pseudo-class', postcssScopePseudoClass],
+		['sign-functions', postcssSignFunctions],
 		['stepped-value-functions', postcssSteppedValueFunctions],
 		['system-ui-font-family', postcssFontFamilySystemUI],
 		['text-decoration-shorthand', postcssTextDecorationShorthand],

@@ -130,3 +130,13 @@ assert.strictEqual(
 	calc('random(10deg, 10px)'),
 	'random(10deg, 10px)',
 );
+
+assert.strictEqual(
+	calc('random(0%, 100%)'),
+	'47.16924%',
+);
+
+assert.strictEqual(
+	calc('random(0deg, 360deg)'),
+	'173.25527deg',
+);

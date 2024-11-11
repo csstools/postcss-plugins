@@ -1197,3 +1197,54 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	content: var(--foo) / "A beautiful tree in a dark forest";
 }
 }
+
+.sign {
+	-webkit-box-ordinal-group: 2;
+	-webkit-order: 1;
+	   -moz-box-ordinal-group: 2;
+	        order: 1;
+	-webkit-box-ordinal-group: NaN;
+	-webkit-order: sign(10px);
+	   -moz-box-ordinal-group: NaN;
+	        order: sign(10px);
+	z-index: -1;
+	z-index: sign(-10px);
+}
+
+.abs {
+	-webkit-box-ordinal-group: 11;
+	-webkit-order: 10px;
+	   -moz-box-ordinal-group: 11;
+	        order: 10px;
+	-webkit-box-ordinal-group: NaN;
+	-webkit-order: abs(10px);
+	   -moz-box-ordinal-group: NaN;
+	        order: abs(10px);
+	z-index: 10px;
+	z-index: abs(-10px);
+}
+
+.random {
+	color: rgb(
+		115,
+		230,
+		125
+	);
+	color: rgb(
+		random(--r, 0, 255, by 5),
+		random(--g, 0, 255, by 5),
+		random(--b, 0, 255, by 5)
+	);
+
+	border-color: oklch(
+		85%,
+		40%,
+		96deg
+	);
+
+	border-color: oklch(
+		random(--l, 0%, 100%, by 5%),
+		random(--c, 30%, 70%, by 5%),
+		random(--h, 0deg, 360deg, by 12deg)
+	);
+}
