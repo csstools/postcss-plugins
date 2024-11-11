@@ -14,7 +14,7 @@ In the future there might be renewed interest in Custom Environment Variables.
 
 We advice users of this plugin to seek alternatives such as [postcss-design-tokens](https://github.com/csstools/postcss-plugins/tree/postcss-preset-env--v8/plugins/postcss-design-tokens#readme)
 
-```pcss
+```css
 @media (max-width: env(--branding-small)) {
   body {
     padding: env(--branding-padding);
@@ -78,7 +78,7 @@ postcssEnvFunction({
 })
 ```
 
-```pcss
+```css
 @media (max-width: env(--branding-small)) {
   body {
     padding: env(--branding-padding);

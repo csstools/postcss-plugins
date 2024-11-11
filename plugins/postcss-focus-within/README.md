@@ -13,7 +13,7 @@ To use this feature you need to do two things :
 - add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
 - add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
 
-```pcss
+```css
 .my-form-field:focus-within label {
 	background-color: yellow;
 }
@@ -75,7 +75,7 @@ is preserved. By default, it is preserved.
 postcssFocusWithin({ preserve: false })
 ```
 
-```pcss
+```css
 .my-form-field:focus-within label {
 	background-color: yellow;
 }
@@ -99,7 +99,7 @@ to polyfill `classList` in those cases.
 postcssFocusWithin({ replaceWith: '.focus-within' });
 ```
 
-```pcss
+```css
 .my-form-field:focus-within label {
 	background-color: yellow;
 }
@@ -129,7 +129,7 @@ Set this to `true` to prevent the class from being added.
 postcssFocusWithin({ disablePolyfillReadyClass: true })
 ```
 
-```pcss
+```css
 .my-form-field:focus-within label {
 	background-color: yellow;
 }

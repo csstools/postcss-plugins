@@ -9,7 +9,7 @@ npm install postcss-pseudo-class-any-link --save-dev
 [PostCSS Pseudo Class Any Link] lets you `:any-link` pseudo-class in CSS,
 following the [Selectors] specification.
 
-```pcss
+```css
 nav :any-link > span {
 	background-color: yellow;
 }
@@ -65,7 +65,7 @@ is preserved. By default, it is preserved.
 postcssPseudoClassAnyLink({ preserve: false })
 ```
 
-```pcss
+```css
 nav :any-link > span {
 	background-color: yellow;
 }
@@ -94,7 +94,7 @@ postcssPseudoClassAnyLink({
 })
 ```
 
-```pcss
+```css
 nav :any-link > span {
 	background-color: yellow;
 }

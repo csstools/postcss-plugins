@@ -8,7 +8,7 @@ npm install postcss-color-rebeccapurple --save-dev
 
 [PostCSS RebeccaPurple] lets you use the `rebeccapurple` color keyword in CSS.
 
-```pcss
+```css
 .heading {
 	color: rebeccapurple;
 }
@@ -67,7 +67,7 @@ is preserved. By default, it is not preserved.
 postcssRebeccaPurple({ preserve: true })
 ```
 
-```pcss
+```css
 .heading {
 	color: rebeccapurple;
 }

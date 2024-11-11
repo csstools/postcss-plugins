@@ -13,20 +13,20 @@ This plugin pack contains :
 - [a rebaser that rewrites URLs in your CSS.](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
 
 `examples/example.css` :
-```pcss
+```css
 @import url("imports/basic.css");
 @import url("node_modules:open-props/red");
 ```
 
 `examples/imports/basic.css`:
-```pcss
+```css
 .foo {
 	background: url('../../images/green.png');
 }
 ```
 
 when bundled :
-```pcss
+```css
 /* imports/basic.css */
 .foo {
 	background: url("../images/green.png");

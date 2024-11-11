@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you define `@custom-media` in CSS following the [Custom Media Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -37,7 +37,7 @@ This plugin downgrades these queries to something that works in all browsers.
 
 Quickly check the result as if the query matches:
 
-```pcss
+```css
 <true.css>
 
 /* becomes */
@@ -47,7 +47,7 @@ Quickly check the result as if the query matches:
 
 Quickly check the result as if the query does not match:
 
-```pcss
+```css
 <false.css>
 
 /* becomes */
@@ -68,7 +68,7 @@ _Some of these queries will have only one possible outcome but we have to accoun
 
 An example of a very complex (and artificial) use-case :
 
-```pcss
+```css
 <complex.css>
 
 /* becomes */
@@ -91,7 +91,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

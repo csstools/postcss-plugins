@@ -10,7 +10,7 @@
 [PostCSS Lab Function] lets you use `lab` and `lch` color functions in
 CSS, following the [CSS Color] specification.
 
-```pcss
+```css
 .color-lab {
 	color: lab(40% 56.6 39);
 }
@@ -68,7 +68,7 @@ is preserved. By default, it is not preserved.
 postcssLabFunction({ preserve: true })
 ```
 
-```pcss
+```css
 .color {
 	color: lab(40% 56.6 39);
 }
@@ -95,7 +95,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 postcssLabFunction({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 :root {
 	--firebrick: lab(40% 56.6 39);
 }
@@ -126,7 +126,7 @@ postcssOKLabFunction({
 })
 ```
 
-```pcss
+```css
 .color {
 	color: lab(40% 56.6 39);
 }

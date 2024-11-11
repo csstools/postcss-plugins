@@ -8,7 +8,7 @@ npm install @csstools/postcss-trigonometric-functions --save-dev
 
 [PostCSS Trigonometric Functions] lets you use `sin`, `cos`, `tan`, `asin`, `acos`, `atan` and `atan2` to be able to compute trigonometric relationships following the [CSS Values 4] specification.
 
-```pcss
+```css
 .trigonometry {
 	line-height: sin(pi / 4);
 	line-height: cos(.125turn);
@@ -103,7 +103,7 @@ is preserved. By default, it is not preserved.
 postcssTrigonometricFunctions({ preserve: true })
 ```
 
-```pcss
+```css
 .trigonometry {
 	line-height: sin(pi / 4);
 	line-height: cos(.125turn);

@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use the `:scope` Pseudo-class following the [Selectors 4 specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

@@ -155,7 +155,7 @@ Plugin Options:
 
 Copy this bit of CSS to have it in your clipboard.
 
-```pcss
+```css
 a, b {
   color: red;
 
@@ -176,7 +176,7 @@ pbpaste | npx -y @csstools/csstools-cli postcss-nesting --no-map
 
 Output :
 
-```pcss
+```css
 a, b {
   color: red
 }
@@ -189,7 +189,7 @@ a c, b c, a d, b d {
 
 Copy this bit of CSS to have it in your clipboard.
 
-```pcss
+```css
 .banner {
   color: #222222;
   inset: logical 0 5px 10px;
@@ -210,7 +210,7 @@ _note the single quotes around the JSON object with plugin options._
 
 Output :
 
-```pcss
+```css
 .banner {
   color: #222222;
   top: 0;

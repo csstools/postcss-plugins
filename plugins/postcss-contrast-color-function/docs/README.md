@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you dynamically specify a text color with adequate contrast following the [CSS Color 5 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

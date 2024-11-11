@@ -9,7 +9,7 @@
 
 [PostCSS Normalize Display Values] lets you specify definition of outer and inner displays types for an element.
 
-```pcss
+```css
 .element {
   display: inline flow-root;
 }
@@ -61,7 +61,7 @@ is preserved. By default, it is preserved.
 postcssNormalizeDisplayValues({ preserve: false })
 ```
 
-```pcss
+```css
 .element {
   display: inline flow-root;
 }

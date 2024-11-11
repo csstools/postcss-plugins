@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use non-integer numbers and `calc()` in `aspect-ratio` feature queries following the [Media Queries 4 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

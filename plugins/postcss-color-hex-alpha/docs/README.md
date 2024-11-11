@@ -20,7 +20,7 @@
 [<humanReadableName>] lets you use 4 & 8 character hex color notation in
 CSS, following the [CSS Color Module] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -43,7 +43,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

@@ -8,7 +8,7 @@ npm install postcss-selector-not --save-dev
 
 [PostCSS Selector Not] transforms :not() W3C CSS level 4 pseudo classes to :not() CSS level 3 selectors following the [Selectors 4 Specification].
 
-```pcss
+```css
 p:not(:first-child, .special) {
 	color: red;
 }

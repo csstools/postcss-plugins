@@ -20,7 +20,7 @@
 [<humanReadableName>] lets you use the `color` function in
 CSS, following the [CSS Color] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -43,7 +43,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -64,7 +64,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 <exportName>({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

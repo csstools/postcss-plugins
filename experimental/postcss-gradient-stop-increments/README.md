@@ -8,7 +8,7 @@ npm install @csstools/postcss-gradient-stop-increments-experimental --save-dev
 
 [PostCSS Gradient Stop Increments] lets you increment gradient stops following the [CSSWG 8616 proposal].
 
-```pcss
+```css
 .example-1 {
 	background: linear-gradient(red 50%, blue ++1px);
 }
@@ -85,7 +85,7 @@ is preserved. By default, it is not preserved.
 postcssGradientStopIncrementsExperimental({ preserve: true })
 ```
 
-```pcss
+```css
 .example-1 {
 	background: linear-gradient(red 50%, blue ++1px);
 }

@@ -8,7 +8,7 @@ npm install @csstools/postcss-media-minmax --save-dev
 
 [PostCSS Media MinMax] lets you use the range notation in media queries following the [Media Queries 4 Specification].
 
-```pcss
+```css
 @media screen and (width >=500px) and (width <=1200px) {
 	.bar {
 		display: block;

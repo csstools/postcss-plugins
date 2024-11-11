@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use nested `calc()` expressions following the [CSS Values and Units 4 specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default the original values are preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

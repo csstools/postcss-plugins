@@ -8,7 +8,7 @@ npm install @csstools/postcss-color-mix-function --save-dev
 
 [PostCSS Color Mix Function] lets you use the `color-mix()` function following the [CSS Color 5 Specification].
 
-```pcss
+```css
 .purple_plum {
 	color: color-mix(in lch, purple 50%, plum 50%);
 }
@@ -64,7 +64,7 @@ is preserved. By default, it is not preserved.
 postcssColorMixFunction({ preserve: true })
 ```
 
-```pcss
+```css
 .purple_plum {
 	color: color-mix(in lch, purple 50%, plum 50%);
 }

@@ -10,7 +10,7 @@
 
 [PostCSS IC Unit] lets you use the ic length unit, following the [CSS Values and Units Module] specification.
 
-```pcss
+```css
 p {
   text-indent: 2ic;
 }
@@ -68,7 +68,7 @@ is preserved. By default, it is not preserved.
 postcssIcUnit({ preserve: true })
 ```
 
-```pcss
+```css
 p {
   text-indent: 2ic;
 }

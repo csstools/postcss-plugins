@@ -21,7 +21,7 @@
 comments and your [browserslist](https://github.com/browserslist/browserslist).
 
 
-```pcss
+```css
 <example-1.css>
 
 /* becomes */
@@ -37,7 +37,7 @@ last 2 chrome versions
 
 The rule below would be more carefully altered:
 
-```pcss
+```css
 <example-2.css>
 
 /* with a `last 2 firefox versions` browserslist becomes */

@@ -8,7 +8,7 @@ npm install @csstools/postcss-relative-color-syntax --save-dev
 
 [PostCSS Relative Color Syntax] lets you use the relative color syntax in CSS color functions following [CSS Color Module 5].
 
-```pcss
+```css
 .example {
 	background: oklab(from oklab(54.3% -22.5% -5%) calc(1.0 - l) calc(a * 0.8) b);
 }
@@ -64,7 +64,7 @@ is preserved. By default, it is not preserved.
 postcssRelativeColorSyntax({ preserve: true })
 ```
 
-```pcss
+```css
 .example {
 	background: oklab(from oklab(54.3% -22.5% -5%) calc(1.0 - l) calc(a * 0.8) b);
 }

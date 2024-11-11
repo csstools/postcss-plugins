@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use `text-decoration` as a shorthand following the [Text Decoration Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

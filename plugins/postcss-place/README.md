@@ -9,7 +9,7 @@ npm install postcss-place --save-dev
 [PostCSS Place Properties] lets you use `place-*` properties as shorthands for `align-*`
 and `justify-*`, following the [CSS Box Alignment] specification.
 
-```pcss
+```css
 .example {
 	place-self: center;
 	place-content: space-between center;
@@ -68,7 +68,7 @@ is preserved. By default, it is preserved.
 postcssPlace({ preserve: false })
 ```
 
-```pcss
+```css
 .example {
 	place-self: center;
 	place-content: space-between center;

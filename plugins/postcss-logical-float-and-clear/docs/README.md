@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -45,7 +45,7 @@ The `inlineDirection` option allows you to specify the direction of the inline a
 })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

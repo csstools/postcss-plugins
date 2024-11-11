@@ -9,7 +9,7 @@
 [PostCSS Double Position Gradients] lets you use double-position gradients in
 CSS, following the [CSS Image Values and Replaced Content] specification.
 
-```pcss
+```css
 .linear-gradient {
   background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
@@ -107,7 +107,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 postcssDoublePositionGradients({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 :root {
 	--a-gradient: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }

@@ -8,7 +8,7 @@ npm install @csstools/postcss-nested-calc --save-dev
 
 [PostCSS Nested Calc] lets you use nested `calc()` expressions following the [CSS Values and Units 4 specification].
 
-```pcss
+```css
 .example {
 	order: calc(1 + calc(2 * 2));
 }
@@ -62,7 +62,7 @@ is preserved. By default the original values are preserved.
 postcssNestedCalc({ preserve: false })
 ```
 
-```pcss
+```css
 .example {
 	order: calc(1 + calc(2 * 2));
 }

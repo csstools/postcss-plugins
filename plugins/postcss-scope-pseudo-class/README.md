@@ -8,7 +8,7 @@ npm install @csstools/postcss-scope-pseudo-class --save-dev
 
 [PostCSS Scope Pseudo Class] lets you use the `:scope` Pseudo-class following the [Selectors 4 specification].
 
-```pcss
+```css
 :scope {
 	color: green;
 }
@@ -61,7 +61,7 @@ is preserved. By default, it is not preserved.
 postcssScopePseudoClass({ preserve: true })
 ```
 
-```pcss
+```css
 :scope {
 	color: green;
 }

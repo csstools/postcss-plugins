@@ -16,7 +16,7 @@ and simply use the relative paths to each source file.
 
 _If you need something with more knobs and dials, please checkout [`postcss-url`](https://www.npmjs.com/package/postcss-url)_
 
-```pcss
+```css
 /* when used with a bundler like `postcss-import` */
 
 /* test/examples/example.css */

@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use the `pow()`, `sqrt()`, `hypot()`, `log()`, `exp()` functions following the [CSS Values 4 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

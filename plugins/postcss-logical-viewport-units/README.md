@@ -8,7 +8,7 @@ npm install @csstools/postcss-logical-viewport-units --save-dev
 
 [PostCSS Logical Viewport Units] lets you easily use `vb` and `vi` length units following the [CSS-Values-4 Specification].
 
-```pcss
+```css
 .foo {
 	margin: 10vi 20vb;
 }
@@ -65,7 +65,7 @@ postcssLogicalViewportUnits({
 })
 ```
 
-```pcss
+```css
 .foo {
 	margin: 10vi 20vb;
 }
@@ -96,7 +96,7 @@ is preserved. By default, it is preserved.
 postcssLogicalViewportUnits({ preserve: false })
 ```
 
-```pcss
+```css
 .foo {
 	margin: 10vi 20vb;
 }

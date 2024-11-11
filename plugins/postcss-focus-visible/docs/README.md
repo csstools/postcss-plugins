@@ -28,7 +28,7 @@ To use this feature you need to do two things :
 
 ```css
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -55,7 +55,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -72,7 +72,7 @@ default, the replacement selector is `.focus-visible`.
 <exportName>({ replaceWith: '[data-focus-visible-added]' })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -96,7 +96,7 @@ Set this to `true` to prevent the class from being added.
 <exportName>({ disablePolyfillReadyClass: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

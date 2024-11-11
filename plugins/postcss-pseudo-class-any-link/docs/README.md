@@ -20,7 +20,7 @@
 [<humanReadableName>] lets you `:any-link` pseudo-class in CSS,
 following the [Selectors] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -43,7 +43,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -68,7 +68,7 @@ _This increased CSS bundle size and is disabled by default._
 })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

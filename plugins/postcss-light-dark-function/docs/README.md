@@ -26,7 +26,7 @@ Read more about this feature on mdn:
 
 With both features combined you can mix and match color schemes in a single document, while also respecting the user's preferences.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -36,7 +36,7 @@ With both features combined you can mix and match color schemes in a single docu
 
 Declare that your document supports both light and dark mode:
 
-```pcss
+```css
 <root.css>
 
 /* becomes */
@@ -46,7 +46,7 @@ Declare that your document supports both light and dark mode:
 
 Dynamically alter the supported color scheme for some elements:
 
-```pcss
+```css
 <element.css>
 
 /* becomes */
@@ -69,7 +69,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

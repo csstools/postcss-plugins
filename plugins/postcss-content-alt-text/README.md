@@ -8,7 +8,7 @@ npm install @csstools/postcss-content-alt-text --save-dev
 
 [PostCSS Content Alt Text] generates fallback values for `content` with alt text following the [CSS Generated Content Module].
 
-```pcss
+```css
 .foo {
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }
@@ -71,7 +71,7 @@ is preserved. By default, it is preserved.
 postcssContentAltText({ preserve: false })
 ```
 
-```pcss
+```css
 .foo {
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }
@@ -103,7 +103,7 @@ Only set this to `true` if you are sure the alt text is not needed.
 postcssContentAltText({ stripAltText: true })
 ```
 
-```pcss
+```css
 .foo {
 	content: url(tree.jpg) / "A beautiful tree in a dark forest";
 }

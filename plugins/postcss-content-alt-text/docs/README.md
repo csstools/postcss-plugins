@@ -19,7 +19,7 @@
 
 [<humanReadableName>] generates fallback values for `content` with alt text following the [CSS Generated Content Module].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -62,7 +62,7 @@ Only set this to `true` if you are sure the alt text is not needed.
 <exportName>({ stripAltText: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

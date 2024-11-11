@@ -8,7 +8,7 @@ npm install @csstools/postcss-gradients-interpolation-method --save-dev
 
 [PostCSS Gradients Interpolation Method] lets you use different interpolation methods in CSS gradient functions following [CSS Images Module 4].
 
-```pcss
+```css
 .example {
 	background-image: linear-gradient(in oklch, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
@@ -43,7 +43,7 @@ npm install @csstools/postcss-gradients-interpolation-method --save-dev
 For best results you should always provide at least the color and position for each color stop.
 Double position color stops are supported.
 
-```pcss
+```css
 .foo {
 	/* Only a color: can't transform */
 	background-image: linear-gradient(in oklch, black 0%, green, blue 100%);
@@ -57,7 +57,7 @@ Double position color stops are supported.
 > Variable colors are not supported.
 > We can not mix colors when the color is a variable.
 
-```pcss
+```css
 .foo {
 	--red: red;
 	/* Color stop variable : can't transform */
@@ -106,7 +106,7 @@ is preserved. By default, it is preserved.
 postcssGradientsInterpolationMethod({ preserve: false })
 ```
 
-```pcss
+```css
 .example {
 	background-image: linear-gradient(in oklch, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }
@@ -139,7 +139,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 postcssGradientsInterpolationMethod({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 .example {
 	background-image: linear-gradient(in oklch, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
 }

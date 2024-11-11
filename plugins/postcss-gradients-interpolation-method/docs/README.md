@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use different interpolation methods in CSS gradient functions following [CSS Images Module 4].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -35,7 +35,7 @@
 For best results you should always provide at least the color and position for each color stop.
 Double position color stops are supported.
 
-```pcss
+```css
 .foo {
 	/* Only a color: can't transform */
 	background-image: linear-gradient(in oklch, black 0%, green, blue 100%);
@@ -49,7 +49,7 @@ Double position color stops are supported.
 > Variable colors are not supported.
 > We can not mix colors when the color is a variable.
 
-```pcss
+```css
 .foo {
 	--red: red;
 	/* Color stop variable : can't transform */
@@ -72,7 +72,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -93,7 +93,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 <exportName>({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

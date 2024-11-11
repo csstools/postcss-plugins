@@ -27,7 +27,7 @@ This is done by lowering the `chroma` in `oklch` until the color is in gamut.
 
 Using the `@media (color-gamut)` media feature makes it possible to only use the wide gamut colors on displays that support them.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

@@ -8,7 +8,7 @@ npm install postcss-attribute-case-insensitive --save-dev
 
 [PostCSS Attribute Case Insensitive] enables support for [Case Insensitive Attribute] matching in selectors.
 
-```pcss
+```css
 [frame=hsides i] {
 	border-style: solid none;
 }
@@ -61,7 +61,7 @@ is preserved. By default, it is not preserved.
 postcssAttributeCaseInsensitive({ preserve: true })
 ```
 
-```pcss
+```css
 [frame=hsides i] {
 	border-style: solid none;
 }

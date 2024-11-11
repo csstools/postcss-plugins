@@ -9,7 +9,7 @@ npm install postcss-overflow-shorthand --save-dev
 [PostCSS Overflow Shorthand] lets you use the `overflow` shorthand in CSS,
 following the [CSS Overflow] specification.
 
-```pcss
+```css
 html {
 	overflow: hidden auto;
 }
@@ -64,7 +64,7 @@ is preserved. By default, it is preserved.
 postcssOverflowShorthand({ preserve: false })
 ```
 
-```pcss
+```css
 html {
 	overflow: hidden auto;
 }

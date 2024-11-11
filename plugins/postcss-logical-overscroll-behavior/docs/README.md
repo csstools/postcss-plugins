@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use `overscroll-behavior-inline` and `overscroll-behavior-block` properties following the [CSS Overscroll Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -45,7 +45,7 @@ The `inlineDirection` option allows you to specify the direction of the inline a
 })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

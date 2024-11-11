@@ -8,7 +8,7 @@ npm install @csstools/postcss-media-queries-aspect-ratio-number-values --save-de
 
 [PostCSS Media Queries Aspect-Ratio Number Values] lets you use non-integer numbers and `calc()` in `aspect-ratio` feature queries following the [Media Queries 4 Specification].
 
-```pcss
+```css
 @media (min-aspect-ratio: 1.77) {}
 
 /* becomes */
@@ -57,7 +57,7 @@ is preserved. By default, it is not preserved.
 postcssMediaQueriesAspectRatioNumberValues({ preserve: true })
 ```
 
-```pcss
+```css
 @media (min-aspect-ratio: 1.77) {}
 
 /* becomes */

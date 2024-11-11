@@ -17,7 +17,7 @@
 
 <header>
 
-[<humanReadableName>] lets you use the `sign` and `abs` functions, following the [CSS Values 4].
+[<humanReadableName>] lets you use the `sign` and `abs` functions, following the [CSS Values 4] specification.
 
 ```pcss
 <example.css>

@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use `sin`, `cos`, `tan`, `asin`, `acos`, `atan` and `atan2` to be able to compute trigonometric relationships following the [CSS Values 4] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -60,7 +60,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

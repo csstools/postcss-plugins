@@ -10,7 +10,7 @@ npm install postcss-browser-comments --save-dev
 comments and your [browserslist](https://github.com/browserslist/browserslist).
 
 
-```pcss
+```css
 /**
  * Prevent adjustments of font size after orientation changes in IE and iOS.
  */
@@ -33,7 +33,7 @@ last 2 chrome versions
 
 The rule below would be more carefully altered:
 
-```pcss
+```css
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.

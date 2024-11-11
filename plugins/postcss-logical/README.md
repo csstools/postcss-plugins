@@ -8,7 +8,7 @@ npm install postcss-logical --save-dev
 
 [PostCSS Logical Properties and Values]  lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
 
-```pcss
+```css
 .element {
 	block-size: 100px;
 	max-inline-size: 400px;
@@ -81,7 +81,7 @@ postcssLogical({
 })
 ```
 
-```pcss
+```css
 .element {
 	block-size: 100px;
 	max-inline-size: 400px;

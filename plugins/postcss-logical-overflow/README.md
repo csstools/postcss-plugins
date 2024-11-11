@@ -8,7 +8,7 @@ npm install @csstools/postcss-logical-overflow --save-dev
 
 [PostCSS Logical Overflow] lets you use `overflow-inline` and `overflow-block` properties following the [CSS Overflow Specification].
 
-```pcss
+```css
 .inline {
 	overflow-inline: clip;
 }
@@ -72,7 +72,7 @@ postcssLogicalOverflow({
 })
 ```
 
-```pcss
+```css
 .inline {
 	overflow-inline: clip;
 }

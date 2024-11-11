@@ -19,7 +19,7 @@
 
 [<humanReadableName>] transforms :not() W3C CSS level 4 pseudo classes to :not() CSS level 3 selectors following the [Selectors 4 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

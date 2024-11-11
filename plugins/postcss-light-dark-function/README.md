@@ -15,7 +15,7 @@ Read more about this feature on mdn:
 
 With both features combined you can mix and match color schemes in a single document, while also respecting the user's preferences.
 
-```pcss
+```css
 .foo {
 	color: light-dark(pink, magenta);
 }
@@ -53,7 +53,7 @@ With both features combined you can mix and match color schemes in a single docu
 
 Declare that your document supports both light and dark mode:
 
-```pcss
+```css
 :root {
 	color-scheme: light dark;
 }
@@ -71,7 +71,7 @@ Declare that your document supports both light and dark mode:
 
 Dynamically alter the supported color scheme for some elements:
 
-```pcss
+```css
 :root {
 	/* Root only supports light mode */
 	color-scheme: light;
@@ -138,7 +138,7 @@ is preserved. By default, it is preserved.
 postcssLightDarkFunction({ preserve: false })
 ```
 
-```pcss
+```css
 .foo {
 	color: light-dark(pink, magenta);
 }

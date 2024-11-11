@@ -11,7 +11,7 @@ the [CSS Custom Properties] specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
 
-```pcss
+```css
 :root {
 	--color-blue-dark: rgb(0, 61, 184);
 	--color-blue-light: rgb(0, 217, 255);
@@ -105,7 +105,7 @@ Custom property declarations are always preserved only `var()` functions can be 
 postcssCustomProperties({ preserve: false })
 ```
 
-```pcss
+```css
 :root {
 	--color-blue-dark: rgb(0, 61, 184);
 	--color-blue-light: rgb(0, 217, 255);

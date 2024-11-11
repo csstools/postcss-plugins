@@ -19,7 +19,7 @@
 
 [<humanReadableName>] fallback the `initial` keyword following the [CSS Cascade 4 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -45,7 +45,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

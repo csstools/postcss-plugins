@@ -23,7 +23,7 @@ To use this feature you need to do two things :
 - add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
 - add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -46,7 +46,7 @@ is preserved. By default the original rules are preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -233,7 +233,7 @@ We recommend you load the polyfill as high up on your Next application as possib
 The [<humanReadableName>] clones rules containing `:has()`,
 replacing them with an alternative `[csstools-has-]` selector.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

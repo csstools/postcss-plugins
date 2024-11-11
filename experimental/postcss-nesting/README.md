@@ -11,7 +11,7 @@ you might want to use [PostCSS Nested] instead.
 > [!WARNING]
 > Experimental version of [PostCSS Nesting](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 
-```pcss
+```css
 a, b {
 	color: red;
 
@@ -50,7 +50,7 @@ a, b {
 
 Relative selectors :
 
-```pcss
+```css
 .parent {
 	color: red;
 

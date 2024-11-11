@@ -13,7 +13,7 @@ specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-image-set.png)](https://caniuse.com/#feat=css-image-set)
 
-```pcss
+```css
 .example {
   background-image: image-set(
     url(img.png) 1x,
@@ -86,7 +86,7 @@ The `preserve` option determines whether the original declaration using
 postcssImageSetFunction({ preserve: false })
 ```
 
-```pcss
+```css
 .example {
   background-image: image-set(
     url(img.png) 1x,

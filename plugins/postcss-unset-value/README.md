@@ -10,7 +10,7 @@
 
 [PostCSS Unset Value] lets you use the unset keyword, following the [CSS Cascading and Inheritance] specification.
 
-```pcss
+```css
 .color {
 	color: unset;
 }
@@ -74,7 +74,7 @@ is preserved. By default, it is not preserved.
 postcssUnsetValue({ preserve: true })
 ```
 
-```pcss
+```css
 .color {
 	color: unset;
 }
