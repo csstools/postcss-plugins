@@ -1,0 +1,12 @@
+div {
+	color: oklch(0.7, 0.2, 238.66036deg);
+}
+
+div {
+	color: oklch(0.7, 0.2, 134deg);
+}
+
+div {
+	color: oklch(0.7, 0.2, 226.47057deg);
+	border-color: oklch(0.7, 0.2, 157.76966deg);
+}

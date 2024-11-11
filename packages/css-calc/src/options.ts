@@ -37,4 +37,9 @@ export type conversionOptions = {
 	 * @see https://drafts.csswg.org/css-values-4/#calc-simplification
 	 */
 	rawPercentages?: boolean
+
+	/**
+	 * Seed the pseudo random number generator used in `random()`
+	 */
+	randomSeed?: number
 };
