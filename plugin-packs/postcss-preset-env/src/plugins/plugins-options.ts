@@ -48,9 +48,11 @@ import type { pluginOptions as postcssOverflowShorthandOptions } from 'postcss-o
 import type { postcssReplaceOverflowWrapOptions } from '../types/postcss-replace-overflow-wrap/plugin-options';
 import type { pluginOptions as postcssPlaceOptions } from 'postcss-place';
 import type { pluginOptions as postcssPrefersColorSchemeOptions } from 'css-prefers-color-scheme';
+import type { pluginOptions as postcssRandomFunctionOptions } from '@csstools/postcss-random-function';
 import type { pluginOptions as postcssColorRebeccapurpleOptions } from 'postcss-color-rebeccapurple';
 import type { pluginOptions as postcssRelativeColorSyntaxOptions } from '@csstools/postcss-relative-color-syntax';
 import type { pluginOptions as postcssScopePseudoClassOptions } from '@csstools/postcss-scope-pseudo-class';
+import type { pluginOptions as postcssSignFunctionsOptions } from '@csstools/postcss-sign-functions';
 import type { pluginOptions as postcssSteppedValueFunctionsOptions } from '@csstools/postcss-stepped-value-functions';
 import type { postcssFontFamilySystemUIOptions } from '../types/postcss-system-ui-font-family/plugin-options';
 import type { pluginOptions as postcssTextDecorationShorthandOptions } from '@csstools/postcss-text-decoration-shorthand';
@@ -160,12 +162,16 @@ export type pluginsOptions = {
 	'place-properties'?: subPluginOptions<postcssPlaceOptions>
 	/** plugin options for "css-prefers-color-scheme" */
 	'prefers-color-scheme-query'?: subPluginOptions<postcssPrefersColorSchemeOptions>
+	/** plugin options for "@csstools/postcss-random-function" */
+	'random-function'?: subPluginOptions<postcssRandomFunctionOptions>
 	/** plugin options for "postcss-color-rebeccapurple" */
 	'rebeccapurple-color'?: subPluginOptions<postcssColorRebeccapurpleOptions>
 	/** plugin options for "@csstools/postcss-relative-color-syntax" */
 	'relative-color-syntax'?: subPluginOptions<postcssRelativeColorSyntaxOptions>
 	/** plugin options for "@csstools/postcss-scope-pseudo-class" */
 	'scope-pseudo-class'?: subPluginOptions<postcssScopePseudoClassOptions>
+	/** plugin options for "@csstools/postcss-sign-functions" */
+	'sign-functions'?: subPluginOptions<postcssSignFunctionsOptions>
 	/** plugin options for "@csstools/postcss-stepped-value-functions" */
 	'stepped-value-functions'?: subPluginOptions<postcssSteppedValueFunctionsOptions>
 	/** plugin options for "postcss-system-ui-font-family" */

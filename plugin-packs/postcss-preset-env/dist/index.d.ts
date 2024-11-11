@@ -40,14 +40,16 @@ import type { pluginOptions as pluginOptions_43 } from '@csstools/postcss-oklab-
 import type { pluginOptions as pluginOptions_44 } from 'postcss-overflow-shorthand';
 import type { pluginOptions as pluginOptions_45 } from 'postcss-place';
 import type { pluginOptions as pluginOptions_46 } from 'css-prefers-color-scheme';
-import type { pluginOptions as pluginOptions_47 } from 'postcss-color-rebeccapurple';
-import type { pluginOptions as pluginOptions_48 } from '@csstools/postcss-relative-color-syntax';
-import type { pluginOptions as pluginOptions_49 } from '@csstools/postcss-scope-pseudo-class';
+import type { pluginOptions as pluginOptions_47 } from '@csstools/postcss-random-function';
+import type { pluginOptions as pluginOptions_48 } from 'postcss-color-rebeccapurple';
+import type { pluginOptions as pluginOptions_49 } from '@csstools/postcss-relative-color-syntax';
 import type { pluginOptions as pluginOptions_5 } from '@csstools/postcss-cascade-layers';
-import type { pluginOptions as pluginOptions_50 } from '@csstools/postcss-stepped-value-functions';
-import type { pluginOptions as pluginOptions_51 } from '@csstools/postcss-text-decoration-shorthand';
-import type { pluginOptions as pluginOptions_52 } from '@csstools/postcss-trigonometric-functions';
-import type { pluginOptions as pluginOptions_53 } from '@csstools/postcss-unset-value';
+import type { pluginOptions as pluginOptions_50 } from '@csstools/postcss-scope-pseudo-class';
+import type { pluginOptions as pluginOptions_51 } from '@csstools/postcss-sign-functions';
+import type { pluginOptions as pluginOptions_52 } from '@csstools/postcss-stepped-value-functions';
+import type { pluginOptions as pluginOptions_53 } from '@csstools/postcss-text-decoration-shorthand';
+import type { pluginOptions as pluginOptions_54 } from '@csstools/postcss-trigonometric-functions';
+import type { pluginOptions as pluginOptions_55 } from '@csstools/postcss-unset-value';
 import type { pluginOptions as pluginOptions_6 } from 'postcss-attribute-case-insensitive';
 import type { pluginOptions as pluginOptions_7 } from '@csstools/postcss-color-function';
 import type { pluginOptions as pluginOptions_8 } from 'postcss-color-functional-notation';
@@ -249,22 +251,26 @@ export declare type pluginsOptions = {
     'place-properties'?: subPluginOptions<pluginOptions_45>;
     /** plugin options for "css-prefers-color-scheme" */
     'prefers-color-scheme-query'?: subPluginOptions<pluginOptions_46>;
+    /** plugin options for "@csstools/postcss-random-function" */
+    'random-function'?: subPluginOptions<pluginOptions_47>;
     /** plugin options for "postcss-color-rebeccapurple" */
-    'rebeccapurple-color'?: subPluginOptions<pluginOptions_47>;
+    'rebeccapurple-color'?: subPluginOptions<pluginOptions_48>;
     /** plugin options for "@csstools/postcss-relative-color-syntax" */
-    'relative-color-syntax'?: subPluginOptions<pluginOptions_48>;
+    'relative-color-syntax'?: subPluginOptions<pluginOptions_49>;
     /** plugin options for "@csstools/postcss-scope-pseudo-class" */
-    'scope-pseudo-class'?: subPluginOptions<pluginOptions_49>;
+    'scope-pseudo-class'?: subPluginOptions<pluginOptions_50>;
+    /** plugin options for "@csstools/postcss-sign-functions" */
+    'sign-functions'?: subPluginOptions<pluginOptions_51>;
     /** plugin options for "@csstools/postcss-stepped-value-functions" */
-    'stepped-value-functions'?: subPluginOptions<pluginOptions_50>;
+    'stepped-value-functions'?: subPluginOptions<pluginOptions_52>;
     /** plugin options for "postcss-system-ui-font-family" */
     'system-ui-font-family'?: subPluginOptions<postcssFontFamilySystemUIOptions>;
     /** plugin options for "@csstools/postcss-text-decoration-shorthand" */
-    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_51>;
+    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_53>;
     /** plugin options for "@csstools/postcss-trigonometric-functions" */
-    'trigonometric-functions'?: subPluginOptions<pluginOptions_52>;
+    'trigonometric-functions'?: subPluginOptions<pluginOptions_54>;
     /** plugin options for "@csstools/postcss-unset-value" */
-    'unset-value'?: subPluginOptions<pluginOptions_53>;
+    'unset-value'?: subPluginOptions<pluginOptions_55>;
 };
 
 /** postcss-clamp plugin options */

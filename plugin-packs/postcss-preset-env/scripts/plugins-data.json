@@ -291,6 +291,16 @@
 		"importName": "postcssTextDecorationShorthand"
 	},
 	{
+		"packageName": "@csstools/postcss-sign-functions",
+		"id": "sign-functions",
+		"importName": "postcssSignFunctions"
+	},
+	{
+		"packageName": "@csstools/postcss-random-function",
+		"id": "random-function",
+		"importName": "postcssRandomFunction"
+	},
+	{
 		"packageName": "@csstools/postcss-progressive-custom-properties",
 		"id": "progressive-custom-properties",
 		"importName": "postcssProgressiveCustomProperties",

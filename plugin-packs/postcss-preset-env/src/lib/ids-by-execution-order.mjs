@@ -53,6 +53,8 @@ export default [
 	'unset-value',
 
 	// Math functions.
+	'random-function',
+	'sign-functions',
 	'stepped-value-functions',
 	'trigonometric-functions',
 	'exponential-functions',
