@@ -1,7 +1,7 @@
 import type { PluginCreator } from 'postcss';
 import { calc } from '@csstools/css-calc';
 
-/** postcss-stepped-value-functions plugin options */
+/** postcss-sign-functions plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: true */
 	preserve?: boolean,
