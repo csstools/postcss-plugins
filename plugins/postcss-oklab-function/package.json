@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-oklab-function",
 	"description": "Use oklab() and oklch() color functions in CSS",
-	"version": "4.0.5",
+	"version": "4.0.6",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
