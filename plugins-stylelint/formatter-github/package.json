@@ -44,7 +44,7 @@
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
-		"test": "node --test"
+		"test": "NODE_OPTIONS=--disable-warning=ExperimentalWarning node --test"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/blob/main/plugins-stylelint/formatter-github#readme",
 	"repository": {
