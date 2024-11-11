@@ -6,9 +6,9 @@
 npm install @csstools/postcss-random-function --save-dev
 ```
 
-[PostCSS Random Function] lets you use the `random` function, following the [CSS Values 5].
+[PostCSS Random Function] lets you use the `random` function, following the [CSS Values 5] specification.
 
-```pcss
+```css
 div {
 	color: oklch(0.7, 0.2, random(120deg, 240deg));
 }
@@ -90,7 +90,7 @@ is preserved. By default, it is not preserved.
 postcssRandomFunction({ preserve: true })
 ```
 
-```pcss
+```css
 div {
 	color: oklch(0.7, 0.2, random(120deg, 240deg));
 }

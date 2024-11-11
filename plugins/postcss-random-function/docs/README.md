@@ -17,9 +17,9 @@
 
 <header>
 
-[<humanReadableName>] lets you use the `random` function, following the [CSS Values 5].
+[<humanReadableName>] lets you use the `random` function, following the [CSS Values 5] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -53,7 +53,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
