@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 10.1.0
+
+_November 11, 2024_
 
 - Added `@csstools/postcss-random-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function#readme) for usage details.
 - Added `@csstools/postcss-sign-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions#readme) for usage details.
