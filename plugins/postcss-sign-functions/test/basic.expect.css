@@ -1,0 +1,72 @@
+.sign-ignore {
+	z-index: sign(10%);
+}
+
+.sign-b {
+	z-index: 1;
+	z-index: sign(10px);
+}
+
+.sign-c {
+	z-index: 0;
+	z-index: sign(0);
+}
+
+.sign-d {
+	z-index: 0;
+	z-index: sign(0px);
+}
+
+.sign-e {
+	z-index: -1;
+	z-index: sign(-10px);
+}
+
+.sign-f {
+	z-index: -0;
+	z-index: sign(-0px);
+}
+
+.abs-ignore {
+	z-index: abs(10%);
+}
+
+.abs-b {
+	z-index: 10px;
+	z-index: abs(10px);
+}
+
+.abs-c {
+	z-index: 0;
+	z-index: abs(0);
+}
+
+.abs-d {
+	z-index: 0px;
+	z-index: abs(0px);
+}
+
+.abs-e {
+	z-index: 10px;
+	z-index: abs(-10px);
+}
+
+.abs-f {
+	z-index: 0px;
+	z-index: abs(-0px);
+}
+
+:root {
+	--foo: 1;
+	--foo: sign(10px);
+}
+
+.var-ignore-a {
+	--foo: 10px;
+	z-index: sign(var(--foo));
+}
+
+.var-ignore-b {
+	--foo: 10px;
+	z-index: abs(var(--foo));
+}

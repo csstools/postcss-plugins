@@ -125,6 +125,7 @@ body:
         - PostCSS Replace Overflow Wrap
         - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
+        - PostCSS Sign Functions
         - PostCSS Slow Plugins
         - PostCSS Stepped Value Functions
         - PostCSS System Ui Font Family

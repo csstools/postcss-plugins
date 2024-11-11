@@ -1,0 +1,1 @@
+import{calc as s}from"@csstools/css-calc";const e=/(?<![-\w])(?:sign|abs)\(/i,creator=o=>{const t=Object.assign({preserve:!0},o);return{postcssPlugin:"postcss-sign-functions",Declaration(o){if(!e.test(o.value))return;const n=s(o.value,{precision:5,toCanonicalUnits:!0});n!==o.value&&(o.cloneBefore({value:n}),t.preserve||o.remove())}}};creator.postcss=!0;export{creator as default};

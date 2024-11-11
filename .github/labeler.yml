@@ -425,6 +425,12 @@
       - plugins/postcss-selector-not/**
       - experimental/postcss-selector-not/**
 
+"plugins/postcss-sign-functions":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-sign-functions/**
+      - experimental/postcss-sign-functions/**
+
 "plugins/postcss-slow-plugins":
   - changed-files:
     - any-glob-to-any-file:
