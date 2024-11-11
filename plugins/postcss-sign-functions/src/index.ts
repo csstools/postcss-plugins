@@ -20,7 +20,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	);
 
 	return {
-		postcssPlugin: 'postcss-stepped-value-functions',
+		postcssPlugin: 'postcss-sign-functions',
 		Declaration(decl): void {
 			if (!FUNCTION_CALL_REGEX.test(decl.value)) {
 				return;
