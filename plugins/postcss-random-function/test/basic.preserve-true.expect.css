@@ -1,0 +1,52 @@
+.random-1 {
+	z-index: 2.59248;
+	z-index: random(0, 10);
+}
+
+.random-2 {
+	z-index: 2;
+	z-index: random(0, 10, by 1);
+}
+
+.random-3 {
+	z-index: 2.06974;
+	z-index: random(--foo, 0, 10);
+}
+
+.random-4 {
+	z-index: 4.78814;
+	z-index: random(--bar, 0, 10);
+}
+
+.random-11 {
+	width: 4.63961px;
+	width: random(0px, 10px);
+}
+
+.random-12 {
+	width: 7px;
+	width: random(0px, 10px, by 1px);
+}
+
+.random-13 {
+	width: 4.81303px;
+	width: random(--foo, 0px, 10px);
+}
+
+.random-14 {
+	width: 2.1821px;
+	width: random(--bar, 0px, 10px);
+}
+
+.ignore-1 {
+	--foo: 10px;
+	width: random(0px, var(--foo));
+}
+
+.ignore-2 {
+	width: random(0px, 10deg);
+}
+
+.ignore-3 {
+	width: random(0, 10px);
+}
