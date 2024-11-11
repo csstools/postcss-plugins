@@ -1,5 +1,5 @@
 import type { Calculation } from '../calculation';
-import type { ComponentValue, FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import { convertUnit } from '../unit-conversions';
 import { isTokenNode } from '@csstools/css-parser-algorithms';
 import { resultToCalculation } from './result-to-calculation';
@@ -8,15 +8,11 @@ import { isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 import type { conversionOptions } from '../options';
 
 export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<ComponentValue>, options: conversionOptions): Calculation | -1 {
-	const firstSolvedNode = solvedNodes[0];
-	if (!firstSolvedNode || !isTokenNode(firstSolvedNode)) {
-		return -1;
+	if (!solvedNodes.every(isTokenNode)) {
+		return -1
 	}
 
-	const componentTypes = new Set(solvedNodes.map((x) => x.type));
-	if (componentTypes.size !== 1) {
-		return -1;
-	}
+	const firstSolvedNode = solvedNodes[0];
 
 	const firstSolvedToken = firstSolvedNode.value;
 	if (!isTokenNumeric(firstSolvedToken)) {
@@ -27,7 +23,7 @@ export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<Component
 		return -1;
 	}
 
-	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, (x as TokenNode).value));
+	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, x.value));
 	if (!arrayOfSameNumeric(tokens)) {
 		return -1;
 	}

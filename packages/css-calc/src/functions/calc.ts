@@ -5,7 +5,7 @@ import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, is
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
-import { isCommentNode, FunctionNode, TokenNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode, TokenNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import { multiplication } from '../operation/multiplication';
 import { resolveGlobalsAndConstants } from './globals-and-constants';
 import { solveACos } from './acos';
@@ -32,6 +32,7 @@ import { unary } from '../operation/unary';
 import { solveLog } from './log';
 import { isNone } from '../util/is-none';
 import type { conversionOptions } from '../options';
+import { solveRandom } from './random';
 
 type mathFunction = (node: FunctionNode, globals: Globals, options: conversionOptions) => Calculation | -1
 
@@ -51,6 +52,7 @@ export const mathFunctions: Map<string, mathFunction> = new Map([
 	['min', min],
 	['mod', mod],
 	['pow', pow],
+	['random', random],
 	['rem', rem],
 	['round', round],
 	['sign', sign],
@@ -61,7 +63,7 @@ export const mathFunctions: Map<string, mathFunction> = new Map([
 
 function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals, options: conversionOptions): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = resolveGlobalsAndConstants(
-		[...(calcNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		[...(calcNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
@@ -215,8 +217,17 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals, option
 }
 
 function singleNodeSolver(fnNode: FunctionNode, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, a: TokenNode, options: conversionOptions) => Calculation | -1): Calculation | -1 {
+	const a = singleArgument(fnNode.value, globals, options);
+	if (a === -1) {
+		return -1;
+	}
+
+	return solveFn(fnNode, a, options);
+}
+
+function singleArgument(values: Array<ComponentValue>, globals: Globals, options: conversionOptions): TokenNode | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(fnNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
@@ -225,12 +236,23 @@ function singleNodeSolver(fnNode: FunctionNode, globals: Globals, options: conve
 		return -1;
 	}
 
-	return solveFn(fnNode, a, options);
+	return a;
 }
 
 function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, a: TokenNode, b: TokenNode, options: conversionOptions) => Calculation | -1): Calculation | -1 {
+	const solvedNodes = twoCommaSeparatedArguments(fnNode.value, globals, options);
+	if (solvedNodes === -1) {
+		return -1;
+	}
+
+	const [a, b] = solvedNodes;
+
+	return solveFn(fnNode, a, b, options);
+}
+
+function twoCommaSeparatedArguments(values: Array<ComponentValue>, globals: Globals, options: conversionOptions): [TokenNode, TokenNode] | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(fnNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
@@ -270,20 +292,29 @@ function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, op
 		return -1;
 	}
 
-	return solveFn(fnNode, a, b, options);
+	return [a, b];
 }
 
-function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, x: Array<ComponentValue>, options: conversionOptions) => Calculation | -1): Calculation | -1 {
+function variadicNodesSolver(fnNode: FunctionNode, values: Array<ComponentValue>, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, x: Array<ComponentValue>, options: conversionOptions) => Calculation | -1): Calculation | -1 {
+	const solvedNodes = variadicArguments(fnNode.value, globals, options);
+	if (solvedNodes === -1) {
+		return -1;
+	}
+
+	return solveFn(fnNode, solvedNodes, options);
+}
+
+function variadicArguments(values: Array<ComponentValue>, globals: Globals, options: conversionOptions): Array<TokenNode> | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(fnNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
-	const solvedNodes: Array<ComponentValue> = [];
+	const solvedNodes: Array<TokenNode> = [];
 
 	{
-		const chunks = [];
-		let chunk = [];
+		const chunks: Array<Array<ComponentValue>> = [];
+		let chunk: Array<ComponentValue> = [];
 		for (let i = 0; i < nodes.length; i++) {
 			const node = nodes[i];
 			if (isTokenNode(node) && isTokenComma(node.value)) {
@@ -311,12 +342,12 @@ function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, options: co
 		}
 	}
 
-	return solveFn(fnNode, solvedNodes, options);
+	return solvedNodes;
 }
 
 function clamp(clampNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(clampNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		[...(clampNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
@@ -394,11 +425,11 @@ function clamp(clampNode: FunctionNode, globals: Globals, options: conversionOpt
 }
 
 function max(maxNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(maxNode, globals, options, solveMax);
+	return variadicNodesSolver(maxNode, maxNode.value, globals, options, solveMax);
 }
 
 function min(minNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(minNode, globals, options, solveMin);
+	return variadicNodesSolver(minNode, minNode.value, globals, options, solveMin);
 }
 
 const roundingStrategies = new Set([
@@ -410,7 +441,7 @@ const roundingStrategies = new Set([
 
 function round(roundNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(roundNode.value.filter(x => !isCommentNode(x) && !isWhitespaceNode(x)))],
+		[...(roundNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
@@ -537,11 +568,73 @@ function pow(powNode: FunctionNode, globals: Globals, options: conversionOptions
 }
 
 function hypot(hypotNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(hypotNode, globals, options, solveHypot);
+	return variadicNodesSolver(hypotNode, hypotNode.value, globals, options, solveHypot);
 }
 
 function log(logNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(logNode, globals, options, solveLog);
+	return variadicNodesSolver(logNode, logNode.value, globals, options, solveLog);
+}
+
+function random(randomNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
+	const nodes: Array<ComponentValue> = randomNode.value.filter(x => !isWhiteSpaceOrCommentNode(x));
+
+	let randomCachingOptions = '';
+	const stepValues: Array<ComponentValue> = []
+	const values: Array<ComponentValue> = []
+
+	{
+		for (let i = 0; i < nodes.length; i++) {
+			const node = nodes[i];
+			if (!randomCachingOptions && values.length === 0 && isTokenNode(node) && isTokenIdent(node.value)) {
+				const token = node.value;
+				const tokenStr = token[4].value.toLowerCase();
+				if (tokenStr === 'per-element' || tokenStr.startsWith('--')) {
+					randomCachingOptions = tokenStr;
+
+					const nextNode = nodes[i + 1];
+					if (!isTokenNode(nextNode) || !isTokenComma(nextNode.value)) {
+						return -1;
+					}
+
+					i++;
+					continue;
+				}
+			}
+
+			if (isTokenNode(node) && isTokenComma(node.value)) {
+				const nextNode = nodes[i + 1];
+
+				if (values.length > 0 && isTokenNode(nextNode) && isTokenIdent(nextNode.value)) {
+					const token = nextNode.value;
+					const tokenStr = token[4].value.toLowerCase();
+					if (tokenStr === 'by' || tokenStr.startsWith('--')) {
+						stepValues.push(...nodes.slice(i + 2));
+
+						break;
+					}
+				}
+			}
+
+			values.push(node);
+		}
+	}
+
+	const solvedValues = twoCommaSeparatedArguments(values, globals, options);
+	if (solvedValues === -1) {
+		return -1;
+	}
+
+	const [a, b] = solvedValues;
+
+	let solvedStepValue: TokenNode | -1 | null = null;
+	if (stepValues.length) {
+		solvedStepValue = singleArgument(stepValues, globals, options);
+		if (solvedStepValue === -1) {
+			return -1;
+		}
+	}
+
+	return solveRandom(randomNode, randomCachingOptions, a, b, solvedStepValue, options);
 }
 
 function calcWrapper(v: Array<ComponentValue>): FunctionNode {

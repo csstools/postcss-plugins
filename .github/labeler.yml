@@ -389,6 +389,12 @@
       - plugins/postcss-pseudo-class-any-link/**
       - experimental/postcss-pseudo-class-any-link/**
 
+"plugins/postcss-random-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-random-function/**
+      - experimental/postcss-random-function/**
+
 "plugins/postcss-rebase-url":
   - changed-files:
     - any-glob-to-any-file:

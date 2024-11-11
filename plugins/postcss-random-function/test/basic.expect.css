@@ -1,0 +1,44 @@
+.random-1 {
+	z-index: 2.59248;
+}
+
+.random-2 {
+	z-index: 2;
+}
+
+.random-3 {
+	z-index: 2.06974;
+}
+
+.random-4 {
+	z-index: 4.78814;
+}
+
+.random-11 {
+	width: 4.63961px;
+}
+
+.random-12 {
+	width: 7px;
+}
+
+.random-13 {
+	width: 4.81303px;
+}
+
+.random-14 {
+	width: 2.1821px;
+}
+
+.ignore-1 {
+	--foo: 10px;
+	width: random(0px, var(--foo));
+}
+
+.ignore-2 {
+	width: random(0px, 10deg);
+}
+
+.ignore-3 {
+	width: random(0, 10px);
+}

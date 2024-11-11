@@ -115,6 +115,7 @@ body:
         - PostCSS Place
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
+        - PostCSS Random Function
         - PostCSS Rebase URL
         - PostCSS Rewrite URL
         - PostCSS Rebeccapurple

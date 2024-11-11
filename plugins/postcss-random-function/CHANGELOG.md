@@ -1,4 +1,4 @@
-# Changes to PostCSS Base Plugin
+# Changes to PostCSS Random Function
 
 ### Unreleased (major)
 
