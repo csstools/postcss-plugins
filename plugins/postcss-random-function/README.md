@@ -25,7 +25,7 @@ div {
 /* becomes */
 
 div {
-	color: oklch(0.7, 0.2, 238.66035deg);
+	color: oklch(0.7, 0.2, 238.66036deg);
 }
 
 div {
@@ -33,8 +33,8 @@ div {
 }
 
 div {
-	color: oklch(0.7, 0.2, 226.47056deg);
-	border-color: oklch(0.7, 0.2, 157.76965deg);
+	color: oklch(0.7, 0.2, 226.47057deg);
+	border-color: oklch(0.7, 0.2, 157.76966deg);
 }
 ```
 
@@ -102,7 +102,7 @@ div {
 /* becomes */
 
 div {
-	color: oklch(0.7, 0.2, 238.66035deg);
+	color: oklch(0.7, 0.2, 238.66036deg);
 	color: oklch(0.7, 0.2, random(120deg, 240deg));
 }
 
@@ -112,9 +112,9 @@ div {
 }
 
 div {
-	color: oklch(0.7, 0.2, 226.47056deg);
+	color: oklch(0.7, 0.2, 226.47057deg);
 	color: oklch(0.7, 0.2, random(--text, 120deg, 240deg));
-	border-color: oklch(0.7, 0.2, 157.76965deg);
+	border-color: oklch(0.7, 0.2, 157.76966deg);
 	border-color: oklch(0.7, 0.2, random(--border, 120deg, 240deg));
 }
 ```
