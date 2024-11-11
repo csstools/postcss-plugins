@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you define `@custom-selector` in CSS following the [Custom Selectors Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -42,7 +42,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

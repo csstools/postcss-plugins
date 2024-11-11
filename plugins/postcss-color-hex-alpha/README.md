@@ -9,7 +9,7 @@ npm install postcss-color-hex-alpha --save-dev
 [PostCSS Color Hex Alpha] lets you use 4 & 8 character hex color notation in
 CSS, following the [CSS Color Module] specification.
 
-```pcss
+```css
 body {
 	background: #9d9c;
 }
@@ -62,7 +62,7 @@ is preserved. By default, it is not preserved.
 postcssColorHexAlpha({ preserve: true })
 ```
 
-```pcss
+```css
 body {
 	background: #9d9c;
 }

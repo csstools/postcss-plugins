@@ -8,7 +8,7 @@ npm install @csstools/postcss-rewrite-url --save-dev
 
 [PostCSS Rewrite URL] lets you rewrite url values in CSS.
 
-```pcss
+```css
 .foo {
 	background: rewrite-url('foo.png');
 }

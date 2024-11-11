@@ -8,7 +8,7 @@ npm install postcss-custom-media --save-dev
 
 [PostCSS Custom Media] lets you define `@custom-media` in CSS following the [Custom Media Specification].
 
-```pcss
+```css
 @custom-media --small-viewport (max-width: 30em);
 
 @media (--small-viewport) {
@@ -32,7 +32,7 @@ This plugin downgrades these queries to something that works in all browsers.
 
 Quickly check the result as if the query matches:
 
-```pcss
+```css
 @custom-media --small-viewport true;
 
 @media (--small-viewport) {
@@ -48,7 +48,7 @@ Quickly check the result as if the query matches:
 
 Quickly check the result as if the query does not match:
 
-```pcss
+```css
 @custom-media --small-viewport false;
 
 @media (--small-viewport) {
@@ -75,7 +75,7 @@ _Some of these queries will have only one possible outcome but we have to accoun
 
 An example of a very complex (and artificial) use-case :
 
-```pcss
+```css
 
 @custom-media --a-complex-query tty and (min-width: 300px);
 
@@ -139,7 +139,7 @@ is preserved. By default, it is not preserved.
 postcssCustomMedia({ preserve: true })
 ```
 
-```pcss
+```css
 @custom-media --small-viewport (max-width: 30em);
 
 @media (--small-viewport) {

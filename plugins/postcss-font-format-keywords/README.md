@@ -9,7 +9,7 @@
 
 [PostCSS Font Format Keywords] lets you specify font formats as keywords, following the [CSS Fonts] specification.
 
-```pcss
+```css
 @font-face {
   src: url(file.woff2) format(woff2);
 }
@@ -60,7 +60,7 @@ is preserved. By default, it is not preserved.
 postcssFontFormatKeywords({ preserve: true })
 ```
 
-```pcss
+```css
 @font-face {
   src: url(file.woff2) format(woff2);
 }

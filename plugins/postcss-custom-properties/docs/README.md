@@ -22,7 +22,7 @@ the [CSS Custom Properties] specification.
 
 [!['Can I use' table](https://caniuse.bitsofco.de/image/css-variables.png)](https://caniuse.com/#feat=css-variables)
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -52,7 +52,7 @@ Custom property declarations are always preserved only `var()` functions can be 
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

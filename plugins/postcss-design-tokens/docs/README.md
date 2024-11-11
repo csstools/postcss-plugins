@@ -23,7 +23,7 @@
 <tokens.json>
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -68,7 +68,7 @@ _This plugin itself does not produce multiple outputs, it only provides an API t
 
 **And this CSS :**
 
-```pcss
+```css
 <example-conditional.css>
 ```
 
@@ -80,7 +80,7 @@ _This plugin itself does not produce multiple outputs, it only provides an API t
 <exportName>()
 ```
 
-```pcss
+```css
 <example-conditional.css>
 
 /* becomes */
@@ -94,7 +94,7 @@ _This plugin itself does not produce multiple outputs, it only provides an API t
 <exportName>({ is: ['brand-2'] })
 ```
 
-```pcss
+```css
 <example-conditional.css>
 
 /* becomes */
@@ -119,7 +119,7 @@ defaults to `16`
 })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -137,7 +137,7 @@ The `importAtRuleName` option allows you to set a custom alias for `@design-toke
 <exportName>({ importAtRuleName: 'tokens' })
 ```
 
-```pcss
+```css
 <example-custom-import-at-rule-name.css>
 
 /* becomes */
@@ -153,7 +153,7 @@ The `valueFunctionName` option allows you to set a custom alias for `design-toke
 <exportName>({ valueFunctionName: 'token' })
 ```
 
-```pcss
+```css
 <example-custom-value-function-name.css>
 
 /* becomes */
@@ -179,18 +179,18 @@ These will have rough edges but should illustrate were we want to go.
 
 The `@design-tokens` rule is used to import design tokens from a JSON file into your CSS.
 
-```pcss
+```css
 @design-tokens url('./tokens.json') format('style-dictionary3');
 ```
 
-```pcss
+```css
 @design-tokens url('./tokens.json') format('style-dictionary3');
 @design-tokens url('./tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
 
 You can also import tokens from an `npm` package:
 
-```pcss
+```css
 @design-tokens url('node_modules:my-npm-package/tokens.json') format('style-dictionary3');
 @design-tokens url('node_modules:my-npm-package/tokens-dark-mode.json') format('style-dictionary3') when('dark');
 ```
@@ -233,7 +233,7 @@ Any form of nesting is meaningless, `@design-tokens` will always be evaluated as
 
 The `design-token()` function takes a token path and returns the token value.
 
-```pcss
+```css
 .foo {
 	color: design-token('color.background.primary');
 }

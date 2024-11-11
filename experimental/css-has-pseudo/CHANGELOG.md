@@ -42,7 +42,7 @@ _April 24, 2022_
 
 - Rules within `@supports` selector check for `:has` won't be transformed. This respects stylesheet author of making the selector conditional:
 
-```pcss
+```css
 @supports selector(:has(:focus)) {
 	/* Won't be transformed */
 	:has(:focus) {}

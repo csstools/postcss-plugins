@@ -8,7 +8,7 @@ npm install @csstools/postcss-initial --save-dev
 
 [PostCSS Initial] fallback the `initial` keyword following the [CSS Cascade 4 Specification].
 
-```pcss
+```css
 .foo {
 	border: initial;
 }
@@ -65,7 +65,7 @@ is preserved. By default, it is preserved.
 postcssInitial({ preserve: false })
 ```
 
-```pcss
+```css
 .foo {
 	border: initial;
 }

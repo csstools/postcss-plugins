@@ -10,7 +10,7 @@
 [PostCSS OKLab Function] lets you use `oklab` and `oklch` color functions in
 CSS, following the [CSS Color] specification.
 
-```pcss
+```css
 .test-oklab {
 	color: oklab(40% 0.001236 0.0039);
 }
@@ -68,7 +68,7 @@ is preserved. By default, it is not preserved.
 postcssOKLabFunction({ preserve: true })
 ```
 
-```pcss
+```css
 .test-oklab {
 	color: oklab(40% 0.001236 0.0039);
 }
@@ -105,7 +105,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 postcssOKLabFunction({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 :root {
 	--firebrick: oklab(40% 0.234 0.39);
 }
@@ -136,7 +136,7 @@ postcssOKLabFunction({
 })
 ```
 
-```pcss
+```css
 .test-oklab {
 	color: oklab(40% 0.001236 0.0039);
 }

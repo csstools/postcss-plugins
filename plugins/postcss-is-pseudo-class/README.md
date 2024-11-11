@@ -10,7 +10,7 @@
 [PostCSS Is Pseudo Class] lets you use the `:is` pseudo class function, following the
 [CSS Selector] specification.
 
-```pcss
+```css
 :is(input, button):is(:hover, :focus) {
 	order: 1;
 }
@@ -18,7 +18,7 @@
 
 Becomes :
 
-```pcss
+```css
 input:hover {
 	order: 1;
 }
@@ -70,7 +70,7 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-```pcss
+```css
 :is(input, button):is(:hover, :focus) {
 	order: 1;
 }
@@ -78,7 +78,7 @@ postcss([
 
 Becomes :
 
-```pcss
+```css
 input:hover {
 	order: 1;
 }
@@ -110,7 +110,7 @@ postcss([
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
-```pcss
+```css
 :is(.button, button):hover {
 	order: 7;
 }
@@ -118,7 +118,7 @@ postcss([
 
 Becomes :
 
-```pcss
+```css
 .button:hover {
 	order: 7;
 }
@@ -176,7 +176,7 @@ Before :
 
 [specificity: 0, 2, 0](https://polypane.app/css-specificity-calculator/#selector=%3Ais(%3Ahover%2C%20%3Afocus)%3Ais(.button%2C%20button))
 
-```pcss
+```css
 :is(:hover, :focus):is(.button, button) {
 	order: 7;
 }
@@ -184,7 +184,7 @@ Before :
 
 After :
 
-```pcss
+```css
 /* specificity: [0, 2, 0] */
 .button:hover {
 	order: 7;
@@ -213,7 +213,7 @@ button:not(.does-not-exist):focus {
 Before :
 
 
-```pcss
+```css
 :is(.alpha > .beta) ~ :is(:focus > .beta) {
 	order: 2;
 }
@@ -221,7 +221,7 @@ Before :
 
 After :
 
-```pcss
+```css
 .alpha > .beta ~ :focus > .beta {
 	order: 2;
 }
@@ -231,7 +231,7 @@ _this is a different selector than expected as `.beta ~ :focus` matches `.beta` 
 _avoid these cases._<br>
 _writing the selector without `:is()` is advised here_
 
-```pcss
+```css
 /* without is */
 .alpha:focus > .beta ~ .beta {
 	order: 2;

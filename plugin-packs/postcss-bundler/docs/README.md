@@ -24,17 +24,17 @@ This plugin pack contains :
 - [a rebaser that rewrites URLs in your CSS.](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url)
 
 `examples/example.css` :
-```pcss
+```css
 <example.css>
 ```
 
 `examples/imports/basic.css`:
-```pcss
+```css
 <imports/basic.css>
 ```
 
 when bundled :
-```pcss
+```css
 <example.expect.css>
 ```
 

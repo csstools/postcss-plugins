@@ -8,7 +8,7 @@ npm install @csstools/postcss-base-plugin --save-dev
 
 [PostCSS Base Plugin] lets you easily create new plugins following some [CSS Specification].
 
-```pcss
+```css
 .foo {
 	color: red;
 }
@@ -69,7 +69,7 @@ is preserved. By default, it is not preserved.
 postcssBasePlugin({ preserve: true })
 ```
 
-```pcss
+```css
 .foo {
 	color: red;
 }

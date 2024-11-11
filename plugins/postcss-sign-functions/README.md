@@ -6,9 +6,9 @@
 npm install @csstools/postcss-sign-functions --save-dev
 ```
 
-[PostCSS Sign Functions] lets you use the `sign` and `abs` functions, following the [CSS Values 4].
+[PostCSS Sign Functions] lets you use the `sign` and `abs` functions, following the [CSS Values 4] specification.
 
-```pcss
+```css
 .sign {
 	z-index: sign(-10px);
 }
@@ -118,7 +118,7 @@ is preserved. By default, it is preserved.
 postcssSignFunctions({ preserve: false })
 ```
 
-```pcss
+```css
 .sign {
 	z-index: sign(-10px);
 }

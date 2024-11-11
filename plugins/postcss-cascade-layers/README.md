@@ -8,7 +8,7 @@ npm install @csstools/postcss-cascade-layers --save-dev
 
 [PostCSS Cascade Layers] lets you use `@layer` following the [Cascade Layers Specification]. For more information on layers, checkout [A Complete Guide to CSS Cascade Layers] by Miriam Suzanne.
 
-```pcss
+```css
 
 target {
 	color: purple;
@@ -132,7 +132,7 @@ Defaults to `warn`
 postcssCascadeLayers({ onRevertLayerKeyword: 'warn' }) // 'warn' | false
 ```
 
-```pcss
+```css
 /* [postcss-cascade-layers]: handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions. */
 @layer {
 	.foo {
@@ -152,7 +152,7 @@ Defaults to `warn`
 postcssCascadeLayers({ onConditionalRulesChangingLayerOrder: 'warn' }) // 'warn' | false
 ```
 
-```pcss
+```css
 /* [postcss-cascade-layers]: handling different layer orders in conditional rules is unsupported by this plugin and will cause style differences between browser versions. */
 @media (min-width: 10px) {
 	@layer B {

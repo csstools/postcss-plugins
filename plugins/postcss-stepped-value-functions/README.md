@@ -6,9 +6,9 @@
 npm install @csstools/postcss-stepped-value-functions --save-dev
 ```
 
-[PostCSS Stepped Value Functions] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4].
+[PostCSS Stepped Value Functions] lets you use `round`, `rem` and `mod` stepped value functions, following the [CSS Values 4] specification.
 
-```pcss
+```css
 .test-functions {
 	padding: 8px mod(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
 	transform: rotate(mod(-140deg, -90deg));
@@ -79,7 +79,7 @@ is preserved. By default, it is not preserved.
 postcssSteppedValueFunctions({ preserve: true })
 ```
 
-```pcss
+```css
 .test-functions {
 	padding: 8px mod(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
 	transform: rotate(mod(-140deg, -90deg));

@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use the `color-mix()` function following the [CSS Color 5 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -45,7 +45,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

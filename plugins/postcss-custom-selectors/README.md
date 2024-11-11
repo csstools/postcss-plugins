@@ -8,7 +8,7 @@ npm install postcss-custom-selectors --save-dev
 
 [PostCSS Custom Selectors] lets you define `@custom-selector` in CSS following the [Custom Selectors Specification].
 
-```pcss
+```css
 @custom-selector :--heading h1, h2, h3;
 
 article :--heading + p {
@@ -63,7 +63,7 @@ is preserved. By default, it is not preserved.
 postcssCustomSelectors({ preserve: true })
 ```
 
-```pcss
+```css
 @custom-selector :--heading h1, h2, h3;
 
 article :--heading + p {

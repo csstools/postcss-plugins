@@ -28,13 +28,13 @@ Compared to other minifiers, [<humanReadableName>] is purely focused on correctn
 
 [<humanReadableName>] is not a CSS optimizer, it does not try to reduce the size of the CSS file by altering the CSS itself.
 
-```pcss
+```css
 <example.css>
 ```
 
 becomes :
 
-```pcss
+```css
 <example.expect.css>
 ```
 

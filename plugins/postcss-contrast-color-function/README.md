@@ -8,7 +8,7 @@ npm install @csstools/postcss-contrast-color-function --save-dev
 
 [PostCSS Contrast Color Function] lets you dynamically specify a text color with adequate contrast following the [CSS Color 5 Specification].
 
-```pcss
+```css
 .dynamic {
 	color: contrast-color(oklch(82% 0.2 330));
 }
@@ -79,7 +79,7 @@ is preserved. By default, it is preserved.
 postcssContrastColorFunction({ preserve: false })
 ```
 
-```pcss
+```css
 .dynamic {
 	color: contrast-color(oklch(82% 0.2 330));
 }

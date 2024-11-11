@@ -25,7 +25,7 @@ This plugin adds a non-standard function : `csstools-if( else )` which acts as a
 
 You control the outcome by setting `--a-variable` to `true` and `false`.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -54,7 +54,7 @@ The `functionName` option allows you to set a custom alias for `csstools-if`.
 <exportName>({ functionName: 'if' })
 ```
 
-```pcss
+```css
 <example-custom-function-name.css>
 
 /* becomes */
@@ -68,7 +68,7 @@ The `functionName` option allows you to set a custom alias for `csstools-if`.
 
 The `csstools-if else` function is used to declare which values must be used when a condition is true or false.
 
-```pcss
+```css
 color: csstools-if(--a-condition yellow else red);
 ```
 
@@ -99,7 +99,7 @@ Setting the correct configuration for this rule makes it possible to check even 
 
 The `true` and `false` keywords are syntactic sugar for `initial` and `<space>`.
 
-```pcss
+```css
 --a-condition: true;
 
 /* becomes */
@@ -107,7 +107,7 @@ The `true` and `false` keywords are syntactic sugar for `initial` and `<space>`.
 --a-condition: initial;
 ```
 
-```pcss
+```css
 --a-condition: false;
 
 /* becomes */

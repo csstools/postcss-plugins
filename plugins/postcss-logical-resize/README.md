@@ -8,7 +8,7 @@ npm install @csstools/postcss-logical-resize --save-dev
 
 [PostCSS Logical Resize] lets you use logical, rather than physical, values for `resize`, following the [CSS Logical Properties and Values] specification.
 
-```pcss
+```css
 .resize-block {
 	resize: block;
 }
@@ -73,7 +73,7 @@ postcssLogicalResize({
 })
 ```
 
-```pcss
+```css
 .resize-block {
 	resize: block;
 }

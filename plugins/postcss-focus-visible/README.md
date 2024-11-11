@@ -17,7 +17,7 @@ To use this feature you need to do two things :
 
 ```css
 
-```pcss
+```css
 :focus:not(:focus-visible) {
 	outline: none;
 }
@@ -77,7 +77,7 @@ is preserved. By default, it is preserved.
 postcssFocusVisible({ preserve: false })
 ```
 
-```pcss
+```css
 :focus:not(:focus-visible) {
 	outline: none;
 }
@@ -98,7 +98,7 @@ default, the replacement selector is `.focus-visible`.
 postcssFocusVisible({ replaceWith: '[data-focus-visible-added]' })
 ```
 
-```pcss
+```css
 :focus:not(:focus-visible) {
 	outline: none;
 }
@@ -124,7 +124,7 @@ Set this to `true` to prevent the class from being added.
 postcssFocusVisible({ disablePolyfillReadyClass: true })
 ```
 
-```pcss
+```css
 :focus:not(:focus-visible) {
 	outline: none;
 }

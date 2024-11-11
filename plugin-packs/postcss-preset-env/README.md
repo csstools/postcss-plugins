@@ -56,7 +56,7 @@ What [PostCSS Preset Env] does is to take the support data that comes from MDN a
 
 Here's a quick example of the syntax you can leverage by using [PostCSS Preset Env].
 
-```pcss
+```css
 @custom-media --viewport-medium (width <= 50rem);
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
@@ -347,7 +347,7 @@ Passing `autoprefixer: false` disables autoprefixer.
 
 This can have unexpected results with certain features and when [`preserve: true`](#preserve) is used. (defaults to `true`)
 
-```pcss
+```css
 :root {
   --grid-gap: 15px;
 }
@@ -425,7 +425,7 @@ postcssPresetEnv({
 });
 ```
 
-```pcss
+```css
 .element {
 	float: inline-start;
 	padding-inline-end: 10px;

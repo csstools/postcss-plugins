@@ -22,7 +22,7 @@
 If you want nested rules the same way [Sass] works
 you might want to use [PostCSS Nested] instead.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -70,7 +70,7 @@ Eventually we will remove support for the older edition, and this plugin option,
 This version is a continuation of what existed before CSS nesting was implemented in browsers.  
 It made a few non-invasive changes to keep up with implementations but it is falling behind.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

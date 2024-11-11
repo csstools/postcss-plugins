@@ -16,7 +16,7 @@ This is done by lowering the `chroma` in `oklch` until the color is in gamut.
 
 Using the `@media (color-gamut)` media feature makes it possible to only use the wide gamut colors on displays that support them.
 
-```pcss
+```css
 p {
 	background-color: oklch(80% 0.05 0.39 / 0.5);
 	color: oklch(20% 0.234 0.39 / 0.5);

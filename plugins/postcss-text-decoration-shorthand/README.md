@@ -8,7 +8,7 @@ npm install @csstools/postcss-text-decoration-shorthand --save-dev
 
 [PostCSS Text Decoration Shorthand] lets you use `text-decoration` as a shorthand following the [Text Decoration Specification].
 
-```pcss
+```css
 .example {
 	text-decoration: wavy underline purple 25%;
 }
@@ -64,7 +64,7 @@ is preserved. By default, it is preserved.
 postcssTextDecorationShorthand({ preserve: false })
 ```
 
-```pcss
+```css
 .example {
 	text-decoration: wavy underline purple 25%;
 }

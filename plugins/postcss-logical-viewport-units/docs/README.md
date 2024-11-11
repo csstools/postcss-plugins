@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you easily use `vb` and `vi` length units following the [CSS-Values-4 Specification].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -45,7 +45,7 @@ The `inlineDirection` option allows you to specify the direction of the inline a
 })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -71,7 +71,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use logical, rather than physical, values for `resize`, following the [CSS Logical Properties and Values] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -46,7 +46,7 @@ The `blockDirection` and `inlineDirection` options allow you to specify the dire
 })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

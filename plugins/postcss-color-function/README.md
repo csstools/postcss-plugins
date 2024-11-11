@@ -9,7 +9,7 @@ npm install @csstools/postcss-color-function --save-dev
 [PostCSS Color Function] lets you use the `color` function in
 CSS, following the [CSS Color] specification.
 
-```pcss
+```css
 .color {
 	color: color(display-p3 0.64331 0.19245 0.16771);
 }
@@ -70,7 +70,7 @@ is preserved. By default, it is not preserved.
 postcssColorFunction({ preserve: true })
 ```
 
-```pcss
+```css
 .color {
 	color: color(display-p3 0.64331 0.19245 0.16771);
 }
@@ -110,7 +110,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 postcssColorFunction({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 .color {
 	color: color(display-p3 0.64331 0.19245 0.16771);
 }

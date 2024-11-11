@@ -20,7 +20,7 @@
 [<humanReadableName>] lets you style by directionality using the `:dir()`
 pseudo-class in CSS, following the [Selectors] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -59,7 +59,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -77,7 +77,7 @@ somewhere in your HTML, preferably on the `html` element.
 <exportName>({ dir: 'ltr' });
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -89,7 +89,7 @@ somewhere in your HTML, preferably on the `html` element.
 <exportName>({ dir: 'rtl' });
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -105,7 +105,7 @@ The `shadow` option determines whether the CSS is assumed to be used in Shadow D
 <exportName>({ shadow: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

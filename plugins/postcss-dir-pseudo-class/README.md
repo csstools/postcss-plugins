@@ -9,7 +9,7 @@ npm install postcss-dir-pseudo-class --save-dev
 [PostCSS Dir Pseudo Class] lets you style by directionality using the `:dir()`
 pseudo-class in CSS, following the [Selectors] specification.
 
-```pcss
+```css
 article h3:dir(rtl) {
 	margin-right: 10px;
 }
@@ -86,7 +86,7 @@ is preserved. By default, it is not preserved.
 postcssDirPseudoClass({ preserve: true })
 ```
 
-```pcss
+```css
 article h3:dir(rtl) {
 	margin-right: 10px;
 }
@@ -124,7 +124,7 @@ somewhere in your HTML, preferably on the `html` element.
 postcssDirPseudoClass({ dir: 'ltr' });
 ```
 
-```pcss
+```css
 article h3:dir(rtl) {
 	margin-right: 10px;
 }
@@ -148,7 +148,7 @@ html:not([dir="rtl"]) article h3 {
 postcssDirPseudoClass({ dir: 'rtl' });
 ```
 
-```pcss
+```css
 article h3:dir(rtl) {
 	margin-right: 10px;
 }
@@ -176,7 +176,7 @@ The `shadow` option determines whether the CSS is assumed to be used in Shadow D
 postcssDirPseudoClass({ shadow: true })
 ```
 
-```pcss
+```css
 article h3:dir(rtl) {
 	margin-right: 10px;
 }

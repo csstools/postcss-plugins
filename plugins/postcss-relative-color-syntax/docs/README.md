@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you use the relative color syntax in CSS color functions following [CSS Color Module 5].
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -45,7 +45,7 @@ is preserved. By default, it is not preserved.
 <exportName>({ preserve: true })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

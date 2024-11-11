@@ -8,7 +8,7 @@ npm install @csstools/postcss-exponential-functions --save-dev
 
 [PostCSS Exponential Functions] lets you use the `pow()`, `sqrt()`, `hypot()`, `log()`, `exp()` functions following the [CSS Values 4 Specification].
 
-```pcss
+```css
 .foo {
 	top: calc(1px * pow(2, 3));
 	line-height: sqrt(1.2);
@@ -69,7 +69,7 @@ is preserved. By default, it is not preserved.
 postcssExponentialFunctions({ preserve: true })
 ```
 
-```pcss
+```css
 .foo {
 	top: calc(1px * pow(2, 3));
 	line-height: sqrt(1.2);

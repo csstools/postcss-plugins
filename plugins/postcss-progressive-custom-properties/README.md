@@ -15,7 +15,7 @@ This makes it tricky to provide fallback values for older browsers.
 
 The solution is to wrap Custom Property declarations in an `@supports` rule.
 
-```pcss
+```css
 :root {
 	/* fallback */
 	--a-color: red;
@@ -40,7 +40,7 @@ The solution is to wrap Custom Property declarations in an `@supports` rule.
 
 `initial` and `<white space>` are ignored.
 
-```pcss
+```css
 .initial {
 	--prop-1: red;
 	--prop-1: initial;

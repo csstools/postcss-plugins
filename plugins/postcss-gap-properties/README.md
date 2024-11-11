@@ -9,7 +9,7 @@ npm install postcss-gap-properties --save-dev
 [PostCSS Gap Properties] lets you use the `gap`, `column-gap`, and `row-gap`
 shorthand properties in CSS, following the [CSS Grid Layout] specification.
 
-```pcss
+```css
 .standard-grid {
 	display: grid;
 	gap: 20px;
@@ -79,7 +79,7 @@ is preserved. By default, it is preserved.
 postcssGapProperties({ preserve: false })
 ```
 
-```pcss
+```css
 .standard-grid {
 	display: grid;
 	gap: 20px;

@@ -13,7 +13,7 @@ To use this feature you need to do two things :
 - add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
 - add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
 
-```pcss
+```css
 input:blank {
 	background-color: yellow;
 }
@@ -69,7 +69,7 @@ is preserved. By default, it is preserved.
 postcssBlankPseudo({ preserve: false })
 ```
 
-```pcss
+```css
 input:blank {
 	background-color: yellow;
 }
@@ -90,7 +90,7 @@ the `:blank` pseudo. By default is `[blank]`
 postcssBlankPseudo({ replaceWith: '.css-blank' })
 ```
 
-```pcss
+```css
 input:blank {
 	background-color: yellow;
 }
@@ -122,7 +122,7 @@ Set this to `true` to prevent the class from being added.
 postcssBlankPseudo({ disablePolyfillReadyClass: true })
 ```
 
-```pcss
+```css
 input:blank {
 	background-color: yellow;
 }

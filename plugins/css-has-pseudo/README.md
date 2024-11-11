@@ -12,7 +12,7 @@ To use this feature you need to do two things :
 - add the [PostCSS plugin](#usage) that transforms the selector into a class or attribute
 - add the [browser polyfill](#browser) that sets the attribute or class on elements in a browser
 
-```pcss
+```css
 .title:has(+ p) {
 	margin-bottom: 1.5rem;
 }
@@ -68,7 +68,7 @@ is preserved. By default the original rules are preserved.
 postcssHasPseudo({ preserve: false })
 ```
 
-```pcss
+```css
 .title:has(+ p) {
 	margin-bottom: 1.5rem;
 }
@@ -309,7 +309,7 @@ We recommend you load the polyfill as high up on your Next application as possib
 The [PostCSS Has Pseudo] clones rules containing `:has()`,
 replacing them with an alternative `[csstools-has-]` selector.
 
-```pcss
+```css
 .title:has(+ p) {
 	margin-bottom: 1.5rem;
 }

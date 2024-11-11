@@ -11,7 +11,7 @@ npm install postcss-nesting --save-dev
 If you want nested rules the same way [Sass] works
 you might want to use [PostCSS Nested] instead.
 
-```pcss
+```css
 .foo {
 	color: red;
 
@@ -118,7 +118,7 @@ postcssNesting({
 This version is a continuation of what existed before CSS nesting was implemented in browsers.  
 It made a few non-invasive changes to keep up with implementations but it is falling behind.
 
-```pcss
+```css
 .foo {
 	color: red;
 

@@ -20,7 +20,7 @@
 [<humanReadableName>] lets you use `place-*` properties as shorthands for `align-*`
 and `justify-*`, following the [CSS Box Alignment] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -43,7 +43,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

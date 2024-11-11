@@ -17,7 +17,7 @@ Compared to other minifiers, [PostCSS Minify] is purely focused on correctness a
 
 [PostCSS Minify] is not a CSS optimizer, it does not try to reduce the size of the CSS file by altering the CSS itself.
 
-```pcss
+```css
 /*
  * License : MIT-0
  * legal text is preserved
@@ -58,7 +58,7 @@ a {
 
 becomes :
 
-```pcss
+```css
 /*
  * License : MIT-0
  * legal text is preserved

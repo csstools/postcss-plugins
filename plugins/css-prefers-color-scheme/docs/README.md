@@ -23,7 +23,7 @@ To use this feature you need to do two things :
 - add the [PostCSS plugin](#usage) that transforms the media queries
 - add the [browser polyfill](#browser) that triggers specific queries in a browser
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -46,7 +46,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

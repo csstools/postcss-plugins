@@ -8,7 +8,7 @@ npm install @csstools/postcss-logical-float-and-clear --save-dev
 
 [PostCSS Logical Float And Clear] lets you use logical, rather than physical, direction and dimension mappings in CSS, following the [CSS Logical Properties and Values] specification.
 
-```pcss
+```css
 .element {
 	clear: inline-start;
 	float: inline-end;
@@ -66,7 +66,7 @@ postcssLogicalFloatAndClear({
 })
 ```
 
-```pcss
+```css
 .element {
 	clear: inline-start;
 	float: inline-end;

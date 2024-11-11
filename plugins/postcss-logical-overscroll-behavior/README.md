@@ -8,7 +8,7 @@ npm install @csstools/postcss-logical-overscroll-behavior --save-dev
 
 [PostCSS Logical Overscroll Behavior] lets you use `overscroll-behavior-inline` and `overscroll-behavior-block` properties following the [CSS Overscroll Specification].
 
-```pcss
+```css
 .inline {
 	overscroll-behavior-inline: auto;
 }
@@ -72,7 +72,7 @@ postcssLogicalOverscrollBehavior({
 })
 ```
 
-```pcss
+```css
 .inline {
 	overscroll-behavior-inline: auto;
 }

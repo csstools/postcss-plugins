@@ -12,7 +12,7 @@ To use this feature you need to do two things :
 - add the [PostCSS plugin](#usage) that transforms the media queries
 - add the [browser polyfill](#browser) that triggers specific queries in a browser
 
-```pcss
+```css
 @media (prefers-color-scheme: dark) {
 	:root {
 		--site-bgcolor: #1b1b1b;
@@ -99,7 +99,7 @@ is preserved. By default, it is preserved.
 prefersColorScheme({ preserve: false })
 ```
 
-```pcss
+```css
 @media (prefers-color-scheme: dark) {
 	:root {
 		--site-bgcolor: #1b1b1b;

@@ -9,7 +9,7 @@ npm install postcss-color-functional-notation --save-dev
 [PostCSS Color Functional Notation] lets you use space and slash separated
 color notation in CSS, following the [CSS Color] specification.
 
-```pcss
+```css
 :root {
 	--firebrick: rgb(178 34 34);
 	--firebrick-a50: rgb(70% 13.5% 13.5% / 50%);
@@ -68,7 +68,7 @@ is preserved. By default, it is not preserved.
 postcssColorFunctionalNotation({ preserve: true })
 ```
 
-```pcss
+```css
 :root {
 	--firebrick: rgb(178 34 34);
 	--firebrick-a50: rgb(70% 13.5% 13.5% / 50%);
@@ -113,7 +113,7 @@ is wrapped with `@supports` when used in Custom Properties. By default, it is en
 postcssColorFunctionalNotation({ enableProgressiveCustomProperties: false })
 ```
 
-```pcss
+```css
 :root {
 	--firebrick: rgb(178 34 34);
 	--firebrick-a50: rgb(70% 13.5% 13.5% / 50%);

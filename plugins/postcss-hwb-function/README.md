@@ -8,7 +8,7 @@ npm install @csstools/postcss-hwb-function --save-dev
 
 [PostCSS HWB Function] lets you use the `hwb()` color function in CSS, following [CSS Color Module 4].
 
-```pcss
+```css
 a {
 	color: hwb(194 0% 0%);
 }
@@ -69,7 +69,7 @@ is preserved. By default, it is not preserved.
 postcssHWBFunction({ preserve: true })
 ```
 
-```pcss
+```css
 a {
 	color: hwb(194 0% 0%);
 }

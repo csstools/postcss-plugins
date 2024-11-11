@@ -20,7 +20,7 @@
 [<humanReadableName>] lets you use the `gap`, `column-gap`, and `row-gap`
 shorthand properties in CSS, following the [CSS Grid Layout] specification.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
@@ -43,7 +43,7 @@ is preserved. By default, it is preserved.
 <exportName>({ preserve: false })
 ```
 
-```pcss
+```css
 <example.css>
 
 /* becomes */

@@ -16,7 +16,7 @@ The clearest signal is a hard error. It forces you to stop and resolve the issue
 `@todo-or-die` rules are considered open TODOs while they are true.<br>
 Once they become false they will throw an exception.
 
-```pcss
+```css
 .baz {
 	/* "hwb" is fully supported */
 	@todo-or-die browserslist("chrome < 101, safari < 15, firefox < 96");
@@ -91,7 +91,7 @@ instructions for:
 The `@todo-or-die` rule is used to indicate which parts of your CSS have a TODO.
 You can either use a lone rule or a block around CSS.
 
-```pcss
+```css
 .foo {
 	@todo-or-die if(10 > 8);
 	color: pink;
@@ -113,7 +113,7 @@ You can use these conditions :
 | `before-date` | when "now" is before the date | when "now" is after |
 | `browserslist` | when browsers match those of your project | when no browsers match |
 
-```pcss
+```css
 @todo-or-die if(10 > 8);
 @todo-or-die not(10 < 8);
 @todo-or-die before-date(2006 01 31); /* year month day */
@@ -122,7 +122,7 @@ You can use these conditions :
 
 You can combine this plugin with others like `@csstools/postcss-design-tokens` :
 
-```pcss
+```css
 @todo-or-die if(10 > design-token('foo.bar'));
 ```
 

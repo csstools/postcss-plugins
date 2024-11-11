@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you rewrite url values in CSS.
 
-```pcss
+```css
 <example.css>
 
 /* becomes */
