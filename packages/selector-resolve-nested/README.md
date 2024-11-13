@@ -1,4 +1,4 @@
-# Selector Resolve Nested
+# Selector Resolve Nested [<img src="https://postcss.github.io/postcss/logo.svg" alt="for PostCSS" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/selector-resolve-nested.svg" height="20">][npm-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
@@ -29,5 +29,6 @@ resolveNestedSelector(a, b); // '.foo .bar'
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/selector-resolve-nested
+[postcss]: https://github.com/postcss/postcss
 
 [Selector Resolve Nested]: https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested

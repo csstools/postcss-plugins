@@ -1,4 +1,4 @@
-# CSS Color Parser
+# CSS Color Parser <img src="https://cssdb.org/images/css.svg" alt="for CSS" width="90" height="90" align="right">
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/css-color-parser.svg" height="20">][npm-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]

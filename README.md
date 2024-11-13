@@ -1,4 +1,4 @@
-# PostCSS Plugins [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
+# PostCSS Plugins [<img src="https://postcss.github.io/postcss/logo.svg" alt="" width="90" height="90" align="right">][postcss]
 
 [<img alt="build status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][ci-url]
 [<img alt="Discord" src="https://img.shields.io/discord/853978108758851604?color=5865F2&label=Discord&logo=discord&logoColor=white">][discord]
