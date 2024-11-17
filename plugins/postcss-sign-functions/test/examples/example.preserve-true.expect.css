@@ -1,27 +1,34 @@
 .sign {
 	z-index: -1;
+	z-index: sign(-10px);
 }
 
 .sign {
 	z-index: 0;
+	z-index: sign(0);
 }
 
 .sign {
 	z-index: 1;
+	z-index: sign(10px);
 }
 
 .abs {
 	z-index: 10px;
+	z-index: abs(-10px);
 }
 
 .abs {
 	z-index: 0;
+	z-index: abs(0);
 }
 
 .abs {
 	z-index: 10px;
+	z-index: abs(10px);
 }
 
 .abs {
 	z-index: max((10%), -1 * (10%));
+	z-index: abs(10%);
 }

@@ -33,36 +33,38 @@ npm install @csstools/postcss-sign-functions --save-dev
 	z-index: abs(10px);
 }
 
+.abs {
+	z-index: abs(10%);
+}
+
 /* becomes */
 
 .sign {
 	z-index: -1;
-	z-index: sign(-10px);
 }
 
 .sign {
 	z-index: 0;
-	z-index: sign(0);
 }
 
 .sign {
 	z-index: 1;
-	z-index: sign(10px);
 }
 
 .abs {
 	z-index: 10px;
-	z-index: abs(-10px);
 }
 
 .abs {
 	z-index: 0;
-	z-index: abs(0);
 }
 
 .abs {
 	z-index: 10px;
-	z-index: abs(10px);
+}
+
+.abs {
+	z-index: max((10%), -1 * (10%));
 }
 ```
 
@@ -112,10 +114,10 @@ Because of that, any usage that contains a `var` is skipped.
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is preserved.
+is preserved. By default, it is not preserved.
 
 ```js
-postcssSignFunctions({ preserve: false })
+postcssSignFunctions({ preserve: true })
 ```
 
 ```css
@@ -143,30 +145,45 @@ postcssSignFunctions({ preserve: false })
 	z-index: abs(10px);
 }
 
+.abs {
+	z-index: abs(10%);
+}
+
 /* becomes */
 
 .sign {
 	z-index: -1;
+	z-index: sign(-10px);
 }
 
 .sign {
 	z-index: 0;
+	z-index: sign(0);
 }
 
 .sign {
 	z-index: 1;
+	z-index: sign(10px);
 }
 
 .abs {
 	z-index: 10px;
+	z-index: abs(-10px);
 }
 
 .abs {
 	z-index: 0;
+	z-index: abs(0);
 }
 
 .abs {
 	z-index: 10px;
+	z-index: abs(10px);
+}
+
+.abs {
+	z-index: max((10%), -1 * (10%));
+	z-index: abs(10%);
 }
 ```
 

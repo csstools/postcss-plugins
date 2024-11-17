@@ -47,10 +47,10 @@ Because of that, any usage that contains a `var` is skipped.
 ### preserve
 
 The `preserve` option determines whether the original notation
-is preserved. By default, it is preserved.
+is preserved. By default, it is not preserved.
 
 ```js
-<exportName>({ preserve: false })
+<exportName>({ preserve: true })
 ```
 
 ```css
@@ -58,7 +58,7 @@ is preserved. By default, it is preserved.
 
 /* becomes */
 
-<example.preserve-false.expect.css>
+<example.preserve-true.expect.css>
 ```
 
 <linkList>
