@@ -21,3 +21,7 @@
 .abs {
 	z-index: abs(10px);
 }
+
+.abs {
+	z-index: abs(10%);
+}

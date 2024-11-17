@@ -1,5 +1,10 @@
 # Changes to PostCSS Sign Functions
 
+### Unreleased (minor)
+
+- Add support for unresolvable values (e.g. `%` and `var()` in `abs()`)
+- Change `preserve` option to default to `false`
+
 ### 1.0.0
 
 _November 11, 2024_

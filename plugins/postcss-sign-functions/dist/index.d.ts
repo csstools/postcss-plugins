@@ -5,7 +5,7 @@ export default creator;
 
 /** postcss-sign-functions plugin options */
 export declare type pluginOptions = {
-    /** Preserve the original notation. default: true */
+    /** Preserve the original notation. default: false */
     preserve?: boolean;
 };
 

@@ -22,7 +22,7 @@
 	z-index: sign(-0px);
 }
 
-.abs-ignore {
+.abs-a {
 	z-index: abs(10%);
 }
 
@@ -46,16 +46,26 @@
 	z-index: abs(-0px);
 }
 
+.abs-g {
+	--foo: 10px;
+	z-index: abs(var(--foo));
+}
+
+.abs-h {
+	--foo: 10px;
+	z-index: abs(var(--foo, abs(-1%)));
+}
+
+.abs-i {
+	z-index: abs(10% + abs(-1%));
+}
+
 :root {
 	--foo: sign(10px);
+	--bar: abs(10px);
 }
 
 .var-ignore-a {
 	--foo: 10px;
 	z-index: sign(var(--foo));
-}
-
-.var-ignore-b {
-	--foo: 10px;
-	z-index: abs(var(--foo));
 }

@@ -742,16 +742,12 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .sign {
 	order: 1;
-	order: sign(10px);
 	z-index: -1;
-	z-index: sign(-10px);
 }
 
 .abs {
 	order: 10px;
-	order: abs(10px);
 	z-index: 10px;
-	z-index: abs(-10px);
 }
 
 .random {
