@@ -183,7 +183,7 @@
 		"syntax": "auto | center | start | end"
 	},
 	"block-step-insert": {
-		"syntax": "margin | padding"
+		"syntax": "margin-box | padding-box | content-box"
 	},
 	"block-step-round": {
 		"syntax": "up | down | nearest"
@@ -1866,7 +1866,7 @@
 		"syntax": "<'-ms-scroll-snap-type'> <'-ms-scroll-snap-points-y'>"
 	},
 	"scroll-start-target": {
-		"syntax": "[ none | auto ]"
+		"syntax": "none | auto"
 	},
 	"scroll-timeline": {
 		"syntax": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#"

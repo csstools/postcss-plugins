@@ -86,8 +86,14 @@
 	"attr-name": {
 		"syntax": "[ <ident-token> '|' ]? <ident-token>"
 	},
+	"attr-type": {
+		"syntax": "type( <syntax> ) | string | <attr-unit>"
+	},
+	"attr-unit": {
+		"syntax": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr"
+	},
 	"attr()": {
-		"syntax": "attr( <attr-name> <syntax>? , <declaration-value>? )"
+		"syntax": "attr( <attr-name> <attr-type>? , <declaration-value>? )"
 	},
 	"attribute-selector": {
 		"syntax": "'[' <wq-name> ']' | '[' <wq-name> <attr-matcher> [ <string-token> | <ident-token> ] <attr-modifier>? ']'"
@@ -300,7 +306,7 @@
 		"syntax": "conic-gradient( [ <conic-gradient-syntax> ] )"
 	},
 	"container-condition": {
-		"syntax": "[ <container-name> ]? <container-query>"
+		"syntax": "[ <container-name>? <container-query>? ]!"
 	},
 	"container-name": {
 		"syntax": "<custom-ident>"
@@ -1306,6 +1312,9 @@
 	},
 	"scope-start": {
 		"syntax": "<forgiving-selector-list>"
+	},
+	"scroll-button-direction": {
+		"syntax": "up | down | left | right | block-start | block-end | inline-start | inline-end | prev | next"
 	},
 	"scroll-state-feature": {
 		"syntax": "<ident> : <ident>"

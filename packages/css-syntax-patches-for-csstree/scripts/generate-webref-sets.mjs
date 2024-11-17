@@ -552,6 +552,8 @@ export async function generate_webref_sets() {
 
 	// Set missing definitions
 	{
+		values['attr-unit'] = JSON.parse(await fs.readFile(path.join('raw-data', 'units.json'))).join(' | ');
+
 		values['intrinsic-size-keyword'] = JSON.parse(await fs.readFile(path.join('raw-data', 'intrinsic-size-keywords.json'))).join(' | ');
 
 		// https://github.com/w3c/csswg-drafts/issues/11127

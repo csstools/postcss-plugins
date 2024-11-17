@@ -53,10 +53,22 @@
 		"syntax-a": "[ <ident-token> '|' ]? <ident-token>",
 		"comment": ""
 	},
+	"attr-type": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "type( <syntax> ) | string | <attr-unit>",
+		"comment": ""
+	},
+	"attr-unit": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
+		"comment": ""
+	},
 	"attr()": {
 		"type": "modified",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
-		"syntax-a": "attr( <attr-name> <syntax>? , <declaration-value>? )",
+		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
 		"comment": ""
 	},
 	"autospace": {
@@ -272,7 +284,7 @@
 	"container-condition": {
 		"type": "modified",
 		"syntax-b": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]",
-		"syntax-a": "[ <container-name> ]? <container-query>",
+		"syntax-a": "[ <container-name>? <container-query>? ]!",
 		"comment": ""
 	},
 	"container-progress()": {
@@ -1179,6 +1191,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "running( <custom-ident> )",
+		"comment": ""
+	},
+	"scroll-button-direction": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "up | down | left | right | block-start | block-end | inline-start | inline-end | prev | next",
 		"comment": ""
 	},
 	"scroll-state-feature": {

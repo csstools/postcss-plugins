@@ -122,7 +122,7 @@
 	"block-step-insert": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "margin | padding",
+		"syntax-a": "margin-box | padding-box | content-box",
 		"comment": ""
 	},
 	"block-step-round": {
@@ -1718,7 +1718,7 @@
 	"scroll-start-target": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ none | auto ]",
+		"syntax-a": "none | auto",
 		"comment": ""
 	},
 	"scroll-timeline": {

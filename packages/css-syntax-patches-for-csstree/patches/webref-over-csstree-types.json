@@ -261,12 +261,34 @@
 			]
 		}
 	},
+	"attr-type": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "type( <syntax> ) | string | <attr-unit>",
+		"syntax-m": "type( <syntax> ) | string | <attr-unit>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"attr-unit": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
+		"syntax-m": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"attr()": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
-		"syntax-a": "attr( <attr-name> <syntax>? , <declaration-value>? )",
-		"syntax-m": "attr( <attr-name> <syntax>? , <declaration-value>? )",
+		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
+		"syntax-m": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
 		"tests": {
 			"passing": [
 				{
@@ -275,17 +297,21 @@
 				},
 				{
 					"property": "content",
-					"value": "attr(value <string>)"
+					"value": "attr(value type(<string>))"
 				},
 				{
 					"property": "content",
-					"value": "attr(value foo)"
+					"value": "attr(value string)"
+				},
+				{
+					"property": "content",
+					"value": "attr(value px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "content",
-					"value": "attr(value ><)"
+					"value": "attr(value <string>)"
 				},
 				{
 					"property": "content",
@@ -828,8 +854,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]",
-		"syntax-a": "[ <container-name> ]? <container-query>",
-		"syntax-m": "[ <container-name> ]? <container-query>",
+		"syntax-a": "[ <container-name>? <container-query>? ]!",
+		"syntax-m": "[ <container-name>? <container-query>? ]!",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3280,6 +3306,17 @@
 		"syntax-b": "",
 		"syntax-a": "running( <custom-ident> )",
 		"syntax-m": "running( <custom-ident> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-button-direction": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "up | down | left | right | block-start | block-end | inline-start | inline-end | prev | next",
+		"syntax-m": "up | down | left | right | block-start | block-end | inline-start | inline-end | prev | next",
 		"tests": {
 			"passing": [],
 			"failing": []
