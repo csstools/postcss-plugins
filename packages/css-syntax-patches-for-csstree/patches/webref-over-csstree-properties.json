@@ -408,10 +408,10 @@
 		"tests": {
 			"passing": [
 				{
-					"value": "auto margin up 10px"
+					"value": "auto margin-box up 10px"
 				},
 				{
-					"value": "margin center 10rem up"
+					"value": "margin-box center 10rem up"
 				},
 				{
 					"value": "15px auto"
@@ -450,15 +450,27 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "margin | padding",
-		"syntax-m": "margin | padding",
+		"syntax-a": "margin-box | padding-box | content-box",
+		"syntax-m": "margin-box | padding-box | content-box",
 		"tests": {
 			"passing": [
 				{
-					"value": "margin"
+					"value": "margin-box"
+				},
+				{
+					"value": "padding-box"
+				},
+				{
+					"value": "content-box"
 				}
 			],
 			"failing": [
+				{
+					"value": "padding"
+				},
+				{
+					"value": "box"
+				},
 				{
 					"value": "foo"
 				}
@@ -3889,8 +3901,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ none | auto ]",
-		"syntax-m": "[ none | auto ]",
+		"syntax-a": "none | auto",
+		"syntax-m": "none | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
