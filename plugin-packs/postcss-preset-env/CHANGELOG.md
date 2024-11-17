@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated [`@csstools/postcss-random-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function/CHANGELOG.md#101) (patch)
+- Updated [`@csstools/postcss-sign-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions) to [`1.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions/CHANGELOG.md#110) (minor)
 
 ### 10.1.0
 
