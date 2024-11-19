@@ -1,1 +1,10 @@
-@import url("./components/card.css");
+.some-class {
+
+	.nested {
+		flex-direction: column;
+
+		@media (--xxs-only) {
+			flex-direction: row;
+		}
+	}
+}

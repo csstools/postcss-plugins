@@ -1,8 +1,1 @@
-:root{--radius-2:5px;--size-fluid-3:max(1.5rem, min(3vw, 2rem));--shadow-2:
-    0 3px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-    0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));--shadow-3:
-    0 -1px 3px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-    0 1px 2px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-    0 2px 5px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
-    0 4px 12px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
-    0 12px 15px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));--shadow-color:220 3% 15%;--shadow-strength:1%;--animation-fade-in:fade-in .5s var(--ease-3);--ease-3:cubic-bezier(.25, 0, .3, 1)}.card{border-radius:var(--radius-2);padding:var(--size-fluid-3);box-shadow:var(--shadow-2)}.card:hover{box-shadow:var(--shadow-3)}@media (prefers-reduced-motion: no-preference){.card{animation:var(--animation-fade-in)}}@media (prefers-color-scheme: dark){:root{--shadow-color:220 40% 2%;--shadow-strength:25%}}@keyframes fade-in{to{opacity:1}}
+.some-class{.nested{flex-direction:column;@media (min-width:0px) and (max-width:239px){flex-direction:row}}}

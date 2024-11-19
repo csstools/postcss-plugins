@@ -1,29 +1,33 @@
-const openProps = require('open-props');
-const postcssBundler = require('@csstools/postcss-bundler');
-const postcssCustomMedia = require('postcss-custom-media');
-const postcssGlobalData = require('@csstools/postcss-global-data');
-const postcssJitProps = require('postcss-jit-props');
-const postcssMinify = require('@csstools/postcss-minify');
-const postcssPresetEnv = require('postcss-preset-env');
+const isDevelopment = process.env.NODE_ENV === 'development';
 
-module.exports = {
+const postcssConfig = {
 	plugins: [
-		postcssBundler(),
-		postcssGlobalData({
+
+		require('@csstools/postcss-global-data')({
 			files: [
-				'node_modules://open-props/media.min.css',
+				'./node_modules/open-props/media.min.css',
 			],
 		}),
-		postcssCustomMedia({
-			preserve: false,
+
+		require('postcss-jit-props')({
+			...require('open-props'),
+			custom_selector: ':where(html)',
 		}),
-		postcssJitProps(openProps),
-		postcssPresetEnv({
-			features: {
-				'nesting-rules': true,
-				'custom-media-queries': false,
-			},
+
+		require('autoprefixer'),
+
+		require('postcss-custom-media')({
+			preserve: isDevelopment,
 		}),
-		postcssMinify(),
+
 	],
 };
+
+if (process.env.NODE_ENV === 'production') {
+	postcssConfig.plugins.push(
+		require('cssnano')({
+			preset: 'default',
+		}),
+	);
+}
+module.exports = postcssConfig;

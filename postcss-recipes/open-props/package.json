@@ -11,6 +11,7 @@
 		"@csstools/postcss-bundler": "^2.0.1",
 		"@csstools/postcss-global-data": "^3.0.0",
 		"@csstools/postcss-minify": "^2.0.1",
+		"cssnano": "^7.0.6",
 		"open-props": "^1.7.6",
 		"postcss-cli": "^11.0.0",
 		"postcss-custom-media": "^11.0.1",
