@@ -26,7 +26,7 @@ instructions:
 ### Quick start
 
 1. fork the repo and clone it locally
-2. `npm run ci` to install dependencies
+2. `npm ci` to install dependencies
 3. `cd plugins/<plugin-name>`
 4. `npm run build && npm run test` to build and test the plugin after making changes
 5. open a pull request with the changes
