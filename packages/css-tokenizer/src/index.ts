@@ -112,3 +112,16 @@ export {
 	isTokenWhitespace,
 	isTokenWhiteSpaceOrComment,
 } from './util/type-predicates';
+
+// Grid template areas
+export { tokenizeGridTemplateAreas } from './tokenize-grid-template-areas';
+
+export {
+	TokenTypeGridTemplateAreas,
+} from './interfaces/token-grid-template-areas';
+
+export type {
+	GridTemplateAreasTokenNamedCell,
+	GridTemplateAreasTokenNullCell,
+	GridTemplateAreasTokenTrash
+} from './interfaces/token-grid-template-areas';
