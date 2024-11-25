@@ -60,7 +60,7 @@
 		"@codemirror/lang-javascript": "^6.2.2",
 		"@codemirror/state": "^6.4.0",
 		"@codemirror/theme-one-dark": "^6.1.0",
-		"@codemirror/view": "^6.34.1",
+		"@codemirror/view": "^6.35.0",
 		"@csstools/css-calc": "^2.0.0",
 		"@csstools/css-color-parser": "^3.0.0",
 		"@csstools/css-parser-algorithms": "^3.0.0",
@@ -80,7 +80,7 @@
 		"postcss": "^8.4.45",
 		"postcss-cli": "^11.0.0",
 		"postcss-preset-env": "^10.0.0",
-		"rollup": "^4.24.2",
+		"rollup": "^4.27.4",
 		"rollup-plugin-filesize": "^10.0.0",
 		"rollup-plugin-livereload": "^2.0.5"
 	},
