@@ -1,4 +1,4 @@
-import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify, sourceIndices } from '@csstools/css-parser-algorithms';
+import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseListOfComponentValues, stringify, sourceIndices, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import { TokenType, tokenize } from '@csstools/css-tokenizer';
 
 const IS_LAYER = /^layer$/i;
@@ -97,6 +97,10 @@ export function parseAtImport(params) {
 			IS_LAYER.test(componentValue.getName())
 		) {
 			if (typeof layer !== 'undefined' || typeof supports !== 'undefined') {
+				return false;
+			}
+
+			if (!componentValue.value.some((x) => !isWhiteSpaceOrCommentNode(x))) {
 				return false;
 			}
 

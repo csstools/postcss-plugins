@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (patch)
+
+- Fix import parsing so that `@import "foo.css" layer()` is considered invalid syntax and ignored.
+
 ### 3.0.4
 
 _November 1, 2024_
