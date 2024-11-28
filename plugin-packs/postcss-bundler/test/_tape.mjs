@@ -28,7 +28,7 @@ const testCases = {
 	},
 	'ignore': {
 		message: 'ignores incorrect syntax',
-		warnings: 4,
+		warnings: 5,
 	},
 	'layer-before-external': {
 		message: 'correctly handles layer statements before external resources',

@@ -111,6 +111,10 @@ export function parseAtImport(params: string): false | { uri: string; fullUri: s
 				return false;
 			}
 
+			if (!componentValue.value.some((x) => !isWhiteSpaceOrCommentNode(x))) {
+				return false;
+			}
+
 			layer = stringify([componentValue.value]);
 			continue;
 		}

@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Fix import parsing so that `@import "foo.css" layer()` is considered invalid syntax and emits warnings.
+
 ### 2.0.5
 
 _November 1, 2024_

@@ -2,3 +2,4 @@
 @import supports(foo) "imports/basic.css";
 @import url('imports/basic.css' url-mod);
 @import url('imports/basic.css' 'imports/basic.css');
+@import url('imports/basic.css') layer();
