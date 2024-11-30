@@ -264,6 +264,37 @@
 					"passing": [],
 					"failing": []
 				}
+			},
+			"unicode-range": {
+				"type": "modified",
+				"comment": "",
+				"syntax-b": "<urange>#",
+				"syntax-a": "<unicode-range-token>#",
+				"syntax-m": "<unicode-range-token>#",
+				"tests": {
+					"passing": [
+						{
+							"value": "U+4E00-9FFF"
+						},
+						{
+							"value": "U+30??"
+						},
+						{
+							"value": "u+?"
+						}
+					],
+					"failing": [
+						{
+							"value": "-9FFF"
+						},
+						{
+							"value": "u--"
+						},
+						{
+							"value": "u++"
+						}
+					]
+				}
 			}
 		}
 	},

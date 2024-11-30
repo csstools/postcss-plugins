@@ -134,6 +134,12 @@
 				"syntax-b": "",
 				"syntax-a": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 				"comment": ""
+			},
+			"unicode-range": {
+				"type": "modified",
+				"syntax-b": "<urange>#",
+				"syntax-a": "<unicode-range-token>#",
+				"comment": ""
 			}
 		}
 	},
