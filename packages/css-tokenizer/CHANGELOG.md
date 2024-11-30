@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (minor)
+
+- Add `tokenizeGridTemplateAreas` for `grid-template-areas` strings.
+
 ### 3.0.3
 
 _October 25, 2024_
