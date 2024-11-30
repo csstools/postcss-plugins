@@ -16,4 +16,28 @@
 	background: url('foo.png');
 }
 
+.ignore {
+	background: rewrite-url(oops 'foo.png');
+}
+
 @foo rewrite-url('foo.png');
+
+.url-modifiers {
+	/* No overrides, url modifiers should be preserved */
+	background: rewrite-url('foo.png' --url-modifier-a crossorigin(use-credentials) referrerpolicy(no-referrer));
+}
+
+.url-modifiers {
+	/* Empty list, all url modifiers should be removed */
+	background: rewrite-url('foo.png' --url-modifier-b crossorigin(use-credentials) referrerpolicy(no-referrer));
+}
+
+.url-modifiers {
+	/* A single explicit item, only that item should be present */
+	background: rewrite-url('foo.png' --url-modifier-c crossorigin(use-credentials) referrerpolicy(no-referrer));
+}
+
+.url-modifiers {
+	/* A filter on the original values, only a single item should be removed */
+	background: rewrite-url('foo.png' --url-modifier-d crossorigin(use-credentials) referrerpolicy(no-referrer));
+}

@@ -38,11 +38,12 @@
 Determine how urls are rewritten with the `rewriter` callback.
 
 ```ts
-export interface ValueToRewrite {
-	url: string
+interface ValueToRewrite {
+	url: string;
+	urlModifiers: Array<string>;
 }
 
-export interface RewriteContext {
+interface RewriteContext {
 	type: 'declaration-value' | 'at-rule-prelude';
 	from: string | undefined;
 	rootFrom: string | undefined;
@@ -50,10 +51,10 @@ export interface RewriteContext {
 	atRuleName?: string;
 }
 
-export type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite | false;
+type Rewriter = (value: ValueToRewrite, context: RewriteContext) => ValueToRewrite | false;
 
 /** postcss-rewrite-url plugin options */
-export type pluginOptions = {
+type pluginOptions = {
 	rewriter: Rewriter;
 };
 ```
@@ -61,17 +62,67 @@ export type pluginOptions = {
 ```js
 <exportName>({
 	rewriter: (value, context) => {
+		console.log(value); // info about the `rewrite-url()` function itself (e.g. the url and url modifiers)
+		console.log(context); // context surrounding the `rewrite-url()` function (i.e. where was it found?)
+
 		if (value.url === 'ignore-me') {
 			// return `false` to ignore this url and preserve `rewrite-url()` in the output
 			return false;
 		}
 
-		console.log(context); // for extra conditional logic
+		// use url modifiers to trigger specific behavior
+		if (value.urlModifiers.includes('--a-custom-modifier')) {
+			return {
+				url: value.url + '#other-modification',
+				urlModifiers: [], // pass new or existing url modifiers to emit these in the final result
+			};
+		}
+
 		return {
 			url: value.url + '#modified',
 		};
 	},
 })
+```
+
+## Syntax
+
+[<humanReadableName>] is non-standard and is not part of any official CSS Specification.
+
+### `rewrite-url()` function
+
+The `rewrite-url()` function takes a url string and optional url modifiers and will be transformed to a standard `url()` function by a dev tool.
+
+```css
+.foo {
+	background: rewrite-url('foo.png');
+}
+```
+
+```
+rewrite-url() = rewrite-url( <string> <url-modifier>* )
+```
+
+#### [Stylelint](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/#propertiessyntax--property-syntax-)
+
+Stylelint is able to check for unknown property values.
+Setting the correct configuration for this rule makes it possible to check even non-standard syntax.
+
+```js
+	'declaration-property-value-no-unknown': [
+		true,
+		{
+			"typesSyntax": {
+				"url": "| rewrite-url( <string> <url-modifier>* )"
+			}
+		},
+	],
+	'function-no-unknown': [
+		true,
+		{
+			"ignoreFunctions": ["rewrite-url"]
+		}
+	],
 ```
 
 <linkList>
