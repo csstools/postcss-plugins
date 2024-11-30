@@ -20,6 +20,7 @@ export declare type Rewriter = (value: ValueToRewrite, context: RewriteContext) 
 
 export declare interface ValueToRewrite {
     url: string;
+    urlModifiers: Array<string>;
 }
 
 export { }

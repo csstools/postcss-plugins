@@ -1,10 +1,11 @@
 import type { AtRule, Declaration, PluginCreator, Result } from 'postcss';
 import { isTokenString, tokenize } from '@csstools/css-tokenizer';
-import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, parseListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { serializeString } from './serialize-string';
 
 export interface ValueToRewrite {
-	url: string
+	url: string;
+	urlModifiers: Array<string>;
 }
 
 export interface RewriteContext {
@@ -102,30 +103,37 @@ function rewrite(rewriter: Rewriter, value: string, context: RewriteContext): st
 				return;
 			}
 
-			for (const x of componentValue.value) {
-				if (isWhitespaceNode(x) || isCommentNode(x)) {
-					continue;
-				}
+			const rewriteArguments = componentValue.value.filter((x) => !isWhiteSpaceOrCommentNode(x));
+
+			for (let i = 0; i < rewriteArguments.length; i++) {
+				const x = rewriteArguments[i];
 
 				if (isTokenNode(x) && isTokenString(x.value)) {
 					const original = x.value[4].value.trim();
-					const modified = rewriter({ url: original }, context);
+					const urlModifiers = rewriteArguments.slice(i + 1);
+
+					const modified = rewriter({ url: original, urlModifiers: urlModifiers.map((y) => y.toString()) }, context);
 					if (modified === false) {
 						return;
 					}
 
-					if (modified.url === original) {
-						break;
-					}
+					const modifiedArguments = parseListOfComponentValues(
+						tokenize({
+							css: [
+								`"${serializeString(modified.url)}"`,
+								...(modified.urlModifiers ?? urlModifiers)
+							].join(' ')
+						})
+					);
 
-					x.value[4].value = modified.url;
-					x.value[1] = `"${serializeString(modified.url)}"`;
-
+					componentValue.value = modifiedArguments;
 					componentValue.name[1] = 'url(';
 					componentValue.name[4].value = 'url';
 
 					return componentValue;
 				}
+
+				return;
 			}
 		},
 	);

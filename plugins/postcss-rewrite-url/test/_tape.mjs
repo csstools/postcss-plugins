@@ -10,6 +10,33 @@ postcssTape(plugin)({
 					return false;
 				}
 
+				if (value.urlModifiers.includes('--url-modifier-a')) {
+					return {
+						url: value.url + '#modified-a',
+					};
+				}
+
+				if (value.urlModifiers.includes('--url-modifier-b')) {
+					return {
+						url: value.url + '#modified-b',
+						urlModifiers: [],
+					};
+				}
+
+				if (value.urlModifiers.includes('--url-modifier-c')) {
+					return {
+						url: value.url + '#modified-c',
+						urlModifiers: ['crossorigin(anonymous)'],
+					};
+				}
+
+				if (value.urlModifiers.includes('--url-modifier-d')) {
+					return {
+						url: value.url + '#modified-d',
+						urlModifiers: value.urlModifiers.filter((x) => x !== '--url-modifier-d'),
+					};
+				}
+
 				return {
 					url: value.url + '#modified',
 				};
