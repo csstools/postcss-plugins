@@ -1,6 +1,8 @@
 # Changes to PostCSS Rewrite URL
 
-### Unreleased (minor)
+### 2.1.0
+
+_November 30, 2024_
 
 - Add support for rewriting url modifiers (e.g. `rewrite-url('foo.png' --foo)` -> `rewrite-url('foo.png#foo')`)
 - Document the syntax definition for `rewrite-url()`
