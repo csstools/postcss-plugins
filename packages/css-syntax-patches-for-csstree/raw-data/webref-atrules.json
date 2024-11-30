@@ -109,7 +109,7 @@
 				"syntax": "[ normal | from-font | <percentage [0,∞]> ]{1,2}"
 			},
 			"unicode-range": {
-				"syntax": "<urange>#"
+				"syntax": "<unicode-range-token>#"
 			}
 		}
 	},

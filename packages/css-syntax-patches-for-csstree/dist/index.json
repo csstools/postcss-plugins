@@ -30,7 +30,8 @@
 					"subscript-position-override": "[ normal | from-font | <percentage> ]{1,2}",
 					"subscript-size-override": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 					"superscript-position-override": "[ normal | from-font | <percentage> ]{1,2}",
-					"superscript-size-override": "[ normal | from-font | <percentage [0,∞]> ]{1,2}"
+					"superscript-size-override": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
+					"unicode-range": "<unicode-range-token>#"
 				}
 			},
 			"font-feature-values": {
@@ -428,6 +429,7 @@
 		},
 		"types": {
 			"dashed-ident": "<custom-property-name>",
+			"unicode-range-token": "<urange>",
 			"anchor-size()": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
 			"anchor()": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
 			"angle-percentage": "[ <angle> | <percentage> ]",

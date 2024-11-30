@@ -1,0 +1,7 @@
+.foo {
+	offset-path: ray(45deg);
+	offset-path: ray(200deg contain);
+	offset-path: ray(contain 200deg);
+	offset-path: ray(50deg closest-corner contain at 100px 20px);
+	offset-path: ray(50deg closest-corner contain);
+}

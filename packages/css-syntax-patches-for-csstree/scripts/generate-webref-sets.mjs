@@ -67,7 +67,7 @@ const CUSTOM_OVERRIDES = {
 		},
 	},
 	'motion': {
-		// See : https://github.com/w3c/fxtf-drafts/pull/573
+		// See : https://github.com/csstree/csstree/issues/292
 		'ray()': {
 			'syntax-b': 'ray( <angle> && <ray-size>? && contain? && [at <position>]? )',
 			'syntax-a': 'ray( [ <angle> && <ray-size>? && contain? && [at <position>]? ] )',
