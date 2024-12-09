@@ -1,6 +1,8 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### 1.0.6
+
+_December 9, 2024_
 
 - Update `csstree` to [`v3.1.0`](https://github.com/csstree/csstree/releases/tag/v3.1.0)
 - Update `@webref/css` to [`v6.17.05`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.17.5)

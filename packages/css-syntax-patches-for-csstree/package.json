@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-syntax-patches-for-csstree",
 	"description": "CSS syntax patches for CSS tree",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
