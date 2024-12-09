@@ -77,12 +77,6 @@
 		"syntax-a": "no-autospace | [ ideograph-alpha || ideograph-numeric || punctuation ] || [ insert | replace ]",
 		"comment": ""
 	},
-	"axis": {
-		"type": "modified",
-		"syntax-b": "block | inline | vertical | horizontal",
-		"syntax-a": "block | inline | x | y",
-		"comment": ""
-	},
 	"baseline-position": {
 		"type": "modified",
 		"syntax-b": "[ first | last ]? baseline",
@@ -1221,12 +1215,6 @@
 		"type": "modified",
 		"syntax-b": "scroll( [ <axis> || <scroller> ]? )",
 		"syntax-a": "scroll( [ <scroller> || <axis> ]? )",
-		"comment": ""
-	},
-	"scroller": {
-		"type": "modified",
-		"syntax-b": "root | nearest",
-		"syntax-a": "root | nearest | self",
 		"comment": ""
 	},
 	"shadow": {

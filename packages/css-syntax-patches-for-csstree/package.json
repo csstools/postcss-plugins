@@ -39,9 +39,9 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@webref/css": "^6.17.3",
+		"@webref/css": "^6.17.5",
 		"css-tree": "^2.3.1",
-		"css-tree-3": "npm:css-tree@^3.0.1"
+		"css-tree-3": "npm:css-tree@^3.1.0"
 	},
 	"scripts": {
 		"build": "node ./scripts/index.mjs",

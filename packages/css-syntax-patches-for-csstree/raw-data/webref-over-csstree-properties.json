@@ -899,12 +899,6 @@
 		"syntax-a": "auto | line | block",
 		"comment": ""
 	},
-	"forced-color-adjust": {
-		"type": "modified",
-		"syntax-b": "auto | none",
-		"syntax-a": "auto | none | preserve-parent-color",
-		"comment": ""
-	},
 	"glyph-orientation-vertical": {
 		"type": "modified",
 		"syntax-b": "<angle>",
@@ -1635,12 +1629,6 @@
 		"type": "modified",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
-		"comment": ""
-	},
-	"scale": {
-		"type": "modified",
-		"syntax-b": "none | <number>{1,3}",
-		"syntax-a": "none | [ <number> | <percentage> ]{1,3}",
 		"comment": ""
 	},
 	"scroll-marker-group": {
