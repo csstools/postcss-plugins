@@ -335,17 +335,6 @@
 			"failing": []
 		}
 	},
-	"axis": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "block | inline | vertical | horizontal",
-		"syntax-a": "block | inline | x | y",
-		"syntax-m": "block | inline | x | y",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"baseline-position": {
 		"type": "modified",
 		"comment": "",
@@ -3390,30 +3379,6 @@
 					"value": "scroll(root block x)"
 				}
 			]
-		}
-	},
-	"scroller": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "root | nearest",
-		"syntax-a": "root | nearest | self",
-		"syntax-m": "root | nearest | self",
-		"tests": {
-			"passing": [
-				{
-					"property": "animation-timeline",
-					"value": "scroll(self)"
-				},
-				{
-					"property": "animation-timeline",
-					"value": "scroll()"
-				},
-				{
-					"property": "animation-timeline",
-					"value": "scroll(root)"
-				}
-			],
-			"failing": []
 		}
 	},
 	"shadow": {
