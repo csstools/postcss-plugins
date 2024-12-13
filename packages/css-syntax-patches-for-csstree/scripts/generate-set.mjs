@@ -1,4 +1,4 @@
-import { definitionSyntax } from 'css-tree-3';
+import { definitionSyntax } from 'css-tree';
 import { sort_atrule_set, sort_set } from './sort-set.mjs';
 
 export function generate_set(source) {

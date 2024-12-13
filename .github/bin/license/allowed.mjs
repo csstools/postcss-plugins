@@ -149,32 +149,14 @@ export const osiApprovedWithCCO = [
 
 const licenseExceptions = [
 	{
-		// because ... irony? 🤷
-		file: 'node_modules/spdx-exceptions/package.json',
-		license: 'CC-BY-3.0',
-	},
-	{
 		// see : https://github.com/Fyrd/caniuse/issues/4062
 		file: 'node_modules/caniuse-lite/package.json',
 		license: 'CC-BY-4.0',
 	},
-
-	// These packages have "public domain" in the "license" field, which is incorrect but acceptable for our purposes.
 	{
-		file: 'node_modules/deep-freeze/package.json',
-		license: 'public',
-	},
-	{
-		file: 'node_modules/deep-freeze/package.json',
-		license: 'domain',
-	},
-	{
-		file: 'node_modules/identity-function/package.json',
-		license: 'public',
-	},
-	{
-		file: 'node_modules/identity-function/package.json',
-		license: 'domain',
+		// https://github.com/typescript-eslint/typescript-eslint/pull/10481
+		file: 'node_modules/@typescript-eslint/parser/package.json',
+		license: 'MITClause',
 	},
 ];
 

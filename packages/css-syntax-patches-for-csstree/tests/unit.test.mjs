@@ -1,4 +1,4 @@
-import { fork } from 'css-tree-3';
+import { fork } from 'css-tree';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -22,7 +22,10 @@ const next = JSON.parse(await fs.readFile(path.join('dist', 'index.json'), 'utf-
 
 const forkedLexer = fork({
 	atrules: next.atrules,
-	properties: next.properties,
+	properties: {
+		'-if-supporting-property': '<if()>',
+		...next.properties,
+	},
 	types: next.types,
 }).lexer;
 
