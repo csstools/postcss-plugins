@@ -64,7 +64,7 @@
 		"@csstools/postcss-trigonometric-functions": "^4.0.5",
 		"@csstools/postcss-unset-value": "^4.0.0",
 		"css-blank-pseudo": "^7.0.1",
-		"css-has-pseudo": "^7.0.1",
+		"css-has-pseudo": "^7.0.2",
 		"css-prefers-color-scheme": "^10.0.0",
 		"postcss": "^8.4.45",
 		"postcss-attribute-case-insensitive": "^7.0.1",
