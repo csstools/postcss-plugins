@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="help" href="https://drafts.csswg.org/selectors/#relational">
+	<!-- Included only to trigger CORS errors -->
+	<!-- This stylesheet is not accessible in JS and must not cause cascading failures -->
+	<link rel="stylesheet" href="http://localhost:8081/test/basic.expect.css">
+
+	<script src="http://localhost:8082/dist/browser-global.js"></script>
+	<script>cssHasPseudo(document, { observedAttributes: ['attrname', 'a_test_attr', 'c_test_attr'], debug: false, hover: true, forcePolyfill: window.location.hash === '#force-polyfill' });</script>
+
+	<!-- This is the real test stylesheet and has correct CORS attributes and http headers -->
+	<link id="the-stylesheet" rel="stylesheet" href="http://localhost:8081/test/browser-stylesheet-loading.expect.css" crossorigin="anonymous">
+</head>
+<body>
+	<p id="hello-world">Hello World</p>
+
+	<script type="module">
+		function rafP(callback) {
+			return new Promise((resolve) => {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						callback();
+						resolve();
+					});
+				});
+			});
+		}
+
+		self.runTest = async function runTest() {
+			const testLoadingAfterJSResult = await testLoadingAfterJS();
+
+			return testLoadingAfterJSResult;
+		}
+
+		async function testLoadingAfterJS() {
+			function testColor(test_name, color) {
+				var actual = getComputedStyle(document.getElementById('hello-world')).color;
+				if (actual !== color) {
+					throw new Error(test_name + ': div#hello-world.color; expected ' + color + ' but got ' + actual);
+				}
+			}
+
+			const green = 'rgb(0, 128, 0)';
+			const black = 'rgb(0, 0, 0)';
+
+			await rafP(() => {
+				testColor(`Text is green when loading a stylesheet after initializing the polyfill`, green);
+			});
+
+			document.getElementById('the-stylesheet').remove();
+
+			await rafP(() => {
+				testColor(`Text is green when loading a stylesheet after initializing the polyfill`, black);
+			});
+
+			var head = document.head;
+			var link = document.createElement("link");
+
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			link.href = "http://localhost:8081/test/browser-stylesheet-loading.expect.css?delay=50";
+			link.crossOrigin = "anonymous";
+
+			const loadWaiter = new Promise((resolve) => {
+				link.addEventListener('load', resolve);
+			});
+
+			head.appendChild(link);
+
+			await loadWaiter;
+
+			await rafP(() => {
+				testColor(`Text is green when loading a stylesheet after initializing the polyfill`, green);
+			});
+
+			return true;
+		}
+	</script>
+</body>
+</html>

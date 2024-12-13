@@ -1,0 +1,3 @@
+body:has(p) {
+	color: green;
+}
