@@ -16,6 +16,11 @@ const requestListener = async function (req, res) {
 			res.writeHead(200);
 			res.end(await fs.readFile('test/_browser.html', 'utf8'));
 			break;
+		case '/stylesheet-loading':
+			res.setHeader('Content-type', 'text/html');
+			res.writeHead(200);
+			res.end(await fs.readFile('test/_browser-stylesheet-loading.html', 'utf8'));
+			break;
 		case '/test/basic.expect.css':
 			// Stylesheet WITHOUT CORS headers
 			res.setHeader('Content-type', 'text/css');
@@ -28,6 +33,15 @@ const requestListener = async function (req, res) {
 			res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
 			res.writeHead(200);
 			res.end(await fs.readFile('test/browser.expect.css', 'utf8'));
+			break;
+		case '/test/browser-stylesheet-loading.expect.css':
+			await new Promise(resolve => setTimeout(resolve, parseInt(parsedUrl.searchParams.get('delay') ?? '0', 10)));
+
+			// Stylesheet WITH CORS headers
+			res.setHeader('Content-type', 'text/css');
+			res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+			res.writeHead(200);
+			res.end(await fs.readFile('test/browser-stylesheet-loading.expect.css', 'utf8'));
 			break;
 		case '/dist/browser-global.js':
 			res.setHeader('Content-type', 'text/javascript');
@@ -91,6 +105,17 @@ if (!process.env.DEBUG) {
 
 			{
 				await page.goto('http://localhost:8080#force-polyfill');
+				const result = await page.evaluate(async () => {
+					// eslint-disable-next-line no-undef
+					return await window.runTest();
+				});
+				if (!result) {
+					throw new Error('Test failed, expected "window.runTest()" to return true');
+				}
+			}
+
+			{
+				await page.goto('http://localhost:8080/stylesheet-loading#force-polyfill');
 				const result = await page.evaluate(async () => {
 					// eslint-disable-next-line no-undef
 					return await window.runTest();

@@ -35,7 +35,7 @@ export default function cssHasPseudo(document, options) {
 			options.observedAttributes = [];
 		}
 
-		options.observedAttributes = options.observedAttributes.filter((x) => {
+		options.observedAttributes = options.observedAttributes.filter(function(x) {
 			return (typeof x === 'string');
 		});
 
@@ -61,13 +61,24 @@ export default function cssHasPseudo(document, options) {
 
 	// observe DOM modifications that affect selectors
 	if ('MutationObserver' in self) {
-		const mutationObserver = new MutationObserver((mutationsList) => {
-			mutationsList.forEach(mutation => {
-				[].forEach.call(mutation.addedNodes || [], node => {
+		const mutationObserver = new MutationObserver(function(mutationsList) {
+			mutationsList.forEach(function(mutation) {
+				[].forEach.call(mutation.addedNodes || [], function(node) {
 					// walk stylesheets to collect observed css rules
-					if (node.nodeType === 1 && node.sheet) {
-						walkStyleSheet(node.sheet);
+					if (node.nodeType !== 1) {
+						return;
 					}
+
+					if (node.sheet) {
+						walkStyleSheet(node.sheet);
+						return;
+					}
+
+					node.addEventListener('load', function (e) {
+						if (e.target && e.target.sheet) {
+							walkStyleSheet(e.target.sheet);
+						}
+					});
 				});
 
 				// transform observed css rules
@@ -130,7 +141,7 @@ export default function cssHasPseudo(document, options) {
 
 			// Not all of these elements have all of these properties.
 			// But the code above checks if they exist first.
-			['checked', 'selected', 'readOnly', 'required'].forEach((property) => {
+			['checked', 'selected', 'readOnly', 'required'].forEach(function(property) {
 				[
 					'HTMLButtonElement',
 					'HTMLFieldSetElement',
@@ -142,7 +153,7 @@ export default function cssHasPseudo(document, options) {
 					'HTMLProgressElement',
 					'HTMLSelectElement',
 					'HTMLTextAreaElement',
-				].forEach((elementName) => {
+				].forEach(function(elementName) {
 					if (elementName in self && self[elementName].prototype) {
 						observeProperty(self[elementName].prototype, property);
 					}
@@ -162,28 +173,30 @@ export default function cssHasPseudo(document, options) {
 			cancelAnimationFrame(transformObservedItemsThrottledBusy);
 		}
 
-		transformObservedItemsThrottledBusy = requestAnimationFrame(() => {
+		transformObservedItemsThrottledBusy = requestAnimationFrame(function() {
 			transformObservedItems();
 		});
 	}
 
 	// transform observed css rules
 	function transformObservedItems() {
-		observedItems.forEach((item) => {
+		observedItems.forEach(function(item) {
 			const nodes = [];
 
 			let matches = [];
-			try {
-				matches = document.querySelectorAll(item.selector);
-			} catch (e) {
-				if (options.debug) {
-					// eslint-disable-next-line no-console
-					console.error(e);
+			if (item.selector) {
+				try {
+					matches = document.querySelectorAll(item.selector);
+				} catch (e) {
+					if (options.debug) {
+						// eslint-disable-next-line no-console
+						console.error(e);
+					}
+					return;
 				}
-				return;
 			}
 
-			[].forEach.call(matches, (element) => {
+			[].forEach.call(matches, function(element) {
 				// memorize the node
 				nodes.push(element);
 
@@ -198,7 +211,7 @@ export default function cssHasPseudo(document, options) {
 			});
 
 			// remove the encoded attribute from all nodes that no longer match them
-			item.nodes.forEach(node => {
+			item.nodes.forEach(function(node) {
 				if (nodes.indexOf(node) === -1) {
 					node.removeAttribute(item.attributeName);
 
@@ -216,7 +229,7 @@ export default function cssHasPseudo(document, options) {
 	function cleanupObservedCssRules() {
 		[].push.apply(
 			observedItems,
-			observedItems.splice(0).filter((item) => {
+			observedItems.splice(0).filter(function(item) {
 				return item.rule.parentStyleSheet &&
 					item.rule.parentStyleSheet.ownerNode &&
 					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode);
@@ -228,7 +241,7 @@ export default function cssHasPseudo(document, options) {
 	function walkStyleSheet(styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
-			[].forEach.call(styleSheet.cssRules || [], (rule, index) => {
+			[].forEach.call(styleSheet.cssRules || [], function(rule, index) {
 				if (rule.selectorText) {
 					rule.selectorText = rule.selectorText.replace(/\.js-has-pseudo\s/g, '');
 
@@ -246,12 +259,14 @@ export default function cssHasPseudo(document, options) {
 
 						for (let i = 0; i < hasSelectors.length; i++) {
 							const hasSelector = hasSelectors[i];
-							observedItems.push({
-								rule: rule,
-								selector: hasSelector,
-								attributeName: encodeCSS(hasSelector),
-								nodes: [],
-							});
+							if (hasSelector) {
+								observedItems.push({
+									rule: rule,
+									selector: hasSelector,
+									attributeName: encodeCSS(hasSelector),
+									nodes: [],
+								});
+							}
 						}
 					} catch (e) {
 						if (options.debug) {
