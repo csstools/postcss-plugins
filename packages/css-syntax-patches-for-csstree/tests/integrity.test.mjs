@@ -1,4 +1,4 @@
-import { fork, definitionSyntax } from 'css-tree-3';
+import { fork, definitionSyntax } from 'css-tree';
 import fs from 'fs/promises';
 import path from 'path';
 

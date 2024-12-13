@@ -32,7 +32,7 @@
 	"arc-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "arc [ [ <by-to> <coordinate-pair> ] || [ of <length-percentage>{1,2} ] || <arc-sweep>? || <arc-size>? || [ rotate <angle> ]? ]",
+		"syntax-a": "arc [ <command-end-point> && [ of <coordinate-pair> ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]",
 		"comment": ""
 	},
 	"arc-size": {
@@ -149,12 +149,6 @@
 		"syntax-a": "content-box | padding-box | border-box | margin-box | fill-box | stroke-box | view-box",
 		"comment": ""
 	},
-	"by-to": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "by | to",
-		"comment": ""
-	},
 	"calc-keyword": {
 		"type": "added",
 		"syntax-b": "",
@@ -245,6 +239,12 @@
 		"syntax-a": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
 		"comment": ""
 	},
+	"command-end-point": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ to <position> | by <coordinate-pair> ]",
+		"comment": ""
+	},
 	"compat-auto": {
 		"type": "modified",
 		"syntax-b": "searchfield | textarea | push-button | slider-horizontal | checkbox | radio | square-button | menulist | listbox | meter | progress-bar | button",
@@ -317,6 +317,12 @@
 		"syntax-a": "contrast-color( <color> max? )",
 		"comment": ""
 	},
+	"control-point": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <position> | <relative-control-point> ]",
+		"comment": ""
+	},
 	"coord-box": {
 		"type": "modified",
 		"syntax-b": "content-box | padding-box | border-box | fill-box | stroke-box | view-box",
@@ -374,7 +380,7 @@
 	"curve-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]",
+		"syntax-a": "curve [ [ to <position> && [ with <control-point> [ / <control-point> ]? ] ] | [ by <coordinate-pair> && [ with <relative-control-point> [ / <relative-control-point> ]? ] ] ]",
 		"comment": ""
 	},
 	"custom-arg": {
@@ -563,6 +569,12 @@
 		"syntax-a": "auto | <custom-ident> | [ [ <integer [-∞,-1]> | <integer [1,∞]> ] && <custom-ident>? ] | [ span && [ <integer [1,∞]> || <custom-ident> ] ]",
 		"comment": ""
 	},
+	"horizontal-line-command": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "hline [ to [ <length-percentage> | left | center | right | x-start | x-end ] | by <length-percentage> ]",
+		"comment": ""
+	},
 	"hsl()": {
 		"type": "modified",
 		"syntax-b": "hsl( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )",
@@ -575,16 +587,16 @@
 		"syntax-a": "[ <legacy-hsla-syntax> | <modern-hsla-syntax> ]",
 		"comment": ""
 	},
-	"hv-line-command": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ hline | vline ] <by-to> <length-percentage>",
-		"comment": ""
-	},
 	"hwb()": {
 		"type": "modified",
 		"syntax-b": "hwb( [ <hue> | none ] [ <percentage> | none ] [ <percentage> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"if-condition": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<boolean-expr[<if-test>]> | else",
 		"comment": ""
 	},
 	"if-test": {
@@ -596,7 +608,7 @@
 	"if()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )",
+		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ;? )",
 		"comment": ""
 	},
 	"image": {
@@ -728,7 +740,7 @@
 	"line-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "line <by-to> <coordinate-pair>",
+		"syntax-a": "line <command-end-point>",
 		"comment": ""
 	},
 	"line-width": {
@@ -878,7 +890,7 @@
 	"move-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "move <by-to> <coordinate-pair>",
+		"syntax-a": "move <command-end-point>",
 		"comment": ""
 	},
 	"mq-boolean": {
@@ -1121,6 +1133,12 @@
 		"syntax-a": "referrerpolicy( no-referrer | no-referrer-when-downgrade | same-origin | origin | strict-origin | origin-when-cross-origin | strict-origin-when-cross-origin | unsafe-url )",
 		"comment": ""
 	},
+	"relative-control-point": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<coordinate-pair> [ from [ start | end | origin ] ]?",
+		"comment": ""
+	},
 	"repeat-style": {
 		"type": "modified",
 		"syntax-b": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}",
@@ -1232,7 +1250,7 @@
 	"shape-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close",
+		"syntax-a": "<move-command> | <line-command> | close | <horizontal-line-command> | <vertical-line-command> | <curve-command> | <smooth-command> | <arc-command>",
 		"comment": ""
 	},
 	"shape()": {
@@ -1250,7 +1268,7 @@
 	"smooth-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "smooth [ [ <by-to> <coordinate-pair> ] || [ using <coordinate-pair> ]? ]",
+		"syntax-a": "smooth [ [ to <position> && [ with <control-point> ]? ] | [ by <coordinate-pair> && [ with <relative-control-point> ]? ] ]",
 		"comment": ""
 	},
 	"source-size": {
@@ -1485,6 +1503,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "url( <string> <url-modifier>* ) | <url-token>",
+		"comment": ""
+	},
+	"vertical-line-command": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
 		"comment": ""
 	},
 	"wcag2": {

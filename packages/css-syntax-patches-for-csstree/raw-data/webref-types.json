@@ -54,7 +54,7 @@
 		"syntax": "scroll-position | contents | <custom-ident>"
 	},
 	"arc-command": {
-		"syntax": "arc [ [ <by-to> <coordinate-pair> ] || [ of <length-percentage>{1,2} ] || <arc-sweep>? || <arc-size>? || [ rotate <angle> ]? ]"
+		"syntax": "arc [ <command-end-point> && [ of <coordinate-pair> ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]"
 	},
 	"arc-size": {
 		"syntax": "large | small"
@@ -154,9 +154,6 @@
 	},
 	"brightness()": {
 		"syntax": "brightness( <number-percentage> )"
-	},
-	"by-to": {
-		"syntax": "by | to"
 	},
 	"calc-constant": {
 		"syntax": "e | pi | infinity | -infinity | NaN"
@@ -260,6 +257,9 @@
 	"combinator": {
 		"syntax": "'>' | '+' | '~' | [ '|' '|' ]"
 	},
+	"command-end-point": {
+		"syntax": "[ to <position> | by <coordinate-pair> ]"
+	},
 	"common-lig-values": {
 		"syntax": "[ common-ligatures | no-common-ligatures ]"
 	},
@@ -344,6 +344,9 @@
 	"contrast()": {
 		"syntax": "contrast( [ <number-percentage> ] )"
 	},
+	"control-point": {
+		"syntax": "[ <position> | <relative-control-point> ]"
+	},
 	"coord-box": {
 		"syntax": "<paint-box> | view-box"
 	},
@@ -390,7 +393,7 @@
 		"syntax": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )"
 	},
 	"curve-command": {
-		"syntax": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]"
+		"syntax": "curve [ [ to <position> && [ with <control-point> [ / <control-point> ]? ] ] | [ by <coordinate-pair> && [ with <relative-control-point> [ / <relative-control-point> ]? ] ] ]"
 	},
 	"custom-arg": {
 		"syntax": "$ <ident-token> ;"
@@ -659,6 +662,9 @@
 	"historical-lig-values": {
 		"syntax": "[ historical-ligatures | no-historical-ligatures ]"
 	},
+	"horizontal-line-command": {
+		"syntax": "hline [ to [ <length-percentage> | left | center | right | x-start | x-end ] | by <length-percentage> ]"
+	},
 	"hsl()": {
 		"syntax": "[ <legacy-hsl-syntax> | <modern-hsl-syntax> ]"
 	},
@@ -674,20 +680,20 @@
 	"hue-rotate()": {
 		"syntax": "hue-rotate( <angle> )"
 	},
-	"hv-line-command": {
-		"syntax": "[ hline | vline ] <by-to> <length-percentage>"
-	},
 	"hwb()": {
 		"syntax": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"hypot()": {
 		"syntax": "hypot( <calc-sum># )"
 	},
+	"if-condition": {
+		"syntax": "<boolean-expr[<if-test>]> | else"
+	},
 	"if-test": {
 		"syntax": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )"
 	},
 	"if()": {
-		"syntax": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )"
+		"syntax": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ;? )"
 	},
 	"image": {
 		"syntax": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>"
@@ -801,7 +807,7 @@
 		"syntax": "light-dark( <color> , <color> )"
 	},
 	"line-command": {
-		"syntax": "line <by-to> <coordinate-pair>"
+		"syntax": "line <command-end-point>"
 	},
 	"line-name-list": {
 		"syntax": "[ <line-names> | <name-repeat> ]+"
@@ -969,7 +975,7 @@
 		"syntax": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
 	},
 	"move-command": {
-		"syntax": "move <by-to> <coordinate-pair>"
+		"syntax": "move <command-end-point>"
 	},
 	"mq-boolean": {
 		"syntax": "<integer [0,1]>"
@@ -1211,6 +1217,9 @@
 	"referrerpolicy-modifier": {
 		"syntax": "referrerpolicy( no-referrer | no-referrer-when-downgrade | same-origin | origin | strict-origin | origin-when-cross-origin | strict-origin-when-cross-origin | unsafe-url )"
 	},
+	"relative-control-point": {
+		"syntax": "<coordinate-pair> [ from [ start | end | origin ] ]?"
+	},
 	"relative-real-selector": {
 		"syntax": "<combinator>? <complex-real-selector>"
 	},
@@ -1353,7 +1362,7 @@
 		"syntax": "<visual-box> | margin-box"
 	},
 	"shape-command": {
-		"syntax": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close"
+		"syntax": "<move-command> | <line-command> | close | <horizontal-line-command> | <vertical-line-command> | <curve-command> | <smooth-command> | <arc-command>"
 	},
 	"shape-radius": {
 		"syntax": "<length-percentage> | closest-side | farthest-side"
@@ -1422,7 +1431,7 @@
 		"syntax": "skewY( [ <angle> | <zero> ] )"
 	},
 	"smooth-command": {
-		"syntax": "smooth [ [ <by-to> <coordinate-pair> ] || [ using <coordinate-pair> ]? ]"
+		"syntax": "smooth [ [ to <position> && [ with <control-point> ]? ] | [ by <coordinate-pair> && [ with <relative-control-point> ]? ] ]"
 	},
 	"source-size": {
 		"syntax": "<media-condition> <source-size-value> | auto"
@@ -1651,6 +1660,9 @@
 	},
 	"var()": {
 		"syntax": "var( <custom-property-name> , <declaration-value>? )"
+	},
+	"vertical-line-command": {
+		"syntax": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]"
 	},
 	"view()": {
 		"syntax": "view( [ <axis> || <'view-timeline-inset'> ]? )"

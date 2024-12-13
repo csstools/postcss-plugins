@@ -207,8 +207,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "arc [ [ <by-to> <coordinate-pair> ] || [ of <length-percentage>{1,2} ] || <arc-sweep>? || <arc-size>? || [ rotate <angle> ]? ]",
-		"syntax-m": "arc [ [ <by-to> <coordinate-pair> ] || [ of <length-percentage>{1,2} ] || <arc-sweep>? || <arc-size>? || [ rotate <angle> ]? ]",
+		"syntax-a": "arc [ <command-end-point> && [ of <coordinate-pair> ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]",
+		"syntax-m": "arc [ <command-end-point> && [ of <coordinate-pair> ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -527,17 +527,6 @@
 			"failing": []
 		}
 	},
-	"by-to": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "by | to",
-		"syntax-m": "by | to",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"calc-keyword": {
 		"type": "added",
 		"comment": "",
@@ -747,6 +736,17 @@
 					"value": "color(xyz-d5 0 0 0)"
 				}
 			]
+		}
+	},
+	"command-end-point": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ to <position> | by <coordinate-pair> ]",
+		"syntax-m": "[ to <position> | by <coordinate-pair> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"compat-auto": {
@@ -969,6 +969,17 @@
 			]
 		}
 	},
+	"control-point": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <position> | <relative-control-point> ]",
+		"syntax-m": "[ <position> | <relative-control-point> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"coord-box": {
 		"type": "modified",
 		"comment": "",
@@ -1090,8 +1101,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]",
-		"syntax-m": "curve [ <by-to> <coordinate-pair> using <coordinate-pair>{1,2} ]",
+		"syntax-a": "curve [ [ to <position> && [ with <control-point> [ / <control-point> ]? ] ] | [ by <coordinate-pair> && [ with <relative-control-point> [ / <relative-control-point> ]? ] ] ]",
+		"syntax-m": "curve [ [ to <position> && [ with <control-point> [ / <control-point> ]? ] ] | [ by <coordinate-pair> && [ with <relative-control-point> [ / <relative-control-point> ]? ] ] ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1439,6 +1450,17 @@
 			"failing": []
 		}
 	},
+	"horizontal-line-command": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "hline [ to [ <length-percentage> | left | center | right | x-start | x-end ] | by <length-percentage> ]",
+		"syntax-m": "hline [ to [ <length-percentage> | left | center | right | x-start | x-end ] | by <length-percentage> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"hsl()": {
 		"type": "modified",
 		"comment": "",
@@ -1476,17 +1498,6 @@
 					"value": "hsla(20deg 10 5)"
 				}
 			],
-			"failing": []
-		}
-	},
-	"hv-line-command": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "[ hline | vline ] <by-to> <length-percentage>",
-		"syntax-m": "[ hline | vline ] <by-to> <length-percentage>",
-		"tests": {
-			"passing": [],
 			"failing": []
 		}
 	},
@@ -1535,10 +1546,38 @@
 			]
 		}
 	},
+	"if-condition": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<boolean-expr[<if-test>]> | else",
+		"syntax-m": "<boolean-expr[<if-test>]> | else",
+		"tests": {
+			"passing": [
+				{
+					"property": "-if-supporting-property",
+					"value": "if(supports(color: green): green; else: red)"
+				},
+				{
+					"property": "-if-supporting-property",
+					"value": "if(media(color): green; else: red)"
+				}
+			],
+			"failing": [
+				{
+					"property": "-if-supporting-property",
+					"value": "if(supports(color: green): green; else)"
+				},
+				{
+					"property": "-if-supporting-property",
+					"value": "if(color: green: green; else)"
+				}
+			]
+		}
+	},
 	"if-test": {
 		"type": "added",
 		"comment": "",
-		"omit": true,
 		"syntax-b": "",
 		"syntax-a": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )",
 		"syntax-m": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )",
@@ -1550,10 +1589,9 @@
 	"if()": {
 		"type": "added",
 		"comment": "",
-		"omit": true,
 		"syntax-b": "",
-		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )",
-		"syntax-m": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ';'? )",
+		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ;? )",
+		"syntax-m": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ;? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2035,8 +2073,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "line <by-to> <coordinate-pair>",
-		"syntax-m": "line <by-to> <coordinate-pair>",
+		"syntax-a": "line <command-end-point>",
+		"syntax-m": "line <command-end-point>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2484,8 +2522,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "move <by-to> <coordinate-pair>",
-		"syntax-m": "move <by-to> <coordinate-pair>",
+		"syntax-a": "move <command-end-point>",
+		"syntax-m": "move <command-end-point>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3101,6 +3139,17 @@
 			"failing": []
 		}
 	},
+	"relative-control-point": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<coordinate-pair> [ from [ start | end | origin ] ]?",
+		"syntax-m": "<coordinate-pair> [ from [ start | end | origin ] ]?",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"repeat-style": {
 		"type": "modified",
 		"comment": "",
@@ -3407,8 +3456,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close",
-		"syntax-m": "<move-command> | <line-command> | <hv-line-command> | <curve-command> | <smooth-command> | <arc-command> | close",
+		"syntax-a": "<move-command> | <line-command> | close | <horizontal-line-command> | <vertical-line-command> | <curve-command> | <smooth-command> | <arc-command>",
+		"syntax-m": "<move-command> | <line-command> | close | <horizontal-line-command> | <vertical-line-command> | <curve-command> | <smooth-command> | <arc-command>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3440,8 +3489,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "smooth [ [ <by-to> <coordinate-pair> ] || [ using <coordinate-pair> ]? ]",
-		"syntax-m": "smooth [ [ <by-to> <coordinate-pair> ] || [ using <coordinate-pair> ]? ]",
+		"syntax-a": "smooth [ [ to <position> && [ with <control-point> ]? ] | [ by <coordinate-pair> && [ with <relative-control-point> ]? ] ]",
+		"syntax-m": "smooth [ [ to <position> && [ with <control-point> ]? ] | [ by <coordinate-pair> && [ with <relative-control-point> ]? ] ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3997,6 +4046,17 @@
 					"value": "url(#foo modifier)"
 				}
 			]
+		}
+	},
+	"vertical-line-command": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
+		"syntax-m": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"wcag2": {
