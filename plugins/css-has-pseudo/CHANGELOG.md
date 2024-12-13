@@ -1,6 +1,8 @@
 # Changes to CSS Has Pseudo
 
-### Unreleased (patch)
+### 7.0.2
+
+_December 13, 2024_
 
 - Fix handling of stylesheets loaded after the polyfill was first started.
 
