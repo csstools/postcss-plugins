@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix precision of negative numbers.
+
 ### 3.0.6
 
 _November 11, 2024_
