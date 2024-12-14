@@ -224,4 +224,3 @@ assert.equal(
 	colorDataFitsDisplayP3_Gamut(color(parse('color(display-p3 0.99 1.0001 0.99)'))),
 	false,
 );
-

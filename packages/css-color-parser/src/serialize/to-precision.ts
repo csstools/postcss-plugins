@@ -1,7 +1,7 @@
 export function toPrecision(n: number, precision = 7): number {
 	n = +n;
 	precision = +precision;
-	const integerLength = (Math.floor(n) + '').length;
+	const integerLength = (Math.floor(Math.abs(n)) + '').length;
 
 	if (precision > integerLength) {
 		return +n.toFixed(precision - integerLength);
