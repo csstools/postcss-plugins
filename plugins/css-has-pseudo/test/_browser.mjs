@@ -35,7 +35,7 @@ const requestListener = async function (req, res) {
 			res.end(await fs.readFile('test/browser.expect.css', 'utf8'));
 			break;
 		case '/test/browser-stylesheet-loading.expect.css':
-			await new Promise(resolve => setTimeout(resolve, parseInt(parsedUrl.searchParams.get('delay') ?? '0', 10)));
+			await new Promise(resolve => setTimeout(resolve, Math.min(parseInt(parsedUrl.searchParams.get('delay') ?? '0', 10), 1000)));
 
 			// Stylesheet WITH CORS headers
 			res.setHeader('Content-type', 'text/css');
