@@ -191,6 +191,7 @@ const SPECS = [
 	['css-viewport', []],
 	['css-will-change', []],
 	['css-writing-modes', []],
+	['css-gaps', []],
 	['fill-stroke', []],
 	['filter-effects', []],
 	['filter-effects-2', []],
@@ -412,6 +413,12 @@ const property_deltas = new Set([
 	property_delta_key('display', 'css-display', 'css-grid-3'),
 
 	property_delta_key('display', 'css-grid-3', 'mathml-core'),
+
+	property_delta_key('column-rule-color', 'css-multicol-2', 'css-gaps'),
+	property_delta_key('column-width', 'css-multicol-2', 'css-sizing'),
+	property_delta_key('column-rule-style', 'css-multicol-2', 'css-gaps'),
+	property_delta_key('column-rule-width', 'css-multicol-2', 'css-gaps'),
+	property_delta_key('column-rule', 'css-multicol-2', 'css-gaps'),
 ]);
 
 const seen_property_definitions = new Map();

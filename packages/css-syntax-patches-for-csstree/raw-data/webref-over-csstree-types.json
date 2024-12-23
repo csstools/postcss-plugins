@@ -50,7 +50,7 @@
 	"attr-name": {
 		"type": "modified",
 		"syntax-b": "<wq-name>",
-		"syntax-a": "[ <ident-token> '|' ]? <ident-token>",
+		"syntax-a": "[ <ident-token>? '|' ]? <ident-token>",
 		"comment": ""
 	},
 	"attr-type": {
@@ -69,6 +69,54 @@
 		"type": "modified",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
 		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
+		"comment": ""
+	},
+	"auto-gap-rule-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ <gap-rule-or-repeat> ] / ]* <auto-repeat-gap-rule> [ / [ <gap-rule-or-repeat> ] ]*",
+		"comment": ""
+	},
+	"auto-line-color-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-color-or-repeat> ]* <auto-repeat-line-color> [ <line-color-or-repeat> ]*",
+		"comment": ""
+	},
+	"auto-line-style-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-style-or-repeat> ]* <auto-repeat-line-style> [ <line-style-or-repeat> ]*",
+		"comment": ""
+	},
+	"auto-line-width-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width-or-repeat> ]* <auto-repeat-line-width> [ <line-width-or-repeat> ]*",
+		"comment": ""
+	},
+	"auto-repeat-gap-rule": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <gap-rule> ]# )",
+		"comment": ""
+	},
+	"auto-repeat-line-color": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <color> ]+ )",
+		"comment": ""
+	},
+	"auto-repeat-line-style": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <line-style> ]+ )",
+		"comment": ""
+	},
+	"auto-repeat-line-width": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <line-width> ]+ )",
 		"comment": ""
 	},
 	"autospace": {
@@ -422,7 +470,7 @@
 	"dynamic-range-limit-mix()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )",
+		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]# )",
 		"comment": ""
 	},
 	"easing-function": {
@@ -549,6 +597,24 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<function-parameter>#",
+		"comment": ""
+	},
+	"gap-rule": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width> || <line-style> || <color> ]",
+		"comment": ""
+	},
+	"gap-rule-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*",
+		"comment": ""
+	},
+	"gap-rule-or-repeat": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <gap-rule> | <repeat-gap-rule> ]",
 		"comment": ""
 	},
 	"generic-family": {
@@ -737,16 +803,52 @@
 		"syntax-a": "[ <length> | <percentage> ]",
 		"comment": ""
 	},
+	"line-color-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-color-or-repeat> ]+",
+		"comment": ""
+	},
+	"line-color-or-repeat": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <color> | <repeat-line-color> ]",
+		"comment": ""
+	},
 	"line-command": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "line <command-end-point>",
 		"comment": ""
 	},
+	"line-style-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-style-or-repeat> ]+",
+		"comment": ""
+	},
+	"line-style-or-repeat": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-style> | <repeat-line-style> ]",
+		"comment": ""
+	},
 	"line-width": {
 		"type": "modified",
 		"syntax-b": "<length> | thin | medium | thick",
 		"syntax-a": "<length [0,∞]> | thin | medium | thick",
+		"comment": ""
+	},
+	"line-width-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width-or-repeat> ]+",
+		"comment": ""
+	},
+	"line-width-or-repeat": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width> | <repeat-line-width> ]",
 		"comment": ""
 	},
 	"linear-easing-function": {
@@ -1139,6 +1241,30 @@
 		"syntax-a": "<coordinate-pair> [ from [ start | end | origin ] ]?",
 		"comment": ""
 	},
+	"repeat-gap-rule": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
+		"comment": ""
+	},
+	"repeat-line-color": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <color> ]+ )",
+		"comment": ""
+	},
+	"repeat-line-style": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <line-style> ]+ )",
+		"comment": ""
+	},
+	"repeat-line-width": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <line-width> ]+ )",
+		"comment": ""
+	},
 	"repeat-style": {
 		"type": "modified",
 		"syntax-b": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}",
@@ -1436,7 +1562,7 @@
 	"text-edge": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?",
+		"syntax-a": "[ text | ideographic | ideographic-ink ] | [ text | ideographic | ideographic-ink | cap | ex ] [ text | ideographic | ideographic-ink | alphabetic ]",
 		"comment": ""
 	},
 	"time-percentage": {

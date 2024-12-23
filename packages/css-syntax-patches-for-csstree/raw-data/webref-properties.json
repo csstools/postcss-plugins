@@ -591,16 +591,22 @@
 		"syntax": "normal | <length-percentage [0,∞]>"
 	},
 	"column-rule": {
-		"syntax": "<'column-rule-width'> || <'column-rule-style'> || <'column-rule-color'>"
+		"syntax": "<gap-rule-list> | <auto-gap-rule-list>"
+	},
+	"column-rule-break": {
+		"syntax": "intersection | spanning-item | none"
 	},
 	"column-rule-color": {
-		"syntax": "<color>"
+		"syntax": "<line-color-list> | <auto-line-color-list>"
+	},
+	"column-rule-outset": {
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-style": {
-		"syntax": "<line-style>"
+		"syntax": "<line-style-list> | <auto-line-style-list>"
 	},
 	"column-rule-width": {
-		"syntax": "<line-width>"
+		"syntax": "<line-width-list> | <auto-line-width-list>"
 	},
 	"column-span": {
 		"syntax": "none | <integer [1,∞]> | all | auto"
@@ -949,6 +955,27 @@
 	},
 	"gap": {
 		"syntax": "<'row-gap'> <'column-gap'>?"
+	},
+	"gap-rule": {
+		"syntax": "<'column-rule'>"
+	},
+	"gap-rule-break": {
+		"syntax": "<'column-rule-break'>"
+	},
+	"gap-rule-color": {
+		"syntax": "<'column-rule-color'>"
+	},
+	"gap-rule-outset": {
+		"syntax": "<'column-rule-outset'>"
+	},
+	"gap-rule-paint-order": {
+		"syntax": "row-over-column | column-over-row"
+	},
+	"gap-rule-style": {
+		"syntax": "<'column-rule-style'>"
+	},
+	"gap-rule-width": {
+		"syntax": "<'column-rule-width'>"
 	},
 	"glyph-orientation-horizontal": {
 		"syntax": "<angle>"
@@ -1709,6 +1736,24 @@
 	"row-gap": {
 		"syntax": "normal | <length-percentage [0,∞]>"
 	},
+	"row-rule": {
+		"syntax": "<gap-rule-list> | <auto-gap-rule-list>"
+	},
+	"row-rule-break": {
+		"syntax": "intersection | spanning-item | none"
+	},
+	"row-rule-color": {
+		"syntax": "<line-color-list> | <auto-line-color-list>"
+	},
+	"row-rule-outset": {
+		"syntax": "<length-percentage>"
+	},
+	"row-rule-style": {
+		"syntax": "<line-style-list> | <auto-line-style-list>"
+	},
+	"row-rule-width": {
+		"syntax": "<line-width-list> | <auto-line-width-list>"
+	},
 	"ruby-align": {
 		"syntax": "start | center | space-between | space-around"
 	},
@@ -1735,6 +1780,9 @@
 	},
 	"-ms-scroll-chaining": {
 		"syntax": "chained | none"
+	},
+	"scroll-initial-target": {
+		"syntax": "none | nearest"
 	},
 	"-ms-scroll-limit": {
 		"syntax": "<'-ms-scroll-limit-x-min'> <'-ms-scroll-limit-y-min'> <'-ms-scroll-limit-x-max'> <'-ms-scroll-limit-y-max'>"
@@ -1864,9 +1912,6 @@
 	},
 	"-ms-scroll-snap-y": {
 		"syntax": "<'-ms-scroll-snap-type'> <'-ms-scroll-snap-points-y'>"
-	},
-	"scroll-start-target": {
-		"syntax": "none | auto"
 	},
 	"scroll-timeline": {
 		"syntax": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#"

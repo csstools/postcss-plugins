@@ -240,8 +240,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<wq-name>",
-		"syntax-a": "[ <ident-token> '|' ]? <ident-token>",
-		"syntax-m": "[ [ <ident-token> '|' ]? <ident-token> ]",
+		"syntax-a": "[ <ident-token>? '|' ]? <ident-token>",
+		"syntax-m": "[ [ <ident-token>? '|' ]? <ident-token> ]",
 		"tests": {
 			"passing": [
 				{
@@ -322,6 +322,94 @@
 					"value": "attr(value <)"
 				}
 			]
+		}
+	},
+	"auto-gap-rule-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ [ <gap-rule-or-repeat> ] / ]* <auto-repeat-gap-rule> [ / [ <gap-rule-or-repeat> ] ]*",
+		"syntax-m": "[ [ <gap-rule-or-repeat> ] / ]* <auto-repeat-gap-rule> [ / [ <gap-rule-or-repeat> ] ]*",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-line-color-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-color-or-repeat> ]* <auto-repeat-line-color> [ <line-color-or-repeat> ]*",
+		"syntax-m": "[ <line-color-or-repeat> ]* <auto-repeat-line-color> [ <line-color-or-repeat> ]*",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-line-style-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-style-or-repeat> ]* <auto-repeat-line-style> [ <line-style-or-repeat> ]*",
+		"syntax-m": "[ <line-style-or-repeat> ]* <auto-repeat-line-style> [ <line-style-or-repeat> ]*",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-line-width-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width-or-repeat> ]* <auto-repeat-line-width> [ <line-width-or-repeat> ]*",
+		"syntax-m": "[ <line-width-or-repeat> ]* <auto-repeat-line-width> [ <line-width-or-repeat> ]*",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-repeat-gap-rule": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <gap-rule> ]# )",
+		"syntax-m": "repeat( auto , [ <gap-rule> ]# )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-repeat-line-color": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <color> ]+ )",
+		"syntax-m": "repeat( auto , [ <color> ]+ )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-repeat-line-style": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <line-style> ]+ )",
+		"syntax-m": "repeat( auto , [ <line-style> ]+ )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"auto-repeat-line-width": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( auto , [ <line-width> ]+ )",
+		"syntax-m": "repeat( auto , [ <line-width> ]+ )",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"autospace": {
@@ -1179,8 +1267,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )",
-		"syntax-m": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]+ )",
+		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]# )",
+		"syntax-m": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1412,6 +1500,39 @@
 		"syntax-b": "",
 		"syntax-a": "<function-parameter>#",
 		"syntax-m": "<function-parameter>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width> || <line-style> || <color> ]",
+		"syntax-m": "[ <line-width> || <line-style> || <color> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*",
+		"syntax-m": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-or-repeat": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <gap-rule> | <repeat-gap-rule> ]",
+		"syntax-m": "[ <gap-rule> | <repeat-gap-rule> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2069,6 +2190,28 @@
 			"failing": []
 		}
 	},
+	"line-color-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-color-or-repeat> ]+",
+		"syntax-m": "[ <line-color-or-repeat> ]+",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"line-color-or-repeat": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <color> | <repeat-line-color> ]",
+		"syntax-m": "[ <color> | <repeat-line-color> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"line-command": {
 		"type": "added",
 		"comment": "",
@@ -2080,12 +2223,56 @@
 			"failing": []
 		}
 	},
+	"line-style-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-style-or-repeat> ]+",
+		"syntax-m": "[ <line-style-or-repeat> ]+",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"line-style-or-repeat": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-style> | <repeat-line-style> ]",
+		"syntax-m": "[ <line-style> | <repeat-line-style> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"line-width": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length> | thin | medium | thick",
 		"syntax-a": "<length [0,∞]> | thin | medium | thick",
 		"syntax-m": "<length [0,∞]> | thin | medium | thick",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"line-width-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width-or-repeat> ]+",
+		"syntax-m": "[ <line-width-or-repeat> ]+",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"line-width-or-repeat": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <line-width> | <repeat-line-width> ]",
+		"syntax-m": "[ <line-width> | <repeat-line-width> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3150,6 +3337,50 @@
 			"failing": []
 		}
 	},
+	"repeat-gap-rule": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
+		"syntax-m": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"repeat-line-color": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <color> ]+ )",
+		"syntax-m": "repeat( [ <integer [1,∞]> ] , [ <color> ]+ )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"repeat-line-style": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <line-style> ]+ )",
+		"syntax-m": "repeat( [ <integer [1,∞]> ] , [ <line-style> ]+ )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"repeat-line-width": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <line-width> ]+ )",
+		"syntax-m": "repeat( [ <integer [1,∞]> ] , [ <line-width> ]+ )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"repeat-style": {
 		"type": "modified",
 		"comment": "",
@@ -3824,8 +4055,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?",
-		"syntax-m": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?",
+		"syntax-a": "[ text | ideographic | ideographic-ink ] | [ text | ideographic | ideographic-ink | cap | ex ] [ text | ideographic | ideographic-ink | alphabetic ]",
+		"syntax-m": "[ text | ideographic | ideographic-ink ] | [ text | ideographic | ideographic-ink | cap | ex ] [ text | ideographic | ideographic-ink | alphabetic ]",
 		"tests": {
 			"passing": [
 				{
@@ -3834,7 +4065,7 @@
 				},
 				{
 					"property": "text-box-edge",
-					"value": "ex"
+					"value": "ex alphabetic"
 				},
 				{
 					"property": "text-box-edge",
