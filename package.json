@@ -38,12 +38,12 @@
 		"@rollup/plugin-typescript": "^12.1.2",
 		"@stryker-mutator/core": "^8.7.0",
 		"eslint": "^9.15.0",
-		"globals": "^15.13.0",
-		"knip": "^5.39.2",
-		"rollup": "^4.28.1",
+		"globals": "^15.14.0",
+		"knip": "^5.41.1",
+		"rollup": "^4.29.1",
 		"tslib": "^2.8.0",
 		"typescript": "^5.7.2",
-		"typescript-eslint": "^8.17.0"
+		"typescript-eslint": "^8.18.1"
 	},
 	"scripts": {
 		"everything": "npm run lint && npm run knip && npm run build && npm run docs && npm run test",

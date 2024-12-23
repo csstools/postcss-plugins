@@ -1670,26 +1670,144 @@
 			]
 		}
 	},
+	"column-rule": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "<'column-rule-width'> || <'column-rule-style'> || <'column-rule-color'>",
+		"syntax-a": "<gap-rule-list> | <auto-gap-rule-list>",
+		"syntax-m": "<gap-rule-list> | <auto-gap-rule-list>",
+		"tests": {
+			"passing": [
+				{
+					"value": "1px"
+				},
+				{
+					"value": "solid red"
+				},
+				{
+					"value": "1px solid red"
+				},
+				{
+					"value": "red / red"
+				},
+				{
+					"value": "1px solid red / 2px ridge pink"
+				},
+				{
+					"value": "1px solid red / repeat(auto, 3px dotted cyan) / 2px ridge pink"
+				}
+			],
+			"failing": [
+				{
+					"value": "red red"
+				}
+			]
+		}
+	},
+	"column-rule-break": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "intersection | spanning-item | none",
+		"syntax-m": "intersection | spanning-item | none",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"column-rule-color": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "<color>",
+		"syntax-a": "<line-color-list> | <auto-line-color-list>",
+		"syntax-m": "<line-color-list> | <auto-line-color-list>",
+		"tests": {
+			"passing": [
+				{
+					"value": "red"
+				},
+				{
+					"value": "red blue"
+				},
+				{
+					"value": "repeat(2, red)"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
+		}
+	},
+	"column-rule-outset": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"column-rule-style": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'border-style'>",
-		"syntax-a": "<line-style>",
-		"syntax-m": "<line-style>",
+		"syntax-a": "<line-style-list> | <auto-line-style-list>",
+		"syntax-m": "<line-style-list> | <auto-line-style-list>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "dotted"
+				},
+				{
+					"value": "dotted dashed"
+				},
+				{
+					"value": "repeat(2, dashed)"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"column-rule-width": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'border-width'>",
-		"syntax-a": "<line-width>",
-		"syntax-m": "<line-width>",
+		"syntax-a": "<line-width-list> | <auto-line-width-list>",
+		"syntax-m": "<line-width-list> | <auto-line-width-list>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "thin"
+				},
+				{
+					"value": "repeat(2, medium)"
+				},
+				{
+					"value": "repeat(2, 1px)"
+				},
+				{
+					"value": "repeat(2, 1px) 12px"
+				},
+				{
+					"value": "thick 12px"
+				},
+				{
+					"value": "12px"
+				}
+			],
+			"failing": [
+				{
+					"value": "1"
+				}
+			]
 		}
 	},
 	"column-span": {
@@ -2245,6 +2363,83 @@
 		"syntax-b": "",
 		"syntax-a": "auto | line | block",
 		"syntax-m": "auto | line | block",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule'>",
+		"syntax-m": "<'column-rule'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-break": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-break'>",
+		"syntax-m": "<'column-rule-break'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-color": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-color'>",
+		"syntax-m": "<'column-rule-color'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-outset": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-outset'>",
+		"syntax-m": "<'column-rule-outset'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-paint-order": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "row-over-column | column-over-row",
+		"syntax-m": "row-over-column | column-over-row",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-style": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-style'>",
+		"syntax-m": "<'column-rule-style'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"gap-rule-width": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-width'>",
+		"syntax-m": "<'column-rule-width'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3699,6 +3894,72 @@
 			"failing": []
 		}
 	},
+	"row-rule": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<gap-rule-list> | <auto-gap-rule-list>",
+		"syntax-m": "<gap-rule-list> | <auto-gap-rule-list>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"row-rule-break": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "intersection | spanning-item | none",
+		"syntax-m": "intersection | spanning-item | none",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"row-rule-color": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<line-color-list> | <auto-line-color-list>",
+		"syntax-m": "<line-color-list> | <auto-line-color-list>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"row-rule-outset": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"row-rule-style": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<line-style-list> | <auto-line-style-list>",
+		"syntax-m": "<line-style-list> | <auto-line-style-list>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"row-rule-width": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<line-width-list> | <auto-line-width-list>",
+		"syntax-m": "<line-width-list> | <auto-line-width-list>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"ruby-merge": {
 		"type": "modified",
 		"comment": "",
@@ -3738,6 +3999,17 @@
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
 		"syntax-m": "<length-percentage> | auto",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-initial-target": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "none | nearest",
+		"syntax-m": "none | nearest",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3870,17 +4142,6 @@
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"syntax-m": "auto | <length-percentage [0,∞]>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"scroll-start-target": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "none | auto",
-		"syntax-m": "none | auto",
 		"tests": {
 			"passing": [],
 			"failing": []

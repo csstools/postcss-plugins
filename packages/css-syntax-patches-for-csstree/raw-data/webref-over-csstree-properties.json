@@ -599,16 +599,40 @@
 		"syntax-a": "normal | <length-percentage [0,∞]>",
 		"comment": ""
 	},
+	"column-rule": {
+		"type": "modified",
+		"syntax-b": "<'column-rule-width'> || <'column-rule-style'> || <'column-rule-color'>",
+		"syntax-a": "<gap-rule-list> | <auto-gap-rule-list>",
+		"comment": ""
+	},
+	"column-rule-break": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "intersection | spanning-item | none",
+		"comment": ""
+	},
+	"column-rule-color": {
+		"type": "modified",
+		"syntax-b": "<color>",
+		"syntax-a": "<line-color-list> | <auto-line-color-list>",
+		"comment": ""
+	},
+	"column-rule-outset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
+		"comment": ""
+	},
 	"column-rule-style": {
 		"type": "modified",
 		"syntax-b": "<'border-style'>",
-		"syntax-a": "<line-style>",
+		"syntax-a": "<line-style-list> | <auto-line-style-list>",
 		"comment": ""
 	},
 	"column-rule-width": {
 		"type": "modified",
 		"syntax-b": "<'border-width'>",
-		"syntax-a": "<line-width>",
+		"syntax-a": "<line-width-list> | <auto-line-width-list>",
 		"comment": ""
 	},
 	"column-span": {
@@ -897,6 +921,48 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "auto | line | block",
+		"comment": ""
+	},
+	"gap-rule": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule'>",
+		"comment": ""
+	},
+	"gap-rule-break": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-break'>",
+		"comment": ""
+	},
+	"gap-rule-color": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-color'>",
+		"comment": ""
+	},
+	"gap-rule-outset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-outset'>",
+		"comment": ""
+	},
+	"gap-rule-paint-order": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "row-over-column | column-over-row",
+		"comment": ""
+	},
+	"gap-rule-style": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-style'>",
+		"comment": ""
+	},
+	"gap-rule-width": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-width'>",
 		"comment": ""
 	},
 	"glyph-orientation-vertical": {
@@ -1607,6 +1673,42 @@
 		"syntax-a": "normal | <length-percentage [0,∞]>",
 		"comment": ""
 	},
+	"row-rule": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<gap-rule-list> | <auto-gap-rule-list>",
+		"comment": ""
+	},
+	"row-rule-break": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "intersection | spanning-item | none",
+		"comment": ""
+	},
+	"row-rule-color": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<line-color-list> | <auto-line-color-list>",
+		"comment": ""
+	},
+	"row-rule-outset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
+		"comment": ""
+	},
+	"row-rule-style": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<line-style-list> | <auto-line-style-list>",
+		"comment": ""
+	},
+	"row-rule-width": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<line-width-list> | <auto-line-width-list>",
+		"comment": ""
+	},
 	"ruby-merge": {
 		"type": "modified",
 		"syntax-b": "separate | collapse | auto",
@@ -1629,6 +1731,12 @@
 		"type": "modified",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
+		"comment": ""
+	},
+	"scroll-initial-target": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | nearest",
 		"comment": ""
 	},
 	"scroll-marker-group": {
@@ -1701,12 +1809,6 @@
 		"type": "modified",
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"scroll-start-target": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | auto",
 		"comment": ""
 	},
 	"scroll-timeline": {
