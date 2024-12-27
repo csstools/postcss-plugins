@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix precision of negative numbers.
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`2.1.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#211) (patch)
 
 ### 3.0.6
 

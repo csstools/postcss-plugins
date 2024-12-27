@@ -1,5 +1,9 @@
 # Changes to PostCSS Sign Functions
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`2.1.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#211) (patch)
+
 ### 1.1.0
 
 _November 17, 2024_
