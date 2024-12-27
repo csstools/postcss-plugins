@@ -1,6 +1,8 @@
 # Changes to PostCSS Relative Color Syntax
 
-### Unreleased (patch)
+### 3.0.7
+
+_December 27, 2024_
 
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`3.0.7`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#307) (patch)
 
