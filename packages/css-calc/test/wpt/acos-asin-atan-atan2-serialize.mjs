@@ -13,17 +13,17 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('acos(-1.5)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
 	calc('acos(1.5)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
 	calc('acos(2)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
@@ -53,17 +53,17 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('asin(-1.5)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
 	calc('asin(1.5)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
 	calc('asin(2)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
@@ -158,15 +158,15 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('atan2(NaN, 10)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
 	calc('atan2(10, NaN)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
 	calc('atan2(NaN, NaN)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );

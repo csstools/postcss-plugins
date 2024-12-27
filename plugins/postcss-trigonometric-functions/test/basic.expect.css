@@ -93,13 +93,13 @@
 	order: 0deg;
 	order: 30deg;
 	order: 90deg;
-	order: calc(NaN * 1rad);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
+	order: calc(NaN * 1deg);
 	order: asin(45deg);
 	order: asin(1rad);
 	order: asin(foo);
-	order: calc(NaN * 1rad);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
+	order: calc(NaN * 1deg);
 }
 
 .acos {
@@ -110,13 +110,13 @@
 	order: 90deg;
 	order: 60deg;
 	order: 0deg;
-	order: calc(NaN * 1rad);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
+	order: calc(NaN * 1deg);
 	order: acos(45deg);
 	order: acos(1rad);
 	order: acos(foo);
-	order: calc(NaN * 1rad);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
+	order: calc(NaN * 1deg);
 }
 
 .atan {

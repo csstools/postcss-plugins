@@ -165,16 +165,16 @@
 	order: asin(0.5);
 	order: 90deg;
 	order: asin(1);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: asin(2);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: asin(-20);
 	order: asin(45deg);
 	order: asin(1rad);
 	order: asin(foo);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: asin(infinity);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: asin(-infinity);
 }
 
@@ -193,16 +193,16 @@
 	order: acos(0.5);
 	order: 0deg;
 	order: acos(1);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: acos(2);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: acos(-20);
 	order: acos(45deg);
 	order: acos(1rad);
 	order: acos(foo);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: acos(infinity);
-	order: calc(NaN * 1rad);
+	order: calc(NaN * 1deg);
 	order: acos(-infinity);
 }
 

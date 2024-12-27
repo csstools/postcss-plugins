@@ -28,7 +28,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('asin(-1.1)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
@@ -42,8 +42,8 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('asin(1.1)', { toCanonicalUnits: true }),
-	'calc(NaN * 1rad)',
+	calc('acos(-1.5)', { toCanonicalUnits: true }),
+	'calc(NaN * 1deg)',
 );
 
 assert.strictEqual(
