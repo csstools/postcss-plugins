@@ -17,6 +17,36 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
+	calc('asin(-0.5)', { toCanonicalUnits: true }),
+	'-30deg',
+);
+
+assert.strictEqual(
+	calc('asin(-1)', { toCanonicalUnits: true }),
+	'-90deg',
+);
+
+assert.strictEqual(
+	calc('asin(-1.1)', { toCanonicalUnits: true }),
+	'calc(NaN * 1rad)',
+);
+
+assert.strictEqual(
+	calc('asin(0.5)', { toCanonicalUnits: true }),
+	'30deg',
+);
+
+assert.strictEqual(
+	calc('asin(1)', { toCanonicalUnits: true }),
+	'90deg',
+);
+
+assert.strictEqual(
+	calc('asin(1.1)', { toCanonicalUnits: true }),
+	'calc(NaN * 1rad)',
+);
+
+assert.strictEqual(
 	calc('atan2(0,0)', { toCanonicalUnits: true }),
 	'0deg',
 );
