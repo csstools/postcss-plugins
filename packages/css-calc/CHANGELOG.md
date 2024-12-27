@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 2.1.1
+
+_December 27, 2024_
 
 - Apply `toCanonicalUnits` to result containing `NaN` and `Infinity`
 
