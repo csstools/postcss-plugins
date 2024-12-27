@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-media-minmax",
 	"description": "Use the range notation in CSS media queries",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
