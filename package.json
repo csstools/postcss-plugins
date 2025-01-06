@@ -40,10 +40,10 @@
 		"eslint": "^9.15.0",
 		"globals": "^15.14.0",
 		"knip": "^5.41.1",
-		"rollup": "^4.29.1",
+		"rollup": "^4.29.2",
 		"tslib": "^2.8.0",
 		"typescript": "^5.7.2",
-		"typescript-eslint": "^8.18.1"
+		"typescript-eslint": "^8.19.0"
 	},
 	"scripts": {
 		"everything": "npm run lint && npm run knip && npm run build && npm run docs && npm run test",
