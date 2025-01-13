@@ -626,7 +626,7 @@
 			"predefined-rectangular": "jzazbz | ictcp",
 			"predefined-rectangular-params": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
 			"predefined-rgb": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
-			"progress": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
+			"progress": "[ <percentage-token> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
 			"progress()": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
 			"pseudo-page": "':' [ left | right | first | blank ]",
 			"pt-class-selector": "[ '.' <custom-ident> ]+",

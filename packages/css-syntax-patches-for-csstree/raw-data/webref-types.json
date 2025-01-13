@@ -1182,7 +1182,7 @@
 		"syntax": "<predefined-rgb> [ <number> | <percentage> | none ]{3}"
 	},
 	"progress": {
-		"syntax": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?"
+		"syntax": "[ <percentage-token> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?"
 	},
 	"progress()": {
 		"syntax": "progress( <calc-sum> , <calc-sum> , <calc-sum> )"
