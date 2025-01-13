@@ -3087,8 +3087,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
-		"syntax-m": "[ <percentage> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
+		"syntax-a": "[ <percentage-token> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
+		"syntax-m": "[ <percentage-token> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
 		"tests": {
 			"passing": [],
 			"failing": []
