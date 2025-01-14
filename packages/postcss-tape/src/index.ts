@@ -39,7 +39,7 @@ import url from 'node:url';
 import { fileContentsOrEmptyString } from './file-contents-or-empty-string';
 import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 
-import type { AcceptedPlugin } from 'postcss-8.4';
+import type { AcceptedPlugin as AcceptedPluginOldestPostCSS } from 'postcss-8.4';
 import type { AtRule, Declaration, Rule } from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
 import type { TestCaseOptions } from './test-case-options';
@@ -262,9 +262,9 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 
 					await t2.test(
 						'The oldest and current PostCSS version produce the same result',
-						{ skip: postcss([noopPlugin()]).version === postcssOldestSupported([noopPlugin()]).version },
+						{ skip: postcss([noopPlugin()]).version === postcssOldestSupported([noopPlugin() as AcceptedPluginOldestPostCSS]).version },
 						async () => {
-							const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPlugin>).process(input, {
+							const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPluginOldestPostCSS>).process(input, {
 								from: testFilePath,
 								to: resultFilePath,
 								map: {

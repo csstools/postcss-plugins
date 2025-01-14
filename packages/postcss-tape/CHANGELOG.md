@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (major)
+
+- Update `postcss` to `~8.5`
+
 ### 5.0.0
 
 _August 3, 2024_
