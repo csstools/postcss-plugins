@@ -68,6 +68,14 @@ jobs:
         run: |
           git diff --name-only --exit-code
 
+      # Starting with Ubuntu 23+, a security feature prevents running Puppeteer
+      # by default. It needs to be disabled. Using the "easiest" option, see:
+      # https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md
+      # https://github.com/puppeteer/puppeteer/pull/13196/files
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+        if: matrix.is_base_node_version && matrix.is_base_os_version
+
         # Basic tests
       - name: test
         run: npm run test --if-present $MODIFIED_WORKSPACES
