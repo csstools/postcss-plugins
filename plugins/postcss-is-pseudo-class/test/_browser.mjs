@@ -41,11 +41,13 @@ if (!process.env.DEBUG) {
 	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
 		const cleanup = startServers();
 
-		const browser = await puppeteer.launch({
-			headless: 'new',
-		});
+		let browser;
 
 		try {
+			browser = await puppeteer.launch({
+				headless: 'new',
+			});
+
 			const page = await browser.newPage();
 			page.on('pageerror', (msg) => {
 				throw msg;
@@ -59,7 +61,7 @@ if (!process.env.DEBUG) {
 				throw new Error('Test failed, expected "window.runTest()" to return true');
 			}
 		} finally {
-			await browser.close();
+			await browser?.close();
 
 			await cleanup();
 		}

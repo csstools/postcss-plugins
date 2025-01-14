@@ -96,55 +96,60 @@ if (!process.env.DEBUG) {
 	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
 		const cleanup = startServers();
 
-		const browser = await puppeteer.launch({
-			headless: 'new',
-		});
+		let browser;
 
-		const page = await browser.newPage();
-		page.on('pageerror', (msg) => {
-			throw msg;
-		});
+		try {
+			browser = await puppeteer.launch({
+				headless: 'new',
+			});
 
-		for (const url of [
-			'wpt/light-dark-basic.html',
-			'wpt/light-dark-currentcolor-in-color.html',
-			'wpt/light-dark-inherited.html',
-		]) {
-			await page.goto('http://localhost:8080/' + url);
+			const page = await browser.newPage();
+			page.on('pageerror', (msg) => {
+				throw msg;
+			});
 
-			try {
-				await page.evaluate(async () => {
-					// eslint-disable-next-line no-undef
-					return await window.runTest();
-				});
-			} catch (err) {
-				errors.push(err);
+			for (const url of [
+				'wpt/light-dark-basic.html',
+				'wpt/light-dark-currentcolor-in-color.html',
+				'wpt/light-dark-inherited.html',
+			]) {
+				await page.goto('http://localhost:8080/' + url);
+
+				try {
+					await page.evaluate(async () => {
+						// eslint-disable-next-line no-undef
+						return await window.runTest();
+					});
+				} catch (err) {
+					errors.push(err);
+				}
 			}
-		}
 
-		await page.emulateMediaFeatures([
-			{ name: 'prefers-color-scheme', value: 'dark' },
-		]);
+			await page.emulateMediaFeatures([
+				{ name: 'prefers-color-scheme', value: 'dark' },
+			]);
 
-		for (const url of [
-			'wpt/light-dark-basic.html',
-			'wpt/light-dark-currentcolor-in-color.html',
-			'wpt/light-dark-inherited.html',
-		]) {
-			await page.goto('http://localhost:8080/' + url);
+			for (const url of [
+				'wpt/light-dark-basic.html',
+				'wpt/light-dark-currentcolor-in-color.html',
+				'wpt/light-dark-inherited.html',
+			]) {
+				await page.goto('http://localhost:8080/' + url);
 
-			try {
-				await page.evaluate(async () => {
-					// eslint-disable-next-line no-undef
-					return await window.runTest();
-				});
-			} catch (err) {
-				errors.push(err);
+				try {
+					await page.evaluate(async () => {
+						// eslint-disable-next-line no-undef
+						return await window.runTest();
+					});
+				} catch (err) {
+					errors.push(err);
+				}
 			}
-		}
+		} finally {
+			await browser?.close();
 
-		await browser.close();
-		await cleanup();
+			await cleanup();
+		}
 
 		if (errors.length > 0) {
 			errors.forEach((err) => {
