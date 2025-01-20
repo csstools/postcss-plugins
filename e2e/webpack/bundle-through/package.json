@@ -9,7 +9,7 @@
 		"test": "node ./dist/bundle-from-mjs.cjs && node ./dist/bundle-from-cjs.cjs "
 	},
 	"dependencies": {
-		"postcss": "^8.4.47",
+		"postcss": "^8.5.1",
 		"webpack": "^5.97.1",
 		"webpack-cli": "^6.0.1",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
