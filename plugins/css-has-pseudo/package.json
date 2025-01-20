@@ -73,7 +73,7 @@
 		"postcss-dir-pseudo-class": "*",
 		"postcss-logical": "*",
 		"postcss-nesting": "*",
-		"puppeteer": "^24.0.0"
+		"puppeteer": "^24.1.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

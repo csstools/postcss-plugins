@@ -39,7 +39,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@webref/css": "^6.18.1",
+		"@webref/css": "^6.18.2",
 		"css-tree": "^3.1.0"
 	},
 	"scripts": {
