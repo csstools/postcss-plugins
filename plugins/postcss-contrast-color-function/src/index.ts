@@ -19,7 +19,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						return;
 					}
 
-					if (hasFallback(decl)) {
+					if (opts?.preserve && hasFallback(decl)) {
 						return;
 					}
 

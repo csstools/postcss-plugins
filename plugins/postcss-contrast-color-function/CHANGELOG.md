@@ -1,5 +1,9 @@
 # Changes to PostCSS Contrast Color Function
 
+### Unreleased (patch)
+
+- Don't skip processing duplicate declarations with `{ preserve: false }` 
+
 ### 2.0.7
 
 _December 27, 2024_

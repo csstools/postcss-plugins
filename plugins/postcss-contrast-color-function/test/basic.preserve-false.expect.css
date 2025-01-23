@@ -1,0 +1,169 @@
+.dynamic {
+	color: color(display-p3 0.15472 0 0.15897);
+}@media (prefers-contrast: more) {.dynamic {
+	color: rgb(0, 0, 0);
+}
+}@media (prefers-contrast: less) {.dynamic {
+	color: color(display-p3 0.29314 0 0.30019);
+}
+}
+
+.max {
+	color: rgb(0, 0, 0);
+}
+
+.both {
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.10723 0.10958));
+}
+
+@media (prefers-contrast: more) {
+
+.both {
+	color: color-mix(in srgb, rgb(255, 255, 255), rgb(0, 0, 0));
+}
+}
+
+@media (prefers-contrast: less) {
+
+.both {
+	color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21431 0.2182));
+}
+}
+
+
+.dynamic-green {
+	color: color(display-p3 0.82734 1 0.78138);
+}
+
+
+@media (prefers-contrast: more) {
+
+
+.dynamic-green {
+	color: rgb(255, 255, 255);
+}
+}
+
+
+@media (prefers-contrast: less) {
+
+
+.dynamic-green {
+	color: rgb(255, 255, 255);
+}
+}
+
+.max-green {
+	color: rgb(255, 255, 255);
+}
+
+.dynamic-lime {
+	color: color(display-p3 0.01598 0.11486 0);
+}
+
+@media (prefers-contrast: more) {
+
+.dynamic-lime {
+	color: rgb(0, 0, 0);
+}
+}
+
+@media (prefers-contrast: less) {
+
+.dynamic-lime {
+	color: color(display-p3 0.05256 0.22698 0);
+}
+}
+
+.max-lime {
+	color: rgb(0, 0, 0);
+}
+
+.dynamic-darkgreen {
+	color: color(display-p3 0.82734 1 0.78138);
+}
+
+@media (prefers-contrast: more) {
+
+.dynamic-darkgreen {
+	color: rgb(255, 255, 255);
+}
+}
+
+@media (prefers-contrast: less) {
+
+.dynamic-darkgreen {
+	color: color(display-p3 0.71003 0.96022 0.64341);
+}
+}
+
+.max-darkgreen {
+	color: rgb(255, 255, 255);
+}
+
+.manual-fallback {
+	color: white;
+	color: rgb(255, 255, 255);
+}
+
+.ignore {
+	color: contrast-color(darkgreen min);
+}
+
+.ignore {
+	color: contrast-color(var(--foo) max);
+}
+
+.ignore {
+	color: contrast-color(blue red);
+}
+
+.nested-dynamic {
+	color: color(display-p3 1 0.9049 0.91971);
+}
+
+@media (prefers-contrast: more) {
+
+.nested-dynamic {
+	color: rgb(255, 255, 255);
+}
+}
+
+@media (prefers-contrast: less) {
+
+.nested-dynamic {
+	color: color(display-p3 1 0.80648 0.83935);
+}
+}
+
+.nested-max {
+	color: rgb(255, 255, 255);
+}
+
+.nested-dynamic-max {
+	color: color(display-p3 0.93448 0.93448 0.93448);
+}
+
+@media (prefers-contrast: more) {
+
+.nested-dynamic-max {
+	color: rgb(255, 255, 255);
+}
+}
+
+@media (prefers-contrast: less) {
+
+.nested-dynamic-max {
+	color: color(display-p3 0.86982 0.86982 0.86982);
+}
+}
+
+.nested-max-dynamic {
+	color: rgb(255, 255, 255);
+}
+
+.nested-multiple-levels {
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+	border-color: rgb(255, 255, 255);
+}
