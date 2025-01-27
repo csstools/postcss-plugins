@@ -36,11 +36,11 @@
 		"preprocess-warnings.mjs"
 	],
 	"peerDependencies": {
-		"stylelint": "^16.13.0"
+		"stylelint": "^16.14.0"
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "^1.0.1",
-		"stylelint": "^16.13.0"
+		"stylelint": "^16.14.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
