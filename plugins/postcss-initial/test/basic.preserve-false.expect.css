@@ -2,30 +2,23 @@
 	--var: initial;
 
 	border: medium none currentcolor;
-
-	border: initial;
 	color: #000;
-	color: initial;
 }
 
 .bar {
 	outline: medium none currentcolor;
-	outline: initial;
 }
 
 .direction {
 	direction: ltr;
-	direction: initial;
 }
 
 .unicode-bidi {
 	unicode-bidi: normal;
-	unicode-bidi: initial;
 }
 
 .quotes {
 	quotes: "“" "”" "‘" "’";
-	quotes: initial;
 }
 
 .pointer-events {
