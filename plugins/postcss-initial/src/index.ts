@@ -52,6 +52,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				lookupProperties = [decl.prop.toLowerCase()];
 			}
 
+			let didReplace = false;
+
 			lookupProperties.forEach((prop) => {
 				const replacement = properties.get(prop);
 				if (!replacement) {
@@ -62,13 +64,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 
+				didReplace = true;
+
 				decl.cloneBefore({
 					prop: prop,
 					value: replacement,
 				});
 			});
 
-			if (!options.preserve) {
+			if (!options.preserve && didReplace) {
 				decl.remove();
 			}
 		},

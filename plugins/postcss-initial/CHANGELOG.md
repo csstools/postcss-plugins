@@ -1,5 +1,9 @@
 # Changes to PostCSS Initial
 
+### Unreleased (patch)
+
+- Fix unexpected removal of declarations that do not require a fallback.
+
 ### 2.0.0
 
 _August 3, 2024_

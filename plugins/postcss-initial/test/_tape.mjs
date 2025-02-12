@@ -5,6 +5,12 @@ postcssTape(plugin)({
 	basic: {
 		message: 'supports basic usage',
 	},
+	'basic:preserve-false': {
+		message: 'supports basic usage',
+		options: {
+			preserve: false,
+		},
+	},
 	'all-initial-default': {
 		message: 'all default',
 	},
