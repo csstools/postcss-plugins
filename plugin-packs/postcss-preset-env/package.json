@@ -62,7 +62,7 @@
 		"@csstools/postcss-gradients-interpolation-method": "^5.0.7",
 		"@csstools/postcss-hwb-function": "^4.0.7",
 		"@csstools/postcss-ic-unit": "^4.0.0",
-		"@csstools/postcss-initial": "^2.0.0",
+		"@csstools/postcss-initial": "^2.0.1",
 		"@csstools/postcss-is-pseudo-class": "^5.0.1",
 		"@csstools/postcss-light-dark-function": "^2.0.7",
 		"@csstools/postcss-logical-float-and-clear": "^3.0.0",

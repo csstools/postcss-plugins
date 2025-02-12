@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-initial`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-initial) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-initial/CHANGELOG.md#201) (patch)
+
 ### 10.1.3
 
 _December 27, 2024_
