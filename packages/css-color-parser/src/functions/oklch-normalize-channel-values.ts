@@ -16,7 +16,7 @@ export function normalize_OKLCH_ChannelValues(token: CSSToken, index: number, co
 			token[2],
 			token[3],
 			{
-				value: NaN,
+				value: Number.NaN,
 				type: NumberType.Number,
 			},
 		];

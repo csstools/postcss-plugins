@@ -24,7 +24,7 @@ export function sRGB_to_HSL(RGB: Color): Color {
 	const light = (min + max) / 2;
 	const d = max - min;
 
-	let hue = NaN;
+	let hue = Number.NaN;
 	let sat = 0;
 
 	if (Math.round(d * 100_000) !== 0) {

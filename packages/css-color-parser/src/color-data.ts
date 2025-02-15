@@ -353,25 +353,25 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
 			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
-				out[0] = NaN;
+				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.HWB:
 			if ((Math.max(0, reducePrecision(out[1], 4)) + Math.max(0, reducePrecision(out[2], 4))) >= 100) {
-				out[0] = NaN;
+				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.LCH:
 			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
-				out[2] = NaN;
+				out[2] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.OKLCH:
 			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 6) <= 0) {
-				out[2] = NaN;
+				out[2] = Number.NaN;
 			}
 
 			break;
@@ -386,50 +386,50 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 	switch (colorNotation) {
 		case ColorNotation.HSL:
 			if (reducePrecision(out[2]) <= 0 || reducePrecision(out[2]) >= 100) {
-				out[0] = NaN;
-				out[1] = NaN;
+				out[0] = Number.NaN;
+				out[1] = Number.NaN;
 			}
 
 			if (reducePrecision(out[1]) <= 0) {
-				out[0] = NaN;
+				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.HWB:
 			if ((Math.max(0, reducePrecision(out[1])) + Math.max(0, reducePrecision(out[2]))) >= 100) {
-				out[0] = NaN;
+				out[0] = Number.NaN;
 			}
 			break;
 		case ColorNotation.Lab:
 			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 100) {
-				out[1] = NaN;
-				out[2] = NaN;
+				out[1] = Number.NaN;
+				out[2] = Number.NaN;
 			}
 			break;
 		case ColorNotation.LCH:
 			if (reducePrecision(out[1]) <= 0) {
-				out[2] = NaN;
+				out[2] = Number.NaN;
 			}
 
 			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 100) {
-				out[1] = NaN;
-				out[2] = NaN;
+				out[1] = Number.NaN;
+				out[2] = Number.NaN;
 			}
 			break;
 		case ColorNotation.OKLab:
 			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 1) {
-				out[1] = NaN;
-				out[2] = NaN;
+				out[1] = Number.NaN;
+				out[2] = Number.NaN;
 			}
 			break;
 		case ColorNotation.OKLCH:
 			if (reducePrecision(out[1]) <= 0) {
-				out[2] = NaN;
+				out[2] = Number.NaN;
 			}
 
 			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 1) {
-				out[1] = NaN;
-				out[2] = NaN;
+				out[1] = Number.NaN;
+				out[2] = Number.NaN;
 			}
 			break;
 	}
@@ -442,7 +442,7 @@ function carryForwardMissingComponents(a: Color, aIndices: Array<number>, b: Col
 
 	for (const i of aIndices) {
 		if (Number.isNaN(a[aIndices[i]])) {
-			output[bIndices[i]] = NaN;
+			output[bIndices[i]] = Number.NaN;
 		}
 	}
 

@@ -31,7 +31,9 @@ export function solveRandom(randomNode: FunctionNode, randomCachingOptions: stri
 		result = Number.NaN;
 	} else if (!Number.isFinite(bToken[4].value)) {
 		result = Number.NaN;
-	} else if (stepValueToken && (!Number.isFinite(stepValueToken[4].value) || stepValueToken[4].value <= 0)) {
+	} else if (!Number.isFinite(bToken[4].value - aToken[4].value)) {
+		result = Number.NaN;
+	} else if (stepValueToken && !Number.isFinite(stepValueToken[4].value)) {
 		result = aToken[4].value
 	} else {
 		const rnd = sfc32(
@@ -50,6 +52,15 @@ export function solveRandom(randomNode: FunctionNode, randomCachingOptions: stri
 		let max = bToken[4].value;
 		if (min > max) {
 			[min, max] = [max, min];
+		}
+
+		if (
+			stepValueToken && (
+				(stepValueToken[4].value <= 0) ||
+				((Math.abs(min - max) / stepValueToken[4].value) > 10_000_000_000)
+			)
+		) {
+			stepValueToken = null
 		}
 
 		if (stepValueToken) {

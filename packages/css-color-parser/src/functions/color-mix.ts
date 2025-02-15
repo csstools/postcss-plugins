@@ -577,7 +577,7 @@ function premultiply(x: number, alpha: number): number {
 	}
 
 	if (Number.isNaN(x)) {
-		return NaN;
+		return Number.NaN;
 	}
 
 	return x * alpha;
@@ -593,7 +593,7 @@ function un_premultiply(x: number, alpha: number): number {
 	}
 
 	if (Number.isNaN(x)) {
-		return NaN;
+		return Number.NaN;
 	}
 
 	return x / alpha;
