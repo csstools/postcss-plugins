@@ -7,7 +7,7 @@ export function sRGB_to_Hue(x: Color): number {
 
 	const max = Math.max(red, green, blue);
 	const min = Math.min(red, green, blue);
-	let hue = NaN;
+	let hue = Number.NaN;
 	const d = max - min;
 
 	if (d !== 0) {

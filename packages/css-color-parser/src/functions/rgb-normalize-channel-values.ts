@@ -61,7 +61,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 			token[2],
 			token[3],
 			{
-				value: NaN,
+				value: Number.NaN,
 				type: NumberType.Number,
 			},
 		];

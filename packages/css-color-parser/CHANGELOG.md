@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Use `Number.isNaN` instead of `NaN` for consistency.
+
 ### 3.0.7
 
 _December 27, 2024_

@@ -16,7 +16,7 @@ export function normalize_LCH_ChannelValues(token: CSSToken, index: number, colo
 			token[2],
 			token[3],
 			{
-				value: NaN,
+				value: Number.NaN,
 				type: NumberType.Number,
 			},
 		];

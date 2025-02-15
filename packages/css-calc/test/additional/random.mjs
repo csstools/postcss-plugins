@@ -93,12 +93,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(-10px, 20px, by -50px)'),
-	'-10px',
+	'13.45151px',
 );
 
 assert.strictEqual(
 	calc('random(-10px, 20px, by 0px)'),
-	'-10px',
+	'-1.86008px',
 );
 
 assert.strictEqual(
@@ -139,4 +139,29 @@ assert.strictEqual(
 assert.strictEqual(
 	calc('random(0deg, 360deg)'),
 	'173.25527deg',
+);
+
+assert.strictEqual(
+	calc('random(--foo, 10, 20, by -2)'),
+	'17.30236',
+);
+
+assert.strictEqual(
+	calc('random(10, 20, by 0.00005)'), // Number of steps is small enough
+	'18.7764',
+);
+
+assert.strictEqual(
+	calc('random(10, 20, by 0.000005)'), // Number of steps is small enough
+	'15.882265',
+);
+
+assert.strictEqual(
+	calc('random(0, 1, by 0.00000000005)'), // Number of steps is too large
+	'0.70517',
+);
+
+assert.strictEqual(
+	calc('random(0, 10000000, by 0.00000000005)'), // Number of steps is too large
+	'8282240.00987',
 );

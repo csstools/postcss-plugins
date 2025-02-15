@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Update `random()` to correctly handle extremely large ranges or extremely tiny steps.
+
 ### 2.1.1
 
 _December 27, 2024_
