@@ -108,7 +108,7 @@ postcssNesting({
 
 #### `2024-02` (default)
 
-- usage of `:is()` pseudo-class is no longer optional
+- usage of `:is()` pseudo-class in the generated CSS is no longer optional. However you can add [`postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to transpile further
 - at rules are not combined with the `and` keyword
 - `@nest` is removed from the specification
 - declarations and nested rules/at-rules are no longer re-ordered
