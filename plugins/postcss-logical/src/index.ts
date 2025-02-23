@@ -4,11 +4,14 @@ import { Axes, DirectionFlow } from './lib/types';
 import { directionFlowToAxes } from './utils/direction-flow-to-axes';
 import { transformTransition } from './lib/transform-transition';
 import { prepareTransforms } from './lib/transforms';
+import { HAS_VARIABLE_FUNCTION_REGEX } from './utils/has-variable-function';
 
 export type { DirectionFlow } from './lib/types';
 
 /** postcss-logical plugin options */
 export type pluginOptions = {
+	/** Ignore logical properties with values containing `var()` */
+	ignoreCustomProperties?: true,
 	/** Sets the direction for block. default: top-to-bottom */
 	blockDirection?: DirectionFlow,
 	/** Sets the direction for inline. default: left-to-right */
@@ -56,6 +59,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			{ result }: { result: Result },
 		): void => {
 			if (!transform) {
+				return;
+			}
+
+			if (options.ignoreCustomProperties && HAS_VARIABLE_FUNCTION_REGEX.test(decl.value)) {
 				return;
 			}
 
@@ -153,6 +160,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			'border-end-start-radius': makeTransform(transforms['border-end-start-radius']),
 			'border-end-end-radius': makeTransform(transforms['border-end-end-radius']),
 			'transition': (decl, { result, postcss }): void => {
+				if (options.ignoreCustomProperties && HAS_VARIABLE_FUNCTION_REGEX.test(decl.value)) {
+					return;
+				}
+
 				let transformed: Array<Declaration> = [];
 
 				try {

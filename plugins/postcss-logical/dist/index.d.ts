@@ -12,6 +12,8 @@ export declare enum DirectionFlow {
 
 /** postcss-logical plugin options */
 export declare type pluginOptions = {
+    /** Ignore logical properties with values containing `var()` */
+    ignoreCustomProperties?: true;
     /** Sets the direction for block. default: top-to-bottom */
     blockDirection?: DirectionFlow;
     /** Sets the direction for inline. default: left-to-right */

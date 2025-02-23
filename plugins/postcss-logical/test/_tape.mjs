@@ -83,6 +83,13 @@ postcssTape(plugin)({
 		message: 'supports logical "offsets" properties',
 		warnings: 3,
 	},
+	'offsets:ignore-custom-properties': {
+		message: 'supports logical "offsets" properties { ignoreCustomProperties: true }',
+		warnings: 3,
+		options: {
+			ignoreCustomProperties: true,
+		},
+	},
 	'offsets:chinese': {
 		message: 'supports logical "offsets" properties { blockDirection: "right-to-left", inlineDirection: "top-to-bottom" }',
 		warnings: 3,
@@ -142,6 +149,15 @@ postcssTape(plugin)({
 		options: {
 			blockDirection: 'right-to-left',
 			inlineDirection: 'top-to-bottom',
+		},
+	},
+	'examples/inset': {
+		message: 'inset example',
+	},
+	'examples/inset:ignore-custom-properties': {
+		message: 'inset example { ignoreCustomProperties: true }',
+		options: {
+			ignoreCustomProperties: true,
 		},
 	},
 });

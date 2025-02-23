@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### Unreleased (minor)
+
+- Add: `ignoreCustomProperties` plugin option.
+
 ### 8.0.0
 
 _August 3, 2024_

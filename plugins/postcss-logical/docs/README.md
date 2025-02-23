@@ -33,7 +33,7 @@
 
 ## Options
 
-### blockDirection & inlineDirection
+### `blockDirection` and `inlineDirection`
 
 The `blockDirection` and `inlineDirection` options allow you to specify the direction of the block and inline axes. The default values are `top-to-bottom` and `left-to-right` respectively, which would match any latin language.
 
@@ -64,6 +64,31 @@ Each direction must be one of the following:
 You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
 
 Please do note that `text-align` won't be transformed if `inlineDirection` becomes vertical.
+
+### `ignoreCustomProperties`
+
+The `ignoreCustomProperties` option allows you to ignore any properties containing `var()`.  
+`postcss-logical` assumes that all custom properties are single value (e.g. `--foo: 10px;`) and will assign these to physical properties as fallbacks for logical properties.  
+
+This will produce broken declarations when your custom properties contain multiple values instead (e.g. `--foo: 1px 2px;`).
+
+```css
+<inset.css>
+
+/* becomes */
+
+<inset.expect.css>
+```
+
+With `ignoreCustomProperties` set to `true`:
+
+```css
+<inset.css>
+
+/* becomes */
+
+<inset.ignore-custom-properties.expect.css>
+```
 
 <linkList>
 [CSS Logical Properties and Values]: <specUrl>
