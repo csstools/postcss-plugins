@@ -81,7 +81,7 @@
 		"postcss-gap-properties": "^6.0.0",
 		"postcss-image-set-function": "^7.0.0",
 		"postcss-lab-function": "^7.0.7",
-		"postcss-logical": "^8.0.0",
+		"postcss-logical": "^8.1.0",
 		"postcss-nesting": "^13.0.1",
 		"postcss-overflow-shorthand": "^6.0.0",
 		"postcss-place": "^10.0.0",
