@@ -1,7 +1,7 @@
 # Pack Test
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/pack-test.svg" height="20">][npm-url]
-[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
 
 Verify that the published contents of your node package will pass a basic smoke test.  
 This tests creates a `pack` of your node modules just like `npm publish` and tries to import it.

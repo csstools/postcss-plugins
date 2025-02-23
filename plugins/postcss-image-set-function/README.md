@@ -148,7 +148,7 @@ in, other factors can affect the chosen image. For example, if the user is on a
 slow mobile connection, the browser may prefer to select a lower-res image
 rather than wait for a larger, resolution-matching image to load.
 
-[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-img]: https://cssdb.org/images/badges/image-set-function.svg
 [css-url]: https://cssdb.org/#image-set-function

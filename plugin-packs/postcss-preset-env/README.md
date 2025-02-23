@@ -1,7 +1,7 @@
 # PostCSS Preset Env [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/postcss-preset-env.svg" height="20">][npm-url]
-[<img alt="build status" src="https://github.com/csstools/postcss-plugins/workflows/test/badge.svg" height="20">][cli-url]
+[<img alt="build status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
 [![install size][package-phobia-badge]][package-phobia]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
@@ -480,7 +480,7 @@ Given they have no support they will always be enabled if they match by Stage:
 * `custom-media-queries`: [Plugin](https://github.com/postcss/postcss-custom-media)
 * `nesting-rules`: [Plugin](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 
-[cli-img]: https://github.com/csstools/postcss-plugins/workflows/test/badge.svg
+[cli-img]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-img]: https://img.shields.io/npm/v/postcss-preset-env.svg
