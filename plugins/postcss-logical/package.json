@@ -1,7 +1,7 @@
 {
 	"name": "postcss-logical",
 	"description": "Use logical properties and values in CSS",
-	"version": "8.0.0",
+	"version": "8.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
