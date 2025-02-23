@@ -68,7 +68,7 @@ instructions for:
 
 ## Options
 
-### blockDirection & inlineDirection
+### `blockDirection` and `inlineDirection`
 
 The `blockDirection` and `inlineDirection` options allow you to specify the direction of the block and inline axes. The default values are `top-to-bottom` and `left-to-right` respectively, which would match any latin language.
 
@@ -119,6 +119,93 @@ Each direction must be one of the following:
 You can't mix two vertical directions or two horizontal directions so for example `top-to-bottom` and `right-to-left` are valid, but `top-to-bottom` and `bottom-to-top` are not.
 
 Please do note that `text-align` won't be transformed if `inlineDirection` becomes vertical.
+
+### `ignoreCustomProperties`
+
+The `ignoreCustomProperties` option allows you to ignore any properties containing `var()`.  
+`postcss-logical` assumes that all custom properties are single value (e.g. `--foo: 10px;`) and will assign these to physical properties as fallbacks for logical properties.  
+
+This will produce broken declarations when your custom properties contain multiple values instead (e.g. `--foo: 1px 2px;`).
+
+```css
+:root {
+	--inset-a: 10px;
+}
+
+.foo {
+	inset: var(--inset-a);
+}
+
+:root {
+	--inset-b: 1px 2px 3px 4px;
+}
+
+.bar {
+	inset: var(--inset-b);
+}
+
+/* becomes */
+
+:root {
+	--inset-a: 10px;
+}
+
+.foo {
+	top: var(--inset-a);
+	right: var(--inset-a);
+	bottom: var(--inset-a);
+	left: var(--inset-a);
+}
+
+:root {
+	--inset-b: 1px 2px 3px 4px;
+}
+
+.bar {
+	top: var(--inset-b);
+	right: var(--inset-b);
+	bottom: var(--inset-b);
+	left: var(--inset-b);
+}
+```
+
+With `ignoreCustomProperties` set to `true`:
+
+```css
+:root {
+	--inset-a: 10px;
+}
+
+.foo {
+	inset: var(--inset-a);
+}
+
+:root {
+	--inset-b: 1px 2px 3px 4px;
+}
+
+.bar {
+	inset: var(--inset-b);
+}
+
+/* becomes */
+
+:root {
+	--inset-a: 10px;
+}
+
+.foo {
+	inset: var(--inset-a);
+}
+
+:root {
+	--inset-b: 1px 2px 3px 4px;
+}
+
+.bar {
+	inset: var(--inset-b);
+}
+```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [css-url]: https://cssdb.org/#logical-properties-and-values

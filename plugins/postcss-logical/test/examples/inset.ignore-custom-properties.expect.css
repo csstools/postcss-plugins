@@ -1,0 +1,15 @@
+:root {
+	--inset-a: 10px;
+}
+
+.foo {
+	inset: var(--inset-a);
+}
+
+:root {
+	--inset-b: 1px 2px 3px 4px;
+}
+
+.bar {
+	inset: var(--inset-b);
+}
