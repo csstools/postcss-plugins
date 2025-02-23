@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### 5.0.2
+
+_February 23, 2025_
 
 - Use `Number.isNaN` instead of `NaN` for consistency.
 
