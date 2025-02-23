@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 10.1.5
+
+_February 23, 2025_
 
 - Updated [`postcss-logical`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical) to [`8.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical/CHANGELOG.md#810) (minor)
 - Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#502) (patch)
