@@ -200,6 +200,46 @@
 	contain-intrinsic-width: inherit;
 }
 
+.corner-shape {
+	/* corner-bottom-left-shape */
+	corner-bottom-left-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-bottom-right-shape */
+	corner-bottom-right-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-end-end-shape */
+	corner-end-end-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-end-start-shape */
+	corner-end-start-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-start-end-shape */
+	corner-start-end-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-start-start-shape */
+	corner-start-start-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-top-left-shape */
+	corner-top-left-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-top-right-shape */
+	corner-top-right-shape: inherit;
+}
+
 .inset {
 	/* bottom */
 	bottom: inherit;
