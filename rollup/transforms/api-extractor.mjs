@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import { Extractor, ExtractorConfig } from '@microsoft/api-extractor';
 
@@ -16,7 +17,7 @@ export function apiExtractor() {
 				);
 			}
 
-			if (extractorConfig.docModelEnabled) {
+			if (extractorConfig.apiJsonFilePath && fsSync.existsSync(extractorConfig.apiJsonFilePath)) {
 				// The tool version changes with the version of the package, so we need to remove it to keep the changes minimal.
 				const api = JSON.parse(await fs.readFile(extractorConfig.apiJsonFilePath, 'utf8'));
 				delete api.metadata.toolVersion;
