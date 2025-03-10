@@ -20,6 +20,26 @@
 	background-position-y: inherit;
 }
 
+.background-repeat {
+	/* background-repeat-block */
+	background-repeat-block: inherit;
+}
+
+.background-repeat {
+	/* background-repeat-inline */
+	background-repeat-inline: inherit;
+}
+
+.background-repeat {
+	/* background-repeat-x */
+	background-repeat-x: inherit;
+}
+
+.background-repeat {
+	/* background-repeat-y */
+	background-repeat-y: inherit;
+}
+
 .border-color {
 	/* border-block-end-color */
 	border-block-end-color: inherit;
@@ -198,6 +218,46 @@
 .contain-intrinsic-size {
 	/* contain-intrinsic-width */
 	contain-intrinsic-width: inherit;
+}
+
+.corner-shape {
+	/* corner-bottom-left-shape */
+	corner-bottom-left-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-bottom-right-shape */
+	corner-bottom-right-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-end-end-shape */
+	corner-end-end-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-end-start-shape */
+	corner-end-start-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-start-end-shape */
+	corner-start-end-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-start-start-shape */
+	corner-start-start-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-top-left-shape */
+	corner-top-left-shape: inherit;
+}
+
+.corner-shape {
+	/* corner-top-right-shape */
+	corner-top-right-shape: inherit;
 }
 
 .inset {
