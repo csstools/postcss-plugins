@@ -506,6 +506,225 @@
           }
         },
         {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNamedCell:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface GridTemplateAreasTokenNamedCell "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token-grid-template-areas.d.ts",
+          "releaseTag": "Public",
+          "name": "GridTemplateAreasTokenNamedCell",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNamedCell#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TokenTypeGridTemplateAreas.NamedCell",
+                  "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas.NamedCell:member"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNamedCell#value:member",
+              "docComment": "/**\n * The name of the cell\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNullCell:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface GridTemplateAreasTokenNullCell "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token-grid-template-areas.d.ts",
+          "releaseTag": "Public",
+          "name": "GridTemplateAreasTokenNullCell",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNullCell#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TokenTypeGridTemplateAreas.NullCell",
+                  "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas.NullCell:member"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNullCell#value:member",
+              "docComment": "/**\n * The dots representing the null cell\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenTrash:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface GridTemplateAreasTokenTrash "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token-grid-template-areas.d.ts",
+          "releaseTag": "Public",
+          "name": "GridTemplateAreasTokenTrash",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenTrash#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TokenTypeGridTemplateAreas.Trash",
+                  "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas.Trash:member"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenTrash#value:member",
+              "docComment": "/**\n * The incorrect cell value\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "Enum",
           "canonicalReference": "@csstools/css-tokenizer!HashType:enum",
           "docComment": "/**\n * The type of hash token\n */\n",
@@ -4491,6 +4710,83 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@csstools/css-tokenizer!tokenizeGridTemplateAreas:function(1)",
+          "docComment": "/**\n * Tokenize a CSS string describing grid template areas into a list of tokens.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function tokenizeGridTemplateAreas(input: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    valueOf(): string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "GridTemplateAreasTokenNamedCell",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNamedCell:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "GridTemplateAreasTokenNullCell",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenNullCell:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "GridTemplateAreasTokenTrash",
+              "canonicalReference": "@csstools/css-tokenizer!GridTemplateAreasTokenTrash:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/tokenize-grid-template-areas.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "input",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "tokenizeGridTemplateAreas"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!tokenizer:function(1)",
           "docComment": "/**\n * Create a tokenizer for a CSS string.\n */\n",
           "excerptTokens": [
@@ -5632,6 +5928,86 @@
               },
               "releaseTag": "Public",
               "name": "Whitespace"
+            }
+          ]
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas:enum",
+          "docComment": "/**\n * All possible CSS token types for grid template areas\n *\n * @see\n *\n * {@link https://drafts.csswg.org/css-grid/#valdef-grid-template-areas-string}\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum TokenTypeGridTemplateAreas "
+            }
+          ],
+          "fileUrlPath": "dist/_types/interfaces/token-grid-template-areas.d.ts",
+          "releaseTag": "Public",
+          "name": "TokenTypeGridTemplateAreas",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas.NamedCell:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "NamedCell = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"named-cell-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "NamedCell"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas.NullCell:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "NullCell = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"null-cell-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "NullCell"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-tokenizer!TokenTypeGridTemplateAreas.Trash:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Trash = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"trash-token\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Trash"
             }
           ]
         },

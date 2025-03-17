@@ -41,6 +41,30 @@ export declare function cloneTokens(tokens: Array<CSSToken>): Array<CSSToken>;
  */
 export declare type CSSToken = TokenAtKeyword | TokenBadString | TokenBadURL | TokenCDC | TokenCDO | TokenColon | TokenComma | TokenComment | TokenDelim | TokenDimension | TokenEOF | TokenFunction | TokenHash | TokenIdent | TokenNumber | TokenPercentage | TokenSemicolon | TokenString | TokenURL | TokenWhitespace | TokenOpenParen | TokenCloseParen | TokenOpenSquare | TokenCloseSquare | TokenOpenCurly | TokenCloseCurly | TokenUnicodeRange;
 
+export declare interface GridTemplateAreasTokenNamedCell {
+    type: TokenTypeGridTemplateAreas.NamedCell;
+    /**
+     * The name of the cell
+     */
+    value: string;
+}
+
+export declare interface GridTemplateAreasTokenNullCell {
+    type: TokenTypeGridTemplateAreas.NullCell;
+    /**
+     * The dots representing the null cell
+     */
+    value: string;
+}
+
+export declare interface GridTemplateAreasTokenTrash {
+    type: TokenTypeGridTemplateAreas.Trash;
+    /**
+     * The incorrect cell value
+     */
+    value: string;
+}
+
 /**
  * The type of hash token
  */
@@ -381,6 +405,13 @@ export declare function tokenize(input: {
 }): Array<CSSToken>;
 
 /**
+ * Tokenize a CSS string describing grid template areas into a list of tokens.
+ */
+export declare function tokenizeGridTemplateAreas(input: {
+    valueOf(): string;
+}): Array<GridTemplateAreasTokenNamedCell | GridTemplateAreasTokenNullCell | GridTemplateAreasTokenTrash>;
+
+/**
  * Create a tokenizer for a CSS string.
  */
 export declare function tokenizer(input: {
@@ -571,6 +602,17 @@ export declare enum TokenType {
      * @see {@link https://drafts.csswg.org/css-syntax/#typedef-unicode-range-token}
      */
     UnicodeRange = "unicode-range-token"
+}
+
+/**
+ * All possible CSS token types for grid template areas
+ *
+ * @see {@link https://drafts.csswg.org/css-grid/#valdef-grid-template-areas-string}
+ */
+export declare enum TokenTypeGridTemplateAreas {
+    NamedCell = "named-cell-token",
+    NullCell = "null-cell-token",
+    Trash = "trash-token"
 }
 
 export declare interface TokenUnicodeRange extends Token<TokenType.UnicodeRange, {
