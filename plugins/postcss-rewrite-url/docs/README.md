@@ -109,20 +109,21 @@ Stylelint is able to check for unknown property values.
 Setting the correct configuration for this rule makes it possible to check even non-standard syntax.
 
 ```js
-	'declaration-property-value-no-unknown': [
-		true,
-		{
-			"typesSyntax": {
-				"url": "| rewrite-url( <string> <url-modifier>* )"
-			}
-		},
-	],
-	'function-no-unknown': [
+"languageOptions": {
+	"syntax": {
+		"types": {
+			"url": "| rewrite-url( <string> <url-modifier>* )"
+		}
+	}
+},
+"rules": {
+	"function-no-unknown": [
 		true,
 		{
 			"ignoreFunctions": ["rewrite-url"]
 		}
-	],
+	]
+}
 ```
 
 <linkList>
