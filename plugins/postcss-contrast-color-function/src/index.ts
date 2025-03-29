@@ -1,7 +1,12 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { Plugin, PluginCreator } from 'postcss';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
-import { CONTRAST_COLOR_FUNCTION_REGEX, PREFERS_CONTRAST, transformContrastColor } from './transform-contrast-color';
+import { tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { color, serializeRGB, SyntaxFlag } from '@csstools/css-color-parser';
+
+const CONTRAST_COLOR_FUNCTION_REGEX = /\bcontrast-color\(/i;
+const CONTRAST_COLOR_NAME_REGEX = /^contrast-color$/i;
 
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	return {
@@ -9,13 +14,9 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 		prepare(): Plugin {
 			return {
 				postcssPlugin: 'postcss-contrast-color-function',
-				Declaration(decl, { atRule }): void {
-					const parent = decl.parent;
-					if (!parent) {
-						return;
-					}
-
-					if (!CONTRAST_COLOR_FUNCTION_REGEX.test(decl.value)) {
+				Declaration(decl): void {
+					const originalValue = decl.value;
+					if (!(CONTRAST_COLOR_FUNCTION_REGEX.test(originalValue))) {
 						return;
 					}
 
@@ -27,60 +28,33 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 						return;
 					}
 
-					const modifiedNoPreference = transformContrastColor(decl.value, PREFERS_CONTRAST.NO_PREFERENCE);
-					if (modifiedNoPreference === decl.value) {
+					const tokens = tokenize({ css: originalValue });
+					const replacedRGB = replaceComponentValues(
+						parseCommaSeparatedListOfComponentValues(tokens),
+						(componentValue) => {
+							if (!isFunctionNode(componentValue) || !CONTRAST_COLOR_NAME_REGEX.test(componentValue.getName())) {
+								return;
+							}
+
+							const colorData = color(componentValue);
+							if (!colorData) {
+								return;
+							}
+
+							if (colorData.syntaxFlags.has(SyntaxFlag.HasNoneKeywords)) {
+								return;
+							}
+
+							return serializeRGB(colorData);
+						},
+					);
+
+					const modified = stringify(replacedRGB);
+					if (modified === originalValue) {
 						return;
 					}
 
-					const modifiedLess = transformContrastColor(decl.value, PREFERS_CONTRAST.LESS);
-					if (modifiedLess === decl.value) {
-						return;
-					}
-
-					const modifiedMore = transformContrastColor(decl.value, PREFERS_CONTRAST.MORE);
-					if (modifiedMore === decl.value) {
-						return;
-					}
-
-					decl.cloneBefore({ value: modifiedNoPreference });
-
-					if (modifiedNoPreference !== modifiedLess) {
-						const parentClone = parent.clone();
-						parentClone.removeAll();
-
-						parentClone.append(decl.clone({ value: modifiedLess }));
-
-						const prefers = atRule({ name: 'media', params: '(prefers-contrast: less)', source: parent.source });
-						prefers.append(parentClone);
-
-						if (!opts?.preserve) {
-							parent.after(prefers);
-						} else {
-							const supports = atRule({ name: 'supports', params: 'not (color: contrast-color(red max))', source: parent.source });
-							supports.append(prefers);
-
-							parent.after(supports);
-						}
-					}
-
-					if (modifiedNoPreference !== modifiedMore) {
-						const parentClone = parent.clone();
-						parentClone.removeAll();
-
-						parentClone.append(decl.clone({ value: modifiedMore }));
-
-						const prefers = atRule({ name: 'media', params: '(prefers-contrast: more)', source: parent.source });
-						prefers.append(parentClone);
-
-						if (!opts?.preserve) {
-							parent.after(prefers);
-						} else {
-							const supports = atRule({ name: 'supports', params: 'not (color: contrast-color(red max))', source: parent.source });
-							supports.append(prefers);
-
-							parent.after(supports);
-						}
-					}
+					decl.cloneBefore({ value: modified });
 
 					if (!opts?.preserve) {
 						decl.remove();

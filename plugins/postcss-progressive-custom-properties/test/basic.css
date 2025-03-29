@@ -249,14 +249,7 @@
 
 :root {
 	--color-contrast-color-1: green;
-	--color-contrast-color-1: contrast-color(green max);
-	--color-contrast-color-2: green;
-	--color-contrast-color-2: contrast-color(green);
-}
-
-:root {
-	color: var(--green);
-	color: contrast-color(var(--green) max);
+	--color-contrast-color-1: contrast-color(green);
 }
 
 :root {

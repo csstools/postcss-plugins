@@ -1,13 +1,3 @@
-.dynamic {
-	color: color(display-p3 0.15433 0 0.15992);
-}@media (prefers-contrast: more) {.dynamic {
+.color {
 	color: rgb(0, 0, 0);
-}
-}@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.2925 0 0.30177);
-}
-}
-
-.max {
-	color: rgb(255, 255, 255);
 }

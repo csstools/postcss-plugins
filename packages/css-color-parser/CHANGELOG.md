@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Drop the `max` keyword for `contrast-color( <color> )`
+
 ### 3.0.8
 
 _February 23, 2025_

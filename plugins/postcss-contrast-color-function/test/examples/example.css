@@ -1,7 +1,3 @@
-.dynamic {
+.color {
 	color: contrast-color(oklch(82% 0.2 330));
-}
-
-.max {
-	color: contrast-color(oklch(30% 0.2 79) max);
 }

@@ -1,5 +1,9 @@
 # Changes to PostCSS Contrast Color Function
 
+### Unreleased (patch)
+
+- Drop the `max` keyword for `contrast-color( <color> )`
+
 ### 2.0.8
 
 _February 23, 2025_

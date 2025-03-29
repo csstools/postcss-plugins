@@ -17,6 +17,12 @@
 		"syntax-a": "[ <angle> | <percentage> ]",
 		"comment": ""
 	},
+	"angular-color-hint": {
+		"type": "modified",
+		"syntax-b": "<angle-percentage>",
+		"syntax-a": "<angle-percentage> | <zero>",
+		"comment": ""
+	},
 	"angular-color-stop": {
 		"type": "modified",
 		"syntax-b": "<color> && <color-stop-angle>?",
@@ -32,7 +38,7 @@
 	"arc-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "arc [ <command-end-point> && [ of <coordinate-pair> ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]",
+		"syntax-a": "arc <command-end-point> [ [ of <length-percentage>{1,2} ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]",
 		"comment": ""
 	},
 	"arc-size": {
@@ -47,6 +53,12 @@
 		"syntax-a": "cw | ccw",
 		"comment": ""
 	},
+	"attr-args": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "attr( <declaration-value> , <declaration-value>? )",
+		"comment": ""
+	},
 	"attr-name": {
 		"type": "modified",
 		"syntax-b": "<wq-name>",
@@ -56,7 +68,7 @@
 	"attr-type": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "type( <syntax> ) | string | <attr-unit>",
+		"syntax-a": "type( <syntax> ) | raw-string | <attr-unit>",
 		"comment": ""
 	},
 	"attr-unit": {
@@ -69,12 +81,6 @@
 		"type": "modified",
 		"syntax-b": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )",
 		"syntax-a": "attr( <attr-name> <attr-type>? , <declaration-value>? )",
-		"comment": ""
-	},
-	"auto-gap-rule-list": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ [ <gap-rule-or-repeat> ] / ]* <auto-repeat-gap-rule> [ / [ <gap-rule-or-repeat> ] ]*",
 		"comment": ""
 	},
 	"auto-line-color-list": {
@@ -93,12 +99,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "[ <line-width-or-repeat> ]* <auto-repeat-line-width> [ <line-width-or-repeat> ]*",
-		"comment": ""
-	},
-	"auto-repeat-gap-rule": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "repeat( auto , [ <gap-rule> ]# )",
 		"comment": ""
 	},
 	"auto-repeat-line-color": {
@@ -212,7 +212,7 @@
 	"calc-product": {
 		"type": "modified",
 		"syntax-b": "<calc-value> [ '*' <calc-value> | '/' <number> ]*",
-		"syntax-a": "<calc-value> [ [ '*' | '/' ] <calc-value> ]*",
+		"syntax-a": "<calc-value> [ [ '*' | / ] <calc-value> ]*",
 		"comment": ""
 	},
 	"calc-size-basis": {
@@ -257,10 +257,22 @@
 		"syntax-a": "[ color-COLRv0 | color-COLRv1 | color-SVG | color-sbix | color-CBDT ]",
 		"comment": ""
 	},
+	"color-function": {
+		"type": "modified",
+		"syntax-b": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>",
+		"syntax-a": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <ictcp()> | <jzazbz()> | <jzczhz()> | <color()>",
+		"comment": ""
+	},
 	"color-layers()": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "color-layers( [ <blend-mode> , ]? <color># )",
+		"comment": ""
+	},
+	"color-stop-angle": {
+		"type": "modified",
+		"syntax-b": "<angle-percentage>{1,2}",
+		"syntax-a": "[ <angle-percentage> | <zero> ]{1,2}",
 		"comment": ""
 	},
 	"color-stop-list": {
@@ -284,7 +296,7 @@
 	"colorspace-params": {
 		"type": "modified",
 		"syntax-b": "[ <predefined-rgb-params> | <xyz-params> ]",
-		"syntax-a": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]",
+		"syntax-a": "[ <custom-params> | <predefined-rgb-params> | <xyz-params> ]",
 		"comment": ""
 	},
 	"command-end-point": {
@@ -314,7 +326,7 @@
 	"conic-gradient-syntax": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ [ [ from <angle> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>",
+		"syntax-a": "[ [ [ from [ <angle> | <zero> ] ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>",
 		"comment": ""
 	},
 	"conic-gradient()": {
@@ -362,13 +374,19 @@
 	"contrast-color()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "contrast-color( <color> max? )",
+		"syntax-a": "contrast-color( <color> )",
 		"comment": ""
 	},
 	"control-point": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "[ <position> | <relative-control-point> ]",
+		"comment": ""
+	},
+	"control-value()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "control-value( <type>? )",
 		"comment": ""
 	},
 	"coord-box": {
@@ -383,6 +401,12 @@
 		"syntax-a": "<length-percentage>{2}",
 		"comment": ""
 	},
+	"corner-shape-value": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )",
+		"comment": ""
+	},
 	"counter-style": {
 		"type": "modified",
 		"syntax-b": "<counter-style-name> | symbols( )",
@@ -392,7 +416,7 @@
 	"counter-style-name": {
 		"type": "modified",
 		"syntax-b": "<custom-ident>",
-		"syntax-a": "decimal | decimal-leading-zero | arabic-indic | armenian | upper-armenian | lower-armenian | bengali | cambodian | khmer | cjk-decimal | devanagari | georgian | gujarati | gurmukhi | hebrew | kannada | lao | malayalam | mongolian | myanmar | oriya | persian | lower-roman | upper-roman | tamil | telugu | thai | tibetan | lower-alpha | lower-latin | upper-alpha | upper-latin | lower-greek | hiragana | hiragana-iroha | katakana | katakana-iroha | disc | circle | square | disclosure-open | disclosure-closed | cjk-earthly-branch | cjk-heavenly-stem | korean-hangul-formal | korean-hanja-informal | korean-hanja-formal | ethiopic-numeric",
+		"syntax-a": "decimal | decimal-leading-zero | arabic-indic | armenian | upper-armenian | lower-armenian | bengali | cambodian | khmer | cjk-decimal | devanagari | georgian | gujarati | gurmukhi | hebrew | kannada | lao | malayalam | mongolian | myanmar | oriya | persian | lower-roman | upper-roman | tamil | telugu | thai | tibetan | lower-alpha | lower-latin | upper-alpha | upper-latin | lower-greek | hiragana | hiragana-iroha | katakana | katakana-iroha | disc | circle | square | disclosure-open | disclosure-closed | cjk-earthly-branch | cjk-heavenly-stem | japanese-informal | japanese-formal | korean-hangul-formal | korean-hanja-informal | korean-hanja-formal | ethiopic-numeric",
 		"comment": ""
 	},
 	"cross-fade()": {
@@ -428,7 +452,7 @@
 	"curve-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "curve [ [ to <position> && [ with <control-point> [ / <control-point> ]? ] ] | [ by <coordinate-pair> && [ with <relative-control-point> [ / <relative-control-point> ]? ] ] ]",
+		"syntax-a": "curve [ [ to <position> with <control-point> [ / <control-point> ]? ] | [ by <coordinate-pair> with <relative-control-point> [ / <relative-control-point> ]? ] ]",
 		"comment": ""
 	},
 	"custom-arg": {
@@ -470,7 +494,7 @@
 	"dynamic-range-limit-mix()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]# )",
+		"syntax-a": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]#{2,} )",
 		"comment": ""
 	},
 	"easing-function": {
@@ -575,28 +599,28 @@
 		"syntax-a": "[ <frequency> | <percentage> ]",
 		"comment": ""
 	},
-	"function-dependency-list": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<function-parameter>#",
-		"comment": ""
-	},
-	"function-name": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<dashed-ident>",
-		"comment": ""
-	},
 	"function-parameter": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
 		"comment": ""
 	},
-	"function-parameter-list": {
+	"gap-auto-repeat-rule": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<function-parameter>#",
+		"syntax-a": "repeat( auto , [ <gap-rule> ]# )",
+		"comment": ""
+	},
+	"gap-auto-rule-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ <gap-rule-or-repeat> ] / ]* <gap-auto-repeat-rule> [ / [ <gap-rule-or-repeat> ] ]*",
+		"comment": ""
+	},
+	"gap-repeat-rule": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
 		"comment": ""
 	},
 	"gap-rule": {
@@ -614,13 +638,19 @@
 	"gap-rule-or-repeat": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <gap-rule> | <repeat-gap-rule> ]",
+		"syntax-a": "[ <gap-rule> | <gap-repeat-rule> ]",
 		"comment": ""
 	},
 	"generic-family": {
 		"type": "modified",
 		"syntax-b": "<generic-script-specific> | <generic-complete> | <generic-incomplete> | <-non-standard-generic-family>",
 		"syntax-a": "<generic-script-specific> | <generic-complete> | <generic-incomplete>",
+		"comment": ""
+	},
+	"generic-script-specific": {
+		"type": "modified",
+		"syntax-b": "generic( kai ) | generic( fangsong ) | generic( nastaliq )",
+		"syntax-a": "generic( fangsong ) | generic( kai ) | generic( khmer-mul ) | generic( nastaliq )",
 		"comment": ""
 	},
 	"gradient": {
@@ -633,6 +663,12 @@
 		"type": "modified",
 		"syntax-b": "auto | <custom-ident> | [ <integer> && <custom-ident>? ] | [ span && [ <integer> || <custom-ident> ] ]",
 		"syntax-a": "auto | <custom-ident> | [ [ <integer [-∞,-1]> | <integer [1,∞]> ] && <custom-ident>? ] | [ span && [ <integer [1,∞]> || <custom-ident> ] ]",
+		"comment": ""
+	},
+	"hdr-color()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "color-hdr( [ <color> && <number [0,∞]>? ]#{2} )",
 		"comment": ""
 	},
 	"horizontal-line-command": {
@@ -659,6 +695,42 @@
 		"syntax-a": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
+	"ictcp()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "ictcp( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"ident-arg": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<string> | <integer> | <ident>",
+		"comment": ""
+	},
+	"ident()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "ident( <ident-arg>+ )",
+		"comment": ""
+	},
+	"if-args": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "if( [ <if-args-branch> ; ]* <if-args-branch> ;? )",
+		"comment": ""
+	},
+	"if-args-branch": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<declaration-value> : <declaration-value>?",
+		"comment": ""
+	},
+	"if-branch": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<if-condition> : <declaration-value>?",
+		"comment": ""
+	},
 	"if-condition": {
 		"type": "added",
 		"syntax-b": "",
@@ -668,13 +740,13 @@
 	"if-test": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )",
+		"syntax-a": "supports( [ <ident> : <declaration-value> ] | <supports-condition> ) | media( <media-feature> | <media-condition> ) | style( <style-query> )",
 		"comment": ""
 	},
 	"if()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ;? )",
+		"syntax-a": "if( [ <if-branch> ; ]* <if-branch> ;? )",
 		"comment": ""
 	},
 	"image": {
@@ -719,6 +791,12 @@
 		"syntax-a": "<length-percentage [0,∞]> | min-content | max-content | auto",
 		"comment": ""
 	},
+	"inherit-args": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "inherit( <declaration-value> , <declaration-value>? )",
+		"comment": ""
+	},
 	"inherit()": {
 		"type": "added",
 		"syntax-b": "",
@@ -741,6 +819,18 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "auto | isolate",
+		"comment": ""
+	},
+	"jzazbz()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "jzazbz( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"comment": ""
+	},
+	"jzczhz()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "jzczhz( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"comment": ""
 	},
 	"keyframe-selector": {
@@ -783,6 +873,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )",
+		"comment": ""
+	},
+	"legacy-pseudo-element-selector": {
+		"type": "modified",
+		"syntax-b": "':' [ before | after | first-line | first-letter ]",
+		"syntax-a": ": [ before | after | first-line | first-letter ]",
 		"comment": ""
 	},
 	"legacy-rgb-syntax": {
@@ -860,7 +956,7 @@
 	"linear-gradient-syntax": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>",
+		"syntax-a": "[ [ <angle> | <zero> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>",
 		"comment": ""
 	},
 	"linear-gradient()": {
@@ -885,12 +981,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<url>",
-		"comment": ""
-	},
-	"masonry-auto-track-list": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ <line-names>? [ <track-size> | <track-repeat> ] ]* <line-names>? <auto-repeat> <line-names>? [ [ <track-size> | <track-repeat> ] <line-names>? ]*",
 		"comment": ""
 	},
 	"media-and": {
@@ -1109,24 +1199,6 @@
 		"syntax-a": "[ [ left | center | right | x-start | x-end ] && [ top | center | bottom | y-start | y-end ] | [ left | center | right | x-start | x-end | <length-percentage> ] [ top | center | bottom | y-start | y-end | <length-percentage> ] | [ block-start | center | block-end ] && [ inline-start | center | inline-end ] | [ start | center | end ]{2} ]",
 		"comment": ""
 	},
-	"predefined-polar-params": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "jzczhz [ <number> | <percentage> | none ]{2} [ <hue> | none ]",
-		"comment": ""
-	},
-	"predefined-rectangular": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "jzazbz | ictcp",
-		"comment": ""
-	},
-	"predefined-rectangular-params": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}",
-		"comment": ""
-	},
 	"predefined-rgb": {
 		"type": "modified",
 		"syntax-b": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020",
@@ -1145,10 +1217,16 @@
 		"syntax-a": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
-	"pseudo-page": {
+	"pseudo-class-selector": {
 		"type": "modified",
-		"syntax-b": ": [ left | right | first | blank ]",
-		"syntax-a": "':' [ left | right | first | blank ]",
+		"syntax-b": "':' <ident-token> | ':' <function-token> <any-value> ')'",
+		"syntax-a": ": <ident-token> | : <function-token> <any-value> )",
+		"comment": ""
+	},
+	"pseudo-element-selector": {
+		"type": "modified",
+		"syntax-b": "':' <pseudo-class-selector> | <legacy-pseudo-element-selector>",
+		"syntax-a": ": <pseudo-class-selector> | <legacy-pseudo-element-selector>",
 		"comment": ""
 	},
 	"pt-class-selector": {
@@ -1205,22 +1283,28 @@
 		"syntax-a": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}",
 		"comment": ""
 	},
-	"random-caching-options": {
+	"random-item-args": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<dashed-ident> || per-element",
+		"syntax-a": "random-item( <declaration-value> , [ <declaration-value>? ]# )",
 		"comment": ""
 	},
 	"random-item()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "random-item( <random-caching-options> , [ <declaration-value>? ]# )",
+		"syntax-a": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )",
+		"comment": ""
+	},
+	"random-value-sharing": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ [ auto | <dashed-ident> ] || match-element ] | fixed <number [0,1]>",
 		"comment": ""
 	},
 	"random()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "random( <random-caching-options>? , <calc-sum> , <calc-sum> , [ by <calc-sum> ]? )",
+		"syntax-a": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
 		"comment": ""
 	},
 	"ray()": {
@@ -1239,12 +1323,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<coordinate-pair> [ from [ start | end | origin ] ]?",
-		"comment": ""
-	},
-	"repeat-gap-rule": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
 		"comment": ""
 	},
 	"repeat-line-color": {
@@ -1382,7 +1460,7 @@
 	"shape()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "shape( <'fill-rule'>? from <coordinate-pair> , <shape-command># )",
+		"syntax-a": "shape( <'fill-rule'>? from <position> , <shape-command># )",
 		"comment": ""
 	},
 	"single-animation-iteration-count": {
@@ -1391,10 +1469,22 @@
 		"syntax-a": "infinite | <number [0,∞]>",
 		"comment": ""
 	},
+	"single-animation-trigger": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<single-animation-trigger-type> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]",
+		"comment": ""
+	},
+	"single-animation-trigger-type": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "once | repeat | alternate | state",
+		"comment": ""
+	},
 	"smooth-command": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "smooth [ [ to <position> && [ with <control-point> ]? ] | [ by <coordinate-pair> && [ with <relative-control-point> ]? ] ]",
+		"syntax-a": "smooth [ [ to <position> [ with <control-point> ]? ] | [ by <coordinate-pair> [ with <relative-control-point> ]? ] ]",
 		"comment": ""
 	},
 	"source-size": {
@@ -1467,6 +1557,12 @@
 		"type": "modified",
 		"syntax-b": "<style-condition> | <style-feature>",
 		"syntax-a": "not <style-in-parens> | <style-in-parens> [ [ and <style-in-parens> ]* | [ or <style-in-parens> ]* ] | <style-feature>",
+		"comment": ""
+	},
+	"superellipse()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "superellipse( <number> | infinity )",
 		"comment": ""
 	},
 	"supports-feature": {
@@ -1599,6 +1695,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "transform-mix( <progress> , <transform-list> , <transform-list> )",
+		"comment": ""
+	},
+	"type": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "'<' [ number | string ] '>'",
 		"comment": ""
 	},
 	"type()": {
