@@ -3,15 +3,12 @@ import type { ColorParser } from '../color-parser';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from '../color-notation';
 import { SyntaxFlag, colorData_to_XYZ_D50, convertNaNToZero } from '../color-data';
-import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { isCommentNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
-import { isTokenIdent } from '@csstools/css-tokenizer';
-import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { contrast_ratio_wcag_2_1 } from '@csstools/color-helpers';
 
 export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	let backgroundColorData: ColorData | false = false;
-	let maxKeyword: boolean = false;
 
 	for (let i = 0; i < colorMixNode.value.length; i++) {
 		const node = colorMixNode.value[i];
@@ -26,21 +23,10 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 			}
 		}
 
-		if (backgroundColorData && !maxKeyword) {
-			if (
-				isTokenNode(node) &&
-				isTokenIdent(node.value) &&
-				toLowerCaseAZ(node.value[4].value) === 'max'
-			) {
-				maxKeyword = true;
-				continue;
-			}
-		}
-
 		return false;
 	}
 
-	if (!backgroundColorData || !maxKeyword) {
+	if (!backgroundColorData) {
 		return false;
 	}
 

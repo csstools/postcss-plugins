@@ -2535,7 +2535,7 @@ export const matchers = [
 		]
 	},
 	{
-		"supports": "contrast-color(red max)",
+		"supports": "contrast-color(red)",
 		"property": "color",
 		"sniff": "contrast-color",
 		"matchers": [
@@ -2553,13 +2553,6 @@ export const matchers = [
 				"type": "function",
 				"value": "contrast-color",
 				"nodes": [
-					{
-						"type": "word",
-						"isVariable": true
-					},
-					{
-						"type": "space"
-					},
 					{
 						"type": "word",
 						"isVariable": true

@@ -1,11 +1,3 @@
-.dynamic {
+.a {
 	--color: contrast-color(oklch(82.06% 0.2 330.35));
-}
-
-.max {
-	--color: contrast-color(oklch(82.06% 0.19 79.41) max);
-}
-
-.both {
-	--color: color-mix(in srgb, contrast-color(blue max), contrast-color(cyan));
 }
