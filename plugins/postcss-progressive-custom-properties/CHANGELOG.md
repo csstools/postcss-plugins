@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (patch)
+
+- Drop the `max` keyword for `contrast-color( <color> )`
+
 ### 4.0.0
 
 _August 3, 2024_

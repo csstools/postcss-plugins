@@ -1,65 +1,9 @@
-.dynamic {
-	--color: color(display-p3 0.15472 0 0.15897);
+.a {
+	--color: rgb(0, 0, 0);
 }
 
-@supports (color: contrast-color(red max)) and (color: oklab(0% 0 0%)) {
-.dynamic {
+@supports (color: contrast-color(red)) and (color: oklab(0% 0 0%)) {
+.a {
 	--color: contrast-color(oklch(82.06% 0.2 330.35));
 }
-}
-
-@supports not (color: contrast-color(red max)) {
-
-	@media (prefers-contrast: more) {.dynamic {
-	--color: rgb(0, 0, 0);
-}
-	}
-}
-
-@supports not (color: contrast-color(red max)) {
-
-	@media (prefers-contrast: less) {.dynamic {
-	--color: color(display-p3 0.29314 0 0.30019);
-}
-	}
-}
-
-.max {
-	--color: rgb(0, 0, 0);
-}
-
-@supports (color: contrast-color(red max)) and (color: oklab(0% 0 0%)) {
-.max {
-	--color: contrast-color(oklch(82.06% 0.19 79.41) max);
-}
-}
-
-.both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.10723 0.10958));
-}
-
-@supports (color: color-mix(in lch, red, blue)) and (color: contrast-color(red max)) {
-.both {
-	--color: color-mix(in srgb, contrast-color(blue max), contrast-color(cyan));
-}
-}
-
-@supports not (color: contrast-color(red max)) {
-
-	@media (prefers-contrast: more) {
-
-.both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), rgb(0, 0, 0));
-}
-	}
-}
-
-@supports not (color: contrast-color(red max)) {
-
-	@media (prefers-contrast: less) {
-
-.both {
-	--color: color-mix(in srgb, rgb(255, 255, 255), color(display-p3 0 0.21431 0.2182));
-}
-	}
 }

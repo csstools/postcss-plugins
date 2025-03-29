@@ -9,32 +9,15 @@ npm install @csstools/postcss-contrast-color-function --save-dev
 [PostCSS Contrast Color Function] lets you dynamically specify a text color with adequate contrast following the [CSS Color 5 Specification].
 
 ```css
-.dynamic {
+.color {
 	color: contrast-color(oklch(82% 0.2 330));
-}
-
-.max {
-	color: contrast-color(oklch(30% 0.2 79) max);
 }
 
 /* becomes */
 
-.dynamic {
-	color: color(display-p3 0.15433 0 0.15992);
-	color: contrast-color(oklch(82% 0.2 330));
-}@supports not (color: contrast-color(red max)) {@media (prefers-contrast: more) {.dynamic {
+.color {
 	color: rgb(0, 0, 0);
-}
-	}
-}@supports not (color: contrast-color(red max)) {@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.2925 0 0.30177);
-}
-	}
-}
-
-.max {
-	color: rgb(255, 255, 255);
-	color: contrast-color(oklch(30% 0.2 79) max);
+	color: contrast-color(oklch(82% 0.2 330));
 }
 ```
 
@@ -80,28 +63,14 @@ postcssContrastColorFunction({ preserve: false })
 ```
 
 ```css
-.dynamic {
+.color {
 	color: contrast-color(oklch(82% 0.2 330));
-}
-
-.max {
-	color: contrast-color(oklch(30% 0.2 79) max);
 }
 
 /* becomes */
 
-.dynamic {
-	color: color(display-p3 0.15433 0 0.15992);
-}@media (prefers-contrast: more) {.dynamic {
+.color {
 	color: rgb(0, 0, 0);
-}
-}@media (prefers-contrast: less) {.dynamic {
-	color: color(display-p3 0.2925 0 0.30177);
-}
-}
-
-.max {
-	color: rgb(255, 255, 255);
 }
 ```
 

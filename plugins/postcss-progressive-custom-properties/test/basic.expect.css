@@ -434,13 +434,11 @@
 
 :root {
 	--color-contrast-color-1: green;
-	--color-contrast-color-2: green;
 }
 
-@supports (color: contrast-color(red max)) {
+@supports (color: contrast-color(red)) {
 :root {
-	--color-contrast-color-1: contrast-color(green max);
-	--color-contrast-color-2: contrast-color(green);
+	--color-contrast-color-1: contrast-color(green);
 }
 }
 
@@ -448,17 +446,7 @@
 	color: var(--green);
 }
 
-@supports (color: contrast-color(red max)) {
-:root {
-	color: contrast-color(var(--green) max);
-}
-}
-
-:root {
-	color: var(--green);
-}
-
-@supports (color: contrast-color(red max)) {
+@supports (color: contrast-color(red)) {
 :root {
 	color: contrast-color(var(--green));
 }
