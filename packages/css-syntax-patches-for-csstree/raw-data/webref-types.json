@@ -42,7 +42,7 @@
 		"syntax": "[ <angle> | <percentage> ]"
 	},
 	"angular-color-hint": {
-		"syntax": "<angle-percentage>"
+		"syntax": "<angle-percentage> | <zero>"
 	},
 	"angular-color-stop": {
 		"syntax": "<color> <color-stop-angle>?"
@@ -54,7 +54,7 @@
 		"syntax": "scroll-position | contents | <custom-ident>"
 	},
 	"arc-command": {
-		"syntax": "arc [ <command-end-point> && [ of <coordinate-pair> ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]"
+		"syntax": "arc <command-end-point> [ [ of <length-percentage>{1,2} ] && <arc-sweep>? && <arc-size>? && [ rotate <angle> ]? ]"
 	},
 	"arc-size": {
 		"syntax": "large | small"
@@ -74,6 +74,9 @@
 	"attachment": {
 		"syntax": "scroll | fixed | local"
 	},
+	"attr-args": {
+		"syntax": "attr( <declaration-value> , <declaration-value>? )"
+	},
 	"attr-fallback": {
 		"syntax": "<any-value>"
 	},
@@ -87,7 +90,7 @@
 		"syntax": "[ <ident-token>? '|' ]? <ident-token>"
 	},
 	"attr-type": {
-		"syntax": "type( <syntax> ) | string | <attr-unit>"
+		"syntax": "type( <syntax> ) | raw-string | <attr-unit>"
 	},
 	"attr-unit": {
 		"syntax": "'%' | em | ex | cap | ch | ic | rem | lh | rlh | vw | vh | vi | vb | vmin | vmax | cm | mm | q | in | pc | pt | px | deg | grad | rad | turn | s | ms | hz | khz | fr"
@@ -97,9 +100,6 @@
 	},
 	"attribute-selector": {
 		"syntax": "'[' <wq-name> ']' | '[' <wq-name> <attr-matcher> [ <string-token> | <ident-token> ] <attr-modifier>? ']'"
-	},
-	"auto-gap-rule-list": {
-		"syntax": "[ [ <gap-rule-or-repeat> ] / ]* <auto-repeat-gap-rule> [ / [ <gap-rule-or-repeat> ] ]*"
 	},
 	"auto-line-color-list": {
 		"syntax": "[ <line-color-or-repeat> ]* <auto-repeat-line-color> [ <line-color-or-repeat> ]*"
@@ -112,9 +112,6 @@
 	},
 	"auto-repeat": {
 		"syntax": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <fixed-size> ]+ <line-names>? )"
-	},
-	"auto-repeat-gap-rule": {
-		"syntax": "repeat( auto , [ <gap-rule> ]# )"
 	},
 	"auto-repeat-line-color": {
 		"syntax": "repeat( auto , [ <color> ]+ )"
@@ -189,7 +186,7 @@
 		"syntax": "calc-mix( <progress> , <calc-sum> , <calc-sum> )"
 	},
 	"calc-product": {
-		"syntax": "<calc-value> [ [ '*' | '/' ] <calc-value> ]*"
+		"syntax": "<calc-value> [ [ '*' | / ] <calc-value> ]*"
 	},
 	"calc-size-basis": {
 		"syntax": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]"
@@ -243,7 +240,7 @@
 		"syntax": "[ color-COLRv0 | color-COLRv1 | color-SVG | color-sbix | color-CBDT ]"
 	},
 	"color-function": {
-		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
+		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <ictcp()> | <jzazbz()> | <jzczhz()> | <color()>"
 	},
 	"color-interpolation-method": {
 		"syntax": "in [ <rectangular-color-space> | <polar-color-space> <hue-interpolation-method>? | <custom-color-space> ]"
@@ -261,7 +258,7 @@
 		"syntax": "<color-stop-length> | <color-stop-angle>"
 	},
 	"color-stop-angle": {
-		"syntax": "<angle-percentage>{1,2}"
+		"syntax": "[ <angle-percentage> | <zero> ]{1,2}"
 	},
 	"color-stop-length": {
 		"syntax": "<length-percentage>{1,2}"
@@ -276,7 +273,7 @@
 		"syntax": "color( [ from <color> ]? <colorspace-params> [ / [ <alpha-value> | none ] ]? )"
 	},
 	"colorspace-params": {
-		"syntax": "[ <custom-params> | <predefined-rgb-params> | <predefined-polar-params> | <predefined-rectangular-params> | <xyz-params> ]"
+		"syntax": "[ <custom-params> | <predefined-rgb-params> | <xyz-params> ]"
 	},
 	"combinator": {
 		"syntax": "'>' | '+' | '~' | [ '|' '|' ]"
@@ -324,7 +321,7 @@
 		"syntax": "<compound-selector>#"
 	},
 	"conic-gradient-syntax": {
-		"syntax": "[ [ [ from <angle> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>"
+		"syntax": "[ [ [ from [ <angle> | <zero> ] ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>"
 	},
 	"conic-gradient()": {
 		"syntax": "conic-gradient( [ <conic-gradient-syntax> ] )"
@@ -363,7 +360,7 @@
 		"syntax": "[ contextual | no-contextual ]"
 	},
 	"contrast-color()": {
-		"syntax": "contrast-color( <color> max? )"
+		"syntax": "contrast-color( <color> )"
 	},
 	"contrast()": {
 		"syntax": "contrast( [ <number-percentage> ] )"
@@ -371,11 +368,17 @@
 	"control-point": {
 		"syntax": "[ <position> | <relative-control-point> ]"
 	},
+	"control-value()": {
+		"syntax": "control-value( <type>? )"
+	},
 	"coord-box": {
 		"syntax": "<paint-box> | view-box"
 	},
 	"coordinate-pair": {
 		"syntax": "<length-percentage>{2}"
+	},
+	"corner-shape-value": {
+		"syntax": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )"
 	},
 	"cos()": {
 		"syntax": "cos( <calc-sum> )"
@@ -390,7 +393,7 @@
 		"syntax": "<counter-style-name> | <symbols()>"
 	},
 	"counter-style-name": {
-		"syntax": "decimal | decimal-leading-zero | arabic-indic | armenian | upper-armenian | lower-armenian | bengali | cambodian | khmer | cjk-decimal | devanagari | georgian | gujarati | gurmukhi | hebrew | kannada | lao | malayalam | mongolian | myanmar | oriya | persian | lower-roman | upper-roman | tamil | telugu | thai | tibetan | lower-alpha | lower-latin | upper-alpha | upper-latin | lower-greek | hiragana | hiragana-iroha | katakana | katakana-iroha | disc | circle | square | disclosure-open | disclosure-closed | cjk-earthly-branch | cjk-heavenly-stem | korean-hangul-formal | korean-hanja-informal | korean-hanja-formal | ethiopic-numeric"
+		"syntax": "decimal | decimal-leading-zero | arabic-indic | armenian | upper-armenian | lower-armenian | bengali | cambodian | khmer | cjk-decimal | devanagari | georgian | gujarati | gurmukhi | hebrew | kannada | lao | malayalam | mongolian | myanmar | oriya | persian | lower-roman | upper-roman | tamil | telugu | thai | tibetan | lower-alpha | lower-latin | upper-alpha | upper-latin | lower-greek | hiragana | hiragana-iroha | katakana | katakana-iroha | disc | circle | square | disclosure-open | disclosure-closed | cjk-earthly-branch | cjk-heavenly-stem | japanese-informal | japanese-formal | korean-hangul-formal | korean-hanja-informal | korean-hanja-formal | ethiopic-numeric"
 	},
 	"counter()": {
 		"syntax": "counter( <counter-name> , <counter-style>? )"
@@ -417,7 +420,7 @@
 		"syntax": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )"
 	},
 	"curve-command": {
-		"syntax": "curve [ [ to <position> && [ with <control-point> [ / <control-point> ]? ] ] | [ by <coordinate-pair> && [ with <relative-control-point> [ / <relative-control-point> ]? ] ] ]"
+		"syntax": "curve [ [ to <position> with <control-point> [ / <control-point> ]? ] | [ by <coordinate-pair> with <relative-control-point> [ / <relative-control-point> ]? ] ]"
 	},
 	"custom-arg": {
 		"syntax": "$ <ident-token> ;"
@@ -477,7 +480,7 @@
 		"syntax": "drop-shadow( <length>{2,3} <color>? )"
 	},
 	"dynamic-range-limit-mix()": {
-		"syntax": "dynamic-range-limit-mix( [ <ident> && <percentage [0,100]> ]# )"
+		"syntax": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]#{2,} )"
 	},
 	"easing-function": {
 		"syntax": "<linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>"
@@ -614,17 +617,17 @@
 	"frequency-percentage": {
 		"syntax": "[ <frequency> | <percentage> ]"
 	},
-	"function-dependency-list": {
-		"syntax": "<function-parameter>#"
-	},
-	"function-name": {
-		"syntax": "<dashed-ident>"
-	},
 	"function-parameter": {
 		"syntax": "<custom-property-name> <css-type>? [ : <declaration-value> ]?"
 	},
-	"function-parameter-list": {
-		"syntax": "<function-parameter>#"
+	"gap-auto-repeat-rule": {
+		"syntax": "repeat( auto , [ <gap-rule> ]# )"
+	},
+	"gap-auto-rule-list": {
+		"syntax": "[ [ <gap-rule-or-repeat> ] / ]* <gap-auto-repeat-rule> [ / [ <gap-rule-or-repeat> ] ]*"
+	},
+	"gap-repeat-rule": {
+		"syntax": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )"
 	},
 	"gap-rule": {
 		"syntax": "[ <line-width> || <line-style> || <color> ]"
@@ -633,7 +636,7 @@
 		"syntax": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*"
 	},
 	"gap-rule-or-repeat": {
-		"syntax": "[ <gap-rule> | <repeat-gap-rule> ]"
+		"syntax": "[ <gap-rule> | <gap-repeat-rule> ]"
 	},
 	"gender": {
 		"syntax": "male | female | neutral"
@@ -657,7 +660,7 @@
 		"syntax": "serif | sans-serif | cursive | fantasy | monospace"
 	},
 	"generic-script-specific": {
-		"syntax": "generic( kai ) | generic( fangsong ) | generic( nastaliq )"
+		"syntax": "generic( fangsong ) | generic( kai ) | generic( khmer-mul ) | generic( nastaliq )"
 	},
 	"generic-voice": {
 		"syntax": "[ <age>? <gender> <integer>? ]"
@@ -692,6 +695,9 @@
 	"grid-line": {
 		"syntax": "auto | <custom-ident> | [ [ <integer [-∞,-1]> | <integer [1,∞]> ] && <custom-ident>? ] | [ span && [ <integer [1,∞]> || <custom-ident> ] ]"
 	},
+	"hdr-color()": {
+		"syntax": "color-hdr( [ <color> && <number [0,∞]>? ]#{2} )"
+	},
 	"historical-lig-values": {
 		"syntax": "[ historical-ligatures | no-historical-ligatures ]"
 	},
@@ -719,14 +725,32 @@
 	"hypot()": {
 		"syntax": "hypot( <calc-sum># )"
 	},
+	"ictcp()": {
+		"syntax": "ictcp( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+	},
+	"ident-arg": {
+		"syntax": "<string> | <integer> | <ident>"
+	},
+	"ident()": {
+		"syntax": "ident( <ident-arg>+ )"
+	},
+	"if-args": {
+		"syntax": "if( [ <if-args-branch> ; ]* <if-args-branch> ;? )"
+	},
+	"if-args-branch": {
+		"syntax": "<declaration-value> : <declaration-value>?"
+	},
+	"if-branch": {
+		"syntax": "<if-condition> : <declaration-value>?"
+	},
 	"if-condition": {
 		"syntax": "<boolean-expr[<if-test>]> | else"
 	},
 	"if-test": {
-		"syntax": "supports( [ <supports-condition> | <ident> : <declaration-value> ] ) | media( <media-query> ) | style( <style-query> )"
+		"syntax": "supports( [ <ident> : <declaration-value> ] | <supports-condition> ) | media( <media-feature> | <media-condition> ) | style( <style-query> )"
 	},
 	"if()": {
-		"syntax": "if( [ <if-condition> : <declaration-value>? ; ]* <if-condition> : <declaration-value>? ;? )"
+		"syntax": "if( [ <if-branch> ; ]* <if-branch> ;? )"
 	},
 	"image": {
 		"syntax": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>"
@@ -758,6 +782,9 @@
 	"inflexible-breadth": {
 		"syntax": "<length-percentage [0,∞]> | min-content | max-content | auto"
 	},
+	"inherit-args": {
+		"syntax": "inherit( <declaration-value> , <declaration-value>? )"
+	},
 	"inherit()": {
 		"syntax": "inherit( <custom-property-name> , <declaration-value>? )"
 	},
@@ -778,6 +805,12 @@
 	},
 	"isolation-mode": {
 		"syntax": "auto | isolate"
+	},
+	"jzazbz()": {
+		"syntax": "jzazbz( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
+	},
+	"jzczhz()": {
+		"syntax": "jzczhz( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"keyframe-block": {
 		"syntax": "<keyframe-selector># { <declaration-list> }"
@@ -825,7 +858,7 @@
 		"syntax": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )"
 	},
 	"legacy-pseudo-element-selector": {
-		"syntax": "':' [ before | after | first-line | first-letter ]"
+		"syntax": ": [ before | after | first-line | first-letter ]"
 	},
 	"legacy-rgb-syntax": {
 		"syntax": "rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )"
@@ -888,7 +921,7 @@
 		"syntax": "[ <angle> | <side-or-corner> ]? , <color-stop-list>"
 	},
 	"linear-gradient-syntax": {
-		"syntax": "[ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>"
+		"syntax": "[ [ <angle> | <zero> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>"
 	},
 	"linear-gradient()": {
 		"syntax": "linear-gradient( [ <linear-gradient-syntax> ] )"
@@ -922,9 +955,6 @@
 	},
 	"masking-mode": {
 		"syntax": "alpha | luminance | match-source"
-	},
-	"masonry-auto-track-list": {
-		"syntax": "[ <line-names>? [ <track-size> | <track-repeat> ] ]* <line-names>? <auto-repeat> <line-names>? [ [ <track-size> | <track-repeat> ] <line-names>? ]*"
 	},
 	"matrix()": {
 		"syntax": "matrix( <number>#{6} )"
@@ -1166,15 +1196,6 @@
 	"pow()": {
 		"syntax": "pow( <calc-sum> , <calc-sum> )"
 	},
-	"predefined-polar-params": {
-		"syntax": "jzczhz [ <number> | <percentage> | none ]{2} [ <hue> | none ]"
-	},
-	"predefined-rectangular": {
-		"syntax": "jzazbz | ictcp"
-	},
-	"predefined-rectangular-params": {
-		"syntax": "<predefined-rectangular> [ <number> | <percentage> | none ]{3}"
-	},
 	"predefined-rgb": {
 		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear"
 	},
@@ -1188,16 +1209,16 @@
 		"syntax": "progress( <calc-sum> , <calc-sum> , <calc-sum> )"
 	},
 	"pseudo-class-selector": {
-		"syntax": "':' <ident-token> | ':' <function-token> <any-value> ')'"
+		"syntax": ": <ident-token> | : <function-token> <any-value> )"
 	},
 	"pseudo-compound-selector": {
 		"syntax": "<pseudo-element-selector> <pseudo-class-selector>*"
 	},
 	"pseudo-element-selector": {
-		"syntax": "':' <pseudo-class-selector> | <legacy-pseudo-element-selector>"
+		"syntax": ": <pseudo-class-selector> | <legacy-pseudo-element-selector>"
 	},
 	"pseudo-page": {
-		"syntax": "':' [ left | right | first | blank ]"
+		"syntax": ": [ left | right | first | blank ]"
 	},
 	"pt-class-selector": {
 		"syntax": "[ '.' <custom-ident> ]+"
@@ -1241,14 +1262,17 @@
 	"radial-size": {
 		"syntax": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}"
 	},
-	"random-caching-options": {
-		"syntax": "<dashed-ident> || per-element"
+	"random-item-args": {
+		"syntax": "random-item( <declaration-value> , [ <declaration-value>? ]# )"
 	},
 	"random-item()": {
-		"syntax": "random-item( <random-caching-options> , [ <declaration-value>? ]# )"
+		"syntax": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )"
+	},
+	"random-value-sharing": {
+		"syntax": "[ [ auto | <dashed-ident> ] || match-element ] | fixed <number [0,1]>"
 	},
 	"random()": {
-		"syntax": "random( <random-caching-options>? , <calc-sum> , <calc-sum> , [ by <calc-sum> ]? )"
+		"syntax": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )"
 	},
 	"ratio": {
 		"syntax": "<number [0,∞]> [ / <number [0,∞]> ]?"
@@ -1288,9 +1312,6 @@
 	},
 	"rem()": {
 		"syntax": "rem( <calc-sum> , <calc-sum> )"
-	},
-	"repeat-gap-rule": {
-		"syntax": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )"
 	},
 	"repeat-line-color": {
 		"syntax": "repeat( [ <integer [1,∞]> ] , [ <color> ]+ )"
@@ -1431,7 +1452,7 @@
 		"syntax": "<length-percentage> | closest-side | farthest-side"
 	},
 	"shape()": {
-		"syntax": "shape( <'fill-rule'>? from <coordinate-pair> , <shape-command># )"
+		"syntax": "shape( <'fill-rule'>? from <position> , <shape-command># )"
 	},
 	"side-or-corner": {
 		"syntax": "[ left | right ] || [ top | bottom ]"
@@ -1469,6 +1490,12 @@
 	"single-animation-timeline": {
 		"syntax": "auto | none | <dashed-ident> | <scroll()> | <view()>"
 	},
+	"single-animation-trigger": {
+		"syntax": "<single-animation-trigger-type> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]"
+	},
+	"single-animation-trigger-type": {
+		"syntax": "once | repeat | alternate | state"
+	},
 	"single-transition": {
 		"syntax": "[ none | <single-transition-property> ] || <time> || <easing-function> || <time> || <transition-behavior-value>"
 	},
@@ -1494,7 +1521,7 @@
 		"syntax": "skewY( [ <angle> | <zero> ] )"
 	},
 	"smooth-command": {
-		"syntax": "smooth [ [ to <position> && [ with <control-point> ]? ] | [ by <coordinate-pair> && [ with <relative-control-point> ]? ] ]"
+		"syntax": "smooth [ [ to <position> [ with <control-point> ]? ] | [ by <coordinate-pair> [ with <relative-control-point> ]? ] ]"
 	},
 	"source-size": {
 		"syntax": "<media-condition> <source-size-value> | auto"
@@ -1549,6 +1576,9 @@
 	},
 	"subclass-selector": {
 		"syntax": "<id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>"
+	},
+	"superellipse()": {
+		"syntax": "superellipse( <number> | infinity )"
 	},
 	"supports-condition": {
 		"syntax": "not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*"
@@ -1696,6 +1726,9 @@
 	},
 	"try-tactic": {
 		"syntax": "flip-block || flip-inline || flip-start"
+	},
+	"type": {
+		"syntax": "'<' [ number | string ] '>'"
 	},
 	"type-or-unit": {
 		"syntax": "string | color | url | integer | number | length | angle | time | frequency | cap | ch | em | ex | ic | lh | rlh | rem | vb | vi | vw | vh | vmin | vmax | mm | Q | cm | in | pt | pc | px | deg | grad | rad | turn | ms | s | Hz | kHz | %"
