@@ -63,7 +63,7 @@ const CUSTOM_OVERRIDES = {
 		// TODO : remove this override when `css-color-6` is updated
 		'contrast-color()': {
 			'syntax-b': 'contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>, <color># ] ] )',
-			'syntax-a': 'contrast-color( <color> max? )',
+			'syntax-a': 'contrast-color( <color> )',
 		},
 	},
 	'motion': {
@@ -192,6 +192,7 @@ const SPECS = [
 	['css-will-change', []],
 	['css-writing-modes', []],
 	['css-gaps', []],
+	['css-forms', ['css-ui']],
 	['fill-stroke', []],
 	['filter-effects', []],
 	['filter-effects-2', []],
@@ -265,6 +266,9 @@ const type_deltas = new Set([
 	type_delta_key('modern-rgb-syntax', 'css-color', 'css-color-5'),
 	type_delta_key('color-base', 'css-color', 'css-color-5'),
 	type_delta_key('color', 'css-color', 'css-color-5'),
+	type_delta_key('color()', 'css-color', 'css-color-5'),
+	type_delta_key('xyz-params', 'css-color', 'css-color-5'),
+	type_delta_key('color-function', 'css-color-5', 'css-color-hdr'),
 
 	type_delta_key('bg-position', 'css-backgrounds', 'css-backgrounds-4'),
 	type_delta_key('repeat-style', 'css-backgrounds', 'css-backgrounds-4'),
@@ -419,6 +423,8 @@ const property_deltas = new Set([
 	property_delta_key('column-rule-style', 'css-multicol-2', 'css-gaps'),
 	property_delta_key('column-rule-width', 'css-multicol-2', 'css-gaps'),
 	property_delta_key('column-rule', 'css-multicol-2', 'css-gaps'),
+
+	property_delta_key('appearance', 'css-ui', 'css-forms'),
 ]);
 
 const seen_property_definitions = new Map();
@@ -593,44 +599,76 @@ export async function generate_webref_sets() {
 				continue;
 			}
 
-			if (!atrule.descriptors?.length) {
-				continue;
-			}
+			if (atrule.descriptors?.length) {
+				for (const descriptor of atrule.descriptors) {
+					if (descriptor.value || descriptor.newValues) {
 
-			for (const descriptor of atrule.descriptors) {
-				if (descriptor.value || descriptor.newValues) {
+						if (is_ignored_descriptor(trim_at(atrule.name), descriptor.name, spec_name)) {
+							continue;
+						}
 
-					if (is_ignored_descriptor(trim_at(atrule.name), descriptor.name, spec_name)) {
-						continue;
+						assign_new_atrule_definition(
+							spec_name,
+							atrules,
+							trim_at(atrule.name),
+							trim_lt_gt(descriptor.name),
+							descriptor.newValues ? ' | ' + descriptor.newValues : descriptor.value,
+						);
+
+						is_conflicting_descriptor(spec_name, trim_at(atrule.name), trim_lt_gt(descriptor.name), atrules[trim_at(atrule.name)][trim_lt_gt(descriptor.name)]);
 					}
 
-					assign_new_atrule_definition(
-						spec_name,
-						atrules,
-						trim_at(atrule.name),
-						trim_lt_gt(descriptor.name),
-						descriptor.newValues ? ' | ' + descriptor.newValues : descriptor.value,
-					);
+					if (descriptor.values) {
+						for (const value of descriptor.values) {
+							if (value.type === 'type' && value.value) {
+								if (is_ignored_type(value.name, spec_name)) {
+									continue;
+								}
 
-					is_conflicting_descriptor(spec_name, trim_at(atrule.name), trim_lt_gt(descriptor.name), atrules[trim_at(atrule.name)][trim_lt_gt(descriptor.name)]);
-				}
+								assign_new_definition(
+									spec_name,
+									values,
+									trim_lt_gt(value.name),
+									value.value,
+								);
 
-				if (descriptor.values) {
-					for (const value of descriptor.values) {
-						if (value.type === 'type' && value.value) {
-							if (is_ignored_type(value.name, spec_name)) {
-								continue;
+								is_conflicting_type(spec_name, trim_lt_gt(value.name), values[trim_lt_gt(value.name)]);
 							}
-
-							assign_new_definition(
-								spec_name,
-								values,
-								trim_lt_gt(value.name),
-								value.value,
-							);
-
-							is_conflicting_type(spec_name, trim_lt_gt(value.name), values[trim_lt_gt(value.name)]);
 						}
+					}
+				}
+			}
+
+			if (atrule.values?.length) {
+				for (const value of atrule.values) {
+					if (value.type === 'type' && value.value) {
+						if (is_ignored_type(value.name, spec_name)) {
+							continue;
+						}
+
+						assign_new_definition(
+							spec_name,
+							values,
+							trim_lt_gt(value.name),
+							value.value,
+						);
+
+						is_conflicting_type(spec_name, trim_lt_gt(value.name), values[trim_lt_gt(value.name)]);
+					}
+
+					if (value.type === 'function' && value.value) {
+						if (is_ignored_type(value.name, spec_name)) {
+							continue;
+						}
+
+						assign_new_definition(
+							spec_name,
+							values,
+							trim_lt_gt(value.name),
+							value.value,
+						);
+
+						is_conflicting_type(spec_name, trim_lt_gt(value.name), values[trim_lt_gt(value.name)]);
 					}
 				}
 			}

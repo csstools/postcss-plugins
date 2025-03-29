@@ -74,8 +74,35 @@
 	"animation-timing-function": {
 		"syntax": "<easing-function>#"
 	},
+	"animation-trigger": {
+		"syntax": "<single-animation-trigger>#"
+	},
+	"animation-trigger-exit-range": {
+		"syntax": "[ <'animation-trigger-exit-range-start'> <'animation-trigger-exit-range-end'>? ]#"
+	},
+	"animation-trigger-exit-range-end": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"animation-trigger-exit-range-start": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"animation-trigger-range": {
+		"syntax": "[ <'animation-trigger-range-start'> <'animation-trigger-range-end'>? ]#"
+	},
+	"animation-trigger-range-end": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"animation-trigger-range-start": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"animation-trigger-timeline": {
+		"syntax": "<single-animation-timeline>#"
+	},
+	"animation-trigger-type": {
+		"syntax": "<single-animation-trigger-type>#"
+	},
 	"appearance": {
-		"syntax": "none | auto | base | <compat-auto> | <compat-special>"
+		"syntax": "none | auto | base | <compat-auto> | <compat-special> | base"
 	},
 	"-moz-appearance": {
 		"syntax": "none | button | button-arrow-down | button-arrow-next | button-arrow-previous | button-arrow-up | button-bevel | button-focus | caret | checkbox | checkbox-container | checkbox-label | checkmenuitem | dualbutton | groupbox | listbox | listitem | menuarrow | menubar | menucheckbox | menuimage | menuitem | menuitemtext | menulist | menulist-button | menulist-text | menulist-textfield | menupopup | menuradio | menuseparator | meterbar | meterchunk | progressbar | progressbar-vertical | progresschunk | progresschunk-vertical | radio | radio-container | radio-label | radiomenuitem | range | range-thumb | resizer | resizerpanel | scale-horizontal | scalethumbend | scalethumb-horizontal | scalethumbstart | scalethumbtick | scalethumb-vertical | scale-vertical | scrollbarbutton-down | scrollbarbutton-left | scrollbarbutton-right | scrollbarbutton-up | scrollbarthumb-horizontal | scrollbarthumb-vertical | scrollbartrack-horizontal | scrollbartrack-vertical | searchfield | separator | sheet | spinner | spinner-downbutton | spinner-textfield | spinner-upbutton | splitter | statusbar | statusbarpanel | tab | tabpanel | tabpanels | tab-scroll-arrow-back | tab-scroll-arrow-forward | textfield | textfield-multiline | toolbar | toolbarbutton | toolbarbutton-dropdown | toolbargripper | toolbox | tooltip | treeheader | treeheadercell | treeheadersortarrow | treeitem | treeline | treetwisty | treetwistyopen | treeview | -moz-mac-unified-toolbar | -moz-win-borderless-glass | -moz-win-browsertabbar-toolbox | -moz-win-communicationstext | -moz-win-communications-toolbox | -moz-win-exclude-glass | -moz-win-glass | -moz-win-mediatext | -moz-win-media-toolbox | -moz-window-button-box | -moz-window-button-box-maximized | -moz-window-button-close | -moz-window-button-maximize | -moz-window-button-minimize | -moz-window-button-restore | -moz-window-frame-bottom | -moz-window-frame-left | -moz-window-frame-right | -moz-window-titlebar | -moz-window-titlebar-maximized"
@@ -425,6 +452,9 @@
 	"border-right-width": {
 		"syntax": "<line-width>"
 	},
+	"border-shape": {
+		"syntax": "none | [ <basic-shape> <geometry-box>? ]{1,2}"
+	},
 	"border-spacing": {
 		"syntax": "<length>{1,2}"
 	},
@@ -590,11 +620,14 @@
 	"column-gap": {
 		"syntax": "normal | <length-percentage [0,∞]>"
 	},
+	"column-height": {
+		"syntax": "auto | <length [0,∞]>"
+	},
 	"column-rule": {
-		"syntax": "<gap-rule-list> | <auto-gap-rule-list>"
+		"syntax": "<gap-rule-list> | <gap-auto-rule-list>"
 	},
 	"column-rule-break": {
-		"syntax": "intersection | spanning-item | none"
+		"syntax": "none | spanning-item | intersection"
 	},
 	"column-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
@@ -614,26 +647,29 @@
 	"column-width": {
 		"syntax": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )"
 	},
+	"column-wrap": {
+		"syntax": "nowrap | wrap"
+	},
 	"columns": {
-		"syntax": "<'column-width'> || <'column-count'>"
+		"syntax": "<'column-width'> || <'column-count'> || <'column-height'> || <'column-wrap'>"
 	},
 	"contain": {
 		"syntax": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]"
 	},
 	"contain-intrinsic-block-size": {
-		"syntax": "auto? [ none | <length> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-height": {
-		"syntax": "auto? [ none | <length> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-inline-size": {
-		"syntax": "auto? [ none | <length> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-size": {
 		"syntax": "[ auto? [ none | <length> ] ]{1,2}"
 	},
 	"contain-intrinsic-width": {
-		"syntax": "auto? [ none | <length> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"container": {
 		"syntax": "<'container-name'> [ / <'container-type'> ]?"
@@ -686,11 +722,56 @@
 	"copy-into": {
 		"syntax": "none | [ [ <custom-ident> <content-level> ] [, <custom-ident> <content-level> ]* ]?"
 	},
-	"corner-shape": {
-		"syntax": "[ round | angle ]{1,4}"
+	"corner-block-end-shape": {
+		"syntax": "<corner-shape-value>"
 	},
-	"corners": {
-		"syntax": "<'corner-shape'> || <'border-radius'>"
+	"corner-block-start-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-bottom-left-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-bottom-right-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-bottom-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-end-end-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-end-start-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-inline-end-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-inline-start-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-left-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-right-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-shape": {
+		"syntax": "<corner-shape-value>{1,4}"
+	},
+	"corner-start-end-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-start-start-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-top-left-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-top-right-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-top-shape": {
+		"syntax": "<corner-shape-value>"
 	},
 	"counter-increment": {
 		"syntax": "[ <counter-name> <integer>? ]+ | none"
@@ -726,13 +807,13 @@
 		"syntax": "ltr | rtl"
 	},
 	"display": {
-		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | masonry | inline-masonry | <display-outside> || [ <display-inside> | math ]"
+		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
 	},
 	"dynamic-range-limit": {
-		"syntax": "standard | high | constrained-high | <dynamic-range-limit-mix()>"
+		"syntax": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>"
 	},
 	"empty-cells": {
 		"syntax": "show | hide"
@@ -956,27 +1037,6 @@
 	"gap": {
 		"syntax": "<'row-gap'> <'column-gap'>?"
 	},
-	"gap-rule": {
-		"syntax": "<'column-rule'>"
-	},
-	"gap-rule-break": {
-		"syntax": "<'column-rule-break'>"
-	},
-	"gap-rule-color": {
-		"syntax": "<'column-rule-color'>"
-	},
-	"gap-rule-outset": {
-		"syntax": "<'column-rule-outset'>"
-	},
-	"gap-rule-paint-order": {
-		"syntax": "row-over-column | column-over-row"
-	},
-	"gap-rule-style": {
-		"syntax": "<'column-rule-style'>"
-	},
-	"gap-rule-width": {
-		"syntax": "<'column-rule-width'>"
-	},
 	"glyph-orientation-horizontal": {
 		"syntax": "<angle>"
 	},
@@ -993,7 +1053,7 @@
 		"syntax": "<track-size>+"
 	},
 	"grid-auto-flow": {
-		"syntax": "[ row | column | row-reverse | column-reverse ] || dense || wrap-reverse"
+		"syntax": "[ row | column ] || dense"
 	},
 	"grid-auto-rows": {
 		"syntax": "<track-size>+"
@@ -1044,10 +1104,10 @@
 		"syntax": "none | <string>+"
 	},
 	"grid-template-columns": {
-		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry"
+		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?"
 	},
 	"grid-template-rows": {
-		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>? | masonry"
+		"syntax": "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?"
 	},
 	"hanging-punctuation": {
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
@@ -1145,6 +1205,9 @@
 	"inset-inline-start": {
 		"syntax": "auto | <length-percentage>"
 	},
+	"interactivity": {
+		"syntax": "auto | inert"
+	},
 	"interpolate-size": {
 		"syntax": "numeric-only | allow-keywords"
 	},
@@ -1153,6 +1216,27 @@
 	},
 	"isolation": {
 		"syntax": "<isolation-mode>"
+	},
+	"item-cross": {
+		"syntax": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse"
+	},
+	"item-direction": {
+		"syntax": "auto | row | column | row-reverse | column-reverse"
+	},
+	"item-flow": {
+		"syntax": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'item-slack'>"
+	},
+	"item-pack": {
+		"syntax": "normal | dense || balance"
+	},
+	"item-slack": {
+		"syntax": "<length-percentage> | infinite"
+	},
+	"item-track": {
+		"syntax": "auto | row | column | row-reverse | column-reverse"
+	},
+	"item-wrap": {
+		"syntax": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse"
 	},
 	"justify-content": {
 		"syntax": "normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ]"
@@ -1367,32 +1451,8 @@
 	"mask-type": {
 		"syntax": "luminance | alpha"
 	},
-	"masonry": {
-		"syntax": "<'masonry-template-areas'> || <'masonry-template-tracks'> || <'masonry-direction'> || <'masonry-fill'>"
-	},
 	"masonry-auto-flow": {
 		"syntax": "[ pack | next ] || [ definite-first | ordered ]"
-	},
-	"masonry-auto-tracks": {
-		"syntax": "<'grid-auto-columns'>"
-	},
-	"masonry-direction": {
-		"syntax": "row | column | row-reverse | column-reverse"
-	},
-	"masonry-fill": {
-		"syntax": "normal | reverse"
-	},
-	"masonry-flow": {
-		"syntax": "<'masonry-direction'> || <'masonry-fill'>"
-	},
-	"masonry-slack": {
-		"syntax": "<length-percentage> | infinite"
-	},
-	"masonry-template-areas": {
-		"syntax": "none | <string>"
-	},
-	"masonry-template-tracks": {
-		"syntax": "none | <track-list> | <masonry-auto-track-list> | subgrid <line-name-list>?"
 	},
 	"math-depth": {
 		"syntax": "auto-add | add( <integer> ) | <integer>"
@@ -1712,6 +1772,9 @@
 	"reading-flow": {
 		"syntax": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order"
 	},
+	"reading-order": {
+		"syntax": "<integer>"
+	},
 	"region-fragment": {
 		"syntax": "auto | break"
 	},
@@ -1737,10 +1800,10 @@
 		"syntax": "normal | <length-percentage [0,∞]>"
 	},
 	"row-rule": {
-		"syntax": "<gap-rule-list> | <auto-gap-rule-list>"
+		"syntax": "<gap-rule-list> | <gap-auto-rule-list>"
 	},
 	"row-rule-break": {
-		"syntax": "intersection | spanning-item | none"
+		"syntax": "none | spanning-item | intersection"
 	},
 	"row-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
@@ -1765,6 +1828,27 @@
 	},
 	"ruby-position": {
 		"syntax": "[ alternate || [ over | under ] ] | inter-character"
+	},
+	"rule": {
+		"syntax": "<'column-rule'>"
+	},
+	"rule-break": {
+		"syntax": "<'column-rule-break'>"
+	},
+	"rule-color": {
+		"syntax": "<'column-rule-color'>"
+	},
+	"rule-outset": {
+		"syntax": "<'column-rule-outset'>"
+	},
+	"rule-paint-order": {
+		"syntax": "row-over-column | column-over-row"
+	},
+	"rule-style": {
+		"syntax": "<'column-rule-style'>"
+	},
+	"rule-width": {
+		"syntax": "<'column-rule-width'>"
 	},
 	"rx": {
 		"syntax": "<length-percentage> | auto"
@@ -1978,6 +2062,9 @@
 	},
 	"shape-subtract": {
 		"syntax": "none | [ <basic-shape> | <uri> ]+"
+	},
+	"slider-orientation": {
+		"syntax": "auto | left-to-right | right-to-left | top-to-bottom | bottom-to-top"
 	},
 	"spatial-navigation-action": {
 		"syntax": "auto | focus | scroll"
