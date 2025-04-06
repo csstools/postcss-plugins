@@ -35,11 +35,11 @@
 		"index.mjs"
 	],
 	"peerDependencies": {
-		"stylelint": "^16.16.0"
+		"stylelint": "^16.18.0"
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "^1.0.1",
-		"stylelint": "^16.16.0",
+		"stylelint": "^16.18.0",
 		"stylelint-test-rule-node": "^0.4.0"
 	},
 	"scripts": {
