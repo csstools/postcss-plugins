@@ -218,7 +218,8 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	   -moz-border-image: none;
 	     -o-border-image: none;
 	        border-image: none;
-	border-radius: 0;
+	-moz-border-radius: 0;
+	     border-radius: 0;
 	border-spacing: 0;
 	bottom: auto;
 	-webkit-box-shadow: none;
