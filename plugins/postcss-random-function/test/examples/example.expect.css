@@ -1,12 +1,12 @@
 div {
-	color: oklch(0.7, 0.2, 238.66036deg);
+	color: oklch(0.7 0.2 177.17235deg);
 }
 
 div {
-	color: oklch(0.7, 0.2, 134deg);
+	color: oklch(0.7 0.2 176deg);
 }
 
 div {
-	color: oklch(0.7, 0.2, 226.47057deg);
-	border-color: oklch(0.7, 0.2, 157.76966deg);
+	margin: 41.7525px 70.01679px;
+	padding: 44.03856px 44.03856px;
 }

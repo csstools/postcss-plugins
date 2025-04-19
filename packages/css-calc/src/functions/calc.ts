@@ -1,7 +1,7 @@
 import type { Calculation } from '../calculation';
 import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
-import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent } from '@csstools/css-tokenizer';
+import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent, isTokenNumber } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
@@ -32,6 +32,7 @@ import { unary } from '../operation/unary';
 import { solveLog } from './log';
 import { isNone } from '../util/is-none';
 import type { conversionOptions } from '../options';
+import type { RandomValueSharing} from './random';
 import { solveRandom } from './random';
 
 type mathFunction = (node: FunctionNode, globals: Globals, options: conversionOptions) => Calculation | -1
@@ -576,65 +577,127 @@ function log(logNode: FunctionNode, globals: Globals, options: conversionOptions
 }
 
 function random(randomNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	const nodes: Array<ComponentValue> = randomNode.value.filter(x => !isWhiteSpaceOrCommentNode(x));
-
-	let randomCachingOptions = '';
-	const stepValues: Array<ComponentValue> = []
-	const values: Array<ComponentValue> = []
-
-	{
-		for (let i = 0; i < nodes.length; i++) {
-			const node = nodes[i];
-			if (!randomCachingOptions && values.length === 0 && isTokenNode(node) && isTokenIdent(node.value)) {
-				const token = node.value;
-				const tokenStr = token[4].value.toLowerCase();
-				if (tokenStr === 'per-element' || tokenStr.startsWith('--')) {
-					randomCachingOptions = tokenStr;
-
-					const nextNode = nodes[i + 1];
-					if (!isTokenNode(nextNode) || !isTokenComma(nextNode.value)) {
-						return -1;
-					}
-
-					i++;
-					continue;
-				}
-			}
-
-			if (isTokenNode(node) && isTokenComma(node.value)) {
-				const nextNode = nodes[i + 1];
-
-				if (values.length > 0 && isTokenNode(nextNode) && isTokenIdent(nextNode.value)) {
-					const token = nextNode.value;
-					const tokenStr = token[4].value.toLowerCase();
-					if (tokenStr === 'by' || tokenStr.startsWith('--')) {
-						stepValues.push(...nodes.slice(i + 2));
-
-						break;
-					}
-				}
-			}
-
-			values.push(node);
-		}
-	}
-
-	const solvedValues = twoCommaSeparatedArguments(values, globals, options);
-	if (solvedValues === -1) {
+	const randomValueSharingAndNodes = parseRandomValueSharing(
+		randomNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)),
+		globals,
+		options,
+	);
+	if (randomValueSharingAndNodes === -1) {
 		return -1;
 	}
 
-	const [a, b] = solvedValues;
+	const [randomValueSharing, nodes] = randomValueSharingAndNodes;
 
-	let solvedStepValue: TokenNode | -1 | null = null;
-	if (stepValues.length) {
-		solvedStepValue = singleArgument(stepValues, globals, options);
-		if (solvedStepValue === -1) {
+	const randomArguments = variadicArguments(nodes, globals, options);
+	if (randomArguments === -1) {
+		return -1;
+	}
+
+	const [a, b, c] = randomArguments;
+
+	if (!a || !b) {
+		return -1
+	}
+
+	return solveRandom(
+		randomNode,
+		randomValueSharing,
+		a,
+		b,
+		c,
+		options
+	);
+}
+
+function parseRandomValueSharing(nodes: Array<ComponentValue>, globals: Globals, options: conversionOptions): [RandomValueSharing, Array<ComponentValue>] | -1 {
+	const x: RandomValueSharing = {
+		isAuto: false,
+		dashedIdent: "",
+		fixed: -1,
+		elementShared: false,
+	};
+
+	const firstNode = nodes[0];
+	if (!isTokenNode(firstNode) || !isTokenIdent(firstNode.value)) {
+		return [x, nodes];
+	}
+
+	for (let i = 0; i < nodes.length; i++) {
+		const node = nodes[i];
+		if (!isTokenNode(node)) {
 			return -1;
+		}
+
+		if (isTokenComma(node.value)) {
+			return [x, nodes.slice(i+1)];
+		}
+
+		if (!isTokenIdent(node.value)) {
+			return -1;
+		}
+
+		const token = node.value;
+		const tokenStr = token[4].value.toLowerCase();
+
+		if (tokenStr === 'element-shared') {
+			if (x.fixed !== -1) {
+				return -1;
+			}
+
+			x.elementShared = true;
+			continue;
+		}
+
+		// fixed <number [0,1]>
+		if (tokenStr === 'fixed') {
+			if (x.elementShared || x.dashedIdent || x.isAuto) {
+				return -1;
+			}
+
+			i++;
+			const nextNode = nodes[i];
+			if (!nextNode) {
+				return -1;
+			}
+
+			const fixedNumber = solve(calc(calcWrapper([nextNode]), globals, options));
+			if (fixedNumber === -1) {
+				return -1;
+			}
+
+			if (!isTokenNumber(fixedNumber.value)) {
+				return -1;
+			}
+
+			if (fixedNumber.value[4].value < 0 || fixedNumber.value[4].value > 1) {
+				return -1;
+			}
+
+			x.fixed = Math.max(0, Math.min(fixedNumber.value[4].value, 1 - 0.000_000_001));
+
+			continue;
+		}
+
+		if (tokenStr === 'auto') {
+			if (x.fixed !== -1 || x.dashedIdent) {
+				return -1;
+			}
+
+			x.isAuto = true;
+			continue;
+		}
+
+		if (tokenStr.startsWith('--')) {
+			if (x.fixed !== -1 || x.isAuto) {
+				return -1;
+			}
+
+			x.dashedIdent = tokenStr;
+			continue;
 		}
 	}
 
-	return solveRandom(randomNode, randomCachingOptions, a, b, solvedStepValue, options);
+	return -1;
 }
 
 function calcWrapper(v: Array<ComponentValue>): FunctionNode {

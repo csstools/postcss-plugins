@@ -1,12 +1,12 @@
 div {
-	color: oklch(0.7, 0.2, random(120deg, 240deg));
+	color: oklch(0.7 0.2 random(120deg, 240deg));
 }
 
 div {
-	color: oklch(0.7, 0.2, random(120deg, 240deg, by 7deg));
+	color: oklch(0.7 0.2 random(120deg, 240deg, 7deg));
 }
 
 div {
-	color: oklch(0.7, 0.2, random(--text, 120deg, 240deg));
-	border-color: oklch(0.7, 0.2, random(--border, 120deg, 240deg));
+	margin: random(10px, 100px) random(10px, 100px);
+	padding: random(--padding, 10px, 100px) random(--padding, 10px, 100px);
 }

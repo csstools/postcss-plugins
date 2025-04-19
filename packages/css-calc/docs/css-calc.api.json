@@ -361,7 +361,7 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    precision?: number;\n    toCanonicalUnits?: boolean;\n    censorIntoStandardRepresentableValues?: boolean;\n    rawPercentages?: boolean;\n    randomSeed?: number;\n}"
+              "text": ";\n    precision?: number;\n    toCanonicalUnits?: boolean;\n    censorIntoStandardRepresentableValues?: boolean;\n    rawPercentages?: boolean;\n    randomCaching?: {\n        propertyName: string;\n        propertyN: number;\n        elementID: string;\n        documentID: string;\n    };\n}"
             },
             {
               "kind": "Content",
