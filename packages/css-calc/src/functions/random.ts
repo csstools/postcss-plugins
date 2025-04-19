@@ -4,10 +4,36 @@ import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
 import { twoOfSameNumeric } from '../util/kind-of-number';
 import type { CSSToken} from '@csstools/css-tokenizer';
-import { isTokenNumeric, stringify } from '@csstools/css-tokenizer';
+import { isTokenNumeric } from '@csstools/css-tokenizer';
 import type { conversionOptions } from '../options';
 
-export function solveRandom(randomNode: FunctionNode, randomCachingOptions: string, a: TokenNode, b: TokenNode, stepValue: TokenNode|null, options: conversionOptions): Calculation | -1 {
+const NULL_CHAR = String.fromCodePoint(0x000);
+
+export type RandomValueSharing = {
+	isAuto: boolean,
+	dashedIdent: string,
+	elementShared: boolean,
+	fixed: number,
+}
+
+export function solveRandom(randomNode: FunctionNode, randomValueSharing: RandomValueSharing, a: TokenNode, b: TokenNode, stepValue: TokenNode|null, options: conversionOptions): Calculation | -1 {
+	if (randomValueSharing.fixed === -1 && !options.randomCaching) {
+		return -1;
+	}
+
+	if (!options.randomCaching) {
+		options.randomCaching = {
+			propertyName: '',
+			propertyN: 0,
+			elementID: '',
+			documentID: '',
+		}
+	}
+
+	if (options.randomCaching && !options.randomCaching.propertyN) {
+		options.randomCaching.propertyN = 0;
+	}
+
 	const aToken = a.value;
 	if (!isTokenNumeric(aToken)) {
 		return -1;
@@ -26,56 +52,82 @@ export function solveRandom(randomNode: FunctionNode, randomCachingOptions: stri
 		}
 	}
 
-	let result;
 	if (!Number.isFinite(aToken[4].value)) {
-		result = Number.NaN;
-	} else if (!Number.isFinite(bToken[4].value)) {
-		result = Number.NaN;
-	} else if (!Number.isFinite(bToken[4].value - aToken[4].value)) {
-		result = Number.NaN;
-	} else if (stepValueToken && !Number.isFinite(stepValueToken[4].value)) {
-		result = aToken[4].value
-	} else {
-		const rnd = sfc32(
-			crc32(
-				[
-					randomCachingOptions,
-					stringify(aToken),
-					stringify(bToken),
-					(stepValue ? `by ${stepValue.toString()}` : ''),
-				].join(','),
-			),
-			options.randomSeed,
-		);
-
-		let min = aToken[4].value;
-		let max = bToken[4].value;
-		if (min > max) {
-			[min, max] = [max, min];
-		}
-
-		if (
-			stepValueToken && (
-				(stepValueToken[4].value <= 0) ||
-				((Math.abs(min - max) / stepValueToken[4].value) > 10_000_000_000)
-			)
-		) {
-			stepValueToken = null
-		}
-
-		if (stepValueToken) {
-			const delta = Math.abs(min - max);
-			const randomValue = rnd();
-			const steps = Math.floor((delta / stepValueToken[4].value) * randomValue);
-
-			result = min + (steps * stepValueToken[4].value);
-		} else {
-			const randomValue = rnd();
-			result = Number(((randomValue * (max - min)) + min).toFixed(5));
-		}
+		return resultToCalculation(randomNode, aToken, Number.NaN);
 	}
 
-	return resultToCalculation(randomNode, aToken, result);
+	if (!Number.isFinite(bToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, Number.NaN);
+	}
+
+	if (!Number.isFinite(bToken[4].value - aToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, Number.NaN);
+	}
+
+	if (stepValueToken && !Number.isFinite(stepValueToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, aToken[4].value);
+	}
+
+	const rnd = randomValueSharing.fixed === -1 ? sfc32(
+		crc32(
+			[
+				randomValueSharing.dashedIdent ? randomValueSharing.dashedIdent : (`${options.randomCaching?.propertyName} ${options.randomCaching.propertyN++}`),
+				randomValueSharing.elementShared ? "" : options.randomCaching.elementID,
+				options.randomCaching.documentID,
+			].join(NULL_CHAR),
+		),
+	) : () : number => { return randomValueSharing.fixed };
+
+	let min = aToken[4].value;
+	let max = bToken[4].value;
+	if (min > max) {
+		[min, max] = [max, min];
+	}
+
+	if (
+		stepValueToken && (
+			(stepValueToken[4].value <= 0) ||
+			((Math.abs(min - max) / stepValueToken[4].value) > 10_000_000_000)
+		)
+	) {
+		stepValueToken = null
+	}
+
+	if (stepValueToken) {
+		const err = Math.max(stepValueToken[4].value / 1000, 0.000_000_001);
+
+		const steps = [min];
+		let lastStep = 0;
+		while (true) {
+			lastStep += stepValueToken[4].value;
+
+			const stepResult = min + lastStep;
+			if ((stepResult + err) < max) {
+				steps.push(stepResult);
+			} else {
+				steps.push(max);
+				break;
+			}
+
+			if ((stepResult + stepValueToken[4].value - err) > max) {
+				break;
+			}
+		}
+
+		const randomValue = rnd();
+		return resultToCalculation(
+			randomNode,
+			aToken,
+			Number(steps[Math.floor(steps.length * randomValue)].toFixed(5))
+		);
+	}
+
+	const randomValue = rnd();
+	return resultToCalculation(
+		randomNode,
+		aToken,
+		Number(((randomValue * (max - min)) + min).toFixed(5))
+	);
 }
 
 function sfc32(a: number = 0.34944106645296036, b: number = 0.19228640875738723, c: number = 0.8784393832007205, d: number = 0.04850964319275053): () => number {

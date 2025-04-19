@@ -1,33 +1,90 @@
 .random-1 {
-	z-index: 2.59248;
+	z-index: 5.21287;
 }
 
 .random-2 {
-	z-index: 2;
+	z-index: random(0, 10 1);
 }
 
 .random-3 {
-	z-index: 2.06974;
+	z-index: 9.78963;
 }
 
 .random-4 {
-	z-index: 4.78814;
+	z-index: 1.76681;
 }
 
 .random-11 {
-	width: 4.63961px;
+	width: 3.73222px;
 }
 
 .random-12 {
-	width: 7px;
+	width: random(0px, 10px 1px);
 }
 
 .random-13 {
-	width: 4.81303px;
+	width: 5.98171px;
 }
 
 .random-14 {
-	width: 2.1821px;
+	width: 6.22777px;
+}
+
+.random-15 {
+	padding: 5px 5px;
+	margin: 1.63012px 5.06483px;
+	inset: 7.06555px 7.06555px;
+	border-top-right-radius: 5.28165px;
+	border-top-left-radius: 5.16324px;
+	border-bottom-right-radius: 7.06555px;
+	border-bottom-left-radius: 7.06555px;
+}
+
+.random-15 {
+	padding: 5px 5px;
+	margin: 1.63012px 5.06483px;
+	inset: 7.06555px 7.06555px;
+	border-top-right-radius: 5.28165px;
+	border-top-left-radius: 5.16324px;
+	border-bottom-right-radius: 7.06555px;
+	border-bottom-left-radius: 7.06555px;
+}
+
+.random-15-b {
+	padding: 5px 5px;
+	margin: 7.47638px 7.02446px;
+	inset: 8.49751px 8.49751px;
+	border-top-right-radius: 8.99482px;
+	border-top-left-radius: 7.27335px;
+	border-bottom-right-radius: 8.49751px;
+	border-bottom-left-radius: 8.49751px;
+}
+
+.random-16 {
+	margin: 8.81978px 3.54399px;
+	inset: 7.51683px 7.51683px;
+	border-top-right-radius: 5.60447px;
+	border-top-left-radius: 9.87151px;
+	border-bottom-right-radius: 7.51683px;
+	border-bottom-left-radius: 7.51683px;
+}
+
+.random-16 {
+	margin: 8.81978px 3.54399px;
+	inset: 7.51683px 7.51683px;
+	border-top-right-radius: 5.60447px;
+	border-top-left-radius: 9.87151px;
+	border-bottom-right-radius: 7.51683px;
+	border-bottom-left-radius: 7.51683px;
+}
+
+.random-16-b {
+	margin: 8.81978px 3.54399px;
+	inset: 7.51683px 7.51683px;
+	border-top-right-radius: 5.60447px;
+	border-top-left-radius: 9.87151px;
+	border-bottom-right-radius: 7.51683px;
+	border-bottom-left-radius: 7.51683px;
 }
 
 .ignore-1 {
