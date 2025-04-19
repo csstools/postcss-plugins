@@ -4,6 +4,16 @@
 
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.2.4`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#824-march-10-2025) (patch)
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#205) (patch)
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`2.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#208) (patch)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`2.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#208) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`2.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#208) (patch)
+- Updated [`@csstools/postcss-random-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function/CHANGELOG.md#200) (major)
+- Updated [`@csstools/postcss-sign-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions) to [`1.1.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions/CHANGELOG.md#113) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`4.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#408) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`4.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#408) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#601) (patch)
 
 ### 10.1.5
 
