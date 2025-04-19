@@ -621,22 +621,22 @@
 		"syntax": "<custom-property-name> <css-type>? [ : <declaration-value> ]?"
 	},
 	"gap-auto-repeat-rule": {
-		"syntax": "repeat( auto , [ <gap-rule> ]# )"
+		"syntax": "repeat( auto , <gap-rule># )"
 	},
 	"gap-auto-rule-list": {
-		"syntax": "[ [ <gap-rule-or-repeat> ] / ]* <gap-auto-repeat-rule> [ / [ <gap-rule-or-repeat> ] ]*"
+		"syntax": "<gap-rule-or-repeat>#? , <gap-auto-repeat-rule> , <gap-rule-or-repeat>#?"
 	},
 	"gap-repeat-rule": {
-		"syntax": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )"
+		"syntax": "repeat( <integer [1,∞]> , <gap-rule># )"
 	},
 	"gap-rule": {
-		"syntax": "[ <line-width> || <line-style> || <color> ]"
+		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"gap-rule-list": {
-		"syntax": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*"
+		"syntax": "<gap-rule-or-repeat>#"
 	},
 	"gap-rule-or-repeat": {
-		"syntax": "[ <gap-rule> | <gap-repeat-rule> ]"
+		"syntax": "<gap-rule> | <gap-repeat-rule>"
 	},
 	"gender": {
 		"syntax": "male | female | neutral"
@@ -1269,7 +1269,7 @@
 		"syntax": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )"
 	},
 	"random-value-sharing": {
-		"syntax": "[ [ auto | <dashed-ident> ] || match-element ] | fixed <number [0,1]>"
+		"syntax": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>"
 	},
 	"random()": {
 		"syntax": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )"

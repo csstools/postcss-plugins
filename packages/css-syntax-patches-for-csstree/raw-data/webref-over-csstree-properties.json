@@ -716,13 +716,13 @@
 	"column-wrap": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "nowrap | wrap",
+		"syntax-a": "auto | nowrap | wrap",
 		"comment": ""
 	},
 	"columns": {
 		"type": "modified",
 		"syntax-b": "<'column-width'> || <'column-count'>",
-		"syntax-a": "<'column-width'> || <'column-count'> || <'column-height'> || <'column-wrap'>",
+		"syntax-a": "<'column-width'> || <'column-count'> [ / <'column-height'> ]?",
 		"comment": ""
 	},
 	"contain": {
@@ -1082,7 +1082,13 @@
 	"font-style": {
 		"type": "modified",
 		"syntax-b": "normal | italic | oblique <angle>?",
-		"syntax-a": "normal | italic | oblique <angle [-90deg,90deg]>?",
+		"syntax-a": "normal | italic | left | right | oblique <angle [-90deg,90deg]>?",
+		"comment": ""
+	},
+	"font-synthesis-style": {
+		"type": "modified",
+		"syntax-b": "auto | none",
+		"syntax-a": "auto | none | oblique-only",
 		"comment": ""
 	},
 	"font-variant": {
@@ -1772,7 +1778,7 @@
 	"reading-flow": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
+		"syntax-a": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
 		"comment": ""
 	},
 	"reading-order": {

@@ -1530,8 +1530,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "repeat( auto , [ <gap-rule> ]# )",
-		"syntax-m": "repeat( auto , [ <gap-rule> ]# )",
+		"syntax-a": "repeat( auto , <gap-rule># )",
+		"syntax-m": "repeat( auto , <gap-rule># )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1541,8 +1541,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ [ <gap-rule-or-repeat> ] / ]* <gap-auto-repeat-rule> [ / [ <gap-rule-or-repeat> ] ]*",
-		"syntax-m": "[ [ <gap-rule-or-repeat> ] / ]* <gap-auto-repeat-rule> [ / [ <gap-rule-or-repeat> ] ]*",
+		"syntax-a": "<gap-rule-or-repeat>#? , <gap-auto-repeat-rule> , <gap-rule-or-repeat>#?",
+		"syntax-m": "<gap-rule-or-repeat>#? , <gap-auto-repeat-rule> , <gap-rule-or-repeat>#?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1552,8 +1552,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
-		"syntax-m": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
+		"syntax-a": "repeat( <integer [1,∞]> , <gap-rule># )",
+		"syntax-m": "repeat( <integer [1,∞]> , <gap-rule># )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1563,8 +1563,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ <line-width> || <line-style> || <color> ]",
-		"syntax-m": "[ <line-width> || <line-style> || <color> ]",
+		"syntax-a": "<line-width> || <line-style> || <color>",
+		"syntax-m": "<line-width> || <line-style> || <color>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1574,8 +1574,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*",
-		"syntax-m": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*",
+		"syntax-a": "<gap-rule-or-repeat>#",
+		"syntax-m": "<gap-rule-or-repeat>#",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1585,8 +1585,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ <gap-rule> | <gap-repeat-rule> ]",
-		"syntax-m": "[ <gap-rule> | <gap-repeat-rule> ]",
+		"syntax-a": "<gap-rule> | <gap-repeat-rule>",
+		"syntax-m": "<gap-rule> | <gap-repeat-rule>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3421,8 +3421,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ [ auto | <dashed-ident> ] || match-element ] | fixed <number [0,1]>",
-		"syntax-m": "[ [ auto | <dashed-ident> ] || match-element ] | fixed <number [0,1]>",
+		"syntax-a": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>",
+		"syntax-m": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>",
 		"tests": {
 			"passing": [],
 			"failing": []

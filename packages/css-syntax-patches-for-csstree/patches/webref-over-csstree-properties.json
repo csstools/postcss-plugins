@@ -1812,18 +1812,21 @@
 					"value": "1px solid red"
 				},
 				{
-					"value": "red / red"
+					"value": "red, red"
 				},
 				{
-					"value": "1px solid red / 2px ridge pink"
+					"value": "1px solid red, 2px ridge pink"
 				},
 				{
-					"value": "1px solid red / repeat(auto, 3px dotted cyan) / 2px ridge pink"
+					"value": "1px solid red, repeat(auto, 3px dotted cyan), 2px ridge pink"
 				}
 			],
 			"failing": [
 				{
 					"value": "red red"
+				},
+				{
+					"value": "red / red"
 				}
 			]
 		}
@@ -1974,8 +1977,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "nowrap | wrap",
-		"syntax-m": "nowrap | wrap",
+		"syntax-a": "auto | nowrap | wrap",
+		"syntax-m": "auto | nowrap | wrap",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1985,8 +1988,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'column-width'> || <'column-count'>",
-		"syntax-a": "<'column-width'> || <'column-count'> || <'column-height'> || <'column-wrap'>",
-		"syntax-m": "<'column-width'> || <'column-count'> || <'column-height'> || <'column-wrap'>",
+		"syntax-a": "<'column-width'> || <'column-count'> [ / <'column-height'> ]?",
+		"syntax-m": "<'column-width'> || <'column-count'> [ / <'column-height'> ]?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2661,8 +2664,19 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "normal | italic | oblique <angle>?",
-		"syntax-a": "normal | italic | oblique <angle [-90deg,90deg]>?",
-		"syntax-m": "normal | italic | oblique <angle [-90deg,90deg]>?",
+		"syntax-a": "normal | italic | left | right | oblique <angle [-90deg,90deg]>?",
+		"syntax-m": "normal | italic | left | right | oblique <angle [-90deg,90deg]>?",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"font-synthesis-style": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "auto | none",
+		"syntax-a": "auto | none | oblique-only",
+		"syntax-m": "auto | none | oblique-only",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4054,8 +4068,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
-		"syntax-m": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
+		"syntax-a": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
+		"syntax-m": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
 		"tests": {
 			"passing": [],
 			"failing": []

@@ -148,8 +148,8 @@
 				"type": "modified",
 				"comment": "",
 				"syntax-b": "normal | italic | oblique <angle>{0,2}",
-				"syntax-a": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
-				"syntax-m": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
+				"syntax-a": "auto | normal | italic | left | right | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
+				"syntax-m": "auto | normal | italic | left | right | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
 				"tests": {
 					"passing": [],
 					"failing": []

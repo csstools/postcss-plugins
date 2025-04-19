@@ -251,6 +251,7 @@ const type_deltas = new Set([
 	type_delta_key('supports-feature', 'css-conditional-4', 'css-conditional-5'),
 
 	type_delta_key('predefined-rgb', 'css-color-5', 'css-color-hdr'),
+	type_delta_key('colorspace-params', 'css-color', 'css-color-5'),
 	type_delta_key('colorspace-params', 'css-color-5', 'css-color-hdr'),
 
 	type_delta_key('color-interpolation-method', 'css-color', 'css-color-5'),

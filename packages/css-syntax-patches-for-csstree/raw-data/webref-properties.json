@@ -648,10 +648,10 @@
 		"syntax": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )"
 	},
 	"column-wrap": {
-		"syntax": "nowrap | wrap"
+		"syntax": "auto | nowrap | wrap"
 	},
 	"columns": {
-		"syntax": "<'column-width'> || <'column-count'> || <'column-height'> || <'column-wrap'>"
+		"syntax": "<'column-width'> || <'column-count'> [ / <'column-height'> ]?"
 	},
 	"contain": {
 		"syntax": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]"
@@ -972,7 +972,7 @@
 		"syntax": "<font-stretch-absolute>"
 	},
 	"font-style": {
-		"syntax": "normal | italic | oblique <angle [-90deg,90deg]>?"
+		"syntax": "normal | italic | left | right | oblique <angle [-90deg,90deg]>?"
 	},
 	"font-synthesis": {
 		"syntax": "none | [ weight || style || small-caps || position ]"
@@ -984,7 +984,7 @@
 		"syntax": "auto | none"
 	},
 	"font-synthesis-style": {
-		"syntax": "auto | none"
+		"syntax": "auto | none | oblique-only"
 	},
 	"font-synthesis-weight": {
 		"syntax": "auto | none"
@@ -1770,7 +1770,7 @@
 		"syntax": "<length-percentage>"
 	},
 	"reading-flow": {
-		"syntax": "normal | flex-visual | flex-flow | grid-rows | grid-columns | grid-order"
+		"syntax": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order"
 	},
 	"reading-order": {
 		"syntax": "<integer>"
