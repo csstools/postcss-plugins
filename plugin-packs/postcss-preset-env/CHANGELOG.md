@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.2.4`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#824-march-10-2025) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#401) (patch)
 
 ### 10.1.5
 

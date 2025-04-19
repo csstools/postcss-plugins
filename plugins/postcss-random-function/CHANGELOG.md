@@ -3,6 +3,7 @@
 ### Unreleased (major)
 
 - Match the latest [specification](https://drafts.csswg.org/css-values-5/#randomness)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`2.1.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#213) (patch)
 
 ### 1.0.3
 

@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Drop the `max` keyword for `contrast-color( <color> )`
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#401) (patch)
 
 ### 2.0.8
 
