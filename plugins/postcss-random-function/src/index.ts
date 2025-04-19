@@ -1,5 +1,6 @@
 import type { PluginCreator } from 'postcss';
 import { calc } from '@csstools/css-calc';
+import { randomCacheKeyFromPostcssDeclaration } from './cache-key';
 
 /** postcss-random-function plugin options */
 export type pluginOptions = {
@@ -29,7 +30,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const modifiedValue = calc(decl.value, {
 				precision: 5,
 				toCanonicalUnits: true,
-				randomSeed: decl.source?.input.css.length
+				randomCaching: randomCacheKeyFromPostcssDeclaration(decl),
 			});
 			if (modifiedValue === decl.value) {
 				return;

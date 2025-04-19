@@ -3,7 +3,7 @@
 }
 
 .random-2 {
-	z-index: random(0, 10, by 1);
+	z-index: random(0, 10 1);
 }
 
 .random-3 {
@@ -19,7 +19,7 @@
 }
 
 .random-12 {
-	width: random(0px, 10px, by 1px);
+	width: random(0px, 10px 1px);
 }
 
 .random-13 {
@@ -28,6 +28,44 @@
 
 .random-14 {
 	width: random(--bar, 0px, 10px);
+}
+
+.random-15 {
+	padding: random(fixed 0.5, 0px, 10px) random(fixed 0.5, 0px, 10px);
+	margin: random(0px, 10px) random(0px, 10px);
+	inset: random(--foo, 0px, 10px) random(--foo, 0px, 10px);
+	border-top-right-radius: random(0px, 10px);
+	border-top-left-radius: random(0px, 10px);
+	border-bottom-right-radius: random(--foo, 0px, 10px);
+	border-bottom-left-radius: random(--foo, 0px, 10px);
+}
+
+.random-15 {
+	padding: random(fixed 0.5, 0px, 10px) random(fixed 0.5, 0px, 10px);
+	margin: random(0px, 10px) random(0px, 10px);
+	inset: random(--foo, 0px, 10px) random(--foo, 0px, 10px);
+	border-top-right-radius: random(0px, 10px);
+	border-top-left-radius: random(0px, 10px);
+	border-bottom-right-radius: random(--foo, 0px, 10px);
+	border-bottom-left-radius: random(--foo, 0px, 10px);
+}
+
+.random-16 {
+	margin: random(element-shared, 0px, 10px) random(element-shared, 0px, 10px);
+		inset: random(--foo element-shared, 0px, 10px) random(--foo element-shared, 0px, 10px);
+		border-top-right-radius: random(element-shared, 0px, 10px);
+		border-top-left-radius: random(element-shared, 0px, 10px);
+		border-bottom-right-radius: random(--foo element-shared, 0px, 10px);
+		border-bottom-left-radius: random(--foo element-shared, 0px, 10px);
+}
+
+.random-16 {
+	margin: random(element-shared, 0px, 10px) random(element-shared, 0px, 10px);
+	inset: random(--foo element-shared, 0px, 10px) random(--foo element-shared, 0px, 10px);
+	border-top-right-radius: random(element-shared, 0px, 10px);
+	border-top-left-radius: random(element-shared, 0px, 10px);
+	border-bottom-right-radius: random(--foo element-shared, 0px, 10px);
+	border-bottom-left-radius: random(--foo element-shared, 0px, 10px);
 }
 
 .ignore-1 {

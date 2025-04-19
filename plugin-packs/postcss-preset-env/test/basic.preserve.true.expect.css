@@ -1226,25 +1226,27 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		115,
-		230,
-		125
+		140,
+		0,
+		85
 	);
 	color: rgb(
-		random(--r, 0, 255, by 5),
-		random(--g, 0, 255, by 5),
-		random(--b, 0, 255, by 5)
+		random(--r, 0, 255, 5),
+		random(--g, 0, 255, 5),
+		random(--b, 0, 255, 5)
+	);
+
+	border-color: rgb(228, 112, 176);
+
+	border-color: oklch(
+		70%
+		40%
+		348deg
 	);
 
 	border-color: oklch(
-		85%,
-		40%,
-		96deg
-	);
-
-	border-color: oklch(
-		random(--l, 0%, 100%, by 5%),
-		random(--c, 30%, 70%, by 5%),
-		random(--h, 0deg, 360deg, by 12deg)
+		random(--l, 0%, 100%, 5%)
+		random(--c, 30%, 70%, 5%)
+		random(--h, 0deg, 360deg, 12deg)
 	);
 }

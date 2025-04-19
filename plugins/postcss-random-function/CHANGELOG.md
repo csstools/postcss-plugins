@@ -1,5 +1,9 @@
 # Changes to PostCSS Random Function
 
+### Unreleased (major)
+
+- Match the latest [specification](https://drafts.csswg.org/css-values-5/#randomness)
+
 ### 1.0.3
 
 _February 23, 2025_

@@ -13,7 +13,12 @@ export type conversionOptions = {
     toCanonicalUnits?: boolean;
     censorIntoStandardRepresentableValues?: boolean;
     rawPercentages?: boolean;
-    randomSeed?: number;
+    randomCaching?: {
+        propertyName: string;
+        propertyN: number;
+        elementID: string;
+        documentID: string;
+    };
 };
 ```
 **References:** [GlobalsWithStrings](./css-calc.globalswithstrings.md)

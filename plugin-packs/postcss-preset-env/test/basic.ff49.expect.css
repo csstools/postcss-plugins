@@ -648,14 +648,10 @@
 
 .random {
 	color: rgb(
-		115,
-		230,
-		125
+		140,
+		0,
+		85
 	);
 
-	border-color: oklch(
-		85%,
-		40%,
-		96deg
-	);
+	border-color: rgb(228, 112, 176);
 }
