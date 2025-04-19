@@ -32,6 +32,11 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
+	calc('random(fixed calc(1 / 2), 100px, 500px)'),
+	'300px',
+);
+
+assert.strictEqual(
 	calc('random(fixed 0.5 element-shared, 100px, 500px)'),
 	'random(fixed 0.5 element-shared, 100px, 500px)',
 );
