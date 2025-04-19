@@ -12,7 +12,8 @@
 			"entry": [
 				"scripts/**/*.mjs",
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -22,7 +23,8 @@
 		"plugins/postcss-design-tokens": {
 			"entry": [
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.ts",
@@ -35,7 +37,8 @@
 		"plugins/postcss-global-data": {
 			"entry": [
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.ts",
@@ -52,7 +55,8 @@
 				"src/browser.js",
 				"src/index.js",
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -66,7 +70,8 @@
 				"src/browser.js",
 				"src/index.js",
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -76,7 +81,8 @@
 		"plugin-packs/postcss-bundler": {
 			"entry": [
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.ts",
@@ -92,7 +98,8 @@
 			"entry": [
 				"scripts/**/*.mjs",
 				"src/index.ts",
-				"test/**/*.{cjs,mjs}"
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{cjs,mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
