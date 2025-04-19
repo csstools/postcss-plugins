@@ -13,7 +13,7 @@
 				"scripts/**/*.mjs",
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -24,7 +24,7 @@
 			"entry": [
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.ts",
@@ -38,7 +38,7 @@
 			"entry": [
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.ts",
@@ -56,7 +56,7 @@
 				"src/index.js",
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -71,7 +71,7 @@
 				"src/index.js",
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
@@ -82,7 +82,7 @@
 			"entry": [
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.ts",
@@ -99,7 +99,7 @@
 				"scripts/**/*.mjs",
 				"src/index.ts",
 				"test/**/*.{cjs,mjs}",
-				"dist/*.{cjs,mjs,js}"
+				"dist/*.{mjs,js}"
 			],
 			"project": [
 				"**/*.{ts,js,mjs}",
