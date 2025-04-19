@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 2.1.3
+
+_April 19, 2025_
 
 - Update `random()` to better handle floating point errors.
 - Update `random()` to match the latest [specification](https://drafts.csswg.org/css-values-5/#randomness)
