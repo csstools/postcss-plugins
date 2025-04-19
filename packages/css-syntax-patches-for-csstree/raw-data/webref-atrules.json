@@ -76,7 +76,7 @@
 				"syntax": "<font-stretch-absolute>{1,2}"
 			},
 			"font-style": {
-				"syntax": "auto | normal | italic | oblique [ <angle [-90deg,90deg]>{1,2} ]?"
+				"syntax": "auto | normal | italic | left | right | oblique [ <angle [-90deg,90deg]>{1,2} ]?"
 			},
 			"font-variation-settings": {
 				"syntax": "normal | [ <string> <number> ]#"

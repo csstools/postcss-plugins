@@ -608,37 +608,37 @@
 	"gap-auto-repeat-rule": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "repeat( auto , [ <gap-rule> ]# )",
+		"syntax-a": "repeat( auto , <gap-rule># )",
 		"comment": ""
 	},
 	"gap-auto-rule-list": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ [ <gap-rule-or-repeat> ] / ]* <gap-auto-repeat-rule> [ / [ <gap-rule-or-repeat> ] ]*",
+		"syntax-a": "<gap-rule-or-repeat>#? , <gap-auto-repeat-rule> , <gap-rule-or-repeat>#?",
 		"comment": ""
 	},
 	"gap-repeat-rule": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "repeat( [ <integer [1,∞]> ] , [ <gap-rule> ]# )",
+		"syntax-a": "repeat( <integer [1,∞]> , <gap-rule># )",
 		"comment": ""
 	},
 	"gap-rule": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <line-width> || <line-style> || <color> ]",
+		"syntax-a": "<line-width> || <line-style> || <color>",
 		"comment": ""
 	},
 	"gap-rule-list": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<gap-rule-or-repeat> [ / <gap-rule-or-repeat> ]*",
+		"syntax-a": "<gap-rule-or-repeat>#",
 		"comment": ""
 	},
 	"gap-rule-or-repeat": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <gap-rule> | <gap-repeat-rule> ]",
+		"syntax-a": "<gap-rule> | <gap-repeat-rule>",
 		"comment": ""
 	},
 	"generic-family": {
@@ -1298,7 +1298,7 @@
 	"random-value-sharing": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ [ auto | <dashed-ident> ] || match-element ] | fixed <number [0,1]>",
+		"syntax-a": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>",
 		"comment": ""
 	},
 	"random()": {
