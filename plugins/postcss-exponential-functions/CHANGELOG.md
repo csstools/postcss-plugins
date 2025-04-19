@@ -1,6 +1,8 @@
 # Changes to PostCSS Exponential Functions
 
-### Unreleased (patch)
+### 2.0.8
+
+_April 19, 2025_
 
 - Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`2.1.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#213) (patch)
 
