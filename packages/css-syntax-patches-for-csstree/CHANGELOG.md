@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Fix `display: -webkit-box`
+
 ### 1.0.10
 
 _April 19, 2025_
