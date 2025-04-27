@@ -36,12 +36,12 @@
 	],
 	"peerDependencies": {
 		"postcss": "^8.4",
-		"stylelint": "^16.18.0"
+		"stylelint": "^16.19.1"
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "^1.0.1",
 		"postcss": "^8.4",
-		"stylelint": "^16.18.0",
+		"stylelint": "^16.19.1",
 		"stylelint-test-rule-node": "^0.4.0"
 	},
 	"scripts": {
