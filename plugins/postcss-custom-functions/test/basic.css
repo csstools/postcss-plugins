@@ -1,0 +1,18 @@
+@function --negative(--value) {
+	result: calc(-1 * var(--value));
+}
+
+.negative-a {
+	--gap: 1em;
+	padding: --negative(var(--gap));
+}
+
+.negative-b {
+	padding: --negative(1em);
+}
+
+.negative-c {
+	--value: 1em;
+	padding: --negative();
+}
+
