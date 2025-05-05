@@ -44,7 +44,7 @@ import { TokenType } from '@csstools/css-tokenizer';
 
 	assert.deepStrictEqual(
 		feature.getNameToken(),
-		['ident-token', 'min\\20width', -1, -1, { value: 'min width' }],
+		['ident-token', 'min\\ width', -1, -1, { value: 'min width' }],
 	);
 }
 
@@ -90,7 +90,7 @@ import { TokenType } from '@csstools/css-tokenizer';
 
 	assert.deepStrictEqual(
 		feature.getNameToken(),
-		['ident-token', 'w\\20 dth', -1, -1, { value: 'w dth' }],
+		['ident-token', 'w\\ dth', -1, -1, { value: 'w dth' }],
 	);
 }
 
