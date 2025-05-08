@@ -43,3 +43,6 @@ import './mutations/dimension.mjs';
 // Keep this as the last test,
 // it is only intended to increase test coverage by double checking more obscure cases.
 import './css-tokenizer-tests/test.mjs';
+
+// Tokens Grid Template Areas
+import './token-grid-template-areas/basic.mjs';
