@@ -45,12 +45,12 @@ const testCases = {
 ;(await fs.readdir('./test/css-import-tests', { withFileTypes: true, recursive: true })).filter(dirent => {
 	return dirent.isFile() && dirent.name === 'style.css';
 }).sort().forEach(dirent => {
-	const key = path.join(path.relative('./test', dirent.path), 'style');
+	const key = path.join(path.relative('./test', dirent.parentPath), 'style');
 	testCases[key] = {
-		message: `passes 'css-import-tests' case : ${path.relative('./test/css-import-tests', dirent.path).split(path.sep).join(' - ')}`,
+		message: `passes 'css-import-tests' case : ${path.relative('./test/css-import-tests', dirent.parentPath).split(path.sep).join(' - ')}`,
 	};
 
-	switch (dirent.path.split(path.sep).join(path.posix.sep)) {
+	switch (dirent.parentPath.split(path.sep).join(path.posix.sep)) {
 		case 'test/css-import-tests/002-sub-features/004-at-supports/007':
 			testCases[key].warnings = 1;
 			break;
@@ -79,7 +79,7 @@ const testCases = {
 			break;
 	}
 
-	switch (dirent.path.split(path.sep).join(path.posix.sep)) {
+	switch (dirent.parentPath.split(path.sep).join(path.posix.sep)) {
 		case 'test/css-import-tests/003-should-fail/001-core-features/before-other-styles/001':
 			testCases[key].exception = /At-rule without name/;
 			break;
