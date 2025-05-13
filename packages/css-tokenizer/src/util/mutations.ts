@@ -1,5 +1,5 @@
-import { HYPHEN_MINUS } from '../code-points/code-points';
-import { isHexDigitCodePoint, isIdentCodePoint, isIdentStartCodePoint } from '../code-points/ranges';
+import { HYPHEN_MINUS, NULL, REPLACEMENT_CHARACTER } from '../code-points/code-points';
+import { isIdentCodePoint, isIdentStartCodePoint } from '../code-points/ranges';
 import type { TokenDimension, TokenIdent } from '../interfaces/token';
 
 /**
@@ -13,7 +13,7 @@ export function mutateIdent(ident: TokenIdent, newValue: string): void {
 		codePoints.push(codePoint.codePointAt(0)!);
 	}
 
-	const result = String.fromCodePoint(...ensureThatValueRoundTripsAsIdent(codePoints));
+	const result = String.fromCodePoint(...serializeIdent(codePoints));
 
 	ident[1] = result;
 	ident[4].value = newValue;
@@ -30,7 +30,7 @@ export function mutateUnit(ident: TokenDimension, newUnit: string): void {
 		codePoints.push(codePoint.codePointAt(0)!);
 	}
 
-	const escapedCodePoints = ensureThatValueRoundTripsAsIdent(codePoints);
+	const escapedCodePoints = serializeIdent(codePoints);
 	if (escapedCodePoints[0] === 101) { // `e`
 		insertEscapedCodePoint(escapedCodePoints, 0, escapedCodePoints[0]);
 	}
@@ -44,10 +44,18 @@ export function mutateUnit(ident: TokenDimension, newUnit: string): void {
 	ident[4].unit = newUnit;
 }
 
-function ensureThatValueRoundTripsAsIdent(codePoints: Array<number>): Array<number> {
+function serializeIdent(codePoints: Array<number>): Array<number> {
 	let remainderStartIndex = 0;
 
-	if (codePoints[0] === HYPHEN_MINUS && codePoints[1] === HYPHEN_MINUS) {
+	if (codePoints[0] === NULL) {
+		codePoints.splice(
+			0,
+			1,
+			REPLACEMENT_CHARACTER
+		);
+
+		remainderStartIndex = 1;
+	} else if (codePoints[0] === HYPHEN_MINUS && codePoints[1] === HYPHEN_MINUS) {
 		remainderStartIndex = 2;
 	} else if (codePoints[0] === HYPHEN_MINUS && codePoints[1]) {
 		remainderStartIndex = 2;
@@ -55,6 +63,11 @@ function ensureThatValueRoundTripsAsIdent(codePoints: Array<number>): Array<numb
 		if (!isIdentStartCodePoint(codePoints[1])) {
 			remainderStartIndex += insertEscapedCodePoint(codePoints, 1, codePoints[1]);
 		}
+	} else if (codePoints[0] === HYPHEN_MINUS && !codePoints[1]) {
+		return [
+			92, // `\` backslash
+			codePoints[0]
+		];
 	} else if (isIdentStartCodePoint(codePoints[0])) {
 		remainderStartIndex = 1;
 	} else {
@@ -63,14 +76,36 @@ function ensureThatValueRoundTripsAsIdent(codePoints: Array<number>): Array<numb
 	}
 
 	for (let i = remainderStartIndex; i < codePoints.length; i++) {
+		if (codePoints[i] === NULL) {
+			codePoints.splice(
+				i,
+				1,
+				REPLACEMENT_CHARACTER
+			);
+
+			i++;
+			continue;
+		}
+
 		if (isIdentCodePoint(codePoints[i])) {
 			continue;
 		}
 
-		i += insertEscapedCodePoint(codePoints, i, codePoints[i]);
+		i += insertEscapedCharacter(codePoints, i, codePoints[i]);
 	}
 
 	return codePoints;
+}
+
+function insertEscapedCharacter(codePoints: Array<number>, index: number, codePoint: number): number {
+	codePoints.splice(
+		index,
+		1,
+		92, // `\` backslash
+		codePoint
+	);
+
+	return 1;
 }
 
 function insertEscapedCodePoint(codePoints: Array<number>, index: number, codePoint: number): number {
@@ -82,28 +117,13 @@ function insertEscapedCodePoint(codePoints: Array<number>, index: number, codePo
 		codePointsForHexRepresentation.push(x.codePointAt(0)!);
 	}
 
-	const next = codePoints[index + 1];
-	if (
-		(index === codePoints.length - 1) ||
-		(next && isHexDigitCodePoint(next))
-	) {
-		codePoints.splice(
-			index,
-			1,
-			92, // `\` backslash
-			...codePointsForHexRepresentation,
-			32, // ` ` space
-		);
-
-		return 1 + codePointsForHexRepresentation.length;
-	}
-
 	codePoints.splice(
 		index,
 		1,
 		92, // `\` backslash
 		...codePointsForHexRepresentation,
+		32, // ` ` space
 	);
 
-	return codePointsForHexRepresentation.length;
+	return 1 + codePointsForHexRepresentation.length;
 }
