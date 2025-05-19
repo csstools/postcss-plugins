@@ -404,7 +404,7 @@
 	"corner-shape-value": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )",
+		"syntax-a": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )",
 		"comment": ""
 	},
 	"counter-style": {
@@ -1562,7 +1562,7 @@
 	"superellipse()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "superellipse( <number> | infinity )",
+		"syntax-a": "superellipse( <number> | infinity | -infinity )",
 		"comment": ""
 	},
 	"supports-feature": {
@@ -1731,6 +1731,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "url( <string> <url-modifier>* ) | <url-token>",
+		"comment": ""
+	},
+	"var-args": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "var( <declaration-value> , <declaration-value>? )",
 		"comment": ""
 	},
 	"vertical-line-command": {

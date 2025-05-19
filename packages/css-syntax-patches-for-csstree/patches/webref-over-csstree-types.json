@@ -1155,8 +1155,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )",
-		"syntax-m": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )",
+		"syntax-a": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )",
+		"syntax-m": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4070,8 +4070,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "superellipse( <number> | infinity )",
-		"syntax-m": "superellipse( <number> | infinity )",
+		"syntax-a": "superellipse( <number> | infinity | -infinity )",
+		"syntax-m": "superellipse( <number> | infinity | -infinity )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4479,6 +4479,17 @@
 					"value": "url(#foo modifier)"
 				}
 			]
+		}
+	},
+	"var-args": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "var( <declaration-value> , <declaration-value>? )",
+		"syntax-m": "var( <declaration-value> , <declaration-value>? )",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"vertical-line-command": {

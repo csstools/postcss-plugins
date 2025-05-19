@@ -2393,8 +2393,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>",
-		"syntax-m": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>",
+		"syntax-a": "standard | no-limit | constrained | <dynamic-range-limit-mix()>",
+		"syntax-m": "standard | no-limit | constrained | <dynamic-range-limit-mix()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -5355,6 +5355,17 @@
 		"syntax-b": "",
 		"syntax-a": "normal | contain | nearest | <custom-ident>",
 		"syntax-m": "normal | contain | nearest | <custom-ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"visibility": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "visible | hidden | collapse",
+		"syntax-a": "visible | hidden | force-hidden | collapse",
+		"syntax-m": "visible | hidden | force-hidden | collapse",
 		"tests": {
 			"passing": [],
 			"failing": []
