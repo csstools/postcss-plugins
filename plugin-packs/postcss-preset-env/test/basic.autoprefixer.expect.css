@@ -17,7 +17,7 @@
 	order: 2;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (min-resolution: 192dpi) {
 
 .test-image-set-function {
 	background-image: url(img/test-2x.png);

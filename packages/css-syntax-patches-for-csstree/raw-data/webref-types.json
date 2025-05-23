@@ -378,7 +378,7 @@
 		"syntax": "<length-percentage>{2}"
 	},
 	"corner-shape-value": {
-		"syntax": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )"
+		"syntax": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )"
 	},
 	"cos()": {
 		"syntax": "cos( <calc-sum> )"
@@ -1578,7 +1578,7 @@
 		"syntax": "<id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>"
 	},
 	"superellipse()": {
-		"syntax": "superellipse( <number> | infinity )"
+		"syntax": "superellipse( <number> | infinity | -infinity )"
 	},
 	"supports-condition": {
 		"syntax": "not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*"
@@ -1753,6 +1753,9 @@
 	},
 	"url()": {
 		"syntax": "url( <string> <url-modifier>* ) | <url-token>"
+	},
+	"var-args": {
+		"syntax": "var( <declaration-value> , <declaration-value>? )"
 	},
 	"var()": {
 		"syntax": "var( <custom-property-name> , <declaration-value>? )"
