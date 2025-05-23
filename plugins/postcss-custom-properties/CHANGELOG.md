@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Improve the implementation of how comments are preserved when transpiling
+
 ### 14.0.4
 
 _November 1, 2024_
