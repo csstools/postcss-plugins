@@ -8,10 +8,8 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		const tests = [
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg) -10%, ${colorSpace}(50% 60 70deg))`], // Percentages less than 0 are not valid.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg) 150%, ${colorSpace}(50% 60 70deg))`], // Percentages greater than 100 are not valid.
-			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg) 0%, ${colorSpace}(50% 60 70deg) 0%)`], // Sum of percengates cannot be 0%.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg / .4) -10%, ${colorSpace}(50% 60 70deg / .8))`], // Percentages less than 0 are not valid.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg / .4) 150%, ${colorSpace}(50% 60 70deg / .8))`], // Percentages greater than 100 are not valid.
-			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg / .4) 0%, ${colorSpace}(50% 60 70deg / .8) 0%)`], // Sum of percengates cannot be 0%.
 			[`color-mix(in ${colorSpace} hue, ${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg))`], // `hue` keyword without a specified method.
 			[`color-mix(in ${colorSpace} shorter, ${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg))`], // Specified hue method without trailing `hue` keyword.
 			[`color-mix(in ${colorSpace} foo, ${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg))`], // Trailing identifier after color space that is not a hue method.
@@ -36,10 +34,8 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		const tests = [
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30) -10%, ${colorSpace}(50% 60 70))`], // Percentages less than 0 are not valid.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30) 150%, ${colorSpace}(50% 60 70))`], // Percentages greater than 100 are not valid.
-			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30) 0%, ${colorSpace}(50% 60 70) 0%)`], // Sum of percengates cannot be 0%.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30 / .4) -10%, ${colorSpace}(50% 60 70 / .8))`], // Percentages less than 0 are not valid.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30 / .4) 150%, ${colorSpace}(50% 60 70 / .8))`], // Percentages greater than 100 are not valid.
-			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30 / .4) 0%, ${colorSpace}(50% 60 70 / .8) 0%)`], // Sum of percengates cannot be 0%.
 			[`color-mix(in ${colorSpace} longer hue, ${colorSpace}(10% 20 30), ${colorSpace}(50% 60 70))`], // Hue modifier on a non-polar color space.
 			[`color-mix(in ${colorSpace} ${colorSpace}(10% 20 30), ${colorSpace}(50% 60 70))`], // Missing comma after interpolation method.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30) ${colorSpace}(50% 60 70))`], // Missing comma between colors.
@@ -62,10 +58,8 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		const tests = [
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3) -10%, color(${colorSpace} .5 .6 .7))`], // Percentages less than 0 are not valid.
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3) 150%, color(${colorSpace} .5 .6 .7))`], // Percentages greater than 100 are not valid.
-			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3) 0%, color(${colorSpace} .5 .6 .7) 0%)`], // Sum of percengates cannot be 0%.
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3 / .4) -10%, color(${colorSpace} .5 .6 .7 / .8))`], // Percentages less than 0 are not valid.
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3 / .4) 150%, color(${colorSpace} .5 .6 .7 / .8))`], // Percentages greater than 100 are not valid.
-			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3 / .4) 0%, color(${colorSpace} .5 .6 .7 / .8) 0%)`], // Sum of percengates cannot be 0%.
 			[`color-mix(in ${colorSpace} longer hue, color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7))`], // Hue modifier on a non-polar color space.
 			[`color-mix(in ${colorSpace} color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7))`], // Missing comma after interpolation method.
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3) color(${colorSpace} .5 .6 .7))`], // Missing comma between colors.
@@ -87,10 +81,8 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 	const tests = [
 		['color-mix(in hsl, hsl(120deg 10% 20%) -10%, hsl(30deg 30% 40%))'], // Percentages less than 0 are not valid.
 		['color-mix(in hsl, hsl(120deg 10% 20%) 150%, hsl(30deg 30% 40%))'], // Percentages greater than 100 are not valid.
-		['color-mix(in hsl, hsl(120deg 10% 20%) 0%, hsl(30deg 30% 40%) 0%)'], // Sum of percengates cannot be 0%.
 		['color-mix(in hsl, hsl(120deg 10% 20% 40%) -10%, hsl(30deg 30% 40% 80%))'], // Percentages less than 0 are not valid.
 		['color-mix(in hsl, hsl(120deg 10% 20% 40%) 150%, hsl(30deg 30% 40% 80%))'], // Percentages greater than 100 are not valid.
-		['color-mix(in hsl, hsl(120deg 10% 20% 40%) 0%, hsl(30deg 30% 40% 80%) 0%)'], // Sum of percengates cannot be 0%.
 		['color-mix(in hsl hue, hsl(120deg 10% 20%), hsl(30deg 30% 40%))'], // `hue` keyword without a specified method.
 		['color-mix(in hsl shorter, hsl(120deg 10% 20%), hsl(30deg 30% 40%))'], // Specified hue method without trailing `hue` keyword.
 		['color-mix(in hsl foo, hsl(120deg 10% 20%), hsl(30deg 30% 40%))'], // Trailing identifier after color space that is not a hue method.
@@ -101,10 +93,8 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 
 		['color-mix(in hwb, hwb(120deg 10% 20%) -10%, hwb(30deg 30% 40%))'], // Percentages less than 0 are not valid.
 		['color-mix(in hwb, hwb(120deg 10% 20%) 150%, hwb(30deg 30% 40%))'], // Percentages greater than 100 are not valid.
-		['color-mix(in hwb, hwb(120deg 10% 20%) 0%, hwb(30deg 30% 40%) 0%)'], // Sum of percengates cannot be 0%.
 		['color-mix(in hwb, hwb(120deg 10% 20% 40%) -10%, hwb(30deg 30% 40% 80%))'], // Percentages less than 0 are not valid.
 		['color-mix(in hwb, hwb(120deg 10% 20% 40%) 150%, hwb(30deg 30% 40% 80%))'], // Percentages greater than 100 are not valid.
-		['color-mix(in hwb, hwb(120deg 10% 20% 40%) 0%, hwb(30deg 30% 40% 80%) 0%)'], // Sum of percengates cannot be 0%.
 		['color-mix(in hwb hue, hwb(120deg 10% 20%), hwb(30deg 30% 40%))'], // `hue` keyword without a specified method.
 		['color-mix(in hwb shorter, hwb(120deg 10% 20%), hwb(30deg 30% 40%))'], // Specified hue method without trailing `hue` keyword.
 		['color-mix(in hwb foo, hwb(120deg 10% 20%), hwb(30deg 30% 40%))'], // Trailing identifier after color space that is not a hue method.

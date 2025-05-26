@@ -1,0 +1,11 @@
+.variadic {
+	color: color-mix(in srgb, red);
+}
+
+.variadic {
+	color: color-mix(in srgb, red, green, blue);
+}
+
+.variadic {
+	color: color-mix(in srgb, cyan, magenta, yellow);
+}

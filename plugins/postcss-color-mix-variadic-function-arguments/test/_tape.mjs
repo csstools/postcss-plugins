@@ -1,5 +1,5 @@
 import { postcssTape, ruleClonerPlugin } from '@csstools/postcss-tape';
-import plugin from '@csstools/postcss-color-mix-function';
+import plugin from '@csstools/postcss-color-mix-variadic-function-arguments';
 
 postcssTape(plugin)({
 	'basic': {
@@ -28,9 +28,6 @@ postcssTape(plugin)({
 		options: {
 			preserve: true,
 		},
-	},
-	'variadic': {
-		message: 'ignores later syntax',
 	},
 	'examples/example': {
 		message: 'minimal example',

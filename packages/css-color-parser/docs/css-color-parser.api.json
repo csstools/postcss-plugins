@@ -1109,6 +1109,27 @@
             },
             {
               "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.ColorMixVariadic:member",
+              "docComment": "/**\n * Is a variadic mixed color, e.g. `color-mix(in oklch, red)` `color-mix(in oklch, red, blue, green)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ColorMixVariadic = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"color-mix-variadic\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ColorMixVariadic"
+            },
+            {
+              "kind": "EnumMember",
               "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.ContrastColor:member",
               "docComment": "/**\n * Is a contrasting color, e.g. `contrast-color()`\n */\n",
               "excerptTokens": [

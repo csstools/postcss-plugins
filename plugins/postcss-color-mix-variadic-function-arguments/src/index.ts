@@ -18,7 +18,7 @@ const COLOR_MIX_NAME_REGEX = /^color-mix$/i;
 /* Transform color-mix() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
-		postcssPlugin: 'postcss-color-mix-function',
+		postcssPlugin: 'color-mix-variadic-function-arguments',
 		Declaration(decl: Declaration): void {
 			const originalValue = decl.value;
 			if (!(COLOR_MIX_FUNCTION_REGEX.test(originalValue))) {
@@ -50,7 +50,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						return;
 					}
 
-					if (colorData.syntaxFlags.has(SyntaxFlag.ColorMixVariadic)) {
+					if (!colorData.syntaxFlags.has(SyntaxFlag.ColorMixVariadic)) {
 						return;
 					}
 
@@ -105,7 +105,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 
 basePlugin.postcss = true;
 
-/** postcss-color-mix-function plugin options */
+/** color-mix-variadic-function-arguments plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
@@ -135,7 +135,7 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	if (options.enableProgressiveCustomProperties && (options.preserve || options.subFeatures.displayP3)) {
 		return {
-			postcssPlugin: 'postcss-color-mix-function',
+			postcssPlugin: 'color-mix-variadic-function-arguments',
 			plugins: [
 				postcssProgressiveCustomProperties(),
 				basePlugin(options),

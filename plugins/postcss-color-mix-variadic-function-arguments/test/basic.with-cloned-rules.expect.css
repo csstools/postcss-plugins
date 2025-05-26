@@ -1,0 +1,19 @@
+.variadic {
+	color: rgb(255, 0, 0);
+	color: color-mix(in srgb, red);
+}
+
+.variadic {
+	color: rgb(85, 43, 85);
+	color: color-mix(in srgb, red, green, blue);
+}
+
+.variadic {
+	color: rgb(170, 170, 170);
+	color: color-mix(in srgb, cyan, magenta, yellow);
+}
+
+.zero-percentage {
+	color: rgba(0, 0, 0, 0);
+	color: color-mix(in srgb, blue 0%, yellow 0%);
+}
