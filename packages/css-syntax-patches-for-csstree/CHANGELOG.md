@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Update `@webref/css` to [`v6.21.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.21.0)
+- Update `@webref/css` to [`v6.21.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.21.1)
 
 ### 1.0.11
 
