@@ -5,7 +5,8 @@ type MatcherNode = {
 	dimension?: {
 		unit?: string
 	},
-	isVariable?: boolean
+	isVariable?: boolean,
+	anyRemainingArguments?: boolean
 }
 
 export function matches(a: MatcherNode, b: MatcherNode): boolean {
@@ -45,6 +46,10 @@ export function matches(a: MatcherNode, b: MatcherNode): boolean {
 
 			if (!!a.nodes[ia] !== !!b.nodes[ib]) {
 				return false;
+			}
+
+			if (a.nodes[ia].anyRemainingArguments && b.nodes[ib]) {
+				return true;
 			}
 
 			if (matches(a.nodes[ia], b.nodes[ib])) {

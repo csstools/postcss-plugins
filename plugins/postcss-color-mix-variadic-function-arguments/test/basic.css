@@ -10,6 +10,14 @@
 	color: color-mix(in srgb, cyan, magenta, yellow);
 }
 
+.p3 {
+	color: color-mix(in oklch, cyan, magenta, yellow);
+}
+
+.p3 {
+	color: color-mix(in oklch, red, lime, green);
+}
+
 .zero-percentage {
 	color: color-mix(in srgb, blue 0%, yellow 0%);
 }

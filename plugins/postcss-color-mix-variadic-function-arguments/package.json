@@ -87,8 +87,8 @@
 		"rgba",
 		"srgb-linear",
 		"syntax",
-		"xyz",
-		"variadic"
+		"variadic",
+		"xyz"
 	],
 	"csstools": {
 		"cssdbId": "color-mix-variadic-function-arguments",
