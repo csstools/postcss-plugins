@@ -89,7 +89,7 @@
 		"css-blank-pseudo": "^7.0.1",
 		"css-has-pseudo": "^7.0.2",
 		"css-prefers-color-scheme": "^10.0.0",
-		"cssdb": "^8.2.5",
+		"cssdb": "^8.2.6",
 		"postcss-attribute-case-insensitive": "^7.0.1",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^7.0.9",
@@ -122,7 +122,7 @@
 	"devDependencies": {
 		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^6.21.0"
+		"@webref/css": "^6.21.1"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",

@@ -652,8 +652,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]",
-		"syntax-m": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]",
+		"syntax-a": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]",
+		"syntax-m": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -766,6 +766,17 @@
 		"syntax-b": "",
 		"syntax-a": "color-layers( [ <blend-mode> , ]? <color># )",
 		"syntax-m": "color-layers( [ <blend-mode> , ]? <color># )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"color-mix()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
+		"syntax-a": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )",
+		"syntax-m": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -965,17 +976,6 @@
 		"syntax-b": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]",
 		"syntax-a": "[ <container-name>? <container-query>? ]!",
 		"syntax-m": "[ <container-name>? <container-query>? ]!",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"container-progress()": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
-		"syntax-m": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1990,17 +1990,6 @@
 			"failing": []
 		}
 	},
-	"intrinsic-size-keyword": {
-		"type": "added",
-		"comment": "This list is incomplete",
-		"syntax-b": "",
-		"syntax-a": "auto | max-content | min-content | stretch",
-		"syntax-m": "auto | max-content | min-content | stretch",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"isolation-mode": {
 		"type": "added",
 		"comment": "",
@@ -2596,17 +2585,6 @@
 		"syntax-b": "<media-in-parens> [ or <media-in-parens> ]+",
 		"syntax-a": "or <media-in-parens>",
 		"syntax-m": "or <media-in-parens>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"media-progress()": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
-		"syntax-m": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3891,6 +3869,17 @@
 		"syntax-b": "",
 		"syntax-a": "once | repeat | alternate | state",
 		"syntax-m": "once | repeat | alternate | state",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"size-keyword": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "auto | max-content | min-content | stretch",
+		"syntax-m": "auto | max-content | min-content | stretch",
 		"tests": {
 			"passing": [],
 			"failing": []
