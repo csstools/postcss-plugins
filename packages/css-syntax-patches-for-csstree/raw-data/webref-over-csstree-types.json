@@ -218,7 +218,7 @@
 	"calc-size-basis": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]",
+		"syntax-a": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]",
 		"comment": ""
 	},
 	"calc-size()": {
@@ -267,6 +267,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "color-layers( [ <blend-mode> , ]? <color># )",
+		"comment": ""
+	},
+	"color-mix()": {
+		"type": "modified",
+		"syntax-b": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
+		"syntax-a": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )",
 		"comment": ""
 	},
 	"color-stop-angle": {
@@ -339,12 +345,6 @@
 		"type": "modified",
 		"syntax-b": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]",
 		"syntax-a": "[ <container-name>? <container-query>? ]!",
-		"comment": ""
-	},
-	"container-progress()": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"container-query": {
@@ -809,12 +809,6 @@
 		"syntax-a": "integrity( <string> )",
 		"comment": ""
 	},
-	"intrinsic-size-keyword": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | max-content | min-content | stretch",
-		"comment": ""
-	},
 	"isolation-mode": {
 		"type": "added",
 		"syntax-b": "",
@@ -1005,12 +999,6 @@
 		"type": "modified",
 		"syntax-b": "<media-in-parens> [ or <media-in-parens> ]+",
 		"syntax-a": "or <media-in-parens>",
-		"comment": ""
-	},
-	"media-progress()": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"media()": {
@@ -1479,6 +1467,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "once | repeat | alternate | state",
+		"comment": ""
+	},
+	"size-keyword": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | max-content | min-content | stretch",
 		"comment": ""
 	},
 	"smooth-command": {
