@@ -25,6 +25,11 @@ export default [
 		'importName': 'postcssClamp',
 	},
 	{
+		'packageName': '@csstools/postcss-color-mix-variadic-function-arguments',
+		'id': 'color-mix-variadic-function-arguments',
+		'importName': 'postcssColorMixVariadicFunctionArguments',
+	},
+	{
 		'packageName': '@csstools/postcss-color-mix-function',
 		'id': 'color-mix',
 		'importName': 'postcssColorMixFunction',

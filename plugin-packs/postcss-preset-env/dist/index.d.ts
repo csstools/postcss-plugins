@@ -1,55 +1,56 @@
 import type autoprefixer from 'autoprefixer';
 import type { PluginCreator } from 'postcss';
-import type { pluginOptions as pluginOptions_10 } from '@csstools/postcss-content-alt-text';
-import type { pluginOptions as pluginOptions_11 } from 'postcss-custom-media';
-import type { pluginOptions as pluginOptions_12 } from 'postcss-custom-properties';
-import type { pluginOptions as pluginOptions_13 } from 'postcss-custom-selectors';
-import type { pluginOptions as pluginOptions_14 } from 'postcss-dir-pseudo-class';
-import type { pluginOptions as pluginOptions_15 } from '@csstools/postcss-normalize-display-values';
-import type { pluginOptions as pluginOptions_16 } from 'postcss-double-position-gradients';
-import type { pluginOptions as pluginOptions_17 } from '@csstools/postcss-exponential-functions';
-import type { pluginOptions as pluginOptions_18 } from '@csstools/postcss-logical-float-and-clear';
-import type { pluginOptions as pluginOptions_19 } from 'postcss-focus-visible';
+import type { pluginOptions as pluginOptions_10 } from '@csstools/postcss-color-mix-variadic-function-arguments';
+import type { pluginOptions as pluginOptions_11 } from '@csstools/postcss-content-alt-text';
+import type { pluginOptions as pluginOptions_12 } from 'postcss-custom-media';
+import type { pluginOptions as pluginOptions_13 } from 'postcss-custom-properties';
+import type { pluginOptions as pluginOptions_14 } from 'postcss-custom-selectors';
+import type { pluginOptions as pluginOptions_15 } from 'postcss-dir-pseudo-class';
+import type { pluginOptions as pluginOptions_16 } from '@csstools/postcss-normalize-display-values';
+import type { pluginOptions as pluginOptions_17 } from 'postcss-double-position-gradients';
+import type { pluginOptions as pluginOptions_18 } from '@csstools/postcss-exponential-functions';
+import type { pluginOptions as pluginOptions_19 } from '@csstools/postcss-logical-float-and-clear';
 import type { pluginOptions as pluginOptions_2 } from '@csstools/postcss-initial';
-import type { pluginOptions as pluginOptions_20 } from 'postcss-focus-within';
-import type { pluginOptions as pluginOptions_21 } from '@csstools/postcss-font-format-keywords';
-import type { pluginOptions as pluginOptions_22 } from '@csstools/postcss-gamut-mapping';
-import type { pluginOptions as pluginOptions_23 } from 'postcss-gap-properties';
-import type { pluginOptions as pluginOptions_24 } from '@csstools/postcss-gradients-interpolation-method';
-import type { pluginOptions as pluginOptions_25 } from 'css-has-pseudo';
-import type { pluginOptions as pluginOptions_26 } from 'postcss-color-hex-alpha';
-import type { pluginOptions as pluginOptions_27 } from '@csstools/postcss-hwb-function';
-import type { pluginOptions as pluginOptions_28 } from '@csstools/postcss-ic-unit';
-import type { pluginOptions as pluginOptions_29 } from 'postcss-image-set-function';
+import type { pluginOptions as pluginOptions_20 } from 'postcss-focus-visible';
+import type { pluginOptions as pluginOptions_21 } from 'postcss-focus-within';
+import type { pluginOptions as pluginOptions_22 } from '@csstools/postcss-font-format-keywords';
+import type { pluginOptions as pluginOptions_23 } from '@csstools/postcss-gamut-mapping';
+import type { pluginOptions as pluginOptions_24 } from 'postcss-gap-properties';
+import type { pluginOptions as pluginOptions_25 } from '@csstools/postcss-gradients-interpolation-method';
+import type { pluginOptions as pluginOptions_26 } from 'css-has-pseudo';
+import type { pluginOptions as pluginOptions_27 } from 'postcss-color-hex-alpha';
+import type { pluginOptions as pluginOptions_28 } from '@csstools/postcss-hwb-function';
+import type { pluginOptions as pluginOptions_29 } from '@csstools/postcss-ic-unit';
 import type { pluginOptions as pluginOptions_3 } from 'postcss-pseudo-class-any-link';
-import type { pluginOptions as pluginOptions_30 } from '@csstools/postcss-is-pseudo-class';
-import type { pluginOptions as pluginOptions_31 } from 'postcss-lab-function';
-import type { pluginOptions as pluginOptions_32 } from '@csstools/postcss-light-dark-function';
-import type { pluginOptions as pluginOptions_33 } from '@csstools/postcss-logical-overflow';
-import type { pluginOptions as pluginOptions_34 } from '@csstools/postcss-logical-overscroll-behavior';
-import type { pluginOptions as pluginOptions_35 } from 'postcss-logical';
-import type { pluginOptions as pluginOptions_36 } from '@csstools/postcss-logical-resize';
-import type { pluginOptions as pluginOptions_37 } from '@csstools/postcss-logical-viewport-units';
-import type { pluginOptions as pluginOptions_38 } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
-import type { pluginOptions as pluginOptions_39 } from '@csstools/postcss-media-minmax';
+import type { pluginOptions as pluginOptions_30 } from 'postcss-image-set-function';
+import type { pluginOptions as pluginOptions_31 } from '@csstools/postcss-is-pseudo-class';
+import type { pluginOptions as pluginOptions_32 } from 'postcss-lab-function';
+import type { pluginOptions as pluginOptions_33 } from '@csstools/postcss-light-dark-function';
+import type { pluginOptions as pluginOptions_34 } from '@csstools/postcss-logical-overflow';
+import type { pluginOptions as pluginOptions_35 } from '@csstools/postcss-logical-overscroll-behavior';
+import type { pluginOptions as pluginOptions_36 } from 'postcss-logical';
+import type { pluginOptions as pluginOptions_37 } from '@csstools/postcss-logical-resize';
+import type { pluginOptions as pluginOptions_38 } from '@csstools/postcss-logical-viewport-units';
+import type { pluginOptions as pluginOptions_39 } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import type { pluginOptions as pluginOptions_4 } from 'css-blank-pseudo';
-import type { pluginOptions as pluginOptions_40 } from '@csstools/postcss-nested-calc';
-import type { pluginOptions as pluginOptions_41 } from 'postcss-nesting';
-import type { pluginOptions as pluginOptions_42 } from 'postcss-selector-not';
-import type { pluginOptions as pluginOptions_43 } from '@csstools/postcss-oklab-function';
-import type { pluginOptions as pluginOptions_44 } from 'postcss-overflow-shorthand';
-import type { pluginOptions as pluginOptions_45 } from 'postcss-place';
-import type { pluginOptions as pluginOptions_46 } from 'css-prefers-color-scheme';
-import type { pluginOptions as pluginOptions_47 } from '@csstools/postcss-random-function';
-import type { pluginOptions as pluginOptions_48 } from 'postcss-color-rebeccapurple';
-import type { pluginOptions as pluginOptions_49 } from '@csstools/postcss-relative-color-syntax';
+import type { pluginOptions as pluginOptions_40 } from '@csstools/postcss-media-minmax';
+import type { pluginOptions as pluginOptions_41 } from '@csstools/postcss-nested-calc';
+import type { pluginOptions as pluginOptions_42 } from 'postcss-nesting';
+import type { pluginOptions as pluginOptions_43 } from 'postcss-selector-not';
+import type { pluginOptions as pluginOptions_44 } from '@csstools/postcss-oklab-function';
+import type { pluginOptions as pluginOptions_45 } from 'postcss-overflow-shorthand';
+import type { pluginOptions as pluginOptions_46 } from 'postcss-place';
+import type { pluginOptions as pluginOptions_47 } from 'css-prefers-color-scheme';
+import type { pluginOptions as pluginOptions_48 } from '@csstools/postcss-random-function';
+import type { pluginOptions as pluginOptions_49 } from 'postcss-color-rebeccapurple';
 import type { pluginOptions as pluginOptions_5 } from '@csstools/postcss-cascade-layers';
-import type { pluginOptions as pluginOptions_50 } from '@csstools/postcss-scope-pseudo-class';
-import type { pluginOptions as pluginOptions_51 } from '@csstools/postcss-sign-functions';
-import type { pluginOptions as pluginOptions_52 } from '@csstools/postcss-stepped-value-functions';
-import type { pluginOptions as pluginOptions_53 } from '@csstools/postcss-text-decoration-shorthand';
-import type { pluginOptions as pluginOptions_54 } from '@csstools/postcss-trigonometric-functions';
-import type { pluginOptions as pluginOptions_55 } from '@csstools/postcss-unset-value';
+import type { pluginOptions as pluginOptions_50 } from '@csstools/postcss-relative-color-syntax';
+import type { pluginOptions as pluginOptions_51 } from '@csstools/postcss-scope-pseudo-class';
+import type { pluginOptions as pluginOptions_52 } from '@csstools/postcss-sign-functions';
+import type { pluginOptions as pluginOptions_53 } from '@csstools/postcss-stepped-value-functions';
+import type { pluginOptions as pluginOptions_54 } from '@csstools/postcss-text-decoration-shorthand';
+import type { pluginOptions as pluginOptions_55 } from '@csstools/postcss-trigonometric-functions';
+import type { pluginOptions as pluginOptions_56 } from '@csstools/postcss-unset-value';
 import type { pluginOptions as pluginOptions_6 } from 'postcss-attribute-case-insensitive';
 import type { pluginOptions as pluginOptions_7 } from '@csstools/postcss-color-function';
 import type { pluginOptions as pluginOptions_8 } from 'postcss-color-functional-notation';
@@ -171,106 +172,108 @@ export declare type pluginsOptions = {
     'color-functional-notation'?: subPluginOptions<pluginOptions_8>;
     /** plugin options for "@csstools/postcss-color-mix-function" */
     'color-mix'?: subPluginOptions<pluginOptions_9>;
+    /** plugin options for "@csstools/postcss-color-mix-variadic-function-arguments" */
+    'color-mix-variadic-function-arguments'?: subPluginOptions<pluginOptions_10>;
     /** plugin options for "@csstools/postcss-content-alt-text" */
-    'content-alt-text'?: subPluginOptions<pluginOptions_10>;
+    'content-alt-text'?: subPluginOptions<pluginOptions_11>;
     /** plugin options for "postcss-custom-media" */
-    'custom-media-queries'?: subPluginOptions<pluginOptions_11>;
+    'custom-media-queries'?: subPluginOptions<pluginOptions_12>;
     /** plugin options for "postcss-custom-properties" */
-    'custom-properties'?: subPluginOptions<pluginOptions_12>;
+    'custom-properties'?: subPluginOptions<pluginOptions_13>;
     /** plugin options for "postcss-custom-selectors" */
-    'custom-selectors'?: subPluginOptions<pluginOptions_13>;
+    'custom-selectors'?: subPluginOptions<pluginOptions_14>;
     /** plugin options for "postcss-dir-pseudo-class" */
-    'dir-pseudo-class'?: subPluginOptions<pluginOptions_14>;
+    'dir-pseudo-class'?: subPluginOptions<pluginOptions_15>;
     /** plugin options for "@csstools/postcss-normalize-display-values" */
-    'display-two-values'?: subPluginOptions<pluginOptions_15>;
+    'display-two-values'?: subPluginOptions<pluginOptions_16>;
     /** plugin options for "postcss-double-position-gradients" */
-    'double-position-gradients'?: subPluginOptions<pluginOptions_16>;
+    'double-position-gradients'?: subPluginOptions<pluginOptions_17>;
     /** plugin options for "@csstools/postcss-exponential-functions" */
-    'exponential-functions'?: subPluginOptions<pluginOptions_17>;
+    'exponential-functions'?: subPluginOptions<pluginOptions_18>;
     /** plugin options for "@csstools/postcss-logical-float-and-clear" */
-    'float-clear-logical-values'?: subPluginOptions<pluginOptions_18>;
+    'float-clear-logical-values'?: subPluginOptions<pluginOptions_19>;
     /** plugin options for "postcss-focus-visible" */
-    'focus-visible-pseudo-class'?: subPluginOptions<pluginOptions_19>;
+    'focus-visible-pseudo-class'?: subPluginOptions<pluginOptions_20>;
     /** plugin options for "postcss-focus-within" */
-    'focus-within-pseudo-class'?: subPluginOptions<pluginOptions_20>;
+    'focus-within-pseudo-class'?: subPluginOptions<pluginOptions_21>;
     /** plugin options for "@csstools/postcss-font-format-keywords" */
-    'font-format-keywords'?: subPluginOptions<pluginOptions_21>;
+    'font-format-keywords'?: subPluginOptions<pluginOptions_22>;
     /** plugin options for "postcss-font-variant" */
     'font-variant-property'?: subPluginOptions<postcssFontVariantOptions>;
     /** plugin options for "@csstools/postcss-gamut-mapping" */
-    'gamut-mapping'?: subPluginOptions<pluginOptions_22>;
+    'gamut-mapping'?: subPluginOptions<pluginOptions_23>;
     /** plugin options for "postcss-gap-properties" */
-    'gap-properties'?: subPluginOptions<pluginOptions_23>;
+    'gap-properties'?: subPluginOptions<pluginOptions_24>;
     /** plugin options for "@csstools/postcss-gradients-interpolation-method" */
-    'gradients-interpolation-method'?: subPluginOptions<pluginOptions_24>;
+    'gradients-interpolation-method'?: subPluginOptions<pluginOptions_25>;
     /** plugin options for "css-has-pseudo" */
-    'has-pseudo-class'?: subPluginOptions<pluginOptions_25>;
+    'has-pseudo-class'?: subPluginOptions<pluginOptions_26>;
     /** plugin options for "postcss-color-hex-alpha" */
-    'hexadecimal-alpha-notation'?: subPluginOptions<pluginOptions_26>;
+    'hexadecimal-alpha-notation'?: subPluginOptions<pluginOptions_27>;
     /** plugin options for "@csstools/postcss-hwb-function" */
-    'hwb-function'?: subPluginOptions<pluginOptions_27>;
+    'hwb-function'?: subPluginOptions<pluginOptions_28>;
     /** plugin options for "@csstools/postcss-ic-unit" */
-    'ic-unit'?: subPluginOptions<pluginOptions_28>;
+    'ic-unit'?: subPluginOptions<pluginOptions_29>;
     /** plugin options for "postcss-image-set-function" */
-    'image-set-function'?: subPluginOptions<pluginOptions_29>;
+    'image-set-function'?: subPluginOptions<pluginOptions_30>;
     /** plugin options for "@csstools/postcss-is-pseudo-class" */
-    'is-pseudo-class'?: subPluginOptions<pluginOptions_30>;
+    'is-pseudo-class'?: subPluginOptions<pluginOptions_31>;
     /** plugin options for "postcss-lab-function" */
-    'lab-function'?: subPluginOptions<pluginOptions_31>;
+    'lab-function'?: subPluginOptions<pluginOptions_32>;
     /** plugin options for "@csstools/postcss-light-dark-function" */
-    'light-dark-function'?: subPluginOptions<pluginOptions_32>;
+    'light-dark-function'?: subPluginOptions<pluginOptions_33>;
     /** plugin options for "@csstools/postcss-logical-overflow" */
-    'logical-overflow'?: subPluginOptions<pluginOptions_33>;
+    'logical-overflow'?: subPluginOptions<pluginOptions_34>;
     /** plugin options for "@csstools/postcss-logical-overscroll-behavior" */
-    'logical-overscroll-behavior'?: subPluginOptions<pluginOptions_34>;
+    'logical-overscroll-behavior'?: subPluginOptions<pluginOptions_35>;
     /** plugin options for "postcss-logical" */
-    'logical-properties-and-values'?: subPluginOptions<pluginOptions_35>;
+    'logical-properties-and-values'?: subPluginOptions<pluginOptions_36>;
     /** plugin options for "@csstools/postcss-logical-resize" */
-    'logical-resize'?: subPluginOptions<pluginOptions_36>;
+    'logical-resize'?: subPluginOptions<pluginOptions_37>;
     /** plugin options for "@csstools/postcss-logical-viewport-units" */
-    'logical-viewport-units'?: subPluginOptions<pluginOptions_37>;
+    'logical-viewport-units'?: subPluginOptions<pluginOptions_38>;
     /** plugin options for "@csstools/postcss-media-queries-aspect-ratio-number-values" */
-    'media-queries-aspect-ratio-number-values'?: subPluginOptions<pluginOptions_38>;
+    'media-queries-aspect-ratio-number-values'?: subPluginOptions<pluginOptions_39>;
     /** plugin options for "@csstools/postcss-media-minmax" */
-    'media-query-ranges'?: subPluginOptions<pluginOptions_39>;
+    'media-query-ranges'?: subPluginOptions<pluginOptions_40>;
     /** plugin options for "@csstools/postcss-nested-calc" */
-    'nested-calc'?: subPluginOptions<pluginOptions_40>;
+    'nested-calc'?: subPluginOptions<pluginOptions_41>;
     /** plugin options for "postcss-nesting" */
-    'nesting-rules'?: subPluginOptions<pluginOptions_41>;
+    'nesting-rules'?: subPluginOptions<pluginOptions_42>;
     /** plugin options for "postcss-selector-not" */
-    'not-pseudo-class'?: subPluginOptions<pluginOptions_42>;
+    'not-pseudo-class'?: subPluginOptions<pluginOptions_43>;
     /** plugin options for "@csstools/postcss-oklab-function" */
-    'oklab-function'?: subPluginOptions<pluginOptions_43>;
+    'oklab-function'?: subPluginOptions<pluginOptions_44>;
     /** plugin options for "postcss-opacity-percentage" */
     'opacity-percentage'?: subPluginOptions<postcssOpacityPercentageOptions>;
     /** plugin options for "postcss-overflow-shorthand" */
-    'overflow-property'?: subPluginOptions<pluginOptions_44>;
+    'overflow-property'?: subPluginOptions<pluginOptions_45>;
     /** plugin options for "postcss-replace-overflow-wrap" */
     'overflow-wrap-property'?: subPluginOptions<postcssReplaceOverflowWrapOptions>;
     /** plugin options for "postcss-place" */
-    'place-properties'?: subPluginOptions<pluginOptions_45>;
+    'place-properties'?: subPluginOptions<pluginOptions_46>;
     /** plugin options for "css-prefers-color-scheme" */
-    'prefers-color-scheme-query'?: subPluginOptions<pluginOptions_46>;
+    'prefers-color-scheme-query'?: subPluginOptions<pluginOptions_47>;
     /** plugin options for "@csstools/postcss-random-function" */
-    'random-function'?: subPluginOptions<pluginOptions_47>;
+    'random-function'?: subPluginOptions<pluginOptions_48>;
     /** plugin options for "postcss-color-rebeccapurple" */
-    'rebeccapurple-color'?: subPluginOptions<pluginOptions_48>;
+    'rebeccapurple-color'?: subPluginOptions<pluginOptions_49>;
     /** plugin options for "@csstools/postcss-relative-color-syntax" */
-    'relative-color-syntax'?: subPluginOptions<pluginOptions_49>;
+    'relative-color-syntax'?: subPluginOptions<pluginOptions_50>;
     /** plugin options for "@csstools/postcss-scope-pseudo-class" */
-    'scope-pseudo-class'?: subPluginOptions<pluginOptions_50>;
+    'scope-pseudo-class'?: subPluginOptions<pluginOptions_51>;
     /** plugin options for "@csstools/postcss-sign-functions" */
-    'sign-functions'?: subPluginOptions<pluginOptions_51>;
+    'sign-functions'?: subPluginOptions<pluginOptions_52>;
     /** plugin options for "@csstools/postcss-stepped-value-functions" */
-    'stepped-value-functions'?: subPluginOptions<pluginOptions_52>;
+    'stepped-value-functions'?: subPluginOptions<pluginOptions_53>;
     /** plugin options for "postcss-system-ui-font-family" */
     'system-ui-font-family'?: subPluginOptions<postcssFontFamilySystemUIOptions>;
     /** plugin options for "@csstools/postcss-text-decoration-shorthand" */
-    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_53>;
+    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_54>;
     /** plugin options for "@csstools/postcss-trigonometric-functions" */
-    'trigonometric-functions'?: subPluginOptions<pluginOptions_54>;
+    'trigonometric-functions'?: subPluginOptions<pluginOptions_55>;
     /** plugin options for "@csstools/postcss-unset-value" */
-    'unset-value'?: subPluginOptions<pluginOptions_55>;
+    'unset-value'?: subPluginOptions<pluginOptions_56>;
 };
 
 /** postcss-clamp plugin options */

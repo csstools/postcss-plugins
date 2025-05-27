@@ -581,6 +581,8 @@
 	color-4: rgba(121, 0, 181, 0.65);
 	color-5: rgba(148, 0, 122, 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
+	color-7: rgb(255, 0, 0);
+	color-8: rgb(85, 85, 85);
 }
 
 @media (color-gamut: p3) {
@@ -737,10 +739,17 @@
 
 .random {
 	color: rgb(
-		140,
-		0,
-		85
+		240,
+		100,
+		235
 	);
 
-	border-color: rgb(228, 112, 176);
+	border-color: rgb(49, 29, 0);
+}
+
+@media (color-gamut: p3) {
+.random {
+
+	border-color: color(display-p3 0.18785 0.11205 0);
+}
 }
