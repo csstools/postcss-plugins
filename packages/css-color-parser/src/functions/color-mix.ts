@@ -205,6 +205,8 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 			color: color,
 			percentage: percentage,
 		});
+	} else {
+		return false;
 	}
 
 	let pSum = 0;

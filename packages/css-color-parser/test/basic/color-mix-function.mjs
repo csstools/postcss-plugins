@@ -124,6 +124,11 @@ const tests = [
 	['color-mix(in srgb, red, lime, blue, maroon, green, navy, cyan, magenta, yellow)', canonicalize('rgb(99, 99, 99)')], // multiple args
 	['color-mix(in srgb, cyan 50%, magenta 50%, yellow 50%)', canonicalize('rgb(170, 170, 170)')], // multiple args
 	['color-mix(in srgb, cyan 25%, magenta 25%, yellow 25%)', canonicalize('rgba(170, 170, 170, 0.75)')], // multiple args
+
+	['color-mix(in oklab, red,)', ''],
+	['color-mix(in oklab, red 5%,)', ''],
+	['color-mix(in oklab, red, blue, green,)', ''],
+	['color-mix(in oklab, red, , green)', ''],
 ];
 
 for (const test of tests) {
