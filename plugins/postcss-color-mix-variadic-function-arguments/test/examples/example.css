@@ -1,0 +1,7 @@
+.red {
+	color: color-mix(in srgb, red);
+}
+
+.grey {
+	color: color-mix(in srgb, red, lime, blue);
+}

@@ -231,7 +231,7 @@
 @supports (color: color-mix(in lch, red, blue)) {
 :root {
 	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
-	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
+	--color-mix-2: color-mix(in lch longer hue, purple 50%, plum 50%);
 	--color-mix-3: color-mix(in lab, purple 50%, plum 50%);
 	--color-mix-4: color-mix(in srgb, purple, plum 50%);
 	--color-mix-5: color-mix(in srgb-linear, purple 50%, plum);
@@ -257,6 +257,8 @@
 	/* color-mix() */
 	--color-mix-1: plum;
 	--color-mix-2: plum;
+	--color-mix-3: rgb(85, 85, 85);
+	--color-mix-4: red;
 }
 
 @supports (color: color(display-p3 0 0 0%)) {
@@ -268,13 +270,20 @@
 @supports (color: color-mix(in lch, red, blue)) {
 :root {
 	--color-mix-1: color-mix(in lch, purple 50%, plum 50%);
-	--color-mix-2: color-mix(in lch longer, purple 50%, plum 50%);
+	--color-mix-2: color-mix(in lch longer hue, purple 50%, plum 50%);
 }
 }
 
 @supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--color-mix-2: color(display-p3 0.64331 0.19245 0.16771);
+}
+}
+
+@supports (color: color-mix(in lch, red)) {
+:root {
+	--color-mix-3: color-mix(in srgb, red, lime, blue);
+	--color-mix-4: color-mix(in srgb, red);
 }
 }
 

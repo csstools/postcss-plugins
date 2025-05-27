@@ -82,9 +82,10 @@
 		"syntax"
 	],
 	"csstools": {
-		"cssdb": "lab-function",
+		"cssdbId": "lab-function",
 		"exportName": "postcssLabFunction",
-		"humanReadableName": "PostCSS Lab Function"
+		"humanReadableName": "PostCSS Lab Function",
+		"specUrl": "https://drafts.csswg.org/css-color/#specifying-lab-lch"
 	},
 	"volta": {
 		"extends": "../../package.json"

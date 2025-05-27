@@ -173,3 +173,7 @@
 .experimental-features-from-the-color-parser {
 	color: color-mix(in srgb, contrast-color(pink) 30%, yellow);
 }
+
+.ignore-zero-percentage {
+	color: color-mix(in srgb, blue 0%, yellow 0%);
+}

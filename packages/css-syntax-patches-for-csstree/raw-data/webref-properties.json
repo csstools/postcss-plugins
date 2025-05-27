@@ -813,7 +813,7 @@
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
 	},
 	"dynamic-range-limit": {
-		"syntax": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>"
+		"syntax": "standard | no-limit | constrained | <dynamic-range-limit-mix()>"
 	},
 	"empty-cells": {
 		"syntax": "show | hide"
@@ -2415,7 +2415,7 @@
 		"syntax": "none | <custom-ident>"
 	},
 	"visibility": {
-		"syntax": "visible | hidden | collapse"
+		"syntax": "visible | hidden | force-hidden | collapse"
 	},
 	"voice-balance": {
 		"syntax": "<number> | left | center | right | leftwards | rightwards"

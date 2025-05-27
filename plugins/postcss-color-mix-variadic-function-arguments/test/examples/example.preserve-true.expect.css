@@ -1,0 +1,9 @@
+.red {
+	color: rgb(255, 0, 0);
+	color: color-mix(in srgb, red);
+}
+
+.grey {
+	color: rgb(85, 85, 85);
+	color: color-mix(in srgb, red, lime, blue);
+}

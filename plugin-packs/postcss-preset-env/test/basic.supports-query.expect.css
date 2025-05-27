@@ -65,7 +65,7 @@
 	}
 }
 
-@media (min-width: 480px) and (max-width: 767.98px) {
+@media (480px <= width < 768px) {
 	.test-media-query-ranges {
 		order: 11;
 	}
