@@ -62,6 +62,22 @@ Is a mixed color, e.g. `color-mix(in oklch, red, blue)`
 </td></tr>
 <tr><td>
 
+ColorMixVariadic
+
+
+</td><td>
+
+`"color-mix-variadic"`
+
+
+</td><td>
+
+Is a variadic mixed color, e.g. `color-mix(in oklch, red)` `color-mix(in oklch, red, blue, green)`
+
+
+</td></tr>
+<tr><td>
+
 ContrastColor
 
 

@@ -72,6 +72,7 @@ body:
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
         - PostCSS Color Mix Function
+        - PostCSS Color Mix Variadic Function Arguments
         - PostCSS Conditional Values
         - PostCSS Content Alt Text
         - PostCSS Contrast Color Functions

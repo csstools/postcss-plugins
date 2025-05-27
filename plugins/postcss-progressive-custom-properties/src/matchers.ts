@@ -187,6 +187,13 @@ export const matchers = [
 						"isVariable": true
 					},
 					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
 						"type": "div",
 						"value": ","
 					},
@@ -227,6 +234,13 @@ export const matchers = [
 						"isVariable": true
 					},
 					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
 						"type": "div",
 						"value": ","
 					},
@@ -274,6 +288,13 @@ export const matchers = [
 						"isVariable": true
 					},
 					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
 						"type": "div",
 						"value": ","
 					},
@@ -321,6 +342,13 @@ export const matchers = [
 						"isVariable": true
 					},
 					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
 						"type": "div",
 						"value": ","
 					},
@@ -349,6 +377,595 @@ export const matchers = [
 					{
 						"type": "word",
 						"isVariable": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"supports": "color-mix(in lch, red)",
+		"property": "color",
+		"sniff": "color-mix",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "hue"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
 					}
 				]
 			}

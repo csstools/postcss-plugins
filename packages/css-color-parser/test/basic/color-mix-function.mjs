@@ -99,6 +99,31 @@ const tests = [
 
 	// TODO : `none` containing support
 	['color-mix(in hsl, hsl(calc(none) 30% 40%), hsl(20deg 30% 40%))', ''],
+
+	// 0 percentage sum
+	['color-mix(in hsl, hsl(120deg 10% 20%) 0%, hsl(30deg 30% 40%) 0%)', 'rgba(0, 0, 0, 0)'], // sum of percentages is 0
+	['color-mix(in hwb, hwb(40deg 30% 40%) 0%, hwb(40deg 30% 40%) 0%)', canonicalize('hwb(0 0 100% / 0)')], // sum of percentages is 0
+	['color-mix(in lch, lch(10 20 30deg) 0%, lch(10 20 30deg) 0%)', canonicalize('lch(0 0 0 / 0)')], // sum of percentages is 0
+
+	['color-mix(in hsl, hsl(120deg 10% 20%))', canonicalize('hsl(120deg 10% 20%)')], // single arg
+	['color-mix(in hsl, hsl(120deg 10% 20%) 100%)', canonicalize('hsl(120deg 10% 20%)')], // single arg
+	['color-mix(in srgb, hsl(none 50% 50%))', canonicalize('rgb(191, 64, 64)')], // single arg
+	['color-mix(in srgb, red 50%)', canonicalize('rgba(255, 0, 0, 0.5)')], // single arg
+	['color-mix(in srgb, red 100%)', canonicalize('rgb(255, 0, 0)')], // single arg
+
+	['color-mix(in hsl, hsl(120deg 10% 20%), hsl(120deg 10% 20%), hsl(120deg 10% 20%))', canonicalize('hsl(120deg 10% 20%)')], // multiple args
+	['color-mix(in hsl, hsl(120deg 10% 20%) 30%, hsl(120deg 10% 20%) 30%, hsl(120deg 10% 20%) 40%)', canonicalize('hsl(120deg 10% 20%)')], // multiple args
+	['color-mix(in srgb, red, lime, blue)', canonicalize('rgb(85, 85, 85)')], // multiple args
+	['color-mix(in oklch, red, lime, blue)', canonicalize('rgb(0, 173, 49)')], // multiple args
+	['color-mix(in oklch increasing hue, red, lime, blue)', canonicalize('rgb(0, 173, 49)')], // multiple args
+	['color-mix(in oklch longer hue, red, lime, blue)', canonicalize('rgb(255, 50, 58)')], // multiple args
+	['color-mix(in oklch decreasing hue, red, lime, blue)', canonicalize('rgb(86, 134, 255)')], // multiple args
+	['color-mix(in xyz, red, lime, blue)', canonicalize('rgb(156, 156, 156)')], // multiple args
+	['color-mix(in srgb, maroon, green, navy)', canonicalize('rgb(43, 43, 43)')], // multiple args
+	['color-mix(in srgb, cyan, magenta, yellow)', canonicalize('rgb(170, 170, 170)')], // multiple args
+	['color-mix(in srgb, red, lime, blue, maroon, green, navy, cyan, magenta, yellow)', canonicalize('rgb(99, 99, 99)')], // multiple args
+	['color-mix(in srgb, cyan 50%, magenta 50%, yellow 50%)', canonicalize('rgb(170, 170, 170)')], // multiple args
+	['color-mix(in srgb, cyan 25%, magenta 25%, yellow 25%)', canonicalize('rgba(170, 170, 170, 0.75)')], // multiple args
 ];
 
 for (const test of tests) {

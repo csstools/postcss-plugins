@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (minor)
+
+- Add matching rules for variadic function arguments in `color-mix()`
+
 ### 4.0.1
 
 _April 19, 2025_

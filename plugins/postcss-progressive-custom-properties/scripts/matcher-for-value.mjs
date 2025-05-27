@@ -15,6 +15,9 @@ export function matcherForValue(value) {
 			} else if (node.value.startsWith('$')) {
 				delete node.value;
 				node.isVariable = true;
+			} else if (node.value.startsWith('_')) {
+				delete node.value;
+				node.anyRemainingArguments = true;
 			} else {
 				try {
 					node.dimension = valueParser.unit(node.value);
