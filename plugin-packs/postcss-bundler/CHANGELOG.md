@@ -1,5 +1,9 @@
 # Changes to PostCSS Bundler
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#304) (patch)
+
 ### 2.0.6
 
 _November 28, 2024_

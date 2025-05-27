@@ -1,5 +1,9 @@
 # Changes to PostCSS Media Queries Aspect-Ratio Number Values
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#304) (patch)
+
 ### 3.0.4
 
 _November 1, 2024_

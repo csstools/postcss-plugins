@@ -1,5 +1,9 @@
 # Changes to PostCSS Sign Functions
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#304) (patch)
+
 ### 1.1.3
 
 _April 19, 2025_
