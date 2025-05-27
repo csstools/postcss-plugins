@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-exponential-functions",
 	"description": "Use pow(), sqrt(), hypot(), log(), exp() exponential functions in CSS",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
