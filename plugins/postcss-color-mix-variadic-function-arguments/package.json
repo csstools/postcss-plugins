@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/postcss-color-mix-variadic-function-arguments",
-	"description": "Use the color-mix function in CSS",
+	"description": "Mix any number of colors with the color-mix function in CSS",
 	"version": "0.0.0",
 	"contributors": [
 		{
@@ -78,17 +78,10 @@
 	"keywords": [
 		"color-mix",
 		"css",
-		"display-p3",
 		"interpolation",
 		"postcss-plugin",
-		"prophoto-rgb",
-		"rec2020",
-		"rgb",
-		"rgba",
-		"srgb-linear",
 		"syntax",
-		"variadic",
-		"xyz"
+		"variadic"
 	],
 	"csstools": {
 		"cssdbId": "color-mix-variadic-function-arguments",
