@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-mix-variadic-function-arguments",
 	"description": "Mix any number of colors with the color-mix function in CSS",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
