@@ -113,7 +113,7 @@
       - plugins/postcss-color-rebeccapurple/**
       - experimental/postcss-color-rebeccapurple/**
 
-"plugins/postcss-color-mix-variadic-function-arguments":
+"plugins/postcss-color-mix-variadic-function-args":
   - changed-files:
     - any-glob-to-any-file:
       - plugins/postcss-color-mix-variadic-function-arguments/**
