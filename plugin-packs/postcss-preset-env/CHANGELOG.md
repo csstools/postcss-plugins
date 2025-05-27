@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 10.2.0
+
+_May 27, 2025_
 
 - Added `@csstools/postcss-color-mix-variadic-function-arguments` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-variadic-function-arguments#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.3.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#830-may-27-2025) (patch)
