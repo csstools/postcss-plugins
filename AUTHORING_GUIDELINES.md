@@ -12,3 +12,5 @@ We will not create plugins with features (or add features to plugins) that look 
 We will make it clear that non-standard, pre-processor features are just that.
 
 We will only implement that which we know is correct and avoid side effects.
+
+We will not use LLM's to produce at best mediocre outcomes.
