@@ -1,0 +1,65 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": " --foo( ) ",
+	"tokens": [
+		[
+			"whitespace-token",
+			" ",
+			0,
+			0,
+			null
+		],
+		[
+			"function-token",
+			"--foo(",
+			1,
+			6,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			7,
+			7,
+			null
+		],
+		[
+			")-token",
+			")",
+			8,
+			8,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			9,
+			9,
+			null
+		]
+	],
+	"parameters": [],
+	"returnsKeyword": [],
+	"returnType": [],
+	"before": [
+		[
+			"whitespace-token",
+			" ",
+			0,
+			0,
+			null
+		]
+	],
+	"after": [
+		[
+			"whitespace-token",
+			" ",
+			9,
+			9,
+			null
+		]
+	]
+}

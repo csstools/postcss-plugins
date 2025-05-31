@@ -1,0 +1,432 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo(--x <color>: red, --y, --z <length>) returns <string>",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			"ident-token",
+			"--x",
+			6,
+			8,
+			{
+				"value": "--x"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			9,
+			9,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			10,
+			10,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"color",
+			11,
+			15,
+			{
+				"value": "color"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			16,
+			16,
+			{
+				"value": ">"
+			}
+		],
+		[
+			"colon-token",
+			":",
+			17,
+			17,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			18,
+			18,
+			null
+		],
+		[
+			"ident-token",
+			"red",
+			19,
+			21,
+			{
+				"value": "red"
+			}
+		],
+		[
+			"comma-token",
+			",",
+			22,
+			22,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			23,
+			23,
+			null
+		],
+		[
+			"ident-token",
+			"--y",
+			24,
+			26,
+			{
+				"value": "--y"
+			}
+		],
+		[
+			"comma-token",
+			",",
+			27,
+			27,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			28,
+			28,
+			null
+		],
+		[
+			"ident-token",
+			"--z",
+			29,
+			31,
+			{
+				"value": "--z"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			32,
+			32,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			33,
+			33,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"length",
+			34,
+			39,
+			{
+				"value": "length"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			40,
+			40,
+			{
+				"value": ">"
+			}
+		],
+		[
+			")-token",
+			")",
+			41,
+			41,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			42,
+			42,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			43,
+			49,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			50,
+			50,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			51,
+			51,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			52,
+			57,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			58,
+			58,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"parameters": [
+		{
+			"type": "function-parameter",
+			"name": "--x",
+			"string": "--x <color>: red,",
+			"argumentType": [
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					10,
+					10,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					11,
+					15,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					16,
+					16,
+					{
+						"value": ">"
+					}
+				]
+			],
+			"colon": [
+				"colon-token",
+				":",
+				17,
+				17,
+				null
+			],
+			"defaultValue": [
+				[
+					"whitespace-token",
+					" ",
+					18,
+					18,
+					null
+				],
+				[
+					"ident-token",
+					"red",
+					19,
+					21,
+					{
+						"value": "red"
+					}
+				]
+			],
+			"before": [],
+			"after": [
+				[
+					"comma-token",
+					",",
+					22,
+					22,
+					null
+				]
+			]
+		},
+		{
+			"type": "function-parameter",
+			"name": "--y",
+			"string": " --y,",
+			"argumentType": [],
+			"colon": null,
+			"defaultValue": [],
+			"before": [
+				[
+					"whitespace-token",
+					" ",
+					23,
+					23,
+					null
+				]
+			],
+			"after": [
+				[
+					"comma-token",
+					",",
+					27,
+					27,
+					null
+				]
+			]
+		},
+		{
+			"type": "function-parameter",
+			"name": "--z",
+			"string": " --z <length>",
+			"argumentType": [
+				[
+					"whitespace-token",
+					" ",
+					32,
+					32,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					33,
+					33,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"length",
+					34,
+					39,
+					{
+						"value": "length"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					40,
+					40,
+					{
+						"value": ">"
+					}
+				]
+			],
+			"colon": null,
+			"defaultValue": [],
+			"before": [
+				[
+					"whitespace-token",
+					" ",
+					28,
+					28,
+					null
+				]
+			],
+			"after": []
+		}
+	],
+	"returnsKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			42,
+			42,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			43,
+			49,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			50,
+			50,
+			null
+		]
+	],
+	"returnType": [
+		[
+			"delim-token",
+			"<",
+			51,
+			51,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			52,
+			57,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			58,
+			58,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"before": [],
+	"after": []
+}

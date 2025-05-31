@@ -1,0 +1,78 @@
+{
+	"name": "@csstools/custom-function-parser",
+	"description": "Parse CSS custom function params.",
+	"version": "0.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": ">=18"
+	},
+	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"peerDependencies": {
+		"@csstools/css-parser-algorithms": "^3.0.4",
+		"@csstools/css-tokenizer": "^3.0.3"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"stryker": "stryker run --logLevel error",
+		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test ./test/test.mjs"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/custom-function-parser#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "packages/custom-function-parser"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"css",
+		"custom functions",
+		"parser"
+	],
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

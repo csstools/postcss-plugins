@@ -1,0 +1,280 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo(--x <color>: red ) returns <string>",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			"ident-token",
+			"--x",
+			6,
+			8,
+			{
+				"value": "--x"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			9,
+			9,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			10,
+			10,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"color",
+			11,
+			15,
+			{
+				"value": "color"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			16,
+			16,
+			{
+				"value": ">"
+			}
+		],
+		[
+			"colon-token",
+			":",
+			17,
+			17,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			18,
+			18,
+			null
+		],
+		[
+			"ident-token",
+			"red",
+			19,
+			21,
+			{
+				"value": "red"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			22,
+			22,
+			null
+		],
+		[
+			")-token",
+			")",
+			23,
+			23,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			24,
+			24,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			25,
+			31,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			32,
+			32,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			33,
+			33,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			34,
+			39,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			40,
+			40,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"parameters": [
+		{
+			"type": "function-parameter",
+			"name": "--x",
+			"string": "--x <color>: red ",
+			"argumentType": [
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					10,
+					10,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					11,
+					15,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					16,
+					16,
+					{
+						"value": ">"
+					}
+				]
+			],
+			"colon": [
+				"colon-token",
+				":",
+				17,
+				17,
+				null
+			],
+			"defaultValue": [
+				[
+					"whitespace-token",
+					" ",
+					18,
+					18,
+					null
+				],
+				[
+					"ident-token",
+					"red",
+					19,
+					21,
+					{
+						"value": "red"
+					}
+				]
+			],
+			"before": [],
+			"after": [
+				[
+					"whitespace-token",
+					" ",
+					22,
+					22,
+					null
+				]
+			]
+		}
+	],
+	"returnsKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			24,
+			24,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			25,
+			31,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			32,
+			32,
+			null
+		]
+	],
+	"returnType": [
+		[
+			"delim-token",
+			"<",
+			33,
+			33,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			34,
+			39,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			40,
+			40,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"before": [],
+	"after": []
+}

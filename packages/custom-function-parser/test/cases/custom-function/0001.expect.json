@@ -1,0 +1,28 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo()",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			")-token",
+			")",
+			6,
+			6,
+			null
+		]
+	],
+	"parameters": [],
+	"returnsKeyword": [],
+	"returnType": [],
+	"before": [],
+	"after": []
+}
