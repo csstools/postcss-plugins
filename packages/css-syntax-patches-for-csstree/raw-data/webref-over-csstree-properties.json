@@ -29,6 +29,12 @@
 		"syntax-a": "<single-animation-trigger>#",
 		"comment": ""
 	},
+	"animation-trigger-behavior": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<single-animation-trigger-behavior>#",
+		"comment": ""
+	},
 	"animation-trigger-exit-range": {
 		"type": "added",
 		"syntax-b": "",
@@ -69,12 +75,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<single-animation-timeline>#",
-		"comment": ""
-	},
-	"animation-trigger-type": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<single-animation-trigger-type>#",
 		"comment": ""
 	},
 	"appearance": {
@@ -1995,6 +1995,12 @@
 		"type": "modified",
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
+		"comment": ""
+	},
+	"scroll-target-group": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | auto",
 		"comment": ""
 	},
 	"scroll-timeline": {
