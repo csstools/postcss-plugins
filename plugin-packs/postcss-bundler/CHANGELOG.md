@@ -1,6 +1,8 @@
 # Changes to PostCSS Bundler
 
-### Unreleased (patch)
+### 2.0.8
+
+_June 2, 2025_
 
 - Fix bundling in more cases for `@import` statements that link to external resources
 
