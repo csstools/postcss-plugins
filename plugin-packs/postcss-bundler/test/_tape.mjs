@@ -18,6 +18,9 @@ const testCases = {
 	'conditional-layer-before-external': {
 		message: 'correctly handles conditional stylesheets containing layer statements before external resources',
 	},
+	'relative-before-external': {
+		message: 'correctly handles stylesheets before external resources',
+	},
 	'does-not-exist-1': {
 		message: 'throws on files that don\'t exist',
 		exception: /Failed to find 'imports\/does-not-exist.css'/,

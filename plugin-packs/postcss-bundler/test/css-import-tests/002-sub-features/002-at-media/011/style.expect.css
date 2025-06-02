@@ -1,3 +1,3 @@
 @import url("http://localhost:8080/green.css");
 /* ./a.css */
-@import 'data:text/css;base64,QGltcG9ydCB1cmwoImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWQuY3NzIikgc2NyZWVuIGFuZCAobm90IChtaW4td2lkdGg6IDFweCkp' not print and (min-height: 1px);
+@import "data:text/css;base64,QGltcG9ydCB1cmwoImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWQuY3NzIikgc2NyZWVuIGFuZCAobm90IChtaW4td2lkdGg6IDFweCkp" not print and (min-height: 1px);
