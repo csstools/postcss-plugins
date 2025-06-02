@@ -35,7 +35,7 @@
 		"index.mjs"
 	],
 	"peerDependencies": {
-		"postcss": "^8.5",
+		"postcss": "^8.4",
 		"stylelint": "^16.19.1"
 	},
 	"devDependencies": {
