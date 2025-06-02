@@ -104,6 +104,17 @@
 			"failing": []
 		}
 	},
+	"animation-trigger-behavior": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<single-animation-trigger-behavior>#",
+		"syntax-m": "<single-animation-trigger-behavior>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"animation-trigger-exit-range": {
 		"type": "added",
 		"comment": "",
@@ -176,17 +187,6 @@
 		"syntax-b": "",
 		"syntax-a": "<single-animation-timeline>#",
 		"syntax-m": "<single-animation-timeline>#",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"animation-trigger-type": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<single-animation-trigger-type>#",
-		"syntax-m": "<single-animation-trigger-type>#",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4493,6 +4493,17 @@
 		"syntax-b": "auto | <length-percentage>",
 		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"syntax-m": "auto | <length-percentage [0,∞]>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-target-group": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "none | auto",
+		"syntax-m": "none | auto",
 		"tests": {
 			"passing": [],
 			"failing": []

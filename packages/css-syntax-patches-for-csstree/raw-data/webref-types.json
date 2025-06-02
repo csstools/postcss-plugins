@@ -1482,9 +1482,9 @@
 		"syntax": "auto | none | <dashed-ident> | <scroll()> | <view()>"
 	},
 	"single-animation-trigger": {
-		"syntax": "<single-animation-trigger-type> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]"
+		"syntax": "<single-animation-trigger-behavior> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]"
 	},
-	"single-animation-trigger-type": {
+	"single-animation-trigger-behavior": {
 		"syntax": "once | repeat | alternate | state"
 	},
 	"single-transition": {
