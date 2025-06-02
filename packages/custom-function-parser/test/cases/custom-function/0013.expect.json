@@ -133,7 +133,6 @@
 		{
 			"type": "function-parameter",
 			"name": "--x",
-			"string": "--x <color>:red",
 			"argumentType": [
 				[
 					"whitespace-token",

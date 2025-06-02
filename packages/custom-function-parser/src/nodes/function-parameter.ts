@@ -37,26 +37,6 @@ export class FunctionParameter {
 		return stringify(...this.defaultValue).trim();
 	}
 
-	tokens(): Array<CSSToken> {
-		return [
-			...this.before,
-			this.name,
-			...this.argumentType,
-			this.colon,
-			...this.defaultValue,
-			...this.after,
-		]. filter((x) => !!x);
-	}
-
-	toString(): string {
-		return stringify(...this.before) +
-			stringify(this.name) +
-			stringify(...this.argumentType) +
-			(this.colon ? stringify(this.colon) : '') +
-			stringify(...this.defaultValue) +
-			stringify(...this.after);
-	}
-
 	/**
 	 * @internal
 	 */
@@ -64,7 +44,6 @@ export class FunctionParameter {
 		return {
 			type: this.type,
 			name: this.getName(),
-			string: this.toString(),
 			argumentType: this.argumentType,
 			colon: this.colon,
 			defaultValue: this.defaultValue,

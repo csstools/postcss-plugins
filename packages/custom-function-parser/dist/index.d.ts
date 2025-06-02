@@ -1,5 +1,5 @@
 import type { CSSToken } from '@csstools/css-tokenizer';
-import type { FunctionNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode } from '@csstools/css-parser-algorithms';
 import type { ParseError } from '@csstools/css-tokenizer';
 import type { TokenColon } from '@csstools/css-tokenizer';
 import type { TokenIdent } from '@csstools/css-tokenizer';
@@ -14,6 +14,7 @@ export declare class CustomFunction {
     after: Array<CSSToken>;
     constructor(fn: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
     getName(): string;
+    getReturnType(): string;
     tokens(): Array<CSSToken>;
     toString(): string;
     /**
@@ -40,8 +41,6 @@ export declare class FunctionParameter {
     getNameToken(): TokenIdent | null;
     getArgumentType(): string;
     getDefaultValue(): string;
-    tokens(): Array<CSSToken>;
-    toString(): string;
     /**
      * @internal
      */

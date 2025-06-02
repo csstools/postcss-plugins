@@ -1,8 +1,8 @@
 import type { CSSToken } from '@csstools/css-tokenizer';
-import { stringify } from '@csstools/css-tokenizer';
+import { isTokenComment, stringify } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
 import type { FunctionParameter } from './function-parameter';
-import type { FunctionNode } from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, type FunctionNode } from '@csstools/css-parser-algorithms';
 
 export class CustomFunction {
 	type = NodeType.CustomFunction;
@@ -25,6 +25,23 @@ export class CustomFunction {
 
 	getName(): string {
 		return this.function.getName();
+	}
+
+	getReturnType(): string {
+		const meaningfulComponentValues = parseListOfComponentValues(this.returnType).filter((x) => !isWhiteSpaceOrCommentNode(x));
+		if (
+			meaningfulComponentValues.length === 1 &&
+			isFunctionNode(meaningfulComponentValues[0]) &&
+			meaningfulComponentValues[0].getName().toLowerCase() === 'type'
+		) {
+			return stringify(
+				...meaningfulComponentValues[0].value
+					.flatMap((x) => x.tokens())
+					.filter((x) => !isTokenComment(x))
+			).trim();
+		}
+
+		return stringify(...this.returnType.filter((x) => !isTokenComment(x))).trim();
 	}
 
 	tokens(): Array<CSSToken> {

@@ -522,6 +522,37 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@csstools/custom-function-parser!CustomFunction#getReturnType:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getReturnType(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getReturnType"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@csstools/custom-function-parser!CustomFunction.isCustomFunction:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1438,82 +1469,6 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#tokens:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "tokens(): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Array",
-                  "canonicalReference": "!Array:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "tokens"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#toString:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "toString(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "toString"
             },
             {
               "kind": "Property",

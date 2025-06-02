@@ -17,7 +17,7 @@ import { MediaOr } from '../nodes/media-or';
 import type { MediaQuery} from '../nodes/media-query';
 import { MediaQueryInvalid, MediaQueryWithoutType, MediaQueryWithType } from '../nodes/media-query';
 
-export function isCustomMedia(x: unknown): x is GeneralEnclosed {
+export function isCustomMedia(x: unknown): x is CustomMedia {
 	return CustomMedia.isCustomMedia(x);
 }
 

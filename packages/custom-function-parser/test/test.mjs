@@ -17,4 +17,6 @@ import './get-name/0001.mjs';
 
 import './get-argument-type/0001.mjs';
 
+import './get-return-type/0001.mjs';
+
 import './get-default-value/0001.mjs';

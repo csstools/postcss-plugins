@@ -220,7 +220,6 @@
 		{
 			"type": "function-parameter",
 			"name": "--x",
-			"string": "--x <color>: red,",
 			"argumentType": [
 				[
 					"whitespace-token",
@@ -296,7 +295,6 @@
 		{
 			"type": "function-parameter",
 			"name": "--y",
-			"string": " --y,",
 			"argumentType": [],
 			"colon": null,
 			"defaultValue": [],
@@ -322,7 +320,6 @@
 		{
 			"type": "function-parameter",
 			"name": "--z",
-			"string": " --z <length>",
 			"argumentType": [
 				[
 					"whitespace-token",

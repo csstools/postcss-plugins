@@ -16,3 +16,13 @@
 	padding: --negative();
 }
 
+@function --alpha(--color <color>: black, --alpha <number>: 1) returns <color> {
+	--a: clamp(0, var(--alpha), 1);
+
+	result: oklch(from var(--color) l c h / var(--a));
+}
+
+.color-a {
+	--a-color: red;
+	color: --alpha(var(--a-color), 0.5);
+}
