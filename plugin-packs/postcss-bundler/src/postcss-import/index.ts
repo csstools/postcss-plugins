@@ -7,7 +7,7 @@ import { postProcess } from './lib/post-process';
 const creator: PluginCreator<never> = () => {
 	return {
 		postcssPlugin: 'postcss-bundler',
-		async Once(styles, { result, atRule, postcss }): Promise<void> {
+		async Once(styles, { result, atRule, root, postcss }): Promise<void> {
 			const bundle = await parseStyles(
 				result,
 				styles,
@@ -17,7 +17,7 @@ const creator: PluginCreator<never> = () => {
 				postcss,
 			);
 
-			postProcess(bundle, atRule);
+			postProcess(bundle, atRule, root);
 
 			applyConditions(bundle, atRule);
 			applyStyles(bundle, styles);

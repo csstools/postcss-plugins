@@ -1,6 +1,6 @@
 /* ./a.css */
-@import 'data:text/css;base64,QGxheWVyIGIsIGE=' print;
+@import "data:text/css;base64,QGxheWVyIGIsIGE=" print;
 /* ./b.css */
 /* a comment */
-@import 'data:text/css;base64,QGxheWVyIGEsIGI=' screen;
+@import "data:text/css;base64,QGxheWVyIGEsIGI=" screen;
 @import url("http://localhost:8080/green.css") screen;

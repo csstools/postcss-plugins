@@ -21,9 +21,9 @@ export function base64EncodedConditionalImport(prelude: string, conditions: Arra
 	)}`;
 
 	for (const condition of conditions) {
-		params = `'data:text/css;base64,${Buffer.from(
+		params = `"data:text/css;base64,${Buffer.from(
 			`@import ${params}`,
-		).toString('base64')}' ${formatImportPrelude(
+		).toString('base64')}" ${formatImportPrelude(
 			condition.layer,
 			condition.media,
 			condition.supports,
