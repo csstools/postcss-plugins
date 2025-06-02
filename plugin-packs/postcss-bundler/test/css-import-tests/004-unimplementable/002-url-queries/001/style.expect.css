@@ -1,5 +1,3 @@
 /* ./a.css */
-.box {
-	background-color: red;
-}
+@import "data:text/css;base64,LmJveCB7CgliYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0=";
 @import url("./a.css?background-color=green");
