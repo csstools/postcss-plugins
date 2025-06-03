@@ -189,7 +189,7 @@
 		"syntax": "<calc-value> [ [ '*' | / ] <calc-value> ]*"
 	},
 	"calc-size-basis": {
-		"syntax": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]"
+		"syntax": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]"
 	},
 	"calc-size()": {
 		"syntax": "calc-size( <calc-size-basis> , <calc-sum> )"
@@ -249,7 +249,7 @@
 		"syntax": "color-layers( [ <blend-mode> , ]? <color># )"
 	},
 	"color-mix()": {
-		"syntax": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )"
+		"syntax": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )"
 	},
 	"color-space": {
 		"syntax": "<rectangular-color-space> | <polar-color-space> | <custom-color-space>"
@@ -332,9 +332,6 @@
 	"container-name": {
 		"syntax": "<custom-ident>"
 	},
-	"container-progress()": {
-		"syntax": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )"
-	},
 	"container-query": {
 		"syntax": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]"
 	},
@@ -378,7 +375,7 @@
 		"syntax": "<length-percentage>{2}"
 	},
 	"corner-shape-value": {
-		"syntax": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )"
+		"syntax": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )"
 	},
 	"cos()": {
 		"syntax": "cos( <calc-sum> )"
@@ -797,9 +794,6 @@
 	"integrity-modifier": {
 		"syntax": "integrity( <string> )"
 	},
-	"intrinsic-size-keyword": {
-		"syntax": "auto | max-content | min-content | stretch"
-	},
 	"invert()": {
 		"syntax": "invert( <number-percentage> )"
 	},
@@ -985,9 +979,6 @@
 	},
 	"media-or": {
 		"syntax": "or <media-in-parens>"
-	},
-	"media-progress()": {
-		"syntax": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )"
 	},
 	"media-query": {
 		"syntax": "<media-condition> | [ not | only ]? <media-type> [ and <media-condition-without-or> ]?"
@@ -1491,9 +1482,9 @@
 		"syntax": "auto | none | <dashed-ident> | <scroll()> | <view()>"
 	},
 	"single-animation-trigger": {
-		"syntax": "<single-animation-trigger-type> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]"
+		"syntax": "<single-animation-trigger-behavior> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]"
 	},
-	"single-animation-trigger-type": {
+	"single-animation-trigger-behavior": {
 		"syntax": "once | repeat | alternate | state"
 	},
 	"single-transition": {
@@ -1510,6 +1501,9 @@
 	},
 	"size-feature": {
 		"syntax": "<mf-plain> | <mf-boolean> | <mf-range>"
+	},
+	"size-keyword": {
+		"syntax": "auto | max-content | min-content | stretch"
 	},
 	"skew()": {
 		"syntax": "skew( [ <angle> | <zero> ] , [ <angle> | <zero> ]? )"
@@ -1578,7 +1572,7 @@
 		"syntax": "<id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>"
 	},
 	"superellipse()": {
-		"syntax": "superellipse( <number> | infinity )"
+		"syntax": "superellipse( <number> | infinity | -infinity )"
 	},
 	"supports-condition": {
 		"syntax": "not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*"
@@ -1753,6 +1747,9 @@
 	},
 	"url()": {
 		"syntax": "url( <string> <url-modifier>* ) | <url-token>"
+	},
+	"var-args": {
+		"syntax": "var( <declaration-value> , <declaration-value>? )"
 	},
 	"var()": {
 		"syntax": "var( <custom-property-name> , <declaration-value>? )"

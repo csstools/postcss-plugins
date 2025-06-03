@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-light-dark-function",
 	"description": "Use the light-dark() color function in CSS",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.4",
-		"@csstools/css-tokenizer": "^3.0.3",
-		"@csstools/postcss-progressive-custom-properties": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^3.0.5",
+		"@csstools/css-tokenizer": "^3.0.4",
+		"@csstools/postcss-progressive-custom-properties": "^4.1.0",
 		"@csstools/utilities": "^2.0.0"
 	},
 	"peerDependencies": {
@@ -59,7 +59,7 @@
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
 		"postcss-nesting": "^13.0.0",
-		"puppeteer": "^24.7.2"
+		"puppeteer": "^24.9.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

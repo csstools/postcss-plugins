@@ -1,17 +1,3 @@
 /* a.css */
-
-.box {
-	animation: BOX;
-	animation-duration: 0s;
-	animation-fill-mode: both;
-}
-
-@keyframes BOX {
-
-	0%,
-	100% {
-		background-color: red;
-	}
-}
-
+@import "data:text/css;base64,CgouYm94IHsKCWFuaW1hdGlvbjogQk9YOwoJYW5pbWF0aW9uLWR1cmF0aW9uOiAwczsKCWFuaW1hdGlvbi1maWxsLW1vZGU6IGJvdGg7Cn0KCkBrZXlmcmFtZXMgQk9YIHsKCgkwJSwKCTEwMCUgewoJCWJhY2tncm91bmQtY29sb3I6IHJlZDsKCX0KfQ==";
 @import url("http://localhost:8080/b.css");

@@ -77,6 +77,9 @@
 	"animation-trigger": {
 		"syntax": "<single-animation-trigger>#"
 	},
+	"animation-trigger-behavior": {
+		"syntax": "<single-animation-trigger-behavior>#"
+	},
 	"animation-trigger-exit-range": {
 		"syntax": "[ <'animation-trigger-exit-range-start'> <'animation-trigger-exit-range-end'>? ]#"
 	},
@@ -97,9 +100,6 @@
 	},
 	"animation-trigger-timeline": {
 		"syntax": "<single-animation-timeline>#"
-	},
-	"animation-trigger-type": {
-		"syntax": "<single-animation-trigger-type>#"
 	},
 	"appearance": {
 		"syntax": "none | auto | base | <compat-auto> | <compat-special> | base"
@@ -813,7 +813,7 @@
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
 	},
 	"dynamic-range-limit": {
-		"syntax": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>"
+		"syntax": "standard | no-limit | constrained | <dynamic-range-limit-mix()>"
 	},
 	"empty-cells": {
 		"syntax": "show | hide"
@@ -1997,6 +1997,9 @@
 	"-ms-scroll-snap-y": {
 		"syntax": "<'-ms-scroll-snap-type'> <'-ms-scroll-snap-points-y'>"
 	},
+	"scroll-target-group": {
+		"syntax": "none | auto"
+	},
 	"scroll-timeline": {
 		"syntax": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#"
 	},
@@ -2415,7 +2418,7 @@
 		"syntax": "none | <custom-ident>"
 	},
 	"visibility": {
-		"syntax": "visible | hidden | collapse"
+		"syntax": "visible | hidden | force-hidden | collapse"
 	},
 	"voice-balance": {
 		"syntax": "<number> | left | center | right | leftwards | rightwards"

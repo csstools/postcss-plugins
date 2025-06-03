@@ -18,7 +18,7 @@
 	order: 2;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (min-resolution: 192dpi) {
 
 .test-image-set-function {
 	background-image: url(img/test-2x.png);
@@ -601,6 +601,8 @@
 	color-5: rgba(148, 0, 122, 0.65);
 	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
+	color-7: color-mix(in hsl, red);
+	color-8: color-mix(in srgb, red, lime, blue);
 }
 
 .gradients-interpolation-method {

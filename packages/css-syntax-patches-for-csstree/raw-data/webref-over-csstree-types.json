@@ -218,7 +218,7 @@
 	"calc-size-basis": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <intrinsic-size-keyword> | <calc-size()> | any | <calc-sum> ]",
+		"syntax-a": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]",
 		"comment": ""
 	},
 	"calc-size()": {
@@ -267,6 +267,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "color-layers( [ <blend-mode> , ]? <color># )",
+		"comment": ""
+	},
+	"color-mix()": {
+		"type": "modified",
+		"syntax-b": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
+		"syntax-a": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )",
 		"comment": ""
 	},
 	"color-stop-angle": {
@@ -341,12 +347,6 @@
 		"syntax-a": "[ <container-name>? <container-query>? ]!",
 		"comment": ""
 	},
-	"container-progress()": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "container-progress( <mf-name> [ of <container-name> ]? , <calc-sum> , <calc-sum> )",
-		"comment": ""
-	},
 	"container-query": {
 		"type": "added",
 		"syntax-b": "",
@@ -404,7 +404,7 @@
 	"corner-shape-value": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "round | scoop | bevel | notch | straight | squircle | superellipse( <number [0,∞]> | infinity )",
+		"syntax-a": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )",
 		"comment": ""
 	},
 	"counter-style": {
@@ -809,12 +809,6 @@
 		"syntax-a": "integrity( <string> )",
 		"comment": ""
 	},
-	"intrinsic-size-keyword": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | max-content | min-content | stretch",
-		"comment": ""
-	},
 	"isolation-mode": {
 		"type": "added",
 		"syntax-b": "",
@@ -1005,12 +999,6 @@
 		"type": "modified",
 		"syntax-b": "<media-in-parens> [ or <media-in-parens> ]+",
 		"syntax-a": "or <media-in-parens>",
-		"comment": ""
-	},
-	"media-progress()": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "media-progress( <mf-name> , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"media()": {
@@ -1472,13 +1460,19 @@
 	"single-animation-trigger": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<single-animation-trigger-type> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]",
+		"syntax-a": "<single-animation-trigger-behavior> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]",
 		"comment": ""
 	},
-	"single-animation-trigger-type": {
+	"single-animation-trigger-behavior": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "once | repeat | alternate | state",
+		"comment": ""
+	},
+	"size-keyword": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | max-content | min-content | stretch",
 		"comment": ""
 	},
 	"smooth-command": {
@@ -1562,7 +1556,7 @@
 	"superellipse()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "superellipse( <number> | infinity )",
+		"syntax-a": "superellipse( <number> | infinity | -infinity )",
 		"comment": ""
 	},
 	"supports-feature": {
@@ -1731,6 +1725,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "url( <string> <url-modifier>* ) | <url-token>",
+		"comment": ""
+	},
+	"var-args": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "var( <declaration-value> , <declaration-value>? )",
 		"comment": ""
 	},
 	"vertical-line-command": {

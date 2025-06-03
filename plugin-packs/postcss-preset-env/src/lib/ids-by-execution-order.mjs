@@ -22,6 +22,7 @@ export default [
 	'dir-pseudo-class',
 	'all-property', // run all-property before other property polyfills
 	'gradients-interpolation-method', // run before all color functions
+	'color-mix-variadic-function-arguments', // run before any other color functions, including base color-mix
 	'color-mix', // run before any other color functions
 	'relative-color-syntax',
 	'lab-function',

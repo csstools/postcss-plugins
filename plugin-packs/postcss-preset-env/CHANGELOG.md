@@ -1,5 +1,15 @@
 # Changes to PostCSS Preset Env
 
+### 10.2.0
+
+_May 27, 2025_
+
+- Added `@csstools/postcss-color-mix-variadic-function-arguments` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-variadic-function-arguments#readme) for usage details.
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.3.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#830-may-27-2025) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#410) (minor)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#304) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`14.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1405) (patch)
+
 ### 10.1.6
 
 _April 19, 2025_

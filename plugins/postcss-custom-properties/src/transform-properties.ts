@@ -7,7 +7,7 @@ import { isDeclarationIgnored } from './is-ignored';
 // transform custom pseudo selectors with custom selectors
 export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }): void {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
-		const originalValue = decl.value;
+		const originalValue = decl.raws?.value?.raw ?? decl.value;
 		const valueAST = valuesParser(originalValue);
 		const value = transformValueAST(valueAST, customProperties);
 
@@ -23,20 +23,10 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 			return;
 		}
 
-		if (opts.preserve) {
-			const beforeDecl = decl.cloneBefore({ value });
+		decl.cloneBefore({ value });
 
-			if (hasTrailingComment(beforeDecl) && beforeDecl.raws?.value) {
-				beforeDecl.raws.value.value = beforeDecl.value.replace(TRAILING_COMMENT_REGEX, '$1');
-				beforeDecl.raws.value.raw = beforeDecl.raws.value.value + beforeDecl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
-			}
-		} else {
-			decl.value = value;
-
-			if (hasTrailingComment(decl) && decl.raws?.value) {
-				decl.raws.value.value = decl.value.replace(TRAILING_COMMENT_REGEX, '$1');
-				decl.raws.value.raw = decl.raws.value.value + decl.raws.value.raw.replace(TRAILING_COMMENT_REGEX, '$2');
-			}
+		if (!opts?.preserve) {
+			decl.remove();
 		}
 	}
 }
@@ -45,11 +35,6 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 
 // whether the declaration should be potentially transformed
 const isTransformableDecl = (decl: Declaration): boolean => !decl.variable && decl.value.includes('--') && decl.value.toLowerCase().includes('var(');
-
-// whether the declaration has a trailing comment
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-const hasTrailingComment = (decl: Declaration): boolean => 'value' in Object(Object(decl.raws).value) && ('raw' in (decl.raws?.value ?? {})) && TRAILING_COMMENT_REGEX.test(decl.raws.value?.raw ?? '');
-const TRAILING_COMMENT_REGEX = /^([\W\w]+)(\s*\/\*[\W\w]+?\*\/)$/;
 
 function parentHasExactFallback(decl: Declaration, value: string): boolean {
 	if (!decl || !decl.parent) {

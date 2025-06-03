@@ -1,0 +1,7 @@
+:root {
+	--firebrick: rgba(255, 0, 0, 0.9);
+	--firebrick-a50: rgb(230, 13, 13);
+
+	--opacity-50: 50%;
+	--firebrick-a50-var: color-mix(in lch, red var(--opacity-50));
+}

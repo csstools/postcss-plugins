@@ -1,5 +1,11 @@
 # Changes to CSS Tokenizer
 
+### 3.0.4
+
+_May 27, 2025_
+
+- align serializers with CSSOM
+
 ### 3.0.3
 
 _October 25, 2024_

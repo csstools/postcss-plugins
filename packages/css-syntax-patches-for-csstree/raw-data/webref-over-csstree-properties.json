@@ -29,6 +29,12 @@
 		"syntax-a": "<single-animation-trigger>#",
 		"comment": ""
 	},
+	"animation-trigger-behavior": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<single-animation-trigger-behavior>#",
+		"comment": ""
+	},
 	"animation-trigger-exit-range": {
 		"type": "added",
 		"syntax-b": "",
@@ -69,12 +75,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<single-animation-timeline>#",
-		"comment": ""
-	},
-	"animation-trigger-type": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<single-animation-trigger-type>#",
 		"comment": ""
 	},
 	"appearance": {
@@ -932,7 +932,7 @@
 	"dynamic-range-limit": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>",
+		"syntax-a": "standard | no-limit | constrained | <dynamic-range-limit-mix()>",
 		"comment": ""
 	},
 	"field-sizing": {
@@ -1997,6 +1997,12 @@
 		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
+	"scroll-target-group": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | auto",
+		"comment": ""
+	},
 	"scroll-timeline": {
 		"type": "modified",
 		"syntax-b": "[ <'scroll-timeline-name'> || <'scroll-timeline-axis'> ]#",
@@ -2439,6 +2445,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "normal | contain | nearest | <custom-ident>",
+		"comment": ""
+	},
+	"visibility": {
+		"type": "modified",
+		"syntax-b": "visible | hidden | collapse",
+		"syntax-a": "visible | hidden | force-hidden | collapse",
 		"comment": ""
 	},
 	"voice-duration": {

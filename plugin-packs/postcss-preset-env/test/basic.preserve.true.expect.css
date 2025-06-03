@@ -988,6 +988,10 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
 	color-6: rgba(179, 0, 255, 0.65);
 	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
+	color-7: rgb(255, 0, 0);
+	color-7: color-mix(in hsl, red);
+	color-8: rgb(85, 85, 85);
+	color-8: color-mix(in srgb, red, lime, blue);
 }
 
 .gradients-interpolation-method {
@@ -1227,9 +1231,9 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		140,
-		0,
-		85
+		240,
+		100,
+		235
 	);
 	color: rgb(
 		random(--r, 0, 255, 5),
@@ -1237,12 +1241,14 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 		random(--b, 0, 255, 5)
 	);
 
-	border-color: rgb(228, 112, 176);
+	border-color: rgb(49, 29, 0);
+
+	border-color: color(display-p3 0.18785 0.11205 0);
 
 	border-color: oklch(
-		70%
-		40%
-		348deg
+		25%
+		30%
+		72deg
 	);
 
 	border-color: oklch(

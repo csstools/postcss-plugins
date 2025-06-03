@@ -50,6 +50,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						return;
 					}
 
+					if (colorData.syntaxFlags.has(SyntaxFlag.ColorMixVariadic)) {
+						return;
+					}
+
 					return serializeRGB(colorData);
 				},
 			);

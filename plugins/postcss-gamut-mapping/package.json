@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gamut-mapping",
 	"description": "Gamut map css colors to fit display specific gamuts",
-	"version": "2.0.9",
+	"version": "2.0.10",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,9 +48,9 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^3.0.9",
-		"@csstools/css-parser-algorithms": "^3.0.4",
-		"@csstools/css-tokenizer": "^3.0.3"
+		"@csstools/css-color-parser": "^3.0.10",
+		"@csstools/css-parser-algorithms": "^3.0.5",
+		"@csstools/css-tokenizer": "^3.0.4"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-minify",
 	"description": "A very basic CSS minifier",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-tokenizer": "^3.0.3"
+		"@csstools/css-tokenizer": "^3.0.4"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

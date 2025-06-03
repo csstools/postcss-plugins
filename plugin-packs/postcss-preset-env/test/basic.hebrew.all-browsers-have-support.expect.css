@@ -479,6 +479,8 @@
 	color-4: color-mix(in oklch, rgb(255 0 0 / 0), blue 65%);
 	color-5: color-mix(in lch, rgb(255 0 0 / 0), blue 65%);
 	color-6: color-mix(in hsl, rgb(255 0 0 / 0), blue 65%);
+	color-7: rgb(255, 0, 0);
+	color-8: rgb(85, 85, 85);
 }
 
 .gradients-interpolation-method {
@@ -605,10 +607,17 @@
 
 .random {
 	color: rgb(
-		140,
-		0,
-		85
+		240,
+		100,
+		235
 	);
 
-	border-color: rgb(228, 112, 176);
+	border-color: rgb(49, 29, 0);
+}
+
+@media (color-gamut: p3) {
+.random {
+
+	border-color: color(display-p3 0.18785 0.11205 0);
+}
 }

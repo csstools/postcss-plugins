@@ -50,6 +50,9 @@ We try our best to create a safe and welcoming environment for contributors.
 Your changes do not have to be complete and tests do not have to pass before opening a pull request.
 Receiving early feedback on your work will help you iterate more quickly in the right direction.
 
+We do ask that you do not use LLM's to produce code, pull requests or issues.  
+You can use any aid to do your own review before submission, we only ask that you are the author of your own submissions.
+
 1. To begin; [fork this project], clone your fork, and add our upstream.
    ```bash
    # Clone your fork of the repo into the current directory

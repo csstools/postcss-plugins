@@ -1,7 +1,7 @@
 {
 	"name": "postcss-color-functional-notation",
 	"description": "Use space and slash separated color notation in CSS",
-	"version": "7.0.9",
+	"version": "7.0.10",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
@@ -38,10 +38,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^3.0.9",
-		"@csstools/css-parser-algorithms": "^3.0.4",
-		"@csstools/css-tokenizer": "^3.0.3",
-		"@csstools/postcss-progressive-custom-properties": "^4.0.1",
+		"@csstools/css-color-parser": "^3.0.10",
+		"@csstools/css-parser-algorithms": "^3.0.5",
+		"@csstools/css-tokenizer": "^3.0.4",
+		"@csstools/postcss-progressive-custom-properties": "^4.1.0",
 		"@csstools/utilities": "^2.0.0"
 	},
 	"peerDependencies": {

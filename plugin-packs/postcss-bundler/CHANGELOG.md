@@ -1,5 +1,19 @@
 # Changes to PostCSS Bundler
 
+### 2.0.8
+
+_June 2, 2025_
+
+- Fix bundling in more cases for `@import` statements that link to external resources
+
+### 2.0.7
+
+_May 27, 2025_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-rebase-url`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-rebase-url/CHANGELOG.md#205) (patch)
+
 ### 2.0.6
 
 _November 28, 2024_

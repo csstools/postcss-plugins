@@ -29,4 +29,16 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	'variadic': {
+		message: 'ignores later syntax',
+	},
+	'examples/example': {
+		message: 'minimal example',
+	},
+	'examples/example:preserve-true': {
+		message: 'minimal example',
+		options: {
+			preserve: true,
+		},
+	},
 });

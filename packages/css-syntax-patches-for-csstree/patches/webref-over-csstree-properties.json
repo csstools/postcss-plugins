@@ -104,6 +104,17 @@
 			"failing": []
 		}
 	},
+	"animation-trigger-behavior": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<single-animation-trigger-behavior>#",
+		"syntax-m": "<single-animation-trigger-behavior>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"animation-trigger-exit-range": {
 		"type": "added",
 		"comment": "",
@@ -176,17 +187,6 @@
 		"syntax-b": "",
 		"syntax-a": "<single-animation-timeline>#",
 		"syntax-m": "<single-animation-timeline>#",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"animation-trigger-type": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<single-animation-trigger-type>#",
-		"syntax-m": "<single-animation-trigger-type>#",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2393,8 +2393,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>",
-		"syntax-m": "standard | no-limit | constrained-high | <dynamic-range-limit-mix()>",
+		"syntax-a": "standard | no-limit | constrained | <dynamic-range-limit-mix()>",
+		"syntax-m": "standard | no-limit | constrained | <dynamic-range-limit-mix()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4498,6 +4498,17 @@
 			"failing": []
 		}
 	},
+	"scroll-target-group": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "none | auto",
+		"syntax-m": "none | auto",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"scroll-timeline": {
 		"type": "modified",
 		"comment": "",
@@ -5355,6 +5366,17 @@
 		"syntax-b": "",
 		"syntax-a": "normal | contain | nearest | <custom-ident>",
 		"syntax-m": "normal | contain | nearest | <custom-ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"visibility": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "visible | hidden | collapse",
+		"syntax-a": "visible | hidden | force-hidden | collapse",
+		"syntax-m": "visible | hidden | force-hidden | collapse",
 		"tests": {
 			"passing": [],
 			"failing": []

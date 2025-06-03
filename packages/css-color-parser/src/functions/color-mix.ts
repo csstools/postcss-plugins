@@ -6,7 +6,7 @@ import { ColorNotation } from '../color-notation';
 import { isTokenIdent, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { colorDataTo, SyntaxFlag } from '../color-data';
-import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 import { isTokenComma } from '@csstools/css-tokenizer';
@@ -24,7 +24,7 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 
 	for (let i = 0; i < colorMixNode.value.length; i++) {
 		const node = colorMixNode.value[i];
-		if (isWhitespaceNode(node) || isCommentNode(node)) {
+		if (isWhiteSpaceOrCommentNode(node)) {
 			continue;
 		}
 
@@ -118,13 +118,12 @@ type ColorMixEntry = {
 	percentage: number
 }
 
-type ColorMixColors = {
-	a: ColorMixEntry,
-	b: ColorMixEntry,
+type ColorMixItems = {
+	colors: Array<ColorMixEntry>,
 	alphaMultiplier: number,
 }
 
-function colorMixComponents(componentValues: Array<ComponentValue>, colorParser: ColorParser): ColorMixColors | false {
+function colorMixComponents(componentValues: Array<ComponentValue>, colorParser: ColorParser): ColorMixItems | false {
 	const colors: Array<{ color: ColorData, percentage: number | false }> = [];
 
 	let alphaMultiplier = 1;
@@ -134,7 +133,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 
 	for (let i = 0; i < componentValues.length; i++) {
 		let node = componentValues[i];
-		if (isWhitespaceNode(node) || isCommentNode(node)) {
+		if (isWhiteSpaceOrCommentNode(node)) {
 			continue;
 		}
 
@@ -206,92 +205,89 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 			color: color,
 			percentage: percentage,
 		});
-	}
-
-	if (colors.length !== 2) {
+	} else {
 		return false;
 	}
 
-	let p1 = colors[0].percentage;
-	let p2 = colors[1].percentage;
+	let pSum = 0;
+	let pOmitted = 0;
+	for (let i = 0; i < colors.length; i++) {
+		const p = colors[i].percentage;
+		if (p === false) {
+			pOmitted++;
+			continue
+		}
 
-	if (p1 !== false && (p1 < 0 || p1 > 100)) {
-		return false;
-	}
-	if (p2 !== false && (p2 < 0 || p2 > 100)) {
-		return false;
-	}
+		if (p < 0 || p > 100) {
+			return false;
+		}
 
-	if (p1 === false && p2 === false) {
-		p1 = 50;
-		p2 = 50;
-	} else if (p1 !== false && p2 === false) {
-		p2 = 100 - p1;
-	} else if (p1 === false && p2 !== false) {
-		p1 = 100 - p2;
+		pSum += p;
 	}
 
-	if (p1 === 0 && p2 === 0) {
-		return false;
+	const pRemainder = Math.max(0, 100 - pSum);
+
+	pSum = 0;
+	for (let i = 0; i < colors.length; i++) {
+		if (colors[i].percentage === false) {
+			colors[i].percentage = pRemainder / pOmitted;
+		}
+
+		pSum += colors[i].percentage as number;
 	}
 
-	if (p1 === false || p2 === false) {
-		return false;
+	if (pSum === 0) { // The sum of explicitly provided mix percentages is `0`
+		return {
+			colors: [
+				{
+					color: {
+						channels: [0, 0, 0],
+						colorNotation: ColorNotation.sRGB,
+						alpha: 0,
+						syntaxFlags: new Set(),
+					},
+					percentage: 0
+				}
+			],
+			alphaMultiplier: 0,
+		};
 	}
 
-	if ((p1 + p2) > 100) {
-		p1 = p1 / (p1 + p2) * 100;
-		p2 = p2 / (p1 + p2) * 100;
+	if (pSum > 100) {
+		for (let i = 0; i < colors.length; i++) {
+			let p = colors[i].percentage as number; // already handled all `false` cases
+
+			p = (p / pSum) * 100;
+			colors[i].percentage = p;
+		}
 	}
 
-	if ((p1 + p2) < 100) {
-		alphaMultiplier = (p1 + p2) / 100;
+	if (pSum < 100) {
+		alphaMultiplier = pSum / 100;
 
-		p1 = p1 / (p1 + p2) * 100;
-		p2 = p2 / (p1 + p2) * 100;
+		for (let i = 0; i < colors.length; i++) {
+			let p = colors[i].percentage as number; // already handled all `false` cases
+
+			p = (p / pSum) * 100;
+			colors[i].percentage = p;
+		}
 	}
 
 	return {
-		a: {
-			color: colors[0].color,
-			percentage: p1,
-		},
-		b: {
-			color: colors[1].color,
-			percentage: p2,
-		},
+		colors: colors as ColorMixItems['colors'], // already handled all percentage `false` cases
 		alphaMultiplier: alphaMultiplier,
 	};
 }
 
-function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false): ColorData | false {
-	if (!colors) {
+function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): ColorData | false {
+	if (!items || !items.colors.length) {
 		return false;
 	}
 
-	const a_color = colors.a.color;
-	const b_color = colors.b.color;
-
-	const ratio = colors.a.percentage / 100;
-
-	let a_channels = a_color.channels;
-	let b_channels = b_color.channels;
+	const colors = items.colors.slice();
+	colors.reverse();
 
 	let outputColorNotation: ColorNotation = ColorNotation.RGB;
-
-	let a_alpha = a_color.alpha;
-	if (typeof a_alpha !== 'number') {
-		return false;
-	}
-
-	let b_alpha = b_color.alpha;
-	if (typeof b_alpha !== 'number') {
-		return false;
-	}
-
-	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
-	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
-
 	switch (colorSpace) {
 		case 'srgb':
 			outputColorNotation = ColorNotation.RGB;
@@ -325,11 +321,83 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 			outputColorNotation = ColorNotation.XYZ_D65;
 			break;
 		default:
-			break;
+			return false;
 	}
 
-	a_channels = colorDataTo(a_color, outputColorNotation).channels;
-	b_channels = colorDataTo(b_color, outputColorNotation).channels;
+	if (colors.length === 1) {
+		const color = colorDataTo(colors[0].color, outputColorNotation);
+		color.colorNotation = outputColorNotation;
+		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
+
+		if (typeof color.alpha === 'number') {
+			color.alpha = color.alpha * items.alphaMultiplier;
+		} else {
+			return false;
+		}
+
+		return color;
+	}
+
+	while (colors.length >= 2) {
+		// Pop from item stack twice, letting a and b be the two results in order.
+		const a_color = colors.pop();
+		const b_color = colors.pop();
+
+		if (!a_color || !b_color) {
+			return false;
+		}
+
+		const mixed_color = colorMixRectangularPair(outputColorNotation, a_color.color, a_color.percentage, b_color.color, b_color.percentage);
+		if (!mixed_color) {
+			return false;
+		}
+
+		colors.push({
+			color: mixed_color,
+			percentage: a_color.percentage + b_color.percentage
+		})
+	}
+
+	const colorData = colors[0]?.color;
+	if (!colorData) {
+		return false
+	}
+
+	if (items.colors.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
+		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+	}
+
+	if (typeof colorData.alpha === 'number') {
+		colorData.alpha = colorData.alpha * items.alphaMultiplier
+	} else {
+		return false;
+	}
+
+	if (items.colors.length !== 2) {
+		colorData.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
+	}
+
+	return colorData;
+}
+
+function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorData, a_percentage: number, b_color: ColorData, b_percentage: number): ColorData | false {
+	const ratio = a_percentage / (a_percentage + b_percentage);
+
+	let a_alpha = a_color.alpha;
+	if (typeof a_alpha !== 'number') {
+		return false;
+	}
+
+	let b_alpha = b_color.alpha;
+	if (typeof b_alpha !== 'number') {
+		return false;
+	}
+
+	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
+	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
+
+	const a_channels = colorDataTo(a_color, colorNotation).channels;
+	const b_channels = colorDataTo(b_color, colorNotation).channels;
 
 	a_channels[0] = fillInMissingComponent(a_channels[0], b_channels[0]);
 	b_channels[0] = fillInMissingComponent(b_channels[0], a_channels[0]);
@@ -356,59 +424,24 @@ function colorMixRectangular(colorSpace: string, colors: ColorMixColors | false)
 	];
 
 	const colorData: ColorData = {
-		colorNotation: outputColorNotation,
+		colorNotation: colorNotation,
 		channels: outputChannels,
-		alpha: alpha * colors.alphaMultiplier,
+		alpha: alpha,
 		syntaxFlags: (new Set([SyntaxFlag.ColorMix])),
 	};
-
-	if (
-		colors.a.color.syntaxFlags.has(SyntaxFlag.Experimental) ||
-		colors.b.color.syntaxFlags.has(SyntaxFlag.Experimental)
-	) {
-		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
-	}
 
 	return colorData;
 }
 
-function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, colors: ColorMixColors | false): ColorData | false {
-	if (!colors) {
+function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items: ColorMixItems | false): ColorData | false {
+	if (!items || !items.colors.length) {
 		return false;
 	}
 
-	const a_color = colors.a.color;
-	const b_color = colors.b.color;
+	const colors = items.colors.slice();
+	colors.reverse();
 
-	const ratio = colors.a.percentage / 100;
-
-	let a_channels = a_color.channels;
-	let b_channels = b_color.channels;
-
-	let a_hue = 0;
-	let b_hue = 0;
-
-	let a_first = 0;
-	let b_first = 0;
-
-	let a_second = 0;
-	let b_second = 0;
-
-	let outputColorNotation: ColorNotation = ColorNotation.RGB;
-
-	let a_alpha = a_color.alpha;
-	if (typeof a_alpha !== 'number') {
-		return false;
-	}
-
-	let b_alpha = b_color.alpha;
-	if (typeof b_alpha !== 'number') {
-		return false;
-	}
-
-	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
-	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
-
+	let outputColorNotation: ColorNotation = ColorNotation.HSL;
 	switch (colorSpace) {
 		case 'hsl':
 			outputColorNotation = ColorNotation.HSL;
@@ -423,15 +456,96 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			outputColorNotation = ColorNotation.OKLCH;
 			break;
 		default:
-			break;
+			return false;
 	}
 
-	a_channels = colorDataTo(a_color, outputColorNotation).channels;
-	b_channels = colorDataTo(b_color, outputColorNotation).channels;
+	if (colors.length === 1) {
+		const color = colorDataTo(colors[0].color, outputColorNotation);
+		color.colorNotation = outputColorNotation;
+		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 
-	switch (colorSpace) {
-		case 'hsl':
-		case 'hwb':
+		if (typeof color.alpha === 'number') {
+			color.alpha = color.alpha * items.alphaMultiplier;
+		} else {
+			return false;
+		}
+
+		return color;
+	}
+
+	while (colors.length >= 2) {
+		// Pop from item stack twice, letting a and b be the two results in order.
+		const a_color = colors.pop();
+		const b_color = colors.pop();
+
+		if (!a_color || !b_color) {
+			return false;
+		}
+
+		const mixed_color = colorMixPolarPair(outputColorNotation, hueInterpolationMethod, a_color.color, a_color.percentage, b_color.color, b_color.percentage);
+		if (!mixed_color) {
+			return false;
+		}
+
+		colors.push({
+			color: mixed_color,
+			percentage: a_color.percentage + b_color.percentage
+		})
+	}
+
+	const colorData = colors[0]?.color;
+	if (!colorData) {
+		return false
+	}
+
+	if (items.colors.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
+		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+	}
+
+	if (typeof colorData.alpha === 'number') {
+		colorData.alpha = colorData.alpha * items.alphaMultiplier
+	} else {
+		return false;
+	}
+
+	if (items.colors.length !== 2) {
+		colorData.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
+	}
+
+	return colorData;
+}
+
+function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod: string, a_color: ColorData, a_percentage: number, b_color: ColorData, b_percentage: number): ColorData | false {
+	const ratio = a_percentage / (a_percentage + b_percentage);
+
+	let a_hue = 0;
+	let b_hue = 0;
+
+	let a_first = 0;
+	let b_first = 0;
+
+	let a_second = 0;
+	let b_second = 0;
+
+	let a_alpha = a_color.alpha;
+	if (typeof a_alpha !== 'number') {
+		return false;
+	}
+
+	let b_alpha = b_color.alpha;
+	if (typeof b_alpha !== 'number') {
+		return false;
+	}
+
+	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
+	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
+
+	const a_channels = colorDataTo(a_color, colorNotation).channels;
+	const b_channels = colorDataTo(b_color, colorNotation).channels;
+
+	switch (colorNotation) {
+		case ColorNotation.HSL:
+		case ColorNotation.HWB:
 			a_hue = a_channels[0];
 			b_hue = b_channels[0];
 
@@ -442,8 +556,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			b_second = b_channels[2];
 
 			break;
-		case 'lch':
-		case 'oklch':
+		case ColorNotation.LCH:
+		case ColorNotation.OKLCH:
 			a_first = a_channels[0];
 			b_first = b_channels[0];
 
@@ -519,9 +633,9 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 	let outputChannels: Color = [0, 0, 0];
 	const alpha = interpolate(a_alpha, b_alpha, ratio);
 
-	switch (colorSpace) {
-		case 'hsl':
-		case 'hwb':
+	switch (colorNotation) {
+		case ColorNotation.HSL:
+		case ColorNotation.HWB:
 			outputChannels = [
 				interpolate(a_hue, b_hue, ratio),
 				un_premultiply(interpolate(a_first, b_first, ratio), alpha),
@@ -529,8 +643,8 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 			];
 
 			break;
-		case 'lch':
-		case 'oklch':
+		case ColorNotation.LCH:
+		case ColorNotation.OKLCH:
 			outputChannels = [
 				un_premultiply(interpolate(a_first, b_first, ratio), alpha),
 				un_premultiply(interpolate(a_second, b_second, ratio), alpha),
@@ -543,18 +657,11 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, color
 	}
 
 	const colorData: ColorData = {
-		colorNotation: outputColorNotation,
+		colorNotation: colorNotation,
 		channels: outputChannels,
-		alpha: alpha * colors.alphaMultiplier,
+		alpha: alpha,
 		syntaxFlags: (new Set([SyntaxFlag.ColorMix])),
 	};
-
-	if (
-		colors.a.color.syntaxFlags.has(SyntaxFlag.Experimental) ||
-		colors.b.color.syntaxFlags.has(SyntaxFlag.Experimental)
-	) {
-		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
-	}
 
 	return colorData;
 }
