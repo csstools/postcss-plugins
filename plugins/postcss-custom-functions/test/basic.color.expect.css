@@ -1,109 +1,109 @@
 .negative-a {
-	--csstools-function-argument-8---value: var(--gap);
+	--csstools-function-argument-0---value: var(--gap);
 }
 
 .negative-a {
-	--csstools-custom-function-call-8-1: calc(-1 * var(--value));
+	--csstools-custom-function-call-0-1: calc(-1 * var(--value));
 }
 
 .negative-a {
 	--gap: 1em;
-	padding: var(--csstools-custom-function-call-8-1);
+	padding: var(--csstools-custom-function-call-0-1);
 }
 
 .negative-b {
-	--csstools-function-argument-9---value: 1em;
+	--csstools-function-argument-1---value: 1em;
 }
 
 .negative-b {
-	--csstools-custom-function-call-9-1: calc(-1 * var(--value));
+	--csstools-custom-function-call-1-1: calc(-1 * var(--value));
 }
 
 .negative-b {
-	padding: var(--csstools-custom-function-call-9-1);
+	padding: var(--csstools-custom-function-call-1-1);
 }
 
 .negative-c {
 }
 
 .negative-c {
-	--csstools-custom-function-call-a-1: calc(-1 * var(--value));
+	--csstools-custom-function-call-2-1: calc(-1 * var(--value));
 }
 
 .negative-c {
 	--value: 1em;
-	padding: var(--csstools-custom-function-call-a-1);
+	padding: var(--csstools-custom-function-call-2-1);
 }
 
 .color-a {
-	--csstools-function-argument-b---color: black;
-	--csstools-function-argument-b---color: var(--a-color);
-	--csstools-function-argument-b---alpha: 1;
-	--csstools-function-argument-b---alpha:  0.5;
+	--csstools-function-argument-3---color: black;
+	--csstools-function-argument-3---color: var(--a-color);
+	--csstools-function-argument-3---alpha: 1;
+	--csstools-function-argument-3---alpha:  0.5;
 }
 
 .color-a {
 	--a: clamp(0, var(--alpha), 1);
 
-	--csstools-custom-function-call-b-1: oklch(from var(--color) l c h / var(--a));
+	--csstools-custom-function-call-3-1: oklch(from var(--color) l c h / var(--a));
 }
 
 .color-a {
 	--a-color: red;
-	color: var(--csstools-custom-function-call-b-1);
+	color: var(--csstools-custom-function-call-3-1);
 }
 
-@property --csstools-function-argument-8---value {
+@property --csstools-function-argument-0---value {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-body-8---value {
+@property --csstools-function-body-0---value {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-argument-9---value {
+@property --csstools-function-argument-1---value {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-body-9---value {
+@property --csstools-function-body-1---value {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-argument-a---value {
+@property --csstools-function-argument-2---value {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-body-a---value {
+@property --csstools-function-body-2---value {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-argument-b---color {
+@property --csstools-function-argument-3---color {
 	syntax: "<color>";
 	inherit: false;
 }
 
-@property --csstools-function-body-b---color {
+@property --csstools-function-body-3---color {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-function-argument-b---alpha {
+@property --csstools-function-argument-3---alpha {
 	syntax: "<number>";
 	inherit: false;
 }
 
-@property --csstools-function-body-b---alpha {
+@property --csstools-function-body-3---alpha {
 	syntax: "*";
 	inherit: false;
 }
 
-@property --csstools-return-value-b {
+@property --csstools-return-value-3 {
 	syntax: "<color>";
 	inherit: false;
 }
