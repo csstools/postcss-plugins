@@ -1,5 +1,9 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`14.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1406) (patch)
+
 ### 4.0.17
 
 _June 2, 2025_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`14.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1406) (patch)
+
 ### 10.2.0
 
 _May 27, 2025_

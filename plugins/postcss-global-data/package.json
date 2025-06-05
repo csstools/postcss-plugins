@@ -54,7 +54,7 @@
 		"@csstools/postcss-tape": "*",
 		"open-props": "^1.7.15",
 		"postcss-custom-media": "^11.0.6",
-		"postcss-custom-properties": "^14.0.5"
+		"postcss-custom-properties": "^14.0.6"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
