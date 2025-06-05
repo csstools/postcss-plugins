@@ -56,6 +56,7 @@
 @property --csstools-function-argument-0---value {
 	syntax: "*";
 	inherit: false;
+	initial-value: ;
 }
 
 @property --csstools-function-body-0---value {
@@ -66,6 +67,7 @@
 @property --csstools-function-argument-1---value {
 	syntax: "*";
 	inherit: false;
+	initial-value: ;
 }
 
 @property --csstools-function-body-1---value {
@@ -76,6 +78,7 @@
 @property --csstools-function-argument-2---value {
 	syntax: "*";
 	inherit: false;
+	initial-value: ;
 }
 
 @property --csstools-function-body-2---value {
@@ -86,6 +89,7 @@
 @property --csstools-function-argument-3---color {
 	syntax: "<color>";
 	inherit: false;
+	initial-value: black;
 }
 
 @property --csstools-function-body-3---color {
@@ -96,6 +100,7 @@
 @property --csstools-function-argument-3---alpha {
 	syntax: "<number>";
 	inherit: false;
+	initial-value: 1;
 }
 
 @property --csstools-function-body-3---alpha {

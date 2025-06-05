@@ -5,6 +5,7 @@ import { FunctionNode, isFunctionNode, parseCommaSeparatedListOfComponentValues,
 import { isTokenFunction, tokenize, TokenType } from '@csstools/css-tokenizer';
 import type { ContainerWithChildren } from 'postcss/lib/container';
 import type { CustomFunction } from '@csstools/custom-function-parser';
+import { isProcessableDeclaration } from './is-processable-declaration';
 
 /** postcss-custom-functions plugin options */
 export type pluginOptions = {
@@ -96,7 +97,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							const parameterName = parameter.getName();
 							const parameterType = parameter.getArgumentType() || '*';
 
-							const argumentCustomProperty = atRule({
+							this.registrations.push(atRule({
 								name: 'property',
 								params: generateDashedIdent('function-argument', parameterName, this.id),
 								nodes: [
@@ -107,12 +108,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									this.property.clone({
 										prop: 'inherit',
 										value: "false",
+									}),
+									this.property.clone({
+										prop: 'initial-value',
+										value: parameter.getDefaultValue(),
 									})
 								],
 								source: this.property.source
-							});
-
-							this.registrations.push(argumentCustomProperty);
+							}));
 
 							const bodyCustomProperty = atRule({
 								name: 'property',
@@ -209,6 +212,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					const parent = decl.parent;
 					if (!parent) {
+						return;
+					}
+
+					if (!isProcessableDeclaration(decl)) {
 						return;
 					}
 
