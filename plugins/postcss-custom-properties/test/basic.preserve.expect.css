@@ -250,3 +250,7 @@ html {
 	order:  ;
 	color: rgb(calc(120) 130 140);
 }
+
+.breadcrumb-item + .breadcrumb-item::before {
+	content: "/" /* rtl: var(--bs-breadcrumb-divider, "/") */;
+}
