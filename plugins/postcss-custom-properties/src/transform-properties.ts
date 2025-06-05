@@ -23,7 +23,11 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 			return;
 		}
 
-		decl.cloneBefore({ value });
+		const clone = decl.cloneBefore({ value });
+
+		if (clone.raws?.value?.raw) {
+			clone.raws.value.raw = ''
+		}
 
 		if (!opts?.preserve) {
 			decl.remove();
