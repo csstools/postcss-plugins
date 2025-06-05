@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 14.0.6
+
+_June 5, 2025_
 
 - Fix infinite loop for comments that contain variables (e.g. `var(--foo) /* var(--bar) */`)
 
