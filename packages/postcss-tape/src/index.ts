@@ -39,7 +39,7 @@ import url from 'node:url';
 import { fileContentsOrEmptyString } from './file-contents-or-empty-string';
 import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 
-import type { AcceptedPlugin as AcceptedPluginOldestPostCSS } from 'postcss-8.4';
+import type { AcceptedPlugin as AcceptedPluginOldestPostCSS, Result as ResultOldestPostCSS } from 'postcss-8.4';
 import type { AtRule, Declaration, Rule } from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
 import type { TestCaseOptions } from './test-case-options';
@@ -176,6 +176,9 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 					const expected = await fileContentsOrEmptyString(expectFilePath);
 
 					let result: Result;
+					let resultFromOldestPostCSS: ResultOldestPostCSS | null = null;
+
+					const olderVersionAndCurrentVersionAreTheSame = postcss([noopPlugin()]).version === postcssOldestSupported([noopPlugin() as AcceptedPluginOldestPostCSS]).version;
 
 					try {
 						result = await postcss(plugins).process(input, {
@@ -186,6 +189,17 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 								annotation: false,
 							},
 						});
+
+						try {
+							resultFromOldestPostCSS = olderVersionAndCurrentVersionAreTheSame ? null : await postcssOldestSupported(plugins as Array<AcceptedPluginOldestPostCSS>).process(input, {
+								from: testFilePath,
+								to: resultFilePath,
+								map: {
+									inline: false,
+									annotation: false,
+								},
+							});
+						} catch { /* empty */ }
 					} catch (err) {
 						if (!(err instanceof Error)) {
 							throw err;
@@ -228,6 +242,24 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						);
 					}
 
+					// Run "after" when initial postcss run has completely.
+					if (testCaseOptions.after) {
+						await testCaseOptions.after();
+					}
+
+					const resultContents = await fileContentsOrEmptyString(resultFilePath);
+					let secondPassResult: Result | null = null;
+					try {
+						secondPassResult = await postcss([noopPlugin()]).process(resultContents, {
+							from: resultFilePath,
+							to: resultFilePath,
+							map: {
+								inline: false,
+								annotation: false,
+							},
+						});
+					} catch { /* empty */ }
+
 					await t2.test('has expected output', () => {
 						assert.deepEqual(resultString, expected);
 
@@ -240,40 +272,16 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						assert.ok(!result.map.toJSON().sources.includes('<no source>'), 'Sourcemap is broken. This is most likely a newly created PostCSS AST Node without a value for "source". See: https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes');
 					});
 
-					// Run "after" when initial postcss run has completely.
-					if (testCaseOptions.after) {
-						await testCaseOptions.after();
-					}
-
 					// Assert that the result can be passed back to PostCSS and still parses.
-					await t2.test('output is parsable with PostCSS', async () => {
-						const resultContents = await fileContentsOrEmptyString(resultFilePath);
-						const secondPassResult = await postcss([noopPlugin()]).process(resultContents, {
-							from: resultFilePath,
-							to: resultFilePath,
-							map: {
-								inline: false,
-								annotation: false,
-							},
-						});
-
-						assert.deepEqual(secondPassResult.warnings(), [], 'Unexpected warnings on second pass');
+					await t2.test('output is parsable with PostCSS', () => {
+						assert.deepEqual(secondPassResult?.warnings(), [], 'Unexpected warnings on second pass');
 					});
 
 					await t2.test(
 						'The oldest and current PostCSS version produce the same result',
-						{ skip: postcss([noopPlugin()]).version === postcssOldestSupported([noopPlugin() as AcceptedPluginOldestPostCSS]).version },
-						async () => {
-							const resultFromOldestPostCSS = await postcssOldestSupported(plugins as Array<AcceptedPluginOldestPostCSS>).process(input, {
-								from: testFilePath,
-								to: resultFilePath,
-								map: {
-									inline: false,
-									annotation: false,
-								},
-							});
-
-							assert.deepEqual(resultFromOldestPostCSS.css.toString(), resultString);
+						{ skip: olderVersionAndCurrentVersionAreTheSame },
+						() => {
+							assert.deepEqual(resultFromOldestPostCSS?.css?.toString(), resultString);
 						},
 					);
 				});
