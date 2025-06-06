@@ -238,7 +238,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/selector-resolve-nested!resolveNestedSelector:function(1)",
-          "docComment": "/**\n * Resolve a nested selector against a given parent selector.\n *\n * @param selector - The selector to resolve.\n *\n * @param parentSelector - The parent selector to resolve against.\n *\n * @returns The resolved selector.\n */\n",
+          "docComment": "/**\n * Resolve a nested selector against a given parent selector.\n *\n * @param selector - The selector to resolve.\n *\n * @param parentSelector - The parent selector to resolve against.\n *\n * @param options - Change how resolving happens.\n *\n * @returns The resolved selector.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -260,6 +260,15 @@
             },
             {
               "kind": "Content",
+              "text": ", options?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ResolveOptions",
+              "canonicalReference": "@csstools/selector-resolve-nested!ResolveOptions:interface"
+            },
+            {
+              "kind": "Content",
               "text": "): "
             },
             {
@@ -274,8 +283,8 @@
           ],
           "fileUrlPath": "dist/_types/resolve-nested-selector.d.ts",
           "returnTypeTokenRange": {
-            "startIndex": 5,
-            "endIndex": 6
+            "startIndex": 7,
+            "endIndex": 8
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -295,9 +304,62 @@
                 "endIndex": 4
               },
               "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "isOptional": true
             }
           ],
           "name": "resolveNestedSelector"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/selector-resolve-nested!ResolveOptions:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ResolveOptions "
+            }
+          ],
+          "fileUrlPath": "dist/_types/resolve-nested-selector.d.ts",
+          "releaseTag": "Public",
+          "name": "ResolveOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/selector-resolve-nested!ResolveOptions#ignoreImplicitNesting:member",
+              "docComment": "/**\n * If implicit `&` selectors should be prepended to the selector before resolving\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ignoreImplicitNesting: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "ignoreImplicitNesting",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         }
       ]
     }

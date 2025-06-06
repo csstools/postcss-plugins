@@ -3,20 +3,28 @@ import parser from 'postcss-selector-parser';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
 import { sourceFrom } from './source';
 
+export interface ResolveOptions {
+	/**
+	 * If implicit `&` selectors should be prepended to the selector before resolving
+	 */
+	ignoreImplicitNesting: boolean;
+}
+
 /**
  * Resolve a nested selector against a given parent selector.
  *
  * @param selector - The selector to resolve.
  * @param parentSelector - The parent selector to resolve against.
+ * @param options - Change how resolving happens.
  * @returns The resolved selector.
  */
-export function resolveNestedSelector(selector: Root, parentSelector: Root): Root {
+export function resolveNestedSelector(selector: Root, parentSelector: Root, options?: ResolveOptions): Root {
 	const result: Array<Selector> = [];
 
 	for (let x = 0; x < selector.nodes.length; x++) {
 		const selectorAST = selector.nodes[x].clone();
 
-		{
+		if (!options?.ignoreImplicitNesting) {
 			let isNestContaining = false;
 			selectorAST.walkNesting(() => {
 				isNestContaining = true;
