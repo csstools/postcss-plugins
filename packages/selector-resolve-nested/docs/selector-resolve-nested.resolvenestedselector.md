@@ -9,7 +9,7 @@ Resolve a nested selector against a given parent selector.
 **Signature:**
 
 ```typescript
-export declare function resolveNestedSelector(selector: Root, parentSelector: Root): Root;
+export declare function resolveNestedSelector(selector: Root, parentSelector: Root, options?: ResolveOptions): Root;
 ```
 
 ## Parameters
@@ -59,6 +59,22 @@ Root
 </td><td>
 
 The parent selector to resolve against.
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ResolveOptions](./selector-resolve-nested.resolveoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Change how resolving happens.
 
 
 </td></tr>

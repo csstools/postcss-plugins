@@ -50,12 +50,36 @@ Flatten a nested selector against a given parent selector.
 </td></tr>
 <tr><td>
 
-[resolveNestedSelector(selector, parentSelector)](./selector-resolve-nested.resolvenestedselector.md)
+[resolveNestedSelector(selector, parentSelector, options)](./selector-resolve-nested.resolvenestedselector.md)
 
 
 </td><td>
 
 Resolve a nested selector against a given parent selector.
+
+
+</td></tr>
+</tbody></table>
+
+## Interfaces
+
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ResolveOptions](./selector-resolve-nested.resolveoptions.md)
+
+
+</td><td>
 
 
 </td></tr>

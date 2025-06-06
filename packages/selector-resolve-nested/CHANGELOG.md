@@ -1,5 +1,9 @@
 # Changes to Selector Resolve Nested
 
+### Unreleased (minor)
+
+- Add `ignoreImplicitNesting` option to `resolveNestedSelector`
+
 ### 3.0.0
 
 _October 23, 2024_
