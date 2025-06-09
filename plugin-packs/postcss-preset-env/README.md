@@ -406,7 +406,7 @@ The `logical` option can hold an object which lets you specify direction of the 
 following features:
 
 - `logical-properties-and-values`: [PostCSS Logical](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
-- `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
+- `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-float-and-clear#readme)
 - `logical-resize`: [PostCSS Logical Resize](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme)
 - `logical-viewport-units`: [PostCSS Logical Viewport Units](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme)
 
