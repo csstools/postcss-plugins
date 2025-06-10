@@ -1,5 +1,3 @@
-import type { Pseudo } from 'postcss-selector-parser';
-
 import parser from 'postcss-selector-parser';
 
 // .a > :-csstools-matches(.b > .c)
