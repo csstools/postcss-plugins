@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 10.2.2
+
+_June 10, 2025_
 
 - Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#502) (patch)
 
