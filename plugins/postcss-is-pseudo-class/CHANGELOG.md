@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Add support for more complex selector patterns. `.a > :is(.b > .c)` -> `.a.b > .c`
+
 ### 5.0.1
 
 _October 23, 2024_
