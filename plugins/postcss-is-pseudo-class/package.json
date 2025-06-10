@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-is-pseudo-class",
 	"description": "A pseudo-class for matching elements in a selector list",
-	"version": "5.0.1",
+	"version": "5.0.2",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
