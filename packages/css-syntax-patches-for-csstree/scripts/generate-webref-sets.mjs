@@ -82,7 +82,7 @@ function maybe_override(spec_name, name, definition) {
 	}
 
 	if (override['syntax-b'] !== definition) {
-		throw new Error(`Override is obsolete: '${spec_name}' - '${name}'`);
+		throw new Error(`Override is obsolete: '${spec_name}' - '${name}': ${override['syntax-b']} !== ${definition}`);
 	}
 
 	return override['syntax-a'];

@@ -770,7 +770,7 @@
 	"continue": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | discard | -webkit-discard | overflow | paginate | fragments",
+		"syntax-a": "auto | discard | collapse | -webkit-legacy | overflow | paginate | fragments",
 		"comment": ""
 	},
 	"copy-into": {
@@ -1292,7 +1292,7 @@
 	"line-clamp": {
 		"type": "modified",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "none | <integer [1,∞]> || <'block-ellipsis'>",
+		"syntax-a": "none | [ <integer [1,∞]> || <'block-ellipsis'> ] -webkit-legacy?",
 		"comment": ""
 	},
 	"-webkit-line-clamp": {

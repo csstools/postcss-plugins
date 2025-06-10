@@ -714,7 +714,7 @@
 		"syntax": "none | [ fill | fill-opacity | stroke | stroke-opacity ]#"
 	},
 	"continue": {
-		"syntax": "auto | discard | -webkit-discard | overflow | paginate | fragments"
+		"syntax": "auto | discard | collapse | -webkit-legacy | overflow | paginate | fragments"
 	},
 	"-moz-control-character-visibility": {
 		"syntax": "visible | hidden"
@@ -1266,7 +1266,7 @@
 		"syntax": "auto | loose | normal | strict | anywhere"
 	},
 	"line-clamp": {
-		"syntax": "none | <integer [1,∞]> || <'block-ellipsis'>"
+		"syntax": "none | [ <integer [1,∞]> || <'block-ellipsis'> ] -webkit-legacy?"
 	},
 	"-webkit-line-clamp": {
 		"syntax": "none | <integer [1,∞]>"
