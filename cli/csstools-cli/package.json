@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/csstools-cli",
 	"description": "Transform CSS with any plugin from csstools/postcss-plugins",
-	"version": "4.0.18",
+	"version": "4.0.19",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
