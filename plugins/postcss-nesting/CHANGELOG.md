@@ -1,5 +1,9 @@
 # Changes to PostCSS Nesting
 
+### Unreleased (patch)
+
+- Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`3.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#310) (minor)
+
 ### 13.0.1
 
 _October 23, 2024_
