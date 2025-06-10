@@ -2092,8 +2092,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | discard | -webkit-discard | overflow | paginate | fragments",
-		"syntax-m": "auto | discard | -webkit-discard | overflow | paginate | fragments",
+		"syntax-a": "auto | discard | collapse | -webkit-legacy | overflow | paginate | fragments",
+		"syntax-m": "auto | discard | collapse | -webkit-legacy | overflow | paginate | fragments",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2867,7 +2867,7 @@
 		"comment": "",
 		"syntax-b": "<'top'>",
 		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-m": "<'top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2878,7 +2878,7 @@
 		"comment": "",
 		"syntax-b": "<'top'>",
 		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-m": "<'top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2889,7 +2889,7 @@
 		"comment": "",
 		"syntax-b": "<'top'>",
 		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-m": "<'top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2900,7 +2900,7 @@
 		"comment": "",
 		"syntax-b": "<'top'>",
 		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-m": "<'top'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3083,8 +3083,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "none | <integer [1,∞]> || <'block-ellipsis'>",
-		"syntax-m": "none | <integer [1,∞]> || <'block-ellipsis'>",
+		"syntax-a": "none | [ <integer [1,∞]> || <'block-ellipsis'> ] -webkit-legacy?",
+		"syntax-m": "none | [ <integer [1,∞]> || <'block-ellipsis'> ] -webkit-legacy?",
 		"tests": {
 			"passing": [],
 			"failing": []

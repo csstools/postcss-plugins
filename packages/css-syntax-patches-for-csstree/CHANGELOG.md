@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Update `@webref/css` to [`v6.22.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.22.0)
+
 ### 1.0.13
 
 _June 2, 2025_
