@@ -279,3 +279,48 @@ cartesianProduct([' ', '+', '>', '~'], [' ', '+', '>', '~'], [' ', '+', '>', '~'
 
 console.log(out.join(''));
 */
+
+.ignore :is(.b > .c) {
+	order: 065;
+}
+
+.ignore > :is(.b + .c) {
+	order: 066;
+}
+
+.ignore ~ :is(.b + .c) {
+	order: 067;
+}
+
+/* https: //github.com/csstools/postcss-plugins/issues/1625 */
+.a.b > .d, .a.c > .d {
+	order: 65;
+}
+
+.a.b:hover > .d, .a.c:hover > .d {
+	order: 66;
+}
+
+.ignore + .b > :is(.b > .c) {
+	order: 67;
+}
+
+.ignore::before > :is(.b > .c) {
+	order: 68;
+}
+
+.a.b + .d, .a.c + .d {
+	order: 75;
+}
+
+.a.b:hover + .d, .a.c:hover + .d {
+	order: 76;
+}
+
+.ignore + .b + :is(.b + .c) {
+	order: 77;
+}
+
+.ignore::before + :is(.b + .c) {
+	order: 78;
+}

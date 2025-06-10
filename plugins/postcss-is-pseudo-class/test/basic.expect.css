@@ -285,3 +285,7 @@ input:hover, input:focus, button:hover, button:focus {
 .a > div.b > .c {
 	color: green;
 }
+
+::before:is(.a > .b) {
+	color: green;
+}

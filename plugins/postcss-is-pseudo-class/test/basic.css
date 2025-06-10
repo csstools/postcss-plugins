@@ -181,3 +181,7 @@ header:is(.a .b) {
 div:is(.a > .b) > .c {
 	color: green;
 }
+
+::before:is(.a > .b) {
+	color: green;
+}
