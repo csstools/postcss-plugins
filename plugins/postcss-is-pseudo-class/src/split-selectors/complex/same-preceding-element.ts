@@ -75,6 +75,7 @@ export function samePrecedingElement(selector: parser.Container): boolean {
 	}
 
 	const before = selector.nodes.slice(0, combinatorIndex);
+	const after = selector.nodes.slice(isPseudoIndex + 1);
 
 	selector.each((node) => {
 		node.remove();
@@ -85,6 +86,10 @@ export function samePrecedingElement(selector: parser.Container): boolean {
 	});
 
 	isPseudo.nodes[0].nodes.forEach((node) => {
+		selector.append(node);
+	});
+
+	after.forEach((node) => {
 		selector.append(node);
 	});
 
