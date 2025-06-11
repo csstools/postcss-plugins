@@ -324,3 +324,8 @@ console.log(out.join(''));
 .ignore::before + :is(.b + .c) {
 	order: 78;
 }
+
+/* https: //github.com/csstools/postcss-plugins/issues/1631 */
+.c.a > .b .d::before {
+	order: 79;
+}
