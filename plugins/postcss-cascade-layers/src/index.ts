@@ -29,32 +29,31 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			let hasAnyLayer = false;
 
-			if (options.onRevertLayerKeyword || options.onImportLayerRule) {
-				root.walk((node) => {
-					if (node.type === 'decl') {
-						if (IS_REVERT_LAYER_REGEX.test(node.value)) {
-							node.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
-							return;
-						}
-
+			root.walk((node) => {
+				if (node.type === 'decl') {
+					if (options.onRevertLayerKeyword && IS_REVERT_LAYER_REGEX.test(node.value)) {
+						node.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
 						return;
 					}
 
-					if (node.type === 'atrule') {
-						if (IS_IMPORT_REGEX.test(node.name) && HAS_LAYER_REGEX.test(node.params)) {
-							node.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
-							return;
-						}
+					return;
+				}
 
-						if (IS_LAYER_REGEX.test(node.name)) {
-							hasAnyLayer = true;
-							return;
-						}
-
+				if (node.type === 'atrule') {
+					if (options.onImportLayerRule && IS_IMPORT_REGEX.test(node.name) && HAS_LAYER_REGEX.test(node.params)) {
+						node.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
 						return;
 					}
-				});
-			}
+
+					if (IS_LAYER_REGEX.test(node.name)) {
+						hasAnyLayer = true;
+						return;
+					}
+
+					return;
+				}
+			});
+
 
 			if (!hasAnyLayer) {
 				return;
