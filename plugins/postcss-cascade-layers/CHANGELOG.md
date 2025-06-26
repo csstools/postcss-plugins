@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Fix being unable to ignore warnings
+- Fix being unable to ignore all warning types simultaneously 
 
 ### 5.0.1
 
