@@ -1,5 +1,9 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Fix being unable to ignore all warning types simultaneously 
+
 ### 5.0.1
 
 _October 23, 2024_
