@@ -43,6 +43,7 @@ number \| string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [MediaCondition](./media-query-list-parser.mediacondition.md) \| undefined

@@ -43,6 +43,7 @@ number \| string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 ComponentValue \| Array&lt;ComponentValue&gt; \| undefined

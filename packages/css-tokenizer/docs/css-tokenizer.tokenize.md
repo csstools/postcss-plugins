@@ -68,6 +68,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;

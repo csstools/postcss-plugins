@@ -79,6 +79,7 @@ _(Optional)_ Change how resolving happens.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Root

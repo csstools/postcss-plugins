@@ -43,6 +43,7 @@ TokenIdent
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [MediaType](./media-query-list-parser.mediatype.md) \| false

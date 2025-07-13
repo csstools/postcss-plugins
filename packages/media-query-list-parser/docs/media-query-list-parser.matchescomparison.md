@@ -43,6 +43,7 @@ Array&lt;ComponentValue&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 false \| \[number, number\]

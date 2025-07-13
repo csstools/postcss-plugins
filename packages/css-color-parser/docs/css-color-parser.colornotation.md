@@ -285,3 +285,4 @@ XYZ, expressed through `color(xyz-d65 0 0 0)`
 
 </td></tr>
 </tbody></table>
+

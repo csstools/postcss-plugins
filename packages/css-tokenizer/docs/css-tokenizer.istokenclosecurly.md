@@ -45,6 +45,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [TokenCloseCurly](./css-tokenizer.tokenclosecurly.md)

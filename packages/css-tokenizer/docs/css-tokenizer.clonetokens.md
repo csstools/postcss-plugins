@@ -45,6 +45,7 @@ Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;

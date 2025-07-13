@@ -45,6 +45,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [TokenOpenSquare](./css-tokenizer.tokenopensquare.md)

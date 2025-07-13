@@ -62,6 +62,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [CustomMedia](./media-query-list-parser.custommedia.md) \| false

@@ -63,6 +63,7 @@ _(Optional)_ Whether to perform gamut mapping, defaults to `true`<!-- -->.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 FunctionNode

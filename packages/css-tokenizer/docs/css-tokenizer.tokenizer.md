@@ -71,6 +71,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 { nextToken: () =&gt; [CSSToken](./css-tokenizer.csstoken.md)<!-- -->; endOfFile: () =&gt; boolean; }
