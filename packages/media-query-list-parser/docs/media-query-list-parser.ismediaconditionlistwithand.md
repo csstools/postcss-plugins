@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [MediaConditionListWithAnd](./media-query-list-parser.mediaconditionlistwithand.md)

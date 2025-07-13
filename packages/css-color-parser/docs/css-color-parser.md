@@ -152,3 +152,4 @@ A color data object. It contains as much information as possible about the color
 
 </td></tr>
 </tbody></table>
+

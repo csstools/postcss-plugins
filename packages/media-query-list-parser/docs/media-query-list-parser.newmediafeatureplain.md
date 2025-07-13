@@ -57,6 +57,7 @@ Array&lt;CSSToken&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [MediaFeature](./media-query-list-parser.mediafeature.md)

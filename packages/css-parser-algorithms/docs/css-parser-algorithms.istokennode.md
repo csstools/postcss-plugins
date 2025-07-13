@@ -45,6 +45,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [TokenNode](./css-parser-algorithms.tokennode.md)

@@ -62,6 +62,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Array&lt;[MediaQuery](./media-query-list-parser.mediaquery.md)<!-- -->&gt;

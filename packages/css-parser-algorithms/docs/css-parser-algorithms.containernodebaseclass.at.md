@@ -45,6 +45,7 @@ number \| string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined

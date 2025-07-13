@@ -65,6 +65,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 { a: number; b: number; c: number; }

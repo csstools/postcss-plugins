@@ -47,6 +47,7 @@ The color function to be converted.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [ColorData](./css-color-parser.colordata.md) \| false

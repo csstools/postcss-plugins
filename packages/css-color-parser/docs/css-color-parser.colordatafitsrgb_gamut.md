@@ -47,6 +47,7 @@ The color data to be checked.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 boolean
