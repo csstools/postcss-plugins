@@ -6,6 +6,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 const tests = [
 	['color(srgb 0.81388 0.43646 0.57322)', 'rgb(208, 111, 146)'],
 	['color(display-p3 0.81388 0.43646 0.57322)', 'rgb(222, 105, 147)'],
+	['color(display-p3-linear 0.3081 0.014 0.0567)', 'rgb(165, 5, 66)'],
 	['color(srgb-linear 0.435 0.017 0.055)', 'rgb(176, 35, 66)'],
 	['color(xyz 0.21661 0.14602 0.59452)', 'rgb(118, 84, 205)'],
 	['color(xyz-d65 0.21661 0.14602 0.59452)', 'rgb(118, 84, 205)'],
@@ -42,6 +43,12 @@ const tests = [
 	['color(xyz-d50 0.5501693084815327 0.37536346388820246 0.6806345611398199)', 'rgb(229, 125, 245)'],
 	['color(xyz-d65 0.5600582450343325 0.37782875858447507 0.904570025128693)', 'rgb(229, 125, 245)'],
 	['color(xyz 0.5600582450343325 0.37782875858447507 0.904570025128693)', 'rgb(229, 125, 245)'],
+
+	// display-p3-linear
+	['color(display-p3-linear 30.81% 1.4% 5.67%)', 'rgb(165, 5, 66)'],
+	['color(from color(display-p3 0.591 0.123 0.264) display-p3-linear r g b)', 'rgb(165, 5, 66)'],
+	['color(from color(display-p3-linear 0.3081 0.014 0.0567) display-p3 r g b)', 'rgb(165, 5, 66)'],
+	['color(display-p3 0.591 0.123 0.264)', 'rgb(165, 5, 66)'],
 ];
 
 for (const test of tests) {

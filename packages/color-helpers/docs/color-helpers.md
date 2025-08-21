@@ -115,6 +115,15 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
+[lin\_P3\_to\_XYZ\_D50(x)](./color-helpers.lin_p3_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [lin\_P3\_to\_XYZ(rgb)](./color-helpers.lin_p3_to_xyz.md)
 
 
@@ -306,6 +315,15 @@ Given OKLab, convert to XYZ relative to D65
 <tr><td>
 
 [XYZ\_D50\_to\_LCH(x)](./color-helpers.xyz_d50_to_lch.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D50\_to\_lin\_P3(x)](./color-helpers.xyz_d50_to_lin_p3.md)
 
 
 </td><td>

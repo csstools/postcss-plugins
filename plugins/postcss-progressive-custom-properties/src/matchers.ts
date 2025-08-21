@@ -1,8 +1,41 @@
 export const matchers = [
 	{
+		"supports": "color-mix(in display-p3-linear, red, blue)",
+		"property": "color",
+		"sniff": "color-mix(",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "in"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "display-p3-linear"
+					},
+					{
+						"type": "div",
+						"value": ","
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				],
+				"unclosed": true
+			}
+		]
+	},
+	{
 		"supports": "color-mix(in lch, red, blue)",
 		"property": "color",
-		"sniff": "color-mix",
+		"sniff": "color-mix(",
 		"matchers": [
 			{
 				"type": "function",
@@ -385,7 +418,7 @@ export const matchers = [
 	{
 		"supports": "color-mix(in lch, red)",
 		"property": "color",
-		"sniff": "color-mix",
+		"sniff": "color-mix(",
 		"matchers": [
 			{
 				"type": "function",
@@ -1835,7 +1868,7 @@ export const matchers = [
 	{
 		"supports": "color(display-p3 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -1912,7 +1945,7 @@ export const matchers = [
 	{
 		"supports": "color(display-p3 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -1989,7 +2022,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2066,7 +2099,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2143,7 +2176,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2220,7 +2253,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2297,7 +2330,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2374,7 +2407,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2451,7 +2484,7 @@ export const matchers = [
 	{
 		"supports": "color(xyz 0 0 0%)",
 		"property": "color",
-		"sniff": "color",
+		"sniff": "color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2491,6 +2524,83 @@ export const matchers = [
 					{
 						"type": "word",
 						"value": "xyz"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": "/"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"supports": "color(display-p3-linear 0 0 0)",
+		"property": "color",
+		"sniff": "color(",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "color",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "display-p3-linear"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "color",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "display-p3-linear"
 					},
 					{
 						"type": "space"
@@ -2528,7 +2638,7 @@ export const matchers = [
 	{
 		"supports": "hsl(0, 0%, 0%)",
 		"property": "color",
-		"sniff": "hsl",
+		"sniff": "hsl(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2569,7 +2679,7 @@ export const matchers = [
 	{
 		"supports": "hsl(0 0% 0% / 0)",
 		"property": "color",
-		"sniff": "hsl",
+		"sniff": "hsl(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2632,7 +2742,7 @@ export const matchers = [
 	{
 		"supports": "hsla(0 0% 0% / 0)",
 		"property": "color",
-		"sniff": "hsla",
+		"sniff": "hsla(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2671,7 +2781,7 @@ export const matchers = [
 	{
 		"supports": "hwb(0 0% 0%)",
 		"property": "color",
-		"sniff": "hwb",
+		"sniff": "hwb(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2734,7 +2844,7 @@ export const matchers = [
 	{
 		"supports": "lab(0% 0 0%)",
 		"property": "color",
-		"sniff": "lab",
+		"sniff": "lab(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2797,7 +2907,7 @@ export const matchers = [
 	{
 		"supports": "lab(0% 0 0%)",
 		"property": "color",
-		"sniff": "lch",
+		"sniff": "lch(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2860,7 +2970,7 @@ export const matchers = [
 	{
 		"supports": "oklab(0% 0 0%)",
 		"property": "color",
-		"sniff": "oklab",
+		"sniff": "oklab(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2923,7 +3033,7 @@ export const matchers = [
 	{
 		"supports": "oklab(0% 0 0%)",
 		"property": "color",
-		"sniff": "oklch",
+		"sniff": "oklch(",
 		"matchers": [
 			{
 				"type": "function",
@@ -2986,7 +3096,7 @@ export const matchers = [
 	{
 		"supports": "rgb(0, 0, 0, 0)",
 		"property": "color",
-		"sniff": "rgb",
+		"sniff": "rgb(",
 		"matchers": [
 			{
 				"type": "function",
@@ -3027,7 +3137,7 @@ export const matchers = [
 	{
 		"supports": "rgb(0 0 0 / 0)",
 		"property": "color",
-		"sniff": "rgb",
+		"sniff": "rgb(",
 		"matchers": [
 			{
 				"type": "function",
@@ -3090,7 +3200,7 @@ export const matchers = [
 	{
 		"supports": "rgba(0 0 0 / 0)",
 		"property": "color",
-		"sniff": "rgba",
+		"sniff": "rgba(",
 		"matchers": [
 			{
 				"type": "function",
@@ -3129,7 +3239,7 @@ export const matchers = [
 	{
 		"supports": "light-dark(red, red)",
 		"property": "color",
-		"sniff": "light-dark",
+		"sniff": "light-dark(",
 		"matchers": [
 			{
 				"type": "function",
@@ -3154,7 +3264,7 @@ export const matchers = [
 	{
 		"supports": "contrast-color(red)",
 		"property": "color",
-		"sniff": "contrast-color",
+		"sniff": "contrast-color(",
 		"matchers": [
 			{
 				"type": "function",
@@ -3170,6 +3280,55 @@ export const matchers = [
 				"type": "function",
 				"value": "contrast-color",
 				"nodes": [
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"supports": "alpha(from red / 1)",
+		"property": "color",
+		"sniff": "alpha(",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "alpha",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "from"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			},
+			{
+				"type": "function",
+				"value": "alpha",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "from"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "div",
+						"value": "/"
+					},
 					{
 						"type": "word",
 						"isVariable": true

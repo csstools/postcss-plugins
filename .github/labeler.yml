@@ -95,6 +95,12 @@
       - plugins/postcss-color-function/**
       - experimental/postcss-color-function/**
 
+"plugins/postcss-color-function-display-p3-linear":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-function-display-p3-linear/**
+      - experimental/postcss-color-function-display-p3-linear/**
+
 "plugins/postcss-color-functional-notation":
   - changed-files:
     - any-glob-to-any-file:

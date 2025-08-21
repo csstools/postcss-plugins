@@ -27,6 +27,7 @@ export default [
 	'relative-color-syntax',
 	'lab-function',
 	'oklab-function',
+	'color-function-display-p3-linear',
 	'color-function',
 	'hwb-function',
 	'color-functional-notation',

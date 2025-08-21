@@ -297,6 +297,7 @@
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: color(display-p3 0.34919 0.34919 0.34919);
 }
 
 @media (color-gamut: p3) {
@@ -632,17 +633,17 @@
 
 .random {
 	color: rgb(
-		240,
-		100,
-		235
+		80,
+		185,
+		250
 	);
 
-	border-color: rgb(49, 29, 0);
+	border-color: rgb(0, 29, 2);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0.18785 0.11205 0);
+	border-color: color(display-p3 0.00863 0.1164 0);
 }
 }

@@ -87,6 +87,20 @@
 	color-7: color(display-p3 0.81388 0.43646 foo);
 }
 
+.test-display-p3-linear {
+	color-1: rgb(165, 5, 66);
+	color-1: color(display-p3-linear 0.3081 0.014 0.0567);
+	color-2: rgba(165, 5, 66, 0.3);
+	color-2: color(display-p3-linear 0.3081 0.014 0.0567 / 0.3);
+	--color-3: rgba(165, 5, 66, 0.3);
+}
+
+@supports (color: color(display-p3-linear 0 0 0)) {
+.test-display-p3-linear {
+	--color-3: color(display-p3-linear 0.3081 0.014 0.0567 / 0.3);
+}
+}
+
 .test-linear-srgb {
 	color-1: rgb(176, 35, 66);
 	color-1: color(srgb 0.691 0.139 0.259);

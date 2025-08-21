@@ -8,6 +8,7 @@ export declare type pluginOptions = {
     enableProgressiveCustomProperties?: boolean;
 };
 
+/** Transform the color() function in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;
 

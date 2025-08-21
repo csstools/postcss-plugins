@@ -75,7 +75,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform the contrast-color() function in CSS. */
+/** Transform the contrast-color() function in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,

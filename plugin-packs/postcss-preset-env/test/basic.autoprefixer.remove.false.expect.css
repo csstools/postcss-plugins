@@ -429,6 +429,7 @@
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: rgb(89, 89, 89);
 }
 
 .oklab {
@@ -763,17 +764,17 @@
 
 .random {
 	color: rgb(
-		240,
-		100,
-		235
+		80,
+		185,
+		250
 	);
 
-	border-color: rgb(49, 29, 0);
+	border-color: rgb(0, 29, 2);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0.18785 0.11205 0);
+	border-color: color(display-p3 0.00863 0.1164 0);
 }
 }

@@ -142,6 +142,22 @@ LCH, expressed through `lch(0 0% 0deg)`
 </td></tr>
 <tr><td>
 
+Linear\_Display\_P3
+
+
+</td><td>
+
+`"display-p3-linear"`
+
+
+</td><td>
+
+Display P3, expressed through `color(display-p3-linear 0 0 0)`
+
+
+</td></tr>
+<tr><td>
+
 Linear\_sRGB
 
 

@@ -3,6 +3,8 @@ export enum ColorNotation {
 	A98_RGB = 'a98-rgb',
 	/** Display P3, expressed through `color(display-p3 0 0 0)` */
 	Display_P3 = 'display-p3',
+	/** Display P3, expressed through `color(display-p3-linear 0 0 0)` */
+	Linear_Display_P3 = 'display-p3-linear',
 	/** Hex, expressed through `#000` */
 	HEX = 'hex',
 	/** HSL, expressed through `hsl(0 0% 0%)` */

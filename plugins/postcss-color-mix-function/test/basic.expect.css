@@ -177,3 +177,10 @@
 .ignore-zero-percentage {
 	color: color-mix(in srgb, blue 0%, yellow 0%);
 }
+
+.display-p3-linear {
+	color-1: rgb(128, 128, 168);
+	color-2: rgb(188, 188, 188);
+	color-3: rgb(188, 164, 149);
+	color-4: rgb(0, 205, 0);
+}

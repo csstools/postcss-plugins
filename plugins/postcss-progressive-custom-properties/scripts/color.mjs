@@ -8,7 +8,7 @@ export const colorMatchers = [
 		return {
 			'supports': 'color(display-p3 0 0 0%)',
 			'property': 'color',
-			'sniff': 'color',
+			'sniff': 'color(',
 			'matchers': [
 				matcherForValue(`color(${colorSpace} $1 $2 $3)`),
 				matcherForValue(`color(${colorSpace} $1 $2 $3 / $4)`),
@@ -27,7 +27,20 @@ export const colorMatchers = [
 		return {
 			'supports': 'color(xyz 0 0 0%)',
 			'property': 'color',
-			'sniff': 'color',
+			'sniff': 'color(',
+			'matchers': [
+				matcherForValue(`color(${colorSpace} $1 $2 $3)`),
+				matcherForValue(`color(${colorSpace} $1 $2 $3 / $4)`),
+			],
+		};
+	})),
+	...([
+		'display-p3-linear',
+	].map((colorSpace) => {
+		return {
+			'supports': 'color(display-p3-linear 0 0 0)',
+			'property': 'color',
+			'sniff': 'color(',
 			'matchers': [
 				matcherForValue(`color(${colorSpace} $1 $2 $3)`),
 				matcherForValue(`color(${colorSpace} $1 $2 $3 / $4)`),
@@ -40,7 +53,7 @@ export const hslMatchers = [
 	{
 		'supports': 'hsl(0, 0%, 0%)',
 		'property': 'color',
-		'sniff': 'hsl',
+		'sniff': 'hsl(',
 		'matchers': [
 			matcherForValue('hsl($1,$2,$3,$4)'),
 		],
@@ -48,7 +61,7 @@ export const hslMatchers = [
 	{
 		'supports': 'hsl(0 0% 0% / 0)',
 		'property': 'color',
-		'sniff': 'hsl',
+		'sniff': 'hsl(',
 		'matchers': [
 			matcherForValue('hsl($1 $2 $3)'),
 			matcherForValue('hsl($1 $2 $3 / $4)'),
@@ -57,7 +70,7 @@ export const hslMatchers = [
 	{
 		'supports': 'hsla(0 0% 0% / 0)',
 		'property': 'color',
-		'sniff': 'hsla',
+		'sniff': 'hsla(',
 		'matchers': [
 			matcherForValue('hsla($1 $2 $3 / $4)'),
 		],
@@ -68,7 +81,7 @@ export const hwbMatchers = [
 	{
 		'supports': 'hwb(0 0% 0%)',
 		'property': 'color',
-		'sniff': 'hwb',
+		'sniff': 'hwb(',
 		'matchers': [
 			matcherForValue('hwb($1 $2 $3)'),
 			matcherForValue('hwb($1 $2 $3 / $4)'),
@@ -80,7 +93,7 @@ export const labMatchers = [
 	{
 		'supports': 'lab(0% 0 0%)',
 		'property': 'color',
-		'sniff': 'lab',
+		'sniff': 'lab(',
 		'matchers': [
 			matcherForValue('lab($1 $2 $3)'),
 			matcherForValue('lab($1 $2 $3 / $4)'),
@@ -92,7 +105,7 @@ export const lchMatchers = [
 	{
 		'supports': 'lab(0% 0 0%)',
 		'property': 'color',
-		'sniff': 'lch',
+		'sniff': 'lch(',
 		'matchers': [
 			matcherForValue('lch($1 $2 $3)'),
 			matcherForValue('lch($1 $2 $3 / $4)'),
@@ -104,7 +117,7 @@ export const oklabMatchers = [
 	{
 		'supports': 'oklab(0% 0 0%)',
 		'property': 'color',
-		'sniff': 'oklab',
+		'sniff': 'oklab(',
 		'matchers': [
 			matcherForValue('oklab($1 $2 $3)'),
 			matcherForValue('oklab($1 $2 $3 / $4)'),
@@ -116,7 +129,7 @@ export const oklchMatchers = [
 	{
 		'supports': 'oklab(0% 0 0%)',
 		'property': 'color',
-		'sniff': 'oklch',
+		'sniff': 'oklch(',
 		'matchers': [
 			matcherForValue('oklch($1 $2 $3)'),
 			matcherForValue('oklch($1 $2 $3 / $4)'),
@@ -128,7 +141,7 @@ export const rgbMatchers = [
 	{
 		'supports': 'rgb(0, 0, 0, 0)',
 		'property': 'color',
-		'sniff': 'rgb',
+		'sniff': 'rgb(',
 		'matchers': [
 			matcherForValue('rgb($1,$2,$3,$4)'),
 		],
@@ -136,7 +149,7 @@ export const rgbMatchers = [
 	{
 		'supports': 'rgb(0 0 0 / 0)',
 		'property': 'color',
-		'sniff': 'rgb',
+		'sniff': 'rgb(',
 		'matchers': [
 			matcherForValue('rgb($1 $2 $3)'),
 			matcherForValue('rgb($1 $2 $3 / $4)'),
@@ -145,9 +158,22 @@ export const rgbMatchers = [
 	{
 		'supports': 'rgba(0 0 0 / 0)',
 		'property': 'color',
-		'sniff': 'rgba',
+		'sniff': 'rgba(',
 		'matchers': [
 			matcherForValue('rgba($1 $2 $3 / $4)'),
 		],
 	},
 ];
+
+export const alphaMatchers = [
+	{
+		'supports': 'alpha(from red / 1)',
+		'property': 'color',
+		'sniff': 'alpha(',
+		'matchers': [
+			matcherForValue('alpha(from $1)'),
+			matcherForValue('alpha(from $1 / $2)'),
+		],
+	},
+];
+

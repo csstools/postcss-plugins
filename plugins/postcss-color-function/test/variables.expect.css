@@ -1,6 +1,6 @@
 :root {
 	--one: rgb(164, 49, 43);
-	--one-a50: rgb(164, 49, 43);
+	--one-a50: rgba(164, 49, 43, 0.5);
 
 	--opacity-50: 0.5;
 	--one-a50-var: rgba(164, 49, 43, var(--opacity-50));

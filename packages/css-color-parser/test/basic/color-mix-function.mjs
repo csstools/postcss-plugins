@@ -68,6 +68,9 @@ const tests = [
 	['color-mix(in srgb, color(xyz 1 none 0) 30%, rgb(none 255 128))', 'rgb(255, 255, 255)'],
 
 	['color-mix(in oklab, #09232c, white 50%)', 'rgb(123, 137, 142)'],
+	['color-mix(#09232c, white 50%)', 'rgb(123, 137, 142)'],
+	['color-mix(in oklab, red, white 50%)', 'rgb(255, 168, 155)'],
+	['color-mix(red, white 50%)', 'rgb(255, 168, 155)'],
 
 	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(0deg 50% 50%)', canonicalize('hsl(225deg 50% 50%)')],
 	['color-mix(in hsl longer hue, hsl(90deg 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(270deg 50% 50%)')],
@@ -124,6 +127,9 @@ const tests = [
 	['color-mix(in srgb, red, lime, blue, maroon, green, navy, cyan, magenta, yellow)', canonicalize('rgb(99, 99, 99)')], // multiple args
 	['color-mix(in srgb, cyan 50%, magenta 50%, yellow 50%)', canonicalize('rgb(170, 170, 170)')], // multiple args
 	['color-mix(in srgb, cyan 25%, magenta 25%, yellow 25%)', canonicalize('rgba(170, 170, 170, 0.75)')], // multiple args
+
+	['color-mix(in display-p3-linear, red, red)', canonicalize('red')],
+	['color-mix(in display-p3-linear, color(display-p3-linear 0.3081 0.014 0.0567), color(display-p3-linear 0.3081 0.014 0.0567))', canonicalize('color(display-p3-linear 0.3081 0.014 0.0567)')],
 
 	['color-mix(in oklab, red,)', ''],
 	['color-mix(in oklab, red 5%,)', ''],

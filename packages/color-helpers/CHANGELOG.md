@@ -1,5 +1,10 @@
 # Changes to Color Helpers
 
+### Unreleased (minor)
+
+- Add `lin_P3_to_XYZ_D50`
+- Add `XYZ_D50_to_lin_P3`
+
 ### 5.0.2
 
 _February 23, 2025_

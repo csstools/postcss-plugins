@@ -3,7 +3,7 @@ import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from './color-notation';
 import type { TokenNumber} from '@csstools/css-tokenizer';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { HSL_to_XYZ_D50, HWB_to_XYZ_D50, LCH_to_XYZ_D50, Lab_to_XYZ_D50, OKLCH_to_XYZ_D50, OKLab_to_XYZ_D50, P3_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D50, XYZ_D50_to_HSL, XYZ_D50_to_HWB, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_OKLCH, XYZ_D50_to_OKLab, XYZ_D50_to_P3, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D50_to_a98_RGB, XYZ_D50_to_lin_sRGB, XYZ_D50_to_rec_2020, XYZ_D50_to_sRGB, XYZ_D65_to_XYZ_D50, a98_RGB_to_XYZ_D50, lin_sRGB_to_XYZ_D50, rec_2020_to_XYZ_D50, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
+import { HSL_to_XYZ_D50, HWB_to_XYZ_D50, LCH_to_XYZ_D50, Lab_to_XYZ_D50, OKLCH_to_XYZ_D50, OKLab_to_XYZ_D50, P3_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D50, XYZ_D50_to_HSL, XYZ_D50_to_HWB, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_OKLCH, XYZ_D50_to_OKLab, XYZ_D50_to_P3, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D50_to_a98_RGB, XYZ_D50_to_lin_P3, XYZ_D50_to_lin_sRGB, XYZ_D50_to_rec_2020, XYZ_D50_to_sRGB, XYZ_D65_to_XYZ_D50, a98_RGB_to_XYZ_D50, lin_P3_to_XYZ_D50, lin_sRGB_to_XYZ_D50, rec_2020_to_XYZ_D50, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
 
 /**
  * A color data object.
@@ -78,6 +78,8 @@ export enum SyntaxFlag {
 	ColorMixVariadic = 'color-mix-variadic',
 	/** Is a contrasting color, e.g. `contrast-color()` */
 	ContrastColor = 'contrast-color',
+	/** Is a relative alpha syntax `alpha(from red / 0.5)` */
+	RelativeAlphaSyntax = 'relative-alpha-syntax',
 	/** Is an experimental color syntax */
 	Experimental = 'experimental',
 }
@@ -103,6 +105,12 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D50,
 				channels: P3_to_XYZ_D50(convertNaNToZero(colorData.channels)),
+			};
+		case ColorNotation.Linear_Display_P3:
+			return {
+				...colorData,
+				colorNotation: ColorNotation.XYZ_D50,
+				channels: lin_P3_to_XYZ_D50(convertNaNToZero(colorData.channels)),
 			};
 		case ColorNotation.Rec2020:
 			return {
@@ -178,6 +186,7 @@ export function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 const predefinedRGB_or_XYZ_Spaces = new Set([
 	ColorNotation.A98_RGB,
 	ColorNotation.Display_P3,
+	ColorNotation.Linear_Display_P3,
 	ColorNotation.HEX,
 	ColorNotation.Linear_sRGB,
 	ColorNotation.ProPhoto_RGB,
@@ -214,6 +223,10 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.Display_P3:
 				outputColorData.colorNotation = ColorNotation.Display_P3;
 				outputColorData.channels = XYZ_D50_to_P3(xyzColorData.channels);
+				break;
+			case ColorNotation.Linear_Display_P3:
+				outputColorData.colorNotation = ColorNotation.Linear_Display_P3;
+				outputColorData.channels = XYZ_D50_to_lin_P3(xyzColorData.channels);
 				break;
 			case ColorNotation.Rec2020:
 				outputColorData.colorNotation = ColorNotation.Rec2020;
@@ -511,6 +524,7 @@ export function normalizeRelativeColorDataChannels(x: ColorData): Map<string, To
 		case ColorNotation.sRGB:
 		case ColorNotation.A98_RGB:
 		case ColorNotation.Display_P3:
+		case ColorNotation.Linear_Display_P3:
 		case ColorNotation.Rec2020:
 		case ColorNotation.Linear_sRGB:
 		case ColorNotation.ProPhoto_RGB:

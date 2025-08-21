@@ -72,6 +72,7 @@ body:
         - PostCSS Browser Comments
         - PostCSS Cascade Layers
         - PostCSS Color Function
+        - PostCSS Color Function Display P3 Linear
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
         - PostCSS Color Mix Function

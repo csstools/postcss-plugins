@@ -431,6 +431,7 @@
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: rgb(89, 89, 89);
 }
 
 .oklab {
@@ -714,13 +715,13 @@
 }
 
 .sign {
-	order: sign(10px);
-	z-index: sign(-10px);
+	order: 1;
+	z-index: -1;
 }
 
 .abs {
-	order: abs(10px);
-	z-index: abs(-10px);
+	order: 10px;
+	z-index: 10px;
 }
 
 .random {

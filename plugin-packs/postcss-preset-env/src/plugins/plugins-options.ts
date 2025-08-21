@@ -6,6 +6,7 @@ import type { pluginOptions as postcssCascadeLayersOptions } from '@csstools/pos
 import type { pluginOptions as postcssAttributeCaseInsensitiveOptions } from 'postcss-attribute-case-insensitive';
 import type { postcssClampOptions } from '../types/postcss-clamp/plugin-options';
 import type { pluginOptions as postcssColorFunctionOptions } from '@csstools/postcss-color-function';
+import type { pluginOptions as postcssColorFunctionDisplayP3LinearOptions } from '@csstools/postcss-color-function-display-p3-linear';
 import type { pluginOptions as postcssColorFunctionalNotationOptions } from 'postcss-color-functional-notation';
 import type { pluginOptions as postcssColorMixFunctionOptions } from '@csstools/postcss-color-mix-function';
 import type { pluginOptions as postcssColorMixVariadicFunctionArgumentsOptions } from '@csstools/postcss-color-mix-variadic-function-arguments';
@@ -79,6 +80,8 @@ export type pluginsOptions = {
 	'clamp'?: subPluginOptions<postcssClampOptions>
 	/** plugin options for "@csstools/postcss-color-function" */
 	'color-function'?: subPluginOptions<postcssColorFunctionOptions>
+	/** plugin options for "@csstools/postcss-color-function-display-p3-linear" */
+	'color-function-display-p3-linear'?: subPluginOptions<postcssColorFunctionDisplayP3LinearOptions>
 	/** plugin options for "postcss-color-functional-notation" */
 	'color-functional-notation'?: subPluginOptions<postcssColorFunctionalNotationOptions>
 	/** plugin options for "@csstools/postcss-color-mix-function" */
