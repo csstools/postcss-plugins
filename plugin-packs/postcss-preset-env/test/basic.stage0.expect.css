@@ -176,8 +176,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	font-stretch: normal;
 	line-height: normal;
 	height: auto;
-	-webkit-hyphens: none;
-	        hyphens: none;
+	hyphens: none;
 	left: auto;
 	letter-spacing: normal;
 	list-style: disc outside none;
