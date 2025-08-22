@@ -71,6 +71,12 @@
       - plugins/css-prefers-color-scheme/**
       - experimental/css-prefers-color-scheme/**
 
+"plugins/postcss-alpha-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-alpha-function/**
+      - experimental/postcss-alpha-function/**
+
 "plugins/postcss-attribute-case-insensitive":
   - changed-files:
     - any-glob-to-any-file:

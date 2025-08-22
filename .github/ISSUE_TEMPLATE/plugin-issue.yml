@@ -65,6 +65,7 @@ body:
         - CSS Blank Pseudo
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
+        - PostCSS Alpha Function
         - PostCSS Attribute Case Insensitive
         - PostCSS Browser Comments
         - PostCSS Cascade Layers
