@@ -48,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/color-helpers": "^5.0.2",
+		"@csstools/color-helpers": "^5.1.0",
 		"@csstools/css-calc": "^2.1.4"
 	},
 	"peerDependencies": {
