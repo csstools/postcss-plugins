@@ -2,6 +2,14 @@ import { matcherForValue } from './matcher-for-value.mjs';
 
 export const relativeColorSyntaxMatches = [
 	{
+		'supports': 'color(from red display-p3-linear r g b)',
+		'property': 'color',
+		'sniff': 'display-p3-linear',
+		'matchers': [
+			matcherForValue('color(from $a display-p3-linear _z)'),
+		],
+	},
+	{
 		'supports': 'lab(from red l 1 1% / calc(alpha + 0.1))',
 		'property': 'color',
 		'sniff': 'from ',

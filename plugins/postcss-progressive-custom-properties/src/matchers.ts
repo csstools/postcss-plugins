@@ -1005,6 +1005,61 @@ export const matchers = [
 		]
 	},
 	{
+		"supports": "color-mix(red, blue)",
+		"property": "color",
+		"sniff": "color-mix(",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "color-mix",
+				"nodes": [
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"supports": "color(from red display-p3-linear r g b)",
+		"property": "color",
+		"sniff": "display-p3-linear",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "color",
+				"nodes": [
+					{
+						"type": "word",
+						"value": "from"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"isVariable": true
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"value": "display-p3-linear"
+					},
+					{
+						"type": "space"
+					},
+					{
+						"type": "word",
+						"anyRemainingArguments": true
+					}
+				]
+			}
+		]
+	},
+	{
 		"supports": "lab(from red l 1 1% / calc(alpha + 0.1))",
 		"property": "color",
 		"sniff": "from ",

@@ -157,6 +157,10 @@
 	--color-mix-4: color-mix(in srgb, red);
 	--color-mix-5: purple;
 	--color-mix-5: color-mix(in display-p3-linear, purple, pink);
+	--color-mix-6: purple;
+	--color-mix-6: color-mix(purple, pink);
+	--color-mix-7: purple;
+	--color-mix-7: color-mix(red 10%, purple 20%, pink 30%);
 }
 
 :root {
@@ -184,6 +188,8 @@
 	--color-rcs-11: rgb(from blue r g b / alpha);
 	--color-rcs-12: green;
 	--color-rcs-12: hsl(from blue h s l / alpha);
+	--color-rcs-13: green;
+	--color-rcs-13: color(from red display-p3-linear r g b);
 }
 
 :root {

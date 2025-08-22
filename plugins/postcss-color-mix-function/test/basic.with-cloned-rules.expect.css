@@ -263,3 +263,8 @@
 	color-4: rgb(0, 205, 0);
 	color-4: color-mix(in display-p3-linear, lime, green);
 }
+
+.default-interpolation-space {
+	color: rgb(123, 137, 142);
+	color: color-mix(#09232c, white 50%);
+}

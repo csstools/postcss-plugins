@@ -178,3 +178,7 @@
 	color-3: color-mix(in display-p3-linear, pink, green);
 	color-4: color-mix(in display-p3-linear, lime, green);
 }
+
+.default-interpolation-space {
+	color: color-mix(#09232c, white 50%);
+}

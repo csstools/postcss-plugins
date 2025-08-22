@@ -47,4 +47,12 @@ export const colorMixMatchers = [
 			matcherForValue('color-mix(in $a $b hue,$1 $2,$3 $4, _z)'),
 		],
 	},
+	{
+		'supports': 'color-mix(red, blue)',
+		'property': 'color',
+		'sniff': 'color-mix(',
+		'matchers': [
+			matcherForValue('color-mix(_z)'),
+		],
+	},
 ];
