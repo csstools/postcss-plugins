@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 3.1.0
+
+_August 22, 2025_
 
 - Add support for `display-p3-linear` in `color(display-p3-linear 0.3081 0.014 0.0567)`
 - Add support for `display-p3-linear` in `color-mix(in display-p3-linear, red, blue)`
