@@ -1,6 +1,8 @@
 # Changes to PostCSS Tape
 
-### Unreleased (patch)
+### 6.0.1
+
+_August 22, 2025_
 
 - Add support for Node 24
 
