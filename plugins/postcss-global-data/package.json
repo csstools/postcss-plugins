@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-global-data",
 	"description": "PostCSS plugin to define global data that will be injected into PostCSS for use in other plugins.",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

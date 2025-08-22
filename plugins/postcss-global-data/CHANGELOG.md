@@ -1,6 +1,8 @@
 # Changes to PostCSS global-data
 
-### Unreleased (minor)
+### 3.1.0
+
+_August 22, 2025_
 
 - Add `prepend` plugin option
 - Add `lateRemover` plugin option
