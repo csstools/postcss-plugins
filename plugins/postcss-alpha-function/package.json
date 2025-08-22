@@ -53,8 +53,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*",
-		"postcss-lab-function": "*"
+		"@csstools/postcss-tape": "*"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
