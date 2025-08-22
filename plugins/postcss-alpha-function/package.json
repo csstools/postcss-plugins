@@ -72,10 +72,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"alpha",
 		"color",
 		"css",
 		"design",
-		"alpha",
 		"postcss",
 		"postcss-plugin"
 	],
