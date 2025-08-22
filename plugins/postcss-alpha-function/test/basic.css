@@ -1,0 +1,78 @@
+.test-hex {
+	color-1: alpha(from #dddd / 0.5);
+	color-2: alpha(from #dddd / alpha);
+	color-3: alpha(from #dddd / calc(alpha / 2));
+}
+
+.test-hex-ignore {
+	color-1: alpha(from #hhh / calc(alpha / 2));
+}
+
+.test-var-ignore {
+	color-1: alpha(from var(--foo) / calc(alpha / 2));
+}
+
+.test-keyword {
+	color-1: alpha(from purple / calc(alpha / 2));
+}
+
+.test-keyword-ignore {
+	color-1: alpha(from not-a-color / calc(alpha / 2));
+}
+
+.test-rgb {
+	color-1: alpha(from rgb(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from rgb(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-rgba {
+	color-1: alpha(from rgba(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from rgba(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-hsl {
+	color-1: alpha(from hsl(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from hsl(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-hsla {
+	color-1: alpha(from hsla(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from hsla(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-hwb {
+	color-1: alpha(from hwb(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from hwb(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-lch {
+	color-1: alpha(from lch(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from lch(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-oklch {
+	color-1: alpha(from oklch(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from oklch(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-lab {
+	color-1: alpha(from lab(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from lab(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-oklab {
+	color-1: alpha(from oklab(2 1 0) / calc(alpha / 2));
+	color-2: alpha(from oklab(var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-color {
+	color-1: alpha(from color(srgb 0.5 1 0) / calc(alpha / 2));
+	color-2: alpha(from color(srgb var(--foo) 1 0) / calc(alpha / 2));
+	color-3: alpha(from color(xyz 0.5 1 0) / calc(alpha / 2));
+	color-4: alpha(from color(xyz var(--foo) 1 0) / calc(alpha / 2));
+}
+
+.test-color-ignore {
+	color-1: alpha(from color(srgb srgb-linear 0.5 1 0) / calc(alpha / 2));
+	color-2: alpha(from color(var(--foo) 0.5 1 0) / calc(alpha / 2));
+}

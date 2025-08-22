@@ -25,6 +25,11 @@
 		"importName": "postcssClamp"
 	},
 	{
+		"packageName": "@csstools/postcss-alpha-function",
+		"id": "alpha-function",
+		"importName": "postcssAlphaFunction"
+	},
+	{
 		"packageName": "@csstools/postcss-color-mix-variadic-function-arguments",
 		"id": "color-mix-variadic-function-arguments",
 		"importName": "postcssColorMixVariadicFunctionArguments"

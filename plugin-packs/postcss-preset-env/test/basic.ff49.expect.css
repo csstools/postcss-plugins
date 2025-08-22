@@ -380,6 +380,11 @@
 }
 }
 
+.alpha {
+	color-1: rgba(188, 101, 59, 0.3);
+	--color-2: rgba(188, 101, 59, 0.3);
+}
+
 .ic-unit {
 	--value-2ic: initial;
 	text-indent: 2em;
@@ -651,17 +656,10 @@
 
 .random {
 	color: rgb(
-		80,
-		185,
-		250
+		175,
+		175,
+		200
 	);
 
-	border-color: rgb(0, 29, 2);
-}
-
-@media (color-gamut: p3) {
-.random {
-
-	border-color: color(display-p3 0.00863 0.1164 0);
-}
+	border-color: rgb(0, 0, 0);
 }

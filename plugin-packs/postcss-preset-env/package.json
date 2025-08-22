@@ -52,6 +52,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/postcss-alpha-function": "^0.0.0",
 		"@csstools/postcss-cascade-layers": "^5.0.2",
 		"@csstools/postcss-color-function": "^4.0.10",
 		"@csstools/postcss-color-function-display-p3-linear": "^0.0.0",

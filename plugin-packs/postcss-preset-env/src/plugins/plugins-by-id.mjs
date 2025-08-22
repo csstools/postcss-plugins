@@ -1,4 +1,5 @@
 import postcssInitial from '@csstools/postcss-initial';
+import postcssAlphaFunction from '@csstools/postcss-alpha-function';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssPageBreak from 'postcss-page-break';
@@ -66,6 +67,7 @@ import postcssUnsetValue from '@csstools/postcss-unset-value';
 export const pluginsById = new Map(
 	[
 		['all-property', postcssInitial],
+		['alpha-function', postcssAlphaFunction],
 		['any-link-pseudo-class', postcssPseudoClassAnyLink],
 		['blank-pseudo-class', postcssBlankPseudo],
 		['break-properties', postcssPageBreak],

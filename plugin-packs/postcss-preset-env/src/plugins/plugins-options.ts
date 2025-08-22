@@ -1,4 +1,5 @@
 import type { pluginOptions as postcssInitialOptions } from '@csstools/postcss-initial';
+import type { pluginOptions as postcssAlphaFunctionOptions } from '@csstools/postcss-alpha-function';
 import type { pluginOptions as postcssPseudoClassAnyLinkOptions } from 'postcss-pseudo-class-any-link';
 import type { pluginOptions as postcssBlankPseudoOptions } from 'css-blank-pseudo';
 import type { postcssPageBreakOptions } from '../types/postcss-page-break/plugin-options';
@@ -66,6 +67,8 @@ export type subPluginOptions<T> = ['auto' | boolean, T] | T | boolean;
 export type pluginsOptions = {
 	/** plugin options for "@csstools/postcss-initial" */
 	'all-property'?: subPluginOptions<postcssInitialOptions>
+	/** plugin options for "@csstools/postcss-alpha-function" */
+	'alpha-function'?: subPluginOptions<postcssAlphaFunctionOptions>
 	/** plugin options for "postcss-pseudo-class-any-link" */
 	'any-link-pseudo-class'?: subPluginOptions<postcssPseudoClassAnyLinkOptions>
 	/** plugin options for "css-blank-pseudo" */
