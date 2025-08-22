@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 10.3.0
+
+_August 22, 2025_
 
 - Added `@csstools/postcss-alpha-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function#readme) for usage details.
 - Added `@csstools/postcss-color-function-display-p3-linear` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear#readme) for usage details.
