@@ -1,5 +1,9 @@
 # Changes to PostCSS gamut-mapping
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`3.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#310) (minor)
+
 ### 2.0.10
 
 _May 27, 2025_

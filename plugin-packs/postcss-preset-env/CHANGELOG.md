@@ -4,6 +4,8 @@
 
 - Added `@csstools/postcss-alpha-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function#readme) for usage details.
 - Added `@csstools/postcss-color-function-display-p3-linear` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear#readme) for usage details.
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.2.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#420) (minor)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#403) (patch)
 
 ### 10.2.4
 
