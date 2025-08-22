@@ -1,0 +1,25 @@
+.basic {
+	color-1: color(display-p3 0.59096 0.12316 0.26409);
+}
+
+.relative {
+	color-1: color(display-p3 0.591 0.123 0.264);
+	color-2: color(from color(display-p3 0.59096 0.12316 0.26409) display-p3 r g b);
+}
+
+.ignore-p3 {
+	color-1: color(DISPLAY-P3 0 0 0);
+	color-2: color(display-P3 0 0 0 / CALC(1 + 1));
+	color-3: color(Display-P3 1 1 1 / VAR(--ALPHA));
+}
+
+/* manual @supports */
+@supports (color: color(display-p3-linear 0 0 0)) and (contain: content) {
+	:root {
+		--one-a50-var: color(display-p3-linear 0.1 0.1 0.1);
+	}
+}
+
+to-clone {
+	color: color(display-p3 1 0 0);
+}

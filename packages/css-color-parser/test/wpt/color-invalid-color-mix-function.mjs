@@ -16,7 +16,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 			[`color-mix(in ${colorSpace} ${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg))`], // Missing comma after interpolation method.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30deg) ${colorSpace}(50% 60 70deg))`], // Missing comma between colors.
 			[`color-mix(${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg), in ${colorSpace})`], // Interpolation method not at the beginning.
-			[`color-mix(${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg))`], // Missing interpolation method.
+			[`color-mix(longer hue, ${colorSpace}(10% 20 30deg), ${colorSpace}(50% 60 70deg))`], // Missing interpolation method.
 		];
 
 		for (const test of tests) {
@@ -40,7 +40,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 			[`color-mix(in ${colorSpace} ${colorSpace}(10% 20 30), ${colorSpace}(50% 60 70))`], // Missing comma after interpolation method.
 			[`color-mix(in ${colorSpace}, ${colorSpace}(10% 20 30) ${colorSpace}(50% 60 70))`], // Missing comma between colors.
 			[`color-mix(${colorSpace}(10% 20 30), ${colorSpace}(50% 60 70), in ${colorSpace})`], // Interpolation method not at the beginning.
-			[`color-mix(${colorSpace}(10% 20 30), ${colorSpace}(50% 60 70))`], // Missing interpolation method.
+			[`color-mix(longer hue, ${colorSpace}(10% 20 30), ${colorSpace}(50% 60 70))`], // Missing interpolation method.
 		];
 
 		for (const test of tests) {
@@ -64,7 +64,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 			[`color-mix(in ${colorSpace} color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7))`], // Missing comma after interpolation method.
 			[`color-mix(in ${colorSpace}, color(${colorSpace} .1 .2 .3) color(${colorSpace} .5 .6 .7))`], // Missing comma between colors.
 			[`color-mix(color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7), in ${colorSpace})`], // Interpolation method not at the beginning.
-			[`color-mix(color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7))`], // Missing interpolation method.
+			[`color-mix(longer hue, color(${colorSpace} .1 .2 .3), color(${colorSpace} .5 .6 .7))`], // Missing interpolation method.
 		];
 
 		for (const test of tests) {
@@ -89,7 +89,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in hsl hsl(120deg 10% 20%), hsl(30deg 30% 40%))'], // Missing comma after interpolation method.
 		['color-mix(in hsl, hsl(120deg 10% 20%) hsl(30deg 30% 40%))'], // Missing comma between colors.
 		['color-mix(hsl(120deg 10% 20%), hsl(30deg 30% 40%), in hsl)'], // Interpolation method not at the beginning.
-		['color-mix(hsl(120deg 10% 20%), hsl(30deg 30% 40%))'], // Missing interpolation method.
+		['color-mix(longer hue, hsl(120deg 10% 20%), hsl(30deg 30% 40%))'], // Missing interpolation method.
 
 		['color-mix(in hwb, hwb(120deg 10% 20%) -10%, hwb(30deg 30% 40%))'], // Percentages less than 0 are not valid.
 		['color-mix(in hwb, hwb(120deg 10% 20%) 150%, hwb(30deg 30% 40%))'], // Percentages greater than 100 are not valid.
@@ -101,7 +101,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 		['color-mix(in hwb hwb(120deg 10% 20%), hwb(30deg 30% 40%))'], // Missing comma after interpolation method.
 		['color-mix(in hwb, hwb(120deg 10% 20%) hwb(30deg 30% 40%))'], // Missing comma between colors.
 		['color-mix(hwb(120deg 10% 20%), hwb(30deg 30% 40%), in hwb)'], // Interpolation method not at the beginning.
-		['color-mix(hwb(120deg 10% 20%), hwb(30deg 30% 40%))'], // Missing interpolation method.
+		['color-mix(longer hue, hwb(120deg 10% 20%), hwb(30deg 30% 40%))'], // Missing interpolation method.
 		['color-mix(in srgb, red, blue blue)'], // Too many parameters.
 	];
 

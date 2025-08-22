@@ -1,0 +1,90 @@
+{
+	"name": "@csstools/postcss-color-function-display-p3-linear",
+	"description": "Use the display-p3-linear color space on the color() function in CSS",
+	"version": "0.0.0",
+	"contributors": [
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": ">=18"
+	},
+	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"@csstools/css-color-parser": "^3.0.10",
+		"@csstools/css-parser-algorithms": "^3.0.5",
+		"@csstools/css-tokenizer": "^3.0.4",
+		"@csstools/postcss-progressive-custom-properties": "^4.1.0",
+		"@csstools/utilities": "^2.0.0"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"@csstools/postcss-tape": "*"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins/postcss-color-function-display-p3-linear"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"color",
+		"css",
+		"display-p3-linear",
+		"postcss",
+		"postcss-plugin",
+		"syntax"
+	],
+	"csstools": {
+		"cssdbId": "color-function-display-p3-linear",
+		"exportName": "postcssColorFunctionDisplayP3Linear",
+		"humanReadableName": "PostCSS Color Function Display P3 Linear",
+		"specUrl": "https://drafts.csswg.org/css-color-4/#predefined-display-p3-linear"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

@@ -625,6 +625,27 @@
             },
             {
               "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.Linear_Display_P3:member",
+              "docComment": "/**\n * Display P3, expressed through `color(display-p3-linear 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Linear_Display_P3 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"display-p3-linear\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Linear_Display_P3"
+            },
+            {
+              "kind": "EnumMember",
               "canonicalReference": "@csstools/css-color-parser!ColorNotation.Linear_sRGB:member",
               "docComment": "/**\n * Linear sRGB, expressed through `color(linear-srgb 0 0 0)`\n */\n",
               "excerptTokens": [
@@ -1400,6 +1421,27 @@
               },
               "releaseTag": "Public",
               "name": "NamedColor"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.RelativeAlphaSyntax:member",
+              "docComment": "/**\n * Is a relative alpha syntax `alpha(from red / 0.5)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "RelativeAlphaSyntax = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"relative-alpha-syntax\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "RelativeAlphaSyntax"
             },
             {
               "kind": "EnumMember",

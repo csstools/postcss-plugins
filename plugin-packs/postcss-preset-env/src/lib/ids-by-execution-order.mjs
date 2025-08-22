@@ -24,9 +24,11 @@ export default [
 	'gradients-interpolation-method', // run before all color functions
 	'color-mix-variadic-function-arguments', // run before any other color functions, including base color-mix
 	'color-mix', // run before any other color functions
+	'alpha-function',
 	'relative-color-syntax',
 	'lab-function',
 	'oklab-function',
+	'color-function-display-p3-linear',
 	'color-function',
 	'hwb-function',
 	'color-functional-notation',

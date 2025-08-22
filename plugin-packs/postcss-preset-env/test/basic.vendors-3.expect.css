@@ -181,8 +181,7 @@
 	font-stretch: normal;
 	line-height: normal;
 	height: auto;
-	-webkit-hyphens: none;
-	        hyphens: none;
+	hyphens: none;
 	left: auto;
 	letter-spacing: normal;
 	list-style: disc outside none;
@@ -431,6 +430,7 @@
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: rgb(89, 89, 89);
 }
 
 .oklab {
@@ -474,6 +474,11 @@
 	color-15: rgb(188, 101, 59);
 	color-16: rgb(188, 101, 59);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+.alpha {
+	color-1: alpha(from rgba(188, 101, 59, 0.2) / calc(alpha + 0.1));
+	--color-2: alpha(from rgba(188, 101, 59, 0.2) / calc(alpha + 0.1));
 }
 
 .ic-unit {
@@ -714,13 +719,13 @@
 }
 
 .sign {
-	order: sign(10px);
-	z-index: sign(-10px);
+	order: 1;
+	z-index: -1;
 }
 
 .abs {
-	order: abs(10px);
-	z-index: abs(-10px);
+	order: 10px;
+	z-index: 10px;
 }
 
 .random {

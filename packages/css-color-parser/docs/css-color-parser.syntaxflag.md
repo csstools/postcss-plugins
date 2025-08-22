@@ -286,6 +286,22 @@ Is a named color, e.g. `red`<!-- -->, `blue`
 </td></tr>
 <tr><td>
 
+RelativeAlphaSyntax
+
+
+</td><td>
+
+`"relative-alpha-syntax"`
+
+
+</td><td>
+
+Is a relative alpha syntax `alpha(from red / 0.5)`
+
+
+</td></tr>
+<tr><td>
+
 RelativeColorSyntax
 
 

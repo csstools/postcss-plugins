@@ -360,6 +360,36 @@ export function XYZ_D50_to_P3(x: Color): Color {
 	return y;
 }
 
+/**
+ * @param {Color} color [r, g, b]
+ * - Red as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ * @return {Color} D50 XYZ [x, y, z]
+ */
+export function lin_P3_to_XYZ_D50(x: Color): Color {
+	let y = x;
+	y = lin_P3_to_XYZ(y);
+	y = D65_to_D50(y);
+	return y;
+}
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} P3 [r, g, b]
+ * - R as number 0..1;
+ * - G as number 0..1;
+ * - B as number 0..1;
+ */
+export function XYZ_D50_to_lin_P3(x: Color): Color {
+	let y = x;
+	y = D50_to_D65(y);
+	y = XYZ_to_lin_P3(y);
+	return y;
+}
 
 /**
  * @param {Color} color [r, g, b]

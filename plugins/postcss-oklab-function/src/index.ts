@@ -15,7 +15,7 @@ type basePluginOptions = {
 const OKLAB_OKLCH_FUNCTION_REGEX = /\b(?:oklab|oklch)\(/i;
 const OKLAB_OKLCH_NAME_REGEX = /^(?:oklab|oklch)$/i;
 
-/* Transform oklab() and oklch() functions in CSS. */
+/** Transform oklab() and oklch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-oklab-function',
@@ -122,7 +122,7 @@ export type pluginOptions = {
 	}
 };
 
-/* Transform oklab() and oklch() functions in CSS. */
+/** Transform oklab() and oklch() functions in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,

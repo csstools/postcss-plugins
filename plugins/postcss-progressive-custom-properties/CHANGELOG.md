@@ -1,5 +1,12 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (minor)
+
+- Add support for `color(display-p3-linear 0.3081 0.014 0.0567)`
+- Add support for `color-mix(in display-p3-linear, red, blue)`
+- Add support for `color-mix(red, blue)`
+- Add support for `alpha(from red / 0.5)`
+
 ### 4.1.0
 
 _May 27, 2025_

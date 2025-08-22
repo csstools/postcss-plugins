@@ -11,7 +11,7 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
 import { isTokenComma } from '@csstools/css-tokenizer';
 
-const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
+const rectangularColorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'display-p3-linear', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'lab', 'oklab', 'xyz', 'xyz-d50', 'xyz-d65']);
 const polarColorSpaces = new Set(['hsl', 'hwb', 'lch', 'oklch']);
 const hueInterpolationMethods = new Set(['shorter', 'longer', 'increasing', 'decreasing']);
 
@@ -26,6 +26,18 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 		const node = colorMixNode.value[i];
 		if (isWhiteSpaceOrCommentNode(node)) {
 			continue;
+		}
+
+		if (!inNode) {
+			if (
+				!(
+					isTokenNode(node) &&
+					isTokenIdent(node.value) &&
+					toLowerCaseAZ(node.value[4].value) === 'in'
+				)
+			) {
+				return colorMixRectangular('oklab', colorMixComponents(colorMixNode.value, colorParser));
+			}
 		}
 
 		if (
@@ -105,7 +117,6 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 
 			return false;
 		}
-
 
 		return false;
 	}
@@ -297,6 +308,9 @@ function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): 
 			break;
 		case 'display-p3':
 			outputColorNotation = ColorNotation.Display_P3;
+			break;
+		case 'display-p3-linear':
+			outputColorNotation = ColorNotation.Linear_Display_P3;
 			break;
 		case 'a98-rgb':
 			outputColorNotation = ColorNotation.A98_RGB;

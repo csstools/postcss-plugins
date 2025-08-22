@@ -71,6 +71,12 @@
       - plugins/css-prefers-color-scheme/**
       - experimental/css-prefers-color-scheme/**
 
+"plugins/postcss-alpha-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-alpha-function/**
+      - experimental/postcss-alpha-function/**
+
 "plugins/postcss-attribute-case-insensitive":
   - changed-files:
     - any-glob-to-any-file:
@@ -94,6 +100,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-color-function/**
       - experimental/postcss-color-function/**
+
+"plugins/postcss-color-function-display-p3-linear":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-function-display-p3-linear/**
+      - experimental/postcss-color-function-display-p3-linear/**
 
 "plugins/postcss-color-functional-notation":
   - changed-files:

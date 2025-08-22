@@ -1,4 +1,5 @@
 import postcssInitial from '@csstools/postcss-initial';
+import postcssAlphaFunction from '@csstools/postcss-alpha-function';
 import postcssPseudoClassAnyLink from 'postcss-pseudo-class-any-link';
 import postcssBlankPseudo from 'css-blank-pseudo';
 import postcssPageBreak from 'postcss-page-break';
@@ -6,6 +7,7 @@ import postcssCascadeLayers from '@csstools/postcss-cascade-layers';
 import postcssAttributeCaseInsensitive from 'postcss-attribute-case-insensitive';
 import postcssClamp from 'postcss-clamp';
 import postcssColorFunction from '@csstools/postcss-color-function';
+import postcssColorFunctionDisplayP3Linear from '@csstools/postcss-color-function-display-p3-linear';
 import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
 import postcssColorMixFunction from '@csstools/postcss-color-mix-function';
 import postcssColorMixVariadicFunctionArguments from '@csstools/postcss-color-mix-variadic-function-arguments';
@@ -65,6 +67,7 @@ import postcssUnsetValue from '@csstools/postcss-unset-value';
 export const pluginsById = new Map(
 	[
 		['all-property', postcssInitial],
+		['alpha-function', postcssAlphaFunction],
 		['any-link-pseudo-class', postcssPseudoClassAnyLink],
 		['blank-pseudo-class', postcssBlankPseudo],
 		['break-properties', postcssPageBreak],
@@ -72,6 +75,7 @@ export const pluginsById = new Map(
 		['case-insensitive-attributes', postcssAttributeCaseInsensitive],
 		['clamp', postcssClamp],
 		['color-function', postcssColorFunction],
+		['color-function-display-p3-linear', postcssColorFunctionDisplayP3Linear],
 		['color-functional-notation', postcssColorFunctionalNotation],
 		['color-mix', postcssColorMixFunction],
 		['color-mix-variadic-function-arguments', postcssColorMixVariadicFunctionArguments],

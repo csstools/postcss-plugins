@@ -12,7 +12,7 @@ type basePluginOptions = {
 const COLOR_FUNCTION_REGEX = /\bcolor\(/i;
 const COLOR_NAME_REGEX = /^color$/i;
 
-/* Transform the color() function in CSS. */
+/** Transform the color() function in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-function',
@@ -79,7 +79,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform the color() function in CSS. */
+/** Transform the color() function in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		preserve: false,

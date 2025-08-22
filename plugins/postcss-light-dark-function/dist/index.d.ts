@@ -8,6 +8,7 @@ export declare type pluginOptions = {
     enableProgressiveCustomProperties?: boolean;
 };
 
+/** Transform the light-dark() function in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;
 

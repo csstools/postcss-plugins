@@ -411,6 +411,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: rgb(89, 89, 89);
 }
 
 .oklab {
@@ -459,6 +460,11 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
 }
+}
+
+.alpha {
+	color-1: rgba(188, 101, 59, 0.3);
+	--color-2: rgba(188, 101, 59, 0.3);
 }
 
 .ic-unit {
@@ -736,17 +742,10 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		240,
-		100,
-		235
+		175,
+		175,
+		200
 	);
 
-	border-color: rgb(49, 29, 0);
-}
-
-@media (color-gamut: p3) {
-.random {
-
-	border-color: color(display-p3 0.18785 0.11205 0);
-}
+	border-color: rgb(0, 0, 0);
 }

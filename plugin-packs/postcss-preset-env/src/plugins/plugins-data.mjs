@@ -25,6 +25,11 @@ export default [
 		'importName': 'postcssClamp',
 	},
 	{
+		'packageName': '@csstools/postcss-alpha-function',
+		'id': 'alpha-function',
+		'importName': 'postcssAlphaFunction',
+	},
+	{
 		'packageName': '@csstools/postcss-color-mix-variadic-function-arguments',
 		'id': 'color-mix-variadic-function-arguments',
 		'importName': 'postcssColorMixVariadicFunctionArguments',
@@ -38,6 +43,11 @@ export default [
 		'packageName': '@csstools/postcss-color-function',
 		'id': 'color-function',
 		'importName': 'postcssColorFunction',
+	},
+	{
+		'packageName': '@csstools/postcss-color-function-display-p3-linear',
+		'id': 'color-function-display-p3-linear',
+		'importName': 'postcssColorFunctionDisplayP3Linear',
 	},
 	{
 		'packageName': 'postcss-color-functional-notation',

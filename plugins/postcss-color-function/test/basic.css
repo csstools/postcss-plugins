@@ -60,6 +60,12 @@
 	color-7: color(display-p3 0.81388 0.43646 foo);
 }
 
+.test-display-p3-linear {
+	color-1: color(display-p3-linear 0.3081 0.014 0.0567);
+	color-2: color(display-p3-linear 0.3081 0.014 0.0567 / 0.3);
+	--color-3: color(display-p3-linear 0.3081 0.014 0.0567 / 0.3);
+}
+
 .test-linear-srgb {
 	color-1: color(srgb 0.691 0.139 0.259);
 	color-2: color(srgb-linear 0.435 0.017 0.055);

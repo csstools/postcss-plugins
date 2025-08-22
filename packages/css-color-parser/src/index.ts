@@ -16,6 +16,7 @@ import { oklch } from './functions/oklch';
 import { rgb } from './functions/rgb';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { contrastColor } from './functions/contrast-color';
+import { alpha } from './functions/alpha';
 
 export type { ColorData } from './color-data';
 export { ColorNotation } from './color-notation';
@@ -59,6 +60,8 @@ export function color(colorNode: ComponentValue): ColorData | false {
 				return colorMix(colorNode, color);
 			case 'contrast-color':
 				return contrastColor(colorNode, color);
+			case 'alpha':
+				return alpha(colorNode, color);
 		}
 	}
 

@@ -15,7 +15,7 @@ type basePluginOptions = {
 const LAB_LCH_FUNCTION_REGEX = /\b(?:lab|lch)\(/i;
 const LAB_LCH_NAME_REGEX = /^(?:lab|lch)$/i;
 
-/* Transform lab() and lch() functions in CSS. */
+/** Transform lab() and lch() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-lab-function',
@@ -122,7 +122,7 @@ export type pluginOptions = {
 	}
 };
 
-/* Transform lab() and lch() functions in CSS. */
+/** Transform lab() and lch() functions in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,

@@ -72,7 +72,7 @@
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
 
 	--color-2: blue;
-	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
+	--color-2: color(srgb 0.64331 0.19245 0.16771 / 0.5);
 
 	--opacity-50: 0.5;
 	--color-3: purple;
@@ -155,6 +155,12 @@
 	--color-mix-3: color-mix(in srgb, red, lime, blue);
 	--color-mix-4: red;
 	--color-mix-4: color-mix(in srgb, red);
+	--color-mix-5: purple;
+	--color-mix-5: color-mix(in display-p3-linear, purple, pink);
+	--color-mix-6: purple;
+	--color-mix-6: color-mix(purple, pink);
+	--color-mix-7: purple;
+	--color-mix-7: color-mix(red 10%, purple 20%, pink 30%);
 }
 
 :root {
@@ -182,6 +188,8 @@
 	--color-rcs-11: rgb(from blue r g b / alpha);
 	--color-rcs-12: green;
 	--color-rcs-12: hsl(from blue h s l / alpha);
+	--color-rcs-13: green;
+	--color-rcs-13: color(from red display-p3-linear r g b);
 }
 
 :root {
@@ -201,6 +209,14 @@
 	--color-rcs-invalid-7: rgb(from blue r, g, b, alpha);
 	--color-rcs-invalid-8: green;
 	--color-rcs-invalid-8: hsl(from blue h, s, l, alpha);
+}
+
+:root {
+	/* alpha() */
+	--alpha-1: plum;
+	--alpha-1: alpha(from red / 0.5);
+	--alpha-2: plum;
+	--alpha-2: alpha(from red);
 }
 
 .property-with-var--1 {

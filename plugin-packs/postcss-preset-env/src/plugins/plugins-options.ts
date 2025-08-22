@@ -1,4 +1,5 @@
 import type { pluginOptions as postcssInitialOptions } from '@csstools/postcss-initial';
+import type { pluginOptions as postcssAlphaFunctionOptions } from '@csstools/postcss-alpha-function';
 import type { pluginOptions as postcssPseudoClassAnyLinkOptions } from 'postcss-pseudo-class-any-link';
 import type { pluginOptions as postcssBlankPseudoOptions } from 'css-blank-pseudo';
 import type { postcssPageBreakOptions } from '../types/postcss-page-break/plugin-options';
@@ -6,6 +7,7 @@ import type { pluginOptions as postcssCascadeLayersOptions } from '@csstools/pos
 import type { pluginOptions as postcssAttributeCaseInsensitiveOptions } from 'postcss-attribute-case-insensitive';
 import type { postcssClampOptions } from '../types/postcss-clamp/plugin-options';
 import type { pluginOptions as postcssColorFunctionOptions } from '@csstools/postcss-color-function';
+import type { pluginOptions as postcssColorFunctionDisplayP3LinearOptions } from '@csstools/postcss-color-function-display-p3-linear';
 import type { pluginOptions as postcssColorFunctionalNotationOptions } from 'postcss-color-functional-notation';
 import type { pluginOptions as postcssColorMixFunctionOptions } from '@csstools/postcss-color-mix-function';
 import type { pluginOptions as postcssColorMixVariadicFunctionArgumentsOptions } from '@csstools/postcss-color-mix-variadic-function-arguments';
@@ -65,6 +67,8 @@ export type subPluginOptions<T> = ['auto' | boolean, T] | T | boolean;
 export type pluginsOptions = {
 	/** plugin options for "@csstools/postcss-initial" */
 	'all-property'?: subPluginOptions<postcssInitialOptions>
+	/** plugin options for "@csstools/postcss-alpha-function" */
+	'alpha-function'?: subPluginOptions<postcssAlphaFunctionOptions>
 	/** plugin options for "postcss-pseudo-class-any-link" */
 	'any-link-pseudo-class'?: subPluginOptions<postcssPseudoClassAnyLinkOptions>
 	/** plugin options for "css-blank-pseudo" */
@@ -79,6 +83,8 @@ export type pluginsOptions = {
 	'clamp'?: subPluginOptions<postcssClampOptions>
 	/** plugin options for "@csstools/postcss-color-function" */
 	'color-function'?: subPluginOptions<postcssColorFunctionOptions>
+	/** plugin options for "@csstools/postcss-color-function-display-p3-linear" */
+	'color-function-display-p3-linear'?: subPluginOptions<postcssColorFunctionDisplayP3LinearOptions>
 	/** plugin options for "postcss-color-functional-notation" */
 	'color-functional-notation'?: subPluginOptions<postcssColorFunctionalNotationOptions>
 	/** plugin options for "@csstools/postcss-color-mix-function" */

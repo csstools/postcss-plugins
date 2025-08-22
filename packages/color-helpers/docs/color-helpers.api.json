@@ -694,6 +694,53 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!lin_P3_to_XYZ_D50:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function lin_P3_to_XYZ_D50(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "lin_P3_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@csstools/color-helpers!lin_P3_to_XYZ:function(1)",
           "docComment": "/**\n * Convert an array of linear-light display-p3 values to CIE XYZ using D65 (no chromatic adaptation)\n *\n * @license\n *\n * W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n * @copyright\n *\n * This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).\n *\n * @see\n *\n * http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html\n */\n",
           "excerptTokens": [
@@ -1835,6 +1882,53 @@
             }
           ],
           "name": "XYZ_D50_to_LCH"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D50_to_lin_P3:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} P3 [r, g, b] - R as number 0..1; - G as number 0..1; - B as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D50_to_lin_P3(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D50_to_lin_P3"
         },
         {
           "kind": "Function",

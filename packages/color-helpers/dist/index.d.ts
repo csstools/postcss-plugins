@@ -95,6 +95,15 @@ export declare function lin_P3(RGB: Color): Color;
 export declare function lin_P3_to_XYZ(rgb: Color): Color;
 
 /**
+ * @param {Color} color [r, g, b]
+ * - Red as number 0..1;
+ * - Green as number 0..1;
+ * - Blue as number 0..1;
+ * @return {Color} D50 XYZ [x, y, z]
+ */
+export declare function lin_P3_to_XYZ_D50(x: Color): Color;
+
+/**
  * Convert an array of of sRGB values where in-gamut values are in the range
  * [0 - 1] to linear light (un-companded) form.
  * Extended transfer function:
@@ -270,6 +279,18 @@ export declare function XYZ_D50_to_Lab(x: Color): Color;
  * - Hue as degrees 0..360;
  */
 export declare function XYZ_D50_to_LCH(x: Color): Color;
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} P3 [r, g, b]
+ * - R as number 0..1;
+ * - G as number 0..1;
+ * - B as number 0..1;
+ */
+export declare function XYZ_D50_to_lin_P3(x: Color): Color;
 
 /**
  * @param {Color} color [x, y, z]

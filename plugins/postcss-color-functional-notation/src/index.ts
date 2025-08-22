@@ -12,7 +12,7 @@ type basePluginOptions = {
 const RGB_HSL_NAME_REGEX = /^(?:rgb|hsl)a?$/i;
 const RGB_HSL_FUNCTION_REGEX = /\b(?:rgb|hsl)a?\(/i;
 
-/* Transform the color functional notation in CSS. */
+/** Transform the color functional notation in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-functional-notation',
@@ -94,7 +94,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform the color functional notation in CSS. */
+/** Transform the color functional notation in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		preserve: false,

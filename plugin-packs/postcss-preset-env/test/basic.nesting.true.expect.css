@@ -305,6 +305,7 @@
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: color(display-p3-linear 0.1 0.1 0.1);
 }
 
 .oklab {
@@ -342,6 +343,11 @@
 	color-15: oklch(60% 0.1250 50grad);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+.alpha {
+	color-1: alpha(from oklch(60% 0.1250 45deg / 0.2) / calc(alpha + 0.1));
+	--color-2: alpha(from oklch(60% 0.1250 45deg / 0.2) / calc(alpha + 0.1));
 }
 
 .ic-unit {

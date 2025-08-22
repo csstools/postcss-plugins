@@ -126,7 +126,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform the light-dark() function in CSS. */
+/** Transform the light-dark() function in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,

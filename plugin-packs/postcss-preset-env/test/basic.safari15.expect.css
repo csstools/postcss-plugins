@@ -297,6 +297,7 @@
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: color(display-p3 0.34919 0.34919 0.34919);
 }
 
 @media (color-gamut: p3) {
@@ -351,6 +352,11 @@
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
 }
+}
+
+.alpha {
+	color-1: rgba(188, 101, 59, 0.3);
+	--color-2: rgba(188, 101, 59, 0.3);
 }
 
 .ic-unit {
@@ -632,17 +638,10 @@
 
 .random {
 	color: rgb(
-		240,
-		100,
-		235
+		175,
+		175,
+		200
 	);
 
-	border-color: rgb(49, 29, 0);
-}
-
-@media (color-gamut: p3) {
-.random {
-
-	border-color: color(display-p3 0.18785 0.11205 0);
-}
+	border-color: rgb(0, 0, 0);
 }

@@ -52,8 +52,10 @@
 		"dist"
 	],
 	"dependencies": {
+		"@csstools/postcss-alpha-function": "^0.0.0",
 		"@csstools/postcss-cascade-layers": "^5.0.2",
 		"@csstools/postcss-color-function": "^4.0.10",
+		"@csstools/postcss-color-function-display-p3-linear": "^0.0.0",
 		"@csstools/postcss-color-mix-function": "^3.0.10",
 		"@csstools/postcss-color-mix-variadic-function-arguments": "^1.0.0",
 		"@csstools/postcss-content-alt-text": "^2.0.6",
@@ -90,7 +92,7 @@
 		"css-blank-pseudo": "^7.0.1",
 		"css-has-pseudo": "^7.0.2",
 		"css-prefers-color-scheme": "^10.0.0",
-		"cssdb": "^8.3.1",
+		"cssdb": "^8.4.0",
 		"postcss-attribute-case-insensitive": "^7.0.1",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^7.0.10",

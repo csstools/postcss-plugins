@@ -1,0 +1,7 @@
+.color {
+	color: color(display-p3 0.59096 0.12316 0.26409);
+}
+
+:root {
+	--a-color: color(display-p3 0.59096 0.12316 0.26409);
+}
