@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 10.3.1
+
+_August 27, 2025_
 
 - Updated [`css-has-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo) to [`7.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo/CHANGELOG.md#703) (patch)
 
