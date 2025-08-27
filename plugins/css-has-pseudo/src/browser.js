@@ -241,7 +241,9 @@ export default function cssHasPseudo(document, options) {
 	function walkStyleSheet(styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
-			[].forEach.call(styleSheet.cssRules || [], function(rule, index) {
+			for (let i = (styleSheet.cssRules.length - 1); i >= 0; i--) {
+				let rule = styleSheet.cssRules[i];
+
 				if (rule.selectorText) {
 					rule.selectorText = rule.selectorText.replace(/\.js-has-pseudo\s/g, '');
 
@@ -249,16 +251,16 @@ export default function cssHasPseudo(document, options) {
 						// decode the selector text in all browsers to:
 						const hasSelectors = extractEncodedSelectors(rule.selectorText.toString());
 						if (hasSelectors.length === 0) {
-							return;
+							continue;
 						}
 
 						if (!options.mustPolyfill) {
-							styleSheet.deleteRule(index);
-							return;
+							styleSheet.deleteRule(i);
+							continue;
 						}
 
-						for (let i = 0; i < hasSelectors.length; i++) {
-							const hasSelector = hasSelectors[i];
+						for (let j = 0; j < hasSelectors.length; j++) {
+							const hasSelector = hasSelectors[j];
 							if (hasSelector) {
 								observedItems.push({
 									rule: rule,
@@ -277,7 +279,7 @@ export default function cssHasPseudo(document, options) {
 				} else {
 					walkStyleSheet(rule);
 				}
-			});
+			}
 		} catch (e) {
 			if (options.debug) {
 				// eslint-disable-next-line no-console

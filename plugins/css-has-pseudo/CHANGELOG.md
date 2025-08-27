@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (patch)
+
+- Fix order of removal of CSSOM rules when a browser supports `:has()` natively
+
 ### 7.0.2
 
 _December 13, 2024_
