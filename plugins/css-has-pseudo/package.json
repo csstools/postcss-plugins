@@ -1,7 +1,7 @@
 {
 	"name": "css-has-pseudo",
 	"description": "Style elements relative to other elements in CSS",
-	"version": "7.0.2",
+	"version": "7.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
