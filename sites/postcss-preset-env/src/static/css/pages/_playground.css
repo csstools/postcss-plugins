@@ -9,9 +9,20 @@
 
 	.editors-container {
 		display: grid;
+		width: 100%;
+		grid-template-rows: max-content minmax(0, 1fr);
+		grid-template-columns: 100%;
+		gap: var(--space-20);
+
+		@media (--from-wide) {
+			height: calc(100vh - var(--heading-size-from-medium));
+		}
+	}
+
+	.editors {
+		display: grid;
 		gap: var(--space-20);
 		grid-template-areas:
-			"controls"
 			"input"
 			"output"
 			"config";
@@ -20,23 +31,21 @@
 
 		@media (--from-wide) {
 			grid-template-areas:
-				"controls controls"
 				"input output"
 				"config output";
-			grid-template-rows: 80px calc(65% - 60px) calc(35% - 60px);
+			grid-template-rows: minmax(0, 65%) minmax(0, 35%);
 			grid-template-columns: calc(50% - var(--space-10)) calc(50% - var(--space-10));
-			height: calc(100vh - var(--heading-size-from-medium));
+			height: 100%;
 		}
 
-		@media (width >= 1440px) {
-			grid-template-rows: 40px calc(65% - 40px) calc(35% - 40px);
+		@media (width >=1440px) {
+			grid-template-rows: minmax(0, 65%) minmax(0, 35%);
 		}
 	}
 
 	#controls {
 		background-color: #282c34;
 		color: white;
-		grid-area: controls;
 		padding-inline: var(--space-10);
 
 		@media (--from-medium) {

@@ -38,6 +38,7 @@ const currentConfig = stateAtLoad.config ?? {
 	browsers: ['> 0.2% and not dead'],
 	minimumVendorImplementations: 0,
 	stage: 2,
+	enableClientSidePolyfills: false,
 	logical: {
 		inlineDirection: 'left-to-right',
 		blockDirection: 'top-to-bottom',
@@ -108,6 +109,10 @@ function renderConfig(config) {
 
 	if (copy.logical.blockDirection === 'top-to-bottom') {
 		delete copy.logical.blockDirection;
+	}
+
+	if (!copy.enableClientSidePolyfills) {
+		delete copy.enableClientSidePolyfills;
 	}
 
 	if (Object.keys(copy.logical).length === 0) {
@@ -250,6 +255,7 @@ let controls = {
 	preserve: document.getElementById('preserve'),
 	inlineDirection: document.getElementById('inlineDirection'),
 	blockDirection: document.getElementById('blockDirection'),
+	enableClientSidePolyfills: document.getElementById('enableClientSidePolyfills'),
 };
 
 {
@@ -257,8 +263,9 @@ let controls = {
 	controls.minimumVendorImplementations.value = currentConfig.minimumVendorImplementations.toString();
 	controls.inlineDirection.value = currentConfig.logical.inlineDirection;
 	controls.blockDirection.value = currentConfig.logical.blockDirection;
-
 	controls.stage.value = currentConfig.stage.toString();
+	controls.enableClientSidePolyfills.checked = !!currentConfig.enableClientSidePolyfills;
+
 	if (currentConfig.preserve === true) {
 		controls.preserve.value = 'true';
 	} else if (currentConfig.preserve === false) {
@@ -280,6 +287,7 @@ for (const control of Object.values(controls)) {
 		currentConfig.browsers = controls.browsers.value.split(',').filter((x) => !!x);
 		currentConfig.minimumVendorImplementations = parseInt(controls.minimumVendorImplementations.value || '0', 10);
 		currentConfig.stage = parseInt(controls.stage.value || '0', 10);
+		currentConfig.enableClientSidePolyfills = controls.enableClientSidePolyfills.checked;
 
 		if (typeof preserve !== 'undefined') {
 			currentConfig.preserve = preserve;

@@ -53,11 +53,18 @@ description: Play with PostCSS Preset Env in your browser
 					<option value="bottom-to-top">bottom to top</option>
 				</select>
 			</fieldset>
+
+			<fieldset>
+				<label for="enableClientSidePolyfills">enable client-side polyfills</label>
+				<input type="checkbox" name="enableClientSidePolyfills" id="enableClientSidePolyfills">
+			</fieldset>
 		</div>
 
-		<div id="input-editor" class="editor"></div>
-		<div id="config-editor" class="editor" data-preset-env-version="{{ presetVersionPlayground }}"></div>
-		<div id="output-editor" class="editor"></div>
+		<div class="editors">
+			<div id="input-editor" class="editor"></div>
+			<div id="config-editor" class="editor" data-preset-env-version="{{ presetVersionPlayground }}"></div>
+			<div id="output-editor" class="editor"></div>
+		</div>
 	</div>
 </main>
 {% endblock %}
