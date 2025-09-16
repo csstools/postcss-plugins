@@ -2,6 +2,8 @@ version: 2
 updates:
 - package-ecosystem: "npm"
   directory: "/"
+  cooldown:
+    default-days: 7
   schedule:
     interval: weekly
     time: "01:00"
@@ -9,12 +11,19 @@ updates:
   groups:
     production-dependencies:
       dependency-type: "production"
+      exclude-patterns:
+        - "@webref/css"
       patterns:
         - "*"
     development-dependencies:
       dependency-type: "development"
+      exclude-patterns:
+        - "@webref/css"
       patterns:
         - "*"
+    webref-css:
+      patterns:
+        - "@webref/css"
   open-pull-requests-limit: 5
   versioning-strategy: increase
   rebase-strategy: auto
@@ -23,6 +32,8 @@ updates:
   - "/e2e"
   - "/e2e-package-managers/yarn"
   - "/sites"
+  cooldown:
+    default-days: 7
   schedule:
     interval: weekly
     time: "01:00"
@@ -36,6 +47,8 @@ updates:
   rebase-strategy: auto
 - package-ecosystem: "github-actions"
   directory: "/"
+  cooldown:
+    default-days: 7
   schedule:
     interval: weekly
     time: "01:00"
