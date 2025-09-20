@@ -182,7 +182,7 @@ async function createRootPackage(rootDir: string, packageInfo: packageInfo): Pro
 }
 
 async function runNPMInstall(rootDir: string): Promise<void> {
-	const npm = spawn('npm', ['install', '--omit', 'dev'], {
+	const npm = spawn('npm', ['install', '--omit', 'dev', '--engine-strict', 'false'], {
 		cwd: rootDir,
 		stdio: 'inherit',
 		shell: platform === 'win32',
