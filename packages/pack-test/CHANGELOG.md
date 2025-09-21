@@ -1,6 +1,8 @@
 # Changes to Pack Test
 
-### Unreleased (patch)
+### 1.0.2
+
+_September 21, 2025_
 
 - Use `--engine-strict=false` when testing `npm install`
 - Use `--ignore-scripts` when testing `npm install`

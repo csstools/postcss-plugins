@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/pack-test",
 	"description": "Verify that the published contents of your node package will pass a basic smoke test.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
