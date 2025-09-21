@@ -1,5 +1,9 @@
 # Changes to PostCSS Contrast Color Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`4.2.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#421) (patch)
+
 ### 2.0.11
 
 _August 22, 2025_
