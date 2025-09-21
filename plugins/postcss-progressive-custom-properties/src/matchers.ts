@@ -3330,16 +3330,6 @@ export const matchers = [
 						"isVariable": true
 					}
 				]
-			},
-			{
-				"type": "function",
-				"value": "contrast-color",
-				"nodes": [
-					{
-						"type": "word",
-						"isVariable": true
-					}
-				]
 			}
 		]
 	},
