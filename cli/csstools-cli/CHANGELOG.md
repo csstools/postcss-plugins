@@ -4,6 +4,18 @@
 
 - Updated [`css-has-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo) to [`7.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo/CHANGELOG.md#703) (patch)
 - Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`10.3.1`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#1031) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`4.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#4012) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`3.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#3012) (patch)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`2.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#208) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`5.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#5012) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`4.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#4012) (patch)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`4.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#404) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`2.0.11`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#2011) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`4.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#4012) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`3.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#3012) (patch)
+- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`7.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#7012) (patch)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`6.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#604) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`7.0.12`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#7012) (patch)
 
 ### 4.0.21
 
