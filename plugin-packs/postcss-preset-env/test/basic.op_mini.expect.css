@@ -742,10 +742,15 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		175,
-		175,
-		200
+		70,
+		100,
+		25
 	);
 
-	border-color: rgb(0, 0, 0);
+	border-color: rgb(156, 84, 140);
+}
+
+.contrast-color {
+	color: rgb(255, 255, 255);
+	color: contrast-color(green);
 }
