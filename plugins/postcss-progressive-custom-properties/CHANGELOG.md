@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 4.2.1
+
+_September 21, 2025_
 
 - Remove redundant match for `contrast-color( <color> )`;
 
