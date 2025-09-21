@@ -747,3 +747,8 @@
 		random(--h, 0deg, 360deg, 12deg)
 	);
 }
+
+.contrast-color {
+	color: rgb(255, 255, 255);
+	color: contrast-color(green);
+}

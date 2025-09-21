@@ -1,5 +1,11 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (minor)
+
+_August 22, 2025_
+
+- Added `@csstools/postcss-contrast-color-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-contrast-color-function#readme) for usage details.
+
 ### 10.3.1
 
 _August 27, 2025_

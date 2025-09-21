@@ -24,6 +24,7 @@ export default [
 	'gradients-interpolation-method', // run before all color functions
 	'color-mix-variadic-function-arguments', // run before any other color functions, including base color-mix
 	'color-mix', // run before any other color functions
+	'contrast-color-function',
 	'alpha-function',
 	'relative-color-syntax',
 	'lab-function',

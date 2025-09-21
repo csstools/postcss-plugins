@@ -7,7 +7,6 @@ export const contrastColorMatchers = [
 		'sniff': 'contrast-color(',
 		'matchers': [
 			matcherForValue('contrast-color($1)'),
-			matcherForValue('contrast-color($1)'),
 		],
 	},
 ];

@@ -12,6 +12,7 @@ import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
 import postcssColorMixFunction from '@csstools/postcss-color-mix-function';
 import postcssColorMixVariadicFunctionArguments from '@csstools/postcss-color-mix-variadic-function-arguments';
 import postcssContentAltText from '@csstools/postcss-content-alt-text';
+import postcssContrastColorFunction from '@csstools/postcss-contrast-color-function';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomSelectors from 'postcss-custom-selectors';
@@ -80,6 +81,7 @@ export const pluginsById = new Map(
 		['color-mix', postcssColorMixFunction],
 		['color-mix-variadic-function-arguments', postcssColorMixVariadicFunctionArguments],
 		['content-alt-text', postcssContentAltText],
+		['contrast-color-function', postcssContrastColorFunction],
 		['custom-media-queries', postcssCustomMedia],
 		['custom-properties', postcssCustomProperties],
 		['custom-selectors', postcssCustomSelectors],

@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Use `--engine-strict=false` when testing `npm install`
+- Use `--ignore-scripts` when testing `npm install`
 
 ### 1.0.1
 
