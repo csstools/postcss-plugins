@@ -52,12 +52,12 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"browserslist": "^4.26.0",
+		"browserslist": "^4.26.2",
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"browserslist": "^4.26.0"
+		"browserslist": "^4.26.2"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
