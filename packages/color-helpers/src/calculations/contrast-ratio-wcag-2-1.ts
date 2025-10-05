@@ -3,7 +3,7 @@ import type { Color } from '../types/color';
 function luminance(color: Color): number {
 	// https://www.w3.org/TR/WCAG21/#dfn-relative-luminance
 	const [lumR, lumG, lumB] = color.map(component => {
-		return component <= 0.03928
+		return component <= 0.04045
 			? component / 12.92
 			: Math.pow((component + 0.055) / 1.055, 2.4);
 	});
