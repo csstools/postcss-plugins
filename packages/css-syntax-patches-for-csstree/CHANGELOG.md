@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- [Remove unused peer dependency on `postcss`](https://github.com/csstools/postcss-plugins/pull/1708) by @jnoordsij
+
 ### 1.0.14
 
 _June 10, 2025_
