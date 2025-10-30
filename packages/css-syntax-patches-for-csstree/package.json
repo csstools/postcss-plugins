@@ -35,12 +35,10 @@
 		"README.md",
 		"dist"
 	],
-	"peerDependencies": {
-		"postcss": "^8.4"
-	},
 	"devDependencies": {
 		"@webref/css": "6.22.0",
-		"css-tree": "^3.1.0"
+		"css-tree": "^3.1.0",
+		"postcss": "^8.4.0"
 	},
 	"scripts": {
 		"build": "node ./scripts/index.mjs",
