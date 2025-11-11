@@ -5,6 +5,12 @@
 - Update `@webref/css` to [`v8.0.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.0.1)
 
 
+### 1.0.15
+
+_October 30, 2025_
+
+- [Remove unused peer dependency on `postcss`](https://github.com/csstools/postcss-plugins/pull/1708) by @jnoordsij
+
 ### 1.0.14
 
 _June 10, 2025_

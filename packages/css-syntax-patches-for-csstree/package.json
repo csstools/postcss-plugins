@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-syntax-patches-for-csstree",
 	"description": "CSS syntax patches for CSS tree",
-	"version": "1.0.14",
+	"version": "1.0.15",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -35,9 +35,6 @@
 		"README.md",
 		"dist"
 	],
-	"peerDependencies": {
-		"postcss": "^8.4"
-	},
 	"devDependencies": {
 		"@webref/css": "8.0.1",
 		"css-tree": "^3.1.0"
