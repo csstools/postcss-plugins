@@ -20,7 +20,7 @@ jobs:
       # Enable annotations only for node 24 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [18, 20, 22, 24]
+        node: [18, 20, 22, 24, 25]
         include:
         - os: macos-latest
           node: 24
