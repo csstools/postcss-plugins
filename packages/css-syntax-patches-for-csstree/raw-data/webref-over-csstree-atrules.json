@@ -145,48 +145,6 @@
 	},
 	"font-feature-values": {
 		"descriptors": {
-			"@annotation": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@annotation { <declaration-list> }",
-				"comment": ""
-			},
-			"@character-variant": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@character-variant { <declaration-list> }",
-				"comment": ""
-			},
-			"@historical-forms": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@historical-forms { <declaration-list> }",
-				"comment": ""
-			},
-			"@ornaments": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@ornaments { <declaration-list> }",
-				"comment": ""
-			},
-			"@styleset": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@styleset { <declaration-list> }",
-				"comment": ""
-			},
-			"@stylistic": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@stylistic { <declaration-list> }",
-				"comment": ""
-			},
-			"@swash": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "@swash { <declaration-list> }",
-				"comment": ""
-			},
 			"font-display": {
 				"type": "added",
 				"syntax-b": "",

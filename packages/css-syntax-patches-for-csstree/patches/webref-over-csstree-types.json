@@ -1,4 +1,15 @@
 {
+	"alpha()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "alpha( [ from <color> ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "alpha( [ from <color> ] [ / [ <alpha-value> | none ] ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"anchor-size()": {
 		"type": "modified",
 		"comment": "",
@@ -99,6 +110,39 @@
 					"value": "anchor(10px)"
 				}
 			]
+		}
+	},
+	"anchored-feature": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "fallback : <'position-try-fallbacks'>",
+		"syntax-m": "fallback : <'position-try-fallbacks'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"anchored-in-parens": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "( <anchored-query> ) | ( <anchored-feature> ) | <general-enclosed>",
+		"syntax-m": "( <anchored-query> ) | ( <anchored-feature> ) | <general-enclosed>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"anchored-query": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "not <anchored-in-parens> | <anchored-in-parens> [ [ and <anchored-in-parens> ]* | [ or <anchored-in-parens> ]* ] | <anchored-feature>",
+		"syntax-m": "not <anchored-in-parens> | <anchored-in-parens> [ [ and <anchored-in-parens> ]* | [ or <anchored-in-parens> ]* ] | <anchored-feature>",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"angle-percentage": {
@@ -214,6 +258,17 @@
 			"failing": []
 		}
 	},
+	"animation-action": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "none | play | pause | play-forwards | play-backwards | pause | reset | replay",
+		"syntax-m": "none | play | pause | play-forwards | play-backwards | pause | reset | replay",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"arc-command": {
 		"type": "added",
 		"comment": "",
@@ -287,8 +342,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "type( <syntax> ) | raw-string | <attr-unit>",
-		"syntax-m": "type( <syntax> ) | raw-string | <attr-unit>",
+		"syntax-a": "type( <syntax> ) | raw-string | number | <attr-unit>",
+		"syntax-m": "type( <syntax> ) | raw-string | number | <attr-unit>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -434,12 +489,12 @@
 			"failing": []
 		}
 	},
-	"basic-shape": {
-		"type": "modified",
-		"comment": "https://github.com/w3c/csswg-drafts/issues/10812",
-		"syntax-b": "<inset()> | <xywh()> | <rect()> | <circle()> | <ellipse()> | <polygon()> | <path()>",
-		"syntax-a": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( <radial-size>? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
-		"syntax-m": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? ) | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | circle( <radial-size>? [ at <position> ]? ) | ellipse( [ <radial-size>{2} ]? [ at <position> ]? ) | polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# ) | path( <'fill-rule'>? , <string> )",
+	"basic-shape-rect": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<inset()> | <rect()> | <xywh()>",
+		"syntax-m": "<inset()> | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -461,33 +516,54 @@
 				{
 					"property": "clip-path",
 					"value": "path('M 50,245 A 160,160 0,0,1 360,120 z')"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(auto auto auto auto)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(0 1% auto 3% round 0 1px)"
 				}
 			],
 			"failing": [
 				{
 					"property": "clip-path",
 					"value": "inset(foo)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1px 2px 3px 4px 5px)"
+				},
+				{
+					"property": "offset-path",
+					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
-		}
-	},
-	"basic-shape-rect": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<inset()> | <rect()> | <xywh()>",
-		"syntax-m": "<inset()> | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
-		"tests": {
-			"passing": [],
-			"failing": []
 		}
 	},
 	"bg-clip": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<box> | border | text",
-		"syntax-a": "<visual-box> | border-area | text",
-		"syntax-m": "<visual-box> | border-area | text",
+		"syntax-a": "<visual-box> | [ border-area || text ]",
+		"syntax-m": "<visual-box> | [ border-area || text ] | border",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -508,8 +584,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <box> || <box>",
-		"syntax-a": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>",
-		"syntax-m": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>",
+		"syntax-a": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <bg-clip> || <visual-box>",
+		"syntax-m": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <bg-clip> || <visual-box>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -537,79 +613,34 @@
 			"failing": []
 		}
 	},
-	"border-style": {
-		"type": "added",
+	"blur()": {
+		"type": "modified",
 		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset",
-		"syntax-m": "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset",
+		"syntax-b": "blur( <length> )",
+		"syntax-a": "blur( <length>? )",
+		"syntax-m": "blur( <length>? )",
 		"tests": {
 			"passing": [],
 			"failing": []
 		}
 	},
-	"border-width": {
-		"type": "added",
+	"brightness()": {
+		"type": "modified",
 		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "thin | medium | thick | <length>",
-		"syntax-m": "thin | medium | thick | <length>",
+		"syntax-b": "brightness( <number-percentage> )",
+		"syntax-a": "brightness( [ <number> | <percentage> ]? )",
+		"syntax-m": "brightness( <number-percentage> )",
 		"tests": {
 			"passing": [],
 			"failing": []
 		}
 	},
-	"bottom": {
-		"type": "modified",
+	"calc-interpolate()": {
+		"type": "added",
 		"comment": "",
-		"syntax-b": "<length> | auto",
-		"syntax-a": "auto",
-		"syntax-m": "<length-percentage> | auto",
-		"tests": {
-			"passing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(auto auto auto auto)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px)"
-				}
-			],
-			"failing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms)"
-				}
-			]
-		}
-	},
-	"box": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "border-box | padding-box | content-box",
-		"syntax-a": "content-box | padding-box | border-box | margin-box | fill-box | stroke-box | view-box",
-		"syntax-m": "| margin-box | fill-box | stroke-box | view-box",
+		"syntax-b": "",
+		"syntax-a": "calc-interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? ] , <input-position>{1,2} : <calc-sum> , [ <easing-function>? , <input-position>{1,2} : <calc-sum> ]#? )",
+		"syntax-m": "calc-interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? ] , <input-position>{1,2} : <calc-sum> , [ <easing-function>? , <input-position>{1,2} : <calc-sum> ]#? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -630,8 +661,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "calc-mix( <progress> , <calc-sum> , <calc-sum> )",
-		"syntax-m": "calc-mix( <progress> , <calc-sum> , <calc-sum> )",
+		"syntax-a": "calc-mix( [ <calc-sum> <percentage [0,100]>? ]# )",
+		"syntax-m": "calc-mix( [ <calc-sum> <percentage [0,100]>? ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -692,6 +723,17 @@
 			"failing": []
 		}
 	},
+	"circle()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "circle( [ <shape-radius> ]? [ at <position> ]? )",
+		"syntax-a": "circle( <radial-size>? [ at <position> ]? )",
+		"syntax-m": "circle( <radial-size>? [ at <position> ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"clamp()": {
 		"type": "modified",
 		"comment": "",
@@ -743,8 +785,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>",
-		"syntax-a": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <ictcp()> | <jzazbz()> | <jzczhz()> | <color()>",
-		"syntax-m": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <ictcp()> | <jzazbz()> | <jzczhz()> | <color()>",
+		"syntax-a": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <ictcp()> | <jzazbz()> | <jzczhz()> | <alpha()> | <color()>",
+		"syntax-m": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <ictcp()> | <jzazbz()> | <jzczhz()> | <alpha()> | <color()>",
 		"tests": {
 			"passing": [
 				{
@@ -758,6 +800,17 @@
 					"value": "ictcp(foo -0.2643 -0.0625)"
 				}
 			]
+		}
+	},
+	"color-interpolate()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "color-interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? && <color-interpolation-method>? ] , <input-position>{1,2} : <color> , [ [ <easing-function> || <color-interpolation-method> ]? , <input-position>{1,2} : <color> ]#? )",
+		"syntax-m": "color-interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? && <color-interpolation-method>? ] , <input-position>{1,2} : <color> , [ [ <easing-function> || <color-interpolation-method> ]? , <input-position>{1,2} : <color> ]#? )",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"color-layers()": {
@@ -775,8 +828,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]#{2} )",
-		"syntax-a": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )",
-		"syntax-m": "color-mix( <color-interpolation-method> , [ <color> && <percentage [0,100]>? ]# )",
+		"syntax-a": "color-mix( <color-interpolation-method>? , [ <color> && <percentage [0,100]>? ]# )",
+		"syntax-m": "color-mix( <color-interpolation-method>? , [ <color> && <percentage [0,100]>? ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1007,8 +1060,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> ]+",
-		"syntax-a": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+",
-		"syntax-m": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <counter()> | <counters()> ]+",
+		"syntax-a": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> ]+",
+		"syntax-m": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> | <string()> | <content()> ]+",
 		"tests": {
 			"passing": [
 				{
@@ -1056,7 +1109,7 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "contrast-color( <color> )",
+		"syntax-a": "contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast> , <color># ] ] )",
 		"syntax-m": "contrast-color( <color> )",
 		"tests": {
 			"passing": [
@@ -1087,6 +1140,17 @@
 					"value": "contrast-color(red red)"
 				}
 			]
+		}
+	},
+	"contrast()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "contrast( [ <number-percentage> ] )",
+		"syntax-a": "contrast( [ <number> | <percentage> ]? )",
+		"syntax-m": "contrast( [ <number> | <percentage> ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"control-point": {
@@ -1155,8 +1219,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )",
-		"syntax-m": "round | scoop | bevel | notch | square | squircle | superellipse( <number [-∞,∞]> | infinity | -infinity )",
+		"syntax-a": "round | scoop | bevel | notch | square | squircle | <superellipse()>",
+		"syntax-m": "round | scoop | bevel | notch | square | squircle | <superellipse()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1173,17 +1237,6 @@
 			"failing": []
 		}
 	},
-	"counter-style-name": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<custom-ident>",
-		"syntax-a": "decimal | decimal-leading-zero | arabic-indic | armenian | upper-armenian | lower-armenian | bengali | cambodian | khmer | cjk-decimal | devanagari | georgian | gujarati | gurmukhi | hebrew | kannada | lao | malayalam | mongolian | myanmar | oriya | persian | lower-roman | upper-roman | tamil | telugu | thai | tibetan | lower-alpha | lower-latin | upper-alpha | upper-latin | lower-greek | hiragana | hiragana-iroha | katakana | katakana-iroha | disc | circle | square | disclosure-open | disclosure-closed | cjk-earthly-branch | cjk-heavenly-stem | japanese-informal | japanese-formal | korean-hangul-formal | korean-hanja-informal | korean-hanja-formal | ethiopic-numeric",
-		"syntax-m": "| decimal | decimal-leading-zero | arabic-indic | armenian | upper-armenian | lower-armenian | bengali | cambodian | khmer | cjk-decimal | devanagari | georgian | gujarati | gurmukhi | hebrew | kannada | lao | malayalam | mongolian | myanmar | oriya | persian | lower-roman | upper-roman | tamil | telugu | thai | tibetan | lower-alpha | lower-latin | upper-alpha | upper-latin | lower-greek | hiragana | hiragana-iroha | katakana | katakana-iroha | disc | circle | square | disclosure-open | disclosure-closed | cjk-earthly-branch | cjk-heavenly-stem | japanese-informal | japanese-formal | korean-hangul-formal | korean-hanja-informal | korean-hanja-formal | ethiopic-numeric",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"cross-fade()": {
 		"type": "modified",
 		"comment": "",
@@ -1195,12 +1248,12 @@
 			"failing": []
 		}
 	},
-	"crossorigin-modifier": {
+	"cross-origin-modifier": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "crossorigin( anonymous | use-credentials )",
-		"syntax-m": "crossorigin( anonymous | use-credentials )",
+		"syntax-a": "cross-origin( anonymous | use-credentials )",
+		"syntax-m": "cross-origin( anonymous | use-credentials )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1234,6 +1287,28 @@
 		"syntax-b": "",
 		"syntax-a": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )",
 		"syntax-m": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"cursor-image": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <url> | <url-set> ] [ <number>{2} ]?",
+		"syntax-m": "[ <url> | <url-set> ] [ <number>{2} ]?",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"cursor-predefined": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | grabbing | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out",
+		"syntax-m": "auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | grabbing | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1295,12 +1370,12 @@
 			"failing": []
 		}
 	},
-	"deprecated-color": {
+	"default-value": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText",
-		"syntax-m": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText",
+		"syntax-a": "<declaration-value>",
+		"syntax-m": "<declaration-value>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1315,6 +1390,51 @@
 		"tests": {
 			"passing": [],
 			"failing": []
+		}
+	},
+	"drop-shadow()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "drop-shadow( <length>{2,3} <color>? )",
+		"syntax-a": "drop-shadow( [ <color>? && <length>{2,3} ] )",
+		"syntax-m": "drop-shadow( [ <color>? && <length>{2,3} ] )",
+		"tests": {
+			"passing": [
+				{
+					"property": "filter",
+					"value": "drop-shadow(5px 5px)"
+				},
+				{
+					"property": "filter",
+					"value": "drop-shadow(5px 5px 15px)"
+				},
+				{
+					"property": "filter",
+					"value": "drop-shadow(5px 5px red)"
+				},
+				{
+					"property": "filter",
+					"value": "drop-shadow(5px 5px 15px red)"
+				},
+				{
+					"property": "filter",
+					"value": "drop-shadow(#ee2233 0.5rem 0.5rem 1rem)"
+				}
+			],
+			"failing": [
+				{
+					"property": "filter",
+					"value": "drop-shadow(5px red 5px)"
+				},
+				{
+					"property": "filter",
+					"value": "drop-shadow(5px red)"
+				},
+				{
+					"property": "filter",
+					"value": "drop-shadow(red)"
+				}
+			]
 		}
 	},
 	"dynamic-range-limit-mix()": {
@@ -1350,12 +1470,45 @@
 			"failing": []
 		}
 	},
+	"ellipse()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )",
+		"syntax-a": "ellipse( <radial-size>? [ at <position> ]? )",
+		"syntax-m": "ellipse( [ [ <radial-size>{2} ]? [ at <position> ]? ] )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"env()": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "env( <custom-ident> , <declaration-value>? )",
 		"syntax-a": "env( <custom-ident> <integer [0,∞]>* , <declaration-value>? )",
 		"syntax-m": "env( <custom-ident> <integer [0,∞]>* , <declaration-value>? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"event-trigger-event": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "activate | click | touch | dblclick | keypress( <string> ) | . . .",
+		"syntax-m": "activate | click | touch | dblclick | keypress( <string> ) | . . .",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"fade()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "fade( [ <length-percentage> ] )",
+		"syntax-m": "fade( [ <length-percentage> ] )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1409,8 +1562,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'background-color'> || <bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <box> || <box>",
-		"syntax-a": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box> || <'background-color'>",
-		"syntax-m": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box> || <'background-color'>",
+		"syntax-a": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <bg-clip> || <visual-box> || <'background-color'>",
+		"syntax-m": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <bg-clip> || <visual-box> || <'background-color'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1422,6 +1575,17 @@
 		"syntax-b": "",
 		"syntax-a": "first-valid( <declaration-value># )",
 		"syntax-m": "first-valid( <declaration-value># )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"fit-content()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "fit-content( <length-percentage> )",
+		"syntax-m": "fit-content( <length-percentage> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1504,6 +1668,17 @@
 			"failing": []
 		}
 	},
+	"form-control-identifier": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "select",
+		"syntax-m": "select",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"frequency-percentage": {
 		"type": "modified",
 		"comment": "",
@@ -1519,8 +1694,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
-		"syntax-m": "<custom-property-name> <css-type>? [ : <declaration-value> ]?",
+		"syntax-a": "<custom-property-name> <css-type>? [ : <default-value> ]?",
+		"syntax-m": "<custom-property-name> <css-type>? [ : <default-value> ]?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1625,6 +1800,17 @@
 			"failing": []
 		}
 	},
+	"grayscale()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "grayscale( <number-percentage> )",
+		"syntax-a": "grayscale( [ <number> | <percentage> ]? )",
+		"syntax-m": "grayscale( [ <number> | <percentage> ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"grid-line": {
 		"type": "modified",
 		"comment": "",
@@ -1695,6 +1881,17 @@
 					"value": "hsla(20deg 10 5)"
 				}
 			],
+			"failing": []
+		}
+	},
+	"hue-rotate()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "hue-rotate( <angle> )",
+		"syntax-a": "hue-rotate( [ <angle> | <zero> ]? )",
+		"syntax-m": "hue-rotate( [ <angle> | <zero> ]? )",
+		"tests": {
+			"passing": [],
 			"failing": []
 		}
 	},
@@ -1979,12 +2176,45 @@
 			"failing": []
 		}
 	},
+	"input-position": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<percentage> | <number> | <dimension>",
+		"syntax-m": "<percentage> | <number> | <dimension>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"integrity-modifier": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "integrity( <string> )",
 		"syntax-m": "integrity( <string> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"interpolate()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? ] , <input-position>{1,2} : <whole-value> , [ <easing-function>? , <input-position>{1,2} : <whole-value> ]#? ) | interpolate( <progress-source> && [ by <easing-function> ]? && <easing-function>? of <keyframes-name> )",
+		"syntax-m": "interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? ] , <input-position>{1,2} : <whole-value> , [ <easing-function>? , <input-position>{1,2} : <whole-value> ]#? ) | interpolate( <progress-source> && [ by <easing-function> ]? && <easing-function>? of <keyframes-name> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"invert()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "invert( <number-percentage> )",
+		"syntax-a": "invert( [ <number> | <percentage> ]? )",
+		"syntax-m": "invert( [ <number> | <percentage> ]? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2123,51 +2353,6 @@
 				{
 					"property": "color",
 					"value": "lch(20, 10, 5, 0.5)"
-				}
-			]
-		}
-	},
-	"left": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<length> | auto",
-		"syntax-a": "auto",
-		"syntax-m": "<length-percentage> | auto",
-		"tests": {
-			"passing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(auto auto auto auto)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px)"
-				}
-			],
-			"failing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms)"
 				}
 			]
 		}
@@ -2524,17 +2709,6 @@
 			"failing": []
 		}
 	},
-	"link-param": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "param( <custom-property-name> <declaration-value>? )",
-		"syntax-m": "param( <custom-property-name> <declaration-value>? )",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"marker-ref": {
 		"type": "added",
 		"comment": "",
@@ -2656,12 +2830,12 @@
 			"failing": []
 		}
 	},
-	"mix()": {
-		"type": "added",
-		"comment": "TODO: csstree doesn't support <whole-value> https://github.com/csstree/csstree/issues/300",
-		"syntax-b": "",
-		"syntax-a": "mix( <progress> , <whole-value> , <whole-value> ) | mix( <progress> && of <keyframes-name> )",
-		"syntax-m": "mix( <progress> , <any-value> , <any-value> ) | mix( <progress> && of <keyframes-name> )",
+	"minmax()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "minmax( [ <length-percentage> | min-content | max-content | auto ] , [ <length-percentage> | <flex> | min-content | max-content | auto ] )",
+		"syntax-a": "minmax( min , max )",
+		"syntax-m": "minmax( [ <length-percentage> | min-content | max-content | auto ] , [ <length-percentage> | <flex> | min-content | max-content | auto ] )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2885,31 +3059,6 @@
 			"failing": []
 		}
 	},
-	"named-color": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "transparent | aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen",
-		"syntax-a": "aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen",
-		"syntax-m": "transparent | aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen",
-		"tests": {
-			"passing": [
-				{
-					"property": "color",
-					"value": "transparent"
-				},
-				{
-					"property": "color",
-					"value": "aliceblue"
-				}
-			],
-			"failing": [
-				{
-					"property": "color",
-					"value": "foo"
-				}
-			]
-		}
-	},
 	"number-optional-number": {
 		"type": "added",
 		"comment": "",
@@ -3014,23 +3163,23 @@
 			"failing": []
 		}
 	},
+	"opacity()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "opacity( [ <number-percentage> ] )",
+		"syntax-a": "opacity( [ <number> | <percentage> ]? )",
+		"syntax-m": "opacity( [ <number> | <percentage> ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"opentype-tag": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "<string>",
 		"syntax-m": "<string>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"padding-width": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<length> | <percentage>",
-		"syntax-m": "<length> | <percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3109,12 +3258,87 @@
 			"failing": []
 		}
 	},
+	"param()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "param( <dashed-ident> , <declaration-value>? )",
+		"syntax-m": "param( <dashed-ident> , <declaration-value>? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"path()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "path( [ <fill-rule> , ]? <string> )",
+		"syntax-a": "path( <'fill-rule'>? , <string> )",
+		"syntax-m": "path( <'fill-rule'>? , <string> )",
+		"tests": {
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "path('M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')"
+				},
+				{
+					"property": "clip-path",
+					"value": "path(evenodd,'M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')"
+				}
+			],
+			"failing": []
+		}
+	},
+	"pointer-axis": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "block | inline | x | y",
+		"syntax-m": "block | inline | x | y",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"pointer-source": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "root | nearest | self",
+		"syntax-m": "root | nearest | self",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"pointer()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "pointer( [ <pointer-source> || <pointer-axis> ]? )",
+		"syntax-m": "pointer( [ <pointer-source> || <pointer-axis> ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"points": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "[ <number>+ ]#",
 		"syntax-m": "[ <number>+ ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"polygon()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )",
+		"syntax-a": "polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# )",
+		"syntax-m": "polygon( <'fill-rule'>? [ round <length> ]? , [ <length-percentage> <length-percentage> ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3151,6 +3375,28 @@
 					"value": "ray(50deg closest-corner contain at foo bar)"
 				}
 			]
+		}
+	},
+	"position-area": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | x-self-start | x-self-end | span-x-self-start | span-x-self-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | y-self-start | y-self-end | span-y-self-start | span-y-self-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]",
+		"syntax-a": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | self-x-start | self-x-end | span-self-x-start | span-self-x-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | self-y-start | self-y-end | span-self-y-start | span-self-y-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]",
+		"syntax-m": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | self-x-start | self-x-end | span-self-x-start | span-self-x-end | span-all ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | self-y-start | self-y-end | span-self-y-start | span-self-y-end | span-all ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all ] | [ start | center | end | span-start | span-end | span-all ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all ]{1,2} ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"position-area-query": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | self-x-start | self-x-end | span-self-x-start | span-self-x-end | span-all | any ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | self-y-start | self-y-end | span-self-y-start | span-self-y-end | span-all | any ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all | any ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all | any ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all | any ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all | any ] | [ start | center | end | span-start | span-end | span-all | any ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all | any ]{1,2} ]",
+		"syntax-m": "[ [ left | center | right | span-left | span-right | x-start | x-end | span-x-start | span-x-end | self-x-start | self-x-end | span-self-x-start | span-self-x-end | span-all | any ] || [ top | center | bottom | span-top | span-bottom | y-start | y-end | span-y-start | span-y-end | self-y-start | self-y-end | span-self-y-start | span-self-y-end | span-all | any ] | [ block-start | center | block-end | span-block-start | span-block-end | span-all | any ] || [ inline-start | center | inline-end | span-inline-start | span-inline-end | span-all | any ] | [ self-block-start | center | self-block-end | span-self-block-start | span-self-block-end | span-all | any ] || [ self-inline-start | center | self-inline-end | span-self-inline-start | span-self-inline-end | span-all | any ] | [ start | center | end | span-start | span-end | span-all | any ]{1,2} | [ self-start | center | self-end | span-self-start | span-self-end | span-all | any ]{1,2} ]",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"position-four": {
@@ -3201,19 +3447,19 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020",
-		"syntax-a": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
-		"syntax-m": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
+		"syntax-a": "srgb | srgb-linear | display-p3 | display-p3-linear | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
+		"syntax-m": "srgb | srgb-linear | display-p3 | display-p3-linear | a98-rgb | prophoto-rgb | rec2020 | rec2100-pq | rec2100-hlg | rec2100-linear",
 		"tests": {
 			"passing": [],
 			"failing": []
 		}
 	},
-	"progress": {
+	"progress-source": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ <percentage-token> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
-		"syntax-m": "[ <percentage-token> | <number> | <'animation-timeline'> ] && [ by <easing-function> ]?",
+		"syntax-a": "<percentage> | <number> | <dimension> | <'animation-timeline'>",
+		"syntax-m": "<percentage> | <number> | <dimension> | <'animation-timeline'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3419,7 +3665,7 @@
 	},
 	"ray()": {
 		"type": "modified",
-		"comment": "Without the extra group the order seems to matter anyway, possibly a bug in css-tree or the syntax definition. See https://github.com/w3c/fxtf-drafts/pull/573",
+		"comment": "",
 		"syntax-b": "ray( <angle> && <ray-size>? && contain? && [ at <position> ]? )",
 		"syntax-a": "ray( [ <angle> && <ray-size>? && contain? && [ at <position> ]? ] )",
 		"syntax-m": "ray( [ <angle> && <ray-size>? && contain? && [ at <position> ]? ] )",
@@ -3462,12 +3708,23 @@
 			]
 		}
 	},
-	"referrerpolicy-modifier": {
+	"rectangular-color-space": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65",
+		"syntax-a": "srgb | srgb-linear | display-p3 | display-p3-linear | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | <xyz-space>",
+		"syntax-m": "srgb | srgb-linear | display-p3 | display-p3-linear | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | <xyz-space>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"referrer-policy-modifier": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "referrerpolicy( no-referrer | no-referrer-when-downgrade | same-origin | origin | strict-origin | origin-when-cross-origin | strict-origin-when-cross-origin | unsafe-url )",
-		"syntax-m": "referrerpolicy( no-referrer | no-referrer-when-downgrade | same-origin | origin | strict-origin | origin-when-cross-origin | strict-origin-when-cross-origin | unsafe-url )",
+		"syntax-a": "referrer-policy( no-referrer | no-referrer-when-downgrade | same-origin | origin | strict-origin | origin-when-cross-origin | strict-origin-when-cross-origin | unsafe-url )",
+		"syntax-m": "referrer-policy( no-referrer | no-referrer-when-downgrade | same-origin | origin | strict-origin | origin-when-cross-origin | strict-origin-when-cross-origin | unsafe-url )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3602,8 +3859,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<crossorigin-modifier> | <integrity-modifier> | <referrerpolicy-modifier>",
-		"syntax-m": "<crossorigin-modifier> | <integrity-modifier> | <referrerpolicy-modifier>",
+		"syntax-a": "<cross-origin-modifier> | <integrity-modifier> | <referrer-policy-modifier>",
+		"syntax-m": "<cross-origin-modifier> | <integrity-modifier> | <referrer-policy-modifier>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3649,51 +3906,6 @@
 			"failing": []
 		}
 	},
-	"right": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<length> | auto",
-		"syntax-a": "auto",
-		"syntax-m": "<length-percentage> | auto",
-		"tests": {
-			"passing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(auto auto auto auto)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px)"
-				}
-			],
-			"failing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms)"
-				}
-			]
-		}
-	},
 	"round()": {
 		"type": "modified",
 		"comment": "",
@@ -3716,12 +3928,12 @@
 			"failing": []
 		}
 	},
-	"scroll-button-direction": {
-		"type": "added",
+	"saturate()": {
+		"type": "modified",
 		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "up | down | left | right | block-start | block-end | inline-start | inline-end | prev | next",
-		"syntax-m": "up | down | left | right | block-start | block-end | inline-start | inline-end | prev | next",
+		"syntax-b": "saturate( <number-percentage> )",
+		"syntax-a": "saturate( [ <number> | <percentage> ]? )",
+		"syntax-m": "saturate( [ <number> | <percentage> ]? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3797,12 +4009,23 @@
 			]
 		}
 	},
+	"sepia()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "sepia( <number-percentage> )",
+		"syntax-a": "sepia( [ <number> | <percentage> ]? )",
+		"syntax-m": "sepia( [ <number> | <percentage> ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"shadow": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "inset? && <length>{2,4} && <color>?",
-		"syntax-a": "<color>? && [ <length>{2} <length [0,∞]>? <length>? ] && inset?",
-		"syntax-m": "<color>? && [ <length>{2} <length [0,∞]>? <length>? ] && inset?",
+		"syntax-a": "<color>? && [ <length>{2} [ <length [0,∞]> <length>? ]? ] && inset?",
+		"syntax-m": "<color>? && [ <length>{2} [ <length [0,∞]> <length>? ]? ] && inset?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3812,8 +4035,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<box> | margin-box",
-		"syntax-a": "<visual-box> | margin-box",
-		"syntax-m": "<visual-box> | margin-box",
+		"syntax-a": "<visual-box> | margin-box | half-border-box",
+		"syntax-m": "<visual-box> | margin-box | half-border-box",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3852,28 +4075,6 @@
 			"failing": []
 		}
 	},
-	"single-animation-trigger": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<single-animation-trigger-behavior> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]",
-		"syntax-m": "<single-animation-trigger-behavior> || [ none | auto | [ [ <dashed-ident> | <scroll()> | <view()> ] [ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]{0,4} ] ]",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"single-animation-trigger-behavior": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "once | repeat | alternate | state",
-		"syntax-m": "once | repeat | alternate | state",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"size-keyword": {
 		"type": "added",
 		"comment": "",
@@ -3891,6 +4092,28 @@
 		"syntax-b": "",
 		"syntax-a": "smooth [ [ to <position> [ with <control-point> ]? ] | [ by <coordinate-pair> [ with <relative-control-point> ]? ] ]",
 		"syntax-m": "smooth [ [ to <position> [ with <control-point> ]? ] | [ by <coordinate-pair> [ with <relative-control-point> ]? ] ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"snap-block()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "snap-block( <length> , [ start | end | near ]? )",
+		"syntax-m": "snap-block( <length> , [ start | end | near ]? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"snap-inline()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "snap-inline( <length> , [ left | right | near ]? )",
+		"syntax-m": "snap-inline( <length> , [ left | right | near ]? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4033,6 +4256,61 @@
 			"failing": []
 		}
 	},
+	"style-feature": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "<declaration>",
+		"syntax-a": "<style-feature-plain> | <style-feature-boolean> | <style-range>",
+		"syntax-m": "<style-feature-plain> | <style-feature-boolean> | <style-range>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"style-feature-boolean": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<style-feature-name>",
+		"syntax-m": "<style-feature-name>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"style-feature-name": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<dashed-ident> | -moz-appearance | -moz-background-clip | -moz-binding | -moz-border-bottom-colors | -moz-border-left-colors | -moz-border-radius-bottomleft | -moz-border-radius-bottomright | -moz-border-radius-topleft | -moz-border-radius-topright | -moz-border-right-colors | -moz-border-top-colors | -moz-context-properties | -moz-control-character-visibility | -moz-float-edge | -moz-force-broken-image-icon | -moz-image-region | -moz-orient | -moz-osx-font-smoothing | -moz-outline-radius | -moz-outline-radius-bottomleft | -moz-outline-radius-bottomright | -moz-outline-radius-topleft | -moz-outline-radius-topright | -moz-stack-sizing | -moz-text-blink | -moz-user-focus | -moz-user-input | -moz-user-modify | -moz-user-select | -moz-window-dragging | -moz-window-shadow | -ms-accelerator | -ms-block-progression | -ms-content-zoom-chaining | -ms-content-zoom-limit | -ms-content-zoom-limit-max | -ms-content-zoom-limit-min | -ms-content-zoom-snap | -ms-content-zoom-snap-points | -ms-content-zoom-snap-type | -ms-content-zooming | -ms-filter | -ms-flex-align | -ms-flex-item-align | -ms-flex-line-pack | -ms-flex-negative | -ms-flex-order | -ms-flex-pack | -ms-flex-positive | -ms-flex-preferred-size | -ms-flow-from | -ms-flow-into | -ms-grid-column-align | -ms-grid-columns | -ms-grid-row-align | -ms-grid-rows | -ms-high-contrast-adjust | -ms-hyphenate-limit-chars | -ms-hyphenate-limit-last | -ms-hyphenate-limit-lines | -ms-hyphenate-limit-zone | -ms-ime-align | -ms-interpolation-mode | -ms-overflow-style | -ms-scroll-chaining | -ms-scroll-limit | -ms-scroll-limit-x-max | -ms-scroll-limit-x-min | -ms-scroll-limit-y-max | -ms-scroll-limit-y-min | -ms-scroll-rails | -ms-scroll-snap-points-x | -ms-scroll-snap-points-y | -ms-scroll-snap-type | -ms-scroll-snap-x | -ms-scroll-snap-y | -ms-scroll-translation | -ms-scrollbar-3dlight-color | -ms-scrollbar-arrow-color | -ms-scrollbar-base-color | -ms-scrollbar-darkshadow-color | -ms-scrollbar-face-color | -ms-scrollbar-highlight-color | -ms-scrollbar-shadow-color | -ms-scrollbar-track-color | -ms-text-autospace | -ms-touch-select | -ms-user-select | -ms-wrap-flow | -ms-wrap-margin | -ms-wrap-through | -webkit-appearance | -webkit-background-clip | -webkit-border-before | -webkit-border-before-color | -webkit-border-before-style | -webkit-border-before-width | -webkit-box-reflect | -webkit-column-break-after | -webkit-column-break-before | -webkit-column-break-inside | -webkit-font-smoothing | -webkit-line-clamp | -webkit-mask | -webkit-mask-attachment | -webkit-mask-box-image | -webkit-mask-clip | -webkit-mask-composite | -webkit-mask-image | -webkit-mask-origin | -webkit-mask-position | -webkit-mask-position-x | -webkit-mask-position-y | -webkit-mask-repeat | -webkit-mask-repeat-x | -webkit-mask-repeat-y | -webkit-mask-size | -webkit-overflow-scrolling | -webkit-print-color-adjust | -webkit-tap-highlight-color | -webkit-text-fill-color | -webkit-text-security | -webkit-text-stroke | -webkit-text-stroke-color | -webkit-text-stroke-width | -webkit-touch-callout | -webkit-user-drag | -webkit-user-modify | -webkit-user-select | accent-color | align-content | align-items | align-self | align-tracks | alignment-baseline | all | anchor-name | anchor-scope | animation | animation-composition | animation-delay | animation-direction | animation-duration | animation-fill-mode | animation-iteration-count | animation-name | animation-play-state | animation-range | animation-range-center | animation-range-end | animation-range-start | animation-timeline | animation-timing-function | animation-trigger | appearance | aspect-ratio | azimuth | backdrop-filter | backface-visibility | background | background-attachment | background-blend-mode | background-clip | background-color | background-image | background-origin | background-position | background-position-block | background-position-inline | background-position-x | background-position-y | background-repeat | background-repeat-block | background-repeat-inline | background-repeat-x | background-repeat-y | background-size | background-tbd | baseline-shift | baseline-source | behavior | block-ellipsis | block-size | block-step | block-step-align | block-step-insert | block-step-round | block-step-size | bookmark-label | bookmark-level | bookmark-state | border | border-block | border-block-color | border-block-end | border-block-end-clip | border-block-end-color | border-block-end-radius | border-block-end-style | border-block-end-width | border-block-start | border-block-start-clip | border-block-start-color | border-block-start-radius | border-block-start-style | border-block-start-width | border-block-style | border-block-width | border-bottom | border-bottom-clip | border-bottom-color | border-bottom-left-radius | border-bottom-radius | border-bottom-right-radius | border-bottom-style | border-bottom-width | border-boundary | border-clip | border-collapse | border-color | border-end-end-radius | border-end-start-radius | border-image | border-image-outset | border-image-repeat | border-image-slice | border-image-source | border-image-width | border-inline | border-inline-color | border-inline-end | border-inline-end-clip | border-inline-end-color | border-inline-end-radius | border-inline-end-style | border-inline-end-width | border-inline-start | border-inline-start-clip | border-inline-start-color | border-inline-start-radius | border-inline-start-style | border-inline-start-width | border-inline-style | border-inline-width | border-left | border-left-clip | border-left-color | border-left-radius | border-left-style | border-left-width | border-limit | border-radius | border-right | border-right-clip | border-right-color | border-right-radius | border-right-style | border-right-width | border-shape | border-spacing | border-start-end-radius | border-start-start-radius | border-style | border-top | border-top-clip | border-top-color | border-top-left-radius | border-top-radius | border-top-right-radius | border-top-style | border-top-width | border-width | bottom | box-align | box-decoration-break | box-direction | box-flex | box-flex-group | box-lines | box-ordinal-group | box-orient | box-pack | box-shadow | box-shadow-blur | box-shadow-color | box-shadow-offset | box-shadow-position | box-shadow-spread | box-sizing | box-snap | break-after | break-before | break-inside | caption-side | caret | caret-animation | caret-color | caret-shape | clear | clip | clip-path | clip-rule | color | color-adjust | color-interpolation | color-interpolation-filters | color-scheme | column-count | column-fill | column-gap | column-height | column-rule | column-rule-break | column-rule-color | column-rule-outset | column-rule-style | column-rule-width | column-span | column-width | column-wrap | columns | contain | contain-intrinsic-block-size | contain-intrinsic-height | contain-intrinsic-inline-size | contain-intrinsic-size | contain-intrinsic-width | container | container-name | container-type | content | content-visibility | continue | copy-into | corner | corner-block-end | corner-block-end-shape | corner-block-start | corner-block-start-shape | corner-bottom | corner-bottom-left | corner-bottom-left-shape | corner-bottom-right | corner-bottom-right-shape | corner-bottom-shape | corner-end-end | corner-end-end-shape | corner-end-start | corner-end-start-shape | corner-inline-end | corner-inline-end-shape | corner-inline-start | corner-inline-start-shape | corner-left | corner-left-shape | corner-right | corner-right-shape | corner-shape | corner-start-end | corner-start-end-shape | corner-start-start | corner-start-start-shape | corner-top | corner-top-left | corner-top-left-shape | corner-top-right | corner-top-right-shape | corner-top-shape | counter-increment | counter-reset | counter-set | cue | cue-after | cue-before | cursor | cx | cy | d | direction | display | dominant-baseline | dynamic-range-limit | empty-cells | event-trigger | event-trigger-name | event-trigger-source | field-sizing | fill | fill-break | fill-color | fill-image | fill-opacity | fill-origin | fill-position | fill-repeat | fill-rule | fill-size | filter | flex | flex-basis | flex-direction | flex-flow | flex-grow | flex-shrink | flex-wrap | float | float-defer | float-offset | float-reference | flood-color | flood-opacity | flow-from | flow-into | font | font-family | font-feature-settings | font-kerning | font-language-override | font-optical-sizing | font-palette | font-size | font-size-adjust | font-smooth | font-stretch | font-style | font-synthesis | font-synthesis-position | font-synthesis-small-caps | font-synthesis-style | font-synthesis-weight | font-variant | font-variant-alternates | font-variant-caps | font-variant-east-asian | font-variant-emoji | font-variant-ligatures | font-variant-numeric | font-variant-position | font-variation-settings | font-weight | font-width | footnote-display | footnote-policy | forced-color-adjust | gap | glyph-orientation-horizontal | glyph-orientation-vertical | grid | grid-area | grid-auto-columns | grid-auto-flow | grid-auto-rows | grid-column | grid-column-end | grid-column-gap | grid-column-start | grid-gap | grid-row | grid-row-end | grid-row-gap | grid-row-start | grid-template | grid-template-areas | grid-template-columns | grid-template-rows | hanging-punctuation | height | hyphenate-character | hyphenate-limit-chars | hyphenate-limit-last | hyphenate-limit-lines | hyphenate-limit-zone | hyphens | image-orientation | image-rendering | image-resolution | ime-mode | initial-letter | initial-letter-align | initial-letter-wrap | inline-size | inline-sizing | input-security | inset | inset-block | inset-block-end | inset-block-start | inset-inline | inset-inline-end | inset-inline-start | interactivity | interest-delay | interest-delay-end | interest-delay-start | interpolate-size | isolation | item-cross | item-direction | item-flow | item-pack | item-tolerance | item-track | item-wrap | justify-content | justify-items | justify-self | justify-tracks | kerning | left | letter-spacing | lighting-color | line-break | line-clamp | line-fit-edge | line-grid | line-height | line-height-step | line-padding | line-snap | link-parameters | list-style | list-style-image | list-style-position | list-style-type | margin | margin-block | margin-block-end | margin-block-start | margin-bottom | margin-break | margin-inline | margin-inline-end | margin-inline-start | margin-left | margin-right | margin-top | margin-trim | marker | marker-end | marker-mid | marker-side | marker-start | mask | mask-border | mask-border-mode | mask-border-outset | mask-border-repeat | mask-border-slice | mask-border-source | mask-border-width | mask-clip | mask-composite | mask-image | mask-mode | mask-origin | mask-position | mask-repeat | mask-size | mask-type | masonry-auto-flow | math-depth | math-shift | math-style | max-block-size | max-height | max-inline-size | max-lines | max-width | min-block-size | min-height | min-inline-size | min-intrinsic-sizing | min-width | mix-blend-mode | nav-down | nav-left | nav-right | nav-up | object-fit | object-position | object-view-box | offset | offset-anchor | offset-distance | offset-path | offset-position | offset-rotate | opacity | order | orphans | outline | outline-color | outline-offset | outline-style | outline-width | overflow | overflow-anchor | overflow-block | overflow-clip-box | overflow-clip-margin | overflow-clip-margin-block | overflow-clip-margin-block-end | overflow-clip-margin-block-start | overflow-clip-margin-bottom | overflow-clip-margin-inline | overflow-clip-margin-inline-end | overflow-clip-margin-inline-start | overflow-clip-margin-left | overflow-clip-margin-right | overflow-clip-margin-top | overflow-inline | overflow-wrap | overflow-x | overflow-y | overlay | overscroll-behavior | overscroll-behavior-block | overscroll-behavior-inline | overscroll-behavior-x | overscroll-behavior-y | padding | padding-block | padding-block-end | padding-block-start | padding-bottom | padding-inline | padding-inline-end | padding-inline-start | padding-left | padding-right | padding-top | page | page-break-after | page-break-before | page-break-inside | paint-order | pause | pause-after | pause-before | perspective | perspective-origin | place-content | place-items | place-self | pointer-events | pointer-timeline | pointer-timeline-axis | pointer-timeline-name | position | position-anchor | position-area | position-try | position-try-fallbacks | position-try-order | position-visibility | print-color-adjust | quotes | r | reading-flow | reading-order | region-fragment | resize | rest | rest-after | rest-before | right | rotate | row-gap | row-rule | row-rule-break | row-rule-color | row-rule-outset | row-rule-style | row-rule-width | ruby-align | ruby-merge | ruby-overhang | ruby-position | rule | rule-break | rule-color | rule-outset | rule-overlap | rule-style | rule-width | rx | ry | scale | scroll-behavior | scroll-initial-target | scroll-margin | scroll-margin-block | scroll-margin-block-end | scroll-margin-block-start | scroll-margin-bottom | scroll-margin-inline | scroll-margin-inline-end | scroll-margin-inline-start | scroll-margin-left | scroll-margin-right | scroll-margin-top | scroll-marker-group | scroll-padding | scroll-padding-block | scroll-padding-block-end | scroll-padding-block-start | scroll-padding-bottom | scroll-padding-inline | scroll-padding-inline-end | scroll-padding-inline-start | scroll-padding-left | scroll-padding-right | scroll-padding-top | scroll-snap-align | scroll-snap-coordinate | scroll-snap-destination | scroll-snap-points-x | scroll-snap-points-y | scroll-snap-stop | scroll-snap-type | scroll-snap-type-x | scroll-snap-type-y | scroll-target-group | scroll-timeline | scroll-timeline-axis | scroll-timeline-name | scrollbar-color | scrollbar-gutter | scrollbar-width | shape-image-threshold | shape-inside | shape-margin | shape-outside | shape-padding | shape-rendering | shape-subtract | slider-orientation | spatial-navigation-action | spatial-navigation-contain | spatial-navigation-function | speak | speak-as | src | string-set | stroke | stroke-align | stroke-alignment | stroke-break | stroke-color | stroke-dash-corner | stroke-dash-justify | stroke-dashadjust | stroke-dasharray | stroke-dashcorner | stroke-dashoffset | stroke-image | stroke-linecap | stroke-linejoin | stroke-miterlimit | stroke-opacity | stroke-origin | stroke-position | stroke-repeat | stroke-size | stroke-width | tab-size | table-layout | text-align | text-align-all | text-align-last | text-anchor | text-autospace | text-box | text-box-edge | text-box-trim | text-combine-upright | text-decoration | text-decoration-color | text-decoration-line | text-decoration-skip | text-decoration-skip-box | text-decoration-skip-ink | text-decoration-skip-self | text-decoration-skip-spaces | text-decoration-style | text-decoration-thickness | text-decoration-trim | text-emphasis | text-emphasis-color | text-emphasis-position | text-emphasis-skip | text-emphasis-style | text-group-align | text-indent | text-justify | text-orientation | text-overflow | text-rendering | text-shadow | text-size-adjust | text-spacing | text-spacing-trim | text-transform | text-underline-offset | text-underline-position | text-wrap | text-wrap-mode | text-wrap-style | timeline-scope | timeline-trigger | timeline-trigger-exit-range | timeline-trigger-exit-range-end | timeline-trigger-exit-range-start | timeline-trigger-name | timeline-trigger-range | timeline-trigger-range-end | timeline-trigger-range-start | timeline-trigger-source | top | touch-action | transform | transform-box | transform-origin | transform-style | transition | transition-behavior | transition-delay | transition-duration | transition-property | transition-timing-function | translate | unicode-bidi | unicode-range | user-select | vector-effect | vertical-align | view-timeline | view-timeline-axis | view-timeline-inset | view-timeline-name | view-transition-class | view-transition-group | view-transition-name | visibility | voice-balance | voice-duration | voice-family | voice-pitch | voice-range | voice-rate | voice-stress | voice-volume | white-space | white-space-collapse | white-space-trim | widows | width | will-change | word-break | word-space-transform | word-spacing | word-wrap | wrap-after | wrap-before | wrap-flow | wrap-inside | wrap-through | writing-mode | x | y | z-index | zoom",
+		"syntax-m": "<dashed-ident> | -moz-appearance | -moz-background-clip | -moz-binding | -moz-border-bottom-colors | -moz-border-left-colors | -moz-border-radius-bottomleft | -moz-border-radius-bottomright | -moz-border-radius-topleft | -moz-border-radius-topright | -moz-border-right-colors | -moz-border-top-colors | -moz-context-properties | -moz-control-character-visibility | -moz-float-edge | -moz-force-broken-image-icon | -moz-image-region | -moz-orient | -moz-osx-font-smoothing | -moz-outline-radius | -moz-outline-radius-bottomleft | -moz-outline-radius-bottomright | -moz-outline-radius-topleft | -moz-outline-radius-topright | -moz-stack-sizing | -moz-text-blink | -moz-user-focus | -moz-user-input | -moz-user-modify | -moz-user-select | -moz-window-dragging | -moz-window-shadow | -ms-accelerator | -ms-block-progression | -ms-content-zoom-chaining | -ms-content-zoom-limit | -ms-content-zoom-limit-max | -ms-content-zoom-limit-min | -ms-content-zoom-snap | -ms-content-zoom-snap-points | -ms-content-zoom-snap-type | -ms-content-zooming | -ms-filter | -ms-flex-align | -ms-flex-item-align | -ms-flex-line-pack | -ms-flex-negative | -ms-flex-order | -ms-flex-pack | -ms-flex-positive | -ms-flex-preferred-size | -ms-flow-from | -ms-flow-into | -ms-grid-column-align | -ms-grid-columns | -ms-grid-row-align | -ms-grid-rows | -ms-high-contrast-adjust | -ms-hyphenate-limit-chars | -ms-hyphenate-limit-last | -ms-hyphenate-limit-lines | -ms-hyphenate-limit-zone | -ms-ime-align | -ms-interpolation-mode | -ms-overflow-style | -ms-scroll-chaining | -ms-scroll-limit | -ms-scroll-limit-x-max | -ms-scroll-limit-x-min | -ms-scroll-limit-y-max | -ms-scroll-limit-y-min | -ms-scroll-rails | -ms-scroll-snap-points-x | -ms-scroll-snap-points-y | -ms-scroll-snap-type | -ms-scroll-snap-x | -ms-scroll-snap-y | -ms-scroll-translation | -ms-scrollbar-3dlight-color | -ms-scrollbar-arrow-color | -ms-scrollbar-base-color | -ms-scrollbar-darkshadow-color | -ms-scrollbar-face-color | -ms-scrollbar-highlight-color | -ms-scrollbar-shadow-color | -ms-scrollbar-track-color | -ms-text-autospace | -ms-touch-select | -ms-user-select | -ms-wrap-flow | -ms-wrap-margin | -ms-wrap-through | -webkit-appearance | -webkit-background-clip | -webkit-border-before | -webkit-border-before-color | -webkit-border-before-style | -webkit-border-before-width | -webkit-box-reflect | -webkit-column-break-after | -webkit-column-break-before | -webkit-column-break-inside | -webkit-font-smoothing | -webkit-line-clamp | -webkit-mask | -webkit-mask-attachment | -webkit-mask-box-image | -webkit-mask-clip | -webkit-mask-composite | -webkit-mask-image | -webkit-mask-origin | -webkit-mask-position | -webkit-mask-position-x | -webkit-mask-position-y | -webkit-mask-repeat | -webkit-mask-repeat-x | -webkit-mask-repeat-y | -webkit-mask-size | -webkit-overflow-scrolling | -webkit-print-color-adjust | -webkit-tap-highlight-color | -webkit-text-fill-color | -webkit-text-security | -webkit-text-stroke | -webkit-text-stroke-color | -webkit-text-stroke-width | -webkit-touch-callout | -webkit-user-drag | -webkit-user-modify | -webkit-user-select | accent-color | align-content | align-items | align-self | align-tracks | alignment-baseline | all | anchor-name | anchor-scope | animation | animation-composition | animation-delay | animation-direction | animation-duration | animation-fill-mode | animation-iteration-count | animation-name | animation-play-state | animation-range | animation-range-center | animation-range-end | animation-range-start | animation-timeline | animation-timing-function | animation-trigger | appearance | aspect-ratio | azimuth | backdrop-filter | backface-visibility | background | background-attachment | background-blend-mode | background-clip | background-color | background-image | background-origin | background-position | background-position-block | background-position-inline | background-position-x | background-position-y | background-repeat | background-repeat-block | background-repeat-inline | background-repeat-x | background-repeat-y | background-size | background-tbd | baseline-shift | baseline-source | behavior | block-ellipsis | block-size | block-step | block-step-align | block-step-insert | block-step-round | block-step-size | bookmark-label | bookmark-level | bookmark-state | border | border-block | border-block-color | border-block-end | border-block-end-clip | border-block-end-color | border-block-end-radius | border-block-end-style | border-block-end-width | border-block-start | border-block-start-clip | border-block-start-color | border-block-start-radius | border-block-start-style | border-block-start-width | border-block-style | border-block-width | border-bottom | border-bottom-clip | border-bottom-color | border-bottom-left-radius | border-bottom-radius | border-bottom-right-radius | border-bottom-style | border-bottom-width | border-boundary | border-clip | border-collapse | border-color | border-end-end-radius | border-end-start-radius | border-image | border-image-outset | border-image-repeat | border-image-slice | border-image-source | border-image-width | border-inline | border-inline-color | border-inline-end | border-inline-end-clip | border-inline-end-color | border-inline-end-radius | border-inline-end-style | border-inline-end-width | border-inline-start | border-inline-start-clip | border-inline-start-color | border-inline-start-radius | border-inline-start-style | border-inline-start-width | border-inline-style | border-inline-width | border-left | border-left-clip | border-left-color | border-left-radius | border-left-style | border-left-width | border-limit | border-radius | border-right | border-right-clip | border-right-color | border-right-radius | border-right-style | border-right-width | border-shape | border-spacing | border-start-end-radius | border-start-start-radius | border-style | border-top | border-top-clip | border-top-color | border-top-left-radius | border-top-radius | border-top-right-radius | border-top-style | border-top-width | border-width | bottom | box-align | box-decoration-break | box-direction | box-flex | box-flex-group | box-lines | box-ordinal-group | box-orient | box-pack | box-shadow | box-shadow-blur | box-shadow-color | box-shadow-offset | box-shadow-position | box-shadow-spread | box-sizing | box-snap | break-after | break-before | break-inside | caption-side | caret | caret-animation | caret-color | caret-shape | clear | clip | clip-path | clip-rule | color | color-adjust | color-interpolation | color-interpolation-filters | color-scheme | column-count | column-fill | column-gap | column-height | column-rule | column-rule-break | column-rule-color | column-rule-outset | column-rule-style | column-rule-width | column-span | column-width | column-wrap | columns | contain | contain-intrinsic-block-size | contain-intrinsic-height | contain-intrinsic-inline-size | contain-intrinsic-size | contain-intrinsic-width | container | container-name | container-type | content | content-visibility | continue | copy-into | corner | corner-block-end | corner-block-end-shape | corner-block-start | corner-block-start-shape | corner-bottom | corner-bottom-left | corner-bottom-left-shape | corner-bottom-right | corner-bottom-right-shape | corner-bottom-shape | corner-end-end | corner-end-end-shape | corner-end-start | corner-end-start-shape | corner-inline-end | corner-inline-end-shape | corner-inline-start | corner-inline-start-shape | corner-left | corner-left-shape | corner-right | corner-right-shape | corner-shape | corner-start-end | corner-start-end-shape | corner-start-start | corner-start-start-shape | corner-top | corner-top-left | corner-top-left-shape | corner-top-right | corner-top-right-shape | corner-top-shape | counter-increment | counter-reset | counter-set | cue | cue-after | cue-before | cursor | cx | cy | d | direction | display | dominant-baseline | dynamic-range-limit | empty-cells | event-trigger | event-trigger-name | event-trigger-source | field-sizing | fill | fill-break | fill-color | fill-image | fill-opacity | fill-origin | fill-position | fill-repeat | fill-rule | fill-size | filter | flex | flex-basis | flex-direction | flex-flow | flex-grow | flex-shrink | flex-wrap | float | float-defer | float-offset | float-reference | flood-color | flood-opacity | flow-from | flow-into | font | font-family | font-feature-settings | font-kerning | font-language-override | font-optical-sizing | font-palette | font-size | font-size-adjust | font-smooth | font-stretch | font-style | font-synthesis | font-synthesis-position | font-synthesis-small-caps | font-synthesis-style | font-synthesis-weight | font-variant | font-variant-alternates | font-variant-caps | font-variant-east-asian | font-variant-emoji | font-variant-ligatures | font-variant-numeric | font-variant-position | font-variation-settings | font-weight | font-width | footnote-display | footnote-policy | forced-color-adjust | gap | glyph-orientation-horizontal | glyph-orientation-vertical | grid | grid-area | grid-auto-columns | grid-auto-flow | grid-auto-rows | grid-column | grid-column-end | grid-column-gap | grid-column-start | grid-gap | grid-row | grid-row-end | grid-row-gap | grid-row-start | grid-template | grid-template-areas | grid-template-columns | grid-template-rows | hanging-punctuation | height | hyphenate-character | hyphenate-limit-chars | hyphenate-limit-last | hyphenate-limit-lines | hyphenate-limit-zone | hyphens | image-orientation | image-rendering | image-resolution | ime-mode | initial-letter | initial-letter-align | initial-letter-wrap | inline-size | inline-sizing | input-security | inset | inset-block | inset-block-end | inset-block-start | inset-inline | inset-inline-end | inset-inline-start | interactivity | interest-delay | interest-delay-end | interest-delay-start | interpolate-size | isolation | item-cross | item-direction | item-flow | item-pack | item-tolerance | item-track | item-wrap | justify-content | justify-items | justify-self | justify-tracks | kerning | left | letter-spacing | lighting-color | line-break | line-clamp | line-fit-edge | line-grid | line-height | line-height-step | line-padding | line-snap | link-parameters | list-style | list-style-image | list-style-position | list-style-type | margin | margin-block | margin-block-end | margin-block-start | margin-bottom | margin-break | margin-inline | margin-inline-end | margin-inline-start | margin-left | margin-right | margin-top | margin-trim | marker | marker-end | marker-mid | marker-side | marker-start | mask | mask-border | mask-border-mode | mask-border-outset | mask-border-repeat | mask-border-slice | mask-border-source | mask-border-width | mask-clip | mask-composite | mask-image | mask-mode | mask-origin | mask-position | mask-repeat | mask-size | mask-type | masonry-auto-flow | math-depth | math-shift | math-style | max-block-size | max-height | max-inline-size | max-lines | max-width | min-block-size | min-height | min-inline-size | min-intrinsic-sizing | min-width | mix-blend-mode | nav-down | nav-left | nav-right | nav-up | object-fit | object-position | object-view-box | offset | offset-anchor | offset-distance | offset-path | offset-position | offset-rotate | opacity | order | orphans | outline | outline-color | outline-offset | outline-style | outline-width | overflow | overflow-anchor | overflow-block | overflow-clip-box | overflow-clip-margin | overflow-clip-margin-block | overflow-clip-margin-block-end | overflow-clip-margin-block-start | overflow-clip-margin-bottom | overflow-clip-margin-inline | overflow-clip-margin-inline-end | overflow-clip-margin-inline-start | overflow-clip-margin-left | overflow-clip-margin-right | overflow-clip-margin-top | overflow-inline | overflow-wrap | overflow-x | overflow-y | overlay | overscroll-behavior | overscroll-behavior-block | overscroll-behavior-inline | overscroll-behavior-x | overscroll-behavior-y | padding | padding-block | padding-block-end | padding-block-start | padding-bottom | padding-inline | padding-inline-end | padding-inline-start | padding-left | padding-right | padding-top | page | page-break-after | page-break-before | page-break-inside | paint-order | pause | pause-after | pause-before | perspective | perspective-origin | place-content | place-items | place-self | pointer-events | pointer-timeline | pointer-timeline-axis | pointer-timeline-name | position | position-anchor | position-area | position-try | position-try-fallbacks | position-try-order | position-visibility | print-color-adjust | quotes | r | reading-flow | reading-order | region-fragment | resize | rest | rest-after | rest-before | right | rotate | row-gap | row-rule | row-rule-break | row-rule-color | row-rule-outset | row-rule-style | row-rule-width | ruby-align | ruby-merge | ruby-overhang | ruby-position | rule | rule-break | rule-color | rule-outset | rule-overlap | rule-style | rule-width | rx | ry | scale | scroll-behavior | scroll-initial-target | scroll-margin | scroll-margin-block | scroll-margin-block-end | scroll-margin-block-start | scroll-margin-bottom | scroll-margin-inline | scroll-margin-inline-end | scroll-margin-inline-start | scroll-margin-left | scroll-margin-right | scroll-margin-top | scroll-marker-group | scroll-padding | scroll-padding-block | scroll-padding-block-end | scroll-padding-block-start | scroll-padding-bottom | scroll-padding-inline | scroll-padding-inline-end | scroll-padding-inline-start | scroll-padding-left | scroll-padding-right | scroll-padding-top | scroll-snap-align | scroll-snap-coordinate | scroll-snap-destination | scroll-snap-points-x | scroll-snap-points-y | scroll-snap-stop | scroll-snap-type | scroll-snap-type-x | scroll-snap-type-y | scroll-target-group | scroll-timeline | scroll-timeline-axis | scroll-timeline-name | scrollbar-color | scrollbar-gutter | scrollbar-width | shape-image-threshold | shape-inside | shape-margin | shape-outside | shape-padding | shape-rendering | shape-subtract | slider-orientation | spatial-navigation-action | spatial-navigation-contain | spatial-navigation-function | speak | speak-as | src | string-set | stroke | stroke-align | stroke-alignment | stroke-break | stroke-color | stroke-dash-corner | stroke-dash-justify | stroke-dashadjust | stroke-dasharray | stroke-dashcorner | stroke-dashoffset | stroke-image | stroke-linecap | stroke-linejoin | stroke-miterlimit | stroke-opacity | stroke-origin | stroke-position | stroke-repeat | stroke-size | stroke-width | tab-size | table-layout | text-align | text-align-all | text-align-last | text-anchor | text-autospace | text-box | text-box-edge | text-box-trim | text-combine-upright | text-decoration | text-decoration-color | text-decoration-line | text-decoration-skip | text-decoration-skip-box | text-decoration-skip-ink | text-decoration-skip-self | text-decoration-skip-spaces | text-decoration-style | text-decoration-thickness | text-decoration-trim | text-emphasis | text-emphasis-color | text-emphasis-position | text-emphasis-skip | text-emphasis-style | text-group-align | text-indent | text-justify | text-orientation | text-overflow | text-rendering | text-shadow | text-size-adjust | text-spacing | text-spacing-trim | text-transform | text-underline-offset | text-underline-position | text-wrap | text-wrap-mode | text-wrap-style | timeline-scope | timeline-trigger | timeline-trigger-exit-range | timeline-trigger-exit-range-end | timeline-trigger-exit-range-start | timeline-trigger-name | timeline-trigger-range | timeline-trigger-range-end | timeline-trigger-range-start | timeline-trigger-source | top | touch-action | transform | transform-box | transform-origin | transform-style | transition | transition-behavior | transition-delay | transition-duration | transition-property | transition-timing-function | translate | unicode-bidi | unicode-range | user-select | vector-effect | vertical-align | view-timeline | view-timeline-axis | view-timeline-inset | view-timeline-name | view-transition-class | view-transition-group | view-transition-name | visibility | voice-balance | voice-duration | voice-family | voice-pitch | voice-range | voice-rate | voice-stress | voice-volume | white-space | white-space-collapse | white-space-trim | widows | width | will-change | word-break | word-space-transform | word-spacing | word-wrap | wrap-after | wrap-before | wrap-flow | wrap-inside | wrap-through | writing-mode | x | y | z-index | zoom",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"style-feature-plain": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<style-feature-name> : <style-feature-value>",
+		"syntax-m": "<style-feature-name> : <style-feature-value>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"style-feature-value": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<declaration-value>",
+		"syntax-m": "<declaration-value>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"style-in-parens": {
 		"type": "modified",
 		"comment": "",
@@ -4055,12 +4333,67 @@
 			"failing": []
 		}
 	},
+	"style-range": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<style-range-value> <mf-comparison> <style-range-value> | <style-range-value> <mf-lt> <style-range-value> <mf-lt> <style-range-value> | <style-range-value> <mf-gt> <style-range-value> <mf-gt> <style-range-value>",
+		"syntax-m": "<style-range-value> <mf-comparison> <style-range-value> | <style-range-value> <mf-lt> <style-range-value> <mf-lt> <style-range-value> | <style-range-value> <mf-gt> <style-range-value> <mf-gt> <style-range-value>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"style-range-value": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<custom-property-name> | <style-feature-value>",
+		"syntax-m": "<custom-property-name> | <style-feature-value>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"superellipse()": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "superellipse( <number> | infinity | -infinity )",
-		"syntax-m": "superellipse( <number> | infinity | -infinity )",
+		"syntax-a": "superellipse( <number [-∞,∞]> | infinity | -infinity )",
+		"syntax-m": "superellipse( <number [-∞,∞]> | infinity | -infinity )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"supports-at-rule-fn": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "at-rule( <at-keyword-token> )",
+		"syntax-m": "at-rule( <at-keyword-token> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"supports-condition-name": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<custom-ident>",
+		"syntax-m": "<custom-ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"supports-decl": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "( <declaration> )",
+		"syntax-a": "( [ <declaration> | <supports-condition-name> ] )",
+		"syntax-m": "( [ <declaration> | <supports-condition-name> ] )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4070,8 +4403,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<supports-decl> | <supports-selector-fn>",
-		"syntax-a": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-decl>",
-		"syntax-m": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-decl>",
+		"syntax-a": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-decl>",
+		"syntax-m": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-decl>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4275,6 +4608,17 @@
 			"failing": []
 		}
 	},
+	"timeline-range-center-subject": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<ident>",
+		"syntax-m": "<ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"toggle()": {
 		"type": "added",
 		"comment": "TODO: csstree doesn't support <whole-value> https://github.com/csstree/csstree/issues/300",
@@ -4284,51 +4628,6 @@
 		"tests": {
 			"passing": [],
 			"failing": []
-		}
-	},
-	"top": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<length> | auto",
-		"syntax-a": "auto",
-		"syntax-m": "<length-percentage> | auto",
-		"tests": {
-			"passing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(auto auto auto auto)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(0 1% auto 3% round 0 1px)"
-				}
-			],
-			"failing": [
-				{
-					"property": "offset-path",
-					"value": "rect(1px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1px 2px 3px 4px 5px)"
-				},
-				{
-					"property": "offset-path",
-					"value": "rect(1ms 2ms 3ms 4ms)"
-				}
-			]
 		}
 	},
 	"track-breadth": {
@@ -4353,12 +4652,23 @@
 			"failing": []
 		}
 	},
+	"transform-interpolate()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "transform-interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? ] , <input-position>{1,2} : <transform-list> , [ <easing-function>? , <input-position>{1,2} : <transform-list> ]#? )",
+		"syntax-m": "transform-interpolate( [ <progress-source> && [ by <easing-function> ]? && <easing-function>? ] , <input-position>{1,2} : <transform-list> , [ <easing-function>? , <input-position>{1,2} : <transform-list> ]#? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"transform-mix()": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "transform-mix( <progress> , <transform-list> , <transform-list> )",
-		"syntax-m": "transform-mix( <progress> , <transform-list> , <transform-list> )",
+		"syntax-a": "transform-mix( [ <transform-list> && <percentage [0,100]> ]# )",
+		"syntax-m": "transform-mix( [ <transform-list> && <percentage [0,100]> ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4421,6 +4731,17 @@
 					"value": "src(#foo)"
 				}
 			]
+		}
+	},
+	"url-set": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "image-set( [ [ <url> | <string> ] [ <resolution> || type( <string> ) ]? ]# )",
+		"syntax-m": "image-set( [ [ <url> | <string> ] [ <resolution> || type( <string> ) ]? ]# )",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"url-set-option": {
@@ -4503,44 +4824,15 @@
 			"failing": []
 		}
 	},
-	"xyz": {
+	"whole-value": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "xyz | xyz-d50 | xyz-d65",
-		"syntax-m": "xyz | xyz-d50 | xyz-d65",
+		"syntax-a": "<declaration-value>",
+		"syntax-m": "<declaration-value>",
 		"tests": {
 			"passing": [],
 			"failing": []
-		}
-	},
-	"xyz-params": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<xyz-space> [ <number> | <percentage> | none ]{3}",
-		"syntax-a": "<xyz> [ <number> | <percentage> | none ]{3}",
-		"syntax-m": "<xyz> [ <number> | <percentage> | none ]{3}",
-		"tests": {
-			"passing": [
-				{
-					"property": "color",
-					"value": "color(xyz 0 0 0)"
-				},
-				{
-					"property": "color",
-					"value": "color(xyz-d50 0 0 0)"
-				}
-			],
-			"failing": [
-				{
-					"property": "color",
-					"value": "color(xyz 0 0)"
-				},
-				{
-					"property": "color",
-					"value": "color(xyz-d5 0 0 0)"
-				}
-			]
 		}
 	}
 }

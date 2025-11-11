@@ -115,27 +115,6 @@
 	},
 	"font-feature-values": {
 		"descriptors": {
-			"@annotation": {
-				"syntax": "@annotation { <declaration-list> }"
-			},
-			"@character-variant": {
-				"syntax": "@character-variant { <declaration-list> }"
-			},
-			"@historical-forms": {
-				"syntax": "@historical-forms { <declaration-list> }"
-			},
-			"@ornaments": {
-				"syntax": "@ornaments { <declaration-list> }"
-			},
-			"@styleset": {
-				"syntax": "@styleset { <declaration-list> }"
-			},
-			"@stylistic": {
-				"syntax": "@stylistic { <declaration-list> }"
-			},
-			"@swash": {
-				"syntax": "@swash { <declaration-list> }"
-			},
 			"font-display": {
 				"syntax": "auto | block | swap | fallback | optional"
 			}
