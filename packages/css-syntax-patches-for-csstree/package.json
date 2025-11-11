@@ -37,7 +37,8 @@
 	],
 	"devDependencies": {
 		"@webref/css": "8.0.1",
-		"css-tree": "^3.1.0"
+		"css-tree": "^3.1.0",
+		"postcss": "^8.4"
 	},
 	"scripts": {
 		"build": "node ./scripts/index.mjs",
