@@ -571,7 +571,7 @@
 			"content-level": "element | content | text | <attr()> | <counter>",
 			"content-list": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> | <string()> | <content()> ]+",
 			"content()": "content( [ text | before | after | first-letter | marker ]? )",
-			"contrast-color()": "contrast-color( [ [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast>? ] | [ <color> && [ tbd-fg | tbd-bg ] && <target-contrast> , <color># ] ] )",
+			"contrast-color()": "contrast-color( <color> )",
 			"contrast()": "contrast( [ <number> | <percentage> ]? )",
 			"control-point": "[ <position> | <relative-control-point> ]",
 			"control-value()": "control-value( <type>? )",

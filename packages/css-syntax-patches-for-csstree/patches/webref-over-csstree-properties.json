@@ -6,7 +6,17 @@
 		"syntax-a": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center | dialog",
 		"syntax-m": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center | dialog",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "stretch"
+				},
+				{
+					"value": "anchor-center"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -17,7 +27,17 @@
 		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center | dialog",
 		"syntax-m": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center | dialog",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "stretch"
+				},
+				{
+					"value": "anchor-center"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -102,7 +122,26 @@
 		"syntax-a": "none | auto | base | base-select | <compat-auto> | <compat-special> | base",
 		"syntax-m": "none | auto | base | base-select | <compat-auto> | <compat-special> | base",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "none"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "textfield"
+				},
+				{
+					"value": "base"
+				},
+				{
+					"value": "menulist-button"
+				},
+				{
+					"value": "searchfield"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -378,8 +417,22 @@
 		"syntax-a": "no-ellipsis | auto | <string>",
 		"syntax-m": "no-ellipsis | auto | <string>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "no-ellipsis"
+				},
+				{
+					"value": "auto"
+				},
+				{
+					"value": "':::'"
+				}
+			],
+			"failing": [
+				{
+					"value": "foo"
+				}
+			]
 		}
 	},
 	"block-step": {
@@ -1617,7 +1670,11 @@
 		"syntax-a": "rect( <top> , <right> , <bottom> , <left> ) | auto",
 		"syntax-m": "rect( <top> , <right> , <bottom> , <left> ) | auto",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "rect(1px, 2px, 3px, 4px)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -3252,7 +3309,14 @@
 		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center | dialog",
 		"syntax-m": " | anchor-center | dialog",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "anchor-center"
+				},
+				{
+					"value": "normal"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -6043,8 +6107,25 @@
 		"syntax-a": "<number [0,∞]> | <percentage [0,∞]>",
 		"syntax-m": "normal | reset | <number [0,∞]> | <percentage [0,∞]>",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"value": "normal"
+				},
+				{
+					"value": "reset"
+				},
+				{
+					"value": "10%"
+				},
+				{
+					"value": "10"
+				}
+			],
+			"failing": [
+				{
+					"value": "10px"
+				}
+			]
 		}
 	}
 }
