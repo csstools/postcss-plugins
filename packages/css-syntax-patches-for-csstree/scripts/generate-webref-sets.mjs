@@ -71,21 +71,6 @@ export async function generate_webref_sets() {
 
 		// https://drafts.csswg.org/css-animations-2/#typedef-animation-action
 		types['animation-action'] = 'none | play | pause | play-forwards | play-backwards | pause | reset | replay';
-
-		// https://drafts.csswg.org/css-shapes-1/#typedef-shape-command
-		types['move-command'] = 'move <command-end-point>';
-		types['line-command'] = 'line <command-end-point>';
-		types['horizontal-line-command'] = 'hline [ to [ <length-percentage> | left | center | right | x-start | x-end ] | by <length-percentage> ]';
-		types['vertical-line-command'] = 'vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]';
-		types['curve-command'] = 'curve [ [ to <position> with <control-point> [ / <control-point> ]? ] | [ by <coordinate-pair> with <relative-control-point> [ / <relative-control-point> ]? ] ]';
-		types['smooth-command'] = 'smooth [ [ to <position> [ with <control-point> ]? ] | [ by <coordinate-pair> [ with <relative-control-point> ]? ] ]';
-		types['arc-command'] = 'arc <command-end-point> [ [ of <length-percentage>{1,2} ] && <arc-sweep>? && <arc-size>? && [rotate <angle>]? ]';
-		types['command-end-point'] = '[ to <position> | by <coordinate-pair> ]';
-		types['control-point'] = '[ <position> | <relative-control-point> ]';
-		types['relative-control-point'] = '<coordinate-pair> [ from [ start | end | origin ] ]?';
-		types['coordinate-pair'] = '<length-percentage>{2}';
-		types['arc-sweep'] = 'cw | ccw';
-		types['arc-size'] = 'large | small';
 	}
 
 	const data = await css.listAll();
@@ -144,14 +129,6 @@ export async function generate_webref_sets() {
 		}
 
 		if (t.name === 'content-list' && t.syntax === '[ <string> | <counter()> | <counters()> | <content()> | <attr()> ]+') {
-			continue;
-		}
-
-		if (t.name === 'an+b') {
-			continue;
-		}
-
-		if (t.name === 'boolean-expr') {
 			continue;
 		}
 

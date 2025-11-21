@@ -3,8 +3,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]",
-		"syntax-a": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center | dialog",
-		"syntax-m": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center | dialog",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
+		"syntax-m": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center",
 		"tests": {
 			"passing": [
 				{
@@ -24,8 +24,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center | dialog",
-		"syntax-m": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center | dialog",
+		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
+		"syntax-m": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
 		"tests": {
 			"passing": [
 				{
@@ -59,6 +59,17 @@
 					"value": "text-top"
 				}
 			],
+			"failing": []
+		}
+	},
+	"all": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "initial | inherit | unset | revert | revert-layer",
+		"syntax-a": "initial | inherit | unset | revert | revert-layer | revert-rule",
+		"syntax-m": " | revert-rule",
+		"tests": {
+			"passing": [],
 			"failing": []
 		}
 	},
@@ -807,8 +818,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -829,8 +840,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -898,8 +909,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [
 				{
@@ -929,8 +940,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [
 				{
@@ -1311,8 +1322,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [
 				{
@@ -1342,8 +1353,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [
 				{
@@ -1406,8 +1417,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [
 				{
@@ -1448,8 +1459,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
-		"syntax-m": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
+		"syntax-m": "<border-radius>",
 		"tests": {
 			"passing": [
 				{
@@ -3306,8 +3317,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
-		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center | dialog",
-		"syntax-m": " | anchor-center | dialog",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
+		"syntax-m": " | anchor-center",
 		"tests": {
 			"passing": [
 				{
@@ -3324,8 +3335,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center | dialog",
-		"syntax-m": " | anchor-center | dialog",
+		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
+		"syntax-m": " | anchor-center",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -5279,6 +5290,17 @@
 			"failing": []
 		}
 	},
+	"text-decoration-inset": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<length>{1,2} | auto",
+		"syntax-m": "<length>{1,2} | auto",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"text-decoration-skip": {
 		"type": "modified",
 		"comment": "",
@@ -5340,17 +5362,6 @@
 		"syntax-b": "auto | from-font | <length> | <percentage>",
 		"syntax-a": "auto | from-font | <length-percentage>",
 		"syntax-m": "auto | from-font | <length-percentage>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"text-decoration-trim": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<length>{1,2} | auto",
-		"syntax-m": "<length>{1,2} | auto",
 		"tests": {
 			"passing": [],
 			"failing": []

@@ -12,10 +12,10 @@
 		"syntax": "normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position>"
 	},
 	"align-items": {
-		"syntax": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center | dialog"
+		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center"
 	},
 	"align-self": {
-		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center | dialog"
+		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center"
 	},
 	"align-tracks": {
 		"syntax": "[ normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position> ]#"
@@ -24,7 +24,7 @@
 		"syntax": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top"
 	},
 	"all": {
-		"syntax": "initial | inherit | unset | revert | revert-layer"
+		"syntax": "initial | inherit | unset | revert | revert-layer | revert-rule"
 	},
 	"anchor-name": {
 		"syntax": "none | <dashed-ident>#"
@@ -285,13 +285,13 @@
 		"syntax": "<color>+ | none"
 	},
 	"border-bottom-left-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-bottom-radius": {
 		"syntax": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?"
 	},
 	"border-bottom-right-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-bottom-style": {
 		"syntax": "<line-style>"
@@ -312,10 +312,10 @@
 		"syntax": "[ <color> | <image-1D> ]{1,4}"
 	},
 	"border-end-end-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-end-start-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-image": {
 		"syntax": "<'border-image-source'> || <'border-image-slice'> [ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>"
@@ -450,10 +450,10 @@
 		"syntax": "<length>{1,2}"
 	},
 	"border-start-end-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-start-start-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-style": {
 		"syntax": "<'border-top-style'>{1,4}"
@@ -471,13 +471,13 @@
 		"syntax": "<color>+ | none"
 	},
 	"border-top-left-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-top-radius": {
 		"syntax": "<length-percentage [0,∞]>{1,2} [ / <length-percentage [0,∞]>{1,2} ]?"
 	},
 	"border-top-right-radius": {
-		"syntax": "<length-percentage [0,∞]>{1,2}"
+		"syntax": "<border-radius>"
 	},
 	"border-top-style": {
 		"syntax": "<line-style>"
@@ -1305,10 +1305,10 @@
 		"syntax": "normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ]"
 	},
 	"justify-items": {
-		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center | dialog"
+		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center"
 	},
 	"justify-self": {
-		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center | dialog"
+		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center"
 	},
 	"justify-tracks": {
 		"syntax": "[ normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ] ]#"
@@ -2276,6 +2276,9 @@
 	"text-decoration-color": {
 		"syntax": "<color>"
 	},
+	"text-decoration-inset": {
+		"syntax": "<length>{1,2} | auto"
+	},
 	"text-decoration-line": {
 		"syntax": "none | [ underline || overline || line-through || blink ] | spelling-error | grammar-error"
 	},
@@ -2299,9 +2302,6 @@
 	},
 	"text-decoration-thickness": {
 		"syntax": "auto | from-font | <length-percentage>"
-	},
-	"text-decoration-trim": {
-		"syntax": "<length>{1,2} | auto"
 	},
 	"text-emphasis": {
 		"syntax": "<'text-emphasis-style'> || <'text-emphasis-color'>"
