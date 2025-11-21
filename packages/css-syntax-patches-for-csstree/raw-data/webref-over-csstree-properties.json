@@ -2,19 +2,25 @@
 	"align-items": {
 		"type": "modified",
 		"syntax-b": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]",
-		"syntax-a": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center | dialog",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
 		"comment": ""
 	},
 	"align-self": {
 		"type": "modified",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center | dialog",
+		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
 		"comment": ""
 	},
 	"alignment-baseline": {
 		"type": "modified",
 		"syntax-b": "auto | baseline | before-edge | text-before-edge | middle | central | after-edge | text-after-edge | ideographic | alphabetic | hanging | mathematical",
 		"syntax-a": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top",
+		"comment": ""
+	},
+	"all": {
+		"type": "modified",
+		"syntax-b": "initial | inherit | unset | revert | revert-layer",
+		"syntax-a": "initial | inherit | unset | revert | revert-layer | revert-rule",
 		"comment": ""
 	},
 	"animation-duration": {
@@ -278,7 +284,7 @@
 	"border-bottom-left-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-bottom-radius": {
@@ -290,7 +296,7 @@
 	"border-bottom-right-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-boundary": {
@@ -320,13 +326,13 @@
 	"border-end-end-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-end-start-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-image-outset": {
@@ -500,13 +506,13 @@
 	"border-start-end-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-start-start-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-style": {
@@ -530,7 +536,7 @@
 	"border-top-left-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-top-radius": {
@@ -542,7 +548,7 @@
 	"border-top-right-radius": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>{1,2}",
-		"syntax-a": "<length-percentage [0,∞]>{1,2}",
+		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-width": {
@@ -1430,13 +1436,13 @@
 	"justify-items": {
 		"type": "modified",
 		"syntax-b": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
-		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center | dialog",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
 		"comment": ""
 	},
 	"justify-self": {
 		"type": "modified",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center | dialog",
+		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
 		"comment": ""
 	},
 	"left": {
@@ -2423,6 +2429,12 @@
 		"syntax-a": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>",
 		"comment": ""
 	},
+	"text-decoration-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length>{1,2} | auto",
+		"comment": ""
+	},
 	"text-decoration-skip": {
 		"type": "modified",
 		"syntax-b": "none | [ objects || [ spaces | [ leading-spaces || trailing-spaces ] ] || edges || box-decoration ]",
@@ -2457,12 +2469,6 @@
 		"type": "modified",
 		"syntax-b": "auto | from-font | <length> | <percentage>",
 		"syntax-a": "auto | from-font | <length-percentage>",
-		"comment": ""
-	},
-	"text-decoration-trim": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<length>{1,2} | auto",
 		"comment": ""
 	},
 	"text-emphasis-position": {
