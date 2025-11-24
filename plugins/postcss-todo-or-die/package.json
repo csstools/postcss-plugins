@@ -50,7 +50,7 @@
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^3.0.5",
 		"@csstools/css-tokenizer": "^3.0.4",
-		"browserslist": "^4.27.0"
+		"browserslist": "^4.28.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
