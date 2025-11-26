@@ -4,10 +4,28 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "alpha( [ from <color> ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "alpha( [ from <color> ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "alpha( [ from <color> ] [ / [ <alpha-value> | alpha | none ] ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "color",
+					"value": "alpha(from oklch(60% 0.25 315 / 0.3) / 80%)"
+				},
+				{
+					"property": "color",
+					"value": "alpha(from oklch(60% 0.25 315 / 0.3) / alpha)"
+				},
+				{
+					"property": "color",
+					"value": "alpha(from oklch(60% 0.25 315 / 0.3) / calc(alpha / 2))"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "alpha(from oklch(60% 0.25 315 / 0.3) / a)"
+				}
+			]
 		}
 	},
 	"an+b": {
@@ -908,7 +926,7 @@
 		"comment": "",
 		"syntax-b": "color( <colorspace-params> [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "color( [ from <color> ]? <colorspace-params> [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "color( [ from <color> ]? <colorspace-params> [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "color( [ from <color> ]? [ <custom-params> | [ <predefined-rgb> [ <number> | <percentage> | r | g | b | alpha | none ]{3} [ / [ <alpha-value> | r | g | b | alpha | none ] ]? ] | [ <xyz-space> [ <number> | <percentage> | x | y | z | alpha | none ]{3} [ / [ <alpha-value> | x | y | z | alpha | none ] ]? ] ] )",
 		"tests": {
 			"passing": [
 				{
@@ -918,12 +936,28 @@
 				{
 					"property": "color",
 					"value": "color(from red xyz 0 0 0)"
+				},
+				{
+					"property": "color",
+					"value": "color(from red xyz x y z / alpha)"
+				},
+				{
+					"property": "color",
+					"value": "color(from red srgb r g b / alpha)"
 				}
 			],
 			"failing": [
 				{
 					"property": "color",
 					"value": "color(red from xyz 0 0 0)"
+				},
+				{
+					"property": "color",
+					"value": "color(from red xyz r g b)"
+				},
+				{
+					"property": "color",
+					"value": "color(from red srgb x y z)"
 				}
 			]
 		}
@@ -1935,7 +1969,7 @@
 		"comment": "",
 		"syntax-b": "hwb( [ <hue> | none ] [ <percentage> | none ] [ <percentage> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "hwb( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "hwb( [ from <color> ]? [ <hue> | h | w | b | alpha | none ] [ <percentage> | <number> | h | w | b | alpha | none ] [ <percentage> | <number> | h | w | b | alpha | none ] [ / [ <alpha-value> | h | w | b | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -2304,7 +2338,7 @@
 		"comment": "",
 		"syntax-b": "lab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "lab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "lab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "lab( [ from <color> ]? [ <percentage> | <number> | l | a | b | alpha | none ] [ <percentage> | <number> | l | a | b | alpha | none ] [ <percentage> | <number> | l | a | b | alpha | none ] [ / [ <alpha-value> | l | a | b | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -2356,7 +2390,7 @@
 		"comment": "",
 		"syntax-b": "lch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "lch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "lch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "lch( [ from <color> ]? [ <percentage> | <number> | l | c | h | alpha | none ] [ <percentage> | <number> | l | c | h | alpha | none ] [ <hue> | l | c | h | alpha | none ] [ / [ <alpha-value> | l | c | h | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -2892,7 +2926,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "hsl( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "hsl( [ from <color> ]? [ <hue> | h | s | l | alpha | none ] [ <percentage> | <number> | h | s | l | alpha | none ] [ <percentage> | <number> | h | s | l | alpha | none ] [ / [ <alpha-value> | h | s | l | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -2926,6 +2960,10 @@
 				{
 					"property": "color",
 					"value": "hsl(from hsl(0.5turn 5 10) 0.5turn 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "hsl(from hsl(0.5turn 5 10) h s l / alpha)"
 				}
 			],
 			"failing": [
@@ -2941,7 +2979,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "hsla( [ from <color> ]? [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "hsla( [ from <color> ]? [ <hue> | h | s | l | alpha | none ] [ <percentage> | <number> | h | s | l | alpha | none ] [ <percentage> | <number> | h | s | l | alpha | none ] [ / [ <alpha-value> | h | s | l | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -2975,6 +3013,10 @@
 				{
 					"property": "color",
 					"value": "hsla(from hsla(0.5turn 5 10) 0.5turn 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "hsla(from hsla(0.5turn 5 10) h s l / alpha)"
 				}
 			],
 			"failing": [
@@ -2990,7 +3032,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "rgb( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "rgb( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "rgb( [ from <color> ]? [ <number> | <percentage> | r | g | b | alpha | none ]{3} [ / [ <alpha-value> | r | g | b | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -3024,12 +3066,32 @@
 				{
 					"property": "color",
 					"value": "rgb(from rgb(20% 5 10) 20% 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) r g b / alpha)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) alpha alpha alpha / alpha)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) r r r / r)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) calc(r / 2) calc(g / 2) calc(b / 2) / calc(alpha / 2))"
 				}
 			],
 			"failing": [
 				{
 					"property": "color",
 					"value": "rgb(20% 10 5, 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) red green blue / a)"
 				}
 			]
 		}
@@ -3039,7 +3101,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "rgba( [ from <color> ]? [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "rgba( [ from <color> ]? [ <number> | <percentage> | r | g | b | alpha | none ]{3} [ / [ <alpha-value> | r | g | b | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -3073,12 +3135,32 @@
 				{
 					"property": "color",
 					"value": "rgba(from rgba(20% 5 10) 20% 5 10)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(from rgb(20% 5 10) r g b / alpha)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(from rgb(20% 5 10) alpha alpha alpha / alpha)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(from rgb(20% 5 10) r r r / r)"
+				},
+				{
+					"property": "color",
+					"value": "rgba(from rgb(20% 5 10) calc(r / 2) calc(g / 2) calc(b / 2) / calc(alpha / 2))"
 				}
 			],
 			"failing": [
 				{
 					"property": "color",
 					"value": "rgba(20% 10 5, 0.5)"
+				},
+				{
+					"property": "color",
+					"value": "rgb(from rgb(20% 5 10) red green blue / a)"
 				}
 			]
 		}
@@ -3121,7 +3203,7 @@
 		"comment": "",
 		"syntax-b": "oklab( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "oklab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "oklab( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "oklab( [ from <color> ]? [ <percentage> | <number> | l | a | b | alpha | none ] [ <percentage> | <number> | l | a | b | alpha | none ] [ <percentage> | <number> | l | a | b | alpha | none ] [ / [ <alpha-value> | l | a | b | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
@@ -3162,7 +3244,7 @@
 		"comment": "",
 		"syntax-b": "oklch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
 		"syntax-a": "oklch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
-		"syntax-m": "oklch( [ from <color> ]? [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )",
+		"syntax-m": "oklch( [ from <color> ]? [ <percentage> | <number> | l | c | h | alpha | none ] [ <percentage> | <number> | l | c | h | alpha | none ] [ <hue> | l | c | h | alpha | none ] [ / [ <alpha-value> | l | c | h | alpha | none ] ]? )",
 		"tests": {
 			"passing": [
 				{
