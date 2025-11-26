@@ -1,5 +1,9 @@
 # Changes to PostCSS Browser Comments
 
+### Unreleased (patch)
+
+- Correctly list all browser versions. This fixes an issue where a config targeting a dead browser (e.g. `IE 10`) would remove styles marked with `all browsers`.
+
 ### 6.0.1
 
 _September 25, 2024_
