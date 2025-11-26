@@ -1678,12 +1678,15 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<shape> | auto",
-		"syntax-a": "rect( <top> , <right> , <bottom> , <left> ) | auto",
-		"syntax-m": "rect( <top> , <right> , <bottom> , <left> ) | auto",
+		"syntax-a": "rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto",
+		"syntax-m": "rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto",
 		"tests": {
 			"passing": [
 				{
 					"value": "rect(1px, 2px, 3px, 4px)"
+				},
+				{
+					"value": "rect(1px 2px 3px 4px)"
 				}
 			],
 			"failing": []

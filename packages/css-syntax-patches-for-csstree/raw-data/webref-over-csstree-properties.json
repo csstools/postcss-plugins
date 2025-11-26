@@ -632,7 +632,7 @@
 	"clip": {
 		"type": "modified",
 		"syntax-b": "<shape> | auto",
-		"syntax-a": "rect( <top> , <right> , <bottom> , <left> ) | auto",
+		"syntax-a": "rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto",
 		"comment": ""
 	},
 	"color-adjust": {
