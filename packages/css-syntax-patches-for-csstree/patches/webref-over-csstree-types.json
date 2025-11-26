@@ -737,7 +737,7 @@
 		"comment": "",
 		"syntax-b": "",
 		"syntax-a": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]",
-		"syntax-m": "[ <size-keyword> | <calc-size()> | any | <calc-sum> ]",
+		"syntax-m": "[ <size-keyword> | <calc-size()> | <calc-sum> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -745,13 +745,27 @@
 	},
 	"calc-size()": {
 		"type": "added",
-		"comment": "",
+		"comment": "https://github.com/w3c/csswg-drafts/issues/13158",
 		"syntax-b": "",
 		"syntax-a": "calc-size( <calc-size-basis> , <calc-sum> )",
-		"syntax-m": "calc-size( <calc-size-basis> , <calc-sum> )",
+		"syntax-m": "calc-size( [ [ <calc-size-basis> , [ <calc-sum> | size ] ] | [ any , <calc-sum> ] ] )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "height",
+					"value": "calc-size(auto, size)"
+				},
+				{
+					"property": "height",
+					"value": "calc-size(auto, 10px)"
+				}
+			],
+			"failing": [
+				{
+					"property": "height",
+					"value": "calc-size(any, size)"
+				}
+			]
 		}
 	},
 	"calc-value": {
