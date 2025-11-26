@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import postcss from 'postcss';
-import { find, fork, parse, walk } from 'css-tree';
+import { find, fork, parse } from 'css-tree';
 
 async function get_files(dir, recursive = true) {
 	dir = path.resolve(dir);
@@ -108,7 +108,6 @@ for (const css_file of css_files) {
 			const { prop, value, parent } = decl;
 
 			const csstree_value_node = parse(value, { context: 'value' });
-			patch_relative_color_keywords(csstree_value_node);
 
 			if (contains_unsupported_function(csstree_value_node)) {
 				continue;
@@ -140,48 +139,4 @@ for (const css_file of css_files) {
 			});
 		}
 	});
-}
-
-function patch_relative_color_keywords(csstree_value_node) {
-	let color_function_stack = 0;
-	let relative_color_functions = /^(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)$/i;
-	let relative_color_channel_keywords = /^(?:r|g|b|h|s|l|a|b|c|w|b|x|y|z)$/i;
-
-	walk(
-		csstree_value_node,
-		{
-			enter: function (node) {
-				if (
-					node.type === 'Function' &&
-					relative_color_functions.test(node.name)
-				) {
-					color_function_stack++;
-
-					return;
-				}
-
-				if (
-					node.type === 'Identifier' &&
-					color_function_stack > 0 &&
-					relative_color_channel_keywords.test(node.name)
-				) {
-					node.type = 'Number';
-					node.value = '0';
-					delete node.name;
-
-					return;
-				}
-			},
-			exit: function (node) {
-				if (
-					node.type === 'Function' &&
-					relative_color_functions.test(node.name)
-				) {
-					color_function_stack--;
-
-					return;
-				}
-			},
-		},
-	);
 }

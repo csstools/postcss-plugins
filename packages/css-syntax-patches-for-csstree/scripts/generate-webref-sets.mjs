@@ -109,7 +109,7 @@ export async function generate_webref_sets() {
 		}
 
 		if (property.name === 'clip') {
-			property.syntax = 'rect( <top>, <right>, <bottom>, <left> ) | auto';
+			property.syntax = 'rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto';
 		}
 
 		if (!property.syntax) {

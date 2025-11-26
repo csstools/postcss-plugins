@@ -573,7 +573,7 @@
 		"syntax": "inline-start | inline-end | block-start | block-end | left | right | top | bottom | both-inline | both-block | both | none"
 	},
 	"clip": {
-		"syntax": "rect( <top> , <right> , <bottom> , <left> ) | auto"
+		"syntax": "rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto"
 	},
 	"clip-path": {
 		"syntax": "<clip-source> | [ <basic-shape> || <geometry-box> ] | none"
