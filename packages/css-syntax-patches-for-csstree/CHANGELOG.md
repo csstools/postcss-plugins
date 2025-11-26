@@ -1,6 +1,8 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### 1.0.18
+
+_November 26, 2025_
 
 - Patch `clip: rect()` to preserve legacy syntax
 - Patch color functions to support relative color component keywords
