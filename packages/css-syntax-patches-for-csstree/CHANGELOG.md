@@ -1,5 +1,10 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Patch `calc-size()` to allow the `size` keyword
+
+
 ### 1.0.18
 
 _November 26, 2025_
