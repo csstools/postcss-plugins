@@ -129,7 +129,7 @@ function getBrowsersList(text: string): Array<string> {
 			part => part.replace(
 				GET_BROWSERSLIST_QUERY_REGEX,
 				($0, browser, query) => browser === 'all'
-					? '> 0%'
+					? '>= 0%'
 					: `${browser}${query
 						// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 						? /^((?:\d*\.)?\d+)-$/.test(query)
