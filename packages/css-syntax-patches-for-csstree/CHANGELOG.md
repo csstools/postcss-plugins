@@ -1,6 +1,8 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### 1.0.20
+
+_November 29, 2025_
 
 - Patch `overflow-*` to include `<-non-standard-overflow>`
 
