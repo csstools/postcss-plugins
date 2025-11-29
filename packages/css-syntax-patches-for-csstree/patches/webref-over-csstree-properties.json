@@ -4027,6 +4027,24 @@
 			"failing": []
 		}
 	},
+	"overflow-block": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-m": "| <-non-standard-overflow>",
+		"tests": {
+			"passing": [
+				{
+					"value": "visible"
+				},
+				{
+					"value": "overlay"
+				}
+			],
+			"failing": []
+		}
+	},
 	"overflow-clip-margin-block": {
 		"type": "added",
 		"comment": "",
@@ -4134,6 +4152,60 @@
 		"syntax-m": "<visual-box> || <length [0,∞]>",
 		"tests": {
 			"passing": [],
+			"failing": []
+		}
+	},
+	"overflow-inline": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-m": "| <-non-standard-overflow>",
+		"tests": {
+			"passing": [
+				{
+					"value": "visible"
+				},
+				{
+					"value": "overlay"
+				}
+			],
+			"failing": []
+		}
+	},
+	"overflow-x": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-m": "| <-non-standard-overflow>",
+		"tests": {
+			"passing": [
+				{
+					"value": "visible"
+				},
+				{
+					"value": "overlay"
+				}
+			],
+			"failing": []
+		}
+	},
+	"overflow-y": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-m": "| <-non-standard-overflow>",
+		"tests": {
+			"passing": [
+				{
+					"value": "visible"
+				},
+				{
+					"value": "overlay"
+				}
+			],
 			"failing": []
 		}
 	},

@@ -1650,7 +1650,7 @@
 		"syntax": "auto | none"
 	},
 	"overflow-block": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"overflow-clip-box": {
 		"syntax": "padding-box | content-box"
@@ -1689,7 +1689,7 @@
 		"syntax": "<visual-box> || <length [0,∞]>"
 	},
 	"overflow-inline": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"-webkit-overflow-scrolling": {
 		"syntax": "auto | touch"
@@ -1701,10 +1701,10 @@
 		"syntax": "normal | break-word | anywhere"
 	},
 	"overflow-x": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"overflow-y": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"overlay": {
 		"syntax": "none | auto"

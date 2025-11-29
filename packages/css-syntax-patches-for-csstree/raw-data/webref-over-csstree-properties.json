@@ -1751,6 +1751,12 @@
 		"syntax-a": "<'overflow-block'>{1,2}",
 		"comment": ""
 	},
+	"overflow-block": {
+		"type": "modified",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"comment": ""
+	},
 	"overflow-clip-margin-block": {
 		"type": "added",
 		"syntax-b": "",
@@ -1809,6 +1815,24 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"comment": ""
+	},
+	"overflow-inline": {
+		"type": "modified",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"comment": ""
+	},
+	"overflow-x": {
+		"type": "modified",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"comment": ""
+	},
+	"overflow-y": {
+		"type": "modified",
+		"syntax-b": "visible | hidden | clip | scroll | auto",
+		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
 		"comment": ""
 	},
 	"padding": {
