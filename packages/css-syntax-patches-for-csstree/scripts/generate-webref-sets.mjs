@@ -112,6 +112,7 @@ export async function generate_webref_sets() {
 			property.syntax = 'rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto';
 		}
 
+		// https://github.com/csstree/csstree/pull/354
 		if ((
 			property.name === 'overflow-x' ||
 			property.name === 'overflow-y' ||
