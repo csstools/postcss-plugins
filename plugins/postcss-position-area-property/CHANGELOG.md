@@ -1,5 +1,7 @@
 # Changes to PostCSS Position Area Property
 
-### Unreleased (major)
+### 1.0.0
+
+_December 3, 2025_
 
 - Initial version

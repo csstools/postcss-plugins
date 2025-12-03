@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-position-area-property",
 	"description": "Fallback `position-area` to the alternate name `inset-area`",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
