@@ -745,3 +745,7 @@
 .contrast-color {
 	color: contrast-color(green);
 }
+
+.position-area {
+	position-area: start;
+}

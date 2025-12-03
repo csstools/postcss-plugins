@@ -1,0 +1,1 @@
+const o=/^position-area$/i,creator=()=>({postcssPlugin:"postcss-position-area-property",Declaration(s){o.test(s.prop)&&s.cloneBefore({prop:"inset-area",value:s.value})}});creator.postcss=!0;export{creator as default};

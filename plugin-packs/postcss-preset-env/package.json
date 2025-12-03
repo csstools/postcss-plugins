@@ -93,7 +93,7 @@
 		"css-blank-pseudo": "^7.0.1",
 		"css-has-pseudo": "^7.0.3",
 		"css-prefers-color-scheme": "^10.0.0",
-		"cssdb": "^8.4.2",
+		"cssdb": "^8.5.1",
 		"postcss-attribute-case-insensitive": "^7.0.1",
 		"postcss-clamp": "^4.1.0",
 		"postcss-color-functional-notation": "^7.0.12",

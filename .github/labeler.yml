@@ -395,6 +395,12 @@
       - plugins/postcss-place/**
       - experimental/postcss-place/**
 
+"plugins/postcss-position-area-property":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-position-area-property/**
+      - experimental/postcss-position-area-property/**
+
 "plugins/postcss-progressive-custom-properties":
   - changed-files:
     - any-glob-to-any-file:

@@ -116,6 +116,7 @@ body:
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
+        - PostCSS Position Area Property
         - PostCSS Progressive Custom Properties
         - PostCSS Pseudo Class Any Link
         - PostCSS Random Function
