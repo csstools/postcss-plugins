@@ -72,7 +72,7 @@
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "position-area",
+		"cssdbId": "position-area-property",
 		"exportName": "postcssPositionAreaProperty",
 		"humanReadableName": "PostCSS Position Area Property",
 		"specUrl": "https://drafts.csswg.org/css-anchor-position/#position-area"

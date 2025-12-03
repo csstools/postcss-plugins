@@ -671,5 +671,6 @@
 }
 
 .position-area {
+	inset-area: start;
 	position-area: start;
 }

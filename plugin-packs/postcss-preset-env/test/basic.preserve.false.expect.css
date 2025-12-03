@@ -885,5 +885,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .position-area {
+	inset-area: start;
 	position-area: start;
 }
