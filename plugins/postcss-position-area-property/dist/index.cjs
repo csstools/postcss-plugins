@@ -1,0 +1,1 @@
+"use strict";const s=/^position-area$/i,creator=()=>({postcssPlugin:"postcss-position-area-property",Declaration(o){s.test(o.prop)&&o.cloneBefore({prop:"inset-area",value:o.value})}});creator.postcss=!0,module.exports=creator;

@@ -47,6 +47,7 @@ export default [
 	'overflow-property',
 	'overflow-wrap-property',
 	'place-properties',
+	'position-area-property',
 	'system-ui-font-family',
 	'font-format-keywords',
 	'display-two-values',

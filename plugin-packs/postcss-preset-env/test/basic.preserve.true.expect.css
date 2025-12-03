@@ -1260,9 +1260,9 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		70,
-		100,
-		25
+		115,
+		185,
+		190
 	);
 	color: rgb(
 		random(--r, 0, 255, 5),
@@ -1270,12 +1270,12 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 		random(--b, 0, 255, 5)
 	);
 
-	border-color: rgb(156, 84, 140);
+	border-color: rgb(17, 58, 166);
 
 	border-color: oklch(
-		55%
-		30%
-		336deg
+		40%
+		45%
+		264deg
 	);
 
 	border-color: oklch(
@@ -1288,4 +1288,8 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 .contrast-color {
 	color: rgb(255, 255, 255);
 	color: contrast-color(green);
+}
+
+.position-area {
+	position-area: start;
 }

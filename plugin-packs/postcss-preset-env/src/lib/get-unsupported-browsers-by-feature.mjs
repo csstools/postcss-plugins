@@ -6,6 +6,39 @@ export function getUnsupportedBrowsersByFeature(feature) {
 		return [];
 	}
 
+	if (feature.id === 'position-area-property') {
+		// https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-area#browser_compatibility
+		// this can't be expressed in CSSDB
+		return [
+			'chrome 125',
+			'chrome 126',
+			'chrome 127',
+			'chrome 128',
+			'edge 125',
+			'edge 126',
+			'edge 127',
+			'edge 128',
+			'and_chr 125',
+			'and_chr 126',
+			'and_chr 127',
+			'and_chr 128',
+			'android 125',
+			'android 126',
+			'android 127',
+			'android 128',
+
+			'samsung 27',
+
+			'opera 111',
+			'opera 112',
+			'opera 113',
+			'opera 114',
+			'op_mob 83',
+			'op_mob 84',
+			'op_mob 85',
+		];
+	}
+
 	if (!('browser_support' in feature)) {
 		// the feature does not work in any browser (yet)
 		return [ '> 0%' ];
