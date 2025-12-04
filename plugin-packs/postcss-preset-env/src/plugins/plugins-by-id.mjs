@@ -51,6 +51,7 @@ import postcssOpacityPercentage from 'postcss-opacity-percentage';
 import postcssOverflowShorthand from 'postcss-overflow-shorthand';
 import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
+import postcssPositionAreaProperty from '@csstools/postcss-position-area-property';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import postcssRandomFunction from '@csstools/postcss-random-function';
@@ -120,6 +121,7 @@ export const pluginsById = new Map(
 		['overflow-property', postcssOverflowShorthand],
 		['overflow-wrap-property', postcssReplaceOverflowWrap],
 		['place-properties', postcssPlace],
+		['position-area-property', postcssPositionAreaProperty],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
 		['progressive-custom-properties', postcssProgressiveCustomProperties],
 		['random-function', postcssRandomFunction],

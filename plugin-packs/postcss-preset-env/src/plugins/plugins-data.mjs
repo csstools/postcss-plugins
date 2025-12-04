@@ -255,6 +255,11 @@ export default [
 		'importName': 'postcssPageBreak',
 	},
 	{
+		'packageName': '@csstools/postcss-position-area-property',
+		'id': 'position-area-property',
+		'importName': 'postcssPositionAreaProperty',
+	},
+	{
 		'packageName': 'postcss-place',
 		'id': 'place-properties',
 		'importName': 'postcssPlace',

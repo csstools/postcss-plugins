@@ -51,6 +51,7 @@ import type { postcssOpacityPercentageOptions } from '../types/postcss-opacity-p
 import type { pluginOptions as postcssOverflowShorthandOptions } from 'postcss-overflow-shorthand';
 import type { postcssReplaceOverflowWrapOptions } from '../types/postcss-replace-overflow-wrap/plugin-options';
 import type { pluginOptions as postcssPlaceOptions } from 'postcss-place';
+import type { pluginOptions as postcssPositionAreaPropertyOptions } from '@csstools/postcss-position-area-property';
 import type { pluginOptions as postcssPrefersColorSchemeOptions } from 'css-prefers-color-scheme';
 import type { pluginOptions as postcssRandomFunctionOptions } from '@csstools/postcss-random-function';
 import type { pluginOptions as postcssColorRebeccapurpleOptions } from 'postcss-color-rebeccapurple';
@@ -172,6 +173,8 @@ export type pluginsOptions = {
 	'overflow-wrap-property'?: subPluginOptions<postcssReplaceOverflowWrapOptions>
 	/** plugin options for "postcss-place" */
 	'place-properties'?: subPluginOptions<postcssPlaceOptions>
+	/** plugin options for "@csstools/postcss-position-area-property" */
+	'position-area-property'?: subPluginOptions<postcssPositionAreaPropertyOptions>
 	/** plugin options for "css-prefers-color-scheme" */
 	'prefers-color-scheme-query'?: subPluginOptions<postcssPrefersColorSchemeOptions>
 	/** plugin options for "@csstools/postcss-random-function" */
