@@ -60,7 +60,7 @@ import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax'
 import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
 import postcssSignFunctions from '@csstools/postcss-sign-functions';
 import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
-import postcssFontFamilySystemUI from '../patch/postcss-system-ui-font-family.mjs';
+import postcssSystemUIFontFamily from '@csstools/postcss-system-ui-font-family';
 import postcssTextDecorationShorthand from '@csstools/postcss-text-decoration-shorthand';
 import postcssTrigonometricFunctions from '@csstools/postcss-trigonometric-functions';
 import postcssUnsetValue from '@csstools/postcss-unset-value';
@@ -130,7 +130,7 @@ export const pluginsById = new Map(
 		['scope-pseudo-class', postcssScopePseudoClass],
 		['sign-functions', postcssSignFunctions],
 		['stepped-value-functions', postcssSteppedValueFunctions],
-		['system-ui-font-family', postcssFontFamilySystemUI],
+		['system-ui-font-family', postcssSystemUIFontFamily],
 		['text-decoration-shorthand', postcssTextDecorationShorthand],
 		['trigonometric-functions', postcssTrigonometricFunctions],
 		['unset-value', postcssUnsetValue],

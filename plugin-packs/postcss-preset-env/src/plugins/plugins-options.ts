@@ -59,7 +59,7 @@ import type { pluginOptions as postcssRelativeColorSyntaxOptions } from '@csstoo
 import type { pluginOptions as postcssScopePseudoClassOptions } from '@csstools/postcss-scope-pseudo-class';
 import type { pluginOptions as postcssSignFunctionsOptions } from '@csstools/postcss-sign-functions';
 import type { pluginOptions as postcssSteppedValueFunctionsOptions } from '@csstools/postcss-stepped-value-functions';
-import type { postcssFontFamilySystemUIOptions } from '../types/postcss-system-ui-font-family/plugin-options';
+import type { pluginOptions as postcssSystemUIFontFamilyOptions } from '@csstools/postcss-system-ui-font-family';
 import type { pluginOptions as postcssTextDecorationShorthandOptions } from '@csstools/postcss-text-decoration-shorthand';
 import type { pluginOptions as postcssTrigonometricFunctionsOptions } from '@csstools/postcss-trigonometric-functions';
 import type { pluginOptions as postcssUnsetValueOptions } from '@csstools/postcss-unset-value';
@@ -189,8 +189,8 @@ export type pluginsOptions = {
 	'sign-functions'?: subPluginOptions<postcssSignFunctionsOptions>
 	/** plugin options for "@csstools/postcss-stepped-value-functions" */
 	'stepped-value-functions'?: subPluginOptions<postcssSteppedValueFunctionsOptions>
-	/** plugin options for "postcss-system-ui-font-family" */
-	'system-ui-font-family'?: subPluginOptions<postcssFontFamilySystemUIOptions>
+	/** plugin options for "@csstools/postcss-system-ui-font-family" */
+	'system-ui-font-family'?: subPluginOptions<postcssSystemUIFontFamilyOptions>
 	/** plugin options for "@csstools/postcss-text-decoration-shorthand" */
 	'text-decoration-shorthand'?: subPluginOptions<postcssTextDecorationShorthandOptions>
 	/** plugin options for "@csstools/postcss-trigonometric-functions" */

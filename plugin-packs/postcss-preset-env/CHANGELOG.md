@@ -3,7 +3,7 @@
 ### Unreleased (minor)
 
 - Added `@csstools/postcss-position-area-property` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-position-area-property#readme) for usage details.
-- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.5.1`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#851-december-3-2025) (patch)
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.5.2`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#852-december-4-2025) (patch)
 
 ### 10.4.0
 

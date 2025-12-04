@@ -12,7 +12,7 @@ function generatePluginsByID(data) {
 
 	for (let i = 0; i < plugins.length; i++) {
 		const plugin = plugins[i];
-		result += `import ${plugin.importName} from '${plugin.importedPackage || plugin.packageName}';\n`;
+		result += `import ${plugin.importName} from '${plugin.packageName}';\n`;
 	}
 
 	result += `

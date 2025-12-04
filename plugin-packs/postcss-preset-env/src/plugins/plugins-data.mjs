@@ -285,10 +285,9 @@ export default [
 		'importName': 'postcssSteppedValueFunctions',
 	},
 	{
-		'packageName': 'postcss-system-ui-font-family',
-		'importedPackage': '../patch/postcss-system-ui-font-family.mjs',
+		'packageName': '@csstools/postcss-system-ui-font-family',
 		'id': 'system-ui-font-family',
-		'importName': 'postcssFontFamilySystemUI',
+		'importName': 'postcssSystemUIFontFamily',
 	},
 	{
 		'packageName': '@csstools/postcss-unset-value',

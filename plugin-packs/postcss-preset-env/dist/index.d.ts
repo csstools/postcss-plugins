@@ -52,10 +52,11 @@ import type { pluginOptions as pluginOptions_54 } from '@csstools/postcss-relati
 import type { pluginOptions as pluginOptions_55 } from '@csstools/postcss-scope-pseudo-class';
 import type { pluginOptions as pluginOptions_56 } from '@csstools/postcss-sign-functions';
 import type { pluginOptions as pluginOptions_57 } from '@csstools/postcss-stepped-value-functions';
-import type { pluginOptions as pluginOptions_58 } from '@csstools/postcss-text-decoration-shorthand';
-import type { pluginOptions as pluginOptions_59 } from '@csstools/postcss-trigonometric-functions';
+import type { pluginOptions as pluginOptions_58 } from '@csstools/postcss-system-ui-font-family';
+import type { pluginOptions as pluginOptions_59 } from '@csstools/postcss-text-decoration-shorthand';
 import type { pluginOptions as pluginOptions_6 } from '@csstools/postcss-cascade-layers';
-import type { pluginOptions as pluginOptions_60 } from '@csstools/postcss-unset-value';
+import type { pluginOptions as pluginOptions_60 } from '@csstools/postcss-trigonometric-functions';
+import type { pluginOptions as pluginOptions_61 } from '@csstools/postcss-unset-value';
 import type { pluginOptions as pluginOptions_7 } from 'postcss-attribute-case-insensitive';
 import type { pluginOptions as pluginOptions_8 } from '@csstools/postcss-color-function';
 import type { pluginOptions as pluginOptions_9 } from '@csstools/postcss-color-function-display-p3-linear';
@@ -278,14 +279,14 @@ export declare type pluginsOptions = {
     'sign-functions'?: subPluginOptions<pluginOptions_56>;
     /** plugin options for "@csstools/postcss-stepped-value-functions" */
     'stepped-value-functions'?: subPluginOptions<pluginOptions_57>;
-    /** plugin options for "postcss-system-ui-font-family" */
-    'system-ui-font-family'?: subPluginOptions<postcssFontFamilySystemUIOptions>;
+    /** plugin options for "@csstools/postcss-system-ui-font-family" */
+    'system-ui-font-family'?: subPluginOptions<pluginOptions_58>;
     /** plugin options for "@csstools/postcss-text-decoration-shorthand" */
-    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_58>;
+    'text-decoration-shorthand'?: subPluginOptions<pluginOptions_59>;
     /** plugin options for "@csstools/postcss-trigonometric-functions" */
-    'trigonometric-functions'?: subPluginOptions<pluginOptions_59>;
+    'trigonometric-functions'?: subPluginOptions<pluginOptions_60>;
     /** plugin options for "@csstools/postcss-unset-value" */
-    'unset-value'?: subPluginOptions<pluginOptions_60>;
+    'unset-value'?: subPluginOptions<pluginOptions_61>;
 };
 
 /** postcss-clamp plugin options */
