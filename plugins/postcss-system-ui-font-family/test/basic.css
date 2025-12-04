@@ -1,0 +1,27 @@
+.foo {
+	font: italic bold 12px/30px system-ui, Helvetica Neue, sans-serif;
+	font: italic bold 12px/30px system-ui, sans-serif;
+	font: italic bold 12px/30px sans-serif;
+	font-family: system-ui, Helvetica Neue, sans-serif;
+	font-family: system-ui, sans-serif;
+	font-family: system-ui;
+	font-family: "Droid Sans", system-ui, sans-serif;
+	--font-family: system-ui;
+}
+
+.ignore {
+	font-family: sans-serif;
+}
+
+.ignore {
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
+
+.tab-between-idents {
+	font-family: system-ui, Segoe		UI;
+}
+
+.comment-between-idents {
+	font-family: system-ui, Segoe /* foo */UI;
+}
