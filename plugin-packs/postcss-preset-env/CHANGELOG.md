@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 10.5.0
+
+_December 4, 2025_
 
 - Added `@csstools/postcss-position-area-property` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-position-area-property#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.5.2`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#852-december-4-2025) (patch)
