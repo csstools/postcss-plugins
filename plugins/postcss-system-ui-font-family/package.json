@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-system-ui-font-family",
 	"description": "Use the `system-ui` keyword",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
