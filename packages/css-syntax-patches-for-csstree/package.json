@@ -36,7 +36,7 @@
 		"dist"
 	],
 	"devDependencies": {
-		"@webref/css": "8.0.2",
+		"@webref/css": "8.1.0",
 		"css-tree": "^3.1.0",
 		"postcss": "^8.4"
 	},
