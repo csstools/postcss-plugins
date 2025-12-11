@@ -185,6 +185,12 @@
 		"syntax-a": "<'border-block-start'>",
 		"comment": ""
 	},
+	"border-block-clip": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'border-top-clip'>",
+		"comment": ""
+	},
 	"border-block-end": {
 		"type": "modified",
 		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
@@ -194,7 +200,7 @@
 	"border-block-end-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-block-end-color": {
@@ -230,7 +236,7 @@
 	"border-block-start-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-block-start-color": {
@@ -272,7 +278,7 @@
 	"border-bottom-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-bottom-color": {
@@ -308,7 +314,7 @@
 	"border-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "<'border-top-clip'>",
 		"comment": ""
 	},
 	"border-collapse": {
@@ -359,6 +365,12 @@
 		"syntax-a": "<'border-block-start'>",
 		"comment": ""
 	},
+	"border-inline-clip": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'border-top-clip'>",
+		"comment": ""
+	},
 	"border-inline-end": {
 		"type": "modified",
 		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
@@ -368,7 +380,7 @@
 	"border-inline-end-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-inline-end-color": {
@@ -404,7 +416,7 @@
 	"border-inline-start-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-inline-start-color": {
@@ -446,7 +458,7 @@
 	"border-left-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-left-color": {
@@ -476,7 +488,7 @@
 	"border-right-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-right-color": {
@@ -524,7 +536,7 @@
 	"border-top-clip": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"comment": ""
 	},
 	"border-top-color": {
@@ -584,7 +596,7 @@
 	"box-shadow-offset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ none | <length>{2} ]#",
+		"syntax-a": "[ none | <length>{1,2} ]#",
 		"comment": ""
 	},
 	"box-shadow-position": {
@@ -740,25 +752,31 @@
 	"contain-intrinsic-block-size": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"contain-intrinsic-height": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"contain-intrinsic-inline-size": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"comment": ""
+	},
+	"contain-intrinsic-size": {
+		"type": "modified",
+		"syntax-b": "[ auto? [ none | <length> ] ]{1,2}",
+		"syntax-a": "[ [ auto | from-element ]? [ none | <length [0,∞]> ] ]{1,2}",
 		"comment": ""
 	},
 	"contain-intrinsic-width": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"container-type": {

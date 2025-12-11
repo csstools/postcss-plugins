@@ -227,6 +227,9 @@
 	"border-block": {
 		"syntax": "<'border-block-start'>"
 	},
+	"border-block-clip": {
+		"syntax": "<'border-top-clip'>"
+	},
 	"border-block-color": {
 		"syntax": "<'border-top-color'>{1,2}"
 	},
@@ -234,7 +237,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-block-end-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-block-end-color": {
 		"syntax": "<color> | <image-1D>"
@@ -252,7 +255,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-block-start-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-block-start-color": {
 		"syntax": "<color> | <image-1D>"
@@ -276,7 +279,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-bottom-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-bottom-color": {
 		"syntax": "<color> | <image-1D>"
@@ -303,7 +306,7 @@
 		"syntax": "none | parent | display"
 	},
 	"border-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "<'border-top-clip'>"
 	},
 	"border-collapse": {
 		"syntax": "separate | collapse"
@@ -338,6 +341,9 @@
 	"border-inline": {
 		"syntax": "<'border-block-start'>"
 	},
+	"border-inline-clip": {
+		"syntax": "<'border-top-clip'>"
+	},
 	"border-inline-color": {
 		"syntax": "<'border-top-color'>{1,2}"
 	},
@@ -345,7 +351,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-inline-end-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-inline-end-color": {
 		"syntax": "<color> | <image-1D>"
@@ -363,7 +369,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-inline-start-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-inline-start-color": {
 		"syntax": "<color> | <image-1D>"
@@ -387,7 +393,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-left-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-left-color": {
 		"syntax": "<color> | <image-1D>"
@@ -426,7 +432,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-right-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-right-color": {
 		"syntax": "<color> | <image-1D>"
@@ -462,7 +468,7 @@
 		"syntax": "<line-width> || <line-style> || <color>"
 	},
 	"border-top-clip": {
-		"syntax": "normal | [ <length-percentage [0,∞]> | <flex> ]+"
+		"syntax": "none | [ <length-percentage [0,∞]> | <flex> ]+"
 	},
 	"border-top-color": {
 		"syntax": "<color> | <image-1D>"
@@ -531,7 +537,7 @@
 		"syntax": "<color>#"
 	},
 	"box-shadow-offset": {
-		"syntax": "[ none | <length>{2} ]#"
+		"syntax": "[ none | <length>{1,2} ]#"
 	},
 	"box-shadow-position": {
 		"syntax": "[ outset | inset ]#"
@@ -651,19 +657,19 @@
 		"syntax": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ] | view-transition"
 	},
 	"contain-intrinsic-block-size": {
-		"syntax": "auto? [ none | <length [0,∞]> ]"
+		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-height": {
-		"syntax": "auto? [ none | <length [0,∞]> ]"
+		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-inline-size": {
-		"syntax": "auto? [ none | <length [0,∞]> ]"
+		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-size": {
-		"syntax": "[ auto? [ none | <length> ] ]{1,2}"
+		"syntax": "[ [ auto | from-element ]? [ none | <length [0,∞]> ] ]{1,2}"
 	},
 	"contain-intrinsic-width": {
-		"syntax": "auto? [ none | <length [0,∞]> ]"
+		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
 	},
 	"container": {
 		"syntax": "<'container-name'> [ / <'container-type'> ]?"

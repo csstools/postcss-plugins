@@ -638,6 +638,17 @@
 			"failing": []
 		}
 	},
+	"border-block-clip": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'border-top-clip'>",
+		"syntax-m": "<'border-top-clip'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"border-block-end": {
 		"type": "modified",
 		"comment": "",
@@ -653,8 +664,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -719,8 +730,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -796,8 +807,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -876,8 +887,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "<'border-top-clip'>",
+		"syntax-m": "<'border-top-clip'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1011,6 +1022,17 @@
 			"failing": []
 		}
 	},
+	"border-inline-clip": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'border-top-clip'>",
+		"syntax-m": "<'border-top-clip'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"border-inline-end": {
 		"type": "modified",
 		"comment": "",
@@ -1026,8 +1048,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1092,8 +1114,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1169,8 +1191,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1253,8 +1275,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1395,8 +1417,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
-		"syntax-m": "normal | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-a": "none | [ <length-percentage [0,∞]> | <flex> ]+",
+		"syntax-m": "none | [ <length-percentage [0,∞]> | <flex> ]+",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1568,8 +1590,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ none | <length>{2} ]#",
-		"syntax-m": "[ none | <length>{2} ]#",
+		"syntax-a": "[ none | <length>{1,2} ]#",
+		"syntax-m": "[ none | <length>{1,2} ]#",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2024,8 +2046,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
-		"syntax-m": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-m": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2035,8 +2057,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
-		"syntax-m": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-m": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2046,8 +2068,19 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
-		"syntax-m": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-m": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"contain-intrinsic-size": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "[ auto? [ none | <length> ] ]{1,2}",
+		"syntax-a": "[ [ auto | from-element ]? [ none | <length [0,∞]> ] ]{1,2}",
+		"syntax-m": "[ [ auto | from-element ]? [ none | <length [0,∞]> ] ]{1,2}",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2057,8 +2090,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "auto? [ none | <length [0,∞]> ]",
-		"syntax-m": "auto? [ none | <length [0,∞]> ]",
+		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-m": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
