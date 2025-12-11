@@ -6,7 +6,7 @@ const onParseError = (err) => {
 	throw err;
 };
 
-test('component-value', (t) => {
+test('component-value', () => {
 	const cases = [
 		{
 			tokens: tokenize({ css: 'foo()' }, { onParseError: onParseError }),
