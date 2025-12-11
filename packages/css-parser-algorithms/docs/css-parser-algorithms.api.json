@@ -2046,7 +2046,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!parseComponentValue:function(1)",
-          "docComment": "/**\n * Parse a single component value.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));\n * ```\n *\n */\n",
+          "docComment": "/**\n * Parse a single component value.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue } from '@csstools/css-parser-algorithms';\n *\n * parseComponentValue(tokenize({ css: `10px` }));\n * parseComponentValue(tokenize({ css: `calc((10px + 1x) * 4)` }));\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

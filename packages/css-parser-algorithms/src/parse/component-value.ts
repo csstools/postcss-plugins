@@ -9,10 +9,10 @@ import { consumeComponentValue } from '../consume/component-block-function';
  * @example
  * ```js
  * import { tokenize } from '@csstools/css-tokenizer';
- * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+ * import { parseComponentValue } from '@csstools/css-parser-algorithms';
  *
- * parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
- * parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
+ * parseComponentValue(tokenize({ css: `10px` }));
+ * parseComponentValue(tokenize({ css: `calc((10px + 1x) * 4)` }));
  * ```
  */
 export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParseError?: (error: ParseError) => void }): ComponentValue|undefined {
@@ -26,7 +26,7 @@ export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParse
 
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
-	if (isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
+	if (!isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
 		tokensCopy.push([
 			TokenType.EOF,
 			'',
