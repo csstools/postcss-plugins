@@ -40,6 +40,46 @@
 	background-repeat-y: inherit;
 }
 
+.border-clip {
+	/* border-block-end-clip */
+	border-block-end-clip: inherit;
+}
+
+.border-clip {
+	/* border-block-start-clip */
+	border-block-start-clip: inherit;
+}
+
+.border-clip {
+	/* border-bottom-clip */
+	border-bottom-clip: inherit;
+}
+
+.border-clip {
+	/* border-inline-end-clip */
+	border-inline-end-clip: inherit;
+}
+
+.border-clip {
+	/* border-inline-start-clip */
+	border-inline-start-clip: inherit;
+}
+
+.border-clip {
+	/* border-left-clip */
+	border-left-clip: inherit;
+}
+
+.border-clip {
+	/* border-right-clip */
+	border-right-clip: inherit;
+}
+
+.border-clip {
+	/* border-top-clip */
+	border-top-clip: inherit;
+}
+
 .border-color {
 	/* border-block-end-color */
 	border-block-end-color: inherit;
