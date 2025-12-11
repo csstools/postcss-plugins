@@ -22,27 +22,25 @@ test('component-value', (t) => {
 		},
 	];
 
-	cases.forEach((testCase, index) => {
-		t.test(index, () => {
-			let didError = false;
+	cases.forEach((testCase) => {
+		let didError = false;
 
-			const result = parseComponentValue(testCase.tokens, {
-				onParseError: (err) => {
-					didError = true;
+		const result = parseComponentValue(testCase.tokens, {
+			onParseError: (err) => {
+				didError = true;
 
-					if (testCase.expectSuccess) {
-						throw err;
-					}
-				},
-			});
-
-			if (testCase.expectSuccess && !result) {
-				throw new Error('Expected test to pass and have a result');
-			}
-
-			if (!testCase.expectSuccess && !didError) {
-				throw new Error('Expected test to fail');
-			}
+				if (testCase.expectSuccess) {
+					throw err;
+				}
+			},
 		});
+
+		if (testCase.expectSuccess && !result) {
+			throw new Error('Expected test to pass and have a result');
+		}
+
+		if (!testCase.expectSuccess && !didError) {
+			throw new Error('Expected test to fail');
+		}
 	});
 });
