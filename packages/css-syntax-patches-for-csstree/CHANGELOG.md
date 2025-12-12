@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Update `@webref/css` to [`v8.1.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.1.1)
+- Patch `<radial-size>` to have correct definitions for both `circle()` and `ellipse()`
 
 ### 1.0.20
 

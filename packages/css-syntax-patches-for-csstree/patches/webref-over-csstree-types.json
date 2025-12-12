@@ -795,10 +795,36 @@
 		"comment": "",
 		"syntax-b": "circle( [ <shape-radius> ]? [ at <position> ]? )",
 		"syntax-a": "circle( <radial-size>? [ at <position> ]? )",
-		"syntax-m": "circle( <radial-size>? [ at <position> ]? )",
+		"syntax-m": "circle( [ <radial-extent> | <length-percentage [0,∞]> ]? [ at <position> ]? )",
 		"tests": {
-			"passing": [],
-			"failing": []
+			"passing": [
+				{
+					"property": "clip-path",
+					"value": "circle(50px)"
+				},
+				{
+					"property": "clip-path",
+					"value": "circle(6rem at right center)"
+				},
+				{
+					"property": "clip-path",
+					"value": "circle(10% at 2rem 90%)"
+				},
+				{
+					"property": "clip-path",
+					"value": "circle(closest-side at 5rem 6rem)"
+				},
+				{
+					"property": "clip-path",
+					"value": "circle(farthest-side)"
+				}
+			],
+			"failing": [
+				{
+					"property": "clip-path",
+					"value": "circle(50px 40px at center)"
+				}
+			]
 		}
 	},
 	"clamp()": {
@@ -1558,7 +1584,7 @@
 		"comment": "",
 		"syntax-b": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )",
 		"syntax-a": "ellipse( <radial-size>? [ at <position> ]? )",
-		"syntax-m": "ellipse( [ [ <radial-size>{2} ]? [ at <position> ]? ] )",
+		"syntax-m": "ellipse( <radial-size>? [ at <position> ]? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3909,7 +3935,12 @@
 		"syntax-a": "[ [ [ <radial-shape> || <radial-size> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <color-stop-list>",
 		"syntax-m": "[ [ [ <radial-shape> || <radial-size> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <color-stop-list>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "background",
+					"value": "radial-gradient(circle at 100%,#333333,#333333 50%,#eeeeee 75%,#333333 75%)"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -3940,7 +3971,7 @@
 		"comment": "https://github.com/w3c/csswg-drafts/issues/10812",
 		"syntax-b": "",
 		"syntax-a": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}",
-		"syntax-m": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>",
+		"syntax-m": "<radial-extent>{1,2} | <length [0,∞]> | <length-percentage [0,∞]>{2}",
 		"tests": {
 			"passing": [
 				{
