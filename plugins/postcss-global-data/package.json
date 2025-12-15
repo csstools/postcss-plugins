@@ -52,7 +52,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"open-props": "^1.7.15",
+		"open-props": "^1.7.17",
 		"postcss-custom-media": "^11.0.6",
 		"postcss-custom-properties": "^14.0.6"
 	},
