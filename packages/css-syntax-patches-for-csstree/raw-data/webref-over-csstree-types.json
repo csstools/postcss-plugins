@@ -137,6 +137,12 @@
 		"syntax-a": "[ <line-width-or-repeat> ]* <auto-repeat-line-width> [ <line-width-or-repeat> ]*",
 		"comment": ""
 	},
+	"auto-repeat": {
+		"type": "modified",
+		"syntax-b": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <fixed-size> ]+ <line-names>? )",
+		"syntax-a": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <track-size> ]+ <line-names>? )",
+		"comment": ""
+	},
 	"auto-repeat-line-color": {
 		"type": "added",
 		"syntax-b": "",
@@ -201,6 +207,12 @@
 		"type": "modified",
 		"syntax-b": "[ <length-percentage> | auto ]{1,2} | cover | contain",
 		"syntax-a": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
+		"comment": ""
+	},
+	"blend-mode": {
+		"type": "modified",
+		"syntax-b": "normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity",
+		"syntax-a": "normal | darken | multiply | color-burn | lighten | screen | color-dodge | overlay | soft-light | hard-light | difference | exclusion | hue | saturation | color | luminosity",
 		"comment": ""
 	},
 	"blur()": {
@@ -1241,16 +1253,22 @@
 		"syntax-a": "( <navigation-condition> ) | ( <navigation-test> ) | <general-enclosed>",
 		"comment": ""
 	},
-	"navigation-keyword": {
+	"navigation-location": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<route-name> | <url-pattern()>",
+		"comment": ""
+	},
+	"navigation-location-keyword": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "at | from | to",
 		"comment": ""
 	},
-	"navigation-location": {
+	"navigation-location-test": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<route-name> | <url-pattern()>",
+		"syntax-a": "<navigation-location-keyword> : <navigation-location>",
 		"comment": ""
 	},
 	"navigation-param": {
@@ -1292,7 +1310,19 @@
 	"navigation-test": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<navigation-location> | <navigation-keyword> : <navigation-location>",
+		"syntax-a": "<navigation-location-test> | <navigation-type-test>",
+		"comment": ""
+	},
+	"navigation-type-keyword": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "traverse | back | forward | reload",
+		"comment": ""
+	},
+	"navigation-type-test": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "history : <navigation-type-keyword>",
 		"comment": ""
 	},
 	"number-optional-number": {

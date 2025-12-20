@@ -62,7 +62,7 @@
 	"background-blend-mode": {
 		"type": "modified",
 		"syntax-b": "<blend-mode>#",
-		"syntax-a": "<mix-blend-mode>#",
+		"syntax-a": "<'mix-blend-mode'>#",
 		"comment": ""
 	},
 	"background-origin": {
@@ -1046,7 +1046,7 @@
 	"display": {
 		"type": "modified",
 		"syntax-b": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
-		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]",
+		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]",
 		"comment": ""
 	},
 	"dominant-baseline": {
@@ -1689,12 +1689,6 @@
 		"type": "modified",
 		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
-		"comment": ""
-	},
-	"mix-blend-mode": {
-		"type": "modified",
-		"syntax-b": "<blend-mode> | plus-lighter",
-		"syntax-a": "<blend-mode> | plus-darker | plus-lighter",
 		"comment": ""
 	},
 	"nav-down": {
