@@ -108,7 +108,7 @@
 		"syntax": "<attachment>#"
 	},
 	"background-blend-mode": {
-		"syntax": "<mix-blend-mode>#"
+		"syntax": "<'mix-blend-mode'>#"
 	},
 	"background-clip": {
 		"syntax": "<bg-clip>#"
@@ -858,7 +858,7 @@
 		"syntax": "ltr | rtl"
 	},
 	"display": {
-		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]"
+		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
@@ -1563,7 +1563,7 @@
 		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
 	},
 	"mix-blend-mode": {
-		"syntax": "<blend-mode> | plus-darker | plus-lighter"
+		"syntax": "<blend-mode> | plus-lighter"
 	},
 	"nav-down": {
 		"syntax": "auto | <id> [ current | root | <target-name> ]?"

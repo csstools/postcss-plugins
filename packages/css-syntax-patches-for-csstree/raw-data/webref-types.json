@@ -129,7 +129,7 @@
 		"syntax": "[ <line-width-or-repeat> ]* <auto-repeat-line-width> [ <line-width-or-repeat> ]*"
 	},
 	"auto-repeat": {
-		"syntax": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <fixed-size> ]+ <line-names>? )"
+		"syntax": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <track-size> ]+ <line-names>? )"
 	},
 	"auto-repeat-line-color": {
 		"syntax": "repeat( auto , [ <color> ]+ )"
@@ -174,7 +174,7 @@
 		"syntax": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain"
 	},
 	"blend-mode": {
-		"syntax": "normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity"
+		"syntax": "normal | darken | multiply | color-burn | lighten | screen | color-dodge | overlay | soft-light | hard-light | difference | exclusion | hue | saturation | color | luminosity"
 	},
 	"blur()": {
 		"syntax": "blur( <length>? )"
@@ -1127,11 +1127,14 @@
 	"navigation-in-parens": {
 		"syntax": "( <navigation-condition> ) | ( <navigation-test> ) | <general-enclosed>"
 	},
-	"navigation-keyword": {
-		"syntax": "at | from | to"
-	},
 	"navigation-location": {
 		"syntax": "<route-name> | <url-pattern()>"
+	},
+	"navigation-location-keyword": {
+		"syntax": "at | from | to"
+	},
+	"navigation-location-test": {
+		"syntax": "<navigation-location-keyword> : <navigation-location>"
 	},
 	"navigation-param": {
 		"syntax": "<navigation-param-key-value> | <navigation-param-function>"
@@ -1152,7 +1155,13 @@
 		"syntax": "<navigation-param-expression> [ \" or \" <navigation-param-expression> ]*"
 	},
 	"navigation-test": {
-		"syntax": "<navigation-location> | <navigation-keyword> : <navigation-location>"
+		"syntax": "<navigation-location-test> | <navigation-type-test>"
+	},
+	"navigation-type-keyword": {
+		"syntax": "traverse | back | forward | reload"
+	},
+	"navigation-type-test": {
+		"syntax": "history : <navigation-type-keyword>"
 	},
 	"ns-prefix": {
 		"syntax": "[ <ident-token> | '*' ]? '|'"

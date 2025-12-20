@@ -186,7 +186,7 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<blend-mode>#",
-		"syntax-a": "<mix-blend-mode>#",
+		"syntax-a": "<'mix-blend-mode'>#",
 		"syntax-m": "<'mix-blend-mode'>#",
 		"tests": {
 			"passing": [
@@ -2601,8 +2601,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
-		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> || [ <display-inside> | math ]",
-		"syntax-m": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <display-outside> | <-non-standard-display> || [ <display-inside> | math ]",
+		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]",
+		"syntax-m": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> | <-non-standard-display> || [ <display-inside> | math ]",
 		"tests": {
 			"passing": [
 				{
@@ -3897,31 +3897,6 @@
 		"tests": {
 			"passing": [],
 			"failing": []
-		}
-	},
-	"mix-blend-mode": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "<blend-mode> | plus-lighter",
-		"syntax-a": "<blend-mode> | plus-darker | plus-lighter",
-		"syntax-m": "<blend-mode> | plus-darker | plus-lighter",
-		"tests": {
-			"passing": [
-				{
-					"value": "multiply"
-				},
-				{
-					"value": "plus-lighter"
-				},
-				{
-					"value": "plus-darker"
-				}
-			],
-			"failing": [
-				{
-					"value": "plus-foo"
-				}
-			]
 		}
 	},
 	"nav-down": {

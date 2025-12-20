@@ -464,6 +464,17 @@
 			"failing": []
 		}
 	},
+	"auto-repeat": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <fixed-size> ]+ <line-names>? )",
+		"syntax-a": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <track-size> ]+ <line-names>? )",
+		"syntax-m": "repeat( [ auto-fill | auto-fit ] , [ <line-names>? <track-size> ]+ <line-names>? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"auto-repeat-line-color": {
 		"type": "added",
 		"comment": "",
@@ -638,6 +649,17 @@
 		"syntax-b": "[ <length-percentage> | auto ]{1,2} | cover | contain",
 		"syntax-a": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
 		"syntax-m": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"blend-mode": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity",
+		"syntax-a": "normal | darken | multiply | color-burn | lighten | screen | color-dodge | overlay | soft-light | hard-light | difference | exclusion | hue | saturation | color | luminosity",
+		"syntax-m": "normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | soft-light | hard-light | difference | exclusion | hue | saturation | color | luminosity",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3304,7 +3326,18 @@
 			"failing": []
 		}
 	},
-	"navigation-keyword": {
+	"navigation-location": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<route-name> | <url-pattern()>",
+		"syntax-m": "<route-name> | <url-pattern()>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"navigation-location-keyword": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
@@ -3315,12 +3348,12 @@
 			"failing": []
 		}
 	},
-	"navigation-location": {
+	"navigation-location-test": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<route-name> | <url-pattern()>",
-		"syntax-m": "<route-name> | <url-pattern()>",
+		"syntax-a": "<navigation-location-keyword> : <navigation-location>",
+		"syntax-m": "<navigation-location-keyword> : <navigation-location>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3396,8 +3429,30 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<navigation-location> | <navigation-keyword> : <navigation-location>",
-		"syntax-m": "<navigation-location> | <navigation-keyword> : <navigation-location>",
+		"syntax-a": "<navigation-location-test> | <navigation-type-test>",
+		"syntax-m": "<navigation-location-test> | <navigation-type-test>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"navigation-type-keyword": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "traverse | back | forward | reload",
+		"syntax-m": "traverse | back | forward | reload",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"navigation-type-test": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "history : <navigation-type-keyword>",
+		"syntax-m": "history : <navigation-type-keyword>",
 		"tests": {
 			"passing": [],
 			"failing": []
