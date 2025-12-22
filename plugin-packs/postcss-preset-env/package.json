@@ -90,7 +90,7 @@
 		"@csstools/postcss-text-decoration-shorthand": "^4.0.3",
 		"@csstools/postcss-trigonometric-functions": "^4.0.9",
 		"@csstools/postcss-unset-value": "^4.0.0",
-		"autoprefixer": "^10.4.22",
+		"autoprefixer": "^10.4.23",
 		"browserslist": "^4.28.1",
 		"css-blank-pseudo": "^7.0.1",
 		"css-has-pseudo": "^7.0.3",
