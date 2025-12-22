@@ -1,5 +1,9 @@
 # Changes to PostCSS Minify
 
+### Unreleased (patch)
+
+- Preserve comments in selectors and values. e.g. `a/* a comment */.bar {}` -> `a/**/.bar {}`
+
 ### 2.0.4
 
 _May 27, 2025_

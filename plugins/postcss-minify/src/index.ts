@@ -1,5 +1,5 @@
 import type { AtRule, Container, Document, PluginCreator, Rule } from 'postcss';
-import { isTokenWhiteSpaceOrComment, tokenizer } from '@csstools/css-tokenizer';
+import { isTokenComment, isTokenWhitespace, tokenizer } from '@csstools/css-tokenizer';
 
 const HAS_LEGAL_KEYWORDS_OR_SOURCE_MAP_REGEX = /license|copyright|sourcemappingurl/i;
 const HAS_WHITESPACE_OR_COMMENTS_REGEX = /\s|\/\*/;
@@ -27,6 +27,7 @@ function minify(cache: Map<string, string>, x: string): string {
 	}
 
 	let lastWasWhitespace = false;
+	let lastWasComment = false;
 	let minified = '';
 
 	const t = tokenizer({ css: y });
@@ -34,14 +35,23 @@ function minify(cache: Map<string, string>, x: string): string {
 	while (!t.endOfFile()) {
 		const token = t.nextToken();
 
-		if (isTokenWhiteSpaceOrComment(token)) {
+		if (isTokenWhitespace(token)) {
 			if (!lastWasWhitespace) {
 				minified = minified + ' ';
 			}
 
 			lastWasWhitespace = true;
+			lastWasComment = false;
+		} else if (isTokenComment(token)) {
+			if (!lastWasComment) {
+				minified = minified + '/**/';
+			}
+
+			lastWasWhitespace = false;
+			lastWasComment = true;
 		} else {
 			lastWasWhitespace = false;
+			lastWasComment = false;
 			minified = minified + token[1];
 		}
 	}
