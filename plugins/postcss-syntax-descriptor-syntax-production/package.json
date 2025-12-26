@@ -1,0 +1,86 @@
+{
+	"name": "@csstools/postcss-syntax-descriptor-syntax-production",
+	"description": "Use the syntax production in syntax descriptors",
+	"version": "0.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": ">=18"
+	},
+	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"@csstools/css-tokenizer": "^3.0.4"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"@csstools/postcss-tape": "*"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins/postcss-syntax-descriptor-syntax-production"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"postcss-plugin"
+	],
+	"csstools": {
+		"cssdbId": "syntax-descriptor-syntax-production",
+		"exportName": "postcssSyntaxDescriptorSyntaxProduction",
+		"humanReadableName": "PostCSS Syntax Descriptor Syntax Production",
+		"specUrl": "https://github.com/w3c/csswg-drafts/issues/11426#issuecomment-3657538113"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

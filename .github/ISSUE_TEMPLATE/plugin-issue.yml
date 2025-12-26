@@ -107,8 +107,8 @@ body:
         - PostCSS Logical Overscroll Behavior
         - PostCSS Logical Resize
         - PostCSS Logical Viewport Units
-        - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Media MinMax
+        - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Minify
         - PostCSS Nested Calc
         - PostCSS Nesting
@@ -118,18 +118,20 @@ body:
         - PostCSS Place
         - PostCSS Position Area Property
         - PostCSS Progressive Custom Properties
+        - PostCSS Property Rule Prelude List
         - PostCSS Pseudo Class Any Link
         - PostCSS Random Function
         - PostCSS Rebase URL
-        - PostCSS Rewrite URL
         - PostCSS Rebeccapurple
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
+        - PostCSS Rewrite URL
         - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
         - PostCSS Sign Functions
         - PostCSS Slow Plugins
         - PostCSS Stepped Value Functions
+        - PostCSS Syntax Descriptor Syntax Production
         - PostCSS System Ui Font Family
         - PostCSS Text Decoration Shorthand
         - PostCSS Trigonometric Functions
