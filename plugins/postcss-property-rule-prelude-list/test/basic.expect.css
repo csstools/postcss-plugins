@@ -1,0 +1,53 @@
+@property --color-a {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-c something {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-d {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-e {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-f {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-g {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-h {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-i something(a, b) {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}

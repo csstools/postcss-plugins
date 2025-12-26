@@ -1,0 +1,37 @@
+@property --color {
+	inherits: true;
+	initial-value: black;
+	syntax: <color>;
+}
+
+@property --multi-line {
+	inherits: true;
+	initial-value: black;
+	syntax: <color> |
+		<string> |
+		<number>;
+}
+
+@property --box-shadow {
+	inherits: true;
+	initial-value: black;
+	syntax: [ inset? && <length>{2,4} && <color>? ]# | none;
+}
+
+@property --quoted {
+	inherits: true;
+	initial-value: black;
+	syntax: '"' <ident> '"';
+}
+
+@property --function {
+	inherits: true;
+	initial-value: black;
+	syntax: example(first?, second?, third?);
+}
+
+@property --comments {
+	inherits: true;
+	initial-value: black;
+	syntax: <color> /* a comment */ | </* a comment */string> | <number>;
+}

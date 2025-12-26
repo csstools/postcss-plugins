@@ -407,6 +407,12 @@
       - plugins/postcss-progressive-custom-properties/**
       - experimental/postcss-progressive-custom-properties/**
 
+"plugins/postcss-property-rule-prelude-list":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-property-rule-prelude-list/**
+      - experimental/postcss-property-rule-prelude-list/**
+
 "plugins/postcss-pseudo-class-any-link":
   - changed-files:
     - any-glob-to-any-file:
@@ -478,6 +484,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-stepped-value-functions/**
       - experimental/postcss-stepped-value-functions/**
+
+"plugins/syntax-descriptor-syntax-production":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-syntax-descriptor-syntax-production/**
+      - experimental/postcss-syntax-descriptor-syntax-production/**
 
 "plugins/postcss-text-decoration-shorthand":
   - changed-files:
