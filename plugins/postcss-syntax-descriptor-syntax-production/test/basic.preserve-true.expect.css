@@ -1,14 +1,14 @@
 @property --color {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 	syntax: <color>;
 }
 
 @property --multi-line {
 	inherits: true;
 	initial-value: black;
-	color: "<color> | <string> | <number>";
+	syntax: "<color> | <string> | <number>";
 	syntax: <color> |
 		<string> |
 		<number>;
@@ -17,27 +17,34 @@
 @property --box-shadow {
 	inherits: true;
 	initial-value: black;
-	color: "[ inset? && <length>{2,4} && <color>? ]# | none";
+	syntax: "[ inset? && <length>{2,4} && <color>? ]# | none";
 	syntax: [ inset? && <length>{2,4} && <color>? ]# | none;
 }
 
 @property --quoted {
 	inherits: true;
 	initial-value: black;
-	color: "'\"' <ident> '\"'";
+	syntax: "'\"' <ident> '\"'";
 	syntax: '"' <ident> '"';
 }
 
 @property --function {
 	inherits: true;
 	initial-value: black;
-	color: "example(first?, second?, third?)";
+	syntax: "example(first?, second?, third?)";
 	syntax: example(first?, second?, third?);
 }
 
 @property --comments {
 	inherits: true;
 	initial-value: black;
-	color: "<color> | <string> | <number>";
+	syntax: "<color> | <string> | <number>";
 	syntax: <color> /* a comment */ | </* a comment */string> | <number>;
+}
+
+@property --color {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color-fallback>";
+	syntax: <color>;
 }
