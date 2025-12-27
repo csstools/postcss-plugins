@@ -1,4 +1,4 @@
-import { isTokenComment, isTokenWhitespace, tokenize } from '@csstools/css-tokenizer';
+import { isTokenComment, isTokenEOF, isTokenString, isTokenWhitespace, isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
 import type { PluginCreator } from 'postcss';
 
 /** postcss-syntax-descriptor-syntax-production plugin options */
@@ -35,8 +35,21 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
+			const prev = decl.prev();
+			if (prev && prev.type === 'decl' && IS_SYNTAX_REGEX.test(prev.prop)) {
+				return;
+			}
+
 			const originalValue = decl.value;
 			const tokens = tokenize({ css: decl.value });
+
+			const meaningfulTokens = tokens.filter((x) => {
+				return !(isTokenWhiteSpaceOrComment(x) || isTokenEOF(x));
+			});
+
+			if (meaningfulTokens.length === 1 && isTokenString(meaningfulTokens[0])) {
+				return;
+			}
 
 			let stringValue = '';
 			tokens.forEach((token) => {
@@ -114,7 +127,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			decl.cloneBefore({
-				prop: 'color',
 				value: serialized,
 			});
 

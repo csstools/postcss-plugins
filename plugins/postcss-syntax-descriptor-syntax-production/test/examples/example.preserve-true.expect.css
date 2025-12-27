@@ -1,6 +1,6 @@
 @property --color {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 	syntax: <color>;
 }

@@ -575,15 +575,15 @@
 
 .random {
 	color: rgb(
-		115,
-		185,
-		190
+		35,
+		180,
+		215
 	);
 
 	border-color: oklch(
-		40%
-		45%
-		264deg
+		75%
+		30%
+		12deg
 	);
 }
 
@@ -594,4 +594,16 @@
 
 .position-area {
 	position-area: start;
+}
+
+@property --color-a {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
 }

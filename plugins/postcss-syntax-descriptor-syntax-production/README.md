@@ -20,7 +20,7 @@ npm install @csstools/postcss-syntax-descriptor-syntax-production --save-dev
 @property --color {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 }
 ```
 
@@ -77,7 +77,7 @@ postcssSyntaxDescriptorSyntaxProduction({ preserve: true })
 @property --color {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 	syntax: <color>;
 }
 ```

@@ -325,6 +325,16 @@ export default [
 		'importName': 'postcssRandomFunction',
 	},
 	{
+		'packageName': '@csstools/postcss-property-rule-prelude-list',
+		'id': 'property-rule-prelude-list',
+		'importName': 'postcssPropertyRulePreludeList',
+	},
+	{
+		'packageName': '@csstools/postcss-syntax-descriptor-syntax-production',
+		'id': 'syntax-descriptor-syntax-production',
+		'importName': 'postcssSyntaxDescriptorSyntaxProduction',
+	},
+	{
 		'packageName': '@csstools/postcss-progressive-custom-properties',
 		'id': 'progressive-custom-properties',
 		'importName': 'postcssProgressiveCustomProperties',

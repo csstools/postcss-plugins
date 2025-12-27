@@ -872,12 +872,12 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		115,
-		185,
-		190
+		35,
+		180,
+		215
 	);
 
-	border-color: rgb(17, 58, 166);
+	border-color: rgb(239, 141, 154);
 }
 
 .contrast-color {
@@ -887,4 +887,16 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 .position-area {
 	inset-area: start;
 	position-area: start;
+}
+
+@property --color-a {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
+}
+
+@property --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color>";
 }

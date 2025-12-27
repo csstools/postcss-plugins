@@ -35,3 +35,10 @@
 	initial-value: black;
 	syntax: <color> /* a comment */ | </* a comment */string> | <number>;
 }
+
+@property --color {
+	inherits: true;
+	initial-value: black;
+	syntax: "<color-fallback>";
+	syntax: <color>;
+}
