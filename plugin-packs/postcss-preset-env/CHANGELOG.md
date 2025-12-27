@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 10.6.0
+
+_December 27, 2025_
 
 - Added `@csstools/postcss-property-rule-prelude-list` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list#readme) for usage details.
 - Added `@csstools/postcss-syntax-descriptor-syntax-production` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production#readme) for usage details.
