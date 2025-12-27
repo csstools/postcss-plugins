@@ -771,11 +771,11 @@
 @property --color-a {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 }
 
 @property --color-b {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 }

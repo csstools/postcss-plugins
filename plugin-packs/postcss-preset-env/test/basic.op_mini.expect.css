@@ -762,11 +762,11 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 @property --color-a {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 }
 
 @property --color-b {
 	inherits: true;
 	initial-value: black;
-	color: "<color>";
+	syntax: "<color>";
 }
