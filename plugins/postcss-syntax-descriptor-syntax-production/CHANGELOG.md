@@ -1,6 +1,8 @@
 # Changes to PostCSS Syntax Descriptor Syntax Production
 
-### Unreleased (patch)
+### 1.0.1
+
+_December 27, 2025_
 
 - Fix typo
 
