@@ -64,6 +64,8 @@ function processCss(source, config, isDefaultState = false) {
 	} catch (err) {
 		if (err.browserslist) {
 			alert(`${err.message}\n\nTry changing the browserslist config.`);
+		} else {
+			alert(`${err.message}\n\nTry changing the postcss-preset-env config.`);
 		}
 
 		// eslint-disable-next-line no-console
