@@ -1260,9 +1260,9 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		115,
-		185,
-		190
+		35,
+		180,
+		215
 	);
 	color: rgb(
 		random(--r, 0, 255, 5),
@@ -1270,12 +1270,12 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 		random(--b, 0, 255, 5)
 	);
 
-	border-color: rgb(17, 58, 166);
+	border-color: rgb(239, 141, 154);
 
 	border-color: oklch(
-		40%
-		45%
-		264deg
+		75%
+		30%
+		12deg
 	);
 
 	border-color: oklch(
@@ -1293,4 +1293,18 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 .position-area {
 	inset-area: start;
 	position-area: start;
+}
+
+@property --color-a {
+	inherits: true;
+	initial-value: black;
+	color: "<color>";
+	syntax: <color>;
+}
+
+@property --color-b {
+	inherits: true;
+	initial-value: black;
+	color: "<color>";
+	syntax: <color>;
 }

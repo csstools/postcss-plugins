@@ -559,3 +559,9 @@
 .position-area {
 	position-area: start;
 }
+
+@property --color-a, --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: <color>;
+}

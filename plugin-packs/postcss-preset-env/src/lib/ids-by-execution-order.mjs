@@ -56,6 +56,8 @@ export default [
 	'opacity-percentage',
 	'text-decoration-shorthand',
 	'unset-value',
+	'property-rule-prelude-list',
+	'syntax-descriptor-syntax-production',
 
 	// Math functions.
 	'random-function',
