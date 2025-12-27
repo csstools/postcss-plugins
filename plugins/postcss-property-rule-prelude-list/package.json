@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-property-rule-prelude-list",
 	"description": "Declare a list of custom properties in a single at-property rule",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
