@@ -54,12 +54,14 @@ import postcssPlace from 'postcss-place';
 import postcssPositionAreaProperty from '@csstools/postcss-position-area-property';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
+import postcssPropertyRulePreludeList from '@csstools/postcss-property-rule-prelude-list';
 import postcssRandomFunction from '@csstools/postcss-random-function';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
 import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax';
 import postcssScopePseudoClass from '@csstools/postcss-scope-pseudo-class';
 import postcssSignFunctions from '@csstools/postcss-sign-functions';
 import postcssSteppedValueFunctions from '@csstools/postcss-stepped-value-functions';
+import postcssSyntaxDescriptorSyntaxProduction from '@csstools/postcss-syntax-descriptor-syntax-production';
 import postcssSystemUIFontFamily from '@csstools/postcss-system-ui-font-family';
 import postcssTextDecorationShorthand from '@csstools/postcss-text-decoration-shorthand';
 import postcssTrigonometricFunctions from '@csstools/postcss-trigonometric-functions';
@@ -124,12 +126,14 @@ export const pluginsById = new Map(
 		['position-area-property', postcssPositionAreaProperty],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
 		['progressive-custom-properties', postcssProgressiveCustomProperties],
+		['property-rule-prelude-list', postcssPropertyRulePreludeList],
 		['random-function', postcssRandomFunction],
 		['rebeccapurple-color', postcssColorRebeccapurple],
 		['relative-color-syntax', postcssRelativeColorSyntax],
 		['scope-pseudo-class', postcssScopePseudoClass],
 		['sign-functions', postcssSignFunctions],
 		['stepped-value-functions', postcssSteppedValueFunctions],
+		['syntax-descriptor-syntax-production', postcssSyntaxDescriptorSyntaxProduction],
 		['system-ui-font-family', postcssSystemUIFontFamily],
 		['text-decoration-shorthand', postcssTextDecorationShorthand],
 		['trigonometric-functions', postcssTrigonometricFunctions],

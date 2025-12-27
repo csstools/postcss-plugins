@@ -211,6 +211,7 @@
 	text-align: left;
 	-moz-text-align-last: auto;
 	     text-align-last: auto;
+	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
 	text-shadow: none;
@@ -562,6 +563,10 @@
 }
 
 .text-decoration-shorthand {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy pink;
+	        text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
 	-webkit-text-decoration: 3px wavy pink overline;
 	        text-decoration: 3px wavy pink overline;
 }
@@ -747,5 +752,12 @@
 }
 
 .position-area {
+	inset-area: start;
 	position-area: start;
+}
+
+@property --color-a, --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: <color>;
 }

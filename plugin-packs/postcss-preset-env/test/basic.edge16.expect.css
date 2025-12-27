@@ -739,12 +739,12 @@
 
 .random {
 	color: rgb(
-		115,
-		185,
-		190
+		35,
+		180,
+		215
 	);
 
-	border-color: rgb(17, 58, 166);
+	border-color: rgb(239, 141, 154);
 }
 
 .contrast-color {
@@ -755,4 +755,16 @@
 .position-area {
 	inset-area: start;
 	position-area: start;
+}
+
+@property --color-a {
+	inherits: true;
+	initial-value: black;
+	color: "<color>";
+}
+
+@property --color-b {
+	inherits: true;
+	initial-value: black;
+	color: "<color>";
 }
