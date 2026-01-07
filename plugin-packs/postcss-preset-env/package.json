@@ -131,7 +131,7 @@
 		"@csstools/pack-test": "*",
 		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "8.1.2"
+		"@webref/css": "8.1.3"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",

@@ -71,6 +71,9 @@ export async function generate_webref_sets() {
 
 		// https://drafts.csswg.org/css-animations-2/#typedef-animation-action
 		types['animation-action'] = 'none | play | pause | play-forwards | play-backwards | pause | reset | replay';
+
+		// https://github.com/w3c/csswg-drafts/issues/13311
+		types['voice-family-name'] = '<string> | <custom-ident>+';
 	}
 
 	const data = await css.listAll();
