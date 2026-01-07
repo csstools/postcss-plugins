@@ -632,8 +632,32 @@
 	"column-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
 	},
-	"column-rule-outset": {
-		"syntax": "<length-percentage>"
+	"column-rule-edge-inset": {
+		"syntax": "<length-percentage> [ <length-percentage> ]?"
+	},
+	"column-rule-edge-inset-end": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"column-rule-edge-inset-start": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"column-rule-inset": {
+		"syntax": "<length-percentage> [ <length-percentage> ]?"
+	},
+	"column-rule-inset-end": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"column-rule-inset-start": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"column-rule-interior-inset": {
+		"syntax": "<length-percentage> [ <length-percentage> ]?"
+	},
+	"column-rule-interior-inset-end": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"column-rule-interior-inset-start": {
+		"syntax": "auto | <length-percentage>"
 	},
 	"column-rule-style": {
 		"syntax": "<line-style-list> | <auto-line-style-list>"
@@ -858,7 +882,7 @@
 		"syntax": "ltr | rtl"
 	},
 	"display": {
-		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]"
+		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
 		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
@@ -1818,7 +1842,7 @@
 		"syntax": "static | relative | absolute | sticky | fixed | <running()>"
 	},
 	"position-anchor": {
-		"syntax": "auto | <anchor-name>"
+		"syntax": "none | auto | <anchor-name>"
 	},
 	"position-area": {
 		"syntax": "none | <position-area>"
@@ -1886,8 +1910,32 @@
 	"row-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
 	},
-	"row-rule-outset": {
-		"syntax": "<length-percentage>"
+	"row-rule-edge-inset": {
+		"syntax": "<length-percentage> [ <length-percentage> ]?"
+	},
+	"row-rule-edge-inset-end": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"row-rule-edge-inset-start": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"row-rule-inset": {
+		"syntax": "<length-percentage> [ <length-percentage> ]?"
+	},
+	"row-rule-inset-end": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"row-rule-inset-start": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"row-rule-interior-inset": {
+		"syntax": "<length-percentage> [ <length-percentage> ]?"
+	},
+	"row-rule-interior-inset-end": {
+		"syntax": "auto | <length-percentage>"
+	},
+	"row-rule-interior-inset-start": {
+		"syntax": "auto | <length-percentage>"
 	},
 	"row-rule-style": {
 		"syntax": "<line-style-list> | <auto-line-style-list>"
@@ -1916,8 +1964,20 @@
 	"rule-color": {
 		"syntax": "<'column-rule-color'>"
 	},
-	"rule-outset": {
-		"syntax": "<'column-rule-outset'>"
+	"rule-edge-inset": {
+		"syntax": "<'column-rule-edge-inset'>"
+	},
+	"rule-inset": {
+		"syntax": "<'column-rule-inset'>"
+	},
+	"rule-inset-end": {
+		"syntax": "<'column-rule-inset-end'>"
+	},
+	"rule-inset-start": {
+		"syntax": "<'column-rule-inset-start'>"
+	},
+	"rule-interior-inset": {
+		"syntax": "<'column-rule-interior-inset'>"
 	},
 	"rule-overlap": {
 		"syntax": "row-over-column | column-over-row"
@@ -2167,6 +2227,12 @@
 	},
 	"-moz-stack-sizing": {
 		"syntax": "ignore | stretch-to-fit"
+	},
+	"stop-color": {
+		"syntax": "<'color'>"
+	},
+	"stop-opacity": {
+		"syntax": "<'opacity'>"
 	},
 	"string-set": {
 		"syntax": "none | [ <custom-ident> <string>+ ]#"
@@ -2462,6 +2528,9 @@
 	"translate": {
 		"syntax": "none | <length-percentage> [ <length-percentage> <length>? ]?"
 	},
+	"trigger-scope": {
+		"syntax": "none | all | <dashed-ident>#"
+	},
 	"unicode-bidi": {
 		"syntax": "normal | embed | isolate | bidi-override | isolate-override | plaintext"
 	},
@@ -2532,13 +2601,13 @@
 		"syntax": "auto | <time [0s,∞]>"
 	},
 	"voice-family": {
-		"syntax": "[ [ <family-name> | <generic-voice> ] , ]* [ <family-name> | <generic-voice> ] | preserve"
+		"syntax": "[ <voice-family-name> | <generic-voice> ]# | preserve"
 	},
 	"voice-pitch": {
-		"syntax": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]"
+		"syntax": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency [0Hz,∞]> | <semitones> | <percentage> ] ]"
 	},
 	"voice-range": {
-		"syntax": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]"
+		"syntax": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency [0Hz,∞]> | <semitones> | <percentage> ] ]"
 	},
 	"voice-rate": {
 		"syntax": "[ normal | x-slow | slow | medium | fast | x-fast ] || <percentage [0,∞]>"

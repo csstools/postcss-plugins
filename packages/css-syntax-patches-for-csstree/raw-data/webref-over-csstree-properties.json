@@ -701,10 +701,58 @@
 		"syntax-a": "<line-color-list> | <auto-line-color-list>",
 		"comment": ""
 	},
-	"column-rule-outset": {
+	"column-rule-edge-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"comment": ""
+	},
+	"column-rule-edge-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"column-rule-edge-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"column-rule-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"comment": ""
+	},
+	"column-rule-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"column-rule-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"column-rule-interior-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"comment": ""
+	},
+	"column-rule-interior-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"column-rule-interior-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"column-rule-style": {
@@ -1046,7 +1094,7 @@
 	"display": {
 		"type": "modified",
 		"syntax-b": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
-		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]",
+		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | <display-outside> || [ <display-inside> | math ]",
 		"comment": ""
 	},
 	"dominant-baseline": {
@@ -1979,6 +2027,12 @@
 		"syntax-a": "static | relative | absolute | sticky | fixed | <running()>",
 		"comment": ""
 	},
+	"position-anchor": {
+		"type": "modified",
+		"syntax-b": "auto | <anchor-name>",
+		"syntax-a": "none | auto | <anchor-name>",
+		"comment": ""
+	},
 	"position-try-fallbacks": {
 		"type": "modified",
 		"syntax-b": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#",
@@ -2057,10 +2111,58 @@
 		"syntax-a": "<line-color-list> | <auto-line-color-list>",
 		"comment": ""
 	},
-	"row-rule-outset": {
+	"row-rule-edge-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"comment": ""
+	},
+	"row-rule-edge-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"row-rule-edge-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"row-rule-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"comment": ""
+	},
+	"row-rule-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"row-rule-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"row-rule-interior-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"comment": ""
+	},
+	"row-rule-interior-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
+		"comment": ""
+	},
+	"row-rule-interior-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
 	"row-rule-style": {
@@ -2105,10 +2207,34 @@
 		"syntax-a": "<'column-rule-color'>",
 		"comment": ""
 	},
-	"rule-outset": {
+	"rule-edge-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'column-rule-outset'>",
+		"syntax-a": "<'column-rule-edge-inset'>",
+		"comment": ""
+	},
+	"rule-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset'>",
+		"comment": ""
+	},
+	"rule-inset-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset-end'>",
+		"comment": ""
+	},
+	"rule-inset-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset-start'>",
+		"comment": ""
+	},
+	"rule-interior-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-interior-inset'>",
 		"comment": ""
 	},
 	"rule-overlap": {
@@ -2289,6 +2415,18 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "normal | grid",
+		"comment": ""
+	},
+	"stop-color": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'color'>",
+		"comment": ""
+	},
+	"stop-opacity": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'opacity'>",
 		"comment": ""
 	},
 	"string-set": {
@@ -2675,6 +2813,12 @@
 		"syntax-a": "<time [0s,∞]>#",
 		"comment": ""
 	},
+	"trigger-scope": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | all | <dashed-ident>#",
+		"comment": ""
+	},
 	"unicode-bidi": {
 		"type": "modified",
 		"syntax-b": "normal | embed | isolate | bidi-override | isolate-override | plaintext | -moz-isolate | -moz-isolate-override | -moz-plaintext | -webkit-isolate | -webkit-isolate-override | -webkit-plaintext",
@@ -2723,16 +2867,22 @@
 		"syntax-a": "auto | <time [0s,∞]>",
 		"comment": ""
 	},
+	"voice-family": {
+		"type": "modified",
+		"syntax-b": "[ [ <family-name> | <generic-voice> ] , ]* [ <family-name> | <generic-voice> ] | preserve",
+		"syntax-a": "[ <voice-family-name> | <generic-voice> ]# | preserve",
+		"comment": ""
+	},
 	"voice-pitch": {
 		"type": "modified",
 		"syntax-b": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
-		"syntax-a": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
+		"syntax-a": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency [0Hz,∞]> | <semitones> | <percentage> ] ]",
 		"comment": ""
 	},
 	"voice-range": {
 		"type": "modified",
 		"syntax-b": "<frequency> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
-		"syntax-a": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency> | <semitones> | <percentage> ] ]",
+		"syntax-a": "<frequency [0Hz,∞]> && absolute | [ [ x-low | low | medium | high | x-high ] || [ <frequency [0Hz,∞]> | <semitones> | <percentage> ] ]",
 		"comment": ""
 	},
 	"voice-rate": {
