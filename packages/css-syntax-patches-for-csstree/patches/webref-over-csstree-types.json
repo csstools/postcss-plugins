@@ -4,9 +4,14 @@
 		"comment": "",
 		"syntax-b": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large",
 		"syntax-a": "xx-small | x-small | small | medium | large | x-large | xx-large",
-		"syntax-m": "xx-small | x-small | small | medium | large | x-large | xx-large",
+		"syntax-m": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"property": "font-family",
+					"value": "xxx-large"
+				}
+			],
 			"failing": []
 		}
 	},
