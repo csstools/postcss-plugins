@@ -43,6 +43,11 @@
 	display: inline flex;
 }
 
+.inline-block {
+	display: inline-block;
+	display: inline block;
+}
+
 .block-grid {
 	display: grid;
 	display: block grid;

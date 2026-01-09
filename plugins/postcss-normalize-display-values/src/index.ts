@@ -32,6 +32,8 @@ function transform(value: string): string {
 
 const IS_DISPLAY_REGEX = /^display$/i;
 
+const IS_MAYBE_MULTI_KEYWORD = /\b\s\b/;
+
 /** postcss-normalize-display-values plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: true */
@@ -50,6 +52,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			const value = decl.value;
 			if (!value) {
+				return;
+			}
+
+			if (!IS_MAYBE_MULTI_KEYWORD.test(value)) {
 				return;
 			}
 

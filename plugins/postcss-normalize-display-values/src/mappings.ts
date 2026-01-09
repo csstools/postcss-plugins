@@ -7,6 +7,7 @@ export default new Map([
 	['block,flow-root', 'flow-root'],
 	['block,grid', 'grid'],
 	['block,table', 'table'],
+	['inline,block', 'inline-block'],
 	['inline,flex', 'inline-flex'],
 	['inline,flow', 'inline'],
 	['inline,flow,list-item', 'inline list-item'],

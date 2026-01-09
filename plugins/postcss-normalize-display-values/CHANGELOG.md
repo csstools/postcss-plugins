@@ -1,5 +1,9 @@
 # Changes to PostCSS Normalize Display Values
 
+### Unreleased (patch)
+
+- Add `inline block` support
+
 ### 4.0.0
 
 _August 3, 2024_
