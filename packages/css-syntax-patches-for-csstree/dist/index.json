@@ -539,7 +539,6 @@
 		"types": {
 			"dashed-ident": "<custom-property-name>",
 			"unicode-range-token": "<urange>",
-			"absolute-size": "xx-small | x-small | small | medium | large | x-large | xx-large",
 			"alpha()": "alpha( [ from <color> ] [ / [ <alpha-value> | alpha | none ] ]? )",
 			"anchor-size()": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )",
 			"anchor()": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )",
