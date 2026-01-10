@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-normalize-display-values",
 	"description": "Use two values display syntax for inner and outer display types.",
-	"version": "4.0.0",
+	"version": "4.0.1",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
