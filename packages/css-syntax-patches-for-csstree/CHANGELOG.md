@@ -1,6 +1,8 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### 1.0.24
+
+_January 10, 2026_
 
 - Patch `<absolute-size>`
 
