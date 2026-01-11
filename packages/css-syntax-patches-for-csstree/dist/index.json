@@ -569,7 +569,7 @@
 			"baseline-position": "[ first | last ]? && baseline",
 			"basic-shape": "<basic-shape-rect> | <circle()> | <ellipse()> | <polygon()> | <path()> | <shape()>",
 			"basic-shape-rect": "<inset()> | rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? ) | xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )",
-			"bg-clip": "<visual-box> | [ border-area || text ] | border",
+			"bg-clip": "<visual-box> | [ border-area || text ]",
 			"bg-layer": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <bg-clip> || <visual-box>",
 			"bg-position": "<position> | <position-three>",
 			"bg-size": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain",

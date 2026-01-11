@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Remove patch for `<bg-clip>`
+
 ### 1.0.24
 
 _January 10, 2026_

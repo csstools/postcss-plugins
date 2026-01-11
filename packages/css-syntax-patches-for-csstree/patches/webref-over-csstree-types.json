@@ -631,7 +631,7 @@
 		"comment": "",
 		"syntax-b": "<box> | border | text",
 		"syntax-a": "<visual-box> | [ border-area || text ]",
-		"syntax-m": "<visual-box> | [ border-area || text ] | border",
+		"syntax-m": "<visual-box> | [ border-area || text ]",
 		"tests": {
 			"passing": [],
 			"failing": []
