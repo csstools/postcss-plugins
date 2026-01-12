@@ -1,0 +1,8 @@
+@mixin --foo() {
+	color: green;
+}
+
+.foo {
+	color: green;
+	@apply --foo;
+}

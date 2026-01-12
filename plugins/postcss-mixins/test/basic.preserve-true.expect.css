@@ -1,0 +1,13 @@
+@mixin --foo() {
+	color: green;
+}
+
+.foo {
+	color: green;
+	@apply --foo;
+}
+
+@scope (.foo) {
+	color: green;
+	@apply --foo;
+}

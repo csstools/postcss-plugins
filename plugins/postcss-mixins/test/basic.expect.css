@@ -1,0 +1,7 @@
+.foo {
+	color: green;
+}
+
+@scope (.foo) {
+	color: green;
+}
