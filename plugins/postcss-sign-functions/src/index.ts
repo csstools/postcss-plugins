@@ -110,3 +110,4 @@ function replacer(componentValue: ComponentValue): Array<ComponentValue> | void 
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

@@ -1,5 +1,10 @@
 # Changes to PostCSS Color Hex Alpha
 
+### Unreleased (major)
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 10.0.0
 
 _August 3, 2024_

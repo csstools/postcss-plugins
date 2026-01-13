@@ -1,5 +1,10 @@
 # Changes to PostCSS Contrast Color Function
 
+### Unreleased (major)
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 2.0.12
 
 _September 21, 2025_

@@ -1,5 +1,10 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (major)
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 4.0.5
 
 _May 27, 2025_

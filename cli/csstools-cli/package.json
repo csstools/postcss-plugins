@@ -25,12 +25,11 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"bin": {
 		"csstools-cli": "dist/cli.cjs"
 	},
-	"types": "dist/cli.d.ts",
 	"files": [
 		"CHANGELOG.md",
 		"LICENSE.md",

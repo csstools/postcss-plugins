@@ -16,5 +16,6 @@ export declare type pluginOptions = {
 /** Transform relative color syntax in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' }
 
 export { }

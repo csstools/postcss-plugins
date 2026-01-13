@@ -12,3 +12,4 @@ const creator: PluginCreator<unknown> = () => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

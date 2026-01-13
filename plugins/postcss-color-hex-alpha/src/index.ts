@@ -63,6 +63,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 const HAS_HEX_ALPHA_REGEX = /#[0-9a-f]{4}(?:[0-9a-f]{4})?\b/i;
 

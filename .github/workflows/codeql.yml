@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: '0 4 * * 1'
   workflow_dispatch:
+  push:
+    branches:
+    - 'main'
+  pull_request:
 
 defaults:
   run:
@@ -32,15 +36,6 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         queries: security-extended
-
-    - name: setup node
-      uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f
-      with:
-        node-version: 24
-        cache: 'npm'
-
-    - run: npm ci --ignore-scripts
-    - run: npm run build --workspaces --if-present
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@5d4e8d1aca955e8d8589aabd499c5cae939e33c7

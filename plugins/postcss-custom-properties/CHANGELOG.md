@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (major)
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 14.0.6
 
 _June 5, 2025_

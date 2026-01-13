@@ -142,3 +142,4 @@ const creator: PluginCreator<pluginOptions> = () => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

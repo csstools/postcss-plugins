@@ -65,6 +65,7 @@ import type { pluginOptions as pluginOptions_9 } from '@csstools/postcss-color-f
 
 declare const creator: PluginCreator<pluginOptions>;
 export default creator;
+export { creator as 'module.exports' }
 
 export declare enum DirectionFlow {
     TopToBottom = "top-to-bottom",
