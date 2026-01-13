@@ -26,7 +26,6 @@
 	],
 	"main": "dist/index.json",
 	"types": "dist/index.d.ts",
-	"exports": "./dist/index.json",
 	"files": [
 		"CHANGELOG.md",
 		"LICENSE.md",
