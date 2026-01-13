@@ -1,5 +1,5 @@
 const postcss = require('postcss');
-const postcssPresetEnv = require('postcss-preset-env');
+const postcssPresetEnv = require('postcss-preset-env').default;
 
 try {
 	postcss([postcssPresetEnv({
