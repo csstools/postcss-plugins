@@ -90,15 +90,11 @@ input:hover, input:focus, button:hover, button:focus {
 				</ol>
 				<p>Here's an example with a <code>postcss.config.js</code> file:</p>
 				{% highlight "js" %}
+const postcssPresetEnv = require('postcss-preset-env');
+
 module.exports = {
   plugins: [
-    [
-      'postcss-preset-env',
-      {
-        // Options
-        features: {},
-      },
-    ],
+    postcssPresetEnv(),
   ]
 }{% endhighlight %}
 				<p>You can <a href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage">read more on how to use and install PostCSS Preset Env</a>.</p>
