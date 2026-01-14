@@ -1,5 +1,9 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`11.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#1110) (minor)
+
 ### 5.0.1
 
 _January 14, 2026_
