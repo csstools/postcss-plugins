@@ -1,5 +1,9 @@
 # Changes to CSS Blank Pseudo
 
+### Unreleased (patch)
+
+- Remove accidental direct dependency on `typescript`
+
 ### 8.0.0
 
 _January 14, 2026_
