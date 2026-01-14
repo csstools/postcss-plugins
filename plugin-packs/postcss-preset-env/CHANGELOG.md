@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 11.0.1
+
+_January 14, 2026_
 
 - Updated [`css-blank-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo/CHANGELOG.md#801) (patch)
 
