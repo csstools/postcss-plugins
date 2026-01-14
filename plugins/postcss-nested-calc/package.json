@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-nested-calc",
 	"description": "Use nested calc() expressions in CSS",
-	"version": "4.0.0",
+	"version": "5.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
