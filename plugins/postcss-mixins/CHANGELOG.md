@@ -1,5 +1,7 @@
 # Changes to PostCSS Mixins
 
-### Unreleased (major)
+### 1.0.0
+
+_January 14, 2026_
 
 - Initial version
