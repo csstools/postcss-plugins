@@ -1,1 +1,0 @@
-"use strict";const creator=()=>({postcssPlugin:"css-has-pseudo-experimental",Once(s,{result:e}){s.warn(e,'"@csstools/css-has-pseudo-experimental" is no longer supported. Please use "css-has-pseudo" instead.')}});creator.postcss=!0,module.exports=creator;

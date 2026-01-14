@@ -6,33 +6,8 @@ import { apiExtractor } from '../transforms/api-extractor.mjs';
 import { nodeCoverageDisable } from '../transforms/node-coverage-disable.mjs';
 import { move } from '../transforms/move.mjs';
 
-export function packageTypescript(options) {
-	options = options || {};
+export function packageTypescript(options = {}) {
 	return [
-		{
-			input: path.join('src', 'index.ts'),
-			output: [
-				{ file: path.join('dist', 'index.cjs'), format: 'cjs', sourcemap: false, exports: 'auto' },
-			],
-			external: externalsForPlugin,
-			plugins: [
-				typescript({
-					tsconfig: './tsconfig.json',
-					declaration: false,
-					declarationDir: undefined,
-					noEmit: false,
-					noEmitOnError: true,
-				}),
-				terser({
-					compress: {
-						reduce_funcs: false, // https://github.com/terser/terser/issues/1305
-					},
-					keep_classnames: true,
-					keep_fnames: true,
-				}),
-				options.nodeCoverageDisable ? nodeCoverageDisable() : undefined,
-			],
-		},
 		{
 			input: path.join('src', 'index.ts'),
 			output: [

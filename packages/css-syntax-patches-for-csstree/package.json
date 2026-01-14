@@ -24,11 +24,20 @@
 			"url": "https://opencollective.com/csstools"
 		}
 	],
-	"engines": {
-		"node": ">=18"
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.json",
+			"require": "./dist/index.json",
+			"default": "./dist/index.json"
+		},
+		"./dist/index.json": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.json",
+			"require": "./dist/index.json",
+			"default": "./dist/index.json"
+		}
 	},
-	"main": "dist/index.json",
-	"types": "dist/index.d.ts",
 	"files": [
 		"CHANGELOG.md",
 		"LICENSE.md",

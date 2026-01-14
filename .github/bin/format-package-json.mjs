@@ -75,9 +75,14 @@ const formatted = {};
 	delete packageJSONInfo.private;
 
 	formatted.engines = {
-		node: '>=18',
+		node: '>=20.19.0',
 	};
 	delete packageJSONInfo.engines;
+
+	// json only package
+	if (formatted.name === '@csstools/css-syntax-patches-for-csstree') {
+		delete formatted.engines;
+	}
 
 	formatted.type = packageJSONInfo.type;
 	delete packageJSONInfo.type;
@@ -85,10 +90,7 @@ const formatted = {};
 
 // Exports and packaged
 {
-	formatted.main = packageJSONInfo.main;
 	delete packageJSONInfo.main;
-
-	formatted.module = packageJSONInfo.module;
 	delete packageJSONInfo.module;
 
 	formatted.bin = packageJSONInfo.bin;
@@ -103,16 +105,8 @@ const formatted = {};
 	formatted.unpkg = packageJSONInfo.unpkg;
 	delete packageJSONInfo.unpkg;
 
-	if (packageJSONInfo.exports) {
-		formatted.exports = packageJSONInfo.exports;
-		if (packageJSONInfo.exports['.'] && packageJSONInfo.exports['.'].types) {
-			formatted.exports['.'] = {
-				types: packageJSONInfo.exports['.'].types,
-				...formatted.exports['.'],
-			};
-		}
-		delete packageJSONInfo.exports;
-	}
+	formatted.exports = packageJSONInfo.exports;
+	delete packageJSONInfo.exports;
 
 	formatted.files = packageJSONInfo.files;
 	delete packageJSONInfo.files;

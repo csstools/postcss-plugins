@@ -25,10 +25,14 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "index.mjs",
+	"exports": {
+		".": {
+			"default": "./index.mjs"
+		}
+	},
 	"files": [
 		"LICENSE.md",
 		"README.md",

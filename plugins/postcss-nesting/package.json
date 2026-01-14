@@ -29,22 +29,15 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"jsdelivr": "dist/index.mjs",
 	"unpkg": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [

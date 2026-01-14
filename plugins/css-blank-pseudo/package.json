@@ -29,20 +29,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		},
 		"./browser": {
 			"import": "./dist/browser.mjs",
@@ -60,7 +53,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-selector-parser": "^7.1.1"
+		"postcss-selector-parser": "^7.1.1",
+		"typescript": "^5.9.3"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -75,7 +69,8 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"test": "node --test",
-		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test",
+		"tsc": "tsc"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo#readme",
 	"repository": {

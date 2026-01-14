@@ -1,5 +1,10 @@
 # Changes to PostCSS Logical Float And Clear
 
+### Unreleased (major)
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 3.0.0
 
 _August 3, 2024_

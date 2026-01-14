@@ -5,7 +5,7 @@ import importEnvironmentVariablesFromSources from './lib/import-from';
  * @param {{importFrom?: string[]}} opts
  * @returns {import('postcss').Plugin}
  */
-export default function creator(opts) {
+const creator = (opts) => {
 	// sources to import environment variables from
 	const importFrom = [].concat(Object(opts).importFrom || []);
 
@@ -67,6 +67,9 @@ export default function creator(opts) {
 			}
 		},
 	};
-}
+};
 
 creator.postcss = true;
+
+export default creator;
+export { creator as 'module.exports' };

@@ -3,11 +3,7 @@
 	"private": true,
 	"version": "1.0.0",
 	"description": "",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
-	"engines": {
-		"node": "^14 || ^16 || >=18"
-	},
 	"workspaces": [
 		"packages/color-helpers",
 		"packages/css-tokenizer",

@@ -13,3 +13,4 @@ const noopPlugin: PluginCreator<never> = () => {
 noopPlugin.postcss = true;
 
 export default noopPlugin;
+
