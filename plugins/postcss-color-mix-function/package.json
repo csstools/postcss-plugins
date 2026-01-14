@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-mix-function",
 	"description": "Use the color-mix function in CSS",
-	"version": "3.0.12",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
