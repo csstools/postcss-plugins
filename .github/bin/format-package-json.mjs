@@ -90,7 +90,10 @@ const formatted = {};
 
 // Exports and packaged
 {
+	formatted.main = packageJSONInfo.main;
 	delete packageJSONInfo.main;
+
+	formatted.module = packageJSONInfo.module;
 	delete packageJSONInfo.module;
 
 	formatted.bin = packageJSONInfo.bin;
