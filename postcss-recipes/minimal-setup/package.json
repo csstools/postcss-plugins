@@ -5,13 +5,13 @@
 	"description": "",
 	"license": "MIT-0",
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"devDependencies": {
-		"@csstools/postcss-bundler": "^2.0.1",
-		"@csstools/postcss-minify": "^2.0.1",
-		"postcss-cli": "^11.0.0",
-		"postcss-preset-env": "^10.0.3"
+		"@csstools/postcss-bundler": "^3.0.0",
+		"@csstools/postcss-minify": "^3.0.0",
+		"postcss-cli": "^11.0.1",
+		"postcss-preset-env": "^11.0.0"
 	},
 	"scripts": {
 		"build": "NODE_ENV=production postcss ./src/css/style.css -o ./dist/css/style.css",
@@ -30,6 +30,6 @@
 		]
 	},
 	"volta": {
-		"node": "20.10.0"
+		"node": "24.13.0"
 	}
 }

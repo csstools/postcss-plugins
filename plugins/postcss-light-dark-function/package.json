@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-light-dark-function",
 	"description": "Use the light-dark() color function in CSS",
-	"version": "2.0.11",
+	"version": "3.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,20 +25,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [
@@ -48,17 +41,17 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.5",
-		"@csstools/css-tokenizer": "^3.0.4",
-		"@csstools/postcss-progressive-custom-properties": "^4.2.1",
-		"@csstools/utilities": "^2.0.0"
+		"@csstools/css-parser-algorithms": "^4.0.0",
+		"@csstools/css-tokenizer": "^4.0.0",
+		"@csstools/postcss-progressive-custom-properties": "^5.0.0",
+		"@csstools/utilities": "^3.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"postcss-nesting": "^13.0.0",
+		"postcss-nesting": "^14.0.0",
 		"puppeteer": "^24.34.0"
 	},
 	"scripts": {

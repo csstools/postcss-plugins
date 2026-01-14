@@ -103,3 +103,4 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };

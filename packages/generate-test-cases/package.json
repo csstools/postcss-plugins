@@ -16,10 +16,9 @@
 	],
 	"private": true,
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "src/index.mjs",
 	"devDependencies": {
 		"mdn-data": "^2.25.0"
 	},

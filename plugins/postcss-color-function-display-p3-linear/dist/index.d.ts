@@ -11,5 +11,6 @@ export declare type pluginOptions = {
 /** Transform the display-p3-linear color space in the color() function in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' }
 
 export { }

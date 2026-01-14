@@ -25,10 +25,14 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "index.mjs",
+	"exports": {
+		".": {
+			"default": "./index.mjs"
+		}
+	},
 	"files": [
 		"LICENSE.md",
 		"README.md",
@@ -39,7 +43,7 @@
 		"stylelint": "^16.26.1"
 	},
 	"devDependencies": {
-		"@csstools/pack-test": "^1.0.2",
+		"@csstools/pack-test": "^2.0.0",
 		"stylelint": "^16.26.1"
 	},
 	"scripts": {

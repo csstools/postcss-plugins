@@ -1,5 +1,18 @@
 # Changes to PostCSS Preset Env
 
+### 11.0.1
+
+_January 14, 2026_
+
+- Updated [`css-blank-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo/CHANGELOG.md#801) (patch)
+
+### 11.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 10.6.1
 
 _January 10, 2026_

@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"moduleResolution": "bundler",
 		"allowJs": false,
-		"target": "ES2022",
-		"lib": ["ES2022"],
+		"target": "ES2024",
+		"lib": ["ES2024"],
 		"module": "ESNext",
 		"declaration": true,
 		"isolatedModules": true,

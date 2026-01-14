@@ -70,6 +70,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 // returns whether a node is a browser comment
 function isBrowserCommentNode(node: Node): node is Comment {

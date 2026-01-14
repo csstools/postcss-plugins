@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-parser-algorithms",
 	"description": "Algorithms to help you parse CSS from an array of tokens.",
-	"version": "3.0.5",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,20 +25,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [
@@ -48,7 +41,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-tokenizer": "^3.0.4"
+		"@csstools/css-tokenizer": "^4.0.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

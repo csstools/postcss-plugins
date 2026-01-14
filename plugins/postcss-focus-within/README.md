@@ -156,7 +156,7 @@ or
 
 ```html
 <!-- When using a CDN url you will have to manually update the version number -->
-<script src="https://unpkg.com/postcss-focus-within@9.0.1/dist/browser-global.js"></script>
+<script src="https://unpkg.com/postcss-focus-within@10.0.0/dist/browser-global.js"></script>
 <script>focusWithinInit()</script>
 ```
 

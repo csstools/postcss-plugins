@@ -1,7 +1,7 @@
 {
 	"name": "postcss-color-rebeccapurple",
 	"description": "Use the rebeccapurple color keyword in CSS",
-	"version": "10.0.0",
+	"version": "11.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -32,20 +32,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [
@@ -55,7 +48,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/utilities": "^2.0.0",
+		"@csstools/utilities": "^3.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {

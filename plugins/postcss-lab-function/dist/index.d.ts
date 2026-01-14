@@ -16,5 +16,6 @@ export declare type pluginOptions = {
 /** Transform lab() and lch() functions in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' }
 
 export { }

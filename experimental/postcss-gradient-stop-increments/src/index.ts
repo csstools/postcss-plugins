@@ -114,6 +114,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 function isNumericLargerThanZero(node: ComponentValue): boolean {
 	if (

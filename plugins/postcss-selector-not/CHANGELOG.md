@@ -1,5 +1,12 @@
 # Changes to PostCSS Selector Not
 
+### 9.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 8.0.1
 
 _October 23, 2024_

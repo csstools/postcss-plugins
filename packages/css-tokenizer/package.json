@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/css-tokenizer",
 	"description": "Tokenize CSS",
-	"version": "3.0.4",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,20 +25,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [

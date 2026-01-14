@@ -258,6 +258,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 function nodeIsAColor(node: valueParser.Node): boolean {
 	if ('word' === node.type && node.value.startsWith('#')) {

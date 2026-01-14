@@ -34,7 +34,7 @@ export default [
 			globals: {
 				...globals.node,
 			},
-			ecmaVersion: 2022,
+			ecmaVersion: 2025,
 			sourceType: 'module',
 		},
 
@@ -71,7 +71,7 @@ export default [
 			globals: {
 				...globals.browser,
 			},
-			ecmaVersion: 2022,
+			ecmaVersion: 2025,
 			sourceType: 'module',
 		},
 

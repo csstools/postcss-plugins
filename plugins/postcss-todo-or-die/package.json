@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-todo-or-die",
 	"description": "Write TODOs in CSS that ensure you actually do them.",
-	"version": "3.0.5",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,20 +25,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [
@@ -48,8 +41,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^3.0.5",
-		"@csstools/css-tokenizer": "^3.0.4",
+		"@csstools/css-parser-algorithms": "^4.0.0",
+		"@csstools/css-tokenizer": "^4.0.0",
 		"browserslist": "^4.28.1"
 	},
 	"peerDependencies": {
