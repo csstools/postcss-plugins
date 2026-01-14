@@ -4,6 +4,7 @@
 
 - Updated: Support for Node `20.19.0` or later (major).
 - Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+- Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`11.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#1100) (major)
 
 ### 4.0.25
 
