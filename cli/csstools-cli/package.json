@@ -62,7 +62,7 @@
 		"@csstools/postcss-text-decoration-shorthand": "^5.0.0",
 		"@csstools/postcss-trigonometric-functions": "^5.0.0",
 		"@csstools/postcss-unset-value": "^5.0.0",
-		"css-blank-pseudo": "^8.0.0",
+		"css-blank-pseudo": "^8.0.1",
 		"css-has-pseudo": "^8.0.0",
 		"css-prefers-color-scheme": "^11.0.0",
 		"postcss": "^8.5.6",
