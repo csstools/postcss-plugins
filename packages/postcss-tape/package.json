@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-tape",
 	"description": "Quickly test PostCSS plugins",
-	"version": "6.0.1",
+	"version": "7.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
