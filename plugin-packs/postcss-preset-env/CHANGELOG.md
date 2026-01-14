@@ -38,6 +38,12 @@
 - Updated [`postcss-place`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place) to [`11.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place/CHANGELOG.md#1100) (major)
 - Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`11.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#1100) (major)
 - Updated [`postcss-selector-not`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not) to [`9.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-selector-not/CHANGELOG.md#900) (major)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#300) (major)
+- Updated [`@csstools/postcss-ic-unit`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit) to [`5.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-ic-unit/CHANGELOG.md#500) (major)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#300) (major)
+- Updated [`@csstools/postcss-property-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list/CHANGELOG.md#200) (major)
+- Updated [`@csstools/postcss-system-ui-font-family`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family/CHANGELOG.md#200) (major)
+- Updated [`postcss-double-position-gradients`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients) to [`7.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-double-position-gradients/CHANGELOG.md#700) (major)
 
 ### 10.6.1
 
