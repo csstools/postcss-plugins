@@ -1,7 +1,7 @@
 {
 	"name": "postcss-image-set-function",
 	"description": "Display resolution-dependent images using the image-set() function in CSS",
-	"version": "7.0.0",
+	"version": "8.0.0",
 	"author": "Jonathan Neal <jonathantneal@hotmail.com>",
 	"license": "MIT-0",
 	"funding": [
