@@ -17,7 +17,6 @@
 	"engines": {
 		"node": ">=20.19.0"
 	},
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
 			"default": "./dist/index.mjs"

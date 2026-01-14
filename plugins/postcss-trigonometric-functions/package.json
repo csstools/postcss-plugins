@@ -28,7 +28,6 @@
 		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

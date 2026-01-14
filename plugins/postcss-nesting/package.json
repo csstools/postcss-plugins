@@ -32,7 +32,6 @@
 		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"module": "dist/index.mjs",
 	"jsdelivr": "dist/index.mjs",
 	"unpkg": "dist/index.mjs",
 	"exports": {
