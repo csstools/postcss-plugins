@@ -571,3 +571,19 @@
 	initial-value: black;
 	syntax: <color>;
 }
+
+@mixin --mixin-a() {
+	color: lime;
+
+	@media screen {
+		color: green;
+	}
+}
+
+.apply {
+	width: 10px;
+
+	@apply --mixin-a;
+
+	height: 20px;
+}

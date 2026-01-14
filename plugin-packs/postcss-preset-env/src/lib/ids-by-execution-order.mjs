@@ -1,5 +1,7 @@
 // ids ordered by required execution, then alphabetically
 export default [
+	'mixins',
+
 	'custom-media-queries',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties
 	'image-set-function', // run images-set-function before nesting-rules so that it may fix nested media
