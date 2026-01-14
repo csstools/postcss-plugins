@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-syntax-descriptor-syntax-production",
 	"description": "Use the syntax production in syntax descriptors",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
