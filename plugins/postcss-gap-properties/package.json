@@ -1,7 +1,7 @@
 {
 	"name": "postcss-gap-properties",
 	"description": "Use the gap, column-gap, and row-gap shorthand properties in CSS",
-	"version": "6.0.0",
+	"version": "7.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
