@@ -103,4 +103,4 @@ postcssMixins({ preserve: true })
 
 [PostCSS]: https://github.com/postcss/postcss
 [PostCSS Mixins]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-mixins
-[CSS Mixins 1]: https://drafts.csswg.org/css-mixins/#contents-rule
+[CSS Mixins 1]: https://drafts.csswg.org/css-mixins/#mixin-rule

@@ -5,3 +5,22 @@
 @scope (.foo) {
 	color: green;
 }
+
+.bar {
+	color: green;
+
+	@media screen {
+		color: blue;
+	}
+}
+
+.in-between-other-rules {
+	order: 0;
+	color: green;
+
+	@media screen {
+		color: blue;
+	}
+
+	order: 1;
+}

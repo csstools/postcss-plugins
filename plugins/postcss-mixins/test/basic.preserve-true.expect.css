@@ -9,5 +9,35 @@
 
 @scope (.foo) {
 	color: green;
-	@apply --foo;
+	@apply --foo();
+}
+
+@mixin --bar() {
+	color: green;
+
+	@media screen {
+		color: blue;
+	}
+}
+
+.bar {
+	color: green;
+
+	@media screen {
+		color: blue;
+	}
+	@apply --bar;
+}
+
+.in-between-other-rules {
+	order: 0;
+	color: green;
+
+	@media screen {
+		color: blue;
+	}
+
+	@apply --bar;
+
+	order: 1;
 }

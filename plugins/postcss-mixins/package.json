@@ -41,8 +41,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "3.0.5",
-		"@csstools/css-tokenizer": "^3.0.4"
+		"@csstools/css-parser-algorithms": "^4.0.0",
+		"@csstools/css-tokenizer": "^4.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
@@ -72,7 +72,7 @@
 		"cssdbId": "mixins",
 		"exportName": "postcssMixins",
 		"humanReadableName": "PostCSS Mixins",
-		"specUrl": "https://drafts.csswg.org/css-mixins/#contents-rule"
+		"specUrl": "https://drafts.csswg.org/css-mixins/#mixin-rule"
 	},
 	"volta": {
 		"extends": "../../package.json"
