@@ -1,7 +1,7 @@
 {
 	"name": "postcss-overflow-shorthand",
 	"description": "Use the overflow shorthand in CSS",
-	"version": "6.0.0",
+	"version": "7.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
