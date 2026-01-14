@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 11.1.0
+
+_January 14, 2026_
 
 - Added `@csstools/postcss-mixins` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-mixins#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.7.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#870-january-14-2026)
