@@ -24,8 +24,20 @@
 			"url": "https://opencollective.com/csstools"
 		}
 	],
-	"main": "dist/index.json",
-	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.json",
+			"require": "./dist/index.json",
+			"default": "./dist/index.json"
+		},
+		"./dist/index.json": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.json",
+			"require": "./dist/index.json",
+			"default": "./dist/index.json"
+		}
+	},
 	"files": [
 		"CHANGELOG.md",
 		"LICENSE.md",
