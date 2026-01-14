@@ -1,7 +1,7 @@
 {
 	"name": "postcss-attribute-case-insensitive",
 	"description": "Enable support for case insensitive attribute matching in selectors",
-	"version": "7.0.1",
+	"version": "8.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
