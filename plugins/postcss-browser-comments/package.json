@@ -1,7 +1,7 @@
 {
 	"name": "postcss-browser-comments",
 	"description": "Keep only the CSS you need based on comments and your browserslist",
-	"version": "6.0.2",
+	"version": "7.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
