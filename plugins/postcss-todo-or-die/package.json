@@ -42,7 +42,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^3.0.5",
-		"@csstools/css-tokenizer": "^3.0.4",
+		"@csstools/css-tokenizer": "^4.0.0",
 		"browserslist": "^4.28.1"
 	},
 	"peerDependencies": {

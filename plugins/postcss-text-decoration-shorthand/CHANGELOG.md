@@ -4,6 +4,7 @@
 
 - Updated: Support for Node `20.19.0` or later (major).
 - Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#600) (major)
 
 ### 4.0.3
 

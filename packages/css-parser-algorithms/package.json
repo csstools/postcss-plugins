@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-tokenizer": "^3.0.4"
+		"@csstools/css-tokenizer": "^4.0.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

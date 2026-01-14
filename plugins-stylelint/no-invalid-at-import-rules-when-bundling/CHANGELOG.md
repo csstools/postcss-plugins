@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#400) (major)
+
 ### 3.0.6
 
 _May 27, 2025_

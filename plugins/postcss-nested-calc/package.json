@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/utilities": "^2.0.0",
+		"@csstools/utilities": "^3.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
