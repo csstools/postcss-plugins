@@ -1,0 +1,79 @@
+@mixin --ignore-a() {
+	color: green;
+}
+
+@mixin --ignore-a() {
+	color: green;
+}
+
+.ignore-a {
+	@apply --ignore-a;
+}
+
+@mixin --ignore-b {
+	color: green;
+}
+
+.ignore-b {
+	@apply --ignore-b;
+}
+
+@mixin --ignore-c {
+	@apply --foo;
+}
+
+.ignore-c {
+	@apply --ignore-c;
+}
+
+@mixin --ignore-d {
+	@contents;
+}
+
+.ignore-d {
+	@apply --ignore-d;
+}
+
+@mixin --ignore-e {
+	color: red;
+}
+
+.ignore-e {
+	@apply --ignore-e {
+		color: red;
+	}
+}
+
+@media screen {
+	@mixin --ignore-f {
+		color: red;
+	}
+}
+
+.ignore-f {
+	@apply --ignore-f;
+}
+
+@mixin --ignore-g {
+	color: red;
+}
+
+@apply --ignore-g;
+
+@mixin --ignore-h {
+	color: red;
+}
+
+@media screen {
+	@apply --ignore-h;
+}
+
+@mixin --ignore-i() {
+	@result {
+		color: green;
+	}
+}
+
+.ignore-i {
+	@apply --ignore-i;
+}
