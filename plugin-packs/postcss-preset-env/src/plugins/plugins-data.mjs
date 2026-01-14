@@ -220,6 +220,11 @@ export default [
 		'importName': 'postcssMediaQueriesAspectRatioNumberValues',
 	},
 	{
+		'packageName': '@csstools/postcss-mixins',
+		'id': 'mixins',
+		'importName': 'postcssMixins',
+	},
+	{
 		'packageName': 'postcss-nesting',
 		'id': 'nesting-rules',
 		'importName': 'postcssNesting',

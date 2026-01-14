@@ -43,6 +43,7 @@ import type { pluginOptions as postcssLogicalResizeOptions } from '@csstools/pos
 import type { pluginOptions as postcssLogicalViewportUnitsOptions } from '@csstools/postcss-logical-viewport-units';
 import type { pluginOptions as postcssMediaQueriesAspectRatioNumberValuesOptions } from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import type { pluginOptions as postcssMediaMinmaxOptions } from '@csstools/postcss-media-minmax';
+import type { pluginOptions as postcssMixinsOptions } from '@csstools/postcss-mixins';
 import type { pluginOptions as postcssNestedCalcOptions } from '@csstools/postcss-nested-calc';
 import type { pluginOptions as postcssNestingOptions } from 'postcss-nesting';
 import type { pluginOptions as postcssSelectorNotOptions } from 'postcss-selector-not';
@@ -159,6 +160,8 @@ export type pluginsOptions = {
 	'media-queries-aspect-ratio-number-values'?: subPluginOptions<postcssMediaQueriesAspectRatioNumberValuesOptions>
 	/** plugin options for "@csstools/postcss-media-minmax" */
 	'media-query-ranges'?: subPluginOptions<postcssMediaMinmaxOptions>
+	/** plugin options for "@csstools/postcss-mixins" */
+	'mixins'?: subPluginOptions<postcssMixinsOptions>
 	/** plugin options for "@csstools/postcss-nested-calc" */
 	'nested-calc'?: subPluginOptions<postcssNestedCalcOptions>
 	/** plugin options for "postcss-nesting" */

@@ -575,16 +575,23 @@
 
 .random {
 	color: rgb(
-		35,
-		180,
-		215
+		85,
+		75,
+		85
 	);
 
+	border-color: rgb(0, 5, 2);
+}
+
+@media (color-gamut: rec2020) {
+.random {
+
 	border-color: oklch(
-		75%
-		30%
-		12deg
+		10%
+		40%
+		156deg
 	);
+}
 }
 
 .contrast-color {
@@ -607,4 +614,15 @@
 	inherits: true;
 	initial-value: black;
 	syntax: "<color>";
+}
+
+.apply {
+	width: 10px;
+	color: lime;
+
+	@media screen {
+		color: green;
+	}
+
+	height: 20px;
 }

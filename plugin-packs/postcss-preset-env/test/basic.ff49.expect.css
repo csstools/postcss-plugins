@@ -656,12 +656,19 @@
 
 .random {
 	color: rgb(
-		35,
-		180,
-		215
+		85,
+		75,
+		85
 	);
 
-	border-color: rgb(239, 141, 154);
+	border-color: rgb(0, 5, 2);
+}
+
+@media (color-gamut: p3) {
+.random {
+
+	border-color: color(display-p3 0 0.02032 0.00493);
+}
 }
 
 .contrast-color {
@@ -683,4 +690,21 @@
 	inherits: true;
 	initial-value: black;
 	syntax: "<color>";
+}
+
+.apply {
+	width: 10px;
+	color: lime;
+}
+
+@media screen {
+
+.apply {
+		color: green;
+}
+	}
+
+.apply {
+
+	height: 20px;
 }

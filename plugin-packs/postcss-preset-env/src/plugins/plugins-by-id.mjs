@@ -43,6 +43,7 @@ import postcssLogicalResize from '@csstools/postcss-logical-resize';
 import postcssLogicalViewportUnits from '@csstools/postcss-logical-viewport-units';
 import postcssMediaQueriesAspectRatioNumberValues from '@csstools/postcss-media-queries-aspect-ratio-number-values';
 import postcssMediaMinmax from '@csstools/postcss-media-minmax';
+import postcssMixins from '@csstools/postcss-mixins';
 import postcssNestedCalc from '@csstools/postcss-nested-calc';
 import postcssNesting from 'postcss-nesting';
 import postcssSelectorNot from 'postcss-selector-not';
@@ -115,6 +116,7 @@ export const pluginsById = new Map(
 		['logical-viewport-units', postcssLogicalViewportUnits],
 		['media-queries-aspect-ratio-number-values', postcssMediaQueriesAspectRatioNumberValues],
 		['media-query-ranges', postcssMediaMinmax],
+		['mixins', postcssMixins],
 		['nested-calc', postcssNestedCalc],
 		['nesting-rules', postcssNesting],
 		['not-pseudo-class', postcssSelectorNot],
