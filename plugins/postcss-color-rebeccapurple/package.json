@@ -1,7 +1,7 @@
 {
 	"name": "postcss-color-rebeccapurple",
 	"description": "Use the rebeccapurple color keyword in CSS",
-	"version": "10.0.0",
+	"version": "11.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
