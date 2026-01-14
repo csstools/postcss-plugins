@@ -110,6 +110,7 @@ body:
         - PostCSS Media MinMax
         - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Minify
+        - PostCSS Mixins
         - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function

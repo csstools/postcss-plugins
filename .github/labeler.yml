@@ -353,6 +353,12 @@
       - plugins/postcss-minify/**
       - experimental/postcss-minify/**
 
+"plugins/postcss-mixins":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-mixins/**
+      - experimental/postcss-mixins/**
+
 "plugins/postcss-nested-calc":
   - changed-files:
     - any-glob-to-any-file:
