@@ -42,7 +42,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-color-parser": "^3.1.0",
-		"@csstools/css-parser-algorithms": "^3.0.5",
+		"@csstools/css-parser-algorithms": "^4.0.0",
 		"@csstools/css-tokenizer": "^4.0.0"
 	},
 	"peerDependencies": {

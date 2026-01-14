@@ -31,7 +31,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/postcss-progressive-custom-properties": "^4.2.1",
+		"@csstools/postcss-progressive-custom-properties": "^5.0.0",
 		"@csstools/utilities": "^3.0.0",
 		"postcss-value-parser": "^4.2.0"
 	},
