@@ -24,6 +24,10 @@
 	color-1: alpha(from not-a-color / calc(alpha / 2));
 }
 
+.test-from-missing-ignore {
+	color-1: alpha(red / calc(alpha / 2));
+}
+
 .test-rgb {
 	color-1: rgb(from rgb(2 1 0) r g b / calc(alpha / 2));
 	color-1: alpha(from rgb(2 1 0) / calc(alpha / 2));

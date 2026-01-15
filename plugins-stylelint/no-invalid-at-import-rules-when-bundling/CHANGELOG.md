@@ -1,5 +1,10 @@
 # Changelog
 
+### Unreleased (major)
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Updated: Support for Stylelint `17.0.0` or later (major).
+
 ### 3.0.7
 
 _January 14, 2026_

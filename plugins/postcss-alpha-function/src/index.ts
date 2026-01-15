@@ -42,6 +42,8 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						return;
 					}
 
+					let seenFrom = false;
+
 					for (let i = 0; i < componentValue.value.length; i++) {
 						let argument = componentValue.value[i];
 
@@ -51,6 +53,7 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						}
 
 						if (isTokenNode(argument) && isTokenIdent(argument.value) && argument.value[4].value.toLowerCase() === 'from') {
+							seenFrom = true;
 							i++;
 							argument = componentValue.value[i];
 						}
@@ -58,6 +61,10 @@ const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) 
 						while (isWhiteSpaceOrCommentNode(argument)) {
 							i++;
 							argument = componentValue.value[i];
+						}
+
+						if (!seenFrom) {
+							return;
 						}
 
 						const colorArgument = argument;
