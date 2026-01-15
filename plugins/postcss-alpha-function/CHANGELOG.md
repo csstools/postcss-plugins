@@ -1,6 +1,8 @@
 # Changes to PostCSS Alpha Function
 
-### Unreleased (patch)
+### 2.0.1
+
+_January 15, 2026_
 
 - Ignore `alpha()` when `from` keyword is missing.
 
