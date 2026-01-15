@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-no-invalid-at-import-rules-when-bundling",
 	"description": "Do not allow @import rules that can not be bundled correctly",
-	"version": "3.0.7",
+	"version": "4.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
