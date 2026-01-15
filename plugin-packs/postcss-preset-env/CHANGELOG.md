@@ -1,5 +1,9 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-alpha-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function/CHANGELOG.md#201) (patch)
+
 ### 11.1.0
 
 _January 14, 2026_
