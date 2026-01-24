@@ -284,22 +284,6 @@
 	display: inline table;
 }
 
-.table-cell-flow {
-	display: table-cell flow;
-}
-
-.table-caption-flow {
-	display: table-caption flow;
-}
-
-.ruby-base-flow {
-	display: ruby-base flow;
-}
-
-.ruby-text-flow {
-	display: ruby-text flow;
-}
-
 .color-function {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';

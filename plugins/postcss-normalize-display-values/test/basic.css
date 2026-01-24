@@ -14,6 +14,10 @@
 	display: inline flow-root;
 }
 
+.flow-root-inline {
+	display: flow-root inline;
+}
+
 .run-in-flow {
 	display: run-in flow;
 }
@@ -34,7 +38,7 @@
 	display: inline flex;
 }
 
-.inline-block {
+.ignore-inline-block {
 	display: inline block;
 }
 

@@ -507,22 +507,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	display: inline-table;
 }
 
-.table-cell-flow {
-	display: table-cell;
-}
-
-.table-caption-flow {
-	display: table-caption;
-}
-
-.ruby-base-flow {
-	display: ruby-base;
-}
-
-.ruby-text-flow {
-	display: ruby-text;
-}
-
 .logical-float {
 	float: left;
 }
@@ -872,18 +856,18 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		85,
-		75,
-		85
+		255,
+		115,
+		100
 	);
 
-	border-color: rgb(0, 5, 2);
+	border-color: rgb(121, 118, 0);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0 0.02032 0.00493);
+	border-color: color(display-p3 0.4767 0.4634 0);
 }
 }
 

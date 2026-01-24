@@ -1,5 +1,10 @@
 # Changes to PostCSS Normalize Display Values
 
+### Unreleased (patch)
+
+- Remove various combinations that are not part of the specification
+- Allow keywords in various orders
+
 ### 5.0.0
 
 _January 14, 2026_

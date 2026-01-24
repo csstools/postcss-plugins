@@ -402,26 +402,6 @@
 	display: inline table;
 }
 
-.table-cell-flow {
-	display: table-cell;
-	display: table-cell flow;
-}
-
-.table-caption-flow {
-	display: table-caption;
-	display: table-caption flow;
-}
-
-.ruby-base-flow {
-	display: ruby-base;
-	display: ruby-base flow;
-}
-
-.ruby-text-flow {
-	display: ruby-text;
-	display: ruby-text flow;
-}
-
 .logical-float {
 	float: left;
 }
