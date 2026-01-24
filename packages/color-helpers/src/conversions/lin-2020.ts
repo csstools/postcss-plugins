@@ -16,16 +16,9 @@ export function lin_2020(RGB: Color): Color {
 	]
 }
 
-const α = 1.09929682680944;
-const β = 0.018053968510807;
-
 function lin_2020_channel(val: number): number {
 	const sign = val < 0 ? -1 : 1;
 	const abs = Math.abs(val);
 
-	if (abs < β * 4.5) {
-		return val / 4.5;
-	}
-
-	return sign * (Math.pow((abs + α - 1) / α, 1 / 0.45));
+	return sign * Math.pow(abs, 2.4);
 }
