@@ -264,22 +264,6 @@
 	display: inline table;
 }
 
-.table-cell-flow {
-	display: table-cell flow;
-}
-
-.table-caption-flow {
-	display: table-caption flow;
-}
-
-.ruby-base-flow {
-	display: ruby-base flow;
-}
-
-.ruby-text-flow {
-	display: ruby-text flow;
-}
-
 .logical-float {
 	float: inline-start;
 }
@@ -575,21 +559,21 @@
 
 .random {
 	color: rgb(
-		85,
-		75,
-		85
+		255,
+		115,
+		100
 	);
 
-	border-color: rgb(0, 5, 2);
+	border-color: rgb(121, 118, 0);
 }
 
 @media (color-gamut: rec2020) {
 .random {
 
 	border-color: oklch(
-		10%
-		40%
-		156deg
+		55%
+		60%
+		108deg
 	);
 }
 }

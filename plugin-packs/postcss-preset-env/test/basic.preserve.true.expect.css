@@ -662,26 +662,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	display: inline table;
 }
 
-.table-cell-flow {
-	display: table-cell;
-	display: table-cell flow;
-}
-
-.table-caption-flow {
-	display: table-caption;
-	display: table-caption flow;
-}
-
-.ruby-base-flow {
-	display: ruby-base;
-	display: ruby-base flow;
-}
-
-.ruby-text-flow {
-	display: ruby-text;
-	display: ruby-text flow;
-}
-
 .logical-float {
 	float: left;
 }
@@ -1260,9 +1240,9 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		85,
-		75,
-		85
+		255,
+		115,
+		100
 	);
 	color: rgb(
 		random(--r, 0, 255, 5),
@@ -1270,14 +1250,14 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 		random(--b, 0, 255, 5)
 	);
 
-	border-color: rgb(0, 5, 2);
+	border-color: rgb(121, 118, 0);
 
-	border-color: color(display-p3 0 0.02032 0.00493);
+	border-color: color(display-p3 0.4767 0.4634 0);
 
 	border-color: oklch(
-		10%
-		40%
-		156deg
+		55%
+		60%
+		108deg
 	);
 
 	border-color: oklch(

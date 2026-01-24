@@ -14,6 +14,10 @@
 	display: inline-block;
 }
 
+.flow-root-inline {
+	display: inline-block;
+}
+
 .run-in-flow {
 	display: run-in;
 }
@@ -34,8 +38,8 @@
 	display: inline-flex;
 }
 
-.inline-block {
-	display: inline-block;
+.ignore-inline-block {
+	display: inline block;
 }
 
 .block-grid {
@@ -59,17 +63,17 @@
 }
 
 .table-cell-flow {
-	display: table-cell;
+	display: table-cell flow;
 }
 
 .table-caption-flow {
-	display: table-caption;
+	display: table-caption flow;
 }
 
 .ruby-base-flow {
-	display: ruby-base;
+	display: ruby-base flow;
 }
 
 .ruby-text-flow {
-	display: ruby-text;
+	display: ruby-text flow;
 }
