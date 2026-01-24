@@ -6,10 +6,21 @@ import type { Color } from '../types/color';
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
 export function OKLab_to_OKLCH(OKLab: Color): Color {
-	const hue = Math.atan2(OKLab[2], OKLab[1]) * 180 / Math.PI;
+	const epsilon = 0.000004;
+	const chroma = Math.sqrt(OKLab[1] ** 2 + OKLab[2] ** 2);
+
+	let hue = Math.atan2(OKLab[2], OKLab[1]) * 180 / Math.PI;
+	if (hue < 0) {
+		hue = hue + 360;
+	}
+
+	if (chroma <= epsilon) {
+		hue = NaN;
+	}
+
 	return [
 		OKLab[0], // L is still L
-		Math.sqrt(OKLab[1] ** 2 + OKLab[2] ** 2), // Chroma
-		hue >= 0 ? hue : hue + 360, // Hue, in degrees [0 to 360)
+		chroma,
+		hue
 	];
 }

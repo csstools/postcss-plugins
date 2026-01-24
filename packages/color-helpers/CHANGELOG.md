@@ -1,5 +1,16 @@
 # Changes to Color Helpers
 
+### Unreleased (patch)
+
+- Match latest changes made in `csswg-drafts` for:
+  - `gam_2020`
+  - `Lab_to_LCH`
+  - `lin_2020`
+  - `OKLab_to_OKLCH`
+  - `sRGB_to_HSL`
+  - `XYZ_D50_to_HWB`
+
+
 ### 6.0.0
 
 _January 14, 2026_
