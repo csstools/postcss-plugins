@@ -722,7 +722,7 @@
 	"column-rule-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
 		"comment": ""
 	},
 	"column-rule-inset-end": {
@@ -1247,6 +1247,12 @@
 		"syntax-a": "none | <custom-ident> [ element | content ]?",
 		"comment": ""
 	},
+	"flow-tolerance": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "normal | <length-percentage> | infinite",
+		"comment": ""
+	},
 	"font": {
 		"type": "modified",
 		"syntax-b": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name> | <-non-standard-font>",
@@ -1472,19 +1478,13 @@
 	"item-flow": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'item-tolerance'>",
+		"syntax-a": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>",
 		"comment": ""
 	},
 	"item-pack": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "normal | dense || balance",
-		"comment": ""
-	},
-	"item-tolerance": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <length-percentage> | infinite",
 		"comment": ""
 	},
 	"item-track": {
@@ -2132,7 +2132,7 @@
 	"row-rule-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
 		"comment": ""
 	},
 	"row-rule-inset-end": {

@@ -1890,7 +1890,7 @@
 					"value": "red"
 				},
 				{
-					"value": "red blue"
+					"value": "red, blue"
 				},
 				{
 					"value": "repeat(2, red)"
@@ -1940,8 +1940,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
-		"syntax-m": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
+		"syntax-m": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2014,7 +2014,7 @@
 					"value": "dotted"
 				},
 				{
-					"value": "dotted dashed"
+					"value": "dotted, dashed"
 				},
 				{
 					"value": "repeat(2, dashed)"
@@ -2045,10 +2045,10 @@
 					"value": "repeat(2, 1px)"
 				},
 				{
-					"value": "repeat(2, 1px) 12px"
+					"value": "repeat(2, 1px), 12px"
 				},
 				{
-					"value": "thick 12px"
+					"value": "thick, 12px"
 				},
 				{
 					"value": "12px"
@@ -2975,6 +2975,17 @@
 			"failing": []
 		}
 	},
+	"flow-tolerance": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "normal | <length-percentage> | infinite",
+		"syntax-m": "normal | <length-percentage> | infinite",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"font": {
 		"type": "modified",
 		"comment": "",
@@ -3386,8 +3397,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'item-tolerance'>",
-		"syntax-m": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'item-tolerance'>",
+		"syntax-a": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>",
+		"syntax-m": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3399,17 +3410,6 @@
 		"syntax-b": "",
 		"syntax-a": "normal | dense || balance",
 		"syntax-m": "normal | dense || balance",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"item-tolerance": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "normal | <length-percentage> | infinite",
-		"syntax-m": "normal | <length-percentage> | infinite",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4761,8 +4761,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
-		"syntax-m": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
+		"syntax-m": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
 		"tests": {
 			"passing": [],
 			"failing": []

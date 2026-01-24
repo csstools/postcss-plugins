@@ -642,7 +642,7 @@
 		"syntax": "auto | <length-percentage>"
 	},
 	"column-rule-inset": {
-		"syntax": "<length-percentage> [ <length-percentage> ]?"
+		"syntax": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?"
 	},
 	"column-rule-inset-end": {
 		"syntax": "auto | <length-percentage>"
@@ -1019,6 +1019,9 @@
 	"-ms-flow-into": {
 		"syntax": "[ none | <custom-ident> ]#"
 	},
+	"flow-tolerance": {
+		"syntax": "normal | <length-percentage> | infinite"
+	},
 	"font": {
 		"syntax": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>"
 	},
@@ -1317,13 +1320,10 @@
 		"syntax": "auto | row | column | row-reverse | column-reverse"
 	},
 	"item-flow": {
-		"syntax": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'item-tolerance'>"
+		"syntax": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>"
 	},
 	"item-pack": {
 		"syntax": "normal | dense || balance"
-	},
-	"item-tolerance": {
-		"syntax": "normal | <length-percentage> | infinite"
 	},
 	"item-track": {
 		"syntax": "auto | row | column | row-reverse | column-reverse"
@@ -1920,7 +1920,7 @@
 		"syntax": "auto | <length-percentage>"
 	},
 	"row-rule-inset": {
-		"syntax": "<length-percentage> [ <length-percentage> ]?"
+		"syntax": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?"
 	},
 	"row-rule-inset-end": {
 		"syntax": "auto | <length-percentage>"

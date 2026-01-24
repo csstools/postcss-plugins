@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"@csstools/pack-test": "^2.0.0",
 		"stylelint": "^17.0.0",
-		"stylelint-test-rule-node": "^0.4.0"
+		"stylelint-test-rule-node": "^1.0.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
