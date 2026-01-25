@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/color-helpers",
 	"description": "Color helpers to ease transformation between formats, gamut, etc",
-	"version": "6.0.0",
+	"version": "6.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

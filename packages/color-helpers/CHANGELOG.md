@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### 6.0.1
+
+_January 25, 2026_
 
 - Match latest changes made in `csswg-drafts` for:
   - `gam_2020`
