@@ -71,7 +71,7 @@
 		"@csstools/postcss-media-queries-aspect-ratio-number-values": "^4.0.0",
 		"@csstools/postcss-mixins": "^1.0.0",
 		"@csstools/postcss-nested-calc": "^5.0.0",
-		"@csstools/postcss-normalize-display-values": "^5.0.0",
+		"@csstools/postcss-normalize-display-values": "^5.0.1",
 		"@csstools/postcss-oklab-function": "^5.0.0",
 		"@csstools/postcss-position-area-property": "^2.0.0",
 		"@csstools/postcss-progressive-custom-properties": "^5.0.0",
