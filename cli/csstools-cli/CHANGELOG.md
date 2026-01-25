@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 5.0.4
+
+_January 25, 2026_
 
 - Updated [`@csstools/postcss-normalize-display-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-normalize-display-values/CHANGELOG.md#501) (patch)
 - Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#501) (patch)
