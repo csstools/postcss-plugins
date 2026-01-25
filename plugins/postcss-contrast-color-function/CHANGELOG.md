@@ -1,5 +1,9 @@
 # Changes to PostCSS Contrast Color Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#401) (patch)
+
 ### 3.0.0
 
 _January 14, 2026_
