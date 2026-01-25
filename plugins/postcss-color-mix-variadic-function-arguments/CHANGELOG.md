@@ -1,6 +1,8 @@
 # Changes to PostCSS Color Mix Variadic Function Arguments
 
-### Unreleased (patch)
+### 2.0.1
+
+_January 25, 2026_
 
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#401) (patch)
 
