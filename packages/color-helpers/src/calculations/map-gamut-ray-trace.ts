@@ -74,7 +74,7 @@ function rayTraceBox(start: Color, end: Color): Color | false {
 		const bn = 0;
 		const bx = 1;
 
-		if (d) {
+		if (Math.abs(d) > 1e-15) {
 			const inv_d = 1 / d;
 			const t1 = (bn - a) * inv_d;
 			const t2 = (bx - a) * inv_d;
@@ -93,6 +93,7 @@ function rayTraceBox(start: Color, end: Color): Color | false {
 		tnear = tfar;
 	}
 
+	// A point, or something approaching a single point where start and end are the same.
 	if (!isFinite(tnear)) {
 		return false;
 	}
