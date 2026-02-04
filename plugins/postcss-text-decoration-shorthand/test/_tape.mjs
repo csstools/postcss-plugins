@@ -32,6 +32,15 @@ postcssTape(plugin)({
 			}),
 		],
 	},
+	'multiple-declarations:autoprefixer': {
+		message: 'supports basic usage with autoprefixer',
+		plugins: [
+			plugin(),
+			autoprefixer({
+				overrideBrowserslist: ['Safari >= 8'],
+			}),
+		],
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

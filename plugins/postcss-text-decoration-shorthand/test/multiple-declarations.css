@@ -1,0 +1,4 @@
+.line-only-then-shorthand {
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted;
+}

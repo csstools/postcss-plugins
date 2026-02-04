@@ -1,4 +1,4 @@
-import type { Plugin, PluginCreator } from 'postcss';
+import type { Declaration, Plugin, PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { namedColors } from '@csstools/color-helpers';
 
@@ -10,6 +10,40 @@ export type pluginOptions = {
 
 const IS_TEXT_DECORATION_REGEX = /^text-decoration$/i;
 
+function hasFollowingTextDecoration(decl: Declaration): boolean {
+    let current = decl.next();
+    
+    while (current) {
+        if (current.type === 'comment') {
+            current = current.next();
+            continue;
+        }
+        
+        return current.type === 'decl' && IS_TEXT_DECORATION_REGEX.test(current.prop);
+    }
+    
+    return false;
+}
+
+function hasPreviousSameTextDecoration(decl: Declaration, valueToCheck: string): boolean {
+    let current = decl.prev();
+    
+    while (current) {
+        if (current.type === 'comment') {
+            current = current.prev();
+            continue;
+        }
+        
+        if (current.type !== 'decl') {
+            return false;
+        }
+        
+        return IS_TEXT_DECORATION_REGEX.test(current.prop) && 
+            current.value.toLowerCase() === valueToCheck.toLowerCase();
+    }
+    
+    return false;
+}
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
 		// Default options
@@ -192,8 +226,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					const nonShortHandValue = valueParser.stringify(data.line);
 					if (decl.value.toLowerCase() === nonShortHandValue.toLowerCase()) {
-						const next = decl.next();
-						if (!next || next.type !== 'decl' || next.prop.toLowerCase() !== 'text-decoration') {
+						if (!hasFollowingTextDecoration(decl)) {
 
 							// "-webkit-text-decoration" is a shorthand and sets omitted constituent properties to their initial value.
 							// "text-decoration" is a longhand in older browsers and does not have this behavior.
@@ -206,10 +239,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					decl.cloneBefore({
-						prop: 'text-decoration',
-						value: nonShortHandValue,
-					});
+					if (!hasPreviousSameTextDecoration(decl, nonShortHandValue)) {
+						decl.cloneBefore({
+							prop: 'text-decoration',
+							value: nonShortHandValue,
+						});
+					}
 
 					const shortHandValue = valueParser.stringify([
 						...data.line,
