@@ -1,5 +1,9 @@
 # Changes to PostCSS Text Decoration Shorthand
 
+### Unreleased (patch)
+
+- Reduce redundant fallbacks
+
 ### 5.0.1
 
 _January 25, 2026_

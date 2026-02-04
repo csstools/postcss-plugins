@@ -148,3 +148,20 @@
 .ignored--d {
 	text-decoration: underline red overline;
 }
+
+.manual-fallback-a {
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}
+
+.manual-fallback-b {
+	text-decoration: overline;
+	text-decoration: overline solid purple;
+	text-decoration: overline purple 4px;
+}
+
+.manual-fallback-c {
+	text-decoration: overline;
+	text-decoration: overline solid purple;
+	text-decoration: overline purple 4px;
+}

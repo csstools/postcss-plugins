@@ -185,3 +185,25 @@
 	-webkit-text-decoration: underline red overline;
 	        text-decoration: underline red overline;
 }
+
+.manual-fallback-a {
+	text-decoration: underline;
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted;
+}
+
+.manual-fallback-b {
+	text-decoration: overline;
+	-webkit-text-decoration: overline solid purple;
+	        text-decoration: overline solid purple;
+	-webkit-text-decoration: overline purple 4px;
+	        text-decoration: overline purple 4px;
+}
+
+.manual-fallback-c {
+	text-decoration: overline;
+	-webkit-text-decoration: overline solid purple;
+	        text-decoration: overline solid purple;
+	-webkit-text-decoration: overline purple 4px;
+	        text-decoration: overline purple 4px;
+}
