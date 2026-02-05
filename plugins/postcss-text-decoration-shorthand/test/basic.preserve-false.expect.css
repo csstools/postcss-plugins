@@ -149,3 +149,18 @@
 	text-decoration: overline solid purple;
 	text-decoration: overline purple 4px;
 }
+
+.fallback-without-comment {
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}
+
+.fallback-with-comment-a {
+	text-decoration: underline; /* 2 */
+	text-decoration: underline dotted;
+}
+
+.fallback-with-comment-b {
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}

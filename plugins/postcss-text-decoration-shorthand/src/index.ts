@@ -203,7 +203,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					if (decl.value.toLowerCase() === nonShortHandValue.toLowerCase()) {
-						const next = decl.next();
+						let next = decl.next();
+						while (next && next.type === 'comment') {
+							next = next.next();
+						}
+
 						if (!next || next.type !== 'decl' || next.prop.toLowerCase() !== 'text-decoration') {
 
 							// "-webkit-text-decoration" is a shorthand and sets omitted constituent properties to their initial value.

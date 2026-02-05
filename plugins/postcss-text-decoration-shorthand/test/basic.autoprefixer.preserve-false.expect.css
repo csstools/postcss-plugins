@@ -172,3 +172,21 @@
 	-webkit-text-decoration: overline purple 4px;
 	        text-decoration: overline purple 4px;
 }
+
+.fallback-without-comment {
+	text-decoration: underline;
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted;
+}
+
+.fallback-with-comment-a {
+	text-decoration: underline; /* 2 */
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted;
+}
+
+.fallback-with-comment-b {
+	text-decoration: underline;
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted;
+}

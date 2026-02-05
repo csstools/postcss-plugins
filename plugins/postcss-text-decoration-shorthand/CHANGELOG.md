@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Reduce redundant fallbacks
+- Reduce redundant fallbacks for both `text-decoration` and `-webkit-text-decoration`
 
 ### 5.0.1
 
