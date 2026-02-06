@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 11.1.3
+
+_February 6, 2026_
 
 - Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#502) (patch)
 
