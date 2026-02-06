@@ -1,6 +1,8 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleased (patch)
+### 5.0.2
+
+_February 6, 2026_
 
 - Reduce redundant fallbacks for both `text-decoration` and `-webkit-text-decoration`
 
