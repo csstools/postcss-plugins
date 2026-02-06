@@ -1,4 +1,4 @@
-import type { Plugin, PluginCreator } from 'postcss';
+import type { Declaration, Plugin, PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { namedColors } from '@csstools/color-helpers';
 
@@ -41,13 +41,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const ownIndex = parent.index(decl);
-					const hasFallbacksOrOverrides = parent.nodes.some((node) => {
+
+					const siblingTextDecorationProperties = parent.nodes.filter((node) => {
 						return node.type === 'decl' &&
 							IS_TEXT_DECORATION_REGEX.test(node.prop) &&
-							convertedValues.get(decl.value) === node.value &&
 							parent.index(node) !== ownIndex;
-					});
-					if (hasFallbacksOrOverrides) {
+					}) as Array<Declaration>;
+
+					if (siblingTextDecorationProperties.some((node) => {
+						return convertedValues.get(decl.value) === node.value
+					})) {
 						return;
 					}
 
@@ -191,8 +194,20 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 
 					const nonShortHandValue = valueParser.stringify(data.line);
+					convertedValues.set(decl.value, nonShortHandValue);
+
+					if (siblingTextDecorationProperties.some((node) => {
+						return convertedValues.get(decl.value) === node.value
+					})) {
+						return;
+					}
+
 					if (decl.value.toLowerCase() === nonShortHandValue.toLowerCase()) {
-						const next = decl.next();
+						let next = decl.next();
+						while (next && next.type === 'comment') {
+							next = next.next();
+						}
+
 						if (!next || next.type !== 'decl' || next.prop.toLowerCase() !== 'text-decoration') {
 
 							// "-webkit-text-decoration" is a shorthand and sets omitted constituent properties to their initial value.
@@ -243,7 +258,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						});
 					}
 
-					convertedValues.set(decl.value, nonShortHandValue);
 					convertedValues.set(shortHandValue, nonShortHandValue);
 
 					if (!options.preserve) {
