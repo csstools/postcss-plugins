@@ -2123,8 +2123,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | strict | content | [ [ size || inline-size ] || layout || style || paint ]",
-		"syntax-a": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ] | view-transition",
-		"syntax-m": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ] | view-transition",
+		"syntax-a": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]",
+		"syntax-m": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -6131,6 +6131,17 @@
 		"syntax-b": "",
 		"syntax-a": "normal | contain | nearest | <custom-ident>",
 		"syntax-m": "normal | contain | nearest | <custom-ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"view-transition-scope": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "none | auto",
+		"syntax-m": "none | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
