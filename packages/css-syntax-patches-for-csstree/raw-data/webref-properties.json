@@ -678,7 +678,7 @@
 		"syntax": "[ <'column-width'> || <'column-count'> ] [ / <'column-height'> ]?"
 	},
 	"contain": {
-		"syntax": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ] | view-transition"
+		"syntax": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]"
 	},
 	"contain-intrinsic-block-size": {
 		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
@@ -2590,6 +2590,9 @@
 	},
 	"view-transition-name": {
 		"syntax": "none | <custom-ident>"
+	},
+	"view-transition-scope": {
+		"syntax": "none | auto"
 	},
 	"visibility": {
 		"syntax": "visible | hidden | force-hidden | collapse"

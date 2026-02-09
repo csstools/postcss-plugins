@@ -794,7 +794,7 @@
 	"contain": {
 		"type": "modified",
 		"syntax-b": "none | strict | content | [ [ size || inline-size ] || layout || style || paint ]",
-		"syntax-a": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ] | view-transition",
+		"syntax-a": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]",
 		"comment": ""
 	},
 	"contain-intrinsic-block-size": {
@@ -2853,6 +2853,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "normal | contain | nearest | <custom-ident>",
+		"comment": ""
+	},
+	"view-transition-scope": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | auto",
 		"comment": ""
 	},
 	"visibility": {
