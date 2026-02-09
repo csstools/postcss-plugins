@@ -217,7 +217,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
-	src: url(a) format("woff2");
+	src: url(a) format(woff2);
 }
 
 .block-flow {
