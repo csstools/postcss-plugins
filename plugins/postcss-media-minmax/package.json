@@ -44,7 +44,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-calc": "^3.0.0",
+		"@csstools/css-calc": "^3.0.1",
 		"@csstools/css-parser-algorithms": "^4.0.0",
 		"@csstools/css-tokenizer": "^4.0.0",
 		"@csstools/media-query-list-parser": "^5.0.0"
