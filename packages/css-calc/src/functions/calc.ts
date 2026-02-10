@@ -5,7 +5,7 @@ import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, is
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
-import { FunctionNode, TokenNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
+import { FunctionNode, TokenNode, isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, sourceIndices } from '@csstools/css-parser-algorithms';
 import { multiplication } from '../operation/multiplication';
 import { resolveGlobalsAndConstants } from './globals-and-constants';
 import { solveACos } from './acos';
@@ -218,7 +218,7 @@ function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals, option
 }
 
 function singleNodeSolver(fnNode: FunctionNode, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, a: TokenNode, options: conversionOptions) => Calculation | -1): Calculation | -1 {
-	const a = singleArgument(fnNode.value, globals, options);
+	const a = singleArgument(fnNode, globals, options);
 	if (a === -1) {
 		return -1;
 	}
@@ -226,13 +226,13 @@ function singleNodeSolver(fnNode: FunctionNode, globals: Globals, options: conve
 	return solveFn(fnNode, a, options);
 }
 
-function singleArgument(values: Array<ComponentValue>, globals: Globals, options: conversionOptions): TokenNode | -1 {
+function singleArgument(fnNode: FunctionNode, globals: Globals, options: conversionOptions): TokenNode | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
+		[...(fnNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
-	const a = solve(calc(calcWrapper(nodes), globals, options));
+	const a = solve(calc(calcWrapper(fnNode, nodes), globals, options));
 	if (a === -1) {
 		return -1;
 	}
@@ -241,7 +241,7 @@ function singleArgument(values: Array<ComponentValue>, globals: Globals, options
 }
 
 function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, a: TokenNode, b: TokenNode, options: conversionOptions) => Calculation | -1): Calculation | -1 {
-	const solvedNodes = twoCommaSeparatedArguments(fnNode.value, globals, options);
+	const solvedNodes = twoCommaSeparatedArguments(fnNode, globals, options);
 	if (solvedNodes === -1) {
 		return -1;
 	}
@@ -251,9 +251,9 @@ function twoCommaSeparatedNodesSolver(fnNode: FunctionNode, globals: Globals, op
 	return solveFn(fnNode, a, b, options);
 }
 
-function twoCommaSeparatedArguments(values: Array<ComponentValue>, globals: Globals, options: conversionOptions): [TokenNode, TokenNode] | -1 {
+function twoCommaSeparatedArguments(fnNode: FunctionNode, globals: Globals, options: conversionOptions): [TokenNode, TokenNode] | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
-		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
+		[...(fnNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
 
@@ -283,12 +283,12 @@ function twoCommaSeparatedArguments(values: Array<ComponentValue>, globals: Glob
 		}
 	}
 
-	const a = solve(calc(calcWrapper(aValue), globals, options));
+	const a = solve(calc(calcWrapper(fnNode, aValue), globals, options));
 	if (a === -1) {
 		return -1;
 	}
 
-	const b = solve(calc(calcWrapper(bValue), globals, options));
+	const b = solve(calc(calcWrapper(fnNode, bValue), globals, options));
 	if (b === -1) {
 		return -1;
 	}
@@ -296,8 +296,8 @@ function twoCommaSeparatedArguments(values: Array<ComponentValue>, globals: Glob
 	return [a, b];
 }
 
-function variadicNodesSolver(fnNode: FunctionNode, values: Array<ComponentValue>, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, x: Array<ComponentValue>, options: conversionOptions) => Calculation | -1): Calculation | -1 {
-	const solvedNodes = variadicArguments(fnNode.value, globals, options);
+function variadicNodesSolver(fnNode: FunctionNode, globals: Globals, options: conversionOptions, solveFn: (node: FunctionNode, x: Array<ComponentValue>, options: conversionOptions) => Calculation | -1): Calculation | -1 {
+	const solvedNodes = variadicArguments(fnNode, fnNode.value, globals, options);
 	if (solvedNodes === -1) {
 		return -1;
 	}
@@ -305,7 +305,7 @@ function variadicNodesSolver(fnNode: FunctionNode, values: Array<ComponentValue>
 	return solveFn(fnNode, solvedNodes, options);
 }
 
-function variadicArguments(values: Array<ComponentValue>, globals: Globals, options: conversionOptions): Array<TokenNode> | -1 {
+function variadicArguments(fnNode: FunctionNode, values: Array<ComponentValue>, globals: Globals, options: conversionOptions): Array<TokenNode> | -1 {
 	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
 		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
@@ -334,7 +334,7 @@ function variadicArguments(values: Array<ComponentValue>, globals: Globals, opti
 				return -1;
 			}
 
-			const solvedChunk = solve(calc(calcWrapper(chunks[i]), globals, options));
+			const solvedChunk = solve(calc(calcWrapper(fnNode, chunks[i]), globals, options));
 			if (solvedChunk === -1) {
 				return -1;
 			}
@@ -386,38 +386,38 @@ function clamp(clampNode: FunctionNode, globals: Globals, options: conversionOpt
 	const minimumIsNone = isNone(minimumValue);
 	const maximumIsNone = isNone(maximumValue);
 	if (minimumIsNone && maximumIsNone) {
-		return calc(calcWrapper(centralValue), globals, options);
+		return calc(calcWrapper(clampNode, centralValue), globals, options);
 	}
 
-	const central = solve(calc(calcWrapper(centralValue), globals, options));
+	const central = solve(calc(calcWrapper(clampNode, centralValue), globals, options));
 	if (central === -1) {
 		return -1;
 	}
 
 	{
 		if (minimumIsNone) {
-			const maximum = solve(calc(calcWrapper(maximumValue), globals, options));
+			const maximum = solve(calc(calcWrapper(clampNode, maximumValue), globals, options));
 			if (maximum === -1) {
 				return -1;
 			}
 
-			return solveMin(minWrapper(central, maximum), [central, maximum], options);
+			return solveMin(minWrapper(clampNode, central, maximum), [central, maximum], options);
 		} else if (maximumIsNone) {
-			const minimum = solve(calc(calcWrapper(minimumValue), globals, options));
+			const minimum = solve(calc(calcWrapper(clampNode, minimumValue), globals, options));
 			if (minimum === -1) {
 				return -1;
 			}
 
-			return solveMax(maxWrapper(minimum, central), [minimum, central], options);
+			return solveMax(maxWrapper(clampNode, minimum, central), [minimum, central], options);
 		}
 	}
 
-	const minimum = solve(calc(calcWrapper(minimumValue), globals, options));
+	const minimum = solve(calc(calcWrapper(clampNode, minimumValue), globals, options));
 	if (minimum === -1) {
 		return -1;
 	}
 
-	const maximum = solve(calc(calcWrapper(maximumValue), globals, options));
+	const maximum = solve(calc(calcWrapper(clampNode, maximumValue), globals, options));
 	if (maximum === -1) {
 		return -1;
 	}
@@ -426,11 +426,11 @@ function clamp(clampNode: FunctionNode, globals: Globals, options: conversionOpt
 }
 
 function max(maxNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(maxNode, maxNode.value, globals, options, solveMax);
+	return variadicNodesSolver(maxNode, globals, options, solveMax);
 }
 
 function min(minNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(minNode, minNode.value, globals, options, solveMin);
+	return variadicNodesSolver(minNode, globals, options, solveMin);
 }
 
 const roundingStrategies = new Set([
@@ -487,7 +487,7 @@ function round(roundNode: FunctionNode, globals: Globals, options: conversionOpt
 		}
 	}
 
-	const a = solve(calc(calcWrapper(aValue), globals, options));
+	const a = solve(calc(calcWrapper(roundNode, aValue), globals, options));
 	if (a === -1) {
 		return -1;
 	}
@@ -495,12 +495,12 @@ function round(roundNode: FunctionNode, globals: Globals, options: conversionOpt
 	if (!hasComma && bValue.length === 0) {
 		bValue.push(
 			new TokenNode(
-				[TokenType.Number, '1', -1, -1, { value: 1, type: NumberType.Integer }],
+				[TokenType.Number, '1', a.value[2], a.value[3], { value: 1, type: NumberType.Integer }],
 			),
 		);
 	}
 
-	const b = solve(calc(calcWrapper(bValue), globals, options));
+	const b = solve(calc(calcWrapper(roundNode, bValue), globals, options));
 	if (b === -1) {
 		return -1;
 	}
@@ -569,15 +569,16 @@ function pow(powNode: FunctionNode, globals: Globals, options: conversionOptions
 }
 
 function hypot(hypotNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(hypotNode, hypotNode.value, globals, options, solveHypot);
+	return variadicNodesSolver(hypotNode, globals, options, solveHypot);
 }
 
 function log(logNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
-	return variadicNodesSolver(logNode, logNode.value, globals, options, solveLog);
+	return variadicNodesSolver(logNode, globals, options, solveLog);
 }
 
 function random(randomNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
 	const randomValueSharingAndNodes = parseRandomValueSharing(
+		randomNode,
 		randomNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)),
 		globals,
 		options,
@@ -588,7 +589,7 @@ function random(randomNode: FunctionNode, globals: Globals, options: conversionO
 
 	const [randomValueSharing, nodes] = randomValueSharingAndNodes;
 
-	const randomArguments = variadicArguments(nodes, globals, options);
+	const randomArguments = variadicArguments(randomNode, nodes, globals, options);
 	if (randomArguments === -1) {
 		return -1;
 	}
@@ -609,7 +610,7 @@ function random(randomNode: FunctionNode, globals: Globals, options: conversionO
 	);
 }
 
-function parseRandomValueSharing(nodes: Array<ComponentValue>, globals: Globals, options: conversionOptions): [RandomValueSharing, Array<ComponentValue>] | -1 {
+function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentValue>, globals: Globals, options: conversionOptions): [RandomValueSharing, Array<ComponentValue>] | -1 {
 	const x: RandomValueSharing = {
 		isAuto: false,
 		dashedIdent: "",
@@ -660,7 +661,7 @@ function parseRandomValueSharing(nodes: Array<ComponentValue>, globals: Globals,
 				return -1;
 			}
 
-			const fixedNumber = solve(calc(calcWrapper([nextNode]), globals, options));
+			const fixedNumber = solve(calc(calcWrapper(fnNode, [nextNode]), globals, options));
 			if (fixedNumber === -1) {
 				return -1;
 			}
@@ -700,33 +701,33 @@ function parseRandomValueSharing(nodes: Array<ComponentValue>, globals: Globals,
 	return -1;
 }
 
-function calcWrapper(v: Array<ComponentValue>): FunctionNode {
+function calcWrapper(fnNode: FunctionNode, v: Array<ComponentValue>): FunctionNode {
 	return new FunctionNode(
-		[TokenType.Function, 'calc(', -1, -1, { value: 'calc' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
+		[TokenType.Function, 'calc(', fnNode.name[2], fnNode.name[3], { value: 'calc' }],
+		[TokenType.CloseParen, ')', fnNode.endToken[2], fnNode.endToken[3], undefined],
 		v,
 	);
 }
 
-function minWrapper(a: ComponentValue, b: ComponentValue): FunctionNode {
+function minWrapper(fnNode: FunctionNode, a: ComponentValue, b: ComponentValue): FunctionNode {
 	return new FunctionNode(
-		[TokenType.Function, 'min(', -1, -1, { value: 'min' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
+		[TokenType.Function, 'min(', fnNode.name[2], fnNode.name[3], { value: 'min' }],
+		[TokenType.CloseParen, ')', fnNode.endToken[2], fnNode.endToken[3], undefined],
 		[
 			a,
-			new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+			new TokenNode([TokenType.Comma, ',', ...sourceIndices(a), undefined]),
 			b,
 		],
 	);
 }
 
-function maxWrapper(a: ComponentValue, b: ComponentValue): FunctionNode {
+function maxWrapper(fnNode: FunctionNode, a: ComponentValue, b: ComponentValue): FunctionNode {
 	return new FunctionNode(
-		[TokenType.Function, 'max(', -1, -1, { value: 'max' }],
-		[TokenType.CloseParen, ')', -1, -1, undefined],
+		[TokenType.Function, 'max(', fnNode.name[2], fnNode.name[3], { value: 'max' }],
+		[TokenType.CloseParen, ')', fnNode.endToken[2], fnNode.endToken[3], undefined],
 		[
 			a,
-			new TokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+			new TokenNode([TokenType.Comma, ',', ...sourceIndices(a), undefined]),
 			b,
 		],
 	);

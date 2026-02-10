@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Fix source positions for generated functions and comma's. These now adopt the source position of surrounding nodes.
+
 ### 3.0.0
 
 _January 14, 2026_
