@@ -1,9 +1,11 @@
+import type { conversionOptions } from '../options';
 import { TokenNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType, isTokenDimension, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { convertUnit } from '../unit-conversions';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { ParseErrorWithComponentValues, ParseErrorMessage } from '../error';
 
-export function subtraction(inputs: Array<TokenNode>): TokenNode | -1 {
+export function subtraction(inputs: Array<TokenNode>, options: conversionOptions): TokenNode | -1 {
 	if (inputs.length !== 2) {
 		return -1;
 	}
@@ -45,6 +47,34 @@ export function subtraction(inputs: Array<TokenNode>): TokenNode | -1 {
 				unit: aToken[4].unit,
 			}]);
 		}
+	}
+
+	// 1 - 1px
+	// 1px - 1
+	// 1 - 1%
+	// 1% - 1
+	if (
+		(
+			isTokenNumber(aToken) &&
+			(
+				isTokenDimension(bToken) ||
+				isTokenPercentage(bToken)
+			)
+		) ||
+		(
+			isTokenNumber(bToken) &&
+			(
+				isTokenDimension(aToken) ||
+				isTokenPercentage(aToken)
+			)
+		)
+	) {
+		options.onParseError?.(
+			new ParseErrorWithComponentValues(
+				ParseErrorMessage.UnexpectedSubtractionOfDimensionOrPercentageWithNumber,
+				inputs
+			)
+		);
 	}
 
 	return -1;

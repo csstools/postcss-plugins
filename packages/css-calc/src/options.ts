@@ -1,7 +1,17 @@
+import type { ParseError } from './error';
 import type { GlobalsWithStrings } from './util/globals';
 export type { GlobalsWithStrings } from './util/globals';
 
 export type conversionOptions = {
+	/**
+ * If a calc expression can not be solved the parse error might be reported through this callback.
+ * Not all cases are covered. Open an issue if you need specific errors reported.
+ *
+ * Values are recursively visited and at each nesting level an attempt is made to solve the expression.
+ * Errors can be reported multiple times as a result of this.
+ */
+	onParseError?: (error: ParseError) => void
+
 	/**
 	 * Pass global values as a map of key value pairs.
 	 */

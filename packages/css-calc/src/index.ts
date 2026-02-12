@@ -1,6 +1,7 @@
 export type { conversionOptions, GlobalsWithStrings } from './options';
 import type { conversionOptions } from './options';
-import type { ComponentValue} from '@csstools/css-parser-algorithms';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
+export { ParseError, ParseErrorWithComponentValues, ParseErrorMessage } from './error';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { mathFunctions } from './functions/calc';
 import { patchCalcResult } from './util/patch-result';
@@ -30,7 +31,7 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 			return;
 		}
 
-		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals, options ?? {})), options);
+		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals, options ?? {}), options ?? {}), options);
 		if (calcResult !== -1) {
 			return calcResult;
 		}

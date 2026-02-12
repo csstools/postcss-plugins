@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (minor)
+
+- Add `onParseError` option to `calc()`.
+
 ### 3.0.1
 
 _February 10, 2026_
