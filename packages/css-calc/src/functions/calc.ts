@@ -232,7 +232,7 @@ function singleArgument(fnNode: FunctionNode, globals: Globals, options: convers
 		globals,
 	);
 
-	const a = solve(calc(calcWrapper(fnNode, nodes), globals, options));
+	const a = solve(calc(calcWrapper(fnNode, nodes), globals, options), options);
 	if (a === -1) {
 		return -1;
 	}
@@ -283,12 +283,12 @@ function twoCommaSeparatedArguments(fnNode: FunctionNode, globals: Globals, opti
 		}
 	}
 
-	const a = solve(calc(calcWrapper(fnNode, aValue), globals, options));
+	const a = solve(calc(calcWrapper(fnNode, aValue), globals, options), options);
 	if (a === -1) {
 		return -1;
 	}
 
-	const b = solve(calc(calcWrapper(fnNode, bValue), globals, options));
+	const b = solve(calc(calcWrapper(fnNode, bValue), globals, options), options);
 	if (b === -1) {
 		return -1;
 	}
@@ -334,7 +334,7 @@ function variadicArguments(fnNode: FunctionNode, values: Array<ComponentValue>, 
 				return -1;
 			}
 
-			const solvedChunk = solve(calc(calcWrapper(fnNode, chunks[i]), globals, options));
+			const solvedChunk = solve(calc(calcWrapper(fnNode, chunks[i]), globals, options), options);
 			if (solvedChunk === -1) {
 				return -1;
 			}
@@ -389,21 +389,21 @@ function clamp(clampNode: FunctionNode, globals: Globals, options: conversionOpt
 		return calc(calcWrapper(clampNode, centralValue), globals, options);
 	}
 
-	const central = solve(calc(calcWrapper(clampNode, centralValue), globals, options));
+	const central = solve(calc(calcWrapper(clampNode, centralValue), globals, options), options);
 	if (central === -1) {
 		return -1;
 	}
 
 	{
 		if (minimumIsNone) {
-			const maximum = solve(calc(calcWrapper(clampNode, maximumValue), globals, options));
+			const maximum = solve(calc(calcWrapper(clampNode, maximumValue), globals, options), options);
 			if (maximum === -1) {
 				return -1;
 			}
 
 			return solveMin(minWrapper(clampNode, central, maximum), [central, maximum], options);
 		} else if (maximumIsNone) {
-			const minimum = solve(calc(calcWrapper(clampNode, minimumValue), globals, options));
+			const minimum = solve(calc(calcWrapper(clampNode, minimumValue), globals, options), options);
 			if (minimum === -1) {
 				return -1;
 			}
@@ -412,12 +412,12 @@ function clamp(clampNode: FunctionNode, globals: Globals, options: conversionOpt
 		}
 	}
 
-	const minimum = solve(calc(calcWrapper(clampNode, minimumValue), globals, options));
+	const minimum = solve(calc(calcWrapper(clampNode, minimumValue), globals, options), options);
 	if (minimum === -1) {
 		return -1;
 	}
 
-	const maximum = solve(calc(calcWrapper(clampNode, maximumValue), globals, options));
+	const maximum = solve(calc(calcWrapper(clampNode, maximumValue), globals, options), options);
 	if (maximum === -1) {
 		return -1;
 	}
@@ -487,7 +487,7 @@ function round(roundNode: FunctionNode, globals: Globals, options: conversionOpt
 		}
 	}
 
-	const a = solve(calc(calcWrapper(roundNode, aValue), globals, options));
+	const a = solve(calc(calcWrapper(roundNode, aValue), globals, options), options);
 	if (a === -1) {
 		return -1;
 	}
@@ -500,7 +500,7 @@ function round(roundNode: FunctionNode, globals: Globals, options: conversionOpt
 		);
 	}
 
-	const b = solve(calc(calcWrapper(roundNode, bValue), globals, options));
+	const b = solve(calc(calcWrapper(roundNode, bValue), globals, options), options);
 	if (b === -1) {
 		return -1;
 	}
@@ -661,7 +661,7 @@ function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentVal
 				return -1;
 			}
 
-			const fixedNumber = solve(calc(calcWrapper(fnNode, [nextNode]), globals, options));
+			const fixedNumber = solve(calc(calcWrapper(fnNode, [nextNode]), globals, options), options);
 			if (fixedNumber === -1) {
 				return -1;
 			}

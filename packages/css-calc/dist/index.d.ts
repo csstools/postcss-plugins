@@ -1,4 +1,4 @@
-import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 import type { TokenDimension } from '@csstools/css-tokenizer';
 import type { TokenNumber } from '@csstools/css-tokenizer';
 import type { TokenPercentage } from '@csstools/css-tokenizer';
@@ -8,6 +8,14 @@ export declare function calc(css: string, options?: conversionOptions): string;
 export declare function calcFromComponentValues(componentValuesList: Array<Array<ComponentValue>>, options?: conversionOptions): Array<Array<ComponentValue>>;
 
 export declare type conversionOptions = {
+    /**
+     * If a calc expression can not be solved the parse error might be reported through this callback.
+     * Not all cases are covered. Open an issue if you need specific errors reported.
+     *
+     * Values are recursively visited and at each nesting level an attempt is made to solve the expression.
+     * Errors can be reported multiple times as a result of this.
+     */
+    onParseError?: (error: ParseError) => void;
     /**
      * Pass global values as a map of key value pairs.
      */
@@ -67,5 +75,27 @@ export declare type conversionOptions = {
 export declare type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
 
 export declare const mathFunctionNames: Set<string>;
+
+/**
+ * Any errors are reported through the `onParseError` callback.
+ */
+export declare class ParseError extends Error {
+    /** The index of the start character of the current token. */
+    sourceStart: number;
+    /** The index of the end character of the current token. */
+    sourceEnd: number;
+    constructor(message: string, sourceStart: number, sourceEnd: number);
+}
+
+export declare const ParseErrorMessage: {
+    UnexpectedAdditionOfDimensionOrPercentageWithNumber: string;
+    UnexpectedSubtractionOfDimensionOrPercentageWithNumber: string;
+};
+
+export declare class ParseErrorWithComponentValues extends ParseError {
+    /** The associated component values. */
+    componentValues: Array<ComponentValue>;
+    constructor(message: string, componentValues: Array<ComponentValue>);
+}
 
 export { }
