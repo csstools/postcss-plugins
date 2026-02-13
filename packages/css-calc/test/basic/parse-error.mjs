@@ -189,3 +189,28 @@ test('calc(2px + var(--foo))', () => {
 		[],
 	);
 });
+
+test('calc(2 + (2px + 3px))', () => {
+	let parseErrors = [];
+
+	calc('calc(2 + (2px + 3px))', {
+		onParseError: (err) => {
+			parseErrors.push({
+				message: err.message,
+				start: err.sourceStart,
+				end: err.sourceEnd,
+			});
+		},
+	});
+
+	assert.deepStrictEqual(
+		parseErrors,
+		[
+			{
+				message: ParseErrorMessage.UnexpectedAdditionOfDimensionOrPercentageWithNumber,
+				start: 5,
+				end: 18,
+			},
+		],
+	);
+});

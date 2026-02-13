@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Fix missing whitespace between components after solving calc expressions (e.g. `calc(10px)calc(20px)` now serializes as `10px 20px`)
+
 ### 3.1.0
 
 _February 12, 2026_
