@@ -24,8 +24,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
-		"syntax-m": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
+		"syntax-a": "auto | <overflow-position>? [ normal | <self-position> ] | stretch | <baseline-position> | anchor-center",
+		"syntax-m": "auto | <overflow-position>? [ normal | <self-position> ] | stretch | <baseline-position> | anchor-center",
 		"tests": {
 			"passing": [
 				{
@@ -68,6 +68,28 @@
 		"syntax-b": "initial | inherit | unset | revert | revert-layer",
 		"syntax-a": "initial | inherit | unset | revert | revert-layer | revert-rule",
 		"syntax-m": " | revert-rule",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"anchor-name": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "none | <dashed-ident>#",
+		"syntax-a": "none | <anchor-name>#",
+		"syntax-m": "none | <anchor-name>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"anchor-scope": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "none | all | <dashed-ident>#",
+		"syntax-a": "none | all | <anchor-name>#",
+		"syntax-m": "none | all | <anchor-name>#",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1918,8 +1940,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1929,8 +1951,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1951,8 +1973,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1962,8 +1984,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1984,8 +2006,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1995,8 +2017,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2025,6 +2047,17 @@
 					"value": "foo"
 				}
 			]
+		}
+	},
+	"column-rule-visibility-items": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "all | around | between",
+		"syntax-m": "all | around | between",
+		"tests": {
+			"passing": [],
+			"failing": []
 		}
 	},
 	"column-rule-width": {
@@ -3371,72 +3404,6 @@
 			"failing": []
 		}
 	},
-	"item-cross": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse",
-		"syntax-m": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"item-direction": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "auto | row | column | row-reverse | column-reverse",
-		"syntax-m": "auto | row | column | row-reverse | column-reverse",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"item-flow": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>",
-		"syntax-m": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"item-pack": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "normal | dense || balance",
-		"syntax-m": "normal | dense || balance",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"item-track": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "auto | row | column | row-reverse | column-reverse",
-		"syntax-m": "auto | row | column | row-reverse | column-reverse",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"item-wrap": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse",
-		"syntax-m": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"justify-items": {
 		"type": "modified",
 		"comment": "",
@@ -3459,8 +3426,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
-		"syntax-m": " | anchor-center",
+		"syntax-a": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center",
+		"syntax-m": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4551,8 +4518,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <anchor-name>",
-		"syntax-a": "none | auto | <anchor-name>",
-		"syntax-m": "none | auto | <anchor-name>",
+		"syntax-a": "normal | none | auto | <anchor-name>",
+		"syntax-m": "normal | none | auto | <anchor-name>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4739,8 +4706,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4750,8 +4717,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4772,8 +4739,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4783,8 +4750,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4805,8 +4772,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4816,8 +4783,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
-		"syntax-m": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
+		"syntax-m": "<length-percentage>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4829,6 +4796,17 @@
 		"syntax-b": "",
 		"syntax-a": "<line-style-list> | <auto-line-style-list>",
 		"syntax-m": "<line-style-list> | <auto-line-style-list>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"row-rule-visibility-items": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "all | around | between",
+		"syntax-m": "all | around | between",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4972,6 +4950,17 @@
 		"syntax-b": "",
 		"syntax-a": "<'column-rule-style'>",
 		"syntax-m": "<'column-rule-style'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"rule-visibility-items": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-visibility-items'>",
+		"syntax-m": "<'column-rule-visibility-items'>",
 		"tests": {
 			"passing": [],
 			"failing": []

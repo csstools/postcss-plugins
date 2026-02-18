@@ -8,7 +8,7 @@
 	"align-self": {
 		"type": "modified",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
+		"syntax-a": "auto | <overflow-position>? [ normal | <self-position> ] | stretch | <baseline-position> | anchor-center",
 		"comment": ""
 	},
 	"alignment-baseline": {
@@ -21,6 +21,18 @@
 		"type": "modified",
 		"syntax-b": "initial | inherit | unset | revert | revert-layer",
 		"syntax-a": "initial | inherit | unset | revert | revert-layer | revert-rule",
+		"comment": ""
+	},
+	"anchor-name": {
+		"type": "modified",
+		"syntax-b": "none | <dashed-ident>#",
+		"syntax-a": "none | <anchor-name>#",
+		"comment": ""
+	},
+	"anchor-scope": {
+		"type": "modified",
+		"syntax-b": "none | all | <dashed-ident>#",
+		"syntax-a": "none | all | <anchor-name>#",
 		"comment": ""
 	},
 	"animation-duration": {
@@ -710,13 +722,13 @@
 	"column-rule-edge-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"column-rule-edge-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"column-rule-inset": {
@@ -728,13 +740,13 @@
 	"column-rule-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"column-rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"column-rule-interior-inset": {
@@ -746,19 +758,25 @@
 	"column-rule-interior-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"column-rule-interior-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"column-rule-style": {
 		"type": "modified",
 		"syntax-b": "<'border-style'>",
 		"syntax-a": "<line-style-list> | <auto-line-style-list>",
+		"comment": ""
+	},
+	"column-rule-visibility-items": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "all | around | between",
 		"comment": ""
 	},
 	"column-rule-width": {
@@ -1463,42 +1481,6 @@
 		"syntax-a": "<isolation-mode>",
 		"comment": ""
 	},
-	"item-cross": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse",
-		"comment": ""
-	},
-	"item-direction": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | row | column | row-reverse | column-reverse",
-		"comment": ""
-	},
-	"item-flow": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>",
-		"comment": ""
-	},
-	"item-pack": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | dense || balance",
-		"comment": ""
-	},
-	"item-track": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | row | column | row-reverse | column-reverse",
-		"comment": ""
-	},
-	"item-wrap": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse",
-		"comment": ""
-	},
 	"justify-items": {
 		"type": "modified",
 		"syntax-b": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
@@ -1508,7 +1490,7 @@
 	"justify-self": {
 		"type": "modified",
 		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
-		"syntax-a": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
+		"syntax-a": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center",
 		"comment": ""
 	},
 	"left": {
@@ -2030,7 +2012,7 @@
 	"position-anchor": {
 		"type": "modified",
 		"syntax-b": "auto | <anchor-name>",
-		"syntax-a": "none | auto | <anchor-name>",
+		"syntax-a": "normal | none | auto | <anchor-name>",
 		"comment": ""
 	},
 	"position-try-fallbacks": {
@@ -2120,13 +2102,13 @@
 	"row-rule-edge-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"row-rule-edge-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"row-rule-inset": {
@@ -2138,13 +2120,13 @@
 	"row-rule-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"row-rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"row-rule-interior-inset": {
@@ -2156,19 +2138,25 @@
 	"row-rule-interior-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"row-rule-interior-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | <length-percentage>",
+		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
 	"row-rule-style": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<line-style-list> | <auto-line-style-list>",
+		"comment": ""
+	},
+	"row-rule-visibility-items": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "all | around | between",
 		"comment": ""
 	},
 	"row-rule-width": {
@@ -2247,6 +2235,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'column-rule-style'>",
+		"comment": ""
+	},
+	"rule-visibility-items": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-visibility-items'>",
 		"comment": ""
 	},
 	"rule-width": {

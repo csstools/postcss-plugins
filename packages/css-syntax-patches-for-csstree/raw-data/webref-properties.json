@@ -15,7 +15,7 @@
 		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center"
 	},
 	"align-self": {
-		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center"
+		"syntax": "auto | <overflow-position>? [ normal | <self-position> ] | stretch | <baseline-position> | anchor-center"
 	},
 	"align-tracks": {
 		"syntax": "[ normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position> ]#"
@@ -27,10 +27,10 @@
 		"syntax": "initial | inherit | unset | revert | revert-layer | revert-rule"
 	},
 	"anchor-name": {
-		"syntax": "none | <dashed-ident>#"
+		"syntax": "none | <anchor-name>#"
 	},
 	"anchor-scope": {
-		"syntax": "none | all | <dashed-ident>#"
+		"syntax": "none | all | <anchor-name>#"
 	},
 	"animation": {
 		"syntax": "<single-animation>#"
@@ -636,31 +636,34 @@
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
 	"column-rule-edge-inset-end": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-edge-inset-start": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-inset": {
 		"syntax": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?"
 	},
 	"column-rule-inset-end": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-inset-start": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-interior-inset": {
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
 	"column-rule-interior-inset-end": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-interior-inset-start": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"column-rule-style": {
 		"syntax": "<line-style-list> | <auto-line-style-list>"
+	},
+	"column-rule-visibility-items": {
+		"syntax": "all | around | between"
 	},
 	"column-rule-width": {
 		"syntax": "<line-width-list> | <auto-line-width-list>"
@@ -1313,24 +1316,6 @@
 	"isolation": {
 		"syntax": "<isolation-mode>"
 	},
-	"item-cross": {
-		"syntax": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse"
-	},
-	"item-direction": {
-		"syntax": "auto | row | column | row-reverse | column-reverse"
-	},
-	"item-flow": {
-		"syntax": "<'item-direction'> || <'item-wrap'> || <'item-pack'> || <'flow-tolerance'>"
-	},
-	"item-pack": {
-		"syntax": "normal | dense || balance"
-	},
-	"item-track": {
-		"syntax": "auto | row | column | row-reverse | column-reverse"
-	},
-	"item-wrap": {
-		"syntax": "[ auto | nowrap | wrap ] || [ normal | reverse ] | wrap-reverse"
-	},
 	"justify-content": {
 		"syntax": "normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ]"
 	},
@@ -1338,7 +1323,7 @@
 		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center"
 	},
 	"justify-self": {
-		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center"
+		"syntax": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center"
 	},
 	"justify-tracks": {
 		"syntax": "[ normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ] ]#"
@@ -1842,7 +1827,7 @@
 		"syntax": "static | relative | absolute | sticky | fixed | <running()>"
 	},
 	"position-anchor": {
-		"syntax": "none | auto | <anchor-name>"
+		"syntax": "normal | none | auto | <anchor-name>"
 	},
 	"position-area": {
 		"syntax": "none | <position-area>"
@@ -1914,31 +1899,34 @@
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
 	"row-rule-edge-inset-end": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"row-rule-edge-inset-start": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"row-rule-inset": {
 		"syntax": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?"
 	},
 	"row-rule-inset-end": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"row-rule-inset-start": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"row-rule-interior-inset": {
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
 	"row-rule-interior-inset-end": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"row-rule-interior-inset-start": {
-		"syntax": "auto | <length-percentage>"
+		"syntax": "<length-percentage>"
 	},
 	"row-rule-style": {
 		"syntax": "<line-style-list> | <auto-line-style-list>"
+	},
+	"row-rule-visibility-items": {
+		"syntax": "all | around | between"
 	},
 	"row-rule-width": {
 		"syntax": "<line-width-list> | <auto-line-width-list>"
@@ -1984,6 +1972,9 @@
 	},
 	"rule-style": {
 		"syntax": "<'column-rule-style'>"
+	},
+	"rule-visibility-items": {
+		"syntax": "<'column-rule-visibility-items'>"
 	},
 	"rule-width": {
 		"syntax": "<'column-rule-width'>"
