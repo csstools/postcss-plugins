@@ -3,7 +3,7 @@ import { selectorSpecificity, specificityOfMostSpecificListItem } from '@csstool
 import parser from 'postcss-selector-parser';
 
 function customCalc(n) {
-	let specificity = { a: 0, b: 0, c: 0 };
+	let specificity;
 
 	if (n.type === 'pseudo' && n.value === ':foo') {
 		specificity = {

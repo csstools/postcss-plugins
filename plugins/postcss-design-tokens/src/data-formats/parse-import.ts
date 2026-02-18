@@ -45,7 +45,7 @@ export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buil
 		return false;
 	}
 
-	let resolvedPath = '';
+	let resolvedPath;
 
 	try {
 		if (filePath.startsWith('node_modules://')) {
@@ -60,7 +60,9 @@ export async function tokensFromImport(root: Root, postcssHelpers: Helpers, buil
 			resolvedPath = path.resolve(path.dirname(sourceFilePath), filePath);
 		}
 	} catch (err) {
-		throw new Error(`Failed to read ${filePath} with error ${(err instanceof Error) ? err.message : err}`);
+		throw new Error(`Failed to read ${filePath} with error ${(err instanceof Error) ? err.message : err}`, {
+			cause: err
+		});
 	}
 
 	if (alreadyImported.has(resolvedPath)) {

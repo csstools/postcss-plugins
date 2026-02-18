@@ -12,4 +12,4 @@ export type CodePointReader = {
 	readCodePoint(): number | undefined
 	unreadCodePoint(n?: number): void
 	resetRepresentation(): void
-}
+};

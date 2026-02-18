@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Media
 
+### Unreleased (patch)
+
+- Fix importance of custom media in anonymous cascade layers.
+
 ### 12.0.0
 
 _January 14, 2026_

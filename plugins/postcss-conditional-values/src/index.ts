@@ -3,7 +3,7 @@ import valuesParser from 'postcss-value-parser';
 
 export type pluginOptions = {
 	functionName: string;
-}
+};
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const pluginOptions = Object.assign({ functionName: 'csstools-if' }, opts);
@@ -61,7 +61,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								}
 
 								falsyValueBuffer.push(node);
-								return;
 							});
 
 							return false;

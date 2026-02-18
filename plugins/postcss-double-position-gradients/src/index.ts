@@ -129,8 +129,6 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 						);
 					}
 				});
-
-				return;
 			});
 
 			const modifiedValue = valueAST.toString();

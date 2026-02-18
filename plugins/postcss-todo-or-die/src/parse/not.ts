@@ -8,7 +8,7 @@ type NotCondition = {
 	a: SubjectToken
 	b: SubjectToken
 	operator: '<' | '>' | '='
-}
+};
 
 export function parseNotCondition(componentValue: FunctionNode): NotCondition | false {
 	const parsed = parseIfCondition(componentValue);

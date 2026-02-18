@@ -127,12 +127,12 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 type ColorMixEntry = {
 	color: ColorData,
 	percentage: number
-}
+};
 
 type ColorMixItems = {
 	colors: Array<ColorMixEntry>,
 	alphaMultiplier: number,
-}
+};
 
 function colorMixComponents(componentValues: Array<ComponentValue>, colorParser: ColorParser): ColorMixItems | false {
 	const colors: Array<{ color: ColorData, percentage: number | false }> = [];
@@ -226,7 +226,7 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 		const p = colors[i].percentage;
 		if (p === false) {
 			pOmitted++;
-			continue
+			continue;
 		}
 
 		if (p < 0 || p > 100) {
@@ -298,7 +298,7 @@ function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): 
 	const colors = items.colors.slice();
 	colors.reverse();
 
-	let outputColorNotation: ColorNotation = ColorNotation.RGB;
+	let outputColorNotation: ColorNotation;
 	switch (colorSpace) {
 		case 'srgb':
 			outputColorNotation = ColorNotation.RGB;
@@ -369,12 +369,12 @@ function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): 
 		colors.push({
 			color: mixed_color,
 			percentage: a_color.percentage + b_color.percentage
-		})
+		});
 	}
 
 	const colorData = colors[0]?.color;
 	if (!colorData) {
-		return false
+		return false;
 	}
 
 	if (items.colors.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
@@ -382,7 +382,7 @@ function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): 
 	}
 
 	if (typeof colorData.alpha === 'number') {
-		colorData.alpha = colorData.alpha * items.alphaMultiplier
+		colorData.alpha = colorData.alpha * items.alphaMultiplier;
 	} else {
 		return false;
 	}
@@ -455,7 +455,7 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 	const colors = items.colors.slice();
 	colors.reverse();
 
-	let outputColorNotation: ColorNotation = ColorNotation.HSL;
+	let outputColorNotation: ColorNotation;
 	switch (colorSpace) {
 		case 'hsl':
 			outputColorNotation = ColorNotation.HSL;
@@ -504,12 +504,12 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 		colors.push({
 			color: mixed_color,
 			percentage: a_color.percentage + b_color.percentage
-		})
+		});
 	}
 
 	const colorData = colors[0]?.color;
 	if (!colorData) {
-		return false
+		return false;
 	}
 
 	if (items.colors.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
@@ -517,7 +517,7 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 	}
 
 	if (typeof colorData.alpha === 'number') {
-		colorData.alpha = colorData.alpha * items.alphaMultiplier
+		colorData.alpha = colorData.alpha * items.alphaMultiplier;
 	} else {
 		return false;
 	}

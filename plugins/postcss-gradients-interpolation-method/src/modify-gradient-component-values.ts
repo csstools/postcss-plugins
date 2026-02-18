@@ -19,13 +19,13 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 
 	let colorSpaceName = 'srgb';
 
-	let inKeyword: TokenNode | null = null;
+	let inKeyword: TokenNode | null;
 	let colorSpace: TokenNode | null = null;
 	let hueInterpolationMethod: TokenNode | null = null;
 	let hueKeyword: TokenNode | null = null;
-	let firstComma: TokenNode | null = null;
+	let firstComma: TokenNode | null;
 
-	let remainder: Array<ComponentValue> = [];
+	let remainder: Array<ComponentValue>;
 
 	{
 		let i = 0;

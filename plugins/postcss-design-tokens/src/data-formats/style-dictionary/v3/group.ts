@@ -5,7 +5,7 @@ import { extractStyleDictionaryV3Token } from './value';
 
 export type StyleDictionaryV3TokenGroup = {
 	[key: string]: StyleDictionaryV3TokenGroup | StyleDictionaryV3TokenValue;
-}
+};
 
 function isTokenGroup(node: unknown): node is StyleDictionaryV3TokenGroup {
 	return typeof node === 'object' && node !== null && typeof (node as Record<string, unknown>)['value'] === 'undefined';

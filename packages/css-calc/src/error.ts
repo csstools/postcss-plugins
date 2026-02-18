@@ -32,4 +32,4 @@ export class ParseErrorWithComponentValues extends ParseError {
 export const ParseErrorMessage = {
 	UnexpectedAdditionOfDimensionOrPercentageWithNumber: 'Unexpected addition of a dimension or percentage with a number.',
 	UnexpectedSubtractionOfDimensionOrPercentageWithNumber: 'Unexpected subtraction of a dimension or percentage with a number.'
-}
+};

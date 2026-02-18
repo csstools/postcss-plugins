@@ -91,8 +91,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							continue;
 						}
 					}
-
-					return;
 				},
 			));
 

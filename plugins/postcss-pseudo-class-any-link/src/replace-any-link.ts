@@ -113,7 +113,7 @@ function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parse
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);
-			if (i == max) {
+			if (i === max) {
 				r.push(a);
 			} else {
 				helper(a, i + 1);
@@ -204,5 +204,5 @@ function insertNode(container: parser.Container | undefined, aroundNode: parser.
 	}
 
 	container.insertAfter(container.at(start), node);
-	return;
+	
 }

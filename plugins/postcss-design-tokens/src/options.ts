@@ -11,7 +11,7 @@ export type pluginOptions = {
 		rootFontSize?: number
 	},
 	valueFunctionName: string,
-}
+};
 
 export type parsedPluginOptions = {
 	importAtRuleName: string,
@@ -20,7 +20,7 @@ export type parsedPluginOptions = {
 		rootFontSize: number
 	},
 	valueFunctionName: string,
-}
+};
 
 export function parsePluginOptions(opts?: pluginOptions): parsedPluginOptions {
 	const options: parsedPluginOptions = {

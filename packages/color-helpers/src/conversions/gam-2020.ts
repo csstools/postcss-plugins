@@ -12,7 +12,7 @@ export function gam_2020(RGB: Color): Color {
 		gam_2020_channel(RGB[0]),
 		gam_2020_channel(RGB[1]),
 		gam_2020_channel(RGB[2]),
-	]
+	];
 }
 
 function gam_2020_channel(val: number): number {

@@ -34,8 +34,6 @@ export class Reader implements CodePointReader {
 	unreadCodePoint(n = 1): void {
 		this.cursor = this.cursor - n;
 		this.representationEnd = this.cursor - 1;
-
-		return;
 	}
 
 	resetRepresentation(): void {

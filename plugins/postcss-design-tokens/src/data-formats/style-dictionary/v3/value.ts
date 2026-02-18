@@ -25,7 +25,7 @@ export type StyleDictionaryV3TokenValue = {
 		// If the token is from a file defined in the source array as opposed to include in the configuration.
 		isSource: boolean
 	}
-}
+};
 
 export function extractStyleDictionaryV3Token(node: Record<string, unknown>, key: string, path: Array<string>, filePath: string): StyleDictionaryV3TokenValue {
 	if (typeof node['value'] === 'undefined') {

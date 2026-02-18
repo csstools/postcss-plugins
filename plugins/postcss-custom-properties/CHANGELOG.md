@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Fix importance of custom media in anonymous cascade layers.
+
 ### 15.0.0
 
 _January 14, 2026_

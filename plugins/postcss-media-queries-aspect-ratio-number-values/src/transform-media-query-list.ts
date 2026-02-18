@@ -57,8 +57,6 @@ export function transformMediaQueryList(params: string, preserve: boolean): stri
 					const value = node.valueTwo;
 					transformMediaFeatureValue(value);
 				}
-
-				return;
 			}
 		});
 

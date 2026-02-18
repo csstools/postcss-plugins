@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (patch)
+
+- Updated: gamut mapping algorithm
+
 ### 6.0.1
 
 _January 25, 2026_

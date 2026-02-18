@@ -35,7 +35,7 @@ import type { conversionOptions } from '../options';
 import type { RandomValueSharing} from './random';
 import { solveRandom } from './random';
 
-type mathFunction = (node: FunctionNode, globals: Globals, options: conversionOptions) => Calculation | -1
+type mathFunction = (node: FunctionNode, globals: Globals, options: conversionOptions) => Calculation | -1;
 
 export const mathFunctions: Map<string, mathFunction> = new Map([
 	['abs', abs],
@@ -597,7 +597,7 @@ function random(randomNode: FunctionNode, globals: Globals, options: conversionO
 	const [a, b, c] = randomArguments;
 
 	if (!a || !b) {
-		return -1
+		return -1;
 	}
 
 	return solveRandom(

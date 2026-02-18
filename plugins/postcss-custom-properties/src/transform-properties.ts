@@ -26,7 +26,7 @@ export function transformProperties(decl: Declaration, customProperties: Map<str
 		const clone = decl.cloneBefore({ value });
 
 		if (clone.raws?.value?.raw) {
-			clone.raws.value.raw = ''
+			clone.raws.value.raw = '';
 		}
 
 		if (!opts?.preserve) {

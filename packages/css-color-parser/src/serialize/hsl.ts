@@ -9,7 +9,7 @@ import { toPrecision } from './to-precision';
 
 export function serializeHSL(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
-	let hsl = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
+	let hsl;
 
 	if (gamutMapping) {
 		hsl = XYZ_D50_to_HSL(sRGB_to_XYZ_D50(

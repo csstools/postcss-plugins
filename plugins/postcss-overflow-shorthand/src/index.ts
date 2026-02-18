@@ -24,8 +24,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let xValue = '';
-			let yValue = '';
+			let xValue: string;
+			let yValue: string;
 
 			const originalValue = decl.value;
 			try {

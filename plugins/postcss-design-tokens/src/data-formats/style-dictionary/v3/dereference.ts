@@ -151,18 +151,18 @@ type ValuePart = ValueReference | ValueNonReference | ValueResolved;
 type ValueReference = {
 	type: 'value-reference',
 	raw: string,
-}
+};
 
 type ValueResolved = {
 	type: 'value-resolved',
 	raw: string,
 	value: string,
-}
+};
 
 type ValueNonReference = {
 	type: 'value-non-reference',
 	value: string,
-}
+};
 
 function parseReferences(valueWithReferences: unknown): Array<ValuePart> {
 	if (typeof valueWithReferences !== 'string') {

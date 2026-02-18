@@ -18,7 +18,7 @@ import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
  */
 export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNode {
 	color.channels = convertPowerlessComponentsToZeroValuesForDisplay(color.channels, color.colorNotation);
-	let srgb = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
+	let srgb;
 
 	if (gamutMapping) {
 		srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);

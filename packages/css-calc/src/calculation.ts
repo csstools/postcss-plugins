@@ -6,7 +6,7 @@ import { isTokenNode } from '@csstools/css-parser-algorithms';
 export type Calculation = {
 	inputs: Array<Calculation|TokenNode>;
 	operation: Operation;
-}
+};
 
 export function isCalculation(x: unknown): x is Calculation {
 	return !!(x) && (typeof x === 'object') && ('inputs' in x) && Array.isArray(x.inputs) && ('operation' in x);

@@ -22,7 +22,6 @@ export function transformTextAlign(
 
 				if (valueCandidate === DirectionValue.Start) {
 					node.value = start;
-					return;
 				}
 			}
 		});

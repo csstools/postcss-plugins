@@ -17,7 +17,7 @@ export enum MediaFeatureEQ {
 	EQ = '=',
 }
 
-export type MediaFeatureComparison = MediaFeatureLT | MediaFeatureGT | MediaFeatureEQ
+export type MediaFeatureComparison = MediaFeatureLT | MediaFeatureGT | MediaFeatureEQ;
 
 export function matchesComparison(componentValues: Array<ComponentValue>): false | [number, number] {
 	let firstTokenIndex = -1;

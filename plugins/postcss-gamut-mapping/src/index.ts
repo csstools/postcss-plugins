@@ -18,7 +18,7 @@ type State = {
 		media: string | undefined,
 	},
 	lastConditionalRule: Container | undefined,
-}
+};
 
 type Modification = {
 	isRec2020: boolean,
@@ -26,7 +26,7 @@ type Modification = {
 	modifiedValue: string,
 	hasFallback: boolean,
 	item: Declaration,
-}
+};
 
 const creator: PluginCreator<pluginOptions> = () => {
 

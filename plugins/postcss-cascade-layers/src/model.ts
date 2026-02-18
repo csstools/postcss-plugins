@@ -45,8 +45,8 @@ export class Model {
 		return name;
 	}
 
-	addLayerParams(key: string, parts?: string): void
-	addLayerParams(key: string, parts: Array<string>): void
+	addLayerParams(key: string, parts?: string): void;
+	addLayerParams(key: string, parts: Array<string>): void;
 	addLayerParams(key: string, parts: Array<string> | string | undefined): void {
 		if (!parts) {
 			this.layerParamsParsed.set(key, [key]);
@@ -60,8 +60,8 @@ export class Model {
 		this.layerParamsParsed.set(key, parts);
 	}
 
-	addLayerNameParts(parts: string): void
-	addLayerNameParts(parts: Array<string>): void
+	addLayerNameParts(parts: string): void;
+	addLayerNameParts(parts: Array<string>): void;
 	addLayerNameParts(parts: Array<string> | string): void {
 		if (typeof parts === 'string') {
 			this.layerNameParts.set(parts, [parts]);

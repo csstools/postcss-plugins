@@ -7,7 +7,7 @@ export function parse(str: string): Array<Array<ComponentValue>> {
 		tokenize({ css: str })
 	);
 
-	const parts: Array<Array<ComponentValue>> = []
+	const parts: Array<Array<ComponentValue>> = [];
 	let lastSliceIndex = 0;
 
 	for (let i = (componentValues.length - 1); i >= 0; i--) {
