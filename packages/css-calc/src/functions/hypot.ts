@@ -9,7 +9,7 @@ import type { conversionOptions } from '../options';
 
 export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<ComponentValue>, options: conversionOptions): Calculation | -1 {
 	if (!solvedNodes.every(isTokenNode)) {
-		return -1
+		return -1;
 	}
 
 	const firstSolvedNode = solvedNodes[0];

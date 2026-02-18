@@ -135,7 +135,7 @@ export function XYZ_D50_to_HWB(x: Color): Color {
 	const srgb = gam_sRGB(y);
 
 	const white = Math.min(srgb[0], srgb[1], srgb[2]);
-	const black = 1 - Math.max(srgb[0], srgb[1], srgb[2])
+	const black = 1 - Math.max(srgb[0], srgb[1], srgb[2]);
 
 	let hue = sRGB_to_Hue(srgb);
 	const epsilon = 1 / 100_000;  // account for multiply by 100

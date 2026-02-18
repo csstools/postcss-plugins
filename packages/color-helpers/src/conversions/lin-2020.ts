@@ -13,7 +13,7 @@ export function lin_2020(RGB: Color): Color {
 		lin_2020_channel(RGB[0]),
 		lin_2020_channel(RGB[1]),
 		lin_2020_channel(RGB[2]),
-	]
+	];
 }
 
 function lin_2020_channel(val: number): number {

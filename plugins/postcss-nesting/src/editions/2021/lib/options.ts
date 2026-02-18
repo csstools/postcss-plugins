@@ -1,1 +1,1 @@
-export type options = { noIsPseudoSelector: boolean, silenceAtNestWarning: boolean }
+export type options = { noIsPseudoSelector: boolean, silenceAtNestWarning: boolean };

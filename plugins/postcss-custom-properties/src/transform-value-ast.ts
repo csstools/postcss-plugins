@@ -71,13 +71,12 @@ export default function transformValueAST(root: valuesParser.ParsedValue, custom
 }
 
 function walk(nodes: Array<Node>, cb: valuesParser.WalkCallback): void {
-	let i, max, node, result;
+	let i, max, node;
 
 	for (i = 0, max = nodes.length; i < max; i += 1) {
 		node = nodes[i];
 
 		if (
-			result !== false &&
 			node.type === 'function' &&
 			Array.isArray(node.nodes)
 		) {

@@ -44,11 +44,11 @@
 		"@csstools/css-tokenizer": "^4.0.0"
 	},
 	"peerDependencies": {
-		"stylelint": "^17.1.0"
+		"stylelint": "^17.1.1"
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "^2.0.0",
-		"stylelint": "^17.1.0",
+		"stylelint": "^17.1.1",
 		"stylelint-test-rule-node": "^1.0.0"
 	},
 	"scripts": {

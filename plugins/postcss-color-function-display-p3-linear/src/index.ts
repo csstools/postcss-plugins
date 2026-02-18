@@ -7,7 +7,7 @@ import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceCompon
 
 type basePluginOptions = {
 	preserve: boolean,
-}
+};
 
 const DISPLAY_P3_LINEAR_REGEX = /\bdisplay-p3-linear\b/i;
 const COLOR_NAME_REGEX = /^color$/i;

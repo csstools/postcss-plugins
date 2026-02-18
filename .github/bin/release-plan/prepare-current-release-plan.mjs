@@ -41,7 +41,7 @@ export async function prepareCurrentReleasePlan() {
 		let changelog = (await fs.readFile(path.join(workspace.path, 'CHANGELOG.md'))).toString();
 		if (changelog.includes('Unreleased')) {
 
-			let increment = '';
+			let increment;
 			if (changelog.includes('Unreleased (patch)')) {
 				increment = 'patch';
 			} else if (changelog.includes('Unreleased (minor)')) {

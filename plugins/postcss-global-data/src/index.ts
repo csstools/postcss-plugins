@@ -73,7 +73,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					},
 				};
 			},
-		}
+		};
 	}
 
 	const importedCSS = new WeakSet<ChildNode>();
@@ -115,7 +115,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				},
 			}
 		]
-	}
+	};
 };
 
 creator.postcss = true;

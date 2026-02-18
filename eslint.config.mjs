@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import stylistic from '@stylistic/eslint-plugin';
 
 export default [
 	js.configs.recommended,
@@ -38,6 +39,10 @@ export default [
 			sourceType: 'module',
 		},
 
+		plugins: {
+			'@stylistic': stylistic,
+		},
+
 		rules: {
 			'no-console': ['error'],
 			quotes: ['error', 'single'],
@@ -58,6 +63,10 @@ export default [
 			}],
 
 			'no-duplicate-imports': 'error',
+
+			'eqeqeq': 'error',
+			'no-useless-return': 'error',
+			'@stylistic/semi': ['error', 'always'],
 		},
 	},
 	{
@@ -75,10 +84,17 @@ export default [
 			sourceType: 'module',
 		},
 
+		plugins: {
+			'@stylistic': stylistic,
+		},
+
 		rules: {
 			'no-console': ['error'],
 			'no-unused-vars': ['error', { 'caughtErrorsIgnorePattern': '_' }],
 			'no-constant-condition': 'off',
+			'eqeqeq': 'error',
+			'no-useless-return': 'error',
+			'@stylistic/semi': ['error', 'always'],
 		},
 	},
 	{
@@ -94,9 +110,17 @@ export default [
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
+
+		plugins: {
+			'@stylistic': stylistic,
+		},
+
 		rules: {
 			'no-console': ['error'],
 			'no-shadow': 'off',
+			'eqeqeq': 'error',
+			'no-useless-return': 'error',
+			'@stylistic/semi': ['error', 'always'],
 			'@typescript-eslint/no-shadow': 'error',
 
 			'@typescript-eslint/array-type': ['error', {

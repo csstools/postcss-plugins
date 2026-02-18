@@ -187,7 +187,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 						node.remove();
 
-						return;
+						break;
 
 					default:
 						break;

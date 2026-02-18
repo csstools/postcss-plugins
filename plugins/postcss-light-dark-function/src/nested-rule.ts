@@ -15,7 +15,7 @@ export function newNestedRuleWithSupportsNot(
 		return {
 			inner: r,
 			outer: r
-		}
+		};
 	}
 
 	const supports = atRule({
@@ -29,5 +29,5 @@ export function newNestedRuleWithSupportsNot(
 	return {
 		inner: r,
 		outer: supports
-	}
+	};
 }

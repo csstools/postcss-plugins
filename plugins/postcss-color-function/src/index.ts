@@ -7,7 +7,7 @@ import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceCompon
 
 type basePluginOptions = {
 	preserve: boolean,
-}
+};
 
 const COLOR_FUNCTION_REGEX = /\bcolor\(/i;
 const COLOR_NAME_REGEX = /^color$/i;

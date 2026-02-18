@@ -49,7 +49,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					let transformedParams: Array<{ replaceWith: string, encapsulateWith?: Array<string> }> = [];
+					let transformedParams: Array<{ replaceWith: string, encapsulateWith?: Array<string> }>;
 
 					try {
 						transformedParams = transformAtMediaListTokens(atRule.params, customMedia);
@@ -102,7 +102,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						const clone = atRule.clone({ params: transformed.replaceWith });
 						clone.parent = undefined;
 
-						let encapsulate = atRule.clone({ params: transformed.encapsulateWith[0], nodes: [] })
+						let encapsulate = atRule.clone({ params: transformed.encapsulateWith[0], nodes: [] });
 						encapsulate.parent = undefined;
 
 						encapsulate.append(clone);
@@ -121,7 +121,6 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					if (!preserve) {
 						atRule.remove();
-						return;
 					}
 				},
 			};

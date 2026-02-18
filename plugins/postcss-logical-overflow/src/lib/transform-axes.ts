@@ -10,7 +10,7 @@ export function transformAxes(declaration: Declaration, isHorizontal: boolean): 
 	const value = declaration.value;
 
 	if (declaration.parent?.some((x) => {
-		return x.type == 'decl' && x.prop === prop && x.value === value;
+		return x.type === 'decl' && x.prop === prop && x.value === value;
 	})) {
 		return;
 	}

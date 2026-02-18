@@ -7,7 +7,7 @@ import type { options } from './options.js';
 import cleanupParent from '../../shared/lib/cleanup-parent.js';
 
 export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options): void {
-	let selectors: Array<string> = [];
+	let selectors: Array<string>;
 
 	try {
 		selectors = mergeSelectors(parent.selectors, comma(node.params), opts);

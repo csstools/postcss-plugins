@@ -16,7 +16,7 @@ const predicate = {
 	test: (str: string): boolean => {
 		return str.includes('content:') && str.includes('/');
 	}
-}
+};
 
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {

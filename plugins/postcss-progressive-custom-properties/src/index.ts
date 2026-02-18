@@ -13,7 +13,7 @@ type State = {
 		support: string | undefined,
 	},
 	lastConditionalRule: Container | undefined,
-}
+};
 
 const creator: PluginCreator<null> = () => {
 	return {

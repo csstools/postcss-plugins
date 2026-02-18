@@ -73,7 +73,7 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 	let b = 0; /* Class, Attribute, and Pseudo-class selectors */
 	let c = 0; /* Type selectors and Pseudo-elements */
 
-	if (node.type == 'universal') {
+	if (node.type === 'universal') {
 		return {
 			a: 0,
 			b: 0,

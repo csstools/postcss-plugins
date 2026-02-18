@@ -66,7 +66,7 @@ export type Options = {
 	 * If this is something you do not want to do, you can set this to `true` to skip this check.
 	 */
 	skipPackageNameCheck?: boolean,
-}
+};
 
 /**
  * Create a test suite for a PostCSS plugin.
@@ -351,8 +351,6 @@ export const atRuleClonerPlugin = {
 				if (atRule.name === 'to-clone') {
 					transformedNodes.add(atRule);
 					atRule.cloneBefore({ name: 'cloned' });
-
-					return;
 				}
 			},
 		};

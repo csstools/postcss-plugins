@@ -22,7 +22,6 @@ export function colorSchemes(value: string): [boolean, boolean] {
 
 		if (DARK_REGEX.test(token[4].value)) {
 			dark = true;
-			return;
 		}
 	});
 

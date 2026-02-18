@@ -49,7 +49,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}) as Array<Declaration>;
 
 					if (siblingTextDecorationProperties.some((node) => {
-						return convertedValues.get(decl.value) === node.value
+						return convertedValues.get(decl.value) === node.value;
 					})) {
 						return;
 					}
@@ -197,7 +197,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					convertedValues.set(decl.value, nonShortHandValue);
 
 					if (siblingTextDecorationProperties.some((node) => {
-						return convertedValues.get(decl.value) === node.value
+						return convertedValues.get(decl.value) === node.value;
 					})) {
 						return;
 					}

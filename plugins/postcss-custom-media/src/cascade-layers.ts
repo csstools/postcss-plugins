@@ -9,7 +9,7 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 	const referencesForLayerNames: Map<Node, LayerName> = new Map();
 
 	const layers: Array<LayerName> = [];
-	const anonLayerCounter = 1;
+	let anonLayerCounter = 1;
 
 	root.walkAtRules((node) => {
 		if (node.name.toLowerCase() !== 'layer') {
@@ -38,7 +38,7 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 
 		let layerParams;
 		if (node.nodes) { // @layer { .foo {} }
-			layerParams = normalizeLayerName(node.params, anonLayerCounter);
+			layerParams = normalizeLayerName(node.params, anonLayerCounter++);
 		} else if (node.params.trim()) { // @layer a, b;
 			layerParams = node.params;
 		} else { // @layer;
@@ -125,5 +125,5 @@ function normalizeLayerName(layerName: string, counter: number): string {
 		return layerName;
 	}
 
-	return `csstools-anon-layer--${counter++}`;
+	return `csstools-anon-layer--${counter}`;
 }

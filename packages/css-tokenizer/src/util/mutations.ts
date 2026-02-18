@@ -45,7 +45,7 @@ export function mutateUnit(ident: TokenDimension, newUnit: string): void {
 }
 
 function serializeIdent(codePoints: Array<number>): Array<number> {
-	let remainderStartIndex = 0;
+	let remainderStartIndex: number;
 
 	if (codePoints[0] === NULL) {
 		codePoints.splice(

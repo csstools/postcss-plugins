@@ -47,10 +47,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					if (IS_LAYER_REGEX.test(node.name)) {
 						hasAnyLayer = true;
-						return;
 					}
-
-					return;
 				}
 			});
 

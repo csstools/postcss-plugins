@@ -28,11 +28,11 @@ function systemUIFamiliesAsComponentValues(existingSet: Map<string, number>, pre
 			return true;
 		}
 
-		return !existingSet.has(family)
+		return !existingSet.has(family);
 	}).map((family) => {
 		return [
 			new TokenNode([TokenType.Ident, family, -1, -1, { value: family }]),
-		]
+		];
 	});
 }
 
@@ -60,9 +60,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const originalValue = decl.value;
 
 			const tokens = tokenize({ css: originalValue });
-			const componentValuesList = parseCommaSeparatedListOfComponentValues(tokens)
+			const componentValuesList = parseCommaSeparatedListOfComponentValues(tokens);
 
-			const foundFamilies = new Map<string, number>()
+			const foundFamilies = new Map<string, number>();
 			let symstemUI_Index = -1;
 
 			TOP_LEVEL:
@@ -95,7 +95,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 				const fontFamily = fontFamilyParts.join(' ');
 				if (systemUiFamilies.includes(fontFamily)) {
-					foundFamilies.set(fontFamily, i)
+					foundFamilies.set(fontFamily, i);
 				}
 			}
 

@@ -29,7 +29,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 				atRule.cloneBefore({
 					params: stringify([params]).trim(),
 				});
-			})
+			});
 
 			atRule.remove();
 		},

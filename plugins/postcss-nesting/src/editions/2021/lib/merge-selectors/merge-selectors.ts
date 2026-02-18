@@ -8,7 +8,7 @@ import type { options } from '../options';
 export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options): Array<string> {
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
-	let fromSelectorsAST: Array<parser.Root> = [];
+	let fromSelectorsAST: Array<parser.Root>;
 
 	if (fromListHasUniformSpecificity || opts.noIsPseudoSelector) {
 		fromSelectorsAST = fromSelectors.map((selector) => {

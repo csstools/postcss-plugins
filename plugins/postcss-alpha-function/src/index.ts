@@ -8,7 +8,7 @@ import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSepar
 
 type basePluginOptions = {
 	preserve: boolean,
-}
+};
 
 const ALPHA_FUNCTION_REGEX = /\balpha\(/i;
 const ALPHA_NAME_REGEX = /^alpha$/i;

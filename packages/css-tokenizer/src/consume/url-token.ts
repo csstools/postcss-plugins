@@ -152,7 +152,7 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 				reader.representationStart,
 				reader.representationEnd,
 				undefined,
-			]
+			];
 
 			ctx.onParseError(new ParseErrorWithToken(
 				ParseErrorMessage.InvalidEscapeSequenceInURL,
