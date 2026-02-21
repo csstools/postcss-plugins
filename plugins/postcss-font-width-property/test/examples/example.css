@@ -1,0 +1,10 @@
+@font-face {
+	src: url("foo.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-width: 1% 1000%;
+}
+
+.foo {
+	font-width: 50%;
+}

@@ -233,6 +233,12 @@
       - plugins/postcss-font-format-keywords/**
       - experimental/postcss-font-format-keywords/**
 
+"plugins/postcss-font-width-property":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-font-width-property/**
+      - experimental/postcss-font-width-property/**
+
 "plugins/postcss-gamut-mapping":
   - changed-files:
     - any-glob-to-any-file:
