@@ -83,7 +83,7 @@
 		"@csstools/postcss-stepped-value-functions": "^5.0.1",
 		"@csstools/postcss-syntax-descriptor-syntax-production": "^2.0.0",
 		"@csstools/postcss-system-ui-font-family": "^2.0.0",
-		"@csstools/postcss-text-decoration-shorthand": "^5.0.2",
+		"@csstools/postcss-text-decoration-shorthand": "^5.0.3",
 		"@csstools/postcss-trigonometric-functions": "^5.0.1",
 		"@csstools/postcss-unset-value": "^5.0.0",
 		"autoprefixer": "^10.4.24",
