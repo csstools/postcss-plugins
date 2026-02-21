@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-gradient-stop-increments-experimental",
 	"description": "Increment CSS gradient stops",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
