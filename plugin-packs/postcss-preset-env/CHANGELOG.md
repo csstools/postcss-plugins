@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 11.2.0
+
+_February 21, 2026_
 
 - Added `@csstools/postcss-font-width-property` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-font-width-property#readme) for usage details.
 - Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.8.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#880-february-21-2026)
