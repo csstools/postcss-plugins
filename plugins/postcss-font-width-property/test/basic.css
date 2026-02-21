@@ -1,0 +1,30 @@
+@font-face {
+	src: url("https://mdn.github.io/shared-assets/fonts/LeagueMono-VF.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-width: 1% 1000%;
+}
+
+.foo {
+	font-width: 50%;
+}
+
+@font-face {
+	src: url("https://mdn.github.io/shared-assets/fonts/LeagueMono-VF.ttf");
+	font-family: "ignore";
+	font-style: normal;
+	font-stretch: 1% 1000%;
+	font-width: 1% 1000%;
+
+}
+
+.ignore {
+	font-stretch: 50%;
+	font-width: 50%;
+}
+
+@supports (font-width: 1%) {
+	.ignore {
+			font-width: 50%;
+		}
+}

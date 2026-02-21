@@ -93,6 +93,7 @@ body:
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
+        - PostCSS Font Width Property
         - PostCSS Gamut Mapping
         - PostCSS Gap Properties
         - PostCSS Global Data
