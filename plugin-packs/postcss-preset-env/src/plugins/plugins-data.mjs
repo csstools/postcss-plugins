@@ -125,6 +125,11 @@ export default [
 		'importName': 'postcssFontVariant',
 	},
 	{
+		'packageName': '@csstools/postcss-font-width-property',
+		'id': 'font-width-property',
+		'importName': 'postcssFontWidthProperty',
+	},
+	{
 		'packageName': '@csstools/postcss-gamut-mapping',
 		'id': 'gamut-mapping',
 		'importName': 'postcssGamutMapping',

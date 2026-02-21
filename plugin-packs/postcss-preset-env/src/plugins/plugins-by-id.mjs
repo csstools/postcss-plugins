@@ -25,6 +25,7 @@ import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
 import postcssFontFormatKeywords from '@csstools/postcss-font-format-keywords';
 import postcssFontVariant from 'postcss-font-variant';
+import postcssFontWidthProperty from '@csstools/postcss-font-width-property';
 import postcssGamutMapping from '@csstools/postcss-gamut-mapping';
 import postcssGapProperties from 'postcss-gap-properties';
 import postcssGradientsInterpolationMethod from '@csstools/postcss-gradients-interpolation-method';
@@ -98,6 +99,7 @@ export const pluginsById = new Map(
 		['focus-within-pseudo-class', postcssFocusWithin],
 		['font-format-keywords', postcssFontFormatKeywords],
 		['font-variant-property', postcssFontVariant],
+		['font-width-property', postcssFontWidthProperty],
 		['gamut-mapping', postcssGamutMapping],
 		['gap-properties', postcssGapProperties],
 		['gradients-interpolation-method', postcssGradientsInterpolationMethod],

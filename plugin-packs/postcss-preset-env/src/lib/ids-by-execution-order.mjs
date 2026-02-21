@@ -52,6 +52,7 @@ export default [
 	'position-area-property',
 	'system-ui-font-family',
 	'font-format-keywords',
+	'font-width-property',
 	'display-two-values',
 	'content-alt-text',
 	'ic-unit',

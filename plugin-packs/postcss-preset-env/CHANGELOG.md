@@ -1,30 +1,9 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### Unreleased (minor)
 
-- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#301) (patch)
-- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#301) (patch)
-- Updated [`@csstools/postcss-random-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function/CHANGELOG.md#301) (patch)
-- Updated [`@csstools/postcss-sign-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions/CHANGELOG.md#201) (patch)
-- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#501) (patch)
-- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#501) (patch)
-- Updated [`postcss-custom-media`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) to [`12.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media/CHANGELOG.md#1201) (patch)
-- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`15.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1501) (patch)
-- Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#901) (patch)
-- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#503) (patch)
-- Updated [`@csstools/postcss-alpha-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function) to [`2.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function/CHANGELOG.md#203) (patch)
-- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#502) (patch)
-- Updated [`@csstools/postcss-color-function-display-p3-linear`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear/CHANGELOG.md#202) (patch)
-- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#402) (patch)
-- Updated [`@csstools/postcss-color-mix-variadic-function-arguments`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-variadic-function-arguments) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-variadic-function-arguments/CHANGELOG.md#202) (patch)
-- Updated [`@csstools/postcss-contrast-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-contrast-color-function) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-contrast-color-function/CHANGELOG.md#302) (patch)
-- Updated [`@csstools/postcss-gamut-mapping`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping/CHANGELOG.md#302) (patch)
-- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`6.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#602) (patch)
-- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#502) (patch)
-- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#502) (patch)
-- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#402) (patch)
-- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`8.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#802) (patch)
-- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`8.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#802) (patch)
+- Added `@csstools/postcss-font-width-property` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-font-width-property#readme) for usage details.
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.8.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#880-february-21-2026)
 
 ### 11.1.3
 

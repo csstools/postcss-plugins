@@ -1240,8 +1240,8 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		255,
-		115,
+		45,
+		110,
 		100
 	);
 	color: rgb(
@@ -1250,13 +1250,13 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 		random(--b, 0, 255, 5)
 	);
 
-	border-color: rgb(121, 118, 0);
+	border-color: rgb(63, 61, 0);
 
-	border-color: color(display-p3 0.4767 0.4634 0);
+	border-color: color(display-p3 0.2472 0.23964 0);
 
 	border-color: oklch(
-		55%
-		60%
+		35%
+		45%
 		108deg
 	);
 
@@ -1316,4 +1316,17 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	@apply --mixin-a;
 
 	height: 20px;
+}
+
+@font-face {
+	src: url("foo.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-stretch: 1% 1000%;
+	font-width: 1% 1000%;
+}
+
+.foo {
+	font-stretch: 50%;
+	font-width: 50%;
 }

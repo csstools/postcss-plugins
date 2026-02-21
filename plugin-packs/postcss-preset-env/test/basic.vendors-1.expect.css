@@ -759,3 +759,14 @@
 
 	height: 20px;
 }
+
+@font-face {
+	src: url("foo.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-stretch: 1% 1000%;
+}
+
+.foo {
+	font-stretch: 50%;
+}

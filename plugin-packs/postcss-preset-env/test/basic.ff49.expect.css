@@ -636,18 +636,18 @@
 
 .random {
 	color: rgb(
-		255,
-		115,
+		45,
+		110,
 		100
 	);
 
-	border-color: rgb(121, 118, 0);
+	border-color: rgb(63, 61, 0);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0.4767 0.4634 0);
+	border-color: color(display-p3 0.2472 0.23964 0);
 }
 }
 
@@ -687,4 +687,15 @@
 .apply {
 
 	height: 20px;
+}
+
+@font-face {
+	src: url("foo.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-stretch: 1% 1000%;
+}
+
+.foo {
+	font-stretch: 50%;
 }
