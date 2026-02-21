@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-alpha-function",
 	"description": "Use the alpha() function in CSS",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"contributors": [
 		{
 			"name": "Romain Menke",
