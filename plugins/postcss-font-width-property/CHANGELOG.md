@@ -1,5 +1,7 @@
 # Changes to PostCSS Font Width Property
 
-### Unreleased (major)
+### 1.0.0
+
+_February 21, 2026_
 
 - Initial version

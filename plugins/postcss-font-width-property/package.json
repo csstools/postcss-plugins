@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-font-width-property",
 	"description": "Use the font-width property in CSS",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
