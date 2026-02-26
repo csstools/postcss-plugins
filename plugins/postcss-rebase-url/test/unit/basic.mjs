@@ -7,7 +7,6 @@ import { rebase } from '../../src/rebase.mjs';
 			'foo.png',
 			'/assets/css',
 			'/assets/css',
-			'/assets/css',
 		),
 		'foo.png',
 	);
@@ -18,7 +17,6 @@ import { rebase } from '../../src/rebase.mjs';
 		rebase(
 			'foo.png',
 			'/assets/css/components',
-			'/assets/css',
 			'/assets/css',
 		),
 		'components/foo.png',

@@ -59,10 +59,6 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 			isTokenIdent(node.value) &&
 			COLOR_SPACE_REGEX.test(node.value[4].value)
 		) {
-			if (colorSpace) {
-				return false;
-			}
-
 			colorSpace = node;
 			colorSpaceName = node.value[4].value;
 
@@ -82,7 +78,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 			HUE_INTERPOLATION_METHOD_REGEX.test(node.value[4].value) &&
 			POLAR_COLOR_SPACE_REGEX.test(colorSpaceName)
 		) {
-			if (hueInterpolationMethod || !colorSpace) {
+			if (!colorSpace) {
 				return false;
 			}
 
@@ -103,7 +99,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 			isTokenIdent(node.value) &&
 			HUE_KEYWORD_REGEX.test(node.value[4].value)
 		) {
-			if (hueKeyword || !colorSpace || !hueInterpolationMethod) {
+			if (!colorSpace || !hueInterpolationMethod) {
 				return false;
 			}
 

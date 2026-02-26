@@ -106,7 +106,6 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 			}
 
 			if (
-				colorSpace &&
 				hueInterpolationMethod &&
 				hueKeyword &&
 				polarColorSpaces.has(colorSpace) &&
