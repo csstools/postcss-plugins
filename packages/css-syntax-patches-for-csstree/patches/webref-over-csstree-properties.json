@@ -45,18 +45,33 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | baseline | before-edge | text-before-edge | middle | central | after-edge | text-after-edge | ideographic | alphabetic | hanging | mathematical",
-		"syntax-a": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top",
-		"syntax-m": "| text-bottom | text-top",
+		"syntax-a": "baseline | <baseline-metric>",
+		"syntax-m": "auto | before-edge | text-before-edge | after-edge | text-after-edge | baseline | <baseline-metric>",
 		"tests": {
 			"passing": [
 				{
 					"value": "after-edge"
 				},
 				{
+					"value": "auto"
+				},
+				{
+					"value": "before-edge"
+				},
+				{
+					"value": "text-before-edge"
+				},
+				{
 					"value": "middle"
 				},
 				{
 					"value": "text-top"
+				},
+				{
+					"value": "baseline"
+				},
+				{
+					"value": "mathematical"
 				}
 			],
 			"failing": []
@@ -1893,8 +1908,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "none | spanning-item | intersection",
-		"syntax-m": "none | spanning-item | intersection",
+		"syntax-a": "none | normal | intersection",
+		"syntax-m": "none | normal | intersection",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1962,8 +1977,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
-		"syntax-m": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
+		"syntax-a": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
+		"syntax-m": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2737,10 +2752,26 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge",
-		"syntax-a": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
-		"syntax-m": "auto | text-bottom | text-top | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge",
+		"syntax-a": "auto | <baseline-metric>",
+		"syntax-m": "use-script | no-change | reset-size | text-after-edge | text-before-edge | auto | <baseline-metric>",
 		"tests": {
-			"passing": [],
+			"passing": [
+				{
+					"value": "auto"
+				},
+				{
+					"value": "use-script"
+				},
+				{
+					"value": "reset-size"
+				},
+				{
+					"value": "text-after-edge"
+				},
+				{
+					"value": "mathematical"
+				}
+			],
 			"failing": []
 		}
 	},
@@ -4673,8 +4704,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "none | spanning-item | intersection",
-		"syntax-m": "none | spanning-item | intersection",
+		"syntax-a": "none | normal | intersection",
+		"syntax-m": "none | normal | intersection",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4728,8 +4759,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
-		"syntax-m": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
+		"syntax-a": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
+		"syntax-m": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
 		"tests": {
 			"passing": [],
 			"failing": []

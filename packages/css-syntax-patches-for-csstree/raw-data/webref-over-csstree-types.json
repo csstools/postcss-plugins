@@ -173,6 +173,12 @@
 		"syntax-a": "no-autospace | [ ideograph-alpha || ideograph-numeric || punctuation ] || [ insert | replace ]",
 		"comment": ""
 	},
+	"baseline-metric": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
+		"comment": ""
+	},
 	"baseline-position": {
 		"type": "modified",
 		"syntax-b": "[ first | last ]? baseline",

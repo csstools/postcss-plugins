@@ -14,7 +14,7 @@
 	"alignment-baseline": {
 		"type": "modified",
 		"syntax-b": "auto | baseline | before-edge | text-before-edge | middle | central | after-edge | text-after-edge | ideographic | alphabetic | hanging | mathematical",
-		"syntax-a": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top",
+		"syntax-a": "baseline | <baseline-metric>",
 		"comment": ""
 	},
 	"all": {
@@ -704,7 +704,7 @@
 	"column-rule-break": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "none | spanning-item | intersection",
+		"syntax-a": "none | normal | intersection",
 		"comment": ""
 	},
 	"column-rule-color": {
@@ -734,7 +734,7 @@
 	"column-rule-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
+		"syntax-a": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
 		"comment": ""
 	},
 	"column-rule-inset-end": {
@@ -1118,7 +1118,7 @@
 	"dominant-baseline": {
 		"type": "modified",
 		"syntax-b": "auto | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge",
-		"syntax-a": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
+		"syntax-a": "auto | <baseline-metric>",
 		"comment": ""
 	},
 	"dynamic-range-limit": {
@@ -2084,7 +2084,7 @@
 	"row-rule-break": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "none | spanning-item | intersection",
+		"syntax-a": "none | normal | intersection",
 		"comment": ""
 	},
 	"row-rule-color": {
@@ -2114,7 +2114,7 @@
 	"row-rule-inset": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?",
+		"syntax-a": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
 		"comment": ""
 	},
 	"row-rule-inset-end": {

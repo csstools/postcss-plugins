@@ -535,6 +535,17 @@
 			"failing": []
 		}
 	},
+	"baseline-metric": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
+		"syntax-m": "text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"baseline-position": {
 		"type": "modified",
 		"comment": "",

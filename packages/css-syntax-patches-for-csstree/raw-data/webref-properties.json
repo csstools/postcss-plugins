@@ -21,7 +21,7 @@
 		"syntax": "[ normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position> ]#"
 	},
 	"alignment-baseline": {
-		"syntax": "baseline | text-bottom | alphabetic | ideographic | middle | central | mathematical | text-top"
+		"syntax": "baseline | <baseline-metric>"
 	},
 	"all": {
 		"syntax": "initial | inherit | unset | revert | revert-layer | revert-rule"
@@ -627,7 +627,7 @@
 		"syntax": "<gap-rule-list> | <gap-auto-rule-list>"
 	},
 	"column-rule-break": {
-		"syntax": "none | spanning-item | intersection"
+		"syntax": "none | normal | intersection"
 	},
 	"column-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
@@ -642,7 +642,7 @@
 		"syntax": "<length-percentage>"
 	},
 	"column-rule-inset": {
-		"syntax": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?"
+		"syntax": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?"
 	},
 	"column-rule-inset-end": {
 		"syntax": "<length-percentage>"
@@ -888,7 +888,7 @@
 		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
-		"syntax": "auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top"
+		"syntax": "auto | <baseline-metric>"
 	},
 	"dynamic-range-limit": {
 		"syntax": "standard | no-limit | constrained | <dynamic-range-limit-mix()>"
@@ -1890,7 +1890,7 @@
 		"syntax": "<gap-rule-list> | <gap-auto-rule-list>"
 	},
 	"row-rule-break": {
-		"syntax": "none | spanning-item | intersection"
+		"syntax": "none | normal | intersection"
 	},
 	"row-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
@@ -1905,7 +1905,7 @@
 		"syntax": "<length-percentage>"
 	},
 	"row-rule-inset": {
-		"syntax": "<length-percentage> <length-percentage>? [ / <length-percentage> <length-percentage>? ]?"
+		"syntax": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?"
 	},
 	"row-rule-inset-end": {
 		"syntax": "<length-percentage>"
