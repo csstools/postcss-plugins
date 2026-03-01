@@ -38,7 +38,7 @@
 			const system_is_dark = matchMedia("(prefers-color-scheme: dark)").matches;
 
 			function assert_equals(actual, expected, message) {
-				if (actual != expected) {
+				if (actual !== expected) {
 					log.innerHTML = message + ": expected " + expected + ", got " + actual;
 					throw new Error(message + ": expected " + expected + ", got " + actual);
 				}
@@ -140,9 +140,9 @@
 				assert_equals(a.backgroundColor, system_is_dark ? 'rgb(0, 2, 0)' : 'rgb(2, 0, 0)', 'a background-color');
 				assert_equals(a.borderColor, system_is_dark ? 'rgb(0, 1, 0)' : 'rgb(1, 0, 0)', 'a border-color');
 
-				assert_equals(b.color, 'rgb(0, 128, 0)', 'a color');
-				assert_equals(b.backgroundColor, 'rgba(0, 0, 0, 0)', 'a background-color');
-				assert_equals(b.borderColor, 'rgb(0, 128, 0)', 'a border-color');
+				assert_equals(b.color, 'rgb(0, 128, 0)', 'b color');
+				assert_equals(b.backgroundColor, 'rgba(0, 0, 0, 0)', 'b background-color');
+				assert_equals(b.borderColor, 'rgb(0, 128, 0)', 'b border-color');
 
 				styleElement.remove();
 			}
@@ -183,9 +183,9 @@
 				assert_equals(a.backgroundColor, 'rgb(2, 0, 0)', 'a background-color');
 				assert_equals(a.borderColor, 'rgb(1, 0, 0)', 'a border-color');
 
-				assert_equals(b.color, 'rgb(0, 128, 0)', 'a color');
-				assert_equals(b.backgroundColor, 'rgba(0, 0, 0, 0)', 'a background-color');
-				assert_equals(b.borderColor, 'rgb(0, 128, 0)', 'a border-color');
+				assert_equals(b.color, 'rgb(0, 128, 0)', 'b color');
+				assert_equals(b.backgroundColor, 'rgba(0, 0, 0, 0)', 'b background-color');
+				assert_equals(b.borderColor, 'rgb(0, 128, 0)', 'b border-color');
 
 				styleElement.remove();
 			}
