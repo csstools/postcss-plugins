@@ -92,9 +92,6 @@
 	"aspect-ratio": {
 		"syntax": "auto || <ratio>"
 	},
-	"azimuth": {
-		"syntax": "<angle> | [ [ left-side | far-left | left | center-left | center | center-right | right | far-right | right-side ] || behind ] | leftwards | rightwards"
-	},
 	"backdrop-filter": {
 		"syntax": "none | <filter-value-list>"
 	},
@@ -117,7 +114,7 @@
 		"syntax": "padding | border"
 	},
 	"-webkit-background-clip": {
-		"syntax": "[ <box> | border | padding | content | text ]#"
+		"syntax": "[ <visual-box> | border | padding | content | text ]#"
 	},
 	"background-color": {
 		"syntax": "<color>"
@@ -618,7 +615,7 @@
 		"syntax": "auto | balance | balance-all"
 	},
 	"column-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"column-height": {
 		"syntax": "auto | <length [0,∞]>"
@@ -1158,7 +1155,7 @@
 		"syntax": "<grid-line>"
 	},
 	"grid-column-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"grid-column-start": {
 		"syntax": "<grid-line>"
@@ -1179,7 +1176,7 @@
 		"syntax": "<grid-line>"
 	},
 	"grid-row-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"grid-row-start": {
 		"syntax": "<grid-line>"
@@ -1238,11 +1235,11 @@
 	"hyphens": {
 		"syntax": "none | manual | auto"
 	},
+	"image-animation": {
+		"syntax": "normal | paused | running"
+	},
 	"image-orientation": {
 		"syntax": "from-image | none | [ <angle> || flip ]"
-	},
-	"-moz-image-region": {
-		"syntax": "<shape> | auto"
 	},
 	"image-rendering": {
 		"syntax": "auto | smooth | high-quality | pixelated | crisp-edges"
@@ -1440,7 +1437,7 @@
 		"syntax": "<mask-layer>#"
 	},
 	"-webkit-mask": {
-		"syntax": "[ <mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || [ <box> | border | padding | content | text ] || [ <box> | border | padding | content ] ]#"
+		"syntax": "[ <mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || [ <visual-box> | border | padding | content | text ] || [ <visual-box> | border | padding | content ] ]#"
 	},
 	"-webkit-mask-attachment": {
 		"syntax": "<attachment>#"
@@ -1473,7 +1470,7 @@
 		"syntax": "[ <coord-box> | no-clip ]#"
 	},
 	"-webkit-mask-clip": {
-		"syntax": "[ <box> | border | padding | content | text ]#"
+		"syntax": "[ <coord-box> | no-clip | border | padding | content | text ]#"
 	},
 	"mask-composite": {
 		"syntax": "<compositing-operator>#"
@@ -1494,7 +1491,7 @@
 		"syntax": "<coord-box>#"
 	},
 	"-webkit-mask-origin": {
-		"syntax": "[ <box> | border | padding | content ]#"
+		"syntax": "[ <coord-box> | border | padding | content ]#"
 	},
 	"mask-position": {
 		"syntax": "<position>#"
@@ -1665,7 +1662,7 @@
 		"syntax": "auto | none"
 	},
 	"overflow-block": {
-		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
+		"syntax": "visible | hidden | clip | scroll | auto"
 	},
 	"overflow-clip-box": {
 		"syntax": "padding-box | content-box"
@@ -1704,7 +1701,7 @@
 		"syntax": "<visual-box> || <length [0,∞]>"
 	},
 	"overflow-inline": {
-		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
+		"syntax": "visible | hidden | clip | scroll | auto"
 	},
 	"-webkit-overflow-scrolling": {
 		"syntax": "auto | touch"
@@ -1716,10 +1713,10 @@
 		"syntax": "normal | break-word | anywhere"
 	},
 	"overflow-x": {
-		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
+		"syntax": "visible | hidden | clip | scroll | auto"
 	},
 	"overflow-y": {
-		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
+		"syntax": "visible | hidden | clip | scroll | auto"
 	},
 	"overlay": {
 		"syntax": "none | auto"
@@ -1838,6 +1835,9 @@
 	"position-try-fallbacks": {
 		"syntax": "none | [ [ <dashed-ident> || <try-tactic> ] | <position-area> ]#"
 	},
+	"position-try-options": {
+		"syntax": "<'position-try-fallbacks'>"
+	},
 	"position-try-order": {
 		"syntax": "normal | <try-size>"
 	},
@@ -1884,7 +1884,7 @@
 		"syntax": "none | <angle> | [ x | y | z | <number>{3} ] && <angle>"
 	},
 	"row-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"row-rule": {
 		"syntax": "<gap-rule-list> | <gap-auto-rule-list>"
@@ -2213,9 +2213,6 @@
 	"speak-as": {
 		"syntax": "normal | spell-out || digits || [ literal-punctuation | no-punctuation ]"
 	},
-	"src": {
-		"syntax": "[ <url> [ format( <string># ) ]? | local( <family-name> ) ]#"
-	},
 	"-moz-stack-sizing": {
 		"syntax": "ignore | stretch-to-fit"
 	},
@@ -2364,7 +2361,7 @@
 		"syntax": "solid | double | dotted | dashed | wavy"
 	},
 	"text-decoration-thickness": {
-		"syntax": "auto | from-font | <length-percentage>"
+		"syntax": "auto | from-font | <length-percentage> | <line-width>"
 	},
 	"text-emphasis": {
 		"syntax": "<'text-emphasis-style'> || <'text-emphasis-color'>"
@@ -2448,7 +2445,25 @@
 		"syntax": "none | all | <dashed-ident>#"
 	},
 	"timeline-trigger": {
-		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#"
+		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#"
+	},
+	"timeline-trigger-activation-range": {
+		"syntax": "[ <'timeline-trigger-activation-range-start'> <'timeline-trigger-activation-range-end'>? ]#"
+	},
+	"timeline-trigger-activation-range-end": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-activation-range-start": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-active-range": {
+		"syntax": "[ <'timeline-trigger-active-range-start'> <'timeline-trigger-active-range-end'>? ]#"
+	},
+	"timeline-trigger-active-range-end": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-active-range-start": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
 	},
 	"timeline-trigger-exit-range": {
 		"syntax": "[ <'timeline-trigger-exit-range-start'> <'timeline-trigger-exit-range-end'>? ]#"
@@ -2524,9 +2539,6 @@
 	},
 	"unicode-bidi": {
 		"syntax": "normal | embed | isolate | bidi-override | isolate-override | plaintext"
-	},
-	"unicode-range": {
-		"syntax": "<urange>#"
 	},
 	"-webkit-user-drag": {
 		"syntax": "none | element | auto"

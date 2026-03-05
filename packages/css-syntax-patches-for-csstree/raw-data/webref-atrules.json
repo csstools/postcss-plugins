@@ -120,6 +120,13 @@
 			}
 		}
 	},
+	"font-features-values": {
+		"descriptors": {
+			"font-display": {
+				"syntax": "auto | block | swap | fallback | optional"
+			}
+		}
+	},
 	"font-palette-values": {
 		"descriptors": {
 			"base-palette": {
@@ -147,6 +154,9 @@
 			},
 			"marks": {
 				"syntax": "none | [ crop || cross ]"
+			},
+			"page-margin-safety": {
+				"syntax": "none | clamp | add"
 			},
 			"page-orientation": {
 				"syntax": "upright | rotate-left | rotate-right"

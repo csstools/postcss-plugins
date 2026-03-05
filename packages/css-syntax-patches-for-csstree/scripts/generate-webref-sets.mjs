@@ -43,7 +43,11 @@ export async function generate_webref_sets() {
 		types['size-keyword'] = JSON.parse(await fs.readFile(path.join('raw-data', 'size-keywords.json'))).join(' | ');
 
 		// https://github.com/w3c/csswg-drafts/issues/11127
-		types['scroll-state-feature'] = '<ident> : <ident>';
+		types['scroll-state-feature'] = '[ <scroll-state-feature-plain> | <scroll-state-feature-boolean> ]';
+		types['scroll-state-feature-plain'] = '<scroll-state-feature-name> : <scroll-state-feature-value>';
+		types['scroll-state-feature-boolean'] = '<scroll-state-feature-name>';
+		types['scroll-state-feature-name'] = '<ident>';
+		types['scroll-state-feature-value'] = '<ident>';
 
 		// https://drafts.csswg.org/css-ui-4/#cursor
 		types['url-set-option'] = '[ <url> | <string> ] [ <resolution> || type( <string> ) ]?';
@@ -64,13 +68,11 @@ export async function generate_webref_sets() {
 		types['anchored-feature'] = 'fallback: <\'position-try-fallbacks\'>';
 
 		// https://drafts.csswg.org/css-ui-4/
-		types['url-set'] = 'image-set( [ [ <url> | <string> ] [ <resolution> || type(<string>) ]? ]# )';
+		types['url-set-option'] = '[ <url> | <string> ] [ <resolution> || type(<string>) ]?';
+		types['url-set'] = 'image-set( <url-set-option># )';
 
 		// https://drafts.csswg.org/css-conditional-5/
 		types['style-feature-value'] = '<declaration-value>';
-
-		// https://drafts.csswg.org/css-animations-2/#typedef-animation-action
-		types['animation-action'] = 'none | play | pause | play-forwards | play-backwards | pause | reset | replay';
 
 		// https://github.com/w3c/csswg-drafts/issues/13311
 		types['voice-family-name'] = '<string> | <custom-ident>+';
@@ -113,16 +115,6 @@ export async function generate_webref_sets() {
 
 		if (property.name === 'clip') {
 			property.syntax = 'rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto';
-		}
-
-		// https://github.com/csstree/csstree/pull/354
-		if ((
-			property.name === 'overflow-x' ||
-			property.name === 'overflow-y' ||
-			property.name === 'overflow-inline' ||
-			property.name === 'overflow-block'
-		) && property.syntax === 'visible | hidden | clip | scroll | auto') {
-			property.syntax = '| <-non-standard-overflow>';
 		}
 
 		if (!property.syntax) {
@@ -177,6 +169,14 @@ export async function generate_webref_sets() {
 			continue;
 		}
 
+		if (f.name === 'calc-size()' && f.syntax === 'calc-size( <calc-size-basis>, <calc-sum> )') {
+			f.syntax = 'calc-size( [ [ <calc-size-basis> , [ <calc-sum> | size ] ] | [ any , <calc-sum> ] ] )';
+		}
+
+		if (f.name === 'circle()' && f.syntax === 'circle( <radial-size>? [ at <position> ]? )') {
+			f.syntax = 'circle( [ <radial-extent> | <length-percentage [0,∞]> ]? [ at <position> ]? )';
+		}
+
 		if (!f.syntax) {
 			continue;
 		}
@@ -201,11 +201,6 @@ export async function generate_webref_sets() {
 	// https://drafts.csswg.org/css-conditional-5/
 	types_set['style-feature-name'] = {
 		syntax: '<dashed-ident> | ' + Object.keys(properties_set).sort().filter((x) => x !== '--*').join(' | '),
-	};
-
-	// https://github.com/csstree/csstree/issues/292
-	types_set['ray()'] = {
-		syntax: 'ray( [ <angle> && <ray-size>? && contain? && [ at <position> ]? ] )',
 	};
 
 	return {

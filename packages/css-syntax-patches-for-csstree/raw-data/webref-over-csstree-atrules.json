@@ -21,22 +21,6 @@
 			}
 		}
 	},
-	"counter-style": {
-		"descriptors": {
-			"additive-symbols": {
-				"type": "modified",
-				"syntax-b": "[ <integer> && <symbol> ]#",
-				"syntax-a": "[ <integer [0,∞]> && <symbol> ]#",
-				"comment": ""
-			},
-			"pad": {
-				"type": "modified",
-				"syntax-b": "<integer> && <symbol>",
-				"syntax-a": "<integer [0,∞]> && <symbol>",
-				"comment": ""
-			}
-		}
-	},
 	"font-face": {
 		"descriptors": {
 			"ascent-override": {
@@ -49,12 +33,6 @@
 				"type": "modified",
 				"syntax-b": "normal | <percentage>",
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
-				"comment": ""
-			},
-			"font-display": {
-				"type": "modified",
-				"syntax-b": "[ auto | block | swap | fallback | optional ]",
-				"syntax-a": "auto | block | swap | fallback | optional",
 				"comment": ""
 			},
 			"font-language-override": {
@@ -153,16 +131,6 @@
 			}
 		}
 	},
-	"font-palette-values": {
-		"descriptors": {
-			"override-colors": {
-				"type": "modified",
-				"syntax-b": "[ <integer [0,∞]> <absolute-color-base> ]#",
-				"syntax-a": "[ <integer [0,∞]> <color> ]#",
-				"comment": ""
-			}
-		}
-	},
 	"function": {
 		"descriptors": {
 			"result": {
@@ -175,26 +143,10 @@
 	},
 	"page": {
 		"descriptors": {
-			"size": {
-				"type": "modified",
-				"syntax-b": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
-				"syntax-a": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
-				"comment": ""
-			}
-		}
-	},
-	"view-transition": {
-		"descriptors": {
-			"navigation": {
+			"page-margin-safety": {
 				"type": "added",
 				"syntax-b": "",
-				"syntax-a": "auto | none",
-				"comment": ""
-			},
-			"types": {
-				"type": "added",
-				"syntax-b": "",
-				"syntax-a": "none | <custom-ident>+",
+				"syntax-a": "none | clamp | add",
 				"comment": ""
 			}
 		}

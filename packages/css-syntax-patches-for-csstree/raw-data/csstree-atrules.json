@@ -2,7 +2,7 @@
 	"counter-style": {
 		"descriptors": {
 			"additive-symbols": {
-				"syntax": "[ <integer> && <symbol> ]#"
+				"syntax": "[ <integer [0,∞]> && <symbol> ]#"
 			},
 			"fallback": {
 				"syntax": "<counter-style-name>"
@@ -11,7 +11,7 @@
 				"syntax": "<symbol> <symbol>?"
 			},
 			"pad": {
-				"syntax": "<integer> && <symbol>"
+				"syntax": "<integer [0,∞]> && <symbol>"
 			},
 			"prefix": {
 				"syntax": "<symbol>"
@@ -42,7 +42,7 @@
 				"syntax": "normal | <percentage>"
 			},
 			"font-display": {
-				"syntax": "[ auto | block | swap | fallback | optional ]"
+				"syntax": "auto | block | swap | fallback | optional"
 			},
 			"font-family": {
 				"syntax": "<family-name>"
@@ -76,6 +76,13 @@
 			}
 		}
 	},
+	"font-features-values": {
+		"descriptors": {
+			"font-display": {
+				"syntax": "auto | block | swap | fallback | optional"
+			}
+		}
+	},
 	"font-palette-values": {
 		"descriptors": {
 			"base-palette": {
@@ -85,7 +92,7 @@
 				"syntax": "<family-name>#"
 			},
 			"override-colors": {
-				"syntax": "[ <integer [0,∞]> <absolute-color-base> ]#"
+				"syntax": "[ <integer [0,∞]> <color> ]#"
 			}
 		}
 	},
@@ -101,7 +108,7 @@
 				"syntax": "upright | rotate-left | rotate-right"
 			},
 			"size": {
-				"syntax": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
+				"syntax": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
 			}
 		}
 	},
@@ -227,6 +234,16 @@
 			},
 			"syntax": {
 				"syntax": "<string>"
+			}
+		}
+	},
+	"view-transition": {
+		"descriptors": {
+			"navigation": {
+				"syntax": "auto | none"
+			},
+			"types": {
+				"syntax": "none | <custom-ident>+"
 			}
 		}
 	}

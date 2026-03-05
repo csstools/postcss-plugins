@@ -50,32 +50,6 @@
 			}
 		}
 	},
-	"counter-style": {
-		"descriptors": {
-			"additive-symbols": {
-				"type": "modified",
-				"comment": "",
-				"syntax-b": "[ <integer> && <symbol> ]#",
-				"syntax-a": "[ <integer [0,∞]> && <symbol> ]#",
-				"syntax-m": "[ <integer [0,∞]> && <symbol> ]#",
-				"tests": {
-					"passing": [],
-					"failing": []
-				}
-			},
-			"pad": {
-				"type": "modified",
-				"comment": "",
-				"syntax-b": "<integer> && <symbol>",
-				"syntax-a": "<integer [0,∞]> && <symbol>",
-				"syntax-m": "<integer [0,∞]> && <symbol>",
-				"tests": {
-					"passing": [],
-					"failing": []
-				}
-			}
-		}
-	},
 	"font-face": {
 		"descriptors": {
 			"ascent-override": {
@@ -95,17 +69,6 @@
 				"syntax-b": "normal | <percentage>",
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
-				"tests": {
-					"passing": [],
-					"failing": []
-				}
-			},
-			"font-display": {
-				"type": "modified",
-				"comment": "",
-				"syntax-b": "[ auto | block | swap | fallback | optional ]",
-				"syntax-a": "auto | block | swap | fallback | optional",
-				"syntax-m": "[ auto | block | swap | fallback | optional ]",
 				"tests": {
 					"passing": [],
 					"failing": []
@@ -313,21 +276,6 @@
 			}
 		}
 	},
-	"font-palette-values": {
-		"descriptors": {
-			"override-colors": {
-				"type": "modified",
-				"comment": "",
-				"syntax-b": "[ <integer [0,∞]> <absolute-color-base> ]#",
-				"syntax-a": "[ <integer [0,∞]> <color> ]#",
-				"syntax-m": "[ <integer [0,∞]> <color> ]#",
-				"tests": {
-					"passing": [],
-					"failing": []
-				}
-			}
-		}
-	},
 	"function": {
 		"descriptors": {
 			"result": {
@@ -345,38 +293,12 @@
 	},
 	"page": {
 		"descriptors": {
-			"size": {
-				"type": "modified",
-				"comment": "",
-				"syntax-b": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
-				"syntax-a": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
-				"syntax-m": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]",
-				"tests": {
-					"passing": [],
-					"failing": []
-				}
-			}
-		}
-	},
-	"view-transition": {
-		"descriptors": {
-			"navigation": {
+			"page-margin-safety": {
 				"type": "added",
 				"comment": "",
 				"syntax-b": "",
-				"syntax-a": "auto | none",
-				"syntax-m": "auto | none",
-				"tests": {
-					"passing": [],
-					"failing": []
-				}
-			},
-			"types": {
-				"type": "added",
-				"comment": "",
-				"syntax-b": "",
-				"syntax-a": "none | <custom-ident>+",
-				"syntax-m": "none | <custom-ident>+",
+				"syntax-a": "none | clamp | add",
+				"syntax-m": "none | clamp | add",
 				"tests": {
 					"passing": [],
 					"failing": []
