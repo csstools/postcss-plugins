@@ -290,5 +290,20 @@
 				}
 			}
 		}
+	},
+	"page": {
+		"descriptors": {
+			"page-margin-safety": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "none | clamp | add",
+				"syntax-m": "none | clamp | add",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			}
+		}
 	}
 }

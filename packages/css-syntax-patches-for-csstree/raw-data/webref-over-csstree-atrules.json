@@ -140,5 +140,15 @@
 				"comment": ""
 			}
 		}
+	},
+	"page": {
+		"descriptors": {
+			"page-margin-safety": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "none | clamp | add",
+				"comment": ""
+			}
+		}
 	}
 }

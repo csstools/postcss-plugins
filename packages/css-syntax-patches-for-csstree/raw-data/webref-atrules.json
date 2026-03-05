@@ -155,6 +155,9 @@
 			"marks": {
 				"syntax": "none | [ crop || cross ]"
 			},
+			"page-margin-safety": {
+				"syntax": "none | clamp | add"
+			},
 			"page-orientation": {
 				"syntax": "upright | rotate-left | rotate-right"
 			},

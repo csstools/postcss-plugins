@@ -615,7 +615,7 @@
 		"syntax": "auto | balance | balance-all"
 	},
 	"column-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"column-height": {
 		"syntax": "auto | <length [0,∞]>"
@@ -1155,7 +1155,7 @@
 		"syntax": "<grid-line>"
 	},
 	"grid-column-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"grid-column-start": {
 		"syntax": "<grid-line>"
@@ -1176,7 +1176,7 @@
 		"syntax": "<grid-line>"
 	},
 	"grid-row-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"grid-row-start": {
 		"syntax": "<grid-line>"
@@ -1234,6 +1234,9 @@
 	},
 	"hyphens": {
 		"syntax": "none | manual | auto"
+	},
+	"image-animation": {
+		"syntax": "normal | paused | running"
 	},
 	"image-orientation": {
 		"syntax": "from-image | none | [ <angle> || flip ]"
@@ -1881,7 +1884,7 @@
 		"syntax": "none | <angle> | [ x | y | z | <number>{3} ] && <angle>"
 	},
 	"row-gap": {
-		"syntax": "normal | <length-percentage [0,∞]>"
+		"syntax": "normal | <length-percentage [0,∞]> | <line-width>"
 	},
 	"row-rule": {
 		"syntax": "<gap-rule-list> | <gap-auto-rule-list>"
@@ -2358,7 +2361,7 @@
 		"syntax": "solid | double | dotted | dashed | wavy"
 	},
 	"text-decoration-thickness": {
-		"syntax": "auto | from-font | <length-percentage>"
+		"syntax": "auto | from-font | <length-percentage> | <line-width>"
 	},
 	"text-emphasis": {
 		"syntax": "<'text-emphasis-style'> || <'text-emphasis-color'>"
@@ -2442,7 +2445,25 @@
 		"syntax": "none | all | <dashed-ident>#"
 	},
 	"timeline-trigger": {
-		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#"
+		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#"
+	},
+	"timeline-trigger-activation-range": {
+		"syntax": "[ <'timeline-trigger-activation-range-start'> <'timeline-trigger-activation-range-end'>? ]#"
+	},
+	"timeline-trigger-activation-range-end": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-activation-range-start": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-active-range": {
+		"syntax": "[ <'timeline-trigger-active-range-start'> <'timeline-trigger-active-range-end'>? ]#"
+	},
+	"timeline-trigger-active-range-end": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-active-range-start": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
 	},
 	"timeline-trigger-exit-range": {
 		"syntax": "[ <'timeline-trigger-exit-range-start'> <'timeline-trigger-exit-range-end'>? ]#"

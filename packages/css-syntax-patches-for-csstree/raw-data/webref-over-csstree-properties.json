@@ -554,7 +554,7 @@
 	"column-gap": {
 		"type": "modified",
 		"syntax-b": "normal | <length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
 		"comment": ""
 	},
 	"column-rule": {
@@ -1118,7 +1118,7 @@
 	"grid-column-gap": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
 		"comment": ""
 	},
 	"grid-gap": {
@@ -1130,7 +1130,7 @@
 	"grid-row-gap": {
 		"type": "modified",
 		"syntax-b": "<length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
 		"comment": ""
 	},
 	"height": {
@@ -1155,6 +1155,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
+		"comment": ""
+	},
+	"image-animation": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "normal | paused | running",
 		"comment": ""
 	},
 	"image-orientation": {
@@ -1622,7 +1628,7 @@
 	"row-gap": {
 		"type": "modified",
 		"syntax-b": "normal | <length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
 		"comment": ""
 	},
 	"row-rule": {
@@ -2108,7 +2114,7 @@
 	"text-decoration-thickness": {
 		"type": "modified",
 		"syntax-b": "auto | from-font | <length> | <percentage>",
-		"syntax-a": "auto | from-font | <length-percentage>",
+		"syntax-a": "auto | from-font | <length-percentage> | <line-width>",
 		"comment": ""
 	},
 	"text-emphasis-position": {
@@ -2193,6 +2199,48 @@
 		"type": "modified",
 		"syntax-b": "none | <dashed-ident>#",
 		"syntax-a": "none | all | <dashed-ident>#",
+		"comment": ""
+	},
+	"timeline-trigger": {
+		"type": "modified",
+		"syntax-b": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#",
+		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-activation-range": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <'timeline-trigger-activation-range-start'> <'timeline-trigger-activation-range-end'>? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-activation-range-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-activation-range-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-active-range": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ <'timeline-trigger-active-range-start'> <'timeline-trigger-active-range-end'>? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-active-range-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-active-range-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
 		"comment": ""
 	},
 	"transform-origin": {

@@ -1467,8 +1467,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "normal | <length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"syntax-m": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
+		"syntax-m": "normal | <length-percentage [0,∞]> | <line-width>",
 		"tests": {
 			"passing": [
 				{
@@ -1479,6 +1479,9 @@
 				},
 				{
 					"value": "2%"
+				},
+				{
+					"value": "hairline"
 				}
 			],
 			"failing": [
@@ -2642,8 +2645,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"syntax-m": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
+		"syntax-m": "normal | <length-percentage [0,∞]> | <line-width>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2664,8 +2667,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"syntax-m": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
+		"syntax-m": "normal | <length-percentage [0,∞]> | <line-width>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2710,6 +2713,17 @@
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
 		"syntax-m": "<length-percentage>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"image-animation": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "normal | paused | running",
+		"syntax-m": "normal | paused | running",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3598,8 +3612,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "normal | <length-percentage>",
-		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"syntax-m": "normal | <length-percentage [0,∞]>",
+		"syntax-a": "normal | <length-percentage [0,∞]> | <line-width>",
+		"syntax-m": "normal | <length-percentage [0,∞]> | <line-width>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4489,8 +4503,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | from-font | <length> | <percentage>",
-		"syntax-a": "auto | from-font | <length-percentage>",
-		"syntax-m": "auto | from-font | <length-percentage>",
+		"syntax-a": "auto | from-font | <length-percentage> | <line-width>",
+		"syntax-m": "auto | from-font | <length-percentage> | <line-width>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4673,6 +4687,83 @@
 		"syntax-b": "none | <dashed-ident>#",
 		"syntax-a": "none | all | <dashed-ident>#",
 		"syntax-m": "| all",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#",
+		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#",
+		"syntax-m": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger-activation-range": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <'timeline-trigger-activation-range-start'> <'timeline-trigger-activation-range-end'>? ]#",
+		"syntax-m": "[ <'timeline-trigger-activation-range-start'> <'timeline-trigger-activation-range-end'>? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger-activation-range-end": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"syntax-m": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger-activation-range-start": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"syntax-m": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger-active-range": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ <'timeline-trigger-active-range-start'> <'timeline-trigger-active-range-end'>? ]#",
+		"syntax-m": "[ <'timeline-trigger-active-range-start'> <'timeline-trigger-active-range-end'>? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger-active-range-end": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"syntax-m": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"timeline-trigger-active-range-start": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"syntax-m": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
 		"tests": {
 			"passing": [],
 			"failing": []
