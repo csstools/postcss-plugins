@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Update `csstree` to [`v3.2.1`](https://github.com/csstree/csstree/releases/tag/v3.2.1)
+
 ### 1.0.29
 
 _March 2, 2026_

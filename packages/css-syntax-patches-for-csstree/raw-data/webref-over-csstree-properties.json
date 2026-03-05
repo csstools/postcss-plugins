@@ -1,13 +1,13 @@
 {
 	"align-items": {
 		"type": "modified",
-		"syntax-b": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]",
+		"syntax-b": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center",
 		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
 		"comment": ""
 	},
 	"align-self": {
 		"type": "modified",
-		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
+		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
 		"syntax-a": "auto | <overflow-position>? [ normal | <self-position> ] | stretch | <baseline-position> | anchor-center",
 		"comment": ""
 	},
@@ -35,52 +35,22 @@
 		"syntax-a": "none | all | <anchor-name>#",
 		"comment": ""
 	},
-	"animation-duration": {
-		"type": "modified",
-		"syntax-b": "<time>#",
-		"syntax-a": "[ auto | <time [0s,∞]> ]#",
-		"comment": ""
-	},
 	"animation-range-center": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "[ normal | [ <length-percentage> | <timeline-range-center-subject> <length-percentage>? ] ]#",
 		"comment": ""
 	},
-	"animation-trigger": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ none | [ <dashed-ident> <animation-action>+ ]+ ]#",
-		"comment": ""
-	},
 	"appearance": {
 		"type": "modified",
-		"syntax-b": "none | auto | textfield | menulist-button | <compat-auto>",
+		"syntax-b": "none | auto | <compat-auto> | <compat-special>",
 		"syntax-a": "none | auto | base | base-select | <compat-auto> | <compat-special> | base",
-		"comment": ""
-	},
-	"backdrop-filter": {
-		"type": "modified",
-		"syntax-b": "none | <filter-function-list>",
-		"syntax-a": "none | <filter-value-list>",
-		"comment": ""
-	},
-	"background": {
-		"type": "modified",
-		"syntax-b": "[ <bg-layer> , ]* <final-bg-layer>",
-		"syntax-a": "<bg-layer>#? , <final-bg-layer>",
 		"comment": ""
 	},
 	"background-blend-mode": {
 		"type": "modified",
 		"syntax-b": "<blend-mode>#",
 		"syntax-a": "<'mix-blend-mode'>#",
-		"comment": ""
-	},
-	"background-origin": {
-		"type": "modified",
-		"syntax-b": "<box>#",
-		"syntax-a": "<visual-box>#",
 		"comment": ""
 	},
 	"background-position-block": {
@@ -129,12 +99,6 @@
 		"type": "modified",
 		"syntax-b": "baseline | sub | super | <svg-length>",
 		"syntax-a": "<length-percentage> | sub | super | top | center | bottom",
-		"comment": ""
-	},
-	"baseline-source": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | first | last",
 		"comment": ""
 	},
 	"block-ellipsis": {
@@ -189,12 +153,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "open | closed",
-		"comment": ""
-	},
-	"border-block": {
-		"type": "modified",
-		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-a": "<'border-block-start'>",
 		"comment": ""
 	},
 	"border-block-clip": {
@@ -275,18 +233,6 @@
 		"syntax-a": "<line-width>",
 		"comment": ""
 	},
-	"border-block-style": {
-		"type": "modified",
-		"syntax-b": "<'border-top-style'>",
-		"syntax-a": "<'border-top-style'>{1,2}",
-		"comment": ""
-	},
-	"border-block-width": {
-		"type": "modified",
-		"syntax-b": "<'border-top-width'>",
-		"syntax-a": "<'border-top-width'>{1,2}",
-		"comment": ""
-	},
 	"border-bottom-clip": {
 		"type": "added",
 		"syntax-b": "",
@@ -301,7 +247,7 @@
 	},
 	"border-bottom-left-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<length-percentage [0,∞]>{1,2}",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
@@ -313,7 +259,7 @@
 	},
 	"border-bottom-right-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<length-percentage [0,∞]>{1,2}",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
@@ -329,12 +275,6 @@
 		"syntax-a": "<'border-top-clip'>",
 		"comment": ""
 	},
-	"border-collapse": {
-		"type": "modified",
-		"syntax-b": "collapse | separate",
-		"syntax-a": "separate | collapse",
-		"comment": ""
-	},
 	"border-color": {
 		"type": "modified",
 		"syntax-b": "<color>{1,4}",
@@ -343,38 +283,14 @@
 	},
 	"border-end-end-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<'border-top-left-radius'>",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-end-start-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<'border-top-left-radius'>",
 		"syntax-a": "<border-radius>",
-		"comment": ""
-	},
-	"border-image-outset": {
-		"type": "modified",
-		"syntax-b": "[ <length> | <number> ]{1,4}",
-		"syntax-a": "[ <length [0,∞]> | <number [0,∞]> ]{1,4}",
-		"comment": ""
-	},
-	"border-image-slice": {
-		"type": "modified",
-		"syntax-b": "<number-percentage>{1,4} && fill?",
-		"syntax-a": "[ <number [0,∞]> | <percentage [0,∞]> ]{1,4} && fill?",
-		"comment": ""
-	},
-	"border-image-width": {
-		"type": "modified",
-		"syntax-b": "[ <length-percentage> | <number> | auto ]{1,4}",
-		"syntax-a": "[ <length-percentage [0,∞]> | <number [0,∞]> | auto ]{1,4}",
-		"comment": ""
-	},
-	"border-inline": {
-		"type": "modified",
-		"syntax-b": "<'border-top-width'> || <'border-top-style'> || <color>",
-		"syntax-a": "<'border-block-start'>",
 		"comment": ""
 	},
 	"border-inline-clip": {
@@ -455,18 +371,6 @@
 		"syntax-a": "<line-width>",
 		"comment": ""
 	},
-	"border-inline-style": {
-		"type": "modified",
-		"syntax-b": "<'border-top-style'>",
-		"syntax-a": "<'border-top-style'>{1,2}",
-		"comment": ""
-	},
-	"border-inline-width": {
-		"type": "modified",
-		"syntax-b": "<'border-top-width'>",
-		"syntax-a": "<'border-top-width'>{1,2}",
-		"comment": ""
-	},
 	"border-left-clip": {
 		"type": "added",
 		"syntax-b": "",
@@ -489,12 +393,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "all | [ sides | corners ] <length-percentage [0,∞]>? | [ top | right | bottom | left ] <length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"border-radius": {
-		"type": "modified",
-		"syntax-b": "<length-percentage>{1,4} [ / <length-percentage>{1,4} ]?",
-		"syntax-a": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?",
 		"comment": ""
 	},
 	"border-right-clip": {
@@ -521,21 +419,15 @@
 		"syntax-a": "none | [ <basic-shape> <geometry-box>? ]{1,2}",
 		"comment": ""
 	},
-	"border-spacing": {
-		"type": "modified",
-		"syntax-b": "<length> <length>?",
-		"syntax-a": "<length>{1,2}",
-		"comment": ""
-	},
 	"border-start-end-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<'border-top-left-radius'>",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
 	"border-start-start-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<'border-top-left-radius'>",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
@@ -559,7 +451,7 @@
 	},
 	"border-top-left-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<length-percentage [0,∞]>{1,2}",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
@@ -571,7 +463,7 @@
 	},
 	"border-top-right-radius": {
 		"type": "modified",
-		"syntax-b": "<length-percentage>{1,2}",
+		"syntax-b": "<length-percentage [0,∞]>{1,2}",
 		"syntax-a": "<border-radius>",
 		"comment": ""
 	},
@@ -579,12 +471,6 @@
 		"type": "modified",
 		"syntax-b": "<line-width>{1,4}",
 		"syntax-a": "<'border-top-width'>{1,4}",
-		"comment": ""
-	},
-	"bottom": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"box-shadow": {
@@ -629,24 +515,6 @@
 		"syntax-a": "none | block-start | block-end | center | baseline | last-baseline",
 		"comment": ""
 	},
-	"caption-side": {
-		"type": "modified",
-		"syntax-b": "top | bottom | block-start | block-end | inline-start | inline-end",
-		"syntax-a": "top | bottom",
-		"comment": ""
-	},
-	"caret": {
-		"type": "modified",
-		"syntax-b": "<'caret-color'> || <'caret-shape'>",
-		"syntax-a": "<'caret-color'> || <'caret-animation'> || <'caret-shape'>",
-		"comment": ""
-	},
-	"caret-animation": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | manual",
-		"comment": ""
-	},
 	"clear": {
 		"type": "modified",
 		"syntax-b": "none | left | right | both | inline-start | inline-end",
@@ -687,12 +555,6 @@
 		"type": "modified",
 		"syntax-b": "normal | <length-percentage>",
 		"syntax-a": "normal | <length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"column-height": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | <length [0,∞]>",
 		"comment": ""
 	},
 	"column-rule": {
@@ -793,20 +655,8 @@
 	},
 	"column-width": {
 		"type": "modified",
-		"syntax-b": "<length> | auto",
+		"syntax-b": "auto | <length [0,∞]>",
 		"syntax-a": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )",
-		"comment": ""
-	},
-	"column-wrap": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | nowrap | wrap",
-		"comment": ""
-	},
-	"columns": {
-		"type": "modified",
-		"syntax-b": "<'column-width'> || <'column-count'>",
-		"syntax-a": "[ <'column-width'> || <'column-count'> ] [ / <'column-height'> ]?",
 		"comment": ""
 	},
 	"contain": {
@@ -853,7 +703,7 @@
 	},
 	"content": {
 		"type": "modified",
-		"syntax-b": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]?",
+		"syntax-b": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]?",
 		"syntax-a": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
 		"comment": ""
 	},
@@ -882,8 +732,8 @@
 		"comment": ""
 	},
 	"corner-block-end-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -894,8 +744,8 @@
 		"comment": ""
 	},
 	"corner-block-start-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -911,27 +761,15 @@
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
 		"comment": ""
 	},
-	"corner-bottom-left-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
-		"comment": ""
-	},
 	"corner-bottom-right": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
 		"comment": ""
 	},
-	"corner-bottom-right-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
-		"comment": ""
-	},
 	"corner-bottom-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -941,22 +779,10 @@
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
 		"comment": ""
 	},
-	"corner-end-end-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
-		"comment": ""
-	},
 	"corner-end-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
-		"comment": ""
-	},
-	"corner-end-start-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
 		"comment": ""
 	},
 	"corner-inline-end": {
@@ -966,8 +792,8 @@
 		"comment": ""
 	},
 	"corner-inline-end-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -978,8 +804,8 @@
 		"comment": ""
 	},
 	"corner-inline-start-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -990,8 +816,8 @@
 		"comment": ""
 	},
 	"corner-left-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -1002,14 +828,14 @@
 		"comment": ""
 	},
 	"corner-right-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
 	"corner-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,4}",
 		"syntax-a": "<'corner-top-left-shape'>{1,4}",
 		"comment": ""
 	},
@@ -1019,22 +845,10 @@
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
 		"comment": ""
 	},
-	"corner-start-end-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
-		"comment": ""
-	},
 	"corner-start-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
-		"comment": ""
-	},
-	"corner-start-start-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
 		"comment": ""
 	},
 	"corner-top": {
@@ -1049,27 +863,15 @@
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
 		"comment": ""
 	},
-	"corner-top-left-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
-		"comment": ""
-	},
 	"corner-top-right": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
 		"comment": ""
 	},
-	"corner-top-right-shape": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<corner-shape-value>",
-		"comment": ""
-	},
 	"corner-top-shape": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<corner-shape-value>{1,2}",
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
@@ -1121,12 +923,6 @@
 		"syntax-a": "auto | <baseline-metric>",
 		"comment": ""
 	},
-	"dynamic-range-limit": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "standard | no-limit | constrained | <dynamic-range-limit-mix()>",
-		"comment": ""
-	},
 	"event-trigger": {
 		"type": "added",
 		"syntax-b": "",
@@ -1171,7 +967,7 @@
 	},
 	"fill-opacity": {
 		"type": "modified",
-		"syntax-b": "<number-zero-one>",
+		"syntax-b": "<number-zero-one> | <percentage>",
 		"syntax-a": "<'opacity'>",
 		"comment": ""
 	},
@@ -1201,7 +997,7 @@
 	},
 	"filter": {
 		"type": "modified",
-		"syntax-b": "none | <filter-function-list> | <-ms-filter-function-list>",
+		"syntax-b": "none | <filter-value-list> | <-ms-filter-function-list>",
 		"syntax-a": "none | <filter-value-list>",
 		"comment": ""
 	},
@@ -1241,18 +1037,6 @@
 		"syntax-a": "inline | column | region | page",
 		"comment": ""
 	},
-	"flood-color": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<color>",
-		"comment": ""
-	},
-	"flood-opacity": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'opacity'>",
-		"comment": ""
-	},
 	"flow-from": {
 		"type": "added",
 		"syntax-b": "",
@@ -1275,18 +1059,6 @@
 		"type": "modified",
 		"syntax-b": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name> | <-non-standard-font>",
 		"syntax-a": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>",
-		"comment": ""
-	},
-	"font-palette": {
-		"type": "modified",
-		"syntax-b": "normal | light | dark | <palette-identifier>",
-		"syntax-a": "normal | light | dark | <palette-identifier> | <palette-mix()>",
-		"comment": ""
-	},
-	"font-size": {
-		"type": "modified",
-		"syntax-b": "<absolute-size> | <relative-size> | <length-percentage>",
-		"syntax-a": "<absolute-size> | <relative-size> | <length-percentage [0,∞]> | math",
 		"comment": ""
 	},
 	"font-size-adjust": {
@@ -1323,12 +1095,6 @@
 		"type": "modified",
 		"syntax-b": "normal | [ <string> <number> ]#",
 		"syntax-a": "normal | [ <opentype-tag> <number> ]#",
-		"comment": ""
-	},
-	"font-width": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <percentage [0,∞]> | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded",
 		"comment": ""
 	},
 	"footnote-display": {
@@ -1369,7 +1135,7 @@
 	},
 	"height": {
 		"type": "modified",
-		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
 		"comment": ""
 	},
@@ -1399,7 +1165,7 @@
 	},
 	"image-rendering": {
 		"type": "modified",
-		"syntax-b": "auto | crisp-edges | pixelated | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>",
+		"syntax-b": "auto | crisp-edges | pixelated | smooth | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>",
 		"syntax-a": "auto | smooth | high-quality | pixelated | crisp-edges",
 		"comment": ""
 	},
@@ -1427,6 +1193,12 @@
 		"syntax-a": "normal | stretch",
 		"comment": ""
 	},
+	"input-security": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | none",
+		"comment": ""
+	},
 	"inset-block-end": {
 		"type": "modified",
 		"syntax-b": "<'top'>",
@@ -1451,58 +1223,16 @@
 		"syntax-a": "auto | <length-percentage>",
 		"comment": ""
 	},
-	"interactivity": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | inert",
-		"comment": ""
-	},
-	"interest-delay": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'interest-delay-start'>{1,2}",
-		"comment": ""
-	},
-	"interest-delay-end": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <time>",
-		"comment": ""
-	},
-	"interest-delay-start": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <time>",
-		"comment": ""
-	},
 	"isolation": {
 		"type": "modified",
 		"syntax-b": "auto | isolate",
 		"syntax-a": "<isolation-mode>",
 		"comment": ""
 	},
-	"justify-items": {
-		"type": "modified",
-		"syntax-b": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
-		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
-		"comment": ""
-	},
 	"justify-self": {
 		"type": "modified",
-		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]",
+		"syntax-b": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center",
 		"syntax-a": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center",
-		"comment": ""
-	},
-	"left": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
-		"comment": ""
-	},
-	"lighting-color": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<color>",
 		"comment": ""
 	},
 	"line-clamp": {
@@ -1559,76 +1289,10 @@
 		"syntax-a": "<'list-style-position'> || <'list-style-image'> || <'list-style-type'>",
 		"comment": ""
 	},
-	"margin": {
-		"type": "modified",
-		"syntax-b": "[ <length> | <percentage> | auto ]{1,4}",
-		"syntax-a": "<'margin-top'>{1,4}",
-		"comment": ""
-	},
-	"margin-block": {
-		"type": "modified",
-		"syntax-b": "<'margin-left'>{1,2}",
-		"syntax-a": "<'margin-top'>{1,2}",
-		"comment": ""
-	},
-	"margin-block-end": {
-		"type": "modified",
-		"syntax-b": "<'margin-left'>",
-		"syntax-a": "<'margin-top'>",
-		"comment": ""
-	},
-	"margin-block-start": {
-		"type": "modified",
-		"syntax-b": "<'margin-left'>",
-		"syntax-a": "<'margin-top'>",
-		"comment": ""
-	},
-	"margin-bottom": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"comment": ""
-	},
 	"margin-break": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "auto | keep | discard",
-		"comment": ""
-	},
-	"margin-inline": {
-		"type": "modified",
-		"syntax-b": "<'margin-left'>{1,2}",
-		"syntax-a": "<'margin-top'>{1,2}",
-		"comment": ""
-	},
-	"margin-inline-end": {
-		"type": "modified",
-		"syntax-b": "<'margin-left'>",
-		"syntax-a": "<'margin-top'>",
-		"comment": ""
-	},
-	"margin-inline-start": {
-		"type": "modified",
-		"syntax-b": "<'margin-left'>",
-		"syntax-a": "<'margin-top'>",
-		"comment": ""
-	},
-	"margin-left": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"comment": ""
-	},
-	"margin-right": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
-		"comment": ""
-	},
-	"margin-top": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "<length-percentage> | auto | <anchor-size()>",
 		"comment": ""
 	},
 	"margin-trim": {
@@ -1673,21 +1337,9 @@
 		"syntax-a": "[ <number> | <percentage> ]{1,4} fill?",
 		"comment": ""
 	},
-	"mask-clip": {
-		"type": "modified",
-		"syntax-b": "[ <geometry-box> | no-clip ]#",
-		"syntax-a": "[ <coord-box> | no-clip ]#",
-		"comment": ""
-	},
-	"mask-origin": {
-		"type": "modified",
-		"syntax-b": "<geometry-box>#",
-		"syntax-a": "<coord-box>#",
-		"comment": ""
-	},
 	"max-height": {
 		"type": "modified",
-		"syntax-b": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-b": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
 		"comment": ""
 	},
@@ -1699,13 +1351,13 @@
 	},
 	"max-width": {
 		"type": "modified",
-		"syntax-b": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-b": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
 		"comment": ""
 	},
 	"min-height": {
 		"type": "modified",
-		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
 		"comment": ""
 	},
@@ -1717,8 +1369,14 @@
 	},
 	"min-width": {
 		"type": "modified",
-		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
+		"comment": ""
+	},
+	"mix-blend-mode": {
+		"type": "modified",
+		"syntax-b": "<blend-mode> | plus-darker | plus-lighter",
+		"syntax-a": "<blend-mode> | plus-lighter",
 		"comment": ""
 	},
 	"nav-down": {
@@ -1751,40 +1409,16 @@
 		"syntax-a": "fill | none | [ contain | cover ] || scale-down",
 		"comment": ""
 	},
-	"object-view-box": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | <basic-shape-rect>",
-		"comment": ""
-	},
-	"opacity": {
-		"type": "modified",
-		"syntax-b": "<alpha-value>",
-		"syntax-a": "<opacity-value>",
-		"comment": ""
-	},
 	"orphans": {
 		"type": "modified",
 		"syntax-b": "<integer>",
 		"syntax-a": "<integer [1,∞]>",
 		"comment": ""
 	},
-	"outline": {
-		"type": "modified",
-		"syntax-b": "[ <'outline-width'> || <'outline-style'> || <'outline-color'> ]",
-		"syntax-a": "<'outline-width'> || <'outline-style'> || <'outline-color'>",
-		"comment": ""
-	},
 	"outline-color": {
 		"type": "modified",
 		"syntax-b": "auto | <color>",
 		"syntax-a": "auto | <'border-top-color'>",
-		"comment": ""
-	},
-	"outline-style": {
-		"type": "modified",
-		"syntax-b": "auto | <'border-style'>",
-		"syntax-a": "auto | <outline-line-style>",
 		"comment": ""
 	},
 	"overflow": {
@@ -1795,8 +1429,8 @@
 	},
 	"overflow-block": {
 		"type": "modified",
-		"syntax-b": "visible | hidden | clip | scroll | auto",
-		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-b": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-a": "visible | hidden | clip | scroll | auto",
 		"comment": ""
 	},
 	"overflow-clip-margin-block": {
@@ -1861,86 +1495,20 @@
 	},
 	"overflow-inline": {
 		"type": "modified",
-		"syntax-b": "visible | hidden | clip | scroll | auto",
-		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-b": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-a": "visible | hidden | clip | scroll | auto",
 		"comment": ""
 	},
 	"overflow-x": {
 		"type": "modified",
-		"syntax-b": "visible | hidden | clip | scroll | auto",
-		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-b": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-a": "visible | hidden | clip | scroll | auto",
 		"comment": ""
 	},
 	"overflow-y": {
 		"type": "modified",
-		"syntax-b": "visible | hidden | clip | scroll | auto",
-		"syntax-a": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
-		"comment": ""
-	},
-	"padding": {
-		"type": "modified",
-		"syntax-b": "[ <length> | <percentage> ]{1,4}",
-		"syntax-a": "<'padding-top'>{1,4}",
-		"comment": ""
-	},
-	"padding-block": {
-		"type": "modified",
-		"syntax-b": "<'padding-left'>{1,2}",
-		"syntax-a": "<'padding-top'>{1,2}",
-		"comment": ""
-	},
-	"padding-block-end": {
-		"type": "modified",
-		"syntax-b": "<'padding-left'>",
-		"syntax-a": "<'padding-top'>",
-		"comment": ""
-	},
-	"padding-block-start": {
-		"type": "modified",
-		"syntax-b": "<'padding-left'>",
-		"syntax-a": "<'padding-top'>",
-		"comment": ""
-	},
-	"padding-bottom": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"padding-inline": {
-		"type": "modified",
-		"syntax-b": "<'padding-left'>{1,2}",
-		"syntax-a": "<'padding-top'>{1,2}",
-		"comment": ""
-	},
-	"padding-inline-end": {
-		"type": "modified",
-		"syntax-b": "<'padding-left'>",
-		"syntax-a": "<'padding-top'>",
-		"comment": ""
-	},
-	"padding-inline-start": {
-		"type": "modified",
-		"syntax-b": "<'padding-left'>",
-		"syntax-a": "<'padding-top'>",
-		"comment": ""
-	},
-	"padding-left": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"padding-right": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"padding-top": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage [0,∞]>",
+		"syntax-b": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>",
+		"syntax-a": "visible | hidden | clip | scroll | auto",
 		"comment": ""
 	},
 	"page-break-after": {
@@ -2011,7 +1579,7 @@
 	},
 	"position-anchor": {
 		"type": "modified",
-		"syntax-b": "auto | <anchor-name>",
+		"syntax-b": "auto | none | <anchor-name>",
 		"syntax-a": "normal | none | auto | <anchor-name>",
 		"comment": ""
 	},
@@ -2033,18 +1601,6 @@
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"reading-flow": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order",
-		"comment": ""
-	},
-	"reading-order": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<integer>",
-		"comment": ""
-	},
 	"region-fragment": {
 		"type": "added",
 		"syntax-b": "",
@@ -2061,12 +1617,6 @@
 		"type": "modified",
 		"syntax-b": "<time> | none | x-weak | weak | medium | strong | x-strong",
 		"syntax-a": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
-		"comment": ""
-	},
-	"right": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"row-gap": {
@@ -2171,12 +1721,6 @@
 		"syntax-a": "separate | merge | auto",
 		"comment": ""
 	},
-	"ruby-overhang": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | none",
-		"comment": ""
-	},
 	"rule": {
 		"type": "added",
 		"syntax-b": "",
@@ -2261,18 +1805,6 @@
 		"syntax-a": "<length-percentage> | auto",
 		"comment": ""
 	},
-	"scroll-initial-target": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | nearest",
-		"comment": ""
-	},
-	"scroll-marker-group": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | before | after",
-		"comment": ""
-	},
 	"scroll-padding": {
 		"type": "modified",
 		"syntax-b": "[ auto | <length-percentage> ]{1,4}",
@@ -2339,24 +1871,6 @@
 		"syntax-a": "auto | <length-percentage [0,∞]>",
 		"comment": ""
 	},
-	"scroll-target-group": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | auto",
-		"comment": ""
-	},
-	"scroll-timeline": {
-		"type": "modified",
-		"syntax-b": "[ <'scroll-timeline-name'> || <'scroll-timeline-axis'> ]#",
-		"syntax-a": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#",
-		"comment": ""
-	},
-	"shape-image-threshold": {
-		"type": "modified",
-		"syntax-b": "<alpha-value>",
-		"syntax-a": "<opacity-value>",
-		"comment": ""
-	},
 	"shape-inside": {
 		"type": "added",
 		"syntax-b": "",
@@ -2411,18 +1925,6 @@
 		"syntax-a": "normal | grid",
 		"comment": ""
 	},
-	"stop-color": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'color'>",
-		"comment": ""
-	},
-	"stop-opacity": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'opacity'>",
-		"comment": ""
-	},
 	"string-set": {
 		"type": "added",
 		"syntax-b": "",
@@ -2448,8 +1950,8 @@
 		"comment": ""
 	},
 	"stroke-color": {
-		"type": "added",
-		"syntax-b": "",
+		"type": "modified",
+		"syntax-b": "<color>",
 		"syntax-a": "<color>#",
 		"comment": ""
 	},
@@ -2561,30 +2063,6 @@
 		"syntax-a": "auto | start | end | left | right | center | justify | match-parent",
 		"comment": ""
 	},
-	"text-autospace": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <autospace> | auto",
-		"comment": ""
-	},
-	"text-box": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <'text-box-trim'> || <'text-box-edge'>",
-		"comment": ""
-	},
-	"text-box-edge": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "auto | <text-edge>",
-		"comment": ""
-	},
-	"text-box-trim": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | trim-start | trim-end | trim-both",
-		"comment": ""
-	},
 	"text-combine-upright": {
 		"type": "modified",
 		"syntax-b": "none | all | [ digits <integer>? ]",
@@ -2595,12 +2073,6 @@
 		"type": "modified",
 		"syntax-b": "<'text-decoration-line'> || <'text-decoration-style'> || <'text-decoration-color'> || <'text-decoration-thickness'>",
 		"syntax-a": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>",
-		"comment": ""
-	},
-	"text-decoration-inset": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<length>{1,2} | auto",
 		"comment": ""
 	},
 	"text-decoration-skip": {
@@ -2695,14 +2167,8 @@
 	},
 	"text-spacing-trim": {
 		"type": "modified",
-		"syntax-b": "space-all | normal | space-first | trim-start | trim-both | trim-all | auto",
+		"syntax-b": "space-all | normal | space-first | trim-start",
 		"syntax-a": "<spacing-trim> | auto",
-		"comment": ""
-	},
-	"text-transform": {
-		"type": "modified",
-		"syntax-b": "none | capitalize | uppercase | lowercase | full-width | full-size-kana",
-		"syntax-a": "none | [ capitalize | uppercase | lowercase ] || full-width || full-size-kana | math-auto",
 		"comment": ""
 	},
 	"text-underline-offset": {
@@ -2717,12 +2183,6 @@
 		"syntax-a": "auto | [ from-font | under ] || [ left | right ]",
 		"comment": ""
 	},
-	"text-wrap-mode": {
-		"type": "modified",
-		"syntax-b": "auto | wrap | nowrap",
-		"syntax-a": "wrap | nowrap",
-		"comment": ""
-	},
 	"text-wrap-style": {
 		"type": "modified",
 		"syntax-b": "auto | balance | stable | pretty",
@@ -2733,66 +2193,6 @@
 		"type": "modified",
 		"syntax-b": "none | <dashed-ident>#",
 		"syntax-a": "none | all | <dashed-ident>#",
-		"comment": ""
-	},
-	"timeline-trigger": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-exit-range": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ <'timeline-trigger-exit-range-start'> <'timeline-trigger-exit-range-end'>? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-exit-range-end": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-exit-range-start": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-name": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | <dashed-ident>#",
-		"comment": ""
-	},
-	"timeline-trigger-range": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ <'timeline-trigger-range-start'> <'timeline-trigger-range-end'>? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-range-end": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-range-start": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
-		"comment": ""
-	},
-	"timeline-trigger-source": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<single-animation-timeline>#",
-		"comment": ""
-	},
-	"top": {
-		"type": "modified",
-		"syntax-b": "<length> | <percentage> | auto",
-		"syntax-a": "auto | <length-percentage> | <anchor()> | <anchor-size()>",
 		"comment": ""
 	},
 	"transform-origin": {
@@ -2807,16 +2207,16 @@
 		"syntax-a": "<time [0s,∞]>#",
 		"comment": ""
 	},
-	"trigger-scope": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | all | <dashed-ident>#",
-		"comment": ""
-	},
 	"unicode-bidi": {
 		"type": "modified",
 		"syntax-b": "normal | embed | isolate | bidi-override | isolate-override | plaintext | -moz-isolate | -moz-isolate-override | -moz-plaintext | -webkit-isolate | -webkit-isolate-override | -webkit-plaintext",
 		"syntax-a": "normal | embed | isolate | bidi-override | isolate-override | plaintext",
+		"comment": ""
+	},
+	"user-select": {
+		"type": "modified",
+		"syntax-b": "auto | text | none | all",
+		"syntax-a": "auto | text | none | contain | all",
 		"comment": ""
 	},
 	"vertical-align": {
@@ -2825,28 +2225,16 @@
 		"syntax-a": "[ first | last ] || <'alignment-baseline'> || <'baseline-shift'>",
 		"comment": ""
 	},
-	"view-timeline": {
-		"type": "modified",
-		"syntax-b": "[ <'view-timeline-name'> <'view-timeline-axis'>? ]#",
-		"syntax-a": "[ <'view-timeline-name'> [ <'view-timeline-axis'> || <'view-timeline-inset'> ]? ]#",
-		"comment": ""
-	},
-	"view-timeline-name": {
-		"type": "modified",
-		"syntax-b": "none | <dashed-ident>#",
-		"syntax-a": "[ none | <dashed-ident> ]#",
-		"comment": ""
-	},
-	"view-transition-class": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | <custom-ident>+",
-		"comment": ""
-	},
 	"view-transition-group": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "normal | contain | nearest | <custom-ident>",
+		"comment": ""
+	},
+	"view-transition-name": {
+		"type": "modified",
+		"syntax-b": "none | <custom-ident> | match-element",
+		"syntax-a": "none | <custom-ident>",
 		"comment": ""
 	},
 	"view-transition-scope": {
@@ -2893,8 +2281,14 @@
 	},
 	"white-space": {
 		"type": "modified",
-		"syntax-b": "normal | pre | nowrap | pre-wrap | pre-line | break-spaces | [ <'white-space-collapse'> || <'text-wrap'> || <'white-space-trim'> ]",
+		"syntax-b": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'>",
 		"syntax-a": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'> || <'white-space-trim'>",
+		"comment": ""
+	},
+	"white-space-collapse": {
+		"type": "modified",
+		"syntax-b": "collapse | preserve | preserve-breaks | preserve-spaces | break-spaces",
+		"syntax-a": "collapse | discard | preserve | preserve-breaks | preserve-spaces | break-spaces",
 		"comment": ""
 	},
 	"widows": {
@@ -2905,7 +2299,7 @@
 	},
 	"width": {
 		"type": "modified",
-		"syntax-b": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>",
+		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
 		"comment": ""
 	},
@@ -2989,7 +2383,7 @@
 	},
 	"zoom": {
 		"type": "modified",
-		"syntax-b": "normal | reset | <number> | <percentage>",
+		"syntax-b": "normal | reset | <number [0,∞]> || <percentage [0,∞]>",
 		"syntax-a": "<number [0,∞]> | <percentage [0,∞]>",
 		"comment": ""
 	}
