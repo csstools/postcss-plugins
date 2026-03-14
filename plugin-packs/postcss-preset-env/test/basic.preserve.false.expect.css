@@ -203,18 +203,14 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentcolor;
 	border-collapse: separate;
-	-webkit-border-image: none;
-	   -moz-border-image: none;
-	     -o-border-image: none;
-	        border-image: none;
+	-moz-border-image: none;
+	     border-image: none;
 	border-radius: 0;
 	border-spacing: 0;
 	bottom: auto;
-	-webkit-box-shadow: none;
-	        box-shadow: none;
-	-webkit-box-sizing: content-box;
-	   -moz-box-sizing: content-box;
-	        box-sizing: content-box;
+	box-shadow: none;
+	-moz-box-sizing: content-box;
+	     box-sizing: content-box;
 	caption-side: top;
 	clear: none;
 	clip: auto;
@@ -286,12 +282,10 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	position: static;
 	right: auto;
 	-moz-tab-size: 8;
-	  -o-tab-size: 8;
 	     tab-size: 8;
 	table-layout: auto;
 	text-align: left;
-	-moz-text-align-last: auto;
-	     text-align-last: auto;
+	text-align-last: auto;
 	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
@@ -300,11 +294,9 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	top: auto;
 	-webkit-transform: none;
 	   -moz-transform: none;
-	    -ms-transform: none;
 	        transform: none;
 	-webkit-transform-origin: 50% 50% 0;
 	   -moz-transform-origin: 50% 50% 0;
-	    -ms-transform-origin: 50% 50% 0;
 	        transform-origin: 50% 50% 0;
 	-webkit-transform-style: flat;
 	   -moz-transform-style: flat;
@@ -596,7 +588,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	padding: 8px 3px 1px calc(3px + 50%);
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 	width: 2px;
 }
@@ -607,7 +598,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	padding: 8px 3px 1px calc(3px + 50%);
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 }
 
@@ -715,8 +705,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 .gradients-interpolation-method {
 	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), rgb(188, 179, 255), rgb(164, 192, 255), rgb(137, 206, 255), rgb(111, 218, 255), rgb(93, 229, 255), rgb(94, 237, 237) 100%);
 
-	background-image: -webkit-radial-gradient(50% 115%, farthest-corner circle, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
-
 	background-image: -moz-radial-gradient(50% 115%, farthest-corner circle, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115%, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
@@ -724,8 +712,6 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 @media (color-gamut: rec2020) {
 .gradients-interpolation-method {
-
-	background-image: -webkit-radial-gradient(50% 115%, farthest-corner circle, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.30036), color(display-p3 1.15167 0.57912 -0.39461), color(display-p3 1.06645 0.68611 -0.42959), color(display-p3 0.94738 0.78766 -0.42632), color(display-p3 0.79233 0.87807 -0.37074), color(display-p3 0.59026 0.95319 -0.14671), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.53921 1.05733 0.93686), color(display-p3 -0.57773 1.04644 1.15396) 100%);
 
 	background-image: -moz-radial-gradient(50% 115%, farthest-corner circle, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.30036), color(display-p3 1.15167 0.57912 -0.39461), color(display-p3 1.06645 0.68611 -0.42959), color(display-p3 0.94738 0.78766 -0.42632), color(display-p3 0.79233 0.87807 -0.37074), color(display-p3 0.59026 0.95319 -0.14671), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.53921 1.05733 0.93686), color(display-p3 -0.57773 1.04644 1.15396) 100%);
 
@@ -779,22 +765,18 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .issue-1244--a {
 	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
-	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
 	background-image: -ms-linear-gradient(180deg, red 0%, blue 100%);
 }
 
 .issue-1244--b {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
-	background-image: -webkit-linear-gradient(top, red 0%, blue 100%);
 	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
 	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }
 
 .issue-1244--c {
 	background-image: -moz-linear-gradient(180deg, red 0%, blue 100%);
-	background-image: -webkit-linear-gradient(180deg, red 0%, blue 100%);
 	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
-	background-image: -webkit-linear-gradient(top, red 0%, blue 100%);
 	background-image: -moz-linear-gradient(top, red 0%, blue 100%);
 	background-image: linear-gradient(180deg, red 0%, blue 100%);
 }

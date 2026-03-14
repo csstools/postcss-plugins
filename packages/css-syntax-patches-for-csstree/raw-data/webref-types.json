@@ -426,7 +426,7 @@
 		"syntax": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )"
 	},
 	"cursor-image": {
-		"syntax": "[ <url> | <url-set> ] [ <number>{2} ]?"
+		"syntax": "[ <url> | <url-set> ] <number>{2}?"
 	},
 	"cursor-predefined": {
 		"syntax": "auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | grabbing | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out"
@@ -1364,17 +1364,20 @@
 	"radial-size": {
 		"syntax": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}"
 	},
+	"random-cache-key": {
+		"syntax": "auto | <random-name> | fixed <number [0,1]>"
+	},
 	"random-item-args": {
 		"syntax": "random-item( <declaration-value> , [ <declaration-value>? ]# )"
 	},
 	"random-item()": {
-		"syntax": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )"
+		"syntax": "random-item( <random-cache-key> , [ <declaration-value>? ]# )"
 	},
-	"random-value-sharing": {
-		"syntax": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>"
+	"random-name": {
+		"syntax": "<dashed-ident> [ element | property index? ]?"
 	},
 	"random()": {
-		"syntax": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )"
+		"syntax": "random( <random-cache-key>? , <calc-sum> , <calc-sum> , <calc-sum>? )"
 	},
 	"ratio": {
 		"syntax": "<number [0,∞]> [ / <number [0,∞]> ]?"
@@ -1479,7 +1482,7 @@
 		"syntax": "round( <rounding-strategy>? , <calc-sum> , <calc-sum>? )"
 	},
 	"rounding-strategy": {
-		"syntax": "nearest | up | down | to-zero"
+		"syntax": "nearest | up | down | to-zero | line-width"
 	},
 	"route-name": {
 		"syntax": "<dashed-ident>"

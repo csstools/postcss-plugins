@@ -931,8 +931,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ <url> | <url-set> ] [ <number>{2} ]?",
-		"syntax-m": "[ <url> | <url-set> ] [ <number>{2} ]?",
+		"syntax-a": "[ <url> | <url-set> ] <number>{2}?",
+		"syntax-m": "[ <url> | <url-set> ] <number>{2}?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3235,6 +3235,17 @@
 			"failing": []
 		}
 	},
+	"random-cache-key": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "auto | <random-name> | fixed <number [0,1]>",
+		"syntax-m": "auto | <random-name> | fixed <number [0,1]>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"random-item-args": {
 		"type": "added",
 		"comment": "",
@@ -3250,19 +3261,19 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )",
-		"syntax-m": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )",
+		"syntax-a": "random-item( <random-cache-key> , [ <declaration-value>? ]# )",
+		"syntax-m": "random-item( <random-cache-key> , [ <declaration-value>? ]# )",
 		"tests": {
 			"passing": [],
 			"failing": []
 		}
 	},
-	"random-value-sharing": {
+	"random-name": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>",
-		"syntax-m": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>",
+		"syntax-a": "<dashed-ident> [ element | property index? ]?",
+		"syntax-m": "<dashed-ident> [ element | property index? ]?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3272,8 +3283,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
-		"syntax-m": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
+		"syntax-a": "random( <random-cache-key>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
+		"syntax-m": "random( <random-cache-key>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3461,6 +3472,17 @@
 		"syntax-b": "round( <rounding-strategy>? , <calc-sum> , <calc-sum> )",
 		"syntax-a": "round( <rounding-strategy>? , <calc-sum> , <calc-sum>? )",
 		"syntax-m": "round( <rounding-strategy>? , <calc-sum> , <calc-sum>? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"rounding-strategy": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "nearest | up | down | to-zero",
+		"syntax-a": "nearest | up | down | to-zero | line-width",
+		"syntax-m": "| line-width",
 		"tests": {
 			"passing": [],
 			"failing": []

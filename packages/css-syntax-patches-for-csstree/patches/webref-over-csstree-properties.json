@@ -2426,7 +2426,7 @@
 		"comment": "",
 		"syntax-b": "none | <filter-value-list> | <-ms-filter-function-list>",
 		"syntax-a": "none | <filter-value-list>",
-		"syntax-m": "none | <filter-value-list> | <-ms-filter-function-list>",
+		"syntax-m": "none | <filter-value-list>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4850,8 +4850,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "none | auto",
-		"syntax-m": "none | auto",
+		"syntax-a": "none | all",
+		"syntax-m": "none | all",
 		"tests": {
 			"passing": [],
 			"failing": []

@@ -32,8 +32,16 @@
 		"README.md",
 		"dist"
 	],
+	"peerDependencies": {
+		"css-tree": "^3.2.1"
+	},
+	"peerDependenciesMeta": {
+		"css-tree": {
+			"optional": true
+		}
+	},
 	"devDependencies": {
-		"@webref/css": "8.4.0",
+		"@webref/css": "8.4.1",
 		"css-tree": "^3.2.1",
 		"postcss": "^8.4"
 	},

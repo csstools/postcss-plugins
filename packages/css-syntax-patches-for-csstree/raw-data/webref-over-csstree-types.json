@@ -380,7 +380,7 @@
 	"cursor-image": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ <url> | <url-set> ] [ <number>{2} ]?",
+		"syntax-a": "[ <url> | <url-set> ] <number>{2}?",
 		"comment": ""
 	},
 	"cursor-predefined": {
@@ -1325,6 +1325,12 @@
 		"syntax-a": "( <container-query> ) | ( <size-feature> ) | style( <style-query> ) | scroll-state( <scroll-state-query> ) | <general-enclosed>",
 		"comment": ""
 	},
+	"random-cache-key": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | <random-name> | fixed <number [0,1]>",
+		"comment": ""
+	},
 	"random-item-args": {
 		"type": "added",
 		"syntax-b": "",
@@ -1334,19 +1340,19 @@
 	"random-item()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "random-item( <random-value-sharing> , [ <declaration-value>? ]# )",
+		"syntax-a": "random-item( <random-cache-key> , [ <declaration-value>? ]# )",
 		"comment": ""
 	},
-	"random-value-sharing": {
+	"random-name": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ [ auto | <dashed-ident> ] || element-shared ] | fixed <number [0,1]>",
+		"syntax-a": "<dashed-ident> [ element | property index? ]?",
 		"comment": ""
 	},
 	"random()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "random( <random-value-sharing>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
+		"syntax-a": "random( <random-cache-key>? , <calc-sum> , <calc-sum> , <calc-sum>? )",
 		"comment": ""
 	},
 	"rectangular-color-space": {
@@ -1425,6 +1431,12 @@
 		"type": "modified",
 		"syntax-b": "round( <rounding-strategy>? , <calc-sum> , <calc-sum> )",
 		"syntax-a": "round( <rounding-strategy>? , <calc-sum> , <calc-sum>? )",
+		"comment": ""
+	},
+	"rounding-strategy": {
+		"type": "modified",
+		"syntax-b": "nearest | up | down | to-zero",
+		"syntax-a": "nearest | up | down | to-zero | line-width",
 		"comment": ""
 	},
 	"route-name": {

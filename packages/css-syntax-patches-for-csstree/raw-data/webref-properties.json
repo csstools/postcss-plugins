@@ -2595,7 +2595,7 @@
 		"syntax": "none | <custom-ident>"
 	},
 	"view-transition-scope": {
-		"syntax": "none | auto"
+		"syntax": "none | all"
 	},
 	"visibility": {
 		"syntax": "visible | hidden | force-hidden | collapse"

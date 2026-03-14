@@ -2288,7 +2288,7 @@
 	"view-transition-scope": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "none | auto",
+		"syntax-a": "none | all",
 		"comment": ""
 	},
 	"visibility": {

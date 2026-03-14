@@ -214,18 +214,14 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentcolor;
 	border-collapse: separate;
-	-webkit-border-image: none;
-	   -moz-border-image: none;
-	     -o-border-image: none;
-	        border-image: none;
+	-moz-border-image: none;
+	     border-image: none;
 	border-radius: 0;
 	border-spacing: 0;
 	bottom: auto;
-	-webkit-box-shadow: none;
-	        box-shadow: none;
-	-webkit-box-sizing: content-box;
-	   -moz-box-sizing: content-box;
-	        box-sizing: content-box;
+	box-shadow: none;
+	-moz-box-sizing: content-box;
+	     box-sizing: content-box;
 	caption-side: top;
 	clear: none;
 	clip: auto;
@@ -297,12 +293,10 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	position: static;
 	right: auto;
 	-moz-tab-size: 8;
-	  -o-tab-size: 8;
 	     tab-size: 8;
 	table-layout: auto;
 	text-align: left;
-	-moz-text-align-last: auto;
-	     text-align-last: auto;
+	text-align-last: auto;
 	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
@@ -311,11 +305,9 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	top: auto;
 	-webkit-transform: none;
 	   -moz-transform: none;
-	    -ms-transform: none;
 	        transform: none;
 	-webkit-transform-origin: 50% 50% 0;
 	   -moz-transform-origin: 50% 50% 0;
-	    -ms-transform-origin: 50% 50% 0;
 	        transform-origin: 50% 50% 0;
 	-webkit-transform-style: flat;
 	   -moz-transform-style: flat;
@@ -634,7 +626,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	padding: 8px 3px 1px calc(3px + 50%);
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 	width: 2px;
 }
@@ -645,7 +636,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	padding: 8px 3px 1px calc(3px + 50%);
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 }
 

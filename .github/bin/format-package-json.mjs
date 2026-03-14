@@ -147,6 +147,9 @@ const formatted = {};
 		}
 	}
 
+	formatted.peerDependenciesMeta = packageJSONInfo.peerDependenciesMeta;
+	delete packageJSONInfo.peerDependenciesMeta;
+
 	if (Object.keys(packageJSONInfo.devDependencies ?? {}).length) {
 		let dependencyKeys = Object.keys(packageJSONInfo.devDependencies);
 		dependencyKeys.sort((a, b) => a.localeCompare(b));
