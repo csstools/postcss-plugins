@@ -1,6 +1,8 @@
 # Changes to CSS Syntax Patches For CSSTree
 
-### Unreleased (patch)
+### 1.1.1
+
+_March 14, 2026_
 
 - Remove patch for `<'filter'>`
 - Add `css-tree` as an optional peer dependency to set version constraints
