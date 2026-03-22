@@ -1160,7 +1160,7 @@
 	"image-animation": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | paused | running",
+		"syntax-a": "normal | paused | stopped | running",
 		"comment": ""
 	},
 	"image-orientation": {
@@ -1809,6 +1809,12 @@
 		"type": "modified",
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
+		"comment": ""
+	},
+	"scroll-marker-group": {
+		"type": "modified",
+		"syntax-b": "none | before | after",
+		"syntax-a": "none | [ [ before | after ] || [ links | tabs ] ]",
 		"comment": ""
 	},
 	"scroll-padding": {

@@ -41,7 +41,7 @@
 		}
 	},
 	"devDependencies": {
-		"@webref/css": "8.4.1",
+		"@webref/css": "8.5.0",
 		"css-tree": "^3.2.1",
 		"postcss": "^8.4"
 	},

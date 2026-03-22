@@ -1027,6 +1027,17 @@
 			"failing": []
 		}
 	},
+	"env-args": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "env( <declaration-value> , <declaration-value>? )",
+		"syntax-m": "env( <declaration-value> , <declaration-value>? )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"env()": {
 		"type": "modified",
 		"comment": "",
@@ -2126,6 +2137,31 @@
 		"tests": {
 			"passing": [],
 			"failing": []
+		}
+	},
+	"light-dark()": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "light-dark( <color> , <color> )",
+		"syntax-a": "light-dark( [ <color> , <color> ] | [ <image> , <image> ] )",
+		"syntax-m": "light-dark( [ <color> , <color> ] | [ <image> , <image> ] )",
+		"tests": {
+			"passing": [
+				{
+					"property": "color",
+					"value": "light-dark(red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "light-dark(url(light.jpg), url(dark.jpg))"
+				}
+			],
+			"failing": [
+				{
+					"property": "color",
+					"value": "light-dark(red, url(dark.jpg))"
+				}
+			]
 		}
 	},
 	"line-color-list": {

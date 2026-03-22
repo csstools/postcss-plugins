@@ -2722,8 +2722,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "normal | paused | running",
-		"syntax-m": "normal | paused | running",
+		"syntax-a": "normal | paused | stopped | running",
+		"syntax-m": "normal | paused | stopped | running",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3944,6 +3944,17 @@
 		"syntax-b": "<length> | <percentage>",
 		"syntax-a": "<length-percentage> | auto",
 		"syntax-m": "<length-percentage> | auto",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"scroll-marker-group": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "none | before | after",
+		"syntax-a": "none | [ [ before | after ] || [ links | tabs ] ]",
+		"syntax-m": "none | [ [ before | after ] || [ links | tabs ] ]",
 		"tests": {
 			"passing": [],
 			"failing": []

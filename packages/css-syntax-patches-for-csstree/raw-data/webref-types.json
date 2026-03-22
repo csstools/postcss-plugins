@@ -515,6 +515,9 @@
 	"ellipse()": {
 		"syntax": "ellipse( <radial-size>? [ at <position> ]? )"
 	},
+	"env-args": {
+		"syntax": "env( <declaration-value> , <declaration-value>? )"
+	},
 	"env()": {
 		"syntax": "env( <custom-ident> <integer [0,∞]>* , <declaration-value>? )"
 	},
@@ -903,7 +906,7 @@
 		"syntax": "[ <length> | <percentage> ]"
 	},
 	"light-dark()": {
-		"syntax": "light-dark( <color> , <color> )"
+		"syntax": "light-dark( [ <color> , <color> ] | [ <image> , <image> ] )"
 	},
 	"line-color-list": {
 		"syntax": "<line-color-or-repeat>#"

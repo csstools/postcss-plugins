@@ -1236,7 +1236,7 @@
 		"syntax": "none | manual | auto"
 	},
 	"image-animation": {
-		"syntax": "normal | paused | running"
+		"syntax": "normal | paused | stopped | running"
 	},
 	"image-orientation": {
 		"syntax": "from-image | none | [ <angle> || flip ]"
@@ -2046,7 +2046,7 @@
 		"syntax": "<length>"
 	},
 	"scroll-marker-group": {
-		"syntax": "none | before | after"
+		"syntax": "none | [ [ before | after ] || [ links | tabs ] ]"
 	},
 	"scroll-padding": {
 		"syntax": "[ auto | <length-percentage [0,∞]> ]{1,4}"
