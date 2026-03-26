@@ -513,8 +513,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
-		"syntax-a": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()>",
-		"syntax-m": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
+		"syntax-a": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark-color>",
+		"syntax-m": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark-color> | <-non-standard-color>",
 		"tests": {
 			"passing": [
 				{
@@ -1618,7 +1618,7 @@
 		"comment": "https://developer.mozilla.org/en-US/docs/Web/CSS/image/paint",
 		"syntax-b": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
 		"syntax-a": "<url> | <image()> | <image-set()> | <cross-fade()> | <element()> | <gradient>",
-		"syntax-m": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient>",
+		"syntax-m": "<url> | <image()> | <image-set()> | <element()> | <paint()> | <cross-fade()> | <gradient> | <light-dark-image>",
 		"tests": {
 			"passing": [
 				{
@@ -2139,12 +2139,34 @@
 			"failing": []
 		}
 	},
+	"light-dark-color": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "light-dark( <color> , <color> )",
+		"syntax-m": "light-dark( <color> , <color> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"light-dark-image": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "light-dark( <image> | none , <image> | none )",
+		"syntax-m": "light-dark( [ <image> | none ] , [ <image> | none ] )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"light-dark()": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "light-dark( <color> , <color> )",
-		"syntax-a": "light-dark( [ <color> , <color> ] | [ <image> , <image> ] )",
-		"syntax-m": "light-dark( [ <color> , <color> ] | [ <image> , <image> ] )",
+		"syntax-a": "<light-dark-color> | <light-dark-image>",
+		"syntax-m": "<light-dark-color> | <light-dark-image>",
 		"tests": {
 			"passing": [
 				{
@@ -2152,7 +2174,7 @@
 					"value": "light-dark(red, blue)"
 				},
 				{
-					"property": "color",
+					"property": "background-image",
 					"value": "light-dark(url(light.jpg), url(dark.jpg))"
 				}
 			],
@@ -2160,6 +2182,14 @@
 				{
 					"property": "color",
 					"value": "light-dark(red, url(dark.jpg))"
+				},
+				{
+					"property": "background-image",
+					"value": "light-dark(red, blue)"
+				},
+				{
+					"property": "color",
+					"value": "light-dark(url(light.jpg), url(dark.jpg))"
 				}
 			]
 		}
@@ -2313,6 +2343,39 @@
 		"syntax-b": "<media-not> | <media-and> | <media-in-parens>",
 		"syntax-a": "<media-not> | <media-in-parens> <media-and>*",
 		"syntax-m": "<media-not> | <media-in-parens> <media-and>*",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"media-feature": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "( [ <mf-plain> | <mf-boolean> | <mf-range> ] )",
+		"syntax-a": "[ <mf-plain> | <mf-boolean> | <mf-range> ]",
+		"syntax-m": "[ <mf-plain> | <mf-boolean> | <mf-range> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"media-import-condition": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<media-query-list>",
+		"syntax-m": "<media-query-list>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"media-in-parens": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "( <media-condition> ) | <media-feature> | <general-enclosed>",
+		"syntax-a": "( <media-condition> ) | ( <media-feature> ) | <general-enclosed>",
+		"syntax-m": "( <media-condition> ) | ( <media-feature> ) | <general-enclosed>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3546,6 +3609,17 @@
 			"failing": []
 		}
 	},
+	"scope-boundaries": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?",
+		"syntax-m": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"scope-end": {
 		"type": "modified",
 		"comment": "",
@@ -4013,12 +4087,23 @@
 			"failing": []
 		}
 	},
+	"supports-env-fn": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "env( <ident> )",
+		"syntax-m": "env( <ident> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"supports-feature": {
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<supports-decl> | <supports-selector-fn>",
-		"syntax-a": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-named-feature-fn> | <supports-decl>",
-		"syntax-m": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-named-feature-fn> | <supports-decl>",
+		"syntax-a": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-named-feature-fn> | <supports-env-fn> | <supports-decl>",
+		"syntax-m": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-named-feature-fn> | <supports-env-fn> | <supports-decl>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4041,6 +4126,17 @@
 		"syntax-b": "",
 		"syntax-a": "font-tech( <font-tech> )",
 		"syntax-m": "font-tech( <font-tech> )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"supports-import-condition": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "supports( [ <supports-condition> | <declaration> ] )",
+		"syntax-m": "supports( [ <supports-condition> | <declaration> ] )",
 		"tests": {
 			"passing": [],
 			"failing": []

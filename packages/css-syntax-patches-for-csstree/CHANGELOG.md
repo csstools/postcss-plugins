@@ -2,8 +2,7 @@
 
 ### Unreleased (patch)
 
-- Update `@webref/css` to [`v8.5.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.0)
-
+- Update `@webref/css` to [`v8.5.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.1)
 
 ### 1.1.1
 
@@ -11,7 +10,6 @@ _March 14, 2026_
 
 - Remove patch for `<'filter'>`
 - Add `css-tree` as an optional peer dependency to set version constraints
-- Update `@webref/css` to [`v8.4.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.4.0)
 
 ### 1.1.0
 

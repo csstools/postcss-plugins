@@ -230,7 +230,7 @@
 	"color": {
 		"type": "modified",
 		"syntax-b": "<color-base> | currentColor | <system-color> | <device-cmyk()> | <light-dark()> | <-non-standard-color>",
-		"syntax-a": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark()>",
+		"syntax-a": "<color-base> | currentColor | <system-color> | <contrast-color()> | <device-cmyk()> | <light-dark-color>",
 		"comment": ""
 	},
 	"color-font-tech": {
@@ -881,10 +881,22 @@
 		"syntax-a": "[ <length> | <percentage> ]",
 		"comment": ""
 	},
+	"light-dark-color": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "light-dark( <color> , <color> )",
+		"comment": ""
+	},
+	"light-dark-image": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "light-dark( <image> | none , <image> | none )",
+		"comment": ""
+	},
 	"light-dark()": {
 		"type": "modified",
 		"syntax-b": "light-dark( <color> , <color> )",
-		"syntax-a": "light-dark( [ <color> , <color> ] | [ <image> , <image> ] )",
+		"syntax-a": "<light-dark-color> | <light-dark-image>",
 		"comment": ""
 	},
 	"line-color-list": {
@@ -969,6 +981,24 @@
 		"type": "modified",
 		"syntax-b": "<media-not> | <media-and> | <media-in-parens>",
 		"syntax-a": "<media-not> | <media-in-parens> <media-and>*",
+		"comment": ""
+	},
+	"media-feature": {
+		"type": "modified",
+		"syntax-b": "( [ <mf-plain> | <mf-boolean> | <mf-range> ] )",
+		"syntax-a": "[ <mf-plain> | <mf-boolean> | <mf-range> ]",
+		"comment": ""
+	},
+	"media-import-condition": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<media-query-list>",
+		"comment": ""
+	},
+	"media-in-parens": {
+		"type": "modified",
+		"syntax-b": "( <media-condition> ) | <media-feature> | <general-enclosed>",
+		"syntax-a": "( <media-condition> ) | ( <media-feature> ) | <general-enclosed>",
 		"comment": ""
 	},
 	"media-or": {
@@ -1463,6 +1493,12 @@
 		"syntax-a": "running( <custom-ident> )",
 		"comment": ""
 	},
+	"scope-boundaries": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?",
+		"comment": ""
+	},
 	"scope-end": {
 		"type": "modified",
 		"syntax-b": "<forgiving-selector-list>",
@@ -1703,10 +1739,16 @@
 		"syntax-a": "( [ <declaration> | <supports-condition-name> ] )",
 		"comment": ""
 	},
+	"supports-env-fn": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "env( <ident> )",
+		"comment": ""
+	},
 	"supports-feature": {
 		"type": "modified",
 		"syntax-b": "<supports-decl> | <supports-selector-fn>",
-		"syntax-a": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-named-feature-fn> | <supports-decl>",
+		"syntax-a": "<supports-selector-fn> | <supports-font-tech-fn> | <supports-font-format-fn> | <supports-at-rule-fn> | <supports-named-feature-fn> | <supports-env-fn> | <supports-decl>",
 		"comment": ""
 	},
 	"supports-font-format-fn": {
@@ -1719,6 +1761,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "font-tech( <font-tech> )",
+		"comment": ""
+	},
+	"supports-import-condition": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "supports( [ <supports-condition> | <declaration> ] )",
 		"comment": ""
 	},
 	"supports-named-feature-fn": {
