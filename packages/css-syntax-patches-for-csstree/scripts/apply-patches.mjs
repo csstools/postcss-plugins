@@ -5,7 +5,7 @@ export function apply_patches(patches, onto) {
 	let has_outdated_patches = false;
 	let has_unmerged_patches = false;
 
-	let atrules = Object(null);
+	let atrules = Object.create(null);
 
 	for (const [name, definition] of Object.entries(onto.atrules)) {
 		for (const [descriptor_name, descriptor] of Object.entries(definition.descriptors)) {
@@ -57,7 +57,7 @@ export function apply_patches(patches, onto) {
 		}
 	}
 
-	let properties = Object(null);
+	let properties = Object.create(null);
 
 	for (const [name, definition] of Object.entries(onto.properties)) {
 		const patch = patches.properties[name];
@@ -103,7 +103,7 @@ export function apply_patches(patches, onto) {
 		properties[name] = patch['syntax-m'];
 	}
 
-	let types = Object(null);
+	let types = Object.create(null);
 
 	// Manual patches to smooth over compat between csstree and webref/css
 	types['dashed-ident'] = '<custom-property-name>';

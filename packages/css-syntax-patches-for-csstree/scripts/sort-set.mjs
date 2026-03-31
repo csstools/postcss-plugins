@@ -18,7 +18,7 @@ export function sort_set(source) {
 		return a.property.localeCompare(b.property);
 	});
 
-	const set = Object(null);
+	const set = Object.create(null);
 	slice.forEach((x) => {
 		set[x['prefixed-property']] = {
 			...x.definition,

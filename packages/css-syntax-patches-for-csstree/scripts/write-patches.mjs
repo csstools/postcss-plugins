@@ -49,15 +49,15 @@ function format_definition(definition) {
 }
 
 export async function write_patches(sets, patch_sets) {
-	const merged_sets = Object(null);
+	const merged_sets = Object.create(null);
 
 	for (const [set_name, patch_set] of Object.entries(patch_sets)) {
 		const set = sets[set_name];
-		merged_sets[set_name] = Object(null);
+		merged_sets[set_name] = Object.create(null);
 
 		for (const [kind_name, patch_kind] of Object.entries(patch_set)) {
 			const kind = set[kind_name];
-			merged_sets[set_name][kind_name] = Object(null);
+			merged_sets[set_name][kind_name] = Object.create(null);
 
 			for (const [name, patch_definition] of Object.entries(patch_kind)) {
 				const definition = kind[name];
@@ -67,7 +67,7 @@ export async function write_patches(sets, patch_sets) {
 
 				if (patch_definition.descriptors) {
 					merged_sets[set_name][kind_name][name] = {
-						descriptors: Object(null),
+						descriptors: Object.create(null),
 					};
 
 					for (const [descriptor_name, patch_descriptor] of Object.entries(patch_definition.descriptors)) {
@@ -104,7 +104,7 @@ export async function write_patches(sets, patch_sets) {
 			for (const [name, definition] of Object.entries(kind)) {
 				if (definition.descriptors) {
 					merged_sets[set_name][kind_name][name] ??= {
-						descriptors: Object(null),
+						descriptors: Object.create(null),
 					};
 
 					for (const [descriptor_name, descriptor] of Object.entries(definition.descriptors)) {
@@ -165,7 +165,7 @@ export async function write_patches(sets, patch_sets) {
 }
 
 function sort_object_keys(object) {
-	const copy = Object(null);
+	const copy = Object.create(null);
 
 	copy.type = object.type;
 	copy.comment = object.comment;

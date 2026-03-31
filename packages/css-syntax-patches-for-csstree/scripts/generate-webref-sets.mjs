@@ -25,16 +25,16 @@ function assign_new_atrule_descriptor_definition(set, atrule, name, definition) 
 	}
 
 	set[atrule] ??= {
-		descriptors: Object(null),
+		descriptors: Object.create(null),
 	};
 
 	set[atrule].descriptors[name] = definition;
 }
 
 export async function generate_webref_sets() {
-	const atrules = Object(null);
-	const properties = Object(null);
-	const types = Object(null);
+	const atrules = Object.create(null);
+	const properties = Object.create(null);
+	const types = Object.create(null);
 
 	// Set missing definitions
 	{

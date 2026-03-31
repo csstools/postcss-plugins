@@ -1,5 +1,5 @@
 export function diff_sets(a, b) {
-	const diff = Object(null);
+	const diff = Object.create(null);
 
 	for (const [name, definition] of Object.entries(a)) {
 		if (!b[name]) {
@@ -43,7 +43,7 @@ export function diff_sets(a, b) {
 }
 
 export function diff_atrule_sets(a, b) {
-	const diff = Object(null);
+	const diff = Object.create(null);
 
 	for (const [name, definition] of Object.entries(a)) {
 		if (!definition.descriptors) {
