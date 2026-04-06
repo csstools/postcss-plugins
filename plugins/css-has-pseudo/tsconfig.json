@@ -3,6 +3,7 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"declarationDir": ".",
+		"rootDir": "./src",
 		"strict": true
 	},
 	"include": ["./src/**/*", "test/_encode-decode.mjs"],
