@@ -2,7 +2,7 @@
 	"align-items": {
 		"type": "modified",
 		"syntax-b": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center",
-		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? <self-position>",
 		"comment": ""
 	},
 	"align-self": {
@@ -515,6 +515,12 @@
 		"syntax-a": "none | block-start | block-end | center | baseline | last-baseline",
 		"comment": ""
 	},
+	"caret-color": {
+		"type": "modified",
+		"syntax-b": "auto | <color>",
+		"syntax-a": "auto | <color> [ auto | <color> ]?",
+		"comment": ""
+	},
 	"clear": {
 		"type": "modified",
 		"syntax-b": "none | left | right | both | inline-start | inline-end",
@@ -638,7 +644,7 @@
 	"column-rule-visibility-items": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "all | around | between",
+		"syntax-a": "all | around | between | normal",
 		"comment": ""
 	},
 	"column-rule-width": {
@@ -668,31 +674,31 @@
 	"contain-intrinsic-block-size": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-a": "auto? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"contain-intrinsic-height": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-a": "auto? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"contain-intrinsic-inline-size": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-a": "auto? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"contain-intrinsic-size": {
 		"type": "modified",
 		"syntax-b": "[ auto? [ none | <length> ] ]{1,2}",
-		"syntax-a": "[ [ auto | from-element ]? [ none | <length [0,∞]> ] ]{1,2}",
+		"syntax-a": "[ auto? [ none | <length [0,∞]> ] ]{1,2}",
 		"comment": ""
 	},
 	"contain-intrinsic-width": {
 		"type": "modified",
 		"syntax-b": "auto? [ none | <length> ]",
-		"syntax-a": "[ auto | from-element ]? [ none | <length [0,∞]> ]",
+		"syntax-a": "auto? [ none | <length [0,∞]> ]",
 		"comment": ""
 	},
 	"container-type": {
@@ -1109,6 +1115,12 @@
 		"syntax-a": "auto | line | block",
 		"comment": ""
 	},
+	"frame-sizing": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | content-width | content-height | content-block-size | content-inline-size",
+		"comment": ""
+	},
 	"glyph-orientation-vertical": {
 		"type": "modified",
 		"syntax-b": "<angle>",
@@ -1233,6 +1245,12 @@
 		"type": "modified",
 		"syntax-b": "auto | isolate",
 		"syntax-a": "<isolation-mode>",
+		"comment": ""
+	},
+	"justify-items": {
+		"type": "modified",
+		"syntax-b": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center",
+		"syntax-a": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]",
 		"comment": ""
 	},
 	"justify-self": {
@@ -1439,64 +1457,70 @@
 		"syntax-a": "visible | hidden | clip | scroll | auto",
 		"comment": ""
 	},
+	"overflow-clip-margin": {
+		"type": "modified",
+		"syntax-b": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
+		"comment": ""
+	},
 	"overflow-clip-margin-block": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-block-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-block-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-bottom": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-inline": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-inline-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-inline-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-left": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-right": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-clip-margin-top": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<visual-box> || <length [0,∞]>",
+		"syntax-a": "<visual-box> || <length>",
 		"comment": ""
 	},
 	"overflow-inline": {
@@ -1586,7 +1610,7 @@
 	"position-anchor": {
 		"type": "modified",
 		"syntax-b": "auto | none | <anchor-name>",
-		"syntax-a": "normal | none | auto | <anchor-name>",
+		"syntax-a": "normal | none | auto | <anchor-name> | match-parent",
 		"comment": ""
 	},
 	"position-try-fallbacks": {
@@ -1712,7 +1736,7 @@
 	"row-rule-visibility-items": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "all | around | between",
+		"syntax-a": "all | around | between | normal",
 		"comment": ""
 	},
 	"row-rule-width": {
@@ -1725,6 +1749,12 @@
 		"type": "modified",
 		"syntax-b": "separate | collapse | auto",
 		"syntax-a": "separate | merge | auto",
+		"comment": ""
+	},
+	"ruby-overhang": {
+		"type": "modified",
+		"syntax-b": "auto | none",
+		"syntax-a": "auto | spaces",
 		"comment": ""
 	},
 	"rule": {
@@ -2048,7 +2078,7 @@
 	"stroke-width": {
 		"type": "modified",
 		"syntax-b": "<svg-length>",
-		"syntax-a": "[ <length-percentage> | <number> ]#",
+		"syntax-a": "[ <length-percentage> | <line-width> | <number> ]#",
 		"comment": ""
 	},
 	"tab-size": {

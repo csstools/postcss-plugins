@@ -76,9 +76,6 @@ export async function generate_webref_sets() {
 
 		// https://github.com/w3c/csswg-drafts/issues/13311
 		types['voice-family-name'] = '<string> | <custom-ident>+';
-
-		// https://github.com/w3c/webref/issues/1886
-		types['supports-env-fn'] = 'env( <ident> )';
 	}
 
 	const data = await css.listAll();

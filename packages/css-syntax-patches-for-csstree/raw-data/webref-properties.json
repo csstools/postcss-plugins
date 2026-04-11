@@ -12,7 +12,7 @@
 		"syntax": "normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position>"
 	},
 	"align-items": {
-		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center"
+		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? <self-position>"
 	},
 	"align-self": {
 		"syntax": "auto | <overflow-position>? [ normal | <self-position> ] | stretch | <baseline-position> | anchor-center"
@@ -567,7 +567,7 @@
 		"syntax": "auto | manual"
 	},
 	"caret-color": {
-		"syntax": "auto | <color>"
+		"syntax": "auto | <color> [ auto | <color> ]?"
 	},
 	"caret-shape": {
 		"syntax": "auto | bar | block | underscore"
@@ -660,7 +660,7 @@
 		"syntax": "<line-style-list> | <auto-line-style-list>"
 	},
 	"column-rule-visibility-items": {
-		"syntax": "all | around | between"
+		"syntax": "all | around | between | normal"
 	},
 	"column-rule-width": {
 		"syntax": "<line-width-list> | <auto-line-width-list>"
@@ -681,19 +681,19 @@
 		"syntax": "none | strict | content | [ [ size | inline-size ] || layout || style || paint ]"
 	},
 	"contain-intrinsic-block-size": {
-		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-height": {
-		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-inline-size": {
-		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"contain-intrinsic-size": {
-		"syntax": "[ [ auto | from-element ]? [ none | <length [0,∞]> ] ]{1,2}"
+		"syntax": "[ auto? [ none | <length [0,∞]> ] ]{1,2}"
 	},
 	"contain-intrinsic-width": {
-		"syntax": "[ auto | from-element ]? [ none | <length [0,∞]> ]"
+		"syntax": "auto? [ none | <length [0,∞]> ]"
 	},
 	"container": {
 		"syntax": "<'container-name'> [ / <'container-type'> ]?"
@@ -1121,6 +1121,9 @@
 	"forced-color-adjust": {
 		"syntax": "auto | none | preserve-parent-color"
 	},
+	"frame-sizing": {
+		"syntax": "auto | content-width | content-height | content-block-size | content-inline-size"
+	},
 	"gap": {
 		"syntax": "<'row-gap'> <'column-gap'>?"
 	},
@@ -1317,7 +1320,7 @@
 		"syntax": "normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ]"
 	},
 	"justify-items": {
-		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center"
+		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]"
 	},
 	"justify-self": {
 		"syntax": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center"
@@ -1668,37 +1671,37 @@
 		"syntax": "padding-box | content-box"
 	},
 	"overflow-clip-margin": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-block": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-block-end": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-block-start": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-bottom": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-inline": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-inline-end": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-inline-start": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-left": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-right": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-clip-margin-top": {
-		"syntax": "<visual-box> || <length [0,∞]>"
+		"syntax": "<visual-box> || <length>"
 	},
 	"overflow-inline": {
 		"syntax": "visible | hidden | clip | scroll | auto"
@@ -1824,7 +1827,7 @@
 		"syntax": "static | relative | absolute | sticky | fixed | <running()>"
 	},
 	"position-anchor": {
-		"syntax": "normal | none | auto | <anchor-name>"
+		"syntax": "normal | none | auto | <anchor-name> | match-parent"
 	},
 	"position-area": {
 		"syntax": "none | <position-area>"
@@ -1926,7 +1929,7 @@
 		"syntax": "<line-style-list> | <auto-line-style-list>"
 	},
 	"row-rule-visibility-items": {
-		"syntax": "all | around | between"
+		"syntax": "all | around | between | normal"
 	},
 	"row-rule-width": {
 		"syntax": "<line-width-list> | <auto-line-width-list>"
@@ -1938,7 +1941,7 @@
 		"syntax": "separate | merge | auto"
 	},
 	"ruby-overhang": {
-		"syntax": "auto | none"
+		"syntax": "auto | spaces"
 	},
 	"ruby-position": {
 		"syntax": "[ alternate || [ over | under ] ] | inter-character"
@@ -2286,7 +2289,7 @@
 		"syntax": "<bg-size>#"
 	},
 	"stroke-width": {
-		"syntax": "[ <length-percentage> | <number> ]#"
+		"syntax": "[ <length-percentage> | <line-width> | <number> ]#"
 	},
 	"tab-size": {
 		"syntax": "<number [0,∞]> | <length [0,∞]>"
