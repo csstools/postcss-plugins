@@ -281,39 +281,43 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 
 	// 2. Carry forward missing components
 	if (toNotation === colorData.colorNotation) {
-		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [0, 1, 2]);
+		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
 	} else if (
 		predefinedRGB_or_XYZ_Spaces.has(toNotation) &&
 		predefinedRGB_or_XYZ_Spaces.has(colorData.colorNotation)
 	) {
-		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [0, 1, 2]);
+		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
 	} else {
 		switch (toNotation) {
 			case ColorNotation.HSL:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HWB:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [2], outputColorData.channels, [0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [2], [0, 1], outputColorData.channels, [0], [1, 2]);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [2, 1, 0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [2, 1, 0], []);
 						break;
+					default:
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
 				}
 
 				break;
 			case ColorNotation.HWB:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [2]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [2], [0, 1]);
 						break;
+					default:
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
 				}
 
 				break;
@@ -321,16 +325,18 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.OKLab:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [2]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [2], [0, 1]);
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [0, 1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
 						break;
+					default:
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
 				}
 
 				break;
@@ -338,22 +344,27 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.OKLCH:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [2, 1, 0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [2, 1, 0], []);
 						break;
 					case ColorNotation.HWB:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [2]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [2], [0, 1]);
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], outputColorData.channels, [0]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], outputColorData.channels, [0, 1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
 						break;
+					default:
+						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
 				}
 
 				break;
+
+			default:
+				outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
 		}
 	}
 
@@ -452,12 +463,22 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 	return out;
 }
 
-function carryForwardMissingComponents(a: Color, aIndices: Array<number>, b: Color, bIndices: Array<number>): Color {
+function carryForwardMissingComponents(a: Color, aIndices: Array<number>, aSet: Array<number>, b: Color, bIndices: Array<number>, bSet: Array<number>): Color {
+	if (aIndices.length < 3 && a.every(Number.isNaN)) {
+		return [Number.NaN, Number.NaN, Number.NaN];
+	}
+
 	const output: Color = [...b];
 
-	for (const i of aIndices) {
+	for (let i = 0; i < aIndices.length; i++) {
 		if (Number.isNaN(a[aIndices[i]])) {
 			output[bIndices[i]] = Number.NaN;
+		}
+	}
+
+	if (aSet.length && aSet.every((i) => Number.isNaN(a[i]))) {
+		for (let i = 0; i < bSet.length; i++) {
+			output[bSet[i]] = Number.NaN;
 		}
 	}
 
