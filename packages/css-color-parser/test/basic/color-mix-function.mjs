@@ -135,6 +135,11 @@ const tests = [
 	['color-mix(in oklab, red 5%,)', ''],
 	['color-mix(in oklab, red, blue, green,)', ''],
 	['color-mix(in oklab, red, , green)', ''],
+
+	// Analogous sets
+	['color-mix(in oklch, rgb(200, 100, 50), oklch(none none none))', 'rgb(200, 100, 50)'],
+	['color-mix(in oklch, rgb(200, 100, 50), lab(none none none))', 'rgb(200, 100, 50)'],
+	['color-mix(in oklch, lab(40% 20% 10%), lab(40% 20% 10%))', 'rgb(136, 77, 75)'],
 ];
 
 for (const test of tests) {

@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (minor)
+
+- Add support for analogous set in color interpolations
+
 ### 4.0.2
 
 _February 21, 2026_
