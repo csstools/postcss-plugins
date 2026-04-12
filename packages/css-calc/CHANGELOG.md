@@ -1,5 +1,10 @@
 # Changes to CSS Calc
 
+### Unreleased (minor)
+
+- Add support for `round(line-width, 1.2345px)`
+- Add `devicePixelLength` option
+
 ### 3.1.1
 
 _February 13, 2026_

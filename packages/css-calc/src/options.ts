@@ -25,6 +25,12 @@ export type conversionOptions = {
 	precision?: number,
 
 	/**
+	 * The CSS pixel length of one device pixel.
+	 * Used when rounding to `line-width` and similar features
+	 */
+	devicePixelLength?: number,
+
+	/**
 	 * By default this package will try to preserve units.
 	 * The heuristic to do this is very simplistic.
 	 * We take the first unit we encounter and try to convert other dimensions to that unit.

@@ -11,6 +11,7 @@ export type conversionOptions = {
     onParseError?: (error: ParseError) => void;
     globals?: GlobalsWithStrings;
     precision?: number;
+    devicePixelLength?: number;
     toCanonicalUnits?: boolean;
     censorIntoStandardRepresentableValues?: boolean;
     rawPercentages?: boolean;
