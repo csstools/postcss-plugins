@@ -1,7 +1,8 @@
 import type { Calculation } from '../calculation';
 import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
-import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent, isTokenNumber } from '@csstools/css-tokenizer';
+import type { CSSToken, TokenDimension } from '@csstools/css-tokenizer';
+import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent, isTokenNumber, isTokenDimension } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
@@ -34,6 +35,8 @@ import { isNone } from '../util/is-none';
 import type { conversionOptions } from '../options';
 import type { RandomValueSharing} from './random';
 import { solveRandom } from './random';
+import { snapAsBorderWidth } from '../util/snap-to-border-width';
+import { convertUnit } from '../unit-conversions';
 
 type mathFunction = (node: FunctionNode, globals: Globals, options: conversionOptions) => Calculation | -1;
 
@@ -435,6 +438,7 @@ function min(minNode: FunctionNode, globals: Globals, options: conversionOptions
 
 const roundingStrategies = new Set([
 	'nearest',
+	'line-width',
 	'up',
 	'down',
 	'to-zero',
@@ -492,7 +496,23 @@ function round(roundNode: FunctionNode, globals: Globals, options: conversionOpt
 		return -1;
 	}
 
+	if (roundingStrategy === 'line-width') {
+		const dummyPx: CSSToken = [TokenType.Dimension, '1px', a.value[2], a.value[3], { value: 1, type: NumberType.Integer, unit: 'px' }];
+		const asPx = convertUnit(dummyPx, a.value);
+		if (!isTokenDimension(asPx) || asPx[4].unit !== 'px') {
+			return -1;
+		}
+	}
+
 	if (!hasComma && bValue.length === 0) {
+		if (roundingStrategy === 'line-width') {
+			if ((a.value as TokenDimension)[4].value <= 0) {
+				return -1;
+			}
+
+			return snapAsBorderWidth(roundNode, a.value, options);
+		}
+
 		bValue.push(
 			new TokenNode(
 				[TokenType.Number, '1', a.value[2], a.value[3], { value: 1, type: NumberType.Integer }],
