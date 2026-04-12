@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Add support for analogous set in color interpolations
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#320) (minor)
 
 ### 4.0.2
 

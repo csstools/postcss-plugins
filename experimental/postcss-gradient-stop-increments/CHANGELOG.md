@@ -1,5 +1,9 @@
 # Changes to PostCSS Gradient Stop Increments
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#320) (minor)
+
 ### 3.0.1
 
 _February 21, 2026_
