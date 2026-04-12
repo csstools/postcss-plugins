@@ -6,6 +6,14 @@
 - Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`3.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#302) (patch)
 - Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#502) (patch)
 - Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#502) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`5.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#503) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`6.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#603) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`5.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#503) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`5.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#503) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#403) (patch)
+- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`8.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#803) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`8.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#803) (patch)
 
 ### 5.0.6
 
