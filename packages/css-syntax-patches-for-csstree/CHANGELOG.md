@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Fixed missing `container-query` type definition in patch output
+
 ### 1.1.3
 
 _April 12, 2026_
