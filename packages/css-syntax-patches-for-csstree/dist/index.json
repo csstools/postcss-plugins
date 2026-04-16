@@ -435,6 +435,7 @@
 		"types": {
 			"dashed-ident": "<custom-property-name>",
 			"unicode-range-token": "<urange>",
+			"container-query": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]",
 			"alpha()": "alpha( [ from <color> ] [ / [ <alpha-value> | alpha | none ] ]? )",
 			"an+b": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
 			"anchored-feature": "fallback : <'position-try-fallbacks'>",

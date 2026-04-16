@@ -108,6 +108,7 @@ export function apply_patches(patches, onto) {
 	// Manual patches to smooth over compat between csstree and webref/css
 	types['dashed-ident'] = '<custom-property-name>';
 	types['unicode-range-token'] = '<urange>';
+	types['container-query'] = 'not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]';
 
 	for (const [name, definition] of Object.entries(onto.types)) {
 		const patch = patches.types[name];
