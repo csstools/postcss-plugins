@@ -42,7 +42,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss": "~8.5",
+		"postcss": "^8.5.9",
 		"postcss-8.4": "npm:postcss@~8.4"
 	},
 	"scripts": {

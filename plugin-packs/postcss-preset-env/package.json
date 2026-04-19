@@ -120,7 +120,7 @@
 		"postcss-selector-not": "^9.0.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.9"
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "*",

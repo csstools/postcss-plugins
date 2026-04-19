@@ -26,7 +26,7 @@
 		}
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.9"
 	},
 	"scripts": {
 		"prebuild": "node -e \"fs.rmSync('./dist', { recursive: true, force: true }); fs.mkdirSync('./dist');\"",
