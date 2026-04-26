@@ -45,11 +45,11 @@
 		"postcss-value-parser": "^4.2.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.10"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"autoprefixer": "^10.4.24"
+		"autoprefixer": "^10.5.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

@@ -43,7 +43,7 @@
 	"devDependencies": {
 		"@webref/css": "8.5.3",
 		"css-tree": "^3.2.1",
-		"postcss": "^8.4"
+		"postcss": "^8.5"
 	},
 	"scripts": {
 		"build": "node --stack-trace-limit=1000 ./scripts/index.mjs",
