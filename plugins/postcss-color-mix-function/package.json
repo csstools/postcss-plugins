@@ -48,7 +48,7 @@
 		"@csstools/utilities": "^3.0.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.5.10"
+		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*"
