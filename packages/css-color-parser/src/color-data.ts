@@ -292,32 +292,63 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.HSL:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HWB:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// HWB
+							colorData.channels, [0], [1, 2],
+							// HSL
+							outputColorData.channels, [0], [1, 2]
+						);
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [2], [0, 1], outputColorData.channels, [0], [1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LAB
+							colorData.channels, [0], [1, 2],
+							// HSL
+							outputColorData.channels, [2], [0, 1]
+						);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [2, 1, 0], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LCH
+							colorData.channels, [0, 1, 2], [],
+							// HSL
+							outputColorData.channels, [2, 1, 0], []
+						);
 						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							colorData.channels, [], [],
+							outputColorData.channels, [], []
+						);
 				}
 
 				break;
 			case ColorNotation.HWB:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// HSL
+							colorData.channels, [0], [1, 2],
+							// HWB
+							outputColorData.channels, [0], [1, 2]
+						);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [2], [0, 1]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LCH
+							colorData.channels, [2], [0, 1],
+							// HWB
+							outputColorData.channels, [0], [1, 2]
+						);
 						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							colorData.channels, [], [],
+							outputColorData.channels, [], []
+						);
 				}
 
 				break;
@@ -325,18 +356,36 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.OKLab:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [2], [0, 1]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// HSL
+							colorData.channels, [2], [0, 1],
+							// LAB
+							outputColorData.channels, [0], [1, 2]
+						);
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LAB
+							colorData.channels, [0, 1, 2], [],
+							// LAB
+							outputColorData.channels, [0, 1, 2], []
+						);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LCH
+							colorData.channels, [0], [1, 2],
+							// LAB
+							outputColorData.channels, [0], [1, 2]
+						);
 						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							colorData.channels, [], [],
+							outputColorData.channels, [], []
+						);
 				}
 
 				break;
@@ -344,27 +393,53 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 			case ColorNotation.OKLCH:
 				switch (colorData.colorNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [2, 1, 0], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							// HSL
+							colorData.channels, [0, 1, 2], [],
+							// LCH
+							outputColorData.channels, [2, 1, 0], []
+						);
 						break;
 					case ColorNotation.HWB:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [2], [0, 1]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// HWB
+							colorData.channels, [0], [1, 2],
+							// LCH
+							outputColorData.channels, [2], [0, 1]
+						);
 						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0], [1, 2], outputColorData.channels, [0], [1, 2]);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LAB
+							colorData.channels, [0], [1, 2],
+							// LCH
+							outputColorData.channels, [0], [1, 2]
+						);
 						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							// LCH
+							colorData.channels, [0, 1, 2], [],
+							// LCH
+							outputColorData.channels, [0, 1, 2], []
+						);
 						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
+						outputColorData.channels = carryForwardMissingComponents(
+							colorData.channels, [], [],
+							outputColorData.channels, [], []
+						);
 				}
 
 				break;
 
 			default:
-				outputColorData.channels = carryForwardMissingComponents(colorData.channels, [], [], outputColorData.channels, [], []);
+				outputColorData.channels = carryForwardMissingComponents(
+					colorData.channels, [], [],
+					outputColorData.channels, [], []
+				);
 		}
 	}
 
@@ -378,25 +453,25 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && out[1] <= 0.001) {
 				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.HWB:
-			if ((Math.max(0, reducePrecision(out[1], 4)) + Math.max(0, reducePrecision(out[2], 4))) >= 100) {
+			if (!Number.isNaN(out[1]) && !Number.isNaN(out[2]) && (Math.max(0, out[1]) + Math.max(0, out[2])) >= 99.999) {
 				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.LCH:
-			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 4) <= 0) {
+			if (!Number.isNaN(out[1]) && out[1] <= 0.0015) {
 				out[2] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.OKLCH:
-			if (!Number.isNaN(out[1]) && reducePrecision(out[1], 6) <= 0) {
+			if (!Number.isNaN(out[1]) && out[1] <= 0.000004) {
 				out[2] = Number.NaN;
 			}
 
@@ -416,13 +491,13 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 				out[1] = Number.NaN;
 			}
 
-			if (reducePrecision(out[1]) <= 0) {
+			if (!Number.isNaN(out[1]) && out[1] <= 0.001) {
 				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.HWB:
-			if ((Math.max(0, reducePrecision(out[1])) + Math.max(0, reducePrecision(out[2]))) >= 100) {
+			if (!Number.isNaN(out[1]) && !Number.isNaN(out[2]) && (Math.max(0, out[1]) + Math.max(0, out[2])) >= 99.999) {
 				out[0] = Number.NaN;
 			}
 			break;
@@ -433,7 +508,7 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 			break;
 		case ColorNotation.LCH:
-			if (reducePrecision(out[1]) <= 0) {
+			if (!Number.isNaN(out[1]) && out[1] <= 0.0015) {
 				out[2] = Number.NaN;
 			}
 
@@ -449,7 +524,7 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 			break;
 		case ColorNotation.OKLCH:
-			if (reducePrecision(out[1]) <= 0) {
+			if (!Number.isNaN(out[1]) && out[1] <= 0.000004) {
 				out[2] = Number.NaN;
 			}
 

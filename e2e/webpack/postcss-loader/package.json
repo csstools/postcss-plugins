@@ -8,8 +8,8 @@
 		"build": "webpack --config webpack.config.js"
 	},
 	"dependencies": {
-		"postcss": "^8.5.9",
-		"webpack": "^5.106.1",
+		"postcss": "^8.5.10",
+		"webpack": "^5.106.2",
 		"webpack-cli": "^7.0.0",
 		"postcss-loader": "^8.2.1",
 		"style-loader": "^4.0.0",
