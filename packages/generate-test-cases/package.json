@@ -20,7 +20,7 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"mdn-data": "^2.27.0"
+		"mdn-data": "^2.28.0"
 	},
 	"scripts": {
 		"build": "exit 0;",
