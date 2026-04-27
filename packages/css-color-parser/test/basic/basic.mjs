@@ -224,3 +224,103 @@ assert.equal(
 	colorDataFitsDisplayP3_Gamut(color(parse('color(display-p3 0.99 1.0001 0.99)'))),
 	false,
 );
+
+assert.deepStrictEqual(
+	color(parse('hsl(from lab(50% none none) h s l)')),
+	{
+		colorNotation: 'hsl',
+		channels: [NaN, NaN, 46.632660928353715],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lab(from hsl(none none 50%) l a b)')),
+	{
+		colorNotation: 'lab',
+		channels: [53.38896474111432, NaN, NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hwb(from lch(none none 50deg) h w b)')),
+	{
+		colorNotation: 'hwb',
+		channels: [NaN, NaN, NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lch(from hwb(50deg none none) l c h)')),
+	{
+		colorNotation: 'lch',
+		channels: [NaN, NaN, 87.26522367839932],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lab(from oklch(50% none none) l a b')),
+	{
+		colorNotation: 'lab',
+		channels: [42, NaN, NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`lab(from ${a}(none none none) l a b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`lch(from ${a}(none none none) l c h)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`oklab(from ${a}(none none none) l a b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`oklch(from ${a}(none none none) l c h)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`rgb(from ${a}(none none none) r g b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`hwb(from ${a}(none none none) h w b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`hsl(from ${a}(none none none) h s l)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
