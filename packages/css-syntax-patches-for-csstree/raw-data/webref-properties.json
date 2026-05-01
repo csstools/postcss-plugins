@@ -629,31 +629,31 @@
 	"column-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
 	},
-	"column-rule-edge-inset": {
+	"column-rule-inset": {
+		"syntax": "<'column-rule-inset-cap'> [ / <'column-rule-inset-junction'> ]?"
+	},
+	"column-rule-inset-cap": {
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
-	"column-rule-edge-inset-end": {
+	"column-rule-inset-cap-end": {
 		"syntax": "<length-percentage>"
 	},
-	"column-rule-edge-inset-start": {
+	"column-rule-inset-cap-start": {
 		"syntax": "<length-percentage>"
-	},
-	"column-rule-inset": {
-		"syntax": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?"
 	},
 	"column-rule-inset-end": {
 		"syntax": "<length-percentage>"
 	},
-	"column-rule-inset-start": {
-		"syntax": "<length-percentage>"
-	},
-	"column-rule-interior-inset": {
+	"column-rule-inset-junction": {
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
-	"column-rule-interior-inset-end": {
+	"column-rule-inset-junction-end": {
 		"syntax": "<length-percentage>"
 	},
-	"column-rule-interior-inset-start": {
+	"column-rule-inset-junction-start": {
+		"syntax": "<length-percentage>"
+	},
+	"column-rule-inset-start": {
 		"syntax": "<length-percentage>"
 	},
 	"column-rule-style": {
@@ -882,7 +882,7 @@
 		"syntax": "ltr | rtl"
 	},
 	"display": {
-		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | <display-outside> || [ <display-inside> | math ]"
+		"syntax": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]"
 	},
 	"dominant-baseline": {
 		"syntax": "auto | <baseline-metric>"
@@ -1023,10 +1023,10 @@
 		"syntax": "normal | <length-percentage> | infinite"
 	},
 	"font": {
-		"syntax": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>"
+		"syntax": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-font-family-name>"
 	},
 	"font-family": {
-		"syntax": "[ <family-name> | <generic-family> ]#"
+		"syntax": "[ <font-family-name> | <generic-font-family> ]#"
 	},
 	"font-feature-settings": {
 		"syntax": "normal | <feature-tag-value>#"
@@ -1077,10 +1077,10 @@
 		"syntax": "auto | none"
 	},
 	"font-variant": {
-		"syntax": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]"
+		"syntax": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <font-feature-value-name> ) || historical-forms || styleset( <font-feature-value-name># ) || character-variant( <font-feature-value-name># ) || swash( <font-feature-value-name> ) || ornaments( <font-feature-value-name> ) || annotation( <font-feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]"
 	},
 	"font-variant-alternates": {
-		"syntax": "normal | [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ]"
+		"syntax": "normal | [ stylistic( <font-feature-value-name> ) || historical-forms || styleset( <font-feature-value-name># ) || character-variant( <font-feature-value-name># ) || swash( <font-feature-value-name> ) || ornaments( <font-feature-value-name> ) || annotation( <font-feature-value-name> ) ]"
 	},
 	"font-variant-caps": {
 		"syntax": "normal | small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps"
@@ -1452,19 +1452,19 @@
 		"syntax": "luminance | alpha"
 	},
 	"mask-border-outset": {
-		"syntax": "[ <length> | <number> ]{1,4}"
+		"syntax": "<'border-image-outset'>"
 	},
 	"mask-border-repeat": {
-		"syntax": "[ stretch | repeat | round | space ]{1,2}"
+		"syntax": "<'border-image-repeat'>"
 	},
 	"mask-border-slice": {
-		"syntax": "[ <number> | <percentage> ]{1,4} fill?"
+		"syntax": "<'border-image-slice'>"
 	},
 	"mask-border-source": {
-		"syntax": "none | <image>"
+		"syntax": "<'border-image-source'>"
 	},
 	"mask-border-width": {
-		"syntax": "[ <length-percentage> | <number> | auto ]{1,4}"
+		"syntax": "<'border-image-width'>"
 	},
 	"-webkit-mask-box-image": {
 		"syntax": "[ <url> | <gradient> | none ] [ <length-percentage>{4} <-webkit-mask-box-repeat>{2} ]?"
@@ -1725,19 +1725,19 @@
 		"syntax": "none | auto"
 	},
 	"overscroll-behavior": {
-		"syntax": "[ contain | none | auto ]{1,2}"
+		"syntax": "[ contain | none | auto | chain ]{1,2}"
 	},
 	"overscroll-behavior-block": {
-		"syntax": "contain | none | auto"
+		"syntax": "contain | none | auto | chain"
 	},
 	"overscroll-behavior-inline": {
-		"syntax": "contain | none | auto"
+		"syntax": "contain | none | auto | chain"
 	},
 	"overscroll-behavior-x": {
-		"syntax": "contain | none | auto"
+		"syntax": "contain | none | auto | chain"
 	},
 	"overscroll-behavior-y": {
-		"syntax": "contain | none | auto"
+		"syntax": "contain | none | auto | chain"
 	},
 	"padding": {
 		"syntax": "<'padding-top'>{1,4}"
@@ -1786,6 +1786,9 @@
 	},
 	"paint-order": {
 		"syntax": "normal | [ fill || stroke || markers ]"
+	},
+	"path-length": {
+		"syntax": "none | @ @ unknown symbol \" number [ 0 , ∞ ] \""
 	},
 	"pause": {
 		"syntax": "<'pause-before'> <'pause-after'>?"
@@ -1898,31 +1901,31 @@
 	"row-rule-color": {
 		"syntax": "<line-color-list> | <auto-line-color-list>"
 	},
-	"row-rule-edge-inset": {
+	"row-rule-inset": {
+		"syntax": "<'column-rule-inset-cap'> [ / <'column-rule-inset-junction'> ]?"
+	},
+	"row-rule-inset-cap": {
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
-	"row-rule-edge-inset-end": {
+	"row-rule-inset-cap-end": {
 		"syntax": "<length-percentage>"
 	},
-	"row-rule-edge-inset-start": {
+	"row-rule-inset-cap-start": {
 		"syntax": "<length-percentage>"
-	},
-	"row-rule-inset": {
-		"syntax": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?"
 	},
 	"row-rule-inset-end": {
 		"syntax": "<length-percentage>"
 	},
-	"row-rule-inset-start": {
-		"syntax": "<length-percentage>"
-	},
-	"row-rule-interior-inset": {
+	"row-rule-inset-junction": {
 		"syntax": "<length-percentage> [ <length-percentage> ]?"
 	},
-	"row-rule-interior-inset-end": {
+	"row-rule-inset-junction-end": {
 		"syntax": "<length-percentage>"
 	},
-	"row-rule-interior-inset-start": {
+	"row-rule-inset-junction-start": {
+		"syntax": "<length-percentage>"
+	},
+	"row-rule-inset-start": {
 		"syntax": "<length-percentage>"
 	},
 	"row-rule-style": {
@@ -1955,20 +1958,20 @@
 	"rule-color": {
 		"syntax": "<'column-rule-color'>"
 	},
-	"rule-edge-inset": {
-		"syntax": "<'column-rule-edge-inset'>"
-	},
 	"rule-inset": {
 		"syntax": "<'column-rule-inset'>"
+	},
+	"rule-inset-cap": {
+		"syntax": "<'column-rule-inset-cap'>"
 	},
 	"rule-inset-end": {
 		"syntax": "<'column-rule-inset-end'>"
 	},
+	"rule-inset-junction": {
+		"syntax": "<'column-rule-inset-junction'>"
+	},
 	"rule-inset-start": {
 		"syntax": "<'column-rule-inset-start'>"
-	},
-	"rule-interior-inset": {
-		"syntax": "<'column-rule-interior-inset'>"
 	},
 	"rule-overlap": {
 		"syntax": "row-over-column | column-over-row"
@@ -2195,9 +2198,6 @@
 	"shape-rendering": {
 		"syntax": "auto | optimizeSpeed | crispEdges | geometricPrecision"
 	},
-	"shape-subtract": {
-		"syntax": "none | [ <basic-shape> | <uri> ]+"
-	},
 	"slider-orientation": {
 		"syntax": "auto | left-to-right | right-to-left | top-to-bottom | bottom-to-top"
 	},
@@ -2383,6 +2383,9 @@
 	},
 	"-webkit-text-fill-color": {
 		"syntax": "<color>"
+	},
+	"text-fit": {
+		"syntax": "[ none | grow | shrink ] [ consistent | per-line | per-line-all ]? <percentage>?"
 	},
 	"text-group-align": {
 		"syntax": "none | start | end | left | right | center"

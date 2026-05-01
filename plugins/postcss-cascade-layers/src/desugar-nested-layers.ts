@@ -21,7 +21,7 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model): v
 				return;
 			}
 
-			if (layerRule.parent?.type === 'atrule' && isProcessableLayerRule(layerRule.parent as AtRule)) {
+			if (layerRule.parent?.type === 'atrule' && isProcessableLayerRule(layerRule.parent)) {
 				const parent = layerRule.parent as AtRule;
 
 				{

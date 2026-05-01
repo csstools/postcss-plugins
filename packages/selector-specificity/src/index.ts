@@ -88,6 +88,7 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 	} else if (node.type === 'attribute') {
 		b += 1;
 	} else if (isPseudoElement(node)) {
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 		node = node as parser.Pseudo;
 
 		switch (node.value.toLowerCase()) {

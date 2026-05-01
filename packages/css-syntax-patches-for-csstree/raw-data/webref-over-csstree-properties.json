@@ -581,28 +581,28 @@
 		"syntax-a": "<line-color-list> | <auto-line-color-list>",
 		"comment": ""
 	},
-	"column-rule-edge-inset": {
+	"column-rule-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset-cap'> [ / <'column-rule-inset-junction'> ]?",
+		"comment": ""
+	},
+	"column-rule-inset-cap": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
 		"comment": ""
 	},
-	"column-rule-edge-inset-end": {
+	"column-rule-inset-cap-end": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"column-rule-edge-inset-start": {
+	"column-rule-inset-cap-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
-		"comment": ""
-	},
-	"column-rule-inset": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
 		"comment": ""
 	},
 	"column-rule-inset-end": {
@@ -611,25 +611,25 @@
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"column-rule-inset-start": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
-		"comment": ""
-	},
-	"column-rule-interior-inset": {
+	"column-rule-inset-junction": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
 		"comment": ""
 	},
-	"column-rule-interior-inset-end": {
+	"column-rule-inset-junction-end": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"column-rule-interior-inset-start": {
+	"column-rule-inset-junction-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
+		"comment": ""
+	},
+	"column-rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
@@ -920,7 +920,7 @@
 	"display": {
 		"type": "modified",
 		"syntax-b": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | <-non-standard-display>",
-		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | <display-outside> || [ <display-inside> | math ]",
+		"syntax-a": "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy> | grid-lanes | inline-grid-lanes | <display-outside> || [ <display-inside> | math ]",
 		"comment": ""
 	},
 	"dominant-baseline": {
@@ -1064,7 +1064,13 @@
 	"font": {
 		"type": "modified",
 		"syntax-b": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name> | <-non-standard-font>",
-		"syntax-a": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-family-name>",
+		"syntax-a": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-font-family-name>",
+		"comment": ""
+	},
+	"font-family": {
+		"type": "modified",
+		"syntax-b": "[ <family-name> | <generic-family> ]#",
+		"syntax-a": "[ <font-family-name> | <generic-font-family> ]#",
 		"comment": ""
 	},
 	"font-size-adjust": {
@@ -1094,7 +1100,13 @@
 	"font-variant": {
 		"type": "modified",
 		"syntax-b": "normal | none | [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> || stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero || <east-asian-variant-values> || <east-asian-width-values> || ruby ]",
-		"syntax-a": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]",
+		"syntax-a": "normal | none | [ [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ] || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || [ stylistic( <font-feature-value-name> ) || historical-forms || styleset( <font-feature-value-name># ) || character-variant( <font-feature-value-name># ) || swash( <font-feature-value-name> ) || ornaments( <font-feature-value-name> ) || annotation( <font-feature-value-name> ) ] || [ <numeric-figure-values> || <numeric-spacing-values> || <numeric-fraction-values> || ordinal || slashed-zero ] || [ <east-asian-variant-values> || <east-asian-width-values> || ruby ] || [ sub | super ] || [ text | emoji | unicode ] ]",
+		"comment": ""
+	},
+	"font-variant-alternates": {
+		"type": "modified",
+		"syntax-b": "normal | [ stylistic( <feature-value-name> ) || historical-forms || styleset( <feature-value-name># ) || character-variant( <feature-value-name># ) || swash( <feature-value-name> ) || ornaments( <feature-value-name> ) || annotation( <feature-value-name> ) ]",
+		"syntax-a": "normal | [ stylistic( <font-feature-value-name> ) || historical-forms || styleset( <font-feature-value-name># ) || character-variant( <font-feature-value-name># ) || swash( <font-feature-value-name> ) || ornaments( <font-feature-value-name> ) || annotation( <font-feature-value-name> ) ]",
 		"comment": ""
 	},
 	"font-variation-settings": {
@@ -1355,10 +1367,34 @@
 		"syntax-a": "none | <marker-ref>",
 		"comment": ""
 	},
+	"mask-border-outset": {
+		"type": "modified",
+		"syntax-b": "[ <length> | <number> ]{1,4}",
+		"syntax-a": "<'border-image-outset'>",
+		"comment": ""
+	},
+	"mask-border-repeat": {
+		"type": "modified",
+		"syntax-b": "[ stretch | repeat | round | space ]{1,2}",
+		"syntax-a": "<'border-image-repeat'>",
+		"comment": ""
+	},
 	"mask-border-slice": {
 		"type": "modified",
 		"syntax-b": "<number-percentage>{1,4} fill?",
-		"syntax-a": "[ <number> | <percentage> ]{1,4} fill?",
+		"syntax-a": "<'border-image-slice'>",
+		"comment": ""
+	},
+	"mask-border-source": {
+		"type": "modified",
+		"syntax-b": "none | <image>",
+		"syntax-a": "<'border-image-source'>",
+		"comment": ""
+	},
+	"mask-border-width": {
+		"type": "modified",
+		"syntax-b": "[ <length-percentage> | <number> | auto ]{1,4}",
+		"syntax-a": "<'border-image-width'>",
 		"comment": ""
 	},
 	"max-height": {
@@ -1541,6 +1577,36 @@
 		"syntax-a": "visible | hidden | clip | scroll | auto",
 		"comment": ""
 	},
+	"overscroll-behavior": {
+		"type": "modified",
+		"syntax-b": "[ contain | none | auto ]{1,2}",
+		"syntax-a": "[ contain | none | auto | chain ]{1,2}",
+		"comment": ""
+	},
+	"overscroll-behavior-block": {
+		"type": "modified",
+		"syntax-b": "contain | none | auto",
+		"syntax-a": "contain | none | auto | chain",
+		"comment": ""
+	},
+	"overscroll-behavior-inline": {
+		"type": "modified",
+		"syntax-b": "contain | none | auto",
+		"syntax-a": "contain | none | auto | chain",
+		"comment": ""
+	},
+	"overscroll-behavior-x": {
+		"type": "modified",
+		"syntax-b": "contain | none | auto",
+		"syntax-a": "contain | none | auto | chain",
+		"comment": ""
+	},
+	"overscroll-behavior-y": {
+		"type": "modified",
+		"syntax-b": "contain | none | auto",
+		"syntax-a": "contain | none | auto | chain",
+		"comment": ""
+	},
 	"page-break-after": {
 		"type": "modified",
 		"syntax-b": "auto | always | avoid | left | right | recto | verso",
@@ -1557,6 +1623,12 @@
 		"type": "modified",
 		"syntax-b": "auto | avoid",
 		"syntax-a": "avoid | auto | inherit",
+		"comment": ""
+	},
+	"path-length": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | @ @ unknown symbol \" number [ 0 , ∞ ] \"",
 		"comment": ""
 	},
 	"pause-after": {
@@ -1673,28 +1745,28 @@
 		"syntax-a": "<line-color-list> | <auto-line-color-list>",
 		"comment": ""
 	},
-	"row-rule-edge-inset": {
+	"row-rule-inset": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset-cap'> [ / <'column-rule-inset-junction'> ]?",
+		"comment": ""
+	},
+	"row-rule-inset-cap": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
 		"comment": ""
 	},
-	"row-rule-edge-inset-end": {
+	"row-rule-inset-cap-end": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"row-rule-edge-inset-start": {
+	"row-rule-inset-cap-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
-		"comment": ""
-	},
-	"row-rule-inset": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'column-rule-edge-inset'> [ / <'column-rule-interior-inset'> ]?",
 		"comment": ""
 	},
 	"row-rule-inset-end": {
@@ -1703,25 +1775,25 @@
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"row-rule-inset-start": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
-		"comment": ""
-	},
-	"row-rule-interior-inset": {
+	"row-rule-inset-junction": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
 		"comment": ""
 	},
-	"row-rule-interior-inset-end": {
+	"row-rule-inset-junction-end": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
 		"comment": ""
 	},
-	"row-rule-interior-inset-start": {
+	"row-rule-inset-junction-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<length-percentage>",
+		"comment": ""
+	},
+	"row-rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage>",
@@ -1775,16 +1847,16 @@
 		"syntax-a": "<'column-rule-color'>",
 		"comment": ""
 	},
-	"rule-edge-inset": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'column-rule-edge-inset'>",
-		"comment": ""
-	},
 	"rule-inset": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'column-rule-inset'>",
+		"comment": ""
+	},
+	"rule-inset-cap": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset-cap'>",
 		"comment": ""
 	},
 	"rule-inset-end": {
@@ -1793,16 +1865,16 @@
 		"syntax-a": "<'column-rule-inset-end'>",
 		"comment": ""
 	},
+	"rule-inset-junction": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<'column-rule-inset-junction'>",
+		"comment": ""
+	},
 	"rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<'column-rule-inset-start'>",
-		"comment": ""
-	},
-	"rule-interior-inset": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<'column-rule-interior-inset'>",
 		"comment": ""
 	},
 	"rule-overlap": {
@@ -1935,12 +2007,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<length-percentage [0,∞]>",
-		"comment": ""
-	},
-	"shape-subtract": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "none | [ <basic-shape> | <uri> ]+",
 		"comment": ""
 	},
 	"slider-orientation": {
@@ -2163,6 +2229,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "spaces || punctuation || symbols || narrow",
+		"comment": ""
+	},
+	"text-fit": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "[ none | grow | shrink ] [ consistent | per-line | per-line-all ]? <percentage>?",
 		"comment": ""
 	},
 	"text-group-align": {

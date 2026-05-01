@@ -35,6 +35,12 @@
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"comment": ""
 			},
+			"font-family": {
+				"type": "modified",
+				"syntax-b": "<family-name>",
+				"syntax-a": "<font-family-name>",
+				"comment": ""
+			},
 			"font-language-override": {
 				"type": "added",
 				"syntax-b": "",
@@ -127,6 +133,16 @@
 				"type": "added",
 				"syntax-b": "",
 				"syntax-a": "auto | block | swap | fallback | optional",
+				"comment": ""
+			}
+		}
+	},
+	"font-palette-values": {
+		"descriptors": {
+			"font-family": {
+				"type": "modified",
+				"syntax-b": "<family-name>#",
+				"syntax-a": "<font-family-name>#",
 				"comment": ""
 			}
 		}

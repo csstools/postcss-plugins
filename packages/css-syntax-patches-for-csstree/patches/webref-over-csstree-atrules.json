@@ -74,6 +74,17 @@
 					"failing": []
 				}
 			},
+			"font-family": {
+				"type": "modified",
+				"comment": "",
+				"syntax-b": "<family-name>",
+				"syntax-a": "<font-family-name>",
+				"syntax-m": "<font-family-name>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
 			"font-language-override": {
 				"type": "added",
 				"comment": "",
@@ -269,6 +280,21 @@
 				"syntax-b": "",
 				"syntax-a": "auto | block | swap | fallback | optional",
 				"syntax-m": "auto | block | swap | fallback | optional",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			}
+		}
+	},
+	"font-palette-values": {
+		"descriptors": {
+			"font-family": {
+				"type": "modified",
+				"comment": "",
+				"syntax-b": "<family-name>#",
+				"syntax-a": "<font-family-name>#",
+				"syntax-m": "<font-family-name>#",
 				"tests": {
 					"passing": [],
 					"failing": []

@@ -10,7 +10,7 @@ function assign_new_definition(set, name, definition) {
 
 	if (exists_in_set && exists_in_set !== definition) {
 		// eslint-disable-next-line no-console
-		console.error(`duplicate definition ${name}`);
+		console.error(`duplicate definition ${name}`, definition);
 	}
 
 	set[name] = definition;
@@ -38,8 +38,6 @@ export async function generate_webref_sets() {
 
 	// Set missing definitions
 	{
-		types['attr-unit'] = JSON.parse(await fs.readFile(path.join('raw-data', 'units.json'))).join(' | ');
-
 		types['size-keyword'] = JSON.parse(await fs.readFile(path.join('raw-data', 'size-keywords.json'))).join(' | ');
 
 		// https://github.com/w3c/csswg-drafts/issues/11127

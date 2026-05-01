@@ -121,7 +121,7 @@ function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<st
 		if (replacement) {
 
 			if (replacement.truthy.length === 1 && mediaQueryIsSimple(replacement.truthy[0])) {
-				let mediaFeature: MediaFeature | null = null;
+				let mediaFeature: MediaFeature | null = (null as MediaFeature | null);
 				const replacementMediaQuery = replacement.truthy[0];
 				replacementMediaQuery.walk((replacementEntry) => {
 					if (isMediaFeature(replacementEntry.node)) {
@@ -129,10 +129,6 @@ function transformComplexMediaQuery(mediaQuery: MediaQuery, replacements: Map<st
 						return false;
 					}
 				});
-
-				// TypeScript is unable to detect that `walk` is a synchronous function that is immediately called.
-				// TypeScript things the actual type is `never`
-				mediaFeature = mediaFeature as MediaFeature | null;
 
 				if (mediaFeature && mediaFeature.feature) {
 					parent.feature = mediaFeature.feature;
