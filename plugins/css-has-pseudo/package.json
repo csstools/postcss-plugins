@@ -62,7 +62,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"@mrhenry/core-web": "^1.2.4",
+		"@mrhenry/core-web": "^2.0.0",
 		"postcss-dir-pseudo-class": "*",
 		"postcss-logical": "*",
 		"postcss-nesting": "*",
