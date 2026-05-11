@@ -184,7 +184,7 @@ postcssNesting()
 }
 ```
 
-_`.beta:hover` has specificity as if `.beta` where an id selector, matching the specification._
+_`.beta:hover` has specificity as if `.beta` were an id selector, matching the specification._
 
 [specificity: 1, 1, 0](https://polypane.app/css-specificity-calculator/#selector=%3Ais(%23alpha%2C.beta)%3Ahover)
 
@@ -202,7 +202,7 @@ postcssNesting({
 }
 ```
 
-_`.beta:hover` has specificity as if `.beta` where a class selector, conflicting with the specification._
+_`.beta:hover` has specificity as if `.beta` were a class selector, conflicting with the specification._
 
 [specificity: 0, 2, 0](https://polypane.app/css-specificity-calculator/#selector=.beta%3Ahover)
 
@@ -246,8 +246,8 @@ postcssNesting({
 ```
 
 _this is a different selector than expected as `.beta + .alpha` matches `.beta` followed by `.alpha`._<br>
-_avoid these cases when you disable `:is()`_<br>
-_writing the selector without nesting is advised here_
+_avoid these cases when you disable `:is()`._<br>
+_writing the selector without nesting is advised here._
 
 ```css
 /* without nesting */
