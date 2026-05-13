@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-container-rule-prelude-list",
 	"description": "Declare a list of container queries in a single at-container rule",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
