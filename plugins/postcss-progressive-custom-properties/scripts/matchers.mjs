@@ -6,6 +6,7 @@ import { lightDarkMatchers } from './light-dark.mjs';
 import { relativeColorSyntaxMatches } from './relative-color-syntax.mjs';
 import { contrastColorMatchers } from './contrast-color.mjs';
 import { contentMatchers } from './content.mjs';
+import { imageMatchers } from './image.mjs';
 
 fs.writeFile(
 	'./src/matchers.ts',
@@ -35,6 +36,9 @@ fs.writeFile(
 
 			// content:
 			...contentMatchers,
+
+			// image:
+			...imageMatchers,
 		],
 		null,
 		'\t',
