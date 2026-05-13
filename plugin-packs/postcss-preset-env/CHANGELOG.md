@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 11.3.0
+
+_May 13, 2026_
 
 - Added `@csstools/postcss-container-rule-prelude-list` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list#readme) for usage details.
 - Added `@csstools/postcss-image-function` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function#readme) for usage details.
