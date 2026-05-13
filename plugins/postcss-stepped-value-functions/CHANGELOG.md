@@ -1,6 +1,8 @@
 # Changes to PostCSS Stepped Value Functions
 
-### Unreleased (patch)
+### 5.0.3
+
+_May 13, 2026_
 
 - Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#321) (patch)
 
