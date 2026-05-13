@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 4.1.1
+
+_May 13, 2026_
 
 - Fix analogous components and sets for `hwb()`
 - Align precision of powerless components with the specification
