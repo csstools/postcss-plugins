@@ -23,15 +23,15 @@ jobs:
       # Enable annotations only for node 24 + ubuntu
       matrix:
         os: [ubuntu-latest]
-        node: [20, 22, 24, 25]
+        node: [20, 22, 24, 25, 26]
         include:
         - os: macos-latest
-          node: 24
+          node: 26
         - os: windows-latest
-          node: 24
+          node: 26
         - os: ubuntu-latest
           is_base_os_version: true
-        - node: 24
+        - node: 26
           is_base_node_version: true
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
