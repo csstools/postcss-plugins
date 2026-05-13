@@ -78,6 +78,9 @@ jobs:
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
         if: matrix.is_base_node_version && matrix.is_base_os_version
+      - name: Puppeteer Install Chrome
+        run: npx puppeteer browsers install chrome
+        if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
       - name: test
