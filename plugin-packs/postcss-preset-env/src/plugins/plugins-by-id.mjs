@@ -11,6 +11,7 @@ import postcssColorFunctionDisplayP3Linear from '@csstools/postcss-color-functio
 import postcssColorFunctionalNotation from 'postcss-color-functional-notation';
 import postcssColorMixFunction from '@csstools/postcss-color-mix-function';
 import postcssColorMixVariadicFunctionArguments from '@csstools/postcss-color-mix-variadic-function-arguments';
+import postcssContainerRulePreludeList from '@csstools/postcss-container-rule-prelude-list';
 import postcssContentAltText from '@csstools/postcss-content-alt-text';
 import postcssContrastColorFunction from '@csstools/postcss-contrast-color-function';
 import postcssCustomMedia from 'postcss-custom-media';
@@ -33,6 +34,7 @@ import postcssHasPseudo from 'css-has-pseudo';
 import postcssColorHexAlpha from 'postcss-color-hex-alpha';
 import postcssHWBFunction from '@csstools/postcss-hwb-function';
 import postcssICUnit from '@csstools/postcss-ic-unit';
+import postcssImageFunction from '@csstools/postcss-image-function';
 import postcssImageSetFunction from 'postcss-image-set-function';
 import postcssIsPseudoClass from '@csstools/postcss-is-pseudo-class';
 import postcssLabFunction from 'postcss-lab-function';
@@ -85,6 +87,7 @@ export const pluginsById = new Map(
 		['color-functional-notation', postcssColorFunctionalNotation],
 		['color-mix', postcssColorMixFunction],
 		['color-mix-variadic-function-arguments', postcssColorMixVariadicFunctionArguments],
+		['container-rule-prelude-list', postcssContainerRulePreludeList],
 		['content-alt-text', postcssContentAltText],
 		['contrast-color-function', postcssContrastColorFunction],
 		['custom-media-queries', postcssCustomMedia],
@@ -107,6 +110,7 @@ export const pluginsById = new Map(
 		['hexadecimal-alpha-notation', postcssColorHexAlpha],
 		['hwb-function', postcssHWBFunction],
 		['ic-unit', postcssICUnit],
+		['image-function', postcssImageFunction],
 		['image-set-function', postcssImageSetFunction],
 		['is-pseudo-class', postcssIsPseudoClass],
 		['lab-function', postcssLabFunction],

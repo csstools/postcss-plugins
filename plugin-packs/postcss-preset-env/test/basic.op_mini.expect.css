@@ -722,18 +722,18 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		45,
-		110,
-		100
+		75,
+		170,
+		70
 	);
 
-	border-color: rgb(63, 61, 0);
+	border-color: rgb(41, 33, 0);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0.2472 0.23964 0);
+	border-color: color(display-p3 0.15961 0.13022 0);
 }
 }
 
@@ -784,4 +784,20 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .foo {
 	font-stretch: 50%;
+}
+
+.foo {
+	background-color: linear-gradient(purple,purple);
+}
+
+@container (width > 260px) {
+	.foo {
+		color: red;
+	}
+}
+
+@container style(--foo: bar) {
+	.foo {
+		color: red;
+	}
 }

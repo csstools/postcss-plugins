@@ -586,8 +586,8 @@
 	color-5: rgba(148, 0, 122, 0.65);
 	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
 	color-6: rgba(179, 0, 255, 0.65);
-	color-7: color-mix(in hsl, red);
-	color-8: color-mix(in srgb, red, lime, blue);
+	color-7: rgb(255, 0, 0);
+	color-8: rgb(85, 85, 85);
 }
 
 .gradients-interpolation-method {
@@ -769,4 +769,14 @@
 
 .foo {
 	font-stretch: 50%;
+}
+
+.foo {
+	background-color: image(purple);
+}
+
+@container (width > 260px), style(--foo: bar) {
+	.foo {
+		color: red;
+	}
 }

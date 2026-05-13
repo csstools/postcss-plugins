@@ -345,6 +345,16 @@
 		"importName": "postcssSyntaxDescriptorSyntaxProduction"
 	},
 	{
+		"packageName": "@csstools/postcss-image-function",
+		"id": "image-function",
+		"importName": "postcssImageFunction"
+	},
+	{
+		"packageName": "@csstools/postcss-container-rule-prelude-list",
+		"id": "container-rule-prelude-list",
+		"importName": "postcssContainerRulePreludeList"
+	},
+	{
 		"packageName": "@csstools/postcss-progressive-custom-properties",
 		"id": "progressive-custom-properties",
 		"importName": "postcssProgressiveCustomProperties",

@@ -770,3 +770,13 @@
 .foo {
 	font-width: 50%;
 }
+
+.foo {
+	background-color: image(purple);
+}
+
+@container (width > 260px), style(--foo: bar) {
+	.foo {
+		color: red;
+	}
+}

@@ -11,6 +11,7 @@ import type { pluginOptions as postcssColorFunctionDisplayP3LinearOptions } from
 import type { pluginOptions as postcssColorFunctionalNotationOptions } from 'postcss-color-functional-notation';
 import type { pluginOptions as postcssColorMixFunctionOptions } from '@csstools/postcss-color-mix-function';
 import type { pluginOptions as postcssColorMixVariadicFunctionArgumentsOptions } from '@csstools/postcss-color-mix-variadic-function-arguments';
+import type { pluginOptions as postcssContainerRulePreludeListOptions } from '@csstools/postcss-container-rule-prelude-list';
 import type { pluginOptions as postcssContentAltTextOptions } from '@csstools/postcss-content-alt-text';
 import type { pluginOptions as postcssContrastColorFunctionOptions } from '@csstools/postcss-contrast-color-function';
 import type { pluginOptions as postcssCustomMediaOptions } from 'postcss-custom-media';
@@ -33,6 +34,7 @@ import type { pluginOptions as postcssHasPseudoOptions } from 'css-has-pseudo';
 import type { pluginOptions as postcssColorHexAlphaOptions } from 'postcss-color-hex-alpha';
 import type { pluginOptions as postcssHWBFunctionOptions } from '@csstools/postcss-hwb-function';
 import type { pluginOptions as postcssICUnitOptions } from '@csstools/postcss-ic-unit';
+import type { pluginOptions as postcssImageFunctionOptions } from '@csstools/postcss-image-function';
 import type { pluginOptions as postcssImageSetFunctionOptions } from 'postcss-image-set-function';
 import type { pluginOptions as postcssIsPseudoClassOptions } from '@csstools/postcss-is-pseudo-class';
 import type { pluginOptions as postcssLabFunctionOptions } from 'postcss-lab-function';
@@ -97,6 +99,8 @@ export type pluginsOptions = {
 	'color-mix'?: subPluginOptions<postcssColorMixFunctionOptions>
 	/** plugin options for "@csstools/postcss-color-mix-variadic-function-arguments" */
 	'color-mix-variadic-function-arguments'?: subPluginOptions<postcssColorMixVariadicFunctionArgumentsOptions>
+	/** plugin options for "@csstools/postcss-container-rule-prelude-list" */
+	'container-rule-prelude-list'?: subPluginOptions<postcssContainerRulePreludeListOptions>
 	/** plugin options for "@csstools/postcss-content-alt-text" */
 	'content-alt-text'?: subPluginOptions<postcssContentAltTextOptions>
 	/** plugin options for "@csstools/postcss-contrast-color-function" */
@@ -141,6 +145,8 @@ export type pluginsOptions = {
 	'hwb-function'?: subPluginOptions<postcssHWBFunctionOptions>
 	/** plugin options for "@csstools/postcss-ic-unit" */
 	'ic-unit'?: subPluginOptions<postcssICUnitOptions>
+	/** plugin options for "@csstools/postcss-image-function" */
+	'image-function'?: subPluginOptions<postcssImageFunctionOptions>
 	/** plugin options for "postcss-image-set-function" */
 	'image-set-function'?: subPluginOptions<postcssImageSetFunctionOptions>
 	/** plugin options for "@csstools/postcss-is-pseudo-class" */

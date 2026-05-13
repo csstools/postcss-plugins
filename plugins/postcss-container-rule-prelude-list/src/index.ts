@@ -2,6 +2,8 @@ import { parseCommaSeparatedListOfComponentValues, stringify } from '@csstools/c
 import { tokenize } from '@csstools/css-tokenizer';
 import type { PluginCreator } from 'postcss';
 
+const CONTAINER_NAME_REGEX = /^container$/i;
+
 /** postcss-container-rule-prelude-list plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
@@ -21,6 +23,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-container-rule-prelude-list',
 		AtRule(rule): void {
+			if (!CONTAINER_NAME_REGEX.test(rule.name)) {
+				return;
+			}
+
 			if (!rule.params.includes(',')) {
 				return;
 			}
