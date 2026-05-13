@@ -26,12 +26,12 @@ jobs:
         node: [20, 22, 24, 25, 26]
         include:
         - os: macos-latest
-          node: 26
+          node: 24
         - os: windows-latest
-          node: 26
+          node: 24
         - os: ubuntu-latest
           is_base_os_version: true
-        - node: 26
+        - node: 24
           is_base_node_version: true
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -77,9 +77,6 @@ jobs:
       # https://github.com/puppeteer/puppeteer/pull/13196/files
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
-        if: matrix.is_base_node_version && matrix.is_base_os_version
-      - name: Puppeteer Install Chrome
-        run: npx puppeteer browsers install chrome
         if: matrix.is_base_node_version && matrix.is_base_os_version
 
         # Basic tests
