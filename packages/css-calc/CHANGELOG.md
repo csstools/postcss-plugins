@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (patch)
+
+- Update `round(line-width, 1.2345px)` to match the latest spec
+
 ### 3.2.0
 
 _April 12, 2026_

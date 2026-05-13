@@ -1,7 +1,7 @@
 import type { Calculation } from '../calculation';
 import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
-import type { CSSToken, TokenDimension } from '@csstools/css-tokenizer';
+import type { CSSToken } from '@csstools/css-tokenizer';
 import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent, isTokenNumber, isTokenDimension } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
@@ -506,10 +506,6 @@ function round(roundNode: FunctionNode, globals: Globals, options: conversionOpt
 
 	if (!hasComma && bValue.length === 0) {
 		if (roundingStrategy === 'line-width') {
-			if ((a.value as TokenDimension)[4].value <= 0) {
-				return -1;
-			}
-
 			return snapAsBorderWidth(roundNode, a.value, options);
 		}
 

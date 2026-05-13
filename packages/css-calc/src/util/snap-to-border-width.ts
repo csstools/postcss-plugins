@@ -20,27 +20,33 @@ export function snapAsBorderWidth(fnNode: FunctionNode, aToken: CSSToken, option
 		return -1;
 	}
 
-	if (aTokenAsPixels[4].value < 0) {
-		// Assert: len is non-negative.
-		return -1;
-	}
-
 	if (Number.isInteger(aTokenAsPixels[4].value / devicePixelLength)) {
 		// If len is an integer number of device pixels, do nothing.
 		return resultToCalculation(fnNode, aToken, aToken[4].value);
 	}
 
-	if (aTokenAsPixels[4].value > 0 && aTokenAsPixels[4].value < devicePixelLength) {
-		// If len is greater than zero, but less than 1 device pixel, round len up to 1 device pixel.
-		return resultToCalculation(fnNode, aToken, convertUnit(aToken, devicePixelLengthToken)[4].value);
-	}
+	// Greater than 0
+	if (aTokenAsPixels[4].value > 0) {
+		if (aTokenAsPixels[4].value < devicePixelLength) {
+			// If the absolute value is greater than zero, but less than 1 device pixel, round it away from zero to 1 device pixel.
+			return resultToCalculation(fnNode, aToken, convertUnit(aToken, devicePixelLengthToken)[4].value);
+		}
 
-	if (aTokenAsPixels[4].value > devicePixelLength) {
-		// If len is greater than 1 device pixel, round it down to the nearest integer number of device pixels.
+		// If the absolute value is greater than 1 device pixel, round it towards zero to the nearest integer number of device pixels.
 		const down = Math.floor(aTokenAsPixels[4].value / devicePixelLengthToken[4].value) * devicePixelLengthToken[4].value;
 		aTokenAsPixels[4].value = down;
 		return resultToCalculation(fnNode, aToken, convertUnit(aToken, aTokenAsPixels)[4].value);
 	}
 
-	return resultToCalculation(fnNode, aToken, aToken[4].value);
+	// Less than 0
+
+	if (Math.abs(aTokenAsPixels[4].value) < devicePixelLength) {
+		// If the absolute value is greater than zero, but less than 1 device pixel, round it away from zero to 1 device pixel.
+		return resultToCalculation(fnNode, aToken, convertUnit(aToken, devicePixelLengthToken)[4].value * -1);
+	}
+
+	// If the absolute value is greater than 1 device pixel, round it towards zero to the nearest integer number of device pixels.
+	const up = Math.ceil(aTokenAsPixels[4].value / devicePixelLengthToken[4].value) * devicePixelLengthToken[4].value;
+	aTokenAsPixels[4].value = up;
+	return resultToCalculation(fnNode, aToken, convertUnit(aToken, aTokenAsPixels)[4].value);
 }

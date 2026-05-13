@@ -97,7 +97,7 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 				const downDiff = Math.abs(aToken[4].value - down);
 				const upDiff = Math.abs(aToken[4].value - up);
 
-				if (roundingStrategy === 'line-width' && aToken[4].value > 0 && (up === 0 || down === 0)) {
+				if (roundingStrategy === 'line-width' && aToken[4].value >= 0 && (up === 0 || down === 0)) {
 					result = up !== 0 ? up : down;
 				} else if (downDiff === upDiff) {
 					result = up;

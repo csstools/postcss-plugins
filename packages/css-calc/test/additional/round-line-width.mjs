@@ -8,12 +8,32 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(line-width, 0px)'),
-	'round(line-width, 0px)',
+	'0px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 1)'),
+	'round(line-width, 1)',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -1)'),
+	'round(line-width, -1)',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 1, 0.5)'),
+	'round(line-width, 1, 0.5)',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -1, 0.5)'),
+	'round(line-width, -1, 0.5)',
 );
 
 assert.strictEqual(
 	calc('round(line-width, -1px)'),
-	'round(line-width, -1px)',
+	'-1px',
 );
 
 assert.strictEqual(
@@ -73,7 +93,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('round(line-width, -5px, 2px)', { devicePixelLength: 0.5 }),
-	'round(line-width, -5px, 2px)',
+	'-4px',
 );
 
 assert.strictEqual(
@@ -92,6 +112,76 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
+	calc('round(line-width, 0.29px, 0.2px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.29px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.31px, 0.2px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.31px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.39px, 0.2px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.39px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.41px, 0.2px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.41px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.49px, 0.2px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.49px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.51px, 0.2px)', { devicePixelLength: 0.3 }),
+	'0.6px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.51px)', { devicePixelLength: 0.3 }),
+	'0.3px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.49px)', { devicePixelLength: 0.5 }),
+	'0.5px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.49px, 0.01px)', { devicePixelLength: 0.5 }),
+	'0.5px',
+);
+
+assert.strictEqual(
 	calc('round(line-width, 1.01px)', { devicePixelLength: 0.5 }),
 	'1px',
 );
@@ -99,6 +189,36 @@ assert.strictEqual(
 assert.strictEqual(
 	calc('round(line-width, 1.01px, 0.01px)', { devicePixelLength: 0.5 }),
 	'1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.51px)', { devicePixelLength: 0.5 }),
+	'0.5px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, 0.51px, 0.01px)', { devicePixelLength: 0.5 }),
+	'0.5px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.99px)', { devicePixelLength: 0.5 }),
+	'-0.5px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.99px, 0.01px)', { devicePixelLength: 0.5 }),
+	'-0.5px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -1.01px)', { devicePixelLength: 0.5 }),
+	'-1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -1.01px, 0.01px)', { devicePixelLength: 0.5 }),
+	'-1px',
 );
 
 assert.strictEqual(
