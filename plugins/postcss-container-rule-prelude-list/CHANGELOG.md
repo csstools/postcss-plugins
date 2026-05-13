@@ -1,6 +1,8 @@
 # Changes to PostCSS Container Rule Prelude List
 
-### Unreleased (patch)
+### 1.0.1
+
+_May 13, 2026_
 
 - Only transform `@container` rules
 
