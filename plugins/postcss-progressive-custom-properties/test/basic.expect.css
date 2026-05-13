@@ -526,3 +526,23 @@
 	content: "a" "b";
 	content: "a" / "b";
 }
+
+:root {
+	--image-function-1: linear-gradient(red);
+}
+
+@supports (background-image: image(red)) {
+:root {
+	--image-function-1: image(red);
+}
+}
+
+:root {
+	color: var(--green);
+}
+
+@supports (background-image: image(red)) {
+:root {
+	color: image(var(--green));
+}
+}

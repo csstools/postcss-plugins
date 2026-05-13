@@ -296,3 +296,13 @@
 	content: "a" "b";
 	content: "a" / "b";
 }
+
+:root {
+	--image-function-1: linear-gradient(red);
+	--image-function-1: image(red);
+}
+
+:root {
+	color: var(--green);
+	color: image(var(--green));
+}

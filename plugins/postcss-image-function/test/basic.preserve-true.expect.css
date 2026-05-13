@@ -1,0 +1,33 @@
+.foo {
+	background-image: linear-gradient(rgba(0, 0, 255, .5),rgba(0, 0, 255, .5)), url("bg-image.png");
+	background-image: image(rgba(0, 0, 255, .5)), url("bg-image.png");
+}
+
+.foo {
+	background-image: linear-gradient(rgba(0, 0, 255, .5),rgba(0, 0, 255, .5)), linear-gradient(rgba(255, 0, 255, .5),rgba(255, 0, 255, .5)), url("bg-image.png");
+	background-image: image(rgba(0, 0, 255, .5)), image(rgba(255, 0, 255, .5)), url("bg-image.png");
+}
+
+.foo {
+	--image: linear-gradient(red,red);
+}
+
+@supports (background-image: image(red)) {
+.foo {
+	--image: image(red);
+}
+}
+
+.ignore {
+	background-image: image();
+}
+
+.ignore {
+	background-image: image(foo bar);
+}
+
+@supports (background: image(purple)) {
+	.ignore {
+		background-image: image(rgba(0, 0, 255, .5)), image(rgba(255, 0, 255, .5)), url("bg-image.png");
+	}
+}

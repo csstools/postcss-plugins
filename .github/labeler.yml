@@ -143,6 +143,12 @@
       - plugins/postcss-conditional-values/**
       - experimental/postcss-conditional-values/**
 
+"plugins/postcss-container-rule-prelude-list":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-container-rule-prelude-list/**
+      - experimental/postcss-container-rule-prelude-list/**
+
 "plugins/postcss-content-alt-text":
   - changed-files:
     - any-glob-to-any-file:
@@ -274,6 +280,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-ic-unit/**
       - experimental/postcss-ic-unit/**
+
+"plugins/postcss-image-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-image-function/**
+      - experimental/postcss-image-function/**
 
 "plugins/postcss-image-set-function":
   - changed-files:

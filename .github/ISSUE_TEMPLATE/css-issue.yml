@@ -79,6 +79,7 @@ body:
         - PostCSS Color Mix Function
         - PostCSS Color Mix Variadic Function Arguments
         - PostCSS Conditional Values
+        - PostCSS Container Rule Prelude List
         - PostCSS Content Alt Text
         - PostCSS Contrast Color Functions
         - PostCSS Custom Media Queries
@@ -100,6 +101,7 @@ body:
         - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
         - PostCSS IC Unit
+        - PostCSS Image Function
         - PostCSS Image Set Function
         - PostCSS Initial
         - PostCSS Is Pseudo Class

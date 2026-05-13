@@ -3407,5 +3407,22 @@ export const matchers = [
 				"value": "/"
 			}
 		]
+	},
+	{
+		"supports": "image(red)",
+		"property": "background-image",
+		"sniff": "image(",
+		"matchers": [
+			{
+				"type": "function",
+				"value": "image",
+				"nodes": [
+					{
+						"type": "word",
+						"isVariable": true
+					}
+				]
+			}
+		]
 	}
 ];
