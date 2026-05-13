@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (minor)
+### 5.1.0
+
+_May 13, 2026_
 
 - Add support for `image(red)`
 
