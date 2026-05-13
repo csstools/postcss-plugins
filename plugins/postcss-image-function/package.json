@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-image-function",
 	"description": "Generate a solid-color image from any color",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
