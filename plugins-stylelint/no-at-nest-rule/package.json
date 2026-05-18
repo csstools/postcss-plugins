@@ -44,7 +44,7 @@
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "^2.0.0",
-		"postcss": "^8.5.10",
+		"postcss": "^8.5.14",
 		"stylelint": "^17.11.0",
 		"stylelint-test-rule-node": "^1.0.0"
 	},
