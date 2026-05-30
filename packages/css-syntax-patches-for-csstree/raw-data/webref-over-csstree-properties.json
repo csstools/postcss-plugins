@@ -419,6 +419,12 @@
 		"syntax-a": "none | [ <basic-shape> <geometry-box>? ]{1,2}",
 		"comment": ""
 	},
+	"border-spacing": {
+		"type": "modified",
+		"syntax-b": "<length>{1,2}",
+		"syntax-a": "<length [0,∞]>{1,2}",
+		"comment": ""
+	},
 	"border-start-end-radius": {
 		"type": "modified",
 		"syntax-b": "<'border-top-left-radius'>",
@@ -590,49 +596,49 @@
 	"column-rule-inset-cap": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<inset-value> <inset-value>?",
 		"comment": ""
 	},
 	"column-rule-inset-cap-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"column-rule-inset-cap-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"column-rule-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"column-rule-inset-junction": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<inset-value> <inset-value>?",
 		"comment": ""
 	},
 	"column-rule-inset-junction-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"column-rule-inset-junction-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"column-rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"column-rule-style": {
@@ -881,18 +887,6 @@
 		"syntax-a": "<'corner-top-left-shape'>{1,2}",
 		"comment": ""
 	},
-	"cue-after": {
-		"type": "modified",
-		"syntax-b": "<url> <decibel>? | none",
-		"syntax-a": "<uri> <decibel>? | none",
-		"comment": ""
-	},
-	"cue-before": {
-		"type": "modified",
-		"syntax-b": "<url> <decibel>? | none",
-		"syntax-a": "<uri> <decibel>? | none",
-		"comment": ""
-	},
 	"cursor": {
 		"type": "modified",
 		"syntax-b": "[ [ <url> [ <x> <y> ]? , ]* [ auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out | grab | grabbing | hand | -webkit-grab | -webkit-grabbing | -webkit-zoom-in | -webkit-zoom-out | -moz-grab | -moz-grabbing | -moz-zoom-in | -moz-zoom-out ] ]",
@@ -1013,10 +1007,22 @@
 		"syntax-a": "<number [0,∞]>",
 		"comment": ""
 	},
+	"flex-line-count": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<integer [1,∞]>",
+		"comment": ""
+	},
 	"flex-shrink": {
 		"type": "modified",
 		"syntax-b": "<number>",
 		"syntax-a": "<number [0,∞]>",
+		"comment": ""
+	},
+	"flex-wrap": {
+		"type": "modified",
+		"syntax-b": "nowrap | wrap | wrap-reverse",
+		"syntax-a": "nowrap | [ wrap | wrap-reverse ] || balance",
 		"comment": ""
 	},
 	"float": {
@@ -1058,7 +1064,7 @@
 	"flow-tolerance": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "normal | <length-percentage> | infinite",
+		"syntax-a": "normal | <length-percentage [0,∞]> | infinite",
 		"comment": ""
 	},
 	"font": {
@@ -1691,6 +1697,12 @@
 		"syntax-a": "none | [ [ <dashed-ident> || <try-tactic> ] | <position-area> ]#",
 		"comment": ""
 	},
+	"position-visibility": {
+		"type": "modified",
+		"syntax-b": "always | [ anchors-valid || anchors-visible || no-overflow ]",
+		"syntax-a": "always | [ anchor-valid || anchor-visible || no-overflow ]",
+		"comment": ""
+	},
 	"quotes": {
 		"type": "modified",
 		"syntax-b": "none | auto | [ <string> <string> ]+",
@@ -1754,49 +1766,49 @@
 	"row-rule-inset-cap": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<inset-value> <inset-value>?",
 		"comment": ""
 	},
 	"row-rule-inset-cap-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"row-rule-inset-cap-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"row-rule-inset-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"row-rule-inset-junction": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> [ <length-percentage> ]?",
+		"syntax-a": "<inset-value> <inset-value>?",
 		"comment": ""
 	},
 	"row-rule-inset-junction-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"row-rule-inset-junction-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"row-rule-inset-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<inset-value>",
 		"comment": ""
 	},
 	"row-rule-style": {
@@ -2312,7 +2324,7 @@
 	"timeline-trigger": {
 		"type": "modified",
 		"syntax-b": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#",
-		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#",
+		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ / <'timeline-trigger-active-range'> ]? ]#",
 		"comment": ""
 	},
 	"timeline-trigger-activation-range": {
@@ -2457,6 +2469,12 @@
 		"type": "modified",
 		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
+		"comment": ""
+	},
+	"window-drag": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "none | move",
 		"comment": ""
 	},
 	"word-break": {

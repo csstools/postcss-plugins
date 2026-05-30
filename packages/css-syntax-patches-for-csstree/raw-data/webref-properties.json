@@ -450,7 +450,7 @@
 		"syntax": "none | [ <basic-shape> <geometry-box>? ]{1,2}"
 	},
 	"border-spacing": {
-		"syntax": "<length>{1,2}"
+		"syntax": "<length [0,∞]>{1,2}"
 	},
 	"border-start-end-radius": {
 		"syntax": "<border-radius>"
@@ -633,28 +633,28 @@
 		"syntax": "<'column-rule-inset-cap'> [ / <'column-rule-inset-junction'> ]?"
 	},
 	"column-rule-inset-cap": {
-		"syntax": "<length-percentage> [ <length-percentage> ]?"
+		"syntax": "<inset-value> <inset-value>?"
 	},
 	"column-rule-inset-cap-end": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"column-rule-inset-cap-start": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"column-rule-inset-end": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"column-rule-inset-junction": {
-		"syntax": "<length-percentage> [ <length-percentage> ]?"
+		"syntax": "<inset-value> <inset-value>?"
 	},
 	"column-rule-inset-junction-end": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"column-rule-inset-junction-start": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"column-rule-inset-start": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"column-rule-style": {
 		"syntax": "<line-style-list> | <auto-line-style-list>"
@@ -861,10 +861,10 @@
 		"syntax": "<'cue-before'> <'cue-after'>?"
 	},
 	"cue-after": {
-		"syntax": "<uri> <decibel>? | none"
+		"syntax": "<url> <decibel>? | none"
 	},
 	"cue-before": {
-		"syntax": "<uri> <decibel>? | none"
+		"syntax": "<url> <decibel>? | none"
 	},
 	"cursor": {
 		"syntax": "[ <cursor-image> , ]* <cursor-predefined>"
@@ -962,6 +962,9 @@
 	"-ms-flex-item-align": {
 		"syntax": "auto | start | end | center | baseline | stretch"
 	},
+	"flex-line-count": {
+		"syntax": "<integer [1,∞]>"
+	},
 	"-ms-flex-line-pack": {
 		"syntax": "start | end | center | justify | distribute | stretch"
 	},
@@ -984,7 +987,7 @@
 		"syntax": "<number [0,∞]>"
 	},
 	"flex-wrap": {
-		"syntax": "nowrap | wrap | wrap-reverse"
+		"syntax": "nowrap | [ wrap | wrap-reverse ] || balance"
 	},
 	"float": {
 		"syntax": "block-start | block-end | inline-start | inline-end | snap-block | <snap-block()> | snap-inline | <snap-inline()> | left | right | top | bottom | none | footnote"
@@ -1020,7 +1023,7 @@
 		"syntax": "[ none | <custom-ident> ]#"
 	},
 	"flow-tolerance": {
-		"syntax": "normal | <length-percentage> | infinite"
+		"syntax": "normal | <length-percentage [0,∞]> | infinite"
 	},
 	"font": {
 		"syntax": "[ [ <'font-style'> || <font-variant-css2> || <'font-weight'> || <font-width-css3> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'># ] | <system-font-family-name>"
@@ -1848,7 +1851,7 @@
 		"syntax": "normal | <try-size>"
 	},
 	"position-visibility": {
-		"syntax": "always | [ anchors-valid || anchors-visible || no-overflow ]"
+		"syntax": "always | [ anchor-valid || anchor-visible || no-overflow ]"
 	},
 	"print-color-adjust": {
 		"syntax": "economy | exact"
@@ -1905,28 +1908,28 @@
 		"syntax": "<'column-rule-inset-cap'> [ / <'column-rule-inset-junction'> ]?"
 	},
 	"row-rule-inset-cap": {
-		"syntax": "<length-percentage> [ <length-percentage> ]?"
+		"syntax": "<inset-value> <inset-value>?"
 	},
 	"row-rule-inset-cap-end": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"row-rule-inset-cap-start": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"row-rule-inset-end": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"row-rule-inset-junction": {
-		"syntax": "<length-percentage> [ <length-percentage> ]?"
+		"syntax": "<inset-value> <inset-value>?"
 	},
 	"row-rule-inset-junction-end": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"row-rule-inset-junction-start": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"row-rule-inset-start": {
-		"syntax": "<length-percentage>"
+		"syntax": "<inset-value>"
 	},
 	"row-rule-style": {
 		"syntax": "<line-style-list> | <auto-line-style-list>"
@@ -2451,7 +2454,7 @@
 		"syntax": "none | all | <dashed-ident>#"
 	},
 	"timeline-trigger": {
-		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ '/' <'timeline-trigger-active-range'> ]? ]#"
+		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ / <'timeline-trigger-active-range'> ]? ]#"
 	},
 	"timeline-trigger-activation-range": {
 		"syntax": "[ <'timeline-trigger-activation-range-start'> <'timeline-trigger-activation-range-end'>? ]#"
@@ -2647,6 +2650,9 @@
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"
+	},
+	"window-drag": {
+		"syntax": "none | move"
 	},
 	"-moz-window-dragging": {
 		"syntax": "drag | no-drag"
