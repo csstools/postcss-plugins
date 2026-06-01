@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"postcss": "^8.5.15",
-		"webpack": "^5.107.1",
+		"webpack": "^5.107.2",
 		"webpack-cli": "^7.0.0",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
 	},
