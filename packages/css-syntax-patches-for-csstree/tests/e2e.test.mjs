@@ -130,10 +130,6 @@ for (const css_file of css_files) {
 				continue;
 			}
 
-			if (result.error.message.includes('Unknown at-rule descriptor')) {
-				continue;
-			}
-
 			await t.test(`(${path.basename(css_file) } - ${i}) ${decl}`, () => {
 				throw result.error;
 			});

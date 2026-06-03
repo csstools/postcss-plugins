@@ -1,0 +1,24 @@
+@position-try --custom-left {
+	position-area: left;
+	width: 100px;
+	margin-right: 10px;
+}
+
+@position-try --custom-bottom {
+	top: anchor(bottom);
+	justify-self: anchor-center;
+	margin-top: 10px;
+	position-area: none;
+}
+
+@position-try --custom-right {
+	left: calc(anchor(right) + 10px);
+	align-self: anchor-center;
+	width: 100px;
+	position-area: none;
+}
+
+@position-try --custom-bottom-right {
+	position-area: bottom right;
+	margin: 10px 0 0 10px;
+}

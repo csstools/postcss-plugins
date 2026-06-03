@@ -319,12 +319,93 @@
 	},
 	"page": {
 		"descriptors": {
+			"margin": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'margin'>",
+				"syntax-m": "<'margin'>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
+			"margin-bottom": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'margin-bottom'>",
+				"syntax-m": "<'margin-bottom'>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
+			"margin-left": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'margin-left'>",
+				"syntax-m": "<'margin-left'>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
+			"margin-right": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'margin-right'>",
+				"syntax-m": "<'margin-right'>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
+			"margin-top": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'margin-top'>",
+				"syntax-m": "<'margin-top'>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
 			"page-margin-safety": {
 				"type": "added",
 				"comment": "",
 				"syntax-b": "",
 				"syntax-a": "none | clamp | add",
 				"syntax-m": "none | clamp | add",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			}
+		}
+	},
+	"position-try": {
+		"descriptors": {
+			"position-anchor": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'position-anchor'>",
+				"syntax-m": "<'position-anchor'>",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			},
+			"position-area": {
+				"type": "added",
+				"comment": "",
+				"syntax-b": "",
+				"syntax-a": "<'position-area'>",
+				"syntax-m": "<'position-area'>",
 				"tests": {
 					"passing": [],
 					"failing": []

@@ -152,6 +152,21 @@
 			"bleed": {
 				"syntax": "auto | <length>"
 			},
+			"margin": {
+				"syntax": "<'margin'>"
+			},
+			"margin-bottom": {
+				"syntax": "<'margin-bottom'>"
+			},
+			"margin-left": {
+				"syntax": "<'margin-left'>"
+			},
+			"margin-right": {
+				"syntax": "<'margin-right'>"
+			},
+			"margin-top": {
+				"syntax": "<'margin-top'>"
+			},
 			"marks": {
 				"syntax": "none | [ crop || cross ]"
 			},
@@ -266,6 +281,12 @@
 			},
 			"min-width": {
 				"syntax": "<'min-width'>"
+			},
+			"position-anchor": {
+				"syntax": "<'position-anchor'>"
+			},
+			"position-area": {
+				"syntax": "<'position-area'>"
 			},
 			"right": {
 				"syntax": "<'right'>"

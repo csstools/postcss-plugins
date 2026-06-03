@@ -74,6 +74,35 @@ export async function generate_webref_sets() {
 
 		// https://github.com/w3c/csswg-drafts/issues/13311
 		types['voice-family-name'] = '<string> | <custom-ident>+';
+
+		assign_new_atrule_descriptor_definition(
+			atrules,
+			trim_at('position-try'),
+			'position-anchor',
+			'<\'position-anchor\'>',
+		);
+
+		assign_new_atrule_descriptor_definition(
+			atrules,
+			trim_at('position-try'),
+			'position-area',
+			'<\'position-area\'>',
+		);
+
+		[
+			'margin',
+			'margin-top',
+			'margin-right',
+			'margin-bottom',
+			'margin-left',
+		].forEach((prop) => {
+			assign_new_atrule_descriptor_definition(
+				atrules,
+				trim_at('page'),
+				prop,
+				`<'${prop}'>`,
+			);
+		});
 	}
 
 	const data = await css.listAll();

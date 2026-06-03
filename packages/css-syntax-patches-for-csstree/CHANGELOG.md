@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Update `@webref/css` to [`v8.5.7`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.7)
+- Patch `@position-try` and `@page`
 
 ### 1.1.4
 

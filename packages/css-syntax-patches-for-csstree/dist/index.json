@@ -46,7 +46,18 @@
 			},
 			"page": {
 				"descriptors": {
+					"margin": "<'margin'>",
+					"margin-bottom": "<'margin-bottom'>",
+					"margin-left": "<'margin-left'>",
+					"margin-right": "<'margin-right'>",
+					"margin-top": "<'margin-top'>",
 					"page-margin-safety": "none | clamp | add"
+				}
+			},
+			"position-try": {
+				"descriptors": {
+					"position-anchor": "<'position-anchor'>",
+					"position-area": "<'position-area'>"
 				}
 			}
 		},

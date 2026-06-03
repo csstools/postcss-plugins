@@ -159,10 +159,56 @@
 	},
 	"page": {
 		"descriptors": {
+			"margin": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'margin'>",
+				"comment": ""
+			},
+			"margin-bottom": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'margin-bottom'>",
+				"comment": ""
+			},
+			"margin-left": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'margin-left'>",
+				"comment": ""
+			},
+			"margin-right": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'margin-right'>",
+				"comment": ""
+			},
+			"margin-top": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'margin-top'>",
+				"comment": ""
+			},
 			"page-margin-safety": {
 				"type": "added",
 				"syntax-b": "",
 				"syntax-a": "none | clamp | add",
+				"comment": ""
+			}
+		}
+	},
+	"position-try": {
+		"descriptors": {
+			"position-anchor": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'position-anchor'>",
+				"comment": ""
+			},
+			"position-area": {
+				"type": "added",
+				"syntax-b": "",
+				"syntax-a": "<'position-area'>",
 				"comment": ""
 			}
 		}
