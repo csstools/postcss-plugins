@@ -140,6 +140,10 @@ const tests = [
 	['color-mix(in oklch, rgb(200, 100, 50), oklch(none none none))', 'rgb(200, 100, 50)'],
 	['color-mix(in oklch, rgb(200, 100, 50), lab(none none none))', 'rgb(200, 100, 50)'],
 	['color-mix(in oklch, lab(40% 20% 10%), lab(40% 20% 10%))', 'rgb(136, 77, 75)'],
+
+	// non-unity alpha
+	['color-mix(in srgb, rgb(100% 0% 0% / 0.7) 25%, rgb(0% 100% 0% / 0.2))', canonicalize('color(srgb 0.53846 0.46154 0 / 0.325)')],
+	['color-mix(in srgb, rgb(100% 0% 0% / 0.7) 20%, rgb(0% 100% 0% / 0.2) 60%)', canonicalize('color(srgb 0.53846 0.46154 0 / 0.260)')],
 ];
 
 for (const test of tests) {
