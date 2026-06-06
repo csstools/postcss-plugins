@@ -250,6 +250,7 @@
 }
 
 .ignore-zero-percentage {
+	color: rgba(128, 128, 128, 0);
 	color: color-mix(in srgb, blue 0%, yellow 0%);
 }
 
