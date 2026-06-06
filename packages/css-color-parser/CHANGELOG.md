@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Remove special handling of all zero percentages in `color-mix()`
+
 ### 4.1.1
 
 _May 13, 2026_

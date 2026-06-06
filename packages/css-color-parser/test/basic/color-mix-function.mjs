@@ -104,9 +104,9 @@ const tests = [
 	['color-mix(in hsl, hsl(calc(none) 30% 40%), hsl(20deg 30% 40%))', ''],
 
 	// 0 percentage sum
-	['color-mix(in hsl, hsl(120deg 10% 20%) 0%, hsl(30deg 30% 40%) 0%)', 'rgba(0, 0, 0, 0)'], // sum of percentages is 0
-	['color-mix(in hwb, hwb(40deg 30% 40%) 0%, hwb(40deg 30% 40%) 0%)', canonicalize('hwb(0 0 100% / 0)')], // sum of percentages is 0
-	['color-mix(in lch, lch(10 20 30deg) 0%, lch(10 20 30deg) 0%)', canonicalize('lch(0 0 0 / 0)')], // sum of percentages is 0
+	['color-mix(in hsl, hsl(120deg 10% 20%) 0%, hsl(30deg 30% 40%) 0%)', canonicalize('hsl(75.48deg 20.26% 30% / 0)')], // sum of percentages is 0
+	['color-mix(in hwb, hwb(40deg 30% 40%) 0%, hwb(40deg 30% 40%) 0%)', canonicalize('hwb(40.26deg 30.2% 40% / 0%)')], // sum of percentages is 0
+	['color-mix(in lch, lch(10 20 30deg) 0%, lch(10 20 30deg) 0%)', canonicalize('lch(10 19.96 29.26 / 0)')], // sum of percentages is 0
 
 	['color-mix(in hsl, hsl(120deg 10% 20%))', canonicalize('hsl(120deg 10% 20%)')], // single arg
 	['color-mix(in hsl, hsl(120deg 10% 20%) 100%)', canonicalize('hsl(120deg 10% 20%)')], // single arg
@@ -144,6 +144,9 @@ const tests = [
 	// non-unity alpha
 	['color-mix(in srgb, rgb(100% 0% 0% / 0.7) 25%, rgb(0% 100% 0% / 0.2))', canonicalize('color(srgb 0.53846 0.46154 0 / 0.325)')],
 	['color-mix(in srgb, rgb(100% 0% 0% / 0.7) 20%, rgb(0% 100% 0% / 0.2) 60%)', canonicalize('color(srgb 0.53846 0.46154 0 / 0.260)')],
+
+	['color-mix(in srgb, red 0%, blue 0%, green 100%)', 'rgb(0, 128, 0)'],
+	['color-mix(in srgb, green 100%, blue 0%, red 0%)', 'rgb(0, 128, 0)'],
 ];
 
 for (const test of tests) {
@@ -153,3 +156,34 @@ for (const test of tests) {
 		`"${test[0]}" : ${test[1]}`,
 	);
 }
+
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hsl, red 0%, blue 0%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [300.00000000000006, 100, 49.99999999999999],
+		alpha: 0,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hsl, red 0%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [9.186375618530642e-14, 100, 49.99999999999999],
+		alpha: 0,
+		syntaxFlags: new Set(['color-keyword', 'named-color', 'color-mix-variadic']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hsl, red 0%, red 0%, red 0%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [9.186375618530642e-14, 100, 49.99999999999999],
+		alpha: 0,
+		syntaxFlags: new Set(['color-mix', 'color-mix-variadic']),
+	},
+);

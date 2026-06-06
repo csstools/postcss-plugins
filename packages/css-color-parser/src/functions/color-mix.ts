@@ -125,18 +125,11 @@ export function colorMix(colorMixNode: FunctionNode, colorParser: ColorParser): 
 
 type ColorMixEntry = {
 	color: ColorData,
-	percentage: number
+	percentage: number | false
 };
 
-type ColorMixItems = {
-	colors: Array<ColorMixEntry>,
-	alphaMultiplier: number,
-};
-
-function colorMixComponents(componentValues: Array<ComponentValue>, colorParser: ColorParser): ColorMixItems | false {
+function colorMixComponents(componentValues: Array<ComponentValue>, colorParser: ColorParser): Array<ColorMixEntry> | false {
 	const colors: Array<{ color: ColorData, percentage: number | false }> = [];
-
-	let alphaMultiplier = 1;
 
 	let color: ColorData | false = false;
 	let percentage: number | false = false;
@@ -219,83 +212,30 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 		return false;
 	}
 
-	let pSum = 0;
-	let pOmitted = 0;
-	for (let i = 0; i < colors.length; i++) {
-		const p = colors[i].percentage;
-		if (p === false) {
-			pOmitted++;
-			continue;
-		}
-
-		if (p < 0 || p > 100) {
-			return false;
-		}
-
-		pSum += p;
-	}
-
-	const pRemainder = Math.max(0, 100 - pSum);
-
-	pSum = 0;
-	for (let i = 0; i < colors.length; i++) {
-		if (colors[i].percentage === false) {
-			colors[i].percentage = pRemainder / pOmitted;
-		}
-
-		pSum += colors[i].percentage as number;
-	}
-
-	if (pSum === 0) { // The sum of explicitly provided mix percentages is `0`
-		return {
-			colors: [
-				{
-					color: {
-						channels: [0, 0, 0],
-						colorNotation: ColorNotation.sRGB,
-						alpha: 0,
-						syntaxFlags: new Set(),
-					},
-					percentage: 0
-				}
-			],
-			alphaMultiplier: 0,
-		};
-	}
-
-	if (pSum > 100) {
-		for (let i = 0; i < colors.length; i++) {
-			let p = colors[i].percentage as number; // already handled all `false` cases
-
-			p = (p / pSum) * 100;
-			colors[i].percentage = p;
-		}
-	}
-
-	if (pSum < 100) {
-		alphaMultiplier = pSum / 100;
-
-		for (let i = 0; i < colors.length; i++) {
-			let p = colors[i].percentage as number; // already handled all `false` cases
-
-			p = (p / pSum) * 100;
-			colors[i].percentage = p;
-		}
-	}
-
-	return {
-		colors: colors as ColorMixItems['colors'], // already handled all percentage `false` cases
-		alphaMultiplier: alphaMultiplier,
-	};
+	return colors;
 }
 
-function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): ColorData | false {
-	if (!items || !items.colors.length) {
+function colorMixRectangular(colorSpace: string, items: Array<ColorMixEntry> | false): ColorData | false {
+	if (!items || !items.length) {
 		return false;
 	}
 
-	const colors = items.colors.slice();
-	colors.reverse();
+	for (const item of items) {
+		if (!item.percentage) {
+			continue;
+		}
+
+		if (item.percentage < 0 || item.percentage > 100) {
+			return false;
+		}
+	}
+
+	// https://drafts.csswg.org/css-color-5/#color-mix
+	// 1. Normalize mix percentages from the list of mix items passed to the function, with the "forced normalization" flag set to true, letting items and leftover be the result.
+	const { items: normalizedItems, leftover } = normalizeMixPercentages(items, true);
+
+	// 2. Let alpha mult be 1 - leftover, interpreting leftover as a number between 0 and 1.
+	const alphaMultiplier = 1 - (leftover / 100);
 
 	let outputColorNotation: ColorNotation;
 	switch (colorSpace) {
@@ -337,13 +277,15 @@ function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): 
 			return false;
 	}
 
-	if (colors.length === 1) {
-		const color = colorDataTo(colors[0].color, outputColorNotation);
+	// 3. If items is length 1, set color to the color of that sole item, converted to the specified interpolation <color-space>.
+	if (normalizedItems.length === 1) {
+		const color = colorDataTo(normalizedItems[0].color, outputColorNotation);
 		color.colorNotation = outputColorNotation;
 		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 
 		if (typeof color.alpha === 'number') {
-			color.alpha = color.alpha * items.alphaMultiplier;
+			// 4. Multiply the alpha component of color by alpha mult.
+			color.alpha = color.alpha * alphaMultiplier;
 		} else {
 			return false;
 		}
@@ -351,51 +293,68 @@ function colorMixRectangular(colorSpace: string, items: ColorMixItems | false): 
 		return color;
 	}
 
-	while (colors.length >= 2) {
-		// Pop from item stack twice, letting a and b be the two results in order.
-		const a_color = colors.pop();
-		const b_color = colors.pop();
+	// 3.1. Let item stack be a stack made by reversing items. (Thus, with the first item at the top of the stack.)
+	normalizedItems.reverse();
 
+	// 3.2. While item stack has length 2 or greater:
+	while (normalizedItems.length >= 2) {
+		// 3.2.1. Pop from item stack twice, letting a and b be the two results in order.
+		const a_color = normalizedItems.pop();
+		const b_color = normalizedItems.pop();
 		if (!a_color || !b_color) {
 			return false;
 		}
 
-		const mixed_color = colorMixRectangularPair(outputColorNotation, a_color.color, a_color.percentage, b_color.color, b_color.percentage);
+		// 3.2.1. Let combined percentage be the sum of a and b’s percentages.
+		const combined_percentage = a_color.percentage + b_color.percentage;
+
+		// 3.2.2. with a progress percentage equal to (b’s percentage) / combined percentage), if combined percentage is greater than 0, and 0.5 otherwise
+		const progress = combined_percentage > 0 ? b_color.percentage / combined_percentage : 0.5;
+
+		// 3.2.2. Interpolate a and b’s colors as described in CSS Color 4 § 13. Color Interpolation,
+		// with a progress percentage equal to (b’s percentage) / combined percentage),
+		// if combined percentage is greater than 0, and 0.5 otherwise.
+		// If the specified color space is a cylindrical polar color space,
+		// then the <hue-interpolation-method> controls the interpolation of hue,
+		// as described in CSS Color 4 § 13.4 Hue Interpolation.
+		// If no <hue-interpolation-method> is specified, assume shorter.
+		const mixed_color = colorMixRectangularPair(outputColorNotation, a_color.color, b_color.color, progress);
 		if (!mixed_color) {
 			return false;
 		}
 
-		colors.push({
+		// 3.2.3. Create a new mix item with the resulting color and a percentage of combined percentage, and push it onto item stack.
+		normalizedItems.push({
 			color: mixed_color,
-			percentage: a_color.percentage + b_color.percentage
+			percentage: combined_percentage
 		});
 	}
 
-	const colorData = colors[0]?.color;
+	// 3.3. Set color to the color of the sole remaining item in item stack.
+	const colorData = normalizedItems[0]?.color;
 	if (!colorData) {
 		return false;
 	}
 
-	if (items.colors.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
-		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
-	}
-
+	// 4. Multiply the alpha component of color by alpha mult.
 	if (typeof colorData.alpha === 'number') {
-		colorData.alpha = colorData.alpha * items.alphaMultiplier;
+		colorData.alpha = colorData.alpha * alphaMultiplier;
 	} else {
 		return false;
 	}
 
-	if (items.colors.length !== 2) {
+	if (items.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
+		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+	}
+
+	if (items.length !== 2) {
 		colorData.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 	}
 
 	return colorData;
 }
 
-function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorData, a_percentage: number, b_color: ColorData, b_percentage: number): ColorData | false {
-	const ratio = a_percentage / (a_percentage + b_percentage);
-
+function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorData, b_color: ColorData, progress: number): ColorData | false {
 	let a_alpha = a_color.alpha;
 	if (typeof a_alpha !== 'number') {
 		return false;
@@ -429,11 +388,11 @@ function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorDat
 	b_channels[1] = premultiply(b_channels[1], b_alpha);
 	b_channels[2] = premultiply(b_channels[2], b_alpha);
 
-	const alpha = interpolate(a_alpha, b_alpha, ratio);
+	const alpha = interpolate(a_alpha, b_alpha, progress);
 	const outputChannels: Color = [
-		un_premultiply(interpolate(a_channels[0], b_channels[0], ratio), alpha),
-		un_premultiply(interpolate(a_channels[1], b_channels[1], ratio), alpha),
-		un_premultiply(interpolate(a_channels[2], b_channels[2], ratio), alpha),
+		un_premultiply(interpolate(a_channels[0], b_channels[0], progress), alpha),
+		un_premultiply(interpolate(a_channels[1], b_channels[1], progress), alpha),
+		un_premultiply(interpolate(a_channels[2], b_channels[2], progress), alpha),
 	];
 
 	const colorData: ColorData = {
@@ -446,13 +405,27 @@ function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorDat
 	return colorData;
 }
 
-function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items: ColorMixItems | false): ColorData | false {
-	if (!items || !items.colors.length) {
+function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items: Array<ColorMixEntry> | false): ColorData | false {
+	if (!items || !items.length) {
 		return false;
 	}
 
-	const colors = items.colors.slice();
-	colors.reverse();
+	for (const item of items) {
+		if (!item.percentage) {
+			continue;
+		}
+
+		if (item.percentage < 0 || item.percentage > 100) {
+			return false;
+		}
+	}
+
+	// https://drafts.csswg.org/css-color-5/#color-mix
+	// 1. Normalize mix percentages from the list of mix items passed to the function, with the "forced normalization" flag set to true, letting items and leftover be the result.
+	const { items: normalizedItems, leftover } = normalizeMixPercentages(items, true);
+
+	// 2. Let alpha mult be 1 - leftover, interpreting leftover as a number between 0 and 1.
+	const alphaMultiplier = 1 - (leftover / 100);
 
 	let outputColorNotation: ColorNotation;
 	switch (colorSpace) {
@@ -472,13 +445,15 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 			return false;
 	}
 
-	if (colors.length === 1) {
-		const color = colorDataTo(colors[0].color, outputColorNotation);
+	// 3. If items is length 1, set color to the color of that sole item, converted to the specified interpolation <color-space>.
+	if (normalizedItems.length === 1) {
+		const color = colorDataTo(normalizedItems[0].color, outputColorNotation);
 		color.colorNotation = outputColorNotation;
 		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 
 		if (typeof color.alpha === 'number') {
-			color.alpha = color.alpha * items.alphaMultiplier;
+			// 4. Multiply the alpha component of color by alpha mult.
+			color.alpha = color.alpha * alphaMultiplier;
 		} else {
 			return false;
 		}
@@ -486,51 +461,68 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 		return color;
 	}
 
-	while (colors.length >= 2) {
-		// Pop from item stack twice, letting a and b be the two results in order.
-		const a_color = colors.pop();
-		const b_color = colors.pop();
+	// 3.1. Let item stack be a stack made by reversing items. (Thus, with the first item at the top of the stack.)
+	normalizedItems.reverse();
 
+	// 3.2. While item stack has length 2 or greater:
+	while (normalizedItems.length >= 2) {
+		// 3.2.1. Pop from item stack twice, letting a and b be the two results in order.
+		const a_color = normalizedItems.pop();
+		const b_color = normalizedItems.pop();
 		if (!a_color || !b_color) {
 			return false;
 		}
 
-		const mixed_color = colorMixPolarPair(outputColorNotation, hueInterpolationMethod, a_color.color, a_color.percentage, b_color.color, b_color.percentage);
+		// 3.2.1. Let combined percentage be the sum of a and b’s percentages.
+		const combined_percentage = a_color.percentage + b_color.percentage;
+
+		// 3.2.2. with a progress percentage equal to (b’s percentage) / combined percentage), if combined percentage is greater than 0, and 0.5 otherwise
+		const progress = combined_percentage > 0 ? b_color.percentage / combined_percentage : 0.5;
+
+		// 3.2.2. Interpolate a and b’s colors as described in CSS Color 4 § 13. Color Interpolation,
+		// with a progress percentage equal to (b’s percentage) / combined percentage),
+		// if combined percentage is greater than 0, and 0.5 otherwise.
+		// If the specified color space is a cylindrical polar color space,
+		// then the <hue-interpolation-method> controls the interpolation of hue,
+		// as described in CSS Color 4 § 13.4 Hue Interpolation.
+		// If no <hue-interpolation-method> is specified, assume shorter.
+		const mixed_color = colorMixPolarPair(outputColorNotation, hueInterpolationMethod, a_color.color, b_color.color, progress);
 		if (!mixed_color) {
 			return false;
 		}
 
-		colors.push({
+		// 3.2.3. Create a new mix item with the resulting color and a percentage of combined percentage, and push it onto item stack.
+		normalizedItems.push({
 			color: mixed_color,
-			percentage: a_color.percentage + b_color.percentage
+			percentage: combined_percentage
 		});
 	}
 
-	const colorData = colors[0]?.color;
+	// 3.3. Set color to the color of the sole remaining item in item stack.
+	const colorData = normalizedItems[0]?.color;
 	if (!colorData) {
 		return false;
 	}
 
-	if (items.colors.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
-		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
-	}
-
+	// 4. Multiply the alpha component of color by alpha mult.
 	if (typeof colorData.alpha === 'number') {
-		colorData.alpha = colorData.alpha * items.alphaMultiplier;
+		colorData.alpha = colorData.alpha * alphaMultiplier;
 	} else {
 		return false;
 	}
 
-	if (items.colors.length !== 2) {
+	if (items.some((x) => x.color.syntaxFlags.has(SyntaxFlag.Experimental))) {
+		colorData.syntaxFlags.add(SyntaxFlag.Experimental);
+	}
+
+	if (items.length !== 2) {
 		colorData.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 	}
 
 	return colorData;
 }
 
-function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod: string, a_color: ColorData, a_percentage: number, b_color: ColorData, b_percentage: number): ColorData | false {
-	const ratio = a_percentage / (a_percentage + b_percentage);
-
+function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod: string, a_color: ColorData, b_color: ColorData, progress: number): ColorData | false {
 	let a_hue = 0;
 	let b_hue = 0;
 
@@ -644,24 +636,24 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 	b_second = premultiply(b_second, b_alpha);
 
 	let outputChannels: Color = [0, 0, 0];
-	const alpha = interpolate(a_alpha, b_alpha, ratio);
+	const alpha = interpolate(a_alpha, b_alpha, progress);
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
 		case ColorNotation.HWB:
 			outputChannels = [
-				interpolate(a_hue, b_hue, ratio),
-				un_premultiply(interpolate(a_first, b_first, ratio), alpha),
-				un_premultiply(interpolate(a_second, b_second, ratio), alpha),
+				interpolate(a_hue, b_hue, progress),
+				un_premultiply(interpolate(a_first, b_first, progress), alpha),
+				un_premultiply(interpolate(a_second, b_second, progress), alpha),
 			];
 
 			break;
 		case ColorNotation.LCH:
 		case ColorNotation.OKLCH:
 			outputChannels = [
-				un_premultiply(interpolate(a_first, b_first, ratio), alpha),
-				un_premultiply(interpolate(a_second, b_second, ratio), alpha),
-				interpolate(a_hue, b_hue, ratio),
+				un_premultiply(interpolate(a_first, b_first, progress), alpha),
+				un_premultiply(interpolate(a_second, b_second, progress), alpha),
+				interpolate(a_hue, b_hue, progress),
 			];
 
 			break;
@@ -688,7 +680,7 @@ function fillInMissingComponent(a: number, b: number): number {
 }
 
 function interpolate(start: number, end: number, p: number): number {
-	return (start * p) + end * (1 - p);
+	return (start * (1 - p)) + end * p;
 }
 
 function premultiply(x: number, alpha: number): number {
@@ -717,4 +709,54 @@ function un_premultiply(x: number, alpha: number): number {
 	}
 
 	return x / alpha;
+}
+
+// https://drafts.csswg.org/css-values-5/#normalize-mix-percentages
+function normalizeMixPercentages<T>(mix_items: Array<{ color: T, percentage: number | false }>, force_normalization: boolean = false): { items: Array<{ color: T, percentage: number }>, leftover: number } {
+	// 1. Let specified sum be the sum of the percentages specified in items (clamped to 100%), or 0% if the percentages are omitted for all items.
+	let specified_sum = 0;
+	let number_of_omitted_percentages = 0;
+	for (const item of mix_items) {
+		if (item.percentage) {
+			specified_sum += item.percentage;
+		}
+
+		if (item.percentage === false) {
+			number_of_omitted_percentages++;
+		}
+	}
+
+	specified_sum = Math.min(100, specified_sum);
+
+	// 2. For each omitted percentage in items, set it to (100% - specified sum) / (number of omitted percentages).
+	for (const item of mix_items) {
+		if (item.percentage === false) {
+			item.percentage = (100 - specified_sum) / (number_of_omitted_percentages);
+		}
+	}
+
+	const mix_items_with_percentages = (mix_items as Array<{ color: T, percentage: number }>).slice();
+
+	// 3. Let total be the sum of the percentages of all the items.
+	let total = 0;
+	for (const item of mix_items_with_percentages) {
+		total += item.percentage;
+	}
+
+	// 4. If total is greater than 100%, or if total is greater than 0% and the force normalization flag is true, multiply every percentage in items by (100% / total).
+	if (total > 100 || (total > 0 && force_normalization)) {
+		for (const item of mix_items_with_percentages) {
+			item.percentage = item.percentage * (100 / total);
+		}
+	}
+
+	let leftover = 0;
+	if (total < 100) {
+		leftover = 100 - total;
+	}
+
+	return {
+		items: mix_items_with_percentages,
+		leftover: leftover,
+	};
 }
