@@ -36,7 +36,7 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 	backgroundColorData.colorNotation = ColorNotation.sRGB;
 
 	const colorData: ColorData = {
-		colorNotation: ColorNotation.sRGB,
+		colorNotation: ColorNotation.RGB,
 		channels: [0, 0, 0],
 		alpha: 1,
 		syntaxFlags: new Set([SyntaxFlag.ContrastColor, SyntaxFlag.Experimental]),

@@ -58,3 +58,23 @@ for (const test of tests) {
 		);
 	});
 }
+
+assert.deepStrictEqual(
+	color(parse('white')),
+	{
+		colorNotation: 'rgb',
+		channels: [1, 1, 1],
+		alpha: 1,
+		syntaxFlags: new Set(['color-keyword', 'named-color']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('contrast-color(black)')),
+	{
+		colorNotation: 'rgb',
+		channels: [1, 1, 1],
+		alpha: 1,
+		syntaxFlags: new Set(['contrast-color', 'experimental']),
+	},
+);
