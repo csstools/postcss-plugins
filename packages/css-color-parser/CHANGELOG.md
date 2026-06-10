@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 4.1.3
+
+_June 10, 2026_
 
 - Assign `rgb` color notation to `contrast-color()` (instead of `srgb`).
 
