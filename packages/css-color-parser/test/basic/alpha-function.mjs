@@ -15,7 +15,7 @@ const tests = [
 	['alpha(from lab(50% 40% 30%) / alpha)', canonicalize('lab(50% 40% 30%)')],
 	['alpha(from lab(50% 40% 30% / 0.2))', canonicalize('lab(50% 40% 30% / 0.2)')],
 	['alpha(from lab(50% 40% 30% / 0.2) / alpha)', canonicalize('lab(50% 40% 30% / 0.2)')],
-	['alpha(from lab(50% 40% 30% / 0.2) / none)', 'rgba(201, 76, 58, none)'],
+	['alpha(from lab(50% 40% 30% / 0.2) / none)', 'rgba(201, 76, 58, 0)'],
 
 	['alpha(from lab(50% 40% 30% / 0.2) / var(--foo, alpha))', canonicalize('lab(50% 40% 30% / var(--foo, 0.2))')],
 
@@ -24,6 +24,9 @@ const tests = [
 	['alpha(red / )', ''],
 	['alpha(/ 0.1)', ''],
 	['alpha(0.1)', ''],
+	['alpha(from red / none)', 'rgba(255, 0, 0, 0)'],
+	['color-mix(in srgb, rgb(255 0 0 / 0.5), rgb(255 0 0 / none))', 'rgba(255, 0, 0, 0.5)'],
+	['color-mix(in srgb, rgb(255 0 0 / 0.5), alpha(from red / none))', 'rgba(255, 0, 0, 0.5)'],
 ];
 
 for (const test of tests) {

@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix `none` alpha in `alpha()`
+
 ### 4.1.3
 
 _June 10, 2026_

@@ -125,7 +125,7 @@ export function alpha(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 				return false;
 			}
 
-			colorData.alpha = new TokenNode(normalized);
+			colorData.alpha = normalized[4].value;
 			hasAlpha = true;
 			continue;
 		}
