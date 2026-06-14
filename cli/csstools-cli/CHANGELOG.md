@@ -1,6 +1,8 @@
 # Changes to CSSTools CLI
 
-### Unreleased (patch)
+### 5.0.9
+
+_June 14, 2026_
 
 - Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`5.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#505) (patch)
 - Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`4.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#405) (patch)
