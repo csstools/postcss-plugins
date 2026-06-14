@@ -4,6 +4,10 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 
 export function normalizeHue(token: CSSToken): TokenNumber | false {
 	if (isTokenNumber(token)) {
+		if (!Number.isNaN(token[4].value) && !Number.isFinite(token[4].value)) {
+			token[4].value = 0;
+		}
+
 		token[4].value = token[4].value % 360;
 		if (token[4].value < 0) {
 			token[4].value += 360;
@@ -36,6 +40,10 @@ export function normalizeHue(token: CSSToken): TokenNumber | false {
 				break;
 			default:
 				return false;
+		}
+
+		if (!Number.isNaN(token[4].value) && !Number.isFinite(token[4].value)) {
+			token[4].value = 0;
 		}
 
 		value = value % 360;

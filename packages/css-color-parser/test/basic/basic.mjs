@@ -275,6 +275,16 @@ assert.deepStrictEqual(
 	},
 );
 
+assert.deepStrictEqual(
+	color(parse('hsl(calc(infinity) 100% 50%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [0, 100, 50],
+		alpha: 1,
+		syntaxFlags: new Set(['has-percentage-values']),
+	},
+);
+
 for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
 	assert.deepStrictEqual(
 		color(parse(`lab(from ${a}(none none none) l a b)`)).channels,
@@ -323,4 +333,5 @@ for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
 		[NaN, NaN, NaN],
 	);
 }
+
 
