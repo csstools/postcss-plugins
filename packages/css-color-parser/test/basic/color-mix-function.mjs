@@ -81,10 +81,29 @@ const tests = [
 	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
 	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(90deg 50% 50%)', canonicalize('hsl(90deg 50% 50%)')],
-	['color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(180deg 50% 50%)')],
-	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
-	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
-	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(0deg 50% 50%)')],
+
+	['color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%))', canonicalize('hsl(none 50% 50%)')],
+	['color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(none 50% 50%)', canonicalize('hsl(none 50% 50%)')],
+	['color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(none 50% 50%))', canonicalize('hsl(none 50% 50%)')],
+	['color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(none 50% 50%))', canonicalize('hsl(none 50% 50%)')],
+
+	['color-mix(in hsl, color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl, color-mix(in hsl shorter hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl, color-mix(in hsl increasing hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl, color-mix(in hsl decreasing hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+
+	['color-mix(in hsl longer hue, color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(0deg 50% 50%)')],
+	['color-mix(in hsl shorter hue, color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl increasing hue, color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl decreasing hue, color-mix(in hsl longer hue, hsl(none 50% 50%), hsl(none 50% 50%)), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+
+	['color-mix(in hsl longer hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(0deg 50% 50%)')],
+	['color-mix(in hsl shorter hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl increasing hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl decreasing hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+
+	['color-mix(in hsl, color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%)), hsl(180deg 100% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+
 	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(90deg 40% 80% / 25%)')],
 	['color-mix(in hwb, hwb(30deg 30% 40% / 25%) 0%, hwb(90deg none none / 0.5))', canonicalize('hwb(90deg 30% 40% / 0.5)')],
 	['color-mix(in hsl, hsl(from hsl(none 50% 50%) h s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(120deg 50% 50%)')],
@@ -185,5 +204,75 @@ assert.deepStrictEqual(
 		channels: [9.186375618530642e-14, 100, 49.99999999999999],
 		alpha: 0,
 		syntaxFlags: new Set(['color-mix', 'color-mix-variadic']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(100 0 40deg), lch(100 0 60deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [100, 0, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('oklch(from lch(100 0 0deg) l c h)')),
+	{
+		colorNotation: 'oklch',
+		channels: [1, 4.996003610813204e-16, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lch(from oklch(100 0 0deg) l c h)')),
+	{
+		colorNotation: 'lch',
+		channels: [100, 1.1102230246251565e-13, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in oklch, lch(100 0 40deg), lch(100 0 60deg))')),
+	{
+		colorNotation: 'oklch',
+		channels: [1.0000000000000002, 4.996003610813204e-16, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(none 20 none), lch(none 40 none))')),
+	{
+		colorNotation: 'lch',
+		channels: [Number.NaN, 30, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hsl, lch(50% 50% 30), hsl(50 50% 50%))')),
+	{
+		colorNotation: 'hsl',
+		channels: [383.202603842081, 60.179695614531866, 51.44446807428794],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hsl, lch(none 0 30), hsl(50 0 none))')),
+	{
+		colorNotation: 'hsl',
+		channels: [Number.NaN, 0, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
 	},
 );

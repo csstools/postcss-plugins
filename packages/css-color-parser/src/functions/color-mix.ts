@@ -577,57 +577,59 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 			break;
 	}
 
-	a_hue = fillInMissingComponent(a_hue, b_hue);
-	if (Number.isNaN(a_hue)) {
-		a_hue = 0;
-	}
-
-	b_hue = fillInMissingComponent(b_hue, a_hue);
-	if (Number.isNaN(b_hue)) {
-		b_hue = 0;
-	}
-
 	a_first = fillInMissingComponent(a_first, b_first);
 	b_first = fillInMissingComponent(b_first, a_first);
 
 	a_second = fillInMissingComponent(a_second, b_second);
 	b_second = fillInMissingComponent(b_second, a_second);
 
-	const angleDiff = b_hue - a_hue;
+	a_hue = fillInMissingComponent(a_hue, b_hue);
+	b_hue = fillInMissingComponent(b_hue, a_hue);
+	if (Number.isNaN(a_hue) && Number.isNaN(b_hue)) {
+		// noop
+	} else {
+		if (Number.isNaN(a_hue)) {
+			a_hue = 0;
+		} else if (Number.isNaN(b_hue)) {
+			b_hue = 0;
+		}
 
-	switch (hueInterpolationMethod) {
-		case 'shorter':
-			if (angleDiff > 180) {
-				a_hue += 360;
-			} else if (angleDiff < -180) {
-				b_hue += 360;
-			}
+		const angleDiff = b_hue - a_hue;
 
-			break;
-		case 'longer':
-			if (-180 < angleDiff && angleDiff < 180) {
-				if (angleDiff > 0) {
+		switch (hueInterpolationMethod) {
+			case 'shorter':
+				if (angleDiff > 180) {
 					a_hue += 360;
-				} else {
+				} else if (angleDiff < -180) {
 					b_hue += 360;
 				}
-			}
 
-			break;
-		case 'increasing':
-			if (angleDiff < 0) {
-				b_hue += 360;
-			}
+				break;
+			case 'longer':
+				if (-180 < angleDiff && angleDiff < 180) {
+					if (angleDiff > 0) {
+						a_hue += 360;
+					} else {
+						b_hue += 360;
+					}
+				}
 
-			break;
-		case 'decreasing':
-			if (angleDiff > 0) {
-				a_hue += 360;
-			}
+				break;
+			case 'increasing':
+				if (angleDiff < 0) {
+					b_hue += 360;
+				}
 
-			break;
-		default:
-			throw new Error('Unknown hue interpolation method');
+				break;
+			case 'decreasing':
+				if (angleDiff > 0) {
+					a_hue += 360;
+				}
+
+				break;
+			default:
+				throw new Error('Unknown hue interpolation method');
+		}
 	}
 
 	a_first = premultiply(a_first, a_alpha);

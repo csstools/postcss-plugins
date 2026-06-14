@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix handling of `hue` in interpolation when both parts have a missing `hue` component
+
 ### 4.1.4
 
 _June 13, 2026_
