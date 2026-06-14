@@ -1,6 +1,8 @@
 # Changes to Pack Test
 
-### Unreleased (patch)
+### 2.0.1
+
+_June 14, 2026_
 
 - Use `--min-release-age=0` when testing `npm install`
 
