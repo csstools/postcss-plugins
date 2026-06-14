@@ -276,3 +276,33 @@ assert.deepStrictEqual(
 		syntaxFlags: new Set(['color-mix']),
 	},
 );
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(none none none), lch(none none none))')),
+	{
+		colorNotation: 'lch',
+		channels: [Number.NaN, Number.NaN, Number.NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch decreasing hue, lch(50% 50% -40deg), lch(50% 50% 40deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [50, 75, 180],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch decreasing hue, lch(50% 50% 320deg), lch(50% 50% 40deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [50, 75, 180],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);

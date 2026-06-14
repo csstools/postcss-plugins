@@ -5,7 +5,12 @@ import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 export function normalizeHue(token: CSSToken): TokenNumber | false {
 	if (isTokenNumber(token)) {
 		token[4].value = token[4].value % 360;
+		if (token[4].value < 0) {
+			token[4].value += 360;
+		}
+
 		token[1] = token[4].value.toString();
+
 		return token;
 	}
 
@@ -34,6 +39,9 @@ export function normalizeHue(token: CSSToken): TokenNumber | false {
 		}
 
 		value = value % 360;
+		if (value < 0) {
+			value += 360;
+		}
 
 		return [
 			TokenType.Number,

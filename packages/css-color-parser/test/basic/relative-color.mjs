@@ -134,6 +134,36 @@ assert.deepStrictEqual(
 	},
 );
 
+assert.deepStrictEqual(
+	color(parse('oklch(-2 -3 -400 / -500)')),
+	{
+		colorNotation: 'oklch',
+		channels: [0, 0, 320],
+		alpha: 0,
+		syntaxFlags: new Set(['has-number-values', 'has-alpha']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('oklch(from oklch(0.7 0.45 30 / 40%) -2 -3 -400 / -500)')),
+	{
+		colorNotation: 'oklch',
+		channels: [0, 0, 320],
+		alpha: 0,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values', 'has-alpha']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('oklch(from oklch(0.7 0.45 30 / 40%) -2 -3 -760 / -500)')),
+	{
+		colorNotation: 'oklch',
+		channels: [0, 0, 320],
+		alpha: 0,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values', 'has-alpha']),
+	},
+);
+
 [
 	['color(from color(srgb 0 1 0) srgb r g b)', 'rgb(0, 255, 0)'],
 	['color(from color(srgb-linear 0 1 0) srgb r g b)', 'rgb(0, 255, 0)'],
