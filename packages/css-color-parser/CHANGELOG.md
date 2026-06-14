@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 4.1.6
+
+_June 14, 2026_
 
 - Fix normalization of `hue` to `[0, 360]` range when `hue` is a negative number
 
