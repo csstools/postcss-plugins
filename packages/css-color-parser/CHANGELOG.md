@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (patch)
+### 4.1.8
+
+_June 19, 2026_
 
 - Add `color-mix` syntax flag to mix notations with only a single value (e.g. `color-mix(in oklch, red)`)
 
