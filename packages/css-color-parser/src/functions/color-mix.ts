@@ -282,6 +282,7 @@ function colorMixRectangular(colorSpace: string, items: Array<ColorMixEntry> | f
 		const color = colorDataTo(normalizedItems[0].color, outputColorNotation);
 		color.colorNotation = outputColorNotation;
 		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
+		color.syntaxFlags.add(SyntaxFlag.ColorMix);
 
 		if (typeof color.alpha === 'number') {
 			// 4. Multiply the alpha component of color by alpha mult.
@@ -450,6 +451,7 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 		const color = colorDataTo(normalizedItems[0].color, outputColorNotation);
 		color.colorNotation = outputColorNotation;
 		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
+		color.syntaxFlags.add(SyntaxFlag.ColorMix);
 
 		if (typeof color.alpha === 'number') {
 			// 4. Multiply the alpha component of color by alpha mult.

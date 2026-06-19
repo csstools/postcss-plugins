@@ -450,6 +450,8 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 		}
 	}
 
+	outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, toNotation);
+
 	return outputColorData;
 }
 
