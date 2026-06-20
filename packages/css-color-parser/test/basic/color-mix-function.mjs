@@ -193,7 +193,7 @@ assert.deepStrictEqual(
 		colorNotation: 'hsl',
 		channels: [9.186375618530642e-14, 100, 49.99999999999999],
 		alpha: 0,
-		syntaxFlags: new Set(['color-keyword', 'named-color', 'color-mix-variadic']),
+		syntaxFlags: new Set(['color-keyword', 'named-color', 'color-mix-variadic', 'color-mix']),
 	},
 );
 
