@@ -23,12 +23,42 @@ export {
 	XYZ_D50_to_rec_2020,
 	XYZ_D50_to_sRGB,
 	XYZ_D65_to_XYZ_D50,
+	XYZ_D65_to_XYZ_D65,
 	a98_RGB_to_XYZ_D50,
 	lin_P3_to_XYZ_D50,
 	lin_sRGB_to_XYZ_D50,
 	rec_2020_to_XYZ_D50,
 	sRGB_to_XYZ_D50,
-} from './conversions/xyz';
+} from './conversions/xyz/d50';
+
+export {
+	HSL_to_XYZ_D65,
+	HWB_to_XYZ_D65,
+	LCH_to_XYZ_D65,
+	Lab_to_XYZ_D65,
+	OKLCH_to_XYZ_D65,
+	OKLab_to_XYZ_D65,
+	P3_to_XYZ_D65,
+	ProPhoto_RGB_to_XYZ_D65,
+	XYZ_D65_to_HSL,
+	XYZ_D65_to_HWB,
+	XYZ_D65_to_LCH,
+	XYZ_D65_to_Lab,
+	XYZ_D65_to_OKLCH,
+	XYZ_D65_to_OKLab,
+	XYZ_D65_to_P3,
+	XYZ_D65_to_ProPhoto,
+	XYZ_D65_to_a98_RGB,
+	XYZ_D65_to_lin_P3,
+	XYZ_D65_to_lin_sRGB,
+	XYZ_D65_to_rec_2020,
+	XYZ_D65_to_sRGB,
+	a98_RGB_to_XYZ_D65,
+	lin_P3_to_XYZ_D65,
+	lin_sRGB_to_XYZ_D65,
+	rec_2020_to_XYZ_D65,
+	sRGB_to_XYZ_D65,
+} from './conversions/xyz/d65';
 
 export { inGamut } from './utils/in-gamut';
 export { clip } from './utils/clip';

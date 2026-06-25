@@ -1,12 +1,12 @@
 import type { TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
 import type { ColorData} from '../color-data';
-import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D50 } from '../color-data';
+import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D65 } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import type { FunctionNode} from '@csstools/css-parser-algorithms';
 import { TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { XYZ_D50_to_P3 } from '@csstools/color-helpers';
-import { XYZ_D50_to_P3_Gamut } from '../gamut-mapping/p3';
+import { XYZ_D65_to_P3 } from '@csstools/color-helpers';
+import { XYZ_D65_to_P3_Gamut } from '../gamut-mapping/p3';
 import { serializeWithAlpha } from './with-alpha';
 import { toPrecision } from './to-precision';
 
@@ -23,9 +23,9 @@ export function serializeP3(color: ColorData, gamutMapping = true): FunctionNode
 	let p3 = color.channels.map((x) => Number.isNaN(x) ? 0 : x);
 
 	if (gamutMapping) {
-		p3 = XYZ_D50_to_P3_Gamut(colorData_to_XYZ_D50(color).channels);
+		p3 = XYZ_D65_to_P3_Gamut(colorData_to_XYZ_D65(color).channels);
 	} else if (color.colorNotation !== ColorNotation.Display_P3) {
-		p3 = XYZ_D50_to_P3(colorData_to_XYZ_D50(color).channels);
+		p3 = XYZ_D65_to_P3(colorData_to_XYZ_D65(color).channels);
 	}
 
 	const r = gamutMapping ? Math.min(1, Math.max(0, toPrecision(p3[0], 6))) : toPrecision(p3[0], 6);

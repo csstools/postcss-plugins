@@ -225,7 +225,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -243,6 +243,53 @@
             }
           ],
           "name": "a98_RGB_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!a98_RGB_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function a98_RGB_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "a98_RGB_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -502,7 +549,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -520,6 +567,53 @@
             }
           ],
           "name": "HSL_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!HSL_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [h, s, l] - Hue as degrees 0..360; - Saturation as number 0..100; - Lightness as number 0..100;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function HSL_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "HSL_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -549,7 +643,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -567,6 +661,53 @@
             }
           ],
           "name": "HWB_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!HWB_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [h, w, b] - Hue as degrees 0..360; - Whiteness as number 0..100; - Blackness as number 0..100;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function HWB_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "HWB_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -642,7 +783,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -660,6 +801,53 @@
             }
           ],
           "name": "Lab_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!Lab_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [l, a, b] - Lightness as number 0..100; - a as number -160..160; - b as number -160..160;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function Lab_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Lab_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -689,7 +877,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -707,6 +895,53 @@
             }
           ],
           "name": "LCH_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!LCH_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [l, c, h] - Lightness as number 0..100; - Chroma as number 0..230; - Hue as degrees 0..360;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function LCH_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "LCH_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -736,7 +971,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -754,6 +989,53 @@
             }
           ],
           "name": "lin_P3_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!lin_P3_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function lin_P3_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "lin_P3_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -877,7 +1159,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -895,6 +1177,53 @@
             }
           ],
           "name": "lin_sRGB_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!lin_sRGB_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function lin_sRGB_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "lin_sRGB_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1316,7 +1645,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1334,6 +1663,53 @@
             }
           ],
           "name": "OKLab_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!OKLab_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [l, a, b] - Lightness as number 0..1; - a as number 0..0.5; - b as number 0..0.5;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function OKLab_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "OKLab_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1457,7 +1833,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1475,6 +1851,53 @@
             }
           ],
           "name": "OKLCH_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!OKLCH_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [l, c, h] - Lightness as number 0..1; - Chroma as number 0..0.5; - Hue as degrees 0..360;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function OKLCH_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "OKLCH_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1504,7 +1927,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1522,6 +1945,53 @@
             }
           ],
           "name": "P3_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!P3_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function P3_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "P3_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1551,7 +2021,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1569,6 +2039,53 @@
             }
           ],
           "name": "ProPhoto_RGB_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!ProPhoto_RGB_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function ProPhoto_RGB_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "ProPhoto_RGB_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1598,7 +2115,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1616,6 +2133,53 @@
             }
           ],
           "name": "rec_2020_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!rec_2020_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function rec_2020_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "rec_2020_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1645,7 +2209,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1663,6 +2227,53 @@
             }
           ],
           "name": "sRGB_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!sRGB_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function sRGB_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "sRGB_to_XYZ_D65"
         },
         {
           "kind": "Function",
@@ -1692,7 +2303,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1739,7 +2350,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1786,7 +2397,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1833,7 +2444,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1880,7 +2491,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1927,7 +2538,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -1974,7 +2585,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2021,7 +2632,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2068,7 +2679,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2115,7 +2726,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2162,7 +2773,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2209,7 +2820,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2256,7 +2867,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2303,7 +2914,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2350,7 +2961,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2368,6 +2979,617 @@
             }
           ],
           "name": "XYZ_D50_to_XYZ_D65"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_a98_RGB:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} a98 sRGB [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_a98_RGB(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_a98_RGB"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_HSL:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} HSL [r, g, b] - Hue as degrees 0..360; - Saturation as number 0..100; - Lightness as number 0..100;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_HSL(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_HSL"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_HWB:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} HWB [r, g, b] - Hue as degrees 0..360; - Whiteness as number 0..100; - Blackness as number 0..100;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_HWB(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_HWB"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_Lab:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} Lab [r, g, b] - Lightness as number 0..100; - a as number -160..160; - b as number -160..160;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_Lab(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_Lab"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_LCH:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} LCH [r, g, b] - Lightness as number 0..100; - Chroma as number 0..230; - Hue as degrees 0..360;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_LCH(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_LCH"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_lin_P3:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} P3 [r, g, b] - R as number 0..1; - G as number 0..1; - B as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_lin_P3(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_lin_P3"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_lin_sRGB:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} linear sRGB [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_lin_sRGB(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_lin_sRGB"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_OKLab:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} OKLab [r, g, b] - Lightness as number 0..1; - a as number 0..0.5; - b as number 0..0.5;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_OKLab(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_OKLab"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_OKLCH:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} OKLCH [r, g, b] - Lightness as number 0..1; - Chroma as number 0..0.5; - Hue as degrees 0..360;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_OKLCH(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_OKLCH"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_P3:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} P3 [r, g, b] - R as number 0..1; - G as number 0..1; - B as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_P3(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_P3"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_ProPhoto:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} ProPhoto [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_ProPhoto(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_ProPhoto"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_rec_2020:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} rec 2020 [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_rec_2020(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_rec_2020"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_sRGB:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} sRGB [r, g, b] - Red as number 0..1; - Green as number 0..1; - Blue as number 0..1;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_sRGB(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d65.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_sRGB"
         },
         {
           "kind": "Function",
@@ -2397,7 +3619,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/conversions/xyz/index.d.ts",
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
             "endIndex": 4
@@ -2415,6 +3637,53 @@
             }
           ],
           "name": "XYZ_D65_to_XYZ_D50"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/color-helpers!XYZ_D65_to_XYZ_D65:function(1)",
+          "docComment": "/**\n * @param color - [x, y, z] - X as number 0..1; - Y as number 0..1; - Z as number 0..1;  @return {Color} D50 XYZ [x, y, z]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function XYZ_D65_to_XYZ_D65(x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Color",
+              "canonicalReference": "@csstools/color-helpers!Color:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/conversions/xyz/d50.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "XYZ_D65_to_XYZ_D65"
         },
         {
           "kind": "Function",

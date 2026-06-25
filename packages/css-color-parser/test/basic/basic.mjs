@@ -229,7 +229,7 @@ assert.deepStrictEqual(
 	color(parse('hsl(from lab(50% none none) h s l)')),
 	{
 		colorNotation: 'hsl',
-		channels: [NaN, NaN, 46.632660928353715],
+		channels: [NaN, NaN, 46.63266093],
 		alpha: 1,
 		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
 	},
@@ -334,4 +334,90 @@ for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
 	);
 }
 
+assert.deepStrictEqual(
+	color(parse('rgb(from hsl(180, 0%, 50%) r g b / alpha)')),
+	{
+		colorNotation: 'rgb',
+		channels: [0.5, 0.5, 0.5],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+			'has-alpha',
+		]),
+	},
+);
 
+assert.deepStrictEqual(
+	color(parse('hsl(from rgb(from hsl(180, 0%, 50%) r g b / alpha) h s l / alpha)')),
+	{
+		colorNotation: 'hsl',
+		channels: [NaN, 0, 50],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+			'has-alpha',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(0deg 85% 75%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [0, 85, 75],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'has-dimension-values', 'has-percentage-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hwb(from hsl(0deg 85% 75%) h w b)')),
+	{
+		colorNotation: 'hwb',
+		channels: [0, 53.75, 3.75],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax', 'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(180deg 80% 65%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [180, 80, 65],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'has-dimension-values', 'has-percentage-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hwb(from hsl(180deg 80% 65%) h w b)')),
+	{
+		colorNotation: 'hwb',
+		channels: [180, 37, 7],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax', 'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hwb, hsl(0deg 85% 75%) 50%, hsl(180deg 80% 65%) 50%)')),
+	{
+		colorNotation: 'hwb',
+		channels: [90, 45.375, 5.375],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'color-mix',
+		]),
+	},
+);

@@ -1,5 +1,9 @@
 # Changes to Color Helpers
 
+### Unreleased (minor)
+
+- Add `d65` conversion helpers
+
 ### 6.0.2
 
 _February 21, 2026_

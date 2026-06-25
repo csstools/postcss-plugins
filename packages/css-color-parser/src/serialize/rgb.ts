@@ -3,10 +3,10 @@ import { convertPowerlessComponentsToZeroValuesForDisplay } from '../color-data'
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { XYZ_D50_to_sRGB } from '@csstools/color-helpers';
-import { colorData_to_XYZ_D50 } from '../color-data';
+import { XYZ_D65_to_sRGB } from '@csstools/color-helpers';
+import { colorData_to_XYZ_D65 } from '../color-data';
 import { toPrecision } from './to-precision';
-import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
+import { XYZ_D65_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 
 /**
  * Convert color data to component values in the srgb color space.
@@ -21,9 +21,9 @@ export function serializeRGB(color: ColorData, gamutMapping = true): FunctionNod
 	let srgb;
 
 	if (gamutMapping) {
-		srgb = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels);
+		srgb = XYZ_D65_to_sRGB_Gamut(colorData_to_XYZ_D65(color).channels);
 	} else {
-		srgb = XYZ_D50_to_sRGB(colorData_to_XYZ_D50(color).channels);
+		srgb = XYZ_D65_to_sRGB(colorData_to_XYZ_D65(color).channels);
 	}
 
 	const r = Math.min(255, Math.max(0, Math.round(toPrecision(srgb[0]) * 255)));

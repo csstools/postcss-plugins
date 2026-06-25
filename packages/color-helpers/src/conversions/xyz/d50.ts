@@ -498,3 +498,14 @@ export function XYZ_D50_to_XYZ_D65(x: Color): Color {
 export function XYZ_D50_to_XYZ_D50(x: Color): Color {
 	return x;
 }
+
+/**
+ * @param {Color} color [x, y, z]
+ * - X as number 0..1;
+ * - Y as number 0..1;
+ * - Z as number 0..1;
+ * @return {Color} D50 XYZ [x, y, z]
+ */
+export function XYZ_D65_to_XYZ_D65(x: Color): Color {
+	return x;
+}

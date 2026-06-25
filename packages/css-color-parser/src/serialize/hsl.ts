@@ -1,10 +1,10 @@
 import type { TokenCloseParen, TokenComma, TokenWhitespace } from '@csstools/css-tokenizer';
 import type { ColorData} from '../color-data';
-import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D50 } from '../color-data';
+import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D65 } from '../color-data';
 import { FunctionNode, TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { XYZ_D50_to_HSL, sRGB_to_XYZ_D50 } from '@csstools/color-helpers';
-import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
+import { XYZ_D65_to_HSL, sRGB_to_XYZ_D65 } from '@csstools/color-helpers';
+import { XYZ_D65_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 import { toPrecision } from './to-precision';
 
 export function serializeHSL(color: ColorData, gamutMapping = true): FunctionNode {
@@ -12,17 +12,17 @@ export function serializeHSL(color: ColorData, gamutMapping = true): FunctionNod
 	let hsl;
 
 	if (gamutMapping) {
-		hsl = XYZ_D50_to_HSL(sRGB_to_XYZ_D50(
-			XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(color).channels),
+		hsl = XYZ_D65_to_HSL(sRGB_to_XYZ_D65(
+			XYZ_D65_to_sRGB_Gamut(colorData_to_XYZ_D65(color).channels),
 		));
 	} else {
-		hsl = XYZ_D50_to_HSL(colorData_to_XYZ_D50(color).channels);
+		hsl = XYZ_D65_to_HSL(colorData_to_XYZ_D65(color).channels);
 	}
 
-	// Needs to be done twice because `xyz.XYZ_D50_to_HSL` can return `NaN` values.
+	// Needs to be done twice because `xyz.XYZ_D65_to_HSL` can return `NaN` values.
 	hsl = hsl.map((x) => Number.isNaN(x) ? 0 : x);
 
-	const h = Math.min(360, Math.max(0, Math.round(toPrecision(hsl[0]))));
+	const h = Math.min(360, Math.max(0, Math.round(toPrecision(hsl[0])))) % 360;
 	const s = Math.min(100, Math.max(0, Math.round(toPrecision(hsl[1]))));
 	const l = Math.min(100, Math.max(0, Math.round(toPrecision(hsl[2]))));
 

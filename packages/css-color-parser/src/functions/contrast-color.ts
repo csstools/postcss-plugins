@@ -2,9 +2,9 @@ import type { ColorData } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import { ColorNotation } from '../color-notation';
-import { SyntaxFlag, colorData_to_XYZ_D50, convertNaNToZero } from '../color-data';
+import { SyntaxFlag, colorData_to_XYZ_D65, convertNaNToZero } from '../color-data';
 import { isCommentNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
-import { XYZ_D50_to_sRGB_Gamut } from '../gamut-mapping/srgb';
+import { XYZ_D65_to_sRGB_Gamut } from '../gamut-mapping/srgb';
 import { contrast_ratio_wcag_2_1 } from '@csstools/color-helpers';
 
 export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorParser): ColorData | false {
@@ -32,7 +32,7 @@ export function contrastColor(colorMixNode: FunctionNode, colorParser: ColorPars
 
 	// Treat missing as zero.
 	backgroundColorData.channels = convertNaNToZero(backgroundColorData.channels);
-	backgroundColorData.channels = XYZ_D50_to_sRGB_Gamut(colorData_to_XYZ_D50(backgroundColorData).channels);
+	backgroundColorData.channels = XYZ_D65_to_sRGB_Gamut(colorData_to_XYZ_D65(backgroundColorData).channels);
 	backgroundColorData.colorNotation = ColorNotation.sRGB;
 
 	const colorData: ColorData = {

@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Skip whitepoint conversion when it isn't needed during color conversion
+
 ### 4.1.8
 
 _June 19, 2026_

@@ -1,14 +1,14 @@
 import type { Color } from '@csstools/color-helpers';
-import { mapGamutRayTrace, clip, XYZ_D50_to_sRGB, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_D50_to_OKLCH, XYZ_to_OKLab, OKLab_to_OKLCH, gam_sRGB, OKLab_to_XYZ, lin_sRGB_to_XYZ, inGamut } from '@csstools/color-helpers';
+import { mapGamutRayTrace, clip, OKLCH_to_OKLab, XYZ_to_lin_sRGB, XYZ_to_OKLab, OKLab_to_OKLCH, gam_sRGB, OKLab_to_XYZ, lin_sRGB_to_XYZ, inGamut, XYZ_D65_to_sRGB, XYZ_D65_to_OKLCH } from '@csstools/color-helpers';
 
-export function XYZ_D50_to_sRGB_Gamut(color: Color): Color {
-	const srgb = XYZ_D50_to_sRGB(color);
+export function XYZ_D65_to_sRGB_Gamut(color: Color): Color {
+	const srgb = XYZ_D65_to_sRGB(color);
 	if (inGamut(srgb)) {
 		return clip(srgb);
 	}
 
 	let oklch: Color = color;
-	oklch = XYZ_D50_to_OKLCH(oklch);
+	oklch = XYZ_D65_to_OKLCH(oklch);
 	if (oklch[0] < 0.000001) {
 		oklch = [0, 0, 0];
 	}

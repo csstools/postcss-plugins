@@ -28,6 +28,15 @@ Description
 </td></tr>
 <tr><td>
 
+[a98\_RGB\_to\_XYZ\_D65(x)](./color-helpers.a98_rgb_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [clip(color)](./color-helpers.clip.md)
 
 
@@ -79,7 +88,25 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
+[HSL\_to\_XYZ\_D65(x)](./color-helpers.hsl_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [HWB\_to\_XYZ\_D50(x)](./color-helpers.hwb_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HWB\_to\_XYZ\_D65(x)](./color-helpers.hwb_to_xyz_d65.md)
 
 
 </td><td>
@@ -106,6 +133,15 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
+[Lab\_to\_XYZ\_D65(x)](./color-helpers.lab_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [LCH\_to\_XYZ\_D50(x)](./color-helpers.lch_to_xyz_d50.md)
 
 
@@ -115,7 +151,25 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
+[LCH\_to\_XYZ\_D65(x)](./color-helpers.lch_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [lin\_P3\_to\_XYZ\_D50(x)](./color-helpers.lin_p3_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[lin\_P3\_to\_XYZ\_D65(x)](./color-helpers.lin_p3_to_xyz_d65.md)
 
 
 </td><td>
@@ -147,6 +201,15 @@ Convert an array of display-p3 RGB values in the range 0.0 - 1.0 to linear light
 <tr><td>
 
 [lin\_sRGB\_to\_XYZ\_D50(x)](./color-helpers.lin_srgb_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[lin\_sRGB\_to\_XYZ\_D65(x)](./color-helpers.lin_srgb_to_xyz_d65.md)
 
 
 </td><td>
@@ -213,6 +276,15 @@ Convert an array of of sRGB values where in-gamut values are in the range \[0 - 
 </td></tr>
 <tr><td>
 
+[OKLab\_to\_XYZ\_D65(x)](./color-helpers.oklab_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [OKLab\_to\_XYZ(OKLab)](./color-helpers.oklab_to_xyz.md)
 
 
@@ -242,7 +314,25 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
+[OKLCH\_to\_XYZ\_D65(x)](./color-helpers.oklch_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [P3\_to\_XYZ\_D50(x)](./color-helpers.p3_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[P3\_to\_XYZ\_D65(x)](./color-helpers.p3_to_xyz_d65.md)
 
 
 </td><td>
@@ -260,6 +350,15 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
+[ProPhoto\_RGB\_to\_XYZ\_D65(x)](./color-helpers.prophoto_rgb_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [rec\_2020\_to\_XYZ\_D50(x)](./color-helpers.rec_2020_to_xyz_d50.md)
 
 
@@ -269,7 +368,25 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
+[rec\_2020\_to\_XYZ\_D65(x)](./color-helpers.rec_2020_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [sRGB\_to\_XYZ\_D50(x)](./color-helpers.srgb_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[sRGB\_to\_XYZ\_D65(x)](./color-helpers.srgb_to_xyz_d65.md)
 
 
 </td><td>
@@ -413,7 +530,133 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
+[XYZ\_D65\_to\_a98\_RGB(x)](./color-helpers.xyz_d65_to_a98_rgb.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_HSL(x)](./color-helpers.xyz_d65_to_hsl.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_HWB(x)](./color-helpers.xyz_d65_to_hwb.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_Lab(x)](./color-helpers.xyz_d65_to_lab.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_LCH(x)](./color-helpers.xyz_d65_to_lch.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_lin\_P3(x)](./color-helpers.xyz_d65_to_lin_p3.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_lin\_sRGB(x)](./color-helpers.xyz_d65_to_lin_srgb.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_OKLab(x)](./color-helpers.xyz_d65_to_oklab.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_OKLCH(x)](./color-helpers.xyz_d65_to_oklch.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_P3(x)](./color-helpers.xyz_d65_to_p3.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_ProPhoto(x)](./color-helpers.xyz_d65_to_prophoto.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_rec\_2020(x)](./color-helpers.xyz_d65_to_rec_2020.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_sRGB(x)](./color-helpers.xyz_d65_to_srgb.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [XYZ\_D65\_to\_XYZ\_D50(x)](./color-helpers.xyz_d65_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYZ\_D65\_to\_XYZ\_D65(x)](./color-helpers.xyz_d65_to_xyz_d65.md)
 
 
 </td><td>

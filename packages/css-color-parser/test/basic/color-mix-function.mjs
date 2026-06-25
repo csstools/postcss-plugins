@@ -181,7 +181,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, red 0%, blue 0%)')),
 	{
 		colorNotation: 'hsl',
-		channels: [300.00000000000006, 100, 49.99999999999999],
+		channels: [300, 100, 50],
 		alpha: 0,
 		syntaxFlags: new Set(['color-mix']),
 	},
@@ -191,7 +191,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, red 0%)')),
 	{
 		colorNotation: 'hsl',
-		channels: [9.186375618530642e-14, 100, 49.99999999999999],
+		channels: [360, 100, 50],
 		alpha: 0,
 		syntaxFlags: new Set(['color-keyword', 'named-color', 'color-mix-variadic', 'color-mix']),
 	},
@@ -201,7 +201,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, red 0%, red 0%, red 0%)')),
 	{
 		colorNotation: 'hsl',
-		channels: [9.186375618530642e-14, 100, 49.99999999999999],
+		channels: [360, 100, 50],
 		alpha: 0,
 		syntaxFlags: new Set(['color-mix', 'color-mix-variadic']),
 	},
@@ -261,7 +261,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, lch(50% 50% 30), hsl(50 50% 50%))')),
 	{
 		colorNotation: 'hsl',
-		channels: [383.202603842081, 60.179695614531866, 51.44446807428794],
+		channels: [383.20260384, 60.179695615, 51.444468075],
 		alpha: 1,
 		syntaxFlags: new Set(['color-mix']),
 	},
