@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Skip whitepoint conversion when it isn't needed during color conversion
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#610) (minor)
 
 ### 4.1.8
 
