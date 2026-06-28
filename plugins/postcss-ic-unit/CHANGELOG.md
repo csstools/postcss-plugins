@@ -1,6 +1,8 @@
 # Changes to PostCSS IC Unit
 
-### Unreleased (patch)
+### 5.0.2
+
+_June 28, 2026_
 
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#511) (patch)
 
