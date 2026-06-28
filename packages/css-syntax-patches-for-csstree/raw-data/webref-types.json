@@ -1,4 +1,7 @@
 {
+	"a-n-plus-b": {
+		"syntax": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>"
+	},
 	"abs()": {
 		"syntax": "abs( <calc-sum> )"
 	},
@@ -21,7 +24,7 @@
 		"syntax": "alpha( [ from <color> ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"an+b": {
-		"syntax": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>"
+		"syntax": "odd | even | <integer> | <n-dimension> | '+'? † n | -n | <ndashdigit-dimension> | '+'? † <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? † n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? † n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? † n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>"
 	},
 	"anchor-name": {
 		"syntax": "<dashed-ident>"
@@ -1326,7 +1329,7 @@
 		"syntax": "<percentage> | <number> | <dimension> | <'animation-timeline'>"
 	},
 	"progress()": {
-		"syntax": "progress( <calc-sum> , <calc-sum> , <calc-sum> )"
+		"syntax": "progress( no-clamp? <calc-sum> , <calc-sum> , <calc-sum> )"
 	},
 	"pseudo-class-selector": {
 		"syntax": ": <ident-token> | : <function-token> <any-value> )"

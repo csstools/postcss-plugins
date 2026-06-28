@@ -1,4 +1,15 @@
 {
+	"a-n-plus-b": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
+		"syntax-m": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"absolute-size": {
 		"type": "modified",
 		"comment": "",
@@ -53,17 +64,6 @@
 					"value": "alpha(from oklch(60% 0.25 315 / 0.3) / a)"
 				}
 			]
-		}
-	},
-	"an+b": {
-		"type": "modified",
-		"comment": "",
-		"syntax-b": "odd | even | <integer> | <n-dimension> | '+'? † n | -n | <ndashdigit-dimension> | '+'? † <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? † n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? † n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? † n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
-		"syntax-a": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
-		"syntax-m": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
-		"tests": {
-			"passing": [],
-			"failing": []
 		}
 	},
 	"anchored-feature": {
@@ -3261,8 +3261,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
-		"syntax-m": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
+		"syntax-a": "progress( no-clamp? <calc-sum> , <calc-sum> , <calc-sum> )",
+		"syntax-m": "progress( no-clamp? <calc-sum> , <calc-sum> , <calc-sum> )",
 		"tests": {
 			"passing": [],
 			"failing": []

@@ -1634,7 +1634,7 @@
 	"path-length": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "none | @ @ unknown symbol \" number [ 0 , ∞ ] \"",
+		"syntax-a": "none | <length> [ 0 , ∞ ]",
 		"comment": ""
 	},
 	"pause-after": {

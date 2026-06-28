@@ -3623,8 +3623,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "none | @ @ unknown symbol \" number [ 0 , ∞ ] \"",
-		"syntax-m": "none | @ @ unknown symbol \" number [ 0 , ∞ ] \"",
+		"syntax-a": "none | <length> [ 0 , ∞ ]",
+		"syntax-m": "none | <length> [ 0 , ∞ ]",
 		"tests": {
 			"passing": [],
 			"failing": []

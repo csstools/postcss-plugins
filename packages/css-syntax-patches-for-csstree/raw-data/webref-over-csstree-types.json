@@ -1,4 +1,10 @@
 {
+	"a-n-plus-b": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
+		"comment": ""
+	},
 	"absolute-size": {
 		"type": "modified",
 		"syntax-b": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large",
@@ -15,12 +21,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "alpha( [ from <color> ] [ / [ <alpha-value> | none ] ]? )",
-		"comment": ""
-	},
-	"an+b": {
-		"type": "modified",
-		"syntax-b": "odd | even | <integer> | <n-dimension> | '+'? † n | -n | <ndashdigit-dimension> | '+'? † <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? † n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? † n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? † n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
-		"syntax-a": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
 		"comment": ""
 	},
 	"anchored-feature": {
@@ -1328,7 +1328,7 @@
 	"progress()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "progress( <calc-sum> , <calc-sum> , <calc-sum> )",
+		"syntax-a": "progress( no-clamp? <calc-sum> , <calc-sum> , <calc-sum> )",
 		"comment": ""
 	},
 	"pseudo-class-selector": {

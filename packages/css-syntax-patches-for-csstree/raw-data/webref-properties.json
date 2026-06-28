@@ -1791,7 +1791,7 @@
 		"syntax": "normal | [ fill || stroke || markers ]"
 	},
 	"path-length": {
-		"syntax": "none | @ @ unknown symbol \" number [ 0 , ∞ ] \""
+		"syntax": "none | <length> [ 0 , ∞ ]"
 	},
 	"pause": {
 		"syntax": "<'pause-before'> <'pause-after'>?"
