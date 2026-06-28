@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 5.1.1
+
+_June 28, 2026_
 
 - Fix support conditions for shorthands followed by longhands.
 
