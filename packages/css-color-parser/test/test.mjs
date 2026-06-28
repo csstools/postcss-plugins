@@ -17,3 +17,5 @@ import './basic/variables.mjs';
 import './wpt/index.mjs';
 
 import './gamut-mapping/ray-trace.mjs';
+
+import './fuzzer/001.mjs';
