@@ -260,3 +260,4 @@ export function computedValue(declared) {
 
 	throw new Error('unsupported color');
 }
+
