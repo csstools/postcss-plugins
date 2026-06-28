@@ -10,32 +10,32 @@ description: Play with PostCSS Preset Env in your browser
 
 	<div class="editors-container">
 		<div id="controls" class="controls">
-			<fieldset>
+			<div class="controls__item">
 				<label for="browsers">browserslist</label>
 				<input type="text" name="browsers" id="browsers">
 				<a href="https://browsersl.ist/#q=%3E+0.2%25+and+not+dead" target="_blank">ℹ︎</a>
-			</fieldset>
+			</div>
 
-			<fieldset>
+			<div class="controls__item">
 				<label for="minimumVendorImplementations">implementations</label>
 				<input type="number" name="minimumVendorImplementations" id="minimumVendorImplementations" max="4" min="0">
-			</fieldset>
+			</div>
 
-			<fieldset>
+			<div class="controls__item">
 				<label for="stage">stage</label>
 				<input type="number" name="stage" id="stage" max="4" min="0">
-			</fieldset>
+			</div>
 
-			<fieldset>
+			<div class="controls__item">
 				<label for="preserve">preserve</label>
 				<select id="preserve">
 					<option value="">not set</option>
 					<option value="true">true</option>
 					<option value="false">false</option>
 				</select>
-			</fieldset>
+			</div>
 
-			<fieldset>
+			<div class="controls__item">
 				<label for="inlineDirection">inline direction</label>
 				<select id="inlineDirection">
 					<option selected value="left-to-right">left to right</option>
@@ -43,8 +43,8 @@ description: Play with PostCSS Preset Env in your browser
 					<option value="top-to-bottom">top to bottom</option>
 					<option value="bottom-to-top">bottom to top</option>
 				</select>
-			</fieldset>
-			<fieldset>
+			</div>
+			<div class="controls__item">
 				<label for="blockDirection">block direction</label>
 				<select id="blockDirection">
 					<option value="left-to-right">left to right</option>
@@ -52,12 +52,12 @@ description: Play with PostCSS Preset Env in your browser
 					<option selected value="top-to-bottom">top to bottom</option>
 					<option value="bottom-to-top">bottom to top</option>
 				</select>
-			</fieldset>
+			</div>
 
-			<fieldset>
+			<div class="controls__item">
 				<label for="enableClientSidePolyfills">enable client-side polyfills</label>
 				<input type="checkbox" name="enableClientSidePolyfills" id="enableClientSidePolyfills">
-			</fieldset>
+			</div>
 		</div>
 
 		<div class="editors">

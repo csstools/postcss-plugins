@@ -57,7 +57,7 @@
 		}
 	}
 
-	#controls fieldset {
+	#controls .controls__item {
 		border: none;
 		display: inline-block;
 		margin: 7px 0;
@@ -65,7 +65,7 @@
 		padding: 0;
 	}
 
-	#controls fieldset:not(:last-child) {
+	#controls .controls__item:not(:last-child) {
 		margin-right: var(--space-40);
 
 		@media (--from-wide) {
@@ -109,3 +109,14 @@
 		}
 	}
 }
+
+
+.ͼq {
+	color: #ef737d;
+}
+
+.ͼo .cm-gutters {
+	color: #8f9aaf;
+}
+
+
