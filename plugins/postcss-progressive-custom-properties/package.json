@@ -37,10 +37,11 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*"
+		"@csstools/postcss-tape": "*",
+		"@webref/css": "^8.6.0"
 	},
 	"scripts": {
-		"build": "node ./scripts/matchers.mjs && eslint --fix ./src/matchers.ts && rollup -c ../../rollup/default.mjs",
+		"build": "node ./scripts/matchers.mjs && node ./scripts/shorthands.mjs && eslint --fix ./src/matchers.ts ./src/shorthands.ts  && rollup -c ../../rollup/default.mjs",
 		"docs": "node ../../.github/bin/generate-docs/install.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",

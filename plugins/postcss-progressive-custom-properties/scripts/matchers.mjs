@@ -42,5 +42,5 @@ fs.writeFile(
 		],
 		null,
 		'\t',
-	),
+	) + '\n',
 );

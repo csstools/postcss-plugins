@@ -546,3 +546,15 @@
 	color: image(var(--green));
 }
 }
+
+:root {
+	background: var(--green);
+	background-size: 100px;
+}
+
+@supports (background-image: image(red)) {
+:root {
+	background: image(var(--green));
+	background-size: 100px;
+}
+}

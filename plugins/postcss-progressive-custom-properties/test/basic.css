@@ -306,3 +306,9 @@
 	color: var(--green);
 	color: image(var(--green));
 }
+
+:root {
+	background: var(--green);
+	background: image(var(--green));
+	background-size: 100px;
+}

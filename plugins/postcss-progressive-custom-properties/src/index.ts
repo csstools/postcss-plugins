@@ -1,6 +1,7 @@
-import type { Plugin } from 'postcss';
+import type { ChildNode, Declaration, Plugin } from 'postcss';
 import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
+import { shorthands } from './shorthands';
 
 const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;
 const IS_INITIAL_REGEX = /^initial$/i;
@@ -14,6 +15,31 @@ type State = {
 	},
 	lastConditionalRule: Container | undefined,
 };
+
+function cloneDeclarations(target: Container<ChildNode>, decl: Declaration): void {
+	const longhands = shorthands.get(decl.prop.toLowerCase());
+	if (!longhands?.length) {
+		target.append(decl.clone());
+		return;
+	}
+
+	const list = [
+		decl
+	];
+
+	let next = decl.next();
+	while (next) {
+		if (next.type === 'decl' && longhands.includes(next.prop)) {
+			list.push(next);
+		}
+
+		next = next.next();
+	}
+
+	list.forEach((x) => {
+		target.append(x.clone());
+	});
+}
 
 const creator: PluginCreator<null> = () => {
 	return {
@@ -84,7 +110,7 @@ const creator: PluginCreator<null> = () => {
 						}
 
 						if (state.lastConditionalRule) {
-							state.lastConditionalRule.append(decl.clone());
+							cloneDeclarations(state.lastConditionalRule, decl);
 							decl.remove();
 							return;
 						}
@@ -122,7 +148,7 @@ const creator: PluginCreator<null> = () => {
 
 						parentClone.raws.before = '\n';
 
-						parentClone.append(decl.clone());
+						cloneDeclarations(parentClone, decl);
 						decl.remove();
 
 						state.lastConditionParams.support = supportParams;

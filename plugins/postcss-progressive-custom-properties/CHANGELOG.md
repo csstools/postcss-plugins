@@ -1,5 +1,33 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (patch)
+
+- Fix support conditions for shorthands followed by longhands.
+
+```css
+:root {
+	background: var(--green);
+	background: image(var(--green));
+	background-size: 100px;
+}
+```
+
+Now preserves the `background-size` longhand in the supports condition and becomes
+
+```css
+:root {
+	background: var(--green);
+	background-size: 100px;
+}
+
+@supports (background-image: image(red)) {
+	:root {
+		background: image(var(--green));
+		background-size: 100px;
+	}
+}
+```
+
 ### 5.1.0
 
 _May 13, 2026_
