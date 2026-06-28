@@ -3,6 +3,8 @@
 ### Unreleased (patch)
 
 - Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#504) (patch)
+- Updated [`@csstools/postcss-gamut-mapping`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#511) (patch)
 
 ### 11.3.1
 
