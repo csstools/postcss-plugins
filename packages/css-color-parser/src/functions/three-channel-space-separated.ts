@@ -122,10 +122,7 @@ export function threeChannelSpaceSeparated(
 
 			colorData.syntaxFlags.add(SyntaxFlag.RelativeColorSyntax);
 
-			if (relativeToColor.colorNotation !== colorNotation) {
-				relativeToColor = colorDataTo(relativeToColor, colorNotation);
-			}
-
+			relativeToColor = colorDataTo(relativeToColor, colorNotation);
 			relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
 			relativeColorChannelsWithoutNone = noneToZeroInRelativeColorDataChannels(relativeColorChannels);
 

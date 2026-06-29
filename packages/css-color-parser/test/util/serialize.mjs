@@ -1,5 +1,5 @@
 import { serializeRGB, serializeP3, serializeOKLCH, serializeHSL, color } from '@csstools/css-color-parser';
-import { isTokenNumeric, stringify, tokenize } from '@csstools/css-tokenizer';
+import { isTokenDimension, isTokenNumeric, isTokenPercentage, mutateUnit, stringify, tokenize } from '@csstools/css-tokenizer';
 import { parseComponentValue } from '@csstools/css-parser-algorithms';
 
 export function serialize_sRGB_data(x, gamutMapping = true) {
@@ -56,7 +56,14 @@ export function reducePrecisionWholeValue(color) {
 
 			const y = Math.round(token[4].value * factor) / factor;
 
-			token[1] = y.toString();
+			if (isTokenDimension(token)) {
+				token[4].value = y;
+				mutateUnit(token, token[4].unit);
+			} else if (isTokenPercentage(token)) {
+				token[1] = y.toString() + '%';
+			} else {
+				token[1] = y.toString();
+			}
 		}
 	}
 

@@ -106,10 +106,7 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 			colorData.colorNotation = colorSpaceNameToColorNotation(colorSpace);
 
 			if (relativeToColor) {
-				if (relativeToColor.colorNotation !== colorData.colorNotation) {
-					relativeToColor = colorDataTo(relativeToColor, colorData.colorNotation);
-				}
-
+				relativeToColor = colorDataTo(relativeToColor, colorData.colorNotation);
 				relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
 				relativeColorChannelsWithoutNone = noneToZeroInRelativeColorDataChannels(relativeColorChannels);
 			}

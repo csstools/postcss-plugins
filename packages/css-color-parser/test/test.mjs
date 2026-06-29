@@ -11,6 +11,8 @@ import './basic/lab.mjs';
 import './basic/lch.mjs';
 import './basic/named-colors.mjs';
 import './basic/none.mjs';
+import './basic/none-exhaustive.mjs';
+import './basic/powerless-exhaustive.mjs';
 import './basic/relative-color.mjs';
 import './basic/variables.mjs';
 

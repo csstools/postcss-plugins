@@ -592,25 +592,25 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.001) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.001) {
 				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.HWB:
-			if (!Number.isNaN(out[1]) && !Number.isNaN(out[2]) && (Math.max(0, out[1]) + Math.max(0, out[2])) >= 99.999) {
+			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
 				out[0] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.LCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.0015) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.0015) {
 				out[2] = Number.NaN;
 			}
 
 			break;
 		case ColorNotation.OKLCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.000004) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.000004) {
 				out[2] = Number.NaN;
 			}
 
@@ -625,18 +625,18 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.001) {
+				out[0] = Number.NaN;
+			}
+
 			if (reducePrecision(out[2]) <= 0 || reducePrecision(out[2]) >= 100) {
 				out[0] = Number.NaN;
 				out[1] = Number.NaN;
 			}
 
-			if (!Number.isNaN(out[1]) && out[1] <= 0.001) {
-				out[0] = Number.NaN;
-			}
-
 			break;
 		case ColorNotation.HWB:
-			if (!Number.isNaN(out[1]) && !Number.isNaN(out[2]) && (Math.max(0, out[1]) + Math.max(0, out[2])) >= 99.999) {
+			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
 				out[0] = Number.NaN;
 			}
 			break;
@@ -647,7 +647,7 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 			break;
 		case ColorNotation.LCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.0015) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.0015) {
 				out[2] = Number.NaN;
 			}
 
@@ -663,7 +663,7 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 			break;
 		case ColorNotation.OKLCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.000004) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.000004) {
 				out[2] = Number.NaN;
 			}
 
