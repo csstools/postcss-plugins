@@ -297,6 +297,15 @@ const predefinedRGB_or_XYZ_Spaces = new Set([
 ]);
 
 export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): ColorData {
+	colorData = {
+		...colorData,
+	};
+
+	// Change any powerless components in src to missing components
+	if (colorData.colorNotation !== toNotation) {
+		colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, colorData.colorNotation);
+	}
+
 	const outputColorData: ColorData = {
 		...colorData,
 	};
@@ -575,7 +584,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 		}
 	}
 
-	if (colorData.colorNotation !== outputColorData.colorNotation) {
+	if (colorData.colorNotation !== toNotation) {
 		outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, toNotation);
 	}
 
