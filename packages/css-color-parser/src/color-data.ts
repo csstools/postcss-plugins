@@ -575,15 +575,8 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 		}
 	}
 
-	switch (colorData.colorNotation) {
-		case ColorNotation.HSL:
-		case ColorNotation.HWB:
-		case ColorNotation.LCH:
-		case ColorNotation.OKLCH:
-			break;
-		default:
-			outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, toNotation);
-			break;
+	if (colorData.colorNotation !== outputColorData.colorNotation) {
+		outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, toNotation);
 	}
 
 	return outputColorData;

@@ -12,7 +12,7 @@ const tests = [
 
 	// Analogous sets
 	['color-mix(in oklch, rgb(none none none), oklch(0.5 0.2 50))', 'oklch(0.5 0.2 50)'],
-	['color-mix(in oklch, hwb(100deg none none), oklch(0.5 0.2 50deg))', 'oklch(0.5 0.2 94.8876)'],
+	['color-mix(in oklch, hwb(100deg none none), oklch(0.5 0.2 50deg))', 'oklch(0.5 0.2 50)'],
 	['color-mix(in oklch, lab(100 none none), oklch(0.5 0.2 50deg))', 'oklch(0.75 0.2 50)'],
 ];
 

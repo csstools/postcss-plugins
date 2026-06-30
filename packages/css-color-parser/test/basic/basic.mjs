@@ -259,7 +259,7 @@ assert.deepStrictEqual(
 	color(parse('lch(from hwb(50deg none none) l c h)')),
 	{
 		colorNotation: 'lch',
-		channels: [NaN, NaN, 87.26522367839932],
+		channels: [NaN, NaN, NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
 	},

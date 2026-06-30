@@ -28,7 +28,7 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['hsl(from hwb(180 none 25%) h s l)', 'color(srgb 0 0.75 0.75)'],
 		['hsl(from hwb(180 25% none) h s l)', 'color(srgb 0.25 1 1)'],
 		['hsl(from hwb(none none 25%) h s l)', 'hsl(none 100% 37.5%)'],
-		['hsl(from hwb(180 none none) h s l)', 'hsl(180 none none)'],
+		['hsl(from hwb(180 none none) h s l)', 'hsl(none none none)'],
 		['hsl(from hwb(none 25% none) h s l)', 'hsl(none 100% 62.5%)'],
 		['hsl(from hwb(none none none) h s l)', 'hsl(none none none)'],
 
@@ -132,7 +132,7 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['lch(from hwb(180 none 25%) l c h)', 'lch(69.91337803 42.54334477 196.45478916)'],
 		['lch(from hwb(180 25% none) l c h)', 'lch(91.18116399 49.29673753 196.65803824)'],
 		['lch(from hwb(none none 25%) l c h)', 'lch(40.61501478 86.05118759 none)'],
-		['lch(from hwb(180 none none) l c h)', 'lch(none none 196.45478916)'],
+		['lch(from hwb(180 none none) l c h)', 'lch(none none none)'],
 		['lch(from hwb(none 25% none) l c h)', 'lch(58.23109529 85.49243054 none)'],
 		['lch(from hwb(none none none) l c h)', 'lch(none none none)'],
 
@@ -184,7 +184,7 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['oklch(from hwb(180 none 25%) l c h)', 'oklch(0.72924735 0.12448121 194.7689599)'],
 		['oklch(from hwb(180 25% none) l c h)', 'oklch(0.91079253 0.14429702 194.91785641)'],
 		['oklch(from hwb(none none 25%) l c h)', 'oklch(0.50578216 0.20754918 none)'],
-		['oklch(from hwb(180 none none) l c h)', 'oklch(none none 194.7689599)'],
+		['oklch(from hwb(180 none none) l c h)', 'oklch(none none none)'],
 		['oklch(from hwb(none 25% none) l c h)', 'oklch(0.65951623 0.22690049 none)'],
 		['oklch(from hwb(none none none) l c h)', 'oklch(none none none)'],
 
