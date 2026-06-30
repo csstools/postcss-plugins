@@ -114,9 +114,10 @@ const tests = [
 	['color-mix(in hsl increasing hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
 	['color-mix(in hsl decreasing hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
 
-	['color-mix(in hsl, color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%)), hsl(180deg 100% 50%))', canonicalize('hsl(180deg 50% 50%)')],
+	['color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%))', canonicalize('hsl(230deg 0% 50%)')],
+	['color-mix(in hsl, color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%)), hsl(180deg 100% 50%))', canonicalize('hsl(205deg 50% 50%)')],
 
-	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(30deg 40% 80% / 25%)')],
+	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(90deg 40% 80% / 25%)')],
 	['color-mix(in hwb, hwb(30deg 30% 40% / 25%) 0%, hwb(90deg none none / 0.5))', canonicalize('hwb(90deg 30% 40% / 0.5)')],
 	['color-mix(in hsl, hsl(from hsl(none 50% 50%) h s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(120deg 50% 50%)')],
 	['color-mix(in hsl, hsl(from hsl(0deg 50% 50%) none s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(120deg 50% 50%)')],
@@ -223,7 +224,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in lch, lch(100 0 40deg), lch(100 0 60deg))')),
 	{
 		colorNotation: 'lch',
-		channels: [100, 0, Number.NaN],
+		channels: [100, 0, 50],
 		alpha: 1,
 		syntaxFlags: new Set(['color-mix']),
 	},
@@ -283,7 +284,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, lch(none 0 30), hsl(50 0 none))')),
 	{
 		colorNotation: 'hsl',
-		channels: [Number.NaN, 0, Number.NaN],
+		channels: [50, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['color-mix']),
 	},
