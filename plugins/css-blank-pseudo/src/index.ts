@@ -1,6 +1,5 @@
 import type { Plugin, PluginCreator } from 'postcss';
 import parser from 'postcss-selector-parser';
-import isValidReplacement from './is-valid-replacement.mjs';
 
 /** css-blank-pseudo plugin options */
 export type pluginOptions = {
@@ -11,6 +10,8 @@ export type pluginOptions = {
 	/** Do not inject "js-blank-pseudo" before each selector with "[blank]". default: false */
 	disablePolyfillReadyClass?: boolean,
 };
+
+const INVALID_SELECTOR_CHAR_REGEX = /[ >~:+@#()]/;
 
 const POLYFILL_READY_CLASSNAME = 'js-blank-pseudo';
 const PSEUDO = ':blank';
@@ -28,7 +29,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	);
 	const replacementAST = parser().astSync(options.replaceWith);
 
-	if (!isValidReplacement(options.replaceWith)) {
+	if (INVALID_SELECTOR_CHAR_REGEX.test(options.replaceWith)) {
 		return {
 			postcssPlugin: 'css-blank-pseudo',
 			Once(root, { result }): void {

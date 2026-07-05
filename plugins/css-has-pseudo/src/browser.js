@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import '@mrhenry/core-web/modules/~element-qsa-has.js';
 import extractEncodedSelectors from './encode/extract.mjs';
 import encodeCSS from './encode/encode.mjs';
@@ -16,6 +17,8 @@ function hasNativeSupport() {
 }
 
 export default function cssHasPseudo(document, options) {
+	var transformObservedItemsThrottledBusy = false;
+
 	// OPTIONS
 	{
 		if (!options) {
@@ -26,7 +29,7 @@ export default function cssHasPseudo(document, options) {
 			hover: (!!options.hover) || false,
 			debug: (!!options.debug) || false,
 			observedAttributes: options.observedAttributes || [],
-			forcePolyfill: (!!options.forcePolyfill) || false,
+			forcePolyfill: (!!options.forcePolyfill) || false
 		};
 
 		options.mustPolyfill = options.forcePolyfill || !hasNativeSupport();
@@ -44,10 +47,10 @@ export default function cssHasPseudo(document, options) {
 		options.observedAttributes = options.observedAttributes.concat(['accept', 'accept-charset', 'accesskey', 'action', 'align', 'allow', 'alt', 'async', 'autocapitalize', 'autocomplete', 'autofocus', 'autoplay', 'buffered', 'capture', 'challenge', 'charset', 'checked', 'cite', 'class', 'code', 'codebase', 'cols', 'colspan', 'content', 'contenteditable', 'contextmenu', 'controls', 'coords', 'crossorigin', 'csp', 'data', 'datetime', 'decoding', 'default', 'defer', 'dir', 'dirname', 'disabled', 'download', 'draggable', 'enctype', 'enterkeyhint', 'for', 'form', 'formaction', 'formenctype', 'formmethod', 'formnovalidate', 'formtarget', 'headers', 'hidden', 'high', 'href', 'hreflang', 'http-equiv', 'icon', 'id', 'importance', 'integrity', 'intrinsicsize', 'inputmode', 'ismap', 'itemprop', 'keytype', 'kind', 'label', 'lang', 'language', 'list', 'loop', 'low', 'manifest', 'max', 'maxlength', 'minlength', 'media', 'method', 'min', 'multiple', 'muted', 'name', 'novalidate', 'open', 'optimum', 'pattern', 'ping', 'placeholder', 'poster', 'preload', 'radiogroup', 'readonly', 'referrerpolicy', 'rel', 'required', 'reversed', 'rows', 'rowspan', 'sandbox', 'scope', 'scoped', 'selected', 'shape', 'size', 'sizes', 'slot', 'span', 'spellcheck', 'src', 'srcdoc', 'srclang', 'srcset', 'start', 'step', 'summary', 'tabindex', 'target', 'title', 'translate', 'type', 'usemap', 'value', 'width', 'wrap']);
 	}
 
-	const observedItems = [];
+	var observedItems = [];
 
 	// document.createAttribute() doesn't support `:` in the name. innerHTML does
-	const attributeElement = document.createElement('x');
+	var attributeElement = document.createElement('x');
 
 	// walk all stylesheets to collect observed css rules
 	[].forEach.call(document.styleSheets, walkStyleSheet);
@@ -61,7 +64,7 @@ export default function cssHasPseudo(document, options) {
 
 	// observe DOM modifications that affect selectors
 	if ('MutationObserver' in self) {
-		const mutationObserver = new MutationObserver(function(mutationsList) {
+		var mutationObserver = new MutationObserver(function(mutationsList) {
 			mutationsList.forEach(function(mutation) {
 				[].forEach.call(mutation.addedNodes || [], function(node) {
 					// walk stylesheets to collect observed css rules
@@ -112,7 +115,7 @@ export default function cssHasPseudo(document, options) {
 			function observeProperty(proto, property) {
 				// eslint-disable-next-line no-prototype-builtins
 				if (proto.hasOwnProperty(property)) {
-					const descriptor = Object.getOwnPropertyDescriptor(proto, property);
+					var descriptor = Object.getOwnPropertyDescriptor(proto, property);
 					if (descriptor && descriptor.configurable && 'set' in descriptor) {
 						Object.defineProperty(proto, property, {
 							configurable: descriptor.configurable,
@@ -129,7 +132,7 @@ export default function cssHasPseudo(document, options) {
 									// should never happen as there is an inner try/catch
 									// but just in case
 								}
-							},
+							}
 						});
 					}
 				}
@@ -152,7 +155,7 @@ export default function cssHasPseudo(document, options) {
 					'HTMLOutputElement',
 					'HTMLProgressElement',
 					'HTMLSelectElement',
-					'HTMLTextAreaElement',
+					'HTMLTextAreaElement'
 				].forEach(function(elementName) {
 					if (elementName in self && self[elementName].prototype) {
 						observeProperty(self[elementName].prototype, property);
@@ -167,7 +170,6 @@ export default function cssHasPseudo(document, options) {
 		}
 	}
 
-	let transformObservedItemsThrottledBusy = false;
 	function transformObservedItemsThrottled() {
 		if (transformObservedItemsThrottledBusy) {
 			cancelAnimationFrame(transformObservedItemsThrottledBusy);
@@ -181,9 +183,9 @@ export default function cssHasPseudo(document, options) {
 	// transform observed css rules
 	function transformObservedItems() {
 		observedItems.forEach(function(item) {
-			const nodes = [];
+			var nodes = [];
 
-			let matches = [];
+			var matches = [];
 			if (item.selector) {
 				try {
 					matches = document.querySelectorAll(item.selector);
@@ -233,7 +235,7 @@ export default function cssHasPseudo(document, options) {
 				return item.rule.parentStyleSheet &&
 					item.rule.parentStyleSheet.ownerNode &&
 					document.documentElement.contains(item.rule.parentStyleSheet.ownerNode);
-			}),
+			})
 		);
 	}
 
@@ -241,15 +243,15 @@ export default function cssHasPseudo(document, options) {
 	function walkStyleSheet(styleSheet) {
 		try {
 			// walk a css rule to collect observed css rules
-			for (let i = (styleSheet.cssRules.length - 1); i >= 0; i--) {
-				let rule = styleSheet.cssRules[i];
+			for (var i = (styleSheet.cssRules.length - 1); i >= 0; i--) {
+				var rule = styleSheet.cssRules[i];
 
 				if (rule.selectorText) {
 					rule.selectorText = rule.selectorText.replace(/\.js-has-pseudo\s/g, '');
 
 					try {
 						// decode the selector text in all browsers to:
-						const hasSelectors = extractEncodedSelectors(rule.selectorText.toString());
+						var hasSelectors = extractEncodedSelectors(rule.selectorText.toString());
 						if (hasSelectors.length === 0) {
 							continue;
 						}
@@ -259,8 +261,8 @@ export default function cssHasPseudo(document, options) {
 							continue;
 						}
 
-						for (let j = 0; j < hasSelectors.length; j++) {
-							const hasSelector = hasSelectors[j];
+						for (var j = 0; j < hasSelectors.length; j++) {
+							var hasSelector = hasSelectors[j];
 							if (hasSelector) {
 								observedItems.push({
 									rule: rule,

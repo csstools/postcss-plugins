@@ -5,9 +5,9 @@ export default function encodeCSS(value) {
 		return '';
 	}
 
-	let hex;
-	let result = '';
-	for (let i = 0; i < value.length; i++) {
+	var hex;
+	var result = '';
+	for (var i = 0; i < value.length; i++) {
 		hex = value.charCodeAt(i).toString(36);
 		if (i === 0) {
 			result += hex;

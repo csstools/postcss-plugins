@@ -6,10 +6,10 @@ export default function decodeCSS(value) {
 	}
 
 	value = value.slice(13);
-	let values = value.split('-');
+	var values = value.split('-');
 
-	let result = '';
-	for (let i = 0; i < values.length; i++) {
+	var result = '';
+	for (var i = 0; i < values.length; i++) {
 		result += String.fromCharCode(parseInt(values[i], 36));
 	}
 
