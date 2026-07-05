@@ -234,7 +234,7 @@ assert.deepStrictEqual(
 	color(parse('oklch(from lch(100 0 0deg) l c h)')),
 	{
 		colorNotation: 'oklch',
-		channels: [1, 4.996003610813204e-16, Number.NaN],
+		channels: [1, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
 	},
@@ -244,7 +244,7 @@ assert.deepStrictEqual(
 	color(parse('lch(from oklch(100 0 0deg) l c h)')),
 	{
 		colorNotation: 'lch',
-		channels: [100, 1.1102230246251565e-13, Number.NaN],
+		channels: [100, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
 	},
@@ -254,7 +254,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in oklch, lch(100 0 40deg), lch(100 0 60deg))')),
 	{
 		colorNotation: 'oklch',
-		channels: [1.0000000000000002, 4.996003610813204e-16, Number.NaN],
+		channels: [1.0000000000000002, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['color-mix']),
 	},
