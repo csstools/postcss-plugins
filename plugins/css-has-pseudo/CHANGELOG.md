@@ -1,5 +1,9 @@
 # Changes to CSS Has Pseudo
 
+### Unreleased (patch)
+
+- Rewritten browser polyfill as ES3
+
 ### 8.0.0
 
 _January 14, 2026_
