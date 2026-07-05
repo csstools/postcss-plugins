@@ -22,12 +22,9 @@
 		"plugins-stylelint/*"
 	],
 	"devDependencies": {
-		"@babel/core": "^8.0.1",
-		"@babel/preset-env": "^8.0.2",
 		"@eslint/js": "^10.0.1",
 		"@microsoft/api-documenter": "^7.30.3",
 		"@microsoft/api-extractor": "^7.58.5",
-		"@rollup/plugin-babel": "^7.1.0",
 		"@rollup/plugin-commonjs": "^29.0.3",
 		"@rollup/plugin-node-resolve": "^16.0.3",
 		"@rollup/plugin-terser": "^1.0.0",

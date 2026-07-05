@@ -1,26 +1,38 @@
-import isValidReplacement from './is-valid-replacement.mjs';
 function generateHandler(replaceWith) {
-	let selector;
-	let remove;
-	let add;
-	const lastElements = [];
+	var selector;
+	var remove;
+	var add;
+	var lastElements = [];
 
 	if (replaceWith[0] === '.') {
 		selector = replaceWith.slice(1);
-		remove = (el) => el.classList.remove(selector);
-		add = (el) => el.classList.add(selector);
+		remove = function remove(el) {
+			el.classList.remove(selector);
+		};
+
+		add = function add(el) {
+			el.classList.add(selector);
+		};
 	} else {
 		// A bit naive
 		selector = replaceWith.slice(1, -1);
-		remove = (el) => el.removeAttribute(selector, '');
-		add = (el) => el.setAttribute(selector, '');
+
+		remove = function remove(el) {
+			el.removeAttribute(selector, '');
+		};
+
+		add = function add(el) {
+			el.setAttribute(selector, '');
+		};
 	}
 
 	return function handleFocusChange() {
-		lastElements.forEach(lastElement => remove(lastElement));
+		for (var i = 0; i < lastElements.length; i++) {
+			remove(lastElements[i]);
+		}
 		lastElements.length = 0;
 
-		let activeElement = document.activeElement;
+		var activeElement = document.activeElement;
 
 		// only add focus if it has not been added and is not the document element
 		if (!/^(#document|HTML|BODY)$/.test(Object(activeElement).nodeName)) {
@@ -36,7 +48,7 @@ function generateHandler(replaceWith) {
 
 export default function focusWithin(opts) {
 	// configuration
-	const options = {
+	var options = {
 		force: false,
 		replaceWith: '[focus-within]',
 	};
@@ -49,10 +61,6 @@ export default function focusWithin(opts) {
 		options.replaceWith = opts.replaceWith;
 	}
 
-	if (!isValidReplacement(options.replaceWith)) {
-		throw new Error(`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`);
-	}
-
 	try {
 		document.querySelector(':focus-within');
 
@@ -61,9 +69,9 @@ export default function focusWithin(opts) {
 		}
 	} catch (_) {}
 
-	const handleFocusChange = generateHandler(options.replaceWith);
+	var handleFocusChange = generateHandler(options.replaceWith);
 
-	const initialize = function initializeEventListeners() {
+	var initialize = function initializeEventListeners() {
 		if (document.documentElement.className.indexOf('js-focus-within') > -1) {
 			return;
 		}
