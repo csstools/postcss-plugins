@@ -9,9 +9,9 @@
 		"test": "node ./dist/bundle-from-mjs.cjs && node ./dist/bundle-from-cjs.cjs "
 	},
 	"dependencies": {
-		"postcss": "^8.5.15",
-		"webpack": "^5.107.2",
-		"webpack-cli": "^7.0.3",
+		"postcss": "^8.5.16",
+		"webpack": "^5.108.1",
+		"webpack-cli": "^7.1.0",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
 	},
 	"volta": {
