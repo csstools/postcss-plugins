@@ -2,7 +2,7 @@ import type { Calculation } from '../calculation';
 import type { ComponentValue, SimpleBlockNode } from '@csstools/css-parser-algorithms';
 import type { Globals } from '../util/globals';
 import type { CSSToken } from '@csstools/css-tokenizer';
-import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent, isTokenNumber, isTokenDimension } from '@csstools/css-tokenizer';
+import { TokenType, NumberType, isTokenOpenParen, isTokenDelim, isTokenComma, isTokenIdent, isTokenNumber, isTokenDimension, isTokenPercentage } from '@csstools/css-tokenizer';
 import { addition } from '../operation/addition';
 import { division } from '../operation/division';
 import { isCalculation, solve } from '../calculation';
@@ -37,6 +37,7 @@ import type { RandomValueSharing} from './random';
 import { solveRandom } from './random';
 import { snapAsBorderWidth } from '../util/snap-to-border-width';
 import { convertUnit } from '../unit-conversions';
+import { solveCalcMix } from './calc-mix';
 
 type mathFunction = (node: FunctionNode, globals: Globals, options: conversionOptions) => Calculation | -1;
 
@@ -47,6 +48,7 @@ export const mathFunctions: Map<string, mathFunction> = new Map([
 	['atan', atan],
 	['atan2', atan2],
 	['calc', calc],
+	['calc-mix', calcMix],
 	['clamp', clamp],
 	['cos', cos],
 	['exp', exp],
@@ -343,6 +345,101 @@ function variadicArguments(fnNode: FunctionNode, values: Array<ComponentValue>, 
 			}
 
 			solvedNodes.push(solvedChunk);
+		}
+	}
+
+	return solvedNodes;
+}
+
+function calcMix(fnNode: FunctionNode, globals: Globals, options: conversionOptions): Calculation | -1 {
+	const solvedNodes = variadicArgumentsCalcMix(fnNode, fnNode.value, globals, options);
+	if (solvedNodes === -1) {
+		return -1;
+	}
+
+	return solveCalcMix(fnNode, solvedNodes);
+}
+
+function variadicArgumentsCalcMix(fnNode: FunctionNode, values: Array<ComponentValue>, globals: Globals, options: conversionOptions): Array<{ calcSum: TokenNode, percentage: number | false }> | -1 {
+	const nodes: Array<ComponentValue> = resolveGlobalsAndConstants(
+		[...(values.filter(x => !isWhiteSpaceOrCommentNode(x)))],
+		globals,
+	);
+
+	const solvedNodes: Array<{ calcSum: TokenNode, percentage: number | false }> = [];
+
+	{
+		const chunks: Array<Array<ComponentValue>> = [];
+		let chunk: Array<ComponentValue> = [];
+		for (let i = 0; i < nodes.length; i++) {
+			const node = nodes[i];
+			if (isTokenNode(node) && isTokenComma(node.value)) {
+				chunks.push(chunk);
+				chunk = [];
+				continue;
+			}
+
+			chunk.push(node);
+		}
+
+		chunks.push(chunk);
+
+		for (let i = 0; i < chunks.length; i++) {
+			if (chunks[i].length === 0) {
+				return -1;
+			}
+
+			let calcSum: TokenNode | -1 = -1;
+			let percentage: number | false = false;
+
+			for (let j = (chunks[i].length - 1); j >= 0; j--) {
+				if (isWhiteSpaceOrCommentNode(chunks[i][j])) {
+					continue;
+				}
+
+				calcSum = solve(calc(calcWrapper(fnNode, chunks[i].slice(0, j + 1)), globals, options), options);
+				if (calcSum === -1) {
+					continue;
+				}
+
+				const remainder = chunks[i].slice(j + 1).filter((x) => {
+					return !isWhiteSpaceOrCommentNode(x);
+				});
+
+				if (remainder.length) {
+					if (remainder.length === 1 && isTokenNode(remainder[0]) && isTokenPercentage(remainder[0].value)) {
+						percentage = remainder[0].value[4].value;
+
+						if (percentage < 0 || percentage > 100) {
+							return -1;
+						}
+
+					} else {
+						const solvedPercentage = solve(calc(calcWrapper(fnNode, remainder), globals, options), options);
+						if (solvedPercentage === -1) {
+							return -1;
+						}
+
+						if (!isTokenPercentage(solvedPercentage.value)) {
+							return -1;
+						}
+
+						percentage = solvedPercentage.value[4].value;
+						percentage = Math.min(100, Math.max(0, percentage));
+					}
+				}
+
+				break;
+			}
+
+			if (calcSum === -1) {
+				return -1;
+			}
+
+			solvedNodes.push({
+				calcSum: calcSum,
+				percentage: percentage
+			});
 		}
 	}
 

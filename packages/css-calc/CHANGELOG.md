@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (minor)
+
+- Add support for `calc-mix()`
+
 ### 3.2.1
 
 _May 13, 2026_

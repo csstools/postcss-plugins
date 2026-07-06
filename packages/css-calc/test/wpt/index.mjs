@@ -4,6 +4,8 @@ import './calc-angle-values.mjs';
 import './calc-catch-divide-by-0.mjs';
 import './calc-in-calc.mjs';
 import './calc-in-color.mjs';
+import './calc-mix-computed.mjs';
+import './calc-mix-invalid.mjs';
 import './calc-nesting-002.mjs';
 import './calc-parenthesis-stack.mjs';
 import './calc-serialization-002.mjs';
