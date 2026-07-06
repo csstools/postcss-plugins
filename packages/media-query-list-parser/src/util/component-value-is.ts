@@ -20,6 +20,7 @@ const mathFunctions = new Set([
 	'atan',
 	'atan2',
 	'calc',
+	'calc-mix',
 	'clamp',
 	'cos',
 	'exp',
