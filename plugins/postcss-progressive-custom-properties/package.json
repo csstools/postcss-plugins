@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^8.6.0"
+		"@webref/css": "^8.6.1"
 	},
 	"scripts": {
 		"build": "node ./scripts/matchers.mjs && node ./scripts/shorthands.mjs && eslint --fix ./src/matchers.ts ./src/shorthands.ts  && rollup -c ../../rollup/default.mjs",
