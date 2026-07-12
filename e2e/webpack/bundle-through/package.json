@@ -10,8 +10,8 @@
 	},
 	"dependencies": {
 		"postcss": "^8.5.16",
-		"webpack": "^5.108.1",
-		"webpack-cli": "^7.1.0",
+		"webpack": "^5.108.4",
+		"webpack-cli": "^7.2.1",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
 	},
 	"volta": {
