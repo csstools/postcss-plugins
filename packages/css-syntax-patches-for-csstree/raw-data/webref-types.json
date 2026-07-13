@@ -11,9 +11,6 @@
 	"acos()": {
 		"syntax": "acos( <calc-sum> )"
 	},
-	"active-navigation-condition": {
-		"syntax": "<navigation-relation>? [ <route-location> | link-href ]?"
-	},
 	"age": {
 		"syntax": "child | young | old"
 	},
@@ -711,7 +708,7 @@
 		"syntax": "generic( kai ) | generic( fangsong ) | generic( nastaliq )"
 	},
 	"generic-voice": {
-		"syntax": "<age>? <gender> <integer>?"
+		"syntax": "<age>? <gender> <integer [1,∞]>?"
 	},
 	"geometry-box": {
 		"syntax": "<shape-box> | fill-box | stroke-box | view-box"
@@ -1145,11 +1142,8 @@
 	"navigation-location-between-test": {
 		"syntax": "between : <route-location> and <route-location>"
 	},
-	"navigation-location-keyword": {
-		"syntax": "at | with | from | to"
-	},
 	"navigation-location-test": {
-		"syntax": "<navigation-location-keyword> : <route-location>"
+		"syntax": "<navigation-relation> : <route-location>"
 	},
 	"navigation-phase-keyword": {
 		"syntax": "loading | ready | committed"
@@ -1512,7 +1506,7 @@
 		"syntax": "<pattern-descriptor> | <init-descriptor> | <base-descriptor>"
 	},
 	"route-location": {
-		"syntax": "<route-name> | <url-pattern()> | <url>"
+		"syntax": "<url> | [ <route-name> | <url-pattern()> ]"
 	},
 	"route-name": {
 		"syntax": "<dashed-ident>"
@@ -1972,6 +1966,9 @@
 	},
 	"vertical-line-command": {
 		"syntax": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]"
+	},
+	"view-transition-type": {
+		"syntax": "<custom-ident>"
 	},
 	"view()": {
 		"syntax": "view( [ <axis> || <'view-timeline-inset'> ]? )"

@@ -412,5 +412,20 @@
 				}
 			}
 		}
+	},
+	"view-transition": {
+		"descriptors": {
+			"types": {
+				"type": "modified",
+				"comment": "",
+				"syntax-b": "none | <custom-ident>+",
+				"syntax-a": "none | <view-transition-type>+",
+				"syntax-m": "none | <view-transition-type>+",
+				"tests": {
+					"passing": [],
+					"failing": []
+				}
+			}
+		}
 	}
 }

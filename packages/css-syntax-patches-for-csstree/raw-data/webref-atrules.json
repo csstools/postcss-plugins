@@ -318,7 +318,7 @@
 				"syntax": "auto | none"
 			},
 			"types": {
-				"syntax": "none | <custom-ident>+"
+				"syntax": "none | <view-transition-type>+"
 			}
 		}
 	}
