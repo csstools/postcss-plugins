@@ -212,5 +212,15 @@
 				"comment": ""
 			}
 		}
+	},
+	"view-transition": {
+		"descriptors": {
+			"types": {
+				"type": "modified",
+				"syntax-b": "none | <custom-ident>+",
+				"syntax-a": "none | <view-transition-type>+",
+				"comment": ""
+			}
+		}
 	}
 }

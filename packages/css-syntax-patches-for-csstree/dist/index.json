@@ -59,6 +59,11 @@
 					"position-anchor": "<'position-anchor'>",
 					"position-area": "<'position-area'>"
 				}
+			},
+			"view-transition": {
+				"descriptors": {
+					"types": "none | <view-transition-type>+"
+				}
 			}
 		},
 		"properties": {
@@ -471,7 +476,6 @@
 			"dashed-ident": "<custom-property-name>",
 			"unicode-range-token": "<urange>",
 			"a-n-plus-b": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
-			"active-navigation-condition": "<navigation-relation>? [ <route-location> | link-href ]?",
 			"alpha()": "alpha( [ from <color> ] [ / [ <alpha-value> | alpha | none ] ]? )",
 			"anchored-feature": "fallback : <'position-try-fallbacks'>",
 			"anchored-in-parens": "( <anchored-query> ) | ( <anchored-feature> ) | <general-enclosed>",
@@ -571,7 +575,7 @@
 			"generic-font-family": "<generic-font-script-specific> | <generic-font-complete> | <generic-font-incomplete> | <-non-standard-generic-family>",
 			"generic-font-incomplete": "ui-serif | ui-sans-serif | ui-monospace | ui-rounded",
 			"generic-font-script-specific": "generic( fangsong ) | generic( kai ) | generic( khmer-mul ) | generic( nastaliq )",
-			"generic-voice": "<age>? <gender> <integer>?",
+			"generic-voice": "<age>? <gender> <integer [1,∞]>?",
 			"gradient": "[ <linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()> | <conic-gradient()> | <repeating-conic-gradient()> | <-legacy-gradient> ]",
 			"grid-line": "auto | <custom-ident> | [ [ <integer [-∞,-1]> | <integer [1,∞]> ] && <custom-ident>? ] | [ span && [ <integer [1,∞]> || <custom-ident> ] ]",
 			"hdr-color()": "color-hdr( [ <color> && <number [0,∞]>? ]#{2} )",
@@ -651,8 +655,7 @@
 			"navigation-condition": "not <navigation-in-parens> | <navigation-in-parens> [ and <navigation-in-parens> ]* | <navigation-in-parens> [ or <navigation-in-parens> ]*",
 			"navigation-in-parens": "( <navigation-condition> ) | ( <navigation-test> ) | <general-enclosed>",
 			"navigation-location-between-test": "between : <route-location> and <route-location>",
-			"navigation-location-keyword": "at | with | from | to",
-			"navigation-location-test": "<navigation-location-keyword> : <route-location>",
+			"navigation-location-test": "<navigation-relation> : <route-location>",
 			"navigation-phase-keyword": "loading | ready | committed",
 			"navigation-phase-test": "phase : <navigation-phase-keyword>",
 			"navigation-relation": "at | with | from | to",
@@ -711,7 +714,7 @@
 			"round()": "round( <rounding-strategy>? , <calc-sum> , <calc-sum>? )",
 			"rounding-strategy": "| line-width",
 			"route-descriptor": "<pattern-descriptor> | <init-descriptor> | <base-descriptor>",
-			"route-location": "<route-name> | <url-pattern()> | <url>",
+			"route-location": "<url> | [ <route-name> | <url-pattern()> ]",
 			"route-name": "<dashed-ident>",
 			"route-rule": "@route <dashed-ident> { <declaration-list> }",
 			"running()": "running( <custom-ident> )",
@@ -785,6 +788,7 @@
 			"url()": "url( <string> <url-modifier>* ) | <url-token>",
 			"var-args": "var( <declaration-value> , <declaration-value>? )",
 			"vertical-line-command": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
+			"view-transition-type": "<custom-ident>",
 			"voice-family-name": "<string> | <custom-ident>+",
 			"wcag2": "wcag2 | wcag2( [ <number> | [ aa | aaa ] && large? ] )",
 			"whole-value": "<declaration-value>",

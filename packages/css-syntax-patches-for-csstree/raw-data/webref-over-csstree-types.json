@@ -11,12 +11,6 @@
 		"syntax-a": "[ xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large ]",
 		"comment": ""
 	},
-	"active-navigation-condition": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "<navigation-relation>? [ <route-location> | link-href ]?",
-		"comment": ""
-	},
 	"alpha()": {
 		"type": "added",
 		"syntax-b": "",
@@ -644,7 +638,7 @@
 	"generic-voice": {
 		"type": "modified",
 		"syntax-b": "[ <age>? <gender> <integer>? ]",
-		"syntax-a": "<age>? <gender> <integer>?",
+		"syntax-a": "<age>? <gender> <integer [1,∞]>?",
 		"comment": ""
 	},
 	"gradient": {
@@ -1133,16 +1127,10 @@
 		"syntax-a": "between : <route-location> and <route-location>",
 		"comment": ""
 	},
-	"navigation-location-keyword": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "at | with | from | to",
-		"comment": ""
-	},
 	"navigation-location-test": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<navigation-location-keyword> : <route-location>",
+		"syntax-a": "<navigation-relation> : <route-location>",
 		"comment": ""
 	},
 	"navigation-phase-keyword": {
@@ -1502,7 +1490,7 @@
 	"route-location": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<route-name> | <url-pattern()> | <url>",
+		"syntax-a": "<url> | [ <route-name> | <url-pattern()> ]",
 		"comment": ""
 	},
 	"route-name": {
@@ -1959,6 +1947,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
+		"comment": ""
+	},
+	"view-transition-type": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<custom-ident>",
 		"comment": ""
 	},
 	"voice-family-name": {
