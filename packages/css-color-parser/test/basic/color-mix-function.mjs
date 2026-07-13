@@ -189,6 +189,15 @@ for (const test of tests) {
 	);
 }
 
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(50% 50% 180deg), lch(100% 0% 0deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [75, 37.5, 90],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
 
 assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, red 0%, blue 0%)')),

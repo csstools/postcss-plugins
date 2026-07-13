@@ -297,6 +297,8 @@ const predefinedRGB_or_XYZ_Spaces = new Set([
 ]);
 
 export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): ColorData {
+	const originalChannelValues = [...colorData.channels] as Color;
+
 	colorData = {
 		...colorData,
 	};
@@ -422,12 +424,12 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 
 	// 2. Carry forward missing components
 	if (toNotation === colorData.colorNotation) {
-		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
+		outputColorData.channels = carryForwardMissingComponents(originalChannelValues, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
 	} else if (
 		predefinedRGB_or_XYZ_Spaces.has(toNotation) &&
 		predefinedRGB_or_XYZ_Spaces.has(colorData.colorNotation)
 	) {
-		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
+		outputColorData.channels = carryForwardMissingComponents(originalChannelValues, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
 	} else {
 		switch (toNotation) {
 			case ColorNotation.HSL:
@@ -435,7 +437,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.HWB:
 						outputColorData.channels = carryForwardMissingComponents(
 							// HWB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// HSL
 							outputColorData.channels, [0], [1, 2]
 						);
@@ -444,7 +446,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLab:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LAB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// HSL
 							outputColorData.channels, [2], [0, 1]
 						);
@@ -453,14 +455,14 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLCH:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// HSL
 							outputColorData.channels, [2, 1, 0], []
 						);
 						break;
 					default:
 						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
+							originalChannelValues, [], [],
 							outputColorData.channels, [], []
 						);
 				}
@@ -471,7 +473,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.HSL:
 						outputColorData.channels = carryForwardMissingComponents(
 							// HSL
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// HWB
 							outputColorData.channels, [0], [1, 2]
 						);
@@ -480,14 +482,14 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLCH:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [2], [0, 1],
+							originalChannelValues, [2], [0, 1],
 							// HWB
 							outputColorData.channels, [0], [1, 2]
 						);
 						break;
 					default:
 						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
+							originalChannelValues, [], [],
 							outputColorData.channels, [], []
 						);
 				}
@@ -499,7 +501,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.HSL:
 						outputColorData.channels = carryForwardMissingComponents(
 							// HSL
-							colorData.channels, [2], [0, 1],
+							originalChannelValues, [2], [0, 1],
 							// LAB
 							outputColorData.channels, [0], [1, 2]
 						);
@@ -508,7 +510,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLab:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LAB
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// LAB
 							outputColorData.channels, [0, 1, 2], []
 						);
@@ -517,14 +519,14 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLCH:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// LAB
 							outputColorData.channels, [0], [1, 2]
 						);
 						break;
 					default:
 						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
+							originalChannelValues, [], [],
 							outputColorData.channels, [], []
 						);
 				}
@@ -536,7 +538,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.HSL:
 						outputColorData.channels = carryForwardMissingComponents(
 							// HSL
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// LCH
 							outputColorData.channels, [2, 1, 0], []
 						);
@@ -544,7 +546,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.HWB:
 						outputColorData.channels = carryForwardMissingComponents(
 							// HWB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// LCH
 							outputColorData.channels, [2], [0, 1]
 						);
@@ -553,7 +555,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLab:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LAB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// LCH
 							outputColorData.channels, [0], [1, 2]
 						);
@@ -562,14 +564,14 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 					case ColorNotation.OKLCH:
 						outputColorData.channels = carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// LCH
 							outputColorData.channels, [0, 1, 2], []
 						);
 						break;
 					default:
 						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
+							originalChannelValues, [], [],
 							outputColorData.channels, [], []
 						);
 				}
@@ -578,7 +580,7 @@ export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): Co
 
 			default:
 				outputColorData.channels = carryForwardMissingComponents(
-					colorData.channels, [], [],
+					originalChannelValues, [], [],
 					outputColorData.channels, [], []
 				);
 		}
