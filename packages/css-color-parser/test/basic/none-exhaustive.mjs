@@ -4,23 +4,23 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 {
 	const tests = [
 		// https://github.com/w3c/csswg-drafts/issues/14095
-		['hsl(from hsl(180 none 50%) h s l)', 'hsl(none none 50%)'],
-		['hsl(from hsl(180 0 50%) h s l)', 'hsl(none 0% 50%)'],
+		['hsl(from hsl(180 none 50%) h s l)', 'hsl(180 none 50%)'],
+		['hsl(from hsl(180 0 50%) h s l)', 'color(srgb 0.5 0.5 0.5)'],
 		['hsl(from lch(20 none 180) h s l)', 'hsl(none none 18.93757452%)'],
 		['hsl(from lch(20 0 180) h s l)', 'hsl(none 0% 18.93757452%)'],
 
 		// https://github.com/w3c/csswg-drafts/issues/14100
 		['lch(from orchid l 0 h)', 'lch(62.75256542 0 326.96909222)'],
-		['lch(from lch(from orchid l 0 h) l c h)', 'lch(62.75256542 0 none)'],
+		['lch(from lch(from orchid l 0 h) l c h)', 'lch(62.75256542 0 326.96909222)'],
 		['color-mix(in lch, lch(from orchid l 0 h))', 'lch(62.75256542 0 none)'],
 
 		// exhaustive tests
 		// HSL
 		['hsl(from hsl(none 50% 50%) h s l)', 'hsl(none 50% 50%)'],
-		['hsl(from hsl(180 none 50%) h s l)', 'hsl(none none 50%)'],
+		['hsl(from hsl(180 none 50%) h s l)', 'hsl(180 none 50%)'],
 		['hsl(from hsl(180 50% none) h s l)', 'hsl(180 50% none)'],
 		['hsl(from hsl(none none 50%) h s l)', 'hsl(none none 50%)'],
-		['hsl(from hsl(180 none none) h s l)', 'hsl(none none none)'],
+		['hsl(from hsl(180 none none) h s l)', 'hsl(180 none none)'],
 		['hsl(from hsl(none 50% none) h s l)', 'hsl(none 50% none)'],
 		['hsl(from hsl(none none none) h s l)', 'hsl(none none none)'],
 
@@ -28,7 +28,7 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['hsl(from hwb(180 none 25%) h s l)', 'color(srgb 0 0.75 0.75)'],
 		['hsl(from hwb(180 25% none) h s l)', 'color(srgb 0.25 1 1)'],
 		['hsl(from hwb(none none 25%) h s l)', 'hsl(none 100% 37.5%)'],
-		['hsl(from hwb(180 none none) h s l)', 'hsl(none none none)'],
+		['hsl(from hwb(180 none none) h s l)', 'hsl(180 none none)'],
 		['hsl(from hwb(none 25% none) h s l)', 'hsl(none 100% 62.5%)'],
 		['hsl(from hwb(none none none) h s l)', 'hsl(none none none)'],
 
@@ -132,14 +132,14 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['lch(from hwb(180 none 25%) l c h)', 'lch(69.91337803 42.54334477 196.45478916)'],
 		['lch(from hwb(180 25% none) l c h)', 'lch(91.18116399 49.29673753 196.65803824)'],
 		['lch(from hwb(none none 25%) l c h)', 'lch(40.61501478 86.05118759 none)'],
-		['lch(from hwb(180 none none) l c h)', 'lch(none none none)'],
+		['lch(from hwb(180 none none) l c h)', 'lch(none none 196.45478916)'],
 		['lch(from hwb(none 25% none) l c h)', 'lch(58.23109529 85.49243054 none)'],
 		['lch(from hwb(none none none) l c h)', 'lch(none none none)'],
 
 		['lch(from lch(none 20 180) l c h)', 'lch(none 20 180)'],
-		['lch(from lch(20 none 180) l c h)', 'lch(20 none none)'],
+		['lch(from lch(20 none 180) l c h)', 'lch(20 none 180)'],
 		['lch(from lch(20 20 none) l c h)', 'lch(20 20 none)'],
-		['lch(from lch(none none 180) l c h)', 'lch(none none none)'],
+		['lch(from lch(none none 180) l c h)', 'lch(none none 180)'],
 		['lch(from lch(20 none none) l c h)', 'lch(20 none none)'],
 		['lch(from lch(none 20 none) l c h)', 'lch(none 20 none)'],
 		['lch(from lch(none none none) l c h)', 'lch(none none none)'],
@@ -184,7 +184,7 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['oklch(from hwb(180 none 25%) l c h)', 'oklch(0.72924735 0.12448121 194.7689599)'],
 		['oklch(from hwb(180 25% none) l c h)', 'oklch(0.91079253 0.14429702 194.91785641)'],
 		['oklch(from hwb(none none 25%) l c h)', 'oklch(0.50578216 0.20754918 none)'],
-		['oklch(from hwb(180 none none) l c h)', 'oklch(none none none)'],
+		['oklch(from hwb(180 none none) l c h)', 'oklch(none none 194.7689599)'],
 		['oklch(from hwb(none 25% none) l c h)', 'oklch(0.65951623 0.22690049 none)'],
 		['oklch(from hwb(none none none) l c h)', 'oklch(none none none)'],
 
@@ -197,9 +197,9 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 		['oklch(from lch(none none none) l c h)', 'oklch(none none none)'],
 
 		['oklch(from oklch(none 0.2 180) l c h)', 'oklch(none 0.2 180)'],
-		['oklch(from oklch(0.2 none 180) l c h)', 'oklch(0.2 none none)'],
+		['oklch(from oklch(0.2 none 180) l c h)', 'oklch(0.2 none 180)'],
 		['oklch(from oklch(0.2 0.2 none) l c h)', 'oklch(0.2 0.2 none)'],
-		['oklch(from oklch(none none 180) l c h)', 'oklch(none none none)'],
+		['oklch(from oklch(none none 180) l c h)', 'oklch(none none 180)'],
 		['oklch(from oklch(0.2 none none) l c h)', 'oklch(0.2 none none)'],
 		['oklch(from oklch(none 0.2 none) l c h)', 'oklch(none 0.2 none)'],
 		['oklch(from oklch(none none none) l c h)', 'oklch(none none none)'],

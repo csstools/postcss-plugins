@@ -114,6 +114,7 @@ const tests = [
 	['color-mix(in hsl increasing hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
 	['color-mix(in hsl decreasing hue, hsl(180deg 50% 50%), hsl(180deg 50% 50%))', canonicalize('hsl(180deg 50% 50%)')],
 
+	['color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%))', canonicalize('hsl(230deg 0% 50%)')],
 	['color-mix(in hsl, color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%)), hsl(180deg 100% 50%))', canonicalize('hsl(180deg 50% 50%)')],
 
 	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(30deg 40% 80% / 25%)')],
@@ -188,6 +189,15 @@ for (const test of tests) {
 	);
 }
 
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(50% 50% 180deg), lch(100% 0% 0deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [75, 37.5, 180],
+		alpha: 1,
+		syntaxFlags: new Set(['color-mix']),
+	},
+);
 
 assert.deepStrictEqual(
 	color(parse('color-mix(in hsl, red 0%, blue 0%)')),
@@ -233,7 +243,7 @@ assert.deepStrictEqual(
 	color(parse('oklch(from lch(100 0 0deg) l c h)')),
 	{
 		colorNotation: 'oklch',
-		channels: [1, 4.996003610813204e-16, Number.NaN],
+		channels: [1, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
 	},
@@ -243,7 +253,7 @@ assert.deepStrictEqual(
 	color(parse('lch(from oklch(100 0 0deg) l c h)')),
 	{
 		colorNotation: 'lch',
-		channels: [100, 1.1102230246251565e-13, Number.NaN],
+		channels: [100, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
 	},
@@ -253,7 +263,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in oklch, lch(100 0 40deg), lch(100 0 60deg))')),
 	{
 		colorNotation: 'oklch',
-		channels: [1.0000000000000002, 4.996003610813204e-16, Number.NaN],
+		channels: [1.0000000000000002, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['color-mix']),
 	},

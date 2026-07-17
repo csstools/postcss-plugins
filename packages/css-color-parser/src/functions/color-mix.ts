@@ -5,7 +5,7 @@ import type { Color } from '@csstools/color-helpers';
 import { ColorNotation } from '../color-notation';
 import { isTokenIdent, isTokenNumeric, isTokenPercentage } from '@csstools/css-tokenizer';
 import { calcFromComponentValues } from '@csstools/css-calc';
-import { colorDataTo, SyntaxFlag } from '../color-data';
+import { colorDataToForInterpolation, SyntaxFlag } from '../color-data';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { mathFunctionNames } from '@csstools/css-calc';
@@ -279,7 +279,7 @@ function colorMixRectangular(colorSpace: string, items: Array<ColorMixEntry> | f
 
 	// 3. If items is length 1, set color to the color of that sole item, converted to the specified interpolation <color-space>.
 	if (normalizedItems.length === 1) {
-		const color = colorDataTo(normalizedItems[0].color, outputColorNotation);
+		const color = colorDataToForInterpolation(normalizedItems[0].color, outputColorNotation);
 		color.colorNotation = outputColorNotation;
 		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 		color.syntaxFlags.add(SyntaxFlag.ColorMix);
@@ -369,8 +369,8 @@ function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorDat
 	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
 	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
 
-	const a_channels = colorDataTo(a_color, colorNotation).channels;
-	const b_channels = colorDataTo(b_color, colorNotation).channels;
+	const a_channels = colorDataToForInterpolation(a_color, colorNotation).channels;
+	const b_channels = colorDataToForInterpolation(b_color, colorNotation).channels;
 
 	a_channels[0] = fillInMissingComponent(a_channels[0], b_channels[0]);
 	b_channels[0] = fillInMissingComponent(b_channels[0], a_channels[0]);
@@ -448,7 +448,7 @@ function colorMixPolar(colorSpace: string, hueInterpolationMethod: string, items
 
 	// 3. If items is length 1, set color to the color of that sole item, converted to the specified interpolation <color-space>.
 	if (normalizedItems.length === 1) {
-		const color = colorDataTo(normalizedItems[0].color, outputColorNotation);
+		const color = colorDataToForInterpolation(normalizedItems[0].color, outputColorNotation);
 		color.colorNotation = outputColorNotation;
 		color.syntaxFlags.add(SyntaxFlag.ColorMixVariadic);
 		color.syntaxFlags.add(SyntaxFlag.ColorMix);
@@ -547,8 +547,8 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
 	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
 
-	const a_channels = colorDataTo(a_color, colorNotation).channels;
-	const b_channels = colorDataTo(b_color, colorNotation).channels;
+	const a_channels = colorDataToForInterpolation(a_color, colorNotation).channels;
+	const b_channels = colorDataToForInterpolation(b_color, colorNotation).channels;
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
