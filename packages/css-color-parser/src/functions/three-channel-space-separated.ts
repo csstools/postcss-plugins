@@ -1,10 +1,10 @@
 import type { ColorData} from '../color-data';
-import { noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import { colorDataToForRelativeColorSyntax, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { TokenNumber} from '@csstools/css-tokenizer';
 import { isTokenDelim, isTokenIdent, isTokenNumber, isTokenNumeric } from '@csstools/css-tokenizer';
 import type { ColorNotation } from '../color-notation';
-import { SyntaxFlag, colorDataTo } from '../color-data';
+import { SyntaxFlag } from '../color-data';
 import { calcFromComponentValues } from '@csstools/css-calc';
 import { isCommentNode, isFunctionNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import type { normalizeChannelValuesFn } from './normalize-channel-values';
@@ -122,7 +122,7 @@ export function threeChannelSpaceSeparated(
 
 			colorData.syntaxFlags.add(SyntaxFlag.RelativeColorSyntax);
 
-			relativeToColor = colorDataTo(relativeToColor, colorNotation);
+			relativeToColor = colorDataToForRelativeColorSyntax(relativeToColor, colorNotation);
 			relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
 			relativeColorChannelsWithoutNone = noneToZeroInRelativeColorDataChannels(relativeColorChannels);
 

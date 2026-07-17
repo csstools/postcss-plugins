@@ -1,5 +1,5 @@
 import type { ColorData} from '../color-data';
-import { SyntaxFlag, colorDataTo, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import { SyntaxFlag, colorDataToForRelativeColorSyntax, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import { ColorNotation } from '../color-notation';
 import type { ComponentValue, FunctionNode} from '@csstools/css-parser-algorithms';
@@ -106,7 +106,7 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 			colorData.colorNotation = colorSpaceNameToColorNotation(colorSpace);
 
 			if (relativeToColor) {
-				relativeToColor = colorDataTo(relativeToColor, colorData.colorNotation);
+				relativeToColor = colorDataToForRelativeColorSyntax(relativeToColor, colorData.colorNotation);
 				relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
 				relativeColorChannelsWithoutNone = noneToZeroInRelativeColorDataChannels(relativeColorChannels);
 			}
