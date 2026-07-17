@@ -233,7 +233,7 @@ assert.deepStrictEqual(
 	color(parse('color-mix(in lch, lch(100 0 40deg), lch(100 0 60deg))')),
 	{
 		colorNotation: 'lch',
-		channels: [100, 0, NaN],
+		channels: [100, 0, Number.NaN],
 		alpha: 1,
 		syntaxFlags: new Set(['color-mix']),
 	},
