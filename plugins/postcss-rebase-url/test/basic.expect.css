@@ -34,7 +34,6 @@
 .node_modules_protocol {
 	background: url("node_modules://images/green.png");
 }
-
 @property --background-image--strictly-typed {
 	syntax: '<url> | none';
 	inherits: true;

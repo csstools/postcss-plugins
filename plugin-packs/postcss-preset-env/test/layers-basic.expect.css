@@ -119,8 +119,7 @@
 		        order: 10;
 	}
 }
-
-@media (min-width: 480px) and (max-width: 767.98px) {
+	@media (min-width: 480px) and (max-width: 767.98px) {
 		.test-media-query-ranges {
 			is-layer: A;
 			-webkit-box-ordinal-group: 12;
@@ -299,8 +298,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	     tab-size: 8;
 	table-layout: auto;
 	text-align: left;
-	-moz-text-align-last: auto;
-	     text-align-last: auto;
+	text-align-last: auto;
 	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
@@ -309,11 +307,9 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	top: auto;
 	-webkit-transform: none;
 	   -moz-transform: none;
-	    -ms-transform: none;
 	        transform: none;
 	-webkit-transform-origin: 50% 50% 0;
 	   -moz-transform-origin: 50% 50% 0;
-	    -ms-transform-origin: 50% 50% 0;
 	        transform-origin: 50% 50% 0;
 	-webkit-transform-style: flat;
 	   -moz-transform-style: flat;
@@ -627,7 +623,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	padding: 8px 3px 1px calc(3px + 50%);
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 	width: 2px;
 }
@@ -637,7 +632,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	padding: 8px 3px 1px calc(3px + 50%);
 	-webkit-transform: rotate(-50deg);
 	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
 }
 

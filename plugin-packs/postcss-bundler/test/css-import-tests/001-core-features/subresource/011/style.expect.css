@@ -1,9 +1,11 @@
 /* ./styles/green.css */
+
 @property --background-image {
 	syntax: '<url>';
 	inherits: true;
 	initial-value: url(./green.png);
 }
+
 .box {
 	background-image: var(--background-image);
 }
