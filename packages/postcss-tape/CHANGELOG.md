@@ -1,9 +1,5 @@
 # Changes to PostCSS Tape
 
-### Unreleased (major)
-
-- Update oldest `postcss` tested to `~8.5`
-
 ### 7.0.0
 
 _January 14, 2026_

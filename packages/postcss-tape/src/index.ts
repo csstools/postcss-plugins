@@ -33,13 +33,13 @@ import fsSync from 'node:fs';
 import noopPlugin from './noop-plugin';
 import path from 'node:path';
 import postcss from 'postcss';
-import postcssOldestSupported from 'postcss-8.5';
+import postcssOldestSupported from 'postcss-8.4';
 import test from 'node:test';
 import url from 'node:url';
 import { fileContentsOrEmptyString } from './file-contents-or-empty-string';
 import { reduceInformationInCssSyntaxError } from './reduce-css-syntax-error';
 
-import type { AcceptedPlugin as AcceptedPluginOldestPostCSS, Result as ResultOldestPostCSS } from 'postcss-8.5';
+import type { AcceptedPlugin as AcceptedPluginOldestPostCSS, Result as ResultOldestPostCSS } from 'postcss-8.4';
 import type { AtRule, Declaration, Rule } from 'postcss';
 import type { PluginCreator, Plugin, Result } from 'postcss';
 import type { TestCaseOptions } from './test-case-options';
