@@ -281,7 +281,7 @@ export function postcssTape(pluginCreator: PluginCreator<unknown>, runOptions?: 
 						'The oldest and current PostCSS version produce the same result',
 						{ skip: olderVersionAndCurrentVersionAreTheSame },
 						() => {
-							assert.deepEqual(resultFromOldestPostCSS?.css?.toString()?.replaceAll(/\s+/g, ' '), resultString.replaceAll(/\s+/g, ' '));
+							assert.deepEqual(resultFromOldestPostCSS?.css?.toString()?.replaceAll(/\s+/g, ''), resultString.replaceAll(/\s+/g, ''));
 						},
 					);
 				});

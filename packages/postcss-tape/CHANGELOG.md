@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Ignore differences in whitespace sequences when comparing latest and oldest PostCSS versions.
+- Ignore whitespace when comparing latest and oldest PostCSS versions.
 
 ### 7.0.0
 
