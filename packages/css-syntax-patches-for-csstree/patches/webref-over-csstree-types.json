@@ -26,17 +26,6 @@
 			"failing": []
 		}
 	},
-	"active-navigation-condition": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "<navigation-relation>? [ <route-location> | link-href ]?",
-		"syntax-m": "<navigation-relation>? [ <route-location> | link-href ]?",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"alpha()": {
 		"type": "added",
 		"comment": "",
@@ -1421,8 +1410,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "[ <age>? <gender> <integer>? ]",
-		"syntax-a": "<age>? <gender> <integer>?",
-		"syntax-m": "<age>? <gender> <integer>?",
+		"syntax-a": "<age>? <gender> <integer [1,∞]>?",
+		"syntax-m": "<age>? <gender> <integer [1,∞]>?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2823,23 +2812,12 @@
 			"failing": []
 		}
 	},
-	"navigation-location-keyword": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "at | with | from | to",
-		"syntax-m": "at | with | from | to",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"navigation-location-test": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<navigation-location-keyword> : <route-location>",
-		"syntax-m": "<navigation-location-keyword> : <route-location>",
+		"syntax-a": "<navigation-relation> : <route-location>",
+		"syntax-m": "<navigation-relation> : <route-location>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3624,8 +3602,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<route-name> | <url-pattern()> | <url>",
-		"syntax-m": "<route-name> | <url-pattern()> | <url>",
+		"syntax-a": "<url> | [ <route-name> | <url-pattern()> ]",
+		"syntax-m": "<url> | [ <route-name> | <url-pattern()> ]",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4551,6 +4529,17 @@
 		"syntax-b": "",
 		"syntax-a": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
 		"syntax-m": "vline [ to [ <length-percentage> | top | center | bottom | y-start | y-end ] | by <length-percentage> ]",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"view-transition-type": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<custom-ident>",
+		"syntax-m": "<custom-ident>",
 		"tests": {
 			"passing": [],
 			"failing": []

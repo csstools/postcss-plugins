@@ -75,6 +75,9 @@ export async function generate_webref_sets() {
 		// https://github.com/w3c/csswg-drafts/issues/13311
 		types['voice-family-name'] = '<string> | <custom-ident>+';
 
+		// https://github.com/w3c/webref/issues/1986
+		types['view-transition-type'] = '<custom-ident>';
+
 		assign_new_atrule_descriptor_definition(
 			atrules,
 			trim_at('position-try'),
