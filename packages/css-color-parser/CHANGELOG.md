@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix handling of `none` in some edge cases
+
 ### 4.1.9
 
 _June 25, 2026_

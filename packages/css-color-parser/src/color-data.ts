@@ -4,6 +4,7 @@ import { ColorNotation } from './color-notation';
 import type { TokenNumber} from '@csstools/css-tokenizer';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { HSL_to_XYZ_D50, HSL_to_XYZ_D65, HWB_to_XYZ_D50, HWB_to_XYZ_D65, LCH_to_XYZ_D50, LCH_to_XYZ_D65, Lab_to_XYZ_D50, Lab_to_XYZ_D65, OKLCH_to_XYZ_D50, OKLCH_to_XYZ_D65, OKLab_to_XYZ_D50, OKLab_to_XYZ_D65, P3_to_XYZ_D50, P3_to_XYZ_D65, ProPhoto_RGB_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D65, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D65_to_HSL, XYZ_D65_to_HWB, XYZ_D65_to_OKLCH, XYZ_D65_to_OKLab, XYZ_D65_to_P3, XYZ_D65_to_XYZ_D50, XYZ_D65_to_XYZ_D65, XYZ_D65_to_a98_RGB, XYZ_D65_to_lin_P3, XYZ_D65_to_lin_sRGB, XYZ_D65_to_rec_2020, XYZ_D65_to_sRGB, a98_RGB_to_XYZ_D50, a98_RGB_to_XYZ_D65, lin_P3_to_XYZ_D50, lin_P3_to_XYZ_D65, lin_sRGB_to_XYZ_D50, lin_sRGB_to_XYZ_D65, rec_2020_to_XYZ_D50, rec_2020_to_XYZ_D65, sRGB_to_XYZ_D50, sRGB_to_XYZ_D65 } from '@csstools/color-helpers';
+import { normalize } from './functions/normalize';
 
 /**
  * A color data object.
@@ -85,6 +86,12 @@ export enum SyntaxFlag {
 }
 
 function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
+	// https://drafts.csswg.org/css-color-4/#color-conversion
+	// 2. Replace any missing component with zero.
+	// 3. If src is not a linear-light representation, convert it to linear light (undo gamma-encoding) and let this be the new col1.
+	// 4. Convert col1 to CIE XYZ with a given whitepoint src-white and let this be xyz.
+	// 5. If dest-white is not the same as src-white, chromatically adapt xyz to dest-white using a linear Bradford chromatic adaptation transform, and let this be the new xyz.
+
 	switch (colorData.colorNotation) {
 		case ColorNotation.HEX:
 		case ColorNotation.RGB:
@@ -184,6 +191,12 @@ function colorData_to_XYZ_D50(colorData: ColorData): ColorData {
 }
 
 export function colorData_to_XYZ_D65(colorData: ColorData): ColorData {
+	// https://drafts.csswg.org/css-color-4/#color-conversion
+	// 2. Replace any missing component with zero.
+	// 3. If src is not a linear-light representation, convert it to linear light (undo gamma-encoding) and let this be the new col1.
+	// 4. Convert col1 to CIE XYZ with a given whitepoint src-white and let this be xyz.
+	// 5. If dest-white is not the same as src-white, chromatically adapt xyz to dest-white using a linear Bradford chromatic adaptation transform, and let this be the new xyz.
+
 	switch (colorData.colorNotation) {
 		case ColorNotation.HEX:
 		case ColorNotation.RGB:
@@ -296,295 +309,390 @@ const predefinedRGB_or_XYZ_Spaces = new Set([
 	ColorNotation.XYZ_D65,
 ]);
 
-export function colorDataTo(colorData: ColorData, toNotation: ColorNotation): ColorData {
-	colorData = {
+export function colorDataToForInterpolation(colorData: ColorData, toNotation: ColorNotation): ColorData {
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 1. checking the two colors for analogous components and analogous sets which will be carried forward
+	const originalChannelValues = [...colorData.channels] as Color;
+
+	let outputColorData: ColorData = {
 		...colorData,
 	};
 
-	// Change any powerless components in src to missing components
-	colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, colorData.colorNotation);
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 2. changing any powerless components to missing values
+	outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, colorData.colorNotation);
 
-	const outputColorData: ColorData = {
-		...colorData,
-	};
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 3. converting them both to a given color space which will be referred to as the interpolation color space below.
+	//
+	// https://drafts.csswg.org/css-color-4/#color-conversion
+	// To convert a color...
+	// 1. -> 9.
+	outputColorData = convertToDestination(outputColorData, toNotation);
 
-	if (colorData.colorNotation !== toNotation) {
-		// 1. Convert to destination color notation
-		switch (toNotation) {
-			case ColorNotation.HEX:
-			case ColorNotation.RGB: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.RGB;
-				outputColorData.channels = XYZ_D65_to_sRGB(xyzColorData.channels);
-				outputColorData.channels = outputColorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
-				break;
-			}
-			case ColorNotation.sRGB: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.sRGB;
-				outputColorData.channels = XYZ_D65_to_sRGB(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.Linear_sRGB: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.Linear_sRGB;
-				outputColorData.channels = XYZ_D65_to_lin_sRGB(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.Display_P3: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.Display_P3;
-				outputColorData.channels = XYZ_D65_to_P3(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.Linear_Display_P3: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.Linear_Display_P3;
-				outputColorData.channels = XYZ_D65_to_lin_P3(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.Rec2020: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.Rec2020;
-				outputColorData.channels = XYZ_D65_to_rec_2020(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.ProPhoto_RGB: {
-				const xyzColorData = colorData_to_XYZ_D50(outputColorData);
-				outputColorData.colorNotation = ColorNotation.ProPhoto_RGB;
-				outputColorData.channels = XYZ_D50_to_ProPhoto(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.A98_RGB: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.A98_RGB;
-				outputColorData.channels = XYZ_D65_to_a98_RGB(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.HSL: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.HSL;
-				outputColorData.channels = XYZ_D65_to_HSL(xyzColorData.channels);
-				outputColorData.channels = outputColorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
-				break;
-			}
-			case ColorNotation.HWB: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.HWB;
-				outputColorData.channels = XYZ_D65_to_HWB(xyzColorData.channels);
-				outputColorData.channels = outputColorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
-				break;
-			}
-			case ColorNotation.Lab: {
-				const xyzColorData = colorData_to_XYZ_D50(outputColorData);
-				outputColorData.colorNotation = ColorNotation.Lab;
-				outputColorData.channels = XYZ_D50_to_Lab(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.LCH: {
-				const xyzColorData = colorData_to_XYZ_D50(outputColorData);
-				outputColorData.colorNotation = ColorNotation.LCH;
-				outputColorData.channels = XYZ_D50_to_LCH(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.OKLCH: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.OKLCH;
-				outputColorData.channels = XYZ_D65_to_OKLCH(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.OKLab: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.OKLab;
-				outputColorData.channels = XYZ_D65_to_OKLab(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.XYZ_D50: {
-				const xyzColorData = colorData_to_XYZ_D50(outputColorData);
-				outputColorData.colorNotation = ColorNotation.XYZ_D50;
-				outputColorData.channels = XYZ_D50_to_XYZ_D50(xyzColorData.channels);
-				break;
-			}
-			case ColorNotation.XYZ_D65: {
-				const xyzColorData = colorData_to_XYZ_D65(outputColorData);
-				outputColorData.colorNotation = ColorNotation.XYZ_D65;
-				outputColorData.channels = XYZ_D65_to_XYZ_D65(xyzColorData.channels);
-				break;
-			}
-			default:
-				throw new Error('Unsupported color notation');
-		}
-	} else {
-		outputColorData.channels = convertNaNToZero(colorData.channels);
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 4. (if required) re-inserting carried forward values in the converted colors
+	outputColorData.channels = carryForwardMissingComponentsForColorAndNotation(outputColorData, colorData.colorNotation, toNotation, originalChannelValues);
+
+	return outputColorData;
+}
+
+export function colorDataToForRelativeColorSyntax(colorData: ColorData, toNotation: ColorNotation): ColorData {
+	// https://drafts.csswg.org/css-color-5/#rcs-intro
+	// Required conversion: All operations take part in the relative color processing space.
+	// If the originally specified color space for the origin color used a different color function,
+	// it’s first converted into the relative color processing space,
+	// so it has meaningful values for the components,
+	// and color component keywords refer to that color space.
+	//
+	// Therefore, if the specified color uses the same color function, then we return the origin color
+	if (colorData.colorNotation === toNotation) {
+		return {
+			...colorData,
+		};
 	}
 
-	// 2. Carry forward missing components
-	if (toNotation === colorData.colorNotation) {
-		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
+	// https://drafts.csswg.org/css-color-5/#rcs-intro
+	// Missing components are handled the same way as with CSS Color 4 § 13.2 Interpolating with Missing Components:
+	// the origin colorspace and the relative function colorspace are checked for analogous components which are then carried forward as missing.
+	//
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 1. checking the two colors for analogous components and analogous sets which will be carried forward
+	const originalChannelValues = [...colorData.channels] as Color;
+
+	let outputColorData: ColorData = {
+		...colorData,
+	};
+
+	// https://drafts.csswg.org/css-color-4/#color-conversion
+	// To prepare a color col1 for conversion:
+	// 1. Change any powerless components in src to missing components
+	outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, colorData.colorNotation);
+
+	// https://drafts.csswg.org/css-color-4/#color-conversion
+	// To convert a color...
+	// 1. -> 9.
+	outputColorData = convertToDestination(outputColorData, toNotation);
+
+	// https://drafts.csswg.org/css-color-5/#rcs-intro
+	// Missing components are handled the same way as with CSS Color 4 § 13.2 Interpolating with Missing Components:
+	// the origin colorspace and the relative function colorspace are checked for analogous components which are then carried forward as missing.
+	//
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 4. (if required) re-inserting carried forward values in the converted colors
+	outputColorData.channels = carryForwardMissingComponentsForColorAndNotation(outputColorData, colorData.colorNotation, toNotation, originalChannelValues);
+
+	return outputColorData;
+}
+
+function convertToDestination(colorData: ColorData, toNotation: ColorNotation): ColorData {
+	// If the input and output notation are the same,
+	// the only result of going through the color space conversion is that missing components are set to `0` and that powerless components are set to missing
+	if (colorData.colorNotation === toNotation) {
+		// https://drafts.csswg.org/css-color-4/#color-conversion
+		// 2. Replace any missing component with zero.
+		colorData.channels = convertNaNToZero(colorData.channels);
+
+		// https://drafts.csswg.org/css-color-4/#color-conversion
+		// 9. This may produce missing components.
+		colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, toNotation);
+		return colorData;
+	}
+
+	// 1. Convert to destination color notation
+	switch (toNotation) {
+		case ColorNotation.HEX:
+		case ColorNotation.RGB: {
+			// https://drafts.csswg.org/css-color-4/#color-conversion
+			// 1. -> 4.
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.RGB;
+
+			// 6. If dest is a cylindrical polar color representation, let dest-rect be the corresponding rectangular orthogonal color representation. Otherwise, let dest-rect be dest.
+			// 7. Convert xyz to dest, followed by applying any transfer function (gamma encoding), producing col2.
+			// 8. (gamut mapping) does not apply here
+			// 9. If dest-rect is not the same as dest, in other words dest is a cylindrical polar color representation, convert from dest-rect to dest, and let this be col2.
+			colorData.channels = XYZ_D65_to_sRGB(xyzColorData.channels);
+			colorData.channels = colorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.sRGB: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.sRGB;
+			colorData.channels = XYZ_D65_to_sRGB(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.Linear_sRGB: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.Linear_sRGB;
+			colorData.channels = XYZ_D65_to_lin_sRGB(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.Display_P3: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.Display_P3;
+			colorData.channels = XYZ_D65_to_P3(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.Linear_Display_P3: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.Linear_Display_P3;
+			colorData.channels = XYZ_D65_to_lin_P3(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.Rec2020: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.Rec2020;
+			colorData.channels = XYZ_D65_to_rec_2020(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.ProPhoto_RGB: {
+			const xyzColorData = colorData_to_XYZ_D50(colorData);
+			colorData.colorNotation = ColorNotation.ProPhoto_RGB;
+			colorData.channels = XYZ_D50_to_ProPhoto(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.A98_RGB: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.A98_RGB;
+			colorData.channels = XYZ_D65_to_a98_RGB(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.HSL: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.HSL;
+			colorData.channels = XYZ_D65_to_HSL(xyzColorData.channels);
+			colorData.channels = colorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 0);
+
+			// https://drafts.csswg.org/css-color-4/#color-conversion
+			// 9. This may produce missing components.
+			colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, toNotation);
+			break;
+		}
+		case ColorNotation.HWB: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.HWB;
+			colorData.channels = XYZ_D65_to_HWB(xyzColorData.channels);
+			colorData.channels = colorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 0);
+
+			// https://drafts.csswg.org/css-color-4/#color-conversion
+			// 9. This may produce missing components.
+			colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, toNotation);
+			break;
+		}
+		case ColorNotation.Lab: {
+			const xyzColorData = colorData_to_XYZ_D50(colorData);
+			colorData.colorNotation = ColorNotation.Lab;
+			colorData.channels = XYZ_D50_to_Lab(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.LCH: {
+			const xyzColorData = colorData_to_XYZ_D50(colorData);
+			colorData.colorNotation = ColorNotation.LCH;
+			colorData.channels = XYZ_D50_to_LCH(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 2);
+
+			// https://drafts.csswg.org/css-color-4/#color-conversion
+			// 9. This may produce missing components.
+			colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, toNotation);
+			break;
+		}
+		case ColorNotation.OKLCH: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.OKLCH;
+			colorData.channels = XYZ_D65_to_OKLCH(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 2);
+
+			// https://drafts.csswg.org/css-color-4/#color-conversion
+			// 9. This may produce missing components.
+			colorData.channels = convertPowerlessComponentsToMissingComponents(colorData.channels, toNotation);
+			break;
+		}
+		case ColorNotation.OKLab: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.OKLab;
+			colorData.channels = XYZ_D65_to_OKLab(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.XYZ_D50: {
+			const xyzColorData = colorData_to_XYZ_D50(colorData);
+			colorData.colorNotation = ColorNotation.XYZ_D50;
+			colorData.channels = XYZ_D50_to_XYZ_D50(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		case ColorNotation.XYZ_D65: {
+			const xyzColorData = colorData_to_XYZ_D65(colorData);
+			colorData.colorNotation = ColorNotation.XYZ_D65;
+			colorData.channels = XYZ_D65_to_XYZ_D65(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
+			break;
+		}
+		default:
+			throw new Error('Unsupported color notation');
+	}
+
+	return colorData;
+}
+
+function carryForwardMissingComponentsForColorAndNotation(colorData: ColorData, fromNotation: ColorNotation, toNotation: ColorNotation, originalChannelValues: Color): Color {
+	if (fromNotation === toNotation) {
+		return carryForwardMissingComponents(originalChannelValues, [0, 1, 2], [], colorData.channels, [0, 1, 2], []);
 	} else if (
 		predefinedRGB_or_XYZ_Spaces.has(toNotation) &&
-		predefinedRGB_or_XYZ_Spaces.has(colorData.colorNotation)
+		predefinedRGB_or_XYZ_Spaces.has(fromNotation)
 	) {
-		outputColorData.channels = carryForwardMissingComponents(colorData.channels, [0, 1, 2], [], outputColorData.channels, [0, 1, 2], []);
+		return carryForwardMissingComponents(originalChannelValues, [0, 1, 2], [], colorData.channels, [0, 1, 2], []);
 	} else {
 		switch (toNotation) {
 			case ColorNotation.HSL:
-				switch (colorData.colorNotation) {
+				switch (fromNotation) {
 					case ColorNotation.HWB:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// HWB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// HSL
-							outputColorData.channels, [0], [1, 2]
+							colorData.channels, [0], [1, 2]
 						);
-						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LAB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// HSL
-							outputColorData.channels, [2], [0, 1]
+							colorData.channels, [2], [0, 1]
 						);
-						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// HSL
-							outputColorData.channels, [2, 1, 0], []
+							colorData.channels, [2, 1, 0], []
 						);
-						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
-							outputColorData.channels, [], []
+						return carryForwardMissingComponents(
+							originalChannelValues, [], [],
+							colorData.channels, [], []
 						);
 				}
 
-				break;
 			case ColorNotation.HWB:
-				switch (colorData.colorNotation) {
+				switch (fromNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// HSL
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// HWB
-							outputColorData.channels, [0], [1, 2]
+							colorData.channels, [0], [1, 2]
 						);
-						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [2], [0, 1],
+							originalChannelValues, [2], [0, 1],
 							// HWB
-							outputColorData.channels, [0], [1, 2]
+							colorData.channels, [0], [1, 2]
 						);
-						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
-							outputColorData.channels, [], []
+						return carryForwardMissingComponents(
+							originalChannelValues, [], [],
+							colorData.channels, [], []
 						);
 				}
 
-				break;
 			case ColorNotation.Lab:
 			case ColorNotation.OKLab:
-				switch (colorData.colorNotation) {
+				switch (fromNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// HSL
-							colorData.channels, [2], [0, 1],
+							originalChannelValues, [2], [0, 1],
 							// LAB
-							outputColorData.channels, [0], [1, 2]
+							colorData.channels, [0], [1, 2]
 						);
-						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LAB
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// LAB
-							outputColorData.channels, [0, 1, 2], []
+							colorData.channels, [0, 1, 2], []
 						);
-						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// LAB
-							outputColorData.channels, [0], [1, 2]
+							colorData.channels, [0], [1, 2]
 						);
-						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
-							outputColorData.channels, [], []
+						return carryForwardMissingComponents(
+							originalChannelValues, [], [],
+							colorData.channels, [], []
 						);
 				}
 
-				break;
 			case ColorNotation.LCH:
 			case ColorNotation.OKLCH:
-				switch (colorData.colorNotation) {
+				switch (fromNotation) {
 					case ColorNotation.HSL:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// HSL
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// LCH
-							outputColorData.channels, [2, 1, 0], []
+							colorData.channels, [2, 1, 0], []
 						);
-						break;
 					case ColorNotation.HWB:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// HWB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// LCH
-							outputColorData.channels, [2], [0, 1]
+							colorData.channels, [2], [0, 1]
 						);
-						break;
 					case ColorNotation.Lab:
 					case ColorNotation.OKLab:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LAB
-							colorData.channels, [0], [1, 2],
+							originalChannelValues, [0], [1, 2],
 							// LCH
-							outputColorData.channels, [0], [1, 2]
+							colorData.channels, [0], [1, 2]
 						);
-						break;
 					case ColorNotation.LCH:
 					case ColorNotation.OKLCH:
-						outputColorData.channels = carryForwardMissingComponents(
+						return carryForwardMissingComponents(
 							// LCH
-							colorData.channels, [0, 1, 2], [],
+							originalChannelValues, [0, 1, 2], [],
 							// LCH
-							outputColorData.channels, [0, 1, 2], []
+							colorData.channels, [0, 1, 2], []
 						);
-						break;
 					default:
-						outputColorData.channels = carryForwardMissingComponents(
-							colorData.channels, [], [],
-							outputColorData.channels, [], []
+						return carryForwardMissingComponents(
+							originalChannelValues, [], [],
+							colorData.channels, [], []
 						);
 				}
 
-				break;
-
 			default:
-				outputColorData.channels = carryForwardMissingComponents(
-					colorData.channels, [], [],
-					outputColorData.channels, [], []
+				return carryForwardMissingComponents(
+					originalChannelValues, [], [],
+					colorData.channels, [], []
 				);
 		}
 	}
-
-	outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, toNotation);
-
-	return outputColorData;
 }
 
 function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: ColorNotation): Color {
@@ -592,26 +700,48 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.001) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.001) {
 				out[0] = Number.NaN;
+
+				if (!Number.isNaN(out[1]) && out[1] > 0) {
+					out[1] = 0;
+				}
 			}
 
 			break;
 		case ColorNotation.HWB:
-			if (!Number.isNaN(out[1]) && !Number.isNaN(out[2]) && (Math.max(0, out[1]) + Math.max(0, out[2])) >= 99.999) {
+			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
 				out[0] = Number.NaN;
+
+				if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) < 100) {
+					if (!Number.isNaN(out[1]) && !Number.isNaN(out[2])) {
+						out[2] = 100 - out[1];
+					} else if (!Number.isNaN(out[1])) {
+						out[1] = 100;
+					} else if (!Number.isNaN(out[2])) {
+						out[2] = 100;
+					}
+				}
 			}
 
 			break;
 		case ColorNotation.LCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.0015) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.0015) {
 				out[2] = Number.NaN;
+
+				if (!Number.isNaN(out[1]) && out[1] > 0) {
+					out[1] = 0;
+				}
 			}
 
 			break;
 		case ColorNotation.OKLCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.000004) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.000004) {
 				out[2] = Number.NaN;
+
+				if (!Number.isNaN(out[1]) && out[1] > 0) {
+					out[1] = 0;
+				}
 			}
 
 			break;
@@ -625,18 +755,18 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 
 	switch (colorNotation) {
 		case ColorNotation.HSL:
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.001) {
+				out[0] = Number.NaN;
+			}
+
 			if (reducePrecision(out[2]) <= 0 || reducePrecision(out[2]) >= 100) {
 				out[0] = Number.NaN;
 				out[1] = Number.NaN;
 			}
 
-			if (!Number.isNaN(out[1]) && out[1] <= 0.001) {
-				out[0] = Number.NaN;
-			}
-
 			break;
 		case ColorNotation.HWB:
-			if (!Number.isNaN(out[1]) && !Number.isNaN(out[2]) && (Math.max(0, out[1]) + Math.max(0, out[2])) >= 99.999) {
+			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
 				out[0] = Number.NaN;
 			}
 			break;
@@ -647,7 +777,7 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 			break;
 		case ColorNotation.LCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.0015) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.0015) {
 				out[2] = Number.NaN;
 			}
 
@@ -663,7 +793,7 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 			break;
 		case ColorNotation.OKLCH:
-			if (!Number.isNaN(out[1]) && out[1] <= 0.000004) {
+			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.000004) {
 				out[2] = Number.NaN;
 			}
 
@@ -802,6 +932,21 @@ export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber
 	return globals;
 }
 
+function normalizeAfterColorConversion(a: Color, hueIndex: number = -1): Color {
+	a = convertNaNToZero(a);
+	a = [
+		hueIndex === 0 ? a[0] : normalize(a[0], 1, -2_147_483_647, 2_147_483_647),
+		hueIndex === 1 ? a[1] : normalize(a[1], 1, -2_147_483_647, 2_147_483_647),
+		hueIndex === 2 ? a[2] : normalize(a[2], 1, -2_147_483_647, 2_147_483_647),
+	];
+
+	if (!Number.isNaN(a[hueIndex]) && !Number.isFinite(a[hueIndex])) {
+		a[hueIndex] = 0;
+	}
+
+	return a;
+}
+
 function dummyNumberToken(x: number): TokenNumber {
 	if (Number.isNaN(x)) {
 		return [TokenType.Number, 'none', -1, -1, { value: Number.NaN, type: NumberType.Number }];
@@ -843,7 +988,7 @@ export function colorDataFitsRGB_Gamut(x: ColorData): boolean {
 	};
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
-	const srgb = colorDataTo(copy, ColorNotation.RGB);
+	const srgb = colorDataToForRelativeColorSyntax(copy, ColorNotation.RGB);
 	if (!srgb.channels.find((y: number) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}
@@ -866,7 +1011,7 @@ export function colorDataFitsDisplayP3_Gamut(x: ColorData): boolean {
 	};
 
 	copy.channels = convertPowerlessComponentsToZeroValuesForDisplay(copy.channels, copy.colorNotation);
-	const displayP3 = colorDataTo(copy, ColorNotation.Display_P3);
+	const displayP3 = colorDataToForRelativeColorSyntax(copy, ColorNotation.Display_P3);
 	if (!displayP3.channels.find((y: number) => y < -0.00001 || y > 1.00001)) {
 		return true;
 	}
