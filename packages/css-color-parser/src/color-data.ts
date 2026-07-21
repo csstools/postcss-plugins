@@ -4,6 +4,7 @@ import { ColorNotation } from './color-notation';
 import type { TokenNumber} from '@csstools/css-tokenizer';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { HSL_to_XYZ_D50, HSL_to_XYZ_D65, HWB_to_XYZ_D50, HWB_to_XYZ_D65, LCH_to_XYZ_D50, LCH_to_XYZ_D65, Lab_to_XYZ_D50, Lab_to_XYZ_D65, OKLCH_to_XYZ_D50, OKLCH_to_XYZ_D65, OKLab_to_XYZ_D50, OKLab_to_XYZ_D65, P3_to_XYZ_D50, P3_to_XYZ_D65, ProPhoto_RGB_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D65, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D65_to_HSL, XYZ_D65_to_HWB, XYZ_D65_to_OKLCH, XYZ_D65_to_OKLab, XYZ_D65_to_P3, XYZ_D65_to_XYZ_D50, XYZ_D65_to_XYZ_D65, XYZ_D65_to_a98_RGB, XYZ_D65_to_lin_P3, XYZ_D65_to_lin_sRGB, XYZ_D65_to_rec_2020, XYZ_D65_to_sRGB, a98_RGB_to_XYZ_D50, a98_RGB_to_XYZ_D65, lin_P3_to_XYZ_D50, lin_P3_to_XYZ_D65, lin_sRGB_to_XYZ_D50, lin_sRGB_to_XYZ_D65, rec_2020_to_XYZ_D50, rec_2020_to_XYZ_D65, sRGB_to_XYZ_D50, sRGB_to_XYZ_D65 } from '@csstools/color-helpers';
+import { normalize } from './functions/normalize';
 
 /**
  * A color data object.
@@ -413,48 +414,56 @@ function convertToDestination(colorData: ColorData, toNotation: ColorNotation): 
 			// 9. If dest-rect is not the same as dest, in other words dest is a cylindrical polar color representation, convert from dest-rect to dest, and let this be col2.
 			colorData.channels = XYZ_D65_to_sRGB(xyzColorData.channels);
 			colorData.channels = colorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.sRGB: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.sRGB;
 			colorData.channels = XYZ_D65_to_sRGB(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.Linear_sRGB: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.Linear_sRGB;
 			colorData.channels = XYZ_D65_to_lin_sRGB(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.Display_P3: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.Display_P3;
 			colorData.channels = XYZ_D65_to_P3(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.Linear_Display_P3: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.Linear_Display_P3;
 			colorData.channels = XYZ_D65_to_lin_P3(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.Rec2020: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.Rec2020;
 			colorData.channels = XYZ_D65_to_rec_2020(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.ProPhoto_RGB: {
 			const xyzColorData = colorData_to_XYZ_D50(colorData);
 			colorData.colorNotation = ColorNotation.ProPhoto_RGB;
 			colorData.channels = XYZ_D50_to_ProPhoto(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.A98_RGB: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.A98_RGB;
 			colorData.channels = XYZ_D65_to_a98_RGB(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.HSL: {
@@ -462,6 +471,7 @@ function convertToDestination(colorData: ColorData, toNotation: ColorNotation): 
 			colorData.colorNotation = ColorNotation.HSL;
 			colorData.channels = XYZ_D65_to_HSL(xyzColorData.channels);
 			colorData.channels = colorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 0);
 
 			// https://drafts.csswg.org/css-color-4/#color-conversion
 			// 9. This may produce missing components.
@@ -473,6 +483,7 @@ function convertToDestination(colorData: ColorData, toNotation: ColorNotation): 
 			colorData.colorNotation = ColorNotation.HWB;
 			colorData.channels = XYZ_D65_to_HWB(xyzColorData.channels);
 			colorData.channels = colorData.channels.map((x) => reducePrecisionOrNaN(x, 8)) as Color;
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 0);
 
 			// https://drafts.csswg.org/css-color-4/#color-conversion
 			// 9. This may produce missing components.
@@ -483,12 +494,14 @@ function convertToDestination(colorData: ColorData, toNotation: ColorNotation): 
 			const xyzColorData = colorData_to_XYZ_D50(colorData);
 			colorData.colorNotation = ColorNotation.Lab;
 			colorData.channels = XYZ_D50_to_Lab(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.LCH: {
 			const xyzColorData = colorData_to_XYZ_D50(colorData);
 			colorData.colorNotation = ColorNotation.LCH;
 			colorData.channels = XYZ_D50_to_LCH(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 2);
 
 			// https://drafts.csswg.org/css-color-4/#color-conversion
 			// 9. This may produce missing components.
@@ -499,6 +512,7 @@ function convertToDestination(colorData: ColorData, toNotation: ColorNotation): 
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.OKLCH;
 			colorData.channels = XYZ_D65_to_OKLCH(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels, 2);
 
 			// https://drafts.csswg.org/css-color-4/#color-conversion
 			// 9. This may produce missing components.
@@ -509,18 +523,21 @@ function convertToDestination(colorData: ColorData, toNotation: ColorNotation): 
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.OKLab;
 			colorData.channels = XYZ_D65_to_OKLab(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.XYZ_D50: {
 			const xyzColorData = colorData_to_XYZ_D50(colorData);
 			colorData.colorNotation = ColorNotation.XYZ_D50;
 			colorData.channels = XYZ_D50_to_XYZ_D50(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		case ColorNotation.XYZ_D65: {
 			const xyzColorData = colorData_to_XYZ_D65(colorData);
 			colorData.colorNotation = ColorNotation.XYZ_D65;
 			colorData.channels = XYZ_D65_to_XYZ_D65(xyzColorData.channels);
+			colorData.channels = normalizeAfterColorConversion(colorData.channels);
 			break;
 		}
 		default:
@@ -913,6 +930,21 @@ export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber
 	}
 
 	return globals;
+}
+
+function normalizeAfterColorConversion(a: Color, hueIndex: number = -1): Color {
+	a = convertNaNToZero(a);
+	a = [
+		hueIndex === 0 ? a[0] : normalize(a[0], 1, -2_147_483_647, 2_147_483_647),
+		hueIndex === 1 ? a[1] : normalize(a[1], 1, -2_147_483_647, 2_147_483_647),
+		hueIndex === 2 ? a[2] : normalize(a[2], 1, -2_147_483_647, 2_147_483_647),
+	];
+
+	if (!Number.isNaN(a[hueIndex]) && !Number.isFinite(a[hueIndex])) {
+		a[hueIndex] = 0;
+	}
+
+	return a;
 }
 
 function dummyNumberToken(x: number): TokenNumber {

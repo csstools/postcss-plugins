@@ -80,7 +80,7 @@ export function reducePrecision(x, factor = 8) {
 	return Math.round(x * factor) / factor;
 }
 
-export function computedValue(declared) {
+export function computedValue(declared, forceHslOrHwb = false) {
 	const colorData = color(parseComponentValue(tokenize({ css: declared })));
 	if (!colorData) {
 		return false;
@@ -151,7 +151,7 @@ export function computedValue(declared) {
 			return `rgb(${Math.round(nanToNone(reducePrecision(colorData.channels[0], 5) * 255))}, ${Math.round(nanToNone(reducePrecision(colorData.channels[1], 5) * 255))}, ${Math.round(nanToNone(reducePrecision(colorData.channels[2], 5) * 255))})`;
 
 		case 'hsl': {
-			if (colorData.channels.some(Number.isNaN) || Number.isNaN(colorData.alpha)) {
+			if (colorData.channels.some(Number.isNaN) || Number.isNaN(colorData.alpha) || forceHslOrHwb) {
 				if (colorData.alpha !== 1) {
 					return `hsl(${nanToNone(colorData.channels[0])} ${nanToNone(colorData.channels[1], '%')} ${nanToNone(colorData.channels[2], '%')} / ${nanToNone(colorData.alpha)})`;
 				}
@@ -171,7 +171,7 @@ export function computedValue(declared) {
 			return `rgb(${Math.round(nanToNone(reducePrecision(rgbColorData.channels[0], 5) * 255))}, ${Math.round(nanToNone(reducePrecision(rgbColorData.channels[1], 5) * 255))}, ${Math.round(nanToNone(reducePrecision(rgbColorData.channels[2], 5) * 255))})`;
 		}
 		case 'hwb': {
-			if (colorData.channels.some(Number.isNaN) || Number.isNaN(colorData.alpha)) {
+			if (colorData.channels.some(Number.isNaN) || Number.isNaN(colorData.alpha) || forceHslOrHwb) {
 				if (colorData.alpha !== 1) {
 					return `hwb(${nanToNone(colorData.channels[0])} ${nanToNone(colorData.channels[1], '%')} ${nanToNone(colorData.channels[2], '%')} / ${nanToNone(colorData.alpha)})`;
 				}
@@ -241,10 +241,10 @@ export function computedValue(declared) {
 
 		case 'xyz':
 			if (colorData.alpha !== 1) {
-				return `color(xyz ${nanToNone(colorData.channels[0])} ${nanToNone(colorData.channels[1])} ${nanToNone(colorData.channels[2])} / ${nanToNone(colorData.alpha)})`;
+				return `color(xyz-d65 ${nanToNone(colorData.channels[0])} ${nanToNone(colorData.channels[1])} ${nanToNone(colorData.channels[2])} / ${nanToNone(colorData.alpha)})`;
 			}
 
-			return `color(xyz ${nanToNone(colorData.channels[0])} ${nanToNone(colorData.channels[1])} ${nanToNone(colorData.channels[2])})`;
+			return `color(xyz-d65 ${nanToNone(colorData.channels[0])} ${nanToNone(colorData.channels[1])} ${nanToNone(colorData.channels[2])})`;
 
 		case 'xyz-d50':
 			if (colorData.alpha !== 1) {
