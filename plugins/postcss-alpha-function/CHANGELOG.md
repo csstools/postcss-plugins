@@ -1,5 +1,9 @@
 # Changes to PostCSS Alpha Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.1.10`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#4110) (patch)
+
 ### 2.0.7
 
 _June 28, 2026_

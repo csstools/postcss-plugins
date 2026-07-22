@@ -1,5 +1,18 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`3.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#304) (patch)
+- Updated [`@csstools/postcss-random-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function/CHANGELOG.md#400) (major)
+- Updated [`@csstools/postcss-sign-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions) to [`2.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions/CHANGELOG.md#204) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#504) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#504) (patch)
+- Updated [`css-blank-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo) to [`8.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo/CHANGELOG.md#802) (patch)
+- Updated [`css-has-pseudo`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo/CHANGELOG.md#801) (patch)
+- Updated [`css-prefers-color-scheme`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme/CHANGELOG.md#1101) (patch)
+- Updated [`postcss-focus-within`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) to [`10.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within/CHANGELOG.md#1001) (patch)
+
 ### 11.3.2
 
 _June 28, 2026_
