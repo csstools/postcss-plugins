@@ -10,9 +10,10 @@ import type { conversionOptions } from '../options';
 const NULL_CHAR = String.fromCodePoint(0x000);
 
 export type RandomValueSharing = {
-	isAuto: boolean,
 	dashedIdent: string,
-	elementShared: boolean,
+	elementScoped: boolean,
+	propertyScoped: boolean,
+	propertyIndexScoped: boolean,
 	fixed: number,
 };
 
@@ -71,8 +72,10 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 	const rnd = randomValueSharing.fixed === -1 ? sfc32(
 		crc32(
 			[
-				randomValueSharing.dashedIdent ? randomValueSharing.dashedIdent : (`${options.randomCaching?.propertyName} ${options.randomCaching.propertyN++}`),
-				randomValueSharing.elementShared ? "" : options.randomCaching.elementID,
+				randomValueSharing.dashedIdent ? randomValueSharing.dashedIdent : "",
+				randomValueSharing.elementScoped ? options.randomCaching.elementID : "",
+				(randomValueSharing.propertyScoped || randomValueSharing.propertyIndexScoped) ? options.randomCaching.propertyName : "",
+				randomValueSharing.propertyIndexScoped ? options.randomCaching.propertyN : "",
 				options.randomCaching.documentID,
 			].join(NULL_CHAR),
 		),

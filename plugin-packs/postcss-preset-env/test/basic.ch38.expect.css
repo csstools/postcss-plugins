@@ -637,18 +637,18 @@
 
 .random {
 	color: rgb(
-		75,
-		170,
-		70
+		205,
+		35,
+		205
 	);
 
-	border-color: rgb(41, 33, 0);
+	border-color: rgb(186, 179, 255);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0.15961 0.13022 0);
+	border-color: color(display-p3 0.72311 0.69736 1);
 }
 }
 

@@ -725,11 +725,14 @@ function random(randomNode: FunctionNode, globals: Globals, options: conversionO
 
 function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentValue>, globals: Globals, options: conversionOptions): [RandomValueSharing, Array<ComponentValue>] | -1 {
 	const x: RandomValueSharing = {
-		isAuto: false,
 		dashedIdent: "",
 		fixed: -1,
-		elementShared: false,
+		elementScoped: false,
+		propertyScoped: false,
+		propertyIndexScoped: false,
 	};
+
+	let hasAutoKeyword = false;
 
 	const firstNode = nodes[0];
 	if (!isTokenNode(firstNode) || !isTokenIdent(firstNode.value)) {
@@ -753,18 +756,36 @@ function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentVal
 		const token = node.value;
 		const tokenStr = token[4].value.toLowerCase();
 
-		if (tokenStr === 'element-shared') {
-			if (x.fixed !== -1) {
+		if (tokenStr === 'element-scoped') {
+			if (x.fixed !== -1 || hasAutoKeyword || x.elementScoped) {
 				return -1;
 			}
 
-			x.elementShared = true;
+			x.elementScoped = true;
+			continue;
+		}
+
+		if (tokenStr === 'property-scoped') {
+			if (x.fixed !== -1 || hasAutoKeyword || x.propertyScoped || x.propertyIndexScoped) {
+				return -1;
+			}
+
+			x.propertyScoped = true;
+			continue;
+		}
+
+		if (tokenStr === 'property-index-scoped') {
+			if (x.fixed !== -1 || hasAutoKeyword || x.propertyScoped || x.propertyIndexScoped) {
+				return -1;
+			}
+
+			x.propertyIndexScoped = true;
 			continue;
 		}
 
 		// fixed <number [0,1]>
 		if (tokenStr === 'fixed') {
-			if (x.elementShared || x.dashedIdent || x.isAuto) {
+			if (x.fixed !== -1 || hasAutoKeyword || x.dashedIdent || x.elementScoped || x.propertyScoped || x.propertyIndexScoped) {
 				return -1;
 			}
 
@@ -793,22 +814,26 @@ function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentVal
 		}
 
 		if (tokenStr === 'auto') {
-			if (x.fixed !== -1 || x.dashedIdent) {
+			if (x.fixed !== -1 || hasAutoKeyword || x.dashedIdent || x.elementScoped || x.propertyScoped || x.propertyIndexScoped) {
 				return -1;
 			}
 
-			x.isAuto = true;
+			x.elementScoped = true;
+			x.propertyIndexScoped = true;
+			hasAutoKeyword = true;
 			continue;
 		}
 
 		if (tokenStr.startsWith('--')) {
-			if (x.fixed !== -1 || x.isAuto) {
+			if (x.fixed !== -1 || hasAutoKeyword || x.dashedIdent) {
 				return -1;
 			}
 
 			x.dashedIdent = tokenStr;
 			continue;
 		}
+
+		return -1;
 	}
 
 	return -1;

@@ -25,16 +25,16 @@ div {
 /* becomes */
 
 div {
-	color: oklch(0.7 0.2 177.17235deg);
+	color: oklch(0.7 0.2 166.80407deg);
 }
 
 div {
-	color: oklch(0.7 0.2 176deg);
+	color: oklch(0.7 0.2 169deg);
 }
 
 div {
-	margin: 41.7525px 70.01679px;
-	padding: 44.03856px 44.03856px;
+	margin: 45.10305px 45.10305px;
+	padding: 73.36206px 73.36206px;
 }
 ```
 
@@ -107,19 +107,19 @@ div {
 /* becomes */
 
 div {
-	color: oklch(0.7 0.2 177.17235deg);
+	color: oklch(0.7 0.2 166.80407deg);
 	color: oklch(0.7 0.2 random(120deg, 240deg));
 }
 
 div {
-	color: oklch(0.7 0.2 176deg);
+	color: oklch(0.7 0.2 169deg);
 	color: oklch(0.7 0.2 random(120deg, 240deg, 7deg));
 }
 
 div {
-	margin: 41.7525px 70.01679px;
+	margin: 45.10305px 45.10305px;
 	margin: random(10px, 100px) random(10px, 100px);
-	padding: 44.03856px 44.03856px;
+	padding: 73.36206px 73.36206px;
 	padding: random(--padding, 10px, 100px) random(--padding, 10px, 100px);
 }
 ```
