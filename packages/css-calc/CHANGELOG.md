@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Add support for `calc-mix()`
+- Update `random()` to match the latest spec
 
 ### 3.2.1
 

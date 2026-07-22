@@ -1,5 +1,10 @@
 # Changes to PostCSS Random Function
 
+### Unreleased (major)
+
+- Updated to match the [latest spec](https://drafts.csswg.org/css-values-5/#typedef-random-cache-key)
+  - use `element-scoped`, `property-scoped` and `property-index-scoped` keywords to tune the random results
+
 ### 3.0.3
 
 _May 13, 2026_

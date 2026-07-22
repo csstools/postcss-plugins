@@ -3,7 +3,7 @@ import assert from 'node:assert';
 
 assert.strictEqual(
 	calc('random(100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.54613px',
+	'494.67561px',
 );
 
 assert.strictEqual(
@@ -37,11 +37,6 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('random(fixed 0.5 element-shared, 100px, 500px)'),
-	'random(fixed 0.5 element-shared, 100px, 500px)',
-);
-
-assert.strictEqual(
 	calc('random(fixed 0, 100px, 500px)'),
 	'100px',
 );
@@ -52,88 +47,231 @@ assert.strictEqual(
 );
 
 assert.strictEqual(
-	calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.54613px',
+	calc('random(100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+	'494.67561px',
 );
 
 assert.strictEqual(
-	calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
-	'125.44077px',
+	calc('random(100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
+	'494.67561px',
 );
 
-assert.strictEqual(
-	calc('random(auto element-shared, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'182.79634px',
-);
+// Parse errors
+{
+	assert.strictEqual(
+		calc('random(fixed 0.5 element-shared, 100px, 500px)'),
+		'random(fixed 0.5 element-shared, 100px, 500px)',
+	);
 
-assert.strictEqual(
-	calc('random(auto element-shared, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
-	'182.79634px',
-);
+	assert.strictEqual(
+		calc('random(fixed 0.5 element-scoped, 100px, 500px)'),
+		'random(fixed 0.5 element-scoped, 100px, 500px)',
+	);
 
-assert.strictEqual(
-	calc('random(--foo, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'319.55825px',
-);
+	assert.strictEqual(
+		calc('random(auto element-scoped, 100px, 500px)'),
+		'random(auto element-scoped, 100px, 500px)',
+	);
 
-assert.strictEqual(
-	calc('random(--foo element-shared, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'182.8387px',
-);
+	assert.strictEqual(
+		calc('random(element-scoped element-scoped, 100px, 500px)'),
+		'random(element-scoped element-scoped, 100px, 500px)',
+	);
 
-assert.strictEqual(
-	calc('random(element-shared --foo, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'182.8387px',
-);
+	assert.strictEqual(
+		calc('random(property-scoped property-index-scoped, 100px, 500px)'),
+		'random(property-scoped property-index-scoped, 100px, 500px)',
+	);
 
-assert.strictEqual(
-	calc('random(element-shared auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'182.79634px',
-);
+	assert.strictEqual(
+		calc('random(--foo --foo, 100px, 500px)'),
+		'random(--foo --foo, 100px, 500px)',
+	);
+
+	assert.strictEqual(
+		calc('random(auto element-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'random(auto element-scoped, 100px, 500px)',
+	);
+}
+
+// Auto
+{
+	assert.strictEqual(
+		calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'389.49727px',
+	);
+
+	assert.strictEqual(
+		calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 1 } }),
+		'388.31371px',
+	);
+
+	assert.strictEqual(
+		calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
+		'363.49085px',
+	);
+
+	assert.strictEqual(
+		calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'cc', propertyN: 0 } }),
+		'192.06217px',
+	);
+
+	assert.strictEqual(
+		calc('random(auto, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'cc', propertyN: 0 } }),
+		'221.86057px',
+	);
+}
+
+// Element scoped
+{
+	assert.strictEqual(
+		calc('random(element-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'263.31683px',
+	);
+
+	assert.strictEqual(
+		calc('random(element-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 1 } }),
+		'263.31683px',
+	);
+
+	assert.strictEqual(
+		calc('random(element-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
+		'101.703px',
+	);
+
+	assert.strictEqual(
+		calc('random(element-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'cc', propertyN: 0 } }),
+		'263.31683px',
+	);
+
+	assert.strictEqual(
+		calc('random(element-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'cc', propertyN: 0 } }),
+		'101.703px',
+	);
+}
+
+// Property scoped
+{
+	assert.strictEqual(
+		calc('random(property-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'354.52062px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 1 } }),
+		'354.52062px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
+		'354.52062px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'cc', propertyN: 0 } }),
+		'226.3236px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'cc', propertyN: 0 } }),
+		'226.3236px',
+	);
+}
+
+// Property Index scoped
+{
+	assert.strictEqual(
+		calc('random(property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'245.51026px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 1 } }),
+		'245.12969px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'c', propertyN: 0 } }),
+		'245.51026px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'cc', propertyN: 0 } }),
+		'167.2736px',
+	);
+
+	assert.strictEqual(
+		calc('random(property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'bb', propertyName: 'cc', propertyN: 0 } }),
+		'167.2736px',
+	);
+}
+
+// With an explicit name
+{
+	assert.strictEqual(
+		calc('random(--foo, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'304.6569px',
+	);
+
+	assert.strictEqual(
+		calc('random(--bar, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'465.28073px',
+	);
+
+	assert.strictEqual(
+		calc('random(--foo property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'160.79062px',
+	);
+
+	assert.strictEqual(
+		calc('random(--bar property-index-scoped, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'100.68779px',
+	);
+}
 
 assert.strictEqual(
 	calc('random(100px, 500px) random(100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.54613px 420.66239px',
+	'494.67561px 494.67561px',
 );
 
 assert.strictEqual(
 	calc('random(--foo, 100px, 500px) random(--foo, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'319.55825px 319.55825px',
+	'304.6569px 304.6569px',
 );
 
 assert.strictEqual(
 	calc('random(calc(80px + 20px), 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.54613px',
+	'494.67561px',
 );
 
 assert.strictEqual(
 	calc('random(80px + 20px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.54613px',
+	'494.67561px',
 );
 
 assert.strictEqual(
 	calc('random(calc(50px * 2), 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.54613px',
+	'494.67561px',
 );
 
 assert.strictEqual(
 	calc('random(--foo, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'319.55825px',
+	'304.6569px',
 );
 
 assert.strictEqual(
 	calc('random(--foo, 80px + 20px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'319.55825px',
+	'304.6569px',
 );
 
 assert.strictEqual(
 	calc('random(--bar, 100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'441.70825px',
+	'465.28073px',
 );
 
 assert.strictEqual(
 	calc('random(99px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'475.48499px',
+	'494.6623px',
 );
 
 assert.strictEqual(
@@ -143,17 +281,17 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(100px, 500px, 10px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'480px',
+	'500px',
 );
 
 assert.strictEqual(
 	calc('random(100px, 500px, calc(5px * 2))', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'480px',
+	'500px',
 );
 
 assert.strictEqual(
 	calc('random(--foo, 100px, 500px, 5px * 2)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'320px',
+	'300px',
 );
 
 assert.strictEqual(
@@ -188,12 +326,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(-10px, 20px, -50px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'18.16596px',
+	'19.60067px',
 );
 
 assert.strictEqual(
 	calc('random(-10px, 20px, 0px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'18.16596px',
+	'19.60067px',
 );
 
 assert.strictEqual(
@@ -218,7 +356,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(10ms, 1s)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'939.47666ms',
+	'986.82213ms',
 );
 
 assert.strictEqual(
@@ -228,37 +366,37 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(0%, 100%)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'93.88653%',
+	'98.6689%',
 );
 
 assert.strictEqual(
 	calc('random(0deg, 360deg)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'337.99151deg',
+	'355.20805deg',
 );
 
 assert.strictEqual(
 	calc('random(--foo, 10, 20, -2)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'15.48896',
+	'15.11642',
 );
 
 assert.strictEqual(
 	calc('random(10, 20, 0.00005)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }), // Number of steps is small enough
-	'19.3887',
+	'19.8669',
 );
 
 assert.strictEqual(
 	calc('random(10, 20, 0.000005)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }), // Number of steps is small enough
-	'19.38865',
+	'19.86689',
 );
 
 assert.strictEqual(
 	calc('random(0, 1, 0.00000000005)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }), // Number of steps is too large
-	'0.93887',
+	'0.98669',
 );
 
 assert.strictEqual(
 	calc('random(0, 10000000, 0.00000000005)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }), // Number of steps is too large
-	'9388653.16566',
+	'9866890.20647',
 );
 
 assert.strictEqual(
