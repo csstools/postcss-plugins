@@ -1,6 +1,8 @@
 # Changes to PostCSS Tape
 
-### Unreleased (patch)
+### 7.0.1
+
+_July 22, 2026_
 
 - Ignore whitespace when comparing latest and oldest PostCSS versions.
 
