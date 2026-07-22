@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (minor)
+### 3.3.0
+
+_July 22, 2026_
 
 - Add support for `calc-mix()`
 - Update `random()` to match the latest spec
