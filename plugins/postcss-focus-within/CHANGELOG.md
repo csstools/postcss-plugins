@@ -1,6 +1,8 @@
 # Changes to PostCSS Focus Within
 
-### Unreleased (patch)
+### 10.0.1
+
+_July 22, 2026_
 
 - Rewritten browser polyfill as ES3
 
