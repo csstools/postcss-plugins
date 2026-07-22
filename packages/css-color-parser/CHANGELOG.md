@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix handling of `none` in some edge cases
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.3.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#330) (minor)
 
 ### 4.1.9
 

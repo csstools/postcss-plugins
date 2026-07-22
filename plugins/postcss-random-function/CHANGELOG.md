@@ -4,6 +4,7 @@
 
 - Updated to match the [latest spec](https://drafts.csswg.org/css-values-5/#typedef-random-cache-key)
   - use `element-scoped`, `property-scoped` and `property-index-scoped` keywords to tune the random results
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.3.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#330) (minor)
 
 ### 3.0.3
 
