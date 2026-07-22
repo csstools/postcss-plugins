@@ -1,6 +1,8 @@
 # Changes to Prefers Color Scheme
 
-### Unreleased (patch)
+### 11.0.1
+
+_July 22, 2026_
 
 - Rewritten browser polyfill as ES3
 
