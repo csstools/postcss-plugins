@@ -33,7 +33,7 @@ export function combinationsWithSizeN(set: Array<Selector>, n: number): Array<Ar
 		throw new Error('s must be greater than 1');
 	}
 
-	if (Math.pow(set.length, n) > 10000) {
+	if (Math.pow(set.length, n) > 10_000) {
 		// Throwing is best here as a warning would be impossible to handle gracefully on our end.
 		// This will error mid transform and there is no possible fallback at this point.
 		// The user should reduce complexity.

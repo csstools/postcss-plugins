@@ -87,6 +87,20 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root, opti
 }
 
 function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = false): Array<Node> {
+	{
+		let counter = 0;
+		parentSelectors.walk(() => {
+			counter++;
+		});
+
+		if (counter > 10_000) {
+			// Throwing is best here as a warning would be impossible to handle gracefully on our end.
+			// This will error mid transform and there is no possible fallback at this point.
+			// The user should reduce complexity.
+			throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
+		}
+	}
+
 	if (
 		forceIsPseudo ||
 		!isCompoundSelector(parentSelectors.nodes)

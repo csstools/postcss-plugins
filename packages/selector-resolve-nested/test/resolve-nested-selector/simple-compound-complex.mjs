@@ -75,3 +75,24 @@ test('complex - complex', async () => {
 		':is(.bar + .baz) .foo + .fooz',
 	);
 });
+
+test('pseudo element - compound', async () => {
+	assert.equal(
+		resolveNestedSelector(parse('&::before'), parse('.foo:hover')).toString(),
+		'.foo:hover::before',
+	);
+});
+
+test('compound - pseudo element', async () => {
+	assert.equal(
+		resolveNestedSelector(parse('&:hover'), parse('.foo::before')).toString(),
+		':is(.foo::before):hover',
+	);
+});
+
+test('compound - pseudo element', async () => {
+	assert.equal(
+		resolveNestedSelector(parse('&:hover'), parse('.foo::before:focus')).toString(),
+		':is(.foo::before:focus):hover',
+	);
+});
