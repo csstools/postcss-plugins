@@ -1,6 +1,8 @@
 # Changes to Selector Resolve Nested
 
-### Unreleased (patch)
+### 4.0.1
+
+_July 23, 2026_
 
 - Throw when trying to resolve a nested selector with excessive combinatorial explosion.
 
