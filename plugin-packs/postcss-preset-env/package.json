@@ -112,7 +112,7 @@
 		"postcss-image-set-function": "^8.0.0",
 		"postcss-lab-function": "^8.0.7",
 		"postcss-logical": "^9.0.0",
-		"postcss-nesting": "^14.0.0",
+		"postcss-nesting": "^14.0.1",
 		"postcss-opacity-percentage": "^3.0.0",
 		"postcss-overflow-shorthand": "^7.0.0",
 		"postcss-page-break": "^3.0.4",
