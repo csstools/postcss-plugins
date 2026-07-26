@@ -14,7 +14,16 @@ export const shorthands = new Map([
 			"animation-range",
 			"animation-trigger",
 			"animation-range-start",
-			"animation-range-end"
+			"animation-range-end",
+			"animation-delay-start",
+			"animation-delay-end"
+		]
+	],
+	[
+		"animation-delay",
+		[
+			"animation-delay-start",
+			"animation-delay-end"
 		]
 	],
 	[

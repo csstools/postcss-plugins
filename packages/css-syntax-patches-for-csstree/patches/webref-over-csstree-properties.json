@@ -110,6 +110,39 @@
 			"failing": []
 		}
 	},
+	"animation-delay": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "<time>#",
+		"syntax-a": "[ <'animation-delay-start'> <'animation-delay-end'>? ]#",
+		"syntax-m": "[ <'animation-delay-start'> <'animation-delay-end'>? ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"animation-delay-end": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<time [0s,∞]>#",
+		"syntax-m": "<time [0s,∞]>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"animation-delay-start": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<time>#",
+		"syntax-m": "<time>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"animation-range-center": {
 		"type": "added",
 		"comment": "",

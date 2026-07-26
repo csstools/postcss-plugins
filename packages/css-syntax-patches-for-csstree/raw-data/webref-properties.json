@@ -39,6 +39,12 @@
 		"syntax": "<single-animation-composition>#"
 	},
 	"animation-delay": {
+		"syntax": "[ <'animation-delay-start'> <'animation-delay-end'>? ]#"
+	},
+	"animation-delay-end": {
+		"syntax": "<time [0s,∞]>#"
+	},
+	"animation-delay-start": {
 		"syntax": "<time>#"
 	},
 	"animation-direction": {

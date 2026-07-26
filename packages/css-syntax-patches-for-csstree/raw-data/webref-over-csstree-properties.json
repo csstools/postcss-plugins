@@ -35,6 +35,24 @@
 		"syntax-a": "none | all | <anchor-name>#",
 		"comment": ""
 	},
+	"animation-delay": {
+		"type": "modified",
+		"syntax-b": "<time>#",
+		"syntax-a": "[ <'animation-delay-start'> <'animation-delay-end'>? ]#",
+		"comment": ""
+	},
+	"animation-delay-end": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<time [0s,∞]>#",
+		"comment": ""
+	},
+	"animation-delay-start": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<time>#",
+		"comment": ""
+	},
 	"animation-range-center": {
 		"type": "added",
 		"syntax-b": "",
