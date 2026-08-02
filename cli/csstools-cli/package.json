@@ -65,7 +65,7 @@
 		"css-blank-pseudo": "^8.0.2",
 		"css-has-pseudo": "^8.0.1",
 		"css-prefers-color-scheme": "^11.0.1",
-		"postcss": "^8.5.10",
+		"postcss": "^8.5.23",
 		"postcss-attribute-case-insensitive": "^8.0.0",
 		"postcss-color-functional-notation": "^8.0.7",
 		"postcss-color-hex-alpha": "^11.0.0",
