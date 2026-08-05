@@ -1,0 +1,14 @@
+{% set baseClass = 'ppe-blog' %}
+{% set titleOverride %}{{ title }} | CSS Tools{% endset %}
+
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+	<article class="ppe-post">
+		<header class="ppe-blog-header">
+			<h1 class="ppe-blog-title">{{ title }}</h1>
+		</header>
+
+		{{ content | safe }}
+	</article>
+{% endblock %}

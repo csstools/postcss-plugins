@@ -10,10 +10,11 @@ export default [
 	'scripts',
 	'playground',
 	'blog_calc_2023_02_21',
-	'blog_color_parser_2023_03_27',
 	'blog_color_mix_2023_03_27',
+	'blog_color_parser_2023_03_27',
 	'blog_relative_color_syntax_2023_05_22',
 	'blog_relative_color_syntax_channel_values_2024_03_02',
+	'color_computed',
 ].map(name => ({
 	input: `src/static/js/${name}.js`,
 	output: [
