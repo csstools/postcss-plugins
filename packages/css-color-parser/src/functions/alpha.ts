@@ -150,5 +150,9 @@ export function alpha(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 		return false;
 	}
 
+	if (!hasAlpha) {
+		return false;
+	}
+
 	return colorData;
 }

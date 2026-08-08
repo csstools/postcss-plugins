@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Mandatory `alpha` in the relative `alpha()` function.
+
 ### 4.1.10
 
 _July 22, 2026_
