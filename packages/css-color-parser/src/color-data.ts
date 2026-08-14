@@ -714,12 +714,12 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 				out[0] = Number.NaN;
 
 				if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) < 100) {
-					if (!Number.isNaN(out[1]) && !Number.isNaN(out[2])) {
-						out[2] = 100 - out[1];
-					} else if (!Number.isNaN(out[1])) {
-						out[1] = 100;
-					} else if (!Number.isNaN(out[2])) {
+					if (Number.isNaN(out[1])) {
 						out[2] = 100;
+					} else if (Number.isNaN(out[2])) {
+						out[1] = 100;
+					} else {
+						out[2] = 100 - out[1];
 					}
 				}
 			}

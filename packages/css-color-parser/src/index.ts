@@ -26,6 +26,7 @@ export { serializeP3 } from './serialize/p3';
 export { serializeRGB } from './serialize/rgb';
 export { serializeHSL } from './serialize/hsl';
 export { serializeOKLCH } from './serialize/oklch';
+export { computedValue } from './serialize/computed';
 
 /**
  * Convert a color function to a `ColorData` object.

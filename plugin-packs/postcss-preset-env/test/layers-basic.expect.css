@@ -208,7 +208,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	   -moz-animation: none 0s ease 0s 1 normal none running;
 	        animation: none 0s ease 0s 1 normal none running;
 	-webkit-backface-visibility: visible;
-	   -moz-backface-visibility: visible;
 	        backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentcolor;
@@ -265,7 +264,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	line-height: normal;
 	height: auto;
 	-webkit-hyphens: none;
-	   -moz-hyphens: none;
 	    -ms-hyphens: none;
 	        hyphens: none;
 	left: auto;
@@ -287,10 +285,8 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	page-break-before: auto;
 	page-break-inside: auto;
 	-webkit-perspective: none;
-	   -moz-perspective: none;
 	        perspective: none;
 	-webkit-perspective-origin: 50% 50%;
-	   -moz-perspective-origin: 50% 50%;
 	        perspective-origin: 50% 50%;
 	position: static;
 	right: auto;
@@ -298,7 +294,8 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	     tab-size: 8;
 	table-layout: auto;
 	text-align: left;
-	text-align-last: auto;
+	-moz-text-align-last: auto;
+	     text-align-last: auto;
 	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
@@ -312,7 +309,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	   -moz-transform-origin: 50% 50% 0;
 	        transform-origin: 50% 50% 0;
 	-webkit-transform-style: flat;
-	   -moz-transform-style: flat;
 	        transform-style: flat;
 	-webkit-transition: none 0s ease 0s;
 	-moz-transition: none 0s ease 0s;

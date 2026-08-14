@@ -1,6 +1,8 @@
 import fs from 'fs';
 
-import { computedValue, reducePrecisionWholeValue } from './serialize.mjs';
+import { reducePrecisionWholeValue } from './serialize.mjs';
+import { color, computedValue } from '@csstools/css-color-parser';
+import { parse } from './parse.mjs';
 
 const input = fs.readFileSync(0, 'utf-8');
 
@@ -10,12 +12,12 @@ const array_notation_three_args_computed_args_single_quote = /\['([^']*)',\s'([^
 
 output = output.replaceAll(array_notation_three_args_computed_args_single_quote, function(a, b, c, d) {
 	if (d) {
-		const resultB = reducePrecisionWholeValue(computedValue(b));
+		const resultB = reducePrecisionWholeValue(computedValue(color(parse(b))));
 		if (!resultB) {
 			return a;
 		}
 
-		const resultC = reducePrecisionWholeValue(computedValue(b, true));
+		const resultC = reducePrecisionWholeValue(computedValue(color(parse(b)), false));
 		if (!resultC) {
 			return a;
 		}

@@ -95,6 +95,8 @@ export declare enum ColorNotation {
     XYZ_D65 = "xyz-d65"
 }
 
+export declare function computedValue(color: ColorData, convertHslOrHwbToRGB?: boolean): string;
+
 export declare function serializeHSL(color: ColorData, gamutMapping?: boolean): FunctionNode;
 
 /**
