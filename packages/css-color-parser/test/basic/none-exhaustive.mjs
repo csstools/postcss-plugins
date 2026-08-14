@@ -1,5 +1,7 @@
 import assert from 'node:assert';
-import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs';
+import { reducePrecisionWholeValue } from '../util/serialize.mjs';
+import { color, computedValue } from '@csstools/css-color-parser';
+import { parse } from '../util/parse.mjs';
 
 {
 	const tests = [
@@ -554,16 +556,16 @@ import { computedValue, reducePrecisionWholeValue } from '../util/serialize.mjs'
 
 	for (const test of tests) {
 		assert.deepStrictEqual(
-			reducePrecisionWholeValue(computedValue(test[0])),
+			reducePrecisionWholeValue(computedValue(color(parse(test[0])))),
 			test[1],
 			`"${test[0]}" : ${test[1]}`,
 		);
 
 		if (test[2]) {
 			assert.deepStrictEqual(
-				reducePrecisionWholeValue(computedValue(test[0], true)),
+				reducePrecisionWholeValue(computedValue(color(parse(test[0])), false)),
 				test[2],
-				`"${test[0]}" equivalent to ${reducePrecisionWholeValue(computedValue(test[0], true))} : ${test[2]}`,
+				`"${test[0]}" equivalent to ${reducePrecisionWholeValue(computedValue(color(parse(test[0])), false))} : ${test[2]}`,
 			);
 		}
 	}
