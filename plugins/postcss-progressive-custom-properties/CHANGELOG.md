@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 5.1.2
+
+_August 15, 2026_
 
 - Update `@webref/css` to [`v8.7.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.1)
 
