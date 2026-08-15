@@ -88,6 +88,7 @@ body:
         - PostCSS Env Function
         - PostCSS Exponential Functions
         - PostCSS Extract
+        - PostCSS Fit Tolerance Property
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
