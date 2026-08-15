@@ -215,6 +215,12 @@
       - plugins/postcss-extract/**
       - experimental/postcss-extract/**
 
+"plugins/postcss-fit-tolerance-property":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-fit-tolerance-property/**
+      - experimental/postcss-fit-tolerance-property/**
+
 "plugins/postcss-focus-visible":
   - changed-files:
     - any-glob-to-any-file:
