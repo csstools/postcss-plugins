@@ -1,6 +1,8 @@
 # Changes to PostCSS Image Function
 
-### Unreleased (patch)
+### 1.0.2
+
+_August 15, 2026_
 
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#512) (patch)
 
