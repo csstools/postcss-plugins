@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#512) (patch)
+
 ### 7.0.2
 
 _June 28, 2026_

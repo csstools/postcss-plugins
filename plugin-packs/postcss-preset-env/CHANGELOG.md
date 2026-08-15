@@ -9,6 +9,8 @@
 - Updated [`postcss-focus-within`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within) to [`10.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within/CHANGELOG.md#1001) (patch)
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.1.10`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#4110) (patch)
 - Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#512) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#505) (patch)
 
 ### 11.3.2
 

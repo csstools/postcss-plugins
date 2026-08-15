@@ -36,10 +36,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^4.1.10",
+		"@csstools/css-color-parser": "^4.2.0",
 		"@csstools/css-parser-algorithms": "^4.0.0",
 		"@csstools/css-tokenizer": "^4.0.0",
-		"@csstools/postcss-progressive-custom-properties": "^5.1.1",
+		"@csstools/postcss-progressive-custom-properties": "^5.1.2",
 		"@csstools/utilities": "^3.0.0"
 	},
 	"peerDependencies": {
