@@ -1,5 +1,9 @@
 # Changes to PostCSS Tape
 
+### Unreleased (patch)
+
+- Bundle the oldest PostCSS version tested with `@csstools/postcss-tape`. This removes it from downstream dependency trees and avoids false positive security notices. If you are running `@csstools/postcss-tape` with untrusted CSS you might want to rethink your setup.
+
 ### 7.0.1
 
 _July 22, 2026_

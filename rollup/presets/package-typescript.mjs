@@ -1,9 +1,11 @@
+import commonjs from '@rollup/plugin-commonjs';
 import path from 'node:path';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { externalsForPlugin } from '../configs/externals.mjs';
 import { apiExtractor } from '../transforms/api-extractor.mjs';
 import { nodeCoverageDisable } from '../transforms/node-coverage-disable.mjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { move } from '../transforms/move.mjs';
 
 export function packageTypescript(options = {}) {
@@ -21,6 +23,10 @@ export function packageTypescript(options = {}) {
 					declarationDir: './dist/_types',
 					noEmit: false,
 					noEmitOnError: true,
+				}),
+				commonjs(),
+				nodeResolve({
+					rootDir: path.join(process.cwd(), '..', '..'),
 				}),
 				terser({
 					compress: {

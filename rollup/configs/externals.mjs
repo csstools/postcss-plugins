@@ -14,7 +14,6 @@ export const externalsForCLI = [
 	'node:url',
 
 	'postcss',
-	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 	'postcss-html',
 
@@ -130,7 +129,6 @@ export const externalsForPlugin = [
 	'node:url',
 
 	'postcss',
-	/^postcss-\d\.\d$/,
 	/^postcss\/lib\/*/,
 	'postcss-html',
 
