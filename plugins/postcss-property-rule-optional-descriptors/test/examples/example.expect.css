@@ -1,0 +1,11 @@
+@property --foo {
+	initial-value: "red";
+	syntax: "*";
+	inherits: true;
+}
+
+@property --bar {
+	syntax: "<color>";
+	initial-value: "green";
+	inherits: true;
+}

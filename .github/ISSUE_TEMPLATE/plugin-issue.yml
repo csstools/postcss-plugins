@@ -123,6 +123,7 @@ body:
         - PostCSS Place
         - PostCSS Position Area Property
         - PostCSS Progressive Custom Properties
+        - PostCSS Property Rule Optional Descriptors
         - PostCSS Property Rule Prelude List
         - PostCSS Pseudo Class Any Link
         - PostCSS Random Function

@@ -1,0 +1,8 @@
+@property --foo {
+	initial-value: "red";
+}
+
+@property --bar {
+	syntax: "<color>";
+	initial-value: "green";
+}

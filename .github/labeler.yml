@@ -437,6 +437,12 @@
       - plugins/postcss-progressive-custom-properties/**
       - experimental/postcss-progressive-custom-properties/**
 
+"plugins/postcss-property-rule-optional-descriptors":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-property-rule-optional-descriptors/**
+      - experimental/postcss-property-rule-optional-descriptors/**
+
 "plugins/postcss-property-rule-prelude-list":
   - changed-files:
     - any-glob-to-any-file:
