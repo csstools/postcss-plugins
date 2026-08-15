@@ -1,6 +1,8 @@
 # Changes to CSS Color Parser
 
-### Unreleased (minor)
+### 4.2.0
+
+_August 15, 2026_
 
 - Add `computedValue()` serialization function for color data.
 - Mandatory `alpha` in the relative `alpha()` function.
