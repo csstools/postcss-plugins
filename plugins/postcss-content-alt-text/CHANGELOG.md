@@ -1,6 +1,8 @@
 # Changes to PostCSS Content Alt Text
 
-### Unreleased (patch)
+### 3.0.3
+
+_August 15, 2026_
 
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#512) (patch)
 
