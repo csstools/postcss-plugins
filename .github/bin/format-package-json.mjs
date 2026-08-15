@@ -14,11 +14,11 @@ function postcssPeerDependencyVersion() {
 	//   "postcss-8.2": "npm:postcss@~8.2"
 	// }
 	//
-	const lowerPostCSS_VersionKey = Object.keys(packageJSONInfoForPostCSS_Tape.dependencies).find((x) => {
-		return x.startsWith('postcss-') && packageJSONInfoForPostCSS_Tape.dependencies[x].includes('npm:postcss@~');
+	const lowerPostCSS_VersionKey = Object.keys(packageJSONInfoForPostCSS_Tape.devDependencies).find((x) => {
+		return x.startsWith('postcss-') && packageJSONInfoForPostCSS_Tape.devDependencies[x].includes('npm:postcss@~');
 	});
 
-	const lowerPostCSS_Version = packageJSONInfoForPostCSS_Tape.dependencies[lowerPostCSS_VersionKey];
+	const lowerPostCSS_Version = packageJSONInfoForPostCSS_Tape.devDependencies[lowerPostCSS_VersionKey];
 
 	// "npm:postcss@~8.2" -> "8.2"
 	return lowerPostCSS_Version.split('~')[1];
