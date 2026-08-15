@@ -1,0 +1,1 @@
+const e=/^fit-tolerance$/i,creator=o=>{const s=Object.assign({preserve:!0},o);return{postcssPlugin:"postcss-fit-tolerance-property",Declaration(o){e.test(o.prop)&&(o.cloneBefore({prop:"flow-tolerance"}),s.preserve||o.remove())}}};creator.postcss=!0;export{creator as default,creator as"module.exports"};
