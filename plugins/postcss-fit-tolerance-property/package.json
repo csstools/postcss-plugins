@@ -54,11 +54,13 @@
 		"test": "node --test",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property#readme",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-fit-tolerance-property"
 	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"postcss-plugin"
 	],
@@ -70,7 +72,5 @@
 	},
 	"volta": {
 		"extends": "../../package.json"
-	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property#readme",
-	"bugs": "https://github.com/csstools/postcss-plugins/issues"
+	}
 }
