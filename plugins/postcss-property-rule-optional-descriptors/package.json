@@ -1,6 +1,6 @@
 {
-	"name": "@csstools/postcss-fit-tolerance-property",
-	"description": "Use the fit tolerance property in css",
+	"name": "@csstools/postcss-property-rule-optional-descriptors",
+	"description": "Omit optional descriptors in at-property rules",
 	"version": "0.0.0",
 	"contributors": [
 		{
@@ -54,24 +54,23 @@
 		"test": "node --test",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property#readme",
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-optional-descriptors#readme",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/csstools/postcss-plugins.git",
-		"directory": "plugins/postcss-fit-tolerance-property"
+		"directory": "plugins/postcss-property-rule-optional-descriptors"
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"at-property",
 		"fallback",
-		"fit-tolerance",
-		"flow-tolerance",
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "fit-tolerance-property",
-		"exportName": "postcssFitToleranceProperty",
-		"humanReadableName": "PostCSS Fit Tolerance Property",
-		"specUrl": "https://drafts.csswg.org/css-grid-3/#placement-tolerance"
+		"cssdbId": "property-rule-optional-descriptors",
+		"exportName": "postcssPropertyRuleOptionalDescriptors",
+		"humanReadableName": "PostCSS Property Rule Optional Descriptors",
+		"specUrl": "https://drafts.css-houdini.org/css-properties-values-api/#determining-registration"
 	},
 	"volta": {
 		"extends": "../../package.json"
