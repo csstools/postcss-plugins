@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-property-rule-optional-descriptors",
 	"description": "Omit optional descriptors in at-property rules",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
