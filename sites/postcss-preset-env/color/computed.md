@@ -4,7 +4,7 @@ title: Computed Color
 
 This uses [`@csstools/css-color-parser`](https://www.npmjs.com/package/@csstools/css-color-parser).
 
-<label id="color-input-label-1" for="color-input-1">Get the computed color:</label>
+<label id="color-input-label-1" for="color-input-1">Get the computed color for:</label>
 <textarea	id="color-input-1" class="color-input" rows="2">
 oklch(calc(50% * 1.4) 0.268 134.568)
 </textarea>
