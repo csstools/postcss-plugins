@@ -8,7 +8,12 @@ This uses [`@csstools/css-color-parser`](https://www.npmjs.com/package/@csstools
 <textarea	id="color-input-1" class="color-input" rows="2">
 oklch(calc(50% * 1.4) 0.268 134.568)
 </textarea>
+
+<label for="color-output-computed">@csstools/css-color-parser</label>
 <output id="color-output-computed" class="color-output-computed" for="color-input-1" style="--color: oklch(0.7 0.268 134.568);">oklch(0.7 0.268 134.568)</output>
+
+<label for="color-output-computed-native">native</label>
+<output id="color-output-computed-native" class="color-output-computed" for="color-input-1" style="--color: oklch(0.7 0.268 134.568);">oklch(0.7 0.268 134.568)</output>
 
 {% block scripts %}<script async defer src="{{ '/static/js/color_computed.js' | addHash }}"></script>{% endblock %}
 
