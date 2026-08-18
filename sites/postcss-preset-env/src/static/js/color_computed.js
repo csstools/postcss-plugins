@@ -77,7 +77,14 @@ function renderResult() {
 			return;
 		}
 
-		const outputColorValueComputed = computedValue(parsedColorValue);
+		let outputColorValueComputed = computedValue(parsedColorValue);
+		try {
+			outputColorValueComputed = computedValue(parsedColorValue);
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.log(error);
+		}
+
 		if (!outputColorValueComputed) {
 			inputEl.style.outline = '2px solid rgb(255 0 0)';
 			return;
