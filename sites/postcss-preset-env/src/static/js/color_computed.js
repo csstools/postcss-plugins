@@ -1,6 +1,30 @@
-import { tokenize } from "@csstools/css-tokenizer";
+import { isTokenDimension, isTokenNumeric, isTokenPercentage, mutateUnit, stringify, tokenize } from "@csstools/css-tokenizer";
 import { color, computedValue } from "@csstools/css-color-parser";
 import { parseComponentValue } from "@csstools/css-parser-algorithms";
+
+function reducePrecisionWholeValue(color) {
+	const tokens = tokenize({ css: color.trim() });
+
+	for (let i = 0; i < tokens.length; i++) {
+		const token = tokens[i];
+		if (isTokenNumeric(token)) {
+			let factor = Math.pow(10, 8);
+
+			const y = Math.round(token[4].value * factor) / factor;
+
+			if (isTokenDimension(token)) {
+				token[4].value = y;
+				mutateUnit(token, token[4].unit);
+			} else if (isTokenPercentage(token)) {
+				token[1] = y.toString() + '%';
+			} else {
+				token[1] = y.toString();
+			}
+		}
+	}
+
+	return stringify(...tokens);
+}
 
 function readState() {
 	try {
@@ -77,9 +101,9 @@ function renderResult() {
 			return;
 		}
 
-		let outputColorValueComputed = computedValue(parsedColorValue);
+		let outputColorValueComputed;
 		try {
-			outputColorValueComputed = computedValue(parsedColorValue);
+			outputColorValueComputed = reducePrecisionWholeValue(computedValue(parsedColorValue));
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.log(error);
