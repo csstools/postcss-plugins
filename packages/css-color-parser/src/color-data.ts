@@ -310,6 +310,13 @@ const predefinedRGB_or_XYZ_Spaces = new Set([
 ]);
 
 export function colorDataToForInterpolation(colorData: ColorData, toNotation: ColorNotation): ColorData {
+	// https://github.com/w3c/csswg-drafts/issues/14347#issuecomment-5346256034
+	if (colorData.colorNotation === toNotation) {
+		return {
+			...colorData,
+		};
+	}
+
 	// https://drafts.csswg.org/css-color-4/#interpolation
 	// 1. checking the two colors for analogous components and analogous sets which will be carried forward
 	const originalChannelValues = [...colorData.channels] as Color;

@@ -14,7 +14,7 @@ import { parse } from '../util/parse.mjs';
 		// https://github.com/w3c/csswg-drafts/issues/14100
 		['lch(from orchid l 0 h)', 'lch(62.75256542 0 326.96909222)'],
 		['lch(from lch(from orchid l 0 h) l c h)', 'lch(62.75256542 0 326.96909222)'],
-		['color-mix(in lch, lch(from orchid l 0 h))', 'lch(62.75256542 0 none)'],
+		['color-mix(in lch, lch(from orchid l 0 h))', 'lch(62.75256542 0 326.96909222)'],
 
 		// exhaustive tests
 		// HSL - RCS
@@ -71,10 +71,10 @@ import { parse } from '../util/parse.mjs';
 
 		// HSL - color-mix
 		['color-mix(in hsl, hsl(none 50% 50%), hsl(11 33 44))', 'color(srgb 0.66505 0.34646833 0.27495)', 'hsl(11 41.5% 47%)'],
-		['color-mix(in hsl, hsl(180 none 50%), hsl(11 33 44))', 'color(srgb 0.6251 0.37177 0.3149)', 'hsl(11 33% 47%)'],
+		['color-mix(in hsl, hsl(180 none 50%), hsl(11 33 44))', 'color(srgb 0.441565 0.6251 0.3149)', 'hsl(95.5 33% 47%)'],
 		['color-mix(in hsl, hsl(180 50% none), hsl(11 33 44))', 'color(srgb 0.40652333 0.6226 0.2574)', 'hsl(95.5 41.5% 44%)'],
 		['color-mix(in hsl, hsl(none none 50%), hsl(11 33 44))', 'color(srgb 0.6251 0.37177 0.3149)', 'hsl(11 33% 47%)'],
-		['color-mix(in hsl, hsl(180 none none), hsl(11 33 44))', 'color(srgb 0.5852 0.34804 0.2948)', 'hsl(11 33% 44%)'],
+		['color-mix(in hsl, hsl(180 none none), hsl(11 33 44))', 'color(srgb 0.41338 0.5852 0.2948)', 'hsl(95.5 33% 44%)'],
 		['color-mix(in hsl, hsl(none 50% none), hsl(11 33 44))', 'color(srgb 0.6226 0.32435333 0.2574)', 'hsl(11 41.5% 44%)'],
 		['color-mix(in hsl, hsl(none none none), hsl(11 33 44))', 'color(srgb 0.5852 0.34804 0.2948)', 'hsl(11 33% 44%)'],
 
@@ -295,9 +295,9 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in lch, hwb(none none none), lch(11 33 44))', 'lch(11 33 44)'],
 
 		['color-mix(in lch, lch(none 20 180), lch(11 33 44))', 'lch(11 26.5 112)'],
-		['color-mix(in lch, lch(20 none 180), lch(11 33 44))', 'lch(15.5 33 44)'],
+		['color-mix(in lch, lch(20 none 180), lch(11 33 44))', 'lch(15.5 33 112)'],
 		['color-mix(in lch, lch(20 20 none), lch(11 33 44))', 'lch(15.5 26.5 44)'],
-		['color-mix(in lch, lch(none none 180), lch(11 33 44))', 'lch(11 33 44)'],
+		['color-mix(in lch, lch(none none 180), lch(11 33 44))', 'lch(11 33 112)'],
 		['color-mix(in lch, lch(20 none none), lch(11 33 44))', 'lch(15.5 33 44)'],
 		['color-mix(in lch, lch(none 20 none), lch(11 33 44))', 'lch(11 26.5 44)'],
 		['color-mix(in lch, lch(none none none), lch(11 33 44))', 'lch(11 33 44)'],
@@ -407,9 +407,9 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in oklch, lch(none none none), oklch(0.11 0.33 44))', 'oklch(0.11 0.33 44)'],
 
 		['color-mix(in oklch, oklch(none 0.2 180), oklch(0.11 0.33 44))', 'oklch(0.11 0.265 112)'],
-		['color-mix(in oklch, oklch(0.2 none 180), oklch(0.11 0.33 44))', 'oklch(0.155 0.33 44)'],
+		['color-mix(in oklch, oklch(0.2 none 180), oklch(0.11 0.33 44))', 'oklch(0.155 0.33 112)'],
 		['color-mix(in oklch, oklch(0.2 0.2 none), oklch(0.11 0.33 44))', 'oklch(0.155 0.265 44)'],
-		['color-mix(in oklch, oklch(none none 180), oklch(0.11 0.33 44))', 'oklch(0.11 0.33 44)'],
+		['color-mix(in oklch, oklch(none none 180), oklch(0.11 0.33 44))', 'oklch(0.11 0.33 112)'],
 		['color-mix(in oklch, oklch(0.2 none none), oklch(0.11 0.33 44))', 'oklch(0.155 0.33 44)'],
 		['color-mix(in oklch, oklch(none 0.2 none), oklch(0.11 0.33 44))', 'oklch(0.11 0.265 44)'],
 		['color-mix(in oklch, oklch(none none none), oklch(0.11 0.33 44))', 'oklch(0.11 0.33 44)'],
