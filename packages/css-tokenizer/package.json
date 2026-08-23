@@ -43,7 +43,7 @@
 	"devDependencies": {
 		"@rmenke/css-tokenizer-tests": "^1.2.0",
 		"postcss": "^8.5.10",
-		"postcss-parser-tests": "^8.8.0"
+		"postcss-parser-tests": "^8.10.0"
 	},
 	"scripts": {
 		"benchmark": "node ./test/benchmark.mjs",
