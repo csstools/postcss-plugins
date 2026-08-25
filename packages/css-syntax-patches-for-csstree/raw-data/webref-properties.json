@@ -1221,7 +1221,7 @@
 		"syntax": "auto | <string>"
 	},
 	"hyphenate-limit-chars": {
-		"syntax": "[ auto | <integer> ]{1,3}"
+		"syntax": "[ auto | <integer [0,∞]> ]{1,3}"
 	},
 	"-ms-hyphenate-limit-chars": {
 		"syntax": "auto | <integer>{1,3}"
@@ -1233,7 +1233,7 @@
 		"syntax": "none | always | column | page | spread"
 	},
 	"hyphenate-limit-lines": {
-		"syntax": "no-limit | <integer>"
+		"syntax": "no-limit | <integer [0,∞]>"
 	},
 	"-ms-hyphenate-limit-lines": {
 		"syntax": "no-limit | <integer>"
@@ -1428,7 +1428,7 @@
 		"syntax": "<length-percentage> | auto | <anchor-size()>"
 	},
 	"margin-trim": {
-		"syntax": "none | [ block || inline ] | [ block-start || inline-start || block-end || inline-end ]"
+		"syntax": "none | block | [ block-start || block-end ]"
 	},
 	"marker": {
 		"syntax": "none | <marker-ref>"
@@ -2003,6 +2003,9 @@
 	"scale": {
 		"syntax": "none | [ <number> | <percentage> ]{1,3}"
 	},
+	"scroll-axis-lock": {
+		"syntax": "auto | none"
+	},
 	"scroll-behavior": {
 		"syntax": "auto | smooth"
 	},
@@ -2349,7 +2352,7 @@
 		"syntax": "<color>"
 	},
 	"text-decoration-inset": {
-		"syntax": "<length>{1,2} | auto"
+		"syntax": "<length-percentage>{1,2} | auto"
 	},
 	"text-decoration-line": {
 		"syntax": "none | [ underline || overline || line-through || blink ] | spelling-error | grammar-error"
@@ -2454,7 +2457,7 @@
 		"syntax": "wrap | nowrap"
 	},
 	"text-wrap-style": {
-		"syntax": "auto | balance | stable | pretty | avoid-orphans"
+		"syntax": "auto | balance | stable | pretty | avoid-short-last-line"
 	},
 	"timeline-scope": {
 		"syntax": "none | all | <dashed-ident>#"

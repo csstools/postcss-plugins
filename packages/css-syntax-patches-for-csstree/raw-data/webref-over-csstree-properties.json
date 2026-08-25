@@ -1187,6 +1187,12 @@
 		"syntax-a": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain",
 		"comment": ""
 	},
+	"hyphenate-limit-chars": {
+		"type": "modified",
+		"syntax-b": "[ auto | <integer> ]{1,3}",
+		"syntax-a": "[ auto | <integer [0,∞]> ]{1,3}",
+		"comment": ""
+	},
 	"hyphenate-limit-last": {
 		"type": "added",
 		"syntax-b": "",
@@ -1196,7 +1202,7 @@
 	"hyphenate-limit-lines": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "no-limit | <integer>",
+		"syntax-a": "no-limit | <integer [0,∞]>",
 		"comment": ""
 	},
 	"hyphenate-limit-zone": {
@@ -1358,7 +1364,7 @@
 	"margin-trim": {
 		"type": "modified",
 		"syntax-b": "none | in-flow | all",
-		"syntax-a": "none | [ block || inline ] | [ block-start || inline-start || block-end || inline-end ]",
+		"syntax-a": "none | block | [ block-start || block-end ]",
 		"comment": ""
 	},
 	"marker": {
@@ -1943,6 +1949,12 @@
 		"syntax-a": "<length-percentage> | auto",
 		"comment": ""
 	},
+	"scroll-axis-lock": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "auto | none",
+		"comment": ""
+	},
 	"scroll-marker-group": {
 		"type": "modified",
 		"syntax-b": "none | before | after",
@@ -2213,6 +2225,12 @@
 		"syntax-a": "<'text-decoration-line'> || <'text-decoration-thickness'> || <'text-decoration-style'> || <'text-decoration-color'>",
 		"comment": ""
 	},
+	"text-decoration-inset": {
+		"type": "modified",
+		"syntax-b": "<length>{1,2} | auto",
+		"syntax-a": "<length-percentage>{1,2} | auto",
+		"comment": ""
+	},
 	"text-decoration-skip": {
 		"type": "modified",
 		"syntax-b": "none | [ objects || [ spaces | [ leading-spaces || trailing-spaces ] ] || edges || box-decoration ]",
@@ -2330,7 +2348,7 @@
 	"text-wrap-style": {
 		"type": "modified",
 		"syntax-b": "auto | balance | stable | pretty",
-		"syntax-a": "auto | balance | stable | pretty | avoid-orphans",
+		"syntax-a": "auto | balance | stable | pretty | avoid-short-last-line",
 		"comment": ""
 	},
 	"timeline-scope": {
