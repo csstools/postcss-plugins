@@ -311,6 +311,14 @@ const predefinedRGB_or_XYZ_Spaces = new Set([
 
 export function colorDataToForInterpolation(colorData: ColorData, toNotation: ColorNotation): ColorData {
 	// https://drafts.csswg.org/css-color-4/#interpolation
+	// Steps 1-4 equate to a noop if the input color is already in the interpolation color space
+	if (colorData.colorNotation === toNotation) {
+		return {
+			...colorData,
+		};
+	}
+
+	// https://drafts.csswg.org/css-color-4/#interpolation
 	// 1. checking the two colors for analogous components and analogous sets which will be carried forward
 	const originalChannelValues = [...colorData.channels] as Color;
 
@@ -319,11 +327,11 @@ export function colorDataToForInterpolation(colorData: ColorData, toNotation: Co
 	};
 
 	// https://drafts.csswg.org/css-color-4/#interpolation
-	// 2. changing any powerless components to missing values
+	// 2. (if conversion is required) changing any powerless components to missing values
 	outputColorData.channels = convertPowerlessComponentsToMissingComponents(outputColorData.channels, colorData.colorNotation);
 
 	// https://drafts.csswg.org/css-color-4/#interpolation
-	// 3. converting them both to a given color space which will be referred to as the interpolation color space below.
+	// 3. (if required) converting them both to a given color space which will be referred to as the interpolation color space below.
 	//
 	// https://drafts.csswg.org/css-color-4/#color-conversion
 	// To convert a color...

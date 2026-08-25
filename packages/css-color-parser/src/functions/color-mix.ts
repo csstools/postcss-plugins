@@ -372,6 +372,8 @@ function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorDat
 	const a_channels = colorDataToForInterpolation(a_color, colorNotation).channels;
 	const b_channels = colorDataToForInterpolation(b_color, colorNotation).channels;
 
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 5. fill in missing components with the other color’s component values
 	a_channels[0] = fillInMissingComponent(a_channels[0], b_channels[0]);
 	b_channels[0] = fillInMissingComponent(b_channels[0], a_channels[0]);
 
@@ -381,6 +383,12 @@ function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorDat
 	a_channels[2] = fillInMissingComponent(a_channels[2], b_channels[2]);
 	b_channels[2] = fillInMissingComponent(b_channels[2], a_channels[2]);
 
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 6. (if required) fixing up the hues, depending on the selected <hue-interpolation-method>
+	// -> not required
+
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 7. changing the color components to premultiplied form
 	a_channels[0] = premultiply(a_channels[0], a_alpha);
 	a_channels[1] = premultiply(a_channels[1], a_alpha);
 	a_channels[2] = premultiply(a_channels[2], a_alpha);
@@ -389,6 +397,9 @@ function colorMixRectangularPair(colorNotation: ColorNotation, a_color: ColorDat
 	b_channels[1] = premultiply(b_channels[1], b_alpha);
 	b_channels[2] = premultiply(b_channels[2], b_alpha);
 
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 8. linearly interpolating each component of the computed value of the color separately
+	// 9. undoing premultiplication
 	const alpha = interpolate(a_alpha, b_alpha, progress);
 	const outputChannels: Color = [
 		un_premultiply(interpolate(a_channels[0], b_channels[0], progress), alpha),
@@ -547,6 +558,8 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 	a_alpha = Number.isNaN(a_alpha) ? b_alpha : a_alpha;
 	b_alpha = Number.isNaN(b_alpha) ? a_alpha : b_alpha;
 
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 5. fill in missing components with the other color’s component values
 	const a_channels = colorDataToForInterpolation(a_color, colorNotation).channels;
 	const b_channels = colorDataToForInterpolation(b_color, colorNotation).channels;
 
@@ -579,6 +592,8 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 			break;
 	}
 
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 5. fill in missing components with the other color’s component values
 	a_first = fillInMissingComponent(a_first, b_first);
 	b_first = fillInMissingComponent(b_first, a_first);
 
@@ -587,15 +602,12 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 
 	a_hue = fillInMissingComponent(a_hue, b_hue);
 	b_hue = fillInMissingComponent(b_hue, a_hue);
+
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 6. (if required) fixing up the hues, depending on the selected <hue-interpolation-method>
 	if (Number.isNaN(a_hue) && Number.isNaN(b_hue)) {
 		// noop
 	} else {
-		if (Number.isNaN(a_hue)) {
-			a_hue = 0;
-		} else if (Number.isNaN(b_hue)) {
-			b_hue = 0;
-		}
-
 		const angleDiff = b_hue - a_hue;
 
 		switch (hueInterpolationMethod) {
@@ -634,11 +646,17 @@ function colorMixPolarPair(colorNotation: ColorNotation, hueInterpolationMethod:
 		}
 	}
 
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 7. changing the color components to premultiplied form
 	a_first = premultiply(a_first, a_alpha);
 	a_second = premultiply(a_second, a_alpha);
 	b_first = premultiply(b_first, b_alpha);
 	b_second = premultiply(b_second, b_alpha);
 
+
+	// https://drafts.csswg.org/css-color-4/#interpolation
+	// 8. linearly interpolating each component of the computed value of the color separately
+	// 9. undoing premultiplication
 	let outputChannels: Color = [0, 0, 0];
 	const alpha = interpolate(a_alpha, b_alpha, progress);
 

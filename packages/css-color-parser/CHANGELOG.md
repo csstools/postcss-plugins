@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Preserve powerless hue in `color-mix()` when the input color space equals the interpolation color space, matching relative color syntax.
+
 ### 4.2.0
 
 _August 15, 2026_

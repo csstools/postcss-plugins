@@ -25,7 +25,7 @@ output = output.replaceAll(array_notation_three_args_computed_args_single_quote,
 		return `['${b}', '${(resultB)}', '${(resultC)}'`;
 	}
 
-	const result = reducePrecisionWholeValue(computedValue(b));
+	const result = reducePrecisionWholeValue(computedValue(color(parse(b))));
 	if (!result) {
 		return a;
 	}
