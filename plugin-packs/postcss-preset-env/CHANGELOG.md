@@ -1,20 +1,11 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### Unreleased (minor)
 
-- Updated [`@csstools/postcss-alpha-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function) to [`2.0.10`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-alpha-function/CHANGELOG.md#2010) (patch)
-- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`5.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#509) (patch)
-- Updated [`@csstools/postcss-color-function-display-p3-linear`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear) to [`2.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function-display-p3-linear/CHANGELOG.md#209) (patch)
-- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`4.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#409) (patch)
-- Updated [`@csstools/postcss-color-mix-variadic-function-arguments`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-variadic-function-arguments) to [`2.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-variadic-function-arguments/CHANGELOG.md#209) (patch)
-- Updated [`@csstools/postcss-contrast-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-contrast-color-function) to [`3.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-contrast-color-function/CHANGELOG.md#309) (patch)
-- Updated [`@csstools/postcss-gamut-mapping`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping) to [`3.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping/CHANGELOG.md#309) (patch)
-- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`6.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#609) (patch)
-- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`5.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#509) (patch)
-- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`5.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#509) (patch)
-- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`4.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#409) (patch)
-- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`8.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#809) (patch)
-- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`8.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#809) (patch)
+- Added `@csstools/postcss-fit-tolerance-property` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property#readme) for usage details.
+- Added `@csstools/postcss-property-rule-optional-descriptors` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-optional-descriptors#readme) for usage details.
+- Updated [`cssdb`](https://github.com/csstools/cssdb) to [`8.10.0`](https://github.com/csstools/cssdb/blob/main/CHANGELOG.md#8100-aug-15-2026)
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#421) (patch)
 
 ### 11.4.0
 

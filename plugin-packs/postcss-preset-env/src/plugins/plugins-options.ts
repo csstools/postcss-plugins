@@ -21,6 +21,7 @@ import type { pluginOptions as postcssDirPseudoClassOptions } from 'postcss-dir-
 import type { pluginOptions as postcssNormalizeDisplayValuesOptions } from '@csstools/postcss-normalize-display-values';
 import type { pluginOptions as postcssDoublePositionGradientsOptions } from 'postcss-double-position-gradients';
 import type { pluginOptions as postcssExponentialFunctionsOptions } from '@csstools/postcss-exponential-functions';
+import type { pluginOptions as postcssFitTolerancePropertyOptions } from '@csstools/postcss-fit-tolerance-property';
 import type { pluginOptions as postcssLogicalFloatAndClearOptions } from '@csstools/postcss-logical-float-and-clear';
 import type { pluginOptions as postcssFocusVisibleOptions } from 'postcss-focus-visible';
 import type { pluginOptions as postcssFocusWithinOptions } from 'postcss-focus-within';
@@ -57,6 +58,7 @@ import type { postcssReplaceOverflowWrapOptions } from '../types/postcss-replace
 import type { pluginOptions as postcssPlaceOptions } from 'postcss-place';
 import type { pluginOptions as postcssPositionAreaPropertyOptions } from '@csstools/postcss-position-area-property';
 import type { pluginOptions as postcssPrefersColorSchemeOptions } from 'css-prefers-color-scheme';
+import type { pluginOptions as postcssPropertyRuleOptionalDescriptorsOptions } from '@csstools/postcss-property-rule-optional-descriptors';
 import type { pluginOptions as postcssPropertyRulePreludeListOptions } from '@csstools/postcss-property-rule-prelude-list';
 import type { pluginOptions as postcssRandomFunctionOptions } from '@csstools/postcss-random-function';
 import type { pluginOptions as postcssColorRebeccapurpleOptions } from 'postcss-color-rebeccapurple';
@@ -119,6 +121,8 @@ export type pluginsOptions = {
 	'double-position-gradients'?: subPluginOptions<postcssDoublePositionGradientsOptions>
 	/** plugin options for "@csstools/postcss-exponential-functions" */
 	'exponential-functions'?: subPluginOptions<postcssExponentialFunctionsOptions>
+	/** plugin options for "@csstools/postcss-fit-tolerance-property" */
+	'fit-tolerance-property'?: subPluginOptions<postcssFitTolerancePropertyOptions>
 	/** plugin options for "@csstools/postcss-logical-float-and-clear" */
 	'float-clear-logical-values'?: subPluginOptions<postcssLogicalFloatAndClearOptions>
 	/** plugin options for "postcss-focus-visible" */
@@ -191,6 +195,8 @@ export type pluginsOptions = {
 	'position-area-property'?: subPluginOptions<postcssPositionAreaPropertyOptions>
 	/** plugin options for "css-prefers-color-scheme" */
 	'prefers-color-scheme-query'?: subPluginOptions<postcssPrefersColorSchemeOptions>
+	/** plugin options for "@csstools/postcss-property-rule-optional-descriptors" */
+	'property-rule-optional-descriptors'?: subPluginOptions<postcssPropertyRuleOptionalDescriptorsOptions>
 	/** plugin options for "@csstools/postcss-property-rule-prelude-list" */
 	'property-rule-prelude-list'?: subPluginOptions<postcssPropertyRulePreludeListOptions>
 	/** plugin options for "@csstools/postcss-random-function" */

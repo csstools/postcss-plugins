@@ -355,6 +355,16 @@
 		"importName": "postcssContainerRulePreludeList"
 	},
 	{
+		"packageName": "@csstools/postcss-fit-tolerance-property",
+		"id": "fit-tolerance-property",
+		"importName": "postcssFitToleranceProperty"
+	},
+	{
+		"packageName": "@csstools/postcss-property-rule-optional-descriptors",
+		"id": "property-rule-optional-descriptors",
+		"importName": "postcssPropertyRuleOptionalDescriptors"
+	},
+	{
 		"packageName": "@csstools/postcss-progressive-custom-properties",
 		"id": "progressive-custom-properties",
 		"importName": "postcssProgressiveCustomProperties",

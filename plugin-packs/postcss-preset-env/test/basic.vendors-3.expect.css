@@ -744,6 +744,11 @@
 	syntax: <color>;
 }
 
+@property --value-a, --value-b {
+	inherits: true;
+	initial-value: black;
+}
+
 @mixin --mixin-a() {
 	color: lime;
 
@@ -779,4 +784,8 @@
 	.foo {
 		color: red;
 	}
+}
+
+.foo {
+	fit-tolerance: 2em;
 }

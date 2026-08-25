@@ -43,6 +43,7 @@ export default [
 	'double-position-gradients',
 	'blank-pseudo-class',
 	'break-properties',
+	'fit-tolerance-property',
 	'font-variant-property',
 	'is-pseudo-class', // after other selector transforms, before :has()
 	'scope-pseudo-class',
@@ -62,6 +63,7 @@ export default [
 	'text-decoration-shorthand',
 	'unset-value',
 	'property-rule-prelude-list',
+	'property-rule-optional-descriptors',
 	'syntax-descriptor-syntax-production',
 
 	// Math functions.

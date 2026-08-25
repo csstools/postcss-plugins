@@ -722,18 +722,18 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 
 .random {
 	color: rgb(
-		205,
-		35,
-		205
+		60,
+		160,
+		80
 	);
 
-	border-color: rgb(186, 179, 255);
+	border-color: rgb(0, 104, 17);
 }
 
 @media (color-gamut: p3) {
 .random {
 
-	border-color: color(display-p3 0.72311 0.69736 1);
+	border-color: color(display-p3 0.08293 0.41734 0);
 }
 }
 
@@ -756,6 +756,18 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	inherits: true;
 	initial-value: black;
 	syntax: "<color>";
+}
+
+@property --value-a {
+	inherits: true;
+	initial-value: black;
+	syntax: "*";
+}
+
+@property --value-b {
+	inherits: true;
+	initial-value: black;
+	syntax: "*";
 }
 
 .apply {
@@ -800,4 +812,9 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	.foo {
 		color: red;
 	}
+}
+
+.foo {
+	flow-tolerance: 2em;
+	fit-tolerance: 2em;
 }

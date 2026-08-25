@@ -21,6 +21,7 @@ import postcssDirPseudoClass from 'postcss-dir-pseudo-class';
 import postcssNormalizeDisplayValues from '@csstools/postcss-normalize-display-values';
 import postcssDoublePositionGradients from 'postcss-double-position-gradients';
 import postcssExponentialFunctions from '@csstools/postcss-exponential-functions';
+import postcssFitToleranceProperty from '@csstools/postcss-fit-tolerance-property';
 import postcssLogicalFloatAndClear from '@csstools/postcss-logical-float-and-clear';
 import postcssFocusVisible from 'postcss-focus-visible';
 import postcssFocusWithin from 'postcss-focus-within';
@@ -58,6 +59,7 @@ import postcssPlace from 'postcss-place';
 import postcssPositionAreaProperty from '@csstools/postcss-position-area-property';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
+import postcssPropertyRuleOptionalDescriptors from '@csstools/postcss-property-rule-optional-descriptors';
 import postcssPropertyRulePreludeList from '@csstools/postcss-property-rule-prelude-list';
 import postcssRandomFunction from '@csstools/postcss-random-function';
 import postcssColorRebeccapurple from 'postcss-color-rebeccapurple';
@@ -97,6 +99,7 @@ export const pluginsById = new Map(
 		['display-two-values', postcssNormalizeDisplayValues],
 		['double-position-gradients', postcssDoublePositionGradients],
 		['exponential-functions', postcssExponentialFunctions],
+		['fit-tolerance-property', postcssFitToleranceProperty],
 		['float-clear-logical-values', postcssLogicalFloatAndClear],
 		['focus-visible-pseudo-class', postcssFocusVisible],
 		['focus-within-pseudo-class', postcssFocusWithin],
@@ -134,6 +137,7 @@ export const pluginsById = new Map(
 		['position-area-property', postcssPositionAreaProperty],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
 		['progressive-custom-properties', postcssProgressiveCustomProperties],
+		['property-rule-optional-descriptors', postcssPropertyRuleOptionalDescriptors],
 		['property-rule-prelude-list', postcssPropertyRulePreludeList],
 		['random-function', postcssRandomFunction],
 		['rebeccapurple-color', postcssColorRebeccapurple],
