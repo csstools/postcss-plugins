@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 11.5.0
+
+_August 25, 2026_
 
 - Added `@csstools/postcss-fit-tolerance-property` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property#readme) for usage details.
 - Added `@csstools/postcss-property-rule-optional-descriptors` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-optional-descriptors#readme) for usage details.
