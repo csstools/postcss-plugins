@@ -1,7 +1,7 @@
-import { color } from '@csstools/css-color-parser';
+import { color, computedValue } from '@csstools/css-color-parser';
 import assert from 'node:assert';
 import { parse } from '../util/parse.mjs';
-import { serialize_sRGB_data } from '../util/serialize.mjs';
+import { reducePrecisionWholeValue, serialize_sRGB_data } from '../util/serialize.mjs';
 import { canonicalize } from '../util/canonical.mjs';
 
 const tests = [
@@ -217,6 +217,11 @@ assert.deepStrictEqual(
 		alpha: 0,
 		syntaxFlags: new Set(['color-keyword', 'named-color', 'color-mix-variadic', 'color-mix']),
 	},
+);
+
+assert.deepStrictEqual(
+	reducePrecisionWholeValue(computedValue(color(parse('color-mix(in hsl, red 0%)')))),
+	'color(srgb 1 0 0 / 0)',
 );
 
 assert.deepStrictEqual(

@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Normalize hue in `computedValue()`
+
 ### 4.2.1
 
 _August 25, 2026_

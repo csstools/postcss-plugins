@@ -572,10 +572,10 @@ import { parse } from '../util/parse.mjs';
 
 		['color-mix(in oklch, lab(none 10 10), oklch(0.11 0.33 44))', 'oklch(0.11 0.3527544 28.19241368)'],
 		['color-mix(in oklch, lab(50 none 10), oklch(0.11 0.33 44))', 'oklch(0.33894489 0.17782727 67.73960947)'],
-		['color-mix(in oklch, lab(50 10 none), oklch(0.11 0.33 44))', 'oklch(0.34110296 0.1799018 381.73922447)'],
+		['color-mix(in oklch, lab(50 10 none), oklch(0.11 0.33 44))', 'oklch(0.34110296 0.1799018 21.73922447)'],
 		['color-mix(in oklch, lab(none none 10), oklch(0.11 0.33 44))', 'oklch(0.11 0.30384589 30.33188074)'],
 		['color-mix(in oklch, lab(50 none none), oklch(0.11 0.33 44))', 'oklch(0.33948276 0.33 44)'],
-		['color-mix(in oklch, lab(none 10 none), oklch(0.11 0.33 44))', 'oklch(0.11 0.2698183 379.63566456)'],
+		['color-mix(in oklch, lab(none 10 none), oklch(0.11 0.33 44))', 'oklch(0.11 0.2698183 19.63566456)'],
 		['color-mix(in oklch, lab(none none none), oklch(0.11 0.33 44))', 'oklch(0.11 0.33 44)'],
 
 		['color-mix(in oklch, oklab(none 0.1 0.1), oklch(0.11 0.33 44))', 'oklch(0.11 0.23571068 44.5)'],

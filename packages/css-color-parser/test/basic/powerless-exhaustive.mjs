@@ -123,7 +123,7 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in hsl, lab(0 0 0), hsl(11 33 44))', 'color(srgb 0.2563 0.19701 0.1837)', 'hsl(11 16.5% 22%)'],
 		['color-mix(in hsl, oklab(0 0 0), hsl(11 33 44))', 'color(srgb 0.2563 0.19701 0.1837)', 'hsl(11 16.5% 22%)'],
 
-		['color-mix(in hsl, color(display-p3 0.50000333 0.49999445 0.49999517), hsl(11 33 44))', 'color(srgb 0.54755247 0.39984221 0.39244723)', 'hsl(362.86063009 16.50056255% 46.9999851%)'],
+		['color-mix(in hsl, color(display-p3 0.50000333 0.49999445 0.49999517), hsl(11 33 44))', 'color(srgb 0.54755247 0.39984221 0.39244723)', 'hsl(2.86063009 16.50056255% 46.9999851%)'],
 		['color-mix(in hsl, color(display-p3 0.49999645 0.50000513 0.50000531), hsl(11 33 44))', 'color(srgb 0.45576023 0.54755258 0.39244741)', 'hsl(95.50842958 16.50055003% 46.99999989%)'],
 
 		// HSL - color-mix : single color input
@@ -302,7 +302,7 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in hwb, lab(0 0 0), hwb(11 33 44))', 'color(srgb 0.28 0.18608333 0.165)', 'hwb(11 16.5% 72%)'],
 		['color-mix(in hwb, oklab(0 0 0), hwb(11 33 44))', 'color(srgb 0.28 0.18608333 0.165)', 'hwb(11 16.5% 72%)'],
 
-		['color-mix(in hwb, color(display-p3 0.50000333 0.49999445 0.49999517), hwb(11 33 44))', 'color(srgb 0.53000266 0.42048018 0.41499704)', 'hwb(362.86063009 41.49970382% 46.99973363%)'],
+		['color-mix(in hwb, color(display-p3 0.50000333 0.49999445 0.49999517), hwb(11 33 44))', 'color(srgb 0.53000266 0.42048018 0.41499704)', 'hwb(2.86063009 41.49970382% 46.99973363%)'],
 		['color-mix(in hwb, color(display-p3 0.49999645 0.50000513 0.50000531), hwb(11 33 44))', 'color(srgb 0.46194167 0.53000275 0.41499725)', 'hwb(95.50842958 41.49972488% 46.9997251%)'],
 
 		// HWB - color-mix : single color input
@@ -656,7 +656,7 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in oklch, lab(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
 		['color-mix(in oklch, oklab(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
 
-		['color-mix(in oklch, color(display-p3 0.08610937692934956 0.08610188202042188 0.08610387292083356), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.165002 360.21999996)'],
+		['color-mix(in oklch, color(display-p3 0.08610937692934956 0.08610188202042188 0.08610387292083356), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.165002 0.21999996)'],
 		['color-mix(in oklch, color(display-p3 0.0860989 0.08610658 0.08610454), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.16500205 90.21983771)'],
 
 		// oklch - color-mix : single color input

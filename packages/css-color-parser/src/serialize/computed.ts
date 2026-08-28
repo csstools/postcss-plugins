@@ -19,7 +19,7 @@ export function computedValue(color: ColorData, convertHslOrHwbToRGB: boolean = 
 		case ColorNotation.LCH:
 			channels[0] = nanToNone(channels[0]);
 			channels[1] = nanToNone(channels[1]);
-			channels[2] = nanToNone(channels[2]);
+			channels[2] = nanToNone(normalizeHue(channels[2]));
 
 			if (color.alpha !== 1) {
 				return `lch(${channels[0]} ${channels[1]} ${channels[2]} / ${nanToNone(color.alpha)})`;
@@ -39,7 +39,7 @@ export function computedValue(color: ColorData, convertHslOrHwbToRGB: boolean = 
 		case ColorNotation.OKLCH:
 			channels[0] = nanToNone(channels[0]);
 			channels[1] = nanToNone(channels[1]);
-			channels[2] = nanToNone(channels[2]);
+			channels[2] = nanToNone(normalizeHue(channels[2]));
 
 			if (color.alpha !== 1) {
 				return `oklch(${channels[0]} ${channels[1]} ${channels[2]} / ${nanToNone(color.alpha)})`;
@@ -69,10 +69,10 @@ export function computedValue(color: ColorData, convertHslOrHwbToRGB: boolean = 
 		case ColorNotation.HSL: {
 			if (channels.some(Number.isNaN) || Number.isNaN(color.alpha) || convertHslOrHwbToRGB === false) {
 				if (color.alpha !== 1) {
-					return `hsl(${nanToNone(channels[0])} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')} / ${nanToNone(color.alpha)})`;
+					return `hsl(${nanToNone(normalizeHue(channels[0]))} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')} / ${nanToNone(color.alpha)})`;
 				}
 
-				return `hsl(${nanToNone(channels[0])} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')})`;
+				return `hsl(${nanToNone(normalizeHue(channels[0]))} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')})`;
 			}
 
 			if (color.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax) || color.syntaxFlags.has(SyntaxFlag.ColorMix) || color.syntaxFlags.has(SyntaxFlag.RelativeAlphaSyntax)) {
@@ -89,10 +89,10 @@ export function computedValue(color: ColorData, convertHslOrHwbToRGB: boolean = 
 		case ColorNotation.HWB: {
 			if (channels.some(Number.isNaN) || Number.isNaN(color.alpha) || convertHslOrHwbToRGB === false) {
 				if (color.alpha !== 1) {
-					return `hwb(${nanToNone(channels[0])} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')} / ${nanToNone(color.alpha)})`;
+					return `hwb(${nanToNone(normalizeHue(channels[0]))} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')} / ${nanToNone(color.alpha)})`;
 				}
 
-				return `hwb(${nanToNone(channels[0])} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')})`;
+				return `hwb(${nanToNone(normalizeHue(channels[0]))} ${nanToNone(channels[1], '%')} ${nanToNone(channels[2], '%')})`;
 			}
 
 			if (color.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax) || color.syntaxFlags.has(SyntaxFlag.ColorMix) || color.syntaxFlags.has(SyntaxFlag.RelativeAlphaSyntax)) {
@@ -194,6 +194,18 @@ function nanToNone(component: ComponentValue | number | string, unit = ''): stri
 	}
 
 	return component.toString();
+}
+
+function normalizeHue(component: ComponentValue | number | string): ComponentValue | number | string {
+	if (typeof component !== 'number') {
+		return component;
+	}
+
+	if (Number.isNaN(component)) {
+		return component;
+	}
+
+	return component % 360;
 }
 
 function reducePrecision(x: number, factor: number = 8): number {

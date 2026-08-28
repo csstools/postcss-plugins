@@ -1,4 +1,4 @@
-import { color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut } from '@csstools/css-color-parser';
+import { color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut, computedValue } from '@csstools/css-color-parser';
 import assert from 'node:assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_HSL_data, serialize_P3_data, serialize_sRGB_data } from '../util/serialize.mjs';
@@ -420,4 +420,39 @@ assert.deepStrictEqual(
 			'color-mix',
 		]),
 	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(100 0 50deg), lch(100 0 330deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [100, 0, 370],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'color-mix',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('color-mix(in lch, lch(100 0 50deg), lch(100 0 330deg))'))),
+	'lch(100 0 10)',
+);
+
+assert.deepStrictEqual(
+	color(parse('lch(from lch(100 0 330deg) l c calc(h + 40))')),
+	{
+		colorNotation: 'lch',
+		channels: [100, 0, 10],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('lch(from lch(100 0 330deg) l c calc(h + 40))'))),
+	'lch(100 0 10)',
 );
