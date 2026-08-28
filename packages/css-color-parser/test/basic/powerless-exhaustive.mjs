@@ -17,6 +17,8 @@ import { parse } from '../util/parse.mjs';
 
 		['hsl(from hsl(180 0.001% 50%) h s l)', 'color(srgb 0.5 0.5 0.5)'],
 		['hsl(from hsl(180 0.0011% 50%) h s l)', 'color(srgb 0.4999945 0.5000055 0.5000055)'],
+		['hsl(from hsl(180 0.001% 50%) h calc(s * 1000) l)', 'color(srgb 0.495 0.505 0.505)'],
+		['hsl(from hsl(180 0.0011% 50%) h calc(s * 1000) l)', 'color(srgb 0.4945 0.5055 0.5055)'],
 
 		['hsl(from hwb(0 25% 25%) h s l)', 'color(srgb 0.75 0.25 0.25)'],
 		['hsl(from hwb(180 100% 25%) h s l)', 'hsl(none 0% 80%)'],
@@ -28,6 +30,8 @@ import { parse } from '../util/parse.mjs';
 
 		['hsl(from hwb(180 49.999% 50%) h s l)', 'hsl(none 0% 49.999%)'],
 		['hsl(from hwb(180 49.998% 50%) h s l)', 'color(srgb 0.49998 0.5 0.5)'],
+		['hsl(from hwb(180 49.999% 50%) h calc(s * 1000) l)', 'hsl(none 0% 49.999%)'],
+		['hsl(from hwb(180 49.998% 50%) h calc(s * 1000) l)', 'color(srgb 0.48999 0.50999 0.50999)'],
 
 		['hsl(from lch(0 20 180) h s l)', 'color(srgb -0.13099833 0.05952886 -0.00460494)'],
 		['hsl(from lch(20 0 180) h s l)', 'hsl(none 0% 18.93757452%)'],
@@ -39,6 +43,8 @@ import { parse } from '../util/parse.mjs';
 
 		['hsl(from lch(20 0.0015 180) h s l)', 'hsl(none 0% 18.93757452%)'],
 		['hsl(from lch(20 0.00151 180) h s l)', 'color(srgb 0.18936676 0.18937855 0.18937554)'],
+		['hsl(from lch(20 0.0015 180) h calc(s * 1000) l)', 'hsl(none 0% 18.93757452%)'],
+		['hsl(from lch(20 0.00151 180) h calc(s * 1000) l)', 'color(srgb 0.1834779 0.19526741 0.19225556)'],
 
 		['hsl(from oklch(0 0.2 180) h s l)', 'color(srgb -0.0266189 0.00845442 0.00006795)'],
 		['hsl(from oklch(0.2 0 180) h s l)', 'hsl(none 0% 8.61042044%)'],
@@ -50,6 +56,8 @@ import { parse } from '../util/parse.mjs';
 
 		['hsl(from oklch(0.2 0.000004 180) h s l)', 'hsl(none 0% 8.61042044%)'],
 		['hsl(from oklch(0.2 0.0000041 180) h s l)', 'color(srgb 0.08609717 0.08610691 0.08610449)'],
+		['hsl(from oklch(0.2 0.000004 180) h calc(s * 1000) l)', 'hsl(none 0% 8.61042044%)'],
+		['hsl(from oklch(0.2 0.0000041 180) h calc(s * 1000) l)', 'color(srgb 0.08123521 0.09096887 0.08855551)'],
 
 		['hsl(from rgb(0 0 0) h s l)', 'hsl(none 0% 0%)'],
 		['hsl(from color(display-p3 0 0 0) h s l)', 'hsl(none 0% 0%)'],
@@ -58,6 +66,8 @@ import { parse } from '../util/parse.mjs';
 
 		['hsl(from color(display-p3 0.50000333 0.49999445 0.49999517) h s l)', 'color(srgb 0.50000533 0.49999408 0.49999507)'],
 		['hsl(from color(display-p3 0.49999645 0.50000513 0.50000531) h s l)', 'color(srgb 0.4999945 0.5000055 0.5000055)'],
+		['hsl(from color(display-p3 0.50000333 0.49999445 0.49999517) h calc(s * 1000) l)', 'color(srgb 0.50562515 0.49437426 0.4953641)'],
+		['hsl(from color(display-p3 0.49999645 0.50000513 0.50000531) h calc(s * 1000) l)', 'color(srgb 0.4944997 0.50549721 0.5055003)'],
 
 		['color(from hsl(180 0% 50%) display-p3 r g b)', 'color(display-p3 0.5 0.5 0.5)'],
 		['color(from hsl(180 0.001% 50%) display-p3 r g b)', 'color(display-p3 0.5 0.5 0.5)'],
@@ -115,6 +125,59 @@ import { parse } from '../util/parse.mjs';
 
 		['color-mix(in hsl, color(display-p3 0.50000333 0.49999445 0.49999517), hsl(11 33 44))', 'color(srgb 0.54755247 0.39984221 0.39244723)', 'hsl(362.86063009 16.50056255% 46.9999851%)'],
 		['color-mix(in hsl, color(display-p3 0.49999645 0.50000513 0.50000531), hsl(11 33 44))', 'color(srgb 0.45576023 0.54755258 0.39244741)', 'hsl(95.50842958 16.50055003% 46.99999989%)'],
+
+		// HSL - color-mix : single color input
+		['color-mix(in hsl, hsl(0 50% 50%))', 'color(srgb 0.75 0.25 0.25)', 'hsl(0 50% 50%)'],
+		['color-mix(in hsl, hsl(180 0 50%))', 'color(srgb 0.5 0.5 0.5)', 'hsl(180 0% 50%)'],
+		['color-mix(in hsl, hsl(180 50% 0))', 'color(srgb 0 0 0)', 'hsl(180 50% 0%)'],
+		['color-mix(in hsl, hsl(0 0 50%))', 'color(srgb 0.5 0.5 0.5)', 'hsl(0 0% 50%)'],
+		['color-mix(in hsl, hsl(180 0 0))', 'color(srgb 0 0 0)', 'hsl(180 0% 0%)'],
+		['color-mix(in hsl, hsl(0 50% 0))', 'color(srgb 0 0 0)', 'hsl(0 50% 0%)'],
+		['color-mix(in hsl, hsl(0 0 0))', 'color(srgb 0 0 0)', 'hsl(0 0% 0%)'],
+
+		['color-mix(in hsl, hsl(180 0.001% 50%))', 'color(srgb 0.5 0.5 0.5)', 'hsl(180 0.001% 50%)'],
+		['color-mix(in hsl, hsl(180 0.0011% 50%))', 'color(srgb 0.4999945 0.5000055 0.5000055)', 'hsl(180 0.0011% 50%)'],
+
+		['color-mix(in hsl, hwb(0 25% 25%))', 'color(srgb 0.75 0.25 0.25)', 'hsl(0 50% 50%)'],
+		['color-mix(in hsl, hwb(180 100% 25%))', 'hsl(none 0% 80%)', 'hsl(none 0% 80%)'],
+		['color-mix(in hsl, hwb(180 25% 100%))', 'hsl(none 0% 20%)', 'hsl(none 0% 20%)'],
+		['color-mix(in hsl, hwb(0 100% 25%))', 'hsl(none 0% 80%)', 'hsl(none 0% 80%)'],
+		['color-mix(in hsl, hwb(180 100% 100%))', 'hsl(none 0% 50%)', 'hsl(none 0% 50%)'],
+		['color-mix(in hsl, hwb(0 25% 100%))', 'hsl(none 0% 20%)', 'hsl(none 0% 20%)'],
+		['color-mix(in hsl, hwb(0 100% 100%))', 'hsl(none 0% 50%)', 'hsl(none 0% 50%)'],
+
+		['color-mix(in hsl, hwb(180 49.999% 50%))', 'hsl(none 0% 49.999%)', 'hsl(none 0% 49.999%)'],
+		['color-mix(in hsl, hwb(180 49.998% 50%))', 'color(srgb 0.49998 0.5 0.5)', 'hsl(180 0.00200004% 49.999%)'],
+
+		['color-mix(in hsl, lch(0 20 180))', 'color(srgb -0.13099833 0.05952886 -0.00460494)', 'hsl(339.80326134 266.58541811% -3.57347348%)'],
+		['color-mix(in hsl, lch(20 0 180))', 'hsl(none 0% 18.93757452%)', 'hsl(none 0% 18.93757452%)'],
+		['color-mix(in hsl, lch(20 20 0))', 'color(srgb 0.2923664 0.14058899 0.19244775)', 'hsl(339.49941404 35.05613281% 21.64776943%)'],
+		['color-mix(in hsl, lch(0 0 180))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+		['color-mix(in hsl, lch(20 0 0))', 'hsl(none 0% 18.93757452%)', 'hsl(none 0% 18.93757452%)'],
+		['color-mix(in hsl, lch(0 20 0))', 'color(srgb 0.13099833 -0.05952886 0.00460494)', 'hsl(339.80326134 266.58541811% 3.57347348%)'],
+		['color-mix(in hsl, lch(0 0 0))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+
+		['color-mix(in hsl, lch(20 0.0015 180))', 'hsl(none 0% 18.93757452%)', 'hsl(none 0% 18.93757452%)'],
+		['color-mix(in hsl, lch(20 0.00151 180))', 'color(srgb 0.18936676 0.18937855 0.18937554)', 'hsl(164.67188923 0.00311278% 18.9372656%)'],
+
+		['color-mix(in hsl, oklch(0 0.2 180))', 'color(srgb -0.0266189 0.00845442 0.00006795)', 'hsl(345.65323987 193.08743918% -0.90822399%)'],
+		['color-mix(in hsl, oklch(0.2 0 180))', 'hsl(none 0% 8.61042044%)', 'hsl(none 0% 8.61042044%)'],
+		['color-mix(in hsl, oklch(0.2 0.2 0))', 'color(srgb 0.29595438 -0.12706564 0.07183401)', 'hsl(331.78861866 250.47260791% 8.44443686%)'],
+		['color-mix(in hsl, oklch(0 0 180))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+		['color-mix(in hsl, oklch(0.2 0 0))', 'hsl(none 0% 8.61042044%)', 'hsl(none 0% 8.61042044%)'],
+		['color-mix(in hsl, oklch(0 0.2 0))', 'color(srgb 0.0266189 -0.00845442 -0.00006795)', 'hsl(345.65323987 193.08743918% 0.90822399%)'],
+		['color-mix(in hsl, oklch(0 0 0))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+
+		['color-mix(in hsl, oklch(0.2 0.000004 180))', 'hsl(none 0% 8.61042044%)', 'hsl(none 0% 8.61042044%)'],
+		['color-mix(in hsl, oklch(0.2 0.0000041 180))', 'color(srgb 0.08609717 0.08610691 0.08610449)', 'hsl(165.12362258 0.0056524% 8.61020409%)'],
+
+		['color-mix(in hsl, rgb(0 0 0))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+		['color-mix(in hsl, color(display-p3 0 0 0))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+		['color-mix(in hsl, lab(0 0 0))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+		['color-mix(in hsl, oklab(0 0 0))', 'hsl(none 0% 0%)', 'hsl(none 0% 0%)'],
+
+		['color-mix(in hsl, color(display-p3 0.50000333 0.49999445 0.49999517))', 'color(srgb 0.50000533 0.49999408 0.49999507)', 'hsl(354.72126017 0.00112509% 49.9999702%)'],
+		['color-mix(in hsl, color(display-p3 0.49999645 0.50000513 0.50000531))', 'color(srgb 0.4999945 0.5000055 0.5000055)', 'hsl(180.01685916 0.00110006% 49.99999978%)'],
 
 		// HWB - RCS
 		['hwb(from hsl(0 50% 50%) h w b)', 'color(srgb 0.75 0.25 0.25)'],
@@ -181,7 +244,7 @@ import { parse } from '../util/parse.mjs';
 		['color(from hwb(180 49.999% 50%) display-p3 r g b)', 'color(display-p3 0.49999 0.49999 0.49999)'],
 		['color(from hwb(180 49.998% 50%) display-p3 r g b)', 'color(display-p3 0.49998355 0.49999934 0.49999966)'],
 
-		// HWB - powerless
+		// HWB - color-mix
 		['color-mix(in hwb, hsl(0 50% 50%), hwb(11 33 44))', 'color(srgb 0.655 0.32345833 0.29)', 'hwb(5.5 29% 34.5%)'],
 		['color-mix(in hwb, hsl(180 0 50%), hwb(11 33 44))', 'color(srgb 0.53 0.43608333 0.415)', 'hwb(11 41.5% 47%)'],
 		['color-mix(in hwb, hsl(180 50% 0), hwb(11 33 44))', 'color(srgb 0.28 0.18608333 0.165)', 'hwb(11 16.5% 72%)'],
@@ -242,6 +305,67 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in hwb, color(display-p3 0.50000333 0.49999445 0.49999517), hwb(11 33 44))', 'color(srgb 0.53000266 0.42048018 0.41499704)', 'hwb(362.86063009 41.49970382% 46.99973363%)'],
 		['color-mix(in hwb, color(display-p3 0.49999645 0.50000513 0.50000531), hwb(11 33 44))', 'color(srgb 0.46194167 0.53000275 0.41499725)', 'hwb(95.50842958 41.49972488% 46.9997251%)'],
 
+		// HWB - color-mix : single color input
+		['color-mix(in hwb, hsl(0 50% 50%))', 'color(srgb 0.75 0.25 0.25)', 'hwb(0 25% 25%)'],
+		['color-mix(in hwb, hsl(180 0 50%))', 'hwb(none 50% 50%)', 'hwb(none 50% 50%)'],
+		['color-mix(in hwb, hsl(180 50% 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, hsl(0 0 50%))', 'hwb(none 50% 50%)', 'hwb(none 50% 50%)'],
+		['color-mix(in hwb, hsl(180 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, hsl(0 50% 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, hsl(0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+
+		['color-mix(in hwb, hsl(180 0.001% 50%))', 'hwb(none 50% 50%)', 'hwb(none 50% 50%)'],
+		['color-mix(in hwb, hsl(180 0.0011% 50%))', 'color(srgb 0.4999945 0.5000055 0.5000055)', 'hwb(180 49.99945% 49.99945%)'],
+
+		['color-mix(in hwb, hwb(0 25% 25%))', 'color(srgb 0.75 0.25 0.25)', 'hwb(0 25% 25%)'],
+		['color-mix(in hwb, hwb(180 100% 25%))', 'color(srgb 0.8 0.8 0.8)', 'hwb(180 100% 25%)'],
+		['color-mix(in hwb, hwb(180 25% 100%))', 'color(srgb 0.2 0.2 0.2)', 'hwb(180 25% 100%)'],
+		['color-mix(in hwb, hwb(0 100% 25%))', 'color(srgb 0.8 0.8 0.8)', 'hwb(0 100% 25%)'],
+		['color-mix(in hwb, hwb(180 100% 100%))', 'color(srgb 0.5 0.5 0.5)', 'hwb(180 100% 100%)'],
+		['color-mix(in hwb, hwb(0 25% 100%))', 'color(srgb 0.2 0.2 0.2)', 'hwb(0 25% 100%)'],
+		['color-mix(in hwb, hwb(0 100% 100%))', 'color(srgb 0.5 0.5 0.5)', 'hwb(0 100% 100%)'],
+
+		['color-mix(in hwb, hwb(180 99.999% 0%))', 'color(srgb 0.99999 0.99999 0.99999)', 'hwb(180 99.999% 0%)'],
+		['color-mix(in hwb, hwb(180 99.999% none))', 'hwb(180 99.999% none)', 'hwb(180 99.999% none)'],
+		['color-mix(in hwb, hsl(from hwb(180 99.999% none) h s l))', 'hwb(none 100% 0%)', 'hwb(none 100% 0%)'],
+		['color-mix(in hwb, hwb(180 99.998% 0%))', 'color(srgb 0.99998 1 1)', 'hwb(180 99.998% 0%)'],
+		['color-mix(in hwb, hwb(180 0% 99.999%))', 'color(srgb 0 0 0)', 'hwb(180 0% 99.999%)'],
+		['color-mix(in hwb, hwb(180 none 99.999%))', 'hwb(180 none 99.999%)', 'hwb(180 none 99.999%)'],
+		['color-mix(in hwb, hsl(from hwb(180 none 99.999%) h s l))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, hwb(180 0% 99.998%))', 'color(srgb 0 0.00002 0.00002)', 'hwb(180 0% 99.998%)'],
+		['color-mix(in hwb, hwb(180 49.999% 50%))', 'color(srgb 0.49999 0.49999 0.49999)', 'hwb(180 49.999% 50%)'],
+		['color-mix(in hwb, hwb(180 49.998% 50%))', 'color(srgb 0.49998 0.5 0.5)', 'hwb(180 49.998% 50%)'],
+
+		['color-mix(in hwb, lch(0 20 180))', 'color(srgb -0.13099833 0.05952886 -0.00460494)', 'hwb(159.80326134 -13.09983271% 94.04711426%)'],
+		['color-mix(in hwb, lch(20 0 180))', 'hwb(none 18.93757452% 81.06242548%)', 'hwb(none 18.93757452% 81.06242548%)'],
+		['color-mix(in hwb, lch(20 20 0))', 'color(srgb 0.2923664 0.14058899 0.19244775)', 'hwb(339.49941404 14.05889863% 70.76335977%)'],
+		['color-mix(in hwb, lch(0 0 180))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, lch(20 0 0))', 'hwb(none 18.93757452% 81.06242548%)', 'hwb(none 18.93757452% 81.06242548%)'],
+		['color-mix(in hwb, lch(0 20 0))', 'color(srgb 0.13099833 -0.05952886 0.00460494)', 'hwb(339.80326134 -5.95288574% 86.90016729%)'],
+		['color-mix(in hwb, lch(0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+
+		['color-mix(in hwb, lch(20 0.0015 180))', 'hwb(none 18.93757452% 81.06242548%)', 'hwb(none 18.93757452% 81.06242548%)'],
+		['color-mix(in hwb, lch(20 0.00151 180))', 'color(srgb 0.18936676 0.18937855 0.18937554)', 'hwb(164.67188923 18.93667613% 81.06214492%)'],
+
+		['color-mix(in hwb, oklch(0 0.2 180))', 'color(srgb -0.0266189 0.00845442 0.00006795)', 'hwb(165.65323987 -2.66189044% 99.15455754%)'],
+		['color-mix(in hwb, oklch(0.2 0 180))', 'hwb(none 8.61042044% 91.38957956%)', 'hwb(none 8.61042044% 91.38957956%)'],
+		['color-mix(in hwb, oklch(0.2 0.2 0))', 'color(srgb 0.29595438 -0.12706564 0.07183401)', 'hwb(331.78861866 -12.70656437% 70.40456191%)'],
+		['color-mix(in hwb, oklch(0 0 180))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, oklch(0.2 0 0))', 'hwb(none 8.61042044% 91.38957956%)', 'hwb(none 8.61042044% 91.38957956%)'],
+		['color-mix(in hwb, oklch(0 0.2 0))', 'color(srgb 0.0266189 -0.00845442 -0.00006795)', 'hwb(345.65323987 -0.84544246% 97.33810956%)'],
+		['color-mix(in hwb, oklch(0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+
+		['color-mix(in hwb, oklch(0.8 0.000004 180))', 'hwb(none 74.3205918% 25.6794082%)', 'hwb(none 74.3205918% 25.6794082%)'],
+		['color-mix(in hwb, oklch(0.8 0.0000041 180))', 'color(srgb 0.74319598 0.74320974 0.74320633)', 'hwb(165.1232225 74.31959759% 25.67902588%)'],
+
+		['color-mix(in hwb, rgb(0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, color(display-p3 0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, lab(0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+		['color-mix(in hwb, oklab(0 0 0))', 'hwb(none 0% 100%)', 'hwb(none 0% 100%)'],
+
+		['color-mix(in hwb, color(display-p3 0.50000333 0.49999445 0.49999517))', 'color(srgb 0.50000533 0.49999408 0.49999507)', 'hwb(354.72126017 49.99940765% 49.99946726%)'],
+		['color-mix(in hwb, color(display-p3 0.49999645 0.50000513 0.50000531))', 'color(srgb 0.4999945 0.5000055 0.5000055)', 'hwb(180.01685916 49.99944975% 49.99945019%)'],
+
 		// LCH - RCS
 		['lch(from hsl(0 50% 50%) l c h)', 'lch(46.42043661 59.74639249 29.95665674)'],
 		['lch(from hsl(180 0 50%) l c h)', 'lch(53.38896474 0 none)'],
@@ -253,6 +377,8 @@ import { parse } from '../util/parse.mjs';
 
 		['lch(from hsl(180 0.001% 50%) l c h)', 'lch(53.38896474 0 none)'],
 		['lch(from hsl(180 0.0011% 50%) l c h)', 'lch(53.38927006 0 none)'],
+		['lch(from hsl(180 0.001% 50%) l calc(c * 1000) h)', 'lch(53.38896474 0 none)'],
+		['lch(from hsl(180 0.0011% 50%) l calc(c * 1000) h)', 'lch(53.38927006 0 none)'],
 
 		['lch(from hwb(0 25% 25%) l c h)', 'lch(46.42043661 59.74639249 29.95665674)'],
 		['lch(from hwb(180 100% 25%) l c h)', 'lch(82.04578167 0 none)'],
@@ -264,6 +390,12 @@ import { parse } from '../util/parse.mjs';
 
 		['lch(from hwb(180 99.999% 0%) l c h)', 'lch(99.99912038 0 none)'],
 		['lch(from hwb(180 99.998% 0%) l c h)', 'lch(99.99960858 0.00185022 199.69899791)'],
+		['lch(from hwb(180 49.999% 50%) l c h)', 'lch(53.38796454 0 none)'],
+		['lch(from hwb(180 49.998% 50%) l c h)', 'lch(53.38851967 0.00210384 199.69888976)'],
+		['lch(from hwb(180 99.999% 0%) l calc(c * 1000) h)', 'lch(99.99912038 0 none)'],
+		['lch(from hwb(180 99.998% 0%) l calc(c * 1000) h)', 'lch(99.99960858 1.85021709 199.69899791)'],
+		['lch(from hwb(180 49.999% 50%) l calc(c * 1000) h)', 'lch(53.38796454 0 none)'],
+		['lch(from hwb(180 49.998% 50%) l calc(c * 1000) h)', 'lch(53.38851967 2.1038419 199.69888976)'],
 
 		['lch(from lch(0 20 180) l c h)', 'lch(0 20 180)'],
 		['lch(from lch(20 0 180) l c h)', 'lch(20 0 180)'],
@@ -275,6 +407,8 @@ import { parse } from '../util/parse.mjs';
 
 		['lch(from lch(20 0.0015 180) l c h)', 'lch(20 0.0015 180)'],
 		['lch(from lch(20 0.00151 180) l c h)', 'lch(20 0.00151 180)'],
+		['lch(from lch(20 0.0015 180) l calc(c * 1000) h)', 'lch(20 1.5 180)'],
+		['lch(from lch(20 0.00151 180) l calc(c * 1000) h)', 'lch(20 1.51 180)'],
 
 		['lch(from oklch(0 0.2 180) l c h)', 'lch(0.00996014 2.6503948 181.20369565)'],
 		['lch(from oklch(0.2 0 180) l c h)', 'lch(7.22637037 0 none)'],
@@ -286,6 +420,8 @@ import { parse } from '../util/parse.mjs';
 
 		['lch(from oklch(0.2 0.000004 180) l c h)', 'lch(7.22637037 0 none)'],
 		['lch(from oklch(0.2 0.0000041 180) l c h)', 'lch(7.22641849 0 none)'],
+		['lch(from oklch(0.2 0.000004 180) l calc(c * 1000) h)', 'lch(7.22637037 0 none)'],
+		['lch(from oklch(0.2 0.0000041 180) l calc(c * 1000) h)', 'lch(7.22641849 0 none)'],
 
 		['lch(from rgb(0 0 0) l c h)', 'lch(0 0 none)'],
 		['lch(from color(display-p3 0 0 0) l c h)', 'lch(0 0 none)'],
@@ -352,6 +488,59 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in lch, color(display-p3 0.1893689 0.18937814 0.18937561), lch(11 33 44))', 'lch(15.49999987 16.5 44)'],
 		['color-mix(in lch, color(display-p3 0.18936885 0.18937816 0.18937561), lch(11 33 44))', 'lch(15.49999997 16.50075531 112.01284031)'],
 
+		// LCH - color-mix : single color input
+		['color-mix(in lch, hsl(0 50% 50%))', 'lch(46.42043661 59.74639249 29.95665674)'],
+		['color-mix(in lch, hsl(180 0 50%))', 'lch(53.38896474 0 none)'],
+		['color-mix(in lch, hsl(180 50% 0))', 'lch(0 0 none)'],
+		['color-mix(in lch, hsl(0 0 50%))', 'lch(53.38896474 0 none)'],
+		['color-mix(in lch, hsl(180 0 0))', 'lch(0 0 none)'],
+		['color-mix(in lch, hsl(0 50% 0))', 'lch(0 0 none)'],
+		['color-mix(in lch, hsl(0 0 0))', 'lch(0 0 none)'],
+
+		['color-mix(in lch, hsl(180 0.001% 50%))', 'lch(53.38896474 0 none)'],
+		['color-mix(in lch, hsl(180 0.0011% 50%))', 'lch(53.38927006 0 none)'],
+
+		['color-mix(in lch, hwb(0 25% 25%))', 'lch(46.42043661 59.74639249 29.95665674)'],
+		['color-mix(in lch, hwb(180 100% 25%))', 'lch(82.04578167 0 none)'],
+		['color-mix(in lch, hwb(180 25% 100%))', 'lch(21.24673129 0 none)'],
+		['color-mix(in lch, hwb(0 100% 25%))', 'lch(82.04578167 0 none)'],
+		['color-mix(in lch, hwb(180 100% 100%))', 'lch(53.38896474 0 none)'],
+		['color-mix(in lch, hwb(0 25% 100%))', 'lch(21.24673129 0 none)'],
+		['color-mix(in lch, hwb(0 100% 100%))', 'lch(53.38896474 0 none)'],
+
+		['color-mix(in lch, hwb(180 99.999% 0%))', 'lch(99.99912038 0 none)'],
+		['color-mix(in lch, hwb(180 99.998% 0%))', 'lch(99.99960858 0.00185022 199.69899791)'],
+
+		['color-mix(in lch, lch(0 20 180))', 'lch(0 20 180)'],
+		['color-mix(in lch, lch(20 0 180))', 'lch(20 0 180)'],
+		['color-mix(in lch, lch(20 20 0))', 'lch(20 20 0)'],
+		['color-mix(in lch, lch(0 0 180))', 'lch(0 0 180)'],
+		['color-mix(in lch, lch(20 0 0))', 'lch(20 0 0)'],
+		['color-mix(in lch, lch(0 20 0))', 'lch(0 20 0)'],
+		['color-mix(in lch, lch(0 0 0))', 'lch(0 0 0)'],
+
+		['color-mix(in lch, lch(20 0.0015 180))', 'lch(20 0.0015 180)'],
+		['color-mix(in lch, lch(20 0.00151 180))', 'lch(20 0.00151 180)'],
+
+		['color-mix(in lch, oklch(0 0.2 180))', 'lch(0.00996014 2.6503948 181.20369565)'],
+		['color-mix(in lch, oklch(0.2 0 180))', 'lch(7.22637037 0 none)'],
+		['color-mix(in lch, oklch(0.2 0.2 0))', 'lch(5.10873217 59.48824051 1.24207317)'],
+		['color-mix(in lch, oklch(0 0 180))', 'lch(0 0 none)'],
+		['color-mix(in lch, oklch(0.2 0 0))', 'lch(7.22637037 0 none)'],
+		['color-mix(in lch, oklch(0 0.2 0))', 'lch(-0.00996014 2.6503948 1.20369565)'],
+		['color-mix(in lch, oklch(0 0 0))', 'lch(0 0 none)'],
+
+		['color-mix(in lch, oklch(0.2 0.000004 180))', 'lch(7.22637037 0 none)'],
+		['color-mix(in lch, oklch(0.2 0.0000041 180))', 'lch(7.22641849 0 none)'],
+
+		['color-mix(in lch, rgb(0 0 0))', 'lch(0 0 none)'],
+		['color-mix(in lch, color(display-p3 0 0 0))', 'lch(0 0 none)'],
+		['color-mix(in lch, lab(0 0 0))', 'lch(0 0 none)'],
+		['color-mix(in lch, oklab(0 0 0))', 'lch(0 0 none)'],
+
+		['color-mix(in lch, color(display-p3 0.1893689 0.18937814 0.18937561))', 'lch(19.99999973 0 none)'],
+		['color-mix(in lch, color(display-p3 0.18936885 0.18937816 0.18937561))', 'lch(19.99999994 0.00151062 180.02568063)'],
+
 		// oklch - RCS
 		['oklch(from hsl(0 50% 50%) l c h)', 'oklch(0.55233858 0.16366995 24.21253898)'],
 		['oklch(from hsl(180 0 50%) l c h)', 'oklch(0.59818073 0 none)'],
@@ -363,6 +552,8 @@ import { parse } from '../util/parse.mjs';
 
 		['oklch(from hsl(180 0.001% 50%) l c h)', 'oklch(0.59818073 0 none)'],
 		['oklch(from hsl(180 0.0011% 50%) l c h)', 'oklch(0.59818306 0 none)'],
+		['oklch(from hsl(180 0.001% 50%) l calc(c * 1000) h)', 'oklch(0.59818073 0 none)'],
+		['oklch(from hsl(180 0.0011% 50%) l calc(c * 1000) h)', 'oklch(0.59818306 0 none)'],
 
 		['oklch(from hwb(0 25% 25%) l c h)', 'oklch(0.55233858 0.16366995 24.21253898)'],
 		['oklch(from hwb(180 100% 25%) l c h)', 'oklch(0.84522226 0 none)'],
@@ -374,6 +565,8 @@ import { parse } from '../util/parse.mjs';
 
 		['oklch(from hwb(180 99.999% 0%) l c h)', 'oklch(0.99999242 0 none)'],
 		['oklch(from hwb(180 99.998% 0%) l c h)', 'oklch(0.99999614 0.00000541 197.15830446)'],
+		['oklch(from hwb(180 99.999% 0%) l calc(c * 1000) h)', 'oklch(0.99999242 0 none)'],
+		['oklch(from hwb(180 99.998% 0%) l calc(c * 1000) h)', 'oklch(0.99999614 0.00540505 197.15830446)'],
 
 		['oklch(from lch(0 20 180) l c h)', 'oklch(0 0.26412556 175.27132911)'],
 		['oklch(from lch(20 0 180) l c h)', 'oklch(0.31034483 0 none)'],
@@ -385,6 +578,8 @@ import { parse } from '../util/parse.mjs';
 
 		['oklch(from lch(20 0.0015 180) l c h)', 'oklch(0.31034483 0 none)'],
 		['oklch(from lch(20 0.00151 180) l c h)', 'oklch(0.31034434 0.00000446 179.50900432)'],
+		['oklch(from lch(20 0.0015 180) l calc(c * 1000) h)', 'oklch(0.31034483 0 none)'],
+		['oklch(from lch(20 0.00151 180) l calc(c * 1000) h)', 'oklch(0.31034434 0.00446082 179.50900432)'],
 
 		['oklch(from oklch(0 0.2 180) l c h)', 'oklch(0 0.2 180)'],
 		['oklch(from oklch(0.2 0 180) l c h)', 'oklch(0.2 0 180)'],
@@ -396,6 +591,8 @@ import { parse } from '../util/parse.mjs';
 
 		['oklch(from oklch(0.2 0.000004 180) l c h)', 'oklch(0.2 0.000004 180)'],
 		['oklch(from oklch(0.2 0.0000041 180) l c h)', 'oklch(0.2 0.0000041 180)'],
+		['oklch(from oklch(0.2 0.000004 180) l calc(c * 1000) h)', 'oklch(0.2 0.004 180)'],
+		['oklch(from oklch(0.2 0.0000041 180) l calc(c * 1000) h)', 'oklch(0.2 0.0041 180)'],
 
 		['oklch(from rgb(0 0 0) l c h)', 'oklch(0 0 none)'],
 		['oklch(from color(display-p3 0 0 0) l c h)', 'oklch(0 0 none)'],
@@ -410,6 +607,59 @@ import { parse } from '../util/parse.mjs';
 		['color(from oklch(0.5 0.0000041 180) display-p3 r g b)', 'color(display-p3 0.38856619 0.38857585 0.38857329)'],
 
 		// oklch - color-mix
+		['color-mix(in oklch, hsl(0 50% 50%), oklch(0.11 0.33 0.44))', 'oklch(0.33116929 0.24683498 12.32626949)'],
+		['color-mix(in oklch, hsl(180 0 50%), oklch(0.11 0.33 0.44))', 'oklch(0.35409037 0.165 0.44)'],
+		['color-mix(in oklch, hsl(180 50% 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, hsl(0 0 50%), oklch(0.11 0.33 0.44))', 'oklch(0.35409037 0.165 0.44)'],
+		['color-mix(in oklch, hsl(180 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, hsl(0 50% 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, hsl(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+
+		['color-mix(in oklch, hsl(180 0.001% 50%), oklch(0.11 0.33 0.44))', 'oklch(0.35409037 0.165 0.44)'],
+		['color-mix(in oklch, hsl(180 0.0011% 50%), oklch(0.11 0.33 0.44))', 'oklch(0.35409153 0.165 0.44)'],
+
+		['color-mix(in oklch, hwb(0 25% 25%), oklch(0.11 0.33 0.44))', 'oklch(0.33116929 0.24683498 12.32626949)'],
+		['color-mix(in oklch, hwb(180 100% 25%), oklch(0.11 0.33 0.44))', 'oklch(0.47761113 0.165 0.44)'],
+		['color-mix(in oklch, hwb(180 25% 100%), oklch(0.11 0.33 0.44))', 'oklch(0.21554626 0.165 0.44)'],
+		['color-mix(in oklch, hwb(0 100% 25%), oklch(0.11 0.33 0.44))', 'oklch(0.47761113 0.165 0.44)'],
+		['color-mix(in oklch, hwb(180 100% 100%), oklch(0.11 0.33 0.44))', 'oklch(0.35409037 0.165 0.44)'],
+		['color-mix(in oklch, hwb(0 25% 100%), oklch(0.11 0.33 0.44))', 'oklch(0.21554626 0.165 0.44)'],
+		['color-mix(in oklch, hwb(0 100% 100%), oklch(0.11 0.33 0.44))', 'oklch(0.35409037 0.165 0.44)'],
+
+		['color-mix(in oklch, hwb(180 99.999% 0%), oklch(0.11 0.33 0.44))', 'oklch(0.55499621 0.165 0.44)'],
+		['color-mix(in oklch, hwb(180 99.998% 0%), oklch(0.11 0.33 0.44))', 'oklch(0.55499807 0.1650027 278.79915223)'],
+
+		['color-mix(in oklch, lch(0 20 180), oklch(0.11 0.33 0.44))', 'oklch(0.02666949 0.29706278 87.85566456)'],
+		['color-mix(in oklch, lch(20 0 180), oklch(0.11 0.33 0.44))', 'oklch(0.21017241 0.165 0.44)'],
+		['color-mix(in oklch, lch(20 20 0), oklch(0.11 0.33 0.44))', 'oklch(0.21348598 0.19542764 359.91650151)'],
+		['color-mix(in oklch, lch(0 0 180), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, lch(20 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.21017241 0.165 0.44)'],
+		['color-mix(in oklch, lch(0 20 0), oklch(0.11 0.33 0.44))', 'oklch(0.08333051 0.29706278 357.85566456)'],
+		['color-mix(in oklch, lch(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+
+		['color-mix(in oklch, lch(20 0.0015 180), oklch(0.11 0.33 0.44))', 'oklch(0.21017241 0.165 0.44)'],
+		['color-mix(in oklch, lch(20 0.00151 180), oklch(0.11 0.33 0.44))', 'oklch(0.21017217 0.16500223 89.97450216)'],
+
+		['color-mix(in oklch, oklch(0 0.2 180), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.265 90.22)'],
+		['color-mix(in oklch, oklch(0.2 0 180), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.165 90.22)'],
+		['color-mix(in oklch, oklch(0.2 0.2 0), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.265 0.22)'],
+		['color-mix(in oklch, oklch(0 0 180), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 90.22)'],
+		['color-mix(in oklch, oklch(0.2 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.165 0.22)'],
+		['color-mix(in oklch, oklch(0 0.2 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.265 0.22)'],
+		['color-mix(in oklch, oklch(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.22)'],
+
+		['color-mix(in oklch, oklch(0.2 0.000004 180), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.165002 90.22)'],
+		['color-mix(in oklch, oklch(0.2 0.0000041 180), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.16500205 90.22)'],
+
+		['color-mix(in oklch, rgb(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, color(display-p3 0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, lab(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+		['color-mix(in oklch, oklab(0 0 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
+
+		['color-mix(in oklch, color(display-p3 0.08610937692934956 0.08610188202042188 0.08610387292083356), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.165002 360.21999996)'],
+		['color-mix(in oklch, color(display-p3 0.0860989 0.08610658 0.08610454), oklch(0.11 0.33 0.44))', 'oklch(0.155 0.16500205 90.21983771)'],
+
+		// oklch - color-mix : single color input
 		['color-mix(in oklch, hsl(0 50% 50%), oklch(0.11 0.33 0.44))', 'oklch(0.33116929 0.24683498 12.32626949)'],
 		['color-mix(in oklch, hsl(180 0 50%), oklch(0.11 0.33 0.44))', 'oklch(0.35409037 0.165 0.44)'],
 		['color-mix(in oklch, hsl(180 50% 0), oklch(0.11 0.33 0.44))', 'oklch(0.055 0.165 0.44)'],
