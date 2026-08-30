@@ -1005,6 +1005,17 @@
 			"failing": []
 		}
 	},
+	"cycle()": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "cycle( <whole-value># )",
+		"syntax-m": "cycle( <whole-value># )",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"default-value": {
 		"type": "added",
 		"comment": "",
@@ -1568,6 +1579,17 @@
 		"syntax-b": "",
 		"syntax-a": "<string> | <integer> | <ident>",
 		"syntax-m": "<string> | <integer> | <ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"ident-args": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "ident( <declaration-value> )",
+		"syntax-m": "ident( <declaration-value> )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4313,17 +4335,6 @@
 		"syntax-b": "",
 		"syntax-a": "<ident>",
 		"syntax-m": "<ident>",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
-	"toggle()": {
-		"type": "added",
-		"comment": "TODO: csstree doesn't support <whole-value> https://github.com/csstree/csstree/issues/300",
-		"syntax-b": "",
-		"syntax-a": "toggle( <whole-value># )",
-		"syntax-m": "toggle( <any-value># )",
 		"tests": {
 			"passing": [],
 			"failing": []

@@ -452,6 +452,9 @@
 	"custom-selector": {
 		"syntax": "<custom-arg>? : <extension-name> [ ( <custom-arg>+#? ) ]?"
 	},
+	"cycle()": {
+		"syntax": "cycle( <whole-value># )"
+	},
 	"dasharray": {
 		"syntax": "[ [ <length-percentage> | <number> ]+ ]#"
 	},
@@ -775,6 +778,9 @@
 	},
 	"ident-arg": {
 		"syntax": "<string> | <integer> | <ident>"
+	},
+	"ident-args": {
+		"syntax": "ident( <declaration-value> )"
 	},
 	"ident()": {
 		"syntax": "ident( <ident-arg>+ )"
@@ -1870,9 +1876,6 @@
 	},
 	"timeline-range-name": {
 		"syntax": "cover | contain | entry | exit | entry-crossing | exit-crossing"
-	},
-	"toggle()": {
-		"syntax": "toggle( <whole-value># )"
 	},
 	"top": {
 		"syntax": "<length> | auto"

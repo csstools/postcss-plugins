@@ -62,7 +62,7 @@
 	"appearance": {
 		"type": "modified",
 		"syntax-b": "none | auto | <compat-auto> | <compat-special>",
-		"syntax-a": "none | auto | base | base-select | <compat-auto> | <compat-special> | base",
+		"syntax-a": "none | auto | base | base-select | <compat-auto> | <compat-special>",
 		"comment": ""
 	},
 	"background-blend-mode": {

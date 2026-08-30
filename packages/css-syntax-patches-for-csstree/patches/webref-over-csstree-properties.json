@@ -158,8 +158,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | auto | <compat-auto> | <compat-special>",
-		"syntax-a": "none | auto | base | base-select | <compat-auto> | <compat-special> | base",
-		"syntax-m": "none | auto | base | base-select | <compat-auto> | <compat-special> | base",
+		"syntax-a": "none | auto | base | base-select | <compat-auto> | <compat-special>",
+		"syntax-m": "none | auto | base | base-select | <compat-auto> | <compat-special>",
 		"tests": {
 			"passing": [
 				{

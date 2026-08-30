@@ -419,6 +419,12 @@
 		"syntax-a": "<custom-arg>? : <extension-name> [ ( <custom-arg>+#? ) ]?",
 		"comment": ""
 	},
+	"cycle()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "cycle( <whole-value># )",
+		"comment": ""
+	},
 	"default-value": {
 		"type": "added",
 		"syntax-b": "",
@@ -693,6 +699,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<string> | <integer> | <ident>",
+		"comment": ""
+	},
+	"ident-args": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "ident( <declaration-value> )",
 		"comment": ""
 	},
 	"ident()": {
@@ -1851,12 +1863,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "<ident>",
-		"comment": ""
-	},
-	"toggle()": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "toggle( <whole-value># )",
 		"comment": ""
 	},
 	"track-breadth": {
