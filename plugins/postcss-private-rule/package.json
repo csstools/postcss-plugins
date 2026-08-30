@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-private-rule",
 	"description": "Declare private custom properties",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
