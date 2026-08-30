@@ -1,5 +1,6 @@
 import type { Plugin, PluginCreator, Rule } from 'postcss';
 import crypto from 'node:crypto';
+import path from 'node:path';
 import { findPrivateRule, findStyleRule, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
@@ -27,10 +28,18 @@ const creator: PluginCreator<pluginOptions> = () => {
 					return existing;
 				}
 
-				const hash = crypto.createHash('md5');
-				hash.update(rule.source?.input.from ?? '<input>', 'utf8');
+				let fromHash;
+				if (rule.source?.input.from) {
+					const hash = crypto.createHash('md5');
+					hash.update(path.basename(path.dirname(rule.source?.input.from)) + '/' + path.basename(rule.source?.input.from), 'utf8');
+					fromHash = hash.digest('hex').slice(0, 8);
+				} else {
+					const hash = crypto.createHash('md5');
+					hash.update('<input>', 'utf8');
+					fromHash = hash.digest('hex').slice(0, 8);
+				}
 
-				const prefix = `--_csstools-p-${hash.digest('hex').slice(0, 8) }-${counter.toString(16)}`;
+				const prefix = `--_csstools-p-${fromHash}-${counter.toString(16)}`;
 				counter++;
 
 				privatePropertyNamePrefixes.set(rule, prefix);
