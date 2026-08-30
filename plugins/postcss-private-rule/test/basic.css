@@ -89,7 +89,12 @@ section > h1 > small {
 
 	--bar: if(
 		style(--alpha: private): cyan;
-		else: orange
+		else: orange;
+	);
+
+	--baz: if(
+		style(--something: var(--alpha)): cyan;
+		else: orange;
 	);
 }
 
@@ -141,5 +146,44 @@ section > h1 > small {
 			--alpha: 2px;
 		}
 		margin-left: var(--alpha);
+	}
+}
+
+.ignore {
+	@private {
+		--alpha: 2px;
+	}
+
+	--beta: var(--foo, --alpha);
+}
+
+.ignore {
+	@private {
+		--alpha: 2px;
+	}
+
+	--beta: --alpha;
+}
+
+.ignore {
+	@private {
+		--alpha: 2px;
+	}
+
+	--bar: if(
+		style(--foo: --alpha): cyan;
+		else: orange;
+	);
+}
+
+.ignore {
+	@private {
+		--alpha: 2px;
+	}
+
+	& .bar {
+		@container style(--something: --alpha) {
+			--bar: cyan;
+		}
 	}
 }

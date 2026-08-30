@@ -3,8 +3,8 @@ section {
 		--_csstools-p-9fc6ed48-0--color: red;
 
 	&, & > h1, & > h1 > small {
-		border-width: var(--_csstools-p-9fc6ed48-0--_csstools-p-9fc6ed48-0--size);
-		border-color: var(--_csstools-p-9fc6ed48-0--_csstools-p-9fc6ed48-0--color);
+		border-width: var(--_csstools-p-9fc6ed48-0--size);
+		border-color: var(--_csstools-p-9fc6ed48-0--color);
 	}
 }
 
@@ -32,7 +32,7 @@ section > h1 > small {
 }
 
 .single-private {
-		--_csstools-p-9fc6ed48-3--alpha: var(--_csstools-p-9fc6ed48-3--beta)
+		--_csstools-p-9fc6ed48-3--alpha: var(--beta)
 }
 
 .two-private {
@@ -69,7 +69,12 @@ section > h1 > small {
 
 	--bar: if(
 		style(--_csstools-p-9fc6ed48-7--alpha: private): cyan;
-		else: orange
+		else: orange;
+	);
+
+	--baz: if(
+		style(--something: var(--_csstools-p-9fc6ed48-7--alpha)): cyan;
+		else: orange;
 	);
 }
 
@@ -111,5 +116,36 @@ section > h1 > small {
 			--alpha: 2px;
 		}
 		margin-left: var(--alpha);
+	}
+}
+
+.ignore {
+		--_csstools-p-9fc6ed48-b--alpha: 2px;
+
+	--beta: var(--foo, --alpha);
+}
+
+.ignore {
+		--_csstools-p-9fc6ed48-c--alpha: 2px;
+
+	--beta: --alpha;
+}
+
+.ignore {
+		--_csstools-p-9fc6ed48-d--alpha: 2px;
+
+	--bar: if(
+		style(--foo: --alpha): cyan;
+		else: orange;
+	);
+}
+
+.ignore {
+		--_csstools-p-9fc6ed48-e--alpha: 2px;
+
+	& .bar {
+		@container style(--something: --alpha) {
+			--bar: cyan;
+		}
 	}
 }

@@ -17,11 +17,12 @@ const creator: PluginCreator<pluginOptions> = () => {
 	return {
 		postcssPlugin: 'postcss-private-rule',
 		prepare(): Plugin {
-			const privatePropertyNames: WeakMap<Rule, string> = new Map();
+			const privatePropertyNamePrefixes: WeakMap<Rule, string> = new Map();
+			const privatePropertyNames: Set<string> = new Set();
 
 			let counter = 0;
 			const propertyNamePrefix = (rule: Rule): string => {
-				const existing = privatePropertyNames.get(rule);
+				const existing = privatePropertyNamePrefixes.get(rule);
 				if (existing) {
 					return existing;
 				}
@@ -32,7 +33,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 				const prefix = `--_csstools-p-${hash.digest('hex').slice(0, 8) }-${counter.toString(16)}`;
 				counter++;
 
-				privatePropertyNames.set(rule, prefix);
+				privatePropertyNamePrefixes.set(rule, prefix);
 
 				return prefix;
 			};
@@ -55,6 +56,8 @@ const creator: PluginCreator<pluginOptions> = () => {
 						{
 							atRule.walk((node) => {
 								if (node.type === 'decl' && node.variable && node.prop.startsWith('--')) {
+									privatePropertyNames.add(node.prop);
+
 									node.prop = `${prefix}${node.prop}`;
 
 									return;
@@ -94,6 +97,8 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 											if (!isTokenNode(arg) || !isTokenIdent(arg.value) || !arg.value[4].value.startsWith('--')) break;
 
+											if (!privatePropertyNames.has(arg.value[4].value)) break;
+
 											mutateIdent(arg.value, `${prefix}${arg.value[4].value}`);
 											break;
 										}
@@ -117,6 +122,8 @@ const creator: PluginCreator<pluginOptions> = () => {
 												if (isWhiteSpaceOrCommentNode(childArg)) continue;
 
 												if (!isTokenNode(childArg) || !isTokenIdent(childArg.value) || !childArg.value[4].value.startsWith('--')) break;
+
+												if (!privatePropertyNames.has(childArg.value[4].value)) break;
 
 												mutateIdent(childArg.value, `${prefix}${childArg.value[4].value}`);
 												break;
@@ -149,6 +156,8 @@ const creator: PluginCreator<pluginOptions> = () => {
 										if (isWhiteSpaceOrCommentNode(arg)) continue;
 
 										if (!isTokenNode(arg) || !isTokenIdent(arg.value) || !arg.value[4].value.startsWith('--')) break;
+
+										if (!privatePropertyNames.has(arg.value[4].value)) break;
 
 										mutateIdent(arg.value, `${prefix}${arg.value[4].value}`);
 										break;
