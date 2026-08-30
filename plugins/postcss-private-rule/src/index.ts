@@ -4,11 +4,11 @@ import { findPrivateRule, findStyleRule, IS_PRIVATE_RULE_REGEX } from './valid-a
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
 
-export const HAS_VAR_OR_IF_FUNCTION_REGEX = /\b(var|if)\(/i;
-export const IS_CONTAINER_REGEX = /^container$/i;
-export const IS_IF_FUNCTION_REGEX = /^if$/i;
-export const IS_STYLE_FUNCTION_REGEX = /^style$/i;
-export const IS_VAR_FUNCTION_REGEX = /^var$/i;
+const HAS_VAR_OR_IF_FUNCTION_REGEX = /\b(var|if)\(/i;
+const IS_CONTAINER_REGEX = /^container$/i;
+const IS_IF_FUNCTION_REGEX = /^if$/i;
+const IS_STYLE_FUNCTION_REGEX = /^style$/i;
+const IS_VAR_FUNCTION_REGEX = /^var$/i;
 
 /** postcss-private-rule plugin options */
 export type pluginOptions = never;
