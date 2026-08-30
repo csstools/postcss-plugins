@@ -431,6 +431,12 @@
       - plugins/postcss-position-area-property/**
       - experimental/postcss-position-area-property/**
 
+"plugins/postcss-private-rule":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-private-rule/**
+      - experimental/postcss-private-rule/**
+
 "plugins/postcss-progressive-custom-properties":
   - changed-files:
     - any-glob-to-any-file:

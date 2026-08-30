@@ -1,0 +1,145 @@
+section {
+	@private {
+		--size: 2px;
+	}
+
+	@private {
+		--color: red;
+	}
+
+	&, & > h1, & > h1 > small {
+		border-width: var(--size);
+		border-color: var(--color);
+	}
+}
+
+section > h1 {
+	--size: 4px;
+}
+
+section > h1 > small {
+	--size: 3px;
+}
+
+.public-before-private {
+	--alpha: 1px;
+
+	@private {
+		--alpha: 2px;
+	}
+
+	--beta: var(--alpha);
+}
+
+.private-before-public {
+	@private {
+		--alpha: 2px;
+	}
+
+	--alpha: 3px;
+
+	--beta: var(--alpha);
+}
+
+.single-private {
+	@private {
+		--alpha: var(--beta);
+	}
+}
+
+.two-private {
+	@private {
+		--alpha: 1;
+		--beta: 2;
+	}
+}
+
+.container-query {
+	@private {
+		--alpha: private;
+	}
+
+	--alpha: public;
+
+	@container style(--alpha: private) {
+		--bar: cyan;
+	}
+}
+
+.container-query-and-nesting {
+	@private {
+		--alpha: private;
+	}
+
+	--alpha: public;
+
+	& .bar {
+		@container style(--alpha: private) {
+			--bar: cyan;
+		}
+	}
+}
+
+.if-function {
+	@private {
+		--alpha: private;
+	}
+
+	--alpha: public;
+
+	--bar: if(
+		style(--alpha: private): cyan;
+		else: orange
+	);
+}
+
+.invalid-private-contents{
+	@private {
+		--alpha: 2px;
+
+		&+& {
+			--alpha: 3px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.conditional-private {
+	@private {
+		--alpha: 2px;
+
+		@media screen {
+			--alpha: 3px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.conditional-private-use {
+	@private {
+		--alpha: 2px;
+	}
+
+	@media screen {
+		--beta: var(--alpha);
+	}
+}
+
+@private {
+	--invalid-position: 2px;
+}
+
+:root {
+	--something: var(--invalid-position);
+}
+
+@keyframes slide-right {
+	from {
+		@private {
+			--alpha: 2px;
+		}
+		margin-left: var(--alpha);
+	}
+}

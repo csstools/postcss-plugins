@@ -122,6 +122,7 @@ body:
         - PostCSS Page Break
         - PostCSS Place
         - PostCSS Position Area Property
+        - PostCSS Private Rule
         - PostCSS Progressive Custom Properties
         - PostCSS Property Rule Optional Descriptors
         - PostCSS Property Rule Prelude List

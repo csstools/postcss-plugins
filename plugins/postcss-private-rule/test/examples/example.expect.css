@@ -1,0 +1,11 @@
+section {
+		--_csstools-p-c9ee5fbd-0--size: 2px;
+
+	&, & > h1 {
+		border-width: var(--_csstools-p-c9ee5fbd-0--size);
+	}
+}
+
+section > h1 {
+	--size: 4px;
+}

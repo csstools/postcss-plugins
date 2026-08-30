@@ -1,0 +1,115 @@
+section {
+		--_csstools-p-9fc6ed48-0--size: 2px;
+		--_csstools-p-9fc6ed48-0--color: red;
+
+	&, & > h1, & > h1 > small {
+		border-width: var(--_csstools-p-9fc6ed48-0--_csstools-p-9fc6ed48-0--size);
+		border-color: var(--_csstools-p-9fc6ed48-0--_csstools-p-9fc6ed48-0--color);
+	}
+}
+
+section > h1 {
+	--size: 4px;
+}
+
+section > h1 > small {
+	--size: 3px;
+}
+
+.public-before-private {
+	--alpha: 1px;
+		--_csstools-p-9fc6ed48-1--alpha: 2px;
+
+	--beta: var(--_csstools-p-9fc6ed48-1--alpha);
+}
+
+.private-before-public {
+		--_csstools-p-9fc6ed48-2--alpha: 2px;
+
+	--alpha: 3px;
+
+	--beta: var(--_csstools-p-9fc6ed48-2--alpha);
+}
+
+.single-private {
+		--_csstools-p-9fc6ed48-3--alpha: var(--_csstools-p-9fc6ed48-3--beta)
+}
+
+.two-private {
+		--_csstools-p-9fc6ed48-4--alpha: 1;
+		--_csstools-p-9fc6ed48-4--beta: 2
+}
+
+.container-query {
+		--_csstools-p-9fc6ed48-5--alpha: private;
+
+	--alpha: public;
+
+	@container style(--_csstools-p-9fc6ed48-5--alpha: private) {
+		--bar: cyan;
+	}
+}
+
+.container-query-and-nesting {
+		--_csstools-p-9fc6ed48-6--alpha: private;
+
+	--alpha: public;
+
+	& .bar {
+		@container style(--_csstools-p-9fc6ed48-6--alpha: private) {
+			--bar: cyan;
+		}
+	}
+}
+
+.if-function {
+		--_csstools-p-9fc6ed48-7--alpha: private;
+
+	--alpha: public;
+
+	--bar: if(
+		style(--_csstools-p-9fc6ed48-7--alpha: private): cyan;
+		else: orange
+	);
+}
+
+.invalid-private-contents{
+		--_csstools-p-9fc6ed48-8--alpha: 2px;
+
+	--beta: var(--_csstools-p-9fc6ed48-8--alpha);
+}
+
+.conditional-private {
+		--_csstools-p-9fc6ed48-9--alpha: 2px;
+
+		@media screen {
+			--_csstools-p-9fc6ed48-9--alpha: 3px;
+		}
+
+	--beta: var(--_csstools-p-9fc6ed48-9--alpha);
+}
+
+.conditional-private-use {
+		--_csstools-p-9fc6ed48-a--alpha: 2px;
+
+	@media screen {
+		--beta: var(--_csstools-p-9fc6ed48-a--alpha);
+	}
+}
+
+@private {
+	--invalid-position: 2px;
+}
+
+:root {
+	--something: var(--invalid-position);
+}
+
+@keyframes slide-right {
+	from {
+		@private {
+			--alpha: 2px;
+		}
+		margin-left: var(--alpha);
+	}
+}
