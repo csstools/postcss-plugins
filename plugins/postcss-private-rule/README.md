@@ -26,10 +26,10 @@ section > h1 {
 /* becomes */
 
 section {
-		--_csstools-p-c9ee5fbd-0--size: 2px;
+		--_csstools-p-15ccaace-0--size: 2px;
 
 	&, & > h1 {
-		border-width: var(--_csstools-p-c9ee5fbd-0--size);
+		border-width: var(--_csstools-p-15ccaace-0--size);
 	}
 }
 
