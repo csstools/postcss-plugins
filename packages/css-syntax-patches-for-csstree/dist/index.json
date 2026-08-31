@@ -37,7 +37,7 @@
 				}
 			},
 			"import": {
-				"prelude": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>"
+				"prelude": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>?"
 			},
 			"mixin": {
 				"prelude": "[ <function-token> <function-parameter>#? ) | <ident-token> ]"

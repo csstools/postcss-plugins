@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Fix `@import` prelude syntax definition
+
 ### 1.1.11
 
 _August 31, 2026_

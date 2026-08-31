@@ -460,10 +460,27 @@
 			"comment": "",
 			"syntax-b": "[ <string> | <url> ] [ layer | layer( <layer-name> ) ]? [ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?",
 			"syntax-a": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>",
-			"syntax-m": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>",
+			"syntax-m": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>?",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "url('./highlight.css')"
+					},
+					{
+						"prelude": "'./highlight.css'"
+					},
+					{
+						"prelude": "url('./highlight.css') screen"
+					},
+					{
+						"prelude": "url('./highlight.css') screen, (min-width: 300px)"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "screen"
+					}
+				]
 			}
 		}
 	},
