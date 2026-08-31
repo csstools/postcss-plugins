@@ -80,7 +80,7 @@
 		"postcss": "^8.5.23",
 		"postcss-cli": "^11.0.1",
 		"postcss-preset-env": "^11.5.0",
-		"rollup": "^4.62.4",
+		"rollup": "^4.62.5",
 		"rollup-plugin-livereload": "^2.0.5"
 	},
 	"volta": {
