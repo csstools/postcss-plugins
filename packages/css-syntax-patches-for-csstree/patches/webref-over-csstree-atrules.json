@@ -658,6 +658,9 @@
 						"prelude": "(.foo)"
 					},
 					{
+						"prelude": ""
+					},
+					{
 						"prelude": "(.foo) to (.bar)"
 					}
 				],
