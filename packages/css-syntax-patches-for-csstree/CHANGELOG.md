@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Add at-rule preludes
+
 ### 1.1.10
 
 _August 30, 2026_

@@ -39,8 +39,8 @@ flaws += patch_flaws;
 
 // Atrules
 for (const [name, atrule] of Object.entries(webref_over_csstree_sets.atrules)) {
-	for (const [descriptor_name] of Object.entries(atrule.descriptors)) {
-		const patch = patches.webref_over_csstree.atrules[name]?.descriptors?.[descriptor_name];
+	if (atrule.prelude) {
+		const patch = patches.webref_over_csstree.atrules[name]?.prelude;
 		if (!patch) {
 			continue;
 		}
@@ -52,6 +52,24 @@ for (const [name, atrule] of Object.entries(webref_over_csstree_sets.atrules)) {
 		if (!patch.tests) {
 			has_missing_patch_tests = true;
 			continue;
+		}
+	}
+
+	if (atrule.descriptors) {
+		for (const [descriptor_name] of Object.entries(atrule.descriptors)) {
+			const patch = patches.webref_over_csstree.atrules[name]?.descriptors?.[descriptor_name];
+			if (!patch) {
+				continue;
+			}
+
+			if (patch.omit) {
+				continue;
+			}
+
+			if (!patch.tests) {
+				has_missing_patch_tests = true;
+				continue;
+			}
 		}
 	}
 }

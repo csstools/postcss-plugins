@@ -65,18 +65,25 @@ export async function write_patches(sets, patch_sets) {
 					continue;
 				}
 
-				if (patch_definition.descriptors) {
-					merged_sets[set_name][kind_name][name] = {
-						descriptors: Object.create(null),
-					};
+				if (patch_definition.descriptors || patch_definition.prelude) {
+					if (patch_definition.descriptors) {
+						merged_sets[set_name][kind_name][name] ??= Object.create(null);
+						merged_sets[set_name][kind_name][name].descriptors ??= Object.create(null);
 
-					for (const [descriptor_name, patch_descriptor] of Object.entries(patch_definition.descriptors)) {
-						const descriptor = definition.descriptors[descriptor_name];
-						if (!descriptor) {
-							continue;
+						for (const [descriptor_name, patch_descriptor] of Object.entries(patch_definition.descriptors)) {
+							const descriptor = definition.descriptors[descriptor_name];
+							if (!descriptor) {
+								continue;
+							}
+
+							merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = format_from_definition_to_patch(descriptor, patch_descriptor);
 						}
+					}
 
-						merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = format_from_definition_to_patch(descriptor, patch_descriptor);
+					if (patch_definition.prelude) {
+						merged_sets[set_name][kind_name][name] ??= Object.create(null);
+
+						merged_sets[set_name][kind_name][name].prelude = format_from_definition_to_patch(definition.prelude, patch_definition.prelude);
 					}
 
 					continue;
@@ -102,18 +109,29 @@ export async function write_patches(sets, patch_sets) {
 			}
 
 			for (const [name, definition] of Object.entries(kind)) {
-				if (definition.descriptors) {
-					merged_sets[set_name][kind_name][name] ??= {
-						descriptors: Object.create(null),
-					};
+				if (definition.descriptors || definition.prelude) {
+					if (definition.descriptors) {
+						merged_sets[set_name][kind_name][name] ??= Object.create(null);
+						merged_sets[set_name][kind_name][name].descriptors ??= Object.create(null);
 
-					for (const [descriptor_name, descriptor] of Object.entries(definition.descriptors)) {
-						const patch_descriptor = patch_kind[name]?.descriptors?.[descriptor_name];
-						if (patch_descriptor) {
+						for (const [descriptor_name, descriptor] of Object.entries(definition.descriptors)) {
+							const patch_descriptor = patch_kind[name]?.descriptors?.[descriptor_name];
+							if (patch_descriptor) {
+								continue;
+							}
+
+							merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = format_definition(descriptor);
+						}
+					}
+
+					if (definition.prelude) {
+						if (merged_sets[set_name][kind_name][name]?.prelude) {
 							continue;
 						}
 
-						merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = format_definition(descriptor);
+						merged_sets[set_name][kind_name][name] ??= Object.create(null);
+
+						merged_sets[set_name][kind_name][name].prelude = format_definition(definition.prelude);
 					}
 
 					continue;
@@ -132,9 +150,15 @@ export async function write_patches(sets, patch_sets) {
 	for (const [set_name, merged_set] of Object.entries(merged_sets)) {
 		for (const [kind_name, merged_kind] of Object.entries(merged_set)) {
 			for (const [name, merged_definition] of Object.entries(merged_kind)) {
-				if (merged_definition.descriptors) {
-					for (const [descriptor_name, descriptor] of Object.entries(merged_definition.descriptors)) {
-						merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = sort_object_keys(descriptor);
+				if (merged_definition.descriptors || merged_definition.prelude) {
+					if (merged_definition.descriptors) {
+						for (const [descriptor_name, descriptor] of Object.entries(merged_definition.descriptors)) {
+							merged_sets[set_name][kind_name][name].descriptors[descriptor_name] = sort_object_keys(descriptor);
+						}
+					}
+
+					if (merged_definition.prelude) {
+						merged_sets[set_name][kind_name][name].prelude = sort_object_keys(merged_definition.prelude);
 					}
 				} else {
 					merged_sets[set_name][kind_name][name] = sort_object_keys(merged_definition);

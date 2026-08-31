@@ -1,4 +1,34 @@
 {
+	"apply": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "[ <dashed-ident> | <dashed-function> ]",
+			"syntax-m": "[ <dashed-ident> | <dashed-function> ]",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--foo"
+					},
+					{
+						"prelude": "--foo()"
+					},
+					{
+						"prelude": "--foo(10px)"
+					},
+					{
+						"prelude": "--foo(10px, 5rem)"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo(10px, 5rem"
+					}
+				]
+			}
+		}
+	},
 	"color-profile": {
 		"descriptors": {
 			"components": {
@@ -47,6 +77,91 @@
 					"passing": [],
 					"failing": []
 				}
+			}
+		},
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "[ <dashed-ident> | device-cmyk ]",
+			"syntax-m": "[ <dashed-ident> | device-cmyk ]",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
+		}
+	},
+	"container": {
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "[ <container-name> ]? <container-condition>",
+			"syntax-a": "<container-condition>#",
+			"syntax-m": "<container-condition>#",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
+		}
+	},
+	"custom-media": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<extension-name> [ <media-query-list> | true | false ]",
+			"syntax-m": "<extension-name> [ <media-query-list> | true | false ]",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--foo screen"
+					},
+					{
+						"prelude": "--foo (min-width: 320px)"
+					},
+					{
+						"prelude": "--foo (width >= 35rem) or (not (prefers-color-scheme: dark))"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo screen"
+					}
+				]
+			}
+		}
+	},
+	"custom-selector": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<custom-selector> <selector-list>",
+			"syntax-m": "<custom-selector> <selector-list>",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--button button, [type=button]"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo button, [type=button]"
+					}
+				]
+			}
+		}
+	},
+	"else": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<boolean-condition>?",
+			"syntax-m": "<boolean-condition>?",
+			"tests": {
+				"passing": [],
+				"failing": []
 			}
 		}
 	},
@@ -285,6 +400,17 @@
 					"failing": []
 				}
 			}
+		},
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "<family-name>#",
+			"syntax-a": "<font-family-name>#",
+			"syntax-m": "<font-family-name>#",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
 		}
 	},
 	"font-palette-values": {
@@ -314,6 +440,60 @@
 					"passing": [],
 					"failing": []
 				}
+			}
+		},
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+			"syntax-m": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
+		}
+	},
+	"import": {
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "[ <string> | <url> ] [ layer | layer( <layer-name> ) ]? [ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?",
+			"syntax-a": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>",
+			"syntax-m": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
+		}
+	},
+	"mixin": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
+			"syntax-m": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--foo(--bar: 2rem)"
+					}
+				],
+				"failing": []
+			}
+		}
+	},
+	"navigation": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<navigation-condition>",
+			"syntax-m": "<navigation-condition>",
+			"tests": {
+				"passing": [],
+				"failing": []
 			}
 		}
 	},
@@ -385,6 +565,17 @@
 					"failing": []
 				}
 			}
+		},
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "<page-selector-list>",
+			"syntax-a": "<page-selector-list>?",
+			"syntax-m": "<page-selector-list>?",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
 		}
 	},
 	"position-try": {
@@ -413,6 +604,67 @@
 			}
 		}
 	},
+	"property": {
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "<custom-property-name>",
+			"syntax-a": "<custom-property-name>#",
+			"syntax-m": "<custom-property-name>#",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--foo"
+					},
+					{
+						"prelude": "--foo, --bar"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo"
+					}
+				]
+			}
+		}
+	},
+	"scope": {
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?",
+			"syntax-a": "<scope-boundaries>?",
+			"syntax-m": "<scope-boundaries>?",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "(.foo)"
+					},
+					{
+						"prelude": "(.foo) to (.bar)"
+					}
+				],
+				"failing": [
+					{
+						"prelude": ".foo"
+					}
+				]
+			}
+		}
+	},
+	"supports-condition": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<supports-condition-name>",
+			"syntax-m": "<supports-condition-name>",
+			"tests": {
+				"passing": [],
+				"failing": []
+			}
+		}
+	},
 	"view-transition": {
 		"descriptors": {
 			"types": {
@@ -425,6 +677,19 @@
 					"passing": [],
 					"failing": []
 				}
+			}
+		}
+	},
+	"when": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<boolean-condition>",
+			"syntax-m": "<boolean-condition>",
+			"tests": {
+				"passing": [],
+				"failing": []
 			}
 		}
 	}

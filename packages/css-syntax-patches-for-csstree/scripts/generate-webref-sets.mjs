@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import css from '@webref/css';
-import { fork } from 'css-tree';
+import { definitionSyntax, fork } from 'css-tree';
 import { generate_atrule_set, generate_set } from './generate-set.mjs';
 import { trim_at } from './trim-at.mjs';
 
@@ -16,6 +16,38 @@ function assign_new_definition(set, name, definition) {
 	set[name] = definition;
 }
 
+function assign_new_atrule_syntax(set, atrule, syntax) {
+	const exists_in_set = set[atrule]?.prelude;
+
+	if (exists_in_set) {
+		// eslint-disable-next-line no-console
+		console.error(`duplicate atrule prelude @${atrule} ${exists_in_set}`);
+	}
+
+	set[atrule] ??= Object.create(null);
+
+	let parsedSyntax = definitionSyntax.parse(syntax.trim().replaceAll('[ { <declaration-list> } ]?', ''));
+
+	parsedSyntax.terms = parsedSyntax.terms.slice(1);
+
+	if (parsedSyntax.terms.some((x) => x.value === '{')) {
+		parsedSyntax.terms = parsedSyntax.terms.slice(
+			0,
+			parsedSyntax.terms.findIndex((x) => x.value === '{'),
+		);
+	}
+
+	if (parsedSyntax.terms.at(-1)?.value === ';') {
+		parsedSyntax.terms = parsedSyntax.terms.slice(0, -1);
+	}
+
+	if (!parsedSyntax.terms.length) {
+		return;
+	}
+
+	set[atrule].prelude = definitionSyntax.generate(parsedSyntax);
+}
+
 function assign_new_atrule_descriptor_definition(set, atrule, name, definition) {
 	const exists_in_set = set[atrule]?.descriptors?.[name];
 
@@ -24,9 +56,8 @@ function assign_new_atrule_descriptor_definition(set, atrule, name, definition) 
 		console.error(`duplicate atrule descriptor @${atrule} ${name}`);
 	}
 
-	set[atrule] ??= {
-		descriptors: Object.create(null),
-	};
+	set[atrule] ??= Object.create(null);
+	set[atrule].descriptors ??= Object.create(null);
 
 	set[atrule].descriptors[name] = definition;
 }
@@ -108,30 +139,44 @@ export async function generate_webref_sets() {
 	const data = await css.listAll();
 
 	for (const atrule of data.atrules) {
-		if (!atrule.descriptors?.length) {
-			continue;
+		if (atrule.syntax) {
+			if (trim_at(atrule.name) === 'layer') {
+				assign_new_atrule_syntax(
+					atrules,
+					trim_at(atrule.name),
+					'<layer-name>?',
+				);
+			} else {
+				assign_new_atrule_syntax(
+					atrules,
+					trim_at(atrule.name),
+					atrule.syntax,
+				);
+			}
 		}
 
-		for (const descriptor of atrule.descriptors) {
-			if (descriptor.name.startsWith('-webkit-')) {
-				continue;
-			}
+		if (atrule.descriptors?.length) {
+			for (const descriptor of atrule.descriptors) {
+				if (descriptor.name.startsWith('-webkit-')) {
+					continue;
+				}
 
-			if (!descriptor.syntax) {
-				continue;
-			}
+				if (!descriptor.syntax) {
+					continue;
+				}
 
-			if (descriptor.type === 'discrete' || descriptor.type === 'range') {
-				// definitions for features in `@container` and `@media`
-				continue;
-			}
+				if (descriptor.type === 'discrete' || descriptor.type === 'range') {
+					// definitions for features in `@container` and `@media`
+					continue;
+				}
 
-			assign_new_atrule_descriptor_definition(
-				atrules,
-				trim_at(atrule.name),
-				descriptor.name,
-				descriptor.syntax,
-			);
+				assign_new_atrule_descriptor_definition(
+					atrules,
+					trim_at(atrule.name),
+					descriptor.name,
+					descriptor.syntax,
+				);
+			}
 		}
 	}
 

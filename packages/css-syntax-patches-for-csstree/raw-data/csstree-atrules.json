@@ -1,5 +1,18 @@
 {
+	"charset": {
+		"prelude": {
+			"syntax": "<string>"
+		}
+	},
+	"container": {
+		"prelude": {
+			"syntax": "[ <container-name> ]? <container-condition>"
+		}
+	},
 	"counter-style": {
+		"prelude": {
+			"syntax": "<counter-style-name>"
+		},
 		"descriptors": {
 			"additive-symbols": {
 				"syntax": "[ <integer [0,∞]> && <symbol> ]#"
@@ -31,6 +44,11 @@
 			"system": {
 				"syntax": "cyclic | numeric | alphabetic | symbolic | additive | [ fixed <integer>? ] | [ extends <counter-style-name> ]"
 			}
+		}
+	},
+	"document": {
+		"prelude": {
+			"syntax": "[ <url> | url-prefix( <string> ) | domain( <string> ) | media-document( <string> ) | regexp( <string> ) ]#"
 		}
 	},
 	"font-face": {
@@ -76,7 +94,15 @@
 			}
 		}
 	},
+	"font-feature-values": {
+		"prelude": {
+			"syntax": "<family-name>#"
+		}
+	},
 	"font-features-values": {
+		"prelude": {
+			"syntax": "[ <string> | <custom-ident> ]+"
+		},
 		"descriptors": {
 			"font-display": {
 				"syntax": "auto | block | swap | fallback | optional"
@@ -84,6 +110,9 @@
 		}
 	},
 	"font-palette-values": {
+		"prelude": {
+			"syntax": "<dashed-ident>"
+		},
 		"descriptors": {
 			"base-palette": {
 				"syntax": "light | dark | <integer [0,∞]>"
@@ -96,7 +125,35 @@
 			}
 		}
 	},
+	"import": {
+		"prelude": {
+			"syntax": "[ <string> | <url> ] [ layer | layer( <layer-name> ) ]? [ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?"
+		}
+	},
+	"keyframes": {
+		"prelude": {
+			"syntax": "<keyframes-name>"
+		}
+	},
+	"layer": {
+		"prelude": {
+			"syntax": "[ <layer-name># | <layer-name>? ]"
+		}
+	},
+	"media": {
+		"prelude": {
+			"syntax": "<media-query-list>"
+		}
+	},
+	"namespace": {
+		"prelude": {
+			"syntax": "<namespace-prefix>? [ <string> | <url> ]"
+		}
+	},
 	"page": {
+		"prelude": {
+			"syntax": "<page-selector-list>"
+		},
 		"descriptors": {
 			"bleed": {
 				"syntax": "auto | <length>"
@@ -113,6 +170,9 @@
 		}
 	},
 	"position-try": {
+		"prelude": {
+			"syntax": "<dashed-ident>"
+		},
 		"descriptors": {
 			"align-self": {
 				"syntax": "<'align-self'> | anchor-center"
@@ -225,6 +285,9 @@
 		}
 	},
 	"property": {
+		"prelude": {
+			"syntax": "<custom-property-name>"
+		},
 		"descriptors": {
 			"inherits": {
 				"syntax": "true | false"
@@ -235,6 +298,16 @@
 			"syntax": {
 				"syntax": "<string>"
 			}
+		}
+	},
+	"scope": {
+		"prelude": {
+			"syntax": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?"
+		}
+	},
+	"supports": {
+		"prelude": {
+			"syntax": "<supports-condition>"
 		}
 	},
 	"view-transition": {
