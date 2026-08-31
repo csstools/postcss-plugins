@@ -1,5 +1,19 @@
 {
+	"apply": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "[ <dashed-ident> | <dashed-function> ]",
+			"comment": ""
+		}
+	},
 	"color-profile": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "[ <dashed-ident> | device-cmyk ]",
+			"comment": ""
+		},
 		"descriptors": {
 			"components": {
 				"type": "added",
@@ -19,6 +33,38 @@
 				"syntax-a": "<url>",
 				"comment": ""
 			}
+		}
+	},
+	"container": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "[ <container-name> ]? <container-condition>",
+			"syntax-a": "<container-condition>#",
+			"comment": ""
+		}
+	},
+	"custom-media": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<extension-name> [ <media-query-list> | true | false ]",
+			"comment": ""
+		}
+	},
+	"custom-selector": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<custom-selector> <selector-list>",
+			"comment": ""
+		}
+	},
+	"else": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<boolean-condition>?",
+			"comment": ""
 		}
 	},
 	"font-face": {
@@ -128,6 +174,12 @@
 		}
 	},
 	"font-feature-values": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "<family-name>#",
+			"syntax-a": "<font-family-name>#",
+			"comment": ""
+		},
 		"descriptors": {
 			"font-display": {
 				"type": "added",
@@ -148,6 +200,12 @@
 		}
 	},
 	"function": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+			"comment": ""
+		},
 		"descriptors": {
 			"result": {
 				"type": "added",
@@ -157,7 +215,37 @@
 			}
 		}
 	},
+	"import": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "[ <string> | <url> ] [ layer | layer( <layer-name> ) ]? [ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?",
+			"syntax-a": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>",
+			"comment": ""
+		}
+	},
+	"mixin": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
+			"comment": ""
+		}
+	},
+	"navigation": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<navigation-condition>",
+			"comment": ""
+		}
+	},
 	"page": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "<page-selector-list>",
+			"syntax-a": "<page-selector-list>?",
+			"comment": ""
+		},
 		"descriptors": {
 			"margin": {
 				"type": "added",
@@ -213,6 +301,30 @@
 			}
 		}
 	},
+	"property": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "<custom-property-name>",
+			"syntax-a": "<custom-property-name>#",
+			"comment": ""
+		}
+	},
+	"scope": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?",
+			"syntax-a": "<scope-boundaries>?",
+			"comment": ""
+		}
+	},
+	"supports-condition": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<supports-condition-name>",
+			"comment": ""
+		}
+	},
 	"view-transition": {
 		"descriptors": {
 			"types": {
@@ -221,6 +333,14 @@
 				"syntax-a": "none | <view-transition-type>+",
 				"comment": ""
 			}
+		}
+	},
+	"when": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<boolean-condition>",
+			"comment": ""
 		}
 	}
 }

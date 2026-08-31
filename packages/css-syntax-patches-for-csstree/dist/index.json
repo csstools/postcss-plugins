@@ -1,12 +1,72 @@
 {
 	"next": {
 		"atrules": {
+			"apply": {
+				"prelude": "[ <dashed-ident> | <dashed-function> ]"
+			},
 			"color-profile": {
+				"prelude": "[ <dashed-ident> | device-cmyk ]",
 				"descriptors": {
 					"components": "<ident>#",
 					"rendering-intent": "relative-colorimetric | absolute-colorimetric | perceptual | saturation",
 					"src": "<url>"
 				}
+			},
+			"container": {
+				"prelude": "<container-condition>#"
+			},
+			"custom-media": {
+				"prelude": "<extension-name> [ <media-query-list> | true | false ]"
+			},
+			"custom-selector": {
+				"prelude": "<custom-selector> <selector-list>"
+			},
+			"else": {
+				"prelude": "<boolean-condition>?"
+			},
+			"font-feature-values": {
+				"prelude": "<font-family-name>#",
+				"descriptors": {
+					"font-display": "auto | block | swap | fallback | optional"
+				}
+			},
+			"function": {
+				"prelude": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+				"descriptors": {
+					"result": "<declaration-value>?"
+				}
+			},
+			"import": {
+				"prelude": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>"
+			},
+			"mixin": {
+				"prelude": "[ <function-token> <function-parameter>#? ) | <ident-token> ]"
+			},
+			"navigation": {
+				"prelude": "<navigation-condition>"
+			},
+			"page": {
+				"prelude": "<page-selector-list>?",
+				"descriptors": {
+					"margin": "<'margin'>",
+					"margin-bottom": "<'margin-bottom'>",
+					"margin-left": "<'margin-left'>",
+					"margin-right": "<'margin-right'>",
+					"margin-top": "<'margin-top'>",
+					"page-margin-safety": "none | clamp | add"
+				}
+			},
+			"property": {
+				"prelude": "<custom-property-name>#"
+			},
+			"scope": {
+				"prelude": "<scope-boundaries>?"
+			},
+			"supports-condition": {
+				"prelude": "<supports-condition-name>"
+			},
+			"when": {
+				"prelude": "<boolean-condition>"
 			},
 			"font-face": {
 				"descriptors": {
@@ -29,29 +89,9 @@
 					"unicode-range": "<unicode-range-token>#"
 				}
 			},
-			"font-feature-values": {
-				"descriptors": {
-					"font-display": "auto | block | swap | fallback | optional"
-				}
-			},
 			"font-palette-values": {
 				"descriptors": {
 					"font-family": "<font-family-name>#"
-				}
-			},
-			"function": {
-				"descriptors": {
-					"result": "<declaration-value>?"
-				}
-			},
-			"page": {
-				"descriptors": {
-					"margin": "<'margin'>",
-					"margin-bottom": "<'margin-bottom'>",
-					"margin-left": "<'margin-left'>",
-					"margin-right": "<'margin-right'>",
-					"margin-top": "<'margin-top'>",
-					"page-margin-safety": "none | clamp | add"
 				}
 			},
 			"position-try": {
@@ -480,6 +520,9 @@
 		},
 		"types": {
 			"dashed-ident": "<custom-property-name>",
+			"extension-name": "<custom-property-name>",
+			"custom-selector": "<custom-property-name>",
+			"dashed-function": "<function-token> <any-value>? )",
 			"unicode-range-token": "<urange>",
 			"a-n-plus-b": "odd | even | <integer> | <n-dimension> | '+'? n | -n | <ndashdigit-dimension> | '+'? <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>",
 			"alpha()": "alpha( [ from <color> ] [ / [ <alpha-value> | alpha | none ] ]? )",
