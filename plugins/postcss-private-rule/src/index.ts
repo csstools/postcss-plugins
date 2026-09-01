@@ -141,7 +141,12 @@ const creator: PluginCreator<pluginOptions> = () => {
 									}
 								});
 
-								decl.value = stringify([componentValues]);
+								const replacement = stringify([componentValues]);
+								if (replacement === decl.value) {
+									return;
+								}
+
+								decl.value = replacement;
 							});
 						}
 
@@ -173,13 +178,14 @@ const creator: PluginCreator<pluginOptions> = () => {
 									}
 								});
 
-								nestedAtRule.params = stringify([componentValues]);
+								const replacement = stringify([componentValues]);
+								if (replacement === nestedAtRule.params) {
+									return;
+								}
+
+								nestedAtRule.params = replacement;
 							});
 						}
-
-						// TODO:
-						// substitute custom prop names in:
-						// - if()
 					});
 				},
 			};

@@ -2,3 +2,9 @@
 	flow-tolerance: 2em;
 	fit-tolerance: 2em;
 }
+
+
+.ignore {
+	flow-tolerance: 2em;
+	fit-tolerance: 2em;
+}

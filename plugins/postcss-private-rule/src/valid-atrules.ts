@@ -1,10 +1,8 @@
 import type { AtRule, Rule } from "postcss";
 
-const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
-
-export const IS_PRIVATE_RULE_REGEX = /^private$/i;
-
 const IS_KEYFRAMES_RULE_REGEX = /^keyframes$/i;
+const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+export const IS_PRIVATE_RULE_REGEX = /^private$/i;
 
 export function findStyleRule(atRule: AtRule): false|Rule {
 	if (!atRule.parent) {
@@ -25,7 +23,6 @@ export function findStyleRule(atRule: AtRule): false|Rule {
 
 	return false;
 }
-
 
 export function findPrivateRule(atRule: AtRule): false | AtRule {
 	if (atRule.parent?.type !== 'atrule') {
