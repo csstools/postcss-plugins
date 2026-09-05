@@ -21,7 +21,19 @@ section > h1 > small {
 	--size: 3px;
 }
 
-.public-before-private {
+.multiple-private-rules {
+	@private {
+		--alpha: 2px;
+	}
+
+	@private {
+		--alpha: 3px;
+	}
+
+	--beta: var(--alpha);
+}
+
+.lexically-scoped-before-private {
 	--alpha: 1px;
 
 	@private {
@@ -31,7 +43,7 @@ section > h1 > small {
 	--beta: var(--alpha);
 }
 
-.private-before-public {
+.private-before-lexically-scoped {
 	@private {
 		--alpha: 2px;
 	}
@@ -59,8 +71,6 @@ section > h1 > small {
 		--alpha: private;
 	}
 
-	--alpha: public;
-
 	@container style(--alpha: private) {
 		--bar: cyan;
 	}
@@ -70,8 +80,6 @@ section > h1 > small {
 	@private {
 		--alpha: private;
 	}
-
-	--alpha: public;
 
 	& .bar {
 		@container style(--alpha: private) {
@@ -84,8 +92,6 @@ section > h1 > small {
 	@private {
 		--alpha: private;
 	}
-
-	--alpha: public;
 
 	--bar: if(
 		style(--alpha: private): cyan;

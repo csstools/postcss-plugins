@@ -1,0 +1,75 @@
+.zero {
+	@private {
+		--zero: 0px;
+	}
+
+	border: var(--zero);
+
+	.one {
+		@private {
+			--one: 1px;
+		}
+
+		border: var(--zero);
+		padding: var(--one);
+
+		.two {
+			@private {
+				--two: 2px;
+			}
+
+			border: var(--zero);
+			padding: var(--one);
+			margin: var(--two);
+
+			.three {
+				@private {
+					--three: 3px;
+				}
+
+				border: var(--zero);
+				padding: var(--one);
+				margin: var(--two);
+				inset: var(--three);
+			}
+		}
+	}
+}
+
+.zero {
+	border: var(--zero);
+
+	.one {
+		border: var(--zero);
+		padding: var(--one);
+
+		.two {
+			border: var(--zero);
+			padding: var(--one);
+			margin: var(--two);
+
+			.three {
+				border: var(--zero);
+				padding: var(--one);
+				margin: var(--two);
+				inset: var(--three);
+
+				@private {
+					--three: 3px;
+				}
+			}
+
+			@private {
+				--two: 2px;
+			}
+		}
+
+		@private {
+			--one: 1px;
+		}
+	}
+
+	@private {
+		--zero: 0px;
+	}
+}

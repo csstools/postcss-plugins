@@ -16,89 +16,90 @@ section > h1 > small {
 	--size: 3px;
 }
 
-.public-before-private {
-	--alpha: 1px;
+.multiple-private-rules {
 		--_csstools-p-8a2d0276-1--alpha: 2px;
+		--_csstools-p-8a2d0276-1--alpha: 3px;
 
 	--beta: var(--_csstools-p-8a2d0276-1--alpha);
 }
 
-.private-before-public {
+.lexically-scoped-before-private {
+	--_csstools-p-8a2d0276-2--alpha: 1px;
 		--_csstools-p-8a2d0276-2--alpha: 2px;
-
-	--alpha: 3px;
 
 	--beta: var(--_csstools-p-8a2d0276-2--alpha);
 }
 
+.private-before-lexically-scoped {
+		--_csstools-p-8a2d0276-3--alpha: 2px;
+
+	--_csstools-p-8a2d0276-3--alpha: 3px;
+
+	--beta: var(--_csstools-p-8a2d0276-3--alpha);
+}
+
 .single-private {
-		--_csstools-p-8a2d0276-3--alpha: var(--beta)
+		--_csstools-p-8a2d0276-4--alpha: var(--beta)
 }
 
 .two-private {
-		--_csstools-p-8a2d0276-4--alpha: 1;
-		--_csstools-p-8a2d0276-4--beta: 2
+		--_csstools-p-8a2d0276-5--alpha: 1;
+		--_csstools-p-8a2d0276-5--beta: 2
 }
 
 .container-query {
-		--_csstools-p-8a2d0276-5--alpha: private;
+		--_csstools-p-8a2d0276-6--alpha: private;
 
-	--alpha: public;
-
-	@container style(--_csstools-p-8a2d0276-5--alpha: private) {
+	@container style(--_csstools-p-8a2d0276-6--alpha: private) {
 		--bar: cyan;
 	}
 }
 
 .container-query-and-nesting {
-		--_csstools-p-8a2d0276-6--alpha: private;
-
-	--alpha: public;
+		--_csstools-p-8a2d0276-7--alpha: private;
 
 	& .bar {
-		@container style(--_csstools-p-8a2d0276-6--alpha: private) {
+		@container style(--_csstools-p-8a2d0276-7--alpha: private) {
 			--bar: cyan;
 		}
 	}
 }
 
 .if-function {
-		--_csstools-p-8a2d0276-7--alpha: private;
-
-	--alpha: public;
+		--_csstools-p-8a2d0276-8--alpha: private;
 
 	--bar: if(
-		style(--_csstools-p-8a2d0276-7--alpha: private): cyan;
+		style(--_csstools-p-8a2d0276-8--alpha: private): cyan;
 		else: orange;
 	);
 
 	--baz: if(
-		style(--something: var(--_csstools-p-8a2d0276-7--alpha)): cyan;
+		style(--something: var(--_csstools-p-8a2d0276-8--alpha)): cyan;
 		else: orange;
 	);
 }
 
 .invalid-private-contents{
-		--_csstools-p-8a2d0276-8--alpha: 2px;
-
-	--beta: var(--_csstools-p-8a2d0276-8--alpha);
-}
-
-.conditional-private {
 		--_csstools-p-8a2d0276-9--alpha: 2px;
-
-		@media screen {
-			--_csstools-p-8a2d0276-9--alpha: 3px;
-		}
 
 	--beta: var(--_csstools-p-8a2d0276-9--alpha);
 }
 
-.conditional-private-use {
+.conditional-private {
 		--_csstools-p-8a2d0276-a--alpha: 2px;
 
+		@media screen {
+			--_csstools-p-8a2d0276-a--alpha: 3px;
+		}
+
+	--beta: var(--_csstools-p-8a2d0276-a--alpha);
+}
+
+.conditional-private-use {
+		--_csstools-p-8a2d0276-b--alpha: 2px;
+
 	@media screen {
-		--beta: var(--_csstools-p-8a2d0276-a--alpha);
+		--beta: var(--_csstools-p-8a2d0276-b--alpha);
 	}
 }
 
@@ -120,19 +121,19 @@ section > h1 > small {
 }
 
 .ignore {
-		--_csstools-p-8a2d0276-b--alpha: 2px;
+		--_csstools-p-8a2d0276-c--alpha: 2px;
 
 	--beta: var(--foo, --alpha);
 }
 
 .ignore {
-		--_csstools-p-8a2d0276-c--alpha: 2px;
+		--_csstools-p-8a2d0276-d--alpha: 2px;
 
 	--beta: --alpha;
 }
 
 .ignore {
-		--_csstools-p-8a2d0276-d--alpha: 2px;
+		--_csstools-p-8a2d0276-e--alpha: 2px;
 
 	--bar: if(
 		style(--foo: --alpha): cyan;
@@ -141,7 +142,7 @@ section > h1 > small {
 }
 
 .ignore {
-		--_csstools-p-8a2d0276-e--alpha: 2px;
+		--_csstools-p-8a2d0276-f--alpha: 2px;
 
 	& .bar {
 		@container style(--something: --alpha) {

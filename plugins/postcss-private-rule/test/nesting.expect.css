@@ -1,0 +1,55 @@
+.zero {
+		--_csstools-p-7db4838a-0--zero: 0px;
+
+	border: var(--_csstools-p-7db4838a-0--zero);
+
+	.one {
+			--_csstools-p-7db4838a-1--one: 1px;
+
+		border: var(--_csstools-p-7db4838a-0--zero);
+		padding: var(--_csstools-p-7db4838a-1--one);
+
+		.two {
+				--_csstools-p-7db4838a-2--two: 2px;
+
+			border: var(--_csstools-p-7db4838a-0--zero);
+			padding: var(--_csstools-p-7db4838a-1--one);
+			margin: var(--_csstools-p-7db4838a-2--two);
+
+			.three {
+					--_csstools-p-7db4838a-3--three: 3px;
+
+				border: var(--_csstools-p-7db4838a-0--zero);
+				padding: var(--_csstools-p-7db4838a-1--one);
+				margin: var(--_csstools-p-7db4838a-2--two);
+				inset: var(--_csstools-p-7db4838a-3--three);
+			}
+		}
+	}
+}
+
+.zero {
+	border: var(--_csstools-p-7db4838a-7--zero);
+
+	.one {
+		border: var(--_csstools-p-7db4838a-7--zero);
+		padding: var(--_csstools-p-7db4838a-6--one);
+
+		.two {
+			border: var(--_csstools-p-7db4838a-7--zero);
+			padding: var(--_csstools-p-7db4838a-6--one);
+			margin: var(--_csstools-p-7db4838a-5--two);
+
+			.three {
+				border: var(--_csstools-p-7db4838a-7--zero);
+				padding: var(--_csstools-p-7db4838a-6--one);
+				margin: var(--_csstools-p-7db4838a-5--two);
+				inset: var(--_csstools-p-7db4838a-4--three);
+					--_csstools-p-7db4838a-4--three: 3px
+			}
+				--_csstools-p-7db4838a-5--two: 2px
+		}
+			--_csstools-p-7db4838a-6--one: 1px
+	}
+		--_csstools-p-7db4838a-7--zero: 0px
+}
