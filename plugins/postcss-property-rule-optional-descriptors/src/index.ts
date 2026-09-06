@@ -20,7 +20,6 @@ const creator: PluginCreator<pluginOptions> = () => {
 				atRule.append(postcss.decl({
 					prop: 'syntax',
 					value: '"*"',
-					// @ts-expect-error https://github.com/postcss/postcss/pull/2138
 					source: atRule.source
 				}));
 			}
@@ -29,7 +28,6 @@ const creator: PluginCreator<pluginOptions> = () => {
 				atRule.append(postcss.decl({
 					prop: 'inherits',
 					value: 'true',
-					// @ts-expect-error https://github.com/postcss/postcss/pull/2138
 					source: atRule.source
 				}));
 			}
