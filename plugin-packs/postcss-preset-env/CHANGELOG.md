@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 11.5.2
+
+_September 6, 2026_
 
 - Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#305) (patch)
 - Updated [`@csstools/postcss-fit-tolerance-property`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property/CHANGELOG.md#101) (patch)
