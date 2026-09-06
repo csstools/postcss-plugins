@@ -1,22 +1,59 @@
-import type { ChildNode, Declaration, Plugin } from 'postcss';
+import type { ChildNode, Declaration, Document, Plugin } from 'postcss';
 import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
 import { shorthands } from './shorthands';
+import type { ContainerWithChildren } from 'postcss/lib/container';
 
 const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;
 const IS_INITIAL_REGEX = /^initial$/i;
+const IS_PROPERTY_REGEX = /^property$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
+const IS_SUPPORTS_REGEX = /^supports$/i;
 const EMPTY_OR_WHITESPACE_REGEX = /^\s*$/;
 
 type State = {
 	conditionalRules: Array<AtRule>,
 	propNames: Set<string>,
-	lastConditionParams: {
-		support: string | undefined,
-	},
+	lastConditionParams: string | undefined,
 	lastConditionalRule: Container | undefined,
 };
 
+function inKeyframes(decl: Declaration): AtRule | void {
+	let parent: ContainerWithChildren|Document|undefined = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return parent;
+		}
+
+		parent = parent.parent;
+	}
+}
+
+function inSupports(atRule: AtRule): AtRule | void {
+	let parent: ContainerWithChildren | Document | undefined = atRule.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_SUPPORTS_REGEX.test(parent.name)) {
+			return parent;
+		}
+
+		parent = parent.parent;
+	}
+}
+
 function cloneDeclarations(target: Container<ChildNode>, decl: Declaration): void {
+	if (target.type === 'atrule' && IS_PROPERTY_REGEX.test((target as AtRule).name)) {
+		decl.parent?.each((d) => {
+			if (d.type === 'decl' && d.prop === decl.prop) {
+				return;
+			}
+
+			target.append(d.clone());
+		});
+
+		target.append(decl.clone());
+		return;
+	}
+
 	const longhands = shorthands.get(decl.prop.toLowerCase());
 	if (!longhands?.length) {
 		target.append(decl.clone());
@@ -50,17 +87,100 @@ const creator: PluginCreator<null> = () => {
 			return {
 				postcssPlugin: 'postcss-progressive-custom-properties',
 				OnceExit(root, { postcss }): void {
+					root.walkAtRules((atRule) => {
+						if (!IS_KEYFRAMES_REGEX.test(atRule.name)) {
+							return;
+						}
+
+						if (inSupports(atRule)) {
+							return;
+						}
+
+						const conditions: Array<string> = [];
+
+						const state = {
+							propNames: new Set<string>(),
+						};
+
+						const atRuleClone = atRule.clone();
+
+						atRule.walkDecls((decl) => {
+							let prop = decl.prop;
+							if (!decl.variable) {
+								prop = decl.prop.toLowerCase();
+							}
+
+							if (!state.propNames.has(prop)) {
+								state.propNames.add(prop);
+								return;
+							}
+
+							if (
+								!decl.variable &&
+								!HAS_VARIABLE_FUNCTION_REGEX.test(decl.value)
+							) {
+								return;
+							}
+
+							if (IS_INITIAL_REGEX.test(decl.value)) {
+								// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
+								return;
+							}
+
+							if (EMPTY_OR_WHITESPACE_REGEX.test(decl.value)) { // empty string value
+								// https://www.w3.org/TR/css-variables-1/#guaranteed-invalid
+								return;
+							}
+
+							// if the property itself isn't a custom property, the value must contain a var() function
+							const mustContainVar = !decl.variable;
+
+							const newConditions = conditionsFromValue(decl, mustContainVar);
+							if (!newConditions.length) {
+								return;
+							}
+
+							conditions.push(...newConditions);
+							decl.remove();
+						});
+
+						if (!conditions.length) {
+							return;
+						}
+
+						const supportParams = Array.from(new Set(conditions)).sort().join(' and ');
+						if (!supportParams) {
+							return;
+						}
+
+						const supportsRule = postcss.atRule({
+							name: 'supports',
+							params: supportParams,
+							source: atRule.source,
+							raws: {
+								before: '\n\n',
+								after: '\n',
+							},
+						});
+
+						supportsRule.append(atRuleClone);
+
+						atRule.after(supportsRule);
+					});
+
 					root.walkDecls((decl) => {
 						if (!decl.parent) {
+							return;
+						}
+
+						if (inKeyframes(decl)) {
 							return;
 						}
 
 						const state = states.get(decl.parent) || {
 							conditionalRules: [],
 							propNames: new Set<string>(),
-							lastConditionParams: {
-								support: undefined,
-							},
+							lastConditionParams: undefined,
 							lastConditionalRule: undefined,
 						};
 
@@ -82,7 +202,11 @@ const creator: PluginCreator<null> = () => {
 							}
 						}
 
-						if (!(decl.variable || HAS_VARIABLE_FUNCTION_REGEX.test(decl.value))) {
+						if (
+							!decl.variable &&
+							!(decl.parent.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name)) &&
+							!HAS_VARIABLE_FUNCTION_REGEX.test(decl.value)
+						) {
 							return;
 						}
 
@@ -97,15 +221,15 @@ const creator: PluginCreator<null> = () => {
 						}
 
 						// if the property itself isn't a custom property, the value must contain a var() function
-						const mustContainVar = !decl.variable;
+						const mustContainVar = !decl.variable && !(decl.parent.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name));
 
 						const conditions = conditionsFromValue(decl, mustContainVar);
-						const supportParams = conditions.support.join(' and ');
+						const supportParams = conditions.join(' and ');
 						if (!supportParams) {
 							return;
 						}
 
-						if (state.lastConditionParams.support !== supportParams) {
+						if (state.lastConditionParams !== supportParams) {
 							state.lastConditionalRule = undefined;
 						}
 
@@ -151,7 +275,7 @@ const creator: PluginCreator<null> = () => {
 						cloneDeclarations(parentClone, decl);
 						decl.remove();
 
-						state.lastConditionParams.support = supportParams;
+						state.lastConditionParams = supportParams;
 						state.lastConditionalRule = parentClone;
 
 						innerAtRule.append(parentClone);

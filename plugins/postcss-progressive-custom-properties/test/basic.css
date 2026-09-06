@@ -312,3 +312,51 @@
 	background: image(var(--green));
 	background-size: 100px;
 }
+
+.triple-declarations {
+	--alpha: red;
+	--alpha: color(srgb 1 0 0);
+	--alpha: oklch(50% 50% 0);
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: green;
+	initial-value: image(green) oklch(0 0 0);
+}
+
+@keyframes --foo {
+	to {
+		background: var(--green);
+		background: image(var(--green));
+		color: green;
+		color: oklch(var(--foo) 0 0);
+		width: 10px;
+	}
+}
+
+@keyframes --bar {
+	from {
+		--alpha: green;
+	}
+	50% {
+		--alpha: green;
+		--alpha: orange;
+	}
+	75% {
+		--alpha: color(srgb 1 0 0);
+	}
+	to {
+		--alpha: red;
+		--alpha: color(srgb 1 0 0);
+	}
+
+}
+
+@keyframes --triple {
+	to {
+		--alpha: red;
+		--alpha: color(srgb 1 0 0);
+		--alpha: oklch(50% 50% 0);
+	}
+}
