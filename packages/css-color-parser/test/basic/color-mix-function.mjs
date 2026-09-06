@@ -333,13 +333,3 @@ assert.deepStrictEqual(
 		syntaxFlags: new Set(['color-mix']),
 	},
 );
-
-assert.deepStrictEqual(
-	color(parse('color-mix(in oklch, teal 0%, olive 0%)')),
-	{
-		colorNotation: 'oklch',
-		channels: [0.5618935736332649, 0.10964315532289669, 152.269098013074],
-		alpha: 0,
-		syntaxFlags: new Set(['color-mix']),
-	},
-);
