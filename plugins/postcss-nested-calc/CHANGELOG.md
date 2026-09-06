@@ -1,6 +1,8 @@
 # Changes to PostCSS Nested Calc
 
-### Unreleased (patch)
+### 5.0.1
+
+_September 6, 2026_
 
 - Ignore `initial-value` in `@property` when preserving original values
 
