@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-fit-tolerance-property",
 	"description": "Use the fit tolerance property in css",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",

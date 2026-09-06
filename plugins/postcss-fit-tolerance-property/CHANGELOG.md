@@ -1,6 +1,8 @@
 # Changes to PostCSS Fit Tolerance Property
 
-### Unreleased (patch)
+### 1.0.1
+
+_September 6, 2026_
 
 - Skip properties with a fallback
 
