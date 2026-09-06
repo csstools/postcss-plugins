@@ -80,3 +80,14 @@
 	color-1: alpha(from color(srgb srgb-linear 0.5 1 0) / calc(alpha / 2));
 	color-2: alpha(from color(var(--foo) 0.5 1 0) / calc(alpha / 2));
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: alpha(from oklch(2 1 0) / calc(alpha / 2));
+}
+
+@keyframes --foo {
+	to {
+		--color: alpha(from oklch(2 1 0) / calc(alpha / 2));
+	}
+}

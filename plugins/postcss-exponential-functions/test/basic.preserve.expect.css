@@ -252,3 +252,15 @@
 	--prop-003: pow-a(1, 1);
 	--prop-004: a-pow(1, 1);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: log(exp(1));
+}
+
+@keyframes --foo {
+	to {
+		--foo: 1;
+		--foo: log(exp(1));
+	}
+}

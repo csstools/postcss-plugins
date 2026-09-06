@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Fox support conditions for `@property` and `@keyframes`
+- Fix support conditions for `@property` and `@keyframes`
 
 ### 5.1.2
 

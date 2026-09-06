@@ -112,3 +112,14 @@
 .experimental-features-from-the-color-parser {
 	color: hsla(from contrast-color(pink) h s l / alpha);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: hsla(from blue h s l / alpha);
+}
+
+@keyframes --foo {
+	to {
+		--foo: hsla(from blue h s l / alpha);
+	}
+}

@@ -2,7 +2,6 @@ import type { ChildNode, Declaration, Document, Plugin } from 'postcss';
 import { type Node, type AtRule, type PluginCreator, type Container } from 'postcss';
 import { conditionsFromValue } from './conditions-from-values';
 import { shorthands } from './shorthands';
-import type { ContainerWithChildren } from 'postcss/lib/container';
 
 const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;
 const IS_INITIAL_REGEX = /^initial$/i;
@@ -19,7 +18,7 @@ type State = {
 };
 
 function inKeyframes(decl: Declaration): AtRule | void {
-	let parent: ContainerWithChildren|Document|undefined = decl.parent;
+	let parent: typeof decl.parent | Document = decl.parent;
 	while (parent) {
 		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
 			return parent;
@@ -30,7 +29,7 @@ function inKeyframes(decl: Declaration): AtRule | void {
 }
 
 function inSupports(atRule: AtRule): AtRule | void {
-	let parent: ContainerWithChildren | Document | undefined = atRule.parent;
+	let parent: typeof atRule.parent | Document = atRule.parent;
 	while (parent) {
 		if (parent.type === 'atrule' && IS_SUPPORTS_REGEX.test(parent.name)) {
 			return parent;

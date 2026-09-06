@@ -1,5 +1,5 @@
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
-import type { ChildNode, Container, Plugin, PluginCreator, Rule } from 'postcss';
+import type { AtRule, ChildNode, Container, Declaration, Document, Plugin, PluginCreator, Rule } from 'postcss';
 import { LIGHT_PROP, OFF, ON, toggleNameGenerator } from './props';
 import { colorSchemes } from './color-schemes';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
@@ -8,6 +8,19 @@ import { newNestedRuleWithSupportsNot } from './nested-rule';
 
 const COLOR_SCHEME_REGEX = /^color-scheme$/i;
 const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
+const IS_PROPERTY_REGEX = /^property$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
+
+function inKeyframes(decl: Declaration): AtRule | void {
+	let parent: typeof decl.parent | Document = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return parent;
+		}
+
+		parent = parent.parent;
+	}
+}
 
 const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 	return {
@@ -25,6 +38,14 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 				Declaration(decl, { atRule, rule }): void {
 					const parent = decl.parent;
 					if (!parent) {
+						return;
+					}
+
+					if (inKeyframes(decl)) {
+						return;
+					}
+
+					if (decl.parent?.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name)) {
 						return;
 					}
 

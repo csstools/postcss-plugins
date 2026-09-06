@@ -197,3 +197,14 @@ to-clone {
 	color-1: lab(from lab(40% 56.6 39) l a b);
 	color-2: lch(from lch(40% 56.6 39) l c h);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: lch(60% 50 180);
+}
+
+@keyframes --foo {
+	to {
+		--foo: lch(60% 50 180);
+	}
+}

@@ -49,3 +49,9 @@
 	 */
 	content: ">" / "";
 }
+
+@keyframes --foo {
+	to {
+		content: var(--b) / var(--a);
+	}
+}

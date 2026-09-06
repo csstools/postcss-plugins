@@ -161,3 +161,31 @@
 	color-1: alpha(from color(srgb srgb-linear 0.5 1 0) / calc(alpha / 2));
 	color-2: alpha(from color(var(--foo) 0.5 1 0) / calc(alpha / 2));
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: oklch(from oklch(2 1 0) l c h / calc(alpha / 2));
+}
+
+@supports (color: alpha(from red / 1)) and (color: oklab(0% 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: alpha(from oklch(2 1 0) / calc(alpha / 2));
+}
+}
+
+@keyframes --foo {
+	to {
+		--color: oklch(from oklch(2 1 0) l c h / calc(alpha / 2));
+	}
+}
+
+@supports (color: alpha(from red / 1)) and (color: oklab(0% 0 0%)) {
+
+@keyframes --foo {
+	to {
+		--color: oklch(from oklch(2 1 0) l c h / calc(alpha / 2));
+		--color: alpha(from oklch(2 1 0) / calc(alpha / 2));
+	}
+}
+}

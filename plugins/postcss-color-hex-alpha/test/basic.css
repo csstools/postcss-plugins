@@ -23,3 +23,14 @@ body {
 to-clone {
 	color: #9823f8a9;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: #9823f8a9;
+}
+
+@keyframes --foo {
+	to {
+		--color: #9823f8a9;
+	}
+}

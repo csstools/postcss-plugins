@@ -3397,6 +3397,90 @@ export const matchers = [
 		]
 	},
 	{
+		"supports": "1vi",
+		"property": "width",
+		"sniff": "vi",
+		"matchers": [
+			{
+				"type": "word",
+				"value": "1vi",
+				"dimension": {
+					"unit": "vi"
+				}
+			}
+		]
+	},
+	{
+		"supports": "1vi",
+		"property": "width",
+		"sniff": "svi",
+		"matchers": [
+			{
+				"type": "word",
+				"value": "1svi",
+				"dimension": {
+					"unit": "svi"
+				}
+			}
+		]
+	},
+	{
+		"supports": "1vi",
+		"property": "width",
+		"sniff": "lvi",
+		"matchers": [
+			{
+				"type": "word",
+				"value": "1lvi",
+				"dimension": {
+					"unit": "lvi"
+				}
+			}
+		]
+	},
+	{
+		"supports": "1vi",
+		"property": "width",
+		"sniff": "vb",
+		"matchers": [
+			{
+				"type": "word",
+				"value": "1vb",
+				"dimension": {
+					"unit": "vb"
+				}
+			}
+		]
+	},
+	{
+		"supports": "1vi",
+		"property": "width",
+		"sniff": "svb",
+		"matchers": [
+			{
+				"type": "word",
+				"value": "1svb",
+				"dimension": {
+					"unit": "svb"
+				}
+			}
+		]
+	},
+	{
+		"supports": "1vi",
+		"property": "width",
+		"sniff": "lvb",
+		"matchers": [
+			{
+				"type": "word",
+				"value": "1lvb",
+				"dimension": {
+					"unit": "lvb"
+				}
+			}
+		]
+	},
+	{
 		"supports": "\"a\" / \"a\"",
 		"property": "content",
 		"only_on_property": "content",

@@ -1,5 +1,9 @@
 # Changes to PostCSS Trigonometric Functions
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property` when preserving original values
+
 ### 5.0.4
 
 _July 22, 2026_

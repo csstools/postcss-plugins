@@ -182,3 +182,14 @@
 .default-interpolation-space {
 	color: color-mix(#09232c, white 50%);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: color-mix(#09232c, white 50%);
+}
+
+@keyframes --foo {
+	to {
+		--color: color-mix(#09232c, white 50%);
+	}
+}

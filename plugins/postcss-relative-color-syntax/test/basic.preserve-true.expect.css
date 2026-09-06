@@ -215,3 +215,31 @@
 .experimental-features-from-the-color-parser {
 	color: hsla(from contrast-color(pink) h s l / alpha);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(0, 0, 255);
+}
+
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+@property --foo {
+	inherits: false;
+	initial-value: hsla(from blue h s l / alpha);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 0, 255);
+	}
+}
+
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 0, 255);
+		--foo: hsla(from blue h s l / alpha);
+	}
+}
+}

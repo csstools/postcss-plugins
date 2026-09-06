@@ -18,6 +18,22 @@
 	left: 5vi;
 }
 
+.svb {
+	left: 5svb;
+}
+
+.svi {
+	left: 5svi;
+}
+
+.lvb {
+	left: 5lvb;
+}
+
+.lvi {
+	left: 5lvi;
+}
+
 @supports (width: 100vb) {
 	.vi {
 		left: 5vi;
@@ -28,8 +44,7 @@
 	--var: 5vw;
 }
 
-@supports (top: 1vi) {
-
+@supports (width: 1vi) {
 :root {
 	--var: 5vi;
 }
@@ -43,4 +58,32 @@
 to-clone {
 	left: 5vw;
 	left: 5vi;
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: 5vw;
+}
+
+@supports (width: 1vi) {
+@property --foo {
+	inherits: false;
+	initial-value: 5vi;
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: 5vw;
+	}
+}
+
+@supports (width: 1vi) {
+
+@keyframes --foo {
+	to {
+		--foo: 5vw;
+		--foo: 5vi;
+	}
+}
 }

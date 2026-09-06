@@ -209,3 +209,14 @@
 	order: atan();
 	order: atan2();
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: 0.70711;
+}
+
+@keyframes --foo {
+	to {
+		--foo: 0.70711;
+	}
+}

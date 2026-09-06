@@ -32,6 +32,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
+			if (decl.parent?.type === 'atrule' && decl.parent.name.toLowerCase() === 'property') {
+				return;
+			}
+
 			const valueAST = valuesParser(decl.value);
 			valueAST.walk(node => {
 				if (node.type === 'word' && IS_REBECCAPURPLE_REGEX.test(node.value)) {

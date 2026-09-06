@@ -661,3 +661,27 @@
 	}
 }
 }
+
+.logical-units {
+	--prop-1: 1px;
+	--prop-2: 1px;
+	--prop-2: 2via;
+	--prop-3: 1px;
+	--prop-3: 2vi(1);
+	--prop-4: 1px;
+	--prop-5: 1px;
+	--prop-6: 1px;
+	--prop-7: 1px;
+	--prop-8: 1px;
+}
+
+@supports (width: 1vi) {
+.logical-units {
+	--prop-1: 2vi;
+	--prop-4: 2svi;
+	--prop-5: 2lvi;
+	--prop-6: 2vb;
+	--prop-7: 2svb;
+	--prop-8: 2lvb;
+}
+}

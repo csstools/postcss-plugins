@@ -209,3 +209,14 @@
 	order: atan();
 	order: atan2();
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: sin(45deg);
+}
+
+@keyframes --foo {
+	to {
+		--foo: sin(45deg);
+	}
+}

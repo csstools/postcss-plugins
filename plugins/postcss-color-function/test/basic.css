@@ -221,3 +221,14 @@
 to-clone {
 	color: color(display-p3 1 0 0);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.1 0.1 0.1);
+}
+
+@keyframes --foo {
+	to {
+		--color: color(display-p3 0.1 0.1 0.1);
+	}
+}

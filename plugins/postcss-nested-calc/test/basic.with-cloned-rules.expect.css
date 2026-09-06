@@ -69,3 +69,14 @@ to-clone {
 	width: calc(10px + (2px * 2));
 	width: calc(10px + calc(2px * 2));
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: calc(10px + calc(2px * 2));
+}
+
+@keyframes --foo {
+	to {
+		--foo: calc(10px + calc(2px * 2));
+	}
+}

@@ -215,3 +215,14 @@
 	background: linear-gradient(to right in oklch, oklch(50% 50% 0deg) 0%, oklch(50% 50% 120deg) 100%)
 }
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: color(srgb 0.99 1.0001 0.99);
+}
+
+@keyframes --foo {
+	to {
+		--foo: color(srgb 0.99 1.0001 0.99);
+	}
+}

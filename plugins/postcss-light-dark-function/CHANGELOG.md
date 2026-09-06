@@ -1,5 +1,10 @@
 # Changes to PostCSS Light Dark Function
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property`
+- Ignore `light-dark()` in `@keyframes`
+
 ### 3.0.3
 
 _August 15, 2026_

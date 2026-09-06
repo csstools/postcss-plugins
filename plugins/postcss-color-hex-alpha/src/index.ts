@@ -29,6 +29,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
+			if (decl.parent?.type === 'atrule' && decl.parent.name.toLowerCase() === 'property') {
+				return;
+			}
+
 			const { value: originalValue } = decl;
 
 			// replace instances of hexa with rgba()

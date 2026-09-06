@@ -329,3 +329,31 @@ to-clone {
 	color: rgb(255, 52, 40);
 	color: color(display-p3 1 0 0);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(26, 26, 26);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.1 0.1 0.1);
+}
+}
+
+@keyframes --foo {
+	to {
+		--color: rgb(26, 26, 26);
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+
+@keyframes --foo {
+	to {
+		--color: rgb(26, 26, 26);
+		--color: color(display-p3 0.1 0.1 0.1);
+	}
+}
+}

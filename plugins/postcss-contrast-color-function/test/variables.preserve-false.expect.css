@@ -1,3 +1,14 @@
 .a {
 	--color: rgb(0, 0, 0);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(255, 255, 255);
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(255, 255, 255);
+	}
+}

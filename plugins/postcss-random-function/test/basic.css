@@ -99,3 +99,14 @@
 .ignore-3 {
 	width: random(0, 10px);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: random(0, 10);
+}
+
+@keyframes --foo {
+	to {
+		--foo: random(0, 10);
+	}
+}

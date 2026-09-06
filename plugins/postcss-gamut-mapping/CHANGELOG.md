@@ -1,5 +1,10 @@
 # Changes to PostCSS gamut-mapping
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property`
+- Ignore wide gamut colors in `@keyframes`
+
 ### 3.0.10
 
 _August 31, 2026_

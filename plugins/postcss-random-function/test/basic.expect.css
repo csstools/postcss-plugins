@@ -1,5 +1,5 @@
 .random-1 {
-	z-index: 9.34135;
+	z-index: 2.09594;
 }
 
 .random-2 {
@@ -7,15 +7,15 @@
 }
 
 .random-3 {
-	z-index: 2.87044;
+	z-index: 0.56703;
 }
 
 .random-4 {
-	z-index: 9.07747;
+	z-index: 6.78979;
 }
 
 .random-11 {
-	width: 9.34135px;
+	width: 2.09594px;
 }
 
 .random-12 {
@@ -23,68 +23,68 @@
 }
 
 .random-13 {
-	width: 2.87044px;
+	width: 0.56703px;
 }
 
 .random-14 {
-	width: 9.07747px;
+	width: 6.78979px;
 }
 
 .random-15 {
 	padding: 5px 5px;
-	margin: 9.34135px 9.34135px;
-	inset: 2.87044px 2.87044px;
-	border-top-right-radius: 9.34135px;
-	border-top-left-radius: 9.34135px;
-	border-bottom-right-radius: 2.87044px;
-	border-bottom-left-radius: 2.87044px;
+	margin: 2.09594px 2.09594px;
+	inset: 0.56703px 0.56703px;
+	border-top-right-radius: 2.09594px;
+	border-top-left-radius: 2.09594px;
+	border-bottom-right-radius: 0.56703px;
+	border-bottom-left-radius: 0.56703px;
 }
 
 .random-15 {
 	padding: 5px 5px;
-	margin: 9.34135px 9.34135px;
-	inset: 2.87044px 2.87044px;
-	border-top-right-radius: 9.34135px;
-	border-top-left-radius: 9.34135px;
-	border-bottom-right-radius: 2.87044px;
-	border-bottom-left-radius: 2.87044px;
+	margin: 2.09594px 2.09594px;
+	inset: 0.56703px 0.56703px;
+	border-top-right-radius: 2.09594px;
+	border-top-left-radius: 2.09594px;
+	border-bottom-right-radius: 0.56703px;
+	border-bottom-left-radius: 0.56703px;
 }
 
 .random-15-b {
 	padding: 5px 5px;
-	margin: 9.34135px 9.34135px;
-	inset: 2.87044px 2.87044px;
-	border-top-right-radius: 9.34135px;
-	border-top-left-radius: 9.34135px;
-	border-bottom-right-radius: 2.87044px;
-	border-bottom-left-radius: 2.87044px;
+	margin: 2.09594px 2.09594px;
+	inset: 0.56703px 0.56703px;
+	border-top-right-radius: 2.09594px;
+	border-top-left-radius: 2.09594px;
+	border-bottom-right-radius: 0.56703px;
+	border-bottom-left-radius: 0.56703px;
 }
 
 .random-16 {
-	margin: 5.0658px 5.0658px;
-	inset: 1.28471px 1.28471px;
-	border-top-right-radius: 5.0658px;
-	border-top-left-radius: 5.0658px;
-	border-bottom-right-radius: 1.28471px;
-	border-bottom-left-radius: 1.28471px;
+	margin: 2.90875px 2.90875px;
+	inset: 4.37511px 4.37511px;
+	border-top-right-radius: 2.90875px;
+	border-top-left-radius: 2.90875px;
+	border-bottom-right-radius: 4.37511px;
+	border-bottom-left-radius: 4.37511px;
 }
 
 .random-16 {
-	margin: 5.0658px 5.0658px;
-	inset: 1.28471px 1.28471px;
-	border-top-right-radius: 5.0658px;
-	border-top-left-radius: 5.0658px;
-	border-bottom-right-radius: 1.28471px;
-	border-bottom-left-radius: 1.28471px;
+	margin: 2.90875px 2.90875px;
+	inset: 4.37511px 4.37511px;
+	border-top-right-radius: 2.90875px;
+	border-top-left-radius: 2.90875px;
+	border-bottom-right-radius: 4.37511px;
+	border-bottom-left-radius: 4.37511px;
 }
 
 .random-16-b {
-	margin: 6.36903px 6.36903px;
-	inset: 4.64922px 4.64922px;
-	border-top-right-radius: 6.36903px;
-	border-top-left-radius: 6.36903px;
-	border-bottom-right-radius: 4.64922px;
-	border-bottom-left-radius: 4.64922px;
+	margin: 5.45597px 5.45597px;
+	inset: 7.17757px 7.17757px;
+	border-top-right-radius: 5.45597px;
+	border-top-left-radius: 5.45597px;
+	border-bottom-right-radius: 7.17757px;
+	border-bottom-left-radius: 7.17757px;
 }
 
 .ignore-1 {
@@ -98,4 +98,15 @@
 
 .ignore-3 {
 	width: random(0, 10px);
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: 2.09594;
+}
+
+@keyframes --foo {
+	to {
+		--foo: 2.09594;
+	}
 }

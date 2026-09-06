@@ -27,3 +27,31 @@ to-clone {
 	text-indent: 2em;
 	text-indent: 2ic;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: 2em;
+}
+
+@supports (font-size: 1ic) {
+@property --foo {
+	inherits: false;
+	initial-value: 2ic;
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: 2em;
+	}
+}
+
+@supports (font-size: 1ic) {
+
+@keyframes --foo {
+	to {
+		--foo: 2em;
+		--foo: 2ic;
+	}
+}
+}

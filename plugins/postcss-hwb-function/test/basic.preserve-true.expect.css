@@ -38,3 +38,31 @@ to-clone {
 	color-1: hwb(from rgb(179, 157, 51) h w b);
 	color-1: hwb(from hwb(50deg 20% 30%) h w b);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(179, 157, 51);
+}
+
+@supports (color: hwb(0 0% 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: hwb(50deg 20% 30%);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(179, 157, 51);
+	}
+}
+
+@supports (color: hwb(0 0% 0%)) {
+
+@keyframes --foo {
+	to {
+		--foo: rgb(179, 157, 51);
+		--foo: hwb(50deg 20% 30%);
+	}
+}
+}

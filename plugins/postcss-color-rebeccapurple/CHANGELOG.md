@@ -1,5 +1,9 @@
 # Changes to PostCSS RebeccaPurple
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property`
+
 ### 11.0.0
 
 _January 14, 2026_

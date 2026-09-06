@@ -1,4 +1,4 @@
-import type { AtRule, Container, Declaration, Node, Plugin, PluginCreator } from 'postcss';
+import type { AtRule, Container, Declaration, Document, Node, Plugin, PluginCreator } from 'postcss';
 import { hasConditionalAncestor } from './has-conditional-ancestor';
 import { tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
@@ -10,13 +10,13 @@ export type pluginOptions = never;
 
 const HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX = /\b(?:color|lab|lch|oklab|oklch)\(/i;
 const HAS_WIDE_GAMUT_COLOR_NAME_REGEX = /^(?:color|lab|lch|oklab|oklch)$/i;
+const IS_PROPERTY_REGEX = /^property$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 type State = {
 	conditionalRules: Array<AtRule>,
 	propNames: Set<string>,
-	lastConditionParams: {
-		media: string | undefined,
-	},
+	lastConditionParams: string | undefined,
 	lastConditionalRule: Container | undefined,
 };
 
@@ -27,6 +27,17 @@ type Modification = {
 	hasFallback: boolean,
 	item: Declaration,
 };
+
+function inKeyframes(decl: Declaration): AtRule | void {
+	let parent: typeof decl.parent | Document = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return parent;
+		}
+
+		parent = parent.parent;
+	}
+}
 
 const creator: PluginCreator<pluginOptions> = () => {
 
@@ -49,6 +60,10 @@ const creator: PluginCreator<pluginOptions> = () => {
 						}
 
 						if (!decl.parent || hasConditionalAncestor(decl)) {
+							return;
+						}
+
+						if (inKeyframes(decl) || decl.parent.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name)) {
 							return;
 						}
 
@@ -124,9 +139,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							const state = states.get(parent) || {
 								conditionalRules: [],
 								propNames: new Set<string>(),
-								lastConditionParams: {
-									media: undefined,
-								},
+								lastConditionParams: undefined,
 								lastConditionalRule: undefined,
 							};
 
@@ -134,7 +147,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 							const condition = `(color-gamut: ${isRec2020 ? 'rec2020' : 'p3'})`;
 
-							if (state.lastConditionParams.media !== condition) {
+							if (state.lastConditionParams !== condition) {
 								state.lastConditionalRule = undefined;
 							}
 
@@ -178,7 +191,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 							visited.add(clone);
 
-							state.lastConditionParams.media = atRule.params;
+							state.lastConditionParams = atRule.params;
 							state.lastConditionalRule = parentClone;
 
 							atRule.append(parentClone);

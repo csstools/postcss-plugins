@@ -1,5 +1,10 @@
 # Changes to PostCSS image-set() Function
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property`
+- Ignore `image-set()` in `@keyframes`
+
 ### 8.0.0
 
 _January 14, 2026_

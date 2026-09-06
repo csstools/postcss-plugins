@@ -229,3 +229,31 @@ to-clone {
 	color-1: lab(from rgb(179, 35, 35) l a b);
 	color-2: lch(from rgb(163, 57, 39) l c h);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(0, 163, 142);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.17545 0.64269 0.56213);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 163, 142);
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 163, 142);
+		--foo: color(display-p3 0.17545 0.64269 0.56213);
+	}
+}
+}
