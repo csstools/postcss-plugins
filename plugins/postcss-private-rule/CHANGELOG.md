@@ -1,6 +1,8 @@
 # Changes to PostCSS Private Rule
 
-### Unreleased (patch)
+### 1.0.1
+
+_September 6, 2026_
 
 - Only assign new property names to the PostCSS AST when the name actually changed
 - Fix private property lookup for nested rules
