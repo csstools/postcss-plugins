@@ -297,3 +297,39 @@
 	color-2: oklch(from color(display-p3 0.47553 0.14324 0) l c h);
 	color-2: oklch(from oklch(40% 0.566 39deg) l c h);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(0, 149, 131);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+
+@supports (color: oklab(0% 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: oklch(60% 0.1250 180);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 149, 131);
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) and (color: oklab(0% 0 0%)) {
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 149, 131);
+		--foo: color(display-p3 0.19244 0.58461 0.51559);
+		--foo: oklch(60% 0.1250 180);
+	}
+}
+}

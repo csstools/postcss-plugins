@@ -355,3 +355,15 @@
 	order: atan();
 	order: atan2();
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: sin(45deg);
+}
+
+@keyframes --foo {
+	to {
+		--foo: 0.70711;
+		--foo: sin(45deg);
+	}
+}

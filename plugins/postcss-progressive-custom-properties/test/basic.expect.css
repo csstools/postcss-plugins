@@ -558,3 +558,130 @@
 	background-size: 100px;
 }
 }
+
+.triple-declarations {
+	--alpha: red;
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+.triple-declarations {
+	--alpha: color(srgb 1 0 0);
+}
+}
+
+@supports (color: oklab(0% 0 0%)) {
+.triple-declarations {
+	--alpha: oklch(50% 50% 0);
+}
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: green;
+}
+
+@supports (background-image: image(red)) and (color: oklab(0% 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: image(green) oklch(0 0 0);
+}
+}
+
+@keyframes --foo {
+	to {
+		background: var(--green);
+		color: green;
+		width: 10px;
+	}
+}
+
+@supports (background-image: image(red)) and (color: oklab(0% 0 0%)) {
+
+@keyframes --foo {
+	to {
+		background: var(--green);
+		background: image(var(--green));
+		color: green;
+		color: oklch(var(--foo) 0 0);
+		width: 10px;
+	}
+}
+}
+
+@keyframes --bar {
+	from {
+		--alpha: green;
+	}
+	50% {
+		--alpha: green;
+		--alpha: orange;
+	}
+	75% {
+	}
+	to {
+		--alpha: red;
+	}
+
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+
+@keyframes --bar {
+	from {
+		--alpha: green;
+	}
+	50% {
+		--alpha: green;
+		--alpha: orange;
+	}
+	75% {
+		--alpha: color(srgb 1 0 0);
+	}
+	to {
+		--alpha: red;
+		--alpha: color(srgb 1 0 0);
+	}
+
+}
+}
+
+@keyframes --triple {
+	to {
+		--alpha: red;
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) and (color: oklab(0% 0 0%)) {
+
+@keyframes --triple {
+	to {
+		--alpha: red;
+		--alpha: color(srgb 1 0 0);
+		--alpha: oklch(50% 50% 0);
+	}
+}
+}
+
+.logical-units {
+	--prop-1: 1px;
+	--prop-2: 1px;
+	--prop-2: 2via;
+	--prop-3: 1px;
+	--prop-3: 2vi(1);
+	--prop-4: 1px;
+	--prop-5: 1px;
+	--prop-6: 1px;
+	--prop-7: 1px;
+	--prop-8: 1px;
+}
+
+@supports (width: 1vi) {
+.logical-units {
+	--prop-1: 2vi;
+	--prop-4: 2svi;
+	--prop-5: 2lvi;
+	--prop-6: 2vb;
+	--prop-7: 2svb;
+	--prop-8: 2lvb;
+}
+}

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { alphaMatchers, colorMatchers, hslMatchers, hwbMatchers, labMatchers, lchMatchers, oklabMatchers, oklchMatchers, rgbMatchers } from './color.mjs';
 import { colorMixMatchers } from './color-mix.mjs';
-import { icUnitMatchers } from './font-size.mjs';
+import { icUnitMatchers, logicalUnitMatchers } from './units.mjs';
 import { lightDarkMatchers } from './light-dark.mjs';
 import { relativeColorSyntaxMatches } from './relative-color-syntax.mjs';
 import { contrastColorMatchers } from './contrast-color.mjs';
@@ -33,6 +33,9 @@ fs.writeFile(
 
 			// font-size:
 			...icUnitMatchers,
+
+			// width:
+			...logicalUnitMatchers,
 
 			// content:
 			...contentMatchers,

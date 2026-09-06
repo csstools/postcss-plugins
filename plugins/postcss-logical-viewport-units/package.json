@@ -42,6 +42,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-tokenizer": "^4.0.0",
+		"@csstools/postcss-progressive-custom-properties": "^5.1.2",
 		"@csstools/utilities": "^3.0.0"
 	},
 	"peerDependencies": {

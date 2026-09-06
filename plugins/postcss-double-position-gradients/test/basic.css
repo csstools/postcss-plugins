@@ -77,3 +77,14 @@
 to-clone {
 	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+@keyframes --foo {
+	to {
+		--foo: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	}
+}

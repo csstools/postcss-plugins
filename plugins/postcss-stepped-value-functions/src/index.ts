@@ -8,6 +8,7 @@ export type pluginOptions = {
 };
 
 const FUNCTION_CALL_REGEX = /(?<![-\w])(?:mod|rem|round)\(/i;
+const IS_PROPERTY_REGEX = /^property$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
@@ -23,6 +24,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		postcssPlugin: 'postcss-stepped-value-functions',
 		Declaration(decl): void {
 			if (!FUNCTION_CALL_REGEX.test(decl.value)) {
+				return;
+			}
+
+			if (options.preserve && decl.parent?.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name)) {
 				return;
 			}
 

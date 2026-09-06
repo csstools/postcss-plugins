@@ -85,3 +85,15 @@
 	--foo: 10px;
 	z-index: sign(var(--foo));
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: sign(10px);
+}
+
+@keyframes --foo {
+	to {
+		--foo: 1;
+		--foo: sign(10px);
+	}
+}

@@ -23,3 +23,14 @@
 		background-image: image(rgba(0, 0, 255, .5)), image(rgba(255, 0, 255, .5)), url("bg-image.png");
 	}
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: linear-gradient(red,red);
+}
+
+@keyframes --foo {
+	to {
+		--foo: linear-gradient(red,red);
+	}
+}

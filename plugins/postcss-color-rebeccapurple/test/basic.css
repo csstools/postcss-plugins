@@ -15,3 +15,14 @@ footer {
 to-clone {
 	color: rebeccapurple;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rebeccapurple;
+}
+
+@keyframes --foo {
+	to {
+		--color: rebeccapurple;
+	}
+}

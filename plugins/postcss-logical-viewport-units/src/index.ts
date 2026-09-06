@@ -1,27 +1,28 @@
+import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import type { PluginCreator } from 'postcss';
 import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 import { DirectionFlow } from './lib/types';
+import type { Replacements} from './transform';
 import { transform } from './transform';
 import { predicate } from './has-feature';
 
 export type { DirectionFlow } from './lib/types';
 
 /** postcss-logical-viewport-units plugin options */
-export type pluginOptions = {
-	/** Preserve the original notation. default: false */
-	preserve?: boolean,
+export type basePluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve: boolean,
 	/** Sets the direction for inline. default: left-to-right */
 	inlineDirection?: DirectionFlow,
 };
 
-const HAS_VIEWPORT_UNITS_REGEX = /(?:vi|vb)\b/i;
+const HAS_VIEWPORT_UNITS_REGEX = /(?:vi|vb|svi|svb|lvi|lvb)\b/i;
 
-const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	const options = Object.assign(
 		// Default options
 		{
 			inlineDirection: DirectionFlow.LeftToRight,
-			preserve: true,
 		},
 		// Provided options
 		opts,
@@ -39,7 +40,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	const isHorizontal = [DirectionFlow.LeftToRight, DirectionFlow.RightToLeft].includes(options.inlineDirection);
 
-	const replacements: { vi: 'vw' | 'vh', vb: 'vw' | 'vh' } = {
+	const replacements: Replacements = {
 		vb: 'vh',
 		vi: 'vw',
 	};
@@ -51,7 +52,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-logical-viewport-units',
-		Declaration(decl, { atRule }): void {
+		Declaration(decl): void {
 			{
 				if (!HAS_VIEWPORT_UNITS_REGEX.test(decl.value)) {
 					return;
@@ -78,35 +79,45 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			if (!options.preserve) {
 				decl.remove();
-				return;
 			}
-
-			if (!decl.variable) {
-				return;
-			}
-
-			const supports = atRule({
-				name: 'supports',
-				params: '(top: 1vi)',
-				source: decl.source,
-			});
-
-			const parent = decl.parent;
-			if (!parent) {
-				return;
-			}
-
-			const parentClone = parent.cloneAfter({ nodes: [] });
-
-			parentClone.append(decl);
-			supports.append(parentClone);
-
-			parent.after(supports);
 		},
 	};
 };
 
-creator.postcss = true;
 
-export default creator;
-export { creator as 'module.exports' };
+basePlugin.postcss = true;
+
+/** postcss-logical-viewport-units plugin options */
+export type pluginOptions = {
+	/** Preserve the original notation. default: true */
+	preserve?: boolean,
+	/** Sets the direction for inline. default: left-to-right */
+	inlineDirection?: DirectionFlow,
+	/** Enable "@csstools/postcss-progressive-custom-properties". default: true */
+	enableProgressiveCustomProperties?: boolean,
+};
+
+const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
+	const options = Object.assign({
+		preserve: true,
+		enableProgressiveCustomProperties: true,
+	}, opts);
+
+	if (options.enableProgressiveCustomProperties && options.preserve) {
+		return {
+			postcssPlugin: 'postcss-logical-viewport-units',
+			plugins: [
+				postcssProgressiveCustomProperties(),
+				basePlugin(options),
+			],
+		};
+	}
+
+	return basePlugin(options);
+};
+
+postcssPlugin.postcss = true;
+
+export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };
+

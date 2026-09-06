@@ -26,5 +26,42 @@
 }
 
 .zero-percentage {
-	color: color-mix(in srgb, blue 0%, yellow 0%);
+	color: rgba(128, 159, 64, 0);
+	color: color-mix(in srgb, blue 0%, green 0%, yellow 0%);
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(164, 153, 0);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.64336 0.60238 0);
+}
+}
+
+@supports (color: color-mix(in lch, red)) {
+@property --foo {
+	inherits: false;
+	initial-value: color-mix(in oklch, red, lime, green);
+}
+}
+
+@keyframes --foo {
+	to {
+		--color: rgb(164, 153, 0);
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) and (color: color-mix(in lch, red)) {
+
+@keyframes --foo {
+	to {
+		--color: rgb(164, 153, 0);
+		--color: color(display-p3 0.64336 0.60238 0);
+		--color: color-mix(in oklch, red, lime, green);
+	}
+}
 }

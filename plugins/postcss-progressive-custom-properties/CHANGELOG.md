@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (patch)
+
+- Fix support conditions for `@property` and `@keyframes`
+
 ### 5.1.2
 
 _August 15, 2026_

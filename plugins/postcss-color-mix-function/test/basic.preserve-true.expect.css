@@ -269,3 +269,31 @@
 	color: rgb(123, 137, 142);
 	color: color-mix(#09232c, white 50%);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(123, 137, 142);
+}
+
+@supports (color: color-mix(red, blue)) {
+@property --foo {
+	inherits: false;
+	initial-value: color-mix(#09232c, white 50%);
+}
+}
+
+@keyframes --foo {
+	to {
+		--color: rgb(123, 137, 142);
+	}
+}
+
+@supports (color: color-mix(red, blue)) {
+
+@keyframes --foo {
+	to {
+		--color: rgb(123, 137, 142);
+		--color: color-mix(#09232c, white 50%);
+	}
+}
+}

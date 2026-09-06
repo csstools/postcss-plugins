@@ -166,3 +166,14 @@
 	color-1: oklab(from oklab(40% 0.566 0.39) l a b);
 	color-2: oklch(from oklch(40% 0.566 39deg) l c h);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: oklch(60% 0.1250 180);
+}
+
+@keyframes --foo {
+	to {
+		--foo: oklch(60% 0.1250 180);
+	}
+}

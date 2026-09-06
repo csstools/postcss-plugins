@@ -26,6 +26,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
+			if (options.preserve && decl.parent?.type === 'atrule' && decl.parent.name.toLowerCase() === 'property') {
+				return;
+			}
+
 			const modifiedValue = calc(decl.value);
 			if (modifiedValue === decl.value) {
 				return;

@@ -188,3 +188,14 @@
 .default-interpolation-space {
 	color: rgb(123, 137, 142);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(123, 137, 142);
+}
+
+@keyframes --foo {
+	to {
+		--color: rgb(123, 137, 142);
+	}
+}

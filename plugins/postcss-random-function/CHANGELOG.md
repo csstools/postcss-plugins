@@ -1,5 +1,9 @@
 # Changes to PostCSS Random Function
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property` when preserving original values
+
 ### 4.0.0
 
 _July 22, 2026_

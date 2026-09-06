@@ -1,5 +1,9 @@
 # Changes to PostCSS Sign Functions
 
+### Unreleased (patch)
+
+- Ignore `initial-value` in `@property` when preserving original values
+
 ### 2.0.4
 
 _July 22, 2026_

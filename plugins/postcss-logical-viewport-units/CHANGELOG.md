@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Viewport Units
 
+### Unreleased (patch)
+
+- Better fallbacks for custom properties
+
 ### 4.0.0
 
 _January 14, 2026_

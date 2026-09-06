@@ -1,11 +1,13 @@
 import valueParser from 'postcss-value-parser';
 import { processImageSet } from './lib/process-image-set';
-import type { PluginCreator } from 'postcss';
+import type { AtRule, Declaration, Document, PluginCreator } from 'postcss';
 import { handleInvalidation } from './lib/handle-invalidation';
 import { hasFallback } from '@csstools/utilities';
 
 const IMAGE_SET_VALUE_MATCH_REGEX = /(?:^|[^\w-])(?:-webkit-)?image-set\(/i;
 const IMAGE_SET_FUNCTION_MATCH_REGEX = /^(?:-webkit-)?image-set$/i;
+const IS_PROPERTY_REGEX = /^property$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 /** postcss-image-set-function plugin options */
 export type pluginOptions = {
@@ -19,6 +21,17 @@ export type pluginOptions = {
 	 */
 	onInvalid?: 'warn' | 'throw' | 'ignore' | false
 };
+
+function inKeyframes(decl: Declaration): AtRule | void {
+	let parent: typeof decl.parent | Document = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return parent;
+		}
+
+		parent = parent.parent;
+	}
+}
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// prepare options
@@ -40,6 +53,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			if (hasFallback(decl)) {
+				return;
+			}
+
+			if (inKeyframes(decl)) {
+				return;
+			}
+
+			if (decl.parent?.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name)) {
 				return;
 			}
 

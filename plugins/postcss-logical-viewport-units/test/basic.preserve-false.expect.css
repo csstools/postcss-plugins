@@ -1,17 +1,17 @@
 .foo {
-	margin: 10vi 20vb;
+	margin: 10vw 20vh;
 }
 
 .foo {
-	margin: calc(10vi + 5vb);
+	margin: calc(10vw + 5vh);
 }
 
 .vb {
-	left: 5vb;
+	left: 5vh;
 }
 
 .vi {
-	left: 5vi;
+	left: 5vw;
 }
 
 .svb {
@@ -37,7 +37,7 @@
 }
 
 :root {
-	--var: 5vi;
+	--var: 5vw;
 }
 
 .fallback {
@@ -46,16 +46,16 @@
 }
 
 to-clone {
-	left: 5vi;
+	left: 5vw;
 }
 
 @property --foo {
 	inherits: false;
-	initial-value: 5vi;
+	initial-value: 5vw;
 }
 
 @keyframes --foo {
 	to {
-		--foo: 5vi;
+		--foo: 5vw;
 	}
 }

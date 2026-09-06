@@ -27,3 +27,31 @@ to-clone {
 	color: color(display-p3 1 0 0);
 	color: color(display-p3-linear 1 0 0);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.34919 0.34919 0.34919);
+}
+
+@supports (color: color(display-p3-linear 0 0 0)) {
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3-linear 0.1 0.1 0.1);
+}
+}
+
+@keyframes --foo {
+	to {
+		--color: color(display-p3 0.34919 0.34919 0.34919);
+	}
+}
+
+@supports (color: color(display-p3-linear 0 0 0)) {
+
+@keyframes --foo {
+	to {
+		--color: color(display-p3 0.34919 0.34919 0.34919);
+		--color: color(display-p3-linear 0.1 0.1 0.1);
+	}
+}
+}

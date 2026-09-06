@@ -332,3 +332,31 @@ to-clone {
 .experimental-features-from-the-color-parser {
 	background-image: linear-gradient(in oklab 90deg, contrast-color(pink) 25% 50%, blue 70% 75%);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), rgb(157, 179, 255), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), color(display-p3 0.63036 0.6977 1.01537), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), rgb(157, 179, 255), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+
+@keyframes --foo {
+	to {
+		--foo: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), rgb(157, 179, 255), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+		--foo: conic-gradient(rgb(255, 150, 150) 0deg, rgb(246, 162, 100), rgb(213, 182, 78), rgb(160, 200, 109), rgb(93, 210, 163), rgb(41, 208, 217), rgb(93, 196, 254), color(display-p3 0.63036 0.6977 1.01537), rgb(207, 162, 246), rgb(241, 150, 204), rgb(255, 150, 150) 360deg);
+	}
+}
+}
