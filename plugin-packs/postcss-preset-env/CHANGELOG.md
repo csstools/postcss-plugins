@@ -1,5 +1,20 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-fit-tolerance-property`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-fit-tolerance-property/CHANGELOG.md#101) (patch)
+- Updated [`@csstools/postcss-gamut-mapping`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping) to [`3.0.11`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping/CHANGELOG.md#3011) (patch)
+- Updated [`@csstools/postcss-nested-calc`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc/CHANGELOG.md#501) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#513) (patch)
+- Updated [`@csstools/postcss-random-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-random-function/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/postcss-sign-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions) to [`2.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-sign-functions/CHANGELOG.md#205) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#505) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#505) (patch)
+- Updated [`postcss-color-hex-alpha`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha/CHANGELOG.md#1101) (patch)
+- Updated [`postcss-color-rebeccapurple`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple/CHANGELOG.md#1101) (patch)
+- Updated [`postcss-image-set-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function/CHANGELOG.md#801) (patch)
+
 ### 11.5.1
 
 _August 31, 2026_

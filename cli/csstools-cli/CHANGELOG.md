@@ -11,6 +11,13 @@
 - Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`8.0.10`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#8010) (patch)
 - Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`8.0.10`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#8010) (patch)
 - Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`11.5.1`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#1151) (patch)
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-nested-calc`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc) to [`5.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc/CHANGELOG.md#501) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#505) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#505) (patch)
+- Updated [`postcss-color-hex-alpha`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-hex-alpha/CHANGELOG.md#1101) (patch)
+- Updated [`postcss-color-rebeccapurple`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-rebeccapurple/CHANGELOG.md#1101) (patch)
+- Updated [`postcss-image-set-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function/CHANGELOG.md#801) (patch)
 
 ### 5.0.11
 

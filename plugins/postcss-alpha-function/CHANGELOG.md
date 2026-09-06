@@ -1,5 +1,9 @@
 # Changes to PostCSS Alpha Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#513) (patch)
+
 ### 2.0.11
 
 _August 31, 2026_
