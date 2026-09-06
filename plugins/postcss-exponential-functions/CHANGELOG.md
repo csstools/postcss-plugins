@@ -1,6 +1,8 @@
 # Changes to PostCSS Exponential Functions
 
-### Unreleased (patch)
+### 3.0.5
+
+_September 6, 2026_
 
 - Ignore `initial-value` in `@property` when preserving original values
 
