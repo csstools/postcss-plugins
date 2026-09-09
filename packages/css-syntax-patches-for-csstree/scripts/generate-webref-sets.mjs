@@ -106,6 +106,11 @@ export async function generate_webref_sets() {
 		// https://github.com/w3c/csswg-drafts/issues/13311
 		types['voice-family-name'] = '<string> | <custom-ident>+';
 
+		// https://github.com/w3c/csswg-drafts/issues/14466
+		// https://github.com/w3c/webref/issues/2046
+		types['sibling-index'] = 'sibling-index()';
+		types['sibling-count'] = 'sibling-count()';
+
 		assign_new_atrule_descriptor_definition(
 			atrules,
 			trim_at('position-try'),

@@ -186,7 +186,7 @@
 		"syntax": "tb | rl | bt | lr"
 	},
 	"block-size": {
-		"syntax": "<'width'>"
+		"syntax": "auto | <box-size>"
 	},
 	"block-step": {
 		"syntax": "<'block-step-size'> || <'block-step-insert'> || <'block-step-align'> || <'block-step-round'>"
@@ -675,7 +675,7 @@
 		"syntax": "none | <integer [1,∞]> | all | auto"
 	},
 	"column-width": {
-		"syntax": "auto | <length [0,∞]> | min-content | max-content | fit-content( <length-percentage> )"
+		"syntax": "auto | <length [0,∞]> | <box-size>"
 	},
 	"column-wrap": {
 		"syntax": "auto | nowrap | wrap"
@@ -1212,7 +1212,7 @@
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
 	},
 	"height": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
+		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
 	},
 	"-ms-high-contrast-adjust": {
 		"syntax": "auto | none"
@@ -1275,7 +1275,7 @@
 		"syntax": "none | first | all | grid | <length-percentage>"
 	},
 	"inline-size": {
-		"syntax": "<'width'>"
+		"syntax": "auto | <box-size>"
 	},
 	"inline-sizing": {
 		"syntax": "normal | stretch"
@@ -1551,34 +1551,40 @@
 		"syntax": "normal | compact"
 	},
 	"max-block-size": {
-		"syntax": "<'max-width'>"
+		"syntax": "none | <box-size>"
 	},
 	"max-height": {
-		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
+		"syntax": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
 	},
 	"max-inline-size": {
-		"syntax": "<'max-width'>"
+		"syntax": "none | <box-size>"
 	},
 	"max-lines": {
 		"syntax": "none | <integer [1,∞]>"
 	},
+	"max-size": {
+		"syntax": "<'max-width'> <'max-height'>?"
+	},
 	"max-width": {
-		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
+		"syntax": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
 	},
 	"min-block-size": {
-		"syntax": "<'min-width'>"
+		"syntax": "auto | <box-size>"
 	},
 	"min-height": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
+		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
 	},
 	"min-inline-size": {
-		"syntax": "<'min-width'>"
+		"syntax": "auto | <box-size>"
 	},
 	"min-intrinsic-sizing": {
 		"syntax": "legacy | zero-if-scroll || zero-if-extrinsic"
 	},
+	"min-size": {
+		"syntax": "<'min-width'> <'min-height'>?"
+	},
 	"min-width": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
+		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
 	},
 	"mix-blend-mode": {
 		"syntax": "<blend-mode> | plus-lighter"
@@ -2127,7 +2133,7 @@
 		"syntax": "normal | always"
 	},
 	"scroll-snap-type": {
-		"syntax": "none | [ x | y | block | inline | both ] [ mandatory | proximity ]?"
+		"syntax": "none | [ x | y | block | inline | both | pair ] [ mandatory | proximity ]?"
 	},
 	"-ms-scroll-snap-type": {
 		"syntax": "none | proximity | mandatory"
@@ -2209,6 +2215,9 @@
 	},
 	"shape-rendering": {
 		"syntax": "auto | optimizeSpeed | crispEdges | geometricPrecision"
+	},
+	"size": {
+		"syntax": "<'width'> <'height'>?"
 	},
 	"slider-orientation": {
 		"syntax": "auto | left-to-right | right-to-left | top-to-bottom | bottom-to-top"
@@ -2655,7 +2664,7 @@
 		"syntax": "<integer [1,∞]>"
 	},
 	"width": {
-		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | fit-content | contain"
+		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"
