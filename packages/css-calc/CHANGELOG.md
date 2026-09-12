@@ -1,5 +1,9 @@
 # Changes to CSS Calc
 
+### Unreleased (minor)
+
+- Add `calcWrapper` option.
+
 ### 3.3.0
 
 _July 22, 2026_

@@ -1,46 +1,46 @@
 .computed {
 	/* Identity tests */
-	--prop-001: 1;
+	--prop-001: calc(1);
 	--prop-001: pow(1,1);
-	--prop-002: 1;
+	--prop-002: calc(1);
 	--prop-002: sqrt(1);
-	--prop-003: 1;
+	--prop-003: calc(1);
 	--prop-003: hypot(1);
 
 	/* Nestings */
-	--prop-004: 1;
+	--prop-004: calc(1);
 	--prop-004: sqrt(pOw(1,1));
-	--prop-005: 1;
+	--prop-005: calc(1);
 	--prop-005: hypot(pow(1, sqrt(1)));
-	--prop-006: 1;
+	--prop-006: calc(1);
 	--prop-006: calc(hypot(pow((1 + sqrt(1)) / 2, sqrt(1))));
 
 	/* General calculations */
-	--prop-007: 1600px;
+	--prop-007: calc(1600px);
 	--prop-007: calc(100px * pow(2, pow(2, 2)));
-	--prop-008: 8px;
+	--prop-008: calc(8px);
 	--prop-008: calc(1px * pow(2, 3));
-	--prop-009: 1000px;
+	--prop-009: calc(1000px);
 	--prop-009: calc(100px * sqrt(100));
-	--prop-010: 1024px;
+	--prop-010: calc(1024px);
 	--prop-010: calc(1px * pow(2, sQrt(100)));
-	--prop-011: 5px;
+	--prop-011: calc(5px);
 	--prop-011: hypot(3px, 4px);
-	--prop-012: 5000000000px;
+	--prop-012: calc(5000000000px);
 	--prop-012: hypot(3e+9px, 4e+9px);
-	--prop-013: 500px;
+	--prop-013: calc(500px);
 	--prop-013: calc(100px * hypot(3, 4));
-	--prop-014: 5px;
+	--prop-014: calc(5px);
 	--prop-014: hypot(-5px);
-	--prop-015: 5px;
+	--prop-015: calc(5px);
 	--prop-015: calc(1px * hypot(-5));
-	--prop-016: 10000px;
+	--prop-016: calc(10000px);
 	--prop-016: calc(1px * hypot(10000));
-	--prop-017: 20000px;
+	--prop-017: calc(20000px);
 	--prop-017: calc(2px * sqrt(100000000));
-	--prop-018: 480000px;
+	--prop-018: calc(480000px);
 	--prop-018: calc(3px * pow(20, 4));
-	--prop-019: -10px;
+	--prop-019: calc(-10px);
 	--prop-019: calc(-2 * hypot(3px, 4px));
 	--prop-020: hypot(0% + 3px, 0% + 4px);
 	--prop-021: hypot(0% + 772.333px);
@@ -48,47 +48,47 @@
 	--prop-023: hypot(0% + 600px, 0% + 800px);
 
 	/* Type checking hypot */
-	--prop-024: 1px;
+	--prop-024: calc(1px);
 	--prop-024: hypot(1px);
-	--prop-025: 1cm;
+	--prop-025: calc(37.79528px);
 	--prop-025: hypot(1cm);
-	--prop-026: 1mm;
+	--prop-026: calc(3.77953px);
 	--prop-026: hypot(1mm);
-	--prop-027: 1Q;
+	--prop-027: calc(0.94488px);
 	--prop-027: hypot(1Q);
-	--prop-028: 1in;
+	--prop-028: calc(96px);
 	--prop-028: hypot(1in);
-	--prop-029: 1pc;
+	--prop-029: calc(16px);
 	--prop-029: hypot(1pc);
-	--prop-030: 1pt;
+	--prop-030: calc(1.33333px);
 	--prop-030: hypot(1pt);
-	--prop-031: 1em;
+	--prop-031: calc(1em);
 	--prop-031: hypot(1em);
-	--prop-032: 1ex;
+	--prop-032: calc(1ex);
 	--prop-032: hypot(1ex);
-	--prop-033: 1ch;
+	--prop-033: calc(1ch);
 	--prop-033: hypot(1ch);
-	--prop-034: 1rem;
+	--prop-034: calc(1rem);
 	--prop-034: hypot(1rem);
-	--prop-035: 1vh;
+	--prop-035: calc(1vh);
 	--prop-035: hypot(1vh);
-	--prop-036: 1vw;
+	--prop-036: calc(1vw);
 	--prop-036: hypot(1vw);
-	--prop-037: 1vmin;
+	--prop-037: calc(1vmin);
 	--prop-037: hypot(1vmin);
-	--prop-038: 1vmax;
+	--prop-038: calc(1vmax);
 	--prop-038: hypot(1vmax);
-	--prop-039: 1s;
+	--prop-039: calc(1s);
 	--prop-039: hypot(1s);
-	--prop-040: 1ms;
+	--prop-040: calc(0.001s);
 	--prop-040: hypot(1ms);
-	--prop-041: 1deg;
+	--prop-041: calc(1deg);
 	--prop-041: hypot(1deg);
-	--prop-042: 1grad;
+	--prop-042: calc(0.9deg);
 	--prop-042: hypot(1grad);
-	--prop-043: 1rad;
+	--prop-043: calc(57.29578deg);
 	--prop-043: hypot(1rad);
-	--prop-044: 1turn;
+	--prop-044: calc(360deg);
 	--prop-044: hypot(1turn);
 }
 
@@ -145,45 +145,45 @@
 
 .computed {
 	/* Simple tests */
-	--prop-001: 0;
+	--prop-001: calc(0);
 	--prop-001: log(1);
-	--prop-002: 1;
+	--prop-002: calc(1);
 	--prop-002: log(10, 10);
-	--prop-003: 1;
+	--prop-003: calc(1);
 	--prop-003: exp(0);
 
 	/* Test e */
-	--prop-004: 1;
+	--prop-004: calc(1);
 	--prop-004: calc(log(e));
-	--prop-005: 0;
+	--prop-005: calc(0);
 	--prop-005: calc(e - exp(1));
 
 	/* General calculations */
-	--prop-006: 0;
+	--prop-006: calc(0);
 	--prop-006: calc(log(1 + 1 + 2 /2 - 2));
-	--prop-007: 1;
+	--prop-007: calc(1);
 	--prop-007: calc(log(1) + exp(0));
-	--prop-008: 7.3890560989307;
+	--prop-008: calc(7.38906);
 	--prop-008: calc(exp(log(1) + exp(0)*2));
-	--prop-009: 2.302585092994;
+	--prop-009: calc(2.30259);
 	--prop-009: calc(log(log(1) + exp(0)*10));
-	--prop-010: 1.301029995664;
+	--prop-010: calc(1.30103);
 	--prop-010: calc(log(log(1) + exp(0)*20, 10));
-	--prop-011: 3;
+	--prop-011: calc(3);
 	--prop-011: calc(log(e) / log(e) + exp(0)*2 * log(e));
-	--prop-012: 2;
+	--prop-012: calc(2);
 	--prop-012: calc(log((1 + 1) /2) / log(e) + exp(0*1)*2 * log(e));
-	--prop-013: 3;
+	--prop-013: calc(3);
 	--prop-013: calc(log((3 + 1) /2, 2) / log(e) + exp(0*1)*2 * log(e));
-	--prop-014: 3;
+	--prop-014: calc(3);
 	--prop-014: calc(log((3 + 1) /2, 2) / log(e, e) + exp(0*1)*2 * log(e, e));
-	--prop-015: 2;
+	--prop-015: calc(2);
 	--prop-015: calc(exp(0) + 1);
 
 	/* Test nesting */
-	--prop-016: 1;
+	--prop-016: calc(1);
 	--prop-016: calc(log(exp(1)));
-	--prop-017: 1;
+	--prop-017: calc(1);
 	--prop-017: calc(log(exp(log(e))));
 }
 
@@ -242,7 +242,7 @@
 }
 
 .mixed {
-	border: 1600px wavy pink;
+	border: calc(1600px) wavy pink;
 	border: calc(100px * pow(2, pow(2, 2))) wavy pink;
 }
 
@@ -260,7 +260,12 @@
 
 @keyframes --foo {
 	to {
-		--foo: 1;
+		--foo: calc(1);
 		--foo: log(exp(1));
 	}
+}
+
+.foo {
+	z-index: calc(2.71828);
+	z-index: exp(1);
 }

@@ -22,13 +22,13 @@ npm install @csstools/postcss-stepped-value-functions --save-dev
 /* becomes */
 
 .test-functions {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
-	top: 16px;
-	right: 16px;
-	bottom: 21px;
-	left: 12px;
-	width: 12px;
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
+	top: calc(16px);
+	right: calc(16px);
+	bottom: calc(21px);
+	left: calc(12px);
+	width: calc(12px);
 }
 ```
 
@@ -93,19 +93,19 @@ postcssSteppedValueFunctions({ preserve: true })
 /* becomes */
 
 .test-functions {
-	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
 	padding: 8px mod(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
-	transform: rotate(-50deg);
+	transform: rotate(calc(-50deg));
 	transform: rotate(mod(-140deg, -90deg));
-	top: 16px;
+	top: calc(16px);
 	top: round(15px, 4px);
-	right: 16px;
+	right: calc(16px);
 	right: round(nearest, 15px, 4px);
-	bottom: 21px;
+	bottom: calc(21px);
 	bottom: round(up, 15px, 7px);
-	left: 12px;
+	left: calc(12px);
 	left: round(down, 15px, 4px);
-	width: 12px;
+	width: calc(12px);
 	width: round(to-zero, 15px, 4px);
 }
 ```

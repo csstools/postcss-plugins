@@ -36,6 +36,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				precision: 5,
 				toCanonicalUnits: true,
 				randomCaching: randomCacheKeyFromPostcssDeclaration(decl),
+				calcWrapper: true,
 			});
 			if (modifiedValue === decl.value) {
 				return;

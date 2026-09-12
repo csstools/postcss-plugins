@@ -1,9 +1,9 @@
 .test-functions {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
-	top: 16px;
-	right: 16px;
-	bottom: 21px;
-	left: 12px;
-	width: 12px;
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
+	top: calc(16px);
+	right: calc(16px);
+	bottom: calc(21px);
+	left: calc(12px);
+	width: calc(12px);
 }

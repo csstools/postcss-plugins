@@ -30,7 +30,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const modifiedValue = calc(decl.value);
+			const modifiedValue = calc(decl.value, {
+				precision: 5,
+				toCanonicalUnits: true,
+				calcWrapper: true,
+			});
 			if (modifiedValue === decl.value) {
 				return;
 			}

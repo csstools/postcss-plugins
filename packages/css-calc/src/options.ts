@@ -55,6 +55,14 @@ export type conversionOptions = {
 	rawPercentages?: boolean
 
 	/**
+	 * Out of range values or floats are invalid in some contexts.
+	 * Wrapping values in a `calc()` or other noop math function can make these valid anyway.
+	 *
+	 * Instead of completely removing math functions it is preferable to keep a noop `calc()`.
+	 */
+	calcWrapper?: boolean
+
+	/**
 	 * The values used to generate random value cache keys.
 	 */
 	randomCaching?: {

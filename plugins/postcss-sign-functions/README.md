@@ -40,27 +40,27 @@ npm install @csstools/postcss-sign-functions --save-dev
 /* becomes */
 
 .sign {
-	z-index: -1;
+	z-index: calc(-1);
 }
 
 .sign {
-	z-index: 0;
+	z-index: calc(0);
 }
 
 .sign {
-	z-index: 1;
+	z-index: calc(1);
 }
 
 .abs {
-	z-index: 10px;
+	z-index: calc(10px);
 }
 
 .abs {
-	z-index: 0;
+	z-index: calc(0);
 }
 
 .abs {
-	z-index: 10px;
+	z-index: calc(10px);
 }
 
 .abs {
@@ -152,32 +152,32 @@ postcssSignFunctions({ preserve: true })
 /* becomes */
 
 .sign {
-	z-index: -1;
+	z-index: calc(-1);
 	z-index: sign(-10px);
 }
 
 .sign {
-	z-index: 0;
+	z-index: calc(0);
 	z-index: sign(0);
 }
 
 .sign {
-	z-index: 1;
+	z-index: calc(1);
 	z-index: sign(10px);
 }
 
 .abs {
-	z-index: 10px;
+	z-index: calc(10px);
 	z-index: abs(-10px);
 }
 
 .abs {
-	z-index: 0;
+	z-index: calc(0);
 	z-index: abs(0);
 }
 
 .abs {
-	z-index: 10px;
+	z-index: calc(10px);
 	z-index: abs(10px);
 }
 

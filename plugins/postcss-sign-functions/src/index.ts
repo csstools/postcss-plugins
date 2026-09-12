@@ -48,6 +48,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const modifiedValue = stringify(calcFromComponentValues(componentValues, {
 				precision: 5,
 				toCanonicalUnits: true,
+				calcWrapper: true,
 			}));
 			if (modifiedValue === decl.value) {
 				return;

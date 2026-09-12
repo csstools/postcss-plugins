@@ -839,7 +839,7 @@ function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentVal
 	return -1;
 }
 
-function calcWrapper(fnNode: FunctionNode, v: Array<ComponentValue>): FunctionNode {
+export function calcWrapper(fnNode: FunctionNode, v: Array<ComponentValue>): FunctionNode {
 	return new FunctionNode(
 		[TokenType.Function, 'calc(', fnNode.name[2], fnNode.name[3], { value: 'calc' }],
 		[TokenType.CloseParen, ')', fnNode.endToken[2], fnNode.endToken[3], undefined],

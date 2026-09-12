@@ -473,35 +473,37 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .mod {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
-	width: 2px;
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
+	width: calc(2px);
 }
 
 .rem {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
 }
 
 .round {
-	top: 3px;
-	right: 3px;
-	bottom: 3px;
-	left: 2px;
-	padding-left: 2px;
+	top: calc(3px);
+	right: calc(3px);
+	bottom: calc(3px);
+	left: calc(2px);
+	padding-left: calc(2px);
 }
 
 .trigonometric {
-	left: 0.70711;
-	left: 0.70711;
-	left: 1;
-	left: 30deg;
-	left: 60deg;
-	left: 84.28941deg;
-	left: -45deg;
-	left: 90deg;
-	left: 135deg;
-	left: 0.99863;
+	left: calc(0.70711);
+	left: calc(0.70711);
+	left: calc(1);
+	left: calc(30deg);
+	left: calc(60deg);
+	left: calc(84.28941deg);
+	left: calc(-45deg);
+	left: calc(90deg);
+	left: calc(135deg);
+	left: calc(0.99863);
 }
 
 .trigonometric-ignore-not-a-function {
@@ -646,7 +648,7 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .exponential-functions {
-	width: 8px;
+	width: calc(8px);
 }
 
 .out-of-gamut {
@@ -722,20 +724,20 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .sign {
-	order: 1;
-	z-index: -1;
+	order: calc(1);
+	z-index: calc(-1);
 }
 
 .abs {
-	order: 10px;
-	z-index: 10px;
+	order: calc(10px);
+	z-index: calc(10px);
 }
 
 .random {
 	color: rgb(
-		60,
-		160,
-		80
+		calc(60),
+		calc(160),
+		calc(80)
 	);
 
 	border-color: rgb(0, 104, 17);

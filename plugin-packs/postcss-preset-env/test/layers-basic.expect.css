@@ -615,28 +615,40 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .mod:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	padding: 8px 3px 1px -moz-calc(3px + 50%);
-	padding: 8px 3px 1px calc(3px + 50%);
-	-webkit-transform: rotate(-50deg);
-	   -moz-transform: rotate(-50deg);
-	        transform: rotate(-50deg);
-	width: 2px;
+	padding: 8px -moz-calc(3px) 1px -moz-calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc(-moz-calc(3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	-webkit-transform: rotate(calc(-50deg));
+	   -moz-transform: rotate(-moz-calc(-50deg));
+	        transform: rotate(calc(-50deg));
+	width: -moz-calc(2px);
+	width: calc(2px);
 }
 
 .rem:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	padding: 8px 3px 1px -moz-calc(3px + 50%);
-	padding: 8px 3px 1px calc(3px + 50%);
-	-webkit-transform: rotate(-50deg);
-	   -moz-transform: rotate(-50deg);
-	        transform: rotate(-50deg);
+	padding: 8px -moz-calc(3px) 1px -moz-calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc(-moz-calc(3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	-webkit-transform: rotate(calc(-50deg));
+	   -moz-transform: rotate(-moz-calc(-50deg));
+	        transform: rotate(calc(-50deg));
 }
 
 .round:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	top: 3px;
-	right: 3px;
-	bottom: 3px;
-	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
+	top: -moz-calc(3px);
+	top: calc(3px);
+	right: -moz-calc(3px);
+	right: calc(3px);
+	bottom: -moz-calc(3px);
+	bottom: calc(3px);
+	left: -moz-calc(2px);
+	left: calc(2px);
+	top: -moz-calc(2px);
+	top: calc(2px);
+	right: -moz-calc(2px);
+	right: calc(2px);
+	bottom: -moz-calc(2px);
+	bottom: calc(2px);
 }

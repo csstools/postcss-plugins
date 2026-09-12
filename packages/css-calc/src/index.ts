@@ -3,7 +3,7 @@ import type { conversionOptions } from './options';
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 export { ParseError, ParseErrorWithComponentValues, ParseErrorMessage } from './error';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, sourceIndices, WhitespaceNode } from '@csstools/css-parser-algorithms';
-import { mathFunctions } from './functions/calc';
+import { calcWrapper, mathFunctions } from './functions/calc';
 import { patchCalcResult } from './util/patch-result';
 import { walk } from '@csstools/css-parser-algorithms';
 import { solve } from './calculation';
@@ -33,6 +33,10 @@ export function calcFromComponentValues(componentValuesList: Array<Array<Compone
 
 		const calcResult = patchCalcResult(solve(mathFunction(componentValue, tokenizedGlobals, options ?? {}), options ?? {}), options);
 		if (calcResult !== -1) {
+			if (options?.calcWrapper) {
+				return calcWrapper(componentValue, [calcResult]);
+			}
+
 			return calcResult;
 		}
 	});

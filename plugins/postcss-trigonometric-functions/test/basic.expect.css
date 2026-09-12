@@ -1,187 +1,187 @@
 .sin {
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
 	order: sin(1 / 8turn); /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: -0.70711; /* -45deg */
-	order: -0.70711; /* -45deg */
-	order: -0.70711; /* -45deg */
-	order: -0.70711; /* -45deg */
-	order: -0.70711; /* -45deg */
-	order: 0;
-	order: 0.64964;
-	order: 0.56868;
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(-0.70711); /* -45deg */
+	order: calc(-0.70711); /* -45deg */
+	order: calc(-0.70711); /* -45deg */
+	order: calc(-0.70711); /* -45deg */
+	order: calc(-0.70711); /* -45deg */
+	order: calc(0);
+	order: calc(0.64964);
+	order: calc(0.56868);
 	order: sin(1px);
 	order: sin(foo);
-	order: calc(NaN);
-	order: calc(NaN);
-	order: calc(NaN);
+	order: calc(calc(NaN));
+	order: calc(calc(NaN));
+	order: calc(calc(NaN));
 	order: sin(var(--foo));
 }
 
 .cos {
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* 45deg */
-	order: 0.70711; /* -45deg */
-	order: 0.70711; /* -45deg */
-	order: 0.70711; /* -45deg */
-	order: 0.70711; /* -45deg */
-	order: 0.70711; /* -45deg */
-	order: 0.76024;
-	order: 0.74872;
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* 45deg */
+	order: calc(0.70711); /* -45deg */
+	order: calc(0.70711); /* -45deg */
+	order: calc(0.70711); /* -45deg */
+	order: calc(0.70711); /* -45deg */
+	order: calc(0.70711); /* -45deg */
+	order: calc(0.76024);
+	order: calc(0.74872);
 	order: cos(1px);
 	order: cos(foo);
-	order: calc(NaN);
-	order: calc(NaN);
-	order: calc(NaN);
+	order: calc(calc(NaN));
+	order: calc(calc(NaN));
+	order: calc(calc(NaN));
 }
 
 .tan {
-	order: 1;  /* 45deg */
-	order: 1; /* 45deg */
-	order: 1; /* 45deg */
-	order: 1; /* 45deg */
-	order: 1; /* 45deg */
-	order: -1; /* -45deg */
-	order: -1; /* -45deg */
-	order: -1; /* -45deg */
-	order: -1; /* -45deg */
-	order: -1; /* -45deg */
-	order: 0;
-	order: 1.55741;
-	order: -0.87448;
-	order: 1.80405; /* 61deg */
-	order: 1.80405; /* 61deg should be similar to above */
+	order: calc(1);  /* 45deg */
+	order: calc(1); /* 45deg */
+	order: calc(1); /* 45deg */
+	order: calc(1); /* 45deg */
+	order: calc(1); /* 45deg */
+	order: calc(-1); /* -45deg */
+	order: calc(-1); /* -45deg */
+	order: calc(-1); /* -45deg */
+	order: calc(-1); /* -45deg */
+	order: calc(-1); /* -45deg */
+	order: calc(0);
+	order: calc(1.55741);
+	order: calc(-0.87448);
+	order: calc(1.80405); /* 61deg */
+	order: calc(1.80405); /* 61deg should be similar to above */
 	/* Asymptotes */
-	order: calc(infinity);
-	order: calc(infinity);
-	order: calc(infinity);
-	order: calc(infinity);
-	order: calc(-infinity);
-	order: calc(-infinity);
-	order: calc(-infinity);
-	order: calc(-infinity);
+	order: calc(calc(infinity));
+	order: calc(calc(infinity));
+	order: calc(calc(infinity));
+	order: calc(calc(infinity));
+	order: calc(calc(-infinity));
+	order: calc(calc(-infinity));
+	order: calc(calc(-infinity));
+	order: calc(calc(-infinity));
 	/* 1 + 2 -> 3 */
 	/* 3 * 3 -> 9 */
 	/* 9 * 10deg -> 90deg */
-	order: calc(infinity); /* Is asymptotic */
+	order: calc(calc(infinity)); /* Is asymptotic */
 	/* Non Asymptotes */
-	order: 0;
-	order: 0;
-	order: 0;
-	order: 0;
+	order: calc(0);
+	order: calc(0);
+	order: calc(0);
+	order: calc(0);
 	order: tan(1px);
 	order: tan(foo);
-	order: calc(NaN);
-	order: calc(NaN);
-	order: calc(NaN);
+	order: calc(calc(NaN));
+	order: calc(calc(NaN));
+	order: calc(calc(NaN));
 }
 
 .asin {
-	order: 45deg;
-	order: 90deg;
-	order: -90deg;
-	order: -30deg;
-	order: 0deg;
-	order: 30deg;
-	order: 90deg;
-	order: calc(NaN * 1deg);
-	order: calc(NaN * 1deg);
+	order: calc(45deg);
+	order: calc(90deg);
+	order: calc(-90deg);
+	order: calc(-30deg);
+	order: calc(0deg);
+	order: calc(30deg);
+	order: calc(90deg);
+	order: calc(calc(NaN * 1deg));
+	order: calc(calc(NaN * 1deg));
 	order: asin(45deg);
 	order: asin(1rad);
 	order: asin(foo);
-	order: calc(NaN * 1deg);
-	order: calc(NaN * 1deg);
+	order: calc(calc(NaN * 1deg));
+	order: calc(calc(NaN * 1deg));
 }
 
 .acos {
-	order: 45deg;
-	order: 90deg;
-	order: 180deg;
-	order: 120deg;
-	order: 90deg;
-	order: 60deg;
-	order: 0deg;
-	order: calc(NaN * 1deg);
-	order: calc(NaN * 1deg);
+	order: calc(45deg);
+	order: calc(90deg);
+	order: calc(180deg);
+	order: calc(120deg);
+	order: calc(90deg);
+	order: calc(60deg);
+	order: calc(0deg);
+	order: calc(calc(NaN * 1deg));
+	order: calc(calc(NaN * 1deg));
 	order: acos(45deg);
 	order: acos(1rad);
 	order: acos(foo);
-	order: calc(NaN * 1deg);
-	order: calc(NaN * 1deg);
+	order: calc(calc(NaN * 1deg));
+	order: calc(calc(NaN * 1deg));
 }
 
 .atan {
-	order: 90deg;
-	order: -90deg;
-	order: 45deg;
-	order: 0deg;
-	order: -0deg;
-	order: 45deg; /* 45deg */
-	order: 45deg; /* 45deg */
-	order: 45deg; /* 45deg */
-	order: 44.99999deg; /* 45deg */
-	order: 44.99999deg; /* 45deg */
-	order: -45deg; /* -45deg */
-	order: -45deg; /* -45deg */
-	order: -45deg; /* -45deg */
-	order: -44.99999deg; /* -45deg */
-	order: -44.99999deg; /* -45deg */
+	order: calc(90deg);
+	order: calc(-90deg);
+	order: calc(45deg);
+	order: calc(0deg);
+	order: calc(-0deg);
+	order: calc(45deg); /* 45deg */
+	order: calc(45deg); /* 45deg */
+	order: calc(45deg); /* 45deg */
+	order: calc(44.99999deg); /* 45deg */
+	order: calc(44.99999deg); /* 45deg */
+	order: calc(-45deg); /* -45deg */
+	order: calc(-45deg); /* -45deg */
+	order: calc(-45deg); /* -45deg */
+	order: calc(-44.99999deg); /* -45deg */
+	order: calc(-44.99999deg); /* -45deg */
 }
 
 .atan2 {
-	order: -135deg;
-	order: -90deg;
-	order: -90deg;
-	order: -90deg;
-	order: -90deg;
-	order: -45deg;
+	order: calc(-135deg);
+	order: calc(-90deg);
+	order: calc(-90deg);
+	order: calc(-90deg);
+	order: calc(-90deg);
+	order: calc(-45deg);
 
-	order: -180deg;
-	order: -135deg;
-	order: -90deg;
-	order: -90deg;
-	order: -45deg;
-	order: -0deg;
+	order: calc(-180deg);
+	order: calc(-135deg);
+	order: calc(-90deg);
+	order: calc(-90deg);
+	order: calc(-45deg);
+	order: calc(-0deg);
 
-	order: -180deg;
-	order: -180deg;
-	order: -180deg;
-	order: -0deg;
-	order: -0deg;
-	order: -0deg;
+	order: calc(-180deg);
+	order: calc(-180deg);
+	order: calc(-180deg);
+	order: calc(-0deg);
+	order: calc(-0deg);
+	order: calc(-0deg);
 
-	order: 180deg;
-	order: 180deg;
-	order: 180deg;
-	order: 0deg;
-	order: 0deg;
-	order: 0deg;
+	order: calc(180deg);
+	order: calc(180deg);
+	order: calc(180deg);
+	order: calc(0deg);
+	order: calc(0deg);
+	order: calc(0deg);
 
-	order: 180deg;
-	order: 135deg;
-	order: 90deg;
-	order: 90deg;
-	order: 45deg;
-	order: 0deg;
+	order: calc(180deg);
+	order: calc(135deg);
+	order: calc(90deg);
+	order: calc(90deg);
+	order: calc(45deg);
+	order: calc(0deg);
 
-	order: 135deg;
-	order: 90deg;
-	order: 90deg;
-	order: 90deg;
-	order: 90deg;
-	order: 45deg;
+	order: calc(135deg);
+	order: calc(90deg);
+	order: calc(90deg);
+	order: calc(90deg);
+	order: calc(90deg);
+	order: calc(45deg);
 
-	order: 80.53768deg;
-	order: 9.46232deg;
+	order: calc(80.53768deg);
+	order: calc(9.46232deg);
 }
 
 .complex-calculations {
@@ -212,11 +212,11 @@
 
 @property --foo {
 	inherits: false;
-	initial-value: 0.70711;
+	initial-value: calc(0.70711);
 }
 
 @keyframes --foo {
 	to {
-		--foo: 0.70711;
+		--foo: calc(0.70711);
 	}
 }

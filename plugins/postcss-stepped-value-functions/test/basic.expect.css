@@ -1,58 +1,58 @@
 .mod {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
-	width: 2px;
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
+	width: calc(2px);
 }
 
 .rem {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
 }
 
 .mod-rem {
-	font-size: 2px;
-	width: -3px;
-	transform: rotateX(-40deg) rotateY(50deg);
-	height: 0px;
+	font-size: calc(2px);
+	width: calc(-3px);
+	transform: rotateX(calc(-40deg)) rotateY(calc(50deg));
+	height: calc(0px);
 }
 
 .round {
-	top: 3px;
-	right: 3px;
-	bottom: 3px;
-	left: 2px;
-	inset: 2px;
+	top: calc(3px);
+	right: calc(3px);
+	bottom: calc(3px);
+	left: calc(2px);
+	inset: calc(2px);
 }
 
 .round-multiple {
-	top: 16px;
-	right: 16px;
-	bottom: 21px;
-	left: 12px;
-	inset: 12px;
+	top: calc(16px);
+	right: calc(16px);
+	bottom: calc(21px);
+	left: calc(12px);
+	inset: calc(12px);
 }
 
 .round-complex {
-	left: 2px;
-	top: 2px;
+	left: calc(2px);
+	top: calc(2px);
 	/* lower case */
-	right: 8px;
+	right: calc(8px);
 	/* upper case */
-	right: 8px;
+	right: calc(8px);
 }
 
 .unit {
-	top: 37.79528px;
-	bottom: 940px;
-	left: 0.035s;
+	top: calc(37.79528px);
+	bottom: calc(940px);
+	left: calc(0.035s);
 }
 
 .invalid {
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
 	padding: mod(Fo0px, 5px);
-	left: calc(NaN * 1px);
-	right: 1px;
+	left: calc(calc(NaN * 1px));
+	right: calc(1px);
 	inset: round(something, 15px, 4px);
 	margin-top: round(nearest, 15px, 4px, 50px);
 	margin-bottom: round(nearest, 15px, 4%);
@@ -70,11 +70,11 @@
 
 @property --foo {
 	inherits: false;
-	initial-value: -50deg;
+	initial-value: calc(-50deg);
 }
 
 @keyframes --foo {
 	to {
-		--foo: -50deg;
+		--foo: calc(-50deg);
 	}
 }

@@ -25,16 +25,16 @@ div {
 /* becomes */
 
 div {
-	color: oklch(0.7 0.2 166.80407deg);
+	color: oklch(0.7 0.2 calc(166.80407deg));
 }
 
 div {
-	color: oklch(0.7 0.2 169deg);
+	color: oklch(0.7 0.2 calc(169deg));
 }
 
 div {
-	margin: 45.10305px 45.10305px;
-	padding: 73.36206px 73.36206px;
+	margin: calc(45.10305px) calc(45.10305px);
+	padding: calc(73.36206px) calc(73.36206px);
 }
 ```
 
@@ -107,19 +107,19 @@ div {
 /* becomes */
 
 div {
-	color: oklch(0.7 0.2 166.80407deg);
+	color: oklch(0.7 0.2 calc(166.80407deg));
 	color: oklch(0.7 0.2 random(120deg, 240deg));
 }
 
 div {
-	color: oklch(0.7 0.2 169deg);
+	color: oklch(0.7 0.2 calc(169deg));
 	color: oklch(0.7 0.2 random(120deg, 240deg, 7deg));
 }
 
 div {
-	margin: 45.10305px 45.10305px;
+	margin: calc(45.10305px) calc(45.10305px);
 	margin: random(10px, 100px) random(10px, 100px);
-	padding: 73.36206px 73.36206px;
+	padding: calc(73.36206px) calc(73.36206px);
 	padding: random(--padding, 10px, 100px) random(--padding, 10px, 100px);
 }
 ```

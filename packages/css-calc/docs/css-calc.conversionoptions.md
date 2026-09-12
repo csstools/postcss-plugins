@@ -15,6 +15,7 @@ export type conversionOptions = {
     toCanonicalUnits?: boolean;
     censorIntoStandardRepresentableValues?: boolean;
     rawPercentages?: boolean;
+    calcWrapper?: boolean;
     randomCaching?: {
         propertyName: string;
         propertyN: number;

@@ -3,27 +3,27 @@
 }
 
 .sign-b {
-	z-index: 1;
+	z-index: calc(1);
 	z-index: sign(10px);
 }
 
 .sign-c {
-	z-index: 0;
+	z-index: calc(0);
 	z-index: sign(0);
 }
 
 .sign-d {
-	z-index: 0;
+	z-index: calc(0);
 	z-index: sign(0px);
 }
 
 .sign-e {
-	z-index: -1;
+	z-index: calc(-1);
 	z-index: sign(-10px);
 }
 
 .sign-f {
-	z-index: -0;
+	z-index: calc(-0);
 	z-index: sign(-0px);
 }
 
@@ -33,27 +33,27 @@
 }
 
 .abs-b {
-	z-index: 10px;
+	z-index: calc(10px);
 	z-index: abs(10px);
 }
 
 .abs-c {
-	z-index: 0;
+	z-index: calc(0);
 	z-index: abs(0);
 }
 
 .abs-d {
-	z-index: 0px;
+	z-index: calc(0px);
 	z-index: abs(0px);
 }
 
 .abs-e {
-	z-index: 10px;
+	z-index: calc(10px);
 	z-index: abs(-10px);
 }
 
 .abs-f {
-	z-index: 0px;
+	z-index: calc(0px);
 	z-index: abs(-0px);
 }
 
@@ -75,9 +75,9 @@
 }
 
 :root {
-	--foo: 1;
+	--foo: calc(1);
 	--foo: sign(10px);
-	--bar: 10px;
+	--bar: calc(10px);
 	--bar: abs(10px);
 }
 
@@ -93,7 +93,7 @@
 
 @keyframes --foo {
 	to {
-		--foo: 1;
+		--foo: calc(1);
 		--foo: sign(10px);
 	}
 }

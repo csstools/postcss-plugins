@@ -797,66 +797,85 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .mod {
-	padding: 8px 3px 1px -moz-calc(3px + 50%);
-	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc(-moz-calc(3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
 	padding: 8px mod(18px, 5px) 1px -moz-calc(mod(15px, 6px) + 50%);
 	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
-	-webkit-transform: rotate(-50deg);
-	   -moz-transform: rotate(-50deg);
-	        transform: rotate(-50deg);
+	-webkit-transform: rotate(calc(-50deg));
+	   -moz-transform: rotate(-moz-calc(-50deg));
+	        transform: rotate(calc(-50deg));
 	-webkit-transform: rotate(mod(-140deg, -90deg));
 	   -moz-transform: rotate(mod(-140deg, -90deg));
 	        transform: rotate(mod(-140deg, -90deg));
-	width: 2px;
+	width: -moz-calc(2px);
+	width: calc(2px);
 	width: mod(mod(-18px, 5px), 5px);
 }
 
 .rem {
-	padding: 8px 3px 1px -moz-calc(3px + 50%);
-	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc(-moz-calc(3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
 	padding: 8px rem(18px, 5px) 1px -moz-calc(rem(15px, 6px) + 50%);
 	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
-	-webkit-transform: rotate(-50deg);
-	   -moz-transform: rotate(-50deg);
-	        transform: rotate(-50deg);
+	-webkit-transform: rotate(calc(-50deg));
+	   -moz-transform: rotate(-moz-calc(-50deg));
+	        transform: rotate(calc(-50deg));
 	-webkit-transform: rotate(rem(-140deg, -90deg));
 	   -moz-transform: rotate(rem(-140deg, -90deg));
 	        transform: rotate(rem(-140deg, -90deg));
 }
 
 .round {
-	top: 3px;
+	top: -moz-calc(3px);
+	top: calc(3px);
 	top: round(2.5px, 1px);
-	right: 3px;
+	right: -moz-calc(3px);
+	right: calc(3px);
 	right: round(nearest, 2.5px, 1px);
-	bottom: 3px;
+	bottom: -moz-calc(3px);
+	bottom: calc(3px);
 	bottom: round(up, 2.5px, 1px);
-	left: 2px;
+	left: -moz-calc(2px);
+	left: calc(2px);
 	left: round(down, 2.5px, 1px);
-	padding-left: 2px;
+	padding-left: -moz-calc(2px);
+	padding-left: calc(2px);
 	padding-left: round(to-zero, 2.5px, 1px);
 }
 
 .trigonometric {
-	left: 0.70711;
+	left: -moz-calc(0.70711);
+	left: calc(0.70711);
 	left: sin(45deg);
-	left: 0.70711;
+	left: calc(0.70711);
 	left: cos(45deg);
-	left: 1;
+	left: -moz-calc(1);
+	left: calc(1);
 	left: tan(45deg);
-	left: 30deg;
+	left: -moz-calc(30deg);
+	left: calc(30deg);
 	left: asin(0.5);
-	left: 60deg;
+	left: -moz-calc(60deg);
+	left: calc(60deg);
 	left: acos(0.5);
-	left: 84.28941deg;
+	left: -moz-calc(84.28941deg);
+	left: calc(84.28941deg);
 	left: atan(10);
-	left: -45deg;
+	left: -moz-calc(-45deg);
+	left: calc(-45deg);
 	left: atan2(-1, 1);
-	left: 90deg;
+	left: -moz-calc(90deg);
+	left: calc(90deg);
 	left: asin(sin(pi / 2));
-	left: 135deg;
+	left: -moz-calc(135deg);
+	left: calc(135deg);
 	left: atan2(infinity, -infinity);
-	left: 0.99863;
+	left: -moz-calc(0.99863);
+	left: calc(0.99863);
 	left: sin((1deg * 3) + .25turn);
 }
 
@@ -1070,7 +1089,8 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .exponential-functions {
-	width: 8px;
+	width: -moz-calc(8px);
+	width: calc(8px);
 	width: -moz-calc(1px * pow(2, 3));
 	width: calc(1px * pow(2, 3));
 }
@@ -1177,36 +1197,39 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 }
 
 .sign {
-	-webkit-box-ordinal-group: 2;
-	-webkit-order: 1;
-	   -moz-box-ordinal-group: 2;
-	        order: 1;
 	-webkit-box-ordinal-group: NaN;
-	-webkit-order: sign(10px);
+	-webkit-order: calc(1);
 	   -moz-box-ordinal-group: NaN;
+	        order: calc(1);
+	-webkit-order: sign(10px);
 	        order: sign(10px);
-	z-index: -1;
+	z-index: -moz-calc(-1);
+	z-index: calc(-1);
 	z-index: sign(-10px);
 }
 
 .abs {
-	-webkit-box-ordinal-group: 11;
-	-webkit-order: 10px;
-	   -moz-box-ordinal-group: 11;
-	        order: 10px;
 	-webkit-box-ordinal-group: NaN;
-	-webkit-order: abs(10px);
+	-webkit-order: calc(10px);
 	   -moz-box-ordinal-group: NaN;
+	        order: calc(10px);
+	-webkit-order: abs(10px);
 	        order: abs(10px);
-	z-index: 10px;
+	z-index: -moz-calc(10px);
+	z-index: calc(10px);
 	z-index: abs(-10px);
 }
 
 .random {
 	color: rgb(
-		60,
-		160,
-		80
+		-moz-calc(60),
+		-moz-calc(160),
+		-moz-calc(80)
+	);
+	color: rgb(
+		calc(60),
+		calc(160),
+		calc(80)
 	);
 	color: rgb(
 		random(--r, 0, 255, 5),
@@ -1219,9 +1242,15 @@ h1.test-custom-selectors:not(.does-not-exist), h2.test-custom-selectors:not(.doe
 	border-color: color(display-p3 0.08293 0.41734 0);
 
 	border-color: oklch(
-		45%
-		60%
-		144deg
+		-moz-calc(45%)
+		-moz-calc(60%)
+		-moz-calc(144deg)
+	);
+
+	border-color: oklch(
+		calc(45%)
+		calc(60%)
+		calc(144deg)
 	);
 
 	border-color: oklch(

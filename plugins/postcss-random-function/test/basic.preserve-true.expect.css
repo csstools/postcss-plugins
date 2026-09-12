@@ -1,5 +1,5 @@
 .random-1 {
-	z-index: 2.09594;
+	z-index: calc(2.09594);
 	z-index: random(0, 10);
 }
 
@@ -8,17 +8,17 @@
 }
 
 .random-3 {
-	z-index: 0.56703;
+	z-index: calc(0.56703);
 	z-index: random(--foo, 0, 10);
 }
 
 .random-4 {
-	z-index: 6.78979;
+	z-index: calc(6.78979);
 	z-index: random(--bar, 0, 10);
 }
 
 .random-11 {
-	width: 2.09594px;
+	width: calc(2.09594px);
 	width: random(0px, 10px);
 }
 
@@ -27,108 +27,108 @@
 }
 
 .random-13 {
-	width: 0.56703px;
+	width: calc(0.56703px);
 	width: random(--foo, 0px, 10px);
 }
 
 .random-14 {
-	width: 6.78979px;
+	width: calc(6.78979px);
 	width: random(--bar, 0px, 10px);
 }
 
 .random-15 {
-	padding: 5px 5px;
+	padding: calc(5px) calc(5px);
 	padding: random(fixed 0.5, 0px, 10px) random(fixed 0.5, 0px, 10px);
-	margin: 2.09594px 2.09594px;
+	margin: calc(2.09594px) calc(2.09594px);
 	margin: random(0px, 10px) random(0px, 10px);
-	inset: 0.56703px 0.56703px;
+	inset: calc(0.56703px) calc(0.56703px);
 	inset: random(--foo, 0px, 10px) random(--foo, 0px, 10px);
-	border-top-right-radius: 2.09594px;
+	border-top-right-radius: calc(2.09594px);
 	border-top-right-radius: random(0px, 10px);
-	border-top-left-radius: 2.09594px;
+	border-top-left-radius: calc(2.09594px);
 	border-top-left-radius: random(0px, 10px);
-	border-bottom-right-radius: 0.56703px;
+	border-bottom-right-radius: calc(0.56703px);
 	border-bottom-right-radius: random(--foo, 0px, 10px);
-	border-bottom-left-radius: 0.56703px;
+	border-bottom-left-radius: calc(0.56703px);
 	border-bottom-left-radius: random(--foo, 0px, 10px);
 }
 
 .random-15 {
-	padding: 5px 5px;
+	padding: calc(5px) calc(5px);
 	padding: random(fixed 0.5, 0px, 10px) random(fixed 0.5, 0px, 10px);
-	margin: 2.09594px 2.09594px;
+	margin: calc(2.09594px) calc(2.09594px);
 	margin: random(0px, 10px) random(0px, 10px);
-	inset: 0.56703px 0.56703px;
+	inset: calc(0.56703px) calc(0.56703px);
 	inset: random(--foo, 0px, 10px) random(--foo, 0px, 10px);
-	border-top-right-radius: 2.09594px;
+	border-top-right-radius: calc(2.09594px);
 	border-top-right-radius: random(0px, 10px);
-	border-top-left-radius: 2.09594px;
+	border-top-left-radius: calc(2.09594px);
 	border-top-left-radius: random(0px, 10px);
-	border-bottom-right-radius: 0.56703px;
+	border-bottom-right-radius: calc(0.56703px);
 	border-bottom-right-radius: random(--foo, 0px, 10px);
-	border-bottom-left-radius: 0.56703px;
+	border-bottom-left-radius: calc(0.56703px);
 	border-bottom-left-radius: random(--foo, 0px, 10px);
 }
 
 .random-15-b {
-	padding: 5px 5px;
+	padding: calc(5px) calc(5px);
 	padding: random(fixed 0.5, 0px, 10px) random(fixed 0.5, 0px, 10px);
-	margin: 2.09594px 2.09594px;
+	margin: calc(2.09594px) calc(2.09594px);
 	margin: random(0px, 10px) random(0px, 10px);
-	inset: 0.56703px 0.56703px;
+	inset: calc(0.56703px) calc(0.56703px);
 	inset: random(--foo, 0px, 10px) random(--foo, 0px, 10px);
-	border-top-right-radius: 2.09594px;
+	border-top-right-radius: calc(2.09594px);
 	border-top-right-radius: random(0px, 10px);
-	border-top-left-radius: 2.09594px;
+	border-top-left-radius: calc(2.09594px);
 	border-top-left-radius: random(0px, 10px);
-	border-bottom-right-radius: 0.56703px;
+	border-bottom-right-radius: calc(0.56703px);
 	border-bottom-right-radius: random(--foo, 0px, 10px);
-	border-bottom-left-radius: 0.56703px;
+	border-bottom-left-radius: calc(0.56703px);
 	border-bottom-left-radius: random(--foo, 0px, 10px);
 }
 
 .random-16 {
-	margin: 2.90875px 2.90875px;
+	margin: calc(2.90875px) calc(2.90875px);
 	margin: random(element-scoped, 0px, 10px) random(element-scoped, 0px, 10px);
-	inset: 4.37511px 4.37511px;
+	inset: calc(4.37511px) calc(4.37511px);
 	inset: random(--foo element-scoped, 0px, 10px) random(--foo element-scoped, 0px, 10px);
-	border-top-right-radius: 2.90875px;
+	border-top-right-radius: calc(2.90875px);
 	border-top-right-radius: random(element-scoped, 0px, 10px);
-	border-top-left-radius: 2.90875px;
+	border-top-left-radius: calc(2.90875px);
 	border-top-left-radius: random(element-scoped, 0px, 10px);
-	border-bottom-right-radius: 4.37511px;
+	border-bottom-right-radius: calc(4.37511px);
 	border-bottom-right-radius: random(--foo element-scoped, 0px, 10px);
-	border-bottom-left-radius: 4.37511px;
+	border-bottom-left-radius: calc(4.37511px);
 	border-bottom-left-radius: random(--foo element-scoped, 0px, 10px);
 }
 
 .random-16 {
-	margin: 2.90875px 2.90875px;
+	margin: calc(2.90875px) calc(2.90875px);
 	margin: random(element-scoped, 0px, 10px) random(element-scoped, 0px, 10px);
-	inset: 4.37511px 4.37511px;
+	inset: calc(4.37511px) calc(4.37511px);
 	inset: random(--foo element-scoped, 0px, 10px) random(--foo element-scoped, 0px, 10px);
-	border-top-right-radius: 2.90875px;
+	border-top-right-radius: calc(2.90875px);
 	border-top-right-radius: random(element-scoped, 0px, 10px);
-	border-top-left-radius: 2.90875px;
+	border-top-left-radius: calc(2.90875px);
 	border-top-left-radius: random(element-scoped, 0px, 10px);
-	border-bottom-right-radius: 4.37511px;
+	border-bottom-right-radius: calc(4.37511px);
 	border-bottom-right-radius: random(--foo element-scoped, 0px, 10px);
-	border-bottom-left-radius: 4.37511px;
+	border-bottom-left-radius: calc(4.37511px);
 	border-bottom-left-radius: random(--foo element-scoped, 0px, 10px);
 }
 
 .random-16-b {
-	margin: 5.45597px 5.45597px;
+	margin: calc(5.45597px) calc(5.45597px);
 	margin: random(element-scoped, 0px, 10px) random(element-scoped, 0px, 10px);
-	inset: 7.17757px 7.17757px;
+	inset: calc(7.17757px) calc(7.17757px);
 	inset: random(--foo element-scoped, 0px, 10px) random(--foo element-scoped, 0px, 10px);
-	border-top-right-radius: 5.45597px;
+	border-top-right-radius: calc(5.45597px);
 	border-top-right-radius: random(element-scoped, 0px, 10px);
-	border-top-left-radius: 5.45597px;
+	border-top-left-radius: calc(5.45597px);
 	border-top-left-radius: random(element-scoped, 0px, 10px);
-	border-bottom-right-radius: 7.17757px;
+	border-bottom-right-radius: calc(7.17757px);
 	border-bottom-right-radius: random(--foo element-scoped, 0px, 10px);
-	border-bottom-left-radius: 7.17757px;
+	border-bottom-left-radius: calc(7.17757px);
 	border-bottom-left-radius: random(--foo element-scoped, 0px, 10px);
 }
 
@@ -152,7 +152,7 @@
 
 @keyframes --foo {
 	to {
-		--foo: 2.09594;
+		--foo: calc(2.09594);
 		--foo: random(0, 10);
 	}
 }

@@ -1,75 +1,75 @@
 .mod {
-	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
 	padding: 8px mod(18px, 5px) 1px calc(mod(15px, 6px) + 50%);
-	transform: rotate(-50deg);
+	transform: rotate(calc(-50deg));
 	transform: rotate(mod(-140deg, -90deg));
-	width: 2px;
+	width: calc(2px);
 	width: mod(mod(-18px, 5px), 5px);
 }
 
 .rem {
-	padding: 8px 3px 1px calc(3px + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
 	padding: 8px rem(18px, 5px) 1px calc(rem(15px, 6px) + 50%);
-	transform: rotate(-50deg);
+	transform: rotate(calc(-50deg));
 	transform: rotate(rem(-140deg, -90deg));
 }
 
 .mod-rem {
-	font-size: 2px;
+	font-size: calc(2px);
 	font-size: mod(-18px, 5px);
-	width: -3px;
+	width: calc(-3px);
 	width: rem(-18px, 5px);
-	transform: rotateX(-40deg) rotateY(50deg);
+	transform: rotateX(calc(-40deg)) rotateY(calc(50deg));
 	transform: rotateX(mod(140deg, -90deg)) rotateY(rem(140deg, -90deg));
-	height: 0px;
+	height: calc(0px);
 	height: rem(mod(mod(-18px, 5px), 5px), 2px);
 }
 
 .round {
-	top: 3px;
+	top: calc(3px);
 	top: round(2.5px, 1px);
-	right: 3px;
+	right: calc(3px);
 	right: round(nearest, 2.5px, 1px);
-	bottom: 3px;
+	bottom: calc(3px);
 	bottom: round(up, 2.5px, 1px);
-	left: 2px;
+	left: calc(2px);
 	left: round(down, 2.5px, 1px);
-	inset: 2px;
+	inset: calc(2px);
 	inset: round(to-zero, 2.5px, 1px);
 }
 
 .round-multiple {
-	top: 16px;
+	top: calc(16px);
 	top: round(15px, 4px);
-	right: 16px;
+	right: calc(16px);
 	right: round(nearest, 15px, 4px);
-	bottom: 21px;
+	bottom: calc(21px);
 	bottom: round(up, 15px, 7px);
-	left: 12px;
+	left: calc(12px);
 	left: round(down, 15px, 4px);
-	inset: 12px;
+	inset: calc(12px);
 	inset: round(to-zero, 15px, 4px);
 }
 
 .round-complex {
-	left: 2px;
+	left: calc(2px);
 	left: round(nearest, mod(-18px, 5px), 2px);
-	top: 2px;
+	top: calc(2px);
 	top: round(nearest, mod(mod(-18px, 5px), 5px), 2px);
 	/* lower case */
-	right: 8px;
+	right: calc(8px);
 	right: round(up, rem(mod(mod(8px, 5px), 7px), 15px), 8px);
 	/* upper case */
-	right: 8px;
+	right: calc(8px);
 	right: ROUND(UP, REM(mod(MOD(8px, 5px), 7px), 15px), 8px);
 }
 
 .unit {
-	top: 37.79528px;
+	top: calc(37.79528px);
 	top: round(up, 25px, 1cm);
-	bottom: 940px;
+	bottom: calc(940px);
 	bottom: round(down, 25cm, 10px);
-	left: 0.035s;
+	left: calc(0.035s);
 	left: mod(735ms, 0.1s);
 }
 
@@ -77,9 +77,9 @@
 	font-size: mod(18px, 5rem);
 	width: rem(var(--foo), 5px);
 	padding: mod(Fo0px, 5px);
-	left: calc(NaN * 1px);
+	left: calc(calc(NaN * 1px));
 	left: mod(1px, 0px);
-	right: 1px;
+	right: calc(1px);
 	right: mod(1px, 200px);
 	inset: round(something, 15px, 4px);
 	margin-top: round(nearest, 15px, 4px, 50px);
@@ -103,7 +103,7 @@
 
 @keyframes --foo {
 	to {
-		--foo: -50deg;
+		--foo: calc(-50deg);
 		--foo: mod(-140deg, -90deg);
 	}
 }

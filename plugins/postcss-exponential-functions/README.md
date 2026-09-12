@@ -20,11 +20,11 @@ npm install @csstools/postcss-exponential-functions --save-dev
 /* becomes */
 
 .foo {
-	top: 8px;
-	line-height: 1.0954451150103;
-	padding: 5px;
-	order: 1;
-	min-height: 0;
+	top: calc(8px);
+	line-height: calc(1.09545);
+	padding: calc(5px);
+	order: calc(1);
+	min-height: calc(0);
 }
 ```
 
@@ -81,15 +81,15 @@ postcssExponentialFunctions({ preserve: true })
 /* becomes */
 
 .foo {
-	top: 8px;
+	top: calc(8px);
 	top: calc(1px * pow(2, 3));
-	line-height: 1.0954451150103;
+	line-height: calc(1.09545);
 	line-height: sqrt(1.2);
-	padding: 5px;
+	padding: calc(5px);
 	padding: hypot(3px, 4px);
-	order: 1;
+	order: calc(1);
 	order: log(10, 10);
-	min-height: 0;
+	min-height: calc(0);
 	min-height: calc(e - exp(1));
 }
 ```

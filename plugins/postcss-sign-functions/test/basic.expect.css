@@ -3,23 +3,23 @@
 }
 
 .sign-b {
-	z-index: 1;
+	z-index: calc(1);
 }
 
 .sign-c {
-	z-index: 0;
+	z-index: calc(0);
 }
 
 .sign-d {
-	z-index: 0;
+	z-index: calc(0);
 }
 
 .sign-e {
-	z-index: -1;
+	z-index: calc(-1);
 }
 
 .sign-f {
-	z-index: -0;
+	z-index: calc(-0);
 }
 
 .abs-a {
@@ -27,23 +27,23 @@
 }
 
 .abs-b {
-	z-index: 10px;
+	z-index: calc(10px);
 }
 
 .abs-c {
-	z-index: 0;
+	z-index: calc(0);
 }
 
 .abs-d {
-	z-index: 0px;
+	z-index: calc(0px);
 }
 
 .abs-e {
-	z-index: 10px;
+	z-index: calc(10px);
 }
 
 .abs-f {
-	z-index: 0px;
+	z-index: calc(0px);
 }
 
 .abs-g {
@@ -61,8 +61,8 @@
 }
 
 :root {
-	--foo: 1;
-	--bar: 10px;
+	--foo: calc(1);
+	--bar: calc(10px);
 }
 
 .var-ignore-a {
@@ -72,11 +72,11 @@
 
 @property --foo {
 	inherits: false;
-	initial-value: 1;
+	initial-value: calc(1);
 }
 
 @keyframes --foo {
 	to {
-		--foo: 1;
+		--foo: calc(1);
 	}
 }
