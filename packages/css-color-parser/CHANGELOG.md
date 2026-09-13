@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#340) (minor)
+
 ### 4.2.2
 
 _August 30, 2026_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Media MinMax
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#340) (minor)
+
 ### 3.0.4
 
 _July 22, 2026_
