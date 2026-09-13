@@ -48,6 +48,7 @@
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
+		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*"
 	},
 	"scripts": {

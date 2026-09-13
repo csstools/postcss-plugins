@@ -16,6 +16,8 @@ export class Transpiler {
 
 	counter = 0;
 
+	hashes = new Map<string, string>();
+
 	getOrFillPrivateForRule(rule: Rule | AtRule): { prefix: string, privateProperties: Set<string> } {
 		const existing = this.privateForRule.get(rule);
 		if (existing) {
@@ -24,13 +26,16 @@ export class Transpiler {
 
 		let fromHash;
 		if (rule.source?.input.from) {
-			const hash = crypto.createHash('md5');
-			hash.update(path.basename(path.dirname(rule.source?.input.from)) + '/' + path.basename(rule.source?.input.from), 'utf8');
-			fromHash = hash.digest('hex').slice(0, 8);
+			fromHash = this.hashes.get(rule.source.input.from);
+
+			if (!fromHash) {
+				const hash = crypto.createHash('md5');
+				hash.update(path.basename(path.dirname(rule.source?.input.from)) + '/' + path.basename(rule.source?.input.from), 'utf8');
+				fromHash = parseInt(hash.digest('hex'), 16).toString(36).slice(0, 8);
+				this.hashes.set(rule.source.input.from, fromHash);
+			}
 		} else {
-			const hash = crypto.createHash('md5');
-			hash.update('<input>', 'utf8');
-			fromHash = hash.digest('hex').slice(0, 8);
+			fromHash = '0';
 		}
 
 		const prefix = `--_csstools-p-${fromHash}-${this.counter.toString(36)}`;

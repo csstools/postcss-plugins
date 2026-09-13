@@ -1,0 +1,10 @@
+@import "./fixtures/imported-a.css";
+@import "./fixtures/imported-b.css";
+
+div {
+	@private {
+		--z: 2px;
+	}
+
+	top: var(--z);
+}

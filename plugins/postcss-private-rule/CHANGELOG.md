@@ -1,5 +1,9 @@
 # Changes to PostCSS Private Rule
 
+### Unreleased (patch)
+
+- Reduce change of collisions between generated property names from different files.
+
 ### 1.0.1
 
 _September 6, 2026_
