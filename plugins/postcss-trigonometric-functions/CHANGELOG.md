@@ -1,6 +1,8 @@
 # Changes to PostCSS Trigonometric Functions
 
-### Unreleased (patch)
+### 5.0.6
+
+_September 13, 2026_
 
 - Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#340) (minor)
 
