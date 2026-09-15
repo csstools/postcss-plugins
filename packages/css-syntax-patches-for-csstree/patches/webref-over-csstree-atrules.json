@@ -156,6 +156,7 @@
 		"prelude": {
 			"type": "added",
 			"comment": "",
+			"omit": true,
 			"syntax-b": "",
 			"syntax-a": "<boolean-condition>?",
 			"syntax-m": "<boolean-condition>?",
@@ -704,6 +705,7 @@
 		"prelude": {
 			"type": "added",
 			"comment": "",
+			"omit": true,
 			"syntax-b": "",
 			"syntax-a": "<boolean-condition>",
 			"syntax-m": "<boolean-condition>",

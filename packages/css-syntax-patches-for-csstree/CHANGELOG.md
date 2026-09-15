@@ -1,5 +1,9 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Remove at-rule definitions referencing `<boolean-condition>` 
+
 ### 1.1.13
 
 _September 10, 2026_

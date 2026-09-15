@@ -21,9 +21,6 @@
 			"custom-selector": {
 				"prelude": "<custom-selector> <selector-list>"
 			},
-			"else": {
-				"prelude": "<boolean-condition>?"
-			},
 			"font-feature-values": {
 				"prelude": "<font-family-name>#",
 				"descriptors": {
@@ -64,9 +61,6 @@
 			},
 			"supports-condition": {
 				"prelude": "<supports-condition-name>"
-			},
-			"when": {
-				"prelude": "<boolean-condition>"
 			},
 			"font-face": {
 				"descriptors": {
