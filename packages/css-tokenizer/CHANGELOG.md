@@ -1,5 +1,9 @@
 # Changes to CSS Tokenizer
 
+### Unreleased (patch)
+
+- Fix handling of astral code points in `string-token` and `url-token` values.
+
 ### 4.0.0
 
 _January 14, 2026_
