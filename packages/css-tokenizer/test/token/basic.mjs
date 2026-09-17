@@ -382,6 +382,20 @@ bar") and (fancy(baz))) {}`,
 
 {
 	const t = tokenizer({
+		css: '-\\',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['ident-token', '-\\', 0, 1, { value: '-�' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
 		css: `\\0
 `,
 	});

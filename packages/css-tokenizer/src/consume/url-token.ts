@@ -169,13 +169,13 @@ export function consumeUrlToken(ctx: Context, reader: CodePointReader): TokenURL
 			return token;
 		}
 
-		if (reader.source.codePointAt(reader.cursor) === NULL || isSurrogate(reader.source.codePointAt(reader.cursor) ?? -1)) {
+		if (codePoint === NULL || isSurrogate(codePoint ?? -1)) {
 			string = string + String.fromCodePoint(REPLACEMENT_CHARACTER);
-			reader.advanceCodePoint();
+			reader.advanceCodePoint(1 + +((codePoint ?? -1) > 0xffff));
 			continue;
 		}
 
-		string = string + reader.source[reader.cursor];
-		reader.advanceCodePoint();
+		string = string + String.fromCodePoint(codePoint ?? -1);
+		reader.advanceCodePoint(1 + +((codePoint ?? -1) > 0xffff));
 	}
 }

@@ -25,7 +25,7 @@ export class Reader implements CodePointReader {
 			return undefined;
 		}
 
-		this.cursor = this.cursor + 1;
+		this.cursor = this.cursor + 1 + +(codePoint > 0xffff);
 		this.representationEnd = this.cursor - 1;
 
 		return codePoint;

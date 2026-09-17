@@ -436,3 +436,65 @@ url( 'mix-quoted" ' )\
 		],
 	);
 }
+
+{
+	{
+		const t = tokenizer({
+			css: 'urlx(foo)',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'urlx(', 0, 4, { value: 'urlx' }],
+				['ident-token', 'foo', 5, 7, { value: 'foo' }],
+				[')-token', ')', 8, 8, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: 'xrl(foo)',
+		});
+
+		assert.deepEqual(
+			collectTokens(t),
+			[
+				['function-token', 'xrl(', 0, 3, { value: 'xrl' }],
+				['ident-token', 'foo', 4, 6, { value: 'foo' }],
+				[')-token', ')', 7, 7, undefined],
+				['EOF-token', '', -1, -1, undefined],
+			],
+		);
+	}
+}
+
+{
+	const t = tokenizer({
+		css: 'url(a\ud800b)',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['url-token', 'url(a\ud800b)', 0, 7, { value: 'a�b' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(foo  ',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['url-token', 'url(foo  ', 0, 8, { value: 'foo' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
