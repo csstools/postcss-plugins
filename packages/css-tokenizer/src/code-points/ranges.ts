@@ -1,19 +1,9 @@
-import { BACKSPACE, DELETE, INFORMATION_SEPARATOR_ONE, LINE_TABULATION, LOW_LINE, HYPHEN_MINUS, NULL, SHIFT_OUT, LINE_FEED, CARRIAGE_RETURN, FORM_FEED, SPACE, CHARACTER_TABULATION } from './code-points';
+import { BACKSPACE, CARRIAGE_RETURN, CHARACTER_TABULATION, DELETE, FORM_FEED, HYPHEN_MINUS, INFORMATION_SEPARATOR_ONE, LINE_FEED, LINE_TABULATION, LOW_LINE, NULL, SHIFT_OUT, SPACE } from './code-points';
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#tokenizer-definitions
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#digit
 export function isDigitCodePoint(search: number): boolean {
 	return search >= 0x0030 && search <= 0x0039;
-}
-
-// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#uppercase-letter
-function isUppercaseLetterCodePoint(search: number): boolean {
-	return search >= 0x0041 && search <= 0x005a;
-}
-
-// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#lowercase-letter
-function isLowercaseLetterCodePoint(search: number): boolean {
-	return search >= 0x0061 && search <= 0x007a;
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#hex-digit
@@ -25,23 +15,35 @@ export function isHexDigitCodePoint(search: number): boolean {
 	);
 }
 
-// https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#letter
-function isLetterCodePoint(search: number): boolean {
-	return isLowercaseLetterCodePoint(search) || isUppercaseLetterCodePoint(search);
-}
-
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-start-code-point
 export function isIdentStartCodePoint(search: number): boolean {
-	return isLetterCodePoint(search) || isNonASCII_IdentCodePoint(search) || search === LOW_LINE;
+	return (
+		(search >= 0x0041 && search <= 0x005a) || // A .. Z
+		(search >= 0x0061 && search <= 0x007a) || // a .. z
+		search === LOW_LINE ||
+		isNonASCII_IdentCodePoint(search)
+	);
 }
 
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-code-point
 export function isIdentCodePoint(search: number): boolean {
-	return isIdentStartCodePoint(search) || isDigitCodePoint(search) || search === HYPHEN_MINUS;
+	return (
+		(search >= 0x0041 && search <= 0x005a) || // A .. Z
+		(search >= 0x0061 && search <= 0x007a) || // a .. z
+		(search >= 0x0030 && search <= 0x0039) || // 0 .. 9
+		search === HYPHEN_MINUS ||
+		search === LOW_LINE ||
+		isNonASCII_IdentCodePoint(search)
+	);
 }
 
 // https://drafts.csswg.org/css-syntax/#non-ascii-ident-code-point
-function isNonASCII_IdentCodePoint(search: number): boolean {
+export function isNonASCII_IdentCodePoint(search: number): boolean {
+	// The only code points below U+00B7 that are non-ASCII ident code points is U+0000 NULL.
+	if (search < 0x00B7) {
+		return search === 0x000;
+	}
+
 	if (
 		search === 0x00B7 ||
 		search === 0x200C ||
@@ -70,7 +72,7 @@ function isNonASCII_IdentCodePoint(search: number): boolean {
 	// Input preprocessing
 	if (search === 0x000) {
 		return true;
-	} else if (isSurrogate(search)) {
+	} else if (search >= 0xd800 && search <= 0xdfff) { // surrogate
 		return true;
 	}
 
