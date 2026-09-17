@@ -26,3 +26,18 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: '-x>',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['ident-token', '-x', 0, 1, { value: '-x' }],
+			['delim-token', '>', 2, 2, { value: '>' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}

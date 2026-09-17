@@ -34,6 +34,10 @@ import './wpt/decimal-points-in-numbers.mjs';
 import './wpt/ident-three-code-points.mjs';
 import './wpt/inclusive-ranges.mjs';
 
+// Util
+import './util/clone-tokens.mjs';
+import './util/mirror-variant.mjs';
+
 // Mutations
 import './mutations/ident.mjs';
 import './mutations/dimension.mjs';

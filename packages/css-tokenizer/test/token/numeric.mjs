@@ -530,3 +530,131 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: '+.',
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			['delim-token', '+', 0, 0, { value: '+' }],
+			['delim-token', '.', 1, 1, { value: '.' }],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: '..5',
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			['delim-token', '.', 0, 0, { value: '.' }],
+			['number-token', '.5', 1, 2, { value: 0.5, signCharacter: undefined, type: 'number' }],
+		],
+	);
+}
+
+{
+	{
+		const t = tokenizer({
+			css: '1e',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				[
+					'dimension-token',
+					'1e',
+					0,
+					1,
+					{ value: 1, signCharacter: undefined, type: 'integer', unit: 'e' },
+				],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '1e+',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				[
+					'dimension-token',
+					'1e',
+					0,
+					1,
+					{ value: 1, signCharacter: undefined, type: 'integer', unit: 'e' },
+				],
+				['delim-token', '+', 2, 2, { value: '+' }],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '1e-',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				[
+					'dimension-token',
+					'1e-',
+					0,
+					2,
+					{ value: 1, signCharacter: undefined, type: 'integer', unit: 'e-' },
+				],
+			],
+		);
+	}
+}
+
+{
+	{
+		const t = tokenizer({
+			css: '1e5',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				[
+					'number-token',
+					'1e5',
+					0,
+					2,
+					{ value: 100000, signCharacter: undefined, type: 'number' },
+				],
+			],
+		);
+	}
+
+	{
+		const t = tokenizer({
+			css: '1e55',
+		});
+
+		assert.deepEqual(
+			collectTokens(t).slice(0, -1),
+			[
+				[
+					'number-token',
+					'1e55',
+					0,
+					3,
+					{ value: 1e55, signCharacter: undefined, type: 'number' },
+				],
+			],
+		);
+	}
+}
