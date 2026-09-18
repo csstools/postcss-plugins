@@ -18,8 +18,8 @@ export function isHexDigitCodePoint(search: number): boolean {
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-start-code-point
 export function isIdentStartCodePoint(search: number): boolean {
 	return (
-		(search >= 0x0041 && search <= 0x005a) || // A .. Z
 		(search >= 0x0061 && search <= 0x007a) || // a .. z
+		(search >= 0x0041 && search <= 0x005a) || // A .. Z
 		search === LOW_LINE ||
 		isNonASCII_IdentCodePoint(search)
 	);
@@ -28,8 +28,8 @@ export function isIdentStartCodePoint(search: number): boolean {
 // https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/#ident-code-point
 export function isIdentCodePoint(search: number): boolean {
 	return (
-		(search >= 0x0041 && search <= 0x005a) || // A .. Z
 		(search >= 0x0061 && search <= 0x007a) || // a .. z
+		(search >= 0x0041 && search <= 0x005a) || // A .. Z
 		(search >= 0x0030 && search <= 0x0039) || // 0 .. 9
 		search === HYPHEN_MINUS ||
 		search === LOW_LINE ||
@@ -41,7 +41,7 @@ export function isIdentCodePoint(search: number): boolean {
 export function isNonASCII_IdentCodePoint(search: number): boolean {
 	// The only code points below U+00B7 that are non-ASCII ident code points is U+0000 NULL.
 	if (search < 0x00B7) {
-		return search === 0x000;
+		return search === NULL;
 	}
 
 	if (
@@ -70,7 +70,7 @@ export function isNonASCII_IdentCodePoint(search: number): boolean {
 	}
 
 	// Input preprocessing
-	if (search === 0x000) {
+	if (search === NULL) {
 		return true;
 	} else if (search >= 0xd800 && search <= 0xdfff) { // surrogate
 		return true;
