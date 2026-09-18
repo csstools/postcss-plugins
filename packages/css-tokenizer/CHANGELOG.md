@@ -2,7 +2,8 @@
 
 ### Unreleased (patch)
 
-- Fix handling of astral code points in `string-token` and `url-token` values.
+- Fix decoding of astral code points in `string-token` and `url-token` values.
+- Improve performance
 
 ### 4.0.0
 

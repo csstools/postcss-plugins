@@ -498,3 +498,45 @@ url( 'mix-quoted" ' )\
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: 'url(😀)',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['url-token', 'url(😀)', 0, 6, { value: '😀' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(😀foo😀)',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['url-token', 'url(😀foo😀)', 0, 11, { value: '😀foo😀' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: 'url(\\🔴)',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['url-token', 'url(\\🔴)', 0, 7, { value: '🔴' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}

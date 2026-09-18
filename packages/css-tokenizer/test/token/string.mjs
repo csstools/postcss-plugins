@@ -111,3 +111,45 @@ bar";
 		],
 	);
 }
+
+{
+	const t = tokenizer({
+		css: '"😀"',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['string-token', '"😀"', 0, 3, { value: '😀' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: '"😀foo😀"',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['string-token', '"😀foo😀"', 0, 8, { value: '😀foo😀' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
+
+{
+	const t = tokenizer({
+		css: '"\\🔴"',
+	});
+
+	assert.deepEqual(
+		collectTokens(t),
+		[
+			['string-token', '"\\🔴"', 0, 4, { value: '🔴' }],
+			['EOF-token', '', -1, -1, undefined],
+		],
+	);
+}
