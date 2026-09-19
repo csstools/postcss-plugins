@@ -808,7 +808,10 @@ function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentVal
 				return -1;
 			}
 
-			x.fixed = Math.max(0, Math.min(fixedNumber.value[4].value, 1 - 0.000_000_001));
+			// https://drafts.csswg.org/css-values-5/#random-caching
+			// The random base value is clamped to the highest representable value less than 1,
+			// so random base values remain in the half-open range [0, 1).
+			x.fixed = Math.max(0, Math.min(fixedNumber.value[4].value, 1 - Number.EPSILON / 2));
 
 			continue;
 		}

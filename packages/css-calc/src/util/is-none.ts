@@ -1,12 +1,12 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isCommentNode, isTokenNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
+import { isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import { isTokenIdent } from '@csstools/css-tokenizer';
 
 const IS_NONE_REGEX = /^none$/i;
 
 export function isNone(v: Array<ComponentValue> | ComponentValue): boolean {
 	if (Array.isArray(v)) {
-		const relevantNodes = v.filter((x) => !(isWhitespaceNode(x) && isCommentNode(x)));
+		const relevantNodes = v.filter((x) => !isWhiteSpaceOrCommentNode(x));
 		if (relevantNodes.length === 1) {
 			return isNone(relevantNodes[0]);
 		}

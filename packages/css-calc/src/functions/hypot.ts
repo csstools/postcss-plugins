@@ -29,6 +29,13 @@ export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<Component
 	}
 
 	const values = tokens.map((x) => x[4].value);
+
+	// https://drafts.csswg.org/css-values-4/#exponent-ranges
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (values.some(Number.isNaN)) {
+		return resultToCalculation(hypotNode, firstSolvedToken, Number.NaN);
+	}
+
 	const result = Math.hypot(...values);
 
 	return resultToCalculation(hypotNode, firstSolvedToken, result);

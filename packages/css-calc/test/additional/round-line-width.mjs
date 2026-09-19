@@ -235,3 +235,52 @@ assert.strictEqual(
 	calc('round(line-width, 11px, 1)', { devicePixelLength: 0.5 }),
 	'round(line-width, 11px, 1)',
 );
+
+// When one of the candidate multiples is zero, the non-zero one is chosen, regardless of the sign of A.
+// https://github.com/w3c/csswg-drafts/issues/13794
+// https://drafts.csswg.org/css-values-4/#round-func
+assert.strictEqual(
+	calc('round(line-width, 0.4px, 1px)'),
+	'1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.1px, 1px)'),
+	'-1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.3px, 1px)'),
+	'-1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.4px, 1px)'),
+	'-1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.4px, 2px)'),
+	'-2px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -0.4px, 1px)', { devicePixelLength: 0.5 }),
+	'-1px',
+);
+
+// No zero candidate, so these round as for nearest.
+assert.strictEqual(
+	calc('round(line-width, -0.6px, 1px)'),
+	'-1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -1.4px, 1px)'),
+	'-1px',
+);
+
+assert.strictEqual(
+	calc('round(line-width, -1.6px, 1px)'),
+	'-2px',
+);

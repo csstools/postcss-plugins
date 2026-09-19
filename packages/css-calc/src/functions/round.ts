@@ -28,7 +28,10 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 
 	let result;
 	// https://drafts.csswg.org/css-values-4/#round-infinities
-	if (bToken[4].value === 0) {
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+		result = Number.NaN;
+	} else if (bToken[4].value === 0) {
 		// In round(A, B), if B is 0, the result is NaN.
 		result = Number.NaN;
 	} else if (!Number.isFinite(aToken[4].value) && !Number.isFinite(bToken[4].value)) {
@@ -75,10 +78,14 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 	} else {
 		switch (roundingStrategy) {
 			case 'down':
-				result = Math.floor(aToken[4].value / bToken[4].value) * bToken[4].value;
+				// "Choose lower B" (the integer multiple of B closer to −∞).
+				// For a negative step, `Math.floor`/`Math.ceil` must be swapped.
+				result = (bToken[4].value > 0 ? Math.floor : Math.ceil)(aToken[4].value / bToken[4].value) * bToken[4].value;
 				break;
 			case 'up':
-				result = Math.ceil(aToken[4].value / bToken[4].value) * bToken[4].value;
+				// "Choose upper B" (the integer multiple of B closer to +∞).
+				// For a negative step, `Math.floor`/`Math.ceil` must be swapped.
+				result = (bToken[4].value > 0 ? Math.ceil : Math.floor)(aToken[4].value / bToken[4].value) * bToken[4].value;
 				break;
 			case 'to-zero':
 				result = Math.trunc(aToken[4].value / bToken[4].value) * bToken[4].value;
@@ -97,7 +104,7 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 				const downDiff = Math.abs(aToken[4].value - down);
 				const upDiff = Math.abs(aToken[4].value - up);
 
-				if (roundingStrategy === 'line-width' && aToken[4].value >= 0 && (up === 0 || down === 0)) {
+				if (roundingStrategy === 'line-width' && (up === 0 || down === 0)) {
 					result = up !== 0 ? up : down;
 				} else if (downDiff === upDiff) {
 					result = up;

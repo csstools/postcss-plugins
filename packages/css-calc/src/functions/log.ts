@@ -42,6 +42,18 @@ export function solveLog(logNode: FunctionNode, solvedNodes: Array<ComponentValu
 			return -1;
 		}
 
+		// https://drafts.csswg.org/css-values-4/#exponent-infinities
+		// If B is 1 or negative, the result is NaN.
+		// B values between 0 and 1 (exclusive), or greater than 1, are valid.
+		if (bToken[4].value === 1 || bToken[4].value <= 0) {
+			return numberToCalculation(logNode, Number.NaN);
+		}
+
+		// If A is 1, the result is 0⁺.
+		if (aToken[4].value === 1) {
+			return numberToCalculation(logNode, +0);
+		}
+
 		const result = Math.log(aToken[4].value) / Math.log(bToken[4].value);
 
 		return numberToCalculation(logNode, result);

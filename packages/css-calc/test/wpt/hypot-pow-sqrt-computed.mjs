@@ -190,3 +190,49 @@ assert.strictEqual(
 	calc('hypot(1turn)'),
 	'1turn',
 );
+
+assert.strictEqual(
+	calc('hypot(NaN, 5)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('hypot(infinity, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('hypot(NaN, infinity)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('hypot(1, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('hypot(infinity, 5)'),
+	'calc(infinity)',
+);
+
+assert.strictEqual(
+	calc('hypot(5, infinity)'),
+	'calc(infinity)',
+);
+
+// NaN is infectious, even for `pow(NaN, 0)` where `Math.pow` would return 1.
+assert.strictEqual(
+	calc('pow(NaN, 0)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('pow(1, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('pow(NaN, NaN)'),
+	'calc(NaN)',
+);

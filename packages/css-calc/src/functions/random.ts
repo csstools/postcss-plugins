@@ -22,19 +22,6 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 		return -1;
 	}
 
-	if (!options.randomCaching) {
-		options.randomCaching = {
-			propertyName: '',
-			propertyN: 0,
-			elementID: '',
-			documentID: '',
-		};
-	}
-
-	if (options.randomCaching && !options.randomCaching.propertyN) {
-		options.randomCaching.propertyN = 0;
-	}
-
 	const aToken = a.value;
 	if (!isTokenNumeric(aToken)) {
 		return -1;
@@ -53,40 +40,72 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 		}
 	}
 
+	// https://drafts.csswg.org/css-values-5/#randomness
+	// NaN is infectious, as usual for math functions.
+	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, Number.NaN);
+	}
+
+	// If A is infinite, the result is infinite.
 	if (!Number.isFinite(aToken[4].value)) {
-		return resultToCalculation(randomNode, aToken, Number.NaN);
-	}
-
-	if (!Number.isFinite(bToken[4].value)) {
-		return resultToCalculation(randomNode, aToken, Number.NaN);
-	}
-
-	if (!Number.isFinite(bToken[4].value - aToken[4].value)) {
-		return resultToCalculation(randomNode, aToken, Number.NaN);
-	}
-
-	if (stepValueToken && !Number.isFinite(stepValueToken[4].value)) {
 		return resultToCalculation(randomNode, aToken, aToken[4].value);
 	}
 
-	const rnd = randomValueSharing.fixed === -1 ? sfc32(
-		crc32(
-			[
-				randomValueSharing.dashedIdent ? randomValueSharing.dashedIdent : "",
-				randomValueSharing.elementScoped ? options.randomCaching.elementID : "",
-				(randomValueSharing.propertyScoped || randomValueSharing.propertyIndexScoped) ? options.randomCaching.propertyName : "",
-				randomValueSharing.propertyIndexScoped ? options.randomCaching.propertyN : "",
-				options.randomCaching.documentID,
-			].join(NULL_CHAR),
-		),
-	) : () : number => { return randomValueSharing.fixed; };
-
-	let min = aToken[4].value;
-	let max = bToken[4].value;
-	if (min > max) {
-		[min, max] = [max, min];
+	// If A is finite, but the difference between A and B is infinite, the result is NaN.
+	if (!Number.isFinite(bToken[4].value) || !Number.isFinite(bToken[4].value - aToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, Number.NaN);
 	}
 
+	if (stepValueToken) {
+		// If C is NaN the result is NaN.
+		if (Number.isNaN(stepValueToken[4].value)) {
+			return resultToCalculation(randomNode, aToken, Number.NaN);
+		}
+
+		// If C is infinite, the result is A.
+		if (!Number.isFinite(stepValueToken[4].value)) {
+			return resultToCalculation(randomNode, aToken, aToken[4].value);
+		}
+	}
+
+	const rnd = ((): () => number => {
+		if (randomValueSharing.fixed !== -1) {
+			return (): number => {
+				return randomValueSharing.fixed;
+			};
+		}
+
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		if (!options.randomCaching!.propertyN) {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			options.randomCaching!.propertyN = 0;
+		}
+
+		return sfc32(
+			crc32(
+				[
+					randomValueSharing.dashedIdent ? randomValueSharing.dashedIdent : "",
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					randomValueSharing.elementScoped ? options.randomCaching!.elementID : "",
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					(randomValueSharing.propertyScoped || randomValueSharing.propertyIndexScoped) ? options.randomCaching!.propertyName : "",
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					randomValueSharing.propertyIndexScoped ? options.randomCaching!.propertyN : "",
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					options.randomCaching!.documentID,
+				].join(NULL_CHAR),
+			),
+		);
+	})();
+
+	// If the maximum value is less than the minimum value, it behaves as if it's equal to the minimum value.
+	const min = aToken[4].value;
+	let max = bToken[4].value;
+	if (max < min) {
+		max = min;
+	}
+
+	// If C is negative, zero, or positive but close enough to zero that the range for the step multiplier would be infinite, the step must be ignored.
 	if (
 		stepValueToken && (
 			(stepValueToken[4].value <= 0) ||
@@ -97,31 +116,37 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 	}
 
 	if (stepValueToken) {
-		const err = Math.max(stepValueToken[4].value / 1000, 0.000_000_001);
+		const step = stepValueToken[4].value;
 
-		const steps = [min];
-		let lastStep = 0;
-		while (true) {
-			lastStep += stepValueToken[4].value;
+		// Let epsilon be step / 1000, or the smallest representable value greater than zero if epsilon would round to zero.
+		const epsilon = Math.max(step / 1000, 0.000_000_001);
 
-			const stepResult = min + lastStep;
-			if ((stepResult + err) < max) {
-				steps.push(stepResult);
-			} else {
-				steps.push(max);
-				break;
-			}
+		// Let N be the largest integer such that min + N * step is less than or equal to max.
+		let N = Math.floor((max - min) / step);
 
-			if ((stepResult + stepValueToken[4].value - err) > max) {
-				break;
-			}
+		// If N produces a value that is not within epsilon of max, but N+1 would produce a value within epsilon of max, set N to N+1.
+		if (
+			Math.abs(min + N * step - max) >= epsilon &&
+			Math.abs(min + (N + 1) * step - max) < epsilon
+		) {
+			N = N + 1;
 		}
 
-		const randomValue = rnd();
+		// Let step index be a random integer less than N+1, given R.
+		const stepIndex = Math.floor(rnd() * (N + 1));
+
+		// Let value be min + step index * step.
+		let value = min + stepIndex * step;
+
+		// If step index is N and value is within epsilon of max, return max.
+		if (stepIndex === N && Math.abs(value - max) < epsilon) {
+			value = max;
+		}
+
 		return resultToCalculation(
 			randomNode,
 			aToken,
-			Number(steps[Math.floor(steps.length * randomValue)].toFixed(5))
+			Number(value.toFixed(5))
 		);
 	}
 
