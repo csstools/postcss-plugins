@@ -440,3 +440,68 @@ for (let i = 0; i < 100; i++) {
 	assert.ok(result <= 190);
 	assert.ok(result === 100 || result === 130 || result === 160 || result === 190);
 }
+
+// NaN is infectious: any NaN argument forces random() to return NaN.
+// https://drafts.csswg.org/css-values-5/#random-infinities
+{
+	assert.strictEqual(
+		calc('random(100, NaN)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(calc(NaN), 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(calc(NaN * 1px), 100px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1px)',
+	);
+
+	assert.strictEqual(
+		calc('random(100px, calc(NaN * 1px))', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1px)',
+	);
+
+	assert.strictEqual(
+		calc('random(0%, calc(NaN * 1%))', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1%)',
+	);
+
+	assert.strictEqual(
+		calc('random(100px, 500px, calc(NaN * 1px))', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1px)',
+	);
+
+	// NaN in any of the three arguments, including the optional step.
+	assert.strictEqual(
+		calc('random(fixed 0.5, NaN, 100)'),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, 10, NaN)'),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, NaN * 1px, 100px)'),
+		'calc(NaN * 1px)',
+	);
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, 10px, NaN * 1px, 5px)'),
+		'calc(NaN * 1px)',
+	);
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, NaN, 100, 5)'),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, NaN * 1%, 100%)'),
+		'calc(NaN * 1%)',
+	);
+}

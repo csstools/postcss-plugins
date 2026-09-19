@@ -53,6 +53,10 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 		}
 	}
 
+	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, Number.NaN);
+	}
+
 	if (!Number.isFinite(aToken[4].value)) {
 		return resultToCalculation(randomNode, aToken, Number.NaN);
 	}
@@ -62,6 +66,10 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 	}
 
 	if (!Number.isFinite(bToken[4].value - aToken[4].value)) {
+		return resultToCalculation(randomNode, aToken, Number.NaN);
+	}
+
+	if (stepValueToken && Number.isNaN(stepValueToken[4].value)) {
 		return resultToCalculation(randomNode, aToken, Number.NaN);
 	}
 

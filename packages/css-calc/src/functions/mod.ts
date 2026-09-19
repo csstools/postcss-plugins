@@ -17,7 +17,10 @@ export function solveMod(modNode: FunctionNode, a: TokenNode, b: TokenNode): Cal
 	}
 
 	let result;
-	if (bToken[4].value === 0) {
+	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+		// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+		result = Number.NaN;
+	} else if (bToken[4].value === 0) {
 		result = Number.NaN;
 	} else if (!Number.isFinite(aToken[4].value)) {
 		result = Number.NaN;
