@@ -17,12 +17,17 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 		return -1;
 	}
 
-	if (!options.rawPercentages && isTokenPercentage(aToken)) {
+	const bToken = convertUnit(aToken, b.value);
+	if (!twoOfSameNumeric(aToken, bToken)) {
 		return -1;
 	}
 
-	const bToken = convertUnit(aToken, b.value);
-	if (!twoOfSameNumeric(aToken, bToken)) {
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+		return resultToCalculation(roundNode, aToken, Number.NaN);
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(aToken)) {
 		return -1;
 	}
 

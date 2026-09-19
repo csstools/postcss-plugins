@@ -19,12 +19,18 @@ export function solveHypot(hypotNode: FunctionNode, solvedNodes: Array<Component
 		return -1;
 	}
 
-	if (!options.rawPercentages && isTokenPercentage(firstSolvedToken)) {
+	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, x.value));
+	if (!arrayOfSameNumeric(tokens)) {
 		return -1;
 	}
 
-	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, x.value));
-	if (!arrayOfSameNumeric(tokens)) {
+	// https://drafts.csswg.org/css-values-4/#exponent-ranges
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (tokens.some((x) => Number.isNaN(x[4].value))) {
+		return resultToCalculation(hypotNode, firstSolvedToken, Number.NaN);
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(firstSolvedToken)) {
 		return -1;
 	}
 

@@ -19,12 +19,17 @@ export function solveMin(minNode: FunctionNode, solvedNodes: Array<ComponentValu
 		return -1;
 	}
 
-	if (!options.rawPercentages && isTokenPercentage(firstSolvedToken)) {
+	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, x.value));
+	if (!arrayOfSameNumeric(tokens)) {
 		return -1;
 	}
 
-	const tokens = solvedNodes.map((x) => convertUnit(firstSolvedToken, x.value));
-	if (!arrayOfSameNumeric(tokens)) {
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (tokens.some((x) => Number.isNaN(x[4].value))) {
+		return resultToCalculation(minNode, firstSolvedToken, Number.NaN);
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(firstSolvedToken)) {
 		return -1;
 	}
 
