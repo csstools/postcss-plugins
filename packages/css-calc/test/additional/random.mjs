@@ -532,6 +532,23 @@ for (let i = 0; i < 100; i++) {
 		'calc(NaN)',
 	);
 
+	// A bare leading <calc-keyword> is a <calc-sum> argument, not a <random-key>.
+	// https://drafts.csswg.org/css-values-5/#random
+	assert.strictEqual(
+		calc('random(NaN, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(NaN * 1px, 100px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1px)',
+	);
+
+	assert.strictEqual(
+		calc('random(NaN * 1%, 100%)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1%)',
+	);
+
 	assert.strictEqual(
 		calc('random(calc(NaN * 1px), 100px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
 		'calc(NaN * 1px)',
@@ -581,5 +598,57 @@ for (let i = 0; i < 100; i++) {
 	assert.strictEqual(
 		calc('random(fixed 0.5, NaN * 1%, 100%)'),
 		'calc(NaN * 1%)',
+	);
+}
+
+// A bare leading <calc-keyword> (`infinity`, `-infinity`, `e`, `pi`, `NaN`) is
+// the start of the first <calc-sum> argument, not a <random-key>.
+// https://drafts.csswg.org/css-values-5/#random
+// https://drafts.csswg.org/css-values-5/#random-infinities
+{
+	assert.strictEqual(
+		calc('random(infinity, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(infinity)',
+	);
+
+	assert.strictEqual(
+		calc('random(-infinity, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(-infinity)',
+	);
+
+	assert.strictEqual(
+		calc('random(-infinity, infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(-infinity)',
+	);
+
+	assert.strictEqual(
+		calc('random(infinity, -infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(infinity)',
+	);
+
+	// A finite A with an infinite B makes the range infinite, so the result is NaN.
+	assert.strictEqual(
+		calc('random(100, -infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(100, infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(e, 10)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'9.90307',
+	);
+
+	assert.strictEqual(
+		calc('random(pi, 10)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'9.90871',
+	);
+
+	assert.strictEqual(
+		calc('random(e, 10, 1)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'9.71828',
 	);
 }

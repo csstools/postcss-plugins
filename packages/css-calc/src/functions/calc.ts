@@ -836,6 +836,14 @@ function parseRandomValueSharing(fnNode: FunctionNode, nodes: Array<ComponentVal
 			continue;
 		}
 
+		if (i === 0) {
+			// The leading ident is not a <random-key> (e.g. a <calc-keyword> like
+			// `NaN`, `infinity`, `-infinity`, `e` or `pi`).
+			// It is the start of the first <calc-sum> argument.
+			// https://drafts.csswg.org/css-values-5/#random
+			return [x, nodes];
+		}
+
 		return -1;
 	}
 
