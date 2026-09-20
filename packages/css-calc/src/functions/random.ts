@@ -40,8 +40,6 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 		}
 	}
 
-	// https://drafts.csswg.org/css-values-5/#randomness
-	// NaN is infectious, as usual for math functions.
 	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
 		return resultToCalculation(randomNode, aToken, Number.NaN);
 	}

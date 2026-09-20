@@ -15,6 +15,7 @@ import './clamp-length-computed.mjs';
 import './clamp-length-invalid.mjs';
 import './exp-log-compute.mjs';
 import './hypot-pow-sqrt-computed.mjs';
+import './infectious-nan.mjs';
 import './invalid.mjs';
 import './max-20-arguments.mjs';
 import './minmax-angle-computed.mjs';

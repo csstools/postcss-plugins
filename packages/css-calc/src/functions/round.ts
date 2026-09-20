@@ -17,21 +17,23 @@ export function solveRound(roundNode: FunctionNode, roundingStrategy: string, a:
 		return -1;
 	}
 
-	if (!options.rawPercentages && isTokenPercentage(aToken)) {
-		return -1;
-	}
-
 	const bToken = convertUnit(aToken, b.value);
 	if (!twoOfSameNumeric(aToken, bToken)) {
 		return -1;
 	}
 
-	let result;
-	// https://drafts.csswg.org/css-values-4/#round-infinities
 	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
 	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
-		result = Number.NaN;
-	} else if (bToken[4].value === 0) {
+		return resultToCalculation(roundNode, aToken, Number.NaN);
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(aToken)) {
+		return -1;
+	}
+
+	let result;
+	// https://drafts.csswg.org/css-values-4/#round-infinities
+	if (bToken[4].value === 0) {
 		// In round(A, B), if B is 0, the result is NaN.
 		result = Number.NaN;
 	} else if (!Number.isFinite(aToken[4].value) && !Number.isFinite(bToken[4].value)) {

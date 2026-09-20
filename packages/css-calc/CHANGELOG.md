@@ -5,8 +5,6 @@
 - Fixed `tan()` at asymptote values beyond the first period (`270deg`, `-270deg`, ...) to match the specification
 - Fixed `round(line-width, ...)` to choose the non-zero candidate multiple when `A` is negative
 - Fixed `round(down/up, ...)` with a negative step to choose the correct candidate multiple
-- Fixed `round()`, `mod()`, and `rem()` to propagate `NaN` as specified
-- Fixed `pow(NaN, 0)` to return `NaN` as specified
 - Fixed `log(A, 0)` to return `NaN` as specified (only `B` values between 0 and 1, or greater than 1, are valid)
 - Fixed `log(1, B)` to return `0⁺` as specified
 - Fixed `random()` to not mutate the caller's `options` object
@@ -14,8 +12,7 @@
 - Fixed `random()` to treat `max < min` as `max = min` instead of swapping the arguments
 - Fixed `random()` to not return an unreachable `max` when a `step` is given
 - Fixed `random()` to return `A` (the minimum) when `A` is infinite, instead of `NaN`
-- Fixed `log(A, 1)` to return `NaN`
-- Fixed `hypot()` to propagate `NaN` as specified
+- Fix infectious `NaN`
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#401) (patch)
 
 ### 3.4.0
