@@ -63,12 +63,12 @@
 	/* Asymptotes */
 	order: calc(calc(infinity));
 	order: calc(calc(infinity));
+	order: calc(calc(-infinity));
+	order: calc(calc(-infinity));
 	order: calc(calc(infinity));
+	order: calc(calc(-infinity));
+	order: calc(calc(-infinity));
 	order: calc(calc(infinity));
-	order: calc(calc(-infinity));
-	order: calc(calc(-infinity));
-	order: calc(calc(-infinity));
-	order: calc(calc(-infinity));
 	/* 1 + 2 -> 3 */
 	/* 3 * 3 -> 9 */
 	/* 9 * 10deg -> 90deg */
