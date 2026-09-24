@@ -69,6 +69,9 @@ const testCases = {
 		case 'test/css-import-tests/001-core-features/forwards-compat/004':
 			testCases[key].warnings = 1;
 			break;
+		case 'test/css-import-tests/001-core-features/forwards-compat/009':
+			testCases[key].warnings = 1;
+			break;
 		case 'test/css-import-tests/002-sub-features/003-at-layer/013':
 			testCases[key].warnings = 1;
 			break;
