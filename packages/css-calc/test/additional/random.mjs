@@ -404,6 +404,16 @@ assert.strictEqual(
 	'0.3',
 );
 
+assert.strictEqual(
+	calc('random(fixed 0.5, 0, 1e10, 1)'), // Number of steps is exactly the upper bound, must not be enumerated
+	'5000000000',
+);
+
+assert.strictEqual(
+	calc('random(fixed 0.5, 0, 5e7, 1)'), // Number of steps is large but below the upper bound, must not be enumerated
+	'25000000',
+);
+
 for (let i = 0; i < 100; i++) {
 	const result = Number(calc(`random(--a${i}, 0, 0.3, 0.1)`, { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }));
 
