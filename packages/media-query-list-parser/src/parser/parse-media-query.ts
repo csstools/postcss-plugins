@@ -112,15 +112,38 @@ export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQu
 	}
 }
 
-function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>): MediaConditionListWithOr | false {
+function parseMediaConditionList(componentValues: Array<ComponentValue>, allowOr: boolean): MediaConditionListWithAnd | MediaConditionListWithOr | false {
 	let leading: MediaInParens | false = false;
-	const list: Array<MediaOr> = [];
+	let operator: 'and' | 'or' | false = false;
+	const list: Array<MediaAnd | MediaOr> = [];
 	let firstIndex = -1;
 	let lastIndex = -1;
 
 	for (let i = 0; i < componentValues.length; i++) {
-		if (leading) {
-			const part = parseMediaOr(componentValues.slice(i));
+		if (leading && operator === false) {
+			const mediaAnd = parseMediaAnd(componentValues.slice(i));
+			if (mediaAnd !== false) {
+				operator = 'and';
+				i += mediaAnd.advance;
+				list.push(mediaAnd.node);
+				lastIndex = i;
+				continue;
+			}
+
+			if (allowOr) {
+				const mediaOr = parseMediaOr(componentValues.slice(i));
+				if (mediaOr !== false) {
+					operator = 'or';
+					i += mediaOr.advance;
+					list.push(mediaOr.node);
+					lastIndex = i;
+					continue;
+				}
+			}
+		}
+
+		if (leading && operator) {
+			const part = operator === 'and' ? parseMediaAnd(componentValues.slice(i)) : parseMediaOr(componentValues.slice(i));
 			if (part !== false) {
 				i += part.advance;
 				list.push(part.node);
@@ -142,7 +165,7 @@ function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>): 
 			return false;
 		}
 
-		if (leading === false && isSimpleBlockNode(componentValue)) {
+		if (isSimpleBlockNode(componentValue)) {
 			componentValue.normalize();
 			leading = parseMediaInParensFromSimpleBlock(componentValue);
 			if (leading === false) {
@@ -157,76 +180,18 @@ function parseMediaConditionListWithOr(componentValues: Array<ComponentValue>): 
 	}
 
 	if (leading && list.length) {
-		return new MediaConditionListWithOr(
-			leading,
-			list,
-			componentValues.slice(0, firstIndex).flatMap((x) => {
-				return x.tokens();
-			}),
-			componentValues.slice(lastIndex + 1).flatMap((x) => {
-				return x.tokens();
-			}),
-		);
-	}
+		const before = componentValues.slice(0, firstIndex).flatMap((x) => {
+			return x.tokens();
+		});
+		const after = componentValues.slice(lastIndex + 1).flatMap((x) => {
+			return x.tokens();
+		});
 
-	return false;
-}
-
-function parseMediaConditionListWithAnd(componentValues: Array<ComponentValue>): MediaConditionListWithAnd | false {
-	let leading: MediaInParens | false = false;
-	const list: Array<MediaAnd> = [];
-	let firstIndex = -1;
-	let lastIndex = -1;
-
-	for (let i = 0; i < componentValues.length; i++) {
-		if (leading) {
-			const part = parseMediaAnd(componentValues.slice(i));
-			if (part !== false) {
-				i += part.advance;
-				list.push(part.node);
-				lastIndex = i;
-				continue;
-			}
+		if (operator === 'and') {
+			return new MediaConditionListWithAnd(leading, list as Array<MediaAnd>, before, after);
 		}
 
-		const componentValue = componentValues[i];
-		if (componentValue.type === ComponentValueType.Whitespace) {
-			continue;
-		}
-
-		if (componentValue.type === ComponentValueType.Comment) {
-			continue;
-		}
-
-		if (leading) {
-			return false;
-		}
-
-		if (leading === false && isSimpleBlockNode(componentValue)) {
-			componentValue.normalize();
-			leading = parseMediaInParensFromSimpleBlock(componentValue);
-			if (leading === false) {
-				return false;
-			}
-
-			firstIndex = i;
-			continue;
-		}
-
-		return false;
-	}
-
-	if (leading && list.length) {
-		return new MediaConditionListWithAnd(
-			leading,
-			list,
-			componentValues.slice(0, firstIndex).flatMap((x) => {
-				return x.tokens();
-			}),
-			componentValues.slice(lastIndex + 1).flatMap((x) => {
-				return x.tokens();
-			}),
-		);
+		return new MediaConditionListWithOr(leading, list as Array<MediaOr>, before, after);
 	}
 
 	return false;
@@ -238,19 +203,14 @@ function parseMediaCondition(componentValues: Array<ComponentValue>): MediaCondi
 		return new MediaCondition(mediaNot);
 	}
 
-	const mediaListAnd = parseMediaConditionListWithAnd(componentValues);
-	if (mediaListAnd !== false) {
-		return new MediaCondition(mediaListAnd);
-	}
-
-	const mediaListOr = parseMediaConditionListWithOr(componentValues);
-	if (mediaListOr !== false) {
-		return new MediaCondition(mediaListOr);
-	}
-
 	const mediaInParens = parseMediaInParens(componentValues);
 	if (mediaInParens !== false) {
 		return new MediaCondition(mediaInParens);
+	}
+
+	const mediaConditionList = parseMediaConditionList(componentValues, true);
+	if (mediaConditionList !== false) {
+		return new MediaCondition(mediaConditionList);
 	}
 
 	return false;
@@ -262,14 +222,14 @@ function parseMediaConditionWithoutOr(componentValues: Array<ComponentValue>): M
 		return new MediaCondition(mediaNot);
 	}
 
-	const mediaListAnd = parseMediaConditionListWithAnd(componentValues);
-	if (mediaListAnd !== false) {
-		return new MediaCondition(mediaListAnd);
-	}
-
 	const mediaInParens = parseMediaInParens(componentValues);
 	if (mediaInParens !== false) {
 		return new MediaCondition(mediaInParens);
+	}
+
+	const mediaConditionList = parseMediaConditionList(componentValues, false);
+	if (mediaConditionList !== false) {
+		return new MediaCondition(mediaConditionList);
 	}
 
 	return false;
