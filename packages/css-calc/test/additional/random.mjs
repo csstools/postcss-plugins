@@ -296,12 +296,12 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(-10px, 20px, 50px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'20px',
+	'-10px',
 );
 
 assert.strictEqual(
 	calc('random(--foo, -10px, 20px, 50px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'20px',
+	'-10px',
 );
 
 assert.strictEqual(
@@ -346,7 +346,7 @@ assert.strictEqual(
 
 assert.strictEqual(
 	calc('random(calc(10px * infinity), 20px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
-	'calc(NaN * 1px)',
+	'calc(infinity * 1px)',
 );
 
 assert.strictEqual(
@@ -404,6 +404,16 @@ assert.strictEqual(
 	'0.3',
 );
 
+assert.strictEqual(
+	calc('random(fixed 0.5, 0, 1e10, 1)'), // Number of steps is exactly the upper bound, must not be enumerated
+	'5000000000',
+);
+
+assert.strictEqual(
+	calc('random(fixed 0.5, 0, 5e7, 1)'), // Number of steps is large but below the upper bound, must not be enumerated
+	'25000000',
+);
+
 for (let i = 0; i < 100; i++) {
 	const result = Number(calc(`random(--a${i}, 0, 0.3, 0.1)`, { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }));
 
@@ -441,6 +451,84 @@ for (let i = 0; i < 100; i++) {
 	assert.ok(result === 100 || result === 130 || result === 160 || result === 190);
 }
 
+// If the maximum value is less than the minimum value, it behaves as if it's equal to the minimum value.
+{
+	for (let i = 0; i < 100; i++) {
+		const result = calc(`random(--minmax${i}, 500px, 100px)`, { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } });
+
+		assert.strictEqual(result, '500px');
+	}
+
+	assert.strictEqual(
+		calc('random(500px, 100px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'500px',
+	);
+
+	assert.strictEqual(
+		calc('random(500, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'500',
+	);
+}
+
+// The max value might not actually show up as a possible value.
+// https://drafts.csswg.org/css-values-5/#randomness
+{
+	for (let i = 0; i < 100; i++) {
+		const result = Number(calc(`random(--unreachable${i}, 100, 200, 30)`, { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }));
+
+		assert.ok(result === 100 || result === 130 || result === 160 || result === 190, result.toString());
+	}
+
+	for (let i = 0; i < 100; i++) {
+		const result = Number(calc(`random(--unreachable2${i}, 100, 120, 30)`, { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }));
+
+		assert.ok(result === 100, result.toString());
+	}
+}
+
+// When the max is an integer multiple of the step, it is reachable.
+{
+	for (let i = 0; i < 100; i++) {
+		const result = Number(calc(`random(--reachable${i}, 100, 500, 10)`, { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }));
+
+		assert.ok(result >= 100, result.toString());
+		assert.ok(result <= 500, result.toString());
+		assert.ok((result % 10) === 0, result.toString());
+	}
+}
+
+// Reusing an options object must not leak `randomCaching` between calls.
+{
+	const options = {};
+
+	// Without `randomCaching`, a non-fixed random() can not be computed.
+	assert.strictEqual(
+		calc('random(100px, 500px)', options),
+		'random(100px, 500px)',
+	);
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, 100px, 500px)', options),
+		'300px',
+	);
+}
+
+// Reusing an options object must not leak `randomCaching` between calls.
+{
+	const options = {};
+
+	assert.strictEqual(
+		calc('random(fixed 0.5, 100px, 500px)', options),
+		'300px',
+	);
+
+	// Without `randomCaching`, a non-fixed random() can not be computed.
+	assert.strictEqual(
+		calc('random(100px, 500px)', options),
+		'random(100px, 500px)',
+	);
+}
+
 // NaN is infectious: any NaN argument forces random() to return NaN.
 // https://drafts.csswg.org/css-values-5/#random-infinities
 {
@@ -452,6 +540,23 @@ for (let i = 0; i < 100; i++) {
 	assert.strictEqual(
 		calc('random(calc(NaN), 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
 		'calc(NaN)',
+	);
+
+	// A bare leading <calc-keyword> is a <calc-sum> argument, not a <random-key>.
+	// https://drafts.csswg.org/css-values-5/#random
+	assert.strictEqual(
+		calc('random(NaN, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(NaN * 1px, 100px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1px)',
+	);
+
+	assert.strictEqual(
+		calc('random(NaN * 1%, 100%)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN * 1%)',
 	);
 
 	assert.strictEqual(
@@ -503,5 +608,57 @@ for (let i = 0; i < 100; i++) {
 	assert.strictEqual(
 		calc('random(fixed 0.5, NaN * 1%, 100%)'),
 		'calc(NaN * 1%)',
+	);
+}
+
+// A bare leading <calc-keyword> (`infinity`, `-infinity`, `e`, `pi`, `NaN`) is
+// the start of the first <calc-sum> argument, not a <random-key>.
+// https://drafts.csswg.org/css-values-5/#random
+// https://drafts.csswg.org/css-values-5/#random-infinities
+{
+	assert.strictEqual(
+		calc('random(infinity, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(infinity)',
+	);
+
+	assert.strictEqual(
+		calc('random(-infinity, 100)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(-infinity)',
+	);
+
+	assert.strictEqual(
+		calc('random(-infinity, infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(-infinity)',
+	);
+
+	assert.strictEqual(
+		calc('random(infinity, -infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(infinity)',
+	);
+
+	// A finite A with an infinite B makes the range infinite, so the result is NaN.
+	assert.strictEqual(
+		calc('random(100, -infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(100, infinity)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'calc(NaN)',
+	);
+
+	assert.strictEqual(
+		calc('random(e, 10)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'9.90307',
+	);
+
+	assert.strictEqual(
+		calc('random(pi, 10)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'9.90871',
+	);
+
+	assert.strictEqual(
+		calc('random(e, 10, 1)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
+		'9.71828',
 	);
 }

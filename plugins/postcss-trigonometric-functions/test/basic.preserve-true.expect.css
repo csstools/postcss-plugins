@@ -114,17 +114,17 @@
 	order: tan(90deg);
 	order: calc(calc(infinity));
 	order: tan(100grad);
-	order: calc(calc(infinity));
-	order: tan(270deg);
-	order: calc(calc(infinity));
-	order: tan(300grad);
 	order: calc(calc(-infinity));
+	order: tan(270deg);
+	order: calc(calc(-infinity));
+	order: tan(300grad);
+	order: calc(calc(infinity));
 	order: tan(-270deg);
 	order: calc(calc(-infinity));
 	order: tan(-100grad);
 	order: calc(calc(-infinity));
 	order: tan(-450deg);
-	order: calc(calc(-infinity));
+	order: calc(calc(infinity));
 	order: tan(-300grad);
 	/* 1 + 2 -> 3 */
 	/* 3 * 3 -> 9 */

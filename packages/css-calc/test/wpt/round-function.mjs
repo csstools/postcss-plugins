@@ -371,3 +371,65 @@ assert.strictEqual(
 	calc('round(3.7px)'),
 	'round(3.7px)',
 );
+
+// 'down' and 'up' with a negative step choose lower/upper B (closer to −∞/+∞).
+assert.strictEqual(
+	calc('round(down, 23, -10)'),
+	'20',
+);
+
+assert.strictEqual(
+	calc('round(up, 23, -10)'),
+	'30',
+);
+
+assert.strictEqual(
+	calc('round(down, -23, -10)'),
+	'-30',
+);
+
+assert.strictEqual(
+	calc('round(up, -23, -10)'),
+	'-20',
+);
+
+assert.strictEqual(
+	calc('round(down, 23px, -10px)'),
+	'20px',
+);
+
+assert.strictEqual(
+	calc('round(up, 23px, -10px)'),
+	'30px',
+);
+
+assert.strictEqual(
+	calc('round(down, 5, -2)'),
+	'4',
+);
+
+assert.strictEqual(
+	calc('round(up, 5, -2)'),
+	'6',
+);
+
+// NaN is infectious.
+assert.strictEqual(
+	calc('round(5, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('round(NaN, 5)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('round(up, 5, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('round(down, NaN, 5)'),
+	'calc(NaN)',
+);
