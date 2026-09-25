@@ -44,13 +44,17 @@
 		"@csstools/css-parser-algorithms": "^4.0.0",
 		"@csstools/css-tokenizer": "^4.0.1"
 	},
+	"devDependencies": {
+		"puppeteer": "^25.7.0"
+	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
 		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs"
+		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs ./test/browser/_browser.mjs",
+		"test:browser": "BROWSER_TESTS=true node --test ./test/browser/_browser.mjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc#readme",
 	"repository": {

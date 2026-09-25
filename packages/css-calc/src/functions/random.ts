@@ -3,6 +3,7 @@ import type { FunctionNode, TokenNode } from '@csstools/css-parser-algorithms';
 import { convertUnit } from '../unit-conversions';
 import { resultToCalculation } from './result-to-calculation';
 import { twoOfSameNumeric } from '../util/kind-of-number';
+import { roundToPrecision } from '../util/precision';
 import type { CSSToken} from '@csstools/css-tokenizer';
 import { isTokenNumeric } from '@csstools/css-tokenizer';
 import type { conversionOptions } from '../options';
@@ -144,7 +145,7 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 		return resultToCalculation(
 			randomNode,
 			aToken,
-			Number(value.toFixed(5))
+			roundToPrecision(value, 5)
 		);
 	}
 
@@ -152,7 +153,7 @@ export function solveRandom(randomNode: FunctionNode, randomValueSharing: Random
 	return resultToCalculation(
 		randomNode,
 		aToken,
-		Number(((randomValue * (max - min)) + min).toFixed(5))
+		roundToPrecision(((randomValue * (max - min)) + min), 5)
 	);
 }
 

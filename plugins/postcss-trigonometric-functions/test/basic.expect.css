@@ -74,10 +74,10 @@
 	/* 9 * 10deg -> 90deg */
 	order: calc(calc(infinity)); /* Is asymptotic */
 	/* Non Asymptotes */
-	order: calc(0);
-	order: calc(0);
-	order: calc(0);
-	order: calc(0);
+	order: calc(-1.2246467991473532e-16);
+	order: calc(-1.2246467991473532e-16);
+	order: calc(-2.4492935982947064e-16);
+	order: calc(-2.4492935982947064e-16);
 	order: tan(1px);
 	order: tan(foo);
 	order: calc(calc(NaN));
