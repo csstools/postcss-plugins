@@ -1,6 +1,8 @@
 # Changes to Cascade Layer Name Parser
 
-### Unreleased (patch)
+### 3.0.1
+
+_September 25, 2026_
 
 - Improve performance
 - Throw when a stylesheet contains too many cascade layers to model
