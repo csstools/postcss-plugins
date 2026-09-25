@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (patch)
+### 12.0.2
+
+_September 25, 2026_
 
 - Improve performance
 - Fix exponential growth of cascade layer names for deeply nested `@layer` rules
