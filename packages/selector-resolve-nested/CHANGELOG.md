@@ -1,6 +1,8 @@
 # Changes to Selector Resolve Nested
 
-### Unreleased (patch)
+### 4.0.2
+
+_September 25, 2026_
 
 - Improve performance
 - Throw when resolving a nested selector would exceed the maximum number of combinations
