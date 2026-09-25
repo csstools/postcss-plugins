@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 3.4.1
+
+_September 25, 2026_
 
 - Improve performance and avoid a stack overflow when solving deeply nested calculations
 - Throw when a math function exceeds the maximum number of nodes
