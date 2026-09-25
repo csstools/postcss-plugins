@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Properties
 
-### Unreleased (patch)
+### 15.0.2
+
+_September 25, 2026_
 
 - Improve performance and avoid a stack overflow when sorting a long chain of custom properties
 - Fix exponential growth of cascade layer names for deeply nested `@layer` rules
