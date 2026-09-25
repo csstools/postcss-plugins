@@ -12,6 +12,13 @@
 - Updated [`@csstools/postcss-syntax-descriptor-syntax-production`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production/CHANGELOG.md#201) (patch)
 - Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#506) (patch)
 - Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`14.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1402) (patch)
+- Updated [`@csstools/postcss-container-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list) to [`1.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list/CHANGELOG.md#102) (patch)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-image-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function) to [`1.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function/CHANGELOG.md#104) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`3.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#305) (patch)
+- Updated [`@csstools/postcss-mixins`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-mixins) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-mixins/CHANGELOG.md#101) (patch)
+- Updated [`@csstools/postcss-property-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list/CHANGELOG.md#201) (patch)
+- Updated [`@csstools/postcss-system-ui-font-family`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family/CHANGELOG.md#201) (patch)
 
 ### 11.5.3
 
