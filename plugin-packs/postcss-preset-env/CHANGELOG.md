@@ -8,6 +8,10 @@
 - Updated [`postcss-attribute-case-insensitive`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive/CHANGELOG.md#801) (patch)
 - Updated [`postcss-logical`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical/CHANGELOG.md#901) (patch)
 - Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#1101) (patch)
+- Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/postcss-syntax-descriptor-syntax-production`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production) to [`2.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production/CHANGELOG.md#201) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#506) (patch)
+- Updated [`postcss-nesting`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting) to [`14.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting/CHANGELOG.md#1402) (patch)
 
 ### 11.5.3
 

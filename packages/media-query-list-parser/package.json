@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.0",
+		"@csstools/css-parser-algorithms": "^4.0.1",
 		"@csstools/css-tokenizer": "^4.0.2"
 	},
 	"scripts": {
