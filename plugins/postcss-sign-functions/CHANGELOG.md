@@ -1,6 +1,8 @@
 # Changes to PostCSS Sign Functions
 
-### Unreleased (patch)
+### 2.0.7
+
+_September 25, 2026_
 
 - Improve performance
 - Throw when a sign function expansion exceeds the maximum size
