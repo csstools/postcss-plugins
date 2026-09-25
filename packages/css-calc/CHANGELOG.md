@@ -15,6 +15,8 @@
 - Fix infectious `NaN`
 - Fixed the `precision` option to not round values that serialize in scientific notation
   (e.g. `calc(1e-10 * 1e-10)` was rounded to `0`, it is now left untouched)
+- Fixed `random()` to not round values that serialize in scientific notation
+  (e.g. `random(fixed 0.5, 1e-20, 1e-10)` returned `0`)
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#401) (patch)
 
 ### 3.4.0

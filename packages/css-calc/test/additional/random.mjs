@@ -46,6 +46,28 @@ assert.strictEqual(
 	'500px',
 );
 
+// Values that serialize in scientific notation are left untouched.
+// Rounding them to a number of decimals would destroy them (e.g. `1e-20` -> `0`).
+assert.strictEqual(
+	calc('random(fixed 0.5, 1e-20, 1e-10)'),
+	'5.0000000005e-11',
+);
+
+assert.strictEqual(
+	calc('random(fixed 0.5, 1e-20, 1e-10, 1e-30)'),
+	'5.0000000005e-11',
+);
+
+assert.strictEqual(
+	calc('random(fixed 0, 1e-20, 1e-10)'),
+	'1e-20',
+);
+
+assert.strictEqual(
+	calc('random(fixed 1, 1e-20, 1e-10)'),
+	'9.999999999999999e-11',
+);
+
 assert.strictEqual(
 	calc('random(100px, 500px)', { randomCaching: { documentID: 'a', elementID: 'b', propertyName: 'c', propertyN: 0 } }),
 	'494.67561px',
