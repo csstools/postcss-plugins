@@ -1,0 +1,14 @@
+/* Nested block layers must qualify to the same layer as the equivalent flat name.
+   `l1 { l2 { l3 { ... } } }` and `l1.l2.l3` are the same cascade layer. */
+
+@media (min-width: 1px) and (debug-layer: flat) {
+	p {
+		color: red;
+	}
+}
+
+@media (min-width: 2px) and (debug-layer: flat) {
+	p {
+		color: blue;
+	}
+}

@@ -23,6 +23,9 @@ postcssTape(plugin)({
 	'cascade-layers': {
 		message: 'supports cascade layers',
 	},
+	'cascade-layers-nested': {
+		message: 'qualifies nested cascade layer names exactly once',
+	},
 	'conditionals': {
 		message: 'handles conditional rules',
 	},

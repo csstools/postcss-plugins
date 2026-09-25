@@ -67,11 +67,19 @@ export const mathFunctions: Map<string, mathFunction> = new Map([
 	['tan', tan],
 ]);
 
+// Folding operators is quadratic in the number of nodes.
+// Bound the number of nodes in a single math function to keep worst case work small.
+const MAX_CALC_NODES = 50_000;
+
 function calc(calcNode: FunctionNode | SimpleBlockNode, globals: Globals, options: conversionOptions): Calculation | -1 {
 	const nodes: Array<ComponentValue | Calculation> = resolveGlobalsAndConstants(
 		[...(calcNode.value.filter(x => !isWhiteSpaceOrCommentNode(x)))],
 		globals,
 	);
+
+	if (nodes.length > MAX_CALC_NODES) {
+		throw new Error(`Maximum number of nodes in a math function (${MAX_CALC_NODES}) exceeded, reduce the complexity of your expression`);
+	}
 
 	if (nodes.length === 1 && isTokenNode(nodes[0])) {
 		return {

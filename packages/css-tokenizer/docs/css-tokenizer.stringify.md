@@ -9,7 +9,7 @@ Concatenate the string representation of a list of tokens. This is not a proper 
 **Signature:**
 
 ```typescript
-export declare function stringify(...tokens: Array<CSSToken>): string;
+export declare function stringify(...tokens: Array<CSSToken> | Array<Array<CSSToken>>): string;
 ```
 
 ## Parameters
@@ -37,7 +37,7 @@ tokens
 
 </td><td>
 
-Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;
+Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt; \| Array&lt;Array&lt;[CSSToken](./css-tokenizer.csstoken.md)<!-- -->&gt;&gt;
 
 
 </td><td>

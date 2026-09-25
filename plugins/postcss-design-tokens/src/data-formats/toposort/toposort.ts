@@ -19,11 +19,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// Depth first topological sort.
+// `visit` was previously implemented with recursion, so the maximum call stack
+// depth was proportional to the longest chain of aliases. A token file with a
+// long chain of aliases could exhaust the call stack.
+// This uses an explicit stack so that the depth is bounded by the input size
+// and errors stay controlled.
 export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
 	let cursor = nodes.length;
 	const sorted: Array<string> = new Array(cursor) as Array<string>;
-	const visited: Record<number, boolean> = {};
-	let i = cursor;
+	const visited: Set<number> = new Set();
 	// Better data structures make algorithm much faster.
 	const outgoingEdges = makeOutgoingEdges(edges);
 	const nodesHash = makeNodesHash(nodes);
@@ -35,49 +40,73 @@ export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Arr
 		}
 	});
 
-	while (i--) {
-		if (!visited[i]) {
-			visit(nodes[i], i, new Set());
+	type Frame = {
+		node: string,
+		outgoing: Array<string>,
+		next: number,
+	};
+
+	for (let i = nodes.length - 1; i >= 0; i--) {
+		if (visited.has(i)) {
+			continue;
+		}
+
+		const root = nodes[i];
+		const onPath = new Set<string>();
+		const stack: Array<Frame> = [];
+
+		visited.add(i);
+		onPath.add(root);
+		stack.push({
+			node: root,
+			outgoing: Array.from(outgoingEdges.get(root) || new Set()),
+			next: 0,
+		});
+
+		while (stack.length) {
+			const frame = stack[stack.length - 1];
+
+			if (frame.next < frame.outgoing.length) {
+				// Children are visited in reverse order to match the insertion order of `makeOutgoingEdges`.
+				const child = frame.outgoing[frame.outgoing.length - 1 - frame.next];
+				frame.next++;
+
+				if (onPath.has(child)) {
+					let nodeRep;
+					try {
+						nodeRep = ', token was: ' + JSON.stringify(child);
+					} catch {
+						nodeRep = '';
+					}
+					throw new Error('Cyclic dependency' + nodeRep);
+				}
+
+				const childIndex = nodesHash.get(child);
+				if (typeof childIndex === 'undefined') {
+					throw new Error('Found unknown token. Make sure to provided all involved tokens. Unknown token: ' + JSON.stringify(child));
+				}
+
+				if (visited.has(childIndex)) {
+					continue;
+				}
+
+				visited.add(childIndex);
+				onPath.add(child);
+				stack.push({
+					node: child,
+					outgoing: Array.from(outgoingEdges.get(child) || new Set()),
+					next: 0,
+				});
+				continue;
+			}
+
+			stack.pop();
+			onPath.delete(frame.node);
+			sorted[--cursor] = frame.node;
 		}
 	}
 
 	return sorted;
-
-	function visit(node: string, j: number, predecessors: Set<string>): void {
-		if (predecessors.has(node)) {
-			let nodeRep;
-			try {
-				nodeRep = ', token was: ' + JSON.stringify(node);
-			} catch {
-				nodeRep = '';
-			}
-			throw new Error('Cyclic dependency' + nodeRep);
-		}
-
-		if (!nodesHash.has(node)) {
-			throw new Error('Found unknown token. Make sure to provided all involved tokens. Unknown token: ' + JSON.stringify(node));
-		}
-
-		if (visited[j]) {
-			return;
-		}
-		visited[j] = true;
-
-		const outgoing: Array<string> = Array.from(outgoingEdges.get(node) || new Set());
-
-		// eslint-disable-next-line no-cond-assign
-		if (j = outgoing.length) {
-			predecessors.add(node);
-			do {
-				const child = outgoing[--j];
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				visit(child, nodesHash.get(child)!, predecessors);
-			} while (j);
-			predecessors.delete(node);
-		}
-
-		sorted[--cursor] = node;
-	}
 }
 
 function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> {

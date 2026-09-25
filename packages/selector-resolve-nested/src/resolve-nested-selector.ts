@@ -1,6 +1,7 @@
 import type { Container, Node, Root, Selector } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-order';
+import { MAX_SELECTOR_COMBINATIONS } from './constants';
 import { sourceFrom } from './source';
 
 export interface ResolveOptions {
@@ -20,6 +21,7 @@ export interface ResolveOptions {
  */
 export function resolveNestedSelector(selector: Root, parentSelector: Root, options?: ResolveOptions): Root {
 	const result: Array<Selector> = [];
+	const parentSelectorNodeCount = countNodes(parentSelector);
 
 	for (let x = 0; x < selector.nodes.length; x++) {
 		const selectorAST = selector.nodes[x].clone();
@@ -41,11 +43,17 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root, opti
 
 		{
 			const needsSorting = new Set<Container<string, Node>>();
+			let nestingCount = 0;
 
 			selectorAST.walkNesting((node) => {
 				const parent = node.parent;
 
 				if (!parent) return;
+
+				nestingCount++;
+				if (nestingCount * parentSelectorNodeCount > MAX_SELECTOR_COMBINATIONS) {
+					throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
+				}
 
 				needsSorting.add(parent);
 
@@ -86,21 +94,16 @@ export function resolveNestedSelector(selector: Root, parentSelector: Root, opti
 	return root;
 }
 
+function countNodes(root: Root): number {
+	let counter = 0;
+	root.walk(() => {
+		counter++;
+	});
+
+	return counter;
+}
+
 function prepareParentSelectors(parentSelectors: Root, forceIsPseudo: boolean = false): Array<Node> {
-	{
-		let counter = 0;
-		parentSelectors.walk(() => {
-			counter++;
-		});
-
-		if (counter > 10_000) {
-			// Throwing is best here as a warning would be impossible to handle gracefully on our end.
-			// This will error mid transform and there is no possible fallback at this point.
-			// The user should reduce complexity.
-			throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
-		}
-	}
-
 	if (
 		forceIsPseudo ||
 		!isCompoundSelector(parentSelectors.nodes)

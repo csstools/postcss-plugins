@@ -94,7 +94,7 @@
 }
 }
 
-@media (--circular-mq-b) {
+@media (--circular-mq-a) {
 	body {
 		order: 7;
 	}

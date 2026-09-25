@@ -1,5 +1,9 @@
 # Changes to PostCSS Conditional Values
 
+### Unreleased (patch)
+
+- Improve performance
+
 ### 5.0.0
 
 _January 14, 2026_

@@ -42,11 +42,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 					const ownIndex = parent.index(decl);
 
-					const siblingTextDecorationProperties = parent.nodes.filter((node) => {
-						return node.type === 'decl' &&
-							IS_TEXT_DECORATION_REGEX.test(node.prop) &&
-							parent.index(node) !== ownIndex;
-					}) as Array<Declaration>;
+					const siblingTextDecorationProperties: Array<Declaration> = [];
+					for (let i = 0; i < parent.nodes.length; i++) {
+						if (i === ownIndex) {
+							continue;
+						}
+
+						const node = parent.nodes[i];
+						if (node.type === 'decl' && IS_TEXT_DECORATION_REGEX.test(node.prop)) {
+							siblingTextDecorationProperties.push(node);
+						}
+					}
 
 					if (siblingTextDecorationProperties.some((node) => {
 						return convertedValues.get(decl.value) === node.value;

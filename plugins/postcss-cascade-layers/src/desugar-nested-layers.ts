@@ -2,14 +2,19 @@ import type { Container, AtRule, ChildNode } from 'postcss';
 import { removeEmptyAncestorBlocks, removeEmptyDescendantBlocks } from './clean-blocks';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
 import type { Model } from './model';
-import { someAtRuleInTree } from './some-in-tree';
+
+// Nested layers are flattened one level per pass.
+// Bound the depth so that deeply nested input can not cause super-linear work.
+const MAX_NESTED_LAYER_DEPTH = 512;
 
 export function desugarNestedLayers(root: Container<ChildNode>, model: Model): void {
-	while (someAtRuleInTree(root, (node) => {
-		return !!node.nodes && someAtRuleInTree(node, (nested) => {
-			return isProcessableLayerRule(nested);
-		});
-	})) {
+	let depth = 0;
+	while (hasNestedProcessableLayerRule(root)) {
+		depth++;
+		if (depth > MAX_NESTED_LAYER_DEPTH) {
+			throw new Error('Maximum nested @layer depth exceeded, reduce the complexity of your layers');
+		}
+
 		let foundUnexpectedLayerNesting = false;
 
 		root.walkAtRules((layerRule) => {
@@ -71,4 +76,24 @@ export function desugarNestedLayers(root: Container<ChildNode>, model: Model): v
 			break;
 		}
 	}
+}
+
+// Whether any processable layer rule is nested inside another at-rule.
+// This is computed in a single walk instead of recursively walking every subtree.
+function hasNestedProcessableLayerRule(root: Container<ChildNode>): boolean {
+	let found = false;
+
+	root.walkAtRules((node) => {
+		if (!isProcessableLayerRule(node)) {
+			return;
+		}
+
+		const parent = node.parent;
+		if (parent && parent !== root && parent.type === 'atrule') {
+			found = true;
+			return false;
+		}
+	});
+
+	return found;
 }

@@ -1,4 +1,5 @@
 import type { Selector } from 'postcss-selector-parser';
+import { MAX_SELECTOR_COMBINATIONS } from './constants';
 
 export function combinationsWithSizeN(set: Array<Selector>, n: number): Array<Array<Selector>> {
 	// set is the list of parent selectors
@@ -33,7 +34,7 @@ export function combinationsWithSizeN(set: Array<Selector>, n: number): Array<Ar
 		throw new Error('s must be greater than 1');
 	}
 
-	if (Math.pow(set.length, n) > 10_000) {
+	if (Math.pow(set.length, n) > MAX_SELECTOR_COMBINATIONS) {
 		// Throwing is best here as a warning would be impossible to handle gracefully on our end.
 		// This will error mid transform and there is no possible fallback at this point.
 		// The user should reduce complexity.

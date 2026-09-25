@@ -35,6 +35,11 @@ export function mapGamut(
 	// 17. let min_inGamut be a boolean that represents when min is still in gamut, and set it to true
 	let min_inGamut = true;
 
+	// Guard against positive infinity by treating it as a very large number
+	if (max > 0 && !Number.isFinite(max)) {
+		max = 2_147_483_647;
+	}
+
 	// 18. while (max - min is greater than epsilon) repeat the following steps
 	while ((max - min) > EPSILON) {
 		// 18.1. set chroma to (min + max) / 2

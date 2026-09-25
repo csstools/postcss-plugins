@@ -4,6 +4,10 @@ import { parse as parseCascadeLayerNames, addLayerToModel } from '@csstools/casc
 
 const implicitLayerNameForCloning = parseCascadeLayerNames('csstools-implicit-layer')[0];
 
+// The layer model grows super-linearly with the number and length of layer names.
+// Bound the nesting depth so that deeply nested input can not cause unbounded work.
+const MAX_NESTED_LAYER_DEPTH = 100;
+
 export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 	const references: Map<Node, LayerName> = new Map();
 	const referencesForLayerNames: Map<Node, LayerName> = new Map();
@@ -22,8 +26,14 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 			//
 			// Traverse up the tree and abort when we find something unexpected
 			let parent: Container | Document | undefined = node.parent;
+			let layerDepth = 0;
 			while (parent) {
 				if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
+					layerDepth++;
+					if (layerDepth > MAX_NESTED_LAYER_DEPTH) {
+						throw new Error('Maximum nested @layer depth exceeded, reduce the complexity of your layers');
+					}
+
 					parent = parent.parent;
 					continue;
 				}
@@ -54,6 +64,10 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 			// Stitch the layer names of the current node together with those of ancestors.
 			// @layer foo { @layer bar { .any {} } }
 			// -> "foo.bar"
+			//
+			// Ancestor names stored in `referencesForLayerNames` are already fully qualified,
+			// so only the nearest ancestor must be applied. Walking every ancestor would
+			// re-concatenate the same names once per level, growing the name exponentially.
 			let parent: Container | Document | undefined = node.parent;
 			while (parent && parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
 				const parentLayerName = referencesForLayerNames.get(parent);
@@ -66,7 +80,7 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 					return parentLayerName.concat(layerName);
 				});
 
-				parent = parent.parent;
+				break;
 			}
 		}
 

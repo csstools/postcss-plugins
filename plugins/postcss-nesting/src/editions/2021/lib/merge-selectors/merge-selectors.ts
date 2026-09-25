@@ -5,7 +5,16 @@ import { sortCompoundSelectorsInsideComplexSelector } from './compound-selector-
 import { nodesAreEquallySpecific } from './specificity';
 import type { options } from '../options';
 
+// The maximum number of selector combinations that a single merge may produce.
+// Nested rules can multiply selector lists at every level. Without a bound this
+// grows exponentially and can exhaust memory and CPU on small inputs.
+const MAX_SELECTOR_COMBINATIONS = 10_000;
+
 export default function mergeSelectors(fromSelectors: Array<string>, toSelectors: Array<string>, opts: options): Array<string> {
+	if (fromSelectors.length > MAX_SELECTOR_COMBINATIONS) {
+		throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
+	}
+
 	const fromListHasUniformSpecificity = nodesAreEquallySpecific(fromSelectors);
 
 	let fromSelectorsAST: Array<parser.Root>;
@@ -74,6 +83,12 @@ export default function mergeSelectors(fromSelectors: Array<string>, toSelectors
 					fromSelectorCombinations[i].push(fromSelectorsAST[i]);
 				}
 			}
+		}
+
+		// The total expansion of a single merge is the cartesian product of the
+		// parent selector list and the child selector list. Bound it explicitly.
+		if (iterations * toSelectors.length > MAX_SELECTOR_COMBINATIONS) {
+			throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
 		}
 
 		for (let y = 0; y < iterations; y++) {

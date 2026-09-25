@@ -19,140 +19,203 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// Depth first topological sort.
+// `visit` was previously implemented with recursion, so the maximum call stack
+// depth was proportional to the longest dependency chain. A stylesheet with a
+// long chain of custom properties could exhaust the call stack.
+// This uses an explicit stack so that the depth is bounded by the input size
+// and errors stay controlled.
 export function toposort(nodes: Array<string>, edges: Array<Array<string>>): Array<string> {
 	let cursor = nodes.length;
 	const sorted: Array<string> = new Array(cursor) as Array<string>;
-	const visited: Record<number, boolean> = {};
-	let i = cursor;
+	const visited: Set<number> = new Set();
 	// Better data structures make algorithm much faster.
 	const outgoingEdges = makeOutgoingEdges(edges);
 	const nodesHash = makeNodesHash(nodes);
 
-	while (i--) {
-		if (!visited[i]) {
-			visit(nodes[i], i, new Set());
+	type Frame = {
+		node: string,
+		outgoing: Array<string>,
+		next: number,
+	};
+
+	for (let i = nodes.length - 1; i >= 0; i--) {
+		if (visited.has(i)) {
+			continue;
+		}
+
+		const root = nodes[i];
+		const onPath = new Set<string>();
+		const stack: Array<Frame> = [];
+
+		visited.add(i);
+		onPath.add(root);
+		stack.push({
+			node: root,
+			outgoing: Array.from(outgoingEdges.get(root) || new Set()),
+			next: 0,
+		});
+
+		while (stack.length) {
+			const frame = stack[stack.length - 1];
+
+			if (frame.next < frame.outgoing.length) {
+				// Children are visited in reverse order to match the insertion order of `makeOutgoingEdges`.
+				const child = frame.outgoing[frame.outgoing.length - 1 - frame.next];
+				frame.next++;
+
+				if (onPath.has(child)) {
+					let nodeRep;
+					try {
+						nodeRep = ', node was:' + JSON.stringify(child);
+					} catch {
+						nodeRep = '';
+					}
+					throw new Error('Cyclic dependency' + nodeRep);
+				}
+
+				const childIndex = nodesHash.get(child);
+				if (typeof childIndex === 'undefined') {
+					throw new Error('Found unknown node. Make sure to provided all involved nodes. Unknown node: ' + JSON.stringify(child));
+				}
+
+				if (visited.has(childIndex)) {
+					continue;
+				}
+
+				visited.add(childIndex);
+				onPath.add(child);
+				stack.push({
+					node: child,
+					outgoing: Array.from(outgoingEdges.get(child) || new Set()),
+					next: 0,
+				});
+				continue;
+			}
+
+			stack.pop();
+			onPath.delete(frame.node);
+			sorted[--cursor] = frame.node;
 		}
 	}
 
 	return sorted;
-
-	function visit(node: string, j: number, predecessors: Set<string>): string | undefined {
-		if (predecessors.has(node)) {
-			let nodeRep;
-			try {
-				nodeRep = ', node was:' + JSON.stringify(node);
-			} catch {
-				nodeRep = '';
-			}
-			throw new Error('Cyclic dependency' + nodeRep);
-		}
-
-		if (!nodesHash.has(node)) {
-			throw new Error('Found unknown node. Make sure to provided all involved nodes. Unknown node: ' + JSON.stringify(node));
-		}
-
-		if (visited[j]) {
-			return;
-		}
-		visited[j] = true;
-
-		const outgoing: Array<string> = Array.from(outgoingEdges.get(node) || new Set());
-
-		// eslint-disable-next-line no-cond-assign
-		if (j = outgoing.length) {
-			predecessors.add(node);
-			do {
-				const child = outgoing[--j];
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				visit(child, nodesHash.get(child)!, predecessors);
-			} while (j);
-			predecessors.delete(node);
-		}
-
-		sorted[--cursor] = node;
-	}
 }
 
-// We (ab)use `toposort` to find cyclic references.
-// At the moment this is not optimized and uses a brute force approach.
+// Find all nodes that are part of a cyclic reference and remove them from `nodes`.
 //
-// while there are cyclic ref errors
-// - remove node from graph
-// - re-do toposort
+// This uses a single pass of Tarjan's strongly connected components algorithm.
+// Any component with more than one node, and any node with a self reference,
+// is part of a cycle. This is O(V + E) instead of the previous brute force
+// approach which removed one node at a time and re-ran a full traversal,
+// making it O(V * (V + E)).
 export function removeCyclicReferences(nodes: Map<string, unknown>, edges: Array<Array<string>>): Set<string> {
 	const cyclicReferences: Set<string> = new Set();
+	const nodeSet = new Set(nodes.keys());
 
-	while (nodes.size > 0) {
-		const cyclicNode = findCyclicNode(Array.from(nodes.keys()), edges);
-		if (!cyclicNode) {
-			return cyclicReferences;
-		}
-
-		nodes.delete(cyclicNode);
-		cyclicReferences.add(cyclicNode);
-		edges = edges.filter((x) => {
-			return x.indexOf(cyclicNode) === -1;
-		});
+	const outgoing = new Map<string, Array<string>>();
+	for (const node of nodeSet) {
+		outgoing.set(node, []);
 	}
 
-	return cyclicReferences;
-}
+	for (const edge of edges) {
+		const from = edge[0];
+		const to = edge[1];
 
-function findCyclicNode(nodes: Array<string>, edges: Array<Array<string>>): string | undefined {
-	let cursor = nodes.length;
-	const sorted: Array<string> = new Array(cursor) as Array<string>;
-	const visited: Record<number, boolean> = {};
-	let i = cursor;
-	// Better data structures make algorithm much faster.
-	const outgoingEdges = makeOutgoingEdges(edges);
-	const nodesHash = makeNodesHash(nodes);
+		if (!nodeSet.has(from) || !nodeSet.has(to)) {
+			continue;
+		}
 
-	while (i--) {
-		if (!visited[i]) {
-			const cyclicNode = visit(nodes[i], i, new Set());
-			if (!cyclicNode) {
+		if (from === to) {
+			cyclicReferences.add(from);
+			continue;
+		}
+
+		const list = outgoing.get(from);
+		if (list) {
+			list.push(to);
+		}
+	}
+
+	const indexes = new Map<string, number>();
+	const lowLinks = new Map<string, number>();
+	const onStack = new Set<string>();
+	const stack: Array<string> = [];
+	let counter = 0;
+
+	const getIndex = (node: string): number => indexes.get(node) ?? 0;
+	const getLowLink = (node: string): number => lowLinks.get(node) ?? 0;
+
+	for (const root of nodeSet) {
+		if (indexes.has(root)) {
+			continue;
+		}
+
+		const work: Array<{ node: string, childIndex: number }> = [{ node: root, childIndex: 0 }];
+
+		indexes.set(root, counter);
+		lowLinks.set(root, counter);
+		counter++;
+		stack.push(root);
+		onStack.add(root);
+
+		while (work.length) {
+			const frame = work[work.length - 1];
+			const children = outgoing.get(frame.node) ?? [];
+
+			if (frame.childIndex < children.length) {
+				const child = children[frame.childIndex];
+				frame.childIndex++;
+
+				if (!indexes.has(child)) {
+					indexes.set(child, counter);
+					lowLinks.set(child, counter);
+					counter++;
+					stack.push(child);
+					onStack.add(child);
+					work.push({ node: child, childIndex: 0 });
+				} else if (onStack.has(child)) {
+					lowLinks.set(frame.node, Math.min(getLowLink(frame.node), getIndex(child)));
+				}
+
 				continue;
 			}
 
-			return cyclicNode;
-		}
-	}
+			work.pop();
 
-	function visit(node: string, j: number, predecessors: Set<string>): string | undefined {
-		if (predecessors.has(node)) {
-			return node;
-		}
+			const parentFrame = work[work.length - 1];
+			if (parentFrame) {
+				lowLinks.set(parentFrame.node, Math.min(getLowLink(parentFrame.node), getLowLink(frame.node)));
+			}
 
-		if (!nodesHash.has(node)) {
-			return;
-		}
+			if (getLowLink(frame.node) === getIndex(frame.node)) {
+				const component: Array<string> = [];
+				let current: string | undefined;
 
-		if (visited[j]) {
-			return;
-		}
+				do {
+					current = stack.pop();
+					if (current === undefined) {
+						break;
+					}
 
-		visited[j] = true;
+					onStack.delete(current);
+					component.push(current);
+				} while (current !== frame.node);
 
-		const outgoing: Array<string> = Array.from(outgoingEdges.get(node) || new Set());
-
-		// eslint-disable-next-line no-cond-assign
-		if (j = outgoing.length) {
-			predecessors.add(node);
-			do {
-				const child = outgoing[--j];
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				const cyclicNode = visit(child, nodesHash.get(child)!, predecessors);
-				if (!cyclicNode) {
-					continue;
+				if (component.length > 1) {
+					for (const node of component) {
+						cyclicReferences.add(node);
+					}
 				}
-
-				return cyclicNode;
-			} while (j);
-			predecessors.delete(node);
+			}
 		}
-
-		sorted[--cursor] = node;
 	}
+
+	for (const cyclicReference of cyclicReferences) {
+		nodes.delete(cyclicReference);
+	}
+
+	return cyclicReferences;
 }
 
 function makeOutgoingEdges(arr: Array<Array<string>>): Map<string, Set<string>> {

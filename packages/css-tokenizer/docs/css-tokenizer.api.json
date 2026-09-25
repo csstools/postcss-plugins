@@ -3139,7 +3139,34 @@
             },
             {
               "kind": "Content",
-              "text": ">"
+              "text": "> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CSSToken",
+              "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>"
             },
             {
               "kind": "Content",
@@ -3156,8 +3183,8 @@
           ],
           "fileUrlPath": "dist/_types/stringify.d.ts",
           "returnTypeTokenRange": {
-            "startIndex": 6,
-            "endIndex": 7
+            "startIndex": 12,
+            "endIndex": 13
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -3166,7 +3193,7 @@
               "parameterName": "tokens",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 5
+                "endIndex": 11
               },
               "isOptional": false
             }

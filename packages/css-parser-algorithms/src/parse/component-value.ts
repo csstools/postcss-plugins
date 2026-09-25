@@ -24,6 +24,10 @@ export function parseComponentValue(tokens: Array<CSSToken>, options?: { onParse
 		...tokens,
 	];
 
+	if (tokensCopy.length === 0) {
+		return;
+	}
+
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
 	if (!isTokenEOF(tokensCopy[tokensCopy.length - 1])) {

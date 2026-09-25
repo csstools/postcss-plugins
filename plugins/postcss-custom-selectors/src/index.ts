@@ -9,6 +9,10 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
+// Custom selectors can reference each other and duplicate their contents.
+// Bound the length of any generated selector to avoid exponential blowups.
+const MAX_SELECTOR_LENGTH = 100_000;
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	// whether to preserve custom selectors and rules using them
 	const preserve = opts?.preserve ?? false;
@@ -44,6 +48,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const modifiedSelector = transformRule(rule, result, customSelectors);
 					if (modifiedSelector === rule.selector) {
 						return;
+					}
+
+					if (modifiedSelector.length > MAX_SELECTOR_LENGTH) {
+						throw rule.error('Maximum custom selector expansion length exceeded, reduce the complexity of your custom selectors');
 					}
 
 					transformedNodes.add(rule);

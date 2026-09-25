@@ -17,7 +17,15 @@ import { modifierFromToken } from '../nodes/media-query-modifier';
 import { isIdent } from '../util/component-value-is';
 import { isTokenOpenParen } from '@csstools/css-tokenizer';
 
+// Parsing large media query lists is quadratic in the number of component values.
+// Bound the number of component values in a single media query.
+const MAX_MEDIA_QUERY_COMPONENT_VALUES = 30_000;
+
 export function parseMediaQuery(componentValues: Array<ComponentValue>): MediaQuery | false {
+	if (componentValues.length > MAX_MEDIA_QUERY_COMPONENT_VALUES) {
+		throw new Error(`Maximum number of component values in a media query (${MAX_MEDIA_QUERY_COMPONENT_VALUES}) exceeded, reduce the complexity of your media query`);
+	}
+
 	{
 		const condition = parseMediaCondition(componentValues);
 		if (condition !== false) {

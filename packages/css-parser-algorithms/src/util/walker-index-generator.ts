@@ -12,7 +12,27 @@ export function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>,
 	// 1. Keep a reference of the original ordered list.
 	let reference: Array<T> = initialList.slice();
 
+	// Local state used for a fast path.
+	// When the list was not mutated since the previous call and the current
+	// element is still at the same position, the next element is simply the
+	// next index. This avoids the expensive `indexOf`/`slice` bookkeeping for
+	// the common case where a callback does not mutate the list.
+	let previousList: Array<T> | undefined = undefined;
+	let previousLength = -1;
+
 	return (list: Array<T>, child: T, index: number): number => {
+		if (
+			list === previousList &&
+			list.length === previousLength &&
+			list[index] === child
+		) {
+			previousLength = list.length;
+
+			const nextIndex = index + 1;
+
+			return nextIndex < list.length ? nextIndex : -1;
+		}
+
 		// 2. Lookup the index of the original element in the original list.
 		const originalElementIndex = reference.indexOf(child);
 		let nextIndex = -1;
@@ -36,6 +56,9 @@ export function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>,
 
 		// 7. If the next element is not in the list, return -1.
 		if (nextIndex === -1) {
+			previousList = list;
+			previousLength = list.length;
+
 			return -1;
 		}
 
@@ -43,12 +66,17 @@ export function walkerIndexGenerator<T>(initialList: Array<T>): (list: Array<T>,
 		if (nextIndex === index && child === list[index]) {
 			nextIndex++;
 			if (nextIndex >= list.length) {
+				previousList = list;
+				previousLength = list.length;
+
 				return -1;
 			}
 		}
 
 		// 9. Update the reference list so that it reflects the current list.
 		reference = list.slice();
+		previousList = list;
+		previousLength = list.length;
 
 		// 10. Return the next index.
 		return nextIndex;

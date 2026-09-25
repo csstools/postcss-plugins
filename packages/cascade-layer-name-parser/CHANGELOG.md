@@ -2,6 +2,8 @@
 
 ### Unreleased (patch)
 
+- Improve performance
+- Throw when a stylesheet contains too many cascade layers to model
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#401) (patch)
 
 ### 3.0.0

@@ -1,5 +1,9 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Throw when splitting `:is()` would exceed the maximum number of combinations
+
 ### 6.0.0
 
 _January 14, 2026_

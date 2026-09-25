@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### Unreleased (patch)
+
+- Throw when transforming a `transition` would exceed the maximum number of combinations
+
 ### 9.0.0
 
 _January 14, 2026_

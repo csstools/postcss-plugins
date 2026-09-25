@@ -1,6 +1,6 @@
 import selectorParser from 'postcss-selector-parser';
 import { selectorSpecificity } from '@csstools/selector-specificity';
-import type { Container, AtRule, PluginCreator, Result } from 'postcss';
+import type { Container, AtRule, ChildNode, Document, PluginCreator, Result } from 'postcss';
 import { Model } from './model';
 import { adjustSelectorSpecificity } from './adjust-selector-specificity';
 import { desugarAndParseLayerNames } from './desugar-and-parse-layer-names';
@@ -15,6 +15,38 @@ import type { pluginOptions } from './options';
 import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 export type { pluginOptions } from './options';
+
+// Nested layers are flattened one level at a time which is expensive on deeply
+// nested input. Reject pathological nesting up front.
+const MAX_NESTED_LAYER_DEPTH = 512;
+
+function assertLayerNestingDepth(root: Container): void {
+	let tooDeep = false;
+
+	root.walkAtRules((node) => {
+		if (!isProcessableLayerRule(node)) {
+			return;
+		}
+
+		let depth = 0;
+		let parent: Container<ChildNode> | Document | undefined = node.parent;
+		while (parent) {
+			if (parent.type === 'atrule' && isProcessableLayerRule(parent as AtRule)) {
+				depth++;
+				if (depth > MAX_NESTED_LAYER_DEPTH) {
+					tooDeep = true;
+					return false;
+				}
+			}
+
+			parent = parent.parent;
+		}
+	});
+
+	if (tooDeep) {
+		throw new Error('Maximum nested @layer depth exceeded, reduce the complexity of your layers');
+	}
+}
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
@@ -55,6 +87,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			if (!hasAnyLayer) {
 				return;
 			}
+
+			assertLayerNestingDepth(root);
 
 			splitImportantStyles(root);
 

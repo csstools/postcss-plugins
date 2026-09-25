@@ -6,7 +6,7 @@ import { comma } from './list.js';
 import type { options } from './options.js';
 import cleanupParent from '../../shared/lib/cleanup-parent.js';
 
-export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options): void {
+export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, result: Result, walk: walkFunc, opts: options, depth: number = 0): void {
 	let selectors: Array<string>;
 
 	try {
@@ -37,7 +37,7 @@ export default function transformNestRuleWithinRule(node: AtRule, parent: Rule, 
 	cleanupParent(parent);
 
 	// walk the children of the new rule
-	walk(rule, result, opts);
+	walk(rule, result, opts, depth);
 }
 
 export function isValidNestRuleWithinRule(node: AtRule): boolean {

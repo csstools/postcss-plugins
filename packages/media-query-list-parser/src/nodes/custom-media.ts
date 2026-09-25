@@ -106,7 +106,10 @@ export class CustomMedia {
 				tokens.push([TokenType.Comma, ',', -1, -1, undefined]);
 			}
 
-			tokens.push(...mediaQuery.tokens());
+			const mediaQueryTokens = mediaQuery.tokens();
+			for (let j = 0; j < mediaQueryTokens.length; j++) {
+				tokens.push(mediaQueryTokens[j]);
+			}
 		}
 
 		return [
@@ -116,7 +119,7 @@ export class CustomMedia {
 	}
 
 	toString(): string {
-		return stringify(...this.tokens());
+		return stringify(this.tokens());
 	}
 
 	/**

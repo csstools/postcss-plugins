@@ -14,7 +14,7 @@ export function calc(css: string, options?: conversionOptions): string {
 	const result = parseCommaSeparatedListOfComponentValues(tokenize({css: css}), {});
 
 	return calcFromComponentValues(result, options).map((componentValues) => {
-		return componentValues.map((x) => stringify(...x.tokens())).join('');
+		return componentValues.map((x) => stringify(x.tokens())).join('');
 	}).join(',');
 }
 

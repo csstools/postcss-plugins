@@ -1,5 +1,28 @@
-import type { Rule, PluginCreator, Plugin } from 'postcss';
+import type { Declaration, Root, Rule, PluginCreator, Plugin } from 'postcss';
 import valuesParser from 'postcss-value-parser';
+
+// Collect all custom property declarations in the document, grouped by property name.
+// This lets us look up the declarations for a conditional variable in constant time
+// instead of walking the entire document for every distinct variable.
+function collectDeclarationsByProp(root: Root): Map<string, Array<Declaration>> {
+	const declarationsByProp = new Map<string, Array<Declaration>>();
+
+	root.walkDecls((decl) => {
+		if (decl.prop.length < 2 || decl.prop[0] !== '-' || decl.prop[1] !== '-') {
+			return;
+		}
+
+		let declarations = declarationsByProp.get(decl.prop);
+		if (!declarations) {
+			declarations = [];
+			declarationsByProp.set(decl.prop, declarations);
+		}
+
+		declarations.push(decl);
+	});
+
+	return declarationsByProp;
+}
 
 export type pluginOptions = {
 	functionName: string;
@@ -14,6 +37,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const counters = new Map<string, number>();
 			const didReplaceTrueFalse = new Set<string>();
 			const didFindFalse = new Set<string>();
+			let declarationsByProp: Map<string, Array<Declaration>> | null = null;
+			let rootRule: Rule | undefined;
 
 			return {
 				postcssPlugin: 'postcss-conditional-values',
@@ -131,14 +156,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					// Control toggles:
 					{
 						if (!didReplaceTrueFalse.has(conditionalVarName)) {
-							decl.root().walkDecls(conditionalVarName, (otherDecl) => {
-								if (otherDecl.prop !== conditionalVarName) {
-									return;
-								}
+							if (!declarationsByProp) {
+								declarationsByProp = collectDeclarationsByProp(decl.root());
+							}
+
+							const conditionalVarDeclarations = declarationsByProp.get(conditionalVarName) || [];
+							for (let i = 0; i < conditionalVarDeclarations.length; i++) {
+								const otherDecl = conditionalVarDeclarations[i];
 
 								if (otherDecl.value.trim() === '') {
 									didFindFalse.add(conditionalVarName);
-									return;
+									continue;
 								}
 
 								if (otherDecl.value.trim().toLowerCase() === 'true') {
@@ -147,20 +175,21 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 									otherDecl.value = ' ';
 									didFindFalse.add(conditionalVarName);
 								}
-							});
+							}
 
 							didReplaceTrueFalse.add(conditionalVarName);
 
 							if (!didFindFalse.has(conditionalVarName)) {
 								didFindFalse.add(conditionalVarName);
 
-								let rootRule: Rule | undefined;
-								decl.root().each((node) => {
-									if (node.type === 'rule' && node.selector === ':root') {
-										rootRule = node;
-										return false;
-									}
-								});
+								if (!rootRule) {
+									decl.root().each((node) => {
+										if (node.type === 'rule' && node.selector === ':root') {
+											rootRule = node;
+											return false;
+										}
+									});
+								}
 
 								if (!rootRule) {
 									rootRule = postcss.rule({

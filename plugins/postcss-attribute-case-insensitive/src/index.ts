@@ -9,16 +9,26 @@ function selectorHasInsensitiveAttribute(selector: selectorParser.Selector): boo
 	return selector.some(nodeIsInsensitiveAttribute);
 }
 
+// Each cased character can double the number of generated selectors.
+// Bound the total so that small inputs can not cause an exponential blowup.
+const MAX_SELECTOR_VARIANTS = 10_000;
+
 function transformString(strings: Array<string>, charPos: number, string: string): Array<string> {
 	const char = string.charAt(charPos);
 	if (char === '') {
 		return strings;
 	}
 
-	let newStrings = strings.map(x => x + char);
 	const upperChar = char.toLocaleUpperCase();
+	const hasUpperCaseVariant = upperChar !== char;
 
-	if (upperChar !== char) {
+	if (strings.length * (hasUpperCaseVariant ? 2 : 1) > MAX_SELECTOR_VARIANTS) {
+		throw new Error(`Too many selector variants when trying to resolve case insensitive attributes, reduce the complexity of your selectors`);
+	}
+
+	let newStrings = strings.map(x => x + char);
+
+	if (hasUpperCaseVariant) {
 		newStrings = newStrings.concat(strings.map(x => x + upperChar));
 	}
 

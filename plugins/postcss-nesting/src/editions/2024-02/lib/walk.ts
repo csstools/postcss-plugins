@@ -3,7 +3,14 @@ import transformAtruleWithinRule, { isAtruleWithinRule } from './atrule-within-r
 import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-rule.js';
 import { isAtRule, isRule } from '../../shared/lib/is-type-of-rule.js';
 
-export default function walk(node: Container, result: Result): void {
+// Guard against unbounded recursion on deeply nested input.
+const MAX_NESTING_DEPTH = 512;
+
+export default function walk(node: Container, result: Result, depth: number = 0): void {
+	if (depth >= MAX_NESTING_DEPTH) {
+		throw new Error(`Maximum nesting depth of ${MAX_NESTING_DEPTH} exceeded while resolving nested rules.`);
+	}
+
 	node.each((child) => {
 		const parent = child.parent;
 
@@ -18,11 +25,11 @@ export default function walk(node: Container, result: Result): void {
 			isRule(parent) &&
 			isAtruleWithinRule(child)
 		) {
-			transformAtruleWithinRule(child, parent, result, walk);
+			transformAtruleWithinRule(child, parent, result, walk, depth + 1);
 		}
 
 		if ('nodes' in child && child.nodes.length) {
-			walk(child, result);
+			walk(child, result, depth + 1);
 		}
 	});
 }

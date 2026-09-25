@@ -1,7 +1,7 @@
 import type { TokenDelim } from '@csstools/css-tokenizer';
 import { isTokenDelim, isTokenIdent } from '@csstools/css-tokenizer';
 import type { CSSToken, TokenIdent} from '@csstools/css-tokenizer';
-import { stringify, TokenType } from '@csstools/css-tokenizer';
+import { TokenType } from '@csstools/css-tokenizer';
 
 export class LayerName {
 	parts: Array<CSSToken>;
@@ -83,7 +83,7 @@ export class LayerName {
 	}
 
 	toString(): string {
-		return stringify(...this.parts);
+		return this.parts.map((x) => x[1]).join('');
 	}
 
 	/**

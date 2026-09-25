@@ -63,6 +63,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	};
 };
 
+// `abs()` is expanded into a `max()` that references its contents twice.
+// Nesting therefore doubles the amount of work at every level.
+// Bound the number of tokens produced by a single expansion.
+const MAX_EXPANSION_TOKENS = 100_000;
+
 function replacer(componentValue: ComponentValue): Array<ComponentValue> | void {
 	if (!isFunctionNode(componentValue)) {
 		return;
@@ -77,6 +82,13 @@ function replacer(componentValue: ComponentValue): Array<ComponentValue> | void 
 		replacer
 	);
 
+	// Materialize the tokens once and reuse them for both operands.
+	// `parseListOfComponentValues` copies the tokens, so the resulting trees are independent.
+	const tokens = value.flatMap(x => x.tokens());
+	if (tokens.length > MAX_EXPANSION_TOKENS) {
+		throw new Error('Maximum sign function expansion size exceeded, reduce the complexity of your expression');
+	}
+
 	return [new FunctionNode(
 		[TokenType.Function, 'max(', -1, -1, { value: 'max' }],
 		[TokenType.CloseParen, ')', -1, -1, undefined],
@@ -84,7 +96,7 @@ function replacer(componentValue: ComponentValue): Array<ComponentValue> | void 
 			new SimpleBlockNode(
 				[TokenType.OpenParen, '(', -1, -1, undefined],
 				[TokenType.CloseParen, ')', -1, -1, undefined],
-				parseListOfComponentValues(value.flatMap(x => x.tokens()))
+				parseListOfComponentValues(tokens)
 			),
 			new TokenNode(
 				[TokenType.Comma, ',', -1, -1, undefined],
@@ -107,7 +119,7 @@ function replacer(componentValue: ComponentValue): Array<ComponentValue> | void 
 			new SimpleBlockNode(
 				[TokenType.OpenParen, '(', -1, -1, undefined],
 				[TokenType.CloseParen, ')', -1, -1, undefined],
-				parseListOfComponentValues(value.flatMap(x => x.tokens()))
+				parseListOfComponentValues(tokens)
 			)
 		]
 	)];

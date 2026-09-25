@@ -2,6 +2,8 @@
 
 ### Unreleased (patch)
 
+- Improve performance and avoid a stack overflow when solving deeply nested calculations
+- Throw when a math function exceeds the maximum number of nodes
 - Fixed `tan()` at asymptote values beyond the first period (`270deg`, `-270deg`, ...) to match the specification
 - Fixed `round(line-width, ...)` to choose the non-zero candidate multiple when `A` is negative
 - Fixed `round(down/up, ...)` with a negative step to choose the correct candidate multiple

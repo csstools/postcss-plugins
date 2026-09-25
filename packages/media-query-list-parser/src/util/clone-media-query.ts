@@ -8,7 +8,7 @@ export function cloneMediaQuery<T extends MediaQueryWithType | MediaQueryWithout
 	const parsed = parseFromTokens(tokens, { preserveInvalidMediaQueries: true });
 	const firstQuery = parsed[0];
 	if (!firstQuery) {
-		throw new Error(`Failed to clone media query for : "${stringify(...tokens)}"`);
+		throw new Error(`Failed to clone media query for : "${stringify(tokens)}"`);
 	}
 
 	if (isMediaQueryInvalid(x) && isMediaQueryInvalid(firstQuery)) {
@@ -23,5 +23,5 @@ export function cloneMediaQuery<T extends MediaQueryWithType | MediaQueryWithout
 		return firstQuery as T;
 	}
 
-	throw new Error(`Failed to clone media query for : "${stringify(...tokens)}"`);
+	throw new Error(`Failed to clone media query for : "${stringify(tokens)}"`);
 }

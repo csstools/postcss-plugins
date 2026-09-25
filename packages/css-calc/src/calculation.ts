@@ -17,21 +17,43 @@ export function solve(calculation: Calculation | -1, options: conversionOptions)
 		return -1;
 	}
 
-	const inputs: Array<TokenNode> = [];
-	for (let i = 0; i < calculation.inputs.length; i++) {
-		const input = calculation.inputs[i];
-		if (isTokenNode(input)) {
-			inputs.push(input);
+	// Solve the calculation tree iteratively.
+	const stack: Array<{ calculation: Calculation, inputs: Array<TokenNode>, index: number }> = [
+		{ calculation, inputs: [], index: 0 },
+	];
+
+	let result: TokenNode | -1 = -1;
+
+	while (stack.length) {
+		const frame = stack[stack.length - 1];
+
+		if (frame.index < frame.calculation.inputs.length) {
+			const input = frame.calculation.inputs[frame.index];
+			frame.index++;
+
+			if (isTokenNode(input)) {
+				frame.inputs.push(input);
+				continue;
+			}
+
+			stack.push({ calculation: input, inputs: [], index: 0 });
 			continue;
 		}
 
-		const result = solve(input, options);
-		if (result === -1) {
+		const solved = frame.calculation.operation(frame.inputs, options);
+		stack.pop();
+
+		if (solved === -1) {
 			return -1;
 		}
 
-		inputs.push(result);
+		if (!stack.length) {
+			result = solved;
+			break;
+		}
+
+		stack[stack.length - 1].inputs.push(solved);
 	}
 
-	return calculation.operation(inputs, options);
+	return result;
 }

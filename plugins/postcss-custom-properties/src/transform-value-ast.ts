@@ -4,12 +4,45 @@ import valuesParser from 'postcss-value-parser';
 import { isVarFunction } from './is-var-function';
 import { parseVarFunction } from './parse-var-function';
 
-export default function transformValueAST(root: valuesParser.ParsedValue, customProperties: Map<string, valuesParser.ParsedValue>): string {
+/**
+ * A budget that limits the total amount of work done while resolving custom properties.
+ * Custom properties can reference each other and duplicate subtrees, which can grow
+ * exponentially. Sharing a single budget bounds the total expansion.
+ */
+type TransformValueASTBudget = {
+	remaining: number,
+};
+
+export const MAX_TRANSFORMED_NODES = 100_000;
+
+// Insert a large number of nodes without spreading them into `splice`.
+// The spread operator throws a `RangeError` when the array is larger than
+// the engine's argument limit.
+function replaceNodeWithNodes(nodes: Array<Node>, index: number, replacement: Array<Node>): void {
+	if (replacement.length <= 8192) {
+		nodes.splice(index, 1, ...replacement);
+		return;
+	}
+
+	const rebuilt = nodes.slice(0, index).concat(replacement, nodes.slice(index + 1));
+
+	nodes.length = 0;
+	for (let i = 0; i < rebuilt.length; i++) {
+		nodes.push(rebuilt[i]);
+	}
+}
+
+export default function transformValueAST(root: valuesParser.ParsedValue, customProperties: Map<string, valuesParser.ParsedValue>, budget: TransformValueASTBudget = { remaining: MAX_TRANSFORMED_NODES }): string {
 	if (!root.nodes?.length) {
 		return '';
 	}
 
 	walk(root.nodes, (child, index, nodes) => {
+		budget.remaining--;
+		if (budget.remaining < 0) {
+			throw new Error('Maximum custom property expansion size exceeded, reduce the complexity of your custom properties');
+		}
+
 		if (!isVarFunction(child)) {
 			return;
 		}
@@ -52,7 +85,7 @@ export default function transformValueAST(root: valuesParser.ParsedValue, custom
 		}
 
 		if (resolvedNodes.length) {
-			nodes.splice(index, 1, ...resolvedNodes);
+			replaceNodeWithNodes(nodes, index, resolvedNodes);
 		} else {
 			// `postcss-value-parser` throws when removing nodes.
 			// Inserting an empty comment produces equivalent CSS source code and avoids the exception.

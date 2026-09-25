@@ -2,7 +2,7 @@ import valuesParser from 'postcss-value-parser';
 import { isVarFunction } from './is-var-function';
 import { parseOrCached } from './parse-or-cached';
 import { removeCyclicReferences, toposort } from './toposort';
-import transformValueAST from './transform-value-ast';
+import transformValueAST, { MAX_TRANSFORMED_NODES } from './transform-value-ast';
 import { isInitial } from './is-initial';
 import { parseVarFunction } from './parse-var-function';
 
@@ -85,13 +85,17 @@ export function buildCustomPropertiesMap(customProperties: Map<string, string>, 
 
 		const sortedCustomPropertyNames = toposort(Array.from(out.keys()), customPropertyGraph);
 
+		// Share a single expansion budget across all custom properties in this
+		// document to bound the total amount of work.
+		const expansionBudget = { remaining: MAX_TRANSFORMED_NODES };
+
 		for (const customPropertyName of sortedCustomPropertyNames) {
 			const value = out.get(customPropertyName);
 			if (!value) {
 				continue;
 			}
 
-			const transformed = transformValueAST(value, out);
+			const transformed = transformValueAST(value, out, expansionBudget);
 			const parsedValue = parseOrCached(transformed, parsedValuesCache);
 
 			out.set(customPropertyName, parsedValue);

@@ -1,0 +1,40 @@
+/* Nested block layers must qualify to the same layer as the equivalent flat name.
+   `l1 { l2 { l3 { ... } } }` and `l1.l2.l3` are the same cascade layer. */
+
+@layer l1 {
+	@layer l2 {
+		@layer l3 {
+			@custom-media --depth-3 (min-width: 1px) and (debug-layer: nested);
+		}
+	}
+}
+
+@layer l1.l2.l3 {
+	@custom-media --depth-3 (min-width: 1px) and (debug-layer: flat);
+}
+
+@layer a {
+	@layer b {
+		@layer c {
+			@layer d {
+				@custom-media --depth-4 (min-width: 2px) and (debug-layer: nested);
+			}
+		}
+	}
+}
+
+@layer a.b.c.d {
+	@custom-media --depth-4 (min-width: 2px) and (debug-layer: flat);
+}
+
+@media (--depth-3) {
+	p {
+		color: red;
+	}
+}
+
+@media (--depth-4) {
+	p {
+		color: blue;
+	}
+}

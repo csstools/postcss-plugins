@@ -4,6 +4,11 @@ import valueParser from 'postcss-value-parser';
 import { cloneDeclaration } from './clone-declaration';
 import type { TransformFunction } from './types';
 
+// Each logical property in a transition can expand into multiple physical properties.
+// The total number of chunks is the cartesian product of these expansions.
+// Bound it so that a small input can not exhaust memory and CPU.
+const MAX_TRANSITION_CHUNKS = 10_000;
+
 export function transformTransition(declaration: Declaration, postcss: Postcss, transforms: Record<string, TransformFunction|null>): Array<Declaration> {
 	const { prop, value } = declaration;
 	const valueAST = valueParser(value);
@@ -35,6 +40,10 @@ export function transformTransition(declaration: Declaration, postcss: Postcss, 
 			}
 
 			const propertyName = node.value.toLowerCase();
+			if (!Object.prototype.hasOwnProperty.call(transforms, propertyName)) {
+				continue;
+			}
+
 			const transform = transforms[propertyName];
 			if (!transform) {
 				continue;
@@ -43,6 +52,10 @@ export function transformTransition(declaration: Declaration, postcss: Postcss, 
 			const transformedDeclarations = transform(postcss.decl({prop: propertyName, value: 'initial'}));
 			if (transformedDeclarations.length === 0) {
 				continue;
+			}
+
+			if (chunks.length + transformedDeclarations.length > MAX_TRANSITION_CHUNKS) {
+				throw new Error('Too many combinations when transforming a transition, reduce the complexity of your transition');
 			}
 
 			for (let k = transformedDeclarations.length - 1; k >= 0; k--) {

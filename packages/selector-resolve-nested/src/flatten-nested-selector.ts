@@ -1,7 +1,8 @@
 import type { Root, Selector } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
-import { sourceFrom } from './source';
 import { combinationsWithSizeN } from './combinations';
+import { MAX_SELECTOR_COMBINATIONS } from './constants';
+import { sourceFrom } from './source';
 
 /**
  * Flatten a nested selector against a given parent selector.
@@ -17,6 +18,7 @@ import { combinationsWithSizeN } from './combinations';
  */
 export function flattenNestedSelector(selector: Root, parentSelector: Root): Root {
 	const result: Array<Selector> = [];
+	const parentSelectorNodeCount = countNodes(parentSelector);
 
 	for (let x = 0; x < selector.nodes.length; x++) {
 		const selectorAST = selector.nodes[x].clone();
@@ -37,6 +39,12 @@ export function flattenNestedSelector(selector: Root, parentSelector: Root): Roo
 				selectorAST.prepend(parser.nesting({ ...sourceFrom(selectorAST) }));
 				nestingCounter++;
 			}
+		}
+
+		// Each nesting selector is replaced by the parent selector.
+		// Bound the total output size so that a small input can not exhaust memory and CPU.
+		if (nestingCounter * parentSelectorNodeCount > MAX_SELECTOR_COMBINATIONS) {
+			throw new Error('Too many combinations when trying to resolve a nested selector with lists, reduce the complexity of your selectors');
 		}
 
 		let iterations: number;
@@ -81,4 +89,13 @@ export function flattenNestedSelector(selector: Root, parentSelector: Root): Roo
 	});
 
 	return root;
+}
+
+function countNodes(root: Root): number {
+	let counter = 0;
+	root.walk(() => {
+		counter++;
+	});
+
+	return counter;
 }

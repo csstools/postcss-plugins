@@ -127,8 +127,21 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 	});
 }
 
+// The maximum number of combinations that a single `:is()` split may produce.
+// The number of alternatives in each `:is()` group multiplies, so without a
+// bound a small selector can exhaust memory and CPU.
+const MAX_SELECTOR_COMBINATIONS = 10_000;
+
 // https://en.wikipedia.org/wiki/Cartesian_product
 function cartesianProduct<T>(...args: Array<Array<T>>): Array<Array<T>> {
+	let total = 1;
+	for (let i = 0; i < args.length; i++) {
+		total *= args[i].length;
+		if (total > MAX_SELECTOR_COMBINATIONS) {
+			throw new Error('Too many combinations when trying to resolve a selector with `:is()` lists, reduce the complexity of your selectors');
+		}
+	}
+
 	const r: Array<Array<T>> = [];
 	const max = args.length - 1;
 

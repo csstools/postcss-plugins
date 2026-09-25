@@ -1,5 +1,11 @@
 # Changes to PostCSS Cascade Layers
 
+### Unreleased (patch)
+
+- Improve performance
+- Throw when nested `@layer` rules exceed the maximum depth
+- Throw when the specificity adjustment would exceed the maximum amount
+
 ### 6.0.0
 
 _January 14, 2026_

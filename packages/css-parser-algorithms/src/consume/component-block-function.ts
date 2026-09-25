@@ -10,15 +10,20 @@ export type ContainerNode = FunctionNode | SimpleBlockNode;
 
 export type ComponentValue = FunctionNode | SimpleBlockNode | WhitespaceNode | CommentNode | TokenNode;
 
+// The maximum allowed nesting depth of functions and simple blocks.
+// Input that exceeds this is rejected with a hard error to avoid unbounded
+// recursion and stack exhaustion when parsing untrusted CSS.
+const MAX_NESTING_DEPTH = 512;
+
 // https://www.w3.org/TR/css-syntax-3/#consume-a-component-value
-export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: ComponentValue } {
-	const token = tokens[0];
+export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>, start: number = 0, depth: number = 0): { advance: number, node: ComponentValue } {
+	const token = tokens[start];
 	if (
 		isTokenOpenParen(token) ||
 		isTokenOpenCurly(token) ||
 		isTokenOpenSquare(token)
 	) {
-		const r = consumeSimpleBlock(ctx, tokens);
+		const r = consumeSimpleBlock(ctx, tokens, start, depth);
 		return {
 			advance: r.advance,
 			node: r.node,
@@ -26,7 +31,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 	}
 
 	if (isTokenFunction(token)) {
-		const r = consumeFunction(ctx, tokens);
+		const r = consumeFunction(ctx, tokens, start, depth);
 		return {
 			advance: r.advance,
 			node: r.node,
@@ -34,7 +39,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 	}
 
 	if (isTokenWhitespace(token)) {
-		const r = consumeWhitespace(ctx, tokens);
+		const r = consumeWhitespace(ctx, tokens, start);
 		return {
 			advance: r.advance,
 			node: r.node,
@@ -42,7 +47,7 @@ export function consumeComponentValue(ctx: Context, tokens: Array<CSSToken>): { 
 	}
 
 	if (isTokenComment(token)) {
-		const r = consumeComment(ctx, tokens);
+		const r = consumeComment(ctx, tokens, start);
 		return {
 			advance: r.advance,
 			node: r.node,
@@ -151,7 +156,7 @@ export abstract class ContainerNodeBaseClass {
 				return false;
 			}
 
-			if ('walk' in entry.node && this.value.includes(entry.node)) {
+			if ('walk' in entry.node && ((typeof index === 'number' && this.value[index] === entry.node) || this.value.includes(entry.node))) {
 				if (entry.node.walk(cb, entry.state) === false) {
 					return false;
 				}
@@ -293,17 +298,21 @@ export class FunctionNode extends ContainerNodeBaseClass {
 }
 
 // https://www.w3.org/TR/css-syntax-3/#consume-function
-function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: FunctionNode } {
+function consumeFunction(ctx: Context, tokens: Array<CSSToken>, start: number, depth: number): { advance: number, node: FunctionNode } {
+	if (depth >= MAX_NESTING_DEPTH) {
+		throw new Error(`Maximum nesting depth of ${MAX_NESTING_DEPTH} exceeded, reduce the complexity of your stylesheet.`);
+	}
+
 	const value: Array<ComponentValue> = [];
 
-	let i = 1;
+	let i = start + 1;
 
 	while (true) {
 		const token = tokens[i];
 		if (!token || isTokenEOF(token)) {
 			ctx.onParseError(new ParseError(
 				'Unexpected EOF while consuming a function.',
-				tokens[0][2],
+				tokens[start][2],
 				tokens[tokens.length - 1][3],
 				[
 					'5.4.9. Consume a function',
@@ -312,26 +321,28 @@ function consumeFunction(ctx: Context, tokens: Array<CSSToken>): { advance: numb
 			));
 
 			return {
-				advance: tokens.length,
-				node: new FunctionNode(tokens[0] as TokenFunction, token, value),
+				advance: tokens.length - start,
+				node: new FunctionNode(tokens[start] as TokenFunction, token, value),
 			};
 		}
 
 		if (isTokenCloseParen(token)) {
 			return {
-				advance: i + 1,
-				node: new FunctionNode(tokens[0] as TokenFunction, token, value),
+				advance: i - start + 1,
+				node: new FunctionNode(tokens[start] as TokenFunction, token, value),
 			};
 		}
 
 		if (isTokenWhiteSpaceOrComment(token)) {
-			const result = consumeAllCommentsAndWhitespace(ctx, tokens.slice(i));
+			const result = consumeAllCommentsAndWhitespace(ctx, tokens, i);
 			i += result.advance;
-			value.push(...result.nodes);
+			for (let k = 0; k < result.nodes.length; k++) {
+				value.push(result.nodes[k]);
+			}
 			continue;
 		}
 
-		const result = consumeComponentValue(ctx, tokens.slice(i));
+		const result = consumeComponentValue(ctx, tokens, i, depth + 1);
 		i += result.advance;
 		value.push(result.node);
 	}
@@ -466,22 +477,26 @@ export class SimpleBlockNode extends ContainerNodeBaseClass {
 }
 
 /** https://www.w3.org/TR/css-syntax-3/#consume-simple-block */
-function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: SimpleBlockNode } {
-	const endingTokenType = mirrorVariantType(tokens[0][0]);
+function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>, start: number, depth: number): { advance: number, node: SimpleBlockNode } {
+	if (depth >= MAX_NESTING_DEPTH) {
+		throw new Error(`Maximum nesting depth of ${MAX_NESTING_DEPTH} exceeded, reduce the complexity of your stylesheet.`);
+	}
+
+	const endingTokenType = mirrorVariantType(tokens[start][0]);
 	if (!endingTokenType) {
 		throw new Error('Failed to parse, a mirror variant must exist for all block open tokens.');
 	}
 
 	const value: Array<ComponentValue> = [];
 
-	let i = 1;
+	let i = start + 1;
 
 	while (true) {
 		const token = tokens[i];
 		if (!token || isTokenEOF(token)) {
 			ctx.onParseError(new ParseError(
 				'Unexpected EOF while consuming a simple block.',
-				tokens[0][2],
+				tokens[start][2],
 				tokens[tokens.length - 1][3],
 				[
 					'5.4.8. Consume a simple block',
@@ -490,26 +505,28 @@ function consumeSimpleBlock(ctx: Context, tokens: Array<CSSToken>): { advance: n
 			));
 
 			return {
-				advance: tokens.length,
-				node: new SimpleBlockNode(tokens[0], token, value),
+				advance: tokens.length - start,
+				node: new SimpleBlockNode(tokens[start], token, value),
 			};
 		}
 
 		if (token[0] === endingTokenType) {
 			return {
-				advance: i + 1,
-				node: new SimpleBlockNode(tokens[0], token, value),
+				advance: i - start + 1,
+				node: new SimpleBlockNode(tokens[start], token, value),
 			};
 		}
 
 		if (isTokenWhiteSpaceOrComment(token)) {
-			const result = consumeAllCommentsAndWhitespace(ctx, tokens.slice(i));
+			const result = consumeAllCommentsAndWhitespace(ctx, tokens, i);
 			i += result.advance;
-			value.push(...result.nodes);
+			for (let k = 0; k < result.nodes.length; k++) {
+				value.push(result.nodes[k]);
+			}
 			continue;
 		}
 
-		const result = consumeComponentValue(ctx, tokens.slice(i));
+		const result = consumeComponentValue(ctx, tokens, i, depth + 1);
 		i += result.advance;
 		value.push(result.node);
 	}
@@ -544,7 +561,7 @@ export class WhitespaceNode {
 	 * It is purely a concatenation of the string representation of the tokens.
 	 */
 	toString(): string {
-		return stringify(...this.value);
+		return stringify(this.value);
 	}
 
 	/**
@@ -583,15 +600,15 @@ export class WhitespaceNode {
 	}
 }
 
-function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: WhitespaceNode } {
-	let i = 0;
+function consumeWhitespace(ctx: Context, tokens: Array<CSSToken>, start: number): { advance: number, node: WhitespaceNode } {
+	let i = start;
 
 	while (true) {
 		const token = tokens[i];
 		if (!isTokenWhitespace(token)) {
 			return {
-				advance: i,
-				node: new WhitespaceNode(tokens.slice(0, i)),
+				advance: i - start,
+				node: new WhitespaceNode(tokens.slice(start, i)),
 			};
 		}
 
@@ -669,21 +686,21 @@ export class CommentNode {
 	}
 }
 
-function consumeComment(ctx: Context, tokens: Array<CSSToken>): { advance: number, node: CommentNode } {
+function consumeComment(ctx: Context, tokens: Array<CSSToken>, start: number): { advance: number, node: CommentNode } {
 	return {
 		advance: 1,
-		node: new CommentNode(tokens[0]),
+		node: new CommentNode(tokens[start]),
 	};
 }
 
-function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>): { advance: number, nodes: Array<WhitespaceNode | CommentNode> } {
+function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>, start: number): { advance: number, nodes: Array<WhitespaceNode | CommentNode> } {
 	const nodes: Array<WhitespaceNode | CommentNode> = [];
 
-	let i = 0;
+	let i = start;
 
 	while (true) {
 		if (isTokenWhitespace(tokens[i])) {
-			const result = consumeWhitespace(ctx, tokens.slice(i));
+			const result = consumeWhitespace(ctx, tokens, i);
 			i += result.advance;
 			nodes.push(result.node);
 			continue;
@@ -696,7 +713,7 @@ function consumeAllCommentsAndWhitespace(ctx: Context, tokens: Array<CSSToken>):
 		}
 
 		return {
-			advance: i,
+			advance: i - start,
 			nodes: nodes,
 		};
 	}
