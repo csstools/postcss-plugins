@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### 6.1.2
+
+_September 25, 2026_
 
 - Fixed a potential infinite loop when gamut mapping a color with infinite components
 
