@@ -1,6 +1,8 @@
 # Changes to PostCSS Pseudo Class Any Link
 
-### Unreleased (patch)
+### 11.0.1
+
+_September 25, 2026_
 
 - Throw when resolving `:any-link` would exceed the maximum number of combinations
 
