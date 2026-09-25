@@ -1,6 +1,8 @@
 # Changes to PostCSS Image Function
 
-### Unreleased (patch)
+### 1.0.4
+
+_September 25, 2026_
 
 - Throw when an `image()` expansion exceeds the maximum size or length
 - Fixed duplicated AST nodes when expanding `image()` with a single argument
