@@ -1,6 +1,8 @@
 # Changes to PostCSS Design Tokens
 
-### Unreleased (patch)
+### 5.0.1
+
+_September 25, 2026_
 
 - Improve performance and avoid a stack overflow when sorting a long chain of design token aliases
 
