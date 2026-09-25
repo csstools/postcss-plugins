@@ -1,6 +1,8 @@
 # Changes to Media Query List Parser
 
-### Unreleased (patch)
+### 5.0.1
+
+_September 25, 2026_
 
 - Throw when a media query exceeds the maximum number of component values.
 - Fixed: avoid exponential parse times for deeply nested media conditions.
