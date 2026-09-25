@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Selectors
 
-### Unreleased (patch)
+### 9.0.2
+
+_September 25, 2026_
 
 - Fix exponential growth of cascade layer names for deeply nested `@layer` rules
 - Throw when `@layer` nesting exceeds a safe depth
