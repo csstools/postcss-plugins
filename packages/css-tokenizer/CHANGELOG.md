@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 4.0.2
+
+_September 25, 2026_
 
 - Improve performance and avoid a `RangeError` when stringifying very large token lists by accepting an array of tokens in `stringify()`
 
