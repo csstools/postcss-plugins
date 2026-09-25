@@ -1,6 +1,8 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleased (patch)
+### 5.0.6
+
+_September 25, 2026_
 
 - Improve performance
 - Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.1.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#612) (patch)
