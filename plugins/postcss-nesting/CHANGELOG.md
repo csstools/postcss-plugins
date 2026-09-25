@@ -1,6 +1,8 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 14.0.2
+
+_September 25, 2026_
 
 - Throw when nested rules exceed the maximum depth
 - Throw when resolving nested selectors with lists would exceed the maximum number of combinations
