@@ -4,6 +4,7 @@
 
 - Throw when nested rules exceed the maximum depth
 - Throw when resolving nested selectors with lists would exceed the maximum number of combinations
+- Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#402) (patch)
 
 ### 14.0.1
 

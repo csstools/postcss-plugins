@@ -41,7 +41,7 @@
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^4.0.0",
-		"@csstools/css-tokenizer": "^4.0.1"
+		"@csstools/css-tokenizer": "^4.0.2"
 	},
 	"peerDependencies": {
 		"stylelint": "^17.13.0"

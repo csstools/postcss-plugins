@@ -1,5 +1,14 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-cascade-layers`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-cascade-layers/CHANGELOG.md#601) (patch)
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#601) (patch)
+- Updated [`@csstools/postcss-nested-calc`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc) to [`5.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc/CHANGELOG.md#502) (patch)
+- Updated [`postcss-attribute-case-insensitive`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive) to [`8.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive/CHANGELOG.md#801) (patch)
+- Updated [`postcss-logical`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical) to [`9.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical/CHANGELOG.md#901) (patch)
+- Updated [`postcss-pseudo-class-any-link`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link/CHANGELOG.md#1101) (patch)
+
 ### 5.0.13
 
 _September 13, 2026_
