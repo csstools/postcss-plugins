@@ -1,6 +1,8 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (patch)
+### 4.0.1
+
+_September 25, 2026_
 
 - Improve performance
 - Throw when the nesting depth of functions and simple blocks exceeds the maximum
