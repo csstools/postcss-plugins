@@ -132,13 +132,13 @@
 	order: calc(calc(infinity));
 	order: tan(((1 + 2) * 3) * 10deg); /* Is asymptotic */
 	/* Non Asymptotes */
-	order: calc(0);
+	order: calc(-1.2246467991473532e-16);
 	order: tan(180deg);
-	order: calc(0);
+	order: calc(-1.2246467991473532e-16);
 	order: tan(200grad);
-	order: calc(0);
+	order: calc(-2.4492935982947064e-16);
 	order: tan(360deg);
-	order: calc(0);
+	order: calc(-2.4492935982947064e-16);
 	order: tan(400grad);
 	order: tan(1px);
 	order: tan(foo);

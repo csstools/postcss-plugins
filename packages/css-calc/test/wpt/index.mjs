@@ -25,5 +25,6 @@ import './minmax-time-computed.mjs';
 import './round-function.mjs';
 import './round-mod-rem-computed.mjs';
 import './round-mod-rem-invalid.mjs';
+import './signed-zero.mjs';
 import './signs-abs-computed.mjs';
 import './sin-cos-tan-computed.mjs';

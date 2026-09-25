@@ -236,3 +236,52 @@ assert.strictEqual(
 	calc('pow(NaN, NaN)'),
 	'calc(NaN)',
 );
+
+// https://drafts.csswg.org/css-values-4/#exponent-infinities
+// Table 1: A is -infinity / 0- / 0+ / +infinity.
+assert.strictEqual(calc('pow(-infinity, -3)'), '-0');
+assert.strictEqual(calc('pow(-infinity, -2)'), '0');
+assert.strictEqual(calc('pow(-infinity, -1)'), '-0');
+assert.strictEqual(calc('pow(-infinity, 0)'), '1');
+assert.strictEqual(calc('pow(-infinity, 1)'), 'calc(-infinity)');
+assert.strictEqual(calc('pow(-infinity, 2)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(-infinity, 3)'), 'calc(-infinity)');
+
+assert.strictEqual(calc('pow(-0, -3)'), 'calc(-infinity)');
+assert.strictEqual(calc('pow(-0, -2)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(-0, -1)'), 'calc(-infinity)');
+assert.strictEqual(calc('pow(-0, 0)'), '1');
+assert.strictEqual(calc('pow(-0, 1)'), '-0');
+assert.strictEqual(calc('pow(-0, 2)'), '0');
+assert.strictEqual(calc('pow(-0, 3)'), '-0');
+
+assert.strictEqual(calc('pow(0, -3)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(0, -1)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(0, 0)'), '1');
+assert.strictEqual(calc('pow(0, 1)'), '0');
+assert.strictEqual(calc('pow(0, 2)'), '0');
+
+assert.strictEqual(calc('pow(infinity, -3)'), '0');
+assert.strictEqual(calc('pow(infinity, -1)'), '0');
+assert.strictEqual(calc('pow(infinity, 0)'), '1');
+assert.strictEqual(calc('pow(infinity, 1)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(infinity, 2)'), 'calc(infinity)');
+
+// Table 2: B is ±infinity, A relative to -1 / 0 / 1.
+assert.strictEqual(calc('pow(-2, infinity)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(-1, infinity)'), 'calc(NaN)');
+assert.strictEqual(calc('pow(-0.5, infinity)'), '0');
+assert.strictEqual(calc('pow(0.5, infinity)'), '0');
+assert.strictEqual(calc('pow(1, infinity)'), 'calc(NaN)');
+assert.strictEqual(calc('pow(2, infinity)'), 'calc(infinity)');
+
+assert.strictEqual(calc('pow(-2, -infinity)'), '0');
+assert.strictEqual(calc('pow(-1, -infinity)'), 'calc(NaN)');
+assert.strictEqual(calc('pow(-0.5, -infinity)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(0.5, -infinity)'), 'calc(infinity)');
+assert.strictEqual(calc('pow(1, -infinity)'), 'calc(NaN)');
+assert.strictEqual(calc('pow(2, -infinity)'), '0');
+
+// If A is negative and finite and B is finite, B must be an integer.
+assert.strictEqual(calc('pow(-2, 0.5)'), 'calc(NaN)');
+assert.strictEqual(calc('pow(-8, 1 / 3)'), 'calc(NaN)');

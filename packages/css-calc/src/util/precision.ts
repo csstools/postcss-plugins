@@ -20,11 +20,25 @@ export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13)
 		return x;
 	}
 
-	if (Number.isInteger(token[4].value)) {
+	if (!Number.isFinite(token[4].value) || token[4].value === 0) {
 		return x;
 	}
 
-	const result = Number(token[4].value.toFixed(precision)).toString();
+	const value = token[4].value;
+	if (Number.isInteger(value)) {
+		return x;
+	}
+
+	// Values that are serialized in scientific notation are left untouched.
+	// Rounding them to a number of decimals would destroy them (e.g. `1e-20`).
+	const serialized = value.toString();
+	if (serialized.includes('e') || serialized.includes('E')) {
+		return x;
+	}
+
+	// Otherwise round to a number of decimals.
+	const result = Number(value.toFixed(precision)).toString();
+
 	if (isTokenNumber(token)) {
 		token[1] = result;
 	} else if (isTokenPercentage(token)) {

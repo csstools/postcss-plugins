@@ -142,3 +142,24 @@ assert.strictEqual(
 	calc('log(1, 0.5)'),
 	'0',
 );
+
+// NaN is infectious, even when A is 1.
+assert.strictEqual(
+	calc('log(1, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(NaN, 1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(1, infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	calc('log(1, -infinity)'),
+	'calc(NaN)',
+);

@@ -42,6 +42,11 @@ export function solveLog(logNode: FunctionNode, solvedNodes: Array<ComponentValu
 			return -1;
 		}
 
+		// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+		if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+			return numberToCalculation(logNode, Number.NaN);
+		}
+
 		// https://drafts.csswg.org/css-values-4/#exponent-infinities
 		// If B is 1 or negative, the result is NaN.
 		// B values between 0 and 1 (exclusive), or greater than 1, are valid.
