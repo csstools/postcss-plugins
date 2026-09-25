@@ -1,6 +1,8 @@
 # Changes to PostCSS Nested Calc
 
-### Unreleased (patch)
+### 5.0.2
+
+_September 25, 2026_
 
 - Improve performance
 
