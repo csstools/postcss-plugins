@@ -12,7 +12,7 @@ export declare function a98_RGB_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function a98_RGB_to_XYZ_D65(x: Color): Color;
 
@@ -47,6 +47,18 @@ export declare function gam_P3(RGB: Color): Color;
 export declare function gam_sRGB(RGB: Color): Color;
 
 /**
+ * @param {number} hue - Hue as degrees 0..360
+ * @param {number} sat - Saturation as percentage 0..100
+ * @param {number} light - Lightness as percentage 0..100
+ * @return {number[]} Array of sRGB components; in-gamut colors in range [0..1]
+ *
+ * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hslToRgb.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
+ * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hslToRgb.js
+ */
+export declare function HSL_to_sRGB(HSL: Color): Color;
+
+/**
  * @param {Color} color [h, s, l]
  * - Hue as degrees 0..360;
  * - Saturation as number 0..100;
@@ -60,9 +72,21 @@ export declare function HSL_to_XYZ_D50(x: Color): Color;
  * - Hue as degrees 0..360;
  * - Saturation as number 0..100;
  * - Lightness as number 0..100;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function HSL_to_XYZ_D65(x: Color): Color;
+
+/**
+ * @param {number} hue -  Hue as degrees 0..360
+ * @param {number} white -  Whiteness as percentage 0..100
+ * @param {number} black -  Blackness as percentage 0..100
+ * @return {number[]} Array of RGB components 0..1
+ *
+ * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hwbToRgb.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
+ * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/hwbToRgb.js
+ */
+export declare function HWB_to_sRGB(HWB: Color): Color;
 
 /**
  * @param {Color} color [h, w, b]
@@ -78,7 +102,7 @@ export declare function HWB_to_XYZ_D50(x: Color): Color;
  * - Hue as degrees 0..360;
  * - Whiteness as number 0..100;
  * - Blackness as number 0..100;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function HWB_to_XYZ_D65(x: Color): Color;
 
@@ -98,27 +122,35 @@ export declare function Lab_to_XYZ_D50(x: Color): Color;
  * - Lightness as number 0..100;
  * - a as number -160..160;
  * - b as number -160..160;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function Lab_to_XYZ_D65(x: Color): Color;
 
 /**
- * @param {Color} color [l, c, h]
- * - Lightness as number 0..100;
- * - Chroma as number 0..230;
- * - Hue as degrees 0..360;
- * @return {Color} D50 XYZ [x, y, z]
+ * @license W3C https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  */
-export declare function LCH_to_XYZ_D50(x: Color): Color;
+export declare function LCH_to_Lab(LCH: Color, missingHue?: boolean): Color;
 
 /**
  * @param {Color} color [l, c, h]
  * - Lightness as number 0..100;
  * - Chroma as number 0..230;
  * - Hue as degrees 0..360;
+ * @param {boolean} missingHue
  * @return {Color} D50 XYZ [x, y, z]
  */
-export declare function LCH_to_XYZ_D65(x: Color): Color;
+export declare function LCH_to_XYZ_D50(x: Color, missingHue?: boolean): Color;
+
+/**
+ * @param {Color} color [l, c, h]
+ * - Lightness as number 0..100;
+ * - Chroma as number 0..230;
+ * - Hue as degrees 0..360;
+ * @param {boolean} missingHue
+ * @return {Color} D65 XYZ [x, y, z]
+ */
+export declare function LCH_to_XYZ_D65(x: Color, missingHue?: boolean): Color;
 
 /**
  * Convert an array of display-p3 RGB values in the range 0.0 - 1.0
@@ -153,7 +185,7 @@ export declare function lin_P3_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function lin_P3_to_XYZ_D65(x: Color): Color;
 
@@ -193,7 +225,7 @@ export declare function lin_sRGB_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function lin_sRGB_to_XYZ_D65(x: Color): Color;
 
@@ -236,7 +268,7 @@ export declare function OKLab_to_XYZ_D50(x: Color): Color;
  * - Lightness as number 0..1;
  * - a as number 0..0.5;
  * - b as number 0..0.5;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function OKLab_to_XYZ_D65(x: Color): Color;
 
@@ -245,25 +277,27 @@ export declare function OKLab_to_XYZ_D65(x: Color): Color;
  * @copyright This software or document includes material copied from or derived from https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js. Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
-export declare function OKLCH_to_OKLab(OKLCH: Color): Color;
+export declare function OKLCH_to_OKLab(OKLCH: Color, missingHue?: boolean): Color;
 
 /**
  * @param {Color} color [l, c, h]
  * - Lightness as number 0..1;
  * - Chroma as number 0..0.5;
  * - Hue as degrees 0..360;
+ * @param {boolean} missingHue
  * @return {Color} D50 XYZ [x, y, z]
  */
-export declare function OKLCH_to_XYZ_D50(x: Color): Color;
+export declare function OKLCH_to_XYZ_D50(x: Color, missingHue?: boolean): Color;
 
 /**
  * @param {Color} color [l, c, h]
  * - Lightness as number 0..1;
  * - Chroma as number 0..0.5;
  * - Hue as degrees 0..360;
- * @return {Color} D50 XYZ [x, y, z]
+ * @param {boolean} missingHue
+ * @return {Color} D65 XYZ [x, y, z]
  */
-export declare function OKLCH_to_XYZ_D65(x: Color): Color;
+export declare function OKLCH_to_XYZ_D65(x: Color, missingHue?: boolean): Color;
 
 /**
  * @param {Color} color [r, g, b]
@@ -279,7 +313,7 @@ export declare function P3_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function P3_to_XYZ_D65(x: Color): Color;
 
@@ -297,7 +331,7 @@ export declare function ProPhoto_RGB_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function ProPhoto_RGB_to_XYZ_D65(x: Color): Color;
 
@@ -315,7 +349,7 @@ export declare function rec_2020_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function rec_2020_to_XYZ_D65(x: Color): Color;
 
@@ -333,7 +367,7 @@ export declare function sRGB_to_XYZ_D50(x: Color): Color;
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export declare function sRGB_to_XYZ_D65(x: Color): Color;
 

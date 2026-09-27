@@ -39,7 +39,7 @@ import { sRGB_to_Hue } from '../srgb-to-hue';
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function sRGB_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -70,7 +70,7 @@ export function XYZ_D65_to_sRGB(x: Color): Color {
  * - Hue as degrees 0..360;
  * - Saturation as number 0..100;
  * - Lightness as number 0..100;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function HSL_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -103,7 +103,7 @@ export function XYZ_D65_to_HSL(x: Color): Color {
  * - Hue as degrees 0..360;
  * - Whiteness as number 0..100;
  * - Blackness as number 0..100;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function HWB_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -145,7 +145,7 @@ export function XYZ_D65_to_HWB(x: Color): Color {
  * - Lightness as number 0..100;
  * - a as number -160..160;
  * - b as number -160..160;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function Lab_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -176,11 +176,12 @@ export function XYZ_D65_to_Lab(x: Color): Color {
  * - Lightness as number 0..100;
  * - Chroma as number 0..230;
  * - Hue as degrees 0..360;
- * @return {Color} D50 XYZ [x, y, z]
+ * @param {boolean} missingHue
+ * @return {Color} D65 XYZ [x, y, z]
  */
-export function LCH_to_XYZ_D65(x: Color): Color {
+export function LCH_to_XYZ_D65(x: Color, missingHue: boolean = false): Color {
 	let y = x;
-	y = LCH_to_Lab(y);
+	y = LCH_to_Lab(y, missingHue);
 	y = Lab_to_XYZ(y);
 	y = D50_to_D65(y);
 	return y;
@@ -209,7 +210,7 @@ export function XYZ_D65_to_LCH(x: Color): Color {
  * - Lightness as number 0..1;
  * - a as number 0..0.5;
  * - b as number 0..0.5;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function OKLab_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -238,11 +239,12 @@ export function XYZ_D65_to_OKLab(x: Color): Color {
  * - Lightness as number 0..1;
  * - Chroma as number 0..0.5;
  * - Hue as degrees 0..360;
- * @return {Color} D50 XYZ [x, y, z]
+ * @param {boolean} missingHue
+ * @return {Color} D65 XYZ [x, y, z]
  */
-export function OKLCH_to_XYZ_D65(x: Color): Color {
+export function OKLCH_to_XYZ_D65(x: Color, missingHue: boolean = false): Color {
 	let y = x;
-	y = OKLCH_to_OKLab(y);
+	y = OKLCH_to_OKLab(y, missingHue);
 	y = OKLab_to_XYZ(y);
 	return y;
 }
@@ -269,7 +271,7 @@ export function XYZ_D65_to_OKLCH(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function lin_sRGB_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -298,7 +300,7 @@ export function XYZ_D65_to_lin_sRGB(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function a98_RGB_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -329,7 +331,7 @@ export function XYZ_D65_to_a98_RGB(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function P3_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -360,7 +362,7 @@ export function XYZ_D65_to_P3(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function lin_P3_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -389,7 +391,7 @@ export function XYZ_D65_to_lin_P3(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function rec_2020_to_XYZ_D65(x: Color): Color {
 	let y = x;
@@ -420,7 +422,7 @@ export function XYZ_D65_to_rec_2020(x: Color): Color {
  * - Red as number 0..1;
  * - Green as number 0..1;
  * - Blue as number 0..1;
- * @return {Color} D50 XYZ [x, y, z]
+ * @return {Color} D65 XYZ [x, y, z]
  */
 export function ProPhoto_RGB_to_XYZ_D65(x: Color): Color {
 	let y = x;

@@ -180,11 +180,12 @@ export function XYZ_D50_to_Lab(x: Color): Color {
  * - Lightness as number 0..100;
  * - Chroma as number 0..230;
  * - Hue as degrees 0..360;
+ * @param {boolean} missingHue
  * @return {Color} D50 XYZ [x, y, z]
  */
-export function LCH_to_XYZ_D50(x: Color): Color {
+export function LCH_to_XYZ_D50(x: Color, missingHue: boolean = false): Color {
 	let y = x;
-	y = LCH_to_Lab(y);
+	y = LCH_to_Lab(y, missingHue);
 	y = Lab_to_XYZ(y);
 	return y;
 }
@@ -242,11 +243,12 @@ export function XYZ_D50_to_OKLab(x: Color): Color {
  * - Lightness as number 0..1;
  * - Chroma as number 0..0.5;
  * - Hue as degrees 0..360;
+ * @param {boolean} missingHue
  * @return {Color} D50 XYZ [x, y, z]
  */
-export function OKLCH_to_XYZ_D50(x: Color): Color {
+export function OKLCH_to_XYZ_D50(x: Color, missingHue: boolean = false): Color {
 	let y = x;
-	y = OKLCH_to_OKLab(y);
+	y = OKLCH_to_OKLab(y, missingHue);
 	y = OKLab_to_XYZ(y);
 	y = D65_to_D50(y);
 	return y;

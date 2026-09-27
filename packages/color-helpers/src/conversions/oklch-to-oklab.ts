@@ -6,12 +6,12 @@ import type { Color } from '../types/color';
  * @see https://github.com/w3c/csswg-drafts/blob/main/css-color-4/conversions.js
  */
 
-export function OKLCH_to_OKLab(OKLCH: Color): Color {
+export function OKLCH_to_OKLab(OKLCH: Color, missingHue: boolean = false): Color {
 	const hue = OKLCH[2] * Math.PI / 180;
 
 	return [
 		OKLCH[0], // L is still L
-		OKLCH[1] * Math.cos(hue), // a
-		OKLCH[1] * Math.sin(hue),  // b
+		missingHue ? 0 : OKLCH[1] * Math.cos(hue), // a
+		missingHue ? 0 : OKLCH[1] * Math.sin(hue),  // b
 	];
 }

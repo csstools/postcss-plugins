@@ -270,13 +270,13 @@ export function colorData_to_XYZ_D65(colorData: ColorData): ColorData {
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D65,
-				channels: LCH_to_XYZ_D65(convertNaNToZero(colorData.channels)),
+				channels: LCH_to_XYZ_D65(convertNaNToZero(colorData.channels), Number.isNaN(colorData.channels[2])),
 			};
 		case ColorNotation.OKLCH:
 			return {
 				...colorData,
 				colorNotation: ColorNotation.XYZ_D65,
-				channels: OKLCH_to_XYZ_D65(convertNaNToZero(colorData.channels)),
+				channels: OKLCH_to_XYZ_D65(convertNaNToZero(colorData.channels), Number.isNaN(colorData.channels[2])),
 			};
 		case ColorNotation.XYZ_D50:
 			return {

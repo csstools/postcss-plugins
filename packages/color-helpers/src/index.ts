@@ -83,3 +83,7 @@ export type { Color } from './types/color';
 export { namedColors } from './named-colors';
 
 export { contrast_ratio_wcag_2_1 } from './calculations/contrast-ratio-wcag-2-1';
+
+export { HSL_to_sRGB } from './conversions/hsl-to-srgb';
+export { HWB_to_sRGB } from './conversions/hwb-to-srgb';
+export { LCH_to_Lab } from './conversions/lch-to-lab';
