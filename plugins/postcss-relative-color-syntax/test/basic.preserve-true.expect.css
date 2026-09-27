@@ -131,7 +131,7 @@
 }
 
 .spec-example-16 {
-	background: linear-gradient(in Oklab to right, rgb(97, 90, 91), #4C3);
+	background: linear-gradient(in Oklab to right, rgb(92, 92, 92), #4C3);
 	background: linear-gradient(in Oklab to right, oklch(from hsl(none 3% 50%) calc(l * 0.8) c h), #4C3);
 }
 

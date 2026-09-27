@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export declare function LCH_to_XYZ_D50(x: Color): Color;
+export declare function LCH_to_XYZ_D50(x: Color, missingHue?: boolean): Color;
 ```
 
 ## Parameters
@@ -39,6 +39,22 @@ x
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+missingHue
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_  {<!-- -->Color<!-- -->} D50 XYZ \[x, y, z\]
 
 
 </td></tr>

@@ -79,6 +79,15 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
+[HSL\_to\_sRGB(HSL)](./color-helpers.hsl_to_srgb.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [HSL\_to\_XYZ\_D50(x)](./color-helpers.hsl_to_xyz_d50.md)
 
 
@@ -89,6 +98,15 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 <tr><td>
 
 [HSL\_to\_XYZ\_D65(x)](./color-helpers.hsl_to_xyz_d65.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HWB\_to\_sRGB(HWB)](./color-helpers.hwb_to_srgb.md)
 
 
 </td><td>
@@ -142,7 +160,7 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
-[LCH\_to\_XYZ\_D50(x)](./color-helpers.lch_to_xyz_d50.md)
+[LCH\_to\_Lab(LCH, missingHue)](./color-helpers.lch_to_lab.md)
 
 
 </td><td>
@@ -151,7 +169,16 @@ Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corre
 </td></tr>
 <tr><td>
 
-[LCH\_to\_XYZ\_D65(x)](./color-helpers.lch_to_xyz_d65.md)
+[LCH\_to\_XYZ\_D50(x, missingHue)](./color-helpers.lch_to_xyz_d50.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LCH\_to\_XYZ\_D65(x, missingHue)](./color-helpers.lch_to_xyz_d65.md)
 
 
 </td><td>
@@ -296,7 +323,7 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
-[OKLCH\_to\_OKLab(OKLCH)](./color-helpers.oklch_to_oklab.md)
+[OKLCH\_to\_OKLab(OKLCH, missingHue)](./color-helpers.oklch_to_oklab.md)
 
 
 </td><td>
@@ -305,7 +332,7 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
-[OKLCH\_to\_XYZ\_D50(x)](./color-helpers.oklch_to_xyz_d50.md)
+[OKLCH\_to\_XYZ\_D50(x, missingHue)](./color-helpers.oklch_to_xyz_d50.md)
 
 
 </td><td>
@@ -314,7 +341,7 @@ Given OKLab, convert to XYZ relative to D65
 </td></tr>
 <tr><td>
 
-[OKLCH\_to\_XYZ\_D65(x)](./color-helpers.oklch_to_xyz_d65.md)
+[OKLCH\_to\_XYZ\_D65(x, missingHue)](./color-helpers.oklch_to_xyz_d65.md)
 
 
 </td><td>

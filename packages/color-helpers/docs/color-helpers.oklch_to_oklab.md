@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export declare function OKLCH_to_OKLab(OKLCH: Color): Color;
+export declare function OKLCH_to_OKLab(OKLCH: Color, missingHue?: boolean): Color;
 ```
 
 ## Parameters
@@ -39,6 +39,22 @@ OKLCH
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+missingHue
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>
