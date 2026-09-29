@@ -356,10 +356,10 @@ import { parse } from '../util/parse.mjs';
 
 		['lch(from oklch(none 0.2 180) l c h)', 'lch(none 2.6503948 181.20369565)'],
 		['lch(from oklch(0.2 none 180) l c h)', 'lch(7.22637037 none none)'],
-		['lch(from oklch(0.2 0.2 none) l c h)', 'lch(5.10873217 59.48824051 none)'],
+		['lch(from oklch(0.2 0.2 none) l c h)', 'lch(7.22637037 0 none)'],
 		['lch(from oklch(none none 180) l c h)', 'lch(none none none)'],
 		['lch(from oklch(0.2 none none) l c h)', 'lch(7.22637037 none none)'],
-		['lch(from oklch(none 0.2 none) l c h)', 'lch(none 2.6503948 none)'],
+		['lch(from oklch(none 0.2 none) l c h)', 'lch(none 0 none)'],
 		['lch(from oklch(none none none) l c h)', 'lch(none none none)'],
 
 		['lch(from lab(none 10 10) l c h)', 'lch(none 14.14213562 45)'],
@@ -408,10 +408,10 @@ import { parse } from '../util/parse.mjs';
 
 		['color-mix(in lch, oklch(none 0.2 180), lch(11 33 44))', 'lch(11 17.8251974 112.60184783)'],
 		['color-mix(in lch, oklch(0.2 none 180), lch(11 33 44))', 'lch(9.11318519 33 44)'],
-		['color-mix(in lch, oklch(0.2 0.2 none), lch(11 33 44))', 'lch(8.05436608 46.24412025 44)'],
+		['color-mix(in lch, oklch(0.2 0.2 none), lch(11 33 44))', 'lch(9.11318519 16.5 44)'],
 		['color-mix(in lch, oklch(none none 180), lch(11 33 44))', 'lch(11 33 44)'],
 		['color-mix(in lch, oklch(0.2 none none), lch(11 33 44))', 'lch(9.11318519 33 44)'],
-		['color-mix(in lch, oklch(none 0.2 none), lch(11 33 44))', 'lch(11 17.8251974 44)'],
+		['color-mix(in lch, oklch(none 0.2 none), lch(11 33 44))', 'lch(11 16.5 44)'],
 		['color-mix(in lch, oklch(none none none), lch(11 33 44))', 'lch(11 33 44)'],
 
 		['color-mix(in lch, lab(none 10 10), lch(11 33 44))', 'lch(11 23.57106781 44.5)'],
@@ -460,10 +460,10 @@ import { parse } from '../util/parse.mjs';
 
 		['color-mix(in lch, oklch(none 0.2 180))', 'lch(none 2.6503948 181.20369565)'],
 		['color-mix(in lch, oklch(0.2 none 180))', 'lch(7.22637037 none none)'],
-		['color-mix(in lch, oklch(0.2 0.2 none))', 'lch(5.10873217 59.48824051 none)'],
+		['color-mix(in lch, oklch(0.2 0.2 none))', 'lch(7.22637037 0 none)'],
 		['color-mix(in lch, oklch(none none 180))', 'lch(none none none)'],
 		['color-mix(in lch, oklch(0.2 none none))', 'lch(7.22637037 none none)'],
-		['color-mix(in lch, oklch(none 0.2 none))', 'lch(none 2.6503948 none)'],
+		['color-mix(in lch, oklch(none 0.2 none))', 'lch(none 0 none)'],
 		['color-mix(in lch, oklch(none none none))', 'lch(none none none)'],
 
 		['color-mix(in lch, lab(none 10 10))', 'lch(none 14.14213562 45)'],
