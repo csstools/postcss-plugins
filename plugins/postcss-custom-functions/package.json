@@ -67,6 +67,8 @@
 		"postcss-plugin"
 	],
 	"csstools": {
+		"assumesToProcessBundledCSS": true,
+		"cssdbId": "custom-functions",
 		"exportName": "postcssCustomFunctions",
 		"humanReadableName": "PostCSS Custom Functions",
 		"specUrl": "https://drafts.csswg.org/css-mixins-1/#function-rule"
