@@ -117,9 +117,9 @@ export class MixinExpander {
 
 		this.spendBudget(countNodes(inserted));
 
-		for (const node of inserted) {
-			atRule.before(node);
-		}
+		// Insert as a batch: PostCSS resolves the index of `atRule` with
+		// `indexOf` for every single `before()` call, which is quadratic.
+		atRule.before(inserted);
 
 		if (!preserve) {
 			atRule.remove();
@@ -280,10 +280,7 @@ export class MixinExpander {
 
 			this.spendBudget(countNodes(replacement));
 
-			for (const child of replacement) {
-				contentsRule.before(child.clone());
-			}
-
+			contentsRule.before(replacement.map((child) => child.clone()));
 			contentsRule.remove();
 		}
 	}

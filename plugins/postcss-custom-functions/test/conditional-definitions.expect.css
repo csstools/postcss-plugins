@@ -1,9 +1,7 @@
 @supports (width: 100px) {.conditional {
 		--_csstools-cf-7hov6p4v-0-result: PASS;
 }
-}@supports (not (width: 100px)) {
-
-.conditional {
+}@supports (not (width: 100px)) {.conditional {
 		--_csstools-cf-7hov6p4v-0-result: FAIL;
 }
 }

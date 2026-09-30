@@ -76,6 +76,7 @@ export class CustomFunctionTranspiler {
 	private registrations: Array<AtRule> = [];
 	private names: GeneratedNames = new GeneratedNames('0');
 	private budget = MAX_GENERATED_DECLARATIONS;
+	private emittedNodes: Array<ChildNode> = [];
 
 	setCustomFunctions(customFunctions: Map<string, CustomFunctionGroup>): void {
 		this.customFunctions = customFunctions;
@@ -122,6 +123,11 @@ export class CustomFunctionTranspiler {
 		// their cascade context.
 		const inlineDecls: Array<Declaration> = [];
 
+		// Generated rules are collected here and inserted in a single batch.
+		// Inserting them one by one is quadratic: PostCSS resolves the index of
+		// the reference node with `indexOf` on every insertion.
+		this.emittedNodes = [];
+
 		replaceComponentValues([componentValues], (node) => {
 			if (!isFunctionNode(node)) {
 				return;
@@ -141,13 +147,18 @@ export class CustomFunctionTranspiler {
 		});
 
 		const modified = stringify([componentValues]);
-		if (modified === decl.value && !inlineDecls.length) {
+		if (modified === decl.value && !inlineDecls.length && !this.emittedNodes.length) {
 			return null;
 		}
 
+		if (this.emittedNodes.length) {
+			element.before(this.emittedNodes);
+			this.emittedNodes = [];
+		}
+
 		// Prepend the inlined declarations so they are available to the call.
-		for (const inlineDecl of inlineDecls) {
-			decl.cloneBefore(inlineDecl);
+		if (inlineDecls.length) {
+			decl.before(inlineDecls);
 		}
 
 		if (modified === decl.value) {
@@ -307,9 +318,7 @@ export class CustomFunctionTranspiler {
 			return;
 		}
 
-		for (const node of nodes) {
-			element.before(node);
-		}
+		this.emittedNodes.push(...nodes);
 	}
 
 	/**
