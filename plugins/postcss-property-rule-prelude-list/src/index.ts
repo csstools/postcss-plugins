@@ -1,6 +1,6 @@
 import { parseCommaSeparatedListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { tokenize } from '@csstools/css-tokenizer';
-import type { AtRule, PluginCreator } from 'postcss';
+import type { PluginCreator } from 'postcss';
 
 /** postcss-property-rule-prelude-list plugin options */
 export type pluginOptions = never;
@@ -11,16 +11,7 @@ const IS_AT_PROPERTY_REGEX = /^property$/i;
 // its children) once per list item. When such rules are nested, the clones are
 // expanded again and the output grows exponentially with the nesting depth.
 // Bound the total number of at-rules generated per stylesheet.
-const MAX_EXPANDED_AT_RULES = 10_000;
-
-function countAtRules(atRule: AtRule): number {
-	let count = 1;
-	atRule.walkAtRules(() => {
-		count++;
-	});
-
-	return count;
-}
+const MAX_EXPANDED_AT_RULES = 5_000;
 
 const creator: PluginCreator<pluginOptions> = () => {
 	let expandedAtRules = 0;
@@ -44,7 +35,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 				return;
 			}
 
-			expandedAtRules += list.length * countAtRules(atRule);
+			expandedAtRules += list.length;
 			if (expandedAtRules > MAX_EXPANDED_AT_RULES) {
 				throw new Error('Maximum @property expansion size exceeded, reduce the complexity of your stylesheet');
 			}

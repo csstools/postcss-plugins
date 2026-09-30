@@ -122,7 +122,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					let modifiedSelector: string;
 
 					try {
-						modifiedSelector = 						selectorParser((selectors) => {
+						modifiedSelector = selectorParser((selectors) => {
 							let newSelectors: Array<selectorParser.Selector> = [];
 
 							selectors.each(selector => {

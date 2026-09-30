@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Share a single expansion budget across all declarations, and resolve cascade layer order in linear time.
+- Share a single expansion budget across all declarations.
 - Avoid a quadratic sibling scan when checking for an existing fallback declaration.
 
 

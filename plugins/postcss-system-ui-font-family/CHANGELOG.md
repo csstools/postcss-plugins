@@ -1,9 +1,5 @@
 # Changes to PostCSS System UI Font Family
 
-### Unreleased (patch)
-
-- Improved performance by inserting generated declarations as a single batch
-
 ### 2.0.1
 
 _September 25, 2026_

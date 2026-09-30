@@ -108,23 +108,14 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 		addLayerToModel(layers, [layerName]);
 	}
 
-	// Index the layer names once so resolving each reference is O(1)
-	// instead of scanning the whole layer list for every node.
-	const layerIndexByName = new Map<string, number>();
-	for (let i = 0; i < layers.length; i++) {
-		layerIndexByName.set(layerKey(layers[i]), i);
-	}
-
 	const out: WeakMap<Node, number> = new WeakMap();
 	for (const [node, layerName] of references) {
-		out.set(node, layerIndexByName.get(layerKey(layerName)) ?? -1);
+		out.set(node, layers.findIndex((x) => {
+			return layerName.equal(x);
+		}));
 	}
 
 	return out;
-}
-
-function layerKey(layerName: LayerName): string {
-	return layerName.segments().join('\u0000');
 }
 
 // 0          : node was not found

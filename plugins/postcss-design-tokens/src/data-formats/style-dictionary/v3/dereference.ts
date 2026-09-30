@@ -4,16 +4,9 @@ import { toposort } from '../../toposort/toposort';
 import type { StyleDictionaryV3TokenValue } from './value';
 import { applyTransformsToValue } from './value';
 
-// Tokens can reference each other and duplicate their contents, so a token
-// chain that references the previous token twice grows the resolved values
-// exponentially. Bound the total resolved value length so that a small token
-// file can not exhaust memory.
-const MAX_RESOLVED_VALUE_LENGTH = 1_000_000;
-
 export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3TokenValue>): Map<string, StyleDictionaryV3TokenValue> {
 	const tainted = new Set<string>();
 	const referenceASTs = new Map<string, Array<ValuePart>>();
-	let resolvedLength = 0;
 
 	// Gather all references.
 	{
@@ -60,12 +53,6 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			}
 
 			const value = (referenceAST as ValuePartsResolved).map(part => part.value).join('');
-
-			resolvedLength += value.length;
-			if (resolvedLength > MAX_RESOLVED_VALUE_LENGTH) {
-				throw new Error('Maximum design token expansion size exceeded, reduce the complexity of your tokens');
-			}
-
 			const currentToken = tokens.get(id)!;
 
 			currentToken.value = value;
@@ -138,12 +125,6 @@ export function dereferenceTokenValues(tokens: Map<string, StyleDictionaryV3Toke
 			}
 
 			const value = (referenceAST as ValuePartsResolved).map(part => part.value).join('');
-
-			resolvedLength += value.length;
-			if (resolvedLength > MAX_RESOLVED_VALUE_LENGTH) {
-				throw new Error('Maximum design token expansion size exceeded, reduce the complexity of your tokens');
-			}
-
 			const currentToken = tokens.get(id)!;
 
 			currentToken.value = value;

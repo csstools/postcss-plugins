@@ -1,10 +1,5 @@
 # Changes to PostCSS Custom Media
 
-### Unreleased (patch)
-
-- Resolve cascade layer order in linear time instead of scanning the layer list for every node.
-
-
 ### 12.0.2
 
 _September 25, 2026_

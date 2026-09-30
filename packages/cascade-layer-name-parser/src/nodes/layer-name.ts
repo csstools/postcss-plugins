@@ -4,28 +4,33 @@ import type { CSSToken, TokenIdent} from '@csstools/css-tokenizer';
 import { TokenType } from '@csstools/css-tokenizer';
 
 export class LayerName {
-	parts: Array<CSSToken>;
+	#parts: Array<CSSToken>;
+	#name: string = '';
 
 	constructor(parts: Array<CSSToken>) {
-		this.parts = parts;
+		this.#parts = parts;
 	}
 
 	tokens(): Array<CSSToken> {
 		return [
-			...this.parts,
+			...this.#parts,
 		];
+	}
+
+	get parts(): Array<CSSToken> {
+		return this.#parts.slice();
 	}
 
 	slice(start: number, end: number): LayerName {
 		const indices = [];
-		for (let i = 0; i < this.parts.length; i++) {
-			if (isTokenIdent(this.parts[i])) {
+		for (let i = 0; i < this.#parts.length; i++) {
+			if (isTokenIdent(this.#parts[i])) {
 				indices.push(i);
 			}
 		}
 
 		const slice = indices.slice(start, end);
-		return new LayerName(this.parts.slice(slice[0], slice[slice.length-1]+1));
+		return new LayerName(this.#parts.slice(slice[0], slice[slice.length-1]+1));
 	}
 
 	concat(other: LayerName): LayerName {
@@ -38,18 +43,18 @@ export class LayerName {
 		];
 
 		return new LayerName([
-			...this.parts.filter((x) => {
+			...this.#parts.filter((x) => {
 				return isTokenIdent(x) || isTokenDelim(x);
 			}),
 			dot,
-			...other.parts.filter((x) => {
+			...other.#parts.filter((x) => {
 				return isTokenIdent(x) || isTokenDelim(x);
 			}),
 		]);
 	}
 
 	segments(): Array<string> {
-		return this.parts.filter((x): x is TokenIdent => {
+		return this.#parts.filter((x): x is TokenIdent => {
 			return isTokenIdent(x);
 		}).map((x) => {
 			return x[4].value;
@@ -57,33 +62,25 @@ export class LayerName {
 	}
 
 	name(): string {
-		return this.parts.filter((x): x is TokenIdent | TokenDelim => {
+		if (this.#name) {
+			return this.#name;
+		}
+
+		this.#name = this.#parts.filter((x): x is TokenIdent | TokenDelim => {
 			return isTokenIdent(x) || isTokenDelim(x);
 		}).map((x) => {
 			return x[1];
 		}).join('');
+
+		return this.#name;
 	}
 
 	equal(other: LayerName): boolean {
-		const a = this.segments();
-		const b = other.segments();
-		if (a.length !== b.length) {
-			return false;
-		}
-
-		for (let i = 0; i < a.length; i++) {
-			const aa = a[i];
-			const bb = b[i];
-			if (aa !== bb) {
-				return false;
-			}
-		}
-
-		return true;
+		return this.name() === other.name();
 	}
 
 	toString(): string {
-		return this.parts.map((x) => x[1]).join('');
+		return this.#parts.map((x) => x[1]).join('');
 	}
 
 	/**
@@ -93,7 +90,7 @@ export class LayerName {
 	 */
 	toJSON(): Record<string, unknown>{
 		return {
-			parts: this.parts,
+			parts: this.#parts,
 			segments: this.segments(),
 			name: this.name(),
 		};

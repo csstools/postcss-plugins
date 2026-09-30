@@ -115,14 +115,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			// Insert as a batch: resolving the reference index for every single
-			// insertion is quadratic for a rule with many declarations.
-			decl.before([
-				decl.clone({
-					prop: decl.prop,
-					value: modified,
-				}),
-			]);
+			decl.cloneBefore({
+				prop: decl.prop,
+				value: modified,
+			});
 
 			decl.remove();
 		},
