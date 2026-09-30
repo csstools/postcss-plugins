@@ -1,0 +1,31 @@
+.a {
+	color: green;
+	background-color: blue;
+}
+
+.b {
+	& {
+		--_csstools-p-2ljfeuxq-0--outer-color: red;
+
+		& {
+			--_csstools-p-2ljfeuxq-1--inner-color: var(--_csstools-p-2ljfeuxq-0--outer-color);
+			border-color: var(--_csstools-p-2ljfeuxq-1--inner-color);
+		}
+	}
+}
+
+.c {
+	& {
+		--_csstools-p-2ljfeuxq-2--color: red;
+
+		& {
+			--_csstools-p-2ljfeuxq-3--color: blue;
+			border-color: var(--_csstools-p-2ljfeuxq-3--color);
+		}
+		color: var(--_csstools-p-2ljfeuxq-2--color);
+	}
+}
+
+.d {
+	@apply --cycle-a;
+}

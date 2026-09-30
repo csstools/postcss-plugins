@@ -42,13 +42,15 @@
 	],
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^4.0.1",
-		"@csstools/css-tokenizer": "^4.0.2"
+		"@csstools/css-tokenizer": "^4.0.2",
+		"@csstools/postcss-private-rule": "^1.0.3"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*"
+		"@csstools/postcss-tape": "*",
+		"puppeteer": "^25.11.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

@@ -12,9 +12,7 @@ Several specification aspects of CSS Mixins still need to be settled.
 This plugin is only a partial implementation to avoid conflicts with the final specification.
 
 Unsupported:
-- mixin arguments
-- `@contents` blocks
-- `@result` blocks
+- typed mixin arguments
 - layered `@mixin` declarations
 - mixin overrides
 

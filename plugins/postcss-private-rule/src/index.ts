@@ -2,6 +2,8 @@ import type { Plugin, PluginCreator } from 'postcss';
 import { findStyleRule, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
 import { Transpiler } from './transpiler';
 
+export { Transpiler } from './transpiler';
+
 /** postcss-private-rule plugin options */
 export type pluginOptions = never;
 

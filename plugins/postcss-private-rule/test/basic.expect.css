@@ -150,3 +150,13 @@ section > h1 > small {
 		}
 	}
 }
+
+.outer {
+		--_csstools-p-86hq2t3p-g--foo: outer;
+
+	.inner {
+			--_csstools-p-86hq2t3p-h--foo: inner;
+
+		content: var(--_csstools-p-86hq2t3p-h--foo);
+	}
+}

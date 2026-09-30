@@ -1,0 +1,77 @@
+@mixin --basic(--color) {
+	color: var(--color);
+}
+
+.a {
+	& {
+		--_csstools-p-9bomswmf-0--color: green;
+		color: var(--_csstools-p-9bomswmf-0--color);
+	}
+	@apply --basic(green);
+}
+
+@mixin --defaults(--color: blue, --background: red) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.b {
+	& {
+		--_csstools-p-9bomswmf-1--color: blue;
+		--_csstools-p-9bomswmf-1--background: red;
+		color: var(--_csstools-p-9bomswmf-1--color);
+		background-color: var(--_csstools-p-9bomswmf-1--background);
+	}
+	@apply --defaults;
+}
+
+.c {
+	& {
+		--_csstools-p-9bomswmf-2--color: red;
+		--_csstools-p-9bomswmf-2--background: red;
+		color: var(--_csstools-p-9bomswmf-2--color);
+		background-color: var(--_csstools-p-9bomswmf-2--background);
+	}
+	@apply --defaults(red);
+}
+
+@mixin --fallback(--color) {
+	outline-color: var(--color, navy);
+}
+
+.d {
+	& {
+		--_csstools-p-9bomswmf-3--color: initial;
+		outline-color: var(--_csstools-p-9bomswmf-3--color, navy);
+	}
+	@apply --fallback;
+}
+
+.e {
+	& {
+		--_csstools-p-9bomswmf-4--color: green;
+		outline-color: var(--_csstools-p-9bomswmf-4--color, navy);
+	}
+	@apply --fallback(green);
+}
+
+@mixin --braces(--list) {
+	transition-property: var(--list);
+}
+
+.f {
+	& {
+		--_csstools-p-9bomswmf-5--list: color, background;
+		transition-property: var(--_csstools-p-9bomswmf-5--list);
+	}
+	@apply --braces({color, background});
+}
+
+@mixin --no-parameter-list {
+	border: 1px solid green;
+}
+
+.g {
+	border: 1px solid green;
+	@apply --no-parameter-list;
+}

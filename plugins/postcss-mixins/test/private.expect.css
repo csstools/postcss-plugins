@@ -1,0 +1,14 @@
+.a {
+	& {
+		--_csstools-p-45fs09jl-0--shadow: 2px 2px black;
+		box-shadow: var(--_csstools-p-45fs09jl-0--shadow);
+	}
+}
+
+.b {
+	& {
+		--_csstools-p-45fs09jl-1--color: red;
+		--_csstools-p-45fs09jl-1--local: var(--_csstools-p-45fs09jl-1--color);
+		color: var(--_csstools-p-45fs09jl-1--local);
+	}
+}

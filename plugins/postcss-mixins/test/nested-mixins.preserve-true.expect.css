@@ -1,0 +1,69 @@
+@mixin --inner() {
+	color: green;
+}
+
+@mixin --outer() {
+	@apply --inner;
+	background-color: blue;
+}
+
+.a {
+	color: green;
+	background-color: blue;
+	@apply --outer;
+}
+
+@mixin --inner-args(--inner-color) {
+	border-color: var(--inner-color);
+}
+
+@mixin --outer-args(--outer-color) {
+	@apply --inner-args(var(--outer-color));
+}
+
+.b {
+	& {
+		--_csstools-p-2ljfeuxq-0--outer-color: red;
+
+		& {
+			--_csstools-p-2ljfeuxq-1--inner-color: var(--_csstools-p-2ljfeuxq-0--outer-color);
+			border-color: var(--_csstools-p-2ljfeuxq-1--inner-color);
+		}
+	}
+	@apply --outer-args(red);
+}
+
+@mixin --shadow-inner(--color) {
+	border-color: var(--color);
+}
+
+@mixin --shadow-outer(--color) {
+	@apply --shadow-inner(blue);
+	color: var(--color);
+}
+
+.c {
+	& {
+		--_csstools-p-2ljfeuxq-2--color: red;
+
+		& {
+			--_csstools-p-2ljfeuxq-3--color: blue;
+			border-color: var(--_csstools-p-2ljfeuxq-3--color);
+		}
+		color: var(--_csstools-p-2ljfeuxq-2--color);
+	}
+	@apply --shadow-outer(red);
+}
+
+@mixin --cycle-a() {
+	@apply --cycle-b;
+}
+
+@mixin --cycle-b() {
+	@apply --cycle-a;
+}
+
+.d {
+	@apply --cycle-a;
+	@apply --cycle-a;
+}

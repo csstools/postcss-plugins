@@ -46,9 +46,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 
 	while (true) {
 		if (!tokensCopy[i] || isTokenEOF(tokensCopy[i])) {
-			if (list.length) {
-				listOfCvls.push(list);
-			}
+			listOfCvls.push(list);
 
 			return listOfCvls;
 		}

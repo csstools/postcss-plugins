@@ -1,0 +1,33 @@
+@mixin --one(--color) {
+	color: var(--color);
+}
+
+.too-many-arguments {
+	@apply --one(green, blue);
+}
+
+.important-argument {
+	@apply --one(red !important);
+}
+
+.trailing-empty-argument {
+	@apply --one(red,);
+}
+
+.leading-empty-argument {
+	@apply --one(,red);
+}
+
+.middle-empty-argument {
+	@apply --one(red,,blue);
+}
+
+@mixin --defined() {
+	color: green;
+}
+
+@apply --defined;
+
+@media screen {
+	@apply --defined;
+}

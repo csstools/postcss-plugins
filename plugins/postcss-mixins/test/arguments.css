@@ -1,0 +1,48 @@
+@mixin --basic(--color) {
+	color: var(--color);
+}
+
+.a {
+	@apply --basic(green);
+}
+
+@mixin --defaults(--color: blue, --background: red) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.b {
+	@apply --defaults;
+}
+
+.c {
+	@apply --defaults(red);
+}
+
+@mixin --fallback(--color) {
+	outline-color: var(--color, navy);
+}
+
+.d {
+	@apply --fallback;
+}
+
+.e {
+	@apply --fallback(green);
+}
+
+@mixin --braces(--list) {
+	transition-property: var(--list);
+}
+
+.f {
+	@apply --braces({color, background});
+}
+
+@mixin --no-parameter-list {
+	border: 1px solid green;
+}
+
+.g {
+	@apply --no-parameter-list;
+}

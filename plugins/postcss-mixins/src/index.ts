@@ -1,12 +1,26 @@
-import type { AtRule, Plugin, PluginCreator } from 'postcss';
+import { AtRule, Declaration, Rule } from 'postcss';
+import type { ChildNode, Node, Plugin, PluginCreator } from 'postcss';
+import { Transpiler } from '@csstools/postcss-private-rule';
 import { IS_APPLY_REGEX, processableApplyRule } from './processable-apply';
+import type { MixinParameter } from './processable-mixin';
 import { processableMixinRule } from './processable-mixin';
+import { rewriteArgument } from './rewrite-argument';
 
 /** postcss-mixins plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
 	preserve?: boolean,
 };
+
+type Mixin = {
+	name: string,
+	parameters: Array<MixinParameter>,
+	atRule: AtRule,
+};
+
+const IS_CONTENTS_REGEX = /^contents$/i;
+const IS_PRIVATE_REGEX = /^private$/i;
+const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
@@ -21,8 +35,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-mixins',
 		prepare(): Plugin {
-			const mixins: Map<string, AtRule> = new Map();
+			const mixins: Map<string, Mixin> = new Map();
 			const knownMixins: Set<string> = new Set();
+			const transpiler = new Transpiler();
 
 			return {
 				postcssPlugin: 'mixins',
@@ -32,47 +47,299 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							return;
 						}
 
-						const mixinName = processableMixinRule(child);
-						if (!mixinName) {
+						const parsed = processableMixinRule(child);
+						if (!parsed) {
 							return;
 						}
 
 						// TODO: support mixin overrides
-						if (knownMixins.has(mixinName)) {
-							mixins.delete(mixinName);
+						if (knownMixins.has(parsed.name)) {
+							mixins.delete(parsed.name);
 							return;
 						}
 
-						mixins.set(mixinName, child);
-						knownMixins.add(mixinName);
+						mixins.set(parsed.name, Object.assign({}, parsed, { atRule: child }));
+						knownMixins.add(parsed.name);
 					});
 
-					for (const child of mixins.values()) {
-						if (!options.preserve) child.remove();
+					if (!options.preserve) {
+						for (const mixin of mixins.values()) {
+							mixin.atRule.remove();
+						}
 					}
 
+					const applies: Array<AtRule> = [];
 					root.walkAtRules(IS_APPLY_REGEX, (atRule) => {
-						const mixinName = processableApplyRule(atRule);
-						if (!mixinName) {
+						if (hasMixinAncestor(atRule)) {
 							return;
 						}
 
-						const mixin = mixins.get(mixinName);
-						if (!mixin || !mixin.nodes) {
-							return;
-						}
-
-						mixin.each((mixinNode) => {
-							atRule.before(mixinNode.clone());
-						});
-
-						if (!options.preserve) atRule.remove();
+						applies.push(atRule);
 					});
+
+					for (const atRule of applies) {
+						if (!atRule.parent) {
+							continue;
+						}
+
+						expandApply(atRule, mixins, transpiler, options.preserve === true, new Set());
+					}
 				},
 			};
 		},
 	};
 };
+
+type PrivateScope = {
+	prefix: string,
+	privateProperties: Set<string>,
+};
+
+function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Transpiler, preserve: boolean, stack: Set<string>, enclosingScope?: PrivateScope): void {
+	const apply = processableApplyRule(atRule);
+	if (!apply) {
+		return;
+	}
+
+	const mixin = mixins.get(apply.name);
+	if (!mixin) {
+		return;
+	}
+
+	// Guard against mixins that (indirectly) apply themselves.
+	if (stack.has(apply.name)) {
+		return;
+	}
+
+	// Passing more arguments than the mixin accepts is invalid.
+	if (apply.arguments.length > mixin.parameters.length) {
+		return;
+	}
+
+	// Arguments are resolved at the call site.
+	// Rewrite references to the enclosing mixin's parameters to their private names,
+	// so they aren't captured by this mixin's own private properties.
+	if (enclosingScope) {
+		apply.arguments = apply.arguments.map((argument) => rewriteArgument(argument, enclosingScope));
+	}
+
+	const cloned: Array<ChildNode> = (mixin.atRule.nodes || []).map((node) => node.clone());
+
+	// Mixin parameters and `@private` rules must be scoped to the mixin result.
+	// A `&` wrapper keeps them from leaking into the rest of the rule the mixin is applied to.
+	const needsWrapper = mixin.parameters.length > 0 || hasPrivateRules(mixin.atRule);
+
+	const inserted: Array<ChildNode> = [];
+
+	if (needsWrapper) {
+		const wrapper = new Rule({ selector: '&', source: atRule.source });
+		wrapper.raws.semicolon = true;
+
+		if (mixin.parameters.length > 0) {
+			const privateRule = new AtRule({ name: 'private', source: atRule.source });
+
+			for (let i = 0; i < mixin.parameters.length; i++) {
+				const parameter = mixin.parameters[i];
+
+				// Missing arguments resolve to the guaranteed-invalid value.
+				const value = apply.arguments[i] || parameter.defaultValue;
+
+				privateRule.append(new Declaration({
+					prop: parameter.name,
+					value: value || 'initial',
+					source: atRule.source,
+				}));
+			}
+
+			wrapper.append(privateRule);
+		}
+
+		for (const node of cloned) {
+			wrapper.append(node);
+		}
+
+		wrapper.cleanRaws();
+
+		inserted.push(wrapper);
+	} else {
+		inserted.push(...cloned);
+	}
+
+	for (const node of inserted) {
+		atRule.before(node);
+	}
+
+	if (!preserve) {
+		atRule.remove();
+	}
+
+	let scope: PrivateScope | undefined;
+
+	if (needsWrapper) {
+		// Only `@private` rules that originate from mixins are transpiled here.
+		const privateRules: Array<AtRule> = [];
+		for (const node of inserted) {
+			collectPrivateRules(node, privateRules);
+		}
+
+		for (const privateRule of privateRules) {
+			const owner = findOwningRule(privateRule);
+			if (!owner) {
+				continue;
+			}
+
+			transpiler.registerAndRemovePrivateRules(privateRule, owner);
+
+			scope = scope || transpiler.getOrFillPrivateForRule(owner);
+		}
+
+		const declarations: Array<Declaration> = [];
+		const atRules: Array<AtRule> = [];
+		for (const node of inserted) {
+			collectDeclarationsAndAtRules(node, declarations, atRules);
+		}
+
+		for (const declaration of declarations) {
+			transpiler.transpileDeclaration(declaration);
+		}
+
+		for (const nestedAtRule of atRules) {
+			transpiler.transpileAtRule(nestedAtRule);
+		}
+	}
+
+	// `@contents` is substituted after insertion so the replaced at-rule has a parent.
+	// It is substituted after transpilation so passed-in contents are not scoped to the mixin.
+	replaceContents(inserted, atRule.nodes !== undefined, atRule.nodes || []);
+
+	// Mixins applied within this mixin are resolved in the context of the arguments above.
+	const nestedStack = new Set(stack);
+	nestedStack.add(apply.name);
+
+	const nestedApplies: Array<AtRule> = [];
+	for (const node of inserted) {
+		collectApplyRules(node, nestedApplies);
+	}
+
+	for (const nestedAtRule of nestedApplies) {
+		if (!nestedAtRule.parent) {
+			continue;
+		}
+
+		expandApply(nestedAtRule, mixins, transpiler, false, nestedStack, scope);
+	}
+}
+
+function replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>): void {
+	const contentsRules: Array<AtRule> = [];
+	for (const node of nodes) {
+		collectContentsRules(node, contentsRules);
+	}
+
+	for (const contentsRule of contentsRules) {
+		const replacement = hasContents ? contents : (contentsRule.nodes || []);
+
+		for (const child of replacement) {
+			contentsRule.before(child.clone());
+		}
+
+		contentsRule.remove();
+	}
+}
+
+function hasPrivateRules(atRule: AtRule): boolean {
+	let result = false;
+	atRule.walkAtRules(IS_PRIVATE_REGEX, () => {
+		result = true;
+	});
+
+	return result;
+}
+
+function findOwningRule(node: ChildNode): Rule | false {
+	let parent: Node | undefined = node.parent;
+	while (parent) {
+		if (parent.type === 'rule') {
+			return parent as Rule;
+		}
+
+		if (parent.type === 'atrule' && IS_NESTING_GROUP_RULE_REGEX.test((parent as AtRule).name)) {
+			parent = parent.parent;
+			continue;
+		}
+
+		return false;
+	}
+
+	return false;
+}
+
+function collectApplyRules(node: ChildNode, out: Array<AtRule>): void {
+	if (node.type === 'atrule' && IS_APPLY_REGEX.test(node.name)) {
+		out.push(node);
+	}
+
+	if (node.type === 'rule' || node.type === 'atrule') {
+		node.walkAtRules(IS_APPLY_REGEX, (atRule) => {
+			out.push(atRule);
+		});
+	}
+}
+
+function collectContentsRules(node: ChildNode, out: Array<AtRule>): void {
+	if (node.type === 'atrule' && IS_CONTENTS_REGEX.test(node.name)) {
+		out.push(node);
+	}
+
+	if (node.type === 'rule' || node.type === 'atrule') {
+		node.walkAtRules(IS_CONTENTS_REGEX, (atRule) => {
+			out.push(atRule);
+		});
+	}
+}
+
+function collectPrivateRules(node: ChildNode, out: Array<AtRule>): void {
+	if (node.type === 'atrule' && IS_PRIVATE_REGEX.test(node.name)) {
+		out.push(node);
+	}
+
+	if (node.type === 'rule' || node.type === 'atrule') {
+		node.walkAtRules(IS_PRIVATE_REGEX, (atRule) => {
+			out.push(atRule);
+		});
+	}
+}
+
+function collectDeclarationsAndAtRules(node: ChildNode, declarations: Array<Declaration>, atRules: Array<AtRule>): void {
+	if (node.type === 'decl') {
+		declarations.push(node);
+	} else if (node.type === 'atrule') {
+		atRules.push(node);
+	}
+
+	if (node.type === 'rule' || node.type === 'atrule') {
+		node.walk((child) => {
+			if (child.type === 'decl') {
+				declarations.push(child);
+			} else if (child.type === 'atrule') {
+				atRules.push(child);
+			}
+		});
+	}
+}
+
+function hasMixinAncestor(atRule: AtRule): boolean {
+	let parent: AtRule['parent'] = atRule.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && parent.name.toLowerCase() === 'mixin') {
+			return true;
+		}
+
+		parent = parent.parent as AtRule['parent'];
+	}
+
+	return false;
+}
 
 creator.postcss = true;
 

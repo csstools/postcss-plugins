@@ -1,0 +1,87 @@
+@mixin --with-contents() {
+	color: green;
+	@contents;
+}
+
+.a {
+	color: green;
+		background-color: blue;
+	@apply --with-contents {
+		background-color: blue;
+	}
+}
+
+.b {
+	color: green;
+	@apply --with-contents;
+}
+
+@mixin --with-fallback() {
+	@contents {
+		color: red;
+	}
+}
+
+.c {
+		color: red;
+	@apply --with-fallback;
+}
+
+.d {
+		color: blue;
+	@apply --with-fallback {
+		color: blue;
+	}
+}
+
+.e {
+	@apply --with-fallback {}
+}
+
+@mixin --nested-contents() {
+	&:hover {
+		@contents;
+	}
+}
+
+.f {
+	&:hover {
+		color: green;
+	}
+	@apply --nested-contents {
+		color: green;
+	}
+}
+
+.g {
+	&:hover {
+	}
+	@apply --nested-contents;
+}
+
+@mixin --ignores-contents() {
+	color: green;
+}
+
+.h {
+	color: green;
+	@apply --ignores-contents {
+		background-color: blue;
+	}
+}
+
+@mixin --args-and-contents(--color) {
+	color: var(--color);
+	@contents;
+}
+
+.i {
+	& {
+		--_csstools-p-8akl2q02-0--color: green;
+		color: var(--_csstools-p-8akl2q02-0--color);
+		background-color: var(--color);
+	}
+	@apply --args-and-contents(green) {
+		background-color: var(--color);
+	}
+}
