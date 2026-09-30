@@ -10,7 +10,7 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const HAS_CUSTOM_FUNCTION = /--.*?\(/i;
+const HAS_CUSTOM_FUNCTION = /--[^:;\s(){}[\]]+\(/;
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(

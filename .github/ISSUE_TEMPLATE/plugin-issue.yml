@@ -79,6 +79,7 @@ body:
         - PostCSS Container Rule Prelude List
         - PostCSS Content Alt Text
         - PostCSS Contrast Color Functions
+        - PostCSS Custom Functions
         - PostCSS Custom Media Queries
         - PostCSS Custom Properties
         - PostCSS Custom Selectors

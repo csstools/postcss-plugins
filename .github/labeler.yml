@@ -161,6 +161,12 @@
       - plugins/postcss-contrast-color-function/**
       - experimental/postcss-contrast-color-function/**
 
+"plugins/postcss-custom-functions":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-custom-functions/**
+      - experimental/postcss-custom-functions/**
+
 "plugins/postcss-custom-media":
   - changed-files:
     - any-glob-to-any-file:
