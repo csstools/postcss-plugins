@@ -96,9 +96,9 @@ export class Transpiler {
 			node.remove();
 		});
 
-		atRule.nodes.forEach((node) => {
-			atRule.before(node.clone());
-		});
+		// Insert as a batch: PostCSS resolves the index of `atRule` with
+		// `indexOf` for every single `before()` call, which is quadratic.
+		atRule.before(atRule.nodes.map((node) => node.clone()));
 
 		atRule.remove();
 	}

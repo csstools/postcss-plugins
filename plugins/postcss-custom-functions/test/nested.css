@@ -1,0 +1,31 @@
+@function --f(--x) {
+	result: --g();
+}
+
+@function --g() {
+	result: var(--x);
+}
+
+.scope {
+	--x: FAIL;
+	width: --f(PASS);
+}
+
+@function --one() {
+	--x: 1;
+	result: --read();
+}
+
+@function --two() {
+	--x: 2;
+	result: --read();
+}
+
+@function --read() {
+	result: var(--x);
+}
+
+.scopes {
+	--x: 0;
+	width: --one() --two() --read();
+}

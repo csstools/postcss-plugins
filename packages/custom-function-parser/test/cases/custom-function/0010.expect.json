@@ -1,0 +1,144 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo() returns <--bar()>",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			")-token",
+			")",
+			6,
+			6,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			7,
+			7,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			8,
+			14,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			15,
+			15,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			16,
+			16,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"function-token",
+			"--bar(",
+			17,
+			22,
+			{
+				"value": "--bar"
+			}
+		],
+		[
+			")-token",
+			")",
+			23,
+			23,
+			null
+		],
+		[
+			"delim-token",
+			">",
+			24,
+			24,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"parameters": [],
+	"returnsKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			7,
+			7,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			8,
+			14,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			15,
+			15,
+			null
+		]
+	],
+	"returnType": [
+		[
+			"delim-token",
+			"<",
+			16,
+			16,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"function-token",
+			"--bar(",
+			17,
+			22,
+			{
+				"value": "--bar"
+			}
+		],
+		[
+			")-token",
+			")",
+			23,
+			23,
+			null
+		],
+		[
+			"delim-token",
+			">",
+			24,
+			24,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"before": [],
+	"after": []
+}

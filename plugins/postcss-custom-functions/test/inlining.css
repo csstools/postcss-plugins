@@ -1,0 +1,38 @@
+/* A definition without conditionals or layers is inlined into the calling rule. */
+@function --neg(--v) {
+	result: calc(-1 * var(--v));
+}
+
+.inlined-a {
+	--gap: 1em;
+	width: --neg(var(--gap));
+}
+
+.inlined-b {
+	width: --neg(1em);
+}
+
+/* Nested calls are inlined into the same rule as well. */
+@function --outer(--a) {
+	--b: 2;
+	result: --inner();
+}
+
+@function --inner() {
+	result: var(--a) var(--b);
+}
+
+.inlined-nested {
+	width: --outer(1);
+}
+
+/* A definition in a cascade layer can not be inlined. */
+@layer base {
+	@function --layered() {
+		result: 1px;
+	}
+}
+
+.layered {
+	width: --layered();
+}

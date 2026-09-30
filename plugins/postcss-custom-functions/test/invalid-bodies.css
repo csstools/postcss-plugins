@@ -1,0 +1,49 @@
+/* The body of a `@function` only accepts declarations and conditional group
+   rules. Anything else makes the rule invalid and it is left as-is. */
+@function --unknown-at-rule() {
+	@unknown {
+		result: 1px;
+	}
+
+	result: 2px;
+}
+
+.unknown-at-rule {
+	width: --unknown-at-rule();
+}
+
+@function --layer-in-body() {
+	@layer a {
+		result: 1px;
+	}
+
+	result: 2px;
+}
+
+.layer-in-body {
+	width: --layer-in-body();
+}
+
+@function --nested-function() {
+	@function --inner() {
+		result: 1px;
+	}
+
+	result: 2px;
+}
+
+.nested-function {
+	width: --nested-function();
+}
+
+@function --style-rule-in-body() {
+	.a {
+		result: 1px;
+	}
+
+	result: 2px;
+}
+
+.style-rule-in-body {
+	width: --style-rule-in-body();
+}

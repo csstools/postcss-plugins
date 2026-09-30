@@ -1,5 +1,9 @@
 # Changes to Media Query List Parser
 
+### Unreleased (patch)
+
+- Fix type predicate for `isCustomMedia`
+
 ### 5.0.1
 
 _September 25, 2026_

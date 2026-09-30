@@ -1,0 +1,27 @@
+@function --sized(--x <length>: 10px) {
+	result: var(--x);
+}
+
+.sized-a {
+	width: --sized(20px);
+}
+
+.sized-b {
+	width: --sized();
+}
+
+@function --colorized(--c <color>: red) {
+	result: var(--c);
+}
+
+.colorized {
+	color: --colorized(blue);
+}
+
+@function --mixed(--x, --y <length>: 2px, --z <length>: 3px) {
+	result: var(--x) var(--y) var(--z);
+}
+
+.mixed {
+	width: --mixed(1px);
+}

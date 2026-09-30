@@ -1,0 +1,65 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "/* a comment */--foo( )/* a comment */",
+	"tokens": [
+		[
+			"comment",
+			"/* a comment */",
+			0,
+			14,
+			null
+		],
+		[
+			"function-token",
+			"--foo(",
+			15,
+			20,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			21,
+			21,
+			null
+		],
+		[
+			")-token",
+			")",
+			22,
+			22,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			23,
+			37,
+			null
+		]
+	],
+	"parameters": [],
+	"returnsKeyword": [],
+	"returnType": [],
+	"before": [
+		[
+			"comment",
+			"/* a comment */",
+			0,
+			14,
+			null
+		]
+	],
+	"after": [
+		[
+			"comment",
+			"/* a comment */",
+			23,
+			37,
+			null
+		]
+	]
+}

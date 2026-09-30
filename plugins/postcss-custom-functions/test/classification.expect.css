@@ -1,0 +1,41 @@
+/* `type(*)` is the universal syntax and counts as untyped. */
+
+.universal {
+	--_csstools-cf-eru3g4zo-1-arg-0: var(--_csstools-cf-eru3g4zo-1-raw-0, 1px);
+	--_csstools-cf-eru3g4zo-0-result: var(--_csstools-cf-eru3g4zo-1-arg-0);
+	width: var(--_csstools-cf-eru3g4zo-0-result);
+}
+
+/* `returns type(*)` is the default return type and counts as no return type. */
+
+.universal-return {
+	--_csstools-cf-eru3g4zo-2-result: 2px;
+	width: var(--_csstools-cf-eru3g4zo-2-result);
+}
+
+/* A typed parameter with a computationally independent default is supported. */
+@function --independent-default(--x <length>: 2em) {
+	result: var(--x);
+}
+
+.independent-default {
+	width: --independent-default();
+}
+
+/* A typed parameter without a default is not supported. */
+@function --typed-without-default(--x <length>) {
+	result: var(--x);
+}
+
+.typed-without-default {
+	width: --typed-without-default(1px);
+}
+
+/* A return type is not supported. */
+@function --with-return() returns <length> {
+	result: 3px;
+}
+
+.with-return {
+	width: --with-return();
+}

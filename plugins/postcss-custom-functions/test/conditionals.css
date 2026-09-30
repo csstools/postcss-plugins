@@ -1,0 +1,22 @@
+@function --f() {
+	result: 16px;
+	@media (width > 1000px) {
+		result: 20px;
+	}
+}
+
+.conditional {
+	width: --f();
+}
+
+@function --locals() {
+	--x: FAIL;
+	@media (width > 0px) {
+		--x: PASS;
+	}
+	result: var(--x);
+}
+
+.conditional-locals {
+	width: --locals();
+}

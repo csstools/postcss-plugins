@@ -1,0 +1,30 @@
+/* A `result` descriptor that resolves to a CSS-wide keyword can only be
+   substituted directly when it is static. Conditional or `var()`-resolved
+   keywords leave the function as-is. */
+@function --conditional-keyword() {
+	result: 10px;
+
+	@media (min-width: 0px) {
+		result: inherit;
+	}
+}
+
+.conditional-keyword {
+	width: --conditional-keyword();
+}
+
+@function --keyword-var-fallback() {
+	result: var(--unknown, inherit);
+}
+
+.keyword-var-fallback {
+	width: --keyword-var-fallback();
+}
+
+@function --static-keyword() {
+	result: inherit;
+}
+
+.static-keyword {
+	width: --static-keyword();
+}

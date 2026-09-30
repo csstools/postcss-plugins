@@ -1,0 +1,73 @@
+@function --with-default(--x: PASS) {
+	result: var(--x);
+}
+
+.untyped-default-missing {
+	--actual: --with-default();
+}
+
+.untyped-default-valid {
+	--actual: --with-default(5px);
+}
+
+.untyped-default-iacvt {
+	--actual: --with-default(var(--unknown));
+}
+
+@function --with-var-default(--x: var(--y)) {
+	result: var(--x);
+}
+
+.untyped-var-default {
+	--y: 3px;
+	--actual: --with-var-default();
+}
+
+@function --with-initial-fallback(--x: PASS) {
+	--x: var(--unknown, initial);
+	result: var(--x);
+}
+
+.untyped-initial-fallback {
+	--actual: --with-initial-fallback();
+}
+
+@function --with-initial-local(--x: FAIL1) {
+	--x: FAIL2;
+	--x: initial;
+	result: var(--x);
+}
+
+.untyped-initial-local {
+	--actual: --with-initial-local(PASS);
+}
+
+@function --default-ref-param(--x, --y: var(--x)) {
+	result: var(--x) var(--y);
+}
+
+.default-ref-param {
+	--x: FAIL;
+	--y: FAIL;
+	--actual: --default-ref-param(5px);
+}
+
+@function --default-ref-param-local(--x, --y: var(--x)) {
+	--x: 17px;
+	result: var(--x) var(--y);
+}
+
+.default-ref-param-local {
+	--x: FAIL;
+	--y: FAIL;
+	--actual: --default-ref-param-local(5px);
+}
+
+@function --default-inherit(--x: inherit) {
+	result: var(--x);
+}
+
+.default-inherit {
+	--x: PASS1;
+	--actual: --default-inherit() --default-inherit(PASS2);
+}

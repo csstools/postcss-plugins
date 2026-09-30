@@ -68,7 +68,7 @@ export declare type GeneralEnclosedWalkerParent = ContainerNode | GeneralEnclose
 
 export declare function invertComparison(operator: MediaFeatureComparison): MediaFeatureComparison | false;
 
-export declare function isCustomMedia(x: unknown): x is GeneralEnclosed;
+export declare function isCustomMedia(x: unknown): x is CustomMedia;
 
 export declare function isGeneralEnclosed(x: unknown): x is GeneralEnclosed;
 

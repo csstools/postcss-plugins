@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export declare function isCustomMedia(x: unknown): x is GeneralEnclosed;
+export declare function isCustomMedia(x: unknown): x is CustomMedia;
 ```
 
 ## Parameters
@@ -46,5 +46,5 @@ unknown
 
 **Returns:**
 
-x is [GeneralEnclosed](./media-query-list-parser.generalenclosed.md)
+x is [CustomMedia](./media-query-list-parser.custommedia.md)
 

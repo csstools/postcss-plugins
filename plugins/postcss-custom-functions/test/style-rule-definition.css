@@ -1,0 +1,8 @@
+/* `@function` is not allowed inside a style rule. */
+.a {
+	@function --nested-definition() {
+		result: 1px;
+	}
+
+	width: --nested-definition();
+}

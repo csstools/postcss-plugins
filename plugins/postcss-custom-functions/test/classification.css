@@ -1,0 +1,44 @@
+/* `type(*)` is the universal syntax and counts as untyped. */
+@function --universal(--x type(*): 1px) {
+	result: var(--x);
+}
+
+.universal {
+	width: --universal();
+}
+
+/* `returns type(*)` is the default return type and counts as no return type. */
+@function --universal-return() returns type(*) {
+	result: 2px;
+}
+
+.universal-return {
+	width: --universal-return();
+}
+
+/* A typed parameter with a computationally independent default is supported. */
+@function --independent-default(--x <length>: 2em) {
+	result: var(--x);
+}
+
+.independent-default {
+	width: --independent-default();
+}
+
+/* A typed parameter without a default is not supported. */
+@function --typed-without-default(--x <length>) {
+	result: var(--x);
+}
+
+.typed-without-default {
+	width: --typed-without-default(1px);
+}
+
+/* A return type is not supported. */
+@function --with-return() returns <length> {
+	result: 3px;
+}
+
+.with-return {
+	width: --with-return();
+}

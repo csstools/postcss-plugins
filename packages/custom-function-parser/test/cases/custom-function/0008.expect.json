@@ -1,0 +1,229 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo() /* a comment */ returns /* a comment */ <string> /* a comment */ ",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			")-token",
+			")",
+			6,
+			6,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			7,
+			7,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			8,
+			22,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			23,
+			23,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			24,
+			30,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			31,
+			31,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			32,
+			46,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			47,
+			47,
+			null
+		],
+		[
+			"delim-token",
+			"<",
+			48,
+			48,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			49,
+			54,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			55,
+			55,
+			{
+				"value": ">"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			56,
+			56,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			57,
+			71,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			72,
+			72,
+			null
+		]
+	],
+	"parameters": [],
+	"returnsKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			7,
+			7,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			8,
+			22,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			23,
+			23,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			24,
+			30,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			31,
+			31,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			32,
+			46,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			47,
+			47,
+			null
+		]
+	],
+	"returnType": [
+		[
+			"delim-token",
+			"<",
+			48,
+			48,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			49,
+			54,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			55,
+			55,
+			{
+				"value": ">"
+			}
+		]
+	],
+	"before": [],
+	"after": [
+		[
+			"whitespace-token",
+			" ",
+			56,
+			56,
+			null
+		],
+		[
+			"comment",
+			"/* a comment */",
+			57,
+			71,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			72,
+			72,
+			null
+		]
+	]
+}

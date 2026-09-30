@@ -1,0 +1,34 @@
+@function --initial-local(--x <length>: 10px) {
+	--x: 20px;
+	--x: initial;
+	result: var(--x);
+}
+
+.initial-local {
+	width: --initial-local(5px);
+}
+
+@function --inherit-local() {
+	--x: inherit;
+	result: var(--x);
+}
+
+.inherit-local {
+	--x: 20px;
+	width: --inherit-local();
+}
+
+@function --outer() {
+	--x: 20px;
+	result: --inherit-outer();
+}
+
+@function --inherit-outer() {
+	--x: inherit;
+	result: var(--x);
+}
+
+.inherit-outer {
+	--x: 1px;
+	width: --outer();
+}

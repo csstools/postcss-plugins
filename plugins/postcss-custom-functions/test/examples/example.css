@@ -1,0 +1,13 @@
+@function --negative(--value) {
+	result: calc(-1 * var(--value));
+}
+
+@function --double(--value <length>: 1px) {
+	result: calc(2 * var(--value));
+}
+
+html {
+	--gap: 1em;
+	padding: --negative(var(--gap));
+	margin: --double(4px);
+}

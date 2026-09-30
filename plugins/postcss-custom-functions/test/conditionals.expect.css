@@ -1,0 +1,29 @@
+.conditional {
+	--_csstools-cf-c7hag91p-0-result: 16px;
+}
+	@media (width > 1000px) {.conditional {
+		--_csstools-cf-c7hag91p-0-result: 20px;
+}
+	}
+
+.conditional {
+	width: var(--_csstools-cf-c7hag91p-0-result);
+}
+
+.conditional-locals {
+	--_csstools-cf-c7hag91p-3-local-x: FAIL;
+}
+	@media (width > 0px) {
+
+.conditional-locals {
+		--_csstools-cf-c7hag91p-3-local-x: PASS;
+}
+	}
+
+.conditional-locals {
+	--_csstools-cf-c7hag91p-2-result: var(--_csstools-cf-c7hag91p-3-local-x);
+}
+
+.conditional-locals {
+	width: var(--_csstools-cf-c7hag91p-2-result);
+}

@@ -1,0 +1,42 @@
+@function --typed(--x <length>) {
+	result: var(--x);
+}
+
+.typed {
+	width: --typed(10px);
+}
+
+@function --typed-return() returns <length> {
+	result: 10px;
+}
+
+.typed-return {
+	width: --typed-return();
+}
+
+@function --em-default(--x <length>: 1em) {
+	result: var(--x);
+}
+
+.em-default {
+	width: --em-default(10px);
+}
+
+@function --var-default(--x <length>: var(--y)) {
+	result: var(--x);
+}
+
+.var-default {
+	width: --var-default(10px);
+}
+
+/* Browsers ignore `@container` on `@function` definitions, so this is left alone. */
+@container (width = 100px) {
+	@function --container-fn() {
+		result: 1px;
+	}
+}
+
+.container-fn {
+	width: --container-fn();
+}

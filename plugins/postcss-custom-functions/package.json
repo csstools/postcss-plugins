@@ -1,0 +1,79 @@
+{
+	"name": "@csstools/postcss-custom-functions",
+	"description": "Custom functions allow authors the same power as custom properties, but parameterized",
+	"version": "0.0.0",
+	"contributors": [
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"@csstools/cascade-layer-name-parser": "^3.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-tokenizer": "^4.0.2",
+		"@csstools/custom-function-parser": "^0.0.0"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"@csstools/postcss-tape": "*",
+		"puppeteer": "^25.11.0"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/install.mjs && node ../../.github/bin/generate-docs/readme.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"test": "node --test",
+		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "plugins/postcss-custom-functions"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"postcss-plugin"
+	],
+	"csstools": {
+		"assumesToProcessBundledCSS": true,
+		"cssdbId": "custom-functions",
+		"exportName": "postcssCustomFunctions",
+		"humanReadableName": "PostCSS Custom Functions",
+		"specUrl": "https://drafts.csswg.org/css-mixins-1/#function-rule"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

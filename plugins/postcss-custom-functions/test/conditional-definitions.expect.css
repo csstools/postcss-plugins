@@ -1,0 +1,45 @@
+@supports (width: 100px) {.conditional {
+		--_csstools-cf-7hov6p4v-0-result: PASS;
+}
+}@supports (not (width: 100px)) {.conditional {
+		--_csstools-cf-7hov6p4v-0-result: FAIL;
+}
+}
+
+.conditional {
+	width: var(--_csstools-cf-7hov6p4v-0-result);
+}
+
+@media (width >= 50px) {
+
+.media {
+		--_csstools-cf-7hov6p4v-3-result: 50px;
+}
+}
+
+@media (width >= 100px) {
+
+.media {
+		--_csstools-cf-7hov6p4v-3-result: 100px;
+}
+}
+
+.media {
+	width: var(--_csstools-cf-7hov6p4v-3-result);
+}
+	@media (width >= 50px) {
+
+.layered-media {
+			--_csstools-cf-7hov6p4v-6-result: 1px;
+}
+	}
+	@media (width >= 99999px) {
+
+.layered-media {
+			--_csstools-cf-7hov6p4v-6-result: 2px;
+}
+	}
+
+.layered-media {
+	width: var(--_csstools-cf-7hov6p4v-6-result);
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<title>Custom Functions: Local var() substitution</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#args">
+
+<div id="parent">
+	<div id="target"></div>
+</div>
+<div id="main"></div>
+
+<script>
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/local-var-substitution.html
+		function stylesUrl() {
+			return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+		}
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: 'Fallback directly in result',
+				style: `
+					@function --f() {
+						result: var(--unknown, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Fallback via present, but invalid local',
+				style: `
+					@function --f() {
+						--x: var(--unknown);
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Fallback is locally resolved (result)',
+				style: `
+					@function --f() {
+						--x: PASS;
+						result: var(--unknown, var(--x));
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Fallback is locally resolved (local var)',
+				style: `
+					@function --f() {
+						--y: PASS;
+						--x: var(--unknown, var(--y));
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL1;
+						--Y: FAIL2;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch(stylesUrl(), {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>

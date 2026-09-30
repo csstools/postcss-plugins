@@ -15,6 +15,11 @@ const IS_CONTENTS_REGEX = /^contents$/i;
 const IS_PRIVATE_REGEX = /^private$/i;
 const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 
+// Mixins can reference each other and duplicate subtrees, which can grow
+// exponentially. Bound the total number of nodes generated while expanding
+// mixins so that a small stylesheet can not exhaust memory or CPU.
+const MAX_GENERATED_NODES = 100_000;
+
 /**
  * Deepens mixin expansion behind a small interface:
  * register the mixins once, expand the top level `@apply` rules, then finish.
@@ -29,6 +34,7 @@ export class MixinExpander {
 	private argumentCounter = 0;
 	private desugaredNestingRules: Set<Rule> = new Set();
 	private expanding: Set<string> = new Set();
+	private generatedNodes = 0;
 
 	/** The mixin at rules that were registered, so a caller can remove or preserve them. */
 	registeredMixins(): Array<Mixin> {
@@ -55,6 +61,8 @@ export class MixinExpander {
 
 	/** Expands all top level `@apply` rules in `root`, except those authored inside a `@mixin`. */
 	expandAll(root: Root, preserve: boolean): void {
+		this.generatedNodes = 0;
+
 		const applies: Array<AtRule> = [];
 		root.walkAtRules(IS_APPLY_REGEX, (atRule) => {
 			if (hasMixinAncestor(atRule)) {
@@ -107,9 +115,11 @@ export class MixinExpander {
 
 		const inserted = this.buildBody(atRule, apply.arguments, mixin);
 
-		for (const node of inserted) {
-			atRule.before(node);
-		}
+		this.spendBudget(countNodes(inserted));
+
+		// Insert as a batch: PostCSS resolves the index of `atRule` with
+		// `indexOf` for every single `before()` call, which is quadratic.
+		atRule.before(inserted);
 
 		if (!preserve) {
 			atRule.remove();
@@ -121,7 +131,7 @@ export class MixinExpander {
 
 		// `@contents` is substituted after insertion so the replaced at-rule has a parent.
 		// It is substituted after transpilation so passed-in contents are not scoped to the mixin.
-		replaceContents(inserted, atRule.nodes !== undefined, atRule.nodes || []);
+		this.replaceContents(inserted, atRule.nodes !== undefined, atRule.nodes || []);
 
 		this.expandNested(inserted);
 
@@ -257,27 +267,49 @@ export class MixinExpander {
 			this.expand(nestedAtRule, false);
 		}
 	}
+
+	/** Substitutes `@contents` and charges the budget for the duplicated nodes. */
+	private replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>): void {
+		const contentsRules: Array<AtRule> = [];
+		for (const node of nodes) {
+			collectMatches(node, IS_CONTENTS_REGEX, contentsRules);
+		}
+
+		for (const contentsRule of contentsRules) {
+			const replacement = hasContents ? contents : (contentsRule.nodes || []);
+
+			this.spendBudget(countNodes(replacement));
+
+			contentsRule.before(replacement.map((child) => child.clone()));
+			contentsRule.remove();
+		}
+	}
+
+	/** Throws once the total number of generated nodes exceeds the budget. */
+	private spendBudget(amount: number): void {
+		this.generatedNodes += amount;
+		if (this.generatedNodes > MAX_GENERATED_NODES) {
+			throw new Error('Maximum mixin expansion size exceeded, reduce the complexity of your mixins');
+		}
+	}
 }
 
 function needsWrapper(mixin: Mixin): boolean {
 	return mixin.parameters.length > 0 || hasPrivateRules(mixin.atRule);
 }
 
-function replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>): void {
-	const contentsRules: Array<AtRule> = [];
+function countNodes(nodes: Array<ChildNode>): number {
+	let count = 0;
+
 	for (const node of nodes) {
-		collectMatches(node, IS_CONTENTS_REGEX, contentsRules);
-	}
+		count++;
 
-	for (const contentsRule of contentsRules) {
-		const replacement = hasContents ? contents : (contentsRule.nodes || []);
-
-		for (const child of replacement) {
-			contentsRule.before(child.clone());
+		if (node.type === 'rule' || node.type === 'atrule') {
+			count += countNodes(node.nodes || []);
 		}
-
-		contentsRule.remove();
 	}
+
+	return count;
 }
 
 function hasPrivateRules(atRule: AtRule): boolean {

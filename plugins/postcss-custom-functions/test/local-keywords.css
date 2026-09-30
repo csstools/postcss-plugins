@@ -1,0 +1,73 @@
+/* CSS-wide keywords other than `initial` and `inherit` on a local variable
+   resolve to the guaranteed-invalid value. */
+@function --unset-local() {
+	--x: unset;
+	result: var(--x, PASS);
+}
+
+.unset-local {
+	width: --unset-local();
+}
+
+@function --revert-local() {
+	--x: revert;
+	result: var(--x, PASS);
+}
+
+.revert-local {
+	width: --revert-local();
+}
+
+@function --revert-layer-local() {
+	--x: revert-layer;
+	result: var(--x, PASS);
+}
+
+.revert-layer-local {
+	width: --revert-layer-local();
+}
+
+@function --revert-rule-local() {
+	--x: revert-rule;
+	result: var(--x, PASS);
+}
+
+.revert-rule-local {
+	width: --revert-rule-local();
+}
+
+@function --unset-fallback() {
+	--x: var(--unknown, unset);
+	result: var(--x, PASS);
+}
+
+.unset-fallback {
+	width: --unset-fallback();
+}
+
+@function --unset-parameter(--x: PARAM) {
+	--x: unset;
+	result: var(--x, PASS);
+}
+
+.unset-parameter {
+	width: --unset-parameter();
+}
+
+@function --inherit-parameter(--x: PARAM) {
+	--x: inherit;
+	result: var(--x, PASS);
+}
+
+.inherit-parameter {
+	width: --inherit-parameter();
+}
+
+@function --initial-parameter(--x: PARAM) {
+	--x: initial;
+	result: var(--x, PASS);
+}
+
+.initial-parameter {
+	width: --initial-parameter();
+}
