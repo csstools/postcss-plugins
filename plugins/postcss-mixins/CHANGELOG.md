@@ -1,5 +1,12 @@
 # Changes to PostCSS Mixins
 
+### Unreleased (minor)
+
+- `@contents` rule
+- nested mixins
+- untyped mixin arguments
+- hygienic renaming of mixin arguments and private custom properties
+
 ### 1.0.1
 
 _September 25, 2026_

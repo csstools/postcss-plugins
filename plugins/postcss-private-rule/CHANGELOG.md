@@ -1,5 +1,10 @@
 # Changes to PostCSS Private Rule
 
+### Unreleased (minor)
+
+- Fix lookup order of shadowing properties
+- Export `Transpiler` which can be used to transpile `@private` rules in other `postcss` plugins (i.e. `postcss-mixins`)
+
 ### 1.0.3
 
 _September 25, 2026_

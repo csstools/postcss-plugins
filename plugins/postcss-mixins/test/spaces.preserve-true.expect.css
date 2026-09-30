@@ -1,0 +1,160 @@
+@mixin --spaces(--color, --background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.space-after-open {
+	--_csstools-p-d994g2bk-0--arg-0: green;
+	--_csstools-p-d994g2bk-0--arg-1: blue;
+	--_csstools-p-d994g2bk-1--color: var(--_csstools-p-d994g2bk-0--arg-0);
+	--_csstools-p-d994g2bk-1--background: var(--_csstools-p-d994g2bk-0--arg-1);
+	color: var(--_csstools-p-d994g2bk-1--color);
+	background-color: var(--_csstools-p-d994g2bk-1--background);
+	@apply --spaces( green, blue);
+}
+
+.space-before-close {
+	--_csstools-p-d994g2bk-2--arg-2: green;
+	--_csstools-p-d994g2bk-2--arg-3: blue;
+	--_csstools-p-d994g2bk-3--color: var(--_csstools-p-d994g2bk-2--arg-2);
+	--_csstools-p-d994g2bk-3--background: var(--_csstools-p-d994g2bk-2--arg-3);
+	color: var(--_csstools-p-d994g2bk-3--color);
+	background-color: var(--_csstools-p-d994g2bk-3--background);
+	@apply --spaces(green, blue );
+}
+
+.space-around-both {
+	--_csstools-p-d994g2bk-4--arg-4: green;
+	--_csstools-p-d994g2bk-4--arg-5: blue;
+	--_csstools-p-d994g2bk-5--color: var(--_csstools-p-d994g2bk-4--arg-4);
+	--_csstools-p-d994g2bk-5--background: var(--_csstools-p-d994g2bk-4--arg-5);
+	color: var(--_csstools-p-d994g2bk-5--color);
+	background-color: var(--_csstools-p-d994g2bk-5--background);
+	@apply --spaces( green, blue );
+}
+
+.tabs-and-newlines {
+	--_csstools-p-d994g2bk-6--arg-6: green;
+	--_csstools-p-d994g2bk-6--arg-7: blue;
+	--_csstools-p-d994g2bk-7--color: var(--_csstools-p-d994g2bk-6--arg-6);
+	--_csstools-p-d994g2bk-7--background: var(--_csstools-p-d994g2bk-6--arg-7);
+	color: var(--_csstools-p-d994g2bk-7--color);
+	background-color: var(--_csstools-p-d994g2bk-7--background);
+	@apply --spaces(
+		green,
+		blue
+	);
+}
+
+.space-around-comma {
+	--_csstools-p-d994g2bk-8--arg-8: green;
+	--_csstools-p-d994g2bk-8--arg-9: blue;
+	--_csstools-p-d994g2bk-9--color: var(--_csstools-p-d994g2bk-8--arg-8);
+	--_csstools-p-d994g2bk-9--background: var(--_csstools-p-d994g2bk-8--arg-9);
+	color: var(--_csstools-p-d994g2bk-9--color);
+	background-color: var(--_csstools-p-d994g2bk-9--background);
+	@apply --spaces(green , blue);
+}
+
+@mixin --comment-in-parameters(--color /* color */, --background /* background */) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.comment-before-comma {
+	--_csstools-p-d994g2bk-a--arg-a: green;
+	--_csstools-p-d994g2bk-a--arg-b: blue;
+	--_csstools-p-d994g2bk-b--color: var(--_csstools-p-d994g2bk-a--arg-a);
+	--_csstools-p-d994g2bk-b--background: var(--_csstools-p-d994g2bk-a--arg-b);
+	color: var(--_csstools-p-d994g2bk-b--color);
+	background-color: var(--_csstools-p-d994g2bk-b--background);
+	@apply --comment-in-parameters(green /* one */, blue /* two */);
+}
+
+@mixin --comment-parameters-and-arguments(--color, --background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.comment-around-arguments {
+	--_csstools-p-d994g2bk-c--arg-c: green;
+	--_csstools-p-d994g2bk-c--arg-d: blue;
+	--_csstools-p-d994g2bk-d--color: var(--_csstools-p-d994g2bk-c--arg-c);
+	--_csstools-p-d994g2bk-d--background: var(--_csstools-p-d994g2bk-c--arg-d);
+	color: var(--_csstools-p-d994g2bk-d--color);
+	background-color: var(--_csstools-p-d994g2bk-d--background);
+	@apply --comment-parameters-and-arguments( /* before */ green /* mid */, blue /* after */ );
+}
+
+@mixin --comment-only-default(--color /* color */: green) {
+	color: var(--color);
+}
+
+.comment-only-default {
+	--_csstools-p-d994g2bk-e--color: green;
+	color: var(--_csstools-p-d994g2bk-e--color);
+	@apply --comment-only-default;
+}
+
+@mixin --space-around-default(--color: green , --background: blue) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.space-around-default {
+	--_csstools-p-d994g2bk-f--color: green;
+	--_csstools-p-d994g2bk-f--background: blue;
+	color: var(--_csstools-p-d994g2bk-f--color);
+	background-color: var(--_csstools-p-d994g2bk-f--background);
+	@apply --space-around-default;
+}
+
+.space-around-argument-defaults {
+	--_csstools-p-d994g2bk-g--arg-e: red;
+	--_csstools-p-d994g2bk-g--arg-f: blue;
+	--_csstools-p-d994g2bk-h--color: var(--_csstools-p-d994g2bk-g--arg-e);
+	--_csstools-p-d994g2bk-h--background: var(--_csstools-p-d994g2bk-g--arg-f);
+	color: var(--_csstools-p-d994g2bk-h--color);
+	background-color: var(--_csstools-p-d994g2bk-h--background);
+	@apply --space-around-default( red , blue );
+}
+
+@mixin --comment-before-parameter-name(/* first */--color, /* second */--background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.comment-before-parameter-name {
+	--_csstools-p-d994g2bk-i--arg-g: green;
+	--_csstools-p-d994g2bk-i--arg-h: blue;
+	--_csstools-p-d994g2bk-j--color: var(--_csstools-p-d994g2bk-i--arg-g);
+	--_csstools-p-d994g2bk-j--background: var(--_csstools-p-d994g2bk-i--arg-h);
+	color: var(--_csstools-p-d994g2bk-j--color);
+	background-color: var(--_csstools-p-d994g2bk-j--background);
+	@apply --comment-before-parameter-name(green, blue);
+}
+
+@mixin --space-before-parameter-name( --color, --background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.space-before-parameter-name {
+	--_csstools-p-d994g2bk-k--arg-i: green;
+	--_csstools-p-d994g2bk-k--arg-j: blue;
+	--_csstools-p-d994g2bk-l--color: var(--_csstools-p-d994g2bk-k--arg-i);
+	--_csstools-p-d994g2bk-l--background: var(--_csstools-p-d994g2bk-k--arg-j);
+	color: var(--_csstools-p-d994g2bk-l--color);
+	background-color: var(--_csstools-p-d994g2bk-l--background);
+	@apply --space-before-parameter-name(green, blue);
+}
+
+@mixin --comment-before-default-name(/* note */--color: green) {
+	color: var(--color);
+}
+
+.comment-before-default-name {
+	--_csstools-p-d994g2bk-m--color: green;
+	color: var(--_csstools-p-d994g2bk-m--color);
+	@apply --comment-before-default-name;
+}

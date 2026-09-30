@@ -20,6 +20,15 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	spaces: {
+		message: 'supports spaces and comments around argument lists',
+	},
+	'spaces:preserve-true': {
+		message: 'supports spaces and comments around argument lists with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	contents: {
 		message: 'supports @contents',
 	},
