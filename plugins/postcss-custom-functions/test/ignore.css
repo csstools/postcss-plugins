@@ -6,14 +6,6 @@
 	width: --typed(10px);
 }
 
-@function --defaulted(--x: 1px) {
-	result: var(--x);
-}
-
-.defaulted {
-	width: --defaulted();
-}
-
 @function --typed-return() returns <length> {
 	result: 10px;
 }

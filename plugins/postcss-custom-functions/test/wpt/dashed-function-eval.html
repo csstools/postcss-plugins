@@ -648,6 +648,167 @@
 				`,
 			},
 			{
+				name: 'Local variable with initial keyword',
+				style: `
+					@function --f(--x: FAIL1) {
+						--x: FAIL2;
+						--x: initial;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local variable with initial keyword, defaulted',
+				style: `
+					@function --f(--x: PASS) {
+						--x: FAIL;
+						--x: initial;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Default with initial keyword',
+				style: `
+					@function --f(--x: initial) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'initial appearing via fallback',
+				style: `
+					@function --f(--x: PASS) {
+						--x: var(--unknown, initial);
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Untyped default, valid argument',
+				style: `
+					@function --f(--x: PASS) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(5px);
+						--expected: 5px;
+					}
+				`,
+			},
+			{
+				name: 'Untyped default, IACVT argument',
+				style: `
+					@function --f(--x: PASS) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(var(--unknown));
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Untyped default, relative unit',
+				style: `
+					@function --f(--x: 1em) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: 1em;
+					}
+				`,
+			},
+			{
+				name: 'Untyped default, var() reference',
+				style: `
+					@function --f(--x: var(--y)) {
+						result: var(--x);
+					}
+					#target {
+						--y: 3px;
+						--actual: --f();
+						--expected: 3px;
+					}
+				`,
+			},
+			{
+				name: 'Default referencing another parameter',
+				style: `
+					@function --f(--x, --y: var(--x)) {
+						result: var(--x) var(--y);
+					}
+					#target {
+						--x: FAIL;
+						--y: FAIL;
+						--actual: --f(5px);
+						--expected: 5px 5px;
+					}
+				`,
+			},
+			{
+				name: 'Default referencing another parameter, local interference',
+				style: `
+					@function --f(--x, --y: var(--x)) {
+						--x: 17px;
+						result: var(--x) var(--y);
+					}
+					#target {
+						--x: FAIL;
+						--y: FAIL;
+						--actual: --f(5px);
+						--expected: 17px 5px;
+					}
+				`,
+			},
+			{
+				name: 'Default with inherit keyword',
+				style: `
+					@function --f(--x: inherit) {
+						result: var(--x);
+					}
+					#target {
+						--x: PASS1;
+						--actual: --f() --f(PASS2);
+						--expected: PASS1 PASS2;
+					}
+				`,
+			},
+			{
+				name: 'Default with inherit keyword (nested)',
+				style: `
+					@function --f(--x: inherit) {
+						result: var(--x);
+					}
+					@function --g() {
+						--x: PASS1;
+						result: --f() --f(PASS2);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --g();
+						--expected: PASS1 PASS2;
+					}
+				`,
+			},
+			{
 				name: 'initial keyword left unresolved on result descriptor',
 				style: `
 					@function --f() {

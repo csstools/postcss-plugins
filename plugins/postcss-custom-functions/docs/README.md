@@ -24,12 +24,14 @@ This plugin is only a partial implementation to avoid conflicts with the final s
 
 Unsupported:
 - typed parameters without default values
-- untyped parameters with default values
 - return types
 - `@function` definitions inside `@container` or `@scope`
 
 Definitions inside `@layer`, `@media` and `@supports` are supported. When a name
 has several active definitions, the browser cascade selects the strongest one.
+
+Untyped parameters with default values are supported and may use any value,
+including relative units and `var()` references.
 
 Typed parameters with default values are checked by the browser through a
 generated `@property` registration. A default value that is not

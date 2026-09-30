@@ -15,13 +15,14 @@ import {
 	replaceComponentValues,
 	stringify,
 } from '@csstools/css-parser-algorithms';
-import { TokenType, isTokenFunction, isTokenIdent, isTokenOpenCurly, mutateIdent, tokenize } from '@csstools/css-tokenizer';
+import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, isTokenOpenCurly, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
 import { staticResultKeyword } from './static-result-keyword';
 
 const GENERATED_PREFIX = '--_csstools-cf';
 const INVALID_IDENT = `${GENERATED_PREFIX}-invalid`;
+const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer']);
 
 const sourceHashes = new Map<string, string>();
 
@@ -216,11 +217,15 @@ export class CustomFunctionTranspiler {
 
 		const definitionId = (this.counter++).toString(36);
 		const scope = new Scope(parentScope);
+		// Default values are resolved in the argument rule, where only the
+		// parameters are visible. Body locals must not shadow them.
+		const parameterScope = new Scope(parentScope);
 		const parameterArgs = new Map<string, string>();
 
 		for (let i = 0; i < parameters.length; i++) {
 			const argName = this.argName(definitionId, i);
 			scope.names.set(parameters[i].getName(), argName);
+			parameterScope.names.set(parameters[i].getName(), argName);
 			parameterArgs.set(parameters[i].getName(), argName);
 		}
 
@@ -235,22 +240,56 @@ export class CustomFunctionTranspiler {
 		} else {
 			const argDecls: Array<Declaration> = [];
 			for (let i = 0; i < parameters.length; i++) {
-				if (i < evaluatedArgs.length) {
+				const parameter = parameters[i];
+				const type = parameterType(parameter);
+				const defaultValue = parameter.getDefaultValue();
+				const hasArgument = i < evaluatedArgs.length;
+
+				if (type) {
+					// Typed parameters use a generated `@property` registration.
+					// The registration provides the default value for missing
+					// arguments and for arguments that fail the type check.
+					if (hasArgument) {
+						argDecls.push(new PostCSSDeclaration({
+							prop: this.argName(definitionId, i),
+							value: evaluatedArgs[i],
+							source: element.source,
+						}));
+					} else if (defaultValue) {
+						argDecls.push(new PostCSSDeclaration({
+							prop: this.argName(definitionId, i),
+							value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs),
+							source: element.source,
+						}));
+					}
+
+					continue;
+				}
+
+				// Untyped parameters use a raw + fallback pair so that missing
+				// and invalid arguments resolve to the default value.
+				if (defaultValue) {
+					if (hasArgument) {
+						argDecls.push(new PostCSSDeclaration({
+							prop: this.rawName(definitionId, i),
+							value: evaluatedArgs[i],
+							source: element.source,
+						}));
+					}
+
 					argDecls.push(new PostCSSDeclaration({
 						prop: this.argName(definitionId, i),
-						value: evaluatedArgs[i],
+						value: `var(${this.rawName(definitionId, i)}, ${this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs)})`,
 						source: element.source,
 					}));
 
 					continue;
 				}
 
-				// A missing argument resolves to the default value in the callee frame.
-				const defaultValue = parameters[i].getDefaultValue();
-				if (defaultValue) {
+				if (hasArgument) {
 					argDecls.push(new PostCSSDeclaration({
 						prop: this.argName(definitionId, i),
-						value: this.rewriteValue(defaultValue, element, scope),
+						value: evaluatedArgs[i],
 						source: element.source,
 					}));
 				}
@@ -340,39 +379,74 @@ export class CustomFunctionTranspiler {
 			}
 
 			prop = mapped;
-
-			const trimmedValue = decl.value.trim();
-
-			// `initial` resolves to the parameter's own value, which is the
-			// argument or the default value.
-			//
-			// https://drafts.csswg.org/css-mixins-1/#args
-			const parameterArg = parameterArgs.get(decl.prop);
-			if (parameterArg && trimmedValue.toLowerCase() === 'initial') {
-				return decl.clone({
-					prop,
-					value: `var(${parameterArg})`,
-				});
-			}
-
-			// `inherit` resolves to the custom property of the same name in the
-			// calling context, which is the outer function scope or the element.
-			if (trimmedValue.toLowerCase() === 'inherit') {
-				const inherited = scope.parent?.get(decl.prop) ?? decl.prop;
-				return decl.clone({
-					prop,
-					value: `var(${inherited})`,
-				});
-			}
 		} else {
 			// Unknown descriptors are invalid and ignored.
 			return null;
 		}
 
+		// CSS-wide keywords on custom properties resolve against the property
+		// being declared, including when they appear as a `var()` fallback.
+		// This runs after the regular rewriting so that the inserted call-site
+		// references are not rewritten to the local scope.
+		let value = this.rewriteValue(decl.value, element, scope);
+		if (decl.prop.startsWith('--')) {
+			value = this.resolveBodyKeywords(value, decl.prop, scope, parameterArgs);
+		}
+
 		return decl.clone({
 			prop,
-			value: this.rewriteValue(decl.value, element, scope),
+			value,
 		});
+	}
+
+	/**
+	 * Resolve CSS-wide keywords that are the value of a custom property,
+	 * including keywords that appear as a `var()` fallback.
+	 *
+	 * `initial` resolves to the parameter's own value (argument or default).
+	 * `inherit` resolves to the custom property of the same name in the calling
+	 * context, which is the outer function scope or the element.
+	 *
+	 * https://drafts.csswg.org/css-mixins-1/#args
+	 */
+	private resolveBodyKeywords(value: string, declaredProp: string, scope: Scope, parameterArgs: Map<string, string>): string {
+		const tokens = tokenize({ css: value });
+		if (!tokens.some((token) => isTokenFunction(token) && token[4].value.toLowerCase() === 'var')) {
+			// A bare CSS-wide keyword.
+			const keyword = value.trim().toLowerCase();
+			const replacement = CSS_WIDE_KEYWORDS.has(keyword) ? this.resolveLocalKeyword(keyword, declaredProp, scope, parameterArgs) : null;
+			return replacement ? stringify([replacement]) : value;
+		}
+
+		const componentValues = parseListOfComponentValues(tokens);
+		const changed = rewriteVarFallbackKeywords(componentValues, (keyword) => {
+			return this.resolveLocalKeyword(keyword, declaredProp, scope, parameterArgs);
+		});
+
+		return changed ? stringify([componentValues]) : value;
+	}
+
+	/**
+	 * Resolve a parameter's default value in the argument rule.
+	 *
+	 * Only the parameters are visible and CSS-wide keywords resolve against the
+	 * parameter name.
+	 */
+	private rewriteDefault(defaultValue: string, parameterName: string, element: Rule, scope: Scope, parameterArgs: Map<string, string>): string {
+		const rewritten = this.rewriteValue(defaultValue, element, scope);
+		return this.resolveBodyKeywords(rewritten, parameterName, scope, parameterArgs);
+	}
+
+	private resolveLocalKeyword(keyword: string, declaredProp: string, scope: Scope, parameterArgs: Map<string, string>): Array<ComponentValue> | null {
+		if (keyword === 'initial') {
+			return [this.varReference(parameterArgs.get(declaredProp) ?? INVALID_IDENT)];
+		}
+
+		if (keyword === 'inherit') {
+			return [this.varReference(scope.parent?.get(declaredProp) ?? declaredProp)];
+		}
+
+		return null;
 	}
 
 	private rewriteValue(value: string, element: Rule, scope: Scope): string {
@@ -478,6 +552,10 @@ export class CustomFunctionTranspiler {
 		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-arg-${index}`;
 	}
 
+	private rawName(id: string, index: number): string {
+		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-raw-${index}`;
+	}
+
 	private localName(id: string, name: string): string {
 		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-local-${name.slice(2)}`;
 	}
@@ -499,6 +577,61 @@ function wrapInConditionals(nodes: Array<ChildNode>, conditionals: Array<AtRule>
 	}
 
 	return current;
+}
+
+/**
+ * Rewrite CSS-wide keywords that are the entire fallback of a `var()` function.
+ *
+ * Such a keyword becomes the value of the custom property being declared.
+ */
+function rewriteVarFallbackKeywords(componentValues: Array<ComponentValue>, resolve: (keyword: string) => Array<ComponentValue> | null): boolean {
+	let changed = false;
+
+	for (const componentValue of componentValues) {
+		if (!isFunctionNode(componentValue) || componentValue.getName().toLowerCase() !== 'var') {
+			continue;
+		}
+
+		const commaIndex = findTopLevelCommaIndex(componentValue.value);
+		if (commaIndex === -1) {
+			continue;
+		}
+
+		const fallback = componentValue.value.slice(commaIndex + 1);
+		const meaningful = fallback.filter((x) => !isWhiteSpaceOrCommentNode(x));
+		if (meaningful.length !== 1) {
+			continue;
+		}
+
+		const target = meaningful[0];
+
+		if (isTokenNode(target) && isTokenIdent(target.value)) {
+			const replacement = resolve(target.value[4].value.toLowerCase());
+			if (replacement) {
+				componentValue.value = [...componentValue.value.slice(0, commaIndex + 1), ...replacement];
+				changed = true;
+			}
+
+			continue;
+		}
+
+		if (isFunctionNode(target) && rewriteVarFallbackKeywords([target], resolve)) {
+			changed = true;
+		}
+	}
+
+	return changed;
+}
+
+function findTopLevelCommaIndex(componentValues: Array<ComponentValue>): number {
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (isTokenNode(componentValue) && isTokenComma(componentValue.value)) {
+			return i;
+		}
+	}
+
+	return -1;
 }
 
 /**

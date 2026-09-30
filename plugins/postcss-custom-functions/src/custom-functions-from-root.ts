@@ -28,11 +28,10 @@ const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports|container|starting-style)
 
 /**
  * A function is supported when it has no return type and every parameter is
- * either untyped without a default, or typed with a computationally
+ * either untyped (with or without a default) or typed with a computationally
  * independent default value.
  *
- * Typed parameters without defaults and untyped parameters with defaults are
- * not supported yet.
+ * Typed parameters without defaults are not supported yet.
  */
 function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 	if (customFunction.getReturnType()) {
@@ -42,15 +41,15 @@ function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 	return customFunction.parameters.every((parameter) => {
 		const type = parameter.getArgumentType();
 		const typed = !!type && type !== '*';
-		const hasDefault = !!parameter.getDefaultValue();
 
-		if (typed && hasDefault) {
-			// A default value becomes the `initial-value` of the generated
+		if (typed) {
+			// A typed default becomes the `initial-value` of the generated
 			// `@property` registration and must be computationally independent.
-			return isComputationallyIndependent(parameter.getDefaultValue());
+			return !!parameter.getDefaultValue() && isComputationallyIndependent(parameter.getDefaultValue());
 		}
 
-		return !typed && !hasDefault;
+		// Untyped parameters, with or without a default, are supported.
+		return true;
 	});
 }
 

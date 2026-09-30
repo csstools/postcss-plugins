@@ -1,0 +1,156 @@
+@function --with-default(--x: PASS) {
+	result: var(--x);
+}
+
+.untyped-default-missing {--_csstools-cf-32hl5jbk-1-arg-0: var(--_csstools-cf-32hl5jbk-1-raw-0, PASS);
+}
+
+.untyped-default-missing {
+	--_csstools-cf-32hl5jbk-0-result: var(--_csstools-cf-32hl5jbk-1-arg-0);
+}
+
+.untyped-default-missing {
+	--actual: var(--_csstools-cf-32hl5jbk-0-result);
+	--actual: --with-default();
+}
+
+.untyped-default-valid {--_csstools-cf-32hl5jbk-3-raw-0: 5px;--_csstools-cf-32hl5jbk-3-arg-0: var(--_csstools-cf-32hl5jbk-3-raw-0, PASS);
+}
+
+.untyped-default-valid {
+	--_csstools-cf-32hl5jbk-2-result: var(--_csstools-cf-32hl5jbk-3-arg-0);
+}
+
+.untyped-default-valid {
+	--actual: var(--_csstools-cf-32hl5jbk-2-result);
+	--actual: --with-default(5px);
+}
+
+.untyped-default-iacvt {--_csstools-cf-32hl5jbk-5-raw-0: var(--unknown);--_csstools-cf-32hl5jbk-5-arg-0: var(--_csstools-cf-32hl5jbk-5-raw-0, PASS);
+}
+
+.untyped-default-iacvt {
+	--_csstools-cf-32hl5jbk-4-result: var(--_csstools-cf-32hl5jbk-5-arg-0);
+}
+
+.untyped-default-iacvt {
+	--actual: var(--_csstools-cf-32hl5jbk-4-result);
+	--actual: --with-default(var(--unknown));
+}
+
+@function --with-var-default(--x: var(--y)) {
+	result: var(--x);
+}
+
+.untyped-var-default {--_csstools-cf-32hl5jbk-7-arg-0: var(--_csstools-cf-32hl5jbk-7-raw-0, var(--y));
+}
+
+.untyped-var-default {
+	--_csstools-cf-32hl5jbk-6-result: var(--_csstools-cf-32hl5jbk-7-arg-0);
+}
+
+.untyped-var-default {
+	--y: 3px;
+	--actual: var(--_csstools-cf-32hl5jbk-6-result);
+	--actual: --with-var-default();
+}
+
+@function --with-initial-fallback(--x: PASS) {
+	--x: var(--unknown, initial);
+	result: var(--x);
+}
+
+.untyped-initial-fallback {--_csstools-cf-32hl5jbk-9-arg-0: var(--_csstools-cf-32hl5jbk-9-raw-0, PASS);
+}
+
+.untyped-initial-fallback {
+	--_csstools-cf-32hl5jbk-9-local-x: var(--unknown,var(--_csstools-cf-32hl5jbk-9-arg-0));
+	--_csstools-cf-32hl5jbk-8-result: var(--_csstools-cf-32hl5jbk-9-local-x);
+}
+
+.untyped-initial-fallback {
+	--actual: var(--_csstools-cf-32hl5jbk-8-result);
+	--actual: --with-initial-fallback();
+}
+
+@function --with-initial-local(--x: FAIL1) {
+	--x: FAIL2;
+	--x: initial;
+	result: var(--x);
+}
+
+.untyped-initial-local {--_csstools-cf-32hl5jbk-b-raw-0: PASS;--_csstools-cf-32hl5jbk-b-arg-0: var(--_csstools-cf-32hl5jbk-b-raw-0, FAIL1);
+}
+
+.untyped-initial-local {
+	--_csstools-cf-32hl5jbk-b-local-x: FAIL2;
+	--_csstools-cf-32hl5jbk-b-local-x: var(--_csstools-cf-32hl5jbk-b-arg-0);
+	--_csstools-cf-32hl5jbk-a-result: var(--_csstools-cf-32hl5jbk-b-local-x);
+}
+
+.untyped-initial-local {
+	--actual: var(--_csstools-cf-32hl5jbk-a-result);
+	--actual: --with-initial-local(PASS);
+}
+
+@function --default-ref-param(--x, --y: var(--x)) {
+	result: var(--x) var(--y);
+}
+
+.default-ref-param {--_csstools-cf-32hl5jbk-d-arg-0: 5px;--_csstools-cf-32hl5jbk-d-arg-1: var(--_csstools-cf-32hl5jbk-d-raw-1, var(--_csstools-cf-32hl5jbk-d-arg-0));
+}
+
+.default-ref-param {
+	--_csstools-cf-32hl5jbk-c-result: var(--_csstools-cf-32hl5jbk-d-arg-0) var(--_csstools-cf-32hl5jbk-d-arg-1);
+}
+
+.default-ref-param {
+	--x: FAIL;
+	--y: FAIL;
+	--actual: var(--_csstools-cf-32hl5jbk-c-result);
+	--actual: --default-ref-param(5px);
+}
+
+@function --default-ref-param-local(--x, --y: var(--x)) {
+	--x: 17px;
+	result: var(--x) var(--y);
+}
+
+.default-ref-param-local {--_csstools-cf-32hl5jbk-f-arg-0: 5px;--_csstools-cf-32hl5jbk-f-arg-1: var(--_csstools-cf-32hl5jbk-f-raw-1, var(--_csstools-cf-32hl5jbk-f-arg-0));
+}
+
+.default-ref-param-local {
+	--_csstools-cf-32hl5jbk-f-local-x: 17px;
+	--_csstools-cf-32hl5jbk-e-result: var(--_csstools-cf-32hl5jbk-f-local-x) var(--_csstools-cf-32hl5jbk-f-arg-1);
+}
+
+.default-ref-param-local {
+	--x: FAIL;
+	--y: FAIL;
+	--actual: var(--_csstools-cf-32hl5jbk-e-result);
+	--actual: --default-ref-param-local(5px);
+}
+
+@function --default-inherit(--x: inherit) {
+	result: var(--x);
+}
+
+.default-inherit {--_csstools-cf-32hl5jbk-h-arg-0: var(--_csstools-cf-32hl5jbk-h-raw-0, var(--x));
+}
+
+.default-inherit {
+	--_csstools-cf-32hl5jbk-g-result: var(--_csstools-cf-32hl5jbk-h-arg-0);
+}
+
+.default-inherit {--_csstools-cf-32hl5jbk-j-raw-0: PASS2;--_csstools-cf-32hl5jbk-j-arg-0: var(--_csstools-cf-32hl5jbk-j-raw-0, var(--x));
+}
+
+.default-inherit {
+	--_csstools-cf-32hl5jbk-i-result: var(--_csstools-cf-32hl5jbk-j-arg-0);
+}
+
+.default-inherit {
+	--x: PASS1;
+	--actual: var(--_csstools-cf-32hl5jbk-g-result) var(--_csstools-cf-32hl5jbk-i-result);
+	--actual: --default-inherit() --default-inherit(PASS2);
+}

@@ -23,6 +23,15 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	'untyped-defaults': {
+		message: 'supports untyped parameters with defaults',
+	},
+	'untyped-defaults:preserve-true': {
+		message: 'supports untyped parameters with defaults with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	locals: {
 		message: 'supports initial and inherit in local variables',
 	},
