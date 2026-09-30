@@ -6,6 +6,13 @@
 	width: var(--_csstools-cf-eru3g4zo-0-result);
 }
 
+/* `returns type(*)` is the default return type and counts as no return type. */
+
+.universal-return {
+	--_csstools-cf-eru3g4zo-2-result: 2px;
+	width: var(--_csstools-cf-eru3g4zo-2-result);
+}
+
 /* A typed parameter with a computationally independent default is supported. */
 @function --independent-default(--x <length>: 2em) {
 	result: var(--x);

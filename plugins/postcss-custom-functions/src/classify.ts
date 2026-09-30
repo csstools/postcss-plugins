@@ -15,6 +15,16 @@ export function parameterType(parameter: FunctionParameter): string | null {
 }
 
 /**
+ * The return type of a custom function, or `null` when it has none.
+ *
+ * `type(*)` is the default return type and counts as no return type.
+ */
+function returnType(customFunction: CustomFunction): string | null {
+	const type = customFunction.getReturnType();
+	return !!type && type !== '*' ? type : null;
+}
+
+/**
  * The result of classifying a `@function` definition.
  */
 export type FunctionClassification = {
@@ -49,7 +59,7 @@ export function classifyCustomFunction(atRule: AtRule, customFunction: CustomFun
 }
 
 function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
-	if (customFunction.getReturnType()) {
+	if (returnType(customFunction)) {
 		return false;
 	}
 

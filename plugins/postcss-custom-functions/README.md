@@ -13,7 +13,7 @@ This plugin is only a partial implementation to avoid conflicts with the final s
 
 Unsupported:
 - typed parameters without default values
-- return types
+- return types other than the default `type(*)`
 - `@function` definitions inside `@container` or `@scope`
 - `@function` definitions inside a `@layer` that is itself inside a conditional group rule
 - `@function` definitions inside a style rule

@@ -286,6 +286,30 @@
 					}
 				`,
 			},
+			{
+				name: '`returns type(*)` is the default return type',
+				style: `
+					@function --f() returns type(*) {
+						result: 7px;
+					}
+					#target {
+						--actual: --f();
+						--expected: 7px;
+					}
+				`,
+			},
+			{
+				name: '`type(*)` parameter is untyped',
+				style: `
+					@function --f(--x type(*): 7px) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(9px);
+						--expected: 9px;
+					}
+				`,
+			},
 		];
 
 		for (const testCase of testCases) {

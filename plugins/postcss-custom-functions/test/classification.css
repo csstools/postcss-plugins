@@ -7,6 +7,15 @@
 	width: --universal();
 }
 
+/* `returns type(*)` is the default return type and counts as no return type. */
+@function --universal-return() returns type(*) {
+	result: 2px;
+}
+
+.universal-return {
+	width: --universal-return();
+}
+
 /* A typed parameter with a computationally independent default is supported. */
 @function --independent-default(--x <length>: 2em) {
 	result: var(--x);
