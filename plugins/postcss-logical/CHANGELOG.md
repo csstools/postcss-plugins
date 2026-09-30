@@ -2,7 +2,7 @@
 
 ### Unreleased (patch)
 
-- Improved performance of declaration deduplication by caching declarations per parent
+- Improved performance by inserting transformed declarations in a single batch
 
 ### 9.0.1
 

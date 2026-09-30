@@ -1,4 +1,4 @@
-import type { Container, PluginCreator } from 'postcss';
+import type { PluginCreator } from 'postcss';
 
 /** postcss-gap-properties plugin options */
 export type pluginOptions = {
@@ -11,34 +11,6 @@ const gapProperties = [
 	'gap',
 	'row-gap',
 ];
-
-type DisplayGridCacheEntry = {
-	length: number,
-	hasDisplayGrid: boolean,
-};
-
-const displayGridCache = new WeakMap<Container, DisplayGridCacheEntry>();
-
-function parentHasDisplayGrid(parent: Container): boolean {
-	const nodes = parent.nodes || [];
-	const entry = displayGridCache.get(parent);
-
-	if (entry && entry.length === nodes.length) {
-		return entry.hasDisplayGrid;
-	}
-
-	const hasDisplayGrid = nodes.some((node) => {
-		if (node.type !== 'decl') {
-			return false;
-		}
-
-		return node.prop.toLowerCase() === 'display' && node.value.toLowerCase() === 'grid';
-	});
-
-	displayGridCache.set(parent, { length: nodes.length, hasDisplayGrid });
-
-	return hasDisplayGrid;
-}
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign(
@@ -58,7 +30,14 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			if (!decl.parent || !parentHasDisplayGrid(decl.parent)) {
+			const isNotDisplayGrid = !(decl.parent?.some((node) => {
+				if (node.type !== 'decl') {
+					return false;
+				}
+
+				return node.prop.toLowerCase() === 'display' && node.value.toLowerCase() === 'grid';
+			}));
+			if (isNotDisplayGrid) {
 				return;
 			}
 

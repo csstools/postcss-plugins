@@ -1,9 +1,5 @@
 # Changes to PostCSS Logical Overflow
 
-### Unreleased (patch)
-
-- Improved performance of declaration deduplication by caching declarations per parent
-
 ### 3.0.0
 
 _January 14, 2026_
