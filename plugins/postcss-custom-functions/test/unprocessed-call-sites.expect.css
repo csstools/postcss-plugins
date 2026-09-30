@@ -1,0 +1,41 @@
+@function --used-in-keyframes() {
+	result: 1px;
+}
+
+@function --used-in-nested-conditional() {
+	result: 2px;
+}
+
+.processed {
+	--_csstools-cf-2ubgliyf-0-result: 3px;
+}
+
+.processed {
+	width: var(--_csstools-cf-2ubgliyf-0-result);
+}
+
+@keyframes kf {
+	from {
+		width: --used-in-keyframes();
+	}
+}
+
+.nested {
+	@media (min-width: 0px) {
+		height: --used-in-nested-conditional();
+	}
+}
+
+/* An unsupported function body is left as-is, so the definitions it references
+   must be kept. */
+@function --unsupported-outer() returns <length> {
+	result: --used-by-unsupported-outer();
+}
+
+@function --used-by-unsupported-outer() {
+	result: 4px;
+}
+
+.unsupported-outer {
+	width: --unsupported-outer();
+}

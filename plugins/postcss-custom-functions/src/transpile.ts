@@ -22,7 +22,7 @@ import { staticResultKeyword } from './static-result-keyword';
 
 const GENERATED_PREFIX = '--_csstools-cf';
 const INVALID_IDENT = `${GENERATED_PREFIX}-invalid`;
-const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer']);
+const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer', 'revert-rule']);
 
 const sourceHashes = new Map<string, string>();
 
@@ -444,6 +444,12 @@ export class CustomFunctionTranspiler {
 
 		if (keyword === 'inherit') {
 			return [this.varReference(scope.parent?.get(declaredProp) ?? declaredProp)];
+		}
+
+		if (CSS_WIDE_KEYWORDS.has(keyword)) {
+			// Any other CSS-wide keyword on a local variable resolves to the
+			// guaranteed-invalid value.
+			return [this.varReference(INVALID_IDENT)];
 		}
 
 		return null;

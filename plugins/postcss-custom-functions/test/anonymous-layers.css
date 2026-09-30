@@ -1,0 +1,28 @@
+/* Every anonymous layer is its own layer and must not collapse into a single layer. */
+@layer a {
+	@function --anon() {
+		result: 1px;
+	}
+}
+
+@layer {
+	@function --anon() {
+		result: 2px;
+	}
+}
+
+@layer b {
+	@function --anon() {
+		result: 3px;
+	}
+}
+
+@layer {
+	@function --anon() {
+		result: 4px;
+	}
+}
+
+.anon {
+	width: --anon();
+}

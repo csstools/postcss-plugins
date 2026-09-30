@@ -123,6 +123,48 @@
 					}
 				`,
 			},
+			{
+				name: 'Anonymous layers are distinct',
+				style: `
+					@layer a {
+						@function --f() { result: 1px; }
+					}
+					@layer {
+						@function --f() { result: 2px; }
+					}
+					@layer b {
+						@function --f() { result: 3px; }
+					}
+					@layer {
+						@function --f() { result: 4px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 4px;
+					}
+				`,
+			},
+			{
+				name: 'Conditional rule between layer and definition',
+				style: `
+					@layer theme, base;
+
+					@layer base {
+						@media (min-width: 0px) {
+							@function --f() { result: 10px; }
+						}
+					}
+					@layer theme {
+						@media (min-width: 0px) {
+							@function --f() { result: 20px; }
+						}
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
 		];
 
 		for (const testCase of testCases) {

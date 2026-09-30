@@ -27,6 +27,34 @@ const NON_INDEPENDENT_FUNCTIONS = new Set([
 	'light-dark',
 	'image-set',
 	'-webkit-image-set',
+	// Anchoring
+	'anchor',
+	'anchor-size',
+	// DOM dependent
+	'sibling-index',
+	'sibling-count',
+	// Non deterministic
+	'random',
+	'random-item',
+	// State dependent
+	'toggle',
+	'state',
+	'running',
+	// Viewport / container dependent
+	'progress',
+	'media-progress',
+	'container-progress',
+	// Element size dependent
+	'calc-size',
+	'paint',
+	'element',
+	// Cascade / parent dependent
+	'inherit',
+	'first-valid',
+	'if',
+	// Scroll driven
+	'scroll',
+	'view',
 ]);
 
 // Inside these functions a percentage is an absolute component, not a relative length.

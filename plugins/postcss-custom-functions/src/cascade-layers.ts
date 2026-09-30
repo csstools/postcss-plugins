@@ -9,7 +9,7 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 	const referencesForLayerNames: Map<Node, LayerName> = new Map();
 
 	const layers: Array<LayerName> = [];
-	const anonLayerCounter = 1;
+	let anonLayerCounter = 1;
 
 	root.walkAtRules((node) => {
 		if (node.name.toLowerCase() !== 'layer') {
@@ -38,7 +38,7 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 
 		let layerParams;
 		if (node.nodes) { // @layer { .foo {} }
-			layerParams = normalizeLayerName(node.params, anonLayerCounter);
+			layerParams = normalizeLayerName(node.params, anonLayerCounter++);
 		} else if (node.params.trim()) { // @layer a, b;
 			layerParams = node.params;
 		} else { // @layer;
@@ -108,13 +108,21 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 // any number  : node was found, higher numbers have higher priority
 // a very large number    : node wasn't layered, highest priority
 export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, number>): number {
-	if (node.parent && node.parent.type === 'atrule' && (node.parent as AtRule).name.toLowerCase() === 'layer') {
-		if (!layers.has(node.parent)) {
-			return 0;
+	// Walk up to the nearest `@layer` ancestor.
+	// Conditional rules may appear between a `@function` and its layer,
+	// the layer still determines the cascade strength.
+	let parent: Container | Document | undefined = node.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
+			if (!layers.has(parent)) {
+				return 0;
+			}
+
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			return layers.get(parent)! + 1;
 		}
 
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		return layers.get(node.parent)! + 1;
+		parent = parent.parent;
 	}
 
 	return 10_000_000;

@@ -35,6 +35,9 @@ postcssTape(plugin)({
 	locals: {
 		message: 'supports initial and inherit in local variables',
 	},
+	'local-keywords': {
+		message: 'resolves other CSS-wide keywords on local variables to the guaranteed-invalid value',
+	},
 	cycles: {
 		message: 'handles cyclic functions',
 	},
@@ -65,6 +68,24 @@ postcssTape(plugin)({
 		options: {
 			preserve: true,
 		},
+	},
+	'unprocessed-call-sites': {
+		message: 'keeps definitions that are referenced by unprocessed call sites',
+	},
+	'conditional-layers': {
+		message: 'ignores definitions in conditional layers and orders definitions correctly',
+	},
+	'anonymous-layers': {
+		message: 'keeps anonymous layers distinct',
+	},
+	'conditional-keyword-result': {
+		message: 'leaves functions with non-static keyword results as-is',
+	},
+	'invalid-bodies': {
+		message: 'ignores functions with invalid bodies',
+	},
+	'style-rule-definition': {
+		message: 'ignores functions defined inside a style rule',
 	},
 	'examples/example': {
 		message: 'minimal example',

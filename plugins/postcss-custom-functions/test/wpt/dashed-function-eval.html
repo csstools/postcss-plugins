@@ -869,6 +869,123 @@
 					}
 				`,
 			},
+			{
+				name: 'Local with the unset keyword',
+				style: `
+					@function --f() {
+						--x: unset;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local with the revert keyword',
+				style: `
+					@function --f() {
+						--x: revert;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local with the revert-layer keyword',
+				style: `
+					@function --f() {
+						--x: revert-layer;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local with the unset keyword without fallback',
+				style: `
+					@function --f() {
+						--x: unset;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Local with the revert keyword without fallback',
+				style: `
+					@function --f() {
+						--x: revert;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Local with the revert-layer keyword without fallback',
+				style: `
+					@function --f() {
+						--x: revert-layer;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Local with the unset keyword does not resolve to the parameter',
+				style: `
+					@function --f(--x: PARAM) {
+						--x: unset;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local with the revert keyword does not resolve to the parameter',
+				style: `
+					@function --f(--x: PARAM) {
+						--x: revert;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local with the unset keyword in a var() fallback',
+				style: `
+					@function --f() {
+						--x: var(--unknown, unset);
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
 		];
 
 		for (const testCase of testCases) {

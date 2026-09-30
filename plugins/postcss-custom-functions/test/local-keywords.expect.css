@@ -1,0 +1,83 @@
+/* CSS-wide keywords other than `initial` and `inherit` on a local variable
+   resolve to the guaranteed-invalid value. */
+
+.unset-local {
+	--_csstools-cf-2bgb251r-1-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-2bgb251r-0-result: var(--_csstools-cf-2bgb251r-1-local-x, PASS);
+}
+
+.unset-local {
+	width: var(--_csstools-cf-2bgb251r-0-result);
+}
+
+.revert-local {
+	--_csstools-cf-2bgb251r-3-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-2bgb251r-2-result: var(--_csstools-cf-2bgb251r-3-local-x, PASS);
+}
+
+.revert-local {
+	width: var(--_csstools-cf-2bgb251r-2-result);
+}
+
+.revert-layer-local {
+	--_csstools-cf-2bgb251r-5-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-2bgb251r-4-result: var(--_csstools-cf-2bgb251r-5-local-x, PASS);
+}
+
+.revert-layer-local {
+	width: var(--_csstools-cf-2bgb251r-4-result);
+}
+
+.revert-rule-local {
+	--_csstools-cf-2bgb251r-7-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-2bgb251r-6-result: var(--_csstools-cf-2bgb251r-7-local-x, PASS);
+}
+
+.revert-rule-local {
+	width: var(--_csstools-cf-2bgb251r-6-result);
+}
+
+.unset-fallback {
+	--_csstools-cf-2bgb251r-9-local-x: var(--unknown,var(--_csstools-cf-invalid));
+	--_csstools-cf-2bgb251r-8-result: var(--_csstools-cf-2bgb251r-9-local-x, PASS);
+}
+
+.unset-fallback {
+	width: var(--_csstools-cf-2bgb251r-8-result);
+}
+
+.unset-parameter {--_csstools-cf-2bgb251r-b-arg-0: var(--_csstools-cf-2bgb251r-b-raw-0, PARAM);
+}
+
+.unset-parameter {
+	--_csstools-cf-2bgb251r-b-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-2bgb251r-a-result: var(--_csstools-cf-2bgb251r-b-local-x, PASS);
+}
+
+.unset-parameter {
+	width: var(--_csstools-cf-2bgb251r-a-result);
+}
+
+.inherit-parameter {--_csstools-cf-2bgb251r-d-arg-0: var(--_csstools-cf-2bgb251r-d-raw-0, PARAM);
+}
+
+.inherit-parameter {
+	--_csstools-cf-2bgb251r-d-local-x: var(--x);
+	--_csstools-cf-2bgb251r-c-result: var(--_csstools-cf-2bgb251r-d-local-x, PASS);
+}
+
+.inherit-parameter {
+	width: var(--_csstools-cf-2bgb251r-c-result);
+}
+
+.initial-parameter {--_csstools-cf-2bgb251r-f-arg-0: var(--_csstools-cf-2bgb251r-f-raw-0, PARAM);
+}
+
+.initial-parameter {
+	--_csstools-cf-2bgb251r-f-local-x: var(--_csstools-cf-2bgb251r-f-arg-0);
+	--_csstools-cf-2bgb251r-e-result: var(--_csstools-cf-2bgb251r-f-local-x, PASS);
+}
+
+.initial-parameter {
+	width: var(--_csstools-cf-2bgb251r-e-result);
+}

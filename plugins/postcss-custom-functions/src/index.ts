@@ -1,6 +1,6 @@
 import type { Plugin, PluginCreator } from 'postcss';
 import type { CustomFunctionGroup } from './custom-functions-from-root';
-import { getCustomFunctions } from './custom-functions-from-root';
+import { getCustomFunctions, removeUnusedCustomFunctions } from './custom-functions-from-root';
 import { isProcessableDeclaration } from './is-processable-declaration';
 import { CustomFunctionTranspiler } from './transpile';
 
@@ -31,7 +31,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			return {
 				postcssPlugin: 'postcss-custom-functions',
 				Once(root, { result }): void {
-					customFunctions = getCustomFunctions(root, result, { preserve: options.preserve });
+					customFunctions = getCustomFunctions(root, result);
+
+					if (!options.preserve) {
+						removeUnusedCustomFunctions(root, customFunctions);
+					}
+
 					transpiler.setCustomFunctions(customFunctions);
 				},
 				OnceExit(root): void {

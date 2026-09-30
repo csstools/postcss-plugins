@@ -1,0 +1,54 @@
+/* A `@layer` inside a conditional rule can not be ordered, so the definition is ignored. */
+@media (min-width: 0px) {
+	@layer conditional-base {
+		@function --conditional-layer() {
+			result: 1px;
+		}
+	}
+}
+
+.conditional-layer {
+	width: --conditional-layer();
+}
+
+/* A name with a definition in a conditional layer is unsupported as a whole. */
+@layer mixed-base {
+	@function --mixed-conditional-layer() {
+		result: 10px;
+	}
+}
+
+@media (min-width: 0px) {
+	@layer mixed-theme {
+		@function --mixed-conditional-layer() {
+			result: 20px;
+		}
+	}
+}
+
+.mixed-conditional-layer {
+	width: --mixed-conditional-layer();
+}
+
+/* A conditional rule between the layer and the definition does not change the layer strength. */
+@layer ordered-theme, ordered-base;
+
+@layer ordered-base {
+	@media (min-width: 0px) {
+		@function --layered-conditional() {
+			result: 10px;
+		}
+	}
+}
+
+@layer ordered-theme {
+	@media (min-width: 0px) {
+		@function --layered-conditional() {
+			result: 20px;
+		}
+	}
+}
+
+.layered-conditional {
+	width: --layered-conditional();
+}
