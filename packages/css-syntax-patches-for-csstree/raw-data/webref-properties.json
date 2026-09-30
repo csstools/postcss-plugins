@@ -186,7 +186,7 @@
 		"syntax": "tb | rl | bt | lr"
 	},
 	"block-size": {
-		"syntax": "auto | <box-size>"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"block-step": {
 		"syntax": "<'block-step-size'> || <'block-step-insert'> || <'block-step-align'> || <'block-step-round'>"
@@ -675,7 +675,7 @@
 		"syntax": "none | <integer [1,∞]> | all | auto"
 	},
 	"column-width": {
-		"syntax": "auto | <length [0,∞]> | <box-size>"
+		"syntax": "auto | <box-size>"
 	},
 	"column-wrap": {
 		"syntax": "auto | nowrap | wrap"
@@ -1212,7 +1212,7 @@
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
 	},
 	"height": {
-		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"-ms-high-contrast-adjust": {
 		"syntax": "auto | none"
@@ -1275,7 +1275,7 @@
 		"syntax": "none | first | all | grid | <length-percentage>"
 	},
 	"inline-size": {
-		"syntax": "auto | <box-size>"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"inline-sizing": {
 		"syntax": "normal | stretch"
@@ -1551,13 +1551,13 @@
 		"syntax": "normal | compact"
 	},
 	"max-block-size": {
-		"syntax": "none | <box-size>"
+		"syntax": "none | <box-size> | <anchor-size()>"
 	},
 	"max-height": {
-		"syntax": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
+		"syntax": "none | <box-size> | <anchor-size()>"
 	},
 	"max-inline-size": {
-		"syntax": "none | <box-size>"
+		"syntax": "none | <box-size> | <anchor-size()>"
 	},
 	"max-lines": {
 		"syntax": "none | <integer [1,∞]>"
@@ -1566,16 +1566,16 @@
 		"syntax": "<'max-width'> <'max-height'>?"
 	},
 	"max-width": {
-		"syntax": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
+		"syntax": "none | <box-size> | <anchor-size()>"
 	},
 	"min-block-size": {
-		"syntax": "auto | <box-size>"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"min-height": {
-		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"min-inline-size": {
-		"syntax": "auto | <box-size>"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"min-intrinsic-sizing": {
 		"syntax": "legacy | zero-if-scroll || zero-if-extrinsic"
@@ -1584,7 +1584,7 @@
 		"syntax": "<'min-width'> <'min-height'>?"
 	},
 	"min-width": {
-		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"mix-blend-mode": {
 		"syntax": "<blend-mode> | plus-lighter"
@@ -2514,7 +2514,7 @@
 		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
 	},
 	"timeline-trigger-source": {
-		"syntax": "<single-animation-timeline>#"
+		"syntax": "[ none | auto | [ <dashed-ident> | <scroll()> | <view()> ]+ ]#"
 	},
 	"top": {
 		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
@@ -2664,7 +2664,7 @@
 		"syntax": "<integer [1,∞]>"
 	},
 	"width": {
-		"syntax": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )"
+		"syntax": "auto | <box-size> | <anchor-size()>"
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"

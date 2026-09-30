@@ -186,7 +186,7 @@
 		"syntax": "<length> | auto"
 	},
 	"box-size": {
-		"syntax": "<length-percentage> | stretch | contain | min-content | max-content | fit-content | fit-content( ) | calc-size( )"
+		"syntax": "<length-percentage [0,∞]> | stretch | contain | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>"
 	},
 	"brightness()": {
 		"syntax": "brightness( [ <number> | <percentage> ]? )"
@@ -363,7 +363,7 @@
 		"syntax": "element | content | text | <attr()> | <counter>"
 	},
 	"content-list": {
-		"syntax": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> ]+"
+		"syntax": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <symbolic-counter-style> ]+"
 	},
 	"content-position": {
 		"syntax": "center | start | end | flex-start | flex-end"
@@ -510,7 +510,7 @@
 		"syntax": "drop-shadow( [ <color>? && <length>{2,3} ] )"
 	},
 	"dynamic-range-limit-mix()": {
-		"syntax": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]#{2,} )"
+		"syntax": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]# )"
 	},
 	"easing-function": {
 		"syntax": "<linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>"
@@ -1278,10 +1278,13 @@
 		"syntax": "<dashed-ident>"
 	},
 	"palette-mix()": {
-		"syntax": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )"
+		"syntax": "palette-mix( <color-interpolation-method>? , [ <'font-palette'> && <percentage [0,100]>? ]# )"
+	},
+	"param-spec": {
+		"syntax": "color | accent-color | [ <dashed-ident> <css-type>? ]"
 	},
 	"param()": {
-		"syntax": "param( <dashed-ident> , <declaration-value>? )"
+		"syntax": "param( <param-spec> , <declaration-value>? )"
 	},
 	"path()": {
 		"syntax": "path( <'fill-rule'>? , <string> )"
@@ -1613,7 +1616,13 @@
 	"sibling-count": {
 		"syntax": "sibling-count( )"
 	},
+	"sibling-count()": {
+		"syntax": "sibling-count( )"
+	},
 	"sibling-index": {
+		"syntax": "sibling-index( )"
+	},
+	"sibling-index()": {
 		"syntax": "sibling-index( )"
 	},
 	"side-or-corner": {
@@ -1819,6 +1828,9 @@
 	},
 	"symbol": {
 		"syntax": "<string> | <image> | <custom-ident>"
+	},
+	"symbolic-counter-style": {
+		"syntax": "disc | circle | square | disclosure-open | disclosure-closed"
 	},
 	"symbols-type": {
 		"syntax": "cyclic | numeric | alphabetic | symbolic | fixed"

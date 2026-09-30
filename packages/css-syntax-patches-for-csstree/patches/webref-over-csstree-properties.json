@@ -405,8 +405,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'width'>",
-		"syntax-a": "auto | <box-size>",
-		"syntax-m": "auto | <box-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -1828,8 +1828,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <length [0,∞]>",
-		"syntax-a": "auto | <length [0,∞]> | <box-size>",
-		"syntax-m": "auto | <length [0,∞]> | <box-size>",
+		"syntax-a": "auto | <box-size>",
+		"syntax-m": "auto | <box-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2777,8 +2777,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
-		"syntax-a": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )",
-		"syntax-m": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> ) | <-non-standard-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()> | <-non-standard-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2898,8 +2898,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'width'>",
-		"syntax-a": "auto | <box-size>",
-		"syntax-m": "auto | <box-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3239,8 +3239,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'max-width'>",
-		"syntax-a": "none | <box-size>",
-		"syntax-m": "none | <box-size>",
+		"syntax-a": "none | <box-size> | <anchor-size()>",
+		"syntax-m": "none | <box-size> | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3250,8 +3250,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
-		"syntax-a": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )",
-		"syntax-m": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> ) | <-non-standard-size>",
+		"syntax-a": "none | <box-size> | <anchor-size()>",
+		"syntax-m": "none | <box-size> | <anchor-size()> | <-non-standard-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3261,8 +3261,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'max-width'>",
-		"syntax-a": "none | <box-size>",
-		"syntax-m": "none | <box-size>",
+		"syntax-a": "none | <box-size> | <anchor-size()>",
+		"syntax-m": "none | <box-size> | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3294,8 +3294,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
-		"syntax-a": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )",
-		"syntax-m": "none | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> ) | <-non-standard-size>",
+		"syntax-a": "none | <box-size> | <anchor-size()>",
+		"syntax-m": "none | <box-size> | <anchor-size()> | <-non-standard-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3305,8 +3305,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'min-width'>",
-		"syntax-a": "auto | <box-size>",
-		"syntax-m": "auto | <box-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3316,8 +3316,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
-		"syntax-a": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )",
-		"syntax-m": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> ) | <-non-standard-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()> | <-non-standard-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3327,8 +3327,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<'min-width'>",
-		"syntax-a": "auto | <box-size>",
-		"syntax-m": "auto | <box-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3360,8 +3360,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
-		"syntax-a": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )",
-		"syntax-m": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> ) | <-non-standard-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()> | <-non-standard-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -5165,6 +5165,17 @@
 			"failing": []
 		}
 	},
+	"timeline-trigger-source": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "<single-animation-timeline>#",
+		"syntax-a": "[ none | auto | [ <dashed-ident> | <scroll()> | <view()> ]+ ]#",
+		"syntax-m": "[ none | auto | [ <dashed-ident> | <scroll()> | <view()> ]+ ]#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"transform-origin": {
 		"type": "modified",
 		"comment": "",
@@ -5390,8 +5401,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>",
-		"syntax-a": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> )",
-		"syntax-m": "auto | <box-size> | <anchor-size()> | contain | fit-content( <length-percentage [0,∞]> ) | <-non-standard-size>",
+		"syntax-a": "auto | <box-size> | <anchor-size()>",
+		"syntax-m": "auto | <box-size> | <anchor-size()> | <-non-standard-size>",
 		"tests": {
 			"passing": [],
 			"failing": []
