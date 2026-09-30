@@ -176,7 +176,7 @@
 	"box-size": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<length-percentage> | stretch | contain | min-content | max-content | fit-content | fit-content( ) | calc-size( )",
+		"syntax-a": "<length-percentage [0,∞]> | stretch | contain | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()>",
 		"comment": ""
 	},
 	"calc-interpolate()": {
@@ -326,7 +326,7 @@
 	"content-list": {
 		"type": "modified",
 		"syntax-b": "[ <string> | contents | <image> | <counter> | <quote> | <target> | <leader()> | <attr()> ]+",
-		"syntax-a": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> ]+",
+		"syntax-a": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <symbolic-counter-style> ]+",
 		"comment": ""
 	},
 	"content()": {
@@ -447,6 +447,12 @@
 		"type": "modified",
 		"syntax-b": "inline-block | inline-list-item | inline-table | inline-flex | inline-grid",
 		"syntax-a": "inline-block | inline-table | inline-flex | inline-grid",
+		"comment": ""
+	},
+	"dynamic-range-limit-mix()": {
+		"type": "modified",
+		"syntax-b": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]#{2,} )",
+		"syntax-a": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]# )",
 		"comment": ""
 	},
 	"element()": {
@@ -1259,10 +1265,22 @@
 		"syntax-a": "none | <image> | <svg-paint>",
 		"comment": ""
 	},
+	"palette-mix()": {
+		"type": "modified",
+		"syntax-b": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )",
+		"syntax-a": "palette-mix( <color-interpolation-method>? , [ <'font-palette'> && <percentage [0,100]>? ]# )",
+		"comment": ""
+	},
+	"param-spec": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "color | accent-color | [ <dashed-ident> <css-type>? ]",
+		"comment": ""
+	},
 	"param()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "param( <dashed-ident> , <declaration-value>? )",
+		"syntax-a": "param( <param-spec> , <declaration-value>? )",
 		"comment": ""
 	},
 	"pattern-descriptor": {
@@ -1619,7 +1637,19 @@
 		"syntax-a": "sibling-count( )",
 		"comment": ""
 	},
+	"sibling-count()": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "sibling-count( )",
+		"comment": ""
+	},
 	"sibling-index": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "sibling-index( )",
+		"comment": ""
+	},
+	"sibling-index()": {
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "sibling-index( )",
@@ -1839,6 +1869,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "child | child( <integer> )",
+		"comment": ""
+	},
+	"symbolic-counter-style": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "disc | circle | square | disclosure-open | disclosure-closed",
 		"comment": ""
 	},
 	"syntax-multiplier": {

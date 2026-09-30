@@ -130,7 +130,7 @@
 		"@csstools/pack-test": "*",
 		"@csstools/postcss-bundler": "*",
 		"@csstools/postcss-tape": "*",
-		"@webref/css": "^8.7.1"
+		"@webref/css": "^8.7.5"
 	},
 	"scripts": {
 		"prebuild": "node ./scripts/generate-plugins-data.mjs && eslint --fix ./src/plugins/*.mjs",
