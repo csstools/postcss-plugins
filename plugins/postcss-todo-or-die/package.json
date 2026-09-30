@@ -67,9 +67,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"code quality",
+		"code-quality",
+		"css",
+		"postcss",
 		"postcss-plugin",
-		"productivity"
+		"productivity",
+		"todo"
 	],
 	"csstools": {
 		"exportName": "postcssTodoOrDie",

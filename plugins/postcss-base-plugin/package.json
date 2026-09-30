@@ -61,6 +61,7 @@
 		"directory": "plugins/postcss-base-plugin"
 	},
 	"keywords": [
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

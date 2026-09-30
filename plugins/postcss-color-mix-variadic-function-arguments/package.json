@@ -69,9 +69,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"color",
 		"color-mix",
 		"css",
+		"function",
 		"interpolation",
+		"postcss",
 		"postcss-plugin",
 		"syntax",
 		"variadic"

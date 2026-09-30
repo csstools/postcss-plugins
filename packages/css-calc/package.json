@@ -65,7 +65,9 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"calc",
-		"css"
+		"css",
+		"math",
+		"parser"
 	],
 	"volta": {
 		"extends": "../../package.json"

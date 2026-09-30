@@ -65,9 +65,11 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
 		"data",
 		"export",
 		"extract",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

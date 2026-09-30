@@ -57,8 +57,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"colors",
-		"css"
+		"color",
+		"color-space",
+		"conversion",
+		"css",
+		"gamut",
+		"helper"
 	],
 	"volta": {
 		"extends": "../../package.json"

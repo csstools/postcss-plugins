@@ -63,7 +63,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"conditional",
+		"css",
+		"postcss",
+		"postcss-plugin",
+		"space-toggle",
+		"toggle",
+		"utility"
 	],
 	"csstools": {
 		"assumesToProcessBundledCSS": true,

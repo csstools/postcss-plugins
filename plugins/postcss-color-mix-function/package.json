@@ -69,10 +69,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"color",
 		"color-mix",
 		"css",
 		"display-p3",
+		"function",
 		"interpolation",
+		"postcss",
 		"postcss-plugin",
 		"prophoto-rgb",
 		"rec2020",

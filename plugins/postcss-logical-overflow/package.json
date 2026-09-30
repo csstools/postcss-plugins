@@ -65,6 +65,7 @@
 		"css",
 		"logical",
 		"overflow",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

@@ -68,6 +68,7 @@
 		"color",
 		"css",
 		"design",
+		"function",
 		"postcss",
 		"postcss-plugin"
 	],

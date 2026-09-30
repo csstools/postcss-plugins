@@ -68,7 +68,10 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"css",
+		"function",
+		"mod",
 		"modulus",
+		"postcss",
 		"postcss-plugin",
 		"remainder",
 		"round",

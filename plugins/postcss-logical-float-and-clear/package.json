@@ -69,7 +69,8 @@
 		"inline",
 		"logical",
 		"postcss",
-		"postcss-plugin"
+		"postcss-plugin",
+		"value"
 	],
 	"csstools": {
 		"cssdbId": "float-clear-logical-values",

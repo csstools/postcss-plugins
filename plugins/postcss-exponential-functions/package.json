@@ -67,10 +67,14 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
 		"exp",
 		"exponential",
+		"function",
 		"hypot",
 		"log",
+		"math",
+		"postcss",
 		"postcss-plugin",
 		"pow",
 		"sqrt"

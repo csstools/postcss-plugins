@@ -76,14 +76,12 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"at-rule",
-		"atrule",
 		"css",
 		"csswg",
 		"custom",
 		"media",
 		"postcss",
 		"postcss-plugin",
-		"queries",
 		"query",
 		"specification",
 		"w3c"

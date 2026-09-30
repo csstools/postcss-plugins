@@ -70,13 +70,14 @@
 		"color",
 		"css",
 		"display-p3",
-		"gamut mapping",
+		"gamut",
+		"gamut-mapping",
 		"p3",
 		"postcss",
 		"postcss-plugin",
 		"rec2020",
 		"srgb",
-		"wide gamut"
+		"wide-gamut"
 	],
 	"csstools": {
 		"cssdbId": "gamut-mapping",

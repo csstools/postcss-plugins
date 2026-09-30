@@ -74,6 +74,7 @@
 		"css",
 		"csswg",
 		"fallback",
+		"postcss",
 		"postcss-plugin",
 		"w3c"
 	],

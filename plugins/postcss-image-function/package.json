@@ -68,9 +68,14 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"color",
+		"css",
 		"csswg",
 		"fallback",
-		"image function",
+		"function",
+		"image",
+		"image-function",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

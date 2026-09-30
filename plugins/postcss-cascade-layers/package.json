@@ -78,10 +78,10 @@
 	"keywords": [
 		"cascade",
 		"css",
-		"layers",
+		"layer",
 		"postcss",
 		"postcss-plugin",
-		"selectors",
+		"selector",
 		"specificity"
 	],
 	"csstools": {

@@ -41,6 +41,12 @@
 		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/base-cli"
 	},
+	"keywords": [
+		"cli",
+		"css",
+		"postcss",
+		"utility"
+	],
 	"volta": {
 		"extends": "../../package.json"
 	}

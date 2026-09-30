@@ -58,8 +58,9 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
 		"csswg",
-		"standards",
+		"standard",
 		"stylelint",
 		"stylelint-plugin"
 	],

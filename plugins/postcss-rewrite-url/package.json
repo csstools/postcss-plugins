@@ -66,6 +66,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
+		"postcss",
 		"postcss-plugin",
 		"rewrite",
 		"url"

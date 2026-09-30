@@ -67,13 +67,12 @@
 		"css",
 		"csswg",
 		"custom",
-		"declarations",
+		"custom-property",
+		"declaration",
 		"postcss",
 		"postcss-plugin",
-		"properties",
 		"specification",
-		"variables",
-		"vars",
+		"variable",
 		"w3c"
 	],
 	"csstools": {

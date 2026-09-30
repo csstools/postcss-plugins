@@ -32,6 +32,11 @@
 		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "packages/generate-test-cases"
 	},
+	"keywords": [
+		"generator",
+		"postcss",
+		"test"
+	],
 	"volta": {
 		"extends": "../../package.json"
 	}

@@ -65,8 +65,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
+		"font",
 		"font-width",
-		"postcss-plugin"
+		"postcss",
+		"postcss-plugin",
+		"property"
 	],
 	"csstools": {
 		"cssdbId": "font-width-property",

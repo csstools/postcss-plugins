@@ -53,14 +53,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"constants",
+		"constant",
 		"css",
-		"environments",
-		"envs",
-		"functions",
+		"environment",
+		"function",
 		"postcss",
 		"postcss-plugin",
-		"variables"
+		"variable"
 	],
 	"csstools": {
 		"exportName": "postcssEnvFunction",

@@ -68,7 +68,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"Not",
+		"css",
+		"not",
 		"postcss",
 		"postcss-plugin",
 		"selector"

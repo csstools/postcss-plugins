@@ -58,9 +58,8 @@
 		"postcss",
 		"postcss-plugin",
 		"tape",
-		"testing",
-		"tests",
-		"tools"
+		"test",
+		"tool"
 	],
 	"volta": {
 		"extends": "../../package.json"

@@ -86,7 +86,6 @@
 		"postcss",
 		"postcss-plugin",
 		"prefers",
-		"queries",
 		"query",
 		"scheme"
 	],

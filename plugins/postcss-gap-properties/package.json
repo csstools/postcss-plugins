@@ -66,16 +66,16 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"columns",
+		"column",
 		"css",
-		"gaps",
-		"grids",
-		"layouts",
+		"gap",
+		"grid",
+		"layout",
 		"postcss",
 		"postcss-plugin",
-		"prefixes",
-		"rows",
-		"shorthands"
+		"prefix",
+		"row",
+		"shorthand"
 	],
 	"csstools": {
 		"cssdbId": "gap-properties",

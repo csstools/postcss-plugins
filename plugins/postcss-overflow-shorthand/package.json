@@ -73,9 +73,9 @@
 		"overflow",
 		"postcss",
 		"postcss-plugin",
-		"properties",
-		"shorthands",
-		"values"
+		"property",
+		"shorthand",
+		"value"
 	],
 	"csstools": {
 		"cssdbId": "overflow-property",

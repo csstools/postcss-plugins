@@ -45,9 +45,11 @@
 	},
 	"keywords": [
 		"node",
-		"testing",
-		"tests",
-		"tools"
+		"npm",
+		"package",
+		"smoke-test",
+		"test",
+		"tool"
 	],
 	"volta": {
 		"extends": "../../package.json"

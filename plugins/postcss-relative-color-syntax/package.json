@@ -70,8 +70,10 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"color",
+		"css",
+		"postcss",
 		"postcss-plugin",
-		"relative color syntax"
+		"relative-color"
 	],
 	"csstools": {
 		"cssdbId": "relative-color-syntax",

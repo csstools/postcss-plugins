@@ -73,9 +73,7 @@
 		"block",
 		"border",
 		"css",
-		"dir",
-		"directional",
-		"directions",
+		"direction",
 		"end",
 		"flow",
 		"inline",
@@ -85,14 +83,13 @@
 		"padding",
 		"postcss",
 		"postcss-plugin",
-		"properties",
 		"property",
 		"relative",
 		"rtl",
 		"size",
 		"start",
 		"text",
-		"values"
+		"value"
 	],
 	"csstools": {
 		"cssdbId": "logical-properties-and-values",

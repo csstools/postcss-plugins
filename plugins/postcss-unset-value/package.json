@@ -62,10 +62,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
 		"inherit",
 		"initial",
+		"postcss",
 		"postcss-plugin",
-		"unset"
+		"unset",
+		"value"
 	],
 	"csstools": {
 		"exportName": "postcssUnsetValue",

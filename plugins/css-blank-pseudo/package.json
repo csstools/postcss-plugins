@@ -92,7 +92,7 @@
 		"postcss-plugin",
 		"pseudo",
 		"select",
-		"selectors",
+		"selector",
 		"textarea"
 	],
 	"csstools": {

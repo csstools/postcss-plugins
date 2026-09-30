@@ -63,7 +63,10 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"at-property",
+		"css",
+		"descriptor",
 		"fallback",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

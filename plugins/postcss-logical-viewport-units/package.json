@@ -71,10 +71,12 @@
 		"css",
 		"inline",
 		"logical",
-		"padding",
 		"postcss",
 		"postcss-plugin",
-		"viewport units"
+		"unit",
+		"vb",
+		"vi",
+		"viewport-unit"
 	],
 	"csstools": {
 		"cssdbId": "logical-viewport-units",

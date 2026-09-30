@@ -66,7 +66,11 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"css",
+		"font-family",
+		"postcss",
+		"postcss-plugin",
+		"system-ui"
 	],
 	"csstools": {
 		"cssdbId": "system-ui-font-family",

@@ -62,9 +62,9 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"helpers",
+		"helper",
 		"postcss",
-		"utilities"
+		"utility"
 	],
 	"volta": {
 		"extends": "../../package.json"

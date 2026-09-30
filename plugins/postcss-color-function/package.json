@@ -61,9 +61,11 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"color",
+		"color-function",
 		"css",
 		"design",
 		"display-p3",
+		"function",
 		"postcss",
 		"postcss-plugin",
 		"prophoto-rgb",

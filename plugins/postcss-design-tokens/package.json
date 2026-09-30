@@ -69,8 +69,11 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"design-tokens",
-		"postcss-plugin"
+		"css",
+		"design-token",
+		"postcss",
+		"postcss-plugin",
+		"token"
 	],
 	"csstools": {
 		"assumesToProcessBundledCSS": true,

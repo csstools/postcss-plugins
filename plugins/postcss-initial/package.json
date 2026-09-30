@@ -62,7 +62,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"css",
+		"fallback",
+		"initial",
+		"postcss",
+		"postcss-plugin",
+		"property",
+		"value"
 	],
 	"csstools": {
 		"cssdbId": "all-property",

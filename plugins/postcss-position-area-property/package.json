@@ -62,7 +62,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"css",
+		"inset-area",
+		"position-area",
+		"postcss",
+		"postcss-plugin",
+		"property"
 	],
 	"csstools": {
 		"cssdbId": "position-area-property",

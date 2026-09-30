@@ -66,9 +66,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"container queries list",
+		"container-query",
+		"container-rule",
+		"css",
 		"csswg",
 		"fallback",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

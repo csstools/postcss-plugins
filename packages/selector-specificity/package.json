@@ -64,6 +64,7 @@
 	"keywords": [
 		"css",
 		"postcss-selector-parser",
+		"selector",
 		"specificity"
 	],
 	"volta": {

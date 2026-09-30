@@ -62,10 +62,13 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
 		"fallback",
 		"fit-tolerance",
 		"flow-tolerance",
-		"postcss-plugin"
+		"postcss",
+		"postcss-plugin",
+		"property"
 	],
 	"csstools": {
 		"cssdbId": "fit-tolerance-property",

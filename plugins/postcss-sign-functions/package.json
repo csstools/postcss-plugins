@@ -69,6 +69,8 @@
 	"keywords": [
 		"abs",
 		"css",
+		"function",
+		"postcss",
 		"postcss-plugin",
 		"sign"
 	],

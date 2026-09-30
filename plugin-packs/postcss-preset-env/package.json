@@ -151,14 +151,11 @@
 	"keywords": [
 		"css",
 		"csswg",
-		"features",
+		"feature",
 		"future",
-		"lists",
-		"next",
 		"postcss",
 		"postcss-plugin",
-		"specifications",
-		"specs",
+		"preset",
 		"stages",
 		"w3c"
 	],

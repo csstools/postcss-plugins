@@ -69,9 +69,12 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"color",
 		"contrast",
 		"contrast-color",
 		"css",
+		"function",
+		"postcss",
 		"postcss-plugin",
 		"wcag"
 	],

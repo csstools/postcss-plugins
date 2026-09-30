@@ -63,7 +63,8 @@
 	"keywords": [
 		"cascade-layer",
 		"css",
-		"parser"
+		"parser",
+		"postcss"
 	],
 	"volta": {
 		"extends": "../../package.json"

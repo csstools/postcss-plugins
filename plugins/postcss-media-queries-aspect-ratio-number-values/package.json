@@ -68,8 +68,12 @@
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"aspect-ratio",
-		"media queries",
-		"postcss-plugin"
+		"css",
+		"media-query",
+		"number",
+		"postcss",
+		"postcss-plugin",
+		"value"
 	],
 	"csstools": {
 		"cssdbId": "media-queries-aspect-ratio-number-values",

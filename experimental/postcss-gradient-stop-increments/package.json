@@ -67,6 +67,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
+		"gradient",
+		"gradient-stop",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

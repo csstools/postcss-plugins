@@ -57,13 +57,15 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"CJK water ideograph",
+		"cjk",
 		"css",
 		"glyph",
 		"ic",
+		"ideograph",
 		"length",
+		"postcss",
 		"postcss-plugin",
-		"values"
+		"value"
 	],
 	"csstools": {
 		"exportName": "postcssIcUnit",

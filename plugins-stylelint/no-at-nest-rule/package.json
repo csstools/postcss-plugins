@@ -60,6 +60,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"at-rule",
+		"css",
+		"nest",
+		"nesting",
 		"stylelint",
 		"stylelint-plugin"
 	],

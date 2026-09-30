@@ -65,7 +65,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"css",
 		"minifier",
+		"minify",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

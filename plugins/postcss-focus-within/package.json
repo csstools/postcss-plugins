@@ -80,15 +80,15 @@
 	"keywords": [
 		"a11y",
 		"accessibility",
-		"ancestors",
+		"ancestor",
 		"css",
-		"descendants",
+		"descendant",
 		"focus",
 		"polyfill",
 		"postcss",
 		"postcss-plugin",
-		"pseudos",
-		"selectors",
+		"pseudo",
+		"selector",
 		"within"
 	],
 	"csstools": {

@@ -71,8 +71,11 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"bundle",
 		"bundler",
+		"css",
 		"import",
+		"postcss",
 		"postcss-plugin",
 		"url"
 	],

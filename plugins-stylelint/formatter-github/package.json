@@ -58,6 +58,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
+		"annotation",
+		"formatter",
 		"github",
 		"stylelint",
 		"stylelint-formatter"

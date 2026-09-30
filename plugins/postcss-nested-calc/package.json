@@ -68,8 +68,10 @@
 	"keywords": [
 		"calc",
 		"css",
+		"function",
 		"math",
 		"nested",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {

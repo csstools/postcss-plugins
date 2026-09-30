@@ -72,7 +72,10 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"media queries",
+		"css",
+		"media-query",
+		"minmax",
+		"postcss",
 		"postcss-plugin",
 		"range"
 	],

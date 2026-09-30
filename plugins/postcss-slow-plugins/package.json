@@ -64,6 +64,7 @@
 	"keywords": [
 		"debug",
 		"performance",
+		"postcss",
 		"postcss-plugin",
 		"profiling",
 		"slow",

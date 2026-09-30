@@ -67,8 +67,11 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"custom properties",
+		"at-rule",
+		"css",
+		"custom-property",
 		"fallback",
+		"postcss",
 		"postcss-plugin",
 		"private"
 	],

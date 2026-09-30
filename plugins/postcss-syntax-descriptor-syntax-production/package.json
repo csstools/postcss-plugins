@@ -65,7 +65,11 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"postcss-plugin"
+		"css",
+		"descriptor",
+		"postcss",
+		"postcss-plugin",
+		"syntax"
 	],
 	"csstools": {
 		"cssdbId": "syntax-descriptor-syntax-production",

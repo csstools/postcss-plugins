@@ -70,11 +70,10 @@
 	"keywords": [
 		"attribute",
 		"css",
-		"CSS4",
 		"insensitive",
 		"postcss",
 		"postcss-plugin",
-		"sensitive"
+		"selector"
 	],
 	"csstools": {
 		"cssdbId": "case-insensitive-attributes",

@@ -69,16 +69,15 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"alignments",
-		"aligns",
-		"contents",
+		"align",
+		"content",
 		"css",
-		"justifies",
 		"justify",
+		"place",
 		"postcss",
 		"postcss-plugin",
-		"selfs",
-		"shorthands"
+		"self",
+		"shorthand"
 	],
 	"csstools": {
 		"cssdbId": "place-properties",

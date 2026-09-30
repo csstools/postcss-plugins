@@ -55,15 +55,13 @@
 	},
 	"keywords": [
 		"css",
-		"custom",
-		"declarations",
+		"custom-property",
+		"declaration",
 		"postcss",
 		"postcss-plugin",
 		"progressive",
-		"properties",
 		"utility",
-		"variables",
-		"vars"
+		"variable"
 	],
 	"csstools": {
 		"exportName": "postcssProgressiveCustomProperties",

@@ -65,6 +65,7 @@
 		"css",
 		"logical",
 		"overscroll-behavior",
+		"postcss",
 		"postcss-plugin"
 	],
 	"csstools": {
