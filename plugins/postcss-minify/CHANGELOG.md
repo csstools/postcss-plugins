@@ -1,5 +1,9 @@
 # Changes to PostCSS Minify
 
+### Unreleased (patch)
+
+- Bound the internal minification cache to avoid unbounded memory growth.
+
 ### 3.0.1
 
 _September 25, 2026_

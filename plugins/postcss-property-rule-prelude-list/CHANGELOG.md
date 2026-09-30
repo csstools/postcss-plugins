@@ -1,5 +1,10 @@
 # Changes to PostCSS Property Rule Prelude List
 
+### Unreleased (patch)
+
+- Bound the total number of generated at-rules to prevent an exponential blowup from nested `@property` rules.
+
+
 ### 2.0.1
 
 _September 25, 2026_

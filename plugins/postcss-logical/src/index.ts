@@ -79,9 +79,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			transformed.forEach((transformedDecl) => {
-				decl.cloneBefore(transformedDecl);
-			});
+			// Insert as a batch: resolving the reference index for every single
+			// insertion is quadratic for a rule with many declarations.
+			decl.before(transformed);
 
 			decl.remove();
 		};
@@ -177,9 +177,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 
-				transformed.forEach((transformedDecl) => {
-					decl.cloneBefore(transformedDecl);
-				});
+				// Insert as a batch: resolving the reference index for every single
+				// insertion is quadratic for a rule with many declarations.
+				decl.before(transformed);
 
 				decl.remove();
 			},

@@ -1,5 +1,9 @@
 # Changes to PostCSS Place Properties
 
+### Unreleased (patch)
+
+- Improved performance by inserting generated declarations as a single batch
+
 ### 11.0.0
 
 _January 14, 2026_

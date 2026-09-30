@@ -1,5 +1,9 @@
 # Changes to PostCSS Rewrite URL
 
+### Unreleased (patch)
+
+- Visit each declaration and at-rule only once, so the rewriter is called at most once per node.
+
 ### 3.0.1
 
 _September 25, 2026_

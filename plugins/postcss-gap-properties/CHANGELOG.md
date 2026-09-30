@@ -1,5 +1,9 @@
 # Changes to PostCSS Gap Properties
 
+### Unreleased (patch)
+
+- Improved performance by caching the `display: grid` lookup per rule
+
 ### 7.0.0
 
 _January 14, 2026_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Media MinMax
 
+### Unreleased (patch)
+
+- Improve performance when transforming media queries with multiple range features.
+
 ### 3.0.6
 
 _September 25, 2026_

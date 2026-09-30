@@ -1,4 +1,4 @@
-import type { Declaration, Plugin, PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator } from 'postcss';
 import valueParser from 'postcss-value-parser';
 import { namedColors } from '@csstools/color-helpers';
 
@@ -40,23 +40,25 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const ownIndex = parent.index(decl);
+					// Visitors receive a proxy node, while `parent.nodes` holds the
+					// underlying nodes. Unwrap to compare identity without an O(n)
+					// `parent.index()` lookup.
+					const selfNode = (decl as typeof decl & { proxyOf?: typeof decl }).proxyOf ?? decl;
 
-					const siblingTextDecorationProperties: Array<Declaration> = [];
+					const siblingValues = new Set<string>();
 					for (let i = 0; i < parent.nodes.length; i++) {
-						if (i === ownIndex) {
+						const node = parent.nodes[i];
+						if (node === selfNode) {
 							continue;
 						}
 
-						const node = parent.nodes[i];
 						if (node.type === 'decl' && IS_TEXT_DECORATION_REGEX.test(node.prop)) {
-							siblingTextDecorationProperties.push(node);
+							siblingValues.add(node.value);
 						}
 					}
 
-					if (siblingTextDecorationProperties.some((node) => {
-						return convertedValues.get(decl.value) === node.value;
-					})) {
+					let convertedValue = convertedValues.get(decl.value);
+					if (convertedValue !== undefined && siblingValues.has(convertedValue)) {
 						return;
 					}
 
@@ -202,9 +204,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					const nonShortHandValue = valueParser.stringify(data.line);
 					convertedValues.set(decl.value, nonShortHandValue);
 
-					if (siblingTextDecorationProperties.some((node) => {
-						return convertedValues.get(decl.value) === node.value;
-					})) {
+					convertedValue = convertedValues.get(decl.value);
+					if (convertedValue !== undefined && siblingValues.has(convertedValue)) {
 						return;
 					}
 

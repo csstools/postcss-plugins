@@ -1,5 +1,10 @@
 # Changes to PostCSS Design Tokens
 
+### Unreleased (patch)
+
+- Bound the total resolved token value length to prevent an exponential blowup from token references.
+
+
 ### 5.0.1
 
 _September 25, 2026_

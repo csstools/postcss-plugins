@@ -5,6 +5,18 @@ const HAS_LEGAL_KEYWORDS_OR_SOURCE_MAP_REGEX = /license|copyright|sourcemappingu
 const HAS_WHITESPACE_OR_COMMENTS_REGEX = /\s|\/\*/;
 const IS_LAYER_REGEX = /^layer$/i;
 
+// Bound the per-instance memoization cache so that processing many files in
+// watch or bundler mode does not grow it without limit.
+const MAX_CACHE_SIZE = 5000;
+
+function cacheSet(cache: Map<string, string>, key: string, value: string): void {
+	if (cache.size > MAX_CACHE_SIZE) {
+		cache.clear();
+	}
+
+	cache.set(key, value);
+}
+
 function minify(cache: Map<string, string>, x: string): string {
 	if (!x) {
 		return x;
@@ -17,12 +29,12 @@ function minify(cache: Map<string, string>, x: string): string {
 
 	const y = x.trim();
 	if (y === '') {
-		cache.set(x, '');
+		cacheSet(cache, x, '');
 		return '';
 	}
 
 	if (!HAS_WHITESPACE_OR_COMMENTS_REGEX.test(y)) {
-		cache.set(x, y);
+		cacheSet(cache, x, y);
 		return y;
 	}
 
@@ -56,7 +68,7 @@ function minify(cache: Map<string, string>, x: string): string {
 		}
 	}
 
-	cache.set(x, minified);
+	cacheSet(cache, x, minified);
 
 	return minified;
 }

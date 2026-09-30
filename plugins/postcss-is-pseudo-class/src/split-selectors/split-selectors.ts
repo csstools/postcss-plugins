@@ -4,7 +4,7 @@ import { selectorSpecificity } from '@csstools/selector-specificity';
 // splitSelectors handles the forgiving list behavior of ":is".
 // After created all combinations it wraps the individual selectors in ":-csstools-matches".
 // This makes it easy to recursively resolve all ":is" selectors without infinite loops.
-export default function splitSelectors(selectors: Array<string>, pluginOptions: { specificityMatchingName: string }, recursionDepth = 0): Array<string> {
+export default function splitSelectors(selectors: Array<string>, pluginOptions: { specificityMatchingName: string }, recursionDepth = 0, budget: { remaining: number } = { remaining: MAX_TOTAL_COMBINATIONS }): Array<string> {
 	const specificityMatchingNameId = ':not(#' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameClass = ':not(.' + pluginOptions.specificityMatchingName + ')';
 	const specificityMatchingNameTag = ':not(' + pluginOptions.specificityMatchingName + ')';
@@ -99,6 +99,20 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 		}
 
 		let results: Array<string> = [];
+
+		// The per-`:is()` combination cap only bounds a single selector group.
+		// A rule with several selectors multiplies the total work, so bound the
+		// total number of generated selectors for the whole rule as well.
+		let combinations = 1;
+		for (let i = 0; i < replacements.length; i++) {
+			combinations *= replacements[i].length;
+		}
+
+		budget.remaining -= combinations;
+		if (budget.remaining < 0) {
+			throw new Error('Too many combinations when trying to resolve a selector with `:is()` lists, reduce the complexity of your selectors');
+		}
+
 		cartesianProduct(...replacements).forEach((replacement) => {
 			let result = '';
 
@@ -118,7 +132,7 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 
 		if (foundNestedIs && recursionDepth < 10) {
 			// recursion to transform `:is(a :is(b,c))`
-			results = splitSelectors(results, pluginOptions, recursionDepth + 1);
+			results = splitSelectors(results, pluginOptions, recursionDepth + 1, budget);
 		}
 
 		return results;
@@ -131,6 +145,9 @@ export default function splitSelectors(selectors: Array<string>, pluginOptions: 
 // The number of alternatives in each `:is()` group multiplies, so without a
 // bound a small selector can exhaust memory and CPU.
 const MAX_SELECTOR_COMBINATIONS = 10_000;
+
+// The maximum number of generated selectors for a single rule.
+const MAX_TOTAL_COMBINATIONS = 100_000;
 
 // https://en.wikipedia.org/wiki/Cartesian_product
 function cartesianProduct<T>(...args: Array<Array<T>>): Array<Array<T>> {

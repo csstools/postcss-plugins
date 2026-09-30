@@ -66,6 +66,13 @@ function createNewSelectors(selector: selectorParser.Selector): Array<selectorPa
 		const sensitiveAttributes = createSensitiveAttributes(node);
 		const newSelectorsWithSensitiveAttributes: Array<selectorParser.Selector> = [];
 
+		// The per-attribute cap only bounds a single attribute. The number of
+		// generated selectors is the product across all insensitive attributes,
+		// so bound the combined total as well.
+		if (sensitiveAttributes.length * newSelectors.length > MAX_SELECTOR_VARIANTS) {
+			throw new Error(`Too many selector variants when trying to resolve case insensitive attributes, reduce the complexity of your selectors`);
+		}
+
 		sensitiveAttributes.forEach(newNode => {
 			newSelectors.forEach(newSelector => {
 				const newSelectorWithNewNode = newSelector.clone({});
@@ -115,12 +122,17 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					let modifiedSelector: string;
 
 					try {
-						modifiedSelector = selectorParser((selectors) => {
+						modifiedSelector = 						selectorParser((selectors) => {
 							let newSelectors: Array<selectorParser.Selector> = [];
 
 							selectors.each(selector => {
 								if (selectorHasInsensitiveAttribute(selector)) {
-									newSelectors = newSelectors.concat(createNewSelectors(selector));
+									const expanded = createNewSelectors(selector);
+									if (newSelectors.length + expanded.length > MAX_SELECTOR_VARIANTS) {
+										throw new Error(`Too many selector variants when trying to resolve case insensitive attributes, reduce the complexity of your selectors`);
+									}
+
+									newSelectors = newSelectors.concat(expanded);
 									selector.remove();
 								}
 							});

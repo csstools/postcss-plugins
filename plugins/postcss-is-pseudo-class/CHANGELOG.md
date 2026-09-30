@@ -1,5 +1,10 @@
 # Changes to PostCSS Is Pseudo Class
 
+### Unreleased (patch)
+
+- Bound the total number of generated selectors per rule and insert generated rules in a single batch.
+
+
 ### 6.0.1
 
 _September 25, 2026_

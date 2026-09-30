@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### Unreleased (patch)
+
+- Improved performance of declaration deduplication by caching declarations per parent
+
 ### 9.0.1
 
 _September 25, 2026_

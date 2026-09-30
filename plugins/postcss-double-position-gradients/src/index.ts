@@ -85,7 +85,13 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 					return x.type !== 'comment' && x.type !== 'space';
 				});
 
+				const funcNodeIndexes = new Map<valueParser.Node, number>();
+				func.nodes.forEach((funcNode, funcNodeIndex) => {
+					funcNodeIndexes.set(funcNode, funcNodeIndex);
+				});
+
 				let inPrefix = false;
+				let inserted = 0;
 
 				nodes.forEach((node, index, currentNodes) => {
 					if (node.type === 'word' && keywords.includes(node.value.toLowerCase())) {
@@ -118,15 +124,22 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 							sourceEndIndex: 0,
 						};
 
+						const funcNodeIndex = funcNodeIndexes.get(node);
+						if (typeof funcNodeIndex === 'undefined') {
+							return;
+						}
+
 						func.nodes.splice(
-							// 1 before the current node
-							func.nodes.indexOf(node) - 1,
+							// 1 before the current node, offset by the nodes inserted by earlier matches
+							funcNodeIndex + (inserted * 2) - 1,
 							// remove none
 							0,
 							// insert these :
 							comma,
 							color,
 						);
+
+						inserted++;
 					}
 				});
 			});

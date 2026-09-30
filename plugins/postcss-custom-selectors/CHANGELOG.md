@@ -1,5 +1,11 @@
 # Changes to PostCSS Custom Selectors
 
+### Unreleased (patch)
+
+- Bound the total number of generated selectors to prevent an exponential blowup from nested custom selectors.
+- Resolve cascade layer order in linear time instead of scanning the layer list for every node.
+
+
 ### 9.0.2
 
 _September 25, 2026_

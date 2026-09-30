@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Resize
 
+### Unreleased (patch)
+
+- Improved performance of declaration deduplication by caching declarations per parent
+
 ### 4.0.0
 
 _January 14, 2026_

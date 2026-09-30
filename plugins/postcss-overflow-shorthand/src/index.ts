@@ -58,15 +58,18 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					value: xValue,
 				});
 			} else {
-				decl.cloneBefore({
-					prop: 'overflow-x',
-					value: xValue,
-				});
-
-				decl.cloneBefore({
-					prop: 'overflow-y',
-					value: yValue,
-				});
+				// Insert as a batch: resolving the reference index for every single
+				// insertion is quadratic for a rule with many declarations.
+				decl.before([
+					decl.clone({
+						prop: 'overflow-x',
+						value: xValue,
+					}),
+					decl.clone({
+						prop: 'overflow-y',
+						value: yValue,
+					}),
+				]);
 			}
 
 			if (!options.preserve) {

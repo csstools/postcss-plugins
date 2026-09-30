@@ -1,5 +1,9 @@
 # Changes to Utilities
 
+### Unreleased (patch)
+
+- Improve performance of `hasFallback` so it is linear instead of quadratic in the number of declarations of a single container.
+
 ### 3.0.0
 
 _January 14, 2026_

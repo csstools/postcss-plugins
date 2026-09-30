@@ -36,15 +36,18 @@ export function onCSSDeclaration(decl: Declaration, result: Result , options: { 
 		});
 	}
 
-	decl.cloneBefore({
-		prop: `align-${alignment}`,
-		value: alignmentValues[0],
-	});
-
-	decl.cloneBefore({
-		prop: `justify-${alignment}`,
-		value: alignmentValues[1] || alignmentValues[0],
-	});
+	// Insert as a batch: resolving the reference index for every single
+	// insertion is quadratic for a rule with many declarations.
+	decl.before([
+		decl.clone({
+			prop: `align-${alignment}`,
+			value: alignmentValues[0],
+		}),
+		decl.clone({
+			prop: `justify-${alignment}`,
+			value: alignmentValues[1] || alignmentValues[0],
+		}),
+	]);
 
 	// conditionally remove place-[alignment]
 	if (!options.preserve) {

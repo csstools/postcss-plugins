@@ -1,5 +1,11 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Share a single expansion budget across all declarations, and resolve cascade layer order in linear time.
+- Avoid a quadratic sibling scan when checking for an existing fallback declaration.
+
+
 ### 15.0.2
 
 _September 25, 2026_
