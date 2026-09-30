@@ -1,40 +1,19 @@
 .scope {
-	--_csstools-cf-ln0emwu0-2-result: var(--_csstools-cf-ln0emwu0-1-arg-0);
-}.scope {--_csstools-cf-ln0emwu0-1-arg-0: PASS;
-}
-
-.scope {
-	--_csstools-cf-ln0emwu0-0-result: var(--_csstools-cf-ln0emwu0-2-result);
-}
-
-.scope {
 	--x: FAIL;
+	--_csstools-cf-ln0emwu0-1-arg-0: PASS;
+	--_csstools-cf-ln0emwu0-2-result: var(--_csstools-cf-ln0emwu0-1-arg-0);
+	--_csstools-cf-ln0emwu0-0-result: var(--_csstools-cf-ln0emwu0-2-result);
 	width: var(--_csstools-cf-ln0emwu0-0-result);
 }
 
 .scopes {
-	--_csstools-cf-ln0emwu0-6-result: var(--_csstools-cf-ln0emwu0-5-local-x);
-}
-
-.scopes {
-	--_csstools-cf-ln0emwu0-5-local-x: 1;
-	--_csstools-cf-ln0emwu0-4-result: var(--_csstools-cf-ln0emwu0-6-result);
-}
-
-.scopes {
-	--_csstools-cf-ln0emwu0-a-result: var(--_csstools-cf-ln0emwu0-9-local-x);
-}
-
-.scopes {
-	--_csstools-cf-ln0emwu0-9-local-x: 2;
-	--_csstools-cf-ln0emwu0-8-result: var(--_csstools-cf-ln0emwu0-a-result);
-}
-
-.scopes {
-	--_csstools-cf-ln0emwu0-c-result: var(--x);
-}
-
-.scopes {
 	--x: 0;
+	--_csstools-cf-ln0emwu0-5-local-x: 1;
+	--_csstools-cf-ln0emwu0-6-result: var(--_csstools-cf-ln0emwu0-5-local-x);
+	--_csstools-cf-ln0emwu0-4-result: var(--_csstools-cf-ln0emwu0-6-result);
+	--_csstools-cf-ln0emwu0-9-local-x: 2;
+	--_csstools-cf-ln0emwu0-a-result: var(--_csstools-cf-ln0emwu0-9-local-x);
+	--_csstools-cf-ln0emwu0-8-result: var(--_csstools-cf-ln0emwu0-a-result);
+	--_csstools-cf-ln0emwu0-c-result: var(--x);
 	width: var(--_csstools-cf-ln0emwu0-4-result) var(--_csstools-cf-ln0emwu0-8-result) var(--_csstools-cf-ln0emwu0-c-result);
 }

@@ -38,6 +38,9 @@ postcssTape(plugin)({
 	'local-keywords': {
 		message: 'resolves other CSS-wide keywords on local variables to the guaranteed-invalid value',
 	},
+	'inlining': {
+		message: 'inlines definitions without conditionals or layers',
+	},
 	cycles: {
 		message: 'handles cyclic functions',
 	},

@@ -109,6 +109,10 @@ export class CustomFunctionTranspiler {
 		const element = parent;
 		const componentValues = parseListOfComponentValues(tokens);
 
+		// Declarations that can be merged into the calling rule without changing
+		// their cascade context.
+		const inlineDecls: Array<Declaration> = [];
+
 		replaceComponentValues([componentValues], (node) => {
 			if (!isFunctionNode(node)) {
 				return;
@@ -124,10 +128,19 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			return this.processCall(node, element, new Scope(null));
+			return this.processCall(node, element, new Scope(null), inlineDecls);
 		});
 
 		const modified = stringify([componentValues]);
+		if (modified === decl.value && !inlineDecls.length) {
+			return null;
+		}
+
+		// Prepend the inlined declarations so they are available to the call.
+		for (const inlineDecl of inlineDecls) {
+			decl.cloneBefore(inlineDecl);
+		}
+
 		if (modified === decl.value) {
 			return null;
 		}
@@ -135,7 +148,7 @@ export class CustomFunctionTranspiler {
 		return modified;
 	}
 
-	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope): Array<ComponentValue> {
+	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope, inlineDecls: Array<Declaration>): Array<ComponentValue> {
 		const name = fn.getName();
 		const group = this.customFunctions.get(name);
 
@@ -166,7 +179,7 @@ export class CustomFunctionTranspiler {
 		// Arguments are resolved in the scope of the caller, before the function
 		// itself is evaluated.
 		const evaluatedArgs = args.map((arg) => {
-			return this.rewriteValue(stringify([arg]), element, parentScope);
+			return this.rewriteValue(stringify([arg]), element, parentScope, inlineDecls);
 		});
 
 		const callId = (this.counter++).toString(36);
@@ -176,15 +189,13 @@ export class CustomFunctionTranspiler {
 		this.frames.push(frame);
 
 		for (const definition of group.definitions) {
-			this.emitDefinition(definition, args, evaluatedArgs, element, parentScope, resultName);
+			this.emitDefinition(definition, args, evaluatedArgs, element, parentScope, resultName, inlineDecls);
 		}
 
 		// Once a substitution context is marked as cyclic, the whole evaluation
 		// returns the guaranteed-invalid value.
 		if (frame.cyclic) {
-			element.before(element.clone({
-				nodes: [this.invalidResultDeclaration(resultName, element)],
-			}));
+			inlineDecls.push(this.invalidResultDeclaration(resultName, element));
 		}
 
 		this.frames.pop();
@@ -200,7 +211,7 @@ export class CustomFunctionTranspiler {
 		return [this.varReference(resultName)];
 	}
 
-	private emitDefinition(definition: CustomFunctionDefinition, args: Array<Array<ComponentValue>>, evaluatedArgs: Array<string>, element: Rule, parentScope: Scope, resultName: string): void {
+	private emitDefinition(definition: CustomFunctionDefinition, args: Array<Array<ComponentValue>>, evaluatedArgs: Array<string>, element: Rule, parentScope: Scope, resultName: string, inlineDecls: Array<Declaration>): void {
 		const parameters = definition.function.parameters;
 
 		// More arguments than parameters is invalid.
@@ -236,67 +247,24 @@ export class CustomFunctionTranspiler {
 		const nodes: Array<ChildNode> = [];
 
 		if (!validArity) {
-			nodes.push(element.clone({ nodes: [this.invalidResultDeclaration(resultName, element)] }));
+			inlineDecls.push(this.invalidResultDeclaration(resultName, element));
 		} else {
-			const argDecls: Array<Declaration> = [];
-			for (let i = 0; i < parameters.length; i++) {
-				const parameter = parameters[i];
-				const type = parameterType(parameter);
-				const defaultValue = parameter.getDefaultValue();
-				const hasArgument = i < evaluatedArgs.length;
+			// Only inline when the definition can be evaluated exactly where it
+			// is called: no conditional rule around it, no conditional rule in
+			// the body, and no cascade layer to preserve.
+			const inline = definition.conditionals.length === 0 && definition.layer >= 10_000_000 && !hasConditionalBody(definition.node);
 
-				if (type) {
-					// Typed parameters use a generated `@property` registration.
-					// The registration provides the default value for missing
-					// arguments and for arguments that fail the type check.
-					if (hasArgument) {
-						argDecls.push(new PostCSSDeclaration({
-							prop: this.argName(definitionId, i),
-							value: evaluatedArgs[i],
-							source: element.source,
-						}));
-					} else if (defaultValue) {
-						argDecls.push(new PostCSSDeclaration({
-							prop: this.argName(definitionId, i),
-							value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs),
-							source: element.source,
-						}));
-					}
+			if (inline) {
+				// Arguments are prepended to the calling rule, so no extra rule
+				// is needed for them.
+				this.emitArguments(definitionId, parameters, evaluatedArgs, element, parameterScope, parameterArgs, inlineDecls, inlineDecls);
+			} else {
+				const argDecls: Array<Declaration> = [];
+				this.emitArguments(definitionId, parameters, evaluatedArgs, element, parameterScope, parameterArgs, argDecls, inlineDecls);
 
-					continue;
+				if (argDecls.length) {
+					nodes.push(...wrapInConditionals([element.clone({ nodes: argDecls })], definition.conditionals));
 				}
-
-				// Untyped parameters use a raw + fallback pair so that missing
-				// and invalid arguments resolve to the default value.
-				if (defaultValue) {
-					if (hasArgument) {
-						argDecls.push(new PostCSSDeclaration({
-							prop: this.rawName(definitionId, i),
-							value: evaluatedArgs[i],
-							source: element.source,
-						}));
-					}
-
-					argDecls.push(new PostCSSDeclaration({
-						prop: this.argName(definitionId, i),
-						value: `var(${this.rawName(definitionId, i)}, ${this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs)})`,
-						source: element.source,
-					}));
-
-					continue;
-				}
-
-				if (hasArgument) {
-					argDecls.push(new PostCSSDeclaration({
-						prop: this.argName(definitionId, i),
-						value: evaluatedArgs[i],
-						source: element.source,
-					}));
-				}
-			}
-
-			if (argDecls.length) {
-				nodes.push(element.clone({ nodes: argDecls }));
 			}
 
 			for (let i = 0; i < parameters.length; i++) {
@@ -317,17 +285,100 @@ export class CustomFunctionTranspiler {
 				}));
 			}
 
-			nodes.push(...this.emitBody(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName));
+			if (inline) {
+				this.emitBodyInline(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName, inlineDecls);
+			} else {
+				nodes.push(...this.emitBody(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName, definition.conditionals));
+			}
 		}
 
-		const wrapped = wrapInConditionals(nodes, definition.conditionals);
+		if (!nodes.length) {
+			return;
+		}
 
-		for (const node of wrapped) {
+		for (const node of nodes) {
 			element.before(node);
 		}
 	}
 
-	private emitBody(containerNodes: Array<ChildNode>, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string): Array<ChildNode> {
+	/**
+	 * Emit the declarations that bind the arguments to the parameters.
+	 */
+	private emitArguments(definitionId: string, parameters: Array<FunctionParameter>, evaluatedArgs: Array<string>, element: Rule, parameterScope: Scope, parameterArgs: Map<string, string>, out: Array<Declaration>, inlineDecls: Array<Declaration>): void {
+		for (let i = 0; i < parameters.length; i++) {
+			const parameter = parameters[i];
+			const type = parameterType(parameter);
+			const defaultValue = parameter.getDefaultValue();
+			const hasArgument = i < evaluatedArgs.length;
+
+			if (type) {
+				// Typed parameters use a generated `@property` registration.
+				// The registration provides the default value for missing
+				// arguments and for arguments that fail the type check.
+				if (hasArgument) {
+					out.push(new PostCSSDeclaration({
+						prop: this.argName(definitionId, i),
+						value: evaluatedArgs[i],
+						source: element.source,
+					}));
+				} else if (defaultValue) {
+					out.push(new PostCSSDeclaration({
+						prop: this.argName(definitionId, i),
+						value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls),
+						source: element.source,
+					}));
+				}
+
+				continue;
+			}
+
+			// Untyped parameters use a raw + fallback pair so that missing
+			// and invalid arguments resolve to the default value.
+			if (defaultValue) {
+				if (hasArgument) {
+					out.push(new PostCSSDeclaration({
+						prop: this.rawName(definitionId, i),
+						value: evaluatedArgs[i],
+						source: element.source,
+					}));
+				}
+
+				out.push(new PostCSSDeclaration({
+					prop: this.argName(definitionId, i),
+					value: `var(${this.rawName(definitionId, i)}, ${this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls)})`,
+					source: element.source,
+				}));
+
+				continue;
+			}
+
+			if (hasArgument) {
+				out.push(new PostCSSDeclaration({
+					prop: this.argName(definitionId, i),
+					value: evaluatedArgs[i],
+					source: element.source,
+				}));
+			}
+		}
+	}
+
+	/**
+	 * Emit a function body into separate rules.
+	 *
+	 * Used when the body must stay conditional. The `activeConditionals` are the
+	 * conditional group rules that currently apply to this level. Declarations
+	 * from a nested conditional rule are emitted in a rule wrapped with the
+	 * nested rule's condition, on top of the active rules.
+	 */
+	private emitBody(
+		containerNodes: Array<ChildNode>,
+		element: Rule,
+		scope: Scope,
+		parameterArgs: Map<string, string>,
+		definitionId: string,
+		resultName: string,
+		activeConditionals: Array<AtRule>,
+	): Array<ChildNode> {
 		const out: Array<ChildNode> = [];
 		let pendingDecls: Array<Declaration> = [];
 
@@ -336,13 +387,13 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			out.push(element.clone({ nodes: pendingDecls }));
+			out.push(...wrapInConditionals([element.clone({ nodes: pendingDecls })], activeConditionals));
 			pendingDecls = [];
 		};
 
 		for (const node of containerNodes) {
 			if (node.type === 'decl') {
-				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, definitionId, resultName);
+				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, definitionId, resultName, pendingDecls);
 				if (processed) {
 					pendingDecls.push(processed);
 				}
@@ -353,10 +404,7 @@ export class CustomFunctionTranspiler {
 			if (node.type === 'atrule') {
 				flush();
 
-				const children = this.emitBody(node.nodes || [], element, scope, parameterArgs, definitionId, resultName);
-				if (children.length) {
-					out.push(node.clone({ nodes: children }));
-				}
+				out.push(...this.emitBody(node.nodes || [], element, scope, parameterArgs, definitionId, resultName, [...activeConditionals, node]));
 
 				continue;
 			}
@@ -367,7 +415,39 @@ export class CustomFunctionTranspiler {
 		return out;
 	}
 
-	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string): Declaration | null {
+	/**
+	 * Emit a function body into a flat declaration list.
+	 *
+	 * Used when the definition is not guarded by any conditional rule, so all
+	 * declarations can be inlined into the calling rule. The body itself may
+	 * still contain conditional rules; those are preserved as nested rules.
+	 */
+	private emitBodyInline(
+		containerNodes: Array<ChildNode>,
+		element: Rule,
+		scope: Scope,
+		parameterArgs: Map<string, string>,
+		definitionId: string,
+		resultName: string,
+		out: Array<Declaration>,
+	): void {
+		for (const node of containerNodes) {
+			if (node.type === 'decl') {
+				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, definitionId, resultName, out);
+				if (processed) {
+					out.push(processed);
+				}
+
+				continue;
+			}
+
+			if (node.type === 'atrule') {
+				this.emitBodyInline(node.nodes || [], element, scope, parameterArgs, definitionId, resultName, out);
+			}
+		}
+	}
+
+	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string, inlineDecls: Array<Declaration>): Declaration | null {
 		let prop: string;
 
 		if (decl.prop.toLowerCase() === 'result') {
@@ -388,7 +468,7 @@ export class CustomFunctionTranspiler {
 		// being declared, including when they appear as a `var()` fallback.
 		// This runs after the regular rewriting so that the inserted call-site
 		// references are not rewritten to the local scope.
-		let value = this.rewriteValue(decl.value, element, scope);
+		let value = this.rewriteValue(decl.value, element, scope, inlineDecls);
 		if (decl.prop.startsWith('--')) {
 			value = this.resolveBodyKeywords(value, decl.prop, scope, parameterArgs);
 		}
@@ -432,8 +512,8 @@ export class CustomFunctionTranspiler {
 	 * Only the parameters are visible and CSS-wide keywords resolve against the
 	 * parameter name.
 	 */
-	private rewriteDefault(defaultValue: string, parameterName: string, element: Rule, scope: Scope, parameterArgs: Map<string, string>): string {
-		const rewritten = this.rewriteValue(defaultValue, element, scope);
+	private rewriteDefault(defaultValue: string, parameterName: string, element: Rule, scope: Scope, parameterArgs: Map<string, string>, inlineDecls: Array<Declaration>): string {
+		const rewritten = this.rewriteValue(defaultValue, element, scope, inlineDecls);
 		return this.resolveBodyKeywords(rewritten, parameterName, scope, parameterArgs);
 	}
 
@@ -455,7 +535,7 @@ export class CustomFunctionTranspiler {
 		return null;
 	}
 
-	private rewriteValue(value: string, element: Rule, scope: Scope): string {
+	private rewriteValue(value: string, element: Rule, scope: Scope, inlineDecls: Array<Declaration>): string {
 		const tokens = tokenize({ css: value });
 		if (!tokens.some((token) => isTokenFunction(token) && (token[4].value.toLowerCase() === 'var' || token[4].value.startsWith('--')))) {
 			return value;
@@ -484,7 +564,7 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			return this.processCall(node, element, scope);
+			return this.processCall(node, element, scope, inlineDecls);
 		});
 
 		return stringify([componentValues]);
@@ -660,6 +740,24 @@ function unwrapArgument(list: Array<ComponentValue>): Array<ComponentValue> | fa
 	}
 
 	return list;
+}
+
+/**
+ * Whether a function body contains any conditional group rule.
+ *
+ * Bodies with conditional rules can not be inlined into a single declaration
+ * list, because those declarations must stay conditional.
+ */
+function hasConditionalBody(atRule: AtRule): boolean {
+	let found = false;
+
+	atRule.walkAtRules((child) => {
+		if (child.nodes) {
+			found = true;
+		}
+	});
+
+	return found;
 }
 
 /**
