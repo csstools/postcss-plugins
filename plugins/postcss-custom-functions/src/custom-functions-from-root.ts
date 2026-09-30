@@ -3,6 +3,7 @@ import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-l
 import { isProcessableRule } from './is-processable-rule';
 import type { CustomFunction } from '@csstools/custom-function-parser';
 import { parse } from '@csstools/custom-function-parser';
+import { isComputationallyIndependent } from './is-computationally-independent';
 
 export type CustomFunctionAndNode = {
 	function: CustomFunction;
@@ -27,7 +28,13 @@ function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 		const typed = !!type && type !== '*';
 		const hasDefault = !!parameter.getDefaultValue();
 
-		return (typed && hasDefault) || (!typed && !hasDefault);
+		if (typed && hasDefault) {
+			// A default value becomes the `initial-value` of the generated
+			// `@property` registration and must be computationally independent.
+			return isComputationallyIndependent(parameter.getDefaultValue());
+		}
+
+		return !typed && !hasDefault;
 	});
 }
 

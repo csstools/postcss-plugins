@@ -7,7 +7,7 @@
 }
 
 .cycle-through-unused-local {
-	--tmp: var(--_csstools-cf-63y219qj-0-result);
+	--tmp: var(--_csstools-cf-invalid);
 	--actual: var(--tmp, PASS);
 }
 
@@ -19,7 +19,7 @@
 }
 
 .self-cycle {
-	--tmp: var(--_csstools-cf-63y219qj-1-result);
+	--tmp: var(--_csstools-cf-invalid);
 	--actual: var(--tmp, PASS);
 }
 
@@ -35,6 +35,19 @@
 }
 
 .ping-pong {
-	--tmp: var(--_csstools-cf-63y219qj-2-result);
+	--tmp: var(--_csstools-cf-invalid);
+	--actual: var(--tmp, PASS);
+}
+
+.keyword-with-cycle {
+	--_csstools-cf-63y219qj-4-local-unused: var(--_csstools-cf-invalid);
+	--_csstools-cf-63y219qj-4-result: inherit;
+}
+
+.keyword-with-cycle {--_csstools-cf-63y219qj-4-result: var(--_csstools-cf-invalid);
+}
+
+.keyword-with-cycle {
+	--tmp: var(--_csstools-cf-invalid);
 	--actual: var(--tmp, PASS);
 }

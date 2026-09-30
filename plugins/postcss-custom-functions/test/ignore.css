@@ -21,3 +21,19 @@
 .typed-return {
 	width: --typed-return();
 }
+
+@function --em-default(--x <length>: 1em) {
+	result: var(--x);
+}
+
+.em-default {
+	width: --em-default(10px);
+}
+
+@function --var-default(--x <length>: var(--y)) {
+	result: var(--x);
+}
+
+.var-default {
+	width: --var-default(10px);
+}

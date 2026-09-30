@@ -338,6 +338,20 @@
 					}
 				`,
 			},
+			{
+				name: 'Cycle invalidates a CSS-wide keyword result',
+				style: `
+					@function --f() {
+						--unused: --f();
+						result: inherit;
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
 		];
 
 		for (const testCase of testCases) {

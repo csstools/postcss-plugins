@@ -166,10 +166,10 @@ export class CustomFunctionTranspiler {
 
 		// CSS-wide keywords in `result` are left unresolved by the spec, so they
 		// must be substituted directly instead of going through `var()`.
+		//
+		// This is only used when the function is not cyclic. A cycle anywhere in
+		// the body makes the whole evaluation invalid.
 		const keywordResult = staticResultKeyword(entry.node);
-		if (keywordResult) {
-			return [new CSSATokenNode([TokenType.Ident, keywordResult, -1, -1, { value: keywordResult }])];
-		}
 
 		// Arguments are resolved in the scope of the caller, before the function
 		// itself is evaluated.
@@ -259,6 +259,14 @@ export class CustomFunctionTranspiler {
 		}
 
 		this.frames.pop();
+
+		if (frame.cyclic) {
+			return [this.varReference(INVALID_IDENT)];
+		}
+
+		if (keywordResult) {
+			return [new CSSATokenNode([TokenType.Ident, keywordResult, -1, -1, { value: keywordResult }])];
+		}
 
 		return [this.varReference(this.resultName(id))];
 	}

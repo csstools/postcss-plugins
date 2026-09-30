@@ -29,3 +29,13 @@
 	--tmp: --ping();
 	--actual: var(--tmp, PASS);
 }
+
+@function --keyword-with-cycle() {
+	--unused: --keyword-with-cycle();
+	result: inherit;
+}
+
+.keyword-with-cycle {
+	--tmp: --keyword-with-cycle();
+	--actual: var(--tmp, PASS);
+}
