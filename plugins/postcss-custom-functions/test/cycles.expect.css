@@ -1,5 +1,5 @@
 .cycle-through-unused-local {
-	--_csstools-cf-63y219qj-0-local-unused: var(--_csstools-cf-invalid);
+	--_csstools-cf-63y219qj-1-local-unused: var(--_csstools-cf-invalid);
 	--_csstools-cf-63y219qj-0-result: FAIL-result;
 }
 
@@ -12,10 +12,10 @@
 }
 
 .self-cycle {
-	--_csstools-cf-63y219qj-1-result: var(--_csstools-cf-invalid);
+	--_csstools-cf-63y219qj-2-result: var(--_csstools-cf-invalid);
 }
 
-.self-cycle {--_csstools-cf-63y219qj-1-result: var(--_csstools-cf-invalid);
+.self-cycle {--_csstools-cf-63y219qj-2-result: var(--_csstools-cf-invalid);
 }
 
 .self-cycle {
@@ -24,14 +24,14 @@
 }
 
 .ping-pong {
-	--_csstools-cf-63y219qj-3-result: var(--_csstools-cf-invalid);
+	--_csstools-cf-63y219qj-6-result: var(--_csstools-cf-invalid);
 }
 
 .ping-pong {
-	--_csstools-cf-63y219qj-2-result: var(--_csstools-cf-63y219qj-3-result);
+	--_csstools-cf-63y219qj-4-result: var(--_csstools-cf-63y219qj-6-result);
 }
 
-.ping-pong {--_csstools-cf-63y219qj-2-result: var(--_csstools-cf-invalid);
+.ping-pong {--_csstools-cf-63y219qj-4-result: var(--_csstools-cf-invalid);
 }
 
 .ping-pong {
@@ -40,11 +40,11 @@
 }
 
 .keyword-with-cycle {
-	--_csstools-cf-63y219qj-4-local-unused: var(--_csstools-cf-invalid);
-	--_csstools-cf-63y219qj-4-result: inherit;
+	--_csstools-cf-63y219qj-9-local-unused: var(--_csstools-cf-invalid);
+	--_csstools-cf-63y219qj-8-result: inherit;
 }
 
-.keyword-with-cycle {--_csstools-cf-63y219qj-4-result: var(--_csstools-cf-invalid);
+.keyword-with-cycle {--_csstools-cf-63y219qj-8-result: var(--_csstools-cf-invalid);
 }
 
 .keyword-with-cycle {

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<title>Custom Functions: @function inside @media (dynamic)</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1">
+
+<iframe id="iframe" style="width: 50px; height: 50px; border: 0;"></iframe>
+<div id="main"></div>
+
+<script>
+	function stylesUrl() {
+		return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+	}
+
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/function-in-media.html
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const css = `
+			@media (width >= 50px) {
+				@function --f() { result: 50; }
+			}
+			@media (width >= 100px) {
+				@function --f() { result: 100; }
+			}
+			#target {
+				--actual: --f();
+			}
+		`;
+
+		const transformed = await (fetch(stylesUrl(), {
+			method: 'POST',
+			body: css,
+		}).then((response) => response.text()));
+
+		const iframe = document.getElementById('iframe');
+
+		await new Promise((resolve) => {
+			iframe.addEventListener('load', resolve, { once: true });
+			iframe.srcdoc = '<div id="target"></div>';
+		});
+
+		const styleElement = iframe.contentDocument.createElement('style');
+		styleElement.textContent = transformed;
+		iframe.contentDocument.head.append(styleElement);
+
+		const target = iframe.contentDocument.getElementById('target');
+		const actualValue = () => iframe.contentWindow.getComputedStyle(target).getPropertyValue('--actual');
+
+		const nextFrame = () => new Promise((resolve) => {
+			iframe.contentWindow.requestAnimationFrame(() => {
+				iframe.contentWindow.requestAnimationFrame(resolve);
+			});
+		});
+
+		await nextFrame();
+		assert_equals(actualValue(), '50', '--actual before resize');
+
+		iframe.style.width = '100px';
+		await nextFrame();
+		assert_equals(actualValue(), '100', '--actual after resize');
+
+		iframe.style.width = '50px';
+		await nextFrame();
+		assert_equals(actualValue(), '50', '--actual after resizing back');
+
+		return true;
+	};
+</script>

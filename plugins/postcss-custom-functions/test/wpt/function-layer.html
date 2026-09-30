@@ -8,6 +8,10 @@
 <script>
 	// Adapted from:
 	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/function-layer.html
+		function stylesUrl() {
+			return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+		}
+
 	window.runTest = async function runTest() {
 		function assert_equals(actual, expected, message) {
 			if (actual !== expected) {
@@ -124,7 +128,7 @@
 		for (const testCase of testCases) {
 			const styleElement = document.createElement('style');
 
-			const testCaseStyle = await (fetch('/test/styles.css', {
+			const testCaseStyle = await (fetch(stylesUrl(), {
 				method: 'POST',
 				body: testCase.style,
 			}).then((response) => response.text()));

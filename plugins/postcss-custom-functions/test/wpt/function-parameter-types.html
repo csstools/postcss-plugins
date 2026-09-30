@@ -12,6 +12,10 @@
 	//
 	// The type is enforced through a generated `@property` registration, so a
 	// value that does not match the type falls back to the default value.
+		function stylesUrl() {
+			return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+		}
+
 	window.runTest = async function runTest() {
 		function assert_equals(actual, expected, message) {
 			if (actual !== expected) {
@@ -192,9 +196,9 @@
 				`,
 			},
 			{
-				name: 'initial in a local refers to the parameter value',
+				name: 'initial in an untyped local refers to the parameter value',
 				style: `
-					@function --f(--x <length>: 10px) {
+					@function --f(--x) {
 						--x: 20px;
 						--x: initial;
 						result: var(--x);
@@ -202,6 +206,20 @@
 					#target {
 						--actual: --f(5px);
 						--expected: 5px;
+					}
+				`,
+			},
+			{
+				name: 'initial in a typed local is the guaranteed-invalid value',
+				style: `
+					@function --f(--x <length>: 10px) {
+						--x: 20px;
+						--x: initial;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(5px);
+						--expected: PASS;
 					}
 				`,
 			},
@@ -224,7 +242,7 @@
 		for (const testCase of testCases) {
 			const styleElement = document.createElement('style');
 
-			const testCaseStyle = await (fetch('/test/styles.css', {
+			const testCaseStyle = await (fetch(stylesUrl(), {
 				method: 'POST',
 				body: testCase.style,
 			}).then((response) => response.text()));

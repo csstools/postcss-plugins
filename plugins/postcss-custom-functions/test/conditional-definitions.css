@@ -1,0 +1,51 @@
+@supports (width: 100px) {
+	@function --f() {
+		result: PASS;
+	}
+}
+
+@supports (not (width: 100px)) {
+	@function --f() {
+		result: FAIL;
+	}
+}
+
+.conditional {
+	width: --f();
+}
+
+@media (width >= 50px) {
+	@function --g() {
+		result: 50px;
+	}
+}
+
+@media (width >= 100px) {
+	@function --g() {
+		result: 100px;
+	}
+}
+
+.media {
+	width: --g();
+}
+
+@layer base {
+	@media (width >= 50px) {
+		@function --h() {
+			result: 1px;
+		}
+	}
+}
+
+@layer theme {
+	@media (width >= 99999px) {
+		@function --h() {
+			result: 2px;
+		}
+	}
+}
+
+.layered-media {
+	width: --h();
+}

@@ -1,5 +1,5 @@
 import type { Plugin, PluginCreator } from 'postcss';
-import type { CustomFunctionAndNode } from './custom-functions-from-root';
+import type { CustomFunctionGroup } from './custom-functions-from-root';
 import { getCustomFunctions } from './custom-functions-from-root';
 import { isProcessableDeclaration } from './is-processable-declaration';
 import { CustomFunctionTranspiler } from './transpile';
@@ -25,7 +25,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-custom-functions',
 		prepare(): Plugin {
-			let customFunctions: Map<string, CustomFunctionAndNode> = new Map();
+			let customFunctions: Map<string, CustomFunctionGroup> = new Map();
 			const transpiler = new CustomFunctionTranspiler();
 
 			return {

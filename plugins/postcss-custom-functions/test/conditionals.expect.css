@@ -11,19 +11,19 @@
 }
 
 .conditional-locals {
-	--_csstools-cf-c7hag91p-1-local-x: FAIL;
+	--_csstools-cf-c7hag91p-3-local-x: FAIL;
 }
 	@media (width > 0px) {
 
 .conditional-locals {
-		--_csstools-cf-c7hag91p-1-local-x: PASS;
+		--_csstools-cf-c7hag91p-3-local-x: PASS;
 }
 	}
 
 .conditional-locals {
-	--_csstools-cf-c7hag91p-1-result: var(--_csstools-cf-c7hag91p-1-local-x);
+	--_csstools-cf-c7hag91p-2-result: var(--_csstools-cf-c7hag91p-3-local-x);
 }
 
 .conditional-locals {
-	width: var(--_csstools-cf-c7hag91p-1-result);
+	width: var(--_csstools-cf-c7hag91p-2-result);
 }

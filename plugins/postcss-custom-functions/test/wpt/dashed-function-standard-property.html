@@ -10,6 +10,10 @@
 	//
 	// The typed return case is omitted because typed return values are not
 	// supported yet.
+		function stylesUrl() {
+			return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+		}
+
 	window.runTest = async function runTest() {
 		function assert_equals(actual, expected, message) {
 			if (actual !== expected) {
@@ -32,7 +36,7 @@
 		`;
 
 		const styleElement = document.createElement('style');
-		styleElement.textContent = await (fetch('/test/styles.css', {
+		styleElement.textContent = await (fetch(stylesUrl(), {
 			method: 'POST',
 			body: style,
 		}).then((response) => response.text()));

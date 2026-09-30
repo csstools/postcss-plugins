@@ -37,3 +37,14 @@
 .var-default {
 	width: --var-default(10px);
 }
+
+/* Browsers ignore `@container` on `@function` definitions, so this is left alone. */
+@container (width = 100px) {
+	@function --container-fn() {
+		result: 1px;
+	}
+}
+
+.container-fn {
+	width: --container-fn();
+}

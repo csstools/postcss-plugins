@@ -8,9 +8,9 @@ import process from 'node:process';
 
 // The transformed cases run the source through this plugin.
 //
-// The untransformed cases are handed to the browser as-is and only pass when
-// the browser itself implements custom functions. Point Puppeteer at such a
-// browser via `PUPPETEER_EXECUTABLE_PATH`.
+// When the browser implements custom functions natively, the same cases are
+// also run untransformed and must produce the same outcome. Point Puppeteer at
+// such a browser via `PUPPETEER_EXECUTABLE_PATH`.
 
 const PAGES = [
 	'wpt/dashed-function-eval.html',
@@ -20,6 +20,8 @@ const PAGES = [
 	'wpt/dashed-function-cycles.html',
 	'wpt/function-parameter-types.html',
 	'wpt/function-layer.html',
+	'wpt/function-conditional-definitions.html',
+	'wpt/function-in-media.html',
 ];
 
 const requestListener = async function (req, res) {
@@ -94,6 +96,29 @@ function startServers() {
 	};
 }
 
+async function hasNativeSupport(page) {
+	return await page.evaluate(async () => {
+		/* eslint-disable no-undef */
+		const css = '@function --support-probe() { result: 12px; } #support-probe { --actual: --support-probe(); }';
+		const response = await fetch('/test/styles.css?transform=false', { method: 'POST', body: css });
+		const styleElement = document.createElement('style');
+		styleElement.textContent = await response.text();
+		document.head.append(styleElement);
+
+		const probe = document.createElement('div');
+		probe.id = 'support-probe';
+		document.body.append(probe);
+
+		const value = window.getComputedStyle(probe).getPropertyValue('--actual');
+
+		probe.remove();
+		styleElement.remove();
+
+		return value;
+		/* eslint-enable no-undef */
+	}) === '12px';
+}
+
 if (!process.env.DEBUG) {
 	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
 		const cleanup = startServers();
@@ -112,14 +137,28 @@ if (!process.env.DEBUG) {
 				throw msg;
 			});
 
+			await page.goto('http://localhost:8080/');
+
+			const nativeSupport = await hasNativeSupport(page);
+			const transforms = nativeSupport ? [true, false] : [true];
+
 			for (const url of PAGES) {
-				await page.goto('http://localhost:8080/' + url);
-				const result = await page.evaluate(async () => {
-					// eslint-disable-next-line no-undef
-					return await window.runTest();
-				});
-				if (!result) {
-					throw new Error('Test failed, expected "window.runTest()" to return true');
+				for (const transform of transforms) {
+					await page.evaluateOnNewDocument((value) => {
+						// eslint-disable-next-line no-undef
+						window.__TRANSFORM__ = value;
+					}, transform);
+
+					await page.goto('http://localhost:8080/' + url);
+
+					const result = await page.evaluate(async () => {
+						// eslint-disable-next-line no-undef
+						return await window.runTest();
+					});
+
+					if (!result) {
+						throw new Error(`Test failed, expected "window.runTest()" to return true (${url}, transform=${transform})`);
+					}
 				}
 			}
 		} finally {

@@ -1,10 +1,8 @@
-.initial-local {--_csstools-cf-e2576d6c-0-arg-0: 5px;
-}
-
-.initial-local {
-	--_csstools-cf-e2576d6c-0-local-x: 20px;
-	--_csstools-cf-e2576d6c-0-local-x: var(--_csstools-cf-e2576d6c-0-arg-0);
-	--_csstools-cf-e2576d6c-0-result: var(--_csstools-cf-e2576d6c-0-local-x);
+.initial-local {--_csstools-cf-e2576d6c-1-arg-0: 5px;
+}.initial-local {
+	--_csstools-cf-e2576d6c-1-local-x: 20px;
+	--_csstools-cf-e2576d6c-1-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-e2576d6c-0-result: var(--_csstools-cf-e2576d6c-1-local-x);
 }
 
 .initial-local {
@@ -12,31 +10,31 @@
 }
 
 .inherit-local {
-	--_csstools-cf-e2576d6c-1-local-x: var(--x);
-	--_csstools-cf-e2576d6c-1-result: var(--_csstools-cf-e2576d6c-1-local-x);
+	--_csstools-cf-e2576d6c-3-local-x: var(--x);
+	--_csstools-cf-e2576d6c-2-result: var(--_csstools-cf-e2576d6c-3-local-x);
 }
 
 .inherit-local {
 	--x: 20px;
-	width: var(--_csstools-cf-e2576d6c-1-result);
+	width: var(--_csstools-cf-e2576d6c-2-result);
 }
 
 .inherit-outer {
-	--_csstools-cf-e2576d6c-3-local-x: var(--_csstools-cf-e2576d6c-2-local-x);
-	--_csstools-cf-e2576d6c-3-result: var(--_csstools-cf-e2576d6c-3-local-x);
+	--_csstools-cf-e2576d6c-7-local-x: var(--_csstools-cf-e2576d6c-5-local-x);
+	--_csstools-cf-e2576d6c-6-result: var(--_csstools-cf-e2576d6c-7-local-x);
 }
 
 .inherit-outer {
-	--_csstools-cf-e2576d6c-2-local-x: 20px;
-	--_csstools-cf-e2576d6c-2-result: var(--_csstools-cf-e2576d6c-3-result);
+	--_csstools-cf-e2576d6c-5-local-x: 20px;
+	--_csstools-cf-e2576d6c-4-result: var(--_csstools-cf-e2576d6c-6-result);
 }
 
 .inherit-outer {
 	--x: 1px;
-	width: var(--_csstools-cf-e2576d6c-2-result);
+	width: var(--_csstools-cf-e2576d6c-4-result);
 }
 
-@property --_csstools-cf-e2576d6c-0-arg-0 {
+@property --_csstools-cf-e2576d6c-1-arg-0 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 10px;

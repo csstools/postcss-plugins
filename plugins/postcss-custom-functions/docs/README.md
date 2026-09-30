@@ -26,11 +26,15 @@ Unsupported:
 - typed parameters without default values
 - untyped parameters with default values
 - return types
+- `@function` definitions inside `@container` or `@scope`
+
+Definitions inside `@layer`, `@media` and `@supports` are supported. When a name
+has several active definitions, the browser cascade selects the strongest one.
 
 Typed parameters with default values are checked by the browser through a
 generated `@property` registration. A default value that is not
 computationally independent (for example `1em` or `var(--x)`) can not be used
-as an `initial-value` and disables type checking for that parameter.
+as an `initial-value` and makes the function unsupported.
 
 ```css
 <example.css>

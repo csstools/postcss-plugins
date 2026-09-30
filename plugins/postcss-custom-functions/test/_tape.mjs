@@ -32,6 +32,15 @@ postcssTape(plugin)({
 	'conditionals': {
 		message: 'supports conditional rules',
 	},
+	'conditional-definitions': {
+		message: 'supports definitions inside conditional rules',
+	},
+	'conditional-definitions:preserve-true': {
+		message: 'supports definitions inside conditional rules with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	'invalid': {
 		message: 'handles invalid invocations',
 	},

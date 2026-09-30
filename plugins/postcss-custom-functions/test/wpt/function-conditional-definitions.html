@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<title>Custom Functions: @function inside conditional rules</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#function-rule">
+
+<style>
+	#container {
+		container-type: size;
+		width: 100px;
+		height: 50px;
+	}
+</style>
+
+<div id="container">
+	<div id="target"></div>
+</div>
+<div id="main"></div>
+
+<script>
+	function stylesUrl() {
+		return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+	}
+
+	// Definitions inside dynamic conditional rules are conditionally available.
+	// The strongest *active* definition wins.
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: '@supports picks the active definition',
+				style: `
+					@supports (width: 100px) {
+						@function --f() { result: PASS; }
+					}
+					@supports (not (width: 100px)) {
+						@function --f() { result: FAIL; }
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: '@media picks the active definition',
+				style: `
+					@media (min-width: 0px) {
+						@function --f() { result: PASS; }
+					}
+					@media (min-width: 99999px) {
+						@function --f() { result: FAIL; }
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: '@media later definition wins when both are active',
+				style: `
+					@media (min-width: 0px) {
+						@function --f() { result: FAIL; }
+					}
+					@media (min-width: 0px) {
+						@function --f() { result: PASS; }
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'no active definition is invalid',
+				style: `
+					@media (min-width: 99999px) {
+						@function --f() { result: FAIL; }
+					}
+					#target {
+						--actual: var(--x, PASS);
+						--x: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'stronger layer only wins when active',
+				style: `
+					@layer base {
+						@media (min-width: 0px) {
+							@function --f() { result: PASS; }
+						}
+					}
+					@layer theme {
+						@media (min-width: 99999px) {
+							@function --f() { result: FAIL; }
+						}
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'stronger layer wins when both are active',
+				style: `
+					@layer base {
+						@function --f() { result: FAIL; }
+					}
+					@layer theme {
+						@function --f() { result: PASS; }
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch(stylesUrl(), {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>

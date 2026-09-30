@@ -1,8 +1,6 @@
-.negative-a {--_csstools-cf-86hq2t3p-0-arg-0: var(--gap);
-}
-
-.negative-a {
-	--_csstools-cf-86hq2t3p-0-result: calc(-1 * var(--_csstools-cf-86hq2t3p-0-arg-0));
+.negative-a {--_csstools-cf-86hq2t3p-1-arg-0: var(--gap);
+}.negative-a {
+	--_csstools-cf-86hq2t3p-0-result: calc(-1 * var(--_csstools-cf-86hq2t3p-1-arg-0));
 }
 
 .negative-a {
@@ -10,25 +8,25 @@
 	padding: var(--_csstools-cf-86hq2t3p-0-result);
 }
 
-.negative-b {--_csstools-cf-86hq2t3p-1-arg-0: 1em;
+.negative-b {--_csstools-cf-86hq2t3p-3-arg-0: 1em;
 }
 
 .negative-b {
-	--_csstools-cf-86hq2t3p-1-result: calc(-1 * var(--_csstools-cf-86hq2t3p-1-arg-0));
+	--_csstools-cf-86hq2t3p-2-result: calc(-1 * var(--_csstools-cf-86hq2t3p-3-arg-0));
 }
 
 .negative-b {
-	padding: var(--_csstools-cf-86hq2t3p-1-result);
+	padding: var(--_csstools-cf-86hq2t3p-2-result);
 }
 
-.circle {--_csstools-cf-86hq2t3p-2-arg-0: 2px;
-}
-
-.circle {
-	--_csstools-cf-86hq2t3p-2-local-r2: calc(var(--_csstools-cf-86hq2t3p-2-arg-0) * var(--_csstools-cf-86hq2t3p-2-arg-0));
-	--_csstools-cf-86hq2t3p-2-result: calc(3.14159 * var(--_csstools-cf-86hq2t3p-2-local-r2));
+.circle {--_csstools-cf-86hq2t3p-5-arg-0: 2px;
 }
 
 .circle {
-	width: var(--_csstools-cf-86hq2t3p-2-result);
+	--_csstools-cf-86hq2t3p-5-local-r2: calc(var(--_csstools-cf-86hq2t3p-5-arg-0) * var(--_csstools-cf-86hq2t3p-5-arg-0));
+	--_csstools-cf-86hq2t3p-4-result: calc(3.14159 * var(--_csstools-cf-86hq2t3p-5-local-r2));
+}
+
+.circle {
+	width: var(--_csstools-cf-86hq2t3p-4-result);
 }

@@ -15,11 +15,15 @@ Unsupported:
 - typed parameters without default values
 - untyped parameters with default values
 - return types
+- `@function` definitions inside `@container` or `@scope`
+
+Definitions inside `@layer`, `@media` and `@supports` are supported. When a name
+has several active definitions, the browser cascade selects the strongest one.
 
 Typed parameters with default values are checked by the browser through a
 generated `@property` registration. A default value that is not
 computationally independent (for example `1em` or `var(--x)`) can not be used
-as an `initial-value` and disables type checking for that parameter.
+as an `initial-value` and makes the function unsupported.
 
 ```css
 @function --negative(--value) {
@@ -38,22 +42,17 @@ html {
 
 /* becomes */
 
-html {--_csstools-cf-1agle9gi-0-arg-0: var(--gap);
-}
-html {
-	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-0-arg-0));
-}
-html {--_csstools-cf-1agle9gi-1-arg-0: 4px;
-}
-html {
-	--_csstools-cf-1agle9gi-1-result: calc(2 * var(--_csstools-cf-1agle9gi-1-arg-0));
-}
-html {
+html {--_csstools-cf-1agle9gi-1-arg-0: var(--gap);
+}html {
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-1-arg-0));
+}html {--_csstools-cf-1agle9gi-3-arg-0: 4px;
+}html {
+	--_csstools-cf-1agle9gi-2-result: calc(2 * var(--_csstools-cf-1agle9gi-3-arg-0));
+}html {
 	--gap: 1em;
 	padding: var(--_csstools-cf-1agle9gi-0-result);
-	margin: var(--_csstools-cf-1agle9gi-1-result);
-}
-@property --_csstools-cf-1agle9gi-1-arg-0 {
+	margin: var(--_csstools-cf-1agle9gi-2-result);
+}@property --_csstools-cf-1agle9gi-3-arg-0 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 1px;
@@ -126,29 +125,29 @@ html {
 	result: calc(2 * var(--value));
 }
 
-html {--_csstools-cf-1agle9gi-0-arg-0: var(--gap);
+html {--_csstools-cf-1agle9gi-1-arg-0: var(--gap);
 }
 
 html {
-	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-0-arg-0));
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-1-arg-0));
 }
 
-html {--_csstools-cf-1agle9gi-1-arg-0: 4px;
+html {--_csstools-cf-1agle9gi-3-arg-0: 4px;
 }
 
 html {
-	--_csstools-cf-1agle9gi-1-result: calc(2 * var(--_csstools-cf-1agle9gi-1-arg-0));
+	--_csstools-cf-1agle9gi-2-result: calc(2 * var(--_csstools-cf-1agle9gi-3-arg-0));
 }
 
 html {
 	--gap: 1em;
 	padding: var(--_csstools-cf-1agle9gi-0-result);
 	padding: --negative(var(--gap));
-	margin: var(--_csstools-cf-1agle9gi-1-result);
+	margin: var(--_csstools-cf-1agle9gi-2-result);
 	margin: --double(4px);
 }
 
-@property --_csstools-cf-1agle9gi-1-arg-0 {
+@property --_csstools-cf-1agle9gi-3-arg-0 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 1px;
