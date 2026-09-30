@@ -634,6 +634,20 @@
 				`,
 			},
 			{
+				name: 'Local variable with initial keyword, no value via IACVT-capture',
+				style: `
+					@function --f(--x) {
+						--x: FAIL;
+						--x: initial;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(var(--unknown));
+						--expected: PASS;
+					}
+				`,
+			},
+			{
 				name: 'initial keyword left unresolved on result descriptor',
 				style: `
 					@function --f() {

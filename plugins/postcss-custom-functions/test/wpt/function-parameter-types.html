@@ -210,16 +210,65 @@
 				`,
 			},
 			{
-				name: 'initial in a typed local is the guaranteed-invalid value',
+				// The spec resolves `initial` to the parameter's own value for
+				// typed parameters too. Chrome currently resolves it to the
+				// guaranteed-invalid value, so this case is not asserted natively.
+				name: 'initial in a typed local refers to the parameter value',
+				skipNative: true,
 				style: `
 					@function --f(--x <length>: 10px) {
 						--x: 20px;
 						--x: initial;
-						result: var(--x, PASS);
+						result: var(--x);
 					}
 					#target {
 						--actual: --f(5px);
-						--expected: PASS;
+						--expected: 5px;
+					}
+				`,
+			},
+			{
+				name: 'initial in a typed local refers to the default value',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 10px) {
+						--x: 20px;
+						--x: initial;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'initial in a typed local refers to the default value for an invalid argument',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 10px) {
+						--x: 20px;
+						--x: initial;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(red);
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'initial in a complex typed local refers to the parameter value',
+				skipNative: true,
+				style: `
+					@function --f(--x type(<length> | auto): auto) {
+						--x: 20px;
+						--x: initial;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(5px);
+						--expected: 5px;
 					}
 				`,
 			},
@@ -240,6 +289,10 @@
 		];
 
 		for (const testCase of testCases) {
+			if (window.__TRANSFORM__ === false && testCase.skipNative) {
+				continue;
+			}
+
 			const styleElement = document.createElement('style');
 
 			const testCaseStyle = await (fetch(stylesUrl(), {

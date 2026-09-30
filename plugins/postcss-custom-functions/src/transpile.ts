@@ -217,16 +217,11 @@ export class CustomFunctionTranspiler {
 		const definitionId = (this.counter++).toString(36);
 		const scope = new Scope(parentScope);
 		const parameterArgs = new Map<string, string>();
-		const typedParameters = new Set<string>();
 
 		for (let i = 0; i < parameters.length; i++) {
 			const argName = this.argName(definitionId, i);
 			scope.names.set(parameters[i].getName(), argName);
 			parameterArgs.set(parameters[i].getName(), argName);
-
-			if (parameterType(parameters[i])) {
-				typedParameters.add(parameters[i].getName());
-			}
 		}
 
 		for (const localName of collectLocalNames(definition.node)) {
@@ -283,7 +278,7 @@ export class CustomFunctionTranspiler {
 				}));
 			}
 
-			nodes.push(...this.emitBody(definition.node.nodes || [], element, scope, parameterArgs, typedParameters, definitionId, resultName));
+			nodes.push(...this.emitBody(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName));
 		}
 
 		const wrapped = wrapInConditionals(nodes, definition.conditionals);
@@ -293,7 +288,7 @@ export class CustomFunctionTranspiler {
 		}
 	}
 
-	private emitBody(containerNodes: Array<ChildNode>, element: Rule, scope: Scope, parameterArgs: Map<string, string>, typedParameters: Set<string>, definitionId: string, resultName: string): Array<ChildNode> {
+	private emitBody(containerNodes: Array<ChildNode>, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string): Array<ChildNode> {
 		const out: Array<ChildNode> = [];
 		let pendingDecls: Array<Declaration> = [];
 
@@ -308,7 +303,7 @@ export class CustomFunctionTranspiler {
 
 		for (const node of containerNodes) {
 			if (node.type === 'decl') {
-				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, typedParameters, definitionId, resultName);
+				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, definitionId, resultName);
 				if (processed) {
 					pendingDecls.push(processed);
 				}
@@ -319,7 +314,7 @@ export class CustomFunctionTranspiler {
 			if (node.type === 'atrule') {
 				flush();
 
-				const children = this.emitBody(node.nodes || [], element, scope, parameterArgs, typedParameters, definitionId, resultName);
+				const children = this.emitBody(node.nodes || [], element, scope, parameterArgs, definitionId, resultName);
 				if (children.length) {
 					out.push(node.clone({ nodes: children }));
 				}
@@ -333,7 +328,7 @@ export class CustomFunctionTranspiler {
 		return out;
 	}
 
-	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, typedParameters: Set<string>, definitionId: string, resultName: string): Declaration | null {
+	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string): Declaration | null {
 		let prop: string;
 
 		if (decl.prop.toLowerCase() === 'result') {
@@ -348,14 +343,15 @@ export class CustomFunctionTranspiler {
 
 			const trimmedValue = decl.value.trim();
 
-			// `initial` resolves to the parameter's own value for untyped
-			// parameters. For typed parameters the browser resolves it to the
-			// guaranteed-invalid value.
+			// `initial` resolves to the parameter's own value, which is the
+			// argument or the default value.
+			//
+			// https://drafts.csswg.org/css-mixins-1/#args
 			const parameterArg = parameterArgs.get(decl.prop);
 			if (parameterArg && trimmedValue.toLowerCase() === 'initial') {
 				return decl.clone({
 					prop,
-					value: typedParameters.has(decl.prop) ? `var(${INVALID_IDENT})` : `var(${parameterArg})`,
+					value: `var(${parameterArg})`,
 				});
 			}
 
