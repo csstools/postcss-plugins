@@ -4,7 +4,6 @@ import { Transpiler } from '@csstools/postcss-private-rule';
 import { IS_APPLY_REGEX, processableApplyRule } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
 import { processableMixinRule } from './processable-mixin';
-import { rewriteArgument } from './rewrite-argument';
 
 /** postcss-mixins plugin options */
 export type pluginOptions = {
@@ -16,6 +15,10 @@ type Mixin = {
 	name: string,
 	parameters: Array<MixinParameter>,
 	atRule: AtRule,
+};
+
+type State = {
+	argumentCounter: number,
 };
 
 const IS_CONTENTS_REGEX = /^contents$/i;
@@ -38,6 +41,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const mixins: Map<string, Mixin> = new Map();
 			const knownMixins: Set<string> = new Set();
 			const transpiler = new Transpiler();
+			const state: State = { argumentCounter: 0 };
 
 			return {
 				postcssPlugin: 'mixins',
@@ -82,7 +86,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 							continue;
 						}
 
-						expandApply(atRule, mixins, transpiler, options.preserve === true, new Set());
+						expandApply(atRule, mixins, transpiler, options.preserve === true, new Set(), state);
 					}
 				},
 			};
@@ -90,12 +94,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	};
 };
 
-type PrivateScope = {
-	prefix: string,
-	privateProperties: Set<string>,
-};
-
-function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Transpiler, preserve: boolean, stack: Set<string>, enclosingScope?: PrivateScope): void {
+function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Transpiler, preserve: boolean, stack: Set<string>, state: State): void {
 	const apply = processableApplyRule(atRule);
 	if (!apply) {
 		return;
@@ -116,51 +115,84 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 		return;
 	}
 
-	// Arguments are resolved at the call site.
-	// Rewrite references to the enclosing mixin's parameters to their private names,
-	// so they aren't captured by this mixin's own private properties.
-	if (enclosingScope) {
-		apply.arguments = apply.arguments.map((argument) => rewriteArgument(argument, enclosingScope));
-	}
-
 	const cloned: Array<ChildNode> = (mixin.atRule.nodes || []).map((node) => node.clone());
 
-	// Mixin parameters and `@private` rules must be scoped to the mixin result.
-	// A `&` wrapper keeps them from leaking into the rest of the rule the mixin is applied to.
+	const hasSuppliedArguments = apply.arguments.length > 0;
 	const needsWrapper = mixin.parameters.length > 0 || hasPrivateRules(mixin.atRule);
 
 	const inserted: Array<ChildNode> = [];
 
 	if (needsWrapper) {
-		const wrapper = new Rule({ selector: '&', source: atRule.source });
-		wrapper.raws.semicolon = true;
+		// Arguments are resolved at the call site and captured in the caller's frame.
+		// Each supplied argument is bound to a fresh custom property so it can not be
+		// shadowed by parameters of nested mixins that reuse the same names.
+		// See: https://github.com/w3c/csswg-drafts/issues/14372
+		const bodyWrapper = new Rule({ selector: '&', source: atRule.source });
+		bodyWrapper.raws.semicolon = true;
+
+		let outerWrapper: Rule | undefined;
+		let argumentPrivateRule: AtRule | undefined;
+
+		if (mixin.parameters.length > 0 && hasSuppliedArguments) {
+			outerWrapper = new Rule({ selector: '&', source: atRule.source });
+			outerWrapper.raws.semicolon = true;
+
+			argumentPrivateRule = new AtRule({ name: 'private', source: atRule.source });
+			outerWrapper.append(argumentPrivateRule);
+			outerWrapper.append(bodyWrapper);
+		}
 
 		if (mixin.parameters.length > 0) {
-			const privateRule = new AtRule({ name: 'private', source: atRule.source });
+			const parameterPrivateRule = new AtRule({ name: 'private', source: atRule.source });
 
 			for (let i = 0; i < mixin.parameters.length; i++) {
 				const parameter = mixin.parameters[i];
+				const supplied = apply.arguments[i];
 
-				// Missing arguments resolve to the guaranteed-invalid value.
-				const value = apply.arguments[i] || parameter.defaultValue;
+				let value;
 
-				privateRule.append(new Declaration({
+				if (i < apply.arguments.length) {
+					const argumentName = `--arg-${(state.argumentCounter++).toString(36)}`;
+
+					argumentPrivateRule?.append(new Declaration({
+						prop: argumentName,
+						value: supplied,
+						source: atRule.source,
+					}));
+
+					// The parameter resolves to the captured argument value.
+					value = `var(${argumentName})`;
+				} else {
+					// Missing arguments resolve to their default in the mixin's own frame.
+					value = parameter.defaultValue || 'initial';
+				}
+
+				parameterPrivateRule.append(new Declaration({
 					prop: parameter.name,
-					value: value || 'initial',
+					value,
 					source: atRule.source,
 				}));
 			}
 
-			wrapper.append(privateRule);
+			bodyWrapper.append(parameterPrivateRule);
 		}
 
 		for (const node of cloned) {
-			wrapper.append(node);
+			bodyWrapper.append(node);
 		}
 
-		wrapper.cleanRaws();
+		bodyWrapper.cleanRaws();
 
-		inserted.push(wrapper);
+		if (outerWrapper && !argumentPrivateRule?.nodes?.length) {
+			outerWrapper = undefined;
+		}
+
+		if (outerWrapper) {
+			outerWrapper.cleanRaws();
+			inserted.push(outerWrapper);
+		} else {
+			inserted.push(bodyWrapper);
+		}
 	} else {
 		inserted.push(...cloned);
 	}
@@ -172,8 +204,6 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 	if (!preserve) {
 		atRule.remove();
 	}
-
-	let scope: PrivateScope | undefined;
 
 	if (needsWrapper) {
 		// Only `@private` rules that originate from mixins are transpiled here.
@@ -189,8 +219,6 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 			}
 
 			transpiler.registerAndRemovePrivateRules(privateRule, owner);
-
-			scope = scope || transpiler.getOrFillPrivateForRule(owner);
 		}
 
 		const declarations: Array<Declaration> = [];
@@ -226,7 +254,7 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 			continue;
 		}
 
-		expandApply(nestedAtRule, mixins, transpiler, false, nestedStack, scope);
+		expandApply(nestedAtRule, mixins, transpiler, false, nestedStack, state);
 	}
 }
 

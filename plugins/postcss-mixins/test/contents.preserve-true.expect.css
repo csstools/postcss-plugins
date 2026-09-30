@@ -77,9 +77,13 @@
 
 .i {
 	& {
-		--_csstools-p-8akl2q02-0--color: green;
-		color: var(--_csstools-p-8akl2q02-0--color);
+		--_csstools-p-8akl2q02-0--arg-0: green;
+
+		& {
+			--_csstools-p-8akl2q02-1--color: var(--_csstools-p-8akl2q02-0--arg-0);
+			color: var(--_csstools-p-8akl2q02-1--color);
 		background-color: var(--color);
+		}
 	}
 	@apply --args-and-contents(green) {
 		background-color: var(--color);

@@ -24,9 +24,12 @@
 
 .b {
 	& {
-		--_csstools-p-45fs09jl-1--color: red;
-		--_csstools-p-45fs09jl-1--local: var(--_csstools-p-45fs09jl-1--color);
-		color: var(--_csstools-p-45fs09jl-1--local);
+		--_csstools-p-45fs09jl-1--arg-0: red;
+		& {
+			--_csstools-p-45fs09jl-2--color: var(--_csstools-p-45fs09jl-1--arg-0);
+			--_csstools-p-45fs09jl-2--local: var(--_csstools-p-45fs09jl-2--color);
+			color: var(--_csstools-p-45fs09jl-2--local);
+		}
 	}
 	@apply --args-and-private(red);
 }
