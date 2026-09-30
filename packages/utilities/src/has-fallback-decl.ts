@@ -1,29 +1,17 @@
-import type { Declaration, Container, Node } from 'postcss';
+import type { Declaration, Container } from 'postcss';
 
 /**
- * PostCSS passes proxy nodes to plugin visitors. Cache entries and lookups must
- * use the underlying node so that identity comparisons behave the same as they
- * do on the real AST.
- */
-function unwrapProxy<T extends Node>(node: T): T {
-	return (node as T & { proxyOf?: T }).proxyOf ?? node;
-}
-
-/**
- * Per-container set of declarations that have a fallback: a declaration with
- * the same (ASCII lowercased) property name appears before it.
+ * Per container, whether the declaration at each index has a fallback.
  *
- * `hasFallback` is called once per matching declaration. The naive version
- * (`parent.index(node)` + a sibling scan) is O(n) per call, which makes a rule
- * with many declarations O(n^2). The answer for every declaration in a
- * container is computed in a single pass and reused until the container's node
- * list changes.
+ * `hasFallback` is called once per matching declaration. Checking every
+ * declaration independently (`parent.index(node)` + a sibling scan) is O(n) per
+ * call, which makes a rule with many declarations O(n^2). The answer for every
+ * declaration in a container is computed in a single pass and reused until the
+ * container's node list changes.
  */
 type FallbackIndex = {
 	nodeCount: number,
-	firstNode: unknown,
-	lastNode: unknown,
-	declarationsWithFallback: WeakSet<Declaration>,
+	fallbackAtIndex: Array<boolean>,
 };
 
 const fallbackIndexCache = new WeakMap<Container, FallbackIndex>();
@@ -31,17 +19,15 @@ const fallbackIndexCache = new WeakMap<Container, FallbackIndex>();
 function fallbackIndexFor(parent: Container): FallbackIndex {
 	const nodes = parent.nodes || [];
 
-	let index = fallbackIndexCache.get(parent);
-	if (
-		index &&
-		index.nodeCount === nodes.length &&
-		index.firstNode === nodes[0] &&
-		index.lastNode === nodes[nodes.length - 1]
-	) {
-		return index;
+	const cached = fallbackIndexCache.get(parent);
+	if (cached && cached.nodeCount === nodes.length) {
+		return cached;
 	}
 
-	const declarationsWithFallback = new WeakSet<Declaration>();
+	const fallbackAtIndex: Array<boolean> = [];
+	for (let i = 0; i < nodes.length; i++) {
+		fallbackAtIndex.push(false);
+	}
 	const seenProps = new Set<string>();
 
 	for (let i = 0; i < nodes.length; i++) {
@@ -50,21 +36,15 @@ function fallbackIndexFor(parent: Container): FallbackIndex {
 			continue;
 		}
 
-		const decl = sibling;
-		const prop = decl.prop.toLowerCase();
+		const prop = sibling.prop.toLowerCase();
 		if (seenProps.has(prop)) {
-			declarationsWithFallback.add(decl);
+			fallbackAtIndex[i] = true;
 		} else {
 			seenProps.add(prop);
 		}
 	}
 
-	index = {
-		nodeCount: nodes.length,
-		firstNode: nodes[0],
-		lastNode: nodes[nodes.length - 1],
-		declarationsWithFallback,
-	};
+	const index = { nodeCount: nodes.length, fallbackAtIndex };
 	fallbackIndexCache.set(parent, index);
 
 	return index;
@@ -83,5 +63,10 @@ export function hasFallback(node: Declaration): boolean {
 		return false;
 	}
 
-	return fallbackIndexFor(unwrapProxy(parent)).declarationsWithFallback.has(unwrapProxy(node));
+	const nodeIndex = parent.index(node);
+	if (nodeIndex < 0) {
+		return false;
+	}
+
+	return fallbackIndexFor(parent).fallbackAtIndex[nodeIndex] === true;
 }

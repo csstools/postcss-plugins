@@ -40,18 +40,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					// Visitors receive a proxy node, while `parent.nodes` holds the
-					// underlying nodes. Unwrap to compare identity without an O(n)
-					// `parent.index()` lookup.
-					const selfNode = (decl as typeof decl & { proxyOf?: typeof decl }).proxyOf ?? decl;
+					const selfIndex = parent.index(decl);
 
 					const siblingValues = new Set<string>();
 					for (let i = 0; i < parent.nodes.length; i++) {
-						const node = parent.nodes[i];
-						if (node === selfNode) {
+						if (i === selfIndex) {
 							continue;
 						}
 
+						const node = parent.nodes[i];
 						if (node.type === 'decl' && IS_TEXT_DECORATION_REGEX.test(node.prop)) {
 							siblingValues.add(node.value);
 						}
