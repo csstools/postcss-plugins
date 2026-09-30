@@ -14,8 +14,8 @@ export type CustomFunctionDefinition = {
 	supported: boolean;
 	/** Ancestor conditional group rules, outermost first. Cascade layers are excluded. */
 	conditionals: Array<AtRule>;
-	/** Cascade layer strength. Higher numbers win. */
-	layer: number;
+	/** Cascade layer strength. Higher numbers win, `false` means unlayered (wins over all layers). */
+	layer: number | false;
 	/** Source order. */
 	order: number;
 };
@@ -27,6 +27,14 @@ export type CustomFunctionGroup = {
 };
 
 const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer', 'revert-rule']);
+
+/**
+ * Turn a layer number into a sortable strength.
+ * Unlayered definitions (`false`) are stronger than any layer.
+ */
+function layerStrength(layer: number | false): number {
+	return layer === false ? Infinity : layer;
+}
 
 const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports|container|starting-style)$/i;
 
@@ -128,7 +136,7 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 		// Definitions are emitted weakest first so the browser cascade picks the
 		// strongest active definition at runtime.
 		group.definitions.sort((a, b) => {
-			return (a.layer - b.layer) || (a.order - b.order);
+			return (layerStrength(a.layer) - layerStrength(b.layer)) || (a.order - b.order);
 		});
 
 		// A CSS-wide keyword result can only be substituted directly when there is

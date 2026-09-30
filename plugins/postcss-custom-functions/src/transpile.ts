@@ -252,7 +252,7 @@ export class CustomFunctionTranspiler {
 			// Only inline when the definition can be evaluated exactly where it
 			// is called: no conditional rule around it, no conditional rule in
 			// the body, and no cascade layer to preserve.
-			const inline = definition.conditionals.length === 0 && definition.layer >= 10_000_000 && !hasConditionalBody(definition.node);
+			const inline = definition.conditionals.length === 0 && definition.layer === false && !hasConditionalBody(definition.node);
 
 			if (inline) {
 				// Arguments are prepended to the calling rule, so no extra rule

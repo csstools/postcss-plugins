@@ -104,10 +104,9 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 	return out;
 }
 
-// 0          : node was not found
-// any number  : node was found, higher numbers have higher priority
-// a very large number    : node wasn't layered, highest priority
-export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, number>): number {
+// number : node is in a layer, higher numbers have higher priority
+// false  : node isn't layered, unlayered rules have the highest priority
+export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, number>): number | false {
 	// Walk up to the nearest `@layer` ancestor.
 	// Conditional rules may appear between a `@function` and its layer,
 	// the layer still determines the cascade strength.
@@ -125,7 +124,7 @@ export function cascadeLayerNumberForNode(node: Node, layers: WeakMap<Node, numb
 		parent = parent.parent;
 	}
 
-	return 10_000_000;
+	return false;
 }
 
 function normalizeLayerName(layerName: string, counter: number): string {
