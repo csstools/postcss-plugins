@@ -85,3 +85,81 @@ assert.strictEqual(
 	calc('calc(log(exp(log(e))))'),
 	'1',
 );
+
+assert.strictEqual(
+	calc('log(2, 1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(5, 1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(0, 1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(1, 1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(2, -1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(2, 2)'),
+	'1',
+);
+
+// B values between 0 and 1 (exclusive), or greater than 1, are valid.
+// B is 0, 1, or negative => NaN.
+assert.strictEqual(
+	calc('log(10, 0)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(2, 0)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(2, 0.5)'),
+	'-1',
+);
+
+assert.strictEqual(
+	calc('log(1, 2)'),
+	'0',
+);
+
+assert.strictEqual(
+	calc('log(1, 0.5)'),
+	'0',
+);
+
+// NaN is infectious, even when A is 1.
+assert.strictEqual(
+	calc('log(1, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(NaN, 1)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('log(1, infinity)'),
+	'0',
+);
+
+assert.strictEqual(
+	calc('log(1, -infinity)'),
+	'calc(NaN)',
+);

@@ -241,8 +241,6 @@ function getMediaConditionListWithAndFromAncestry(mediaInParens: MediaInParens, 
 	if (isMediaConditionListWithAnd(focus)) {
 		return focus;
 	}
-
-	return;
 }
 
 function getMediaConditionInShallowMediaQueryFromAncestry(mediaInParens: MediaInParens, mediaQuery: MediaQuery, ancestry: Map<unknown, unknown>): MediaCondition | undefined {

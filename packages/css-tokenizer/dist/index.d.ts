@@ -221,7 +221,7 @@ export declare class ParseErrorWithToken extends ParseError {
  * This is not a proper serializer that will handle escaping and whitespace.
  * It only produces valid CSS for a token list that is also valid.
  */
-export declare function stringify(...tokens: Array<CSSToken>): string;
+export declare function stringify(...tokens: Array<CSSToken> | Array<Array<CSSToken>>): string;
 
 /**
  * The CSS Token interface

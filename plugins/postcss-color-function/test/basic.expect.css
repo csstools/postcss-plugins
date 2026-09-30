@@ -60,6 +60,12 @@
 	color-7: color(display-p3 0.81388 0.43646 foo);
 }
 
+.test-display-p3-linear {
+	color-1: rgb(165, 5, 66);
+	color-2: rgba(165, 5, 66, 0.3);
+	--color-3: rgba(165, 5, 66, 0.3);
+}
+
 .test-linear-srgb {
 	color-1: rgb(176, 35, 66);
 	color-2: rgb(176, 35, 66);
@@ -175,7 +181,7 @@
 	color-3: rgb(1, 255, 0);
 	color-4: rgb(1, 255, 0);
 	color-5: rgb(1, 255, 0);
-	color-6: rgb(1, 255, 0);
+	color-6: rgb(0, 248, 51);
 	color-7: rgb(1, 255, 0);
 	color-8: rgb(1, 255, 0);
 	color-9: rgb(1, 255, 0);
@@ -214,4 +220,15 @@
 
 to-clone {
 	color: rgb(255, 52, 40);
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(26, 26, 26);
+}
+
+@keyframes --foo {
+	to {
+		--color: rgb(26, 26, 26);
+	}
 }

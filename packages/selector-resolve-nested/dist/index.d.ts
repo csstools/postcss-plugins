@@ -40,8 +40,16 @@ export declare function flattenNestedSelector(selector: Root, parentSelector: Ro
  *
  * @param selector - The selector to resolve.
  * @param parentSelector - The parent selector to resolve against.
+ * @param options - Change how resolving happens.
  * @returns The resolved selector.
  */
-export declare function resolveNestedSelector(selector: Root, parentSelector: Root): Root;
+export declare function resolveNestedSelector(selector: Root, parentSelector: Root, options?: ResolveOptions): Root;
+
+export declare interface ResolveOptions {
+    /**
+     * If implicit `&` selectors should be prepended to the selector before resolving
+     */
+    ignoreImplicitNesting: boolean;
+}
 
 export { }

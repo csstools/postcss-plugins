@@ -146,3 +146,27 @@ test('surrounding whitespace', async () => {
 		);
 	}
 });
+
+test('prevent combinatorial explosion - resolve', () => {
+	assert.throws(() => {
+		const a = '& & & &';
+		const b = '.alpha, .beta, .delta, .gamma';
+		let resolved;
+
+		for (let i = 0; i < 10; i++) {
+			resolved = resolveNestedSelector(parse(a), resolved ?? parse(b));
+		}
+	});
+});
+
+test('prevent combinatorial explosion - flatten', () => {
+	assert.throws(() => {
+		const a = '& & & &';
+		const b = '.alpha, .beta, .delta, .gamma';
+		let resolved;
+
+		for (let i = 0; i < 10; i++) {
+			resolved = flattenNestedSelector(parse(a), resolved ?? parse(b));
+		}
+	});
+});

@@ -5,7 +5,7 @@ import { hasFallback, hasSupportsAtRuleAncestor } from '@csstools/utilities';
 
 type basePluginOptions = {
 	preserve: boolean,
-}
+};
 
 const HAS_IC_UNIT_REGEX = /ic\b/i;
 const HAS_IC_DECLARATION_REGEX = /\(font-size: \d+ic\)/i;
@@ -87,3 +87,4 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };

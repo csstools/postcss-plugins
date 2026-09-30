@@ -10,6 +10,11 @@ export function solveSign(signNode: FunctionNode, a: TokenNode, options: convers
 		return -1;
 	}
 
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (Number.isNaN(aToken[4].value)) {
+		return numberToCalculation(signNode, Number.NaN);
+	}
+
 	if (!options.rawPercentages && isTokenPercentage(aToken)) {
 		return -1;
 	}

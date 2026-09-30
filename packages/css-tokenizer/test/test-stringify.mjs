@@ -1,8 +1,6 @@
 import assert from 'node:assert';
-import { stringify } from 'querystring';
+import { stringify } from '@csstools/css-tokenizer';
 
 {
-	assert.equal(stringify(null), '');
-	assert.equal(stringify(undefined), '');
 	assert.equal(stringify(), '');
 }

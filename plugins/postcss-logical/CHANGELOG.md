@@ -1,5 +1,18 @@
 # Changes to PostCSS Logical Properties
 
+### 9.0.1
+
+_September 25, 2026_
+
+- Throw when transforming a `transition` would exceed the maximum number of combinations
+
+### 9.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
 ### 8.1.0
 
 _February 23, 2025_

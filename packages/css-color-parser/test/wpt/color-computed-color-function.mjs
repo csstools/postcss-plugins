@@ -49,7 +49,7 @@ import { serialize_sRGB_data } from '../util/serialize.mjs';
 
 {
 	for (const colorSpace of ['xyz', 'xyz-d50', 'xyz-d65']) {
-		const resultColorSpace = colorSpace == 'xyz' ? 'xyz-d65' : colorSpace;
+		const resultColorSpace = colorSpace === 'xyz' ? 'xyz-d65' : colorSpace;
 		const tests = [
 			[`color(${colorSpace} 0 0 0)`, canonicalize(`color(${resultColorSpace} 0 0 0)`)],
 			[`color(${colorSpace} 0 0 0 / 1)`, canonicalize(`color(${resultColorSpace} 0 0 0)`)],

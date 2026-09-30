@@ -112,7 +112,7 @@ export function walk<T extends Record<string, unknown>>(
 			return false;
 		}
 
-		if ('walk' in entry.node && componentValues.includes(entry.node)) {
+		if ('walk' in entry.node && ((typeof index === 'number' && componentValues[index] === entry.node) || componentValues.includes(entry.node))) {
 			if (entry.node.walk(cb, entry.state) === false) {
 				return false;
 			}

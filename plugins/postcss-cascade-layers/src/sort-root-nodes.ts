@@ -58,7 +58,6 @@ export function sortRootNodes(root: Container, model: Model): void {
 			if (CONDITIONAL_ATRULES.includes(atRule.name.toLowerCase())) {
 				removeEmptyDescendantBlocks(atRule);
 				removeEmptyAncestorBlocks(atRule);
-				return;
 			}
 		});
 

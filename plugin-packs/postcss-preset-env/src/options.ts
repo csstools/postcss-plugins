@@ -102,4 +102,4 @@ export type pluginOptions = {
 		/** Set the block flow direction. default: top-to-bottom */
 		blockDirection?: DirectionFlow
 	}
-}
+};

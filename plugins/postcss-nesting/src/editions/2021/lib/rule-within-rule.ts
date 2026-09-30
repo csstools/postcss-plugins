@@ -6,13 +6,13 @@ import shiftNodesBeforeParent from '../../shared/lib/shift-nodes-before-parent.j
 import type { options } from './options.js';
 
 export default function transformRuleWithinRule(node: Rule, parent: Rule, result: Result, opts: options): void {
-	let selectors: Array<string> = [];
+	let selectors: Array<string>;
 
 	// update the selectors of the node to be merged with the parent
 	try {
 		selectors = mergeSelectors(parent.selectors, node.selectors, opts);
 	} catch (err) {
-		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${(err instanceof Error) ? err.message: err}"`);
+		node.warn(result, `Failed to parse selectors : "${parent.selector}" / "${node.selector}" with message: "${(err instanceof Error) ? err.message : err}"`);
 		return;
 	}
 

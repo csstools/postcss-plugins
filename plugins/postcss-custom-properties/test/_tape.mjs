@@ -15,6 +15,9 @@ postcssTape(plugin)({
 	'cascade-layers': {
 		message: 'supports cascade layers',
 	},
+	'cascade-layers-nested': {
+		message: 'qualifies nested cascade layer names exactly once',
+	},
 	'cyclic-on-different-element-1': {
 		message: 'supports cyclic variables on different elements',
 	},

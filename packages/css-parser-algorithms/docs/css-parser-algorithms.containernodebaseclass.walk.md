@@ -81,6 +81,7 @@ _(Optional)_ An optional state object that can be used to pass additional inform
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 false \| undefined

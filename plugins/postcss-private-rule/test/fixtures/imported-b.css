@@ -1,0 +1,9 @@
+@import "./imported-a.css";
+
+b {
+	@private {
+		--b: 2px;
+	}
+
+	top: var(--b);
+}

@@ -71,6 +71,12 @@
       - plugins/css-prefers-color-scheme/**
       - experimental/css-prefers-color-scheme/**
 
+"plugins/postcss-alpha-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-alpha-function/**
+      - experimental/postcss-alpha-function/**
+
 "plugins/postcss-attribute-case-insensitive":
   - changed-files:
     - any-glob-to-any-file:
@@ -94,6 +100,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-color-function/**
       - experimental/postcss-color-function/**
+
+"plugins/postcss-color-function-display-p3-linear":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-color-function-display-p3-linear/**
+      - experimental/postcss-color-function-display-p3-linear/**
 
 "plugins/postcss-color-functional-notation":
   - changed-files:
@@ -130,6 +142,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-conditional-values/**
       - experimental/postcss-conditional-values/**
+
+"plugins/postcss-container-rule-prelude-list":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-container-rule-prelude-list/**
+      - experimental/postcss-container-rule-prelude-list/**
 
 "plugins/postcss-content-alt-text":
   - changed-files:
@@ -197,6 +215,12 @@
       - plugins/postcss-extract/**
       - experimental/postcss-extract/**
 
+"plugins/postcss-fit-tolerance-property":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-fit-tolerance-property/**
+      - experimental/postcss-fit-tolerance-property/**
+
 "plugins/postcss-focus-visible":
   - changed-files:
     - any-glob-to-any-file:
@@ -220,6 +244,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-font-format-keywords/**
       - experimental/postcss-font-format-keywords/**
+
+"plugins/postcss-font-width-property":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-font-width-property/**
+      - experimental/postcss-font-width-property/**
 
 "plugins/postcss-gamut-mapping":
   - changed-files:
@@ -256,6 +286,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-ic-unit/**
       - experimental/postcss-ic-unit/**
+
+"plugins/postcss-image-function":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-image-function/**
+      - experimental/postcss-image-function/**
 
 "plugins/postcss-image-set-function":
   - changed-files:
@@ -341,6 +377,12 @@
       - plugins/postcss-minify/**
       - experimental/postcss-minify/**
 
+"plugins/postcss-mixins":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-mixins/**
+      - experimental/postcss-mixins/**
+
 "plugins/postcss-nested-calc":
   - changed-files:
     - any-glob-to-any-file:
@@ -383,11 +425,35 @@
       - plugins/postcss-place/**
       - experimental/postcss-place/**
 
+"plugins/postcss-position-area-property":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-position-area-property/**
+      - experimental/postcss-position-area-property/**
+
+"plugins/postcss-private-rule":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-private-rule/**
+      - experimental/postcss-private-rule/**
+
 "plugins/postcss-progressive-custom-properties":
   - changed-files:
     - any-glob-to-any-file:
       - plugins/postcss-progressive-custom-properties/**
       - experimental/postcss-progressive-custom-properties/**
+
+"plugins/postcss-property-rule-optional-descriptors":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-property-rule-optional-descriptors/**
+      - experimental/postcss-property-rule-optional-descriptors/**
+
+"plugins/postcss-property-rule-prelude-list":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-property-rule-prelude-list/**
+      - experimental/postcss-property-rule-prelude-list/**
 
 "plugins/postcss-pseudo-class-any-link":
   - changed-files:
@@ -460,6 +526,12 @@
     - any-glob-to-any-file:
       - plugins/postcss-stepped-value-functions/**
       - experimental/postcss-stepped-value-functions/**
+
+"plugins/syntax-descriptor-syntax-production":
+  - changed-files:
+    - any-glob-to-any-file:
+      - plugins/postcss-syntax-descriptor-syntax-production/**
+      - experimental/postcss-syntax-descriptor-syntax-production/**
 
 "plugins/postcss-text-decoration-shorthand":
   - changed-files:

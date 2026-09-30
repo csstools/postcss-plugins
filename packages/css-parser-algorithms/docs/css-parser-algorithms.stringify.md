@@ -45,6 +45,7 @@ Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 string

@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [MediaQuery](./media-query-list-parser.mediaquery.md)

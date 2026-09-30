@@ -58,7 +58,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let transformed: boolean | null = false;
+			let transformed: boolean | null;
 
 			try {
 				transformed = transform(decl);
@@ -87,3 +87,4 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

@@ -27,7 +27,7 @@ export default function getCustomPropertiesFromRoot(root: Root, parsedValuesCach
 		}
 
 		rule.selectors.forEach((selector) => {
-			let specificity = -1;
+			let specificity: number;
 
 			if (HTML_WHERE_SELECTOR_REGEX.test(selector) || ROOT_WHERE_SELECTOR_REGEX.test(selector)) {
 				specificity = 0;

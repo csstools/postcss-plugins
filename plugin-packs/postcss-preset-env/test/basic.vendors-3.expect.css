@@ -126,11 +126,12 @@
 }
 
 .test-system-ui-font-family {
-	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
 	order: 18;
 }
 
 .test-font-variant-property {
+	font-feature-settings: "smcp";
 	font-variant-caps: small-caps;
 	order: 19;
 }
@@ -181,8 +182,7 @@
 	font-stretch: normal;
 	line-height: normal;
 	height: auto;
-	-webkit-hyphens: none;
-	        hyphens: none;
+	hyphens: none;
 	left: auto;
 	letter-spacing: normal;
 	list-style: disc outside none;
@@ -212,6 +212,7 @@
 	text-align: left;
 	-moz-text-align-last: auto;
 	     text-align-last: auto;
+	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-indent: 0;
 	text-shadow: none;
@@ -328,7 +329,7 @@
 	font-style: normal;
 	font-weight: 300;
 	font-display: swap;
-	src: url(a) format(woff2);
+	src: url(a) format("woff2");
 }
 
 .block-flow {
@@ -401,26 +402,6 @@
 	display: inline table;
 }
 
-.table-cell-flow {
-	display: table-cell;
-	display: table-cell flow;
-}
-
-.table-caption-flow {
-	display: table-caption;
-	display: table-caption flow;
-}
-
-.ruby-base-flow {
-	display: ruby-base;
-	display: ruby-base flow;
-}
-
-.ruby-text-flow {
-	display: ruby-text;
-	display: ruby-text flow;
-}
-
 .logical-float {
 	float: left;
 }
@@ -431,6 +412,7 @@
 	prop-3: rgb(7, 3, 1);
 	prop-4: rgb(7, 3, 1);
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: rgb(89, 89, 89);
 }
 
 .oklab {
@@ -476,6 +458,11 @@
 	color-17: oklch(60% 0.1250 0.785398unknown);
 }
 
+.alpha {
+	color-1: alpha(from rgba(188, 101, 59, 0.2) / calc(alpha + 0.1));
+	--color-2: alpha(from rgba(188, 101, 59, 0.2) / calc(alpha + 0.1));
+}
+
 .ic-unit {
 	--value-2ic: initial;
 	text-indent: 2em;
@@ -494,35 +481,37 @@
 }
 
 .mod {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
-	width: 2px;
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
+	width: calc(2px);
 }
 
 .rem {
-	padding: 8px 3px 1px calc(3px + 50%);
-	transform: rotate(-50deg);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	transform: rotate(calc(-50deg));
 }
 
 .round {
-	top: 3px;
-	right: 3px;
-	bottom: 3px;
-	left: 2px;
-	padding-left: 2px;
+	top: calc(3px);
+	right: calc(3px);
+	bottom: calc(3px);
+	left: calc(2px);
+	padding-left: calc(2px);
 }
 
 .trigonometric {
-	left: 0.70711;
-	left: 0.70711;
-	left: 1;
-	left: 30deg;
-	left: 60deg;
-	left: 84.28941deg;
-	left: -45deg;
-	left: 90deg;
-	left: 135deg;
-	left: 0.99863;
+	left: calc(0.70711);
+	left: calc(0.70711);
+	left: calc(1);
+	left: calc(30deg);
+	left: calc(60deg);
+	left: calc(84.28941deg);
+	left: calc(-45deg);
+	left: calc(90deg);
+	left: calc(135deg);
+	left: calc(0.99863);
 }
 
 .trigonometric-ignore-not-a-function {
@@ -557,6 +546,10 @@
 }
 
 .text-decoration-shorthand {
+	text-decoration: overline;
+	-webkit-text-decoration: overline wavy pink;
+	        text-decoration: overline wavy pink;
+	text-decoration-thickness: 3px;
 	-webkit-text-decoration: 3px wavy pink overline;
 	        text-decoration: 3px wavy pink overline;
 }
@@ -642,7 +635,7 @@
 }
 
 .exponential-functions {
-	width: 8px;
+	width: calc(8px);
 }
 
 .out-of-gamut {
@@ -714,13 +707,13 @@
 }
 
 .sign {
-	order: sign(10px);
-	z-index: sign(-10px);
+	order: calc(1);
+	z-index: calc(-1);
 }
 
 .abs {
-	order: abs(10px);
-	z-index: abs(-10px);
+	order: calc(10px);
+	z-index: calc(10px);
 }
 
 .random {
@@ -735,4 +728,66 @@
 		random(--c, 30%, 70%, 5%)
 		random(--h, 0deg, 360deg, 12deg)
 	);
+}
+
+.contrast-color {
+	color: rgb(255, 255, 255);
+	color: contrast-color(green);
+}
+
+.position-area {
+	inset-area: start;
+	position-area: start;
+}
+
+@property --color-a, --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: <color>;
+}
+
+@property --value-a, --value-b {
+	inherits: true;
+	initial-value: black;
+}
+
+@mixin --mixin-a() {
+	color: lime;
+
+	@media screen {
+		color: green;
+	}
+}
+
+.apply {
+	width: 10px;
+
+	@apply --mixin-a;
+
+	height: 20px;
+}
+
+@font-face {
+	src: url("foo.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-width: 1% 1000%;
+}
+
+.foo {
+	font-width: 50%;
+}
+
+.foo {
+	background-color: image(purple);
+}
+
+@container (width > 260px), style(--foo: bar) {
+	.foo {
+		color: red;
+	}
+}
+
+.foo {
+	fit-tolerance: 2em;
 }

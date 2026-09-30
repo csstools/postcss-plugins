@@ -1,0 +1,46 @@
+/* Nested block layers must qualify to the same layer as the equivalent flat name.
+   `l1 { l2 { l3 { ... } } }` and `l1.l2.l3` are the same cascade layer. */
+
+@layer l1 {
+	@layer l2 {
+		@layer l3 {
+			:root {
+				--depth-3: nested;
+			}
+		}
+	}
+}
+
+@layer l1.l2.l3 {
+	:root {
+		--depth-3: flat;
+	}
+}
+
+@layer a {
+	@layer b {
+		@layer c {
+			@layer d {
+				:root {
+					--depth-4: nested;
+				}
+			}
+		}
+	}
+}
+
+@layer a.b.c.d {
+	:root {
+		--depth-4: flat;
+	}
+}
+
+p {
+	prop-depth-3: flat;
+	prop-depth-3: var(--depth-3);
+}
+
+p {
+	prop-depth-4: flat;
+	prop-depth-4: var(--depth-4);
+}

@@ -1,6 +1,6 @@
 /* Simple cyclic */
 
-@media (--mq-b) {
+@media (--mq-a) {
 	.a {
 		color: red;
 	}

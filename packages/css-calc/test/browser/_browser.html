@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>css-calc browser tests</title>
+	<link rel="help" href="https://drafts.csswg.org/css-values-4/">
+	<link rel="help" href="https://drafts.csswg.org/css-values-5/">
+	<style>
+		html {
+			font-size: 16px;
+		}
+
+		#container {
+			width: 100px;
+			height: 100px;
+		}
+
+		#target {
+			position: relative;
+			font-size: 16px;
+			width: 10px;
+			height: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="target"></div>
+	</div>
+
+	<script>
+		/* global getComputedStyle */
+		const target = document.getElementById('target');
+
+		// Sets a value on the target and returns both the specified serialization
+		// and the computed value.
+		//
+		// `getComputedStyle` collapses `calc(NaN * 1px)` to `0px`, so `NaN` can
+		// not be detected from the computed value alone. Use `observeNaN` for
+		// that; `observe` is used for value comparisons.
+		self.observe = function observe(property, value) {
+			target.removeAttribute('style');
+			target.style.setProperty(property, value);
+
+			const specified = target.style.getPropertyValue(property);
+			const computed = specified === '' ? '' : getComputedStyle(target).getPropertyValue(property);
+
+			return { specified, computed };
+		};
+
+		// Determines the sign of the zero value of an arbitrary expression.
+		//
+		// `1 / sign(expr)` is `+infinity` for `0` and `-infinity` for `-0`, which we
+		// then clamp into `z-index` so it serializes as `1` or `-1`.
+		// Returns an empty string if `sign()` is not supported by this browser.
+		self.observeZeroSign = function observeZeroSign(expression) {
+			target.removeAttribute('style');
+			target.style.setProperty('z-index', `clamp(-1, calc(1 / sign(${expression})), 1)`);
+
+			if (target.style.getPropertyValue('z-index') === '') {
+				return '';
+			}
+
+			return getComputedStyle(target).getPropertyValue('z-index');
+		};
+
+		// Detects whether an expression is `NaN`.
+		//
+		// `expr * 0` is `0` for any finite value (including `0` and `-0`), but
+		// `NaN` for `NaN` and `±infinity`. Adding a finite non-zero value turns
+		// that into a non-zero value for finite input and keeps `NaN` for
+		// `NaN`/`infinity`.
+		//
+		// `getComputedStyle` collapses `NaN` to `0`, so the computed value is
+		// `1` for finite and `0` for `NaN`/`infinity`. This differentiates `NaN`
+		// from a real `0` without inspecting the serialized text.
+		//
+		// The term that is added (`1` or `1<unit>`) must have the same type as
+		// the expression, so the caller passes the unit of the result. Only the
+		// `+ 1` term is scaled, never the expression itself.
+		// Returns `1`, `0`, or `''` (unsupported).
+		self.observeNaN = function observeNaN(property, expression, unit) {
+			const one = unit ? `1${unit}` : '1';
+
+			target.removeAttribute('style');
+			target.style.setProperty(property, `calc((${expression}) * 0 + ${one})`);
+
+			const specified = target.style.getPropertyValue(property);
+			if (specified === '') {
+				return '';
+			}
+
+			const computed = getComputedStyle(target).getPropertyValue(property);
+
+			return parseFloat(computed) === 1 ? '1' : '0';
+		};
+	</script>
+</body>
+</html>

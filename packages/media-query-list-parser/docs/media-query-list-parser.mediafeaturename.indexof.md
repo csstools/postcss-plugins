@@ -43,6 +43,7 @@ ComponentValue
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 number \| string

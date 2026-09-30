@@ -20,11 +20,12 @@ export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13)
 		return x;
 	}
 
-	if (Number.isInteger(token[4].value)) {
+	if (shouldSkipPrecisionRounding(token[4].value)) {
 		return x;
 	}
 
-	const result = Number(token[4].value.toFixed(precision)).toString();
+	const result = roundToPrecision(token[4].value, precision).toString();
+
 	if (isTokenNumber(token)) {
 		token[1] = result;
 	} else if (isTokenPercentage(token)) {
@@ -34,4 +35,33 @@ export function patchPrecision(x: TokenNode | FunctionNode | -1, precision = 13)
 	}
 
 	return x;
+}
+
+/**
+ * Returns `true` when rounding a value to a number of decimals can not change it.
+ * Non-finite values, zero, integers and values that serialize in scientific
+ * notation are left untouched.
+ *
+ * Rounding scientific notation values would destroy them (e.g. `1e-20` -> `0`).
+ */
+function shouldSkipPrecisionRounding(value: number): boolean {
+	if (!Number.isFinite(value) || value === 0) {
+		return true;
+	}
+
+	if (Number.isInteger(value)) {
+		return true;
+	}
+
+	const serialized = value.toString();
+	return serialized.includes('e') || serialized.includes('E');
+}
+
+export function roundToPrecision(value: number, precision = 13): number {
+	if (shouldSkipPrecisionRounding(value)) {
+		return value;
+	}
+
+	// Otherwise round to a number of decimals.
+	return Number(value.toFixed(precision));
 }

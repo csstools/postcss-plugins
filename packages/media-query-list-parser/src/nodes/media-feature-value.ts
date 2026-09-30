@@ -233,16 +233,13 @@ export function parseMediaFeatureValue(componentValues: Array<ComponentValue>, i
 }
 
 export function matchesRatioExactly(componentValues: Array<ComponentValue>): -1 | [number, number] {
-	let firstNumber = -1;
-	let secondNumber = -1;
-
 	const result = matchesRatio(componentValues);
 	if (result === -1) {
 		return -1;
 	}
 
-	firstNumber = result[0];
-	secondNumber = result[1];
+	const firstNumber = result[0];
+	const secondNumber = result[1];
 
 	for (let i = secondNumber+1; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];

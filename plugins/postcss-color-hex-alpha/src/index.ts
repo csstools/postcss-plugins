@@ -29,6 +29,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
+			if (decl.parent?.type === 'atrule' && decl.parent.name.toLowerCase() === 'property') {
+				return;
+			}
+
 			const { value: originalValue } = decl;
 
 			// replace instances of hexa with rgba()
@@ -63,6 +67,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 const HAS_HEX_ALPHA_REGEX = /#[0-9a-f]{4}(?:[0-9a-f]{4})?\b/i;
 

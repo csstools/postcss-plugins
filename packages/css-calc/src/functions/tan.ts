@@ -52,7 +52,9 @@ export function solveTan(tanNode: FunctionNode, a: TokenNode): Calculation | -1 
 	const isAsymptote = isNinetyMultiple && timesNinety % 2 !== 0;
 
 	if (isAsymptote) {
-		result = timesNinety > 0 ? Infinity : -Infinity;
+		// https://drafts.csswg.org/css-values-4/#trig-infinities
+		// +∞ for the asymptotes at 90deg + N*360deg, and −∞ for the asymptotes at -90deg + N*360deg.
+		result = ((timesNinety % 4) + 4) % 4 === 1 ? Infinity : -Infinity;
 	} else {
 		result = Math.tan(result);
 	}

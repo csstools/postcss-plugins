@@ -43,11 +43,11 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^2.0.4",
-		"@csstools/css-parser-algorithms": "^3.0.4",
-		"@csstools/css-tokenizer": "^3.0.3",
+		"@csstools/cascade-layer-name-parser": "^3.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/custom-function-parser": "^0.0.0",
-		"@csstools/utilities": "^2.0.0"
+		"@csstools/utilities": "^3.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

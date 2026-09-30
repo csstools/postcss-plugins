@@ -9,12 +9,12 @@ import type { Node } from 'postcss-value-parser';
 type imageSetFunction = {
 	imageSetFunction: Node;
 	imageSetOptionNodes: Array<Node>;
-}
+};
 
 type mediaByDpr = {
 	atRule: AtRule;
 	value: string;
-}
+};
 
 export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl: Declaration, opts: { decl: Declaration, oninvalid: 'warn' | 'throw' | 'ignore' | false | undefined, preserve: boolean, result: Result, postcss: Postcss }): void => {
 	const parent = decl.parent;
@@ -110,6 +110,4 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 			parent.remove();
 		}
 	}
-
-	return;
 };

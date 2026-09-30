@@ -6,7 +6,7 @@ import type { Declaration } from 'postcss';
 
 const VAR_FUNCTION_NAME_REGEX = /^var$/i;
 
-export function conditionsFromValue(decl: Declaration, mustContainVar = false): { support: Array<string> } {
+export function conditionsFromValue(decl: Declaration, mustContainVar = false): Array<string> {
 	const value = decl.value;
 
 	const supportConditions: Array<string> = [];
@@ -54,12 +54,8 @@ export function conditionsFromValue(decl: Declaration, mustContainVar = false): 
 	}
 
 	if (mustContainVar && !hasVar) {
-		return {
-			support: [],
-		};
+		return [];
 	}
 
-	return {
-		support: Array.from(new Set(supportConditions)).sort(),
-	};
+	return Array.from(new Set(supportConditions)).sort();
 }

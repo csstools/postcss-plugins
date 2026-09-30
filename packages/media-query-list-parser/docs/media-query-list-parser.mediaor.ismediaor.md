@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [MediaOr](./media-query-list-parser.mediaor.md)

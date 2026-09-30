@@ -43,8 +43,8 @@ if (invalid) {
 
 // Atrules
 for (const [name, atrule] of Object.entries(patches.atrules)) {
-	for (const [descriptor_name] of Object.entries(atrule.descriptors)) {
-		const patch = patches.atrules[name].descriptors[descriptor_name];
+	if (atrule.prelude) {
+		const patch = patches.atrules[name].prelude;
 		if (!patch) {
 			continue;
 		}
@@ -59,7 +59,7 @@ for (const [name, atrule] of Object.entries(patches.atrules)) {
 
 		for (const test of (patch.tests.passing ?? [])) {
 			try {
-				const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
+				const result = forkedLexer.matchAtrulePrelude(name, test.prelude);
 				if (!result.error) {
 					continue;
 				}
@@ -67,13 +67,13 @@ for (const [name, atrule] of Object.entries(patches.atrules)) {
 			} catch { }
 
 			// eslint-disable-next-line no-console
-			console.log(`Expected no error for '@${name}' and '${descriptor_name}: ${test.value}'`);
+			console.log(`Expected no error for '@${name} ${test.prelude}'`);
 			flaws++;
 		}
 
 		for (const test of (patch.tests.failing ?? [])) {
 			try {
-				const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
+				const result = forkedLexer.matchAtrulePrelude(name, test.prelude);
 				if (result.error) {
 					continue;
 				}
@@ -82,8 +82,54 @@ for (const [name, atrule] of Object.entries(patches.atrules)) {
 			}
 
 			// eslint-disable-next-line no-console
-			console.log(`Expected an error for '@${name}' and '${descriptor_name}: ${test.value}'`);
+			console.log(`Expected an error for '@${name} ${test.prelude}'`);
 			flaws++;
+		}
+	}
+
+	if (atrule.descriptors) {
+		for (const [descriptor_name] of Object.entries(atrule.descriptors)) {
+			const patch = patches.atrules[name].descriptors[descriptor_name];
+			if (!patch) {
+				continue;
+			}
+
+			if (patch.omit) {
+				continue;
+			}
+
+			if (!patch.tests) {
+				continue;
+			}
+
+			for (const test of (patch.tests.passing ?? [])) {
+				try {
+					const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
+					if (!result.error) {
+						continue;
+					}
+
+				} catch { }
+
+				// eslint-disable-next-line no-console
+				console.log(`Expected no error for '@${name}' and '${descriptor_name}: ${test.value}'`);
+				flaws++;
+			}
+
+			for (const test of (patch.tests.failing ?? [])) {
+				try {
+					const result = forkedLexer.matchAtruleDescriptor(name, descriptor_name, test.value);
+					if (result.error) {
+						continue;
+					}
+				} catch {
+					continue;
+				}
+
+				// eslint-disable-next-line no-console
+				console.log(`Expected an error for '@${name}' and '${descriptor_name}: ${test.value}'`);
+				flaws++;
+			}
 		}
 	}
 }

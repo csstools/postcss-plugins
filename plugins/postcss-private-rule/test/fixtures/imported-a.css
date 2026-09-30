@@ -1,0 +1,7 @@
+a {
+	@private {
+		--a: 2px;
+	}
+
+	top: var(--a);
+}

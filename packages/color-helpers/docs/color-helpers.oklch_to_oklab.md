@@ -43,6 +43,7 @@ OKLCH
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Color](./color-helpers.color.md)

@@ -59,6 +59,7 @@ replaceWith
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Array&lt;Array&lt;[ComponentValue](./css-parser-algorithms.componentvalue.md)<!-- -->&gt;&gt;

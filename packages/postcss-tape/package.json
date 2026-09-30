@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-tape",
 	"description": "Quickly test PostCSS plugins",
-	"version": "6.0.0",
+	"version": "7.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -29,27 +29,22 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [
 		"dist"
 	],
 	"dependencies": {
-		"postcss": "~8.5",
+		"postcss": "^8.5.10"
+	},
+	"devDependencies": {
 		"postcss-8.4": "npm:postcss@~8.4"
 	},
 	"scripts": {

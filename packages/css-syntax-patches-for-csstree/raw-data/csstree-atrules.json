@@ -1,8 +1,21 @@
 {
+	"charset": {
+		"prelude": {
+			"syntax": "<string>"
+		}
+	},
+	"container": {
+		"prelude": {
+			"syntax": "[ <container-name> ]? <container-condition>"
+		}
+	},
 	"counter-style": {
+		"prelude": {
+			"syntax": "<counter-style-name>"
+		},
 		"descriptors": {
 			"additive-symbols": {
-				"syntax": "[ <integer> && <symbol> ]#"
+				"syntax": "[ <integer [0,∞]> && <symbol> ]#"
 			},
 			"fallback": {
 				"syntax": "<counter-style-name>"
@@ -11,7 +24,7 @@
 				"syntax": "<symbol> <symbol>?"
 			},
 			"pad": {
-				"syntax": "<integer> && <symbol>"
+				"syntax": "<integer [0,∞]> && <symbol>"
 			},
 			"prefix": {
 				"syntax": "<symbol>"
@@ -33,6 +46,11 @@
 			}
 		}
 	},
+	"document": {
+		"prelude": {
+			"syntax": "[ <url> | url-prefix( <string> ) | domain( <string> ) | media-document( <string> ) | regexp( <string> ) ]#"
+		}
+	},
 	"font-face": {
 		"descriptors": {
 			"ascent-override": {
@@ -42,7 +60,7 @@
 				"syntax": "normal | <percentage>"
 			},
 			"font-display": {
-				"syntax": "[ auto | block | swap | fallback | optional ]"
+				"syntax": "auto | block | swap | fallback | optional"
 			},
 			"font-family": {
 				"syntax": "<family-name>"
@@ -76,7 +94,25 @@
 			}
 		}
 	},
+	"font-feature-values": {
+		"prelude": {
+			"syntax": "<family-name>#"
+		}
+	},
+	"font-features-values": {
+		"prelude": {
+			"syntax": "[ <string> | <custom-ident> ]+"
+		},
+		"descriptors": {
+			"font-display": {
+				"syntax": "auto | block | swap | fallback | optional"
+			}
+		}
+	},
 	"font-palette-values": {
+		"prelude": {
+			"syntax": "<dashed-ident>"
+		},
 		"descriptors": {
 			"base-palette": {
 				"syntax": "light | dark | <integer [0,∞]>"
@@ -85,11 +121,39 @@
 				"syntax": "<family-name>#"
 			},
 			"override-colors": {
-				"syntax": "[ <integer [0,∞]> <absolute-color-base> ]#"
+				"syntax": "[ <integer [0,∞]> <color> ]#"
 			}
 		}
 	},
+	"import": {
+		"prelude": {
+			"syntax": "[ <string> | <url> ] [ layer | layer( <layer-name> ) ]? [ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?"
+		}
+	},
+	"keyframes": {
+		"prelude": {
+			"syntax": "<keyframes-name>"
+		}
+	},
+	"layer": {
+		"prelude": {
+			"syntax": "[ <layer-name># | <layer-name>? ]"
+		}
+	},
+	"media": {
+		"prelude": {
+			"syntax": "<media-query-list>"
+		}
+	},
+	"namespace": {
+		"prelude": {
+			"syntax": "<namespace-prefix>? [ <string> | <url> ]"
+		}
+	},
 	"page": {
+		"prelude": {
+			"syntax": "<page-selector-list>"
+		},
 		"descriptors": {
 			"bleed": {
 				"syntax": "auto | <length>"
@@ -101,11 +165,14 @@
 				"syntax": "upright | rotate-left | rotate-right"
 			},
 			"size": {
-				"syntax": "<length>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
+				"syntax": "<length [0,∞]>{1,2} | auto | [ <page-size> || [ portrait | landscape ] ]"
 			}
 		}
 	},
 	"position-try": {
+		"prelude": {
+			"syntax": "<dashed-ident>"
+		},
 		"descriptors": {
 			"align-self": {
 				"syntax": "<'align-self'> | anchor-center"
@@ -218,6 +285,9 @@
 		}
 	},
 	"property": {
+		"prelude": {
+			"syntax": "<custom-property-name>"
+		},
 		"descriptors": {
 			"inherits": {
 				"syntax": "true | false"
@@ -227,6 +297,26 @@
 			},
 			"syntax": {
 				"syntax": "<string>"
+			}
+		}
+	},
+	"scope": {
+		"prelude": {
+			"syntax": "[ ( <scope-start> ) ]? [ to ( <scope-end> ) ]?"
+		}
+	},
+	"supports": {
+		"prelude": {
+			"syntax": "<supports-condition>"
+		}
+	},
+	"view-transition": {
+		"descriptors": {
+			"navigation": {
+				"syntax": "auto | none"
+			},
+			"types": {
+				"syntax": "none | <custom-ident>+"
 			}
 		}
 	}

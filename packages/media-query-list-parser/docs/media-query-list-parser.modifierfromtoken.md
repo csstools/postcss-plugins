@@ -43,6 +43,7 @@ TokenIdent
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [MediaQueryModifier](./media-query-list-parser.mediaquerymodifier.md) \| false

@@ -38,8 +38,8 @@ export async function stdinToFs(plugin: Plugin, argo: Arguments, helpLogger: () 
 
 		if (argo.externalMap && result.map) {
 			await Promise.all([
-				await fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
-				await fs.writeFile(`${output}.map`, result.map.toString()),
+				fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : '')),
+				fs.writeFile(`${output}.map`, result.map.toString()),
 			]);
 		} else {
 			await fs.writeFile(output, result.css + (argo.inlineMap ? '\n' : ''));

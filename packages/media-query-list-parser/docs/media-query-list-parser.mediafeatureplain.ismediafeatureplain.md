@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [MediaFeaturePlain](./media-query-list-parser.mediafeatureplain.md)

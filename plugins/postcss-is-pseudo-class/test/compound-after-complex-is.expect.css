@@ -26,7 +26,7 @@
 	order: 2.1;
 }
 
-.ignore > :is(.a > .b) > .c {
+::before > :is(.a > .b) > .c {
 	order: 2.2;
 }
 
@@ -38,7 +38,7 @@
 	order: 3.1;
 }
 
-.ignore + :is(.a + .b) + .c {
+::before + :is(.a + .b) + .c {
 	order: 3.2;
 }
 

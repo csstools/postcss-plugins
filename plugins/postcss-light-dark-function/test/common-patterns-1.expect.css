@@ -23,6 +23,7 @@
 		}
 	}
 }
+
 @supports (color: light-dark(red, red)) {
 :root {
 

@@ -29,7 +29,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
-	if (isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
+	if (!isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
 		tokensCopy.push([
 			TokenType.EOF,
 			'',
@@ -46,9 +46,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 
 	while (true) {
 		if (!tokensCopy[i] || isTokenEOF(tokensCopy[i])) {
-			if (list.length) {
-				listOfCvls.push(list);
-			}
+			listOfCvls.push(list);
 
 			return listOfCvls;
 		}
@@ -60,7 +58,7 @@ export function parseCommaSeparatedListOfComponentValues(tokens: Array<CSSToken>
 			continue;
 		}
 
-		const result = consumeComponentValue(ctx, tokens.slice(i));
+		const result = consumeComponentValue(ctx, tokensCopy, i, 0);
 		list.push(result.node);
 		i += result.advance;
 	}

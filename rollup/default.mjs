@@ -25,20 +25,22 @@ if (packageInfo.name === '@csstools/postcss-tape') {
 const presets = [];
 
 if (isTypescript) {
-	if (packageInfo.main || packageInfo.module) {
-		presets.push(...packageTypescript({nodeCoverageDisable: nodeCoverageDisable}));
+	if (packageInfo.exports) {
+		presets.push(...packageTypescript({
+			nodeCoverageDisable: nodeCoverageDisable,
+		}));
 	}
 
-	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
+	if (packageInfo.exports && ('./browser' in Object(packageInfo.exports))) {
 		// Browser script remain javascript as it's simpler to go old school JS in regular JS.
 		presets.push(...browserJavascript());
 	}
 } else {
-	if (packageInfo.main || packageInfo.module) {
+	if (packageInfo.exports) {
 		presets.push(...packageJavascript());
 	}
 
-	if (packageInfo.exports && ('./browser' in packageInfo.exports)) {
+	if (packageInfo.exports && ('./browser' in Object(packageInfo.exports))) {
 		presets.push(...browserJavascript());
 	}
 }

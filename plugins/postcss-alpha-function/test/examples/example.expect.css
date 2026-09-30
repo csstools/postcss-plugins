@@ -1,0 +1,7 @@
+.color {
+	color: rgb(from #dddd r g b / calc(alpha / 2));
+}
+
+:root {
+	--a-color: rgb(from rgb(2 1 0 / var(--a)) r g b / calc(alpha / 2));
+}

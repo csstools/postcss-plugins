@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<title>CSS Mixins: Parameters and @private</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#private">
+<style>
+	target {
+		display: block;
+	}
+</style>
+
+<body>
+	<target class="private"></target>
+	<target class="private-and-args"></target>
+	<target class="shadowed-by-element"></target>
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// Only the transformed form is asserted.
+			// Chrome Canary does not implement `@private`.
+			const testCases = [
+				{
+					title: 'Mixin @private rules',
+					target: '.private',
+					property: 'box-shadow',
+					expected: 'rgb(0, 128, 0) 2px 2px 0px 0px',
+					style: `
+						@mixin --private() {
+							@private {
+								--shadow-color: green;
+							}
+							box-shadow: 2px 2px var(--shadow-color);
+						}
+						.private {
+							@apply --private;
+						}
+					`,
+				},
+				{
+					title: 'Mixin parameters and @private rules combine',
+					target: '.private-and-args',
+					property: 'color',
+					style: `
+						@mixin --private-and-args(--color) {
+							@private {
+								--local: var(--color);
+							}
+							color: var(--local);
+						}
+						.private-and-args {
+							@apply --private-and-args(green);
+						}
+					`,
+				},
+				{
+					title: 'Mixin parameters shadow element custom properties',
+					target: '.shadowed-by-element',
+					property: 'color',
+					style: `
+						@mixin --shadowed(--color: green) {
+							color: var(--color);
+						}
+						.shadowed-by-element {
+							--color: red;
+							@apply --shadowed;
+						}
+					`,
+				},
+			];
+
+			for (let testCase of testCases) {
+				const styleElement = document.createElement('style');
+
+				const testCaseStyle = await (fetch(`/test/styles.css?transform=true`, {
+					method: 'POST',
+					body: testCase['style'],
+				}).then((response) => response.text()));
+
+				styleElement.textContent = testCaseStyle;
+				document.head.append(styleElement);
+
+				const target = document.querySelector(testCase['target']);
+
+				assert_equals(
+					window.getComputedStyle(target)[testCase['property']],
+					testCase['expected'] || 'rgb(0, 128, 0)',
+					testCase['title'] + " target '" + testCase['target'] + "'"
+				);
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>

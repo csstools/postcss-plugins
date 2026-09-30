@@ -2,12 +2,6 @@
 	"abs()": {
 		"syntax": "abs( <calc-sum> )"
 	},
-	"absolute-color-base": {
-		"syntax": "<hex-color> | <absolute-color-function> | <named-color> | transparent"
-	},
-	"absolute-color-function": {
-		"syntax": "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <oklab()> | <oklch()> | <color()>"
-	},
 	"absolute-size": {
 		"syntax": "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large"
 	},
@@ -20,8 +14,8 @@
 	"alpha-value": {
 		"syntax": "<number> | <percentage>"
 	},
-	"anchor-element": {
-		"syntax": "<dashed-ident>"
+	"an+b": {
+		"syntax": "odd | even | <integer> | <n-dimension> | '+'? † n | -n | <ndashdigit-dimension> | '+'? † <ndashdigit-ident> | <dashndashdigit-ident> | <n-dimension> <signed-integer> | '+'? † n <signed-integer> | -n <signed-integer> | <ndash-dimension> <signless-integer> | '+'? † n- <signless-integer> | -n- <signless-integer> | <n-dimension> [ '+' | '-' ] <signless-integer> | '+'? † n [ '+' | '-' ] <signless-integer> | -n [ '+' | '-' ] <signless-integer>"
 	},
 	"anchor-name": {
 		"syntax": "<dashed-ident>"
@@ -33,25 +27,28 @@
 		"syntax": "width | height | block | inline | self-block | self-inline"
 	},
 	"anchor-size()": {
-		"syntax": "anchor-size( [ <anchor-element> || <anchor-size> ]? , <length-percentage>? )"
+		"syntax": "anchor-size( [ <anchor-name> || <anchor-size> ]? , <length-percentage>? )"
 	},
 	"anchor()": {
-		"syntax": "anchor( <anchor-element>? && <anchor-side> , <length-percentage>? )"
+		"syntax": "anchor( <anchor-name>? && <anchor-side> , <length-percentage>? )"
 	},
 	"angle-percentage": {
 		"syntax": "<angle> | <percentage>"
 	},
 	"angular-color-hint": {
-		"syntax": "<angle-percentage>"
+		"syntax": "<angle-percentage> | <zero>"
 	},
 	"angular-color-stop": {
-		"syntax": "<color> && <color-stop-angle>?"
+		"syntax": "<color> <color-stop-angle>?"
 	},
 	"angular-color-stop-list": {
-		"syntax": "[ <angular-color-stop> [, <angular-color-hint> ]? ]# , <angular-color-stop>"
+		"syntax": "<angular-color-stop> , [ <angular-color-hint>? , <angular-color-stop> ]#?"
 	},
 	"animateable-feature": {
 		"syntax": "scroll-position | contents | <custom-ident>"
+	},
+	"animation-action": {
+		"syntax": "none | play | play-once | play-forwards | play-backwards | pause | reset | replay"
 	},
 	"asin()": {
 		"syntax": "asin( <calc-sum> )"
@@ -77,8 +74,11 @@
 	"attr-name": {
 		"syntax": "<wq-name>"
 	},
+	"attr-type": {
+		"syntax": "type( <syntax> ) | raw-string | number | <attr-unit>"
+	},
 	"attr()": {
-		"syntax": "attr( <attr-name> <type-or-unit>? [, <attr-fallback> ]? )"
+		"syntax": "attr( <attr-name> <attr-type>? , <declaration-value>? )"
 	},
 	"attribute-selector": {
 		"syntax": "'[' <wq-name> ']' | '[' <wq-name> <attr-matcher> [ <string-token> | <ident-token> ] <attr-modifier>? ']'"
@@ -89,6 +89,9 @@
 	"auto-track-list": {
 		"syntax": "[ <line-names>? [ <fixed-size> | <fixed-repeat> ] ]* <line-names>? <auto-repeat> [ <line-names>? [ <fixed-size> | <fixed-repeat> ] ]* <line-names>?"
 	},
+	"autospace": {
+		"syntax": "no-autospace | [ ideograph-alpha || ideograph-numeric || punctuation ] || [ insert | replace ]"
+	},
 	"axis": {
 		"syntax": "block | inline | x | y"
 	},
@@ -98,41 +101,47 @@
 	"basic-shape": {
 		"syntax": "<inset()> | <xywh()> | <rect()> | <circle()> | <ellipse()> | <polygon()> | <path()>"
 	},
+	"basic-shape-rect": {
+		"syntax": "<inset()> | <rect()> | <xywh()>"
+	},
 	"bg-clip": {
-		"syntax": "<box> | border | text"
+		"syntax": "<visual-box> | border-area | text"
 	},
 	"bg-image": {
-		"syntax": "none | <image>"
+		"syntax": "<image> | none"
 	},
 	"bg-layer": {
-		"syntax": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <box> || <box>"
+		"syntax": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box>"
 	},
 	"bg-position": {
 		"syntax": "[ [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]"
 	},
 	"bg-size": {
-		"syntax": "[ <length-percentage> | auto ]{1,2} | cover | contain"
+		"syntax": "[ <length-percentage [0,∞]> | auto ]{1,2} | cover | contain"
 	},
 	"blend-mode": {
 		"syntax": "normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity"
 	},
 	"blur()": {
-		"syntax": "blur( <length> )"
+		"syntax": "blur( <length>? )"
 	},
 	"bottom": {
 		"syntax": "<length> | auto"
 	},
-	"box": {
-		"syntax": "border-box | padding-box | content-box"
-	},
 	"brightness()": {
-		"syntax": "brightness( <number-percentage> )"
+		"syntax": "brightness( [ <number> | <percentage> ]? )"
 	},
 	"calc-constant": {
 		"syntax": "e | pi | infinity | -infinity | NaN"
 	},
 	"calc-product": {
 		"syntax": "<calc-value> [ '*' <calc-value> | '/' <number> ]*"
+	},
+	"calc-size-basis": {
+		"syntax": "<intrinsic-size-keyword> | <calc-size()> | any | <calc-sum>"
+	},
+	"calc-size()": {
+		"syntax": "calc-size( <calc-size-basis> , <calc-sum> )"
 	},
 	"calc-sum": {
 		"syntax": "<calc-product> [ [ '+' | '-' ] <calc-product> ]*"
@@ -150,7 +159,7 @@
 		"syntax": "<percentage>? && <image>"
 	},
 	"circle()": {
-		"syntax": "circle( [ <shape-radius> ]? [ at <position> ]? )"
+		"syntax": "circle( <radial-size>? [ at <position> ]? )"
 	},
 	"clamp()": {
 		"syntax": "clamp( <calc-sum>#{3} )"
@@ -189,13 +198,13 @@
 		"syntax": "<color-stop-length> | <color-stop-angle>"
 	},
 	"color-stop-angle": {
-		"syntax": "<angle-percentage>{1,2}"
+		"syntax": "[ <angle-percentage> | <zero> ]{1,2}"
 	},
 	"color-stop-length": {
 		"syntax": "<length-percentage>{1,2}"
 	},
 	"color-stop-list": {
-		"syntax": "[ <linear-color-stop> [, <linear-color-hint> ]? ]# , <linear-color-stop>"
+		"syntax": "<linear-color-stop> , [ <linear-color-hint>? , <linear-color-stop> ]#?"
 	},
 	"color()": {
 		"syntax": "color( <colorspace-params> [ / [ <alpha-value> | none ] ]? )"
@@ -210,7 +219,10 @@
 		"syntax": "[ common-ligatures | no-common-ligatures ]"
 	},
 	"compat-auto": {
-		"syntax": "searchfield | textarea | push-button | slider-horizontal | checkbox | radio | square-button | menulist | listbox | meter | progress-bar | button"
+		"syntax": "searchfield | textarea | checkbox | radio | menulist | listbox | meter | progress-bar | button"
+	},
+	"compat-special": {
+		"syntax": "textfield | menulist-button"
 	},
 	"complex-real-selector": {
 		"syntax": "<compound-selector> [ <combinator>? <compound-selector> ]*"
@@ -239,14 +251,20 @@
 	"compound-selector-list": {
 		"syntax": "<compound-selector>#"
 	},
+	"conic-gradient-syntax": {
+		"syntax": "[ [ [ from [ <angle> | <zero> ] ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <angular-color-stop-list>"
+	},
 	"conic-gradient()": {
-		"syntax": "conic-gradient( [ from <angle> ]? [ at <position> ]? , <angular-color-stop-list> )"
+		"syntax": "conic-gradient( [ <conic-gradient-syntax> ] )"
 	},
 	"container-condition": {
 		"syntax": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]"
 	},
 	"container-name": {
 		"syntax": "<custom-ident>"
+	},
+	"container-query": {
+		"syntax": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]"
 	},
 	"content-distribution": {
 		"syntax": "space-between | space-around | space-evenly | stretch"
@@ -264,10 +282,13 @@
 		"syntax": "[ contextual | no-contextual ]"
 	},
 	"contrast()": {
-		"syntax": "contrast( [ <number-percentage> ] )"
+		"syntax": "contrast( [ <number> | <percentage> ]? )"
 	},
 	"coord-box": {
 		"syntax": "content-box | padding-box | border-box | fill-box | stroke-box | view-box"
+	},
+	"corner-shape-value": {
+		"syntax": "round | scoop | bevel | notch | square | squircle | <superellipse()>"
 	},
 	"cos()": {
 		"syntax": "cos( <calc-sum> )"
@@ -293,11 +314,26 @@
 	"cross-fade()": {
 		"syntax": "cross-fade( <cf-mixing-image> , <cf-final-image>? )"
 	},
-	"cubic-bezier-timing-function": {
+	"cubic-bezier-easing-function": {
 		"syntax": "ease | ease-in | ease-out | ease-in-out | cubic-bezier( <number [0,1]> , <number> , <number [0,1]> , <number> )"
+	},
+	"cubic-bezier()": {
+		"syntax": "cubic-bezier( [ <number [0,1]> , <number> ]#{2} )"
+	},
+	"cursor-predefined": {
+		"syntax": "auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out | grab | grabbing"
 	},
 	"custom-color-space": {
 		"syntax": "<dashed-ident>"
+	},
+	"custom-params": {
+		"syntax": "<dashed-ident> [ <number> | <percentage> | none ]+"
+	},
+	"dasharray": {
+		"syntax": "[ [ <length-percentage> | <number> ]+ ]#"
+	},
+	"dashndashdigit-ident": {
+		"syntax": "<ident-token>"
 	},
 	"declaration": {
 		"syntax": "<ident-token> : <declaration-value>? [ '!' important ]?"
@@ -306,7 +342,7 @@
 		"syntax": "[ <declaration>? ';' ]* <declaration>?"
 	},
 	"deprecated-system-color": {
-		"syntax": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonFace | ButtonHighlight | ButtonShadow | ButtonText | CaptionText | GrayText | Highlight | HighlightText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText"
+		"syntax": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText"
 	},
 	"device-cmyk()": {
 		"syntax": "<legacy-device-cmyk-syntax> | <modern-device-cmyk-syntax>"
@@ -336,10 +372,13 @@
 		"syntax": "block | inline | run-in"
 	},
 	"drop-shadow()": {
-		"syntax": "drop-shadow( <length>{2,3} <color>? )"
+		"syntax": "drop-shadow( [ <color>? && <length>{2,3} ] )"
+	},
+	"dynamic-range-limit-mix()": {
+		"syntax": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]#{2,} )"
 	},
 	"easing-function": {
-		"syntax": "linear | <cubic-bezier-timing-function> | <step-timing-function>"
+		"syntax": "<linear-easing-function> | <cubic-bezier-easing-function> | <step-easing-function>"
 	},
 	"east-asian-variant-values": {
 		"syntax": "[ jis78 | jis83 | jis90 | jis04 | simplified | traditional ]"
@@ -351,10 +390,7 @@
 		"syntax": "element( <custom-ident> , [ first | start | last | first-except ]? ) | element( <id-selector> )"
 	},
 	"ellipse()": {
-		"syntax": "ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )"
-	},
-	"ending-shape": {
-		"syntax": "circle | ellipse"
+		"syntax": "ellipse( <radial-size>? [ at <position> ]? )"
 	},
 	"env()": {
 		"syntax": "env( <custom-ident> , <declaration-value>? )"
@@ -389,9 +425,6 @@
 	"feature-value-name": {
 		"syntax": "<custom-ident>"
 	},
-	"fill-rule": {
-		"syntax": "nonzero | evenodd"
-	},
 	"filter-function": {
 		"syntax": "<blur()> | <brightness()> | <contrast()> | <drop-shadow()> | <grayscale()> | <hue-rotate()> | <invert()> | <opacity()> | <saturate()> | <sepia()>"
 	},
@@ -401,17 +434,20 @@
 	"-ms-filter-function-legacy": {
 		"syntax": "<ident-token> | <function-token> <any-value>? )"
 	},
-	"filter-function-list": {
-		"syntax": "[ <filter-function> | <url> ]+"
-	},
 	"-ms-filter-function-list": {
 		"syntax": "<-ms-filter-function>+"
 	},
 	"-ms-filter-function-progid": {
 		"syntax": "'progid:' [ <ident-token> '.' ]* [ <ident-token> | <function-token> <any-value>? ) ]"
 	},
+	"filter-value-list": {
+		"syntax": "[ <filter-function> | <url> ]+"
+	},
 	"final-bg-layer": {
-		"syntax": "<'background-color'> || <bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <box> || <box>"
+		"syntax": "<bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <visual-box> || <visual-box> || <'background-color'>"
+	},
+	"fit-content()": {
+		"syntax": "fit-content( <length-percentage [0,∞]> )"
 	},
 	"fixed-breadth": {
 		"syntax": "<length-percentage>"
@@ -431,9 +467,6 @@
 	"font-variant-css2": {
 		"syntax": "normal | small-caps"
 	},
-	"font-variant-css21": {
-		"syntax": "[ normal | small-caps ]"
-	},
 	"font-weight-absolute": {
 		"syntax": "normal | bold | <number [1,1000]>"
 	},
@@ -445,6 +478,9 @@
 	},
 	"forgiving-selector-list": {
 		"syntax": "<complex-real-selector-list>"
+	},
+	"form-control-identifier": {
+		"syntax": "select"
 	},
 	"frequency-percentage": {
 		"syntax": "<frequency> | <percentage>"
@@ -466,9 +502,6 @@
 	},
 	"generic-incomplete": {
 		"syntax": "ui-serif | ui-sans-serif | ui-monospace | ui-rounded"
-	},
-	"generic-name": {
-		"syntax": "serif | sans-serif | cursive | fantasy | monospace"
 	},
 	"generic-script-specific": {
 		"syntax": "generic( kai ) | generic( fangsong ) | generic( nastaliq )"
@@ -501,7 +534,7 @@
 		"syntax": "-webkit-gradient( <-webkit-gradient-type> , <-webkit-gradient-point> [, <-webkit-gradient-point> | , <-webkit-gradient-radius> , <-webkit-gradient-point> ] [, <-webkit-gradient-radius> ]? [, <-webkit-gradient-color-stop> ]* )"
 	},
 	"grayscale()": {
-		"syntax": "grayscale( <number-percentage> )"
+		"syntax": "grayscale( [ <number> | <percentage> ]? )"
 	},
 	"grid-line": {
 		"syntax": "auto | <custom-ident> | [ <integer> && <custom-ident>? ] | [ span && [ <integer> || <custom-ident> ] ]"
@@ -510,10 +543,10 @@
 		"syntax": "[ historical-ligatures | no-historical-ligatures ]"
 	},
 	"hsl()": {
-		"syntax": "hsl( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsl( <hue> , <percentage> , <percentage> , <alpha-value>? )"
+		"syntax": "hsl( <hue> , <percentage> , <percentage> , <alpha-value>? ) | hsl( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"hsla()": {
-		"syntax": "hsla( <hue> <percentage> <percentage> [ / <alpha-value> ]? ) | hsla( <hue> , <percentage> , <percentage> , <alpha-value>? )"
+		"syntax": "hsla( <hue> , <percentage> , <percentage> , <alpha-value>? ) | hsla( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"hue": {
 		"syntax": "<number> | <angle>"
@@ -522,10 +555,10 @@
 		"syntax": "[ shorter | longer | increasing | decreasing ] hue"
 	},
 	"hue-rotate()": {
-		"syntax": "hue-rotate( <angle> )"
+		"syntax": "hue-rotate( [ <angle> | <zero> ]? )"
 	},
 	"hwb()": {
-		"syntax": "hwb( [ <hue> | none ] [ <percentage> | none ] [ <percentage> | none ] [ / [ <alpha-value> | none ] ]? )"
+		"syntax": "hwb( [ <hue> | none ] [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
 	"hypot()": {
 		"syntax": "hypot( <calc-sum># )"
@@ -560,17 +593,17 @@
 	"inset()": {
 		"syntax": "inset( <length-percentage>{1,4} [ round <'border-radius'> ]? )"
 	},
+	"intrinsic-size-keyword": {
+		"syntax": "min-content | max-content | fit-content"
+	},
 	"invert()": {
-		"syntax": "invert( <number-percentage> )"
+		"syntax": "invert( [ <number> | <percentage> ]? )"
 	},
 	"keyframe-block": {
 		"syntax": "<keyframe-selector># { <declaration-list> }"
 	},
-	"keyframe-block-list": {
-		"syntax": "<keyframe-block>+"
-	},
 	"keyframe-selector": {
-		"syntax": "from | to | <percentage> | <timeline-range-name> <percentage>"
+		"syntax": "from | to | <percentage [0,100]> | <timeline-range-name> <percentage>"
 	},
 	"keyframes-name": {
 		"syntax": "<custom-ident> | <string>"
@@ -626,14 +659,23 @@
 	"linear-color-stop": {
 		"syntax": "<color> <color-stop-length>?"
 	},
+	"linear-easing-function": {
+		"syntax": "linear | <linear()>"
+	},
 	"-legacy-linear-gradient": {
 		"syntax": "-moz-linear-gradient( <-legacy-linear-gradient-arguments> ) | -webkit-linear-gradient( <-legacy-linear-gradient-arguments> ) | -o-linear-gradient( <-legacy-linear-gradient-arguments> )"
 	},
 	"-legacy-linear-gradient-arguments": {
 		"syntax": "[ <angle> | <side-or-corner> ]? , <color-stop-list>"
 	},
+	"linear-gradient-syntax": {
+		"syntax": "[ [ <angle> | <zero> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list>"
+	},
 	"linear-gradient()": {
-		"syntax": "linear-gradient( [ [ <angle> | to <side-or-corner> ] || <color-interpolation-method> ]? , <color-stop-list> )"
+		"syntax": "linear-gradient( [ <linear-gradient-syntax> ] )"
+	},
+	"linear()": {
+		"syntax": "linear( [ <number> && <percentage>{0,2} ]# )"
 	},
 	"log()": {
 		"syntax": "log( <calc-sum> , <calc-sum>? )"
@@ -722,20 +764,29 @@
 	"modern-device-cmyk-syntax": {
 		"syntax": "device-cmyk( <cmyk-component>{4} [ / [ <alpha-value> | none ] ]? )"
 	},
+	"n-dimension": {
+		"syntax": "<dimension-token>"
+	},
 	"name-repeat": {
 		"syntax": "repeat( [ <integer [1,∞]> | auto-fill ] , <line-names>+ )"
 	},
 	"named-color": {
-		"syntax": "transparent | aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen"
+		"syntax": "aliceblue | antiquewhite | aqua | aquamarine | azure | beige | bisque | black | blanchedalmond | blue | blueviolet | brown | burlywood | cadetblue | chartreuse | chocolate | coral | cornflowerblue | cornsilk | crimson | cyan | darkblue | darkcyan | darkgoldenrod | darkgray | darkgreen | darkgrey | darkkhaki | darkmagenta | darkolivegreen | darkorange | darkorchid | darkred | darksalmon | darkseagreen | darkslateblue | darkslategray | darkslategrey | darkturquoise | darkviolet | deeppink | deepskyblue | dimgray | dimgrey | dodgerblue | firebrick | floralwhite | forestgreen | fuchsia | gainsboro | ghostwhite | gold | goldenrod | gray | green | greenyellow | grey | honeydew | hotpink | indianred | indigo | ivory | khaki | lavender | lavenderblush | lawngreen | lemonchiffon | lightblue | lightcoral | lightcyan | lightgoldenrodyellow | lightgray | lightgreen | lightgrey | lightpink | lightsalmon | lightseagreen | lightskyblue | lightslategray | lightslategrey | lightsteelblue | lightyellow | lime | limegreen | linen | magenta | maroon | mediumaquamarine | mediumblue | mediumorchid | mediumpurple | mediumseagreen | mediumslateblue | mediumspringgreen | mediumturquoise | mediumvioletred | midnightblue | mintcream | mistyrose | moccasin | navajowhite | navy | oldlace | olive | olivedrab | orange | orangered | orchid | palegoldenrod | palegreen | paleturquoise | palevioletred | papayawhip | peachpuff | peru | pink | plum | powderblue | purple | rebeccapurple | red | rosybrown | royalblue | saddlebrown | salmon | sandybrown | seagreen | seashell | sienna | silver | skyblue | slateblue | slategray | slategrey | snow | springgreen | steelblue | tan | teal | thistle | tomato | turquoise | violet | wheat | white | whitesmoke | yellow | yellowgreen"
 	},
 	"namespace-prefix": {
 		"syntax": "<ident>"
 	},
+	"ndash-dimension": {
+		"syntax": "<dimension-token>"
+	},
+	"ndashdigit-dimension": {
+		"syntax": "<dimension-token>"
+	},
+	"ndashdigit-ident": {
+		"syntax": "<ident-token>"
+	},
 	"ns-prefix": {
 		"syntax": "[ <ident-token> | '*' ]? '|'"
-	},
-	"nth": {
-		"syntax": "<an-plus-b> | even | odd"
 	},
 	"number-one-or-greater": {
 		"syntax": "<number [1,∞]>"
@@ -764,8 +815,14 @@
 	"oklch()": {
 		"syntax": "oklch( [ <percentage> | <number> | none ] [ <percentage> | <number> | none ] [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )"
 	},
+	"opacity-value": {
+		"syntax": "<number> | <percentage>"
+	},
 	"opacity()": {
-		"syntax": "opacity( [ <number-percentage> ] )"
+		"syntax": "opacity( [ <number> | <percentage> ]? )"
+	},
+	"outline-line-style": {
+		"syntax": "none | dotted | dashed | solid | double | groove | ridge | inset | outset"
 	},
 	"outline-radius": {
 		"syntax": "<length> | <percentage>"
@@ -797,14 +854,20 @@
 	"paint": {
 		"syntax": "none | <color> | <url> [ none | <color> ]? | context-fill | context-stroke"
 	},
+	"paint-box": {
+		"syntax": "<visual-box> | fill-box | stroke-box"
+	},
 	"paint()": {
 		"syntax": "paint( <ident> , <declaration-value>? )"
 	},
 	"palette-identifier": {
 		"syntax": "<dashed-ident>"
 	},
+	"palette-mix()": {
+		"syntax": "palette-mix( <color-interpolation-method> , [ [ normal | light | dark | <palette-identifier> | <palette-mix()> ] && <percentage [0,100]>? ]#{2} )"
+	},
 	"path()": {
-		"syntax": "path( [ <fill-rule> , ]? <string> )"
+		"syntax": "path( <'fill-rule'>? , <string> )"
 	},
 	"perspective()": {
 		"syntax": "perspective( [ <length [0,∞]> | none ] )"
@@ -813,7 +876,7 @@
 		"syntax": "hsl | hwb | lch | oklch"
 	},
 	"polygon()": {
-		"syntax": "polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )"
+		"syntax": "polygon( <'fill-rule'>? , [ <length-percentage> <length-percentage> ]# )"
 	},
 	"position": {
 		"syntax": "[ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]"
@@ -825,7 +888,7 @@
 		"syntax": "pow( <calc-sum> , <calc-sum> )"
 	},
 	"predefined-rgb": {
-		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020"
+		"syntax": "srgb | srgb-linear | display-p3 | display-p3-linear | a98-rgb | prophoto-rgb | rec2020"
 	},
 	"predefined-rgb-params": {
 		"syntax": "<predefined-rgb> [ <number> | <percentage> | none ]{3}"
@@ -848,6 +911,9 @@
 	"quote": {
 		"syntax": "open-quote | close-quote | no-open-quote | no-close-quote"
 	},
+	"radial-extent": {
+		"syntax": "closest-corner | closest-side | farthest-corner | farthest-side"
+	},
 	"-legacy-radial-gradient": {
 		"syntax": "-moz-radial-gradient( <-legacy-radial-gradient-arguments> ) | -webkit-radial-gradient( <-legacy-radial-gradient-arguments> ) | -o-radial-gradient( <-legacy-radial-gradient-arguments> )"
 	},
@@ -860,8 +926,17 @@
 	"-legacy-radial-gradient-size": {
 		"syntax": "closest-side | closest-corner | farthest-side | farthest-corner | contain | cover"
 	},
+	"radial-gradient-syntax": {
+		"syntax": "[ [ [ <radial-shape> || <radial-size> ]? [ at <position> ]? ] || <color-interpolation-method> ]? , <color-stop-list>"
+	},
 	"radial-gradient()": {
-		"syntax": "radial-gradient( [ <ending-shape> || <size> ]? [ at <position> ]? , <color-stop-list> )"
+		"syntax": "radial-gradient( [ <radial-gradient-syntax> ] )"
+	},
+	"radial-shape": {
+		"syntax": "circle | ellipse"
+	},
+	"radial-size": {
+		"syntax": "<radial-extent> | <length [0,∞]> | <length-percentage [0,∞]>{2}"
 	},
 	"ratio": {
 		"syntax": "<number [0,∞]> [ / <number [0,∞]> ]?"
@@ -876,7 +951,7 @@
 		"syntax": "rect( [ <length-percentage> | auto ]{4} [ round <'border-radius'> ]? )"
 	},
 	"rectangular-color-space": {
-		"syntax": "srgb | srgb-linear | display-p3 | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
+		"syntax": "srgb | srgb-linear | display-p3 | display-p3-linear | a98-rgb | prophoto-rgb | rec2020 | lab | oklab | xyz | xyz-d50 | xyz-d65"
 	},
 	"relative-real-selector": {
 		"syntax": "<combinator>? <complex-real-selector>"
@@ -900,28 +975,28 @@
 		"syntax": "repeat-x | repeat-y | [ repeat | space | round | no-repeat ]{1,2}"
 	},
 	"repeating-conic-gradient()": {
-		"syntax": "repeating-conic-gradient( [ from <angle> ]? [ at <position> ]? , <angular-color-stop-list> )"
+		"syntax": "repeating-conic-gradient( [ <conic-gradient-syntax> ] )"
 	},
 	"-legacy-repeating-linear-gradient": {
 		"syntax": "-moz-repeating-linear-gradient( <-legacy-linear-gradient-arguments> ) | -webkit-repeating-linear-gradient( <-legacy-linear-gradient-arguments> ) | -o-repeating-linear-gradient( <-legacy-linear-gradient-arguments> )"
 	},
 	"repeating-linear-gradient()": {
-		"syntax": "repeating-linear-gradient( [ <angle> | to <side-or-corner> ]? , <color-stop-list> )"
+		"syntax": "repeating-linear-gradient( [ <linear-gradient-syntax> ] )"
 	},
 	"-legacy-repeating-radial-gradient": {
 		"syntax": "-moz-repeating-radial-gradient( <-legacy-radial-gradient-arguments> ) | -webkit-repeating-radial-gradient( <-legacy-radial-gradient-arguments> ) | -o-repeating-radial-gradient( <-legacy-radial-gradient-arguments> )"
 	},
 	"repeating-radial-gradient()": {
-		"syntax": "repeating-radial-gradient( [ <ending-shape> || <size> ]? [ at <position> ]? , <color-stop-list> )"
+		"syntax": "repeating-radial-gradient( [ <radial-gradient-syntax> ] )"
 	},
 	"reversed-counter-name": {
 		"syntax": "reversed( <counter-name> )"
 	},
 	"rgb()": {
-		"syntax": "rgb( <percentage>{3} [ / <alpha-value> ]? ) | rgb( <number>{3} [ / <alpha-value> ]? ) | rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )"
+		"syntax": "rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? ) | rgb( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
 	},
 	"rgba()": {
-		"syntax": "rgba( <percentage>{3} [ / <alpha-value> ]? ) | rgba( <number>{3} [ / <alpha-value> ]? ) | rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )"
+		"syntax": "rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? ) | rgba( [ <number> | <percentage> | none ]{3} [ / [ <alpha-value> | none ] ]? )"
 	},
 	"right": {
 		"syntax": "<length> | auto"
@@ -948,7 +1023,7 @@
 		"syntax": "nearest | up | down | to-zero"
 	},
 	"saturate()": {
-		"syntax": "saturate( <number-percentage> )"
+		"syntax": "saturate( [ <number> | <percentage> ]? )"
 	},
 	"scale()": {
 		"syntax": "scale( [ <number> | <percentage> ]#{1,2} )"
@@ -971,8 +1046,17 @@
 	"scope-start": {
 		"syntax": "<forgiving-selector-list>"
 	},
+	"scroll-state-feature": {
+		"syntax": "<media-query-list>"
+	},
+	"scroll-state-in-parens": {
+		"syntax": "( <scroll-state-query> ) | ( <scroll-state-feature> ) | <general-enclosed>"
+	},
+	"scroll-state-query": {
+		"syntax": "not <scroll-state-in-parens> | <scroll-state-in-parens> [ [ and <scroll-state-in-parens> ]* | [ or <scroll-state-in-parens> ]* ] | <scroll-state-feature>"
+	},
 	"scroll()": {
-		"syntax": "scroll( [ <axis> || <scroller> ]? )"
+		"syntax": "scroll( [ <scroller> || <axis> ]? )"
 	},
 	"scroller": {
 		"syntax": "root | nearest | self"
@@ -984,7 +1068,7 @@
 		"syntax": "center | start | end | self-start | self-end | flex-start | flex-end"
 	},
 	"sepia()": {
-		"syntax": "sepia( <number-percentage> )"
+		"syntax": "sepia( [ <number> | <percentage> ]? )"
 	},
 	"shadow": {
 		"syntax": "inset? && <length>{2,4} && <color>?"
@@ -996,16 +1080,19 @@
 		"syntax": "rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> )"
 	},
 	"shape-box": {
-		"syntax": "<box> | margin-box"
-	},
-	"shape-radius": {
-		"syntax": "<length-percentage> | closest-side | farthest-side"
+		"syntax": "<visual-box> | margin-box"
 	},
 	"side-or-corner": {
 		"syntax": "[ left | right ] || [ top | bottom ]"
 	},
 	"sign()": {
 		"syntax": "sign( <calc-sum> )"
+	},
+	"signed-integer": {
+		"syntax": "<number-token>"
+	},
+	"signless-integer": {
+		"syntax": "<number-token>"
 	},
 	"simple-selector": {
 		"syntax": "<type-selector> | <subclass-selector>"
@@ -1064,11 +1151,14 @@
 	"sqrt()": {
 		"syntax": "sqrt( <calc-sum> )"
 	},
+	"step-easing-function": {
+		"syntax": "step-start | step-end | <steps()>"
+	},
 	"step-position": {
 		"syntax": "jump-start | jump-end | jump-none | jump-both | start | end"
 	},
-	"step-timing-function": {
-		"syntax": "step-start | step-end | steps( <integer> [, <step-position> ]? )"
+	"steps()": {
+		"syntax": "steps( <integer> , <step-position>? )"
 	},
 	"style-condition": {
 		"syntax": "not <style-in-parens> | <style-in-parens> [ [ and <style-in-parens> ]* | [ or <style-in-parens> ]* ]"
@@ -1084,6 +1174,9 @@
 	},
 	"subclass-selector": {
 		"syntax": "<id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>"
+	},
+	"superellipse()": {
+		"syntax": "superellipse( [ <number> | infinity | -infinity ] )"
 	},
 	"supports-condition": {
 		"syntax": "not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*"
@@ -1109,6 +1202,33 @@
 	"symbol": {
 		"syntax": "<string> | <image> | <custom-ident>"
 	},
+	"symbols-type": {
+		"syntax": "cyclic | numeric | alphabetic | symbolic | fixed"
+	},
+	"symbols()": {
+		"syntax": "symbols( <symbols-type>? [ <string> | <image> ]+ )"
+	},
+	"syntax": {
+		"syntax": "'*' | <syntax-component> [ <syntax-combinator> <syntax-component> ]* | <syntax-string>"
+	},
+	"syntax-combinator": {
+		"syntax": "'|'"
+	},
+	"syntax-component": {
+		"syntax": "<syntax-single-component> <syntax-multiplier>? | '<' transform-list '>'"
+	},
+	"syntax-multiplier": {
+		"syntax": "'#' | '+'"
+	},
+	"syntax-single-component": {
+		"syntax": "'<' <syntax-type-name> '>' | <ident>"
+	},
+	"syntax-string": {
+		"syntax": "<string>"
+	},
+	"syntax-type-name": {
+		"syntax": "angle | color | custom-ident | image | integer | length | length-percentage | number | percentage | resolution | string | time | url | transform-function"
+	},
 	"system-color": {
 		"syntax": "AccentColor | AccentColorText | ActiveText | ButtonBorder | ButtonFace | ButtonText | Canvas | CanvasText | Field | FieldText | GrayText | Highlight | HighlightText | LinkText | Mark | MarkText | SelectedItem | SelectedItemText | VisitedText"
 	},
@@ -1129,6 +1249,9 @@
 	},
 	"target-text()": {
 		"syntax": "target-text( [ <string> | <url> ] , [ content | before | after | first-letter ]? )"
+	},
+	"text-edge": {
+		"syntax": "[ text | cap | ex | ideographic | ideographic-ink ] [ text | alphabetic | ideographic | ideographic-ink ]?"
 	},
 	"time-percentage": {
 		"syntax": "<time> | <percentage>"
@@ -1213,6 +1336,9 @@
 	},
 	"xywh()": {
 		"syntax": "xywh( <length-percentage>{2} <length-percentage [0,∞]>{2} [ round <'border-radius'> ]? )"
+	},
+	"xyz": {
+		"syntax": "xyz | xyz-d50 | xyz-d65"
 	},
 	"xyz-params": {
 		"syntax": "<xyz-space> [ <number> | <percentage> | none ]{3}"

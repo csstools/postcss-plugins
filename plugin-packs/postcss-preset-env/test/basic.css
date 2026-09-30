@@ -267,22 +267,6 @@
 	display: inline table;
 }
 
-.table-cell-flow {
-	display: table-cell flow;
-}
-
-.table-caption-flow {
-	display: table-caption flow;
-}
-
-.ruby-base-flow {
-	display: ruby-base flow;
-}
-
-.ruby-text-flow {
-	display: ruby-text flow;
-}
-
 .logical-float {
 	float: inline-start;
 }
@@ -293,6 +277,7 @@
 	prop-3: color(display-p3 0.02472 0.01150 0.00574 / 1);
 	prop-4: color(display-p3 0.02472 0.01150 0.00574 / calc(33 / 22));
 	prop-5: color(display-p3 1 1 1 1);
+	prop-6: color(display-p3-linear 0.1 0.1 0.1);
 }
 
 .oklab {
@@ -330,6 +315,11 @@
 	color-15: oklch(60% 0.1250 50grad);
 	color-16: oklch(60% 0.1250 0.785398rad);
 	color-17: oklch(60% 0.1250 0.785398unknown);
+}
+
+.alpha {
+	color-1: alpha(from oklch(60% 0.1250 45deg / 0.2) / calc(alpha + 0.1));
+	--color-2: alpha(from oklch(60% 0.1250 45deg / 0.2) / calc(alpha + 0.1));
 }
 
 .ic-unit {
@@ -544,4 +534,64 @@
 		random(--c, 30%, 70%, 5%)
 		random(--h, 0deg, 360deg, 12deg)
 	);
+}
+
+.contrast-color {
+	color: contrast-color(green);
+}
+
+.position-area {
+	position-area: start;
+}
+
+@property --color-a, --color-b {
+	inherits: true;
+	initial-value: black;
+	syntax: <color>;
+}
+
+@property --value-a, --value-b {
+	inherits: true;
+	initial-value: black;
+}
+
+@mixin --mixin-a() {
+	color: lime;
+
+	@media screen {
+		color: green;
+	}
+}
+
+.apply {
+	width: 10px;
+
+	@apply --mixin-a;
+
+	height: 20px;
+}
+
+@font-face {
+	src: url("foo.ttf");
+	font-family: "foo";
+	font-style: normal;
+	font-width: 1% 1000%;
+}
+
+.foo {
+	font-width: 50%;
+}
+
+.foo {
+	background-color: image(purple);
+}
+
+@container (width > 260px), style(--foo: bar) {
+	.foo {
+		color: red;
+	}
+}
+
+.foo {
+	fit-tolerance: 2em;
 }

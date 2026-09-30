@@ -65,6 +65,7 @@ The test to match against the `@supports` at-rule's params
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 boolean

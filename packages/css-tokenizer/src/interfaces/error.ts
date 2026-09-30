@@ -42,4 +42,4 @@ export const ParseErrorMessage = {
 	UnexpectedCharacterInURL: 'Unexpected character while consuming a url token.',
 	InvalidEscapeSequenceInURL: 'Invalid escape sequence while consuming a url token.',
 	InvalidEscapeSequenceAfterBackslash: 'Invalid escape sequence after "\\"',
-}
+};

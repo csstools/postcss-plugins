@@ -45,6 +45,7 @@ Array&lt;T&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 (list: Array&lt;T&gt;, child: T, index: number) =&gt; number

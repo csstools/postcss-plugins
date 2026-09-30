@@ -4,6 +4,41 @@
 
 ## css-calc package
 
+## Classes
+
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ParseError](./css-calc.parseerror.md)
+
+
+</td><td>
+
+Any errors are reported through the `onParseError` callback.
+
+
+</td></tr>
+<tr><td>
+
+[ParseErrorWithComponentValues](./css-calc.parseerrorwithcomponentvalues.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
 ## Functions
 
 <table><thead><tr><th>
@@ -59,6 +94,15 @@ Description
 
 
 </td></tr>
+<tr><td>
+
+[ParseErrorMessage](./css-calc.parseerrormessage.md)
+
+
+</td><td>
+
+
+</td></tr>
 </tbody></table>
 
 ## Type Aliases
@@ -93,3 +137,4 @@ Description
 
 </td></tr>
 </tbody></table>
+

@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [MediaQueryInvalid](./media-query-list-parser.mediaqueryinvalid.md)

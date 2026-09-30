@@ -22,3 +22,14 @@ to-clone {
 .test-css-color-5-interop {
 	color-1: hwb(from hwb(50deg 20% 30%) h w b);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: hwb(50deg 20% 30%);
+}
+
+@keyframes --foo {
+	to {
+		--foo: hwb(50deg 20% 30%);
+	}
+}

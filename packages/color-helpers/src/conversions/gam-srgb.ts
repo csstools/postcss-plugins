@@ -15,7 +15,7 @@ export function gam_sRGB(RGB: Color): Color {
 		gam_sRGB_channel(RGB[0]),
 		gam_sRGB_channel(RGB[1]),
 		gam_sRGB_channel(RGB[2]),
-	]
+	];
 }
 
 function gam_sRGB_channel(val: number): number {

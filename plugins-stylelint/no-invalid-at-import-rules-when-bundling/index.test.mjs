@@ -39,7 +39,7 @@ testRule({
 		{
 			code: '@import "/foo.css";',
 			description: 'Leading slashes are ambiguous',
-			message: 'URL\'s that start with a slash are ambiguous when bundling, use a relative URL instead.',
+			message: 'URL\'s that start with a slash are ambiguous when bundling, use a relative URL instead. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 9,
 			endLine: 1,
@@ -48,7 +48,7 @@ testRule({
 		{
 			code: '@import "#foo.css";',
 			description: 'Leading number signs are invalid',
-			message: 'URL\'s that start with a number sign (#) are invalid when bundling.',
+			message: 'URL\'s that start with a number sign (#) are invalid when bundling. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 9,
 			endLine: 1,
@@ -57,7 +57,7 @@ testRule({
 		{
 			code: '@import "foo.css?bar=1";',
 			description: 'Query params can not be processed by a bundler',
-			message: 'URL\'s that have query params can not be bundled correctly. Avoid these or add a \'http(s)\' scheme and domain name.',
+			message: 'URL\'s that have query params can not be bundled correctly. Avoid these or add a \'http(s)\' scheme and domain name. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 9,
 			endLine: 1,
@@ -69,7 +69,7 @@ testRule({
 				@import "https://example.com/bar.css";
 			`,
 			description: 'Remote resources after a local import will not be bundled correctly',
-			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 3,
 			column: 13,
 			endLine: 3,
@@ -81,7 +81,7 @@ testRule({
 				@import "//example.com/bar.css";
 			`,
 			description: 'Remote resources after a local import will not be bundled correctly',
-			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file.',
+			message: '`@import` statements for remote resources after a local import will not be bundled correctly. Move these to the top of the file. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 3,
 			column: 13,
 			endLine: 3,
@@ -90,7 +90,7 @@ testRule({
 		{
 			code: '@import "fOO.css";',
 			description: 'Case sensitivity',
-			message: 'URL\'s with uppercase characters might give conflicts between users on case sensitive or insensitive file systems. Use lower case characters only to avoid potential issues.',
+			message: 'URL\'s with uppercase characters might give conflicts between users on case sensitive or insensitive file systems. Use lower case characters only to avoid potential issues. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 9,
 			endLine: 1,
@@ -99,7 +99,7 @@ testRule({
 		{
 			code: '@import "foo.css" { color: green; }',
 			description: 'Child nodes are not allowed',
-			message: '`@import` statements must not have any child nodes.',
+			message: '`@import` statements must not have any child nodes. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 1,
 			endLine: 1,
@@ -108,7 +108,7 @@ testRule({
 		{
 			code: '@import "foo.css" {}',
 			description: 'Child nodes are not allowed',
-			message: '`@import` statements must not have any child nodes.',
+			message: '`@import` statements must not have any child nodes. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 1,
 			endLine: 1,
@@ -117,7 +117,7 @@ testRule({
 		{
 			code: '@layer foo {} @import "foo.css";',
 			description: 'Order',
-			message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive.',
+			message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 15,
 			endLine: 1,
@@ -126,7 +126,7 @@ testRule({
 		{
 			code: '@import "foo.css"; .bar {} @import "bar.css";',
 			description: 'Order',
-			message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive.',
+			message: '`@import` statements must be precede all other nodes except for `@charset` or `@layer` and all `@import` statements must be consecutive. (@csstools/stylelint-no-invalid-at-import-rules-when-bundling)',
 			line: 1,
 			column: 28,
 			endLine: 1,

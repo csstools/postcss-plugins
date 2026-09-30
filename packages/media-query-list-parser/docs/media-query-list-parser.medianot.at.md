@@ -43,6 +43,7 @@ number \| string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [MediaInParens](./media-query-list-parser.mediainparens.md) \| undefined

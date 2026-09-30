@@ -51,7 +51,7 @@ import assert from 'node:assert';
 		assert.strictEqual(
 			stderrBuffer,
 			'::warning file=/example.css,line=3,col=3,endLine=6,endColumn=4,title=Stylelint problem::Expected empty line before rule (rule-empty-line-before) [maybe fixable] - https://stylelint.io/user-guide/rules/rule-empty-line-before\n' +
-			'::error file=/example.css,line=4,col=4,endLine=4,endColumn=9,title=Stylelint problem::Unexpected duplicate "color" (declaration-block-no-duplicate-properties) [maybe fixable] - https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-properties\n',
+			'::error file=/example.css,line=4,col=4,endLine=4,endColumn=9,title=Stylelint problem::Duplicate property "color" (declaration-block-no-duplicate-properties) [maybe fixable] - https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-properties\n',
 		);
 	});
 }

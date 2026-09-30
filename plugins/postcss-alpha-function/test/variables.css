@@ -1,0 +1,6 @@
+:root {
+	--a: alpha(from #dddd / 0.5);
+	--b: alpha(from #dddd / var(--a));
+	--c: alpha(from rgb(var(--b)) / 0.5);
+	--d: alpha(from var(--b) / 0.5);
+}

@@ -157,18 +157,18 @@
 							}
 
 							@scope (div) {
-								& & target.test-12 {
+								:scope target.test-12 {
 									background-color: green;
 								}
 
-								:scope :scope target.test-12 {
+								& target.test-12 {
 									background-color: red;
 								}
 							}
 
 							.outer{
 								@scope (div) {
-									& & target.test-13 {
+									:scope target.test-13 {
 										background-color: green;
 									}
 								}
@@ -176,7 +176,7 @@
 
 							.outer{
 								@scope (div) {
-									:scope :scope target.test-13 {
+									& target.test-13 {
 										background-color: red;
 									}
 								}

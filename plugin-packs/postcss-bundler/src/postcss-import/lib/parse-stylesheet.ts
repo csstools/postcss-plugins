@@ -216,6 +216,12 @@ function consumeLayers(nodes: Array<ChildNode>, conditions: Array<Condition>, cu
 }
 
 function parseImport(result: Result, atRule: AtRule, importingNode: AtRule | null, conditions: Array<Condition>, from: Array<string>): Warning | ImportStatement {
+	if (atRule.nodes) {
+		return result.warn(`Invalid @import block in '${atRule.toString()}'`, {
+			node: atRule,
+		});
+	}
+
 	const parsed = parseAtImport(atRule.params);
 	if (!parsed) {
 		return result.warn(`Invalid @import statement in '${atRule.toString()}'`, {

@@ -17,7 +17,7 @@ export async function getStdin(): Promise<string> {
 			process.stdin.setEncoding('utf8');
 
 			process.stdin.on('readable', () => {
-				let chunk: string | null = '';
+				let chunk: string | null;
 
 				while ((chunk = process.stdin.read() as string | null)) {
 					data += chunk ?? '';

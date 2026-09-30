@@ -40,3 +40,4 @@ Check if a node has a `@supports` at-rule ancestor with a given regex in its par
 
 </td></tr>
 </tbody></table>
+

@@ -1,0 +1,14 @@
+:root {
+	--a: rgb(from #dddd r g b / 0.5);
+	--b: rgb(from #dddd r g b / var(--a));
+	--c: rgb(from rgb(var(--b)) r g b / 0.5);
+	--d: alpha(from var(--b) / 0.5);
+}
+
+@supports (color: alpha(from red / 1)) {
+:root {
+	--a: alpha(from #dddd / 0.5);
+	--b: alpha(from #dddd / var(--a));
+	--c: alpha(from rgb(var(--b)) / 0.5);
+}
+}

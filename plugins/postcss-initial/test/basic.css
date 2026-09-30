@@ -24,3 +24,14 @@
 .pointer-events {
 	pointer-events: initial;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: initial;
+}
+
+@keyframes --foo {
+	to {
+		--foo: initial;
+	}
+}

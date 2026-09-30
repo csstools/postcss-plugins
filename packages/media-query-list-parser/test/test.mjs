@@ -1,3 +1,4 @@
+import './api/deeply-nested.mjs';
 import './api/options.mjs';
 
 import './cases/custom-media/0001.mjs';

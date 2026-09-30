@@ -2,19 +2,19 @@ import decodeCSS from './decode.mjs';
 
 /** Extract encoded selectors out of attribute selectors */
 export default function extractEncodedSelectors(value) {
-	let out = [];
+	var out = [];
 
-	let depth = 0;
-	let candidate;
+	var depth = 0;
+	var candidate;
 
-	let quoted = false;
-	let quotedMark;
+	var quoted = false;
+	var quotedMark;
 
-	let containsUnescapedUnquotedHasAtDepth1 = false;
+	var containsUnescapedUnquotedHasAtDepth1 = false;
 
 	// Stryker disable next-line EqualityOperator
-	for (let i = 0; i < value.length; i++) {
-		const char = value[i];
+	for (var i = 0; i < value.length; i++) {
+		var char = value[i];
 
 		switch (char) {
 			case '[':
@@ -40,9 +40,8 @@ export default function extractEncodedSelectors(value) {
 				{
 					depth--;
 					if (depth === 0) {
-						const decoded = decodeCSS(candidate);
 						if (containsUnescapedUnquotedHasAtDepth1) {
-							out.push(decoded);
+							out.push(decodeCSS(candidate));
 						}
 					} else {
 						candidate += char;
@@ -80,10 +79,10 @@ export default function extractEncodedSelectors(value) {
 		}
 	}
 
-	const unique = [];
-	for (let i = 0; i < out.length; i++) {
-		if (unique.indexOf(out[i]) === -1) {
-			unique.push(out[i]);
+	var unique = [];
+	for (var j = 0; j < out.length; j++) {
+		if (unique.indexOf(out[j]) === -1) {
+			unique.push(out[j]);
 		}
 	}
 

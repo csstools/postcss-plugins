@@ -64,8 +64,11 @@ console.log(calcResultStr);
 
 #### `precision` :
 
+The `precision` option is a number of decimals.
 The default precision is fairly high.
 It aims to be high enough to make rounding unnoticeable in the browser.
+
+Values that serialize in scientific notation are left untouched.
 
 You can set it to a lower number to suit your needs.
 
@@ -76,6 +79,8 @@ import { calc } from '@csstools/css-calc';
 console.log(calc('calc(1 / 3)', { precision: 1 }));
 // '0.33'
 console.log(calc('calc(1 / 3)', { precision: 2 }));
+// '1.0000000000000001e-20'
+console.log(calc('calc(1e-10 * 1e-10)'));
 ```
 
 #### `globals` :

@@ -14,11 +14,11 @@ function postcssPeerDependencyVersion() {
 	//   "postcss-8.2": "npm:postcss@~8.2"
 	// }
 	//
-	const lowerPostCSS_VersionKey = Object.keys(packageJSONInfoForPostCSS_Tape.dependencies).find((x) => {
-		return x.startsWith('postcss-') && packageJSONInfoForPostCSS_Tape.dependencies[x].includes('npm:postcss@~');
+	const lowerPostCSS_VersionKey = Object.keys(packageJSONInfoForPostCSS_Tape.devDependencies).find((x) => {
+		return x.startsWith('postcss-') && packageJSONInfoForPostCSS_Tape.devDependencies[x].includes('npm:postcss@~');
 	});
 
-	const lowerPostCSS_Version = packageJSONInfoForPostCSS_Tape.dependencies[lowerPostCSS_VersionKey];
+	const lowerPostCSS_Version = packageJSONInfoForPostCSS_Tape.devDependencies[lowerPostCSS_VersionKey];
 
 	// "npm:postcss@~8.2" -> "8.2"
 	return lowerPostCSS_Version.split('~')[1];
@@ -75,9 +75,14 @@ const formatted = {};
 	delete packageJSONInfo.private;
 
 	formatted.engines = {
-		node: '>=18',
+		node: '>=20.19.0',
 	};
 	delete packageJSONInfo.engines;
+
+	// json only package
+	if (formatted.name === '@csstools/css-syntax-patches-for-csstree') {
+		delete formatted.engines;
+	}
 
 	formatted.type = packageJSONInfo.type;
 	delete packageJSONInfo.type;
@@ -103,16 +108,8 @@ const formatted = {};
 	formatted.unpkg = packageJSONInfo.unpkg;
 	delete packageJSONInfo.unpkg;
 
-	if (packageJSONInfo.exports) {
-		formatted.exports = packageJSONInfo.exports;
-		if (packageJSONInfo.exports['.'] && packageJSONInfo.exports['.'].types) {
-			formatted.exports['.'] = {
-				types: packageJSONInfo.exports['.'].types,
-				...formatted.exports['.'],
-			};
-		}
-		delete packageJSONInfo.exports;
-	}
+	formatted.exports = packageJSONInfo.exports;
+	delete packageJSONInfo.exports;
 
 	formatted.files = packageJSONInfo.files;
 	delete packageJSONInfo.files;
@@ -149,6 +146,9 @@ const formatted = {};
 			formatted.peerDependencies['postcss'] = '^' + postcssPeerDependencyVersion();
 		}
 	}
+
+	formatted.peerDependenciesMeta = packageJSONInfo.peerDependenciesMeta;
+	delete packageJSONInfo.peerDependenciesMeta;
 
 	if (Object.keys(packageJSONInfo.devDependencies ?? {}).length) {
 		let dependencyKeys = Object.keys(packageJSONInfo.devDependencies);

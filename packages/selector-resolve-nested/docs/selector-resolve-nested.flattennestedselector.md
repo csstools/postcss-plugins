@@ -65,6 +65,7 @@ The parent selector to resolve against.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Root

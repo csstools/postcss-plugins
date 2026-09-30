@@ -61,6 +61,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 (options: Record&lt;string, [TestCaseOptions](./postcss-tape.testcaseoptions.md)<!-- -->&gt;) =&gt; Promise&lt;void&gt;

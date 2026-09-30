@@ -1,5 +1,205 @@
 # Changes to CSS Syntax Patches For CSSTree
 
+### Unreleased (patch)
+
+- Update `@webref/css` to [`v8.7.5`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.5)
+
+### 1.1.14
+
+_September 15, 2026_
+
+- Remove at-rule definitions referencing `<boolean-condition>` 
+
+### 1.1.13
+
+_September 10, 2026_
+
+- Update `@webref/css` to [`v8.7.4`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.4)
+
+### 1.1.12
+
+_August 31, 2026_
+
+- Fix `@import` prelude syntax definition
+
+### 1.1.11
+
+_August 31, 2026_
+
+- Add at-rule preludes
+
+### 1.1.10
+
+_August 30, 2026_
+
+- Update `@webref/css` to [`v8.7.3`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.3)
+
+### 1.1.9
+
+_August 25, 2026_
+
+- Update `@webref/css` to [`v8.7.2`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.2)
+
+### 1.1.8
+
+_August 15, 2026_
+
+- Update `@webref/css` to [`v8.7.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.1)
+
+### 1.1.7
+
+_July 22, 2026_
+
+- Update `@webref/css` to [`v8.7.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.7.0)
+
+### 1.1.6
+
+_June 28, 2026_
+
+- Update `@webref/css` to [`v8.6.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.6.0)
+
+### 1.1.5
+
+_June 3, 2026_
+
+- Update `@webref/css` to [`v8.5.7`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.7)
+- Patch `@position-try` and `@page`
+
+### 1.1.4
+
+_May 13, 2026_
+
+- Update `@webref/css` to [`v8.5.4`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.4)
+
+### 1.1.3
+
+_April 12, 2026_
+
+- Update `@webref/css` to [`v8.5.3`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.3)
+
+### 1.1.2
+
+_March 26, 2026_
+
+- Update `@webref/css` to [`v8.5.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.5.1)
+
+### 1.1.1
+
+_March 14, 2026_
+
+- Remove patch for `<'filter'>`
+- Add `css-tree` as an optional peer dependency to set version constraints
+
+### 1.1.0
+
+_March 5, 2026_
+
+- Update `css-tree` to [`v3.2.1`](https://github.com/csstree/csstree/releases/tag/v3.2.1)
+- Update `@webref/css` to [`v8.4.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.4.0)
+
+### 1.0.29
+
+_March 2, 2026_
+
+- Update `@webref/css` to [`v8.3.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.3.0)
+
+### 1.0.28
+
+_February 21, 2026_
+
+- Update `@webref/css` to [`v8.2.5`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.2.5)
+
+### 1.0.27
+
+_February 9, 2026_
+
+- Update `@webref/css` to [`v8.2.3`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.2.3)
+
+### 1.0.26
+
+_January 25, 2026_
+
+- Update `@webref/css` to [`v8.2.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.2.1)
+
+### 1.0.25
+
+_January 11, 2026_
+
+- Remove patch for `<bg-clip>`
+
+### 1.0.24
+
+_January 10, 2026_
+
+- Patch `<absolute-size>`
+
+### 1.0.23
+
+_January 7, 2026_
+
+- Update `@webref/css` to [`v8.1.3`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.1.3)
+
+### 1.0.22
+
+_December 20, 2025_
+
+- Update `@webref/css` to [`v8.1.2`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.1.2)
+
+### 1.0.21
+
+_December 12, 2025_
+
+- Update `@webref/css` to [`v8.1.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.1.1)
+- Patch `<radial-size>` to have correct definitions for both `circle()` and `ellipse()`
+
+### 1.0.20
+
+_November 29, 2025_
+
+- Patch `overflow-*` to include `<-non-standard-overflow>`
+
+
+### 1.0.19
+
+_November 26, 2025_
+
+- Patch `calc-size()` to allow the `size` keyword
+
+
+### 1.0.18
+
+_November 26, 2025_
+
+- Patch `clip: rect()` to preserve legacy syntax
+- Patch color functions to support relative color component keywords
+
+
+### 1.0.17
+
+_November 21, 2025_
+
+- Update `@webref/css` to [`v8.0.2`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.0.2)
+
+
+### 1.0.16
+
+_November 11, 2025_
+
+- Update `@webref/css` to [`v8.0.1`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%408.0.1)
+
+
+### 1.0.15
+
+_October 30, 2025_
+
+- [Remove unused peer dependency on `postcss`](https://github.com/csstools/postcss-plugins/pull/1708) by @jnoordsij
+
+### 1.0.14
+
+_June 10, 2025_
+
+- Update `@webref/css` to [`v6.22.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.22.0)
+
 ### 1.0.13
 
 _June 2, 2025_
@@ -47,7 +247,7 @@ _December 13, 2024_
 
 _December 9, 2024_
 
-- Update `csstree` to [`v3.1.0`](https://github.com/csstree/csstree/releases/tag/v3.1.0)
+- Update `css-tree` to [`v3.1.0`](https://github.com/csstree/csstree/releases/tag/v3.1.0)
 - Update `@webref/css` to [`v6.17.5`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.17.5)
 
 ### 1.0.5
@@ -72,7 +272,7 @@ _November 5, 2024_
 
 _November 4, 2024_
 
-- Update `csstree` to [`v3.0.1`](https://github.com/csstree/csstree/releases/tag/v3.0.1)
+- Update `css-tree` to [`v3.0.1`](https://github.com/csstree/csstree/releases/tag/v3.0.1)
 - Update `@webref/css` to [`v6.17.0`](https://github.com/w3c/webref/releases/tag/%40webref%2Fcss%406.17.0)
 
 ### 1.0.1

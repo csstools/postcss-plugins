@@ -1,5 +1,146 @@
 # Changes to CSS Color Parser
 
+### 4.2.4
+
+_September 25, 2026_
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.1.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#612) (patch)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#341) (patch)
+
+### 4.2.3
+
+_September 13, 2026_
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#340) (minor)
+
+### 4.2.2
+
+_August 30, 2026_
+
+- Normalize hue in `computedValue()`
+
+### 4.2.1
+
+_August 25, 2026_
+
+- Preserve powerless hue in `color-mix()` when the input color space equals the interpolation color space, matching relative color syntax.
+
+### 4.2.0
+
+_August 15, 2026_
+
+- Add `computedValue()` serialization function for color data.
+- Mandatory `alpha` in the relative `alpha()` function.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.1.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#611) (patch)
+
+### 4.1.10
+
+_July 22, 2026_
+
+- Fix handling of `none` in some edge cases
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.3.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#330) (minor)
+
+### 4.1.9
+
+_June 25, 2026_
+
+- Skip whitepoint conversion when it isn't needed during color conversion
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#610) (minor)
+
+### 4.1.8
+
+_June 19, 2026_
+
+- Add `color-mix` syntax flag to mix notations with only a single value (e.g. `color-mix(in oklch, red)`)
+
+### 4.1.7
+
+_June 14, 2026_
+
+- Fix normalization of `hue` to `[0, 360]` range when `hue` is not finite
+
+### 4.1.6
+
+_June 14, 2026_
+
+- Fix normalization of `hue` to `[0, 360]` range when `hue` is a negative number
+
+### 4.1.5
+
+_June 14, 2026_
+
+- Fix handling of `hue` in interpolation when both parts have a missing `hue` component
+
+### 4.1.4
+
+_June 13, 2026_
+
+- Fix `none` alpha in `alpha()`
+
+### 4.1.3
+
+_June 10, 2026_
+
+- Assign `rgb` color notation to `contrast-color()` (instead of `srgb`).
+
+### 4.1.2
+
+_June 10, 2026_
+
+- Remove special handling of all zero percentages in `color-mix()`
+
+### 4.1.1
+
+_May 13, 2026_
+
+- Fix analogous components and sets for `hwb()`
+- Align precision of powerless components with the specification
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.2.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#321) (patch)
+
+### 4.1.0
+
+_April 12, 2026_
+
+- Add support for analogous set in color interpolations
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.2.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#320) (minor)
+
+### 4.0.2
+
+_February 21, 2026_
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.1.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#311) (minor)
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#602) (patch)
+
+### 4.0.1
+
+_January 25, 2026_
+
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#601) (patch)
+
+### 4.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#600) (major)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#400) (major)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#400) (major)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#300) (major)
+
+### 3.1.0
+
+_August 22, 2025_
+
+- Add support for `display-p3-linear` in `color(display-p3-linear 0.3081 0.014 0.0567)`
+- Add support for `display-p3-linear` in `color-mix(in display-p3-linear, red, blue)`
+- Add support for omitting the color space in `color-mix(red, blue)`
+- Add support for `alpha(from red / 0.5)`
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`5.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#510) (minor)
+
 ### 3.0.10
 
 _May 27, 2025_

@@ -73,3 +73,26 @@
 	--theme-color: light-dark(cyan, deepskyblue);
 	color: blue;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: light-dark(cyan, deepskyblue);
+}
+
+@keyframes --foo {
+	to {
+		--foo: light-dark(cyan, deepskyblue);
+	}
+}
+
+@keyframes --bar {
+	to {
+		color: light-dark(cyan, deepskyblue);
+	}
+}
+
+@keyframes --scheme {
+	to {
+		color-scheme: dark;
+	}
+}

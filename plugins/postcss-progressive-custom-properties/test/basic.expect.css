@@ -152,7 +152,7 @@
 @supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--color-1: color(srgb 0.64331 0.19245 0.16771);
-	--color-2: color(srgb 0.64331 0.19245 0.16771 / 50);
+	--color-2: color(srgb 0.64331 0.19245 0.16771 / 0.5);
 	--color-3: color(srgb 0.64331 0.19245 0.16771 / var(--opacity-50));
 	--color-4: color(srgb 0.64331 var(--point-5) 0.16771 / var(--opacity-50));
 	--color-5: color(srgb 0.64331   0.19245 0.16771 / calc(1 / 2));
@@ -259,6 +259,9 @@
 	--color-mix-2: plum;
 	--color-mix-3: rgb(85, 85, 85);
 	--color-mix-4: red;
+	--color-mix-5: purple;
+	--color-mix-6: purple;
+	--color-mix-7: purple;
 }
 
 @supports (color: color(display-p3 0 0 0%)) {
@@ -287,6 +290,19 @@
 }
 }
 
+@supports (color: color-mix(in display-p3-linear, red, blue)) {
+:root {
+	--color-mix-5: color-mix(in display-p3-linear, purple, pink);
+}
+}
+
+@supports (color: color-mix(red, blue)) {
+:root {
+	--color-mix-6: color-mix(purple, pink);
+	--color-mix-7: color-mix(red 10%, purple 20%, pink 30%);
+}
+}
+
 :root {
 	--color-rcs-1: green;
 	--color-rcs-2: green;
@@ -300,6 +316,7 @@
 	--color-rcs-10: green;
 	--color-rcs-11: green;
 	--color-rcs-12: green;
+	--color-rcs-13: green;
 }
 
 @supports (color: color(xyz 0 0 0%)) and (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
@@ -339,6 +356,12 @@
 }
 }
 
+@supports (color: color(from red display-p3-linear r g b)) {
+:root {
+	--color-rcs-13: color(from red display-p3-linear r g b);
+}
+}
+
 :root {
 	--color-rcs-invalid-1: green;
 	--color-rcs-invalid-2: green;
@@ -360,6 +383,19 @@
 	--color-rcs-invalid-2: hsla(from blue h s l);
 	--color-rcs-invalid-3: rgba(from blue r g b / alpha);
 	--color-rcs-invalid-4: hsla(from blue h s l / alpha);
+}
+}
+
+:root {
+	/* alpha() */
+	--alpha-1: plum;
+	--alpha-2: plum;
+}
+
+@supports (color: alpha(from red / 1)) {
+:root {
+	--alpha-1: alpha(from red / 0.5);
+	--alpha-2: alpha(from red);
 }
 }
 
@@ -489,4 +525,163 @@
 .content-alt-text-d {
 	content: "a" "b";
 	content: "a" / "b";
+}
+
+:root {
+	--image-function-1: linear-gradient(red);
+}
+
+@supports (background-image: image(red)) {
+:root {
+	--image-function-1: image(red);
+}
+}
+
+:root {
+	color: var(--green);
+}
+
+@supports (background-image: image(red)) {
+:root {
+	color: image(var(--green));
+}
+}
+
+:root {
+	background: var(--green);
+	background-size: 100px;
+}
+
+@supports (background-image: image(red)) {
+:root {
+	background: image(var(--green));
+	background-size: 100px;
+}
+}
+
+.triple-declarations {
+	--alpha: red;
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+.triple-declarations {
+	--alpha: color(srgb 1 0 0);
+}
+}
+
+@supports (color: oklab(0% 0 0%)) {
+.triple-declarations {
+	--alpha: oklch(50% 50% 0);
+}
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: green;
+}
+
+@supports (background-image: image(red)) and (color: oklab(0% 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: image(green) oklch(0 0 0);
+}
+}
+
+@keyframes --foo {
+	to {
+		background: var(--green);
+		color: green;
+		width: 10px;
+	}
+}
+
+@supports (background-image: image(red)) and (color: oklab(0% 0 0%)) {
+
+@keyframes --foo {
+	to {
+		background: var(--green);
+		background: image(var(--green));
+		color: green;
+		color: oklch(var(--foo) 0 0);
+		width: 10px;
+	}
+}
+}
+
+@keyframes --bar {
+	from {
+		--alpha: green;
+	}
+	50% {
+		--alpha: green;
+		--alpha: orange;
+	}
+	75% {
+	}
+	to {
+		--alpha: red;
+	}
+
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+
+@keyframes --bar {
+	from {
+		--alpha: green;
+	}
+	50% {
+		--alpha: green;
+		--alpha: orange;
+	}
+	75% {
+		--alpha: color(srgb 1 0 0);
+	}
+	to {
+		--alpha: red;
+		--alpha: color(srgb 1 0 0);
+	}
+
+}
+}
+
+@keyframes --triple {
+	to {
+		--alpha: red;
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) and (color: oklab(0% 0 0%)) {
+
+@keyframes --triple {
+	to {
+		--alpha: red;
+		--alpha: color(srgb 1 0 0);
+		--alpha: oklch(50% 50% 0);
+	}
+}
+}
+
+.logical-units {
+	--prop-1: 1px;
+	--prop-2: 1px;
+	--prop-2: 2via;
+	--prop-3: 1px;
+	--prop-3: 2vi(1);
+	--prop-4: 1px;
+	--prop-5: 1px;
+	--prop-6: 1px;
+	--prop-7: 1px;
+	--prop-8: 1px;
+}
+
+@supports (width: 1vi) {
+.logical-units {
+	--prop-1: 2vi;
+	--prop-4: 2svi;
+	--prop-5: 2lvi;
+	--prop-6: 2vb;
+	--prop-7: 2svb;
+	--prop-8: 2lvb;
+}
 }

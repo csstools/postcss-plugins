@@ -16,8 +16,7 @@
 #target {
 		color: red;
 	}
-
-@container (min-width: 700px) {
+	@container (min-width: 700px) {
 		#foo:not(#\#):not(#\#):not(#\#) #bar target::before:hover {
 			color: green;
 		}
@@ -26,8 +25,7 @@
 #target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 		color: orange;
 	}
-
-@scope (.media) to (.content) {
+	@scope (.media) to (.content) {
 		#target:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 			color: yellow;
 		}

@@ -1,5 +1,5 @@
 import type { ColorData} from '../color-data';
-import { SyntaxFlag, colorDataTo, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
+import { SyntaxFlag, colorDataToForRelativeColorSyntax, noneToZeroInRelativeColorDataChannels, normalizeRelativeColorDataChannels } from '../color-data';
 import type { ColorParser } from '../color-parser';
 import { ColorNotation } from '../color-notation';
 import type { ComponentValue, FunctionNode} from '@csstools/css-parser-algorithms';
@@ -10,7 +10,7 @@ import { normalize_Color_ChannelValues } from './color-normalize-channel-values'
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
 import { calcFromComponentValues, mathFunctionNames } from '@csstools/css-calc';
 
-const colorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'xyz', 'xyz-d50', 'xyz-d65']);
+const colorSpaces = new Set(['srgb', 'srgb-linear', 'display-p3', 'display-p3-linear', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'xyz', 'xyz-d50', 'xyz-d65']);
 
 export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser): ColorData | false {
 	const syntaxFlags: Array<SyntaxFlag> = [];
@@ -106,10 +106,7 @@ export function color(colorFunctionNode: FunctionNode, colorParser: ColorParser)
 			colorData.colorNotation = colorSpaceNameToColorNotation(colorSpace);
 
 			if (relativeToColor) {
-				if (relativeToColor.colorNotation !== colorData.colorNotation) {
-					relativeToColor = colorDataTo(relativeToColor, colorData.colorNotation);
-				}
-
+				relativeToColor = colorDataToForRelativeColorSyntax(relativeToColor, colorData.colorNotation);
 				relativeColorChannels = normalizeRelativeColorDataChannels(relativeToColor);
 				relativeColorChannelsWithoutNone = noneToZeroInRelativeColorDataChannels(relativeColorChannels);
 			}
@@ -260,6 +257,8 @@ function colorSpaceNameToColorNotation(colorSpace: string): ColorNotation {
 			return ColorNotation.Linear_sRGB;
 		case 'display-p3':
 			return ColorNotation.Display_P3;
+		case 'display-p3-linear':
+			return ColorNotation.Linear_Display_P3;
 		case 'a98-rgb':
 			return ColorNotation.A98_RGB;
 		case 'prophoto-rgb':

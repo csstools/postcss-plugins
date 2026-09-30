@@ -66,7 +66,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let transformed: Array<Declaration> = [];
+			let transformed: Array<Declaration>;
 
 			try {
 				transformed = transform(decl);
@@ -164,7 +164,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 
-				let transformed: Array<Declaration> = [];
+				let transformed: Array<Declaration>;
 
 				try {
 					transformed = transformTransition(decl, postcss, transforms);
@@ -190,3 +190,4 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

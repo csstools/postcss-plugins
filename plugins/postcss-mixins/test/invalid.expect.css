@@ -1,0 +1,25 @@
+.too-many-arguments {
+	@apply --one(green, blue);
+}
+
+.important-argument {
+	@apply --one(red !important);
+}
+
+.trailing-empty-argument {
+	@apply --one(red,);
+}
+
+.leading-empty-argument {
+	@apply --one(,red);
+}
+
+.middle-empty-argument {
+	@apply --one(red,,blue);
+}
+
+@apply --defined;
+
+@media screen {
+	@apply --defined;
+}

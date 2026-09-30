@@ -2,6 +2,7 @@
 // equivalent to
 // .a > .b > .c
 
+import type { Pseudo } from 'postcss-selector-parser';
 import parser from 'postcss-selector-parser';
 
 // because `:is()` is in the left-most compound selector
@@ -21,14 +22,26 @@ export function isPseudoInFirstCompound(selector: parser.Container): boolean {
 			return false;
 		}
 
-		if (parser.isPseudoClass(node) && node.value === ':-csstools-matches') {
-			if (!node.nodes || node.nodes.length !== 1) {
-				return false;
-			}
-
-			isPseudoIndex = i;
-			break;
+		if (parser.isPseudoElement(node)) {
+			return false;
 		}
+
+		if (parser.isPseudoClass(node)) {
+			const nn = node as Pseudo; // because `isPseudoElement` is incorrectly typed
+
+			if (nn.value === ':-csstools-matches') {
+				if (!nn.nodes || nn.nodes.length !== 1) {
+					return false;
+				}
+
+				isPseudoIndex = i;
+				break;
+			}
+		}
+	}
+
+	if (isPseudoIndex === -1) {
+		return false;
 	}
 
 	const isPseudo = selector.nodes[isPseudoIndex];

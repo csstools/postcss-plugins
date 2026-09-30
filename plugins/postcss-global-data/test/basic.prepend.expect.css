@@ -1,0 +1,23 @@
+.bar {
+	background: red;
+}
+
+@media (--mq-a) {
+	body {
+		order: 1;
+	}
+}
+
+@media not all and (--mq-a) {
+	body {
+		order: 1;
+	}
+}
+
+.bar {
+	background: green;
+}
+
+.foo {
+	background: green;
+}

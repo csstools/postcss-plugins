@@ -24,6 +24,10 @@ export function apiExtractor() {
 				await fs.writeFile(extractorConfig.apiJsonFilePath, JSON.stringify(api, null, 2));
 			}
 
+			let types = await fs.readFile(extractorConfig.untrimmedFilePath, 'utf-8');
+			types = types.replaceAll('as module.exports', 'as \'module.exports\'');
+			await fs.writeFile(extractorConfig.untrimmedFilePath, types, 'utf-8');
+
 			await fs.rm(path.join('dist', '_types'), { recursive: true, force: true });
 		},
 	};

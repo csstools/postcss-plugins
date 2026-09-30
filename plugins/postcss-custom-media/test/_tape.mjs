@@ -13,11 +13,11 @@ postcssTape(plugin)({
 	},
 	'basic': {
 		message: 'supports basic usage (old)',
-		warnings: 1,
+		warnings: 2,
 	},
 	'basic:with-cloned-declarations': {
 		message: 'doesn\'t cause duplicate CSS',
-		warnings: 1,
+		warnings: 2,
 		plugins: [
 			declarationClonerPlugin,
 			plugin({
@@ -27,6 +27,9 @@ postcssTape(plugin)({
 	},
 	'cascade-layers': {
 		message: 'supports cascade layers',
+	},
+	'cascade-layers-nested': {
+		message: 'qualifies nested cascade layer names exactly once',
 	},
 	'examples/example': {
 		message: 'minimal example',
@@ -76,7 +79,7 @@ postcssTape(plugin)({
 	},
 	'cyclic': {
 		message: 'handles cyclic references',
-		warnings: 3,
+		warnings: 6,
 	},
 	'override': {
 		message: 'handles reference overrides',

@@ -5,6 +5,12 @@ postcssTape(plugin)({
 	basic: {
 		message: 'supports basic usage',
 	},
+	'basic:preserve-false': {
+		message: 'supports basic usage with { preserve: false }',
+		options: {
+			preserve: false,
+		},
+	},
 	'basic:hebrew': {
 		message: 'supports { inlineDirection: \'right-to-left\' }',
 		options: {

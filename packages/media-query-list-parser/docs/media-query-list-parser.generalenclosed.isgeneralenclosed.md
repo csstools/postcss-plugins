@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [GeneralEnclosed](./media-query-list-parser.generalenclosed.md)

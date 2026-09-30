@@ -1,6 +1,16 @@
 import selectorParser from 'postcss-selector-parser';
 
+// Specificity is adjusted by padding a selector with `:not(#\#)`.
+// The amount is derived from the number of layers and the highest selector
+// specificity, both of which are attacker controlled.
+// Bound the amount so that a small input can not cause a huge output.
+const MAX_SPECIFICITY_ADJUSTMENT = 10_000;
+
 export function adjustSelectorSpecificity(selector: string, amount: number): string {
+	if (amount > MAX_SPECIFICITY_ADJUSTMENT) {
+		throw new Error('Maximum specificity adjustment exceeded, reduce the complexity of your layers or selectors');
+	}
+
 	const selectorAST = selectorParser().astSync(selector);
 	const adjustment = selectorParser().astSync(generateNot(amount));
 

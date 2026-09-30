@@ -16,7 +16,7 @@ const predicate = {
 	test: (str: string): boolean => {
 		return str.includes('content:') && str.includes('/');
 	}
-}
+};
 
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
@@ -90,3 +90,4 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

@@ -6,4 +6,4 @@ export type pluginOptions = {
 	onConditionalRulesChangingLayerOrder?: 'warn' | false,
 	/** Emit a warning when "layer" is used in "@import". default: "warn" */
 	onImportLayerRule?: 'warn' | false,
-}
+};

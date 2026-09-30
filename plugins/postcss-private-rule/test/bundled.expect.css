@@ -1,0 +1,27 @@
+/* ./fixtures/imported-a.css */
+
+a {
+		--_csstools-p-e141ntxa-0--a: 2px;
+
+	top: var(--_csstools-p-e141ntxa-0--a);
+}
+/* ./fixtures/imported-b.css */
+/* ./imported-a.css */
+
+a {
+		--_csstools-p-e141ntxa-1--a: 2px;
+
+	top: var(--_csstools-p-e141ntxa-1--a);
+}
+
+b {
+		--_csstools-p-3uyhw73m-2--b: 2px;
+
+	top: var(--_csstools-p-3uyhw73m-2--b);
+}
+
+div {
+		--_csstools-p-334w13mg-3--z: 2px;
+
+	top: var(--_csstools-p-334w13mg-3--z);
+}

@@ -146,6 +146,20 @@ import { collectTokens } from '../util/collect-tokens.mjs';
 		],
 	);
 }
+{
+	const t = tokenizer({
+		css: 'u+',
+		unicodeRangesAllowed: true,
+	});
+
+	assert.deepEqual(
+		collectTokens(t).slice(0, -1),
+		[
+			['ident-token', 'u', 0, 0, { value: 'u' }],
+			['delim-token', '+', 1, 1, { value: '+' }],
+		],
+	);
+}
 
 {
 	const t = tokenizer({

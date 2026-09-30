@@ -1,0 +1,14 @@
+.foo {
+	background-image: linear-gradient(transparent,transparent);
+	background-image: image(transparent);
+}
+
+.foo {
+	--bg-image: linear-gradient(transparent,transparent);
+}
+
+@supports (background-image: image(red)) {
+.foo {
+	--bg-image: image(transparent);
+}
+}

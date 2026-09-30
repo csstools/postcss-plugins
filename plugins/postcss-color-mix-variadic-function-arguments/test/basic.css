@@ -19,5 +19,16 @@
 }
 
 .zero-percentage {
-	color: color-mix(in srgb, blue 0%, yellow 0%);
+	color: color-mix(in srgb, blue 0%, green 0%, yellow 0%);
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: color-mix(in oklch, red, lime, green);
+}
+
+@keyframes --foo {
+	to {
+		--color: color-mix(in oklch, red, lime, green);
+	}
 }

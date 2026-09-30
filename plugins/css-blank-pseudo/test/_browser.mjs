@@ -72,8 +72,14 @@ if (!process.env.DEBUG) {
 
 			const clearInput = async (page, selector) => {
 				const input = await page.$(selector);
-				await input.click({ clickCount: 3 });
+				await input.click({ count: 3 });
 				await page.keyboard.press('Backspace');
+
+				const value = await input.evaluate(x => x.value);
+
+				if (value && value.length > 0) {
+					throw new Error(`Unexpected remaining value "${value}" for element with selector ${selector}`);
+				}
 			};
 
 			// Default

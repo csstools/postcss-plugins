@@ -20,6 +20,18 @@
 				"test/**/*.{cjs,mjs,js}"
 			]
 		},
+		"packages/css-syntax-patches-for-csstree": {
+			"entry": [
+				"scripts/**/*.mjs"
+			],
+			"project": [
+				"**/*.{ts,js,mjs}",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"css-tree"
+			]
+		},
 		"plugins/postcss-design-tokens": {
 			"entry": [
 				"src/index.ts",

@@ -16,6 +16,7 @@ import { oklch } from './functions/oklch';
 import { rgb } from './functions/rgb';
 import { toLowerCaseAZ } from './util/to-lower-case-a-z';
 import { contrastColor } from './functions/contrast-color';
+import { alpha } from './functions/alpha';
 
 export type { ColorData } from './color-data';
 export { ColorNotation } from './color-notation';
@@ -25,6 +26,7 @@ export { serializeP3 } from './serialize/p3';
 export { serializeRGB } from './serialize/rgb';
 export { serializeHSL } from './serialize/hsl';
 export { serializeOKLCH } from './serialize/oklch';
+export { computedValue } from './serialize/computed';
 
 /**
  * Convert a color function to a `ColorData` object.
@@ -59,6 +61,8 @@ export function color(colorNode: ComponentValue): ColorData | false {
 				return colorMix(colorNode, color);
 			case 'contrast-color':
 				return contrastColor(colorNode, color);
+			case 'alpha':
+				return alpha(colorNode, color);
 		}
 	}
 

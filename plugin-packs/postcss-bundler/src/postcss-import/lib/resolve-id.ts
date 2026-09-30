@@ -3,7 +3,7 @@ import path from 'node:path';
 import module from 'node:module';
 
 export function resolveId(node: Node, require: NodeRequire, id: string, base: string): string {
-	let resolvedPath = '';
+	let resolvedPath;
 	if (id.startsWith('node_modules:')) {
 		try {
 			resolvedPath = require.resolve(id.slice(13));

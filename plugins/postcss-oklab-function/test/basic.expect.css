@@ -201,3 +201,31 @@
 	color-2: oklch(from rgb(126, 37, 0) l c h);
 	color-2: oklch(from color(display-p3 0.47553 0.14324 0) l c h);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(0, 149, 131);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+@property --foo {
+	inherits: false;
+	initial-value: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 149, 131);
+	}
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 149, 131);
+		--foo: color(display-p3 0.19244 0.58461 0.51559);
+	}
+}
+}

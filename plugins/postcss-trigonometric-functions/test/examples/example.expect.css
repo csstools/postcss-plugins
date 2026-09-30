@@ -1,15 +1,15 @@
 .trigonometry {
-	line-height: 0.70711;
-	line-height: 0.70711;
-	line-height: 1;
-	transform: rotate(-90deg);
-	transform: rotate(89.99995deg);
-	transform: rotate(180deg);
-	transform: rotate(0deg);
-	transform: rotate(90deg);
-	transform: rotate(0deg);
-	transform: rotate(-135deg);
-	transform: rotate(-45deg);
-	transform: rotate(-45deg);
-	transform: rotate(80.53768deg);
+	line-height: calc(0.70711);
+	line-height: calc(0.70711);
+	line-height: calc(1);
+	transform: rotate(calc(-90deg));
+	transform: rotate(calc(89.99995deg));
+	transform: rotate(calc(180deg));
+	transform: rotate(calc(0deg));
+	transform: rotate(calc(90deg));
+	transform: rotate(calc(0deg));
+	transform: rotate(calc(-135deg));
+	transform: rotate(calc(-45deg));
+	transform: rotate(calc(-45deg));
+	transform: rotate(calc(80.53768deg));
 }

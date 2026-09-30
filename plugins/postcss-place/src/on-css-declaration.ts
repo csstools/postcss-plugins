@@ -24,7 +24,7 @@ export function onCSSDeclaration(decl: Declaration, result: Result , options: { 
 		return;
 	}
 
-	let alignmentValues: Array<string> = [];
+	let alignmentValues: Array<string>;
 
 	if (!value.nodes.length) {
 		alignmentValues = [valueParser.stringify(value.nodes)];

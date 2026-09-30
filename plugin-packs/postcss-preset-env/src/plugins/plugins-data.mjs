@@ -25,6 +25,11 @@ export default [
 		'importName': 'postcssClamp',
 	},
 	{
+		'packageName': '@csstools/postcss-alpha-function',
+		'id': 'alpha-function',
+		'importName': 'postcssAlphaFunction',
+	},
+	{
 		'packageName': '@csstools/postcss-color-mix-variadic-function-arguments',
 		'id': 'color-mix-variadic-function-arguments',
 		'importName': 'postcssColorMixVariadicFunctionArguments',
@@ -38,6 +43,11 @@ export default [
 		'packageName': '@csstools/postcss-color-function',
 		'id': 'color-function',
 		'importName': 'postcssColorFunction',
+	},
+	{
+		'packageName': '@csstools/postcss-color-function-display-p3-linear',
+		'id': 'color-function-display-p3-linear',
+		'importName': 'postcssColorFunctionDisplayP3Linear',
 	},
 	{
 		'packageName': 'postcss-color-functional-notation',
@@ -58,6 +68,11 @@ export default [
 		'packageName': 'postcss-color-rebeccapurple',
 		'id': 'rebeccapurple-color',
 		'importName': 'postcssColorRebeccapurple',
+	},
+	{
+		'packageName': '@csstools/postcss-contrast-color-function',
+		'id': 'contrast-color-function',
+		'importName': 'postcssContrastColorFunction',
 	},
 	{
 		'packageName': 'postcss-custom-media',
@@ -108,6 +123,11 @@ export default [
 		'packageName': 'postcss-font-variant',
 		'id': 'font-variant-property',
 		'importName': 'postcssFontVariant',
+	},
+	{
+		'packageName': '@csstools/postcss-font-width-property',
+		'id': 'font-width-property',
+		'importName': 'postcssFontWidthProperty',
 	},
 	{
 		'packageName': '@csstools/postcss-gamut-mapping',
@@ -205,6 +225,11 @@ export default [
 		'importName': 'postcssMediaQueriesAspectRatioNumberValues',
 	},
 	{
+		'packageName': '@csstools/postcss-mixins',
+		'id': 'mixins',
+		'importName': 'postcssMixins',
+	},
+	{
 		'packageName': 'postcss-nesting',
 		'id': 'nesting-rules',
 		'importName': 'postcssNesting',
@@ -240,6 +265,11 @@ export default [
 		'importName': 'postcssPageBreak',
 	},
 	{
+		'packageName': '@csstools/postcss-position-area-property',
+		'id': 'position-area-property',
+		'importName': 'postcssPositionAreaProperty',
+	},
+	{
 		'packageName': 'postcss-place',
 		'id': 'place-properties',
 		'importName': 'postcssPlace',
@@ -265,10 +295,9 @@ export default [
 		'importName': 'postcssSteppedValueFunctions',
 	},
 	{
-		'packageName': 'postcss-system-ui-font-family',
-		'importedPackage': '../patch/postcss-system-ui-font-family.mjs',
+		'packageName': '@csstools/postcss-system-ui-font-family',
 		'id': 'system-ui-font-family',
-		'importName': 'postcssFontFamilySystemUI',
+		'importName': 'postcssSystemUIFontFamily',
 	},
 	{
 		'packageName': '@csstools/postcss-unset-value',
@@ -304,6 +333,36 @@ export default [
 		'packageName': '@csstools/postcss-random-function',
 		'id': 'random-function',
 		'importName': 'postcssRandomFunction',
+	},
+	{
+		'packageName': '@csstools/postcss-property-rule-prelude-list',
+		'id': 'property-rule-prelude-list',
+		'importName': 'postcssPropertyRulePreludeList',
+	},
+	{
+		'packageName': '@csstools/postcss-syntax-descriptor-syntax-production',
+		'id': 'syntax-descriptor-syntax-production',
+		'importName': 'postcssSyntaxDescriptorSyntaxProduction',
+	},
+	{
+		'packageName': '@csstools/postcss-image-function',
+		'id': 'image-function',
+		'importName': 'postcssImageFunction',
+	},
+	{
+		'packageName': '@csstools/postcss-container-rule-prelude-list',
+		'id': 'container-rule-prelude-list',
+		'importName': 'postcssContainerRulePreludeList',
+	},
+	{
+		'packageName': '@csstools/postcss-fit-tolerance-property',
+		'id': 'fit-tolerance-property',
+		'importName': 'postcssFitToleranceProperty',
+	},
+	{
+		'packageName': '@csstools/postcss-property-rule-optional-descriptors',
+		'id': 'property-rule-optional-descriptors',
+		'importName': 'postcssPropertyRuleOptionalDescriptors',
 	},
 	{
 		'packageName': '@csstools/postcss-progressive-custom-properties',

@@ -1,0 +1,13 @@
+section {
+	@private {
+		--size: 2px;
+	}
+
+	&, & > h1 {
+		border-width: var(--size);
+	}
+}
+
+section > h1 {
+	--size: 4px;
+}

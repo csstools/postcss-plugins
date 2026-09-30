@@ -47,6 +47,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [TokenWhitespace](./css-tokenizer.tokenwhitespace.md) \| [TokenComment](./css-tokenizer.tokencomment.md)

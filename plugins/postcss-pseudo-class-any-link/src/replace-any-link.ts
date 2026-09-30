@@ -105,7 +105,20 @@ function modifiedSelector(selector: string, areaHrefNeedsFixing: boolean): Array
 	return out;
 }
 
+// The number of alternatives in each `:any-link` group multiplies.
+// Bound the total number of combinations so that a small selector can not
+// exhaust memory and CPU.
+const MAX_SELECTOR_COMBINATIONS = 10_000;
+
 function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parser.Node>> {
+	let total = 1;
+	for (let i = 0; i < args.length; i++) {
+		total *= args[i].length;
+		if (total > MAX_SELECTOR_COMBINATIONS) {
+			throw new Error('Too many combinations when resolving `:any-link`, reduce the complexity of your selector');
+		}
+	}
+
 	const r: Array<Array<parser.Node>> = [];
 	const max = args.length - 1;
 
@@ -113,7 +126,7 @@ function cartesianProduct(...args: Array<Array<parser.Node>>): Array<Array<parse
 		for (let j = 0, l = args[i].length; j < l; j++) {
 			const a = arr.slice(0);
 			a.push(args[i][j]);
-			if (i == max) {
+			if (i === max) {
 				r.push(a);
 			} else {
 				helper(a, i + 1);
@@ -204,5 +217,5 @@ function insertNode(container: parser.Container | undefined, aroundNode: parser.
 	}
 
 	container.insertAfter(container.at(start), node);
-	return;
+	
 }

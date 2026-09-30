@@ -12,3 +12,14 @@
 to-clone {
 	text-indent: 2em;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: 2em;
+}
+
+@keyframes --foo {
+	to {
+		--foo: 2em;
+	}
+}

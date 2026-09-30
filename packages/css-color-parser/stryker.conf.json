@@ -7,6 +7,7 @@
 	"testRunner": "command",
 	"coverageAnalysis": "perTest",
 	"tempDirName": "../../.stryker-tmp",
+	"concurrency": "90%",
 	"commandRunner": {
 		"command": "node ./test/test.mjs"
 	},

@@ -8,19 +8,27 @@
 .ppe-landing-container {
 	max-width: 65rem;
 	margin: 0 auto;
-	padding: 0 1rem;
+	padding-block: 0;
+	padding-inline: 16px;
 }
 
 .ppe-landing-title {
-	margin: 0 0 1.5rem;
+	margin-block: 1rem;
 }
 
 .ppe-hero-cards {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+	grid-template-columns: repeat(1, minmax(0, 1fr));
 	gap: 3rem;
 	padding-bottom: 2rem;
 }
+
+@media (--from-medium) {
+	.ppe-hero-cards {
+		grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+	}
+}
+
 
 .ppe-hero-card {
 	display: flex;
@@ -110,6 +118,7 @@
 	font-size: 1.125rem;
 	width: 12rem;
 	height: 1em;
+	margin-block: 3em;
 	position: relative;
 	display: inline-block;
 	text-align: center;
@@ -149,7 +158,7 @@
 
 .ppe-landing-container a {
 	box-shadow: 0 1px 0 0 transparent;
-	color: #0078d6;
+	color: #0072cc;
 	text-decoration: none;
 }
 

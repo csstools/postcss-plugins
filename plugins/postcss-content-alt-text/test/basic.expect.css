@@ -59,3 +59,19 @@
 	content: ">" ;
 	content: ">" / "";
 }
+
+@keyframes --foo {
+	to {
+		content: var(--b)  var(--a);
+	}
+}
+
+@supports (content: "a" / "a") {
+
+@keyframes --foo {
+	to {
+		content: var(--b)  var(--a);
+		content: var(--b) / var(--a);
+	}
+}
+}

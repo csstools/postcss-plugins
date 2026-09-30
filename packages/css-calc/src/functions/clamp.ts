@@ -21,10 +21,6 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 		return -1;
 	}
 
-	if (!options.rawPercentages && isTokenPercentage(minimumToken)) {
-		return -1;
-	}
-
 	const centralToken = convertUnit(minimumToken, central.value);
 	if (!twoOfSameNumeric(minimumToken, centralToken)) {
 		return -1;
@@ -32,6 +28,19 @@ export function solveClamp(clampNode: FunctionNode, minimum: TokenNode | -1, cen
 
 	const maximumToken = convertUnit(minimumToken, maximum.value);
 	if (!twoOfSameNumeric(minimumToken, maximumToken)) {
+		return -1;
+	}
+
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (
+		Number.isNaN(minimumToken[4].value) ||
+		Number.isNaN(centralToken[4].value) ||
+		Number.isNaN(maximumToken[4].value)
+	) {
+		return resultToCalculation(clampNode, minimumToken, Number.NaN);
+	}
+
+	if (!options.rawPercentages && isTokenPercentage(minimumToken)) {
 		return -1;
 	}
 

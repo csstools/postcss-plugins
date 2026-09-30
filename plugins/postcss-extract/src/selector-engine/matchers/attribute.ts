@@ -28,7 +28,7 @@ export function matchAttribute(list: NodeList, attributeName: string, attributeV
 	}
 
 	const filtered = list.filter((node) => {
-		let matchingPropertyName: string | undefined = '';
+		let matchingPropertyName: string | undefined;
 		if (attributeName.toLowerCase() === 'variable' && node.type === 'decl' && ('variable' in node)) {
 			matchingPropertyName = 'variable';
 		} else {

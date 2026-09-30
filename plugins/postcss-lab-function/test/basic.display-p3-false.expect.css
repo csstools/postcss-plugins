@@ -197,3 +197,14 @@ to-clone {
 	color-1: lab(from rgb(179, 35, 35) l a b);
 	color-2: lch(from rgb(163, 57, 39) l c h);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(0, 163, 142);
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(0, 163, 142);
+	}
+}

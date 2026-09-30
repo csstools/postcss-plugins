@@ -45,6 +45,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [WhitespaceNode](./css-parser-algorithms.whitespacenode.md) \| [CommentNode](./css-parser-algorithms.commentnode.md)

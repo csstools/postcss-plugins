@@ -25,5 +25,5 @@ const ε = 216 / 24389;  // 6^3/29^3
 const κ = 24389 / 27;   // 29^3/3^3
 
 function compute_f(val: number): number {
-	return val > ε ? Math.cbrt(val) : (κ * val + 16) / 116
+	return val > ε ? Math.cbrt(val) : (κ * val + 16) / 116;
 }

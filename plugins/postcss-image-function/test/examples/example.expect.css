@@ -1,0 +1,7 @@
+.foo {
+	background-image: linear-gradient(transparent,transparent);
+}
+
+.foo {
+	--bg-image: linear-gradient(transparent,transparent);
+}

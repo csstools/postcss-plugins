@@ -1,0 +1,32 @@
+@property --syntax {
+	syntax: "<color>";
+	inherits: true;
+}
+
+@property --initial-value {
+	initial-value: "red";
+	syntax: "*";
+	inherits: true;
+}
+
+@property --inherits {
+	inherits: false;
+	syntax: "*";
+}
+
+@property --syntax-inherits {
+	syntax: "<color>";
+	inherits: false;
+}
+
+@property --syntax-initial-value {
+	syntax: "<color>";
+	initial-value: "red";
+	inherits: true;
+}
+
+@property --inherits-initial-value {
+	inherits: false;
+	initial-value: "red";
+	syntax: "*";
+}

@@ -42,7 +42,7 @@ export function randomCacheKeyFromPostcssDeclaration(decl: Declaration): {
 				break;
 		}
 
-		ancestor = ancestor.parent
+		ancestor = ancestor.parent;
 	}
 
 	return {
@@ -50,5 +50,5 @@ export function randomCacheKeyFromPostcssDeclaration(decl: Declaration): {
 		propertyN: 0,
 		elementID: elementID,
 		documentID: decl.source?.input.css ?? decl.root().toString(),
-	}
+	};
 }

@@ -114,6 +114,22 @@
           "syntaxKind": "modifier"
         },
         {
+          "tagName": "@jsx",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxRuntime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxFrag",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxImportSource",
+          "syntaxKind": "block"
+        },
+        {
           "tagName": "@betaDocumentation",
           "syntaxKind": "modifier"
         },
@@ -625,6 +641,27 @@
             },
             {
               "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!ColorNotation.Linear_Display_P3:member",
+              "docComment": "/**\n * Display P3, expressed through `color(display-p3-linear 0 0 0)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Linear_Display_P3 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"display-p3-linear\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Linear_Display_P3"
+            },
+            {
+              "kind": "EnumMember",
               "canonicalReference": "@csstools/css-color-parser!ColorNotation.Linear_sRGB:member",
               "docComment": "/**\n * Linear sRGB, expressed through `color(linear-srgb 0 0 0)`\n */\n",
               "excerptTokens": [
@@ -813,6 +850,68 @@
               "name": "XYZ_D65"
             }
           ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/css-color-parser!computedValue:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function computedValue(color: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorData",
+              "canonicalReference": "@csstools/css-color-parser!ColorData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", convertHslOrHwbToRGB?: "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/serialize/computed.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "color",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "convertHslOrHwbToRGB",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "computedValue"
         },
         {
           "kind": "Function",
@@ -1400,6 +1499,27 @@
               },
               "releaseTag": "Public",
               "name": "NamedColor"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@csstools/css-color-parser!SyntaxFlag.RelativeAlphaSyntax:member",
+              "docComment": "/**\n * Is a relative alpha syntax `alpha(from red / 0.5)`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "RelativeAlphaSyntax = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"relative-alpha-syntax\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "RelativeAlphaSyntax"
             },
             {
               "kind": "EnumMember",

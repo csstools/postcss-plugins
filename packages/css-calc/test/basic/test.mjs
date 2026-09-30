@@ -202,3 +202,43 @@ assert.strictEqual(
 	calc('calc(1 / 0)', { toCanonicalUnits: false, censorIntoStandardRepresentableValues: true }),
 	'Infinity',
 );
+
+assert.strictEqual(
+	calc('calc(10px)calc(20px)'),
+	'10px 20px',
+);
+
+assert.strictEqual(
+	calc('calc(10px)20px'),
+	'10px 20px',
+);
+
+assert.strictEqual(
+	calc('calc(calc(10px)- 20%)'),
+	'calc(10px - 20%)',
+);
+
+assert.strictEqual(
+	calc('calc(calc(10px)+20%)'),
+	'calc(10px +20%)',
+);
+
+assert.strictEqual(
+	calc('calc(calc(10px)*2%)'),
+	'calc(10px*2%)',
+);
+
+assert.strictEqual(
+	calc('calc(10 + 5 * 2)'),
+	'20',
+);
+
+assert.strictEqual(
+	calc('calc(5 * 2 + 10)'),
+	'20',
+);
+
+assert.strictEqual(
+	calc('calc(20% +calc(10px))'),
+	'calc(20% + 10px)',
+);

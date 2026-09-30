@@ -45,6 +45,15 @@ postcssTape(plugin)({
 	'invalid-rules': {
 		message: 'correctly handles invalid rules',
 	},
+	'warnings-ignored': {
+		message: 'correctly ignored warnings',
+		options: {
+			onRevertLayerKeyword: false,
+			onConditionalRulesChangingLayerOrder: false,
+			onImportLayerRule: false,
+		},
+		warnings: 0,
+	},
 	'warnings': {
 		message: 'correctly handles warnings',
 		options: {

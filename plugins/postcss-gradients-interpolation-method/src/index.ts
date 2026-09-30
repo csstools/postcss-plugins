@@ -10,7 +10,7 @@ type basePluginOptions = {
 	preserve: boolean,
 };
 
-/* Transform gradients with interpolation methods in CSS. */
+/** Transform gradients with interpolation methods in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-gradients-interpolation-method',
@@ -83,7 +83,7 @@ export type pluginOptions = {
 	enableProgressiveCustomProperties?: boolean,
 };
 
-/* Transform gradients with interpolation methods in CSS. */
+/** Transform gradients with interpolation methods in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
@@ -106,3 +106,4 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };

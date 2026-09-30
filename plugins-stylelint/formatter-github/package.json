@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/stylelint-formatter-github",
 	"description": "Format Stylelint errors as GitHub annotations",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -25,10 +25,14 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "index.mjs",
+	"exports": {
+		".": {
+			"default": "./index.mjs"
+		}
+	},
 	"files": [
 		"LICENSE.md",
 		"README.md",
@@ -36,11 +40,11 @@
 		"preprocess-warnings.mjs"
 	],
 	"peerDependencies": {
-		"stylelint": "^16.20.0"
+		"stylelint": "^17.13.0"
 	},
 	"devDependencies": {
-		"@csstools/pack-test": "^1.0.1",
-		"stylelint": "^16.20.0"
+		"@csstools/pack-test": "^2.0.1",
+		"stylelint": "^17.13.0"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",

@@ -38,7 +38,7 @@ a {
 }{% endhighlight %}
 					</div>
 					<div class="ppe-hero-card">
-						<p class="ppe-hero-card-title">Becomes...</p>
+						<p class="ppe-hero-card-title">Becomes</p>
 						{% highlight "css" %}
 :root {
   --mainColor: rgba(18,52,86,0.47059);
@@ -90,15 +90,11 @@ input:hover, input:focus, button:hover, button:focus {
 				</ol>
 				<p>Here's an example with a <code>postcss.config.js</code> file:</p>
 				{% highlight "js" %}
+const postcssPresetEnv = require('postcss-preset-env');
+
 module.exports = {
   plugins: [
-    [
-      'postcss-preset-env',
-      {
-        // Options
-        features: {},
-      },
-    ],
+    postcssPresetEnv(),
   ]
 }{% endhighlight %}
 				<p>You can <a href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#usage">read more on how to use and install PostCSS Preset Env</a>.</p>
@@ -115,8 +111,8 @@ module.exports = {
 				</div>
 				<div class="ppe-section-decoration">
 					<ul class="ppe-word-rotate">
+						<li>mixins</li>
 						<li>cascade layers</li>
-						<li><code>:is()</code> pseudo class</li>
 						<li>media query ranges</li>
 						<li>nesting rules</li>
 						<li><code>oklab()</code> function</li>
@@ -171,7 +167,7 @@ module.exports = {
 
 		<p class="ppe-deploys">
 			<a href="https://www.netlify.com" target="_blank" rel="noreferrer" class="ppe-deploys__logo">
-				<img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" loading="lazy" decoding="async" width="114" height="51" />
+				<img src="https://www.netlify.com/assets/badges/netlify-badge-dark.svg" alt="Deploys by Netlify" loading="lazy" decoding="async" width="114" height="51" />
 			</a>
 		</p>
 	</main>

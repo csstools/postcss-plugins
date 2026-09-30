@@ -1,0 +1,7 @@
+.foo {
+	background-image: image(transparent);
+}
+
+.foo {
+	--bg-image: image(transparent);
+}

@@ -1,0 +1,29 @@
+@container card (inline-size > 30em), style(--responsive: true) {
+	a {
+		order: 1;
+	}
+}
+
+@container card (inline-size > 30em), style(--responsive: true), style(--responsive: true-isch) {
+	b {
+		order: 1;
+	}
+}
+
+@container foo(bar, baz) {
+	ignore {
+		order: 2;
+	}
+}
+
+@container card (inline-size > 30em) {
+	ignore {
+		order: 3;
+	}
+}
+
+@container {
+	ignore {
+		order: 4;
+	}
+}

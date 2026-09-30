@@ -1,5 +1,41 @@
 # Changes to PostCSS Custom Properties
 
+### 15.0.2
+
+_September 25, 2026_
+
+- Improve performance and avoid a stack overflow when sorting a long chain of custom properties
+- Fix exponential growth of cascade layer names for deeply nested `@layer` rules
+- Throw when `@layer` nesting exceeds a safe depth
+- Throw when a custom property expansion exceeds the maximum size
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#401) (patch)
+- Updated [`@csstools/cascade-layer-name-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser) to [`3.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser/CHANGELOG.md#301) (patch)
+
+### 15.0.1
+
+_February 21, 2026_
+
+- Fix importance of custom media in anonymous cascade layers.
+
+### 15.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#400) (major)
+- Updated [`@csstools/utilities`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities/CHANGELOG.md#300) (major)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#400) (major)
+- Updated [`@csstools/cascade-layer-name-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser) to [`3.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/cascade-layer-name-parser/CHANGELOG.md#300) (major)
+
+### 14.0.6
+
+_June 5, 2025_
+
+- Fix infinite loop for comments that contain variables (e.g. `var(--foo) /* var(--bar) */`)
+
 ### 14.0.5
 
 _May 27, 2025_

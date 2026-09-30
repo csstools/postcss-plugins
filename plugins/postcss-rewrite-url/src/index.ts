@@ -54,6 +54,7 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 function rewriteDeclaration(decl: Declaration, result: Result, rewriter: Rewriter): void {
 	if(!URL_FUNCTION_CALL_REGEX.test(decl.value)) {

@@ -1,0 +1,29 @@
+@mixin --with-private() {
+	@private {
+		--shadow: 2px 2px black;
+	}
+
+	box-shadow: var(--shadow);
+}
+
+.a {
+	--_csstools-p-45fs09jl-0--shadow: 2px 2px black;
+	box-shadow: var(--_csstools-p-45fs09jl-0--shadow);
+	@apply --with-private;
+}
+
+@mixin --args-and-private(--color) {
+	@private {
+		--local: var(--color);
+	}
+
+	color: var(--local);
+}
+
+.b {
+	--_csstools-p-45fs09jl-1--arg-0: red;
+	--_csstools-p-45fs09jl-2--color: var(--_csstools-p-45fs09jl-1--arg-0);
+	--_csstools-p-45fs09jl-2--local: var(--_csstools-p-45fs09jl-2--color);
+	color: var(--_csstools-p-45fs09jl-2--local);
+	@apply --args-and-private(red);
+}

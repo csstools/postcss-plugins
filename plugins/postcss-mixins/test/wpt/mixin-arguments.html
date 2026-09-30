@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<title>CSS Mixins: Arguments</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#mixin-args">
+<style>
+	target {
+		display: block;
+	}
+</style>
+
+<body>
+	<target class="basic"></target>
+	<target class="defaults"></target>
+	<target class="fallback"></target>
+	<target class="braces"></target>
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// Only the transformed form is asserted.
+			// Chrome Canary only implements mixins with a `@result` block,
+			// but `@result` was dropped from the specification.
+			const testCases = [
+				{
+					title: 'Basic mixin parameter passing',
+					target: '.basic',
+					property: 'color',
+					style: `
+						@mixin --basic(--color) {
+							color: var(--color);
+						}
+						.basic {
+							@apply --basic(green);
+						}
+					`,
+				},
+				{
+					title: 'Defaults in mixin parameters',
+					target: '.defaults',
+					property: 'color',
+					style: `
+						@mixin --defaults(--color: green) {
+							color: var(--color);
+						}
+						.defaults {
+							@apply --defaults;
+						}
+					`,
+				},
+				{
+					title: 'Fallback is used with no parameter and no default',
+					target: '.fallback',
+					property: 'color',
+					style: `
+						@mixin --fallback(--color) {
+							color: var(--color, green);
+						}
+						.fallback {
+							@apply --fallback;
+						}
+					`,
+				},
+				{
+					title: 'Argument wrapped in {}',
+					target: '.braces',
+					property: 'background-color',
+					style: `
+						@mixin --braces(--color) {
+							background-color: var(--color);
+						}
+						.braces {
+							@apply --braces({green});
+						}
+					`,
+				},
+			];
+
+			// Native support is only asserted when the browser implements the current
+			// specification form (declarations directly in the mixin body).
+			const nativeSupport = await (async () => {
+				const css = `@mixin --support-probe() { color: green; } .support-probe { @apply --support-probe; }`;
+				const response = await fetch(`/test/styles.css?transform=false`, { method: 'POST', body: css });
+				const styleElement = document.createElement('style');
+				styleElement.textContent = await response.text();
+				document.head.append(styleElement);
+				const probe = document.createElement('div');
+				probe.className = 'support-probe';
+				document.body.append(probe);
+				const supported = window.getComputedStyle(probe).color === 'rgb(0, 128, 0)';
+				probe.remove();
+				styleElement.remove();
+				return supported;
+			})();
+
+			for (let testCase of testCases) {
+				for (const transform of nativeSupport ? ['true', 'false'] : ['true']) {
+					const styleElement = document.createElement('style');
+
+					const testCaseStyle = await (fetch(`/test/styles.css?transform=${transform}`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
+
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
+
+					const target = document.querySelector(testCase['target']);
+
+					assert_equals(
+						window.getComputedStyle(target)[testCase['property']],
+						testCase['expected'] || 'rgb(0, 128, 0)',
+						testCase['title'] + " (transform=" + transform + ") target '" + testCase['target'] + "'"
+					);
+
+					styleElement.remove();
+				}
+			}
+
+			return true;
+		}
+	</script>
+</body>

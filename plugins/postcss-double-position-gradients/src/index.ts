@@ -129,8 +129,6 @@ const basePlugin: PluginCreator<{ preserve?: boolean }> = (opts?: { preserve?: b
 						);
 					}
 				});
-
-				return;
 			});
 
 			const modifiedValue = valueAST.toString();
@@ -181,3 +179,4 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };

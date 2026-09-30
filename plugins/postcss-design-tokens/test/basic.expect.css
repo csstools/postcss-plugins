@@ -1,9 +1,11 @@
 /* ./imported.css */
+
 .foo {
 	font-family: Helvetica sans;
 	font-size: 10;
 	color: #111111;
 }
+
 .card {
 	background-color: blue;
 	color: red;
@@ -13,6 +15,7 @@
 	color: red;
 	color: design-token('does.not.exist');
 }
+
 .lists {
 	margin: 0.5rem 0.25rem;
 	color: rgb(255, 0, 255);

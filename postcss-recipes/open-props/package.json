@@ -5,23 +5,23 @@
 	"description": "",
 	"license": "MIT-0",
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"devDependencies": {
-		"@csstools/postcss-bundler": "^2.0.1",
-		"@csstools/postcss-global-data": "^3.0.0",
-		"@csstools/postcss-minify": "^2.0.1",
-		"open-props": "^1.7.6",
-		"postcss-cli": "^11.0.0",
-		"postcss-custom-media": "^11.0.1",
-		"postcss-jit-props": "^1.0.14",
-		"postcss-preset-env": "^10.0.3"
+		"@csstools/postcss-bundler": "^3.0.0",
+		"@csstools/postcss-global-data": "^4.0.0",
+		"@csstools/postcss-minify": "^3.0.0",
+		"open-props": "^1.7.17",
+		"postcss-cli": "^11.0.1",
+		"postcss-custom-media": "^12.0.0",
+		"postcss-jit-props": "^1.0.16",
+		"postcss-preset-env": "^11.0.0"
 	},
 	"scripts": {
 		"style": "postcss ./src/style.css -o ./dist/style.css -m",
 		"watch": "postcss -w ./src/style.css -o ./dist/style.css -m"
 	},
 	"volta": {
-		"node": "20.10.0"
+		"node": "24.13.0"
 	}
 }

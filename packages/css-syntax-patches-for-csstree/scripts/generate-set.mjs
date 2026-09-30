@@ -2,7 +2,7 @@ import { definitionSyntax } from 'css-tree';
 import { sort_atrule_set, sort_set } from './sort-set.mjs';
 
 export function generate_set(source) {
-	const set = Object(null);
+	const set = Object.create(null);
 
 	for (const [name, definition] of Object.entries(source)) {
 		if (!definition.syntax) {
@@ -18,16 +18,24 @@ export function generate_set(source) {
 }
 
 export function generate_atrule_set(source) {
-	const set = Object(null);
+	const set = Object.create(null);
 
 	for (const [name, definition] of Object.entries(source)) {
-		if (!definition.descriptors) {
+		if (!definition.prelude && !definition.descriptors) {
 			continue;
 		}
 
-		set[name] = {
-			descriptors: generate_set(definition.descriptors),
-		};
+		if (definition.prelude) {
+			set[name] ??= {};
+			set[name].prelude = {
+				syntax: definitionSyntax.generate(definition.prelude.syntax),
+			};
+		}
+
+		if (definition.descriptors) {
+			set[name] ??= {};
+			set[name].descriptors = generate_set(definition.descriptors);
+		}
 	}
 
 	return sort_atrule_set(set);

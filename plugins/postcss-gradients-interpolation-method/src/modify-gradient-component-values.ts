@@ -19,13 +19,13 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 
 	let colorSpaceName = 'srgb';
 
-	let inKeyword: TokenNode | null = null;
+	let inKeyword: TokenNode | null;
 	let colorSpace: TokenNode | null = null;
 	let hueInterpolationMethod: TokenNode | null = null;
 	let hueKeyword: TokenNode | null = null;
-	let firstComma: TokenNode | null = null;
+	let firstComma: TokenNode | null;
 
-	let remainder: Array<ComponentValue> = [];
+	let remainder: Array<ComponentValue>;
 
 	{
 		let i = 0;
@@ -59,10 +59,6 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 			isTokenIdent(node.value) &&
 			COLOR_SPACE_REGEX.test(node.value[4].value)
 		) {
-			if (colorSpace) {
-				return false;
-			}
-
 			colorSpace = node;
 			colorSpaceName = node.value[4].value;
 
@@ -82,7 +78,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 			HUE_INTERPOLATION_METHOD_REGEX.test(node.value[4].value) &&
 			POLAR_COLOR_SPACE_REGEX.test(colorSpaceName)
 		) {
-			if (hueInterpolationMethod || !colorSpace) {
+			if (!colorSpace) {
 				return false;
 			}
 
@@ -103,7 +99,7 @@ export function modifyGradientFunctionComponentValues(gradientFunction: Function
 			isTokenIdent(node.value) &&
 			HUE_KEYWORD_REGEX.test(node.value[4].value)
 		) {
-			if (hueKeyword || !colorSpace || !hueInterpolationMethod) {
+			if (!colorSpace || !hueInterpolationMethod) {
 				return false;
 			}
 

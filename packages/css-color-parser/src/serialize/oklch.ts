@@ -1,11 +1,11 @@
 import type { TokenFunction, TokenWhitespace } from '@csstools/css-tokenizer';
 import type { ColorData} from '../color-data';
-import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D50 } from '../color-data';
+import { convertPowerlessComponentsToZeroValuesForDisplay, colorData_to_XYZ_D65 } from '../color-data';
 import { ColorNotation } from '../color-notation';
 import type { FunctionNode} from '@csstools/css-parser-algorithms';
 import { TokenNode, WhitespaceNode } from '@csstools/css-parser-algorithms';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
-import { XYZ_D50_to_OKLCH } from '@csstools/color-helpers';
+import { XYZ_D65_to_OKLCH } from '@csstools/color-helpers';
 import { serializeWithAlpha } from './with-alpha';
 import { toPrecision } from './to-precision';
 
@@ -23,7 +23,7 @@ export function serializeOKLCH(color: ColorData): FunctionNode {
 	if (
 		color.colorNotation !== ColorNotation.OKLCH
 	) {
-		oklch = XYZ_D50_to_OKLCH(colorData_to_XYZ_D50(color).channels);
+		oklch = XYZ_D65_to_OKLCH(colorData_to_XYZ_D65(color).channels);
 	}
 
 	const l = toPrecision(oklch[0], 6);

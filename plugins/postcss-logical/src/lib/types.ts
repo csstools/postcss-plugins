@@ -37,4 +37,4 @@ export type DirectionConfig = {
 	inlineIsHorizontal: boolean;
 };
 
-export type TransformFunction = (decl: Declaration) => Array<Declaration>
+export type TransformFunction = (decl: Declaration) => Array<Declaration>;

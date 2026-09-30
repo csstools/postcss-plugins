@@ -1,0 +1,70 @@
+.outside {
+	& {
+		color: green;
+	}
+}
+
+@mixin --author-nesting() {
+	& {
+		color: green;
+	}
+
+	background-color: blue;
+}
+
+.a {
+	& {
+		color: green;
+	}
+
+	background-color: blue;
+	@apply --author-nesting;
+}
+
+@mixin --author-nesting-with-args(--color) {
+	& {
+		color: var(--color);
+	}
+}
+
+.b {
+	--_csstools-p-7fww6zpl-0--arg-0: red;
+	--_csstools-p-7fww6zpl-1--color: var(--_csstools-p-7fww6zpl-0--arg-0);
+	& {
+		color: var(--_csstools-p-7fww6zpl-1--color);
+	}
+	@apply --author-nesting-with-args(red);
+}
+
+@mixin --author-nested-nesting() {
+	& {
+		& {
+			color: green;
+		}
+	}
+}
+
+.c {
+	& {
+		& {
+			color: green;
+		}
+	}
+	@apply --author-nested-nesting;
+}
+
+@mixin --author-nesting-mixed() {
+	& {
+		color: green;
+	}
+}
+
+.d {
+	& {
+		color: green;
+	}
+	@apply --author-nesting-mixed;
+	& {
+		color: blue;
+	}
+}

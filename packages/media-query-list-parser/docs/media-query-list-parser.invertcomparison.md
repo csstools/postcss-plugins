@@ -43,6 +43,7 @@ operator
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [MediaFeatureComparison](./media-query-list-parser.mediafeaturecomparison.md) \| false

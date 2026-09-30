@@ -406,7 +406,7 @@ The `logical` option can hold an object which lets you specify direction of the 
 following features:
 
 - `logical-properties-and-values`: [PostCSS Logical](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
-- `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical#readme)
+- `float-clear-logical-values`: [PostCSS Logical Float And Clear](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-float-and-clear#readme)
 - `logical-resize`: [PostCSS Logical Resize](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-resize#readme)
 - `logical-viewport-units`: [PostCSS Logical Viewport Units](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units#readme)
 
@@ -453,7 +453,7 @@ This gives users the chance to play around with these features and provide feedb
 If the specification changes or is abandoned a new major version of the plugin will be released.
 This will require you to update your source code so that everything works as expected.
 
-To have more stability between updates of [PostCSS Preset Env] you may set `stage: 3` and/or `minimumVendorImplementations: 2`.
+To have more stability between updates of [PostCSS Preset Env] you may set `minimumVendorImplementations: 2` or more.
 
 A side effect of staying close to the standard is that you can more easily migrate your project to other tooling all together.
 

@@ -1,5 +1,56 @@
 # Changes to Color Helpers
 
+### 6.1.2
+
+_September 25, 2026_
+
+- Fixed a potential infinite loop when gamut mapping a color with infinite components
+
+### 6.1.1
+
+_August 15, 2026_
+
+- Updated: gamut mapping algorithm
+
+### 6.1.0
+
+_June 25, 2026_
+
+- Add `d65` conversion helpers
+
+### 6.0.2
+
+_February 21, 2026_
+
+- Updated: gamut mapping algorithm
+
+### 6.0.1
+
+_January 25, 2026_
+
+- Match latest changes made in `csswg-drafts` for:
+  - `gam_2020`
+  - `Lab_to_LCH`
+  - `lin_2020`
+  - `OKLab_to_OKLCH`
+  - `sRGB_to_HSL`
+  - `XYZ_D50_to_HWB`
+
+
+### 6.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
+### 5.1.0
+
+_August 22, 2025_
+
+- Add `lin_P3_to_XYZ_D50`
+- Add `XYZ_D50_to_lin_P3`
+
 ### 5.0.2
 
 _February 23, 2025_

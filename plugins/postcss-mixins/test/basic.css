@@ -1,0 +1,31 @@
+@mixin --foo() {
+	color: green;
+}
+
+.foo {
+	@apply --foo;
+}
+
+@scope (.foo) {
+	@apply --foo();
+}
+
+@mixin --bar() {
+	color: green;
+
+	@media screen {
+		color: blue;
+	}
+}
+
+.bar {
+	@apply --bar;
+}
+
+.in-between-other-rules {
+	order: 0;
+
+	@apply --bar;
+
+	order: 1;
+}

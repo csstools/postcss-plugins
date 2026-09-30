@@ -1,5 +1,18 @@
 # Changes to PostCSS Browser Comments
 
+### 7.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
+### 6.0.2
+
+_November 26, 2025_
+
+- Correctly list all browser versions. This fixes an issue where a config targeting a dead browser (e.g. `IE 10`) would remove styles marked with `all browsers`.
+
 ### 6.0.1
 
 _September 25, 2024_

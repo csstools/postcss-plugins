@@ -130,7 +130,6 @@ function transformComponentValue(node: ComponentValue, tokens: Map<string, Token
 			return parseComponentValues(replacement.cssValue(transformOptions));
 		} catch (err) {
 			postCSSNode.warn(result, (err instanceof Error) ? err.message : String(err));
-			return;
 		}
 	}
 }

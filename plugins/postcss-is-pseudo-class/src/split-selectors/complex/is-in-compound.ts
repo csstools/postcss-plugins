@@ -46,6 +46,10 @@ export function isInCompoundWithOneOtherElement(selector: parser.Container): boo
 		return false;
 	}
 
+	if (parser.isPseudoElement(simpleSelector)) {
+		return false;
+	}
+
 	isPseudo.nodes[0].append(simpleSelector.clone());
 	isPseudo.replaceWith(...isPseudo.nodes[0].nodes);
 	simpleSelector.remove();

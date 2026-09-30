@@ -40,11 +40,13 @@ export function normalize_LCH_ChannelValues(token: CSSToken, index: number, colo
 			colorData.syntaxFlags.add(SyntaxFlag.HasPercentageValues);
 		}
 
-		let value = normalize(token[4].value, 1, 0, 100);
+		let value;
 		if (index === 1) {
 			value = normalize(token[4].value, (100 / 150), 0, 2_147_483_647);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
+		} else {
+			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [
@@ -64,11 +66,13 @@ export function normalize_LCH_ChannelValues(token: CSSToken, index: number, colo
 			colorData.syntaxFlags.add(SyntaxFlag.HasNumberValues);
 		}
 
-		let value = normalize(token[4].value, 1, 0, 100);
+		let value;
 		if (index === 1) {
 			value = normalize(token[4].value, 1, 0, 2_147_483_647);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
+		} else {
+			value = normalize(token[4].value, 1, 0, 100);
 		}
 
 		return [

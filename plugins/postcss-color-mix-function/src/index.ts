@@ -15,7 +15,7 @@ type basePluginOptions = {
 const COLOR_MIX_FUNCTION_REGEX = /\bcolor-mix\(/i;
 const COLOR_MIX_NAME_REGEX = /^color-mix$/i;
 
-/* Transform color-mix() functions in CSS. */
+/** Transform color-mix() functions in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-color-mix-function',
@@ -118,7 +118,7 @@ export type pluginOptions = {
 	}
 };
 
-/* Transform color-mix() functions in CSS. */
+/** Transform color-mix() functions in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
@@ -149,3 +149,4 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };

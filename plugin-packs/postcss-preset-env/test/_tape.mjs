@@ -44,6 +44,18 @@ postcssTape(plugin)({
 			browsers: 'chrome >= 38',
 		},
 	},
+	'basic:ch126': {
+		message: 'supports { browsers: "chrome >= 126" } usage',
+		options: {
+			browsers: 'chrome >= 126',
+		},
+	},
+	'basic:ch130': {
+		message: 'supports { browsers: "chrome >= 130" } usage',
+		options: {
+			browsers: 'chrome >= 130',
+		},
+	},
 	'basic:ie10': {
 		message: 'supports { browsers: "ie >= 10" } usage',
 		options: {

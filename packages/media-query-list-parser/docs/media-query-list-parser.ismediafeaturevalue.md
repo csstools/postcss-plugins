@@ -43,6 +43,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [MediaFeatureValue](./media-query-list-parser.mediafeaturevalue.md)

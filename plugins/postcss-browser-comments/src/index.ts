@@ -70,6 +70,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 
 // returns whether a node is a browser comment
 function isBrowserCommentNode(node: Node): node is Comment {
@@ -129,7 +130,7 @@ function getBrowsersList(text: string): Array<string> {
 			part => part.replace(
 				GET_BROWSERSLIST_QUERY_REGEX,
 				($0, browser, query) => browser === 'all'
-					? '> 0%'
+					? '>= 0%'
 					: `${browser}${query
 						// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 						? /^((?:\d*\.)?\d+)-$/.test(query)

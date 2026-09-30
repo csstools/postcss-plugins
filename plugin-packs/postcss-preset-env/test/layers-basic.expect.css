@@ -119,8 +119,7 @@
 		        order: 10;
 	}
 }
-
-@media (min-width: 480px) and (max-width: 767.98px) {
+	@media (min-width: 480px) and (max-width: 767.98px) {
 		.test-media-query-ranges {
 			is-layer: A;
 			-webkit-box-ordinal-group: 12;
@@ -186,7 +185,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .test-system-ui-font-family:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
 	-webkit-box-ordinal-group: 19;
 	-webkit-order: 18;
 	   -moz-box-ordinal-group: 19;
@@ -209,17 +208,14 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	   -moz-animation: none 0s ease 0s 1 normal none running;
 	        animation: none 0s ease 0s 1 normal none running;
 	-webkit-backface-visibility: visible;
-	   -moz-backface-visibility: visible;
 	        backface-visibility: visible;
 	background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
 	border: medium none currentcolor;
 	border-collapse: separate;
 	-webkit-border-image: none;
 	   -moz-border-image: none;
-	     -o-border-image: none;
 	        border-image: none;
-	-moz-border-radius: 0;
-	     border-radius: 0;
+	border-radius: 0;
 	border-spacing: 0;
 	bottom: auto;
 	-webkit-box-shadow: none;
@@ -268,7 +264,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	line-height: normal;
 	height: auto;
 	-webkit-hyphens: none;
-	   -moz-hyphens: none;
 	    -ms-hyphens: none;
 	        hyphens: none;
 	left: auto;
@@ -290,15 +285,12 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	page-break-before: auto;
 	page-break-inside: auto;
 	-webkit-perspective: none;
-	   -moz-perspective: none;
 	        perspective: none;
 	-webkit-perspective-origin: 50% 50%;
-	   -moz-perspective-origin: 50% 50%;
 	        perspective-origin: 50% 50%;
 	position: static;
 	right: auto;
 	-moz-tab-size: 8;
-	  -o-tab-size: 8;
 	     tab-size: 8;
 	table-layout: auto;
 	text-align: left;
@@ -312,14 +304,11 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	top: auto;
 	-webkit-transform: none;
 	   -moz-transform: none;
-	    -ms-transform: none;
 	        transform: none;
 	-webkit-transform-origin: 50% 50% 0;
 	   -moz-transform-origin: 50% 50% 0;
-	    -ms-transform-origin: 50% 50% 0;
 	        transform-origin: 50% 50% 0;
 	-webkit-transform-style: flat;
-	   -moz-transform-style: flat;
 	        transform-style: flat;
 	-webkit-transition: none 0s ease 0s;
 	-moz-transition: none 0s ease 0s;
@@ -439,7 +428,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .complex-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	width: max(-webkit-calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
 	width: max(-moz-calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
 	width: max(calc(100% - 10px), min(min(10px, 100%), max(40px, 4em)));
 }
@@ -454,13 +442,11 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .calc-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	margin: 0 40px 0 -webkit-calc(-1 * max(32px, min(16vw, 64px)));
 	margin: 0 40px 0 -moz-calc(-1 * max(32px, min(16vw, 64px)));
 	margin: 0 40px 0 calc(-1 * max(32px, min(16vw, 64px)));
 }
 
 .multiple-calc-clamp:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	margin: -webkit-calc(-1 * max(1px, min(2vw, 3px))) -webkit-calc(-1 * max(4px, min(5vw, 6px)));
 	margin: -moz-calc(-1 * max(1px, min(2vw, 3px))) -moz-calc(-1 * max(4px, min(5vw, 6px)));
 	margin: calc(-1 * max(1px, min(2vw, 3px))) calc(-1 * max(4px, min(5vw, 6px)));
 }
@@ -553,26 +539,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	display: inline table;
 }
 
-.table-cell-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	display: table-cell;
-	display: table-cell flow;
-}
-
-.table-caption-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	display: table-caption;
-	display: table-caption flow;
-}
-
-.ruby-base-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	display: ruby-base;
-	display: ruby-base flow;
-}
-
-.ruby-text-flow:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	display: ruby-text;
-	display: ruby-text flow;
-}
-
 .color-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	prop-1: rgb(0, 129, 96);
 	prop-2: 'color(display-p3 0.02472 0.01150 0.00574 / 1)';
@@ -636,7 +602,6 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	content: var(--value-2ic);
 	left: 2em;
 	left: var(--non-existing, 2em);
-	width: -webkit-calc(8em + 20px);
 	width: -moz-calc(8em + 20px);
 	width: calc(8em + 20px);
 	height: 10px;
@@ -650,32 +615,40 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 .mod:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	padding: 8px 3px 1px -webkit-calc(3px + 50%);
-	padding: 8px 3px 1px -moz-calc(3px + 50%);
-	padding: 8px 3px 1px calc(3px + 50%);
-	-webkit-transform: rotate(-50deg);
-	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
-	        transform: rotate(-50deg);
-	width: 2px;
+	padding: 8px -moz-calc(3px) 1px -moz-calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc(-moz-calc(3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	-webkit-transform: rotate(calc(-50deg));
+	   -moz-transform: rotate(-moz-calc(-50deg));
+	        transform: rotate(calc(-50deg));
+	width: -moz-calc(2px);
+	width: calc(2px);
 }
 
 .rem:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	padding: 8px 3px 1px -webkit-calc(3px + 50%);
-	padding: 8px 3px 1px -moz-calc(3px + 50%);
-	padding: 8px 3px 1px calc(3px + 50%);
-	-webkit-transform: rotate(-50deg);
-	   -moz-transform: rotate(-50deg);
-	    -ms-transform: rotate(-50deg);
-	        transform: rotate(-50deg);
+	padding: 8px -moz-calc(3px) 1px -moz-calc((3px) + 50%);
+	padding: 8px calc(3px) 1px calc((3px) + 50%);
+	padding: 8px -moz-calc(3px) 1px -moz-calc(-moz-calc(3px) + 50%);
+	padding: 8px calc(3px) 1px calc(calc(3px) + 50%);
+	-webkit-transform: rotate(calc(-50deg));
+	   -moz-transform: rotate(-moz-calc(-50deg));
+	        transform: rotate(calc(-50deg));
 }
 
 .round:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
-	top: 3px;
-	right: 3px;
-	bottom: 3px;
-	left: 2px;
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
+	top: -moz-calc(3px);
+	top: calc(3px);
+	right: -moz-calc(3px);
+	right: calc(3px);
+	bottom: -moz-calc(3px);
+	bottom: calc(3px);
+	left: -moz-calc(2px);
+	left: calc(2px);
+	top: -moz-calc(2px);
+	top: calc(2px);
+	right: -moz-calc(2px);
+	right: calc(2px);
+	bottom: -moz-calc(2px);
+	bottom: calc(2px);
 }

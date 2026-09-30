@@ -26,7 +26,15 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			const modifiedValue = calc(decl.value);
+			if (options.preserve && decl.parent?.type === 'atrule' && decl.parent.name.toLowerCase() === 'property') {
+				return;
+			}
+
+			const modifiedValue = calc(decl.value, {
+				precision: 5,
+				toCanonicalUnits: true,
+				calcWrapper: true,
+			});
 			if (modifiedValue === decl.value) {
 				return;
 			}
@@ -43,3 +51,4 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

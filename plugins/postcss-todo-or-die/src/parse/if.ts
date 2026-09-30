@@ -12,7 +12,7 @@ export type IfCondition = {
 	a: SubjectToken
 	b: SubjectToken
 	operator: '<' | '>' | '='
-}
+};
 
 export function parseIfCondition(componentValue: FunctionNode): IfCondition | false {
 	const relevantFunctionArguments = componentValue.value.filter((x) => {

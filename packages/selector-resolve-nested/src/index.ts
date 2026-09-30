@@ -19,5 +19,6 @@
  * @packageDocumentation
  */
 
+export type { ResolveOptions } from './resolve-nested-selector';
 export { resolveNestedSelector } from './resolve-nested-selector';
 export { flattenNestedSelector } from './flatten-nested-selector';

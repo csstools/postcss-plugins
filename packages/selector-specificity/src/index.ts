@@ -73,7 +73,7 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 	let b = 0; /* Class, Attribute, and Pseudo-class selectors */
 	let c = 0; /* Type selectors and Pseudo-elements */
 
-	if (node.type == 'universal') {
+	if (node.type === 'universal') {
 		return {
 			a: 0,
 			b: 0,
@@ -88,6 +88,7 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 	} else if (node.type === 'attribute') {
 		b += 1;
 	} else if (isPseudoElement(node)) {
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 		node = node as parser.Pseudo;
 
 		switch (node.value.toLowerCase()) {

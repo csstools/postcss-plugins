@@ -4,6 +4,8 @@ import type { ParsedValue } from 'postcss-value-parser';
 import { numberOfCalcOccurrences } from './occurrences';
 import { hasFallback } from '@csstools/utilities';
 
+const IS_PROPERTY_REGEX = /^property$/i;
+
 /** postcss-nested-calc plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: true */
@@ -35,6 +37,10 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			}
 
 			if (hasFallback(decl)) {
+				return;
+			}
+
+			if (options.preserve && decl.parent?.type === 'atrule' && IS_PROPERTY_REGEX.test(decl.parent.name)) {
 				return;
 			}
 
@@ -93,4 +99,5 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };
 

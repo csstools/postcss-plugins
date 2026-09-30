@@ -15,6 +15,13 @@ export function solvePow(powNode: FunctionNode, a: TokenNode, b: TokenNode): Cal
 		return -1;
 	}
 
+	// https://drafts.csswg.org/css-values-4/#exponent-infinities
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	// Note: `Math.pow(NaN, 0)` returns `1` in JS, but CSS requires NaN.
+	if (Number.isNaN(aToken[4].value) || Number.isNaN(bToken[4].value)) {
+		return numberToCalculation(powNode, Number.NaN);
+	}
+
 	const result = Math.pow(aToken[4].value, bToken[4].value);
 
 	return numberToCalculation(powNode, result);

@@ -8,11 +8,14 @@
 
 ```typescript
 export type conversionOptions = {
+    onParseError?: (error: ParseError) => void;
     globals?: GlobalsWithStrings;
     precision?: number;
+    devicePixelLength?: number;
     toCanonicalUnits?: boolean;
     censorIntoStandardRepresentableValues?: boolean;
     rawPercentages?: boolean;
+    calcWrapper?: boolean;
     randomCaching?: {
         propertyName: string;
         propertyN: number;
@@ -21,5 +24,5 @@ export type conversionOptions = {
     };
 };
 ```
-**References:** [GlobalsWithStrings](./css-calc.globalswithstrings.md)
+**References:** [ParseError](./css-calc.parseerror.md)<!-- -->, [GlobalsWithStrings](./css-calc.globalswithstrings.md)
 

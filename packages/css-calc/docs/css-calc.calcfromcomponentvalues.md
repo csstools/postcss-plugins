@@ -59,6 +59,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Array&lt;Array&lt;ComponentValue&gt;&gt;

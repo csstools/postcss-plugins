@@ -1,5 +1,5 @@
 @custom-media --mq-a (max-width: 30em);
 
 .foo {
-	background-color: red;
+	background: red;
 }

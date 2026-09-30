@@ -47,6 +47,7 @@ The color data to be serialized.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 FunctionNode

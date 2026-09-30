@@ -1,0 +1,61 @@
+.foo {
+	margin: 10vw 20vh;
+}
+
+.foo {
+	margin: calc(10vw + 5vh);
+}
+
+.vb {
+	left: 5vh;
+}
+
+.vi {
+	left: 5vw;
+}
+
+.svb {
+	left: 5svb;
+}
+
+.svi {
+	left: 5svi;
+}
+
+.lvb {
+	left: 5lvb;
+}
+
+.lvi {
+	left: 5lvi;
+}
+
+@supports (width: 100vb) {
+	.vi {
+		left: 5vi;
+	}
+}
+
+:root {
+	--var: 5vw;
+}
+
+.fallback {
+	left: 5vw;
+	left: 5vi;
+}
+
+to-clone {
+	left: 5vw;
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: 5vw;
+}
+
+@keyframes --foo {
+	to {
+		--foo: 5vw;
+	}
+}

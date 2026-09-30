@@ -1,0 +1,28 @@
+@mixin --foo() {
+	color: green;
+}
+
+.foo {
+	@apply --foo;
+}
+
+@mixin --bar(--baz) {
+	color: rgb(var(--baz) 127 0);
+}
+
+.bar {
+	@apply --bar(200);
+}
+
+@mixin --a {
+	font-weight: 500;
+}
+
+@mixin --b {
+	@apply --a;
+	font-size: 2rem;
+}
+
+.c {
+	@apply --b;
+}

@@ -1,4 +1,4 @@
-import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import { ComponentValue } from '@csstools/css-parser-algorithms';
 import type { TokenDimension } from '@csstools/css-tokenizer';
 import type { TokenNumber } from '@csstools/css-tokenizer';
 import type { TokenPercentage } from '@csstools/css-tokenizer';
@@ -9,6 +9,14 @@ export declare function calcFromComponentValues(componentValuesList: Array<Array
 
 export declare type conversionOptions = {
     /**
+     * If a calc expression can not be solved the parse error might be reported through this callback.
+     * Not all cases are covered. Open an issue if you need specific errors reported.
+     *
+     * Values are recursively visited and at each nesting level an attempt is made to solve the expression.
+     * Errors can be reported multiple times as a result of this.
+     */
+    onParseError?: (error: ParseError) => void;
+    /**
      * Pass global values as a map of key value pairs.
      */
     globals?: GlobalsWithStrings;
@@ -18,6 +26,11 @@ export declare type conversionOptions = {
      * You can set it to a lower number to suite your needs.
      */
     precision?: number;
+    /**
+     * The CSS pixel length of one device pixel.
+     * Used when rounding to `line-width` and similar features
+     */
+    devicePixelLength?: number;
     /**
      * By default this package will try to preserve units.
      * The heuristic to do this is very simplistic.
@@ -39,6 +52,13 @@ export declare type conversionOptions = {
      * @see https://drafts.csswg.org/css-values-4/#calc-simplification
      */
     rawPercentages?: boolean;
+    /**
+     * Out of range values or floats are invalid in some contexts.
+     * Wrapping values in a `calc()` or other noop math function can make these valid anyway.
+     *
+     * Instead of completely removing math functions it is preferable to keep a noop `calc()`.
+     */
+    calcWrapper?: boolean;
     /**
      * The values used to generate random value cache keys.
      */
@@ -67,5 +87,27 @@ export declare type conversionOptions = {
 export declare type GlobalsWithStrings = Map<string, TokenDimension | TokenNumber | TokenPercentage | string>;
 
 export declare const mathFunctionNames: Set<string>;
+
+/**
+ * Any errors are reported through the `onParseError` callback.
+ */
+export declare class ParseError extends Error {
+    /** The index of the start character of the current token. */
+    sourceStart: number;
+    /** The index of the end character of the current token. */
+    sourceEnd: number;
+    constructor(message: string, sourceStart: number, sourceEnd: number);
+}
+
+export declare const ParseErrorMessage: {
+    UnexpectedAdditionOfDimensionOrPercentageWithNumber: string;
+    UnexpectedSubtractionOfDimensionOrPercentageWithNumber: string;
+};
+
+export declare class ParseErrorWithComponentValues extends ParseError {
+    /** The associated component values. */
+    componentValues: Array<ComponentValue>;
+    constructor(message: string, componentValues: Array<ComponentValue>);
+}
 
 export { }

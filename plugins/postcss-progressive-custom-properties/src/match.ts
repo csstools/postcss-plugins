@@ -7,7 +7,7 @@ type MatcherNode = {
 	},
 	isVariable?: boolean,
 	anyRemainingArguments?: boolean
-}
+};
 
 export function matches(a: MatcherNode, b: MatcherNode): boolean {
 	if (

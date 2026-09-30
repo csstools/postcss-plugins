@@ -1,3 +1,14 @@
 .a {
 	--color: contrast-color(oklch(82.06% 0.2 330.35));
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: contrast-color(green);
+}
+
+@keyframes --foo {
+	to {
+		--foo: contrast-color(green);
+	}
+}

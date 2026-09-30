@@ -10,7 +10,7 @@ export type ColorStop = {
 	color: ComponentValue,
 	colorData: ColorData,
 	position: ComponentValue,
-}
+};
 
 export function interpolateColorsInColorStopsList(colorStops: Array<ColorStop>, colorSpace: TokenNode, hueInterpolationMethod: TokenNode | null, wideGamut = false): Array<ComponentValue> | false {
 	const result: Array<ComponentValue> = [];

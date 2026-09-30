@@ -106,3 +106,14 @@
 to-clone {
 	color: rgb(255, 0, 0);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(255, 0, 0);
+}
+
+@keyframes --foo {
+	to {
+		--color: rgb(255, 0, 0);
+	}
+}

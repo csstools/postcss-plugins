@@ -9,7 +9,7 @@ export type Arguments = {
 	replace: boolean,
 	pluginOptions: Record<string, unknown>,
 	debug: boolean,
-}
+};
 
 export enum SignalValue {
 	InvalidArguments = 'INVALID_ARGUMENTS'

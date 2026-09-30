@@ -1,6 +1,11 @@
 import { isTokenDimension, isTokenEOF, stringify, tokenizer } from '@csstools/css-tokenizer';
 
-export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: 'vw' | 'vh' }): string {
+export type Replacements = {
+	vi: 'vw' | 'vh',
+	vb: 'vw' | 'vh',
+};
+
+export function transform(source: string, replacements: Replacements): string {
 	const t = tokenizer({ css: source });
 	const tokens = [];
 	let didTransformUnits = false;
@@ -22,12 +27,7 @@ export function transform(source: string, replacements: { vi: 'vw' | 'vh', vb: '
 		}
 
 		const unit = token[4].unit.toLowerCase();
-		let replacement;
-		if (unit === 'vi') {
-			replacement = replacements.vi;
-		} else if (unit === 'vb') {
-			replacement = replacements.vb;
-		}
+		const replacement = (replacements as Record<string, string>)[unit];
 		if (!replacement) {
 			continue;
 		}

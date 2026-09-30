@@ -218,8 +218,6 @@ export function transformMediaFeatureValue(value: MediaFeatureValue): void {
 			return;
 		}
 	}
-
-	return;
 }
 
 function modifyCalc(focus: FunctionNode): FunctionNode {
@@ -263,13 +261,13 @@ function greatestCommonDivisor(a: number, b: number): number {
 	}
 
 	while (true) {
-		if (b == 0) {
+		if (b === 0) {
 			return a;
 		}
 
 		a %= b;
 
-		if (a == 0) {
+		if (a === 0) {
 			return b;
 		}
 

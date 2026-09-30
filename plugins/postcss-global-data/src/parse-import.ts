@@ -4,7 +4,7 @@ import type { Helpers, Root } from 'postcss';
 import module from 'node:module';
 
 export function parseImport(root: Root, postcssHelpers: Helpers, filePath: string, alreadyImported: Set<string>): Root|false {
-	let resolvedPath = '';
+	let resolvedPath;
 
 	try {
 		if (filePath.startsWith('node_modules://')) {
@@ -19,7 +19,9 @@ export function parseImport(root: Root, postcssHelpers: Helpers, filePath: strin
 			resolvedPath = path.resolve(filePath);
 		}
 	} catch (err) {
-		throw new Error(`Failed to read ${filePath} with error ${(err instanceof Error) ? err.message : err}`);
+		throw new Error(`Failed to read ${filePath} with error ${(err instanceof Error) ? err.message : err}`, {
+			cause: err
+		});
 	}
 
 	if (alreadyImported.has(resolvedPath)) {

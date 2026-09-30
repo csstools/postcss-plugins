@@ -63,6 +63,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Array&lt;[LayerName](./cascade-layer-name-parser.layername.md)<!-- -->&gt;

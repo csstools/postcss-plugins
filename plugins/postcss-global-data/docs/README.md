@@ -33,7 +33,7 @@ can actually use it.
 
 ## Options
 
-### files
+### `files`
 
 The `files` option determines which files to inject into PostCSS.
 
@@ -43,6 +43,48 @@ The `files` option determines which files to inject into PostCSS.
 		'./src/css/variables.css',
 		'./src/css/media-queries.css',
 	],
+});
+```
+
+### Plugin order control with `lateRemover`
+
+The `lateRemover` option gives you more options when ordering plugins.
+
+```js
+// esm
+import postcss from 'postcss';
+import <exportName> from '<packageName>';
+
+const [globalData, globalDataLateRemover] = <exportName>({ 
+	files: [
+		'./src/css/variables.css',
+		'./src/css/media-queries.css',
+	],
+	lateRemover: true
+}).plugins
+
+postcss([
+	globalData,
+	/* other plugins */
+	globalDataLateRemover
+]).process(YOUR_CSS /*, processOptions */);
+```
+
+### `prepend`
+
+The `prepend` option determines if injected CSS is appended or prepended.  
+Defaults to `false`.
+
+> [!Warning]
+> Prepending styles before `@import` statements will create broken stylesheets.
+
+```js
+<exportName>({ 
+	files: [
+		'./src/css/variables.css',
+		'./src/css/media-queries.css',
+	],
+	prepend: true
 });
 ```
 

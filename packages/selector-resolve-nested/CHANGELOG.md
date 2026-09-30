@@ -1,5 +1,31 @@
 # Changes to Selector Resolve Nested
 
+### 4.0.2
+
+_September 25, 2026_
+
+- Improve performance
+- Throw when resolving a nested selector would exceed the maximum number of combinations
+
+### 4.0.1
+
+_July 23, 2026_
+
+- Throw when trying to resolve a nested selector with excessive combinatorial explosion.
+
+### 4.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
+### 3.1.0
+
+_June 6, 2025_
+
+- Add `ignoreImplicitNesting` option to `resolveNestedSelector`
+
 ### 3.0.0
 
 _October 23, 2024_

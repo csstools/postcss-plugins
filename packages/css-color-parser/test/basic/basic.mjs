@@ -1,4 +1,4 @@
-import { color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut } from '@csstools/css-color-parser';
+import { color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut, computedValue } from '@csstools/css-color-parser';
 import assert from 'node:assert';
 import { parse } from '../util/parse.mjs';
 import { serialize_HSL_data, serialize_P3_data, serialize_sRGB_data } from '../util/serialize.mjs';
@@ -223,4 +223,236 @@ assert.equal(
 assert.equal(
 	colorDataFitsDisplayP3_Gamut(color(parse('color(display-p3 0.99 1.0001 0.99)'))),
 	false,
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(from lab(50% none none) h s l)')),
+	{
+		colorNotation: 'hsl',
+		channels: [NaN, NaN, 46.63266093],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lab(from hsl(none none 50%) l a b)')),
+	{
+		colorNotation: 'lab',
+		channels: [53.38896474111432, NaN, NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hwb(from lch(none none 50deg) h w b)')),
+	{
+		colorNotation: 'hwb',
+		channels: [NaN, NaN, NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lch(from hwb(50deg none none) l c h)')),
+	{
+		colorNotation: 'lch',
+		channels: [NaN, NaN, 87.26522367839932],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('lab(from oklch(50% none none) l a b')),
+	{
+		colorNotation: 'lab',
+		channels: [42, NaN, NaN],
+		alpha: 1,
+		syntaxFlags: new Set(['relative-color-syntax', 'has-number-values']),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(calc(infinity) 100% 50%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [0, 100, 50],
+		alpha: 1,
+		syntaxFlags: new Set(['has-percentage-values']),
+	},
+);
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`lab(from ${a}(none none none) l a b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`lch(from ${a}(none none none) l c h)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`oklab(from ${a}(none none none) l a b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`oklch(from ${a}(none none none) l c h)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`rgb(from ${a}(none none none) r g b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`hwb(from ${a}(none none none) h w b)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+for (const a of ['lab', 'lch', 'oklab', 'oklch', 'rgb', 'hwb', 'hsl']) {
+	assert.deepStrictEqual(
+		color(parse(`hsl(from ${a}(none none none) h s l)`)).channels,
+		[NaN, NaN, NaN],
+	);
+}
+
+assert.deepStrictEqual(
+	color(parse('rgb(from hsl(180, 0%, 50%) r g b / alpha)')),
+	{
+		colorNotation: 'rgb',
+		channels: [0.5, 0.5, 0.5],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+			'has-alpha',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(from rgb(from hsl(180, 0%, 50%) r g b / alpha) h s l / alpha)')),
+	{
+		colorNotation: 'hsl',
+		channels: [NaN, 0, 50],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+			'has-alpha',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(0deg 85% 75%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [0, 85, 75],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'has-dimension-values', 'has-percentage-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hwb(from hsl(0deg 85% 75%) h w b)')),
+	{
+		colorNotation: 'hwb',
+		channels: [0, 53.75, 3.75],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax', 'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hsl(180deg 80% 65%)')),
+	{
+		colorNotation: 'hsl',
+		channels: [180, 80, 65],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'has-dimension-values', 'has-percentage-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('hwb(from hsl(180deg 80% 65%) h w b)')),
+	{
+		colorNotation: 'hwb',
+		channels: [180, 37, 7],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax', 'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in hwb, hsl(0deg 85% 75%) 50%, hsl(180deg 80% 65%) 50%)')),
+	{
+		colorNotation: 'hwb',
+		channels: [90, 45.375, 5.375],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'color-mix',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	color(parse('color-mix(in lch, lch(100 0 50deg), lch(100 0 330deg))')),
+	{
+		colorNotation: 'lch',
+		channels: [100, 0, 370],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'color-mix',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('color-mix(in lch, lch(100 0 50deg), lch(100 0 330deg))'))),
+	'lch(100 0 10)',
+);
+
+assert.deepStrictEqual(
+	color(parse('lch(from lch(100 0 330deg) l c calc(h + 40))')),
+	{
+		colorNotation: 'lch',
+		channels: [100, 0, 10],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('lch(from lch(100 0 330deg) l c calc(h + 40))'))),
+	'lch(100 0 10)',
 );

@@ -6,7 +6,7 @@ type BeforeDateCondition = {
 	year: number,
 	month: number,
 	day: number
-}
+};
 
 export function parseBeforeDateCondition(componentValue: FunctionNode): BeforeDateCondition | false {
 	const relevantFunctionArguments = componentValue.value.filter((x) => {

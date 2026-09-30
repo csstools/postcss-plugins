@@ -23,9 +23,13 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 		...tokens,
 	];
 
+	if (tokensCopy.length === 0) {
+		return [];
+	}
+
 	// We expect the last token to be an EOF token.
 	// Passing slices of tokens to this function can easily cause the EOF token to be missing.
-	if (isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
+	if (!isTokenEOF(tokensCopy[tokensCopy.length - 1])) {
 		tokensCopy.push([
 			TokenType.EOF,
 			'',
@@ -44,7 +48,7 @@ export function parseListOfComponentValues(tokens: Array<CSSToken>, options?: { 
 			return list;
 		}
 
-		const result = consumeComponentValue(ctx, tokensCopy.slice(i));
+		const result = consumeComponentValue(ctx, tokensCopy, i, 0);
 		list.push(result.node);
 		i += result.advance;
 	}

@@ -13,7 +13,9 @@ export declare type pluginOptions = {
     };
 };
 
+/** Transform color-mix() functions in CSS. */
 declare const postcssPlugin: PluginCreator<pluginOptions>;
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' }
 
 export { }

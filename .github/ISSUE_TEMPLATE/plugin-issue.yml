@@ -65,15 +65,18 @@ body:
         - CSS Blank Pseudo
         - CSS Has Pseudo
         - CSS Prefers Color Scheme
+        - PostCSS Alpha Function
         - PostCSS Attribute Case Insensitive
         - PostCSS Browser Comments
         - PostCSS Cascade Layers
         - PostCSS Color Function
+        - PostCSS Color Function Display P3 Linear
         - PostCSS Color Functional Notation
         - PostCSS Color Hex Alpha
         - PostCSS Color Mix Function
         - PostCSS Color Mix Variadic Function Arguments
         - PostCSS Conditional Values
+        - PostCSS Container Rule Prelude List
         - PostCSS Content Alt Text
         - PostCSS Contrast Color Functions
         - PostCSS Custom Media Queries
@@ -85,15 +88,18 @@ body:
         - PostCSS Env Function
         - PostCSS Exponential Functions
         - PostCSS Extract
+        - PostCSS Fit Tolerance Property
         - PostCSS Focus Visible
         - PostCSS Focus Within
         - PostCSS Font Variant
+        - PostCSS Font Width Property
         - PostCSS Gamut Mapping
         - PostCSS Gap Properties
         - PostCSS Global Data
         - PostCSS Gradients Interpolation Method
         - PostCSS HWB Function
         - PostCSS IC Unit
+        - PostCSS Image Function
         - PostCSS Image Set Function
         - PostCSS Initial
         - PostCSS Is Pseudo Class
@@ -105,28 +111,34 @@ body:
         - PostCSS Logical Overscroll Behavior
         - PostCSS Logical Resize
         - PostCSS Logical Viewport Units
-        - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Media MinMax
+        - PostCSS Media Queries Aspect-Ratio Number Values
         - PostCSS Minify
+        - PostCSS Mixins
         - PostCSS Nested Calc
         - PostCSS Nesting
         - PostCSS OKLab Function
         - PostCSS Overflow Shorthand
         - PostCSS Page Break
         - PostCSS Place
+        - PostCSS Position Area Property
+        - PostCSS Private Rule
         - PostCSS Progressive Custom Properties
+        - PostCSS Property Rule Optional Descriptors
+        - PostCSS Property Rule Prelude List
         - PostCSS Pseudo Class Any Link
         - PostCSS Random Function
         - PostCSS Rebase URL
-        - PostCSS Rewrite URL
         - PostCSS Rebeccapurple
         - PostCSS Relative Color Syntax
         - PostCSS Replace Overflow Wrap
+        - PostCSS Rewrite URL
         - PostCSS Scope Pseudo Class
         - PostCSS Selector Not
         - PostCSS Sign Functions
         - PostCSS Slow Plugins
         - PostCSS Stepped Value Functions
+        - PostCSS Syntax Descriptor Syntax Production
         - PostCSS System Ui Font Family
         - PostCSS Text Decoration Shorthand
         - PostCSS Trigonometric Functions

@@ -1,5 +1,34 @@
 # Changes to PostCSS Nesting
 
+### 14.0.2
+
+_September 25, 2026_
+
+- Throw when nested rules exceed the maximum depth
+- Throw when resolving nested selectors with lists would exceed the maximum number of combinations
+- Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#402) (patch)
+
+### 14.0.1
+
+_July 23, 2026_
+
+- Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`4.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#401) (patch)
+
+### 14.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+- Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`4.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#400) (major)
+- Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`6.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#600) (major)
+
+### 13.0.2
+
+_June 10, 2025_
+
+- Updated [`@csstools/selector-resolve-nested`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested) to [`3.1.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-resolve-nested/CHANGELOG.md#310) (minor)
+
 ### 13.0.1
 
 _October 23, 2024_

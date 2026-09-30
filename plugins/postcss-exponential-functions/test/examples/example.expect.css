@@ -1,7 +1,7 @@
 .foo {
-	top: 8px;
-	line-height: 1.0954451150103;
-	padding: 5px;
-	order: 1;
-	min-height: 0;
+	top: calc(8px);
+	line-height: calc(1.09545);
+	padding: calc(5px);
+	order: calc(1);
+	min-height: calc(0);
 }

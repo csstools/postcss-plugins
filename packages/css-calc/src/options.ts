@@ -1,7 +1,17 @@
+import type { ParseError } from './error';
 import type { GlobalsWithStrings } from './util/globals';
 export type { GlobalsWithStrings } from './util/globals';
 
 export type conversionOptions = {
+	/**
+ * If a calc expression can not be solved the parse error might be reported through this callback.
+ * Not all cases are covered. Open an issue if you need specific errors reported.
+ *
+ * Values are recursively visited and at each nesting level an attempt is made to solve the expression.
+ * Errors can be reported multiple times as a result of this.
+ */
+	onParseError?: (error: ParseError) => void
+
 	/**
 	 * Pass global values as a map of key value pairs.
 	 */
@@ -13,6 +23,12 @@ export type conversionOptions = {
 	 * You can set it to a lower number to suite your needs.
 	 */
 	precision?: number,
+
+	/**
+	 * The CSS pixel length of one device pixel.
+	 * Used when rounding to `line-width` and similar features
+	 */
+	devicePixelLength?: number,
 
 	/**
 	 * By default this package will try to preserve units.
@@ -37,6 +53,14 @@ export type conversionOptions = {
 	 * @see https://drafts.csswg.org/css-values-4/#calc-simplification
 	 */
 	rawPercentages?: boolean
+
+	/**
+	 * Out of range values or floats are invalid in some contexts.
+	 * Wrapping values in a `calc()` or other noop math function can make these valid anyway.
+	 *
+	 * Instead of completely removing math functions it is preferable to keep a noop `calc()`.
+	 */
+	calcWrapper?: boolean
 
 	/**
 	 * The values used to generate random value cache keys.

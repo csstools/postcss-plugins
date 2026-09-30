@@ -45,6 +45,7 @@ type
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [TokenType](./css-tokenizer.tokentype.md) \| null

@@ -45,6 +45,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [SimpleBlockNode](./css-parser-algorithms.simpleblocknode.md)

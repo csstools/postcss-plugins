@@ -6,7 +6,7 @@ export function cloneDeclaration(
 	prop: string,
 ): void {
 	if (declaration.parent && declaration.parent.some((childNode) => {
-		return childNode.type == 'decl' && childNode.prop === prop && childNode.value === value;
+		return childNode.type === 'decl' && childNode.prop === prop && childNode.value === value;
 	})) {
 		return;
 	}

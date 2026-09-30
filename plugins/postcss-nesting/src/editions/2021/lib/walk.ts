@@ -6,7 +6,14 @@ import transformRuleWithinRule, { isValidRuleWithinRule } from './rule-within-ru
 import { isAtRule, isNestRule, isRule } from '../../shared/lib/is-type-of-rule.js';
 import type { options } from './options.js';
 
-export default function walk(node: Container, result: Result, opts: options): void {
+// Guard against unbounded recursion on deeply nested input.
+const MAX_NESTING_DEPTH = 512;
+
+export default function walk(node: Container, result: Result, opts: options, depth: number = 0): void {
+	if (depth >= MAX_NESTING_DEPTH) {
+		throw new Error(`Maximum nesting depth of ${MAX_NESTING_DEPTH} exceeded while resolving nested rules.`);
+	}
+
 	node.each((child) => {
 		const parent = child.parent;
 
@@ -29,13 +36,13 @@ export default function walk(node: Container, result: Result, opts: options): vo
 			isRule(parent) &&
 			isValidNestRuleWithinRule(child)
 		) {
-			transformNestRuleWithinRule(child, parent, result, walk, opts);
+			transformNestRuleWithinRule(child, parent, result, walk, opts, depth + 1);
 		} else if (
 			isAtRule(child) &&
 			isRule(parent) &&
 			isAtruleWithinRule(child)
 		) {
-			transformAtruleWithinRule(child, parent, result, walk, opts);
+			transformAtruleWithinRule(child, parent, result, walk, opts, depth + 1);
 		} else if (
 			isAtRule(child) &&
 			isAtRule(parent) &&
@@ -45,7 +52,7 @@ export default function walk(node: Container, result: Result, opts: options): vo
 		}
 
 		if ('nodes' in child && child.nodes.length) {
-			walk(child, result, opts);
+			walk(child, result, opts, depth + 1);
 		}
 	});
 }

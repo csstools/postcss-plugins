@@ -85,6 +85,15 @@ Check if a color data object fits the `sRGB` gamut.
 </td></tr>
 <tr><td>
 
+[computedValue(color, convertHslOrHwbToRGB)](./css-color-parser.computedvalue.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [serializeHSL(color, gamutMapping)](./css-color-parser.serializehsl.md)
 
 
@@ -152,3 +161,4 @@ A color data object. It contains as much information as possible about the color
 
 </td></tr>
 </tbody></table>
+

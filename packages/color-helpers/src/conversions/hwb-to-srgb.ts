@@ -28,5 +28,5 @@ export function HWB_to_sRGB(HWB: Color): Color {
 		(rgb[0] * l) + white,
 		(rgb[1] * l) + white,
 		(rgb[2] * l) + white,
-	]
+	];
 }

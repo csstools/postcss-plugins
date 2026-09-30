@@ -23,3 +23,14 @@ body {
 to-clone {
 	color: rgba(152,35,248,0.66275);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: #9823f8a9;
+}
+
+@keyframes --foo {
+	to {
+		--color: rgba(152,35,248,0.66275);
+	}
+}

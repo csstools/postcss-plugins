@@ -63,6 +63,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [ComponentValue](./css-parser-algorithms.componentvalue.md) \| undefined
@@ -72,9 +73,9 @@ _(Optional)_
 
 ```js
 import { tokenize } from '@csstools/css-tokenizer';
-import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { parseComponentValue } from '@csstools/css-parser-algorithms';
 
-parseCommaSeparatedListOfComponentValues(tokenize({ css: `10px` }));
-parseCommaSeparatedListOfComponentValues(tokenize({ css: `calc((10px + 1x) * 4)` }));
+parseComponentValue(tokenize({ css: `10px` }));
+parseComponentValue(tokenize({ css: `calc((10px + 1x) * 4)` }));
 ```
 

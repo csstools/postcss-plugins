@@ -1,5 +1,5 @@
 .random-1 {
-	z-index: 5.21287;
+	z-index: calc(2.09594);
 }
 
 .random-2 {
@@ -7,15 +7,15 @@
 }
 
 .random-3 {
-	z-index: 9.78963;
+	z-index: calc(0.56703);
 }
 
 .random-4 {
-	z-index: 1.76681;
+	z-index: calc(6.78979);
 }
 
 .random-11 {
-	width: 3.73222px;
+	width: calc(2.09594px);
 }
 
 .random-12 {
@@ -23,68 +23,68 @@
 }
 
 .random-13 {
-	width: 5.98171px;
+	width: calc(0.56703px);
 }
 
 .random-14 {
-	width: 6.22777px;
+	width: calc(6.78979px);
 }
 
 .random-15 {
-	padding: 5px 5px;
-	margin: 1.63012px 5.06483px;
-	inset: 7.06555px 7.06555px;
-	border-top-right-radius: 5.28165px;
-	border-top-left-radius: 5.16324px;
-	border-bottom-right-radius: 7.06555px;
-	border-bottom-left-radius: 7.06555px;
+	padding: calc(5px) calc(5px);
+	margin: calc(2.09594px) calc(2.09594px);
+	inset: calc(0.56703px) calc(0.56703px);
+	border-top-right-radius: calc(2.09594px);
+	border-top-left-radius: calc(2.09594px);
+	border-bottom-right-radius: calc(0.56703px);
+	border-bottom-left-radius: calc(0.56703px);
 }
 
 .random-15 {
-	padding: 5px 5px;
-	margin: 1.63012px 5.06483px;
-	inset: 7.06555px 7.06555px;
-	border-top-right-radius: 5.28165px;
-	border-top-left-radius: 5.16324px;
-	border-bottom-right-radius: 7.06555px;
-	border-bottom-left-radius: 7.06555px;
+	padding: calc(5px) calc(5px);
+	margin: calc(2.09594px) calc(2.09594px);
+	inset: calc(0.56703px) calc(0.56703px);
+	border-top-right-radius: calc(2.09594px);
+	border-top-left-radius: calc(2.09594px);
+	border-bottom-right-radius: calc(0.56703px);
+	border-bottom-left-radius: calc(0.56703px);
 }
 
 .random-15-b {
-	padding: 5px 5px;
-	margin: 7.47638px 7.02446px;
-	inset: 8.49751px 8.49751px;
-	border-top-right-radius: 8.99482px;
-	border-top-left-radius: 7.27335px;
-	border-bottom-right-radius: 8.49751px;
-	border-bottom-left-radius: 8.49751px;
+	padding: calc(5px) calc(5px);
+	margin: calc(2.09594px) calc(2.09594px);
+	inset: calc(0.56703px) calc(0.56703px);
+	border-top-right-radius: calc(2.09594px);
+	border-top-left-radius: calc(2.09594px);
+	border-bottom-right-radius: calc(0.56703px);
+	border-bottom-left-radius: calc(0.56703px);
 }
 
 .random-16 {
-	margin: 8.81978px 3.54399px;
-	inset: 7.51683px 7.51683px;
-	border-top-right-radius: 5.60447px;
-	border-top-left-radius: 9.87151px;
-	border-bottom-right-radius: 7.51683px;
-	border-bottom-left-radius: 7.51683px;
+	margin: calc(2.90875px) calc(2.90875px);
+	inset: calc(4.37511px) calc(4.37511px);
+	border-top-right-radius: calc(2.90875px);
+	border-top-left-radius: calc(2.90875px);
+	border-bottom-right-radius: calc(4.37511px);
+	border-bottom-left-radius: calc(4.37511px);
 }
 
 .random-16 {
-	margin: 8.81978px 3.54399px;
-	inset: 7.51683px 7.51683px;
-	border-top-right-radius: 5.60447px;
-	border-top-left-radius: 9.87151px;
-	border-bottom-right-radius: 7.51683px;
-	border-bottom-left-radius: 7.51683px;
+	margin: calc(2.90875px) calc(2.90875px);
+	inset: calc(4.37511px) calc(4.37511px);
+	border-top-right-radius: calc(2.90875px);
+	border-top-left-radius: calc(2.90875px);
+	border-bottom-right-radius: calc(4.37511px);
+	border-bottom-left-radius: calc(4.37511px);
 }
 
 .random-16-b {
-	margin: 8.81978px 3.54399px;
-	inset: 7.51683px 7.51683px;
-	border-top-right-radius: 5.60447px;
-	border-top-left-radius: 9.87151px;
-	border-bottom-right-radius: 7.51683px;
-	border-bottom-left-radius: 7.51683px;
+	margin: calc(5.45597px) calc(5.45597px);
+	inset: calc(7.17757px) calc(7.17757px);
+	border-top-right-radius: calc(5.45597px);
+	border-top-left-radius: calc(5.45597px);
+	border-bottom-right-radius: calc(7.17757px);
+	border-bottom-left-radius: calc(7.17757px);
 }
 
 .ignore-1 {
@@ -98,4 +98,15 @@
 
 .ignore-3 {
 	width: random(0, 10px);
+}
+
+@property --foo {
+	inherits: false;
+	initial-value: calc(2.09594);
+}
+
+@keyframes --foo {
+	to {
+		--foo: calc(2.09594);
+	}
 }

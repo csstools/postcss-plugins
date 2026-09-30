@@ -17,7 +17,7 @@ const SUPPORTS_REGEX = /\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklch|oklab|color)\(\
 const NAME_REGEX = /^(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklch|oklab|color)$/i;
 const FROM_REGEX = /from/i;
 
-/* Transform relative color syntax in CSS. */
+/** Transform relative color syntax in CSS. */
 const basePlugin: PluginCreator<basePluginOptions> = (opts?: basePluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-relative-color-syntax',
@@ -124,7 +124,7 @@ export type pluginOptions = {
 	}
 };
 
-/* Transform relative color syntax in CSS. */
+/** Transform relative color syntax in CSS. */
 const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		enableProgressiveCustomProperties: true,
@@ -155,3 +155,4 @@ const postcssPlugin: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 postcssPlugin.postcss = true;
 
 export default postcssPlugin;
+export { postcssPlugin as 'module.exports' };

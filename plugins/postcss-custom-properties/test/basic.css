@@ -255,3 +255,7 @@ html {
 	order: var(--with-fallback-on-root-2);
 	color: rgb(calc(120)var(--with-fallback-on-root-2)130 140);
 }
+
+.breadcrumb-item + .breadcrumb-item::before {
+	content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+}

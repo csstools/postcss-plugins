@@ -167,12 +167,6 @@
 @custom-media --circular-mq-a (--circular-mq-b);
 @custom-media --circular-mq-b (--circular-mq-a);
 
-@media (--circular-mq-b) {
-	body {
-		order: 7;
-	}
-}
-
 @media (--circular-mq-a) {
 	body {
 		order: 7;

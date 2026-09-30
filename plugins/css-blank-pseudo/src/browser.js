@@ -1,7 +1,3 @@
-import isValidReplacement from './is-valid-replacement.mjs';
-
-const CSS_CLASS_LOADED = 'js-blank-pseudo';
-
 // form control elements selector
 function isFormControlElement(element) {
 	if (element.nodeName === 'INPUT' || element.nodeName === 'SELECT' || element.nodeName === 'TEXTAREA') {
@@ -12,7 +8,7 @@ function isFormControlElement(element) {
 }
 
 function createNewEvent(eventName) {
-	let event;
+	var event;
 
 	if (typeof(Event) === 'function') {
 		event = new Event(eventName, { bubbles: true });
@@ -25,30 +21,41 @@ function createNewEvent(eventName) {
 }
 
 function generateHandler(replaceWith) {
-	let selector;
-	let remove;
-	let add;
+	var selector;
+	var remove;
+	var add;
 
 	if (replaceWith[0] === '.') {
 		selector = replaceWith.slice(1);
-		remove = (el) => el.classList.remove(selector);
-		add = (el) => el.classList.add(selector);
+		remove = function remove(el) {
+			el.classList.remove(selector);
+		};
+
+		add = function add(el) {
+			el.classList.add(selector);
+		};
 	} else {
 		// A bit naive
 		selector = replaceWith.slice(1, -1);
-		remove = (el) => el.removeAttribute(selector, '');
-		add = (el) => el.setAttribute(selector, '');
+
+		remove = function remove(el) {
+			el.removeAttribute(selector, '');
+		};
+
+		add = function add(el) {
+			el.setAttribute(selector, '');
+		};
 	}
 
 	return function handleInputOrChangeEvent(event) {
-		const element = event.target;
+		var element = event.target;
 		if (!isFormControlElement(element)) {
 			return;
 		}
 
-		const isSelect = element.nodeName === 'SELECT';
-		const hasValue = isSelect
-			? !!element.options[element.selectedIndex]?.value
+		var isSelect = element.nodeName === 'SELECT';
+		var hasValue = isSelect
+			? (element.options[element.selectedIndex] && !!element.options[element.selectedIndex].value)
 			: !!element.value;
 
 		if (hasValue) {
@@ -61,13 +68,13 @@ function generateHandler(replaceWith) {
 
 // observe changes to the "selected" property on an HTML Element
 function observeSelectedOfHTMLElement(HTMLElement) {
-	const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'selected');
-	const nativeSet = descriptor.set;
+	var descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'selected');
+	var nativeSet = descriptor.set;
 
 	descriptor.set = function set(value) { // eslint-disable-line no-unused-vars
 		nativeSet.apply(this, arguments);
 
-		const event = createNewEvent('change');
+		var event = createNewEvent('change');
 		this.parentElement.dispatchEvent(event);
 	};
 
@@ -76,8 +83,8 @@ function observeSelectedOfHTMLElement(HTMLElement) {
 
 // observe changes to the "value" property on an HTML Element
 function observeValueOfHTMLElement(HTMLElement, handler) {
-	const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'value');
-	const nativeSet = descriptor.set;
+	var descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'value');
+	var nativeSet = descriptor.set;
 
 	descriptor.set = function set() {
 		nativeSet.apply(this, arguments);
@@ -89,7 +96,7 @@ function observeValueOfHTMLElement(HTMLElement, handler) {
 
 export default function cssBlankPseudoInit(opts) {
 	// configuration
-	const options = {
+	var options = {
 		force: false,
 		replaceWith: '[blank]',
 	};
@@ -102,10 +109,6 @@ export default function cssBlankPseudoInit(opts) {
 		options.replaceWith = opts.replaceWith;
 	}
 
-	if (!isValidReplacement(options.replaceWith)) {
-		throw new Error(`${options.replaceWith} is not a valid replacement since it can't be applied to single elements.`);
-	}
-
 	try {
 		document.querySelector(':blank');
 
@@ -114,20 +117,19 @@ export default function cssBlankPseudoInit(opts) {
 		}
 	} catch (_) {}
 
-	const handler = generateHandler(options.replaceWith);
-	const bindEvents = () => {
+	var handler = generateHandler(options.replaceWith);
+	var bindEvents = function bindEvents() {
 		if (document.body) {
 			document.body.addEventListener('change', handler);
 			document.body.addEventListener('input', handler);
 		}
 	};
-	const updateAllCandidates = () => {
-		Array.prototype.forEach.call(
-			document.querySelectorAll('input, select, textarea'),
-			node => {
-				handler({ target: node });
-			},
-		);
+	var updateAllCandidates = function updateAllCandidates() {
+		var elements = document.querySelectorAll('input, select, textarea');
+
+		for (var i = 0; i < elements.length; i++) {
+			handler({ target: elements[i] });
+		}
 	};
 
 	if (document.body) {
@@ -136,8 +138,8 @@ export default function cssBlankPseudoInit(opts) {
 		window.addEventListener('load', bindEvents);
 	}
 
-	if (document.documentElement.className.indexOf(CSS_CLASS_LOADED) === -1) {
-		document.documentElement.className += ` ${CSS_CLASS_LOADED}`;
+	if (document.documentElement.className.indexOf('js-blank-pseudo') === -1) {
+		document.documentElement.className += ' js-blank-pseudo';
 	}
 
 	observeValueOfHTMLElement(self.HTMLInputElement, handler);
@@ -150,22 +152,21 @@ export default function cssBlankPseudoInit(opts) {
 
 	if (typeof self.MutationObserver !== 'undefined') {
 		// conditionally observe added or unobserve removed form control elements
-		new MutationObserver(mutationsList => {
-			mutationsList.forEach(mutation => {
-				Array.prototype.forEach.call(
-					mutation.addedNodes || [],
-					node => {
-						if (node.nodeType === 1 && isFormControlElement(node)) {
-							handler({ target: node });
-						}
-					},
-				);
-			});
+		new MutationObserver(function (mutationsList) {
+			for (var j = 0; j < mutationsList.length; j++) {
+				var mutation = mutationsList[j];
+
+				for (var k = 0; k < mutation.addedNodes.length; k++) {
+					var node = mutation.addedNodes[k];
+
+					if (node.nodeType === 1 && isFormControlElement(node)) {
+						handler({ target: node });
+					}
+				}
+			}
 		}).observe(document, { childList: true, subtree: true });
 	} else {
-		const handleOnLoad = () => updateAllCandidates();
-
-		window.addEventListener('load', handleOnLoad);
-		window.addEventListener('DOMContentLoaded', handleOnLoad);
+		window.addEventListener('load', updateAllCandidates);
+		window.addEventListener('DOMContentLoaded', updateAllCandidates);
 	}
 }

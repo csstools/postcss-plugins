@@ -45,6 +45,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [CommentNode](./css-parser-algorithms.commentnode.md)

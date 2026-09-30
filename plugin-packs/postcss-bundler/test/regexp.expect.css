@@ -21,7 +21,9 @@
 .search {
 	background: url("images/green.png?foo=bar");
 }
-}/* imports/basic.css */
+}
+
+/* imports/basic.css */
 
 @media layerz(foo) {
 
@@ -44,7 +46,9 @@
 .search {
 	background: url("images/green.png?foo=bar");
 }
-}/* imports/basic.css */
+}
+
+/* imports/basic.css */
 
 @media zsupports(foo) {
 
@@ -67,7 +71,9 @@
 .search {
 	background: url("images/green.png?foo=bar");
 }
-}/* imports/basic.css */
+}
+
+/* imports/basic.css */
 
 @media supportsz(foo) {
 
@@ -93,9 +99,7 @@
 }
 
 @zimport "imports/basic.css";
-
 @importz "imports/basic.css";
 
 @charsetz "utf-8";
-
 @zcharset "utf-8";

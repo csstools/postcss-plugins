@@ -45,6 +45,7 @@ unknown
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [FunctionNode](./css-parser-algorithms.functionnode.md)

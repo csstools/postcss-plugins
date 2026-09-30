@@ -41,3 +41,11 @@
 		color: red;
 	}
 }
+
+div/*foo*/.foo {
+  color:red;
+}
+
+div/*foo*//*bar*/.foo {
+  color:purple;
+}

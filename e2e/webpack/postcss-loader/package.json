@@ -8,12 +8,12 @@
 		"build": "webpack --config webpack.config.js"
 	},
 	"dependencies": {
-		"postcss": "^8.5.4",
-		"webpack": "^5.99.9",
-		"webpack-cli": "^6.0.1",
-		"postcss-loader": "^8.1.1",
+		"postcss": "^8.5.26",
+		"webpack": "^5.110.2",
+		"webpack-cli": "^7.2.3",
+		"postcss-loader": "^8.2.1",
 		"style-loader": "^4.0.0",
-		"css-loader": "^7.1.1",
+		"css-loader": "^7.1.5",
 		"postcss-preset-env": "file:../../../plugin-packs/postcss-preset-env"
 	},
 	"volta": {

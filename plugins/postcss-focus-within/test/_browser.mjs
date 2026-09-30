@@ -74,7 +74,7 @@ if (!process.env.DEBUG) {
 			{
 				await page.goto('http://localhost:8080');
 
-				await page.evaluate(async () => window._focusWithinInit({ force: true }));
+				await page.evaluate(async () => window.focusWithinInit({ force: true }));
 
 				// None of the elements should have styles
 				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));
@@ -121,7 +121,7 @@ if (!process.env.DEBUG) {
 			{
 				await page.goto('http://localhost:8080/replace-with');
 
-				await page.evaluate(async () => window._focusWithinInit({ force: true, replaceWith: '.focus-within' }));
+				await page.evaluate(async () => window.focusWithinInit({ force: true, replaceWith: '.focus-within' }));
 
 				// None of the elements should have styles
 				await page.evaluate(async () => window.checkElement('default', 'a-grand-parent', false));

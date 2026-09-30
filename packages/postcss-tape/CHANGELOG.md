@@ -1,5 +1,30 @@
 # Changes to PostCSS Tape
 
+### 7.0.2
+
+_August 15, 2026_
+
+- Bundle the oldest PostCSS version tested with `@csstools/postcss-tape`. This removes it from downstream dependency trees and avoids false positive security notices. If you are running `@csstools/postcss-tape` with untrusted CSS you might want to rethink your setup.
+
+### 7.0.1
+
+_July 22, 2026_
+
+- Ignore whitespace when comparing latest and oldest PostCSS versions.
+
+### 7.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
+### 6.0.1
+
+_August 22, 2025_
+
+- Add support for Node 24
+
 ### 6.0.0
 
 _February 12, 2025_

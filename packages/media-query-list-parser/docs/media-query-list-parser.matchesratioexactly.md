@@ -43,6 +43,7 @@ Array&lt;ComponentValue&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 -1 \| \[number, number\]

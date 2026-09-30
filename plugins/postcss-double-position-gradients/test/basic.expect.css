@@ -118,3 +118,31 @@ to-clone {
 	background: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	background: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+@property --foo {
+	inherits: false;
+	initial-value: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	}
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+
+@keyframes --foo {
+	to {
+		--foo: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+		--foo: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	}
+}
+}

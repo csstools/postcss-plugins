@@ -1,0 +1,10 @@
+@container card (inline-size > 30em) {
+	a {
+		color: red;
+	}
+}
+@container style(--responsive: true) {
+	a {
+		color: red;
+	}
+}

@@ -4,7 +4,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-Implemented from : https://www.w3.org/TR/2021/CRD-css-syntax-3-20211224/
+Implemented from : https://drafts.csswg.org/css-syntax/
 
 ## API
 
@@ -17,6 +17,25 @@ Add [CSS Tokenizer] to your project:
 ```bash
 npm install @csstools/css-tokenizer --save-dev
 ```
+
+```js
+import { tokenize } from '@csstools/css-tokenizer';
+
+const myCSS =  `@media only screen and (min-width: 768rem) {
+	.foo {
+		content: 'Some content!' !important;
+	}
+}
+`;
+
+const tokens = tokenize({
+	css: myCSS,
+});
+
+console.log(tokens);
+```
+
+Or use the streaming interface:
 
 ```js
 import { tokenizer, TokenType } from '@csstools/css-tokenizer';
@@ -40,25 +59,6 @@ while (true) {
 
 	console.log(token);
 }
-```
-
-Or use the `tokenize` helper function:
-
-```js
-import { tokenize } from '@csstools/css-tokenizer';
-
-const myCSS =  `@media only screen and (min-width: 768rem) {
-	.foo {
-		content: 'Some content!' !important;
-	}
-}
-`;
-
-const tokens = tokenize({
-	css: myCSS,
-});
-
-console.log(tokens);
 ```
 
 ### Options
@@ -93,16 +93,16 @@ while (true) {
 Parser errors will try to inform you where in the tokenizer logic the error happened.
 This tells you what kind of error occurred.
 
-## Goals and non-goals
+## Order of priorities
 
-Things this package aims to be:
-- specification compliant CSS tokenizer
-- a reliable low level package to be used in CSS parsers
+1. specification compliance
+2. correctness
+3. reliability
+4. tokenizing and serializing must round trip losslessly
+5. exposing useful aspects about the source code
+6. runtime performance
+7. package size
 
-What it is not:
-- opinionated
-- fast
-- small
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS

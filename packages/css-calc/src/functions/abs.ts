@@ -10,6 +10,11 @@ export function solveAbs(absNode: FunctionNode, a: TokenNode, options: conversio
 		return -1;
 	}
 
+	// NaN is infectious, forcing the function to return NaN if any argument calculation is NaN.
+	if (Number.isNaN(aToken[4].value)) {
+		return resultToCalculation(absNode, aToken, Number.NaN);
+	}
+
 	if (!options.rawPercentages && isTokenPercentage(aToken)) {
 		return -1;
 	}

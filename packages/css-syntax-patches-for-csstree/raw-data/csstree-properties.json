@@ -12,10 +12,10 @@
 		"syntax": "normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position>"
 	},
 	"align-items": {
-		"syntax": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ]"
+		"syntax": "normal | stretch | <baseline-position> | [ <overflow-position>? <self-position> ] | anchor-center"
 	},
 	"align-self": {
-		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position>"
+		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? <self-position> | anchor-center"
 	},
 	"align-tracks": {
 		"syntax": "[ normal | <baseline-position> | <content-distribution> | <overflow-position>? <content-position> ]#"
@@ -45,7 +45,7 @@
 		"syntax": "<single-animation-direction>#"
 	},
 	"animation-duration": {
-		"syntax": "<time>#"
+		"syntax": "[ auto | <time [0s,∞]> ]#"
 	},
 	"animation-fill-mode": {
 		"syntax": "<single-animation-fill-mode>#"
@@ -74,8 +74,11 @@
 	"animation-timing-function": {
 		"syntax": "<easing-function>#"
 	},
+	"animation-trigger": {
+		"syntax": "[ none | [ <dashed-ident> <animation-action>+ ]+ ]#"
+	},
 	"appearance": {
-		"syntax": "none | auto | textfield | menulist-button | <compat-auto>"
+		"syntax": "none | auto | <compat-auto> | <compat-special>"
 	},
 	"-moz-appearance": {
 		"syntax": "none | button | button-arrow-down | button-arrow-next | button-arrow-previous | button-arrow-up | button-bevel | button-focus | caret | checkbox | checkbox-container | checkbox-label | checkmenuitem | dualbutton | groupbox | listbox | listitem | menuarrow | menubar | menucheckbox | menuimage | menuitem | menuitemtext | menulist | menulist-button | menulist-text | menulist-textfield | menupopup | menuradio | menuseparator | meterbar | meterchunk | progressbar | progressbar-vertical | progresschunk | progresschunk-vertical | radio | radio-container | radio-label | radiomenuitem | range | range-thumb | resizer | resizerpanel | scale-horizontal | scalethumbend | scalethumb-horizontal | scalethumbstart | scalethumbtick | scalethumb-vertical | scale-vertical | scrollbarbutton-down | scrollbarbutton-left | scrollbarbutton-right | scrollbarbutton-up | scrollbarthumb-horizontal | scrollbarthumb-vertical | scrollbartrack-horizontal | scrollbartrack-vertical | searchfield | separator | sheet | spinner | spinner-downbutton | spinner-textfield | spinner-upbutton | splitter | statusbar | statusbarpanel | tab | tabpanel | tabpanels | tab-scroll-arrow-back | tab-scroll-arrow-forward | textfield | textfield-multiline | toolbar | toolbarbutton | toolbarbutton-dropdown | toolbargripper | toolbox | tooltip | treeheader | treeheadercell | treeheadersortarrow | treeitem | treeline | treetwisty | treetwistyopen | treeview | -moz-mac-unified-toolbar | -moz-win-borderless-glass | -moz-win-browsertabbar-toolbox | -moz-win-communicationstext | -moz-win-communications-toolbox | -moz-win-exclude-glass | -moz-win-glass | -moz-win-mediatext | -moz-win-media-toolbox | -moz-window-button-box | -moz-window-button-box-maximized | -moz-window-button-close | -moz-window-button-maximize | -moz-window-button-minimize | -moz-window-button-restore | -moz-window-frame-bottom | -moz-window-frame-left | -moz-window-frame-right | -moz-window-titlebar | -moz-window-titlebar-maximized"
@@ -86,17 +89,14 @@
 	"aspect-ratio": {
 		"syntax": "auto || <ratio>"
 	},
-	"azimuth": {
-		"syntax": "<angle> | [ [ left-side | far-left | left | center-left | center | center-right | right | far-right | right-side ] || behind ] | leftwards | rightwards"
-	},
 	"backdrop-filter": {
-		"syntax": "none | <filter-function-list>"
+		"syntax": "none | <filter-value-list>"
 	},
 	"backface-visibility": {
 		"syntax": "visible | hidden"
 	},
 	"background": {
-		"syntax": "[ <bg-layer> , ]* <final-bg-layer>"
+		"syntax": "<bg-layer>#? , <final-bg-layer>"
 	},
 	"background-attachment": {
 		"syntax": "<attachment>#"
@@ -111,7 +111,7 @@
 		"syntax": "padding | border"
 	},
 	"-webkit-background-clip": {
-		"syntax": "[ <box> | border | padding | content | text ]#"
+		"syntax": "[ <visual-box> | border | padding | content | text ]#"
 	},
 	"background-color": {
 		"syntax": "<color>"
@@ -120,7 +120,7 @@
 		"syntax": "<bg-image>#"
 	},
 	"background-origin": {
-		"syntax": "<box>#"
+		"syntax": "<visual-box>#"
 	},
 	"background-position": {
 		"syntax": "<bg-position>#"
@@ -139,6 +139,9 @@
 	},
 	"baseline-shift": {
 		"syntax": "baseline | sub | super | <svg-length>"
+	},
+	"baseline-source": {
+		"syntax": "auto | first | last"
 	},
 	"behavior": {
 		"syntax": "<url>+"
@@ -168,7 +171,7 @@
 		"syntax": "<'border-width'>"
 	},
 	"border-block": {
-		"syntax": "<'border-top-width'> || <'border-top-style'> || <color>"
+		"syntax": "<'border-block-start'>"
 	},
 	"border-block-color": {
 		"syntax": "<'border-top-color'>{1,2}"
@@ -198,10 +201,10 @@
 		"syntax": "<'border-top-width'>"
 	},
 	"border-block-style": {
-		"syntax": "<'border-top-style'>"
+		"syntax": "<'border-top-style'>{1,2}"
 	},
 	"border-block-width": {
-		"syntax": "<'border-top-width'>"
+		"syntax": "<'border-top-width'>{1,2}"
 	},
 	"border-bottom": {
 		"syntax": "<line-width> || <line-style> || <color>"
@@ -213,10 +216,10 @@
 		"syntax": "<color>+ | none"
 	},
 	"border-bottom-left-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<length-percentage [0,∞]>{1,2}"
 	},
 	"border-bottom-right-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<length-percentage [0,∞]>{1,2}"
 	},
 	"border-bottom-style": {
 		"syntax": "<line-style>"
@@ -225,37 +228,37 @@
 		"syntax": "<line-width>"
 	},
 	"border-collapse": {
-		"syntax": "collapse | separate"
+		"syntax": "separate | collapse"
 	},
 	"border-color": {
 		"syntax": "<color>{1,4}"
 	},
 	"border-end-end-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<'border-top-left-radius'>"
 	},
 	"border-end-start-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<'border-top-left-radius'>"
 	},
 	"border-image": {
 		"syntax": "<'border-image-source'> || <'border-image-slice'> [ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>"
 	},
 	"border-image-outset": {
-		"syntax": "[ <length> | <number> ]{1,4}"
+		"syntax": "[ <length [0,∞]> | <number [0,∞]> ]{1,4}"
 	},
 	"border-image-repeat": {
 		"syntax": "[ stretch | repeat | round | space ]{1,2}"
 	},
 	"border-image-slice": {
-		"syntax": "<number-percentage>{1,4} && fill?"
+		"syntax": "[ <number [0,∞]> | <percentage [0,∞]> ]{1,4} && fill?"
 	},
 	"border-image-source": {
 		"syntax": "none | <image>"
 	},
 	"border-image-width": {
-		"syntax": "[ <length-percentage> | <number> | auto ]{1,4}"
+		"syntax": "[ <length-percentage [0,∞]> | <number [0,∞]> | auto ]{1,4}"
 	},
 	"border-inline": {
-		"syntax": "<'border-top-width'> || <'border-top-style'> || <color>"
+		"syntax": "<'border-block-start'>"
 	},
 	"border-inline-color": {
 		"syntax": "<'border-top-color'>{1,2}"
@@ -285,10 +288,10 @@
 		"syntax": "<'border-top-width'>"
 	},
 	"border-inline-style": {
-		"syntax": "<'border-top-style'>"
+		"syntax": "<'border-top-style'>{1,2}"
 	},
 	"border-inline-width": {
-		"syntax": "<'border-top-width'>"
+		"syntax": "<'border-top-width'>{1,2}"
 	},
 	"border-left": {
 		"syntax": "<line-width> || <line-style> || <color>"
@@ -306,7 +309,7 @@
 		"syntax": "<line-width>"
 	},
 	"border-radius": {
-		"syntax": "<length-percentage>{1,4} [ / <length-percentage>{1,4} ]?"
+		"syntax": "<length-percentage [0,∞]>{1,4} [ / <length-percentage [0,∞]>{1,4} ]?"
 	},
 	"-moz-border-radius-bottomleft": {
 		"syntax": "<'border-bottom-left-radius'>"
@@ -336,13 +339,13 @@
 		"syntax": "<line-width>"
 	},
 	"border-spacing": {
-		"syntax": "<length> <length>?"
+		"syntax": "<length>{1,2}"
 	},
 	"border-start-end-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<'border-top-left-radius'>"
 	},
 	"border-start-start-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<'border-top-left-radius'>"
 	},
 	"border-style": {
 		"syntax": "<line-style>{1,4}"
@@ -357,10 +360,10 @@
 		"syntax": "<color>+ | none"
 	},
 	"border-top-left-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<length-percentage [0,∞]>{1,2}"
 	},
 	"border-top-right-radius": {
-		"syntax": "<length-percentage>{1,2}"
+		"syntax": "<length-percentage [0,∞]>{1,2}"
 	},
 	"border-top-style": {
 		"syntax": "<line-style>"
@@ -372,7 +375,7 @@
 		"syntax": "<line-width>{1,4}"
 	},
 	"bottom": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
 	},
 	"box-align": {
 		"syntax": "start | center | end | baseline | stretch"
@@ -420,10 +423,13 @@
 		"syntax": "auto | avoid | avoid-page | avoid-column | avoid-region"
 	},
 	"caption-side": {
-		"syntax": "top | bottom | block-start | block-end | inline-start | inline-end"
+		"syntax": "top | bottom"
 	},
 	"caret": {
-		"syntax": "<'caret-color'> || <'caret-shape'>"
+		"syntax": "<'caret-color'> || <'caret-animation'> || <'caret-shape'>"
+	},
+	"caret-animation": {
+		"syntax": "auto | manual"
 	},
 	"caret-color": {
 		"syntax": "auto | <color>"
@@ -470,6 +476,9 @@
 	"column-gap": {
 		"syntax": "normal | <length-percentage>"
 	},
+	"column-height": {
+		"syntax": "auto | <length [0,∞]>"
+	},
 	"column-rule": {
 		"syntax": "<'column-rule-width'> || <'column-rule-style'> || <'column-rule-color'>"
 	},
@@ -486,10 +495,13 @@
 		"syntax": "none | all"
 	},
 	"column-width": {
-		"syntax": "<length> | auto"
+		"syntax": "auto | <length [0,∞]>"
+	},
+	"column-wrap": {
+		"syntax": "auto | nowrap | wrap"
 	},
 	"columns": {
-		"syntax": "<'column-width'> || <'column-count'>"
+		"syntax": "[ <'column-width'> || <'column-count'> ] [ / <'column-height'> ]?"
 	},
 	"contain": {
 		"syntax": "none | strict | content | [ [ size || inline-size ] || layout || style || paint ]"
@@ -519,7 +531,7 @@
 		"syntax": "normal || [ size | inline-size ]"
 	},
 	"content": {
-		"syntax": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> ]+ ]?"
+		"syntax": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]?"
 	},
 	"content-visibility": {
 		"syntax": "visible | auto | hidden"
@@ -553,6 +565,57 @@
 	},
 	"-moz-control-character-visibility": {
 		"syntax": "visible | hidden"
+	},
+	"corner-block-end-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-block-start-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-bottom-left-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-bottom-right-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-bottom-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-end-end-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-end-start-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-inline-end-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-inline-start-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-left-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-right-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
+	},
+	"corner-shape": {
+		"syntax": "<corner-shape-value>{1,4}"
+	},
+	"corner-start-end-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-start-start-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-top-left-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-top-right-shape": {
+		"syntax": "<corner-shape-value>"
+	},
+	"corner-top-shape": {
+		"syntax": "<corner-shape-value>{1,2}"
 	},
 	"counter-increment": {
 		"syntax": "[ <counter-name> <integer>? ]+ | none"
@@ -593,6 +656,9 @@
 	"dominant-baseline": {
 		"syntax": "auto | use-script | no-change | reset-size | ideographic | alphabetic | hanging | mathematical | central | middle | text-after-edge | text-before-edge"
 	},
+	"dynamic-range-limit": {
+		"syntax": "standard | no-limit | constrained | <dynamic-range-limit-mix()>"
+	},
 	"empty-cells": {
 		"syntax": "show | hide"
 	},
@@ -603,13 +669,13 @@
 		"syntax": "<paint>"
 	},
 	"fill-opacity": {
-		"syntax": "<number-zero-one>"
+		"syntax": "<number-zero-one> | <percentage>"
 	},
 	"fill-rule": {
 		"syntax": "nonzero | evenodd"
 	},
 	"filter": {
-		"syntax": "none | <filter-function-list> | <-ms-filter-function-list>"
+		"syntax": "none | <filter-value-list> | <-ms-filter-function-list>"
 	},
 	"-ms-filter": {
 		"syntax": "<string>"
@@ -665,6 +731,12 @@
 	"-moz-float-edge": {
 		"syntax": "border-box | content-box | margin-box | padding-box"
 	},
+	"flood-color": {
+		"syntax": "<color>"
+	},
+	"flood-opacity": {
+		"syntax": "<'opacity'>"
+	},
 	"-ms-flow-from": {
 		"syntax": "[ none | <custom-ident> ]#"
 	},
@@ -690,10 +762,10 @@
 		"syntax": "auto | none"
 	},
 	"font-palette": {
-		"syntax": "normal | light | dark | <palette-identifier>"
+		"syntax": "normal | light | dark | <palette-identifier> | <palette-mix()>"
 	},
 	"font-size": {
-		"syntax": "<absolute-size> | <relative-size> | <length-percentage>"
+		"syntax": "<absolute-size> | <relative-size> | <length-percentage [0,∞]> | math"
 	},
 	"font-size-adjust": {
 		"syntax": "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number> ]"
@@ -754,6 +826,9 @@
 	},
 	"font-weight": {
 		"syntax": "<font-weight-absolute> | bolder | lighter"
+	},
+	"font-width": {
+		"syntax": "normal | <percentage [0,∞]> | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded"
 	},
 	"-moz-force-broken-image-icon": {
 		"syntax": "0 | 1"
@@ -840,7 +915,7 @@
 		"syntax": "none | [ first || [ force-end | allow-end ] || last ]"
 	},
 	"height": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>"
 	},
 	"-ms-high-contrast-adjust": {
 		"syntax": "auto | none"
@@ -869,11 +944,8 @@
 	"image-orientation": {
 		"syntax": "from-image | <angle> | [ <angle>? flip ]"
 	},
-	"-moz-image-region": {
-		"syntax": "<shape> | auto"
-	},
 	"image-rendering": {
-		"syntax": "auto | crisp-edges | pixelated | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>"
+		"syntax": "auto | crisp-edges | pixelated | smooth | optimizeSpeed | optimizeQuality | <-non-standard-image-rendering>"
 	},
 	"image-resolution": {
 		"syntax": "[ from-image || <resolution> ] && snap?"
@@ -892,9 +964,6 @@
 	},
 	"inline-size": {
 		"syntax": "<'width'>"
-	},
-	"input-security": {
-		"syntax": "auto | none"
 	},
 	"inset": {
 		"syntax": "<'top'>{1,4}"
@@ -917,6 +986,18 @@
 	"inset-inline-start": {
 		"syntax": "<'top'>"
 	},
+	"interactivity": {
+		"syntax": "auto | inert"
+	},
+	"interest-delay": {
+		"syntax": "<'interest-delay-start'>{1,2}"
+	},
+	"interest-delay-end": {
+		"syntax": "normal | <time>"
+	},
+	"interest-delay-start": {
+		"syntax": "normal | <time>"
+	},
 	"interpolate-size": {
 		"syntax": "numeric-only | allow-keywords"
 	},
@@ -930,10 +1011,10 @@
 		"syntax": "normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ]"
 	},
 	"justify-items": {
-		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ]"
+		"syntax": "normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | legacy | legacy && [ left | right | center ] | anchor-center"
 	},
 	"justify-self": {
-		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ]"
+		"syntax": "auto | normal | stretch | <baseline-position> | <overflow-position>? [ <self-position> | left | right ] | anchor-center"
 	},
 	"justify-tracks": {
 		"syntax": "[ normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ] ]#"
@@ -942,10 +1023,13 @@
 		"syntax": "auto | <svg-length>"
 	},
 	"left": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
 	},
 	"letter-spacing": {
 		"syntax": "normal | <length-percentage>"
+	},
+	"lighting-color": {
+		"syntax": "<color>"
 	},
 	"line-break": {
 		"syntax": "auto | loose | normal | strict | anywhere"
@@ -975,37 +1059,37 @@
 		"syntax": "<counter-style> | <string> | none"
 	},
 	"margin": {
-		"syntax": "[ <length> | <percentage> | auto ]{1,4}"
+		"syntax": "<'margin-top'>{1,4}"
 	},
 	"margin-block": {
-		"syntax": "<'margin-left'>{1,2}"
+		"syntax": "<'margin-top'>{1,2}"
 	},
 	"margin-block-end": {
-		"syntax": "<'margin-left'>"
+		"syntax": "<'margin-top'>"
 	},
 	"margin-block-start": {
-		"syntax": "<'margin-left'>"
+		"syntax": "<'margin-top'>"
 	},
 	"margin-bottom": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "<length-percentage> | auto | <anchor-size()>"
 	},
 	"margin-inline": {
-		"syntax": "<'margin-left'>{1,2}"
+		"syntax": "<'margin-top'>{1,2}"
 	},
 	"margin-inline-end": {
-		"syntax": "<'margin-left'>"
+		"syntax": "<'margin-top'>"
 	},
 	"margin-inline-start": {
-		"syntax": "<'margin-left'>"
+		"syntax": "<'margin-top'>"
 	},
 	"margin-left": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "<length-percentage> | auto | <anchor-size()>"
 	},
 	"margin-right": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "<length-percentage> | auto | <anchor-size()>"
 	},
 	"margin-top": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "<length-percentage> | auto | <anchor-size()>"
 	},
 	"margin-trim": {
 		"syntax": "none | in-flow | all"
@@ -1026,7 +1110,7 @@
 		"syntax": "<mask-layer>#"
 	},
 	"-webkit-mask": {
-		"syntax": "[ <mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || [ <box> | border | padding | content | text ] || [ <box> | border | padding | content ] ]#"
+		"syntax": "[ <mask-reference> || <position> [ / <bg-size> ]? || <repeat-style> || [ <visual-box> | border | padding | content | text ] || [ <visual-box> | border | padding | content ] ]#"
 	},
 	"-webkit-mask-attachment": {
 		"syntax": "<attachment>#"
@@ -1056,10 +1140,10 @@
 		"syntax": "[ <url> | <gradient> | none ] [ <length-percentage>{4} <-webkit-mask-box-repeat>{2} ]?"
 	},
 	"mask-clip": {
-		"syntax": "[ <geometry-box> | no-clip ]#"
+		"syntax": "[ <coord-box> | no-clip ]#"
 	},
 	"-webkit-mask-clip": {
-		"syntax": "[ <box> | border | padding | content | text ]#"
+		"syntax": "[ <coord-box> | no-clip | border | padding | content | text ]#"
 	},
 	"mask-composite": {
 		"syntax": "<compositing-operator>#"
@@ -1077,10 +1161,10 @@
 		"syntax": "<masking-mode>#"
 	},
 	"mask-origin": {
-		"syntax": "<geometry-box>#"
+		"syntax": "<coord-box>#"
 	},
 	"-webkit-mask-origin": {
-		"syntax": "[ <box> | border | padding | content ]#"
+		"syntax": "[ <coord-box> | border | padding | content ]#"
 	},
 	"mask-position": {
 		"syntax": "<position>#"
@@ -1131,7 +1215,7 @@
 		"syntax": "<'max-width'>"
 	},
 	"max-height": {
-		"syntax": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>"
+		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>"
 	},
 	"max-inline-size": {
 		"syntax": "<'max-width'>"
@@ -1140,28 +1224,31 @@
 		"syntax": "none | <integer>"
 	},
 	"max-width": {
-		"syntax": "none | <length-percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>"
+		"syntax": "none | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>"
 	},
 	"min-block-size": {
 		"syntax": "<'min-width'>"
 	},
 	"min-height": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>"
 	},
 	"min-inline-size": {
 		"syntax": "<'min-width'>"
 	},
 	"min-width": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>"
 	},
 	"mix-blend-mode": {
-		"syntax": "<blend-mode> | plus-lighter"
+		"syntax": "<blend-mode> | plus-darker | plus-lighter"
 	},
 	"object-fit": {
 		"syntax": "fill | contain | cover | none | scale-down"
 	},
 	"object-position": {
 		"syntax": "<position>"
+	},
+	"object-view-box": {
+		"syntax": "none | <basic-shape-rect>"
 	},
 	"offset": {
 		"syntax": "[ <'offset-position'>? [ <'offset-path'> [ <'offset-distance'> || <'offset-rotate'> ]? ]? ]! [ / <'offset-anchor'> ]?"
@@ -1182,7 +1269,7 @@
 		"syntax": "[ auto | reverse ] || <angle>"
 	},
 	"opacity": {
-		"syntax": "<alpha-value>"
+		"syntax": "<opacity-value>"
 	},
 	"order": {
 		"syntax": "<integer>"
@@ -1197,7 +1284,7 @@
 		"syntax": "auto | grayscale"
 	},
 	"outline": {
-		"syntax": "[ <'outline-width'> || <'outline-style'> || <'outline-color'> ]"
+		"syntax": "<'outline-width'> || <'outline-style'> || <'outline-color'>"
 	},
 	"outline-color": {
 		"syntax": "auto | <color>"
@@ -1221,7 +1308,7 @@
 		"syntax": "<outline-radius>"
 	},
 	"outline-style": {
-		"syntax": "auto | <'border-style'>"
+		"syntax": "auto | <outline-line-style>"
 	},
 	"outline-width": {
 		"syntax": "<line-width>"
@@ -1233,7 +1320,7 @@
 		"syntax": "auto | none"
 	},
 	"overflow-block": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"overflow-clip-box": {
 		"syntax": "padding-box | content-box"
@@ -1242,7 +1329,7 @@
 		"syntax": "<visual-box> || <length [0,∞]>"
 	},
 	"overflow-inline": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"-webkit-overflow-scrolling": {
 		"syntax": "auto | touch"
@@ -1254,10 +1341,10 @@
 		"syntax": "normal | break-word | anywhere"
 	},
 	"overflow-x": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"overflow-y": {
-		"syntax": "visible | hidden | clip | scroll | auto"
+		"syntax": "visible | hidden | clip | scroll | auto | <-non-standard-overflow>"
 	},
 	"overlay": {
 		"syntax": "none | auto"
@@ -1278,37 +1365,37 @@
 		"syntax": "contain | none | auto"
 	},
 	"padding": {
-		"syntax": "[ <length> | <percentage> ]{1,4}"
+		"syntax": "<'padding-top'>{1,4}"
 	},
 	"padding-block": {
-		"syntax": "<'padding-left'>{1,2}"
+		"syntax": "<'padding-top'>{1,2}"
 	},
 	"padding-block-end": {
-		"syntax": "<'padding-left'>"
+		"syntax": "<'padding-top'>"
 	},
 	"padding-block-start": {
-		"syntax": "<'padding-left'>"
+		"syntax": "<'padding-top'>"
 	},
 	"padding-bottom": {
-		"syntax": "<length> | <percentage>"
+		"syntax": "<length-percentage [0,∞]>"
 	},
 	"padding-inline": {
-		"syntax": "<'padding-left'>{1,2}"
+		"syntax": "<'padding-top'>{1,2}"
 	},
 	"padding-inline-end": {
-		"syntax": "<'padding-left'>"
+		"syntax": "<'padding-top'>"
 	},
 	"padding-inline-start": {
-		"syntax": "<'padding-left'>"
+		"syntax": "<'padding-top'>"
 	},
 	"padding-left": {
-		"syntax": "<length> | <percentage>"
+		"syntax": "<length-percentage [0,∞]>"
 	},
 	"padding-right": {
-		"syntax": "<length> | <percentage>"
+		"syntax": "<length-percentage [0,∞]>"
 	},
 	"padding-top": {
-		"syntax": "<length> | <percentage>"
+		"syntax": "<length-percentage [0,∞]>"
 	},
 	"page": {
 		"syntax": "auto | <custom-ident>"
@@ -1356,7 +1443,7 @@
 		"syntax": "static | relative | absolute | sticky | fixed | -webkit-sticky"
 	},
 	"position-anchor": {
-		"syntax": "auto | <anchor-name>"
+		"syntax": "auto | none | <anchor-name>"
 	},
 	"position-area": {
 		"syntax": "none | <position-area>"
@@ -1366,6 +1453,9 @@
 	},
 	"position-try-fallbacks": {
 		"syntax": "none | [ [ <dashed-ident> || <try-tactic> ] | <'position-area'> ]#"
+	},
+	"position-try-options": {
+		"syntax": "<'position-try-fallbacks'>"
 	},
 	"position-try-order": {
 		"syntax": "normal | <try-size>"
@@ -1385,6 +1475,12 @@
 	"r": {
 		"syntax": "<length> | <percentage>"
 	},
+	"reading-flow": {
+		"syntax": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order"
+	},
+	"reading-order": {
+		"syntax": "<integer>"
+	},
 	"resize": {
 		"syntax": "none | both | horizontal | vertical | block | inline"
 	},
@@ -1398,7 +1494,7 @@
 		"syntax": "<time> | none | x-weak | weak | medium | strong | x-strong"
 	},
 	"right": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
 	},
 	"rotate": {
 		"syntax": "none | <angle> | [ x | y | z | <number>{3} ] && <angle>"
@@ -1411,6 +1507,9 @@
 	},
 	"ruby-merge": {
 		"syntax": "separate | collapse | auto"
+	},
+	"ruby-overhang": {
+		"syntax": "auto | none"
 	},
 	"ruby-position": {
 		"syntax": "[ alternate || [ over | under ] ] | inter-character"
@@ -1429,6 +1528,9 @@
 	},
 	"-ms-scroll-chaining": {
 		"syntax": "chained | none"
+	},
+	"scroll-initial-target": {
+		"syntax": "none | nearest"
 	},
 	"-ms-scroll-limit": {
 		"syntax": "<'-ms-scroll-limit-x-min'> <'-ms-scroll-limit-y-min'> <'-ms-scroll-limit-x-max'> <'-ms-scroll-limit-y-max'>"
@@ -1477,6 +1579,9 @@
 	},
 	"scroll-margin-top": {
 		"syntax": "<length>"
+	},
+	"scroll-marker-group": {
+		"syntax": "none | before | after"
 	},
 	"scroll-padding": {
 		"syntax": "[ auto | <length-percentage> ]{1,4}"
@@ -1556,8 +1661,11 @@
 	"-ms-scroll-snap-y": {
 		"syntax": "<'-ms-scroll-snap-type'> <'-ms-scroll-snap-points-y'>"
 	},
+	"scroll-target-group": {
+		"syntax": "none | auto"
+	},
 	"scroll-timeline": {
-		"syntax": "[ <'scroll-timeline-name'> || <'scroll-timeline-axis'> ]#"
+		"syntax": "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#"
 	},
 	"scroll-timeline-axis": {
 		"syntax": "[ block | inline | x | y ]#"
@@ -1602,7 +1710,7 @@
 		"syntax": "auto | thin | none"
 	},
 	"shape-image-threshold": {
-		"syntax": "<alpha-value>"
+		"syntax": "<opacity-value>"
 	},
 	"shape-margin": {
 		"syntax": "<length-percentage>"
@@ -1619,14 +1727,20 @@
 	"speak-as": {
 		"syntax": "normal | spell-out || digits || [ literal-punctuation | no-punctuation ]"
 	},
-	"src": {
-		"syntax": "[ <url> [ format( <string># ) ]? | local( <family-name> ) ]#"
-	},
 	"-moz-stack-sizing": {
 		"syntax": "ignore | stretch-to-fit"
 	},
+	"stop-color": {
+		"syntax": "<'color'>"
+	},
+	"stop-opacity": {
+		"syntax": "<'opacity'>"
+	},
 	"stroke": {
 		"syntax": "<paint>"
+	},
+	"stroke-color": {
+		"syntax": "<color>"
 	},
 	"stroke-dasharray": {
 		"syntax": "none | [ <svg-length>+ ]#"
@@ -1667,11 +1781,23 @@
 	"text-anchor": {
 		"syntax": "start | middle | end"
 	},
+	"text-autospace": {
+		"syntax": "normal | <autospace> | auto"
+	},
 	"-ms-text-autospace": {
 		"syntax": "none | ideograph-alpha | ideograph-numeric | ideograph-parenthesis | ideograph-space"
 	},
 	"-moz-text-blink": {
 		"syntax": "none | blink"
+	},
+	"text-box": {
+		"syntax": "normal | <'text-box-trim'> || <'text-box-edge'>"
+	},
+	"text-box-edge": {
+		"syntax": "auto | <text-edge>"
+	},
+	"text-box-trim": {
+		"syntax": "none | trim-start | trim-end | trim-both"
 	},
 	"text-combine-upright": {
 		"syntax": "none | all | [ digits <integer>? ]"
@@ -1681,6 +1807,9 @@
 	},
 	"text-decoration-color": {
 		"syntax": "<color>"
+	},
+	"text-decoration-inset": {
+		"syntax": "<length>{1,2} | auto"
 	},
 	"text-decoration-line": {
 		"syntax": "none | [ underline || overline || line-through || blink ] | spelling-error | grammar-error"
@@ -1737,7 +1866,7 @@
 		"syntax": "none | auto | <percentage>"
 	},
 	"text-spacing-trim": {
-		"syntax": "space-all | normal | space-first | trim-start | trim-both | trim-all | auto"
+		"syntax": "space-all | normal | space-first | trim-start"
 	},
 	"-webkit-text-stroke": {
 		"syntax": "<length> || <color>"
@@ -1749,7 +1878,7 @@
 		"syntax": "<length>"
 	},
 	"text-transform": {
-		"syntax": "none | capitalize | uppercase | lowercase | full-width | full-size-kana"
+		"syntax": "none | [ capitalize | uppercase | lowercase ] || full-width || full-size-kana | math-auto"
 	},
 	"text-underline-offset": {
 		"syntax": "auto | <length> | <percentage>"
@@ -1761,7 +1890,7 @@
 		"syntax": "<'text-wrap-mode'> || <'text-wrap-style'>"
 	},
 	"text-wrap-mode": {
-		"syntax": "auto | wrap | nowrap"
+		"syntax": "wrap | nowrap"
 	},
 	"text-wrap-style": {
 		"syntax": "auto | balance | stable | pretty"
@@ -1769,8 +1898,35 @@
 	"timeline-scope": {
 		"syntax": "none | <dashed-ident>#"
 	},
+	"timeline-trigger": {
+		"syntax": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#"
+	},
+	"timeline-trigger-exit-range": {
+		"syntax": "[ <'timeline-trigger-exit-range-start'> <'timeline-trigger-exit-range-end'>? ]#"
+	},
+	"timeline-trigger-exit-range-end": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-exit-range-start": {
+		"syntax": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-name": {
+		"syntax": "none | <dashed-ident>#"
+	},
+	"timeline-trigger-range": {
+		"syntax": "[ <'timeline-trigger-range-start'> <'timeline-trigger-range-end'>? ]#"
+	},
+	"timeline-trigger-range-end": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-range-start": {
+		"syntax": "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
+	},
+	"timeline-trigger-source": {
+		"syntax": "<single-animation-timeline>#"
+	},
 	"top": {
-		"syntax": "<length> | <percentage> | auto"
+		"syntax": "auto | <length-percentage> | <anchor()> | <anchor-size()>"
 	},
 	"touch-action": {
 		"syntax": "auto | none | [ [ pan-x | pan-left | pan-right ] || [ pan-y | pan-up | pan-down ] || pinch-zoom ] | manipulation"
@@ -1814,11 +1970,11 @@
 	"translate": {
 		"syntax": "none | <length-percentage> [ <length-percentage> <length>? ]?"
 	},
+	"trigger-scope": {
+		"syntax": "none | all | <dashed-ident>#"
+	},
 	"unicode-bidi": {
 		"syntax": "normal | embed | isolate | bidi-override | isolate-override | plaintext | -moz-isolate | -moz-isolate-override | -moz-plaintext | -webkit-isolate | -webkit-isolate-override | -webkit-plaintext"
-	},
-	"unicode-range": {
-		"syntax": "<urange>#"
 	},
 	"-webkit-user-drag": {
 		"syntax": "none | element | auto"
@@ -1836,7 +1992,7 @@
 		"syntax": "read-only | read-write | read-write-plaintext-only"
 	},
 	"user-select": {
-		"syntax": "auto | text | none | contain | all"
+		"syntax": "auto | text | none | all"
 	},
 	"-moz-user-select": {
 		"syntax": "none | text | all | -moz-none"
@@ -1854,7 +2010,7 @@
 		"syntax": "baseline | sub | super | text-top | text-bottom | middle | top | bottom | <percentage> | <length>"
 	},
 	"view-timeline": {
-		"syntax": "[ <'view-timeline-name'> <'view-timeline-axis'>? ]#"
+		"syntax": "[ <'view-timeline-name'> [ <'view-timeline-axis'> || <'view-timeline-inset'> ]? ]#"
 	},
 	"view-timeline-axis": {
 		"syntax": "[ block | inline | x | y ]#"
@@ -1863,10 +2019,13 @@
 		"syntax": "[ [ auto | <length-percentage> ]{1,2} ]#"
 	},
 	"view-timeline-name": {
-		"syntax": "none | <dashed-ident>#"
+		"syntax": "[ none | <dashed-ident> ]#"
+	},
+	"view-transition-class": {
+		"syntax": "none | <custom-ident>+"
 	},
 	"view-transition-name": {
-		"syntax": "none | <custom-ident>"
+		"syntax": "none | <custom-ident> | match-element"
 	},
 	"visibility": {
 		"syntax": "visible | hidden | collapse"
@@ -1896,10 +2055,10 @@
 		"syntax": "silent | [ [ x-soft | soft | medium | loud | x-loud ] || <decibel> ]"
 	},
 	"white-space": {
-		"syntax": "normal | pre | nowrap | pre-wrap | pre-line | break-spaces | [ <'white-space-collapse'> || <'text-wrap'> || <'white-space-trim'> ]"
+		"syntax": "normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'>"
 	},
 	"white-space-collapse": {
-		"syntax": "collapse | discard | preserve | preserve-breaks | preserve-spaces | break-spaces"
+		"syntax": "collapse | preserve | preserve-breaks | preserve-spaces | break-spaces"
 	},
 	"white-space-trim": {
 		"syntax": "none | discard-before || discard-after || discard-inner"
@@ -1908,7 +2067,7 @@
 		"syntax": "<integer>"
 	},
 	"width": {
-		"syntax": "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content( <length-percentage> ) | stretch | <-non-standard-size>"
+		"syntax": "auto | <length-percentage [0,∞]> | min-content | max-content | fit-content | fit-content( <length-percentage [0,∞]> ) | <calc-size()> | <anchor-size()> | stretch | <-non-standard-size>"
 	},
 	"will-change": {
 		"syntax": "auto | <animateable-feature>#"
@@ -1950,6 +2109,6 @@
 		"syntax": "auto | <integer>"
 	},
 	"zoom": {
-		"syntax": "normal | reset | <number> | <percentage>"
+		"syntax": "normal | reset | <number [0,∞]> || <percentage [0,∞]>"
 	}
 }

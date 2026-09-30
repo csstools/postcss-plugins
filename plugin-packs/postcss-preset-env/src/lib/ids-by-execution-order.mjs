@@ -1,11 +1,15 @@
 // ids ordered by required execution, then alphabetically
 export default [
+	'mixins',
+
 	'custom-media-queries',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties
 	'image-set-function', // run images-set-function before nesting-rules so that it may fix nested media
+	'image-function',
 	'media-query-ranges', // run media-query-range
 	'media-queries-aspect-ratio-number-values',
 	'prefers-color-scheme-query', // run prefers-color-scheme-query here to prevent duplicate transpilation after nesting-rules
+	'container-rule-prelude-list', // before nesting
 	'nesting-rules',
 	'custom-selectors', // run custom-selectors after nesting-rules to correctly transpile &:--custom-selector
 	'any-link-pseudo-class',
@@ -24,9 +28,12 @@ export default [
 	'gradients-interpolation-method', // run before all color functions
 	'color-mix-variadic-function-arguments', // run before any other color functions, including base color-mix
 	'color-mix', // run before any other color functions
+	'contrast-color-function',
+	'alpha-function',
 	'relative-color-syntax',
 	'lab-function',
 	'oklab-function',
+	'color-function-display-p3-linear',
 	'color-function',
 	'hwb-function',
 	'color-functional-notation',
@@ -36,6 +43,7 @@ export default [
 	'double-position-gradients',
 	'blank-pseudo-class',
 	'break-properties',
+	'fit-tolerance-property',
 	'font-variant-property',
 	'is-pseudo-class', // after other selector transforms, before :has()
 	'scope-pseudo-class',
@@ -44,14 +52,19 @@ export default [
 	'overflow-property',
 	'overflow-wrap-property',
 	'place-properties',
+	'position-area-property',
 	'system-ui-font-family',
 	'font-format-keywords',
+	'font-width-property',
 	'display-two-values',
 	'content-alt-text',
 	'ic-unit',
 	'opacity-percentage',
 	'text-decoration-shorthand',
 	'unset-value',
+	'property-rule-prelude-list',
+	'property-rule-optional-descriptors',
+	'syntax-descriptor-syntax-production',
 
 	// Math functions.
 	'random-function',

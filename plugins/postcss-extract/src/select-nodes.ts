@@ -211,7 +211,7 @@ function buildQuery(selector: selectorParser.Selector): Condition|undefined {
 type Condition = {
 	next?: Condition,
 	run: (list: NodeList) => NodeList,
-}
+};
 
 function executeConditions(condition: Condition, list: NodeList): NodeList {
 	let currentCondition: Condition | undefined = condition;

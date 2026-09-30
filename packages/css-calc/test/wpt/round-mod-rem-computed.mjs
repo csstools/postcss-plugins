@@ -570,3 +570,24 @@ assert.strictEqual(
 	calc('rem(-18vw,5vw)'),
 	'-3vw',
 );
+
+// NaN is infectious.
+assert.strictEqual(
+	calc('mod(5, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('mod(NaN, 5)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('rem(5, NaN)'),
+	'calc(NaN)',
+);
+
+assert.strictEqual(
+	calc('rem(NaN, 5)'),
+	'calc(NaN)',
+);

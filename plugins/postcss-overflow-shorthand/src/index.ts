@@ -24,8 +24,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				return;
 			}
 
-			let xValue = '';
-			let yValue = '';
+			let xValue: string;
+			let yValue: string;
 
 			const originalValue = decl.value;
 			try {
@@ -79,3 +79,4 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

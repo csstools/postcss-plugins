@@ -45,6 +45,7 @@ any
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 x is [CSSToken](./css-tokenizer.csstoken.md)

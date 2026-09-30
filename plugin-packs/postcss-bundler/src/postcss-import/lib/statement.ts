@@ -4,7 +4,7 @@ import type { Condition } from './conditions';
 export type Stylesheet = {
 	charset?: AtRule;
 	statements: Array<Statement>;
-}
+};
 
 export type Statement = ImportStatement | PreImportStatement | NodesStatement | Warning;
 
@@ -17,7 +17,7 @@ export type NodesStatement = {
 	parent?: Statement
 
 	importingNode: AtRule | null
-}
+};
 
 export type ImportStatement = {
 	type: 'import'
@@ -31,7 +31,7 @@ export type ImportStatement = {
 	stylesheet?: Stylesheet
 
 	importingNode: AtRule | null
-}
+};
 
 type PreImportStatement = {
 	type: 'pre-import'
@@ -42,7 +42,7 @@ type PreImportStatement = {
 	parent?: Statement
 
 	importingNode: AtRule | null
-}
+};
 
 export function isWarning(stmt: Statement): stmt is Warning {
 	return stmt.type === 'warning';

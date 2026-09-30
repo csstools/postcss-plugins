@@ -1,6 +1,6 @@
 import selectorParser from 'postcss-selector-parser';
 import { selectorSpecificity } from '@csstools/selector-specificity';
-import type { Container, AtRule, PluginCreator, Result } from 'postcss';
+import type { Container, AtRule, ChildNode, Document, PluginCreator, Result } from 'postcss';
 import { Model } from './model';
 import { adjustSelectorSpecificity } from './adjust-selector-specificity';
 import { desugarAndParseLayerNames } from './desugar-and-parse-layer-names';
@@ -16,6 +16,38 @@ import { isProcessableLayerRule } from './is-processable-layer-rule';
 
 export type { pluginOptions } from './options';
 
+// Nested layers are flattened one level at a time which is expensive on deeply
+// nested input. Reject pathological nesting up front.
+const MAX_NESTED_LAYER_DEPTH = 512;
+
+function assertLayerNestingDepth(root: Container): void {
+	let tooDeep = false;
+
+	root.walkAtRules((node) => {
+		if (!isProcessableLayerRule(node)) {
+			return;
+		}
+
+		let depth = 0;
+		let parent: Container<ChildNode> | Document | undefined = node.parent;
+		while (parent) {
+			if (parent.type === 'atrule' && isProcessableLayerRule(parent as AtRule)) {
+				depth++;
+				if (depth > MAX_NESTED_LAYER_DEPTH) {
+					tooDeep = true;
+					return false;
+				}
+			}
+
+			parent = parent.parent;
+		}
+	});
+
+	if (tooDeep) {
+		throw new Error('Maximum nested @layer depth exceeded, reduce the complexity of your layers');
+	}
+}
+
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options = Object.assign({
 		onRevertLayerKeyword: 'warn',
@@ -29,36 +61,34 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			let hasAnyLayer = false;
 
-			if (options.onRevertLayerKeyword || options.onImportLayerRule) {
-				root.walk((node) => {
-					if (node.type === 'decl') {
-						if (IS_REVERT_LAYER_REGEX.test(node.value)) {
-							node.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
-							return;
-						}
-
+			root.walk((node) => {
+				if (node.type === 'decl') {
+					if (options.onRevertLayerKeyword && IS_REVERT_LAYER_REGEX.test(node.value)) {
+						node.warn(result, 'handling "revert-layer" is unsupported by this plugin and will cause style differences between browser versions.');
 						return;
 					}
 
-					if (node.type === 'atrule') {
-						if (IS_IMPORT_REGEX.test(node.name) && HAS_LAYER_REGEX.test(node.params)) {
-							node.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
-							return;
-						}
+					return;
+				}
 
-						if (IS_LAYER_REGEX.test(node.name)) {
-							hasAnyLayer = true;
-							return;
-						}
-
+				if (node.type === 'atrule') {
+					if (options.onImportLayerRule && IS_IMPORT_REGEX.test(node.name) && HAS_LAYER_REGEX.test(node.params)) {
+						node.warn(result, 'To use @import with layers, the postcss-import plugin is also required. This plugin alone will not support using the @import at-rule.');
 						return;
 					}
-				});
-			}
+
+					if (IS_LAYER_REGEX.test(node.name)) {
+						hasAnyLayer = true;
+					}
+				}
+			});
+
 
 			if (!hasAnyLayer) {
 				return;
 			}
+
+			assertLayerNestingDepth(root);
 
 			splitImportantStyles(root);
 
@@ -184,3 +214,4 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 creator.postcss = true;
 
 export default creator;
+export { creator as 'module.exports' };

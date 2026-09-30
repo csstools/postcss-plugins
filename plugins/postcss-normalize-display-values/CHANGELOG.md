@@ -1,5 +1,25 @@
 # Changes to PostCSS Normalize Display Values
 
+### 5.0.1
+
+_January 25, 2026_
+
+- Remove various combinations that are not part of the specification
+- Allow keywords in various orders
+
+### 5.0.0
+
+_January 14, 2026_
+
+- Updated: Support for Node `20.19.0` or later (major).
+- Removed: `commonjs` API. In supported Node versions `require(esm)` will work without needing to make code changes.
+
+### 4.0.1
+
+_January 10, 2026_
+
+- Add `inline block` support
+
 ### 4.0.0
 
 _August 3, 2024_

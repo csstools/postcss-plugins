@@ -1,6 +1,7 @@
 import './complex.mjs';
 import './compound.mjs';
 
+import './resolve-nested-selector/at-scope.mjs';
 import './resolve-nested-selector/lists.mjs';
 import './resolve-nested-selector/multiple-resolves.mjs';
 import './resolve-nested-selector/parent.mjs';

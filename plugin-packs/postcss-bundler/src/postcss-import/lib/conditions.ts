@@ -3,4 +3,4 @@ export type Condition = {
 	media?: string
 	supports?: string
 	scope?: string
-}
+};

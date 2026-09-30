@@ -7,3 +7,31 @@
 	--color: contrast-color(oklch(82.06% 0.2 330.35));
 }
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rgb(255, 255, 255);
+}
+
+@supports (color: contrast-color(red)) {
+@property --foo {
+	inherits: false;
+	initial-value: contrast-color(green);
+}
+}
+
+@keyframes --foo {
+	to {
+		--foo: rgb(255, 255, 255);
+	}
+}
+
+@supports (color: contrast-color(red)) {
+
+@keyframes --foo {
+	to {
+		--foo: rgb(255, 255, 255);
+		--foo: contrast-color(green);
+	}
+}
+}

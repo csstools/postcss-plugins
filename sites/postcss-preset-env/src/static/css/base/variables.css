@@ -29,8 +29,7 @@
 
 	--heading-size-from-medium: 5rem;
 	--heading-size: 2.5rem;
-	--scroll-bar: 0px;
-	--full-width: calc(100vw - var(--scroll-bar));
+	--full-width: 100vw;
 
 	--t-slow: .3s;
 	--transition: cubic-bezier(0.250, 0.460, 0.450, 0.940);

@@ -19,3 +19,15 @@ to-clone {
 	color: #639;
 	color: rebeccapurple;
 }
+
+@property --foo {
+	inherits: false;
+	initial-value: rebeccapurple;
+}
+
+@keyframes --foo {
+	to {
+		--color: #639;
+		--color: rebeccapurple;
+	}
+}

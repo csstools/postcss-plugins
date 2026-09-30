@@ -63,6 +63,11 @@ export function sRGB_to_HSL(RGB: Color): Color {
 		hue -= 360;
 	}
 
+	const epsilon = 1 / 100_000;   // max Sat is 1, in this code
+	if (sat <= epsilon) {
+		hue = NaN;
+	}
+
 	return [
 		hue,
 		sat * 100,
