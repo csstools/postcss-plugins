@@ -1,0 +1,19 @@
+[
+	[
+		{
+			"type": "token",
+			"tokens": [
+				[
+					"ident-token",
+					"foo",
+					0,
+					2,
+					{
+						"value": "foo"
+					}
+				]
+			]
+		}
+	],
+	[]
+]

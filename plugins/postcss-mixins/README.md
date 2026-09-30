@@ -12,9 +12,7 @@ Several specification aspects of CSS Mixins still need to be settled.
 This plugin is only a partial implementation to avoid conflicts with the final specification.
 
 Unsupported:
-- mixin arguments
-- `@contents` blocks
-- `@result` blocks
+- typed mixin arguments
 - layered `@mixin` declarations
 - mixin overrides
 
@@ -27,10 +25,42 @@ Unsupported:
 	@apply --foo;
 }
 
+@mixin --bar(--baz) {
+	color: rgb(var(--baz) 127 0);
+}
+
+.bar {
+	@apply --bar(200);
+}
+
+@mixin --a {
+	font-weight: 500;
+}
+
+@mixin --b {
+	@apply --a;
+	font-size: 2rem;
+}
+
+.c {
+	@apply --b;
+}
+
 /* becomes */
 
 .foo {
 	color: green;
+}
+
+.bar {
+	--_csstools-p-1agle9gi-0--arg-0: 200;
+	--_csstools-p-1agle9gi-1--baz: var(--_csstools-p-1agle9gi-0--arg-0);
+	color: rgb(var(--_csstools-p-1agle9gi-1--baz) 127 0);
+}
+
+.c {
+	font-weight: 500;
+	font-size: 2rem;
 }
 ```
 
@@ -84,6 +114,27 @@ postcssMixins({ preserve: true })
 	@apply --foo;
 }
 
+@mixin --bar(--baz) {
+	color: rgb(var(--baz) 127 0);
+}
+
+.bar {
+	@apply --bar(200);
+}
+
+@mixin --a {
+	font-weight: 500;
+}
+
+@mixin --b {
+	@apply --a;
+	font-size: 2rem;
+}
+
+.c {
+	@apply --b;
+}
+
 /* becomes */
 
 @mixin --foo() {
@@ -93,6 +144,32 @@ postcssMixins({ preserve: true })
 .foo {
 	color: green;
 	@apply --foo;
+}
+
+@mixin --bar(--baz) {
+	color: rgb(var(--baz) 127 0);
+}
+
+.bar {
+	--_csstools-p-1agle9gi-0--arg-0: 200;
+	--_csstools-p-1agle9gi-1--baz: var(--_csstools-p-1agle9gi-0--arg-0);
+	color: rgb(var(--_csstools-p-1agle9gi-1--baz) 127 0);
+	@apply --bar(200);
+}
+
+@mixin --a {
+	font-weight: 500;
+}
+
+@mixin --b {
+	@apply --a;
+	font-size: 2rem;
+}
+
+.c {
+	font-weight: 500;
+	font-size: 2rem;
+	@apply --b;
 }
 ```
 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<title>CSS Mixins: @contents</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#contents-rule">
+<style>
+	target {
+		display: block;
+	}
+</style>
+
+<body>
+	<target class="no-fallback"></target>
+	<target class="fallback"></target>
+	<target class="override-fallback"></target>
+	<target class="empty-block"></target>
+	<target class="nested-contents"><span></span></target>
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// Only the transformed form is asserted.
+			// Chrome Canary only implements mixins with a `@result` block,
+			// but `@result` was dropped from the specification.
+			const testCases = [
+				{
+					title: 'Simple @contents with no fallback',
+					target: '.no-fallback',
+					property: 'color',
+					style: `
+						@mixin --no-fallback() {
+							color: red;
+							@contents;
+						}
+						.no-fallback {
+							@apply --no-fallback { color: green; }
+						}
+					`,
+				},
+				{
+					title: 'Fallback is used if @apply has no block',
+					target: '.fallback',
+					property: 'color',
+					style: `
+						@mixin --fallback() {
+							@contents { color: green; }
+						}
+						.fallback {
+							color: red;
+							@apply --fallback;
+						}
+					`,
+				},
+				{
+					title: 'Block in @apply overrides fallback',
+					target: '.override-fallback',
+					property: 'color',
+					style: `
+						@mixin --override-fallback() {
+							@contents { color: red; }
+						}
+						.override-fallback {
+							color: red;
+							@apply --override-fallback { color: green; }
+						}
+					`,
+				},
+				{
+					title: 'Empty @apply block suppresses the @contents fallback',
+					target: '.empty-block',
+					property: 'color',
+					style: `
+						@mixin --empty-block() {
+							@contents { color: red; }
+						}
+						.empty-block {
+							color: green;
+							@apply --empty-block {};
+						}
+					`,
+				},
+				{
+					title: 'Nested @contents',
+					target: '.nested-contents > span',
+					property: 'color',
+					style: `
+						@mixin --nested-contents() {
+							& > span {
+								@contents;
+							}
+						}
+						.nested-contents {
+							@apply --nested-contents { color: green; }
+						}
+					`,
+				},
+			];
+
+			// Native support is only asserted when the browser implements the current
+			// specification form (declarations directly in the mixin body).
+			const nativeSupport = await (async () => {
+				const css = `@mixin --support-probe() { color: green; } .support-probe { @apply --support-probe; }`;
+				const response = await fetch(`/test/styles.css?transform=false`, { method: 'POST', body: css });
+				const styleElement = document.createElement('style');
+				styleElement.textContent = await response.text();
+				document.head.append(styleElement);
+				const probe = document.createElement('div');
+				probe.className = 'support-probe';
+				document.body.append(probe);
+				const supported = window.getComputedStyle(probe).color === 'rgb(0, 128, 0)';
+				probe.remove();
+				styleElement.remove();
+				return supported;
+			})();
+
+			for (let testCase of testCases) {
+				for (const transform of nativeSupport ? ['true', 'false'] : ['true']) {
+					const styleElement = document.createElement('style');
+
+					const testCaseStyle = await (fetch(`/test/styles.css?transform=${transform}`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
+
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
+
+					const target = document.querySelector(testCase['target']);
+
+					assert_equals(
+						window.getComputedStyle(target)[testCase['property']],
+						testCase['expected'] || 'rgb(0, 128, 0)',
+						testCase['title'] + " (transform=" + transform + ") target '" + testCase['target'] + "'"
+					);
+
+					styleElement.remove();
+				}
+			}
+
+			return true;
+		}
+	</script>
+</body>

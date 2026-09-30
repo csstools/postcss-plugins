@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<title>CSS Mixins: Nested mixins</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#evaluating-mixins">
+<style>
+	target {
+		display: block;
+	}
+</style>
+
+<body>
+	<target class="nested"></target>
+	<target class="nested-args"></target>
+	<target class="shadow"></target>
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			// Only the transformed form is asserted.
+			// Chrome Canary only implements mixins with a `@result` block,
+			// but `@result` was dropped from the specification.
+			const testCases = [
+				{
+					title: 'Mixin depends on another mixin',
+					target: '.nested',
+					property: 'color',
+					style: `
+						@mixin --inner() {
+							color: green;
+						}
+						@mixin --outer() {
+							@apply --inner;
+							background-color: blue;
+						}
+						.nested {
+							@apply --outer;
+						}
+					`,
+				},
+				{
+					title: 'Mixin args are resolved at the call site',
+					target: '.nested-args',
+					property: 'border-color',
+					style: `
+						@mixin --inner-args(--color) {
+							border-color: var(--color);
+						}
+						@mixin --outer-args(--color) {
+							@apply --inner-args(var(--color));
+						}
+						.nested-args {
+							@apply --outer-args(green);
+						}
+					`,
+				},
+				{
+					title: 'Nested same-named parameters shadow',
+					target: '.shadow',
+					property: 'border-color',
+					style: `
+						@mixin --shadow-inner(--color) {
+							border-color: var(--color);
+						}
+						@mixin --shadow-outer(--color) {
+							@apply --shadow-inner(green);
+							color: red;
+						}
+						.shadow {
+							@apply --shadow-outer(red);
+						}
+					`,
+				},
+			];
+
+			// Native support is only asserted when the browser implements the current
+			// specification form (declarations directly in the mixin body).
+			const nativeSupport = await (async () => {
+				const css = `@mixin --support-probe() { color: green; } .support-probe { @apply --support-probe; }`;
+				const response = await fetch(`/test/styles.css?transform=false`, { method: 'POST', body: css });
+				const styleElement = document.createElement('style');
+				styleElement.textContent = await response.text();
+				document.head.append(styleElement);
+				const probe = document.createElement('div');
+				probe.className = 'support-probe';
+				document.body.append(probe);
+				const supported = window.getComputedStyle(probe).color === 'rgb(0, 128, 0)';
+				probe.remove();
+				styleElement.remove();
+				return supported;
+			})();
+
+			for (let testCase of testCases) {
+				for (const transform of nativeSupport ? ['true', 'false'] : ['true']) {
+					const styleElement = document.createElement('style');
+
+					const testCaseStyle = await (fetch(`/test/styles.css?transform=${transform}`, {
+						method: 'POST',
+						body: testCase['style'],
+					}).then((response) => response.text()));
+
+					styleElement.textContent = testCaseStyle;
+					document.head.append(styleElement);
+
+					const target = document.querySelector(testCase['target']);
+
+					assert_equals(
+						window.getComputedStyle(target)[testCase['property']],
+						testCase['expected'] || 'rgb(0, 128, 0)',
+						testCase['title'] + " (transform=" + transform + ") target '" + testCase['target'] + "'"
+					);
+
+					styleElement.remove();
+				}
+			}
+
+			return true;
+		}
+	</script>
+</body>

@@ -52,7 +52,8 @@ export class Transpiler {
 	};
 
 	getStyleRulesWithPrivateProperties(node: Node): Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }> {
-		return findAllStyleRules(node).map((rule) => {
+		return findAllStyleRules(node)
+			.map((rule) => {
 			const p = this.privateForRule.get(rule);
 			if (!p) {
 				return false;
@@ -63,7 +64,9 @@ export class Transpiler {
 				privateProperties: p.privateProperties,
 				rule: rule,
 			};
-		}).filter(Boolean) as Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }>;
+			})
+			.filter(Boolean)
+			.reverse() as Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }>;
 	};
 
 	registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void {

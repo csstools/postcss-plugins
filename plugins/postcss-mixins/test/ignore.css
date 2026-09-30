@@ -11,69 +11,61 @@
 }
 
 @mixin --ignore-b {
-	color: green;
+	@result {
+		color: green;
+	}
 }
 
 .ignore-b {
 	@apply --ignore-b;
 }
 
-@mixin --ignore-c {
-	@apply --foo;
+@media screen {
+	@mixin --ignore-c {
+		color: red;
+	}
 }
 
 .ignore-c {
 	@apply --ignore-c;
 }
 
-@mixin --ignore-d {
-	@contents;
-}
-
-.ignore-d {
-	@apply --ignore-d;
-}
-
-@mixin --ignore-e {
-	color: red;
-}
-
-.ignore-e {
-	@apply --ignore-e {
-		color: red;
-	}
-}
-
-@media screen {
-	@mixin --ignore-f {
-		color: red;
-	}
+@mixin --ignore-f(--color <color>) {
+	color: var(--color);
 }
 
 .ignore-f {
-	@apply --ignore-f;
+	@apply --ignore-f(green);
 }
 
-@mixin --ignore-g {
-	color: red;
+@mixin --ignore-g(--color, --color) {
+	color: var(--color);
 }
 
-@apply --ignore-g;
-
-@mixin --ignore-h {
-	color: red;
+.ignore-g {
+	@apply --ignore-g(green, blue);
 }
 
-@media screen {
+@mixin --ignore-h(--color: red !important) {
+	color: var(--color);
+}
+
+.ignore-h {
 	@apply --ignore-h;
 }
 
-@mixin --ignore-i() {
-	@result {
-		color: green;
-	}
+@mixin --ignore-i(junk-in-parameter-list) {
+	color: blue;
 }
 
 .ignore-i {
 	@apply --ignore-i;
+}
+
+@mixin --ignore-j(--color,) {
+	color: var(--color);
+}
+
+.ignore-j {
+	@apply --ignore-j(red);
 }

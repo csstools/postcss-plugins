@@ -193,3 +193,17 @@ section > h1 > small {
 		}
 	}
 }
+
+.outer {
+	@private {
+		--foo: outer;
+	}
+
+	.inner {
+		@private {
+			--foo: inner;
+		}
+
+		content: var(--foo);
+	}
+}

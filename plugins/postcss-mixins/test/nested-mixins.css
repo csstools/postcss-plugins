@@ -1,0 +1,49 @@
+@mixin --inner() {
+	color: green;
+}
+
+@mixin --outer() {
+	@apply --inner;
+	background-color: blue;
+}
+
+.a {
+	@apply --outer;
+}
+
+@mixin --inner-args(--inner-color) {
+	border-color: var(--inner-color);
+}
+
+@mixin --outer-args(--outer-color) {
+	@apply --inner-args(var(--outer-color));
+}
+
+.b {
+	@apply --outer-args(red);
+}
+
+@mixin --shadow-inner(--color) {
+	border-color: var(--color);
+}
+
+@mixin --shadow-outer(--color) {
+	@apply --shadow-inner(blue);
+	color: var(--color);
+}
+
+.c {
+	@apply --shadow-outer(red);
+}
+
+@mixin --cycle-a() {
+	@apply --cycle-b;
+}
+
+@mixin --cycle-b() {
+	@apply --cycle-a;
+}
+
+.d {
+	@apply --cycle-a;
+}

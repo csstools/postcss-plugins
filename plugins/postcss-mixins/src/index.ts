@@ -1,6 +1,5 @@
 import type { AtRule, Plugin, PluginCreator } from 'postcss';
-import { IS_APPLY_REGEX, processableApplyRule } from './processable-apply';
-import { processableMixinRule } from './processable-mixin';
+import { MixinExpander } from './mixin-expander';
 
 /** postcss-mixins plugin options */
 export type pluginOptions = {
@@ -21,53 +20,28 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-mixins',
 		prepare(): Plugin {
-			const mixins: Map<string, AtRule> = new Map();
-			const knownMixins: Set<string> = new Set();
+			const expander = new MixinExpander();
 
 			return {
 				postcssPlugin: 'mixins',
 				Once(root): void {
+					const rootAtRules: Array<AtRule> = [];
 					root.each((child) => {
-						if (child.type !== 'atrule') {
-							return;
+						if (child.type === 'atrule') {
+							rootAtRules.push(child);
 						}
-
-						const mixinName = processableMixinRule(child);
-						if (!mixinName) {
-							return;
-						}
-
-						// TODO: support mixin overrides
-						if (knownMixins.has(mixinName)) {
-							mixins.delete(mixinName);
-							return;
-						}
-
-						mixins.set(mixinName, child);
-						knownMixins.add(mixinName);
 					});
 
-					for (const child of mixins.values()) {
-						if (!options.preserve) child.remove();
+					expander.registerMixins(rootAtRules);
+
+					if (!options.preserve) {
+						for (const mixin of expander.registeredMixins()) {
+							mixin.atRule.remove();
+						}
 					}
 
-					root.walkAtRules(IS_APPLY_REGEX, (atRule) => {
-						const mixinName = processableApplyRule(atRule);
-						if (!mixinName) {
-							return;
-						}
-
-						const mixin = mixins.get(mixinName);
-						if (!mixin || !mixin.nodes) {
-							return;
-						}
-
-						mixin.each((mixinNode) => {
-							atRule.before(mixinNode.clone());
-						});
-
-						if (!options.preserve) atRule.remove();
-					});
+					expander.expandAll(root, options.preserve === true);
+					expander.finish();
 				},
 			};
 		},

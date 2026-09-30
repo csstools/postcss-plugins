@@ -1,0 +1,38 @@
+.outside {
+	& {
+		color: green;
+	}
+}
+
+.a {
+	& {
+		color: green;
+	}
+
+	background-color: blue;
+}
+
+.b {
+	--_csstools-p-7fww6zpl-0--arg-0: red;
+	--_csstools-p-7fww6zpl-1--color: var(--_csstools-p-7fww6zpl-0--arg-0);
+	& {
+		color: var(--_csstools-p-7fww6zpl-1--color);
+	}
+}
+
+.c {
+	& {
+		& {
+			color: green;
+		}
+	}
+}
+
+.d {
+	& {
+		color: green;
+	}
+	& {
+		color: blue;
+	}
+}

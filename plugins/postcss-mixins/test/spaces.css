@@ -1,0 +1,92 @@
+@mixin --spaces(--color, --background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.space-after-open {
+	@apply --spaces( green, blue);
+}
+
+.space-before-close {
+	@apply --spaces(green, blue );
+}
+
+.space-around-both {
+	@apply --spaces( green, blue );
+}
+
+.tabs-and-newlines {
+	@apply --spaces(
+		green,
+		blue
+	);
+}
+
+.space-around-comma {
+	@apply --spaces(green , blue);
+}
+
+@mixin --comment-in-parameters(--color /* color */, --background /* background */) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.comment-before-comma {
+	@apply --comment-in-parameters(green /* one */, blue /* two */);
+}
+
+@mixin --comment-parameters-and-arguments(--color, --background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.comment-around-arguments {
+	@apply --comment-parameters-and-arguments( /* before */ green /* mid */, blue /* after */ );
+}
+
+@mixin --comment-only-default(--color /* color */: green) {
+	color: var(--color);
+}
+
+.comment-only-default {
+	@apply --comment-only-default;
+}
+
+@mixin --space-around-default(--color: green , --background: blue) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.space-around-default {
+	@apply --space-around-default;
+}
+
+.space-around-argument-defaults {
+	@apply --space-around-default( red , blue );
+}
+
+@mixin --comment-before-parameter-name(/* first */--color, /* second */--background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.comment-before-parameter-name {
+	@apply --comment-before-parameter-name(green, blue);
+}
+
+@mixin --space-before-parameter-name( --color, --background) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.space-before-parameter-name {
+	@apply --space-before-parameter-name(green, blue);
+}
+
+@mixin --comment-before-default-name(/* note */--color: green) {
+	color: var(--color);
+}
+
+.comment-before-default-name {
+	@apply --comment-before-default-name;
+}

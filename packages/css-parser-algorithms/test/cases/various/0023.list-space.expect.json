@@ -1,0 +1,54 @@
+[
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"foo",
+				0,
+				2,
+				{
+					"value": "foo"
+				}
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"comma-token",
+				",",
+				3,
+				3,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"comma-token",
+				",",
+				4,
+				4,
+				null
+			]
+		]
+	},
+	{
+		"type": "token",
+		"tokens": [
+			[
+				"ident-token",
+				"bar",
+				5,
+				7,
+				{
+					"value": "bar"
+				}
+			]
+		]
+	}
+]

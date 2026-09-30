@@ -44,6 +44,8 @@ import './cases/various/0018.mjs';
 import './cases/various/0019.mjs';
 import './cases/various/0020.mjs';
 import './cases/various/0021.mjs';
+import './cases/various/0022.mjs';
+import './cases/various/0023.mjs';
 
 import './cases/walker/0001.mjs';
 import './cases/walker/0002.mjs';

@@ -1,0 +1,25 @@
+.a {
+	color: green;
+	background-color: blue;
+}
+
+.b {
+	--_csstools-p-2ljfeuxq-0--arg-0: red;
+	--_csstools-p-2ljfeuxq-1--outer-color: var(--_csstools-p-2ljfeuxq-0--arg-0);
+	--_csstools-p-2ljfeuxq-2--arg-1: var(--_csstools-p-2ljfeuxq-1--outer-color);
+	--_csstools-p-2ljfeuxq-3--inner-color: var(--_csstools-p-2ljfeuxq-2--arg-1);
+	border-color: var(--_csstools-p-2ljfeuxq-3--inner-color);
+}
+
+.c {
+	--_csstools-p-2ljfeuxq-4--arg-2: red;
+	--_csstools-p-2ljfeuxq-5--color: var(--_csstools-p-2ljfeuxq-4--arg-2);
+	--_csstools-p-2ljfeuxq-6--arg-3: blue;
+	--_csstools-p-2ljfeuxq-7--color: var(--_csstools-p-2ljfeuxq-6--arg-3);
+	border-color: var(--_csstools-p-2ljfeuxq-7--color);
+	color: var(--_csstools-p-2ljfeuxq-5--color);
+}
+
+.d {
+	@apply --cycle-a;
+}

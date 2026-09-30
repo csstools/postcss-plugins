@@ -1,0 +1,23 @@
+@mixin --with-private() {
+	@private {
+		--shadow: 2px 2px black;
+	}
+
+	box-shadow: var(--shadow);
+}
+
+.a {
+	@apply --with-private;
+}
+
+@mixin --args-and-private(--color) {
+	@private {
+		--local: var(--color);
+	}
+
+	color: var(--local);
+}
+
+.b {
+	@apply --args-and-private(red);
+}

@@ -1,1 +1,8 @@
-[]
+[
+	{
+		"type": "media-query-with-type",
+		"string": "",
+		"modifier": [],
+		"mediaType": []
+	}
+]
