@@ -1,0 +1,46 @@
+@function --negative(--value) {
+	result: calc(-1 * var(--value));
+}
+
+.negative-a {--csstools-custom-function-0-arg-0: var(--gap);
+}
+
+.negative-a {
+	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
+}
+
+.negative-a {
+	--gap: 1em;
+	padding: var(--csstools-custom-function-0-result);
+	padding: --negative(var(--gap));
+}
+
+.negative-b {--csstools-custom-function-1-arg-0: 1em;
+}
+
+.negative-b {
+	--csstools-custom-function-1-result: calc(-1 * var(--csstools-custom-function-1-arg-0));
+}
+
+.negative-b {
+	padding: var(--csstools-custom-function-1-result);
+	padding: --negative(1em);
+}
+
+@function --circle-area(--r) {
+	--r2: calc(var(--r) * var(--r));
+	result: calc(3.14159 * var(--r2));
+}
+
+.circle {--csstools-custom-function-2-arg-0: 2px;
+}
+
+.circle {
+	--csstools-custom-function-2-local-r2: calc(var(--csstools-custom-function-2-arg-0) * var(--csstools-custom-function-2-arg-0));
+	--csstools-custom-function-2-result: calc(3.14159 * var(--csstools-custom-function-2-local-r2));
+}
+
+.circle {
+	width: var(--csstools-custom-function-2-result);
+	width: --circle-area(2px);
+}

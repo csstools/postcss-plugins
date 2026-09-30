@@ -25,20 +25,20 @@ Use it as a [PostCSS] plugin:
 ```js
 // commonjs
 const postcss = require('postcss');
-const postcssBasePlugin = require('@csstools/postcss-custom-functions');
+const postcssCustomFunctions = require('@csstools/postcss-custom-functions');
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssCustomFunctions(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
 ```js
 // esm
 import postcss from 'postcss';
-import postcssBasePlugin from '@csstools/postcss-custom-functions';
+import postcssCustomFunctions from '@csstools/postcss-custom-functions';
 
 postcss([
-	postcssBasePlugin(/* pluginOptions */)
+	postcssCustomFunctions(/* pluginOptions */)
 ]).process(YOUR_CSS /*, processOptions */);
 ```
 
@@ -53,11 +53,11 @@ npm install postcss-cli @csstools/postcss-custom-functions --save-dev
 Use [PostCSS Custom Functions] in your `postcss.config.js` configuration file:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-custom-functions');
+const postcssCustomFunctions = require('@csstools/postcss-custom-functions');
 
 module.exports = {
 	plugins: [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssCustomFunctions(/* pluginOptions */)
 	]
 }
 ```
@@ -184,11 +184,11 @@ Use [PostCSS Custom Functions] in your Gulpfile:
 
 ```js
 const postcss = require('gulp-postcss');
-const postcssBasePlugin = require('@csstools/postcss-custom-functions');
+const postcssCustomFunctions = require('@csstools/postcss-custom-functions');
 
 gulp.task('css', function () {
 	var plugins = [
-		postcssBasePlugin(/* pluginOptions */)
+		postcssCustomFunctions(/* pluginOptions */)
 	];
 
 	return gulp.src('./src/*.css')
@@ -208,7 +208,7 @@ npm install grunt-postcss @csstools/postcss-custom-functions --save-dev
 Use [PostCSS Custom Functions] in your Gruntfile:
 
 ```js
-const postcssBasePlugin = require('@csstools/postcss-custom-functions');
+const postcssCustomFunctions = require('@csstools/postcss-custom-functions');
 
 grunt.loadNpmTasks('grunt-postcss');
 
@@ -216,7 +216,7 @@ grunt.initConfig({
 	postcss: {
 		options: {
 			processors: [
-			postcssBasePlugin(/* pluginOptions */)
+			postcssCustomFunctions(/* pluginOptions */)
 			]
 		},
 		dist: {

@@ -11,18 +11,11 @@
 	padding: --negative(1em);
 }
 
-.negative-c {
-	--value: 1em;
-	padding: --negative();
+@function --circle-area(--r) {
+	--r2: calc(var(--r) * var(--r));
+	result: calc(3.14159 * var(--r2));
 }
 
-@function --alpha(--color <color>: black, --alpha <number>: 1) returns <color> {
-	--a: clamp(0, var(--alpha), 1);
-
-	result: oklch(from var(--color) l c h / var(--a));
-}
-
-.color-a {
-	--a-color: red;
-	color: --alpha(var(--a-color), 0.5);
+.circle {
+	width: --circle-area(2px);
 }

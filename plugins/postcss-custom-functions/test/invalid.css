@@ -1,0 +1,23 @@
+@function --f(--x) {
+	result: 10px;
+}
+
+.missing {
+	width: --f();
+}
+
+.extra {
+	width: --f(1, 2);
+}
+
+.unknown {
+	width: --unknown(1);
+}
+
+@function --empty-args(--x) {
+	result: 10px;
+}
+
+.empty-args {
+	width: --empty-args( );
+}

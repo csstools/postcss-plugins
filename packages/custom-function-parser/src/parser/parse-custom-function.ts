@@ -97,6 +97,7 @@ function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<
 	}
 
 	const parameters: Array<FunctionParameter> = [];
+	const seenNames = new Set<string>();
 
 	for (let i = 0; i < componentValues.length; i++) {
 		const result = parseFunctionParameter(
@@ -106,6 +107,14 @@ function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<
 		if (!result) {
 			return false;
 		}
+
+		const name = result.node.getName();
+		if (seenNames.has(name)) {
+			// The same custom property name may not appear more than once.
+			return false;
+		}
+
+		seenNames.add(name);
 
 		i += result.advance;
 		parameters.push(result.node);
@@ -129,7 +138,7 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 	let afterIndex = componentValues.length;
 
 	let i = 0;
-	for (i = 0; i < componentValues.length; i++) {
+	for (; i < componentValues.length; i++) {
 		const componentValue = componentValues[i];
 		if (isWhiteSpaceOrCommentNode(componentValue)) {
 			continue;
@@ -152,7 +161,7 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			) {
 				nameIndex = i;
 				nameToken = componentValue.value;
-				continue
+				continue;
 			}
 
 			return false;
@@ -222,7 +231,7 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 		break;
 	}
 
-	let argumentType: Array<CSSToken> = [];
+	let argumentType: Array<CSSToken>;
 	{
 		const argumentTypeComponentValues = componentValues.slice(nameIndex + 1, typeEndIndex + 1);
 		const meaningfulComponentValues = argumentTypeComponentValues.filter((x) => !isWhiteSpaceOrCommentNode(x));
@@ -233,17 +242,22 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 		) {
 			argumentType = meaningfulComponentValues[0].value.flatMap((x) => {
 				return x.tokens();
-			})
+			});
 		} else {
 			argumentType = argumentTypeComponentValues.flatMap((x) => {
 				return x.tokens();
-			})
+			});
 		}
 	}
 
 	let defaultValue: Array<CSSToken> = [];
 	if (defaultValueIndex !== -1) {
 		const defaultValueComponentValues = componentValues.slice(colonIndex + 1, afterIndex);
+		if (hasTopLevelImportant(defaultValueComponentValues)) {
+			// `!important` is not part of a <declaration-value>.
+			return false;
+		}
+
 		const meaningfulComponentValues = defaultValueComponentValues.filter((x) => !isWhiteSpaceOrCommentNode(x));
 		if (
 			meaningfulComponentValues.length === 1 &&
@@ -252,11 +266,11 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 		) {
 			defaultValue = meaningfulComponentValues[0].value.flatMap((x) => {
 				return x.tokens();
-			})
+			});
 		} else {
 			defaultValue = defaultValueComponentValues.flatMap((x) => {
 				return x.tokens();
-			})
+			});
 		}
 	}
 
@@ -275,4 +289,36 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			})
 		)
 	};
+}
+
+function hasTopLevelImportant(componentValues: Array<ComponentValue>): boolean {
+	for (let i = 0; i < componentValues.length; i++) {
+		const componentValue = componentValues[i];
+		if (
+			!isTokenNode(componentValue) ||
+			!isTokenDelim(componentValue.value) ||
+			componentValue.value[4].value !== '!'
+		) {
+			continue;
+		}
+
+		for (let j = i + 1; j < componentValues.length; j++) {
+			const next = componentValues[j];
+			if (isWhiteSpaceOrCommentNode(next)) {
+				continue;
+			}
+
+			if (
+				isTokenNode(next) &&
+				isTokenIdent(next.value) &&
+				next.value[4].value.toLowerCase() === 'important'
+			) {
+				return true;
+			}
+
+			break;
+		}
+	}
+
+	return false;
 }

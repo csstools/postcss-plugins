@@ -1,7 +1,15 @@
-.foo {
-	color: red;
+html {--csstools-custom-function-0-arg-0: var(--gap);
 }
-
-.baz {
-	color: green;
+html {
+	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
+}
+html {--csstools-custom-function-1-arg-0: 4px;
+}
+html {
+	--csstools-custom-function-1-result: calc(2 * var(--csstools-custom-function-1-arg-0));
+}
+html {
+	--gap: 1em;
+	padding: var(--csstools-custom-function-0-result);
+	margin: var(--csstools-custom-function-1-result);
 }

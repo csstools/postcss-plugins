@@ -1,0 +1,23 @@
+@function --typed(--x <length>) {
+	result: var(--x);
+}
+
+.typed {
+	width: --typed(10px);
+}
+
+@function --defaulted(--x: 1px) {
+	result: var(--x);
+}
+
+.defaulted {
+	width: --defaulted();
+}
+
+@function --typed-return() returns <length> {
+	result: 10px;
+}
+
+.typed-return {
+	width: --typed-return();
+}

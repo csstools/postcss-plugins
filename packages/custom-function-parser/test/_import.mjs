@@ -1,3 +1,3 @@
-import { parse } from '@csstools/media-query-list-parser';
+import { parse } from '@csstools/custom-function-parser';
 
-parse('(min-width: 300px)');
+parse('--foo(--bar)');

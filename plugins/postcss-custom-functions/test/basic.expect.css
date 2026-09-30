@@ -1,114 +1,34 @@
-.negative-a {
-	--csstools-function-argument-0---value: var(--gap);
+.negative-a {--csstools-custom-function-0-arg-0: var(--gap);
 }
 
 .negative-a {
-	--csstools-custom-function-call-0-1: calc(-1 * var(--value));
+	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
 }
 
 .negative-a {
 	--gap: 1em;
-	padding: var(--csstools-custom-function-call-0-1);
+	padding: var(--csstools-custom-function-0-result);
+}
+
+.negative-b {--csstools-custom-function-1-arg-0: 1em;
 }
 
 .negative-b {
-	--csstools-function-argument-1---value: 1em;
+	--csstools-custom-function-1-result: calc(-1 * var(--csstools-custom-function-1-arg-0));
 }
 
 .negative-b {
-	--csstools-custom-function-call-1-1: calc(-1 * var(--value));
+	padding: var(--csstools-custom-function-1-result);
 }
 
-.negative-b {
-	padding: var(--csstools-custom-function-call-1-1);
+.circle {--csstools-custom-function-2-arg-0: 2px;
 }
 
-.negative-c {
+.circle {
+	--csstools-custom-function-2-local-r2: calc(var(--csstools-custom-function-2-arg-0) * var(--csstools-custom-function-2-arg-0));
+	--csstools-custom-function-2-result: calc(3.14159 * var(--csstools-custom-function-2-local-r2));
 }
 
-.negative-c {
-	--csstools-custom-function-call-2-1: calc(-1 * var(--value));
-}
-
-.negative-c {
-	--value: 1em;
-	padding: var(--csstools-custom-function-call-2-1);
-}
-
-.color-a {
-	--csstools-function-argument-3---color: black;
-	--csstools-function-argument-3---color: var(--a-color);
-	--csstools-function-argument-3---alpha: 1;
-	--csstools-function-argument-3---alpha:  0.5;
-}
-
-.color-a {
-	--a: clamp(0, var(--alpha), 1);
-
-	--csstools-custom-function-call-3-1: oklch(from var(--color) l c h / var(--a));
-}
-
-.color-a {
-	--a-color: red;
-	color: var(--csstools-custom-function-call-3-1);
-}
-
-@property --csstools-function-argument-0---value {
-	syntax: "*";
-	inherit: false;
-	initial-value: ;
-}
-
-@property --csstools-function-body-0---value {
-	syntax: "*";
-	inherit: false;
-}
-
-@property --csstools-function-argument-1---value {
-	syntax: "*";
-	inherit: false;
-	initial-value: ;
-}
-
-@property --csstools-function-body-1---value {
-	syntax: "*";
-	inherit: false;
-}
-
-@property --csstools-function-argument-2---value {
-	syntax: "*";
-	inherit: false;
-	initial-value: ;
-}
-
-@property --csstools-function-body-2---value {
-	syntax: "*";
-	inherit: false;
-}
-
-@property --csstools-function-argument-3---color {
-	syntax: "<color>";
-	inherit: false;
-	initial-value: black;
-}
-
-@property --csstools-function-body-3---color {
-	syntax: "*";
-	inherit: false;
-}
-
-@property --csstools-function-argument-3---alpha {
-	syntax: "<number>";
-	inherit: false;
-	initial-value: 1;
-}
-
-@property --csstools-function-body-3---alpha {
-	syntax: "*";
-	inherit: false;
-}
-
-@property --csstools-return-value-3 {
-	syntax: "<color>";
-	inherit: false;
+.circle {
+	width: var(--csstools-custom-function-2-result);
 }

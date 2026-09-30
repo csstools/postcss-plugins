@@ -20,3 +20,5 @@ import './get-argument-type/0001.mjs';
 import './get-return-type/0001.mjs';
 
 import './get-default-value/0001.mjs';
+
+import './parse-prelude/0001.mjs';

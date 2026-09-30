@@ -17,7 +17,14 @@
 
 <header>
 
-[<humanReadableName>] lets you easily create new plugins following some [CSS Specification].
+[<humanReadableName>] lets you use `@function` custom functions following [CSS Custom Functions and Mixins 1].
+
+Custom functions are still an early draft.  
+This plugin is only a partial implementation to avoid conflicts with the final specification.
+
+Unsupported:
+- typed parameters and return types
+- default parameter values
 
 ```css
 <example.css>
@@ -51,4 +58,4 @@ is preserved. By default, it is not preserved.
 ```
 
 <linkList>
-[CSS Specification]: <specUrl>
+[CSS Custom Functions and Mixins 1]: <specUrl>

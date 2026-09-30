@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<title>Custom Functions: Evaluating a &lt;dashed-function></title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#substitute-a-dashed-function">
+
+<div id="parent">
+	<div id="target"></div>
+</div>
+<div id="main"></div>
+
+<script>
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/dashed-function-eval.html
+	//
+	// Only the subset without typed parameters or default values is asserted here.
+	// Each case produces matching computed values for --actual and --expected
+	// on #target.
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: 'Literal result',
+				style: `
+					@function --f() {
+						result: 12px;
+					}
+					#target {
+						--actual: --f();
+						--expected: 12px;
+					}
+				`,
+			},
+			{
+				name: 'Literal result, empty',
+				style: `
+					@function --f() {
+						result:;
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'result cascading behavior',
+				style: `
+					@function --f() {
+						result: 12px;
+						result: 24px;
+					}
+					#target {
+						--actual: --f();
+						--expected: 24px;
+					}
+				`,
+			},
+			{
+				name: 'Another dashed-function in result',
+				style: `
+					@function --f() {
+						result: --g();
+					}
+					@function --g() {
+						result: 12px;
+					}
+					#target {
+						--actual: --f();
+						--expected: 12px;
+					}
+				`,
+			},
+			{
+				name: 'Unused argument',
+				style: `
+					@function --f(--x) {
+						result: 12px;
+					}
+					#target {
+						--actual: --f(100px);
+						--expected: 12px;
+					}
+				`,
+			},
+			{
+				name: 'Single parameter',
+				style: `
+					@function --f(--x) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(100px);
+						--expected: 100px;
+					}
+				`,
+			},
+			{
+				name: 'Multiple parameters',
+				style: `
+					@function --f(--x, --y, --z) {
+						result: var(--x) var(--y) var(--z);
+					}
+					#target {
+						--actual: --f(100px, auto, red);
+						--expected: 100px auto red;
+					}
+				`,
+			},
+			{
+				name: 'Passing argument to inner function',
+				style: `
+					@function --f(--x) {
+						result: --g(var(--x));
+					}
+					@function --g(--y) {
+						result: var(--y);
+					}
+					#target {
+						--actual: --f(12px);
+						--expected: 12px;
+					}
+				`,
+			},
+			{
+				name: 'var() in argument resolved before call',
+				style: `
+					@function --f(--x) {
+						--one: FAIL;
+						result: var(--x);
+					}
+					#target {
+						--one: 1px;
+						--actual: --f(calc(100px + var(--one)));
+						--expected: calc(100px + 1px);
+					}
+				`,
+			},
+			{
+				name: 'Argument captures IACVT due to invalid var()',
+				style: `
+					@function --f(--x) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(var(--unknown));
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Unused local',
+				style: `
+					@function --f() {
+						--x: 10px;
+						result: 1px;
+					}
+					#target {
+						--actual: --f();
+						--expected: 1px;
+					}
+				`,
+			},
+			{
+				name: 'Local does not affect outer scope',
+				style: `
+					@function --f() {
+						--x: 10px;
+						result: 1px;
+					}
+					#target {
+						--x: 20px;
+						--actual: --f() var(--x);
+						--expected: 1px 20px;
+					}
+				`,
+			},
+			{
+				name: 'Substituting local in result',
+				style: `
+					@function --f() {
+						--x: 10px;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Substituting multiple locals in result',
+				style: `
+					@function --f() {
+						--x: 10px;
+						--y: 17px;
+						result: var(--x) var(--y);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px 17px;
+					}
+				`,
+			},
+			{
+				name: 'Local referring to another local',
+				style: `
+					@function --f() {
+						--x: 10px;
+						--y: var(--x);
+						result: var(--y);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Locals appearing after result',
+				style: `
+					@function --f() {
+						result: var(--y);
+						--x: 10px;
+						--y: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Locals cascading behavior',
+				style: `
+					@function --f() {
+						--x: 10px;
+						--y: var(--x);
+						result: var(--y);
+
+						--x: 20px;
+					}
+					#target {
+						--actual: --f();
+						--expected: 20px;
+					}
+				`,
+			},
+			{
+				name: 'Custom properties are visible inside function',
+				style: `
+					@function --f() {
+						result: var(--x);
+					}
+					#target {
+						--x: 10px;
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Substitute local from outer scope',
+				style: `
+					@function --f() {
+						--x: PASS;
+						result: --g();
+					}
+					@function --g() {
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Substitute argument from outer scope',
+				style: `
+					@function --f(--x) {
+						result: --g();
+					}
+					@function --g() {
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f(PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Inner argument shadowing outer argument',
+				style: `
+					@function --f(--x) {
+						result: --g(PASS);
+					}
+					@function --g(--x) {
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f(FAIL);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Inner argument shadowing outer local',
+				style: `
+					@function --f() {
+						--x: FAIL;
+						result: --g(PASS);
+					}
+					@function --g(--x) {
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Inner local shadowing outer argument',
+				style: `
+					@function --f(--x) {
+						result: --g();
+					}
+					@function --g() {
+						--x: PASS;
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f(FAIL);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Inner local shadowing outer local',
+				style: `
+					@function --f() {
+						--x: FAIL;
+						result: --g();
+					}
+					@function --g() {
+						--x: PASS;
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Referencing outer local containing var()',
+				style: `
+					@function --f() {
+						--y: 1;
+						--x: var(--y);
+						result: --g();
+					}
+					@function --g() {
+						--y: 0;
+						result: var(--x);
+					}
+					#target {
+						--y: 0;
+						--x: FAIL;
+						--actual: --f();
+						--expected: 1;
+					}
+				`,
+			},
+			{
+				name: 'Same function with different scopes',
+				style: `
+					@function --one() {
+						--x: 1;
+						result: --f();
+					}
+					@function --two() {
+						--x: 2;
+						result: --f();
+					}
+					@function --three() {
+						--x: 3;
+						result: --f();
+					}
+					@function --f() {
+						result: var(--x);
+					}
+					#target {
+						--x: 0;
+						--actual: --one() --two() --three() --f();
+						--expected: 1 2 3 0;
+					}
+				`,
+			},
+			{
+				name: 'Referencing local two frames up',
+				style: `
+					@function --a() {
+						--x: 1;
+						result: --b();
+					}
+					@function --b() {
+						result: --c();
+					}
+					@function --c() {
+						result: var(--x);
+					}
+					#target {
+						--x: 0;
+						--actual: --a();
+						--expected: 1;
+					}
+				`,
+			},
+			{
+				name: 'IACVT outer local shadows property',
+				style: `
+					@function --a() {
+						--x: var(--unknown);
+						result: --b();
+					}
+					@function --b() {
+						result: var(--x, PASS);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --a();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Inner function call should see resolved outer locals',
+				style: `
+					@function --a() {
+						--x: --b();
+						--y: var(--px);
+						result: var(--x);
+					}
+					@function --b() {
+						result: var(--y, FAIL);
+					}
+					#target {
+						--px: 10px;
+						--actual: --a();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Inner function call should see resolved outer locals (reverse)',
+				style: `
+					@function --a() {
+						--x: var(--px);
+						--y: --b();
+						result: var(--y);
+					}
+					@function --b() {
+						result: var(--x, FAIL);
+					}
+					#target {
+						--px: 10px;
+						--actual: --a();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Parameter shadows custom property',
+				style: `
+					@function --f(--x) {
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f(PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local shadows parameter',
+				style: `
+					@function --f(--x) {
+						--x: PASS;
+						result: var(--x);
+					}
+					#target {
+						--x: FAIL1;
+						--actual: --f(FAIL2);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'IACVT argument shadows outer scope',
+				style: `
+					@function --f(--x) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--x: FAIL;
+						--actual: --f(var(--unknown));
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Missing only argument',
+				style: `
+					@function --f(--x) {
+						result: 10px;
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Missing one argument of several',
+				style: `
+					@function --f(--x, --y, --z) {
+						result: 10px;
+					}
+					#target {
+						--actual: --f(1, 2);
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Passing list as only argument',
+				style: `
+					@function --f(--x) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f({1px,2px});
+						--expected: 1px,2px;
+					}
+				`,
+			},
+			{
+				name: 'Passing list as first argument',
+				style: `
+					@function --f(--x, --y) {
+						result: var(--x) | var(--y);
+					}
+					#target {
+						--actual: --f({1px, 2px}, 3px);
+						--expected: 1px, 2px | 3px;
+					}
+				`,
+			},
+			{
+				name: 'Passing list as second argument',
+				style: `
+					@function --f(--x, --y) {
+						result: var(--x) | var(--y);
+					}
+					#target {
+						--actual: --f(1px, {2px, 3px});
+						--expected: 1px | 2px, 3px;
+					}
+				`,
+			},
+			{
+				name: 'Passing comma as argument',
+				style: `
+					@function --f(--x) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f({,});
+						--expected: ,;
+					}
+				`,
+			},
+			{
+				name: 'Passing {} as argument',
+				style: `
+					@function --f(--x) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f({{}});
+						--expected: {};
+					}
+				`,
+			},
+			{
+				name: 'Passing non-whole-value {} as argument',
+				style: `
+					@function --f(--x) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f({foo{}});
+						--expected: foo{};
+					}
+				`,
+			},
+			{
+				name: 'initial keyword left unresolved on result descriptor',
+				style: `
+					@function --f() {
+						result: initial;
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'inherit keyword left unresolved on result descriptor',
+				style: `
+					@function --f() {
+						result: inherit;
+					}
+					#parent {
+						--tmp: PASS;
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, FAIL);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'unset keyword left unresolved on result descriptor',
+				style: `
+					@function --f() {
+						result: unset;
+					}
+					#parent {
+						--tmp: PASS;
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, FAIL);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'revert keyword left unresolved on result descriptor',
+				style: `
+					@function --f() {
+						result: revert;
+					}
+					#parent {
+						--tmp: PASS;
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, FAIL);
+						--expected: PASS;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch('/test/styles.css', {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>

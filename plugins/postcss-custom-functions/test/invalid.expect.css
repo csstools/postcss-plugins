@@ -1,0 +1,15 @@
+.missing {
+	width: var(--csstools-custom-function-invalid);
+}
+
+.extra {
+	width: var(--csstools-custom-function-invalid);
+}
+
+.unknown {
+	width: --unknown(1);
+}
+
+.empty-args {
+	width: var(--csstools-custom-function-invalid);
+}

@@ -1,7 +1,13 @@
-.foo {
-	color: red;
+@function --negative(--value) {
+	result: calc(-1 * var(--value));
 }
 
-.baz {
-	color: green;
+@function --double(--value) {
+	result: calc(2 * var(--value));
+}
+
+html {
+	--gap: 1em;
+	padding: --negative(var(--gap));
+	margin: --double(4px);
 }

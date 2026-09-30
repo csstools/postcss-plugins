@@ -1,0 +1,42 @@
+.scope {--csstools-custom-function-0-arg-0: PASS;
+}
+
+.scope {
+	--csstools-custom-function-1-result: var(--csstools-custom-function-0-arg-0);
+}
+
+.scope {
+	--csstools-custom-function-0-result: var(--csstools-custom-function-1-result);
+}
+
+.scope {
+	--x: FAIL;
+	width: var(--csstools-custom-function-0-result);
+}
+
+.scopes {
+	--csstools-custom-function-3-result: var(--csstools-custom-function-2-local-x);
+}
+
+.scopes {
+	--csstools-custom-function-2-local-x: 1;
+	--csstools-custom-function-2-result: var(--csstools-custom-function-3-result);
+}
+
+.scopes {
+	--csstools-custom-function-5-result: var(--csstools-custom-function-4-local-x);
+}
+
+.scopes {
+	--csstools-custom-function-4-local-x: 2;
+	--csstools-custom-function-4-result: var(--csstools-custom-function-5-result);
+}
+
+.scopes {
+	--csstools-custom-function-6-result: var(--x);
+}
+
+.scopes {
+	--x: 0;
+	width: var(--csstools-custom-function-2-result) var(--csstools-custom-function-4-result) var(--csstools-custom-function-6-result);
+}

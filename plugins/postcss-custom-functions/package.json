@@ -20,20 +20,13 @@
 		}
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20.19.0"
 	},
 	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"default": "./dist/index.cjs"
-			}
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
 		}
 	},
 	"files": [
@@ -46,14 +39,14 @@
 		"@csstools/cascade-layer-name-parser": "^3.0.1",
 		"@csstools/css-parser-algorithms": "^4.0.1",
 		"@csstools/css-tokenizer": "^4.0.2",
-		"@csstools/custom-function-parser": "^0.0.0",
-		"@csstools/utilities": "^3.0.0"
+		"@csstools/custom-function-parser": "^0.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
-		"@csstools/postcss-tape": "*"
+		"@csstools/postcss-tape": "*",
+		"puppeteer": "^25.11.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",
@@ -63,23 +56,22 @@
 		"test": "node --test",
 		"test:rewrite-expects": "REWRITE_EXPECTS=true node --test"
 	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions#readme",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/csstools/postcss-plugins.git",
 		"directory": "plugins/postcss-custom-functions"
 	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
 		"postcss-plugin"
 	],
 	"csstools": {
-		"cssdbId": "TODO",
 		"exportName": "postcssCustomFunctions",
 		"humanReadableName": "PostCSS Custom Functions",
 		"specUrl": "https://drafts.csswg.org/css-mixins-1/#function-rule"
 	},
 	"volta": {
 		"extends": "../../package.json"
-	},
-	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions#readme",
-	"bugs": "https://github.com/csstools/postcss-plugins/issues"
+	}
 }

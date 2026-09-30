@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<title>Custom Functions: Evaluating a &lt;dashed-function> in standard properties</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#substitute-a-dashed-function">
+
+<div id="target"></div>
+
+<script>
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/dashed-function-standard-property.html
+	//
+	// The typed return case is omitted because typed return values are not
+	// supported yet.
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const style = `
+			@function --ten-px() {
+				result: 10px;
+			}
+			@function --green() {
+				result: green;
+			}
+			#target {
+				width: --ten-px();
+				color: --green();
+				padding: --ten-px();
+			}
+		`;
+
+		const styleElement = document.createElement('style');
+		styleElement.textContent = await (fetch('/test/styles.css', {
+			method: 'POST',
+			body: style,
+		}).then((response) => response.text()));
+		document.head.append(styleElement);
+
+		const computed = window.getComputedStyle(document.getElementById('target'));
+
+		assert_equals(computed.width, '10px', '<dashed-function> in longhand');
+		assert_equals(computed.color, 'rgb(0, 128, 0)', '<dashed-function> in inherited longhand');
+		assert_equals(computed.padding, '10px', '<dashed-function> in shorthand');
+
+		styleElement.remove();
+
+		return true;
+	};
+</script>

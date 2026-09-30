@@ -2,7 +2,7 @@ import type { AtRule, ChildNode, Container, Document } from 'postcss';
 
 const allowedParentAtRules = new Set(['scope', 'container', 'layer']);
 
-export const IS_FUNCTION_REGEX = /^function$/i;
+const IS_FUNCTION_REGEX = /^function$/i;
 
 export function isProcessableRule(atRule: AtRule): boolean {
 	if (!IS_FUNCTION_REGEX.test(atRule.name)) {

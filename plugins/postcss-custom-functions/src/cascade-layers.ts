@@ -125,5 +125,5 @@ function normalizeLayerName(layerName: string, counter: number): string {
 		return layerName;
 	}
 
-	return `csstools-anon-layer--${counter++}`;
+	return `csstools-anon-layer--${counter}`;
 }

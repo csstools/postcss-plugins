@@ -1,3 +1,3 @@
-const { parse } = require('@csstools/media-query-list-parser');
+const { parse } = require('@csstools/custom-function-parser');
 
-parse('(min-width: 300px)');
+parse('--foo(--bar)');

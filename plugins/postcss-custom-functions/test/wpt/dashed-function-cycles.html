@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<title>Custom Functions: Handling cycles</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#evaluating-custom-functions">
+
+<div id="parent">
+	<div id="target"></div>
+</div>
+<div id="main"></div>
+
+<script>
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/dashed-function-cycles.html
+	//
+	// Cases that require typed parameters, return types or default values are
+	// omitted.
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: 'Local with self-cycle',
+				style: `
+					@function --f() {
+						--x: var(--x);
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle reference without fallback makes result invalid',
+				style: `
+					@function --f() {
+						--x: var(--x);
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Local with self-cycle in unused fallback',
+				style: `
+					@function --f() {
+						--y: PASS;
+						--x: var(--y, var(--x));
+						result: var(--x, FAIL);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local shadowing cyclic property --x',
+				style: `
+					@function --f() {
+						--x: var(--y, PASS);
+						result: var(--x);
+					}
+					#target {
+						--x: var(--y);
+						--y: var(--x);
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Local shadowing cyclic outer local --x',
+				style: `
+					@function --f() {
+						--x: var(--y);
+						--y: var(--x);
+						result: --g();
+					}
+					@function --g() {
+						--x: var(--y, PASS);
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Argument shadowing cyclic outer local --x',
+				style: `
+					@function --f() {
+						--x: var(--x);
+						result: --g(10px);
+					}
+					@function --g(--x) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Arguments shadowing cyclic properties',
+				style: `
+					@function --f(--x, --y) {
+						result: var(--x) var(--y);
+					}
+					#target {
+						--x: var(--y);
+						--y: var(--x);
+						--actual: --f(PASS-x, PASS-y);
+						--expected: PASS-x PASS-y;
+					}
+				`,
+			},
+			{
+				name: 'Observing property cycle locally',
+				style: `
+					@function --f() {
+						result: var(--x, PASS-x) var(--x, PASS-y);
+					}
+					#target {
+						--x: var(--y);
+						--y: var(--x);
+						--actual: --f();
+						--expected: PASS-x PASS-y;
+					}
+				`,
+			},
+			{
+				name: 'Using cyclic values with no fallback',
+				style: `
+					@function --f() {
+						--y: var(--x, 1);
+						--x: var(--y, 3);
+						result: var(--x) var(--y);
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: 'Self-cycle in non-used local variable',
+				style: `
+					@function --f() {
+						--x: var(--x);
+						result: PASS;
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Using cyclic value in unused fallback',
+				style: `
+					@function --f() {
+						--x: PASS;
+						result: var(--x, var(--y));
+					}
+					#target {
+						--y: var(--y);
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Using cyclic value in unused fallback (local)',
+				style: `
+					@function --f() {
+						--x: PASS;
+						--y: var(--y);
+						result: var(--x, var(--y));
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Dashed-function, self-cycle',
+				style: `
+					@function --f() {
+						result: --f();
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through other function (--g)',
+				style: `
+					@function --f() {
+						result: --g();
+					}
+					@function --g() {
+						result: --f();
+					}
+					#target {
+						--tmp: --g();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through other function (--f)',
+				style: `
+					@function --f() {
+						result: --g();
+					}
+					@function --g() {
+						result: --f();
+					}
+					#target {
+						--tmp: --f();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through local, self',
+				style: `
+					@function --f() {
+						--local: --f();
+						result: var(--local);
+					}
+					#target {
+						--local: FAIL;
+						--tmp: --f();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through global, self',
+				style: `
+					@function --f() {
+						result: var(--global);
+					}
+					#target {
+						--global: --f();
+						--tmp: --f();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through local, other function',
+				style: `
+					@function --f() {
+						result: --g();
+					}
+					@function --g() {
+						--local: --f();
+						result: var(--local);
+					}
+					#target {
+						--local: FAIL;
+						--tmp: --g();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through local, other function, fallback in function',
+				style: `
+					@function --f() {
+						--a: --g();
+						result: var(--a, PASS);
+					}
+					@function --g() {
+						result: var(--a);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle through various variables and other functions',
+				style: `
+					@function --f() {
+						--local: --g();
+						result: var(--local);
+					}
+					@function --g() {
+						--local: FAIL;
+						result: var(--global);
+					}
+					#target {
+						--local: FAIL;
+						--global: --f();
+						--tmp: --g();
+						--actual: var(--tmp, PASS);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Locals are function specific',
+				style: `
+					@function --f() {
+						--a: --g();
+						result: var(--a);
+					}
+					@function --g() {
+						--a: 10px;
+						result: var(--a);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch('/test/styles.css', {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>

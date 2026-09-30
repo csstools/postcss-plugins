@@ -10,9 +10,18 @@ export function parseFromTokens(
 		onParseError?: (error: ParseError) => void
 	},
 ): CustomFunction | false {
+	let errored = false;
+
 	const componentValues = parseListOfComponentValues(tokens, {
-		onParseError: options?.onParseError,
+		onParseError: (error) => {
+			errored = true;
+			options?.onParseError?.(error);
+		},
 	});
+
+	if (errored) {
+		return false;
+	}
 
 	return parseCustomFunction(componentValues);
 }

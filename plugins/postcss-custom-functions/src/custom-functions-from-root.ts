@@ -1,21 +1,37 @@
 import type { ChildNode, Container, Document, Result, Root as PostCSSRoot, AtRule } from 'postcss';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isProcessableRule } from './is-processable-rule';
-import type { CustomFunction} from '@csstools/custom-function-parser';
+import type { CustomFunction } from '@csstools/custom-function-parser';
 import { parse } from '@csstools/custom-function-parser';
 
 export type CustomFunctionAndNode = {
 	function: CustomFunction;
 	node: AtRule;
+	supported: boolean;
+};
+
+/**
+ * A function is supported by this first iteration when it has no typed
+ * parameters, no default values and no return type.
+ */
+function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
+	if (customFunction.getReturnType()) {
+		return false;
+	}
+
+	return customFunction.parameters.every((parameter) => {
+		return !parameter.getArgumentType() && !parameter.getDefaultValue();
+	});
 }
 
-// return custom functions from the css root, conditionally removing them
+// Return custom functions from the css root, conditionally removing them.
 export function getCustomFunctions(root: PostCSSRoot, result: Result, opts: { preserve?: boolean }): Map<string, CustomFunctionAndNode> {
-	// initialize custom selectors
 	const customFunctions = new Map<string, CustomFunctionAndNode>();
 	const customFunctionsCascadeLayerMapping: Map<string, number> = new Map();
 
 	const cascadeLayersOrder = collectCascadeLayerOrder(root);
+
+	const removable: Array<AtRule> = [];
 
 	root.walkAtRules((atRule) => {
 		if (!isProcessableRule(atRule)) {
@@ -34,26 +50,33 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result, opts: { pr
 		}
 
 		const name = customFunction.getName();
+		const supported = isSupportedCustomFunction(customFunction);
 
 		const thisCascadeLayer = cascadeLayerNumberForNode(atRule, cascadeLayersOrder);
 		const existingCascadeLayer = customFunctionsCascadeLayerMapping.get(name) ?? -1;
 
-		if (thisCascadeLayer && thisCascadeLayer >= existingCascadeLayer) {
+		if (thisCascadeLayer >= existingCascadeLayer) {
 			customFunctionsCascadeLayerMapping.set(name, thisCascadeLayer);
-			// re-parsing is important to obtain the correct AST shape
 			customFunctions.set(name, {
 				node: atRule,
 				function: customFunction,
+				supported,
 			});
 		}
 
-		if (!opts.preserve) {
+		if (supported) {
+			removable.push(atRule);
+		}
+	});
+
+	if (!opts.preserve) {
+		for (const atRule of removable) {
 			const parent = atRule.parent;
 			atRule.remove();
 
 			removeEmptyAncestorBlocks(parent);
 		}
-	});
+	}
 
 	return customFunctions;
 }

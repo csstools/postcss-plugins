@@ -1,7 +1,29 @@
-.foo {
-	color: red;
+@function --negative(--value) {
+	result: calc(-1 * var(--value));
 }
 
-.baz {
-	color: green;
+@function --double(--value) {
+	result: calc(2 * var(--value));
+}
+
+html {--csstools-custom-function-0-arg-0: var(--gap);
+}
+
+html {
+	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
+}
+
+html {--csstools-custom-function-1-arg-0: 4px;
+}
+
+html {
+	--csstools-custom-function-1-result: calc(2 * var(--csstools-custom-function-1-arg-0));
+}
+
+html {
+	--gap: 1em;
+	padding: var(--csstools-custom-function-0-result);
+	padding: --negative(var(--gap));
+	margin: var(--csstools-custom-function-1-result);
+	margin: --double(4px);
 }
