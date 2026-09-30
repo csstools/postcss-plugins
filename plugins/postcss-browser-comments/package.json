@@ -68,8 +68,8 @@
 	},
 	"bugs": "https://github.com/csstools/postcss-plugins/issues",
 	"keywords": [
-		"browserslist",
 		"browsers",
+		"browserslist",
 		"caniuse",
 		"css",
 		"postcss",
