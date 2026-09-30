@@ -1,5 +1,7 @@
 import type { AtRule, ChildNode, Declaration, Rule } from 'postcss';
-import { Declaration as PostCSSDeclaration } from 'postcss';
+import { AtRule as PostCSSAtRule, Declaration as PostCSSDeclaration } from 'postcss';
+import crypto from 'node:crypto';
+import path from 'node:path';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import {
 	FunctionNode as CSSAFunctionNode,
@@ -15,10 +17,13 @@ import {
 } from '@csstools/css-parser-algorithms';
 import { TokenType, isTokenFunction, isTokenIdent, isTokenOpenCurly, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import type { CustomFunctionAndNode } from './custom-functions-from-root';
+import type { FunctionParameter } from '@csstools/custom-function-parser';
 
-const GENERATED_PREFIX = '--csstools-custom-function';
+const GENERATED_PREFIX = '--_csstools-cf';
 const INVALID_IDENT = `${GENERATED_PREFIX}-invalid`;
 const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer']);
+
+const sourceHashes = new Map<string, string>();
 
 /**
  * A single lexical scope while evaluating a custom function.
@@ -44,6 +49,11 @@ class Scope {
 	}
 }
 
+type CallFrame = {
+	name: string,
+	cyclic: boolean,
+};
+
 /**
  * Transpiles `<dashed-function>` calls into a form that works without native
  * custom function support.
@@ -51,16 +61,26 @@ class Scope {
  * The evaluation model follows the spec closely: the function body is emitted
  * as custom property declarations on the element where the function is called,
  * with a generated name per parameter, local variable and result. The browser
- * then performs the actual `var()` substitution, cascade and conditional
- * handling.
+ * then performs the actual `var()` substitution, type checking, cascade and
+ * conditional handling.
  */
 export class CustomFunctionTranspiler {
 	private customFunctions: Map<string, CustomFunctionAndNode> = new Map();
 	private counter = 0;
-	private expanding: Array<string> = [];
+	private frames: Array<CallFrame> = [];
+	private registrations: Array<AtRule> = [];
+	private sourceHash = '0';
 
 	setCustomFunctions(customFunctions: Map<string, CustomFunctionAndNode>): void {
 		this.customFunctions = customFunctions;
+	}
+
+	/**
+	 * `@property` registrations generated while transpiling.
+	 * These are top level rules and must be appended to the root.
+	 */
+	getRegistrations(): Array<AtRule> {
+		return this.registrations;
 	}
 
 	/**
@@ -77,6 +97,8 @@ export class CustomFunctionTranspiler {
 		if (!parent || parent.type !== 'rule') {
 			return null;
 		}
+
+		this.sourceHash = sourceHashFor(decl.source?.input.from);
 
 		const element = parent;
 		const componentValues = parseListOfComponentValues(tokens);
@@ -117,7 +139,9 @@ export class CustomFunctionTranspiler {
 
 		// A function that (indirectly) calls itself is cyclic and evaluates to
 		// the guaranteed-invalid value.
-		if (this.expanding.includes(name)) {
+		const existingFrame = this.frames.find((frame) => frame.name === name);
+		if (existingFrame) {
+			existingFrame.cyclic = true;
 			return [this.varReference(INVALID_IDENT)];
 		}
 
@@ -128,9 +152,16 @@ export class CustomFunctionTranspiler {
 
 		const parameters = entry.function.parameters;
 
-		// Without default values every parameter must be provided.
-		if (args.length !== parameters.length) {
+		// More arguments than parameters is invalid.
+		if (args.length > parameters.length) {
 			return [this.varReference(INVALID_IDENT)];
+		}
+
+		// A parameter without a default value must be provided.
+		for (let i = args.length; i < parameters.length; i++) {
+			if (!parameters[i].getDefaultValue()) {
+				return [this.varReference(INVALID_IDENT)];
+			}
 		}
 
 		// CSS-wide keywords in `result` are left unresolved by the spec, so they
@@ -140,44 +171,99 @@ export class CustomFunctionTranspiler {
 			return [new CSSATokenNode([TokenType.Ident, keywordResult, -1, -1, { value: keywordResult }])];
 		}
 
+		// Arguments are resolved in the scope of the caller, before the function
+		// itself is evaluated.
+		const evaluatedArgs = args.map((arg) => {
+			return this.rewriteValue(stringify([arg]), element, parentScope);
+		});
+
 		const id = (this.counter++).toString(36);
 		const scope = new Scope(parentScope);
+		const parameterArgs = new Map<string, string>();
 
 		for (let i = 0; i < parameters.length; i++) {
-			scope.names.set(parameters[i].getName(), this.argName(id, i));
+			const argName = this.argName(id, i);
+			scope.names.set(parameters[i].getName(), argName);
+			parameterArgs.set(parameters[i].getName(), argName);
 		}
 
 		for (const localName of collectLocalNames(entry.node)) {
 			scope.names.set(localName, this.localName(id, localName));
 		}
 
-		this.expanding.push(name);
+		const frame: CallFrame = { name, cyclic: false };
+		this.frames.push(frame);
 
-		// Arguments are resolved in the scope of the caller, not the callee.
 		const argDecls: Array<Declaration> = [];
 		for (let i = 0; i < parameters.length; i++) {
-			argDecls.push(new PostCSSDeclaration({
-				prop: this.argName(id, i),
-				value: this.rewriteValue(stringify([args[i]]), element, parentScope),
-				source: element.source,
-			}));
+			if (i < evaluatedArgs.length) {
+				argDecls.push(new PostCSSDeclaration({
+					prop: this.argName(id, i),
+					value: evaluatedArgs[i],
+					source: element.source,
+				}));
+
+				continue;
+			}
+
+			// A missing argument resolves to the default value in the callee frame.
+			const defaultValue = parameters[i].getDefaultValue();
+			if (defaultValue) {
+				argDecls.push(new PostCSSDeclaration({
+					prop: this.argName(id, i),
+					value: this.rewriteValue(defaultValue, element, scope),
+					source: element.source,
+				}));
+			}
 		}
 
 		if (argDecls.length) {
 			element.before(element.clone({ nodes: argDecls }));
 		}
 
-		const bodyNodes = this.emitBody(entry.node.nodes || [], element, scope, id);
+		for (let i = 0; i < parameters.length; i++) {
+			const type = parameterType(parameters[i]);
+			if (!type) {
+				continue;
+			}
+
+			this.registrations.push(new PostCSSAtRule({
+				name: 'property',
+				params: this.argName(id, i),
+				nodes: [
+					new PostCSSDeclaration({ prop: 'syntax', value: `"${type}"`, source: element.source }),
+					new PostCSSDeclaration({ prop: 'inherits', value: 'false', source: element.source }),
+					new PostCSSDeclaration({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source }),
+				],
+				source: element.source,
+			}));
+		}
+
+		const bodyNodes = this.emitBody(entry.node.nodes || [], element, scope, parameterArgs, id);
 		for (const node of bodyNodes) {
 			element.before(node);
 		}
 
-		this.expanding.pop();
+		// Once a substitution context is marked as cyclic, the whole evaluation
+		// returns the guaranteed-invalid value.
+		if (frame.cyclic) {
+			element.before(element.clone({
+				nodes: [
+					new PostCSSDeclaration({
+						prop: this.resultName(id),
+						value: `var(${INVALID_IDENT})`,
+						source: element.source,
+					}),
+				],
+			}));
+		}
+
+		this.frames.pop();
 
 		return [this.varReference(this.resultName(id))];
 	}
 
-	private emitBody(containerNodes: Array<ChildNode>, element: Rule, scope: Scope, id: string): Array<ChildNode> {
+	private emitBody(containerNodes: Array<ChildNode>, element: Rule, scope: Scope, parameterArgs: Map<string, string>, id: string): Array<ChildNode> {
 		const out: Array<ChildNode> = [];
 		let pendingDecls: Array<Declaration> = [];
 
@@ -192,7 +278,7 @@ export class CustomFunctionTranspiler {
 
 		for (const node of containerNodes) {
 			if (node.type === 'decl') {
-				const processed = this.processBodyDeclaration(node, element, scope, id);
+				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, id);
 				if (processed) {
 					pendingDecls.push(processed);
 				}
@@ -203,7 +289,7 @@ export class CustomFunctionTranspiler {
 			if (node.type === 'atrule') {
 				flush();
 
-				const children = this.emitBody(node.nodes || [], element, scope, id);
+				const children = this.emitBody(node.nodes || [], element, scope, parameterArgs, id);
 				if (children.length) {
 					out.push(node.clone({ nodes: children }));
 				}
@@ -217,7 +303,7 @@ export class CustomFunctionTranspiler {
 		return out;
 	}
 
-	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, id: string): Declaration | null {
+	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, id: string): Declaration | null {
 		let prop: string;
 
 		if (decl.prop.toLowerCase() === 'result') {
@@ -229,6 +315,27 @@ export class CustomFunctionTranspiler {
 			}
 
 			prop = mapped;
+
+			const trimmedValue = decl.value.trim();
+
+			// `initial` resolves to the parameter's own value (argument or default).
+			const parameterArg = parameterArgs.get(decl.prop);
+			if (parameterArg && trimmedValue.toLowerCase() === 'initial') {
+				return decl.clone({
+					prop,
+					value: `var(${parameterArg})`,
+				});
+			}
+
+			// `inherit` resolves to the custom property of the same name in the
+			// calling context, which is the outer function scope or the element.
+			if (trimmedValue.toLowerCase() === 'inherit') {
+				const inherited = scope.parent?.get(decl.prop) ?? decl.prop;
+				return decl.clone({
+					prop,
+					value: `var(${inherited})`,
+				});
+			}
 		} else {
 			// Unknown descriptors are invalid and ignored.
 			return null;
@@ -332,15 +439,15 @@ export class CustomFunctionTranspiler {
 	}
 
 	private argName(id: string, index: number): string {
-		return `${GENERATED_PREFIX}-${id}-arg-${index}`;
+		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-arg-${index}`;
 	}
 
 	private localName(id: string, name: string): string {
-		return `${GENERATED_PREFIX}-${id}-local-${name.slice(2)}`;
+		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-local-${name.slice(2)}`;
 	}
 
 	private resultName(id: string): string {
-		return `${GENERATED_PREFIX}-${id}-result`;
+		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-result`;
 	}
 }
 
@@ -379,6 +486,43 @@ function collectLocalNames(atRule: AtRule): Set<string> {
 	});
 
 	return names;
+}
+
+/**
+ * The type of a parameter, or `null` when it is untyped.
+ * `type(*)` is the universal syntax and is treated as untyped.
+ */
+function parameterType(parameter: FunctionParameter): string | null {
+	const type = parameter.getArgumentType();
+	if (!type || type === '*') {
+		return null;
+	}
+
+	return type;
+}
+
+/**
+ * A short, stable hash of the source file, used to avoid collisions between
+ * generated names from different stylesheets.
+ *
+ * This mirrors the naming approach of `postcss-private-rule`.
+ */
+function sourceHashFor(from: string | undefined): string {
+	if (!from) {
+		return '0';
+	}
+
+	const existing = sourceHashes.get(from);
+	if (existing) {
+		return existing;
+	}
+
+	const hash = crypto.createHash('md5');
+	hash.update(path.basename(path.dirname(from)) + '/' + path.basename(from), 'utf8');
+	const value = parseInt(hash.digest('hex'), 16).toString(36).slice(0, 8);
+	sourceHashes.set(from, value);
+
+	return value;
 }
 
 /**

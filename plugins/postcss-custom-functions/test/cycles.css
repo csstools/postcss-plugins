@@ -1,0 +1,31 @@
+@function --cycle-through-unused-local() {
+	--unused: --cycle-through-unused-local();
+	result: FAIL-result;
+}
+
+.cycle-through-unused-local {
+	--tmp: --cycle-through-unused-local();
+	--actual: var(--tmp, PASS);
+}
+
+@function --self-cycle() {
+	result: --self-cycle();
+}
+
+.self-cycle {
+	--tmp: --self-cycle();
+	--actual: var(--tmp, PASS);
+}
+
+@function --ping() {
+	result: --pong();
+}
+
+@function --pong() {
+	result: --ping();
+}
+
+.ping-pong {
+	--tmp: --ping();
+	--actual: var(--tmp, PASS);
+}

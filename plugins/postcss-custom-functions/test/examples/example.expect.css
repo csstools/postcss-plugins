@@ -1,15 +1,20 @@
-html {--csstools-custom-function-0-arg-0: var(--gap);
+html {--_csstools-cf-1agle9gi-0-arg-0: var(--gap);
 }
 html {
-	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-0-arg-0));
 }
-html {--csstools-custom-function-1-arg-0: 4px;
+html {--_csstools-cf-1agle9gi-1-arg-0: 4px;
 }
 html {
-	--csstools-custom-function-1-result: calc(2 * var(--csstools-custom-function-1-arg-0));
+	--_csstools-cf-1agle9gi-1-result: calc(2 * var(--_csstools-cf-1agle9gi-1-arg-0));
 }
 html {
 	--gap: 1em;
-	padding: var(--csstools-custom-function-0-result);
-	margin: var(--csstools-custom-function-1-result);
+	padding: var(--_csstools-cf-1agle9gi-0-result);
+	margin: var(--_csstools-cf-1agle9gi-1-result);
+}
+@property --_csstools-cf-1agle9gi-1-arg-0 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 1px;
 }

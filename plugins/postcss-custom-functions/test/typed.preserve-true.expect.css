@@ -1,0 +1,89 @@
+@function --sized(--x <length>: 10px) {
+	result: var(--x);
+}
+
+.sized-a {--_csstools-cf-3ammwpqj-0-arg-0: 20px;
+}
+
+.sized-a {
+	--_csstools-cf-3ammwpqj-0-result: var(--_csstools-cf-3ammwpqj-0-arg-0);
+}
+
+.sized-a {
+	width: var(--_csstools-cf-3ammwpqj-0-result);
+	width: --sized(20px);
+}
+
+.sized-b {--_csstools-cf-3ammwpqj-1-arg-0: 10px;
+}
+
+.sized-b {
+	--_csstools-cf-3ammwpqj-1-result: var(--_csstools-cf-3ammwpqj-1-arg-0);
+}
+
+.sized-b {
+	width: var(--_csstools-cf-3ammwpqj-1-result);
+	width: --sized();
+}
+
+@function --colorized(--c <color>: red) {
+	result: var(--c);
+}
+
+.colorized {--_csstools-cf-3ammwpqj-2-arg-0: blue;
+}
+
+.colorized {
+	--_csstools-cf-3ammwpqj-2-result: var(--_csstools-cf-3ammwpqj-2-arg-0);
+}
+
+.colorized {
+	color: var(--_csstools-cf-3ammwpqj-2-result);
+	color: --colorized(blue);
+}
+
+@function --mixed(--x, --y <length>: 2px, --z <length>: 3px) {
+	result: var(--x) var(--y) var(--z);
+}
+
+.mixed {--_csstools-cf-3ammwpqj-3-arg-0: 1px;--_csstools-cf-3ammwpqj-3-arg-1: 2px;--_csstools-cf-3ammwpqj-3-arg-2: 3px;
+}
+
+.mixed {
+	--_csstools-cf-3ammwpqj-3-result: var(--_csstools-cf-3ammwpqj-3-arg-0) var(--_csstools-cf-3ammwpqj-3-arg-1) var(--_csstools-cf-3ammwpqj-3-arg-2);
+}
+
+.mixed {
+	width: var(--_csstools-cf-3ammwpqj-3-result);
+	width: --mixed(1px);
+}
+
+@property --_csstools-cf-3ammwpqj-0-arg-0 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 10px;
+}
+
+@property --_csstools-cf-3ammwpqj-1-arg-0 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 10px;
+}
+
+@property --_csstools-cf-3ammwpqj-2-arg-0 {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: red;
+}
+
+@property --_csstools-cf-3ammwpqj-3-arg-1 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 2px;
+}
+
+@property --_csstools-cf-3ammwpqj-3-arg-2 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 3px;
+}

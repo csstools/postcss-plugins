@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<title>Custom Functions: Typed parameters with defaults</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#function-prelude">
+
+<div id="parent">
+	<div id="target"></div>
+</div>
+<div id="main"></div>
+
+<script>
+	// Only typed parameters that have a default value are supported.
+	//
+	// The type is enforced through a generated `@property` registration, so a
+	// value that does not match the type falls back to the default value.
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: 'Typed parameter with default, valid argument',
+				style: `
+					@function --f(--x <length>: 10px) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(20px);
+						--expected: 20px;
+					}
+				`,
+			},
+			{
+				name: 'Typed parameter with default, invalid argument',
+				style: `
+					@function --f(--x <length>: 10px) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(red);
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Typed parameter with default, missing argument',
+				style: `
+					@function --f(--x <length>: 10px) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Typed parameter normalizes calc',
+				style: `
+					@function --f(--x <length>: 10px) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(calc(100px + 1px));
+						--expected: 101px;
+					}
+				`,
+			},
+			{
+				name: 'Typed color parameter, valid argument',
+				style: `
+					@function --f(--x <color>: red) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(blue);
+						--expected: rgb(0, 0, 255);
+					}
+				`,
+			},
+			{
+				name: 'Typed color parameter, invalid argument',
+				style: `
+					@function --f(--x <color>: red) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(10px);
+						--expected: rgb(255, 0, 0);
+					}
+				`,
+			},
+			{
+				name: 'Mixed untyped and typed parameters',
+				style: `
+					@function --f(--x, --y <length>: 2px, --z <length>: 3px) {
+						result: var(--x) var(--y) var(--z);
+					}
+					#target {
+						--actual: --f(1px, 5px);
+						--expected: 1px 5px 3px;
+					}
+				`,
+			},
+			{
+				name: 'Mixed untyped and typed parameters, defaults',
+				style: `
+					@function --f(--x, --y <length>: 2px, --z <length>: 3px) {
+						result: var(--x) var(--y) var(--z);
+					}
+					#target {
+						--actual: --f(1px);
+						--expected: 1px 2px 3px;
+					}
+				`,
+			},
+			{
+				name: 'Default referencing another parameter',
+				style: `
+					@function --f(--l <length>: 10px) {
+						result: --g();
+					}
+					@function --g() {
+						result: var(--l);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Complex type with default, valid argument',
+				style: `
+					@function --f(--x type(<length> | auto): auto) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(10px);
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Complex type with default, keyword argument',
+				style: `
+					@function --f(--x type(<length> | auto): auto) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(auto);
+						--expected: auto;
+					}
+				`,
+			},
+			{
+				name: 'Complex type with default, invalid argument',
+				style: `
+					@function --f(--x type(<length> | auto): auto) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(red);
+						--expected: auto;
+					}
+				`,
+			},
+			{
+				name: 'Integer type, valid argument',
+				style: `
+					@function --f(--x <integer>: 0) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(3);
+						--expected: 3;
+					}
+				`,
+			},
+			{
+				name: 'Integer type, invalid argument',
+				style: `
+					@function --f(--x <integer>: 0) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(3.5);
+						--expected: 0;
+					}
+				`,
+			},
+			{
+				name: 'initial in a local refers to the parameter value',
+				style: `
+					@function --f(--x <length>: 10px) {
+						--x: 20px;
+						--x: initial;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(5px);
+						--expected: 5px;
+					}
+				`,
+			},
+			{
+				name: 'inherit in a local refers to the calling context',
+				style: `
+					@function --f() {
+						--x: inherit;
+						result: var(--x);
+					}
+					#target {
+						--x: 20px;
+						--actual: --f();
+						--expected: 20px;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch('/test/styles.css', {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>

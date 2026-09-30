@@ -1,9 +1,9 @@
 .missing {
-	width: var(--csstools-custom-function-invalid);
+	width: var(--_csstools-cf-invalid);
 }
 
 .extra {
-	width: var(--csstools-custom-function-invalid);
+	width: var(--_csstools-cf-invalid);
 }
 
 .unknown {
@@ -11,5 +11,5 @@
 }
 
 .empty-args {
-	width: var(--csstools-custom-function-invalid);
+	width: var(--_csstools-cf-invalid);
 }

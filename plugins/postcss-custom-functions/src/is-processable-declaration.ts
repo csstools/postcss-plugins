@@ -1,7 +1,7 @@
 import type { AtRule, ChildNode, Container, Declaration, Document } from 'postcss';
 
 const blockedParentAtRules = new Set(['function', 'keyframes']);
-const GENERATED_PREFIX = '--csstools-custom-function';
+const GENERATED_PREFIX = '--_csstools-cf';
 
 export function isProcessableDeclaration(decl: Declaration): boolean {
 	if (decl.prop.startsWith(GENERATED_PREFIX)) {

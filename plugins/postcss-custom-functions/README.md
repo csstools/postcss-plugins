@@ -12,15 +12,21 @@ Custom functions are still an early draft.
 This plugin is only a partial implementation to avoid conflicts with the final specification.
 
 Unsupported:
-- typed parameters and return types
-- default parameter values
+- typed parameters without default values
+- untyped parameters with default values
+- return types
+
+Typed parameters with default values are checked by the browser through a
+generated `@property` registration. A default value that is not
+computationally independent (for example `1em` or `var(--x)`) can not be used
+as an `initial-value` and disables type checking for that parameter.
 
 ```css
 @function --negative(--value) {
 	result: calc(-1 * var(--value));
 }
 
-@function --double(--value) {
+@function --double(--value <length>: 1px) {
 	result: calc(2 * var(--value));
 }
 
@@ -32,20 +38,25 @@ html {
 
 /* becomes */
 
-html {--csstools-custom-function-0-arg-0: var(--gap);
+html {--_csstools-cf-1agle9gi-0-arg-0: var(--gap);
 }
 html {
-	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-0-arg-0));
 }
-html {--csstools-custom-function-1-arg-0: 4px;
+html {--_csstools-cf-1agle9gi-1-arg-0: 4px;
 }
 html {
-	--csstools-custom-function-1-result: calc(2 * var(--csstools-custom-function-1-arg-0));
+	--_csstools-cf-1agle9gi-1-result: calc(2 * var(--_csstools-cf-1agle9gi-1-arg-0));
 }
 html {
 	--gap: 1em;
-	padding: var(--csstools-custom-function-0-result);
-	margin: var(--csstools-custom-function-1-result);
+	padding: var(--_csstools-cf-1agle9gi-0-result);
+	margin: var(--_csstools-cf-1agle9gi-1-result);
+}
+@property --_csstools-cf-1agle9gi-1-arg-0 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 1px;
 }
 ```
 
@@ -95,7 +106,7 @@ postcssCustomFunctions({ preserve: true })
 	result: calc(-1 * var(--value));
 }
 
-@function --double(--value) {
+@function --double(--value <length>: 1px) {
 	result: calc(2 * var(--value));
 }
 
@@ -111,30 +122,36 @@ html {
 	result: calc(-1 * var(--value));
 }
 
-@function --double(--value) {
+@function --double(--value <length>: 1px) {
 	result: calc(2 * var(--value));
 }
 
-html {--csstools-custom-function-0-arg-0: var(--gap);
+html {--_csstools-cf-1agle9gi-0-arg-0: var(--gap);
 }
 
 html {
-	--csstools-custom-function-0-result: calc(-1 * var(--csstools-custom-function-0-arg-0));
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-0-arg-0));
 }
 
-html {--csstools-custom-function-1-arg-0: 4px;
+html {--_csstools-cf-1agle9gi-1-arg-0: 4px;
 }
 
 html {
-	--csstools-custom-function-1-result: calc(2 * var(--csstools-custom-function-1-arg-0));
+	--_csstools-cf-1agle9gi-1-result: calc(2 * var(--_csstools-cf-1agle9gi-1-arg-0));
 }
 
 html {
 	--gap: 1em;
-	padding: var(--csstools-custom-function-0-result);
+	padding: var(--_csstools-cf-1agle9gi-0-result);
 	padding: --negative(var(--gap));
-	margin: var(--csstools-custom-function-1-result);
+	margin: var(--_csstools-cf-1agle9gi-1-result);
 	margin: --double(4px);
+}
+
+@property --_csstools-cf-1agle9gi-1-arg-0 {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 1px;
 }
 ```
 

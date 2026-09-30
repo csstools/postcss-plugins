@@ -14,6 +14,21 @@ postcssTape(plugin)({
 	nested: {
 		message: 'supports nested calls and dynamic scoping',
 	},
+	typed: {
+		message: 'supports typed parameters with defaults',
+	},
+	'typed:preserve-true': {
+		message: 'supports typed parameters with defaults with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
+	locals: {
+		message: 'supports initial and inherit in local variables',
+	},
+	cycles: {
+		message: 'handles cyclic functions',
+	},
 	'conditionals': {
 		message: 'supports conditional rules',
 	},

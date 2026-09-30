@@ -111,6 +111,18 @@
 				`,
 			},
 			{
+				name: 'Untyped parameter with calc()',
+				style: `
+					@function --f(--x type(*)) {
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(calc(100px + 1px));
+						--expected: calc(100px + 1px);
+					}
+				`,
+			},
+			{
 				name: 'Passing argument to inner function',
 				style: `
 					@function --f(--x) {

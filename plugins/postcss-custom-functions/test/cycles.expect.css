@@ -1,0 +1,40 @@
+.cycle-through-unused-local {
+	--_csstools-cf-63y219qj-0-local-unused: var(--_csstools-cf-invalid);
+	--_csstools-cf-63y219qj-0-result: FAIL-result;
+}
+
+.cycle-through-unused-local {--_csstools-cf-63y219qj-0-result: var(--_csstools-cf-invalid);
+}
+
+.cycle-through-unused-local {
+	--tmp: var(--_csstools-cf-63y219qj-0-result);
+	--actual: var(--tmp, PASS);
+}
+
+.self-cycle {
+	--_csstools-cf-63y219qj-1-result: var(--_csstools-cf-invalid);
+}
+
+.self-cycle {--_csstools-cf-63y219qj-1-result: var(--_csstools-cf-invalid);
+}
+
+.self-cycle {
+	--tmp: var(--_csstools-cf-63y219qj-1-result);
+	--actual: var(--tmp, PASS);
+}
+
+.ping-pong {
+	--_csstools-cf-63y219qj-3-result: var(--_csstools-cf-invalid);
+}
+
+.ping-pong {
+	--_csstools-cf-63y219qj-2-result: var(--_csstools-cf-63y219qj-3-result);
+}
+
+.ping-pong {--_csstools-cf-63y219qj-2-result: var(--_csstools-cf-invalid);
+}
+
+.ping-pong {
+	--tmp: var(--_csstools-cf-63y219qj-2-result);
+	--actual: var(--tmp, PASS);
+}

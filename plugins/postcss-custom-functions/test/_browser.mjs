@@ -18,6 +18,8 @@ const PAGES = [
 	'wpt/dashed-function-standard-property.html',
 	'wpt/local-var-substitution.html',
 	'wpt/dashed-function-cycles.html',
+	'wpt/function-parameter-types.html',
+	'wpt/function-layer.html',
 ];
 
 const requestListener = async function (req, res) {

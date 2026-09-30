@@ -34,6 +34,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					customFunctions = getCustomFunctions(root, result, { preserve: options.preserve });
 					transpiler.setCustomFunctions(customFunctions);
 				},
+				OnceExit(root): void {
+					for (const registration of transpiler.getRegistrations()) {
+						root.append(registration);
+					}
+				},
 				Declaration(decl): void {
 					if (!HAS_CUSTOM_FUNCTION.test(decl.value)) {
 						return;

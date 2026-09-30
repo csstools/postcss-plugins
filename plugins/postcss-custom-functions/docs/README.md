@@ -23,8 +23,14 @@ Custom functions are still an early draft.
 This plugin is only a partial implementation to avoid conflicts with the final specification.
 
 Unsupported:
-- typed parameters and return types
-- default parameter values
+- typed parameters without default values
+- untyped parameters with default values
+- return types
+
+Typed parameters with default values are checked by the browser through a
+generated `@property` registration. A default value that is not
+computationally independent (for example `1em` or `var(--x)`) can not be used
+as an `initial-value` and disables type checking for that parameter.
 
 ```css
 <example.css>

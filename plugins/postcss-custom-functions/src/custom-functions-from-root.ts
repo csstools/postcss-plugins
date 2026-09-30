@@ -11,8 +11,11 @@ export type CustomFunctionAndNode = {
 };
 
 /**
- * A function is supported by this first iteration when it has no typed
- * parameters, no default values and no return type.
+ * A function is supported when it has no return type and every parameter is
+ * either untyped without a default, or typed with a default value.
+ *
+ * Typed parameters without defaults and untyped parameters with defaults are
+ * not supported yet.
  */
 function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 	if (customFunction.getReturnType()) {
@@ -20,7 +23,11 @@ function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 	}
 
 	return customFunction.parameters.every((parameter) => {
-		return !parameter.getArgumentType() && !parameter.getDefaultValue();
+		const type = parameter.getArgumentType();
+		const typed = !!type && type !== '*';
+		const hasDefault = !!parameter.getDefaultValue();
+
+		return (typed && hasDefault) || (!typed && !hasDefault);
 	});
 }
 

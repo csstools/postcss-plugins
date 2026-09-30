@@ -2,7 +2,7 @@
 	result: calc(-1 * var(--value));
 }
 
-@function --double(--value) {
+@function --double(--value <length>: 1px) {
 	result: calc(2 * var(--value));
 }
 

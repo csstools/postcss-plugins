@@ -1,6 +1,9 @@
 import type { AtRule, ChildNode, Container, Document } from 'postcss';
 
-const allowedParentAtRules = new Set(['scope', 'container', 'layer']);
+// `@function` definitions inside dynamic conditional rules (`@media`,
+// `@supports`, `@container`, `@scope`, ...) are conditionally available and
+// can not be resolved statically. Only cascade layers are supported.
+const allowedParentAtRules = new Set(['layer']);
 
 const IS_FUNCTION_REGEX = /^function$/i;
 

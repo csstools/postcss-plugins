@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<title>Custom Functions: @function within @layer</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#function-rule">
+
+<div id="target"></div>
+<div id="main"></div>
+
+<script>
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/function-layer.html
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: 'Single function within anonymous layer',
+				style: `
+					@layer {
+						@function --f() { result: 1px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 1px;
+					}
+				`,
+			},
+			{
+				name: 'Last anonymous layer wins',
+				style: `
+					@layer {
+						@function --f() { result: 1px; }
+					}
+					@layer {
+						@function --f() { result: 2px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 2px;
+					}
+				`,
+			},
+			{
+				name: 'Unlayered styles win',
+				style: `
+					@layer {
+						@function --f() { result: 1px; }
+					}
+					@layer {
+						@function --f() { result: 2px; }
+					}
+					@function --f() { result: 3px; }
+					#target {
+						--actual: --f();
+						--expected: 3px;
+					}
+				`,
+			},
+			{
+				name: 'Unlayered styles win, reverse',
+				style: `
+					@function --f() { result: 3px; }
+					@layer {
+						@function --f() { result: 1px; }
+					}
+					@layer {
+						@function --f() { result: 2px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 3px;
+					}
+				`,
+			},
+			{
+				name: 'Single named layer',
+				style: `
+					@layer base {
+						@function --f() { result: 10px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+			{
+				name: 'Named layers',
+				style: `
+					@layer base {
+						@function --f() { result: 10px; }
+					}
+					@layer theme {
+						@function --f() { result: 20px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 20px;
+					}
+				`,
+			},
+			{
+				name: 'Named layers, reordered',
+				style: `
+					@layer theme, base;
+
+					@layer base {
+						@function --f() { result: 10px; }
+					}
+					@layer theme {
+						@function --f() { result: 20px; }
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch('/test/styles.css', {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>
