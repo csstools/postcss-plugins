@@ -6,6 +6,7 @@
 - nested mixins
 - untyped mixin arguments
 - hygienic renaming of mixin arguments and private custom properties
+- bound the total number of generated nodes to prevent exponential expansion from exhausting memory or CPU
 
 ### 1.0.1
 

@@ -45,7 +45,15 @@ const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports|container|starting-style)
 // Return custom functions from the css root.
 export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<string, CustomFunctionGroup> {
 	const groups = new Map<string, CustomFunctionGroup>();
-	const cascadeLayersOrder = collectCascadeLayerOrder(root);
+
+	let cascadeLayersOrder: WeakMap<Node, number> = new WeakMap();
+	try {
+		cascadeLayersOrder = collectCascadeLayerOrder(root);
+	} catch (err) {
+		// A stylesheet can have more cascade layers than can be ordered.
+		// Warn instead of aborting the whole build and treat every node as unlayered.
+		result.warn(`Failed to collect cascade layer order: "${(err instanceof Error) ? err.message : err}"`);
+	}
 
 	let order = 0;
 

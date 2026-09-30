@@ -20,6 +20,11 @@ import { parameterType } from './classify';
 import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 
+// Custom functions can call each other and duplicate their bodies, which can
+// grow exponentially. Bound the total number of declarations generated while
+// transpiling so that a small stylesheet can not exhaust memory or CPU.
+const MAX_GENERATED_DECLARATIONS = 100_000;
+
 /**
  * A single lexical scope while evaluating a custom function.
  *
@@ -70,9 +75,19 @@ export class CustomFunctionTranspiler {
 	private frames: Array<CallFrame> = [];
 	private registrations: Array<AtRule> = [];
 	private names: GeneratedNames = new GeneratedNames('0');
+	private budget = MAX_GENERATED_DECLARATIONS;
 
 	setCustomFunctions(customFunctions: Map<string, CustomFunctionGroup>): void {
 		this.customFunctions = customFunctions;
+		this.budget = MAX_GENERATED_DECLARATIONS;
+	}
+
+	/** Throws once the total number of generated declarations exceeds the budget. */
+	private spendBudget(amount = 1): void {
+		this.budget -= amount;
+		if (this.budget < 0) {
+			throw new Error('Maximum custom function expansion size exceeded, reduce the complexity of your custom functions');
+		}
 	}
 
 	/**
@@ -267,6 +282,8 @@ export class CustomFunctionTranspiler {
 					continue;
 				}
 
+				this.spendBudget();
+
 				this.registrations.push(new PostCSSAtRule({
 					name: 'property',
 					params: this.argName(definitionId, i),
@@ -299,6 +316,8 @@ export class CustomFunctionTranspiler {
 	 * Emit the declarations that bind the arguments to the parameters.
 	 */
 	private emitArguments(definitionId: string, parameters: Array<FunctionParameter>, evaluatedArgs: Array<string>, element: Rule, parameterScope: Scope, parameterArgs: Map<string, string>, out: Array<Declaration>, inlineDecls: Array<Declaration>): void {
+		const outStart = out.length;
+
 		for (let i = 0; i < parameters.length; i++) {
 			const parameter = parameters[i];
 			const type = parameterType(parameter);
@@ -354,6 +373,8 @@ export class CustomFunctionTranspiler {
 				}));
 			}
 		}
+
+		this.spendBudget(out.length - outStart);
 	}
 
 	/**
@@ -466,6 +487,8 @@ export class CustomFunctionTranspiler {
 		if (decl.prop.startsWith('--')) {
 			value = this.resolveBodyKeywords(value, decl.prop, scope, parameterArgs);
 		}
+
+		this.spendBudget();
 
 		return decl.clone({
 			prop,
@@ -611,6 +634,8 @@ export class CustomFunctionTranspiler {
 	}
 
 	private invalidResultDeclaration(resultName: string, element: Rule): Declaration {
+		this.spendBudget();
+
 		return new PostCSSDeclaration({
 			prop: resultName,
 			value: `var(${INVALID_IDENT})`,
