@@ -14,6 +14,9 @@ postcssTape(plugin)({
 	nested: {
 		message: 'supports nested calls and dynamic scoping',
 	},
+	classification: {
+		message: 'classifies definitions as supported or unsupported',
+	},
 	typed: {
 		message: 'supports typed parameters with defaults',
 	},

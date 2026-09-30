@@ -1,7 +1,5 @@
 import type { AtRule, ChildNode, Declaration, Rule } from 'postcss';
 import { AtRule as PostCSSAtRule, Declaration as PostCSSDeclaration } from 'postcss';
-import crypto from 'node:crypto';
-import path from 'node:path';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import {
 	FunctionNode as CSSAFunctionNode,
@@ -18,13 +16,9 @@ import {
 import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, isTokenOpenCurly, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
-import { staticResultKeyword } from './static-result-keyword';
-
-const GENERATED_PREFIX = '--_csstools-cf';
-const INVALID_IDENT = `${GENERATED_PREFIX}-invalid`;
-const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer', 'revert-rule']);
-
-const sourceHashes = new Map<string, string>();
+import { parameterType } from './classify';
+import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
+import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 
 /**
  * A single lexical scope while evaluating a custom function.
@@ -75,7 +69,7 @@ export class CustomFunctionTranspiler {
 	private counter = 0;
 	private frames: Array<CallFrame> = [];
 	private registrations: Array<AtRule> = [];
-	private sourceHash = '0';
+	private names: GeneratedNames = new GeneratedNames('0');
 
 	setCustomFunctions(customFunctions: Map<string, CustomFunctionGroup>): void {
 		this.customFunctions = customFunctions;
@@ -104,7 +98,7 @@ export class CustomFunctionTranspiler {
 			return null;
 		}
 
-		this.sourceHash = sourceHashFor(decl.source?.input.from);
+		this.names = new GeneratedNames(sourceHashFor(decl.source?.input.from));
 
 		const element = parent;
 		const componentValues = parseListOfComponentValues(tokens);
@@ -174,7 +168,7 @@ export class CustomFunctionTranspiler {
 		//
 		// This is only used when the function is not cyclic. A cycle anywhere in
 		// the body makes the whole evaluation invalid.
-		const keywordResult = group.definitions.length === 1 ? staticResultKeyword(group.definitions[0].node) : null;
+		const keywordResult = group.definitions.length === 1 ? group.definitions[0].keywordResult : null;
 
 		// Arguments are resolved in the scope of the caller, before the function
 		// itself is evaluated.
@@ -635,19 +629,19 @@ export class CustomFunctionTranspiler {
 	}
 
 	private argName(id: string, index: number): string {
-		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-arg-${index}`;
+		return this.names.argName(id, index);
 	}
 
 	private rawName(id: string, index: number): string {
-		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-raw-${index}`;
+		return this.names.rawName(id, index);
 	}
 
 	private localName(id: string, name: string): string {
-		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-local-${name.slice(2)}`;
+		return this.names.localName(id, name);
 	}
 
 	private resultName(id: string): string {
-		return `${GENERATED_PREFIX}-${this.sourceHash}-${id}-result`;
+		return this.names.resultName(id);
 	}
 }
 
@@ -775,39 +769,4 @@ function collectLocalNames(atRule: AtRule): Set<string> {
 	return names;
 }
 
-/**
- * The type of a parameter, or `null` when it is untyped.
- * `type(*)` is the universal syntax and is treated as untyped.
- */
-function parameterType(parameter: FunctionParameter): string | null {
-	const type = parameter.getArgumentType();
-	if (!type || type === '*') {
-		return null;
-	}
 
-	return type;
-}
-
-/**
- * A short, stable hash of the source file, used to avoid collisions between
- * generated names from different stylesheets.
- *
- * This mirrors the naming approach of `postcss-private-rule`.
- */
-function sourceHashFor(from: string | undefined): string {
-	if (!from) {
-		return '0';
-	}
-
-	const existing = sourceHashes.get(from);
-	if (existing) {
-		return existing;
-	}
-
-	const hash = crypto.createHash('md5');
-	hash.update(path.basename(path.dirname(from)) + '/' + path.basename(from), 'utf8');
-	const value = parseInt(hash.digest('hex'), 16).toString(36).slice(0, 8);
-	sourceHashes.set(from, value);
-
-	return value;
-}

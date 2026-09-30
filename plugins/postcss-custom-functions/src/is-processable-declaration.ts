@@ -1,10 +1,10 @@
 import type { AtRule, ChildNode, Container, Declaration, Document } from 'postcss';
+import { isGeneratedProperty } from './generated-names';
 
 const blockedParentAtRules = new Set(['function', 'keyframes']);
-const GENERATED_PREFIX = '--_csstools-cf';
 
 export function isProcessableDeclaration(decl: Declaration): boolean {
-	if (decl.prop.startsWith(GENERATED_PREFIX)) {
+	if (isGeneratedProperty(decl.prop)) {
 		return false;
 	}
 

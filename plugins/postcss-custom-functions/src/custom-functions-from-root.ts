@@ -2,16 +2,22 @@ import type { ChildNode, Container, Document, Node, Result, Root as PostCSSRoot,
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
 import { isInConditionalLayer, isProcessableRule } from './is-processable-rule';
 import { isProcessableDeclaration } from './is-processable-declaration';
-import { isComputationallyIndependent } from './is-computationally-independent';
-import { staticResultKeyword } from './static-result-keyword';
+import { classifyCustomFunction } from './classify';
 import type { CustomFunction } from '@csstools/custom-function-parser';
 import { parse } from '@csstools/custom-function-parser';
-import { isTokenFunction, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isTokenFunction, tokenize } from '@csstools/css-tokenizer';
 
 export type CustomFunctionDefinition = {
 	function: CustomFunction;
 	node: AtRule;
 	supported: boolean;
+	/**
+	 * The CSS-wide keyword returned by a static `result` descriptor, or `null`.
+	 * Only set when the definition has a single, unconditional keyword result.
+	 */
+	keywordResult: string | null;
+	/** Whether any `result` descriptor resolves to a CSS-wide keyword. */
+	hasKeywordResult: boolean;
 	/** Ancestor conditional group rules, outermost first. Cascade layers are excluded. */
 	conditionals: Array<AtRule>;
 	/** Cascade layer strength. Higher numbers win, `false` means unlayered (wins over all layers). */
@@ -26,8 +32,6 @@ export type CustomFunctionGroup = {
 	supported: boolean;
 };
 
-const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer', 'revert-rule']);
-
 /**
  * Turn a layer number into a sortable strength.
  * Unlayered definitions (`false`) are stronger than any layer.
@@ -37,57 +41,6 @@ function layerStrength(layer: number | false): number {
 }
 
 const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports|container|starting-style)$/i;
-
-/**
- * A function is supported when it has no return type and every parameter is
- * either untyped (with or without a default) or typed with a computationally
- * independent default value.
- *
- * Typed parameters without defaults are not supported yet.
- */
-function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
-	if (customFunction.getReturnType()) {
-		return false;
-	}
-
-	return customFunction.parameters.every((parameter) => {
-		const type = parameter.getArgumentType();
-		const typed = !!type && type !== '*';
-
-		if (typed) {
-			// A typed default becomes the `initial-value` of the generated
-			// `@property` registration and must be computationally independent.
-			return !!parameter.getDefaultValue() && isComputationallyIndependent(parameter.getDefaultValue());
-		}
-
-		// Untyped parameters, with or without a default, are supported.
-		return true;
-	});
-}
-
-/**
- * A `result` descriptor that resolves to a CSS-wide keyword can not be
- * substituted through a custom property. When it is the only descriptor of a
- * single definition it is handled directly, otherwise the function is
- * unsupported and left as-is.
- */
-function hasKeywordResult(atRule: AtRule): boolean {
-	let found = false;
-
-	atRule.walkDecls((decl) => {
-		if (decl.prop.toLowerCase() !== 'result') {
-			return;
-		}
-
-		for (const token of tokenize({ css: decl.value })) {
-			if (isTokenIdent(token) && CSS_WIDE_KEYWORDS.has(token[4].value.toLowerCase())) {
-				found = true;
-			}
-		}
-	});
-
-	return found;
-}
 
 // Return custom functions from the css root.
 export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<string, CustomFunctionGroup> {
@@ -112,15 +65,19 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			return;
 		}
 
+		const classification = classifyCustomFunction(atRule, customFunction);
+
 		const name = customFunction.getName();
 		// A conditional layer can not be ordered, so a name with a definition in
 		// one is unsupported as a whole.
-		const supported = isSupportedCustomFunction(customFunction) && !isInConditionalLayer(atRule);
+		const supported = classification.supported && !isInConditionalLayer(atRule);
 
 		const definition: CustomFunctionDefinition = {
 			node: atRule,
 			function: customFunction,
 			supported,
+			keywordResult: classification.keywordResult,
+			hasKeywordResult: classification.hasKeywordResult,
 			conditionals: collectConditionalAncestors(atRule),
 			layer: cascadeLayerNumberForNode(atRule, cascadeLayersOrder),
 			order: order++,
@@ -141,8 +98,8 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 
 		// A CSS-wide keyword result can only be substituted directly when there is
 		// exactly one definition without conditionals that override the result.
-		if (group.definitions.some((definition) => hasKeywordResult(definition.node))) {
-			const isPureStaticKeyword = group.definitions.length === 1 && staticResultKeyword(group.definitions[0].node) !== null;
+		if (group.definitions.some((definition) => definition.hasKeywordResult)) {
+			const isPureStaticKeyword = group.definitions.length === 1 && group.definitions[0].keywordResult !== null;
 			if (!isPureStaticKeyword) {
 				group.supported = false;
 			}

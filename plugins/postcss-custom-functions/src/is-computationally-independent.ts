@@ -1,8 +1,7 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { isFunctionNode, isSimpleBlockNode, isTokenNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { isTokenDimension, isTokenIdent, isTokenPercentage, tokenize } from '@csstools/css-tokenizer';
-
-const CSS_WIDE_KEYWORDS = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer']);
+import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 
 // Units that depend on the element, its container or the viewport.
 const RELATIVE_UNITS = new Set([

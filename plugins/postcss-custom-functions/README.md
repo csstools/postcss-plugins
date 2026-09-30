@@ -54,17 +54,16 @@ html {
 
 /* becomes */
 
-html {--_csstools-cf-1agle9gi-1-arg-0: var(--gap);
-}html {
-	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-1-arg-0));
-}html {--_csstools-cf-1agle9gi-3-arg-0: 4px;
-}html {
-	--_csstools-cf-1agle9gi-2-result: calc(2 * var(--_csstools-cf-1agle9gi-3-arg-0));
-}html {
+html {
 	--gap: 1em;
+	--_csstools-cf-1agle9gi-1-arg-0: var(--gap);
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-1-arg-0));
 	padding: var(--_csstools-cf-1agle9gi-0-result);
+	--_csstools-cf-1agle9gi-3-arg-0: 4px;
+	--_csstools-cf-1agle9gi-2-result: calc(2 * var(--_csstools-cf-1agle9gi-3-arg-0));
 	margin: var(--_csstools-cf-1agle9gi-2-result);
-}@property --_csstools-cf-1agle9gi-3-arg-0 {
+}
+@property --_csstools-cf-1agle9gi-3-arg-0 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 1px;
@@ -137,24 +136,14 @@ html {
 	result: calc(2 * var(--value));
 }
 
-html {--_csstools-cf-1agle9gi-1-arg-0: var(--gap);
-}
-
-html {
-	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-1-arg-0));
-}
-
-html {--_csstools-cf-1agle9gi-3-arg-0: 4px;
-}
-
-html {
-	--_csstools-cf-1agle9gi-2-result: calc(2 * var(--_csstools-cf-1agle9gi-3-arg-0));
-}
-
 html {
 	--gap: 1em;
+	--_csstools-cf-1agle9gi-1-arg-0: var(--gap);
+	--_csstools-cf-1agle9gi-0-result: calc(-1 * var(--_csstools-cf-1agle9gi-1-arg-0));
 	padding: var(--_csstools-cf-1agle9gi-0-result);
 	padding: --negative(var(--gap));
+	--_csstools-cf-1agle9gi-3-arg-0: 4px;
+	--_csstools-cf-1agle9gi-2-result: calc(2 * var(--_csstools-cf-1agle9gi-3-arg-0));
 	margin: var(--_csstools-cf-1agle9gi-2-result);
 	margin: --double(4px);
 }
