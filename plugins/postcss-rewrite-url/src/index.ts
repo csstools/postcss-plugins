@@ -33,6 +33,15 @@ const creator: PluginCreator<pluginOptions> = (options?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-rewrite-url',
+		Once(root, { result }): void {
+			root.walkDecls((decl) => {
+				rewriteDeclaration(decl, result, rewriter);
+			});
+
+			root.walkAtRules((atRule) => {
+				rewriteAtRule(atRule, result, rewriter);
+			});
+		},
 		Declaration(decl, { result }): void {
 			rewriteDeclaration(decl, result, rewriter);
 		},
