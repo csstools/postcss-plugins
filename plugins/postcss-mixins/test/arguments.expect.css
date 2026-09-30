@@ -1,59 +1,39 @@
 .a {
-	& {
-		--_csstools-p-9bomswmf-0--arg-0: green;
-		& {
-			--_csstools-p-9bomswmf-1--color: var(--_csstools-p-9bomswmf-0--arg-0);
-			color: var(--_csstools-p-9bomswmf-1--color);
-		}
-	}
+	--_csstools-p-9bomswmf-0--arg-0: green;
+	--_csstools-p-9bomswmf-1--color: var(--_csstools-p-9bomswmf-0--arg-0);
+	color: var(--_csstools-p-9bomswmf-1--color);
 }
 
 .b {
-	& {
-		--_csstools-p-9bomswmf-2--color: blue;
-		--_csstools-p-9bomswmf-2--background: red;
-		color: var(--_csstools-p-9bomswmf-2--color);
-		background-color: var(--_csstools-p-9bomswmf-2--background);
-	}
+	--_csstools-p-9bomswmf-2--color: blue;
+	--_csstools-p-9bomswmf-2--background: red;
+	color: var(--_csstools-p-9bomswmf-2--color);
+	background-color: var(--_csstools-p-9bomswmf-2--background);
 }
 
 .c {
-	& {
-		--_csstools-p-9bomswmf-3--arg-1: red;
-		& {
-			--_csstools-p-9bomswmf-4--color: var(--_csstools-p-9bomswmf-3--arg-1);
-			--_csstools-p-9bomswmf-4--background: red;
-			color: var(--_csstools-p-9bomswmf-4--color);
-			background-color: var(--_csstools-p-9bomswmf-4--background);
-		}
-	}
+	--_csstools-p-9bomswmf-3--arg-1: red;
+	--_csstools-p-9bomswmf-4--color: var(--_csstools-p-9bomswmf-3--arg-1);
+	--_csstools-p-9bomswmf-4--background: red;
+	color: var(--_csstools-p-9bomswmf-4--color);
+	background-color: var(--_csstools-p-9bomswmf-4--background);
 }
 
 .d {
-	& {
-		--_csstools-p-9bomswmf-5--color: initial;
-		outline-color: var(--_csstools-p-9bomswmf-5--color, navy);
-	}
+	--_csstools-p-9bomswmf-5--color: initial;
+	outline-color: var(--_csstools-p-9bomswmf-5--color, navy);
 }
 
 .e {
-	& {
-		--_csstools-p-9bomswmf-6--arg-2: green;
-		& {
-			--_csstools-p-9bomswmf-7--color: var(--_csstools-p-9bomswmf-6--arg-2);
-			outline-color: var(--_csstools-p-9bomswmf-7--color, navy);
-		}
-	}
+	--_csstools-p-9bomswmf-6--arg-2: green;
+	--_csstools-p-9bomswmf-7--color: var(--_csstools-p-9bomswmf-6--arg-2);
+	outline-color: var(--_csstools-p-9bomswmf-7--color, navy);
 }
 
 .f {
-	& {
-		--_csstools-p-9bomswmf-8--arg-3: color, background;
-		& {
-			--_csstools-p-9bomswmf-9--list: var(--_csstools-p-9bomswmf-8--arg-3);
-			transition-property: var(--_csstools-p-9bomswmf-9--list);
-		}
-	}
+	--_csstools-p-9bomswmf-8--arg-3: color, background;
+	--_csstools-p-9bomswmf-9--list: var(--_csstools-p-9bomswmf-8--arg-3);
+	transition-property: var(--_csstools-p-9bomswmf-9--list);
 }
 
 .g {

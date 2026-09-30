@@ -38,6 +38,15 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	nesting: {
+		message: 'preserves author written nesting rules',
+	},
+	'nesting:preserve-true': {
+		message: 'preserves author written nesting rules with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	private: {
 		message: 'scopes mixin parameters and @private rules',
 	},

@@ -19,6 +19,7 @@ type Mixin = {
 
 type State = {
 	argumentCounter: number,
+	desugaredNestingRules: Set<Rule>,
 };
 
 const IS_CONTENTS_REGEX = /^contents$/i;
@@ -41,7 +42,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const mixins: Map<string, Mixin> = new Map();
 			const knownMixins: Set<string> = new Set();
 			const transpiler = new Transpiler();
-			const state: State = { argumentCounter: 0 };
+			const state: State = { argumentCounter: 0, desugaredNestingRules: new Set() };
 
 			return {
 				postcssPlugin: 'mixins',
@@ -88,6 +89,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 						expandApply(atRule, mixins, transpiler, options.preserve === true, new Set(), state);
 					}
+
+					unwrapDesugaredNestingRules(state);
 				},
 			};
 		},
@@ -129,6 +132,7 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 		// See: https://github.com/w3c/csswg-drafts/issues/14372
 		const bodyWrapper = new Rule({ selector: '&', source: atRule.source });
 		bodyWrapper.raws.semicolon = true;
+		state.desugaredNestingRules.add(bodyWrapper);
 
 		let outerWrapper: Rule | undefined;
 		let argumentPrivateRule: AtRule | undefined;
@@ -136,6 +140,7 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 		if (mixin.parameters.length > 0 && hasSuppliedArguments) {
 			outerWrapper = new Rule({ selector: '&', source: atRule.source });
 			outerWrapper.raws.semicolon = true;
+			state.desugaredNestingRules.add(outerWrapper);
 
 			argumentPrivateRule = new AtRule({ name: 'private', source: atRule.source });
 			outerWrapper.append(argumentPrivateRule);
@@ -256,6 +261,17 @@ function expandApply(atRule: AtRule, mixins: Map<string, Mixin>, transpiler: Tra
 
 		expandApply(nestedAtRule, mixins, transpiler, false, nestedStack, state);
 	}
+}
+
+function unwrapDesugaredNestingRules(state: State): void {
+	// `& {}` wrappers are inserted during desugaring to scope parameters and arguments.
+	// They carry no meaning once transpiled, so they are replaced with their contents
+	// as a final cleanup step.
+	for (const wrapper of state.desugaredNestingRules) {
+		wrapper.replaceWith(...wrapper.nodes || []);
+	}
+
+	state.desugaredNestingRules.clear();
 }
 
 function replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>): void {
