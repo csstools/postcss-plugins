@@ -4,6 +4,14 @@
 
 - Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#306) (patch)
 - Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#308) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`3.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#307) (patch)
+- Updated [`@csstools/postcss-media-queries-aspect-ratio-number-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#508) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#508) (patch)
+- Updated [`postcss-custom-media`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) to [`12.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media/CHANGELOG.md#1203) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`15.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1503) (patch)
+- Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`9.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#903) (patch)
 
 ### 5.0.14
 
