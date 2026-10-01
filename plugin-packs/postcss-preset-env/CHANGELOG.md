@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (patch)
+### 11.5.5
+
+_October 1, 2026_
 
 Notable changes:
 - `postcss-mixins` now implements more of the current spec
