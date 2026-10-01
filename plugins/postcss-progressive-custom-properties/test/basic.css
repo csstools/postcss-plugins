@@ -390,3 +390,26 @@
 
 	result: var(--a);
 }
+
+:root {
+	--firebrick: rgba(255, 155, 186, 0.5);
+	--firebrick: color(display-p3 1 0.58119 0.72367 / 0.5);
+	--firebrick: oklch(80% 0.4 0.039 / 50%);
+}
+
+
+:root {
+	--firebrick-2: rgba(255, 155, 186, 0.5);
+}
+
+@media (color-gamut: p3) {
+	:root {
+		--firebrick-2: color(display-p3 1 0.58119 0.72367 / 0.5);
+	}
+}
+
+@media (color-gamut: rec2020) {
+	:root {
+		--firebrick-2: oklch(80% 0.4 0.039 / 50%);
+	}
+}
