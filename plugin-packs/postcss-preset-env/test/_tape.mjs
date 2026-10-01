@@ -453,7 +453,22 @@ postcssTape(plugin)({
 	'postcss-functions': {
 		message: 'does not clone `@function` rules when generating conditional rules',
 		options: {
+			stage: 0,
+			browsers: '> 0%',
+		},
+	},
+	'postcss-functions:preserve-true': {
+		message: 'does not clone `@function` rules when generating conditional rules with { preserve: true }',
+		options: {
 			preserve: true,
+			stage: 0,
+			browsers: '> 0%',
+		},
+	},
+	'postcss-functions:preserve-false': {
+		message: 'does not clone `@function` rules when generating conditional rules with { preserve: false }',
+		options: {
+			preserve: false,
 			stage: 0,
 			browsers: '> 0%',
 		},

@@ -8,3 +8,8 @@
 	--point-five: 0.5;
 	--firebrick-var: oklch(40% var(--point-five) 0.1324 / var(--opacity-50));
 }
+
+
+:root {
+	--firebrick: oklch(80% 0.4 0.039 / 50%);
+}

@@ -82,32 +82,22 @@
 
 @function --double-position-gradients() {
 	result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
-	result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
 
 @function --double-position-gradients-var() {
 	--local: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 
 	result: var(--local);
-
-@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
-	--local: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
-}
 }
 
 @function --gradients-interpolation-method() {
 	result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
-	result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 }
 
 @function --gradients-interpolation-method-var() {
 	--local: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 
 	result: var(--local);
-
-@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
-	--local: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
-}
 }
 
 @function --image-function() {
@@ -122,7 +112,6 @@
 
 @function --image-set-function() {
 	result: url(img/test.png);
-	result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	result: url(img/test-2x.png);
 	}
@@ -130,7 +119,6 @@
 
 @function --image-set-function-var() {
 	--local: url(img/test.png);
-	--local: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 
 	result: var(--local);
 
@@ -151,17 +139,12 @@
 
 @function --logical-viewport-units() {
 	result: 2vw;
-	result: 2vi;
 }
 
 @function --logical-viewport-units-var() {
 	--local: 2vw;
 
 	result: var(--local);
-
-@supports (width: 1vi) {
-	--local: 2vi;
-}
 }
 
 @function --gamut-mapping() {
@@ -189,12 +172,12 @@
 }
 
 @function --system-ui-font-family() {
-	result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	result: -apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
 	result: system-ui;
 }
 
 @function --system-ui-font-family-var() {
-	--local: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	--local: -apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
 
 	result: var(--local);
 }
