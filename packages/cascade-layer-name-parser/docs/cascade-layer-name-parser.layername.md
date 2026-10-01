@@ -74,8 +74,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 

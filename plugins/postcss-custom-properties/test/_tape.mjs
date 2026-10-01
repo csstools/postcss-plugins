@@ -18,6 +18,9 @@ postcssTape(plugin)({
 	'cascade-layers-nested': {
 		message: 'qualifies nested cascade layer names exactly once',
 	},
+	'cascade-layers-escaped': {
+		message: 'treats escaped layer names as their unescaped equivalent',
+	},
 	'cyclic-on-different-element-1': {
 		message: 'supports cyclic variables on different elements',
 	},

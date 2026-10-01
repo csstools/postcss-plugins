@@ -4,10 +4,9 @@ import { ParseError } from '@csstools/css-tokenizer';
 export declare function addLayerToModel(layers: Array<LayerName>, currentLayerNames: Array<LayerName>): void;
 
 export declare class LayerName {
-    #private;
+    parts: Array<CSSToken>;
     constructor(parts: Array<CSSToken>);
     tokens(): Array<CSSToken>;
-    get parts(): Array<CSSToken>;
     slice(start: number, end: number): LayerName;
     concat(other: LayerName): LayerName;
     segments(): Array<string>;

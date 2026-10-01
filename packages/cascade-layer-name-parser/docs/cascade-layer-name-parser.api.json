@@ -475,7 +475,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "get parts(): "
+                  "text": "parts: "
                 },
                 {
                   "kind": "Reference",
@@ -500,7 +500,7 @@
                   "text": ";"
                 }
               ],
-              "isReadonly": true,
+              "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
               "name": "parts",

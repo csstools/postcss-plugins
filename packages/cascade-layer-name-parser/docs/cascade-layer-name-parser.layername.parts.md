@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-get parts(): Array<CSSToken>;
+parts: Array<CSSToken>;
 ```
