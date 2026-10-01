@@ -190,7 +190,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/utilities!hasFallback:function(1)",
-          "docComment": "/**\n * Check if a declaration has a fallback. Returns true if a declaration with the same property name appears before the current declaration.\n *\n * @param node - The declaration node to check\n *\n * @returns {boolean} Whether the declaration has a fallback\n */\n",
+          "docComment": "/**\n * Check if a declaration has a fallback.\n * Returns true if a declaration with the same property name appears before the current declaration.\n *\n * @param node - The declaration node to check\n *\n * @returns {boolean} Whether the declaration has a fallback\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

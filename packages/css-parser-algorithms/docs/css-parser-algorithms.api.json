@@ -177,7 +177,7 @@
   },
   "kind": "Package",
   "canonicalReference": "@csstools/css-parser-algorithms!",
-  "docComment": "/**\n * Parse CSS following the {@link https://drafts.csswg.org/css-syntax/#parsing | CSS Syntax Level 3 specification}.\n *\n * @remarks\n *\n * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.\n *\n * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.\n *\n * The implementation of the AST nodes is kept lightweight and simple. Do not expect magic methods, instead assume that arrays and class instances behave like any other JavaScript.\n *\n * @example\n *\n * Parse a string of CSS into a component value:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue } from '@csstools/css-parser-algorithms';\n *\n * const myCSS = `calc(1px * 2)`;\n *\n * const componentValue = parseComponentValue(tokenize({\n * \tcss: myCSS,\n * }));\n *\n * console.log(componentValue);\n * ```\n *\n * @example\n *\n * Use the right algorithm for the job.\n *\n * Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures. However, the opposite is not true.\n *\n * If your context allows a list of component values, use {@link parseListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';\n *\n * parseListOfComponentValues(tokenize({ css: `10x 20px` }));\n * ```\n *\n * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));\n * ```\n *\n * @example\n *\n * Use the stateful walkers to keep track of the context of a given component value.\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser-algorithms';\n *\n * const myCSS = `calc(1px * (5 / 2))`;\n *\n * const componentValue = parseComponentValue(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * componentValue.walk((entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * Parse CSS following the {@link https://drafts.csswg.org/css-syntax/#parsing | CSS Syntax Level 3 specification}.\n *\n * @remarks\n *\n * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.\n *\n * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task.\n * For many applications it is sufficient to work with tokens.\n * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.\n *\n * The implementation of the AST nodes is kept lightweight and simple.\n * Do not expect magic methods, instead assume that arrays and class instances behave like any other JavaScript.\n *\n * @example\n *\n * Parse a string of CSS into a component value:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue } from '@csstools/css-parser-algorithms';\n *\n * const myCSS = `calc(1px * 2)`;\n *\n * const componentValue = parseComponentValue(tokenize({\n * \tcss: myCSS,\n * }));\n *\n * console.log(componentValue);\n * ```\n *\n * @example\n *\n * Use the right algorithm for the job.\n *\n * Algorithms that can parse larger structures (comma-separated lists, ...) can also parse smaller structures.\n * However, the opposite is not true.\n *\n * If your context allows a list of component values, use {@link parseListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';\n *\n * parseListOfComponentValues(tokenize({ css: `10x 20px` }));\n * ```\n *\n * If your context allows a comma-separated list of component values, use {@link parseCommaSeparatedListOfComponentValues}:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';\n *\n * parseCommaSeparatedListOfComponentValues(tokenize({ css: `20deg, 50%, 30%` }));\n * ```\n *\n * @example\n *\n * Use the stateful walkers to keep track of the context of a given component value.\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseComponentValue, isSimpleBlockNode } from '@csstools/css-parser-algorithms';\n *\n * const myCSS = `calc(1px * (5 / 2))`;\n *\n * const componentValue = parseComponentValue(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * componentValue.walk((entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n * @packageDocumentation\n */\n",
   "name": "@csstools/css-parser-algorithms",
   "preserveMemberOrder": false,
   "members": [
@@ -239,7 +239,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!CommentNode#tokens:member(1)",
-              "docComment": "/**\n * Retrieve the tokens for the current comment. This is the inverse of parsing from a list of tokens.\n */\n",
+              "docComment": "/**\n * Retrieve the tokens for the current comment.\n * This is the inverse of parsing from a list of tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -284,7 +284,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!CommentNode#toString:member(1)",
-              "docComment": "/**\n * Convert the current comment to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.\n */\n",
+              "docComment": "/**\n * Convert the current comment to a string.\n * This is not a true serialization.\n * It is purely a concatenation of the string representation of the tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -617,7 +617,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#at:member(1)",
-              "docComment": "/**\n * Retrieve the item at the given index in the current node. For most node types this will be trivially implemented as `this.value[index]`.\n */\n",
+              "docComment": "/**\n * Retrieve the item at the given index in the current node.\n * For most node types this will be trivially implemented as `this.value[index]`.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -670,7 +670,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#forEach:member(1)",
-              "docComment": "/**\n * Iterates over each item in the `value` array of the current node.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
+              "docComment": "/**\n * Iterates over each item in the `value` array of the current node.\n *\n * @param cb - The callback function to execute for each item.\n * The function receives an object containing the current node (`node`), its parent (`parent`),\n * and an optional `state` object.\n * A second parameter is the index of the current node.\n * The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function.\n * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -814,7 +814,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#indexOf:member(1)",
-              "docComment": "/**\n * Retrieve the index of the given item in the current node. For most node types this will be trivially implemented as `this.value.indexOf(item)`.\n */\n",
+              "docComment": "/**\n * Retrieve the index of the given item in the current node.\n * For most node types this will be trivially implemented as `this.value.indexOf(item)`.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -863,7 +863,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#value:member",
-              "docComment": "/**\n * The contents of the `Function` or `Simple Block`. This is a list of component values.\n */\n",
+              "docComment": "/**\n * The contents of the `Function` or `Simple Block`.\n * This is a list of component values.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -907,7 +907,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!ContainerNodeBaseClass#walk:member(1)",
-              "docComment": "/**\n * Walks the current node and all its children.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
+              "docComment": "/**\n * Walks the current node and all its children.\n *\n * @param cb - The callback function to execute for each item.\n * The function receives an object containing the current node (`node`), its parent (`parent`),\n * and an optional `state` object.\n * A second parameter is the index of the current node.\n * The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function.\n * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n * However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1054,7 +1054,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!forEach:function(1)",
-          "docComment": "/**\n * Iterates over each item in a list of component values.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
+          "docComment": "/**\n * Iterates over each item in a list of component values.\n *\n * @param cb - The callback function to execute for each item.\n * The function receives an object containing the current node (`node`), its parent (`parent`),\n * and an optional `state` object.\n * A second parameter is the index of the current node.\n * The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function.\n * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1312,7 +1312,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode#endToken:member",
-              "docComment": "/**\n * The token for the closing parenthesis of the function. If the function is unclosed, this will be an EOF token.\n */\n",
+              "docComment": "/**\n * The token for the closing parenthesis of the function.\n * If the function is unclosed, this will be an EOF token.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1343,7 +1343,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode#getName:member(1)",
-              "docComment": "/**\n * Retrieve the name of the current function. This is the parsed and unescaped name of the function.\n */\n",
+              "docComment": "/**\n * Retrieve the name of the current function.\n * This is the parsed and unescaped name of the function.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1405,7 +1405,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode#normalize:member(1)",
-              "docComment": "/**\n * Normalize the current function: 1. if the \"endToken\" is EOF, replace with a \")-token\"\n */\n",
+              "docComment": "/**\n * Normalize the current function:\n * 1. if the \"endToken\" is EOF, replace with a \")-token\"\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1436,7 +1436,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode#tokens:member(1)",
-              "docComment": "/**\n * Retrieve the tokens for the current function. This is the inverse of parsing from a list of tokens.\n */\n",
+              "docComment": "/**\n * Retrieve the tokens for the current function.\n * This is the inverse of parsing from a list of tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1481,7 +1481,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode#toString:member(1)",
-              "docComment": "/**\n * Convert the current function to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.\n */\n",
+              "docComment": "/**\n * Convert the current function to a string.\n * This is not a true serialization.\n * It is purely a concatenation of the string representation of the tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1550,7 +1550,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!gatherNodeAncestry:function(1)",
-          "docComment": "/**\n * AST nodes do not have a `parent` property or method. This makes it harder to traverse the AST upwards. This function builds a `Map<Child, Parent>` that can be used to lookup ancestors of a node.\n *\n * @remarks\n *\n * There is no magic behind this or the map it returns. Mutating the AST will not update the map.\n *\n * Types are erased and any content of the map has type `unknown`. If someone knows a clever way to type this, please let us know.\n *\n * @example\n * ```js\n * const ancestry = gatherNodeAncestry(mediaQuery);\n * mediaQuery.walk((entry) => {\n * \tconst node = entry.node; // directly exposed\n * \tconst parent = entry.parent; // directly exposed\n * \tconst grandParent: unknown = ancestry.get(parent); // lookup\n *\n * \tconsole.log('node', node);\n * \tconsole.log('parent', parent);\n * \tconsole.log('grandParent', grandParent);\n * });\n * ```\n *\n */\n",
+          "docComment": "/**\n * AST nodes do not have a `parent` property or method.\n * This makes it harder to traverse the AST upwards.\n * This function builds a `Map<Child, Parent>` that can be used to lookup ancestors of a node.\n *\n * @remarks\n *\n * There is no magic behind this or the map it returns.\n * Mutating the AST will not update the map.\n *\n * Types are erased and any content of the map has type `unknown`.\n * If someone knows a clever way to type this, please let us know.\n *\n * @example\n * ```js\n * const ancestry = gatherNodeAncestry(mediaQuery);\n * mediaQuery.walk((entry) => {\n * \tconst node = entry.node; // directly exposed\n * \tconst parent = entry.parent; // directly exposed\n * \tconst grandParent: unknown = ancestry.get(parent); // lookup\n *\n * \tconsole.log('node', node);\n * \tconsole.log('parent', parent);\n * \tconsole.log('grandParent', grandParent);\n * });\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1600,7 +1600,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!isCommentNode:function(1)",
-          "docComment": "/**\n * Check if the current object is a `CommentNode`. This is a type guard.\n */\n",
+          "docComment": "/**\n * Check if the current object is a `CommentNode`.\n * This is a type guard.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1655,7 +1655,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!isFunctionNode:function(1)",
-          "docComment": "/**\n * Check if the current object is a `FunctionNode`. This is a type guard.\n */\n",
+          "docComment": "/**\n * Check if the current object is a `FunctionNode`.\n * This is a type guard.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1710,7 +1710,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!isSimpleBlockNode:function(1)",
-          "docComment": "/**\n * Check if the current object is a `SimpleBlockNode`. This is a type guard.\n */\n",
+          "docComment": "/**\n * Check if the current object is a `SimpleBlockNode`.\n * This is a type guard.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1765,7 +1765,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!isTokenNode:function(1)",
-          "docComment": "/**\n * Check if the current object is a `TokenNode`. This is a type guard.\n */\n",
+          "docComment": "/**\n * Check if the current object is a `TokenNode`.\n * This is a type guard.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1820,7 +1820,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!isWhitespaceNode:function(1)",
-          "docComment": "/**\n * Check if the current object is a `WhitespaceNode`. This is a type guard.\n */\n",
+          "docComment": "/**\n * Check if the current object is a `WhitespaceNode`.\n * This is a type guard.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1875,7 +1875,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!isWhiteSpaceOrCommentNode:function(1)",
-          "docComment": "/**\n * Check if the current object is a `WhiteSpaceNode` or a `CommentNode`. This is a type guard.\n */\n",
+          "docComment": "/**\n * Check if the current object is a `WhiteSpaceNode` or a `CommentNode`.\n * This is a type guard.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2233,7 +2233,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!replaceComponentValues:function(1)",
-          "docComment": "/**\n * Replace specific component values in a list of component values. A helper for the most common and simplistic cases when mutating an AST.\n */\n",
+          "docComment": "/**\n * Replace specific component values in a list of component values.\n * A helper for the most common and simplistic cases when mutating an AST.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2481,7 +2481,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@csstools/css-parser-algorithms!SimpleBlockNode#endToken:member",
-              "docComment": "/**\n * The token for the closing token of the block. If the block is closed it will be the mirror variant of the `startToken`. If the block is unclosed, this will be an EOF token.\n */\n",
+              "docComment": "/**\n * The token for the closing token of the block.\n * If the block is closed it will be the mirror variant of the `startToken`.\n * If the block is unclosed, this will be an EOF token.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2512,7 +2512,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!SimpleBlockNode#normalize:member(1)",
-              "docComment": "/**\n * Normalize the current simple block 1. if the \"endToken\" is EOF, replace with the mirror token of the \"startToken\"\n */\n",
+              "docComment": "/**\n * Normalize the current simple block\n * 1. if the \"endToken\" is EOF, replace with the mirror token of the \"startToken\"\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2574,7 +2574,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!SimpleBlockNode#tokens:member(1)",
-              "docComment": "/**\n * Retrieve the tokens for the current simple block. This is the inverse of parsing from a list of tokens.\n */\n",
+              "docComment": "/**\n * Retrieve the tokens for the current simple block.\n * This is the inverse of parsing from a list of tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2619,7 +2619,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!SimpleBlockNode#toString:member(1)",
-              "docComment": "/**\n * Convert the current simple block to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.\n */\n",
+              "docComment": "/**\n * Convert the current simple block to a string.\n * This is not a true serialization.\n * It is purely a concatenation of the string representation of the tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2778,7 +2778,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!stringify:function(1)",
-          "docComment": "/**\n * Concatenate the string representation of a collection of component values. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for token lists that are also valid.\n */\n",
+          "docComment": "/**\n * Concatenate the string representation of a collection of component values.\n * This is not a proper serializer that will handle escaping and whitespace.\n * It only produces valid CSS for token lists that are also valid.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2935,7 +2935,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!TokenNode#toString:member(1)",
-              "docComment": "/**\n * Convert the current token to a string. This is not a true serialization. It is purely the string representation of token.\n */\n",
+              "docComment": "/**\n * Convert the current token to a string.\n * This is not a true serialization.\n * It is purely the string representation of token.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3031,7 +3031,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!walk:function(1)",
-          "docComment": "/**\n * Walks each item in a list of component values all of their children.\n *\n * @param cb - The callback function to execute for each item. The function receives an object containing the current node (`node`), its parent (`parent`), and an optional `state` object. A second parameter is the index of the current node. The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function. The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration. However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser-algorithms';\n *\n * const myCSS = `calc(1px * (5 / 2)) 10px`;\n *\n * const componentValues = parseListOfComponentValues(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * walk(componentValues, (entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n */\n",
+          "docComment": "/**\n * Walks each item in a list of component values all of their children.\n *\n * @param cb - The callback function to execute for each item.\n * The function receives an object containing the current node (`node`), its parent (`parent`),\n * and an optional `state` object.\n * A second parameter is the index of the current node.\n * The function can return `false` to stop the iteration.\n *\n * @param state - An optional state object that can be used to pass additional information to the callback function.\n * The state object is cloned for each iteration. This means that changes to the state object are not reflected in the next iteration.\n * However changes are passed down to child node iterations.\n *\n * @returns `false` if the iteration was halted, `undefined` otherwise.\n *\n * @example\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n * import { parseListOfComponentValues, isSimpleBlockNode } from '@csstools/css-parser-algorithms';\n *\n * const myCSS = `calc(1px * (5 / 2)) 10px`;\n *\n * const componentValues = parseListOfComponentValues(tokenize({ css: myCSS }));\n *\n * let state = { inSimpleBlock: false };\n * walk(componentValues, (entry) => {\n * \tif (isSimpleBlockNode(entry)) {\n * \t\tentry.state.inSimpleBlock = true;\n * \t\treturn;\n * \t}\n *\n * \tif (entry.state.inSimpleBlock) {\n * \t\tconsole.log(entry.node.toString()); // `5`, ...\n * \t}\n * }, state);\n * ```\n *\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3184,7 +3184,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-parser-algorithms!walkerIndexGenerator:function(1)",
-          "docComment": "/**\n * Generate a function that finds the next element that should be visited when walking an AST. Rules : 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration. 2. the next element always appears after the current index. 3. the next element always exists in the list. 4. replacing an element does not cause the replaced element to be visited. 5. removing an element does not cause elements to be skipped. 6. an element added later in the list will be visited.\n */\n",
+          "docComment": "/**\n * Generate a function that finds the next element that should be visited when walking an AST.\n * Rules :\n * 1. the previous iteration is used as a reference, so any checks are relative to the start of the current iteration.\n * 2. the next element always appears after the current index.\n * 3. the next element always exists in the list.\n * 4. replacing an element does not cause the replaced element to be visited.\n * 5. removing an element does not cause elements to be skipped.\n * 6. an element added later in the list will be visited.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3318,7 +3318,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!WhitespaceNode#tokens:member(1)",
-              "docComment": "/**\n * Retrieve the tokens for the current whitespace. This is the inverse of parsing from a list of tokens.\n */\n",
+              "docComment": "/**\n * Retrieve the tokens for the current whitespace.\n * This is the inverse of parsing from a list of tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3363,7 +3363,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@csstools/css-parser-algorithms!WhitespaceNode#toString:member(1)",
-              "docComment": "/**\n * Convert the current whitespace to a string. This is not a true serialization. It is purely a concatenation of the string representation of the tokens.\n */\n",
+              "docComment": "/**\n * Convert the current whitespace to a string.\n * This is not a true serialization.\n * It is purely a concatenation of the string representation of the tokens.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

@@ -190,7 +190,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/selector-resolve-nested!flattenNestedSelector:function(1)",
-          "docComment": "/**\n * Flatten a nested selector against a given parent selector.\n *\n * ⚠️ This is not a method to generate the equivalent un-nested selector. It is purely a method to construct a single selector AST that contains the parts of both the current and parent selector. It will not have the correct specificity and it will not match the right elements when used as a selector. It will not always serialize to a valid selector.\n *\n * @param selector - The selector to resolve.\n *\n * @param parentSelector - The parent selector to resolve against.\n *\n * @returns The resolved selector.\n */\n",
+          "docComment": "/**\n * Flatten a nested selector against a given parent selector.\n *\n * ⚠️ This is not a method to generate the equivalent un-nested selector.\n * It is purely a method to construct a single selector AST that contains the parts of both the current and parent selector.\n * It will not have the correct specificity and it will not match the right elements when used as a selector.\n * It will not always serialize to a valid selector.\n *\n * @param selector - The selector to resolve.\n *\n * @param parentSelector - The parent selector to resolve against.\n *\n * @returns The resolved selector.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

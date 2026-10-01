@@ -241,7 +241,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "@csstools/css-color-parser!ColorData:interface",
-          "docComment": "/**\n * A color data object. It contains as much information as possible about the color and the original parsed syntax.\n */\n",
+          "docComment": "/**\n * A color data object.\n * It contains as much information as possible about the color and the original parsed syntax.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -256,7 +256,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-color-parser!ColorData#alpha:member",
-              "docComment": "/**\n * The alpha channel. This is either a number between `0` and `1` or a `ComponentValue` object.\n *\n * Since most computations are not dependent on the alpha channel, we allow things like `var(--some-alpha)` as an alpha channel value for most inputs.\n */\n",
+              "docComment": "/**\n * The alpha channel.\n * This is either a number between `0` and `1` or a `ComponentValue` object.\n *\n * Since most computations are not dependent on the alpha channel,\n * we allow things like `var(--some-alpha)` as an alpha channel value for most inputs.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -288,7 +288,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-color-parser!ColorData#channels:member",
-              "docComment": "/**\n * The color channels. This is always an array of three numbers but the channels can only be interpreted by looking at the color notation.\n */\n",
+              "docComment": "/**\n * The color channels.\n * This is always an array of three numbers\n * but the channels can only be interpreted by looking at the color notation.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -316,7 +316,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-color-parser!ColorData#colorNotation:member",
-              "docComment": "/**\n * The color notation of the color data.\n *\n * We use \"color notation\" and not \"color space\" because these represent the original notation and not the actual color space. The actual color space is however always implied by the color notation.\n */\n",
+              "docComment": "/**\n * The color notation of the color data.\n *\n * We use \"color notation\" and not \"color space\" because these represent the original notation and not the actual color space.\n * The actual color space is however always implied by the color notation.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -979,7 +979,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-color-parser!serializeOKLCH:function(1)",
-          "docComment": "/**\n * Convert color data to component values in the OKLCH color space. The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
+          "docComment": "/**\n * Convert color data to component values in the OKLCH color space.\n * The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1026,7 +1026,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-color-parser!serializeP3:function(1)",
-          "docComment": "/**\n * Convert color data to component values in the display-p3 color space. The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @param gamutMapping - Whether to perform gamut mapping, defaults to `true`.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
+          "docComment": "/**\n * Convert color data to component values in the display-p3 color space.\n * The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @param gamutMapping - Whether to perform gamut mapping, defaults to `true`.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1089,7 +1089,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-color-parser!serializeRGB:function(1)",
-          "docComment": "/**\n * Convert color data to component values in the srgb color space. The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @param gamutMapping - Whether to perform gamut mapping, defaults to `true`.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
+          "docComment": "/**\n * Convert color data to component values in the srgb color space.\n * The return value can be converted to a string by calling `toString()` on it.\n *\n * @param color - The color data to be serialized.\n *\n * @param gamutMapping - Whether to perform gamut mapping, defaults to `true`.\n *\n * @returns {FunctionNode} The serialized color data as a FunctionNode object.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
