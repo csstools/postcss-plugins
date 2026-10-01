@@ -50,3 +50,18 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: 2em;
+	result: 2ic;
+}
+
+@function --b() {
+	--a: 2em;
+
+	result: var(--a);
+
+@supports (font-size: 1ic) {
+	--a: 2ic;
+}
+}

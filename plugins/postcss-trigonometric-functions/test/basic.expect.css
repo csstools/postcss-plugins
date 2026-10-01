@@ -220,3 +220,13 @@
 		--foo: calc(0.70711);
 	}
 }
+
+@function --a() {
+	result: calc(0.70711);
+}
+
+@function --b() {
+	--a: calc(0.70711);
+
+	result: var(--a);
+}

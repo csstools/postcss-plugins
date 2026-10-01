@@ -685,3 +685,17 @@
 	--prop-8: 2lvb;
 }
 }
+
+@function --a() {
+	result: color(display-p3 0.1 0.1 0.1);
+}
+
+@function --b() {
+	--a: rgb(26, 26, 26);
+
+	result: var(--a);
+
+@supports (color: color(display-p3 0 0 0%)) {
+	--a: color(display-p3 0.1 0.1 0.1);
+}
+}

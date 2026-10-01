@@ -151,3 +151,18 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+@function --b() {
+	--a: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+
+	result: var(--a);
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+	--a: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+}

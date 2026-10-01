@@ -177,3 +177,13 @@
 		--foo: oklch(60% 0.1250 180);
 	}
 }
+
+@function --a() {
+	result: oklch(50% 50% 0);
+}
+
+@function --b() {
+	--a: oklch(50% 50% 0);
+
+	result: var(--a);
+}

@@ -1,6 +1,7 @@
 // ids ordered by required execution, then alphabetically
 export default [
 	'mixins',
+	'custom-functions',
 
 	'custom-media-queries',
 	'environment-variables', // run environment-variables here to access transpiled custom media params and properties

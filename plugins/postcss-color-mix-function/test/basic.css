@@ -193,3 +193,13 @@
 		--color: color-mix(#09232c, white 50%);
 	}
 }
+
+@function --a() {
+	result: color-mix(in lch, purple 50%, plum 50%);
+}
+
+@function --b() {
+	--a: color-mix(in lch, purple 50%, plum 50%);
+
+	result: var(--a);
+}

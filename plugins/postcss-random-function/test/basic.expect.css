@@ -1,5 +1,5 @@
 .random-1 {
-	z-index: calc(2.09594);
+	z-index: calc(7.35131);
 }
 
 .random-2 {
@@ -7,15 +7,15 @@
 }
 
 .random-3 {
-	z-index: calc(0.56703);
+	z-index: calc(5.34723);
 }
 
 .random-4 {
-	z-index: calc(6.78979);
+	z-index: calc(1.33748);
 }
 
 .random-11 {
-	width: calc(2.09594px);
+	width: calc(7.35131px);
 }
 
 .random-12 {
@@ -23,68 +23,68 @@
 }
 
 .random-13 {
-	width: calc(0.56703px);
+	width: calc(5.34723px);
 }
 
 .random-14 {
-	width: calc(6.78979px);
+	width: calc(1.33748px);
 }
 
 .random-15 {
 	padding: calc(5px) calc(5px);
-	margin: calc(2.09594px) calc(2.09594px);
-	inset: calc(0.56703px) calc(0.56703px);
-	border-top-right-radius: calc(2.09594px);
-	border-top-left-radius: calc(2.09594px);
-	border-bottom-right-radius: calc(0.56703px);
-	border-bottom-left-radius: calc(0.56703px);
+	margin: calc(7.35131px) calc(7.35131px);
+	inset: calc(5.34723px) calc(5.34723px);
+	border-top-right-radius: calc(7.35131px);
+	border-top-left-radius: calc(7.35131px);
+	border-bottom-right-radius: calc(5.34723px);
+	border-bottom-left-radius: calc(5.34723px);
 }
 
 .random-15 {
 	padding: calc(5px) calc(5px);
-	margin: calc(2.09594px) calc(2.09594px);
-	inset: calc(0.56703px) calc(0.56703px);
-	border-top-right-radius: calc(2.09594px);
-	border-top-left-radius: calc(2.09594px);
-	border-bottom-right-radius: calc(0.56703px);
-	border-bottom-left-radius: calc(0.56703px);
+	margin: calc(7.35131px) calc(7.35131px);
+	inset: calc(5.34723px) calc(5.34723px);
+	border-top-right-radius: calc(7.35131px);
+	border-top-left-radius: calc(7.35131px);
+	border-bottom-right-radius: calc(5.34723px);
+	border-bottom-left-radius: calc(5.34723px);
 }
 
 .random-15-b {
 	padding: calc(5px) calc(5px);
-	margin: calc(2.09594px) calc(2.09594px);
-	inset: calc(0.56703px) calc(0.56703px);
-	border-top-right-radius: calc(2.09594px);
-	border-top-left-radius: calc(2.09594px);
-	border-bottom-right-radius: calc(0.56703px);
-	border-bottom-left-radius: calc(0.56703px);
+	margin: calc(7.35131px) calc(7.35131px);
+	inset: calc(5.34723px) calc(5.34723px);
+	border-top-right-radius: calc(7.35131px);
+	border-top-left-radius: calc(7.35131px);
+	border-bottom-right-radius: calc(5.34723px);
+	border-bottom-left-radius: calc(5.34723px);
 }
 
 .random-16 {
-	margin: calc(2.90875px) calc(2.90875px);
-	inset: calc(4.37511px) calc(4.37511px);
-	border-top-right-radius: calc(2.90875px);
-	border-top-left-radius: calc(2.90875px);
-	border-bottom-right-radius: calc(4.37511px);
-	border-bottom-left-radius: calc(4.37511px);
+	margin: calc(7.56246px) calc(7.56246px);
+	inset: calc(4.3901px) calc(4.3901px);
+	border-top-right-radius: calc(7.56246px);
+	border-top-left-radius: calc(7.56246px);
+	border-bottom-right-radius: calc(4.3901px);
+	border-bottom-left-radius: calc(4.3901px);
 }
 
 .random-16 {
-	margin: calc(2.90875px) calc(2.90875px);
-	inset: calc(4.37511px) calc(4.37511px);
-	border-top-right-radius: calc(2.90875px);
-	border-top-left-radius: calc(2.90875px);
-	border-bottom-right-radius: calc(4.37511px);
-	border-bottom-left-radius: calc(4.37511px);
+	margin: calc(7.56246px) calc(7.56246px);
+	inset: calc(4.3901px) calc(4.3901px);
+	border-top-right-radius: calc(7.56246px);
+	border-top-left-radius: calc(7.56246px);
+	border-bottom-right-radius: calc(4.3901px);
+	border-bottom-left-radius: calc(4.3901px);
 }
 
 .random-16-b {
-	margin: calc(5.45597px) calc(5.45597px);
-	inset: calc(7.17757px) calc(7.17757px);
-	border-top-right-radius: calc(5.45597px);
-	border-top-left-radius: calc(5.45597px);
-	border-bottom-right-radius: calc(7.17757px);
-	border-bottom-left-radius: calc(7.17757px);
+	margin: calc(8.94629px) calc(8.94629px);
+	inset: calc(2.92643px) calc(2.92643px);
+	border-top-right-radius: calc(8.94629px);
+	border-top-left-radius: calc(8.94629px);
+	border-bottom-right-radius: calc(2.92643px);
+	border-bottom-left-radius: calc(2.92643px);
 }
 
 .ignore-1 {
@@ -102,11 +102,21 @@
 
 @property --foo {
 	inherits: false;
-	initial-value: calc(2.09594);
+	initial-value: calc(7.35131);
 }
 
 @keyframes --foo {
 	to {
-		--foo: calc(2.09594);
+		--foo: calc(7.35131);
 	}
+}
+
+@function --a() {
+	result: calc(7.35131px);
+}
+
+@function --b() {
+	--a: calc(7.35131px);
+
+	result: var(--a);
 }

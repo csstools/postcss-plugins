@@ -14,6 +14,7 @@ import type { pluginOptions as postcssColorMixVariadicFunctionArgumentsOptions }
 import type { pluginOptions as postcssContainerRulePreludeListOptions } from '@csstools/postcss-container-rule-prelude-list';
 import type { pluginOptions as postcssContentAltTextOptions } from '@csstools/postcss-content-alt-text';
 import type { pluginOptions as postcssContrastColorFunctionOptions } from '@csstools/postcss-contrast-color-function';
+import type { pluginOptions as postcssCustomFunctionsOptions } from '@csstools/postcss-custom-functions';
 import type { pluginOptions as postcssCustomMediaOptions } from 'postcss-custom-media';
 import type { pluginOptions as postcssCustomPropertiesOptions } from 'postcss-custom-properties';
 import type { pluginOptions as postcssCustomSelectorsOptions } from 'postcss-custom-selectors';
@@ -107,6 +108,8 @@ export type pluginsOptions = {
 	'content-alt-text'?: subPluginOptions<postcssContentAltTextOptions>
 	/** plugin options for "@csstools/postcss-contrast-color-function" */
 	'contrast-color-function'?: subPluginOptions<postcssContrastColorFunctionOptions>
+	/** plugin options for "@csstools/postcss-custom-functions" */
+	'custom-functions'?: subPluginOptions<postcssCustomFunctionsOptions>
 	/** plugin options for "postcss-custom-media" */
 	'custom-media-queries'?: subPluginOptions<postcssCustomMediaOptions>
 	/** plugin options for "postcss-custom-properties" */

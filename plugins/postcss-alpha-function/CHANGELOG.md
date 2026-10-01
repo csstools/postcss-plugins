@@ -1,5 +1,9 @@
 # Changes to PostCSS Alpha Function
 
+### Unreleased (patch)
+
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+
 ### 2.0.15
 
 _October 1, 2026_

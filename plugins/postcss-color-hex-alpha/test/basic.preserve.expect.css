@@ -39,3 +39,15 @@ to-clone {
 		--color: #9823f8a9;
 	}
 }
+
+@function --a() {
+	result: rgba(152,35,248,0.66275);
+	result: #9823f8a9;
+}
+
+@function --b() {
+	--a: rgba(152,35,248,0.66275);
+	--a: #9823f8a9;
+
+	result: var(--a);
+}

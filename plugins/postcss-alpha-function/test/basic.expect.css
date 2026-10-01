@@ -91,3 +91,13 @@
 		--color: oklch(from oklch(2 1 0) l c h / calc(alpha / 2));
 	}
 }
+
+@function --a() {
+	result: rgb(from red r g b / 0.5);
+}
+
+@function --b() {
+	--a: rgb(from red r g b / 0.5);
+
+	result: var(--a);
+}

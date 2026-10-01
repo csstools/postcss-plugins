@@ -379,3 +379,14 @@
 	--prop-8: 1px;
 	--prop-8: 2lvb;
 }
+
+@function --a() {
+	result: color(display-p3 0.1 0.1 0.1);
+}
+
+@function --b() {
+	--a: rgb(26, 26, 26);
+	--a: color(display-p3 0.1 0.1 0.1);
+
+	result: var(--a);
+}

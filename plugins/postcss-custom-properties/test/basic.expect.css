@@ -298,3 +298,13 @@ html {
 	content: "/" /* rtl: var(--bs-breadcrumb-divider, "/") */;
 	content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 }
+
+@function --a() {
+	result: var(--color);
+}
+
+@function --b() {
+	--a: var(--color);
+
+	result: var(--a);
+}

@@ -87,3 +87,18 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: 2vw;
+	result: 2vi;
+}
+
+@function --b() {
+	--a: 2vw;
+
+	result: var(--a);
+
+@supports (width: 1vi) {
+	--a: 2vi;
+}
+}

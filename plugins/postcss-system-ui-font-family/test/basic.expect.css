@@ -25,3 +25,14 @@
 .comment-between-idents {
 	font-family: system-ui,-apple-system,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif, Segoe UI;
 }
+
+@function --a() {
+	result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	result: system-ui;
+}
+
+@function --b() {
+	--a: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+
+	result: var(--a);
+}

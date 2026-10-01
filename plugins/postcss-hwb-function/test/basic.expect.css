@@ -33,3 +33,13 @@ to-clone {
 		--foo: rgb(179, 157, 51);
 	}
 }
+
+@function --a() {
+	result: rgba(153, 153, 153, var(--alpha));
+}
+
+@function --b() {
+	--a: rgba(153, 153, 153, var(--alpha));
+
+	result: var(--a);
+}

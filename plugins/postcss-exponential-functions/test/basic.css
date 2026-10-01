@@ -209,3 +209,13 @@
 .foo {
 	z-index: exp(1);
 }
+
+@function --a() {
+	result: pow(2, 3);
+}
+
+@function --b() {
+	--a: pow(2, 3);
+
+	result: var(--a);
+}

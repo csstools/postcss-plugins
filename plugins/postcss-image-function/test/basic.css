@@ -34,3 +34,13 @@
 		--foo: image(red);
 	}
 }
+
+@function --a() {
+	result: image(red);
+}
+
+@function --b() {
+	--a: image(red);
+
+	result: var(--a);
+}

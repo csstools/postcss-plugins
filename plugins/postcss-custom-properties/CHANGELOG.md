@@ -4,6 +4,7 @@
 
 - Share a single expansion budget across all declarations.
 - Avoid a quadratic sibling scan when checking for an existing fallback declaration.
+- Ignore custom properties in `@function` bodies.
 
 ### 15.0.3
 

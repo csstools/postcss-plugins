@@ -32,3 +32,13 @@
 		--color: color-mix(in oklch, red, lime, green);
 	}
 }
+
+@function --a() {
+	result: color-mix(in oklch, red, lime, green);
+}
+
+@function --b() {
+	--a: color-mix(in oklch, red, lime, green);
+
+	result: var(--a);
+}

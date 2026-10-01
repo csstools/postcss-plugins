@@ -226,3 +226,21 @@
 		--foo: color(srgb 0.99 1.0001 0.99);
 	}
 }
+
+@function --a() {
+	result: rgb(230, 0, 122);
+
+@media (color-gamut: rec2020) {
+	result: oklch(60% 0.4 0);
+}
+}
+
+@function --b() {
+	--a: rgb(230, 0, 122);
+
+	result: var(--a);
+
+@media (color-gamut: rec2020) {
+	--a: oklch(60% 0.4 0);
+}
+}

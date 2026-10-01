@@ -14,6 +14,7 @@ import postcssColorMixVariadicFunctionArguments from '@csstools/postcss-color-mi
 import postcssContainerRulePreludeList from '@csstools/postcss-container-rule-prelude-list';
 import postcssContentAltText from '@csstools/postcss-content-alt-text';
 import postcssContrastColorFunction from '@csstools/postcss-contrast-color-function';
+import postcssCustomFunctions from '@csstools/postcss-custom-functions';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssCustomProperties from 'postcss-custom-properties';
 import postcssCustomSelectors from 'postcss-custom-selectors';
@@ -92,6 +93,7 @@ export const pluginsById = new Map(
 		['container-rule-prelude-list', postcssContainerRulePreludeList],
 		['content-alt-text', postcssContentAltText],
 		['contrast-color-function', postcssContrastColorFunction],
+		['custom-functions', postcssCustomFunctions],
 		['custom-media-queries', postcssCustomMedia],
 		['custom-properties', postcssCustomProperties],
 		['custom-selectors', postcssCustomSelectors],

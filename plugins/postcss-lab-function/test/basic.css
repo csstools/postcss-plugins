@@ -208,3 +208,13 @@ to-clone {
 		--foo: lch(60% 50 180);
 	}
 }
+
+@function --a() {
+	result: lab(40% 56.6 39);
+}
+
+@function --b() {
+	--a: lab(40% 56.6 39);
+
+	result: var(--a);
+}

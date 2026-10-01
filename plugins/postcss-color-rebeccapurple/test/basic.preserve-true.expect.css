@@ -31,3 +31,15 @@ to-clone {
 		--color: rebeccapurple;
 	}
 }
+
+@function --a() {
+	result: #639;
+	result: rebeccapurple;
+}
+
+@function --b() {
+	--a: #639;
+	--a: rebeccapurple;
+
+	result: var(--a);
+}

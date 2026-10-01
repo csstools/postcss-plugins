@@ -1,4 +1,4 @@
-import type { Node, Plugin, PluginCreator } from 'postcss';
+import type { AtRule, Declaration, Document, Node, Plugin, PluginCreator } from 'postcss';
 import type valuesParser from 'postcss-value-parser';
 
 import getCustomPropertiesFromRoot from './get-custom-properties-from-root';
@@ -16,6 +16,20 @@ export type pluginOptions = {
 };
 
 const SUPPORTS_REGEX = /\bvar\(|\(top: var\(--f\)/i;
+const IS_FUNCTION_REGEX = /^function$/i;
+
+function inFunction(decl: Declaration): boolean {
+	let parent: typeof decl.parent | Document = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test((parent as AtRule).name)) {
+			return true;
+		}
+
+		parent = parent.parent;
+	}
+
+	return false;
+}
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const preserve = 'preserve' in Object(opts) ? Boolean(opts?.preserve) : true;
@@ -47,6 +61,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					rootCustomProperties = getCustomPropertiesFromRoot(root, parsedValuesCache);
 				},
 				Declaration(decl): void {
+					if (inFunction(decl)) {
+						// Custom properties in an `@function` body are local variables
+						// with dynamic scoping and must be left as-is.
+						return;
+					}
+
 					if (!HAS_VAR_FUNCTION_REGEX.test(decl.value)) {
 						return;
 					}

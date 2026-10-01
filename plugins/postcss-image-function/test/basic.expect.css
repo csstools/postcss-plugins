@@ -34,3 +34,13 @@
 		--foo: linear-gradient(red,red);
 	}
 }
+
+@function --a() {
+	result: linear-gradient(red,red);
+}
+
+@function --b() {
+	--a: linear-gradient(red,red);
+
+	result: var(--a);
+}

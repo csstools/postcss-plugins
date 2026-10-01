@@ -447,3 +447,18 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+
+@function --b() {
+	--a: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+
+	result: var(--a);
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+	--a: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+}

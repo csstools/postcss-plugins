@@ -220,3 +220,13 @@
 		--foo: sin(45deg);
 	}
 }
+
+@function --a() {
+	result: sin(45deg);
+}
+
+@function --b() {
+	--a: sin(45deg);
+
+	result: var(--a);
+}

@@ -235,3 +235,20 @@ to-clone {
 		--foo: image-set(url(img-a.png) 1x, url(img-a@2x.png) 2x);
 	}
 }
+
+@function --a() {
+	result: url(img/test.png);
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	result: url(img/test-2x.png);
+	}
+}
+
+@function --b() {
+	--a: url(img/test.png);
+
+	result: var(--a);
+
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	--a: url(img/test-2x.png);
+	}
+}

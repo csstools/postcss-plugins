@@ -209,3 +209,13 @@
 .foo {
 	z-index: calc(2.71828);
 }
+
+@function --a() {
+	result: calc(8);
+}
+
+@function --b() {
+	--a: calc(8);
+
+	result: var(--a);
+}

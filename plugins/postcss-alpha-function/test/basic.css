@@ -91,3 +91,13 @@
 		--color: alpha(from oklch(2 1 0) / calc(alpha / 2));
 	}
 }
+
+@function --a() {
+	result: alpha(from red / 0.5);
+}
+
+@function --b() {
+	--a: alpha(from red / 0.5);
+
+	result: var(--a);
+}

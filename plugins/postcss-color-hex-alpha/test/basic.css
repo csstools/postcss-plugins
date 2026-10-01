@@ -34,3 +34,13 @@ to-clone {
 		--color: #9823f8a9;
 	}
 }
+
+@function --a() {
+	result: #9823f8a9;
+}
+
+@function --b() {
+	--a: #9823f8a9;
+
+	result: var(--a);
+}

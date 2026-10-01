@@ -1,5 +1,9 @@
 # Changes to PostCSS HWB Function
 
+### Unreleased (patch)
+
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+
 ### 5.0.14
 
 _October 1, 2026_

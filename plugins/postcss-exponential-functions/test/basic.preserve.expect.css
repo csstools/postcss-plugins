@@ -269,3 +269,15 @@
 	z-index: calc(2.71828);
 	z-index: exp(1);
 }
+
+@function --a() {
+	result: calc(8);
+	result: pow(2, 3);
+}
+
+@function --b() {
+	--a: calc(8);
+	--a: pow(2, 3);
+
+	result: var(--a);
+}

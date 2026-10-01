@@ -31,3 +31,13 @@
 		bar(design-token('lists.comma'))
 	);
 }
+
+@function --a() {
+	result: design-token('color.font.base');
+}
+
+@function --b() {
+	--a: design-token('color.font.base');
+
+	result: var(--a);
+}

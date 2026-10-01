@@ -52,3 +52,18 @@
 	border-color: rgb(255, 255, 255);
 	border-color: contrast-color(contrast-color(contrast-color(green)));
 }
+
+@function --a() {
+	result: rgb(255, 255, 255);
+	result: contrast-color(green);
+}
+
+@function --b() {
+	--a: rgb(255, 255, 255);
+
+	result: var(--a);
+
+@supports (color: contrast-color(red)) {
+	--a: contrast-color(green);
+}
+}

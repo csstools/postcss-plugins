@@ -55,3 +55,18 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: color(display-p3 0.34919 0.34919 0.34919);
+	result: color(display-p3-linear 0.1 0.1 0.1);
+}
+
+@function --b() {
+	--a: color(display-p3 0.34919 0.34919 0.34919);
+
+	result: var(--a);
+
+@supports (color: color(display-p3-linear 0 0 0)) {
+	--a: color(display-p3-linear 0.1 0.1 0.1);
+}
+}

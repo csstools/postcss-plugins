@@ -1,4 +1,4 @@
-import type { AtRule, Container, Declaration, Document, Node, Plugin, PluginCreator } from 'postcss';
+import type { AtRule, ChildNode, Container, Declaration, Document, Node, Plugin, PluginCreator } from 'postcss';
 import { hasConditionalAncestor } from './has-conditional-ancestor';
 import { tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
@@ -12,6 +12,7 @@ const HAS_WIDE_GAMUT_COLOR_FUNCTION_REGEX = /\b(?:color|lab|lch|oklab|oklch)\(/i
 const HAS_WIDE_GAMUT_COLOR_NAME_REGEX = /^(?:color|lab|lch|oklab|oklch)$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
 const IS_KEYFRAMES_REGEX = /^keyframes$/i;
+const IS_FUNCTION_REGEX = /^function$/i;
 
 type State = {
 	conditionalRules: Array<AtRule>,
@@ -179,22 +180,32 @@ const creator: PluginCreator<pluginOptions> = () => {
 								},
 							});
 
-							const parentClone = parent.clone();
-							parentClone.removeAll();
+							let conditionalRuleContainer: Container<ChildNode>;
 
-							parentClone.raws.before = '\n';
+							if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
+								// `@function` accepts conditional group rules in its body,
+								// so the conditional rule is nested instead of cloning the `@function`.
+								conditionalRuleContainer = atRule;
+							} else {
+								const parentClone = parent.clone();
+								parentClone.removeAll();
+
+								parentClone.raws.before = '\n';
+
+								atRule.append(parentClone);
+								conditionalRuleContainer = parentClone;
+							}
 
 							const clone = item.clone();
 
-							parentClone.append(clone);
+							conditionalRuleContainer.append(clone);
 							item.remove();
 
 							visited.add(clone);
 
 							state.lastConditionParams = atRule.params;
-							state.lastConditionalRule = parentClone;
+							state.lastConditionalRule = conditionalRuleContainer;
 
-							atRule.append(parentClone);
 							state.conditionalRules.push(atRule);
 						});
 					});
@@ -206,6 +217,12 @@ const creator: PluginCreator<pluginOptions> = () => {
 						}
 
 						if (state.conditionalRules.length === 0) {
+							return;
+						}
+
+						if (node.type === 'atrule' && IS_FUNCTION_REGEX.test(node.name)) {
+							// Conditional rules belong inside the `@function` body.
+							node.append(state.conditionalRules);
 							return;
 						}
 

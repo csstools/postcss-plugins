@@ -34,3 +34,13 @@ to-clone {
 		--color: rgba(152,35,248,0.66275);
 	}
 }
+
+@function --a() {
+	result: rgba(152,35,248,0.66275);
+}
+
+@function --b() {
+	--a: rgba(152,35,248,0.66275);
+
+	result: var(--a);
+}

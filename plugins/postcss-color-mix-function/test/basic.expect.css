@@ -199,3 +199,13 @@
 		--color: rgb(123, 137, 142);
 	}
 }
+
+@function --a() {
+	result: rgb(175, 92, 174);
+}
+
+@function --b() {
+	--a: rgb(175, 92, 174);
+
+	result: var(--a);
+}

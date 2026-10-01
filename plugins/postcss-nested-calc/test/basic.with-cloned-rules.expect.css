@@ -80,3 +80,14 @@ to-clone {
 		--foo: calc(10px + calc(2px * 2));
 	}
 }
+
+@function --a() {
+	result: calc(1 + (2 * 2));
+	result: calc(1 + calc(2 * 2));
+}
+
+@function --b() {
+	--a: calc(1 + calc(2 * 2));
+
+	result: var(--a);
+}

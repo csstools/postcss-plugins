@@ -365,6 +365,11 @@ export default [
 		'importName': 'postcssPropertyRuleOptionalDescriptors',
 	},
 	{
+		'packageName': '@csstools/postcss-custom-functions',
+		'id': 'custom-functions',
+		'importName': 'postcssCustomFunctions',
+	},
+	{
 		'packageName': '@csstools/postcss-progressive-custom-properties',
 		'id': 'progressive-custom-properties',
 		'importName': 'postcssProgressiveCustomProperties',

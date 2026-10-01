@@ -65,3 +65,23 @@
 	}
 }
 }
+
+@function --a() {
+	result: rgb(164, 153, 0);
+	result: color(display-p3 0.64336 0.60238 0);
+	result: color-mix(in oklch, red, lime, green);
+}
+
+@function --b() {
+	--a: rgb(164, 153, 0);
+
+	result: var(--a);
+
+@supports (color: color(display-p3 0 0 0%)) {
+	--a: color(display-p3 0.64336 0.60238 0);
+}
+
+@supports (color: color-mix(in lch, red)) {
+	--a: color-mix(in oklch, red, lime, green);
+}
+}

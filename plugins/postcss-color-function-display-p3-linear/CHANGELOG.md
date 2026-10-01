@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Function Display P3 Linear
 
+### Unreleased (patch)
+
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+
 ### 2.0.14
 
 _October 1, 2026_

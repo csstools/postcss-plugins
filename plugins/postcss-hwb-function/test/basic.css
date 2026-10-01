@@ -33,3 +33,13 @@ to-clone {
 		--foo: hwb(50deg 20% 30%);
 	}
 }
+
+@function --a() {
+	result: hwb(0 60% 40% / var(--alpha));
+}
+
+@function --b() {
+	--a: hwb(0 60% 40% / var(--alpha));
+
+	result: var(--a);
+}

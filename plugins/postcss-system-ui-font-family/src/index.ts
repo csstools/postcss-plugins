@@ -1,7 +1,7 @@
 import type { ComponentValue} from '@csstools/css-parser-algorithms';
 import { isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, stringify, TokenNode } from '@csstools/css-parser-algorithms';
 import { isTokenIdent, tokenize, TokenType } from '@csstools/css-tokenizer';
-import type { PluginCreator } from 'postcss';
+import type { AtRule, Declaration, Document, PluginCreator } from 'postcss';
 
 /** postcss-system-ui-font-family plugin options */
 export type pluginOptions = {
@@ -10,6 +10,25 @@ export type pluginOptions = {
 };
 
 const PROPERTY_REGEX = /^font(?:-family)?$/i;
+const IS_FUNCTION_REGEX = /^function$/i;
+const RESULT_REGEX = /^result$/i;
+
+function isInFunctionResult(decl: Declaration): boolean {
+	if (!RESULT_REGEX.test(decl.prop)) {
+		return false;
+	}
+
+	let parent: typeof decl.parent | Document = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test((parent as AtRule).name)) {
+			return true;
+		}
+
+		parent = parent.parent;
+	}
+
+	return false;
+}
 
 const systemUiFamilies = [
 	'system-ui',
@@ -49,7 +68,9 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	return {
 		postcssPlugin: 'postcss-system-ui-font-family',
 		Declaration(decl): void {
-			if (!decl.variable && !PROPERTY_REGEX.test(decl.prop)) {
+			const isResultDescriptor = isInFunctionResult(decl);
+
+			if (!decl.variable && !PROPERTY_REGEX.test(decl.prop) && !isResultDescriptor) {
 				return;
 			}
 
@@ -119,6 +140,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				prop: decl.prop,
 				value: modified,
 			});
+
+			if (isResultDescriptor) {
+				// `result` descriptors are not properties: keep the original dynamic value.
+				return;
+			}
 
 			decl.remove();
 		},

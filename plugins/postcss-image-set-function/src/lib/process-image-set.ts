@@ -6,6 +6,8 @@ import { handleInvalidation } from './handle-invalidation';
 import type { AtRule, Declaration, Result, Postcss } from 'postcss';
 import type { Node } from 'postcss-value-parser';
 
+const IS_FUNCTION_REGEX = /^function$/i;
+
 type imageSetFunction = {
 	imageSetFunction: Node;
 	imageSetOptionNodes: Array<Node>;
@@ -70,12 +72,19 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 	}
 
 	for (const { atRule, value } of mediasByDpr.values()) {
-		// prepare @media { decl: <image> }
-		const parentClone = parent.clone().removeAll();
 		const declClone = decl.clone({ value: value });
 
-		parentClone.append(declClone);
-		atRule.append(parentClone);
+		if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
+			// `@function` accepts conditional group rules in its body,
+			// so the conditional rule is nested instead of cloning the `@function`.
+			atRule.append(declClone);
+		} else {
+			// prepare @media { decl: <image> }
+			const parentClone = parent.clone().removeAll();
+
+			parentClone.append(declClone);
+			atRule.append(parentClone);
+		}
 	}
 
 	const mediaSizes = Array.from(mediasByDpr.keys())
@@ -97,7 +106,14 @@ export const processImageSet = (imageSetFunctions: Array<imageSetFunction>, decl
 	const mediasWithoutSmallest = medias.slice(1);
 
 	if (mediasWithoutSmallest.length) {
-		parent.after(mediasWithoutSmallest);
+		if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
+			// Conditional rules belong inside the `@function` body.
+			for (const media of mediasWithoutSmallest) {
+				parent.append(media);
+			}
+		} else {
+			parent.after(mediasWithoutSmallest);
+		}
 	}
 
 	decl.cloneBefore({ value: smallestValue.trim() });

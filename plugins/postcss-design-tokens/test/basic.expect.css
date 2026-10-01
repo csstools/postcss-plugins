@@ -24,3 +24,13 @@
 		bar(255, 0, 255)
 	);
 }
+
+@function --a() {
+	result: #111111;
+}
+
+@function --b() {
+	--a: #111111;
+
+	result: var(--a);
+}

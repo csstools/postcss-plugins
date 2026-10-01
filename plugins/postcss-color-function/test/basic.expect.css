@@ -232,3 +232,13 @@ to-clone {
 		--color: rgb(26, 26, 26);
 	}
 }
+
+@function --a() {
+	result: rgb(26, 26, 26);
+}
+
+@function --b() {
+	--a: rgb(26, 26, 26);
+
+	result: var(--a);
+}
