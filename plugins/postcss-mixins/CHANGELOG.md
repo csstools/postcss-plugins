@@ -1,6 +1,8 @@
 # Changes to PostCSS Mixins
 
-### Unreleased (minor)
+### 1.1.0
+
+_October 1, 2026_
 
 - `@contents` rule
 - nested mixins
