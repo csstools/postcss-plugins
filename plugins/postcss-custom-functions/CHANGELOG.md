@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Functions
 
-### Unreleased (major)
+### 1.0.0
+
+_October 1, 2026_
 
 - Initial version
 - Definitions without conditional rules or a cascade layer are inlined into the calling rule instead of emitting extra rules
