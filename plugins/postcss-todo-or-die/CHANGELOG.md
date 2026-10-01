@@ -1,5 +1,9 @@
 # Changes to PostCSS Todo or Die
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#402) (patch)
+
 ### 4.0.1
 
 _September 25, 2026_

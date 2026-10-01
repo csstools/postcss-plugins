@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Fix type predicate for `isCustomMedia`
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#402) (patch)
 
 ### 5.0.1
 
