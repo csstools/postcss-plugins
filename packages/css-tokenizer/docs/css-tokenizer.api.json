@@ -177,7 +177,7 @@
   },
   "kind": "Package",
   "canonicalReference": "@csstools/css-tokenizer!",
-  "docComment": "/**\n * Tokenize CSS following the {@link https://drafts.csswg.org/css-syntax/#tokenization | CSS Syntax Level 3 specification}.\n *\n * @remarks\n *\n * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.\n *\n * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task. For many applications it is sufficient to work with tokens. For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.\n *\n * @example\n *\n * Tokenize a string of CSS into an array of tokens:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n *\n * const myCSS = `@media only screen and (min-width: 768rem) {\n * \t.foo {\n * \t\tcontent: 'Some content!' !important;\n * \t}\n * }\n * `;\n *\n * const tokens = tokenize({\n * \tcss: myCSS,\n * });\n *\n * console.log(tokens);\n * ```\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * Tokenize CSS following the {@link https://drafts.csswg.org/css-syntax/#tokenization | CSS Syntax Level 3 specification}.\n *\n * @remarks\n *\n * The tokenizing and parsing tools provided by CSS Tools are designed to be low level and generic with strong ties to their respective specifications.\n *\n * Any analysis or mutation of CSS source code should be done with the least powerful tool that can accomplish the task.\n * For many applications it is sufficient to work with tokens.\n * For others you might need to use {@link https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms | @csstools/css-parser-algorithms} or a more specific parser.\n *\n * @example\n *\n * Tokenize a string of CSS into an array of tokens:\n * ```js\n * import { tokenize } from '@csstools/css-tokenizer';\n *\n * const myCSS = `@media only screen and (min-width: 768rem) {\n * \t.foo {\n * \t\tcontent: 'Some content!' !important;\n * \t}\n * }\n * `;\n *\n * const tokens = tokenize({\n * \tcss: myCSS,\n * });\n *\n * console.log(tokens);\n * ```\n *\n * @packageDocumentation\n */\n",
   "name": "@csstools/css-tokenizer",
   "preserveMemberOrder": false,
   "members": [
@@ -190,7 +190,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!cloneTokens:function(1)",
-          "docComment": "/**\n * Deep clone a list of tokens. Useful for mutations without altering the original list.\n */\n",
+          "docComment": "/**\n * Deep clone a list of tokens.\n * Useful for mutations without altering the original list.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -539,7 +539,7 @@
             {
               "kind": "EnumMember",
               "canonicalReference": "@csstools/css-tokenizer!HashType.ID:member",
-              "docComment": "/**\n * The hash token started with an ident sequence (e.g. `#foo`) Only hash tokens with the \"id\" type are valid ID selectors.\n */\n",
+              "docComment": "/**\n * The hash token started with an ident sequence (e.g. `#foo`)\n * Only hash tokens with the \"id\" type are valid ID selectors.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -583,7 +583,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!isToken:function(1)",
-          "docComment": "/**\n * Assert that a given value has the general structure of a CSS token: 1. is an array. 2. has at least four items. 3. has a known token type. 4. has a string representation. 5. has a start position. 6. has an end position.\n */\n",
+          "docComment": "/**\n * Assert that a given value has the general structure of a CSS token:\n * 1. is an array.\n * 2. has at least four items.\n * 3. has a known token type.\n * 4. has a string representation.\n * 5. has a start position.\n * 6. has an end position.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2489,7 +2489,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!mutateIdent:function(1)",
-          "docComment": "/**\n * Set the ident value and update the string representation. This handles escaping.\n */\n",
+          "docComment": "/**\n * Set the ident value and update the string representation.\n * This handles escaping.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2551,7 +2551,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!mutateUnit:function(1)",
-          "docComment": "/**\n * Set the unit and update the string representation. This handles escaping.\n */\n",
+          "docComment": "/**\n * Set the unit and update the string representation.\n * This handles escaping.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2613,7 +2613,7 @@
         {
           "kind": "Enum",
           "canonicalReference": "@csstools/css-tokenizer!NumberType:enum",
-          "docComment": "/**\n * The type of number token Either `integer` or `number`\n */\n",
+          "docComment": "/**\n * The type of number token\n * Either `integer` or `number`\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2717,7 +2717,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@csstools/css-tokenizer!ParseError:class",
-          "docComment": "/**\n * The CSS Tokenizer is forgiving and will never throw on invalid input. Any errors are reported through the `onParseError` callback.\n */\n",
+          "docComment": "/**\n * The CSS Tokenizer is forgiving and will never throw on invalid input.\n * Any errors are reported through the `onParseError` callback.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3117,7 +3117,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/css-tokenizer!stringify:function(1)",
-          "docComment": "/**\n * Concatenate the string representation of a list of tokens. This is not a proper serializer that will handle escaping and whitespace. It only produces valid CSS for a token list that is also valid.\n */\n",
+          "docComment": "/**\n * Concatenate the string representation of a list of tokens.\n * This is not a proper serializer that will handle escaping and whitespace.\n * It only produces valid CSS for a token list that is also valid.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3203,7 +3203,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "@csstools/css-tokenizer!Token:interface",
-          "docComment": "/**\n * The CSS Token interface\n *\n * @remarks\n *\n * CSS Tokens are fully typed and have a strict structure. This makes it easier to iterate and analyze a token stream.\n *\n * The string representation and the parsed value are stored separately for many token types. It is always assumed that the string representation will be used when stringifying, while the parsed value should be used when analyzing tokens.\n */\n",
+          "docComment": "/**\n * The CSS Token interface\n *\n * @remarks\n *\n * CSS Tokens are fully typed and have a strict structure.\n * This makes it easier to iterate and analyze a token stream.\n *\n * The string representation and the parsed value are stored separately for many token types.\n * It is always assumed that the string representation will be used when stringifying, while the parsed value should be used when analyzing tokens.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3291,7 +3291,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-tokenizer!Token#\"1\":member",
-              "docComment": "/**\n * The token representation\n *\n * @remarks\n *\n * This field will be used when stringifying the token. Any stored value is assumed to be valid CSS.\n *\n * You should never use this field when analyzing the token when there is a parsed value available. But you must store mutated values here.\n */\n",
+              "docComment": "/**\n * The token representation\n *\n * @remarks\n *\n * This field will be used when stringifying the token.\n * Any stored value is assumed to be valid CSS.\n *\n * You should never use this field when analyzing the token when there is a parsed value available.\n * But you must store mutated values here.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3372,7 +3372,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-tokenizer!Token#\"4\":member",
-              "docComment": "/**\n * Extra data\n *\n * @remarks\n *\n * This holds the parsed value of each token. These values are unescaped, unquoted, converted to numbers, etc.\n *\n * You should always use this field when analyzing the token. But you must not assume that mutating only this field will have any effect.\n */\n",
+              "docComment": "/**\n * Extra data\n *\n * @remarks\n *\n * This holds the parsed value of each token.\n * These values are unescaped, unquoted, converted to numbers, etc.\n *\n * You should always use this field when analyzing the token.\n * But you must not assume that mutating only this field will have any effect.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4037,7 +4037,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-tokenizer!TokenDimension#signCharacter:member",
-              "docComment": "/**\n * The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as \"2px\" or \"+2px\".\n */\n",
+              "docComment": "/**\n * The sign character as it appeared in the source.\n * This is only useful if you need to determine if a value was written as \"2px\" or \"+2px\".\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4660,7 +4660,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-tokenizer!TokenNumber#signCharacter:member",
-              "docComment": "/**\n * The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as \"2\" or \"+2\".\n */\n",
+              "docComment": "/**\n * The sign character as it appeared in the source.\n * This is only useful if you need to determine if a value was written as \"2\" or \"+2\".\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4919,7 +4919,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/css-tokenizer!TokenPercentage#signCharacter:member",
-              "docComment": "/**\n * The sign character as it appeared in the source. This is only useful if you need to determine if a value was written as \"2%\" or \"+2%\".\n */\n",
+              "docComment": "/**\n * The sign character as it appeared in the source.\n * This is only useful if you need to determine if a value was written as \"2%\" or \"+2%\".\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

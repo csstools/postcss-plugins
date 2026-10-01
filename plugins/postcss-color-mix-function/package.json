@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-color-mix-function",
 	"description": "Use the color-mix function in CSS",
-	"version": "4.0.13",
+	"version": "4.0.14",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,8 +41,8 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^4.2.4",
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-color-parser": "^4.2.5",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/postcss-progressive-custom-properties": "^5.1.3",
 		"@csstools/utilities": "^3.0.0"

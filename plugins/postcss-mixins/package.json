@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-mixins",
 	"description": "Use mixins in CSS",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/postcss-private-rule": "^1.0.3"
 	},

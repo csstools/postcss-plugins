@@ -1,5 +1,29 @@
 # Changes to CSSTools CLI
 
+### 5.0.15
+
+_October 1, 2026_
+
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-exponential-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions) to [`3.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-exponential-functions/CHANGELOG.md#308) (patch)
+- Updated [`@csstools/postcss-media-minmax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax) to [`3.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-minmax/CHANGELOG.md#307) (patch)
+- Updated [`@csstools/postcss-media-queries-aspect-ratio-number-values`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-media-queries-aspect-ratio-number-values/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/postcss-stepped-value-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions) to [`5.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions/CHANGELOG.md#508) (patch)
+- Updated [`@csstools/postcss-trigonometric-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions) to [`5.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-trigonometric-functions/CHANGELOG.md#508) (patch)
+- Updated [`postcss-custom-media`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) to [`12.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media/CHANGELOG.md#1203) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`15.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1503) (patch)
+- Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`9.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#903) (patch)
+- Updated [`@csstools/postcss-color-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function) to [`5.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-function/CHANGELOG.md#5014) (patch)
+- Updated [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function) to [`4.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function/CHANGELOG.md#4014) (patch)
+- Updated [`@csstools/postcss-gradients-interpolation-method`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method) to [`6.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gradients-interpolation-method/CHANGELOG.md#6014) (patch)
+- Updated [`@csstools/postcss-hwb-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function) to [`5.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function/CHANGELOG.md#5014) (patch)
+- Updated [`@csstools/postcss-oklab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function) to [`5.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-oklab-function/CHANGELOG.md#5014) (patch)
+- Updated [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax) to [`4.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax/CHANGELOG.md#4014) (patch)
+- Updated [`postcss-color-functional-notation`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation) to [`8.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation/CHANGELOG.md#8014) (patch)
+- Updated [`postcss-lab-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function) to [`8.0.14`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-lab-function/CHANGELOG.md#8014) (patch)
+- Updated [`postcss-preset-env`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) to [`11.5.5`](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env/CHANGELOG.md#1155) (patch)
+
 ### 5.0.14
 
 _September 25, 2026_

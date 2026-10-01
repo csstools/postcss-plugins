@@ -73,7 +73,7 @@ Convert an array of linear-light display-p3 RGB in the range 0.0-1.0 to gamma co
 
 </td><td>
 
-Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corrected form Extended transfer function: For negative values, linear portion extends on reflection of axis, then uses reflected pow below that
+Convert an array of linear-light sRGB values in the range 0.0-1.0 to gamma corrected form Extended transfer function:  For negative values, linear portion extends on reflection  of axis, then uses reflected pow below that
 
 
 </td></tr>
@@ -234,7 +234,7 @@ Convert an array of linear-light sRGB values to CIE XYZ using sRGB's own white, 
 
 </td><td>
 
-Convert an array of of sRGB values where in-gamut values are in the range \[0 - 1\] to linear light (un-companded) form. Extended transfer function: For negative values, linear portion is extended on reflection of axis, then reflected power function is used.
+Convert an array of of sRGB values where in-gamut values are in the range \[0 - 1\] to linear light (un-companded) form. Extended transfer function:  For negative values, linear portion is extended on reflection of axis,  then reflected power function is used.
 
 
 </td></tr>

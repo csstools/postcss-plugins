@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/custom-function-parser",
 	"description": "Parse CSS custom function params.",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2"
 	},
 	"scripts": {

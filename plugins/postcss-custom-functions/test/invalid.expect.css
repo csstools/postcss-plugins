@@ -1,11 +1,11 @@
 .missing {
-	--_csstools-cf-3ft7zk9k-0-result: var(--_csstools-cf-invalid);
-	width: var(--_csstools-cf-3ft7zk9k-0-result);
+	--_csstools-cf-1lkn6xo-0-result: var(--_csstools-cf-invalid);
+	width: var(--_csstools-cf-1lkn6xo-0-result);
 }
 
 .extra {
-	--_csstools-cf-3ft7zk9k-2-result: var(--_csstools-cf-invalid);
-	width: var(--_csstools-cf-3ft7zk9k-2-result);
+	--_csstools-cf-1lkn6xo-2-result: var(--_csstools-cf-invalid);
+	width: var(--_csstools-cf-1lkn6xo-2-result);
 }
 
 .unknown {
@@ -13,6 +13,6 @@
 }
 
 .empty-args {
-	--_csstools-cf-3ft7zk9k-4-result: var(--_csstools-cf-invalid);
-	width: var(--_csstools-cf-3ft7zk9k-4-result);
+	--_csstools-cf-1lkn6xo-4-result: var(--_csstools-cf-invalid);
+	width: var(--_csstools-cf-1lkn6xo-4-result);
 }

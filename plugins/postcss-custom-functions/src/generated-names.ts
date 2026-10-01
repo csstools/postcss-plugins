@@ -1,6 +1,3 @@
-import crypto from 'node:crypto';
-import path from 'node:path';
-
 /**
  * Prefix for every custom property this plugin generates.
  *
@@ -40,12 +37,41 @@ export function sourceHashFor(from: string | undefined): string {
 		return existing;
 	}
 
-	const hash = crypto.createHash('md5');
-	hash.update(path.basename(path.dirname(from)) + '/' + path.basename(from), 'utf8');
-	const value = parseInt(hash.digest('hex'), 16).toString(36).slice(0, 8);
+	const value = hashSourcePath(from);
 	sourceHashes.set(from, value);
 
 	return value;
+}
+
+/**
+ * Hash only the last two path segments, so that names are stable regardless
+ * of the absolute location of a project, and avoid `node:crypto` / `node:path`
+ * so that this plugin can run in a browser bundle.
+ */
+function hashSourcePath(from: string): string {
+	let hash = 2166136261;
+	const source = sourceKey(from);
+
+	for (let i = 0; i < source.length; i++) {
+		hash ^= source.charCodeAt(i);
+		hash = Math.imul(hash, 16777619);
+	}
+
+	return (hash >>> 0).toString(36);
+}
+
+function sourceKey(from: string): string {
+	const segments = from.replaceAll('\\', '/').split('/').filter((segment) => segment.length > 0);
+
+	if (segments.length === 0) {
+		return '.';
+	}
+
+	if (segments.length === 1) {
+		return `./${segments[0]}`;
+	}
+
+	return segments.slice(-2).join('/');
 }
 
 /**

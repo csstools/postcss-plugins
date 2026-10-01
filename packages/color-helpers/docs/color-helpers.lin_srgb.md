@@ -4,7 +4,7 @@
 
 ## lin\_sRGB() function
 
-Convert an array of of sRGB values where in-gamut values are in the range \[0 - 1\] to linear light (un-companded) form. Extended transfer function: For negative values, linear portion is extended on reflection of axis, then reflected power function is used.
+Convert an array of of sRGB values where in-gamut values are in the range \[0 - 1\] to linear light (un-companded) form. Extended transfer function:  For negative values, linear portion is extended on reflection of axis,  then reflected power function is used.
 
 **Signature:**
 

@@ -1,9 +1,16 @@
 # Changes to PostCSS Private Rule
 
-### Unreleased (minor)
+### Unreleased (patch)
+
+- Drop `node:path` and `node:crypto` dependencies
+
+### 1.1.0
+
+_October 1, 2026_
 
 - Fix lookup order of shadowing properties
 - Export `Transpiler` which can be used to transpile `@private` rules in other `postcss` plugins (i.e. `postcss-mixins`)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#402) (patch)
 
 ### 1.0.3
 

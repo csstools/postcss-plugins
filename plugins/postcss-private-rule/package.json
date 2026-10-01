@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-private-rule",
 	"description": "Declare private custom properties",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2"
 	},
 	"peerDependencies": {

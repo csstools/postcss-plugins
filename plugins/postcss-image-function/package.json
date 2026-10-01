@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-image-function",
 	"description": "Generate a solid-color image from any color",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/postcss-progressive-custom-properties": "^5.1.3",
 		"@csstools/utilities": "^3.0.0"

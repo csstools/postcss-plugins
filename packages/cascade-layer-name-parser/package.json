@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/cascade-layer-name-parser",
 	"description": "Parse CSS Cascade Layer names.",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2"
 	},
 	"scripts": {

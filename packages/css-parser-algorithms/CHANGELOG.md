@@ -1,6 +1,8 @@
 # Changes to CSS Parser Algorithms
 
-### Unreleased (patch)
+### 4.0.2
+
+_October 1, 2026_
 
 - `parseCommaSeparatedListOfComponentValues` now emits empty lists for cases like `foo,,bar` effectively returning 3 lists of component values instead of only 2.
 

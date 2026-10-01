@@ -1,5 +1,12 @@
 # Changes to PostCSS Exponential Functions
 
+### 3.0.8
+
+_October 1, 2026_
+
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#402) (patch)
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.2`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#342) (patch)
+
 ### 3.0.7
 
 _September 25, 2026_

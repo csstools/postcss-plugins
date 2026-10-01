@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/postcss-container-rule-prelude-list",
 	"description": "Declare a list of container queries in a single at-container rule",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.1",
+		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2"
 	},
 	"peerDependencies": {
