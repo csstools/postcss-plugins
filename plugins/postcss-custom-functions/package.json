@@ -36,7 +36,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/cascade-layer-name-parser": "^3.0.1",
+		"@csstools/cascade-layer-name-parser": "^3.0.2",
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/custom-function-parser": "^1.0.0"

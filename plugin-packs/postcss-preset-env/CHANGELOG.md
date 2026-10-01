@@ -1,5 +1,15 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-container-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list) to [`1.0.3`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list/CHANGELOG.md#103) (patch)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-image-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function) to [`1.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function/CHANGELOG.md#105) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`3.0.6`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#306) (patch)
+- Updated [`@csstools/postcss-mixins`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-mixins) to [`1.1.0`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-mixins/CHANGELOG.md#110) (minor)
+- Updated [`@csstools/postcss-property-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list/CHANGELOG.md#202) (patch)
+- Updated [`@csstools/postcss-system-ui-font-family`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family/CHANGELOG.md#202) (patch)
+
 ### 11.5.4
 
 _September 25, 2026_
