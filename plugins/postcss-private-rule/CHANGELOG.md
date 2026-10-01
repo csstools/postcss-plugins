@@ -1,5 +1,9 @@
 # Changes to PostCSS Private Rule
 
+### Unreleased (patch)
+
+- Drop `node:path` and `node:crypto` dependencies
+
 ### 1.1.0
 
 _October 1, 2026_

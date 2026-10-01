@@ -3,16 +3,16 @@
 }
 
 .sized-a {
-	--_csstools-cf-3ammwpqj-1-arg-0: 20px;
-	--_csstools-cf-3ammwpqj-0-result: var(--_csstools-cf-3ammwpqj-1-arg-0);
-	width: var(--_csstools-cf-3ammwpqj-0-result);
+	--_csstools-cf-15up11z-1-arg-0: 20px;
+	--_csstools-cf-15up11z-0-result: var(--_csstools-cf-15up11z-1-arg-0);
+	width: var(--_csstools-cf-15up11z-0-result);
 	width: --sized(20px);
 }
 
 .sized-b {
-	--_csstools-cf-3ammwpqj-3-arg-0: 10px;
-	--_csstools-cf-3ammwpqj-2-result: var(--_csstools-cf-3ammwpqj-3-arg-0);
-	width: var(--_csstools-cf-3ammwpqj-2-result);
+	--_csstools-cf-15up11z-3-arg-0: 10px;
+	--_csstools-cf-15up11z-2-result: var(--_csstools-cf-15up11z-3-arg-0);
+	width: var(--_csstools-cf-15up11z-2-result);
 	width: --sized();
 }
 
@@ -21,9 +21,9 @@
 }
 
 .colorized {
-	--_csstools-cf-3ammwpqj-5-arg-0: blue;
-	--_csstools-cf-3ammwpqj-4-result: var(--_csstools-cf-3ammwpqj-5-arg-0);
-	color: var(--_csstools-cf-3ammwpqj-4-result);
+	--_csstools-cf-15up11z-5-arg-0: blue;
+	--_csstools-cf-15up11z-4-result: var(--_csstools-cf-15up11z-5-arg-0);
+	color: var(--_csstools-cf-15up11z-4-result);
 	color: --colorized(blue);
 }
 
@@ -32,39 +32,39 @@
 }
 
 .mixed {
-	--_csstools-cf-3ammwpqj-7-arg-0: 1px;
-	--_csstools-cf-3ammwpqj-7-arg-1: 2px;
-	--_csstools-cf-3ammwpqj-7-arg-2: 3px;
-	--_csstools-cf-3ammwpqj-6-result: var(--_csstools-cf-3ammwpqj-7-arg-0) var(--_csstools-cf-3ammwpqj-7-arg-1) var(--_csstools-cf-3ammwpqj-7-arg-2);
-	width: var(--_csstools-cf-3ammwpqj-6-result);
+	--_csstools-cf-15up11z-7-arg-0: 1px;
+	--_csstools-cf-15up11z-7-arg-1: 2px;
+	--_csstools-cf-15up11z-7-arg-2: 3px;
+	--_csstools-cf-15up11z-6-result: var(--_csstools-cf-15up11z-7-arg-0) var(--_csstools-cf-15up11z-7-arg-1) var(--_csstools-cf-15up11z-7-arg-2);
+	width: var(--_csstools-cf-15up11z-6-result);
 	width: --mixed(1px);
 }
 
-@property --_csstools-cf-3ammwpqj-1-arg-0 {
+@property --_csstools-cf-15up11z-1-arg-0 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 10px;
 }
 
-@property --_csstools-cf-3ammwpqj-3-arg-0 {
+@property --_csstools-cf-15up11z-3-arg-0 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 10px;
 }
 
-@property --_csstools-cf-3ammwpqj-5-arg-0 {
+@property --_csstools-cf-15up11z-5-arg-0 {
 	syntax: "<color>";
 	inherits: false;
 	initial-value: red;
 }
 
-@property --_csstools-cf-3ammwpqj-7-arg-1 {
+@property --_csstools-cf-15up11z-7-arg-1 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 2px;
 }
 
-@property --_csstools-cf-3ammwpqj-7-arg-2 {
+@property --_csstools-cf-15up11z-7-arg-2 {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 3px;

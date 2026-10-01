@@ -1,21 +1,21 @@
 /* Every anonymous layer is its own layer and must not collapse into a single layer. */
 
 .anon {
-		--_csstools-cf-3ynakb2p-0-result: 1px;
+		--_csstools-cf-1k7kax1-0-result: 1px;
 }
 
 .anon {
-		--_csstools-cf-3ynakb2p-0-result: 2px;
+		--_csstools-cf-1k7kax1-0-result: 2px;
 }
 
 .anon {
-		--_csstools-cf-3ynakb2p-0-result: 3px;
+		--_csstools-cf-1k7kax1-0-result: 3px;
 }
 
 .anon {
-		--_csstools-cf-3ynakb2p-0-result: 4px;
+		--_csstools-cf-1k7kax1-0-result: 4px;
 }
 
 .anon {
-	width: var(--_csstools-cf-3ynakb2p-0-result);
+	width: var(--_csstools-cf-1k7kax1-0-result);
 }

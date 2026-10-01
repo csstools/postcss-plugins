@@ -35,16 +35,16 @@
 	@media (min-width: 0px) {
 
 .layered-conditional {
-			--_csstools-cf-d6h7kjw3-0-result: 20px;
+			--_csstools-cf-1jusoma-0-result: 20px;
 }
 	}
 	@media (min-width: 0px) {
 
 .layered-conditional {
-			--_csstools-cf-d6h7kjw3-0-result: 10px;
+			--_csstools-cf-1jusoma-0-result: 10px;
 }
 	}
 
 .layered-conditional {
-	width: var(--_csstools-cf-d6h7kjw3-0-result);
+	width: var(--_csstools-cf-1jusoma-0-result);
 }
