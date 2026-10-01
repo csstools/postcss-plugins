@@ -1,16 +1,16 @@
 /* `type(*)` is the universal syntax and counts as untyped. */
 
 .universal {
-	--_csstools-cf-eru3g4zo-1-arg-0: var(--_csstools-cf-eru3g4zo-1-raw-0, 1px);
-	--_csstools-cf-eru3g4zo-0-result: var(--_csstools-cf-eru3g4zo-1-arg-0);
-	width: var(--_csstools-cf-eru3g4zo-0-result);
+	--_csstools-cf-77lo8z-1-arg-0: var(--_csstools-cf-77lo8z-1-raw-0, 1px);
+	--_csstools-cf-77lo8z-0-result: var(--_csstools-cf-77lo8z-1-arg-0);
+	width: var(--_csstools-cf-77lo8z-0-result);
 }
 
 /* `returns type(*)` is the default return type and counts as no return type. */
 
 .universal-return {
-	--_csstools-cf-eru3g4zo-2-result: 2px;
-	width: var(--_csstools-cf-eru3g4zo-2-result);
+	--_csstools-cf-77lo8z-2-result: 2px;
+	width: var(--_csstools-cf-77lo8z-2-result);
 }
 
 /* A typed parameter with a computationally independent default is supported. */

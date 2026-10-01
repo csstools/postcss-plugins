@@ -2,52 +2,52 @@
    resolve to the guaranteed-invalid value. */
 
 .unset-local {
-	--_csstools-cf-2bgb251r-1-local-x: var(--_csstools-cf-invalid);
-	--_csstools-cf-2bgb251r-0-result: var(--_csstools-cf-2bgb251r-1-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-0-result);
+	--_csstools-cf-1a6pyhl-1-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-1a6pyhl-0-result: var(--_csstools-cf-1a6pyhl-1-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-0-result);
 }
 
 .revert-local {
-	--_csstools-cf-2bgb251r-3-local-x: var(--_csstools-cf-invalid);
-	--_csstools-cf-2bgb251r-2-result: var(--_csstools-cf-2bgb251r-3-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-2-result);
+	--_csstools-cf-1a6pyhl-3-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-1a6pyhl-2-result: var(--_csstools-cf-1a6pyhl-3-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-2-result);
 }
 
 .revert-layer-local {
-	--_csstools-cf-2bgb251r-5-local-x: var(--_csstools-cf-invalid);
-	--_csstools-cf-2bgb251r-4-result: var(--_csstools-cf-2bgb251r-5-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-4-result);
+	--_csstools-cf-1a6pyhl-5-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-1a6pyhl-4-result: var(--_csstools-cf-1a6pyhl-5-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-4-result);
 }
 
 .revert-rule-local {
-	--_csstools-cf-2bgb251r-7-local-x: var(--_csstools-cf-invalid);
-	--_csstools-cf-2bgb251r-6-result: var(--_csstools-cf-2bgb251r-7-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-6-result);
+	--_csstools-cf-1a6pyhl-7-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-1a6pyhl-6-result: var(--_csstools-cf-1a6pyhl-7-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-6-result);
 }
 
 .unset-fallback {
-	--_csstools-cf-2bgb251r-9-local-x: var(--unknown,var(--_csstools-cf-invalid));
-	--_csstools-cf-2bgb251r-8-result: var(--_csstools-cf-2bgb251r-9-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-8-result);
+	--_csstools-cf-1a6pyhl-9-local-x: var(--unknown,var(--_csstools-cf-invalid));
+	--_csstools-cf-1a6pyhl-8-result: var(--_csstools-cf-1a6pyhl-9-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-8-result);
 }
 
 .unset-parameter {
-	--_csstools-cf-2bgb251r-b-arg-0: var(--_csstools-cf-2bgb251r-b-raw-0, PARAM);
-	--_csstools-cf-2bgb251r-b-local-x: var(--_csstools-cf-invalid);
-	--_csstools-cf-2bgb251r-a-result: var(--_csstools-cf-2bgb251r-b-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-a-result);
+	--_csstools-cf-1a6pyhl-b-arg-0: var(--_csstools-cf-1a6pyhl-b-raw-0, PARAM);
+	--_csstools-cf-1a6pyhl-b-local-x: var(--_csstools-cf-invalid);
+	--_csstools-cf-1a6pyhl-a-result: var(--_csstools-cf-1a6pyhl-b-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-a-result);
 }
 
 .inherit-parameter {
-	--_csstools-cf-2bgb251r-d-arg-0: var(--_csstools-cf-2bgb251r-d-raw-0, PARAM);
-	--_csstools-cf-2bgb251r-d-local-x: var(--x);
-	--_csstools-cf-2bgb251r-c-result: var(--_csstools-cf-2bgb251r-d-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-c-result);
+	--_csstools-cf-1a6pyhl-d-arg-0: var(--_csstools-cf-1a6pyhl-d-raw-0, PARAM);
+	--_csstools-cf-1a6pyhl-d-local-x: var(--x);
+	--_csstools-cf-1a6pyhl-c-result: var(--_csstools-cf-1a6pyhl-d-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-c-result);
 }
 
 .initial-parameter {
-	--_csstools-cf-2bgb251r-f-arg-0: var(--_csstools-cf-2bgb251r-f-raw-0, PARAM);
-	--_csstools-cf-2bgb251r-f-local-x: var(--_csstools-cf-2bgb251r-f-arg-0);
-	--_csstools-cf-2bgb251r-e-result: var(--_csstools-cf-2bgb251r-f-local-x, PASS);
-	width: var(--_csstools-cf-2bgb251r-e-result);
+	--_csstools-cf-1a6pyhl-f-arg-0: var(--_csstools-cf-1a6pyhl-f-raw-0, PARAM);
+	--_csstools-cf-1a6pyhl-f-local-x: var(--_csstools-cf-1a6pyhl-f-arg-0);
+	--_csstools-cf-1a6pyhl-e-result: var(--_csstools-cf-1a6pyhl-f-local-x, PASS);
+	width: var(--_csstools-cf-1a6pyhl-e-result);
 }

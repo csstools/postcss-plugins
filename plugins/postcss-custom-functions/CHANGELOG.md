@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Functions
 
+### Unreleased (patch)
+
+- Drop `node:path` and `node:crypto` dependencies
+
 ### 1.0.0
 
 _October 1, 2026_

@@ -53,9 +53,9 @@ Unsupported:
 }
 
 .bar {
-	--_csstools-p-1agle9gi-0--arg-0: 200;
-	--_csstools-p-1agle9gi-1--baz: var(--_csstools-p-1agle9gi-0--arg-0);
-	color: rgb(var(--_csstools-p-1agle9gi-1--baz) 127 0);
+	--_csstools-p-1gice1e-0--arg-0: 200;
+	--_csstools-p-1gice1e-1--baz: var(--_csstools-p-1gice1e-0--arg-0);
+	color: rgb(var(--_csstools-p-1gice1e-1--baz) 127 0);
 }
 
 .c {
@@ -151,9 +151,9 @@ postcssMixins({ preserve: true })
 }
 
 .bar {
-	--_csstools-p-1agle9gi-0--arg-0: 200;
-	--_csstools-p-1agle9gi-1--baz: var(--_csstools-p-1agle9gi-0--arg-0);
-	color: rgb(var(--_csstools-p-1agle9gi-1--baz) 127 0);
+	--_csstools-p-1gice1e-0--arg-0: 200;
+	--_csstools-p-1gice1e-1--baz: var(--_csstools-p-1gice1e-0--arg-0);
+	color: rgb(var(--_csstools-p-1gice1e-1--baz) 127 0);
 	@apply --bar(200);
 }
 

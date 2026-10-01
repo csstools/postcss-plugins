@@ -4,16 +4,16 @@
 
 .negative-a {
 	--gap: 1em;
-	--_csstools-cf-86hq2t3p-1-arg-0: var(--gap);
-	--_csstools-cf-86hq2t3p-0-result: calc(-1 * var(--_csstools-cf-86hq2t3p-1-arg-0));
-	padding: var(--_csstools-cf-86hq2t3p-0-result);
+	--_csstools-cf-wv7kid-1-arg-0: var(--gap);
+	--_csstools-cf-wv7kid-0-result: calc(-1 * var(--_csstools-cf-wv7kid-1-arg-0));
+	padding: var(--_csstools-cf-wv7kid-0-result);
 	padding: --negative(var(--gap));
 }
 
 .negative-b {
-	--_csstools-cf-86hq2t3p-3-arg-0: 1em;
-	--_csstools-cf-86hq2t3p-2-result: calc(-1 * var(--_csstools-cf-86hq2t3p-3-arg-0));
-	padding: var(--_csstools-cf-86hq2t3p-2-result);
+	--_csstools-cf-wv7kid-3-arg-0: 1em;
+	--_csstools-cf-wv7kid-2-result: calc(-1 * var(--_csstools-cf-wv7kid-3-arg-0));
+	padding: var(--_csstools-cf-wv7kid-2-result);
 	padding: --negative(1em);
 }
 
@@ -23,9 +23,9 @@
 }
 
 .circle {
-	--_csstools-cf-86hq2t3p-5-arg-0: 2px;
-	--_csstools-cf-86hq2t3p-5-local-r2: calc(var(--_csstools-cf-86hq2t3p-5-arg-0) * var(--_csstools-cf-86hq2t3p-5-arg-0));
-	--_csstools-cf-86hq2t3p-4-result: calc(3.14159 * var(--_csstools-cf-86hq2t3p-5-local-r2));
-	width: var(--_csstools-cf-86hq2t3p-4-result);
+	--_csstools-cf-wv7kid-5-arg-0: 2px;
+	--_csstools-cf-wv7kid-5-local-r2: calc(var(--_csstools-cf-wv7kid-5-arg-0) * var(--_csstools-cf-wv7kid-5-arg-0));
+	--_csstools-cf-wv7kid-4-result: calc(3.14159 * var(--_csstools-cf-wv7kid-5-local-r2));
+	width: var(--_csstools-cf-wv7kid-4-result);
 	width: --circle-area(2px);
 }

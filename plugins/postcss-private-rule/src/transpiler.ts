@@ -1,6 +1,4 @@
 import type { AtRule, Declaration, Node, Rule } from 'postcss';
-import crypto from 'node:crypto';
-import path from 'node:path';
 import { findAllStyleRules, findPrivateRule } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
@@ -29,9 +27,7 @@ export class Transpiler {
 			fromHash = this.hashes.get(rule.source.input.from);
 
 			if (!fromHash) {
-				const hash = crypto.createHash('md5');
-				hash.update(path.basename(path.dirname(rule.source?.input.from)) + '/' + path.basename(rule.source?.input.from), 'utf8');
-				fromHash = parseInt(hash.digest('hex'), 16).toString(36).slice(0, 8);
+				fromHash = sourceHashFor(rule.source.input.from);
 				this.hashes.set(rule.source.input.from, fromHash);
 			}
 		} else {
@@ -267,4 +263,40 @@ export class Transpiler {
 
 		atRule.params = replacement;
 	}
+}
+
+/**
+ * A short, stable hash of a stylesheet source path.
+ *
+ * Generated names embed this hash so that names from different stylesheets can
+ * not collide. Only the last two path segments are used, so that names are
+ * stable regardless of the absolute location of a project.
+ *
+ * This intentionally avoids `node:crypto` and `node:path` so that this plugin
+ * can run in a browser bundle.
+ */
+function sourceHashFor(from: string): string {
+	let hash = 2166136261;
+	const source = sourceKey(from);
+
+	for (let i = 0; i < source.length; i++) {
+		hash ^= source.charCodeAt(i);
+		hash = Math.imul(hash, 16777619);
+	}
+
+	return (hash >>> 0).toString(36);
+}
+
+function sourceKey(from: string): string {
+	const segments = from.replaceAll('\\', '/').split('/').filter((segment) => segment.length > 0);
+
+	if (segments.length === 0) {
+		return '.';
+	}
+
+	if (segments.length === 1) {
+		return `./${segments[0]}`;
+	}
+
+	return segments.slice(-2).join('/');
 }
