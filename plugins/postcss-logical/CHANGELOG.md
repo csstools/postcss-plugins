@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Properties
 
+### Unreleased (patch)
+
+- Improved performance by inserting transformed declarations in a single batch
+
 ### 9.0.1
 
 _September 25, 2026_

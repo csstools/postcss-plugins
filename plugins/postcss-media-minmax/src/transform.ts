@@ -23,6 +23,11 @@ export function transform(mediaQueries: Array<MediaQuery>): string {
 	return mediaQueries.map((mediaQuery, mediaQueryIndex) => {
 		const ancestry = gatherNodeAncestry(mediaQuery);
 
+		// Every mutation of a `MediaConditionListWithAnd` inserts exactly one extra
+		// `MediaAnd`. Remembering the original position of each `MediaAnd` and how
+		// many insertions happened before it avoids a repeated `indexOf` per match.
+		const andListPositions = new WeakMap<MediaConditionListWithAnd, { indexes: Map<MediaAnd, number>, inserted: number }>();
+
 		mediaQuery.walk((entry) => {
 			const node = entry.node;
 			if (!isMediaFeatureRange(node)) {
@@ -116,6 +121,17 @@ export function transform(mediaQueries: Array<MediaQuery>): string {
 			// ((300px < width < 400px) and (color))
 			const andList = getMediaConditionListWithAndFromAncestry(grandParent, ancestry);
 			if (andList) {
+				let andListPosition = andListPositions.get(andList);
+				if (!andListPosition) {
+					const indexes = new Map<MediaAnd, number>();
+					andList.list.forEach((item, index) => {
+						indexes.set(item, index);
+					});
+
+					andListPosition = { indexes, inserted: 0 };
+					andListPositions.set(andList, andListPosition);
+				}
+
 				if (andList.leading === grandParent) {
 					andList.leading = parensOne;
 
@@ -131,11 +147,16 @@ export function transform(mediaQueries: Array<MediaQuery>): string {
 						...andList.list,
 					];
 
+					andListPosition.inserted += 1;
+
 					return;
 				}
 
+				const target = ancestry.get(grandParent) as MediaAnd;
+				const originalIndex = andListPosition.indexes.get(target);
+
 				andList.list.splice(
-					andList.indexOf(ancestry.get(grandParent) as MediaAnd) as number,
+					typeof originalIndex === 'number' ? originalIndex + andListPosition.inserted : andList.list.indexOf(target),
 					1,
 					new MediaAnd(
 						[
@@ -154,6 +175,8 @@ export function transform(mediaQueries: Array<MediaQuery>): string {
 						parensTwo,
 					),
 				);
+
+				andListPosition.inserted += 1;
 
 				return;
 			}

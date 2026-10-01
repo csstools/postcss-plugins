@@ -1,5 +1,10 @@
 # Changes to PostCSS Attribute Case Insensitive
 
+### Unreleased (patch)
+
+- Bound the combined number of selector variants across all case insensitive attributes.
+
+
 ### 8.0.1
 
 _September 25, 2026_

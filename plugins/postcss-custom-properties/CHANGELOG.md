@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Properties
 
+### Unreleased (patch)
+
+- Share a single expansion budget across all declarations.
+- Avoid a quadratic sibling scan when checking for an existing fallback declaration.
+
 ### 15.0.3
 
 _October 1, 2026_

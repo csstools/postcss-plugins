@@ -1,5 +1,9 @@
 # Changes to PostCSS Double Position Gradients
 
+### Unreleased (patch)
+
+- Improve performance when a gradient contains multiple double-position stops.
+
 ### 7.0.4
 
 _September 6, 2026_

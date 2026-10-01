@@ -1,0 +1,16 @@
+@layer foo {
+	:root {
+		--x: red;
+	}
+}
+
+@layer \66 oo {
+	:root {
+		--x: blue;
+	}
+}
+
+a {
+	color: blue;
+	color: var(--x);
+}

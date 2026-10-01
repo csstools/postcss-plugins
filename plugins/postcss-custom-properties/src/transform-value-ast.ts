@@ -9,7 +9,7 @@ import { parseVarFunction } from './parse-var-function';
  * Custom properties can reference each other and duplicate subtrees, which can grow
  * exponentially. Sharing a single budget bounds the total expansion.
  */
-type TransformValueASTBudget = {
+export type TransformValueASTBudget = {
 	remaining: number,
 };
 

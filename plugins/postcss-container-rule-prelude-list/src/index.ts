@@ -4,6 +4,8 @@ import type { PluginCreator } from 'postcss';
 
 const CONTAINER_NAME_REGEX = /^container$/i;
 
+const MAX_EXPANDED_AT_RULES = 10_000;
+
 /** postcss-container-rule-prelude-list plugin options */
 export type pluginOptions = {
 	/** Preserve the original notation. default: false */
@@ -20,8 +22,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 		opts,
 	);
 
+	let expandedAtRules = 0;
+
 	return {
 		postcssPlugin: 'postcss-container-rule-prelude-list',
+		Once(): void {
+			expandedAtRules = 0;
+		},
 		AtRule(rule): void {
 			if (!CONTAINER_NAME_REGEX.test(rule.name)) {
 				return;
@@ -34,6 +41,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			const list = parseCommaSeparatedListOfComponentValues(tokenize({ css: rule.params })).map((x) => stringify([x]));
 			if (list.length <= 1) {
 				return;
+			}
+
+			expandedAtRules += list.length;
+			if (expandedAtRules > MAX_EXPANDED_AT_RULES) {
+				throw new Error('Maximum @container expansion size exceeded, reduce the complexity of your stylesheet');
 			}
 
 			list.forEach((item) => {

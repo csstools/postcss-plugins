@@ -291,11 +291,8 @@ const creator: PluginCreator<null> = () => {
 							return;
 						}
 
-						// rule.after reverses the at rule order.
-						// reversing the call order gives in the correct order overall.
-						state.conditionalRules.reverse().forEach((atSupports) => {
-							node.after(atSupports);
-						});
+						// `after` inserts an array of nodes in order.
+						node.after(state.conditionalRules);
 					});
 				},
 			};

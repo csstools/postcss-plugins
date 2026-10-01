@@ -2,14 +2,15 @@ import type { Declaration } from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
 import transformValueAST from './transform-value-ast';
+import type { TransformValueASTBudget } from './transform-value-ast';
 import { isDeclarationIgnored } from './is-ignored';
 
 // transform custom pseudo selectors with custom selectors
-export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean }): void {
+export function transformProperties(decl: Declaration, customProperties: Map<string, valuesParser.ParsedValue>, opts: { preserve?: boolean, budget?: TransformValueASTBudget }): void {
 	if (isTransformableDecl(decl) && !isDeclarationIgnored(decl)) {
 		const originalValue = decl.raws?.value?.raw ?? decl.value;
 		const valueAST = valuesParser(originalValue);
-		const value = transformValueAST(valueAST, customProperties);
+		const value = transformValueAST(valueAST, customProperties, opts.budget);
 
 		if (value === originalValue) {
 			return;
@@ -45,25 +46,19 @@ function parentHasExactFallback(decl: Declaration, value: string): boolean {
 		return false;
 	}
 
-	let hasFallback = false;
-	const declIndex = decl.parent.index(decl);
-	decl.parent.each((sibling, index) => {
-		if (sibling === decl) {
-			return false;
+	const prop = decl.prop.toLowerCase();
+
+	// Walk backwards from the declaration instead of scanning from the start of
+	// the container. `parent.index()` + a full sibling scan for every
+	// declaration is O(n^2) for a rule with many declarations.
+	let sibling = decl.prev();
+	while (sibling) {
+		if (sibling.type === 'decl' && sibling.prop.toLowerCase() === prop && sibling.value === value) {
+			return true;
 		}
 
-		if (index >= declIndex) {
-			return false;
-		}
+		sibling = sibling.prev();
+	}
 
-		if (sibling.type !== 'decl') {
-			return;
-		}
-
-		if (sibling.prop.toLowerCase() === decl.prop.toLowerCase() && sibling.value === value) {
-			hasFallback = true;
-		}
-	});
-
-	return hasFallback;
+	return false;
 }

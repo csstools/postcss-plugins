@@ -1,4 +1,4 @@
-import type { Plugin, PluginCreator } from 'postcss';
+import type { Plugin, PluginCreator, Rule } from 'postcss';
 import alwaysValidSelector from './split-selectors/always-valid';
 import complexSelectors from './split-selectors/complex';
 import splitSelectors from './split-selectors/split-selectors';
@@ -106,12 +106,16 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						const uniqueResolvedComplexSelectors = Array.from(new Set(resolvedComplexSelectors));
 
 						// 4. Replace.
+						// `rule.selectors` re-splits the selector string on every access.
+						const originalSelectors = new Set(rule.selectors);
+						const clonedSelectors: Array<string> = [];
+
 						uniqueResolvedComplexSelectors.forEach((modifiedSelector) => {
 							// `::is()` is incorrect but can't be detected without parsing.
 							// It will be left as is and will eventually trigger this condition.
 							// This prevents an infinite loop.
 							// didModify is the signal to prevent the infinite loop.
-							if (rule.selectors.indexOf(modifiedSelector) > -1) {
+							if (originalSelectors.has(modifiedSelector)) {
 								selectorListOnOriginalNode.push(modifiedSelector);
 								return;
 							}
@@ -122,14 +126,21 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 								return;
 							}
 
-							transformedNodes.add(rule);
-							rule.cloneBefore({ selector: modifiedSelector });
+							clonedSelectors.push(modifiedSelector);
 							didModify = true;
 						});
 
+						// Insert as a batch: resolving the reference index for every
+						// single insertion is quadratic.
+						const clones: Array<Rule> = clonedSelectors.map((modifiedSelector) => rule.clone({ selector: modifiedSelector }));
+
 						if (selectorListOnOriginalNode.length && didModify) {
+							clones.push(rule.clone({ selectors: selectorListOnOriginalNode }));
+						}
+
+						if (clones.length) {
 							transformedNodes.add(rule);
-							rule.cloneBefore({ selectors: selectorListOnOriginalNode });
+							rule.before(clones);
 						}
 
 						if (!options.preserve) {
