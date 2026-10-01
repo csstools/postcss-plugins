@@ -39,7 +39,7 @@
 		"@csstools/cascade-layer-name-parser": "^3.0.1",
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
-		"@csstools/custom-function-parser": "^0.0.0"
+		"@csstools/custom-function-parser": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
