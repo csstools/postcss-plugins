@@ -1,6 +1,8 @@
 # Changes to PostCSS Media MinMax
 
-### Unreleased (patch)
+### 3.0.8
+
+_October 2, 2026_
 
 - Improve performance when transforming media queries with multiple range features.
 - Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#343) (patch)
