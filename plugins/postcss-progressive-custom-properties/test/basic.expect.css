@@ -685,3 +685,50 @@
 	--prop-8: 2lvb;
 }
 }
+
+@function --a() {
+	result: color(display-p3 0.1 0.1 0.1);
+}
+
+@function --b() {
+	--a: rgb(26, 26, 26);
+
+	result: var(--a);
+
+@supports (color: color(display-p3 0 0 0%)) {
+	--a: color(display-p3 0.1 0.1 0.1);
+}
+}
+
+:root {
+	--firebrick: rgba(255, 155, 186, 0.5);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+:root {
+	--firebrick: color(display-p3 1 0.58119 0.72367 / 0.5);
+}
+}
+
+@supports (color: oklab(0% 0 0%)) {
+:root {
+	--firebrick: oklch(80% 0.4 0.039 / 50%);
+}
+}
+
+
+:root {
+	--firebrick-2: rgba(255, 155, 186, 0.5);
+}
+
+@media (color-gamut: p3) {
+	:root {
+		--firebrick-2: color(display-p3 1 0.58119 0.72367 / 0.5);
+	}
+}
+
+@media (color-gamut: rec2020) {
+	:root {
+		--firebrick-2: oklch(80% 0.4 0.039 / 50%);
+	}
+}

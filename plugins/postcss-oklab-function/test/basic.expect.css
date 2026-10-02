@@ -229,3 +229,13 @@
 	}
 }
 }
+
+@function --a() {
+	result: rgb(180, 6, 95);
+}
+
+@function --b() {
+	--a: rgb(180, 6, 95);
+
+	result: var(--a);
+}

@@ -1,5 +1,9 @@
 # Changes to PostCSS image-set() Function
 
+### Unreleased (patch)
+
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+
 ### 8.0.1
 
 _September 6, 2026_

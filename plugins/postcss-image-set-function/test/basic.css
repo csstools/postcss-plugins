@@ -126,3 +126,13 @@ to-clone {
 		--foo: image-set(url(img-a.png) 1x, url(img-a@2x.png) 2x);
 	}
 }
+
+@function --a() {
+	result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+
+@function --b() {
+	--a: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+
+	result: var(--a);
+}

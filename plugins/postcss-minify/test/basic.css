@@ -49,3 +49,13 @@ div/*foo*/.foo {
 div/*foo*//*bar*/.foo {
   color:purple;
 }
+
+@function --a() {
+	result: color(display-p3 0.1 0.1 0.1);
+}
+
+@function --b() {
+	--a: color(display-p3 0.1 0.1 0.1);
+
+	result: var(--a);
+}

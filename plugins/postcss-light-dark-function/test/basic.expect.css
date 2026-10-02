@@ -153,3 +153,20 @@
 		color-scheme: dark;
 	}
 }
+
+@function --a() {
+	--csstools-light-dark-toggle--14: var(--csstools-color-scheme--light) blue;
+	result: var(--csstools-light-dark-toggle--14, green);
+	result: light-dark(green, blue);
+}
+
+@function --b() {
+	--csstools-light-dark-toggle--15: var(--csstools-color-scheme--light) blue;
+	--a: var(--csstools-light-dark-toggle--15, green);
+
+	result: var(--a);
+
+@supports (color: light-dark(red, red)) {
+	--a: light-dark(green, blue);
+}
+}

@@ -54,6 +54,7 @@
 		"@csstools/postcss-container-rule-prelude-list": "^1.0.3",
 		"@csstools/postcss-content-alt-text": "^3.0.6",
 		"@csstools/postcss-contrast-color-function": "^3.0.14",
+		"@csstools/postcss-custom-functions": "^1.0.0",
 		"@csstools/postcss-exponential-functions": "^3.0.8",
 		"@csstools/postcss-fit-tolerance-property": "^1.0.1",
 		"@csstools/postcss-font-format-keywords": "^5.0.0",

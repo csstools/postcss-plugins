@@ -97,3 +97,15 @@
 		--foo: sign(10px);
 	}
 }
+
+@function --a() {
+	result: calc(-1);
+	result: sign(-10px);
+}
+
+@function --b() {
+	--a: calc(-1);
+	--a: sign(-10px);
+
+	result: var(--a);
+}

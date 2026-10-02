@@ -80,3 +80,13 @@
 		--foo: calc(1);
 	}
 }
+
+@function --a() {
+	result: calc(-1);
+}
+
+@function --b() {
+	--a: calc(-1);
+
+	result: var(--a);
+}

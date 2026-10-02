@@ -41,3 +41,13 @@
 	/* A filter on the original values, only a single item should be removed */
 	background: rewrite-url('foo.png' --url-modifier-d crossorigin(use-credentials) referrerpolicy(no-referrer));
 }
+
+@function --a() {
+	result: rewrite-url('foo.png');
+}
+
+@function --b() {
+	--a: rewrite-url('foo.png');
+
+	result: var(--a);
+}

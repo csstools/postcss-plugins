@@ -297,3 +297,18 @@
 	}
 }
 }
+
+@function --a() {
+	result: rgb(175, 92, 174);
+	result: color-mix(in lch, purple 50%, plum 50%);
+}
+
+@function --b() {
+	--a: rgb(175, 92, 174);
+
+	result: var(--a);
+
+@supports (color: color-mix(in lch, red, blue)) {
+	--a: color-mix(in lch, purple 50%, plum 50%);
+}
+}

@@ -41,3 +41,13 @@
 	/* A filter on the original values, only a single item should be removed */
 	background: url("foo.png#modified-d" crossorigin(use-credentials) referrerpolicy(no-referrer));
 }
+
+@function --a() {
+	result: url("foo.png#modified");
+}
+
+@function --b() {
+	--a: url("foo.png#modified");
+
+	result: var(--a);
+}

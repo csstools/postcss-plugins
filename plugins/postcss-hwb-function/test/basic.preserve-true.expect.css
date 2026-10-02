@@ -66,3 +66,21 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: rgba(153, 153, 153, var(--alpha));
+
+@supports (color: hwb(0 0% 0%)) {
+	result: hwb(0 60% 40% / var(--alpha));
+}
+}
+
+@function --b() {
+	--a: rgba(153, 153, 153, var(--alpha));
+
+	result: var(--a);
+
+@supports (color: hwb(0 0% 0%)) {
+	--a: hwb(0 60% 40% / var(--alpha));
+}
+}

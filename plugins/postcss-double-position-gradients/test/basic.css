@@ -88,3 +88,13 @@ to-clone {
 		--foo: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 	}
 }
+
+@function --a() {
+	result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+@function --b() {
+	--a: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+
+	result: var(--a);
+}

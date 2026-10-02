@@ -59,3 +59,13 @@ to-clone {
 		--foo: 5vi;
 	}
 }
+
+@function --a() {
+	result: 2vi;
+}
+
+@function --b() {
+	--a: 2vi;
+
+	result: var(--a);
+}

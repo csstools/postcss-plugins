@@ -329,3 +329,13 @@ to-clone {
 		--foo: conic-gradient(in oklch longer hue, rgb(255 150 150) 0deg, rgb(255 150 150) 360deg);
 	}
 }
+
+@function --a() {
+	result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+
+@function --b() {
+	--a: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+
+	result: var(--a);
+}

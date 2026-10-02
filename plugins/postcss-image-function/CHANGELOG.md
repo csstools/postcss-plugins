@@ -1,5 +1,9 @@
 # Changes to PostCSS Image Function
 
+### Unreleased (patch)
+
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+
 ### 1.0.5
 
 _October 1, 2026_

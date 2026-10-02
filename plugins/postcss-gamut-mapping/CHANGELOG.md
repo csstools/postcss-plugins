@@ -1,5 +1,10 @@
 # Changes to PostCSS gamut-mapping
 
+### Unreleased (patch)
+
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+- Emit an `@supports (color: …)` condition for the color functions that are used, nested inside the generated `@media (color-gamut: …)` rule.
+
 ### 3.0.14
 
 _October 1, 2026_

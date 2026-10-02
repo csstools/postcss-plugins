@@ -78,3 +78,13 @@
 		--foo: calc(-50deg);
 	}
 }
+
+@function --a() {
+	result: calc(3px);
+}
+
+@function --b() {
+	--a: calc(3px);
+
+	result: var(--a);
+}

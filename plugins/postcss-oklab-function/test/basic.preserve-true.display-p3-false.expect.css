@@ -290,3 +290,18 @@
 	}
 }
 }
+
+@function --a() {
+	result: rgb(180, 6, 95);
+	result: oklch(50% 50% 0);
+}
+
+@function --b() {
+	--a: rgb(180, 6, 95);
+
+	result: var(--a);
+
+@supports (color: oklab(0% 0 0%)) {
+	--a: oklch(50% 50% 0);
+}
+}

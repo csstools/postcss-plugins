@@ -96,3 +96,13 @@
 		color-scheme: dark;
 	}
 }
+
+@function --a() {
+	result: light-dark(green, blue);
+}
+
+@function --b() {
+	--a: light-dark(green, blue);
+
+	result: var(--a);
+}

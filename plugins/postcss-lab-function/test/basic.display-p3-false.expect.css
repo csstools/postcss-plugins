@@ -208,3 +208,13 @@ to-clone {
 		--foo: rgb(0, 163, 142);
 	}
 }
+
+@function --a() {
+	result: rgb(179, 35, 35);
+}
+
+@function --b() {
+	--a: rgb(179, 35, 35);
+
+	result: var(--a);
+}

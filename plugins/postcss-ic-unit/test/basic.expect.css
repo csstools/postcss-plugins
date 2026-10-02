@@ -23,3 +23,13 @@ to-clone {
 		--foo: 2em;
 	}
 }
+
+@function --a() {
+	result: 2em;
+}
+
+@function --b() {
+	--a: 2em;
+
+	result: var(--a);
+}

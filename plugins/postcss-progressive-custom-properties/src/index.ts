@@ -7,6 +7,7 @@ const HAS_VARIABLE_FUNCTION_REGEX = /var\(/i;
 const IS_INITIAL_REGEX = /^initial$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
 const IS_KEYFRAMES_REGEX = /^keyframes$/i;
+const IS_FUNCTION_REGEX = /^function$/i;
 const IS_SUPPORTS_REGEX = /^supports$/i;
 const EMPTY_OR_WHITESPACE_REGEX = /^\s*$/;
 
@@ -266,18 +267,28 @@ const creator: PluginCreator<null> = () => {
 						const outerAtRule = atRules[0];
 						const innerAtRule = atRules[atRules.length - 1];
 
-						const parentClone = decl.parent.clone();
-						parentClone.removeAll();
+						let conditionalRuleContainer: Container<ChildNode>;
 
-						parentClone.raws.before = '\n';
+						if (decl.parent.type === 'atrule' && IS_FUNCTION_REGEX.test(decl.parent.name)) {
+							// `@function` accepts conditional group rules in its body,
+							// so the conditional rule is nested instead of cloning the `@function`.
+							conditionalRuleContainer = innerAtRule;
+						} else {
+							const parentClone = decl.parent.clone();
+							parentClone.removeAll();
 
-						cloneDeclarations(parentClone, decl);
+							parentClone.raws.before = '\n';
+
+							innerAtRule.append(parentClone);
+							conditionalRuleContainer = parentClone;
+						}
+
+						cloneDeclarations(conditionalRuleContainer, decl);
 						decl.remove();
 
 						state.lastConditionParams = supportParams;
-						state.lastConditionalRule = parentClone;
+						state.lastConditionalRule = conditionalRuleContainer;
 
-						innerAtRule.append(parentClone);
 						state.conditionalRules.push(outerAtRule);
 					});
 
@@ -288,6 +299,12 @@ const creator: PluginCreator<null> = () => {
 						}
 
 						if (state.conditionalRules.length === 0) {
+							return;
+						}
+
+						if (node.type === 'atrule' && IS_FUNCTION_REGEX.test(node.name)) {
+							// Conditional rules belong inside the `@function` body.
+							node.append(state.conditionalRules);
 							return;
 						}
 

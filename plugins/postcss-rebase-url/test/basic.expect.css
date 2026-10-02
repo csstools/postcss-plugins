@@ -67,3 +67,13 @@
 .outside_root {
 	background: url("../../../images/green.png");
 }
+
+@function --a() {
+	result: url(images/green.png);
+}
+
+@function --b() {
+	--a: url(./images/green.png);
+
+	result: var(--a);
+}

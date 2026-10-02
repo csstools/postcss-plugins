@@ -16,3 +16,15 @@
 .ignore {
 	color: csstools-if(--dark-mode black, red else green, blue);
 }
+
+@function --a() {
+	--dark-mode--1: var(--dark-mode) white;
+	result: var(--dark-mode--1,black);
+}
+
+@function --b() {
+	--dark-mode--2: var(--dark-mode) white;
+	--a: var(--dark-mode--2,black);
+
+	result: var(--a);
+}

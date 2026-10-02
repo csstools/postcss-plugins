@@ -189,3 +189,18 @@
 	}
 }
 }
+
+@function --a() {
+	result: rgb(from red r g b / 0.5);
+	result: alpha(from red / 0.5);
+}
+
+@function --b() {
+	--a: rgb(from red r g b / 0.5);
+
+	result: var(--a);
+
+@supports (color: alpha(from red / 1)) {
+	--a: alpha(from red / 0.5);
+}
+}

@@ -371,3 +371,18 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: rgb(179, 35, 35);
+	result: lab(40% 56.6 39);
+}
+
+@function --b() {
+	--a: rgb(179, 35, 35);
+
+	result: var(--a);
+
+@supports (color: lab(0% 0 0%)) {
+	--a: lab(40% 56.6 39);
+}
+}

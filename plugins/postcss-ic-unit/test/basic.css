@@ -23,3 +23,13 @@ to-clone {
 		--foo: 2ic;
 	}
 }
+
+@function --a() {
+	result: 2ic;
+}
+
+@function --b() {
+	--a: 2ic;
+
+	result: var(--a);
+}

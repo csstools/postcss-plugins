@@ -367,3 +367,15 @@
 		--foo: sin(45deg);
 	}
 }
+
+@function --a() {
+	result: calc(0.70711);
+	result: sin(45deg);
+}
+
+@function --b() {
+	--a: calc(0.70711);
+	--a: sin(45deg);
+
+	result: var(--a);
+}

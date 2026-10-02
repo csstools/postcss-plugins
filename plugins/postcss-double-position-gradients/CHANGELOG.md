@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Improve performance when a gradient contains multiple double-position stops.
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
 
 ### 7.0.4
 

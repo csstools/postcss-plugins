@@ -10,11 +10,23 @@ const COLOR_SCHEME_REGEX = /^color-scheme$/i;
 const LIGHT_DARK_FUNCTION_REGEX = /\blight-dark\(/i;
 const IS_PROPERTY_REGEX = /^property$/i;
 const IS_KEYFRAMES_REGEX = /^keyframes$/i;
+const IS_FUNCTION_REGEX = /^function$/i;
 
 function inKeyframes(decl: Declaration): AtRule | void {
 	let parent: typeof decl.parent | Document = decl.parent;
 	while (parent) {
 		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return parent;
+		}
+
+		parent = parent.parent;
+	}
+}
+
+function inFunction(decl: Declaration): AtRule | void {
+	let parent: typeof decl.parent | Document = decl.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
 			return parent;
 		}
 
@@ -107,7 +119,7 @@ const basePlugin: PluginCreator<pluginOptions> = (opts) => {
 
 						decl.cloneBefore({ value: modified.value });
 
-						if (decl.variable && decl.parent) {
+						if (decl.variable && decl.parent && !inFunction(decl)) {
 							const variableInheritanceRule = variableInheritanceRules.get(decl.parent) ?? newNestedRuleWithSupportsNot(
 								decl,
 								rule,

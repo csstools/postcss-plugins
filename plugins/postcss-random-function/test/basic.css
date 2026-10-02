@@ -110,3 +110,13 @@
 		--foo: random(0, 10);
 	}
 }
+
+@function --a() {
+	result: random(0px, 10px);
+}
+
+@function --b() {
+	--a: random(0px, 10px);
+
+	result: var(--a);
+}

@@ -133,3 +133,13 @@
 		--foo: rgb(0, 0, 255);
 	}
 }
+
+@function --a() {
+	result: rgb(0, 0, 255);
+}
+
+@function --b() {
+	--a: rgb(0, 0, 255);
+
+	result: var(--a);
+}

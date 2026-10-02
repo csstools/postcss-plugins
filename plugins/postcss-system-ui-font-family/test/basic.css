@@ -25,3 +25,13 @@
 .comment-between-idents {
 	font-family: system-ui, Segoe /* foo */UI;
 }
+
+@function --a() {
+	result: system-ui;
+}
+
+@function --b() {
+	--a: system-ui;
+
+	result: var(--a);
+}

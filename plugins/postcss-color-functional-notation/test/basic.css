@@ -117,3 +117,13 @@ to-clone {
 		--color: rgb(255 0 0);
 	}
 }
+
+@function --a() {
+	result: rgb(255 0 0 / var(--alpha-50));
+}
+
+@function --b() {
+	--a: rgb(255 0 0 / var(--alpha-50));
+
+	result: var(--a);
+}

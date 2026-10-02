@@ -59,3 +59,18 @@
 	}
 }
 }
+
+@function --a() {
+	result: linear-gradient(red,red);
+	result: image(red);
+}
+
+@function --b() {
+	--a: linear-gradient(red,red);
+
+	result: var(--a);
+
+@supports (background-image: image(red)) {
+	--a: image(red);
+}
+}

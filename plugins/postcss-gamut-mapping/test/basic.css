@@ -155,3 +155,35 @@
 		--foo: color(srgb 0.99 1.0001 0.99);
 	}
 }
+
+@function --a() {
+	result: oklch(60% 0.4 0);
+}
+
+@function --b() {
+	--a: oklch(60% 0.4 0);
+
+	result: var(--a);
+}
+
+:root {
+	--firebrick: rgba(255, 155, 186, 0.5);
+	--firebrick: color(display-p3 1 0.58119 0.72367 / 0.5);
+	--firebrick: oklch(80% 0.4 0.039 / 50%);
+}
+
+:root {
+	--firebrick-2: rgba(255, 155, 186, 0.5);
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+	:root {
+		--firebrick-2: color(display-p3 1 0.58119 0.72367 / 0.5);
+	}
+}
+
+@supports (color: oklab(0% 0 0%)) {
+	:root {
+		--firebrick-2: oklch(80% 0.4 0.039 / 50%);
+	}
+}

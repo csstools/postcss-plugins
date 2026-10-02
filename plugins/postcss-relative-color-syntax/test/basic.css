@@ -123,3 +123,13 @@
 		--foo: hsla(from blue h s l / alpha);
 	}
 }
+
+@function --a() {
+	result: rgb(from blue r g b);
+}
+
+@function --b() {
+	--a: rgb(from blue r g b);
+
+	result: var(--a);
+}

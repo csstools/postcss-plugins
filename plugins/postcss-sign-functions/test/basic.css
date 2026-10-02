@@ -80,3 +80,13 @@
 		--foo: sign(10px);
 	}
 }
+
+@function --a() {
+	result: sign(-10px);
+}
+
+@function --b() {
+	--a: sign(-10px);
+
+	result: var(--a);
+}

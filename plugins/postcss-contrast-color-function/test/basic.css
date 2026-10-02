@@ -44,3 +44,13 @@
 	background-color: contrast-color(contrast-color(green));
 	border-color: contrast-color(contrast-color(contrast-color(green)));
 }
+
+@function --a() {
+	result: contrast-color(green);
+}
+
+@function --b() {
+	--a: contrast-color(green);
+
+	result: var(--a);
+}

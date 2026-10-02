@@ -78,3 +78,13 @@
 		--foo: mod(-140deg, -90deg);
 	}
 }
+
+@function --a() {
+	result: round(2.5px, 1px);
+}
+
+@function --b() {
+	--a: round(2.5px, 1px);
+
+	result: var(--a);
+}

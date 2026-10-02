@@ -201,3 +201,21 @@ to-clone {
 	}
 }
 }
+
+@function --a() {
+	result: rgba(255, 0, 0, var(--alpha-50));
+
+@supports (color: rgb(0 0 0 / 0)) {
+	result: rgb(255 0 0 / var(--alpha-50));
+}
+}
+
+@function --b() {
+	--a: rgba(255, 0, 0, var(--alpha-50));
+
+	result: var(--a);
+
+@supports (color: rgb(0 0 0 / 0)) {
+	--a: rgb(255 0 0 / var(--alpha-50));
+}
+}

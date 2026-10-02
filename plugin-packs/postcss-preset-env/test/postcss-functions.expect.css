@@ -1,0 +1,210 @@
+/*
+ * `@function` interaction coverage.
+ *
+ * A `@function` body accepts conditional group rules such as `@supports` and `@media`.
+ * Transpilers must nest those rules inside the existing `@function` and never clone the
+ * `@function` rule into a conditional group rule, as a cloned `@function` with the same
+ * name overrides the original definition.
+ *
+ * Each pair covers a direct assignment to the `result` descriptor and indirection
+ * through a local custom property.
+ */
+
+@function --color-function() {
+	result: rgb(26, 26, 26);
+}
+
+@function --color-function-var() {
+	--local: rgb(26, 26, 26);
+
+	result: var(--local);
+}
+
+@function --lab-function() {
+	result: rgb(179, 35, 35);
+}
+
+@function --lab-function-var() {
+	--local: rgb(179, 35, 35);
+
+	result: var(--local);
+}
+
+@function --oklab-function() {
+	result: rgb(197, 84, 124);
+}
+
+@function --oklab-function-var() {
+	--local: rgb(197, 84, 124);
+
+	result: var(--local);
+}
+
+@function --hwb-function() {
+	result: rgba(153, 153, 153, var(--alpha));
+}
+
+@function --hwb-function-var() {
+	--local: rgba(153, 153, 153, var(--alpha));
+
+	result: var(--local);
+}
+
+@function --color-functional-notation() {
+	result: rgba(255, 0, 0, var(--alpha-50));
+}
+
+@function --color-functional-notation-var() {
+	--local: rgba(255, 0, 0, var(--alpha-50));
+
+	result: var(--local);
+}
+
+@function --color-mix-function() {
+	result: rgb(175, 92, 174);
+}
+
+@function --color-mix-function-var() {
+	--local: rgb(175, 92, 174);
+
+	result: var(--local);
+}
+
+@function --relative-color-syntax() {
+	result: rgb(0, 0, 255);
+}
+
+@function --relative-color-syntax-var() {
+	--local: rgb(0, 0, 255);
+
+	result: var(--local);
+}
+
+@function --double-position-gradients() {
+	result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+@function --double-position-gradients-var() {
+	--local: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+
+	result: var(--local);
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+	--local: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
+@function --gradients-interpolation-method() {
+	result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+
+@function --gradients-interpolation-method-var() {
+	--local: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+
+	result: var(--local);
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+	--local: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
+@function --image-function() {
+	result: linear-gradient(red,red);
+}
+
+@function --image-function-var() {
+	--local: linear-gradient(red,red);
+
+	result: var(--local);
+}
+
+@function --image-set-function() {
+	result: url(img/test.png);
+	result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	result: url(img/test-2x.png);
+	}
+}
+
+@function --image-set-function-var() {
+	--local: url(img/test.png);
+	--local: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+
+	result: var(--local);
+
+	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	--local: url(img/test-2x.png);
+	}
+}
+
+@function --ic-unit() {
+	result: 2em;
+}
+
+@function --ic-unit-var() {
+	--local: 2em;
+
+	result: var(--local);
+}
+
+@function --logical-viewport-units() {
+	result: 2vw;
+	result: 2vi;
+}
+
+@function --logical-viewport-units-var() {
+	--local: 2vw;
+
+	result: var(--local);
+
+@supports (width: 1vi) {
+	--local: 2vi;
+}
+}
+
+@function --gamut-mapping() {
+	result: rgb(230, 0, 122);
+
+@media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
+	result: color(display-p3 0.86333 0 0.47139);
+}
+}
+}
+
+@function --gamut-mapping-var() {
+	--local: rgb(230, 0, 122);
+
+	result: var(--local);
+
+@media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
+	--local: color(display-p3 0.86333 0 0.47139);
+}
+}
+}
+
+@function --system-ui-font-family() {
+	result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	result: system-ui;
+}
+
+@function --system-ui-font-family-var() {
+	--local: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+
+	result: var(--local);
+}
+
+@function --custom-properties() {
+	result: var(--color-fallback);
+}
+
+@function --custom-properties-var() {
+	--local: var(--color-fallback);
+
+	result: var(--local);
+}

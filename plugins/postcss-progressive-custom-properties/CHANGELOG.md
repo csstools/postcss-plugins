@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Improve performance when inserting generated `@supports` rules.
+- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
 
 ### 5.1.3
 
