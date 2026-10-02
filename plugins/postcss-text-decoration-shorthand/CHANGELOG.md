@@ -1,6 +1,8 @@
 # Changes to PostCSS Text Decoration Shorthand
 
-### Unreleased (patch)
+### 5.0.7
+
+_October 2, 2026_
 
 - Improved performance by removing the O(n) `parent.index()` lookup and sibling value scan per declaration
 
