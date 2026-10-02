@@ -433,6 +433,8 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .oklch {
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
@@ -440,6 +442,7 @@
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
+}
 }
 }
 
@@ -574,9 +577,12 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .color-mix {
 	color-4: color(display-p3 0.44 0 0.70096 / 0.65);
 	color-5: color(display-p3 0.54692 0 0.47541 / 0.65);
+}
 }
 }
 
@@ -586,29 +592,35 @@
 	background-image: radial-gradient(farthest-corner circle at 50% 115%, rgb(255, 71, 0) 0%, rgb(255, 103, 0), rgb(255, 137, 0), rgb(255, 169, 0), rgb(250, 199, 0), rgb(197, 225, 0), rgb(116, 246, 0), rgb(0, 255, 86), rgb(0, 255, 171), rgb(0, 255, 239), rgb(0, 255, 255) 100%);
 }
 
-@media (color-gamut: rec2020) {
-.gradients-interpolation-method {
-
-	background-image: radial-gradient(farthest-corner circle at 50% 115%, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.30036), color(display-p3 1.15167 0.57912 -0.39461), color(display-p3 1.06645 0.68611 -0.42959), color(display-p3 0.94738 0.78766 -0.42632), color(display-p3 0.79233 0.87807 -0.37074), color(display-p3 0.59026 0.95319 -0.14671), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.53921 1.05733 0.93686), color(display-p3 -0.57773 1.04644 1.15396) 100%);
-
-	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
-}
-}
-
 @supports (color: color(display-p3 0 0 0%)) {
 .gradients-interpolation-method {
-}
-
-@media (color-gamut: rec2020) {
-.gradients-interpolation-method {
 	--background-image: linear-gradient(rgb(245, 137, 137) 0%, rgb(245, 140, 170), rgb(238, 146, 202), rgb(227, 155, 230), rgb(210, 166, 253), color(display-p3 0.73255 0.7035 1.03328), color(display-p3 0.66377 0.75145 1.06652), color(display-p3 0.59643 0.80011 1.0696), color(display-p3 0.54198 0.8462 1.04382), color(display-p3 0.51578 0.88643 0.99318), rgb(94, 237, 237) 100%);
-}
 }
 }
 
 @supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) and (color: hsl(0 0% 0% / 0)) {
 .gradients-interpolation-method {
 	--background-image: linear-gradient(in oklch decreasing hue, hsl(0deg 85% 75%) 0%, hsl(180deg 80% 65%) 100%);
+}
+}
+
+@media (color-gamut: rec2020) {
+
+@supports (color: color(display-p3 0 0 0%)) {
+.gradients-interpolation-method {
+
+	background-image: radial-gradient(farthest-corner circle at 50% 115%, color(display-p3 1.2198 0.38716 0.16814) 0%, color(display-p3 1.20289 0.47522 -0.30036), color(display-p3 1.15167 0.57912 -0.39461), color(display-p3 1.06645 0.68611 -0.42959), color(display-p3 0.94738 0.78766 -0.42632), color(display-p3 0.79233 0.87807 -0.37074), color(display-p3 0.59026 0.95319 -0.14671), color(display-p3 0.27082 1.00972 0.43521), color(display-p3 -0.3983 1.04501 0.69996), color(display-p3 -0.53921 1.05733 0.93686), color(display-p3 -0.57773 1.04644 1.15396) 100%);
+}
+}
+}
+
+@media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
+.gradients-interpolation-method {
+
+	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
+}
 }
 }
 
@@ -625,9 +637,12 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .test-css-color-5-interop {
 	color-8: color(display-p3 0.4939 0.10676 0);
 	color-9: color(display-p3 0.47553 0.14324 0);
+}
 }
 }
 
@@ -675,8 +690,11 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .schemed-colors {
 	color: light-dark(color(display-p3 0.4939 0.10676 0), magenta);
+}
 }
 }
 
@@ -735,9 +753,12 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .random {
 
 	border-color: color(display-p3 0.08293 0.41734 0);
+}
 }
 }
 

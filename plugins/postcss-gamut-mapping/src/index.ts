@@ -1,5 +1,6 @@
 import type { AtRule, ChildNode, Container, Declaration, Document, Node, Plugin, PluginCreator } from 'postcss';
 import { hasConditionalAncestor } from './has-conditional-ancestor';
+import { hasSupportsConditionAncestor, supportsConditions } from './supports-condition';
 import { tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { SyntaxFlag, color, colorDataFitsDisplayP3_Gamut, colorDataFitsRGB_Gamut, serializeRGB } from '@csstools/css-color-parser';
@@ -22,6 +23,7 @@ type State = {
 };
 
 type Modification = {
+	conditions: Array<string>,
 	isRec2020: boolean,
 	matchesOriginal: boolean,
 	modifiedValue: string,
@@ -76,8 +78,10 @@ const creator: PluginCreator<pluginOptions> = () => {
 							let isRec2020 = false;
 
 							const originalValue = item.value;
+							const originalComponentValues = parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue }));
+							const conditions = supportsConditions(originalComponentValues.flat());
 							const modified = replaceComponentValues(
-								parseCommaSeparatedListOfComponentValues(tokenize({ css: originalValue })),
+								originalComponentValues,
 								(componentValue) => {
 									if (!isFunctionNode(componentValue) || !HAS_WIDE_GAMUT_COLOR_NAME_REGEX.test(componentValue.getName())) {
 										return;
@@ -107,6 +111,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							const modifiedValue = stringify(modified);
 
 							return {
+								conditions: conditions,
 								isRec2020: isRec2020,
 								matchesOriginal: modifiedValue === originalValue,
 								modifiedValue: modifiedValue,
@@ -131,7 +136,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 							modified.reverse();
 						}
 
-						modified.forEach(({ isRec2020, modifiedValue, hasFallback, item }) => {
+						modified.forEach(({ conditions, isRec2020, modifiedValue, hasFallback, item }) => {
 							const parent = item.parent;
 							if (!parent) {
 								return;
@@ -148,7 +153,13 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 							const condition = `(color-gamut: ${isRec2020 ? 'rec2020' : 'p3'})`;
 
-							if (state.lastConditionParams !== condition) {
+							const supportsParams = hasSupportsConditionAncestor(item)
+								? ''
+								: conditions.join(' and ');
+
+							const conditionParams = `${condition} && ${supportsParams}`;
+
+							if (state.lastConditionParams !== conditionParams) {
 								state.lastConditionalRule = undefined;
 							}
 
@@ -182,7 +193,33 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 							let conditionalRuleContainer: Container<ChildNode>;
 
-							if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
+							if (supportsParams) {
+								const supportsRule = postcss.atRule({
+									name: 'supports',
+									params: supportsParams,
+									source: parent.source,
+									raws: {
+										before: '\n\n',
+										after: '\n',
+									},
+								});
+
+								atRule.append(supportsRule);
+
+								if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
+									// `@function` accepts conditional group rules in its body,
+									// so the conditional rule is nested instead of cloning the `@function`.
+									conditionalRuleContainer = supportsRule;
+								} else {
+									const parentClone = parent.clone();
+									parentClone.removeAll();
+
+									parentClone.raws.before = '\n';
+
+									supportsRule.append(parentClone);
+									conditionalRuleContainer = parentClone;
+								}
+							} else if (parent.type === 'atrule' && IS_FUNCTION_REGEX.test(parent.name)) {
 								// `@function` accepts conditional group rules in its body,
 								// so the conditional rule is nested instead of cloning the `@function`.
 								conditionalRuleContainer = atRule;
@@ -203,7 +240,7 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 							visited.add(clone);
 
-							state.lastConditionParams = atRule.params;
+							state.lastConditionParams = conditionParams;
 							state.lastConditionalRule = conditionalRuleContainer;
 
 							state.conditionalRules.push(atRule);

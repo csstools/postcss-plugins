@@ -4,8 +4,11 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 :root {
 	--b-color: oklch(40% 0.234 0.39 / var(--opacity-50));
+}
 }
 }
 
@@ -56,8 +59,11 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .default-2 {
 	color: color(srgb 0.99 1.0001 0.99);
+}
 }
 }
 
@@ -67,8 +73,11 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .default-3 {
 	color: color(display-p3 0.99 1 0.99);
+}
 }
 }
 
@@ -78,8 +87,11 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .default-4 {
 	color: color(srgb 0.99 1.001 0.99);
+}
 }
 }
 
@@ -89,8 +101,11 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .default-5 {
 	color: color(display-p3 0.99 1.0001 0.99);
+}
 }
 }
 
@@ -107,8 +122,11 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .with-fallback-2 {
 	color: color(srgb 0.99 1.0001 0.99);
+}
 }
 }
 
@@ -118,10 +136,13 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .with-fallback-3 {
 	color: color(display-p3 0.99 1 0.99);
 }
 }
+}
 
 .with-fallback-4 {
 	/* Out p3 of gamut */
@@ -129,10 +150,13 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .with-fallback-4 {
 	color: color(srgb 0.99 1.001 0.99);
 }
 }
+}
 
 .with-fallback-5 {
 	/* Out p3 of gamut */
@@ -140,8 +164,11 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .with-fallback-5 {
 	color: color(display-p3 0.99 1.0001 0.99);
+}
 }
 }
 
@@ -194,6 +221,9 @@
 }
 
 @supports (color: color(display-p3 0 1 0)) {
+	.guarded-by-supports {
+		color: rgb(0, 247, 79);
+	}
 
 @media (color-gamut: p3) {
 .guarded-by-supports {
@@ -207,9 +237,20 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 :root {
-	background: linear-gradient(to right, rgb(180, 6, 95) 0%, color(display-p3 0.66274 0.13281 0.2732), rgb(187, 5, 34), color(display-p3 0.66744 0.1674 -0.0377), color(display-p3 0.65449 0.20282 -0.1531), color(display-p3 0.63125 0.24386 -0.1941), color(display-p3 0.59786 0.28667 -0.2143), color(display-p3 0.55449 0.32865 -0.2232), color(display-p3 0.50119 0.3681 -0.2238), color(display-p3 0.43745 0.40384 -0.2152), color(display-p3 0.36142 0.435 -0.1928) 100%);
+	background: linear-gradient(to right, rgb(180, 6, 95) 0%, color(display-p3 0.66274 0.13281 0.2732), rgb(187, 5, 34), color(display-p3 0.66744 0.1674 -0.0377), color(display-p3 0.65449 0.20282 -0.1531), color(display-p3 0.63125 0.24386 -0.1941), color(display-p3 0.59786 0.28667 -0.2143), color(display-p3 0.55449 0.32865 -0.2232), color(display-p3 0.50119 0.3681 -0.2238), color(display-p3 0.43745 0.40384 -0.2152), color(display-p3 0.36142 0.435 -0.1928) 100%)
+}
+}
+}
+
+@media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
+:root {
 	background: linear-gradient(to right in oklch, oklch(50% 50% 0deg) 0%, oklch(50% 50% 120deg) 100%)
+}
 }
 }
 
@@ -228,7 +269,10 @@
 	result: rgb(230, 0, 122);
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 	result: oklch(60% 0.4 0);
+}
 }
 }
 
@@ -238,7 +282,10 @@
 	result: var(--a);
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 	--a: oklch(60% 0.4 0);
+}
 }
 }
 
@@ -247,14 +294,20 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 :root {
 	--firebrick: color(display-p3 1 0.58119 0.72367 / 0.5);
 }
 }
+}
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 :root {
 	--firebrick: oklch(80% 0.4 0.039 / 50%);
+}
 }
 }
 
@@ -263,6 +316,9 @@
 }
 
 @supports (color: color(display-p3 0 0 0%)) {
+	:root {
+		--firebrick-2: rgba(255, 155, 186, 0.5);
+	}
 
 @media (color-gamut: p3) {
 :root {
@@ -272,6 +328,9 @@
 }
 
 @supports (color: oklab(0% 0 0%)) {
+	:root {
+		--firebrick-2: rgba(255, 155, 186, 0.5);
+	}
 
 @media (color-gamut: rec2020) {
 :root {

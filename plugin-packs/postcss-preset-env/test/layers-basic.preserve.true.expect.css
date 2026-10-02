@@ -658,8 +658,11 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 @media (color-gamut: p3){
+
+@supports (color: color(display-p3 0 0 0%)){
 .color-function:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+}
 }
 }
 
@@ -724,19 +727,94 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 @media (color-gamut: p3){
+
+@supports (color: color(display-p3 0 0 0%)){
 .oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: oklab(0% 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 
 	color-7: oklch(60% 0.1250 180);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: color(display-p3 0 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-8: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: oklab(0% 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-8: oklch(60% 0.1250 180deg);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: color(display-p3 0 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: oklab(0% 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-9: oklch(60% 0.1250 0.5turn);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: color(display-p3 0 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: oklab(0% 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-10: oklch(60% 0.1250 200grad);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: color(display-p3 0 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
+}
+}
+}
+
+@media (color-gamut: p3){
+
+@supports (color: oklab(0% 0 0%)){
+.oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 	color-11: oklch(60% 0.1250 3.14159rad);
+}
 }
 }
 

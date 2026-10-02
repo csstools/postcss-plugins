@@ -5,13 +5,19 @@ p {
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 p {
 	color: oklch(20% 0.234 0.39 / 0.5);
 }
 }
+}
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 p {
 	border-color: color(display-p3 0 1 0);
+}
 }
 }

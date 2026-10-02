@@ -585,6 +585,8 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .oklch:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
 
 	color-7: color(display-p3 0.19244 0.58461 0.51559);
@@ -592,6 +594,7 @@ h1.test-custom-selectors:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):n
 	color-9: color(display-p3 0.19244 0.58461 0.51559);
 	color-10: color(display-p3 0.19244 0.58461 0.51559);
 	color-11: color(display-p3 0.19244 0.58461 0.51559);
+}
 }
 }
 

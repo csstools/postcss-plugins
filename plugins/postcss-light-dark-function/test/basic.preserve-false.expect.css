@@ -143,9 +143,4 @@
 	--a: var(--csstools-light-dark-toggle--15, green);
 
 	result: var(--a);
-
-	& * {
-	--csstools-light-dark-toggle--15: var(--csstools-color-scheme--light) blue;
-	--a: var(--csstools-light-dark-toggle--15, green);
-	}
 }

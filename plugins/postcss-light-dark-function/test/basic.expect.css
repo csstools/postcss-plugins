@@ -166,14 +166,6 @@
 
 	result: var(--a);
 
-	@supports not (color: light-dark(tan, tan)) {
-
-		& * {
-	--csstools-light-dark-toggle--15: var(--csstools-color-scheme--light) blue;
-	--a: var(--csstools-light-dark-toggle--15, green);
-		}
-	}
-
 @supports (color: light-dark(red, red)) {
 	--a: light-dark(green, blue);
 }

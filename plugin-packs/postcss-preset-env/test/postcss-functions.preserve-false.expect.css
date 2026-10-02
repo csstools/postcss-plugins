@@ -151,7 +151,10 @@
 	result: rgb(230, 0, 122);
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 	result: color(display-p3 0.86333 0 0.47139);
+}
 }
 }
 
@@ -160,10 +163,8 @@
 
 	result: var(--local);
 
-@supports (color: color(display-p3 0 0 0%)) {
-}
-
 @media (color-gamut: p3) {
+
 @supports (color: color(display-p3 0 0 0%)) {
 	--local: color(display-p3 0.86333 0 0.47139);
 }

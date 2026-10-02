@@ -3,7 +3,6 @@
 ### Unreleased (minor)
 
 - Added `@csstools/postcss-custom-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions#readme) for usage details.
-- Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
 
 ### 11.5.5
 

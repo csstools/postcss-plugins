@@ -277,8 +277,11 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .color-function {
 	prop-1: color(display-p3 0.00000 0.51872 0.36985);
+}
 }
 }
 
@@ -320,6 +323,8 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: oklab(0% 0 0%)) {
 .oklch {
 
 	color-7: oklch(60% 0.1250 180);
@@ -327,6 +332,7 @@
 	color-9: oklch(60% 0.1250 0.5turn);
 	color-10: oklch(60% 0.1250 200grad);
 	color-11: oklch(60% 0.1250 3.14159rad);
+}
 }
 }
 
@@ -460,9 +466,12 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 .gradients-interpolation-method {
 
 	background-image: radial-gradient(farthest-corner circle at 50% 115% in oklch, oklch(80% .3 34) 0%, oklch(90% .3 200) 100%);
+}
 }
 }
 
@@ -479,9 +488,12 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 .test-css-color-5-interop {
 	color-8: oklab(from oklab(40% 0.566 0.39) l a b);
 	color-9: oklch(from oklch(40% 0.566 39deg) l c h);
+}
 }
 }
 
@@ -499,8 +511,11 @@
 }
 
 @media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
 .out-of-gamut {
 	--color: color(display-p3 0 1 0);
+}
 }
 }
 
@@ -529,8 +544,11 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: lab(0% 0 0%)) and (color: oklab(0% 0 0%)) {
 .schemed-colors {
 	color: light-dark(lch(from oklab(40% 0.566 0.39) l c h), magenta);
+}
 }
 }
 
@@ -567,6 +585,8 @@
 }
 
 @media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
 .random {
 
 	border-color: oklch(
@@ -574,6 +594,7 @@
 		calc(60%)
 		calc(144deg)
 	);
+}
 }
 }
 

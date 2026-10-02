@@ -1,5 +1,9 @@
 # Changes to PostCSS Light Dark Function
 
+### Unreleased (patch)
+
+- Do not generate a nested inheritance rule inside `@function` bodies, as `@function` does not accept nested style rules.
+
 ### 3.0.6
 
 _October 1, 2026_
