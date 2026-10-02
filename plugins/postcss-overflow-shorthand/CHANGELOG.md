@@ -1,6 +1,8 @@
 # Changes to PostCSS Overflow Shorthand
 
-### Unreleased (patch)
+### 7.0.1
+
+_October 2, 2026_
 
 - Improved performance by inserting generated declarations as a single batch
 
