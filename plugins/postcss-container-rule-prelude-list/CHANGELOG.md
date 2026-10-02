@@ -1,6 +1,8 @@
 # Changes to PostCSS Container Rule Prelude List
 
-### Unreleased (patch)
+### 1.0.4
+
+_October 2, 2026_
 
 - Bound the total number of generated at-rules to prevent an exponential blowup from nested `@container` rules.
 
