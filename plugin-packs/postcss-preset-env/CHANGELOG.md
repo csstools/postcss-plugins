@@ -1,6 +1,8 @@
 # Changes to PostCSS Preset Env
 
-### Unreleased (minor)
+### 11.6.0
+
+_October 2, 2026_
 
 - Added `@csstools/postcss-custom-functions` [Check the plugin README](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions#readme) for usage details.
 - Updated [`@csstools/postcss-custom-functions`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-functions/CHANGELOG.md#101) (patch)
