@@ -1,6 +1,8 @@
 # Changes to CSS Calc
 
-### Unreleased (patch)
+### 3.4.3
+
+_October 2, 2026_
 
 - Precompute the CRC32 lookup table instead of parsing a hex substring for every character, avoiding quadratic work when hashing `random()`.
 
