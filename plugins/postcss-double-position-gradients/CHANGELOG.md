@@ -1,6 +1,8 @@
 # Changes to PostCSS Double Position Gradients
 
-### Unreleased (patch)
+### 7.0.5
+
+_October 2, 2026_
 
 - Improve performance when a gradient contains multiple double-position stops.
 - Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
