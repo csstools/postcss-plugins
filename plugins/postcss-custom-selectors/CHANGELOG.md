@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Selectors
 
-### Unreleased (patch)
+### 9.0.4
+
+_October 2, 2026_
 
 - Bound the total number of generated selectors to prevent an exponential blowup from nested custom selectors.
 
