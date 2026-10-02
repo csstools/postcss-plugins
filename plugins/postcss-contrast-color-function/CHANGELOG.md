@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#514) (patch)
 
 ### 3.0.14
 

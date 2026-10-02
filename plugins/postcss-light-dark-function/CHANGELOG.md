@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Do not generate a nested inheritance rule inside `@function` bodies, as `@function` does not accept nested style rules.
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#514) (patch)
 
 ### 3.0.6
 

@@ -1,5 +1,17 @@
 # Changes to CSSTools CLI
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-is-pseudo-class`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class) to [`6.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-is-pseudo-class/CHANGELOG.md#602) (patch)
+- Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.7`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#507) (patch)
+- Updated [`postcss-attribute-case-insensitive`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive) to [`8.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-attribute-case-insensitive/CHANGELOG.md#802) (patch)
+- Updated [`postcss-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties) to [`15.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties/CHANGELOG.md#1504) (patch)
+- Updated [`postcss-custom-selectors`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors) to [`9.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-selectors/CHANGELOG.md#904) (patch)
+- Updated [`postcss-image-set-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function) to [`8.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function/CHANGELOG.md#802) (patch)
+- Updated [`postcss-logical`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical) to [`9.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical/CHANGELOG.md#902) (patch)
+- Updated [`postcss-overflow-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand) to [`7.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand/CHANGELOG.md#701) (patch)
+- Updated [`postcss-place`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place) to [`11.0.1`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-place/CHANGELOG.md#1101) (patch)
+
 ### 5.0.15
 
 _October 1, 2026_

@@ -4,6 +4,7 @@
 
 - Improve performance when a gradient contains multiple double-position stops.
 - Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#514) (patch)
 
 ### 7.0.4
 

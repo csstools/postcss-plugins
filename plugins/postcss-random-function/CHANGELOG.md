@@ -1,5 +1,9 @@
 # Changes to PostCSS Random Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-calc`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc) to [`3.4.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc/CHANGELOG.md#343) (patch)
+
 ### 4.0.4
 
 _October 1, 2026_
