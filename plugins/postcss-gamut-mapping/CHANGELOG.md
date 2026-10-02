@@ -4,6 +4,7 @@
 
 - Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
 - Emit an `@supports (color: …)` condition for the color functions that are used, nested inside the generated `@media (color-gamut: …)` rule.
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.2.6`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#426) (patch)
 
 ### 3.0.14
 
