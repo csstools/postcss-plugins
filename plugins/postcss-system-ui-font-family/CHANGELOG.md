@@ -1,6 +1,8 @@
 # Changes to PostCSS System UI Font Family
 
-### Unreleased (patch)
+### 2.0.3
+
+_October 2, 2026_
 
 - Add support for the `result` descriptor in `@function`.
 
