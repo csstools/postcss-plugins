@@ -1,6 +1,8 @@
 # Changes to PostCSS Progressive Custom Properties
 
-### Unreleased (patch)
+### 5.1.4
+
+_October 2, 2026_
 
 - Improve performance when inserting generated `@supports` rules.
 - Correctly nest conditional rules inside `@function` instead of cloning the `@function` rule.
