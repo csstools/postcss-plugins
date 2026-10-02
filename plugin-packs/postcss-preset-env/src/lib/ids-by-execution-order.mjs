@@ -82,6 +82,6 @@ export default [
 
 	'cascade-layers',
 
-	'progressive-custom-properties',
 	'gamut-mapping',
+	'progressive-custom-properties',
 ];

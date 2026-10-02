@@ -194,9 +194,6 @@
 }
 
 @supports (color: color(display-p3 0 1 0)) {
-	.guarded-by-supports {
-		color: rgb(0, 247, 79);
-	}
 
 @media (color-gamut: p3) {
 .guarded-by-supports {
@@ -266,9 +263,6 @@
 }
 
 @supports (color: color(display-p3 0 0 0%)) {
-	:root {
-		--firebrick-2: rgba(255, 155, 186, 0.5);
-	}
 
 @media (color-gamut: p3) {
 :root {
@@ -278,9 +272,6 @@
 }
 
 @supports (color: oklab(0% 0 0%)) {
-	:root {
-		--firebrick-2: rgba(255, 155, 186, 0.5);
-	}
 
 @media (color-gamut: rec2020) {
 :root {
