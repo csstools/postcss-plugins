@@ -1,6 +1,6 @@
 .ppe-landing-hero {
-	background-image: linear-gradient(90deg, var(--color-purple), var(--color-blue));
-	color: var(--color-white);
+	background-color: var(--color-brand-2);
+	color: var(--color-black);
 	overflow: auto;
 	text-align: center;
 }

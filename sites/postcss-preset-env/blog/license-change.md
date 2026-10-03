@@ -2,6 +2,7 @@
 title: License change to MIT-0
 description: We intend to change the license of PostCSS Preset Env and related plugins to MIT-0.
 date: 2023-06-22
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 The `CC0-1.0` license has been an issue for some users.  

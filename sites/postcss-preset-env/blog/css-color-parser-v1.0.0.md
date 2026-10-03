@@ -2,6 +2,7 @@
 title: CSS Color Parser
 description: A new package to parse CSS color notations.
 date: 2023-03-27
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 ## Try it out

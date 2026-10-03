@@ -1,7 +1,7 @@
 .ppe-heading {
 	align-items: center;
-	background-image: linear-gradient(90deg, var(--color-purple), var(--color-blue));
-	color: var(--color-white);
+	background-color: var(--color-brand-2);
+	color: var(--color-black);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -79,7 +79,7 @@
 }
 
 .ppe-heading-menu-link[aria-current="page"] {
-	background-color: var(--color-black-alpha-40);
+	background-color: var(--color-white-alpha-40);
 }
 
 .ppe-heading-menu-link svg {

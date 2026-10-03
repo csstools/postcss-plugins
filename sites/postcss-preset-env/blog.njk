@@ -10,9 +10,9 @@ baseClass: 'ppe-blog'
 		<h1 class="ppe-blog-title">Latest Posts</h1>
 	</header>
 
-	<div class="ppe-posts">
+	<ul class="ppe-posts">
 		{%- for post in collections.post | reverse -%}
-			<article class="ppe-post-element">
+			<li class="ppe-post-element">
 				<h2 class="ppe-post-title">
 					<a class="ppe-post-link" href="{{ post.url }}">{{ post.data.title }}</a>
 				</h2>
@@ -20,8 +20,7 @@ baseClass: 'ppe-blog'
 					{{ post.data.date | postDate }}
 				</time>
 				<p class="ppe-post-excerpt">{{ post.data.description }}</p>
-				<a class="ppe-post-link" href="{{ post.url }}" tabindex="-1">Read more</a>
-			</article>
+			</li>
 		{%- endfor -%}
-	</div>
+	</ul>
 </main>

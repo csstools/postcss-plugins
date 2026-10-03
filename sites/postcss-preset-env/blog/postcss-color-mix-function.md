@@ -2,6 +2,7 @@
 title: PostCSS Color Mix Function
 description: Use the color-mix function in CSS.
 date: 2023-04-03
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 We are happy to announce the release of [`@csstools/postcss-color-mix-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-mix-function#readme), a PostCSS plugin to use the [`color-mix()`](https://drafts.csswg.org/css-color-5/#color-mix) function in any browser.

@@ -1,12 +1,14 @@
 :root {
 	/* #region:Colors */
 	--color-black-alpha-40: rgba(0, 0, 0, 0.4);
+	--color-white-alpha-40: rgba(255, 255, 255, 0.4);
 	--color-blue: color(display-p3 0.268 0.544 0.975);
 	--color-magenta: color(display-p3 0.96 0.264 0.926);
 	--color-purple: color(display-p3 0.723 0.419 0.985);
 	--color-gray: #f8f8f8;
 	--color-white: #fff;
 	--color-brand: #3c790a;
+	--color-brand-2: #c1e2fa;
 	/* #endregion:Colors */
 
 	/* #region:Spaces */

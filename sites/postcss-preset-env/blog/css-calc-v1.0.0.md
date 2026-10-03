@@ -2,6 +2,7 @@
 title: CSS Calc
 description: A new package to solve css calc expressions.
 date: 2023-02-21
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 In the past we have mostly ignored values that contain `calc()` when generating fallbacks, but no more!

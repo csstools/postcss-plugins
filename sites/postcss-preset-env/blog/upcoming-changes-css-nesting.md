@@ -2,6 +2,7 @@
 title: Upcoming changes to CSS Nesting
 description: The spec is changing, and we're following suit. Here's what you need to know!
 date: 2023-02-10
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 Nesting in CSS has always been a desired feature. Sass did it first, and then every other preprocessor had it in one form or another. Tab Atkins proposed the spec for [CSS Nesting Module Level 3](https://tabatkins.github.io/specs/css-nesting/) back in 2015, and it wasn't until 2021 that it got to be picked as [an official spec](https://www.w3.org/TR/css-nesting-1/) by the CSS Working Group.

@@ -2,6 +2,7 @@
 title: PostCSS Bundler
 description: A standards compliant reference CSS bundler
 date: 2023-09-15
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 [PostCSS Bundler] is a standards compliant reference CSS bundler.

@@ -2,6 +2,7 @@
 title: You can now use true and false in custom media queries!
 description: This allows you to easily debug a condition without a major refactor.
 date: 2023-01-25
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 Since the release of [PostCSS Custom Media](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) version 9, you can now use `true` and `false` in your custom media queries. This allows you to easily debug a condition without a major refactor.

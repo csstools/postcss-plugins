@@ -2,6 +2,7 @@
 title: PostCSS Relative Color Syntax
 description: Use relative color syntax in CSS color functions.
 date: 2023-05-22
+byline: <p class="ppe-post-byline">By <a href="https://github.com/Antonio-Laguna">Antonio Laguna</a> and <a href="https://github.com/romainmenke">Romain Menke</a></p>
 ---
 
 We are happy to announce the release of [`@csstools/postcss-relative-color-syntax`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-relative-color-syntax#readme), a PostCSS plugin to use [`relative color syntax`](https://drafts.csswg.org/css-color-5/#relative-colors) in any browser.
