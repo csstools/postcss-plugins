@@ -48,7 +48,7 @@
 	],
 	"dependencies": {
 		"@csstools/selector-resolve-nested": "^4.0.2",
-		"@csstools/selector-specificity": "^6.0.0",
+		"@csstools/selector-specificity": "^6.0.1",
 		"postcss-selector-parser": "^7.1.1"
 	},
 	"peerDependencies": {
