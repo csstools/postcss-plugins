@@ -1,5 +1,9 @@
 # Changes to Selector Specificity
 
+### Unreleased (patch)
+
+- Added support for `::highlight()` and its `*` argument, which has zero specificity.
+
 ### 6.0.0
 
 _January 14, 2026_

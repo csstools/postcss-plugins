@@ -106,6 +106,13 @@ assert.deepEqual(calculate(':is(.a + .a + .a, .b + .b + b.b)'), { a: 0, b: 3, c:
 assert.deepEqual(calculate(':is(#a + #a + #a, #b + #b + b#b)'), { a: 3, b: 0, c: 1 });
 assert.deepEqual(calculate(':is(#a + #a + #a, #b + #b + #b.b)'), { a: 3, b: 1, c: 0 });
 
+assert.deepEqual(calculate('::highlight'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::highlight()'), { a: 0, b: 0, c: 0 });
+assert.deepEqual(calculate('::highlight(foo)'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::highlight(*)'), { a: 0, b: 0, c: 0 });
+assert.deepEqual(calculate('::highlight(foo.bar)'), { a: 0, b: 0, c: 1 });
+assert.deepEqual(calculate('::highlight(*, foo)'), { a: 0, b: 0, c: 1 });
+
 assert.deepEqual(calculate('::view-transition'), { a: 0, b: 0, c: 1 });
 assert.deepEqual(calculate('::view-transition-group(foo)'), { a: 0, b: 0, c: 1 });
 assert.deepEqual(calculate('::view-transition-group()'), { a: 0, b: 0, c: 0 });

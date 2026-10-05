@@ -114,6 +114,31 @@ export function selectorSpecificity(node: Node, options?: CalculationOptions): S
 
 				break;
 
+			case '::highlight':
+				// https://drafts.csswg.org/css-pseudo-4/#highlight-selectors
+				//
+				// “The specificity of a ::highlight() selector with a <custom-ident> argument is equivalent to a type selector.
+				// The specificity of a ::highlight() selector with a * argument is zero.”
+
+				if (
+					node.nodes &&
+					node.nodes.length === 1 &&
+					node.nodes[0].type === 'selector' &&
+					selectorNodeContainsNothingOrOnlyUniversal(node.nodes[0])
+				) {
+					return {
+						a: 0,
+						b: 0,
+						c: 0,
+					};
+				}
+
+				return {
+					a: 0,
+					b: 0,
+					c: 1,
+				};
+
 			case '::view-transition-group':
 			case '::view-transition-image-pair':
 			case '::view-transition-old':

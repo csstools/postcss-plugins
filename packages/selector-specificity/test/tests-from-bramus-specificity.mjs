@@ -130,3 +130,12 @@ assert.deepEqual(calculate('::slotted(#foo.bar)'), { a: 1, b: 1, c: 1 }, '::slot
 // We are more forgiving than the specification.
 assert.deepEqual(calculate('::slotted(#foo invalid)'), { a: 1, b: 0, c: 2 }, '::slotted(#foo invalid)');
 assert.deepEqual(calculate('::slotted(#foo.bar invalid)'), { a: 1, b: 1, c: 2 }, '::slotted(#foo.bar invalid)');
+
+// Pseudo-Element Selector ::highlight
+assert.deepEqual(calculate('::highlight(my-ident)'), { a: 0, b: 0, c: 1 }, '::highlight(my-ident)');
+assert.deepEqual(calculate('::highlight(*)'), { a: 0, b: 0, c: 0 }, '::highlight(*)');
+assert.deepEqual(calculate('::highlight()'), { a: 0, b: 0, c: 0 }, '::highlight()');
+
+// We do not follow bramus/specificity.
+// We are more forgiving than the specification and treat `::highlight` without an argument as a pseudo-element.
+assert.deepEqual(calculate('::highlight'), { a: 0, b: 0, c: 1 }, '::highlight');
