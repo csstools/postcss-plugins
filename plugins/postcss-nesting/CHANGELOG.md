@@ -1,6 +1,8 @@
 # Changes to PostCSS Nesting
 
-### Unreleased (patch)
+### 14.0.3
+
+_October 5, 2026_
 
 - Updated [`@csstools/selector-specificity`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity) to [`6.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity/CHANGELOG.md#601) (patch)
 
