@@ -749,6 +749,9 @@
 	"hdr-color()": {
 		"syntax": "color-hdr( [ <color> && <number [0,∞]>? ]#{2} )"
 	},
+	"highlight-name-selector": {
+		"syntax": "'*' | <custom-ident>"
+	},
 	"historical-lig-values": {
 		"syntax": "[ historical-ligatures | no-historical-ligatures ]"
 	},
