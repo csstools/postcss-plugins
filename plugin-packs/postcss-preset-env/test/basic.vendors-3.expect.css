@@ -459,8 +459,8 @@
 }
 
 .alpha {
-	color-1: alpha(from rgba(188, 101, 59, 0.2) / calc(alpha + 0.1));
-	--color-2: alpha(from rgba(188, 101, 59, 0.2) / calc(alpha + 0.1));
+	color-1: rgba(188, 101, 59, 0.3);
+	--color-2: rgba(188, 101, 59, 0.3);
 }
 
 .ic-unit {
