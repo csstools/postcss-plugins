@@ -15,6 +15,20 @@
 	result: color(display-p3 0.1 0.1 0.1);
 }
 
+.color-function {
+	--_csstools-cf-h7k22i-0-result: rgb(26, 26, 26);
+	color: rgb(26, 26, 26);
+	color: color(display-p3 0.1 0.1 0.1);
+	color: var(--_csstools-cf-h7k22i-0-result);
+	color: --color-function();
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+.color-function {
+	--_csstools-cf-h7k22i-0-result: color(display-p3 0.1 0.1 0.1);
+}
+}
+
 @function --color-function-var() {
 	--local: rgb(26, 26, 26);
 
@@ -25,9 +39,39 @@
 }
 }
 
+.color-function-var {
+	--_csstools-cf-h7k22i-3-local-local: rgb(26, 26, 26);
+
+	--_csstools-cf-h7k22i-2-result: var(--_csstools-cf-h7k22i-3-local-local);
+	color: rgb(26, 26, 26);
+	color: color(display-p3 0.1 0.1 0.1);
+	color: var(--_csstools-cf-h7k22i-2-result);
+	color: --color-function-var();
+}
+
+@supports (color: color(display-p3 0 0 0%)) {
+.color-function-var {
+	--_csstools-cf-h7k22i-3-local-local: color(display-p3 0.1 0.1 0.1);
+}
+}
+
 @function --lab-function() {
 	result: rgb(179, 35, 35);
 	result: lab(40% 56.6 39);
+}
+
+.lab-function {
+	--_csstools-cf-h7k22i-4-result: rgb(179, 35, 35);
+	color: rgb(179, 35, 35);
+	color: lab(40% 56.6 39);
+	color: var(--_csstools-cf-h7k22i-4-result);
+	color: --lab-function();
+}
+
+@supports (color: lab(0% 0 0%)) {
+.lab-function {
+	--_csstools-cf-h7k22i-4-result: lab(40% 56.6 39);
+}
 }
 
 @function --lab-function-var() {
@@ -40,9 +84,39 @@
 }
 }
 
+.lab-function-var {
+	--_csstools-cf-h7k22i-7-local-local: rgb(179, 35, 35);
+
+	--_csstools-cf-h7k22i-6-result: var(--_csstools-cf-h7k22i-7-local-local);
+	color: rgb(179, 35, 35);
+	color: lab(40% 56.6 39);
+	color: var(--_csstools-cf-h7k22i-6-result);
+	color: --lab-function-var();
+}
+
+@supports (color: lab(0% 0 0%)) {
+.lab-function-var {
+	--_csstools-cf-h7k22i-7-local-local: lab(40% 56.6 39);
+}
+}
+
 @function --oklab-function() {
 	result: rgb(197, 84, 124);
 	result: oklch(60% 0.150 0);
+}
+
+.oklab-function {
+	--_csstools-cf-h7k22i-8-result: rgb(197, 84, 124);
+	color: rgb(197, 84, 124);
+	color: oklch(60% 0.150 0);
+	color: var(--_csstools-cf-h7k22i-8-result);
+	color: --oklab-function();
+}
+
+@supports (color: oklab(0% 0 0%)) {
+.oklab-function {
+	--_csstools-cf-h7k22i-8-result: oklch(60% 0.150 0);
+}
 }
 
 @function --oklab-function-var() {
@@ -55,11 +129,39 @@
 }
 }
 
+.oklab-function-var {
+	--_csstools-cf-h7k22i-b-local-local: rgb(197, 84, 124);
+
+	--_csstools-cf-h7k22i-a-result: var(--_csstools-cf-h7k22i-b-local-local);
+	color: rgb(197, 84, 124);
+	color: oklch(60% 0.150 0);
+	color: var(--_csstools-cf-h7k22i-a-result);
+	color: --oklab-function-var();
+}
+
+@supports (color: oklab(0% 0 0%)) {
+.oklab-function-var {
+	--_csstools-cf-h7k22i-b-local-local: oklch(60% 0.150 0);
+}
+}
+
 @function --hwb-function() {
 	result: rgba(153, 153, 153, var(--alpha));
 
 @supports (color: hwb(0 0% 0%)) {
 	result: hwb(0 60% 40% / var(--alpha));
+}
+}
+
+.hwb-function {
+	--_csstools-cf-h7k22i-c-result: rgba(153, 153, 153, var(--alpha));
+	color: var(--_csstools-cf-h7k22i-c-result);
+	color: --hwb-function();
+}
+
+@supports (color: hwb(0 0% 0%)) {
+.hwb-function {
+	--_csstools-cf-h7k22i-c-result: hwb(0 60% 40% / var(--alpha));
 }
 }
 
@@ -73,11 +175,37 @@
 }
 }
 
+.hwb-function-var {
+	--_csstools-cf-h7k22i-f-local-local: rgba(153, 153, 153, var(--alpha));
+
+	--_csstools-cf-h7k22i-e-result: var(--_csstools-cf-h7k22i-f-local-local);
+	color: var(--_csstools-cf-h7k22i-e-result);
+	color: --hwb-function-var();
+}
+
+@supports (color: hwb(0 0% 0%)) {
+.hwb-function-var {
+	--_csstools-cf-h7k22i-f-local-local: hwb(0 60% 40% / var(--alpha));
+}
+}
+
 @function --color-functional-notation() {
 	result: rgba(255, 0, 0, var(--alpha-50));
 
 @supports (color: rgb(0 0 0 / 0)) {
 	result: rgb(255 0 0 / var(--alpha-50));
+}
+}
+
+.color-functional-notation {
+	--_csstools-cf-h7k22i-g-result: rgba(255, 0, 0, var(--alpha-50));
+	color: var(--_csstools-cf-h7k22i-g-result);
+	color: --color-functional-notation();
+}
+
+@supports (color: rgb(0 0 0 / 0)) {
+.color-functional-notation {
+	--_csstools-cf-h7k22i-g-result: rgb(255 0 0 / var(--alpha-50));
 }
 }
 
@@ -91,9 +219,37 @@
 }
 }
 
+.color-functional-notation-var {
+	--_csstools-cf-h7k22i-j-local-local: rgba(255, 0, 0, var(--alpha-50));
+
+	--_csstools-cf-h7k22i-i-result: var(--_csstools-cf-h7k22i-j-local-local);
+	color: var(--_csstools-cf-h7k22i-i-result);
+	color: --color-functional-notation-var();
+}
+
+@supports (color: rgb(0 0 0 / 0)) {
+.color-functional-notation-var {
+	--_csstools-cf-h7k22i-j-local-local: rgb(255 0 0 / var(--alpha-50));
+}
+}
+
 @function --color-mix-function() {
 	result: rgb(175, 92, 174);
 	result: color-mix(in lch, purple 50%, plum 50%);
+}
+
+.color-mix-function {
+	--_csstools-cf-h7k22i-k-result: rgb(175, 92, 174);
+	color: rgb(175, 92, 174);
+	color: color-mix(in lch, purple 50%, plum 50%);
+	color: var(--_csstools-cf-h7k22i-k-result);
+	color: --color-mix-function();
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.color-mix-function {
+	--_csstools-cf-h7k22i-k-result: color-mix(in lch, purple 50%, plum 50%);
+}
 }
 
 @function --color-mix-function-var() {
@@ -106,9 +262,39 @@
 }
 }
 
+.color-mix-function-var {
+	--_csstools-cf-h7k22i-n-local-local: rgb(175, 92, 174);
+
+	--_csstools-cf-h7k22i-m-result: var(--_csstools-cf-h7k22i-n-local-local);
+	color: rgb(175, 92, 174);
+	color: color-mix(in lch, purple 50%, plum 50%);
+	color: var(--_csstools-cf-h7k22i-m-result);
+	color: --color-mix-function-var();
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+.color-mix-function-var {
+	--_csstools-cf-h7k22i-n-local-local: color-mix(in lch, purple 50%, plum 50%);
+}
+}
+
 @function --relative-color-syntax() {
 	result: rgb(0, 0, 255);
 	result: rgb(from blue r g b);
+}
+
+.relative-color-syntax {
+	--_csstools-cf-h7k22i-o-result: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: rgb(from blue r g b);
+	color: var(--_csstools-cf-h7k22i-o-result);
+	color: --relative-color-syntax();
+}
+
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+.relative-color-syntax {
+	--_csstools-cf-h7k22i-o-result: rgb(from blue r g b);
+}
 }
 
 @function --relative-color-syntax-var() {
@@ -121,9 +307,45 @@
 }
 }
 
+.relative-color-syntax-var {
+	--_csstools-cf-h7k22i-r-local-local: rgb(0, 0, 255);
+
+	--_csstools-cf-h7k22i-q-result: var(--_csstools-cf-h7k22i-r-local-local);
+	color: rgb(0, 0, 255);
+	color: rgb(from blue r g b);
+	color: var(--_csstools-cf-h7k22i-q-result);
+	color: --relative-color-syntax-var();
+}
+
+@supports (color: lab(from red l 1 1% / calc(alpha + 0.1))) {
+.relative-color-syntax-var {
+	--_csstools-cf-h7k22i-r-local-local: rgb(from blue r g b);
+}
+}
+
 @function --double-position-gradients() {
 	result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+
+.double-position-gradients {
+	--_csstools-cf-h7k22i-s-result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black),color-stop(50%, black), color-stop(50%, blue), color-stop(75%, blue));
+	background-image: -webkit-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -moz-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-s-result);
+	background-image: --double-position-gradients();
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+.double-position-gradients {
+	--_csstools-cf-h7k22i-s-result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
 }
 
 @function --double-position-gradients-var() {
@@ -136,9 +358,51 @@
 }
 }
 
+.double-position-gradients-var {
+	--_csstools-cf-h7k22i-v-local-local: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+
+	--_csstools-cf-h7k22i-u-result: var(--_csstools-cf-h7k22i-v-local-local);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black),color-stop(50%, black), color-stop(50%, blue), color-stop(75%, blue));
+	background-image: -webkit-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -moz-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-u-result);
+	background-image: --double-position-gradients-var();
+}
+
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+.double-position-gradients-var {
+	--_csstools-cf-h7k22i-v-local-local: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
 @function --gradients-interpolation-method() {
 	result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 	result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+
+.gradients-interpolation-method {
+	--_csstools-cf-h7k22i-w-result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 255)), color-stop(75%, rgb(0, 0, 255)));
+	background-image: -webkit-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -moz-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(oklch, in), color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-w-result);
+	background-image: --gradients-interpolation-method();
+}
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+.gradients-interpolation-method {
+	--_csstools-cf-h7k22i-w-result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
 }
 
 @function --gradients-interpolation-method-var() {
@@ -151,9 +415,48 @@
 }
 }
 
+.gradients-interpolation-method-var {
+	--_csstools-cf-h7k22i-z-local-local: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+
+	--_csstools-cf-h7k22i-y-result: var(--_csstools-cf-h7k22i-z-local-local);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 255)), color-stop(75%, rgb(0, 0, 255)));
+	background-image: -webkit-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -moz-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(oklch, in), color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-y-result);
+	background-image: --gradients-interpolation-method-var();
+}
+
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+.gradients-interpolation-method-var {
+	--_csstools-cf-h7k22i-z-local-local: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
+}
+
 @function --image-function() {
 	result: linear-gradient(red,red);
 	result: image(red);
+}
+
+.image-function {
+	--_csstools-cf-h7k22i-10-result: linear-gradient(red,red);
+	background-image: -webkit-gradient(linear,left top, left bottom,from(red),to(red));
+	background-image: -webkit-linear-gradient(red,red);
+	background-image: -moz-linear-gradient(red,red);
+	background-image: linear-gradient(red,red);
+	background-image: image(red);
+	background-image: var(--_csstools-cf-h7k22i-10-result);
+	background-image: --image-function();
+}
+
+@supports (background-image: image(red)) {
+.image-function {
+	--_csstools-cf-h7k22i-10-result: image(red);
+}
 }
 
 @function --image-function-var() {
@@ -166,12 +469,47 @@
 }
 }
 
+.image-function-var {
+	--_csstools-cf-h7k22i-13-local-local: linear-gradient(red,red);
+
+	--_csstools-cf-h7k22i-12-result: var(--_csstools-cf-h7k22i-13-local-local);
+	background-image: -webkit-gradient(linear,left top, left bottom,from(red),to(red));
+	background-image: -webkit-linear-gradient(red,red);
+	background-image: -moz-linear-gradient(red,red);
+	background-image: linear-gradient(red,red);
+	background-image: image(red);
+	background-image: var(--_csstools-cf-h7k22i-12-result);
+	background-image: --image-function-var();
+}
+
+@supports (background-image: image(red)) {
+.image-function-var {
+	--_csstools-cf-h7k22i-13-local-local: image(red);
+}
+}
+
 @function --image-set-function() {
 	result: url(img/test.png);
 	result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	result: url(img/test-2x.png);
 	}
+}
+
+.image-set-function {
+	--_csstools-cf-h7k22i-14-result: url(img/test.png);
+	--_csstools-cf-h7k22i-14-result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+}
+	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.image-set-function {
+	--_csstools-cf-h7k22i-14-result: url(img/test-2x.png);
+}
+}
+
+.image-set-function {
+	background-image: var(--_csstools-cf-h7k22i-14-result);
+	background-image: --image-set-function();
 }
 
 @function --image-set-function-var() {
@@ -185,9 +523,42 @@
 	}
 }
 
+.image-set-function-var {
+	--_csstools-cf-h7k22i-17-local-local: url(img/test.png);
+	--_csstools-cf-h7k22i-17-local-local: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+
+	--_csstools-cf-h7k22i-16-result: var(--_csstools-cf-h7k22i-17-local-local);
+}
+
+	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.image-set-function-var {
+	--_csstools-cf-h7k22i-17-local-local: url(img/test-2x.png);
+}
+}
+
+.image-set-function-var {
+	background-image: var(--_csstools-cf-h7k22i-16-result);
+	background-image: --image-set-function-var();
+}
+
 @function --ic-unit() {
 	result: 2em;
 	result: 2ic;
+}
+
+.ic-unit {
+	--_csstools-cf-h7k22i-18-result: 2em;
+	text-indent: 2em;
+	text-indent: 2ic;
+	text-indent: var(--_csstools-cf-h7k22i-18-result);
+	text-indent: --ic-unit();
+}
+
+@supports (font-size: 1ic) {
+.ic-unit {
+	--_csstools-cf-h7k22i-18-result: 2ic;
+}
 }
 
 @function --ic-unit-var() {
@@ -200,9 +571,39 @@
 }
 }
 
+.ic-unit-var {
+	--_csstools-cf-h7k22i-1b-local-local: 2em;
+
+	--_csstools-cf-h7k22i-1a-result: var(--_csstools-cf-h7k22i-1b-local-local);
+	text-indent: 2em;
+	text-indent: 2ic;
+	text-indent: var(--_csstools-cf-h7k22i-1a-result);
+	text-indent: --ic-unit-var();
+}
+
+@supports (font-size: 1ic) {
+.ic-unit-var {
+	--_csstools-cf-h7k22i-1b-local-local: 2ic;
+}
+}
+
 @function --logical-viewport-units() {
 	result: 2vw;
 	result: 2vi;
+}
+
+.logical-viewport-units {
+	--_csstools-cf-h7k22i-1c-result: 2vw;
+	width: 2vw;
+	width: 2vi;
+	width: var(--_csstools-cf-h7k22i-1c-result);
+	width: --logical-viewport-units();
+}
+
+@supports (width: 1vi) {
+.logical-viewport-units {
+	--_csstools-cf-h7k22i-1c-result: 2vi;
+}
 }
 
 @function --logical-viewport-units-var() {
@@ -212,6 +613,22 @@
 
 @supports (width: 1vi) {
 	--local: 2vi;
+}
+}
+
+.logical-viewport-units-var {
+	--_csstools-cf-h7k22i-1f-local-local: 2vw;
+
+	--_csstools-cf-h7k22i-1e-result: var(--_csstools-cf-h7k22i-1f-local-local);
+	width: 2vw;
+	width: 2vi;
+	width: var(--_csstools-cf-h7k22i-1e-result);
+	width: --logical-viewport-units-var();
+}
+
+@supports (width: 1vi) {
+.logical-viewport-units-var {
+	--_csstools-cf-h7k22i-1f-local-local: 2vi;
 }
 }
 
@@ -229,6 +646,33 @@
 
 @supports (color: oklab(0% 0 0%)) {
 	result: oklch(60% 0.4 0);
+}
+}
+}
+
+.gamut-mapping {
+	--_csstools-cf-h7k22i-1g-result: rgb(230, 0, 122);
+	color: rgb(230, 0, 122);
+	color: color(display-p3 0.86333 0 0.47139);
+	color: oklch(60% 0.4 0);
+	color: var(--_csstools-cf-h7k22i-1g-result);
+	color: --gamut-mapping();
+}
+
+@media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
+.gamut-mapping {
+	--_csstools-cf-h7k22i-1g-result: color(display-p3 0.86333 0 0.47139);
+}
+}
+}
+
+@media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
+.gamut-mapping {
+	--_csstools-cf-h7k22i-1g-result: oklch(60% 0.4 0);
 }
 }
 }
@@ -253,9 +697,46 @@
 }
 }
 
+.gamut-mapping-var {
+	--_csstools-cf-h7k22i-1j-local-local: rgb(230, 0, 122);
+
+	--_csstools-cf-h7k22i-1i-result: var(--_csstools-cf-h7k22i-1j-local-local);
+	color: rgb(230, 0, 122);
+	color: color(display-p3 0.86333 0 0.47139);
+	color: oklch(60% 0.4 0);
+	color: var(--_csstools-cf-h7k22i-1i-result);
+	color: --gamut-mapping-var();
+}
+
+@media (color-gamut: p3) {
+
+@supports (color: color(display-p3 0 0 0%)) {
+.gamut-mapping-var {
+	--_csstools-cf-h7k22i-1j-local-local: color(display-p3 0.86333 0 0.47139);
+}
+}
+}
+
+@media (color-gamut: rec2020) {
+
+@supports (color: oklab(0% 0 0%)) {
+.gamut-mapping-var {
+	--_csstools-cf-h7k22i-1j-local-local: oklch(60% 0.4 0);
+}
+}
+}
+
 @function --system-ui-font-family() {
 	result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
 	result: system-ui;
+}
+
+.system-ui-font-family {
+	--_csstools-cf-h7k22i-1k-result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	--_csstools-cf-h7k22i-1k-result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: var(--_csstools-cf-h7k22i-1k-result);
+	font-family: --system-ui-font-family();
 }
 
 @function --system-ui-font-family-var() {
@@ -264,12 +745,35 @@
 	result: var(--local);
 }
 
+.system-ui-font-family-var {
+	--_csstools-cf-h7k22i-1n-local-local: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+
+	--_csstools-cf-h7k22i-1m-result: var(--_csstools-cf-h7k22i-1n-local-local);
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: var(--_csstools-cf-h7k22i-1m-result);
+	font-family: --system-ui-font-family-var();
+}
+
 @function --custom-properties() {
 	result: var(--color-fallback);
+}
+
+.custom-properties {
+	--_csstools-cf-h7k22i-1o-result: var(--color-fallback);
+	color: var(--_csstools-cf-h7k22i-1o-result);
+	color: --custom-properties();
 }
 
 @function --custom-properties-var() {
 	--local: var(--color-fallback);
 
 	result: var(--local);
+}
+
+.custom-properties-var {
+	--_csstools-cf-h7k22i-1r-local-local: var(--color-fallback);
+
+	--_csstools-cf-h7k22i-1q-result: var(--_csstools-cf-h7k22i-1r-local-local);
+	color: var(--_csstools-cf-h7k22i-1q-result);
+	color: --custom-properties-var();
 }

@@ -10,201 +10,344 @@
  * through a local custom property.
  */
 
-@function --color-function() {
-	result: rgb(26, 26, 26);
+.color-function {
+	--_csstools-cf-h7k22i-0-result: rgb(26, 26, 26);
+	color: rgb(26, 26, 26);
+	color: var(--_csstools-cf-h7k22i-0-result);
 }
 
-@function --color-function-var() {
-	--local: rgb(26, 26, 26);
+.color-function-var {
+	--_csstools-cf-h7k22i-3-local-local: rgb(26, 26, 26);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-2-result: var(--_csstools-cf-h7k22i-3-local-local);
+	color: rgb(26, 26, 26);
+	color: var(--_csstools-cf-h7k22i-2-result);
 }
 
-@function --lab-function() {
-	result: rgb(179, 35, 35);
+.lab-function {
+	--_csstools-cf-h7k22i-4-result: rgb(179, 35, 35);
+	color: rgb(179, 35, 35);
+	color: var(--_csstools-cf-h7k22i-4-result);
 }
 
-@function --lab-function-var() {
-	--local: rgb(179, 35, 35);
+.lab-function-var {
+	--_csstools-cf-h7k22i-7-local-local: rgb(179, 35, 35);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-6-result: var(--_csstools-cf-h7k22i-7-local-local);
+	color: rgb(179, 35, 35);
+	color: var(--_csstools-cf-h7k22i-6-result);
 }
 
-@function --oklab-function() {
-	result: rgb(197, 84, 124);
+.oklab-function {
+	--_csstools-cf-h7k22i-8-result: rgb(197, 84, 124);
+	color: rgb(197, 84, 124);
+	color: var(--_csstools-cf-h7k22i-8-result);
 }
 
-@function --oklab-function-var() {
-	--local: rgb(197, 84, 124);
+.oklab-function-var {
+	--_csstools-cf-h7k22i-b-local-local: rgb(197, 84, 124);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-a-result: var(--_csstools-cf-h7k22i-b-local-local);
+	color: rgb(197, 84, 124);
+	color: var(--_csstools-cf-h7k22i-a-result);
 }
 
-@function --hwb-function() {
-	result: rgba(153, 153, 153, var(--alpha));
+.hwb-function {
+	--_csstools-cf-h7k22i-c-result: rgba(153, 153, 153, var(--alpha));
+	color: var(--_csstools-cf-h7k22i-c-result);
 }
 
-@function --hwb-function-var() {
-	--local: rgba(153, 153, 153, var(--alpha));
+.hwb-function-var {
+	--_csstools-cf-h7k22i-f-local-local: rgba(153, 153, 153, var(--alpha));
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-e-result: var(--_csstools-cf-h7k22i-f-local-local);
+	color: var(--_csstools-cf-h7k22i-e-result);
 }
 
-@function --color-functional-notation() {
-	result: rgba(255, 0, 0, var(--alpha-50));
+.color-functional-notation {
+	--_csstools-cf-h7k22i-g-result: rgba(255, 0, 0, var(--alpha-50));
+	color: var(--_csstools-cf-h7k22i-g-result);
 }
 
-@function --color-functional-notation-var() {
-	--local: rgba(255, 0, 0, var(--alpha-50));
+.color-functional-notation-var {
+	--_csstools-cf-h7k22i-j-local-local: rgba(255, 0, 0, var(--alpha-50));
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-i-result: var(--_csstools-cf-h7k22i-j-local-local);
+	color: var(--_csstools-cf-h7k22i-i-result);
 }
 
-@function --color-mix-function() {
-	result: rgb(175, 92, 174);
+.color-mix-function {
+	--_csstools-cf-h7k22i-k-result: rgb(175, 92, 174);
+	color: rgb(175, 92, 174);
+	color: var(--_csstools-cf-h7k22i-k-result);
 }
 
-@function --color-mix-function-var() {
-	--local: rgb(175, 92, 174);
+.color-mix-function-var {
+	--_csstools-cf-h7k22i-n-local-local: rgb(175, 92, 174);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-m-result: var(--_csstools-cf-h7k22i-n-local-local);
+	color: rgb(175, 92, 174);
+	color: var(--_csstools-cf-h7k22i-m-result);
 }
 
-@function --relative-color-syntax() {
-	result: rgb(0, 0, 255);
+.relative-color-syntax {
+	--_csstools-cf-h7k22i-o-result: rgb(0, 0, 255);
+	color: rgb(0, 0, 255);
+	color: var(--_csstools-cf-h7k22i-o-result);
 }
 
-@function --relative-color-syntax-var() {
-	--local: rgb(0, 0, 255);
+.relative-color-syntax-var {
+	--_csstools-cf-h7k22i-r-local-local: rgb(0, 0, 255);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-q-result: var(--_csstools-cf-h7k22i-r-local-local);
+	color: rgb(0, 0, 255);
+	color: var(--_csstools-cf-h7k22i-q-result);
 }
 
-@function --double-position-gradients() {
-	result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
-	result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+.double-position-gradients {
+	--_csstools-cf-h7k22i-s-result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black),color-stop(50%, black), color-stop(50%, blue), color-stop(75%, blue));
+	background-image: -webkit-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -moz-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-s-result);
 }
-
-@function --double-position-gradients-var() {
-	--local: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
-
-	result: var(--local);
 
 @supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
-	--local: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+.double-position-gradients {
+	--_csstools-cf-h7k22i-s-result: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 }
 }
 
-@function --gradients-interpolation-method() {
-	result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
-	result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+.double-position-gradients-var {
+	--_csstools-cf-h7k22i-v-local-local: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+
+	--_csstools-cf-h7k22i-u-result: var(--_csstools-cf-h7k22i-v-local-local);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black),color-stop(50%, black), color-stop(50%, blue), color-stop(75%, blue));
+	background-image: -webkit-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -moz-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(left, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-u-result);
 }
 
-@function --gradients-interpolation-method-var() {
-	--local: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+@supports (background: linear-gradient(red 0%, red 0% 1%, red 2%)) {
+.double-position-gradients-var {
+	--_csstools-cf-h7k22i-v-local-local: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
+}
+}
 
-	result: var(--local);
+.gradients-interpolation-method {
+	--_csstools-cf-h7k22i-w-result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 255)), color-stop(75%, rgb(0, 0, 255)));
+	background-image: -webkit-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -moz-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(oklch, in), color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-w-result);
+}
 
 @supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
-	--local: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+.gradients-interpolation-method {
+	--_csstools-cf-h7k22i-w-result: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 }
 }
 
-@function --image-function() {
-	result: linear-gradient(red,red);
+.gradients-interpolation-method-var {
+	--_csstools-cf-h7k22i-z-local-local: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+
+	--_csstools-cf-h7k22i-y-result: var(--_csstools-cf-h7k22i-z-local-local);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 255)), color-stop(75%, rgb(0, 0, 255)));
+	background-image: -webkit-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -moz-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(oklch, in), color-stop(25%, black), color-stop(50%, blue));
+	background-image: -webkit-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: -moz-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+	background-image: var(--_csstools-cf-h7k22i-y-result);
 }
 
-@function --image-function-var() {
-	--local: linear-gradient(red,red);
-
-	result: var(--local);
+@supports (background: linear-gradient(in oklch, red 0%, red 0% 1%, red 2%)) {
+.gradients-interpolation-method-var {
+	--_csstools-cf-h7k22i-z-local-local: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
+}
 }
 
-@function --image-set-function() {
-	result: url(img/test.png);
-	result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
-	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	result: url(img/test-2x.png);
-	}
+.image-function {
+	--_csstools-cf-h7k22i-10-result: linear-gradient(red,red);
+	background-image: -webkit-gradient(linear,left top, left bottom,from(red),to(red));
+	background-image: -webkit-linear-gradient(red,red);
+	background-image: -moz-linear-gradient(red,red);
+	background-image: linear-gradient(red,red);
+	background-image: var(--_csstools-cf-h7k22i-10-result);
 }
 
-@function --image-set-function-var() {
-	--local: url(img/test.png);
-	--local: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+.image-function-var {
+	--_csstools-cf-h7k22i-13-local-local: linear-gradient(red,red);
 
-	result: var(--local);
-
-	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	--local: url(img/test-2x.png);
-	}
+	--_csstools-cf-h7k22i-12-result: var(--_csstools-cf-h7k22i-13-local-local);
+	background-image: -webkit-gradient(linear,left top, left bottom,from(red),to(red));
+	background-image: -webkit-linear-gradient(red,red);
+	background-image: -moz-linear-gradient(red,red);
+	background-image: linear-gradient(red,red);
+	background-image: var(--_csstools-cf-h7k22i-12-result);
 }
 
-@function --ic-unit() {
-	result: 2em;
+.image-set-function {
+	--_csstools-cf-h7k22i-14-result: url(img/test.png);
+	--_csstools-cf-h7k22i-14-result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	background-image: url(img/test.png);
+	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	background-image: var(--_csstools-cf-h7k22i-14-result);
 }
 
-@function --ic-unit-var() {
-	--local: 2em;
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
-	result: var(--local);
+.image-set-function {
+	background-image: url(img/test-2x.png);
+}
 }
 
-@function --logical-viewport-units() {
-	result: 2vw;
-	result: 2vi;
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.image-set-function {
+	--_csstools-cf-h7k22i-14-result: url(img/test-2x.png);
+}
 }
 
-@function --logical-viewport-units-var() {
-	--local: 2vw;
+.image-set-function-var {
+	--_csstools-cf-h7k22i-17-local-local: url(img/test.png);
+	--_csstools-cf-h7k22i-17-local-local: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-16-result: var(--_csstools-cf-h7k22i-17-local-local);
+	background-image: url(img/test.png);
+	background-image: -webkit-image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	background-image: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
+	background-image: var(--_csstools-cf-h7k22i-16-result);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.image-set-function-var {
+	background-image: url(img/test-2x.png);
+}
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.image-set-function-var {
+	--_csstools-cf-h7k22i-17-local-local: url(img/test-2x.png);
+}
+}
+
+.ic-unit {
+	--_csstools-cf-h7k22i-18-result: 2em;
+	text-indent: 2em;
+	text-indent: var(--_csstools-cf-h7k22i-18-result);
+}
+
+.ic-unit-var {
+	--_csstools-cf-h7k22i-1b-local-local: 2em;
+
+	--_csstools-cf-h7k22i-1a-result: var(--_csstools-cf-h7k22i-1b-local-local);
+	text-indent: 2em;
+	text-indent: var(--_csstools-cf-h7k22i-1a-result);
+}
+
+.logical-viewport-units {
+	--_csstools-cf-h7k22i-1c-result: 2vw;
+	width: 2vw;
+	width: 2vi;
+	width: var(--_csstools-cf-h7k22i-1c-result);
+}
 
 @supports (width: 1vi) {
-	--local: 2vi;
+.logical-viewport-units {
+	--_csstools-cf-h7k22i-1c-result: 2vi;
 }
 }
 
-@function --gamut-mapping() {
-	result: rgb(230, 0, 122);
+.logical-viewport-units-var {
+	--_csstools-cf-h7k22i-1f-local-local: 2vw;
+
+	--_csstools-cf-h7k22i-1e-result: var(--_csstools-cf-h7k22i-1f-local-local);
+	width: 2vw;
+	width: 2vi;
+	width: var(--_csstools-cf-h7k22i-1e-result);
+}
+
+@supports (width: 1vi) {
+.logical-viewport-units-var {
+	--_csstools-cf-h7k22i-1f-local-local: 2vi;
+}
+}
+
+.gamut-mapping {
+	--_csstools-cf-h7k22i-1g-result: rgb(230, 0, 122);
+	color: rgb(230, 0, 122);
+	color: var(--_csstools-cf-h7k22i-1g-result);
+}
 
 @media (color-gamut: p3) {
 
 @supports (color: color(display-p3 0 0 0%)) {
-	result: color(display-p3 0.86333 0 0.47139);
+.gamut-mapping {
+	--_csstools-cf-h7k22i-1g-result: color(display-p3 0.86333 0 0.47139);
 }
 }
 }
 
-@function --gamut-mapping-var() {
-	--local: rgb(230, 0, 122);
+.gamut-mapping-var {
+	--_csstools-cf-h7k22i-1j-local-local: rgb(230, 0, 122);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-1i-result: var(--_csstools-cf-h7k22i-1j-local-local);
+	color: rgb(230, 0, 122);
+	color: var(--_csstools-cf-h7k22i-1i-result);
+}
 
 @media (color-gamut: p3) {
 
 @supports (color: color(display-p3 0 0 0%)) {
-	--local: color(display-p3 0.86333 0 0.47139);
+.gamut-mapping-var {
+	--_csstools-cf-h7k22i-1j-local-local: color(display-p3 0.86333 0 0.47139);
 }
 }
 }
 
-@function --system-ui-font-family() {
-	result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-	result: system-ui;
+.system-ui-font-family {
+	--_csstools-cf-h7k22i-1k-result: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: var(--_csstools-cf-h7k22i-1k-result);
 }
 
-@function --system-ui-font-family-var() {
-	--local: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+.system-ui-font-family-var {
+	--_csstools-cf-h7k22i-1n-local-local: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-1m-result: var(--_csstools-cf-h7k22i-1n-local-local);
+	font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+	font-family: var(--_csstools-cf-h7k22i-1m-result);
 }
 
-@function --custom-properties() {
-	result: var(--color-fallback);
+.custom-properties {
+	--_csstools-cf-h7k22i-1o-result: var(--color-fallback);
+	color: var(--_csstools-cf-h7k22i-1o-result);
 }
 
-@function --custom-properties-var() {
-	--local: var(--color-fallback);
+.custom-properties-var {
+	--_csstools-cf-h7k22i-1r-local-local: var(--color-fallback);
 
-	result: var(--local);
+	--_csstools-cf-h7k22i-1q-result: var(--_csstools-cf-h7k22i-1r-local-local);
+	color: var(--_csstools-cf-h7k22i-1q-result);
 }

@@ -1483,6 +1483,17 @@
 			"failing": []
 		}
 	},
+	"highlight-name-selector": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "'*' | <custom-ident>",
+		"syntax-m": "'*' | <custom-ident>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"horizontal-line-command": {
 		"type": "added",
 		"comment": "",

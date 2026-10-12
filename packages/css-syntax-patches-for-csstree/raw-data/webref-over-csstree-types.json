@@ -677,6 +677,12 @@
 		"syntax-a": "color-hdr( [ <color> && <number [0,∞]>? ]#{2} )",
 		"comment": ""
 	},
+	"highlight-name-selector": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "'*' | <custom-ident>",
+		"comment": ""
+	},
 	"horizontal-line-command": {
 		"type": "added",
 		"syntax-b": "",
