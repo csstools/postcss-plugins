@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"postcss": "^8.5.26",
-		"webpack": "^5.110.2",
+		"webpack": "^5.111.1",
 		"webpack-cli": "^7.2.3",
 		"postcss-loader": "^8.2.1",
 		"style-loader": "^4.0.0",
