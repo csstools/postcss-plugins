@@ -13,6 +13,7 @@ import './basic/named-colors.mjs';
 import './basic/none.mjs';
 import './basic/none-exhaustive.mjs';
 import './basic/powerless-exhaustive.mjs';
+import './basic/powerless-exhaustive-double.mjs';
 import './basic/relative-color.mjs';
 import './basic/variables.mjs';
 
