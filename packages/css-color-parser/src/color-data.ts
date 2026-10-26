@@ -716,12 +716,14 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 			}
 
 			break;
-		case ColorNotation.HWB:
-			// TODO: investigate when `W`/`B` turn negative
-			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
+		case ColorNotation.HWB: {
+			const white = Number.isNaN(out[1]) ? 0 : out[1];
+			const black = Number.isNaN(out[2]) ? 0 : out[2];
+
+			if ((white + black) >= 99.999) {
 				out[0] = Number.NaN;
 
-				if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) < 100) {
+				if ((white + black) < 100) {
 					if (Number.isNaN(out[1])) {
 						out[2] = 100;
 					} else if (Number.isNaN(out[2])) {
@@ -733,6 +735,7 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 			}
 
 			break;
+		}
 		case ColorNotation.LCH:
 			if ((Number.isNaN(out[1]) ? 0 : out[1]) <= 0.0015) {
 				out[2] = Number.NaN;
@@ -773,11 +776,16 @@ export function convertPowerlessComponentsToZeroValuesForDisplay(a: Color, color
 			}
 
 			break;
-		case ColorNotation.HWB:
-			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
+		case ColorNotation.HWB: {
+			const white = Number.isNaN(out[1]) ? 0 : out[1];
+			const black = Number.isNaN(out[2]) ? 0 : out[2];
+
+			if ((white + black) >= 99.999) {
 				out[0] = Number.NaN;
 			}
+
 			break;
+		}
 		case ColorNotation.Lab:
 			if (reducePrecision(out[0]) <= 0 || reducePrecision(out[0]) >= 100) {
 				out[1] = Number.NaN;
