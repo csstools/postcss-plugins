@@ -45,6 +45,17 @@ assert.deepStrictEqual(
 	'hwb(none -10% 110%)',
 );
 
+// Both `W` and `B` can be negative after conversion from an out-of-gamut color.
+assert.deepStrictEqual(
+	computedValue(color(parse('color-mix(in hwb, color(srgb 2 -1 0.5))')), false),
+	'hwb(330 -100% -100%)',
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('color-mix(in hwb, color(display-p3 0 1 0))')), false),
+	'hwb(127.88028828 -51.16049826% -1.82656579%)',
+);
+
 assert.deepStrictEqual(
 	computedValue(color(parse('color(from hwb(30deg 100% -10%) srgb r g b)')), false),
 	'color(srgb 1.1 1.05 0.9999999999999999)',
