@@ -3,6 +3,7 @@ import type { CSSToken} from '@csstools/css-tokenizer';
 import { NumberType, TokenType, isTokenIdent, isTokenNumber, isTokenPercentage } from '@csstools/css-tokenizer';
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
+import { VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY } from '../util/infinity-constants';
 
 export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
 	if (isTokenPercentage(token)) {
@@ -78,7 +79,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		} else {
-			value = normalize(token[4].value, 100, -2_147_483_647, 2_147_483_647);
+			value = normalize(token[4].value, 100, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
 		}
 
 		return [
@@ -102,7 +103,7 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		} else {
-			value = normalize(token[4].value, 255, -2_147_483_647, 2_147_483_647);
+			value = normalize(token[4].value, 255, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
 		}
 
 		return [
