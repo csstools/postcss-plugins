@@ -19,7 +19,6 @@ export function serializeHSL(color: ColorData, gamutMapping = true): FunctionNod
 		hsl = XYZ_D65_to_HSL(colorData_to_XYZ_D65(color).channels);
 	}
 
-	// Needs to be done twice because `xyz.XYZ_D65_to_HSL` can return `NaN` values.
 	hsl = hsl.map((x) => Number.isNaN(x) ? 0 : x);
 
 	const h = Math.min(360, Math.max(0, Math.round(toPrecision(hsl[0])))) % 360;

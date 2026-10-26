@@ -166,13 +166,15 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 			}
 		}
 
-		if (
-			!percentage
-		) {
+		if (percentage === false) {
+			let fromMathFunction = false;
+
 			if (
 				isFunctionNode(node) &&
 				mathFunctionNames.has(toLowerCaseAZ(node.getName()))
 			) {
+				fromMathFunction = true;
+
 				[[node]] = calcFromComponentValues([[node]], {
 					censorIntoStandardRepresentableValues: true,
 					precision: -1,
@@ -192,11 +194,22 @@ function colorMixComponents(componentValues: Array<ComponentValue>, colorParser:
 
 			if (
 				isTokenNode(node) &&
-				isTokenPercentage(node.value) &&
-				node.value[4].value >= 0
+				isTokenPercentage(node.value)
 			) {
-				percentage = node.value[4].value;
-				continue;
+				if (fromMathFunction) {
+					// Math functions with an out of range result do not invalidate the declaration.
+					// The result is clamped to the allowed range instead.
+					// https://drafts.csswg.org/css-values-4/#calc-range
+					percentage = Math.min(100, Math.max(0, node.value[4].value));
+					continue;
+				}
+
+				// A literal percentage outside of the [0,100] range is invalid.
+				// https://drafts.csswg.org/css-color-5/#color-mix-percent-norm
+				if (node.value[4].value >= 0 && node.value[4].value <= 100) {
+					percentage = node.value[4].value;
+					continue;
+				}
 			}
 		}
 
