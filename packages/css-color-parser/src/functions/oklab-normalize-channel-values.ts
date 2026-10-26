@@ -4,6 +4,7 @@ import { NumberType, TokenType, isTokenIdent, isTokenNumber, isTokenPercentage }
 import { SyntaxFlag } from '../color-data';
 import { normalize } from './normalize';
 import { toLowerCaseAZ } from '../util/to-lower-case-a-z';
+import { VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY } from '../util/infinity-constants';
 
 export function normalize_OKLab_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
 	if (isTokenIdent(token) && toLowerCaseAZ(token[4].value) === 'none') {
@@ -28,7 +29,7 @@ export function normalize_OKLab_ChannelValues(token: CSSToken, index: number, co
 
 		let value;
 		if (index === 1 || index === 2) {
-			value = normalize(token[4].value, 250, -2_147_483_647, 2_147_483_647);
+			value = normalize(token[4].value, 250, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
 		} else {
@@ -54,7 +55,7 @@ export function normalize_OKLab_ChannelValues(token: CSSToken, index: number, co
 
 		let value;
 		if (index === 1 || index === 2) {
-			value = normalize(token[4].value, 1, -2_147_483_647, 2_147_483_647);
+			value = normalize(token[4].value, 1, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
 		} else if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
 		} else {

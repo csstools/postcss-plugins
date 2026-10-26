@@ -1,5 +1,10 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix handling of out of range percentages from math functions in `color-mix()` (they are clamped, not invalid)
+- Fix powerless hue detection for `hwb()` colors with negative whiteness or blackness (these values are not clamped)
+
 ### 4.2.6
 
 _October 2, 2026_

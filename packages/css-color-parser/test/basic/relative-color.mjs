@@ -275,3 +275,23 @@ assert.deepStrictEqual(
 		`${input}: ${expected}`,
 	);
 });
+
+// Trigonometric functions with component keywords.
+// Keywords resolve to <number>s (percentages to their number, angles to degrees)
+// and sin() and friends interpret <number>s as radians.
+// https://github.com/w3c/csswg-drafts/issues/13938
+[
+	['hsl(from hsl(0 50 50) h s calc((sin(l) + 1) * 50))', 'rgb(141, 47, 47)'],
+	['hsl(from hsl(0 50% 50%) h s calc((sin(l) + 1) * 50))', 'rgb(141, 47, 47)'],
+	['hsl(from hsl(0 50 50) h s calc((sin((l * pi) / 200) * 100) / 2))', 'rgb(135, 45, 45)'],
+	['hsl(from hsl(0 50 50) h s calc(sin(l * 0.005rad * pi) * 50))', 'rgb(135, 45, 45)'],
+	['hsl(from hsl(50deg 50 50) h s calc((sin(h * 1deg) + 1) * 50))', 'rgb(240, 235, 210)'],
+	['hsl(from hsl(120 50 50) calc(sin(h)) s l)', 'rgb(191, 65, 64)'],
+	['hsl(from hsl(120 50 50) calc(sin(h * 1deg)) s l)', 'rgb(191, 66, 64)'],
+].forEach(([input, expected]) => {
+	assert.deepStrictEqual(
+		serialize_sRGB_data(color(parse(input))),
+		expected,
+		`${input}: ${expected}`,
+	);
+});
