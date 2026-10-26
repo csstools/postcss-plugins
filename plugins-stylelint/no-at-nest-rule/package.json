@@ -46,7 +46,7 @@
 		"@csstools/pack-test": "^2.0.1",
 		"postcss": "^8.5.10",
 		"stylelint": "^17.16.0",
-		"stylelint-test-rule-node": "^1.2.0"
+		"stylelint-test-rule-node": "^1.2.1"
 	},
 	"scripts": {
 		"lint": "node ../../.github/bin/format-package-json.mjs",
