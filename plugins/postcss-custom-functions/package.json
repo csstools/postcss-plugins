@@ -42,7 +42,7 @@
 		"@csstools/custom-function-parser": "^1.0.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.31"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
