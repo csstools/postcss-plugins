@@ -4,7 +4,6 @@ import { ColorNotation } from './color-notation';
 import type { TokenNumber} from '@csstools/css-tokenizer';
 import { NumberType, TokenType } from '@csstools/css-tokenizer';
 import { HSL_to_XYZ_D50, HSL_to_XYZ_D65, HWB_to_XYZ_D50, HWB_to_XYZ_D65, LCH_to_XYZ_D50, LCH_to_XYZ_D65, Lab_to_XYZ_D50, Lab_to_XYZ_D65, OKLCH_to_XYZ_D50, OKLCH_to_XYZ_D65, OKLab_to_XYZ_D50, OKLab_to_XYZ_D65, P3_to_XYZ_D50, P3_to_XYZ_D65, ProPhoto_RGB_to_XYZ_D50, ProPhoto_RGB_to_XYZ_D65, XYZ_D50_to_LCH, XYZ_D50_to_Lab, XYZ_D50_to_ProPhoto, XYZ_D50_to_XYZ_D50, XYZ_D50_to_XYZ_D65, XYZ_D65_to_HSL, XYZ_D65_to_HWB, XYZ_D65_to_OKLCH, XYZ_D65_to_OKLab, XYZ_D65_to_P3, XYZ_D65_to_XYZ_D50, XYZ_D65_to_XYZ_D65, XYZ_D65_to_a98_RGB, XYZ_D65_to_lin_P3, XYZ_D65_to_lin_sRGB, XYZ_D65_to_rec_2020, XYZ_D65_to_sRGB, a98_RGB_to_XYZ_D50, a98_RGB_to_XYZ_D65, lin_P3_to_XYZ_D50, lin_P3_to_XYZ_D65, lin_sRGB_to_XYZ_D50, lin_sRGB_to_XYZ_D65, rec_2020_to_XYZ_D50, rec_2020_to_XYZ_D65, sRGB_to_XYZ_D50, sRGB_to_XYZ_D65 } from '@csstools/color-helpers';
-import { normalize } from './functions/normalize';
 
 /**
  * A color data object.
@@ -718,6 +717,7 @@ function convertPowerlessComponentsToMissingComponents(a: Color, colorNotation: 
 
 			break;
 		case ColorNotation.HWB:
+			// TODO: investigate when `W`/`B` turn negative
 			if ((Math.max(0, (Number.isNaN(out[1]) ? 0 : out[1])) + Math.max(0, (Number.isNaN(out[2]) ? 0 : out[2]))) >= 99.999) {
 				out[0] = Number.NaN;
 
@@ -942,11 +942,6 @@ export function noneToZeroInRelativeColorDataChannels(x: Map<string, TokenNumber
 
 function normalizeAfterColorConversion(a: Color, hueIndex: number = -1): Color {
 	a = convertNaNToZero(a);
-	a = [
-		hueIndex === 0 ? a[0] : normalize(a[0], 1, -2_147_483_647, 2_147_483_647),
-		hueIndex === 1 ? a[1] : normalize(a[1], 1, -2_147_483_647, 2_147_483_647),
-		hueIndex === 2 ? a[2] : normalize(a[2], 1, -2_147_483_647, 2_147_483_647),
-	];
 
 	if (!Number.isNaN(a[hueIndex]) && !Number.isFinite(a[hueIndex])) {
 		a[hueIndex] = 0;

@@ -117,6 +117,12 @@ const tests = [
 	['color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%))', canonicalize('hsl(230deg 0% 50%)')],
 	['color-mix(in hsl, color-mix(in hsl longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%)), hsl(180deg 100% 50%))', canonicalize('hsl(205deg 50% 50%)')],
 
+	// A powerless hue is `missing` after conversion to a different interpolation space,
+	// so the nested mix resolves to the same result as mixing the original color directly.
+	// https://github.com/w3c/csswg-drafts/issues/14046
+	['color-mix(in lch, color-mix(in lch longer hue, hsl(50deg 0% 50%), hsl(50deg 0% 50%)), lch(50% 100% 180deg))', canonicalize('lch(51.69448237055716 75 180deg)')],
+	['color-mix(in lch, hsl(50deg 0% 50%), lch(50% 100% 180deg))', canonicalize('lch(51.69448237055716 75 180deg)')],
+
 	['color-mix(in hsl, hsl(30deg 40% 80% / 25%) 0%, hsl(90deg none none / none))', canonicalize('hsl(90deg 40% 80% / 25%)')],
 	['color-mix(in hwb, hwb(30deg 30% 40% / 25%) 0%, hwb(90deg none none / 0.5))', canonicalize('hwb(90deg 30% 40% / 0.5)')],
 	['color-mix(in hsl, hsl(from hsl(none 50% 50%) h s l), hsl(from hsl(120deg 50% 50%) h s l))', canonicalize('hsl(120deg 50% 50%)')],
@@ -134,6 +140,19 @@ const tests = [
 
 	// TODO : `none` containing support
 	['color-mix(in hsl, hsl(calc(none) 30% 40%), hsl(20deg 30% 40%))', ''],
+
+	// Percentages outside of the [0,100] range
+	// https://drafts.csswg.org/css-color-5/#color-mix-percent-norm
+	['color-mix(in srgb, red -10%, blue)', ''], // literal percentages are invalid
+	['color-mix(in srgb, red 150%, blue)', ''], // literal percentages are invalid
+	['color-mix(in srgb, red 0% 20%, blue)', ''], // only one percentage per color
+	// Math functions with an out of range result are clamped instead of being invalid.
+	// https://drafts.csswg.org/css-values-4/#calc-range
+	['color-mix(in srgb, red calc(-10%), blue)', canonicalize('blue')], // clamped to 0%
+	['color-mix(in srgb, red calc(10% - 20%), blue)', canonicalize('blue')], // clamped to 0%
+	['color-mix(in srgb, red calc(150%), blue)', canonicalize('red')], // clamped to 100%
+	['color-mix(in oklch, red calc(-10%), blue)', canonicalize('blue')], // clamped to 0%
+	['color-mix(in oklch, red calc(150%), blue)', canonicalize('red')], // clamped to 100%
 
 	// 0 percentage sum
 	['color-mix(in hsl, hsl(120deg 10% 20%) 0%, hsl(30deg 30% 40%) 0%)', canonicalize('hsl(75.48deg 20.26% 30% / 0)')], // sum of percentages is 0
