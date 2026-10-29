@@ -1,5 +1,9 @@
 # Changes to PostCSS Color Functional Notation
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.2.7`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#427) (patch)
+
 ### 8.0.15
 
 _October 2, 2026_
