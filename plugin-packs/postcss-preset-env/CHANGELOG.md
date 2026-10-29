@@ -1,5 +1,10 @@
 # Changes to PostCSS Preset Env
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-gamut-mapping`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping) to [`3.0.16`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-gamut-mapping/CHANGELOG.md#3016) (patch)
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#515) (patch)
+
 ### 11.6.1
 
 _October 5, 2026_

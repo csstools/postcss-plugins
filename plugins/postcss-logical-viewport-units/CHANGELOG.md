@@ -1,5 +1,9 @@
 # Changes to PostCSS Logical Viewport Units
 
+### Unreleased (patch)
+
+- Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#515) (patch)
+
 ### 4.0.3
 
 _October 2, 2026_
