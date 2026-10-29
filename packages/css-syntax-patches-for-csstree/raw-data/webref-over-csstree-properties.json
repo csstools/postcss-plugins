@@ -122,7 +122,7 @@
 	"block-ellipsis": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "no-ellipsis | auto | <string>",
+		"syntax-a": "no-ellipsis | ellipsis | <string>",
 		"comment": ""
 	},
 	"block-size": {
@@ -692,7 +692,7 @@
 	"column-width": {
 		"type": "modified",
 		"syntax-b": "auto | <length [0,∞]>",
-		"syntax-a": "auto | <box-size>",
+		"syntax-a": "auto | <box-size> | auto | <box-size>",
 		"comment": ""
 	},
 	"contain": {
@@ -740,13 +740,13 @@
 	"content": {
 		"type": "modified",
 		"syntax-b": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]?",
-		"syntax-a": "normal | none | [ <content-replacement> | <content-list> ] [ / [ <string> | <counter> | <attr()> ]+ ]? | <element()>",
+		"syntax-a": "normal | none | [ <content-replacement> | <content-list> ] [ / <alt-text> ]? | <element()>",
 		"comment": ""
 	},
 	"continue": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | discard | collapse | -webkit-legacy | overflow | paginate | fragments",
+		"syntax-a": "normal | discard | collapse | -webkit-legacy | overflow | paginate | fragments",
 		"comment": ""
 	},
 	"copy-into": {
@@ -758,13 +758,13 @@
 	"corner": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-radius'> || <'corner-shape'>",
+		"syntax-a": "<'corner-shape'> || <'border-radius'>",
 		"comment": ""
 	},
 	"corner-block-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-block-end-shape": {
@@ -776,7 +776,7 @@
 	"corner-block-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-block-start-shape": {
@@ -788,19 +788,19 @@
 	"corner-bottom": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-bottom-left": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-bottom-right": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-bottom-shape": {
@@ -812,19 +812,19 @@
 	"corner-end-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-end-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-inline-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-inline-end-shape": {
@@ -836,7 +836,7 @@
 	"corner-inline-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-inline-start-shape": {
@@ -848,7 +848,7 @@
 	"corner-left": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-left-shape": {
@@ -860,7 +860,7 @@
 	"corner-right": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-right-shape": {
@@ -878,31 +878,31 @@
 	"corner-start-end": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-start-start": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-top": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-radius'> || <'corner-top-shape'>",
+		"syntax-a": "<'corner-top-shape'> || <'border-top-radius'>",
 		"comment": ""
 	},
 	"corner-top-left": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-top-right": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<'border-top-left-radius'> || <'corner-top-left-shape'>",
+		"syntax-a": "<'corner-top-left-shape'> || <'border-top-left-radius'>",
 		"comment": ""
 	},
 	"corner-top-shape": {
@@ -962,7 +962,7 @@
 	"event-trigger-source": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "[ none | <event-trigger-event>+ [ / <event-trigger-event>+ ]? ]#",
+		"syntax-a": "[ none | <event-function>+ [ / <event-function>+ ]? ]#",
 		"comment": ""
 	},
 	"field-sizing": {
@@ -1025,6 +1025,12 @@
 		"syntax-a": "none | <filter-value-list>",
 		"comment": ""
 	},
+	"fit-tolerance": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "normal | <length-percentage [0,∞]> | infinite",
+		"comment": ""
+	},
 	"flex-grow": {
 		"type": "modified",
 		"syntax-b": "<number>",
@@ -1083,12 +1089,6 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "none | <custom-ident> [ element | content ]?",
-		"comment": ""
-	},
-	"flow-tolerance": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "normal | <length-percentage [0,∞]> | infinite",
 		"comment": ""
 	},
 	"font": {
@@ -1316,7 +1316,7 @@
 	"line-clamp": {
 		"type": "modified",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "none | [ <integer [1,∞]> || <'block-ellipsis'> ] -webkit-legacy?",
+		"syntax-a": "none | [ <'max-lines'> || <'block-ellipsis'> ] -webkit-legacy?",
 		"comment": ""
 	},
 	"line-fit-edge": {
@@ -1460,7 +1460,7 @@
 	"max-lines": {
 		"type": "modified",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "none | <integer [1,∞]>",
+		"syntax-a": "auto || <integer [1,∞]>",
 		"comment": ""
 	},
 	"max-size": {
@@ -1706,7 +1706,7 @@
 	"path-length": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "none | <length> [ 0 , ∞ ]",
+		"syntax-a": "none | <length [0,∞]>",
 		"comment": ""
 	},
 	"pause-after": {
@@ -1778,7 +1778,7 @@
 	"quotes": {
 		"type": "modified",
 		"syntax-b": "none | auto | [ <string> <string> ]+",
-		"syntax-a": "auto | none | match-parent | [ <string> <string> ]+",
+		"syntax-a": "auto | none | bikeshed-this | [ <string> <string> ]+",
 		"comment": ""
 	},
 	"r": {
@@ -2420,7 +2420,7 @@
 	"timeline-trigger": {
 		"type": "modified",
 		"syntax-b": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-range'> [ '/' <'timeline-trigger-exit-range'> ]? ]#",
-		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> <'timeline-trigger-activation-range'> [ / <'timeline-trigger-active-range'> ]? ]#",
+		"syntax-a": "none | [ <'timeline-trigger-name'> <'timeline-trigger-source'> [ <'timeline-trigger-range'> ]? ]#",
 		"comment": ""
 	},
 	"timeline-trigger-activation-range": {
@@ -2457,6 +2457,12 @@
 		"type": "added",
 		"syntax-b": "",
 		"syntax-a": "[ auto | normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#",
+		"comment": ""
+	},
+	"timeline-trigger-range": {
+		"type": "modified",
+		"syntax-b": "[ <'timeline-trigger-range-start'> <'timeline-trigger-range-end'>? ]#",
+		"syntax-a": "[ <'timeline-trigger-activation-range'> [ / <'timeline-trigger-active-range'> ]? ]#",
 		"comment": ""
 	},
 	"timeline-trigger-source": {
