@@ -1,5 +1,9 @@
 # Changes to PostCSS Progressive Custom Properties
 
+### Unreleased (patch)
+
+- Update list of known logical and shorthand properties
+
 ### 5.1.4
 
 _October 2, 2026_
