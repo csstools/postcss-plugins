@@ -63,8 +63,19 @@
 				"syntax-a": "relative-colorimetric | absolute-colorimetric | perceptual | saturation",
 				"syntax-m": "relative-colorimetric | absolute-colorimetric | perceptual | saturation",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "relative-colorimetric"
+						},
+						{
+							"value": "saturation"
+						}
+					],
+					"failing": [
+						{
+							"value": "auto"
+						}
+					]
 				}
 			},
 			"src": {
@@ -74,8 +85,16 @@
 				"syntax-a": "<url>",
 				"syntax-m": "<url>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "url(https://example.com/profile.icc)"
+						}
+					],
+					"failing": [
+						{
+							"value": "foo"
+						}
+					]
 				}
 			}
 		},
@@ -86,8 +105,19 @@
 			"syntax-a": "[ <dashed-ident> | device-cmyk ]",
 			"syntax-m": "[ <dashed-ident> | device-cmyk ]",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "--foo"
+					},
+					{
+						"prelude": "device-cmyk"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo"
+					}
+				]
 			}
 		}
 	},
@@ -99,8 +129,22 @@
 			"syntax-a": "<container-condition>#",
 			"syntax-m": "<container-condition>#",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "(min-width: 320px)"
+					},
+					{
+						"prelude": "foo (min-width: 320px)"
+					},
+					{
+						"prelude": "(min-width: 320px), (height > 100px)"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					}
+				]
 			}
 		}
 	},
@@ -175,8 +219,19 @@
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "-10%"
+						}
+					]
 				}
 			},
 			"descent-override": {
@@ -186,8 +241,19 @@
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "-10%"
+						}
+					]
 				}
 			},
 			"font-family": {
@@ -197,8 +263,19 @@
 				"syntax-a": "<font-family-name>",
 				"syntax-m": "<font-family-name>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "Arial"
+						},
+						{
+							"value": "\"My Font\""
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			},
 			"font-language-override": {
@@ -208,8 +285,19 @@
 				"syntax-a": "normal | <string>",
 				"syntax-m": "normal | <string>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "\"ENG\""
+						}
+					],
+					"failing": [
+						{
+							"value": "ENG"
+						}
+					]
 				}
 			},
 			"font-named-instance": {
@@ -219,8 +307,19 @@
 				"syntax-a": "auto | <string>",
 				"syntax-m": "auto | <string>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "auto"
+						},
+						{
+							"value": "\"Regular\""
+						}
+					],
+					"failing": [
+						{
+							"value": "foo"
+						}
+					]
 				}
 			},
 			"font-size": {
@@ -230,8 +329,19 @@
 				"syntax-a": "auto | [ <number> ]{1,2}",
 				"syntax-m": "auto | [ <number> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "auto"
+						},
+						{
+							"value": "10 20"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			},
 			"font-style": {
@@ -241,8 +351,19 @@
 				"syntax-a": "auto | normal | italic | left | right | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
 				"syntax-m": "auto | normal | italic | left | right | oblique [ <angle [-90deg,90deg]>{1,2} ]?",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "auto"
+						},
+						{
+							"value": "oblique 10deg -10deg"
+						}
+					],
+					"failing": [
+						{
+							"value": "italic 10deg"
+						}
+					]
 				}
 			},
 			"font-weight": {
@@ -252,8 +373,22 @@
 				"syntax-a": "auto | <font-weight-absolute>{1,2}",
 				"syntax-m": "| auto",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "auto"
+						},
+						{
+							"value": "400"
+						},
+						{
+							"value": "400 700"
+						}
+					],
+					"failing": [
+						{
+							"value": "heavy"
+						}
+					]
 				}
 			},
 			"font-width": {
@@ -263,8 +398,19 @@
 				"syntax-a": "auto | <'font-width'>{1,2}",
 				"syntax-m": "auto | <'font-width'>{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "auto"
+						},
+						{
+							"value": "100% 120%"
+						}
+					],
+					"failing": [
+						{
+							"value": "heavy"
+						}
+					]
 				}
 			},
 			"line-gap-override": {
@@ -274,8 +420,19 @@
 				"syntax-a": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"syntax-m": "[ normal | <percentage [0,∞]> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "-10%"
+						}
+					]
 				}
 			},
 			"size-adjust": {
@@ -285,8 +442,16 @@
 				"syntax-a": "<percentage [0,∞]>",
 				"syntax-m": "<percentage [0,∞]>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "100%"
+						}
+					],
+					"failing": [
+						{
+							"value": "-10%"
+						}
+					]
 				}
 			},
 			"src": {
@@ -318,8 +483,22 @@
 				"syntax-a": "[ normal | from-font | <percentage> ]{1,2}",
 				"syntax-m": "[ normal | from-font | <percentage> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "from-font"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			},
 			"subscript-size-override": {
@@ -329,8 +508,22 @@
 				"syntax-a": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 				"syntax-m": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "from-font"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "-10%"
+						}
+					]
 				}
 			},
 			"superscript-position-override": {
@@ -340,8 +533,22 @@
 				"syntax-a": "[ normal | from-font | <percentage> ]{1,2}",
 				"syntax-m": "[ normal | from-font | <percentage> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "from-font"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			},
 			"superscript-size-override": {
@@ -351,8 +558,22 @@
 				"syntax-a": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 				"syntax-m": "[ normal | from-font | <percentage [0,∞]> ]{1,2}",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "normal"
+						},
+						{
+							"value": "from-font"
+						},
+						{
+							"value": "10% 20%"
+						}
+					],
+					"failing": [
+						{
+							"value": "-10%"
+						}
+					]
 				}
 			},
 			"unicode-range": {
@@ -397,8 +618,19 @@
 				"syntax-a": "auto | block | swap | fallback | optional",
 				"syntax-m": "auto | block | swap | fallback | optional",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "auto"
+						},
+						{
+							"value": "swap"
+						}
+					],
+					"failing": [
+						{
+							"value": "foo"
+						}
+					]
 				}
 			}
 		},
@@ -409,8 +641,19 @@
 			"syntax-a": "<font-family-name>#",
 			"syntax-m": "<font-family-name>#",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "Arial"
+					},
+					{
+						"prelude": "Arial, \"Times New Roman\""
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					}
+				]
 			}
 		}
 	},
@@ -423,8 +666,19 @@
 				"syntax-a": "<font-family-name>#",
 				"syntax-m": "<font-family-name>#",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "Arial"
+						},
+						{
+							"value": "Arial, \"Times New Roman\""
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			}
 		}
@@ -438,7 +692,11 @@
 				"syntax-a": "<declaration-value>?",
 				"syntax-m": "<declaration-value>?",
 				"tests": {
-					"passing": [],
+					"passing": [
+						{
+							"value": "10px"
+						}
+					],
 					"failing": []
 				}
 			}
@@ -450,8 +708,19 @@
 			"syntax-a": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
 			"syntax-m": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "--foo(--bar)"
+					},
+					{
+						"prelude": "--foo(--bar: 2rem) returns <length>"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo"
+					}
+				]
 			}
 		}
 	},
@@ -510,8 +779,19 @@
 			"syntax-a": "<navigation-condition>",
 			"syntax-m": "<navigation-condition>",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "(nav-up: auto)"
+					},
+					{
+						"prelude": "not (nav-up: auto)"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					}
+				]
 			}
 		}
 	},
@@ -524,8 +804,19 @@
 				"syntax-a": "<'margin'>",
 				"syntax-m": "<'margin'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "10px"
+						},
+						{
+							"value": "auto 1cm"
+						}
+					],
+					"failing": [
+						{
+							"value": "red"
+						}
+					]
 				}
 			},
 			"margin-bottom": {
@@ -535,8 +826,19 @@
 				"syntax-a": "<'margin-bottom'>",
 				"syntax-m": "<'margin-bottom'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "10px"
+						},
+						{
+							"value": "auto"
+						}
+					],
+					"failing": [
+						{
+							"value": "red"
+						}
+					]
 				}
 			},
 			"margin-left": {
@@ -546,8 +848,19 @@
 				"syntax-a": "<'margin-left'>",
 				"syntax-m": "<'margin-left'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "10px"
+						},
+						{
+							"value": "auto"
+						}
+					],
+					"failing": [
+						{
+							"value": "red"
+						}
+					]
 				}
 			},
 			"margin-right": {
@@ -557,8 +870,19 @@
 				"syntax-a": "<'margin-right'>",
 				"syntax-m": "<'margin-right'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "10px"
+						},
+						{
+							"value": "auto"
+						}
+					],
+					"failing": [
+						{
+							"value": "red"
+						}
+					]
 				}
 			},
 			"margin-top": {
@@ -568,8 +892,19 @@
 				"syntax-a": "<'margin-top'>",
 				"syntax-m": "<'margin-top'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "10px"
+						},
+						{
+							"value": "auto"
+						}
+					],
+					"failing": [
+						{
+							"value": "red"
+						}
+					]
 				}
 			},
 			"page-margin-safety": {
@@ -579,8 +914,22 @@
 				"syntax-a": "none | clamp | add",
 				"syntax-m": "none | clamp | add",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "none"
+						},
+						{
+							"value": "clamp"
+						},
+						{
+							"value": "add"
+						}
+					],
+					"failing": [
+						{
+							"value": "foo"
+						}
+					]
 				}
 			}
 		},
@@ -591,8 +940,22 @@
 			"syntax-a": "<page-selector-list>?",
 			"syntax-m": "<page-selector-list>?",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": ":first"
+					},
+					{
+						"prelude": "foo:left"
+					},
+					{
+						"prelude": ""
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					}
+				]
 			}
 		}
 	},
@@ -605,8 +968,19 @@
 				"syntax-a": "<'position-anchor'>",
 				"syntax-m": "<'position-anchor'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "--foo"
+						},
+						{
+							"value": "auto"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			},
 			"position-area": {
@@ -616,8 +990,16 @@
 				"syntax-a": "<'position-area'>",
 				"syntax-m": "<'position-area'>",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "top left"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			}
 		}
@@ -681,8 +1063,19 @@
 			"syntax-a": "<supports-condition-name>",
 			"syntax-m": "<supports-condition-name>",
 			"tests": {
-				"passing": [],
-				"failing": []
+				"passing": [
+					{
+						"prelude": "--foo"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					},
+					{
+						"prelude": ""
+					}
+				]
 			}
 		}
 	},
@@ -695,8 +1088,22 @@
 				"syntax-a": "none | <view-transition-type>+",
 				"syntax-m": "none | <view-transition-type>+",
 				"tests": {
-					"passing": [],
-					"failing": []
+					"passing": [
+						{
+							"value": "none"
+						},
+						{
+							"value": "slide"
+						},
+						{
+							"value": "slide fade"
+						}
+					],
+					"failing": [
+						{
+							"value": "10px"
+						}
+					]
 				}
 			}
 		}

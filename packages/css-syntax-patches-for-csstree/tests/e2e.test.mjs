@@ -69,6 +69,24 @@ for (const css_file of css_files) {
 			all_declarations.push(decl);
 		});
 
+		const all_at_rules = [];
+		root.walkAtRules((atrule) => {
+			all_at_rules.push(atrule);
+		});
+
+		for (let i = 0; i < all_at_rules.length; i++) {
+			const atrule = all_at_rules[i];
+
+			const result = forkedLexer.matchAtrulePrelude(atrule.name, atrule.params);
+			if (!result.error) {
+				continue;
+			}
+
+			await t.test(`(${path.basename(css_file) } - @${atrule.name} ${i}) ${atrule.params}`, () => {
+				throw result.error;
+			});
+		}
+
 		for (let i = 0; i < all_declarations.length; i++) {
 			const decl = all_declarations[i];
 			if (decl.variable) {

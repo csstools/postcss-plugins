@@ -20,6 +20,24 @@ const known_types = new Set([...Object.keys(forkedLexer.types)]);
 
 // Atrules
 for (const atrule of Object.values(forkedLexer.atrules)) {
+	if (atrule.prelude?.syntax) {
+		definitionSyntax.walk(atrule.prelude.syntax, (node) => {
+			if (node.type === 'Type' && !known_types.has(node.name)) {
+				// eslint-disable-next-line no-console
+				console.log(`Unexpected missing type '${node.name}' in '@${atrule.name}'`);
+				has_missing_types = true;
+				flaws++;
+			}
+
+			if (node.type === 'Property' && !known_properties.has(node.name)) {
+				// eslint-disable-next-line no-console
+				console.log(`Unexpected missing property '${node.name}' in '@${atrule.name}'`);
+				has_missing_properties = true;
+				flaws++;
+			}
+		});
+	}
+
 	if (!atrule.descriptors) {
 		continue;
 	}

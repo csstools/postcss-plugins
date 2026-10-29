@@ -331,12 +331,8 @@
 .double-position-gradients {
 	--_csstools-cf-h7k22i-s-result: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black),color-stop(50%, black), color-stop(50%, blue), color-stop(75%, blue));
-	background-image: -webkit-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
-	background-image: -moz-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
 	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black), color-stop(50%, blue));
-	background-image: -webkit-linear-gradient(left, black 25% 50%, blue 50% 75%);
-	background-image: -moz-linear-gradient(left, black 25% 50%, blue 50% 75%);
 	background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 	background-image: var(--_csstools-cf-h7k22i-s-result);
 	background-image: --double-position-gradients();
@@ -363,12 +359,8 @@
 
 	--_csstools-cf-h7k22i-u-result: var(--_csstools-cf-h7k22i-v-local-local);
 	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black),color-stop(50%, black), color-stop(50%, blue), color-stop(75%, blue));
-	background-image: -webkit-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
-	background-image: -moz-linear-gradient(left, black 25%,black 50%, blue 50%, blue 75%);
 	background-image: linear-gradient(90deg, black 25%,black 50%, blue 50%, blue 75%);
 	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, black), color-stop(50%, blue));
-	background-image: -webkit-linear-gradient(left, black 25% 50%, blue 50% 75%);
-	background-image: -moz-linear-gradient(left, black 25% 50%, blue 50% 75%);
 	background-image: linear-gradient(90deg, black 25% 50%, blue 50% 75%);
 	background-image: var(--_csstools-cf-h7k22i-u-result);
 	background-image: --double-position-gradients-var();
@@ -388,12 +380,8 @@
 .gradients-interpolation-method {
 	--_csstools-cf-h7k22i-w-result: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 255)), color-stop(75%, rgb(0, 0, 255)));
-	background-image: -webkit-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
-	background-image: -moz-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 	background-image: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(oklch, in), color-stop(25%, black), color-stop(50%, blue));
-	background-image: -webkit-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
-	background-image: -moz-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 	background-image: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 	background-image: var(--_csstools-cf-h7k22i-w-result);
 	background-image: --gradients-interpolation-method();
@@ -420,12 +408,8 @@
 
 	--_csstools-cf-h7k22i-y-result: var(--_csstools-cf-h7k22i-z-local-local);
 	background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 0)), color-stop(50%, rgb(0, 0, 255)), color-stop(75%, rgb(0, 0, 255)));
-	background-image: -webkit-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
-	background-image: -moz-linear-gradient(left, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 	background-image: linear-gradient(90deg, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 255) 50%, rgb(0, 0, 255) 75%);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(oklch, in), color-stop(25%, black), color-stop(50%, blue));
-	background-image: -webkit-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
-	background-image: -moz-linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 	background-image: linear-gradient(in oklch 90deg, black 25% 50%, blue 50% 75%);
 	background-image: var(--_csstools-cf-h7k22i-y-result);
 	background-image: --gradients-interpolation-method-var();
@@ -445,8 +429,6 @@
 .image-function {
 	--_csstools-cf-h7k22i-10-result: linear-gradient(red,red);
 	background-image: -webkit-gradient(linear,left top, left bottom,from(red),to(red));
-	background-image: -webkit-linear-gradient(red,red);
-	background-image: -moz-linear-gradient(red,red);
 	background-image: linear-gradient(red,red);
 	background-image: image(red);
 	background-image: var(--_csstools-cf-h7k22i-10-result);
@@ -474,8 +456,6 @@
 
 	--_csstools-cf-h7k22i-12-result: var(--_csstools-cf-h7k22i-13-local-local);
 	background-image: -webkit-gradient(linear,left top, left bottom,from(red),to(red));
-	background-image: -webkit-linear-gradient(red,red);
-	background-image: -moz-linear-gradient(red,red);
 	background-image: linear-gradient(red,red);
 	background-image: image(red);
 	background-image: var(--_csstools-cf-h7k22i-12-result);
@@ -491,7 +471,7 @@
 @function --image-set-function() {
 	result: url(img/test.png);
 	result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
-	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	result: url(img/test-2x.png);
 	}
 }
@@ -500,7 +480,7 @@
 	--_csstools-cf-h7k22i-14-result: url(img/test.png);
 	--_csstools-cf-h7k22i-14-result: image-set(url(img/test.png) 1x, url(img/test-2x.png) 2x);
 }
-	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .image-set-function {
 	--_csstools-cf-h7k22i-14-result: url(img/test-2x.png);
@@ -518,7 +498,7 @@
 
 	result: var(--local);
 
-	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	--local: url(img/test-2x.png);
 	}
 }
@@ -530,7 +510,7 @@
 	--_csstools-cf-h7k22i-16-result: var(--_csstools-cf-h7k22i-17-local-local);
 }
 
-	@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .image-set-function-var {
 	--_csstools-cf-h7k22i-17-local-local: url(img/test-2x.png);

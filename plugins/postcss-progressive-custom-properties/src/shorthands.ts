@@ -515,16 +515,8 @@ export const shorthands = new Map([
 	[
 		"corner",
 		[
-			"border-radius",
 			"corner-shape",
-			"corner-bottom-left-shape",
-			"corner-bottom-right-shape",
-			"corner-end-end-shape",
-			"corner-end-start-shape",
-			"corner-top-left-shape",
-			"corner-top-right-shape",
-			"corner-start-end-shape",
-			"corner-start-start-shape",
+			"border-radius",
 			"border-bottom-left-radius",
 			"border-bottom-right-radius",
 			"border-end-end-radius",
@@ -532,7 +524,15 @@ export const shorthands = new Map([
 			"border-top-left-radius",
 			"border-top-right-radius",
 			"border-start-end-radius",
-			"border-start-start-radius"
+			"border-start-start-radius",
+			"corner-bottom-left-shape",
+			"corner-bottom-right-shape",
+			"corner-end-end-shape",
+			"corner-end-start-shape",
+			"corner-top-left-shape",
+			"corner-top-right-shape",
+			"corner-start-end-shape",
+			"corner-start-start-shape"
 		]
 	],
 	[
@@ -1388,6 +1388,7 @@ export const shorthands = new Map([
 		[
 			"timeline-trigger-name",
 			"timeline-trigger-source",
+			"timeline-trigger-range",
 			"timeline-trigger-activation-range",
 			"timeline-trigger-active-range",
 			"timeline-trigger-active-range-start",
@@ -1408,6 +1409,17 @@ export const shorthands = new Map([
 		[
 			"timeline-trigger-active-range-start",
 			"timeline-trigger-active-range-end"
+		]
+	],
+	[
+		"timeline-trigger-range",
+		[
+			"timeline-trigger-activation-range",
+			"timeline-trigger-active-range",
+			"timeline-trigger-active-range-start",
+			"timeline-trigger-active-range-end",
+			"timeline-trigger-activation-range-start",
+			"timeline-trigger-activation-range-end"
 		]
 	],
 	[
