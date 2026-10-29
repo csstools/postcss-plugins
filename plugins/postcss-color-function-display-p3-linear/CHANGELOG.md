@@ -1,6 +1,8 @@
 # Changes to PostCSS Color Function Display P3 Linear
 
-### Unreleased (patch)
+### 2.0.16
+
+_October 29, 2026_
 
 - Updated [`@csstools/css-color-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser) to [`4.2.7`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser/CHANGELOG.md#427) (patch)
 - Updated [`@csstools/postcss-progressive-custom-properties`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties) to [`5.1.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-progressive-custom-properties/CHANGELOG.md#515) (patch)
