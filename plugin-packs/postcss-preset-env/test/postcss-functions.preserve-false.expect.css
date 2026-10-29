@@ -135,7 +135,7 @@
 	background-image: var(--_csstools-cf-h7k22i-14-result);
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .image-set-function {
 	--_csstools-cf-h7k22i-14-result: url(img/test-2x.png);
@@ -149,7 +149,7 @@
 	background-image: var(--_csstools-cf-h7k22i-16-result);
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .image-set-function-var {
 	--_csstools-cf-h7k22i-17-local-local: url(img/test-2x.png);
