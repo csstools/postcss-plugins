@@ -456,3 +456,26 @@ assert.deepStrictEqual(
 	computedValue(color(parse('lch(from lch(100 0 330deg) l c calc(h + 40))'))),
 	'lch(100 0 10)',
 );
+
+assert.deepStrictEqual(
+	color(parse('rgb(from lch(100% 0 0) r g b)')),
+	{
+		colorNotation: 'rgb',
+		channels: [1, 1, 1],
+		alpha: 1,
+		syntaxFlags: new Set([
+			'relative-color-syntax',
+			'has-number-values',
+		]),
+	},
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('color(from rgb(255 255 255) srgb r g b)'))),
+	'color(srgb 0.9999999999999999 0.9999999999999997 0.9999999999999999)',
+);
+
+assert.deepStrictEqual(
+	computedValue(color(parse('rgb(from lch(100% 0 0) r g b)'))),
+	'color(srgb 1 1 1)',
+);

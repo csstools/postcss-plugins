@@ -48,16 +48,18 @@ export function computedValue(color: ColorData, convertHslOrHwbToRGB: boolean = 
 			return `oklch(${channels[0]} ${channels[1]} ${channels[2]})`;
 		case ColorNotation.RGB:
 		case ColorNotation.HEX:
-			if (channels.some(Number.isNaN) || Number.isNaN(color.alpha)) {
+			if (
+				channels.some(Number.isNaN) ||
+				Number.isNaN(color.alpha) ||
+				color.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax) ||
+				color.syntaxFlags.has(SyntaxFlag.ColorMix) ||
+				color.syntaxFlags.has(SyntaxFlag.RelativeAlphaSyntax)
+			) {
 				if (color.alpha !== 1) {
 					return `color(srgb ${nanToNone(channels[0])} ${nanToNone(channels[1])} ${nanToNone(channels[2])} / ${nanToNone(color.alpha)})`;
 				}
 
 				return `color(srgb ${nanToNone(channels[0])} ${nanToNone(channels[1])} ${nanToNone(channels[2])})`;
-			}
-
-			if (color.syntaxFlags.has(SyntaxFlag.RelativeColorSyntax) || color.syntaxFlags.has(SyntaxFlag.ColorMix) || color.syntaxFlags.has(SyntaxFlag.RelativeAlphaSyntax)) {
-				return computedValue(colorDataToForRelativeColorSyntax(color, ColorNotation.sRGB));
 			}
 
 			if (color.alpha !== 1) {
