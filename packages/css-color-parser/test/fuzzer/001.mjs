@@ -907,7 +907,7 @@ const tests = [
 	['hsl( calc(nan) 0 clamp(8.151629, calc(pi), calc(pi)) )', 'rgb(21, 21, 21)'],
 	['lab( 26.673297 -75.013175 calc(calc(calc(-51.981194 * 1.989347) - 211.098857) - -55.650272) )', 'lab(26.673297 -75.013175 -258.85721734)'],
 	['hsl( 268.505084 41.385756 none )', 'hsl(268.505084 41.385756% none)'],
-	['color-mix( in srgb , color( from color( rec2020 calc(0.648646 + exp(30.088095)) none 0.799828 ) xyz-d50 none none alpha ) , color( srgb calc(calc(-infinity)) 0 0.59714 ) )', 'color(srgb -2147483647.0000007 506.91917288 0)'],
+	['color-mix( in srgb , color( from color( rec2020 calc(0.648646 + exp(30.088095)) none 0.799828 ) xyz-d50 none none alpha ) , color( srgb calc(calc(-infinity)) 0 0.59714 ) )', 'color(srgb -2147483647.0000002 275.65719315 54.14352009)'],
 	['lab( from color( xyz-d50 min(0.630491, calc(e)) 0.5 0.283017 / 0.764744 ) none none a / calc(alpha * 4) )', 'lab(none none 37.11959068)'],
 	['lch( from color( xyz-d50 0 hypot(0.333333, 0.689882) 0.651966 / 0.515995 ) 55.292901 c calc(h) )', 'lch(55.292901 388.56490088 180.2785414 / 0.515995)'],
 	['lch( 73.947082 143.372067 none )', 'lch(73.947082 143.372067 none)'],

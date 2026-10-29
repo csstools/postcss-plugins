@@ -690,7 +690,7 @@ import { parse } from '../util/parse.mjs';
 
 		['color-mix(in srgb, color(display-p3 none 0.5 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.41980447 0.73749249)', 'color(srgb 0.11 0.41980447 0.73749249)'],
 		['color-mix(in srgb, color(display-p3 0.25 none 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.19345272 0.33 0.74080285)', 'color(srgb 0.19345272 0.33 0.74080285)'],
-		['color-mix(in srgb, color(display-p3 0.25 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11703798 0.41867289 0.44)', 'color(srgb 0.11703798 0.41867289 0.44)'],
+		['color-mix(in srgb, color(display-p3 0.25 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11703799 0.41867289 0.44)', 'color(srgb 0.11703799 0.41867289 0.44)'],
 		['color-mix(in srgb, color(display-p3 none none 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.33 0.74101081)', 'color(srgb 0.11 0.33 0.74101081)'],
 		['color-mix(in srgb, color(display-p3 0.25 none none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.19345272 0.33 0.44)', 'color(srgb 0.19345272 0.33 0.44)'],
 		['color-mix(in srgb, color(display-p3 none 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.41980447 0.44)', 'color(srgb 0.11 0.41980447 0.44)'],
@@ -701,12 +701,12 @@ import { parse } from '../util/parse.mjs';
 		['color-mix(in srgb, color(xyz 0.25 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.16766222 0.59097976 0.44)', 'color(srgb 0.16766222 0.59097976 0.44)'],
 		['color-mix(in srgb, color(xyz none none 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.33 0.73231982)', 'color(srgb 0.11 0.33 0.73231982)'],
 		['color-mix(in srgb, color(xyz 0.25 none none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.51072054 0.33 0.44)', 'color(srgb 0.51072054 0.33 0.44)'],
-		['color-mix(in srgb, color(xyz none 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.65111439 0.44)', 'color(srgb 0.11 0.65111439 0.44)'],
+		['color-mix(in srgb, color(xyz none 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.65111438 0.44)', 'color(srgb 0.11 0.65111438 0.44)'],
 		['color-mix(in srgb, color(xyz none none none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.33 0.44)', 'color(srgb 0.11 0.33 0.44)'],
 
 		['color-mix(in srgb, color(xyz-d50 none 0.5 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.6631426 0.77921526)', 'color(srgb 0.11 0.6631426 0.77921526)'],
 		['color-mix(in srgb, color(xyz-d50 0.25 none 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.34373122 0.33 0.80359046)', 'color(srgb 0.34373122 0.33 0.80359046)'],
-		['color-mix(in srgb, color(xyz-d50 0.25 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb -0.03122213 0.59576685 0.44)', 'color(srgb -0.03122213 0.59576685 0.44)'],
+		['color-mix(in srgb, color(xyz-d50 0.25 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb -0.03122212 0.59576685 0.44)', 'color(srgb -0.03122212 0.59576685 0.44)'],
 		['color-mix(in srgb, color(xyz-d50 none none 1), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.33 0.80036058)', 'color(srgb 0.11 0.33 0.80036058)'],
 		['color-mix(in srgb, color(xyz-d50 0.25 none none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.50401864 0.33 0.44)', 'color(srgb 0.50401864 0.33 0.44)'],
 		['color-mix(in srgb, color(xyz-d50 none 0.5 none), color(srgb 0.11 0.33 0.44))', 'color(srgb 0.11 0.65568176 0.44)', 'color(srgb 0.11 0.65568176 0.44)'],
