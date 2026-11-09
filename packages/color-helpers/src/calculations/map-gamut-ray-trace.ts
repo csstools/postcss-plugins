@@ -13,6 +13,9 @@
 import { clip } from '../utils/clip';
 import type { Color } from '../types/color';
 
+const LOW = 1e-12;
+const HIGH = 1 - LOW;
+
 /**
  * @license MIT https://github.com/facelessuser/coloraide/blob/main/LICENSE.md
  */
@@ -25,37 +28,73 @@ export function mapGamutRayTrace(
 	const lightness = startOKLCH[0];
 	const hue = startOKLCH[2];
 
-	// 2. Convert the input color to the closest matching linear RGB space
-	let linear = toLinear(startOKLCH);
-	// 3. Calculate an achromatic version of the color (in OKLCH) and convert it to the same linear RGB space
-	const achromatic = toLinear([lightness, 0, hue]);
+	// 2. Handle colors at the lightness endpoints.
+	if (lightness >= 1) {
+		return clip(toLinear([1, 0, 0]));
+	}
 
-	// 4. Perform up to 4 iterations to find the closest color in gamut
+	if (lightness <= 0) {
+		return clip(toLinear([0, 0, 0]));
+	}
+
+	// 3. Convert the input color to the closest matching linear RGB space
+	let linear = toLinear(startOKLCH);
+
+	// 4. Colors that are already in gamut do not need to be traced.
+	if (inLinearGamut(linear)) {
+		return clip(linear);
+	}
+
+	// 5. Calculate an achromatic version of the color (in OKLCH) and convert it to the same linear RGB space
+	let achromatic = toLinear([lightness, 0, hue]);
+
+	// 6. Perform up to 4 iterations to find the closest color in gamut
+	let last = linear;
 	for (let i = 0; i < 4; i++) {
-		// 4.1. On subsequent iterations, we correct the lightness and hue
+		// 6.1. On subsequent iterations, we correct the lightness and hue
 		if (i > 0) {
-			// 4.1.1. Convert the current color back to OKLCH
+			// 6.1.1. Convert the current color back to OKLCH
 			const oklch = fromLinear(linear);
-			// 4.1.2. Correct the lightness and hue
+			// 6.1.2. Correct the lightness and hue
 			oklch[0] = lightness;
 			oklch[2] = hue;
-			// 4.1.3. Convert the corrected color back to linear RGB
+			// 6.1.3. Convert the corrected color back to linear RGB
 			linear = toLinear(oklch);
 		}
 
-		// 4.2 Perform a raytrace to find the intersection of the line between the achromatic and the current color
+		// 6.2. Perform a raytrace to find the intersection of the line between the achromatic and the current color
 		const intersection = rayTraceBox(achromatic, linear);
-		// 4.3 If no intersection is found, we are already in gamut
+
+		// 6.3. If no intersection is found, restore the previous intersection
 		if (!intersection) {
+			linear = last;
 			break;
 		}
 
-		// 4.4 Assign the intersection to the current color
+		// 6.4. Move the anchor when the current color is inside the inner box
+		if (i > 0 && inInnerBox(linear)) {
+			achromatic = linear;
+		}
+
+		// 6.5. Assign the intersection to the current color
 		linear = intersection;
+		last = intersection;
 	}
 
-	// 5. Clip the result to account for floating point errors
+	// 7. Clip the result to account for floating point errors
 	return clip(linear);
+}
+
+function inLinearGamut(color: Color): boolean {
+	return color[0] >= 0 && color[0] <= 1 &&
+		color[1] >= 0 && color[1] <= 1 &&
+		color[2] >= 0 && color[2] <= 1;
+}
+
+function inInnerBox(color: Color): boolean {
+	return color[0] >= LOW && color[0] <= HIGH &&
+		color[1] >= LOW && color[1] <= HIGH &&
+		color[2] >= LOW && color[2] <= HIGH;
 }
 
 function rayTraceBox(start: Color, end: Color): Color | false {
@@ -93,7 +132,6 @@ function rayTraceBox(start: Color, end: Color): Color | false {
 		tnear = tfar;
 	}
 
-	// A point, or something approaching a single point where start and end are the same.
 	if (!isFinite(tnear)) {
 		return false;
 	}
