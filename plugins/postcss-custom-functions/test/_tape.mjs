@@ -38,6 +38,15 @@ postcssTape(plugin)({
 	locals: {
 		message: 'supports initial and inherit in local variables',
 	},
+	property: {
+		message: 'supports @property rules for local variables',
+	},
+	'property:preserve-true': {
+		message: 'supports @property rules for local variables with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	'local-keywords': {
 		message: 'resolves other CSS-wide keywords on local variables to the guaranteed-invalid value',
 	},

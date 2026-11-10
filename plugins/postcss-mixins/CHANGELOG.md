@@ -1,5 +1,9 @@
 # Changes to PostCSS Mixins
 
+### Unreleased (minor)
+
+- Support `@property` rules in `@private` rules, including multi-name prelude lists and the `@property --name <type>: initial-value;` shorthand form
+
 ### 1.1.0
 
 _October 1, 2026_

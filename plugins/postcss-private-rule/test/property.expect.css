@@ -1,0 +1,114 @@
+.registered {
+
+		--_csstools-p-7q9ama-0--size: 20px;
+		--_csstools-p-7q9ama-0--size-a: 30px;
+		--_csstools-p-7q9ama-0--size-b: 40px;
+		--_csstools-p-7q9ama-0--size-c: 50px;
+		--_csstools-p-7q9ama-0--colors: red, blue;
+
+	width: var(--_csstools-p-7q9ama-0--size);
+	height: var(--_csstools-p-7q9ama-0--size-a);
+	min-height: var(--_csstools-p-7q9ama-0--size-b);
+	max-height: var(--_csstools-p-7q9ama-0--size-c);
+	max-width: var(--_csstools-p-7q9ama-0--colors);
+	min-width: var(--_csstools-p-7q9ama-0--empty);
+	border-width: var(--_csstools-p-7q9ama-0--untyped-empty);
+	outline-width: var(--);
+}
+
+.registered-only {
+
+	color: var(--_csstools-p-7q9ama-1--untyped);
+}
+
+.registered-conditional {
+
+		--_csstools-p-7q9ama-2--conditional-size: 14px;
+
+	width: var(--_csstools-p-7q9ama-2--conditional-size);
+}
+
+@layer parent-layer {
+	.layer-order {
+			@layer private-layer {
+			}
+
+		width: var(--_csstools-p-7q9ama-3--layer-size);
+	}
+}
+		@property --_csstools-p-7q9ama-0--size {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 10px;
+		}
+
+		@property --_csstools-p-7q9ama-0--size-a {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 11px;
+		}
+
+		@property --_csstools-p-7q9ama-0--size-b {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 11px;
+		}
+
+		@property --_csstools-p-7q9ama-0--size-c {
+
+		inherits: true;
+
+		syntax: "<length>";
+
+		initial-value: 12px;
+}
+
+		@property --_csstools-p-7q9ama-0--colors {
+
+		inherits: true;
+
+		syntax: "<color>#";
+
+		initial-value: red,blue;
+}
+
+		@property --_csstools-p-7q9ama-0--empty {
+
+		inherits: true;
+
+		syntax: "<length>";
+
+		initial-value: ;
+}
+
+		@property --_csstools-p-7q9ama-0--untyped-empty {
+
+		inherits: true;
+
+		syntax: "*";
+
+		initial-value: ;
+}
+
+		@property --_csstools-p-7q9ama-1--untyped {
+
+		inherits: true;
+
+		syntax: "*";
+
+		initial-value: 6px;
+}
+		@media (min-width: 1000px) {@property --_csstools-p-7q9ama-2--conditional-size {
+    inherits: true;
+    syntax: "<length>";
+    initial-value: 13px
+}
+		}
+		@property --_csstools-p-7q9ama-3--layer-size {
+
+		inherits: true;
+
+		syntax: "<length>";
+
+		initial-value: 10px;
+}

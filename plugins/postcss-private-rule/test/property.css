@@ -1,0 +1,72 @@
+.registered {
+	@private {
+		@property --size {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 10px;
+		}
+
+		@property --size-a, --size-b {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 11px;
+		}
+
+		@property --size-c <length>: 12px;
+
+		@property --colors type(<color>#): red, blue;
+
+		@property --empty <length>:;
+
+		@property --untyped-empty:;
+
+		@property -- <length>: 1em;
+
+		--size: 20px;
+		--size-a: 30px;
+		--size-b: 40px;
+		--size-c: 50px;
+		--colors: red, blue;
+	}
+
+	width: var(--size);
+	height: var(--size-a);
+	min-height: var(--size-b);
+	max-height: var(--size-c);
+	max-width: var(--colors);
+	min-width: var(--empty);
+	border-width: var(--untyped-empty);
+	outline-width: var(--);
+}
+
+.registered-only {
+	@private {
+		@property --untyped: 6px;
+	}
+
+	color: var(--untyped);
+}
+
+.registered-conditional {
+	@private {
+		@media (min-width: 1000px) {
+			@property --conditional-size <length>: 13px;
+		}
+
+		--conditional-size: 14px;
+	}
+
+	width: var(--conditional-size);
+}
+
+@layer parent-layer {
+	.layer-order {
+		@private {
+			@layer private-layer {
+				@property --layer-size <length>: 10px;
+			}
+		}
+
+		width: var(--layer-size);
+	}
+}

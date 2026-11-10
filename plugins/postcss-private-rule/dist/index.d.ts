@@ -1,5 +1,6 @@
 import type { AtRule } from 'postcss';
 import type { Declaration } from 'postcss';
+import type { Helpers } from 'postcss';
 import type { Node } from 'postcss';
 import type { PluginCreator } from 'postcss';
 import type { Rule } from 'postcss';
@@ -18,6 +19,13 @@ export declare class Transpiler {
     }>;
     counter: number;
     hashes: Map<string, string>;
+    /** `@property` registrations generated for private properties. */
+    private registrations;
+    /**
+     * Take the `@property` registrations that were generated for private
+     * properties. These are top level rules and must be appended to the root.
+     */
+    getRegisteredPropertyAtRules(): Array<AtRule>;
     getOrFillPrivateForRule(rule: Rule | AtRule): {
         prefix: string;
         privateProperties: Set<string>;
@@ -27,7 +35,12 @@ export declare class Transpiler {
         privateProperties: Set<string>;
         rule: Rule;
     }>;
-    registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void;
+    registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule, helpers: Helpers): void;
+    /**
+     * Move `@property` rules to the root with the generated private property
+     * names, so they provide the registration for the private properties.
+     */
+    private extractPropertyRules;
     transpileDeclaration(decl: Declaration): void;
     transpileDeclarationPropertyNames(decl: Declaration): void;
     transpileDeclarationValues(decl: Declaration): void;

@@ -65,6 +65,15 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	property: {
+		message: 'supports @property rules in @private rules',
+	},
+	'property:preserve-true': {
+		message: 'supports @property rules in @private rules with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	invalid: {
 		message: 'ignores invalid mixin invocations',
 	},

@@ -1,5 +1,9 @@
 # Changes to PostCSS Custom Functions
 
+### Unreleased (minor)
+
+- Support `@property` rules for local variables, including multi-name prelude lists and the `@property --name <type>: initial-value;` shorthand form
+
 ### 1.0.1
 
 _October 2, 2026_

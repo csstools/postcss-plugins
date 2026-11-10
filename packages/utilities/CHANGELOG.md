@@ -1,5 +1,9 @@
 # Changes to Utilities
 
+### Unreleased (minor)
+
+- Add `expandPropertyRule()` and `registeredPropertyNames()` for parsing `@property` rules.
+
 ### 3.0.0
 
 _January 14, 2026_

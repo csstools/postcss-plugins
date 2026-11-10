@@ -15,14 +15,14 @@ const creator: PluginCreator<pluginOptions> = () => {
 
 			return {
 				postcssPlugin: 'postcss-private-rule',
-				Once(root): void {
+				Once(root, helpers): void {
 					root.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
 						const styleRule = findStyleRule(atRule);
 						if (!styleRule) {
 							return;
 						}
 
-						transpiler.registerAndRemovePrivateRules(atRule, styleRule);
+						transpiler.registerAndRemovePrivateRules(atRule, styleRule, helpers);
 					});
 
 					root.walkDecls((decl) => {
@@ -32,6 +32,11 @@ const creator: PluginCreator<pluginOptions> = () => {
 					root.walkAtRules((atRule) => {
 						transpiler.transpileAtRule(atRule);
 					});
+
+					const registrations = transpiler.getRegisteredPropertyAtRules();
+					if (registrations.length) {
+						root.append(...registrations);
+					}
 				},
 			};
 		}

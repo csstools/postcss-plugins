@@ -1,0 +1,55 @@
+@mixin --registered-private() {
+	@private {
+		@property --size {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 10px;
+		}
+
+		@property --size-a, --size-b {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 11px;
+		}
+
+		@property --size-c <length>: 12px;
+
+		@property --size-d type(<color>#): red, blue;
+
+		@property --size-e <color>: red;
+
+		--size: 20px;
+		--size-a: 30px;
+		--size-b: 40px;
+		--size-c: 40px;
+		--size-d: red, blue;
+		--size-e: blue;
+	}
+
+	@private {
+		@property --initial-size {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 5px;
+		}
+
+		@property --initial-untyped: 6px;
+	}
+
+	width: var(--size);
+	min-width: var(--initial-size);
+	height: var(--size-a);
+	min-height: var(--size-b);
+	max-height: var(--size-c);
+	max-width: var(--size-d);
+	inline-size: var(--size-e);
+	border-width: var(--initial-untyped);
+}
+
+.registered-private-a {
+	@apply --registered-private;
+}
+
+.registered-private-b {
+	@apply --registered-private;
+}

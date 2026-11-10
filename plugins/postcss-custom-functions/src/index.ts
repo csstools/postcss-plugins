@@ -30,8 +30,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			return {
 				postcssPlugin: 'postcss-custom-functions',
-				Once(root, { result }): void {
-					customFunctions = getCustomFunctions(root, result);
+				Once(root, helpers): void {
+					customFunctions = getCustomFunctions(root, helpers.result);
 
 					if (!options.preserve) {
 						removeUnusedCustomFunctions(root, customFunctions);
@@ -40,11 +40,11 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					transpiler.setCustomFunctions(customFunctions);
 				},
 				OnceExit(root): void {
-					for (const registration of transpiler.getRegistrations()) {
+					for (const registration of transpiler.getRegisteredPropertyAtRules()) {
 						root.append(registration);
 					}
 				},
-				Declaration(decl): void {
+				Declaration(decl, helpers): void {
 					if (!HAS_CUSTOM_FUNCTION.test(decl.value)) {
 						return;
 					}
@@ -53,7 +53,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const modified = transpiler.processDeclaration(decl);
+					const modified = transpiler.processDeclaration(decl, helpers);
 					if (modified === null) {
 						return;
 					}

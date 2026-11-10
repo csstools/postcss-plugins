@@ -1,13 +1,18 @@
-import type { AtRule, Declaration, Node, Rule } from 'postcss';
+import type { AtRule, Declaration, Helpers, Node, Rule } from 'postcss';
 import { findAllStyleRules, findPrivateRule } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
+import { expandPropertyRule } from '@csstools/utilities';
 
 const HAS_VAR_OR_IF_FUNCTION_REGEX = /\b(var|if)\(/i;
 const IS_CONTAINER_REGEX = /^container$/i;
 const IS_IF_FUNCTION_REGEX = /^if$/i;
+const IS_LAYER_REGEX = /^layer$/i;
+const IS_PROPERTY_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
+const IS_CONDITIONAL_GROUP_RULE_REGEX = /^(container|media|starting-style|supports)$/i;
+const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 
 export class Transpiler {
 	privateForRule: WeakMap<Rule | AtRule, { prefix: string, privateProperties: Set<string> }> = new Map();
@@ -15,6 +20,19 @@ export class Transpiler {
 	counter = 0;
 
 	hashes = new Map<string, string>();
+
+	/** `@property` registrations generated for private properties. */
+	private registrations: Array<AtRule> = [];
+
+	/**
+	 * Take the `@property` registrations that were generated for private
+	 * properties. These are top level rules and must be appended to the root.
+	 */
+	getRegisteredPropertyAtRules(): Array<AtRule> {
+		const registrations = this.registrations;
+		this.registrations = [];
+		return registrations;
+	}
 
 	getOrFillPrivateForRule(rule: Rule | AtRule): { prefix: string, privateProperties: Set<string> } {
 		const existing = this.privateForRule.get(rule);
@@ -65,12 +83,19 @@ export class Transpiler {
 			.reverse() as Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }>;
 	};
 
-	registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void {
+	registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule, helpers: Helpers): void {
 		if (!atRule.nodes?.length) {
 			return;
 		}
 
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
+
+		this.extractPropertyRules(atRule, prefix, privateProperties, helpers);
+
+		if (!atRule.nodes?.length) {
+			atRule.remove();
+			return;
+		}
 
 		atRule.walk((node) => {
 			if (node.type === 'decl' && node.variable && node.prop.startsWith('--')) {
@@ -92,11 +117,44 @@ export class Transpiler {
 			node.remove();
 		});
 
+		removeEmptyNestingGroupRules(atRule);
+
+		if (!atRule.nodes?.length) {
+			atRule.remove();
+			return;
+		}
+
 		// Insert as a batch: PostCSS resolves the index of `atRule` with
 		// `indexOf` for every single `before()` call, which is quadratic.
 		atRule.before(atRule.nodes.map((node) => node.clone()));
 
 		atRule.remove();
+	}
+
+	/**
+	 * Move `@property` rules to the root with the generated private property
+	 * names, so they provide the registration for the private properties.
+	 */
+	private extractPropertyRules(atRule: AtRule, prefix: string, privateProperties: Set<string>, helpers: Helpers): void {
+		for (const { propertyRule, conditionals } of collectPropertyRules(atRule)) {
+			const registrations = expandPropertyRule(propertyRule, helpers);
+
+			// `@property` rules can not be written in a style rule, so invalid
+			// rules are dropped along with the rest of the private rule.
+			propertyRule.remove();
+
+			if (!registrations) {
+				continue;
+			}
+
+			for (const registration of registrations) {
+				const name = registration.params;
+				privateProperties.add(name);
+
+				registration.params = `${prefix}${name}`;
+				this.registrations.push(...wrapInConditionals([registration], conditionals));
+			}
+		}
 	}
 
 	transpileDeclaration(decl: Declaration): void {
@@ -262,6 +320,66 @@ export class Transpiler {
 		}
 
 		atRule.params = replacement;
+	}
+}
+
+type CollectedPropertyRule = {
+	propertyRule: AtRule,
+	conditionals: Array<AtRule>,
+};
+
+/**
+ * Collect the `@property` rules of a private rule.
+ *
+ * `@property` rules may be nested in the same nesting group rules that are
+ * allowed inside `@private`.
+ */
+function collectPropertyRules(atRule: AtRule, conditionals: Array<AtRule> = [], out: Array<CollectedPropertyRule> = []): Array<CollectedPropertyRule> {
+	for (const node of atRule.nodes || []) {
+		if (node.type !== 'atrule') {
+			continue;
+		}
+
+		if (IS_PROPERTY_REGEX.test(node.name)) {
+			out.push({ propertyRule: node, conditionals });
+			continue;
+		}
+
+		if (IS_NESTING_GROUP_RULE_REGEX.test(node.name)) {
+			collectPropertyRules(node, IS_CONDITIONAL_GROUP_RULE_REGEX.test(node.name) ? [...conditionals, node] : conditionals, out);
+		}
+	}
+
+	return out;
+}
+
+/** Wrap nodes in clones of the conditional group rules that contain them. */
+function wrapInConditionals(nodes: Array<AtRule>, conditionals: Array<AtRule>): Array<AtRule> {
+	let current = nodes;
+
+	for (let i = conditionals.length - 1; i >= 0; i--) {
+		current = [conditionals[i].clone({ nodes: current })];
+	}
+
+	return current;
+}
+
+/** Remove nesting group rules that no longer contain anything. */
+function removeEmptyNestingGroupRules(container: AtRule): void {
+	for (const node of container.nodes || []) {
+		if (node.type !== 'atrule' || !IS_NESTING_GROUP_RULE_REGEX.test(node.name)) {
+			continue;
+		}
+
+		removeEmptyNestingGroupRules(node);
+
+		if (IS_LAYER_REGEX.test(node.name)) {
+			continue;
+		}
+
+		if (!node.nodes?.length) {
+			node.remove();
+		}
 	}
 }
 

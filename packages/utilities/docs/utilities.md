@@ -19,6 +19,30 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[expandPropertyRule(atRule, postcss)](./utilities.expandpropertyrule.md)
+
+
+</td><td>
+
+Expand a single `@property` rule into one longhand `@property` rule per registered property name.
+
+The longhand form accepts a comma separated prelude list:
+
+```css
+@property --a, --b { syntax: "<length>"; }
+```
+The shorthand form describes exactly one property and may contain commas in its initial value:
+
+```css
+@property --a <length>: 1em;
+@property --b type(<color>#): red, blue;
+```
+Returns `null` when the rule is invalid.
+
+
+</td></tr>
+<tr><td>
+
 [hasFallback(node)](./utilities.hasfallback.md)
 
 
@@ -36,6 +60,17 @@ Check if a declaration has a fallback. Returns true if a declaration with the sa
 </td><td>
 
 Check if a node has a `@supports` at-rule ancestor with a given regex in its params.
+
+
+</td></tr>
+<tr><td>
+
+[registeredPropertyNames(atRule)](./utilities.registeredpropertynames.md)
+
+
+</td><td>
+
+The names of every property registered by an `@property` rule.
 
 
 </td></tr>
