@@ -19,30 +19,6 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[expandPropertyRule(atRule, postcss)](./utilities.expandpropertyrule.md)
-
-
-</td><td>
-
-Expand a single `@property` rule into one longhand `@property` rule per registered property name.
-
-The longhand form accepts a comma separated prelude list:
-
-```css
-@property --a, --b { syntax: "<length>"; }
-```
-The shorthand form describes exactly one property and may contain commas in its initial value:
-
-```css
-@property --a <length>: 1em;
-@property --b type(<color>#): red, blue;
-```
-Returns `null` when the rule is invalid.
-
-
-</td></tr>
-<tr><td>
-
 [hasFallback(node)](./utilities.hasfallback.md)
 
 
@@ -71,6 +47,25 @@ Check if a node has a `@supports` at-rule ancestor with a given regex in its par
 </td><td>
 
 The names of every property registered by an `@property` rule.
+
+
+</td></tr>
+<tr><td>
+
+[rewritePropertyNames(atRule, rewrite)](./utilities.rewritepropertynames.md)
+
+
+</td><td>
+
+Rewrite the custom property names in the prelude of an `@property` rule.
+
+Both the longhand comma separated prelude list and the shorthand form are supported:
+
+```css
+@property --a, --b { syntax: "<length>"; }
+@property --a <length>: 1em;
+```
+Returns the original names, or `null` when the rule is invalid.
 
 
 </td></tr>

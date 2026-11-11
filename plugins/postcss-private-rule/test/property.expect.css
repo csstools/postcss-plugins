@@ -36,79 +36,47 @@
 		width: var(--_csstools-p-7q9ama-3--layer-size);
 	}
 }
+
+.escaped {
+		--_csstools-p-7q9ama-4--\66 oo: 20px;
+
+	--_csstools-p-7q9ama-4--\66 oo: 30px;
+
+	width: var(--_csstools-p-7q9ama-4--foo);
+}
+
+.outer-conditional {
+	@media (min-width: 1000px) {
+	}
+		--_csstools-p-7q9ama-5--outer-conditional-size: 14px;
+
+	width: var(--_csstools-p-7q9ama-5--outer-conditional-size);
+}
 		@property --_csstools-p-7q9ama-0--size {
 			syntax: "<length>";
 			inherits: false;
 			initial-value: 10px;
 		}
 
-		@property --_csstools-p-7q9ama-0--size-a {
+		@property --_csstools-p-7q9ama-0--size-a, --_csstools-p-7q9ama-0--size-b {
 			syntax: "<length>";
 			inherits: false;
 			initial-value: 11px;
 		}
 
-		@property --_csstools-p-7q9ama-0--size-b {
-			syntax: "<length>";
-			inherits: false;
-			initial-value: 11px;
+		@property --_csstools-p-7q9ama-0--size-c <length>: 12px;
+
+		@property --_csstools-p-7q9ama-0--colors type(<color>#): red, blue;
+
+		@property --_csstools-p-7q9ama-0--empty <length>:;
+
+		@property --_csstools-p-7q9ama-0--untyped-empty:;
+		@property --_csstools-p-7q9ama-1--untyped: 6px;
+		@media (min-width: 1000px) {
+			@property --_csstools-p-7q9ama-2--conditional-size <length>: 13px;
 		}
-
-		@property --_csstools-p-7q9ama-0--size-c {
-
-		inherits: true;
-
-		syntax: "<length>";
-
-		initial-value: 12px;
-}
-
-		@property --_csstools-p-7q9ama-0--colors {
-
-		inherits: true;
-
-		syntax: "<color>#";
-
-		initial-value: red,blue;
-}
-
-		@property --_csstools-p-7q9ama-0--empty {
-
-		inherits: true;
-
-		syntax: "<length>";
-
-		initial-value: ;
-}
-
-		@property --_csstools-p-7q9ama-0--untyped-empty {
-
-		inherits: true;
-
-		syntax: "*";
-
-		initial-value: ;
-}
-
-		@property --_csstools-p-7q9ama-1--untyped {
-
-		inherits: true;
-
-		syntax: "*";
-
-		initial-value: 6px;
-}
-		@media (min-width: 1000px) {@property --_csstools-p-7q9ama-2--conditional-size {
-    inherits: true;
-    syntax: "<length>";
-    initial-value: 13px
-}
-		}
-		@property --_csstools-p-7q9ama-3--layer-size {
-
-		inherits: true;
-
-		syntax: "<length>";
-
-		initial-value: 10px;
-}
+				@property --_csstools-p-7q9ama-3--layer-size <length>: 10px;
+		@property --_csstools-p-7q9ama-4--foo <length>: 10px;
+	@media (min-width: 1000px) {
+			@property --_csstools-p-7q9ama-5--outer-conditional-size <length>: 13px
+	}

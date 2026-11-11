@@ -1,8 +1,8 @@
-import type { AtRule, Declaration, Helpers, Node, Rule } from 'postcss';
+import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } from 'postcss';
 import { findAllStyleRules, findPrivateRule } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
-import { expandPropertyRule } from '@csstools/utilities';
+import { rewritePropertyNames } from '@csstools/utilities';
 
 const HAS_VAR_OR_IF_FUNCTION_REGEX = /\b(var|if)\(/i;
 const IS_CONTAINER_REGEX = /^container$/i;
@@ -83,14 +83,14 @@ export class Transpiler {
 			.reverse() as Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }>;
 	};
 
-	registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule, helpers: Helpers): void {
+	registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void {
 		if (!atRule.nodes?.length) {
 			return;
 		}
 
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
 
-		this.extractPropertyRules(atRule, prefix, privateProperties, helpers);
+		this.extractPropertyRules(atRule, prefix, privateProperties, collectConditionalAncestors(atRule, ownerNode));
 
 		if (!atRule.nodes?.length) {
 			atRule.remove();
@@ -99,7 +99,10 @@ export class Transpiler {
 
 		atRule.walk((node) => {
 			if (node.type === 'decl' && node.variable && node.prop.startsWith('--')) {
-				privateProperties.add(node.prop);
+				const name = unescapedPropertyName(node.prop);
+				if (name !== null) {
+					privateProperties.add(name);
+				}
 
 				node.prop = `${prefix}${node.prop}`;
 
@@ -135,25 +138,23 @@ export class Transpiler {
 	 * Move `@property` rules to the root with the generated private property
 	 * names, so they provide the registration for the private properties.
 	 */
-	private extractPropertyRules(atRule: AtRule, prefix: string, privateProperties: Set<string>, helpers: Helpers): void {
+	private extractPropertyRules(atRule: AtRule, prefix: string, privateProperties: Set<string>, ancestorConditionals: Array<AtRule>): void {
 		for (const { propertyRule, conditionals } of collectPropertyRules(atRule)) {
-			const registrations = expandPropertyRule(propertyRule, helpers);
-
 			// `@property` rules can not be written in a style rule, so invalid
 			// rules are dropped along with the rest of the private rule.
 			propertyRule.remove();
 
-			if (!registrations) {
+			const registration = propertyRule.clone();
+			const names = rewritePropertyNames(registration, (name) => `${prefix}${name}`);
+			if (!names) {
 				continue;
 			}
 
-			for (const registration of registrations) {
-				const name = registration.params;
+			for (const name of names) {
 				privateProperties.add(name);
-
-				registration.params = `${prefix}${name}`;
-				this.registrations.push(...wrapInConditionals([registration], conditionals));
 			}
+
+			this.registrations.push(...wrapInConditionals([registration], [...ancestorConditionals, ...conditionals]));
 		}
 	}
 
@@ -165,6 +166,9 @@ export class Transpiler {
 	transpileDeclarationPropertyNames(decl: Declaration): void {
 		if (!decl.variable || !decl.prop.startsWith('--')) return;
 
+		const propertyName = unescapedPropertyName(decl.prop);
+		if (propertyName === null) return;
+
 		const styleRulesWithPrivateProperties = this.getStyleRulesWithPrivateProperties(decl);
 
 		if (!styleRulesWithPrivateProperties.length) return;
@@ -172,7 +176,7 @@ export class Transpiler {
 		let foundPrefix: string | false = false;
 
 		for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
-			if (privateProperties.has(decl.prop)) {
+			if (privateProperties.has(propertyName)) {
 				foundPrefix = prefix;
 				break;
 			}
@@ -417,4 +421,30 @@ function sourceKey(from: string): string {
 	}
 
 	return segments.slice(-2).join('/');
+}
+
+/** Conditional group rules between a private rule and its owning style rule. */
+function collectConditionalAncestors(atRule: AtRule, ownerNode: Node): Array<AtRule> {
+	const conditionals: Array<AtRule> = [];
+	let parent: Container<ChildNode> | Document | undefined = atRule.parent;
+
+	while (parent && parent !== ownerNode) {
+		if (parent.type === 'atrule' && IS_CONDITIONAL_GROUP_RULE_REGEX.test((parent as AtRule).name)) {
+			conditionals.push(parent as AtRule);
+		}
+
+		parent = parent.parent;
+	}
+
+	return conditionals.reverse();
+}
+
+/** The unescaped name of a custom property token. */
+function unescapedPropertyName(property: string): string | null {
+	const token = tokenize({ css: property })[0];
+	if (!token || !isTokenIdent(token)) {
+		return null;
+	}
+
+	return token[4].value;
 }

@@ -77,6 +77,13 @@
 .registered-conditional {
 	width: var(--_csstools-cf-7q9ama-m-result);
 }
+
+.registered-escaped {
+
+	--_csstools-cf-7q9ama-p-local-foo: 20px;
+	--_csstools-cf-7q9ama-o-result: var(--_csstools-cf-7q9ama-p-local-foo);
+	width: var(--_csstools-cf-7q9ama-o-result);
+}
 	@property --_csstools-cf-7q9ama-1-local-size {
 		syntax: "<length>";
 		inherits: false;
@@ -97,67 +104,18 @@
 		inherits: false;
 		initial-value: 15px;
 	}
-	@property --_csstools-cf-7q9ama-9-local-size-a {
+	@property --_csstools-cf-7q9ama-9-local-size-a, --_csstools-cf-7q9ama-9-local-size-b {
 		syntax: "<length>";
 		inherits: false;
 		initial-value: 10px;
 	}
-	@property --_csstools-cf-7q9ama-9-local-size-b {
-		syntax: "<length>";
-		inherits: false;
-		initial-value: 10px;
+	@property --_csstools-cf-7q9ama-b-local-size <length>: 10px;
+	@property --_csstools-cf-7q9ama-d-local-colors type(<color>#): red, blue;
+	@property --_csstools-cf-7q9ama-f-local-size <length>:;
+	@property --_csstools-cf-7q9ama-f-local-untyped-empty:;
+	@property --_csstools-cf-7q9ama-h-local-size <length>: 5px;
+	@property --_csstools-cf-7q9ama-j-local-size type(<length> | <percentage>): 10px;
+	@media (min-width: 1000px) {
+		@property --_csstools-cf-7q9ama-n-local-size <length>: 10px;
 	}
-	@property --_csstools-cf-7q9ama-b-local-size {
-
-	inherits: true;
-
-	syntax: "<length>";
-
-	initial-value: 10px;
-}
-	@property --_csstools-cf-7q9ama-d-local-colors {
-
-	inherits: true;
-
-	syntax: "<color>#";
-
-	initial-value: red,blue;
-}
-	@property --_csstools-cf-7q9ama-f-local-size {
-
-	inherits: true;
-
-	syntax: "<length>";
-
-	initial-value: ;
-}
-	@property --_csstools-cf-7q9ama-f-local-untyped-empty {
-
-	inherits: true;
-
-	syntax: "*";
-
-	initial-value: ;
-}
-	@property --_csstools-cf-7q9ama-h-local-size {
-
-	inherits: true;
-
-	syntax: "<length>";
-
-	initial-value: 5px;
-}
-	@property --_csstools-cf-7q9ama-j-local-size {
-
-	inherits: true;
-
-	syntax: "<length> | <percentage>";
-
-	initial-value: 10px;
-}
-	@media (min-width: 1000px) {@property --_csstools-cf-7q9ama-n-local-size {
-    inherits: true;
-    syntax: "<length>";
-    initial-value: 10px
-}
-	}
+	@property --_csstools-cf-7q9ama-p-local-foo <length>: 10px

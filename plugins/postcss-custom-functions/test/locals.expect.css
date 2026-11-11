@@ -24,6 +24,6 @@
 
 @property --_csstools-cf-p7npk3-1-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 10px;
 }

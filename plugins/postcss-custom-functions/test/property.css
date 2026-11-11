@@ -134,3 +134,14 @@
 .registered-conditional {
 	width: --registered-conditional();
 }
+
+@function --registered-escaped() {
+	@property --\66 oo <length>: 10px;
+
+	--\66 oo: 20px;
+	result: var(--\66 oo);
+}
+
+.registered-escaped {
+	width: --registered-escaped();
+}

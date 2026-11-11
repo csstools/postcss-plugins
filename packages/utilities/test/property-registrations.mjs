@@ -1,9 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert';
 import postcss from 'postcss';
-import { expandPropertyRule, registeredPropertyNames } from '@csstools/utilities';
-
-const helpers = { ...postcss, postcss, result: {} };
+import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utilities';
 
 function propertyRule(css) {
 	const root = postcss.parse(css);
@@ -11,54 +9,47 @@ function propertyRule(css) {
 	return root.first;
 }
 
-function descriptor(rule, prop) {
-	return rule.nodes.find((node) => node.type === 'decl' && node.prop === prop);
-}
-
-test('expandPropertyRule', async (t) => {
-	await t.test('longhand with multiple names', () => {
+test('rewritePropertyNames', async (t) => {
+	await t.test('rewrites every name in a longhand prelude list', () => {
 		const rule = propertyRule('@property --a, --b { syntax: "<length>"; }');
-		const expanded = expandPropertyRule(rule, helpers);
+		const names = rewritePropertyNames(rule, (name) => `--x${name.slice(2)}`);
 
-		assert.equal(expanded.length, 2);
-		assert.equal(expanded[0].params, '--a');
-		assert.equal(expanded[1].params, '--b');
-		assert.deepEqual(registeredPropertyNames(rule), ['--a', '--b']);
+		assert.deepEqual(names, ['--a', '--b']);
+		assert.equal(rule.params, '--xa, --xb');
+		assert.deepEqual(registeredPropertyNames(rule), ['--xa', '--xb']);
 	});
 
-	await t.test('shorthand with commas in the initial value', () => {
+	await t.test('rewrites the shorthand name and keeps the rest of the prelude', () => {
 		const rule = propertyRule('@property --colors type(<color>#): red, blue;');
-		const expanded = expandPropertyRule(rule, helpers);
+		const names = rewritePropertyNames(rule, (name) => `--x${name.slice(2)}`);
 
-		assert.equal(expanded.length, 1);
-		assert.equal(expanded[0].params, '--colors');
-		assert.equal(descriptor(expanded[0], 'syntax').value, '"<color>#"');
-		assert.equal(descriptor(expanded[0], 'initial-value').value, 'red,blue');
-		assert.deepEqual(registeredPropertyNames(rule), ['--colors']);
+		assert.deepEqual(names, ['--colors']);
+		assert.equal(rule.params, '--xcolors type(<color>#): red, blue');
 	});
 
-	await t.test('shorthand with an empty initial value', () => {
-		const rule = propertyRule('@property --size <length>:;');
-		const expanded = expandPropertyRule(rule, helpers);
+	await t.test('rewrites only the first name of a shorthand prelude', () => {
+		const rule = propertyRule('@property --value: a, b;');
+		rewritePropertyNames(rule, (name) => `--x${name.slice(2)}`);
 
-		assert.equal(expanded.length, 1);
-		assert.equal(descriptor(expanded[0], 'syntax').value, '"<length>"');
-		assert.equal(descriptor(expanded[0], 'initial-value').value, '');
+		assert.equal(rule.params, '--xvalue: a, b');
 	});
 
-	await t.test('shorthand without an initial value', () => {
-		const rule = propertyRule('@property --size <length>;');
-		const expanded = expandPropertyRule(rule, helpers);
+	await t.test('preserves escapes in a longhand property name', () => {
+		const rule = propertyRule(String.raw`@property --x\7b { syntax: "*"; }`);
+		const names = rewritePropertyNames(rule, (name) => `--p${name.slice(2)}`);
 
-		assert.equal(expanded.length, 1);
-		assert.equal(descriptor(expanded[0], 'syntax').value, '"<length>"');
-		assert.equal(descriptor(expanded[0], 'initial-value'), undefined);
+		assert.deepEqual(names, ['--x{']);
+
+		// The rewritten name must not terminate the prelude early.
+		const reparsed = postcss.parse(rule.toString());
+		assert.equal(reparsed.nodes.length, 1);
+		assert.equal(reparsed.first.type, 'atrule');
+		assert.deepEqual(registeredPropertyNames(reparsed.first), ['--px{']);
 	});
 
-	await t.test('rejects the reserved -- name', () => {
-		const rule = propertyRule('@property -- <length>: 1em;');
-
-		assert.equal(expandPropertyRule(rule, helpers), null);
-		assert.deepEqual(registeredPropertyNames(rule), []);
+	await t.test('rejects invalid preludes', () => {
+		assert.equal(rewritePropertyNames(propertyRule('@property -- <length>: 1em;'), (name) => name), null);
+		assert.equal(rewritePropertyNames(propertyRule('@property --a --b { syntax: "*"; }'), (name) => name), null);
+		assert.equal(rewritePropertyNames(propertyRule('@property { syntax: "*"; }'), (name) => name), null);
 	});
 });

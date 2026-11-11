@@ -42,30 +42,30 @@
 
 @property --_csstools-cf-15up11z-1-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 10px;
 }
 
 @property --_csstools-cf-15up11z-3-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 10px;
 }
 
 @property --_csstools-cf-15up11z-5-arg-0 {
 	syntax: "<color>";
-	inherits: false;
+	inherits: true;
 	initial-value: red;
 }
 
 @property --_csstools-cf-15up11z-7-arg-1 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 2px;
 }
 
 @property --_csstools-cf-15up11z-7-arg-2 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 3px;
 }

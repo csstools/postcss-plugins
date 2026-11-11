@@ -70,3 +70,28 @@
 		width: var(--layer-size);
 	}
 }
+
+.escaped {
+	@private {
+		@property --\66 oo <length>: 10px;
+		--\66 oo: 20px;
+	}
+
+	--\66 oo: 30px;
+
+	width: var(--\66 oo);
+}
+
+.outer-conditional {
+	@media (min-width: 1000px) {
+		@private {
+			@property --outer-conditional-size <length>: 13px;
+		}
+	}
+
+	@private {
+		--outer-conditional-size: 14px;
+	}
+
+	width: var(--outer-conditional-size);
+}

@@ -2,7 +2,7 @@
 
 ### Unreleased (minor)
 
-- Support `@property` rules for local variables, including multi-name prelude lists and the `@property --name <type>: initial-value;` shorthand form
+- Support `@property` rules for local variables, including multi-name prelude lists and the shorthand form.
 
 ### 1.0.1
 

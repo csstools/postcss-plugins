@@ -2,7 +2,7 @@
 
 ### Unreleased (minor)
 
-- Add `expandPropertyRule()` and `registeredPropertyNames()` for parsing `@property` rules.
+- Add `rewritePropertyNames()` and `registeredPropertyNames()` for parsing `@property` rules.
 
 ### 3.0.0
 

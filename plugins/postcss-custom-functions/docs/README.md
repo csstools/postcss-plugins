@@ -28,7 +28,7 @@ Unsupported:
 - `@function` definitions inside `@container` or `@scope`
 - `@function` definitions inside a `@layer` that is itself inside a conditional group rule
 - `@function` definitions inside a style rule
-- definitions whose body contains anything other than declarations and conditional group rules
+- definitions whose body contains anything other than declarations, `@property` rules and conditional group rules
 - `result` descriptors that resolve to a CSS-wide keyword through a conditional rule or a `var()` fallback
 - validation that a typed default value matches its parameter type
 

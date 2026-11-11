@@ -1,3 +1,3 @@
 export { hasFallback } from './has-fallback-decl';
 export { hasSupportsAtRuleAncestor } from './has-supports-at-rule-ancestor';
-export { expandPropertyRule, registeredPropertyNames } from './property-registrations';
+export { registeredPropertyNames, rewritePropertyNames } from './property-registrations';

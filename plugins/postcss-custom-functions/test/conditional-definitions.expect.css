@@ -43,3 +43,42 @@
 .layered-media {
 	width: var(--_csstools-cf-154dd4k-6-result);
 }
+
+@media (width >= 50px) {
+
+.registered {
+		--_csstools-cf-154dd4k-9-result: var(--_csstools-cf-154dd4k-a-local-size);
+}
+}
+
+.registered {
+	width: var(--_csstools-cf-154dd4k-9-result);
+}
+
+@supports (width: 100px) {
+
+.typed {--_csstools-cf-154dd4k-c-arg-0: 10px;
+}
+}
+
+@supports (width: 100px) {
+
+.typed {
+		--_csstools-cf-154dd4k-b-result: var(--_csstools-cf-154dd4k-c-arg-0);
+}
+}
+
+.typed {
+	width: var(--_csstools-cf-154dd4k-b-result);
+}
+
+@media (width >= 50px) {
+		@property --_csstools-cf-154dd4k-a-local-size <length>: 10px
+}
+
+@supports (width: 100px) {@property --_csstools-cf-154dd4k-c-arg-0 {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 5px
+}
+}

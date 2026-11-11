@@ -18,7 +18,7 @@ import type { FunctionParameter } from '@csstools/custom-function-parser';
 import { parameterType } from './classify';
 import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
-import { expandPropertyRule, registeredPropertyNames } from '@csstools/utilities';
+import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utilities';
 
 // Custom functions can call each other and duplicate their bodies, which can
 // grow exponentially. Bound the total number of declarations generated while
@@ -303,19 +303,19 @@ export class CustomFunctionTranspiler {
 
 				this.spendBudget();
 
-				this.registrations.push(new helpers.AtRule({
+				this.registrations.push(...wrapRegistrationsInConditionals([helpers.atRule({
 					name: 'property',
 					params: this.argName(definitionId, i),
 					nodes: [
-						new helpers.Declaration({ prop: 'syntax', value: `"${type}"`, source: element.source }),
-						new helpers.Declaration({ prop: 'inherits', value: 'false', source: element.source }),
-						new helpers.Declaration({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source }),
+						helpers.decl({ prop: 'syntax', value: `"${type}"`, source: element.source }),
+						helpers.decl({ prop: 'inherits', value: 'true', source: element.source }),
+						helpers.decl({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source }),
 					],
 					source: element.source,
-				}));
+				})], definition.conditionals));
 			}
 
-			this.emitLocalRegistrations(definition.node, definitionId, helpers);
+			this.emitLocalRegistrations(definition.node, definition.conditionals, definitionId);
 
 			if (inline) {
 				this.emitBodyInline(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName, inlineDecls, helpers);
@@ -332,19 +332,15 @@ export class CustomFunctionTranspiler {
 	}
 
 	/** Moves local `@property` rules to the root with their generated local names. */
-	private emitLocalRegistrations(definition: AtRule, definitionId: string, helpers: Helpers): void {
+	private emitLocalRegistrations(definition: AtRule, ancestorConditionals: Array<AtRule>, definitionId: string): void {
 		for (const { propertyRule, conditionals } of collectPropertyRules(definition)) {
-			const registrations = expandPropertyRule(propertyRule, helpers);
-			if (!registrations) {
+			const registration = propertyRule.clone();
+			if (!rewritePropertyNames(registration, (name) => this.localName(definitionId, name))) {
 				continue;
 			}
 
-			for (const registration of registrations) {
-				this.spendBudget();
-
-				registration.params = this.localName(definitionId, registration.params);
-				this.registrations.push(...wrapRegistrationsInConditionals([registration], conditionals));
-			}
+			this.spendBudget(countNodes(registration));
+			this.registrations.push(...wrapRegistrationsInConditionals([registration], [...ancestorConditionals, ...conditionals]));
 		}
 	}
 
@@ -365,13 +361,13 @@ export class CustomFunctionTranspiler {
 				// The registration provides the default value for missing
 				// arguments and for arguments that fail the type check.
 				if (hasArgument) {
-					out.push(new helpers.Declaration({
+					out.push(helpers.decl({
 						prop: this.argName(definitionId, i),
 						value: evaluatedArgs[i],
 						source: element.source,
 					}));
 				} else if (defaultValue) {
-					out.push(new helpers.Declaration({
+					out.push(helpers.decl({
 						prop: this.argName(definitionId, i),
 						value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers),
 						source: element.source,
@@ -385,14 +381,14 @@ export class CustomFunctionTranspiler {
 			// and invalid arguments resolve to the default value.
 			if (defaultValue) {
 				if (hasArgument) {
-					out.push(new helpers.Declaration({
+					out.push(helpers.decl({
 						prop: this.rawName(definitionId, i),
 						value: evaluatedArgs[i],
 						source: element.source,
 					}));
 				}
 
-				out.push(new helpers.Declaration({
+				out.push(helpers.decl({
 					prop: this.argName(definitionId, i),
 					value: `var(${this.rawName(definitionId, i)}, ${this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers)})`,
 					source: element.source,
@@ -402,7 +398,7 @@ export class CustomFunctionTranspiler {
 			}
 
 			if (hasArgument) {
-				out.push(new helpers.Declaration({
+				out.push(helpers.decl({
 					prop: this.argName(definitionId, i),
 					value: evaluatedArgs[i],
 					source: element.source,
@@ -510,19 +506,23 @@ export class CustomFunctionTranspiler {
 
 	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string, inlineDecls: Array<Declaration>, helpers: Helpers): Declaration | null {
 		let prop: string;
+		let declaredProp: string | null = null;
 
 		if (decl.prop.toLowerCase() === 'result') {
 			prop = resultName;
-		} else if (decl.prop.startsWith('--')) {
-			const mapped = scope.get(decl.prop);
+		} else {
+			declaredProp = unescapedPropertyName(decl.prop);
+			if (declaredProp === null || !declaredProp.startsWith('--')) {
+				// Unknown descriptors are invalid and ignored.
+				return null;
+			}
+
+			const mapped = scope.get(declaredProp);
 			if (!mapped) {
 				return null;
 			}
 
 			prop = mapped;
-		} else {
-			// Unknown descriptors are invalid and ignored.
-			return null;
 		}
 
 		// CSS-wide keywords on custom properties resolve against the property
@@ -530,8 +530,8 @@ export class CustomFunctionTranspiler {
 		// This runs after the regular rewriting so that the inserted call-site
 		// references are not rewritten to the local scope.
 		let value = this.rewriteValue(decl.value, element, scope, inlineDecls, helpers);
-		if (decl.prop.startsWith('--')) {
-			value = this.resolveBodyKeywords(value, decl.prop, scope, parameterArgs);
+		if (declaredProp !== null) {
+			value = this.resolveBodyKeywords(value, declaredProp, scope, parameterArgs);
 		}
 
 		this.spendBudget();
@@ -686,7 +686,7 @@ export class CustomFunctionTranspiler {
 	private invalidResultDeclaration(resultName: string, element: Rule, helpers: Helpers): Declaration {
 		this.spendBudget();
 
-		return new helpers.Declaration({
+		return helpers.decl({
 			prop: resultName,
 			value: `var(${INVALID_IDENT})`,
 			source: element.source,
@@ -718,6 +718,18 @@ export class CustomFunctionTranspiler {
 	private resultName(id: string): string {
 		return this.names.resultName(id);
 	}
+}
+
+function countNodes(node: ChildNode): number {
+	let count = 1;
+
+	if (node.type === 'rule' || node.type === 'atrule') {
+		for (const child of node.nodes || []) {
+			count += countNodes(child);
+		}
+	}
+
+	return count;
 }
 
 /** Wrap registrations in clones of the conditional group rules around them. */
@@ -844,6 +856,16 @@ function hasConditionalBody(atRule: AtRule): boolean {
 	return found;
 }
 
+/** The unescaped name of a custom property token. */
+function unescapedPropertyName(property: string): string | null {
+	const token = tokenize({ css: property })[0];
+	if (!token || !isTokenIdent(token)) {
+		return null;
+	}
+
+	return token[4].value;
+}
+
 /**
  * Collect every local custom property declared anywhere in a function body.
  */
@@ -851,8 +873,9 @@ function collectLocalNames(atRule: AtRule): Set<string> {
 	const names = new Set<string>();
 
 	atRule.walkDecls((decl) => {
-		if (decl.prop.startsWith('--')) {
-			names.add(decl.prop);
+		const name = unescapedPropertyName(decl.prop);
+		if (name !== null && name.startsWith('--')) {
+			names.add(name);
 		}
 	});
 
