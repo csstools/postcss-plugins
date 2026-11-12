@@ -1,0 +1,14 @@
+@function --outer-inherit() {
+	--x: PASS;
+	result: --inner-inherit();
+}
+
+@function --inner-inherit() {
+	--x: FAIL;
+	result: inherit(--x);
+}
+
+.outer-inherit {
+	--x: FAIL2;
+	--actual: --outer-inherit();
+}

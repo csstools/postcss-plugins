@@ -29,6 +29,9 @@ Unsupported:
 - `@function` definitions inside a `@layer` that is itself inside a conditional group rule
 - `@function` definitions inside a style rule
 - definitions whose body contains anything other than declarations, `@property` rules and conditional group rules
+- `@property` rules nested in `@container` or `@starting-style` inside function bodies
+- typed parameters in `font-size`, `font` or `line-height` when arguments contain font-relative units or run-time values
+- arguments that contain `!important`
 - `result` descriptors that resolve to a CSS-wide keyword through a conditional rule or a `var()` fallback
 - validation that a typed default value matches its parameter type
 

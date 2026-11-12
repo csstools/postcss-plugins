@@ -7,8 +7,7 @@
 
 .keyword-inherit-var-fallback {
 	--x: 30px;
-	--_csstools-cf-39mkph-3-raw-0: var(--unknown,var(--x));
-	--_csstools-cf-39mkph-3-arg-0: var(--_csstools-cf-39mkph-3-raw-0, FAIL);
+	--_csstools-cf-39mkph-3-arg-0: var(--unknown,var(--x));
 	--_csstools-cf-39mkph-2-result: var(--_csstools-cf-39mkph-3-arg-0, PASS);
 	--actual: var(--_csstools-cf-39mkph-2-result);
 }
@@ -60,10 +59,27 @@
 
 .keyword-var-fallback-set {
 	--known: 30px;
-	--_csstools-cf-39mkph-l-raw-0: var(--known,var(--_csstools-cf-invalid));
-	--_csstools-cf-39mkph-l-arg-0: var(--_csstools-cf-39mkph-l-raw-0, FAIL);
+	--_csstools-cf-39mkph-l-arg-0: var(--known,var(--_csstools-cf-invalid));
 	--_csstools-cf-39mkph-k-result: var(--_csstools-cf-39mkph-l-arg-0, PASS);
 	--actual: var(--_csstools-cf-39mkph-k-result);
+}
+
+.keyword-initial-var-fallback {
+	--_csstools-cf-39mkph-n-arg-0: var(--unknown,var(--_csstools-cf-invalid));
+	--_csstools-cf-39mkph-m-result: var(--_csstools-cf-39mkph-n-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-m-result);
+}
+
+.keyword-inherit-var-fallback-missing {
+	--_csstools-cf-39mkph-p-arg-0: var(--unknown,var(--x));
+	--_csstools-cf-39mkph-o-result: var(--_csstools-cf-39mkph-p-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-o-result);
+}
+
+.typed-keyword-initial-var-fallback {
+	--_csstools-cf-39mkph-r-arg-0: var(--unknown,var(--_csstools-cf-invalid));
+	--_csstools-cf-39mkph-q-result: var(--_csstools-cf-39mkph-r-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-q-result);
 }
 
 @property --_csstools-cf-39mkph-h-arg-0 {
@@ -72,6 +88,11 @@
 }
 
 @property --_csstools-cf-39mkph-j-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+}
+
+@property --_csstools-cf-39mkph-r-arg-0 {
 	syntax: "<length>";
 	inherits: true;
 }

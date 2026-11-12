@@ -1,0 +1,36 @@
+@function --local-if() {
+	--x: 3px;
+	result: if(style(--x: 3px): PASS; else: FAIL);
+}
+
+.local-if {
+	--actual: --local-if();
+}
+
+@function --argument-if(--x) {
+	result: if(style(--x: 3px): PASS; else: FAIL);
+}
+
+.argument-if {
+	--actual: --argument-if(3px);
+}
+
+@function --later-condition-if() {
+	--x: 3px;
+	result: if(media(width > 1px): FAIL; style(--x: 3px): PASS; else: FAIL);
+}
+
+.later-condition-if {
+	--actual: --later-condition-if();
+}
+
+@function --local-if-value() {
+	--x: PASS;
+	result: if(style(--true): var(--x); else: FAIL);
+}
+
+.local-if-value {
+	--true: true;
+	--x: FAIL;
+	--actual: --local-if-value();
+}

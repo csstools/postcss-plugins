@@ -1,4 +1,5 @@
 import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } from 'postcss';
+import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import { findAllStyleRules, findPrivateRule } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
@@ -6,13 +7,13 @@ import { rewritePropertyNames } from '@csstools/utilities';
 
 const HAS_VAR_OR_IF_FUNCTION_REGEX = /\b(var|if)\(/i;
 const IS_CONTAINER_REGEX = /^container$/i;
-const IS_IF_FUNCTION_REGEX = /^if$/i;
 const IS_LAYER_REGEX = /^layer$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
 const IS_CONDITIONAL_GROUP_RULE_REGEX = /^(container|media|starting-style|supports)$/i;
 const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+const IS_NON_HOISTABLE_CONDITIONAL_REGEX = /^(container|starting-style)$/i;
 
 export class Transpiler {
 	privateForRule: WeakMap<Rule | AtRule, { prefix: string, privateProperties: Set<string> }> = new Map();
@@ -89,8 +90,17 @@ export class Transpiler {
 		}
 
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
+		const ancestorConditionals = collectConditionalAncestors(atRule, ownerNode);
+		const propertyRules = collectPropertyRules(atRule);
 
-		this.extractPropertyRules(atRule, prefix, privateProperties, collectConditionalAncestors(atRule, ownerNode));
+		if (propertyRules.length && (
+			ancestorConditionals.some(isNonHoistableConditional) ||
+			propertyRules.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))
+		)) {
+			return;
+		}
+
+		this.extractPropertyRules(propertyRules, prefix, privateProperties, ancestorConditionals);
 
 		if (!atRule.nodes?.length) {
 			atRule.remove();
@@ -138,8 +148,8 @@ export class Transpiler {
 	 * Move `@property` rules to the root with the generated private property
 	 * names, so they provide the registration for the private properties.
 	 */
-	private extractPropertyRules(atRule: AtRule, prefix: string, privateProperties: Set<string>, ancestorConditionals: Array<AtRule>): void {
-		for (const { propertyRule, conditionals } of collectPropertyRules(atRule)) {
+	private extractPropertyRules(propertyRules: Array<CollectedPropertyRule>, prefix: string, privateProperties: Set<string>, ancestorConditionals: Array<AtRule>): void {
+		for (const { propertyRule, conditionals } of propertyRules) {
 			// `@property` rules can not be written in a style rule, so invalid
 			// rules are dropped along with the rest of the private rule.
 			propertyRule.remove();
@@ -233,39 +243,8 @@ export class Transpiler {
 				return;
 			}
 
-			if (IS_IF_FUNCTION_REGEX.test(entry.node.getName())) {
-				const args = entry.node.value;
-				for (let i = 0; i < args.length; i++) {
-					const arg = args[i];
-
-					if (isWhiteSpaceOrCommentNode(arg)) continue;
-
-					if (!isFunctionNode(arg) || !IS_STYLE_FUNCTION_REGEX.test(arg.getName())) break;
-
-					const childArgs = arg.value;
-					for (let j = 0; j < childArgs.length; j++) {
-						const childArg = childArgs[j];
-
-						if (isWhiteSpaceOrCommentNode(childArg)) continue;
-
-						if (!isTokenNode(childArg) || !isTokenIdent(childArg.value) || !childArg.value[4].value.startsWith('--')) break;
-
-						const propertyName = childArg.value[4].value;
-						let foundPrefix: string | false = false;
-
-						for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
-							if (privateProperties.has(propertyName)) {
-								foundPrefix = prefix;
-								break;
-							}
-						}
-
-						if (!foundPrefix) return;
-
-						mutateIdent(childArg.value, `${foundPrefix}${childArg.value[4].value}`);
-						break;
-					}
-				}
+			if (IS_STYLE_FUNCTION_REGEX.test(entry.node.getName())) {
+				this.rewritePrivatePropertyName(entry.node, styleRulesWithPrivateProperties);
 			}
 		});
 
@@ -293,29 +272,7 @@ export class Transpiler {
 
 			if (!IS_STYLE_FUNCTION_REGEX.test(entry.node.getName())) return;
 
-			const args = entry.node.value;
-			for (let i = 0; i < args.length; i++) {
-				const arg = args[i];
-
-				if (isWhiteSpaceOrCommentNode(arg)) continue;
-
-				if (!isTokenNode(arg) || !isTokenIdent(arg.value) || !arg.value[4].value.startsWith('--')) break;
-
-				const propertyName = arg.value[4].value;
-				let foundPrefix: string | false = false;
-
-				for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
-					if (privateProperties.has(propertyName)) {
-						foundPrefix = prefix;
-						break;
-					}
-				}
-
-				if (!foundPrefix) break;
-
-				mutateIdent(arg.value, `${foundPrefix}${arg.value[4].value}`);
-				break;
-			}
+			this.rewritePrivatePropertyName(entry.node, styleRulesWithPrivateProperties);
 		});
 
 		const replacement = stringify([componentValues]);
@@ -324,6 +281,31 @@ export class Transpiler {
 		}
 
 		atRule.params = replacement;
+	}
+
+	private rewritePrivatePropertyName(node: FunctionNode, styleRulesWithPrivateProperties: Array<{ prefix: string, privateProperties: Set<string> }>): void {
+		for (let i = 0; i < node.value.length; i++) {
+			const arg = node.value[i];
+
+			if (isWhiteSpaceOrCommentNode(arg)) continue;
+
+			if (!isTokenNode(arg) || !isTokenIdent(arg.value) || !arg.value[4].value.startsWith('--')) return;
+
+			const propertyName = arg.value[4].value;
+			let foundPrefix: string | false = false;
+
+			for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
+				if (privateProperties.has(propertyName)) {
+					foundPrefix = prefix;
+					break;
+				}
+			}
+
+			if (!foundPrefix) return;
+
+			mutateIdent(arg.value, `${foundPrefix}${arg.value[4].value}`);
+			return;
+		}
 	}
 }
 
@@ -437,6 +419,10 @@ function collectConditionalAncestors(atRule: AtRule, ownerNode: Node): Array<AtR
 	}
 
 	return conditionals.reverse();
+}
+
+function isNonHoistableConditional(atRule: AtRule): boolean {
+	return IS_NON_HOISTABLE_CONDITIONAL_REGEX.test(atRule.name);
 }
 
 /** The unescaped name of a custom property token. */

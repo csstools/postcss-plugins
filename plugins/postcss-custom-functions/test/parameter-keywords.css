@@ -54,3 +54,15 @@
 	--known: 30px;
 	--actual: --keyword-argument(var(--known, initial));
 }
+
+.keyword-initial-var-fallback {
+	--actual: --keyword-argument(var(--unknown, initial));
+}
+
+.keyword-inherit-var-fallback-missing {
+	--actual: --keyword-argument(var(--unknown, inherit));
+}
+
+.typed-keyword-initial-var-fallback {
+	--actual: --typed-keyword-argument(var(--unknown, initial));
+}

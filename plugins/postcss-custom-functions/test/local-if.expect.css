@@ -1,0 +1,25 @@
+.local-if {
+	--_csstools-cf-5fpdqm-1-local-x: 3px;
+	--_csstools-cf-5fpdqm-0-result: if(style(--_csstools-cf-5fpdqm-1-local-x: 3px): PASS; else: FAIL);
+	--actual: var(--_csstools-cf-5fpdqm-0-result);
+}
+
+.argument-if {
+	--_csstools-cf-5fpdqm-3-arg-0: 3px;
+	--_csstools-cf-5fpdqm-2-result: if(style(--_csstools-cf-5fpdqm-3-arg-0: 3px): PASS; else: FAIL);
+	--actual: var(--_csstools-cf-5fpdqm-2-result);
+}
+
+.later-condition-if {
+	--_csstools-cf-5fpdqm-5-local-x: 3px;
+	--_csstools-cf-5fpdqm-4-result: if(media(width > 1px): FAIL; style(--_csstools-cf-5fpdqm-5-local-x: 3px): PASS; else: FAIL);
+	--actual: var(--_csstools-cf-5fpdqm-4-result);
+}
+
+.local-if-value {
+	--true: true;
+	--x: FAIL;
+	--_csstools-cf-5fpdqm-7-local-x: PASS;
+	--_csstools-cf-5fpdqm-6-result: if(style(--true): var(--_csstools-cf-5fpdqm-7-local-x); else: FAIL);
+	--actual: var(--_csstools-cf-5fpdqm-6-result);
+}

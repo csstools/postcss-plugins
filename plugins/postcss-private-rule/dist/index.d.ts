@@ -44,6 +44,7 @@ export declare class Transpiler {
     transpileDeclarationPropertyNames(decl: Declaration): void;
     transpileDeclarationValues(decl: Declaration): void;
     transpileAtRule(atRule: AtRule): void;
+    private rewritePrivatePropertyName;
 }
 
 export { }

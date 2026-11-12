@@ -4,18 +4,17 @@ import {
 	FunctionNode as CSSAFunctionNode,
 	TokenNode as CSSATokenNode,
 	isFunctionNode,
-	isSimpleBlockNode,
 	isTokenNode,
 	isWhiteSpaceOrCommentNode,
-	parseCommaSeparatedListOfComponentValues,
 	parseListOfComponentValues,
 	replaceComponentValues,
 	stringify,
 } from '@csstools/css-parser-algorithms';
-import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, isTokenOpenCurly, mutateIdent, tokenize } from '@csstools/css-tokenizer';
+import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
 import { parameterType } from './classify';
+import { parseArguments, hasImportant } from './parse-arguments';
 import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utilities';
@@ -24,7 +23,10 @@ import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utiliti
 // grow exponentially. Bound the total number of declarations generated while
 // transpiling so that a small stylesheet can not exhaust memory or CPU.
 const MAX_GENERATED_DECLARATIONS = 100_000;
+const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
+const IS_STYLE_FUNCTION_REGEX = /^style$/i;
+const IS_VAR_FUNCTION_REGEX = /^var$/i;
 
 type ArgumentValue = {
 	value: string,
@@ -202,8 +204,8 @@ export class CustomFunctionTranspiler {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
-		const args = this.parseArguments(fn);
-		if (!args) {
+		const args = parseArguments(fn);
+		if (!args || args.some(hasImportant)) {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
@@ -713,13 +715,16 @@ export class CustomFunctionTranspiler {
 			return { value, cssWideKeyword: null };
 		}
 
+		let keywordFallback: string | null = null;
 		const changed = rewriteVarFallbackKeywords(componentValues, (fallbackKeyword) => {
+			if (keywordFallback === null) {
+				keywordFallback = fallbackKeyword;
+			}
+
 			return this.resolveArgumentKeyword(fallbackKeyword, parameterName, callerScope);
 		});
 
-		// The fallback may or may not be selected at runtime, so the default
-		// value can not be suppressed here.
-		return { value: changed ? stringify([componentValues]) : value, cssWideKeyword: null };
+		return { value: changed ? stringify([componentValues]) : value, cssWideKeyword: keywordFallback };
 	}
 
 	private resolveArgumentKeyword(keyword: string, parameterName: string, callerScope: Scope): Array<ComponentValue> | null {
@@ -769,7 +774,14 @@ export class CustomFunctionTranspiler {
 
 	private rewriteValue(value: string, element: Rule, scope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers): string {
 		const tokens = tokenize({ css: value });
-		if (!tokens.some((token) => isTokenFunction(token) && (token[4].value.toLowerCase() === 'var' || token[4].value.startsWith('--')))) {
+		if (!tokens.some((token) => {
+			if (!isTokenFunction(token)) {
+				return false;
+			}
+
+			const name = token[4].value.toLowerCase();
+			return name === 'var' || name === 'if' || name === 'style' || name === 'inherit' || token[4].value.startsWith('--');
+		})) {
 			return value;
 		}
 
@@ -782,8 +794,18 @@ export class CustomFunctionTranspiler {
 
 			const name = node.getName();
 
-			if (name.toLowerCase() === 'var') {
+			if (IS_VAR_FUNCTION_REGEX.test(name)) {
 				this.rewriteVarReference(node, scope);
+				return;
+			}
+
+			if (IS_STYLE_FUNCTION_REGEX.test(name)) {
+				this.rewriteCustomPropertyName(node, scope, false);
+				return;
+			}
+
+			if (IS_INHERIT_FUNCTION_REGEX.test(name)) {
+				this.rewriteCustomPropertyName(node, scope, true);
 				return;
 			}
 
@@ -800,6 +822,32 @@ export class CustomFunctionTranspiler {
 		});
 
 		return stringify([componentValues]);
+	}
+
+	private rewriteCustomPropertyName(node: FunctionNode, scope: Scope, inherited: boolean): void {
+		for (let i = 0; i < node.value.length; i++) {
+			const child = node.value[i];
+			if (isWhiteSpaceOrCommentNode(child)) {
+				continue;
+			}
+
+			if (!isTokenNode(child) || !isTokenIdent(child.value)) {
+				return;
+			}
+
+			const original = child.value[4].value;
+			if (!original.startsWith('--')) {
+				return;
+			}
+
+			const mapped = inherited ? scope.parent?.get(original) : scope.get(original);
+			if (!mapped) {
+				return;
+			}
+
+			mutateIdent(child.value, mapped);
+			return;
+		}
 	}
 
 	private rewriteVarReference(node: FunctionNode, scope: Scope): void {
@@ -853,27 +901,6 @@ export class CustomFunctionTranspiler {
 			mutateIdent(child.value, mapped);
 			return;
 		}
-	}
-
-	private parseArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false {
-		const meaningful = fn.value.filter((componentValue) => !isWhiteSpaceOrCommentNode(componentValue));
-		if (meaningful.length === 0) {
-			return [];
-		}
-
-		const lists = parseCommaSeparatedListOfComponentValues(fn.value.flatMap((componentValue) => componentValue.tokens()));
-
-		const args: Array<Array<ComponentValue>> = [];
-		for (const list of lists) {
-			const arg = unwrapArgument(list);
-			if (!arg) {
-				return false;
-			}
-
-			args.push(arg);
-		}
-
-		return args;
 	}
 
 	private invalidResultDeclaration(resultName: string, element: Rule, helpers: Helpers): Declaration {
@@ -1003,28 +1030,6 @@ function findTopLevelCommaIndex(componentValues: Array<ComponentValue>): number 
 	}
 
 	return -1;
-}
-
-/**
- * Strip a `{}` wrapper from a single argument.
- *
- * https://drafts.csswg.org/css-values-5/#component-function-commas
- */
-function unwrapArgument(list: Array<ComponentValue>): Array<ComponentValue> | false {
-	const meaningful = list.filter((componentValue) => !isWhiteSpaceOrCommentNode(componentValue));
-	if (meaningful.length === 0) {
-		return false;
-	}
-
-	if (
-		meaningful.length === 1 &&
-		isSimpleBlockNode(meaningful[0]) &&
-		isTokenOpenCurly(meaningful[0].startToken)
-	) {
-		return meaningful[0].value;
-	}
-
-	return list;
 }
 
 /**

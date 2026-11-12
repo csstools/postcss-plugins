@@ -40,6 +40,20 @@
 	width: --mixed(1px);
 }
 
+.typed-width-relative {
+	--_csstools-cf-15up11z-9-arg-0: 2em;
+	--_csstools-cf-15up11z-8-result: var(--_csstools-cf-15up11z-9-arg-0);
+	width: var(--_csstools-cf-15up11z-8-result);
+	width: --sized(2em);
+}
+
+.typed-font-size-absolute {
+	--_csstools-cf-15up11z-b-arg-0: 20px;
+	--_csstools-cf-15up11z-a-result: var(--_csstools-cf-15up11z-b-arg-0);
+	font-size: var(--_csstools-cf-15up11z-a-result);
+	font-size: --sized(20px);
+}
+
 @property --_csstools-cf-15up11z-1-arg-0 {
 	syntax: "<length>";
 	inherits: true;
@@ -68,4 +82,16 @@
 	syntax: "<length>";
 	inherits: true;
 	initial-value: 3px;
+}
+
+@property --_csstools-cf-15up11z-9-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}
+
+@property --_csstools-cf-15up11z-b-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
 }

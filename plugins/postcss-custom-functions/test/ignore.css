@@ -49,3 +49,37 @@
 .invalid-parameter-name {
 	width: --invalid-parameter-name(1px);
 }
+
+/* `!important` is invalid in a dashed-function argument. */
+@function --important-argument(--x) {
+	result: var(--x);
+}
+
+.important-argument {
+	width: --important-argument(red !important);
+}
+
+.important-argument-block {
+	width: --important-argument({red !important});
+}
+
+/* Typed parameters in font-relative properties can not be resolved at build time. */
+@function --font-size-typed(--x <length>: 1px) {
+	result: var(--x);
+}
+
+.typed-font-size {
+	font-size: --font-size-typed(2em);
+}
+
+.typed-line-height {
+	line-height: --font-size-typed(2lh);
+}
+
+@function --outer-font-size(--x) {
+	result: --font-size-typed(var(--x));
+}
+
+.typed-font-size-nested {
+	font-size: --outer-font-size(2em);
+}

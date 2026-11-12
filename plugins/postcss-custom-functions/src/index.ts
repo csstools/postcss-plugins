@@ -49,7 +49,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					if (!isProcessableDeclaration(decl)) {
+					if (!isProcessableDeclaration(decl, customFunctions)) {
 						return;
 					}
 

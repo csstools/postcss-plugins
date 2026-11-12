@@ -140,7 +140,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 	// References from code that is not part of a supported definition and that
 	// will not be transformed.
 	const required = new Set<string>();
-	collectCustomFunctionReferences(root, supportedNodes, required, true);
+	collectCustomFunctionReferences(root, supportedNodes, required, true, groups);
 
 	// Definitions that are kept can reference other definitions.
 	const processed = new Set<string>();
@@ -160,7 +160,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 
 		for (const definition of group.definitions) {
 			const references = new Set<string>();
-			collectCustomFunctionReferences(definition.node, new Set(), references, false);
+			collectCustomFunctionReferences(definition.node, new Set(), references, false, groups);
 
 			for (const reference of references) {
 				if (required.has(reference)) {
@@ -187,7 +187,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 	}
 }
 
-function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean): void {
+function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean, groups: Map<string, CustomFunctionGroup>): void {
 	container.walk((node) => {
 		if (node.type !== 'decl' || !node.value.includes('--')) {
 			return undefined;
@@ -197,7 +197,7 @@ function collectCustomFunctionReferences(container: Container, skipNodes: Set<No
 			return undefined;
 		}
 
-		if (onlyUnprocessable && isProcessableDeclaration(node)) {
+		if (onlyUnprocessable && isProcessableDeclaration(node, groups)) {
 			return undefined;
 		}
 

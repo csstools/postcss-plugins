@@ -52,6 +52,29 @@
 
 	width: var(--_csstools-p-7q9ama-5--outer-conditional-size);
 }
+
+.container-registration {
+	container-type: inline-size;
+
+	@container (width > 10px) {
+		@private {
+			@property --container-size <length>: 10px;
+			--container-size: 20px;
+		}
+	}
+
+	width: var(--container-size);
+}
+
+.starting-style-registration {
+	@starting-style {
+		@private {
+			@property --starting-size <length>: 10px;
+		}
+	}
+
+	width: var(--starting-size);
+}
 		@property --_csstools-p-7q9ama-0--size {
 			syntax: "<length>";
 			inherits: false;

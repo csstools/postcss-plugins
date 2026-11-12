@@ -160,3 +160,13 @@ section > h1 > small {
 		content: var(--_csstools-p-wv7kid-h--foo);
 	}
 }
+
+.if-function-media-first {
+		--_csstools-p-wv7kid-i--alpha: private;
+
+	--bar: if(
+		media(width > 1px): cyan;
+		style(--_csstools-p-wv7kid-i--alpha: private): orange;
+		else: red;
+	);
+}

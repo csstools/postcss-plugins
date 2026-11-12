@@ -8,6 +8,10 @@
 - Resolve CSS-wide keywords in function arguments.
 - Keep parameter values when a local `@property` rule uses the parameter name.
 - Support local variables and registrations inside conditional rules.
+- Substitute local variables and `inherit()` inside `if()` conditions.
+- Suppress parameter defaults when a CSS-wide keyword can be selected through a `var()` fallback.
+- Ignore dashed-function arguments that contain `!important`.
+- Ignore typed parameters in font-relative properties when arguments can not be resolved at build time.
 
 ### 1.0.1
 

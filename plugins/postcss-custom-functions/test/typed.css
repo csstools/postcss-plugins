@@ -25,3 +25,11 @@
 .mixed {
 	width: --mixed(1px);
 }
+
+.typed-width-relative {
+	width: --sized(2em);
+}
+
+.typed-font-size-absolute {
+	font-size: --sized(20px);
+}

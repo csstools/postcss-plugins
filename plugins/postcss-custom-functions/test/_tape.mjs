@@ -50,6 +50,12 @@ postcssTape(plugin)({
 	'local-keywords': {
 		message: 'resolves other CSS-wide keywords on local variables to the guaranteed-invalid value',
 	},
+	'local-if': {
+		message: 'substitutes local variables in if() conditions',
+	},
+	'local-inherit': {
+		message: 'substitutes inherit() from the calling scope',
+	},
 	'parameter-keywords': {
 		message: 'resolves CSS-wide keywords in function arguments',
 	},

@@ -3,6 +3,7 @@
 ### Unreleased (minor)
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
+- Leave `@private` rules with registrations inside `@container` or `@starting-style` unchanged.
 
 ### 1.1.1
 

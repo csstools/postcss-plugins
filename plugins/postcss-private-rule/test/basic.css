@@ -207,3 +207,15 @@ section > h1 > small {
 		content: var(--foo);
 	}
 }
+
+.if-function-media-first {
+	@private {
+		--alpha: private;
+	}
+
+	--bar: if(
+		media(width > 1px): cyan;
+		style(--alpha: private): orange;
+		else: red;
+	);
+}
