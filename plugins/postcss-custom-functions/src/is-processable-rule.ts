@@ -27,7 +27,7 @@ export function isProcessableRule(atRule: AtRule): boolean {
 		return false;
 	}
 
-	if (!atRule.nodes?.length) {
+	if (!atRule.nodes) {
 		return false;
 	}
 

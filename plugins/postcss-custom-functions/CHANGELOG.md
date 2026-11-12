@@ -2,6 +2,8 @@
 
 ### Unreleased (minor)
 
+- Support empty `@function` bodies.
+- Ignore `!important` declarations in `@function` bodies.
 - Support `@property` rules for local variables, including multi-name prelude lists and the shorthand form.
 - Resolve CSS-wide keywords in function arguments.
 - Keep parameter values when a local `@property` rule uses the parameter name.

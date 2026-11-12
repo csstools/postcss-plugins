@@ -85,6 +85,7 @@ const invalid = [
 	'--foo(--x): length',
 	'--foo(--x) returneth <length>',
 	'--foo(--x, --x)',
+	'--foo(--)',
 ];
 
 for (const source of valid) {

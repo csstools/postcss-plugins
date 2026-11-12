@@ -1,0 +1,25 @@
+/* `!important` is not allowed in `@function` bodies. */
+
+.important-result {
+	--actual: var(--_csstools-cf-15kzf7x-0-result);
+}
+
+.important-result-fallback {
+	--_csstools-cf-15kzf7x-2-result: 1px;
+	--actual: var(--_csstools-cf-15kzf7x-2-result);
+}
+
+.important-local {
+	--_csstools-cf-15kzf7x-4-result: var(--x, PASS);
+	--actual: var(--_csstools-cf-15kzf7x-4-result);
+}
+
+.important-keyword {
+	--actual: var(--_csstools-cf-15kzf7x-6-result);
+}
+
+.important-local-parameter {
+	--_csstools-cf-15kzf7x-9-arg-0: var(--_csstools-cf-15kzf7x-9-raw-0, PARAM);
+	--_csstools-cf-15kzf7x-8-result: var(--_csstools-cf-15kzf7x-9-arg-0, PASS);
+	--actual: var(--_csstools-cf-15kzf7x-8-result);
+}

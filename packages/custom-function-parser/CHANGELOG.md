@@ -1,5 +1,9 @@
 # Changes to Custom Function Parser
 
+### Unreleased (patch)
+
+- Reject `--` as a parameter name.
+
 ### 1.0.0
 
 _October 1, 2026_

@@ -597,6 +597,11 @@ export class CustomFunctionTranspiler {
 	}
 
 	private processBodyDeclaration(decl: Declaration, element: Rule, scope: Scope, parameterArgs: Map<string, string>, definitionId: string, resultName: string, inlineDecls: Array<Declaration>, helpers: Helpers): Declaration | null {
+		// `!important` is not allowed in `@function` bodies.
+		if (decl.important) {
+			return null;
+		}
+
 		let prop: string;
 		let declaredProp: string | null = null;
 
@@ -1076,6 +1081,10 @@ function collectDeclaredLocalNames(atRule: AtRule): DeclaredLocalNames {
 function collectDeclaredLocalNamesFrom(nodes: Array<ChildNode>, inConditional: boolean, names: DeclaredLocalNames): void {
 	for (const node of nodes) {
 		if (node.type === 'decl') {
+			if (node.important) {
+				continue;
+			}
+
 			const name = unescapedPropertyName(node.prop);
 			if (name === null || !name.startsWith('--')) {
 				continue;

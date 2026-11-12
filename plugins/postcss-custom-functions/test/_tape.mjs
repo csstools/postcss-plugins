@@ -105,6 +105,12 @@ postcssTape(plugin)({
 	'invalid-bodies': {
 		message: 'ignores functions with invalid bodies',
 	},
+	'important': {
+		message: 'ignores !important declarations in function bodies',
+	},
+	'empty-body': {
+		message: 'supports empty function bodies',
+	},
 	'style-rule-definition': {
 		message: 'ignores functions defined inside a style rule',
 	},

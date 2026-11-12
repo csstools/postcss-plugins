@@ -89,7 +89,7 @@ function staticKeywordResult(atRule: AtRule): string | null {
 	let hasConditionalResult = false;
 	atRule.walkAtRules((child) => {
 		child.walkDecls((decl) => {
-			if (decl.prop.toLowerCase() === 'result') {
+			if (decl.prop.toLowerCase() === 'result' && !decl.important) {
 				hasConditionalResult = true;
 			}
 		});
@@ -101,7 +101,7 @@ function staticKeywordResult(atRule: AtRule): string | null {
 
 	let value: string | null = null;
 	for (const node of atRule.nodes || []) {
-		if (node.type === 'decl' && node.prop.toLowerCase() === 'result') {
+		if (node.type === 'decl' && node.prop.toLowerCase() === 'result' && !node.important) {
 			value = node.value.trim();
 		}
 	}
@@ -127,7 +127,7 @@ function hasKeywordResult(atRule: AtRule): boolean {
 	let found = false;
 
 	atRule.walkDecls((decl) => {
-		if (decl.prop.toLowerCase() !== 'result') {
+		if (decl.prop.toLowerCase() !== 'result' || decl.important) {
 			return;
 		}
 

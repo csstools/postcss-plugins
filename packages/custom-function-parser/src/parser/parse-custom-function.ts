@@ -157,7 +157,8 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			if (
 				isTokenNode(componentValue) &&
 				isTokenIdent(componentValue.value) &&
-				componentValue.value[4].value.startsWith('--')
+				componentValue.value[4].value.startsWith('--') &&
+				componentValue.value[4].value !== '--'
 			) {
 				nameIndex = i;
 				nameToken = componentValue.value;

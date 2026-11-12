@@ -40,3 +40,12 @@
 .container-fn {
 	width: --container-fn();
 }
+
+/* A parameter name can not be `--`. */
+@function --invalid-parameter-name(--) {
+	result: 1px;
+}
+
+.invalid-parameter-name {
+	width: --invalid-parameter-name(1px);
+}

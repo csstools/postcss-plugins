@@ -47,7 +47,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^25.14.0"
+		"playwright-core": "^1.65.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

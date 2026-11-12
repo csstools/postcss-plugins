@@ -346,7 +346,7 @@
 				// Chrome does not implement CSS-wide keywords in arguments yet,
 				// so these cases only assert the transformed CSS.
 				name: 'inherit argument refers to the calling element',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: FAIL) {
 						result: var(--x, PASS);
@@ -360,7 +360,7 @@
 			},
 			{
 				name: 'inherit argument refers to an inherited custom property',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: FAIL) {
 						result: var(--x, PASS);
@@ -376,7 +376,7 @@
 			},
 			{
 				name: 'inherit argument refers to a caller function local',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: FAIL) {
 						result: var(--x, PASS);
@@ -393,7 +393,7 @@
 			},
 			{
 				name: 'inherit argument in a var() fallback refers to the calling element',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: FAIL) {
 						result: var(--x, PASS);
@@ -407,7 +407,7 @@
 			},
 			{
 				name: 'initial argument resolves to the guaranteed-invalid value',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: 10px) {
 						result: var(--x, PASS);
@@ -420,7 +420,7 @@
 			},
 			{
 				name: 'unset argument resolves to the guaranteed-invalid value',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: 10px) {
 						result: var(--x, PASS);
@@ -433,7 +433,7 @@
 			},
 			{
 				name: 'revert argument resolves to the guaranteed-invalid value',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: 10px) {
 						result: var(--x, PASS);
@@ -446,7 +446,7 @@
 			},
 			{
 				name: 'revert-layer argument resolves to the guaranteed-invalid value',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: 10px) {
 						result: var(--x, PASS);
@@ -459,7 +459,7 @@
 			},
 			{
 				name: 'Typed parameter inherit argument uses the calling element',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x <length>: 10px) {
 						result: var(--x, PASS);
@@ -473,7 +473,7 @@
 			},
 			{
 				name: 'Typed parameter initial argument resolves to the guaranteed-invalid value',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x <length>: 10px) {
 						result: var(--x, PASS);
@@ -487,7 +487,7 @@
 
 			{
 				name: 'A set var() value overrides a keyword fallback',
-				skipNative: true,
+				skipNativeBrowsers: ['chromium'],
 				style: `
 					@function --f(--x: 10px) {
 						result: var(--x, PASS);
@@ -567,7 +567,10 @@
 		];
 
 		for (const testCase of testCases) {
-			if (window.__TRANSFORM__ === false && testCase.skipNative) {
+			if (window.__TRANSFORM__ === false && (
+				testCase.skipNative ||
+				(testCase.skipNativeBrowsers && testCase.skipNativeBrowsers.includes(window.__BROWSER__))
+			)) {
 				continue;
 			}
 
