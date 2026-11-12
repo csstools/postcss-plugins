@@ -39,6 +39,7 @@ type ArgumentValue = {
  */
 class Scope {
 	names: Map<string, string> = new Map();
+	fallbacks: Map<string, string> = new Map();
 	registeredNames: Set<string> = new Set();
 	parent: Scope | null;
 
@@ -53,6 +54,14 @@ class Scope {
 		}
 
 		return this.parent?.get(name);
+	}
+
+	getFallback(name: string): string | undefined {
+		if (this.names.has(name)) {
+			return this.fallbacks.get(name);
+		}
+
+		return this.parent?.getFallback(name);
 	}
 }
 
@@ -269,8 +278,21 @@ export class CustomFunctionTranspiler {
 			parameterArgs.set(parameters[i].getName(), argName);
 		}
 
-		for (const localName of collectDeclaredLocalNames(definition.node)) {
+		const declaredLocalNames = collectDeclaredLocalNames(definition.node);
+		for (const localName of declaredLocalNames.all) {
 			scope.names.set(localName, this.localName(definitionId, localName));
+		}
+
+		const propertyRules = collectPropertyRules(definition.node);
+		const conditionalRegistrationNames = new Set<string>();
+		for (const { propertyRule, conditionals } of propertyRules) {
+			if (!conditionals.length) {
+				continue;
+			}
+
+			for (const name of registeredPropertyNames(propertyRule)) {
+				conditionalRegistrationNames.add(name);
+			}
 		}
 
 		const registrationNames = new Map<string, string>();
@@ -286,6 +308,33 @@ export class CustomFunctionTranspiler {
 			}
 
 			registrationNames.set(registeredName, target);
+		}
+
+		for (const name of conditionalRegistrationNames) {
+			const parameterName = parameterArgs.get(name);
+			if (!parameterName || !declaredLocalNames.all.has(name)) {
+				continue;
+			}
+
+			// A conditional local registration can be inactive while the local
+			// declaration is still read. Fall back to the parameter value.
+			scope.fallbacks.set(name, parameterName);
+		}
+
+		const baseDecls: Array<Declaration> = [];
+		const baseNames = new Set(declaredLocalNames.conditional);
+		for (const name of declaredLocalNames.unconditional) {
+			baseNames.delete(name);
+		}
+
+		for (const name of baseNames) {
+			const prop = scope.names.get(name);
+			if (!prop) {
+				continue;
+			}
+
+			const fallback = parameterArgs.get(name) ?? scope.parent?.get(name) ?? name;
+			baseDecls.push(helpers.decl({ prop, value: `var(${fallback})`, source: element.source }));
 		}
 
 		const resolvedArgs: Array<ArgumentValue> = validArity
@@ -322,6 +371,10 @@ export class CustomFunctionTranspiler {
 				}
 			}
 
+			if (baseDecls.length) {
+				nodes.push(...wrapInConditionals([element.clone({ nodes: baseDecls })], definition.conditionals));
+			}
+
 			for (let i = 0; i < parameters.length; i++) {
 				const type = parameterType(parameters[i]);
 				if (!type) {
@@ -342,7 +395,7 @@ export class CustomFunctionTranspiler {
 				})], definition.conditionals));
 			}
 
-			this.emitLocalRegistrations(definition.node, definition.conditionals, definitionId, registrationNames);
+			this.emitLocalRegistrations(propertyRules, definition.conditionals, definitionId, registrationNames);
 
 			if (inline) {
 				this.emitBodyInline(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName, inlineDecls, helpers);
@@ -359,8 +412,8 @@ export class CustomFunctionTranspiler {
 	}
 
 	/** Moves local `@property` rules to the root with their generated local names. */
-	private emitLocalRegistrations(definition: AtRule, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
-		for (const { propertyRule, conditionals } of collectPropertyRules(definition)) {
+	private emitLocalRegistrations(propertyRules: Array<CollectedPropertyRule>, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
+		for (const { propertyRule, conditionals } of propertyRules) {
 			const registration = propertyRule.clone();
 			if (!rewritePropertyNames(registration, (name) => registrationNames.get(name) ?? this.localName(definitionId, name))) {
 				continue;
@@ -621,7 +674,6 @@ export class CustomFunctionTranspiler {
 		const componentValues = parseListOfComponentValues(tokenize({ css: value }));
 		let keyword: string | null = null;
 		let meaningfulCount = 0;
-		let meaningfulComponentValue: ComponentValue | null = null;
 		let hasVar = false;
 
 		for (const componentValue of componentValues) {
@@ -630,7 +682,6 @@ export class CustomFunctionTranspiler {
 			}
 
 			meaningfulCount++;
-			meaningfulComponentValue = componentValue;
 
 			if (isFunctionNode(componentValue)) {
 				if (componentValue.getName().toLowerCase() === 'var') {
@@ -661,17 +712,9 @@ export class CustomFunctionTranspiler {
 			return this.resolveArgumentKeyword(fallbackKeyword, parameterName, callerScope);
 		});
 
-		let fallbackKeyword: string | null = null;
-		if (
-			meaningfulCount === 1 &&
-			meaningfulComponentValue !== null &&
-			isFunctionNode(meaningfulComponentValue) &&
-			meaningfulComponentValue.getName().toLowerCase() === 'var'
-		) {
-			fallbackKeyword = keywordFallback(meaningfulComponentValue);
-		}
-
-		return { value: changed ? stringify([componentValues]) : value, cssWideKeyword: fallbackKeyword };
+		// The fallback may or may not be selected at runtime, so the default
+		// value can not be suppressed here.
+		return { value: changed ? stringify([componentValues]) : value, cssWideKeyword: null };
 	}
 
 	private resolveArgumentKeyword(keyword: string, parameterName: string, callerScope: Scope): Array<ComponentValue> | null {
@@ -755,7 +798,8 @@ export class CustomFunctionTranspiler {
 	}
 
 	private rewriteVarReference(node: FunctionNode, scope: Scope): void {
-		for (const child of node.value) {
+		for (let i = 0; i < node.value.length; i++) {
+			const child = node.value[i];
 			if (isWhiteSpaceOrCommentNode(child)) {
 				continue;
 			}
@@ -772,6 +816,33 @@ export class CustomFunctionTranspiler {
 			const mapped = scope.get(original);
 			if (!mapped) {
 				return;
+			}
+
+			const fallback = scope.getFallback(original);
+			if (!fallback) {
+				mutateIdent(child.value, mapped);
+				return;
+			}
+
+			const commaIndex = findTopLevelCommaIndex(node.value);
+			const fallbackReference = this.varReference(fallback);
+
+			if (commaIndex === -1) {
+				node.value = [
+					...node.value.slice(0, i + 1),
+					new CSSATokenNode([TokenType.Comma, ',', -1, -1, undefined]),
+					fallbackReference,
+				];
+			} else {
+				fallbackReference.value = [
+					...fallbackReference.value,
+					node.value[commaIndex],
+					...node.value.slice(commaIndex + 1),
+				];
+				node.value = [
+					...node.value.slice(0, commaIndex + 1),
+					fallbackReference,
+				];
 			}
 
 			mutateIdent(child.value, mapped);
@@ -872,50 +943,6 @@ function wrapInConditionals(nodes: Array<ChildNode>, conditionals: Array<AtRule>
 	}
 
 	return current;
-}
-
-/** The CSS-wide keyword that can be the whole value of a `var()` fallback. */
-function keywordFallback(functionNode: FunctionNode): string | null {
-	const commaIndex = findTopLevelCommaIndex(functionNode.value);
-	if (commaIndex === -1) {
-		return null;
-	}
-
-	const fallback = functionNode.value.slice(commaIndex + 1);
-	let keyword: string | null = null;
-	let meaningfulCount = 0;
-	let nestedVar: FunctionNode | null = null;
-
-	for (const componentValue of fallback) {
-		if (isWhiteSpaceOrCommentNode(componentValue)) {
-			continue;
-		}
-
-		meaningfulCount++;
-
-		if (isFunctionNode(componentValue) && componentValue.getName().toLowerCase() === 'var') {
-			nestedVar = componentValue;
-			keyword = null;
-			continue;
-		}
-
-		if (isTokenNode(componentValue) && isTokenIdent(componentValue.value)) {
-			keyword = componentValue.value[4].value.toLowerCase();
-			continue;
-		}
-
-		keyword = null;
-	}
-
-	if (meaningfulCount !== 1) {
-		return null;
-	}
-
-	if (keyword !== null && CSS_WIDE_KEYWORDS.has(keyword)) {
-		return keyword;
-	}
-
-	return nestedVar ? keywordFallback(nestedVar) : null;
 }
 
 /**
@@ -1027,18 +1054,42 @@ function unescapedPropertyName(property: string): string | null {
 	return token[4].value;
 }
 
-/** Collect every local custom property declared anywhere in a function body. */
-function collectDeclaredLocalNames(atRule: AtRule): Set<string> {
-	const names = new Set<string>();
+type DeclaredLocalNames = {
+	all: Set<string>,
+	conditional: Set<string>,
+	unconditional: Set<string>,
+};
 
-	atRule.walkDecls((decl) => {
-		const name = unescapedPropertyName(decl.prop);
-		if (name !== null && name.startsWith('--')) {
-			names.add(name);
-		}
-	});
+/** Collect every local custom property declared anywhere in a function body. */
+function collectDeclaredLocalNames(atRule: AtRule): DeclaredLocalNames {
+	const names: DeclaredLocalNames = {
+		all: new Set<string>(),
+		conditional: new Set<string>(),
+		unconditional: new Set<string>(),
+	};
+
+	collectDeclaredLocalNamesFrom(atRule.nodes || [], false, names);
 
 	return names;
+}
+
+function collectDeclaredLocalNamesFrom(nodes: Array<ChildNode>, inConditional: boolean, names: DeclaredLocalNames): void {
+	for (const node of nodes) {
+		if (node.type === 'decl') {
+			const name = unescapedPropertyName(node.prop);
+			if (name === null || !name.startsWith('--')) {
+				continue;
+			}
+
+			names.all.add(name);
+			(inConditional ? names.conditional : names.unconditional).add(name);
+			continue;
+		}
+
+		if (node.type === 'atrule' && node.nodes && !IS_PROPERTY_REGEX.test(node.name)) {
+			collectDeclaredLocalNamesFrom(node.nodes, true, names);
+		}
+	}
 }
 
 /** Collect local variables that have an authored `@property` registration. */

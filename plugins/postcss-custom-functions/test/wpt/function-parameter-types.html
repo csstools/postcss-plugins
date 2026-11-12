@@ -484,6 +484,86 @@
 					}
 				`,
 			},
+
+			{
+				name: 'A set var() value overrides a keyword fallback',
+				skipNative: true,
+				style: `
+					@function --f(--x: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--known: 30px;
+						--actual: --f(var(--known, initial));
+						--expected: 30px;
+					}
+				`,
+			},
+			{
+				name: 'An inactive conditional local registration falls back to the parameter',
+				skipNative: true,
+				style: `
+					@function --f(--x: PASS) {
+						@supports (not (width: 100px)) {
+							@property --x {
+								syntax: "<length>";
+								inherits: true;
+								initial-value: 10px;
+							}
+						}
+						--x: initial;
+						result: var(--x, FALLBACK);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'An active conditional local registration handles initial',
+				skipNative: true,
+				style: `
+					@function --f(--x: PASS) {
+						@supports (width: 100px) {
+							@property --x {
+								syntax: "<length>";
+								inherits: true;
+								initial-value: 10px;
+							}
+						}
+						--x: initial;
+						result: var(--x, FALLBACK);
+					}
+					#target {
+						--actual: --f();
+						--expected: 10px;
+					}
+				`,
+			},
+
+			{
+				name: 'A conditional local declaration with a parameter registration falls back to the parameter',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 20px) {
+						@supports (not (width: 100px)) {
+							--x: 30px;
+						}
+						@property --x {
+							syntax: "<length>";
+							inherits: true;
+							initial-value: 10px;
+						}
+						result: var(--x, 0px);
+					}
+					#target {
+						--actual: --f();
+						--expected: 20px;
+					}
+				`,
+			},
+
 		];
 
 		for (const testCase of testCases) {

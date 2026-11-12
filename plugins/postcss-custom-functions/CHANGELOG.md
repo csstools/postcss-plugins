@@ -5,6 +5,7 @@
 - Support `@property` rules for local variables, including multi-name prelude lists and the shorthand form.
 - Resolve CSS-wide keywords in function arguments.
 - Keep parameter values when a local `@property` rule uses the parameter name.
+- Support local variables and registrations inside conditional rules.
 
 ### 1.0.1
 

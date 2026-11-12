@@ -58,6 +58,14 @@
 	--actual: var(--_csstools-cf-39mkph-i-result);
 }
 
+.keyword-var-fallback-set {
+	--known: 30px;
+	--_csstools-cf-39mkph-l-raw-0: var(--known,var(--_csstools-cf-invalid));
+	--_csstools-cf-39mkph-l-arg-0: var(--_csstools-cf-39mkph-l-raw-0, FAIL);
+	--_csstools-cf-39mkph-k-result: var(--_csstools-cf-39mkph-l-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-k-result);
+}
+
 @property --_csstools-cf-39mkph-h-arg-0 {
 	syntax: "<length>";
 	inherits: true;

@@ -65,6 +65,9 @@ postcssTape(plugin)({
 	'conditional-definitions': {
 		message: 'supports definitions inside conditional rules',
 	},
+	'conditional-locals': {
+		message: 'supports conditional local declarations and registrations',
+	},
 	'conditional-definitions:preserve-true': {
 		message: 'supports definitions inside conditional rules with { preserve: true }',
 		options: {

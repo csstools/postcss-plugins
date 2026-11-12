@@ -49,3 +49,8 @@
 .typed-keyword-initial {
 	--actual: --typed-keyword-argument(initial);
 }
+
+.keyword-var-fallback-set {
+	--known: 30px;
+	--actual: --keyword-argument(var(--known, initial));
+}
