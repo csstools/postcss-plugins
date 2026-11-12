@@ -310,6 +310,180 @@
 					}
 				`,
 			},
+
+			{
+				// Chrome does not implement @property inside @function yet, so
+				// these cases only assert the transformed CSS.
+				name: 'Local @property for a parameter keeps the parameter value',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 10px) {
+						@property --x <length>: 20px;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f() --f(30px);
+						--expected: 10px 30px;
+					}
+				`,
+			},
+			{
+				name: 'A local declaration shadows a parameter with a local @property',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 10px) {
+						@property --x <length>: 20px;
+						--x: 15px;
+						result: var(--x);
+					}
+					#target {
+						--actual: --f(30px);
+						--expected: 15px;
+					}
+				`,
+			},
+			{
+				// Chrome does not implement CSS-wide keywords in arguments yet,
+				// so these cases only assert the transformed CSS.
+				name: 'inherit argument refers to the calling element',
+				skipNative: true,
+				style: `
+					@function --f(--x: FAIL) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--x: 30px;
+						--actual: --f(inherit);
+						--expected: 30px;
+					}
+				`,
+			},
+			{
+				name: 'inherit argument refers to an inherited custom property',
+				skipNative: true,
+				style: `
+					@function --f(--x: FAIL) {
+						result: var(--x, PASS);
+					}
+					#parent {
+						--x: 40px;
+					}
+					#target {
+						--actual: --f(inherit);
+						--expected: 40px;
+					}
+				`,
+			},
+			{
+				name: 'inherit argument refers to a caller function local',
+				skipNative: true,
+				style: `
+					@function --f(--x: FAIL) {
+						result: var(--x, PASS);
+					}
+					@function --g() {
+						--x: PASS;
+						result: --f(inherit);
+					}
+					#target {
+						--actual: --g();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'inherit argument in a var() fallback refers to the calling element',
+				skipNative: true,
+				style: `
+					@function --f(--x: FAIL) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--x: 30px;
+						--actual: --f(var(--unknown, inherit));
+						--expected: 30px;
+					}
+				`,
+			},
+			{
+				name: 'initial argument resolves to the guaranteed-invalid value',
+				skipNative: true,
+				style: `
+					@function --f(--x: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(initial);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'unset argument resolves to the guaranteed-invalid value',
+				skipNative: true,
+				style: `
+					@function --f(--x: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(unset);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'revert argument resolves to the guaranteed-invalid value',
+				skipNative: true,
+				style: `
+					@function --f(--x: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(revert);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'revert-layer argument resolves to the guaranteed-invalid value',
+				skipNative: true,
+				style: `
+					@function --f(--x: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(revert-layer);
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Typed parameter inherit argument uses the calling element',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--x: 30px;
+						--actual: --f(inherit);
+						--expected: 30px;
+					}
+				`,
+			},
+			{
+				name: 'Typed parameter initial argument resolves to the guaranteed-invalid value',
+				skipNative: true,
+				style: `
+					@function --f(--x <length>: 10px) {
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f(initial);
+						--expected: PASS;
+					}
+				`,
+			},
 		];
 
 		for (const testCase of testCases) {

@@ -1,6 +1,8 @@
 import type { AtRule } from 'postcss';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CustomFunction, FunctionParameter } from '@csstools/custom-function-parser';
-import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { isTokenComma, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { isComputationallyIndependent } from './is-computationally-independent';
 
@@ -129,12 +131,66 @@ function hasKeywordResult(atRule: AtRule): boolean {
 			return;
 		}
 
-		for (const token of tokenize({ css: decl.value })) {
-			if (isTokenIdent(token) && CSS_WIDE_KEYWORDS.has(token[4].value.toLowerCase())) {
-				found = true;
-			}
+		const componentValues = parseListOfComponentValues(tokenize({ css: decl.value }));
+		if (isKeyword(componentValues) || hasKeywordFallback(componentValues)) {
+			found = true;
 		}
 	});
 
 	return found;
+}
+
+/** Whether a component value list is exactly one CSS-wide keyword. */
+function isKeyword(componentValues: Array<ComponentValue>): boolean {
+	let keyword: string | null = null;
+	let count = 0;
+
+	for (const componentValue of componentValues) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
+			continue;
+		}
+
+		count++;
+
+		if (isTokenNode(componentValue) && isTokenIdent(componentValue.value)) {
+			keyword = componentValue.value[4].value.toLowerCase();
+			continue;
+		}
+
+		keyword = null;
+	}
+
+	return count === 1 && keyword !== null && CSS_WIDE_KEYWORDS.has(keyword);
+}
+
+/** Whether a top-level `var()` fallback can resolve to a CSS-wide keyword. */
+function hasKeywordFallback(componentValues: Array<ComponentValue>): boolean {
+	for (const componentValue of componentValues) {
+		if (!isFunctionNode(componentValue) || componentValue.getName().toLowerCase() !== 'var') {
+			continue;
+		}
+
+		const commaIndex = findTopLevelCommaIndex(componentValue);
+		if (commaIndex === -1) {
+			continue;
+		}
+
+		const fallback = componentValue.value.slice(commaIndex + 1);
+		if (isKeyword(fallback) || hasKeywordFallback(fallback)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+function findTopLevelCommaIndex(functionNode: FunctionNode): number {
+	for (let i = 0; i < functionNode.value.length; i++) {
+		const componentValue = functionNode.value[i];
+		if (isTokenNode(componentValue) && isTokenComma(componentValue.value)) {
+			return i;
+		}
+	}
+
+	return -1;
 }

@@ -82,6 +82,21 @@
 	@apply --registered-private;
 }
 
+@mixin --escaped-private() {
+	@private {
+		@property --\66 oo <length>: 20px;
+		--\66 oo: 30px;
+	}
+
+	width: var(--\66 oo);
+}
+
+.escaped-private {
+	--_csstools-p-7q9ama-2--\66 oo: 30px;
+	width: var(--_csstools-p-7q9ama-2--foo);
+	@apply --escaped-private;
+}
+
 @property --_csstools-p-7q9ama-0--size {
 	syntax: "<length>";
 	inherits: false;
@@ -132,4 +147,6 @@
 	initial-value: 5px;
 }
 
-@property --_csstools-p-7q9ama-1--initial-untyped: 6px
+@property --_csstools-p-7q9ama-1--initial-untyped: 6px;
+
+@property --_csstools-p-7q9ama-2--foo <length>: 20px

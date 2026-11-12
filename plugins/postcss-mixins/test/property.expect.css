@@ -32,6 +32,11 @@
 	border-width: var(--_csstools-p-7q9ama-1--initial-untyped);
 }
 
+.escaped-private {
+	--_csstools-p-7q9ama-2--\66 oo: 30px;
+	width: var(--_csstools-p-7q9ama-2--foo);
+}
+
 @property --_csstools-p-7q9ama-0--size {
 	syntax: "<length>";
 	inherits: false;
@@ -82,4 +87,6 @@
 	initial-value: 5px;
 }
 
-@property --_csstools-p-7q9ama-1--initial-untyped: 6px
+@property --_csstools-p-7q9ama-1--initial-untyped: 6px;
+
+@property --_csstools-p-7q9ama-2--foo <length>: 20px

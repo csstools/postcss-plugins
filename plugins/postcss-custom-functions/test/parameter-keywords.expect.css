@@ -1,0 +1,69 @@
+.keyword-inherit {
+	--x: 30px;
+	--_csstools-cf-39mkph-1-arg-0: var(--x);
+	--_csstools-cf-39mkph-0-result: var(--_csstools-cf-39mkph-1-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-0-result);
+}
+
+.keyword-inherit-var-fallback {
+	--x: 30px;
+	--_csstools-cf-39mkph-3-raw-0: var(--unknown,var(--x));
+	--_csstools-cf-39mkph-3-arg-0: var(--_csstools-cf-39mkph-3-raw-0, FAIL);
+	--_csstools-cf-39mkph-2-result: var(--_csstools-cf-39mkph-3-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-2-result);
+}
+
+.keyword-initial {
+	--_csstools-cf-39mkph-5-arg-0: var(--_csstools-cf-invalid);
+	--_csstools-cf-39mkph-4-result: var(--_csstools-cf-39mkph-5-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-4-result);
+}
+
+.keyword-unset {
+	--_csstools-cf-39mkph-7-arg-0: var(--_csstools-cf-invalid);
+	--_csstools-cf-39mkph-6-result: var(--_csstools-cf-39mkph-7-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-6-result);
+}
+
+.keyword-revert {
+	--_csstools-cf-39mkph-9-arg-0: var(--_csstools-cf-invalid);
+	--_csstools-cf-39mkph-8-result: var(--_csstools-cf-39mkph-9-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-8-result);
+}
+
+.keyword-revert-layer {
+	--_csstools-cf-39mkph-b-arg-0: var(--_csstools-cf-invalid);
+	--_csstools-cf-39mkph-a-result: var(--_csstools-cf-39mkph-b-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-a-result);
+}
+
+.keyword-inherit-nested {
+	--_csstools-cf-39mkph-d-local-x: PASS;
+	--_csstools-cf-39mkph-f-arg-0: var(--_csstools-cf-39mkph-d-local-x);
+	--_csstools-cf-39mkph-e-result: var(--_csstools-cf-39mkph-f-arg-0, PASS);
+	--_csstools-cf-39mkph-c-result: var(--_csstools-cf-39mkph-e-result);
+	--actual: var(--_csstools-cf-39mkph-c-result);
+}
+
+.typed-keyword-inherit {
+	--x: 30px;
+	--_csstools-cf-39mkph-h-arg-0: var(--x);
+	--_csstools-cf-39mkph-g-result: var(--_csstools-cf-39mkph-h-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-g-result);
+}
+
+.typed-keyword-initial {
+	--_csstools-cf-39mkph-j-arg-0: var(--_csstools-cf-invalid);
+	--_csstools-cf-39mkph-i-result: var(--_csstools-cf-39mkph-j-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-i-result);
+}
+
+@property --_csstools-cf-39mkph-h-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+}
+
+@property --_csstools-cf-39mkph-j-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+}

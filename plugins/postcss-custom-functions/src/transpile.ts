@@ -26,6 +26,11 @@ import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utiliti
 const MAX_GENERATED_DECLARATIONS = 100_000;
 const IS_PROPERTY_REGEX = /^property$/i;
 
+type ArgumentValue = {
+	value: string,
+	cssWideKeyword: string | null,
+};
+
 /**
  * A single lexical scope while evaluating a custom function.
  *
@@ -264,12 +269,34 @@ export class CustomFunctionTranspiler {
 			parameterArgs.set(parameters[i].getName(), argName);
 		}
 
-		for (const localName of collectLocalNames(definition.node)) {
+		for (const localName of collectDeclaredLocalNames(definition.node)) {
 			scope.names.set(localName, this.localName(definitionId, localName));
 		}
 
+		const registrationNames = new Map<string, string>();
 		for (const registeredName of collectRegisteredLocalNames(definition.node)) {
 			scope.registeredNames.add(registeredName);
+
+			// A registration for a name that is already a parameter registers
+			// that parameter. It only becomes a separate local variable when
+			// the function body also declares it.
+			const target = scope.names.get(registeredName) ?? this.localName(definitionId, registeredName);
+			if (!scope.names.has(registeredName)) {
+				scope.names.set(registeredName, target);
+			}
+
+			registrationNames.set(registeredName, target);
+		}
+
+		const resolvedArgs: Array<ArgumentValue> = validArity
+			? evaluatedArgs.map((value, i) => this.resolveArgumentKeywords(value, parameters[i].getName(), parentScope))
+			: evaluatedArgs.map((value) => ({ value, cssWideKeyword: null }));
+
+		const cssWideKeywordArgs = new Set<number>();
+		for (let i = 0; i < resolvedArgs.length; i++) {
+			if (resolvedArgs[i].cssWideKeyword !== null) {
+				cssWideKeywordArgs.add(i);
+			}
 		}
 
 		const nodes: Array<ChildNode> = [];
@@ -285,10 +312,10 @@ export class CustomFunctionTranspiler {
 			if (inline) {
 				// Arguments are prepended to the calling rule, so no extra rule
 				// is needed for them.
-				this.emitArguments(definitionId, parameters, evaluatedArgs, element, parameterScope, parameterArgs, inlineDecls, inlineDecls, helpers);
+				this.emitArguments(definitionId, parameters, resolvedArgs, element, parameterScope, parameterArgs, inlineDecls, inlineDecls, helpers);
 			} else {
 				const argDecls: Array<Declaration> = [];
-				this.emitArguments(definitionId, parameters, evaluatedArgs, element, parameterScope, parameterArgs, argDecls, inlineDecls, helpers);
+				this.emitArguments(definitionId, parameters, resolvedArgs, element, parameterScope, parameterArgs, argDecls, inlineDecls, helpers);
 
 				if (argDecls.length) {
 					nodes.push(...wrapInConditionals([element.clone({ nodes: argDecls })], definition.conditionals));
@@ -309,13 +336,13 @@ export class CustomFunctionTranspiler {
 					nodes: [
 						helpers.decl({ prop: 'syntax', value: `"${type}"`, source: element.source }),
 						helpers.decl({ prop: 'inherits', value: 'true', source: element.source }),
-						helpers.decl({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source }),
+						...(cssWideKeywordArgs.has(i) ? [] : [helpers.decl({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source })]),
 					],
 					source: element.source,
 				})], definition.conditionals));
 			}
 
-			this.emitLocalRegistrations(definition.node, definition.conditionals, definitionId);
+			this.emitLocalRegistrations(definition.node, definition.conditionals, definitionId, registrationNames);
 
 			if (inline) {
 				this.emitBodyInline(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName, inlineDecls, helpers);
@@ -332,10 +359,10 @@ export class CustomFunctionTranspiler {
 	}
 
 	/** Moves local `@property` rules to the root with their generated local names. */
-	private emitLocalRegistrations(definition: AtRule, ancestorConditionals: Array<AtRule>, definitionId: string): void {
+	private emitLocalRegistrations(definition: AtRule, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
 		for (const { propertyRule, conditionals } of collectPropertyRules(definition)) {
 			const registration = propertyRule.clone();
-			if (!rewritePropertyNames(registration, (name) => this.localName(definitionId, name))) {
+			if (!rewritePropertyNames(registration, (name) => registrationNames.get(name) ?? this.localName(definitionId, name))) {
 				continue;
 			}
 
@@ -347,14 +374,26 @@ export class CustomFunctionTranspiler {
 	/**
 	 * Emit the declarations that bind the arguments to the parameters.
 	 */
-	private emitArguments(definitionId: string, parameters: Array<FunctionParameter>, evaluatedArgs: Array<string>, element: Rule, parameterScope: Scope, parameterArgs: Map<string, string>, out: Array<Declaration>, inlineDecls: Array<Declaration>, helpers: Helpers): void {
+	private emitArguments(definitionId: string, parameters: Array<FunctionParameter>, evaluatedArgs: Array<ArgumentValue>, element: Rule, parameterScope: Scope, parameterArgs: Map<string, string>, out: Array<Declaration>, inlineDecls: Array<Declaration>, helpers: Helpers): void {
 		const outStart = out.length;
 
 		for (let i = 0; i < parameters.length; i++) {
 			const parameter = parameters[i];
 			const type = parameterType(parameter);
 			const defaultValue = parameter.getDefaultValue();
-			const hasArgument = i < evaluatedArgs.length;
+			const argument = evaluatedArgs[i];
+			const hasArgument = argument !== undefined;
+
+			// CSS-wide keywords in an argument do not fall back to the default.
+			if (hasArgument && argument.cssWideKeyword !== null) {
+				out.push(helpers.decl({
+					prop: this.argName(definitionId, i),
+					value: argument.value,
+					source: element.source,
+				}));
+
+				continue;
+			}
 
 			if (type) {
 				// Typed parameters use a generated `@property` registration.
@@ -363,7 +402,7 @@ export class CustomFunctionTranspiler {
 				if (hasArgument) {
 					out.push(helpers.decl({
 						prop: this.argName(definitionId, i),
-						value: evaluatedArgs[i],
+						value: argument.value,
 						source: element.source,
 					}));
 				} else if (defaultValue) {
@@ -383,7 +422,7 @@ export class CustomFunctionTranspiler {
 				if (hasArgument) {
 					out.push(helpers.decl({
 						prop: this.rawName(definitionId, i),
-						value: evaluatedArgs[i],
+						value: argument.value,
 						source: element.source,
 					}));
 				}
@@ -400,7 +439,7 @@ export class CustomFunctionTranspiler {
 			if (hasArgument) {
 				out.push(helpers.decl({
 					prop: this.argName(definitionId, i),
-					value: evaluatedArgs[i],
+					value: argument.value,
 					source: element.source,
 				}));
 			}
@@ -567,6 +606,84 @@ export class CustomFunctionTranspiler {
 		});
 
 		return changed ? stringify([componentValues]) : value;
+	}
+
+	/**
+	 * Resolve CSS-wide keywords in a provided argument value.
+	 *
+	 * In the argument rule `initial` resolves to the guaranteed-invalid value,
+	 * `inherit` to the same-named custom property in the calling context and
+	 * all other CSS-wide keywords to the guaranteed-invalid value.
+	 *
+	 * https://drafts.csswg.org/css-mixins-1/#arg-cascade
+	 */
+	private resolveArgumentKeywords(value: string, parameterName: string, callerScope: Scope): ArgumentValue {
+		const componentValues = parseListOfComponentValues(tokenize({ css: value }));
+		let keyword: string | null = null;
+		let meaningfulCount = 0;
+		let meaningfulComponentValue: ComponentValue | null = null;
+		let hasVar = false;
+
+		for (const componentValue of componentValues) {
+			if (isWhiteSpaceOrCommentNode(componentValue)) {
+				continue;
+			}
+
+			meaningfulCount++;
+			meaningfulComponentValue = componentValue;
+
+			if (isFunctionNode(componentValue)) {
+				if (componentValue.getName().toLowerCase() === 'var') {
+					hasVar = true;
+				}
+
+				continue;
+			}
+
+			if (isTokenNode(componentValue) && isTokenIdent(componentValue.value)) {
+				keyword = componentValue.value[4].value.toLowerCase();
+			}
+		}
+
+		if (!hasVar) {
+			if (meaningfulCount === 1 && keyword !== null && CSS_WIDE_KEYWORDS.has(keyword)) {
+				const replacement = this.resolveArgumentKeyword(keyword, parameterName, callerScope);
+				return {
+					value: replacement ? stringify([replacement]) : value,
+					cssWideKeyword: keyword,
+				};
+			}
+
+			return { value, cssWideKeyword: null };
+		}
+
+		const changed = rewriteVarFallbackKeywords(componentValues, (fallbackKeyword) => {
+			return this.resolveArgumentKeyword(fallbackKeyword, parameterName, callerScope);
+		});
+
+		let fallbackKeyword: string | null = null;
+		if (
+			meaningfulCount === 1 &&
+			meaningfulComponentValue !== null &&
+			isFunctionNode(meaningfulComponentValue) &&
+			meaningfulComponentValue.getName().toLowerCase() === 'var'
+		) {
+			fallbackKeyword = keywordFallback(meaningfulComponentValue);
+		}
+
+		return { value: changed ? stringify([componentValues]) : value, cssWideKeyword: fallbackKeyword };
+	}
+
+	private resolveArgumentKeyword(keyword: string, parameterName: string, callerScope: Scope): Array<ComponentValue> | null {
+		if (keyword === 'inherit') {
+			return [this.varReference(callerScope.get(parameterName) ?? parameterName)];
+		}
+
+		if (CSS_WIDE_KEYWORDS.has(keyword)) {
+			return [this.varReference(INVALID_IDENT)];
+		}
+
+		return null;
 	}
 
 	/**
@@ -757,6 +874,50 @@ function wrapInConditionals(nodes: Array<ChildNode>, conditionals: Array<AtRule>
 	return current;
 }
 
+/** The CSS-wide keyword that can be the whole value of a `var()` fallback. */
+function keywordFallback(functionNode: FunctionNode): string | null {
+	const commaIndex = findTopLevelCommaIndex(functionNode.value);
+	if (commaIndex === -1) {
+		return null;
+	}
+
+	const fallback = functionNode.value.slice(commaIndex + 1);
+	let keyword: string | null = null;
+	let meaningfulCount = 0;
+	let nestedVar: FunctionNode | null = null;
+
+	for (const componentValue of fallback) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
+			continue;
+		}
+
+		meaningfulCount++;
+
+		if (isFunctionNode(componentValue) && componentValue.getName().toLowerCase() === 'var') {
+			nestedVar = componentValue;
+			keyword = null;
+			continue;
+		}
+
+		if (isTokenNode(componentValue) && isTokenIdent(componentValue.value)) {
+			keyword = componentValue.value[4].value.toLowerCase();
+			continue;
+		}
+
+		keyword = null;
+	}
+
+	if (meaningfulCount !== 1) {
+		return null;
+	}
+
+	if (keyword !== null && CSS_WIDE_KEYWORDS.has(keyword)) {
+		return keyword;
+	}
+
+	return nestedVar ? keywordFallback(nestedVar) : null;
+}
+
 /**
  * Rewrite CSS-wide keywords that are the entire fallback of a `var()` function.
  *
@@ -866,10 +1027,8 @@ function unescapedPropertyName(property: string): string | null {
 	return token[4].value;
 }
 
-/**
- * Collect every local custom property declared anywhere in a function body.
- */
-function collectLocalNames(atRule: AtRule): Set<string> {
+/** Collect every local custom property declared anywhere in a function body. */
+function collectDeclaredLocalNames(atRule: AtRule): Set<string> {
 	const names = new Set<string>();
 
 	atRule.walkDecls((decl) => {
@@ -878,10 +1037,6 @@ function collectLocalNames(atRule: AtRule): Set<string> {
 			names.add(name);
 		}
 	});
-
-	for (const name of collectRegisteredLocalNames(atRule)) {
-		names.add(name);
-	}
 
 	return names;
 }

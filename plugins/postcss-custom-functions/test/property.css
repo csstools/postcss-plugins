@@ -145,3 +145,28 @@
 .registered-escaped {
 	width: --registered-escaped();
 }
+
+@function --registered-parameter(--size <length>: 10px) {
+	@property --size <length>: 20px;
+
+	result: var(--size);
+}
+
+.registered-parameter-default {
+	width: --registered-parameter();
+}
+
+.registered-parameter-argument {
+	width: --registered-parameter(30px);
+}
+
+@function --registered-parameter-shadowed(--size <length>: 10px) {
+	@property --size <length>: 20px;
+
+	--size: 15px;
+	result: var(--size);
+}
+
+.registered-parameter-shadowed {
+	width: --registered-parameter-shadowed(30px);
+}

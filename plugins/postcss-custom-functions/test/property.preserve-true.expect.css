@@ -193,6 +193,44 @@
 	width: var(--_csstools-cf-7q9ama-o-result);
 	width: --registered-escaped();
 }
+
+@function --registered-parameter(--size <length>: 10px) {
+	@property --size <length>: 20px;
+
+	result: var(--size);
+}
+
+.registered-parameter-default {
+	--_csstools-cf-7q9ama-r-arg-0: 10px;
+
+	--_csstools-cf-7q9ama-q-result: var(--_csstools-cf-7q9ama-r-arg-0);
+	width: var(--_csstools-cf-7q9ama-q-result);
+	width: --registered-parameter();
+}
+
+.registered-parameter-argument {
+	--_csstools-cf-7q9ama-t-arg-0: 30px;
+
+	--_csstools-cf-7q9ama-s-result: var(--_csstools-cf-7q9ama-t-arg-0);
+	width: var(--_csstools-cf-7q9ama-s-result);
+	width: --registered-parameter(30px);
+}
+
+@function --registered-parameter-shadowed(--size <length>: 10px) {
+	@property --size <length>: 20px;
+
+	--size: 15px;
+	result: var(--size);
+}
+
+.registered-parameter-shadowed {
+	--_csstools-cf-7q9ama-v-arg-0: 30px;
+
+	--_csstools-cf-7q9ama-v-local-size: 15px;
+	--_csstools-cf-7q9ama-u-result: var(--_csstools-cf-7q9ama-v-local-size);
+	width: var(--_csstools-cf-7q9ama-u-result);
+	width: --registered-parameter-shadowed(30px);
+}
 	@property --_csstools-cf-7q9ama-1-local-size {
 		syntax: "<length>";
 		inherits: false;
@@ -227,4 +265,22 @@
 	@media (min-width: 1000px) {
 		@property --_csstools-cf-7q9ama-n-local-size <length>: 10px;
 	}
-	@property --_csstools-cf-7q9ama-p-local-foo <length>: 10px
+	@property --_csstools-cf-7q9ama-p-local-foo <length>: 10px;
+	@property --_csstools-cf-7q9ama-r-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}
+	@property --_csstools-cf-7q9ama-r-arg-0 <length>: 20px;
+	@property --_csstools-cf-7q9ama-t-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}
+	@property --_csstools-cf-7q9ama-t-arg-0 <length>: 20px;
+	@property --_csstools-cf-7q9ama-v-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}
+	@property --_csstools-cf-7q9ama-v-local-size <length>: 20px

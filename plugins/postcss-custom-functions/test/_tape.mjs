@@ -50,6 +50,9 @@ postcssTape(plugin)({
 	'local-keywords': {
 		message: 'resolves other CSS-wide keywords on local variables to the guaranteed-invalid value',
 	},
+	'parameter-keywords': {
+		message: 'resolves CSS-wide keywords in function arguments',
+	},
 	'inlining': {
 		message: 'inlines definitions without conditionals or layers',
 	},

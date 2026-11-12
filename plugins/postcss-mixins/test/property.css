@@ -53,3 +53,16 @@
 .registered-private-b {
 	@apply --registered-private;
 }
+
+@mixin --escaped-private() {
+	@private {
+		@property --\66 oo <length>: 20px;
+		--\66 oo: 30px;
+	}
+
+	width: var(--\66 oo);
+}
+
+.escaped-private {
+	@apply --escaped-private;
+}
