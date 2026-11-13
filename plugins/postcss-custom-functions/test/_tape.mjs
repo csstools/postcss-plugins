@@ -65,6 +65,9 @@ postcssTape(plugin)({
 	cycles: {
 		message: 'handles cyclic functions',
 	},
+	'conditional-cycles': {
+		message: 'does not evaluate cycles in inactive or losing declarations',
+	},
 	'conditionals': {
 		message: 'supports conditional rules',
 	},

@@ -1,0 +1,80 @@
+@function --conditional-result-cycle() {
+	@media (width < 0px) {
+		result: --conditional-result-cycle();
+	}
+	result: 7;
+}
+
+.conditional-result-cycle {
+	--actual: --conditional-result-cycle();
+}
+
+@function --conditional-local-cycle() {
+	@media (width < 0px) {
+		--x: --conditional-local-cycle();
+	}
+	result: 7;
+}
+
+.conditional-local-cycle {
+	--actual: --conditional-local-cycle();
+}
+
+@function --fallback-cycle() {
+	result: var(--x, --fallback-cycle());
+}
+
+.fallback-cycle {
+	--actual: --fallback-cycle();
+}
+
+@function --losing-definition-cycle() {
+	result: --losing-definition-cycle();
+}
+
+@function --losing-definition-cycle() {
+	result: 7;
+}
+
+.losing-definition-cycle {
+	--actual: --losing-definition-cycle();
+}
+
+@function --losing-result-cycle() {
+	@media (min-width: 0px) {
+		result: --losing-result-cycle();
+	}
+	result: 7;
+}
+
+.losing-result-cycle {
+	--actual: --losing-result-cycle();
+}
+
+@function --later-conditional-definition() {
+	result: 1;
+}
+
+@media (min-width: 0px) {
+	@function --later-conditional-definition() {
+		result: 2;
+	}
+}
+
+.later-conditional-definition {
+	--actual: --later-conditional-definition();
+}
+
+@function --later-conditional-body() {
+	result: 1;
+}
+
+@function --later-conditional-body() {
+	@media (min-width: 0px) {
+		result: 2;
+	}
+}
+
+.later-conditional-body {
+	--actual: --later-conditional-body();
+}

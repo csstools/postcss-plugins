@@ -4,6 +4,7 @@ import {
 	FunctionNode as CSSAFunctionNode,
 	TokenNode as CSSATokenNode,
 	isFunctionNode,
+	isSimpleBlockNode,
 	isTokenNode,
 	isWhiteSpaceOrCommentNode,
 	parseListOfComponentValues,
@@ -28,6 +29,8 @@ const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
+
+const LAZY_FUNCTION_NAMES = new Set(['var', 'env', 'attr', 'inherit', 'if', 'first-valid']);
 
 type ArgumentValue = {
 	value: string,
@@ -69,9 +72,19 @@ class Scope {
 	}
 }
 
+type CycleContext = {
+	conditionals: Array<AtRule>,
+	isResult: boolean,
+	lazy: boolean,
+};
+
 type CallFrame = {
 	name: string,
 	cyclic: boolean,
+	hasKeywordResult: boolean,
+	live: boolean,
+	lazy: boolean,
+	cycles: Array<CycleContext>,
 };
 
 export type ProcessDeclarationResult = {
@@ -103,6 +116,9 @@ export class CustomFunctionTranspiler {
 	private names: GeneratedNames = new GeneratedNames('0');
 	private budget = MAX_GENERATED_DECLARATIONS;
 	private emittedNodes: Array<ChildNode> = [];
+	private currentConditionals: Array<AtRule> = [];
+	private currentIsResult = false;
+	private currentLazy = false;
 
 	setCustomFunctions(customFunctions: Map<string, CustomFunctionGroup>): void {
 		this.customFunctions = customFunctions;
@@ -152,6 +168,11 @@ export class CustomFunctionTranspiler {
 		// Inserting them one by one is quadratic: PostCSS resolves the index of
 		// the reference node with `indexOf` on every insertion.
 		this.emittedNodes = [];
+		this.currentConditionals = [];
+		this.currentIsResult = false;
+		this.currentLazy = false;
+
+		const lazyComponentValues = collectLazyComponentValues(componentValues, false);
 
 		replaceComponentValues([componentValues], (node) => {
 			if (!isFunctionNode(node)) {
@@ -168,7 +189,7 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			return this.processCall(node, element, new Scope(null), inlineDecls, helpers, new Map());
+			return this.processCall(node, element, new Scope(null), inlineDecls, helpers, new Map(), lazyComponentValues.has(node));
 		});
 
 		const modified = stringify([componentValues]);
@@ -182,7 +203,7 @@ export class CustomFunctionTranspiler {
 		};
 	}
 
-	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers, parameterArgs: Map<string, string>): Array<ComponentValue> {
+	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers, parameterArgs: Map<string, string>, lazy: boolean): Array<ComponentValue> {
 		const name = fn.getName();
 		const group = this.customFunctions.get(name);
 
@@ -194,7 +215,19 @@ export class CustomFunctionTranspiler {
 		// the guaranteed-invalid value.
 		const existingFrame = this.frames.find((frame) => frame.name === name);
 		if (existingFrame) {
-			existingFrame.cyclic = true;
+			const cycleLazy = existingFrame.lazy || lazy;
+			const cycleConditionals = this.currentConditionals;
+			const invalidating = existingFrame.live &&
+				!cycleLazy &&
+				!this.currentIsResult &&
+				(cycleConditionals.length === 0 || existingFrame.hasKeywordResult);
+
+			existingFrame.cyclic = existingFrame.cyclic || invalidating;
+			existingFrame.cycles.push({
+				conditionals: cycleConditionals,
+				isResult: this.currentIsResult,
+				lazy: cycleLazy,
+			});
 			return [this.varReference(INVALID_IDENT)];
 		}
 
@@ -210,6 +243,11 @@ export class CustomFunctionTranspiler {
 		// the body makes the whole evaluation invalid.
 		const keywordResult = group.definitions.length === 1 ? group.definitions[0].keywordResult : null;
 
+		const savedConditionals = this.currentConditionals;
+		const savedIsResult = this.currentIsResult;
+		const savedLazy = this.currentLazy;
+		this.currentLazy = lazy;
+
 		// Arguments are resolved in the scope of the caller, before the function
 		// itself is evaluated.
 		const evaluatedArgs = args.map((arg) => {
@@ -219,20 +257,34 @@ export class CustomFunctionTranspiler {
 		const callId = (this.counter++).toString(36);
 		const resultName = this.resultName(callId);
 
-		const frame: CallFrame = { name, cyclic: false };
+		const frame: CallFrame = { name, cyclic: false, hasKeywordResult: !!keywordResult, live: false, lazy, cycles: [] };
 		this.frames.push(frame);
 
-		for (const definition of group.definitions) {
-			this.emitDefinition(definition, args, evaluatedArgs, element, parentScope, resultName, inlineDecls, helpers);
+		const firstLive = firstLiveDefinition(group.definitions);
+		let lastNonInline = -1;
+		for (let i = 0; i < group.definitions.length; i++) {
+			if (!canInlineDefinition(group.definitions[i])) {
+				lastNonInline = i;
+			}
 		}
 
-		// Once a substitution context is marked as cyclic, the whole evaluation
-		// returns the guaranteed-invalid value.
-		if (frame.cyclic) {
-			inlineDecls.push(this.invalidResultDeclaration(resultName, element, helpers));
+		for (let i = 0; i < group.definitions.length; i++) {
+			const live = i >= firstLive;
+			const inline = live && i > lastNonInline;
+			const cycleStart = frame.cycles.length;
+
+			frame.live = live;
+			this.emitDefinition(group.definitions[i], args, evaluatedArgs, element, parentScope, resultName, inlineDecls, helpers, inline);
+			if (live) {
+				this.emitCycleInvalidResults(frame, cycleStart, element, resultName, inlineDecls, helpers, inline);
+			}
 		}
 
 		this.frames.pop();
+
+		this.currentConditionals = savedConditionals;
+		this.currentIsResult = savedIsResult;
+		this.currentLazy = savedLazy;
 
 		if (frame.cyclic) {
 			return [this.varReference(INVALID_IDENT)];
@@ -245,8 +297,11 @@ export class CustomFunctionTranspiler {
 		return [this.varReference(resultName)];
 	}
 
-	private emitDefinition(definition: CustomFunctionDefinition, args: Array<Array<ComponentValue>>, evaluatedArgs: Array<string>, element: Rule, parentScope: Scope, resultName: string, inlineDecls: Array<Declaration>, helpers: Helpers): void {
+	private emitDefinition(definition: CustomFunctionDefinition, args: Array<Array<ComponentValue>>, evaluatedArgs: Array<string>, element: Rule, parentScope: Scope, resultName: string, inlineDecls: Array<Declaration>, helpers: Helpers, inline: boolean): void {
 		const parameters = definition.function.parameters;
+
+		this.currentConditionals = definition.conditionals;
+		this.currentIsResult = false;
 
 		// More arguments than parameters is invalid.
 		// A parameter without a default value must be provided.
@@ -366,11 +421,6 @@ export class CustomFunctionTranspiler {
 		if (!validArity) {
 			inlineDecls.push(this.invalidResultDeclaration(resultName, element, helpers));
 		} else {
-			// Only inline when the definition can be evaluated exactly where it
-			// is called: no conditional rule around it, no conditional rule in
-			// the body, and no cascade layer to preserve.
-			const inline = definition.conditionals.length === 0 && definition.layer === false && !hasConditionalBody(definition.node);
-
 			if (inline) {
 				// Arguments are prepended to the calling rule, so no extra rule
 				// is needed for them.
@@ -444,6 +494,44 @@ export class CustomFunctionTranspiler {
 		}
 
 		this.emittedNodes.push(...nodes);
+	}
+
+	/**
+	 * Invalidate the result for cycles in code that is always evaluated.
+	 *
+	 * Cycles in `result` declarations are already replaced in place and are
+	 * resolved by the cascade, so only cycles in locals need a trailing
+	 * invalidation. The invalidation is scoped to the conditional rules that
+	 * guard the cyclic declaration, because an inactive declaration is never
+	 * evaluated. It is emitted per definition so that a stronger definition
+	 * can still win.
+	 */
+	private emitCycleInvalidResults(frame: CallFrame, fromIndex: number, element: Rule, resultName: string, inlineDecls: Array<Declaration>, helpers: Helpers, inline: boolean): void {
+		const cycles = frame.cycles.slice(fromIndex).filter((cycle) => !cycle.isResult && !cycle.lazy);
+		if (!cycles.length) {
+			return;
+		}
+
+		if (inline) {
+			inlineDecls.push(this.invalidResultDeclaration(resultName, element, helpers));
+			return;
+		}
+
+		if (cycles.some((cycle) => !cycle.conditionals.length)) {
+			this.emittedNodes.push(...wrapInConditionals([element.clone({ nodes: [this.invalidResultDeclaration(resultName, element, helpers)] })], []));
+			return;
+		}
+
+		const seen = new Set<string>();
+		for (const cycle of cycles) {
+			const key = conditionalsKey(cycle.conditionals);
+			if (seen.has(key)) {
+				continue;
+			}
+
+			seen.add(key);
+			this.emittedNodes.push(...wrapInConditionals([element.clone({ nodes: [this.invalidResultDeclaration(resultName, element, helpers)] })], cycle.conditionals));
+		}
 	}
 
 	/** Moves local `@property` rules to the root with their generated local names. */
@@ -580,6 +668,7 @@ export class CustomFunctionTranspiler {
 
 		for (const node of containerNodes) {
 			if (node.type === 'decl') {
+				this.currentConditionals = activeConditionals;
 				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, definitionId, resultName, pendingDecls, helpers);
 				if (processed) {
 					pendingDecls.push(processed);
@@ -623,6 +712,8 @@ export class CustomFunctionTranspiler {
 		out: Array<Declaration>,
 		helpers: Helpers,
 	): void {
+		this.currentConditionals = [];
+
 		for (const node of containerNodes) {
 			if (node.type === 'decl') {
 				const processed = this.processBodyDeclaration(node, element, scope, parameterArgs, definitionId, resultName, out, helpers);
@@ -652,7 +743,8 @@ export class CustomFunctionTranspiler {
 		let prop: string;
 		let declaredProp: string | null = null;
 
-		if (decl.prop.toLowerCase() === 'result') {
+		const isResult = decl.prop.toLowerCase() === 'result';
+		if (isResult) {
 			prop = resultName;
 		} else {
 			declaredProp = unescapedPropertyName(decl.prop);
@@ -673,7 +765,12 @@ export class CustomFunctionTranspiler {
 		// being declared, including when they appear as a `var()` fallback.
 		// This runs after the regular rewriting so that the inserted call-site
 		// references are not rewritten to the local scope.
+		const previousIsResult = this.currentIsResult;
+		this.currentIsResult = isResult;
+
 		let value = this.rewriteValue(decl.value, element, scope, inlineDecls, helpers, parameterArgs);
+
+		this.currentIsResult = previousIsResult;
 		if (declaredProp !== null) {
 			value = this.resolveBodyKeywords(value, declaredProp, scope, parameterArgs);
 		}
@@ -835,6 +932,7 @@ export class CustomFunctionTranspiler {
 		}
 
 		const componentValues = parseListOfComponentValues(tokens);
+		const lazyComponentValues = collectLazyComponentValues(componentValues, this.currentLazy);
 
 		replaceComponentValues([componentValues], (node) => {
 			if (!isFunctionNode(node)) {
@@ -867,7 +965,7 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			return this.processCall(node, element, scope, inlineDecls, helpers, parameterArgs);
+			return this.processCall(node, element, scope, inlineDecls, helpers, parameterArgs, lazyComponentValues.has(node));
 		});
 
 		return stringify([componentValues]);
@@ -1153,6 +1251,70 @@ function hasConditionalBody(atRule: AtRule): boolean {
 	});
 
 	return found;
+}
+
+/**
+ * Whether a definition can be evaluated in the calling rule without a guard.
+ */
+function canInlineDefinition(definition: CustomFunctionDefinition): boolean {
+	return definition.conditionals.length === 0 && definition.layer === false && !hasConditionalBody(definition.node);
+}
+
+/**
+ * The first definition that can win the cascade. Earlier definitions are
+ * always beaten by a later unconditional definition with an unconditional
+ * result.
+ */
+function firstLiveDefinition(definitions: Array<CustomFunctionDefinition>): number {
+	let lastDominating = 0;
+
+	for (let i = 0; i < definitions.length; i++) {
+		if (definitions[i].conditionals.length === 0 && hasUnconditionalResult(definitions[i])) {
+			lastDominating = i;
+		}
+	}
+
+	return lastDominating;
+}
+
+function hasUnconditionalResult(definition: CustomFunctionDefinition): boolean {
+	return (definition.node.nodes || []).some((node) => {
+		return node.type === 'decl' && !node.important && node.prop.toLowerCase() === 'result';
+	});
+}
+
+/**
+ * Component values that are only evaluated when selected: fallbacks and
+ * conditional branches.
+ */
+function collectLazyComponentValues(componentValues: Array<ComponentValue>, inheritedLazy: boolean): WeakSet<ComponentValue> {
+	const lazyComponentValues = new WeakSet<ComponentValue>();
+
+	collectLazyComponentValuesFrom(componentValues, inheritedLazy, lazyComponentValues);
+
+	return lazyComponentValues;
+}
+
+function collectLazyComponentValuesFrom(componentValues: Array<ComponentValue>, inheritedLazy: boolean, out: WeakSet<ComponentValue>): void {
+	for (const componentValue of componentValues) {
+		if (isFunctionNode(componentValue)) {
+			const lazy = inheritedLazy || LAZY_FUNCTION_NAMES.has(componentValue.getName().toLowerCase());
+			if (lazy) {
+				out.add(componentValue);
+			}
+
+			collectLazyComponentValuesFrom(componentValue.value, lazy, out);
+			continue;
+		}
+
+		if (isSimpleBlockNode(componentValue)) {
+			collectLazyComponentValuesFrom(componentValue.value, inheritedLazy, out);
+		}
+	}
+}
+
+function conditionalsKey(conditionals: Array<AtRule>): string {
+	return conditionals.map((conditional) => `${conditional.name}\u0000${conditional.params}`).join('\u0001');
 }
 
 /** The unescaped name of a custom property token. */

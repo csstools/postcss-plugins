@@ -18,6 +18,8 @@
 - Trim whitespace from dashed-function arguments.
 - Treat an empty default value (`--x:`) as a default value.
 - Substitute `inherit()` in function bodies from the calling context, including nested function calls in a fallback.
+- Do not evaluate cycles in inactive conditional rules, unused fallbacks or losing declarations.
+- Preserve the cascade order when definitions of the same name are inlined.
 
 ### 1.0.1
 
