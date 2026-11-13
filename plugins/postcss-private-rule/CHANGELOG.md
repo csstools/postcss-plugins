@@ -4,6 +4,8 @@
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
 - Leave `@private` rules with registrations inside `@container` or `@starting-style` unchanged.
+- Leave a style rule unchanged when any of its `@private` rules has a registration that can not be hoisted.
+- Remove conditional group rules that only contained a `@private` rule.
 
 ### 1.1.1
 

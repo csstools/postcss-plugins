@@ -87,6 +87,11 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 		return [];
 	}
 
+	// A final trailing comma does not declare a parameter.
+	if (rawParameters.length > 1 && isBlank(rawParameters[rawParameters.length - 1])) {
+		rawParameters.pop();
+	}
+
 	const parameters: Array<MixinParameter> = [];
 	const names = new Set<string>();
 
@@ -119,7 +124,8 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 			}
 
 			if (isTokenNode(componentValue) && isTokenColon(componentValue.value)) {
-				defaultValue = stringify([rawParameter.slice(i + 1)]).trim() || undefined;
+				// An empty default value is distinct from no default value.
+				defaultValue = stringify([rawParameter.slice(i + 1)]).trim();
 				break;
 			}
 
@@ -131,7 +137,7 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 			return false;
 		}
 
-		if (defaultValue && IS_IMPORTANT_REGEX.test(defaultValue)) {
+		if (defaultValue !== undefined && IS_IMPORTANT_REGEX.test(defaultValue)) {
 			return false;
 		}
 
@@ -142,4 +148,8 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 	}
 
 	return parameters;
+}
+
+function isBlank(componentValues: Array<ComponentValue>): boolean {
+	return componentValues.every(isWhiteSpaceOrCommentNode);
 }

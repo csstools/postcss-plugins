@@ -211,7 +211,7 @@ export class MixinExpander {
 				value = `var(${argumentName})`;
 			} else {
 				// Missing arguments resolve to their default in the mixin's own frame.
-				value = parameter.defaultValue || 'initial';
+				value = parameter.defaultValue ?? 'initial';
 			}
 
 			parameterPrivateRule.append(helpers.decl({

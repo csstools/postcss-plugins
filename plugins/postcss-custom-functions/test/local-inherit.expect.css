@@ -2,7 +2,7 @@
 	--x: FAIL2;
 	--_csstools-cf-1yh5w0q-1-local-x: PASS;
 	--_csstools-cf-1yh5w0q-3-local-x: FAIL;
-	--_csstools-cf-1yh5w0q-2-result: inherit(--_csstools-cf-1yh5w0q-1-local-x);
+	--_csstools-cf-1yh5w0q-2-result: var(--_csstools-cf-1yh5w0q-1-local-x);
 	--_csstools-cf-1yh5w0q-0-result: var(--_csstools-cf-1yh5w0q-2-result);
 	--actual: var(--_csstools-cf-1yh5w0q-0-result);
 }

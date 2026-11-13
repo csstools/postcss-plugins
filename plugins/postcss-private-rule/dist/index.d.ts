@@ -16,6 +16,7 @@ export declare class Transpiler {
         prefix: string;
         privateProperties: Set<string>;
     }>;
+    private nonHoistableOwners;
     counter: number;
     hashes: Map<string, string>;
     /** `@property` registrations generated for private properties. */
@@ -35,6 +36,19 @@ export declare class Transpiler {
         rule: Rule;
     }>;
     registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void;
+    /**
+     * Remove a private rule and any conditional group rules that only
+     * contained it.
+     */
+    private removePrivateRule;
+    /**
+     * Whether any `@private` rule for this style rule has a registration that
+     * can not be hoisted to the root.
+     *
+     * A private property name is scoped to the style rule, so all private rules
+     * of a style rule must be transpiled or none of them.
+     */
+    private hasNonHoistableRegistration;
     /**
      * Move `@property` rules to the root with the generated private property
      * names, so they provide the registration for the private properties.

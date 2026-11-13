@@ -26,7 +26,7 @@ Unsupported:
 - typed mixin arguments
 - layered `@mixin` declarations
 - mixin overrides
-- `@private` rules that contain `@property` rules inside `@container` or `@starting-style`
+- mixin applications whose `@private` rules contain `@property` rules inside `@container` or `@starting-style`
 
 ```css
 <example.css>

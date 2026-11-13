@@ -118,3 +118,18 @@
 
 	width: var(--starting-size);
 }
+
+.container-registration-siblings {
+	@container (width > 10px) {
+		@private {
+			@property --sibling-size <length>: 10px;
+			--sibling-size: 20px;
+		}
+	}
+
+	@private {
+		--sibling-size: 30px;
+	}
+
+	width: var(--sibling-size);
+}

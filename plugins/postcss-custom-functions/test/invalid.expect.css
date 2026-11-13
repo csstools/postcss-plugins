@@ -12,7 +12,10 @@
 	width: --unknown(1);
 }
 
-.empty-args {
-	--_csstools-cf-1lkn6xo-4-result: var(--_csstools-cf-invalid);
-	width: var(--_csstools-cf-1lkn6xo-4-result);
+.braces-in-value {
+	width: var(--_csstools-cf-invalid);
+}
+
+.braces-before-value {
+	width: var(--_csstools-cf-invalid);
 }

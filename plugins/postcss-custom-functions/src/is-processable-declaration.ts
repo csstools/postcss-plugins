@@ -9,8 +9,8 @@ import { isGeneratedProperty } from './generated-names';
 
 const blockedParentAtRules = new Set(['function', 'keyframes']);
 const contextSensitiveProperty = /^(font-size|font|line-height)$/i;
-const fontRelativeUnits = new Set(['em', 'ex', 'cap', 'ch', 'ic', 'lh', 'cqw', 'cqh', 'cqi', 'cqb', 'cqmin', 'cqmax']);
-const lineHeightRelativeUnits = new Set(['lh', 'cqw', 'cqh', 'cqi', 'cqb', 'cqmin', 'cqmax']);
+const fontRelativeUnits = new Set(['em', 'ex', 'cap', 'ch', 'ic', 'lh']);
+const lineHeightRelativeUnits = new Set(['lh']);
 
 export function isProcessableDeclaration(decl: Declaration, customFunctions?: Map<string, CustomFunctionGroup>): boolean {
 	if (isGeneratedProperty(decl.prop)) {

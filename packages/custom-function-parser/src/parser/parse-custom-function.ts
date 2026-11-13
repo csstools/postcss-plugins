@@ -216,10 +216,6 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 		return false;
 	}
 
-	if (colonIndex !== -1 && defaultValueIndex === -1) {
-		return false;
-	}
-
 	const typeEndIndex = colonIndex !== -1 ? (colonIndex - 1) : (i - 1);
 
 	for (let j = (componentValues.length - 1); j > Math.max(typeEndIndex, defaultValueIndex); j--) {

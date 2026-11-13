@@ -20,6 +20,7 @@ const PAGES = [
 	'wpt/dashed-function-standard-property.html',
 	'wpt/local-var-substitution.html',
 	'wpt/dashed-function-cycles.html',
+	'wpt/local-inherit-substitution.html',
 	'wpt/function-parameter-types.html',
 	'wpt/function-layer.html',
 	'wpt/function-conditional-definitions.html',
@@ -133,19 +134,16 @@ async function runInBrowser(browser, browserName) {
 
 	for (const url of PAGES) {
 		for (const transform of transforms) {
-			await page.addInitScript((flags) => {
+			await page.goto('http://localhost:8080/' + url);
+
+			const result = await page.evaluate(async (flags) => {
 				// eslint-disable-next-line no-undef
 				window.__BROWSER__ = flags.browser;
 				// eslint-disable-next-line no-undef
 				window.__TRANSFORM__ = flags.transform;
-			}, { browser: browserName, transform });
-
-			await page.goto('http://localhost:8080/' + url);
-
-			const result = await page.evaluate(async () => {
 				// eslint-disable-next-line no-undef
 				return await window.runTest();
-			});
+			}, { browser: browserName, transform });
 
 			if (!result) {
 				throw new Error(`Test failed, expected "window.runTest()" to return true (${browserName}, ${url}, transform=${transform})`);
@@ -182,6 +180,10 @@ if (!process.env.DEBUG) {
 			try {
 				webkitBrowser = await webkit.launch({ headless: true });
 			} catch (error) {
+				if (process.env.GITHUB_ACTIONS) {
+					throw error;
+				}
+
 				t.diagnostic(`WebKit is not available: ${error instanceof Error ? error.message : error}`);
 			}
 

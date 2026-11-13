@@ -1,6 +1,6 @@
 import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } from 'postcss';
 import type { FunctionNode } from '@csstools/css-parser-algorithms';
-import { findAllStyleRules, findPrivateRule } from './valid-atrules';
+import { findAllStyleRules, findPrivateRule, findStyleRule, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
 import { rewritePropertyNames } from '@csstools/utilities';
@@ -17,6 +17,8 @@ const IS_NON_HOISTABLE_CONDITIONAL_REGEX = /^(container|starting-style)$/i;
 
 export class Transpiler {
 	privateForRule: WeakMap<Rule | AtRule, { prefix: string, privateProperties: Set<string> }> = new Map();
+
+	private nonHoistableOwners: WeakMap<Rule | AtRule, boolean> = new Map();
 
 	counter = 0;
 
@@ -89,21 +91,21 @@ export class Transpiler {
 			return;
 		}
 
+		// Private property names are scoped to the style rule. When a
+		// registration for any of them can not be hoisted, the whole style rule
+		// is left as-is so that all private properties stay consistent.
+		if (this.hasNonHoistableRegistration(ownerNode)) {
+			return;
+		}
+
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
 		const ancestorConditionals = collectConditionalAncestors(atRule, ownerNode);
 		const propertyRules = collectPropertyRules(atRule);
 
-		if (propertyRules.length && (
-			ancestorConditionals.some(isNonHoistableConditional) ||
-			propertyRules.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))
-		)) {
-			return;
-		}
-
 		this.extractPropertyRules(propertyRules, prefix, privateProperties, ancestorConditionals);
 
 		if (!atRule.nodes?.length) {
-			atRule.remove();
+			this.removePrivateRule(atRule, ownerNode);
 			return;
 		}
 
@@ -133,15 +135,60 @@ export class Transpiler {
 		removeEmptyNestingGroupRules(atRule);
 
 		if (!atRule.nodes?.length) {
-			atRule.remove();
+			this.removePrivateRule(atRule, ownerNode);
 			return;
 		}
 
 		// Insert as a batch: PostCSS resolves the index of `atRule` with
 		// `indexOf` for every single `before()` call, which is quadratic.
 		atRule.before(atRule.nodes.map((node) => node.clone()));
+		this.removePrivateRule(atRule, ownerNode);
+	}
 
+	/**
+	 * Remove a private rule and any conditional group rules that only
+	 * contained it.
+	 */
+	private removePrivateRule(atRule: AtRule, ownerNode: AtRule | Rule): void {
+		const parent = atRule.parent;
 		atRule.remove();
+		removeEmptyGroupingAncestors(parent, ownerNode);
+	}
+
+	/**
+	 * Whether any `@private` rule for this style rule has a registration that
+	 * can not be hoisted to the root.
+	 *
+	 * A private property name is scoped to the style rule, so all private rules
+	 * of a style rule must be transpiled or none of them.
+	 */
+	private hasNonHoistableRegistration(ownerNode: AtRule | Rule): boolean {
+		const cached = this.nonHoistableOwners.get(ownerNode);
+		if (cached !== undefined) {
+			return cached;
+		}
+
+		let skip = false;
+
+		ownerNode.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
+			if (skip || findStyleRule(atRule) !== ownerNode) {
+				return;
+			}
+
+			if (collectConditionalAncestors(atRule, ownerNode).some(isNonHoistableConditional)) {
+				skip = true;
+				return;
+			}
+
+			const propertyRules = collectPropertyRules(atRule);
+			if (propertyRules.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))) {
+				skip = true;
+			}
+		});
+
+		this.nonHoistableOwners.set(ownerNode, skip);
+
+		return skip;
 	}
 
 	/**
@@ -359,6 +406,7 @@ function removeEmptyNestingGroupRules(container: AtRule): void {
 
 		removeEmptyNestingGroupRules(node);
 
+		// Empty layers are kept: they still declare the layer order.
 		if (IS_LAYER_REGEX.test(node.name)) {
 			continue;
 		}
@@ -366,6 +414,25 @@ function removeEmptyNestingGroupRules(container: AtRule): void {
 		if (!node.nodes?.length) {
 			node.remove();
 		}
+	}
+}
+
+/** Remove conditional group rules that only contained a removed private rule. */
+function removeEmptyGroupingAncestors(node: Node | undefined, ownerNode: Node): void {
+	while (node && node !== ownerNode) {
+		const parent = node.parent;
+
+		// Empty layers are kept: they still declare the layer order.
+		if (
+			node.type === 'atrule' &&
+			IS_NESTING_GROUP_RULE_REGEX.test((node as AtRule).name) &&
+			!IS_LAYER_REGEX.test((node as AtRule).name) &&
+			!(node as AtRule).nodes?.length
+		) {
+			node.remove();
+		}
+
+		node = parent;
 	}
 }
 

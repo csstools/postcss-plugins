@@ -3,6 +3,7 @@
 ### Unreleased (patch)
 
 - Reject `--` as a parameter name.
+- Support an empty default value (`--x:`).
 
 ### 1.0.0
 

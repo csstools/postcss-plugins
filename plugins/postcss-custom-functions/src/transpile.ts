@@ -259,7 +259,7 @@ export class CustomFunctionTranspiler {
 		let validArity = args.length <= parameters.length;
 		if (validArity) {
 			for (let i = args.length; i < parameters.length; i++) {
-				if (!parameters[i].getDefaultValue()) {
+				if (parameters[i].colon === null) {
 					validArity = false;
 					break;
 				}
@@ -436,6 +436,8 @@ export class CustomFunctionTranspiler {
 			const parameter = parameters[i];
 			const type = parameterType(parameter);
 			const defaultValue = parameter.getDefaultValue();
+			// An empty default value (`--x:`) is distinct from no default value.
+			const hasDefault = parameter.colon !== null;
 			const argument = evaluatedArgs[i];
 			const hasArgument = argument !== undefined;
 
@@ -460,7 +462,7 @@ export class CustomFunctionTranspiler {
 						value: argument.value,
 						source: element.source,
 					}));
-				} else if (defaultValue) {
+				} else if (hasDefault) {
 					out.push(helpers.decl({
 						prop: this.argName(definitionId, i),
 						value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers),
@@ -473,7 +475,7 @@ export class CustomFunctionTranspiler {
 
 			// Untyped parameters use a raw + fallback pair so that missing
 			// and invalid arguments resolve to the default value.
-			if (defaultValue) {
+			if (hasDefault) {
 				if (hasArgument) {
 					out.push(helpers.decl({
 						prop: this.rawName(definitionId, i),
@@ -800,13 +802,12 @@ export class CustomFunctionTranspiler {
 			}
 
 			if (IS_STYLE_FUNCTION_REGEX.test(name)) {
-				this.rewriteCustomPropertyName(node, scope, false);
+				this.rewriteCustomPropertyName(node, scope);
 				return;
 			}
 
 			if (IS_INHERIT_FUNCTION_REGEX.test(name)) {
-				this.rewriteCustomPropertyName(node, scope, true);
-				return;
+				return this.rewriteInheritFunction(node, scope);
 			}
 
 			if (!name.startsWith('--')) {
@@ -824,7 +825,7 @@ export class CustomFunctionTranspiler {
 		return stringify([componentValues]);
 	}
 
-	private rewriteCustomPropertyName(node: FunctionNode, scope: Scope, inherited: boolean): void {
+	private rewriteCustomPropertyName(node: FunctionNode, scope: Scope): void {
 		for (let i = 0; i < node.value.length; i++) {
 			const child = node.value[i];
 			if (isWhiteSpaceOrCommentNode(child)) {
@@ -840,13 +841,52 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			const mapped = inherited ? scope.parent?.get(original) : scope.get(original);
+			const mapped = scope.get(original);
 			if (!mapped) {
 				return;
 			}
 
 			mutateIdent(child.value, mapped);
 			return;
+		}
+	}
+
+	/**
+	 * Rewrite `inherit(--x)` to a `var()` reference of the caller's frame.
+	 *
+	 * Inside a function body `inherit()` refers to the value the property would
+	 * have in the calling context, not to the value on the parent element.
+	 *
+	 * https://drafts.csswg.org/css-values-5/#inherit-notation
+	 */
+	private rewriteInheritFunction(node: FunctionNode, scope: Scope): Array<ComponentValue> | void {
+		for (let i = 0; i < node.value.length; i++) {
+			const child = node.value[i];
+			if (isWhiteSpaceOrCommentNode(child)) {
+				continue;
+			}
+
+			if (!isTokenNode(child) || !isTokenIdent(child.value)) {
+				return;
+			}
+
+			const original = child.value[4].value;
+			if (!original.startsWith('--')) {
+				return;
+			}
+
+			const mapped = scope.parent?.get(original) ?? original;
+
+			return [
+				new CSSAFunctionNode(
+					[TokenType.Function, 'var(', -1, -1, { value: 'var' }],
+					[TokenType.CloseParen, ')', -1, -1, undefined],
+					[
+						new CSSATokenNode([TokenType.Ident, mapped, -1, -1, { value: mapped }]),
+						...node.value.slice(i + 1),
+					],
+				),
+			];
 		}
 	}
 

@@ -4,6 +4,9 @@
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
 - Leave `@private` rules with registrations inside `@container` or `@starting-style` unchanged.
+- Support trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
+- Trim whitespace from `@apply` arguments.
+- Treat an empty default value (`--x:`) as a default value.
 
 ### 1.1.0
 

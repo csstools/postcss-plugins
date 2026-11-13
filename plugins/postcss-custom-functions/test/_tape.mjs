@@ -83,6 +83,9 @@ postcssTape(plugin)({
 	'invalid': {
 		message: 'handles invalid invocations',
 	},
+	'arguments': {
+		message: 'supports empty arguments, trailing commas and whitespace trimming',
+	},
 	'ignore': {
 		message: 'ignores unsupported functions',
 		expect: 'ignore.css',

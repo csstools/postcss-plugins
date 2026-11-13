@@ -1,0 +1,39 @@
+@function --pair(--a, --b) {
+	result: var(--a) var(--b);
+}
+
+.trailing-comma {
+	--actual: --pair(1px, 2px,);
+}
+
+.leading-empty-argument {
+	--actual: --pair(, 2px);
+}
+
+.middle-empty-argument {
+	--actual: --pair(1px, ,);
+}
+
+.trailing-empty-argument {
+	--actual: --pair(1px,,);
+}
+
+.whitespace-is-trimmed {
+	--actual: --pair(  1px  ,  2px  );
+}
+
+@function --empty-default(--a:) {
+	result: var(--a, FALLBACK);
+}
+
+.empty-default {
+	--actual: --empty-default();
+}
+
+@function --comma-block(--a) {
+	result: var(--a);
+}
+
+.comma-block {
+	--actual: --comma-block({ 1px, 2px });
+}

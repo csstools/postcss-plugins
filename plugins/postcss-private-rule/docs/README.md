@@ -19,7 +19,7 @@
 
 [<humanReadableName>] lets you declare private custom properties following the [CSS Mixins Specification].
 
-`@private` rules that contain `@property` rules inside `@container` or `@starting-style` are left as-is because those registrations can not be hoisted to the root.
+`@private` rules that contain `@property` rules inside `@container` or `@starting-style` are left as-is because those registrations can not be hoisted to the root. Because private property names are scoped to a style rule, the whole style rule is left unchanged when any of its `@private` rules can not be transpiled.
 
 ```css
 <example.css>

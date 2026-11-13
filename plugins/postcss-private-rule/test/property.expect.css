@@ -46,8 +46,6 @@
 }
 
 .outer-conditional {
-	@media (min-width: 1000px) {
-	}
 		--_csstools-p-7q9ama-5--outer-conditional-size: 14px;
 
 	width: var(--_csstools-p-7q9ama-5--outer-conditional-size);
@@ -74,6 +72,21 @@
 	}
 
 	width: var(--starting-size);
+}
+
+.container-registration-siblings {
+	@container (width > 10px) {
+		@private {
+			@property --sibling-size <length>: 10px;
+			--sibling-size: 20px;
+		}
+	}
+
+	@private {
+		--sibling-size: 30px;
+	}
+
+	width: var(--sibling-size);
 }
 		@property --_csstools-p-7q9ama-0--size {
 			syntax: "<length>";

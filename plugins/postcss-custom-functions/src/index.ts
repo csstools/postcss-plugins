@@ -10,7 +10,34 @@ export type pluginOptions = {
 	preserve?: boolean,
 };
 
-const HAS_CUSTOM_FUNCTION = /--[^:;\s(){}[\]]+\(/;
+/** Characters that can not be part of a `<dashed-function>` name. */
+const CUSTOM_FUNCTION_NAME_DELIMITERS = ':; \t\n\r\f(){}[]';
+
+/**
+ * Whether a value contains a `<dashed-function>` call.
+ */
+function hasCustomFunction(value: string): boolean {
+	for (let i = 0; i < value.length; i++) {
+		if (value[i] !== '-' || value[i + 1] !== '-') {
+			continue;
+		}
+
+		i += 2;
+
+		let end = i;
+		while (end < value.length && !CUSTOM_FUNCTION_NAME_DELIMITERS.includes(value[end])) {
+			end++;
+		}
+
+		if (value[end] === '(') {
+			return true;
+		}
+
+		i = end;
+	}
+
+	return false;
+}
 
 const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 	const options: pluginOptions = Object.assign(
@@ -45,7 +72,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					}
 				},
 				Declaration(decl, helpers): void {
-					if (!HAS_CUSTOM_FUNCTION.test(decl.value)) {
+					if (!hasCustomFunction(decl.value)) {
 						return;
 					}
 
