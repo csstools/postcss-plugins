@@ -12,6 +12,7 @@ type Mixin = {
 
 const IS_CONTENTS_REGEX = /^contents$/i;
 const IS_PRIVATE_REGEX = /^private$/i;
+const IS_LAYER_REGEX = /^layer$/i;
 const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 
 // Mixins can reference each other and duplicate subtrees, which can grow
@@ -29,7 +30,7 @@ const MAX_GENERATED_NODES = 100_000;
 export class MixinExpander {
 	private mixins: Map<string, Mixin> = new Map();
 	private knownMixins: Set<string> = new Set();
-	private transpiler: Transpiler = new Transpiler();
+	private transpiler: Transpiler = new Transpiler('m');
 	private argumentCounter = 0;
 	private desugaredNestingRules: Set<Rule> = new Set();
 	private expanding: Set<string> = new Set();
@@ -46,6 +47,11 @@ export class MixinExpander {
 			if (!parsed) {
 				continue;
 			}
+
+			// `@layer` is invalid in a mixin body and its contents are dropped.
+			atRule.walkAtRules(IS_LAYER_REGEX, (layer) => {
+				layer.remove();
+			});
 
 			// TODO: support mixin overrides
 			if (this.knownMixins.has(parsed.name)) {
@@ -160,7 +166,11 @@ export class MixinExpander {
 		let outerWrapper: Rule | undefined;
 		let argumentPrivateRule: AtRule | undefined;
 
-		if (mixin.parameters.length > 0 && args.length > 0) {
+		const hasInheritedDefault = mixin.parameters.some((parameter, i) => {
+			return i >= args.length && isInheritDefault(parameter.defaultValue);
+		});
+
+		if (mixin.parameters.length > 0 && (args.length > 0 || hasInheritedDefault)) {
 			outerWrapper = helpers.rule({ selector: '&', source: atRule.source });
 			outerWrapper.raws.semicolon = true;
 			this.desugaredNestingRules.add(outerWrapper);
@@ -208,6 +218,18 @@ export class MixinExpander {
 				}));
 
 				// The parameter resolves to the captured argument value.
+				value = `var(${argumentName})`;
+			} else if (argumentPrivateRule && isInheritDefault(parameter.defaultValue)) {
+				const argumentName = `--arg-${(this.argumentCounter++).toString(36)}`;
+
+				// `inherit` on a parameter default resolves to the same-named
+				// custom property in the calling context.
+				argumentPrivateRule.append(helpers.decl({
+					prop: argumentName,
+					value: `var(${parameter.name})`,
+					source: atRule.source,
+				}));
+
 				value = `var(${argumentName})`;
 			} else {
 				// Missing arguments resolve to their default in the mixin's own frame.
@@ -299,6 +321,10 @@ export class MixinExpander {
 
 function needsWrapper(mixin: Mixin): boolean {
 	return mixin.parameters.length > 0 || hasPrivateRules(mixin.atRule);
+}
+
+function isInheritDefault(value: string | undefined): boolean {
+	return value !== undefined && value.trim().toLowerCase() === 'inherit';
 }
 
 function countNodes(nodes: Array<ChildNode>): number {

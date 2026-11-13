@@ -4,7 +4,7 @@ import type { CustomFunctionGroup } from './custom-functions-from-root';
 import { isFunctionNode, isTokenNode, parseListOfComponentValues, walk } from '@csstools/css-parser-algorithms';
 import { isTokenDimension, tokenize } from '@csstools/css-tokenizer';
 import { parameterType } from './classify';
-import { hasImportant, parseArguments } from './parse-arguments';
+import { parseArguments } from './parse-arguments';
 import { isGeneratedProperty } from './generated-names';
 
 const blockedParentAtRules = new Set(['function', 'keyframes']);
@@ -17,7 +17,7 @@ export function isProcessableDeclaration(decl: Declaration, customFunctions?: Ma
 		return false;
 	}
 
-	if (decl.value.includes('!') && hasInvalidImportantArgument(decl.value)) {
+	if (hasInvalidArguments(decl.value)) {
 		return false;
 	}
 
@@ -44,7 +44,11 @@ export function isProcessableDeclaration(decl: Declaration, customFunctions?: Ma
 	return true;
 }
 
-function hasInvalidImportantArgument(value: string): boolean {
+function hasInvalidArguments(value: string): boolean {
+	if (!value.includes('--')) {
+		return false;
+	}
+
 	const componentValues = parseListOfComponentValues(tokenize({ css: value }));
 	let found = false;
 
@@ -53,7 +57,7 @@ function hasInvalidImportantArgument(value: string): boolean {
 			return;
 		}
 
-		if (hasImportant(entry.node.value)) {
+		if (parseArguments(entry.node) === false) {
 			found = true;
 		}
 	});

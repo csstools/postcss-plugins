@@ -3,9 +3,9 @@
 }
 
 .a {
-	--_csstools-p-165tpc7-0--arg-0: green;
-	--_csstools-p-165tpc7-1--color: var(--_csstools-p-165tpc7-0--arg-0);
-	color: var(--_csstools-p-165tpc7-1--color);
+	--_csstools-m-165tpc7-0--arg-0: green;
+	--_csstools-m-165tpc7-1--color: var(--_csstools-m-165tpc7-0--arg-0);
+	color: var(--_csstools-m-165tpc7-1--color);
 	@apply --basic(green);
 }
 
@@ -15,19 +15,19 @@
 }
 
 .b {
-	--_csstools-p-165tpc7-2--color: blue;
-	--_csstools-p-165tpc7-2--background: red;
-	color: var(--_csstools-p-165tpc7-2--color);
-	background-color: var(--_csstools-p-165tpc7-2--background);
+	--_csstools-m-165tpc7-2--color: blue;
+	--_csstools-m-165tpc7-2--background: red;
+	color: var(--_csstools-m-165tpc7-2--color);
+	background-color: var(--_csstools-m-165tpc7-2--background);
 	@apply --defaults;
 }
 
 .c {
-	--_csstools-p-165tpc7-3--arg-1: red;
-	--_csstools-p-165tpc7-4--color: var(--_csstools-p-165tpc7-3--arg-1);
-	--_csstools-p-165tpc7-4--background: red;
-	color: var(--_csstools-p-165tpc7-4--color);
-	background-color: var(--_csstools-p-165tpc7-4--background);
+	--_csstools-m-165tpc7-3--arg-1: red;
+	--_csstools-m-165tpc7-4--color: var(--_csstools-m-165tpc7-3--arg-1);
+	--_csstools-m-165tpc7-4--background: red;
+	color: var(--_csstools-m-165tpc7-4--color);
+	background-color: var(--_csstools-m-165tpc7-4--background);
 	@apply --defaults(red);
 }
 
@@ -36,15 +36,15 @@
 }
 
 .d {
-	--_csstools-p-165tpc7-5--color: initial;
-	outline-color: var(--_csstools-p-165tpc7-5--color, navy);
+	--_csstools-m-165tpc7-5--color: initial;
+	outline-color: var(--_csstools-m-165tpc7-5--color, navy);
 	@apply --fallback;
 }
 
 .e {
-	--_csstools-p-165tpc7-6--arg-2: green;
-	--_csstools-p-165tpc7-7--color: var(--_csstools-p-165tpc7-6--arg-2);
-	outline-color: var(--_csstools-p-165tpc7-7--color, navy);
+	--_csstools-m-165tpc7-6--arg-2: green;
+	--_csstools-m-165tpc7-7--color: var(--_csstools-m-165tpc7-6--arg-2);
+	outline-color: var(--_csstools-m-165tpc7-7--color, navy);
 	@apply --fallback(green);
 }
 
@@ -53,9 +53,9 @@
 }
 
 .f {
-	--_csstools-p-165tpc7-8--arg-3: color, background;
-	--_csstools-p-165tpc7-9--list: var(--_csstools-p-165tpc7-8--arg-3);
-	transition-property: var(--_csstools-p-165tpc7-9--list);
+	--_csstools-m-165tpc7-8--arg-3: color, background;
+	--_csstools-m-165tpc7-9--list: var(--_csstools-m-165tpc7-8--arg-3);
+	transition-property: var(--_csstools-m-165tpc7-9--list);
 	@apply --braces({color, background});
 }
 
@@ -73,9 +73,9 @@
 }
 
 .h {
-	--_csstools-p-165tpc7-a--arg-4: green;
-	--_csstools-p-165tpc7-b--color: var(--_csstools-p-165tpc7-a--arg-4);
-	border-color: var(--_csstools-p-165tpc7-b--color);
+	--_csstools-m-165tpc7-a--arg-4: green;
+	--_csstools-m-165tpc7-b--color: var(--_csstools-m-165tpc7-a--arg-4);
+	border-color: var(--_csstools-m-165tpc7-b--color);
 	@apply --trailing-comma(green);
 }
 
@@ -85,51 +85,51 @@
 }
 
 .i {
-	--_csstools-p-165tpc7-c--arg-5: ;
-	--_csstools-p-165tpc7-c--arg-6: green;
-	--_csstools-p-165tpc7-d--color: var(--_csstools-p-165tpc7-c--arg-5);
-	--_csstools-p-165tpc7-d--background: var(--_csstools-p-165tpc7-c--arg-6);
-	outline-color: var(--_csstools-p-165tpc7-d--color);
-	background-color: var(--_csstools-p-165tpc7-d--background);
+	--_csstools-m-165tpc7-c--arg-5: ;
+	--_csstools-m-165tpc7-c--arg-6: green;
+	--_csstools-m-165tpc7-d--color: var(--_csstools-m-165tpc7-c--arg-5);
+	--_csstools-m-165tpc7-d--background: var(--_csstools-m-165tpc7-c--arg-6);
+	outline-color: var(--_csstools-m-165tpc7-d--color);
+	background-color: var(--_csstools-m-165tpc7-d--background);
 	@apply --empty-arguments(, green);
 }
 
 .j {
-	--_csstools-p-165tpc7-e--arg-7: green;
-	--_csstools-p-165tpc7-f--color: var(--_csstools-p-165tpc7-e--arg-7);
-	--_csstools-p-165tpc7-f--background: teal;
-	outline-color: var(--_csstools-p-165tpc7-f--color);
-	background-color: var(--_csstools-p-165tpc7-f--background);
+	--_csstools-m-165tpc7-e--arg-7: green;
+	--_csstools-m-165tpc7-f--color: var(--_csstools-m-165tpc7-e--arg-7);
+	--_csstools-m-165tpc7-f--background: teal;
+	outline-color: var(--_csstools-m-165tpc7-f--color);
+	background-color: var(--_csstools-m-165tpc7-f--background);
 	@apply --empty-arguments(green, );
 }
 
 .k {
-	--_csstools-p-165tpc7-g--arg-8: green;
-	--_csstools-p-165tpc7-g--arg-9: ;
-	--_csstools-p-165tpc7-h--color: var(--_csstools-p-165tpc7-g--arg-8);
-	--_csstools-p-165tpc7-h--background: var(--_csstools-p-165tpc7-g--arg-9);
-	outline-color: var(--_csstools-p-165tpc7-h--color);
-	background-color: var(--_csstools-p-165tpc7-h--background);
+	--_csstools-m-165tpc7-g--arg-8: green;
+	--_csstools-m-165tpc7-g--arg-9: ;
+	--_csstools-m-165tpc7-h--color: var(--_csstools-m-165tpc7-g--arg-8);
+	--_csstools-m-165tpc7-h--background: var(--_csstools-m-165tpc7-g--arg-9);
+	outline-color: var(--_csstools-m-165tpc7-h--color);
+	background-color: var(--_csstools-m-165tpc7-h--background);
 	@apply --empty-arguments(green, ,);
 }
 
 .l {
-	--_csstools-p-165tpc7-i--arg-a: green;
-	--_csstools-p-165tpc7-i--arg-b: blue;
-	--_csstools-p-165tpc7-j--color: var(--_csstools-p-165tpc7-i--arg-a);
-	--_csstools-p-165tpc7-j--background: var(--_csstools-p-165tpc7-i--arg-b);
-	outline-color: var(--_csstools-p-165tpc7-j--color);
-	background-color: var(--_csstools-p-165tpc7-j--background);
+	--_csstools-m-165tpc7-i--arg-a: green;
+	--_csstools-m-165tpc7-i--arg-b: blue;
+	--_csstools-m-165tpc7-j--color: var(--_csstools-m-165tpc7-i--arg-a);
+	--_csstools-m-165tpc7-j--background: var(--_csstools-m-165tpc7-i--arg-b);
+	outline-color: var(--_csstools-m-165tpc7-j--color);
+	background-color: var(--_csstools-m-165tpc7-j--background);
 	@apply --empty-arguments(green, blue,);
 }
 
 .m {
-	--_csstools-p-165tpc7-k--arg-c: green;
-	--_csstools-p-165tpc7-k--arg-d: blue;
-	--_csstools-p-165tpc7-l--color: var(--_csstools-p-165tpc7-k--arg-c);
-	--_csstools-p-165tpc7-l--background: var(--_csstools-p-165tpc7-k--arg-d);
-	outline-color: var(--_csstools-p-165tpc7-l--color);
-	background-color: var(--_csstools-p-165tpc7-l--background);
+	--_csstools-m-165tpc7-k--arg-c: green;
+	--_csstools-m-165tpc7-k--arg-d: blue;
+	--_csstools-m-165tpc7-l--color: var(--_csstools-m-165tpc7-k--arg-c);
+	--_csstools-m-165tpc7-l--background: var(--_csstools-m-165tpc7-k--arg-d);
+	outline-color: var(--_csstools-m-165tpc7-l--color);
+	background-color: var(--_csstools-m-165tpc7-l--background);
 	@apply --empty-arguments(  green  ,  blue  );
 }
 
@@ -138,8 +138,8 @@
 }
 
 .n {
-	--_csstools-p-165tpc7-m--color: ;
-	outline-color: var(--_csstools-p-165tpc7-m--color);
+	--_csstools-m-165tpc7-m--color: ;
+	outline-color: var(--_csstools-m-165tpc7-m--color);
 	@apply --empty-default;
 }
 
@@ -148,8 +148,60 @@
 }
 
 .trailing-comma-single-argument {
-	--_csstools-p-165tpc7-n--arg-e: red;
-	--_csstools-p-165tpc7-o--color: var(--_csstools-p-165tpc7-n--arg-e);
-	color: var(--_csstools-p-165tpc7-o--color);
+	--_csstools-m-165tpc7-n--arg-e: red;
+	--_csstools-m-165tpc7-o--color: var(--_csstools-m-165tpc7-n--arg-e);
+	color: var(--_csstools-m-165tpc7-o--color);
 	@apply --one(red,);
+}
+
+.invalid-important-argument {
+	@apply --one(red !important);
+}
+
+.invalid-bang-argument {
+	@apply --one(!);
+}
+
+.invalid-semicolon-argument {
+	@apply --one(red;);
+}
+
+@mixin --inherit-default(--color: inherit) {
+	color: var(--color, red);
+}
+
+.inherit-default {
+	--color: green;
+	--_csstools-m-165tpc7-p--arg-f: var(--color);
+	--_csstools-m-165tpc7-q--color: var(--_csstools-m-165tpc7-p--arg-f);
+	color: var(--_csstools-m-165tpc7-q--color, red);
+	@apply --inherit-default;
+}
+
+@mixin --inherit-default-with-argument(--color: inherit) {
+	color: var(--color, red);
+}
+
+.inherit-default-with-argument {
+	--color: green;
+	--_csstools-m-165tpc7-r--arg-g: blue;
+	--_csstools-m-165tpc7-s--color: var(--_csstools-m-165tpc7-r--arg-g);
+	color: var(--_csstools-m-165tpc7-s--color, red);
+	@apply --inherit-default-with-argument(blue);
+}
+
+@mixin --invalid-default(--color: red !important) {
+	color: var(--color);
+}
+
+.invalid-default {
+	@apply --invalid-default;
+}
+
+@mixin --invalid-empty-parameter(--) {
+	color: red;
+}
+
+.invalid-empty-parameter {
+	@apply --invalid-empty-parameter;
 }

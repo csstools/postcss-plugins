@@ -19,6 +19,8 @@ export declare class Transpiler {
     private nonHoistableOwners;
     counter: number;
     hashes: Map<string, string>;
+    namespace: string;
+    constructor(namespace?: string);
     /** `@property` registrations generated for private properties. */
     private registrations;
     /**
@@ -42,11 +44,11 @@ export declare class Transpiler {
      */
     private removePrivateRule;
     /**
-     * Whether any `@private` rule for this style rule has a registration that
-     * can not be hoisted to the root.
+     * Whether any `@private` rule in this style rule or its nested style rules
+     * has a registration that can not be hoisted to the root.
      *
-     * A private property name is scoped to the style rule, so all private rules
-     * of a style rule must be transpiled or none of them.
+     * A private property name is scoped to the style rule and is visible in all
+     * nested rules, so the whole subtree must be transpiled or none of it.
      */
     private hasNonHoistableRegistration;
     /**
@@ -58,6 +60,7 @@ export declare class Transpiler {
     transpileDeclarationPropertyNames(decl: Declaration): void;
     transpileDeclarationValues(decl: Declaration): void;
     transpileAtRule(atRule: AtRule): void;
+    private rewritePrivateReferences;
     private rewritePrivatePropertyName;
 }
 

@@ -1,6 +1,6 @@
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { isTokenDelim, isTokenIdent, isTokenOpenCurly } from '@csstools/css-tokenizer';
+import { isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { isTokenDelim, isTokenOpenCurly, isTokenSemicolon } from '@csstools/css-tokenizer';
 
 /**
  * Parse the arguments of a `<dashed-function>`.
@@ -28,7 +28,7 @@ export function parseArguments(fn: FunctionNode): Array<Array<ComponentValue>> |
 	const args: Array<Array<ComponentValue>> = [];
 	for (const list of lists) {
 		const arg = unwrapArgument(list);
-		if (!arg) {
+		if (!arg || hasInvalidDeclarationValue(arg)) {
 			return false;
 		}
 
@@ -36,39 +36,6 @@ export function parseArguments(fn: FunctionNode): Array<Array<ComponentValue>> |
 	}
 
 	return args;
-}
-
-export function hasImportant(componentValues: Array<ComponentValue>): boolean {
-	for (let i = 0; i < componentValues.length; i++) {
-		const componentValue = componentValues[i];
-
-		if (isFunctionNode(componentValue) || isSimpleBlockNode(componentValue)) {
-			if (hasImportant(componentValue.value)) {
-				return true;
-			}
-
-			continue;
-		}
-
-		if (!isTokenNode(componentValue) || !isTokenDelim(componentValue.value) || componentValue.value[4].value !== '!') {
-			continue;
-		}
-
-		for (let j = i + 1; j < componentValues.length; j++) {
-			const next = componentValues[j];
-			if (isWhiteSpaceOrCommentNode(next)) {
-				continue;
-			}
-
-			if (isTokenNode(next) && isTokenIdent(next.value) && next.value[4].value.toLowerCase() === 'important') {
-				return true;
-			}
-
-			break;
-		}
-	}
-
-	return false;
 }
 
 /**
@@ -116,4 +83,22 @@ function trim(componentValues: Array<ComponentValue>): Array<ComponentValue> {
 
 function isBlank(componentValues: Array<ComponentValue>): boolean {
 	return componentValues.every(isWhiteSpaceOrCommentNode);
+}
+
+function hasInvalidDeclarationValue(componentValues: Array<ComponentValue>): boolean {
+	for (const componentValue of componentValues) {
+		if (!isTokenNode(componentValue)) {
+			continue;
+		}
+
+		if (isTokenSemicolon(componentValue.value)) {
+			return true;
+		}
+
+		if (isTokenDelim(componentValue.value) && componentValue.value[4].value === '!') {
+			return true;
+		}
+	}
+
+	return false;
 }

@@ -54,6 +54,50 @@
 	font-size: --sized(20px);
 }
 
+@function --typed-local(--c <color>: red) {
+	--c: #00f;
+	result: if(style(--c: blue): PASS; else: FAIL);
+}
+
+.typed-local {
+	--_csstools-cf-15up11z-d-arg-0: #000;
+	--_csstools-cf-15up11z-d-local-c: #00f;
+	--_csstools-cf-15up11z-c-result: if(style(--_csstools-cf-15up11z-d-local-c: blue): PASS; else: FAIL);
+	--actual: var(--_csstools-cf-15up11z-c-result);
+	--actual: --typed-local(#000);
+}
+
+@function --typed-local-invalid(--c <color>: red) {
+	--c: 3;
+	result: var(--c, PASS);
+}
+
+.typed-local-invalid {
+	--_csstools-cf-15up11z-f-arg-0: #f00;
+	--_csstools-cf-15up11z-f-local-c: 3;
+	--_csstools-cf-15up11z-e-result: var(--_csstools-cf-15up11z-f-local-c, PASS);
+	--actual: var(--_csstools-cf-15up11z-e-result);
+	--actual: --typed-local-invalid(#f00);
+}
+
+@function --typed-local-parent-stack(--c <color>: blue) {
+	--c: #00f;
+	result: --untyped-param();
+}
+
+@function --untyped-param() {
+	result: if(style(--c: blue): PASS; else: FAIL);
+}
+
+.typed-local-parent-stack {
+	--_csstools-cf-15up11z-h-arg-0: #f00;
+	--_csstools-cf-15up11z-h-local-c: #00f;
+	--_csstools-cf-15up11z-i-result: if(style(--_csstools-cf-15up11z-h-local-c: blue): PASS; else: FAIL);
+	--_csstools-cf-15up11z-g-result: var(--_csstools-cf-15up11z-i-result);
+	--actual: var(--_csstools-cf-15up11z-g-result);
+	--actual: --typed-local-parent-stack(#f00);
+}
+
 @property --_csstools-cf-15up11z-1-arg-0 {
 	syntax: "<length>";
 	inherits: true;
@@ -94,4 +138,37 @@
 	syntax: "<length>";
 	inherits: true;
 	initial-value: 10px;
+}
+
+@property --_csstools-cf-15up11z-d-arg-0 {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: red;
+}
+
+@property --_csstools-cf-15up11z-d-local-c {
+	syntax: "<color>";
+	inherits: true;
+}
+
+@property --_csstools-cf-15up11z-f-arg-0 {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: red;
+}
+
+@property --_csstools-cf-15up11z-f-local-c {
+	syntax: "<color>";
+	inherits: true;
+}
+
+@property --_csstools-cf-15up11z-h-arg-0 {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: blue;
+}
+
+@property --_csstools-cf-15up11z-h-local-c {
+	syntax: "<color>";
+	inherits: true;
 }

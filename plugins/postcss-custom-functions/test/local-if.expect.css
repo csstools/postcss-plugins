@@ -23,3 +23,26 @@
 	--_csstools-cf-5fpdqm-6-result: if(style(--true): var(--_csstools-cf-5fpdqm-7-local-x); else: FAIL);
 	--actual: var(--_csstools-cf-5fpdqm-6-result);
 }
+
+.keyword-initial-parameter {
+	--_csstools-cf-5fpdqm-9-local-c: red;
+	--_csstools-cf-5fpdqm-b-arg-0: var(--_csstools-cf-5fpdqm-b-raw-0, green);
+	--_csstools-cf-5fpdqm-a-result: if(style(--_csstools-cf-5fpdqm-b-arg-0:var(--_csstools-cf-5fpdqm-b-arg-0)): PASS; else: FAIL);
+	--_csstools-cf-5fpdqm-8-result: var(--_csstools-cf-5fpdqm-a-result);
+	--actual: var(--_csstools-cf-5fpdqm-8-result);
+}
+
+.keyword-inherit-parameter {
+	--_csstools-cf-5fpdqm-d-local-c: green;
+	--_csstools-cf-5fpdqm-f-arg-0: var(--_csstools-cf-5fpdqm-f-raw-0, red);
+	--_csstools-cf-5fpdqm-f-local-c: green;
+	--_csstools-cf-5fpdqm-e-result: if(style(--_csstools-cf-5fpdqm-f-local-c:var(--_csstools-cf-5fpdqm-d-local-c)): PASS; else: FAIL);
+	--_csstools-cf-5fpdqm-c-result: var(--_csstools-cf-5fpdqm-e-result);
+	--actual: var(--_csstools-cf-5fpdqm-c-result);
+}
+
+.keyword-unset-local {
+	--_csstools-cf-5fpdqm-h-local-c: red;
+	--_csstools-cf-5fpdqm-g-result: if(style(--_csstools-cf-5fpdqm-h-local-c:var(--_csstools-cf-invalid)): FAIL; else: PASS);
+	--actual: var(--_csstools-cf-5fpdqm-g-result);
+}

@@ -1,7 +1,7 @@
 import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken, TokenColon, TokenIdent } from '@csstools/css-tokenizer';
-import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent, isTokenOpenCurly } from '@csstools/css-tokenizer';
+import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent, isTokenOpenCurly, isTokenSemicolon } from '@csstools/css-tokenizer';
 import { CustomFunction } from '../nodes/custom-function';
 import { FunctionParameter } from '../nodes/function-parameter';
 
@@ -250,8 +250,7 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 	let defaultValue: Array<CSSToken> = [];
 	if (defaultValueIndex !== -1) {
 		const defaultValueComponentValues = componentValues.slice(colonIndex + 1, afterIndex);
-		if (hasTopLevelImportant(defaultValueComponentValues)) {
-			// `!important` is not part of a <declaration-value>.
+		if (hasInvalidDeclarationValue(defaultValueComponentValues)) {
 			return false;
 		}
 
@@ -261,6 +260,10 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			isSimpleBlockNode(meaningfulComponentValues[0]) &&
 			isTokenOpenCurly(meaningfulComponentValues[0].startToken)
 		) {
+			if (hasInvalidDeclarationValue(meaningfulComponentValues[0].value)) {
+				return false;
+			}
+
 			defaultValue = meaningfulComponentValues[0].value.flatMap((x) => {
 				return x.tokens();
 			});
@@ -288,32 +291,18 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 	};
 }
 
-function hasTopLevelImportant(componentValues: Array<ComponentValue>): boolean {
-	for (let i = 0; i < componentValues.length; i++) {
-		const componentValue = componentValues[i];
-		if (
-			!isTokenNode(componentValue) ||
-			!isTokenDelim(componentValue.value) ||
-			componentValue.value[4].value !== '!'
-		) {
+function hasInvalidDeclarationValue(componentValues: Array<ComponentValue>): boolean {
+	for (const componentValue of componentValues) {
+		if (!isTokenNode(componentValue)) {
 			continue;
 		}
 
-		for (let j = i + 1; j < componentValues.length; j++) {
-			const next = componentValues[j];
-			if (isWhiteSpaceOrCommentNode(next)) {
-				continue;
-			}
+		if (isTokenSemicolon(componentValue.value)) {
+			return true;
+		}
 
-			if (
-				isTokenNode(next) &&
-				isTokenIdent(next.value) &&
-				next.value[4].value.toLowerCase() === 'important'
-			) {
-				return true;
-			}
-
-			break;
+		if (isTokenDelim(componentValue.value) && componentValue.value[4].value === '!') {
+			return true;
 		}
 	}
 

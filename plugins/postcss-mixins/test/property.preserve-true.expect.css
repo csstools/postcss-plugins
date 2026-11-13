@@ -47,38 +47,38 @@
 }
 
 .registered-private-a {
-	--_csstools-p-7q9ama-0--size: 20px;
-	--_csstools-p-7q9ama-0--size-a: 30px;
-	--_csstools-p-7q9ama-0--size-b: 40px;
-	--_csstools-p-7q9ama-0--size-c: 40px;
-	--_csstools-p-7q9ama-0--size-d: red, blue;
-	--_csstools-p-7q9ama-0--size-e: blue;
-	width: var(--_csstools-p-7q9ama-0--size);
-	min-width: var(--_csstools-p-7q9ama-0--initial-size);
-	height: var(--_csstools-p-7q9ama-0--size-a);
-	min-height: var(--_csstools-p-7q9ama-0--size-b);
-	max-height: var(--_csstools-p-7q9ama-0--size-c);
-	max-width: var(--_csstools-p-7q9ama-0--size-d);
-	inline-size: var(--_csstools-p-7q9ama-0--size-e);
-	border-width: var(--_csstools-p-7q9ama-0--initial-untyped);
+	--_csstools-m-7q9ama-0--size: 20px;
+	--_csstools-m-7q9ama-0--size-a: 30px;
+	--_csstools-m-7q9ama-0--size-b: 40px;
+	--_csstools-m-7q9ama-0--size-c: 40px;
+	--_csstools-m-7q9ama-0--size-d: red, blue;
+	--_csstools-m-7q9ama-0--size-e: blue;
+	width: var(--_csstools-m-7q9ama-0--size);
+	min-width: var(--_csstools-m-7q9ama-0--initial-size);
+	height: var(--_csstools-m-7q9ama-0--size-a);
+	min-height: var(--_csstools-m-7q9ama-0--size-b);
+	max-height: var(--_csstools-m-7q9ama-0--size-c);
+	max-width: var(--_csstools-m-7q9ama-0--size-d);
+	inline-size: var(--_csstools-m-7q9ama-0--size-e);
+	border-width: var(--_csstools-m-7q9ama-0--initial-untyped);
 	@apply --registered-private;
 }
 
 .registered-private-b {
-	--_csstools-p-7q9ama-1--size: 20px;
-	--_csstools-p-7q9ama-1--size-a: 30px;
-	--_csstools-p-7q9ama-1--size-b: 40px;
-	--_csstools-p-7q9ama-1--size-c: 40px;
-	--_csstools-p-7q9ama-1--size-d: red, blue;
-	--_csstools-p-7q9ama-1--size-e: blue;
-	width: var(--_csstools-p-7q9ama-1--size);
-	min-width: var(--_csstools-p-7q9ama-1--initial-size);
-	height: var(--_csstools-p-7q9ama-1--size-a);
-	min-height: var(--_csstools-p-7q9ama-1--size-b);
-	max-height: var(--_csstools-p-7q9ama-1--size-c);
-	max-width: var(--_csstools-p-7q9ama-1--size-d);
-	inline-size: var(--_csstools-p-7q9ama-1--size-e);
-	border-width: var(--_csstools-p-7q9ama-1--initial-untyped);
+	--_csstools-m-7q9ama-1--size: 20px;
+	--_csstools-m-7q9ama-1--size-a: 30px;
+	--_csstools-m-7q9ama-1--size-b: 40px;
+	--_csstools-m-7q9ama-1--size-c: 40px;
+	--_csstools-m-7q9ama-1--size-d: red, blue;
+	--_csstools-m-7q9ama-1--size-e: blue;
+	width: var(--_csstools-m-7q9ama-1--size);
+	min-width: var(--_csstools-m-7q9ama-1--initial-size);
+	height: var(--_csstools-m-7q9ama-1--size-a);
+	min-height: var(--_csstools-m-7q9ama-1--size-b);
+	max-height: var(--_csstools-m-7q9ama-1--size-c);
+	max-width: var(--_csstools-m-7q9ama-1--size-d);
+	inline-size: var(--_csstools-m-7q9ama-1--size-e);
+	border-width: var(--_csstools-m-7q9ama-1--initial-untyped);
 	@apply --registered-private;
 }
 
@@ -92,61 +92,61 @@
 }
 
 .escaped-private {
-	--_csstools-p-7q9ama-2--\66 oo: 30px;
-	width: var(--_csstools-p-7q9ama-2--foo);
+	--_csstools-m-7q9ama-2--\66 oo: 30px;
+	width: var(--_csstools-m-7q9ama-2--foo);
 	@apply --escaped-private;
 }
 
-@property --_csstools-p-7q9ama-0--size {
+@property --_csstools-m-7q9ama-0--size {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 10px;
 }
 
-@property --_csstools-p-7q9ama-0--size-a, --_csstools-p-7q9ama-0--size-b {
+@property --_csstools-m-7q9ama-0--size-a, --_csstools-m-7q9ama-0--size-b {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 11px;
 }
 
-@property --_csstools-p-7q9ama-0--size-c <length>: 12px;
+@property --_csstools-m-7q9ama-0--size-c <length>: 12px;
 
-@property --_csstools-p-7q9ama-0--size-d type(<color>#): red, blue;
+@property --_csstools-m-7q9ama-0--size-d type(<color>#): red, blue;
 
-@property --_csstools-p-7q9ama-0--size-e <color>: red;
+@property --_csstools-m-7q9ama-0--size-e <color>: red;
 
-@property --_csstools-p-7q9ama-0--initial-size {
+@property --_csstools-m-7q9ama-0--initial-size {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 5px;
 }
 
-@property --_csstools-p-7q9ama-0--initial-untyped: 6px;
+@property --_csstools-m-7q9ama-0--initial-untyped: 6px;
 
-@property --_csstools-p-7q9ama-1--size {
+@property --_csstools-m-7q9ama-1--size {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 10px;
 }
 
-@property --_csstools-p-7q9ama-1--size-a, --_csstools-p-7q9ama-1--size-b {
+@property --_csstools-m-7q9ama-1--size-a, --_csstools-m-7q9ama-1--size-b {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 11px;
 }
 
-@property --_csstools-p-7q9ama-1--size-c <length>: 12px;
+@property --_csstools-m-7q9ama-1--size-c <length>: 12px;
 
-@property --_csstools-p-7q9ama-1--size-d type(<color>#): red, blue;
+@property --_csstools-m-7q9ama-1--size-d type(<color>#): red, blue;
 
-@property --_csstools-p-7q9ama-1--size-e <color>: red;
+@property --_csstools-m-7q9ama-1--size-e <color>: red;
 
-@property --_csstools-p-7q9ama-1--initial-size {
+@property --_csstools-m-7q9ama-1--initial-size {
 	syntax: "<length>";
 	inherits: false;
 	initial-value: 5px;
 }
 
-@property --_csstools-p-7q9ama-1--initial-untyped: 6px;
+@property --_csstools-m-7q9ama-1--initial-untyped: 6px;
 
-@property --_csstools-p-7q9ama-2--foo <length>: 20px
+@property --_csstools-m-7q9ama-2--foo <length>: 20px

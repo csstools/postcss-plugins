@@ -20,9 +20,11 @@ Unsupported:
 - definitions whose body contains anything other than declarations, `@property` rules and conditional group rules
 - `@property` rules nested in `@container` or `@starting-style` inside function bodies
 - typed parameters in `font-size`, `font` or `line-height` when arguments contain font-relative units or run-time values
-- arguments that contain `!important`
+- arguments that contain top-level `!` or `;`
 - `result` descriptors that resolve to a CSS-wide keyword through a conditional rule or a `var()` fallback
 - validation that a typed default value matches its parameter type
+
+Typed local variables that shadow a typed parameter are registered with the parameter syntax and no initial value. Browsers that do not support an omitted `initial-value` will ignore those registrations.
 
 Definitions inside `@layer`, `@media` and `@supports` are supported. When a name
 has several active definitions, the browser cascade selects the strongest one.
@@ -31,6 +33,8 @@ Unsupported definitions are left as-is. A definition is only removed when every
 call site is transformed by this plugin, so call sites that are left as-is (for
 example inside `@keyframes` or a nested conditional declaration) keep their
 definitions.
+
+Run `@csstools/postcss-private-rule` before this plugin so that function bodies do not capture private properties from the calling style rule.
 
 Untyped parameters with default values are supported and may use any value,
 including relative units and `var()` references.
@@ -66,6 +70,7 @@ html {
 	--_csstools-cf-1gice1e-2-result: calc(2 * var(--_csstools-cf-1gice1e-3-arg-0));
 	margin: var(--_csstools-cf-1gice1e-2-result);
 }
+
 @property --_csstools-cf-1gice1e-3-arg-0 {
 	syntax: "<length>";
 	inherits: true;

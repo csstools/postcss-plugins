@@ -4,6 +4,7 @@
 
 - Reject `--` as a parameter name.
 - Support an empty default value (`--x:`).
+- Reject `!` and `;` in default values.
 
 ### 1.0.0
 

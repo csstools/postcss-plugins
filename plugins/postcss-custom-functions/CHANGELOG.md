@@ -5,17 +5,19 @@
 - Support empty `@function` bodies.
 - Ignore `!important` declarations in `@function` bodies.
 - Support `@property` rules for local variables, including multi-name prelude lists and the shorthand form.
+- Keep parameter registrations for local variables that shadow a typed parameter.
 - Resolve CSS-wide keywords in function arguments.
+- Resolve CSS-wide keywords in `style()` query values.
 - Keep parameter values when a local `@property` rule uses the parameter name.
 - Support local variables and registrations inside conditional rules.
 - Substitute local variables and `inherit()` inside `if()` conditions.
 - Suppress parameter defaults when a CSS-wide keyword can be selected through a `var()` fallback.
-- Ignore dashed-function arguments that contain `!important`.
+- Ignore dashed-function arguments with invalid `<declaration-value>` values.
 - Ignore typed parameters in font-relative properties when arguments can not be resolved at build time.
 - Support trailing commas and empty arguments in dashed-function calls.
 - Trim whitespace from dashed-function arguments.
 - Treat an empty default value (`--x:`) as a default value.
-- Substitute `inherit()` in function bodies from the calling context.
+- Substitute `inherit()` in function bodies from the calling context, including nested function calls in a fallback.
 
 ### 1.0.1
 

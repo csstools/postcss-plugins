@@ -1,6 +1,6 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, isTokenOpenCurly, tokenize } from '@csstools/css-tokenizer';
+import { isTokenDelim, isTokenIdent, isTokenOpenCurly, isTokenSemicolon, tokenize } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
 
 export const IS_APPLY_REGEX = /^apply$/i;
@@ -10,7 +10,8 @@ export type ProcessableApply = {
 	arguments: Array<string>,
 };
 
-const IS_IMPORTANT_REGEX = /!\s*important/i;
+const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	if (!atRule.params || !atRule.params.includes('--')) {
@@ -76,21 +77,24 @@ function parseArguments(componentValues: Array<ComponentValue>): false | Array<s
 	for (const rawArgument of rawArguments) {
 		const meaningful = rawArgument.filter((componentValue) => !isWhiteSpaceOrCommentNode(componentValue));
 
+		let argumentValues: Array<ComponentValue>;
 		let argument: string;
 
 		if (meaningful.length === 1 && isSimpleBlockNode(meaningful[0]) && isTokenOpenCurly(meaningful[0].startToken)) {
 			// A comma-containing value can be passed as a single argument by wrapping it in `{}`.
-			argument = stringify([meaningful[0].value]).trim();
+			argumentValues = meaningful[0].value;
+			argument = stringify([argumentValues]).trim();
 		} else {
 			// A `{}` wrapper is only allowed as the entire argument.
 			if (meaningful.some((componentValue) => isSimpleBlockNode(componentValue) && isTokenOpenCurly(componentValue.startToken))) {
 				return false;
 			}
 
-			argument = stringify([trim(rawArgument)]).trim();
+			argumentValues = trim(rawArgument);
+			argument = stringify([argumentValues]).trim();
 		}
 
-		if (IS_IMPORTANT_REGEX.test(argument)) {
+		if (hasInvalidDeclarationValue(argumentValues)) {
 			return false;
 		}
 
@@ -119,21 +123,51 @@ function isBlank(componentValues: Array<ComponentValue>): boolean {
 	return componentValues.every(isWhiteSpaceOrCommentNode);
 }
 
-const IS_SCOPE_REGEX = /^scope$/i;
+function hasInvalidDeclarationValue(componentValues: Array<ComponentValue>): boolean {
+	for (const componentValue of componentValues) {
+		if (!isTokenNode(componentValue)) {
+			continue;
+		}
+
+		if (isTokenSemicolon(componentValue.value)) {
+			return true;
+		}
+
+		if (isTokenDelim(componentValue.value) && componentValue.value[4].value === '!') {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 function isInStyleRule(atRule: AtRule): boolean {
-	const parent = atRule.parent;
-	if (!parent || parent.type === 'root') {
-		return false;
+	let parent = atRule.parent;
+
+	while (parent) {
+		if (parent.type === 'rule') {
+			return !isKeyframesRule(parent);
+		}
+
+		if (parent.type !== 'atrule' || !IS_NESTING_GROUP_RULE_REGEX.test(parent.name)) {
+			return false;
+		}
+
+		parent = parent.parent;
 	}
 
-	if (parent.type === 'rule') {
-		return true;
+	return false;
+}
+
+function isKeyframesRule(rule: AtRule['parent']): boolean {
+	let parent = rule?.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return true;
+		}
+
+		parent = parent.parent;
 	}
 
-	if (parent.type === 'atrule' && IS_SCOPE_REGEX.test(parent.name)) {
-		return true;
-	}
-
-	return isInStyleRule(parent);
+	return false;
 }

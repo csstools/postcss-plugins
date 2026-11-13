@@ -34,3 +34,39 @@
 	--x: FAIL;
 	--actual: --local-if-value();
 }
+
+@function --keyword-initial-parameter(--c: green) {
+	result: if(style(--c: initial): PASS; else: FAIL);
+}
+
+@function --keyword-initial-caller() {
+	--c: red;
+	result: --keyword-initial-parameter();
+}
+
+.keyword-initial-parameter {
+	--actual: --keyword-initial-caller();
+}
+
+@function --keyword-inherit-parameter(--c: red) {
+	--c: green;
+	result: if(style(--c: inherit): PASS; else: FAIL);
+}
+
+@function --keyword-inherit-caller() {
+	--c: green;
+	result: --keyword-inherit-parameter();
+}
+
+.keyword-inherit-parameter {
+	--actual: --keyword-inherit-caller();
+}
+
+@function --keyword-unset-local() {
+	--c: red;
+	result: if(style(--c: unset): FAIL; else: PASS);
+}
+
+.keyword-unset-local {
+	--actual: --keyword-unset-local();
+}

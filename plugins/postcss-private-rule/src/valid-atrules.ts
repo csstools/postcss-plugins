@@ -1,7 +1,7 @@
 import type { AtRule, Node, Rule } from "postcss";
 
 const IS_KEYFRAMES_RULE_REGEX = /^keyframes$/i;
-const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+export const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 export const IS_PRIVATE_RULE_REGEX = /^private$/i;
 
 export function findStyleRule(node: Node): false|Rule {

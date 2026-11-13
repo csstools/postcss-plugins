@@ -1,6 +1,6 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenColon, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isSimpleBlockNode, isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
+import { isTokenColon, isTokenDelim, isTokenIdent, isTokenOpenCurly, isTokenSemicolon, tokenize } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
 
 export type MixinParameter = {
@@ -14,7 +14,6 @@ export type ProcessableMixin = {
 };
 
 const IS_UNSUPPORTED_CHILD_RULE = /^result$/i;
-const IS_IMPORTANT_REGEX = /!\s*important/i;
 
 export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 	if (atRule.name.toLowerCase() !== 'mixin') {
@@ -102,7 +101,7 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 		}
 
 		const nameNode = rawParameter[start];
-		if (!nameNode || !isTokenNode(nameNode) || !isTokenIdent(nameNode.value) || !nameNode.value[4].value.startsWith('--')) {
+		if (!nameNode || !isTokenNode(nameNode) || !isTokenIdent(nameNode.value) || !nameNode.value[4].value.startsWith('--') || nameNode.value[4].value === '--') {
 			return false;
 		}
 
@@ -124,8 +123,23 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 			}
 
 			if (isTokenNode(componentValue) && isTokenColon(componentValue.value)) {
+				const defaultValues = rawParameter.slice(i + 1);
+				if (hasInvalidDeclarationValue(defaultValues)) {
+					return false;
+				}
+
+				const meaningfulDefaultValues = defaultValues.filter((child) => !isWhiteSpaceOrCommentNode(child));
+				if (
+					meaningfulDefaultValues.length === 1 &&
+					isSimpleBlockNode(meaningfulDefaultValues[0]) &&
+					isTokenOpenCurly(meaningfulDefaultValues[0].startToken) &&
+					hasInvalidDeclarationValue(meaningfulDefaultValues[0].value)
+				) {
+					return false;
+				}
+
 				// An empty default value is distinct from no default value.
-				defaultValue = stringify([rawParameter.slice(i + 1)]).trim();
+				defaultValue = stringify([defaultValues]).trim();
 				break;
 			}
 
@@ -137,10 +151,6 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 			return false;
 		}
 
-		if (defaultValue !== undefined && IS_IMPORTANT_REGEX.test(defaultValue)) {
-			return false;
-		}
-
 		parameters.push({
 			name,
 			defaultValue,
@@ -148,6 +158,24 @@ function parseParameters(componentValues: Array<ComponentValue>): false | Array<
 	}
 
 	return parameters;
+}
+
+function hasInvalidDeclarationValue(componentValues: Array<ComponentValue>): boolean {
+	for (const componentValue of componentValues) {
+		if (!isTokenNode(componentValue)) {
+			continue;
+		}
+
+		if (isTokenSemicolon(componentValue.value)) {
+			return true;
+		}
+
+		if (isTokenDelim(componentValue.value) && componentValue.value[4].value === '!') {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 function isBlank(componentValues: Array<ComponentValue>): boolean {

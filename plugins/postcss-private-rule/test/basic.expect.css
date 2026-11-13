@@ -170,3 +170,62 @@ section > h1 > small {
 		else: red;
 	);
 }
+
+.invalid-at-rules {
+		--_csstools-p-wv7kid-j--alpha: 2px;
+
+	--beta: var(--_csstools-p-wv7kid-j--alpha);
+}
+
+.important-private {
+		--_csstools-p-wv7kid-k--alpha: 2px;
+
+	--beta: var(--_csstools-p-wv7kid-k--alpha);
+}
+
+.container-private {
+	@container (width > 0px) {
+			--_csstools-p-wv7kid-l--alpha: 2px
+	}
+
+	--beta: var(--_csstools-p-wv7kid-l--alpha);
+}
+
+.starting-style-private {
+	@starting-style {
+			--_csstools-p-wv7kid-m--alpha: 2px
+	}
+
+	--beta: var(--_csstools-p-wv7kid-m--alpha);
+}
+
+.container-style-query-value {
+		--_csstools-p-wv7kid-n--alpha: 2px;
+
+	@container style(--foo: var(--_csstools-p-wv7kid-n--alpha)) {
+		--beta: var(--_csstools-p-wv7kid-n--alpha);
+	}
+}
+
+.inherit-private {
+		--_csstools-p-wv7kid-o--alpha: 2px;
+
+	--beta: inherit(--_csstools-p-wv7kid-o--alpha);
+}
+
+.nested-non-hoistable {
+	@private {
+		--alpha: 2px;
+	}
+
+	& .inner {
+		@container (width > 0px) {
+			@private {
+				@property --beta <length>: 1px;
+				--beta: 2px;
+			}
+		}
+
+		--gamma: var(--alpha);
+	}
+}

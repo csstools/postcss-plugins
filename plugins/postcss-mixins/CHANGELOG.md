@@ -7,6 +7,11 @@
 - Support trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
 - Trim whitespace from `@apply` arguments.
 - Treat an empty default value (`--x:`) as a default value.
+- Drop `@layer` rules from mixin bodies.
+- Resolve `inherit` parameter defaults in the calling context.
+- Ignore mixin parameters and arguments with invalid `<declaration-value>` values.
+- Ignore `--` as a parameter name.
+- Use a separate namespace for generated names so they do not collide with private rule generated names.
 
 ### 1.1.0
 

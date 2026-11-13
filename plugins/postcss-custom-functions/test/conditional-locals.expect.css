@@ -37,7 +37,7 @@
 
 .conditional-registration {
 
-	--_csstools-cf-m5jfqc-5-local-x: initial;
+	--_csstools-cf-m5jfqc-5-local-x: var(--_csstools-cf-m5jfqc-5-arg-0);
 	--_csstools-cf-m5jfqc-4-result: var(--_csstools-cf-m5jfqc-5-local-x,var(--_csstools-cf-m5jfqc-5-arg-0, FALLBACK));
 }
 
@@ -65,21 +65,23 @@
 .conditional-parameter-registration {
 	--actual: var(--_csstools-cf-m5jfqc-6-result);
 }
-	@supports (not (width: 100px)) {
-		@property --_csstools-cf-m5jfqc-5-local-x {
-			syntax: "<length>";
-			inherits: true;
-			initial-value: 10px;
-		}
-	}
-	@property --_csstools-cf-m5jfqc-7-arg-0 {
+
+@supports (not (width: 100px)) {
+	@property --_csstools-cf-m5jfqc-5-local-x {
+		syntax: "<length>";
+		inherits: true;
+		initial-value: 10px;
+}
+}
+
+@property --_csstools-cf-m5jfqc-7-arg-0 {
 	syntax: "<length>";
 	inherits: true;
 	initial-value: 20px;
 }
 
-	@property --_csstools-cf-m5jfqc-7-local-x {
-		syntax: "<length>";
-		inherits: true;
-		initial-value: 10px;
-	}
+@property --_csstools-cf-m5jfqc-7-local-x {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}

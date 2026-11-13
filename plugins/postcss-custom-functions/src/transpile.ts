@@ -10,11 +10,12 @@ import {
 	replaceComponentValues,
 	stringify,
 } from '@csstools/css-parser-algorithms';
-import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
+import { TokenType, isTokenColon, isTokenComma, isTokenFunction, isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
+import type { TokenIdent } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
 import { parameterType } from './classify';
-import { parseArguments, hasImportant } from './parse-arguments';
+import { parseArguments } from './parse-arguments';
 import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utilities';
@@ -43,6 +44,7 @@ class Scope {
 	names: Map<string, string> = new Map();
 	fallbacks: Map<string, string> = new Map();
 	registeredNames: Set<string> = new Set();
+	unconditionalRegisteredNames: Set<string> = new Set();
 	parent: Scope | null;
 
 	constructor(parent: Scope | null) {
@@ -163,7 +165,7 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			return this.processCall(node, element, new Scope(null), inlineDecls, helpers);
+			return this.processCall(node, element, new Scope(null), inlineDecls, helpers, new Map());
 		});
 
 		const modified = stringify([componentValues]);
@@ -188,7 +190,7 @@ export class CustomFunctionTranspiler {
 		return modified;
 	}
 
-	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers): Array<ComponentValue> {
+	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers, parameterArgs: Map<string, string>): Array<ComponentValue> {
 		const name = fn.getName();
 		const group = this.customFunctions.get(name);
 
@@ -205,7 +207,7 @@ export class CustomFunctionTranspiler {
 		}
 
 		const args = parseArguments(fn);
-		if (!args || args.some(hasImportant)) {
+		if (!args) {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
@@ -219,7 +221,7 @@ export class CustomFunctionTranspiler {
 		// Arguments are resolved in the scope of the caller, before the function
 		// itself is evaluated.
 		const evaluatedArgs = args.map((arg) => {
-			return this.rewriteValue(stringify([arg]), element, parentScope, inlineDecls, helpers);
+			return this.rewriteValue(stringify([arg]), element, parentScope, inlineDecls, helpers, parameterArgs);
 		});
 
 		const callId = (this.counter++).toString(36);
@@ -286,6 +288,7 @@ export class CustomFunctionTranspiler {
 		}
 
 		const propertyRules = collectPropertyRules(definition.node);
+
 		const conditionalRegistrationNames = new Set<string>();
 		for (const { propertyRule, conditionals } of propertyRules) {
 			if (!conditionals.length) {
@@ -310,6 +313,16 @@ export class CustomFunctionTranspiler {
 			}
 
 			registrationNames.set(registeredName, target);
+		}
+
+		for (const { propertyRule, conditionals } of propertyRules) {
+			if (conditionals.length) {
+				continue;
+			}
+
+			for (const name of registeredPropertyNames(propertyRule)) {
+				scope.unconditionalRegisteredNames.add(name);
+			}
 		}
 
 		for (const name of conditionalRegistrationNames) {
@@ -351,6 +364,7 @@ export class CustomFunctionTranspiler {
 		}
 
 		const nodes: Array<ChildNode> = [];
+		const typedParameters = new Map<string, string>();
 
 		if (!validArity) {
 			inlineDecls.push(this.invalidResultDeclaration(resultName, element, helpers));
@@ -383,9 +397,11 @@ export class CustomFunctionTranspiler {
 					continue;
 				}
 
+				typedParameters.set(parameters[i].getName(), type);
+
 				this.spendBudget();
 
-				this.registrations.push(...wrapRegistrationsInConditionals([helpers.atRule({
+				this.pushRegistration(helpers.atRule({
 					name: 'property',
 					params: this.argName(definitionId, i),
 					nodes: [
@@ -394,7 +410,27 @@ export class CustomFunctionTranspiler {
 						...(cssWideKeywordArgs.has(i) ? [] : [helpers.decl({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source })]),
 					],
 					source: element.source,
-				})], definition.conditionals));
+				}), definition.conditionals);
+			}
+
+			for (const localName of declaredLocalNames.all) {
+				const type = typedParameters.get(localName);
+				const prop = scope.names.get(localName);
+				if (!type || !prop || registrationNames.has(localName)) {
+					continue;
+				}
+
+				this.spendBudget();
+
+				this.pushRegistration(helpers.atRule({
+					name: 'property',
+					params: prop,
+					nodes: [
+						helpers.decl({ prop: 'syntax', value: `"${type}"`, source: element.source }),
+						helpers.decl({ prop: 'inherits', value: 'true', source: element.source }),
+					],
+					source: element.source,
+				}), definition.conditionals);
 			}
 
 			this.emitLocalRegistrations(propertyRules, definition.conditionals, definitionId, registrationNames);
@@ -422,8 +458,17 @@ export class CustomFunctionTranspiler {
 			}
 
 			this.spendBudget(countNodes(registration));
-			this.registrations.push(...wrapRegistrationsInConditionals([registration], [...ancestorConditionals, ...conditionals]));
+			this.pushRegistration(registration, [...ancestorConditionals, ...conditionals]);
 		}
+	}
+
+	private pushRegistration(registration: AtRule, conditionals: Array<AtRule>): void {
+		const registrations = wrapRegistrationsInConditionals([registration], conditionals);
+		for (const node of registrations) {
+			formatGeneratedNode(node, '\n\n', '');
+		}
+
+		this.registrations.push(...registrations);
 	}
 
 	/**
@@ -630,7 +675,7 @@ export class CustomFunctionTranspiler {
 		// being declared, including when they appear as a `var()` fallback.
 		// This runs after the regular rewriting so that the inserted call-site
 		// references are not rewritten to the local scope.
-		let value = this.rewriteValue(decl.value, element, scope, inlineDecls, helpers);
+		let value = this.rewriteValue(decl.value, element, scope, inlineDecls, helpers, parameterArgs);
 		if (declaredProp !== null) {
 			value = this.resolveBodyKeywords(value, declaredProp, scope, parameterArgs);
 		}
@@ -748,13 +793,17 @@ export class CustomFunctionTranspiler {
 	 * parameter name.
 	 */
 	private rewriteDefault(defaultValue: string, parameterName: string, element: Rule, scope: Scope, parameterArgs: Map<string, string>, inlineDecls: Array<Declaration>, helpers: Helpers): string {
-		const rewritten = this.rewriteValue(defaultValue, element, scope, inlineDecls, helpers);
+		const rewritten = this.rewriteValue(defaultValue, element, scope, inlineDecls, helpers, parameterArgs);
 		return this.resolveBodyKeywords(rewritten, parameterName, scope, parameterArgs);
 	}
 
 	private resolveLocalKeyword(keyword: string, declaredProp: string, scope: Scope, parameterArgs: Map<string, string>): Array<ComponentValue> | null {
 		if (keyword === 'initial') {
-			if (scope.registeredNames.has(declaredProp)) {
+			if (scope.unconditionalRegisteredNames.has(declaredProp)) {
+				return null;
+			}
+
+			if (scope.registeredNames.has(declaredProp) && !parameterArgs.has(declaredProp)) {
 				return null;
 			}
 
@@ -774,7 +823,7 @@ export class CustomFunctionTranspiler {
 		return null;
 	}
 
-	private rewriteValue(value: string, element: Rule, scope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers): string {
+	private rewriteValue(value: string, element: Rule, scope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers, parameterArgs: Map<string, string>): string {
 		const tokens = tokenize({ css: value });
 		if (!tokens.some((token) => {
 			if (!isTokenFunction(token)) {
@@ -802,12 +851,13 @@ export class CustomFunctionTranspiler {
 			}
 
 			if (IS_STYLE_FUNCTION_REGEX.test(name)) {
-				this.rewriteCustomPropertyName(node, scope);
+				this.rewriteStyleFunction(node, scope, parameterArgs);
 				return;
 			}
 
 			if (IS_INHERIT_FUNCTION_REGEX.test(name)) {
-				return this.rewriteInheritFunction(node, scope);
+				this.rewriteInheritFunction(node, scope);
+				return;
 			}
 
 			if (!name.startsWith('--')) {
@@ -819,13 +869,17 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			return this.processCall(node, element, scope, inlineDecls, helpers);
+			return this.processCall(node, element, scope, inlineDecls, helpers, parameterArgs);
 		});
 
 		return stringify([componentValues]);
 	}
 
-	private rewriteCustomPropertyName(node: FunctionNode, scope: Scope): void {
+	private rewriteStyleFunction(node: FunctionNode, scope: Scope, parameterArgs: Map<string, string>): void {
+		let nameIndex = -1;
+		let authoredName = '';
+		let nameToken: TokenIdent | null = null;
+
 		for (let i = 0; i < node.value.length; i++) {
 			const child = node.value[i];
 			if (isWhiteSpaceOrCommentNode(child)) {
@@ -836,19 +890,61 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			const original = child.value[4].value;
-			if (!original.startsWith('--')) {
+			authoredName = child.value[4].value;
+			if (!authoredName.startsWith('--')) {
 				return;
 			}
 
-			const mapped = scope.get(original);
-			if (!mapped) {
-				return;
-			}
+			nameIndex = i;
+			nameToken = child.value;
+			break;
+		}
 
-			mutateIdent(child.value, mapped);
+		if (nameIndex === -1 || !nameToken) {
 			return;
 		}
+
+		const mapped = scope.get(authoredName);
+		if (!mapped) {
+			return;
+		}
+
+		mutateIdent(nameToken, mapped);
+
+		let colonIndex = -1;
+		for (let i = nameIndex + 1; i < node.value.length; i++) {
+			const child = node.value[i];
+			if (isTokenNode(child) && isTokenColon(child.value)) {
+				colonIndex = i;
+				break;
+			}
+		}
+
+		if (colonIndex === -1) {
+			return;
+		}
+
+		const meaningful = node.value.slice(colonIndex + 1).filter((child) => !isWhiteSpaceOrCommentNode(child));
+		if (meaningful.length !== 1) {
+			return;
+		}
+
+		const keywordNode = meaningful[0];
+		if (!isTokenNode(keywordNode) || !isTokenIdent(keywordNode.value)) {
+			return;
+		}
+
+		const keyword = keywordNode.value[4].value.toLowerCase();
+		if (!CSS_WIDE_KEYWORDS.has(keyword)) {
+			return;
+		}
+
+		const replacement = this.resolveLocalKeyword(keyword, authoredName, scope, parameterArgs);
+		if (!replacement) {
+			return;
+		}
+
+		node.value = [...node.value.slice(0, colonIndex + 1), ...replacement];
 	}
 
 	/**
@@ -859,7 +955,7 @@ export class CustomFunctionTranspiler {
 	 *
 	 * https://drafts.csswg.org/css-values-5/#inherit-notation
 	 */
-	private rewriteInheritFunction(node: FunctionNode, scope: Scope): Array<ComponentValue> | void {
+	private rewriteInheritFunction(node: FunctionNode, scope: Scope): void {
 		for (let i = 0; i < node.value.length; i++) {
 			const child = node.value[i];
 			if (isWhiteSpaceOrCommentNode(child)) {
@@ -875,18 +971,10 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			const mapped = scope.parent?.get(original) ?? original;
-
-			return [
-				new CSSAFunctionNode(
-					[TokenType.Function, 'var(', -1, -1, { value: 'var' }],
-					[TokenType.CloseParen, ')', -1, -1, undefined],
-					[
-						new CSSATokenNode([TokenType.Ident, mapped, -1, -1, { value: mapped }]),
-						...node.value.slice(i + 1),
-					],
-				),
-			];
+			mutateIdent(child.value, scope.parent?.get(original) ?? original);
+			node.name[1] = 'var(';
+			node.name[4].value = 'var';
+			return;
 		}
 	}
 
@@ -990,6 +1078,20 @@ function countNodes(node: ChildNode): number {
 	}
 
 	return count;
+}
+
+function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
+	node.cleanRaws(true);
+	node.raws.before = before;
+
+	if (node.type === 'decl' || node.type === 'comment') {
+		return;
+	}
+
+	const childIndent = `${indent}\t`;
+	for (const child of node.nodes || []) {
+		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
+	}
 }
 
 /** Wrap registrations in clones of the conditional group rules around them. */

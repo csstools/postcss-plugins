@@ -6,3 +6,12 @@
 	--_csstools-cf-1yh5w0q-0-result: var(--_csstools-cf-1yh5w0q-2-result);
 	--actual: var(--_csstools-cf-1yh5w0q-0-result);
 }
+
+.inherit-fallback {
+	--_csstools-cf-1yh5w0q-5-local-x: var(--unknown);
+	--_csstools-cf-1yh5w0q-7-local-x: FAIL;
+	--_csstools-cf-1yh5w0q-8-result: PASS;
+	--_csstools-cf-1yh5w0q-6-result: var(--_csstools-cf-1yh5w0q-5-local-x, var(--_csstools-cf-1yh5w0q-8-result));
+	--_csstools-cf-1yh5w0q-4-result: var(--_csstools-cf-1yh5w0q-6-result);
+	--actual: var(--_csstools-cf-1yh5w0q-4-result);
+}

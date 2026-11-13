@@ -219,3 +219,78 @@ section > h1 > small {
 		else: red;
 	);
 }
+
+.invalid-at-rules {
+	@private {
+		--alpha: 2px;
+		@apply --mixin;
+		@font-face { font-family: test; }
+		@unknown-rule { --alpha: 3px; }
+	}
+
+	--beta: var(--alpha);
+}
+
+.important-private {
+	@private {
+		--alpha: 2px;
+		--alpha: 3px !important;
+	}
+
+	--beta: var(--alpha);
+}
+
+.container-private {
+	@container (width > 0px) {
+		@private {
+			--alpha: 2px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.starting-style-private {
+	@starting-style {
+		@private {
+			--alpha: 2px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.container-style-query-value {
+	@private {
+		--alpha: 2px;
+	}
+
+	@container style(--foo: var(--alpha)) {
+		--beta: var(--alpha);
+	}
+}
+
+.inherit-private {
+	@private {
+		--alpha: 2px;
+	}
+
+	--beta: inherit(--alpha);
+}
+
+.nested-non-hoistable {
+	@private {
+		--alpha: 2px;
+	}
+
+	& .inner {
+		@container (width > 0px) {
+			@private {
+				@property --beta <length>: 1px;
+				--beta: 2px;
+			}
+		}
+
+		--gamma: var(--alpha);
+	}
+}

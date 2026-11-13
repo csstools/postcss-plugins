@@ -17,6 +17,8 @@ Unsupported:
 - mixin overrides
 - mixin applications whose `@private` rules contain `@property` rules inside `@container` or `@starting-style`
 
+Run `@csstools/postcss-private-rule` after this plugin to resolve private properties from the applying style rule.
+
 ```css
 @mixin --foo() {
 	color: green;
@@ -54,9 +56,9 @@ Unsupported:
 }
 
 .bar {
-	--_csstools-p-1gice1e-0--arg-0: 200;
-	--_csstools-p-1gice1e-1--baz: var(--_csstools-p-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-p-1gice1e-1--baz) 127 0);
+	--_csstools-m-1gice1e-0--arg-0: 200;
+	--_csstools-m-1gice1e-1--baz: var(--_csstools-m-1gice1e-0--arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-1--baz) 127 0);
 }
 
 .c {
@@ -152,9 +154,9 @@ postcssMixins({ preserve: true })
 }
 
 .bar {
-	--_csstools-p-1gice1e-0--arg-0: 200;
-	--_csstools-p-1gice1e-1--baz: var(--_csstools-p-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-p-1gice1e-1--baz) 127 0);
+	--_csstools-m-1gice1e-0--arg-0: 200;
+	--_csstools-m-1gice1e-1--baz: var(--_csstools-m-1gice1e-0--arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-1--baz) 127 0);
 	@apply --bar(200);
 }
 

@@ -74,6 +74,9 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	layer: {
+		message: 'drops @layer rules from mixin bodies',
+	},
 	invalid: {
 		message: 'ignores invalid mixin invocations',
 	},

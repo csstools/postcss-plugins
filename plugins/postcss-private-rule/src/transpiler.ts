@@ -1,18 +1,18 @@
 import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } from 'postcss';
-import type { FunctionNode } from '@csstools/css-parser-algorithms';
-import { findAllStyleRules, findPrivateRule, findStyleRule, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
+import { findAllStyleRules, findPrivateRule, IS_NESTING_GROUP_RULE_REGEX, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
 import { rewritePropertyNames } from '@csstools/utilities';
 
-const HAS_VAR_OR_IF_FUNCTION_REGEX = /\b(var|if)\(/i;
+const HAS_PRIVATE_REFERENCE_REGEX = /\b(var|if|style|inherit)\(/i;
 const IS_CONTAINER_REGEX = /^container$/i;
 const IS_LAYER_REGEX = /^layer$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
+const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
 const IS_CONDITIONAL_GROUP_RULE_REGEX = /^(container|media|starting-style|supports)$/i;
-const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 const IS_NON_HOISTABLE_CONDITIONAL_REGEX = /^(container|starting-style)$/i;
 
 export class Transpiler {
@@ -23,6 +23,12 @@ export class Transpiler {
 	counter = 0;
 
 	hashes = new Map<string, string>();
+
+	namespace: string;
+
+	constructor(namespace = 'p') {
+		this.namespace = namespace;
+	}
 
 	/** `@property` registrations generated for private properties. */
 	private registrations: Array<AtRule> = [];
@@ -55,7 +61,7 @@ export class Transpiler {
 			fromHash = '0';
 		}
 
-		const prefix = `--_csstools-p-${fromHash}-${this.counter.toString(36)}`;
+		const prefix = `--_csstools-${this.namespace}-${fromHash}-${this.counter.toString(36)}`;
 		this.counter++;
 
 		const out: { prefix: string, privateProperties: Set<string> } = {
@@ -110,7 +116,18 @@ export class Transpiler {
 		}
 
 		atRule.walk((node) => {
-			if (node.type === 'decl' && node.variable && node.prop.startsWith('--')) {
+			if (node.type === 'decl') {
+				// `!important` on a private declaration is invalid and ignored.
+				if (node.important) {
+					node.remove();
+					return;
+				}
+
+				if (!node.variable || !node.prop.startsWith('--')) {
+					node.remove();
+					return;
+				}
+
 				const name = unescapedPropertyName(node.prop);
 				if (name !== null) {
 					privateProperties.add(name);
@@ -121,10 +138,11 @@ export class Transpiler {
 				return;
 			}
 
-			if (node.type === 'atrule' && findPrivateRule(node) === atRule) {
-				// nesting group rules are allowed inside private.
-				// these are allowed if we can find a private at rule from the current node
-				// and it is the same private at rule as what we started with.
+			if (
+				node.type === 'atrule' &&
+				IS_NESTING_GROUP_RULE_REGEX.test(node.name) &&
+				findPrivateRule(node) === atRule
+			) {
 				return;
 			}
 
@@ -156,11 +174,11 @@ export class Transpiler {
 	}
 
 	/**
-	 * Whether any `@private` rule for this style rule has a registration that
-	 * can not be hoisted to the root.
+	 * Whether any `@private` rule in this style rule or its nested style rules
+	 * has a registration that can not be hoisted to the root.
 	 *
-	 * A private property name is scoped to the style rule, so all private rules
-	 * of a style rule must be transpiled or none of them.
+	 * A private property name is scoped to the style rule and is visible in all
+	 * nested rules, so the whole subtree must be transpiled or none of it.
 	 */
 	private hasNonHoistableRegistration(ownerNode: AtRule | Rule): boolean {
 		const cached = this.nonHoistableOwners.get(ownerNode);
@@ -171,7 +189,12 @@ export class Transpiler {
 		let skip = false;
 
 		ownerNode.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
-			if (skip || findStyleRule(atRule) !== ownerNode) {
+			if (skip) {
+				return;
+			}
+
+			const propertyRules = collectPropertyRules(atRule);
+			if (!propertyRules.length) {
 				return;
 			}
 
@@ -180,7 +203,6 @@ export class Transpiler {
 				return;
 			}
 
-			const propertyRules = collectPropertyRules(atRule);
 			if (propertyRules.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))) {
 				skip = true;
 			}
@@ -211,7 +233,12 @@ export class Transpiler {
 				privateProperties.add(name);
 			}
 
-			this.registrations.push(...wrapInConditionals([registration], [...ancestorConditionals, ...conditionals]));
+			const registrations = wrapInConditionals([registration], [...ancestorConditionals, ...conditionals]);
+			for (const node of registrations) {
+				formatGeneratedNode(node, '\n\n', '');
+			}
+
+			this.registrations.push(...registrations);
 		}
 	}
 
@@ -249,51 +276,14 @@ export class Transpiler {
 	}
 
 	transpileDeclarationValues(decl: Declaration): void {
-		if (!HAS_VAR_OR_IF_FUNCTION_REGEX.test(decl.value)) return;
+		if (!HAS_PRIVATE_REFERENCE_REGEX.test(decl.value)) return;
 
 		const styleRulesWithPrivateProperties = this.getStyleRulesWithPrivateProperties(decl);
 
 		if (!styleRulesWithPrivateProperties.length) return;
 
 		const componentValues = parseListOfComponentValues(tokenize({ css: decl.value }));
-
-		walk(componentValues, (entry) => {
-			if (!isFunctionNode(entry.node)) {
-				return;
-			}
-
-			if (IS_VAR_FUNCTION_REGEX.test(entry.node.getName())) {
-				const args = entry.node.value;
-				for (let i = 0; i < args.length; i++) {
-					const arg = args[i];
-
-					if (isWhiteSpaceOrCommentNode(arg)) continue;
-
-					if (!isTokenNode(arg) || !isTokenIdent(arg.value) || !arg.value[4].value.startsWith('--')) break;
-
-					const propertyName = arg.value[4].value;
-					let foundPrefix: string | false = false;
-
-					for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
-						if (privateProperties.has(propertyName)) {
-							foundPrefix = prefix;
-							break;
-						}
-					}
-
-					if (!foundPrefix) break;
-
-					mutateIdent(arg.value, `${foundPrefix}${arg.value[4].value}`);
-					break;
-				}
-
-				return;
-			}
-
-			if (IS_STYLE_FUNCTION_REGEX.test(entry.node.getName())) {
-				this.rewritePrivatePropertyName(entry.node, styleRulesWithPrivateProperties);
-			}
-		});
+		this.rewritePrivateReferences(componentValues, styleRulesWithPrivateProperties);
 
 		const replacement = stringify([componentValues]);
 		if (replacement === decl.value) {
@@ -313,14 +303,7 @@ export class Transpiler {
 		if (!styleRulesWithPrivateProperties.length) return;
 
 		const componentValues = parseListOfComponentValues(tokenize({ css: atRule.params }));
-
-		walk(componentValues, (entry) => {
-			if (!isFunctionNode(entry.node)) return;
-
-			if (!IS_STYLE_FUNCTION_REGEX.test(entry.node.getName())) return;
-
-			this.rewritePrivatePropertyName(entry.node, styleRulesWithPrivateProperties);
-		});
+		this.rewritePrivateReferences(componentValues, styleRulesWithPrivateProperties);
 
 		const replacement = stringify([componentValues]);
 		if (replacement === atRule.params) {
@@ -328,6 +311,21 @@ export class Transpiler {
 		}
 
 		atRule.params = replacement;
+	}
+
+	private rewritePrivateReferences(componentValues: Array<ComponentValue>, styleRulesWithPrivateProperties: Array<{ prefix: string, privateProperties: Set<string> }>): void {
+		walk(componentValues, (entry) => {
+			if (!isFunctionNode(entry.node)) {
+				return;
+			}
+
+			const name = entry.node.getName();
+			if (!IS_VAR_FUNCTION_REGEX.test(name) && !IS_STYLE_FUNCTION_REGEX.test(name) && !IS_INHERIT_FUNCTION_REGEX.test(name)) {
+				return;
+			}
+
+			this.rewritePrivatePropertyName(entry.node, styleRulesWithPrivateProperties);
+		});
 	}
 
 	private rewritePrivatePropertyName(node: FunctionNode, styleRulesWithPrivateProperties: Array<{ prefix: string, privateProperties: Set<string> }>): void {
@@ -395,6 +393,20 @@ function wrapInConditionals(nodes: Array<AtRule>, conditionals: Array<AtRule>): 
 	}
 
 	return current;
+}
+
+function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
+	node.cleanRaws(true);
+	node.raws.before = before;
+
+	if (node.type === 'decl' || node.type === 'comment') {
+		return;
+	}
+
+	const childIndent = `${indent}\t`;
+	for (const child of node.nodes || []) {
+		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
+	}
 }
 
 /** Remove nesting group rules that no longer contain anything. */

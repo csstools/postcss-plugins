@@ -27,3 +27,8 @@
 	inherits: true;
 	initial-value: 10px;
 }
+
+@property --_csstools-cf-p7npk3-1-local-x {
+	syntax: "<length>";
+	inherits: true;
+}

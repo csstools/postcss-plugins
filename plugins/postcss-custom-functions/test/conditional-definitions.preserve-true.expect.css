@@ -135,12 +135,13 @@
 }
 
 @media (width >= 50px) {
-		@property --_csstools-cf-154dd4k-a-local-size <length>: 10px
+	@property --_csstools-cf-154dd4k-a-local-size <length>: 10px
 }
 
-@supports (width: 100px) {@property --_csstools-cf-154dd4k-c-arg-0 {
-    syntax: "<length>";
-    inherits: true;
-    initial-value: 5px
+@supports (width: 100px) {
+	@property --_csstools-cf-154dd4k-c-arg-0 {
+		syntax: "<length>";
+		inherits: true;
+		initial-value: 5px
 }
 }

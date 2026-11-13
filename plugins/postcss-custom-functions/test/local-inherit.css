@@ -12,3 +12,21 @@
 	--x: FAIL2;
 	--actual: --outer-inherit();
 }
+
+@function --inherit-fallback() {
+	--x: var(--unknown);
+	result: --inherit-fallback-inner();
+}
+
+@function --inherit-fallback-inner() {
+	--x: FAIL;
+	result: inherit(--x, --inherit-fallback-value());
+}
+
+@function --inherit-fallback-value() {
+	result: PASS;
+}
+
+.inherit-fallback {
+	--actual: --inherit-fallback();
+}

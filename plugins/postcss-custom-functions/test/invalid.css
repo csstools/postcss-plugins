@@ -21,3 +21,19 @@
 .braces-before-value {
 	width: --f({}1);
 }
+
+.bang {
+	width: --f(!);
+}
+
+.semicolon {
+	width: --f(1;2);
+}
+
+.important {
+	width: --f(1 !important);
+}
+
+.braces-important {
+	width: --f({1 !important});
+}

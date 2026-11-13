@@ -1,3 +1,7 @@
+@function --f(--x) {
+	result: 10px;
+}
+
 .missing {
 	--_csstools-cf-1lkn6xo-0-result: var(--_csstools-cf-invalid);
 	width: var(--_csstools-cf-1lkn6xo-0-result);
@@ -13,9 +17,25 @@
 }
 
 .braces-in-value {
-	width: var(--_csstools-cf-invalid);
+	width: --f(1 {});
 }
 
 .braces-before-value {
-	width: var(--_csstools-cf-invalid);
+	width: --f({}1);
+}
+
+.bang {
+	width: --f(!);
+}
+
+.semicolon {
+	width: --f(1;2);
+}
+
+.important {
+	width: --f(1 !important);
+}
+
+.braces-important {
+	width: --f({1 !important});
 }

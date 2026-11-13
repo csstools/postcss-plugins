@@ -95,3 +95,49 @@
 .trailing-comma-single-argument {
 	@apply --one(red,);
 }
+
+.invalid-important-argument {
+	@apply --one(red !important);
+}
+
+.invalid-bang-argument {
+	@apply --one(!);
+}
+
+.invalid-semicolon-argument {
+	@apply --one(red;);
+}
+
+@mixin --inherit-default(--color: inherit) {
+	color: var(--color, red);
+}
+
+.inherit-default {
+	--color: green;
+	@apply --inherit-default;
+}
+
+@mixin --inherit-default-with-argument(--color: inherit) {
+	color: var(--color, red);
+}
+
+.inherit-default-with-argument {
+	--color: green;
+	@apply --inherit-default-with-argument(blue);
+}
+
+@mixin --invalid-default(--color: red !important) {
+	color: var(--color);
+}
+
+.invalid-default {
+	@apply --invalid-default;
+}
+
+@mixin --invalid-empty-parameter(--) {
+	color: red;
+}
+
+.invalid-empty-parameter {
+	@apply --invalid-empty-parameter;
+}
