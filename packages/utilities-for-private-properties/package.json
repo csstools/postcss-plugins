@@ -1,0 +1,79 @@
+{
+	"name": "@csstools/utilities-for-private-properties",
+	"description": "Utilities for private custom properties",
+	"version": "1.0.0",
+	"contributors": [
+		{
+			"name": "Antonio Laguna",
+			"email": "antonio@laguna.es",
+			"url": "https://antonio.laguna.es"
+		},
+		{
+			"name": "Romain Menke",
+			"email": "romainmenke@gmail.com"
+		}
+	],
+	"license": "MIT-0",
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/csstools"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/csstools"
+		}
+	],
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"@csstools/css-parser-algorithms": "^4.0.2",
+		"@csstools/css-tokenizer": "^4.0.2",
+		"@csstools/generate-idents": "^1.0.0",
+		"@csstools/utilities-for-property-registrations": "^1.0.0"
+	},
+	"peerDependencies": {
+		"postcss": "^8.4"
+	},
+	"devDependencies": {
+		"postcss": "^8.5.10"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup/default.mjs",
+		"docs": "node ../../.github/bin/generate-docs/api-documenter.mjs",
+		"lint": "node ../../.github/bin/format-package-json.mjs",
+		"prepublishOnly": "npm run build && npm run test",
+		"stryker": "stryker run --logLevel error",
+		"test": "node --test"
+	},
+	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-private-properties#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/csstools/postcss-plugins.git",
+		"directory": "packages/utilities-for-private-properties"
+	},
+	"bugs": "https://github.com/csstools/postcss-plugins/issues",
+	"keywords": [
+		"css",
+		"custom-property",
+		"postcss",
+		"private"
+	],
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

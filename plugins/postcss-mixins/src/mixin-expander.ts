@@ -1,5 +1,5 @@
-import type { AtRule, ChildNode, Declaration, Helpers, Node, Root, Rule } from 'postcss';
-import { Transpiler } from '@csstools/postcss-private-rule';
+import type { AtRule, ChildNode, Helpers, Root, Rule } from 'postcss';
+import { createPrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import { IS_APPLY_REGEX, processableApplyRule } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
 import { processableMixinRule } from './processable-mixin';
@@ -13,7 +13,6 @@ type Mixin = {
 const IS_CONTENTS_REGEX = /^contents$/i;
 const IS_PRIVATE_REGEX = /^private$/i;
 const IS_LAYER_REGEX = /^layer$/i;
-const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 
 // Mixins can reference each other and duplicate subtrees, which can grow
 // exponentially. Bound the total number of nodes generated while expanding
@@ -30,7 +29,8 @@ const MAX_GENERATED_NODES = 100_000;
 export class MixinExpander {
 	private mixins: Map<string, Mixin> = new Map();
 	private knownMixins: Set<string> = new Set();
-	private transpiler: Transpiler = new Transpiler('m');
+	private privateTranspiler = createPrivatePropertyTranspiler({ namespace: 'm' });
+	private registrations: Array<AtRule> = [];
 	private argumentCounter = 0;
 	private desugaredNestingRules: Set<Rule> = new Set();
 	private expanding: Set<string> = new Set();
@@ -94,9 +94,8 @@ export class MixinExpander {
 
 		this.desugaredNestingRules.clear();
 
-		for (const registration of this.transpiler.getRegisteredPropertyAtRules()) {
-			root.append(registration);
-		}
+		root.append(...this.registrations);
+		this.registrations = [];
 	}
 
 	private expand(atRule: AtRule, preserve: boolean, helpers: Helpers): void {
@@ -248,33 +247,7 @@ export class MixinExpander {
 
 	/** Only `@private` rules that originate from mixins are transpiled here. */
 	private transpile(inserted: Array<ChildNode>): void {
-		const privateRules: Array<AtRule> = [];
-		for (const node of inserted) {
-			collectMatches(node, IS_PRIVATE_REGEX, privateRules);
-		}
-
-		for (const privateRule of privateRules) {
-			const owner = findOwningRule(privateRule);
-			if (!owner) {
-				continue;
-			}
-
-			this.transpiler.registerAndRemovePrivateRules(privateRule, owner);
-		}
-
-		const declarations: Array<Declaration> = [];
-		const atRules: Array<AtRule> = [];
-		for (const node of inserted) {
-			collectDeclarationsAndAtRules(node, declarations, atRules);
-		}
-
-		for (const declaration of declarations) {
-			this.transpiler.transpileDeclaration(declaration);
-		}
-
-		for (const nestedAtRule of atRules) {
-			this.transpiler.transpileAtRule(nestedAtRule);
-		}
+		this.registrations.push(...this.privateTranspiler.transpile(inserted));
 	}
 
 	/** Mixins applied within this mixin are resolved in the context of the arguments above. */
@@ -350,24 +323,6 @@ function hasPrivateRules(atRule: AtRule): boolean {
 	return result;
 }
 
-function findOwningRule(node: ChildNode): Rule | false {
-	let parent: Node | undefined = node.parent;
-	while (parent) {
-		if (parent.type === 'rule') {
-			return parent as Rule;
-		}
-
-		if (parent.type === 'atrule' && IS_NESTING_GROUP_RULE_REGEX.test((parent as AtRule).name)) {
-			parent = parent.parent;
-			continue;
-		}
-
-		return false;
-	}
-
-	return false;
-}
-
 function collectMatches(node: ChildNode, name: RegExp, out: Array<AtRule>): void {
 	if (node.type === 'atrule' && name.test(node.name)) {
 		out.push(node);
@@ -376,24 +331,6 @@ function collectMatches(node: ChildNode, name: RegExp, out: Array<AtRule>): void
 	if (node.type === 'rule' || node.type === 'atrule') {
 		node.walkAtRules(name, (atRule) => {
 			out.push(atRule);
-		});
-	}
-}
-
-function collectDeclarationsAndAtRules(node: ChildNode, declarations: Array<Declaration>, atRules: Array<AtRule>): void {
-	if (node.type === 'decl') {
-		declarations.push(node);
-	} else if (node.type === 'atrule') {
-		atRules.push(node);
-	}
-
-	if (node.type === 'rule' || node.type === 'atrule') {
-		node.walk((child) => {
-			if (child.type === 'decl') {
-				declarations.push(child);
-			} else if (child.type === 'atrule') {
-				atRules.push(child);
-			}
 		});
 	}
 }

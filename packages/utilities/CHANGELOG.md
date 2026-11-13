@@ -1,10 +1,5 @@
 # Changes to Utilities
 
-### Unreleased (minor)
-
-- Add `rewritePropertyNames()` and `registeredPropertyNames()` for parsing `@property` rules.
-- Add `parseDashedFunctionArguments()` and property registration collection and hoisting helpers.
-
 ### 3.0.0
 
 _January 14, 2026_

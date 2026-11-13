@@ -40,7 +40,8 @@
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/custom-function-parser": "^1.0.0",
-		"@csstools/utilities": "^3.0.0"
+		"@csstools/generate-idents": "^1.0.0",
+		"@csstools/utilities-for-property-registrations": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"

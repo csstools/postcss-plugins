@@ -1,7 +1,8 @@
-import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isTokenNode, isWhitespaceNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken, TokenColon, TokenIdent } from '@csstools/css-tokenizer';
-import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent, isTokenOpenCurly, isTokenSemicolon } from '@csstools/css-tokenizer';
+import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent } from '@csstools/css-tokenizer';
+import { hasInvalidDeclarationValue, singleBracedBlock } from './declaration-value';
 import { CustomFunction } from '../nodes/custom-function';
 import { FunctionParameter } from '../nodes/function-parameter';
 
@@ -254,17 +255,13 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			return false;
 		}
 
-		const meaningfulComponentValues = defaultValueComponentValues.filter((x) => !isWhiteSpaceOrCommentNode(x));
-		if (
-			meaningfulComponentValues.length === 1 &&
-			isSimpleBlockNode(meaningfulComponentValues[0]) &&
-			isTokenOpenCurly(meaningfulComponentValues[0].startToken)
-		) {
-			if (hasInvalidDeclarationValue(meaningfulComponentValues[0].value)) {
+		const block = singleBracedBlock(defaultValueComponentValues);
+		if (block) {
+			if (hasInvalidDeclarationValue(block.value)) {
 				return false;
 			}
 
-			defaultValue = meaningfulComponentValues[0].value.flatMap((x) => {
+			defaultValue = block.value.flatMap((x) => {
 				return x.tokens();
 			});
 		} else {
@@ -289,22 +286,4 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			})
 		)
 	};
-}
-
-function hasInvalidDeclarationValue(componentValues: Array<ComponentValue>): boolean {
-	for (const componentValue of componentValues) {
-		if (!isTokenNode(componentValue)) {
-			continue;
-		}
-
-		if (isTokenSemicolon(componentValue.value)) {
-			return true;
-		}
-
-		if (isTokenDelim(componentValue.value) && componentValue.value[4].value === '!') {
-			return true;
-		}
-	}
-
-	return false;
 }

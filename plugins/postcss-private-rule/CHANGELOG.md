@@ -1,6 +1,9 @@
 # Changes to PostCSS Private Rule
 
-### Unreleased (minor)
+### Unreleased (major)
+
+- Removed the undocumented `Transpiler` export. Use `@csstools/utilities-for-private-properties` instead.
+- Use `@csstools/utilities-for-private-properties` to transpile private properties.
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
 - Leave `@private` rules with registrations inside `@container` or `@starting-style` unchanged.

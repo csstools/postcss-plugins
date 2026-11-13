@@ -1,8 +1,4 @@
-import type { AtRule } from 'postcss';
-import type { Declaration } from 'postcss';
-import type { Node } from 'postcss';
 import type { PluginCreator } from 'postcss';
-import type { Rule } from 'postcss';
 
 declare const creator: PluginCreator<pluginOptions>;
 export default creator;
@@ -10,53 +6,5 @@ export { creator as 'module.exports' }
 
 /** postcss-private-rule plugin options */
 export declare type pluginOptions = never;
-
-export declare class Transpiler {
-    privateForRule: WeakMap<Rule | AtRule, {
-        prefix: string;
-        privateProperties: Set<string>;
-    }>;
-    private nonHoistableOwners;
-    counter: number;
-    hashes: Map<string, string>;
-    namespace: string;
-    constructor(namespace?: string);
-    /** `@property` registrations generated for private properties. */
-    private registrations;
-    /**
-     * Take the `@property` registrations that were generated for private
-     * properties. These are top level rules and must be appended to the root.
-     */
-    getRegisteredPropertyAtRules(): Array<AtRule>;
-    getOrFillPrivateForRule(rule: Rule | AtRule): {
-        prefix: string;
-        privateProperties: Set<string>;
-    };
-    getStyleRulesWithPrivateProperties(node: Node): Array<{
-        prefix: string;
-        privateProperties: Set<string>;
-        rule: Rule;
-    }>;
-    registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void;
-    /**
-     * Remove a private rule and any conditional group rules that only
-     * contained it.
-     */
-    private removePrivateRule;
-    /**
-     * Whether any `@private` rule in this style rule or its nested style rules
-     * has a registration that can not be hoisted to the root.
-     *
-     * A private property name is scoped to the style rule and is visible in all
-     * nested rules, so the whole subtree must be transpiled or none of it.
-     */
-    private hasNonHoistableRegistration;
-    transpileDeclaration(decl: Declaration): void;
-    transpileDeclarationPropertyNames(decl: Declaration): void;
-    transpileDeclarationValues(decl: Declaration): void;
-    transpileAtRule(atRule: AtRule): void;
-    private rewritePrivateReferences;
-    private rewritePrivatePropertyName;
-}
 
 export { }

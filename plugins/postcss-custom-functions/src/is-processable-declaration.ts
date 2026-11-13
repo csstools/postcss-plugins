@@ -5,7 +5,7 @@ import { isFunctionNode, isTokenNode, parseListOfComponentValues, walk } from '@
 import { isTokenDimension, tokenize } from '@csstools/css-tokenizer';
 import { parameterType } from './classify';
 import { isGeneratedProperty } from './generated-names';
-import { parseDashedFunctionArguments } from '@csstools/utilities';
+import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 
 const blockedParentAtRules = new Set(['function', 'keyframes']);
 const contextSensitiveProperty = /^(font-size|font|line-height)$/i;

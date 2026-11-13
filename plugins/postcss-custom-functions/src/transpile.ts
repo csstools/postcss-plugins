@@ -14,12 +14,13 @@ import {
 import { TokenType, isTokenColon, isTokenComma, isTokenFunction, isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import type { TokenIdent } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
+import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
-import type { CollectedPropertyRegistration } from '@csstools/utilities';
+import type { CollectedPropertyRegistration } from '@csstools/utilities-for-property-registrations';
 import { parameterType } from './classify';
-import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
+import { GeneratedNames, INVALID_IDENT } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
-import { collectPropertyRegistrations, formatGeneratedNode, hoistPropertyRegistrations, parseDashedFunctionArguments, registeredPropertyNames, wrapInConditionals } from '@csstools/utilities';
+import { collectPropertyRegistrations, formatGeneratedNode, hoistPropertyRegistrations, registeredPropertyNames, wrapInConditionals } from '@csstools/utilities-for-property-registrations';
 
 // Custom functions can call each other and duplicate their bodies, which can
 // grow exponentially. Bound the total number of declarations generated while
@@ -113,7 +114,7 @@ export class CustomFunctionTranspiler {
 	private counter = 0;
 	private frames: Array<CallFrame> = [];
 	private registrations: Array<ChildNode> = [];
-	private names: GeneratedNames = new GeneratedNames('0');
+	private names: GeneratedNames = new GeneratedNames(undefined);
 	private budget = MAX_GENERATED_DECLARATIONS;
 	private emittedNodes: Array<ChildNode> = [];
 	private currentConditionals: Array<AtRule> = [];
@@ -155,7 +156,7 @@ export class CustomFunctionTranspiler {
 			return { value: null, emittedNodes: [], inlineDecls: [] };
 		}
 
-		this.names = new GeneratedNames(sourceHashFor(decl.source?.input.from));
+		this.names = new GeneratedNames(decl.source?.input.from);
 
 		const element = parent;
 		const componentValues = parseListOfComponentValues(tokens);

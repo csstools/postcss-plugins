@@ -66,6 +66,9 @@ export declare function parse(source: string, options?: {
     onParseError?: (error: ParseError) => void;
 }): CustomFunction | false;
 
+/** Parse the arguments of a `<dashed-function>`. */
+export declare function parseDashedFunctionArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false;
+
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): CustomFunction | false;

@@ -1,7 +1,7 @@
 import { isFunctionNode, isTokenNode, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
 import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
-import { parseDashedFunctionArguments } from '@csstools/utilities';
+import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 
 export const IS_APPLY_REGEX = /^apply$/i;
 

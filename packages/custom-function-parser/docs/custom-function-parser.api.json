@@ -1766,6 +1766,75 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@csstools/custom-function-parser!parseDashedFunctionArguments:function(1)",
+          "docComment": "/**\n * Parse the arguments of a `<dashed-function>`.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function parseDashedFunctionArguments(fn: "
+            },
+            {
+              "kind": "Reference",
+              "text": "FunctionNode",
+              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentValue",
+              "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">> | false"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/parser/parse-arguments.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "fn",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "parseDashedFunctionArguments"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@csstools/custom-function-parser!parseFromTokens:function(1)",
           "docComment": "",
           "excerptTokens": [

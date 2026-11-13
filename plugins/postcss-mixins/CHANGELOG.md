@@ -12,6 +12,7 @@
 - Ignore mixin parameters and arguments with invalid `<declaration-value>` values.
 - Ignore `--` as a parameter name.
 - Use a separate namespace for generated names so they do not collide with private rule generated names.
+- Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation.
 
 ### 1.1.0
 
