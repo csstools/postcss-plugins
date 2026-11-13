@@ -14,11 +14,11 @@ import { TokenType, isTokenColon, isTokenComma, isTokenFunction, isTokenIdent, m
 import type { TokenIdent } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
+import type { CollectedPropertyRegistration } from '@csstools/utilities';
 import { parameterType } from './classify';
-import { parseArguments } from './parse-arguments';
 import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
-import { registeredPropertyNames, rewritePropertyNames } from '@csstools/utilities';
+import { collectPropertyRegistrations, formatGeneratedNode, hoistPropertyRegistrations, parseDashedFunctionArguments, registeredPropertyNames, wrapInConditionals } from '@csstools/utilities';
 
 // Custom functions can call each other and duplicate their bodies, which can
 // grow exponentially. Bound the total number of declarations generated while
@@ -74,6 +74,12 @@ type CallFrame = {
 	cyclic: boolean,
 };
 
+export type ProcessDeclarationResult = {
+	value: string | null,
+	emittedNodes: Array<ChildNode>,
+	inlineDecls: Array<Declaration>,
+};
+
 /**
  * Transpiles `<dashed-function>` calls into a form that works without native
  * custom function support.
@@ -121,19 +127,16 @@ export class CustomFunctionTranspiler {
 		return registrations;
 	}
 
-	/**
-	 * Replace all known custom function calls in a declaration value.
-	 * Returns the new value, or `null` when nothing changed.
-	 */
-	processDeclaration(decl: Declaration, helpers: Helpers): string | null {
+	/** Replace all known custom function calls in a declaration value. */
+	processDeclaration(decl: Declaration, helpers: Helpers): ProcessDeclarationResult {
 		const tokens = tokenize({ css: decl.value });
 		if (!tokens.some((token) => isTokenFunction(token) && token[4].value.startsWith('--'))) {
-			return null;
+			return { value: null, emittedNodes: [], inlineDecls: [] };
 		}
 
 		const parent = decl.parent;
 		if (!parent || parent.type !== 'rule') {
-			return null;
+			return { value: null, emittedNodes: [], inlineDecls: [] };
 		}
 
 		this.names = new GeneratedNames(sourceHashFor(decl.source?.input.from));
@@ -169,25 +172,14 @@ export class CustomFunctionTranspiler {
 		});
 
 		const modified = stringify([componentValues]);
-		if (modified === decl.value && !inlineDecls.length && !this.emittedNodes.length) {
-			return null;
-		}
+		const emittedNodes = this.emittedNodes;
+		this.emittedNodes = [];
 
-		if (this.emittedNodes.length) {
-			element.before(this.emittedNodes);
-			this.emittedNodes = [];
-		}
-
-		// Prepend the inlined declarations so they are available to the call.
-		if (inlineDecls.length) {
-			decl.before(inlineDecls);
-		}
-
-		if (modified === decl.value) {
-			return null;
-		}
-
-		return modified;
+		return {
+			value: modified === decl.value ? null : modified,
+			emittedNodes,
+			inlineDecls,
+		};
 	}
 
 	private processCall(fn: FunctionNode, element: Rule, parentScope: Scope, inlineDecls: Array<Declaration>, helpers: Helpers, parameterArgs: Map<string, string>): Array<ComponentValue> {
@@ -206,7 +198,7 @@ export class CustomFunctionTranspiler {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
-		const args = parseArguments(fn);
+		const args = parseDashedFunctionArguments(fn);
 		if (!args) {
 			return [this.varReference(INVALID_IDENT)];
 		}
@@ -287,40 +279,45 @@ export class CustomFunctionTranspiler {
 			scope.names.set(localName, this.localName(definitionId, localName));
 		}
 
-		const propertyRules = collectPropertyRules(definition.node);
+		const propertyRegistrations = collectPropertyRegistrations(definition.node, {
+			isConditional: () => true,
+			shouldDescend: (atRule) => !!atRule.nodes,
+		});
 
 		const conditionalRegistrationNames = new Set<string>();
-		for (const { propertyRule, conditionals } of propertyRules) {
+		for (const { atRule, conditionals } of propertyRegistrations) {
 			if (!conditionals.length) {
 				continue;
 			}
 
-			for (const name of registeredPropertyNames(propertyRule)) {
+			for (const name of registeredPropertyNames(atRule)) {
 				conditionalRegistrationNames.add(name);
 			}
 		}
 
 		const registrationNames = new Map<string, string>();
-		for (const registeredName of collectRegisteredLocalNames(definition.node)) {
-			scope.registeredNames.add(registeredName);
+		for (const { atRule } of propertyRegistrations) {
+			for (const registeredName of registeredPropertyNames(atRule)) {
+				scope.registeredNames.add(registeredName);
 
-			// A registration for a name that is already a parameter registers
-			// that parameter. It only becomes a separate local variable when
-			// the function body also declares it.
-			const target = scope.names.get(registeredName) ?? this.localName(definitionId, registeredName);
-			if (!scope.names.has(registeredName)) {
-				scope.names.set(registeredName, target);
+				// A registration for a name that is already a parameter registers
+				// that parameter. It only becomes a separate local variable when
+				// the function body also declares it.
+				const target = scope.names.get(registeredName) ?? this.localName(definitionId, registeredName);
+				if (!scope.names.has(registeredName)) {
+					scope.names.set(registeredName, target);
+				}
+
+				registrationNames.set(registeredName, target);
 			}
-
-			registrationNames.set(registeredName, target);
 		}
 
-		for (const { propertyRule, conditionals } of propertyRules) {
+		for (const { atRule, conditionals } of propertyRegistrations) {
 			if (conditionals.length) {
 				continue;
 			}
 
-			for (const name of registeredPropertyNames(propertyRule)) {
+			for (const name of registeredPropertyNames(atRule)) {
 				scope.unconditionalRegisteredNames.add(name);
 			}
 		}
@@ -433,7 +430,7 @@ export class CustomFunctionTranspiler {
 				}), definition.conditionals);
 			}
 
-			this.emitLocalRegistrations(propertyRules, definition.conditionals, definitionId, registrationNames);
+			this.emitLocalRegistrations(propertyRegistrations, definition.conditionals, definitionId, registrationNames);
 
 			if (inline) {
 				this.emitBodyInline(definition.node.nodes || [], element, scope, parameterArgs, definitionId, resultName, inlineDecls, helpers);
@@ -450,20 +447,21 @@ export class CustomFunctionTranspiler {
 	}
 
 	/** Moves local `@property` rules to the root with their generated local names. */
-	private emitLocalRegistrations(propertyRules: Array<CollectedPropertyRule>, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
-		for (const { propertyRule, conditionals } of propertyRules) {
-			const registration = propertyRule.clone();
-			if (!rewritePropertyNames(registration, (name) => registrationNames.get(name) ?? this.localName(definitionId, name))) {
-				continue;
-			}
+	private emitLocalRegistrations(propertyRegistrations: Array<CollectedPropertyRegistration>, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
+		const { registrations } = hoistPropertyRegistrations(propertyRegistrations, {
+			rewrite: (name) => registrationNames.get(name) ?? this.localName(definitionId, name),
+			conditionals: ancestorConditionals,
+		});
 
+		for (const registration of registrations) {
 			this.spendBudget(countNodes(registration));
-			this.pushRegistration(registration, [...ancestorConditionals, ...conditionals]);
 		}
+
+		this.registrations.push(...registrations);
 	}
 
 	private pushRegistration(registration: AtRule, conditionals: Array<AtRule>): void {
-		const registrations = wrapRegistrationsInConditionals([registration], conditionals);
+		const registrations = wrapInConditionals([registration], conditionals);
 		for (const node of registrations) {
 			formatGeneratedNode(node, '\n\n', '');
 		}
@@ -1080,45 +1078,6 @@ function countNodes(node: ChildNode): number {
 	return count;
 }
 
-function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
-	node.cleanRaws(true);
-	node.raws.before = before;
-
-	if (node.type === 'decl' || node.type === 'comment') {
-		return;
-	}
-
-	const childIndent = `${indent}\t`;
-	for (const child of node.nodes || []) {
-		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
-	}
-}
-
-/** Wrap registrations in clones of the conditional group rules around them. */
-function wrapRegistrationsInConditionals(nodes: Array<AtRule>, conditionals: Array<AtRule>): Array<ChildNode> {
-	let current: Array<ChildNode> = nodes;
-
-	for (let i = conditionals.length - 1; i >= 0; i--) {
-		current = [conditionals[i].clone({ nodes: current })];
-	}
-
-	return current;
-}
-
-/**
- * Wrap a list of nodes in the given conditional group rules.
- * The list is ordered outermost first.
- */
-function wrapInConditionals(nodes: Array<ChildNode>, conditionals: Array<AtRule>): Array<ChildNode> {
-	let current = nodes;
-
-	for (let i = conditionals.length - 1; i >= 0; i--) {
-		current = [conditionals[i].clone({ nodes: current })];
-	}
-
-	return current;
-}
-
 /**
  * Rewrite CSS-wide keywords that are the entire fallback of a `var()` function.
  *
@@ -1246,44 +1205,6 @@ function collectDeclaredLocalNamesFrom(nodes: Array<ChildNode>, inConditional: b
 			collectDeclaredLocalNamesFrom(node.nodes, true, names);
 		}
 	}
-}
-
-/** Collect local variables that have an authored `@property` registration. */
-function collectRegisteredLocalNames(atRule: AtRule): Set<string> {
-	const names = new Set<string>();
-
-	atRule.walkAtRules(IS_PROPERTY_REGEX, (propertyRule) => {
-		for (const name of registeredPropertyNames(propertyRule)) {
-			names.add(name);
-		}
-	});
-
-	return names;
-}
-
-type CollectedPropertyRule = {
-	propertyRule: AtRule,
-	conditionals: Array<AtRule>,
-};
-
-/** Collect local `@property` rules together with the conditional rules around them. */
-function collectPropertyRules(atRule: AtRule, conditionals: Array<AtRule> = [], out: Array<CollectedPropertyRule> = []): Array<CollectedPropertyRule> {
-	for (const node of atRule.nodes || []) {
-		if (node.type !== 'atrule') {
-			continue;
-		}
-
-		if (IS_PROPERTY_REGEX.test(node.name)) {
-			out.push({ propertyRule: node, conditionals });
-			continue;
-		}
-
-		if (node.nodes) {
-			collectPropertyRules(node, [...conditionals, node], out);
-		}
-	}
-
-	return out;
 }
 
 

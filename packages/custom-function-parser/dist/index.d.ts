@@ -1,3 +1,4 @@
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import type { CSSToken } from '@csstools/css-tokenizer';
 import { FunctionNode } from '@csstools/css-parser-algorithms';
 import type { ParseError } from '@csstools/css-tokenizer';
@@ -68,5 +69,7 @@ export declare function parse(source: string, options?: {
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): CustomFunction | false;
+
+export declare function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false;
 
 export { }

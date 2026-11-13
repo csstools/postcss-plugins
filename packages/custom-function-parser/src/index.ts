@@ -1,4 +1,5 @@
 export { parse, parseFromTokens } from './parser/parse';
+export { parseFunctionParameters } from './parser/parse-custom-function';
 
 export { NodeType } from './util/node-type';
 

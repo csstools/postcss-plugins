@@ -3,12 +3,11 @@ import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorith
 import { findAllStyleRules, findPrivateRule, IS_NESTING_GROUP_RULE_REGEX, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
-import { rewritePropertyNames } from '@csstools/utilities';
+import { collectPropertyRegistrations, hoistPropertyRegistrations } from '@csstools/utilities';
 
 const HAS_PRIVATE_REFERENCE_REGEX = /\b(var|if|style|inherit)\(/i;
 const IS_CONTAINER_REGEX = /^container$/i;
 const IS_LAYER_REGEX = /^layer$/i;
-const IS_PROPERTY_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
@@ -106,9 +105,22 @@ export class Transpiler {
 
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
 		const ancestorConditionals = collectConditionalAncestors(atRule, ownerNode);
-		const propertyRules = collectPropertyRules(atRule);
+		const propertyRegistrations = collectPropertyRegistrations(atRule, {
+			isConditional: (node) => IS_CONDITIONAL_GROUP_RULE_REGEX.test(node.name),
+			shouldDescend: (node) => IS_NESTING_GROUP_RULE_REGEX.test(node.name),
+		});
 
-		this.extractPropertyRules(propertyRules, prefix, privateProperties, ancestorConditionals);
+		const { registrations, names } = hoistPropertyRegistrations(propertyRegistrations, {
+			rewrite: (name) => `${prefix}${name}`,
+			conditionals: ancestorConditionals,
+			removeOriginal: true,
+		});
+
+		for (const name of names) {
+			privateProperties.add(name);
+		}
+
+		this.registrations.push(...registrations);
 
 		if (!atRule.nodes?.length) {
 			this.removePrivateRule(atRule, ownerNode);
@@ -193,8 +205,12 @@ export class Transpiler {
 				return;
 			}
 
-			const propertyRules = collectPropertyRules(atRule);
-			if (!propertyRules.length) {
+			const propertyRegistrations = collectPropertyRegistrations(atRule, {
+				isConditional: (node) => IS_CONDITIONAL_GROUP_RULE_REGEX.test(node.name),
+				shouldDescend: (node) => IS_NESTING_GROUP_RULE_REGEX.test(node.name),
+			});
+
+			if (!propertyRegistrations.length) {
 				return;
 			}
 
@@ -203,7 +219,7 @@ export class Transpiler {
 				return;
 			}
 
-			if (propertyRules.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))) {
+			if (propertyRegistrations.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))) {
 				skip = true;
 			}
 		});
@@ -211,35 +227,6 @@ export class Transpiler {
 		this.nonHoistableOwners.set(ownerNode, skip);
 
 		return skip;
-	}
-
-	/**
-	 * Move `@property` rules to the root with the generated private property
-	 * names, so they provide the registration for the private properties.
-	 */
-	private extractPropertyRules(propertyRules: Array<CollectedPropertyRule>, prefix: string, privateProperties: Set<string>, ancestorConditionals: Array<AtRule>): void {
-		for (const { propertyRule, conditionals } of propertyRules) {
-			// `@property` rules can not be written in a style rule, so invalid
-			// rules are dropped along with the rest of the private rule.
-			propertyRule.remove();
-
-			const registration = propertyRule.clone();
-			const names = rewritePropertyNames(registration, (name) => `${prefix}${name}`);
-			if (!names) {
-				continue;
-			}
-
-			for (const name of names) {
-				privateProperties.add(name);
-			}
-
-			const registrations = wrapInConditionals([registration], [...ancestorConditionals, ...conditionals]);
-			for (const node of registrations) {
-				formatGeneratedNode(node, '\n\n', '');
-			}
-
-			this.registrations.push(...registrations);
-		}
 	}
 
 	transpileDeclaration(decl: Declaration): void {
@@ -351,61 +338,6 @@ export class Transpiler {
 			mutateIdent(arg.value, `${foundPrefix}${arg.value[4].value}`);
 			return;
 		}
-	}
-}
-
-type CollectedPropertyRule = {
-	propertyRule: AtRule,
-	conditionals: Array<AtRule>,
-};
-
-/**
- * Collect the `@property` rules of a private rule.
- *
- * `@property` rules may be nested in the same nesting group rules that are
- * allowed inside `@private`.
- */
-function collectPropertyRules(atRule: AtRule, conditionals: Array<AtRule> = [], out: Array<CollectedPropertyRule> = []): Array<CollectedPropertyRule> {
-	for (const node of atRule.nodes || []) {
-		if (node.type !== 'atrule') {
-			continue;
-		}
-
-		if (IS_PROPERTY_REGEX.test(node.name)) {
-			out.push({ propertyRule: node, conditionals });
-			continue;
-		}
-
-		if (IS_NESTING_GROUP_RULE_REGEX.test(node.name)) {
-			collectPropertyRules(node, IS_CONDITIONAL_GROUP_RULE_REGEX.test(node.name) ? [...conditionals, node] : conditionals, out);
-		}
-	}
-
-	return out;
-}
-
-/** Wrap nodes in clones of the conditional group rules that contain them. */
-function wrapInConditionals(nodes: Array<AtRule>, conditionals: Array<AtRule>): Array<AtRule> {
-	let current = nodes;
-
-	for (let i = conditionals.length - 1; i >= 0; i--) {
-		current = [conditionals[i].clone({ nodes: current })];
-	}
-
-	return current;
-}
-
-function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
-	node.cleanRaws(true);
-	node.raws.before = before;
-
-	if (node.type === 'decl' || node.type === 'comment') {
-		return;
-	}
-
-	const childIndent = `${indent}\t`;
-	for (const child of node.nodes || []) {
-		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
 	}
 }
 

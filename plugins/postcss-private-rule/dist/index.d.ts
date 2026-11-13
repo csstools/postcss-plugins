@@ -51,11 +51,6 @@ export declare class Transpiler {
      * nested rules, so the whole subtree must be transpiled or none of it.
      */
     private hasNonHoistableRegistration;
-    /**
-     * Move `@property` rules to the root with the generated private property
-     * names, so they provide the registration for the private properties.
-     */
-    private extractPropertyRules;
     transpileDeclaration(decl: Declaration): void;
     transpileDeclarationPropertyNames(decl: Declaration): void;
     transpileDeclarationValues(decl: Declaration): void;

@@ -80,12 +80,21 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						return;
 					}
 
-					const modified = transpiler.processDeclaration(decl, helpers);
-					if (modified === null) {
+					const result = transpiler.processDeclaration(decl, helpers);
+
+					if (result.emittedNodes.length && decl.parent) {
+						decl.parent.before(result.emittedNodes);
+					}
+
+					if (result.inlineDecls.length) {
+						decl.before(result.inlineDecls);
+					}
+
+					if (result.value === null) {
 						return;
 					}
 
-					decl.cloneBefore({ value: modified });
+					decl.cloneBefore({ value: result.value });
 
 					if (!options.preserve) {
 						decl.remove();

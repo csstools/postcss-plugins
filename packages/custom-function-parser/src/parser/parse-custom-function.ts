@@ -91,7 +91,7 @@ export function parseCustomFunction(componentValues: Array<ComponentValue>): Cus
 	);
 }
 
-function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false {
+export function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false {
 	if (!componentValues.some(x => !isWhiteSpaceOrCommentNode(x))) {
 		return [];
 	}

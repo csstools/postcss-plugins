@@ -19,6 +19,28 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[collectPropertyRegistrations(container, options)](./utilities.collectpropertyregistrations.md)
+
+
+</td><td>
+
+Collect the `@property` rules of a container, with the conditionals around each rule.
+
+
+</td></tr>
+<tr><td>
+
+[formatGeneratedNode(node, before, indent)](./utilities.formatgeneratednode.md)
+
+
+</td><td>
+
+Format a generated node tree.
+
+
+</td></tr>
+<tr><td>
+
 [hasFallback(node)](./utilities.hasfallback.md)
 
 
@@ -36,6 +58,28 @@ Check if a declaration has a fallback. Returns true if a declaration with the sa
 </td><td>
 
 Check if a node has a `@supports` at-rule ancestor with a given regex in its params.
+
+
+</td></tr>
+<tr><td>
+
+[hoistPropertyRegistrations(collected, options)](./utilities.hoistpropertyregistrations.md)
+
+
+</td><td>
+
+Clone, rename, wrap and format `@property` rules so they can be moved to the root.
+
+
+</td></tr>
+<tr><td>
+
+[parseDashedFunctionArguments(fn)](./utilities.parsedashedfunctionarguments.md)
+
+
+</td><td>
+
+Parse the arguments of a `<dashed-function>`<!-- -->.
 
 
 </td></tr>
@@ -66,6 +110,68 @@ Both the longhand comma separated prelude list and the shorthand form are suppor
 @property --a <length>: 1em;
 ```
 Returns the original names, or `null` when the rule is invalid.
+
+
+</td></tr>
+<tr><td>
+
+[wrapInConditionals(nodes, conditionals)](./utilities.wrapinconditionals.md)
+
+
+</td><td>
+
+Wrap nodes in clones of the conditional group rules that contain them.
+
+
+</td></tr>
+</tbody></table>
+
+## Type Aliases
+
+<table><thead><tr><th>
+
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[CollectedPropertyRegistration](./utilities.collectedpropertyregistration.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CollectPropertyRegistrationsOptions](./utilities.collectpropertyregistrationsoptions.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HoistedPropertyRegistrations](./utilities.hoistedpropertyregistrations.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HoistPropertyRegistrationsOptions](./utilities.hoistpropertyregistrationsoptions.md)
+
+
+</td><td>
 
 
 </td></tr>

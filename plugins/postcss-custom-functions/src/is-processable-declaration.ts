@@ -4,8 +4,8 @@ import type { CustomFunctionGroup } from './custom-functions-from-root';
 import { isFunctionNode, isTokenNode, parseListOfComponentValues, walk } from '@csstools/css-parser-algorithms';
 import { isTokenDimension, tokenize } from '@csstools/css-tokenizer';
 import { parameterType } from './classify';
-import { parseArguments } from './parse-arguments';
 import { isGeneratedProperty } from './generated-names';
+import { parseDashedFunctionArguments } from '@csstools/utilities';
 
 const blockedParentAtRules = new Set(['function', 'keyframes']);
 const contextSensitiveProperty = /^(font-size|font|line-height)$/i;
@@ -57,7 +57,7 @@ function hasInvalidArguments(value: string): boolean {
 			return;
 		}
 
-		if (parseArguments(entry.node) === false) {
+		if (parseDashedFunctionArguments(entry.node) === false) {
 			found = true;
 		}
 	});
@@ -108,7 +108,7 @@ function valueHasRiskyTypedCall(value: string, customFunctions: Map<string, Cust
 }
 
 function groupHasRiskyTypedArgument(fn: FunctionNode, group: CustomFunctionGroup, units: Set<string>): boolean {
-	const args = parseArguments(fn);
+	const args = parseDashedFunctionArguments(fn);
 	if (!args) {
 		return false;
 	}

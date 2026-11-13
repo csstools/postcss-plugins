@@ -2,25 +2,18 @@ import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorith
 import { isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { isTokenDelim, isTokenOpenCurly, isTokenSemicolon } from '@csstools/css-tokenizer';
 
-/**
- * Parse the arguments of a `<dashed-function>`.
- *
- * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function
- */
-export function parseArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false {
+/** Parse the arguments of a `<dashed-function>`. */
+export function parseDashedFunctionArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false {
 	const lists = parseCommaSeparatedListOfComponentValues(fn.value.flatMap((componentValue) => componentValue.tokens()));
 
-	// `--foo()` passes no arguments.
 	if (lists.length === 0) {
 		return [];
 	}
 
-	// `--foo( )` passes no arguments.
 	if (lists.length === 1 && isBlank(lists[0])) {
 		return [];
 	}
 
-	// A final trailing comma does not pass an argument.
 	if (isBlank(lists[lists.length - 1])) {
 		lists.pop();
 	}
@@ -38,11 +31,6 @@ export function parseArguments(fn: FunctionNode): Array<Array<ComponentValue>> |
 	return args;
 }
 
-/**
- * Strip a `{}` wrapper from a single argument.
- *
- * https://drafts.csswg.org/css-values-5/#component-function-commas
- */
 function unwrapArgument(list: Array<ComponentValue>): Array<ComponentValue> | false {
 	const meaningful = list.filter((componentValue) => !isWhiteSpaceOrCommentNode(componentValue));
 
@@ -58,7 +46,6 @@ function unwrapArgument(list: Array<ComponentValue>): Array<ComponentValue> | fa
 		return trim(meaningful[0].value);
 	}
 
-	// A `{}` wrapper is only allowed as the entire argument.
 	if (meaningful.some((componentValue) => isSimpleBlockNode(componentValue) && isTokenOpenCurly(componentValue.startToken))) {
 		return false;
 	}
