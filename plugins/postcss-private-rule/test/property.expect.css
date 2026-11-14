@@ -1,0 +1,118 @@
+.registered {
+
+		--_csstools-p-7q9ama-0--size: 20px;
+		--_csstools-p-7q9ama-0--size-a: 30px;
+		--_csstools-p-7q9ama-0--size-b: 40px;
+		--_csstools-p-7q9ama-0--size-c: 50px;
+		--_csstools-p-7q9ama-0--colors: red, blue;
+
+	width: var(--_csstools-p-7q9ama-0--size);
+	height: var(--_csstools-p-7q9ama-0--size-a);
+	min-height: var(--_csstools-p-7q9ama-0--size-b);
+	max-height: var(--_csstools-p-7q9ama-0--size-c);
+	max-width: var(--_csstools-p-7q9ama-0--colors);
+	min-width: var(--_csstools-p-7q9ama-0--empty);
+	border-width: var(--_csstools-p-7q9ama-0--untyped-empty);
+	outline-width: var(--);
+}
+
+.registered-only {
+
+	color: var(--_csstools-p-7q9ama-1--untyped);
+}
+
+.registered-conditional {
+
+		--_csstools-p-7q9ama-2--conditional-size: 14px;
+
+	width: var(--_csstools-p-7q9ama-2--conditional-size);
+}
+
+@layer parent-layer {
+	.layer-order {
+			@layer private-layer {
+			}
+
+		width: var(--_csstools-p-7q9ama-3--layer-size);
+	}
+}
+
+.escaped {
+		--_csstools-p-7q9ama-4--\66 oo: 20px;
+
+	--_csstools-p-7q9ama-4--\66 oo: 30px;
+
+	width: var(--_csstools-p-7q9ama-4--foo);
+}
+
+.outer-conditional {
+		--_csstools-p-7q9ama-5--outer-conditional-size: 14px;
+
+	width: var(--_csstools-p-7q9ama-5--outer-conditional-size);
+}
+
+.container-registration {
+	container-type: inline-size;
+
+	@container (width > 10px) {
+			--_csstools-p-7q9ama-6--container-size: 20px
+	}
+
+	width: var(--_csstools-p-7q9ama-6--container-size);
+}
+
+.starting-style-registration {
+
+	width: var(--_csstools-p-7q9ama-7--starting-size);
+}
+
+.container-registration-siblings {
+	@container (width > 10px) {
+			--_csstools-p-7q9ama-8--sibling-size: 20px
+	}
+		--_csstools-p-7q9ama-8--sibling-size: 30px;
+
+	width: var(--_csstools-p-7q9ama-8--sibling-size);
+}
+
+@property --_csstools-p-7q9ama-0--size {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 10px;
+}
+
+@property --_csstools-p-7q9ama-0--size-a, --_csstools-p-7q9ama-0--size-b {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 11px;
+}
+
+@property --_csstools-p-7q9ama-0--size-c <length>: 12px;
+
+@property --_csstools-p-7q9ama-0--colors type(<color>#): red, blue;
+
+@property --_csstools-p-7q9ama-0--empty <length>:;
+
+@property --_csstools-p-7q9ama-0--untyped-empty:;
+
+@property --_csstools-p-7q9ama-1--untyped: 6px;
+
+@media (min-width: 1000px) {
+	@property --_csstools-p-7q9ama-2--conditional-size <length>: 13px;
+}
+
+@layer private-layer {
+	@property --_csstools-p-7q9ama-3--layer-size <length>: 10px;
+}
+
+@property --_csstools-p-7q9ama-4--foo <length>: 10px;
+
+@media (min-width: 1000px) {
+	@property --_csstools-p-7q9ama-5--outer-conditional-size <length>: 13px
+}
+
+@property --_csstools-p-7q9ama-6--container-size <length>: 10px;
+
+@property --_csstools-p-7q9ama-7--starting-size <length>: 10px;
+
+@property --_csstools-p-7q9ama-8--sibling-size <length>: 10px

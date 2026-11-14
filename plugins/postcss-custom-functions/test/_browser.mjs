@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import { chromium, webkit } from 'playwright-core';
 import http from 'node:http';
 import fs from 'node:fs/promises';
 import plugin from '@csstools/postcss-custom-functions';
@@ -9,8 +9,10 @@ import process from 'node:process';
 // The transformed cases run the source through this plugin.
 //
 // When the browser implements custom functions natively, the same cases are
-// also run untransformed and must produce the same outcome. Point Puppeteer at
-// such a browser via `PUPPETEER_EXECUTABLE_PATH`.
+// also run untransformed and must produce the same outcome.
+//
+// Both Chromium and WebKit run through Playwright.
+// Install the browsers with `npx playwright-core install chromium webkit`.
 
 const PAGES = [
 	'wpt/dashed-function-eval.html',
@@ -18,6 +20,7 @@ const PAGES = [
 	'wpt/dashed-function-standard-property.html',
 	'wpt/local-var-substitution.html',
 	'wpt/dashed-function-cycles.html',
+	'wpt/local-inherit-substitution.html',
 	'wpt/function-parameter-types.html',
 	'wpt/function-layer.html',
 	'wpt/function-conditional-definitions.html',
@@ -119,51 +122,80 @@ async function hasNativeSupport(page) {
 	}) === '12px';
 }
 
+async function runInBrowser(browser, browserName) {
+	const page = await browser.newPage();
+	const pageErrors = [];
+	page.on('pageerror', (error) => pageErrors.push(error));
+
+	await page.goto('http://localhost:8080/');
+
+	const nativeSupport = await hasNativeSupport(page);
+	const transforms = nativeSupport ? [true, false] : [true];
+
+	for (const url of PAGES) {
+		for (const transform of transforms) {
+			await page.goto('http://localhost:8080/' + url);
+
+			const result = await page.evaluate(async (flags) => {
+				// eslint-disable-next-line no-undef
+				window.__BROWSER__ = flags.browser;
+				// eslint-disable-next-line no-undef
+				window.__TRANSFORM__ = flags.transform;
+				// eslint-disable-next-line no-undef
+				return await window.runTest();
+			}, { browser: browserName, transform });
+
+			if (!result) {
+				throw new Error(`Test failed, expected "window.runTest()" to return true (${browserName}, ${url}, transform=${transform})`);
+			}
+		}
+	}
+
+	if (pageErrors.length) {
+		throw pageErrors[0];
+	}
+}
+
+async function runBrowser(browserType, browserName) {
+	const browser = await browserType.launch({
+		headless: true,
+		args: browserName === 'chromium' ? ['--enable-experimental-web-platform-features'] : [],
+	});
+
+	try {
+		await runInBrowser(browser, browserName);
+	} finally {
+		await browser.close();
+	}
+}
+
 if (!process.env.DEBUG) {
-	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async () => {
+	test('browser', { skip: process.env.GITHUB_ACTIONS && !process.env.BROWSER_TESTS }, async (t) => {
 		const cleanup = startServers();
 
-		let browser;
-
 		try {
-			browser = await puppeteer.launch({
-				headless: 'new',
-				executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
-				args: ['--enable-experimental-web-platform-features'],
-			});
+			await runBrowser(chromium, 'chromium');
 
-			const page = await browser.newPage();
-			page.on('pageerror', (msg) => {
-				throw msg;
-			});
+			let webkitBrowser;
+			try {
+				webkitBrowser = await webkit.launch({ headless: true });
+			} catch (error) {
+				if (process.env.GITHUB_ACTIONS) {
+					throw error;
+				}
 
-			await page.goto('http://localhost:8080/');
+				t.diagnostic(`WebKit is not available: ${error instanceof Error ? error.message : error}`);
+			}
 
-			const nativeSupport = await hasNativeSupport(page);
-			const transforms = nativeSupport ? [true, false] : [true];
-
-			for (const url of PAGES) {
-				for (const transform of transforms) {
-					await page.evaluateOnNewDocument((value) => {
-						// eslint-disable-next-line no-undef
-						window.__TRANSFORM__ = value;
-					}, transform);
-
-					await page.goto('http://localhost:8080/' + url);
-
-					const result = await page.evaluate(async () => {
-						// eslint-disable-next-line no-undef
-						return await window.runTest();
-					});
-
-					if (!result) {
-						throw new Error(`Test failed, expected "window.runTest()" to return true (${url}, transform=${transform})`);
-					}
+			if (webkitBrowser) {
+				try {
+					await runInBrowser(webkitBrowser, 'webkit');
+					t.diagnostic('WebKit browser tests passed');
+				} finally {
+					await webkitBrowser.close();
 				}
 			}
 		} finally {
-			await browser?.close();
-
 			await cleanup();
 		}
 	});

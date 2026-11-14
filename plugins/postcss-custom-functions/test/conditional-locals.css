@@ -1,0 +1,59 @@
+@function --conditional-parameter(--x: PASS) {
+	@supports (not (width: 100px)) {
+		--x: FAIL;
+	}
+
+	result: var(--x, FALLBACK);
+}
+
+.conditional-parameter {
+	--actual: --conditional-parameter();
+}
+
+@function --conditional-local() {
+	@supports (not (width: 100px)) {
+		--x: FAIL;
+	}
+
+	result: var(--x, FALLBACK);
+}
+
+.conditional-local {
+	--x: PASS;
+	--actual: --conditional-local();
+}
+
+@function --conditional-registration(--x: PASS) {
+	@supports (not (width: 100px)) {
+		@property --x {
+			syntax: "<length>";
+			inherits: true;
+			initial-value: 10px;
+		}
+	}
+
+	--x: initial;
+	result: var(--x, FALLBACK);
+}
+
+.conditional-registration {
+	--actual: --conditional-registration();
+}
+
+@function --conditional-parameter-registration(--x <length>: 20px) {
+	@supports (not (width: 100px)) {
+		--x: 30px;
+	}
+
+	@property --x {
+		syntax: "<length>";
+		inherits: true;
+		initial-value: 10px;
+	}
+
+	result: var(--x, 0px);
+}
+
+.conditional-parameter-registration {
+	--actual: --conditional-parameter-registration();
+}

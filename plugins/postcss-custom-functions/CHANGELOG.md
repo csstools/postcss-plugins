@@ -1,5 +1,29 @@
 # Changes to PostCSS Custom Functions
 
+### Unreleased (minor)
+
+- Support empty `@function` bodies.
+- Ignore `!important` declarations in `@function` bodies.
+- Support `@property` rules for local variables, including multi-name prelude lists and the shorthand form.
+- Hoist local `@property` registrations out of `@container` and `@starting-style` rules.
+- Keep parameter registrations for local variables that shadow a typed parameter.
+- Resolve CSS-wide keywords in function arguments.
+- Resolve CSS-wide keywords in `style()` query values.
+- Keep parameter values when a local `@property` rule uses the parameter name.
+- Support local variables and registrations inside conditional rules.
+- Substitute local variables and `inherit()` inside `if()` conditions.
+- Suppress parameter defaults when a CSS-wide keyword can be selected through a `var()` fallback.
+- Ignore dashed-function arguments with invalid `<declaration-value>` values.
+- Ignore typed parameters in font-relative properties when arguments can not be resolved at build time.
+- Support trailing commas, whitespace after trailing commas and empty arguments in dashed-function calls.
+- Trim whitespace from dashed-function arguments.
+- Treat an empty default value (`--x:`) as a default value.
+- Reject `{}` blocks that are mixed with other tokens in parameter default values.
+- Substitute `inherit()` in function bodies from the calling context, including nested function calls in a fallback.
+- Do not evaluate cycles in inactive conditional rules, unused fallbacks or losing declarations.
+- Preserve the cascade order when definitions of the same name are inlined.
+- Use `@csstools/generate-idents`, `@csstools/utilities-for-property-registrations` and `@csstools/custom-function-parser` for shared implementation.
+
 ### 1.0.1
 
 _October 2, 2026_

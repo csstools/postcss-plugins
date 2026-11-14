@@ -1,8 +1,8 @@
 import type { ChildNode, Container, Document, Node, Result, Root as PostCSSRoot, AtRule } from 'postcss';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
-import { isInConditionalLayer, isProcessableRule } from './is-processable-rule';
+import { isProcessableRule } from './is-processable-rule';
 import { isProcessableDeclaration } from './is-processable-declaration';
-import { classifyCustomFunction } from './classify';
+import { classifyCustomFunction, classifyCustomFunctionGroup } from './classify';
 import type { CustomFunction } from '@csstools/custom-function-parser';
 import { parse } from '@csstools/custom-function-parser';
 import { isTokenFunction, tokenize } from '@csstools/css-tokenizer';
@@ -30,6 +30,8 @@ export type CustomFunctionGroup = {
 	definitions: Array<CustomFunctionDefinition>;
 	/** Every definition is supported. Unsupported definitions make the whole name unsupported. */
 	supported: boolean;
+	/** The static keyword result shared by the group, or `null`. */
+	keywordResult: string | null;
 };
 
 /**
@@ -76,14 +78,11 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 		const classification = classifyCustomFunction(atRule, customFunction);
 
 		const name = customFunction.getName();
-		// A conditional layer can not be ordered, so a name with a definition in
-		// one is unsupported as a whole.
-		const supported = classification.supported && !isInConditionalLayer(atRule);
 
 		const definition: CustomFunctionDefinition = {
 			node: atRule,
 			function: customFunction,
-			supported,
+			supported: classification.supported,
 			keywordResult: classification.keywordResult,
 			hasKeywordResult: classification.hasKeywordResult,
 			conditionals: collectConditionalAncestors(atRule),
@@ -91,9 +90,8 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			order: order++,
 		};
 
-		const group = groups.get(name) ?? { definitions: [], supported: true };
+		const group = groups.get(name) ?? { definitions: [], supported: true, keywordResult: null };
 		group.definitions.push(definition);
-		group.supported = group.supported && supported;
 		groups.set(name, group);
 	});
 
@@ -104,14 +102,9 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			return (layerStrength(a.layer) - layerStrength(b.layer)) || (a.order - b.order);
 		});
 
-		// A CSS-wide keyword result can only be substituted directly when there is
-		// exactly one definition without conditionals that override the result.
-		if (group.definitions.some((definition) => definition.hasKeywordResult)) {
-			const isPureStaticKeyword = group.definitions.length === 1 && group.definitions[0].keywordResult !== null;
-			if (!isPureStaticKeyword) {
-				group.supported = false;
-			}
-		}
+		const classification = classifyCustomFunctionGroup(group.definitions);
+		group.supported = classification.supported;
+		group.keywordResult = classification.keywordResult;
 	}
 
 	return groups;
@@ -140,7 +133,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 	// References from code that is not part of a supported definition and that
 	// will not be transformed.
 	const required = new Set<string>();
-	collectCustomFunctionReferences(root, supportedNodes, required, true);
+	collectCustomFunctionReferences(root, supportedNodes, required, true, groups);
 
 	// Definitions that are kept can reference other definitions.
 	const processed = new Set<string>();
@@ -160,7 +153,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 
 		for (const definition of group.definitions) {
 			const references = new Set<string>();
-			collectCustomFunctionReferences(definition.node, new Set(), references, false);
+			collectCustomFunctionReferences(definition.node, new Set(), references, false, groups);
 
 			for (const reference of references) {
 				if (required.has(reference)) {
@@ -187,7 +180,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 	}
 }
 
-function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean): void {
+function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean, groups: Map<string, CustomFunctionGroup>): void {
 	container.walk((node) => {
 		if (node.type !== 'decl' || !node.value.includes('--')) {
 			return undefined;
@@ -197,7 +190,7 @@ function collectCustomFunctionReferences(container: Container, skipNodes: Set<No
 			return undefined;
 		}
 
-		if (onlyUnprocessable && isProcessableDeclaration(node)) {
+		if (onlyUnprocessable && isProcessableDeclaration(node, groups)) {
 			return undefined;
 		}
 

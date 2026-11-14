@@ -1,5 +1,21 @@
 # Changes to PostCSS Mixins
 
+### Unreleased (minor)
+
+- Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
+- Hoist `@property` registrations out of `@container` and `@starting-style` rules.
+- Support trailing commas, whitespace after trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
+- Trim whitespace from `@apply` arguments.
+- Treat an empty default value (`--x:`) as a default value.
+- Reject `{}` blocks that are mixed with other tokens in parameter default values.
+- Drop `@layer` rules from mixin bodies.
+- Resolve `inherit` parameter defaults and arguments in the calling context.
+- Treat `type(*)` parameters as untyped.
+- Ignore mixin parameters and arguments with invalid `<declaration-value>` values.
+- Ignore `--` as a parameter name.
+- Use a separate namespace for generated names so they do not collide with private rule generated names.
+- Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation.
+
 ### 1.1.0
 
 _October 1, 2026_

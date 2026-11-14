@@ -1,8 +1,11 @@
 import type { AtRule } from 'postcss';
+import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CustomFunction, FunctionParameter } from '@csstools/custom-function-parser';
-import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
+import { isTokenComma, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { isComputationallyIndependent } from './is-computationally-independent';
+import { isInConditionalLayer } from './is-processable-rule';
 
 /**
  * The type of a parameter, or `null` when it is untyped.
@@ -52,10 +55,40 @@ export type FunctionClassification = {
  */
 export function classifyCustomFunction(atRule: AtRule, customFunction: CustomFunction): FunctionClassification {
 	return {
-		supported: isSupportedCustomFunction(customFunction),
+		supported: isSupportedCustomFunction(customFunction) && !isInConditionalLayer(atRule),
 		keywordResult: staticKeywordResult(atRule),
 		hasKeywordResult: hasKeywordResult(atRule),
 	};
+}
+
+export type CustomFunctionGroupClassification = {
+	supported: boolean;
+	keywordResult: string | null;
+};
+
+/**
+ * Decide whether a group of definitions can be transpiled.
+ *
+ * A CSS-wide keyword result can only be substituted directly when there is
+ * exactly one definition without conditionals that override the result.
+ */
+export function classifyCustomFunctionGroup(definitions: Array<FunctionClassification>): CustomFunctionGroupClassification {
+	if (!definitions.length) {
+		return { supported: false, keywordResult: null };
+	}
+
+	const supported = definitions.every((definition) => definition.supported);
+
+	if (!definitions.some((definition) => definition.hasKeywordResult)) {
+		return { supported, keywordResult: null };
+	}
+
+	const definition = definitions[0];
+	if (definitions.length !== 1 || definition.keywordResult === null) {
+		return { supported: false, keywordResult: null };
+	}
+
+	return { supported, keywordResult: definition.keywordResult };
 }
 
 function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
@@ -87,7 +120,7 @@ function staticKeywordResult(atRule: AtRule): string | null {
 	let hasConditionalResult = false;
 	atRule.walkAtRules((child) => {
 		child.walkDecls((decl) => {
-			if (decl.prop.toLowerCase() === 'result') {
+			if (decl.prop.toLowerCase() === 'result' && !decl.important) {
 				hasConditionalResult = true;
 			}
 		});
@@ -99,7 +132,7 @@ function staticKeywordResult(atRule: AtRule): string | null {
 
 	let value: string | null = null;
 	for (const node of atRule.nodes || []) {
-		if (node.type === 'decl' && node.prop.toLowerCase() === 'result') {
+		if (node.type === 'decl' && node.prop.toLowerCase() === 'result' && !node.important) {
 			value = node.value.trim();
 		}
 	}
@@ -125,16 +158,70 @@ function hasKeywordResult(atRule: AtRule): boolean {
 	let found = false;
 
 	atRule.walkDecls((decl) => {
-		if (decl.prop.toLowerCase() !== 'result') {
+		if (decl.prop.toLowerCase() !== 'result' || decl.important) {
 			return;
 		}
 
-		for (const token of tokenize({ css: decl.value })) {
-			if (isTokenIdent(token) && CSS_WIDE_KEYWORDS.has(token[4].value.toLowerCase())) {
-				found = true;
-			}
+		const componentValues = parseListOfComponentValues(tokenize({ css: decl.value }));
+		if (isKeyword(componentValues) || hasKeywordFallback(componentValues)) {
+			found = true;
 		}
 	});
 
 	return found;
+}
+
+/** Whether a component value list is exactly one CSS-wide keyword. */
+function isKeyword(componentValues: Array<ComponentValue>): boolean {
+	let keyword: string | null = null;
+	let count = 0;
+
+	for (const componentValue of componentValues) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
+			continue;
+		}
+
+		count++;
+
+		if (isTokenNode(componentValue) && isTokenIdent(componentValue.value)) {
+			keyword = componentValue.value[4].value.toLowerCase();
+			continue;
+		}
+
+		keyword = null;
+	}
+
+	return count === 1 && keyword !== null && CSS_WIDE_KEYWORDS.has(keyword);
+}
+
+/** Whether a top-level `var()` fallback can resolve to a CSS-wide keyword. */
+function hasKeywordFallback(componentValues: Array<ComponentValue>): boolean {
+	for (const componentValue of componentValues) {
+		if (!isFunctionNode(componentValue) || componentValue.getName().toLowerCase() !== 'var') {
+			continue;
+		}
+
+		const commaIndex = findTopLevelCommaIndex(componentValue);
+		if (commaIndex === -1) {
+			continue;
+		}
+
+		const fallback = componentValue.value.slice(commaIndex + 1);
+		if (isKeyword(fallback) || hasKeywordFallback(fallback)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+function findTopLevelCommaIndex(functionNode: FunctionNode): number {
+	for (let i = 0; i < functionNode.value.length; i++) {
+		const componentValue = functionNode.value[i];
+		if (isTokenNode(componentValue) && isTokenComma(componentValue.value)) {
+			return i;
+		}
+	}
+
+	return -1;
 }

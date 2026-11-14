@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<title>Custom Functions: Local inherit() substitution</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/">
+<link rel="help" href="https://drafts.csswg.org/css-values-5/#inherit-notation">
+
+<div id="parent">
+	<div id="target"></div>
+</div>
+<div id="main"></div>
+
+<script>
+	// Adapted from:
+	// https://github.com/web-platform-tests/wpt/blob/master/css/css-mixins/functions/local-inherit-substitution.html
+	function stylesUrl() {
+		return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+	}
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ': expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		const testCases = [
+			{
+				name: 'inherit() refers to parent stack frame (element)',
+				style: `
+					@function --f() {
+						--x: FAIL2;
+						result: inherit(--x);
+					}
+					#parent {
+						--x: FAIL1;
+					}
+					#parent > #target {
+						--x: PASS;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'inherit() refers to parent stack frame (other function call)',
+				style: `
+					@function --f() {
+						--x: PASS;
+						result: --g();
+					}
+					@function --g() {
+						--x: FAIL3;
+						result: inherit(--x);
+					}
+					#parent {
+						--x: FAIL1;
+					}
+					#parent > #target {
+						--x: FAIL2;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'inherit() referring to guaranteed-invalid in parent frame',
+				style: `
+					@function --f() {
+						--x: var(--noexist);
+						result: --g();
+					}
+					@function --g() {
+						--x: FAIL3;
+						result: inherit(--x, PASS);
+					}
+					#parent {
+						--x: FAIL1;
+					}
+					#parent > #target {
+						--x: FAIL2;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'inherit() referring to cycle in parent frame',
+				style: `
+					@function --f() {
+						--x: var(--x);
+						result: --g();
+					}
+					@function --g() {
+						--x: FAIL3;
+						result: inherit(--x, PASS);
+					}
+					#parent {
+						--x: FAIL1;
+					}
+					#parent > #target {
+						--x: FAIL2;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'inherit() referring to typed value in parent frame',
+				style: `
+					@function --f(--x <length>) {
+						result: --g();
+					}
+					@function --g() {
+						--x: 14px;
+						result: inherit(--x);
+					}
+					#parent {
+						--x: 12px;
+					}
+					#parent > #target {
+						--x: 13px;
+						--actual: --f(42.0px);
+						--expected: 42px;
+					}
+				`,
+			},
+		];
+
+		for (const testCase of testCases) {
+			const styleElement = document.createElement('style');
+
+			const testCaseStyle = await (fetch(stylesUrl(), {
+				method: 'POST',
+				body: testCase.style,
+			}).then((response) => response.text()));
+
+			styleElement.textContent = testCaseStyle;
+			document.head.append(styleElement);
+
+			const target = document.getElementById('target');
+			const computed = window.getComputedStyle(target);
+
+			assert_equals(
+				computed.getPropertyValue('--actual'),
+				computed.getPropertyValue('--expected'),
+				testCase.name,
+			);
+
+			styleElement.remove();
+		}
+
+		return true;
+	};
+</script>

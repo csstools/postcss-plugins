@@ -51,6 +51,82 @@
 				`,
 			},
 			{
+				name: 'Missing result descriptor',
+				style: `
+					@function --f() {}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: '!important result is ignored',
+				style: `
+					@function --f() {
+						result: 12px !important;
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
+				name: '!important result does not override an earlier result',
+				style: `
+					@function --f() {
+						result: 12px;
+						result: 24px !important;
+					}
+					#target {
+						--actual: --f();
+						--expected: 12px;
+					}
+				`,
+			},
+			{
+				name: '!important local is ignored',
+				style: `
+					@function --f() {
+						--x: 12px !important;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: '!important local does not shadow a parameter',
+				style: `
+					@function --f(--x: PARAM) {
+						--x: 12px !important;
+						result: var(--x, PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PARAM;
+					}
+				`,
+			},
+			{
+				name: '!important keyword result is ignored',
+				style: `
+					@function --f() {
+						result: inherit !important;
+					}
+					#parent {
+						--actual: 12px;
+					}
+					#target {
+						--actual: --f();
+						--expected:;
+					}
+				`,
+			},
+			{
 				name: 'result cascading behavior',
 				style: `
 					@function --f() {
@@ -949,6 +1025,7 @@
 			},
 			{
 				name: 'Local with the unset keyword does not resolve to the parameter',
+				skipNativeBrowsers: ['webkit'],
 				style: `
 					@function --f(--x: PARAM) {
 						--x: unset;
@@ -962,6 +1039,7 @@
 			},
 			{
 				name: 'Local with the revert keyword does not resolve to the parameter',
+				skipNativeBrowsers: ['webkit'],
 				style: `
 					@function --f(--x: PARAM) {
 						--x: revert;
@@ -989,6 +1067,13 @@
 		];
 
 		for (const testCase of testCases) {
+			if (window.__TRANSFORM__ === false && (
+				testCase.skipNative ||
+				(testCase.skipNativeBrowsers && testCase.skipNativeBrowsers.includes(window.__BROWSER__))
+			)) {
+				continue;
+			}
+
 			const styleElement = document.createElement('style');
 
 			const testCaseStyle = await (fetch(stylesUrl(), {

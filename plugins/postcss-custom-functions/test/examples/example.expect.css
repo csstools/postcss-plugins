@@ -7,8 +7,9 @@ html {
 	--_csstools-cf-1gice1e-2-result: calc(2 * var(--_csstools-cf-1gice1e-3-arg-0));
 	margin: var(--_csstools-cf-1gice1e-2-result);
 }
+
 @property --_csstools-cf-1gice1e-3-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 1px;
 }

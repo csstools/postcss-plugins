@@ -12,6 +12,9 @@ postcssTape(plugin)({
 	encoding: {
 		message: 'all encoded values are valid css',
 	},
+	property: {
+		message: 'supports @property rules in @private rules',
+	},
 	bundled: {
 		message: 'all encoded values are valid css',
 		plugins: [

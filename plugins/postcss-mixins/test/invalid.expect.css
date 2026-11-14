@@ -6,10 +6,6 @@
 	@apply --one(red !important);
 }
 
-.trailing-empty-argument {
-	@apply --one(red,);
-}
-
 .leading-empty-argument {
 	@apply --one(,red);
 }

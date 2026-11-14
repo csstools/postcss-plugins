@@ -25,3 +25,42 @@
 .mixed {
 	width: --mixed(1px);
 }
+
+.typed-width-relative {
+	width: --sized(2em);
+}
+
+.typed-font-size-absolute {
+	font-size: --sized(20px);
+}
+
+@function --typed-local(--c <color>: red) {
+	--c: #00f;
+	result: if(style(--c: blue): PASS; else: FAIL);
+}
+
+.typed-local {
+	--actual: --typed-local(#000);
+}
+
+@function --typed-local-invalid(--c <color>: red) {
+	--c: 3;
+	result: var(--c, PASS);
+}
+
+.typed-local-invalid {
+	--actual: --typed-local-invalid(#f00);
+}
+
+@function --typed-local-parent-stack(--c <color>: blue) {
+	--c: #00f;
+	result: --untyped-param();
+}
+
+@function --untyped-param() {
+	result: if(style(--c: blue): PASS; else: FAIL);
+}
+
+.typed-local-parent-stack {
+	--actual: --typed-local-parent-stack(#f00);
+}

@@ -27,6 +27,8 @@ Unsupported:
 - layered `@mixin` declarations
 - mixin overrides
 
+Run `@csstools/postcss-private-rule` after this plugin to resolve private properties from the applying style rule.
+
 ```css
 <example.css>
 

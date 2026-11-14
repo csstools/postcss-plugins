@@ -1,0 +1,53 @@
+.multiline-definition {
+	--_csstools-cf-165tpc7-1-arg-0: 1px;
+	--_csstools-cf-165tpc7-1-arg-1: 2px;
+	--_csstools-cf-165tpc7-0-result: var(--_csstools-cf-165tpc7-1-arg-0) var(--_csstools-cf-165tpc7-1-arg-1);
+	--actual: var(--_csstools-cf-165tpc7-0-result);
+}
+
+.trailing-comma {
+	--_csstools-cf-165tpc7-3-arg-0: 1px;
+	--_csstools-cf-165tpc7-3-arg-1: 2px;
+	--_csstools-cf-165tpc7-2-result: var(--_csstools-cf-165tpc7-3-arg-0) var(--_csstools-cf-165tpc7-3-arg-1);
+	--actual: var(--_csstools-cf-165tpc7-2-result);
+}
+
+.leading-empty-argument {
+	--_csstools-cf-165tpc7-5-arg-0: ;
+	--_csstools-cf-165tpc7-5-arg-1: 2px;
+	--_csstools-cf-165tpc7-4-result: var(--_csstools-cf-165tpc7-5-arg-0) var(--_csstools-cf-165tpc7-5-arg-1);
+	--actual: var(--_csstools-cf-165tpc7-4-result);
+}
+
+.middle-empty-argument {
+	--_csstools-cf-165tpc7-7-arg-0: 1px;
+	--_csstools-cf-165tpc7-7-arg-1: ;
+	--_csstools-cf-165tpc7-6-result: var(--_csstools-cf-165tpc7-7-arg-0) var(--_csstools-cf-165tpc7-7-arg-1);
+	--actual: var(--_csstools-cf-165tpc7-6-result);
+}
+
+.trailing-empty-argument {
+	--_csstools-cf-165tpc7-9-arg-0: 1px;
+	--_csstools-cf-165tpc7-9-arg-1: ;
+	--_csstools-cf-165tpc7-8-result: var(--_csstools-cf-165tpc7-9-arg-0) var(--_csstools-cf-165tpc7-9-arg-1);
+	--actual: var(--_csstools-cf-165tpc7-8-result);
+}
+
+.whitespace-is-trimmed {
+	--_csstools-cf-165tpc7-b-arg-0: 1px;
+	--_csstools-cf-165tpc7-b-arg-1: 2px;
+	--_csstools-cf-165tpc7-a-result: var(--_csstools-cf-165tpc7-b-arg-0) var(--_csstools-cf-165tpc7-b-arg-1);
+	--actual: var(--_csstools-cf-165tpc7-a-result);
+}
+
+.empty-default {
+	--_csstools-cf-165tpc7-d-arg-0: var(--_csstools-cf-165tpc7-d-raw-0, );
+	--_csstools-cf-165tpc7-c-result: var(--_csstools-cf-165tpc7-d-arg-0, FALLBACK);
+	--actual: var(--_csstools-cf-165tpc7-c-result);
+}
+
+.comma-block {
+	--_csstools-cf-165tpc7-f-arg-0: 1px, 2px;
+	--_csstools-cf-165tpc7-e-result: var(--_csstools-cf-165tpc7-f-arg-0);
+	--actual: var(--_csstools-cf-165tpc7-e-result);
+}

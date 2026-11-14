@@ -61,11 +61,3 @@
 .ignore-i {
 	@apply --ignore-i;
 }
-
-@mixin --ignore-j(--color,) {
-	color: var(--color);
-}
-
-.ignore-j {
-	@apply --ignore-j(red);
-}

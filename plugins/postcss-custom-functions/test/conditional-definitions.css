@@ -49,3 +49,24 @@
 .layered-media {
 	width: --h();
 }
+
+@media (width >= 50px) {
+	@function --with-registration() {
+		@property --size <length>: 10px;
+		result: var(--size);
+	}
+}
+
+.registered {
+	width: --with-registration();
+}
+
+@supports (width: 100px) {
+	@function --typed(--size <length>: 5px) {
+		result: var(--size);
+	}
+}
+
+.typed {
+	width: --typed(10px);
+}

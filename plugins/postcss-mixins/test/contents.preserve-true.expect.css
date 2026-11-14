@@ -76,9 +76,9 @@
 }
 
 .i {
-	--_csstools-p-1i0jh25-0--arg-0: green;
-	--_csstools-p-1i0jh25-1--color: var(--_csstools-p-1i0jh25-0--arg-0);
-	color: var(--_csstools-p-1i0jh25-1--color);
+	--_csstools-m-1i0jh25-0--arg-0: green;
+	--_csstools-m-1i0jh25-1--color: var(--_csstools-m-1i0jh25-0--arg-0);
+	color: var(--_csstools-m-1i0jh25-1--color);
 		background-color: var(--color);
 	@apply --args-and-contents(green) {
 		background-color: var(--color);

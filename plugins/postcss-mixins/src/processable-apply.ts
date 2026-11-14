@@ -1,7 +1,7 @@
-import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isFunctionNode, isSimpleBlockNode, isTokenNode, parseCommaSeparatedListOfComponentValues, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, isTokenOpenCurly, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isTokenNode, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
+import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
+import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 
 export const IS_APPLY_REGEX = /^apply$/i;
 
@@ -10,7 +10,8 @@ export type ProcessableApply = {
 	arguments: Array<string>,
 };
 
-const IS_IMPORTANT_REGEX = /!\s*important/i;
+const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	if (!atRule.params || !atRule.params.includes('--')) {
@@ -33,12 +34,12 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	} else if (isFunctionNode(prelude)) {
 		name = prelude.getName();
 
-		const parsedArguments = parseArguments(prelude.value);
+		const parsedArguments = parseDashedFunctionArguments(prelude);
 		if (!parsedArguments) {
 			return false;
 		}
 
-		args = parsedArguments;
+		args = parsedArguments.map((argument) => stringify([argument]).trim());
 	} else {
 		return false;
 	}
@@ -53,52 +54,33 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	};
 }
 
-function parseArguments(componentValues: Array<ComponentValue>): false | Array<string> {
-	const rawArguments = parseCommaSeparatedListOfComponentValues(componentValues.flatMap((componentValue) => componentValue.tokens()));
+function isInStyleRule(atRule: AtRule): boolean {
+	let parent = atRule.parent;
 
-	// `--foo()` has no arguments.
-	if (rawArguments.length === 1 && stringify([rawArguments[0]]).trim() === '') {
-		return [];
-	}
+	while (parent) {
+		if (parent.type === 'rule') {
+			return !isKeyframesRule(parent);
+		}
 
-	const args: Array<string> = [];
-
-	for (const rawArgument of rawArguments) {
-		// A comma-containing value can be passed as a single argument by wrapping it in `{}`.
-		const argument = (rawArgument.length === 1 && isSimpleBlockNode(rawArgument[0]) && isTokenOpenCurly(rawArgument[0].startToken)
-			? stringify([rawArgument[0].value])
-			: stringify([rawArgument])
-		).trim();
-
-		if (argument === '') {
+		if (parent.type !== 'atrule' || !IS_NESTING_GROUP_RULE_REGEX.test(parent.name)) {
 			return false;
 		}
 
-		if (IS_IMPORTANT_REGEX.test(argument)) {
-			return false;
-		}
-
-		args.push(argument);
+		parent = parent.parent;
 	}
 
-	return args;
+	return false;
 }
 
-const IS_SCOPE_REGEX = /^scope$/i;
+function isKeyframesRule(rule: AtRule['parent']): boolean {
+	let parent = rule?.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return true;
+		}
 
-function isInStyleRule(atRule: AtRule): boolean {
-	const parent = atRule.parent;
-	if (!parent || parent.type === 'root') {
-		return false;
+		parent = parent.parent;
 	}
 
-	if (parent.type === 'rule') {
-		return true;
-	}
-
-	if (parent.type === 'atrule' && IS_SCOPE_REGEX.test(parent.name)) {
-		return true;
-	}
-
-	return isInStyleRule(parent);
+	return false;
 }

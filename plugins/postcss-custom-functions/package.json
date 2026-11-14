@@ -39,14 +39,16 @@
 		"@csstools/cascade-layer-name-parser": "^3.0.2",
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
-		"@csstools/custom-function-parser": "^1.0.0"
+		"@csstools/custom-function-parser": "^1.0.0",
+		"@csstools/generate-idents": "^1.0.0",
+		"@csstools/utilities-for-property-registrations": "^1.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
-		"puppeteer": "^25.14.0"
+		"playwright-core": "^1.65.0"
 	},
 	"scripts": {
 		"build": "rollup -c ../../rollup/default.mjs",

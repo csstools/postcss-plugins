@@ -1,0 +1,152 @@
+@mixin --registered-private() {
+	@private {
+		@property --size {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 10px;
+		}
+
+		@property --size-a, --size-b {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 11px;
+		}
+
+		@property --size-c <length>: 12px;
+
+		@property --size-d type(<color>#): red, blue;
+
+		@property --size-e <color>: red;
+
+		--size: 20px;
+		--size-a: 30px;
+		--size-b: 40px;
+		--size-c: 40px;
+		--size-d: red, blue;
+		--size-e: blue;
+	}
+
+	@private {
+		@property --initial-size {
+			syntax: "<length>";
+			inherits: false;
+			initial-value: 5px;
+		}
+
+		@property --initial-untyped: 6px;
+	}
+
+	width: var(--size);
+	min-width: var(--initial-size);
+	height: var(--size-a);
+	min-height: var(--size-b);
+	max-height: var(--size-c);
+	max-width: var(--size-d);
+	inline-size: var(--size-e);
+	border-width: var(--initial-untyped);
+}
+
+.registered-private-a {
+	--_csstools-m-7q9ama-0--size: 20px;
+	--_csstools-m-7q9ama-0--size-a: 30px;
+	--_csstools-m-7q9ama-0--size-b: 40px;
+	--_csstools-m-7q9ama-0--size-c: 40px;
+	--_csstools-m-7q9ama-0--size-d: red, blue;
+	--_csstools-m-7q9ama-0--size-e: blue;
+	width: var(--_csstools-m-7q9ama-0--size);
+	min-width: var(--_csstools-m-7q9ama-0--initial-size);
+	height: var(--_csstools-m-7q9ama-0--size-a);
+	min-height: var(--_csstools-m-7q9ama-0--size-b);
+	max-height: var(--_csstools-m-7q9ama-0--size-c);
+	max-width: var(--_csstools-m-7q9ama-0--size-d);
+	inline-size: var(--_csstools-m-7q9ama-0--size-e);
+	border-width: var(--_csstools-m-7q9ama-0--initial-untyped);
+	@apply --registered-private;
+}
+
+.registered-private-b {
+	--_csstools-m-7q9ama-1--size: 20px;
+	--_csstools-m-7q9ama-1--size-a: 30px;
+	--_csstools-m-7q9ama-1--size-b: 40px;
+	--_csstools-m-7q9ama-1--size-c: 40px;
+	--_csstools-m-7q9ama-1--size-d: red, blue;
+	--_csstools-m-7q9ama-1--size-e: blue;
+	width: var(--_csstools-m-7q9ama-1--size);
+	min-width: var(--_csstools-m-7q9ama-1--initial-size);
+	height: var(--_csstools-m-7q9ama-1--size-a);
+	min-height: var(--_csstools-m-7q9ama-1--size-b);
+	max-height: var(--_csstools-m-7q9ama-1--size-c);
+	max-width: var(--_csstools-m-7q9ama-1--size-d);
+	inline-size: var(--_csstools-m-7q9ama-1--size-e);
+	border-width: var(--_csstools-m-7q9ama-1--initial-untyped);
+	@apply --registered-private;
+}
+
+@mixin --escaped-private() {
+	@private {
+		@property --\66 oo <length>: 20px;
+		--\66 oo: 30px;
+	}
+
+	width: var(--\66 oo);
+}
+
+.escaped-private {
+	--_csstools-m-7q9ama-2--\66 oo: 30px;
+	width: var(--_csstools-m-7q9ama-2--foo);
+	@apply --escaped-private;
+}
+
+@property --_csstools-m-7q9ama-0--size {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 10px;
+}
+
+@property --_csstools-m-7q9ama-0--size-a, --_csstools-m-7q9ama-0--size-b {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 11px;
+}
+
+@property --_csstools-m-7q9ama-0--size-c <length>: 12px;
+
+@property --_csstools-m-7q9ama-0--size-d type(<color>#): red, blue;
+
+@property --_csstools-m-7q9ama-0--size-e <color>: red;
+
+@property --_csstools-m-7q9ama-0--initial-size {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 5px;
+}
+
+@property --_csstools-m-7q9ama-0--initial-untyped: 6px;
+
+@property --_csstools-m-7q9ama-1--size {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 10px;
+}
+
+@property --_csstools-m-7q9ama-1--size-a, --_csstools-m-7q9ama-1--size-b {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 11px;
+}
+
+@property --_csstools-m-7q9ama-1--size-c <length>: 12px;
+
+@property --_csstools-m-7q9ama-1--size-d type(<color>#): red, blue;
+
+@property --_csstools-m-7q9ama-1--size-e <color>: red;
+
+@property --_csstools-m-7q9ama-1--initial-size {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 5px;
+}
+
+@property --_csstools-m-7q9ama-1--initial-untyped: 6px;
+
+@property --_csstools-m-7q9ama-2--foo <length>: 20px

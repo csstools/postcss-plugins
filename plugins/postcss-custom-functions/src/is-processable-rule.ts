@@ -27,12 +27,12 @@ export function isProcessableRule(atRule: AtRule): boolean {
 		return false;
 	}
 
-	if (!atRule.nodes?.length) {
+	if (!atRule.nodes) {
 		return false;
 	}
 
-	// The body of a `@function` rule accepts declarations and conditional group
-	// rules. Anything else makes the rule invalid.
+	// The body of a `@function` rule accepts declarations, `@property` rules and
+	// conditional group rules. Anything else makes the rule invalid.
 	if (!hasValidBody(atRule)) {
 		return false;
 	}
@@ -85,6 +85,11 @@ function isAllowedBodyNode(node: ChildNode): boolean {
 	}
 
 	if (node.type === 'atrule') {
+		if (node.name.toLowerCase() === 'property') {
+			// Both the longhand block form and the shorthand form are valid.
+			return true;
+		}
+
 		return conditionalGroupRules.has(node.name.toLowerCase()) && !!node.nodes && hasValidBody(node);
 	}
 

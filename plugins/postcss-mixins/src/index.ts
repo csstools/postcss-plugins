@@ -24,7 +24,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			return {
 				postcssPlugin: 'mixins',
-				Once(root): void {
+				Once(root, helpers): void {
 					const rootAtRules: Array<AtRule> = [];
 					root.each((child) => {
 						if (child.type === 'atrule') {
@@ -40,8 +40,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 					}
 
-					expander.expandAll(root, options.preserve === true);
-					expander.finish();
+					expander.expandAll(root, options.preserve === true, helpers);
+					expander.finish(root);
 				},
 			};
 		},

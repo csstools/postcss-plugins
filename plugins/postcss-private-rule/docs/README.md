@@ -19,6 +19,10 @@
 
 [<humanReadableName>] lets you declare private custom properties following the [CSS Mixins Specification].
 
+`@property` rules inside `@private` rules are hoisted to the root. Registrations inside `@container` and `@starting-style` are hoisted as if they were defined outside of those rules. Registrations inside `@layer` and inside `@media` or `@supports` keep their enclosing rules.
+
+Run this plugin after `@csstools/postcss-mixins` and before `@csstools/postcss-custom-functions` so that mixin bodies can use private properties and function bodies do not capture them.
+
 ```css
 <example.css>
 
