@@ -2,14 +2,95 @@
 
 [Home](./index.md) &gt; [@csstools/utilities-for-property-registrations](./utilities-for-property-registrations.md) &gt; [HoistPropertyRegistrationsOptions](./utilities-for-property-registrations.hoistpropertyregistrationsoptions.md)
 
-## HoistPropertyRegistrationsOptions type
+## HoistPropertyRegistrationsOptions interface
+
+Options for hoisting `@property` rules.
 
 **Signature:**
 
 ```typescript
-export type HoistPropertyRegistrationsOptions = {
-    rewrite: (name: string) => string;
-    conditionals?: Array<AtRule>;
-    removeOriginal?: boolean;
-};
+export interface HoistPropertyRegistrationsOptions 
 ```
+
+## Properties
+
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[conditionalGroupRules?](./utilities-for-property-registrations.hoistpropertyregistrationsoptions.conditionalgrouprules.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;AtRule&gt;
+
+
+</td><td>
+
+_(Optional)_ Conditional group rules to wrap every registration in, outermost first.
+
+
+</td></tr>
+<tr><td>
+
+[removeOriginal?](./utilities-for-property-registrations.hoistpropertyregistrationsoptions.removeoriginal.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Whether to remove the collected `@property` rules.
+
+
+</td></tr>
+<tr><td>
+
+[rewriteCustomPropertyName](./utilities-for-property-registrations.hoistpropertyregistrationsoptions.rewritecustompropertyname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(name: string) =&gt; string
+
+
+</td><td>
+
+The new `<custom-property-name>` for each original name.
+
+
+</td></tr>
+</tbody></table>
+

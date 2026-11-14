@@ -2,13 +2,76 @@
 
 [Home](./index.md) &gt; [@csstools/utilities-for-property-registrations](./utilities-for-property-registrations.md) &gt; [HoistedPropertyRegistrations](./utilities-for-property-registrations.hoistedpropertyregistrations.md)
 
-## HoistedPropertyRegistrations type
+## HoistedPropertyRegistrations interface
+
+The hoisted `@property` rules and their original names.
 
 **Signature:**
 
 ```typescript
-export type HoistedPropertyRegistrations = {
-    registrations: Array<AtRule>;
-    names: Array<string>;
-};
+export interface HoistedPropertyRegistrations 
 ```
+
+## Properties
+
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[originalNames](./utilities-for-property-registrations.hoistedpropertyregistrations.originalnames.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;string&gt;
+
+
+</td><td>
+
+The `<custom-property-name>` values from before rewriting.
+
+
+</td></tr>
+<tr><td>
+
+[registrations](./utilities-for-property-registrations.hoistedpropertyregistrations.registrations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;AtRule&gt;
+
+
+</td><td>
+
+The cloned, rewritten and wrapped `@property` rules.
+
+
+</td></tr>
+</tbody></table>
+

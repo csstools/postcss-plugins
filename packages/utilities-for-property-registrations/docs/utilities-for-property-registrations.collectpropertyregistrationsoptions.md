@@ -2,13 +2,76 @@
 
 [Home](./index.md) &gt; [@csstools/utilities-for-property-registrations](./utilities-for-property-registrations.md) &gt; [CollectPropertyRegistrationsOptions](./utilities-for-property-registrations.collectpropertyregistrationsoptions.md)
 
-## CollectPropertyRegistrationsOptions type
+## CollectPropertyRegistrationsOptions interface
+
+Options for collecting `@property` rules.
 
 **Signature:**
 
 ```typescript
-export type CollectPropertyRegistrationsOptions = {
-    isConditional: (atRule: AtRule) => boolean;
-    shouldDescend: (atRule: AtRule) => boolean;
-};
+export interface CollectPropertyRegistrationsOptions 
 ```
+
+## Properties
+
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[isConditionalGroupRule](./utilities-for-property-registrations.collectpropertyregistrationsoptions.isconditionalgrouprule.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(atRule: AtRule) =&gt; boolean
+
+
+</td><td>
+
+Whether an at-rule is a conditional group rule.
+
+
+</td></tr>
+<tr><td>
+
+[shouldDescendInto](./utilities-for-property-registrations.collectpropertyregistrationsoptions.shoulddescendinto.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(atRule: AtRule) =&gt; boolean
+
+
+</td><td>
+
+Whether to descend into an at-rule to find nested `@property` rules.
+
+
+</td></tr>
+</tbody></table>
+

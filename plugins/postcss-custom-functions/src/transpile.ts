@@ -20,7 +20,7 @@ import type { CollectedPropertyRegistration } from '@csstools/utilities-for-prop
 import { parameterType } from './classify';
 import { argName, INVALID_IDENT, localName, rawName, resultName as generatedResultName } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
-import { collectPropertyRegistrations, formatGeneratedNode, hoistPropertyRegistrations, registeredPropertyNames, wrapInConditionals } from '@csstools/utilities-for-property-registrations';
+import { collectPropertyRegistrations, hoistPropertyRegistrations, registeredCustomPropertyNames, wrapInConditionalGroupRules } from '@csstools/utilities-for-property-registrations';
 
 // Custom functions can call each other and duplicate their bodies, which can
 // grow exponentially. Bound the total number of declarations generated while
@@ -337,24 +337,24 @@ export class CustomFunctionTranspiler {
 		}
 
 		const propertyRegistrations = collectPropertyRegistrations(definition.node, {
-			isConditional: (atRule) => IS_REGISTRATION_WRAPPER_REGEX.test(atRule.name),
-			shouldDescend: (atRule) => !!atRule.nodes,
+			isConditionalGroupRule: (atRule) => IS_REGISTRATION_WRAPPER_REGEX.test(atRule.name),
+			shouldDescendInto: (atRule) => !!atRule.nodes,
 		});
 
 		const conditionalRegistrationNames = new Set<string>();
-		for (const { atRule, conditionals } of propertyRegistrations) {
-			if (!conditionals.length) {
+		for (const { propertyRule, conditionalGroupRules } of propertyRegistrations) {
+			if (!conditionalGroupRules.length) {
 				continue;
 			}
 
-			for (const name of registeredPropertyNames(atRule)) {
+			for (const name of registeredCustomPropertyNames(propertyRule)) {
 				conditionalRegistrationNames.add(name);
 			}
 		}
 
 		const registrationNames = new Map<string, string>();
-		for (const { atRule } of propertyRegistrations) {
-			for (const registeredName of registeredPropertyNames(atRule)) {
+		for (const { propertyRule } of propertyRegistrations) {
+			for (const registeredName of registeredCustomPropertyNames(propertyRule)) {
 				scope.registeredNames.add(registeredName);
 
 				// A registration for a name that is already a parameter registers
@@ -369,12 +369,12 @@ export class CustomFunctionTranspiler {
 			}
 		}
 
-		for (const { atRule, conditionals } of propertyRegistrations) {
-			if (conditionals.length) {
+		for (const { propertyRule, conditionalGroupRules } of propertyRegistrations) {
+			if (conditionalGroupRules.length) {
 				continue;
 			}
 
-			for (const name of registeredPropertyNames(atRule)) {
+			for (const name of registeredCustomPropertyNames(propertyRule)) {
 				scope.unconditionalRegisteredNames.add(name);
 			}
 		}
@@ -432,12 +432,12 @@ export class CustomFunctionTranspiler {
 				this.emitArguments(definitionId, parameters, resolvedArgs, element, parameterScope, parameterArgs, argDecls, inlineDecls, helpers);
 
 				if (argDecls.length) {
-					nodes.push(...wrapInConditionals([element.clone({ nodes: argDecls })], definition.conditionals));
+					nodes.push(...wrapInConditionalGroupRules([element.clone({ nodes: argDecls })], definition.conditionals));
 				}
 			}
 
 			if (baseDecls.length) {
-				nodes.push(...wrapInConditionals([element.clone({ nodes: baseDecls })], definition.conditionals));
+				nodes.push(...wrapInConditionalGroupRules([element.clone({ nodes: baseDecls })], definition.conditionals));
 			}
 
 			for (let i = 0; i < parameters.length; i++) {
@@ -526,7 +526,7 @@ export class CustomFunctionTranspiler {
 		}
 
 		if (cycles.some((cycle) => !cycle.conditionals.length)) {
-			this.emittedNodes.push(...wrapInConditionals([element.clone({ nodes: [this.invalidResultDeclaration(resultName, element, helpers)] })], []));
+			this.emittedNodes.push(...wrapInConditionalGroupRules([element.clone({ nodes: [this.invalidResultDeclaration(resultName, element, helpers)] })], []));
 			return;
 		}
 
@@ -538,18 +538,19 @@ export class CustomFunctionTranspiler {
 			}
 
 			seen.add(key);
-			this.emittedNodes.push(...wrapInConditionals([element.clone({ nodes: [this.invalidResultDeclaration(resultName, element, helpers)] })], cycle.conditionals));
+			this.emittedNodes.push(...wrapInConditionalGroupRules([element.clone({ nodes: [this.invalidResultDeclaration(resultName, element, helpers)] })], cycle.conditionals));
 		}
 	}
 
 	/** Moves local `@property` rules to the root with their generated local names. */
 	private emitLocalRegistrations(propertyRegistrations: Array<CollectedPropertyRegistration>, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
 		const { registrations } = hoistPropertyRegistrations(propertyRegistrations, {
-			rewrite: (name) => registrationNames.get(name) ?? localName(this.from, definitionId, name),
-			conditionals: ancestorConditionals,
+			rewriteCustomPropertyName: (name) => registrationNames.get(name) ?? localName(this.from, definitionId, name),
+			conditionalGroupRules: ancestorConditionals,
 		});
 
 		for (const registration of registrations) {
+			formatGeneratedNode(registration, '\n\n', '');
 			this.spendBudget(countNodes(registration));
 		}
 
@@ -557,7 +558,7 @@ export class CustomFunctionTranspiler {
 	}
 
 	private pushRegistration(registration: AtRule, conditionals: Array<AtRule>): void {
-		const registrations = wrapInConditionals([registration], conditionals);
+		const registrations = wrapInConditionalGroupRules([registration], conditionals);
 		for (const node of registrations) {
 			formatGeneratedNode(node, '\n\n', '');
 		}
@@ -669,7 +670,7 @@ export class CustomFunctionTranspiler {
 				return;
 			}
 
-			out.push(...wrapInConditionals([element.clone({ nodes: pendingDecls })], activeConditionals));
+			out.push(...wrapInConditionalGroupRules([element.clone({ nodes: pendingDecls })], activeConditionals));
 			pendingDecls = [];
 		};
 
@@ -1357,6 +1358,20 @@ function collectDeclaredLocalNamesFrom(nodes: Array<ChildNode>, inConditional: b
 		if (node.type === 'atrule' && node.nodes && !IS_PROPERTY_REGEX.test(node.name)) {
 			collectDeclaredLocalNamesFrom(node.nodes, true, names);
 		}
+	}
+}
+
+function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
+	node.cleanRaws(true);
+	node.raws.before = before;
+
+	if (node.type === 'decl' || node.type === 'comment') {
+		return;
+	}
+
+	const childIndent = `${indent}\t`;
+	for (const child of node.nodes || []) {
+		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
 	}
 }
 

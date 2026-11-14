@@ -1,73 +1,86 @@
 import type { AtRule, ChildNode, Container } from 'postcss';
 import type { ComponentValue, TokenNode } from '@csstools/css-parser-algorithms';
 import type { TokenIdent } from '@csstools/css-tokenizer';
-import { isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, replaceComponentValues, stringify } from '@csstools/css-parser-algorithms';
+import { isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, stringify } from '@csstools/css-parser-algorithms';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 
-const IS_PROPERTY_REGEX = /^property$/i;
+const IS_PROPERTY_RULE_REGEX = /^property$/i;
 
 /**
- * Rewrite the custom property names in the prelude of an `@property` rule.
+ * Rewrite the `<custom-property-name>` values in the prelude of an `@property` rule.
  *
- * Both the longhand comma separated prelude list and the shorthand form are
- * supported:
+ * Supports both the rule form and the statement form.
  *
- * ```css
- * @property --a, --b { syntax: "<length>"; }
- * @property --a <length>: 1em;
- * ```
- *
- * Returns the original names, or `null` when the rule is invalid.
+ * @param atRule - The `@property` rule.
+ * @param rewriteCustomPropertyName - Maps each original name to its new name.
+ * @returns The original `<custom-property-name>` values, or `null` when the prelude cannot be parsed.
  */
-export function rewritePropertyNames(atRule: AtRule, rewrite: (name: string) => string): Array<string> | null {
-	const parsed = parsePropertyNames(atRule);
+export function rewriteCustomPropertyNames(atRule: AtRule, rewriteCustomPropertyName: (name: string) => string): Array<string> | null {
+	const parsed = parseCustomPropertyNames(atRule);
 	if (!parsed) {
 		return null;
 	}
 
-	const names = parsed.names.map((name) => name.name);
-	const nameNodes = new Set<ComponentValue>(parsed.names.map((name) => name.node));
+	const originalNames = parsed.customPropertyNames.map((customPropertyName) => customPropertyName.name);
 
-	const replaced = replaceComponentValues(parsed.groups, (componentValue) => {
-		if (!isTokenNode(componentValue) || !isTokenIdent(componentValue.value) || !nameNodes.has(componentValue)) {
-			return;
-		}
+	for (const customPropertyName of parsed.customPropertyNames) {
+		mutateIdent(customPropertyName.token, rewriteCustomPropertyName(customPropertyName.name));
+	}
 
-		mutateIdent(componentValue.value, rewrite(componentValue.value[4].value));
-	});
+	atRule.params = stringify(parsed.preludeGroups);
 
-	atRule.params = stringify(replaced);
-
-	return names;
+	return originalNames;
 }
 
-/** The names of every property registered by an `@property` rule. */
-export function registeredPropertyNames(atRule: AtRule): Array<string> {
-	return parsePropertyNames(atRule)?.names.map((name) => name.name) ?? [];
+/**
+ * The `<custom-property-name>` values registered by an `@property` rule.
+ *
+ * @param atRule - The `@property` rule.
+ */
+export function registeredCustomPropertyNames(atRule: AtRule): Array<string> {
+	return parseCustomPropertyNames(atRule)?.customPropertyNames.map((customPropertyName) => customPropertyName.name) ?? [];
 }
 
-export type CollectedPropertyRegistration = {
-	atRule: AtRule,
-	conditionals: Array<AtRule>,
-};
+/** An `@property` rule and the conditional group rules around it. */
+export interface CollectedPropertyRegistration {
+	/** The `@property` rule. */
+	propertyRule: AtRule;
+	/** The conditional group rules around the `@property` rule, outermost first. */
+	conditionalGroupRules: Array<AtRule>;
+}
 
-export type CollectPropertyRegistrationsOptions = {
-	isConditional: (atRule: AtRule) => boolean,
-	shouldDescend: (atRule: AtRule) => boolean,
-};
+/** Options for collecting `@property` rules. */
+export interface CollectPropertyRegistrationsOptions {
+	/** Whether an at-rule is a conditional group rule. */
+	isConditionalGroupRule: (atRule: AtRule) => boolean;
+	/** Whether to descend into an at-rule to find nested `@property` rules. */
+	shouldDescendInto: (atRule: AtRule) => boolean;
+}
 
-export type HoistPropertyRegistrationsOptions = {
-	rewrite: (name: string) => string,
-	conditionals?: Array<AtRule>,
-	removeOriginal?: boolean,
-};
+/** Options for hoisting `@property` rules. */
+export interface HoistPropertyRegistrationsOptions {
+	/** The new `<custom-property-name>` for each original name. */
+	rewriteCustomPropertyName: (name: string) => string;
+	/** Conditional group rules to wrap every registration in, outermost first. */
+	conditionalGroupRules?: Array<AtRule>;
+	/** Whether to remove the collected `@property` rules. */
+	removeOriginal?: boolean;
+}
 
-export type HoistedPropertyRegistrations = {
-	registrations: Array<AtRule>,
-	names: Array<string>,
-};
+/** The hoisted `@property` rules and their original names. */
+export interface HoistedPropertyRegistrations {
+	/** The cloned, rewritten and wrapped `@property` rules. */
+	registrations: Array<AtRule>;
+	/** The `<custom-property-name>` values from before rewriting. */
+	originalNames: Array<string>;
+}
 
-/** Collect the `@property` rules of a container, with the conditionals around each rule. */
+/**
+ * Collect the `@property` rules in a container and the conditional group rules around each rule.
+ *
+ * @param container - The container to search.
+ * @param options - The collection policy.
+ */
 export function collectPropertyRegistrations(
 	container: Container<ChildNode>,
 	options: CollectPropertyRegistrationsOptions,
@@ -78,171 +91,161 @@ export function collectPropertyRegistrations(
 function collectPropertyRegistrationsFrom(
 	container: Container<ChildNode>,
 	options: CollectPropertyRegistrationsOptions,
-	conditionals: Array<AtRule>,
+	conditionalGroupRules: Array<AtRule>,
 ): Array<CollectedPropertyRegistration> {
-	const out: Array<CollectedPropertyRegistration> = [];
+	const collected: Array<CollectedPropertyRegistration> = [];
 
 	for (const node of container.nodes || []) {
 		if (node.type !== 'atrule') {
 			continue;
 		}
 
-		if (IS_PROPERTY_REGEX.test(node.name)) {
-			out.push({ atRule: node, conditionals });
+		if (IS_PROPERTY_RULE_REGEX.test(node.name)) {
+			collected.push({ propertyRule: node, conditionalGroupRules });
 			continue;
 		}
 
-		if (!options.shouldDescend(node)) {
+		if (!options.shouldDescendInto(node)) {
 			continue;
 		}
 
-		out.push(...collectPropertyRegistrationsFrom(
+		collected.push(...collectPropertyRegistrationsFrom(
 			node,
 			options,
-			options.isConditional(node) ? [...conditionals, node] : conditionals,
+			options.isConditionalGroupRule(node) ? [...conditionalGroupRules, node] : conditionalGroupRules,
 		));
 	}
 
-	return out;
+	return collected;
 }
 
-/** Clone, rename, wrap and format `@property` rules so they can be moved to the root. */
+/**
+ * Clone, rewrite and wrap `@property` rules so they can be moved to the root.
+ *
+ * @param collected - The collected registrations.
+ * @param options - The hoisting policy.
+ */
 export function hoistPropertyRegistrations(
 	collected: Array<CollectedPropertyRegistration>,
 	options: HoistPropertyRegistrationsOptions,
 ): HoistedPropertyRegistrations {
 	const registrations: Array<AtRule> = [];
-	const names: Array<string> = [];
-	const conditionals = options.conditionals || [];
+	const originalNames: Array<string> = [];
+	const conditionalGroupRules = options.conditionalGroupRules || [];
 
-	for (const { atRule, conditionals: nested } of collected) {
+	for (const { propertyRule, conditionalGroupRules: nestedConditionalGroupRules } of collected) {
 		if (options.removeOriginal) {
-			atRule.remove();
+			propertyRule.remove();
 		}
 
-		const registration = atRule.clone();
-		const rewritten = rewritePropertyNames(registration, options.rewrite);
-		if (!rewritten) {
+		const registration = propertyRule.clone();
+		const originalRegistrationNames = rewriteCustomPropertyNames(registration, options.rewriteCustomPropertyName);
+		if (!originalRegistrationNames) {
 			continue;
 		}
 
-		names.push(...rewritten);
+		originalNames.push(...originalRegistrationNames);
 
-		const wrapped = wrapInConditionals([registration], [...conditionals, ...nested]);
-		for (const node of wrapped) {
-			formatGeneratedNode(node, '\n\n', '');
-		}
-
-		registrations.push(...wrapped);
+		registrations.push(...wrapInConditionalGroupRules([registration], [...conditionalGroupRules, ...nestedConditionalGroupRules]));
 	}
 
-	return { registrations, names };
+	return { registrations, originalNames };
 }
 
-/** Wrap nodes in clones of the conditional group rules that contain them. */
-export function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T> {
-	let current = nodes;
+/**
+ * Wrap nodes in clones of the given conditional group rules, outermost first.
+ *
+ * @param nodes - The nodes to wrap.
+ * @param conditionalGroupRules - The rules to clone, outermost first.
+ */
+export function wrapInConditionalGroupRules<T extends ChildNode>(nodes: Array<T>, conditionalGroupRules: Array<AtRule>): Array<T | AtRule> {
+	let current: Array<T | AtRule> = nodes;
 
-	for (let i = conditionals.length - 1; i >= 0; i--) {
-		current = [conditionals[i].clone({ nodes: current })] as Array<T>;
+	for (let i = conditionalGroupRules.length - 1; i >= 0; i--) {
+		current = [conditionalGroupRules[i].clone({ nodes: current })];
 	}
 
 	return current;
 }
 
-/** Format a generated node tree. */
-export function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
-	node.cleanRaws(true);
-	node.raws.before = before;
-
-	if (node.type === 'decl' || node.type === 'comment') {
-		return;
-	}
-
-	const childIndent = `${indent}\t`;
-	for (const child of node.nodes || []) {
-		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
-	}
-}
-
-type PropertyName = {
-	node: TokenNode,
+type CustomPropertyName = {
+	token: TokenIdent,
 	name: string,
 };
 
-type ParsedPropertyNames = {
-	groups: Array<Array<ComponentValue>>,
-	names: Array<PropertyName>,
+type ParsedCustomPropertyNames = {
+	preludeGroups: Array<Array<ComponentValue>>,
+	customPropertyNames: Array<CustomPropertyName>,
 };
 
-function parsePropertyNames(atRule: AtRule): ParsedPropertyNames | null {
-	const groups = parseCommaSeparatedListOfComponentValues(tokenize({ css: atRule.params }));
+function parseCustomPropertyNames(atRule: AtRule): ParsedCustomPropertyNames | null {
+	const preludeGroups = parseCommaSeparatedListOfComponentValues(tokenize({ css: atRule.params }));
 
 	if (!atRule.nodes) {
-		const name = firstPropertyName(groups[0]);
+		const customPropertyName = firstCustomPropertyName(preludeGroups[0]);
 
-		return name ? { groups, names: [name] } : null;
+		return customPropertyName ? { preludeGroups, customPropertyNames: [customPropertyName] } : null;
 	}
 
-	const names: Array<PropertyName> = [];
+	const customPropertyNames: Array<CustomPropertyName> = [];
 
-	for (const values of groups) {
-		const name = propertyName(values);
-		if (!name) {
+	for (const componentValues of preludeGroups) {
+		const customPropertyName = parseCustomPropertyName(componentValues);
+		if (!customPropertyName) {
 			return null;
 		}
 
-		names.push(name);
+		customPropertyNames.push(customPropertyName);
 	}
 
-	return names.length ? { groups, names } : null;
+	return customPropertyNames.length ? { preludeGroups, customPropertyNames } : null;
 }
 
-/** Parse a single custom property name. */
-function propertyName(values: Array<ComponentValue>): PropertyName | null {
-	let name: PropertyName | null = null;
+/** Parse a single `<custom-property-name>`. */
+function parseCustomPropertyName(componentValues: Array<ComponentValue>): CustomPropertyName | null {
+	let customPropertyName: CustomPropertyName | null = null;
 
-	for (const value of values) {
-		if (isWhiteSpaceOrCommentNode(value)) {
+	for (const componentValue of componentValues) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
 			continue;
 		}
 
-		if (name !== null || !isTokenNode(value)) {
+		if (customPropertyName !== null || !isTokenNode(componentValue)) {
 			return null;
 		}
 
-		const token = dashedIdent(value);
+		const token = dashedIdentToken(componentValue);
 		if (!token) {
 			return null;
 		}
 
-		name = {
-			node: value,
+		customPropertyName = {
+			token,
 			name: token[4].value,
 		};
 	}
 
-	return name;
+	return customPropertyName;
 }
 
-/** Parse the leading custom property name of a shorthand rule. */
-function firstPropertyName(values: Array<ComponentValue> | undefined): PropertyName | null {
-	for (const value of values || []) {
-		if (isWhiteSpaceOrCommentNode(value)) {
+/** Parse the leading `<custom-property-name>` of a statement form. */
+function firstCustomPropertyName(componentValues: Array<ComponentValue>): CustomPropertyName | null {
+	for (const componentValue of componentValues) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
 			continue;
 		}
 
-		if (!isTokenNode(value)) {
+		if (!isTokenNode(componentValue)) {
 			return null;
 		}
 
-		const token = dashedIdent(value);
+		const token = dashedIdentToken(componentValue);
 		if (!token) {
 			return null;
 		}
 
 		return {
-			node: value,
+			token,
 			name: token[4].value,
 		};
 	}
@@ -250,12 +253,12 @@ function firstPropertyName(values: Array<ComponentValue> | undefined): PropertyN
 	return null;
 }
 
-function dashedIdent(value: TokenNode): TokenIdent | null {
-	if (!isTokenIdent(value.value)) {
+function dashedIdentToken(tokenNode: TokenNode): TokenIdent | null {
+	if (!isTokenIdent(tokenNode.value)) {
 		return null;
 	}
 
-	const name = value.value[4].value;
+	const name = tokenNode.value[4].value;
 
-	return name !== '--' && name.startsWith('--') ? value.value : null;
+	return name !== '--' && name.startsWith('--') ? tokenNode.value : null;
 }

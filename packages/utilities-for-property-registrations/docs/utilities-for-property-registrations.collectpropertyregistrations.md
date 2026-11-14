@@ -4,7 +4,7 @@
 
 ## collectPropertyRegistrations() function
 
-Collect the `@property` rules of a container, with the conditionals around each rule.
+Collect the `@property` rules in a container and the conditional group rules around each rule.
 
 **Signature:**
 
@@ -42,6 +42,8 @@ Container&lt;ChildNode&gt;
 
 </td><td>
 
+The container to search.
+
 
 </td></tr>
 <tr><td>
@@ -55,6 +57,8 @@ options
 
 
 </td><td>
+
+The collection policy.
 
 
 </td></tr>

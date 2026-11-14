@@ -140,18 +140,22 @@ export class Transpiler {
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
 		const ancestorConditionals = collectConditionalAncestors(atRule, ownerNode);
 		const propertyRegistrations = collectPropertyRegistrations(atRule, {
-			isConditional: (node) => IS_REGISTRATION_WRAPPER_REGEX.test(node.name),
-			shouldDescend: (node) => IS_NESTING_GROUP_RULE_REGEX.test(node.name),
+			isConditionalGroupRule: (node) => IS_REGISTRATION_WRAPPER_REGEX.test(node.name),
+			shouldDescendInto: (node) => IS_NESTING_GROUP_RULE_REGEX.test(node.name),
 		});
 
-		const { registrations, names } = hoistPropertyRegistrations(propertyRegistrations, {
-			rewrite: (name) => `${prefix}${name}`,
-			conditionals: ancestorConditionals,
+		const { registrations, originalNames } = hoistPropertyRegistrations(propertyRegistrations, {
+			rewriteCustomPropertyName: (name) => `${prefix}${name}`,
+			conditionalGroupRules: ancestorConditionals,
 			removeOriginal: true,
 		});
 
-		for (const name of names) {
+		for (const name of originalNames) {
 			privateProperties.add(name);
+		}
+
+		for (const registration of registrations) {
+			formatGeneratedNode(registration, '\n\n', '');
 		}
 
 		this.registrations.push(...registrations);
@@ -446,4 +450,18 @@ function findPrivateRule(atRule: AtRule): false | AtRule {
 	}
 
 	return false;
+}
+
+function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
+	node.cleanRaws(true);
+	node.raws.before = before;
+
+	if (node.type === 'decl' || node.type === 'comment') {
+		return;
+	}
+
+	const childIndent = `${indent}\t`;
+	for (const child of node.nodes || []) {
+		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
+	}
 }
