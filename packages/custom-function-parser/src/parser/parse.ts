@@ -4,6 +4,11 @@ import { tokenize } from '@csstools/css-tokenizer';
 import { parseCustomFunction } from './parse-custom-function';
 import type { CustomFunction } from '../nodes/custom-function';
 
+/**
+ * Parse a `@function` prelude from tokens.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
+ */
 export function parseFromTokens(
 	tokens: Array<CSSToken>,
 	options?: {
@@ -26,6 +31,11 @@ export function parseFromTokens(
 	return parseCustomFunction(componentValues);
 }
 
+/**
+ * Parse a `@function` prelude.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
+ */
 export function parse(
 	source: string,
 	options?: {

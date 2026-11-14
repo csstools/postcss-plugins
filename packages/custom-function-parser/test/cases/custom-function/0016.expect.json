@@ -1,0 +1,163 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo(--x: 1px, )",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			"ident-token",
+			"--x",
+			6,
+			8,
+			{
+				"value": "--x"
+			}
+		],
+		[
+			"colon-token",
+			":",
+			9,
+			9,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			10,
+			10,
+			null
+		],
+		[
+			"dimension-token",
+			"1px",
+			11,
+			13,
+			{
+				"value": 1,
+				"type": "integer",
+				"unit": "px"
+			}
+		],
+		[
+			"comma-token",
+			",",
+			14,
+			14,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			15,
+			15,
+			null
+		],
+		[
+			")-token",
+			")",
+			16,
+			16,
+			null
+		]
+	],
+	"parameters": [
+		{
+			"type": "function-parameter",
+			"name": "--x",
+			"string": "--x: 1px,",
+			"tokens": [
+				[
+					"ident-token",
+					"--x",
+					6,
+					8,
+					{
+						"value": "--x"
+					}
+				],
+				[
+					"colon-token",
+					":",
+					9,
+					9,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					10,
+					10,
+					null
+				],
+				[
+					"dimension-token",
+					"1px",
+					11,
+					13,
+					{
+						"value": 1,
+						"type": "integer",
+						"unit": "px"
+					}
+				],
+				[
+					"comma-token",
+					",",
+					14,
+					14,
+					null
+				]
+			],
+			"parameterType": [],
+			"colon": [
+				"colon-token",
+				":",
+				9,
+				9,
+				null
+			],
+			"defaultValue": [
+				[
+					"whitespace-token",
+					" ",
+					10,
+					10,
+					null
+				],
+				[
+					"dimension-token",
+					"1px",
+					11,
+					13,
+					{
+						"value": 1,
+						"type": "integer",
+						"unit": "px"
+					}
+				]
+			],
+			"before": [],
+			"after": [
+				[
+					"comma-token",
+					",",
+					14,
+					14,
+					null
+				]
+			]
+		}
+	],
+	"returnsKeyword": [],
+	"returnType": [],
+	"before": [],
+	"after": []
+}

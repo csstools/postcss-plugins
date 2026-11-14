@@ -4,6 +4,10 @@
 
 ## CustomFunction class
 
+A parsed `@function` prelude.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 **Signature:**
 
 ```typescript
@@ -150,6 +154,8 @@ Array&lt;CSSToken&gt;
 
 </td><td>
 
+The `returns` keyword and its surrounding whitespace/comments.
+
 
 </td></tr>
 <tr><td>
@@ -227,6 +233,8 @@ Description
 
 
 </td><td>
+
+The return type as a syntax string. Defaults to `*`<!-- -->.
 
 
 </td></tr>

@@ -9,7 +9,7 @@ Constructs a new instance of the `FunctionParameter` class
 **Signature:**
 
 ```typescript
-constructor(name: TokenIdent, argumentType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
+constructor(name: TokenIdent, parameterType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
 ```
 
 ## Parameters
@@ -46,7 +46,7 @@ TokenIdent
 </td></tr>
 <tr><td>
 
-argumentType
+parameterType
 
 
 </td><td>

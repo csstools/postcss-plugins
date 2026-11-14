@@ -4,6 +4,8 @@
 
 ## CustomFunction.getReturnType() method
 
+The return type as a syntax string. Defaults to `*`<!-- -->.
+
 **Signature:**
 
 ```typescript

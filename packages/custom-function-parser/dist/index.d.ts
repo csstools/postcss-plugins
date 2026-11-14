@@ -1,10 +1,15 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import type { CSSToken } from '@csstools/css-tokenizer';
-import { FunctionNode } from '@csstools/css-parser-algorithms';
+import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import type { ParseError } from '@csstools/css-tokenizer';
 import type { TokenColon } from '@csstools/css-tokenizer';
 import type { TokenIdent } from '@csstools/css-tokenizer';
 
+/**
+ * A parsed `@function` prelude.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
+ */
 export declare class CustomFunction {
     type: NodeType;
     function: FunctionNode;
@@ -29,19 +34,35 @@ export declare class CustomFunction {
     static isCustomFunction(x: unknown): x is CustomFunction;
 }
 
+/**
+ * A `<function-parameter>`.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#typedef-function-parameter
+ */
 export declare class FunctionParameter {
     type: NodeType;
     name: TokenIdent;
-    argumentType: Array<CSSToken>;
+    parameterType: Array<CSSToken>;
     colon: TokenColon | null;
     defaultValue: Array<CSSToken>;
     before: Array<CSSToken>;
     after: Array<CSSToken>;
-    constructor(name: TokenIdent, argumentType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
+    constructor(name: TokenIdent, parameterType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
+    /**
+     * @deprecated Use `parameterType` instead.
+     */
+    get argumentType(): Array<CSSToken>;
+    set argumentType(value: Array<CSSToken>);
     getName(): string;
-    getNameToken(): TokenIdent | null;
+    getNameToken(): TokenIdent;
+    getParameterType(): string;
+    /**
+     * @deprecated Use `getParameterType()` instead.
+     */
     getArgumentType(): string;
-    getDefaultValue(): string;
+    getDefaultValue(): string | null;
+    tokens(): Array<CSSToken>;
+    toString(): string;
     /**
      * @internal
      */
@@ -62,17 +83,36 @@ export declare enum NodeType {
     FunctionParameter = "function-parameter"
 }
 
+/**
+ * Parse a `@function` prelude.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
+ */
 export declare function parse(source: string, options?: {
     onParseError?: (error: ParseError) => void;
 }): CustomFunction | false;
 
-/** Parse the arguments of a `<dashed-function>`. */
+/**
+ * Parse the arguments of a `<dashed-function>`.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function
+ */
 export declare function parseDashedFunctionArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false;
 
+/**
+ * Parse a `@function` prelude from tokens.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
+ */
 export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
     onParseError?: (error: ParseError) => void;
 }): CustomFunction | false;
 
+/**
+ * Parse a `<function-parameter>#? ,?` list.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-rule
+ */
 export declare function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false;
 
 export { }

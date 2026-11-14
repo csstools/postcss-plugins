@@ -4,6 +4,11 @@
 
 ## FunctionParameter.getArgumentType() method
 
+> Warning: This API is now obsolete.
+> 
+> Use `getParameterType()` instead.
+> 
+
 **Signature:**
 
 ```typescript

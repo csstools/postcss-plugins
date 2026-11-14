@@ -27,6 +27,9 @@ const customFunction = parse('--foo(--bar <length>: 1px) returns <length>');
 - `parseFunctionParameters()` parses a `@mixin` or `@function` parameter list.
 - `parseDashedFunctionArguments()` parses the arguments of a `<dashed-function>` call.
 
+The parameters and return type are not validated as `<syntax>` yet.
+Their types are preserved as syntax strings and can be validated by the consumer.
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/custom-function-parser

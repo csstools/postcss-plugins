@@ -4,6 +4,10 @@
 
 ## parseFunctionParameters() function
 
+Parse a `<function-parameter>#? ,?` list.
+
+https://drafts.csswg.org/css-mixins-1/\#function-rule
+
 **Signature:**
 
 ```typescript

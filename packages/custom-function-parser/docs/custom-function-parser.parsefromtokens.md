@@ -4,6 +4,10 @@
 
 ## parseFromTokens() function
 
+Parse a `@function` prelude from tokens.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 **Signature:**
 
 ```typescript

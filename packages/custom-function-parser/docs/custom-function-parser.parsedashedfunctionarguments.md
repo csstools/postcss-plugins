@@ -6,6 +6,8 @@
 
 Parse the arguments of a `<dashed-function>`<!-- -->.
 
+https://drafts.csswg.org/css-mixins-1/\#typedef-dashed-function
+
 **Signature:**
 
 ```typescript

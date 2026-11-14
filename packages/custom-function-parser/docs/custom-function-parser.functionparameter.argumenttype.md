@@ -4,8 +4,15 @@
 
 ## FunctionParameter.argumentType property
 
+> Warning: This API is now obsolete.
+> 
+> Use `parameterType` instead.
+> 
+
 **Signature:**
 
 ```typescript
-argumentType: Array<CSSToken>;
+get argumentType(): Array<CSSToken>;
+
+set argumentType(value: Array<CSSToken>);
 ```

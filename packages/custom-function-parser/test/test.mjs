@@ -12,10 +12,12 @@ import './cases/custom-function/0011.mjs';
 import './cases/custom-function/0012.mjs';
 import './cases/custom-function/0013.mjs';
 import './cases/custom-function/0014.mjs';
+import './cases/custom-function/0015.mjs';
+import './cases/custom-function/0016.mjs';
 
 import './get-name/0001.mjs';
 
-import './get-argument-type/0001.mjs';
+import './get-parameter-type/0001.mjs';
 
 import './get-return-type/0001.mjs';
 
@@ -23,6 +25,14 @@ import './get-default-value/0001.mjs';
 
 import './parse-arguments/0001.mjs';
 
+import './parse-arguments/0002.mjs';
+
 import './parse-parameters/0001.mjs';
 
+import './parse-parameters/0002.mjs';
+
+import './parse/0001.mjs';
+
 import './parse-prelude/0001.mjs';
+
+import './serialize/0001.mjs';

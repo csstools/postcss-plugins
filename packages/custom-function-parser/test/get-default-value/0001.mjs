@@ -7,7 +7,7 @@ import { parse } from '@csstools/custom-function-parser';
 
 	assert.strictEqual(
 		fn.parameters[0].getDefaultValue(),
-		'',
+		null,
 	);
 
 	assert.strictEqual(
@@ -69,5 +69,24 @@ import { parse } from '@csstools/custom-function-parser';
 	assert.strictEqual(
 		fn.parameters[1].getDefaultValue(),
 		'1',
+	);
+}
+
+{
+	const fn = parse('--foo(--bar:, --baz)');
+
+	assert.strictEqual(
+		fn.parameters[0].getDefaultValue(),
+		'',
+	);
+
+	assert.strictEqual(
+		fn.parameters[0].colon === null,
+		false,
+	);
+
+	assert.strictEqual(
+		fn.parameters[1].getDefaultValue(),
+		null,
 	);
 }

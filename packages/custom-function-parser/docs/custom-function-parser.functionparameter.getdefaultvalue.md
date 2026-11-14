@@ -4,12 +4,14 @@
 
 ## FunctionParameter.getDefaultValue() method
 
+The default value, or `null` when the parameter has no default.
+
 **Signature:**
 
 ```typescript
-getDefaultValue(): string;
+getDefaultValue(): string | null;
 ```
 **Returns:**
 
-string
+string \| null
 

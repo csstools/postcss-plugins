@@ -1,10 +1,19 @@
 # Changes to Custom Function Parser
 
-### Unreleased (minor)
+### Unreleased (major)
 
+- Add `FunctionParameter.parameterType` and `getParameterType()`.
+  Keep `argumentType` and `getArgumentType()` as deprecated aliases.
+- `getParameterType()` and `getReturnType()` return `*` when the type is omitted (breaking).
+- `getDefaultValue()` returns `null` when a parameter has no default (breaking).
+- Add `FunctionParameter.tokens()` and `FunctionParameter.toString()`.
 - Export `parseFunctionParameters()`.
 - Export `parseDashedFunctionArguments()`.
+- Validate all `<declaration-value>` restrictions in default values and arguments.
 - Share the `<declaration-value>` and `{}` unwrapping rules between parameters and arguments.
+- Parse parameter lists in a single forward pass.
+- Fix a trailing comma followed by whitespace or comments being included in a default value.
+- Preserve `type(...)` wrappers in raw parameter tokens.
 - Allow whitespace and comments after a trailing comma in parameter lists.
 - Reject `{}` blocks that are mixed with other tokens in default values.
 - Reject `--` as a parameter name.

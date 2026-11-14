@@ -24,6 +24,10 @@ Description
 
 </td><td>
 
+A parsed `@function` prelude.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 
 </td></tr>
 <tr><td>
@@ -32,6 +36,10 @@ Description
 
 
 </td><td>
+
+A `<function-parameter>`<!-- -->.
+
+https://drafts.csswg.org/css-mixins-1/\#typedef-function-parameter
 
 
 </td></tr>
@@ -99,6 +107,10 @@ Description
 
 </td><td>
 
+Parse a `@function` prelude.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 
 </td></tr>
 <tr><td>
@@ -110,6 +122,8 @@ Description
 
 Parse the arguments of a `<dashed-function>`<!-- -->.
 
+https://drafts.csswg.org/css-mixins-1/\#typedef-dashed-function
+
 
 </td></tr>
 <tr><td>
@@ -119,6 +133,10 @@ Parse the arguments of a `<dashed-function>`<!-- -->.
 
 </td><td>
 
+Parse a `@function` prelude from tokens.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 
 </td></tr>
 <tr><td>
@@ -127,6 +145,10 @@ Parse the arguments of a `<dashed-function>`<!-- -->.
 
 
 </td><td>
+
+Parse a `<function-parameter>#? ,?` list.
+
+https://drafts.csswg.org/css-mixins-1/\#function-rule
 
 
 </td></tr>

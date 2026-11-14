@@ -4,6 +4,10 @@
 
 ## FunctionParameter class
 
+A `<function-parameter>`<!-- -->.
+
+https://drafts.csswg.org/css-mixins-1/\#typedef-function-parameter
+
 **Signature:**
 
 ```typescript
@@ -30,7 +34,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(name, argumentType, colon, defaultValue, before, after)](./custom-function-parser.functionparameter._constructor_.md)
+[(constructor)(name, parameterType, colon, defaultValue, before, after)](./custom-function-parser.functionparameter._constructor_.md)
 
 
 </td><td>
@@ -171,6 +175,23 @@ TokenIdent
 </td></tr>
 <tr><td>
 
+[parameterType](./custom-function-parser.functionparameter.parametertype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;CSSToken&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [type](./custom-function-parser.functionparameter.type.md)
 
 
@@ -228,6 +249,8 @@ Description
 
 </td><td>
 
+The default value, or `null` when the parameter has no default.
+
 
 </td></tr>
 <tr><td>
@@ -256,12 +279,50 @@ Description
 </td></tr>
 <tr><td>
 
+[getParameterType()](./custom-function-parser.functionparameter.getparametertype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+The parameter type as a syntax string. Defaults to `*`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
 [isFunctionParameter(x)](./custom-function-parser.functionparameter.isfunctionparameter.md)
 
 
 </td><td>
 
 `static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tokens()](./custom-function-parser.functionparameter.tokens.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./custom-function-parser.functionparameter.tostring.md)
+
+
+</td><td>
 
 
 </td><td>
