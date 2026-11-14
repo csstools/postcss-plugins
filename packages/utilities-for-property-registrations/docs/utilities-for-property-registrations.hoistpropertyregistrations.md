@@ -4,7 +4,7 @@
 
 ## hoistPropertyRegistrations() function
 
-Clone, rename, wrap and format `@property` rules so they can be moved to the root.
+Clone, rename and wrap `@property` rules so they can be moved to the root.
 
 **Signature:**
 

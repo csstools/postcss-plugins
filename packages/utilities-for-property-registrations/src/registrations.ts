@@ -106,7 +106,7 @@ function collectPropertyRegistrationsFrom(
 	return out;
 }
 
-/** Clone, rename, wrap and format `@property` rules so they can be moved to the root. */
+/** Clone, rename and wrap `@property` rules so they can be moved to the root. */
 export function hoistPropertyRegistrations(
 	collected: Array<CollectedPropertyRegistration>,
 	options: HoistPropertyRegistrationsOptions,
@@ -128,41 +128,21 @@ export function hoistPropertyRegistrations(
 
 		names.push(...rewritten);
 
-		const wrapped = wrapInConditionals([registration], [...conditionals, ...nested]);
-		for (const node of wrapped) {
-			formatGeneratedNode(node, '\n\n', '');
-		}
-
-		registrations.push(...wrapped);
+		registrations.push(...wrapInConditionals([registration], [...conditionals, ...nested]));
 	}
 
 	return { registrations, names };
 }
 
 /** Wrap nodes in clones of the conditional group rules that contain them. */
-export function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T> {
-	let current = nodes;
+export function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T | AtRule> {
+	let current: Array<T | AtRule> = nodes;
 
 	for (let i = conditionals.length - 1; i >= 0; i--) {
-		current = [conditionals[i].clone({ nodes: current })] as Array<T>;
+		current = [conditionals[i].clone({ nodes: current })];
 	}
 
 	return current;
-}
-
-/** Format a generated node tree. */
-export function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
-	node.cleanRaws(true);
-	node.raws.before = before;
-
-	if (node.type === 'decl' || node.type === 'comment') {
-		return;
-	}
-
-	const childIndent = `${indent}\t`;
-	for (const child of node.nodes || []) {
-		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
-	}
 }
 
 type PropertyName = {

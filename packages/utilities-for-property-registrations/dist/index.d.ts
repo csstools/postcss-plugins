@@ -15,15 +15,12 @@ export declare type CollectPropertyRegistrationsOptions = {
     shouldDescend: (atRule: AtRule) => boolean;
 };
 
-/** Format a generated node tree. */
-export declare function formatGeneratedNode(node: ChildNode, before: string, indent: string): void;
-
 export declare type HoistedPropertyRegistrations = {
     registrations: Array<AtRule>;
     names: Array<string>;
 };
 
-/** Clone, rename, wrap and format `@property` rules so they can be moved to the root. */
+/** Clone, rename and wrap `@property` rules so they can be moved to the root. */
 export declare function hoistPropertyRegistrations(collected: Array<CollectedPropertyRegistration>, options: HoistPropertyRegistrationsOptions): HoistedPropertyRegistrations;
 
 export declare type HoistPropertyRegistrationsOptions = {
@@ -51,6 +48,6 @@ export declare function registeredPropertyNames(atRule: AtRule): Array<string>;
 export declare function rewritePropertyNames(atRule: AtRule, rewrite: (name: string) => string): Array<string> | null;
 
 /** Wrap nodes in clones of the conditional group rules that contain them. */
-export declare function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T>;
+export declare function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T | AtRule>;
 
 export { }

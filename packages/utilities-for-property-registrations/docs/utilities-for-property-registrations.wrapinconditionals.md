@@ -9,7 +9,7 @@ Wrap nodes in clones of the conditional group rules that contain them.
 **Signature:**
 
 ```typescript
-export declare function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T>;
+export declare function wrapInConditionals<T extends ChildNode>(nodes: Array<T>, conditionals: Array<AtRule>): Array<T | AtRule>;
 ```
 
 ## Parameters
@@ -62,5 +62,5 @@ Array&lt;AtRule&gt;
 
 **Returns:**
 
-Array&lt;T&gt;
+Array&lt;T \| AtRule&gt;
 

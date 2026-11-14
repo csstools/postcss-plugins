@@ -30,23 +30,12 @@ Collect the `@property` rules of a container, with the conditionals around each 
 </td></tr>
 <tr><td>
 
-[formatGeneratedNode(node, before, indent)](./utilities-for-property-registrations.formatgeneratednode.md)
-
-
-</td><td>
-
-Format a generated node tree.
-
-
-</td></tr>
-<tr><td>
-
 [hoistPropertyRegistrations(collected, options)](./utilities-for-property-registrations.hoistpropertyregistrations.md)
 
 
 </td><td>
 
-Clone, rename, wrap and format `@property` rules so they can be moved to the root.
+Clone, rename and wrap `@property` rules so they can be moved to the root.
 
 
 </td></tr>
