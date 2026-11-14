@@ -21,4 +21,8 @@ import './get-return-type/0001.mjs';
 
 import './get-default-value/0001.mjs';
 
+import './parse-arguments/0001.mjs';
+
+import './parse-parameters/0001.mjs';
+
 import './parse-prelude/0001.mjs';

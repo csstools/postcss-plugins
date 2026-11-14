@@ -4,7 +4,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-Implemented from : https://www.w3.org/TR/mediaqueries-5/
+Implemented from : https://drafts.csswg.org/css-mixins-1/
 
 ## Usage
 
@@ -18,8 +18,14 @@ npm install @csstools/custom-function-parser @csstools/css-parser-algorithms @cs
 It must be used together with `@csstools/css-tokenizer` and `@csstools/css-parser-algorithms`.
 
 ```ts
-// TODO
+import { parse } from '@csstools/custom-function-parser';
+
+const customFunction = parse('--foo(--bar <length>: 1px) returns <length>');
 ```
+
+- `parse()` parses a `@function` prelude.
+- `parseFunctionParameters()` parses a `@mixin` or `@function` parameter list.
+- `parseDashedFunctionArguments()` parses the arguments of a `<dashed-function>` call.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS

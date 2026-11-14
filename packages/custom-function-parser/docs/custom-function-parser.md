@@ -103,7 +103,27 @@ Description
 </td></tr>
 <tr><td>
 
+[parseDashedFunctionArguments(fn)](./custom-function-parser.parsedashedfunctionarguments.md)
+
+
+</td><td>
+
+Parse the arguments of a `<dashed-function>`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
 [parseFromTokens(tokens, options)](./custom-function-parser.parsefromtokens.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[parseFunctionParameters(componentValues)](./custom-function-parser.parsefunctionparameters.md)
 
 
 </td><td>

@@ -1,7 +1,8 @@
-import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhitespaceNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
+import { isFunctionNode, isTokenNode, isWhitespaceNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken, TokenColon, TokenIdent } from '@csstools/css-tokenizer';
-import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent, isTokenOpenCurly } from '@csstools/css-tokenizer';
+import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent } from '@csstools/css-tokenizer';
+import { containsBracedBlock, hasInvalidDeclarationValue, singleBracedBlock } from './declaration-value';
 import { CustomFunction } from '../nodes/custom-function';
 import { FunctionParameter } from '../nodes/function-parameter';
 
@@ -91,7 +92,7 @@ export function parseCustomFunction(componentValues: Array<ComponentValue>): Cus
 	);
 }
 
-function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false {
+export function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false {
 	if (!componentValues.some(x => !isWhiteSpaceOrCommentNode(x))) {
 		return [];
 	}
@@ -99,7 +100,19 @@ function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<
 	const parameters: Array<FunctionParameter> = [];
 	const seenNames = new Set<string>();
 
+	let lastMeaningfulIndex = -1;
 	for (let i = 0; i < componentValues.length; i++) {
+		if (!isWhiteSpaceOrCommentNode(componentValues[i])) {
+			lastMeaningfulIndex = i;
+		}
+	}
+
+	for (let i = 0; i < componentValues.length; i++) {
+		// A trailing comma may be followed by whitespace or comments.
+		if (i > lastMeaningfulIndex) {
+			return parameters;
+		}
+
 		const result = parseFunctionParameter(
 			componentValues.slice(i)
 		);
@@ -157,7 +170,8 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			if (
 				isTokenNode(componentValue) &&
 				isTokenIdent(componentValue.value) &&
-				componentValue.value[4].value.startsWith('--')
+				componentValue.value[4].value.startsWith('--') &&
+				componentValue.value[4].value !== '--'
 			) {
 				nameIndex = i;
 				nameToken = componentValue.value;
@@ -215,10 +229,6 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 		return false;
 	}
 
-	if (colonIndex !== -1 && defaultValueIndex === -1) {
-		return false;
-	}
-
 	const typeEndIndex = colonIndex !== -1 ? (colonIndex - 1) : (i - 1);
 
 	for (let j = (componentValues.length - 1); j > Math.max(typeEndIndex, defaultValueIndex); j--) {
@@ -253,20 +263,21 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 	let defaultValue: Array<CSSToken> = [];
 	if (defaultValueIndex !== -1) {
 		const defaultValueComponentValues = componentValues.slice(colonIndex + 1, afterIndex);
-		if (hasTopLevelImportant(defaultValueComponentValues)) {
-			// `!important` is not part of a <declaration-value>.
+		if (hasInvalidDeclarationValue(defaultValueComponentValues)) {
 			return false;
 		}
 
-		const meaningfulComponentValues = defaultValueComponentValues.filter((x) => !isWhiteSpaceOrCommentNode(x));
-		if (
-			meaningfulComponentValues.length === 1 &&
-			isSimpleBlockNode(meaningfulComponentValues[0]) &&
-			isTokenOpenCurly(meaningfulComponentValues[0].startToken)
-		) {
-			defaultValue = meaningfulComponentValues[0].value.flatMap((x) => {
+		const block = singleBracedBlock(defaultValueComponentValues);
+		if (block) {
+			if (hasInvalidDeclarationValue(block.value)) {
+				return false;
+			}
+
+			defaultValue = block.value.flatMap((x) => {
 				return x.tokens();
 			});
+		} else if (containsBracedBlock(defaultValueComponentValues)) {
+			return false;
 		} else {
 			defaultValue = defaultValueComponentValues.flatMap((x) => {
 				return x.tokens();
@@ -289,36 +300,4 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			})
 		)
 	};
-}
-
-function hasTopLevelImportant(componentValues: Array<ComponentValue>): boolean {
-	for (let i = 0; i < componentValues.length; i++) {
-		const componentValue = componentValues[i];
-		if (
-			!isTokenNode(componentValue) ||
-			!isTokenDelim(componentValue.value) ||
-			componentValue.value[4].value !== '!'
-		) {
-			continue;
-		}
-
-		for (let j = i + 1; j < componentValues.length; j++) {
-			const next = componentValues[j];
-			if (isWhiteSpaceOrCommentNode(next)) {
-				continue;
-			}
-
-			if (
-				isTokenNode(next) &&
-				isTokenIdent(next.value) &&
-				next.value[4].value.toLowerCase() === 'important'
-			) {
-				return true;
-			}
-
-			break;
-		}
-	}
-
-	return false;
 }
