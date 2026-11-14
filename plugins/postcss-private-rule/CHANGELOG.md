@@ -6,8 +6,8 @@
 - Use `@csstools/utilities-for-private-properties` to transpile private properties.
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
-- Leave `@private` rules with registrations inside `@container` or `@starting-style` unchanged.
-- Leave a style rule and its nested style rules unchanged when any of its `@private` rules has a registration that can not be hoisted.
+- Hoist `@property` registrations out of `@container` and `@starting-style` rules.
+- Preserve `@layer` when hoisting `@property` registrations.
 - Remove conditional group rules that only contained a `@private` rule.
 - Ignore `!important` declarations and unsupported at-rules in `@private` rules.
 - Transpile `@private` rules inside `@container` and `@starting-style` when they do not have registrations.

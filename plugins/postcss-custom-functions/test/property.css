@@ -135,6 +135,44 @@
 	width: --registered-conditional();
 }
 
+@function --registered-container() {
+	@container (width > 10px) {
+		@property --size <length>: 10px;
+	}
+
+	result: var(--size);
+}
+
+.registered-container {
+	width: --registered-container();
+}
+
+@function --registered-starting-style() {
+	@starting-style {
+		@property --size <length>: 10px;
+	}
+
+	result: var(--size);
+}
+
+.registered-starting-style {
+	width: --registered-starting-style();
+}
+
+@function --registered-container-and-media() {
+	@media (min-width: 1000px) {
+		@container (width > 10px) {
+			@property --size <length>: 10px;
+		}
+	}
+
+	result: var(--size);
+}
+
+.registered-container-and-media {
+	width: --registered-container-and-media();
+}
+
 @function --registered-escaped() {
 	@property --\66 oo <length>: 10px;
 

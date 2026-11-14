@@ -15,7 +15,6 @@ const allowedParentAtRules = new Set(['layer', 'media', 'supports']);
 
 // Conditional group rules that are allowed within a `@function` body.
 const conditionalGroupRules = new Set(['media', 'supports', 'container', 'starting-style']);
-const nonHoistableConditionalGroupRules = new Set(['container', 'starting-style']);
 
 const IS_FUNCTION_REGEX = /^function$/i;
 
@@ -35,10 +34,6 @@ export function isProcessableRule(atRule: AtRule): boolean {
 	// The body of a `@function` rule accepts declarations, `@property` rules and
 	// conditional group rules. Anything else makes the rule invalid.
 	if (!hasValidBody(atRule)) {
-		return false;
-	}
-
-	if (hasNonHoistablePropertyRegistration(atRule)) {
 		return false;
 	}
 
@@ -82,29 +77,6 @@ export function isInConditionalLayer(atRule: AtRule): boolean {
 
 function hasValidBody(atRule: AtRule): boolean {
 	return (atRule.nodes || []).every(isAllowedBodyNode);
-}
-
-function hasNonHoistablePropertyRegistration(atRule: AtRule, nonHoistable = false): boolean {
-	for (const node of atRule.nodes || []) {
-		if (node.type !== 'atrule') {
-			continue;
-		}
-
-		const name = node.name.toLowerCase();
-
-		if (name === 'property' && nonHoistable) {
-			return true;
-		}
-
-		if (
-			conditionalGroupRules.has(name) &&
-			hasNonHoistablePropertyRegistration(node, nonHoistable || nonHoistableConditionalGroupRules.has(name))
-		) {
-			return true;
-		}
-	}
-
-	return false;
 }
 
 function isAllowedBodyNode(node: ChildNode): boolean {

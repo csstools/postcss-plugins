@@ -15,7 +15,6 @@ Unsupported:
 - typed mixin arguments
 - layered `@mixin` declarations
 - mixin overrides
-- mixin applications whose `@private` rules contain `@property` rules inside `@container` or `@starting-style`
 
 Run `@csstools/postcss-private-rule` after this plugin to resolve private properties from the applying style rule.
 

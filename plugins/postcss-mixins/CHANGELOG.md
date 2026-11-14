@@ -3,10 +3,11 @@
 ### Unreleased (minor)
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
-- Leave `@private` rules with registrations inside `@container` or `@starting-style` unchanged.
-- Support trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
+- Hoist `@property` registrations out of `@container` and `@starting-style` rules.
+- Support trailing commas, whitespace after trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
 - Trim whitespace from `@apply` arguments.
 - Treat an empty default value (`--x:`) as a default value.
+- Reject `{}` blocks that are mixed with other tokens in parameter default values.
 - Drop `@layer` rules from mixin bodies.
 - Resolve `inherit` parameter defaults in the calling context.
 - Ignore mixin parameters and arguments with invalid `<declaration-value>` values.

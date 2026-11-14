@@ -278,7 +278,7 @@ section > h1 > small {
 	--beta: inherit(--alpha);
 }
 
-.nested-non-hoistable {
+.nested-container-registration {
 	@private {
 		--alpha: 2px;
 	}

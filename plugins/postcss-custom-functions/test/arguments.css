@@ -2,6 +2,17 @@
 	result: var(--a) var(--b);
 }
 
+@function --multiline-pair(
+	--a,
+	--b,
+) {
+	result: var(--a) var(--b);
+}
+
+.multiline-definition {
+	--actual: --multiline-pair(1px, 2px);
+}
+
 .trailing-comma {
 	--actual: --pair(1px, 2px,);
 }

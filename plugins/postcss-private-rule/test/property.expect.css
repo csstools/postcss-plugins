@@ -55,38 +55,24 @@
 	container-type: inline-size;
 
 	@container (width > 10px) {
-		@private {
-			@property --container-size <length>: 10px;
-			--container-size: 20px;
-		}
+			--_csstools-p-7q9ama-6--container-size: 20px
 	}
 
-	width: var(--container-size);
+	width: var(--_csstools-p-7q9ama-6--container-size);
 }
 
 .starting-style-registration {
-	@starting-style {
-		@private {
-			@property --starting-size <length>: 10px;
-		}
-	}
 
-	width: var(--starting-size);
+	width: var(--_csstools-p-7q9ama-7--starting-size);
 }
 
 .container-registration-siblings {
 	@container (width > 10px) {
-		@private {
-			@property --sibling-size <length>: 10px;
-			--sibling-size: 20px;
-		}
+			--_csstools-p-7q9ama-8--sibling-size: 20px
 	}
+		--_csstools-p-7q9ama-8--sibling-size: 30px;
 
-	@private {
-		--sibling-size: 30px;
-	}
-
-	width: var(--sibling-size);
+	width: var(--_csstools-p-7q9ama-8--sibling-size);
 }
 
 @property --_csstools-p-7q9ama-0--size {
@@ -115,10 +101,18 @@
 	@property --_csstools-p-7q9ama-2--conditional-size <length>: 13px;
 }
 
-@property --_csstools-p-7q9ama-3--layer-size <length>: 10px;
+@layer private-layer {
+	@property --_csstools-p-7q9ama-3--layer-size <length>: 10px;
+}
 
 @property --_csstools-p-7q9ama-4--foo <length>: 10px;
 
 @media (min-width: 1000px) {
 	@property --_csstools-p-7q9ama-5--outer-conditional-size <length>: 13px
 }
+
+@property --_csstools-p-7q9ama-6--container-size <length>: 10px;
+
+@property --_csstools-p-7q9ama-7--starting-size <length>: 10px;
+
+@property --_csstools-p-7q9ama-8--sibling-size <length>: 10px

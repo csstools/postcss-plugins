@@ -3,43 +3,61 @@
 	background-color: var(--background);
 }
 
-.space-after-open {
+@mixin --multiline-parameters(
+	--color,
+	--background,
+) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.multiline-parameters {
 	--_csstools-m-1kp0udk-0--arg-0: green;
 	--_csstools-m-1kp0udk-0--arg-1: blue;
 	--_csstools-m-1kp0udk-1--color: var(--_csstools-m-1kp0udk-0--arg-0);
 	--_csstools-m-1kp0udk-1--background: var(--_csstools-m-1kp0udk-0--arg-1);
 	color: var(--_csstools-m-1kp0udk-1--color);
 	background-color: var(--_csstools-m-1kp0udk-1--background);
-	@apply --spaces( green, blue);
+	@apply --multiline-parameters(green, blue);
 }
 
-.space-before-close {
+.space-after-open {
 	--_csstools-m-1kp0udk-2--arg-2: green;
 	--_csstools-m-1kp0udk-2--arg-3: blue;
 	--_csstools-m-1kp0udk-3--color: var(--_csstools-m-1kp0udk-2--arg-2);
 	--_csstools-m-1kp0udk-3--background: var(--_csstools-m-1kp0udk-2--arg-3);
 	color: var(--_csstools-m-1kp0udk-3--color);
 	background-color: var(--_csstools-m-1kp0udk-3--background);
-	@apply --spaces(green, blue );
+	@apply --spaces( green, blue);
 }
 
-.space-around-both {
+.space-before-close {
 	--_csstools-m-1kp0udk-4--arg-4: green;
 	--_csstools-m-1kp0udk-4--arg-5: blue;
 	--_csstools-m-1kp0udk-5--color: var(--_csstools-m-1kp0udk-4--arg-4);
 	--_csstools-m-1kp0udk-5--background: var(--_csstools-m-1kp0udk-4--arg-5);
 	color: var(--_csstools-m-1kp0udk-5--color);
 	background-color: var(--_csstools-m-1kp0udk-5--background);
-	@apply --spaces( green, blue );
+	@apply --spaces(green, blue );
 }
 
-.tabs-and-newlines {
+.space-around-both {
 	--_csstools-m-1kp0udk-6--arg-6: green;
 	--_csstools-m-1kp0udk-6--arg-7: blue;
 	--_csstools-m-1kp0udk-7--color: var(--_csstools-m-1kp0udk-6--arg-6);
 	--_csstools-m-1kp0udk-7--background: var(--_csstools-m-1kp0udk-6--arg-7);
 	color: var(--_csstools-m-1kp0udk-7--color);
 	background-color: var(--_csstools-m-1kp0udk-7--background);
+	@apply --spaces( green, blue );
+}
+
+.tabs-and-newlines {
+	--_csstools-m-1kp0udk-8--arg-8: green;
+	--_csstools-m-1kp0udk-8--arg-9: blue;
+	--_csstools-m-1kp0udk-9--color: var(--_csstools-m-1kp0udk-8--arg-8);
+	--_csstools-m-1kp0udk-9--background: var(--_csstools-m-1kp0udk-8--arg-9);
+	color: var(--_csstools-m-1kp0udk-9--color);
+	background-color: var(--_csstools-m-1kp0udk-9--background);
 	@apply --spaces(
 		green,
 		blue
@@ -47,12 +65,12 @@
 }
 
 .space-around-comma {
-	--_csstools-m-1kp0udk-8--arg-8: green;
-	--_csstools-m-1kp0udk-8--arg-9: blue;
-	--_csstools-m-1kp0udk-9--color: var(--_csstools-m-1kp0udk-8--arg-8);
-	--_csstools-m-1kp0udk-9--background: var(--_csstools-m-1kp0udk-8--arg-9);
-	color: var(--_csstools-m-1kp0udk-9--color);
-	background-color: var(--_csstools-m-1kp0udk-9--background);
+	--_csstools-m-1kp0udk-a--arg-a: green;
+	--_csstools-m-1kp0udk-a--arg-b: blue;
+	--_csstools-m-1kp0udk-b--color: var(--_csstools-m-1kp0udk-a--arg-a);
+	--_csstools-m-1kp0udk-b--background: var(--_csstools-m-1kp0udk-a--arg-b);
+	color: var(--_csstools-m-1kp0udk-b--color);
+	background-color: var(--_csstools-m-1kp0udk-b--background);
 	@apply --spaces(green , blue);
 }
 
@@ -62,12 +80,12 @@
 }
 
 .comment-before-comma {
-	--_csstools-m-1kp0udk-a--arg-a: green;
-	--_csstools-m-1kp0udk-a--arg-b: blue;
-	--_csstools-m-1kp0udk-b--color: var(--_csstools-m-1kp0udk-a--arg-a);
-	--_csstools-m-1kp0udk-b--background: var(--_csstools-m-1kp0udk-a--arg-b);
-	color: var(--_csstools-m-1kp0udk-b--color);
-	background-color: var(--_csstools-m-1kp0udk-b--background);
+	--_csstools-m-1kp0udk-c--arg-c: green;
+	--_csstools-m-1kp0udk-c--arg-d: blue;
+	--_csstools-m-1kp0udk-d--color: var(--_csstools-m-1kp0udk-c--arg-c);
+	--_csstools-m-1kp0udk-d--background: var(--_csstools-m-1kp0udk-c--arg-d);
+	color: var(--_csstools-m-1kp0udk-d--color);
+	background-color: var(--_csstools-m-1kp0udk-d--background);
 	@apply --comment-in-parameters(green /* one */, blue /* two */);
 }
 
@@ -77,12 +95,12 @@
 }
 
 .comment-around-arguments {
-	--_csstools-m-1kp0udk-c--arg-c: green;
-	--_csstools-m-1kp0udk-c--arg-d: blue;
-	--_csstools-m-1kp0udk-d--color: var(--_csstools-m-1kp0udk-c--arg-c);
-	--_csstools-m-1kp0udk-d--background: var(--_csstools-m-1kp0udk-c--arg-d);
-	color: var(--_csstools-m-1kp0udk-d--color);
-	background-color: var(--_csstools-m-1kp0udk-d--background);
+	--_csstools-m-1kp0udk-e--arg-e: green;
+	--_csstools-m-1kp0udk-e--arg-f: blue;
+	--_csstools-m-1kp0udk-f--color: var(--_csstools-m-1kp0udk-e--arg-e);
+	--_csstools-m-1kp0udk-f--background: var(--_csstools-m-1kp0udk-e--arg-f);
+	color: var(--_csstools-m-1kp0udk-f--color);
+	background-color: var(--_csstools-m-1kp0udk-f--background);
 	@apply --comment-parameters-and-arguments( /* before */ green /* mid */, blue /* after */ );
 }
 
@@ -91,8 +109,8 @@
 }
 
 .comment-only-default {
-	--_csstools-m-1kp0udk-e--color: green;
-	color: var(--_csstools-m-1kp0udk-e--color);
+	--_csstools-m-1kp0udk-g--color: green;
+	color: var(--_csstools-m-1kp0udk-g--color);
 	@apply --comment-only-default;
 }
 
@@ -102,20 +120,20 @@
 }
 
 .space-around-default {
-	--_csstools-m-1kp0udk-f--color: green;
-	--_csstools-m-1kp0udk-f--background: blue;
-	color: var(--_csstools-m-1kp0udk-f--color);
-	background-color: var(--_csstools-m-1kp0udk-f--background);
+	--_csstools-m-1kp0udk-h--color: green;
+	--_csstools-m-1kp0udk-h--background: blue;
+	color: var(--_csstools-m-1kp0udk-h--color);
+	background-color: var(--_csstools-m-1kp0udk-h--background);
 	@apply --space-around-default;
 }
 
 .space-around-argument-defaults {
-	--_csstools-m-1kp0udk-g--arg-e: red;
-	--_csstools-m-1kp0udk-g--arg-f: blue;
-	--_csstools-m-1kp0udk-h--color: var(--_csstools-m-1kp0udk-g--arg-e);
-	--_csstools-m-1kp0udk-h--background: var(--_csstools-m-1kp0udk-g--arg-f);
-	color: var(--_csstools-m-1kp0udk-h--color);
-	background-color: var(--_csstools-m-1kp0udk-h--background);
+	--_csstools-m-1kp0udk-i--arg-g: red;
+	--_csstools-m-1kp0udk-i--arg-h: blue;
+	--_csstools-m-1kp0udk-j--color: var(--_csstools-m-1kp0udk-i--arg-g);
+	--_csstools-m-1kp0udk-j--background: var(--_csstools-m-1kp0udk-i--arg-h);
+	color: var(--_csstools-m-1kp0udk-j--color);
+	background-color: var(--_csstools-m-1kp0udk-j--background);
 	@apply --space-around-default( red , blue );
 }
 
@@ -125,12 +143,12 @@
 }
 
 .comment-before-parameter-name {
-	--_csstools-m-1kp0udk-i--arg-g: green;
-	--_csstools-m-1kp0udk-i--arg-h: blue;
-	--_csstools-m-1kp0udk-j--color: var(--_csstools-m-1kp0udk-i--arg-g);
-	--_csstools-m-1kp0udk-j--background: var(--_csstools-m-1kp0udk-i--arg-h);
-	color: var(--_csstools-m-1kp0udk-j--color);
-	background-color: var(--_csstools-m-1kp0udk-j--background);
+	--_csstools-m-1kp0udk-k--arg-i: green;
+	--_csstools-m-1kp0udk-k--arg-j: blue;
+	--_csstools-m-1kp0udk-l--color: var(--_csstools-m-1kp0udk-k--arg-i);
+	--_csstools-m-1kp0udk-l--background: var(--_csstools-m-1kp0udk-k--arg-j);
+	color: var(--_csstools-m-1kp0udk-l--color);
+	background-color: var(--_csstools-m-1kp0udk-l--background);
 	@apply --comment-before-parameter-name(green, blue);
 }
 
@@ -140,12 +158,12 @@
 }
 
 .space-before-parameter-name {
-	--_csstools-m-1kp0udk-k--arg-i: green;
-	--_csstools-m-1kp0udk-k--arg-j: blue;
-	--_csstools-m-1kp0udk-l--color: var(--_csstools-m-1kp0udk-k--arg-i);
-	--_csstools-m-1kp0udk-l--background: var(--_csstools-m-1kp0udk-k--arg-j);
-	color: var(--_csstools-m-1kp0udk-l--color);
-	background-color: var(--_csstools-m-1kp0udk-l--background);
+	--_csstools-m-1kp0udk-m--arg-k: green;
+	--_csstools-m-1kp0udk-m--arg-l: blue;
+	--_csstools-m-1kp0udk-n--color: var(--_csstools-m-1kp0udk-m--arg-k);
+	--_csstools-m-1kp0udk-n--background: var(--_csstools-m-1kp0udk-m--arg-l);
+	color: var(--_csstools-m-1kp0udk-n--color);
+	background-color: var(--_csstools-m-1kp0udk-n--background);
 	@apply --space-before-parameter-name(green, blue);
 }
 
@@ -154,7 +172,7 @@
 }
 
 .comment-before-default-name {
-	--_csstools-m-1kp0udk-m--color: green;
-	color: var(--_csstools-m-1kp0udk-m--color);
+	--_csstools-m-1kp0udk-o--color: green;
+	color: var(--_csstools-m-1kp0udk-o--color);
 	@apply --comment-before-default-name;
 }

@@ -1,6 +1,6 @@
 import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } from 'postcss';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { findAllStyleRules, findPrivateRule, IS_NESTING_GROUP_RULE_REGEX, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
+import { findAllStyleRules, findPrivateRule, IS_NESTING_GROUP_RULE_REGEX } from './valid-atrules';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
 import { generatedName } from '@csstools/generate-idents';
@@ -12,13 +12,15 @@ const IS_LAYER_REGEX = /^layer$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
-const IS_CONDITIONAL_GROUP_RULE_REGEX = /^(container|media|starting-style|supports)$/i;
-const IS_NON_HOISTABLE_CONDITIONAL_REGEX = /^(container|starting-style)$/i;
+const IS_REGISTRATION_WRAPPER_REGEX = /^(layer|media|supports)$/i;
+
+type PrivateForRule = {
+	prefix: string,
+	privateProperties: Set<string>,
+};
 
 export class Transpiler {
-	privateForRule: WeakMap<Rule | AtRule, { prefix: string, privateProperties: Set<string> }> = new Map();
-
-	private nonHoistableOwners: WeakMap<Rule | AtRule, boolean> = new Map();
+	privateForRule: WeakMap<Rule | AtRule, PrivateForRule> = new WeakMap();
 
 	counter = 0;
 
@@ -41,59 +43,46 @@ export class Transpiler {
 		return registrations;
 	}
 
-	getOrFillPrivateForRule(rule: Rule | AtRule): { prefix: string, privateProperties: Set<string> } {
+	getOrFillPrivateForRule(rule: Rule | AtRule): PrivateForRule {
 		const existing = this.privateForRule.get(rule);
 		if (existing) {
 			return existing;
 		}
 
-		const prefix = generatedName(this.namespace, rule.source?.input.from, this.counter.toString(36));
-		this.counter++;
-
-		const out: { prefix: string, privateProperties: Set<string> } = {
-			prefix: prefix,
-			privateProperties: new Set()
+		const out: PrivateForRule = {
+			prefix: generatedName(this.namespace, rule.source?.input.from, this.counter.toString(36)),
+			privateProperties: new Set(),
 		};
 
+		this.counter++;
 		this.privateForRule.set(rule, out);
 
 		return out;
-	};
+	}
 
-	getStyleRulesWithPrivateProperties(node: Node): Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }> {
-		return findAllStyleRules(node)
-			.map((rule) => {
-			const p = this.privateForRule.get(rule);
-			if (!p) {
-				return false;
+	getStyleRulesWithPrivateProperties(node: Node): Array<PrivateForRule> {
+		const styleRules = findAllStyleRules(node);
+		const out: Array<PrivateForRule> = [];
+
+		for (let i = (styleRules.length - 1); i >= 0; i--) {
+			const privateForRule = this.privateForRule.get(styleRules[i]);
+			if (privateForRule) {
+				out.push(privateForRule);
 			}
+		}
 
-			return {
-				prefix: p.prefix,
-				privateProperties: p.privateProperties,
-				rule: rule,
-			};
-			})
-			.filter(Boolean)
-			.reverse() as Array<{ prefix: string, privateProperties: Set<string>, rule: Rule }>;
-	};
+		return out;
+	}
 
 	registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void {
 		if (!atRule.nodes?.length) {
 			return;
 		}
 
-		// Private property names are scoped to the style rule. When a
-		// registration for any of them can not be hoisted, the whole style rule
-		// is left as-is so that all private properties stay consistent.
-		if (this.hasNonHoistableRegistration(ownerNode)) {
-			return;
-		}
-
 		const { prefix, privateProperties } = this.getOrFillPrivateForRule(ownerNode);
 		const ancestorConditionals = collectConditionalAncestors(atRule, ownerNode);
 		const propertyRegistrations = collectPropertyRegistrations(atRule, {
-			isConditional: (node) => IS_CONDITIONAL_GROUP_RULE_REGEX.test(node.name),
+			isConditional: (node) => IS_REGISTRATION_WRAPPER_REGEX.test(node.name),
 			shouldDescend: (node) => IS_NESTING_GROUP_RULE_REGEX.test(node.name),
 		});
 
@@ -162,58 +151,11 @@ export class Transpiler {
 		this.removePrivateRule(atRule, ownerNode);
 	}
 
-	/**
-	 * Remove a private rule and any conditional group rules that only
-	 * contained it.
-	 */
+	/** Remove a private rule and any conditional group rules that only contained it. */
 	private removePrivateRule(atRule: AtRule, ownerNode: AtRule | Rule): void {
 		const parent = atRule.parent;
 		atRule.remove();
 		removeEmptyGroupingAncestors(parent, ownerNode);
-	}
-
-	/**
-	 * Whether any `@private` rule in this style rule or its nested style rules
-	 * has a registration that can not be hoisted to the root.
-	 *
-	 * A private property name is scoped to the style rule and is visible in all
-	 * nested rules, so the whole subtree must be transpiled or none of it.
-	 */
-	private hasNonHoistableRegistration(ownerNode: AtRule | Rule): boolean {
-		const cached = this.nonHoistableOwners.get(ownerNode);
-		if (cached !== undefined) {
-			return cached;
-		}
-
-		let skip = false;
-
-		ownerNode.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
-			if (skip) {
-				return;
-			}
-
-			const propertyRegistrations = collectPropertyRegistrations(atRule, {
-				isConditional: (node) => IS_CONDITIONAL_GROUP_RULE_REGEX.test(node.name),
-				shouldDescend: (node) => IS_NESTING_GROUP_RULE_REGEX.test(node.name),
-			});
-
-			if (!propertyRegistrations.length) {
-				return;
-			}
-
-			if (collectConditionalAncestors(atRule, ownerNode).some(isNonHoistableConditional)) {
-				skip = true;
-				return;
-			}
-
-			if (propertyRegistrations.some(({ conditionals }) => conditionals.some(isNonHoistableConditional))) {
-				skip = true;
-			}
-		});
-
-		this.nonHoistableOwners.set(ownerNode, skip);
-
-		return skip;
 	}
 
 	transpileDeclaration(decl: Declaration): void {
@@ -227,22 +169,10 @@ export class Transpiler {
 		const propertyName = unescapedPropertyName(decl.prop);
 		if (propertyName === null) return;
 
-		const styleRulesWithPrivateProperties = this.getStyleRulesWithPrivateProperties(decl);
+		const prefix = findPrefix(this.getStyleRulesWithPrivateProperties(decl), propertyName);
+		if (!prefix) return;
 
-		if (!styleRulesWithPrivateProperties.length) return;
-
-		let foundPrefix: string | false = false;
-
-		for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
-			if (privateProperties.has(propertyName)) {
-				foundPrefix = prefix;
-				break;
-			}
-		}
-
-		if (!foundPrefix) return;
-
-		const replacement = `${foundPrefix}${decl.prop}`;
+		const replacement = `${prefix}${decl.prop}`;
 
 		if (decl.prop === replacement) return;
 
@@ -287,7 +217,7 @@ export class Transpiler {
 		atRule.params = replacement;
 	}
 
-	private rewritePrivateReferences(componentValues: Array<ComponentValue>, styleRulesWithPrivateProperties: Array<{ prefix: string, privateProperties: Set<string> }>): void {
+	private rewritePrivateReferences(componentValues: Array<ComponentValue>, styleRulesWithPrivateProperties: Array<PrivateForRule>): void {
 		walk(componentValues, (entry) => {
 			if (!isFunctionNode(entry.node)) {
 				return;
@@ -302,7 +232,7 @@ export class Transpiler {
 		});
 	}
 
-	private rewritePrivatePropertyName(node: FunctionNode, styleRulesWithPrivateProperties: Array<{ prefix: string, privateProperties: Set<string> }>): void {
+	private rewritePrivatePropertyName(node: FunctionNode, styleRulesWithPrivateProperties: Array<PrivateForRule>): void {
 		for (let i = 0; i < node.value.length; i++) {
 			const arg = node.value[i];
 
@@ -310,22 +240,24 @@ export class Transpiler {
 
 			if (!isTokenNode(arg) || !isTokenIdent(arg.value) || !arg.value[4].value.startsWith('--')) return;
 
-			const propertyName = arg.value[4].value;
-			let foundPrefix: string | false = false;
+			const prefix = findPrefix(styleRulesWithPrivateProperties, arg.value[4].value);
+			if (!prefix) return;
 
-			for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
-				if (privateProperties.has(propertyName)) {
-					foundPrefix = prefix;
-					break;
-				}
-			}
+			mutateIdent(arg.value, `${prefix}${arg.value[4].value}`);
 
-			if (!foundPrefix) return;
-
-			mutateIdent(arg.value, `${foundPrefix}${arg.value[4].value}`);
 			return;
 		}
 	}
+}
+
+function findPrefix(styleRulesWithPrivateProperties: Array<PrivateForRule>, propertyName: string): string | false {
+	for (const { prefix, privateProperties } of styleRulesWithPrivateProperties) {
+		if (privateProperties.has(propertyName)) {
+			return prefix;
+		}
+	}
+
+	return false;
 }
 
 /** Remove nesting group rules that no longer contain anything. */
@@ -373,7 +305,7 @@ function collectConditionalAncestors(atRule: AtRule, ownerNode: Node): Array<AtR
 	let parent: Container<ChildNode> | Document | undefined = atRule.parent;
 
 	while (parent && parent !== ownerNode) {
-		if (parent.type === 'atrule' && IS_CONDITIONAL_GROUP_RULE_REGEX.test((parent as AtRule).name)) {
+		if (parent.type === 'atrule' && IS_REGISTRATION_WRAPPER_REGEX.test((parent as AtRule).name)) {
 			conditionals.push(parent as AtRule);
 		}
 
@@ -381,10 +313,6 @@ function collectConditionalAncestors(atRule: AtRule, ownerNode: Node): Array<AtR
 	}
 
 	return conditionals.reverse();
-}
-
-function isNonHoistableConditional(atRule: AtRule): boolean {
-	return IS_NON_HOISTABLE_CONDITIONAL_REGEX.test(atRule.name);
 }
 
 /** The unescaped name of a custom property token. */

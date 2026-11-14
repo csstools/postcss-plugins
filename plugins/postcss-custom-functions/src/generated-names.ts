@@ -15,32 +15,22 @@ export function isGeneratedProperty(prop: string): boolean {
 	return prop.startsWith('--_csstools-cf');
 }
 
-/**
- * Builds the custom property names emitted for a single source file.
- *
- * Names embed the source hash so that definitions from different stylesheets
- * can not collide.
- */
-export class GeneratedNames {
-	private from: string | undefined;
+/** The generated name for a function argument. */
+export function argName(from: string | undefined, id: string, index: number): string {
+	return generatedName(NAMESPACE, from, `${id}-arg-${index}`);
+}
 
-	constructor(from: string | undefined) {
-		this.from = from;
-	}
+/** The generated name for an unvalidated function argument. */
+export function rawName(from: string | undefined, id: string, index: number): string {
+	return generatedName(NAMESPACE, from, `${id}-raw-${index}`);
+}
 
-	argName(id: string, index: number): string {
-		return generatedName(NAMESPACE, this.from, `${id}-arg-${index}`);
-	}
+/** The generated name for a local variable. */
+export function localName(from: string | undefined, id: string, name: string): string {
+	return generatedName(NAMESPACE, from, `${id}-local-${name.slice(2)}`);
+}
 
-	rawName(id: string, index: number): string {
-		return generatedName(NAMESPACE, this.from, `${id}-raw-${index}`);
-	}
-
-	localName(id: string, name: string): string {
-		return generatedName(NAMESPACE, this.from, `${id}-local-${name.slice(2)}`);
-	}
-
-	resultName(id: string): string {
-		return generatedName(NAMESPACE, this.from, `${id}-result`);
-	}
+/** The generated name for a function result. */
+export function resultName(from: string | undefined, id: string): string {
+	return generatedName(NAMESPACE, from, `${id}-result`);
 }

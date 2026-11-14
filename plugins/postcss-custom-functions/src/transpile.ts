@@ -18,7 +18,7 @@ import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
 import type { CollectedPropertyRegistration } from '@csstools/utilities-for-property-registrations';
 import { parameterType } from './classify';
-import { GeneratedNames, INVALID_IDENT } from './generated-names';
+import { argName, INVALID_IDENT, localName, rawName, resultName as generatedResultName } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { collectPropertyRegistrations, formatGeneratedNode, hoistPropertyRegistrations, registeredPropertyNames, wrapInConditionals } from '@csstools/utilities-for-property-registrations';
 
@@ -28,6 +28,7 @@ import { collectPropertyRegistrations, formatGeneratedNode, hoistPropertyRegistr
 const MAX_GENERATED_DECLARATIONS = 100_000;
 const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_PROPERTY_REGEX = /^property$/i;
+const IS_REGISTRATION_WRAPPER_REGEX = /^(layer|media|supports)$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
 
@@ -114,7 +115,7 @@ export class CustomFunctionTranspiler {
 	private counter = 0;
 	private frames: Array<CallFrame> = [];
 	private registrations: Array<ChildNode> = [];
-	private names: GeneratedNames = new GeneratedNames(undefined);
+	private from: string | undefined;
 	private budget = MAX_GENERATED_DECLARATIONS;
 	private emittedNodes: Array<ChildNode> = [];
 	private currentConditionals: Array<AtRule> = [];
@@ -156,7 +157,7 @@ export class CustomFunctionTranspiler {
 			return { value: null, emittedNodes: [], inlineDecls: [] };
 		}
 
-		this.names = new GeneratedNames(decl.source?.input.from);
+		this.from = decl.source?.input.from;
 
 		const element = parent;
 		const componentValues = parseListOfComponentValues(tokens);
@@ -256,7 +257,7 @@ export class CustomFunctionTranspiler {
 		});
 
 		const callId = (this.counter++).toString(36);
-		const resultName = this.resultName(callId);
+		const callResultName = generatedResultName(this.from, callId);
 
 		const frame: CallFrame = { name, cyclic: false, hasKeywordResult: !!keywordResult, live: false, lazy, cycles: [] };
 		this.frames.push(frame);
@@ -275,9 +276,9 @@ export class CustomFunctionTranspiler {
 			const cycleStart = frame.cycles.length;
 
 			frame.live = live;
-			this.emitDefinition(group.definitions[i], args, evaluatedArgs, element, parentScope, resultName, inlineDecls, helpers, inline);
+			this.emitDefinition(group.definitions[i], args, evaluatedArgs, element, parentScope, callResultName, inlineDecls, helpers, inline);
 			if (live) {
-				this.emitCycleInvalidResults(frame, cycleStart, element, resultName, inlineDecls, helpers, inline);
+				this.emitCycleInvalidResults(frame, cycleStart, element, callResultName, inlineDecls, helpers, inline);
 			}
 		}
 
@@ -295,7 +296,7 @@ export class CustomFunctionTranspiler {
 			return [new CSSATokenNode([TokenType.Ident, keywordResult, -1, -1, { value: keywordResult }])];
 		}
 
-		return [this.varReference(resultName)];
+		return [this.varReference(callResultName)];
 	}
 
 	private emitDefinition(definition: CustomFunctionDefinition, args: Array<Array<ComponentValue>>, evaluatedArgs: Array<string>, element: Rule, parentScope: Scope, resultName: string, inlineDecls: Array<Declaration>, helpers: Helpers, inline: boolean): void {
@@ -324,19 +325,19 @@ export class CustomFunctionTranspiler {
 		const parameterArgs = new Map<string, string>();
 
 		for (let i = 0; i < parameters.length; i++) {
-			const argName = this.argName(definitionId, i);
-			scope.names.set(parameters[i].getName(), argName);
-			parameterScope.names.set(parameters[i].getName(), argName);
-			parameterArgs.set(parameters[i].getName(), argName);
+			const parameterArgName = argName(this.from, definitionId, i);
+			scope.names.set(parameters[i].getName(), parameterArgName);
+			parameterScope.names.set(parameters[i].getName(), parameterArgName);
+			parameterArgs.set(parameters[i].getName(), parameterArgName);
 		}
 
 		const declaredLocalNames = collectDeclaredLocalNames(definition.node);
-		for (const localName of declaredLocalNames.all) {
-			scope.names.set(localName, this.localName(definitionId, localName));
+		for (const declaredLocalName of declaredLocalNames.all) {
+			scope.names.set(declaredLocalName, localName(this.from, definitionId, declaredLocalName));
 		}
 
 		const propertyRegistrations = collectPropertyRegistrations(definition.node, {
-			isConditional: () => true,
+			isConditional: (atRule) => IS_REGISTRATION_WRAPPER_REGEX.test(atRule.name),
 			shouldDescend: (atRule) => !!atRule.nodes,
 		});
 
@@ -359,7 +360,7 @@ export class CustomFunctionTranspiler {
 				// A registration for a name that is already a parameter registers
 				// that parameter. It only becomes a separate local variable when
 				// the function body also declares it.
-				const target = scope.names.get(registeredName) ?? this.localName(definitionId, registeredName);
+				const target = scope.names.get(registeredName) ?? localName(this.from, definitionId, registeredName);
 				if (!scope.names.has(registeredName)) {
 					scope.names.set(registeredName, target);
 				}
@@ -451,7 +452,7 @@ export class CustomFunctionTranspiler {
 
 				this.pushRegistration(helpers.atRule({
 					name: 'property',
-					params: this.argName(definitionId, i),
+					params: argName(this.from, definitionId, i),
 					nodes: [
 						helpers.decl({ prop: 'syntax', value: `"${type}"`, source: element.source }),
 						helpers.decl({ prop: 'inherits', value: 'true', source: element.source }),
@@ -461,10 +462,10 @@ export class CustomFunctionTranspiler {
 				}), definition.conditionals);
 			}
 
-			for (const localName of declaredLocalNames.all) {
-				const type = typedParameters.get(localName);
-				const prop = scope.names.get(localName);
-				if (!type || !prop || registrationNames.has(localName)) {
+			for (const declaredLocalName of declaredLocalNames.all) {
+				const type = typedParameters.get(declaredLocalName);
+				const prop = scope.names.get(declaredLocalName);
+				if (!type || !prop || registrationNames.has(declaredLocalName)) {
 					continue;
 				}
 
@@ -538,7 +539,7 @@ export class CustomFunctionTranspiler {
 	/** Moves local `@property` rules to the root with their generated local names. */
 	private emitLocalRegistrations(propertyRegistrations: Array<CollectedPropertyRegistration>, ancestorConditionals: Array<AtRule>, definitionId: string, registrationNames: Map<string, string>): void {
 		const { registrations } = hoistPropertyRegistrations(propertyRegistrations, {
-			rewrite: (name) => registrationNames.get(name) ?? this.localName(definitionId, name),
+			rewrite: (name) => registrationNames.get(name) ?? localName(this.from, definitionId, name),
 			conditionals: ancestorConditionals,
 		});
 
@@ -576,7 +577,7 @@ export class CustomFunctionTranspiler {
 			// CSS-wide keywords in an argument do not fall back to the default.
 			if (hasArgument && argument.cssWideKeyword !== null) {
 				out.push(helpers.decl({
-					prop: this.argName(definitionId, i),
+					prop: argName(this.from, definitionId, i),
 					value: argument.value,
 					source: element.source,
 				}));
@@ -590,13 +591,13 @@ export class CustomFunctionTranspiler {
 				// arguments and for arguments that fail the type check.
 				if (hasArgument) {
 					out.push(helpers.decl({
-						prop: this.argName(definitionId, i),
+						prop: argName(this.from, definitionId, i),
 						value: argument.value,
 						source: element.source,
 					}));
 				} else if (hasDefault) {
 					out.push(helpers.decl({
-						prop: this.argName(definitionId, i),
+						prop: argName(this.from, definitionId, i),
 						value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers),
 						source: element.source,
 					}));
@@ -610,15 +611,15 @@ export class CustomFunctionTranspiler {
 			if (hasDefault) {
 				if (hasArgument) {
 					out.push(helpers.decl({
-						prop: this.rawName(definitionId, i),
+						prop: rawName(this.from, definitionId, i),
 						value: argument.value,
 						source: element.source,
 					}));
 				}
 
 				out.push(helpers.decl({
-					prop: this.argName(definitionId, i),
-					value: `var(${this.rawName(definitionId, i)}, ${this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers)})`,
+					prop: argName(this.from, definitionId, i),
+					value: `var(${rawName(this.from, definitionId, i)}, ${this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers)})`,
 					source: element.source,
 				}));
 
@@ -627,7 +628,7 @@ export class CustomFunctionTranspiler {
 
 			if (hasArgument) {
 				out.push(helpers.decl({
-					prop: this.argName(definitionId, i),
+					prop: argName(this.from, definitionId, i),
 					value: argument.value,
 					source: element.source,
 				}));
@@ -1146,22 +1147,6 @@ export class CustomFunctionTranspiler {
 				new CSSATokenNode([TokenType.Ident, name, -1, -1, { value: name }]),
 			],
 		);
-	}
-
-	private argName(id: string, index: number): string {
-		return this.names.argName(id, index);
-	}
-
-	private rawName(id: string, index: number): string {
-		return this.names.rawName(id, index);
-	}
-
-	private localName(id: string, name: string): string {
-		return this.names.localName(id, name);
-	}
-
-	private resultName(id: string): string {
-		return this.names.resultName(id);
 	}
 }
 

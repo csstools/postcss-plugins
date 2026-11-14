@@ -28,6 +28,13 @@ test('parseFunctionParameters', async (t) => {
 		assert.equal(parameters[1].getDefaultValue(), '');
 	});
 
+	await t.test('allows whitespace after a trailing comma', () => {
+		const parameters = parseParameters('--a, --b,\n');
+		assert.ok(parameters);
+
+		assert.deepEqual(parameters.map((parameter) => parameter.getName()), ['--a', '--b']);
+	});
+
 	await t.test('rejects invalid parameter lists', () => {
 		assert.equal(parseParameters('--'), false);
 		assert.equal(parseParameters('--a: red !important'), false);

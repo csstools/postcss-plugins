@@ -213,19 +213,16 @@ section > h1 > small {
 	--beta: inherit(--_csstools-p-wv7kid-o--alpha);
 }
 
-.nested-non-hoistable {
-	@private {
-		--alpha: 2px;
-	}
+.nested-container-registration {
+		--_csstools-p-wv7kid-p--alpha: 2px;
 
 	& .inner {
 		@container (width > 0px) {
-			@private {
-				@property --beta <length>: 1px;
-				--beta: 2px;
-			}
+				--_csstools-p-wv7kid-q--beta: 2px
 		}
 
-		--gamma: var(--alpha);
+		--gamma: var(--_csstools-p-wv7kid-p--alpha);
 	}
 }
+
+@property --_csstools-p-wv7kid-q--beta <length>: 1px

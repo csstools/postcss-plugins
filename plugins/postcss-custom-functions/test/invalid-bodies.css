@@ -47,15 +47,3 @@
 .style-rule-in-body {
 	width: --style-rule-in-body();
 }
-
-@function --container-property() {
-	@container (width > 10px) {
-		@property --size <length>: 10px;
-	}
-
-	result: var(--size);
-}
-
-.container-property {
-	width: --container-property();
-}

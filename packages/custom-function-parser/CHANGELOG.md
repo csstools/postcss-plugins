@@ -5,6 +5,8 @@
 - Export `parseFunctionParameters()`.
 - Export `parseDashedFunctionArguments()`.
 - Share the `<declaration-value>` and `{}` unwrapping rules between parameters and arguments.
+- Allow whitespace and comments after a trailing comma in parameter lists.
+- Reject `{}` blocks that are mixed with other tokens in default values.
 - Reject `--` as a parameter name.
 - Support an empty default value (`--x:`).
 - Reject `!` and `;` in default values.

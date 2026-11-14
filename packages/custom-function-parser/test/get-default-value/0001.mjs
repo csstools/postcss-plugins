@@ -52,13 +52,8 @@ import { parse } from '@csstools/custom-function-parser';
 	const fn = parse('--foo(--bar: { 1, 2 } "something", --baz: 1)');
 
 	assert.strictEqual(
-		fn.parameters[0].getDefaultValue(),
-		'{ 1, 2 } "something"',
-	);
-
-	assert.strictEqual(
-		fn.parameters[1].getDefaultValue(),
-		'1',
+		fn,
+		false,
 	);
 }
 

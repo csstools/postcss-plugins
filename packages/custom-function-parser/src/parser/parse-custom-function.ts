@@ -2,7 +2,7 @@ import { isFunctionNode, isTokenNode, isWhitespaceNode, isWhiteSpaceOrCommentNod
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken, TokenColon, TokenIdent } from '@csstools/css-tokenizer';
 import { isTokenColon, isTokenComma, isTokenDelim, isTokenIdent } from '@csstools/css-tokenizer';
-import { hasInvalidDeclarationValue, singleBracedBlock } from './declaration-value';
+import { containsBracedBlock, hasInvalidDeclarationValue, singleBracedBlock } from './declaration-value';
 import { CustomFunction } from '../nodes/custom-function';
 import { FunctionParameter } from '../nodes/function-parameter';
 
@@ -100,7 +100,19 @@ export function parseFunctionParameters(componentValues: Array<ComponentValue>):
 	const parameters: Array<FunctionParameter> = [];
 	const seenNames = new Set<string>();
 
+	let lastMeaningfulIndex = -1;
 	for (let i = 0; i < componentValues.length; i++) {
+		if (!isWhiteSpaceOrCommentNode(componentValues[i])) {
+			lastMeaningfulIndex = i;
+		}
+	}
+
+	for (let i = 0; i < componentValues.length; i++) {
+		// A trailing comma may be followed by whitespace or comments.
+		if (i > lastMeaningfulIndex) {
+			return parameters;
+		}
+
 		const result = parseFunctionParameter(
 			componentValues.slice(i)
 		);
@@ -264,6 +276,8 @@ function parseFunctionParameter(componentValues: Array<ComponentValue>): { advan
 			defaultValue = block.value.flatMap((x) => {
 				return x.tokens();
 			});
+		} else if (containsBracedBlock(defaultValueComponentValues)) {
+			return false;
 		} else {
 			defaultValue = defaultValueComponentValues.flatMap((x) => {
 				return x.tokens();

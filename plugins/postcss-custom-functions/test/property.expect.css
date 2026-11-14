@@ -78,33 +78,60 @@
 	width: var(--_csstools-cf-7q9ama-m-result);
 }
 
-.registered-escaped {
+.registered-container {
 
-	--_csstools-cf-7q9ama-p-local-foo: 20px;
-	--_csstools-cf-7q9ama-o-result: var(--_csstools-cf-7q9ama-p-local-foo);
+	--_csstools-cf-7q9ama-o-result: var(--_csstools-cf-7q9ama-p-local-size);
+}
+
+.registered-container {
 	width: var(--_csstools-cf-7q9ama-o-result);
 }
 
-.registered-parameter-default {
-	--_csstools-cf-7q9ama-r-arg-0: 10px;
+.registered-starting-style {
 
-	--_csstools-cf-7q9ama-q-result: var(--_csstools-cf-7q9ama-r-arg-0);
+	--_csstools-cf-7q9ama-q-result: var(--_csstools-cf-7q9ama-r-local-size);
+}
+
+.registered-starting-style {
 	width: var(--_csstools-cf-7q9ama-q-result);
 }
 
-.registered-parameter-argument {
-	--_csstools-cf-7q9ama-t-arg-0: 30px;
+.registered-container-and-media {
 
-	--_csstools-cf-7q9ama-s-result: var(--_csstools-cf-7q9ama-t-arg-0);
+	--_csstools-cf-7q9ama-s-result: var(--_csstools-cf-7q9ama-t-local-size);
+}
+
+.registered-container-and-media {
 	width: var(--_csstools-cf-7q9ama-s-result);
 }
 
-.registered-parameter-shadowed {
-	--_csstools-cf-7q9ama-v-arg-0: 30px;
+.registered-escaped {
 
-	--_csstools-cf-7q9ama-v-local-size: 15px;
-	--_csstools-cf-7q9ama-u-result: var(--_csstools-cf-7q9ama-v-local-size);
+	--_csstools-cf-7q9ama-v-local-foo: 20px;
+	--_csstools-cf-7q9ama-u-result: var(--_csstools-cf-7q9ama-v-local-foo);
 	width: var(--_csstools-cf-7q9ama-u-result);
+}
+
+.registered-parameter-default {
+	--_csstools-cf-7q9ama-x-arg-0: 10px;
+
+	--_csstools-cf-7q9ama-w-result: var(--_csstools-cf-7q9ama-x-arg-0);
+	width: var(--_csstools-cf-7q9ama-w-result);
+}
+
+.registered-parameter-argument {
+	--_csstools-cf-7q9ama-z-arg-0: 30px;
+
+	--_csstools-cf-7q9ama-y-result: var(--_csstools-cf-7q9ama-z-arg-0);
+	width: var(--_csstools-cf-7q9ama-y-result);
+}
+
+.registered-parameter-shadowed {
+	--_csstools-cf-7q9ama-11-arg-0: 30px;
+
+	--_csstools-cf-7q9ama-11-local-size: 15px;
+	--_csstools-cf-7q9ama-10-result: var(--_csstools-cf-7q9ama-11-local-size);
+	width: var(--_csstools-cf-7q9ama-10-result);
 }
 
 @property --_csstools-cf-7q9ama-1-local-size {
@@ -153,28 +180,36 @@
 	@property --_csstools-cf-7q9ama-n-local-size <length>: 10px;
 }
 
-@property --_csstools-cf-7q9ama-p-local-foo <length>: 10px;
+@property --_csstools-cf-7q9ama-p-local-size <length>: 10px;
 
-@property --_csstools-cf-7q9ama-r-arg-0 {
+@property --_csstools-cf-7q9ama-r-local-size <length>: 10px;
+
+@media (min-width: 1000px) {
+	@property --_csstools-cf-7q9ama-t-local-size <length>: 10px
+}
+
+@property --_csstools-cf-7q9ama-v-local-foo <length>: 10px;
+
+@property --_csstools-cf-7q9ama-x-arg-0 {
 	syntax: "<length>";
 	inherits: true;
 	initial-value: 10px;
 }
 
-@property --_csstools-cf-7q9ama-r-arg-0 <length>: 20px;
+@property --_csstools-cf-7q9ama-x-arg-0 <length>: 20px;
 
-@property --_csstools-cf-7q9ama-t-arg-0 {
+@property --_csstools-cf-7q9ama-z-arg-0 {
 	syntax: "<length>";
 	inherits: true;
 	initial-value: 10px;
 }
 
-@property --_csstools-cf-7q9ama-t-arg-0 <length>: 20px;
+@property --_csstools-cf-7q9ama-z-arg-0 <length>: 20px;
 
-@property --_csstools-cf-7q9ama-v-arg-0 {
+@property --_csstools-cf-7q9ama-11-arg-0 {
 	syntax: "<length>";
 	inherits: true;
 	initial-value: 10px;
 }
 
-@property --_csstools-cf-7q9ama-v-local-size <length>: 20px
+@property --_csstools-cf-7q9ama-11-local-size <length>: 20px
