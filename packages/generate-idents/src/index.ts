@@ -1,57 +1,63 @@
 const sourceHashes = new Map<string, string>();
 
 /**
- * A generated custom property name.
+ * A generated dashed ident.
  *
- * Generated names are stable for a given source file and namespace so that
- * separate builds produce the same output. They are also recognisable, so
- * that generated properties are never processed a second time.
+ * Generated names are stable for a given generator namespace and source
+ * namespace so that separate builds produce the same output.
  *
- * Callers may append another custom property name to the result, which keeps
- * the result a valid custom property name.
+ * @param generatorNamespace The namespace of the generator.
+ * @param sourceNamespace The namespace of the source. Use `hashFileBasenameAndDir` to derive one from a file path.
+ * @param increment A value that distinguishes generated names within the same namespaces.
  */
-export function generatedName(namespace: string, from: string | undefined, suffix: string): string {
-	return `--_csstools-${namespace}-${sourceHashFor(from)}-${suffix}`;
+export function generateUniqueDashedIdent(generatorNamespace: string, sourceNamespace: string, increment: string): string {
+	return `--_csstools-${generatorNamespace}-${sourceNamespace}-${increment}`;
 }
 
 /**
- * A short, stable hash of the source file.
+ * A short, stable hash using the basename and directory of a file path.
  *
  * Only the last two path segments are used, so that names are stable
  * regardless of the absolute location of a project. This intentionally avoids
  * `node:crypto` and `node:path` so that this module can run in a browser
  * bundle.
+ *
+ * @param sourceNamespace A file path, or `undefined` when there is no source file.
  */
-function sourceHashFor(from: string | undefined): string {
-	if (!from) {
+export function hashFileBasenameAndDir(sourceNamespace: string | undefined): string {
+	if (!sourceNamespace) {
 		return '0';
 	}
 
-	const existing = sourceHashes.get(from);
+	const existing = sourceHashes.get(sourceNamespace);
 	if (existing) {
 		return existing;
 	}
 
-	const value = hashSourcePath(from);
-	sourceHashes.set(from, value);
+	const value = simpleHash(sourceKey(sourceNamespace));
+
+	if (sourceHashes.size > 10_000) {
+		sourceHashes.clear();
+	}
+
+	sourceHashes.set(sourceNamespace, value);
 
 	return value;
 }
 
-function hashSourcePath(from: string): string {
+function simpleHash(sourceNamespace: string): string {
 	let hash = 2166136261;
-	const source = sourceKey(from);
 
-	for (let i = 0; i < source.length; i++) {
-		hash ^= source.charCodeAt(i);
+	for (let i = 0; i < sourceNamespace.length; i++) {
+		hash ^= sourceNamespace.charCodeAt(i);
 		hash = Math.imul(hash, 16777619);
 	}
 
 	return (hash >>> 0).toString(36);
 }
 
-function sourceKey(from: string): string {
-	const segments = from.replaceAll('\\', '/').split('/').filter((segment) => segment.length > 0);
+function sourceKey(sourceNamespace: string): string {
+	const segments = sourceNamespace.replaceAll('\\', '/').split('/').filter((segment) => segment.length > 0);
 
 	if (segments.length === 0) {
 		return '.';

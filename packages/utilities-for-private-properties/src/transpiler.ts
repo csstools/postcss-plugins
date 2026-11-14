@@ -2,7 +2,7 @@ import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } 
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
-import { generatedName } from '@csstools/generate-idents';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 import { collectPropertyRegistrations, hoistPropertyRegistrations } from '@csstools/utilities-for-property-registrations';
 
 const HAS_PRIVATE_REFERENCE_REGEX = /\b(var|if|style|inherit)\(/i;
@@ -107,7 +107,7 @@ export class Transpiler {
 		}
 
 		const out: PrivateForRule = {
-			prefix: generatedName(this.namespace, rule.source?.input.from, this.counter.toString(36)),
+			prefix: generateUniqueDashedIdent(this.namespace, hashFileBasenameAndDir(rule.source?.input.from), this.counter.toString(36)),
 			privateProperties: new Set(),
 		};
 

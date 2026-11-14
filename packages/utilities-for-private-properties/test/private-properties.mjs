@@ -1,10 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert';
 import postcss from 'postcss';
-import { generatedName } from '@csstools/generate-idents';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 import { createPrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 
 const from = 'a/b.css';
+const source = hashFileBasenameAndDir(from);
 
 function transpile(css, options) {
 	const root = postcss.parse(css, { from });
@@ -16,7 +17,7 @@ function transpile(css, options) {
 
 test('private properties', async (t) => {
 	await t.test('renames declarations and references', () => {
-		const prefix = generatedName('p', from, '0');
+		const prefix = generateUniqueDashedIdent('p', source, '0');
 
 		assert.equal(
 			transpile('.a { @private { --size: 2px; } width: var(--size); }'),
@@ -25,7 +26,7 @@ test('private properties', async (t) => {
 	});
 
 	await t.test('hoists property registrations', () => {
-		const prefix = generatedName('p', from, '0');
+		const prefix = generateUniqueDashedIdent('p', source, '0');
 
 		assert.equal(
 			transpile('.a { @private { @property --size <length>: 1px; } width: var(--size); }'),
@@ -41,8 +42,8 @@ test('private properties', async (t) => {
 		transpiler.transpile([root.last]);
 
 		const output = root.toString();
-		assert.ok(output.includes(`${generatedName('m', from, '0')}--x`));
-		assert.ok(output.includes(`${generatedName('m', from, '1')}--y`));
+		assert.ok(output.includes(`${generateUniqueDashedIdent('m', source, '0')}--x`));
+		assert.ok(output.includes(`${generateUniqueDashedIdent('m', source, '1')}--y`));
 	});
 
 	await t.test('returns registrations for each call', () => {
@@ -54,12 +55,12 @@ test('private properties', async (t) => {
 
 		assert.equal(first.length, 1);
 		assert.equal(second.length, 1);
-		assert.ok(first[0].params.startsWith(generatedName('m', from, '0')));
-		assert.ok(second[0].params.startsWith(generatedName('m', from, '1')));
+		assert.ok(first[0].params.startsWith(generateUniqueDashedIdent('m', source, '0')));
+		assert.ok(second[0].params.startsWith(generateUniqueDashedIdent('m', source, '1')));
 	});
 
 	await t.test('rewrites style() and inherit() references', () => {
-		const prefix = generatedName('p', from, '0');
+		const prefix = generateUniqueDashedIdent('p', source, '0');
 
 		assert.equal(
 			transpile('.a { @private { --size: 2px; } width: style(--size: 3px); height: inherit(--size); }'),
@@ -68,7 +69,7 @@ test('private properties', async (t) => {
 	});
 
 	await t.test('rewrites container preludes', () => {
-		const prefix = generatedName('p', from, '0');
+		const prefix = generateUniqueDashedIdent('p', source, '0');
 
 		assert.equal(
 			transpile('.a { @private { --theme: dark; } @container style(--theme: dark) { color: red; } }'),
@@ -77,7 +78,7 @@ test('private properties', async (t) => {
 	});
 
 	await t.test('rewrites nested references from the owning rule', () => {
-		const prefix = generatedName('p', from, '0');
+		const prefix = generateUniqueDashedIdent('p', source, '0');
 
 		assert.equal(
 			transpile('.a { @private { --size: 2px; } .b { width: var(--size); } }'),
@@ -86,8 +87,8 @@ test('private properties', async (t) => {
 	});
 
 	await t.test('captures enclosing private names in a nested private rule', () => {
-		const outer = generatedName('p', from, '0');
-		const inner = generatedName('p', from, '1');
+		const outer = generateUniqueDashedIdent('p', source, '0');
+		const inner = generateUniqueDashedIdent('p', source, '1');
 
 		assert.equal(
 			transpile('.a { @private { --x: red; } & { @private { --y: var(--x, green); } color: var(--y, red); background-color: var(--x, blue); } }'),
@@ -96,8 +97,8 @@ test('private properties', async (t) => {
 	});
 
 	await t.test('captures enclosing private names in nested private container preludes', () => {
-		const outer = generatedName('p', from, '0');
-		const inner = generatedName('p', from, '1');
+		const outer = generateUniqueDashedIdent('p', source, '0');
+		const inner = generateUniqueDashedIdent('p', source, '1');
 
 		assert.equal(
 			transpile('.a { @private { --x: red; } & { @private { @container style(--x: blue) { --y: 1px; } } } }'),
@@ -108,7 +109,7 @@ test('private properties', async (t) => {
 	await t.test('does not rewrite references outside the owning rule', () => {
 		assert.equal(
 			transpile('.a { @private { --size: 2px; } } .b { width: var(--size); }'),
-			`.a { ${generatedName('p', from, '0')}--size: 2px } .b { width: var(--size); }`,
+			`.a { ${generateUniqueDashedIdent('p', source, '0')}--size: 2px } .b { width: var(--size); }`,
 		);
 	});
 

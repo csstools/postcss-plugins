@@ -19,16 +19,27 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[generatedName(namespace, from, suffix)](./generate-idents.generatedname.md)
+[generateUniqueDashedIdent(generatorNamespace, sourceNamespace, increment)](./generate-idents.generateuniquedashedident.md)
 
 
 </td><td>
 
-A generated custom property name.
+A generated dashed ident.
 
-Generated names are stable for a given source file and namespace so that separate builds produce the same output. They are also recognisable, so that generated properties are never processed a second time.
+Generated names are stable for a given generator namespace and source namespace so that separate builds produce the same output.
 
-Callers may append another custom property name to the result, which keeps the result a valid custom property name.
+
+</td></tr>
+<tr><td>
+
+[hashFileBasenameAndDir(sourceNamespace)](./generate-idents.hashfilebasenameanddir.md)
+
+
+</td><td>
+
+A short, stable hash using the basename and directory of a file path.
+
+Only the last two path segments are used, so that names are stable regardless of the absolute location of a project. This intentionally avoids `node:crypto` and `node:path` so that this module can run in a browser bundle.
 
 
 </td></tr>

@@ -1,4 +1,5 @@
 import assert from 'node:assert';
-import { generatedName } from '@csstools/generate-idents';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 
-assert.ok(typeof generatedName === 'function');
+assert.ok(typeof generateUniqueDashedIdent === 'function');
+assert.ok(typeof hashFileBasenameAndDir === 'function');

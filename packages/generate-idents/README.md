@@ -4,7 +4,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-Generate stable, collision free CSS identifiers.
+Generate stable CSS identifiers.
 
 ## API
 
@@ -19,9 +19,9 @@ npm install @csstools/generate-idents --save-dev
 ```
 
 ```ts
-import { generatedName } from '@csstools/generate-idents';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 
-generatedName('p', 'src/a.css', '0');
+generateUniqueDashedIdent('p', hashFileBasenameAndDir('src/a.css'), '0');
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

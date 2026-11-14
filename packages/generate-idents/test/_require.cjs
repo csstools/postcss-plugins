@@ -1,4 +1,5 @@
 const assert = require('assert');
-const { generatedName } = require('@csstools/generate-idents');
+const { generateUniqueDashedIdent, hashFileBasenameAndDir } = require('@csstools/generate-idents');
 
-assert.ok(typeof generatedName === 'function');
+assert.ok(typeof generateUniqueDashedIdent === 'function');
+assert.ok(typeof hashFileBasenameAndDir === 'function');

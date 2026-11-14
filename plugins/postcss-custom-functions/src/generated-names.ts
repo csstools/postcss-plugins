@@ -1,4 +1,4 @@
-import { generatedName } from '@csstools/generate-idents';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 
 const NAMESPACE = 'cf';
 
@@ -17,20 +17,20 @@ export function isGeneratedProperty(prop: string): boolean {
 
 /** The generated name for a function argument. */
 export function argName(from: string | undefined, id: string, index: number): string {
-	return generatedName(NAMESPACE, from, `${id}-arg-${index}`);
+	return generateUniqueDashedIdent(NAMESPACE, hashFileBasenameAndDir(from), `${id}-arg-${index}`);
 }
 
 /** The generated name for an unvalidated function argument. */
 export function rawName(from: string | undefined, id: string, index: number): string {
-	return generatedName(NAMESPACE, from, `${id}-raw-${index}`);
+	return generateUniqueDashedIdent(NAMESPACE, hashFileBasenameAndDir(from), `${id}-raw-${index}`);
 }
 
 /** The generated name for a local variable. */
 export function localName(from: string | undefined, id: string, name: string): string {
-	return generatedName(NAMESPACE, from, `${id}-local-${name.slice(2)}`);
+	return generateUniqueDashedIdent(NAMESPACE, hashFileBasenameAndDir(from), `${id}-local-${name.slice(2)}`);
 }
 
 /** The generated name for a function result. */
 export function resultName(from: string | undefined, id: string): string {
-	return generatedName(NAMESPACE, from, `${id}-result`);
+	return generateUniqueDashedIdent(NAMESPACE, hashFileBasenameAndDir(from), `${id}-result`);
 }
