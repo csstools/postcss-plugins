@@ -97,7 +97,7 @@ export declare function parse(source: string, options?: {
  *
  * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function
  */
-export declare function parseDashedFunctionArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false;
+export declare function parseDashedFunctionArguments(componentValues: Array<ComponentValue>): Array<Array<ComponentValue>> | false;
 
 /**
  * Parse a `@function` prelude from tokens.

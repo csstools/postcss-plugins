@@ -154,8 +154,6 @@ Array&lt;CSSToken&gt;
 
 </td><td>
 
-The `returns` keyword and its surrounding whitespace/comments.
-
 
 </td></tr>
 <tr><td>
@@ -233,8 +231,6 @@ Description
 
 
 </td><td>
-
-The return type as a syntax string. Defaults to `*`<!-- -->.
 
 
 </td></tr>

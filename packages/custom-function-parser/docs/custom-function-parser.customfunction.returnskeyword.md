@@ -4,8 +4,6 @@
 
 ## CustomFunction.returnsKeyword property
 
-The `returns` keyword and its surrounding whitespace/comments.
-
 **Signature:**
 
 ```typescript

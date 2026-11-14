@@ -1,4 +1,4 @@
-import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
+import type { ComponentValue } from '@csstools/css-parser-algorithms';
 import { isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
 import { isTokenComma } from '@csstools/css-tokenizer';
 import { containsCurlyBlock, hasInvalidDeclarationValue, singleCurlyBlock } from '../util/declaration-value';
@@ -8,10 +8,10 @@ import { containsCurlyBlock, hasInvalidDeclarationValue, singleCurlyBlock } from
  *
  * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function
  */
-export function parseDashedFunctionArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false {
+export function parseDashedFunctionArguments(componentValues: Array<ComponentValue>): Array<Array<ComponentValue>> | false {
 	const lists: Array<Array<ComponentValue>> = [[]];
 
-	for (const componentValue of fn.value) {
+	for (const componentValue of componentValues) {
 		if (isTokenNode(componentValue) && isTokenComma(componentValue.value)) {
 			lists.push([]);
 			continue;

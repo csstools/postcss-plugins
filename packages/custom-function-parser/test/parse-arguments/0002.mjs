@@ -8,7 +8,7 @@ function parseArguments(css) {
 	const fn = parseComponentValue(tokenize({ css }));
 	assert.ok(isFunctionNode(fn));
 
-	return parseDashedFunctionArguments(fn);
+	return parseDashedFunctionArguments(fn.value);
 }
 
 function stringified(css) {

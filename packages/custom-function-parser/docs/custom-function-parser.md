@@ -115,7 +115,7 @@ https://drafts.csswg.org/css-mixins-1/\#function-prelude
 </td></tr>
 <tr><td>
 
-[parseDashedFunctionArguments(fn)](./custom-function-parser.parsedashedfunctionarguments.md)
+[parseDashedFunctionArguments(componentValues)](./custom-function-parser.parsedashedfunctionarguments.md)
 
 
 </td><td>

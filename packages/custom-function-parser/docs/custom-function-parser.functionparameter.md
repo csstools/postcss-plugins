@@ -249,8 +249,6 @@ Description
 
 </td><td>
 
-The default value, or `null` when the parameter has no default.
-
 
 </td></tr>
 <tr><td>
@@ -286,8 +284,6 @@ The default value, or `null` when the parameter has no default.
 
 
 </td><td>
-
-The parameter type as a syntax string. Defaults to `*`<!-- -->.
 
 
 </td></tr>

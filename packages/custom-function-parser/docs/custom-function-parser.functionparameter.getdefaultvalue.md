@@ -4,8 +4,6 @@
 
 ## FunctionParameter.getDefaultValue() method
 
-The default value, or `null` when the parameter has no default.
-
 **Signature:**
 
 ```typescript

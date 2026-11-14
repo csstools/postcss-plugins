@@ -1936,12 +1936,25 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare function parseDashedFunctionArguments(fn: "
+              "text": "export declare function parseDashedFunctionArguments(componentValues: "
             },
             {
               "kind": "Reference",
-              "text": "FunctionNode",
-              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentValue",
+              "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
             },
             {
               "kind": "Content",
@@ -1981,17 +1994,17 @@
           ],
           "fileUrlPath": "dist/_types/parser/parse-dashed-function-arguments.d.ts",
           "returnTypeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 9
+            "startIndex": 6,
+            "endIndex": 12
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "fn",
+              "parameterName": "componentValues",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 5
               },
               "isOptional": false
             }

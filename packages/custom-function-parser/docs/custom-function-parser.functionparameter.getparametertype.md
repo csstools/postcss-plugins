@@ -4,8 +4,6 @@
 
 ## FunctionParameter.getParameterType() method
 
-The parameter type as a syntax string. Defaults to `*`<!-- -->.
-
 **Signature:**
 
 ```typescript
