@@ -44,7 +44,7 @@
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/generate-idents": "^0.0.0",
-		"@csstools/utilities-for-property-registrations": "^1.0.0"
+		"@csstools/utilities-for-property-registrations": "^0.0.0"
 	},
 	"peerDependencies": {
 		"postcss": "^8.4"
