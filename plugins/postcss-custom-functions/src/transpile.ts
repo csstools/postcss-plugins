@@ -233,7 +233,7 @@ export class CustomFunctionTranspiler {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
-		const args = parseDashedFunctionArguments(fn);
+		const args = parseDashedFunctionArguments(fn.value);
 		if (!args) {
 			return [this.varReference(INVALID_IDENT)];
 		}
@@ -446,6 +446,12 @@ export class CustomFunctionTranspiler {
 					continue;
 				}
 
+				// Typed parameters without a non-empty default are unsupported.
+				const defaultValue = parameters[i].getDefaultValue();
+				if (defaultValue === null || defaultValue === '') {
+					continue;
+				}
+
 				typedParameters.set(parameters[i].getName(), type);
 
 				this.spendBudget();
@@ -456,7 +462,7 @@ export class CustomFunctionTranspiler {
 					nodes: [
 						helpers.decl({ prop: 'syntax', value: `"${type}"`, source: element.source }),
 						helpers.decl({ prop: 'inherits', value: 'true', source: element.source }),
-						...(cssWideKeywordArgs.has(i) ? [] : [helpers.decl({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source })]),
+						...(cssWideKeywordArgs.has(i) ? [] : [helpers.decl({ prop: 'initial-value', value: defaultValue, source: element.source })]),
 					],
 					source: element.source,
 				}), definition.conditionals);
@@ -570,7 +576,6 @@ export class CustomFunctionTranspiler {
 			const type = parameterType(parameter);
 			const defaultValue = parameter.getDefaultValue();
 			// An empty default value (`--x:`) is distinct from no default value.
-			const hasDefault = parameter.colon !== null;
 			const argument = evaluatedArgs[i];
 			const hasArgument = argument !== undefined;
 
@@ -595,7 +600,7 @@ export class CustomFunctionTranspiler {
 						value: argument.value,
 						source: element.source,
 					}));
-				} else if (hasDefault) {
+				} else if (defaultValue !== null) {
 					out.push(helpers.decl({
 						prop: argName(this.from, definitionId, i),
 						value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls, helpers),
@@ -608,7 +613,7 @@ export class CustomFunctionTranspiler {
 
 			// Untyped parameters use a raw + fallback pair so that missing
 			// and invalid arguments resolve to the default value.
-			if (hasDefault) {
+			if (defaultValue !== null) {
 				if (hasArgument) {
 					out.push(helpers.decl({
 						prop: rawName(this.from, definitionId, i),

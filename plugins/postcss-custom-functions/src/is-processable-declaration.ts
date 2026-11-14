@@ -57,7 +57,7 @@ function hasInvalidArguments(value: string): boolean {
 			return;
 		}
 
-		if (parseDashedFunctionArguments(entry.node) === false) {
+		if (parseDashedFunctionArguments(entry.node.value) === false) {
 			found = true;
 		}
 	});
@@ -108,7 +108,7 @@ function valueHasRiskyTypedCall(value: string, customFunctions: Map<string, Cust
 }
 
 function groupHasRiskyTypedArgument(fn: FunctionNode, group: CustomFunctionGroup, units: Set<string>): boolean {
-	const args = parseDashedFunctionArguments(fn);
+	const args = parseDashedFunctionArguments(fn.value);
 	if (!args) {
 		return false;
 	}

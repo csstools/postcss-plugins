@@ -190,7 +190,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@csstools/custom-function-parser!CustomFunction:class",
-          "docComment": "",
+          "docComment": "/**\n * A parsed `@function` prelude.\n *\n * https://drafts.csswg.org/css-mixins-1/#function-prelude\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -210,7 +210,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "constructor(fn: "
+                  "text": "constructor(functionNode: "
                 },
                 {
                   "kind": "Reference",
@@ -337,7 +337,7 @@
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "fn",
+                  "parameterName": "functionNode",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
@@ -476,12 +476,12 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "@csstools/custom-function-parser!CustomFunction#function:member",
+              "canonicalReference": "@csstools/custom-function-parser!CustomFunction#functionNode:member",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "function: "
+                  "text": "functionNode: "
                 },
                 {
                   "kind": "Reference",
@@ -496,7 +496,7 @@
               "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "function",
+              "name": "functionNode",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -870,7 +870,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@csstools/custom-function-parser!FunctionParameter:class",
-          "docComment": "",
+          "docComment": "/**\n * A `<function-parameter>`.\n *\n * https://drafts.csswg.org/css-mixins-1/#typedef-function-parameter\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -899,7 +899,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ", argumentType: "
+                  "text": ", parameterType: "
                 },
                 {
                   "kind": "Reference",
@@ -1016,7 +1016,7 @@
                   "isOptional": false
                 },
                 {
-                  "parameterName": "argumentType",
+                  "parameterName": "parameterType",
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 7
@@ -1093,50 +1093,6 @@
               "isOptional": false,
               "releaseTag": "Public",
               "name": "after",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#argumentType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "argumentType: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Array",
-                  "canonicalReference": "!Array:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "CSSToken",
-                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "argumentType",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 5
@@ -1270,37 +1226,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#getArgumentType:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "getArgumentType(): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "getArgumentType"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#getDefaultValue:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1310,7 +1235,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "string | null"
                 },
                 {
                   "kind": "Content",
@@ -1377,7 +1302,34 @@
                 },
                 {
                   "kind": "Content",
-                  "text": " | null"
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getNameToken"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#getParameterType:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getParameterType(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
                 },
                 {
                   "kind": "Content",
@@ -1387,7 +1339,7 @@
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 3
+                "endIndex": 2
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -1395,7 +1347,7 @@
               "parameters": [],
               "isOptional": false,
               "isAbstract": false,
-              "name": "getNameToken"
+              "name": "getParameterType"
             },
             {
               "kind": "Method",
@@ -1485,6 +1437,126 @@
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#parameterType:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "parameterType: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CSSToken",
+                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "parameterType",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#tokens:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "tokens(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CSSToken",
+                  "canonicalReference": "@csstools/css-tokenizer!CSSToken:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "tokens"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@csstools/custom-function-parser!FunctionParameter#toString:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "toString(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "toString"
             },
             {
               "kind": "Property",
@@ -1692,7 +1764,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/custom-function-parser!parse:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parse a `@function` prelude.\n *\n * Returns `false` when the prelude is invalid.\n * `onParseError` only reports tokenizer and component value parsing errors.\n *\n * https://drafts.csswg.org/css-mixins-1/#function-prelude\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1767,16 +1839,29 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/custom-function-parser!parseDashedFunctionArguments:function(1)",
-          "docComment": "/**\n * Parse the arguments of a `<dashed-function>`.\n */\n",
+          "docComment": "/**\n * Parse the arguments of a `<dashed-function>`.\n *\n * Returns `false` when the arguments are invalid.\n *\n * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare function parseDashedFunctionArguments(fn: "
+              "text": "export declare function parseDashedFunctionArguments(componentValues: "
             },
             {
               "kind": "Reference",
-              "text": "FunctionNode",
-              "canonicalReference": "@csstools/css-parser-algorithms!FunctionNode:class"
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentValue",
+              "canonicalReference": "@csstools/css-parser-algorithms!ComponentValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
             },
             {
               "kind": "Content",
@@ -1814,19 +1899,19 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/parser/parse-arguments.d.ts",
+          "fileUrlPath": "dist/_types/parser/parse-dashed-function-arguments.d.ts",
           "returnTypeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 9
+            "startIndex": 6,
+            "endIndex": 12
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "fn",
+              "parameterName": "componentValues",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 5
               },
               "isOptional": false
             }
@@ -1836,7 +1921,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/custom-function-parser!parseFromTokens:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parse a `@function` prelude from tokens.\n *\n * Returns `false` when the prelude is invalid.\n * `onParseError` only reports tokenizer and component value parsing errors.\n *\n * https://drafts.csswg.org/css-mixins-1/#function-prelude\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1925,7 +2010,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/custom-function-parser!parseFunctionParameters:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Parse a `<function-parameter>#? ,?` list.\n *\n * Returns `false` when the list is invalid.\n *\n * https://drafts.csswg.org/css-mixins-1/#function-rule\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1976,7 +2061,7 @@
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/parser/parse-custom-function.d.ts",
+          "fileUrlPath": "dist/_types/parser/parse-function-parameters.d.ts",
           "returnTypeTokenRange": {
             "startIndex": 6,
             "endIndex": 10

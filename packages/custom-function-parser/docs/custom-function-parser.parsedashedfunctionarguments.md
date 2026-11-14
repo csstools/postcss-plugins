@@ -6,10 +6,14 @@
 
 Parse the arguments of a `<dashed-function>`<!-- -->.
 
+Returns `false` when the arguments are invalid.
+
+https://drafts.csswg.org/css-mixins-1/\#typedef-dashed-function
+
 **Signature:**
 
 ```typescript
-export declare function parseDashedFunctionArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false;
+export declare function parseDashedFunctionArguments(componentValues: Array<ComponentValue>): Array<Array<ComponentValue>> | false;
 ```
 
 ## Parameters
@@ -32,12 +36,12 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-fn
+componentValues
 
 
 </td><td>
 
-FunctionNode
+Array&lt;ComponentValue&gt;
 
 
 </td><td>

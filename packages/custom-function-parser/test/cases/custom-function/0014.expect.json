@@ -220,7 +220,83 @@
 		{
 			"type": "function-parameter",
 			"name": "--x",
-			"argumentType": [
+			"string": "--x <color>: red,",
+			"tokens": [
+				[
+					"ident-token",
+					"--x",
+					6,
+					8,
+					{
+						"value": "--x"
+					}
+				],
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					10,
+					10,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					11,
+					15,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					16,
+					16,
+					{
+						"value": ">"
+					}
+				],
+				[
+					"colon-token",
+					":",
+					17,
+					17,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					18,
+					18,
+					null
+				],
+				[
+					"ident-token",
+					"red",
+					19,
+					21,
+					{
+						"value": "red"
+					}
+				],
+				[
+					"comma-token",
+					",",
+					22,
+					22,
+					null
+				]
+			],
+			"parameterType": [
 				[
 					"whitespace-token",
 					" ",
@@ -295,7 +371,33 @@
 		{
 			"type": "function-parameter",
 			"name": "--y",
-			"argumentType": [],
+			"string": " --y,",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					23,
+					23,
+					null
+				],
+				[
+					"ident-token",
+					"--y",
+					24,
+					26,
+					{
+						"value": "--y"
+					}
+				],
+				[
+					"comma-token",
+					",",
+					27,
+					27,
+					null
+				]
+			],
+			"parameterType": [],
 			"colon": null,
 			"defaultValue": [],
 			"before": [
@@ -320,7 +422,60 @@
 		{
 			"type": "function-parameter",
 			"name": "--z",
-			"argumentType": [
+			"string": " --z <length>",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					28,
+					28,
+					null
+				],
+				[
+					"ident-token",
+					"--z",
+					29,
+					31,
+					{
+						"value": "--z"
+					}
+				],
+				[
+					"whitespace-token",
+					" ",
+					32,
+					32,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					33,
+					33,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"length",
+					34,
+					39,
+					{
+						"value": "length"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					40,
+					40,
+					{
+						"value": ">"
+					}
+				]
+			],
+			"parameterType": [
 				[
 					"whitespace-token",
 					" ",

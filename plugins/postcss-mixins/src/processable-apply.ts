@@ -34,7 +34,7 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	} else if (isFunctionNode(prelude)) {
 		name = prelude.getName();
 
-		const parsedArguments = parseDashedFunctionArguments(prelude);
+		const parsedArguments = parseDashedFunctionArguments(prelude.value);
 		if (!parsedArguments) {
 			return false;
 		}

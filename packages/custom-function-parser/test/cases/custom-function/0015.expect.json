@@ -1,0 +1,598 @@
+{
+	"type": "custom-function",
+	"name": "--foo",
+	"string": "--foo(--x type(<color>): {red, blue}, --y) returns type(<string>)",
+	"tokens": [
+		[
+			"function-token",
+			"--foo(",
+			0,
+			5,
+			{
+				"value": "--foo"
+			}
+		],
+		[
+			"ident-token",
+			"--x",
+			6,
+			8,
+			{
+				"value": "--x"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			9,
+			9,
+			null
+		],
+		[
+			"function-token",
+			"type(",
+			10,
+			14,
+			{
+				"value": "type"
+			}
+		],
+		[
+			"delim-token",
+			"<",
+			15,
+			15,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"color",
+			16,
+			20,
+			{
+				"value": "color"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			21,
+			21,
+			{
+				"value": ">"
+			}
+		],
+		[
+			")-token",
+			")",
+			22,
+			22,
+			null
+		],
+		[
+			"colon-token",
+			":",
+			23,
+			23,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			24,
+			24,
+			null
+		],
+		[
+			"{-token",
+			"{",
+			25,
+			25,
+			null
+		],
+		[
+			"ident-token",
+			"red",
+			26,
+			28,
+			{
+				"value": "red"
+			}
+		],
+		[
+			"comma-token",
+			",",
+			29,
+			29,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			30,
+			30,
+			null
+		],
+		[
+			"ident-token",
+			"blue",
+			31,
+			34,
+			{
+				"value": "blue"
+			}
+		],
+		[
+			"}-token",
+			"}",
+			35,
+			35,
+			null
+		],
+		[
+			"comma-token",
+			",",
+			36,
+			36,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			37,
+			37,
+			null
+		],
+		[
+			"ident-token",
+			"--y",
+			38,
+			40,
+			{
+				"value": "--y"
+			}
+		],
+		[
+			")-token",
+			")",
+			41,
+			41,
+			null
+		],
+		[
+			"whitespace-token",
+			" ",
+			42,
+			42,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			43,
+			49,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			50,
+			50,
+			null
+		],
+		[
+			"function-token",
+			"type(",
+			51,
+			55,
+			{
+				"value": "type"
+			}
+		],
+		[
+			"delim-token",
+			"<",
+			56,
+			56,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			57,
+			62,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			63,
+			63,
+			{
+				"value": ">"
+			}
+		],
+		[
+			")-token",
+			")",
+			64,
+			64,
+			null
+		]
+	],
+	"parameters": [
+		{
+			"type": "function-parameter",
+			"name": "--x",
+			"string": "--x type(<color>): {red, blue},",
+			"tokens": [
+				[
+					"ident-token",
+					"--x",
+					6,
+					8,
+					{
+						"value": "--x"
+					}
+				],
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"function-token",
+					"type(",
+					10,
+					14,
+					{
+						"value": "type"
+					}
+				],
+				[
+					"delim-token",
+					"<",
+					15,
+					15,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					16,
+					20,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					21,
+					21,
+					{
+						"value": ">"
+					}
+				],
+				[
+					")-token",
+					")",
+					22,
+					22,
+					null
+				],
+				[
+					"colon-token",
+					":",
+					23,
+					23,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					24,
+					24,
+					null
+				],
+				[
+					"{-token",
+					"{",
+					25,
+					25,
+					null
+				],
+				[
+					"ident-token",
+					"red",
+					26,
+					28,
+					{
+						"value": "red"
+					}
+				],
+				[
+					"comma-token",
+					",",
+					29,
+					29,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					30,
+					30,
+					null
+				],
+				[
+					"ident-token",
+					"blue",
+					31,
+					34,
+					{
+						"value": "blue"
+					}
+				],
+				[
+					"}-token",
+					"}",
+					35,
+					35,
+					null
+				],
+				[
+					"comma-token",
+					",",
+					36,
+					36,
+					null
+				]
+			],
+			"parameterType": [
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"function-token",
+					"type(",
+					10,
+					14,
+					{
+						"value": "type"
+					}
+				],
+				[
+					"delim-token",
+					"<",
+					15,
+					15,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					16,
+					20,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					21,
+					21,
+					{
+						"value": ">"
+					}
+				],
+				[
+					")-token",
+					")",
+					22,
+					22,
+					null
+				]
+			],
+			"colon": [
+				"colon-token",
+				":",
+				23,
+				23,
+				null
+			],
+			"defaultValue": [
+				[
+					"whitespace-token",
+					" ",
+					24,
+					24,
+					null
+				],
+				[
+					"{-token",
+					"{",
+					25,
+					25,
+					null
+				],
+				[
+					"ident-token",
+					"red",
+					26,
+					28,
+					{
+						"value": "red"
+					}
+				],
+				[
+					"comma-token",
+					",",
+					29,
+					29,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					30,
+					30,
+					null
+				],
+				[
+					"ident-token",
+					"blue",
+					31,
+					34,
+					{
+						"value": "blue"
+					}
+				],
+				[
+					"}-token",
+					"}",
+					35,
+					35,
+					null
+				]
+			],
+			"before": [],
+			"after": [
+				[
+					"comma-token",
+					",",
+					36,
+					36,
+					null
+				]
+			]
+		},
+		{
+			"type": "function-parameter",
+			"name": "--y",
+			"string": " --y",
+			"tokens": [
+				[
+					"whitespace-token",
+					" ",
+					37,
+					37,
+					null
+				],
+				[
+					"ident-token",
+					"--y",
+					38,
+					40,
+					{
+						"value": "--y"
+					}
+				]
+			],
+			"parameterType": [],
+			"colon": null,
+			"defaultValue": [],
+			"before": [
+				[
+					"whitespace-token",
+					" ",
+					37,
+					37,
+					null
+				]
+			],
+			"after": []
+		}
+	],
+	"returnsKeyword": [
+		[
+			"whitespace-token",
+			" ",
+			42,
+			42,
+			null
+		],
+		[
+			"ident-token",
+			"returns",
+			43,
+			49,
+			{
+				"value": "returns"
+			}
+		],
+		[
+			"whitespace-token",
+			" ",
+			50,
+			50,
+			null
+		]
+	],
+	"returnType": [
+		[
+			"function-token",
+			"type(",
+			51,
+			55,
+			{
+				"value": "type"
+			}
+		],
+		[
+			"delim-token",
+			"<",
+			56,
+			56,
+			{
+				"value": "<"
+			}
+		],
+		[
+			"ident-token",
+			"string",
+			57,
+			62,
+			{
+				"value": "string"
+			}
+		],
+		[
+			"delim-token",
+			">",
+			63,
+			63,
+			{
+				"value": ">"
+			}
+		],
+		[
+			")-token",
+			")",
+			64,
+			64,
+			null
+		]
+	],
+	"before": [],
+	"after": []
+}

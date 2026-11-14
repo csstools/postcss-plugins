@@ -147,7 +147,83 @@
 		{
 			"type": "function-parameter",
 			"name": "--x",
-			"argumentType": [
+			"string": "--x <color>: red ",
+			"tokens": [
+				[
+					"ident-token",
+					"--x",
+					6,
+					8,
+					{
+						"value": "--x"
+					}
+				],
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					10,
+					10,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					11,
+					15,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					16,
+					16,
+					{
+						"value": ">"
+					}
+				],
+				[
+					"colon-token",
+					":",
+					17,
+					17,
+					null
+				],
+				[
+					"whitespace-token",
+					" ",
+					18,
+					18,
+					null
+				],
+				[
+					"ident-token",
+					"red",
+					19,
+					21,
+					{
+						"value": "red"
+					}
+				],
+				[
+					"whitespace-token",
+					" ",
+					22,
+					22,
+					null
+				]
+			],
+			"parameterType": [
 				[
 					"whitespace-token",
 					" ",

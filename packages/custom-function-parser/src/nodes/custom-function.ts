@@ -1,21 +1,27 @@
+import type { FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken } from '@csstools/css-tokenizer';
-import { isTokenComment, stringify } from '@csstools/css-tokenizer';
+import { stringify } from '@csstools/css-tokenizer';
 import { NodeType } from '../util/node-type';
+import { getSyntaxString } from '../util/syntax-string';
 import type { FunctionParameter } from './function-parameter';
-import { isFunctionNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, type FunctionNode } from '@csstools/css-parser-algorithms';
 
+/**
+ * A parsed `@function` prelude.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
+ */
 export class CustomFunction {
 	type = NodeType.CustomFunction;
 
-	function: FunctionNode;
+	functionNode: FunctionNode;
 	parameters: Array<FunctionParameter>;
 	returnsKeyword: Array<CSSToken>;
 	returnType: Array<CSSToken>;
 	before: Array<CSSToken>;
 	after: Array<CSSToken>;
 
-	constructor(fn: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
-		this.function = fn;
+	constructor(functionNode: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
+		this.functionNode = functionNode;
 		this.parameters = parameters;
 		this.returnsKeyword = returnsKeyword;
 		this.returnType = returnType;
@@ -24,30 +30,17 @@ export class CustomFunction {
 	}
 
 	getName(): string {
-		return this.function.getName();
+		return this.functionNode.getName();
 	}
 
 	getReturnType(): string {
-		const meaningfulComponentValues = parseListOfComponentValues(this.returnType).filter((x) => !isWhiteSpaceOrCommentNode(x));
-		if (
-			meaningfulComponentValues.length === 1 &&
-			isFunctionNode(meaningfulComponentValues[0]) &&
-			meaningfulComponentValues[0].getName().toLowerCase() === 'type'
-		) {
-			return stringify(
-				...meaningfulComponentValues[0].value
-					.flatMap((x) => x.tokens())
-					.filter((x) => !isTokenComment(x))
-			).trim();
-		}
-
-		return stringify(...this.returnType.filter((x) => !isTokenComment(x))).trim();
+		return getSyntaxString(this.returnType);
 	}
 
 	tokens(): Array<CSSToken> {
 		return [
 			...this.before,
-			...this.function.tokens(),
+			...this.functionNode.tokens(),
 			...this.returnsKeyword,
 			...this.returnType,
 			...this.after,
@@ -55,7 +48,7 @@ export class CustomFunction {
 	}
 
 	toString(): string {
-		return stringify(...this.before) + stringify(...this.function.tokens()) + stringify(...this.returnsKeyword) + stringify(...this.returnType) + stringify(...this.after);
+		return stringify(this.tokens());
 	}
 
 	/**

@@ -22,8 +22,9 @@ test('parseFunctionParameters', async (t) => {
 		const parameters = parseParameters('--a <length>, --b:');
 		assert.ok(parameters);
 
-		assert.equal(parameters[0].getArgumentType(), '<length>');
+		assert.equal(parameters[0].getParameterType(), '<length>');
 		assert.equal(parameters[0].colon, null);
+		assert.equal(parameters[0].getDefaultValue(), null);
 		assert.notEqual(parameters[1].colon, null);
 		assert.equal(parameters[1].getDefaultValue(), '');
 	});

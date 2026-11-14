@@ -4,6 +4,12 @@
 
 ## parseFunctionParameters() function
 
+Parse a `<function-parameter>#? ,?` list.
+
+Returns `false` when the list is invalid.
+
+https://drafts.csswg.org/css-mixins-1/\#function-rule
+
 **Signature:**
 
 ```typescript

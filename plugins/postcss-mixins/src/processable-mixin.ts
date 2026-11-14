@@ -60,7 +60,7 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 
 		const parsedParameters = parseFunctionParameters(prelude.value);
 		if (!parsedParameters || parsedParameters.some((parameter) => {
-			const type = parameter.getArgumentType();
+			const type = parameter.getParameterType();
 			return !!type && type !== '*';
 		})) {
 			return false;
@@ -68,7 +68,7 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 
 		parameters = parsedParameters.map((parameter) => ({
 			name: parameter.getName(),
-			defaultValue: parameter.colon === null ? undefined : parameter.getDefaultValue(),
+			defaultValue: parameter.getDefaultValue() ?? undefined,
 		}));
 	} else {
 		return false;
