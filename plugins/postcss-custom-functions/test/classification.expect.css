@@ -39,3 +39,12 @@
 .with-return {
 	width: --with-return();
 }
+
+/* A typed parameter with an empty default is not supported. */
+@function --typed-empty-default(--x <length>:) {
+	result: var(--x);
+}
+
+.typed-empty-default {
+	width: --typed-empty-default(1px);
+}

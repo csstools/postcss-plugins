@@ -7,7 +7,16 @@ import { parse } from '@csstools/custom-function-parser';
 
 	assert.strictEqual(
 		fn.getReturnType(),
-		'',
+		'*',
+	);
+}
+
+{
+	const fn = parse('--foo() returns type(*)');
+
+	assert.strictEqual(
+		fn.getReturnType(),
+		'*',
 	);
 }
 

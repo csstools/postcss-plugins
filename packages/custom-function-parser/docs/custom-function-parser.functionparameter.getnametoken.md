@@ -7,9 +7,9 @@
 **Signature:**
 
 ```typescript
-getNameToken(): TokenIdent | null;
+getNameToken(): TokenIdent;
 ```
 **Returns:**
 
-TokenIdent \| null
+TokenIdent
 

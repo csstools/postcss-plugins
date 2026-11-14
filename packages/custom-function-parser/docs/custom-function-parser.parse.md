@@ -4,6 +4,12 @@
 
 ## parse() function
 
+Parse a `@function` prelude.
+
+Returns `false` when the prelude is invalid. `onParseError` only reports tokenizer and component value parsing errors.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 **Signature:**
 
 ```typescript

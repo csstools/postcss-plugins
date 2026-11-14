@@ -3,4 +3,5 @@ import { stringify } from '@csstools/css-tokenizer';
 
 {
 	assert.equal(stringify(), '');
+	assert.equal(stringify([]), '');
 }

@@ -7,9 +7,9 @@
 **Signature:**
 
 ```typescript
-getDefaultValue(): string;
+getDefaultValue(): string | null;
 ```
 **Returns:**
 
-string
+string \| null
 

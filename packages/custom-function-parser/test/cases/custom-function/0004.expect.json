@@ -124,7 +124,17 @@
 		{
 			"type": "function-parameter",
 			"name": "--x",
-			"argumentType": [
+			"string": "--x <color> ",
+			"tokens": [
+				[
+					"ident-token",
+					"--x",
+					6,
+					8,
+					{
+						"value": "--x"
+					}
+				],
 				[
 					"whitespace-token",
 					" ",
@@ -167,10 +177,54 @@
 					null
 				]
 			],
+			"parameterType": [
+				[
+					"whitespace-token",
+					" ",
+					9,
+					9,
+					null
+				],
+				[
+					"delim-token",
+					"<",
+					10,
+					10,
+					{
+						"value": "<"
+					}
+				],
+				[
+					"ident-token",
+					"color",
+					11,
+					15,
+					{
+						"value": "color"
+					}
+				],
+				[
+					"delim-token",
+					">",
+					16,
+					16,
+					{
+						"value": ">"
+					}
+				]
+			],
 			"colon": null,
 			"defaultValue": [],
 			"before": [],
-			"after": []
+			"after": [
+				[
+					"whitespace-token",
+					" ",
+					17,
+					17,
+					null
+				]
+			]
 		}
 	],
 	"returnsKeyword": [
