@@ -114,6 +114,9 @@ postcssTape(plugin)({
 	'conditional-keyword-result': {
 		message: 'leaves functions with non-static keyword results as-is',
 	},
+	'group-keyword-result': {
+		message: 'leaves a name with keyword results in several definitions as-is',
+	},
 	'invalid-bodies': {
 		message: 'ignores functions with invalid bodies',
 	},

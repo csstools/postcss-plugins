@@ -1,0 +1,12 @@
+/* A name with keyword results in more than one definition can not be substituted directly. */
+@function --group-keyword() {
+	result: inherit;
+}
+
+@function --group-keyword() {
+	result: initial;
+}
+
+.group-keyword {
+	width: --group-keyword();
+}

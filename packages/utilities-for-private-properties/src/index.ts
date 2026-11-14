@@ -1,5 +1,4 @@
-import type { AtRule, ChildNode, Rule } from 'postcss';
-import { findStyleRule, IS_PRIVATE_RULE_REGEX } from './valid-atrules';
+import type { AtRule, ChildNode } from 'postcss';
 import { Transpiler } from './transpiler';
 
 export type PrivatePropertyTranspilerOptions = {
@@ -22,58 +21,7 @@ export function createPrivatePropertyTranspiler(options?: PrivatePropertyTranspi
 
 	return {
 		transpile(nodes: Array<ChildNode>): Array<AtRule> {
-			for (const node of nodes) {
-				if (!isContainer(node)) {
-					continue;
-				}
-
-				node.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
-					transpilePrivateRule(transpiler, atRule);
-				});
-			}
-
-			for (const node of nodes) {
-				if (node.type === 'atrule' && IS_PRIVATE_RULE_REGEX.test(node.name)) {
-					transpilePrivateRule(transpiler, node);
-				}
-			}
-
-			for (const node of nodes) {
-				if (node.type === 'decl') {
-					transpiler.transpileDeclaration(node);
-					continue;
-				}
-
-				if (isContainer(node)) {
-					node.walkDecls((decl) => transpiler.transpileDeclaration(decl));
-				}
-			}
-
-			for (const node of nodes) {
-				if (node.type === 'atrule') {
-					transpiler.transpileAtRule(node);
-					continue;
-				}
-
-				if (isContainer(node)) {
-					node.walkAtRules((atRule) => transpiler.transpileAtRule(atRule));
-				}
-			}
-
-			return transpiler.getRegisteredPropertyAtRules();
+			return transpiler.transpile(nodes);
 		},
 	};
-}
-
-function transpilePrivateRule(transpiler: Transpiler, atRule: AtRule): void {
-	const owner = findStyleRule(atRule);
-	if (!owner) {
-		return;
-	}
-
-	transpiler.registerAndRemovePrivateRules(atRule, owner);
-}
-
-function isContainer(node: ChildNode): node is Rule | AtRule {
-	return node.type === 'rule' || node.type === 'atrule';
 }

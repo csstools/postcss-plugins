@@ -5,6 +5,7 @@ import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComp
 import { isTokenComma, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { isComputationallyIndependent } from './is-computationally-independent';
+import { isInConditionalLayer } from './is-processable-rule';
 
 /**
  * The type of a parameter, or `null` when it is untyped.
@@ -54,10 +55,40 @@ export type FunctionClassification = {
  */
 export function classifyCustomFunction(atRule: AtRule, customFunction: CustomFunction): FunctionClassification {
 	return {
-		supported: isSupportedCustomFunction(customFunction),
+		supported: isSupportedCustomFunction(customFunction) && !isInConditionalLayer(atRule),
 		keywordResult: staticKeywordResult(atRule),
 		hasKeywordResult: hasKeywordResult(atRule),
 	};
+}
+
+export type CustomFunctionGroupClassification = {
+	supported: boolean;
+	keywordResult: string | null;
+};
+
+/**
+ * Decide whether a group of definitions can be transpiled.
+ *
+ * A CSS-wide keyword result can only be substituted directly when there is
+ * exactly one definition without conditionals that override the result.
+ */
+export function classifyCustomFunctionGroup(definitions: Array<FunctionClassification>): CustomFunctionGroupClassification {
+	if (!definitions.length) {
+		return { supported: false, keywordResult: null };
+	}
+
+	const supported = definitions.every((definition) => definition.supported);
+
+	if (!definitions.some((definition) => definition.hasKeywordResult)) {
+		return { supported, keywordResult: null };
+	}
+
+	const definition = definitions[0];
+	if (definitions.length !== 1 || definition.keywordResult === null) {
+		return { supported: false, keywordResult: null };
+	}
+
+	return { supported, keywordResult: definition.keywordResult };
 }
 
 function isSupportedCustomFunction(customFunction: CustomFunction): boolean {

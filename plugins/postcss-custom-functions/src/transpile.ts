@@ -243,7 +243,7 @@ export class CustomFunctionTranspiler {
 		//
 		// This is only used when the function is not cyclic. A cycle anywhere in
 		// the body makes the whole evaluation invalid.
-		const keywordResult = group.definitions.length === 1 ? group.definitions[0].keywordResult : null;
+		const keywordResult = group.keywordResult;
 
 		const savedConditionals = this.currentConditionals;
 		const savedIsResult = this.currentIsResult;
