@@ -40,11 +40,9 @@
 		"README.md",
 		"dist"
 	],
-	"dependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.2",
-		"@csstools/css-tokenizer": "^4.0.2"
-	},
 	"peerDependencies": {
+		"@csstools/css-parser-algorithms": "^4.0.2",
+		"@csstools/css-tokenizer": "^4.0.2",
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
