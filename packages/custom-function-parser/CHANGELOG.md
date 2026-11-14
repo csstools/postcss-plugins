@@ -3,25 +3,18 @@
 ### Unreleased (major)
 
 - Rename `CustomFunction.function` to `CustomFunction.functionNode` (breaking).
-- Fix a `RangeError` when serializing large preludes, types, or default values.
-- Document that `false` indicates invalid input and that `onParseError` is limited to tokenizer and component value parsing errors.
-- Add `FunctionParameter.parameterType` and `getParameterType()`.
-- Remove `FunctionParameter.argumentType` and `getArgumentType()` (breaking).
-- `getParameterType()` and `getReturnType()` return `*` when the type is omitted (breaking).
+- Replace `FunctionParameter.argumentType`/`getArgumentType()` with `parameterType`/`getParameterType()` (breaking).
+- Omitted types are `*` for `getParameterType()` and `getReturnType()` (breaking).
 - `getDefaultValue()` returns `null` when a parameter has no default (breaking).
 - Add `FunctionParameter.tokens()` and `FunctionParameter.toString()`.
-- Export `parseFunctionParameters()`.
-- Export `parseDashedFunctionArguments()`.
-- Validate all `<declaration-value>` restrictions in default values and arguments.
-- Share the `<declaration-value>` and `{}` unwrapping rules between parameters and arguments.
-- Parse parameter lists in a single forward pass.
-- Fix a trailing comma followed by whitespace or comments being included in a default value.
-- Preserve `type(...)` wrappers in raw parameter tokens.
-- Allow whitespace and comments after a trailing comma in parameter lists.
-- Reject `{}` blocks that are mixed with other tokens in default values.
+- Export `parseFunctionParameters()` and `parseDashedFunctionArguments()`.
+- Enforce `<declaration-value>` restrictions in default values and arguments.
+- Preserve `type(...)` wrappers in `parameterType` and `{}` wrappers in `defaultValue` tokens.
 - Reject `--` as a parameter name.
-- Support an empty default value (`--x:`).
-- Reject `!` and `;` in default values.
+- Support empty default values and trailing commas with surrounding whitespace or comments.
+- Fix a `RangeError` when serializing large token lists.
+- Improve parameter parsing and `getDefaultValue()` performance.
+- Document that `false` signals invalid input.
 
 ### 1.0.0
 
