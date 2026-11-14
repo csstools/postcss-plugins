@@ -4,7 +4,7 @@
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
 [<img alt="Discord" src="https://shields.io/badge/Discord-5865F2?logo=discord&logoColor=white">][discord]
 
-Generate stable, collision free CSS identifiers.
+Generate stable CSS identifiers.
 
 ## API
 

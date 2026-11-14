@@ -1,12 +1,12 @@
 const sourceHashes = new Map<string, string>();
 
 /**
- * A generated ident.
+ * A generated dashed ident.
  *
  * Generated names are stable for a given generator namespace and source
  * namespace so that separate builds produce the same output.
  */
-export function generateUniqueIdent(generatorNamespace: string, sourceNamespace: string, increment: string): string {
+export function generateUniqueDashedIdent(generatorNamespace: string, sourceNamespace: string, increment: string): string {
 	return `--_csstools-${generatorNamespace}-${sourceNamespace}-${increment}`;
 }
 
@@ -18,7 +18,7 @@ export function generateUniqueIdent(generatorNamespace: string, sourceNamespace:
  * `node:crypto` and `node:path` so that this module can run in a browser
  * bundle.
  */
-export function hashFileBasenameAndDir(sourceNamespace: string): string {
+export function hashFileBasenameAndDir(sourceNamespace: string | undefined): string {
 	if (!sourceNamespace) {
 		return '0';
 	}

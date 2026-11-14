@@ -1,10 +1,10 @@
 /**
- * A generated ident.
+ * A generated dashed ident.
  *
  * Generated names are stable for a given generator namespace and source
  * namespace so that separate builds produce the same output.
  */
-export declare function generateUniqueIdent(generatorNamespace: string, sourceNamespace: string, increment: string): string;
+export declare function generateUniqueDashedIdent(generatorNamespace: string, sourceNamespace: string, increment: string): string;
 
 /**
  * A short, stable hash using the basename and directory of a file path.
@@ -14,6 +14,6 @@ export declare function generateUniqueIdent(generatorNamespace: string, sourceNa
  * `node:crypto` and `node:path` so that this module can run in a browser
  * bundle.
  */
-export declare function hashFileBasenameAndDir(sourceNamespace: string): string;
+export declare function hashFileBasenameAndDir(sourceNamespace: string | undefined): string;
 
 export { }
