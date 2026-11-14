@@ -1,0 +1,975 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@jsx",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxRuntime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxFrag",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxImportSource",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@csstools/utilities-for-property-registrations!",
+  "docComment": "",
+  "name": "@csstools/utilities-for-property-registrations",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@csstools/utilities-for-property-registrations!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!CollectedPropertyRegistration:interface",
+          "docComment": "/**\n * An `@property` rule and the conditional group rules around it.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CollectedPropertyRegistration "
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "releaseTag": "Public",
+          "name": "CollectedPropertyRegistration",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectedPropertyRegistration#conditionalGroupRules:member",
+              "docComment": "/**\n * The conditional group rules around the `@property` rule, outermost first.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "conditionalGroupRules: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AtRule",
+                  "canonicalReference": "postcss!AtRule_:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "conditionalGroupRules",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectedPropertyRegistration#propertyRule:member",
+              "docComment": "/**\n * The `@property` rule.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "propertyRule: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AtRule",
+                  "canonicalReference": "postcss!AtRule_:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "propertyRule",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!collectPropertyRegistrations:function(1)",
+          "docComment": "/**\n * Collect the `@property` rules in a container and the conditional group rules around each rule.\n *\n * @param container - The container to search.\n *\n * @param options - The collection policy.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function collectPropertyRegistrations(container: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Container",
+              "canonicalReference": "postcss!Container_:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "ChildNode",
+              "canonicalReference": "postcss!Node.ChildNode:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ", options: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CollectPropertyRegistrationsOptions",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectPropertyRegistrationsOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CollectedPropertyRegistration",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectedPropertyRegistration:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 12
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "container",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "collectPropertyRegistrations"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!CollectPropertyRegistrationsOptions:interface",
+          "docComment": "/**\n * Options for collecting `@property` rules.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CollectPropertyRegistrationsOptions "
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "releaseTag": "Public",
+          "name": "CollectPropertyRegistrationsOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectPropertyRegistrationsOptions#isConditionalGroupRule:member",
+              "docComment": "/**\n * Whether an at-rule is a conditional group rule.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isConditionalGroupRule: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(atRule: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AtRule",
+                  "canonicalReference": "postcss!AtRule_:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ") => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "isConditionalGroupRule",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectPropertyRegistrationsOptions#shouldDescendInto:member",
+              "docComment": "/**\n * Whether to descend into an at-rule to find nested `@property` rules.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "shouldDescendInto: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(atRule: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AtRule",
+                  "canonicalReference": "postcss!AtRule_:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ") => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "shouldDescendInto",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!HoistedPropertyRegistrations:interface",
+          "docComment": "/**\n * The hoisted `@property` rules and their original names.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface HoistedPropertyRegistrations "
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "releaseTag": "Public",
+          "name": "HoistedPropertyRegistrations",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistedPropertyRegistrations#originalNames:member",
+              "docComment": "/**\n * The `<custom-property-name>` values from before rewriting.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "originalNames: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "originalNames",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistedPropertyRegistrations#registrations:member",
+              "docComment": "/**\n * The cloned, rewritten and wrapped `@property` rules.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "registrations: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AtRule",
+                  "canonicalReference": "postcss!AtRule_:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "registrations",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!hoistPropertyRegistrations:function(1)",
+          "docComment": "/**\n * Clone, rewrite and wrap `@property` rules so they can be moved to the root.\n *\n * @param collected - The collected registrations.\n *\n * @param options - The hoisting policy.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function hoistPropertyRegistrations(collected: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CollectedPropertyRegistration",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!CollectedPropertyRegistration:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ", options: "
+            },
+            {
+              "kind": "Reference",
+              "text": "HoistPropertyRegistrationsOptions",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistPropertyRegistrationsOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "HoistedPropertyRegistrations",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistedPropertyRegistrations:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "collected",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "hoistPropertyRegistrations"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!HoistPropertyRegistrationsOptions:interface",
+          "docComment": "/**\n * Options for hoisting `@property` rules.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface HoistPropertyRegistrationsOptions "
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "releaseTag": "Public",
+          "name": "HoistPropertyRegistrationsOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistPropertyRegistrationsOptions#conditionalGroupRules:member",
+              "docComment": "/**\n * Conditional group rules to wrap every registration in, outermost first.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "conditionalGroupRules?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AtRule",
+                  "canonicalReference": "postcss!AtRule_:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "conditionalGroupRules",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistPropertyRegistrationsOptions#removeOriginal:member",
+              "docComment": "/**\n * Whether to remove the collected `@property` rules.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeOriginal?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "removeOriginal",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@csstools/utilities-for-property-registrations!HoistPropertyRegistrationsOptions#rewriteCustomPropertyName:member",
+              "docComment": "/**\n * The new `<custom-property-name>` for each original name.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rewriteCustomPropertyName: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(name: string) => string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "rewriteCustomPropertyName",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!registeredCustomPropertyNames:function(1)",
+          "docComment": "/**\n * The `<custom-property-name>` values registered by an `@property` rule.\n *\n * @param atRule - The `@property` rule.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function registeredCustomPropertyNames(atRule: "
+            },
+            {
+              "kind": "Reference",
+              "text": "AtRule",
+              "canonicalReference": "postcss!AtRule_:class"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "atRule",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "registeredCustomPropertyNames"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!rewriteCustomPropertyNames:function(1)",
+          "docComment": "/**\n * Rewrite the `<custom-property-name>` values in the prelude of an `@property` rule.\n *\n * Supports both the rule form and the statement form.\n *\n * @param atRule - The `@property` rule.\n *\n * @param rewriteCustomPropertyName - Maps each original name to its new name.\n *\n * @returns The original `<custom-property-name>` values, or `null` when the prelude cannot be parsed.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function rewriteCustomPropertyNames(atRule: "
+            },
+            {
+              "kind": "Reference",
+              "text": "AtRule",
+              "canonicalReference": "postcss!AtRule_:class"
+            },
+            {
+              "kind": "Content",
+              "text": ", rewriteCustomPropertyName: "
+            },
+            {
+              "kind": "Content",
+              "text": "(name: string) => string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string> | null"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "atRule",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "rewriteCustomPropertyName",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "rewriteCustomPropertyNames"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@csstools/utilities-for-property-registrations!wrapInConditionalGroupRules:function(1)",
+          "docComment": "/**\n * Wrap nodes in clones of the given conditional group rules, outermost first.\n *\n * @param nodes - The nodes to wrap.\n *\n * @param conditionalGroupRules - The rules to clone, outermost first.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function wrapInConditionalGroupRules<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ChildNode",
+              "canonicalReference": "postcss!Node.ChildNode:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">(nodes: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ", conditionalGroupRules: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "AtRule",
+              "canonicalReference": "postcss!AtRule_:class"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T | "
+            },
+            {
+              "kind": "Reference",
+              "text": "AtRule",
+              "canonicalReference": "postcss!AtRule_:class"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/registrations.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 11,
+            "endIndex": 15
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "nodes",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "conditionalGroupRules",
+              "parameterTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 10
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "wrapInConditionalGroupRules"
+        }
+      ]
+    }
+  ]
+}
