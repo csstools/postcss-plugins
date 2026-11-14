@@ -1,4 +1,4 @@
-export { collectPropertyRegistrations, hoistPropertyRegistrations, registeredPropertyNames, rewritePropertyNames, wrapInConditionals } from './registrations';
+export { collectPropertyRegistrations, hoistPropertyRegistrations, registeredCustomPropertyNames, rewriteCustomPropertyNames, wrapInConditionalGroupRules } from './registrations';
 export type {
 	CollectedPropertyRegistration,
 	CollectPropertyRegistrationsOptions,

@@ -24,7 +24,7 @@ Description
 
 </td><td>
 
-Collect the `@property` rules of a container, with the conditionals around each rule.
+Collect the `@property` rules in a container and the conditional group rules around each rule.
 
 
 </td></tr>
@@ -35,58 +35,52 @@ Collect the `@property` rules of a container, with the conditionals around each 
 
 </td><td>
 
-Clone, rename and wrap `@property` rules so they can be moved to the root.
+Clone, rewrite and wrap `@property` rules so they can be moved to the root.
 
 
 </td></tr>
 <tr><td>
 
-[registeredPropertyNames(atRule)](./utilities-for-property-registrations.registeredpropertynames.md)
+[registeredCustomPropertyNames(atRule)](./utilities-for-property-registrations.registeredcustompropertynames.md)
 
 
 </td><td>
 
-The names of every property registered by an `@property` rule.
+The `<custom-property-name>` values registered by an `@property` rule.
 
 
 </td></tr>
 <tr><td>
 
-[rewritePropertyNames(atRule, rewrite)](./utilities-for-property-registrations.rewritepropertynames.md)
+[rewriteCustomPropertyNames(atRule, rewriteCustomPropertyName)](./utilities-for-property-registrations.rewritecustompropertynames.md)
 
 
 </td><td>
 
-Rewrite the custom property names in the prelude of an `@property` rule.
+Rewrite the `<custom-property-name>` values in the prelude of an `@property` rule.
 
-Both the longhand comma separated prelude list and the shorthand form are supported:
-
-```css
-@property --a, --b { syntax: "<length>"; }
-@property --a <length>: 1em;
-```
-Returns the original names, or `null` when the rule is invalid.
+Supports both the rule form and the statement form.
 
 
 </td></tr>
 <tr><td>
 
-[wrapInConditionals(nodes, conditionals)](./utilities-for-property-registrations.wrapinconditionals.md)
+[wrapInConditionalGroupRules(nodes, conditionalGroupRules)](./utilities-for-property-registrations.wrapinconditionalgrouprules.md)
 
 
 </td><td>
 
-Wrap nodes in clones of the conditional group rules that contain them.
+Wrap nodes in clones of the given conditional group rules, outermost first.
 
 
 </td></tr>
 </tbody></table>
 
-## Type Aliases
+## Interfaces
 
 <table><thead><tr><th>
 
-Type Alias
+Interface
 
 
 </th><th>
@@ -102,6 +96,8 @@ Description
 
 </td><td>
 
+An `@property` rule and the conditional group rules around it.
+
 
 </td></tr>
 <tr><td>
@@ -110,6 +106,8 @@ Description
 
 
 </td><td>
+
+Options for collecting `@property` rules.
 
 
 </td></tr>
@@ -120,6 +118,8 @@ Description
 
 </td><td>
 
+The hoisted `@property` rules and their original names.
+
 
 </td></tr>
 <tr><td>
@@ -128,6 +128,8 @@ Description
 
 
 </td><td>
+
+Options for hoisting `@property` rules.
 
 
 </td></tr>

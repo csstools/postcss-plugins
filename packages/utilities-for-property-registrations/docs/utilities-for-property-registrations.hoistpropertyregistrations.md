@@ -4,7 +4,7 @@
 
 ## hoistPropertyRegistrations() function
 
-Clone, rename and wrap `@property` rules so they can be moved to the root.
+Clone, rewrite and wrap `@property` rules so they can be moved to the root.
 
 **Signature:**
 
@@ -42,6 +42,8 @@ Array&lt;[CollectedPropertyRegistration](./utilities-for-property-registrations.
 
 </td><td>
 
+The collected registrations.
+
 
 </td></tr>
 <tr><td>
@@ -55,6 +57,8 @@ options
 
 
 </td><td>
+
+The hoisting policy.
 
 
 </td></tr>
