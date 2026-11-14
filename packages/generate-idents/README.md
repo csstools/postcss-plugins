@@ -19,9 +19,9 @@ npm install @csstools/generate-idents --save-dev
 ```
 
 ```ts
-import { generateUniqueIdent } from '@csstools/generate-idents';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 
-generateUniqueIdent('p', 'src/a.css', '0');
+generateUniqueDashedIdent('p', hashFileBasenameAndDir('src/a.css'), '0');
 ```
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

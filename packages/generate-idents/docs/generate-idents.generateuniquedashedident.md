@@ -44,6 +44,8 @@ string
 
 </td><td>
 
+The namespace of the generator.
+
 
 </td></tr>
 <tr><td>
@@ -58,6 +60,8 @@ string
 
 </td><td>
 
+The namespace of the source. Use `hashFileBasenameAndDir` to derive one from a file path.
+
 
 </td></tr>
 <tr><td>
@@ -71,6 +75,8 @@ string
 
 
 </td><td>
+
+A value that distinguishes generated names within the same namespaces.
 
 
 </td></tr>

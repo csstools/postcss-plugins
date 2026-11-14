@@ -190,7 +190,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/generate-idents!generateUniqueDashedIdent:function(1)",
-          "docComment": "/**\n * A generated dashed ident.\n *\n * Generated names are stable for a given generator namespace and source\n * namespace so that separate builds produce the same output.\n */\n",
+          "docComment": "/**\n * A generated dashed ident.\n *\n * Generated names are stable for a given generator namespace and source\n * namespace so that separate builds produce the same output.\n *\n * @param generatorNamespace - The namespace of the generator.\n *\n * @param sourceNamespace - The namespace of the source. Use `hashFileBasenameAndDir` to derive one from a file path.\n *\n * @param increment - A value that distinguishes generated names within the same namespaces.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -267,7 +267,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@csstools/generate-idents!hashFileBasenameAndDir:function(1)",
-          "docComment": "/**\n * A short, stable hash using the basename and directory of a file path.\n *\n * Only the last two path segments are used, so that names are stable\n * regardless of the absolute location of a project. This intentionally avoids\n * `node:crypto` and `node:path` so that this module can run in a browser\n * bundle.\n */\n",
+          "docComment": "/**\n * A short, stable hash using the basename and directory of a file path.\n *\n * Only the last two path segments are used, so that names are stable\n * regardless of the absolute location of a project. This intentionally avoids\n * `node:crypto` and `node:path` so that this module can run in a browser\n * bundle.\n *\n * @param sourceNamespace - A file path, or `undefined` when there is no source file.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

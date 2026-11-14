@@ -44,6 +44,8 @@ string \| undefined
 
 </td><td>
 
+A file path, or `undefined` when there is no source file.
+
 
 </td></tr>
 </tbody></table>
