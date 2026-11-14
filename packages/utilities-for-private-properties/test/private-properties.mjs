@@ -85,6 +85,26 @@ test('private properties', async (t) => {
 		);
 	});
 
+	await t.test('captures enclosing private names in a nested private rule', () => {
+		const outer = generatedName('p', from, '0');
+		const inner = generatedName('p', from, '1');
+
+		assert.equal(
+			transpile('.a { @private { --x: red; } & { @private { --y: var(--x, green); } color: var(--y, red); background-color: var(--x, blue); } }'),
+			`.a { ${outer}--x: red; & { ${inner}--y: var(${outer}--x, green); color: var(${inner}--y, red); background-color: var(${outer}--x, blue); } }`,
+		);
+	});
+
+	await t.test('captures enclosing private names in nested private container preludes', () => {
+		const outer = generatedName('p', from, '0');
+		const inner = generatedName('p', from, '1');
+
+		assert.equal(
+			transpile('.a { @private { --x: red; } & { @private { @container style(--x: blue) { --y: 1px; } } } }'),
+			`.a { ${outer}--x: red; & { @container style(${outer}--x: blue) { ${inner}--y: 1px; } } }`,
+		);
+	});
+
 	await t.test('does not rewrite references outside the owning rule', () => {
 		assert.equal(
 			transpile('.a { @private { --size: 2px; } } .b { width: var(--size); }'),

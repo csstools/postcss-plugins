@@ -9,7 +9,8 @@
 - Treat an empty default value (`--x:`) as a default value.
 - Reject `{}` blocks that are mixed with other tokens in parameter default values.
 - Drop `@layer` rules from mixin bodies.
-- Resolve `inherit` parameter defaults in the calling context.
+- Resolve `inherit` parameter defaults and arguments in the calling context.
+- Treat `type(*)` parameters as untyped.
 - Ignore mixin parameters and arguments with invalid `<declaration-value>` values.
 - Ignore `--` as a parameter name.
 - Use a separate namespace for generated names so they do not collide with private rule generated names.

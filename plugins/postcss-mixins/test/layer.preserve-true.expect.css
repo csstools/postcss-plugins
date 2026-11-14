@@ -1,0 +1,42 @@
+@mixin --with-layer() {
+	@layer one {
+		color: red;
+	}
+
+	@layer two {
+		@layer three {
+			color: orange;
+		}
+	}
+
+	@media (min-width: 1px) {
+		@layer four {
+			color: yellow;
+		}
+
+		color: green;
+	}
+
+	color: blue;
+}
+
+.layer {
+
+	@media (min-width: 1px) {
+
+		color: green;
+	}
+
+	color: blue;
+	@apply --with-layer;
+}
+
+@mixin --only-layer() {
+	@layer one {
+		color: red;
+	}
+}
+
+.only-layer {
+	@apply --only-layer;
+}

@@ -48,11 +48,6 @@ export class MixinExpander {
 				continue;
 			}
 
-			// `@layer` is invalid in a mixin body and its contents are dropped.
-			atRule.walkAtRules(IS_LAYER_REGEX, (layer) => {
-				layer.remove();
-			});
-
 			// TODO: support mixin overrides
 			if (this.knownMixins.has(parsed.name)) {
 				this.mixins.delete(parsed.name);
@@ -148,7 +143,7 @@ export class MixinExpander {
 
 	/** Captures arguments, scopes parameters and `@private` rules, and returns the nodes to insert. */
 	private buildBody(atRule: AtRule, args: Array<string>, mixin: Mixin, helpers: Helpers): Array<ChildNode> {
-		const cloned: Array<ChildNode> = (mixin.atRule.nodes || []).map((node) => node.clone());
+		const cloned = cloneMixinBodyNodes(mixin.atRule);
 
 		if (!needsWrapper(mixin)) {
 			return cloned;
@@ -166,7 +161,7 @@ export class MixinExpander {
 		let argumentPrivateRule: AtRule | undefined;
 
 		const hasInheritedDefault = mixin.parameters.some((parameter, i) => {
-			return i >= args.length && isInheritDefault(parameter.defaultValue);
+			return i >= args.length && isInheritKeyword(parameter.defaultValue);
 		});
 
 		if (mixin.parameters.length > 0 && (args.length > 0 || hasInheritedDefault)) {
@@ -212,13 +207,13 @@ export class MixinExpander {
 
 				argumentPrivateRule?.append(helpers.decl({
 					prop: argumentName,
-					value: args[i],
+					value: isInheritKeyword(args[i]) ? `var(${parameter.name})` : args[i],
 					source: atRule.source,
 				}));
 
 				// The parameter resolves to the captured argument value.
 				value = `var(${argumentName})`;
-			} else if (argumentPrivateRule && isInheritDefault(parameter.defaultValue)) {
+			} else if (argumentPrivateRule && isInheritKeyword(parameter.defaultValue)) {
 				const argumentName = `--arg-${(this.argumentCounter++).toString(36)}`;
 
 				// `inherit` on a parameter default resolves to the same-named
@@ -296,8 +291,31 @@ function needsWrapper(mixin: Mixin): boolean {
 	return mixin.parameters.length > 0 || hasPrivateRules(mixin.atRule);
 }
 
-function isInheritDefault(value: string | undefined): boolean {
+function isInheritKeyword(value: string | undefined): boolean {
 	return value !== undefined && value.trim().toLowerCase() === 'inherit';
+}
+
+/** `@layer` is invalid in a mixin body and its contents are dropped when applied. */
+function cloneMixinBodyNodes(atRule: AtRule): Array<ChildNode> {
+	const out: Array<ChildNode> = [];
+
+	for (const node of atRule.nodes || []) {
+		if (node.type === 'atrule' && IS_LAYER_REGEX.test(node.name)) {
+			continue;
+		}
+
+		const clone = node.clone();
+
+		if (clone.type === 'rule' || clone.type === 'atrule') {
+			clone.walkAtRules(IS_LAYER_REGEX, (layer) => {
+				layer.remove();
+			});
+		}
+
+		out.push(clone);
+	}
+
+	return out;
 }
 
 function countNodes(nodes: Array<ChildNode>): number {

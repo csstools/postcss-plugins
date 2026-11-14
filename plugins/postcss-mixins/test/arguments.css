@@ -126,6 +126,23 @@
 	@apply --inherit-default-with-argument(blue);
 }
 
+@mixin --inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.inherit-argument {
+	--color: green;
+	@apply --inherit-argument(inherit);
+}
+
+@mixin --universal-type(--color type(*)) {
+	color: var(--color);
+}
+
+.universal-type {
+	@apply --universal-type(green);
+}
+
 @mixin --invalid-default(--color: red !important) {
 	color: var(--color);
 }

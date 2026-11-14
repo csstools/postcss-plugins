@@ -190,6 +190,29 @@
 	@apply --inherit-default-with-argument(blue);
 }
 
+@mixin --inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.inherit-argument {
+	--color: green;
+	--_csstools-m-165tpc7-t--arg-h: var(--color);
+	--_csstools-m-165tpc7-u--color: var(--_csstools-m-165tpc7-t--arg-h);
+	color: var(--_csstools-m-165tpc7-u--color, red);
+	@apply --inherit-argument(inherit);
+}
+
+@mixin --universal-type(--color type(*)) {
+	color: var(--color);
+}
+
+.universal-type {
+	--_csstools-m-165tpc7-v--arg-i: green;
+	--_csstools-m-165tpc7-w--color: var(--_csstools-m-165tpc7-v--arg-i);
+	color: var(--_csstools-m-165tpc7-w--color);
+	@apply --universal-type(green);
+}
+
 @mixin --invalid-default(--color: red !important) {
 	color: var(--color);
 }

@@ -133,6 +133,7 @@ export class Transpiler {
 
 	private registerAndRemovePrivateRules(atRule: AtRule, ownerNode: AtRule | Rule): void {
 		if (!atRule.nodes?.length) {
+			this.removePrivateRule(atRule, ownerNode);
 			return;
 		}
 

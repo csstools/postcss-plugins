@@ -127,6 +127,19 @@
 	color: var(--_csstools-m-165tpc7-s--color, red);
 }
 
+.inherit-argument {
+	--color: green;
+	--_csstools-m-165tpc7-t--arg-h: var(--color);
+	--_csstools-m-165tpc7-u--color: var(--_csstools-m-165tpc7-t--arg-h);
+	color: var(--_csstools-m-165tpc7-u--color, red);
+}
+
+.universal-type {
+	--_csstools-m-165tpc7-v--arg-i: green;
+	--_csstools-m-165tpc7-w--color: var(--_csstools-m-165tpc7-v--arg-i);
+	color: var(--_csstools-m-165tpc7-w--color);
+}
+
 @mixin --invalid-default(--color: red !important) {
 	color: var(--color);
 }

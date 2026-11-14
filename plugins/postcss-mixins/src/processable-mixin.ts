@@ -59,7 +59,10 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 		name = prelude.getName();
 
 		const parsedParameters = parseFunctionParameters(prelude.value);
-		if (!parsedParameters || parsedParameters.some((parameter) => parameter.getArgumentType())) {
+		if (!parsedParameters || parsedParameters.some((parameter) => {
+			const type = parameter.getArgumentType();
+			return !!type && type !== '*';
+		})) {
 			return false;
 		}
 
