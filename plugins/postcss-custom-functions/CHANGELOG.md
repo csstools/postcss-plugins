@@ -3,7 +3,6 @@
 ### Unreleased (patch)
 
 - Support empty parameter default values
-- Use the parser's `getParameterType()` and `parseDashedFunctionArguments()` APIs
 
 ### 1.0.1
 
