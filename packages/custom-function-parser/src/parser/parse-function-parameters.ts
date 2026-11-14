@@ -9,6 +9,8 @@ import { containsCurlyBlock, hasInvalidDeclarationValue, singleCurlyBlock } from
 /**
  * Parse a `<function-parameter>#? ,?` list.
  *
+ * Returns `false` when the list is invalid.
+ *
  * https://drafts.csswg.org/css-mixins-1/#function-rule
  */
 export function parseFunctionParameters(componentValues: Array<ComponentValue>): Array<FunctionParameter> | false {

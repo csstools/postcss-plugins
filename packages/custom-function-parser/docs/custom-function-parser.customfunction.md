@@ -34,7 +34,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(fn, parameters, returnsKeyword, returnType, before, after)](./custom-function-parser.customfunction._constructor_.md)
+[(constructor)(functionNode, parameters, returnsKeyword, returnType, before, after)](./custom-function-parser.customfunction._constructor_.md)
 
 
 </td><td>
@@ -107,7 +107,7 @@ Array&lt;CSSToken&gt;
 </td></tr>
 <tr><td>
 
-[function](./custom-function-parser.customfunction.function.md)
+[functionNode](./custom-function-parser.customfunction.functionnode.md)
 
 
 </td><td>

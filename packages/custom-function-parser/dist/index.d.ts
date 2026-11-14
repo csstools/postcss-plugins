@@ -12,13 +12,13 @@ import type { TokenIdent } from '@csstools/css-tokenizer';
  */
 export declare class CustomFunction {
     type: NodeType;
-    function: FunctionNode;
+    functionNode: FunctionNode;
     parameters: Array<FunctionParameter>;
     returnsKeyword: Array<CSSToken>;
     returnType: Array<CSSToken>;
     before: Array<CSSToken>;
     after: Array<CSSToken>;
-    constructor(fn: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
+    constructor(functionNode: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
     getName(): string;
     getReturnType(): string;
     tokens(): Array<CSSToken>;
@@ -47,19 +47,11 @@ export declare class FunctionParameter {
     defaultValue: Array<CSSToken>;
     before: Array<CSSToken>;
     after: Array<CSSToken>;
+    private defaultValueCache;
     constructor(name: TokenIdent, parameterType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before?: Array<CSSToken>, after?: Array<CSSToken>);
-    /**
-     * @deprecated Use `parameterType` instead.
-     */
-    get argumentType(): Array<CSSToken>;
-    set argumentType(value: Array<CSSToken>);
     getName(): string;
     getNameToken(): TokenIdent;
     getParameterType(): string;
-    /**
-     * @deprecated Use `getParameterType()` instead.
-     */
-    getArgumentType(): string;
     getDefaultValue(): string | null;
     tokens(): Array<CSSToken>;
     toString(): string;
@@ -86,6 +78,9 @@ export declare enum NodeType {
 /**
  * Parse a `@function` prelude.
  *
+ * Returns `false` when the prelude is invalid.
+ * `onParseError` only reports tokenizer and component value parsing errors.
+ *
  * https://drafts.csswg.org/css-mixins-1/#function-prelude
  */
 export declare function parse(source: string, options?: {
@@ -95,12 +90,17 @@ export declare function parse(source: string, options?: {
 /**
  * Parse the arguments of a `<dashed-function>`.
  *
+ * Returns `false` when the arguments are invalid.
+ *
  * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function
  */
 export declare function parseDashedFunctionArguments(componentValues: Array<ComponentValue>): Array<Array<ComponentValue>> | false;
 
 /**
  * Parse a `@function` prelude from tokens.
+ *
+ * Returns `false` when the prelude is invalid.
+ * `onParseError` only reports tokenizer and component value parsing errors.
  *
  * https://drafts.csswg.org/css-mixins-1/#function-prelude
  */
@@ -110,6 +110,8 @@ export declare function parseFromTokens(tokens: Array<CSSToken>, options?: {
 
 /**
  * Parse a `<function-parameter>#? ,?` list.
+ *
+ * Returns `false` when the list is invalid.
  *
  * https://drafts.csswg.org/css-mixins-1/#function-rule
  */

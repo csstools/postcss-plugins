@@ -13,15 +13,15 @@ import type { FunctionParameter } from './function-parameter';
 export class CustomFunction {
 	type = NodeType.CustomFunction;
 
-	function: FunctionNode;
+	functionNode: FunctionNode;
 	parameters: Array<FunctionParameter>;
 	returnsKeyword: Array<CSSToken>;
 	returnType: Array<CSSToken>;
 	before: Array<CSSToken>;
 	after: Array<CSSToken>;
 
-	constructor(fn: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
-		this.function = fn;
+	constructor(functionNode: FunctionNode, parameters: Array<FunctionParameter>, returnsKeyword: Array<CSSToken>, returnType: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
+		this.functionNode = functionNode;
 		this.parameters = parameters;
 		this.returnsKeyword = returnsKeyword;
 		this.returnType = returnType;
@@ -30,7 +30,7 @@ export class CustomFunction {
 	}
 
 	getName(): string {
-		return this.function.getName();
+		return this.functionNode.getName();
 	}
 
 	getReturnType(): string {
@@ -40,7 +40,7 @@ export class CustomFunction {
 	tokens(): Array<CSSToken> {
 		return [
 			...this.before,
-			...this.function.tokens(),
+			...this.functionNode.tokens(),
 			...this.returnsKeyword,
 			...this.returnType,
 			...this.after,
@@ -48,7 +48,7 @@ export class CustomFunction {
 	}
 
 	toString(): string {
-		return stringify(...this.tokens());
+		return stringify(this.tokens());
 	}
 
 	/**

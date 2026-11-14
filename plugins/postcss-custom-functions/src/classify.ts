@@ -10,7 +10,7 @@ import { isComputationallyIndependent } from './is-computationally-independent';
  * `type(*)` is the universal syntax and counts as untyped.
  */
 export function parameterType(parameter: FunctionParameter): string | null {
-	const type = parameter.getArgumentType();
+	const type = parameter.getParameterType();
 	return !!type && type !== '*' ? type : null;
 }
 
@@ -71,8 +71,9 @@ function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 
 		// A typed default becomes the `initial-value` of the generated
 		// `@property` registration and must be computationally independent.
+		// Empty defaults can not be used as `initial-value`.
 		const defaultValue = parameter.getDefaultValue();
-		return !!defaultValue && isComputationallyIndependent(defaultValue);
+		return defaultValue !== null && defaultValue !== '' && isComputationallyIndependent(defaultValue);
 	});
 }
 

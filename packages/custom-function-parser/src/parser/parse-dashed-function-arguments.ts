@@ -6,30 +6,34 @@ import { containsCurlyBlock, hasInvalidDeclarationValue, singleCurlyBlock } from
 /**
  * Parse the arguments of a `<dashed-function>`.
  *
+ * Returns `false` when the arguments are invalid.
+ *
  * https://drafts.csswg.org/css-mixins-1/#typedef-dashed-function
  */
 export function parseDashedFunctionArguments(componentValues: Array<ComponentValue>): Array<Array<ComponentValue>> | false {
-	const lists: Array<Array<ComponentValue>> = [[]];
+	const args: Array<Array<ComponentValue>> = [];
 
-	for (const componentValue of componentValues) {
-		if (isTokenNode(componentValue) && isTokenComma(componentValue.value)) {
-			lists.push([]);
-			continue;
+	let start = 0;
+	let sawComma = false;
+
+	for (let i = 0; i <= componentValues.length; i++) {
+		if (i < componentValues.length) {
+			const componentValue = componentValues[i];
+			if (!isTokenNode(componentValue) || !isTokenComma(componentValue.value)) {
+				continue;
+			}
+
+			sawComma = true;
 		}
 
-		lists[lists.length - 1].push(componentValue);
-	}
+		const list = componentValues.slice(start, i);
+		start = i + 1;
 
-	if (lists.length === 1 && lists[0].every(isWhiteSpaceOrCommentNode)) {
-		return [];
-	}
+		// A trailing empty argument is dropped. Without a comma it means no arguments.
+		if (i === componentValues.length && list.every(isWhiteSpaceOrCommentNode)) {
+			return sawComma ? args : [];
+		}
 
-	if (lists[lists.length - 1].every(isWhiteSpaceOrCommentNode)) {
-		lists.pop();
-	}
-
-	const args: Array<Array<ComponentValue>> = [];
-	for (const list of lists) {
 		const arg = unwrapArgument(list);
 		if (!arg || hasInvalidDeclarationValue(arg)) {
 			return false;

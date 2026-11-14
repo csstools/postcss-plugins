@@ -27,6 +27,9 @@ const customFunction = parse('--foo(--bar <length>: 1px) returns <length>');
 - `parseFunctionParameters()` parses a `@mixin` or `@function` parameter list.
 - `parseDashedFunctionArguments()` parses the arguments of a `<dashed-function>` call from its component values.
 
+All parsing functions return `false` when the input is invalid.
+`onParseError` only reports tokenizer and component value parsing errors.
+
 The parameters and return type are not validated as `<syntax>` yet.
 Their types are preserved as syntax strings and can be validated by the consumer.
 

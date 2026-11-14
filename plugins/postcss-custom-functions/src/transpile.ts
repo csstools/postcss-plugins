@@ -5,17 +5,16 @@ import {
 	FunctionNode as CSSAFunctionNode,
 	TokenNode as CSSATokenNode,
 	isFunctionNode,
-	isSimpleBlockNode,
 	isTokenNode,
 	isWhiteSpaceOrCommentNode,
-	parseCommaSeparatedListOfComponentValues,
 	parseListOfComponentValues,
 	replaceComponentValues,
 	stringify,
 } from '@csstools/css-parser-algorithms';
-import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, isTokenOpenCurly, mutateIdent, tokenize } from '@csstools/css-tokenizer';
+import { TokenType, isTokenComma, isTokenFunction, isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import type { CustomFunctionDefinition, CustomFunctionGroup } from './custom-functions-from-root';
 import type { FunctionParameter } from '@csstools/custom-function-parser';
+import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 import { parameterType } from './classify';
 import { GeneratedNames, INVALID_IDENT, sourceHashFor } from './generated-names';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
@@ -184,7 +183,7 @@ export class CustomFunctionTranspiler {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
-		const args = this.parseArguments(fn);
+		const args = parseDashedFunctionArguments(fn.value);
 		if (!args) {
 			return [this.varReference(INVALID_IDENT)];
 		}
@@ -239,7 +238,7 @@ export class CustomFunctionTranspiler {
 		let validArity = args.length <= parameters.length;
 		if (validArity) {
 			for (let i = args.length; i < parameters.length; i++) {
-				if (!parameters[i].getDefaultValue()) {
+				if (parameters[i].getDefaultValue() === null) {
 					validArity = false;
 					break;
 				}
@@ -293,6 +292,12 @@ export class CustomFunctionTranspiler {
 					continue;
 				}
 
+				// Typed parameters without a non-empty default are unsupported.
+				const defaultValue = parameters[i].getDefaultValue();
+				if (defaultValue === null || defaultValue === '') {
+					continue;
+				}
+
 				this.spendBudget();
 
 				this.registrations.push(new PostCSSAtRule({
@@ -301,7 +306,7 @@ export class CustomFunctionTranspiler {
 					nodes: [
 						new PostCSSDeclaration({ prop: 'syntax', value: `"${type}"`, source: element.source }),
 						new PostCSSDeclaration({ prop: 'inherits', value: 'false', source: element.source }),
-						new PostCSSDeclaration({ prop: 'initial-value', value: parameters[i].getDefaultValue(), source: element.source }),
+						new PostCSSDeclaration({ prop: 'initial-value', value: defaultValue, source: element.source }),
 					],
 					source: element.source,
 				}));
@@ -343,7 +348,7 @@ export class CustomFunctionTranspiler {
 						value: evaluatedArgs[i],
 						source: element.source,
 					}));
-				} else if (defaultValue) {
+				} else if (defaultValue !== null && defaultValue !== '') {
 					out.push(new PostCSSDeclaration({
 						prop: this.argName(definitionId, i),
 						value: this.rewriteDefault(defaultValue, parameter.getName(), element, parameterScope, parameterArgs, inlineDecls),
@@ -356,7 +361,7 @@ export class CustomFunctionTranspiler {
 
 			// Untyped parameters use a raw + fallback pair so that missing
 			// and invalid arguments resolve to the default value.
-			if (defaultValue) {
+			if (defaultValue !== null) {
 				if (hasArgument) {
 					out.push(new PostCSSDeclaration({
 						prop: this.rawName(definitionId, i),
@@ -621,27 +626,6 @@ export class CustomFunctionTranspiler {
 		}
 	}
 
-	private parseArguments(fn: FunctionNode): Array<Array<ComponentValue>> | false {
-		const meaningful = fn.value.filter((componentValue) => !isWhiteSpaceOrCommentNode(componentValue));
-		if (meaningful.length === 0) {
-			return [];
-		}
-
-		const lists = parseCommaSeparatedListOfComponentValues(fn.value.flatMap((componentValue) => componentValue.tokens()));
-
-		const args: Array<Array<ComponentValue>> = [];
-		for (const list of lists) {
-			const arg = unwrapArgument(list);
-			if (!arg) {
-				return false;
-			}
-
-			args.push(arg);
-		}
-
-		return args;
-	}
-
 	private invalidResultDeclaration(resultName: string, element: Rule): Declaration {
 		this.spendBudget();
 
@@ -746,28 +730,6 @@ function findTopLevelCommaIndex(componentValues: Array<ComponentValue>): number 
 	}
 
 	return -1;
-}
-
-/**
- * Strip a `{}` wrapper from a single argument.
- *
- * https://drafts.csswg.org/css-values-5/#component-function-commas
- */
-function unwrapArgument(list: Array<ComponentValue>): Array<ComponentValue> | false {
-	const meaningful = list.filter((componentValue) => !isWhiteSpaceOrCommentNode(componentValue));
-	if (meaningful.length === 0) {
-		return false;
-	}
-
-	if (
-		meaningful.length === 1 &&
-		isSimpleBlockNode(meaningful[0]) &&
-		isTokenOpenCurly(meaningful[0].startToken)
-	) {
-		return meaningful[0].value;
-	}
-
-	return list;
 }
 
 /**

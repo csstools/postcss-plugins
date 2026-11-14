@@ -1,4 +1,5 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
+import { isTokenNode } from '@csstools/css-parser-algorithms';
 import type { CSSToken } from '@csstools/css-tokenizer';
 
 /**
@@ -8,7 +9,14 @@ export function tokensOf(componentValues: Array<ComponentValue>, start = 0, end 
 	const tokens: Array<CSSToken> = [];
 
 	for (let i = start; i < end; i++) {
-		for (const token of componentValues[i].tokens()) {
+		const componentValue = componentValues[i];
+
+		if (isTokenNode(componentValue)) {
+			tokens.push(componentValue.value);
+			continue;
+		}
+
+		for (const token of componentValue.tokens()) {
 			tokens.push(token);
 		}
 	}

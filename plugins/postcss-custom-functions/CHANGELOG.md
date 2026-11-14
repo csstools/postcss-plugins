@@ -1,5 +1,10 @@
 # Changes to PostCSS Custom Functions
 
+### Unreleased (patch)
+
+- Support empty parameter default values
+- Use the parser's `getParameterType()` and `parseDashedFunctionArguments()` APIs
+
 ### 1.0.1
 
 _October 2, 2026_

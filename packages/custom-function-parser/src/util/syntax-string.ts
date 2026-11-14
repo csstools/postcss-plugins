@@ -5,7 +5,7 @@ import { isTokenComment, stringify } from '@csstools/css-tokenizer';
 /**
  * A `<css-type>` as a syntax string, or `*` when it is omitted.
  *
- * https://drafts.csswg.org/css-mixins-1/#the-function-interface
+ * https://drafts.csswg.org/css-mixins-1/#function-prelude
  */
 export function getSyntaxString(tokens: Array<CSSToken>): string {
 	const meaningfulComponentValues = parseListOfComponentValues(tokens).filter((x) => !isWhiteSpaceOrCommentNode(x));
@@ -20,11 +20,11 @@ export function getSyntaxString(tokens: Array<CSSToken>): string {
 		meaningfulComponentValues[0].getName().toLowerCase() === 'type'
 	) {
 		return stringify(
-			...meaningfulComponentValues[0].value
+			meaningfulComponentValues[0].value
 				.flatMap((x) => x.tokens())
 				.filter((x) => !isTokenComment(x)),
 		).trim();
 	}
 
-	return stringify(...tokens.filter((x) => !isTokenComment(x))).trim();
+	return stringify(tokens.filter((x) => !isTokenComment(x))).trim();
 }

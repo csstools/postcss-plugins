@@ -23,6 +23,18 @@ test('parseFromTokens', async (t) => {
 		assert.strictEqual(fn, false);
 		assert.ok(errors.length > 0);
 	});
+
+	await t.test('returns false for grammar errors without reporting parse errors', () => {
+		const errors = [];
+		const options = {
+			onParseError: (error) => errors.push(error),
+		};
+
+		const fn = parseFromTokens(tokenize({ css: '--foo(--bar: !)' }), options);
+
+		assert.strictEqual(fn, false);
+		assert.strictEqual(errors.length, 0);
+	});
 });
 
 test('parse', async (t) => {

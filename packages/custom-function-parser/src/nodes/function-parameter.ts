@@ -21,6 +21,13 @@ export class FunctionParameter {
 	before: Array<CSSToken>;
 	after: Array<CSSToken>;
 
+	// Cache until `colon` or `defaultValue` is replaced.
+	private defaultValueCache: {
+		colon: TokenColon | null,
+		tokens: Array<CSSToken>,
+		value: string | null,
+	} | null = null;
+
 	constructor(name: TokenIdent, parameterType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
 		this.name = name;
 		this.parameterType = parameterType;
@@ -28,17 +35,6 @@ export class FunctionParameter {
 		this.defaultValue = defaultValue;
 		this.before = before;
 		this.after = after;
-	}
-
-	/**
-	 * @deprecated Use `parameterType` instead.
-	 */
-	get argumentType(): Array<CSSToken> {
-		return this.parameterType;
-	}
-
-	set argumentType(value: Array<CSSToken>) {
-		this.parameterType = value;
 	}
 
 	getName(): string {
@@ -53,23 +49,27 @@ export class FunctionParameter {
 		return getSyntaxString(this.parameterType);
 	}
 
-	/**
-	 * @deprecated Use `getParameterType()` instead.
-	 */
-	getArgumentType(): string {
-		return this.getParameterType();
-	}
-
 	getDefaultValue(): string | null {
-		if (!this.colon) {
-			return null;
+		const cache = this.defaultValueCache;
+		if (cache && cache.colon === this.colon && cache.tokens === this.defaultValue) {
+			return cache.value;
 		}
 
-		const componentValues = parseListOfComponentValues(this.defaultValue);
-		const block = singleCurlyBlock(componentValues);
-		const value = block ? block.value : componentValues;
+		let defaultValue: string | null = null;
+		if (this.colon) {
+			const componentValues = parseListOfComponentValues(this.defaultValue);
+			const block = singleCurlyBlock(componentValues);
+			const value = block ? block.value : componentValues;
+			defaultValue = stringify(tokensOf(value)).trim();
+		}
 
-		return stringify(...tokensOf(value)).trim();
+		this.defaultValueCache = {
+			colon: this.colon,
+			tokens: this.defaultValue,
+			value: defaultValue,
+		};
+
+		return defaultValue;
 	}
 
 	tokens(): Array<CSSToken> {
@@ -84,7 +84,7 @@ export class FunctionParameter {
 	}
 
 	toString(): string {
-		return stringify(...this.tokens());
+		return stringify(this.tokens());
 	}
 
 	/**

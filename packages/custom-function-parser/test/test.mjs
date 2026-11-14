@@ -1,3 +1,5 @@
+import './api/large-input.mjs';
+
 import './cases/custom-function/0001.mjs';
 import './cases/custom-function/0002.mjs';
 import './cases/custom-function/0003.mjs';

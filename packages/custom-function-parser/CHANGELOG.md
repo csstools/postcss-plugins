@@ -2,8 +2,11 @@
 
 ### Unreleased (major)
 
+- Rename `CustomFunction.function` to `CustomFunction.functionNode` (breaking).
+- Fix a `RangeError` when serializing large preludes, types, or default values.
+- Document that `false` indicates invalid input and that `onParseError` is limited to tokenizer and component value parsing errors.
 - Add `FunctionParameter.parameterType` and `getParameterType()`.
-  Keep `argumentType` and `getArgumentType()` as deprecated aliases.
+- Remove `FunctionParameter.argumentType` and `getArgumentType()` (breaking).
 - `getParameterType()` and `getReturnType()` return `*` when the type is omitted (breaking).
 - `getDefaultValue()` returns `null` when a parameter has no default (breaking).
 - Add `FunctionParameter.tokens()` and `FunctionParameter.toString()`.

@@ -90,23 +90,6 @@ Array&lt;CSSToken&gt;
 </td></tr>
 <tr><td>
 
-[argumentType](./custom-function-parser.functionparameter.argumenttype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Array&lt;CSSToken&gt;
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
 [before](./custom-function-parser.functionparameter.before.md)
 
 
@@ -228,18 +211,6 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
-
-[getArgumentType()](./custom-function-parser.functionparameter.getargumenttype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
 
 [getDefaultValue()](./custom-function-parser.functionparameter.getdefaultvalue.md)
 

@@ -6,6 +6,8 @@
 
 Parse the arguments of a `<dashed-function>`<!-- -->.
 
+Returns `false` when the arguments are invalid.
+
 https://drafts.csswg.org/css-mixins-1/\#typedef-dashed-function
 
 **Signature:**

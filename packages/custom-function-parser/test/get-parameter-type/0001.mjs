@@ -79,24 +79,3 @@ import { parse } from '@csstools/custom-function-parser';
 		'[  <string>  |  <color>  ]',
 	);
 }
-
-{
-	const fn = parse('--foo(--bar <string>)');
-
-	assert.strictEqual(
-		fn.parameters[0].getArgumentType(),
-		'<string>',
-	);
-
-	assert.deepEqual(
-		fn.parameters[0].argumentType,
-		fn.parameters[0].parameterType,
-	);
-
-	fn.parameters[0].argumentType = [];
-
-	assert.strictEqual(
-		fn.parameters[0].getParameterType(),
-		'*',
-	);
-}
