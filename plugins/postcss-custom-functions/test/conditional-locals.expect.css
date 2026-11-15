@@ -1,0 +1,87 @@
+.conditional-parameter {--_csstools-cf-m5jfqc-1-arg-0: var(--_csstools-cf-m5jfqc-1-raw-0, PASS);
+}.conditional-parameter {--_csstools-cf-m5jfqc-1-local-x: var(--_csstools-cf-m5jfqc-1-arg-0);
+}
+	@supports (not (width: 100px)) {.conditional-parameter {
+		--_csstools-cf-m5jfqc-1-local-x: FAIL;
+}
+	}.conditional-parameter {
+
+	--_csstools-cf-m5jfqc-0-result: var(--_csstools-cf-m5jfqc-1-local-x, FALLBACK);
+}
+
+.conditional-parameter {
+	--actual: var(--_csstools-cf-m5jfqc-0-result);
+}
+
+.conditional-local {--_csstools-cf-m5jfqc-3-local-x: var(--x);
+}
+	@supports (not (width: 100px)) {
+
+.conditional-local {
+		--_csstools-cf-m5jfqc-3-local-x: FAIL;
+}
+	}
+
+.conditional-local {
+
+	--_csstools-cf-m5jfqc-2-result: var(--_csstools-cf-m5jfqc-3-local-x, FALLBACK);
+}
+
+.conditional-local {
+	--x: PASS;
+	--actual: var(--_csstools-cf-m5jfqc-2-result);
+}
+
+.conditional-registration {--_csstools-cf-m5jfqc-5-arg-0: var(--_csstools-cf-m5jfqc-5-raw-0, PASS);
+}
+
+.conditional-registration {
+
+	--_csstools-cf-m5jfqc-5-local-x: var(--_csstools-cf-m5jfqc-5-arg-0);
+	--_csstools-cf-m5jfqc-4-result: var(--_csstools-cf-m5jfqc-5-local-x,var(--_csstools-cf-m5jfqc-5-arg-0, FALLBACK));
+}
+
+.conditional-registration {
+	--actual: var(--_csstools-cf-m5jfqc-4-result);
+}
+
+.conditional-parameter-registration {--_csstools-cf-m5jfqc-7-arg-0: 20px;
+}
+
+.conditional-parameter-registration {--_csstools-cf-m5jfqc-7-local-x: var(--_csstools-cf-m5jfqc-7-arg-0);
+}
+	@supports (not (width: 100px)) {
+
+.conditional-parameter-registration {
+		--_csstools-cf-m5jfqc-7-local-x: 30px;
+}
+	}
+
+.conditional-parameter-registration {
+
+	--_csstools-cf-m5jfqc-6-result: var(--_csstools-cf-m5jfqc-7-local-x, 0px);
+}
+
+.conditional-parameter-registration {
+	--actual: var(--_csstools-cf-m5jfqc-6-result);
+}
+
+@supports (not (width: 100px)) {
+	@property --_csstools-cf-m5jfqc-5-local-x {
+		syntax: "<length>";
+		inherits: true;
+		initial-value: 10px;
+}
+}
+
+@property --_csstools-cf-m5jfqc-7-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 20px;
+}
+
+@property --_csstools-cf-m5jfqc-7-local-x {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}

@@ -24,32 +24,111 @@
 	width: var(--_csstools-cf-15up11z-6-result);
 }
 
+.typed-width-relative {
+	--_csstools-cf-15up11z-9-arg-0: 2em;
+	--_csstools-cf-15up11z-8-result: var(--_csstools-cf-15up11z-9-arg-0);
+	width: var(--_csstools-cf-15up11z-8-result);
+}
+
+.typed-font-size-absolute {
+	--_csstools-cf-15up11z-b-arg-0: 20px;
+	--_csstools-cf-15up11z-a-result: var(--_csstools-cf-15up11z-b-arg-0);
+	font-size: var(--_csstools-cf-15up11z-a-result);
+}
+
+.typed-local {
+	--_csstools-cf-15up11z-d-arg-0: #000;
+	--_csstools-cf-15up11z-d-local-c: #00f;
+	--_csstools-cf-15up11z-c-result: if(style(--_csstools-cf-15up11z-d-local-c: blue): PASS; else: FAIL);
+	--actual: var(--_csstools-cf-15up11z-c-result);
+}
+
+.typed-local-invalid {
+	--_csstools-cf-15up11z-f-arg-0: #f00;
+	--_csstools-cf-15up11z-f-local-c: 3;
+	--_csstools-cf-15up11z-e-result: var(--_csstools-cf-15up11z-f-local-c, PASS);
+	--actual: var(--_csstools-cf-15up11z-e-result);
+}
+
+.typed-local-parent-stack {
+	--_csstools-cf-15up11z-h-arg-0: #f00;
+	--_csstools-cf-15up11z-h-local-c: #00f;
+	--_csstools-cf-15up11z-i-result: if(style(--_csstools-cf-15up11z-h-local-c: blue): PASS; else: FAIL);
+	--_csstools-cf-15up11z-g-result: var(--_csstools-cf-15up11z-i-result);
+	--actual: var(--_csstools-cf-15up11z-g-result);
+}
+
 @property --_csstools-cf-15up11z-1-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 10px;
 }
 
 @property --_csstools-cf-15up11z-3-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 10px;
 }
 
 @property --_csstools-cf-15up11z-5-arg-0 {
 	syntax: "<color>";
-	inherits: false;
+	inherits: true;
 	initial-value: red;
 }
 
 @property --_csstools-cf-15up11z-7-arg-1 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 2px;
 }
 
 @property --_csstools-cf-15up11z-7-arg-2 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 3px;
+}
+
+@property --_csstools-cf-15up11z-9-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}
+
+@property --_csstools-cf-15up11z-b-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
+}
+
+@property --_csstools-cf-15up11z-d-arg-0 {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: red;
+}
+
+@property --_csstools-cf-15up11z-d-local-c {
+	syntax: "<color>";
+	inherits: true;
+}
+
+@property --_csstools-cf-15up11z-f-arg-0 {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: red;
+}
+
+@property --_csstools-cf-15up11z-f-local-c {
+	syntax: "<color>";
+	inherits: true;
+}
+
+@property --_csstools-cf-15up11z-h-arg-0 {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: blue;
+}
+
+@property --_csstools-cf-15up11z-h-local-c {
+	syntax: "<color>";
+	inherits: true;
 }

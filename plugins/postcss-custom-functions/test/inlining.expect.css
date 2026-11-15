@@ -24,6 +24,8 @@
 }
 
 /* A definition in a cascade layer can not be inlined. */
+@layer base {
+}
 
 .layered {
 		--_csstools-cf-19up9hh-8-result: 1px;

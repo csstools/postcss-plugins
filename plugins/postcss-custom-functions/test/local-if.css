@@ -1,0 +1,72 @@
+@function --local-if() {
+	--x: 3px;
+	result: if(style(--x: 3px): PASS; else: FAIL);
+}
+
+.local-if {
+	--actual: --local-if();
+}
+
+@function --argument-if(--x) {
+	result: if(style(--x: 3px): PASS; else: FAIL);
+}
+
+.argument-if {
+	--actual: --argument-if(3px);
+}
+
+@function --later-condition-if() {
+	--x: 3px;
+	result: if(media(width > 1px): FAIL; style(--x: 3px): PASS; else: FAIL);
+}
+
+.later-condition-if {
+	--actual: --later-condition-if();
+}
+
+@function --local-if-value() {
+	--x: PASS;
+	result: if(style(--true): var(--x); else: FAIL);
+}
+
+.local-if-value {
+	--true: true;
+	--x: FAIL;
+	--actual: --local-if-value();
+}
+
+@function --keyword-initial-parameter(--c: green) {
+	result: if(style(--c: initial): PASS; else: FAIL);
+}
+
+@function --keyword-initial-caller() {
+	--c: red;
+	result: --keyword-initial-parameter();
+}
+
+.keyword-initial-parameter {
+	--actual: --keyword-initial-caller();
+}
+
+@function --keyword-inherit-parameter(--c: red) {
+	--c: green;
+	result: if(style(--c: inherit): PASS; else: FAIL);
+}
+
+@function --keyword-inherit-caller() {
+	--c: green;
+	result: --keyword-inherit-parameter();
+}
+
+.keyword-inherit-parameter {
+	--actual: --keyword-inherit-caller();
+}
+
+@function --keyword-unset-local() {
+	--c: red;
+	result: if(style(--c: unset): FAIL; else: PASS);
+}
+
+.keyword-unset-local {
+	--actual: --keyword-unset-local();
+}

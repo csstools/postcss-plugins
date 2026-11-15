@@ -14,10 +14,26 @@
 	width: --unknown(1);
 }
 
-@function --empty-args(--x) {
-	result: 10px;
+.braces-in-value {
+	width: --f(1 {});
 }
 
-.empty-args {
-	width: --empty-args( );
+.braces-before-value {
+	width: --f({}1);
+}
+
+.bang {
+	width: --f(!);
+}
+
+.semicolon {
+	width: --f(1;2);
+}
+
+.important {
+	width: --f(1 !important);
+}
+
+.braces-important {
+	width: --f({1 !important});
 }

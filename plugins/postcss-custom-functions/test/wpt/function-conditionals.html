@@ -425,6 +425,72 @@
 					}
 				`,
 			},
+			{
+				name: 'A non-matching conditional local falls back to the parameter',
+				style: `
+					@function --f(--x: PASS) {
+						@supports (not (width: 100px)) {
+							--x: FAIL;
+						}
+						result: var(--x, FALLBACK);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'A matching conditional local overrides the parameter',
+				style: `
+					@function --f(--x: FAIL) {
+						@supports (width: 100px) {
+							--x: PASS;
+						}
+						result: var(--x, FALLBACK);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'A non-matching conditional local falls back to an outer function local',
+				style: `
+					@function --outer() {
+						--x: PASS;
+						result: --inner();
+					}
+					@function --inner() {
+						@supports (not (width: 100px)) {
+							--x: FAIL;
+						}
+						result: var(--x, FALLBACK);
+					}
+					#target {
+						--actual: --outer();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'A non-matching conditional local falls back to the call site',
+				style: `
+					@function --f() {
+						@supports (not (width: 100px)) {
+							--x: FAIL;
+						}
+						result: var(--x, FALLBACK);
+					}
+					#target {
+						--x: PASS;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+
 		];
 
 		for (const testCase of testCases) {

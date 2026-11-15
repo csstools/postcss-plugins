@@ -4,17 +4,17 @@ import type { AtRule, ChildNode, Container, Document } from 'postcss';
 // conditional group rules. Dynamic conditional rules are handled by emitting a
 // guarded result per definition.
 //
-// Excluded on purpose:
-// - `@container`: browsers currently ignore the container condition on
-//   `@function` definitions, so a spec correct transformation would not match
-//   the browser.
-// - `@scope`: tree-scoped, it changes where the name resolves rather than just
-//   whether the definition is active.
-// - `@starting-style`: first style update only.
-const allowedParentAtRules = new Set(['layer', 'media', 'supports']);
+// `@container`, `@scope` and `@starting-style` do not constrain global or
+// tree-scoped name definitions, so these definitions are unconditional.
+// Chromium also treats them as unconditional.
+const allowedParentAtRules = new Set(['layer', 'media', 'supports', 'container', 'scope', 'starting-style']);
 
 // Conditional group rules that are allowed within a `@function` body.
 const conditionalGroupRules = new Set(['media', 'supports', 'container', 'starting-style']);
+
+// Only document-global conditions can remove a layer from the global layer order.
+// Element-sensitive conditions (such as `@container`) always contribute their layers.
+const conditionalLayerAncestors = new Set(['media', 'supports']);
 
 const IS_FUNCTION_REGEX = /^function$/i;
 
@@ -27,16 +27,26 @@ export function isProcessableRule(atRule: AtRule): boolean {
 		return false;
 	}
 
-	if (!atRule.nodes?.length) {
+	if (!atRule.nodes) {
 		return false;
 	}
 
-	// The body of a `@function` rule accepts declarations and conditional group
-	// rules. Anything else makes the rule invalid.
+	// The body of a `@function` rule accepts declarations, `@property` rules and
+	// conditional group rules. Anything else makes the rule invalid.
 	if (!hasValidBody(atRule)) {
 		return false;
 	}
 
+	return isAllowedFunctionPlacement(atRule);
+}
+
+/**
+ * Whether a `@function` rule is in a valid location.
+ *
+ * `@function` is not allowed inside a style rule. It is allowed at the top
+ * level and inside conditional group rules and cascade layers.
+ */
+export function isAllowedFunctionPlacement(atRule: AtRule): boolean {
 	let parent: Container<ChildNode> | Document | undefined = atRule.parent;
 	while (parent) {
 		if (parent.type === 'rule') {
@@ -85,6 +95,11 @@ function isAllowedBodyNode(node: ChildNode): boolean {
 	}
 
 	if (node.type === 'atrule') {
+		if (node.name.toLowerCase() === 'property') {
+			// Both the longhand block form and the shorthand form are valid.
+			return true;
+		}
+
 		return conditionalGroupRules.has(node.name.toLowerCase()) && !!node.nodes && hasValidBody(node);
 	}
 
@@ -94,7 +109,7 @@ function isAllowedBodyNode(node: ChildNode): boolean {
 function layerIsConditional(layerNode: AtRule): boolean {
 	let parent: Container<ChildNode> | Document | undefined = layerNode.parent;
 	while (parent) {
-		if (parent.type === 'atrule' && conditionalGroupRules.has((parent as AtRule).name.toLowerCase())) {
+		if (parent.type === 'atrule' && conditionalLayerAncestors.has((parent as AtRule).name.toLowerCase())) {
 			return true;
 		}
 

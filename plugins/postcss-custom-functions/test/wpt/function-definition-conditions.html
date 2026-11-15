@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<title>Custom Functions: definitions in conditions</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1">
+
+<div id="target"></div>
+
+<script>
+	function stylesUrl() {
+		return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+	}
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ' (transform=' + window.__TRANSFORM__ + '): expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		// Some engines implement `@function` but not definitions inside `@container`,
+		// `@scope` or `@starting-style`. Only compare against the native behavior
+		// when the engine implements it.
+		async function supportsDefinitionConditions() {
+			const probe = await (fetch('/test/styles.css?transform=false', {
+				method: 'POST',
+				body: `
+					@function --probe-conditions() { result: 1px; }
+					@container (width < 0px) { @function --probe-conditions() { result: 2px; } }
+					#probe-conditions { --value: --probe-conditions(); }
+				`,
+			}).then((response) => response.text()));
+
+			const styleElement = document.createElement('style');
+			styleElement.textContent = probe;
+			document.head.append(styleElement);
+
+			const element = document.createElement('div');
+			element.id = 'probe-conditions';
+			document.body.append(element);
+
+			const value = getComputedStyle(element).getPropertyValue('--value');
+
+			element.remove();
+			styleElement.remove();
+
+			return value === '2px';
+		}
+
+		if (window.__TRANSFORM__ === false && !await supportsDefinitionConditions()) {
+			return true;
+		}
+
+		// Name-defining at-rules are not constrained by `@container`, `@scope` and
+		// `@starting-style`, but they are constrained by `@media` and `@supports`.
+		const css = `
+			@function --container-fn() { result: 1px; }
+			@container (width < 0px) { @function --container-fn() { result: 2px; } }
+
+			@function --scope-fn() { result: 3px; }
+			@scope (#nomatch) { @function --scope-fn() { result: 4px; } }
+
+			@function --starting-fn() { result: 5px; }
+			@starting-style { @function --starting-fn() { result: 6px; } }
+
+			@function --media-fn() { result: 7px; }
+			@media (width < 0px) { @function --media-fn() { result: 8px; } }
+
+			@function --supports-fn() { result: 9px; }
+			@supports (not-a-property: 1) { @function --supports-fn() { result: 10px; } }
+
+			#target {
+				--container: --container-fn();
+				--scope: --scope-fn();
+				--starting: --starting-fn();
+				--media: --media-fn();
+				--supports: --supports-fn();
+			}
+		`;
+
+		const transformed = await (fetch(stylesUrl(), {
+			method: 'POST',
+			body: css,
+		}).then((response) => response.text()));
+
+		const styleElement = document.createElement('style');
+		styleElement.textContent = transformed;
+		document.head.append(styleElement);
+
+		await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+		const style = getComputedStyle(document.getElementById('target'));
+
+		assert_equals(style.getPropertyValue('--container'), '2px', 'definition inside @container');
+		assert_equals(style.getPropertyValue('--scope'), '4px', 'definition inside @scope');
+		assert_equals(style.getPropertyValue('--starting'), '6px', 'definition inside @starting-style');
+		assert_equals(style.getPropertyValue('--media'), '7px', 'definition inside @media');
+		assert_equals(style.getPropertyValue('--supports'), '9px', 'definition inside @supports');
+
+		styleElement.remove();
+
+		return true;
+	};
+</script>
