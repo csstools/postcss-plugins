@@ -27,6 +27,8 @@ const registrations = transpiler.transpile(root.nodes);
 root.append(...registrations);
 ```
 
+`@property` rules are only hoisted out of `@layer`, `@media` and `@supports` group rules. Registrations inside `@container`, `@scope` or `@starting-style` are left untouched, because those conditions cannot be preserved at the top level.
+
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test
 [discord]: https://discord.gg/bUadyRwkJS
 [npm-url]: https://www.npmjs.com/package/@csstools/utilities-for-private-properties

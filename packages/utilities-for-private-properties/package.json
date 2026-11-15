@@ -1,7 +1,7 @@
 {
 	"name": "@csstools/utilities-for-private-properties",
 	"description": "Utilities for private custom properties",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"contributors": [
 		{
 			"name": "Antonio Laguna",
@@ -41,12 +41,12 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-parser-algorithms": "^4.0.2",
-		"@csstools/css-tokenizer": "^4.0.2",
 		"@csstools/generate-idents": "^0.0.0",
 		"@csstools/utilities-for-property-registrations": "^0.0.0"
 	},
 	"peerDependencies": {
+		"@csstools/css-parser-algorithms": "^4.0.2",
+		"@csstools/css-tokenizer": "^4.0.2",
 		"postcss": "^8.4"
 	},
 	"devDependencies": {
@@ -58,7 +58,7 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node --test"
+		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-private-properties#readme",
 	"repository": {

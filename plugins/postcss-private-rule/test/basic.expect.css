@@ -179,6 +179,7 @@ section > h1 > small {
 
 .important-private {
 		--_csstools-p-wv7kid-k--alpha: 2px;
+		--_csstools-p-wv7kid-k--alpha: 3px !important;
 
 	--beta: var(--_csstools-p-wv7kid-k--alpha);
 }
@@ -218,11 +219,10 @@ section > h1 > small {
 
 	& .inner {
 		@container (width > 0px) {
+				@property --beta <length>: 1px;
 				--_csstools-p-wv7kid-q--beta: 2px
 		}
 
 		--gamma: var(--_csstools-p-wv7kid-p--alpha);
 	}
 }
-
-@property --_csstools-p-wv7kid-q--beta <length>: 1px

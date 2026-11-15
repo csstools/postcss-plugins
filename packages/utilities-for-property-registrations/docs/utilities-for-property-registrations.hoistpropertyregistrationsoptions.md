@@ -69,7 +69,7 @@ boolean
 
 </td><td>
 
-_(Optional)_ Whether to remove the collected `@property` rules.
+_(Optional)_ Whether to remove the collected `@property` rules that were hoisted.
 
 
 </td></tr>
