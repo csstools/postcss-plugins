@@ -2,10 +2,17 @@ import type { AtRule, ChildNode } from 'postcss';
 import { Transpiler } from './transpiler';
 
 export type PrivatePropertyTranspilerOptions = {
+	/** Namespace for generated names. */
 	namespace?: string,
 };
 
 export type PrivatePropertyTranspiler = {
+	/**
+	 * Transpile private rules and private property references in `nodes`.
+	 *
+	 * Mutates `nodes` in place and returns the `@property` rules that must be
+	 * appended to the root of the tree.
+	 */
 	transpile: (nodes: Array<ChildNode>) => Array<AtRule>,
 };
 
