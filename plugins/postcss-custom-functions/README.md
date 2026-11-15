@@ -14,7 +14,6 @@ This plugin is only a partial implementation to avoid conflicts with the final s
 Unsupported:
 - typed parameters without default values
 - return types other than the default `type(*)`
-- `@function` definitions inside `@container` or `@scope`
 - `@function` definitions inside a `@layer` that is itself inside a conditional group rule
 - `@function` definitions inside a style rule
 - definitions whose body contains anything other than declarations, `@property` rules and conditional group rules
@@ -25,13 +24,14 @@ Unsupported:
 
 Typed local variables that shadow a typed parameter are registered with the parameter syntax and no initial value. Browsers that do not support an omitted `initial-value` will ignore those registrations.
 
-Definitions inside `@layer`, `@media` and `@supports` are supported. When a name
-has several active definitions, the browser cascade selects the strongest one.
+Definitions inside `@layer`, `@media`, `@supports`, `@container`, `@scope` and
+`@starting-style` are supported. Container queries, `@scope` and
+`@starting-style` do not constrain a name definition, so definitions inside them
+are unconditional. When a name has several active definitions, the browser
+cascade selects the strongest one.
 
-Unsupported definitions are left as-is. A definition is only removed when every
-call site is transformed by this plugin, so call sites that are left as-is (for
-example inside `@keyframes` or a nested conditional declaration) keep their
-definitions.
+Unsupported definitions are left as-is. When any definition of a name can not be
+transpiled, every call to that name is left as-is as well.
 
 Run `@csstools/postcss-private-rule` before this plugin so that function bodies do not capture private properties from the calling style rule.
 

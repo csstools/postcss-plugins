@@ -25,14 +25,12 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 			return {
 				postcssPlugin: 'mixins',
 				Once(root, helpers): void {
-					const rootAtRules: Array<AtRule> = [];
-					root.each((child) => {
-						if (child.type === 'atrule') {
-							rootAtRules.push(child);
-						}
+					const atRules: Array<AtRule> = [];
+					root.walkAtRules((atRule) => {
+						atRules.push(atRule);
 					});
 
-					expander.registerMixins(rootAtRules);
+					expander.registerMixins(atRules);
 
 					if (!options.preserve) {
 						for (const mixin of expander.registeredMixins()) {

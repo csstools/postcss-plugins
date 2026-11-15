@@ -11,6 +11,9 @@
 	<target class="private"></target>
 	<target class="private-and-args"></target>
 	<target class="shadowed-by-element"></target>
+	<target class="conditional-registration">
+		<target class="child"></target>
+	</target>
 	<div id="log"></div>
 	<script type="module">
 		window.addEventListener('click', () => {
@@ -58,6 +61,36 @@
 						}
 						.private-and-args {
 							@apply --private-and-args(green);
+						}
+					`,
+				},
+				{
+					title: 'Mixin @private registrations keep their conditions',
+					target: '.conditional-registration .child',
+					property: 'width',
+					expected: '60px',
+					style: `
+						@mixin --conditional-registration() {
+							@private {
+								--size: 2em;
+
+								@media (width < 0px) {
+									@property --size {
+										syntax: "<length>";
+										inherits: true;
+										initial-value: 1px;
+									}
+								}
+							}
+							font-size: 10px;
+
+							& > .child {
+								font-size: 30px;
+								width: var(--size);
+							}
+						}
+						.conditional-registration {
+							@apply --conditional-registration;
 						}
 					`,
 				},

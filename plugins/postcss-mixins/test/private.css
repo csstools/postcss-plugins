@@ -21,3 +21,24 @@
 .b {
 	@apply --args-and-private(red);
 }
+
+@mixin --inner-private() {
+	@private {
+		--x: 1px;
+	}
+
+	width: var(--x);
+}
+
+@mixin --outer-private() {
+	@private {
+		--y: 2px;
+	}
+
+	@apply --inner-private;
+	height: var(--y);
+}
+
+.nested-private {
+	@apply --outer-private;
+}

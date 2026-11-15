@@ -294,3 +294,44 @@ section > h1 > small {
 		--gamma: var(--alpha);
 	}
 }
+
+.scope-private {
+	@scope (.inner) {
+		@private {
+			--alpha: 2px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.scope-registration {
+	@scope (.inner) {
+		@private {
+			@property --scope-size <length>: 1px;
+			--scope-size: 2px;
+		}
+	}
+
+	width: var(--scope-size);
+}
+
+.untranspiled-apply {
+	@private {
+		--alpha: 2px;
+	}
+
+	@apply --some-mixin;
+
+	--beta: var(--alpha);
+}
+
+@mixin --some-mixin() {
+	.untranspiled-mixin-rule {
+		@private {
+			--alpha: 2px;
+		}
+
+		width: var(--alpha);
+	}
+}

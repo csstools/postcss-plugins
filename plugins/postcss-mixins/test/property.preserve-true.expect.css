@@ -97,6 +97,69 @@
 	@apply --escaped-private;
 }
 
+@mixin --container-registered() {
+	@container (width > 10px) {
+		@private {
+			@property --container-size <length>: 10px;
+			--container-size: 20px;
+		}
+	}
+
+	width: var(--container-size);
+}
+
+.container-registered {
+	@container (width > 10px) {
+		--_csstools-m-7q9ama-3--container-size: 20px
+	}
+	width: var(--_csstools-m-7q9ama-3--container-size);
+	@apply --container-registered;
+}
+
+@mixin --starting-style-registered() {
+	@starting-style {
+		@private {
+			@property --starting-size {
+				syntax: "<length>";
+				inherits: false;
+				initial-value: 10px;
+			}
+		}
+	}
+
+	width: var(--starting-size);
+}
+
+.starting-style-registered {
+	width: var(--_csstools-m-7q9ama-4--starting-size);
+	@apply --starting-style-registered;
+}
+
+@mixin --media-registered() {
+	@private {
+		@property --media-size <length>: 1em;
+		--media-size: 2em;
+	}
+
+	width: var(--media-size);
+}
+
+@media (min-width: 1px) {
+	.media-registered {
+		--_csstools-m-7q9ama-5--media-size: 2em;
+		width: var(--_csstools-m-7q9ama-5--media-size);
+		@apply --media-registered;
+	}
+}
+
+@layer outer {
+	.layer-registered {
+		--_csstools-m-7q9ama-6--media-size: 2em;
+		width: var(--_csstools-m-7q9ama-6--media-size);
+		@apply --media-registered;
+	}
+}
+
 @property --_csstools-m-7q9ama-0--size {
 	syntax: "<length>";
 	inherits: false;
@@ -149,4 +212,18 @@
 
 @property --_csstools-m-7q9ama-1--initial-untyped: 6px;
 
-@property --_csstools-m-7q9ama-2--foo <length>: 20px
+@property --_csstools-m-7q9ama-2--foo <length>: 20px;
+
+@property --_csstools-m-7q9ama-3--container-size <length>: 10px;
+
+@property --_csstools-m-7q9ama-4--starting-size {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 10px;
+}
+
+@media (min-width: 1px) {@property --_csstools-m-7q9ama-5--media-size <length>: 1em
+}
+
+@layer outer {@property --_csstools-m-7q9ama-6--media-size <length>: 1em
+}

@@ -307,14 +307,14 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    namespace?: string;\n}"
+              "text": "{\n    namespace?: string;\n    allowUntranspiledMixins?: boolean;\n}"
             },
             {
               "kind": "Content",
               "text": ";"
             }
           ],
-          "fileUrlPath": "dist/_types/index.d.ts",
+          "fileUrlPath": "dist/_types/transpiler.d.ts",
           "releaseTag": "Public",
           "name": "PrivatePropertyTranspilerOptions",
           "typeTokenRange": {

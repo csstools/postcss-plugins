@@ -5,7 +5,10 @@
 - Support empty `@function` bodies.
 - Ignore `!important` declarations in `@function` bodies.
 - Support `@property` rules for local variables, including multi-name prelude lists and the shorthand form.
-- Hoist local `@property` registrations out of `@container` and `@starting-style` rules.
+- Hoist local `@property` registrations out of `@container`, `@scope` and `@starting-style` rules.
+- Treat `@function` definitions inside `@container`, `@scope` and `@starting-style` as unconditional, matching browsers.
+- Leave calls untouched when a definition of the same name can not be transpiled.
+- Keep empty `@layer` blocks when removing unused definitions, so layer order is unchanged.
 - Keep parameter registrations for local variables that shadow a typed parameter.
 - Resolve CSS-wide keywords in function arguments.
 - Resolve CSS-wide keywords in `style()` query values.

@@ -27,6 +27,12 @@
 .media {
 	width: var(--_csstools-cf-154dd4k-3-result);
 }
+
+@layer base {
+}
+
+@layer theme {
+}
 	@media (width >= 50px) {
 
 .layered-media {

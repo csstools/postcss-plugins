@@ -9,3 +9,10 @@
 	--_csstools-m-pjvzd8-2--local: var(--_csstools-m-pjvzd8-2--color);
 	color: var(--_csstools-m-pjvzd8-2--local);
 }
+
+.nested-private {
+	--_csstools-m-pjvzd8-3--y: 2px;
+	--_csstools-m-pjvzd8-4--x: 1px;
+	width: var(--_csstools-m-pjvzd8-4--x);
+	height: var(--_csstools-m-pjvzd8-3--y);
+}

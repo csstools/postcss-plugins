@@ -129,6 +129,12 @@ postcssTape(plugin)({
 	'style-rule-definition': {
 		message: 'ignores functions defined inside a style rule',
 	},
+	'element-sensitive-conditions': {
+		message: 'treats definitions inside element-sensitive conditions as unconditional',
+	},
+	'ignored-definitions': {
+		message: 'leaves calls untouched when a definition can not be transpiled',
+	},
 	'examples/example': {
 		message: 'minimal example',
 	},

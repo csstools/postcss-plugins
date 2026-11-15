@@ -3,7 +3,10 @@
 ### Unreleased (minor)
 
 - Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
-- Hoist `@property` registrations out of `@container` and `@starting-style` rules.
+- Hoist `@property` registrations out of `@container`, `@scope` and `@starting-style` rules.
+- Keep `@media` and `@supports` conditions around hoisted `@property` registrations.
+- Rename private property names in `transition` and `transition-property`.
+- Leave a mixin name untouched when it has more than one definition or a definition that can not be transpiled.
 - Support trailing commas, whitespace after trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
 - Trim whitespace from `@apply` arguments.
 - Treat an empty default value (`--x:`) as a default value.

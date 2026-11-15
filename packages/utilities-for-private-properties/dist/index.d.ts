@@ -23,6 +23,16 @@ export declare type PrivatePropertyTranspiler = {
 export declare type PrivatePropertyTranspilerOptions = {
     /** Namespace for generated names. */
     namespace?: string;
+    /**
+     * Whether `@apply` and `@contents` rules in the nodes are expanded later.
+     *
+     * When `true`, style rules that contain them are still transpiled. This is
+     * used by `postcss-mixins`, which expands `@apply` and `@contents` itself.
+     * Defaults to `false`: style rules with `@apply` or `@contents` are left
+     * untouched because those can substitute declarations that reference
+     * private properties.
+     */
+    allowUntranspiledMixins?: boolean;
 };
 
 export { }

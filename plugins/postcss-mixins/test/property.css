@@ -66,3 +66,57 @@
 .escaped-private {
 	@apply --escaped-private;
 }
+
+@mixin --container-registered() {
+	@container (width > 10px) {
+		@private {
+			@property --container-size <length>: 10px;
+			--container-size: 20px;
+		}
+	}
+
+	width: var(--container-size);
+}
+
+.container-registered {
+	@apply --container-registered;
+}
+
+@mixin --starting-style-registered() {
+	@starting-style {
+		@private {
+			@property --starting-size {
+				syntax: "<length>";
+				inherits: false;
+				initial-value: 10px;
+			}
+		}
+	}
+
+	width: var(--starting-size);
+}
+
+.starting-style-registered {
+	@apply --starting-style-registered;
+}
+
+@mixin --media-registered() {
+	@private {
+		@property --media-size <length>: 1em;
+		--media-size: 2em;
+	}
+
+	width: var(--media-size);
+}
+
+@media (min-width: 1px) {
+	.media-registered {
+		@apply --media-registered;
+	}
+}
+
+@layer outer {
+	.layer-registered {
+		@apply --media-registered;
+	}
+}

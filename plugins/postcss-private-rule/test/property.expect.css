@@ -57,7 +57,6 @@
 	container-type: inline-size;
 
 	@container (width > 10px) {
-			@property --container-size <length>: 10px;
 			--_csstools-p-7q9ama-6--container-size: 20px
 	}
 
@@ -65,21 +64,65 @@
 }
 
 .starting-style-registration {
-	@starting-style {
-			@property --starting-size <length>: 10px
-	}
 
-	width: var(--starting-size);
+	width: var(--_csstools-p-7q9ama-7--starting-size);
 }
 
 .container-registration-siblings {
 	@container (width > 10px) {
-			@property --sibling-size <length>: 10px;
 			--_csstools-p-7q9ama-8--sibling-size: 20px
 	}
 		--_csstools-p-7q9ama-8--sibling-size: 30px;
 
 	width: var(--_csstools-p-7q9ama-8--sibling-size);
+}
+
+@media (min-width: 1000px) {
+	.media-above {
+	}
+}
+
+.registration-layers {
+	@layer first {
+	}
+
+	@layer second {
+	}
+}
+
+.anonymous-registration-layers {
+	@private {
+		@layer {
+			@property --anonymous-size <length>: 1px;
+		}
+
+		@layer second {
+			@property --anonymous-size <color>: red;
+		}
+	}
+
+	width: var(--anonymous-size);
+}
+
+.transition-references {
+		--_csstools-p-7q9ama-b--transition-size: 2px;
+
+	transition: --_csstools-p-7q9ama-b--transition-size 1s;
+	transition-property: --_csstools-p-7q9ama-b--transition-size;
+}
+
+@media (min-width: 1000px) {
+	.conditional-combination {
+		@container (width > 10px) {
+				@layer inner {
+					--_csstools-p-7q9ama-c--combination-size: 2em;
+				}
+
+			transition: --_csstools-p-7q9ama-c--combination-size 1s;
+		}
+
+		width: var(--_csstools-p-7q9ama-c--combination-size);
+	}
 }
 		@property --_csstools-p-7q9ama-0--size {
 			syntax: "<length>";
@@ -104,10 +147,34 @@
 		@media (min-width: 1000px) {
 			@property --_csstools-p-7q9ama-2--conditional-size <length>: 13px;
 		}
+
+@layer parent-layer {
 			@layer private-layer {
 				@property --_csstools-p-7q9ama-3--layer-size <length>: 10px;
 			}
+}
 		@property --_csstools-p-7q9ama-4--foo <length>: 10px;
 	@media (min-width: 1000px) {
 			@property --_csstools-p-7q9ama-5--outer-conditional-size <length>: 13px
 	}
+			@property --_csstools-p-7q9ama-6--container-size <length>: 10px;
+			@property --_csstools-p-7q9ama-7--starting-size <length>: 10px;
+			@property --_csstools-p-7q9ama-8--sibling-size <length>: 10px;
+
+@media (min-width: 1000px) {
+			@property --_csstools-p-7q9ama-9--media-above-size <length>: 1em
+}
+	@layer first {
+			@property --_csstools-p-7q9ama-a--layer-size <length>: 1px
+	}
+
+	@layer second {
+			@property --_csstools-p-7q9ama-a--layer-size <color>: red
+	}
+		@property --_csstools-p-7q9ama-b--transition-size <length>: 1px;
+
+@media (min-width: 1000px) {
+				@layer inner {
+					@property --_csstools-p-7q9ama-c--combination-size <length>: 1em;
+				}
+}

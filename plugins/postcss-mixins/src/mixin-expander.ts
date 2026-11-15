@@ -2,7 +2,7 @@ import type { AtRule, ChildNode, Helpers, Root, Rule } from 'postcss';
 import { createPrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import { IS_APPLY_REGEX, processableApplyRule } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
-import { processableMixinRule } from './processable-mixin';
+import { mixinRuleName, processableMixinRule } from './processable-mixin';
 
 type Mixin = {
 	name: string,
@@ -28,8 +28,7 @@ const MAX_GENERATED_NODES = 100_000;
  */
 export class MixinExpander {
 	private mixins: Map<string, Mixin> = new Map();
-	private knownMixins: Set<string> = new Set();
-	private privateTranspiler = createPrivatePropertyTranspiler({ namespace: 'm' });
+	private privateTranspiler = createPrivatePropertyTranspiler({ namespace: 'm', allowUntranspiledMixins: true });
 	private registrations: Array<AtRule> = [];
 	private argumentCounter = 0;
 	private desugaredNestingRules: Set<Rule> = new Set();
@@ -41,21 +40,32 @@ export class MixinExpander {
 		return Array.from(this.mixins.values());
 	}
 
-	registerMixins(rootAtRules: Array<AtRule>): void {
-		for (const atRule of rootAtRules) {
-			const parsed = processableMixinRule(atRule);
-			if (!parsed) {
+	registerMixins(atRules: Array<AtRule>): void {
+		const seen = new Set<string>();
+
+		for (const atRule of atRules) {
+			const name = mixinRuleName(atRule);
+			if (!name) {
 				continue;
 			}
 
-			// TODO: support mixin overrides
-			if (this.knownMixins.has(parsed.name)) {
-				this.mixins.delete(parsed.name);
+			if (seen.has(name)) {
+				// Multiple definitions are resolved by the browser cascade.
+				// Do not expand any call for this name.
+				this.mixins.delete(name);
+				continue;
+			}
+
+			seen.add(name);
+
+			const parsed = processableMixinRule(atRule);
+			if (!parsed) {
+				// The name has a definition that can not be transpiled.
+				// Do not expand any call for this name.
 				continue;
 			}
 
 			this.mixins.set(parsed.name, Object.assign({}, parsed, { atRule }));
-			this.knownMixins.add(parsed.name);
 		}
 	}
 

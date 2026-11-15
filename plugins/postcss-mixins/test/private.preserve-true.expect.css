@@ -27,3 +27,28 @@
 	color: var(--_csstools-m-pjvzd8-2--local);
 	@apply --args-and-private(red);
 }
+
+@mixin --inner-private() {
+	@private {
+		--x: 1px;
+	}
+
+	width: var(--x);
+}
+
+@mixin --outer-private() {
+	@private {
+		--y: 2px;
+	}
+
+	@apply --inner-private;
+	height: var(--y);
+}
+
+.nested-private {
+	--_csstools-m-pjvzd8-3--y: 2px;
+	--_csstools-m-pjvzd8-4--x: 1px;
+	width: var(--_csstools-m-pjvzd8-4--x);
+	height: var(--_csstools-m-pjvzd8-3--y);
+	@apply --outer-private;
+}

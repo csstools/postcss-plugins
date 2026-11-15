@@ -1,11 +1,12 @@
 import type { ChildNode, Container, Document, Node, Result, Root as PostCSSRoot, AtRule } from 'postcss';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
-import { isProcessableRule } from './is-processable-rule';
+import { isAllowedFunctionPlacement, isProcessableRule } from './is-processable-rule';
 import { isProcessableDeclaration } from './is-processable-declaration';
 import { classifyCustomFunction, classifyCustomFunctionGroup } from './classify';
 import type { CustomFunction } from '@csstools/custom-function-parser';
 import { parse } from '@csstools/custom-function-parser';
-import { isTokenFunction, tokenize } from '@csstools/css-tokenizer';
+import { isTokenFunction, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isTokenNode, parseComponentValue } from '@csstools/css-parser-algorithms';
 
 export type CustomFunctionDefinition = {
 	function: CustomFunction;
@@ -42,11 +43,12 @@ function layerStrength(layer: number | false): number {
 	return layer === false ? Infinity : layer;
 }
 
-const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports|container|starting-style)$/i;
+const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports)$/i;
 
 // Return custom functions from the css root.
 export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<string, CustomFunctionGroup> {
 	const groups = new Map<string, CustomFunctionGroup>();
+	const processed = new Set<AtRule>();
 
 	let cascadeLayersOrder: WeakMap<Node, number> = new WeakMap();
 	try {
@@ -75,6 +77,8 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			return;
 		}
 
+		processed.add(atRule);
+
 		const classification = classifyCustomFunction(atRule, customFunction);
 
 		const name = customFunction.getName();
@@ -95,6 +99,28 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 		groups.set(name, group);
 	});
 
+	// A definition that this plugin does not transpile can still win the cascade.
+	// Calls for such a name are left untouched so the browser handles them natively.
+	// Invalid definitions (wrong placement, no block) are ignored by browsers and
+	// do not affect the name.
+	const ignoredNames = new Set<string>();
+	root.walkAtRules((atRule) => {
+		if (processed.has(atRule) || atRule.name.toLowerCase() !== 'function') {
+			return;
+		}
+
+		if (!atRule.nodes || !isAllowedFunctionPlacement(atRule)) {
+			return;
+		}
+
+		const name = functionRuleName(atRule);
+		if (!name) {
+			return;
+		}
+
+		ignoredNames.add(name);
+	});
+
 	for (const group of groups.values()) {
 		// Definitions are emitted weakest first so the browser cascade picks the
 		// strongest active definition at runtime.
@@ -105,6 +131,12 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 		const classification = classifyCustomFunctionGroup(group.definitions);
 		group.supported = classification.supported;
 		group.keywordResult = classification.keywordResult;
+	}
+
+	for (const [name, group] of groups) {
+		if (ignoredNames.has(name)) {
+			group.supported = false;
+		}
 	}
 
 	return groups;
@@ -232,6 +264,28 @@ function collectConditionalAncestors(atRule: AtRule): Array<AtRule> {
 	return ancestors;
 }
 
+/**
+ * The name of a `@function` rule, even when the rule is not transpilable.
+ */
+function functionRuleName(atRule: AtRule): string | null {
+	if (!atRule.params || !atRule.params.includes('--')) {
+		return null;
+	}
+
+	const prelude = parseComponentValue(tokenize({ css: atRule.params }));
+
+	let name: string;
+	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
+		name = prelude.value[4].value;
+	} else if (isFunctionNode(prelude)) {
+		name = prelude.getName();
+	} else {
+		return null;
+	}
+
+	return name.startsWith('--') ? name : null;
+}
+
 function removeEmptyAncestorBlocks(block: Container | undefined): void {
 	if (!block) {
 		return;
@@ -241,6 +295,11 @@ function removeEmptyAncestorBlocks(block: Container | undefined): void {
 
 	while (currentNode) {
 		if (currentNode.nodes && currentNode.nodes.length > 0) {
+			return;
+		}
+
+		// Empty layer blocks are kept: they still declare the layer order.
+		if (currentNode.type === 'atrule' && (currentNode as AtRule).name.toLowerCase() === 'layer') {
 			return;
 		}
 

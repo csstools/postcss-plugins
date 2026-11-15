@@ -143,6 +143,11 @@ test('private properties', async (t) => {
 			transpile('.a { @private { @foo { --x: 1px; } } width: var(--x); }'),
 			'.a { width: var(--x); }',
 		);
+
+		assert.equal(
+			transpile('.a { @private { @foo { @property --x <length>: 1px; } } width: var(--x); }'),
+			'.a { width: var(--x); }',
+		);
 	});
 
 	await t.test('ignores nested rule contents', () => {
@@ -305,38 +310,127 @@ test('property registrations', async (t) => {
 		);
 	});
 
-	await t.test('ignores registrations inside @container', () => {
+	await t.test('hoists registrations out of @container', () => {
 		const p = prefix();
 
 		assert.equal(
 			transpile('.a { @private { --x: 1px; @container style(--x: 1) { @property --y <length>: 1px; } } width: var(--x) var(--y); }'),
-			`.a { ${p}--x: 1px; @container style(${p}--x: 1) { @property --y <length>: 1px; } width: var(${p}--x) var(--y); }`,
+			`.a { ${p}--x: 1px; width: var(${p}--x) var(${p}--y); } @property ${p}--y <length>: 1px`,
 		);
 
 		assert.equal(
 			transpile('.a { @private { @container (width > 1px) { @property --x, --y { syntax: "*"; inherits: false; } } } }'),
-			'.a { @container (width > 1px) { @property --x, --y { syntax: "*"; inherits: false; } } }',
+			`.a { } @property ${p}--x, ${p}--y { syntax: "*"; inherits: false; }`,
 		);
 	});
 
-	await t.test('ignores registrations when the private rule is inside @container', () => {
+	await t.test('drops declarations that are not custom properties', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { color: red; --x: 1px; } width: var(--x); }'),
+			`.a { ${p}--x: 1px; width: var(${p}--x); }`,
+		);
+	});
+
+	await t.test('ignores arguments that are not custom property names', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } width: var(--x) var(1px) var(red); }'),
+			`.a { ${p}--x: 1px; width: var(${p}--x) var(1px) var(red); }`,
+		);
+	});
+
+	await t.test('ignores container rules without private references', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } @container (width > 1px) { color: red; } @container style(--x: 1) { color: blue; } }'),
+			`.a { ${p}--x: 1px; @container (width > 1px) { color: red; } @container style(${p}--x: 1) { color: blue; } }`,
+		);
+	});
+
+	await t.test('uses the nearest style rule as the owner of a private property', () => {
+		const outer = prefix('0');
+		const inner = prefix('1');
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } & .b { @private { @property --y <length>: 2px; } width: var(--x) var(--y); } }'),
+			`.a { ${outer}--x: 1px; & .b { width: var(${outer}--x) var(${inner}--y); } } @property ${inner}--y <length>: 2px`,
+		);
+	});
+
+	await t.test('collects private property names from all conditional group rules', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } @media (a) { @private { --y: 2px; } } width: var(--x) var(--y); }'),
+			`.a { ${p}--x: 1px; @media (a) { ${p}--y: 2px } width: var(${p}--x) var(${p}--y); }`,
+		);
+	});
+
+	await t.test('combines registrations and declarations from separate private rules', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { @property --x <length>: 1px; } @private { --x: 2px; } width: var(--x); }'),
+			`.a { ${p}--x: 2px; width: var(${p}--x); } @property ${p}--x <length>: 1px`,
+		);
+	});
+
+	await t.test('hoists registrations when the private rule is inside @container', () => {
+		const p = prefix();
+
 		assert.equal(
 			transpile('.a { @container (width > 1px) { @private { @property --size <length>: 1px; } } width: var(--size); }'),
-			'.a { @container (width > 1px) { @property --size <length>: 1px } width: var(--size); }',
+			`.a { width: var(${p}--size); } @property ${p}--size <length>: 1px`,
 		);
 	});
 
-	await t.test('ignores registrations when the private rule is inside @scope', () => {
+	await t.test('hoists registrations when the private rule is inside @scope', () => {
+		const p = prefix();
+
 		assert.equal(
 			transpile('.a { @scope (.b) { @private { @property --size <length>: 1px; } } width: var(--size); }'),
-			'.a { @scope (.b) { @property --size <length>: 1px } width: var(--size); }',
+			`.a { width: var(${p}--size); } @property ${p}--size <length>: 1px`,
 		);
 	});
 
-	await t.test('ignores registrations when the private rule is inside @starting-style', () => {
+	await t.test('hoists registrations when the private rule is inside @starting-style', () => {
+		const p = prefix();
+
 		assert.equal(
 			transpile('.a { @starting-style { @private { @property --size <length>: 1px; } } width: var(--size); }'),
-			'.a { @starting-style { @property --size <length>: 1px } width: var(--size); }',
+			`.a { width: var(${p}--size); } @property ${p}--size <length>: 1px`,
+		);
+	});
+
+	await t.test('hoists registrations out of @scope and @starting-style', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { @scope (.b) { @property --size <length>: 1px; } } width: var(--size); }'),
+			`.a { width: var(${p}--size); } @property ${p}--size <length>: 1px`,
+		);
+
+		assert.equal(
+			transpile('.a { @private { @starting-style { @property --size <length>: 1px; --size: 2px; } } width: var(--size); }'),
+			`.a { @starting-style { ${p}--size: 2px; } width: var(${p}--size); } @property ${p}--size <length>: 1px`,
+		);
+	});
+
+	await t.test('keeps @media around registrations that are hoisted out of @container', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { @container (width > 1px) { @media (min-width: 1px) { @property --size <length>: 1px; } } } width: var(--size); }'),
+			`.a { width: var(${p}--size); } @media (min-width: 1px) { @property ${p}--size <length>: 1px; }`,
+		);
+
+		assert.equal(
+			transpile('.a { @container (width > 1px) { @private { @media (min-width: 1px) { @property --size <length>: 1px; } } } width: var(--size); }'),
+			`.a { width: var(${p}--size); } @media (min-width: 1px) { @property ${p}--size <length>: 1px; }`,
 		);
 	});
 
@@ -365,5 +459,112 @@ test('property registrations', async (t) => {
 		assert.equal(second.length, 1);
 		assert.ok(first[0].params.startsWith(prefix('0', 'm')));
 		assert.ok(second[0].params.startsWith(prefix('1', 'm')));
+	});
+});
+
+test('the same private name can be registered in several layers', async (t) => {
+	await t.test('keeps the full named layer chain', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('@layer outer { .a { @private { @layer inner { @property --x <length>: 1px; } } } }'),
+			`@layer outer { .a { @layer inner { } } }@layer outer { @layer inner { @property ${p}--x <length>: 1px; } }`,
+		);
+	});
+
+	await t.test('keeps layer precedence between registrations of the same name', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { @layer first { @property --x <length>: 1px; } @layer second { @property --x <color>: red; } } }'),
+			`.a { @layer first { } @layer second { } } @layer first { @property ${p}--x <length>: 1px; } @layer second { @property ${p}--x <color>: red; }`,
+		);
+	});
+
+	await t.test('leaves the style rule untouched when a layer is anonymous', () => {
+		for (const css of [
+			'.a { @private { @layer { @property --x <length>: 1px; } } width: var(--x); }',
+			'.a { @private { @layer { @property --x <length>: 1px; } @layer second { @property --x <color>: red; } } width: var(--x); }',
+			'@layer { @layer named { .a { @private { @property --x <length>: 1px; } } width: var(--x); } }',
+			'@media (min-width: 1px) { @layer { .a { @private { @property --x <length>: 1px; } } width: var(--x); } }',
+		]) {
+			assert.equal(transpile(css), css);
+		}
+	});
+});
+
+test('conditional registrations', async (t) => {
+	await t.test('keeps @media and @supports above the style rule', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('@media (min-width: 1px) { .a { @private { @property --x <length>: 1px; } } }'),
+			`@media (min-width: 1px) { .a { } }@media (min-width: 1px) { @property ${p}--x <length>: 1px }`,
+		);
+
+		assert.equal(
+			transpile('@supports (width: 1px) { @media (min-width: 1px) { .a { @private { @property --x <length>: 1px; } } } }'),
+			`@supports (width: 1px) { @media (min-width: 1px) { .a { } } }@supports (width: 1px) { @media (min-width: 1px) { @property ${p}--x <length>: 1px } }`,
+		);
+	});
+
+	await t.test('keeps conditions around declarations and registrations together', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('@media (min-width: 1px) { .a { @container (width > 10px) { @private { @layer inner { @property --x <length>: 1em; --x: 2em; } } } width: var(--x); } }'),
+			`@media (min-width: 1px) { .a { @container (width > 10px) { @layer inner { ${p}--x: 2em; } } width: var(${p}--x); } }@media (min-width: 1px) { @layer inner { @property ${p}--x <length>: 1em; } }`,
+		);
+	});
+});
+
+test('transition references', async (t) => {
+	await t.test('renames private property names in transition and transition-property', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { @property --x <length>: 1px; --x: 2px; } transition: --x 1s; transition-property: --x, width; will-change: --x; }'),
+			`.a { ${p}--x: 2px; transition: ${p}--x 1s; transition-property: ${p}--x, width; will-change: --x; } @property ${p}--x <length>: 1px`,
+		);
+	});
+
+	await t.test('renames escaped transition references', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --\\73 ize: 1px; } transition: --\\73 ize 1s; }'),
+			`.a { ${p}--\\73 ize: 1px; transition: ${p}--size 1s; }`,
+		);
+	});
+});
+
+test('untranspilable combinations are left untouched', async (t) => {
+	await t.test('leaves a style rule with an @apply rule untouched', () => {
+		for (const css of [
+			'.a { @private { --x: 1px; } @apply --m; width: var(--x); }',
+			'.a { @private { --x: 1px; } @apply --m { color: var(--x); } width: var(--x); }',
+			'.a { @private { --x: 1px; } & .b { @apply --m; width: var(--x); } width: var(--x); }',
+			'.a { @private { --x: 1px; } @contents { color: red; } width: var(--x); }',
+		]) {
+			assert.equal(transpile(css), css);
+		}
+	});
+
+	await t.test('leaves style rules inside @mixin and @function untouched', () => {
+		for (const css of [
+			'@mixin --m() { .a { @private { --x: 1px; } width: var(--x); } }',
+			'@function --f() { .a { @private { --x: 1px; } width: var(--x); } }',
+		]) {
+			assert.equal(transpile(css), css);
+		}
+	});
+
+	await t.test('still transpiles other style rules', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } @apply --m; } .b { @private { --y: 2px; } width: var(--y); }'),
+			`.a { @private { --x: 1px; } @apply --m; } .b { ${p}--y: 2px; width: var(${p}--y); }`,
+		);
 	});
 });

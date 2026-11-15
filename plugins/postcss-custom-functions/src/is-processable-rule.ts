@@ -4,14 +4,10 @@ import type { AtRule, ChildNode, Container, Document } from 'postcss';
 // conditional group rules. Dynamic conditional rules are handled by emitting a
 // guarded result per definition.
 //
-// Excluded on purpose:
-// - `@container`: browsers currently ignore the container condition on
-//   `@function` definitions, so a spec correct transformation would not match
-//   the browser.
-// - `@scope`: tree-scoped, it changes where the name resolves rather than just
-//   whether the definition is active.
-// - `@starting-style`: first style update only.
-const allowedParentAtRules = new Set(['layer', 'media', 'supports']);
+// `@container`, `@scope` and `@starting-style` do not constrain global or
+// tree-scoped name definitions, so these definitions are unconditional.
+// Chromium also treats them as unconditional.
+const allowedParentAtRules = new Set(['layer', 'media', 'supports', 'container', 'scope', 'starting-style']);
 
 // Conditional group rules that are allowed within a `@function` body.
 const conditionalGroupRules = new Set(['media', 'supports', 'container', 'starting-style']);
@@ -37,6 +33,16 @@ export function isProcessableRule(atRule: AtRule): boolean {
 		return false;
 	}
 
+	return isAllowedFunctionPlacement(atRule);
+}
+
+/**
+ * Whether a `@function` rule is in a valid location.
+ *
+ * `@function` is not allowed inside a style rule. It is allowed at the top
+ * level and inside conditional group rules and cascade layers.
+ */
+export function isAllowedFunctionPlacement(atRule: AtRule): boolean {
 	let parent: Container<ChildNode> | Document | undefined = atRule.parent;
 	while (parent) {
 		if (parent.type === 'rule') {

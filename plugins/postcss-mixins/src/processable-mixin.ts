@@ -15,12 +15,38 @@ export type ProcessableMixin = {
 
 const IS_UNSUPPORTED_CHILD_RULE = /^result$/i;
 
-export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
+/**
+ * The name of a `@mixin` rule, even when the rule is not transpilable.
+ */
+export function mixinRuleName(atRule: AtRule): string | null {
 	if (atRule.name.toLowerCase() !== 'mixin') {
-		return false;
+		return null;
 	}
 
 	if (!atRule.params || !atRule.params.includes('--')) {
+		return null;
+	}
+
+	const prelude = parseComponentValue(tokenize({
+		css: atRule.params,
+	}));
+
+	let name: string;
+	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
+		// `@mixin --foo;` is equivalent to `@mixin --foo();`
+		name = prelude.value[4].value;
+	} else if (isFunctionNode(prelude)) {
+		name = prelude.getName();
+	} else {
+		return null;
+	}
+
+	return name.startsWith('--') ? name : null;
+}
+
+export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
+	const name = mixinRuleName(atRule);
+	if (!name) {
 		return false;
 	}
 
@@ -49,15 +75,9 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 		css: atRule.params,
 	}));
 
-	let name: string;
 	let parameters: Array<MixinParameter> = [];
 
-	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
-		// `@mixin --foo;` is equivalent to `@mixin --foo();`
-		name = prelude.value[4].value;
-	} else if (isFunctionNode(prelude)) {
-		name = prelude.getName();
-
+	if (isFunctionNode(prelude)) {
 		const parsedParameters = parseFunctionParameters(prelude.value);
 		if (!parsedParameters || parsedParameters.some((parameter) => {
 			const type = parameter.getParameterType();
@@ -70,12 +90,6 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 			name: parameter.getName(),
 			defaultValue: parameter.getDefaultValue() ?? undefined,
 		}));
-	} else {
-		return false;
-	}
-
-	if (!name.startsWith('--')) {
-		return false;
 	}
 
 	return {
