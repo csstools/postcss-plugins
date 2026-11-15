@@ -568,3 +568,65 @@ test('untranspilable combinations are left untouched', async (t) => {
 		);
 	});
 });
+
+test('style query references', async (t) => {
+	const p = prefix();
+
+	await t.test('renames every property-name position', () => {
+		for (const [input, expected] of [
+			['style(--x)', `style(${p}--x)`],
+			['style(--x: red)', `style(${p}--x: red)`],
+			['style(not (--x: red))', `style(not (${p}--x: red))`],
+			['style(10px < --x)', `style(10px < ${p}--x)`],
+			['style(--x < 10px)', `style(${p}--x < 10px)`],
+			['style(--x = 10px)', `style(${p}--x = 10px)`],
+			['style(10px < --x < 20px)', `style(10px < ${p}--x < 20px)`],
+			['style((--x: red) and (--y: blue))', `style((${p}--x: red) and (${p}--y: blue))`],
+			['style((--x: red) or (--x > 10px))', `style((${p}--x: red) or (${p}--x > 10px))`],
+		]) {
+			assert.equal(
+				transpile(`.a { @private { --x: 1px; --y: 2px; } @container ${input} { color: red; } }`),
+				`.a { ${p}--x: 1px; ${p}--y: 2px; @container ${expected} { color: red; } }`,
+			);
+		}
+	});
+
+	await t.test('does not rename style query values', () => {
+		assert.equal(
+			transpile('.a { @private { --x: 1px; --y: 2px; } @container style(--x: --y) { color: red; } }'),
+			`.a { ${p}--x: 1px; ${p}--y: 2px; @container style(${p}--x: --y) { color: red; } }`,
+		);
+	});
+
+	await t.test('renames style queries inside if()', () => {
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } width: if(style(not (--x: 1px)): 1px; else: 2px); }'),
+			`.a { ${p}--x: 1px; width: if(style(not (${p}--x: 1px)): 1px; else: 2px); }`,
+		);
+	});
+});
+
+test('invalid style queries', async (t) => {
+	await t.test('leaves queries without property names untouched', () => {
+		for (const query of ['style()', 'style(1px: red)', 'style(: red)', 'style(foo(bar))', 'style(/ 2)']) {
+			const p = prefix();
+			const input = `.a { @private { --x: 1px; } @container ${query} { color: red; } }`;
+
+			assert.equal(
+				transpile(input),
+				`.a { ${p}--x: 1px; @container ${query} { color: red; } }`,
+			);
+		}
+	});
+});
+
+test('allowUntranspiledMixins', async (t) => {
+	await t.test('transpiles style rules that contain @apply', () => {
+		const p = prefix();
+		const root = postcss.parse('.a { @private { --x: 1px; } @apply --m; width: var(--x); }', { from });
+		const transpiler = createPrivatePropertyTranspiler({ allowUntranspiledMixins: true });
+		root.append(...transpiler.transpile(root.nodes));
+
+		assert.equal(root.toString(), `.a { ${p}--x: 1px; @apply --m; width: var(${p}--x); }`);
+	});
+});
