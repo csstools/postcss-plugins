@@ -2,24 +2,13 @@
 
 ### Unreleased (minor)
 
-- Support `@property` rules in `@private` rules, including multi-name prelude lists and the shorthand form.
-- Hoist `@property` registrations out of `@container`, `@scope` and `@starting-style` rules.
-- Keep `@media` and `@supports` conditions around hoisted `@property` registrations.
-- Rename private property names in `transition` and `transition-property`.
-- Leave a mixin name untouched when it has more than one definition or a definition that can not be transpiled.
-- Resolve references in nested mixins without parameters or private properties.
-- Resolve references in `@contents` fallback blocks and in contents blocks authored inside a mixin body.
-- Support trailing commas, whitespace after trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
-- Trim whitespace from `@apply` arguments.
-- Treat an empty default value (`--x:`) as a default value.
-- Reject `{}` blocks that are mixed with other tokens in parameter default values.
-- Drop `@layer` rules from mixin bodies.
-- Resolve `inherit` parameter defaults and arguments in the calling context.
-- Treat `type(*)` parameters as untyped.
-- Ignore mixin parameters and arguments with invalid `<declaration-value>` values.
-- Ignore `--` as a parameter name.
-- Use a separate namespace for generated names so they do not collide with private rule generated names.
-- Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation.
+- Support `@property` rules in `@private` rules, including multi-name preludes and the shorthand form, and hoist registrations out of `@container`, `@scope` and `@starting-style` while keeping `@media` and `@supports` conditions
+- Rename private property names in `transition` and `transition-property`
+- Resolve references in nested mixins, `@contents` fallback blocks and contents blocks inside mixin bodies
+- Support trailing commas, whitespace, empty arguments, `--x:` defaults, `type(*)` and `inherit` in parameter lists, and reject `{}` blocks mixed with other tokens
+- Ignore invalid `<declaration-value>` values and `--` parameter names, and leave mixins untouched when a name has several definitions or one that can not be transpiled
+- Drop `@layer` rules from mixin bodies
+- Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation and a separate namespace for generated names
 
 ### 1.1.0
 
