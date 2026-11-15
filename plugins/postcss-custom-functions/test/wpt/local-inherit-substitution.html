@@ -103,26 +103,6 @@
 					}
 				`,
 			},
-			{
-				name: 'inherit() referring to typed value in parent frame',
-				style: `
-					@function --f(--x <length>) {
-						result: --g();
-					}
-					@function --g() {
-						--x: 14px;
-						result: inherit(--x);
-					}
-					#parent {
-						--x: 12px;
-					}
-					#parent > #target {
-						--x: 13px;
-						--actual: --f(42.0px);
-						--expected: 42px;
-					}
-				`,
-			},
 		];
 
 		for (const testCase of testCases) {

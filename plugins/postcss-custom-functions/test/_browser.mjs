@@ -6,7 +6,9 @@ import postcss from 'postcss';
 import test from 'node:test';
 import process from 'node:process';
 
-// The transformed cases run the source through this plugin.
+// The transformed cases run the source through this plugin and then remove
+// every remaining `@function` rule, so that the output must work without
+// native custom function support.
 //
 // When the browser implements custom functions natively, the same cases are
 // also run untransformed and must produce the same outcome.
@@ -79,7 +81,7 @@ const requestListener = async function (req, res) {
 
 		const css = parsedUrl.searchParams.get('transform') === 'false'
 			? data
-			: (await postcss([plugin()]).process(data, { from: 'test/styles.css', to: 'test/styles.css' })).css;
+			: (await postcss([plugin()]).process(data, { from: 'test/styles.css', to: 'test/styles.css' })).css.replace(/@function\b/gi, '@-disabled-function');
 
 		res.setHeader('Content-type', 'text/css');
 		res.writeHead(200);

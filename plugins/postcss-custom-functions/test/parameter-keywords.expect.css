@@ -82,6 +82,20 @@
 	--actual: var(--_csstools-cf-39mkph-q-result);
 }
 
+/* A keyword in a var() fallback is only a keyword when the var() is the entire value. */
+
+.multi-token-argument {
+	--_csstools-cf-39mkph-t-arg-0: var(--unknown, initial) 1px;
+	--_csstools-cf-39mkph-s-result: var(--_csstools-cf-39mkph-t-arg-0);
+	--actual: var(--_csstools-cf-39mkph-s-result);
+}
+
+.multi-token-typed-argument {
+	--_csstools-cf-39mkph-v-arg-0: var(--unknown, initial) 1px;
+	--_csstools-cf-39mkph-u-result: var(--_csstools-cf-39mkph-v-arg-0, PASS);
+	--actual: var(--_csstools-cf-39mkph-u-result);
+}
+
 @property --_csstools-cf-39mkph-h-arg-0 {
 	syntax: "<length>";
 	inherits: true;
@@ -95,4 +109,10 @@
 @property --_csstools-cf-39mkph-r-arg-0 {
 	syntax: "<length>";
 	inherits: true;
+}
+
+@property --_csstools-cf-39mkph-v-arg-0 {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 10px;
 }

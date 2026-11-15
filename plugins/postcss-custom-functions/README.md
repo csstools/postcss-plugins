@@ -19,7 +19,8 @@ Unsupported:
 - definitions whose body contains anything other than declarations, `@property` rules and conditional group rules
 - typed parameters in `font-size`, `font` or `line-height` when arguments contain font-relative units or run-time values
 - arguments that contain top-level `!` or `;`
-- `result` descriptors that resolve to a CSS-wide keyword through a conditional rule or a `var()` fallback
+- `result` descriptors that resolve to a CSS-wide keyword, unless the definition is unconditional and the winning `result` descriptor is a static keyword
+- functions whose body uses `attr()` together with local variables or parameters
 - validation that a typed default value matches its parameter type
 
 Typed local variables that shadow a typed parameter are registered with the parameter syntax and no initial value. Browsers that do not support an omitted `initial-value` will ignore those registrations.
@@ -40,7 +41,7 @@ including relative units and `var()` references.
 
 Typed parameters with default values are checked by the browser through a
 generated `@property` registration. A default value that is not
-computationally independent (for example `1em` or `var(--x)`) can not be used
+computationally independent (for example `1em`, `var(--x)` or `--fn()`) can not be used
 as an `initial-value` and makes the function unsupported.
 
 ```css

@@ -1,0 +1,28 @@
+/* A static keyword result can not be substituted when the definition is conditional. */
+@media (min-width: 0px) {
+	@function --conditional-static-keyword() {
+		result: inherit;
+	}
+}
+
+.conditional-static-keyword {
+	width: --conditional-static-keyword();
+}
+
+/* A keyword result is only substituted when the arguments match the parameters. */
+
+.keyword-arity-valid {
+	--_csstools-cf-1url93c-1-arg-0: 1;
+	--_csstools-cf-1url93c-0-result: inherit;
+	margin-left: inherit;
+}
+
+.keyword-arity-missing {
+	--_csstools-cf-1url93c-2-result: var(--_csstools-cf-invalid);
+	margin-left: var(--_csstools-cf-1url93c-2-result);
+}
+
+.keyword-arity-too-many {
+	--_csstools-cf-1url93c-4-result: var(--_csstools-cf-invalid);
+	margin-left: var(--_csstools-cf-1url93c-4-result);
+}
