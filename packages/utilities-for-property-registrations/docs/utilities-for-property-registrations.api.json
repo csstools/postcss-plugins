@@ -681,7 +681,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@csstools/utilities-for-property-registrations!HoistPropertyRegistrationsOptions#removeOriginal:member",
-              "docComment": "/**\n * Whether to remove the collected `@property` rules.\n */\n",
+              "docComment": "/**\n * Whether to remove the collected `@property` rules that were hoisted.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

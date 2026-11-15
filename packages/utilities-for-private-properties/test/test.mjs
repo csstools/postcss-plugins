@@ -255,12 +255,12 @@ test('property registrations', async (t) => {
 		);
 	});
 
-	await t.test('drops invalid registrations', () => {
+	await t.test('ignores invalid registrations', () => {
 		const p = prefix();
 
 		assert.equal(
 			transpile('.a { @private { @property 1px { syntax: "*"; } --x: 1px; } width: var(--x); }'),
-			`.a { ${p}--x: 1px; width: var(${p}--x); }`,
+			`.a { @property 1px { syntax: "*"; } ${p}--x: 1px; width: var(${p}--x); }`,
 		);
 	});
 
