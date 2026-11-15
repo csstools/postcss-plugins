@@ -32,6 +32,12 @@
 
 /* A conditional rule between the layer and the definition does not change the layer strength. */
 @layer ordered-theme, ordered-base;
+
+@layer ordered-base {
+}
+
+@layer ordered-theme {
+}
 	@media (min-width: 0px) {
 
 .layered-conditional {

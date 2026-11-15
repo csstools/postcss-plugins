@@ -1,0 +1,68 @@
+@function --keyword-argument(--x: FAIL) {
+	result: var(--x, PASS);
+}
+
+.keyword-inherit {
+	--x: 30px;
+	--actual: --keyword-argument(inherit);
+}
+
+.keyword-inherit-var-fallback {
+	--x: 30px;
+	--actual: --keyword-argument(var(--unknown, inherit));
+}
+
+.keyword-initial {
+	--actual: --keyword-argument(initial);
+}
+
+.keyword-unset {
+	--actual: --keyword-argument(unset);
+}
+
+.keyword-revert {
+	--actual: --keyword-argument(revert);
+}
+
+.keyword-revert-layer {
+	--actual: --keyword-argument(revert-layer);
+}
+
+@function --keyword-argument-nested() {
+	--x: PASS;
+	result: --keyword-argument(inherit);
+}
+
+.keyword-inherit-nested {
+	--actual: --keyword-argument-nested();
+}
+
+@function --typed-keyword-argument(--x <length>: 10px) {
+	result: var(--x, PASS);
+}
+
+.typed-keyword-inherit {
+	--x: 30px;
+	--actual: --typed-keyword-argument(inherit);
+}
+
+.typed-keyword-initial {
+	--actual: --typed-keyword-argument(initial);
+}
+
+.keyword-var-fallback-set {
+	--known: 30px;
+	--actual: --keyword-argument(var(--known, initial));
+}
+
+.keyword-initial-var-fallback {
+	--actual: --keyword-argument(var(--unknown, initial));
+}
+
+.keyword-inherit-var-fallback-missing {
+	--actual: --keyword-argument(var(--unknown, inherit));
+}
+
+.typed-keyword-initial-var-fallback {
+	--actual: --typed-keyword-argument(var(--unknown, initial));
+}

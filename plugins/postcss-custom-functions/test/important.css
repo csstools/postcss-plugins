@@ -1,0 +1,43 @@
+/* `!important` is not allowed in `@function` bodies. */
+@function --important-result() {
+	result: 1px !important;
+}
+
+.important-result {
+	--actual: --important-result();
+}
+
+@function --important-result-fallback() {
+	result: 1px;
+	result: 2px !important;
+}
+
+.important-result-fallback {
+	--actual: --important-result-fallback();
+}
+
+@function --important-local() {
+	--x: 1px !important;
+	result: var(--x, PASS);
+}
+
+.important-local {
+	--actual: --important-local();
+}
+
+@function --important-keyword() {
+	result: inherit !important;
+}
+
+.important-keyword {
+	--actual: --important-keyword();
+}
+
+@function --important-local-parameter(--x: PARAM) {
+	--x: 1px !important;
+	result: var(--x, PASS);
+}
+
+.important-local-parameter {
+	--actual: --important-local-parameter();
+}

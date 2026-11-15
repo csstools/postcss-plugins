@@ -1,0 +1,28 @@
+/* Global, name-defining at-rules are not constrained by these conditions. */
+
+/* A global condition still applies. */
+
+.container-fn {
+		--_csstools-cf-vf7yh1-0-result: 1px;
+	width: var(--_csstools-cf-vf7yh1-0-result);
+}
+
+.starting-style-fn {
+		--_csstools-cf-vf7yh1-2-result: 2px;
+	width: var(--_csstools-cf-vf7yh1-2-result);
+}
+
+.scope-fn {
+		--_csstools-cf-vf7yh1-4-result: 3px;
+	width: var(--_csstools-cf-vf7yh1-4-result);
+}
+@supports (width: 100px) {
+
+.conditional-fn {
+			--_csstools-cf-vf7yh1-6-result: 4px;
+}
+}
+
+.conditional-fn {
+	width: var(--_csstools-cf-vf7yh1-6-result);
+}

@@ -1,11 +1,12 @@
 import type { ChildNode, Container, Document, Node, Result, Root as PostCSSRoot, AtRule } from 'postcss';
 import { cascadeLayerNumberForNode, collectCascadeLayerOrder } from './cascade-layers';
-import { isInConditionalLayer, isProcessableRule } from './is-processable-rule';
+import { isAllowedFunctionPlacement, isProcessableRule } from './is-processable-rule';
 import { isProcessableDeclaration } from './is-processable-declaration';
-import { classifyCustomFunction } from './classify';
+import { classifyCustomFunction, classifyCustomFunctionGroup } from './classify';
 import type { CustomFunction } from '@csstools/custom-function-parser';
 import { parse } from '@csstools/custom-function-parser';
-import { isTokenFunction, tokenize } from '@csstools/css-tokenizer';
+import { isTokenFunction, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isTokenNode, parseComponentValue } from '@csstools/css-parser-algorithms';
 
 export type CustomFunctionDefinition = {
 	function: CustomFunction;
@@ -30,6 +31,8 @@ export type CustomFunctionGroup = {
 	definitions: Array<CustomFunctionDefinition>;
 	/** Every definition is supported. Unsupported definitions make the whole name unsupported. */
 	supported: boolean;
+	/** The static keyword result shared by the group, or `null`. */
+	keywordResult: string | null;
 };
 
 /**
@@ -40,11 +43,12 @@ function layerStrength(layer: number | false): number {
 	return layer === false ? Infinity : layer;
 }
 
-const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports|container|starting-style)$/i;
+const IS_CONDITIONAL_AT_RULE_REGEX = /^(media|supports)$/i;
 
 // Return custom functions from the css root.
 export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<string, CustomFunctionGroup> {
 	const groups = new Map<string, CustomFunctionGroup>();
+	const processed = new Set<AtRule>();
 
 	let cascadeLayersOrder: WeakMap<Node, number> = new WeakMap();
 	try {
@@ -73,17 +77,16 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			return;
 		}
 
+		processed.add(atRule);
+
 		const classification = classifyCustomFunction(atRule, customFunction);
 
 		const name = customFunction.getName();
-		// A conditional layer can not be ordered, so a name with a definition in
-		// one is unsupported as a whole.
-		const supported = classification.supported && !isInConditionalLayer(atRule);
 
 		const definition: CustomFunctionDefinition = {
 			node: atRule,
 			function: customFunction,
-			supported,
+			supported: classification.supported,
 			keywordResult: classification.keywordResult,
 			hasKeywordResult: classification.hasKeywordResult,
 			conditionals: collectConditionalAncestors(atRule),
@@ -91,10 +94,31 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			order: order++,
 		};
 
-		const group = groups.get(name) ?? { definitions: [], supported: true };
+		const group = groups.get(name) ?? { definitions: [], supported: true, keywordResult: null };
 		group.definitions.push(definition);
-		group.supported = group.supported && supported;
 		groups.set(name, group);
+	});
+
+	// A definition that this plugin does not transpile can still win the cascade.
+	// Calls for such a name are left untouched so the browser handles them natively.
+	// Invalid definitions (wrong placement, no block) are ignored by browsers and
+	// do not affect the name.
+	const ignoredNames = new Set<string>();
+	root.walkAtRules((atRule) => {
+		if (processed.has(atRule) || atRule.name.toLowerCase() !== 'function') {
+			return;
+		}
+
+		if (!atRule.nodes || !isAllowedFunctionPlacement(atRule)) {
+			return;
+		}
+
+		const name = functionRuleName(atRule);
+		if (!name) {
+			return;
+		}
+
+		ignoredNames.add(name);
 	});
 
 	for (const group of groups.values()) {
@@ -104,13 +128,14 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			return (layerStrength(a.layer) - layerStrength(b.layer)) || (a.order - b.order);
 		});
 
-		// A CSS-wide keyword result can only be substituted directly when there is
-		// exactly one definition without conditionals that override the result.
-		if (group.definitions.some((definition) => definition.hasKeywordResult)) {
-			const isPureStaticKeyword = group.definitions.length === 1 && group.definitions[0].keywordResult !== null;
-			if (!isPureStaticKeyword) {
-				group.supported = false;
-			}
+		const classification = classifyCustomFunctionGroup(group.definitions);
+		group.supported = classification.supported;
+		group.keywordResult = classification.keywordResult;
+	}
+
+	for (const [name, group] of groups) {
+		if (ignoredNames.has(name)) {
+			group.supported = false;
 		}
 	}
 
@@ -140,7 +165,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 	// References from code that is not part of a supported definition and that
 	// will not be transformed.
 	const required = new Set<string>();
-	collectCustomFunctionReferences(root, supportedNodes, required, true);
+	collectCustomFunctionReferences(root, supportedNodes, required, true, groups);
 
 	// Definitions that are kept can reference other definitions.
 	const processed = new Set<string>();
@@ -160,7 +185,7 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 
 		for (const definition of group.definitions) {
 			const references = new Set<string>();
-			collectCustomFunctionReferences(definition.node, new Set(), references, false);
+			collectCustomFunctionReferences(definition.node, new Set(), references, false, groups);
 
 			for (const reference of references) {
 				if (required.has(reference)) {
@@ -187,8 +212,26 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 	}
 }
 
-function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean): void {
+function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean, groups: Map<string, CustomFunctionGroup>): void {
+	// A definition can reference other functions in its own prelude (parameter defaults).
+	if (container.type === 'atrule' && (container as AtRule).params && (container as AtRule).params.includes('--')) {
+		collectDashedFunctionNames((container as AtRule).params, out);
+	}
+
 	container.walk((node) => {
+		if (node.type === 'atrule') {
+			// Dashed functions can appear in at-rule preludes and blocks that are
+			// expanded later, such as `@apply --mixin(--fn())` and mixin parameter
+			// defaults.
+			if (skipNodes.has(node) || !node.params || !node.params.includes('--') || isInsideAny(node, skipNodes)) {
+				return undefined;
+			}
+
+			collectDashedFunctionNames(node.params, out);
+
+			return undefined;
+		}
+
 		if (node.type !== 'decl' || !node.value.includes('--')) {
 			return undefined;
 		}
@@ -197,18 +240,22 @@ function collectCustomFunctionReferences(container: Container, skipNodes: Set<No
 			return undefined;
 		}
 
-		if (onlyUnprocessable && isProcessableDeclaration(node)) {
+		if (onlyUnprocessable && isProcessableDeclaration(node, groups)) {
 			return undefined;
 		}
 
-		for (const token of tokenize({ css: node.value })) {
-			if (isTokenFunction(token) && token[4].value.startsWith('--')) {
-				out.add(token[4].value);
-			}
-		}
+		collectDashedFunctionNames(node.value, out);
 
 		return undefined;
 	});
+}
+
+function collectDashedFunctionNames(value: string, out: Set<string>): void {
+	for (const token of tokenize({ css: value })) {
+		if (isTokenFunction(token) && token[4].value.startsWith('--')) {
+			out.add(token[4].value);
+		}
+	}
 }
 
 function isInsideAny(node: Node, nodes: Set<Node>): boolean {
@@ -239,6 +286,28 @@ function collectConditionalAncestors(atRule: AtRule): Array<AtRule> {
 	return ancestors;
 }
 
+/**
+ * The name of a `@function` rule, even when the rule is not transpilable.
+ */
+function functionRuleName(atRule: AtRule): string | null {
+	if (!atRule.params || !atRule.params.includes('--')) {
+		return null;
+	}
+
+	const prelude = parseComponentValue(tokenize({ css: atRule.params }));
+
+	let name: string;
+	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
+		name = prelude.value[4].value;
+	} else if (isFunctionNode(prelude)) {
+		name = prelude.getName();
+	} else {
+		return null;
+	}
+
+	return name.startsWith('--') ? name : null;
+}
+
 function removeEmptyAncestorBlocks(block: Container | undefined): void {
 	if (!block) {
 		return;
@@ -248,6 +317,11 @@ function removeEmptyAncestorBlocks(block: Container | undefined): void {
 
 	while (currentNode) {
 		if (currentNode.nodes && currentNode.nodes.length > 0) {
+			return;
+		}
+
+		// Empty layer blocks are kept: they still declare the layer order.
+		if (currentNode.type === 'atrule' && (currentNode as AtRule).name.toLowerCase() === 'layer') {
 			return;
 		}
 

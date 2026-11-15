@@ -1,4 +1,15 @@
 /* Every anonymous layer is its own layer and must not collapse into a single layer. */
+@layer a {
+}
+
+@layer {
+}
+
+@layer b {
+}
+
+@layer {
+}
 
 .anon {
 		--_csstools-cf-1k7kax1-0-result: 1px;

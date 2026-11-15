@@ -356,6 +356,91 @@
 					}
 				`,
 			},
+			{
+				name: 'Cycle in a non-matching conditional result is not evaluated',
+				style: `
+					@function --f() {
+						@media (width < 0px) {
+							result: --f();
+						}
+						result: 7;
+					}
+					#target {
+						--actual: --f();
+						--expected: 7;
+					}
+				`,
+			},
+			{
+				name: 'Cycle in a non-matching conditional local is not evaluated',
+				style: `
+					@function --f() {
+						@media (width < 0px) {
+							--x: --f();
+						}
+						result: 7;
+					}
+					#target {
+						--actual: --f();
+						--expected: 7;
+					}
+				`,
+			},
+			{
+				name: 'Cycle in an unused var() fallback is not evaluated',
+				style: `
+					@function --f() {
+						result: var(--x, --f());
+					}
+					#target {
+						--x: PASS;
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle in an unchosen if() branch is not evaluated',
+				style: `
+					@function --f() {
+						result: if(style(--missing): --f(); else: PASS);
+					}
+					#target {
+						--actual: --f();
+						--expected: PASS;
+					}
+				`,
+			},
+			{
+				name: 'Cycle in a losing result declaration is not evaluated',
+				style: `
+					@function --f() {
+						@media (min-width: 0px) {
+							result: --f();
+						}
+						result: 7;
+					}
+					#target {
+						--actual: --f();
+						--expected: 7;
+					}
+				`,
+			},
+			{
+				name: 'Cycle in a losing definition is not evaluated',
+				style: `
+					@function --f() {
+						result: --f();
+					}
+					@function --f() {
+						result: 7;
+					}
+					#target {
+						--actual: --f();
+						--expected: 7;
+					}
+				`,
+			},
 		];
 
 		for (const testCase of testCases) {
