@@ -27,11 +27,11 @@ Unsupported:
 - layered `@mixin` declarations
 - conditional `@mixin` declarations
 - mixin overrides
-- private properties in a passed `@contents` block
 
-`@apply` rules that can not be transpiled are left unchanged, together with all definitions of that mixin name.
+A mixin with an unsupported definition is left unchanged: the definition and every `@apply` of that name stay as they are.
+Rules that apply such a mixin are left unchanged as well, so native support keeps working for them.
 
-Run `@csstools/postcss-private-rule` after this plugin to resolve private properties from the applying style rule.
+Private properties in the applying rule and in `@contents` blocks are transpiled together with the mixin.
 
 ```css
 <example.css>

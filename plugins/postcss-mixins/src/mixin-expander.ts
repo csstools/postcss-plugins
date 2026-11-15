@@ -1,17 +1,11 @@
 import type { AtRule, ChildNode, Helpers, Root, Rule } from 'postcss';
+import type { PrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import { createPrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
-import { IS_APPLY_REGEX, processableApplyRule } from './processable-apply';
+import type { Mixin, MixinDefinitions } from './mixin-definitions';
+import { IS_APPLY_REGEX, IS_NESTING_GROUP_RULE_REGEX, applySiteRule, processableApplyRule } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
-import { mixinRuleName, processableMixinRule } from './processable-mixin';
-
-type Mixin = {
-	name: string,
-	parameters: Array<MixinParameter>,
-	atRule: AtRule,
-};
 
 const IS_CONTENTS_REGEX = /^contents$/i;
-const IS_PRIVATE_REGEX = /^private$/i;
 const IS_LAYER_REGEX = /^layer$/i;
 
 // Mixins can reference each other and duplicate subtrees, which can grow
@@ -21,56 +15,32 @@ const MAX_GENERATED_NODES = 100_000;
 
 /**
  * Deepens mixin expansion behind a small interface:
- * register the mixins once, expand the top level `@apply` rules, then finish.
+ * expand the `@apply` rules of one stylesheet, then finish.
  *
- * Everything else — argument capture, wrapper construction, private scoping,
- * `@contents` substitution, nested recursion and the cycle guard — is internal.
+ * Everything else — argument capture, wrapper construction, private scoping and
+ * `@contents` substitution — is internal.
  */
 export class MixinExpander {
-	private mixins: Map<string, Mixin> = new Map();
-	private privateTranspiler = createPrivatePropertyTranspiler({ namespace: 'm', allowUntranspiledMixins: true });
+	private definitions: MixinDefinitions;
+	private preserve: boolean;
+	private expansionTranspiler: PrivatePropertyTranspiler;
+	private authorTranspiler: PrivatePropertyTranspiler;
 	private registrations: Array<AtRule> = [];
 	private argumentCounter = 0;
 	private desugaredNestingRules: Set<Rule> = new Set();
-	private expanding: Set<string> = new Set();
+	private expansionRules: Set<Rule> = new Set();
+	private applyingRules: Set<Rule> = new Set();
 	private generatedNodes = 0;
 
-	/** The mixin at rules that were registered, so a caller can remove or preserve them. */
-	registeredMixins(): Array<Mixin> {
-		return Array.from(this.mixins.values());
+	constructor(definitions: MixinDefinitions, preserve: boolean) {
+		this.definitions = definitions;
+		this.preserve = preserve;
+		this.expansionTranspiler = createPrivatePropertyTranspiler({ namespace: 'm', allowUntranspiledMixins: true });
+		this.authorTranspiler = createPrivatePropertyTranspiler({ namespace: 'p', allowUntranspiledMixins: true, preserve });
 	}
 
-	registerMixins(atRules: Array<AtRule>): void {
-		const seen = new Set<string>();
-
-		for (const atRule of atRules) {
-			const name = mixinRuleName(atRule);
-			if (!name) {
-				continue;
-			}
-
-			if (seen.has(name)) {
-				// Multiple definitions are resolved by the browser cascade.
-				// Do not expand any call for this name.
-				this.mixins.delete(name);
-				continue;
-			}
-
-			seen.add(name);
-
-			const parsed = processableMixinRule(atRule);
-			if (!parsed) {
-				// The name has a definition that can not be transpiled.
-				// Do not expand any call for this name.
-				continue;
-			}
-
-			this.mixins.set(parsed.name, Object.assign({}, parsed, { atRule }));
-		}
-	}
-
-	/** Expands all top level `@apply` rules in `root`, except those authored inside a `@mixin`. */
-	expandAll(root: Root, preserve: boolean, helpers: Helpers): void {
+	/** Expands all `@apply` rules in `root`, except those authored inside a `@mixin`. */
+	expandAll(root: Root, helpers: Helpers): void {
 		this.generatedNodes = 0;
 
 		const applies: Array<AtRule> = [];
@@ -82,22 +52,71 @@ export class MixinExpander {
 			applies.push(atRule);
 		});
 
+		const appliesByRule: Map<Rule, Array<AtRule>> = new Map();
 		for (const atRule of applies) {
-			if (!atRule.parent) {
+			const apply = processableApplyRule(atRule);
+			if (!apply) {
 				continue;
 			}
 
-			this.expand(atRule, preserve, helpers);
+			const rule = applySiteRule(atRule);
+			if (!rule) {
+				continue;
+			}
+
+			const ruleApplies = appliesByRule.get(rule) ?? [];
+			ruleApplies.push(atRule);
+			appliesByRule.set(rule, ruleApplies);
+		}
+
+		// A rule with an `@apply` for a mixin that can not be transpiled must stay
+		// untouched, together with every rule it is nested in. Expanding the other
+		// rules that still apply to the same elements would either drop styles or
+		// mix native and transpiled output.
+		const blocked: Set<Rule> = new Set();
+		for (const [rule, ruleApplies] of appliesByRule) {
+			for (const atRule of ruleApplies) {
+				const apply = processableApplyRule(atRule);
+				if (!apply || !this.definitions.unsupported.has(apply.name)) {
+					continue;
+				}
+
+				blockRuleAndAncestors(rule, blocked);
+				break;
+			}
+		}
+
+		for (const [rule, ruleApplies] of appliesByRule) {
+			if (isBlocked(rule, blocked)) {
+				continue;
+			}
+
+			for (const atRule of ruleApplies) {
+				this.expand(atRule, this.preserve, helpers);
+			}
+
+			collectRuleAndAncestors(rule, this.applyingRules);
 		}
 	}
 
-	/** Removes temporary wrappers and appends registrations to the root. */
+	/** Removes temporary wrappers, transpiles private properties and appends registrations to the root. */
 	finish(root: Root): void {
 		for (const wrapper of this.desugaredNestingRules) {
 			wrapper.replaceWith(...wrapper.nodes || []);
 		}
 
 		this.desugaredNestingRules.clear();
+
+		for (const rule of this.applyingRules) {
+			if (!isOutermost(rule, this.applyingRules)) {
+				continue;
+			}
+
+			this.registrations.push(...this.authorTranspiler.transpile([rule]));
+		}
+
+		this.applyingRules.clear();
+		this.expansionRules.clear();
 
 		root.append(...this.registrations);
 		this.registrations = [];
@@ -109,25 +128,21 @@ export class MixinExpander {
 			return;
 		}
 
-		const mixin = this.mixins.get(apply.name);
+		const mixin = this.definitions.mixins.get(apply.name);
 		if (!mixin) {
 			return;
 		}
 
-		// Guard against mixins that (indirectly) apply themselves.
-		if (this.expanding.has(apply.name)) {
-			return;
-		}
-
 		// Passing more arguments than the mixin accepts is invalid.
+		// The application does nothing, so the `@apply` rule is left in place.
 		if (apply.arguments.length > mixin.parameters.length) {
 			return;
 		}
 
-		this.expanding.add(apply.name);
+		const siteRule = applySiteRule(atRule);
+		const hasContents = atRule.nodes !== undefined;
 
 		const inserted = this.buildBody(atRule, apply.arguments, mixin, helpers);
-
 		this.spendBudget(countNodes(inserted));
 
 		// Insert as a batch: PostCSS resolves the index of `atRule` with
@@ -138,17 +153,13 @@ export class MixinExpander {
 			atRule.remove();
 		}
 
-		// References in the mixin body can point at parameters or private
-		// properties of the mixin and of the rule it is applied to.
-		this.transpile(inserted);
+		this.registerExpansionRules(inserted);
+		this.transpileExpansion(inserted);
 
 		// `@contents` is substituted after insertion so the replaced at-rule has a parent.
-		// It is substituted after transpilation so passed-in contents are not scoped to the mixin.
-		this.replaceContents(inserted, atRule.nodes !== undefined, atRule.nodes || []);
+		this.replaceContents(inserted, hasContents, atRule.nodes || [], siteRule);
 
 		this.expandNested(inserted, helpers);
-
-		this.expanding.delete(apply.name);
 	}
 
 	/** Captures arguments, scopes parameters and `@private` rules, and returns the nodes to insert. */
@@ -251,8 +262,13 @@ export class MixinExpander {
 	}
 
 	/** Only `@private` rules that originate from mixins are transpiled here. */
-	private transpile(inserted: Array<ChildNode>): void {
-		this.registrations.push(...this.privateTranspiler.transpile(inserted));
+	private transpileExpansion(inserted: Array<ChildNode>): void {
+		this.registrations.push(...this.expansionTranspiler.transpile(inserted));
+	}
+
+	private transpileContents(contents: Array<ChildNode>, siteRule: Rule): void {
+		const transpiler = this.expansionRules.has(siteRule) ? this.expansionTranspiler : this.authorTranspiler;
+		this.registrations.push(...transpiler.transpile(contents, { scope: siteRule }));
 	}
 
 	/** Mixins applied within this mixin are resolved in the context of the arguments above. */
@@ -272,7 +288,7 @@ export class MixinExpander {
 	}
 
 	/** Substitutes `@contents` and charges the budget for the duplicated nodes. */
-	private replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>): void {
+	private replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>, siteRule: Rule | null): void {
 		const contentsRules: Array<AtRule> = [];
 		for (const node of nodes) {
 			collectMatches(node, IS_CONTENTS_REGEX, contentsRules);
@@ -288,11 +304,30 @@ export class MixinExpander {
 			contentsRule.before(substituted);
 			contentsRule.remove();
 
+			this.registerExpansionRules(substituted);
+
+			if (hasContents && siteRule) {
+				// Passed-in contents are scoped to the apply site.
+				this.transpileContents(substituted, siteRule);
+				continue;
+			}
+
 			// A fallback block is authored in the mixin body. Declarations in it are
 			// part of the mixin scope and may define private properties.
-			// Passed-in contents are scoped to the apply site and are left alone.
-			if (!hasContents) {
-				this.transpile(substituted);
+			this.transpileExpansion(substituted);
+		}
+	}
+
+	private registerExpansionRules(nodes: Array<ChildNode>): void {
+		for (const node of nodes) {
+			if (node.type === 'rule') {
+				this.expansionRules.add(node);
+			}
+
+			if (node.type === 'rule' || node.type === 'atrule') {
+				node.walkRules((rule) => {
+					this.expansionRules.add(rule);
+				});
 			}
 		}
 	}
@@ -353,7 +388,7 @@ function countNodes(nodes: Array<ChildNode>): number {
 
 function hasPrivateRules(atRule: AtRule): boolean {
 	let result = false;
-	atRule.walkAtRules(IS_PRIVATE_REGEX, () => {
+	atRule.walkAtRules(/^private$/i, () => {
 		result = true;
 	});
 
@@ -370,6 +405,70 @@ function collectMatches(node: ChildNode, name: RegExp, out: Array<AtRule>): void
 			out.push(atRule);
 		});
 	}
+}
+
+function blockRuleAndAncestors(rule: Rule, blocked: Set<Rule>): void {
+	let current: Rule | null = rule;
+
+	while (current) {
+		blocked.add(current);
+		current = parentStyleRule(current);
+	}
+}
+
+function isBlocked(rule: Rule, blocked: Set<Rule>): boolean {
+	let current: Rule | null = rule;
+
+	while (current) {
+		if (blocked.has(current)) {
+			return true;
+		}
+
+		current = parentStyleRule(current);
+	}
+
+	return false;
+}
+
+function collectRuleAndAncestors(rule: Rule, out: Set<Rule>): void {
+	let current: Rule | null = rule;
+
+	while (current) {
+		out.add(current);
+		current = parentStyleRule(current);
+	}
+}
+
+function isOutermost(rule: Rule, rules: Set<Rule>): boolean {
+	let parent = parentStyleRule(rule);
+
+	while (parent) {
+		if (rules.has(parent)) {
+			return false;
+		}
+
+		parent = parentStyleRule(parent);
+	}
+
+	return true;
+}
+
+function parentStyleRule(rule: Rule): Rule | null {
+	let parent = rule.parent;
+
+	while (parent) {
+		if (parent.type === 'rule') {
+			return parent;
+		}
+
+		if (parent.type !== 'atrule' || !IS_NESTING_GROUP_RULE_REGEX.test(parent.name)) {
+			return null;
+		}
+
+		parent = parent.parent;
+	}
+
+	return null;
 }
 
 function hasMixinAncestor(atRule: AtRule): boolean {

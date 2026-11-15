@@ -1,6 +1,6 @@
 import { isFunctionNode, isTokenNode, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
 import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
-import type { AtRule } from 'postcss';
+import type { AtRule, Rule } from 'postcss';
 import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
 
 export const IS_APPLY_REGEX = /^apply$/i;
@@ -10,15 +10,16 @@ export type ProcessableApply = {
 	arguments: Array<string>,
 };
 
-const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+export const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
-	if (!atRule.params || !atRule.params.includes('--')) {
+	if (!atRule.params) {
 		return false;
 	}
 
-	if (!isInStyleRule(atRule)) {
+	const styleRule = applySiteRule(atRule);
+	if (!styleRule) {
 		return false;
 	}
 
@@ -54,22 +55,26 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	};
 }
 
-function isInStyleRule(atRule: AtRule): boolean {
+/**
+ * The style rule an `@apply` rule is in, or `null` when the `@apply` is not in a
+ * style rule or nested group rule.
+ */
+export function applySiteRule(atRule: AtRule): Rule | null {
 	let parent = atRule.parent;
 
 	while (parent) {
 		if (parent.type === 'rule') {
-			return !isKeyframesRule(parent);
+			return isKeyframesRule(parent) ? null : parent;
 		}
 
 		if (parent.type !== 'atrule' || !IS_NESTING_GROUP_RULE_REGEX.test(parent.name)) {
-			return false;
+			return null;
 		}
 
 		parent = parent.parent;
 	}
 
-	return false;
+	return null;
 }
 
 function isKeyframesRule(rule: AtRule['parent']): boolean {

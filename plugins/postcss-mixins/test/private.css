@@ -42,3 +42,19 @@
 .nested-private {
 	@apply --outer-private;
 }
+
+@function --function-local() {
+	--value: var(--applying-private-color);
+	result: var(--value);
+}
+
+@mixin --applying-private() {
+	color: var(--applying-private-color);
+}
+
+.applying-private {
+	@private {
+		--applying-private-color: green;
+	}
+	@apply --applying-private;
+}

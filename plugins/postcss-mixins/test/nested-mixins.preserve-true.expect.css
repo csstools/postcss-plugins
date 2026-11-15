@@ -59,7 +59,6 @@
 
 .d {
 	@apply --cycle-a;
-	@apply --cycle-a;
 }
 
 @mixin --nested-argument-inner() {

@@ -95,6 +95,10 @@
 	outline-color: var(--_csstools-m-165tpc7-m--color);
 }
 
+@mixin --one(--color) {
+	color: var(--color);
+}
+
 .trailing-comma-single-argument {
 	--_csstools-m-165tpc7-n--arg-e: red;
 	--_csstools-m-165tpc7-o--color: var(--_csstools-m-165tpc7-n--arg-e);

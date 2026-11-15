@@ -13,22 +13,17 @@ export type ProcessableMixin = {
 	parameters: Array<MixinParameter>,
 };
 
-const IS_UNSUPPORTED_CHILD_RULE = /^result$/i;
-
 /**
- * The name of a `@mixin` rule, even when the rule is not transpilable.
+ * The dashed name in a `@mixin` or `@apply` prelude, even when the rule is not
+ * transpilable.
  */
-export function mixinRuleName(atRule: AtRule): string | null {
-	if (atRule.name.toLowerCase() !== 'mixin') {
-		return null;
-	}
-
-	if (!atRule.params || !atRule.params.includes('--')) {
+export function dashedNameFromParams(params: string): string | null {
+	if (!params) {
 		return null;
 	}
 
 	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
+		css: params,
 	}));
 
 	let name: string;
@@ -44,6 +39,17 @@ export function mixinRuleName(atRule: AtRule): string | null {
 	return name.startsWith('--') ? name : null;
 }
 
+/**
+ * The name of a `@mixin` rule, even when the rule is not transpilable.
+ */
+export function mixinRuleName(atRule: AtRule): string | null {
+	if (atRule.name.toLowerCase() !== 'mixin') {
+		return null;
+	}
+
+	return dashedNameFromParams(atRule.params);
+}
+
 export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 	const name = mixinRuleName(atRule);
 	if (!name) {
@@ -56,18 +62,6 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 
 	// TODO: support conditional @mixin declarations
 	if (atRule.parent !== atRule.root()) {
-		return false;
-	}
-
-	// `@result` was dropped from the specification, mixins with `@result` are ignored.
-	let hasUnsupportedChildRule = false;
-	atRule.walk((node) => {
-		if (node.type === 'atrule' && IS_UNSUPPORTED_CHILD_RULE.test(node.name)) {
-			hasUnsupportedChildRule = true;
-		}
-	});
-
-	if (hasUnsupportedChildRule) {
 		return false;
 	}
 

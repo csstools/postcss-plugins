@@ -181,3 +181,39 @@
 	}
 	@apply --fallback-nested-rule(red);
 }
+
+@mixin --contents-inner-private() {
+	@contents;
+}
+
+@mixin --contents-outer-private(--color) {
+	@apply --contents-inner-private {
+		@private {
+			--local: var(--color);
+		}
+		color: var(--local);
+	}
+}
+
+.contents-outer-private {
+	--_csstools-m-1i0jh25-a--arg-4: red;
+	--_csstools-m-1i0jh25-b--color: var(--_csstools-m-1i0jh25-a--arg-4);
+	--_csstools-m-1i0jh25-b--local: var(--_csstools-m-1i0jh25-b--color);
+	color: var(--_csstools-m-1i0jh25-b--local);
+	@apply --contents-outer-private(red);
+}
+
+@mixin --contents-apply-private() {
+	@contents;
+}
+
+.contents-apply-private {
+		--_csstools-p-1i0jh25-0--size: 1px;
+	@private {
+		--size: 1px;
+	}
+		width: var(--_csstools-p-1i0jh25-0--size);
+	@apply --contents-apply-private {
+		width: var(--size);
+	}
+}

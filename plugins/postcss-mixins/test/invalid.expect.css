@@ -1,3 +1,7 @@
+@mixin --one(--color) {
+	color: var(--color);
+}
+
 .too-many-arguments {
 	@apply --one(green, blue);
 }
@@ -12,6 +16,10 @@
 
 .middle-empty-argument {
 	@apply --one(red,,blue);
+}
+
+@mixin --defined() {
+	color: green;
 }
 
 @apply --defined;

@@ -27,6 +27,17 @@ const registrations = transpiler.transpile(root.nodes);
 root.append(...registrations);
 ```
 
+Nodes that are substituted into a style rule but are not its children, for example the contents of
+an `@contents` block, can be transpiled in the scope of that style rule:
+
+```ts
+transpiler.transpile(nodes, { scope: styleRule });
+```
+
+With `preserve: true` the `@private` rules are kept and references inside `@apply` and `@contents`
+blocks are left alone. Transpiled declarations are still hoisted, so the original notation keeps
+working where `@private` is supported.
+
 `@property` rules are only hoisted out of `@layer`, `@media` and `@supports` group rules. Registrations inside `@container`, `@scope` or `@starting-style` are left untouched, because those conditions cannot be preserved at the top level.
 
 [cli-url]: https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test

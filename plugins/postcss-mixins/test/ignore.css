@@ -10,16 +10,6 @@
 	@apply --ignore-a;
 }
 
-@mixin --ignore-b {
-	@result {
-		color: green;
-	}
-}
-
-.ignore-b {
-	@apply --ignore-b;
-}
-
 @media screen {
 	@mixin --ignore-c {
 		color: red;
@@ -60,4 +50,18 @@
 
 .ignore-i {
 	@apply --ignore-i;
+}
+
+@mixin --ignore-k() {
+	color: red;
+}
+
+@media screen {
+	@mixin --ignore-l() {
+		@apply --ignore-k;
+	}
+}
+
+.ignore-l {
+	@apply --ignore-l;
 }

@@ -9,6 +9,8 @@
 - Ignore invalid `<declaration-value>` values and `--` parameter names, and leave mixins untouched when a name has several definitions or one that can not be transpiled
 - Drop `@layer` rules from mixin bodies
 - Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation and a separate namespace for generated names
+- Transpile private properties in the applying rule and in passed `@contents` blocks
+- Keep mixin definitions that are still referenced by an `@apply` rule in the output, and leave every `@apply` of a mixin that can not be transpiled unchanged
 
 ### 1.1.0
 

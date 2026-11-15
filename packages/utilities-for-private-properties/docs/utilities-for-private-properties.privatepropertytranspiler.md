@@ -8,6 +8,8 @@
 
 ```typescript
 export type PrivatePropertyTranspiler = {
-    transpile: (nodes: Array<ChildNode>) => Array<AtRule>;
+    transpile: (nodes: Array<ChildNode>, options?: PrivatePropertyTranspileOptions) => Array<AtRule>;
 };
 ```
+**References:** [PrivatePropertyTranspileOptions](./utilities-for-private-properties.privatepropertytranspileoptions.md)
+

@@ -77,3 +77,15 @@
 		color: var(--_csstools-m-1i0jh25-9--color);
 	}
 }
+
+.contents-outer-private {
+	--_csstools-m-1i0jh25-a--arg-4: red;
+	--_csstools-m-1i0jh25-b--color: var(--_csstools-m-1i0jh25-a--arg-4);
+	--_csstools-m-1i0jh25-b--local: var(--_csstools-m-1i0jh25-b--color);
+	color: var(--_csstools-m-1i0jh25-b--local);
+}
+
+.contents-apply-private {
+		--_csstools-p-1i0jh25-0--size: 1px;
+		width: var(--_csstools-p-1i0jh25-0--size)
+}

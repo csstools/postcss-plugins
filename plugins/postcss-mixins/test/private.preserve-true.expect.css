@@ -52,3 +52,21 @@
 	height: var(--_csstools-m-pjvzd8-3--y);
 	@apply --outer-private;
 }
+
+@function --function-local() {
+	--value: var(--applying-private-color);
+	result: var(--value);
+}
+
+@mixin --applying-private() {
+	color: var(--applying-private-color);
+}
+
+.applying-private {
+		--_csstools-p-pjvzd8-0--applying-private-color: green;
+	@private {
+		--applying-private-color: green;
+	}
+	color: var(--_csstools-p-pjvzd8-0--applying-private-color);
+	@apply --applying-private;
+}

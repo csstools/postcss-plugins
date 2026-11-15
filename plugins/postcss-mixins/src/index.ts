@@ -1,4 +1,5 @@
-import type { AtRule, Plugin, PluginCreator } from 'postcss';
+import type { AtRule, PluginCreator } from 'postcss';
+import { collectMixinDefinitions, removeUnusedMixins } from './mixin-definitions';
 import { MixinExpander } from './mixin-expander';
 
 /** postcss-mixins plugin options */
@@ -19,29 +20,21 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 	return {
 		postcssPlugin: 'postcss-mixins',
-		prepare(): Plugin {
-			const expander = new MixinExpander();
+		Once(root, helpers): void {
+			const atRules: Array<AtRule> = [];
+			root.walkAtRules((atRule) => {
+				atRules.push(atRule);
+			});
 
-			return {
-				postcssPlugin: 'mixins',
-				Once(root, helpers): void {
-					const atRules: Array<AtRule> = [];
-					root.walkAtRules((atRule) => {
-						atRules.push(atRule);
-					});
+			const definitions = collectMixinDefinitions(atRules);
+			const expander = new MixinExpander(definitions, options.preserve === true);
 
-					expander.registerMixins(atRules);
+			expander.expandAll(root, helpers);
+			expander.finish(root);
 
-					if (!options.preserve) {
-						for (const mixin of expander.registeredMixins()) {
-							mixin.atRule.remove();
-						}
-					}
-
-					expander.expandAll(root, options.preserve === true, helpers);
-					expander.finish(root);
-				},
-			};
+			if (!options.preserve) {
+				removeUnusedMixins(root, definitions);
+			}
 		},
 	};
 };

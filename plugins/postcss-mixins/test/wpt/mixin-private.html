@@ -18,6 +18,9 @@
 	<target class="fallback-argument"></target>
 	<target class="contents-outer"></target>
 	<target class="fallback-private"></target>
+	<target class="applying-private"></target>
+	<target class="contents-private"></target>
+	<target class="contents-argument-private"></target>
 	<div id="log"></div>
 	<script type="module">
 		window.addEventListener('click', () => {
@@ -169,6 +172,62 @@
 						}
 						.conditional-registration {
 							@apply --conditional-registration;
+						}
+					`,
+				},
+				{
+					title: 'Private properties in the applying rule',
+					target: '.applying-private',
+					property: 'color',
+					style: `
+						@mixin --applying-private() {
+							color: var(--applying-private-color);
+						}
+						.applying-private {
+							@private {
+								--applying-private-color: green;
+							}
+							@apply --applying-private;
+						}
+					`,
+				},
+				{
+					title: 'Private properties from a mixin body in a passed contents block',
+					target: '.contents-private',
+					property: 'color',
+					style: `
+						@mixin --contents-private-inner() {
+							@contents;
+						}
+						@mixin --contents-private-outer(--color) {
+							@apply --contents-private-inner {
+								@private {
+									--local: var(--color);
+								}
+								color: var(--local);
+							}
+						}
+						.contents-private {
+							@apply --contents-private-outer(green);
+						}
+					`,
+				},
+				{
+					title: 'Private properties from the applying rule in a passed contents block',
+					target: '.contents-argument-private',
+					property: 'width',
+					expected: '10px',
+					style: `
+						@mixin --contents-argument-private() {
+							@contents;
+						}
+						.contents-argument-private {
+							@private {
+								--size: 10px;
+							}
+							@apply --contents-argument-private {
+								width: var(--size);
+							}
 						}
 					`,
 				},

@@ -149,3 +149,33 @@
 .fallback-nested-rule {
 	@apply --fallback-nested-rule(red);
 }
+
+@mixin --contents-inner-private() {
+	@contents;
+}
+
+@mixin --contents-outer-private(--color) {
+	@apply --contents-inner-private {
+		@private {
+			--local: var(--color);
+		}
+		color: var(--local);
+	}
+}
+
+.contents-outer-private {
+	@apply --contents-outer-private(red);
+}
+
+@mixin --contents-apply-private() {
+	@contents;
+}
+
+.contents-apply-private {
+	@private {
+		--size: 1px;
+	}
+	@apply --contents-apply-private {
+		width: var(--size);
+	}
+}

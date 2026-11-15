@@ -20,6 +20,14 @@
 	color: var(--_csstools-m-1rmdrz7-5--color);
 }
 
+@mixin --cycle-a() {
+	@apply --cycle-b;
+}
+
+@mixin --cycle-b() {
+	@apply --cycle-a;
+}
+
 .d {
 	@apply --cycle-a;
 }
