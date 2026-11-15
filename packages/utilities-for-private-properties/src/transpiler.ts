@@ -3,20 +3,40 @@ import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorith
 import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
 import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
-import { collectPropertyRegistrations, hoistPropertyRegistrations } from '@csstools/utilities-for-property-registrations';
+import { collectPropertyRegistrations, registeredCustomPropertyNames, rewriteCustomPropertyNames, wrapInConditionalGroupRules } from '@csstools/utilities-for-property-registrations';
 
 const HAS_PRIVATE_REFERENCE_REGEX = /\b(var|if|style|inherit)\(/i;
+const IS_APPLY_RULE_REGEX = /^apply$/i;
 const IS_CONTAINER_RULE_REGEX = /^container$/i;
+const IS_CONTENTS_RULE_REGEX = /^contents$/i;
+const IS_FUNCTION_RULE_REGEX = /^function$/i;
 const IS_INHERIT_FUNCTION_REGEX = /^inherit$/i;
 const IS_KEYFRAMES_RULE_REGEX = /^keyframes$/i;
 const IS_LAYER_RULE_REGEX = /^layer$/i;
 const IS_MEDIA_RULE_REGEX = /^media$/i;
+const IS_MIXIN_RULE_REGEX = /^mixin$/i;
 const IS_NESTED_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 const IS_PRIVATE_RULE_REGEX = /^private$/i;
+const IS_PROPERTY_LIST_REGEX = /^(transition|transition-property)$/i;
 const IS_PROPERTY_RULE_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_SUPPORTS_RULE_REGEX = /^supports$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
+
+export type PrivatePropertyTranspilerOptions = {
+	/** Namespace for generated names. */
+	namespace?: string,
+	/**
+	 * Whether `@apply` and `@contents` rules in the nodes are expanded later.
+	 *
+	 * When `true`, style rules that contain them are still transpiled. This is
+	 * used by `postcss-mixins`, which expands `@apply` and `@contents` itself.
+	 * Defaults to `false`: style rules with `@apply` or `@contents` are left
+	 * untouched because those can substitute declarations that reference
+	 * private properties.
+	 */
+	allowUntranspiledMixins?: boolean,
+};
 
 type RulePrivatePropertyNames = {
 	prefix: string,
@@ -26,17 +46,24 @@ type RulePrivatePropertyNames = {
 export class Transpiler {
 	private privatePropertyNames: WeakMap<Rule, RulePrivatePropertyNames> = new WeakMap();
 
+	private skippedStyleRules: WeakSet<Rule> = new WeakSet();
+
 	private counter = 0;
 
 	private namespace: string;
 
+	private allowUntranspiledMixins: boolean;
+
 	private propertyRegistrations: Array<AtRule> = [];
 
-	constructor(namespace = 'p') {
-		this.namespace = namespace;
+	constructor(options?: PrivatePropertyTranspilerOptions) {
+		this.namespace = options?.namespace || 'p';
+		this.allowUntranspiledMixins = options?.allowUntranspiledMixins === true;
 	}
 
 	transpile(nodes: Array<ChildNode>): Array<AtRule> {
+		this.collectSkippedStyleRules(nodes);
+
 		for (const node of nodes) {
 			if (node.type === 'atrule' && IS_PRIVATE_RULE_REGEX.test(node.name)) {
 				this.transpilePrivateRule(node);
@@ -76,16 +103,13 @@ export class Transpiler {
 
 	private transpilePrivateRule(atRule: AtRule): void {
 		const styleRule = findStyleRule(atRule);
-		if (!styleRule) {
+		if (!styleRule || this.isSkipped(atRule)) {
 			return;
 		}
 
 		const rulePrivatePropertyNames = this.privatePropertyNamesForRule(styleRule);
-		const nestedGroupRules = nestedGroupRulesBetween(atRule, styleRule);
 
-		if (nestedGroupRules.every(canWrapRegistration)) {
-			this.hoistPrivatePropertyRegistrations(atRule, rulePrivatePropertyNames, nestedGroupRules);
-		}
+		this.hoistPrivatePropertyRegistrations(atRule, rulePrivatePropertyNames);
 
 		this.cleanPrivateRule(atRule, rulePrivatePropertyNames);
 
@@ -98,23 +122,112 @@ export class Transpiler {
 		this.removePrivateRule(atRule, styleRule);
 	}
 
-	private hoistPrivatePropertyRegistrations(atRule: AtRule, rulePrivatePropertyNames: RulePrivatePropertyNames, nestedGroupRules: Array<AtRule>): void {
-		const collected = collectPropertyRegistrations(atRule, {
-			isConditionalGroupRule: canWrapRegistration,
-			shouldDescendInto: canWrapRegistration,
-		});
+	/**
+	 * Leave style rules untouched when a registration can not be hoisted without changing layer order.
+	 *
+	 * A hoisted registration keeps every `@layer` in its chain. Anonymous layers have no name,
+	 * so their full layer name can not be reconstructed.
+	 */
+	private collectSkippedStyleRules(nodes: Array<ChildNode>): void {
+		const styleRules: Array<Rule> = [];
 
-		const { registrations, originalNames } = hoistPropertyRegistrations(collected, {
-			rewriteCustomPropertyName: (name) => `${rulePrivatePropertyNames.prefix}${name}`,
-			conditionalGroupRules: nestedGroupRules,
-			removeOriginal: true,
-		});
+		for (const node of nodes) {
+			if (node.type === 'rule') {
+				styleRules.push(node);
+			}
 
-		for (const name of originalNames) {
-			rulePrivatePropertyNames.names.add(name);
+			if (isContainer(node)) {
+				node.walkRules((rule) => {
+					styleRules.push(rule);
+				});
+			}
 		}
 
-		this.propertyRegistrations.push(...registrations);
+		for (const styleRule of styleRules) {
+			if (isInsideMixinOrFunction(styleRule)) {
+				this.skipStyleRule(styleRule);
+				continue;
+			}
+
+			// A mixin that is still present (unsupported or authored for native support)
+			// can substitute declarations that reference private properties. Leave the
+			// whole subtree untouched so the browser keeps handling it.
+			if (!this.allowUntranspiledMixins && hasUntranspiledMixin(styleRule)) {
+				this.skipStyleRule(styleRule);
+				continue;
+			}
+
+			let hasAnonymousLayer = false;
+
+			styleRule.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
+				if (hasAnonymousLayer) {
+					return;
+				}
+
+				if (findStyleRule(atRule) !== styleRule) {
+					return;
+				}
+
+				const collected = collectPropertyRegistrations(atRule, {
+					isConditionalGroupRule: () => false,
+					shouldDescendInto: canContainPrivateContents,
+				});
+
+				for (const { propertyRule } of collected) {
+					if (registeredCustomPropertyNames(propertyRule).length && registrationWrappers(propertyRule).hasAnonymousLayer) {
+						hasAnonymousLayer = true;
+						return;
+					}
+				}
+			});
+
+			if (hasAnonymousLayer) {
+				this.skipStyleRule(styleRule);
+			}
+		}
+	}
+
+	private skipStyleRule(styleRule: Rule): void {
+		this.skippedStyleRules.add(styleRule);
+
+		for (const ancestor of styleRuleAncestors(styleRule)) {
+			this.skippedStyleRules.add(ancestor);
+		}
+	}
+
+	private isSkipped(node: Node): boolean {
+		for (const styleRule of styleRuleAncestors(node)) {
+			if (this.skippedStyleRules.has(styleRule)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private hoistPrivatePropertyRegistrations(atRule: AtRule, rulePrivatePropertyNames: RulePrivatePropertyNames): void {
+		const collected = collectPropertyRegistrations(atRule, {
+			isConditionalGroupRule: () => false,
+			shouldDescendInto: canContainPrivateContents,
+		});
+
+		for (const { propertyRule } of collected) {
+			const registration = propertyRule.clone();
+			const originalNames = rewriteCustomPropertyNames(registration, (name) => `${rulePrivatePropertyNames.prefix}${name}`);
+			if (!originalNames) {
+				continue;
+			}
+
+			const { wrappers } = registrationWrappers(propertyRule);
+
+			propertyRule.remove();
+
+			for (const name of originalNames) {
+				rulePrivatePropertyNames.names.add(name);
+			}
+
+			this.propertyRegistrations.push(...wrapInConditionalGroupRules([registration], wrappers));
+		}
 	}
 
 	private privatePropertyNamesForRule(rule: Rule): RulePrivatePropertyNames {
@@ -135,6 +248,10 @@ export class Transpiler {
 	}
 
 	private prefixForPropertyName(node: Node, propertyName: string): string | false {
+		if (this.isSkipped(node)) {
+			return false;
+		}
+
 		for (const styleRule of styleRuleAncestors(node)) {
 			const rulePrivatePropertyNames = this.privatePropertyNames.get(styleRule);
 			if (rulePrivatePropertyNames?.names.has(propertyName)) {
@@ -146,6 +263,10 @@ export class Transpiler {
 	}
 
 	private hasPrivatePropertyNames(node: Node): boolean {
+		if (this.isSkipped(node)) {
+			return false;
+		}
+
 		for (const styleRule of styleRuleAncestors(node)) {
 			if (this.privatePropertyNames.get(styleRule)?.names.size) {
 				return true;
@@ -217,7 +338,54 @@ export class Transpiler {
 
 	private transpileDeclaration(decl: Declaration): void {
 		this.transpileDeclarationPropertyName(decl);
+
+		if (IS_PROPERTY_LIST_REGEX.test(decl.prop)) {
+			this.transpilePropertyListValue(decl);
+		}
+
 		this.transpileDeclarationValue(decl);
+	}
+
+	/**
+	 * Rename private property names in `transition` and `transition-property` values.
+	 *
+	 * A registered private property can be transitioned, and the property name in the value
+	 * is a reference to it.
+	 */
+	private transpilePropertyListValue(decl: Declaration): void {
+		if (!decl.value.includes('--')) {
+			return;
+		}
+
+		if (!this.hasPrivatePropertyNames(decl)) {
+			return;
+		}
+
+		const componentValues = parseListOfComponentValues(tokenize({ css: decl.value }));
+		let changed = false;
+
+		walk(componentValues, (entry) => {
+			if (!isTokenNode(entry.node) || !isTokenIdent(entry.node.value)) {
+				return;
+			}
+
+			const propertyName = entry.node.value[4].value;
+			if (!propertyName.startsWith('--')) {
+				return;
+			}
+
+			const prefix = this.prefixForPropertyName(decl, propertyName);
+			if (!prefix) {
+				return;
+			}
+
+			mutateIdent(entry.node.value, `${prefix}${propertyName}`);
+			changed = true;
+		});
+
+		if (changed) {
+			decl.value = stringify([componentValues]);
+		}
 	}
 
 	private transpileDeclarationPropertyName(decl: Declaration): void {
@@ -323,23 +491,77 @@ export class Transpiler {
 	}
 }
 
-function canWrapRegistration(atRule: AtRule): boolean {
-	return IS_LAYER_RULE_REGEX.test(atRule.name) || IS_MEDIA_RULE_REGEX.test(atRule.name) || IS_SUPPORTS_RULE_REGEX.test(atRule.name);
+// `@private` contents can only be custom properties, nested group rules and `@property` rules.
+function canContainPrivateContents(atRule: AtRule): boolean {
+	return !!atRule.nodes && IS_NESTED_GROUP_RULE_REGEX.test(atRule.name);
 }
 
-function nestedGroupRulesBetween(atRule: AtRule, styleRule: Rule): Array<AtRule> {
-	const nestedGroupRules: Array<AtRule> = [];
-	let node: Container<ChildNode> | Document | undefined = atRule.parent;
+function hasUntranspiledMixin(styleRule: Rule): boolean {
+	let found = false;
 
-	while (node && node !== styleRule) {
-		if (node.type === 'atrule') {
-			nestedGroupRules.push(node as AtRule);
+	styleRule.walkAtRules((atRule) => {
+		if (IS_APPLY_RULE_REGEX.test(atRule.name) || IS_CONTENTS_RULE_REGEX.test(atRule.name)) {
+			found = true;
+		}
+	});
+
+	return found;
+}
+
+function isInsideMixinOrFunction(node: Node): boolean {
+	let parent: Container<ChildNode> | Document | undefined = node.parent;
+
+	while (parent) {
+		if (parent.type === 'atrule' && (IS_MIXIN_RULE_REGEX.test((parent as AtRule).name) || IS_FUNCTION_RULE_REGEX.test((parent as AtRule).name))) {
+			return true;
 		}
 
-		node = node.parent;
+		parent = parent.parent;
 	}
 
-	return nestedGroupRules.reverse();
+	return false;
+}
+
+type RegistrationWrappers = {
+	wrappers: Array<AtRule>,
+	hasAnonymousLayer: boolean,
+};
+
+/**
+ * The wrappers a hoisted registration must keep.
+ *
+ * `@media` and `@supports` are global conditions: the registration must stay conditional.
+ * `@layer` is kept to preserve layer precedence between registrations of the same name.
+ * `@container`, `@scope` and `@starting-style` do not constrain name-defining at-rules,
+ * so they are not kept.
+ *
+ * Anonymous layers have no name, so a registration inside one can not be hoisted
+ * without changing layer identity. Those style rules are left untouched.
+ */
+function registrationWrappers(node: Node): RegistrationWrappers {
+	const wrappers: Array<AtRule> = [];
+	let hasAnonymousLayer = false;
+	let current: Container<ChildNode> | Document | undefined = node.parent;
+
+	while (current) {
+		if (current.type === 'atrule') {
+			const atRule = current as AtRule;
+
+			if (IS_LAYER_RULE_REGEX.test(atRule.name)) {
+				if (atRule.params.trim()) {
+					wrappers.unshift(atRule);
+				} else {
+					hasAnonymousLayer = true;
+				}
+			} else if (IS_MEDIA_RULE_REGEX.test(atRule.name) || IS_SUPPORTS_RULE_REGEX.test(atRule.name)) {
+				wrappers.unshift(atRule);
+			}
+		}
+
+		current = current.parent;
+	}
+
+	return { wrappers, hasAnonymousLayer };
 }
 
 function removeEmptyNestedGroupRules(container: AtRule): void {
