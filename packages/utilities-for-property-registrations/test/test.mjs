@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert';
 import postcss from 'postcss';
-import { collectPropertyRegistrations, hoistPropertyRegistrations, registeredCustomPropertyNames, rewriteCustomPropertyNames } from '@csstools/utilities-for-property-registrations';
+import { collectPropertyRegistrations, hoistPropertyRegistrations, registeredCustomPropertyNames, rewriteCustomPropertyNames, wrapInConditionalGroupRules } from '@csstools/utilities-for-property-registrations';
 
 function propertyRule(css) {
 	const root = postcss.parse(css);
@@ -149,5 +149,39 @@ test('hoistPropertyRegistrations', async (t) => {
 
 		assert.equal(result.registrations[0].name, 'media');
 		assert.equal(result.registrations[0].first.name, 'property');
+	});
+});
+
+test('parsing edge cases', async (t) => {
+	await t.test('rejects preludes that are not custom property names', () => {
+		assert.deepEqual(registeredCustomPropertyNames(propertyRule('@property (a) { syntax: "*"; }')), []);
+		assert.deepEqual(registeredCustomPropertyNames(propertyRule('@property --a (b) { syntax: "*"; }')), []);
+		assert.equal(rewriteCustomPropertyNames(propertyRule('@property (a) <length>: 1em;'), (name) => name), null);
+		assert.deepEqual(registeredCustomPropertyNames(propertyRule('@property (a) <length>: 1em;')), []);
+	});
+
+	await t.test('ignores comments and whitespace around custom property names', () => {
+		const rule = propertyRule('@property /*a*/ --a /*b*/, /*c*/ --b /*d*/ { syntax: "*"; }');
+		const names = rewriteCustomPropertyNames(rule, (name) => `--x${name.slice(2)}`);
+
+		assert.deepEqual(names, ['--a', '--b']);
+		assert.deepEqual(registeredCustomPropertyNames(rule), ['--xa', '--xb']);
+	});
+
+	await t.test('skips non-at-rule nodes when collecting', () => {
+		const root = postcss.parse('@private { color: red; @property --a { syntax: "*"; } }');
+		const collected = collectPropertyRegistrations(root.first, {
+			isConditionalGroupRule: () => false,
+			shouldDescendInto: () => true,
+		});
+
+		assert.equal(collected.length, 1);
+	});
+
+	await t.test('wraps without conditional group rules', () => {
+		const root = postcss.parse('@property --a { syntax: "*"; }');
+		const nodes = wrapInConditionalGroupRules([root.first], []);
+
+		assert.deepEqual(nodes, [root.first]);
 	});
 });
