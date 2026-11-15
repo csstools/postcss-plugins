@@ -98,6 +98,43 @@ test('hoistPropertyRegistrations', async (t) => {
 		assert.deepEqual(registeredCustomPropertyNames(result.registrations[0]), ['--xa', '--xb']);
 	});
 
+	await t.test('keeps registrations that cannot be rewritten', () => {
+		const root = postcss.parse('@media (width > 1px) { @property 1px { syntax: "*"; } }');
+		const media = root.first;
+		const collected = collectPropertyRegistrations(media, {
+			isConditionalGroupRule: () => false,
+			shouldDescendInto: () => true,
+		});
+
+		const result = hoistPropertyRegistrations(collected, {
+			rewriteCustomPropertyName: (name) => name,
+			removeOriginal: true,
+		});
+
+		assert.deepEqual(result.registrations, []);
+		assert.deepEqual(result.originalNames, []);
+		assert.equal(media.nodes.length, 1);
+		assert.equal(media.first.name, 'property');
+	});
+
+	await t.test('keeps the originals when not removing them', () => {
+		const root = postcss.parse('@media (width > 1px) { @property --a { syntax: "*"; } }');
+		const media = root.first;
+		const collected = collectPropertyRegistrations(media, {
+			isConditionalGroupRule: () => false,
+			shouldDescendInto: () => true,
+		});
+
+		const result = hoistPropertyRegistrations(collected, {
+			rewriteCustomPropertyName: (name) => `--x${name.slice(2)}`,
+		});
+
+		assert.deepEqual(result.originalNames, ['--a']);
+		assert.equal(media.nodes.length, 1);
+		assert.deepEqual(registeredCustomPropertyNames(media.first), ['--a']);
+		assert.deepEqual(registeredCustomPropertyNames(result.registrations[0]), ['--xa']);
+	});
+
 	await t.test('wraps registrations in the conditional group rules around them', () => {
 		const root = postcss.parse('@private { @media (width > 1px) { @property --a { syntax: "*"; } } }');
 		const collected = collectPropertyRegistrations(root.first, {

@@ -4,7 +4,7 @@
 
 ## HoistPropertyRegistrationsOptions.removeOriginal property
 
-Whether to remove the collected `@property` rules.
+Whether to remove the collected `@property` rules that were hoisted.
 
 **Signature:**
 

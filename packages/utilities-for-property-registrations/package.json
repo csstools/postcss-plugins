@@ -54,7 +54,7 @@
 		"lint": "node ../../.github/bin/format-package-json.mjs",
 		"prepublishOnly": "npm run build && npm run test",
 		"stryker": "stryker run --logLevel error",
-		"test": "node --test"
+		"test": "node --test ./test/test.mjs ./test/_import.mjs ./test/_require.cjs"
 	},
 	"homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-property-registrations#readme",
 	"repository": {

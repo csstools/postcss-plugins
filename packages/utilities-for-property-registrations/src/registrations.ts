@@ -63,7 +63,7 @@ export interface HoistPropertyRegistrationsOptions {
 	rewriteCustomPropertyName: (name: string) => string;
 	/** Conditional group rules to wrap every registration in, outermost first. */
 	conditionalGroupRules?: Array<AtRule>;
-	/** Whether to remove the collected `@property` rules. */
+	/** Whether to remove the collected `@property` rules that were hoisted. */
 	removeOriginal?: boolean;
 }
 
@@ -134,14 +134,14 @@ export function hoistPropertyRegistrations(
 	const conditionalGroupRules = options.conditionalGroupRules || [];
 
 	for (const { propertyRule, conditionalGroupRules: nestedConditionalGroupRules } of collected) {
-		if (options.removeOriginal) {
-			propertyRule.remove();
-		}
-
 		const registration = propertyRule.clone();
 		const originalRegistrationNames = rewriteCustomPropertyNames(registration, options.rewriteCustomPropertyName);
 		if (!originalRegistrationNames) {
 			continue;
+		}
+
+		if (options.removeOriginal) {
+			propertyRule.remove();
 		}
 
 		originalNames.push(...originalRegistrationNames);

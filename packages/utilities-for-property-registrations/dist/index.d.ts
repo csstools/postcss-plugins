@@ -48,7 +48,7 @@ export declare interface HoistPropertyRegistrationsOptions {
     rewriteCustomPropertyName: (name: string) => string;
     /** Conditional group rules to wrap every registration in, outermost first. */
     conditionalGroupRules?: Array<AtRule>;
-    /** Whether to remove the collected `@property` rules. */
+    /** Whether to remove the collected `@property` rules that were hoisted. */
     removeOriginal?: boolean;
 }
 
