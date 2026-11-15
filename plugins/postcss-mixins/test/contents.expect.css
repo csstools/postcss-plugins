@@ -34,8 +34,46 @@
 }
 
 .i {
-	--_csstools-p-1i0jh25-0--arg-0: green;
-	--_csstools-p-1i0jh25-1--color: var(--_csstools-p-1i0jh25-0--arg-0);
-	color: var(--_csstools-p-1i0jh25-1--color);
+	--_csstools-m-1i0jh25-0--arg-0: green;
+	--_csstools-m-1i0jh25-1--color: var(--_csstools-m-1i0jh25-0--arg-0);
+	color: var(--_csstools-m-1i0jh25-1--color);
 		background-color: var(--color)
+}
+
+.fallback-argument {
+	--color: blue;
+	--_csstools-m-1i0jh25-2--arg-1: red;
+	--_csstools-m-1i0jh25-3--color: var(--_csstools-m-1i0jh25-2--arg-1);
+	color: var(--_csstools-m-1i0jh25-3--color);
+}
+
+.contents-outer {
+	--color: blue;
+	--_csstools-m-1i0jh25-4--arg-2: red;
+	--_csstools-m-1i0jh25-5--color: var(--_csstools-m-1i0jh25-4--arg-2);
+	color: var(--_csstools-m-1i0jh25-5--color);
+}
+
+.fallback-private {
+	--_csstools-m-1i0jh25-6--x: red;
+	color: var(--_csstools-m-1i0jh25-6--x);
+}
+
+.discarded-fallback {
+	--x: green;
+		color: blue;
+	color: var(--x)
+}
+
+.contents-scope {
+	--_csstools-m-1i0jh25-7--size: 20px;
+		width: var(--size, 33px)
+}
+
+.fallback-nested-rule {
+	--_csstools-m-1i0jh25-8--arg-3: red;
+	--_csstools-m-1i0jh25-9--color: var(--_csstools-m-1i0jh25-8--arg-3);
+	& .nested-fallback {
+		color: var(--_csstools-m-1i0jh25-9--color);
+	}
 }

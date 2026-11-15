@@ -46,3 +46,115 @@
 .g {
 	@apply --no-parameter-list;
 }
+
+@mixin --trailing-comma(--color,) {
+	border-color: var(--color);
+}
+
+.h {
+	@apply --trailing-comma(green);
+}
+
+@mixin --empty-arguments(--color, --background: teal) {
+	outline-color: var(--color);
+	background-color: var(--background);
+}
+
+.i {
+	@apply --empty-arguments(, green);
+}
+
+.j {
+	@apply --empty-arguments(green, );
+}
+
+.k {
+	@apply --empty-arguments(green, ,);
+}
+
+.l {
+	@apply --empty-arguments(green, blue,);
+}
+
+.m {
+	@apply --empty-arguments(  green  ,  blue  );
+}
+
+@mixin --empty-default(--color:) {
+	outline-color: var(--color);
+}
+
+.n {
+	@apply --empty-default;
+}
+
+@mixin --one(--color) {
+	color: var(--color);
+}
+
+.trailing-comma-single-argument {
+	@apply --one(red,);
+}
+
+.invalid-important-argument {
+	@apply --one(red !important);
+}
+
+.invalid-bang-argument {
+	@apply --one(!);
+}
+
+.invalid-semicolon-argument {
+	@apply --one(red;);
+}
+
+@mixin --inherit-default(--color: inherit) {
+	color: var(--color, red);
+}
+
+.inherit-default {
+	--color: green;
+	@apply --inherit-default;
+}
+
+@mixin --inherit-default-with-argument(--color: inherit) {
+	color: var(--color, red);
+}
+
+.inherit-default-with-argument {
+	--color: green;
+	@apply --inherit-default-with-argument(blue);
+}
+
+@mixin --inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.inherit-argument {
+	--color: green;
+	@apply --inherit-argument(inherit);
+}
+
+@mixin --universal-type(--color type(*)) {
+	color: var(--color);
+}
+
+.universal-type {
+	@apply --universal-type(green);
+}
+
+@mixin --invalid-default(--color: red !important) {
+	color: var(--color);
+}
+
+.invalid-default {
+	@apply --invalid-default;
+}
+
+@mixin --invalid-empty-parameter(--) {
+	color: red;
+}
+
+.invalid-empty-parameter {
+	@apply --invalid-empty-parameter;
+}

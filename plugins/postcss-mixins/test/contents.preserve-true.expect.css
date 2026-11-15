@@ -76,11 +76,108 @@
 }
 
 .i {
-	--_csstools-p-1i0jh25-0--arg-0: green;
-	--_csstools-p-1i0jh25-1--color: var(--_csstools-p-1i0jh25-0--arg-0);
-	color: var(--_csstools-p-1i0jh25-1--color);
+	--_csstools-m-1i0jh25-0--arg-0: green;
+	--_csstools-m-1i0jh25-1--color: var(--_csstools-m-1i0jh25-0--arg-0);
+	color: var(--_csstools-m-1i0jh25-1--color);
 		background-color: var(--color);
 	@apply --args-and-contents(green) {
 		background-color: var(--color);
 	}
+}
+
+@mixin --fallback-argument(--color) {
+	@contents {
+		color: var(--color);
+	}
+}
+
+.fallback-argument {
+	--color: blue;
+	--_csstools-m-1i0jh25-2--arg-1: red;
+	--_csstools-m-1i0jh25-3--color: var(--_csstools-m-1i0jh25-2--arg-1);
+	color: var(--_csstools-m-1i0jh25-3--color);
+	@apply --fallback-argument(red);
+}
+
+@mixin --contents-inner() {
+	@contents;
+}
+
+@mixin --contents-outer(--color) {
+	@apply --contents-inner {
+		color: var(--color);
+	}
+}
+
+.contents-outer {
+	--color: blue;
+	--_csstools-m-1i0jh25-4--arg-2: red;
+	--_csstools-m-1i0jh25-5--color: var(--_csstools-m-1i0jh25-4--arg-2);
+	color: var(--_csstools-m-1i0jh25-5--color);
+	@apply --contents-outer(red);
+}
+
+@mixin --fallback-private() {
+	@contents {
+		@private {
+			--x: red;
+		}
+		color: var(--x);
+	}
+}
+
+.fallback-private {
+	--_csstools-m-1i0jh25-6--x: red;
+	color: var(--_csstools-m-1i0jh25-6--x);
+	@apply --fallback-private;
+}
+
+@mixin --discarded-fallback() {
+	@contents {
+		@private {
+			--x: red;
+		}
+	}
+	color: var(--x);
+}
+
+.discarded-fallback {
+	--x: green;
+		color: blue;
+	color: var(--x);
+	@apply --discarded-fallback {
+		color: blue;
+	}
+}
+
+@mixin --contents-scope() {
+	@private {
+		--size: 20px;
+	}
+	@contents;
+}
+
+.contents-scope {
+	--_csstools-m-1i0jh25-7--size: 20px;
+		width: var(--size, 33px);
+	@apply --contents-scope {
+		width: var(--size, 33px);
+	}
+}
+
+@mixin --fallback-nested-rule(--color) {
+	@contents {
+		& .nested-fallback {
+			color: var(--color);
+		}
+	}
+}
+
+.fallback-nested-rule {
+	--_csstools-m-1i0jh25-8--arg-3: red;
+	--_csstools-m-1i0jh25-9--color: var(--_csstools-m-1i0jh25-8--arg-3);
+	& .nested-fallback {
+		color: var(--_csstools-m-1i0jh25-9--color);
+	}
+	@apply --fallback-nested-rule(red);
 }

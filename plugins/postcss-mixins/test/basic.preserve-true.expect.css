@@ -8,7 +8,6 @@
 }
 
 @scope (.foo) {
-	color: green;
 	@apply --foo();
 }
 

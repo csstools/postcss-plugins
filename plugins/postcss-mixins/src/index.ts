@@ -24,15 +24,13 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 
 			return {
 				postcssPlugin: 'mixins',
-				Once(root): void {
-					const rootAtRules: Array<AtRule> = [];
-					root.each((child) => {
-						if (child.type === 'atrule') {
-							rootAtRules.push(child);
-						}
+				Once(root, helpers): void {
+					const atRules: Array<AtRule> = [];
+					root.walkAtRules((atRule) => {
+						atRules.push(atRule);
 					});
 
-					expander.registerMixins(rootAtRules);
+					expander.registerMixins(atRules);
 
 					if (!options.preserve) {
 						for (const mixin of expander.registeredMixins()) {
@@ -40,8 +38,8 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 						}
 					}
 
-					expander.expandAll(root, options.preserve === true);
-					expander.finish();
+					expander.expandAll(root, options.preserve === true, helpers);
+					expander.finish(root);
 				},
 			};
 		},

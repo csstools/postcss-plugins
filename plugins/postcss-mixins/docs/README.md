@@ -25,7 +25,13 @@ This plugin is only a partial implementation to avoid conflicts with the final s
 Unsupported:
 - typed mixin arguments
 - layered `@mixin` declarations
+- conditional `@mixin` declarations
 - mixin overrides
+- private properties in a passed `@contents` block
+
+`@apply` rules that can not be transpiled are left unchanged, together with all definitions of that mixin name.
+
+Run `@csstools/postcss-private-rule` after this plugin to resolve private properties from the applying style rule.
 
 ```css
 <example.css>

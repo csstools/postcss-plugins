@@ -69,3 +69,83 @@
 		background-color: var(--color);
 	}
 }
+
+@mixin --fallback-argument(--color) {
+	@contents {
+		color: var(--color);
+	}
+}
+
+.fallback-argument {
+	--color: blue;
+	@apply --fallback-argument(red);
+}
+
+@mixin --contents-inner() {
+	@contents;
+}
+
+@mixin --contents-outer(--color) {
+	@apply --contents-inner {
+		color: var(--color);
+	}
+}
+
+.contents-outer {
+	--color: blue;
+	@apply --contents-outer(red);
+}
+
+@mixin --fallback-private() {
+	@contents {
+		@private {
+			--x: red;
+		}
+		color: var(--x);
+	}
+}
+
+.fallback-private {
+	@apply --fallback-private;
+}
+
+@mixin --discarded-fallback() {
+	@contents {
+		@private {
+			--x: red;
+		}
+	}
+	color: var(--x);
+}
+
+.discarded-fallback {
+	--x: green;
+	@apply --discarded-fallback {
+		color: blue;
+	}
+}
+
+@mixin --contents-scope() {
+	@private {
+		--size: 20px;
+	}
+	@contents;
+}
+
+.contents-scope {
+	@apply --contents-scope {
+		width: var(--size, 33px);
+	}
+}
+
+@mixin --fallback-nested-rule(--color) {
+	@contents {
+		& .nested-fallback {
+			color: var(--color);
+		}
+	}
+}
+
+.fallback-nested-rule {
+	@apply --fallback-nested-rule(red);
+}

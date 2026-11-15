@@ -1,0 +1,12 @@
+.layer {
+
+	@media (min-width: 1px) {
+
+		color: green;
+	}
+
+	color: blue;
+}
+
+.only-layer {
+}

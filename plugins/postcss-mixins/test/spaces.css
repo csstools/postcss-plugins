@@ -3,6 +3,18 @@
 	background-color: var(--background);
 }
 
+@mixin --multiline-parameters(
+	--color,
+	--background,
+) {
+	color: var(--color);
+	background-color: var(--background);
+}
+
+.multiline-parameters {
+	@apply --multiline-parameters(green, blue);
+}
+
 .space-after-open {
 	@apply --spaces( green, blue);
 }

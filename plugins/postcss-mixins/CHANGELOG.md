@@ -1,5 +1,15 @@
 # Changes to PostCSS Mixins
 
+### Unreleased (minor)
+
+- Support `@property` rules in `@private` rules, including multi-name preludes and the shorthand form, and hoist registrations out of `@container`, `@scope` and `@starting-style` while keeping `@media` and `@supports` conditions
+- Rename private property names in `transition` and `transition-property`
+- Resolve references in nested mixins, `@contents` fallback blocks and contents blocks inside mixin bodies
+- Support trailing commas, whitespace, empty arguments, `--x:` defaults, `type(*)` and `inherit` in parameter lists, and reject `{}` blocks mixed with other tokens
+- Ignore invalid `<declaration-value>` values and `--` parameter names, and leave mixins untouched when a name has several definitions or one that can not be transpiled
+- Drop `@layer` rules from mixin bodies
+- Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation and a separate namespace for generated names
+
 ### 1.1.0
 
 _October 1, 2026_

@@ -13,10 +13,10 @@
 }
 
 .b {
-	--_csstools-p-1sa7v3t-0--arg-0: red;
-	--_csstools-p-1sa7v3t-1--color: var(--_csstools-p-1sa7v3t-0--arg-0);
+	--_csstools-m-1sa7v3t-0--arg-0: red;
+	--_csstools-m-1sa7v3t-1--color: var(--_csstools-m-1sa7v3t-0--arg-0);
 	& {
-		color: var(--_csstools-p-1sa7v3t-1--color);
+		color: var(--_csstools-m-1sa7v3t-1--color);
 	}
 }
 
