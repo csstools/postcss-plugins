@@ -1,10 +1,8 @@
 import type { AtRule, ChildNode } from 'postcss';
+import type { PrivatePropertyTranspilerOptions } from './transpiler';
 import { Transpiler } from './transpiler';
 
-export type PrivatePropertyTranspilerOptions = {
-	/** Namespace for generated names. */
-	namespace?: string,
-};
+export type { PrivatePropertyTranspilerOptions } from './transpiler';
 
 export type PrivatePropertyTranspiler = {
 	/**
@@ -24,7 +22,7 @@ export type PrivatePropertyTranspiler = {
  * Nodes must already be attached to a tree.
  */
 export function createPrivatePropertyTranspiler(options?: PrivatePropertyTranspilerOptions): PrivatePropertyTranspiler {
-	const transpiler = new Transpiler(options?.namespace);
+	const transpiler = new Transpiler(options);
 
 	return {
 		transpile(nodes: Array<ChildNode>): Array<AtRule> {

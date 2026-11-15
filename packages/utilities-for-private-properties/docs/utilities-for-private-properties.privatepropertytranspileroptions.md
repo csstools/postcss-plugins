@@ -9,5 +9,6 @@
 ```typescript
 export type PrivatePropertyTranspilerOptions = {
     namespace?: string;
+    allowUntranspiledMixins?: boolean;
 };
 ```
