@@ -230,6 +230,11 @@ export default [
 		'importName': 'postcssMixins',
 	},
 	{
+		'packageName': '@csstools/postcss-private-rule',
+		'id': 'private-rule',
+		'importName': 'postcssPrivateRule',
+	},
+	{
 		'packageName': 'postcss-nesting',
 		'id': 'nesting-rules',
 		'importName': 'postcssNesting',

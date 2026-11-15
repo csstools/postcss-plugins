@@ -213,7 +213,25 @@ export function removeUnusedCustomFunctions(root: PostCSSRoot, groups: Map<strin
 }
 
 function collectCustomFunctionReferences(container: Container, skipNodes: Set<Node>, out: Set<string>, onlyUnprocessable: boolean, groups: Map<string, CustomFunctionGroup>): void {
+	// A definition can reference other functions in its own prelude (parameter defaults).
+	if (container.type === 'atrule' && (container as AtRule).params && (container as AtRule).params.includes('--')) {
+		collectDashedFunctionNames((container as AtRule).params, out);
+	}
+
 	container.walk((node) => {
+		if (node.type === 'atrule') {
+			// Dashed functions can appear in at-rule preludes and blocks that are
+			// expanded later, such as `@apply --mixin(--fn())` and mixin parameter
+			// defaults.
+			if (skipNodes.has(node) || !node.params || !node.params.includes('--') || isInsideAny(node, skipNodes)) {
+				return undefined;
+			}
+
+			collectDashedFunctionNames(node.params, out);
+
+			return undefined;
+		}
+
 		if (node.type !== 'decl' || !node.value.includes('--')) {
 			return undefined;
 		}
@@ -226,14 +244,18 @@ function collectCustomFunctionReferences(container: Container, skipNodes: Set<No
 			return undefined;
 		}
 
-		for (const token of tokenize({ css: node.value })) {
-			if (isTokenFunction(token) && token[4].value.startsWith('--')) {
-				out.add(token[4].value);
-			}
-		}
+		collectDashedFunctionNames(node.value, out);
 
 		return undefined;
 	});
+}
+
+function collectDashedFunctionNames(value: string, out: Set<string>): void {
+	for (const token of tokenize({ css: value })) {
+		if (isTokenFunction(token) && token[4].value.startsWith('--')) {
+			out.add(token[4].value);
+		}
+	}
 }
 
 function isInsideAny(node: Node, nodes: Set<Node>): boolean {

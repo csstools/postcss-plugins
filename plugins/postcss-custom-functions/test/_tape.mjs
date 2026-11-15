@@ -132,6 +132,12 @@ postcssTape(plugin)({
 	'element-sensitive-conditions': {
 		message: 'treats definitions inside element-sensitive conditions as unconditional',
 	},
+	'layer-scope': {
+		message: 'orders layers inside @scope as global layers',
+	},
+	'apply-arguments': {
+		message: 'keeps functions referenced from @apply and @mixin preludes',
+	},
 	'ignored-definitions': {
 		message: 'leaves calls untouched when a definition can not be transpiled',
 	},

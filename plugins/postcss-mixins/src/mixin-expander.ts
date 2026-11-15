@@ -138,9 +138,9 @@ export class MixinExpander {
 			atRule.remove();
 		}
 
-		if (needsWrapper(mixin)) {
-			this.transpile(inserted);
-		}
+		// References in the mixin body can point at parameters or private
+		// properties of the mixin and of the rule it is applied to.
+		this.transpile(inserted);
 
 		// `@contents` is substituted after insertion so the replaced at-rule has a parent.
 		// It is substituted after transpilation so passed-in contents are not scoped to the mixin.
@@ -283,8 +283,17 @@ export class MixinExpander {
 
 			this.spendBudget(countNodes(replacement));
 
-			contentsRule.before(replacement.map((child) => child.clone()));
+			const substituted = replacement.map((child) => child.clone());
+
+			contentsRule.before(substituted);
 			contentsRule.remove();
+
+			// A fallback block is authored in the mixin body. Declarations in it are
+			// part of the mixin scope and may define private properties.
+			// Passed-in contents are scoped to the apply site and are left alone.
+			if (!hasContents) {
+				this.transpile(substituted);
+			}
 		}
 	}
 

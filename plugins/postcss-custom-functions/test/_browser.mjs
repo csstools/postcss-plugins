@@ -26,6 +26,7 @@ const PAGES = [
 	'wpt/function-conditional-definitions.html',
 	'wpt/function-in-media.html',
 	'wpt/function-definition-conditions.html',
+	'wpt/function-layer-scope.html',
 ];
 
 const requestListener = async function (req, res) {

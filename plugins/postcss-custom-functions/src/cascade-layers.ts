@@ -4,6 +4,10 @@ import { parse as parseCascadeLayerNames, addLayerToModel } from '@csstools/casc
 
 const implicitLayerNameForCloning = parseCascadeLayerNames('csstools-implicit-layer')[0];
 
+// These at-rules do not constrain name-defining at-rules, so a layer inside
+// them is a global layer, exactly as if it were declared outside of them.
+const TRANSPARENT_LAYER_ANCESTORS = new Set(['container', 'scope', 'starting-style']);
+
 export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 	const references: Map<Node, LayerName> = new Map();
 	const referencesForLayerNames: Map<Node, LayerName> = new Map();
@@ -17,15 +21,25 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 		}
 
 		{
-			// We do not want to process anything except for `@layer` rules
-			// and maybe `@layer` rules inside other `@later` rules.
+			// We do not want to process anything except for `@layer` rules,
+			// `@layer` rules inside other `@layer` rules and `@layer` rules
+			// inside element-sensitive group rules, which do not constrain them.
 			//
 			// Traverse up the tree and abort when we find something unexpected
 			let parent: Container | Document | undefined = node.parent;
 			while (parent) {
-				if (parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
+				if (parent.type === 'rule') {
+					// A `@layer` nested in a style rule is a global layer.
 					parent = parent.parent;
 					continue;
+				}
+
+				if (parent.type === 'atrule') {
+					const name = (parent as AtRule).name.toLowerCase();
+					if (name === 'layer' || TRANSPARENT_LAYER_ANCESTORS.has(name)) {
+						parent = parent.parent;
+						continue;
+					}
 				}
 
 				if (parent === node.root()) {
@@ -54,8 +68,29 @@ export function collectCascadeLayerOrder(root: Root): WeakMap<Node, number> {
 			// Stitch the layer names of the current node together with those of ancestors.
 			// @layer foo { @layer bar { .any {} } }
 			// -> "foo.bar"
+			//
+			// Element-sensitive group rules and style rules are transparent.
 			let parent: Container | Document | undefined = node.parent;
-			while (parent && parent.type === 'atrule' && (parent as AtRule).name.toLowerCase() === 'layer') {
+			while (parent) {
+				if (parent.type === 'rule') {
+					parent = parent.parent;
+					continue;
+				}
+
+				if (parent.type !== 'atrule') {
+					break;
+				}
+
+				const name = (parent as AtRule).name.toLowerCase();
+				if (TRANSPARENT_LAYER_ANCESTORS.has(name)) {
+					parent = parent.parent;
+					continue;
+				}
+
+				if (name !== 'layer') {
+					break;
+				}
+
 				const parentLayerName = referencesForLayerNames.get(parent);
 				if (!parentLayerName) {
 					parent = parent.parent;

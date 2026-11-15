@@ -47,3 +47,32 @@
 .d {
 	@apply --cycle-a;
 }
+
+@mixin --nested-argument-inner() {
+	color: var(--color);
+}
+
+@mixin --nested-argument-outer(--color) {
+	@apply --nested-argument-inner;
+}
+
+.nested-argument {
+	--color: blue;
+	@apply --nested-argument-outer(red);
+}
+
+@mixin --nested-private-inner() {
+	color: var(--x);
+}
+
+@mixin --nested-private-outer() {
+	@private {
+		--x: red;
+	}
+	@apply --nested-private-inner;
+}
+
+.nested-private {
+	--color: blue;
+	@apply --nested-private-outer;
+}

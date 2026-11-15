@@ -59,6 +59,7 @@ import type { postcssReplaceOverflowWrapOptions } from '../types/postcss-replace
 import type { pluginOptions as postcssPlaceOptions } from 'postcss-place';
 import type { pluginOptions as postcssPositionAreaPropertyOptions } from '@csstools/postcss-position-area-property';
 import type { pluginOptions as postcssPrefersColorSchemeOptions } from 'css-prefers-color-scheme';
+import type { pluginOptions as postcssPrivateRuleOptions } from '@csstools/postcss-private-rule';
 import type { pluginOptions as postcssPropertyRuleOptionalDescriptorsOptions } from '@csstools/postcss-property-rule-optional-descriptors';
 import type { pluginOptions as postcssPropertyRulePreludeListOptions } from '@csstools/postcss-property-rule-prelude-list';
 import type { pluginOptions as postcssRandomFunctionOptions } from '@csstools/postcss-random-function';
@@ -198,6 +199,8 @@ export type pluginsOptions = {
 	'position-area-property'?: subPluginOptions<postcssPositionAreaPropertyOptions>
 	/** plugin options for "css-prefers-color-scheme" */
 	'prefers-color-scheme-query'?: subPluginOptions<postcssPrefersColorSchemeOptions>
+	/** plugin options for "@csstools/postcss-private-rule" */
+	'private-rule'?: subPluginOptions<postcssPrivateRuleOptions>
 	/** plugin options for "@csstools/postcss-property-rule-optional-descriptors" */
 	'property-rule-optional-descriptors'?: subPluginOptions<postcssPropertyRuleOptionalDescriptorsOptions>
 	/** plugin options for "@csstools/postcss-property-rule-prelude-list" */

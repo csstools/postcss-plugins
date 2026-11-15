@@ -7,6 +7,8 @@
 - Keep `@media` and `@supports` conditions around hoisted `@property` registrations.
 - Rename private property names in `transition` and `transition-property`.
 - Leave a mixin name untouched when it has more than one definition or a definition that can not be transpiled.
+- Resolve references in nested mixins without parameters or private properties.
+- Resolve references in `@contents` fallback blocks and in contents blocks authored inside a mixin body.
 - Support trailing commas, whitespace after trailing commas and empty arguments in `@apply` and `@mixin` parameter lists.
 - Trim whitespace from `@apply` arguments.
 - Treat an empty default value (`--x:`) as a default value.

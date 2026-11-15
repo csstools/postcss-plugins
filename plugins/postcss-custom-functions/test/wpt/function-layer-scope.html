@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<title>Custom Functions: layers inside @scope</title>
+<link rel="help" href="https://drafts.csswg.org/css-cascade-6/#at-ruledef-scope">
+
+<div id="scope-host">
+	<div id="layer"></div>
+	<div id="order"></div>
+	<div id="nested"></div>
+</div>
+
+<script>
+	function stylesUrl() {
+		return window.__TRANSFORM__ === false ? '/test/styles.css?transform=false' : '/test/styles.css';
+	}
+
+	const css = `
+		@layer a, b;
+
+		@scope (#scope-host) {
+			@layer b {
+				@function --scope-layer() { result: green; }
+			}
+		}
+		@layer a {
+			@function --scope-layer() { result: red; }
+		}
+
+		@scope (#scope-host) {
+			@layer first, second;
+			@layer second { @function --scope-order() { result: green; } }
+			@layer first { @function --scope-order() { result: red; } }
+		}
+
+		@layer outer {
+			@scope (#scope-host) {
+				@layer inner { @function --scope-nested() { result: blue; } }
+			}
+		}
+
+		#layer { color: --scope-layer(); }
+		#order { color: --scope-order(); }
+		#nested { color: --scope-nested(); }
+	`;
+
+	window.runTest = async function runTest() {
+		function assert_equals(actual, expected, message) {
+			if (actual !== expected) {
+				throw new Error(message + ' (transform=' + window.__TRANSFORM__ + '): expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+			}
+		}
+
+		// Some engines implement `@function` but not layers inside `@scope`.
+		// Only compare against the native behavior when the engine implements it.
+		async function supportsLayerScope() {
+			const probe = await (fetch('/test/styles.css?transform=false', {
+				method: 'POST',
+				body: `
+					@layer probe-a, probe-b;
+					@scope (#scope-host) { @layer probe-b { @function --probe-layer() { result: green; } } }
+					@layer probe-a { @function --probe-layer() { result: red; } }
+					#layer { color: --probe-layer(); }
+				`,
+			}).then((response) => response.text()));
+
+			const styleElement = document.createElement('style');
+			styleElement.textContent = probe;
+			document.head.append(styleElement);
+
+			await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+			const value = getComputedStyle(document.getElementById('layer')).color;
+
+			styleElement.remove();
+
+			return value === 'rgb(0, 128, 0)';
+		}
+
+		if (window.__TRANSFORM__ === false && !await supportsLayerScope()) {
+			return true;
+		}
+
+		const transformed = await (fetch(stylesUrl(), {
+			method: 'POST',
+			body: css,
+		}).then((response) => response.text()));
+
+		const styleElement = document.createElement('style');
+		styleElement.textContent = transformed;
+		document.head.append(styleElement);
+
+		await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+		assert_equals(getComputedStyle(document.getElementById('layer')).color, 'rgb(0, 128, 0)', 'layer under @scope');
+		assert_equals(getComputedStyle(document.getElementById('order')).color, 'rgb(0, 128, 0)', 'layer order inside @scope');
+		assert_equals(getComputedStyle(document.getElementById('nested')).color, 'rgb(0, 0, 255)', 'nested layer through @scope');
+
+		styleElement.remove();
+
+		return true;
+	};
+</script>

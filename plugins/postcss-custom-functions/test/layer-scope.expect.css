@@ -1,0 +1,61 @@
+/* A @layer inside @scope is a global layer and must keep its precedence. */
+@layer a, b;
+
+@scope (#scope-host) {
+	@layer b {
+	}
+}
+
+@layer a {
+}
+
+.scope-layer {
+		--_csstools-cf-qg7xvb-0-result: red;
+}
+
+.scope-layer {
+			--_csstools-cf-qg7xvb-0-result: green;
+}
+
+.scope-layer {
+	color: var(--_csstools-cf-qg7xvb-0-result);
+}
+
+/* Both layers inside @scope keep the order of the layer statement. */
+@scope (#scope-host) {
+	@layer first, second;
+
+	@layer second {
+	}
+
+	@layer first {
+	}
+}
+
+.scope-order {
+			--_csstools-cf-qg7xvb-3-result: red;
+}
+
+.scope-order {
+			--_csstools-cf-qg7xvb-3-result: green;
+}
+
+.scope-order {
+	color: var(--_csstools-cf-qg7xvb-3-result);
+}
+
+/* A layer nested in an outer layer through @scope keeps its full name. */
+@layer outer {
+	@scope (#scope-host) {
+		@layer inner {
+		}
+	}
+}
+
+.scope-nested {
+				--_csstools-cf-qg7xvb-6-result: blue;
+}
+
+.scope-nested {
+	color: var(--_csstools-cf-qg7xvb-6-result);
+}

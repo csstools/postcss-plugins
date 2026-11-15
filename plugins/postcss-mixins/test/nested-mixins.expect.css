@@ -23,3 +23,16 @@
 .d {
 	@apply --cycle-a;
 }
+
+.nested-argument {
+	--color: blue;
+	--_csstools-m-1rmdrz7-8--arg-4: red;
+	--_csstools-m-1rmdrz7-9--color: var(--_csstools-m-1rmdrz7-8--arg-4);
+	color: var(--_csstools-m-1rmdrz7-9--color);
+}
+
+.nested-private {
+	--color: blue;
+	--_csstools-m-1rmdrz7-a--x: red;
+	color: var(--_csstools-m-1rmdrz7-a--x);
+}

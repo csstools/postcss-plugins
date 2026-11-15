@@ -1,0 +1,23 @@
+/* A function used only in an @apply argument must be kept. */
+@function --used-in-apply() {
+	result: 1px;
+}
+
+.used-in-apply {
+	@apply --some-mixin(--used-in-apply());
+}
+
+/* A function used only in a mixin parameter default must be kept. */
+@function --used-in-default() {
+	result: 2px;
+}
+
+@mixin --with-default(--value: --used-in-default()) {
+	width: var(--value);
+}
+
+/* An unused function is still removed. */
+
+.unused {
+	width: 4px;
+}

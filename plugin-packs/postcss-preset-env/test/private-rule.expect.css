@@ -1,0 +1,13 @@
+.example {
+		--_csstools-p-1e49l6f-0--size: 2px;
+
+	width: 2px;
+
+	width: var(--_csstools-p-1e49l6f-0--size);
+}
+
+.with-private {
+	--_csstools-m-1e49l6f-0--size: 3px;
+	height: 3px;
+	height: var(--_csstools-m-1e49l6f-0--size);
+}

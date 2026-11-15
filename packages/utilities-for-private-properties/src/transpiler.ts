@@ -679,7 +679,7 @@ function isContainer(node: ChildNode): node is Rule | AtRule {
 	return node.type === 'rule' || node.type === 'atrule';
 }
 
-function findStyleRule(node: Node): false | Rule {
+function findStyleRule(node: Node, transparentMixins = false): false | Rule {
 	if (!node.parent) {
 		return false;
 	}
@@ -697,8 +697,11 @@ function findStyleRule(node: Node): false | Rule {
 	if (node.parent.type === 'atrule') {
 		const parent = node.parent as AtRule;
 
-		if (IS_NESTED_GROUP_RULE_REGEX.test(parent.name)) {
-			return findStyleRule(parent);
+		if (
+			IS_NESTED_GROUP_RULE_REGEX.test(parent.name) ||
+			(transparentMixins && (IS_APPLY_RULE_REGEX.test(parent.name) || IS_CONTENTS_RULE_REGEX.test(parent.name)))
+		) {
+			return findStyleRule(parent, transparentMixins);
 		}
 	}
 
@@ -710,7 +713,10 @@ function styleRuleAncestors(node: Node): Array<Rule> {
 	let focus = node;
 
 	while (true) {
-		const styleRule = findStyleRule(focus);
+		// Declarations inside an `@apply` or `@contents` block are lexically part
+		// of the surrounding style rule. `@private` rules inside those blocks are
+		// still handled where they are substituted.
+		const styleRule = findStyleRule(focus, true);
 		if (!styleRule) {
 			break;
 		}
