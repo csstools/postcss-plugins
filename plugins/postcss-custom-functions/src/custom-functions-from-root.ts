@@ -94,6 +94,13 @@ export function getCustomFunctions(root: PostCSSRoot, result: Result): Map<strin
 			order: order++,
 		};
 
+		// A keyword result can only be substituted at the call site when the
+		// definition is always active.
+		if (definition.conditionals.length && definition.keywordResult !== null) {
+			definition.keywordResult = null;
+			definition.hasKeywordResult = true;
+		}
+
 		const group = groups.get(name) ?? { definitions: [], supported: true, keywordResult: null };
 		group.definitions.push(definition);
 		groups.set(name, group);

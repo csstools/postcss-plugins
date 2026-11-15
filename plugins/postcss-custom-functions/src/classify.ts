@@ -2,7 +2,7 @@ import type { AtRule } from 'postcss';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
 import type { CustomFunction, FunctionParameter } from '@csstools/custom-function-parser';
 import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues } from '@csstools/css-parser-algorithms';
-import { isTokenComma, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isTokenComma, isTokenFunction, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
 import { CSS_WIDE_KEYWORDS } from './css-wide-keywords';
 import { isComputationallyIndependent } from './is-computationally-independent';
 import { isInConditionalLayer } from './is-processable-rule';
@@ -55,7 +55,7 @@ export type FunctionClassification = {
  */
 export function classifyCustomFunction(atRule: AtRule, customFunction: CustomFunction): FunctionClassification {
 	return {
-		supported: isSupportedCustomFunction(customFunction) && !isInConditionalLayer(atRule),
+		supported: isSupportedCustomFunction(atRule, customFunction) && !isInConditionalLayer(atRule),
 		keywordResult: staticKeywordResult(atRule),
 		hasKeywordResult: hasKeywordResult(atRule),
 	};
@@ -91,8 +91,16 @@ export function classifyCustomFunctionGroup(definitions: Array<FunctionClassific
 	return { supported, keywordResult: definition.keywordResult };
 }
 
-function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
+function isSupportedCustomFunction(atRule: AtRule, customFunction: CustomFunction): boolean {
 	if (returnType(customFunction)) {
+		return false;
+	}
+
+	// `attr()` substitutes arbitrary substitution functions in the attribute
+	// value on the hypothetical element. When the body also has locals or
+	// parameters, those substitutions can capture them instead of the
+	// same-named custom properties on the calling element.
+	if ((customFunction.parameters.length || bodyHasLocals(atRule)) && bodyUsesAttr(atRule)) {
 		return false;
 	}
 
@@ -108,6 +116,46 @@ function isSupportedCustomFunction(customFunction: CustomFunction): boolean {
 		const defaultValue = parameter.getDefaultValue();
 		return defaultValue !== null && defaultValue !== '' && isComputationallyIndependent(defaultValue);
 	});
+}
+
+function bodyHasLocals(atRule: AtRule): boolean {
+	let found = false;
+
+	atRule.walk((node) => {
+		if (found) {
+			return;
+		}
+
+		if (node.type === 'decl' && node.prop.startsWith('--')) {
+			found = true;
+			return;
+		}
+
+		if (node.type === 'atrule' && node.name.toLowerCase() === 'property') {
+			found = true;
+		}
+	});
+
+	return found;
+}
+
+function bodyUsesAttr(atRule: AtRule): boolean {
+	let found = false;
+
+	atRule.walkDecls((decl) => {
+		if (found) {
+			return;
+		}
+
+		for (const token of tokenize({ css: decl.value })) {
+			if (isTokenFunction(token) && token[4].value.toLowerCase() === 'attr') {
+				found = true;
+				return;
+			}
+		}
+	});
+
+	return found;
 }
 
 /**

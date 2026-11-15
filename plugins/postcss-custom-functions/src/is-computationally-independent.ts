@@ -81,7 +81,7 @@ function areComponentsIndependent(componentValues: Array<ComponentValue>, inColo
 	for (const componentValue of componentValues) {
 		if (isFunctionNode(componentValue)) {
 			const name = componentValue.getName().toLowerCase();
-			if (NON_INDEPENDENT_FUNCTIONS.has(name)) {
+			if (name.startsWith('--') || NON_INDEPENDENT_FUNCTIONS.has(name)) {
 				return false;
 			}
 

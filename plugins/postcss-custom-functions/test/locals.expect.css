@@ -22,6 +22,13 @@
 	width: var(--_csstools-cf-p7npk3-4-result);
 }
 
+.multi-token-fallback {
+	--x: 20px;
+	--_csstools-cf-p7npk3-9-local-x: var(--unknown, inherit) 1px;
+	--_csstools-cf-p7npk3-8-result: var(--_csstools-cf-p7npk3-9-local-x, PASS);
+	--actual: var(--_csstools-cf-p7npk3-8-result);
+}
+
 @property --_csstools-cf-p7npk3-1-arg-0 {
 	syntax: "<length>";
 	inherits: true;

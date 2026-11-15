@@ -17,6 +17,9 @@ postcssTape(plugin)({
 	classification: {
 		message: 'classifies definitions as supported or unsupported',
 	},
+	attr: {
+		message: 'ignores functions that can capture locals or parameters with attr()',
+	},
 	typed: {
 		message: 'supports typed parameters with defaults',
 	},
@@ -108,6 +111,9 @@ postcssTape(plugin)({
 	'conditional-layers': {
 		message: 'ignores definitions in conditional layers and orders definitions correctly',
 	},
+	'layer-in-element-condition': {
+		message: 'treats layers inside element-sensitive conditions as global layers',
+	},
 	'anonymous-layers': {
 		message: 'keeps anonymous layers distinct',
 	},
@@ -116,6 +122,9 @@ postcssTape(plugin)({
 	},
 	'group-keyword-result': {
 		message: 'leaves a name with keyword results in several definitions as-is',
+	},
+	'keyword-result-arity': {
+		message: 'leaves invalid calls to a keyword result as-is',
 	},
 	'invalid-bodies': {
 		message: 'ignores functions with invalid bodies',

@@ -12,6 +12,10 @@ const allowedParentAtRules = new Set(['layer', 'media', 'supports', 'container',
 // Conditional group rules that are allowed within a `@function` body.
 const conditionalGroupRules = new Set(['media', 'supports', 'container', 'starting-style']);
 
+// Only document-global conditions can remove a layer from the global layer order.
+// Element-sensitive conditions (such as `@container`) always contribute their layers.
+const conditionalLayerAncestors = new Set(['media', 'supports']);
+
 const IS_FUNCTION_REGEX = /^function$/i;
 
 export function isProcessableRule(atRule: AtRule): boolean {
@@ -105,7 +109,7 @@ function isAllowedBodyNode(node: ChildNode): boolean {
 function layerIsConditional(layerNode: AtRule): boolean {
 	let parent: Container<ChildNode> | Document | undefined = layerNode.parent;
 	while (parent) {
-		if (parent.type === 'atrule' && conditionalGroupRules.has((parent as AtRule).name.toLowerCase())) {
+		if (parent.type === 'atrule' && conditionalLayerAncestors.has((parent as AtRule).name.toLowerCase())) {
 			return true;
 		}
 

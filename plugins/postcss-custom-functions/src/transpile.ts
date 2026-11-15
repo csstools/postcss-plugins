@@ -244,6 +244,7 @@ export class CustomFunctionTranspiler {
 		// This is only used when the function is not cyclic. A cycle anywhere in
 		// the body makes the whole evaluation invalid.
 		const keywordResult = group.keywordResult;
+		const keywordResultIsValid = !!keywordResult && !!group.definitions[0] && hasValidArity(group.definitions[0].function.parameters, args);
 
 		const savedConditionals = this.currentConditionals;
 		const savedIsResult = this.currentIsResult;
@@ -292,7 +293,7 @@ export class CustomFunctionTranspiler {
 			return [this.varReference(INVALID_IDENT)];
 		}
 
-		if (keywordResult) {
+		if (keywordResult && keywordResultIsValid) {
 			return [new CSSATokenNode([TokenType.Ident, keywordResult, -1, -1, { value: keywordResult }])];
 		}
 
@@ -307,15 +308,7 @@ export class CustomFunctionTranspiler {
 
 		// More arguments than parameters is invalid.
 		// A parameter without a default value must be provided.
-		let validArity = args.length <= parameters.length;
-		if (validArity) {
-			for (let i = args.length; i < parameters.length; i++) {
-				if (parameters[i].colon === null) {
-					validArity = false;
-					break;
-				}
-			}
-		}
+		const validArity = hasValidArity(parameters, args);
 
 		const definitionId = (this.counter++).toString(36);
 		const scope = new Scope(parentScope);
@@ -811,6 +804,10 @@ export class CustomFunctionTranspiler {
 		}
 
 		const componentValues = parseListOfComponentValues(tokens);
+		if (!isWholeValueVarFunction(componentValues)) {
+			return value;
+		}
+
 		const changed = rewriteVarFallbackKeywords(componentValues, (keyword) => {
 			return this.resolveLocalKeyword(keyword, declaredProp, scope, parameterArgs);
 		});
@@ -862,6 +859,10 @@ export class CustomFunctionTranspiler {
 				};
 			}
 
+			return { value, cssWideKeyword: null };
+		}
+
+		if (!isWholeValueVarFunction(componentValues)) {
 			return { value, cssWideKeyword: null };
 		}
 
@@ -1156,6 +1157,20 @@ export class CustomFunctionTranspiler {
 	}
 }
 
+function hasValidArity(parameters: Array<FunctionParameter>, args: Array<Array<ComponentValue>>): boolean {
+	if (args.length > parameters.length) {
+		return false;
+	}
+
+	for (let i = args.length; i < parameters.length; i++) {
+		if (parameters[i].colon === null) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
 function countNodes(node: ChildNode): number {
 	let count = 1;
 
@@ -1166,6 +1181,31 @@ function countNodes(node: ChildNode): number {
 	}
 
 	return count;
+}
+
+/**
+ * Whether a component value list is exactly one `var()` function.
+ *
+ * CSS-wide keyword semantics only apply when the keyword is the entire value.
+ * A keyword that is only the fallback of a `var()` in a larger value is a
+ * plain token stream.
+ */
+function isWholeValueVarFunction(componentValues: Array<ComponentValue>): boolean {
+	let found: ComponentValue | null = null;
+
+	for (const componentValue of componentValues) {
+		if (isWhiteSpaceOrCommentNode(componentValue)) {
+			continue;
+		}
+
+		if (found) {
+			return false;
+		}
+
+		found = componentValue;
+	}
+
+	return !!found && isFunctionNode(found) && found.getName().toLowerCase() === 'var';
 }
 
 /**
