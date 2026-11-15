@@ -1,7 +1,8 @@
 import type { AtRule, ChildNode, Container, Declaration, Document, Node, Rule } from 'postcss';
 import type { ComponentValue, FunctionNode } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
-import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
+import type { TokenIdent } from '@csstools/css-tokenizer';
+import { isTokenColon, isTokenDelim, isTokenIdent, mutateIdent, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isSimpleBlockNode, isTokenNode, isWhiteSpaceOrCommentNode, parseListOfComponentValues, stringify, walk } from '@csstools/css-parser-algorithms';
 import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 import { collectPropertyRegistrations, registeredCustomPropertyNames, rewriteCustomPropertyNames, wrapInConditionalGroupRules } from '@csstools/utilities-for-property-registrations';
 
@@ -453,7 +454,12 @@ export class Transpiler {
 			}
 
 			const name = entry.node.getName();
-			if (!IS_VAR_FUNCTION_REGEX.test(name) && !IS_STYLE_FUNCTION_REGEX.test(name) && !IS_INHERIT_FUNCTION_REGEX.test(name)) {
+			if (IS_STYLE_FUNCTION_REGEX.test(name)) {
+				changed = this.rewriteStyleQuery(entry.node.value, node) || changed;
+				return;
+			}
+
+			if (!IS_VAR_FUNCTION_REGEX.test(name) && !IS_INHERIT_FUNCTION_REGEX.test(name)) {
 				return;
 			}
 
@@ -461,6 +467,85 @@ export class Transpiler {
 		});
 
 		return changed;
+	}
+
+	/**
+	 * Rename private property names in a `<style-query>`.
+	 *
+	 * A style query is a plain feature (`--x: value`), a boolean feature
+	 * (`--x`), a range (`10px < --x`) or a condition (`not (...)`,
+	 * `(...) and (...)`). Only property-name positions are renamed.
+	 */
+	private rewriteStyleQuery(componentValues: Array<ComponentValue>, node: Node): boolean {
+		let changed = false;
+		let colonIndex = -1;
+		let comparisonIndex = -1;
+		const significant: Array<ComponentValue> = [];
+
+		for (let i = 0; i < componentValues.length; i++) {
+			const componentValue = componentValues[i];
+			if (isWhiteSpaceOrCommentNode(componentValue)) {
+				continue;
+			}
+
+			if (isTokenNode(componentValue) && isTokenColon(componentValue.value)) {
+				colonIndex = significant.length;
+			}
+
+			if (isTokenNode(componentValue) && isTokenDelim(componentValue.value) && isComparisonDelim(componentValue.value[4].value)) {
+				comparisonIndex = significant.length;
+			}
+
+			significant.push(componentValue);
+		}
+
+		if (colonIndex !== -1) {
+			// `<style-feature-plain> = <style-feature-name> : <style-feature-value>`
+			const name = significant[colonIndex - 1];
+			return isTokenNode(name) && isTokenIdent(name.value) && this.renamePrivatePropertyName(name.value, node);
+		}
+
+		if (comparisonIndex !== -1) {
+			// Every `<custom-property-name>` operand of a range is a property name.
+			for (const componentValue of significant) {
+				if (!isTokenNode(componentValue) || !isTokenIdent(componentValue.value)) {
+					continue;
+				}
+
+				changed = this.renamePrivatePropertyName(componentValue.value, node) || changed;
+			}
+
+			return changed;
+		}
+
+		for (const componentValue of significant) {
+			if (isSimpleBlockNode(componentValue)) {
+				changed = this.rewriteStyleQuery(componentValue.value, node) || changed;
+				continue;
+			}
+
+			// `<style-feature-boolean> = <style-feature-name>`
+			if (isTokenNode(componentValue) && isTokenIdent(componentValue.value)) {
+				changed = this.renamePrivatePropertyName(componentValue.value, node) || changed;
+			}
+		}
+
+		return changed;
+	}
+
+	private renamePrivatePropertyName(token: TokenIdent, node: Node): boolean {
+		const propertyName = token[4].value;
+		if (!propertyName.startsWith('--')) {
+			return false;
+		}
+
+		const prefix = this.prefixForPropertyName(node, propertyName);
+		if (!prefix) {
+			return false;
+		}
+
+		mutateIdent(token, `${prefix}${propertyName}`);
+		return true;
 	}
 
 	private rewritePrivatePropertyName(functionNode: FunctionNode, node: Node): boolean {
@@ -473,22 +558,15 @@ export class Transpiler {
 				return false;
 			}
 
-			const propertyName = arg.value[4].value;
-			if (!propertyName.startsWith('--')) {
-				return false;
-			}
-
-			const prefix = this.prefixForPropertyName(node, propertyName);
-			if (!prefix) {
-				return false;
-			}
-
-			mutateIdent(arg.value, `${prefix}${propertyName}`);
-			return true;
+			return this.renamePrivatePropertyName(arg.value, node);
 		}
 
 		return false;
 	}
+}
+
+function isComparisonDelim(delim: string): boolean {
+	return delim === '<' || delim === '>' || delim === '=';
 }
 
 // `@private` contents can only be custom properties, nested group rules and `@property` rules.
