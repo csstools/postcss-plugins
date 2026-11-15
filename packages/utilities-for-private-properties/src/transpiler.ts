@@ -13,6 +13,7 @@ const IS_LAYER_RULE_REGEX = /^layer$/i;
 const IS_MEDIA_RULE_REGEX = /^media$/i;
 const IS_NESTED_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
 const IS_PRIVATE_RULE_REGEX = /^private$/i;
+const IS_PROPERTY_RULE_REGEX = /^property$/i;
 const IS_STYLE_FUNCTION_REGEX = /^style$/i;
 const IS_SUPPORTS_RULE_REGEX = /^supports$/i;
 const IS_VAR_FUNCTION_REGEX = /^var$/i;
@@ -155,32 +156,39 @@ export class Transpiler {
 	}
 
 	private cleanPrivateRule(atRule: AtRule, rulePrivatePropertyNames: RulePrivatePropertyNames): void {
-		atRule.walk((node) => {
-			if (!isInsidePrivateRule(node, atRule)) {
-				return;
-			}
+		this.cleanPrivateRuleNodes(atRule, rulePrivatePropertyNames);
+		removeEmptyNestedGroupRules(atRule);
+	}
+
+	private cleanPrivateRuleNodes(container: AtRule, rulePrivatePropertyNames: RulePrivatePropertyNames): void {
+		const nodes = container.nodes || [];
+
+		for (let i = (nodes.length - 1); i >= 0; i--) {
+			const node = nodes[i];
 
 			if (node.type === 'decl') {
 				const propertyName = unescapedPropertyName(node.prop);
 				if (propertyName === null) {
 					node.remove();
-					return;
+					continue;
 				}
 
 				rulePrivatePropertyNames.names.add(propertyName);
 				node.prop = `${rulePrivatePropertyNames.prefix}${node.prop}`;
+				continue;
+			}
 
-				return;
+			if (node.type === 'atrule' && IS_PROPERTY_RULE_REGEX.test(node.name)) {
+				continue;
 			}
 
 			if (node.type === 'atrule' && IS_NESTED_GROUP_RULE_REGEX.test(node.name) && node.nodes) {
-				return;
+				this.cleanPrivateRuleNodes(node, rulePrivatePropertyNames);
+				continue;
 			}
 
 			node.remove();
-		});
-
-		removeEmptyNestedGroupRules(atRule);
+		}
 	}
 
 	private removePrivateRule(atRule: AtRule, styleRule: Rule): void {
@@ -332,16 +340,6 @@ function nestedGroupRulesBetween(atRule: AtRule, styleRule: Rule): Array<AtRule>
 	}
 
 	return nestedGroupRules.reverse();
-}
-
-function isInsidePrivateRule(node: Node, atRule: AtRule): boolean {
-	let parent = node.parent;
-
-	while (parent && parent !== atRule) {
-		parent = parent.parent;
-	}
-
-	return parent === atRule;
 }
 
 function removeEmptyNestedGroupRules(container: AtRule): void {

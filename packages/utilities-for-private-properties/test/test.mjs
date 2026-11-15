@@ -305,33 +305,38 @@ test('property registrations', async (t) => {
 		);
 	});
 
-	await t.test('drops registrations inside @container', () => {
+	await t.test('ignores registrations inside @container', () => {
 		const p = prefix();
 
 		assert.equal(
 			transpile('.a { @private { --x: 1px; @container style(--x: 1) { @property --y <length>: 1px; } } width: var(--x) var(--y); }'),
-			`.a { ${p}--x: 1px; width: var(${p}--x) var(--y); }`,
+			`.a { ${p}--x: 1px; @container style(${p}--x: 1) { @property --y <length>: 1px; } width: var(${p}--x) var(--y); }`,
+		);
+
+		assert.equal(
+			transpile('.a { @private { @container (width > 1px) { @property --x, --y { syntax: "*"; inherits: false; } } } }'),
+			'.a { @container (width > 1px) { @property --x, --y { syntax: "*"; inherits: false; } } }',
 		);
 	});
 
-	await t.test('drops registrations when the private rule is inside @container', () => {
+	await t.test('ignores registrations when the private rule is inside @container', () => {
 		assert.equal(
 			transpile('.a { @container (width > 1px) { @private { @property --size <length>: 1px; } } width: var(--size); }'),
-			'.a { width: var(--size); }',
+			'.a { @container (width > 1px) { @property --size <length>: 1px } width: var(--size); }',
 		);
 	});
 
-	await t.test('drops registrations when the private rule is inside @scope', () => {
+	await t.test('ignores registrations when the private rule is inside @scope', () => {
 		assert.equal(
 			transpile('.a { @scope (.b) { @private { @property --size <length>: 1px; } } width: var(--size); }'),
-			'.a { width: var(--size); }',
+			'.a { @scope (.b) { @property --size <length>: 1px } width: var(--size); }',
 		);
 	});
 
-	await t.test('drops registrations when the private rule is inside @starting-style', () => {
+	await t.test('ignores registrations when the private rule is inside @starting-style', () => {
 		assert.equal(
 			transpile('.a { @starting-style { @private { @property --size <length>: 1px; } } width: var(--size); }'),
-			'.a { width: var(--size); }',
+			'.a { @starting-style { @property --size <length>: 1px } width: var(--size); }',
 		);
 	});
 
