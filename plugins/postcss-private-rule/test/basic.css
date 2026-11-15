@@ -207,3 +207,131 @@ section > h1 > small {
 		content: var(--foo);
 	}
 }
+
+.if-function-media-first {
+	@private {
+		--alpha: private;
+	}
+
+	--bar: if(
+		media(width > 1px): cyan;
+		style(--alpha: private): orange;
+		else: red;
+	);
+}
+
+.invalid-at-rules {
+	@private {
+		--alpha: 2px;
+		@apply --mixin;
+		@font-face { font-family: test; }
+		@unknown-rule { --alpha: 3px; }
+	}
+
+	--beta: var(--alpha);
+}
+
+.important-private {
+	@private {
+		--alpha: 2px;
+		--alpha: 3px !important;
+	}
+
+	--beta: var(--alpha);
+}
+
+.container-private {
+	@container (width > 0px) {
+		@private {
+			--alpha: 2px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.starting-style-private {
+	@starting-style {
+		@private {
+			--alpha: 2px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.container-style-query-value {
+	@private {
+		--alpha: 2px;
+	}
+
+	@container style(--foo: var(--alpha)) {
+		--beta: var(--alpha);
+	}
+}
+
+.inherit-private {
+	@private {
+		--alpha: 2px;
+	}
+
+	--beta: inherit(--alpha);
+}
+
+.nested-container-registration {
+	@private {
+		--alpha: 2px;
+	}
+
+	& .inner {
+		@container (width > 0px) {
+			@private {
+				@property --beta <length>: 1px;
+				--beta: 2px;
+			}
+		}
+
+		--gamma: var(--alpha);
+	}
+}
+
+.scope-private {
+	@scope (.inner) {
+		@private {
+			--alpha: 2px;
+		}
+	}
+
+	--beta: var(--alpha);
+}
+
+.scope-registration {
+	@scope (.inner) {
+		@private {
+			@property --scope-size <length>: 1px;
+			--scope-size: 2px;
+		}
+	}
+
+	width: var(--scope-size);
+}
+
+.untranspiled-apply {
+	@private {
+		--alpha: 2px;
+	}
+
+	@apply --some-mixin;
+
+	--beta: var(--alpha);
+}
+
+@mixin --some-mixin() {
+	.untranspiled-mixin-rule {
+		@private {
+			--alpha: 2px;
+		}
+
+		width: var(--alpha);
+	}
+}

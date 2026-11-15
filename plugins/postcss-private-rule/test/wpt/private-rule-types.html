@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<title>CSS @private: nested rule types</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#private">
+<style>
+	target {
+		display: block;
+	}
+</style>
+
+<body>
+	<target id="outer">
+		<target id="media-true"></target>
+		<target id="media-false"></target>
+		<target id="supports-true"></target>
+		<target id="supports-false"></target>
+		<target id="container-host">
+			<target id="container-true"></target>
+			<target id="container-false"></target>
+		</target>
+		<target id="layer-unlayered"></target>
+		<target id="layer-order"></target>
+		<target id="scope-root">
+			<target id="scope-true"></target>
+		</target>
+	</target>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			const css = `
+				@layer a, b;
+
+				#outer {
+					--x: red;
+				}
+
+				#media-true {
+					@media (width > 0px) {
+						@private {
+							--x: green;
+						}
+					}
+					color: var(--x, red);
+				}
+
+				#media-false {
+					@media (width < 0px) {
+						@private {
+							--x: red;
+						}
+					}
+					color: var(--x, green);
+				}
+
+				#supports-true {
+					@supports (color: green) {
+						@private {
+							--x: green;
+						}
+					}
+					color: var(--x, red);
+				}
+
+				#supports-false {
+					@supports (not-a-property: green) {
+						@private {
+							--x: red;
+						}
+					}
+					color: var(--x, green);
+				}
+
+				#container-host {
+					container-type: inline-size;
+				}
+
+				#container-true {
+					@container (width > 0px) {
+						@private {
+							--x: green;
+						}
+					}
+					color: var(--x, red);
+				}
+
+				#container-false {
+					@container (width < 0px) {
+						@private {
+							--x: red;
+						}
+					}
+					color: var(--x, green);
+				}
+
+				#layer-unlayered {
+					@private {
+						--x: green;
+					}
+					@layer a {
+						@private {
+							--x: red;
+						}
+					}
+					color: var(--x, blue);
+				}
+
+				#layer-order {
+					@layer b {
+						@private {
+							--x: green;
+						}
+					}
+					@layer a {
+						@private {
+							--x: red;
+						}
+					}
+					color: var(--x, blue);
+				}
+
+				@scope (#scope-root) {
+					#scope-true {
+						@private {
+							--x: green;
+						}
+						color: var(--x, red);
+					}
+				}
+			`;
+
+			const response = await fetch('/test/styles.css?transform=true', {
+				method: 'POST',
+				body: css,
+			});
+
+			const styleElement = document.createElement('style');
+			styleElement.textContent = await response.text();
+			document.head.append(styleElement);
+
+			const green = 'rgb(0, 128, 0)';
+
+			const testCases = [
+				['media-true', '@private in a matching @media rule applies'],
+				['media-false', '@private in a non-matching @media rule still shadows an inherited name'],
+				['supports-true', '@private in a matching @supports rule applies'],
+				['supports-false', '@private in a non-matching @supports rule still shadows an inherited name'],
+				['container-true', '@private in a matching @container rule applies'],
+				['container-false', '@private in a non-matching @container rule still shadows an inherited name'],
+				['layer-unlayered', '@private in a layer loses to an unlayered @private'],
+				['layer-order', '@private in a later layer wins'],
+				['scope-true', '@private in a style rule inside a matching @scope rule applies'],
+			];
+
+			for (const [id, title] of testCases) {
+				assert_equals(
+					window.getComputedStyle(document.getElementById(id)).color,
+					green,
+					title,
+				);
+			}
+
+			styleElement.remove();
+
+			return true;
+		}
+	</script>
+</body>
