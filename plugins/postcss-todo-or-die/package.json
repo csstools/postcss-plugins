@@ -43,10 +43,10 @@
 	"dependencies": {
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
-		"browserslist": "^4.29.3"
+		"browserslist": "^4.29.5"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.32"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*"

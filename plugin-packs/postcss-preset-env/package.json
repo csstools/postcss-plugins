@@ -92,8 +92,8 @@
 		"@csstools/postcss-text-decoration-shorthand": "^5.0.7",
 		"@csstools/postcss-trigonometric-functions": "^5.0.9",
 		"@csstools/postcss-unset-value": "^5.0.0",
-		"autoprefixer": "^10.6.1",
-		"browserslist": "^4.29.3",
+		"autoprefixer": "^10.6.2",
+		"browserslist": "^4.29.5",
 		"css-blank-pseudo": "^8.0.2",
 		"css-has-pseudo": "^8.0.2",
 		"css-prefers-color-scheme": "^11.0.1",
@@ -125,7 +125,7 @@
 		"postcss-selector-not": "^9.0.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.32"
 	},
 	"devDependencies": {
 		"@csstools/pack-test": "*",

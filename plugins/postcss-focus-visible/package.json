@@ -41,10 +41,10 @@
 		"dist"
 	],
 	"dependencies": {
-		"postcss-selector-parser": "^7.1.1"
+		"postcss-selector-parser": "^7.1.8"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.32"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*",
