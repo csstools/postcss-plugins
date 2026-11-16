@@ -83,7 +83,7 @@
 .spec-example-7 {
 	/* https://github.com/w3c/csswg-drafts/issues/8444 */
 	color-1: rgb(156, 255, 126);
-	color-1: color(display-p3 0.68002 1 0.51046);
+	color-1: color(display-p3 0.68002 1 0.51047);
 	color-1: color-mix(in hsl, color(display-p3 0 1 0) 80%, yellow);
 }
 
