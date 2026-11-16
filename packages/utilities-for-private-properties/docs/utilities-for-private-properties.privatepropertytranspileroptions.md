@@ -10,5 +10,6 @@
 export type PrivatePropertyTranspilerOptions = {
     namespace?: string;
     allowUntranspiledMixins?: boolean;
+    preserve?: boolean;
 };
 ```

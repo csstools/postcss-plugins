@@ -1,7 +1,8 @@
-import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isFunctionNode, isSimpleBlockNode, isTokenNode, parseCommaSeparatedListOfComponentValues, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, isTokenOpenCurly, tokenize } from '@csstools/css-tokenizer';
-import type { AtRule } from 'postcss';
+import { isFunctionNode, isTokenNode, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
+import { isTokenIdent } from '@csstools/css-tokenizer';
+import type { AtRule, Rule } from 'postcss';
+import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
+import { preludeTokens, rawParams } from './utils';
 
 export const IS_APPLY_REGEX = /^apply$/i;
 
@@ -10,20 +11,26 @@ export type ProcessableApply = {
 	arguments: Array<string>,
 };
 
-const IS_IMPORTANT_REGEX = /!\s*important/i;
+export const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+const IS_CSS_WIDE_KEYWORD_REGEX = /^(inherit|initial|unset|revert|revert-layer)$/i;
+const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
-	if (!atRule.params || !atRule.params.includes('--')) {
+	const styleRule = applySiteRule(atRule);
+	if (!styleRule) {
 		return false;
 	}
 
-	if (!isInStyleRule(atRule)) {
+	return processableApplyPrelude(atRule);
+}
+
+/** The name and arguments of an `@apply` rule, without checking the applying context. */
+export function processableApplyPrelude(atRule: AtRule): false | ProcessableApply {
+	if (!atRule.params) {
 		return false;
 	}
 
-	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
-	}));
+	const prelude = parseComponentValue(preludeTokens(rawParams(atRule)));
 
 	let name: string;
 	let args: Array<string> = [];
@@ -33,12 +40,12 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	} else if (isFunctionNode(prelude)) {
 		name = prelude.getName();
 
-		const parsedArguments = parseArguments(prelude.value);
+		const parsedArguments = parseDashedFunctionArguments(prelude.value);
 		if (!parsedArguments) {
 			return false;
 		}
 
-		args = parsedArguments;
+		args = parsedArguments.map((argument) => stringify([argument]));
 	} else {
 		return false;
 	}
@@ -53,52 +60,55 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 	};
 }
 
-function parseArguments(componentValues: Array<ComponentValue>): false | Array<string> {
-	const rawArguments = parseCommaSeparatedListOfComponentValues(componentValues.flatMap((componentValue) => componentValue.tokens()));
-
-	// `--foo()` has no arguments.
-	if (rawArguments.length === 1 && stringify([rawArguments[0]]).trim() === '') {
-		return [];
-	}
-
-	const args: Array<string> = [];
-
-	for (const rawArgument of rawArguments) {
-		// A comma-containing value can be passed as a single argument by wrapping it in `{}`.
-		const argument = (rawArgument.length === 1 && isSimpleBlockNode(rawArgument[0]) && isTokenOpenCurly(rawArgument[0].startToken)
-			? stringify([rawArgument[0].value])
-			: stringify([rawArgument])
-		).trim();
-
-		if (argument === '') {
-			return false;
-		}
-
-		if (IS_IMPORTANT_REGEX.test(argument)) {
-			return false;
-		}
-
-		args.push(argument);
-	}
-
-	return args;
+/**
+ * Whether an argument is a CSS-wide keyword.
+ *
+ * Browsers substitute these keywords into the property that uses the parameter,
+ * while the specification resolves them in the argument phase.
+ * https://drafts.csswg.org/css-mixins-1/#arg-cascade
+ */
+export function hasCSSWideKeywordArgument(apply: ProcessableApply): boolean {
+	return apply.arguments.some(isCSSWideKeyword);
 }
 
-const IS_SCOPE_REGEX = /^scope$/i;
+/** Whether a value is a single CSS-wide keyword ident, ignoring comments and whitespace. */
+function isCSSWideKeyword(value: string): boolean {
+	const tokens = preludeTokens(value);
 
-function isInStyleRule(atRule: AtRule): boolean {
-	const parent = atRule.parent;
-	if (!parent || parent.type === 'root') {
-		return false;
+	return tokens.length === 1 && isTokenIdent(tokens[0]) && IS_CSS_WIDE_KEYWORD_REGEX.test(tokens[0][4].value);
+}
+
+/**
+ * The style rule an `@apply` rule is in, or `null` when the `@apply` is not in a
+ * style rule or nested group rule.
+ */
+export function applySiteRule(atRule: AtRule): Rule | null {
+	let parent = atRule.parent;
+
+	while (parent) {
+		if (parent.type === 'rule') {
+			return isKeyframesRule(parent) ? null : parent;
+		}
+
+		if (parent.type !== 'atrule' || !IS_NESTING_GROUP_RULE_REGEX.test(parent.name)) {
+			return null;
+		}
+
+		parent = parent.parent;
 	}
 
-	if (parent.type === 'rule') {
-		return true;
+	return null;
+}
+
+function isKeyframesRule(rule: AtRule['parent']): boolean {
+	let parent = rule?.parent;
+	while (parent) {
+		if (parent.type === 'atrule' && IS_KEYFRAMES_REGEX.test(parent.name)) {
+			return true;
+		}
+
+		parent = parent.parent;
 	}
 
-	if (parent.type === 'atrule' && IS_SCOPE_REGEX.test(parent.name)) {
-		return true;
-	}
-
-	return isInStyleRule(parent);
+	return false;
 }

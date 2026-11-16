@@ -8,7 +8,6 @@
 }
 
 @scope (.foo) {
-	color: green;
 	@apply --foo();
 }
 
@@ -40,4 +39,13 @@
 	@apply --bar;
 
 	order: 1;
+}
+
+@mixin --\65 scaped() {
+	color: green;
+}
+
+.escaped-name {
+	color: green;
+	@apply --\65 scaped;
 }

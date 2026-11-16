@@ -66,4 +66,14 @@ test('parseDashedFunctionArguments empty arguments', async (t) => {
 		assert.deepEqual(stringified('--a(1, )'), ['1']);
 		assert.deepEqual(stringified('--a(1, /* a comment */)'), ['1']);
 	});
+
+	await t.test('trims whitespace but keeps comments', () => {
+		assert.deepEqual(stringified('--a( 1px )'), ['1px']);
+		assert.deepEqual(stringified('--a(/* a comment */ 1px)'), ['/* a comment */ 1px']);
+		assert.deepEqual(stringified('--a(1px /* a comment */)'), ['1px /* a comment */']);
+	});
+
+	await t.test('trims only whitespace', () => {
+		assert.deepEqual(stringified('--a(\u00A0red)'), ['\u00A0red']);
+	});
 });

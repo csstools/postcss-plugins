@@ -1,5 +1,18 @@
 # Changes to PostCSS Mixins
 
+### Unreleased (minor)
+
+- Drop `@layer` rules from mixin bodies
+- Expand `@apply` and `@contents` rules in `@contents` blocks, fallbacks and nested rules
+- Generate hygienic argument and private property names
+- Hoist `@property` registrations from `@private` rules out of `@container`, `@scope` and `@starting-style`
+- Leave CSS-wide keyword arguments unchanged and resolve CSS-wide keywords in parameter defaults
+- Leave rules, mixins and `@apply` rules unchanged when they can not be transpiled completely
+- Only trim whitespace from arguments and default values
+- Preserve whitespace and comments from mixin bodies
+- Support trailing commas, comments, empty arguments, empty defaults and `type(*)` in parameter and argument lists
+- Transpile private properties in the applying rule, nested mixins and `@contents` blocks
+
 ### 1.1.0
 
 _October 1, 2026_

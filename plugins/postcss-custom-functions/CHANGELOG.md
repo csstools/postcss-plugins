@@ -2,19 +2,17 @@
 
 ### Unreleased (minor)
 
-- Support `@property` rules for local variables, including multi-name preludes and the shorthand form, and hoist registrations out of `@container`, `@scope` and `@starting-style`
-- Support local variables and registrations inside conditional rules
-- Resolve local variables, `inherit()` and CSS-wide keywords in function arguments, `if()` conditions and `style()` query values
-- Support empty `@function` bodies and ignore `!important` declarations in them
-- Treat `@function` definitions inside `@container`, `@scope` and `@starting-style` as unconditional, matching browsers
-- Keep parameter registrations and values when a local variable shadows a typed parameter or a local `@property` uses the parameter name
-- Keep empty `@layer` blocks when removing unused definitions and order `@layer` rules inside `@scope` as global layers
-- Preserve cascade order when definitions of the same name are inlined and do not evaluate cycles in inactive conditional rules, unused fallbacks or losing declarations
-- Leave calls untouched when a definition can not be transpiled, an argument has an invalid `<declaration-value>`, or a typed parameter in a font-relative property can not be resolved at build time
+- Hoist `@property` registrations out of `@container`, `@scope` and `@starting-style`, and treat definitions there as unconditional
+- Keep empty `@layer` blocks and order `@layer` rules inside `@scope` as global layers
 - Keep functions referenced from `@apply` and `@mixin` preludes
+- Keep parameter registrations and values when a local variable shadows a typed parameter
+- Leave calls untouched when a definition can not be transpiled or an argument is invalid
+- Preserve cascade order when inlining duplicate definitions and skip cycles in inactive conditionals
+- Resolve local variables, `inherit()` and CSS-wide keywords in arguments, `if()` conditions and `style()` queries
+- Support empty `@function` bodies, ignore `!important` declarations and allow locals and registrations in conditional rules
 - Support trailing commas, whitespace and empty arguments in dashed-function calls
-- Treat `--x:` as an empty default value, reject parameter defaults that mix `{}` blocks with other tokens, and suppress defaults when a CSS-wide keyword can be selected through a `var()` fallback
-- Use `@csstools/generate-idents`, `@csstools/utilities-for-property-registrations` and `@csstools/custom-function-parser` for shared implementation
+- Treat `--x:` as an empty default and reject defaults that mix `{}` blocks with other tokens
+- Use `@csstools/generate-idents`, `@csstools/utilities-for-property-registrations` and `@csstools/custom-function-parser` internally
 
 ### 1.0.1
 

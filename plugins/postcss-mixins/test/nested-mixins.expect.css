@@ -4,22 +4,43 @@
 }
 
 .b {
-	--_csstools-p-1rmdrz7-0--arg-0: red;
-	--_csstools-p-1rmdrz7-1--outer-color: var(--_csstools-p-1rmdrz7-0--arg-0);
-	--_csstools-p-1rmdrz7-2--arg-1: var(--_csstools-p-1rmdrz7-1--outer-color);
-	--_csstools-p-1rmdrz7-3--inner-color: var(--_csstools-p-1rmdrz7-2--arg-1);
-	border-color: var(--_csstools-p-1rmdrz7-3--inner-color);
+	--_csstools-mix-1rmdrz7-arg-0: red;
+	--_csstools-m-1rmdrz7-0--outer-color: var(--_csstools-mix-1rmdrz7-arg-0);
+	--_csstools-mix-1rmdrz7-arg-1: var(--_csstools-m-1rmdrz7-0--outer-color);
+	--_csstools-m-1rmdrz7-1--inner-color: var(--_csstools-mix-1rmdrz7-arg-1);
+	border-color: var(--_csstools-m-1rmdrz7-1--inner-color);
 }
 
 .c {
-	--_csstools-p-1rmdrz7-4--arg-2: red;
-	--_csstools-p-1rmdrz7-5--color: var(--_csstools-p-1rmdrz7-4--arg-2);
-	--_csstools-p-1rmdrz7-6--arg-3: blue;
-	--_csstools-p-1rmdrz7-7--color: var(--_csstools-p-1rmdrz7-6--arg-3);
-	border-color: var(--_csstools-p-1rmdrz7-7--color);
-	color: var(--_csstools-p-1rmdrz7-5--color);
+	--_csstools-mix-1rmdrz7-arg-2: red;
+	--_csstools-m-1rmdrz7-2--color: var(--_csstools-mix-1rmdrz7-arg-2);
+	--_csstools-mix-1rmdrz7-arg-3: blue;
+	--_csstools-m-1rmdrz7-3--color: var(--_csstools-mix-1rmdrz7-arg-3);
+	border-color: var(--_csstools-m-1rmdrz7-3--color);
+	color: var(--_csstools-m-1rmdrz7-2--color);
+}
+
+@mixin --cycle-a() {
+	@apply --cycle-b;
+}
+
+@mixin --cycle-b() {
+	@apply --cycle-a;
 }
 
 .d {
 	@apply --cycle-a;
+}
+
+.nested-argument {
+	--color: blue;
+	--_csstools-mix-1rmdrz7-arg-4: red;
+	--_csstools-m-1rmdrz7-4--color: var(--_csstools-mix-1rmdrz7-arg-4);
+	color: var(--_csstools-m-1rmdrz7-4--color);
+}
+
+.nested-private {
+	--color: blue;
+		--_csstools-m-1rmdrz7-5--x: red;
+	color: var(--_csstools-m-1rmdrz7-5--x);
 }

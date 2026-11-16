@@ -1,5 +1,5 @@
 import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isTokenNode, isWhiteSpaceOrCommentNode } from '@csstools/css-parser-algorithms';
+import { isTokenNode, isWhiteSpaceOrCommentNode, isWhitespaceNode } from '@csstools/css-parser-algorithms';
 import { isTokenComma } from '@csstools/css-tokenizer';
 import { containsCurlyBlock, hasInvalidDeclarationValue, singleCurlyBlock } from '../util/declaration-value';
 
@@ -60,21 +60,16 @@ function unwrapArgument(list: Array<ComponentValue>): Array<ComponentValue> | fa
 
 function trim(componentValues: Array<ComponentValue>): Array<ComponentValue> {
 	let start = 0;
-	let end = 0;
-	let sawMeaningful = false;
+	let end = componentValues.length;
 
-	for (let i = 0; i < componentValues.length; i++) {
-		if (isWhiteSpaceOrCommentNode(componentValues[i])) {
-			continue;
-		}
-
-		if (!sawMeaningful) {
-			start = i;
-			sawMeaningful = true;
-		}
-
-		end = i + 1;
+	// Only whitespace is trimmed. Comments are preserved as written.
+	while (start < end && isWhitespaceNode(componentValues[start])) {
+		start++;
 	}
 
-	return sawMeaningful ? componentValues.slice(start, end) : [];
+	while (end > start && isWhitespaceNode(componentValues[end - 1])) {
+		end--;
+	}
+
+	return componentValues.slice(start, end);
 }

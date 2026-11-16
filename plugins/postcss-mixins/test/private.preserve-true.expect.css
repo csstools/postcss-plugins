@@ -7,8 +7,9 @@
 }
 
 .a {
-	--_csstools-p-pjvzd8-0--shadow: 2px 2px black;
-	box-shadow: var(--_csstools-p-pjvzd8-0--shadow);
+		--_csstools-m-pjvzd8-0--shadow: 2px 2px black;
+
+	box-shadow: var(--_csstools-m-pjvzd8-0--shadow);
 	@apply --with-private;
 }
 
@@ -21,9 +22,54 @@
 }
 
 .b {
-	--_csstools-p-pjvzd8-1--arg-0: red;
-	--_csstools-p-pjvzd8-2--color: var(--_csstools-p-pjvzd8-1--arg-0);
-	--_csstools-p-pjvzd8-2--local: var(--_csstools-p-pjvzd8-2--color);
-	color: var(--_csstools-p-pjvzd8-2--local);
+	--_csstools-mix-pjvzd8-arg-0: red;
+	--_csstools-m-pjvzd8-1--color: var(--_csstools-mix-pjvzd8-arg-0);
+		--_csstools-m-pjvzd8-1--local: var(--_csstools-m-pjvzd8-1--color);
+
+	color: var(--_csstools-m-pjvzd8-1--local);
 	@apply --args-and-private(red);
+}
+
+@mixin --inner-private() {
+	@private {
+		--x: 1px;
+	}
+
+	width: var(--x);
+}
+
+@mixin --outer-private() {
+	@private {
+		--y: 2px;
+	}
+
+	@apply --inner-private;
+	height: var(--y);
+}
+
+.nested-private {
+		--_csstools-m-pjvzd8-2--y: 2px;
+		--_csstools-m-pjvzd8-3--x: 1px;
+
+	width: var(--_csstools-m-pjvzd8-3--x);
+	height: var(--_csstools-m-pjvzd8-2--y);
+	@apply --outer-private;
+}
+
+@function --function-local() {
+	--value: var(--applying-private-color);
+	result: var(--value);
+}
+
+@mixin --applying-private() {
+	color: var(--applying-private-color);
+}
+
+.applying-private {
+		--_csstools-p-pjvzd8-0--applying-private-color: green;
+	@private {
+		--applying-private-color: green;
+	}
+	color: var(--_csstools-p-pjvzd8-0--applying-private-color);
+	@apply --applying-private;
 }
