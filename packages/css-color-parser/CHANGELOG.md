@@ -1,5 +1,9 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix `hsl()` clamping to match CSS Color 4: only negative saturation is clamped at parse time, including in the legacy comma-separated syntax
+
 ### 4.2.7
 
 _October 29, 2026_
