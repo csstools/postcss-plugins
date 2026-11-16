@@ -2,4 +2,4 @@
 
 ### Unreleased (major)
 
-- Initial version with a `preserve` option and a `scope` argument for substituted nodes
+- Initial version
