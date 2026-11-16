@@ -1,20 +1,36 @@
-import type { CSSToken, TokenColon, TokenIdent} from '@csstools/css-tokenizer';
-import { isTokenComment, stringify } from '@csstools/css-tokenizer';
+import type { CSSToken, TokenColon, TokenIdent } from '@csstools/css-tokenizer';
+import { isTokenWhitespace, stringify } from '@csstools/css-tokenizer';
+import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { NodeType } from '../util/node-type';
+import { tokensOf } from '../util/component-values';
+import { getSyntaxString } from '../util/syntax-string';
+import { singleCurlyBlock } from '../util/declaration-value';
 
+/**
+ * A `<function-parameter>`.
+ *
+ * https://drafts.csswg.org/css-mixins-1/#typedef-function-parameter
+ */
 export class FunctionParameter {
 	type = NodeType.FunctionParameter;
 
 	name: TokenIdent;
-	argumentType: Array<CSSToken>;
+	parameterType: Array<CSSToken>;
 	colon: TokenColon | null;
 	defaultValue: Array<CSSToken>;
 	before: Array<CSSToken>;
 	after: Array<CSSToken>;
 
-	constructor(name: TokenIdent, argumentType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
+	// Cache until `colon` or `defaultValue` is replaced.
+	private defaultValueCache: {
+		colon: TokenColon | null,
+		tokens: Array<CSSToken>,
+		value: string | null,
+	} | null = null;
+
+	constructor(name: TokenIdent, parameterType: Array<CSSToken>, colon: TokenColon | null, defaultValue: Array<CSSToken>, before: Array<CSSToken> = [], after: Array<CSSToken> = []) {
 		this.name = name;
-		this.argumentType = argumentType;
+		this.parameterType = parameterType;
 		this.colon = colon;
 		this.defaultValue = defaultValue;
 		this.before = before;
@@ -25,16 +41,49 @@ export class FunctionParameter {
 		return this.name[4].value;
 	}
 
-	getNameToken(): TokenIdent | null {
+	getNameToken(): TokenIdent {
 		return this.name;
 	}
 
-	getArgumentType(): string {
-		return stringify(...this.argumentType.filter((x) => !isTokenComment(x))).trim();
+	getParameterType(): string {
+		return getSyntaxString(this.parameterType);
 	}
 
-	getDefaultValue(): string {
-		return stringify(...this.defaultValue).trim();
+	getDefaultValue(): string | null {
+		const cache = this.defaultValueCache;
+		if (cache && cache.colon === this.colon && cache.tokens === this.defaultValue) {
+			return cache.value;
+		}
+
+		let defaultValue: string | null = null;
+		if (this.colon) {
+			const componentValues = parseListOfComponentValues(this.defaultValue);
+			const block = singleCurlyBlock(componentValues);
+			defaultValue = stringify(trimWhitespace(tokensOf(block ? block.value : componentValues)));
+		}
+
+		this.defaultValueCache = {
+			colon: this.colon,
+			tokens: this.defaultValue,
+			value: defaultValue,
+		};
+
+		return defaultValue;
+	}
+
+	tokens(): Array<CSSToken> {
+		return [
+			...this.before,
+			this.name,
+			...this.parameterType,
+			...(this.colon ? [this.colon] : []),
+			...this.defaultValue,
+			...this.after,
+		];
+	}
+
+	toString(): string {
+		return stringify(this.tokens());
 	}
 
 	/**
@@ -44,7 +93,9 @@ export class FunctionParameter {
 		return {
 			type: this.type,
 			name: this.getName(),
-			argumentType: this.argumentType,
+			string: this.toString(),
+			tokens: this.tokens(),
+			parameterType: this.parameterType,
 			colon: this.colon,
 			defaultValue: this.defaultValue,
 			before: this.before,
@@ -70,4 +121,20 @@ export class FunctionParameter {
 
 		return x.type === NodeType.FunctionParameter;
 	}
+}
+
+/** Drop leading and trailing whitespace tokens, but keep comments as written. */
+function trimWhitespace(tokens: Array<CSSToken>): Array<CSSToken> {
+	let start = 0;
+	let end = tokens.length;
+
+	while (start < end && isTokenWhitespace(tokens[start])) {
+		start++;
+	}
+
+	while (end > start && isTokenWhitespace(tokens[end - 1])) {
+		end--;
+	}
+
+	return tokens.slice(start, end);
 }

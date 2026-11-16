@@ -71,3 +71,15 @@
 	--x: PASS1;
 	--actual: --default-inherit() --default-inherit(PASS2);
 }
+
+@function --empty-default(--x:) {
+	result: var(--x);
+}
+
+.untyped-empty-default {
+	--actual: --empty-default();
+}
+
+.untyped-empty-default-valid {
+	--actual: --empty-default(PASS);
+}

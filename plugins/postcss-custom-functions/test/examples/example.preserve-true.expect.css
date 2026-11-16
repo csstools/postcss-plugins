@@ -20,6 +20,6 @@ html {
 
 @property --_csstools-cf-1gice1e-3-arg-0 {
 	syntax: "<length>";
-	inherits: false;
+	inherits: true;
 	initial-value: 1px;
 }

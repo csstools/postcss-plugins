@@ -1,0 +1,210 @@
+@function --registered-local() {
+	@property --size {
+		syntax: "<length>";
+		inherits: false;
+		initial-value: 10px;
+	}
+
+	--size: 20px;
+	result: var(--size);
+}
+
+.registered-local-a {
+	width: --registered-local();
+}
+
+.registered-local-b {
+	width: --registered-local();
+}
+
+@function --registered-initial() {
+	@property --size {
+		syntax: "<length>";
+		inherits: false;
+		initial-value: 5px;
+	}
+
+	--size: initial;
+	result: var(--size);
+}
+
+.registered-initial {
+	width: --registered-initial();
+}
+
+@function --registered-only() {
+	@property --size {
+		syntax: "<length>";
+		inherits: false;
+		initial-value: 15px;
+	}
+
+	result: var(--size);
+}
+
+.registered-only {
+	width: --registered-only();
+}
+
+@function --registered-list() {
+	@property --size-a, --size-b {
+		syntax: "<length>";
+		inherits: false;
+		initial-value: 10px;
+	}
+
+	result: var(--size-a) var(--size-b);
+}
+
+.registered-list {
+	box-shadow: 0 0 --registered-list();
+}
+
+@function --registered-shorthand() {
+	@property --size <length>: 10px;
+
+	--size: 20px;
+	result: var(--size);
+}
+
+.registered-shorthand {
+	width: --registered-shorthand();
+}
+
+@function --registered-shorthand-color-list() {
+	@property --colors type(<color>#): red, blue;
+
+	result: var(--colors);
+}
+
+.registered-shorthand-color-list {
+	box-shadow: 0 0 --registered-shorthand-color-list();
+}
+
+@function --registered-shorthand-empty() {
+	@property --size <length>:;
+	@property --untyped-empty:;
+
+	result: var(--size) var(--untyped-empty);
+}
+
+.registered-shorthand-empty {
+	box-shadow: 0 0 --registered-shorthand-empty();
+}
+
+@function --registered-shorthand-initial() {
+	@property --size <length>: 5px;
+
+	--size: initial;
+	result: var(--size);
+}
+
+.registered-shorthand-initial {
+	width: --registered-shorthand-initial();
+}
+
+@function --registered-shorthand-type-function() {
+	@property --size type(<length> | <percentage>): 10px;
+
+	result: var(--size);
+}
+
+.registered-shorthand-type-function {
+	width: --registered-shorthand-type-function();
+}
+
+@function --registered-invalid() {
+	@property -- <length>: 1em;
+
+	result: var(--);
+}
+
+.registered-invalid {
+	box-shadow: 0 0 --registered-invalid();
+}
+
+@function --registered-conditional() {
+	@media (min-width: 1000px) {
+		@property --size <length>: 10px;
+	}
+
+	result: var(--size);
+}
+
+.registered-conditional {
+	width: --registered-conditional();
+}
+
+@function --registered-container() {
+	@container (width > 10px) {
+		@property --size <length>: 10px;
+	}
+
+	result: var(--size);
+}
+
+.registered-container {
+	width: --registered-container();
+}
+
+@function --registered-starting-style() {
+	@starting-style {
+		@property --size <length>: 10px;
+	}
+
+	result: var(--size);
+}
+
+.registered-starting-style {
+	width: --registered-starting-style();
+}
+
+@function --registered-container-and-media() {
+	@media (min-width: 1000px) {
+		@container (width > 10px) {
+			@property --size <length>: 10px;
+		}
+	}
+
+	result: var(--size);
+}
+
+.registered-container-and-media {
+	width: --registered-container-and-media();
+}
+
+@function --registered-escaped() {
+	@property --\66 oo <length>: 10px;
+
+	--\66 oo: 20px;
+	result: var(--\66 oo);
+}
+
+.registered-escaped {
+	width: --registered-escaped();
+}
+
+@function --registered-parameter(--size <length>: 10px) {
+	@property --size <length>: 20px;
+
+	result: var(--size);
+}
+
+.registered-parameter-default {
+	width: --registered-parameter();
+}
+
+.registered-parameter-argument {
+	width: --registered-parameter(30px);
+}
+
+@function --registered-parameter-shadowed(--size <length>: 10px) {
+	@property --size <length>: 20px;
+
+	--size: 15px;
+	result: var(--size);
+}
+
+.registered-parameter-shadowed {
+	width: --registered-parameter-shadowed(30px);
+}

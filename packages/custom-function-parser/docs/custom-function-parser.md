@@ -24,6 +24,10 @@ Description
 
 </td><td>
 
+A parsed `@function` prelude.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
 
 </td></tr>
 <tr><td>
@@ -32,6 +36,10 @@ Description
 
 
 </td><td>
+
+A `<function-parameter>`<!-- -->.
+
+https://drafts.csswg.org/css-mixins-1/\#typedef-function-parameter
 
 
 </td></tr>
@@ -99,6 +107,27 @@ Description
 
 </td><td>
 
+Parse a `@function` prelude.
+
+Returns `false` when the prelude is invalid. `onParseError` only reports tokenizer and component value parsing errors.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
+
+</td></tr>
+<tr><td>
+
+[parseDashedFunctionArguments(componentValues)](./custom-function-parser.parsedashedfunctionarguments.md)
+
+
+</td><td>
+
+Parse the arguments of a `<dashed-function>`<!-- -->.
+
+Returns `false` when the arguments are invalid.
+
+https://drafts.csswg.org/css-mixins-1/\#typedef-dashed-function
+
 
 </td></tr>
 <tr><td>
@@ -107,6 +136,27 @@ Description
 
 
 </td><td>
+
+Parse a `@function` prelude from tokens.
+
+Returns `false` when the prelude is invalid. `onParseError` only reports tokenizer and component value parsing errors.
+
+https://drafts.csswg.org/css-mixins-1/\#function-prelude
+
+
+</td></tr>
+<tr><td>
+
+[parseFunctionParameters(componentValues)](./custom-function-parser.parsefunctionparameters.md)
+
+
+</td><td>
+
+Parse a `<function-parameter>#? ,?` list.
+
+Returns `false` when the list is invalid.
+
+https://drafts.csswg.org/css-mixins-1/\#function-rule
 
 
 </td></tr>

@@ -1,0 +1,26 @@
+/* Layers inside element-sensitive conditions are global. */
+@container (width < 0px) {
+	@layer container-layer {
+	}
+}
+
+.container-layer {
+			--_csstools-cf-iq3frl-0-result: 1px;
+}
+
+.container-layer {
+	width: var(--_csstools-cf-iq3frl-0-result);
+}
+
+@starting-style {
+	@layer starting-layer {
+	}
+}
+
+.starting-layer {
+			--_csstools-cf-iq3frl-2-result: 2px;
+}
+
+.starting-layer {
+	width: var(--_csstools-cf-iq3frl-2-result);
+}

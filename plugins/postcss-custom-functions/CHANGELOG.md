@@ -1,5 +1,19 @@
 # Changes to PostCSS Custom Functions
 
+### Unreleased (minor)
+
+- Hoist `@property` registrations out of `@container`, `@scope` and `@starting-style`, and treat definitions there as unconditional
+- Keep empty `@layer` blocks and order `@layer` rules inside `@scope` as global layers
+- Keep functions referenced from `@apply` and `@mixin` preludes
+- Keep parameter registrations and values when a local variable shadows a typed parameter
+- Leave calls untouched when a definition can not be transpiled or an argument is invalid
+- Preserve cascade order when inlining duplicate definitions and skip cycles in inactive conditionals
+- Resolve local variables, `inherit()` and CSS-wide keywords in arguments, `if()` conditions and `style()` queries
+- Support empty `@function` bodies, ignore `!important` declarations and allow locals and registrations in conditional rules
+- Support trailing commas, whitespace and empty arguments in dashed-function calls
+- Treat `--x:` as an empty default and reject defaults that mix `{}` blocks with other tokens
+- Use `@csstools/generate-idents`, `@csstools/utilities-for-property-registrations` and `@csstools/custom-function-parser` internally
+
 ### 1.0.1
 
 _October 2, 2026_

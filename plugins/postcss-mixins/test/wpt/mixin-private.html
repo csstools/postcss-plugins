@@ -11,6 +11,16 @@
 	<target class="private"></target>
 	<target class="private-and-args"></target>
 	<target class="shadowed-by-element"></target>
+	<target class="conditional-registration">
+		<target class="child"></target>
+	</target>
+	<target class="nested-argument"></target>
+	<target class="fallback-argument"></target>
+	<target class="contents-outer"></target>
+	<target class="fallback-private"></target>
+	<target class="applying-private"></target>
+	<target class="contents-private"></target>
+	<target class="contents-argument-private"></target>
 	<div id="log"></div>
 	<script type="module">
 		window.addEventListener('click', () => {
@@ -58,6 +68,166 @@
 						}
 						.private-and-args {
 							@apply --private-and-args(green);
+						}
+					`,
+				},
+				{
+					title: 'Nested mixins without parameters still see the mixin scope',
+					target: '.nested-argument',
+					property: 'color',
+					expected: 'rgb(255, 0, 0)',
+					style: `
+						@mixin --nested-argument-inner() {
+							color: var(--color);
+						}
+						@mixin --nested-argument-outer(--color) {
+							@apply --nested-argument-inner;
+						}
+						.nested-argument {
+							--color: blue;
+							@apply --nested-argument-outer(red);
+						}
+					`,
+				},
+				{
+					title: '@contents fallback blocks see the mixin scope',
+					target: '.fallback-argument',
+					property: 'color',
+					expected: 'rgb(255, 0, 0)',
+					style: `
+						@mixin --fallback-argument(--color) {
+							@contents {
+								color: var(--color);
+							}
+						}
+						.fallback-argument {
+							--color: blue;
+							@apply --fallback-argument(red);
+						}
+					`,
+				},
+				{
+					title: 'Contents blocks authored in a mixin body see the mixin scope',
+					target: '.contents-outer',
+					property: 'color',
+					expected: 'rgb(255, 0, 0)',
+					style: `
+						@mixin --contents-inner() {
+							@contents;
+						}
+						@mixin --contents-outer(--color) {
+							@apply --contents-inner {
+								color: var(--color);
+							}
+						}
+						.contents-outer {
+							--color: blue;
+							@apply --contents-outer(red);
+						}
+					`,
+				},
+				{
+					title: 'Fallback blocks can define private properties',
+					target: '.fallback-private',
+					property: 'color',
+					expected: 'rgb(255, 0, 0)',
+					style: `
+						@mixin --fallback-private() {
+							@contents {
+								@private {
+									--x: red;
+								}
+								color: var(--x);
+							}
+						}
+						.fallback-private {
+							@apply --fallback-private;
+						}
+					`,
+				},
+				{
+					title: 'Mixin @private registrations keep their conditions',
+					target: '.conditional-registration .child',
+					property: 'width',
+					expected: '60px',
+					style: `
+						@mixin --conditional-registration() {
+							@private {
+								--size: 2em;
+
+								@media (width < 0px) {
+									@property --size {
+										syntax: "<length>";
+										inherits: true;
+										initial-value: 1px;
+									}
+								}
+							}
+							font-size: 10px;
+
+							& > .child {
+								font-size: 30px;
+								width: var(--size);
+							}
+						}
+						.conditional-registration {
+							@apply --conditional-registration;
+						}
+					`,
+				},
+				{
+					title: 'Private properties in the applying rule',
+					target: '.applying-private',
+					property: 'color',
+					style: `
+						@mixin --applying-private() {
+							color: var(--applying-private-color);
+						}
+						.applying-private {
+							@private {
+								--applying-private-color: green;
+							}
+							@apply --applying-private;
+						}
+					`,
+				},
+				{
+					title: 'Private properties from a mixin body in a passed contents block',
+					target: '.contents-private',
+					property: 'color',
+					style: `
+						@mixin --contents-private-inner() {
+							@contents;
+						}
+						@mixin --contents-private-outer(--color) {
+							@apply --contents-private-inner {
+								@private {
+									--local: var(--color);
+								}
+								color: var(--local);
+							}
+						}
+						.contents-private {
+							@apply --contents-private-outer(green);
+						}
+					`,
+				},
+				{
+					title: 'Private properties from the applying rule in a passed contents block',
+					target: '.contents-argument-private',
+					property: 'width',
+					expected: '10px',
+					style: `
+						@mixin --contents-argument-private() {
+							@contents;
+						}
+						.contents-argument-private {
+							@private {
+								--size: 10px;
+							}
+							@apply --contents-argument-private {
+								width: var(--size);
+							}
 						}
 					`,
 				},

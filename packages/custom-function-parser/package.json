@@ -1,6 +1,6 @@
 {
 	"name": "@csstools/custom-function-parser",
-	"description": "Parse CSS custom function params.",
+	"description": "Parse CSS custom function definitions and calls.",
 	"version": "1.0.0",
 	"contributors": [
 		{

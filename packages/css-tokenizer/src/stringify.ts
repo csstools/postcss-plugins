@@ -10,8 +10,12 @@ export function stringify(...tokens: Array<CSSToken> | Array<Array<CSSToken>>): 
 		return '';
 	}
 
+	if (Array.isArray(tokens[0]) && !tokens[0].length) {
+		return '';
+	}
+
 	let t;
-	if (Array.isArray(tokens) && Array.isArray(tokens[0]) && Array.isArray(tokens[0][0])) {
+	if (Array.isArray(tokens[0]) && Array.isArray(tokens[0][0])) {
 		t = tokens[0] as Array<CSSToken>;
 	} else {
 		t = tokens as Array<CSSToken>;

@@ -1,5 +1,18 @@
 # Changes to Custom Function Parser
 
+### Unreleased (major)
+
+- Omitted types are `*` for `getParameterType()` and `getReturnType()` (breaking).
+- Rename `CustomFunction.function` to `CustomFunction.functionNode` (breaking).
+- Replace `FunctionParameter.argumentType`/`getArgumentType()` with `parameterType`/`getParameterType()` (breaking).
+- Return `null` from `getDefaultValue()` when a parameter has no default (breaking).
+- Add `FunctionParameter.tokens()`/`toString()` and export `parseFunctionParameters()`/`parseDashedFunctionArguments()`.
+- Document that `false` signals invalid input.
+- Enforce `<declaration-value>` restrictions and preserve `type(...)`/`{}` wrappers in tokens.
+- Fix a `RangeError` and improve performance for large token lists.
+- Reject `--` as a parameter name.
+- Support `--foo(,)`, empty defaults and trailing commas, and only trim whitespace from arguments and defaults.
+
 ### 1.0.0
 
 _October 1, 2026_

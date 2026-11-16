@@ -1,0 +1,6 @@
+/* An empty body is valid and returns the guaranteed-invalid value. */
+@function --empty() {}
+
+.empty {
+	--actual: --empty();
+}

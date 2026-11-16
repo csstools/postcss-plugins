@@ -29,3 +29,11 @@
 
 	order: 1;
 }
+
+@mixin --\65 scaped() {
+	color: green;
+}
+
+.escaped-name {
+	@apply --\65 scaped;
+}

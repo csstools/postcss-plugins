@@ -1,7 +1,8 @@
-import type { ComponentValue } from '@csstools/css-parser-algorithms';
-import { isFunctionNode, isTokenNode, isWhiteSpaceOrCommentNode, parseCommaSeparatedListOfComponentValues, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenColon, isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isFunctionNode, isTokenNode, parseComponentValue } from '@csstools/css-parser-algorithms';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
+import { parseFunctionParameters } from '@csstools/custom-function-parser';
+import { preludeTokens, rawParams } from './utils';
 
 export type MixinParameter = {
 	name: string,
@@ -13,15 +14,44 @@ export type ProcessableMixin = {
 	parameters: Array<MixinParameter>,
 };
 
-const IS_UNSUPPORTED_CHILD_RULE = /^result$/i;
-const IS_IMPORTANT_REGEX = /!\s*important/i;
-
-export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
-	if (atRule.name.toLowerCase() !== 'mixin') {
-		return false;
+/**
+ * The dashed name in a `@mixin` or `@apply` prelude, even when the rule is not
+ * transpilable.
+ */
+export function dashedNameFromParams(params: string): string | null {
+	if (!params) {
+		return null;
 	}
 
-	if (!atRule.params || !atRule.params.includes('--')) {
+	const prelude = parseComponentValue(preludeTokens(params));
+
+	let name: string;
+	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
+		// `@mixin --foo;` is equivalent to `@mixin --foo();`
+		name = prelude.value[4].value;
+	} else if (isFunctionNode(prelude)) {
+		name = prelude.getName();
+	} else {
+		return null;
+	}
+
+	return name.startsWith('--') ? name : null;
+}
+
+/**
+ * The name of a `@mixin` rule, even when the rule is not transpilable.
+ */
+export function mixinRuleName(atRule: AtRule): string | null {
+	if (atRule.name.toLowerCase() !== 'mixin') {
+		return null;
+	}
+
+	return dashedNameFromParams(rawParams(atRule));
+}
+
+export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
+	const name = mixinRuleName(atRule);
+	if (!name) {
 		return false;
 	}
 
@@ -34,112 +64,27 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 		return false;
 	}
 
-	// `@result` was dropped from the specification, mixins with `@result` are ignored.
-	let hasUnsupportedChildRule = false;
-	atRule.walk((node) => {
-		if (node.type === 'atrule' && IS_UNSUPPORTED_CHILD_RULE.test(node.name)) {
-			hasUnsupportedChildRule = true;
-		}
-	});
+	const prelude = parseComponentValue(preludeTokens(rawParams(atRule)));
 
-	if (hasUnsupportedChildRule) {
-		return false;
-	}
-
-	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
-	}));
-
-	let name: string;
 	let parameters: Array<MixinParameter> = [];
 
-	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
-		// `@mixin --foo;` is equivalent to `@mixin --foo();`
-		name = prelude.value[4].value;
-	} else if (isFunctionNode(prelude)) {
-		name = prelude.getName();
-
-		const parsedParameters = parseParameters(prelude.value);
-		if (!parsedParameters) {
+	if (isFunctionNode(prelude)) {
+		const parsedParameters = parseFunctionParameters(prelude.value);
+		if (!parsedParameters || parsedParameters.some((parameter) => {
+			const type = parameter.getParameterType();
+			return !!type && type !== '*';
+		})) {
 			return false;
 		}
 
-		parameters = parsedParameters;
-	} else {
-		return false;
-	}
-
-	if (!name.startsWith('--')) {
-		return false;
+		parameters = parsedParameters.map((parameter) => ({
+			name: parameter.getName(),
+			defaultValue: parameter.getDefaultValue() ?? undefined,
+		}));
 	}
 
 	return {
 		name,
 		parameters,
 	};
-}
-
-function parseParameters(componentValues: Array<ComponentValue>): false | Array<MixinParameter> {
-	const rawParameters = parseCommaSeparatedListOfComponentValues(componentValues.flatMap((componentValue) => componentValue.tokens()));
-
-	// `--foo()` has no parameters.
-	if (rawParameters.length === 1 && stringify([rawParameters[0]]).trim() === '') {
-		return [];
-	}
-
-	const parameters: Array<MixinParameter> = [];
-	const names = new Set<string>();
-
-	for (const rawParameter of rawParameters) {
-		let start = 0;
-		while (start < rawParameter.length && isWhiteSpaceOrCommentNode(rawParameter[start])) {
-			start++;
-		}
-
-		const nameNode = rawParameter[start];
-		if (!nameNode || !isTokenNode(nameNode) || !isTokenIdent(nameNode.value) || !nameNode.value[4].value.startsWith('--')) {
-			return false;
-		}
-
-		const name = nameNode.value[4].value;
-		if (names.has(name)) {
-			return false;
-		}
-
-		names.add(name);
-
-		let defaultValue: string | undefined;
-		let hasType = false;
-
-		for (let i = start + 1; i < rawParameter.length; i++) {
-			const componentValue = rawParameter[i];
-
-			if (isWhiteSpaceOrCommentNode(componentValue)) {
-				continue;
-			}
-
-			if (isTokenNode(componentValue) && isTokenColon(componentValue.value)) {
-				defaultValue = stringify([rawParameter.slice(i + 1)]).trim() || undefined;
-				break;
-			}
-
-			hasType = true;
-		}
-
-		// TODO: support typed arguments
-		if (hasType) {
-			return false;
-		}
-
-		if (defaultValue && IS_IMPORTANT_REGEX.test(defaultValue)) {
-			return false;
-		}
-
-		parameters.push({
-			name,
-			defaultValue,
-		});
-	}
-
-	return parameters;
 }

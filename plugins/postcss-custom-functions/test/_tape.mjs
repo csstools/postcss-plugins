@@ -17,6 +17,9 @@ postcssTape(plugin)({
 	classification: {
 		message: 'classifies definitions as supported or unsupported',
 	},
+	attr: {
+		message: 'ignores functions that can capture locals or parameters with attr()',
+	},
 	typed: {
 		message: 'supports typed parameters with defaults',
 	},
@@ -38,8 +41,26 @@ postcssTape(plugin)({
 	locals: {
 		message: 'supports initial and inherit in local variables',
 	},
+	property: {
+		message: 'supports @property rules for local variables',
+	},
+	'property:preserve-true': {
+		message: 'supports @property rules for local variables with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	'local-keywords': {
 		message: 'resolves other CSS-wide keywords on local variables to the guaranteed-invalid value',
+	},
+	'local-if': {
+		message: 'substitutes local variables in if() conditions',
+	},
+	'local-inherit': {
+		message: 'substitutes inherit() from the calling scope',
+	},
+	'parameter-keywords': {
+		message: 'resolves CSS-wide keywords in function arguments',
 	},
 	'inlining': {
 		message: 'inlines definitions without conditionals or layers',
@@ -47,11 +68,17 @@ postcssTape(plugin)({
 	cycles: {
 		message: 'handles cyclic functions',
 	},
+	'conditional-cycles': {
+		message: 'does not evaluate cycles in inactive or losing declarations',
+	},
 	'conditionals': {
 		message: 'supports conditional rules',
 	},
 	'conditional-definitions': {
 		message: 'supports definitions inside conditional rules',
+	},
+	'conditional-locals': {
+		message: 'supports conditional local declarations and registrations',
 	},
 	'conditional-definitions:preserve-true': {
 		message: 'supports definitions inside conditional rules with { preserve: true }',
@@ -61,6 +88,9 @@ postcssTape(plugin)({
 	},
 	'invalid': {
 		message: 'handles invalid invocations',
+	},
+	'arguments': {
+		message: 'supports empty arguments, trailing commas and whitespace trimming',
 	},
 	'ignore': {
 		message: 'ignores unsupported functions',
@@ -81,17 +111,44 @@ postcssTape(plugin)({
 	'conditional-layers': {
 		message: 'ignores definitions in conditional layers and orders definitions correctly',
 	},
+	'layer-in-element-condition': {
+		message: 'treats layers inside element-sensitive conditions as global layers',
+	},
 	'anonymous-layers': {
 		message: 'keeps anonymous layers distinct',
 	},
 	'conditional-keyword-result': {
 		message: 'leaves functions with non-static keyword results as-is',
 	},
+	'group-keyword-result': {
+		message: 'leaves a name with keyword results in several definitions as-is',
+	},
+	'keyword-result-arity': {
+		message: 'leaves invalid calls to a keyword result as-is',
+	},
 	'invalid-bodies': {
 		message: 'ignores functions with invalid bodies',
 	},
+	'important': {
+		message: 'ignores !important declarations in function bodies',
+	},
+	'empty-body': {
+		message: 'supports empty function bodies',
+	},
 	'style-rule-definition': {
 		message: 'ignores functions defined inside a style rule',
+	},
+	'element-sensitive-conditions': {
+		message: 'treats definitions inside element-sensitive conditions as unconditional',
+	},
+	'layer-scope': {
+		message: 'orders layers inside @scope as global layers',
+	},
+	'apply-arguments': {
+		message: 'keeps functions referenced from @apply and @mixin preludes',
+	},
+	'ignored-definitions': {
+		message: 'leaves calls untouched when a definition can not be transpiled',
 	},
 	'examples/example': {
 		message: 'minimal example',

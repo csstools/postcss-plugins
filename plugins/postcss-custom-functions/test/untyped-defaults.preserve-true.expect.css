@@ -110,3 +110,22 @@
 	--actual: var(--_csstools-cf-1urbt0l-g-result) var(--_csstools-cf-1urbt0l-i-result);
 	--actual: --default-inherit() --default-inherit(PASS2);
 }
+
+@function --empty-default(--x:) {
+	result: var(--x);
+}
+
+.untyped-empty-default {
+	--_csstools-cf-1urbt0l-l-arg-0: var(--_csstools-cf-1urbt0l-l-raw-0, );
+	--_csstools-cf-1urbt0l-k-result: var(--_csstools-cf-1urbt0l-l-arg-0);
+	--actual: var(--_csstools-cf-1urbt0l-k-result);
+	--actual: --empty-default();
+}
+
+.untyped-empty-default-valid {
+	--_csstools-cf-1urbt0l-n-raw-0: PASS;
+	--_csstools-cf-1urbt0l-n-arg-0: var(--_csstools-cf-1urbt0l-n-raw-0, );
+	--_csstools-cf-1urbt0l-m-result: var(--_csstools-cf-1urbt0l-n-arg-0);
+	--actual: var(--_csstools-cf-1urbt0l-m-result);
+	--actual: --empty-default(PASS);
+}

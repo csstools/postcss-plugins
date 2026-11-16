@@ -1,0 +1,31 @@
+/* An unknown at-rule in a body is ignored, the definition itself is valid and can win. */
+@function --unknown-body() {
+	result: 1px;
+}
+
+@function --unknown-body() {
+	@layer x {
+		color: red;
+	}
+	result: 2px;
+}
+
+.unknown-body {
+	width: --unknown-body();
+}
+
+/* A nested style rule in a body also leaves the definition itself valid. */
+@function --nested-rule() {
+	result: 1px;
+}
+
+@function --nested-rule() {
+	.x {
+		color: red;
+	}
+	result: 2px;
+}
+
+.nested-rule {
+	width: --nested-rule();
+}

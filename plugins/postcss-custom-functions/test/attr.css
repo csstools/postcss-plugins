@@ -1,0 +1,28 @@
+/* `attr()` can capture locals and parameters on the hypothetical element,
+   so functions with locals or parameters are not transpiled. */
+@function --attr-local() {
+	--x: PASS;
+	result: attr(data-x type(*));
+}
+
+.attr-local {
+	--x: FAIL;
+	--actual: --attr-local();
+}
+
+@function --attr-parameter(--x) {
+	result: attr(data-x type(*));
+}
+
+.attr-parameter {
+	--actual: --attr-parameter(PASS);
+}
+
+/* `attr()` without locals or parameters is transpiled. */
+@function --attr-plain() {
+	result: attr(data-plain type(*));
+}
+
+.attr-plain {
+	--actual: --attr-plain();
+}

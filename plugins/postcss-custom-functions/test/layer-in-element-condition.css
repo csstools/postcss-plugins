@@ -1,0 +1,24 @@
+/* Layers inside element-sensitive conditions are global. */
+@container (width < 0px) {
+	@layer container-layer {
+		@function --container-layer() {
+			result: 1px;
+		}
+	}
+}
+
+.container-layer {
+	width: --container-layer();
+}
+
+@starting-style {
+	@layer starting-layer {
+		@function --starting-layer() {
+			result: 2px;
+		}
+	}
+}
+
+.starting-layer {
+	width: --starting-layer();
+}

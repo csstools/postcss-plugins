@@ -8,16 +8,14 @@
 
 .self-cycle {
 	--_csstools-cf-sw0cts-2-result: var(--_csstools-cf-invalid);
-	--_csstools-cf-sw0cts-2-result: var(--_csstools-cf-invalid);
-	--tmp: var(--_csstools-cf-invalid);
+	--tmp: var(--_csstools-cf-sw0cts-2-result);
 	--actual: var(--tmp, PASS);
 }
 
 .ping-pong {
 	--_csstools-cf-sw0cts-6-result: var(--_csstools-cf-invalid);
 	--_csstools-cf-sw0cts-4-result: var(--_csstools-cf-sw0cts-6-result);
-	--_csstools-cf-sw0cts-4-result: var(--_csstools-cf-invalid);
-	--tmp: var(--_csstools-cf-invalid);
+	--tmp: var(--_csstools-cf-sw0cts-4-result);
 	--actual: var(--tmp, PASS);
 }
 

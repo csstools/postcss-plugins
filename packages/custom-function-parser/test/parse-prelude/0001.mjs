@@ -38,6 +38,14 @@ const valid = [
 	'--foo(--x <length>, --y, --z)',
 	'--foo(--x, --y <number>, --z <angle>)',
 	'--foo(--x : 10px)',
+	'--foo(--x:)',
+	'--foo(--x: )',
+	'--foo(--x, --y:)',
+	'--foo(--x,)',
+	'--foo(--x, )',
+	'--foo(--x, --y, )',
+	'--foo(--x <length>,)',
+	'--foo(--x <length>, )',
 	'--foo(--x type(*): 10px)',
 	'--foo(--x <length>: 10px)',
 	'--foo(--x <length>: 10px, --y)',
@@ -62,15 +70,24 @@ const valid = [
 	'--foo(--x) returns type(<length>)',
 	'--foo(--x) returns type(<length> | auto)',
 	'--foo(--x) returns type(foo | bar)',
+	'--foo(,)',
+	'--foo( , )',
 ];
 
 const invalid = [
 	'--foo ()',
 	'--foo (--x)',
 	'--foo(--x: 10px !important)',
+	'--foo(--x: !)',
+	'--foo(--x: ! )',
+	'--foo(--x: 1px;)',
+	'--foo(--x: {red !important})',
+	'--foo(--x: {1px;})',
+	'--foo(--x: {1px, 2px} extra)',
+	'--foo(--x: a {1px, 2px})',
+	'--foo(--x: {1px} {2px})',
 	'--foo(--x: var(--y, 10px)',
 	'--foo(!)',
-	'--foo(,)',
 	'--foo(,,,)',
 	'--foo(--x, ;)',
 	'--foo(;)',
@@ -85,6 +102,7 @@ const invalid = [
 	'--foo(--x): length',
 	'--foo(--x) returneth <length>',
 	'--foo(--x, --x)',
+	'--foo(--)',
 ];
 
 for (const source of valid) {

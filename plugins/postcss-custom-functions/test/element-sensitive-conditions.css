@@ -1,0 +1,43 @@
+/* Global, name-defining at-rules are not constrained by these conditions. */
+@container (width = 100px) {
+	@function --container-fn() {
+		result: 1px;
+	}
+}
+
+@starting-style {
+	@function --starting-style-fn() {
+		result: 2px;
+	}
+}
+
+@scope (#scope-root) {
+	@function --scope-fn() {
+		result: 3px;
+	}
+}
+
+/* A global condition still applies. */
+@supports (width: 100px) {
+	@container (width = 100px) {
+		@function --conditional-fn() {
+			result: 4px;
+		}
+	}
+}
+
+.container-fn {
+	width: --container-fn();
+}
+
+.starting-style-fn {
+	width: --starting-style-fn();
+}
+
+.scope-fn {
+	width: --scope-fn();
+}
+
+.conditional-fn {
+	width: --conditional-fn();
+}

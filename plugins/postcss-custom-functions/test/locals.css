@@ -32,3 +32,13 @@
 	--x: 1px;
 	width: --outer();
 }
+
+@function --multi-token-fallback() {
+	--x: var(--unknown, inherit) 1px;
+	result: var(--x, PASS);
+}
+
+.multi-token-fallback {
+	--x: 20px;
+	--actual: --multi-token-fallback();
+}

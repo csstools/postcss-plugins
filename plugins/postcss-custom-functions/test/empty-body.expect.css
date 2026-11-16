@@ -1,0 +1,5 @@
+/* An empty body is valid and returns the guaranteed-invalid value. */
+
+.empty {
+	--actual: var(--_csstools-cf-dp9o13-0-result);
+}

@@ -42,3 +42,25 @@
 .with-return {
 	width: --with-return();
 }
+
+/* A typed parameter with an empty default is not supported. */
+@function --typed-empty-default(--x <length>:) {
+	result: var(--x);
+}
+
+.typed-empty-default {
+	width: --typed-empty-default(1px);
+}
+
+/* A typed default that calls a custom function is not computationally independent. */
+@function --default-helper() {
+	result: 1px;
+}
+
+@function --typed-default-dashed(--x <length>: --default-helper()) {
+	result: var(--x);
+}
+
+.typed-default-dashed {
+	width: --typed-default-dashed(2px);
+}
