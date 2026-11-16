@@ -17,6 +17,8 @@ Unsupported:
 - conditional `@mixin` declarations
 - mixin overrides
 
+Run `@csstools/postcss-private-rule` after this plugin to transpile `@private` rules in style rules that do not apply a mixin.
+
 A mixin with an unsupported definition is left unchanged: the definition and every `@apply` of that name stay as they are.
 Rules that apply such a mixin are left unchanged as well, so native support keeps working for them.
 The same happens when private properties in a rule can not be transpiled completely, for example when a private property registration is inside an anonymous cascade layer.

@@ -450,6 +450,9 @@ postcssTape(plugin)({
 			}),
 		],
 	},
+	'private-rule': {
+		message: 'supports @private rules',
+	},
 	'postcss-functions': {
 		message: 'does not clone `@function` rules when generating conditional rules',
 		options: {

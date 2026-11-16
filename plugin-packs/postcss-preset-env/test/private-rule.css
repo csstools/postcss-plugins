@@ -1,0 +1,19 @@
+.example {
+	@private {
+		--size: 2px;
+	}
+
+	width: var(--size);
+}
+
+@mixin --with-private() {
+	@private {
+		--size: 3px;
+	}
+
+	height: var(--size);
+}
+
+.with-private {
+	@apply --with-private;
+}
