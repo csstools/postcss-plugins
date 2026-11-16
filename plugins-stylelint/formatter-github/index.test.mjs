@@ -2,6 +2,10 @@ import { spawn } from 'node:child_process';
 import { platform } from 'node:process';
 import assert from 'node:assert';
 
+if (Number(process.versions.node.split('.')[0]) < 22) {
+	process.exit(0);
+}
+
 {
 	const child = spawn(
 		'npx',

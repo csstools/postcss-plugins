@@ -1,4 +1,3 @@
-import postcss from 'postcss';
 import stylelint from 'stylelint';
 
 const ruleName = '@csstools/stylelint-no-at-nest-rule';
@@ -14,7 +13,7 @@ const meta = {
 };
 
 const ruleFunction = (primaryOption) => {
-	return (postcssRoot, postcssResult) => {
+	return function (postcssRoot, postcssResult) {
 		if (!primaryOption) {
 			return;
 		}
@@ -28,7 +27,7 @@ const ruleFunction = (primaryOption) => {
 				result: postcssResult,
 				ruleName,
 				fix: () => {
-					const rule = postcss.rule({
+					const rule = postcssResult.stylelint.postcss.rule({
 						selector: atRule.params,
 						source: atRule.source,
 					});

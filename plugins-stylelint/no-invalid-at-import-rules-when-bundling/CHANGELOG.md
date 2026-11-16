@@ -1,5 +1,9 @@
 # Changelog
 
+### Unreleased (major)
+
+- Updated: Support for Stylelint `18.0.0` or later (major).
+
 ### 4.0.2
 
 _October 1, 2026_
