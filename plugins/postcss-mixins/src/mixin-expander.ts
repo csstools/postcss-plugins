@@ -1,15 +1,19 @@
 import type { AtRule, ChildNode, Helpers, Root, Rule } from 'postcss';
 import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 import type { PrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import { createPrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import type { Mixin, MixinDefinitions } from './mixin-definitions';
 import type { ProcessableApply } from './processable-apply';
 import { hasCSSWideKeywordArgument, IS_APPLY_REGEX, IS_NESTING_GROUP_RULE_REGEX, applySiteRule, processableApplyRule } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
+import { preludeTokens } from './utils';
 
 const IS_CONTENTS_REGEX = /^contents$/i;
 const IS_LAYER_REGEX = /^layer$/i;
+const IS_PRIVATE_REGEX = /^private$/i;
 const IS_GUARANTEED_INVALID_KEYWORD_REGEX = /^(initial|unset|revert|revert-layer)$/i;
+const IS_INHERIT_KEYWORD_REGEX = /^inherit$/i;
 
 const ARGUMENT_NAMESPACE = 'mix';
 
@@ -20,6 +24,18 @@ const GUARANTEED_INVALID_VALUE = 'initial';
 // exponentially. Bound the total number of nodes generated while expanding
 // mixins so that a small stylesheet can not exhaust memory or CPU.
 const MAX_GENERATED_NODES = 100_000;
+
+type ExpandResult = 'bailed' | 'expanded' | 'ignored';
+
+type Expansion = {
+	atRule: AtRule,
+	inserted: Array<ChildNode>,
+	substituted: Array<ChildNode>,
+	registrations: number,
+	desugaredNestingRules: number,
+	expansionRules: number,
+	generatedNodes: number,
+};
 
 /**
  * Deepens mixin expansion behind a small interface:
@@ -103,8 +119,33 @@ export class MixinExpander {
 				continue;
 			}
 
+			const expansions: Array<Expansion> = [];
+			let expanded = false;
+			let bailed = false;
+
 			for (const atRule of ruleApplies) {
-				this.expand(atRule, this.preserve, helpers);
+				const result = this.expand(atRule, this.preserve, helpers, expansions);
+				if (result === 'expanded') {
+					expanded = true;
+				} else if (result === 'bailed') {
+					bailed = true;
+				}
+			}
+
+			if (bailed) {
+				for (let i = expansions.length - 1; i >= 0; i--) {
+					this.rollback(expansions[i]);
+				}
+
+				continue;
+			}
+
+			if (!expanded) {
+				continue;
+			}
+
+			for (const expansion of expansions) {
+				expansion.atRule.remove();
 			}
 
 			collectRuleAndAncestors(rule, this.applyingRules);
@@ -134,50 +175,95 @@ export class MixinExpander {
 		this.registrations = [];
 	}
 
-	private expand(atRule: AtRule, preserve: boolean, helpers: Helpers): void {
+	private expand(atRule: AtRule, preserve: boolean, helpers: Helpers, deferred?: Array<Expansion>): ExpandResult {
 		const apply = processableApplyRule(atRule);
 		if (!apply) {
-			return;
+			return 'ignored';
 		}
 
 		const mixin = this.definitions.mixins.get(apply.name);
 		if (!mixin) {
-			return;
+			// An unsupported mixin still works in browsers with native support.
+			return this.definitions.unsupported.has(apply.name) ? 'bailed' : 'ignored';
 		}
 
 		// Passing more arguments than the mixin accepts is invalid.
 		// The application does nothing, so the `@apply` rule is left in place.
 		if (apply.arguments.length > mixin.parameters.length) {
-			return;
+			return 'ignored';
 		}
 
 		// CSS-wide keywords are resolved differently by browsers and the
 		// specification, so these applications are left in place.
 		if (this.hasUnsupportedArguments(apply)) {
-			return;
+			return 'bailed';
 		}
 
 		const siteRule = applySiteRule(atRule);
 		const hasContents = atRule.nodes !== undefined;
 
 		const inserted = this.buildBody(atRule, apply.arguments, mixin, helpers);
+
+		const expansion: Expansion = {
+			atRule,
+			inserted,
+			substituted: [],
+			registrations: this.registrations.length,
+			desugaredNestingRules: this.desugaredNestingRules.size,
+			expansionRules: this.expansionRules.size,
+			generatedNodes: this.generatedNodes,
+		};
+
 		this.spendBudget(countNodes(inserted));
 
 		// Insert as a batch: PostCSS resolves the index of `atRule` with
 		// `indexOf` for every single `before()` call, which is quadratic.
 		atRule.before(inserted);
 
-		if (!preserve) {
-			atRule.remove();
-		}
-
 		this.registerExpansionRules(inserted);
 		this.transpileExpansion(inserted);
 
 		// `@contents` is substituted after insertion so the replaced at-rule has a parent.
-		this.replaceContents(inserted, hasContents, atRule.nodes || [], siteRule);
+		expansion.substituted = this.replaceContents(inserted, hasContents, atRule.nodes || [], siteRule);
 
-		this.expandNested(inserted, helpers);
+		const nested = this.expandNested([...inserted, ...expansion.substituted], helpers);
+
+		// A `@private` rule that is left behind means that a rule could not be
+		// transpiled completely. Leave the application untouched so that native
+		// support keeps working for it, instead of dropping the `@apply`.
+		if (!preserve && (nested === 'bailed' || hasPrivateRule(inserted) || hasPrivateRule(expansion.substituted))) {
+			this.rollback(expansion);
+			return 'bailed';
+		}
+
+		if (preserve) {
+			return 'expanded';
+		}
+
+		if (deferred) {
+			deferred.push(expansion);
+			return 'expanded';
+		}
+
+		atRule.remove();
+
+		return 'expanded';
+	}
+
+	/** Undo an expansion that can not be committed. */
+	private rollback(expansion: Expansion): void {
+		for (const node of expansion.inserted) {
+			node.remove();
+		}
+
+		for (const node of expansion.substituted) {
+			node.remove();
+		}
+
+		this.registrations.length = expansion.registrations;
+		trimSet(this.desugaredNestingRules, expansion.desugaredNestingRules);
+		trimSet(this.expansionRules, expansion.expansionRules);
+		this.generatedNodes = expansion.generatedNodes;
 	}
 
 	/** Captures arguments, scopes parameters and `@private` rules, and returns the nodes to insert. */
@@ -299,50 +385,69 @@ export class MixinExpander {
 	}
 
 	/** Mixins applied within this mixin are resolved in the context of the arguments above. */
-	private expandNested(inserted: Array<ChildNode>, helpers: Helpers): void {
-		const nestedApplies: Array<AtRule> = [];
-		for (const node of inserted) {
+	private expandNested(nodes: Array<ChildNode>, helpers: Helpers): ExpandResult {
+		const nestedApplies: Set<AtRule> = new Set();
+		for (const node of nodes) {
 			collectMatches(node, IS_APPLY_REGEX, nestedApplies);
 		}
+
+		let result: ExpandResult = 'ignored';
 
 		for (const nestedAtRule of nestedApplies) {
 			if (!nestedAtRule.parent) {
 				continue;
 			}
 
-			this.expand(nestedAtRule, false, helpers);
+			const nested = this.expand(nestedAtRule, false, helpers);
+			if (nested === 'bailed') {
+				result = 'bailed';
+			} else if (nested === 'expanded' && result === 'ignored') {
+				result = 'expanded';
+			}
 		}
+
+		return result;
 	}
 
 	/** Substitutes `@contents` and charges the budget for the duplicated nodes. */
-	private replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>, siteRule: Rule | null): void {
+	private replaceContents(nodes: Array<ChildNode>, hasContents: boolean, contents: Array<ChildNode>, siteRule: Rule | null): Array<ChildNode> {
 		const contentsRules: Array<AtRule> = [];
-		for (const node of nodes) {
-			collectMatches(node, IS_CONTENTS_REGEX, contentsRules);
-		}
+		collectContentsRules(nodes, contentsRules);
+
+		const substituted: Array<ChildNode> = [];
 
 		for (const contentsRule of contentsRules) {
-			const replacement = hasContents ? contents : (contentsRule.nodes || []);
+			const useFallback = !hasContents;
+			const replacement = useFallback ? (contentsRule.nodes || []) : contents;
 
 			this.spendBudget(countNodes(replacement));
 
-			const substituted = replacement.map((child) => child.clone());
+			const clones = replacement.map((child) => child.clone());
 
-			contentsRule.before(substituted);
+			contentsRule.before(clones);
 			contentsRule.remove();
 
-			this.registerExpansionRules(substituted);
+			this.registerExpansionRules(clones);
 
-			if (hasContents && siteRule) {
+			if (!useFallback && siteRule) {
 				// Passed-in contents are scoped to the apply site.
-				this.transpileContents(substituted, siteRule);
-				continue;
+				this.transpileContents(clones, siteRule);
+			} else {
+				// A fallback block is authored in the mixin body. Declarations in it are
+				// part of the mixin scope and may define private properties.
+				this.transpileExpansion(clones);
 			}
 
-			// A fallback block is authored in the mixin body. Declarations in it are
-			// part of the mixin scope and may define private properties.
-			this.transpileExpansion(substituted);
+			substituted.push(...clones);
+
+			// A fallback block is part of the mixin body, so `@contents` rules in it
+			// are valid and are substituted as well.
+			if (useFallback) {
+				substituted.push(...this.replaceContents(clones, hasContents, contents, siteRule));
+			}
 		}
+
+		return substituted;
 	}
 
 	private registerExpansionRules(nodes: Array<ChildNode>): void {
@@ -373,7 +478,7 @@ function needsWrapper(mixin: Mixin): boolean {
 }
 
 function isInheritKeyword(value: string | undefined): boolean {
-	return value !== undefined && value.trim().toLowerCase() === 'inherit';
+	return isSingleKeyword(value, IS_INHERIT_KEYWORD_REGEX);
 }
 
 /**
@@ -383,7 +488,18 @@ function isInheritKeyword(value: string | undefined): boolean {
  * https://drafts.csswg.org/css-mixins-1/#arg-cascade
  */
 function isGuaranteedInvalidKeyword(value: string | undefined): boolean {
-	return value !== undefined && IS_GUARANTEED_INVALID_KEYWORD_REGEX.test(value);
+	return isSingleKeyword(value, IS_GUARANTEED_INVALID_KEYWORD_REGEX);
+}
+
+/** Whether a value is a single keyword ident, ignoring surrounding whitespace and comments. */
+function isSingleKeyword(value: string | undefined, keyword: RegExp): boolean {
+	if (value === undefined) {
+		return false;
+	}
+
+	const tokens = preludeTokens(value);
+
+	return tokens.length === 1 && isTokenIdent(tokens[0]) && keyword.test(tokens[0][4].value);
 }
 
 /** The value of a parameter that did not receive an argument. */
@@ -434,22 +550,72 @@ function countNodes(nodes: Array<ChildNode>): number {
 
 function hasPrivateRules(atRule: AtRule): boolean {
 	let result = false;
-	atRule.walkAtRules(/^private$/i, () => {
+	atRule.walkAtRules(IS_PRIVATE_REGEX, () => {
 		result = true;
 	});
 
 	return result;
 }
 
-function collectMatches(node: ChildNode, name: RegExp, out: Array<AtRule>): void {
+function hasPrivateRule(nodes: Array<ChildNode>): boolean {
+	for (const node of nodes) {
+		// Nodes replaced by `@contents` substitution are no longer in the tree.
+		if (!node.parent) {
+			continue;
+		}
+
+		if (node.type === 'atrule' && IS_PRIVATE_REGEX.test(node.name)) {
+			return true;
+		}
+
+		if ((node.type === 'rule' || node.type === 'atrule') && hasPrivateRule(node.nodes || [])) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/** Every `@contents` rule that is not inside another `@contents` rule. */
+function collectContentsRules(nodes: Array<ChildNode>, out: Array<AtRule>): void {
+	for (const node of nodes) {
+		if (node.type === 'atrule' && IS_CONTENTS_REGEX.test(node.name)) {
+			out.push(node);
+			continue;
+		}
+
+		if (node.type === 'rule' || node.type === 'atrule') {
+			collectContentsRules(node.nodes || [], out);
+		}
+	}
+}
+
+function collectMatches(node: ChildNode, name: RegExp, out: Set<AtRule>): void {
+	// Nodes replaced by `@contents` substitution are no longer in the tree.
+	if (!node.parent) {
+		return;
+	}
+
 	if (node.type === 'atrule' && name.test(node.name)) {
-		out.push(node);
+		out.add(node);
 	}
 
 	if (node.type === 'rule' || node.type === 'atrule') {
 		node.walkAtRules(name, (atRule) => {
-			out.push(atRule);
+			out.add(atRule);
 		});
+	}
+}
+
+function trimSet<T>(set: Set<T>, size: number): void {
+	if (set.size <= size) {
+		return;
+	}
+
+	const values = [...set];
+
+	for (let i = size; i < values.length; i++) {
+		set.delete(values[i]);
 	}
 }
 

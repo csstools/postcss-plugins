@@ -301,3 +301,24 @@
 	color: var(--_csstools-m-165tpc7-i--color, red);
 	@apply --unset-default;
 }
+
+@mixin --comment-inherit-default(--color: /* comment */ inherit) {
+	color: var(--color, red);
+}
+
+.comment-inherit-default {
+	--color: green;
+	--_csstools-mix-165tpc7-arg-19: var(--color);
+	--_csstools-m-165tpc7-j--color: var(--_csstools-mix-165tpc7-arg-19);
+	color: var(--_csstools-m-165tpc7-j--color, red);
+	@apply --comment-inherit-default;
+}
+
+@mixin --comment-inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.comment-inherit-argument {
+	--color: green;
+	@apply --comment-inherit-argument(/* comment */ inherit);
+}

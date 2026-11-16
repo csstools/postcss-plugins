@@ -45,7 +45,7 @@ export function processableApplyPrelude(atRule: AtRule): false | ProcessableAppl
 			return false;
 		}
 
-		args = parsedArguments.map((argument) => stringify([argument]).trim());
+		args = parsedArguments.map((argument) => stringify([argument]));
 	} else {
 		return false;
 	}
@@ -68,7 +68,14 @@ export function processableApplyPrelude(atRule: AtRule): false | ProcessableAppl
  * https://drafts.csswg.org/css-mixins-1/#arg-cascade
  */
 export function hasCSSWideKeywordArgument(apply: ProcessableApply): boolean {
-	return apply.arguments.some((argument) => IS_CSS_WIDE_KEYWORD_REGEX.test(argument));
+	return apply.arguments.some(isCSSWideKeyword);
+}
+
+/** Whether a value is a single CSS-wide keyword ident, ignoring comments and whitespace. */
+function isCSSWideKeyword(value: string): boolean {
+	const tokens = preludeTokens(value);
+
+	return tokens.length === 1 && isTokenIdent(tokens[0]) && IS_CSS_WIDE_KEYWORD_REGEX.test(tokens[0][4].value);
 }
 
 /**

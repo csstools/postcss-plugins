@@ -227,3 +227,21 @@
 	--color: green;
 	@apply --unset-default;
 }
+
+@mixin --comment-inherit-default(--color: /* comment */ inherit) {
+	color: var(--color, red);
+}
+
+.comment-inherit-default {
+	--color: green;
+	@apply --comment-inherit-default;
+}
+
+@mixin --comment-inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.comment-inherit-argument {
+	--color: green;
+	@apply --comment-inherit-argument(/* comment */ inherit);
+}

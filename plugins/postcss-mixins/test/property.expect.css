@@ -70,6 +70,32 @@
 	width: var(--_csstools-m-7q9ama-6--media-size);
 	}
 }
+
+@mixin --anonymous-layer-registered() {
+	@private {
+		@property --anonymous-layer-size <length>: 10px;
+		--anonymous-layer-size: 20px;
+	}
+
+	width: var(--anonymous-layer-size);
+}
+
+@layer {
+	.anonymous-layer-registered {
+		@apply --anonymous-layer-registered;
+	}
+}
+
+@mixin --plain-after-bail() {
+	color: green;
+}
+
+@layer {
+	.anonymous-layer-with-sibling {
+		@apply --plain-after-bail;
+		@apply --anonymous-layer-registered;
+	}
+}
 		@property --_csstools-m-7q9ama-0--size {
 			syntax: "<length>";
 			inherits: false;

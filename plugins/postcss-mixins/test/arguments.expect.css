@@ -217,3 +217,19 @@
 	--_csstools-m-165tpc7-i--color: initial;
 	color: var(--_csstools-m-165tpc7-i--color, red);
 }
+
+.comment-inherit-default {
+	--color: green;
+	--_csstools-mix-165tpc7-arg-19: var(--color);
+	--_csstools-m-165tpc7-j--color: var(--_csstools-mix-165tpc7-arg-19);
+	color: var(--_csstools-m-165tpc7-j--color, red);
+}
+
+@mixin --comment-inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.comment-inherit-argument {
+	--color: green;
+	@apply --comment-inherit-argument(/* comment */ inherit);
+}

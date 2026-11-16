@@ -2,20 +2,16 @@
 
 ### Unreleased (major)
 
+- Omitted types are `*` for `getParameterType()` and `getReturnType()` (breaking).
 - Rename `CustomFunction.function` to `CustomFunction.functionNode` (breaking).
 - Replace `FunctionParameter.argumentType`/`getArgumentType()` with `parameterType`/`getParameterType()` (breaking).
-- Omitted types are `*` for `getParameterType()` and `getReturnType()` (breaking).
-- `getDefaultValue()` returns `null` when a parameter has no default (breaking).
-- Add `FunctionParameter.tokens()` and `FunctionParameter.toString()`.
-- Export `parseFunctionParameters()` and `parseDashedFunctionArguments()`.
-- Enforce `<declaration-value>` restrictions in default values and arguments.
-- Preserve `type(...)` wrappers in `parameterType` and `{}` wrappers in `defaultValue` tokens.
-- Reject `--` as a parameter name.
-- Support empty default values and trailing commas, including `--foo(,)`.
-- Trim only whitespace, not comments, from arguments.
-- Fix a `RangeError` when serializing large token lists.
-- Improve parameter parsing and `getDefaultValue()` performance.
+- Return `null` from `getDefaultValue()` when a parameter has no default (breaking).
+- Add `FunctionParameter.tokens()`/`toString()` and export `parseFunctionParameters()`/`parseDashedFunctionArguments()`.
 - Document that `false` signals invalid input.
+- Enforce `<declaration-value>` restrictions and preserve `type(...)`/`{}` wrappers in tokens.
+- Fix a `RangeError` and improve performance for large token lists.
+- Reject `--` as a parameter name.
+- Support `--foo(,)`, empty defaults and trailing commas, and only trim whitespace from arguments and defaults.
 
 ### 1.0.0
 

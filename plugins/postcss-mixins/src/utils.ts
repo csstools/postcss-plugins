@@ -1,6 +1,6 @@
 import type { AtRule } from 'postcss';
 import type { CSSToken } from '@csstools/css-tokenizer';
-import { isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
+import { isTokenEOF, isTokenWhiteSpaceOrComment, tokenize } from '@csstools/css-tokenizer';
 
 /** The prelude of an at-rule as written, with comments. */
 export function rawParams(atRule: AtRule): string {
@@ -11,7 +11,7 @@ export function rawParams(atRule: AtRule): string {
 
 /** The tokens of a prelude, without leading and trailing whitespace and comments. */
 export function preludeTokens(params: string): Array<CSSToken> {
-	const tokens = tokenize({ css: params });
+	const tokens = tokenize({ css: params }).filter((token) => !isTokenEOF(token));
 
 	let start = 0;
 	let end = tokens.length;

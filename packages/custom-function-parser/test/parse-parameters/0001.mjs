@@ -42,6 +42,11 @@ test('parseFunctionParameters', async (t) => {
 		assert.deepEqual(parseParameters('/* a comment */,'), []);
 	});
 
+	await t.test('trims only whitespace from defaults', () => {
+		assert.equal(parseParameters('--a:  1px').at(0).getDefaultValue(), '1px');
+		assert.equal(parseParameters('--a: \u00A0red').at(0).getDefaultValue(), '\u00A0red');
+	});
+
 	await t.test('rejects invalid parameter lists', () => {
 		assert.equal(parseParameters('--'), false);
 		assert.equal(parseParameters('--a: red !important'), false);

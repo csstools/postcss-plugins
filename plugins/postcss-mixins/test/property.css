@@ -120,3 +120,29 @@
 		@apply --media-registered;
 	}
 }
+
+@mixin --anonymous-layer-registered() {
+	@private {
+		@property --anonymous-layer-size <length>: 10px;
+		--anonymous-layer-size: 20px;
+	}
+
+	width: var(--anonymous-layer-size);
+}
+
+@layer {
+	.anonymous-layer-registered {
+		@apply --anonymous-layer-registered;
+	}
+}
+
+@mixin --plain-after-bail() {
+	color: green;
+}
+
+@layer {
+	.anonymous-layer-with-sibling {
+		@apply --plain-after-bail;
+		@apply --anonymous-layer-registered;
+	}
+}
