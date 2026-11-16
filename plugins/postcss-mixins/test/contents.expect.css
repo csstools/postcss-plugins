@@ -34,29 +34,29 @@
 }
 
 .i {
-	--_csstools-m-1i0jh25-0--arg-0: green;
-	--_csstools-m-1i0jh25-1--color: var(--_csstools-m-1i0jh25-0--arg-0);
-	color: var(--_csstools-m-1i0jh25-1--color);
+	--_csstools-mix-1i0jh25-arg-0: green;
+	--_csstools-m-1i0jh25-0--color: var(--_csstools-mix-1i0jh25-arg-0);
+	color: var(--_csstools-m-1i0jh25-0--color);
 		background-color: var(--color)
 }
 
 .fallback-argument {
 	--color: blue;
-	--_csstools-m-1i0jh25-2--arg-1: red;
-	--_csstools-m-1i0jh25-3--color: var(--_csstools-m-1i0jh25-2--arg-1);
-	color: var(--_csstools-m-1i0jh25-3--color);
+	--_csstools-mix-1i0jh25-arg-1: red;
+	--_csstools-m-1i0jh25-1--color: var(--_csstools-mix-1i0jh25-arg-1);
+		color: var(--_csstools-m-1i0jh25-1--color);
 }
 
 .contents-outer {
 	--color: blue;
-	--_csstools-m-1i0jh25-4--arg-2: red;
-	--_csstools-m-1i0jh25-5--color: var(--_csstools-m-1i0jh25-4--arg-2);
-	color: var(--_csstools-m-1i0jh25-5--color);
+	--_csstools-mix-1i0jh25-arg-2: red;
+	--_csstools-m-1i0jh25-2--color: var(--_csstools-mix-1i0jh25-arg-2);
+		color: var(--_csstools-m-1i0jh25-2--color);
 }
 
 .fallback-private {
-	--_csstools-m-1i0jh25-6--x: red;
-	color: var(--_csstools-m-1i0jh25-6--x);
+			--_csstools-m-1i0jh25-3--x: red;
+		color: var(--_csstools-m-1i0jh25-3--x);
 }
 
 .discarded-fallback {
@@ -66,14 +66,62 @@
 }
 
 .contents-scope {
-	--_csstools-m-1i0jh25-7--size: 20px;
+		--_csstools-m-1i0jh25-4--size: 20px;
 		width: var(--size, 33px)
 }
 
 .fallback-nested-rule {
-	--_csstools-m-1i0jh25-8--arg-3: red;
-	--_csstools-m-1i0jh25-9--color: var(--_csstools-m-1i0jh25-8--arg-3);
-	& .nested-fallback {
-		color: var(--_csstools-m-1i0jh25-9--color);
+	--_csstools-mix-1i0jh25-arg-3: red;
+	--_csstools-m-1i0jh25-5--color: var(--_csstools-mix-1i0jh25-arg-3);
+		& .nested-fallback {
+			color: var(--_csstools-m-1i0jh25-5--color);
+		}
+}
+
+.contents-outer-private {
+	--_csstools-mix-1i0jh25-arg-4: red;
+	--_csstools-m-1i0jh25-6--color: var(--_csstools-mix-1i0jh25-arg-4);
+			--_csstools-m-1i0jh25-6--local: var(--_csstools-m-1i0jh25-6--color);
+		color: var(--_csstools-m-1i0jh25-6--local);
+}
+
+.contents-apply-private {
+		--_csstools-p-1i0jh25-0--size: 1px;
+		width: var(--_csstools-p-1i0jh25-0--size)
+}
+
+.contents-with-apply {
+	color: green
+}
+
+.contents-fallback-apply {
+	color: green;
+}
+
+.nested-contents-fallback {
+			color: green;
+}
+
+@mixin --unsupported-in-contents(--color <color>) {
+	color: var(--color);
+}
+
+@mixin --contents-unsupported() {
+	@contents;
+}
+
+.contents-unsupported {
+	@apply --contents-unsupported {
+		@apply --unsupported-in-contents(green);
+	}
+}
+
+@mixin --inherit-keyword-in-contents(--color) {
+	color: var(--color, red);
+}
+
+.contents-inherit-keyword {
+	@apply --contents-unsupported {
+		@apply --inherit-keyword-in-contents(inherit);
 	}
 }

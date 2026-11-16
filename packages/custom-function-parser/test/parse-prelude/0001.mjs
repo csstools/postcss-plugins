@@ -70,6 +70,8 @@ const valid = [
 	'--foo(--x) returns type(<length>)',
 	'--foo(--x) returns type(<length> | auto)',
 	'--foo(--x) returns type(foo | bar)',
+	'--foo(,)',
+	'--foo( , )',
 ];
 
 const invalid = [
@@ -86,7 +88,6 @@ const invalid = [
 	'--foo(--x: {1px} {2px})',
 	'--foo(--x: var(--y, 10px)',
 	'--foo(!)',
-	'--foo(,)',
 	'--foo(,,,)',
 	'--foo(--x, ;)',
 	'--foo(;)',

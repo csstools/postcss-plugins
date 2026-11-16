@@ -37,6 +37,25 @@ export type PrivatePropertyTranspilerOptions = {
 	 * private properties.
 	 */
 	allowUntranspiledMixins?: boolean,
+	/**
+	 * Keep `@private` rules and leave references inside `@apply` and `@contents`
+	 * blocks alone.
+	 *
+	 * Transpiled declarations are still hoisted, so the original notation keeps
+	 * working where `@private` is supported.
+	 */
+	preserve?: boolean,
+};
+
+export type PrivatePropertyTranspileOptions = {
+	/**
+	 * Style rule that owns the private property names of `nodes`.
+	 *
+	 * Use this when `nodes` are substituted into a style rule but are not its
+	 * direct children, for example a `@contents` block that is authored at an
+	 * `@apply` site and placed inside a mixin body.
+	 */
+	scope?: Rule,
 };
 
 type RulePrivatePropertyNames = {
@@ -47,6 +66,8 @@ type RulePrivatePropertyNames = {
 export class Transpiler {
 	private privatePropertyNames: WeakMap<Rule, RulePrivatePropertyNames> = new WeakMap();
 
+	private processedPrivateRules: WeakSet<AtRule> = new WeakSet();
+
 	private skippedStyleRules: WeakSet<Rule> = new WeakSet();
 
 	private counter = 0;
@@ -55,72 +76,122 @@ export class Transpiler {
 
 	private allowUntranspiledMixins: boolean;
 
+	private preserve: boolean;
+
 	private propertyRegistrations: Array<AtRule> = [];
+
+	private scope: Rule | undefined;
+
+	private scopeRules: Set<Rule> = new Set();
 
 	constructor(options?: PrivatePropertyTranspilerOptions) {
 		this.namespace = options?.namespace || 'p';
 		this.allowUntranspiledMixins = options?.allowUntranspiledMixins === true;
+		this.preserve = options?.preserve === true;
 	}
 
-	transpile(nodes: Array<ChildNode>): Array<AtRule> {
-		this.collectSkippedStyleRules(nodes);
+	transpile(nodes: Array<ChildNode>, options?: PrivatePropertyTranspileOptions): Array<AtRule> {
+		const previousScope = this.scope;
+		const previousScopeRules = this.scopeRules;
 
-		for (const node of nodes) {
-			if (node.type === 'atrule' && IS_PRIVATE_RULE_REGEX.test(node.name)) {
-				this.transpilePrivateRule(node);
+		this.scope = options?.scope;
+		this.scopeRules = collectRules(nodes);
+
+		try {
+			this.collectSkippedStyleRules(nodes);
+
+			// Hoisted declarations can be inserted next to `nodes`, outside the
+			// subtree that is walked below. Keep them so their values are still
+			// rewritten against the correct scope.
+			const hoisted: Array<Declaration> = [];
+
+			for (const node of nodes) {
+				if (node.type === 'atrule' && IS_PRIVATE_RULE_REGEX.test(node.name)) {
+					hoisted.push(...this.transpilePrivateRule(node));
+				}
+
+				if (isContainer(node)) {
+					node.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => {
+						hoisted.push(...this.transpilePrivateRule(atRule));
+					});
+				}
 			}
 
-			if (isContainer(node)) {
-				node.walkAtRules(IS_PRIVATE_RULE_REGEX, (atRule) => this.transpilePrivateRule(atRule));
+			for (const node of nodes) {
+				if (node.type === 'decl') {
+					this.transpileDeclaration(node);
+					continue;
+				}
+
+				if (isContainer(node)) {
+					node.walkDecls((decl) => this.transpileDeclaration(decl));
+				}
 			}
+
+			for (const declaration of hoisted) {
+				this.transpileDeclaration(declaration);
+			}
+
+			for (const node of nodes) {
+				if (node.type === 'atrule') {
+					this.transpileContainerRule(node);
+					continue;
+				}
+
+				if (isContainer(node)) {
+					node.walkAtRules((atRule) => this.transpileContainerRule(atRule));
+				}
+			}
+
+			const registrations = this.propertyRegistrations;
+			this.propertyRegistrations = [];
+			return registrations;
+		} finally {
+			this.scope = previousScope;
+			this.scopeRules = previousScopeRules;
 		}
-
-		for (const node of nodes) {
-			if (node.type === 'decl') {
-				this.transpileDeclaration(node);
-				continue;
-			}
-
-			if (isContainer(node)) {
-				node.walkDecls((decl) => this.transpileDeclaration(decl));
-			}
-		}
-
-		for (const node of nodes) {
-			if (node.type === 'atrule') {
-				this.transpileContainerRule(node);
-				continue;
-			}
-
-			if (isContainer(node)) {
-				node.walkAtRules((atRule) => this.transpileContainerRule(atRule));
-			}
-		}
-
-		const registrations = this.propertyRegistrations;
-		this.propertyRegistrations = [];
-		return registrations;
 	}
 
-	private transpilePrivateRule(atRule: AtRule): void {
-		const styleRule = findStyleRule(atRule);
-		if (!styleRule || this.isSkipped(atRule)) {
-			return;
+	private transpilePrivateRule(atRule: AtRule): Array<Declaration> {
+		const styleRule = this.ownerFor(atRule);
+		if (!styleRule || this.isSkipped(atRule) || this.processedPrivateRules.has(atRule)) {
+			return [];
 		}
+
+		this.processedPrivateRules.add(atRule);
 
 		const rulePrivatePropertyNames = this.privatePropertyNamesForRule(styleRule);
 
 		this.hoistPrivatePropertyRegistrations(atRule, rulePrivatePropertyNames);
 
+		if (this.preserve) {
+			const clone = atRule.clone();
+			this.cleanPrivateRule(clone, rulePrivatePropertyNames);
+			clone.walkAtRules(IS_PROPERTY_RULE_REGEX, (propertyRule) => {
+				propertyRule.remove();
+			});
+			removeEmptyNestedGroupRules(clone);
+
+			const hoisted = (clone.nodes || []).map((node) => node.clone());
+			if (hoisted.length) {
+				atRule.before(hoisted);
+			}
+
+			return hoisted.filter((node): node is Declaration => node.type === 'decl');
+		}
+
 		this.cleanPrivateRule(atRule, rulePrivatePropertyNames);
 
 		if (!atRule.nodes?.length) {
 			this.removePrivateRule(atRule, styleRule);
-			return;
+			return [];
 		}
 
-		atRule.before(atRule.nodes.map((node) => node.clone()));
+		const hoisted = atRule.nodes.map((node) => node.clone());
+		atRule.before(hoisted);
 		this.removePrivateRule(atRule, styleRule);
+
+		return hoisted.filter((node): node is Declaration => node.type === 'decl');
 	}
 
 	/**
@@ -196,8 +267,51 @@ export class Transpiler {
 		}
 	}
 
+	private ownerFor(node: Node): false | Rule {
+		const owner = findStyleRule(node);
+
+		if (!this.scope) {
+			return owner;
+		}
+
+		if (!owner || !this.scopeRules.has(owner)) {
+			return this.scope;
+		}
+
+		return owner;
+	}
+
+	/**
+	 * The style rule chain for a node, using the explicit scope when the node is
+	 * outside the subtree that was passed to `transpile`.
+	 */
+	private styleRuleChain(node: Node): Array<Rule> {
+		const rules: Array<Rule> = [];
+		let focus: Node = node;
+		let usedScope = false;
+
+		while (true) {
+			const styleRule = findStyleRule(focus, !this.preserve);
+			if (!styleRule) {
+				break;
+			}
+
+			if (this.scope && !usedScope && !this.scopeRules.has(styleRule)) {
+				usedScope = true;
+				rules.push(this.scope);
+				focus = this.scope;
+				continue;
+			}
+
+			rules.push(styleRule);
+			focus = styleRule;
+		}
+
+		return rules;
+	}
+
 	private isSkipped(node: Node): boolean {
-		for (const styleRule of styleRuleAncestors(node)) {
+		for (const styleRule of this.styleRuleChain(node)) {
 			if (this.skippedStyleRules.has(styleRule)) {
 				return true;
 			}
@@ -221,7 +335,9 @@ export class Transpiler {
 
 			const { wrappers } = registrationWrappers(propertyRule);
 
-			propertyRule.remove();
+			if (!this.preserve) {
+				propertyRule.remove();
+			}
 
 			for (const name of originalNames) {
 				rulePrivatePropertyNames.names.add(name);
@@ -253,7 +369,7 @@ export class Transpiler {
 			return false;
 		}
 
-		for (const styleRule of styleRuleAncestors(node)) {
+		for (const styleRule of this.styleRuleChain(node)) {
 			const rulePrivatePropertyNames = this.privatePropertyNames.get(styleRule);
 			if (rulePrivatePropertyNames?.names.has(propertyName)) {
 				return rulePrivatePropertyNames.prefix;
@@ -268,7 +384,7 @@ export class Transpiler {
 			return false;
 		}
 
-		for (const styleRule of styleRuleAncestors(node)) {
+		for (const styleRule of this.styleRuleChain(node)) {
 			if (this.privatePropertyNames.get(styleRule)?.names.size) {
 				return true;
 			}
@@ -677,6 +793,25 @@ function unescapedPropertyName(property: string): string | null {
 
 function isContainer(node: ChildNode): node is Rule | AtRule {
 	return node.type === 'rule' || node.type === 'atrule';
+}
+
+/** Every style rule in `nodes`, including the nodes themselves. */
+function collectRules(nodes: Array<ChildNode>): Set<Rule> {
+	const rules: Set<Rule> = new Set();
+
+	for (const node of nodes) {
+		if (node.type === 'rule') {
+			rules.add(node);
+		}
+
+		if (isContainer(node)) {
+			node.walkRules((rule) => {
+				rules.add(rule);
+			});
+		}
+	}
+
+	return rules;
 }
 
 function findStyleRule(node: Node, transparentMixins = false): false | Rule {

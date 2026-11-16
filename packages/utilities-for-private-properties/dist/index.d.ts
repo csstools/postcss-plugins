@@ -1,5 +1,6 @@
 import type { AtRule } from 'postcss';
 import type { ChildNode } from 'postcss';
+import type { Rule } from 'postcss';
 
 /**
  * Create a transpiler for private custom properties.
@@ -10,6 +11,17 @@ import type { ChildNode } from 'postcss';
  */
 export declare function createPrivatePropertyTranspiler(options?: PrivatePropertyTranspilerOptions): PrivatePropertyTranspiler;
 
+export declare type PrivatePropertyTranspileOptions = {
+    /**
+     * Style rule that owns the private property names of `nodes`.
+     *
+     * Use this when `nodes` are substituted into a style rule but are not its
+     * direct children, for example a `@contents` block that is authored at an
+     * `@apply` site and placed inside a mixin body.
+     */
+    scope?: Rule;
+};
+
 export declare type PrivatePropertyTranspiler = {
     /**
      * Transpile private rules and private property references in `nodes`.
@@ -17,7 +29,7 @@ export declare type PrivatePropertyTranspiler = {
      * Mutates `nodes` in place and returns the `@property` rules that must be
      * appended to the root of the tree.
      */
-    transpile: (nodes: Array<ChildNode>) => Array<AtRule>;
+    transpile: (nodes: Array<ChildNode>, options?: PrivatePropertyTranspileOptions) => Array<AtRule>;
 };
 
 export declare type PrivatePropertyTranspilerOptions = {
@@ -33,6 +45,14 @@ export declare type PrivatePropertyTranspilerOptions = {
      * private properties.
      */
     allowUntranspiledMixins?: boolean;
+    /**
+     * Keep `@private` rules and leave references inside `@apply` and `@contents`
+     * blocks alone.
+     *
+     * Transpiled declarations are still hoisted, so the original notation keeps
+     * working where `@private` is supported.
+     */
+    preserve?: boolean;
 };
 
 export { }

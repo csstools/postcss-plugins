@@ -149,3 +149,93 @@
 .fallback-nested-rule {
 	@apply --fallback-nested-rule(red);
 }
+
+@mixin --contents-inner-private() {
+	@contents;
+}
+
+@mixin --contents-outer-private(--color) {
+	@apply --contents-inner-private {
+		@private {
+			--local: var(--color);
+		}
+		color: var(--local);
+	}
+}
+
+.contents-outer-private {
+	@apply --contents-outer-private(red);
+}
+
+@mixin --contents-apply-private() {
+	@contents;
+}
+
+.contents-apply-private {
+	@private {
+		--size: 1px;
+	}
+	@apply --contents-apply-private {
+		width: var(--size);
+	}
+}
+
+@mixin --contents-inner-apply() {
+	color: green;
+}
+
+@mixin --contents-with-apply() {
+	@contents;
+}
+
+.contents-with-apply {
+	@apply --contents-with-apply {
+		@apply --contents-inner-apply;
+	}
+}
+
+@mixin --contents-fallback-apply() {
+	@contents {
+		@apply --contents-inner-apply;
+	}
+}
+
+.contents-fallback-apply {
+	@apply --contents-fallback-apply;
+}
+
+@mixin --nested-contents-fallback() {
+	@contents {
+		@contents {
+			color: green;
+		}
+	}
+}
+
+.nested-contents-fallback {
+	@apply --nested-contents-fallback;
+}
+
+@mixin --unsupported-in-contents(--color <color>) {
+	color: var(--color);
+}
+
+@mixin --contents-unsupported() {
+	@contents;
+}
+
+.contents-unsupported {
+	@apply --contents-unsupported {
+		@apply --unsupported-in-contents(green);
+	}
+}
+
+@mixin --inherit-keyword-in-contents(--color) {
+	color: var(--color, red);
+}
+
+.contents-inherit-keyword {
+	@apply --contents-unsupported {
+		@apply --inherit-keyword-in-contents(inherit);
+	}
+}

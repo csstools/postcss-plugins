@@ -460,6 +460,79 @@ test('property registrations', async (t) => {
 		assert.ok(first[0].params.startsWith(prefix('0', 'm')));
 		assert.ok(second[0].params.startsWith(prefix('1', 'm')));
 	});
+
+	await t.test('uses an explicit scope for references in a subtree', () => {
+		const root = postcss.parse('.a { @private { --x: 1px; } & .tmp { color: var(--x); } }', { from });
+		const transpiler = createPrivatePropertyTranspiler({});
+
+		transpiler.transpile([root.first]);
+		transpiler.transpile(root.first.last.nodes, { scope: root.first });
+
+		assert.equal(root.toString(), `.a { ${prefix()}--x: 1px; & .tmp { color: var(${prefix()}--x); } }`);
+	});
+
+	await t.test('uses an explicit scope for private rules in a subtree', () => {
+		const root = postcss.parse('.a { @private { --x: 1px; } & .tmp { @private { --y: 2px; } color: var(--x) var(--y); } }', { from });
+		const transpiler = createPrivatePropertyTranspiler({});
+
+		transpiler.transpile(root.first.last.nodes, { scope: root.first });
+		transpiler.transpile([root.first]);
+
+		assert.equal(root.toString(), `.a { ${prefix()}--x: 1px; & .tmp { ${prefix()}--y: 2px; color: var(${prefix()}--x) var(${prefix()}--y); } }`);
+	});
+
+	await t.test('rewrites values of declarations hoisted out of a flat node list', () => {
+		const root = postcss.parse('.a { @private { --y: 1px; } & .tmp { } }', { from });
+		const transpiler = createPrivatePropertyTranspiler({});
+
+		transpiler.transpile([root.first]);
+		root.first.last.append(postcss.parse('@private { --x: var(--y); }').first);
+		transpiler.transpile(root.first.last.nodes, { scope: root.first });
+
+		assert.equal(root.toString(), `.a { ${prefix()}--y: 1px; & .tmp { ${prefix()}--x: var(${prefix()}--y) } }`);
+	});
+
+	await t.test('keeps a nested rule scope inside the subtree', () => {
+		const outer = prefix('0');
+		const inner = prefix('1');
+
+		const root = postcss.parse('.a { @private { --x: 1px; } & .tmp { & .inner { @private { --y: 2px; } color: var(--y); } } }', { from });
+		const transpiler = createPrivatePropertyTranspiler({});
+
+		transpiler.transpile([root.first]);
+		transpiler.transpile(root.first.last.nodes, { scope: root.first });
+
+		assert.equal(root.toString(), `.a { ${outer}--x: 1px; & .tmp { & .inner { ${inner}--y: 2px; color: var(${inner}--y); } } }`);
+	});
+});
+
+test('preserve', async (t) => {
+	await t.test('keeps private rules and hoists declarations', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } width: var(--x); }', { preserve: true }),
+			`.a { ${p}--x: 1px; @private { --x: 1px; } width: var(${p}--x); }`,
+		);
+	});
+
+	await t.test('keeps registrations inside private rules', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { @property --x <length>: 1px; } width: var(--x); }', { preserve: true }),
+			`.a { @private { @property --x <length>: 1px; } width: var(${p}--x); } @property ${p}--x <length>: 1px`,
+		);
+	});
+
+	await t.test('leaves references inside @apply and @contents alone', () => {
+		const p = prefix();
+
+		assert.equal(
+			transpile('.a { @private { --x: 1px; } @apply --m { color: var(--x); } @contents { color: var(--x); } }', { preserve: true, allowUntranspiledMixins: true }),
+			`.a { ${p}--x: 1px; @private { --x: 1px; } @apply --m { color: var(--x); } @contents { color: var(--x); } }`,
+		);
+	});
 });
 
 test('the same private name can be registered in several layers', async (t) => {

@@ -1,5 +1,5 @@
 import type { CSSToken, TokenColon, TokenIdent } from '@csstools/css-tokenizer';
-import { stringify } from '@csstools/css-tokenizer';
+import { isTokenWhitespace, stringify } from '@csstools/css-tokenizer';
 import { parseListOfComponentValues } from '@csstools/css-parser-algorithms';
 import { NodeType } from '../util/node-type';
 import { tokensOf } from '../util/component-values';
@@ -59,8 +59,7 @@ export class FunctionParameter {
 		if (this.colon) {
 			const componentValues = parseListOfComponentValues(this.defaultValue);
 			const block = singleCurlyBlock(componentValues);
-			const value = block ? block.value : componentValues;
-			defaultValue = stringify(tokensOf(value)).trim();
+			defaultValue = stringify(trimWhitespace(tokensOf(block ? block.value : componentValues)));
 		}
 
 		this.defaultValueCache = {
@@ -122,4 +121,20 @@ export class FunctionParameter {
 
 		return x.type === NodeType.FunctionParameter;
 	}
+}
+
+/** Drop leading and trailing whitespace tokens, but keep comments as written. */
+function trimWhitespace(tokens: Array<CSSToken>): Array<CSSToken> {
+	let start = 0;
+	let end = tokens.length;
+
+	while (start < end && isTokenWhitespace(tokens[start])) {
+		start++;
+	}
+
+	while (end > start && isTokenWhitespace(tokens[end - 1])) {
+		end--;
+	}
+
+	return tokens.slice(start, end);
 }

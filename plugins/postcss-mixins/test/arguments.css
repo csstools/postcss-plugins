@@ -158,3 +158,90 @@
 .invalid-empty-parameter {
 	@apply --invalid-empty-parameter;
 }
+
+@mixin --only-trailing-comma(,) {
+	color: green;
+}
+
+.only-trailing-comma {
+	@apply --only-trailing-comma;
+}
+
+@mixin --only-trailing-comma-with-spaces( , ) {
+	color: green;
+}
+
+.only-trailing-comma-with-spaces {
+	@apply --only-trailing-comma-with-spaces;
+}
+
+@mixin --comment-in-value(--color: /* default */ blue) {
+	color: var(--color);
+}
+
+.comment-in-value {
+	@apply --comment-in-value(/* argument */ green);
+}
+
+@mixin --initial-argument(--color) {
+	color: var(--color, red);
+}
+
+.initial-argument {
+	--color: green;
+	@apply --initial-argument(initial);
+}
+
+@mixin --unset-argument(--color) {
+	color: var(--color, red);
+}
+
+.unset-argument {
+	--color: green;
+	@apply --unset-argument(unset);
+}
+
+@mixin --revert-argument(--color) {
+	color: var(--color, red);
+}
+
+.revert-argument {
+	--color: green;
+	@apply --revert-argument(revert);
+}
+
+@mixin --revert-layer-argument(--color) {
+	color: var(--color, red);
+}
+
+.revert-layer-argument {
+	--color: green;
+	@apply --revert-layer-argument(revert-layer);
+}
+
+@mixin --unset-default(--color: unset) {
+	color: var(--color, red);
+}
+
+.unset-default {
+	--color: green;
+	@apply --unset-default;
+}
+
+@mixin --comment-inherit-default(--color: /* comment */ inherit) {
+	color: var(--color, red);
+}
+
+.comment-inherit-default {
+	--color: green;
+	@apply --comment-inherit-default;
+}
+
+@mixin --comment-inherit-argument(--color) {
+	color: var(--color, red);
+}
+
+.comment-inherit-argument {
+	--color: green;
+	@apply --comment-inherit-argument(/* comment */ inherit);
+}

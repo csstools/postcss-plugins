@@ -1,3 +1,7 @@
+@mixin --foo() {
+	color: green;
+}
+
 .foo {
 	color: green;
 }
@@ -23,4 +27,8 @@
 	}
 
 	order: 1;
+}
+
+.escaped-name {
+	color: green;
 }

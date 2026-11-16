@@ -1,7 +1,8 @@
 import { isFunctionNode, isTokenNode, parseComponentValue } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
 import { parseFunctionParameters } from '@csstools/custom-function-parser';
+import { preludeTokens, rawParams } from './utils';
 
 export type MixinParameter = {
 	name: string,
@@ -13,23 +14,16 @@ export type ProcessableMixin = {
 	parameters: Array<MixinParameter>,
 };
 
-const IS_UNSUPPORTED_CHILD_RULE = /^result$/i;
-
 /**
- * The name of a `@mixin` rule, even when the rule is not transpilable.
+ * The dashed name in a `@mixin` or `@apply` prelude, even when the rule is not
+ * transpilable.
  */
-export function mixinRuleName(atRule: AtRule): string | null {
-	if (atRule.name.toLowerCase() !== 'mixin') {
+export function dashedNameFromParams(params: string): string | null {
+	if (!params) {
 		return null;
 	}
 
-	if (!atRule.params || !atRule.params.includes('--')) {
-		return null;
-	}
-
-	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
-	}));
+	const prelude = parseComponentValue(preludeTokens(params));
 
 	let name: string;
 	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
@@ -42,6 +36,17 @@ export function mixinRuleName(atRule: AtRule): string | null {
 	}
 
 	return name.startsWith('--') ? name : null;
+}
+
+/**
+ * The name of a `@mixin` rule, even when the rule is not transpilable.
+ */
+export function mixinRuleName(atRule: AtRule): string | null {
+	if (atRule.name.toLowerCase() !== 'mixin') {
+		return null;
+	}
+
+	return dashedNameFromParams(rawParams(atRule));
 }
 
 export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
@@ -59,21 +64,7 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 		return false;
 	}
 
-	// `@result` was dropped from the specification, mixins with `@result` are ignored.
-	let hasUnsupportedChildRule = false;
-	atRule.walk((node) => {
-		if (node.type === 'atrule' && IS_UNSUPPORTED_CHILD_RULE.test(node.name)) {
-			hasUnsupportedChildRule = true;
-		}
-	});
-
-	if (hasUnsupportedChildRule) {
-		return false;
-	}
-
-	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
-	}));
+	const prelude = parseComponentValue(preludeTokens(rawParams(atRule)));
 
 	let parameters: Array<MixinParameter> = [];
 

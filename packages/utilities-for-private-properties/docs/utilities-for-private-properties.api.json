@@ -236,6 +236,41 @@
         },
         {
           "kind": "TypeAlias",
+          "canonicalReference": "@csstools/utilities-for-private-properties!PrivatePropertyTranspileOptions:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type PrivatePropertyTranspileOptions = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    scope?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Rule",
+              "canonicalReference": "postcss!Rule_:class"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/_types/transpiler.d.ts",
+          "releaseTag": "Public",
+          "name": "PrivatePropertyTranspileOptions",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "TypeAlias",
           "canonicalReference": "@csstools/utilities-for-private-properties!PrivatePropertyTranspiler:type",
           "docComment": "",
           "excerptTokens": [
@@ -263,7 +298,16 @@
             },
             {
               "kind": "Content",
-              "text": ">) => "
+              "text": ">, options?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "PrivatePropertyTranspileOptions",
+              "canonicalReference": "@csstools/utilities-for-private-properties!PrivatePropertyTranspileOptions:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
             },
             {
               "kind": "Reference",
@@ -293,7 +337,7 @@
           "name": "PrivatePropertyTranspiler",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 10
+            "endIndex": 12
           }
         },
         {
@@ -307,7 +351,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    namespace?: string;\n    allowUntranspiledMixins?: boolean;\n}"
+              "text": "{\n    namespace?: string;\n    allowUntranspiledMixins?: boolean;\n    preserve?: boolean;\n}"
             },
             {
               "kind": "Content",

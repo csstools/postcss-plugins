@@ -2,13 +2,16 @@
 
 ### Unreleased (minor)
 
-- Support `@property` rules in `@private` rules, including multi-name preludes and the shorthand form, and hoist registrations out of `@container`, `@scope` and `@starting-style` while keeping `@media` and `@supports` conditions
-- Rename private property names in `transition` and `transition-property`
-- Resolve references in nested mixins, `@contents` fallback blocks and contents blocks inside mixin bodies
-- Support trailing commas, whitespace, empty arguments, `--x:` defaults, `type(*)` and `inherit` in parameter lists, and reject `{}` blocks mixed with other tokens
-- Ignore invalid `<declaration-value>` values and `--` parameter names, and leave mixins untouched when a name has several definitions or one that can not be transpiled
 - Drop `@layer` rules from mixin bodies
-- Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation and a separate namespace for generated names
+- Expand `@apply` and `@contents` rules in `@contents` blocks, fallbacks and nested rules
+- Generate hygienic argument and private property names
+- Hoist `@property` registrations from `@private` rules out of `@container`, `@scope` and `@starting-style`
+- Leave CSS-wide keyword arguments unchanged and resolve CSS-wide keywords in parameter defaults
+- Leave rules, mixins and `@apply` rules unchanged when they can not be transpiled completely
+- Only trim whitespace from arguments and default values
+- Preserve whitespace and comments from mixin bodies
+- Support trailing commas, comments, empty arguments, empty defaults and `type(*)` in parameter and argument lists
+- Transpile private properties in the applying rule, nested mixins and `@contents` blocks
 
 ### 1.1.0
 
