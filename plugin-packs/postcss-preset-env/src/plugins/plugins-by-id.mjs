@@ -59,7 +59,6 @@ import postcssReplaceOverflowWrap from 'postcss-replace-overflow-wrap';
 import postcssPlace from 'postcss-place';
 import postcssPositionAreaProperty from '@csstools/postcss-position-area-property';
 import postcssPrefersColorScheme from 'css-prefers-color-scheme';
-import postcssPrivateRule from '@csstools/postcss-private-rule';
 import postcssProgressiveCustomProperties from '@csstools/postcss-progressive-custom-properties';
 import postcssPropertyRuleOptionalDescriptors from '@csstools/postcss-property-rule-optional-descriptors';
 import postcssPropertyRulePreludeList from '@csstools/postcss-property-rule-prelude-list';
@@ -139,7 +138,6 @@ export const pluginsById = new Map(
 		['place-properties', postcssPlace],
 		['position-area-property', postcssPositionAreaProperty],
 		['prefers-color-scheme-query', postcssPrefersColorScheme],
-		['private-rule', postcssPrivateRule],
 		['progressive-custom-properties', postcssProgressiveCustomProperties],
 		['property-rule-optional-descriptors', postcssPropertyRuleOptionalDescriptors],
 		['property-rule-prelude-list', postcssPropertyRulePreludeList],

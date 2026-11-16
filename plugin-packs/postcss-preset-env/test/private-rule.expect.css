@@ -1,9 +1,9 @@
 .example {
-		--_csstools-p-1e49l6f-0--size: 2px;
+	@private {
+		--size: 2px;
+	}
 
-	width: 2px;
-
-	width: var(--_csstools-p-1e49l6f-0--size);
+	width: var(--size);
 }
 
 .with-private {

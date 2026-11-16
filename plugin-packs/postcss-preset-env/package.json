@@ -79,7 +79,6 @@
 		"@csstools/postcss-normalize-display-values": "^5.0.1",
 		"@csstools/postcss-oklab-function": "^5.0.16",
 		"@csstools/postcss-position-area-property": "^2.0.0",
-		"@csstools/postcss-private-rule": "^1.1.1",
 		"@csstools/postcss-progressive-custom-properties": "^5.1.5",
 		"@csstools/postcss-property-rule-optional-descriptors": "^1.0.0",
 		"@csstools/postcss-property-rule-prelude-list": "^2.0.3",
