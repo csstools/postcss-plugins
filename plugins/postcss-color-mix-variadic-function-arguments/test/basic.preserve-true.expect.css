@@ -15,7 +15,7 @@
 
 .p3 {
 	color: rgb(85, 230, 255);
-	color: color(display-p3 0.467 0.89663 1);
+	color: color(display-p3 0.46734 0.89657 1);
 	color: color-mix(in oklch, cyan, magenta, yellow);
 }
 
