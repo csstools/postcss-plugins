@@ -54,10 +54,10 @@
 		"@csstools/cascade-layer-name-parser": "^3.0.2",
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
-		"postcss-selector-parser": "^7.1.1"
+		"postcss-selector-parser": "^7.1.8"
 	},
 	"peerDependencies": {
-		"postcss": "^8.4"
+		"postcss": "^8.5.32"
 	},
 	"devDependencies": {
 		"@csstools/postcss-tape": "*"
