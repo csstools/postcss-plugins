@@ -22,6 +22,10 @@ Rules that apply such a mixin are left unchanged as well, so native support keep
 
 Private properties in the applying rule and in `@contents` blocks are transpiled together with the mixin.
 
+An `@apply` with a CSS-wide keyword (`inherit`, `initial`, `unset`, `revert`, `revert-layer`) as an argument is left unchanged:
+browsers substitute these keywords into the property that uses the parameter, while the specification resolves them in the argument phase.
+CSS-wide keywords in parameter defaults are resolved in the argument phase.
+
 ```css
 @mixin --foo() {
 	color: green;
@@ -59,9 +63,9 @@ Private properties in the applying rule and in `@contents` blocks are transpiled
 }
 
 .bar {
-	--_csstools-m-1gice1e-0--arg-0: 200;
-	--_csstools-m-1gice1e-1--baz: var(--_csstools-m-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-m-1gice1e-1--baz) 127 0);
+	--_csstools-mix-1gice1e-arg-0: 200;
+	--_csstools-m-1gice1e-0--baz: var(--_csstools-mix-1gice1e-arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-0--baz) 127 0);
 }
 
 .c {
@@ -157,9 +161,9 @@ postcssMixins({ preserve: true })
 }
 
 .bar {
-	--_csstools-m-1gice1e-0--arg-0: 200;
-	--_csstools-m-1gice1e-1--baz: var(--_csstools-m-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-m-1gice1e-1--baz) 127 0);
+	--_csstools-mix-1gice1e-arg-0: 200;
+	--_csstools-m-1gice1e-0--baz: var(--_csstools-mix-1gice1e-arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-0--baz) 127 0);
 	@apply --bar(200);
 }
 

@@ -1,7 +1,8 @@
 import { isFunctionNode, isTokenNode, parseComponentValue, stringify } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 import type { AtRule, Rule } from 'postcss';
 import { parseDashedFunctionArguments } from '@csstools/custom-function-parser';
+import { preludeTokens, rawParams } from './utils';
 
 export const IS_APPLY_REGEX = /^apply$/i;
 
@@ -11,21 +12,25 @@ export type ProcessableApply = {
 };
 
 export const IS_NESTING_GROUP_RULE_REGEX = /^(container|layer|media|scope|starting-style|supports)$/i;
+const IS_CSS_WIDE_KEYWORD_REGEX = /^(inherit|initial|unset|revert|revert-layer)$/i;
 const IS_KEYFRAMES_REGEX = /^keyframes$/i;
 
 export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
-	if (!atRule.params) {
-		return false;
-	}
-
 	const styleRule = applySiteRule(atRule);
 	if (!styleRule) {
 		return false;
 	}
 
-	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
-	}));
+	return processableApplyPrelude(atRule);
+}
+
+/** The name and arguments of an `@apply` rule, without checking the applying context. */
+export function processableApplyPrelude(atRule: AtRule): false | ProcessableApply {
+	if (!atRule.params) {
+		return false;
+	}
+
+	const prelude = parseComponentValue(preludeTokens(rawParams(atRule)));
 
 	let name: string;
 	let args: Array<string> = [];
@@ -53,6 +58,17 @@ export function processableApplyRule(atRule: AtRule): false | ProcessableApply {
 		name,
 		arguments: args,
 	};
+}
+
+/**
+ * Whether an argument is a CSS-wide keyword.
+ *
+ * Browsers substitute these keywords into the property that uses the parameter,
+ * while the specification resolves them in the argument phase.
+ * https://drafts.csswg.org/css-mixins-1/#arg-cascade
+ */
+export function hasCSSWideKeywordArgument(apply: ProcessableApply): boolean {
+	return apply.arguments.some((argument) => IS_CSS_WIDE_KEYWORD_REGEX.test(argument));
 }
 
 /**

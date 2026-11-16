@@ -1,0 +1,13 @@
+.parameter-named-arg-0 {
+	--_csstools-mix-c2504z-arg-0: green;
+	--_csstools-m-c2504z-0--arg-0: var(--_csstools-mix-c2504z-arg-0);
+	color: var(--_csstools-m-c2504z-0--arg-0);
+}
+
+.private-named-arg-1 {
+	--_csstools-mix-c2504z-arg-1: green;
+	--_csstools-m-c2504z-1--arg-1: var(--_csstools-mix-c2504z-arg-1);
+		--_csstools-m-c2504z-1--arg-1: red;
+
+	color: var(--_csstools-m-c2504z-1--arg-1);
+}

@@ -1,7 +1,8 @@
 import { isFunctionNode, isTokenNode, parseComponentValue } from '@csstools/css-parser-algorithms';
-import { isTokenIdent, tokenize } from '@csstools/css-tokenizer';
+import { isTokenIdent } from '@csstools/css-tokenizer';
 import type { AtRule } from 'postcss';
 import { parseFunctionParameters } from '@csstools/custom-function-parser';
+import { preludeTokens, rawParams } from './utils';
 
 export type MixinParameter = {
 	name: string,
@@ -22,9 +23,7 @@ export function dashedNameFromParams(params: string): string | null {
 		return null;
 	}
 
-	const prelude = parseComponentValue(tokenize({
-		css: params,
-	}));
+	const prelude = parseComponentValue(preludeTokens(params));
 
 	let name: string;
 	if (isTokenNode(prelude) && isTokenIdent(prelude.value)) {
@@ -47,7 +46,7 @@ export function mixinRuleName(atRule: AtRule): string | null {
 		return null;
 	}
 
-	return dashedNameFromParams(atRule.params);
+	return dashedNameFromParams(rawParams(atRule));
 }
 
 export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
@@ -65,9 +64,7 @@ export function processableMixinRule(atRule: AtRule): false | ProcessableMixin {
 		return false;
 	}
 
-	const prelude = parseComponentValue(tokenize({
-		css: atRule.params,
-	}));
+	const prelude = parseComponentValue(preludeTokens(rawParams(atRule)));
 
 	let parameters: Array<MixinParameter> = [];
 

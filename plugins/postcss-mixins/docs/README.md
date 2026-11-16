@@ -33,6 +33,10 @@ Rules that apply such a mixin are left unchanged as well, so native support keep
 
 Private properties in the applying rule and in `@contents` blocks are transpiled together with the mixin.
 
+An `@apply` with a CSS-wide keyword (`inherit`, `initial`, `unset`, `revert`, `revert-layer`) as an argument is left unchanged:
+browsers substitute these keywords into the property that uses the parameter, while the specification resolves them in the argument phase.
+CSS-wide keywords in parameter defaults are resolved in the argument phase.
+
 ```css
 <example.css>
 

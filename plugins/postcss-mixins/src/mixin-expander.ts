@@ -1,12 +1,20 @@
 import type { AtRule, ChildNode, Helpers, Root, Rule } from 'postcss';
+import { generateUniqueDashedIdent, hashFileBasenameAndDir } from '@csstools/generate-idents';
 import type { PrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import { createPrivatePropertyTranspiler } from '@csstools/utilities-for-private-properties';
 import type { Mixin, MixinDefinitions } from './mixin-definitions';
-import { IS_APPLY_REGEX, IS_NESTING_GROUP_RULE_REGEX, applySiteRule, processableApplyRule } from './processable-apply';
+import type { ProcessableApply } from './processable-apply';
+import { hasCSSWideKeywordArgument, IS_APPLY_REGEX, IS_NESTING_GROUP_RULE_REGEX, applySiteRule, processableApplyRule } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
 
 const IS_CONTENTS_REGEX = /^contents$/i;
 const IS_LAYER_REGEX = /^layer$/i;
+const IS_GUARANTEED_INVALID_KEYWORD_REGEX = /^(initial|unset|revert|revert-layer)$/i;
+
+const ARGUMENT_NAMESPACE = 'mix';
+
+/** `initial` on an unregistered custom property resolves to the guaranteed-invalid value. */
+const GUARANTEED_INVALID_VALUE = 'initial';
 
 // Mixins can reference each other and duplicate subtrees, which can grow
 // exponentially. Bound the total number of nodes generated while expanding
@@ -77,7 +85,11 @@ export class MixinExpander {
 		for (const [rule, ruleApplies] of appliesByRule) {
 			for (const atRule of ruleApplies) {
 				const apply = processableApplyRule(atRule);
-				if (!apply || !this.definitions.unsupported.has(apply.name)) {
+				if (!apply) {
+					continue;
+				}
+
+				if (!this.definitions.unsupported.has(apply.name) && !this.hasUnsupportedArguments(apply)) {
 					continue;
 				}
 
@@ -139,6 +151,12 @@ export class MixinExpander {
 			return;
 		}
 
+		// CSS-wide keywords are resolved differently by browsers and the
+		// specification, so these applications are left in place.
+		if (this.hasUnsupportedArguments(apply)) {
+			return;
+		}
+
 		const siteRule = applySiteRule(atRule);
 		const hasContents = atRule.nodes !== undefined;
 
@@ -174,82 +192,91 @@ export class MixinExpander {
 		// Each supplied argument is bound to a fresh custom property so it can not be
 		// shadowed by parameters of nested mixins that reuse the same names.
 		// See: https://github.com/w3c/csswg-drafts/issues/14372
+		//
+		// The bindings are plain declarations, not `@private` rules, so they keep the
+		// generated name instead of being prefixed a second time.
+		const bindings: Array<ChildNode> = [];
+		const argumentNames: Array<string | undefined> = [];
+
+		for (let i = 0; i < mixin.parameters.length; i++) {
+			const parameter = mixin.parameters[i];
+
+			if (i < args.length) {
+				const argumentName = this.argumentName(atRule);
+				argumentNames[i] = argumentName;
+				bindings.push(helpers.decl({
+					prop: argumentName,
+					value: args[i],
+					source: atRule.source,
+				}));
+				continue;
+			}
+
+			// `inherit` on a parameter default resolves to the same-named custom
+			// property in the calling context.
+			if (isInheritKeyword(parameter.defaultValue)) {
+				const argumentName = this.argumentName(atRule);
+				argumentNames[i] = argumentName;
+				bindings.push(helpers.decl({
+					prop: argumentName,
+					value: `var(${parameter.name})`,
+					source: atRule.source,
+				}));
+			}
+		}
+
 		const bodyWrapper = helpers.rule({ selector: '&', source: atRule.source });
 		bodyWrapper.raws.semicolon = true;
 		this.desugaredNestingRules.add(bodyWrapper);
 
-		let outerWrapper: Rule | undefined;
-		let argumentPrivateRule: AtRule | undefined;
+		let wrapper: Rule = bodyWrapper;
 
-		const hasInheritedDefault = mixin.parameters.some((parameter, i) => {
-			return i >= args.length && isInheritKeyword(parameter.defaultValue);
-		});
+		if (bindings.length) {
+			const argumentsWrapper = helpers.rule({ selector: '&', source: atRule.source });
+			argumentsWrapper.raws.semicolon = true;
+			this.desugaredNestingRules.add(argumentsWrapper);
 
-		if (mixin.parameters.length > 0 && (args.length > 0 || hasInheritedDefault)) {
-			outerWrapper = helpers.rule({ selector: '&', source: atRule.source });
-			outerWrapper.raws.semicolon = true;
-			this.desugaredNestingRules.add(outerWrapper);
+			argumentsWrapper.append(bindings);
+			argumentsWrapper.append(bodyWrapper);
 
-			argumentPrivateRule = helpers.atRule({ name: 'private', source: atRule.source });
-			outerWrapper.append(argumentPrivateRule);
-			outerWrapper.append(bodyWrapper);
+			wrapper = argumentsWrapper;
 		}
 
 		if (mixin.parameters.length > 0) {
-			bodyWrapper.append(this.buildParameterPrivateRule(atRule, args, mixin.parameters, helpers, argumentPrivateRule));
+			bodyWrapper.append(this.buildParameterPrivateRule(atRule, mixin.parameters, argumentNames, helpers));
 		}
 
 		for (const node of cloned) {
 			bodyWrapper.append(node);
 		}
 
-		bodyWrapper.cleanRaws();
+		return [wrapper];
+	}
 
-		if (!argumentPrivateRule?.nodes?.length) {
-			return [bodyWrapper];
+	private argumentName(atRule: AtRule): string {
+		return generateUniqueDashedIdent(ARGUMENT_NAMESPACE, hashFileBasenameAndDir(atRule.source?.input.from), `arg-${this.argumentCounter++}`);
+	}
+
+	/** Whether an application can not be transpiled because of the arguments it passes. */
+	private hasUnsupportedArguments(apply: ProcessableApply): boolean {
+		const mixin = this.definitions.mixins.get(apply.name);
+		if (!mixin || apply.arguments.length > mixin.parameters.length) {
+			return false;
 		}
 
-		outerWrapper?.cleanRaws();
-
-		return [outerWrapper as Rule];
+		return hasCSSWideKeywordArgument(apply);
 	}
 
 	/** Binds each parameter to its captured argument value, or to its default in the mixin's frame. */
-	private buildParameterPrivateRule(atRule: AtRule, args: Array<string>, parameters: Array<MixinParameter>, helpers: Helpers, argumentPrivateRule?: AtRule): AtRule {
+	private buildParameterPrivateRule(atRule: AtRule, parameters: Array<MixinParameter>, argumentNames: Array<string | undefined>, helpers: Helpers): AtRule {
 		const parameterPrivateRule = helpers.atRule({ name: 'private', source: atRule.source });
 
 		for (let i = 0; i < parameters.length; i++) {
 			const parameter = parameters[i];
+			const argumentName = argumentNames[i];
 
-			let value;
-
-			if (i < args.length) {
-				const argumentName = `--arg-${(this.argumentCounter++).toString(36)}`;
-
-				argumentPrivateRule?.append(helpers.decl({
-					prop: argumentName,
-					value: isInheritKeyword(args[i]) ? `var(${parameter.name})` : args[i],
-					source: atRule.source,
-				}));
-
-				// The parameter resolves to the captured argument value.
-				value = `var(${argumentName})`;
-			} else if (argumentPrivateRule && isInheritKeyword(parameter.defaultValue)) {
-				const argumentName = `--arg-${(this.argumentCounter++).toString(36)}`;
-
-				// `inherit` on a parameter default resolves to the same-named
-				// custom property in the calling context.
-				argumentPrivateRule.append(helpers.decl({
-					prop: argumentName,
-					value: `var(${parameter.name})`,
-					source: atRule.source,
-				}));
-
-				value = `var(${argumentName})`;
-			} else {
-				// Missing arguments resolve to their default in the mixin's own frame.
-				value = parameter.defaultValue ?? 'initial';
-			}
+			// Missing arguments resolve to their default in the mixin's own frame.
+			const value = argumentName === undefined ? defaultParameterValue(parameter) : `var(${argumentName})`;
 
 			parameterPrivateRule.append(helpers.decl({
 				prop: parameter.name,
@@ -347,6 +374,25 @@ function needsWrapper(mixin: Mixin): boolean {
 
 function isInheritKeyword(value: string | undefined): boolean {
 	return value !== undefined && value.trim().toLowerCase() === 'inherit';
+}
+
+/**
+ * Whether a CSS-wide keyword resolves to the guaranteed-invalid value.
+ *
+ * `initial`, `unset`, `revert` and `revert-layer` do, `inherit` does not.
+ * https://drafts.csswg.org/css-mixins-1/#arg-cascade
+ */
+function isGuaranteedInvalidKeyword(value: string | undefined): boolean {
+	return value !== undefined && IS_GUARANTEED_INVALID_KEYWORD_REGEX.test(value);
+}
+
+/** The value of a parameter that did not receive an argument. */
+function defaultParameterValue(parameter: MixinParameter): string {
+	if (parameter.defaultValue === undefined) {
+		return GUARANTEED_INVALID_VALUE;
+	}
+
+	return isGuaranteedInvalidKeyword(parameter.defaultValue) ? GUARANTEED_INVALID_VALUE : parameter.defaultValue;
 }
 
 /** `@layer` is invalid in a mixin body and its contents are dropped when applied. */

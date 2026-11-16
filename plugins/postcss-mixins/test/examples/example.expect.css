@@ -3,9 +3,9 @@
 }
 
 .bar {
-	--_csstools-m-1gice1e-0--arg-0: 200;
-	--_csstools-m-1gice1e-1--baz: var(--_csstools-m-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-m-1gice1e-1--baz) 127 0);
+	--_csstools-mix-1gice1e-arg-0: 200;
+	--_csstools-m-1gice1e-0--baz: var(--_csstools-mix-1gice1e-arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-0--baz) 127 0);
 }
 
 .c {

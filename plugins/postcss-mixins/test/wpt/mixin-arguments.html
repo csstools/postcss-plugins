@@ -12,6 +12,13 @@
 	<target class="defaults"></target>
 	<target class="fallback"></target>
 	<target class="braces"></target>
+	<target class="generated-argument-name"></target>
+	<target class="private-parameter-name"></target>
+	<target class="inherit-argument"></target>
+	<target class="initial-argument"></target>
+	<target class="unset-argument"></target>
+	<target class="revert-argument"></target>
+	<target class="revert-layer-argument"></target>
 	<div id="log"></div>
 	<script type="module">
 		window.addEventListener('click', () => {
@@ -80,6 +87,122 @@
 						}
 					`,
 				},
+				{
+					title: 'Parameter named like a generated argument',
+					target: '.generated-argument-name',
+					property: 'color',
+					style: `
+						@mixin --generated-argument-name(--arg-0) {
+							color: var(--arg-0);
+						}
+						.generated-argument-name {
+							@apply --generated-argument-name(green);
+						}
+					`,
+				},
+				{
+					title: 'Private property named like a parameter',
+					target: '.private-parameter-name',
+					property: 'color',
+					expected: 'rgb(255, 0, 0)',
+					style: `
+						@mixin --private-parameter-name(--arg-1) {
+							@private {
+								--arg-1: red;
+							}
+
+							color: var(--arg-1);
+						}
+						.private-parameter-name {
+							@apply --private-parameter-name(green);
+						}
+					`,
+				},
+				{
+					title: 'CSS-wide keyword arguments are left unchanged (inherit)',
+					target: '.inherit-argument',
+					property: 'color',
+					expected: 'rgb(0, 0, 255)',
+					nativeOnly: true,
+					style: `
+						body { color: rgb(0, 0, 255); }
+						@mixin --inherit-argument(--color) {
+							color: var(--color, red);
+						}
+						.inherit-argument {
+							--color: green;
+							@apply --inherit-argument(inherit);
+						}
+					`,
+				},
+				{
+					title: 'CSS-wide keyword arguments are left unchanged (initial)',
+					target: '.initial-argument',
+					property: 'color',
+					expected: 'rgb(0, 0, 0)',
+					nativeOnly: true,
+					style: `
+						body { color: rgb(0, 0, 255); }
+						@mixin --initial-argument(--color) {
+							color: var(--color, red);
+						}
+						.initial-argument {
+							--color: green;
+							@apply --initial-argument(initial);
+						}
+					`,
+				},
+				{
+					title: 'CSS-wide keyword arguments are left unchanged (unset)',
+					target: '.unset-argument',
+					property: 'color',
+					expected: 'rgb(0, 0, 255)',
+					nativeOnly: true,
+					style: `
+						body { color: rgb(0, 0, 255); }
+						@mixin --unset-argument(--color) {
+							color: var(--color, red);
+						}
+						.unset-argument {
+							--color: green;
+							@apply --unset-argument(unset);
+						}
+					`,
+				},
+				{
+					title: 'CSS-wide keyword arguments are left unchanged (revert)',
+					target: '.revert-argument',
+					property: 'color',
+					expected: 'rgb(0, 0, 255)',
+					nativeOnly: true,
+					style: `
+						body { color: rgb(0, 0, 255); }
+						@mixin --revert-argument(--color) {
+							color: var(--color, red);
+						}
+						.revert-argument {
+							--color: green;
+							@apply --revert-argument(revert);
+						}
+					`,
+				},
+				{
+					title: 'CSS-wide keyword arguments are left unchanged (revert-layer)',
+					target: '.revert-layer-argument',
+					property: 'color',
+					expected: 'rgb(0, 0, 255)',
+					nativeOnly: true,
+					style: `
+						body { color: rgb(0, 0, 255); }
+						@mixin --revert-layer-argument(--color) {
+							color: var(--color, red);
+						}
+						.revert-layer-argument {
+							--color: green;
+							@apply --revert-layer-argument(revert-layer);
+						}
+					`,
+				},
 			];
 
 			// Native support is only asserted when the browser implements the current
@@ -100,6 +223,12 @@
 			})();
 
 			for (let testCase of testCases) {
+				// The plugin leaves CSS-wide keyword arguments to the browser, so these
+				// only have a result where the browser implements mixins.
+				if (testCase['nativeOnly'] && !nativeSupport) {
+					continue;
+				}
+
 				for (const transform of nativeSupport ? ['true', 'false'] : ['true']) {
 					const styleElement = document.createElement('style');
 

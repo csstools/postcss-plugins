@@ -12,6 +12,8 @@
 - Preserve `type(...)` wrappers in `parameterType` and `{}` wrappers in `defaultValue` tokens.
 - Reject `--` as a parameter name.
 - Support empty default values and trailing commas with surrounding whitespace or comments.
+- Support a lone trailing comma in an empty parameter list.
+- Only trim whitespace, not comments, from arguments.
 - Fix a `RangeError` when serializing large token lists.
 - Improve parameter parsing and `getDefaultValue()` performance.
 - Document that `false` signals invalid input.

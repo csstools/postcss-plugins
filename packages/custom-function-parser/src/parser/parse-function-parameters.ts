@@ -31,6 +31,17 @@ export function parseFunctionParameters(componentValues: Array<ComponentValue>):
 		}
 
 		const nameComponentValue = componentValues[i];
+
+		// A single trailing comma can follow an empty parameter list:
+		// `@mixin --foo(,)` is the same as `@mixin --foo()`.
+		if (isTokenNode(nameComponentValue) && isTokenComma(nameComponentValue.value)) {
+			if (parameters.length > 0 || !isOnlyWhiteSpaceOrComments(componentValues, i + 1)) {
+				return false;
+			}
+
+			return parameters;
+		}
+
 		if (!isTokenNode(nameComponentValue) || !isTokenIdent(nameComponentValue.value)) {
 			return false;
 		}
@@ -145,4 +156,15 @@ export function parseFunctionParameters(componentValues: Array<ComponentValue>):
 	}
 
 	return parameters;
+}
+
+/** Whether every component value from `start` on is whitespace or a comment. */
+function isOnlyWhiteSpaceOrComments(componentValues: Array<ComponentValue>, start: number): boolean {
+	for (let i = start; i < componentValues.length; i++) {
+		if (!isWhiteSpaceOrCommentNode(componentValues[i])) {
+			return false;
+		}
+	}
+
+	return true;
 }

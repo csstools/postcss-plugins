@@ -6,6 +6,10 @@
 - Rename private property names in `transition` and `transition-property`
 - Resolve references in nested mixins, `@contents` fallback blocks and contents blocks inside mixin bodies
 - Support trailing commas, whitespace, empty arguments, `--x:` defaults, `type(*)` and `inherit` in parameter lists, and reject `{}` blocks mixed with other tokens
+- Support a lone trailing comma in an empty parameter list (`@mixin --foo(,)`) and keep comments in arguments and default values
+- Leave `@apply` rules with a CSS-wide keyword argument unchanged, and resolve `initial`, `unset`, `revert` and `revert-layer` parameter defaults to the guaranteed-invalid value
+- Generate argument custom properties with `@csstools/generate-idents`, so they can not collide with author names
+- Preserve author whitespace, comments and values when declarations are copied out of a mixin
 - Ignore invalid `<declaration-value>` values and `--` parameter names, and leave mixins untouched when a name has several definitions or one that can not be transpiled
 - Drop `@layer` rules from mixin bodies
 - Use `@csstools/utilities-for-private-properties` and `@csstools/custom-function-parser` for shared implementation and a separate namespace for generated names

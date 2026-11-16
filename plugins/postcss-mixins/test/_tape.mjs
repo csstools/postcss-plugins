@@ -20,6 +20,15 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	'generated-names': {
+		message: 'generated argument names do not collide with author names',
+	},
+	'generated-names:preserve-true': {
+		message: 'generated argument names do not collide with author names with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	spaces: {
 		message: 'supports spaces and comments around argument lists',
 	},

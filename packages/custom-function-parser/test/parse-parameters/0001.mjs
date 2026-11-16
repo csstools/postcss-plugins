@@ -36,10 +36,18 @@ test('parseFunctionParameters', async (t) => {
 		assert.deepEqual(parameters.map((parameter) => parameter.getName()), ['--a', '--b']);
 	});
 
+	await t.test('allows a lone trailing comma', () => {
+		assert.deepEqual(parseParameters(','), []);
+		assert.deepEqual(parseParameters(' , '), []);
+		assert.deepEqual(parseParameters('/* a comment */,'), []);
+	});
+
 	await t.test('rejects invalid parameter lists', () => {
 		assert.equal(parseParameters('--'), false);
 		assert.equal(parseParameters('--a: red !important'), false);
 		assert.equal(parseParameters('--a: red;'), false);
 		assert.equal(parseParameters('--a, --a'), false);
+		assert.equal(parseParameters(',--a'), false);
+		assert.equal(parseParameters('--a,,'), false);
 	});
 });

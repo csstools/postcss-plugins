@@ -55,6 +55,11 @@ generated `@property` registration. A default value that is not
 computationally independent (for example `1em`, `var(--x)` or `--fn()`) can not be used
 as an `initial-value` and makes the function unsupported.
 
+CSS-wide keywords in arguments and defaults are resolved in the argument phase,
+following the specification: `inherit` resolves to the same-named custom property
+in the calling context, and the other CSS-wide keywords resolve to the
+guaranteed-invalid value.
+
 ```css
 <example.css>
 

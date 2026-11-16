@@ -1,7 +1,8 @@
 import type { AtRule, Container, Document, Node, Root } from 'postcss';
-import { IS_APPLY_REGEX } from './processable-apply';
+import { hasCSSWideKeywordArgument, IS_APPLY_REGEX, processableApplyPrelude } from './processable-apply';
 import type { MixinParameter } from './processable-mixin';
 import { dashedNameFromParams, mixinRuleName, processableMixinRule } from './processable-mixin';
+import { rawParams } from './utils';
 
 export type Mixin = {
 	name: string,
@@ -49,7 +50,7 @@ export function collectMixinDefinitions(atRules: Array<AtRule>): MixinDefinition
 		}
 
 		const parsed = processableMixinRule(definitions[0]);
-		if (!parsed) {
+		if (!parsed || hasCSSWideKeywordApply(definitions[0])) {
 			unsupported.add(name);
 			continue;
 		}
@@ -164,7 +165,7 @@ function collectApplyNames(container: Container | Document, skipNodes: Set<Node>
 			return;
 		}
 
-		const name = dashedNameFromParams(atRule.params);
+		const name = dashedNameFromParams(rawParams(atRule));
 		if (name) {
 			out.add(name);
 		}
@@ -183,4 +184,22 @@ function isInsideAny(node: Node, nodes: Set<Node>): boolean {
 	}
 
 	return false;
+}
+
+/** Whether an `@apply` rule inside a mixin body has a CSS-wide keyword argument. */
+function hasCSSWideKeywordApply(container: Container): boolean {
+	let found = false;
+
+	container.walkAtRules(IS_APPLY_REGEX, (atRule) => {
+		if (found) {
+			return;
+		}
+
+		const apply = processableApplyPrelude(atRule);
+		if (apply && hasCSSWideKeywordArgument(apply)) {
+			found = true;
+		}
+	});
+
+	return found;
 }
