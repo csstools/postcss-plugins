@@ -1,8 +1,8 @@
 import type { AtRule, ChildNode } from 'postcss';
-import type { PrivatePropertyTranspilerOptions } from './transpiler';
+import type { PrivatePropertyTranspileOptions, PrivatePropertyTranspilerOptions } from './transpiler';
 import { Transpiler } from './transpiler';
 
-export type { PrivatePropertyTranspilerOptions } from './transpiler';
+export type { PrivatePropertyTranspileOptions, PrivatePropertyTranspilerOptions } from './transpiler';
 
 export type PrivatePropertyTranspiler = {
 	/**
@@ -11,7 +11,7 @@ export type PrivatePropertyTranspiler = {
 	 * Mutates `nodes` in place and returns the `@property` rules that must be
 	 * appended to the root of the tree.
 	 */
-	transpile: (nodes: Array<ChildNode>) => Array<AtRule>,
+	transpile: (nodes: Array<ChildNode>, options?: PrivatePropertyTranspileOptions) => Array<AtRule>,
 };
 
 /**
@@ -25,8 +25,8 @@ export function createPrivatePropertyTranspiler(options?: PrivatePropertyTranspi
 	const transpiler = new Transpiler(options);
 
 	return {
-		transpile(nodes: Array<ChildNode>): Array<AtRule> {
-			return transpiler.transpile(nodes);
+		transpile(nodes: Array<ChildNode>, transpileOptions?: PrivatePropertyTranspileOptions): Array<AtRule> {
+			return transpiler.transpile(nodes, transpileOptions);
 		},
 	};
 }

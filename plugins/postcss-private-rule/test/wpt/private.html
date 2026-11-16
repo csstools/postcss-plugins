@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<title>CSS @private: lexical scope and registration</title>
+<link rel="help" href="https://drafts.csswg.org/css-mixins-1/#private">
+<style>
+	body {
+		font-size: 10px;
+	}
+
+	target {
+		display: block;
+	}
+</style>
+
+<body>
+	<target class="lexical-a">
+		<target class="b"></target>
+		<target class="c"></target>
+	</target>
+	<target class="d"></target>
+
+	<target class="per-block"></target>
+
+	<target class="nested-scope"></target>
+	<target class="nested-override"></target>
+	<target class="cycle"></target>
+	<target class="escaped"></target>
+
+	<target class="typed-host">
+		<target class="child"></target>
+	</target>
+
+	<target class="container-host">
+		<target class="target">
+			<target class="child"></target>
+		</target>
+	</target>
+
+	<target class="supports-registration">
+		<target class="child"></target>
+	</target>
+
+	<target class="layer-registration">
+		<target class="child"></target>
+	</target>
+
+	<div id="log"></div>
+	<script type="module">
+		window.addEventListener('click', () => {
+			window.runTest();
+		});
+
+		window.runTest = async function runTest() {
+			function assert_equals(actual, expected, message) {
+				if (actual != expected) {
+					log.innerHTML = message + ": expected " + expected + ", got " + actual;
+					throw new Error(message + ": expected " + expected + ", got " + actual);
+				}
+			}
+
+			async function style(css) {
+				const response = await fetch('/test/styles.css?transform=true', {
+					method: 'POST',
+					body: css,
+				});
+
+				const styleElement = document.createElement('style');
+				styleElement.textContent = await response.text();
+				document.head.append(styleElement);
+
+				return styleElement;
+			}
+
+			// Only the transformed form is asserted.
+			// No browser implements `@private` yet.
+			const testCases = [
+				{
+					title: 'A private property resolves on its declaring element and its descendants',
+					style: `
+						.lexical-a {
+							@private {
+								--private-size: 20px;
+							}
+							font-size: 20px;
+							width: var(--private-size, 9em);
+
+							& > .b {
+								font-size: 30px;
+								width: var(--private-size, 93em);
+							}
+
+							& > .c {
+								@private {
+									--private-size: 80px;
+								}
+								width: var(--private-size, 75em);
+							}
+
+							& + .d {
+								width: var(--private-size, 93em);
+							}
+						}
+
+						.lexical-a > .b {
+							margin-top: var(--private-size, 75em);
+						}
+					`,
+					assertions: [
+						['.lexical-a', 'width', '20px'],
+						['.lexical-a .b', 'width', '20px'],
+						['.lexical-a .b', 'margin-top', '2250px'],
+						['.lexical-a .c', 'width', '80px'],
+						['.d', 'width', '930px'],
+						['.lexical-a', '--private-size', ''],
+					],
+				},
+				{
+					title: 'Same-named private properties in different source blocks are distinct',
+					style: `
+						.per-block {
+							@private {
+								--color: green;
+							}
+							border-top-color: var(--color, red);
+						}
+
+						.per-block {
+							@private {
+								--color: blue;
+							}
+							background-color: var(--color, red);
+						}
+					`,
+					assertions: [
+						['.per-block', 'border-top-color', 'rgb(0, 128, 0)'],
+						['.per-block', 'background-color', 'rgb(0, 0, 255)'],
+					],
+				},
+				{
+					// https://github.com/w3c/csswg-drafts/issues/14790
+					title: 'A nested private property can reference an enclosing private property',
+					style: `
+						.nested-scope {
+							@private {
+								--x: red;
+							}
+							& {
+								@private {
+									--y: var(--x, green);
+								}
+								color: var(--y, purple);
+								background-color: var(--x, blue);
+							}
+						}
+					`,
+					assertions: [
+						['.nested-scope', 'color', 'rgb(255, 0, 0)'],
+						['.nested-scope', 'background-color', 'rgb(255, 0, 0)'],
+					],
+				},
+				{
+					title: 'Ordinary assignments to private properties can reference enclosing private names',
+					style: `
+						.nested-override {
+							@private {
+								--x: red;
+							}
+							& {
+								@private {
+									--y: var(--x, green);
+								}
+								--y: var(--x, blue);
+								color: var(--y, purple);
+							}
+						}
+					`,
+					assertions: [
+						['.nested-override', 'color', 'rgb(255, 0, 0)'],
+					],
+				},
+				{
+					title: 'Cycles between private properties are invalid at computed-value time',
+					style: `
+						.cycle {
+							@private {
+								--a: var(--b);
+								--b: var(--a);
+							}
+							width: var(--a, 17px);
+						}
+					`,
+					assertions: [
+						['.cycle', 'width', '17px'],
+					],
+				},
+				{
+					title: 'Escaped private property names resolve to the same property',
+					style: `
+						.escaped {
+							@private {
+								--\\73 ize: 2px;
+							}
+							width: var(--\\73 ize);
+						}
+					`,
+					assertions: [
+						['.escaped', 'width', '2px'],
+					],
+				},
+				{
+					title: 'A @property rule inside @private computes values on the declaring element',
+					style: `
+						.typed-host {
+							@private {
+								@property --typed-size {
+									syntax: "<length>";
+									inherits: true;
+									initial-value: 1px;
+								}
+								--typed-size: 2em;
+							}
+							font-size: 10px;
+
+							& > .child {
+								font-size: 30px;
+								width: var(--typed-size);
+							}
+						}
+					`,
+					assertions: [
+						['.typed-host .child', 'width', '20px'],
+					],
+				},
+				{
+					title: 'A @property rule inside @private is hoisted out of @container',
+					style: `
+						.container-host {
+							container-type: inline-size;
+						}
+
+						.container-host > .target {
+							font-size: 10px;
+
+							@container (min-width: 1px) {
+								@private {
+									@property --container-size {
+										syntax: "<length>";
+										inherits: true;
+										initial-value: 1px;
+									}
+									--container-size: 2em;
+								}
+							}
+
+							& > .child {
+								font-size: 30px;
+								width: var(--container-size);
+							}
+						}
+					`,
+					assertions: [
+						['.container-host .child', 'width', '20px'],
+					],
+				},
+				{
+					title: 'A @property rule inside @private stays conditional on @supports',
+					style: `
+						.supports-registration {
+							@private {
+								--supports-size: 2em;
+
+								@supports (not-a-property: 1) {
+									@property --supports-size {
+										syntax: "<length>";
+										inherits: true;
+										initial-value: 1px;
+									}
+								}
+							}
+							font-size: 10px;
+
+							& > .child {
+								font-size: 30px;
+								width: var(--supports-size);
+							}
+						}
+					`,
+					assertions: [
+						// The registration is not active: the value is an unregistered token list.
+						['.supports-registration .child', 'width', '60px'],
+					],
+				},
+				{
+					title: 'Registrations for the same private property keep their layer precedence',
+					style: `
+						@layer layer-b, layer-a;
+
+						.layer-registration {
+							@private {
+								@layer layer-a {
+									@property --layer-size {
+										syntax: "*";
+										inherits: true;
+										initial-value: 2px;
+									}
+								}
+								@layer layer-b {
+									@property --layer-size {
+										syntax: "<length>";
+										inherits: true;
+										initial-value: 1px;
+									}
+								}
+							}
+							--layer-size: 2em;
+							font-size: 10px;
+
+							& > .child {
+								font-size: 30px;
+								width: var(--layer-size);
+							}
+						}
+					`,
+					assertions: [
+						// layer-a is stronger, so the universal syntax wins and 2em is inherited.
+						['.layer-registration .child', 'width', '60px'],
+					],
+				},
+			];
+
+			for (let testCase of testCases) {
+				const styleElement = await style(testCase['style']);
+
+				for (const [selector, property, expected] of testCase['assertions']) {
+					const target = document.querySelector(selector);
+					const computedStyle = window.getComputedStyle(target);
+
+					assert_equals(
+						property.startsWith('--') ? computedStyle.getPropertyValue(property) : computedStyle[property],
+						expected,
+						`${testCase['title']} (${selector} ${property})`,
+					);
+				}
+
+				styleElement.remove();
+			}
+
+			return true;
+		}
+	</script>
+</body>

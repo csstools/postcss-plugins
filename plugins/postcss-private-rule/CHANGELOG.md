@@ -1,5 +1,14 @@
 # Changes to PostCSS Private Rule
 
+### Unreleased (major)
+
+- Removed the undocumented `Transpiler` export; use `@csstools/utilities-for-private-properties` instead
+- Support `@property` rules in `@private` rules, including multi-name preludes and the shorthand form, and hoist registrations out of `@container`, `@scope` and `@starting-style` while preserving `@media`, `@supports` and `@layer` context
+- Rename private properties in `transition`, `transition-property`, `inherit()` and `var()` inside `@container` preludes
+- Leave style rules untouched when they contain `@apply`, `@contents`, `!important` declarations or unsupported at-rules, when they are inside a `@mixin` or `@function`, or when a registration is inside an anonymous layer
+- Remove conditional group rules that only contained a `@private` rule, and transpile `@private` rules inside `@container` and `@starting-style` when they have no registrations
+- Use a separate namespace for generated names so they do not collide with mixin generated names
+
 ### 1.1.1
 
 _October 2, 2026_

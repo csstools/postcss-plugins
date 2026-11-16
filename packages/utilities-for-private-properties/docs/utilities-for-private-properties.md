@@ -47,6 +47,15 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[PrivatePropertyTranspileOptions](./utilities-for-private-properties.privatepropertytranspileoptions.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [PrivatePropertyTranspiler](./utilities-for-private-properties.privatepropertytranspiler.md)
 
 

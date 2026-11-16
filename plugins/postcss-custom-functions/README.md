@@ -44,6 +44,11 @@ generated `@property` registration. A default value that is not
 computationally independent (for example `1em`, `var(--x)` or `--fn()`) can not be used
 as an `initial-value` and makes the function unsupported.
 
+CSS-wide keywords in arguments and defaults are resolved in the argument phase,
+following the specification: `inherit` resolves to the same-named custom property
+in the calling context, and the other CSS-wide keywords resolve to the
+guaranteed-invalid value.
+
 ```css
 @function --negative(--value) {
 	result: calc(-1 * var(--value));
@@ -70,7 +75,6 @@ html {
 	--_csstools-cf-1gice1e-2-result: calc(2 * var(--_csstools-cf-1gice1e-3-arg-0));
 	margin: var(--_csstools-cf-1gice1e-2-result);
 }
-
 @property --_csstools-cf-1gice1e-3-arg-0 {
 	syntax: "<length>";
 	inherits: true;

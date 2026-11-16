@@ -14,7 +14,20 @@ This plugin is only a partial implementation to avoid conflicts with the final s
 Unsupported:
 - typed mixin arguments
 - layered `@mixin` declarations
+- conditional `@mixin` declarations
 - mixin overrides
+
+Run `@csstools/postcss-private-rule` after this plugin to transpile `@private` rules in style rules that do not apply a mixin.
+
+A mixin with an unsupported definition is left unchanged: the definition and every `@apply` of that name stay as they are.
+Rules that apply such a mixin are left unchanged as well, so native support keeps working for them.
+The same happens when private properties in a rule can not be transpiled completely, for example when a private property registration is inside an anonymous cascade layer.
+
+Private properties in the applying rule and in `@contents` blocks are transpiled together with the mixin.
+
+An `@apply` with a CSS-wide keyword (`inherit`, `initial`, `unset`, `revert`, `revert-layer`) as an argument is left unchanged:
+browsers substitute these keywords into the property that uses the parameter, while the specification resolves them in the argument phase.
+CSS-wide keywords in parameter defaults are resolved in the argument phase.
 
 ```css
 @mixin --foo() {
@@ -53,9 +66,9 @@ Unsupported:
 }
 
 .bar {
-	--_csstools-p-1gice1e-0--arg-0: 200;
-	--_csstools-p-1gice1e-1--baz: var(--_csstools-p-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-p-1gice1e-1--baz) 127 0);
+	--_csstools-mix-1gice1e-arg-0: 200;
+	--_csstools-m-1gice1e-0--baz: var(--_csstools-mix-1gice1e-arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-0--baz) 127 0);
 }
 
 .c {
@@ -151,9 +164,9 @@ postcssMixins({ preserve: true })
 }
 
 .bar {
-	--_csstools-p-1gice1e-0--arg-0: 200;
-	--_csstools-p-1gice1e-1--baz: var(--_csstools-p-1gice1e-0--arg-0);
-	color: rgb(var(--_csstools-p-1gice1e-1--baz) 127 0);
+	--_csstools-mix-1gice1e-arg-0: 200;
+	--_csstools-m-1gice1e-0--baz: var(--_csstools-mix-1gice1e-arg-0);
+	color: rgb(var(--_csstools-m-1gice1e-0--baz) 127 0);
 	@apply --bar(200);
 }
 

@@ -543,7 +543,6 @@ export class CustomFunctionTranspiler {
 		});
 
 		for (const registration of registrations) {
-			formatGeneratedNode(registration, '\n\n', '');
 			this.spendBudget(countNodes(registration));
 		}
 
@@ -552,9 +551,6 @@ export class CustomFunctionTranspiler {
 
 	private pushRegistration(registration: AtRule, conditionals: Array<AtRule>): void {
 		const registrations = wrapInConditionalGroupRules([registration], conditionals);
-		for (const node of registrations) {
-			formatGeneratedNode(node, '\n\n', '');
-		}
 
 		this.registrations.push(...registrations);
 	}
@@ -1398,20 +1394,6 @@ function collectDeclaredLocalNamesFrom(nodes: Array<ChildNode>, inConditional: b
 		if (node.type === 'atrule' && node.nodes && !IS_PROPERTY_REGEX.test(node.name)) {
 			collectDeclaredLocalNamesFrom(node.nodes, true, names);
 		}
-	}
-}
-
-function formatGeneratedNode(node: ChildNode, before: string, indent: string): void {
-	node.cleanRaws(true);
-	node.raws.before = before;
-
-	if (node.type === 'decl' || node.type === 'comment') {
-		return;
-	}
-
-	const childIndent = `${indent}\t`;
-	for (const child of node.nodes || []) {
-		formatGeneratedNode(child, `\n${childIndent}`, childIndent);
 	}
 }
 

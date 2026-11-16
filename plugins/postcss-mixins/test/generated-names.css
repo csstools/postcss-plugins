@@ -1,0 +1,19 @@
+@mixin --parameter-named-arg-0(--arg-0) {
+	color: var(--arg-0);
+}
+
+.parameter-named-arg-0 {
+	@apply --parameter-named-arg-0(green);
+}
+
+@mixin --private-named-arg-1(--arg-1) {
+	@private {
+		--arg-1: red;
+	}
+
+	color: var(--arg-1);
+}
+
+.private-named-arg-1 {
+	@apply --private-named-arg-1(green);
+}

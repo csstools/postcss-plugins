@@ -1,4 +1,5 @@
 import './basic/basic.mjs';
+import './basic/clamping.mjs';
 import './basic/color-function.mjs';
 import './basic/alpha-function.mjs';
 import './basic/color-mix-function-oklch.mjs';

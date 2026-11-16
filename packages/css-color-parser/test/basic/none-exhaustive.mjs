@@ -11,6 +11,12 @@ import { parse } from '../util/parse.mjs';
 		['hsl(from lch(20 none 180) h s l)', 'hsl(none none 18.93757452%)'],
 		['hsl(from lch(20 0 180) h s l)', 'hsl(none 0% 18.93757452%)'],
 
+		// s > 100, l < 0, l > 100 are not clamped
+		['hsl(from hsl(180 none 110%) h s l)', 'hsl(180 none 110%)'],
+		['hsl(from hsl(180 none -10%) h s l)', 'hsl(180 none -10%)'],
+		['hsl(from hsl(180 110% none) h s l)', 'hsl(180 110% none)'],
+		['hsl(from hsl(180 -10% none) h s l)', 'hsl(180 0% none)'],
+
 		// https://github.com/w3c/csswg-drafts/issues/14100
 		['lch(from orchid l 0 h)', 'lch(62.75256542 0 326.96909222)'],
 		['lch(from lch(from orchid l 0 h) l c h)', 'lch(62.75256542 0 326.96909222)'],

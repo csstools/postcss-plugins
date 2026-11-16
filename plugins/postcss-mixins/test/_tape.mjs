@@ -20,6 +20,15 @@ postcssTape(plugin)({
 			preserve: true,
 		},
 	},
+	'generated-names': {
+		message: 'generated argument names do not collide with author names',
+	},
+	'generated-names:preserve-true': {
+		message: 'generated argument names do not collide with author names with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
 	spaces: {
 		message: 'supports spaces and comments around argument lists',
 	},
@@ -61,6 +70,24 @@ postcssTape(plugin)({
 	},
 	'private:preserve-true': {
 		message: 'scopes mixin parameters and @private rules with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
+	property: {
+		message: 'supports @property rules in @private rules',
+	},
+	'property:preserve-true': {
+		message: 'supports @property rules in @private rules with { preserve: true }',
+		options: {
+			preserve: true,
+		},
+	},
+	layer: {
+		message: 'drops @layer rules from mixin bodies',
+	},
+	'layer:preserve-true': {
+		message: 'drops @layer rules from mixin bodies with { preserve: true }',
 		options: {
 			preserve: true,
 		},
