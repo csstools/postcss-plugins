@@ -90,6 +90,7 @@ jobs:
           BROWSER_TESTS: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) }}
           ENABLE_ANNOTATIONS_FOR_NODE: ${{ matrix.is_base_node_version }}
           ENABLE_ANNOTATIONS_FOR_OS: ${{ matrix.is_base_os_version }}
+          NPM_CONFIG_ENGINE_STRICT: ${{ (matrix.is_base_node_version && matrix.is_base_os_version) && 'true' || 'false' }}
 
         # CLI Tests
         # running "npm install" places the cli in node_modules/bin

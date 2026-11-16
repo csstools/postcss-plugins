@@ -108,6 +108,7 @@ export default [
 			parserOptions: {
 				projectService: true,
 				tsconfigRootDir: import.meta.dirname,
+				disallowAutomaticSingleRunInference: true,
 			},
 		},
 

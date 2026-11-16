@@ -31,8 +31,10 @@ export function normalize_legacy_HSL_ChannelValues(token: CSSToken, index: numbe
 		let value;
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
+		} else if (index === 1) {
+			value = normalize(token[4].value, 1, 0, VALUE_FOR_POSITIVE_INFINITY);
 		} else {
-			value = normalize(token[4].value, 1, 0, 100);
+			value = normalize(token[4].value, 1, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
 		}
 
 		return [
@@ -55,8 +57,10 @@ export function normalize_legacy_HSL_ChannelValues(token: CSSToken, index: numbe
 		let value;
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
+		} else if (index === 1) {
+			value = normalize(token[4].value, 1, 0, VALUE_FOR_POSITIVE_INFINITY);
 		} else {
-			value = normalize(token[4].value, 1, 0, 100);
+			value = normalize(token[4].value, 1, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
 		}
 
 		return [

@@ -158,6 +158,11 @@ const licenseExceptions = [
 		file: 'node_modules/@typescript-eslint/parser/package.json',
 		license: 'MITClause',
 	},
+	{
+		// https://github.com/nodeca/argparse/issues/188
+		file: 'node_modules/argparse/package.json',
+		license: 'PSF-2.0',
+	},
 ];
 
 export function licenseIsOkByException(file, license) {

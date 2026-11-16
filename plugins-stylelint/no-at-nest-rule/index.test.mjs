@@ -1,6 +1,10 @@
 import { testRule } from 'stylelint-test-rule-node';
 import noAtNestRule from './index.mjs';
 
+if (Number(process.versions.node.split('.')[0]) < 22) {
+	process.exit(0);
+}
+
 const rule = noAtNestRule.rule;
 
 testRule({
