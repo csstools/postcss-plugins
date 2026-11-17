@@ -60,6 +60,21 @@
 				"open-props"
 			]
 		},
+		"plugins/postcss-custom-functions": {
+			"entry": [
+				"src/index.ts",
+				"test/**/*.{cjs,mjs}",
+				"dist/*.{mjs,js}"
+			],
+			"project": [
+				"**/*.ts",
+				"test/**/*.{cjs,mjs,js}"
+			],
+			"ignoreDependencies": [
+				"@playwright/browser-chromium",
+				"@playwright/browser-webkit"
+			]
+		},
 		"plugins/*": {
 			"entry": [
 				"scripts/**/*.mjs",

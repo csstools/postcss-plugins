@@ -3009,7 +3009,7 @@
 		"comment": "",
 		"syntax-b": "none | <integer>",
 		"syntax-a": "none | [ <integer [1,∞]> || auto || <block-ellipsis> ] -webkit-legacy?",
-		"syntax-m": "none | [ <integer [1,∞]> || auto || <block-ellipsis> ] -webkit-legacy?",
+		"syntax-m": "none | [ <integer [1,∞]> || auto || <'block-ellipsis'> ] -webkit-legacy?",
 		"tests": {
 			"passing": [],
 			"failing": []

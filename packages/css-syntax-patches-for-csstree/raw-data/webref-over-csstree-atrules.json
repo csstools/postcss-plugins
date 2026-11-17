@@ -223,6 +223,22 @@
 			"comment": ""
 		}
 	},
+	"layer": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "[ <layer-name># | <layer-name>? ]",
+			"syntax-a": "<layer-name>? | <layer-name>#",
+			"comment": ""
+		}
+	},
+	"location": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<dashed-ident>",
+			"comment": ""
+		}
+	},
 	"mixin": {
 		"prelude": {
 			"type": "added",
@@ -305,7 +321,7 @@
 		"prelude": {
 			"type": "modified",
 			"syntax-b": "<custom-property-name>",
-			"syntax-a": "@property <custom-property-name> <css-type>? [ : <declaration-value>? ]? ;",
+			"syntax-a": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?",
 			"comment": ""
 		}
 	},

@@ -1040,11 +1040,11 @@
 	"location-name": {
 		"syntax": "<dashed-ident>"
 	},
-	"location-rule": {
-		"syntax": "@location <dashed-ident> { <declaration-list> }"
-	},
 	"log()": {
 		"syntax": "log( <calc-sum> , <calc-sum>? )"
+	},
+	"marker-ref": {
+		"syntax": "<url>"
 	},
 	"-webkit-mask-box-repeat": {
 		"syntax": "repeat | stretch | round"

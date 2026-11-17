@@ -760,6 +760,60 @@
 			}
 		}
 	},
+	"layer": {
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "[ <layer-name># | <layer-name>? ]",
+			"syntax-a": "<layer-name>? | <layer-name>#",
+			"syntax-m": "<layer-name>? | <layer-name>#",
+			"tests": {
+				"passing": [
+					{
+						"prelude": ""
+					},
+					{
+						"prelude": "foo"
+					},
+					{
+						"prelude": "foo.bar"
+					},
+					{
+						"prelude": "foo, bar"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					}
+				]
+			}
+		}
+	},
+	"location": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<dashed-ident>",
+			"syntax-m": "<dashed-ident>",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--foo"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo"
+					},
+					{
+						"prelude": "10px"
+					}
+				]
+			}
+		}
+	},
 	"mixin": {
 		"prelude": {
 			"type": "added",
@@ -1018,8 +1072,8 @@
 			"type": "modified",
 			"comment": "",
 			"syntax-b": "<custom-property-name>",
-			"syntax-a": "@property <custom-property-name> <css-type>? [ : <declaration-value>? ]? ;",
-			"syntax-a": "@property <custom-property-name> <css-type>? [ : <declaration-value>? ]? ;",
+			"syntax-a": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?",
+			"syntax-m": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?",
 			"tests": {
 				"passing": [
 					{
@@ -1027,6 +1081,12 @@
 					},
 					{
 						"prelude": "--foo, --bar"
+					},
+					{
+						"prelude": "--foo <color>"
+					},
+					{
+						"prelude": "--foo <color>: red"
 					}
 				],
 				"failing": [

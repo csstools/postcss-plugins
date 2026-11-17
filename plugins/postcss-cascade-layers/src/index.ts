@@ -133,7 +133,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 					return;
 				}
 
-				if (rule.some((decl) => decl.type === 'decl' && decl.important)) {
+				if (rule.some((decl) => Boolean(decl.type === 'decl' && decl.important))) {
 					// !important declarations have inverse priority in layers
 					// doing nothing will give the lowest specificity
 					return;
@@ -177,7 +177,7 @@ const creator: PluginCreator<pluginOptions> = (opts?: pluginOptions) => {
 				const fullLayerName = model.getLayerParams(layerForCurrentRule).join('.');
 				const layerOrder = model.layerOrder.get(fullLayerName) ?? 0;
 				let specificityAdjustment = layerOrder * highestASpecificity;
-				if (rule.some((decl) => decl.type === 'decl' && decl.important)) {
+				if (rule.some((decl) => Boolean(decl.type === 'decl' && decl.important))) {
 					// !important declarations have inverse priority in layers
 					specificityAdjustment = model.layerCount - specificityAdjustment;
 				}

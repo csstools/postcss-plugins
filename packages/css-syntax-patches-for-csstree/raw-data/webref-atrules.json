@@ -212,7 +212,12 @@
 	},
 	"layer": {
 		"prelude": {
-			"syntax": "[ <layer-name># | <layer-name>? ]"
+			"syntax": "<layer-name>? | <layer-name>#"
+		}
+	},
+	"location": {
+		"prelude": {
+			"syntax": "<dashed-ident>"
 		}
 	},
 	"media": {
@@ -395,7 +400,7 @@
 	},
 	"property": {
 		"prelude": {
-			"syntax": "@property <custom-property-name> <css-type>? [ : <declaration-value>? ]? ;"
+			"syntax": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?"
 		},
 		"descriptors": {
 			"inherits": {

@@ -2535,12 +2535,12 @@
 			"failing": []
 		}
 	},
-	"location-rule": {
+	"marker-ref": {
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "@location <dashed-ident> { <declaration-list> }",
-		"syntax-m": "@location <dashed-ident> { <declaration-list> }",
+		"syntax-a": "<url>",
+		"syntax-m": "<url>",
 		"tests": {
 			"passing": [],
 			"failing": []

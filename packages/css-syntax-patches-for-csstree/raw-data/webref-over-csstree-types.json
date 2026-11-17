@@ -1085,10 +1085,10 @@
 		"syntax-a": "<dashed-ident>",
 		"comment": ""
 	},
-	"location-rule": {
+	"marker-ref": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "@location <dashed-ident> { <declaration-list> }",
+		"syntax-a": "<url>",
 		"comment": ""
 	},
 	"media-and": {

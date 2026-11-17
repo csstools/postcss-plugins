@@ -16,7 +16,71 @@ function assign_new_definition(set, name, definition) {
 	set[name] = definition;
 }
 
-function assign_new_atrule_syntax(set, atrule, syntax) {
+function is_block_marker(term) {
+	if (term.type === 'Token') {
+		return term.value === '{';
+	}
+
+	if (term.type === 'Group') {
+		return term.terms.at(0)?.type === 'Token' &&
+			term.terms.at(0).value === '{' &&
+			term.terms.at(-1)?.type === 'Token' &&
+			term.terms.at(-1).value === '}';
+	}
+
+	if (term.type === 'Multiplier') {
+		return is_block_marker(term.term);
+	}
+
+	return false;
+}
+
+function prelude_of_atrule_alternative(atrule, alternative) {
+	const terms = alternative.type === 'Group' ? alternative.terms : [alternative];
+
+	if (terms.at(0)?.type !== 'AtKeyword' || terms.at(0).name !== atrule) {
+		return null;
+	}
+
+	const prelude_terms = [];
+
+	for (const term of terms.slice(1)) {
+		if (is_block_marker(term)) {
+			break;
+		}
+
+		prelude_terms.push(term);
+	}
+
+	if (prelude_terms.at(-1)?.type === 'Token' && prelude_terms.at(-1).value === ';') {
+		prelude_terms.pop();
+	}
+
+	if (!prelude_terms.length) {
+		return '';
+	}
+
+	return definitionSyntax.generate({
+		...alternative,
+		terms: prelude_terms,
+	});
+}
+
+function assign_new_atrule_syntax(set, syntax) {
+	const parsedSyntax = definitionSyntax.parse(syntax.trim());
+
+	// At-rules with both a block and a statement form list one alternative per form.
+	// `@layer <layer-name>? { <rule-list> } | @layer <layer-name>#;`
+	const alternatives = parsedSyntax.combinator === '|' ? parsedSyntax.terms : [parsedSyntax];
+	const first_alternative = alternatives.at(0);
+	const first_terms = first_alternative.type === 'Group' ? first_alternative.terms : [first_alternative];
+	const at_keyword = first_terms.at(0);
+
+	if (at_keyword?.type !== 'AtKeyword') {
+		return;
+	}
+
+	const atrule = at_keyword.name;
 	const exists_in_set = set[atrule]?.prelude;
 
 	if (exists_in_set) {
@@ -26,26 +90,31 @@ function assign_new_atrule_syntax(set, atrule, syntax) {
 
 	set[atrule] ??= Object.create(null);
 
-	let parsedSyntax = definitionSyntax.parse(syntax.trim().replaceAll('[ { <declaration-list> } ]?', ''));
+	const preludes = [];
+	let allows_empty_prelude = false;
 
-	parsedSyntax.terms = parsedSyntax.terms.slice(1);
+	for (const alternative of alternatives) {
+		const prelude = prelude_of_atrule_alternative(atrule, alternative);
 
-	if (parsedSyntax.terms.some((x) => x.value === '{')) {
-		parsedSyntax.terms = parsedSyntax.terms.slice(
-			0,
-			parsedSyntax.terms.findIndex((x) => x.value === '{'),
-		);
+		if (prelude === null) {
+			return;
+		}
+
+		if (!prelude) {
+			allows_empty_prelude = true;
+			continue;
+		}
+
+		preludes.push(prelude);
 	}
 
-	if (parsedSyntax.terms.at(-1)?.value === ';') {
-		parsedSyntax.terms = parsedSyntax.terms.slice(0, -1);
-	}
-
-	if (!parsedSyntax.terms.length) {
+	if (!preludes.length) {
 		return;
 	}
 
-	set[atrule].prelude = definitionSyntax.generate(parsedSyntax);
+	const prelude = preludes.join(' | ');
+
+	set[atrule].prelude = allows_empty_prelude ? `[ ${prelude} ]?` : prelude;
 }
 
 function assign_new_atrule_descriptor_definition(set, atrule, name, definition) {
@@ -111,6 +180,9 @@ export async function generate_webref_sets() {
 		types['sibling-index'] = 'sibling-index()';
 		types['sibling-count'] = 'sibling-count()';
 
+		// https://github.com/w3c/svgwg/issues/1259
+		types['marker-ref'] = '<url>';
+
 		assign_new_atrule_descriptor_definition(
 			atrules,
 			trim_at('position-try'),
@@ -145,19 +217,10 @@ export async function generate_webref_sets() {
 
 	for (const atrule of data.atrules) {
 		if (atrule.syntax) {
-			if (trim_at(atrule.name) === 'layer') {
-				assign_new_atrule_syntax(
-					atrules,
-					trim_at(atrule.name),
-					'<layer-name>?',
-				);
-			} else {
-				assign_new_atrule_syntax(
-					atrules,
-					trim_at(atrule.name),
-					atrule.syntax,
-				);
-			}
+			assign_new_atrule_syntax(
+				atrules,
+				atrule.syntax,
+			);
 		}
 
 		if (atrule.descriptors?.length) {
@@ -207,6 +270,13 @@ export async function generate_webref_sets() {
 
 	for (const t of data.types) {
 		if (!t.syntax) {
+			continue;
+		}
+
+		// A type can describe a complete at-rule, e.g. `location-rule`
+		// is `@location <dashed-ident> { <declaration-list> }`.
+		if (t.syntax.trimStart().startsWith('@')) {
+			assign_new_atrule_syntax(atrules, t.syntax);
 			continue;
 		}
 
