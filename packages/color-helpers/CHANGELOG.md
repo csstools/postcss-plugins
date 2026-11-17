@@ -1,6 +1,8 @@
 # Changes to Color Helpers
 
-### Unreleased (patch)
+### 6.1.3
+
+_November 17, 2026_
 
 - Updated the ray-trace gamut mapping algorithm to the current CSS Color 4 specification
 
