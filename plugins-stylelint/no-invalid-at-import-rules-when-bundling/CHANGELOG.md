@@ -1,6 +1,8 @@
 # Changelog
 
-### Unreleased (major)
+### 5.0.0
+
+_November 17, 2026_
 
 - Updated: Support for Stylelint `18.0.0` or later (major).
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
