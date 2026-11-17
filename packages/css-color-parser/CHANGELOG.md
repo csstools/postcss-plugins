@@ -3,6 +3,8 @@
 ### Unreleased (patch)
 
 - Fix `hsl()` clamping to match CSS Color 4: only negative saturation is clamped at parse time, including in the legacy comma-separated syntax
+- Updated [`@csstools/color-helpers`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers) to [`6.1.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers/CHANGELOG.md#613) (patch)
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
 
 ### 4.2.7
 

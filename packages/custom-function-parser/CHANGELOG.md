@@ -12,6 +12,7 @@
 - Fix a `RangeError` and improve performance for large token lists.
 - Reject `--` as a parameter name.
 - Support `--foo(,)`, empty defaults and trailing commas, and only trim whitespace from arguments and defaults.
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
 
 ### 1.0.0
 

@@ -1,5 +1,9 @@
 # Changes to PostCSS Lab Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
+
 ### 8.0.16
 
 _October 29, 2026_

@@ -1,5 +1,9 @@
 # Changes to PostCSS Light Dark Function
 
+### Unreleased (patch)
+
+- Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
+
 ### 3.0.8
 
 _October 29, 2026_
