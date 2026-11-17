@@ -14,6 +14,7 @@
 - Treat `--x:` as an empty default and reject defaults that mix `{}` blocks with other tokens
 - Use `@csstools/generate-idents`, `@csstools/utilities-for-property-registrations` and `@csstools/custom-function-parser` internally
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#403) (patch)
 
 ### 1.0.1
 
