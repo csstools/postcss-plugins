@@ -8,6 +8,7 @@
 - Leave style rules untouched when they contain `@apply`, `@contents`, `!important` declarations or unsupported at-rules, when they are inside a `@mixin` or `@function`, or when a registration is inside an anonymous layer
 - Remove conditional group rules that only contained a `@private` rule, and transpile `@private` rules inside `@container` and `@starting-style` when they have no registrations
 - Use a separate namespace for generated names so they do not collide with mixin generated names
+- Updated [`@csstools/utilities-for-private-properties`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-private-properties) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-private-properties/CHANGELOG.md#101) (patch)
 
 ### 1.1.1
 

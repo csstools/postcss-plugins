@@ -4,6 +4,7 @@
 
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
 - Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/media-query-list-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser) to [`5.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/media-query-list-parser/CHANGELOG.md#503) (patch)
 
 ### 4.0.2
 

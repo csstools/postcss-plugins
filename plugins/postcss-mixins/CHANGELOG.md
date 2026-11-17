@@ -14,6 +14,8 @@
 - Transpile private properties in the applying rule, nested mixins and `@contents` blocks
 - Updated [`@csstools/css-tokenizer`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer/CHANGELOG.md#403) (patch)
 - Updated [`@csstools/css-parser-algorithms`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms) to [`4.0.3`](https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms/CHANGELOG.md#403) (patch)
+- Updated [`@csstools/custom-function-parser`](https://github.com/csstools/postcss-plugins/tree/main/packages/custom-function-parser) to [`2.0.0`](https://github.com/csstools/postcss-plugins/tree/main/packages/custom-function-parser/CHANGELOG.md#200) (major)
+- Updated [`@csstools/utilities-for-private-properties`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-private-properties) to [`1.0.1`](https://github.com/csstools/postcss-plugins/tree/main/packages/utilities-for-private-properties/CHANGELOG.md#101) (patch)
 
 ### 1.1.0
 

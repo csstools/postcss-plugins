@@ -5,6 +5,12 @@
 - Updated [`@csstools/postcss-logical-viewport-units`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units) to [`4.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-logical-viewport-units/CHANGELOG.md#405) (patch)
 - Updated [`@csstools/postcss-syntax-descriptor-syntax-production`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production) to [`2.0.2`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-syntax-descriptor-syntax-production/CHANGELOG.md#202) (patch)
 - Updated [`@csstools/postcss-text-decoration-shorthand`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand) to [`5.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-text-decoration-shorthand/CHANGELOG.md#508) (patch)
+- Updated [`@csstools/postcss-container-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list) to [`1.0.5`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-container-rule-prelude-list/CHANGELOG.md#105) (patch)
+- Updated [`@csstools/postcss-content-alt-text`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text) to [`3.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-content-alt-text/CHANGELOG.md#309) (patch)
+- Updated [`@csstools/postcss-image-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function) to [`1.0.8`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-function/CHANGELOG.md#108) (patch)
+- Updated [`@csstools/postcss-light-dark-function`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function) to [`3.0.9`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function/CHANGELOG.md#309) (patch)
+- Updated [`@csstools/postcss-property-rule-prelude-list`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list) to [`2.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-property-rule-prelude-list/CHANGELOG.md#204) (patch)
+- Updated [`@csstools/postcss-system-ui-font-family`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family) to [`2.0.4`](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-system-ui-font-family/CHANGELOG.md#204) (patch)
 
 ### 11.6.2
 
