@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/css-color-parser": "^4.2.7",
+		"@csstools/css-color-parser": "^4.2.8",
 		"@csstools/css-parser-algorithms": "^4.0.3",
 		"@csstools/css-tokenizer": "^4.0.3"
 	},
