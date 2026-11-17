@@ -1,6 +1,8 @@
 # Changes to PostCSS Mixins
 
-### Unreleased (minor)
+### 1.2.0
+
+_November 17, 2026_
 
 - Drop `@layer` rules from mixin bodies
 - Expand `@apply` and `@contents` rules in `@contents` blocks, fallbacks and nested rules
