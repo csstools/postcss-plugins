@@ -1,6 +1,8 @@
 # Changes to CSS Tokenizer
 
-### Unreleased (patch)
+### 4.0.3
+
+_November 17, 2026_
 
 - Fix `stringify([])` to return an empty string
 
