@@ -597,7 +597,7 @@
 		"syntax": "<'print-color-adjust'>"
 	},
 	"color-interpolation": {
-		"syntax": "auto | sRGB | linearRGB"
+		"syntax": "auto | sRGB | linearRGB | <color-interpolation-method>"
 	},
 	"color-interpolation-filters": {
 		"syntax": "auto | sRGB | linearRGB"
@@ -1353,7 +1353,7 @@
 		"syntax": "auto | loose | normal | strict | anywhere"
 	},
 	"line-clamp": {
-		"syntax": "none | [ <'max-lines'> || <'block-ellipsis'> ] -webkit-legacy?"
+		"syntax": "none | [ <integer [1,∞]> || auto || <block-ellipsis> ] -webkit-legacy?"
 	},
 	"-webkit-line-clamp": {
 		"syntax": "none | <integer>"
@@ -1560,7 +1560,7 @@
 		"syntax": "none | <box-size> | <anchor-size()>"
 	},
 	"max-lines": {
-		"syntax": "auto || <integer [1,∞]>"
+		"syntax": "<integer [1,∞]> || auto"
 	},
 	"max-size": {
 		"syntax": "<'max-width'> <'max-height'>?"
@@ -1650,7 +1650,7 @@
 		"syntax": "auto | <'border-top-color'>"
 	},
 	"outline-offset": {
-		"syntax": "<length>"
+		"syntax": "<length> | inset"
 	},
 	"-moz-outline-radius": {
 		"syntax": "<outline-radius>{1,4} [ / <outline-radius>{1,4} ]?"
@@ -1875,7 +1875,7 @@
 		"syntax": "auto | none | bikeshed-this | [ <string> <string> ]+"
 	},
 	"r": {
-		"syntax": "<length-percentage>"
+		"syntax": "<length-percentage [0,∞]>"
 	},
 	"reading-flow": {
 		"syntax": "normal | source-order | flex-visual | flex-flow | grid-rows | grid-columns | grid-order"
@@ -2001,10 +2001,10 @@
 		"syntax": "<'column-rule-width'>"
 	},
 	"rx": {
-		"syntax": "<length-percentage> | auto"
+		"syntax": "<length-percentage [0,∞]> | auto"
 	},
 	"ry": {
-		"syntax": "<length-percentage> | auto"
+		"syntax": "<length-percentage [0,∞]> | auto"
 	},
 	"scale": {
 		"syntax": "none | [ <number> | <percentage> ]{1,3}"

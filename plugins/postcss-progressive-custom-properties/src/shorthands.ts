@@ -1222,6 +1222,9 @@ export const shorthands = new Map([
 		"rule-inset-cap",
 		[
 			"column-rule-inset-cap",
+			"row-rule-inset-cap",
+			"row-rule-inset-cap-start",
+			"row-rule-inset-cap-end",
 			"column-rule-inset-cap-start",
 			"column-rule-inset-cap-end"
 		]
@@ -1241,6 +1244,9 @@ export const shorthands = new Map([
 		"rule-inset-junction",
 		[
 			"column-rule-inset-junction",
+			"row-rule-inset-junction",
+			"row-rule-inset-junction-start",
+			"row-rule-inset-junction-end",
 			"column-rule-inset-junction-start",
 			"column-rule-inset-junction-end"
 		]
@@ -1266,7 +1272,8 @@ export const shorthands = new Map([
 	[
 		"rule-visibility-items",
 		[
-			"column-rule-visibility-items"
+			"column-rule-visibility-items",
+			"row-rule-visibility-items"
 		]
 	],
 	[

@@ -39,7 +39,7 @@
 		"prelude": {
 			"type": "modified",
 			"syntax-b": "[ <container-name> ]? <container-condition>",
-			"syntax-a": "<container-condition>#",
+			"syntax-a": "<container-query-list>",
 			"comment": ""
 		}
 	},
@@ -203,7 +203,7 @@
 		"prelude": {
 			"type": "added",
 			"syntax-b": "",
-			"syntax-a": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+			"syntax-a": "<function-token> <function-parameter>#? ','? ) [ returns <css-type> ]?",
 			"comment": ""
 		},
 		"descriptors": {
@@ -227,7 +227,7 @@
 		"prelude": {
 			"type": "added",
 			"syntax-b": "",
-			"syntax-a": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
+			"syntax-a": "[ <function-token> <function-parameter>#? ','? ) | <ident-token> ]",
 			"comment": ""
 		}
 	},
@@ -305,7 +305,7 @@
 		"prelude": {
 			"type": "modified",
 			"syntax-b": "<custom-property-name>",
-			"syntax-a": "<custom-property-name>#",
+			"syntax-a": "@property <custom-property-name> <css-type>? [ : <declaration-value>? ]? ;",
 			"comment": ""
 		}
 	},

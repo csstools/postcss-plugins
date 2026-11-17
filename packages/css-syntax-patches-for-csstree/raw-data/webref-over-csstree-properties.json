@@ -572,7 +572,7 @@
 	"color-interpolation": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "auto | sRGB | linearRGB",
+		"syntax-a": "auto | sRGB | linearRGB | <color-interpolation-method>",
 		"comment": ""
 	},
 	"column-count": {
@@ -1316,7 +1316,7 @@
 	"line-clamp": {
 		"type": "modified",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "none | [ <'max-lines'> || <'block-ellipsis'> ] -webkit-legacy?",
+		"syntax-a": "none | [ <integer [1,∞]> || auto || <block-ellipsis> ] -webkit-legacy?",
 		"comment": ""
 	},
 	"line-fit-edge": {
@@ -1460,7 +1460,7 @@
 	"max-lines": {
 		"type": "modified",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "auto || <integer [1,∞]>",
+		"syntax-a": "<integer [1,∞]> || auto",
 		"comment": ""
 	},
 	"max-size": {
@@ -1557,6 +1557,12 @@
 		"type": "modified",
 		"syntax-b": "auto | <color>",
 		"syntax-a": "auto | <'border-top-color'>",
+		"comment": ""
+	},
+	"outline-offset": {
+		"type": "modified",
+		"syntax-b": "<length>",
+		"syntax-a": "<length> | inset",
 		"comment": ""
 	},
 	"overflow": {
@@ -1784,7 +1790,7 @@
 	"r": {
 		"type": "modified",
 		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
 		"comment": ""
 	},
 	"region-fragment": {
@@ -1988,13 +1994,13 @@
 	"rx": {
 		"type": "modified",
 		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage> | auto",
+		"syntax-a": "<length-percentage [0,∞]> | auto",
 		"comment": ""
 	},
 	"ry": {
 		"type": "modified",
 		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage> | auto",
+		"syntax-a": "<length-percentage [0,∞]> | auto",
 		"comment": ""
 	},
 	"scroll-axis-lock": {

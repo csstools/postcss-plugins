@@ -1475,8 +1475,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "auto | sRGB | linearRGB",
-		"syntax-m": "auto | sRGB | linearRGB",
+		"syntax-a": "auto | sRGB | linearRGB | <color-interpolation-method>",
+		"syntax-m": "auto | sRGB | linearRGB | <color-interpolation-method>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3008,8 +3008,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "none | [ <'max-lines'> || <'block-ellipsis'> ] -webkit-legacy?",
-		"syntax-m": "none | [ <'max-lines'> || <'block-ellipsis'> ] -webkit-legacy?",
+		"syntax-a": "none | [ <integer [1,∞]> || auto || <block-ellipsis> ] -webkit-legacy?",
+		"syntax-m": "none | [ <integer [1,∞]> || auto || <block-ellipsis> ] -webkit-legacy?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3272,8 +3272,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "none | <integer>",
-		"syntax-a": "auto || <integer [1,∞]>",
-		"syntax-m": "auto || <integer [1,∞]>",
+		"syntax-a": "<integer [1,∞]> || auto",
+		"syntax-m": "<integer [1,∞]> || auto",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3454,6 +3454,17 @@
 		"syntax-b": "auto | <color>",
 		"syntax-a": "auto | <'border-top-color'>",
 		"syntax-m": "auto | <'border-top-color'>",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
+	"outline-offset": {
+		"type": "modified",
+		"comment": "",
+		"syntax-b": "<length>",
+		"syntax-a": "<length> | inset",
+		"syntax-m": "<length> | inset",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -3898,8 +3909,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage>",
-		"syntax-m": "<length-percentage>",
+		"syntax-a": "<length-percentage [0,∞]>",
+		"syntax-m": "<length-percentage [0,∞]>",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4272,8 +4283,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage> | auto",
-		"syntax-m": "<length-percentage> | auto",
+		"syntax-a": "<length-percentage [0,∞]> | auto",
+		"syntax-m": "<length-percentage [0,∞]> | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4283,8 +4294,8 @@
 		"type": "modified",
 		"comment": "",
 		"syntax-b": "<length> | <percentage>",
-		"syntax-a": "<length-percentage> | auto",
-		"syntax-m": "<length-percentage> | auto",
+		"syntax-a": "<length-percentage [0,∞]> | auto",
+		"syntax-m": "<length-percentage [0,∞]> | auto",
 		"tests": {
 			"passing": [],
 			"failing": []
