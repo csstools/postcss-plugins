@@ -1,6 +1,8 @@
 # Changes to Custom Function Parser
 
-### Unreleased (major)
+### 2.0.0
+
+_November 17, 2026_
 
 - Omitted types are `*` for `getParameterType()` and `getReturnType()` (breaking).
 - Rename `CustomFunction.function` to `CustomFunction.functionNode` (breaking).
