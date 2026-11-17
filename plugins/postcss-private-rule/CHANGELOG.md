@@ -1,6 +1,8 @@
 # Changes to PostCSS Private Rule
 
-### Unreleased (major)
+### 2.0.0
+
+_November 17, 2026_
 
 - Removed the undocumented `Transpiler` export; use `@csstools/utilities-for-private-properties` instead
 - Support `@property` rules in `@private` rules, including multi-name preludes and the shorthand form, and hoist registrations out of `@container`, `@scope` and `@starting-style` while preserving `@media`, `@supports` and `@layer` context
