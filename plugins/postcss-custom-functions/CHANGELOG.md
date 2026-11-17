@@ -1,6 +1,8 @@
 # Changes to PostCSS Custom Functions
 
-### Unreleased (minor)
+### 1.1.0
+
+_November 17, 2026_
 
 - Hoist `@property` registrations out of `@container`, `@scope` and `@starting-style`, and treat definitions there as unconditional
 - Keep empty `@layer` blocks and order `@layer` rules inside `@scope` as global layers
