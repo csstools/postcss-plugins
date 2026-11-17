@@ -1,6 +1,8 @@
 # Changes to Utilities for Private Properties
 
-### Unreleased (patch)
+### 1.0.1
+
+_November 17, 2026_
 
 - Update dependencies
 
