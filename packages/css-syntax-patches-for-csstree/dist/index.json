@@ -13,7 +13,7 @@
 				}
 			},
 			"container": {
-				"prelude": "<container-condition>#"
+				"prelude": "<container-query-list>"
 			},
 			"custom-media": {
 				"prelude": "<extension-name> [ <media-query-list> | true | false ]"
@@ -28,7 +28,7 @@
 				}
 			},
 			"function": {
-				"prelude": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+				"prelude": "<function-token> <function-parameter>#? ','? ) [ returns <css-type> ]?",
 				"descriptors": {
 					"result": "<declaration-value>?"
 				}
@@ -36,8 +36,14 @@
 			"import": {
 				"prelude": "[ <url> | <string> ] [ [ layer | layer( <layer-name> ) ] || [ scope | scope( <scope-start> | <scope-boundaries> ) ] || <supports-import-condition> ]? <media-import-condition>?"
 			},
+			"layer": {
+				"prelude": "<layer-name>? | <layer-name>#"
+			},
+			"location": {
+				"prelude": "<dashed-ident>"
+			},
 			"mixin": {
-				"prelude": "[ <function-token> <function-parameter>#? ) | <ident-token> ]"
+				"prelude": "[ <function-token> <function-parameter>#? ','? ) | <ident-token> ]"
 			},
 			"navigation": {
 				"prelude": "<navigation-condition>"
@@ -54,7 +60,7 @@
 				}
 			},
 			"property": {
-				"prelude": "<custom-property-name>#"
+				"prelude": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?"
 			},
 			"scope": {
 				"prelude": "<scope-boundaries>?"
@@ -195,7 +201,7 @@
 			"clear": "| block-start | block-end | top | bottom | both-inline | both-block",
 			"clip": "rect( <top> , <right> , <bottom> , <left> ) | rect( <top> <right> <bottom> <left> ) | auto",
 			"color-adjust": "<'print-color-adjust'>",
-			"color-interpolation": "auto | sRGB | linearRGB",
+			"color-interpolation": "auto | sRGB | linearRGB | <color-interpolation-method>",
 			"column-count": "auto | <integer [1,∞]>",
 			"column-fill": "| balance-all",
 			"column-gap": "normal | <length-percentage [0,∞]> | <line-width>",
@@ -312,7 +318,7 @@
 			"input-security": "auto | none",
 			"isolation": "<isolation-mode>",
 			"justify-self": "auto | <overflow-position>? [ normal | <self-position> | left | right ] | stretch | <baseline-position> | anchor-center",
-			"line-clamp": "none | [ <'max-lines'> || <'block-ellipsis'> ] -webkit-legacy?",
+			"line-clamp": "none | [ <integer [1,∞]> || auto || <'block-ellipsis'> ] -webkit-legacy?",
 			"line-fit-edge": "leading | <text-edge>",
 			"line-grid": "match-parent | create",
 			"line-height": "normal | <number [0,∞]> | <length-percentage [0,∞]>",
@@ -336,7 +342,7 @@
 			"max-block-size": "none | <box-size> | <anchor-size()>",
 			"max-height": "none | <box-size> | <anchor-size()> | <-non-standard-size>",
 			"max-inline-size": "none | <box-size> | <anchor-size()>",
-			"max-lines": "auto || <integer [1,∞]>",
+			"max-lines": "<integer [1,∞]> || auto",
 			"max-size": "<'max-width'> <'max-height'>?",
 			"max-width": "none | <box-size> | <anchor-size()> | <-non-standard-size>",
 			"min-block-size": "auto | <box-size> | <anchor-size()>",
@@ -349,6 +355,7 @@
 			"object-fit": "fill | none | [ contain | cover ] || scale-down",
 			"orphans": "<integer [1,∞]>",
 			"outline-color": "auto | <'border-top-color'>",
+			"outline-offset": "<length> | inset",
 			"overflow": "<'overflow-block'>{1,2} | <-non-standard-overflow>",
 			"overflow-block": "| <-non-standard-overflow>",
 			"overflow-clip-margin": "<visual-box> || <length>",
@@ -383,7 +390,7 @@
 			"position-try-fallbacks": "none | [ [ <dashed-ident> || <try-tactic> ] | <position-area> ]#",
 			"position-visibility": "always | [ anchor-valid || anchor-visible || no-overflow ]",
 			"quotes": "auto | none | [ <string> <string> ]+",
-			"r": "<length-percentage>",
+			"r": "<length-percentage [0,∞]>",
 			"region-fragment": "auto | break",
 			"rest-after": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
 			"rest-before": "<time [0s,∞]> | none | x-weak | weak | medium | strong | x-strong",
@@ -417,8 +424,8 @@
 			"rule-style": "<'column-rule-style'>",
 			"rule-visibility-items": "<'column-rule-visibility-items'>",
 			"rule-width": "<'column-rule-width'>",
-			"rx": "<length-percentage> | auto",
-			"ry": "<length-percentage> | auto",
+			"rx": "<length-percentage [0,∞]> | auto",
+			"ry": "<length-percentage [0,∞]> | auto",
 			"scroll-axis-lock": "auto | none",
 			"scroll-marker-group": "none | [ [ before | after ] || [ links | tabs ] ]",
 			"scroll-padding": "[ auto | <length-percentage [0,∞]> ]{1,4}",
@@ -585,6 +592,7 @@
 			"command-end-point": "[ to <position> | by <coordinate-pair> ]",
 			"composite-mode": "clear | copy | source-over | destination-over | source-in | destination-in | source-out | destination-out | source-atop | destination-atop | xor | lighter | plus-darker | plus-lighter",
 			"container-condition": "[ <container-name>? <container-query>? ]!",
+			"container-query-list": "<container-condition>#",
 			"content-level": "element | content | text | <attr()> | <counter>",
 			"content-list": "[ <string> | <image> | <attr()> | contents | <quote> | <leader()> | <target> | <string()> | <content()> | <counter> | <symbolic-glyph> ]+",
 			"content-position": "center | start | end | flow-start | flow-end | flex-start | flex-end",
@@ -604,7 +612,7 @@
 			"custom-arg": "'$' <ident-token>",
 			"cycle()": "cycle( <whole-value># )",
 			"dblclick()": "dblclick( )",
-			"default-value": "<declaration-value>",
+			"default-value": "<declaration-value>?",
 			"deprecated-color": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText",
 			"dynamic-range-limit-mix()": "dynamic-range-limit-mix( [ <'dynamic-range-limit'> && <percentage [0,100]> ]# )",
 			"element()": "element( <id-selector> )",
@@ -703,7 +711,6 @@
 			"line-width-or-repeat": "[ <line-width> | <repeat-line-width> ]",
 			"location-descriptor": "<pattern-descriptor> | <init-descriptor> | <base-descriptor>",
 			"location-name": "<dashed-ident>",
-			"location-rule": "@location <dashed-ident> { <declaration-list> }",
 			"marker-ref": "<url>",
 			"media-and": "and <media-in-parens>",
 			"media-condition": "<media-not> | <media-in-parens> [ <media-and>* | <media-or>* ]",
@@ -746,7 +753,7 @@
 			"paint": "none | <color> | <url> [ none | <color> ]? | context-fill | context-stroke | <image> | <svg-paint>",
 			"palette-mix()": "palette-mix( <color-interpolation-method>? , [ <'font-palette'> && <percentage [0,100]>? ]# )",
 			"param-spec": "color | accent-color | [ <dashed-ident> <css-type>? ]",
-			"param()": "param( <param-spec> , <declaration-value>? )",
+			"param()": "param( <param-spec> [ ':' <declaration-value>? ]? )",
 			"pattern-descriptor": "pattern : <url-pattern()>",
 			"pointer-axis": "block | inline | x | y",
 			"pointer-source": "root | nearest | self",
@@ -822,7 +829,7 @@
 			"source-size": "<media-condition> <source-size-value> | auto",
 			"source-size-list": "<source-size>#? , <source-size-value>",
 			"source-size-value": "<length> | auto",
-			"spacing-trim": "space-all | normal | space-first | trim-start | trim-both | trim-all",
+			"spacing-trim": "[ trim-start | space-start | space-first ] || [ trim-adjacent | space-adjacent ] || [ trim-end | space-end | allow-end ] | trim-both | space-all | trim-all",
 			"spread-shadow": "<'box-shadow-color'>? && [ [ none | <length>{2} ] [ <'box-shadow-blur'> <'box-shadow-spread'>? ]? ] && <'box-shadow-position'>?",
 			"src()": "src( <string> <url-modifier>* )",
 			"string()": "string( <custom-ident> , [ first | start | last | first-except ]? )",

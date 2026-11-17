@@ -341,6 +341,12 @@
 		"syntax-a": "[ <container-name>? <container-query>? ]!",
 		"comment": ""
 	},
+	"container-query-list": {
+		"type": "added",
+		"syntax-b": "",
+		"syntax-a": "<container-condition>#",
+		"comment": ""
+	},
 	"content-level": {
 		"type": "added",
 		"syntax-b": "",
@@ -470,7 +476,7 @@
 	"default-value": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "<declaration-value>",
+		"syntax-a": "<declaration-value>?",
 		"comment": ""
 	},
 	"deprecated-color": {
@@ -1079,12 +1085,6 @@
 		"syntax-a": "<dashed-ident>",
 		"comment": ""
 	},
-	"location-rule": {
-		"type": "added",
-		"syntax-b": "",
-		"syntax-a": "@location <dashed-ident> { <declaration-list> }",
-		"comment": ""
-	},
 	"marker-ref": {
 		"type": "added",
 		"syntax-b": "",
@@ -1346,7 +1346,7 @@
 	"param()": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "param( <param-spec> , <declaration-value>? )",
+		"syntax-a": "param( <param-spec> [ ':' <declaration-value>? ]? )",
 		"comment": ""
 	},
 	"pattern-descriptor": {
@@ -1814,7 +1814,7 @@
 	"spacing-trim": {
 		"type": "added",
 		"syntax-b": "",
-		"syntax-a": "space-all | normal | space-first | trim-start | trim-both | trim-all",
+		"syntax-a": "[ trim-start | space-start | space-first ] || [ trim-adjacent | space-adjacent ] || [ trim-end | space-end | allow-end ] | trim-both | space-all | trim-all",
 		"comment": ""
 	},
 	"spread-shadow": {

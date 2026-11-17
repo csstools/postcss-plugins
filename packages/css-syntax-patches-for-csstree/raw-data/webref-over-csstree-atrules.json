@@ -39,7 +39,7 @@
 		"prelude": {
 			"type": "modified",
 			"syntax-b": "[ <container-name> ]? <container-condition>",
-			"syntax-a": "<container-condition>#",
+			"syntax-a": "<container-query-list>",
 			"comment": ""
 		}
 	},
@@ -203,7 +203,7 @@
 		"prelude": {
 			"type": "added",
 			"syntax-b": "",
-			"syntax-a": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+			"syntax-a": "<function-token> <function-parameter>#? ','? ) [ returns <css-type> ]?",
 			"comment": ""
 		},
 		"descriptors": {
@@ -223,11 +223,27 @@
 			"comment": ""
 		}
 	},
+	"layer": {
+		"prelude": {
+			"type": "modified",
+			"syntax-b": "[ <layer-name># | <layer-name>? ]",
+			"syntax-a": "<layer-name>? | <layer-name>#",
+			"comment": ""
+		}
+	},
+	"location": {
+		"prelude": {
+			"type": "added",
+			"syntax-b": "",
+			"syntax-a": "<dashed-ident>",
+			"comment": ""
+		}
+	},
 	"mixin": {
 		"prelude": {
 			"type": "added",
 			"syntax-b": "",
-			"syntax-a": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
+			"syntax-a": "[ <function-token> <function-parameter>#? ','? ) | <ident-token> ]",
 			"comment": ""
 		}
 	},
@@ -305,7 +321,7 @@
 		"prelude": {
 			"type": "modified",
 			"syntax-b": "<custom-property-name>",
-			"syntax-a": "<custom-property-name>#",
+			"syntax-a": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?",
 			"comment": ""
 		}
 	},

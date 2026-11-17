@@ -790,6 +790,17 @@
 			"failing": []
 		}
 	},
+	"container-query-list": {
+		"type": "added",
+		"comment": "",
+		"syntax-b": "",
+		"syntax-a": "<container-condition>#",
+		"syntax-m": "<container-condition>#",
+		"tests": {
+			"passing": [],
+			"failing": []
+		}
+	},
 	"content-level": {
 		"type": "added",
 		"comment": "",
@@ -1097,8 +1108,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "<declaration-value>",
-		"syntax-m": "<declaration-value>",
+		"syntax-a": "<declaration-value>?",
+		"syntax-m": "<declaration-value>?",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -2524,17 +2535,6 @@
 			"failing": []
 		}
 	},
-	"location-rule": {
-		"type": "added",
-		"comment": "",
-		"syntax-b": "",
-		"syntax-a": "@location <dashed-ident> { <declaration-list> }",
-		"syntax-m": "@location <dashed-ident> { <declaration-list> }",
-		"tests": {
-			"passing": [],
-			"failing": []
-		}
-	},
 	"marker-ref": {
 		"type": "added",
 		"comment": "",
@@ -3272,8 +3272,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "param( <param-spec> , <declaration-value>? )",
-		"syntax-m": "param( <param-spec> , <declaration-value>? )",
+		"syntax-a": "param( <param-spec> [ ':' <declaration-value>? ]? )",
+		"syntax-m": "param( <param-spec> [ ':' <declaration-value>? ]? )",
 		"tests": {
 			"passing": [],
 			"failing": []
@@ -4196,8 +4196,8 @@
 		"type": "added",
 		"comment": "",
 		"syntax-b": "",
-		"syntax-a": "space-all | normal | space-first | trim-start | trim-both | trim-all",
-		"syntax-m": "space-all | normal | space-first | trim-start | trim-both | trim-all",
+		"syntax-a": "[ trim-start | space-start | space-first ] || [ trim-adjacent | space-adjacent ] || [ trim-end | space-end | allow-end ] | trim-both | space-all | trim-all",
+		"syntax-m": "[ trim-start | space-start | space-first ] || [ trim-adjacent | space-adjacent ] || [ trim-end | space-end | allow-end ] | trim-both | space-all | trim-all",
 		"tests": {
 			"passing": [],
 			"failing": []

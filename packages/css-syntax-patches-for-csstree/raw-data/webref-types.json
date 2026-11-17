@@ -365,6 +365,9 @@
 	"container-query": {
 		"syntax": "not <query-in-parens> | <query-in-parens> [ [ and <query-in-parens> ]* | [ or <query-in-parens> ]* ]"
 	},
+	"container-query-list": {
+		"syntax": "<container-condition>#"
+	},
 	"content-distribution": {
 		"syntax": "space-between | space-around | space-evenly | stretch"
 	},
@@ -483,7 +486,7 @@
 		"syntax": "[ <declaration>? ';' ]* <declaration>?"
 	},
 	"default-value": {
-		"syntax": "<declaration-value>"
+		"syntax": "<declaration-value>?"
 	},
 	"deprecated-color": {
 		"syntax": "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonHighlight | ButtonShadow | CaptionText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText"
@@ -1037,9 +1040,6 @@
 	"location-name": {
 		"syntax": "<dashed-ident>"
 	},
-	"location-rule": {
-		"syntax": "@location <dashed-ident> { <declaration-list> }"
-	},
 	"log()": {
 		"syntax": "log( <calc-sum> , <calc-sum>? )"
 	},
@@ -1311,7 +1311,7 @@
 		"syntax": "color | accent-color | [ <dashed-ident> <css-type>? ]"
 	},
 	"param()": {
-		"syntax": "param( <param-spec> , <declaration-value>? )"
+		"syntax": "param( <param-spec> [ ':' <declaration-value>? ]? )"
 	},
 	"path()": {
 		"syntax": "path( <'fill-rule'>? , <string> )"
@@ -1755,7 +1755,7 @@
 		"syntax": "<length> | auto"
 	},
 	"spacing-trim": {
-		"syntax": "space-all | normal | space-first | trim-start | trim-both | trim-all"
+		"syntax": "[ trim-start | space-start | space-first ] || [ trim-adjacent | space-adjacent ] || [ trim-end | space-end | allow-end ] | trim-both | space-all | trim-all"
 	},
 	"spread-shadow": {
 		"syntax": "<'box-shadow-color'>? && [ [ none | <length>{2} ] [ <'box-shadow-blur'> <'box-shadow-spread'>? ]? ] && <'box-shadow-position'>?"

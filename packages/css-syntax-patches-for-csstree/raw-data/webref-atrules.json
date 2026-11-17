@@ -27,7 +27,7 @@
 	},
 	"container": {
 		"prelude": {
-			"syntax": "<container-condition>#"
+			"syntax": "<container-query-list>"
 		}
 	},
 	"counter-style": {
@@ -192,7 +192,7 @@
 	},
 	"function": {
 		"prelude": {
-			"syntax": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?"
+			"syntax": "<function-token> <function-parameter>#? ','? ) [ returns <css-type> ]?"
 		},
 		"descriptors": {
 			"result": {
@@ -212,7 +212,12 @@
 	},
 	"layer": {
 		"prelude": {
-			"syntax": "[ <layer-name># | <layer-name>? ]"
+			"syntax": "<layer-name>? | <layer-name>#"
+		}
+	},
+	"location": {
+		"prelude": {
+			"syntax": "<dashed-ident>"
 		}
 	},
 	"media": {
@@ -222,7 +227,7 @@
 	},
 	"mixin": {
 		"prelude": {
-			"syntax": "[ <function-token> <function-parameter>#? ) | <ident-token> ]"
+			"syntax": "[ <function-token> <function-parameter>#? ','? ) | <ident-token> ]"
 		}
 	},
 	"namespace": {
@@ -395,7 +400,7 @@
 	},
 	"property": {
 		"prelude": {
-			"syntax": "<custom-property-name>#"
+			"syntax": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?"
 		},
 		"descriptors": {
 			"inherits": {

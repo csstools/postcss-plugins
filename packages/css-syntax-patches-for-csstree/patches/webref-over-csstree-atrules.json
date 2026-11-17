@@ -126,8 +126,8 @@
 			"type": "modified",
 			"comment": "",
 			"syntax-b": "[ <container-name> ]? <container-condition>",
-			"syntax-a": "<container-condition>#",
-			"syntax-m": "<container-condition>#",
+			"syntax-a": "<container-query-list>",
+			"syntax-m": "<container-query-list>",
 			"tests": {
 				"passing": [
 					{
@@ -705,8 +705,8 @@
 			"type": "added",
 			"comment": "",
 			"syntax-b": "",
-			"syntax-a": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
-			"syntax-m": "<function-token> <function-parameter>#? ) [ returns <css-type> ]?",
+			"syntax-a": "<function-token> <function-parameter>#? ','? ) [ returns <css-type> ]?",
+			"syntax-m": "<function-token> <function-parameter>#? ','? ) [ returns <css-type> ]?",
 			"tests": {
 				"passing": [
 					{
@@ -714,6 +714,12 @@
 					},
 					{
 						"prelude": "--foo(--bar: 2rem) returns <length>"
+					},
+					{
+						"prelude": "--foo(--bar,)"
+					},
+					{
+						"prelude": "--foo(,)"
 					}
 				],
 				"failing": [
@@ -754,17 +760,74 @@
 			}
 		}
 	},
+	"layer": {
+		"prelude": {
+			"type": "modified",
+			"comment": "",
+			"syntax-b": "[ <layer-name># | <layer-name>? ]",
+			"syntax-a": "<layer-name>? | <layer-name>#",
+			"syntax-m": "<layer-name>? | <layer-name>#",
+			"tests": {
+				"passing": [
+					{
+						"prelude": ""
+					},
+					{
+						"prelude": "foo"
+					},
+					{
+						"prelude": "foo.bar"
+					},
+					{
+						"prelude": "foo, bar"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "10px"
+					}
+				]
+			}
+		}
+	},
+	"location": {
+		"prelude": {
+			"type": "added",
+			"comment": "",
+			"syntax-b": "",
+			"syntax-a": "<dashed-ident>",
+			"syntax-m": "<dashed-ident>",
+			"tests": {
+				"passing": [
+					{
+						"prelude": "--foo"
+					}
+				],
+				"failing": [
+					{
+						"prelude": "foo"
+					},
+					{
+						"prelude": "10px"
+					}
+				]
+			}
+		}
+	},
 	"mixin": {
 		"prelude": {
 			"type": "added",
 			"comment": "",
 			"syntax-b": "",
-			"syntax-a": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
-			"syntax-m": "[ <function-token> <function-parameter>#? ) | <ident-token> ]",
+			"syntax-a": "[ <function-token> <function-parameter>#? ','? ) | <ident-token> ]",
+			"syntax-m": "[ <function-token> <function-parameter>#? ','? ) | <ident-token> ]",
 			"tests": {
 				"passing": [
 					{
 						"prelude": "--foo(--bar: 2rem)"
+					},
+					{
+						"prelude": "--foo(--bar: 2rem,)"
 					}
 				],
 				"failing": []
@@ -1009,8 +1072,8 @@
 			"type": "modified",
 			"comment": "",
 			"syntax-b": "<custom-property-name>",
-			"syntax-a": "<custom-property-name>#",
-			"syntax-m": "<custom-property-name>#",
+			"syntax-a": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?",
+			"syntax-m": "<custom-property-name># | <custom-property-name> <css-type>? [ : <declaration-value>? ]?",
 			"tests": {
 				"passing": [
 					{
@@ -1018,6 +1081,12 @@
 					},
 					{
 						"prelude": "--foo, --bar"
+					},
+					{
+						"prelude": "--foo <color>"
+					},
+					{
+						"prelude": "--foo <color>: red"
 					}
 				],
 				"failing": [
