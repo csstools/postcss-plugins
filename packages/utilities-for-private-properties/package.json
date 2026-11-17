@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@csstools/generate-idents": "^0.0.0",
+		"@csstools/generate-idents": "^1.0.0",
 		"@csstools/utilities-for-property-registrations": "^0.0.0"
 	},
 	"peerDependencies": {
