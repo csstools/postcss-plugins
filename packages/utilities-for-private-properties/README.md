@@ -1,4 +1,4 @@
-# Utilities for Private Properties [<img src="https://postcss.github.io/postcss/logo.svg" alt="for PostCSS" width="90" height="90" align="right">]
+# Utilities for Private Properties <img src="https://postcss.github.io/postcss/logo.svg" alt="for PostCSS" width="90" height="90" align="right">
 
 [<img alt="npm version" src="https://img.shields.io/npm/v/@csstools/utilities-for-private-properties.svg" height="20">][npm-url]
 [<img alt="Build Status" src="https://github.com/csstools/postcss-plugins/actions/workflows/test.yml/badge.svg?branch=main" height="20">][cli-url]
