@@ -1,5 +1,7 @@
 # Changes to Generate Idents
 
-### Unreleased (major)
+### 1.0.0
+
+_November 17, 2026_
 
 - Initial version
