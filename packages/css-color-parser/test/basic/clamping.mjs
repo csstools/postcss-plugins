@@ -37,6 +37,16 @@ assertChannels('hsl(from red h s calc(l + 100))', [0, 100, 150]);
 assertChannels('hsl(0 100% 50% / 200%)', [0, 100, 50], 1);
 assertChannels('hsl(0, 100%, 50%, -1)', [0, 100, 50], 0);
 
+// rgb() clamps channels to [0, 1] at parsed-value time.
+assertChannels('rgb(300 0 0)', [1, 0, 0]);
+assertChannels('rgb(120% 0% 0%)', [1, 0, 0]);
+assertChannels('rgb(-10 0 0)', [0, 0, 0]);
+assertChannels('rgb(calc(300) 0 0)', [1, 0, 0]);
+
+// Relative rgb() keeps out of range channels.
+assertChannels('rgb(from red calc(r * 2) g b)', [2, 0, 0]);
+assertChannels('rgb(from red 120% 0% 0%)', [1.2, 0, 0]);
+
 // hwb() does not clamp whiteness or blackness.
 assertChannels('hwb(0 -10% 50%)', [0, -10, 50]);
 assertChannels('hwb(0 50% -10%)', [0, 50, -10]);

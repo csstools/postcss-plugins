@@ -112,17 +112,17 @@ export function threeChannelLegacySyntax(
 		return false;
 	}
 
-	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData);
+	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData, false);
 	if (!channelValue1 || !isTokenNumber(channelValue1)) {
 		return false;
 	}
 
-	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData);
+	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData, false);
 	if (!channelValue2 || !isTokenNumber(channelValue2)) {
 		return false;
 	}
 
-	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData);
+	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData, false);
 	if (!channelValue3 || !isTokenNumber(channelValue3)) {
 		return false;
 	}
@@ -137,7 +137,7 @@ export function threeChannelLegacySyntax(
 		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
 
 		if (isTokenNode(channelAlpha[0])) {
-			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData);
+			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData, false);
 			if (!channelValueAlpha || !isTokenNumber(channelValueAlpha)) {
 				return false;
 			}

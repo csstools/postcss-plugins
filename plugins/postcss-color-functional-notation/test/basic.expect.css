@@ -127,3 +127,19 @@ to-clone {
 
 	result: var(--a);
 }
+
+.out-of-range-modern {
+	color: rgb(255, 0, 0);
+}
+
+.out-of-range-percentage {
+	color: rgb(255, 0, 0);
+}
+
+.out-of-range-negative {
+	color: rgb(0, 0, 0);
+}
+
+.out-of-range-relative {
+	color: rgb(from red calc(r * 2) g b);
+}

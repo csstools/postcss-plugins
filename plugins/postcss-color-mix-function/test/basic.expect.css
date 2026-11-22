@@ -209,3 +209,7 @@
 
 	result: var(--a);
 }
+
+.out-of-range-origin {
+	color: rgb(128, 0, 128);
+}
