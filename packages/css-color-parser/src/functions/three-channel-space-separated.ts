@@ -171,17 +171,17 @@ export function threeChannelSpaceSeparated(
 		return false;
 	}
 
-	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData);
+	const channelValue1 = normalizeChannelValues(channel1[0].value, 0, colorData, !!relativeColorChannels);
 	if (!channelValue1 || !isTokenNumber(channelValue1)) {
 		return false;
 	}
 
-	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData);
+	const channelValue2 = normalizeChannelValues(channel2[0].value, 1, colorData, !!relativeColorChannels);
 	if (!channelValue2 || !isTokenNumber(channelValue2)) {
 		return false;
 	}
 
-	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData);
+	const channelValue3 = normalizeChannelValues(channel3[0].value, 2, colorData, !!relativeColorChannels);
 	if (!channelValue3 || !isTokenNumber(channelValue3)) {
 		return false;
 	}
@@ -196,7 +196,7 @@ export function threeChannelSpaceSeparated(
 		colorData.syntaxFlags.add(SyntaxFlag.HasAlpha);
 
 		if (isTokenNode(channelAlpha[0])) {
-			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData);
+			const channelValueAlpha = normalizeChannelValues(channelAlpha[0].value, 3, colorData, !!relativeColorChannels);
 			if (!channelValueAlpha || !isTokenNumber(channelValueAlpha)) {
 				return false;
 			}
@@ -207,7 +207,7 @@ export function threeChannelSpaceSeparated(
 		}
 	} else if (relativeColorChannels && relativeColorChannels.has('alpha')) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		const channelValueAlpha = normalizeChannelValues(relativeColorChannels.get('alpha')!, 3, colorData);
+		const channelValueAlpha = normalizeChannelValues(relativeColorChannels.get('alpha')!, 3, colorData, true);
 		if (!channelValueAlpha || !isTokenNumber(channelValueAlpha)) {
 			return false;
 		}

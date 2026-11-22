@@ -203,3 +203,7 @@
 
 	result: var(--a);
 }
+
+.out-of-range-origin {
+	color: color-mix(in srgb, rgb(300 0 0), blue);
+}

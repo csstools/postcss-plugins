@@ -1,5 +1,10 @@
 # Changes to CSS Color Parser
 
+### Unreleased (patch)
+
+- Fix `rgb()` to clamp out-of-range channels at parse time
+- Keep out-of-range channels for relative `rgb()` colors
+
 ### 4.2.8
 
 _November 17, 2026_

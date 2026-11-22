@@ -54,7 +54,7 @@ export function normalize_legacy_sRGB_ChannelValues(token: CSSToken, index: numb
 	return false;
 }
 
-export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData): CSSToken | false {
+export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: number, colorData: ColorData, isRelativeColor: boolean): CSSToken | false {
 	if (isTokenIdent(token) && token[4].value.toLowerCase() === 'none') {
 		colorData.syntaxFlags.add(SyntaxFlag.HasNoneKeywords);
 
@@ -78,8 +78,10 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 		let value;
 		if (index === 3) {
 			value = normalize(token[4].value, 100, 0, 1);
-		} else {
+		} else if (isRelativeColor) {
 			value = normalize(token[4].value, 100, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
+		} else {
+			value = normalize(token[4].value, 100, 0, 1);
 		}
 
 		return [
@@ -102,8 +104,10 @@ export function normalize_modern_sRGB_ChannelValues(token: CSSToken, index: numb
 		let value;
 		if (index === 3) {
 			value = normalize(token[4].value, 1, 0, 1);
-		} else {
+		} else if (isRelativeColor) {
 			value = normalize(token[4].value, 255, VALUE_FOR_NEGATIVE_INFINITY, VALUE_FOR_POSITIVE_INFINITY);
+		} else {
+			value = normalize(token[4].value, 255, 0, 1);
 		}
 
 		return [
