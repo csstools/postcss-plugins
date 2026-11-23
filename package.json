@@ -30,7 +30,7 @@
 		"@rollup/plugin-terser": "^1.0.0",
 		"@rollup/plugin-typescript": "^12.3.0",
 		"@stryker-mutator/core": "^10.0.0",
-		"@stylistic/eslint-plugin": "^5.8.0",
+		"@stylistic/eslint-plugin": "^6.0.0",
 		"@types/node": "^26.6.6",
 		"eslint": "^10.14.0",
 		"globals": "^17.14.0",
